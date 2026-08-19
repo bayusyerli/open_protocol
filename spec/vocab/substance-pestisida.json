@@ -128,7 +128,10 @@
         "Isopropil Amina Glifosat",
         "Isopropil amina Glifosat",
         "Isopropil amina glifosat",
-        "isopropil amina glifosat"
+        "isopropil amina glifosat",
+        "Isopropilamina Glifosat",
+        "Isopropilamina glifosat",
+        "isopropilamina glifosat"
       ],
       "mappings": [
         {
@@ -141,7 +144,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -338,7 +342,9 @@
         }
       ],
       "synonyms": [
-        "abamektin"
+        "abamektin",
+        "Abamektin (Abamectin)",
+        "abamektin (abamectin)"
       ],
       "mappings": [
         {
@@ -357,7 +363,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -379,7 +386,9 @@
         }
       ],
       "synonyms": [
-        "mankozeb"
+        "mankozeb",
+        "Mankozeb (Mancozeb)",
+        "Mankozeb (mancozeb)"
       ],
       "mappings": [
         {
@@ -392,7 +401,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -418,7 +428,9 @@
         }
       ],
       "synonyms": [
-        "imidakloprid"
+        "imidakloprid",
+        "Imidakloprid (imidacloprid)",
+        "imidakloprid (imidacloprid)"
       ],
       "mappings": [
         {
@@ -431,7 +443,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -559,7 +572,9 @@
         }
       ],
       "synonyms": [
-        "klorfenapir"
+        "klorfenapir",
+        "Klorfenapir (Chlorfenapyr)",
+        "Klorfenapir (chlorfenapyr)"
       ],
       "mappings": [
         {
@@ -572,7 +587,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -661,7 +677,8 @@
       ],
       "synonyms": [
         "Dimehipo",
-        "dimehipo"
+        "dimehipo",
+        "Dimehipo (Dimehypo)"
       ],
       "mappings": [
         {
@@ -674,7 +691,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -698,7 +716,10 @@
         }
       ],
       "synonyms": [
-        "metomil"
+        "metomil",
+        "Metomil (Methomyl)",
+        "Metomil (methomyl)",
+        "metomil (methomyl)"
       ],
       "mappings": [
         {
@@ -711,7 +732,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       },
       "hazard": {
         "regulatory_status": [
@@ -830,7 +852,9 @@
         }
       ],
       "synonyms": [
-        "klorotalonil"
+        "klorotalonil",
+        "Klorotalonil (Chlorothalonil)",
+        "Klorotalonil (chlorothalonil)"
       ],
       "mappings": [
         {
@@ -843,7 +867,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -1097,7 +1122,8 @@
         }
       ],
       "synonyms": [
-        "pimetrozin"
+        "pimetrozin",
+        "Pimetrozin (Pymetrozine)"
       ],
       "mappings": [
         {
@@ -1110,7 +1136,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -1186,7 +1213,8 @@
         "insecticide"
       ],
       "synonyms": [
-        "nitenpiram"
+        "nitenpiram",
+        "Nitenpiram (Nitenpyram)"
       ],
       "mappings": [
         {
@@ -1199,7 +1227,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -1216,7 +1245,8 @@
       ],
       "synonyms": [
         "Asam giberelat",
-        "asam giberelat"
+        "asam giberelat",
+        "asam giberelat (gibberellic acid)"
       ],
       "mappings": [
         {
@@ -1229,7 +1259,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -1396,7 +1427,8 @@
         }
       ],
       "synonyms": [
-        "dimetomorf"
+        "dimetomorf",
+        "dimetomorf (dimethomorph)"
       ],
       "mappings": [
         {
@@ -1409,7 +1441,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -1528,7 +1561,9 @@
       ],
       "synonyms": [
         "Indoksakarb",
-        "indoksakarb"
+        "indoksakarb",
+        "Indoksakarb (Indoxacarb)",
+        "Indoksakarb (indoxacarb)"
       ],
       "mappings": [
         {
@@ -1541,7 +1576,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -1699,8 +1735,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Dua id bersih untuk garam yang sama, berbeda spasi saja. Yang dipakai op:sub:00000102 karena ia bentuk terbanyak di registri — 209 rekaman lawan 49. Tiebreaker \"paling sering muncul\" itu yang sama dipakai konvensi penyeragaman nama principal. Putaran sebelumnya sempat memilih arah kebalikannya; keputusan ini yang berlaku. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -2355,7 +2398,8 @@
       ],
       "synonyms": [
         "Etil pirazosulfuron",
-        "etil pirazosulfuron"
+        "etil pirazosulfuron",
+        "Etil pirazosulfuron (Pyrazosulfuron-ethyl)"
       ],
       "mappings": [
         {
@@ -2368,7 +2412,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -2741,7 +2786,7 @@
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000403 \"Dimeflutrin\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Murni salah ejaan, tanpa teks kesetaraan: \"dimeflutrhin\" adalah \"dimeflutrin\" dengan huruf h tertukar. Keduanya piretroid obat nyamuk bakar dari lini produk yang sama, dengan kadar yang sama. Ejaannya dipertahankan sebagai synonyms karena ia ejaan bahan, bukan anotasi registri — tiga rekaman produk masih memakainya sebagai label. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000403 \"Dimeflutrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. \"dimeflutrhin\" adalah \"dimeflutrin\" dengan huruf h tertukar. Keduanya piretroid obat nyamuk bakar dari lini produk yang sama, dengan kadar yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -4730,7 +4775,9 @@
         }
       ],
       "synonyms": [
-        "trifloksistrobin"
+        "trifloksistrobin",
+        "Trifloksistrobin (trifloxystrobin)",
+        "trifloksistrobin (trifloxystrobin)"
       ],
       "mappings": [
         {
@@ -4743,7 +4790,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -5136,7 +5184,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "saflufenasil"
+        "saflufenasil",
+        "Saflufenasil (Saflufenacil)"
       ],
       "mappings": [
         {
@@ -5149,7 +5198,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -6043,8 +6093,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000114"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000114 \"Metomil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -8189,8 +8246,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000106"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000106 \"Mankozeb\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -8658,8 +8722,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -9620,8 +9691,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000107"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000107 \"Imidakloprid\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -9799,7 +9877,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "monoamonium glifosat"
+        "monoamonium glifosat",
+        "Monoamonium glifosat (glyphosate monoamonium)"
       ],
       "mappings": [
         {
@@ -9812,7 +9891,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -10627,8 +10707,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -10895,7 +10982,8 @@
         "fungicide"
       ],
       "synonyms": [
-        "protiokonazol"
+        "protiokonazol",
+        "Protiokonazol (prothioconazole)"
       ],
       "mappings": [
         {
@@ -10908,7 +10996,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -11214,8 +11303,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000220"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000220 \"Trifloksistrobin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -11304,8 +11400,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000007"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000007 \"Abamektin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -12621,8 +12724,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Trifludimoksazin (Trifludimoxazin)"
+      ]
     },
     {
       "id": "op:sub:00000508",
@@ -13950,8 +14057,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000110"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000110 \"Klorfenapir\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -14989,8 +15103,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000122"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam terhadap garam dimetil aminanya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15699,8 +15820,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Diafenthiuron."
+      ]
     },
     {
       "id": "op:sub:00000620",
@@ -15753,8 +15878,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000113"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000113 \"DIMEHIPO\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -16307,8 +16439,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000134"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000134 \"INDOKSAKARB\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -16472,8 +16611,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -16550,8 +16696,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -16576,8 +16729,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -16654,8 +16814,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -16680,8 +16847,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -17187,8 +17361,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000127"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000127 \"Nitenpiram\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -18302,7 +18483,7 @@
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Nama bahannya sama persis dengan op:sub:00000122; yang membedakan hanya keterangan kesetaraan dalam kurung. 865 g/l garam setara 720 g/l 2,4-D asam mengikuti nisbah bobot molekulnya, jadi keduanya garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam terhadap garam dimetil aminanya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -20961,8 +21142,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21017,11 +21205,11 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-19T00:00:00Z",
         "superseded_by": {
-          "id": "op:sub:00000138"
+          "id": "op:sub:00000102"
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000138 \"Isopropilamina Glifosat\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Satu dari dua ejaan \"isopropil amina glifosat (setara dengan glifosat 389 g/l)\" yang sama-sama tercatat pada RONDA GOLD 525 SL. Keduanya digabung ke nama kanonik, bukan salah satunya dipilih: memilih di antara dua salah ketik registri hanya memindahkan sengketa, tidak menyelesaikannya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21150,8 +21338,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21176,8 +21371,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21206,11 +21408,11 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-19T00:00:00Z",
         "superseded_by": {
-          "id": "op:sub:00000138"
+          "id": "op:sub:00000102"
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000138 \"Isopropilamina Glifosat\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Sesudah keterangan kesetaraan dilepas, yang tersisa \"Isopropil amina glifosat\" — ejaan berspasi dari isopropilamina glifosat. 620 g/l setara 459 g/l glifosat, nisbah 0,740, cocok dengan bobot molekul garamnya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21235,8 +21437,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21371,8 +21580,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000117"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000117 \"Klorotalonil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21947,8 +22163,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000384"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000384 \"Monoamonium glifosat\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -22352,8 +22575,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000123"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000123 \"Pimetrozin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -22537,8 +22767,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000423"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000423 \"Protiokonazol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24373,7 +24610,7 @@
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Registri memasukkan seluruh baris label ke field nama bahan, lengkap dengan kadar dan kesetaraannya. Yang tersisa sesudah anotasi itu dilepas adalah \"2,4 D dimetil amina\", ejaan lain dari 2,4-D dimetil amina. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Seluruh baris label ikut masuk ke field nama bahan, lengkap dengan kadar dan kesetaraannya. Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam terhadap garam dimetil aminanya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24484,7 +24721,7 @@
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000590 \"2,4 dimetil amina\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Sama dengan op:sub:00000590 sesudah keterangan kesetaraan dilepas. 720 g/l setara 600 g/l 2,4-D asam — nisbah 0,833, sama dengan nisbah 865/720 pada garam 2,4-D dimetil amina lainnya di registri ini. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000590 \"2,4 dimetil amina\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam terhadap garam dimetil aminanya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -27915,8 +28152,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000128"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000128 \"Asam Giberelat\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -30831,8 +31075,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000619"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000619 \"Diafenthiuron\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan tanda baca nyasar di ujungnya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -31318,8 +31569,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000132"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000132 \"Dimetomorf\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -32020,8 +32278,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000156"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000156 \"Etil Pirazosulfuron\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -35400,8 +35665,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -35634,8 +35906,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -35686,8 +35965,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -36024,8 +36310,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -36076,8 +36369,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -36158,11 +36458,11 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-19T00:00:00Z",
         "superseded_by": {
-          "id": "op:sub:00000138"
+          "id": "op:sub:00000102"
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000138 \"Isopropilamina Glifosat\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Ejaan kedua dari pasangan yang sama pada RONDA GOLD 525 SL — berbeda dari op:sub:00000813 hanya pada spasi dan kapitalisasi. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000102 \"ISOPROPIL AMINA GLIFOSAT\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40421,8 +40721,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000104"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000104 \"PARAKUAT DIKLORIDA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah 0,724 pada keterangan kesetaraannya adalah nisbah bobot molekul ion parakuat terhadap garam dikloridanya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40603,8 +40910,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000104"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000104 \"PARAKUAT DIKLORIDA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan. Nisbah 0,724 pada keterangan kesetaraannya adalah nisbah bobot molekul ion parakuat terhadap garam dikloridanya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -41669,8 +41983,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000234"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000234 \"Saflufenasil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -43628,8 +43949,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000479"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000479 \"Trifludimoksazin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {

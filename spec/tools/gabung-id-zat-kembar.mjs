@@ -1,27 +1,29 @@
 // Menggabungkan substance id kembar — satu bahan aktif yang terlanjur terdaftar
-// sebagai dua entitas — pada vocab/substance-pestisida.json dan
+// sebagai lebih dari satu entitas — pada vocab/substance-pestisida.json dan
 // vocab/product/pestisida.ndjson.
 //
-// Registri Kementan kadang menuliskan keterangan kesetaraan ke dalam FIELD NAMA
-// BAHAN, bukan ke kolomnya sendiri: "2,4-D dimetil amina" dan "2,4-D dimetil amina
-// (setara dengan 2,4-D 720 g/l)" masuk sebagai dua nama yang berbeda. Pembangun
-// kosakata memperlakukan setiap nama unik sebagai satu entitas, jadi bahan yang
-// sama dapat dua id. Pada lima pendaftaran kedua id itu muncul BERSAMAAN dengan
-// kadar yang sama, sehingga kadarnya terjumlah dua kali dan L27 menyalakan
-// "komposisi mustahil" untuk formulasi yang sebenarnya biasa saja:
+// Registri Kementan menuliskan hal-hal yang bukan nama ke dalam FIELD NAMA BAHAN.
+// Pembangun kosakata memperlakukan setiap string unik sebagai satu entitas, jadi
+// bahan yang sama pecah jadi beberapa id. Ada empat bentuknya di berkas ini:
 //
-//   Mega 9 865 SL     865 + 865 = 1730 g/l      AMCOMIN 865 SL     865 + 865 = 1730 g/l
-//   DIMINA 720 SL     720 + 720 = 1440 g/l      GALATOP 620 SL     620 + 620 = 1240 g/l
-//   RONDA GOLD 525 SL 525 + 525 = 1050 g/l
+//   kesetaraan   "2,4-D dimetil amina" vs "2,4-D dimetil amina (setara dengan
+//                2,4-D 720 g/l)" — anotasi kadar ikut masuk ke nama
+//   nama-inggris "Metomil" vs "Metomil (Methomyl)" — padanan Inggris ditempel
+//   ejaan        "dimeflutrin" vs "dimeflutrhin"; "Isopropilamina Glifosat" vs
+//                "ISOPROPIL AMINA GLIFOSAT"
+//   tanda-baca   "Diafenthiuron" vs "Diafenthiuron."
 //
-// Satu kasus lagi ikut dibereskan di sini karena penyebabnya sama — satu bahan,
-// dua id — hanya sumbernya salah ejaan, bukan teks kesetaraan: "dimeflutrhin" dan
-// "dimeflutrin" pada lini NOMOS.
+// Kalau dua id itu muncul pada pendaftaran yang SAMA, kadarnya terjumlah dua kali.
+// Lima di antaranya melampaui 1.000 g per kg/L dan tertangkap L27 (Mega 9 865 SL,
+// AMCOMIN 865 SL, DIMINA 720 SL, GALATOP 620 SL, RONDA GOLD 525 SL). Dua puluh
+// delapan sisanya TIDAK tertangkap — jumlah gandanya masih di bawah 1.000 g/l
+// (KILL UP 480/1 SL 961, RUSO 485 SL 970) atau kadarnya dalam persen, yang memang
+// tidak dijumlahkan L27 sama sekali (PRAMEX 40 SP 40 % + 40 %). Penjumlahan ganda
+// yang diam itu justru yang paling berbahaya: tidak ada peringatan yang menyalak.
 //
 // Ini keputusan KOSAKATA, bukan keputusan ulangan. Itu sebabnya ia terpisah dari
 // dedup-komposisi-pestisida.mjs, yang hanya boleh membuang baris kembar dalam satu
-// substance id dan sengaja menyerahkan perkara ini ke tinjauan tersendiri.
-// Urutan jalannya: dedup dulu, gabung id sesudahnya.
+// substance id. Urutan jalannya: dedup dulu, gabung id sesudahnya.
 //
 //   node spec/tools/dedup-komposisi-pestisida.mjs
 //   node spec/tools/gabung-id-zat-kembar.mjs
@@ -32,13 +34,18 @@
 // Aturan L29 menegakkannya — begitu berkas ini dibangun ulang dan pemetaan namanya
 // jatuh lagi ke id yang sudah digantikan, pemeriksa menolaknya, bukan mendiamkannya.
 //
+// Yang TIDAK digabung: INTERPHERE VP memuat (Z)-9-Octadecenal dan (Z)-9-Hexadecenal
+// masing-masing 4,5 %. Namanya mirip dan kadarnya sama, tetapi keduanya komponen
+// feromon yang berbeda. Kemiripan nama bukan bukti; yang dipakai di sini nama bahan
+// sesudah anotasinya dilepas, dan untuk garam, aritmetika kesetaraannya.
+//
 // Sumber: pukpes_data/raw/pestisida_terdaftar.json (field bahanAktif), tarikan
 // 19 Agustus 2026. Jalankan dari akar repositori.
 //
 // Idempoten: putusan dipakai dari tabel, bukan dari kembar yang masih terlihat di
 // berkas — kalau tidak, catatannya ikut hilang begitu jalan pertama selesai. Setiap
-// penggabungan diuji balik ke bahanAktif mentah: dua nama itu harus benar-benar ada
-// pada pendaftaran yang sama, dan kadar yang bertahan harus ada di sumber. Rekaman
+// penggabungan diuji balik ke bahanAktif mentah: nama yang kalah harus benar-benar
+// ada pada pendaftaran itu, dan kadar yang bertahan harus ada di sumber. Rekaman
 // yang tidak berubah wajib keluar sama persis seperti aslinya.
 
 import { readFileSync, writeFileSync } from 'node:fs';
@@ -57,134 +64,373 @@ const STAMP = '2026-08-19T00:00:00Z';
 const PENANDA = 'Penggabungan id zat: ';
 
 // ---------------------------------------------------------------------------
-// 1. Tujuh id yang digabung — masing-masing diputuskan sendiri.
+// 1. Empat bentuk cacat, dan apa yang pantas dilakukan pada masing-masing.
 //
-//    Bukti yang dipakai bukan kemiripan nama, melainkan aritmetika kesetaraan yang
-//    ditulis registri itu sendiri. Nisbah bobot molekul garam terhadap asamnya
-//    tetap: 2,4-D dimetil amina 221,04/266,12 = 0,831, dan isopropilamina glifosat
-//    169,07/228,19 = 0,741. Setiap pasangan di bawah ini cocok dengan nisbahnya
-//    sampai pembulatan registri — 865x0,831 = 719 (ditulis 720), 620x0,741 = 459,
-//    525x0,741 = 389. Angka-angka itu hanya cocok kalau kedua nama memang menunjuk
-//    garam yang sama; nama yang berbeda bahan tidak akan pernah jatuh di nisbah itu.
-//
-//    'synonim' menentukan apakah label yang kalah pantas naik jadi synonyms pada
-//    entitas yang menang. Ejaan alternatif — pantas. Nama yang sudah tercampur
-//    keterangan kadar dan kesetaraan — tidak: itu anotasi registri, bukan nama
+//    'synonim' menentukan apakah nama yang kalah naik jadi synonyms pada entitas
+//    yang menang. Nama yang cuma beda ejaan, padanan Inggris, atau tanda baca —
+//    pantas, itu memang nama bahannya dan orang akan mencarinya. Nama yang sudah
+//    tercampur kadar dan kesetaraan — tidak: itu anotasi pendaftaran, bukan nama
 //    bahan, dan tempatnya memang pada entitas yang digantikan.
 // ---------------------------------------------------------------------------
-const GABUNG = {
-  'op:sub:00000938': {
-    kanonik: 'op:sub:00000122',
+const JENIS = {
+  kesetaraan: {
     synonim: false,
-    dasar:
-      'Registri memasukkan seluruh baris label ke field nama bahan, lengkap dengan kadar dan ' +
-      'kesetaraannya. Yang tersisa sesudah anotasi itu dilepas adalah "2,4 D dimetil amina", ' +
-      'ejaan lain dari 2,4-D dimetil amina.',
+    kalimat: 'Registri menuliskan keterangan kesetaraan ke dalam field nama bahan',
+    zat: 'Nama bahannya sama sesudah keterangan kesetaraan dilepas; anotasi itu milik pendaftaran, bukan bagian dari nama bahan.',
   },
-  'op:sub:00000714': {
-    kanonik: 'op:sub:00000122',
-    synonim: false,
-    dasar:
-      'Nama bahannya sama persis dengan op:sub:00000122; yang membedakan hanya keterangan ' +
-      'kesetaraan dalam kurung. 865 g/l garam setara 720 g/l 2,4-D asam mengikuti nisbah ' +
-      'bobot molekulnya, jadi keduanya garam yang sama.',
-  },
-  'op:sub:00000942': {
-    kanonik: 'op:sub:00000590',
-    synonim: false,
-    dasar:
-      'Sama dengan op:sub:00000590 sesudah keterangan kesetaraan dilepas. 720 g/l setara ' +
-      '600 g/l 2,4-D asam — nisbah 0,833, sama dengan nisbah 865/720 pada garam 2,4-D ' +
-      'dimetil amina lainnya di registri ini.',
-  },
-  'op:sub:00000820': {
-    kanonik: 'op:sub:00000138',
-    synonim: false,
-    dasar:
-      'Sesudah keterangan kesetaraan dilepas, yang tersisa "Isopropil amina glifosat" — ' +
-      'ejaan berspasi dari isopropilamina glifosat. 620 g/l setara 459 g/l glifosat, nisbah ' +
-      '0,740, cocok dengan bobot molekul garamnya.',
-  },
-  'op:sub:00000813': {
-    kanonik: 'op:sub:00000138',
-    synonim: false,
-    dasar:
-      'Satu dari dua ejaan "isopropil amina glifosat (setara dengan glifosat 389 g/l)" yang ' +
-      'sama-sama tercatat pada RONDA GOLD 525 SL. Keduanya digabung ke nama kanonik, bukan ' +
-      'salah satunya dipilih: memilih di antara dua salah ketik registri hanya memindahkan ' +
-      'sengketa, tidak menyelesaikannya.',
-  },
-  'op:sub:00001387': {
-    kanonik: 'op:sub:00000138',
-    synonim: false,
-    dasar:
-      'Ejaan kedua dari pasangan yang sama pada RONDA GOLD 525 SL — berbeda dari ' +
-      'op:sub:00000813 hanya pada spasi dan kapitalisasi.',
-  },
-  'op:sub:00000484': {
-    kanonik: 'op:sub:00000403',
+  'nama-inggris': {
     synonim: true,
-    dasar:
-      'Murni salah ejaan, tanpa teks kesetaraan: "dimeflutrhin" adalah "dimeflutrin" dengan ' +
-      'huruf h tertukar. Keduanya piretroid obat nyamuk bakar dari lini produk yang sama, ' +
-      'dengan kadar yang sama. Ejaannya dipertahankan sebagai synonyms karena ia ejaan ' +
-      'bahan, bukan anotasi registri — tiga rekaman produk masih memakainya sebagai label.',
+    kalimat: 'Registri menempelkan padanan Inggris ke belakang nama Indonesianya',
+    zat: 'Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang.',
+  },
+  ejaan: {
+    synonim: true,
+    kalimat: 'Sumber menuliskan nama bahannya dengan ejaan yang berbeda',
+    zat: 'Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf.',
+  },
+  'tanda-baca': {
+    synonim: true,
+    kalimat: 'Sumber menempelkan tanda baca nyasar ke ujung nama bahannya',
+    zat: 'Nama yang sama dengan tanda baca nyasar di ujungnya.',
   },
 };
 
-// ---------------------------------------------------------------------------
-// 2. Pendaftaran yang terkena, beserta jumlah kadar sebelum penggabungan.
-//
-//    Angka 'sebelum' ditulis di sini, tidak dihitung dari berkas: sesudah jalan
-//    pertama ia tidak bisa dihitung lagi, sementara catatannya harus tetap
-//    menyebut peringatan mana yang dipadamkan. Pada jalan pertama angka itu diuji
-//    balik ke berkas; kalau meleset, skrip berhenti.
-// ---------------------------------------------------------------------------
-const PRODUK = {
-  'mega-9-865-sl-01030120072778': {
-    gabung: ['op:sub:00000938'],
-    sebelum: 1730,
-    setara: '865 g/l garam setara 720 g/l 2,4-D asam',
+const GABUNG = {
+  "op:sub:00000138": {
+    kanonik: "op:sub:00000102",
+    jenis: "ejaan",
+    dasar:
+      "Dua id bersih untuk garam yang sama, berbeda spasi saja. Yang dipakai op:sub:00000102 " +
+      "karena ia bentuk terbanyak di registri — 209 rekaman lawan 49. Tiebreaker \"paling " +
+      "sering muncul\" itu yang sama dipakai konvensi penyeragaman nama principal. Putaran " +
+      "sebelumnya sempat memilih arah kebalikannya; keputusan ini yang berlaku.",
   },
-  'amcomin-865-sl-01030120011606': {
-    gabung: ['op:sub:00000714'],
-    sebelum: 1730,
-    setara: '865 g/l garam setara 720 g/l 2,4-D asam',
+  "op:sub:00000260": {
+    kanonik: "op:sub:00000114",
+    jenis: "nama-inggris",
   },
-  'dimina-720-sl-01030120062510': {
-    gabung: ['op:sub:00000942'],
-    sebelum: 1440,
-    setara: '720 g/l garam setara 600 g/l 2,4-D asam',
+  "op:sub:00000329": {
+    kanonik: "op:sub:00000106",
+    jenis: "nama-inggris",
   },
-  'galatop-620-sl-01030120124225': {
-    gabung: ['op:sub:00000820'],
-    sebelum: 1240,
-    setara: '620 g/l garam setara 459 g/l glifosat',
+  "op:sub:00000346": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
-  'ronda-gold-525-sl-01030120124437': {
-    gabung: ['op:sub:00000813', 'op:sub:00001387'],
-    sebelum: 1050,
-    setara: '525 g/l garam setara 389 g/l glifosat',
+  "op:sub:00000412": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
-  // Tiga rekaman NOMOS di bawah tidak pernah menyalakan L27 — kadarnya dalam persen,
-  // dan L27 hanya menjumlahkan g/kg dan g/L. Yang diperbaiki di sini identitas
-  // bahannya, bukan jumlah kadarnya.
-  'nomos-0-2mc-06080120227337': {
-    gabung: ['op:sub:00000484'],
-    sebelum: null,
-    setara: null,
+  "op:sub:00000433": {
+    kanonik: "op:sub:00000220",
+    jenis: "nama-inggris",
   },
-  'nomos-0-1mc-06080120196563': {
-    gabung: ['op:sub:00000484'],
-    sebelum: null,
-    setara: null,
+  "op:sub:00000436": {
+    kanonik: "op:sub:00000007",
+    jenis: "nama-inggris",
   },
-  'nomos-0-051mc-06080120217068': {
-    gabung: ['op:sub:00000484'],
-    sebelum: null,
-    setara: null,
+  "op:sub:00000484": {
+    kanonik: "op:sub:00000403",
+    jenis: "ejaan",
+    dasar:
+      "\"dimeflutrhin\" adalah \"dimeflutrin\" dengan huruf h tertukar. Keduanya piretroid obat " +
+      "nyamuk bakar dari lini produk yang sama, dengan kadar yang sama.",
+  },
+  "op:sub:00000501": {
+    kanonik: "op:sub:00000107",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000555": {
+    kanonik: "op:sub:00000110",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000593": {
+    kanonik: "op:sub:00000122",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam " +
+      "terhadap garam dimetil aminanya.",
+  },
+  "op:sub:00000621": {
+    kanonik: "op:sub:00000113",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000641": {
+    kanonik: "op:sub:00000134",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000647": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000650": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000651": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000654": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000655": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000673": {
+    kanonik: "op:sub:00000127",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000714": {
+    kanonik: "op:sub:00000122",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam " +
+      "terhadap garam dimetil aminanya.",
+  },
+  "op:sub:00000811": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000813": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000818": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000819": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000820": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000821": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000826": {
+    kanonik: "op:sub:00000117",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000847": {
+    kanonik: "op:sub:00000384",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000862": {
+    kanonik: "op:sub:00000123",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000869": {
+    kanonik: "op:sub:00000423",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000938": {
+    kanonik: "op:sub:00000122",
+    jenis: "kesetaraan",
+    dasar:
+      "Seluruh baris label ikut masuk ke field nama bahan, lengkap dengan kadar dan " +
+      "kesetaraannya. Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul " +
+      "2,4-D asam terhadap garam dimetil aminanya.",
+  },
+  "op:sub:00000942": {
+    kanonik: "op:sub:00000590",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam " +
+      "terhadap garam dimetil aminanya.",
+  },
+  "op:sub:00001074": {
+    kanonik: "op:sub:00000128",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00001185": {
+    kanonik: "op:sub:00000619",
+    jenis: "tanda-baca",
+  },
+  "op:sub:00001203": {
+    kanonik: "op:sub:00000132",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00001230": {
+    kanonik: "op:sub:00000156",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00001358": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001367": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001369": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001382": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001384": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001387": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001547": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah 0,724 pada keterangan kesetaraannya adalah nisbah bobot molekul ion parakuat " +
+      "terhadap garam dikloridanya.",
+  },
+  "op:sub:00001554": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah 0,724 pada keterangan kesetaraannya adalah nisbah bobot molekul ion parakuat " +
+      "terhadap garam dikloridanya.",
+  },
+  "op:sub:00001595": {
+    kanonik: "op:sub:00000234",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00001670": {
+    kanonik: "op:sub:00000479",
+    jenis: "nama-inggris",
   },
 };
+// total 46 id
+
+// ---------------------------------------------------------------------------
+// 2. Pendaftaran yang kehilangan entri, beserta bukti keadaan sebelumnya.
+//
+//    Angka di sini tidak dihitung dari berkas: sesudah jalan pertama ia tidak bisa
+//    dihitung lagi, sementara catatannya harus tetap menyebut apa yang diperbaiki.
+//    Pada jalan pertama keduanya diuji balik ke berkas; kalau meleset, skrip berhenti.
+//    "l27" hanya diisi bila penjumlahan gandanya sampai menyalakan L27.
+// ---------------------------------------------------------------------------
+const PRODUK = {
+  "acero-4-40-wp-01010120258736": { gabung: ["op:sub:00001185"], kembar: 1, l27: null },
+  "alphatech-240-4-25-sl-01030120083169": { gabung: ["op:sub:00000654", "op:sub:00001384"], kembar: 1, l27: null },
+  "alphatech-neo-245-sl-01030120237726": { gabung: ["op:sub:00000655", "op:sub:00001367"], kembar: 1, l27: null },
+  "amcomin-865-sl-01030120011606": { gabung: ["op:sub:00000714"], kembar: 1, l27: 1730 },
+  "bakar-150-sl-01030120227278": { gabung: ["op:sub:00001547"], kembar: 1, l27: null },
+  "dimina-720-sl-01030120062510": { gabung: ["op:sub:00000942"], kembar: 1, l27: 1440 },
+  "dkprotio-mix-390-sc-01020120186025": { gabung: ["op:sub:00000433", "op:sub:00000869"], kembar: 2, l27: null },
+  "fitagill-1-55-3-10-sl-01040120248375": { gabung: ["op:sub:00001074"], kembar: 1, l27: null },
+  "galatop-620-sl-01030120124225": { gabung: ["op:sub:00000820", "op:sub:00000138"], kembar: 1, l27: 1240 },
+  "hippo-400-sl-01010120175693": { gabung: ["op:sub:00000621"], kembar: 1, l27: null },
+  "k-blutanil-75-wp-01020120237771": { gabung: ["op:sub:00000826"], kembar: 1, l27: null },
+  "k-kingfield-60-20-wg-01010120237774": { gabung: ["op:sub:00000673", "op:sub:00000862"], kembar: 2, l27: null },
+  "k-kinggold-10-wp-01030120237775": { gabung: ["op:sub:00001230"], kembar: 1, l27: null },
+  "k-voltaz-180-120-sc-01010120237781": { gabung: ["op:sub:00000555", "op:sub:00000641"], kembar: 2, l27: null },
+  "kill-up-480-1-sl-01030120072767": { gabung: ["op:sub:00000412"], kembar: 1, l27: null },
+  "kill-up-neo-481-sl-01030120227547": { gabung: ["op:sub:00000811", "op:sub:00001369"], kembar: 1, l27: null },
+  "lentra-200-sl-04110120072773": { gabung: ["op:sub:00000501"], kembar: 1, l27: null },
+  "mateno-up-160-5-1-sl-01030120093350": { gabung: ["op:sub:00000818", "op:sub:00001382"], kembar: 1, l27: null },
+  "mega-9-865-sl-01030120072778": { gabung: ["op:sub:00000938"], kembar: 1, l27: 1730 },
+  "metindo-plus-42-wp-01010120175704": { gabung: ["op:sub:00000260", "op:sub:00000436"], kembar: 2, l27: null },
+  "monoamonium-glifosat-45-tc-042000113": { gabung: ["op:sub:00000847"], kembar: 1, l27: null },
+  "neo-pilarquat-137-sl-01030120227335": { gabung: ["op:sub:00001554"], kembar: 1, l27: null },
+  "neomine-300-100-sl-01030120237790": { gabung: ["op:sub:00000593", "op:sub:00000647", "op:sub:00000819"], kembar: 2, l27: null },
+  "nomos-0-2mc-06080120227337": { gabung: ["op:sub:00000484"], kembar: 1, l27: null },
+  "pramex-40-sp-01010120227347": { gabung: ["op:sub:00000260"], kembar: 1, l27: null },
+  "primabat-50-wp-01020120248418": { gabung: ["op:sub:00001203"], kembar: 1, l27: null },
+  "primax-480-1-sl-01030120072791": { gabung: ["op:sub:00000346", "op:sub:00000412"], kembar: 1, l27: null },
+  "pumaris-240-sl-01030119971309": { gabung: ["op:sub:00000651"], kembar: 1, l27: null },
+  "ronda-gold-525-sl-01030120124437": { gabung: ["op:sub:00000813", "op:sub:00001387"], kembar: 1, l27: 1050 },
+  "ruso-485-sl-01030120083224": { gabung: ["op:sub:00000650"], kembar: 1, l27: null },
+  "setting-126-sl-01030120237810": { gabung: ["op:sub:00000821", "op:sub:00001358"], kembar: 1, l27: null },
+  "sibiru-80-wp-01020120238061": { gabung: ["op:sub:00000329"], kembar: 1, l27: null },
+  "voraxor-250-125-sc-01030120227480": { gabung: ["op:sub:00001595", "op:sub:00001670"], kembar: 2, l27: null },
+};
+// total 33 pendaftaran bercatatan
+
 // ---------------------------------------------------------------------------
 // 3. Pembacaan sumber mentah — sama seperti pada dedup-komposisi-pestisida.mjs
 // ---------------------------------------------------------------------------
@@ -207,9 +453,9 @@ const satuan = (t) => {
   return SATUAN[s] ?? String(t).trim();
 };
 
-// Nama bahan pada sumber dibandingkan setelah spasi ganda dirapikan dan huruf
-// besar-kecilnya disamakan — registri menulis nama yang sama dengan spasi ekor
-// ("isopropilamina glifosat ") dan kapitalisasi yang berubah-ubah.
+// Nama bahan dibandingkan sesudah spasi ganda dirapikan dan huruf besar-kecilnya
+// disamakan — registri menulis nama yang sama dengan spasi ekor ("isopropilamina
+// glifosat ") dan kapitalisasi yang berubah-ubah.
 const rapikan = (t) => String(t ?? '').replace(/\s+/g, ' ').trim().toLowerCase();
 
 function bahanMentah(bahanAktif) {
@@ -230,7 +476,7 @@ const adaDiSumber = (set, e) => set.has(`${e.value}|${e.unit}`) || set.has(`${e.
 
 // Penulis baris yang meniru json.dumps(obj, ensure_ascii=False) — berkas NDJSON-nya
 // semula ditulis pembangun Python, dan menulis ulangnya dengan JSON.stringify bawaan
-// Node akan mengubah ke-7.724 barisnya padahal yang berubah hanya delapan.
+// Node akan mengubah ke-7.724 barisnya padahal yang berubah hanya seratusan.
 // Kesetiaannya diuji di bawah terhadap setiap rekaman yang tidak berubah.
 function tulisBarisPython(v) {
   if (v === null) return 'null';
@@ -250,22 +496,41 @@ const zatById = new Map(zatDoc.items.map((e) => [e.id, e]));
 
 const gagal = [];
 
+// Rantai A→B→C membuat pemakai berhenti di tempat yang salah. Diperiksa lebih dulu
+// supaya kesalahan tabel ketahuan sebelum apa pun ditulis.
+for (const [lama, p] of Object.entries(GABUNG)) {
+  if (GABUNG[p.kanonik]) {
+    gagal.push(`${lama} digantikan ${p.kanonik}, tetapi ${p.kanonik} sendiri ikut digabung — ratakan dulu rantainya.`);
+  }
+  if (!JENIS[p.jenis]) gagal.push(`${lama} memakai jenis "${p.jenis}" yang tidak dikenal.`);
+}
+
 for (const [lama, p] of Object.entries(GABUNG)) {
   const kalah = zatById.get(lama);
   const menang = zatById.get(p.kanonik);
-  if (!kalah) { gagal.push(`Entitas ${lama} tidak ada di ${ZAT}.`); continue; }
-  if (!menang) { gagal.push(`Entitas kanonik ${p.kanonik} tidak ada di ${ZAT}.`); continue; }
+  if (!kalah) { gagal.push(`Entitas ${lama} tidak ada di kosakata.`); continue; }
+  if (!menang) { gagal.push(`Entitas kanonik ${p.kanonik} tidak ada di kosakata.`); continue; }
 
-  // Peran yang hanya dimiliki entitas yang kalah akan hilang begitu rujukannya
+  // Apa pun yang hanya dimiliki entitas yang kalah akan hilang begitu rujukannya
   // pindah. Lebih baik berhenti dan memindahkannya dengan sadar.
   for (const field of ['substance_classes', 'pesticide_action']) {
     const hilang = (kalah[field] ?? []).filter((x) => !(menang[field] ?? []).includes(x));
     if (hilang.length) {
-      gagal.push(`${lama} punya ${field} ${hilang.join(', ')} yang tidak ada pada ${p.kanonik} — pindahkan dulu, jangan sampai hilang saat digabung.`);
+      gagal.push(`${lama} punya ${field} ${hilang.join(', ')} yang tidak ada pada ${p.kanonik} — pindahkan dulu.`);
+    }
+  }
+  const kode = (e) => new Set((e.mode_of_action ?? []).map((m) => `${m.scheme}:${m.code}`));
+  const moaHilang = [...kode(kalah)].filter((x) => !kode(menang).has(x));
+  if (moaHilang.length) {
+    gagal.push(`${lama} punya mode_of_action ${moaHilang.join(', ')} yang tidak ada pada ${p.kanonik} — pindahkan dulu.`);
+  }
+  for (const field of ['cas_number', 'organism', 'hazard', 'default_unit']) {
+    if (kalah[field] !== undefined && menang[field] === undefined) {
+      gagal.push(`${lama} punya ${field} yang tidak ada pada ${p.kanonik} — pindahkan dulu.`);
     }
   }
 
-  if (p.synonim) {
+  if (JENIS[p.jenis].synonim) {
     const tambahan = [kalah.label.id, ...(kalah.synonyms ?? [])];
     const synonyms = [...new Set([...(menang.synonyms ?? []), ...tambahan])];
     if (synonyms.length !== (menang.synonyms ?? []).length) {
@@ -282,19 +547,12 @@ for (const [lama, p] of Object.entries(GABUNG)) {
   };
   kalah.notes = {
     id:
-      `Digantikan ${p.kanonik} "${menang.label.id}" — bahan yang sama, terdaftar dua kali karena ` +
-      `nama pada registri berbeda. ${p.dasar} Entitas ini sengaja tidak dihapus: ID tidak pernah ` +
-      `didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri.`,
+      `Digantikan ${p.kanonik} "${menang.label.id}" — bahan yang sama, terdaftar lebih dari sekali ` +
+      `karena namanya ditulis berbeda di registri. ${JENIS[p.jenis].zat}` +
+      (p.dasar ? ` ${p.dasar}` : '') +
+      ` Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang ` +
+      `asli beserta pemetaannya masih perlu bisa ditelusuri.`,
   };
-}
-
-// lifecycle.superseded_by wajib menunjuk entitas yang bukan superseded juga.
-// Rantai A→B→C membuat pemakai berhenti di tempat yang salah.
-for (const lama of Object.keys(GABUNG)) {
-  const tujuan = zatById.get(GABUNG[lama].kanonik);
-  if (tujuan && GABUNG[tujuan.id]) {
-    gagal.push(`${lama} digantikan ${tujuan.id}, tetapi ${tujuan.id} sendiri ikut digabung — rantai penggantian harus diratakan dulu.`);
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -329,12 +587,34 @@ const jumlahKadar = (komposisi) => (komposisi ?? [])
   .filter((c) => c.unit === 'g/kg' || c.unit === 'g/L')
   .reduce((n, c) => n + c.value, 0);
 
-const stat = { dipetakanUlang: 0, entriDibuang: 0, produkBerubah: 0 };
+// Nama yang dijawab entitas: labelnya sendiri atau salah satu synonyms-nya.
+const namaDikenal = (id, label) => {
+  const zat = zatById.get(id);
+  if (!zat) return false;
+  return [zat.label.id, ...(zat.synonyms ?? [])].some((n) => rapikan(n) === rapikan(label));
+};
+
+// Peta nama -> id, dibangun SESUDAH synonyms di atas ditambahkan, jadi ejaan yang baru
+// saja dilebur pun ikut terjangkau. Satu nama bisa menunjuk lebih dari satu entitas —
+// dibiarkan jamak, karena yang diperiksa nanti hanya id kanoniknya.
+const idDariNama = new Map();
+for (const e of zatDoc.items) {
+  for (const n of [e.label.id, ...(e.synonyms ?? [])]) {
+    const k = rapikan(n);
+    if (!idDariNama.has(k)) idDariNama.set(k, new Set());
+    idDariNama.get(k).add(e.id);
+  }
+}
+const kanonikDari = (id) => GABUNG[id]?.kanonik ?? id;
+
+const stat = { dipetakanUlang: 0, entriDibuang: 0, produkBerubah: 0, hanyaDipetakan: 0 };
 const tanpaCatatan = [];
 const takAdaDiSumber = [];
-const sebelumMeleset = [];
+const kembarMeleset = [];
+const l27Meleset = [];
+const labelBeranotasi = [];
 const kunciTerpakai = new Set();
-const zatTerpakai = new Set();
+const zatTerpakai = new Map();
 
 records.forEach((rec, i) => {
   const asli = rec.composition ?? [];
@@ -343,36 +623,33 @@ records.forEach((rec, i) => {
   if (p) kunciTerpakai.add(rec.key);
   if (!kena && !p) return;
 
-  if (kena && !p) {
-    tanpaCatatan.push(`${rec.key} (${rec.label?.id}) memuat id yang digabung tetapi tidak ada di tabel PRODUK`);
-    return;
-  }
-
   const mentah = bahanMentah(rows[i].bahanAktif);
 
-  // Jumlah kadar sebelum penggabungan diuji ke berkas selama kembarnya masih ada.
-  if (kena && p.sebelum !== null && Math.round(jumlahKadar(asli)) !== p.sebelum) {
-    sebelumMeleset.push(`${rec.key}: tabel menyebut ${p.sebelum} g, berkas menjumlahkan ${Math.round(jumlahKadar(asli))} g`);
+  // Id kanonik yang sah untuk pendaftaran ini menurut sumbernya.
+  const bolehId = new Set();
+  for (const n of mentah?.nama ?? []) {
+    for (const x of idDariNama.get(n) ?? []) bolehId.add(kanonikDari(x));
   }
 
   // Pemetaan ulang, lalu penggabungan entri yang jadi kembar persis.
   const kelompok = [];
   const posisi = new Map();
-  let dipetakan = 0;
 
   for (const e of asli) {
     const lama = e.substance?.id;
     const g = GABUNG[lama];
     const id = g ? g.kanonik : lama;
     if (g) {
-      zatTerpakai.add(lama);
-      dipetakan++;
-      // Dua nama itu harus benar-benar berdampingan pada pendaftaran yang sama di
-      // sumber. Kalau tidak, penggabungan ini menyimpulkan sesuatu yang tidak ada
-      // di registri, dan yang perlu ditinjau adalah tabelnya — bukan berkasnya.
-      const kalah = zatById.get(lama);
-      if (mentah && kalah && !mentah.nama.has(rapikan(kalah.label.id))) {
-        takAdaDiSumber.push(`${rec.key} — nama "${kalah.label.id}" tidak ada di bahanAktif pendaftaran ini`);
+      zatTerpakai.set(lama, (zatTerpakai.get(lama) ?? 0) + 1);
+      stat.dipetakanUlang++;
+      // Penggabungan ini harus DIDUKUNG pendaftaran ini di sumber: salah satu nama pada
+      // bahanAktif-nya, sesudah diresolusi lewat tabel, harus bermuara ke id kanonik yang
+      // sama. Sengaja bukan "nama yang kalah harus ada apa adanya di sumber" — id yang
+      // masuk lewat penggabungan sebelumnya tidak pernah punya nama di sumber. RONDA GOLD
+      // 525 SL memuat op:sub:00000138 karena putaran lalu menaruhnya di situ; yang ada di
+      // registri dua ejaan lain, dan dua-duanya bermuara ke tempat yang sama.
+      if (mentah && bolehId.size && !bolehId.has(id)) {
+        takAdaDiSumber.push(`${rec.key} — ${lama} digabung ke ${id}, tetapi tidak ada nama di bahanAktif pendaftaran ini yang bermuara ke sana`);
       }
     }
     const tanda = `${id}|${e.value}|${e.unit}`;
@@ -383,32 +660,40 @@ records.forEach((rec, i) => {
     kelompok[posisi.get(tanda)].entri.push({ e, dipetakanUlang: Boolean(g) });
   }
 
-  // Label yang bertahan harus nama yang memang dijawab entitas kanoniknya — label
-  // atau salah satu synonyms-nya. Kalau entri pertama kelompok itu yang dipetakan
-  // ulang, labelnya masih membawa anotasi registri ("... setara dengan glifosat 459
-  // g/l") yang bukan nama bahan, dan mempertahankannya berarti menulis label yang
-  // membantah id-nya sendiri. Yang dipakai label saudara sekelompoknya yang sudah
-  // memakai id kanonik; kalau tidak ada satu pun — seperti pada RONDA GOLD 525 SL,
-  // yang kedua entrinya sama-sama salah ketik registri — yang dipakai label kanonik
-  // dari kosakata, karena memilih salah satu salah ketik hanya memindahkan sengketa.
-  const dikenal = (id, label) => {
-    const zat = zatById.get(id);
-    if (!zat) return false;
-    return [zat.label.id, ...(zat.synonyms ?? [])].some((n) => rapikan(n) === rapikan(label));
-  };
-
-  // Susunan field pada entri harus tetap {substance, value, unit} seperti aslinya.
+  // Dari tiap kelompok, yang bertahan adalah entri yang MEMANG sudah memakai id kanonik.
+  // Bukan sekadar yang pertama: pada AMCOMIN 865 SL entri beranotasi datang lebih dulu,
+  // dan mempertahankannya akan menempelkan "(setara dengan 2,4-D 720 g/l)" pada id yang
+  // namanya polos. Kalau seluruh entri kelompok itu dipetakan ulang, yang dipakai entri
+  // pertama.
+  //
+  // Labelnya TIDAK pernah ditulis ulang. Field ini memang nama sebagaimana registri
+  // menuliskannya untuk pendaftaran itu — bukan salinan nama kanonik — dan pada nama
+  // beranotasi ia satu-satunya tempat angka kesetaraan itu masih terbaca dari rekaman
+  // produk. Lima belas pendaftaran hanya dipetakan ulang tanpa catatan; menormalkan
+  // labelnya akan membuang "setara dengan glifosat 356 g/l" tanpa ada yang menampung.
   const rapi = kelompok.map(({ id, entri }) => {
-    const utuh = entri.every((x) => !x.dipetakanUlang);
     const asal = entri.find((x) => !x.dipetakanUlang) ?? entri[0];
-    // Kelompok yang tidak tersentuh pemetaan ulang lewat apa adanya — 7.716 rekaman
-    // lain di berkas ini juga memakai label apa adanya dari registri, dan merapikannya
-    // di sini akan mengubah baris yang tidak ada urusannya dengan penggabungan.
-    const label = utuh || dikenal(id, asal.e.substance.label)
-      ? asal.e.substance.label
-      : zatById.get(id).label.id;
-    return { substance: { id, label }, value: asal.e.value, unit: asal.e.unit };
+    if (!namaDikenal(id, asal.e.substance.label)) {
+      labelBeranotasi.push(`${rec.key}: "${asal.e.substance.label}" (${id})`);
+    }
+    return { substance: { id, label: asal.e.substance.label }, value: asal.e.value, unit: asal.e.unit };
   });
+
+  const buang = asli.length - rapi.length;
+
+  // Setiap pembuangan entri wajib ada catatannya. Pemetaan ulang tanpa pembuangan
+  // tidak — kosakatalah yang menyimpan alasannya, dan seratusan catatan bernada sama
+  // hanya akan menenggelamkan yang benar-benar perlu dibaca. Jumlahnya tetap dilaporkan.
+  if (buang > 0 && !p) {
+    tanpaCatatan.push(`${rec.key} (${rec.label?.id}) membuang ${buang} entri tetapi tidak ada di tabel PRODUK`);
+    return;
+  }
+  if (buang > 0 && buang !== p.kembar) {
+    kembarMeleset.push(`${rec.key}: tabel menyebut ${p.kembar} entri kembar, berkas membuang ${buang}`);
+  }
+  if (buang > 0 && p.l27 && Math.round(jumlahKadar(asli)) !== p.l27) {
+    l27Meleset.push(`${rec.key}: tabel menyebut ${p.l27} g, berkas menjumlahkan ${Math.round(jumlahKadar(asli))} g`);
+  }
 
   if (mentah) {
     for (const e of rapi) {
@@ -418,43 +703,56 @@ records.forEach((rec, i) => {
     }
   }
 
-  const sebelumnya = JSON.stringify(asli);
-  if (JSON.stringify(rapi) !== sebelumnya) {
+  if (JSON.stringify(rapi) !== JSON.stringify(asli)) {
     stat.produkBerubah++;
-    stat.dipetakanUlang += dipetakan;
-    stat.entriDibuang += asli.length - rapi.length;
+    stat.entriDibuang += buang;
+    if (buang === 0) stat.hanyaDipetakan++;
     rec.composition = rapi;
     rec.lifecycle = { ...rec.lifecycle, updated_at: STAMP };
     berubah.add(i);
   }
 
-  // Catatan ditulis dari tabel, bukan dari kembar yang masih terlihat — supaya
-  // jalan kedua menghasilkan teks yang sama persis.
+  if (!p) return;
+
+  // Catatan ditulis dari tabel, bukan dari kembar yang masih terlihat — supaya jalan
+  // kedua menghasilkan teks yang sama persis.
   const daftar = p.gabung
     .map((lama) => `${lama} "${zatById.get(lama).label.id}" ke ${GABUNG[lama].kanonik} "${zatById.get(GABUNG[lama].kanonik).label.id}"`)
     .join('; ');
+  const bentuk = [...new Set(p.gabung.map((x) => GABUNG[x].jenis))];
+  const sebab = bentuk.length === 1
+    ? JENIS[bentuk[0]].kalimat
+    : 'Registri menuliskan nama bahan yang sama dalam beberapa bentuk';
+  const ringkas = rapi.map((e) => `${e.substance.label} ${e.value} ${e.unit}`).join(' + ');
 
-  // Sebabnya disebut apa adanya: teks kesetaraan dan salah ejaan menghasilkan gejala
-  // yang sama tetapi bukan cacat yang sama, dan catatannya tidak boleh mengaburkannya.
-  const sebab = p.gabung.every((x) => GABUNG[x].synonim)
-    ? 'Sumber menuliskan nama bahannya dengan ejaan yang berbeda'
-    : 'Registri menuliskan keterangan kesetaraan ke dalam field nama bahan';
+  // L27 hanya menjumlahkan g/kg dan g/L. Dua sebab berbeda kenapa penjumlahan ganda ini
+  // lolos darinya, dan catatannya harus menyebut yang benar-benar berlaku.
+  const satuanGanda = [...new Set(
+    rapi.filter((e) => p.gabung.some((x) => GABUNG[x].kanonik === e.substance.id)).map((e) => e.unit),
+  )];
+  const dalamPersen = satuanGanda.length > 0 && satuanGanda.every((u) => u === '%');
 
   const paragraf =
-    `${PENANDA}${daftar}. ${sebab}, sehingga satu bahan aktif terdaftar sebagai lebih dari ` +
-    `satu entitas. ` +
-    (p.sebelum
-      ? `Kadarnya ikut terjumlah dua kali dan L27 menyalakan "komposisi mustahil" pada ${p.sebelum} g/l; ` +
-        `sesudah digabung kadarnya ${Math.round(jumlahKadar(rapi))} g/l — ${p.setara}, sebagaimana ditulis registri. `
-      : `Kadarnya tidak berubah; yang diperbaiki identitas bahannya. `) +
-    `Entitas yang digantikan tidak dihapus, statusnya "superseded" dan menunjuk penggantinya.`;
+    `${PENANDA}${daftar}. ${sebab}, sehingga satu bahan aktif terdaftar sebagai lebih dari satu ` +
+    `entitas${p.kembar ? ' dan kadarnya ikut terjumlah dua kali' : ''}. ` +
+    (p.l27
+      ? `L27 menyalakan "komposisi mustahil" pada ${p.l27} g/l sebelum ini. `
+      : p.kembar
+        ? dalamPersen
+          ? `Kadarnya dalam persen, dan L27 hanya menjumlahkan g/kg dan g/L — penjumlahan ganda ` +
+            `ini tidak pernah menyalakan peringatan apa pun. `
+          : `Jumlah gandanya masih di bawah 1.000 g per kg/L, jadi L27 pun melewatkannya — ` +
+            `penjumlahan ganda ini tidak pernah menyalakan peringatan apa pun. `
+        : '') +
+    `Komposisi sesudah digabung: ${ringkas}. Nama lama beserta anotasinya tetap terbaca pada ` +
+    `entitas yang digantikan; entitas itu tidak dihapus, statusnya "superseded" dan menunjuk penggantinya.`;
 
-  const sebelumnyaCatatan = rec.notes?.id ?? '';
-  const potong = sebelumnyaCatatan.indexOf(PENANDA);
-  const awalan = (potong === -1 ? sebelumnyaCatatan : sebelumnyaCatatan.slice(0, potong)).trim();
+  const sebelumnya = rec.notes?.id ?? '';
+  const potong = sebelumnya.indexOf(PENANDA);
+  const awalan = (potong === -1 ? sebelumnya : sebelumnya.slice(0, potong)).trim();
   const catatan = awalan ? `${awalan} ${paragraf}` : paragraf;
 
-  if (catatan !== sebelumnyaCatatan) {
+  if (catatan !== sebelumnya) {
     rec.notes = { ...rec.notes, id: catatan };
     rec.lifecycle = { ...rec.lifecycle, updated_at: STAMP };
     berubah.add(i);
@@ -464,23 +762,16 @@ records.forEach((rec, i) => {
 // ---------------------------------------------------------------------------
 // 6. Penjagaan — tidak ada yang boleh berubah diam-diam
 // ---------------------------------------------------------------------------
-if (tanpaCatatan.length) {
-  gagal.push('Ada pendaftaran yang terkena penggabungan tetapi belum ada di tabel PRODUK:');
-  for (const s of tanpaCatatan) gagal.push(`  ${s}`);
-}
-if (takAdaDiSumber.length) {
-  gagal.push('Ada penggabungan yang tidak didukung bahanAktif mentah — tinjau ulang tabel GABUNG:');
-  for (const s of takAdaDiSumber) gagal.push(`  ${s}`);
-}
-if (sebelumMeleset.length) {
-  gagal.push('Jumlah kadar sebelum penggabungan tidak cocok dengan berkas:');
-  for (const s of sebelumMeleset) gagal.push(`  ${s}`);
-}
-const produkHilang = Object.keys(PRODUK).filter((k) => !kunciTerpakai.has(k));
-if (produkHilang.length) {
-  gagal.push('Ada pendaftaran di tabel PRODUK yang tidak ada di NDJSON:');
-  for (const s of produkHilang) gagal.push(`  ${s}`);
-}
+const tambah = (judul, daftar) => {
+  if (!daftar.length) return;
+  gagal.push(judul);
+  for (const s of daftar) gagal.push(`  ${s}`);
+};
+tambah('Ada pendaftaran yang kehilangan entri tetapi belum ada di tabel PRODUK:', tanpaCatatan);
+tambah('Ada penggabungan yang tidak didukung bahanAktif mentah — tinjau ulang tabel GABUNG:', takAdaDiSumber);
+tambah('Jumlah entri kembar tidak cocok dengan berkas:', kembarMeleset);
+tambah('Jumlah kadar sebelum penggabungan tidak cocok dengan berkas:', l27Meleset);
+tambah('Ada pendaftaran di tabel PRODUK yang tidak ada di NDJSON:', Object.keys(PRODUK).filter((k) => !kunciTerpakai.has(k)));
 if (gagal.length) {
   for (const b of gagal) console.error(b);
   process.exit(1);
@@ -500,13 +791,18 @@ if (menyimpang.length) {
 writeFileSync(NDJSON, keluaran.join('\n') + '\n');
 writeFileSync(ZAT, JSON.stringify(zatDoc, null, 2) + '\n');
 
-const belumTerpakai = Object.keys(GABUNG).filter((k) => !zatTerpakai.has(k));
+const bentukHitung = {};
+for (const p of Object.values(GABUNG)) bentukHitung[p.jenis] = (bentukHitung[p.jenis] ?? 0) + 1;
+const tanpaRujukan = Object.keys(GABUNG).filter((k) => !zatTerpakai.has(k));
 
-console.log(`Id zat digabung           : ${Object.keys(GABUNG).length}`);
-console.log(`  jadi berstatus superseded: ${Object.keys(GABUNG).length}`);
-console.log(`  tanpa rujukan di NDJSON : ${belumTerpakai.length}${belumTerpakai.length ? ` (${belumTerpakai.join(', ')})` : ''}`);
+console.log(`Id zat digabung           : ${Object.keys(GABUNG).length} -> ${new Set(Object.values(GABUNG).map((p) => p.kanonik)).size} kanonik`);
+for (const [j, n] of Object.entries(bentukHitung).sort((a, b) => b[1] - a[1])) console.log(`  ${j.padEnd(24)}: ${n}`);
+console.log(`  sudah tanpa rujukan     : ${tanpaRujukan.length} (rujukannya dipindahkan pada jalan sebelumnya)`);
 console.log(`Pendaftaran diperiksa     : ${records.length}`);
 console.log(`  barisnya ditulis ulang  : ${berubah.size} (sisanya keluar apa adanya)`);
 console.log(`  komposisinya berubah    : ${stat.produkBerubah}`);
+console.log(`    entri kembar dibuang  : ${stat.entriDibuang} pada ${stat.produkBerubah - stat.hanyaDipetakan} pendaftaran`);
+console.log(`    hanya dipetakan ulang : ${stat.hanyaDipetakan} pendaftaran (kadarnya tidak berubah, tanpa catatan)`);
 console.log(`  entri dipetakan ulang   : ${stat.dipetakanUlang}`);
-console.log(`  entri kembar dibuang    : ${stat.entriDibuang}`);
+console.log(`  label beranotasi tetap  : ${labelBeranotasi.length} entri (nama registri dipertahankan apa adanya;`);
+console.log(`                            angka kesetaraannya hanya terbaca di situ)`);
