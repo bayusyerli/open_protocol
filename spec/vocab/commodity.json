@@ -52,7 +52,8 @@
         "unit": "d"
       },
       "default_stage_scale": {
-        "id": "op:sca:00000001"
+        "id": "op:sca:00000001",
+        "label": "BBCH — Solanaceae (cabai, tomat, terung)"
       },
       "mappings": [
         {
@@ -90,7 +91,8 @@
         "unit": "d"
       },
       "default_stage_scale": {
-        "id": "op:sca:00000001"
+        "id": "op:sca:00000001",
+        "label": "BBCH — Solanaceae (cabai, tomat, terung)"
       },
       "mappings": [
         {
@@ -128,7 +130,8 @@
         "unit": "d"
       },
       "default_stage_scale": {
-        "id": "op:sca:00000001"
+        "id": "op:sca:00000001",
+        "label": "BBCH — Solanaceae (cabai, tomat, terung)"
       },
       "mappings": [
         {
@@ -227,7 +230,8 @@
         "unit": "d"
       },
       "default_stage_scale": {
-        "id": "op:sca:00000002"
+        "id": "op:sca:00000002",
+        "label": "Umur budidaya udang vaname (DOC)"
       },
       "mappings": [
         {

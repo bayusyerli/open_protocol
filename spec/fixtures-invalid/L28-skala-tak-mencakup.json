@@ -1,0 +1,10 @@
+{
+  "$schema": "../schema/commodity.schema.json",
+  "id": "op:cmd:00000900",
+  "key": "kentang-uji-l28",
+  "label": { "id": "Kentang (fixture L28)" },
+  "kind": "crop",
+  "no_mapping_reason": "Fixture negatif: kentang memang Solanaceae, tetapi kunci BBCH sayuran buah tidak mencakupnya — kentang punya kunci sendiri.",
+  "default_stage_scale": { "id": "op:sca:00000001", "label": "BBCH — Solanaceae (cabai, tomat, terung)" },
+  "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-19T00:00:00Z" }
+}

@@ -150,6 +150,7 @@ linter — dan diuji di `fixtures-invalid/`.
 | `L25` | Blok nomor tidak boleh bertindih antar-berkas |
 | `L26` | Tautan OPT harus cocok dengan nama ilmiah di label; sasaran tidak boleh komoditas sekaligus tempat |
 | `L27` | Komposisi produk yang melampaui 1.000 g per kg/L diperingatkan — mustahil secara fisik, artinya sumbernya keliru |
+| `L28` | Komoditas hanya boleh memakai skala fase yang memang mencakupnya — tautannya wajib sepakat dua arah |
 
 Aturan-aturan ini bukan hiasan. Saat 382 bahan aktif dimasukkan, `L1` langsung menangkap
 tabrakan `key` pada **belerang** — yang ternyata terdaftar sebagai hara sekaligus fungisida.
@@ -167,8 +168,8 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 
 | Berkas | Isi | Pemetaan luar |
 |---|---|---|
-| `stage-scale-bbch-solanaceae.json` | **63 fase BBCH** untuk cabai, tomat, terung | BBCH |
-| `stage-scale-doc-udang.json` | 4 fase berbasis umur budidaya udang | — (beralasan) |
+| `stage-scale-bbch-solanaceae.json` | **63 fase BBCH** untuk cabai, tomat, terung — ditautkan ke 22 komoditas | BBCH |
+| `stage-scale-doc-udang.json` | 4 fase berbasis umur budidaya udang — ditautkan ke 1 komoditas | — (beralasan) |
 | `operation-type.json` | **61 jenis tindakan**, hierarkis, dari olah tanah sampai pengangkutan | 28 ke AgrO / ICASA |
 | `variable.json` | **46 variabel** — pertumbuhan, OPT, tanah, air, cuaca, hasil | 15 ke ICASA / AgrO |
 | `method.json` | 19 cara aplikasi dan pengamatan, dengan `compatible_bases` | 9 ke AgrO / ICASA |
@@ -358,6 +359,28 @@ komoditas terpisah dari Aglaonema.
 **Delapan catatan tidak diterbitkan** karena jenis tanamannya kosong sehingga tidak bisa
 ditautkan ke komoditas mana pun. Satu di antaranya, `kelapa ok` dari pemohon `tes ujicoba`,
 adalah data uji coba yang tertinggal di registri resmi.
+
+### Skala fase: yang tertaut, dan yang belum
+
+Varietas tidak menyimpan skala fasenya sendiri — ia mewarisi lewat komoditas. Fenologi
+adalah sifat tanamannya, bukan sifat varietasnya, dan `Cycle.stage_scale` tetap tersedia
+untuk siklus yang perlu menyimpang.
+
+**1.218 dari 11.227 varietas (10,8%) kini mewarisi skala fase.** Seluruhnya lewat kunci
+BBCH sayuran buah Solanaceae, yang ditautkan ke 22 komoditas cabai, tomat, terung, dan
+paprika. Sisanya belum punya skala — bukan karena tautannya kurang, melainkan karena
+kuncinya memang belum ada di repositori ini. Yang paling terasa: **padi 1.434 varietas**
+dan **jagung 739**, dua tanaman terpenting di pasar awal, keduanya punya kunci BBCH resmi
+yang belum disusun ke sini.
+
+**Kentang dan tembakau sengaja tidak ditautkan** walau sama-sama Solanaceae: keduanya punya
+kunci BBCH sendiri, dan kunci sayuran buah tidak mengenal pembentukan umbi maupun pemangkasan
+pucuk. Tujuh komoditas lain dikecualikan dengan alasan tertulis di
+`tools/tautkan-skala-fase.mjs` — Cabe Jawa ternyata *Piper retrofractum*, famili Piperaceae,
+dan tiga nama "terong" merujuk *Solanum betaceum* yang berupa pohon.
+
+Aturan `L28` menjaga tautannya tetap sepakat dua arah: komoditas tidak boleh mengaku memakai
+skala yang tidak mencantumkannya.
 
 ### Tiga temuan tentang registrinya sendiri
 

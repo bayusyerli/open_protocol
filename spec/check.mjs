@@ -224,6 +224,17 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L28 — tautan skala fase harus sepakat dua arah. Komoditas boleh menunjuk skala
+    // bawaannya, tetapi skala itu wajib mengakui komoditasnya. Tanpa ini, kedua sisi
+    // bisa menyimpang diam-diam dan varietas mewarisi skala yang bukan cakupannya.
+    if (typeof doc.id === 'string' && doc.id.startsWith('op:cmd:') && doc.default_stage_scale?.id) {
+      const sc = entityById.get(doc.default_stage_scale.id);
+      const diakui = (sc?.applies_to?.commodities ?? []).some((c) => c.id === doc.id);
+      if (sc && !diakui) {
+        fail(file, 'L28-cakupan-skala', `Komoditas ini memakai skala ${doc.default_stage_scale.id} sebagai bawaan, tetapi skala itu tidak mencantumkannya di applies_to.commodities. Fenologi bukan urusan selera: skala hanya boleh dipakai pada tanaman yang memang dicakup kuncinya.`);
+      }
+    }
+
     // L10 — rujukan harus menunjuk entitas yang ada.
     // Hanya diperiksa untuk jenis entitas yang kosakatanya sudah dimuat; jenis yang
     // belum punya kosakata dilewati diam-diam supaya tidak berisik sebelum waktunya.

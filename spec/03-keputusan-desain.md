@@ -391,6 +391,29 @@ bila memang ada pelepasan.
 
 ---
 
+### D28 — skala fase menempel di komoditas, bukan di varietas
+
+Permintaannya "tautkan varietas ke skala fase BBCH", tetapi tautannya tidak diletakkan di
+`Variety`. Fenologi adalah sifat tanamannya: seluruh cabai melewati deret fase yang sama,
+dan yang membedakan antar-varietas adalah panjang tiap fase, bukan ada-tidaknya fase itu.
+Menyalin rujukan skala ke 11.227 varietas berarti menyimpan fakta yang sama 11.227 kali,
+lalu menanggung risiko 11.227 tempat yang bisa menyimpang.
+
+Yang dipakai: `Commodity.default_stage_scale` dan `StageScale.applies_to.commodities` —
+keduanya sudah ada di skema sejak awal — dan varietas mewarisi lewat komoditasnya. Siklus
+yang benar-benar perlu skala lain tetap bisa menimpanya lewat `Cycle.stage_scale`.
+
+Cakupannya dikurasi tangan, tidak dipetakan otomatis dari nama. Kunci BBCH sayuran buah
+Solanaceae (Feller dkk. 1995) mencakup cabai, tomat, dan terung — bukan seluruh Solanaceae.
+Kentang dan tembakau punya kunci sendiri dan sengaja dibiarkan tanpa skala sampai kuncinya
+masuk. Pencocokan berdasar nama akan menarik keduanya masuk, dan juga menarik Cabe Jawa yang
+ternyata *Piper retrofractum* — famili Piperaceae, sama sekali bukan Solanaceae.
+
+Aturan `L28` menegakkan kesepakatan dua arahnya, karena tautan dua arah yang hanya dijaga
+kedisiplinan akan menyimpang cepat atau lambat.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -418,3 +441,4 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | Kegranularan registri dipertahankan, tetapi `Commodity` belum punya hubungan hierarkis internal — pengelompokan seharusnya lewat konsep broader AGROVOC yang belum dipetakan |
 | 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
+| 22 | 89% varietas belum punya skala fase | Bukan tautannya yang kurang, tetapi kuncinya yang belum ada. Prioritas: padi (1.434 varietas) dan jagung (739), keduanya punya kunci BBCH resmi yang perlu disusun dari sumbernya |

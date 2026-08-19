@@ -14,7 +14,96 @@
     "commodity_kinds": [
       "crop"
     ],
-    "commodities": []
+    "commodities": [
+      {
+        "id": "op:cmd:00000001",
+        "label": "Cabai merah besar"
+      },
+      {
+        "id": "op:cmd:00000002",
+        "label": "Cabai rawit"
+      },
+      {
+        "id": "op:cmd:00000003",
+        "label": "Tomat"
+      },
+      {
+        "id": "op:cmd:00001003",
+        "label": "Cabai"
+      },
+      {
+        "id": "op:cmd:00001033",
+        "label": "Cabai merah"
+      },
+      {
+        "id": "op:cmd:00001108",
+        "label": "Terung"
+      },
+      {
+        "id": "op:cmd:00002069",
+        "label": "Cabai Besar"
+      },
+      {
+        "id": "op:cmd:00002070",
+        "label": "Cabai Habanero"
+      },
+      {
+        "id": "op:cmd:00002071",
+        "label": "Cabai Hias"
+      },
+      {
+        "id": "op:cmd:00002072",
+        "label": "Cabai Keriting"
+      },
+      {
+        "id": "op:cmd:00002073",
+        "label": "Cabai Paprika"
+      },
+      {
+        "id": "op:cmd:00002074",
+        "label": "Cabai Rawit Hias"
+      },
+      {
+        "id": "op:cmd:00002076",
+        "label": "Cabe Keriting"
+      },
+      {
+        "id": "op:cmd:00002077",
+        "label": "Cabe Merah"
+      },
+      {
+        "id": "op:cmd:00002078",
+        "label": "Cabe Rawit"
+      },
+      {
+        "id": "op:cmd:00002307",
+        "label": "Paprika"
+      },
+      {
+        "id": "op:cmd:00002394",
+        "label": "Terong"
+      },
+      {
+        "id": "op:cmd:00002397",
+        "label": "Terong Bulat"
+      },
+      {
+        "id": "op:cmd:00002398",
+        "label": "Terong Panjang"
+      },
+      {
+        "id": "op:cmd:00002401",
+        "label": "Terong Telunjuk"
+      },
+      {
+        "id": "op:cmd:00002402",
+        "label": "Tomat Ceri"
+      },
+      {
+        "id": "op:cmd:00002403",
+        "label": "Tomat Rampai"
+      }
+    ]
   },
   "stages": [
     {
