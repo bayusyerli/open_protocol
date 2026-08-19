@@ -38,7 +38,7 @@
       "id": "op:cmd:00001000",
       "key": "kelapa-sawit",
       "label": {
-        "id": "Budidaya kelapa sawit (TBM)"
+        "id": "Budidaya kelapa sawit"
       },
       "kind": "crop",
       "mappings": [
@@ -77,6 +77,12 @@
           "id": "Budidaya Kelapa sawit (TBM) (2 - 3 l/ha)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya kelapa sawit (TM )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -405,9 +411,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001464"
+        }
       },
       "synonyms": [
         "Budidaya  karet (TBM)",
@@ -662,7 +671,7 @@
       "id": "op:cmd:00001009",
       "key": "kopi",
       "label": {
-        "id": "Budidaya kopi (TBM)"
+        "id": "Budidaya kopi"
       },
       "kind": "crop",
       "mappings": [
@@ -755,6 +764,24 @@
           "id": "Kakao (3 g/l)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (TBM) (1-2 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (TBM) (2-4 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (TBM) (3 - 6 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1749,9 +1776,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001151"
+        }
       },
       "synonyms": [
         "Kelapa sawit TBM"
@@ -1960,7 +1990,7 @@
       "id": "op:cmd:00001043",
       "key": "kelapa",
       "label": {
-        "id": "Kelapa (TM)"
+        "id": "Kelapa"
       },
       "kind": "crop",
       "mappings": [
@@ -1974,7 +2004,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya kelapa",
@@ -2194,7 +2225,7 @@
       "id": "op:cmd:00001053",
       "key": "tanaman-kelapa-sawit",
       "label": {
-        "id": "Budidaya tanaman kelapa sawit (TBM)"
+        "id": "Budidaya tanaman kelapa sawit"
       },
       "kind": "crop",
       "mappings": [
@@ -3014,7 +3045,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       }
     },
@@ -3153,9 +3184,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001010"
+        }
       },
       "synonyms": []
     },
@@ -3364,7 +3398,7 @@
       "id": "op:cmd:00001102",
       "key": "kakao-tbm",
       "label": {
-        "id": "Budidaya kakao (TBM)"
+        "id": "Budidaya kakao"
       },
       "kind": "crop",
       "mappings": [
@@ -3438,7 +3472,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       },
       "synonyms": [
@@ -3601,7 +3635,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       }
     },
@@ -3724,7 +3758,7 @@
       "id": "op:cmd:00001117",
       "key": "kepala-sawit",
       "label": {
-        "id": "Kepala sawit (TBM)"
+        "id": "Kepala sawit"
       },
       "kind": "crop",
       "mappings": [
@@ -3738,7 +3772,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Kepala Sawit"
@@ -3921,7 +3956,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001035"
+          "id": "op:cmd:00001151"
         }
       }
     },
@@ -4142,9 +4177,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001464"
+        }
       },
       "synonyms": []
     },
@@ -4169,7 +4207,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001035"
+          "id": "op:cmd:00001151"
         }
       }
     },
@@ -4194,7 +4232,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001035"
+          "id": "op:cmd:00001151"
         }
       }
     },
@@ -4227,7 +4265,7 @@
       "id": "op:cmd:00001138",
       "key": "budaidaya-kelapa-sawit",
       "label": {
-        "id": "Budaidaya kelapa sawit (TBM)"
+        "id": "Budaidaya kelapa sawit"
       },
       "kind": "crop",
       "mappings": [
@@ -4241,7 +4279,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -4261,16 +4300,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001000"
+        }
       }
     },
     {
       "id": "op:cmd:00001140",
       "key": "kelapa-swit",
       "label": {
-        "id": "Kelapa swit (TBM)"
+        "id": "Kelapa swit"
       },
       "kind": "crop",
       "mappings": [
@@ -4284,7 +4326,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -4308,7 +4351,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       },
       "synonyms": [
@@ -4332,9 +4375,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001151"
+        }
       }
     },
     {
@@ -4358,7 +4404,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       }
     },
@@ -4429,7 +4475,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001035"
+          "id": "op:cmd:00001151"
         }
       }
     },
@@ -4555,6 +4601,60 @@
           "id": "Kelapa sawit (2,5 ml/l)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM)  (0,75 - 1 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM) (0,75 - 1,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa Sawit (TBM) (1 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM) (1,5 - 2,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa Sawit (TBM) (2 - 2,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM) (30 - 50 g/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM): (2,25 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa Sawit (TM) (60-100 ml/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa Sawit TBM",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 36 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -4563,7 +4663,11 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z"
       },
-      "synonyms": []
+      "synonyms": [
+        "Kelapa Sawit (TM)",
+        "Kelapa sawit (TBM)",
+        "Kelapa sawit TBM"
+      ]
     },
     {
       "id": "op:cmd:00001153",
@@ -5130,7 +5234,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001035"
+          "id": "op:cmd:00001151"
         }
       }
     },
@@ -5660,9 +5764,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001244"
+        }
       }
     },
     {
@@ -5686,7 +5793,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001134"
+          "id": "op:cmd:00001464"
         }
       }
     },
@@ -5711,7 +5818,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001035"
+          "id": "op:cmd:00001151"
         }
       }
     },
@@ -5736,7 +5843,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001093"
+          "id": "op:cmd:00001010"
         }
       }
     },
@@ -5832,7 +5939,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001093"
+          "id": "op:cmd:00001010"
         }
       }
     },
@@ -5907,7 +6014,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001134"
+          "id": "op:cmd:00001464"
         }
       }
     },
@@ -6115,7 +6222,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       }
     },
@@ -6437,7 +6544,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       }
     },
@@ -6679,6 +6786,12 @@
           "id": "Kopi (6 g/l)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kopi (TBM) (3 - 6 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6687,7 +6800,9 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z"
       },
-      "synonyms": []
+      "synonyms": [
+        "Kopi (TBM)"
+      ]
     },
     {
       "id": "op:cmd:00001245",
@@ -6999,7 +7114,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001035"
+          "id": "op:cmd:00001151"
         }
       }
     },
@@ -7380,7 +7495,7 @@
       "id": "op:cmd:00001275",
       "key": "persiapan-lahan-untuk-budidaya-kelapa-sawit-tbm",
       "label": {
-        "id": "Persiapan lahan untuk budidaya Kelapa sawit (TBM"
+        "id": "Persiapan lahan untuk budidaya Kelapa sawit"
       },
       "kind": "crop",
       "mappings": [
@@ -7394,7 +7509,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -11577,6 +11693,12 @@
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Karet ( TBM )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Karet (0,5 ml/l)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -11592,6 +11714,72 @@
           "id": "Karet (3,75 ml/l air/pohon )",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 911 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (0,375-0,5 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1 - 2 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1,5 - 2 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1,5 - 2,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1,5 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 8 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM): (2 - 4 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TM) (2 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TM) (3 - 6 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet TM",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -11600,7 +11788,24 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z"
       },
-      "synonyms": []
+      "synonyms": [
+        "Budidaya  karet (TBM)",
+        "Budidaya Karet (TBM)",
+        "Budidaya Karet (TBM) (1 - 2 l/ha)",
+        "Budidaya karet",
+        "Budidaya karet (TBM)",
+        "Budidaya karet (TBM):",
+        "Budidaya karet (TM)",
+        "Budidaya karet (TM):",
+        "Karet",
+        "Karet (TBM)",
+        "Karet (TBM)  (1,5 - 3 l/ha)",
+        "Karet (TBM) :",
+        "Karet (TM)",
+        "Karet (TM):",
+        "Karet:",
+        "karet"
+      ]
     },
     {
       "id": "op:cmd:00001465",
@@ -12375,7 +12580,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001005"
+          "id": "op:cmd:00001464"
         }
       }
     },

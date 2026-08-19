@@ -16,16 +16,20 @@
 // Kurung yang sama bentuknya memuat dua hal yang sama sekali berbeda:
 //
 //   derau     "(1,5 ml/l)", "(700 ml/ha )"      dosis, milik pendaftaran
-//   pembeda   "(TBM)" vs "(TM)"                 belum vs sudah menghasilkan
-//             "(TOT)"                           tanpa olah tanah
+//             "(TBM)", "(TM)"                   fase pertumbuhan — lihat catatan
+//   pembeda   "(TOT)"                           tanpa olah tanah
 //             "(pra tumbuh)" vs "(purna tumbuh)" sebelum vs sesudah gulma tumbuh
 //             "(Tapin)" vs "(Tabela)"           tanam pindah vs benih langsung
 //             "(Acacia mangium)" vs "(Acacia crassicarpa)"  dua spesies
 //
-// Menyatukan TBM dengan TM akan menggabungkan penggunaan herbisida di sawit muda
-// dengan sawit yang sedang dipanen — dua keadaan yang tenggang panennya, cara
-// aplikasinya, dan risikonya tidak sebanding. Itu kerusakan yang lebih besar
+// Menyatukan TOT dengan olah tanah biasa akan menggabungkan dua sistem yang jadwal
+// gulma dan herbisidanya berbeda; menyatukan pra tumbuh dengan purna tumbuh akan
+// menganjurkan herbisida pada waktu yang salah. Itu kerusakan yang lebih besar
 // daripada pemecahan yang hendak diperbaiki.
+//
+// TBM/TM sempat ditahan atas alasan yang sama, lalu dilepas: perbedaannya nyata,
+// tetapi ia sifat PENGGUNAAN, dan fase pertumbuhan sudah punya Stage. Catatan
+// panjangnya ada di tabel KURUNG, di dekat putusannya sendiri.
 //
 // Karena itu putusannya tidak diserahkan ke pola. Seluruh 111 isi kurung yang ada
 // di kosakata diklasifikasi satu per satu di tabel KURUNG di bawah, dan isi kurung
@@ -66,8 +70,13 @@ const tulis = process.argv.includes('--tulis');
 const DOSIS = 'Dosis milik pendaftaran, bukan bagian dari nama komoditas.';
 const DOSIS_PEMBAWA = 'Dosis beserta pembawa atau basisnya; tetap keterangan pendaftaran.';
 
+// `synonim` menentukan apakah label yang kalah naik jadi synonyms pada pemenang —
+// pola yang sama dengan gabung-id-zat-kembar.mjs. Dosis: tidak, itu anotasi
+// pendaftaran dan tempatnya memang pada entitas yang digantikan. Penanda fase:
+// ya, "Karet (TM)" nama sungguhan yang akan diketik orang, dan kalau tertinggal
+// pada entitas yang digantikan, pencarian tidak menemukannya lagi.
 const KURUNG = {};
-const derau = (isi, dasar = DOSIS) => { for (const k of isi) KURUNG[k] = { jenis: 'derau', dasar }; };
+const derau = (isi, dasar = DOSIS, synonim = false) => { for (const k of isi) KURUNG[k] = { jenis: 'derau', dasar, synonim }; };
 const pembeda = (isi, dasar) => { for (const k of isi) KURUNG[k] = { jenis: 'pembeda', dasar }; };
 
 // --- Dosis murni: angka, satuan, dan pembaginya saja -------------------------
@@ -104,9 +113,28 @@ derau(
 );
 
 // --- Fase tanaman tahunan: belum vs sudah menghasilkan -----------------------
-pembeda(
+// PUTUSAN YANG BERUBAH, DAN KENAPA.
+// Putaran pertama menahan TBM dan TM sebagai pembeda, dengan alasan penyemprotan di
+// sawit muda dan sawit panen tidak sebanding. Alasan itu benar, tetapi tempatnya
+// keliru: TBM/TM adalah FASE PERTUMBUHAN, dan spesifikasi ini sudah punya Stage
+// beserta lima belas skala fase untuk menyatakannya. Memodelkannya sebagai komoditas
+// yang berbeda adalah kesalahan kategori — dan kesalahan yang sudah ditolak lebih
+// dulu oleh collection.scope berkas ini sendiri: "keduanya sifat siklus, bukan
+// komoditas yang berbeda".
+//
+// Kebijakan itu bahkan sudah diterapkan setengah jalan sebelum alat ini ada: delapan
+// entitas membawa "(TM)" di dalam synonyms-nya sementara "Karet TM" berdiri sendiri
+// sebagai entitas. Menahan TBM/TM berarti mengabadikan setengah jalan itu.
+//
+// Yang hilang tidak hilang: bunyi asli tetap terbaca pada entitas yang digantikan,
+// pada mappings KEMENTAN, pada commodity_label rekaman produk, dan kini juga pada
+// synonyms pemenang. Perbedaan perlakuan antara sawit muda dan sawit panen memang
+// nyata, tetapi ia sifat PENGGUNAAN, dan tempatnya di Stage — bukan di identitas
+// tanamannya.
+derau(
   ['TBM', 'TM'],
-  'TBM belum menghasilkan, TM sudah. Tenggang panen, cara aplikasi, dan risiko residunya tidak sebanding — pada TBM belum ada yang dipanen sama sekali.',
+  'Fase tanaman tahunan, bukan komoditas yang berbeda. Perbedaannya dinyatakan lewat Stage, sejalan dengan collection.scope.',
+  true,
 );
 
 // --- Sistem olah tanah -------------------------------------------------------
@@ -297,6 +325,24 @@ const urut = (a, b) =>
 // mengangkat derau registri jadi nama kanonik, kekeliruan yang sama dengan
 // "2 - Octyl - 2H _ Isothiazol - 3 One" pada penggabungan zat. Yang ditulis di sini
 // bukan nama karangan: ia kata-kata registri sendiri sesudah anotasinya dilepas.
+// Seperti bersihkanLabel, tetapi HANYA melepas kurung yang bukan nama — dosis dan
+// klaim. Penanda yang layak jadi synonyms dibiarkan, sehingga hasilnya persis bentuk
+// yang pantas dicari orang: "Karet (TBM) (1,5 - 3 l/ha)" jadi "Karet (TBM)".
+function labelPenanda(label) {
+  let sisa = label;
+  for (const m of label.matchAll(/\(([^()]*(?:\([^()]*\)[^()]*)*)\)?/g)) {
+    const isi = m[1].trim();
+    const k = KURUNG[isi];
+    if (k && k.jenis === 'derau' && !k.synonim) sisa = sisa.replace(m[0], ' ');
+  }
+  return sisa
+    .replace(/\(\s+/g, '(')
+    .replace(/\s+\)/g, ')')
+    .replace(/\s+/g, ' ')
+    .replace(/[,:.\s]+$/g, '')
+    .trim();
+}
+
 function bersihkanLabel(label) {
   let sisa = label;
   for (const m of label.matchAll(/\(([^()]*(?:\([^()]*\)[^()]*)*)\)?/g)) {
@@ -449,6 +495,12 @@ for (const g of gabung) {
     // sungguhan, dan kalau tertinggal pada entitas yang digantikan, pencarian tidak
     // menemukannya lagi.
     for (const sin of e.synonyms ?? []) if (!menang.synonyms.includes(sin)) menang.synonyms.push(sin);
+    // Label yang kalah naik jadi synonyms HANYA kalau yang membedakannya bukan
+    // sekadar dosis. "Karet (TBM)" naik; "Karet (2 ml/l )" tidak, karena sesudah
+    // dosisnya dilepas ia sama persis dengan nama pemenang dan tidak menambah apa pun.
+    const bentukCari = labelPenanda(e.label.id);
+    const kanonik = g.labelBaru ?? menang.label.id;
+    if (bentukCari !== kanonik && !menang.synonyms.includes(bentukCari)) menang.synonyms.push(bentukCari);
     // Skala fase bawaan dipindahkan, bukan disalin: dibiarkan pada yang kalah, ia
     // jadi tautan fenologi dari entitas yang tidak lagi tercantum di applies_to
     // skalanya, dan L28 menolaknya — dengan benar.
@@ -486,6 +538,28 @@ for (const e of hidup) {
   e.label = { ...e.label, id: baru };
   e.lifecycle = { ...(e.lifecycle ?? {}), updated_at: STAMP };
   labelTunggal++;
+}
+
+// Ratakan rantai penggantian. Penyatuan berjalan bertahap: "Karet (TBM) (1,5 - 3
+// l/ha)" digantikan "Karet (TBM)" pada putaran pertama, lalu "Karet (TBM)" sendiri
+// digantikan "Karet" pada putaran berikutnya — dan yang pertama jadi menunjuk entitas
+// yang sudah mati. L29 menolaknya, dengan benar: entitas yang digantikan disimpan
+// supaya ejaan aslinya bisa ditelusuri, bukan supaya jadi persinggahan.
+const hidupId = new Set(semua.filter((e) => e.lifecycle?.status !== 'superseded').map((e) => e.id));
+const ujung = (id, jejak = new Set()) => {
+  if (hidupId.has(id) || jejak.has(id)) return id;
+  jejak.add(id);
+  const lanjut = olehId.get(id)?.lifecycle?.superseded_by?.id;
+  return lanjut ? ujung(lanjut, jejak) : id;
+};
+let rantai = 0;
+for (const e of semua) {
+  const tuju = e.lifecycle?.superseded_by?.id;
+  if (!tuju) continue;
+  const akhir = ujung(tuju);
+  if (akhir === tuju) continue;
+  e.lifecycle = { ...e.lifecycle, superseded_by: { id: akhir }, updated_at: STAMP };
+  rantai++;
 }
 
 const tulisJson = (nama, bungkus) => writeFileSync(join(VOCAB, nama), JSON.stringify(bungkus, null, 2) + '\n');
@@ -538,7 +612,7 @@ for (const nama of ['stage-scale-bbch-bawang.json', 'stage-scale-bbch-brassica-l
 }
 
 console.log(`\nDitulis:`);
-console.log(`  commodity-registri.json, commodity.json  — ${kalahSemua.size} entitas jadi superseded, ${labelTunggal} label lain dibersihkan dari dosis`);
+console.log(`  commodity-registri.json, commodity.json  — ${kalahSemua.size} entitas jadi superseded, ${labelTunggal} label lain dibersihkan dari dosis, ${rantai} rantai penggantian diratakan`);
 console.log(`  product/pestisida.ndjson                 — ${ubahProduk} rekaman`);
 console.log(`  variety/varietas.ndjson                  — ${ubahVarietas} rekaman`);
 console.log(`  skala fase                               — ${ubahSkala} berkas`);

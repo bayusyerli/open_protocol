@@ -3,7 +3,7 @@
 > Rancangan · permukaan reaktif · jalur 1 · masuk dari gejala
 > Untuk orang yang baru melihat masalah di depan mata. Tanpa akun, tanpa petak terdaftar, tanpa rencana — tiga ketukan sampai jawaban.
 > Angka **dari registri pascapenggabungan ejaan zat** (`1a0f077`, `04b91c6`)
-> **dan penyatuan komoditas serumpun** — 488 komoditas registri jadi 281
+> **dan penyatuan komoditas serumpun** — 488 komoditas registri jadi 274
 >
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
@@ -176,15 +176,26 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
   lihat [05-jalur-produk.md](05-jalur-produk.md) bagian kasus LARBAN.
 - ~~**Pembersihan label komoditas.**~~ **Sudah dikerjakan.** Cabai terpecah jadi 15
   entitas, bawang merah 17, karet 13 — sebagian besar karena dosis bocor ke dalam
-  nama sasaran: "Cabai (1,5 ml/l)", "Cabai (700 ml/ha )". **207 entitas disatukan**,
-  488 komoditas jadi 281, dan trips di cabai naik dari 234 ke 238 produk.
+  nama sasaran: "Cabai (1,5 ml/l)", "Cabai (700 ml/ha )". **214 entitas disatukan**,
+  488 komoditas registri jadi 274, dan trips di cabai naik dari 234 ke 238 produk.
 
-  Yang dalam kurung tidak semuanya derau, dan di situlah kehati-hatiannya: **TBM**
-  lawan **TM**, **TOT**, **pra tumbuh** lawan **purna tumbuh**, **Tapin** lawan
-  **Tabela**, dan dua spesies akasia. Menyatukan TBM dengan TM berarti menggabungkan
-  penyemprotan di sawit muda dengan sawit yang sedang dipanen. Dua belas keluarga
-  sengaja dibiarkan terpisah dan kini disajikan sebagai varian satu tanaman, bukan
-  sebagai komoditas asing satu sama lain — karet misalnya: TBM 118 OPT, TM 8 OPT.
+  Yang dalam kurung tidak semuanya derau, dan di situlah kehati-hatiannya. Yang
+  dilepas: dosis, dan **penciri fase TBM/TM**. Yang ditahan: **TOT**, **pra tumbuh**
+  lawan **purna tumbuh**, **Tapin** lawan **Tabela**, dan dua spesies akasia. Tujuh
+  keluarga tetap terpisah dan kini disajikan sebagai varian satu tanaman, bukan
+  sebagai komoditas asing satu sama lain.
+
+  **Kenapa TBM/TM dilepas padahal perbedaannya nyata.** Penyemprotan di sawit muda
+  memang tidak sebanding dengan sawit yang sedang dipanen — tetapi itu sifat
+  *penggunaan*, bukan identitas tanamannya. TBM/TM adalah **fase pertumbuhan**, dan
+  spesifikasi ini sudah punya `Stage` beserta lima belas skala fase untuk
+  menyatakannya; memodelkannya sebagai komoditas yang berbeda adalah kesalahan
+  kategori. `collection.scope` pada `commodity-registri.json` sebenarnya sudah
+  menolaknya sejak awal — *"keduanya sifat siklus, bukan komoditas yang berbeda"* —
+  hanya saja diterapkan setengah jalan: delapan entitas sudah membawa "(TM)" di
+  synonyms-nya sementara "Karet TM" tetap berdiri sendiri. Bunyi aslinya tidak
+  hilang: ia tetap terbaca pada entitas yang digantikan, pada `mappings` KEMENTAN,
+  pada `commodity_label` rekaman produk, dan kini juga pada synonyms pemenang.
 
 ---
 
