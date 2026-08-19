@@ -246,6 +246,24 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L29 — rujukan tidak boleh menunjuk entitas yang sudah digantikan.
+    // Entitas kembar tidak pernah dihapus — ID tidak didaur ulang, dan ejaan asli dari
+    // registri masih perlu bisa ditelusuri — jadi rujukan ke sana tetap "ada" dan L10
+    // meloloskannya. Justru di situ bahayanya: registri Kementan kadang menuliskan
+    // keterangan kesetaraan ke dalam field nama bahan, sehingga satu bahan aktif masuk
+    // sebagai dua entitas dan, bila keduanya muncul pada produk yang sama, kadarnya
+    // terjumlah dua kali. Aturan ini yang membuat penggabungannya bertahan: begitu
+    // kosakata dibangun ulang dan pemetaan namanya jatuh lagi ke id yang sudah
+    // digantikan, pemeriksa menolaknya alih-alih mendiamkannya sampai L27 menyala.
+    for (const ref of collectRefs(doc)) {
+      const tujuan = entityById.get(ref);
+      if (tujuan?.lifecycle?.status !== 'superseded') continue;
+      const ganti = tujuan.lifecycle.superseded_by?.id;
+      fail(file, 'L29-entitas-digantikan', ganti
+        ? `Menunjuk ${ref} "${tujuan.label?.id}" yang berstatus superseded — pakai ${ganti}. Entitas itu dipertahankan supaya ejaan aslinya bisa ditelusuri, bukan supaya dipakai lagi.`
+        : `Menunjuk ${ref} "${tujuan.label?.id}" yang berstatus superseded tanpa lifecycle.superseded_by. Entitas yang digantikan wajib menyebut penggantinya, kalau tidak rujukan lama tidak punya tempat berpindah.`);
+    }
+
     // L14 — produk tanpa komposisi tidak bisa dipakai menghitung hara yang diberikan
     for (const [i, a] of (doc.applications ?? []).entries()) {
       const prod = a.product?.id && entityById.get(a.product.id);

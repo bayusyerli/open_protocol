@@ -1,0 +1,24 @@
+{
+  "$schema": "../schema/product.schema.json",
+  "id": "op:prd:00000901",
+  "key": "herbisida-uji-l29",
+  "label": { "id": "Herbisida (fixture L29)" },
+  "product_category": "pesticide",
+  "registration": {
+    "authority": "KEMENTAN",
+    "number": "FIXTURE-L29",
+    "status": "unverified"
+  },
+  "composition": [
+    {
+      "substance": {
+        "id": "op:sub:00000938",
+        "label": "2,4 D dimetil amina : 865 g/l(Setara dengan 2,4D: 720 g/l)"
+      },
+      "value": 865,
+      "unit": "g/L"
+    }
+  ],
+  "no_mapping_reason": "Fixture negatif: op:sub:00000938 adalah entitas yang sudah digantikan op:sub:00000122 — bahan yang sama, terdaftar dua kali karena registri menuliskan keterangan kesetaraan ke dalam field nama bahan. Entitasnya sengaja tidak dihapus, jadi L10 tetap meloloskan rujukan ini; yang harus menolaknya L29. Inilah bentuk persis kambuhnya cacat itu: kosakata dibangun ulang, nama panjang tadi dipetakan lagi ke id lama, dan kadarnya kembali terjumlah dua kali tanpa ada yang menyalak sampai L27 telanjur menyala.",
+  "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-19T00:00:00Z" }
+}
