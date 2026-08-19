@@ -70,7 +70,7 @@ Pasal 77 melarang mengedarkan *dan menggunakan*. Menunggu pendapat hukum.
 
 | Jalur | Kategori | Ditopang data | Yang tidak sanggup |
 |---|---|---|---|
-| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis | ✕ Diagnosis. Nol dari 1.360 OPT registri punya deskripsi gejala; 5 dari 10 OPT terkurasi punya — lima kalimat lagi harus ditulis tangan |
+| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis | ✕ Diagnosis. Nol dari 914 OPT registri punya deskripsi gejala; 5 dari 10 OPT terkurasi punya — lima kalimat lagi harus ditulis tangan |
 | **2 · Produk** — kemasan → isi → setara | Ketiganya | 96,4% pestisida & 71,3% pupuk punya komposisi; 63,5% pestisida identik dengan produk lain | ◐ Nama dagang di kemasan bisa berbeda dari nama terdaftar |
 | **3 · Hitungan** — pupuk + harga → Rp/kg hara | Pupuk | 5.130 pupuk berkomposisi angka terhadap 17 hara | ✕ Harga (nol di registri) dan status subsidi (nol dari 7.196) |
 | **4 · Keabsahan** — varietas → surat | Benih & bibit | 5.822 surat pelepasan, 5.138 pendaftaran, 580 PVT | ✕ Rekomendasi varietas. Hanya 35 dari 11.227 menyebut sifat agronomi |
@@ -112,7 +112,7 @@ Dua jalur bisa berakhir buntu karena harga, dan masing-masing bermuara ke sisi y
 
 **Jalur 3 → jalur 5.** Rupiah per kg hara di luar jangkauan; cabangnya kompos atau kascing. Jalur ini **terbuka sekarang**.
 
-**Jalur 1 → jalur 6.** 238 produk yang tak satu pun terbeli; cabangnya ekstrak nabati atau agens hayati. Jalur ini **masih tertutup** sampai bacaan Pasal 77 ayat (1) dijawab — sampai itu ia boleh ditampilkan, tetapi tidak boleh muncul sebagai “yang bisa kamu pakai”.
+**Jalur 1 → jalur 6.** 242 produk yang tak satu pun terbeli; cabangnya ekstrak nabati atau agens hayati. Jalur ini **masih tertutup** sampai bacaan Pasal 77 ayat (1) dijawab — sampai itu ia boleh ditampilkan, tetapi tidak boleh muncul sebagai “yang bisa kamu pakai”.
 
 Aturan yang menentukan sebuah resep masuk jalur mana · **Satu klaim pengendalian sudah cukup**
 
@@ -154,7 +154,7 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 
 | Yang hilang | Akibatnya | Jalan keluar |
 |---|---|---|
-| **Deskripsi gejala OPT** — 0 dari 1.360 registri, 5 dari 10 terkurasi | Jalur 1 baru punya lima pintu masuk | Kurasi · lima kalimat lagi untuk cabai |
+| **Deskripsi gejala OPT** — 0 dari 914 registri, 5 dari 10 terkurasi | Jalur 1 baru punya lima pintu masuk | Kurasi · lima kalimat lagi untuk cabai |
 | **PHI** — 290 dari 23.058 penggunaan | Tanggal aman panen tidak bisa dijanjikan di jalur mana pun | Sumber lain · foto label atau terbitan BSIP |
 | **Harga** — nol | Jalur 3 butuh satu masukan pengguna | Sumber lain · diketik sekali di kios |
 | **Penanda subsidi** — 0 dari 7.196 pupuk | Perbandingan harga tidak sadar-subsidi, padahal dokumen fondasi mensyaratkannya | Sumber lain · daftar produk bersubsidi Kementan |

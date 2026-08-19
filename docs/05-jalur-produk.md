@@ -3,7 +3,8 @@
 > Rancangan · permukaan baca-saja · jalur 2 · masuk dari kemasan
 > Sudah memegang botol, karung, atau sachet. Pertanyaannya bukan "apa masalah saya" melainkan **"sebenarnya ini apa, dan apa lagi yang isinya sama."**
 > Angka **dari registri pascapenggabungan ejaan zat** (`1a0f077`, `04b91c6`)
-> **dan penyatuan komoditas serumpun** — 488 komoditas registri jadi 274
+> **dan penyatuan komoditas serumpun serta OPT kembar** — 488 komoditas jadi 274,
+> 1.370 OPT jadi 914
 >
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.

@@ -64,6 +64,25 @@
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         },
         {
+          "scheme": "GBIF",
+          "id": "4799919",
+          "uri": "https://www.gbif.org/species/4799919",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips parvipinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips parvisipinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Thrips parvispinus",
           "relation": "exact",
@@ -71,29 +90,39 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Thrips pervispinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips pirvispinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Thrips sp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 55 baris penggunaan."
-        },
-        {
-          "scheme": "GBIF",
-          "id": "4799919",
-          "uri": "https://www.gbif.org/species/4799919",
-          "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Thrips",
         "Hama Trip",
         "Hama Trips",
         "Hama Trpis",
-        "Thrips"
+        "Thrips",
+        "Thrips parvipinus",
+        "Thrips parvisipinus",
+        "Thrips pervispinus",
+        "Thrips pirvispinus"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -129,28 +158,50 @@
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         },
         {
+          "scheme": "GBIF",
+          "id": "2076179",
+          "uri": "https://www.gbif.org/species/2076179",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Myzus percisae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Myzus percsicae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Myzus persicae",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 283 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "2076179",
-          "uri": "https://www.gbif.org/species/2076179",
+          "scheme": "KEMENTAN",
+          "id": "Myzuz persicae",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Kutu Daun",
         "Hama Trips",
-        "Kutu Daun"
+        "Kutu Daun",
+        "Myzus percisae",
+        "Myzus percsicae",
+        "Myzuz persicae"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -186,10 +237,11 @@
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         },
         {
-          "scheme": "KEMENTAN",
-          "id": "Bemisia tabaci",
+          "scheme": "GBIF",
+          "id": "2012126",
+          "uri": "https://www.gbif.org/species/2012126",
           "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 79 baris penggunaan."
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         },
         {
           "scheme": "KEMENTAN",
@@ -199,24 +251,26 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Bemisia tabaci",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 79 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Bemisia tabacii",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "GBIF",
-          "id": "2012126",
-          "uri": "https://www.gbif.org/species/2012126",
-          "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Bemicia tabaci",
+        "Bemisia tabacii",
         "Hama Kutu Kebul",
         "Kutu Daun",
         "Kutu Kebul",
@@ -253,52 +307,11 @@
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         },
         {
-          "scheme": "KEMENTAN",
-          "id": "Bactrocera sp.",
+          "scheme": "GBIF",
+          "id": "7930834",
+          "uri": "https://www.gbif.org/species/7930834",
           "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Bactrocera dorsalis",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Bactrocera spp",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Dacus ferrugineus",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Bactrocera sp",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Bactrocera spp.",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Dacus spp.",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Bactrocera tryoni",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         },
         {
           "scheme": "KEMENTAN",
@@ -308,9 +321,51 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Bactrocera dorsalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Bactrocera ferrungineus",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera sp",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera spp",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera tryoni",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dacus ferrugineus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -319,19 +374,20 @@
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "7930834",
-          "uri": "https://www.gbif.org/species/7930834",
+          "scheme": "KEMENTAN",
+          "id": "Dacus spp.",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Bactocera dorsalis",
         "Lalat Buah"
       ],
       "taxonomic_rank": "species",
@@ -365,28 +421,11 @@
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         },
         {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera litura",
+          "scheme": "GBIF",
+          "id": "5109882",
+          "uri": "https://www.gbif.org/species/5109882",
           "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 310 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera exigua",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 264 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera frugiperda",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 148 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodotera litura",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         },
         {
           "scheme": "KEMENTAN",
@@ -396,25 +435,7 @@
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Spodoptera sp.",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera frugiferda",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Sprodoptera litura",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodopters exigua",
+          "id": "Mythimna separata",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
@@ -426,7 +447,61 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Spodeptera litura",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 264 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exiqua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera frugiferda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera frugiperda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 148 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera frungiperda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Spodoptera fungiperda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera litura",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 310 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodopters exigua",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
@@ -438,51 +513,36 @@
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Mythimna separata",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera exiqua",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
           "id": "Spodotera exigua",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Spodoptera frungiperda",
+          "id": "Spodotera litura",
           "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Spodeptera litura",
+          "id": "Sprodoptera litura",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "GBIF",
-          "id": "5109882",
-          "uri": "https://www.gbif.org/species/5109882",
-          "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Perusak Daun",
         "Hama Ulat Grayak",
         "Kutu Daun",
+        "Spedoptera litura",
+        "Spodeptera litura",
+        "Spodotera litura",
         "Ulat Grayak"
       ],
       "taxonomic_rank": "species",
@@ -516,22 +576,11 @@
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         },
         {
-          "scheme": "KEMENTAN",
-          "id": "Tetranychus sp.",
+          "scheme": "GBIF",
+          "id": "2130185",
+          "uri": "https://www.gbif.org/species/2130185",
           "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tetranychus urticae",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tetranychus cinnabarinus",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+          "note": "Kingdom Animalia, kelas Arachnida; kecocokan EXACT (confidence 98)."
         },
         {
           "scheme": "KEMENTAN",
@@ -547,9 +596,21 @@
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Tetranycus urticae",
+          "id": "Tetranychus cinnabarinus",
           "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranychus sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranychus urticae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -558,20 +619,21 @@
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "2130185",
-          "uri": "https://www.gbif.org/species/2130185",
+          "scheme": "KEMENTAN",
+          "id": "Tetranycus urticae",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Arachnida; kecocokan EXACT (confidence 98)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Tungau",
+        "Tetranycus urticae",
         "Tungau",
         "Tungau Merah"
       ],

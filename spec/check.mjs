@@ -363,11 +363,34 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
     // L26 — tautan OPT harus cocok dengan nama ilmiah yang tertulis di label
     // Rekonsiliasi 1.531 nama sasaran dikerjakan mesin; ini yang menahan hasilnya
     // supaya tidak melenceng diam-diam saat kosakatanya berubah.
+    //
+    // Ejaan yang tercatat pada entitas ikut dihitung cocok — nama diterima menurut
+    // GBIF dan seluruh synonyms-nya. Sesudah penyatuan OPT kembar, satu takson
+    // memegang belasan ejaan registri sekaligus ("Ottochloa nodosa" beserta
+    // "Ottochola nodosa", "Ottchloa nodosa", dan seterusnya), sementara
+    // pest_scientific_name pada rekaman produk sengaja TIDAK ditulis ulang: ia satu-
+    // satunya tempat bunyi asli registri masih terbaca. Tanpa keringanan ini aturan
+    // menyalak pada 1.407 penggunaan yang tautannya justru benar.
+    //
+    // Sifat yang dijaga tidak berkurang: tautan ke organisme yang BERBEDA tetap
+    // ditolak, karena nama organisme itu tidak akan pernah ada di antara ejaan yang
+    // tercatat pada entitas ini.
     for (const [i, u] of (doc.label_uses ?? []).entries()) {
       const ref = u.pest?.id && entityById.get(u.pest.id);
       if (!ref || !u.pest_scientific_name) continue;
       const bersih = (x) => String(x).replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
-      if (ref.scientific_name && bersih(ref.scientific_name) !== bersih(u.pest_scientific_name)) {
+      // Hanya synonyms yang BERBENTUK NAMA ILMIAH yang dihitung. synonyms pada OPT
+      // registri diketahui bercampur: Phytophthora infestans membawa "Hama Trips"
+      // sejak sebelum penyatuan apa pun. Membandingkan pest_scientific_name dengannya
+      // tidak ada gunanya, dan menerimanya akan membuat aturan ini meloloskan tautan
+      // ke organisme yang sama sekali lain.
+      const binomial = (x) => /^[A-Z][a-z]+ [a-z][a-z-]+$/.test(String(x).trim());
+      const ejaanTercatat = new Set(
+        [ref.scientific_name, ref.accepted_scientific_name, ...(ref.synonyms ?? []).filter(binomial)]
+          .filter(Boolean)
+          .map(bersih),
+      );
+      if (ref.scientific_name && !ejaanTercatat.has(bersih(u.pest_scientific_name))) {
         fail(file, 'L26-tautan-opt', `label_uses[${i}] menunjuk "${ref.key}" (${ref.scientific_name}) padahal labelnya menulis "${u.pest_scientific_name}".`);
       }
       if (u.commodity && u.target_site) {
