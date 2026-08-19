@@ -1594,7 +1594,9 @@
         "public_health"
       ],
       "synonyms": [
-        "dimeflutrin"
+        "dimeflutrin",
+        "Dimeflutrhin",
+        "dimeflutrhin"
       ],
       "mappings": [
         {
@@ -1607,7 +1609,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -2730,8 +2733,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000403"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000403 \"Dimeflutrin\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Murni salah ejaan, tanpa teks kesetaraan: \"dimeflutrhin\" adalah \"dimeflutrin\" dengan huruf h tertukar. Keduanya piretroid obat nyamuk bakar dari lini produk yang sama, dengan kadar yang sama. Ejaannya dipertahankan sebagai synonyms karena ia ejaan bahan, bukan anotasi registri — tiga rekaman produk masih memakainya sebagai label. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -18284,8 +18294,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000122"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Nama bahannya sama persis dengan op:sub:00000122; yang membedakan hanya keterangan kesetaraan dalam kurung. 865 g/l garam setara 720 g/l 2,4-D asam mengikuti nisbah bobot molekulnya, jadi keduanya garam yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -20996,8 +21013,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000138"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000138 \"Isopropilamina Glifosat\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Satu dari dua ejaan \"isopropil amina glifosat (setara dengan glifosat 389 g/l)\" yang sama-sama tercatat pada RONDA GOLD 525 SL. Keduanya digabung ke nama kanonik, bukan salah satunya dipilih: memilih di antara dua salah ketik registri hanya memindahkan sengketa, tidak menyelesaikannya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21178,8 +21202,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000138"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000138 \"Isopropilamina Glifosat\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Sesudah keterangan kesetaraan dilepas, yang tersisa \"Isopropil amina glifosat\" — ejaan berspasi dari isopropilamina glifosat. 620 g/l setara 459 g/l glifosat, nisbah 0,740, cocok dengan bobot molekul garamnya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24334,8 +24365,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000122"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Registri memasukkan seluruh baris label ke field nama bahan, lengkap dengan kadar dan kesetaraannya. Yang tersisa sesudah anotasi itu dilepas adalah \"2,4 D dimetil amina\", ejaan lain dari 2,4-D dimetil amina. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24438,8 +24476,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000590"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000590 \"2,4 dimetil amina\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Sama dengan op:sub:00000590 sesudah keterangan kesetaraan dilepas. 720 g/l setara 600 g/l 2,4-D asam — nisbah 0,833, sama dengan nisbah 865/720 pada garam 2,4-D dimetil amina lainnya di registri ini. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -36109,8 +36154,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000138"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000138 \"Isopropilamina Glifosat\" — bahan yang sama, terdaftar dua kali karena nama pada registri berbeda. Ejaan kedua dari pasangan yang sama pada RONDA GOLD 525 SL — berbeda dari op:sub:00000813 hanya pada spasi dan kapitalisasi. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
