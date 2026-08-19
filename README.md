@@ -19,6 +19,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/05-jalur-produk.md`](docs/05-jalur-produk.md) | Jalur 2 — masuk dari kemasan; 63,5% pestisida identik, dan kasus LARBAN |
 | [`docs/06-jalur-hitungan-hara.md`](docs/06-jalur-hitungan-hara.md) | Jalur 3 — rupiah per kilogram hara, dan tiga hal yang tidak boleh dibandingkan |
 | [`docs/07-jalur-keabsahan-benih-bibit.md`](docs/07-jalur-keabsahan-benih-bibit.md) | Jalur 4 — empat surat yang bunyinya mirip, dan kenapa sisi bibit lebih berbahaya |
+| [`docs/08-jalur-sediaan-sendiri.md`](docs/08-jalur-sediaan-sendiri.md) | Jalur 5 — rezim hukum ditentukan fungsi yang dituju, dan dua bahan yang tidak pernah boleh dianjurkan |
 
 Kosakata sudah terisi: 63 fase BBCH Solanaceae, 67 jenis tindakan, 57 variabel, 23 cara
 aplikasi, 10 OPT cabai, dan 11 alasan simpangan. Di atasnya, seluruh registri resmi Kementan
