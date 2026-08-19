@@ -7,7 +7,7 @@
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
 >
-> Jalur 2 dari [03-lima-pintu.md](03-lima-pintu.md). Jalur 1 ada di
+> Jalur 2 dari [03-enam-pintu.md](03-enam-pintu.md). Jalur 1 ada di
 > [04-jalur-insiden.md](04-jalur-insiden.md).
 
 ---

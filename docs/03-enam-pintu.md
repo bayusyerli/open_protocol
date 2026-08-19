@@ -1,14 +1,14 @@
-# Lima pintu ke satu registri
+# Enam pintu ke satu registri
 
 > Dokumen konsep · permukaan baca-saja · 20 Agustus 2026  
 > Semuanya baca-saja, tanpa akun, tanpa petak terdaftar, tanpa rencana. Semuanya bisa dibangun dari data yang **sudah ada hari ini** — dan tidak satu pun menuntut siapa pun mengubah kebiasaannya lebih dulu.  
-> Lima jalur, **satu indeks** · Nol masukan pengguna, **kecuali harga** · Turunan dari **docs/00-fondasi** & **docs/01-sediaan**  
+> Enam jalur, **satu indeks** · Nol masukan pengguna, **kecuali harga** · Turunan dari **docs/00-fondasi** & **docs/01-sediaan**  
 >
 > Diekstrak dari dokumen konsep HTML dengan judul sama, 20 Agustus 2026.
 > Isi, angka, dan tabelnya utuh; simulasi yang bisa diklik tidak ikut —
 > alurnya ditulis ulang sebagai teks.
 >
-> Dokumen payung untuk 04–06: kelima jalur, aturan lintas jalur, dan lubang datanya.
+> Dokumen payung untuk 04–09: keenam jalur, aturan lintas jalur, dan lubang datanya.
 
 ---
 
@@ -18,7 +18,7 @@ Seluruh rancangan sebelumnya menjawab pertanyaan “bagaimana mengumpulkan data�
 
 Pembalikan itu menyelesaikan dua masalah sekaligus. Ia melayani perilaku reaktif alih-alih melawannya — orang datang saat butuh, bukan saat dijadwalkan. Dan ia tidak membawa satu pun risiko yang membuat segmen petani ditunda di dokumen STP: tidak ada atribusi yang diperdebatkan, tidak ada klaim mutu data yang harus dipertahankan, tidak ada data pribadi yang dikumpulkan.
 
-> Yang paling menyenangkan dari lima jalur ini: **tidak satu pun meminta pengguna mempercayai kami.** Semuanya menyajikan isi registri resmi, dan menunjuk sumbernya.
+> Yang paling menyenangkan dari keenam jalur ini: **tidak satu pun meminta pengguna mempercayai kami.** Semuanya menyajikan isi registri resmi, dan menunjuk sumbernya.
 
 ---
 
@@ -26,7 +26,7 @@ Pembalikan itu menyelesaikan dua masalah sekaligus. Ia melayani perilaku reaktif
 
 **Registri Kementan + kosakata terkurasi**
 
-**7.724** pestisida · **7.196** pupuk · **11.227** varietas · **1.399** bahan aktif · **23.058** penggunaan berlabel · **12** sediaan sendiri
+**7.724** pestisida · **7.196** pupuk · **11.227** varietas · **1.399** bahan aktif · **23.058** penggunaan berlabel · **7+5** sediaan sendiri
 
 Jalur 1 · insiden · **Masuk dari gejala**
 
@@ -52,15 +52,21 @@ Jalur 4 · keabsahan · **Masuk dari nama varietas**
 
 Untuk benih *dan bibit*. Verifikasi, bukan rekomendasi.
 
-Jalur 5 · sediaan sendiri · **Masuk dari niat membuat**
+Jalur 5 · sediaan pupuk · **Masuk dari niat menyuburkan**
 
-*“Boleh tidak saya bikin sendiri?”*
+*“Boleh tidak saya bikin pupuk sendiri?”*
 
-Satu-satunya jalur yang juga jadi tujuan dari jalur 1 dan 3.
+Di luar rezim pendaftaran lewat Pasal 72. Tidak menunggu apa pun.
+
+Jalur 6 · sediaan pengendali · **Masuk dari niat mengendalikan**
+
+*“Boleh tidak saya bikin pestisida sendiri?”*
+
+Pasal 77 melarang mengedarkan *dan menggunakan*. Menunggu pendapat hukum.
 
 ---
 
-## 3. Lima jalur, dan batas masing-masing
+## 3. Enam jalur, dan batas masing-masing
 
 | Jalur | Kategori | Ditopang data | Yang tidak sanggup |
 |---|---|---|---|
@@ -68,15 +74,16 @@ Satu-satunya jalur yang juga jadi tujuan dari jalur 1 dan 3.
 | **2 · Produk** — kemasan → isi → setara | Ketiganya | 96,4% pestisida & 71,3% pupuk punya komposisi; 63,5% pestisida identik dengan produk lain | ◐ Nama dagang di kemasan bisa berbeda dari nama terdaftar |
 | **3 · Hitungan** — pupuk + harga → Rp/kg hara | Pupuk | 5.130 pupuk berkomposisi angka terhadap 17 hara | ✕ Harga (nol di registri) dan status subsidi (nol dari 7.196) |
 | **4 · Keabsahan** — varietas → surat | Benih & bibit | 5.822 surat pelepasan, 5.138 pendaftaran, 580 PVT | ✕ Rekomendasi varietas. Hanya 35 dari 11.227 menyebut sifat agronomi |
-| **5 · Sediaan sendiri** — niat → syarat → status hukum | Pupuk & pestisida | 12 resep, 21 bahan baku, kedudukan hukum per pasal, 6 aturan pemeriksa | ◐ Kadar hara sediaan tidak diketahui sampai satu batch benar-benar diuji |
+| **5 · Sediaan pupuk** — niat menyuburkan → syarat | Pupuk sendiri | 7 resep, kriteria pelepasan lengkap, di luar rezim pendaftaran (Pasal 72) | ◐ Kadar hara tidak diketahui sampai satu batch diuji — `L18` |
+| **6 · Sediaan pengendali** — niat mengendalikan → status hukum | Pestisida sendiri | 5 resep, kedudukan hukum per pasal, 6 aturan pemeriksa `L16`–`L21` | ✕ Tidak boleh disajikan sebagai anjuran sampai bacaan Pasal 77 ayat (1) dijawab |
 
 *Kolom terakhir yang paling menentukan: apa yang datanya tidak sanggup, dan karena itu tidak boleh dijanjikan.*
 
 ---
 
-## 4. Jalur kelima: sediaan buatan sendiri
+## 4. Jalur kelima dan keenam: sediaan buatan sendiri
 
-Empat jalur pertama semuanya mengandaikan **produk terdaftar**. Sediaan buatan sendiri secara definisi tidak punya nomor pendaftaran — bukan karena lalai, melainkan karena memang tidak diperjualbelikan. Tanpa jalur kelima, petani yang memberi 10 ton kompos per hektar tercatat sebagai petani yang tidak memupuk.
+Empat jalur pertama semuanya mengandaikan **produk terdaftar**. Sediaan buatan sendiri secara definisi tidak punya nomor pendaftaran — bukan karena lalai, melainkan karena memang tidak diperjualbelikan. Tanpa kedua jalur ini, petani yang memberi 10 ton kompos per hektar tercatat sebagai petani yang tidak memupuk.
 
 > **Temuan hukum yang membentuk seluruh tampilannya**
 >
@@ -85,6 +92,8 @@ Empat jalur pertama semuanya mengandaikan **produk terdaftar**. Sediaan buatan s
 > **Pupuk:** kewajiban melekat pada *peredaran*. Pasal 72 ayat (1) mengecualikan pupuk yang diproduksi petani kecil dari pendaftaran, dan ayat (2) memberi jalan mengedarkannya terbatas dalam satu kabupaten/kota. Petani yang mengomposkan untuk lahannya sendiri berada di luar rezim pendaftaran.
 >
 > **Pestisida:** Pasal 77 ayat (1) melarang mengedarkan *dan/atau **menggunakan*** pestisida yang tidak terdaftar. Kata “menggunakan” tidak muncul di sisi pupuk. Tidak ada Pasal 72 yang sepadan, dan ancamannya 7 tahun serta Rp5 miliar. Pasal 75 pun menentukan pestisida dari *kegunaannya*, bukan asal bahannya — sehingga rendaman mimba, biakan *Trichoderma*, bahkan sediaan yang menyebut dirinya elisitor jatuh ke dalamnya.
+
+**Karena itu keduanya dipisah jadi dua jalur, bukan satu jalur dengan cabang.** Alasannya bukan kerapian: sisi pupuk bisa dirilis sekarang sementara sisi pengendali menunggu pendapat hukum — digabung, tidak ada yang bisa dirilis. Dan satu klaim pengendalian sudah cukup memindahkan sebuah sediaan dari sisi satu ke sisi lain: MOL bonggol pisang dan biakan PGPR sama-sama mengklaim merangsang pertumbuhan, tetapi PGPR juga mengklaim menekan penyakit, dan itu yang memindahkannya.
 
 Sikap yang sudah diambil spesifikasi, dan yang layar harus ikuti: **nyatakan status hukumnya apa adanya, tandai `own_use_only`, jangan menyimpulkan aman.** Bacaan Pasal 77 ayat (1) — kumulatif atau alternatif — adalah pertanyaan hukum yang menunggu penasihat hukum sebelum Fase 4, bukan pertanyaan yang boleh dijawab perancang layar.
 
@@ -111,7 +120,7 @@ Daun tembakau dan akar tuba ada di antara 21 bahan baku, dan keduanya bertanda *
 
 ---
 
-## 5. Empat aturan yang berlaku di kelima jalur
+## 5. Empat aturan yang berlaku di keenam jalur
 
 Aturan 1 · **Fakta, bukan saran**
 
@@ -156,7 +165,8 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 1. **Jalur 3 — hitungan hara.** Aritmetikanya lengkap; hanya perlu satu masukan harga. Menyentuh pos biaya terbesar petani.
 1. **Jalur 4 — keabsahan benih & bibit.** Datanya siap penuh, dan taruhannya paling tinggi per keputusan — terutama pada 2.725 varietas berbibit, yang kesalahannya baru ketahuan empat sampai tujuh tahun kemudian.
 1. **Jalur 1 — insiden.** Menunggu enam kalimat gejala. Setengah hari kerja untuk komoditas beachhead.
-1. **Jalur 5 — sediaan sendiri.** Datanya siap, tetapi sisi `pesticide_like` menunggu pendapat hukum sebelum boleh tampil sebagai anjuran. Sisi `fertilizer_like` tidak menunggu apa pun dan bisa ikut jalur 3 sejak awal.
+1. **Jalur 5 — sediaan pupuk sendiri.** Tidak menunggu apa pun: tujuh resep berada di luar rezim pendaftaran lewat Pasal 72, dan bisa ikut jalur 3 sejak awal sebagai cabang “tidak ada uangnya”.
+1. **Jalur 6 — sediaan pengendali sendiri.** Terakhir, dan bukan karena datanya kurang. Bacaan Pasal 77 ayat (1) harus dijawab penasihat hukum sebelum Fase 4; sampai itu resepnya boleh ditampilkan beserta status hukumnya, tetapi tidak sebagai anjuran.
 
 > **Konsekuensi untuk dokumen STP**
 >

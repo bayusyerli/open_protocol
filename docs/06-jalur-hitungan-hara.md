@@ -8,7 +8,7 @@
 > Isi, angka, dan tabelnya utuh; simulasi yang bisa diklik tidak ikut —
 > alurnya ditulis ulang sebagai teks.
 >
-> Jalur 3 dari [03-lima-pintu.md](03-lima-pintu.md).
+> Jalur 3 dari [03-enam-pintu.md](03-enam-pintu.md).
 
 ---
 
