@@ -89,7 +89,8 @@
       ],
       "synonyms": [
         "Sipermetrin",
-        "sipermetrin"
+        "sipermetrin",
+        "Sipermetrin (cypermethrin)"
       ],
       "mappings": [
         {
@@ -102,7 +103,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -168,7 +170,9 @@
       ],
       "synonyms": [
         "Emamektin benzoat",
-        "emamektin benzoat"
+        "emamektin benzoat",
+        "Emamektin benzoat (Emamectin benzoate)",
+        "Emamektin benzoat (emamectin benzoate)"
       ],
       "mappings": [
         {
@@ -181,7 +185,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -260,7 +265,8 @@
         }
       ],
       "synonyms": [
-        "klorpirifos"
+        "klorpirifos",
+        "Klorpirifos (chlorpyrifos)"
       ],
       "mappings": [
         {
@@ -273,7 +279,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       },
       "hazard": {
         "regulatory_status": [
@@ -344,7 +351,8 @@
       "synonyms": [
         "abamektin",
         "Abamektin (Abamectin)",
-        "abamektin (abamectin)"
+        "abamektin (abamectin)",
+        "Abamektin (Avermectin B1a+ Avermectin B1b)"
       ],
       "mappings": [
         {
@@ -466,7 +474,9 @@
         }
       ],
       "synonyms": [
-        "difenokonazol"
+        "difenokonazol",
+        "Difenokonazol (Difenoconazole)",
+        "Difenokonazol (difenoconazole)"
       ],
       "mappings": [
         {
@@ -479,7 +489,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -505,7 +516,8 @@
       ],
       "synonyms": [
         "FIPRONIL",
-        "fipronil"
+        "fipronil",
+        "Fipronil (Fipronil)"
       ],
       "mappings": [
         {
@@ -518,7 +530,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -647,7 +660,9 @@
         }
       ],
       "synonyms": [
-        "azoksistrobin"
+        "azoksistrobin",
+        "Azoksistrobin (Azoxystrobin)",
+        "Azoksistrobin (azoxystrobin)"
       ],
       "mappings": [
         {
@@ -660,7 +675,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -10459,8 +10475,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000103"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000103 \"Emamektin Benzoat\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -11022,8 +11045,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000101"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000101 \"SIPERMETRIN\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -13251,8 +13281,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000112"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000112 \"Azoksistrobin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -13481,8 +13518,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000108"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000108 \"Difenokonazol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -14090,8 +14134,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000105"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000105 \"Klorpirifos\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -27034,8 +27085,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000007"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000007 \"Abamektin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Kurungnya bukan padanan Inggris melainkan isi campurannya, dan abamektin memang campuran avermektin B1a dengan B1b — jadi yang disebut tetap bahan yang sama, hanya diurai komponennya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -32856,8 +32914,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000109"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000109 \"Fipronil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan padanan Inggrisnya ditempelkan di belakang. Padanan Inggrisnya sama persis dengan nama Indonesianya, jadi yang tersisa sesudah kurungnya dilepas benar-benar nama yang sama. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -37681,8 +37746,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000106"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000106 \"Mankozeb\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama bahannya sama sesudah kadarnya dilepas; angka itu milik pendaftaran, bukan bagian dari nama bahan. Namanya membawa dua anotasi sekaligus: padanan Inggris dan kadar 80 %. Kadarnya yang menentukan perlakuan — nama seperti ini tidak pantas naik jadi synonyms, karena 80 % milik satu pendaftaran, bukan sifat mankozeb. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {

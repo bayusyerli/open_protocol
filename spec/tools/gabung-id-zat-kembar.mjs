@@ -4,11 +4,12 @@
 //
 // Registri Kementan menuliskan hal-hal yang bukan nama ke dalam FIELD NAMA BAHAN.
 // Pembangun kosakata memperlakukan setiap string unik sebagai satu entitas, jadi
-// bahan yang sama pecah jadi beberapa id. Ada empat bentuknya di berkas ini:
+// bahan yang sama pecah jadi beberapa id. Ada lima bentuknya di berkas ini:
 //
 //   kesetaraan   "2,4-D dimetil amina" vs "2,4-D dimetil amina (setara dengan
-//                2,4-D 720 g/l)" — anotasi kadar ikut masuk ke nama
-//   nama-inggris "Metomil" vs "Metomil (Methomyl)" — padanan Inggris ditempel
+//                2,4-D 720 g/l)" — anotasi kesetaraan ikut masuk ke nama
+//   kadar        "Mankozeb" vs "mankozeb (mancozeb) : 80%"
+//   nama-inggris "Metomil" vs "Metomil (Methomyl)"; "Fipronil" vs "Fipronil (Fipronil)"
 //   ejaan        "dimeflutrin" vs "dimeflutrhin"; "Isopropilamina Glifosat" vs
 //                "ISOPROPIL AMINA GLIFOSAT"
 //   tanda-baca   "Diafenthiuron" vs "Diafenthiuron."
@@ -20,6 +21,13 @@
 // (KILL UP 480/1 SL 961, RUSO 485 SL 970) atau kadarnya dalam persen, yang memang
 // tidak dijumlahkan L27 sama sekali (PRAMEX 40 SP 40 % + 40 %). Penjumlahan ganda
 // yang diam itu justru yang paling berbahaya: tidak ada peringatan yang menyalak.
+//
+// Sebagian pasangan di tabel ini TIDAK pernah berbarengan di satu pendaftaran, jadi
+// tidak ada kadar yang terjumlah dua kali dan tidak ada peringatan apa pun yang bisa
+// menemukannya — "SIPERMETRIN" 277 rekaman berdampingan dengan "Sipermetrin
+// (cypermethrin)" 6 rekaman, dua id untuk piretroid yang sama. Yang rusak di situ
+// bukan satu pendaftaran melainkan penjumlahan lintas pendaftaran: siapa pun yang
+// menghitung paparan sipermetrin akan kehilangan enam produk tanpa tahu.
 //
 // Ini keputusan KOSAKATA, bukan keputusan ulangan. Itu sebabnya ia terpisah dari
 // dedup-komposisi-pestisida.mjs, yang hanya boleh membuang baris kembar dalam satu
@@ -64,12 +72,12 @@ const STAMP = '2026-08-19T00:00:00Z';
 const PENANDA = 'Penggabungan id zat: ';
 
 // ---------------------------------------------------------------------------
-// 1. Empat bentuk cacat, dan apa yang pantas dilakukan pada masing-masing.
+// 1. Lima bentuk cacat, dan apa yang pantas dilakukan pada masing-masing.
 //
 //    'synonim' menentukan apakah nama yang kalah naik jadi synonyms pada entitas
 //    yang menang. Nama yang cuma beda ejaan, padanan Inggris, atau tanda baca —
 //    pantas, itu memang nama bahannya dan orang akan mencarinya. Nama yang sudah
-//    tercampur kadar dan kesetaraan — tidak: itu anotasi pendaftaran, bukan nama
+//    tercampur kadar atau kesetaraan — tidak: itu anotasi pendaftaran, bukan nama
 //    bahan, dan tempatnya memang pada entitas yang digantikan.
 // ---------------------------------------------------------------------------
 const JENIS = {
@@ -87,6 +95,11 @@ const JENIS = {
     synonim: true,
     kalimat: 'Sumber menuliskan nama bahannya dengan ejaan yang berbeda',
     zat: 'Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf.',
+  },
+  kadar: {
+    synonim: false,
+    kalimat: 'Registri menuliskan kadar ke dalam field nama bahan',
+    zat: 'Nama bahannya sama sesudah kadarnya dilepas; angka itu milik pendaftaran, bukan bagian dari nama bahan.',
   },
   'tanda-baca': {
     synonim: true,
@@ -121,6 +134,10 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00000404": {
+    kanonik: "op:sub:00000103",
+    jenis: "nama-inggris",
+  },
   "op:sub:00000412": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
@@ -128,6 +145,10 @@ const GABUNG = {
       "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
+  },
+  "op:sub:00000424": {
+    kanonik: "op:sub:00000101",
+    jenis: "nama-inggris",
   },
   "op:sub:00000433": {
     kanonik: "op:sub:00000220",
@@ -148,8 +169,20 @@ const GABUNG = {
     kanonik: "op:sub:00000107",
     jenis: "nama-inggris",
   },
+  "op:sub:00000526": {
+    kanonik: "op:sub:00000112",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000534": {
+    kanonik: "op:sub:00000108",
+    jenis: "nama-inggris",
+  },
   "op:sub:00000555": {
     kanonik: "op:sub:00000110",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000556": {
+    kanonik: "op:sub:00000105",
     jenis: "nama-inggris",
   },
   "op:sub:00000593": {
@@ -297,6 +330,14 @@ const GABUNG = {
       "Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam " +
       "terhadap garam dimetil aminanya.",
   },
+  "op:sub:00001031": {
+    kanonik: "op:sub:00000007",
+    jenis: "nama-inggris",
+    dasar:
+      "Kurungnya bukan padanan Inggris melainkan isi campurannya, dan abamektin memang " +
+      "campuran avermektin B1a dengan B1b — jadi yang disebut tetap bahan yang sama, hanya " +
+      "diurai komponennya.",
+  },
   "op:sub:00001074": {
     kanonik: "op:sub:00000128",
     jenis: "nama-inggris",
@@ -312,6 +353,13 @@ const GABUNG = {
   "op:sub:00001230": {
     kanonik: "op:sub:00000156",
     jenis: "nama-inggris",
+  },
+  "op:sub:00001251": {
+    kanonik: "op:sub:00000109",
+    jenis: "nama-inggris",
+    dasar:
+      "Padanan Inggrisnya sama persis dengan nama Indonesianya, jadi yang tersisa sesudah " +
+      "kurungnya dilepas benar-benar nama yang sama.",
   },
   "op:sub:00001358": {
     kanonik: "op:sub:00000102",
@@ -360,6 +408,14 @@ const GABUNG = {
       "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
+  },
+  "op:sub:00001432": {
+    kanonik: "op:sub:00000106",
+    jenis: "kadar",
+    dasar:
+      "Namanya membawa dua anotasi sekaligus: padanan Inggris dan kadar 80 %. Kadarnya yang " +
+      "menentukan perlakuan — nama seperti ini tidak pantas naik jadi synonyms, karena 80 % " +
+      "milik satu pendaftaran, bukan sifat mankozeb.",
   },
   "op:sub:00001547": {
     kanonik: "op:sub:00000104",
