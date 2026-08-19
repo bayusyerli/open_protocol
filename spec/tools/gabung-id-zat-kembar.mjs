@@ -16,11 +16,18 @@
 //
 // Kalau dua id itu muncul pada pendaftaran yang SAMA, kadarnya terjumlah dua kali.
 // Lima di antaranya melampaui 1.000 g per kg/L dan tertangkap L27 (Mega 9 865 SL,
-// AMCOMIN 865 SL, DIMINA 720 SL, GALATOP 620 SL, RONDA GOLD 525 SL). Dua puluh
-// delapan sisanya TIDAK tertangkap — jumlah gandanya masih di bawah 1.000 g/l
-// (KILL UP 480/1 SL 961, RUSO 485 SL 970) atau kadarnya dalam persen, yang memang
-// tidak dijumlahkan L27 sama sekali (PRAMEX 40 SP 40 % + 40 %). Penjumlahan ganda
-// yang diam itu justru yang paling berbahaya: tidak ada peringatan yang menyalak.
+// AMCOMIN 865 SL, DIMINA 720 SL, GALATOP 620 SL, RONDA GOLD 525 SL). Tiga puluh satu
+// sisanya TIDAK tertangkap — jumlah gandanya masih di bawah 1.000 g/l (KILL UP 480/1
+// SL 961, RUSO 485 SL 970) atau kadarnya dalam persen, yang memang tidak dijumlahkan
+// L27 sama sekali (PRAMEX 40 SP 40 % + 40 %). Penjumlahan ganda yang diam itu justru
+// yang paling berbahaya: tidak ada peringatan yang menyalak.
+//
+// Penggabungan yang cukup luas juga bisa MEMUNCULKAN sengketa kadar: begitu dua id
+// jadi satu, dua angka berbeda untuk bahan yang sama bertemu di satu pendaftaran. Tiga
+// pendaftaran parakuat kena — KONTAXONE 310 SL, SINARTOP 280 SL, JAGOQUAT 288 SL,
+// semuanya melawan 276 g/l, kadar parakuat paling lazim di registri dan paling mudah
+// terbawa sebagai nilai bawaan. Itu bukan ulangan dan tidak boleh didedup buta;
+// putusannya ditulis satu per satu di tabel PRODUK, dan tanpa putusan skrip berhenti.
 //
 // Sebagian pasangan di tabel ini TIDAK pernah berbarengan di satu pendaftaran, jadi
 // tidak ada kadar yang terjumlah dua kali dan tidak ada peringatan apa pun yang bisa
@@ -118,15 +125,104 @@ const GABUNG = {
       "sering muncul\" itu yang sama dipakai konvensi penyeragaman nama principal. Putaran " +
       "sebelumnya sempat memilih arah kebalikannya; keputusan ini yang berlaku.",
   },
+  "op:sub:00000157": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000172": {
+    kanonik: "op:sub:00000104",
+    jenis: "nama-inggris",
+    dasar:
+      "Nama Inggris polos tanpa anotasi apa pun, dan pemegang id terbesar kedua pada parakuat " +
+      "— 31 rekaman. Membiarkannya berarti membiarkan registri parakuat terbelah dua.",
+  },
+  "op:sub:00000180": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000258": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00000260": {
     kanonik: "op:sub:00000114",
     jenis: "nama-inggris",
+  },
+  "op:sub:00000284": {
+    kanonik: "op:sub:00000102",
+    jenis: "ejaan",
+    dasar:
+      "Urutan katanya dibalik — glifosat di depan, nama garamnya di belakang.",
+  },
+  "op:sub:00000305": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000309": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
   "op:sub:00000329": {
     kanonik: "op:sub:00000106",
     jenis: "nama-inggris",
   },
+  "op:sub:00000345": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nama depannya salah ketik, \"Isoporpil\" alih-alih \"Isopropil\". Nisbah kesetaraan yang " +
+      "ditulis registri, 0,741, adalah nisbah bobot molekul glifosat asam terhadap garam " +
+      "isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk garam yang sama.",
+  },
   "op:sub:00000346": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000347": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000354": {
+    kanonik: "op:sub:00000104",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000379": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000380": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
     dasar:
@@ -146,6 +242,30 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00000417": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000418": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000419": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00000424": {
     kanonik: "op:sub:00000101",
     jenis: "nama-inggris",
@@ -157,6 +277,34 @@ const GABUNG = {
   "op:sub:00000436": {
     kanonik: "op:sub:00000007",
     jenis: "nama-inggris",
+  },
+  "op:sub:00000452": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000463": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000464": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000465": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
   "op:sub:00000484": {
     kanonik: "op:sub:00000403",
@@ -176,6 +324,14 @@ const GABUNG = {
   "op:sub:00000534": {
     kanonik: "op:sub:00000108",
     jenis: "nama-inggris",
+  },
+  "op:sub:00000553": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
   "op:sub:00000555": {
     kanonik: "op:sub:00000110",
@@ -200,7 +356,55 @@ const GABUNG = {
     kanonik: "op:sub:00000134",
     jenis: "nama-inggris",
   },
+  "op:sub:00000643": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000644": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000645": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000646": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00000647": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000648": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000649": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
     dasar:
@@ -224,6 +428,22 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00000652": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000653": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00000654": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
@@ -240,9 +460,45 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00000656": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+  },
   "op:sub:00000673": {
     kanonik: "op:sub:00000127",
     jenis: "nama-inggris",
+  },
+  "op:sub:00000676": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000677": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000678": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000679": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
   "op:sub:00000714": {
     kanonik: "op:sub:00000122",
@@ -250,6 +506,42 @@ const GABUNG = {
     dasar:
       "Nisbah 0,831 pada keterangan kesetaraannya adalah nisbah bobot molekul 2,4-D asam " +
       "terhadap garam dimetil aminanya.",
+  },
+  "op:sub:00000802": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00000807": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000808": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000809": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000810": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
   "op:sub:00000811": {
     kanonik: "op:sub:00000102",
@@ -259,7 +551,47 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00000812": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00000813": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000814": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000815": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000816": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000817": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
     dasar:
@@ -299,6 +631,14 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00000822": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00000826": {
     kanonik: "op:sub:00000117",
     jenis: "nama-inggris",
@@ -306,6 +646,46 @@ const GABUNG = {
   "op:sub:00000847": {
     kanonik: "op:sub:00000384",
     jenis: "nama-inggris",
+  },
+  "op:sub:00000854": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000855": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000856": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000857": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00000858": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
   "op:sub:00000862": {
     kanonik: "op:sub:00000123",
@@ -361,7 +741,358 @@ const GABUNG = {
       "Padanan Inggrisnya sama persis dengan nama Indonesianya, jadi yang tersisa sesudah " +
       "kurungnya dilepas benar-benar nama yang sama.",
   },
+  "op:sub:00001292": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001293": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00001296": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001297": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+    dasar:
+      "Ditulis sebagai aminanya, bukan garam amoniumnya; garam isopropilamina glifosat memang " +
+      "terbentuk dari amina itu.",
+  },
+  "op:sub:00001298": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00001326": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001327": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001328": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001329": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001330": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001331": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001332": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001333": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001334": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001335": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001336": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001337": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001338": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001339": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001340": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001341": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001342": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001343": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001344": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001345": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001346": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001347": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001348": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001349": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001350": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001351": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001352": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001353": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001354": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001355": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001356": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001357": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00001358": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001359": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001360": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001361": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001362": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001363": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001364": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001365": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001366": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
     dasar:
@@ -377,6 +1108,14 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00001368": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00001369": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
@@ -385,7 +1124,71 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00001370": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001371": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001372": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001373": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001374": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001375": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001380": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+  },
+  "op:sub:00001381": {
+    kanonik: "op:sub:00000102",
+    jenis: "nama-inggris",
+  },
   "op:sub:00001382": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001383": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
     dasar:
@@ -401,7 +1204,39 @@ const GABUNG = {
       "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
       "garam yang sama.",
   },
+  "op:sub:00001385": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001386": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00001387": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001388": {
+    kanonik: "op:sub:00000102",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,741, adalah nisbah bobot molekul glifosat " +
+      "asam terhadap garam isopropilaminanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001389": {
     kanonik: "op:sub:00000102",
     jenis: "kesetaraan",
     dasar:
@@ -417,6 +1252,222 @@ const GABUNG = {
       "menentukan perlakuan — nama seperti ini tidak pantas naik jadi synonyms, karena 80 % " +
       "milik satu pendaftaran, bukan sifat mankozeb.",
   },
+  "op:sub:00001520": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001521": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001522": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001523": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001524": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001525": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001526": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001527": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001528": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001529": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001530": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001531": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001532": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001533": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001534": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001535": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001536": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001537": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001538": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001539": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001540": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001541": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001542": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001543": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001544": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001545": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001546": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00001547": {
     kanonik: "op:sub:00000104",
     jenis: "kesetaraan",
@@ -424,12 +1475,92 @@ const GABUNG = {
       "Nisbah 0,724 pada keterangan kesetaraannya adalah nisbah bobot molekul ion parakuat " +
       "terhadap garam dikloridanya.",
   },
+  "op:sub:00001548": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001549": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001550": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001551": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001552": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001553": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
   "op:sub:00001554": {
     kanonik: "op:sub:00000104",
     jenis: "kesetaraan",
     dasar:
       "Nisbah 0,724 pada keterangan kesetaraannya adalah nisbah bobot molekul ion parakuat " +
       "terhadap garam dikloridanya.",
+  },
+  "op:sub:00001555": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001556": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001557": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
+  },
+  "op:sub:00001558": {
+    kanonik: "op:sub:00000104",
+    jenis: "kesetaraan",
+    dasar:
+      "Nisbah kesetaraan yang ditulis registri, 0,724, adalah nisbah bobot molekul ion " +
+      "parakuat terhadap garam dikloridanya; angka itu hanya cocok kalau kedua nama menunjuk " +
+      "garam yang sama.",
   },
   "op:sub:00001595": {
     kanonik: "op:sub:00000234",
@@ -460,13 +1591,49 @@ const PRODUK = {
   "dkprotio-mix-390-sc-01020120186025": { gabung: ["op:sub:00000433", "op:sub:00000869"], kembar: 2, l27: null },
   "fitagill-1-55-3-10-sl-01040120248375": { gabung: ["op:sub:00001074"], kembar: 1, l27: null },
   "galatop-620-sl-01030120124225": { gabung: ["op:sub:00000820", "op:sub:00000138"], kembar: 1, l27: 1240 },
+  "grass-buster-500-sl-01030120175714": { gabung: ["op:sub:00000802"], kembar: 1, l27: null },
   "hippo-400-sl-01010120175693": { gabung: ["op:sub:00000621"], kembar: 1, l27: null },
+  "jagoquat-288-sl-01030120227542": {
+    gabung: ["op:sub:00000419", "op:sub:00001538"],
+    kembar: 0,
+    l27: null,
+    sengketa: {
+      "op:sub:00000104": {
+        pilih: { value: 288, unit: "g/L" },
+        tolak: [{ value: 276, unit: "g/L" }],
+        dasar:
+          "Sengketanya diputus aritmetika di dalam pendaftaran itu sendiri. Nama bahan yang " +
+          "membawa 288 g/l ikut menuliskan kesetaraannya, 209 g/l ion parakuat, dan 288 x 0,724 " +
+          "= 208,6 - cocok. Baris 276 g/l membawa kesetaraan 200 g/l, yang benar untuk 276 " +
+          "tetapi bukan untuk produk bernama 288. Angka pada nama dagang menunjuk arah yang " +
+          "sama.",
+      },
+    },
+  },
   "k-blutanil-75-wp-01020120237771": { gabung: ["op:sub:00000826"], kembar: 1, l27: null },
   "k-kingfield-60-20-wg-01010120237774": { gabung: ["op:sub:00000673", "op:sub:00000862"], kembar: 2, l27: null },
   "k-kinggold-10-wp-01030120237775": { gabung: ["op:sub:00001230"], kembar: 1, l27: null },
   "k-voltaz-180-120-sc-01010120237781": { gabung: ["op:sub:00000555", "op:sub:00000641"], kembar: 2, l27: null },
   "kill-up-480-1-sl-01030120072767": { gabung: ["op:sub:00000412"], kembar: 1, l27: null },
   "kill-up-neo-481-sl-01030120227547": { gabung: ["op:sub:00000811", "op:sub:00001369"], kembar: 1, l27: null },
+  "kleenup-480-sl-0103011989819": { gabung: ["op:sub:00000452"], kembar: 1, l27: null },
+  "kontaxone-310-sl-01030120114139": {
+    gabung: ["op:sub:00000172"],
+    kembar: 0,
+    l27: null,
+    sengketa: {
+      "op:sub:00000104": {
+        pilih: { value: 310, unit: "g/L" },
+        tolak: [{ value: 276, unit: "g/L" }],
+        dasar:
+          "Angka pada nama dagang mengunci kadar di registri ini: pada 4.495 dari 4.508 produk " +
+          "yang komposisinya tidak bersengketa, angka nama sama persis dengan kadar tercatat. " +
+          "Dan 276 g/l adalah kadar parakuat diklorida paling lazim di seluruh registri, jadi " +
+          "ia yang paling mudah terbawa sebagai nilai bawaan - dasar yang sama sudah dipakai " +
+          "dedup-komposisi-pestisida.mjs untuk MARKOTOP 300 SL dan TOPJOS 300 SL.",
+      },
+    },
+  },
   "lentra-200-sl-04110120072773": { gabung: ["op:sub:00000501"], kembar: 1, l27: null },
   "mateno-up-160-5-1-sl-01030120093350": { gabung: ["op:sub:00000818", "op:sub:00001382"], kembar: 1, l27: null },
   "mega-9-865-sl-01030120072778": { gabung: ["op:sub:00000938"], kembar: 1, l27: 1730 },
@@ -475,6 +1642,7 @@ const PRODUK = {
   "neo-pilarquat-137-sl-01030120227335": { gabung: ["op:sub:00001554"], kembar: 1, l27: null },
   "neomine-300-100-sl-01030120237790": { gabung: ["op:sub:00000593", "op:sub:00000647", "op:sub:00000819"], kembar: 2, l27: null },
   "nomos-0-2mc-06080120227337": { gabung: ["op:sub:00000484"], kembar: 1, l27: null },
+  "polado-240-105-sl-01030119991467": { gabung: ["op:sub:00000802"], kembar: 1, l27: null },
   "pramex-40-sp-01010120227347": { gabung: ["op:sub:00000260"], kembar: 1, l27: null },
   "primabat-50-wp-01020120248418": { gabung: ["op:sub:00001203"], kembar: 1, l27: null },
   "primax-480-1-sl-01030120072791": { gabung: ["op:sub:00000346", "op:sub:00000412"], kembar: 1, l27: null },
@@ -483,6 +1651,22 @@ const PRODUK = {
   "ruso-485-sl-01030120083224": { gabung: ["op:sub:00000650"], kembar: 1, l27: null },
   "setting-126-sl-01030120237810": { gabung: ["op:sub:00000821", "op:sub:00001358"], kembar: 1, l27: null },
   "sibiru-80-wp-01020120238061": { gabung: ["op:sub:00000329"], kembar: 1, l27: null },
+  "sinartop-280-sl-01030120114170": {
+    gabung: ["op:sub:00000172"],
+    kembar: 0,
+    l27: null,
+    sengketa: {
+      "op:sub:00000104": {
+        pilih: { value: 280, unit: "g/L" },
+        tolak: [{ value: 276, unit: "g/L" }],
+        dasar:
+          "Angka pada nama dagang, dan dua bukti lain sejalan: pendaftaran kembarannya di " +
+          "sumber hanya memuat 280 g/l tanpa 276, sementara 280 x 0,724 = 202,8 g/l ion " +
+          "parakuat - nilai yang memang berdiri sebagai entitas tersendiri di registri ini. 276 " +
+          "g/l kadar parakuat paling lazim dan paling mudah terbawa sebagai nilai bawaan.",
+      },
+    },
+  },
   "voraxor-250-125-sc-01030120227480": { gabung: ["op:sub:00001595", "op:sub:00001670"], kembar: 2, l27: null },
 };
 // total 33 pendaftaran bercatatan
@@ -667,6 +1851,7 @@ const stat = { dipetakanUlang: 0, entriDibuang: 0, produkBerubah: 0, hanyaDipeta
 const tanpaCatatan = [];
 const takAdaDiSumber = [];
 const kembarMeleset = [];
+const sengketaBaru = [];
 const l27Meleset = [];
 const labelBeranotasi = [];
 const kunciTerpakai = new Set();
@@ -735,6 +1920,41 @@ records.forEach((rec, i) => {
     return { substance: { id, label: asal.e.substance.label }, value: asal.e.value, unit: asal.e.unit };
   });
 
+  // Sesudah pemetaan ulang, satu id kanonik bisa memayungi lebih dari satu kadar. Itu
+  // bukan ulangan melainkan sengketa: registri memuat dua angka untuk bahan yang sama
+  // pada pendaftaran yang sama, dan tidak ada kolom yang menentukan mana yang benar.
+  // Tidak ada tebakan diam-diam di sini — putusannya ditulis di tabel PRODUK, dan tanpa
+  // putusan skrip berhenti.
+  const perId = new Map();
+  for (const e of rapi) {
+    if (!perId.has(e.substance.id)) perId.set(e.substance.id, []);
+    perId.get(e.substance.id).push(e);
+  }
+  const ditolak = [];
+  for (const [id, entri] of perId) {
+    if (entri.length < 2) continue;
+    const putusan = p?.sengketa?.[id];
+    if (!putusan) {
+      sengketaBaru.push(`${rec.key} (${rec.label?.id}) — ${id}: ${entri.map((e) => `${e.value} ${e.unit}`).join(', ')}`);
+      continue;
+    }
+    const menang = entri.find((e) => e.value === putusan.pilih.value && e.unit === putusan.pilih.unit);
+    if (!menang) {
+      sengketaBaru.push(`${rec.key} — putusan memilih ${putusan.pilih.value} ${putusan.pilih.unit} untuk ${id}, tetapi nilai itu tidak ada di berkas`);
+      continue;
+    }
+    for (const e of entri) {
+      if (e === menang) continue;
+      ditolak.push(e);
+      if (!putusan.tolak.some((t) => t.value === e.value && t.unit === e.unit)) {
+        sengketaBaru.push(`${rec.key} — ${id} memuat ${e.value} ${e.unit} yang tidak disebut daftar tolak`);
+      }
+    }
+  }
+  if (ditolak.length) {
+    for (let n = rapi.length - 1; n >= 0; n--) if (ditolak.includes(rapi[n])) rapi.splice(n, 1);
+  }
+
   const buang = asli.length - rapi.length;
 
   // Setiap pembuangan entri wajib ada catatannya. Pemetaan ulang tanpa pembuangan
@@ -744,8 +1964,9 @@ records.forEach((rec, i) => {
     tanpaCatatan.push(`${rec.key} (${rec.label?.id}) membuang ${buang} entri tetapi tidak ada di tabel PRODUK`);
     return;
   }
-  if (buang > 0 && buang !== p.kembar) {
-    kembarMeleset.push(`${rec.key}: tabel menyebut ${p.kembar} entri kembar, berkas membuang ${buang}`);
+  const harusBuang = p ? p.kembar + Object.values(p.sengketa ?? {}).reduce((n, x) => n + x.tolak.length, 0) : 0;
+  if (buang > 0 && buang !== harusBuang) {
+    kembarMeleset.push(`${rec.key}: tabel menyebut ${harusBuang} entri dibuang (${p.kembar} kembar + sisanya kadar yang ditolak), berkas membuang ${buang}`);
   }
   if (buang > 0 && p.l27 && Math.round(jumlahKadar(asli)) !== p.l27) {
     l27Meleset.push(`${rec.key}: tabel menyebut ${p.l27} g, berkas menjumlahkan ${Math.round(jumlahKadar(asli))} g`);
@@ -800,6 +2021,11 @@ records.forEach((rec, i) => {
           : `Jumlah gandanya masih di bawah 1.000 g per kg/L, jadi L27 pun melewatkannya — ` +
             `penjumlahan ganda ini tidak pernah menyalakan peringatan apa pun. `
         : '') +
+    Object.entries(p.sengketa ?? {}).map(([id, x]) =>
+      `Penggabungan itu memunculkan sengketa kadar pada ${id}: registri memuat ` +
+      `${[x.pilih, ...x.tolak].map((v) => `${v.value} ${v.unit}`).join(' dan ')} untuk bahan yang sama. ` +
+      `Yang dipakai ${x.pilih.value} ${x.pilih.unit}; yang tidak dipakai ` +
+      `${x.tolak.map((v) => `${v.value} ${v.unit}`).join('; ')}. ${x.dasar} `).join('') +
     `Komposisi sesudah digabung: ${ringkas}. Nama lama beserta anotasinya tetap terbaca pada ` +
     `entitas yang digantikan; entitas itu tidak dihapus, statusnya "superseded" dan menunjuk penggantinya.`;
 
@@ -826,6 +2052,7 @@ const tambah = (judul, daftar) => {
 tambah('Ada pendaftaran yang kehilangan entri tetapi belum ada di tabel PRODUK:', tanpaCatatan);
 tambah('Ada penggabungan yang tidak didukung bahanAktif mentah — tinjau ulang tabel GABUNG:', takAdaDiSumber);
 tambah('Jumlah entri kembar tidak cocok dengan berkas:', kembarMeleset);
+tambah('Ada sengketa kadar yang belum diputuskan — periksa ke sumber, lalu tulis putusannya di tabel PRODUK:', sengketaBaru);
 tambah('Jumlah kadar sebelum penggabungan tidak cocok dengan berkas:', l27Meleset);
 tambah('Ada pendaftaran di tabel PRODUK yang tidak ada di NDJSON:', Object.keys(PRODUK).filter((k) => !kunciTerpakai.has(k)));
 if (gagal.length) {
