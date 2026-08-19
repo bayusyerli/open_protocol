@@ -170,6 +170,8 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | Berkas | Isi | Pemetaan luar |
 |---|---|---|
 | `stage-scale-bbch-solanaceae.json` | **63 fase BBCH** untuk cabai, tomat, terung — ditautkan ke 22 komoditas | BBCH |
+| `stage-scale-bbch-padi.json` | **59 fase BBCH padi** — sepuluh fase utama, benih kering sampai hasil panen | BBCH |
+| `stage-scale-bbch-jagung.json` | **46 fase BBCH jagung** — tanpa fase utama 2 dan 4, yang memang tidak dipakai | BBCH |
 | `stage-scale-doc-udang.json` | 4 fase berbasis umur budidaya udang — ditautkan ke 1 komoditas | — (beralasan) |
 | `operation-type.json` | **61 jenis tindakan**, hierarkis, dari olah tanah sampai pengangkutan | 28 ke AgrO / ICASA |
 | `variable.json` | **46 variabel** — pertumbuhan, OPT, tanah, air, cuaca, hasil | 15 ke ICASA / AgrO |
@@ -367,18 +369,36 @@ Varietas tidak menyimpan skala fasenya sendiri — ia mewarisi lewat komoditas. 
 adalah sifat tanamannya, bukan sifat varietasnya, dan `Cycle.stage_scale` tetap tersedia
 untuk siklus yang perlu menyimpang.
 
-**1.218 dari 11.227 varietas (10,8%) kini mewarisi skala fase.** Seluruhnya lewat kunci
-BBCH sayuran buah Solanaceae, yang ditautkan ke 22 komoditas cabai, tomat, terung, dan
-paprika. Sisanya belum punya skala — bukan karena tautannya kurang, melainkan karena
-kuncinya memang belum ada di repositori ini. Yang paling terasa: **padi 1.434 varietas**
-dan **jagung 739**, dua tanaman terpenting di pasar awal, keduanya punya kunci BBCH resmi
-yang belum disusun ke sini.
+**3.653 dari 11.227 varietas (32,5%) mewarisi skala fase**, lewat empat skala dan 33
+komoditas:
+
+| Skala | Fase | Komoditas | Varietas |
+|---|---:|---:|---:|
+| BBCH Solanaceae — cabai, tomat, terung | 63 | 22 | 1.218 |
+| BBCH padi | 59 | 5 | 1.445 |
+| BBCH jagung | 46 | 5 | 990 |
+| Umur budidaya udang vaname (DOC) | 4 | 1 | — |
+
+Kunci padi dan jagung disalin dari **BBCH Monograph edisi ke-2 (2001)**, bukan dari
+ingatan: teks Inggrisnya ikut disimpan di `label.en` apa adanya supaya terjemahan
+Indonesianya bisa diperiksa terhadap sumbernya. Termasuk salah ketiknya — monograf menulis
+"Coleptile" pada fase 07 jagung, dan itu direkam apa adanya dengan penanda.
+
+Dua temuan struktural dari kuncinya sendiri: **jagung tidak punya fase utama 2 dan 4**
+sama sekali — tidak ada pembentukan anakan, tidak ada bunting — sehingga deretnya melompat
+dari 19 ke 30 dan dari 39 ke 51. Dan **fase utama 6 jagung memuat dua deskripsi sekaligus**,
+bunga jantan pada malai dan bunga betina pada tongkol, karena keduanya berlangsung terpisah
+pada tanaman yang sama.
 
 **Kentang dan tembakau sengaja tidak ditautkan** walau sama-sama Solanaceae: keduanya punya
 kunci BBCH sendiri, dan kunci sayuran buah tidak mengenal pembentukan umbi maupun pemangkasan
-pucuk. Tujuh komoditas lain dikecualikan dengan alasan tertulis di
-`tools/tautkan-skala-fase.mjs` — Cabe Jawa ternyata *Piper retrofractum*, famili Piperaceae,
-dan tiga nama "terong" merujuk *Solanum betaceum* yang berupa pohon.
+pucuk. Sembilan komoditas dikecualikan dengan alasan tertulis di
+`tools/tautkan-skala-fase.mjs` — Cabe Jawa ternyata *Piper retrofractum*, famili Piperaceae;
+tiga nama "terong" merujuk *Solanum betaceum* yang berupa pohon; dan "Rumput Padi-Padian"
+adalah kelompok gulma Poaceae, bukan padi.
+
+Yang belum tertaut tinggal tanaman yang kuncinya belum disusun: durian (495 varietas),
+semangka (367), mentimun (305), tembakau (267), krisan (247).
 
 Aturan `L28` menjaga tautannya tetap sepakat dua arah: komoditas tidak boleh mengaku memakai
 skala yang tidak mencantumkannya.

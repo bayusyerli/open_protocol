@@ -329,7 +329,11 @@
         "Padi:",
         "padi",
         "padi sawah"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000003",
+        "label": "BBCH — Padi (Oryza sativa)"
+      }
     }
   ]
 }

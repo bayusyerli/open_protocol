@@ -127,7 +127,11 @@
         "Jagung :",
         "Jagung:",
         "jagung"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000004",
+        "label": "BBCH — Jagung (Zea mays)"
+      }
     },
     {
       "id": "op:cmd:00001003",
@@ -2032,7 +2036,11 @@
       "synonyms": [
         "Jagung manis",
         "Jagung manis:"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000004",
+        "label": "BBCH — Jagung (Zea mays)"
+      }
     },
     {
       "id": "op:cmd:00001088",

@@ -46,6 +46,22 @@ const CAKUPAN = {
     'op:cmd:00002402', // Tomat Ceri
     'op:cmd:00002403', // Tomat Rampai
   ],
+  // BBCH — padi (Oryza sativa)
+  'stage-scale-bbch-padi.json': [
+    'op:cmd:00000006', // Padi
+    'op:cmd:00002299', // Padi Beliah
+    'op:cmd:00002300', // Padi Hitam
+    'op:cmd:00002301', // Padi Ketan
+    'op:cmd:00002302', // Padi Ladang
+  ],
+  // BBCH — jagung (Zea mays), termasuk jagung manis dan jagung pulut
+  'stage-scale-bbch-jagung.json': [
+    'op:cmd:00001002', // Jagung
+    'op:cmd:00001087', // Budidaya jagung manis — nama masih bawaan label pestisida, tetapi 219 varietas menunjuk ke sini
+    'op:cmd:00002134', // Jagung Ketan
+    'op:cmd:00002135', // Jagung Pulut
+    'op:cmd:00002136', // Jagung Pulut Manis
+  ],
   // Umur budidaya udang vaname (DOC)
   'stage-scale-doc-udang.json': [
     'op:cmd:00000005', // Udang vaname
@@ -55,6 +71,8 @@ const CAKUPAN = {
 // Sengaja TIDAK ditautkan, beserta alasannya. Ditulis di sini supaya keputusannya
 // bisa dibantah orang berikutnya, bukan hilang jadi daftar yang tampak lengkap.
 const DIKECUALIKAN = {
+  'op:cmd:00002347': 'Rumput Padi-Padian — kelompok gulma Poaceae, bukan Oryza sativa; namanya menipu',
+  'op:cmd:00001023': 'Beras di penyimpanan — produk pascapanen, bukan tanaman yang tumbuh; skala fenologi tidak berlaku',
   'op:cmd:00002075': 'Cabe Jawa — Piper retrofractum, famili Piperaceae, bukan Solanaceae',
   'op:cmd:00002395': 'Terong Belanda — Solanum betaceum, pohon tahunan; kunci sayuran buah semusim tidak cocok',
   'op:cmd:00002396': 'Terong Berastagi — nama lain terong belanda, alasan sama',

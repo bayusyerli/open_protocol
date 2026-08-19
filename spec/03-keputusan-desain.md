@@ -414,6 +414,38 @@ kedisiplinan akan menyimpang cepat atau lambat.
 
 ---
 
+### D29 — kunci BBCH disalin dari monografnya, bukan dari ingatan
+
+Padi dan jagung adalah dua tanaman terpenting di pasar awal, dan 2.435 varietas terdaftar
+menunggu skala fase. Godaannya jelas: fase utama BBCH cukup dikenal untuk ditulis dari
+ingatan dalam sepuluh menit.
+
+Yang dilakukan sebaliknya: menarik **BBCH Monograph edisi ke-2 (2001)**, mengekstrak teks
+tabelnya, lalu menyalin kode dan deskripsinya satu per satu. Hasilnya 59 fase padi dan 46
+fase jagung. Percobaan ekstraksi pertama membuktikan kenapa ini perlu — ia menjatuhkan
+seluruh en-dash, sehingga fase 32 padi terbaca "panicle 12 mm" alih-alih "panicle 1–2 mm",
+selisih satu golongan besar. Ketahuan karena hasilnya dicocokkan ke reproduksi kedua sebelum
+dipakai, bukan karena angkanya terasa aneh.
+
+Tiga keputusan turunan:
+
+- **Teks Inggris sumber ikut disimpan** di `label.en` apa adanya. Label Indonesianya adalah
+  terjemahan saya, dan terjemahan tanpa aslinya tidak bisa diperiksa siapa pun.
+- **Salah ketik sumber direkam apa adanya.** Monograf menulis "Coleptile" pada fase 07
+  jagung. Diperbaiki diam-diam berarti berbohong tentang isi sumbernya; ditandai di
+  `mappings.note`, sama seperti CAS asam sulfat pada Permentan 43/2019.
+- **Kode antara ditandai**, tidak disamarkan. Sumber menulis "stages continuous till" untuk
+  deret jumlah daun, anakan, dan buku; kode 14–18, 24–28, dan 34–38 mengikuti pola baku BBCH
+  dan membawa catatan bahwa sumbernya tidak menabelkannya terpisah.
+
+Dua temuan struktural yang tidak akan muncul kalau kuncinya ditulis dari ingatan: jagung
+**tidak punya fase utama 2 dan 4** sama sekali — tidak ada pembentukan anakan, tidak ada
+bunting — dan fase utama 6 jagung memuat **dua deskripsi sekaligus**, bunga jantan pada malai
+dan bunga betina pada tongkol, karena keduanya berlangsung terpisah pada tanaman yang sama.
+Model fase yang menganggap satu kode berarti satu keadaan tanaman akan salah di sini.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -441,4 +473,4 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | Kegranularan registri dipertahankan, tetapi `Commodity` belum punya hubungan hierarkis internal — pengelompokan seharusnya lewat konsep broader AGROVOC yang belum dipetakan |
 | 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
-| 22 | 89% varietas belum punya skala fase | Bukan tautannya yang kurang, tetapi kuncinya yang belum ada. Prioritas: padi (1.434 varietas) dan jagung (739), keduanya punya kunci BBCH resmi yang perlu disusun dari sumbernya |
+| 22 | 67,5% varietas belum punya skala fase | Turun dari 89% setelah kunci padi dan jagung masuk. Sisa terbesar: durian (495 varietas), semangka (367), mentimun (305), tembakau (267), krisan (247) — sebagiannya punya kunci BBCH resmi, sebagiannya belum pernah dibuatkan |

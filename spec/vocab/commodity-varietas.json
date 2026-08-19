@@ -3052,6 +3052,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000004",
+        "label": "BBCH — Jagung (Zea mays)"
       }
     },
     {
@@ -3074,6 +3078,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000004",
+        "label": "BBCH — Jagung (Zea mays)"
       }
     },
     {
@@ -3096,6 +3104,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000004",
+        "label": "BBCH — Jagung (Zea mays)"
       }
     },
     {
@@ -6692,6 +6704,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000003",
+        "label": "BBCH — Padi (Oryza sativa)"
       }
     },
     {
@@ -6714,6 +6730,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000003",
+        "label": "BBCH — Padi (Oryza sativa)"
       }
     },
     {
@@ -6736,6 +6756,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000003",
+        "label": "BBCH — Padi (Oryza sativa)"
       }
     },
     {
@@ -6758,6 +6782,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000003",
+        "label": "BBCH — Padi (Oryza sativa)"
       }
     },
     {

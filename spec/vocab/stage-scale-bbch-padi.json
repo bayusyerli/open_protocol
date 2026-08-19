@@ -1,0 +1,1089 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000003",
+  "key": "bbch-padi",
+  "label": {
+    "id": "BBCH — Padi (Oryza sativa)",
+    "en": "BBCH scale — rice"
+  },
+  "definition": {
+    "id": "Skala fenologi BBCH untuk padi, seluruh sepuluh fase utama dari benih kering sampai produk hasil panen. Kode yang ditabelkan sumber disalin apa adanya; kode antara pada deret jumlah daun (14–18) dan jumlah anakan (24–28) mengikuti pola baku BBCH dan ditandai pada mappings.note masing-masing."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00000006",
+        "label": "Padi"
+      },
+      {
+        "id": "op:cmd:00002299",
+        "label": "Padi Beliah"
+      },
+      {
+        "id": "op:cmd:00002300",
+        "label": "Padi Hitam"
+      },
+      {
+        "id": "op:cmd:00002301",
+        "label": "Padi Ketan"
+      },
+      {
+        "id": "op:cmd:00002302",
+        "label": "Padi Ladang"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "scheme": "BBCH",
+      "id": "bbch-rice",
+      "relation": "exact",
+      "note": "Kunci BBCH padi, dirujuk monograf ke Lancashire dkk. (1991)."
+    }
+  ],
+  "notes": {
+    "id": "Catatan kaki sumber, dipertahankan karena mengubah cara skala ini dibaca di lapangan: (1) daun dihitung membuka penuh bila ligulanya tampak atau ujung daun berikutnya tampak; (2) pembentukan anakan atau pemanjangan batang bisa terjadi lebih awal dari fase 13 — bila begitu, lanjutkan ke fase 21 atau 30; (3) bila pemanjangan batang mulai sebelum pembentukan anakan selesai, lanjutkan ke fase 30; (4) pembungaan biasanya mulai sebelum fase 55 — lanjutkan ke fase utama 6."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00000200",
+      "code": "00",
+      "label": {
+        "id": "Benih kering (kariopsis)",
+        "en": "Dry seed (caryopsis)"
+      },
+      "principal": 0,
+      "order": 0,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "00",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000201",
+      "code": "01",
+      "label": {
+        "id": "Awal imbibisi benih",
+        "en": "Beginning of seed imbibition"
+      },
+      "principal": 0,
+      "order": 1,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "01",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000202",
+      "code": "03",
+      "label": {
+        "id": "Imbibisi benih selesai (dada merpati)",
+        "en": "Seed imbibition complete (pigeon breast)"
+      },
+      "principal": 0,
+      "order": 3,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "03",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000203",
+      "code": "05",
+      "label": {
+        "id": "Radikula muncul dari kariopsis",
+        "en": "Radicle emerged from caryopsis"
+      },
+      "principal": 0,
+      "order": 5,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "05",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000204",
+      "code": "06",
+      "label": {
+        "id": "Radikula memanjang, bulu akar dan/atau akar samping tampak",
+        "en": "Radicle elongated, root hairs and/or side roots visible"
+      },
+      "principal": 0,
+      "order": 6,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "06",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000205",
+      "code": "07",
+      "label": {
+        "id": "Koleoptil muncul dari kariopsis — pada padi air fase ini terjadi sebelum fase 05",
+        "en": "Coleoptile emerged from caryopsis (in water-rice this stage occurs before stage 05)"
+      },
+      "principal": 0,
+      "order": 7,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "07",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000206",
+      "code": "09",
+      "label": {
+        "id": "Daun tak sempurna muncul, masih menggulung, di ujung koleoptil",
+        "en": "Imperfect leaf emerges (still rolled) at the tip of the coleoptile"
+      },
+      "principal": 0,
+      "order": 9,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "09",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000207",
+      "code": "10",
+      "label": {
+        "id": "Daun tak sempurna membuka, ujung daun sejati pertama tampak",
+        "en": "Imperfect leaf unrolled, tip of first true leaf visible"
+      },
+      "principal": 1,
+      "order": 10,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "10",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000208",
+      "code": "11",
+      "label": {
+        "id": "Daun pertama membuka penuh",
+        "en": "First leaf unfolded"
+      },
+      "principal": 1,
+      "order": 11,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "11",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000209",
+      "code": "12",
+      "label": {
+        "id": "2 daun membuka penuh",
+        "en": "2 leaves unfolded"
+      },
+      "principal": 1,
+      "order": 12,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "12",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000210",
+      "code": "13",
+      "label": {
+        "id": "3 daun membuka penuh",
+        "en": "3 leaves unfolded"
+      },
+      "principal": 1,
+      "order": 13,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "13",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000211",
+      "code": "14",
+      "label": {
+        "id": "4 daun membuka penuh",
+        "en": "4 leaves unfolded"
+      },
+      "principal": 1,
+      "order": 14,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "14",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000212",
+      "code": "15",
+      "label": {
+        "id": "5 daun membuka penuh",
+        "en": "5 leaves unfolded"
+      },
+      "principal": 1,
+      "order": 15,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "15",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000213",
+      "code": "16",
+      "label": {
+        "id": "6 daun membuka penuh",
+        "en": "6 leaves unfolded"
+      },
+      "principal": 1,
+      "order": 16,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "16",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000214",
+      "code": "17",
+      "label": {
+        "id": "7 daun membuka penuh",
+        "en": "7 leaves unfolded"
+      },
+      "principal": 1,
+      "order": 17,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "17",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000215",
+      "code": "18",
+      "label": {
+        "id": "8 daun membuka penuh",
+        "en": "8 leaves unfolded"
+      },
+      "principal": 1,
+      "order": 18,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "18",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000216",
+      "code": "19",
+      "label": {
+        "id": "9 daun atau lebih membuka penuh",
+        "en": "9 or more leaves unfolded"
+      },
+      "principal": 1,
+      "order": 19,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "19",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000217",
+      "code": "21",
+      "label": {
+        "id": "Awal pembentukan anakan: anakan pertama terdeteksi",
+        "en": "Beginning of tillering: first tiller detectable"
+      },
+      "principal": 2,
+      "order": 21,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "21",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000218",
+      "code": "22",
+      "label": {
+        "id": "2 anakan terdeteksi",
+        "en": "2 tillers detectable"
+      },
+      "principal": 2,
+      "order": 22,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "22",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000219",
+      "code": "23",
+      "label": {
+        "id": "3 anakan terdeteksi",
+        "en": "3 tillers detectable"
+      },
+      "principal": 2,
+      "order": 23,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "23",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000220",
+      "code": "24",
+      "label": {
+        "id": "4 anakan terdeteksi",
+        "en": "4 tillers detectable"
+      },
+      "principal": 2,
+      "order": 24,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "24",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000221",
+      "code": "25",
+      "label": {
+        "id": "5 anakan terdeteksi",
+        "en": "5 tillers detectable"
+      },
+      "principal": 2,
+      "order": 25,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "25",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000222",
+      "code": "26",
+      "label": {
+        "id": "6 anakan terdeteksi",
+        "en": "6 tillers detectable"
+      },
+      "principal": 2,
+      "order": 26,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "26",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000223",
+      "code": "27",
+      "label": {
+        "id": "7 anakan terdeteksi",
+        "en": "7 tillers detectable"
+      },
+      "principal": 2,
+      "order": 27,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "27",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000224",
+      "code": "28",
+      "label": {
+        "id": "8 anakan terdeteksi",
+        "en": "8 tillers detectable"
+      },
+      "principal": 2,
+      "order": 28,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "28",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000225",
+      "code": "29",
+      "label": {
+        "id": "Jumlah anakan maksimum terdeteksi",
+        "en": "Maximum number of tillers detectable"
+      },
+      "principal": 2,
+      "order": 29,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "29",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000226",
+      "code": "30",
+      "label": {
+        "id": "Inisiasi malai atau fase cincin hijau: klorofil menumpuk di jaringan batang dan membentuk cincin hijau",
+        "en": "Panicle initiation or green ring stage: chlorophyll accumulates in the stem tissue, forming a green ring"
+      },
+      "principal": 3,
+      "order": 30,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "30",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000227",
+      "code": "32",
+      "label": {
+        "id": "Pembentukan malai: panjang malai 1–2 mm",
+        "en": "Panicle formation: panicle 1–2 mm in length"
+      },
+      "principal": 3,
+      "order": 32,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "32",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000228",
+      "code": "34",
+      "label": {
+        "id": "Pemanjangan ruas atau fase buku: ruas mulai memanjang, malai lebih dari 2 mm — bergantung varietas",
+        "en": "Internode elongation or jointing stage: internodes begin to elongate, panicle more than 2 mm long (variety-dependent)"
+      },
+      "principal": 3,
+      "order": 34,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "34",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000229",
+      "code": "37",
+      "label": {
+        "id": "Daun bendera mulai tampak, masih menggulung, malai bergerak ke atas",
+        "en": "Flag leaf just visible, still rolled, panicle moving upwards"
+      },
+      "principal": 3,
+      "order": 37,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "37",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000230",
+      "code": "39",
+      "label": {
+        "id": "Fase daun bendera: daun bendera membuka penuh, leher daun — aurikel dan ligula — daun bendera sejajar dengan daun kedua terakhir (pra-bunting)",
+        "en": "Flag leaf stage: flag leaf unfolded, collar regions (auricle and ligule) of flag leaf and penultimate leaf aligned (pre-boot stage)"
+      },
+      "principal": 3,
+      "order": 39,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "39",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000231",
+      "code": "41",
+      "label": {
+        "id": "Awal bunting: bagian atas batang sedikit menebal, pelepah daun bendera keluar sekitar 5 cm dari pelepah daun kedua terakhir",
+        "en": "Early boot stage: upper part of stem slightly thickened, sheath of flag leaf about 5 cm out of penultimate leaf sheath"
+      },
+      "principal": 4,
+      "order": 41,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "41",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000232",
+      "code": "43",
+      "label": {
+        "id": "Pertengahan bunting: pelepah daun bendera keluar 5–10 cm dari pelepah daun kedua terakhir",
+        "en": "Mid boot stage: sheath of flag leaf 5–10 cm out of the penultimate leaf sheath"
+      },
+      "principal": 4,
+      "order": 43,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "43",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000233",
+      "code": "45",
+      "label": {
+        "id": "Akhir bunting: pelepah daun bendera menggembung, keluar lebih dari 10 cm dari pelepah daun kedua terakhir",
+        "en": "Late boot stage: flag leaf sheath swollen, sheath of flag leaf more than 10 cm out of penultimate leaf sheath"
+      },
+      "principal": 4,
+      "order": 45,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "45",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000234",
+      "code": "47",
+      "label": {
+        "id": "Pelepah daun bendera mulai membuka",
+        "en": "Flag leaf sheath opening"
+      },
+      "principal": 4,
+      "order": 47,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "47",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000235",
+      "code": "49",
+      "label": {
+        "id": "Pelepah daun bendera terbuka",
+        "en": "Flag leaf sheath open"
+      },
+      "principal": 4,
+      "order": 49,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "49",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000236",
+      "code": "51",
+      "label": {
+        "id": "Awal keluar malai: ujung malai keluar dari pelepah",
+        "en": "Beginning of panicle emergence: tip of inflorescence emerged from sheath"
+      },
+      "principal": 5,
+      "order": 51,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "51",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000237",
+      "code": "52",
+      "label": {
+        "id": "20% malai keluar",
+        "en": "20% of panicle emerged"
+      },
+      "principal": 5,
+      "order": 52,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "52",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000238",
+      "code": "53",
+      "label": {
+        "id": "30% malai keluar",
+        "en": "30% of panicle emerged"
+      },
+      "principal": 5,
+      "order": 53,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "53",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000239",
+      "code": "54",
+      "label": {
+        "id": "40% malai keluar",
+        "en": "40% of panicle emerged"
+      },
+      "principal": 5,
+      "order": 54,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "54",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000240",
+      "code": "55",
+      "label": {
+        "id": "Pertengahan keluar malai: buku leher masih di dalam pelepah",
+        "en": "Middle of panicle emergence: neck node still in sheath"
+      },
+      "principal": 5,
+      "order": 55,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "55",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000241",
+      "code": "56",
+      "label": {
+        "id": "60% malai keluar",
+        "en": "60% of panicle emerged"
+      },
+      "principal": 5,
+      "order": 56,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "56",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000242",
+      "code": "57",
+      "label": {
+        "id": "70% malai keluar",
+        "en": "70% of panicle emerged"
+      },
+      "principal": 5,
+      "order": 57,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "57",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000243",
+      "code": "58",
+      "label": {
+        "id": "80% malai keluar",
+        "en": "80% of panicle emerged"
+      },
+      "principal": 5,
+      "order": 58,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "58",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000244",
+      "code": "59",
+      "label": {
+        "id": "Akhir keluar malai: buku leher sejajar dengan aurikel daun bendera, kepala sari belum tampak",
+        "en": "End of panicle emergence: neck node level with the flag leaf auricle, anthers not yet visible"
+      },
+      "principal": 5,
+      "order": 59,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "59",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000245",
+      "code": "61",
+      "label": {
+        "id": "Awal berbunga: kepala sari tampak di ujung malai",
+        "en": "Beginning of flowering: anthers visible at top of panicle"
+      },
+      "principal": 6,
+      "order": 61,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "61",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000246",
+      "code": "65",
+      "label": {
+        "id": "Berbunga penuh: kepala sari tampak pada sebagian besar bulir",
+        "en": "Full flowering: anthers visible on most spikelets"
+      },
+      "principal": 6,
+      "order": 65,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "65",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000247",
+      "code": "69",
+      "label": {
+        "id": "Akhir berbunga: seluruh bulir selesai berbunga, sebagian kepala sari yang mengering mungkin masih tersisa",
+        "en": "End of flowering: all spikelets have completed flowering but some dehydrated anthers may remain"
+      },
+      "principal": 6,
+      "order": 69,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "69",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000248",
+      "code": "71",
+      "label": {
+        "id": "Masak berair: bulir pertama mencapai setengah ukuran akhirnya",
+        "en": "Watery ripe: first grains have reached half their final size"
+      },
+      "principal": 7,
+      "order": 71,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "71",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000249",
+      "code": "73",
+      "label": {
+        "id": "Awal masak susu",
+        "en": "Early milk"
+      },
+      "principal": 7,
+      "order": 73,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "73",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000250",
+      "code": "75",
+      "label": {
+        "id": "Pertengahan masak susu: isi bulir menyerupai susu",
+        "en": "Medium milk: grain content milky"
+      },
+      "principal": 7,
+      "order": 75,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "75",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000251",
+      "code": "77",
+      "label": {
+        "id": "Akhir masak susu",
+        "en": "Late milk"
+      },
+      "principal": 7,
+      "order": 77,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "77",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000252",
+      "code": "83",
+      "label": {
+        "id": "Awal masak adonan",
+        "en": "Early dough"
+      },
+      "principal": 8,
+      "order": 83,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "83",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000253",
+      "code": "85",
+      "label": {
+        "id": "Masak adonan lunak: isi bulir lunak tetapi kering, bekas kuku tidak bertahan, bulir dan sekam masih hijau",
+        "en": "Soft dough: grain content soft but dry, fingernail impression not held, grains and glumes still green"
+      },
+      "principal": 8,
+      "order": 85,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "85",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000254",
+      "code": "87",
+      "label": {
+        "id": "Masak adonan keras: isi bulir padat, bekas kuku bertahan",
+        "en": "Hard dough: grain content solid, fingernail impression held"
+      },
+      "principal": 8,
+      "order": 87,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "87",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000255",
+      "code": "89",
+      "label": {
+        "id": "Masak penuh: bulir keras, sulit dibelah dengan kuku ibu jari",
+        "en": "Fully ripe: grain hard, difficult to divide with thumbnail"
+      },
+      "principal": 8,
+      "order": 89,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "89",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000256",
+      "code": "92",
+      "label": {
+        "id": "Lewat masak: bulir sangat keras, tidak bisa dilekukkan dengan kuku ibu jari",
+        "en": "Over-ripe: grain very hard, cannot be dented by thumbnail"
+      },
+      "principal": 9,
+      "order": 92,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "92",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000257",
+      "code": "97",
+      "label": {
+        "id": "Tanaman mati dan rebah",
+        "en": "Plant dead and collapsing"
+      },
+      "principal": 9,
+      "order": 97,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "97",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000258",
+      "code": "99",
+      "label": {
+        "id": "Produk hasil panen",
+        "en": "Harvested product"
+      },
+      "principal": 9,
+      "order": 99,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "99",
+          "relation": "exact"
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Growth stages of mono- and dicotyledonous plants — BBCH Monograph",
+        "publisher": "Federal Biological Research Centre for Agriculture and Forestry (BBA)",
+        "year": 2001,
+        "locator": "Edisi ke-2, disunting Uwe Meier"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 3,
+      "to": 3
+    }
+  ]
+}
