@@ -116,6 +116,36 @@ const JENIS = {
 };
 
 const GABUNG = {
+  // --- Ejaan Inggris berdiri sendiri, diputuskan satu per satu ---------------
+  "op:sub:00000196": {
+    kanonik: "op:sub:00000105",
+    jenis: "ejaan",
+    dasar:
+      "Ejaan Inggris berdiri sendiri untuk bahan yang sama; kesetaraannya sudah tercatat di repositori " +
+      "ini lewat bentuk ketiga \"Klorpirifos (chlorpyrifos)\" yang digantikan op:sub:00000105 pada putaran " +
+      "sebelumnya. Yang dipakai op:sub:00000105 karena bentuk terbanyak di registri — 157 rekaman lawan 16 " +
+      "— dan kadar 400, 500, serta 550 g/L muncul pada keduanya. Kedua id tidak pernah berbarengan di satu " +
+      "pendaftaran, jadi tidak ada kadar yang terjumlah dua kali. " +
+      "YANG DITUTUP PENGGABUNGAN INI BUKAN KERAPIAN. op:sub:00000105 memegang blok hazard lengkap — " +
+      "dilarang untuk rumah tangga (Permentan 43/2019 Lampiran I.A no. 71) dan dilarang pada padi " +
+      "(no. 88) — beserta mode_of_action IRAC 1B. op:sub:00000196 tidak memegang satu pun. Selama " +
+      "terbelah, 16 pendaftaran berbahan klorpirifos tidak terlihat oleh pemeriksaan larangan mana pun, " +
+      "semata karena registri menuliskan namanya dalam huruf besar berbahasa Inggris. " +
+      "TIDAK DIGABUNG: op:sub:00000761 \"Chlorpyrifos methyl\". Namanya mirip, tetapi klorpirifos metil " +
+      "bahan aktif yang berbeda, dan larangannya pun dikutip terpisah di Lampiran I.A no. 93. Kemiripan " +
+      "nama bukan bukti.",
+  },
+  "op:sub:00000619": {
+    kanonik: "op:sub:00000281",
+    jenis: "ejaan",
+    dasar:
+      "Beda satu huruf — ejaan internasional \"Diafenthiuron\" melawan ejaan Indonesia \"Diafentiuron\" " +
+      "untuk bahan yang sama. Yang dipakai op:sub:00000281 karena bentuk terbanyak di registri — 11 " +
+      "rekaman lawan 2 — dan kadar 500 g/L muncul pada keduanya. Kedua id tidak pernah berbarengan di " +
+      "satu pendaftaran. op:sub:00000281 memegang mode_of_action IRAC 12A yang tidak dimiliki " +
+      "op:sub:00000619, jadi tidak ada sifat yang perlu dipindahkan lebih dulu; arah penggabungannya " +
+      "justru menyelamatkan penggolongan itu.",
+  },
 
   // --- Ejaan yang cuma beda kapitalisasi, spasi, atau tanda baca -------------
   // 106 id di bawah ini dihasilkan spec/tools/satukan-aksi-zat-ejaan.mjs --tabel,
@@ -1364,7 +1394,7 @@ const GABUNG = {
     jenis: "nama-inggris",
   },
   "op:sub:00001185": {
-    kanonik: "op:sub:00000619",
+    kanonik: "op:sub:00000281",
     jenis: "tanda-baca",
   },
   "op:sub:00001203": {

@@ -285,7 +285,10 @@
       ],
       "synonyms": [
         "klorpirifos",
-        "Klorpirifos (chlorpyrifos)"
+        "Klorpirifos (chlorpyrifos)",
+        "CHLORPYRIFOS",
+        "Chlorpyrifos",
+        "chlorpyrifos"
       ],
       "mappings": [
         {
@@ -4136,8 +4139,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000105"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000105 \"Klorpirifos\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Ejaan Inggris berdiri sendiri untuk bahan yang sama; kesetaraannya sudah tercatat di repositori ini lewat bentuk ketiga \"Klorpirifos (chlorpyrifos)\" yang digantikan op:sub:00000105 pada putaran sebelumnya. Yang dipakai op:sub:00000105 karena bentuk terbanyak di registri — 157 rekaman lawan 16 — dan kadar 400, 500, serta 550 g/L muncul pada keduanya. Kedua id tidak pernah berbarengan di satu pendaftaran, jadi tidak ada kadar yang terjumlah dua kali. YANG DITUTUP PENGGABUNGAN INI BUKAN KERAPIAN. op:sub:00000105 memegang blok hazard lengkap — dilarang untuk rumah tangga (Permentan 43/2019 Lampiran I.A no. 71) dan dilarang pada padi (no. 88) — beserta mode_of_action IRAC 1B. op:sub:00000196 tidak memegang satu pun. Selama terbelah, 16 pendaftaran berbahan klorpirifos tidak terlihat oleh pemeriksaan larangan mana pun, semata karena registri menuliskan namanya dalam huruf besar berbahasa Inggris. TIDAK DIGABUNG: op:sub:00000761 \"Chlorpyrifos methyl\". Namanya mirip, tetapi klorpirifos metil bahan aktif yang berbeda, dan larangannya pun dikutip terpisah di Lampiran I.A no. 93. Kemiripan nama bukan bukti. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -6858,8 +6868,13 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Diafenthiuron",
+        "Diafenthiuron."
+      ]
     },
     {
       "id": "op:sub:00000282",
@@ -16308,13 +16323,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-19T00:00:00Z"
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000281"
+        }
       },
       "synonyms": [
         "Diafenthiuron."
-      ]
+      ],
+      "notes": {
+        "id": "Digantikan op:sub:00000281 \"Diafentiuron\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Beda satu huruf — ejaan internasional \"Diafenthiuron\" melawan ejaan Indonesia \"Diafentiuron\" untuk bahan yang sama. Yang dipakai op:sub:00000281 karena bentuk terbanyak di registri — 11 rekaman lawan 2 — dan kadar 500 g/L muncul pada keduanya. Kedua id tidak pernah berbarengan di satu pendaftaran. op:sub:00000281 memegang mode_of_action IRAC 12A yang tidak dimiliki op:sub:00000619, jadi tidak ada sifat yang perlu dipindahkan lebih dulu; arah penggabungannya justru menyelamatkan penggolongan itu. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+      }
     },
     {
       "id": "op:sub:00000620",
@@ -32344,11 +32365,11 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-19T00:00:00Z",
         "superseded_by": {
-          "id": "op:sub:00000619"
+          "id": "op:sub:00000281"
         }
       },
       "notes": {
-        "id": "Digantikan op:sub:00000619 \"Diafenthiuron\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan tanda baca nyasar di ujungnya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+        "id": "Digantikan op:sub:00000281 \"Diafentiuron\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Nama yang sama dengan tanda baca nyasar di ujungnya. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
