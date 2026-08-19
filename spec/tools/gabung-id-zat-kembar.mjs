@@ -116,6 +116,647 @@ const JENIS = {
 };
 
 const GABUNG = {
+
+  // --- Ejaan yang cuma beda kapitalisasi, spasi, atau tanda baca -------------
+  // 106 id di bawah ini dihasilkan spec/tools/satukan-aksi-zat-ejaan.mjs --tabel,
+  // yang juga menyatukan pesticide_action pada kanoniknya lebih dulu supaya
+  // penjagaan "pindahkan dulu" di berkas ini tidak perlu dilonggarkan.
+  "op:sub:00001425": {
+    kanonik: "op:sub:00000126",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Lamda Sihalotrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000126 karena bentuk terbanyak di registri: 81 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001424": {
+    kanonik: "op:sub:00000126",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Lamda Sihalotrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000126 karena bentuk terbanyak di registri: 81 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000242": {
+    kanonik: "op:sub:00000122",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D DIMETIL AMINA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000122 karena bentuk terbanyak di registri: 74 rekaman lawan 7. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000511": {
+    kanonik: "op:sub:00000122",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D DIMETIL AMINA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000122 karena bentuk terbanyak di registri: 74 rekaman lawan 4. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000725": {
+    kanonik: "op:sub:00000122",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D DIMETIL AMINA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000122 karena bentuk terbanyak di registri: 74 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000753": {
+    kanonik: "op:sub:00000145",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Butil Sihalofop\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000145 karena bentuk terbanyak di registri: 33 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000318": {
+    kanonik: "op:sub:00000152",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Alfa Sipermetrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000152 karena bentuk terbanyak di registri: 28 rekaman lawan 5. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000736": {
+    kanonik: "op:sub:00000152",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Alfa Sipermetrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000152 karena bentuk terbanyak di registri: 28 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000751": {
+    kanonik: "op:sub:00000171",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Beta Siflutrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000171 karena bentuk terbanyak di registri: 23 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001114": {
+    kanonik: "op:sub:00000171",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Beta Siflutrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000171 karena bentuk terbanyak di registri: 23 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000287": {
+    kanonik: "op:sub:00000219",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"LAMBDA CYHALOTHRIN\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000219 karena bentuk terbanyak di registri: 20 rekaman lawan 5. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000828": {
+    kanonik: "op:sub:00000211",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"L-amonium glufosinat\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000211 karena bentuk terbanyak di registri: 7 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000939": {
+    kanonik: "op:sub:00000221",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000964": {
+    kanonik: "op:sub:00000221",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000953": {
+    kanonik: "op:sub:00000221",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000513": {
+    kanonik: "op:sub:00000221",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001599": {
+    kanonik: "op:sub:00000228",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Sihalofop butil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000228 karena bentuk terbanyak di registri: 11 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000584": {
+    kanonik: "op:sub:00000236",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"1,2-Benzisothiazol-3(2H)-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000236 karena bentuk terbanyak di registri: 4 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000972": {
+    kanonik: "op:sub:00000251",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D isopropil amina\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000251 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000451": {
+    kanonik: "op:sub:00000257",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Glufosinate Ammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000257 karena bentuk terbanyak di registri: 11 rekaman lawan 5. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001479": {
+    kanonik: "op:sub:00000261",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium bispiribak (bispyribac sodium)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000261 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001489": {
+    kanonik: "op:sub:00000262",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium para nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000262 karena bentuk terbanyak di registri: 5 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001494": {
+    kanonik: "op:sub:00000262",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium para nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000262 karena bentuk terbanyak di registri: 5 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001487": {
+    kanonik: "op:sub:00000274",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium orto nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000274 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001493": {
+    kanonik: "op:sub:00000274",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium orto nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000274 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000671": {
+    kanonik: "op:sub:00000293",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (3 lawan 3), jadi yang dipakai op:sub:00000293 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001491": {
+    kanonik: "op:sub:00000293",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000293 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001492": {
+    kanonik: "op:sub:00000293",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000293 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000562": {
+    kanonik: "op:sub:00000293",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000293 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000634": {
+    kanonik: "op:sub:00000302",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Fluroksipir meptil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000302 karena bentuk terbanyak di registri: 10 rekaman lawan 3. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001477": {
+    kanonik: "op:sub:00000308",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium 2,4 dinitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000308 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001478": {
+    kanonik: "op:sub:00000308",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium 2,4 dinitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000308 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001475": {
+    kanonik: "op:sub:00000308",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Natrium 2,4 dinitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000308 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000696": {
+    kanonik: "op:sub:00000315",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Triclopyr Butoxy Ethyl Ester\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000315 karena bentuk terbanyak di registri: 6 rekaman lawan 3. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000560": {
+    kanonik: "op:sub:00000351",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Metsulfuron-methyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000351 karena bentuk terbanyak di registri: 6 rekaman lawan 4. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001125": {
+    kanonik: "op:sub:00000366",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"BPMC/Fenobucarb\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000366 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000888": {
+    kanonik: "op:sub:00000388",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Thiophanate-methyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (2 lawan 2), jadi yang dipakai op:sub:00000388 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000985": {
+    kanonik: "op:sub:00000434",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Methyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000434 karena bentuk terbanyak di registri: 1 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000435": {
+    kanonik: "op:sub:00000596",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl-butylcarbamate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000596 karena bentuk terbanyak di registri: 2 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001003": {
+    kanonik: "op:sub:00000596",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl-butylcarbamate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000596 karena bentuk terbanyak di registri: 2 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001002": {
+    kanonik: "op:sub:00000596",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl-butylcarbamate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000596 karena bentuk terbanyak di registri: 2 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000440": {
+    kanonik: "op:sub:00000608",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Beta-Cyfluthrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000608 karena bentuk terbanyak di registri: 3 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001275": {
+    kanonik: "op:sub:00000449",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Fluroksipir Meptil Heptil Ester\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000449 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000510": {
+    kanonik: "op:sub:00000705",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"1,2-benzisothiazol-3(2H)-one (BIT)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000705 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000912": {
+    kanonik: "op:sub:00000705",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"1,2-benzisothiazol-3(2H)-one (BIT)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000705 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000515": {
+    kanonik: "op:sub:00000512",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D Natrium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000512 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001042": {
+    kanonik: "op:sub:00000520",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Alpha Cypermethrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000520 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001041": {
+    kanonik: "op:sub:00000520",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Alpha Cypermethrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000520 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001103": {
+    kanonik: "op:sub:00000530",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Bensulfuron metil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000530 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001137": {
+    kanonik: "op:sub:00000532",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Butil sihalofop (Cyhalofop-butyl)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000532 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000540": {
+    kanonik: "op:sub:00000782",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"ethyl 4-methyloctanoate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000782 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000795": {
+    kanonik: "op:sub:00000548",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"FLUROXYPYR-MEPTYL\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000548 karena bentuk terbanyak di registri: 4 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001485": {
+    kanonik: "op:sub:00000563",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"natrium-o-nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000563 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001488": {
+    kanonik: "op:sub:00000564",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"natrium-p-nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000564 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001584": {
+    kanonik: "op:sub:00000573",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Pyrazosulfuron-ethyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000573 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000582": {
+    kanonik: "op:sub:00001664",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Trichoderma sp\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00001664 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000583": {
+    kanonik: "op:sub:00001673",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Triklopir butoksi etil ester (setara dengan triklopir 480 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001673 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000586": {
+    kanonik: "op:sub:00000913",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"1,2-Benzisothiazolin-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000913 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000981": {
+    kanonik: "op:sub:00000993",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000980": {
+    kanonik: "op:sub:00000993",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000589": {
+    kanonik: "op:sub:00000993",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000706": {
+    kanonik: "op:sub:00000993",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000929": {
+    kanonik: "op:sub:00000993",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000930": {
+    kanonik: "op:sub:00000993",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000931": {
+    kanonik: "op:sub:00000993",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000603": {
+    kanonik: "op:sub:00000601",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Amonium glufosinat (setara dengan glufosinat 137 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (3 lawan 3), jadi yang dipakai op:sub:00000601 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000602": {
+    kanonik: "op:sub:00001062",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001052": {
+    kanonik: "op:sub:00001062",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001059": {
+    kanonik: "op:sub:00001062",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001055": {
+    kanonik: "op:sub:00001062",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001118": {
+    kanonik: "op:sub:00000609",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Bispiribak sodium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000609 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000853": {
+    kanonik: "op:sub:00000675",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"p-menthane-3,8-diol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000675 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001592": {
+    kanonik: "op:sub:00000685",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Reaction mass of 5-chloro-2-methyl-2H-isothiazol-3-one and 2-methyl-2H-isothiazol-3-one (3:1)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000685 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000707": {
+    kanonik: "op:sub:00000721",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-methylisothiazol-3(2H)-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000721 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000936": {
+    kanonik: "op:sub:00000710",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D Dimethyl amine\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000710 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000977": {
+    kanonik: "op:sub:00000710",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D Dimethyl amine\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000710 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000711": {
+    kanonik: "op:sub:00000712",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D dimethylammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (2 lawan 2), jadi yang dipakai op:sub:00000712 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000979": {
+    kanonik: "op:sub:00000716",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D DMA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000716 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000720": {
+    kanonik: "op:sub:00000719",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2-methyl-2H-isothiazol-3-one (MIT)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000719 karena bentuk terbanyak di registri: 1 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001005": {
+    kanonik: "op:sub:00000727",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl butylcarbamate (IPBC)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000727 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001004": {
+    kanonik: "op:sub:00000727",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl butylcarbamate (IPBC)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000727 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001027": {
+    kanonik: "op:sub:00000732",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"6-Benzylaminopurine\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000732 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000742": {
+    kanonik: "op:sub:00000740",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Amonium glufosinat (Setara dengan glufosinat 183 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (2 lawan 2), jadi yang dipakai op:sub:00000740 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001065": {
+    kanonik: "op:sub:00000743",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Asam 1-naptilasetik\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000743 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001066": {
+    kanonik: "op:sub:00000743",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Asam 1-naptilasetik\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000743 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001083": {
+    kanonik: "op:sub:00000746",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Atrazin (Atrazine)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000746 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001105": {
+    kanonik: "op:sub:00000750",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Benzil florpirauksifen (Florpyrauxifen-benzyl)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000750 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001148": {
+    kanonik: "op:sub:00000758",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Chlorimuron Ethyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000758 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001255": {
+    kanonik: "op:sub:00000787",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Florilpikoksamid (Florylpicoxamid)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000787 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000800": {
+    kanonik: "op:sub:00001286",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Gliocladium sp\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00001286 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001422": {
+    kanonik: "op:sub:00000830",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"L-Glufosinate Ammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000830 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001423": {
+    kanonik: "op:sub:00000831",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Lamda sihalotrin (lambda cyhalothrin)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000831 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001440": {
+    kanonik: "op:sub:00000836",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Mesotrion (Mesotrione)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000836 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001567": {
+    kanonik: "op:sub:00000863",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Pirazosulfuron etil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000863 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000915": {
+    kanonik: "op:sub:00000914",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"1,2-Benzisothiazolin-3-one (BIT-84%)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000914 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000924": {
+    kanonik: "op:sub:00000926",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"1-naphthylacetic acid\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000926 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00000965": {
+    kanonik: "op:sub:00000963",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina setara dengan 2,4 D 718 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000963 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001007": {
+    kanonik: "op:sub:00001008",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"4,5-dichloro-2-octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001008 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001014": {
+    kanonik: "op:sub:00001013",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"5 Chloro - 2 Methyl - 2H- Isothiazol 3 One and 2Methyl - 2 H - Isothiazol - 3 one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001013 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001101": {
+    kanonik: "op:sub:00001102",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Bensulfuron methyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001102 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001109": {
+    kanonik: "op:sub:00001108",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Benzyl-C12-14 alkyldimethyl,  ammonium chlorides\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001108 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001113": {
+    kanonik: "op:sub:00001111",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"beta cypermethrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001111 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001290": {
+    kanonik: "op:sub:00001289",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"glufosinate-p ammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001289 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001498": {
+    kanonik: "op:sub:00001499",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Nikosulfuron (Nicosulfuron)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001499 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00001688": {
+    kanonik: "op:sub:00001687",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Zeta sipermetrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001687 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
+  "op:sub:00005080": {
+    kanonik: "op:sub:00005044",
+    jenis: "ejaan",
+    dasar:
+      "Deret huruf dan angkanya identik dengan \"Monokrotofos (monocrotophos)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00005044 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran.",
+  },
   "op:sub:00000138": {
     kanonik: "op:sub:00000102",
     jenis: "ejaan",

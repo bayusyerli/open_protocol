@@ -929,7 +929,9 @@
       ],
       "synonyms": [
         "Lamda sihalotrin",
-        "lamda sihalotrin"
+        "lamda sihalotrin",
+        "Lamdasihalotrin",
+        "lamda-sihalotrin"
       ],
       "mappings": [
         {
@@ -942,7 +944,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -1122,7 +1125,12 @@
         "2,4-D Dimetil Amina",
         "2,4-D Dimetil amina",
         "2,4-D dimetil amina",
-        "2,4-d dimetil amina"
+        "2,4-d dimetil amina",
+        "2,4-D Dimetilamina",
+        "2,4-D dimetilamina",
+        "2,4 D  dimetil amina",
+        "2,4 D Dimetil Amina",
+        "2.4-D dimetil amina"
       ],
       "mappings": [
         {
@@ -1135,7 +1143,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -2121,7 +2130,8 @@
       ],
       "synonyms": [
         "Butil sihalofop",
-        "butil sihalofop"
+        "butil sihalofop",
+        "butil-sihalofop"
       ],
       "mappings": [
         {
@@ -2134,7 +2144,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -2242,7 +2253,11 @@
       ],
       "synonyms": [
         "Alfa sipermetrin",
-        "alfa sipermetrin"
+        "alfa sipermetrin",
+        "Alfasipermetrin",
+        "alfasipermetrin",
+        "Alfa-sipermetrin",
+        "alfa-sipermetrin"
       ],
       "mappings": [
         {
@@ -2255,7 +2270,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -2911,7 +2927,10 @@
       ],
       "synonyms": [
         "Beta siflutrin",
-        "beta siflutrin"
+        "beta siflutrin",
+        "Beta-Siflutrin",
+        "beta-siflutrin",
+        "betasiflutrin"
       ],
       "mappings": [
         {
@@ -2924,7 +2943,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -3572,7 +3592,9 @@
       "synonyms": [
         "Lambda Cyhalothrin",
         "Lambda cyhalothrin",
-        "lambda cyhalothrin"
+        "lambda cyhalothrin",
+        "Lambda-cyhalothrin",
+        "lambda-cyhalothrin"
       ],
       "mappings": [
         {
@@ -3585,7 +3607,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -4559,7 +4582,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "l-amonium glufosinat"
+        "l-amonium glufosinat",
+        "L - amonium glufosinat"
       ],
       "mappings": [
         {
@@ -4572,7 +4596,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -4873,8 +4898,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "2,4 D dimetilamina (setara dengan 2,4-D 720 g/l)",
+        "2,4-D dimetil amina setara dengan 2,4-D: 720 g/l",
+        "2,4-D dimetil amina (setara dengan 2,4-D 720 g/l))",
+        "2,4-D, Dimetil amina (setara dengan 2,4-D : 720 g/l)"
+      ]
     },
     {
       "id": "op:sub:00000222",
@@ -5063,7 +5095,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "sihalofop butil"
+        "sihalofop butil",
+        "Sihalofop- butil"
       ],
       "mappings": [
         {
@@ -5076,7 +5109,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -5299,7 +5333,8 @@
         "other"
       ],
       "synonyms": [
-        "1,2-benzisothiazol-3(2H)-one"
+        "1,2-benzisothiazol-3(2H)-one",
+        "1,2 Benzisothiazol - 3 ( 2 H ) - One"
       ],
       "mappings": [
         {
@@ -5312,7 +5347,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -5515,8 +5551,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000122"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D DIMETIL AMINA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000122 karena bentuk terbanyak di registri: 74 rekaman lawan 7. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -5863,8 +5906,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "2,4-D isopropilamina"
+      ]
     },
     {
       "id": "op:sub:00000252",
@@ -6022,7 +6069,9 @@
       ],
       "synonyms": [
         "Glufosinate ammonium",
-        "glufosinate Ammonium"
+        "glufosinate Ammonium",
+        "Glufosinate-ammonium",
+        "glufosinate-ammonium"
       ],
       "mappings": [
         {
@@ -6035,7 +6084,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -6180,7 +6230,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "natrium bispiribak (bispyribac sodium)"
+        "natrium bispiribak (bispyribac sodium)",
+        "natrium bispiribak (bispyribac-sodium)"
       ],
       "mappings": [
         {
@@ -6193,7 +6244,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -6219,8 +6271,13 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Natrium para-nitrofenol",
+        "Natrium-para nitrofenol"
+      ]
     },
     {
       "id": "op:sub:00000355",
@@ -6591,8 +6648,13 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "natrium orto-nitrofenol",
+        "Natrium-orto nitrofenol"
+      ]
     },
     {
       "id": "op:sub:00000275",
@@ -7051,8 +7113,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000219"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000219 \"LAMBDA CYHALOTHRIN\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"LAMBDA CYHALOTHRIN\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000219 karena bentuk terbanyak di registri: 20 rekaman lawan 5. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -7216,8 +7285,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Natrium 5-nitroguaiakol",
+        "Natrium-5 nitroguaiakol",
+        "Natrium-5-nitroguaiakol",
+        "natrium-5-nitro guaiakol"
+      ]
     },
     {
       "id": "op:sub:00000294",
@@ -7406,8 +7482,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000152"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000152 \"Alfa Sipermetrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Alfa Sipermetrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000152 karena bentuk terbanyak di registri: 28 rekaman lawan 5. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -7504,7 +7587,9 @@
         "herbicide"
       ],
       "synonyms": [
-        "fluroksipir meptil"
+        "fluroksipir meptil",
+        "Fluroksipir-Meptil",
+        "Fluroksipir-meptil"
       ],
       "mappings": [
         {
@@ -7517,7 +7602,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -7714,8 +7800,14 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Natrium 2,4-dinitrofenol",
+        "natrium 2.4-dinitrofenol",
+        "Natrium 2,4 di nitrofenol"
+      ]
     },
     {
       "id": "op:sub:00000309",
@@ -7882,7 +7974,9 @@
         "herbicide"
       ],
       "synonyms": [
-        "Triclopyr butoxy ethyl ester"
+        "Triclopyr butoxy ethyl ester",
+        "Triclopyr butoxyethyl ester",
+        "triclopyr butoxyethyl ester"
       ],
       "mappings": [
         {
@@ -7895,7 +7989,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -8967,7 +9062,10 @@
         "herbicide"
       ],
       "synonyms": [
-        "metsulfuron-methyl"
+        "metsulfuron-methyl",
+        "Metsulfuron Methyl",
+        "Metsulfuron methyl",
+        "metsulfuron methyl"
       ],
       "mappings": [
         {
@@ -8980,7 +9078,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -9431,8 +9530,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "BPMC (Fenobucarb)"
+      ]
     },
     {
       "id": "op:sub:00000367",
@@ -10125,8 +10228,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Thiophanate methyl"
+      ]
     },
     {
       "id": "op:sub:00000389",
@@ -11482,7 +11589,8 @@
         "other"
       ],
       "synonyms": [
-        "2-methyl-2H-isothiazol-3-one"
+        "2-methyl-2H-isothiazol-3-one",
+        "2-Methyl-2H-isothiazol- 3-one"
       ],
       "mappings": [
         {
@@ -11495,7 +11603,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -11525,8 +11634,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000596"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000596 \"3-iodo-2-propynyl-butylcarbamate\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl-butylcarbamate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000596 karena bentuk terbanyak di registri: 2 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -11677,8 +11793,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000608"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000608 \"Beta-Cyfluthrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Beta-Cyfluthrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000608 karena bentuk terbanyak di registri: 3 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -11917,7 +12040,8 @@
       ],
       "synonyms": [
         "Fluroksipir meptil heptil ester",
-        "fluroksipir meptil heptil ester"
+        "fluroksipir meptil heptil ester",
+        "Fluroksipir meptilheptil ester"
       ],
       "mappings": [
         {
@@ -11930,7 +12054,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -11984,8 +12109,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000257"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000257 \"Glufosinate Ammonium\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Glufosinate Ammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000257 karena bentuk terbanyak di registri: 11 rekaman lawan 5. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -12991,8 +13123,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000705"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000705 \"1,2-benzisothiazol-3(2H)-one (BIT)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"1,2-benzisothiazol-3(2H)-one (BIT)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000705 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -13020,8 +13159,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000122"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D DIMETIL AMINA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000122 karena bentuk terbanyak di registri: 74 rekaman lawan 4. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -13037,7 +13183,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "2,4-D natrium"
+        "2,4-D natrium",
+        "2.4-D Natrium"
       ],
       "mappings": [
         {
@@ -13050,7 +13197,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -13075,8 +13223,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000221"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000221 \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -13130,8 +13285,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000512"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000512 \"2,4-D Natrium\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D Natrium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000512 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -13252,10 +13414,13 @@
         "active_ingredient"
       ],
       "pesticide_action": [
-        "insecticide"
+        "insecticide",
+        "public_health"
       ],
       "synonyms": [
-        "Alpha cypermethrin"
+        "Alpha cypermethrin",
+        "Alphacypermethrin",
+        "alpha-cypermethrin"
       ],
       "mappings": [
         {
@@ -13268,7 +13433,11 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"Alphacypermethrin\", \"alpha-cypermethrin\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
       }
     },
     {
@@ -13544,7 +13713,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "bensulfuron metil"
+        "bensulfuron metil",
+        "Bensulfuron-metIl"
       ],
       "mappings": [
         {
@@ -13557,7 +13727,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -13600,7 +13771,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "butil sihalofop (cyhalofop-butyl)"
+        "butil sihalofop (cyhalofop-butyl)",
+        "Butil sihalofop (Cyhalofop butyl)"
       ],
       "mappings": [
         {
@@ -13613,7 +13785,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -13840,8 +14013,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000782"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000782 \"ethyl 4-methyloctanoate\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"ethyl 4-methyloctanoate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000782 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -14052,7 +14232,9 @@
         "herbicide"
       ],
       "synonyms": [
-        "Fluroxypyr-meptyl"
+        "Fluroxypyr-meptyl",
+        "Fluroxypyr Meptyl",
+        "Fluroxypyr meptyl"
       ],
       "mappings": [
         {
@@ -14065,7 +14247,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -14411,8 +14594,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000351"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000351 \"Metsulfuron-methyl\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Metsulfuron-methyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000351 karena bentuk terbanyak di registri: 6 rekaman lawan 4. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -14463,8 +14653,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000293"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000293 \"Natrium 5 nitroguaiakol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000293 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -14490,8 +14687,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Natrium o-nitrofenol"
+      ]
     },
     {
       "id": "op:sub:00000564",
@@ -14516,8 +14717,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Natrium p-nitrofenol"
+      ]
     },
     {
       "id": "op:sub:00000565",
@@ -14766,8 +14971,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Pyrazosulfuron ethyl"
+      ]
     },
     {
       "id": "op:sub:00000574",
@@ -15017,8 +15226,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001664"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001664 \"Trichoderma sp\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Trichoderma sp\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00001664 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15043,8 +15259,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001673"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001673 \"Triklopir butoksi etil ester (setara dengan triklopir 480 g/l)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Triklopir butoksi etil ester (setara dengan triklopir 480 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001673 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15069,8 +15292,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000236"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000236 \"1,2-Benzisothiazol-3(2H)-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"1,2-Benzisothiazol-3(2H)-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000236 karena bentuk terbanyak di registri: 4 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15121,8 +15351,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000913"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000913 \"1,2-Benzisothiazolin-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"1,2-Benzisothiazolin-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000913 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15199,8 +15436,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000993"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000993 \"2-Octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15387,7 +15631,8 @@
         "active_ingredient"
       ],
       "pesticide_action": [
-        "fungicide"
+        "fungicide",
+        "other"
       ],
       "mappings": [
         {
@@ -15400,8 +15645,19 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"3-Iodo-2-propynyl butylcarbamate\", \"3-Iodo-2-propynyl butyl carbamate\", \"3-iodo -2- Propynyl-butylcarbamate\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
+      },
+      "synonyms": [
+        "3-Iodo-2-propynyl butylcarbamate",
+        "3-iodo-2-propynyl  butylcarbamate",
+        "3-iodo-2-propynyl butylcarbamate",
+        "3-Iodo-2-propynyl butyl carbamate",
+        "3-iodo -2- Propynyl-butylcarbamate"
+      ]
     },
     {
       "id": "op:sub:00000597",
@@ -15533,8 +15789,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Amonium glufosinat (setara dengan glufosinat : 137 g/l)"
+      ]
     },
     {
       "id": "op:sub:00000602",
@@ -15558,8 +15818,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001062"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001062 \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15584,8 +15851,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000601"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000601 \"Amonium glufosinat (setara dengan glufosinat 137 g/l)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Amonium glufosinat (setara dengan glufosinat 137 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (3 lawan 3), jadi yang dipakai op:sub:00000601 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -15717,7 +15991,9 @@
         "public_health"
       ],
       "synonyms": [
-        "beta-cyfluthrin"
+        "beta-cyfluthrin",
+        "Beta Cyfluthrin",
+        "beta cyfluthrin"
       ],
       "mappings": [
         {
@@ -15730,7 +16006,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -15752,7 +16029,8 @@
         }
       ],
       "synonyms": [
-        "bispiribak sodium"
+        "bispiribak sodium",
+        "Bispiribak-sodium"
       ],
       "mappings": [
         {
@@ -15765,7 +16043,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -16455,8 +16734,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000302"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000302 \"Fluroksipir meptil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Fluroksipir meptil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000302 karena bentuk terbanyak di registri: 10 rekaman lawan 3. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -17582,8 +17868,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000293"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000293 \"Natrium 5 nitroguaiakol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (3 lawan 3), jadi yang dipakai op:sub:00000293 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -17698,8 +17991,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "P-Menthane-3,8- Diol"
+      ]
     },
     {
       "id": "op:sub:00000676",
@@ -17983,10 +18280,12 @@
         "active_ingredient"
       ],
       "pesticide_action": [
+        "bactericide",
         "other"
       ],
       "synonyms": [
-        "reaction mass of 5-chloro-2-methyl-2H-isothiazol-3-one and 2-methyl-2H-isothiazol-3-one (3:1)"
+        "reaction mass of 5-chloro-2-methyl-2H-isothiazol-3-one and 2-methyl-2H-isothiazol-3-one (3:1)",
+        "reaction mass of 5-chloro-2-methyl-2Hisothiazol-3-one and 2-methyl-2H-isothiazol-3- one (3:1)"
       ],
       "mappings": [
         {
@@ -17999,7 +18298,11 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"reaction mass of 5-chloro-2-methyl-2Hisothiazol-3-one and 2-methyl-2H-isothiazol-3- one (3:1)\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
       }
     },
     {
@@ -18302,8 +18605,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000315"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000315 \"Triclopyr Butoxy Ethyl Ester\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Triclopyr Butoxy Ethyl Ester\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000315 karena bentuk terbanyak di registri: 6 rekaman lawan 3. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -18530,6 +18840,8 @@
         "active_ingredient"
       ],
       "pesticide_action": [
+        "bactericide",
+        "fungicide",
         "other"
       ],
       "mappings": [
@@ -18543,8 +18855,17 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"1,2-benzisothiazol-3(2H)-one  / BIT\", \"1,2-benzisothiazol-3(2H)- one (BIT)\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
+      },
+      "synonyms": [
+        "1,2-benzisothiazol-3(2H)-one  / BIT",
+        "1,2-benzisothiazol-3(2H)-one / BIT",
+        "1,2-benzisothiazol-3(2H)- one (BIT)"
+      ]
     },
     {
       "id": "op:sub:00000706",
@@ -18568,8 +18889,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000993"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000993 \"2-Octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -18594,8 +18922,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000721"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000721 \"2-methylisothiazol-3(2H)-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-methylisothiazol-3(2H)-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000721 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -18673,8 +19008,13 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "2,4 D Dimethyl Amine",
+        "2,4-D, dimethylamine"
+      ]
     },
     {
       "id": "op:sub:00000711",
@@ -18698,8 +19038,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000712"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000712 \"2,4-D dimethylammonium\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D dimethylammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (2 lawan 2), jadi yang dipakai op:sub:00000712 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -18725,8 +19072,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "2,4-D dimethyl ammonium"
+      ]
     },
     {
       "id": "op:sub:00000713",
@@ -18836,8 +19187,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "2,4D-DMA"
+      ]
     },
     {
       "id": "op:sub:00000717",
@@ -18901,6 +19256,7 @@
         "active_ingredient"
       ],
       "pesticide_action": [
+        "bactericide",
         "other"
       ],
       "mappings": [
@@ -18914,8 +19270,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"2-methyl-2H-isothiazol-3-one/ MIT\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
+      },
+      "synonyms": [
+        "2-methyl-2H-isothiazol-3-one/ MIT"
+      ]
     },
     {
       "id": "op:sub:00000720",
@@ -18939,8 +19302,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000719"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000719 \"2-methyl-2H-isothiazol-3-one (MIT)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-methyl-2H-isothiazol-3-one (MIT)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000719 karena bentuk terbanyak di registri: 1 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -18953,7 +19323,8 @@
         "active_ingredient"
       ],
       "pesticide_action": [
-        "bactericide"
+        "bactericide",
+        "fungicide"
       ],
       "mappings": [
         {
@@ -18966,8 +19337,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"2 methylisothiazol - 3 ( 2 H ) one\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
+      },
+      "synonyms": [
+        "2 methylisothiazol - 3 ( 2 H ) one"
+      ]
     },
     {
       "id": "op:sub:00000722",
@@ -19073,8 +19451,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000122"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000122 \"2,4-D DIMETIL AMINA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D DIMETIL AMINA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000122 karena bentuk terbanyak di registri: 74 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -19113,6 +19498,7 @@
         "active_ingredient"
       ],
       "pesticide_action": [
+        "bactericide",
         "other"
       ],
       "mappings": [
@@ -19126,8 +19512,16 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"3-Iodo-2-propynyl butylcarbamate / IPBC\", \"3-iodo-2-propynyl butyl carbamate (IPBC)\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
+      },
+      "synonyms": [
+        "3-Iodo-2-propynyl butylcarbamate / IPBC",
+        "3-iodo-2-propynyl butyl carbamate (IPBC)"
+      ]
     },
     {
       "id": "op:sub:00000728",
@@ -19250,7 +19644,8 @@
         "plant_growth_regulator"
       ],
       "synonyms": [
-        "6-benzylaminopurine"
+        "6-benzylaminopurine",
+        "6-Benzylamino-purine"
       ],
       "mappings": [
         {
@@ -19263,7 +19658,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -19373,8 +19769,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000152"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000152 \"Alfa Sipermetrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Alfa Sipermetrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000152 karena bentuk terbanyak di registri: 28 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -19488,8 +19891,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Amonium glufosinat (setara dengan glufosinat : 183 g/l)"
+      ]
     },
     {
       "id": "op:sub:00000741",
@@ -19539,8 +19946,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000740"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000740 \"Amonium glufosinat (Setara dengan glufosinat 183 g/l)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Amonium glufosinat (Setara dengan glufosinat 183 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (2 lawan 2), jadi yang dipakai op:sub:00000740 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -19556,7 +19970,9 @@
         "plant_growth_regulator"
       ],
       "synonyms": [
-        "asam 1-naptilasetik"
+        "asam 1-naptilasetik",
+        "asam 1- naptilasetik",
+        "Asam 1- naptilasetik."
       ],
       "mappings": [
         {
@@ -19569,7 +19985,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -19637,7 +20054,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "Atrazin (atrazine)"
+        "Atrazin (atrazine)",
+        "Atrazin ( atrazine )"
       ],
       "mappings": [
         {
@@ -19650,7 +20068,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -19766,8 +20185,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Benzil florpirauksifen (florpyrauxifen benzyl)"
+      ]
     },
     {
       "id": "op:sub:00000751",
@@ -19794,8 +20217,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000171"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000171 \"Beta Siflutrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Beta Siflutrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000171 karena bentuk terbanyak di registri: 23 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -19846,8 +20276,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000145"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000145 \"Butil Sihalofop\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Butil Sihalofop\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000145 karena bentuk terbanyak di registri: 33 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -19970,7 +20407,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "Chlorimuron ethyl"
+        "Chlorimuron ethyl",
+        "Chlorimuron-ethyl"
       ],
       "mappings": [
         {
@@ -19983,7 +20421,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -20657,8 +21096,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "ethyl4-methyloctanoate"
+      ]
     },
     {
       "id": "op:sub:00000783",
@@ -20794,8 +21237,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Florilpikoksamid (Florylpicoxamid"
+      ]
     },
     {
       "id": "op:sub:00000788",
@@ -21011,8 +21458,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000548"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000548 \"FLUROXYPYR-MEPTYL\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"FLUROXYPYR-MEPTYL\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000548 karena bentuk terbanyak di registri: 4 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -21150,8 +21604,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001286"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001286 \"Gliocladium sp\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Gliocladium sp\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00001286 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -22020,8 +22481,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000211"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000211 \"L-amonium glufosinat\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"L-amonium glufosinat\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000211 karena bentuk terbanyak di registri: 7 rekaman lawan 2. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -22073,8 +22541,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "L-Glufosinate-Ammonium"
+      ]
     },
     {
       "id": "op:sub:00000831",
@@ -22100,8 +22572,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Lamda sihalotrin (Lambda-cyhalothrin)"
+      ]
     },
     {
       "id": "op:sub:00000832",
@@ -22230,7 +22706,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "Mesotrion (mesotrione)"
+        "Mesotrion (mesotrione)",
+        "Mesotrion (mesotrione )"
       ],
       "mappings": [
         {
@@ -22243,7 +22720,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -22707,8 +23185,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000675"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000675 \"p-menthane-3,8-diol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"p-menthane-3,8-diol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000675 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -23012,7 +23497,8 @@
         "herbicide"
       ],
       "synonyms": [
-        "pirazosulfuron etil"
+        "pirazosulfuron etil",
+        "Pirazosulfuron-etil"
       ],
       "mappings": [
         {
@@ -23025,7 +23511,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       }
     },
     {
@@ -23700,8 +24187,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000388"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000388 \"Thiophanate-methyl\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Thiophanate-methyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (2 lawan 2), jadi yang dipakai op:sub:00000388 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24339,8 +24833,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000705"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000705 \"1,2-benzisothiazol-3(2H)-one (BIT)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"1,2-benzisothiazol-3(2H)-one (BIT)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000705 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24366,8 +24867,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "1,2-Benzisothiazolin-3- one"
+      ]
     },
     {
       "id": "op:sub:00000914",
@@ -24392,8 +24897,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "1,2-Benzisothiazolin-3-one (BIT-84%);"
+      ]
     },
     {
       "id": "op:sub:00000915",
@@ -24417,8 +24926,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000914"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000914 \"1,2-Benzisothiazolin-3-one (BIT-84%)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"1,2-Benzisothiazolin-3-one (BIT-84%)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000914 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24651,8 +25167,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000926"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000926 \"1-naphthylacetic acid\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"1-naphthylacetic acid\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000926 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24704,8 +25227,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "1-naphthyl Acetic Acid"
+      ]
     },
     {
       "id": "op:sub:00000927",
@@ -24781,8 +25308,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000993"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000993 \"2-Octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24807,8 +25341,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000993"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000993 \"2-Octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24833,8 +25374,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000993"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000993 \"2-Octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -24963,8 +25511,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000710"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000710 \"2,4-D Dimethyl amine\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D Dimethyl amine\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000710 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -25048,8 +25603,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000221"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000221 \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -25419,8 +25981,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000221"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000221 \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -25680,8 +26249,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "2,4-D dimetil amina, setara dengan 2,4-D 718 g/l"
+      ]
     },
     {
       "id": "op:sub:00000964",
@@ -25705,8 +26278,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000221"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000221 \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000221 karena bentuk terbanyak di registri: 10 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -25731,8 +26311,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000963"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000963 \"2,4-D dimetil amina setara dengan 2,4 D 718 g/l\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D dimetil amina setara dengan 2,4 D 718 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000963 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -25913,8 +26500,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000251"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000251 \"2,4-D isopropil amina\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D isopropil amina\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000251 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26043,8 +26637,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000710"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000710 \"2,4-D Dimethyl amine\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D Dimethyl amine\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000710 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26095,8 +26696,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000716"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000716 \"2,4-D DMA\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2,4-D DMA\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000716 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26121,8 +26729,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000993"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000993 \"2-Octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26147,8 +26762,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000993"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000993 \"2-Octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000993 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26251,8 +26873,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000434"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000434 \"2-Methyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"2-Methyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000434 karena bentuk terbanyak di registri: 1 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26447,7 +27076,8 @@
         "active_ingredient"
       ],
       "pesticide_action": [
-        "fungicide"
+        "fungicide",
+        "other"
       ],
       "mappings": [
         {
@@ -26460,8 +27090,21 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "notes": {
+        "id": "Aksi dan kelas disatukan dari ejaan lain bahan yang sama sebelum penggabungan id: \"2- Octyl-2H -Isothiazol -3 one\", \"2- Octyl - 2H -Isothiazol-3-one\", \"2 - Octyl - 2H _ Isothiazol - 3 One\", \"2 - Octyl - 2H- isothiazol - 3 -one\", \"2 - Octyl - 2H - Isothiazol - 3 One\", \"2 - Octyl - 2H-isothiazol - 3 - one\", \"2 - Octyl- 2H- isothiazol - 3 - one\". pesticide_action diturunkan dari konteks produk tempat nama itu muncul, bukan dari kimia bahannya; ejaan yang jarang dipakai hanya mewarisi sebagian konteks."
+      },
+      "synonyms": [
+        "2- Octyl-2H -Isothiazol -3 one",
+        "2- Octyl - 2H -Isothiazol-3-one",
+        "2 - Octyl - 2H _ Isothiazol - 3 One",
+        "2 - Octyl - 2H- isothiazol - 3 -one",
+        "2 - Octyl - 2H - Isothiazol - 3 One",
+        "2 - Octyl - 2H-isothiazol - 3 - one",
+        "2 - Octyl- 2H- isothiazol - 3 - one"
+      ]
     },
     {
       "id": "op:sub:00000994",
@@ -26693,8 +27336,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000596"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000596 \"3-iodo-2-propynyl-butylcarbamate\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl-butylcarbamate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000596 karena bentuk terbanyak di registri: 2 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26719,8 +27369,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000596"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000596 \"3-iodo-2-propynyl-butylcarbamate\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl-butylcarbamate\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000596 karena bentuk terbanyak di registri: 2 rekaman lawan 0. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26745,8 +27402,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000727"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000727 \"3-iodo-2-propynyl butylcarbamate (IPBC)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl butylcarbamate (IPBC)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000727 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26771,8 +27435,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000727"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000727 \"3-iodo-2-propynyl butylcarbamate (IPBC)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"3-iodo-2-propynyl butylcarbamate (IPBC)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000727 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26823,8 +27494,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001008"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001008 \"4,5-dichloro-2-octyl-2H-isothiazol-3-one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"4,5-dichloro-2-octyl-2H-isothiazol-3-one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001008 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -26850,8 +27528,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "4,5 DICHLORO - 2 - OCTYL - 2H - ISOTHIAZOL - 3 - One"
+      ]
     },
     {
       "id": "op:sub:00001009",
@@ -26980,8 +27662,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "5 CHLORO -2- METHYL -  2 H - ISOTHIAZOL - 3 ONE  AND 2 METHYL -2H ISOTHIAZOL - 3 ONE"
+      ]
     },
     {
       "id": "op:sub:00001014",
@@ -27005,8 +27691,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001013"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001013 \"5 Chloro - 2 Methyl - 2H- Isothiazol 3 One and 2Methyl - 2 H - Isothiazol - 3 one\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"5 Chloro - 2 Methyl - 2H- Isothiazol 3 One and 2Methyl - 2 H - Isothiazol - 3 one\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001013 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -27343,8 +28036,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000732"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000732 \"6-Benzylaminopurine\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"6-Benzylaminopurine\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000732 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -27714,8 +28414,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000520"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000520 \"Alpha Cypermethrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Alpha Cypermethrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000520 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -27740,8 +28447,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000520"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000520 \"Alpha Cypermethrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Alpha Cypermethrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000520 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -28000,8 +28714,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001062"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001062 \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -28078,8 +28799,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001062"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001062 \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -28182,8 +28910,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001062"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001062 \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Amonium glufosinat, setara dengan glufosinat 182,7 g/l\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001062 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -28261,8 +28996,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "amonium glufosinat (setara dengan glufosinat 182,7 g/l)",
+        "amonium glufosinat (setara dengan glufosinat 182.7 g/l)",
+        "amonium glufosinat (setara dengan glufosinat: 182,7 g/l)",
+        "Amonium glufosinat (setara dengan glufosinat : 182,7 g/l)"
+      ]
     },
     {
       "id": "op:sub:00001063",
@@ -28338,8 +29080,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000743"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000743 \"Asam 1-naptilasetik\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Asam 1-naptilasetik\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000743 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -28364,8 +29113,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000743"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000743 \"Asam 1-naptilasetik\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Asam 1-naptilasetik\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000743 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -28813,8 +29569,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000746"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000746 \"Atrazin (Atrazine)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Atrazin (Atrazine)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000746 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29308,8 +30071,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001102"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001102 \"Bensulfuron methyl\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Bensulfuron methyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001102 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29335,8 +30105,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Bensulfuron - Methyl"
+      ]
     },
     {
       "id": "op:sub:00001103",
@@ -29360,8 +30134,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000530"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000530 \"Bensulfuron metil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Bensulfuron metil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000530 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29412,8 +30193,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000750"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000750 \"Benzil florpirauksifen (Florpyrauxifen-benzyl)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Benzil florpirauksifen (Florpyrauxifen-benzyl)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000750 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29491,8 +30279,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Benzyl-C12-14- alkyldimethyl  ammonium chlorides"
+      ]
     },
     {
       "id": "op:sub:00001109",
@@ -29516,8 +30308,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001108"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001108 \"Benzyl-C12-14 alkyldimethyl,  ammonium chlorides\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Benzyl-C12-14 alkyldimethyl,  ammonium chlorides\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001108 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29569,8 +30368,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Beta-cypermethrin"
+      ]
     },
     {
       "id": "op:sub:00001112",
@@ -29620,8 +30423,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001111"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001111 \"beta cypermethrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"beta cypermethrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001111 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29646,8 +30456,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000171"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000171 \"Beta Siflutrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Beta Siflutrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000171 karena bentuk terbanyak di registri: 23 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29750,8 +30567,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000609"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000609 \"Bispiribak sodium\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Bispiribak sodium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000609 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -29932,8 +30756,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000366"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000366 \"BPMC/Fenobucarb\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"BPMC/Fenobucarb\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000366 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -30244,8 +31075,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000532"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000532 \"Butil sihalofop (Cyhalofop-butyl)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Butil sihalofop (Cyhalofop-butyl)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000532 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -30530,8 +31368,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000758"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000758 \"Chlorimuron Ethyl\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Chlorimuron Ethyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000758 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -33387,8 +34232,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000787"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000787 \"Florilpikoksamid (Florylpicoxamid)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Florilpikoksamid (Florylpicoxamid)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000787 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -33907,8 +34759,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000449"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000449 \"Fluroksipir Meptil Heptil Ester\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Fluroksipir Meptil Heptil Ester\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000449 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -34218,8 +35077,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Gliocladium sp."
+      ]
     },
     {
       "id": "op:sub:00001287",
@@ -34299,8 +35162,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Glufosinate-P-Ammonium"
+      ]
     },
     {
       "id": "op:sub:00001290",
@@ -34324,8 +35191,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001289"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001289 \"glufosinate-p ammonium\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"glufosinate-p ammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001289 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -38261,8 +39135,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000830"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000830 \"L-Glufosinate Ammonium\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"L-Glufosinate Ammonium\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000830 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -38287,8 +39168,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000831"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000831 \"Lamda sihalotrin (lambda cyhalothrin)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Lamda sihalotrin (lambda cyhalothrin)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000831 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -38313,8 +39201,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000126"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000126 \"Lamda Sihalotrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Lamda Sihalotrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000126 karena bentuk terbanyak di registri: 81 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -38339,8 +39234,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000126"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000126 \"Lamda Sihalotrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Lamda Sihalotrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000126 karena bentuk terbanyak di registri: 81 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -38736,8 +39638,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000836"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000836 \"Mesotrion (Mesotrione)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Mesotrion (Mesotrione)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000836 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -39671,8 +40580,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000308"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000308 \"Natrium 2,4 dinitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium 2,4 dinitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000308 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -39723,8 +40639,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000308"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000308 \"Natrium 2,4 dinitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium 2,4 dinitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000308 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -39749,8 +40672,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000308"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000308 \"Natrium 2,4 dinitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium 2,4 dinitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000308 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -39775,8 +40705,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000261"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000261 \"Natrium bispiribak (bispyribac sodium)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium bispiribak (bispyribac sodium)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000261 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -39931,8 +40868,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000563"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000563 \"natrium-o-nitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"natrium-o-nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000563 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -39983,8 +40927,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000274"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000274 \"Natrium orto nitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium orto nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000274 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40009,8 +40960,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000564"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000564 \"natrium-p-nitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"natrium-p-nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00000564 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40035,8 +40993,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000262"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000262 \"Natrium para nitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium para nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000262 karena bentuk terbanyak di registri: 5 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40087,8 +41052,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000293"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000293 \"Natrium 5 nitroguaiakol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000293 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40113,8 +41085,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000293"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000293 \"Natrium 5 nitroguaiakol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium 5 nitroguaiakol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000293 karena bentuk terbanyak di registri: 3 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40139,8 +41118,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000274"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000274 \"Natrium orto nitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium orto nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000274 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40165,8 +41151,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000262"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000262 \"Natrium para nitrofenol\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Natrium para nitrofenol\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000262 karena bentuk terbanyak di registri: 5 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40269,8 +41262,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001499"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001499 \"Nikosulfuron (Nicosulfuron)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Nikosulfuron (Nicosulfuron)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001499 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -40296,8 +41296,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Nikosulfuron  ( nicosulfuron )"
+      ]
     },
     {
       "id": "op:sub:00001500",
@@ -42361,8 +43365,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000863"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000863 \"Pirazosulfuron etil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Pirazosulfuron etil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000863 karena bentuk terbanyak di registri: 2 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -42803,8 +43814,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000573"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000573 \"Pyrazosulfuron-ethyl\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Pyrazosulfuron-ethyl\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000573 karena bentuk terbanyak di registri: 4 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -43011,8 +44029,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000685"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000685 \"Reaction mass of 5-chloro-2-methyl-2H-isothiazol-3-one and 2-methyl-2H-isothiazol-3-one (3:1)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Reaction mass of 5-chloro-2-methyl-2H-isothiazol-3-one and 2-methyl-2H-isothiazol-3-one (3:1)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00000685 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -43200,8 +44225,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00000228"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00000228 \"Sihalofop butil\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Sihalofop butil\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Yang dipakai op:sub:00000228 karena bentuk terbanyak di registri: 11 rekaman lawan 1. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -44897,8 +45929,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Trichoderma sp."
+      ]
     },
     {
       "id": "op:sub:00001665",
@@ -45141,8 +46177,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Triklopir butoksi etil ester (setara dengan triklopir : 480 g/l)"
+      ]
     },
     {
       "id": "op:sub:00001674",
@@ -45505,8 +46545,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Zeta-sipermetrin"
+      ]
     },
     {
       "id": "op:sub:00001688",
@@ -45530,8 +46574,15 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00001687"
+        }
+      },
+      "notes": {
+        "id": "Digantikan op:sub:00001687 \"Zeta sipermetrin\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Zeta sipermetrin\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (1 lawan 1), jadi yang dipakai op:sub:00001687 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
       }
     },
     {
@@ -47774,9 +48825,13 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z"
       },
-      "cas_number": "6923-22-4"
+      "cas_number": "6923-22-4",
+      "synonyms": [
+        "Monokrotofos (monocrotophos)"
+      ]
     },
     {
       "id": "op:sub:00005045",
@@ -49595,10 +50650,17 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-19T00:00:00Z",
+        "superseded_by": {
+          "id": "op:sub:00005044"
+        }
       },
-      "cas_number": "6923-22-4"
+      "cas_number": "6923-22-4",
+      "notes": {
+        "id": "Digantikan op:sub:00005044 \"Monokrotofos (monocrotophos)\" — bahan yang sama, terdaftar lebih dari sekali karena namanya ditulis berbeda di registri. Ejaan lain untuk bahan yang sama — beda spasi, kapitalisasi, atau huruf. Deret huruf dan angkanya identik dengan \"Monokrotofos (monocrotophos)\" sesudah kapitalisasi, spasi, dan tanda baca dilepas — locant dan nomor posisi tetap dibandingkan, jadi nama kimia yang berbeda angka tidak akan pernah bertemu di sini. Rekamannya seri (0 lawan 0), jadi yang dipakai op:sub:00005044 karena labelnya lebih pendek — dan karena deret huruf-angkanya sudah dipastikan identik, yang lebih pendek adalah yang paling sedikit pemisah nyasarnya. Kedua id tidak pernah muncul pada pendaftaran yang sama, jadi tidak ada kadar yang terjumlah dua kali — dan karena itu pula tidak ada peringatan yang bisa menemukannya; yang rusak adalah penjumlahan lintas pendaftaran. Entitas ini sengaja tidak dihapus: ID tidak pernah didaur ulang, dan ejaan registri yang asli beserta pemetaannya masih perlu bisa ditelusuri."
+      }
     },
     {
       "id": "op:sub:00005081",
