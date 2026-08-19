@@ -13,6 +13,11 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`spec/`](spec/) | Spesifikasi Lapis 1 (ontologi) v0.1 — skema, kosakata, contoh, pemeriksa, dan uji negatif |
 | [`docs/principal-terdaftar.md`](docs/principal-terdaftar.md) | 2.305 principal pemegang pendaftaran pupuk & pestisida, beserta keputusan cakupannya |
 | [`docs/01-sediaan-buatan-sendiri.md`](docs/01-sediaan-buatan-sendiri.md) | Riset & standar praktik meramu sendiri — kompos, MOL, bioaktivator, pestisida nabati — beserta tujuh syarat sebuah praktik boleh dianjurkan mesin |
+| [`docs/02-tiga-pasar.md`](docs/02-tiga-pasar.md) | Segmentasi, target, dan posisi — kenapa pengguna, pembayar, dan kontributor harus disegmentasi terpisah |
+| [`docs/03-lima-pintu.md`](docs/03-lima-pintu.md) | Konsep permukaan baca-saja: lima jalur masuk ke satu registri, aturan lintas jalur, dan lubang datanya |
+| [`docs/04-jalur-insiden-dan-produk.md`](docs/04-jalur-insiden-dan-produk.md) | Jalur 1 & 2 — masuk dari gejala, dan masuk dari kemasan |
+| [`docs/05-jalur-hitungan-hara.md`](docs/05-jalur-hitungan-hara.md) | Jalur 3 — rupiah per kilogram hara, dan tiga hal yang tidak boleh dibandingkan |
+| [`docs/06-jalur-keabsahan-benih-bibit.md`](docs/06-jalur-keabsahan-benih-bibit.md) | Jalur 4 — empat surat yang bunyinya mirip, dan kenapa sisi bibit lebih berbahaya |
 
 Kosakata sudah terisi: 63 fase BBCH Solanaceae, 67 jenis tindakan, 57 variabel, 23 cara
 aplikasi, 10 OPT cabai, dan 11 alasan simpangan. Di atasnya, seluruh registri resmi Kementan
