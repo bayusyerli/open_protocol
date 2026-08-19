@@ -8,7 +8,7 @@
 > Isi, angka, dan tabelnya utuh; simulasi yang bisa diklik tidak ikut —
 > alurnya ditulis ulang sebagai teks.
 >
-> Jalur 5 dari [03-enam-pintu.md](03-enam-pintu.md). Sisi pengendalinya di [09-jalur-sediaan-pengendali.md](09-jalur-sediaan-pengendali.md).
+> Jalur 5 dari [03-enam-pintu.md](03-enam-pintu.md). Sisi pengendalinya di [09-jalur-sediaan-pengendali.md](09-jalur-sediaan-pengendali.md); jalur yang bermuara ke sini adalah [06-jalur-hitungan-hara.md](06-jalur-hitungan-hara.md).
 
 ---
 
@@ -55,7 +55,7 @@ Bahan beserta perbandingannya, titik kendali proses, kriteria pelepasan, dosis, 
 
 Kenapa jalur ini juga jadi tujuan
 
-Jalur 3 bisa berakhir dengan rupiah per kg hara yang di luar jangkauan. Di situlah jalur ini jadi cabangnya — satu-satunya jawaban yang tidak menjual apa pun.
+Jalur 3 — **hitungan hara** — bisa berakhir dengan rupiah per kg hara di luar jangkauan. Di situlah jalur ini jadi cabangnya — satu-satunya jawaban yang tidak menjual apa pun.
 
 ---
 
@@ -77,7 +77,7 @@ Melainkan suhu tumpukan. Kompos kotoran sapi mensyaratkan di atas 55 °C ditahan
 
 Kompos punya kadar hara, tetapi kadarnya berbeda tiap tumpukan. Aturan `L18` menolak menghitung hara dari batch yang belum terukur.
 
-Konsekuensinya untuk jalur 3: **kompos tidak bisa masuk kalkulator rupiah per kg hara dengan angka**. Ia bisa masuk sebagai pos yang menunggu pengukuran, tetapi memberinya angka rujukan akan membuat seluruh perbandingan bohong. Yang bisa ditampilkan adalah biaya bahan dan tenaga, bukan harga per kg hara.
+Konsekuensinya untuk jalur 3 — hitungan hara — **kompos tidak bisa masuk kalkulatornya dengan angka**. Ia bisa masuk sebagai pos yang menunggu pengukuran, tetapi memberinya angka rujukan akan membuat seluruh perbandingan bohong. Yang bisa ditampilkan adalah biaya bahan dan tenaga, bukan harga per kg hara.
 
 > **Yang perlu diputuskan sebelum menyambungkannya ke jalur 3**
 >
@@ -87,7 +87,7 @@ Konsekuensinya untuk jalur 3: **kompos tidak bisa masuk kalkulator rupiah per kg
 
 ## 6. Prasyarat rilis
 
-- **Tidak ada.** Ketujuh sediaan berada di luar rezim pendaftaran lewat Pasal 72, kriteria pelepasannya lengkap, dan tidak satu pun menunggu pendapat hukum. Sisi ini bisa dirilis bersama jalur 3.
+- **Tidak ada.** Ketujuh sediaan berada di luar rezim pendaftaran lewat Pasal 72, kriteria pelepasannya lengkap, dan tidak satu pun menunggu pendapat hukum. Sisi ini bisa dirilis bersama jalur 3, hitungan hara.
 - **Peringatan silang wajib ikut** pada dua fungsi yang merentang kedua sisi — memperbaiki tanah dan merangsang pertumbuhan — supaya orang yang sebenarnya mencari pengendali penyakit tidak berhenti di sisi yang salah.
 - **Empat bahan berstatus `restricted` membawa syaratnya sendiri:** urine ternak wajib difermentasi tertutup ≥ 7 hari; molase maksimal 0,2% pada seduhan berbahan kotoran; media serealia wajib disterilkan penuh dan media berjamur dibakar, bukan dipakai; inokulum dari alam bebas identitasnya tidak bisa dipastikan tanpa laboratorium.
 

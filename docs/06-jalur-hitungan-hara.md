@@ -16,7 +16,7 @@
 
 Layar insiden dibangun untuk pestisida karena keputusan pestisida memang reaktif: masalah muncul, dan orang butuh jawaban sekarang. Keputusan pupuk bentuknya lain — berkala, terikat anggaran, dan diambil sebelum ada gejala apa pun.
 
-Menempelkan gejala pada pupuk juga berbahaya. Gejala kekurangan hara ambigu, muncul terlambat, dan mudah tertukar dengan penyakit, kekeringan, atau masalah pH. Diagnosis hara berbasis gejala akan salah dengan percaya diri — alasan yang sama kenapa pengenal foto untuk OPT ditolak.
+Menempelkan gejala pada pupuk juga berbahaya. Gejala kekurangan hara ambigu, muncul terlambat, dan mudah tertukar dengan penyakit, kekeringan, atau masalah pH. Diagnosis hara berbasis gejala akan salah dengan percaya diri — alasan yang sama kenapa saya menolak pengenal foto untuk OPT.
 
 Yang benar-benar ditanyakan orang di depan kios: **“yang mana yang lebih murah untuk hara yang saya butuhkan?”** Itu pertanyaan aritmetika, dan aritmetikanya sudah lengkap di data.
 
@@ -74,11 +74,27 @@ Yang terbesar
 
 ---
 
-## 5. Yang belum ada di data
+## 5. Kalau angkanya di luar jangkauan
+
+Kalkulator ini bisa berakhir dengan satu angka yang jawabannya “tidak sanggup”. Itu keadaan nyata, bukan kasus tepi — dan hari ini tidak ada layanan mana pun yang melayaninya.
+
+Cabangnya **jalur 5, sediaan pupuk sendiri**: tujuh resep terbuka yang berada di luar rezim pendaftaran lewat Pasal 72, kriteria pelepasannya lengkap, dan tidak menunggu apa pun untuk dirilis. Ia satu-satunya jawaban di seluruh platform yang tidak menjual apa pun.
+
+> **Tetapi cabangnya masuk tanpa angka**
+>
+> Aturan `L18` menolak menghitung hara dari batch yang belum diuji, dan kadar kompos berbeda tiap tumpukan. Jadi sediaan sendiri **tidak bisa muncul di kalkulator ini dengan rupiah per kg hara** — memberinya angka rujukan akan membuat seluruh perbandingan bohong.
+>
+> Yang diusulkan: **tetap ditampilkan, tanpa angka.** Menyembunyikannya berarti petani yang tidak sanggup membeli tidak melihat pilihan apa pun — dan itu justru keadaan yang paling butuh dilayani. Yang bisa ditampilkan biaya bahan dan tenaganya, bukan harga per kg haranya.
+
+Perhatikan arahnya: cabang ini **terbuka sekarang**. Bandingkan dengan cabang serupa di jalur insiden, yang bermuara ke jalur 6 dan masih tertutup sampai bacaan Pasal 77 ayat (1) dijawab.
+
+---
+
+## 6. Yang belum ada di data
 
 - **Harga.** Nol. Harus dimasukkan pengguna sekali di kios, atau dikumpulkan bersama — dan yang kedua itu produk lain dengan masalah moderasinya sendiri.
-- **Penanda subsidi.** Dari seluruh 7.196 pupuk, **tidak satu pun** menyebutkan status subsidi. Padahal dokumen fondasi menyatakan mesin protokol harus sadar-subsidi. Kesadaran itu harus datang dari sumber lain — daftar produk bersubsidi Kementan, bukan registri pendaftaran.
-- **Berat jenis pupuk cair.** Tanpa itu, 1.503 pupuk cair tidak bisa dibandingkan dengan yang padat sama sekali.
+- **Penanda subsidi.** Saya periksa seluruh 7.196 pupuk: **tidak satu pun** menyebutkan status subsidi. Padahal dokumen fondasi menyatakan mesin protokol harus sadar-subsidi. Kesadaran itu harus datang dari sumber lain — daftar produk bersubsidi Kementan, bukan registri pendaftaran.
+- **Berat jenis pupuk cair.** Tanpa itu, 1.721 pupuk cair tidak bisa dibandingkan dengan yang padat sama sekali.
 - **Ukuran kemasan.** Tidak tercatat, jadi pengguna harus memilihnya. Preset 50 / 25 / 5 kg menutup sebagian besar kasus.
 
 ---
