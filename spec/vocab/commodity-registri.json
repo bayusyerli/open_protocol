@@ -44,18 +44,50 @@
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Budidaya Kelapa Sawit ( TBM  )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 56 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya kelapa sawit (TBM )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Budidaya kelapa sawit (TBM)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 5400 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya kelapa sawit (TBM) (1 - 2 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya kelapa sawit (TBM) (1,5-2 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya Kelapa sawit (TBM) (2 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya  kelapa sawit (TBM)",
+        "Budidaya Kelapa Sawit ( TBM )",
         "Budidaya Kelapa Sawit (TBM)",
         "Budidaya Kelapa Sawit (TM)",
         "Budidaya Kelapa sawit (TBM)",
@@ -71,6 +103,7 @@
         "Kelapa Sawit",
         "Kelapa Sawit  (TBM)",
         "Kelapa Sawit  (TM)",
+        "Kelapa Sawit ( TBM )",
         "Kelapa Sawit (TBM)",
         "Kelapa Sawit (TBM):",
         "Kelapa Sawit (TM)",
@@ -102,12 +135,67 @@
           "id": "Jagung",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 2105 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (0,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (10 ml/kg)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (2 kg/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (20 ml/kg benih)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (4 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (7,5 kg/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung (75 - 125 ml/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung: (Penyemprotan volume tinggi:  25 g/ha (20 HST dan 40 HST))",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya  Jagung",
@@ -146,17 +234,103 @@
           "id": "Cabai",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1082 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai  (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (0,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (0,6 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (0,75 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (1,5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "cabai (1,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (3 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (4 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai (700 ml/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya cabai",
         "Budidaya cabai :",
         "CABAI",
+        "Cabai (1,5 ml/l)",
         "Cabai :",
         "Cabai:",
         "cabai"
@@ -176,25 +350,76 @@
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Karet ( TBM )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Karet (TBM)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 911 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (0,375-0,5 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1 - 2 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1,5 - 2 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1,5 - 2,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM) (1,5 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 8 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TBM): (2 - 4 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya  karet (TBM)",
         "Budidaya Karet (TBM)",
+        "Budidaya Karet (TBM) (1 - 2 l/ha)",
         "Budidaya karet",
         "Budidaya karet (TBM)",
         "Budidaya karet (TBM):",
         "Budidaya karet (TM)",
         "Budidaya karet (TM):",
         "Karet",
+        "Karet (TBM)  (1,5 - 3 l/ha)",
         "Karet (TBM) :",
         "Karet (TM)",
         "Karet (TM):",
@@ -215,12 +440,31 @@
           "id": "Tebu",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 873 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tebu (2 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 12 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tebu (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tebu (25 kg/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Tebu",
@@ -245,12 +489,49 @@
           "id": "Kedelai",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 608 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kedelai (1 - 2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kedelai (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kedelai (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kedelai (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kedelai (3,75 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kedelai (5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya  Kedelai",
@@ -284,12 +565,85 @@
           "id": "Kentang",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 600 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (0,2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (1,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (1,875 g/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (2,25 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (20 kg/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kentang (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Kentang",
@@ -314,15 +668,28 @@
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Budidaya kopi ( TBM )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Budidaya kopi (TBM)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 486 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya kopi TBM",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 8 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Kopi (TBM)",
@@ -352,12 +719,49 @@
           "id": "Kakao",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 411 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (0,25 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (0,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (0,75 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (1 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Kakao (TBM)",
@@ -385,12 +789,43 @@
           "id": "Kubis",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 328 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kubis (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kubis (1,5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kubis (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kubis (1,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kubis (3,75 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya kubis",
@@ -416,12 +851,31 @@
           "id": "Teh",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 187 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Teh (1,5 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Teh (2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Teh (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Teh (TM)",
@@ -444,12 +898,31 @@
           "id": "Jeruk",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 162 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jeruk (0,5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jeruk (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jeruk (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya jeruk",
@@ -469,22 +942,49 @@
           "id": "Budidaya padi sawah (Tapin)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 151 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya padi sawah tanam pindah (Tapin)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 104 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya padi sawah tapin (Tanam pindah)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 16 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya Padi Sawah Tapin (Tanam Pindah) (2,5 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Budidaya Padi Sawah Tanam Pindah (Tapin)",
+        "Budidaya Padi Tapin (Tanam Pindah)",
         "Budidaya Padi sawah (Tapin)",
         "Budidaya padi sawah (Tapin) :",
         "Budidaya padi sawah (tapin)",
         "Budidaya padi sawah (tapin):",
+        "Budidaya padi sawah tanam pindah (Tapin):",
+        "Budidaya padi sawah tanam pindah (tapin)",
+        "Budidaya padi sawah tanam pindah (tapin):",
+        "Budidaya padi sawah tapin (tanam pindah)",
         "Padi Sawah (Tapin)",
         "Padi sawah (Tapin)",
         "Padi sawah (tapin)",
-        "Padi sawah (tapin) :"
+        "Padi sawah (tapin) :",
+        "Padi sawah tanam pindah (TAPIN)",
+        "Padi sawah tanam pindah (tapin)"
       ]
     },
     {
@@ -504,8 +1004,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001016"
+        }
       },
       "synonyms": [
         "Budidaya Padi Sawah Tanam Pindah (Tapin)",
@@ -529,12 +1033,25 @@
           "id": "Tembakau",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 98 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tembakau  (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tembakau (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Tembakau:"
@@ -553,12 +1070,37 @@
           "id": "Mangga",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 91 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mangga (2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mangga (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mangga (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mangga (8 ml/l/pohon)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Mangga (TM)"
@@ -602,12 +1144,49 @@
           "id": "Semangka",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 84 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Semangka (0,4 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Semangka (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Semangka (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Semangka (1,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Semangka (2,25 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Semangka (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "semangka"
@@ -672,26 +1251,51 @@
       "id": "op:cmd:00001024",
       "key": "padi-tabela",
       "label": {
-        "id": "Budidaya padi sawah tabela"
+        "id": "Budidaya padi sawah (Tabela)"
       },
       "kind": "crop",
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Budidaya padi sawah  tabur benih langsung (Tabela)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 22 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya padi sawah (Tabela)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 35 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Budidaya padi sawah tabela",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 71 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya padi sawah tabela (tanam benih langsung)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Budidaya padi sawah (Tabela):",
+        "Budidaya padi sawah (tabela)",
         "Budidaya padi sawah tabela:",
+        "Budidaya padi sawah tabur benih langsung (Tabela)",
+        "Budidaya padi sawah tabur benih langsung (tabela)",
         "Padi Sawah Tabela",
         "Padi Sawah tabela",
+        "Padi sawah (tabela)",
+        "Padi sawah (tabela) :",
         "Padi sawah tabela",
         "Padi tabela"
       ]
@@ -706,6 +1310,12 @@
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Padi sawah tanam pindah",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 47 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Padi sawah tapin",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 65 baris penggunaan."
@@ -714,14 +1324,18 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Padi Sawah Tapin",
+        "Budidaya padi sawah tanam pindah",
         "Budidaya padi sawah tapin",
         "Budidaya padi sawah tapin:",
+        "Padi Sawah Tanam Pindah",
         "Padi Sawah Tapin",
-        "Padi sawah Tapin"
+        "Padi sawah Tapin",
+        "Padi sawah tanam pindah :"
       ]
     },
     {
@@ -737,12 +1351,25 @@
           "id": "Kacang panjang",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 64 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kacang panjang (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kacang panjang (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Kacang  panjang",
@@ -767,8 +1394,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001154"
+        }
       },
       "synonyms": [
         "Persiapan Lahan Budidaya  Padi Gogo (TOT)",
@@ -792,12 +1423,31 @@
           "id": "Apel",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 59 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Apel (0,25 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Apel (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Apel (3 g/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Apel (TM)",
@@ -821,8 +1471,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001000"
+        }
       },
       "synonyms": [
         "Budidaya Kelapa Sawit ( TBM )",
@@ -846,8 +1500,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001025"
+        }
       },
       "synonyms": [
         "Budidaya padi sawah tanam pindah",
@@ -868,12 +1526,37 @@
           "id": "Melon",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 43 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Melon (0,75 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Melon (175 ml/ha/aplikasi  (pada 5 HST, 25 HST dan 45 HST)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Melon (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Melon (2,25 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Melon :"
@@ -896,12 +1579,25 @@
           "id": "Kacang hijau",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 40 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kacang Hijau (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kacang hijau (3 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Kacang hijau",
@@ -923,12 +1619,19 @@
           "id": "Cabai merah",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 40 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cabai merah (4 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Cabai Merah",
@@ -952,12 +1655,31 @@
           "id": "Kacang tanah",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 37 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kacang tanah (1,125 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kacang Tanah (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kacang tanah (3,75 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya kacang tanah",
@@ -972,10 +1694,52 @@
       "id": "op:cmd:00001035",
       "key": "kelapa-sawit-tbm-2",
       "label": {
-        "id": "Kelapa Sawit TBM"
+        "id": "Kelapa sawit (TBM)"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM)  (0,75 - 1 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM) (0,75 - 1,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa Sawit (TBM) (1 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM) (1,5 - 2,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa Sawit (TBM) (2 - 2,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM) (30 - 50 g/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (TBM): (2,25 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Kelapa Sawit TBM",
@@ -986,7 +1750,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Kelapa sawit TBM"
@@ -1005,13 +1770,27 @@
           "id": "Lada",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 36 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lada (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lada (1,2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001037",
@@ -1030,8 +1809,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001024"
+        }
       },
       "synonyms": [
         "Budidaya padi sawah (Tabela):",
@@ -1102,12 +1885,19 @@
           "id": "Cengkeh",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 31 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cengkeh (2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Cengkeh (TM)",
@@ -1139,10 +1929,16 @@
       "id": "op:cmd:00001042",
       "key": "jagung-tot",
       "label": {
-        "id": "Budidaya Jagung TOT"
+        "id": "Budidaya Jagung (TOT)"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya Jagung (TOT) (1-2 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Budidaya Jagung TOT",
@@ -1153,7 +1949,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Jagung TOT"
@@ -1197,12 +1994,19 @@
           "id": "Mentimun",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 22 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mentimun (125 - 250 ml/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Mentimun:"
@@ -1229,8 +2033,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001024"
+        }
       },
       "synonyms": [
         "Budidaya padi sawah tabur benih langsung (Tabela)",
@@ -1254,8 +2062,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001099"
+        }
       },
       "synonyms": [
         "Persiapan Lahan Budidaya Jagung (TOT)"
@@ -1299,8 +2111,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001083"
+        }
       },
       "synonyms": [
         "Budidaya padi sawah tanam benih langsung (tabela):",
@@ -1378,7 +2194,7 @@
       "id": "op:cmd:00001053",
       "key": "tanaman-kelapa-sawit",
       "label": {
-        "id": "Budidaya tanaman kelapa sawit (TBM):"
+        "id": "Budidaya tanaman kelapa sawit (TBM)"
       },
       "kind": "crop",
       "mappings": [
@@ -1392,7 +2208,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Tanaman Kelapa Sawit (TBM)",
@@ -1437,12 +2254,31 @@
           "id": "Pembibitan kelapa sawit",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 17 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pembibitan kelapa sawit (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pembibitan kelapa sawit (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pembibitan kelapa sawit (1,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Pembibitan Kelapa Sawit",
@@ -1508,8 +2344,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001016"
+        }
       },
       "synonyms": [
         "Budidaya Padi Tapin (Tanam Pindah)",
@@ -1545,7 +2385,7 @@
       "id": "op:cmd:00001061",
       "key": "hutan-tanaman-industri-akasia",
       "label": {
-        "id": "Hutan Tanaman Industri Akasia"
+        "id": "Hutan tanaman industri akasia"
       },
       "kind": "crop",
       "mappings": [
@@ -1554,12 +2394,31 @@
           "id": "Hutan Tanaman Industri Akasia",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 15 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hutan tanaman industri akasia (0,75 - 1 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hutan tanaman industri akasia (0,75 - 1,5 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hutan tanaman industri akasia (30 - 50 g/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hutan tanaman industri Akasia"
@@ -1697,8 +2556,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001006"
+        }
       }
     },
     {
@@ -1753,7 +2616,7 @@
       "id": "op:cmd:00001073",
       "key": "bawang-putih",
       "label": {
-        "id": "Bawang Putih"
+        "id": "Bawang putih"
       },
       "kind": "crop",
       "mappings": [
@@ -1762,12 +2625,25 @@
           "id": "Bawang Putih",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang putih  (1,5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang putih (0,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Bawang putih"
@@ -1847,10 +2723,16 @@
       "id": "op:cmd:00001077",
       "key": "jagung-0-75-1-5-l-ha",
       "label": {
-        "id": "Budidaya jagung (0,75 -1,5 l/ha )"
+        "id": "Budidaya jagung"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Budidaya jagung (0,5 - 1,5 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Budidaya jagung (0,75 -1,5 l/ha )",
@@ -1861,14 +2743,16 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001078",
       "key": "hutan-tanaman-industri-eucalyptus-sp",
       "label": {
-        "id": "Hutan Tanaman industri Eucalyptus sp."
+        "id": "Hutan Tanaman industri Eucalyptus sp"
       },
       "kind": "crop",
       "mappings": [
@@ -1882,7 +2766,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Hutan Tanaman Industri Eucalyptus sp.",
@@ -1947,19 +2832,39 @@
           "id": "Krisan",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 10 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Krisan (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Krisan (1,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Krisan (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001083",
       "key": "padi-tabur-benih-langsung",
       "label": {
-        "id": "Padi sawah tabur benih langsung"
+        "id": "Padi sawah tanam benih langsung (tabela)"
       },
       "kind": "crop",
       "mappings": [
@@ -1968,15 +2873,25 @@
           "id": "Padi sawah tabur benih langsung",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 10 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi sawah tanam benih langsung  (tabela):",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 20 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
-        "Budidaya Padi Sawah Tabur Benih Langsung"
+        "Budidaya Padi Sawah Tabur Benih Langsung",
+        "Budidaya padi sawah tanam benih langsung (tabela):",
+        "Padi Sawah tanam benih langsung (tabela)",
+        "Padi sawah tanam benih langsung (Tabela)"
       ]
     },
     {
@@ -2095,8 +3010,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       }
     },
     {
@@ -2161,19 +3080,33 @@
           "id": "Ketimun",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ketimun (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ketimun (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001092",
       "key": "persiapan-lahan-jagung-tanpa-olah-tanah-1-1-25-l-ha",
       "label": {
-        "id": "Persiapan lahan jagung tanpa olah tanah (1 - 1,25 l/ha)"
+        "id": "Persiapan lahan jagung tanpa olah tanah"
       },
       "kind": "crop",
       "mappings": [
@@ -2187,29 +3120,44 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
       "id": "op:cmd:00001093",
       "key": "kakao-2-4-l-ha",
       "label": {
-        "id": "Kakao (TBM) (2-4 l/ha)"
+        "id": "Kakao (TBM)"
       },
       "kind": "crop",
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Kakao (TBM) (1-2 l/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Kakao (TBM) (2-4 l/ha)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kakao (TBM) (3 - 6 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001094",
@@ -2302,10 +3250,22 @@
       "id": "op:cmd:00001098",
       "key": "hutan-tanaman-industri-acacia-mangium",
       "label": {
-        "id": "Hutan Tanaman Industri Acacia Mangium"
+        "id": "Hutan Tanaman Industri (Acacia mangium)"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hutan Tanaman Industri (Acacia mangium)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hutan Tanaman Industri (HTI) Acacia mangium",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Hutan Tanaman Industri Acacia Mangium",
@@ -2316,7 +3276,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hutan Tanaman Industri Acacia mangium"
@@ -2326,10 +3287,16 @@
       "id": "op:cmd:00001099",
       "key": "persiapan-lahan-budidaya-jagung-tot",
       "label": {
-        "id": "Persiapan lahan budidaya jagung TOT"
+        "id": "Persiapan lahan budidaya jagung (TOT)"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Persiapan lahan budidaya jagung (TOT)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 21 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Persiapan lahan budidaya jagung TOT",
@@ -2340,8 +3307,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": [
+        "Persiapan Lahan Budidaya Jagung (TOT)"
+      ]
     },
     {
       "id": "op:cmd:00001100",
@@ -2360,8 +3331,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001009"
+        }
       }
     },
     {
@@ -2389,7 +3364,7 @@
       "id": "op:cmd:00001102",
       "key": "kakao-tbm",
       "label": {
-        "id": "Budidaya kakao ( TBM )"
+        "id": "Budidaya kakao (TBM)"
       },
       "kind": "crop",
       "mappings": [
@@ -2403,7 +3378,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -2419,12 +3395,19 @@
           "id": "Bawang daun",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 8 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang daun (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Bawang Daun"
@@ -2451,8 +3434,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       },
       "synonyms": [
         "Karet (TBM)  (1,5 - 3 l/ha)"
@@ -2508,7 +3495,7 @@
       "id": "op:cmd:00001107",
       "key": "tanaman-hti-eucalyptus-sp",
       "label": {
-        "id": "Budidaya Tanaman HTI Eucalyptus sp."
+        "id": "Budidaya Tanaman HTI Eucalyptus sp"
       },
       "kind": "crop",
       "mappings": [
@@ -2522,7 +3509,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -2609,8 +3597,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       }
     },
     {
@@ -2686,7 +3678,7 @@
       "id": "op:cmd:00001115",
       "key": "hutan-tanaman-industri-eucalytus-pellita",
       "label": {
-        "id": "Hutan tanaman industri Eucalytus pellita:"
+        "id": "Hutan tanaman industri Eucalytus pellita"
       },
       "kind": "crop",
       "mappings": [
@@ -2700,7 +3692,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -2814,8 +3807,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001009"
+        }
       }
     },
     {
@@ -2843,7 +3840,7 @@
       "id": "op:cmd:00001122",
       "key": "tanaman-hujan-tanaman-industri-hti-eucalyptus-sp",
       "label": {
-        "id": "Budidaya Tanaman Hujan Tanaman Industri (HTI) Eucalyptus sp."
+        "id": "Budidaya Tanaman Hujan Tanaman Industri (HTI) Eucalyptus sp"
       },
       "kind": "crop",
       "mappings": [
@@ -2857,7 +3854,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -2919,8 +3917,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001035"
+        }
       }
     },
     {
@@ -3003,15 +4005,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001007"
+        }
       }
     },
     {
       "id": "op:cmd:00001130",
       "key": "tanaman-padi-tanam-pindah",
       "label": {
-        "id": "Budidaya tanaman padi sawah tanam pindah:"
+        "id": "Budidaya tanaman padi sawah tanam pindah"
       },
       "kind": "crop",
       "mappings": [
@@ -3025,7 +4031,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -3062,17 +4069,25 @@
           "id": "Sawi",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sawi (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "default_stage_scale": {
         "id": "op:sca:00000011",
         "label": "BBCH — Sayuran daun tidak berkrop (sawi, caisim, pak choi, selada daun)"
-      }
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001133",
@@ -3102,10 +4117,22 @@
       "id": "op:cmd:00001134",
       "key": "karet-tm",
       "label": {
-        "id": "Karet TM"
+        "id": "Karet (TM)"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TM) (2 - 3 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (TM) (3 - 6 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Karet TM",
@@ -3116,8 +4143,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001135",
@@ -3136,8 +4165,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001035"
+        }
       }
     },
     {
@@ -3157,8 +4190,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001035"
+        }
       }
     },
     {
@@ -3178,8 +4215,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -3207,7 +4248,7 @@
       "id": "op:cmd:00001139",
       "key": "kelapa-sawit-tm",
       "label": {
-        "id": "Budidaya kelapa sawit (TM )"
+        "id": "Budidaya kelapa sawit (TM)"
       },
       "kind": "crop",
       "mappings": [
@@ -3221,7 +4262,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -3262,8 +4304,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       },
       "synonyms": [
         "Budidaya Karet (TBM) (1 - 2 l/ha)"
@@ -3273,7 +4319,7 @@
       "id": "op:cmd:00001142",
       "key": "kelapa-sawit-60-100-ml-ha",
       "label": {
-        "id": "Kelapa Sawit (TM) (60-100 ml/ha)"
+        "id": "Kelapa Sawit (TM)"
       },
       "kind": "crop",
       "mappings": [
@@ -3287,7 +4333,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -3307,8 +4354,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       }
     },
     {
@@ -3349,8 +4400,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001061"
+        }
       }
     },
     {
@@ -3370,8 +4425,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001035"
+        }
       }
     },
     {
@@ -3391,8 +4450,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001021"
+        }
       }
     },
     {
@@ -3465,7 +4528,7 @@
       "id": "op:cmd:00001151",
       "key": "kelapa-sawit-0-5-ml-l",
       "label": {
-        "id": "Kelapa sawit (0,5 ml/l)"
+        "id": "Kelapa sawit"
       },
       "kind": "crop",
       "mappings": [
@@ -3474,13 +4537,33 @@
           "id": "Kelapa sawit (0,5 ml/l)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa Sawit (1,5 - 2 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "kelapa sawit (150 ml/10L/pohon)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kelapa sawit (2,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001153",
@@ -3499,18 +4582,28 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001061"
+        }
       }
     },
     {
       "id": "op:cmd:00001154",
       "key": "persiapan-lahan-budidaya-padi-tot",
       "label": {
-        "id": "Persiapan lahan budidaya padi sawah TOT"
+        "id": "Persiapan lahan budidaya padi sawah (TOT)"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Persiapan lahan budidaya padi sawah (TOT)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 59 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Persiapan lahan budidaya padi sawah TOT",
@@ -3521,8 +4614,17 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": [
+        "Persiapan Lahan Budidaya  Padi Gogo (TOT)",
+        "Persiapan Lahan Budidaya Padi Pasang Surut (TOT)",
+        "Persiapan Lahan Budidaya Padi Sawah Pasang Surut (TOT)",
+        "Persiapan lahan budidaya Padi sawah (TOT)",
+        "Persiapan lahan budidaya padi (TOT)",
+        "Persiapan lahan budidaya padi sawah pasang surut (TOT)"
+      ]
     },
     {
       "id": "op:cmd:00001155",
@@ -3537,13 +4639,21 @@
           "id": "Seledri",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Seledri (1 g/l air/aplikasi)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001156",
@@ -3562,8 +4672,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001077"
+        }
       }
     },
     {
@@ -3579,12 +4693,25 @@
           "id": "Anggur",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Anggur (1,5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Anggur (2,25 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Anggur :"
@@ -3631,8 +4758,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001024"
+        }
       }
     },
     {
@@ -3673,8 +4804,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -3694,8 +4829,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -3711,13 +4850,21 @@
           "id": "Anggrek",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Anggrek (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001166",
@@ -3736,8 +4883,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -3862,8 +5013,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001016"
+        }
       }
     },
     {
@@ -3904,8 +5059,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001014"
+        }
       }
     },
     {
@@ -3967,8 +5126,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001035"
+        }
       }
     },
     {
@@ -4009,8 +5172,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -4030,8 +5197,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001098"
+        }
       }
     },
     {
@@ -4059,7 +5230,7 @@
       "id": "op:cmd:00001182",
       "key": "padi-tabela-pre-emergence-early-post-emergence",
       "label": {
-        "id": "Budidaya padi sawah Tabela (pre-emergence, early post emergence):"
+        "id": "Budidaya padi sawah Tabela (pre-emergence, early post emergence)"
       },
       "kind": "crop",
       "mappings": [
@@ -4073,7 +5244,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -4168,10 +5340,16 @@
       "id": "op:cmd:00001187",
       "key": "penyiapan-lahan-budidaya-jagung-tot-tanpa-olah-tanah",
       "label": {
-        "id": "Penyiapan lahan budidaya Jagung TOT (tanpa olah tanah)"
+        "id": "Penyiapan lahan budidaya jagung (TOT)"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Penyiapan lahan budidaya jagung (TOT)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Penyiapan lahan budidaya Jagung TOT (tanpa olah tanah)",
@@ -4182,14 +5360,16 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001188",
       "key": "padi-tanan-pindah-tapin",
       "label": {
-        "id": "Budidaya padi sawah tanan pindah (tapin):"
+        "id": "Budidaya padi sawah tanan pindah (tapin)"
       },
       "kind": "crop",
       "mappings": [
@@ -4203,14 +5383,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
       "id": "op:cmd:00001189",
       "key": "jagung-pra-tumbuh-1-5-2-l-ha",
       "label": {
-        "id": "Budidaya Jagung (pra tumbuh) (1,5 - 2 l/ha )"
+        "id": "Budidaya Jagung (pra tumbuh)"
       },
       "kind": "crop",
       "mappings": [
@@ -4224,14 +5405,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
       "id": "op:cmd:00001190",
       "key": "jagung-purna-tumbuh-1-5-2-l-ha",
       "label": {
-        "id": "Budidaya Jagung (purna tumbuh) (1,5 - 2 l/ha )"
+        "id": "Budidaya Jagung (purna tumbuh)"
       },
       "kind": "crop",
       "mappings": [
@@ -4245,7 +5427,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -4273,22 +5456,68 @@
       "id": "op:cmd:00001194",
       "key": "padi-2-ml-l",
       "label": {
-        "id": "Padi sawah (2 ml/l )"
+        "id": "Padi sawah"
       },
       "kind": "crop",
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Padi Sawah  (0,12 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi sawah (0,75 - 1,25 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi Sawah (0,75 g/10 L air )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Padi sawah (2 ml/l )",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi sawah (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi sawah (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi sawah (3 tablet/500 l/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi sawah: (Perendaman:  0,5 tablet/50 liter)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": [
+        "Padi (2 ml/l)"
+      ]
     },
     {
       "id": "op:cmd:00001195",
@@ -4307,8 +5536,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       },
       "synonyms": [
         "Cabai (1,5 ml/l)"
@@ -4331,8 +5564,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001007"
+        }
       }
     },
     {
@@ -4398,15 +5635,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001000"
+        }
       }
     },
     {
       "id": "op:cmd:00001201",
       "key": "kopi-3-6-l-ha",
       "label": {
-        "id": "Kopi (TBM) (3 - 6 l/ha)"
+        "id": "Kopi (TBM)"
       },
       "kind": "crop",
       "mappings": [
@@ -4420,7 +5661,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -4440,8 +5682,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001134"
+        }
       }
     },
     {
@@ -4461,8 +5707,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001035"
+        }
       }
     },
     {
@@ -4482,8 +5732,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001093"
+        }
       }
     },
     {
@@ -4503,8 +5757,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001061"
+        }
       }
     },
     {
@@ -4524,8 +5782,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -4566,8 +5828,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001093"
+        }
       }
     },
     {
@@ -4587,8 +5853,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001000"
+        }
       }
     },
     {
@@ -4608,8 +5878,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001042"
+        }
       }
     },
     {
@@ -4629,8 +5903,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001134"
+        }
       }
     },
     {
@@ -4650,8 +5928,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001194"
+        }
       }
     },
     {
@@ -4671,8 +5953,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -4769,7 +6055,7 @@
       "id": "op:cmd:00001218",
       "key": "ubi-kayu-1-5-2-l-ha",
       "label": {
-        "id": "Ubi Kayu (1,5 - 2 l/ha)"
+        "id": "Ubi Kayu"
       },
       "kind": "crop",
       "mappings": [
@@ -4783,7 +6069,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -4824,8 +6111,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       }
     },
     {
@@ -4873,8 +6164,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001000"
+        }
       }
     },
     {
@@ -4957,8 +6252,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001098"
+        }
       }
     },
     {
@@ -5020,8 +6319,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -5062,8 +6365,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001187"
+        }
       }
     },
     {
@@ -5091,7 +6398,7 @@
       "id": "op:cmd:00001233",
       "key": "padi-tot",
       "label": {
-        "id": "Padi sawah ( TOT )"
+        "id": "Padi sawah (TOT)"
       },
       "kind": "crop",
       "mappings": [
@@ -5105,7 +6412,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -5125,8 +6433,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       }
     },
     {
@@ -5146,8 +6458,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001151"
+        }
       }
     },
     {
@@ -5167,8 +6483,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001011"
+        }
       }
     },
     {
@@ -5257,8 +6577,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001021"
+        }
       }
     },
     {
@@ -5278,8 +6602,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001194"
+        }
       }
     },
     {
@@ -5299,8 +6627,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -5320,18 +6652,28 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001011"
+        }
       }
     },
     {
       "id": "op:cmd:00001244",
       "key": "kopi-6-g-l",
       "label": {
-        "id": "Kopi (6 g/l)"
+        "id": "Kopi"
       },
       "kind": "crop",
       "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kopi (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
         {
           "scheme": "KEMENTAN",
           "id": "Kopi (6 g/l)",
@@ -5342,8 +6684,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001245",
@@ -5429,8 +6773,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001019"
+        }
       }
     },
     {
@@ -5450,8 +6798,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -5471,8 +6823,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -5492,8 +6848,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -5513,8 +6873,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -5555,8 +6919,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001194"
+        }
       },
       "synonyms": [
         "Padi (2 ml/l)"
@@ -5627,8 +6995,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001035"
+        }
       }
     },
     {
@@ -5648,8 +7020,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001032"
+        }
       }
     },
     {
@@ -5665,13 +7041,21 @@
           "id": "Bawang",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang (2,25 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001262",
@@ -5690,8 +7074,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -5711,15 +7099,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001021"
+        }
       }
     },
     {
       "id": "op:cmd:00001264",
       "key": "di-dalam-rauangan",
       "label": {
-        "id": "Di dalam rauangan:"
+        "id": "Di dalam rauangan"
       },
       "kind": "crop",
       "mappings": [
@@ -5733,14 +7125,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
       "id": "op:cmd:00001265",
       "key": "beras-karantina-dan-pra-pengapalan-qps",
       "label": {
-        "id": "Beras (Karantina dan Pra-pengapalan (QPS)):"
+        "id": "Beras (Karantina dan Pra-pengapalan (QPS))"
       },
       "kind": "crop",
       "mappings": [
@@ -5754,7 +7147,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -5774,8 +7168,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -5795,8 +7193,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -5816,8 +7218,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001007"
+        }
       }
     },
     {
@@ -5837,8 +7243,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -5858,8 +7268,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001011"
+        }
       }
     },
     {
@@ -5879,8 +7293,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001018"
+        }
       }
     },
     {
@@ -5900,8 +7318,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001006"
+        }
       }
     },
     {
@@ -5921,8 +7343,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001032"
+        }
       }
     },
     {
@@ -5942,8 +7368,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001021"
+        }
       }
     },
     {
@@ -6026,8 +7456,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       },
       "synonyms": [
         "Bawang Merah (3 ml/l)"
@@ -6050,8 +7484,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -6071,8 +7509,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -6092,8 +7534,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001000"
+        }
       }
     },
     {
@@ -6155,8 +7601,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -6176,8 +7626,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -6260,8 +7714,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -6281,8 +7739,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -6491,8 +7953,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001010"
+        }
       }
     },
     {
@@ -6512,8 +7978,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -6533,8 +8003,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -6554,8 +8028,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -6575,8 +8053,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -6596,8 +8078,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001464"
+        }
       }
     },
     {
@@ -6688,7 +8174,7 @@
       "id": "op:cmd:00001311",
       "key": "eucalyptus-sp",
       "label": {
-        "id": "Budidaya Eucalyptus sp."
+        "id": "Budidaya Eucalyptus sp"
       },
       "kind": "crop",
       "mappings": [
@@ -6702,7 +8188,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -6743,8 +8230,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -6764,8 +8255,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001082"
+        }
       }
     },
     {
@@ -6785,8 +8280,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -6806,8 +8305,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001036"
+        }
       }
     },
     {
@@ -6827,8 +8330,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001157"
+        }
       }
     },
     {
@@ -6848,15 +8355,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001395"
+        }
       }
     },
     {
       "id": "op:cmd:00001320",
       "key": "tembakau-di-pembibitan-1-5-g-l",
       "label": {
-        "id": "Tembakau di pembibitan (1,5 g/l)"
+        "id": "Tembakau di pembibitan"
       },
       "kind": "crop",
       "mappings": [
@@ -6870,7 +8381,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -6890,8 +8402,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001015"
+        }
       }
     },
     {
@@ -6911,8 +8427,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001019"
+        }
       }
     },
     {
@@ -6932,8 +8452,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001103"
+        }
       }
     },
     {
@@ -6953,8 +8477,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001026"
+        }
       }
     },
     {
@@ -6974,8 +8502,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001073"
+        }
       }
     },
     {
@@ -6995,8 +8527,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001055"
+        }
       }
     },
     {
@@ -7016,8 +8552,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001034"
+        }
       }
     },
     {
@@ -7037,8 +8577,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001028"
+        }
       }
     },
     {
@@ -7058,15 +8602,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
       "id": "op:cmd:00001330",
       "key": "strawberi-1-5-g-l",
       "label": {
-        "id": "Strawberi (1,5 g/l)"
+        "id": "Strawberi"
       },
       "kind": "crop",
       "mappings": [
@@ -7080,7 +8628,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -7100,8 +8649,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001165"
+        }
       }
     },
     {
@@ -7121,8 +8674,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001091"
+        }
       }
     },
     {
@@ -7142,8 +8699,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001040"
+        }
       }
     },
     {
@@ -7163,8 +8724,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001007"
+        }
       }
     },
     {
@@ -7184,8 +8749,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001014"
+        }
       }
     },
     {
@@ -7226,8 +8795,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001194"
+        }
       }
     },
     {
@@ -7247,8 +8820,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -7268,8 +8845,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001155"
+        }
       }
     },
     {
@@ -7469,7 +9050,7 @@
       "id": "op:cmd:00001351",
       "key": "tanaman-hti-acacia-mangium",
       "label": {
-        "id": "Budidaya Tanaman HTI  Acacia mangium"
+        "id": "Budidaya Tanaman HTI Acacia mangium"
       },
       "kind": "crop",
       "mappings": [
@@ -7483,7 +9064,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -7629,8 +9211,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001021"
+        }
       }
     },
     {
@@ -7650,15 +9236,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
       "id": "op:cmd:00001360",
       "key": "karet-di-pembibitan-2-g-l",
       "label": {
-        "id": "Karet di pembibitan (2 g/l)"
+        "id": "Karet di pembibitan"
       },
       "kind": "crop",
       "mappings": [
@@ -7672,14 +9262,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
       "id": "op:cmd:00001361",
       "key": "tanaman-tembakau-2-25-g-l",
       "label": {
-        "id": "Tanaman Tembakau (2,25 g/l)"
+        "id": "Tanaman Tembakau"
       },
       "kind": "crop",
       "mappings": [
@@ -7693,7 +9284,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -7713,8 +9305,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001031"
+        }
       }
     },
     {
@@ -7734,8 +9330,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -7755,8 +9355,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -7776,8 +9380,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001157"
+        }
       }
     },
     {
@@ -7797,8 +9405,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -7860,8 +9472,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001031"
+        }
       }
     },
     {
@@ -7881,8 +9497,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001091"
+        }
       }
     },
     {
@@ -7986,8 +9606,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001034"
+        }
       }
     },
     {
@@ -8007,8 +9631,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001028"
+        }
       }
     },
     {
@@ -8028,8 +9656,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001015"
+        }
       }
     },
     {
@@ -8049,8 +9681,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001007"
+        }
       }
     },
     {
@@ -8070,8 +9706,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001082"
+        }
       }
     },
     {
@@ -8091,8 +9731,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001011"
+        }
       }
     },
     {
@@ -8112,8 +9756,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -8133,8 +9781,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -8154,8 +9806,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001031"
+        }
       }
     },
     {
@@ -8175,8 +9831,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -8196,8 +9856,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -8217,8 +9881,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -8238,8 +9906,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -8259,8 +9931,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001010"
+        }
       }
     },
     {
@@ -8280,8 +9956,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001007"
+        }
       }
     },
     {
@@ -8301,8 +9981,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -8322,15 +10006,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
       "id": "op:cmd:00001394",
       "key": "tanaman-padi-4-g-l",
       "label": {
-        "id": "Tanaman padi sawah (4 g/l)"
+        "id": "Tanaman padi sawah"
       },
       "kind": "crop",
       "mappings": [
@@ -8344,7 +10032,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -8360,13 +10049,21 @@
           "id": "Jarak pagar",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jarak Pagar (1,2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001396",
@@ -8385,8 +10082,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001034"
+        }
       }
     },
     {
@@ -8406,8 +10107,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001244"
+        }
       }
     },
     {
@@ -8427,8 +10132,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -8448,8 +10157,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001055"
+        }
       }
     },
     {
@@ -8469,8 +10182,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001028"
+        }
       }
     },
     {
@@ -8490,8 +10207,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001021"
+        }
       }
     },
     {
@@ -8511,8 +10232,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001073"
+        }
       }
     },
     {
@@ -8532,8 +10257,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001151"
+        }
       }
     },
     {
@@ -8553,8 +10282,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001464"
+        }
       }
     },
     {
@@ -8574,8 +10307,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -8595,8 +10332,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001019"
+        }
       }
     },
     {
@@ -8616,8 +10357,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -8637,15 +10382,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001194"
+        }
       }
     },
     {
       "id": "op:cmd:00001409",
       "key": "umbi-kentang-perendaman-1-gram-200-ml",
       "label": {
-        "id": "Umbi kentang: (Perendaman :  1 gram/200 ml)"
+        "id": "Umbi kentang"
       },
       "kind": "crop",
       "mappings": [
@@ -8659,7 +10408,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -8868,8 +10618,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -8889,8 +10643,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -8910,8 +10668,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001011"
+        }
       }
     },
     {
@@ -8931,8 +10693,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
@@ -8952,8 +10718,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001151"
+        }
       }
     },
     {
@@ -8973,8 +10743,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -8994,8 +10768,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001010"
+        }
       }
     },
     {
@@ -9036,8 +10814,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -9057,8 +10839,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -9078,8 +10864,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -9099,8 +10889,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -9162,8 +10956,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001261"
+        }
       }
     },
     {
@@ -9183,8 +10981,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -9225,8 +11027,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -9246,8 +11052,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001026"
+        }
       }
     },
     {
@@ -9309,8 +11119,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -9330,8 +11144,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -9351,8 +11169,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001006"
+        }
       }
     },
     {
@@ -9372,8 +11194,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -9393,15 +11219,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001003"
+        }
       }
     },
     {
       "id": "op:cmd:00001450",
       "key": "bibit-kacang-tanah",
       "label": {
-        "id": "Bibit kacang  tanah"
+        "id": "Bibit kacang tanah"
       },
       "kind": "crop",
       "mappings": [
@@ -9415,7 +11245,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -9435,8 +11266,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -9456,8 +11291,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -9477,8 +11316,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001015"
+        }
       }
     },
     {
@@ -9506,7 +11349,7 @@
       "id": "op:cmd:00001455",
       "key": "area-peternakan-ayam",
       "label": {
-        "id": "Area peternakan ayam:"
+        "id": "Area peternakan ayam"
       },
       "kind": "crop",
       "mappings": [
@@ -9520,7 +11363,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -9540,8 +11384,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001036"
+        }
       }
     },
     {
@@ -9561,8 +11409,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000006"
+        }
       }
     },
     {
@@ -9582,8 +11434,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001031"
+        }
       }
     },
     {
@@ -9603,8 +11459,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -9624,8 +11484,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001194"
+        }
       }
     },
     {
@@ -9645,8 +11509,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001045"
+        }
       }
     },
     {
@@ -9666,8 +11534,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001019"
+        }
       }
     },
     {
@@ -9687,21 +11559,37 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001010"
+        }
       }
     },
     {
       "id": "op:cmd:00001464",
       "key": "karet-2-ml-l",
       "label": {
-        "id": "Karet (2 ml/l )"
+        "id": "Karet"
       },
       "kind": "crop",
       "mappings": [
         {
           "scheme": "KEMENTAN",
+          "id": "Karet (0,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Karet (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Karet (3,75 ml/l air/pohon )",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -9709,8 +11597,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "synonyms": []
     },
     {
       "id": "op:cmd:00001465",
@@ -9729,8 +11619,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001014"
+        }
       }
     },
     {
@@ -9750,8 +11644,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001132"
+        }
       }
     },
     {
@@ -9771,8 +11669,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001018"
+        }
       }
     },
     {
@@ -9792,8 +11694,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -9813,8 +11719,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001055"
+        }
       }
     },
     {
@@ -9834,8 +11744,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -9855,8 +11769,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001194"
+        }
       }
     },
     {
@@ -9876,8 +11794,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -9947,7 +11869,7 @@
       "id": "op:cmd:00001476",
       "key": "acticide-bw-20",
       "label": {
-        "id": "ACTICIDE  BW 20"
+        "id": "ACTICIDE BW 20"
       },
       "kind": "crop",
       "mappings": [
@@ -9961,7 +11883,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -10023,8 +11946,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001010"
+        }
       }
     },
     {
@@ -10044,8 +11971,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {
@@ -10170,15 +12101,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001010"
+        }
       }
     },
     {
       "id": "op:cmd:00001488",
       "key": "persiapan-lahan-perebunan",
       "label": {
-        "id": "Persiapan  lahan perebunan"
+        "id": "Persiapan lahan perebunan"
       },
       "kind": "crop",
       "mappings": [
@@ -10192,14 +12127,15 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
       "id": "op:cmd:00001489",
       "key": "kelapa-sawit-tua-150-ml-l-solar",
       "label": {
-        "id": "Kelapa sawit tua (150 ml/l solar)"
+        "id": "Kelapa sawit tua"
       },
       "kind": "crop",
       "mappings": [
@@ -10213,7 +12149,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -10254,8 +12191,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -10275,8 +12216,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001082"
+        }
       }
     },
     {
@@ -10380,8 +12325,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000003"
+        }
       }
     },
     {
@@ -10422,8 +12371,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001005"
+        }
       }
     },
     {
@@ -10443,8 +12396,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001002"
+        }
       }
     },
     {
@@ -10464,15 +12421,19 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001033"
+        }
       }
     },
     {
       "id": "op:cmd:00001503",
       "key": "ubi-jalar",
       "label": {
-        "id": "Ubi jalar :"
+        "id": "Ubi jalar"
       },
       "kind": "crop",
       "mappings": [
@@ -10486,7 +12447,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       }
     },
     {
@@ -10527,8 +12489,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001008"
+        }
       }
     },
     {
@@ -10548,8 +12514,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00000004"
+        }
       }
     },
     {

@@ -2,7 +2,8 @@
 
 > Rancangan · permukaan reaktif · jalur 1 · masuk dari gejala
 > Untuk orang yang baru melihat masalah di depan mata. Tanpa akun, tanpa petak terdaftar, tanpa rencana — tiga ketukan sampai jawaban.
-> Angka **dari registri pascapenggabungan ejaan** (`1a0f077`, `04b91c6`)
+> Angka **dari registri pascapenggabungan ejaan zat** (`1a0f077`, `04b91c6`)
+> **dan penyatuan komoditas serumpun** — 488 komoditas registri jadi 281
 >
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
@@ -45,9 +46,9 @@ masuk lewat kosakata petani sendiri juga belum ada.
   salah yang percaya diri menghasilkan semprotan salah — uang hilang, tanaman tetap
   mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
   dekat ke tanggung jawab hukum.
-- **Runtuhkan merek jadi bahan aktif dan kadarnya.** 234 produk terdaftar untuk
+- **Runtuhkan merek jadi bahan aktif dan kadarnya.** 238 produk terdaftar untuk
   trips di cabai, tetapi isinya hanya 72 bahan aktif — yang, karena satu bahan
-  dipakai pada banyak kadar, jatuh jadi 161 kartu bahan+kadar. Menampilkan 234 nama
+  dipakai pada banyak kadar, jatuh jadi 162 kartu bahan+kadar. Menampilkan 238 nama
   dagang adalah menyalin kebingungan kios ke dalam layar.
 - **Informasi negatif didahulukan.** Apa yang dilarang, dan apa yang tidak akan
   menolong. Ini yang paling bernilai bagi petani, dan justru paling kecil risiko
@@ -110,7 +111,7 @@ bukti apa-apa** — dan karena itu layarnya berhenti pada fakta, bukan pada kesi
 
 ## 5. Peringatan bahan dilarang — dan lingkupnya
 
-Dari 234 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
+Dari 238 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
 **34 memuat bahan yang namanya tercantum di Lampiran I.A Permentan 43/2019**.
 Peringatan itu bisa diberikan hari ini tanpa data tambahan — asalkan lingkupnya ikut
 disebut.
@@ -162,19 +163,28 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
 
 - **Lima kalimat gejala.** Dari sepuluh OPT cabai terkurasi, lima sudah punya
   deskripsi gejala — tersimpan pada medan `definition`, bukan pada medan bernama
-  gejala. Ulat grayak justru punya 177 produk terdaftar di cabai tetapi tidak bisa
+  gejala. Ulat grayak justru punya 180 produk terdaftar di cabai tetapi tidak bisa
   dimasuki karena teksnya belum ada. Setengah hari kerja membuka seluruh jalur reaktif
   komoditas beachhead.
 - **Sepuluh OPT itu tidak terbatas pada cabai.** Registri menautkannya jauh lebih
-  luas — trips ke 18 komoditas dengan 275 produk, ulat grayak ke 21 komoditas dengan
+  luas — trips ke 15 komoditas dengan 275 produk, ulat grayak ke 13 komoditas dengan
   313 produk. Teks gejala yang ditulis untuk cabai langsung terpakai di luar cabai.
 - **Tetapkan aturan urutan merek dan umumkan di layar.** Rancangan ini memakai nomor
   pendaftaran menaik. Apa pun pilihannya, ia harus tertulis dan tidak boleh bisa
   dibeli.
 - **Putuskan perlakuan bahan dilarang** yang masih memegang pendaftaran aktif —
   lihat [05-jalur-produk.md](05-jalur-produk.md) bagian kasus LARBAN.
-- **Pembersihan label komoditas.** "Kelapa Sawit (TBM)" tercatat dalam tiga ejaan
-  berbeda. Untuk cabai perlu diperiksa sebelum rilis.
+- ~~**Pembersihan label komoditas.**~~ **Sudah dikerjakan.** Cabai terpecah jadi 15
+  entitas, bawang merah 17, karet 13 — sebagian besar karena dosis bocor ke dalam
+  nama sasaran: "Cabai (1,5 ml/l)", "Cabai (700 ml/ha )". **207 entitas disatukan**,
+  488 komoditas jadi 281, dan trips di cabai naik dari 234 ke 238 produk.
+
+  Yang dalam kurung tidak semuanya derau, dan di situlah kehati-hatiannya: **TBM**
+  lawan **TM**, **TOT**, **pra tumbuh** lawan **purna tumbuh**, **Tapin** lawan
+  **Tabela**, dan dua spesies akasia. Menyatukan TBM dengan TM berarti menggabungkan
+  penyemprotan di sawit muda dengan sawit yang sedang dipanen. Dua belas keluarga
+  sengaja dibiarkan terpisah dan kini disajikan sebagai varian satu tanaman, bukan
+  sebagai komoditas asing satu sama lain — karet misalnya: TBM 118 OPT, TM 8 OPT.
 
 ---
 
@@ -184,7 +194,7 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
    keriting ke atas*, *daun menguning dan keriting*, *serangga putih beterbangan*. Di
    bawahnya tertulis bahwa gejala dikurasi tangan dan mesin tidak menebak dari foto.
 2. **Hasil.** Dugaan OPT dengan nama ilmiahnya, lalu blok **"pastikan dulu"** berisi
-   dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *234 produk
+   dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *238 produk
    terdaftar untuk ini di cabai, tetapi isinya hanya 72 bahan aktif berbeda* — lalu
    kartu peringatan bahan dilarang **beserta lingkup larangannya**.
 3. **Kartu bahan + kadar.** Lima kelompok, diurutkan menurut jumlah produk. Tiap kartu

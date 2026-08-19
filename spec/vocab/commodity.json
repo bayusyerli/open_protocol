@@ -135,12 +135,6 @@
       },
       "mappings": [
         {
-          "scheme": "NCBITaxon",
-          "id": "4081",
-          "relation": "exact",
-          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
-        },
-        {
           "scheme": "AGROVOC",
           "id": "c_7885",
           "relation": "close",
@@ -151,12 +145,73 @@
           "id": "Tomat",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 313 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (0,6 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (0,75 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (1,5 - 2,5 g/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (2 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (2,25 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "NCBITaxon",
+          "id": "4081",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Tomat :",
@@ -181,12 +236,6 @@
       },
       "mappings": [
         {
-          "scheme": "NCBITaxon",
-          "id": "4679",
-          "relation": "exact",
-          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
-        },
-        {
           "scheme": "AGROVOC",
           "id": "c_7028",
           "relation": "close",
@@ -197,16 +246,150 @@
           "id": "Bawang merah",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1070 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (0,0625 g/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Merah (0,25 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Merah (0,3 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (0,5 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (0,75 g/10 L air (5,6,7 MST))",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (0,75 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (1 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Merah (1 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Merah (1,125 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (1,5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (15 kg/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Merah (2,25 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (2,25 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Merah (25 ml/100 ml)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (3 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (3 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah (700 ml/ha )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Merah (Meningkatkan jumlah daun, hasil tanaman, hasil/petak, hasil/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "NCBITaxon",
+          "id": "4679",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Bawang  merah",
         "Bawang Merah",
+        "Bawang Merah (3 ml/l)",
         "Bawang merah :",
         "Bawang merah:",
         "Budidaya Bawang Merah",
@@ -274,12 +457,6 @@
       },
       "mappings": [
         {
-          "scheme": "NCBITaxon",
-          "id": "4530",
-          "relation": "exact",
-          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
-        },
-        {
           "scheme": "AGROVOC",
           "id": "c_6599",
           "relation": "close",
@@ -290,12 +467,79 @@
           "id": "Padi",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 3439 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (0,1375 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (0,625 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (0,75 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (1,5 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (1,5 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (10 kg/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (187,5 ml/ha)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (2 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (2,25 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi (4 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "NCBITaxon",
+          "id": "4530",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Budidaya Padi",

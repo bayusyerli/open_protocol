@@ -29,8 +29,8 @@
 //   sediaan.json           dua belas resep utuh; kecil, jadi tidak dipecah
 //   gejala.json            OPT terkurasi + teks gejalanya — pintu masuk jalur 1
 //   larangan.json          id zat -> catatan larangan beserta lingkupnya
-//   serumpun.json          komoditas yang namanya sama setelah kurung dibuang —
-//                          kandidat kurasi, sengaja tidak digabung sendiri
+//   varian.json            satu tanaman dalam beberapa fase atau sistem budidaya —
+//                          TBM lawan TM, tapin lawan tabela; sengaja tidak disatukan
 //
 // KESETARAAN DIHITUNG DARI id, TIDAK PERNAH DARI LABEL
 // Salinan label pada composition[].substance.label adalah snapshot sesaat yang
@@ -78,6 +78,8 @@ const hara = larik(bacaJson('substance.json'));
 const sediaan = larik(bacaJson('preparation.json'));
 const bahanOrganik = larik(bacaJson('substance-organik.json'));
 const optTerkurasi = larik(bacaJson('pest.json'));
+const komoditas = [...larik(bacaJson('commodity.json')), ...larik(bacaJson('commodity-registri.json'))];
+const optRegistri = larik(bacaJson('pest-registri.json'));
 
 const zatById = new Map([...zat, ...hara].map((s) => [s.id, s]));
 // LARANGAN ITU BERLINGKUP, DAN LINGKUPNYA MENENTUKAN
@@ -121,8 +123,19 @@ const larangan = (idZat, idKomoditas) => {
   return kena.length ? kena : null;
 };
 
-// Nama kanonik diambil dari entitas zat, bukan dari salinan label pada produk.
+// Nama kanonik SELALU diambil dari entitasnya, tidak pernah dari salinan label pada
+// rekaman produk. `commodity_label` dan `pest_label` pada label_uses adalah snapshot
+// sesaat yang sengaja tidak pernah ditulis ulang — sesudah penggabungan komoditas,
+// puluhan di antaranya masih berbunyi "Karet (0,5 ml/l)" untuk entitas yang nama
+// resminya kini "Karet". Menyajikan salinan itu berarti menampilkan nama yang sudah
+// tidak ada lagi, dan mengelompokkan menurutnya berarti memecah lagi apa yang baru
+// saja disatukan. Salinannya tetap berguna — ia satu-satunya jejak bunyi asli
+// registri — tetapi tempatnya sebagai cadangan, bukan sebagai sumber.
 const namaZat = (id, cadangan) => zatById.get(id)?.label?.id ?? cadangan ?? id;
+const komoditasById = new Map(komoditas.map((k) => [k.id, k]));
+const optById = new Map([...optRegistri, ...optTerkurasi].map((o) => [o.id, o]));
+const namaKomoditas = (id, cadangan) => komoditasById.get(id)?.label?.id ?? cadangan ?? id;
+const namaOpt = (id, cadangan) => optById.get(id)?.label?.id ?? cadangan ?? id;
 
 // ---------------------------------------------------------------------------
 // Kesetaraan: sidik jari komposisi, dihitung dari id
@@ -192,9 +205,9 @@ function rinciProduk(p, jenis) {
     r.guna = (p.label_uses ?? [])
       .map((u) => ({
         komoditas: u.commodity?.id ?? null,
-        komoditasNama: u.commodity_label ?? null,
+        komoditasNama: u.commodity?.id ? namaKomoditas(u.commodity.id, u.commodity_label) : (u.commodity_label ?? null),
         opt: u.pest?.id ?? null,
-        optNama: u.pest_label ?? null,
+        optNama: u.pest?.id ? namaOpt(u.pest.id, u.pest_label) : (u.pest_label ?? null),
         dosis: u.rate_text ? `${u.rate_text}${u.rate_unit_text ? ' ' + u.rate_unit_text : ''}` : null,
       }))
       .sort((a, b) => `${a.komoditasNama}${a.optNama}`.localeCompare(`${b.komoditasNama}${b.optNama}`));
@@ -250,10 +263,10 @@ for (const p of pestisida) {
       continue;
     }
     const kc = u.commodity.id;
-    if (!perKomoditas.has(kc)) perKomoditas.set(kc, { nama: u.commodity_label ?? kc, opt: new Map() });
-    const komoditas = perKomoditas.get(kc);
-    if (!komoditas.opt.has(u.pest.id)) komoditas.opt.set(u.pest.id, { nama: u.pest_label ?? u.pest.id, grup: new Map() });
-    const opt = komoditas.opt.get(u.pest.id);
+    if (!perKomoditas.has(kc)) perKomoditas.set(kc, { nama: namaKomoditas(kc, u.commodity_label), opt: new Map() });
+    const kom = perKomoditas.get(kc);
+    if (!kom.opt.has(u.pest.id)) kom.opt.set(u.pest.id, { nama: namaOpt(u.pest.id, u.pest_label), grup: new Map() });
+    const opt = kom.opt.get(u.pest.id);
     for (const c of p.composition ?? []) {
       const kunci = `${c.substance.id}|${c.value}|${c.unit}`;
       if (!opt.grup.has(kunci)) {
@@ -556,17 +569,19 @@ const gejala = optTerkurasi
   .sort((a, b) => a.id.localeCompare(b.id));
 
 // ---------------------------------------------------------------------------
-// Komoditas serumpun — DIUMUMKAN, TIDAK DIGABUNG
+// Varian satu tanaman — pembedaan yang SENGAJA dipertahankan
 // ---------------------------------------------------------------------------
-// Cabai terpecah jadi 19 entitas komoditas, dan pada sebagian dosisnya bocor ke
-// dalam nama: "Cabai (1,5 ml/l)", "Cabai (700 ml/ha )". Petani yang memilih "Cabai"
-// tidak akan pernah melihat produk yang terdaftar di bawah penulisan lainnya.
+// Dulu berkas ini berisi kandidat kurasi: nama komoditas yang terpecah karena dosis
+// bocor ke dalamnya. Kurasi itu sudah dikerjakan — 207 entitas digantikan oleh
+// satukan-komoditas-serumpun.mjs — dan yang tersisa justru kebalikannya: keluarga
+// yang sengaja TIDAK disatukan karena kurungnya memuat pembedaan sungguhan.
 //
-// Yang dikeluarkan di sini hanya kandidat yang dikumpulkan secara mekanis: nama yang
-// identik setelah keterangan dalam kurung dibuang. Penggabungannya sendiri keputusan
-// kurasi satu per satu — persis seperti 1a0f077 dan 04b91c6 pada zat — dan bukan
-// wewenang pembangun indeks. "Cabai merah", "Pembibitan Cabai", dan "TANAMAN CABAI"
-// sengaja TIDAK ikut terkumpul, karena ketiganya belum tentu hal yang sama.
+//   Karet (TBM) 118 OPT · Karet (TM) 8 OPT · Karet 2 OPT
+//
+// Ketiganya karet, dan ketiganya bukan hal yang sama: TBM belum menghasilkan, TM
+// sudah. Menyajikannya sebagai tiga komoditas asing satu sama lain sama kelirunya
+// dengan menyatukannya — orang yang membuka "Karet" harus melihat kedua fasenya
+// sebagai saudara, dengan namanya sendiri-sendiri.
 const pokok = (n) => (n ?? '').replace(/\([^)]*\)/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
 const rumpun = new Map();
 for (const [kc, v] of perKomoditas) {
@@ -574,10 +589,10 @@ for (const [kc, v] of perKomoditas) {
   if (!k) continue;
   (rumpun.get(k) ?? rumpun.set(k, []).get(k)).push({ id: kc, nama: v.nama, opt: v.opt.size });
 }
-const serumpun = {};
+const varian = {};
 for (const [k, anggota] of [...rumpun.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
   if (anggota.length < 2) continue;
-  serumpun[k] = anggota.sort((a, b) => b.opt - a.opt || a.id.localeCompare(b.id));
+  varian[k] = anggota.sort((a, b) => b.opt - a.opt || a.id.localeCompare(b.id));
 }
 
 // ---------------------------------------------------------------------------
@@ -595,7 +610,7 @@ const meta = {
     produkSetara: Object.values(setara).reduce((a, g) => a + g.length, 0),
     komoditasBerOpt: perKomoditas.size,
     resepSediaan: berkasSediaan.resep.length,
-    komoditasSerumpun: Object.keys(serumpun).length,
+    komoditasBervarian: Object.keys(varian).length,
     optTerkurasi: gejala.length,
     optBerpintu: gejala.filter((g) => g.adaPintu).length,
   },
@@ -645,7 +660,7 @@ simpan('meta.json', meta);
 for (const [nomor, isi] of berkasSetara) simpan(`setara/${nomor}.json`, isi);
 simpan('sediaan.json', berkasSediaan);
 simpan('gejala.json', gejala);
-simpan('serumpun.json', serumpun);
+simpan('varian.json', varian);
 simpan('larangan.json', Object.fromEntries([...laranganZat].sort()));
 for (const [e, isi] of Object.entries(cari).sort()) simpan(`cari/${e}.json`, isi);
 pecahanProduk.forEach((s, i) => simpan(`produk/${String(i).padStart(3, '0')}.json`, s));
@@ -678,7 +693,7 @@ console.log(`  setara/           : ${kb([...berkas].filter(([p]) => p.startsWith
 const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
-console.log(`  komoditas serumpun: ${Object.keys(serumpun).length} nama terpecah jadi beberapa entitas — kandidat kurasi`);
+console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
 console.log('Enam berkas terbesar:');
 for (const [p, n] of terbesar) console.log(`  ${kb(n).padStart(10)}  ${p}`);

@@ -112,7 +112,7 @@ Dua jalur bisa berakhir buntu karena harga, dan masing-masing bermuara ke sisi y
 
 **Jalur 3 → jalur 5.** Rupiah per kg hara di luar jangkauan; cabangnya kompos atau kascing. Jalur ini **terbuka sekarang**.
 
-**Jalur 1 → jalur 6.** 234 produk yang tak satu pun terbeli; cabangnya ekstrak nabati atau agens hayati. Jalur ini **masih tertutup** sampai bacaan Pasal 77 ayat (1) dijawab — sampai itu ia boleh ditampilkan, tetapi tidak boleh muncul sebagai “yang bisa kamu pakai”.
+**Jalur 1 → jalur 6.** 238 produk yang tak satu pun terbeli; cabangnya ekstrak nabati atau agens hayati. Jalur ini **masih tertutup** sampai bacaan Pasal 77 ayat (1) dijawab — sampai itu ia boleh ditampilkan, tetapi tidak boleh muncul sebagai “yang bisa kamu pakai”.
 
 Aturan yang menentukan sebuah resep masuk jalur mana · **Satu klaim pengendalian sudah cukup**
 
