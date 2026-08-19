@@ -202,6 +202,192 @@
       "substance_classes": [
         "feed"
       ]
+    },
+    {
+      "id": "op:sub:00000011",
+      "key": "boron",
+      "label": {
+        "id": "Boron (B)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "B",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000012",
+      "key": "tembaga",
+      "label": {
+        "id": "Tembaga (Cu)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "Cu",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000013",
+      "key": "seng",
+      "label": {
+        "id": "Seng (Zn)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "Zn",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000014",
+      "key": "mangan",
+      "label": {
+        "id": "Mangan (Mn)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "Mn",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000015",
+      "key": "molibdenum",
+      "label": {
+        "id": "Molibdenum (Mo)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "Mo",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000016",
+      "key": "besi",
+      "label": {
+        "id": "Besi (Fe)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "Fe",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000017",
+      "key": "klor",
+      "label": {
+        "id": "Klor (Cl)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "Cl",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000018",
+      "key": "silikat-sio2",
+      "label": {
+        "id": "Silikat (SiO2)"
+      },
+      "definition": {
+        "id": "Hara silikat sebagaimana dinyatakan pada hasil analisa registri pupuk — sebagai oksida SiO2, bukan unsur Si."
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "SiO2",
+      "default_unit": "kg",
+      "no_mapping_reason": "Dinyatakan sebagai oksida di sumbernya dan dibiarkan begitu supaya angkanya tidak berubah oleh konversi yang tidak diminta siapa pun. Pemetaan luar belum dicek ke sumber aslinya, jadi dikosongkan dulu.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000019",
+      "key": "natrium",
+      "label": {
+        "id": "Natrium (Na)"
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "Na",
+      "default_unit": "kg",
+      "no_mapping_reason": "Hara mikro pada label pupuk Indonesia dinyatakan sebagai unsur. Pemetaan luar sengaja dikosongkan, bukan ditebak: kode ICASA untuk hara mikro belum dipastikan dan ID CHEBI/AGROVOC belum dicek ke sumber aslinya. Diisi pada pass kurasi kosakata.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00000020",
+      "key": "karbon-organik",
+      "label": {
+        "id": "Karbon organik (C-organik)"
+      },
+      "definition": {
+        "id": "Kadar karbon organik — parameter utama mutu pupuk organik pada standar Kementan, bukan hara tanaman dalam arti sempit."
+      },
+      "substance_classes": [
+        "nutrient"
+      ],
+      "nutrient_form": "organic_C",
+      "default_unit": "kg",
+      "no_mapping_reason": "Parameter mutu khas standar pupuk organik Indonesia. Pemetaan ke ICASA/AGROVOC belum dicek ke sumber aslinya, jadi dikosongkan dulu daripada ditebak.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
     }
   ]
 }

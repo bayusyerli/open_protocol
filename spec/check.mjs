@@ -212,6 +212,18 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       warn(file, 'L9-verifikasi', 'Ada pemetaan bertanda PERLU VERIFIKASI — tidak boleh naik ke status published sebelum dicek ke sumber aslinya.');
     }
 
+    // L27 — komposisi produk tidak boleh melampaui satu kilogram per kilogram.
+    // Peringatan, bukan galat: angkanya setia pada registri, yang keliru sumbernya
+    // (mis. Zn ditulis 79,42% padahal ppm). Menolaknya berarti memalsukan sumber.
+    if (typeof doc.id === 'string' && doc.id.startsWith('op:prd:') && doc.composition?.length) {
+      const total = doc.composition
+        .filter((c) => c.unit === 'g/kg' || c.unit === 'g/L')
+        .reduce((n, c) => n + c.value, 0);
+      if (total > 1000) {
+        warn(file, 'L27-komposisi-mustahil', `Jumlah kadar mencapai ${Math.round(total)} g per kg/L — mustahil secara fisik. Angkanya setia pada registri; yang perlu ditinjau adalah sumbernya sebelum produk ini dipakai menghitung neraca hara.`);
+      }
+    }
+
     // L10 — rujukan harus menunjuk entitas yang ada.
     // Hanya diperiksa untuk jenis entitas yang kosakatanya sudah dimuat; jenis yang
     // belum punya kosakata dilewati diam-diam supaya tidak berisik sebelum waktunya.
@@ -227,7 +239,7 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
     for (const [i, a] of (doc.applications ?? []).entries()) {
       const prod = a.product?.id && entityById.get(a.product.id);
       if (prod && !prod.composition?.length && a.nutrients_delivered?.length) {
-        fail(file, 'L14-komposisi', `applications[${i}] menghitung nutrients_delivered dari produk "${prod.key}" yang tidak punya composition. Registri pupuk Kementan tidak memuat kandungan hara, jadi angka itu tidak bisa diturunkan dari mana pun.`);
+        fail(file, 'L14-komposisi', `applications[${i}] menghitung nutrients_delivered dari produk "${prod.key}" yang tidak punya composition. Sebagian pupuk terdaftar memang tidak punya kadar hara di registri — basis lama SIMPUK dan baris yang analisanya cuma cacah mikroba atau sifat fisik — jadi angka itu tidak bisa diturunkan dari mana pun.`);
       }
     }
 

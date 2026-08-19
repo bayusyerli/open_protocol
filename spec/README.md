@@ -20,11 +20,11 @@ spec/
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
 ├── schema/                       19 berkas JSON Schema (draft 2020-12)
-├── vocab/                        kosakata terkurasi — 1.754 entitas + 67 fase
+├── vocab/                        kosakata terkurasi — 1.764 entitas + 67 fase
 │   └── product/                  registri produk — 14.920 entitas (NDJSON)
 ├── examples/                     10 contoh nyata: cabai, kopi, udang vaname
 ├── fixtures-invalid/             contoh yang HARUS ditolak — bukti aturannya bekerja
-├── tools/                        penarik registri Kementan, bisa diulang
+├── tools/                        penarik registri Kementan & pengisi komposisi pupuk, bisa diulang
 ├── check.mjs                     logika pemeriksa
 ├── validate.mjs                  CLI pemeriksa
 └── test-rules.mjs                uji negatif
@@ -148,6 +148,7 @@ linter — dan diuji di `fixtures-invalid/`.
 | `L24` | Berkas yang berbagi jenis entitas wajib menyatakan `id_blocks` |
 | `L25` | Blok nomor tidak boleh bertindih antar-berkas |
 | `L26` | Tautan OPT harus cocok dengan nama ilmiah di label; sasaran tidak boleh komoditas sekaligus tempat |
+| `L27` | Komposisi produk yang melampaui 1.000 g per kg/L diperingatkan — mustahil secara fisik, artinya sumbernya keliru |
 
 Aturan-aturan ini bukan hiasan. Saat 382 bahan aktif dimasukkan, `L1` langsung menangkap
 tabrakan `key` pada **belerang** — yang ternyata terdaftar sebagai hara sekaligus fungisida.
@@ -321,10 +322,14 @@ dinyatakan lebih aman daripada taksonomi yang salah tapi terlihat rapi. 209 enti
 
 ### Tiga temuan tentang registrinya sendiri
 
-**Registri pupuk tidak memuat kandungan hara sama sekali.** Tidak satu pun dari 7.196
-produk pupuk punya komposisi — kolomnya memang tidak ada di sumber. Artinya neraca hara
-tidak bisa dihitung dari registri resmi. Aturan `L14` menolak pemakaiannya untuk menghitung
-hara yang diberikan; produk boleh ada, tapi angkanya tidak boleh dikarang.
+**Kandungan hara pupuk ada di registri, tetapi hampir luput.** Penarikan pertama
+mengekstrak registri ke CSV tanpa membawa kolom `hasilAnalisaUji`, dan ketiadaannya
+sempat dicatat sebagai temuan tentang sumbernya. Kolom itu nyatanya terisi di seluruh
+5.875 baris basis SIMPEL. Setelah diisi ulang, **5.130 produk pupuk punya `composition`**
+dan 29.622 parameter tersimpan apa adanya di `analysis`. Sisanya tetap tanpa kadar hara —
+745 baris yang analisanya hanya cacah mikroba atau sifat fisik, dan seluruh 1.321 baris
+basis lama SIMPUK-2020 yang sumbernya memang tidak punya kolom itu. Untuk baris-baris itu
+aturan `L14` masih berlaku: produk boleh ada, tapi angkanya tidak boleh dikarang.
 
 **Registri hanya memuat izin yang masih berlaku.** Kedaluwarsa terawal 12 Oktober 2026, dan
 tidak ada satu pun yang sudah lewat. Produk yang izinnya habis hilang begitu saja dari

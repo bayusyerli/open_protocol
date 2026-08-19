@@ -119,7 +119,39 @@
         ],
         "additionalProperties": false
       },
-      "description": "Opsional sejak v0.1: registri pupuk Kementan TIDAK memuat kandungan hara sama sekali, sehingga 5.875 pupuk terdaftar masuk tanpa komposisi. Aturan L14 menolak pemakaiannya untuk memenuhi rekomendasi hara — produk boleh ada di registri, tetapi tidak boleh dipakai menghitung apa yang benar-benar diberikan ke tanaman."
+      "description": "Opsional. 5.130 dari 5.875 pupuk basis SIMPEL punya komposisi, diturunkan dari kolom hasil analisa uji registri; sisanya tidak, karena analisanya hanya memuat cacah mikroba atau sifat fisik. Seluruh 1.321 baris basis lama SIMPUK-2020 juga tanpa komposisi — sumbernya tidak punya kolom itu. Persen pada registri dibaca bobot per bobot (g/kg) untuk bentuk padat dan bobot per volume (g/L) untuk cair; angka aslinya tetap tersimpan di analysis. Aturan L14 menolak produk tanpa composition dipakai memenuhi rekomendasi hara."
+    },
+    "analysis": {
+      "type": "array",
+      "description": "Hasil analisa uji apa adanya dari registri, termasuk parameter yang tidak bisa jadi composition: pH, kadar air, C/N, kehalusan, cacah mikroba, pecahan kelarutan, dan bentuk oksida yang belum dimodelkan. Ada supaya penurunan composition bisa diaudit dan supaya tidak ada parameter yang hilang diam-diam untuk kedua kalinya. Satuan di sini satuan sumber (%, [ppm], [CFU]/g), bukan hasil konversi.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "parameter": {
+            "type": "string",
+            "description": "Nama parameter persis seperti tertulis di registri."
+          },
+          "value_text": {
+            "type": "string",
+            "description": "Nilai apa adanya, termasuk bila berupa rentang atau teks yang tidak terurai jadi angka."
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode"
+          },
+          "in_composition": {
+            "type": "boolean",
+            "description": "Benar bila parameter inilah yang menurunkan satu entri composition. Hara yang sama bisa muncul dua kali di registri; hanya yang pertama dipakai supaya tidak terhitung ganda."
+          }
+        },
+        "required": [
+          "parameter",
+          "value_text"
+        ],
+        "additionalProperties": false
+      }
     },
     "label_uses": {
       "type": "array",

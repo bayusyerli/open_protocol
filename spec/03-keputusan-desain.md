@@ -206,13 +206,27 @@ direkonsiliasi. Tidak ada data yang hilang, dan tidak ada yang dikarang.
 
 ### D18 — komposisi jadi opsional, tetapi pemakaiannya dibatasi
 
-Registri pupuk Kementan tidak memuat kandungan hara sama sekali. Memaksa `composition`
-tetap wajib berarti 7.196 pupuk terdaftar tidak bisa masuk sama sekali — kehilangan yang
+Tidak semua produk terdaftar punya kandungan hara yang bisa diketahui. Memaksa `composition`
+tetap wajib berarti ribuan pupuk terdaftar tidak bisa masuk sama sekali — kehilangan yang
 jauh lebih besar daripada manfaatnya.
 
 Jalan tengahnya bukan melonggarkan begitu saja: `composition` jadi opsional, tetapi aturan
 `L14` menolak produk tanpa komposisi dipakai menghitung `nutrients_delivered`. Produk boleh
 ada di registri, tetapi tidak boleh jadi dasar angka yang tidak bisa diturunkan dari mana pun.
+
+**Koreksi 19 Agustus 2026.** Keputusan ini semula ditulis di atas pernyataan bahwa registri
+pupuk Kementan tidak memuat kandungan hara sama sekali. Pernyataan itu keliru. Registri
+SIMPEL punya kolom `hasilAnalisaUji` yang terisi di seluruh 5.875 barisnya; yang membuatnya
+seolah tidak ada adalah penarikan pertama yang mengekstrak registri ke CSV tanpa membawa
+kolom itu — lalu ketiadaannya terlanjur dicatat sebagai temuan tentang sumbernya.
+`spec/tools/isi-komposisi-pupuk.mjs` mengisinya belakangan: 5.130 baris kini punya
+`composition`, 29.622 parameter tersimpan mentah di `analysis`. Keputusan D18 sendiri tetap
+berlaku — 745 baris SIMPEL dan seluruh 1.321 baris basis lama SIMPUK memang tidak punya
+kadar hara, dan `L14` masih menjaganya.
+
+Pelajarannya bukan soal satu kolom yang luput, melainkan soal urutan: temuan tentang sumber
+data seharusnya diverifikasi ke sumbernya, bukan ke hasil ekstraksi kita sendiri. Ekstraksi
+yang lossy akan terbaca persis seperti sumber yang miskin.
 
 ---
 
@@ -350,5 +364,8 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 14 | Kelompok fungsional seperti "gulma berdaun lebar" belum jadi entitas | Sekarang hanya tersimpan sebagai synonyms pada spesies anggotanya |
 | 9 | Lampiran I.B melompati nomor 18 dan 21 pada lapisan teks PDF | Perlu pemeriksaan visual dokumen asli — entah sumbernya memang melompat, entah ekstraksinya kehilangan dua baris |
 | 12 | CAS asam sulfat ditulis `7669-93-9` di Permentan 43/2019 | Nomor bakunya `7664-93-9`, dan itu yang dipakai Permentan 39/2015. Direkam apa adanya plus penanda |
-| 10 | Kandungan hara pupuk tidak ada di registri mana pun | Perlu sumber lain — label kemasan, atau data dari principal langsung |
+| 10 | 745 baris SIMPEL dan 1.321 baris basis lama tetap tanpa kadar hara | Perlu sumber lain — label kemasan, atau data dari principal langsung. Sisa registri sudah terisi dari `hasilAnalisaUji` |
+| 15 | Persen pada registri pupuk tidak menyatakan basisnya | Dibaca b/b (g/kg) untuk bentuk padat dan b/v (g/L) untuk cair. Untuk cair ini asumsi, bukan keterangan sumber; angka aslinya tetap di `analysis` sehingga bisa dihitung ulang bila ternyata b/b |
+| 16 | Cacah mikroba pupuk hayati belum jadi `composition` | 2.563 nilai CFU tersimpan di `analysis`; butuh entitas `Substance` per organisme dan aturan yang memisahkannya dari hara |
+| 17 | Bentuk oksida & unsur yang belum dimodelkan | `B2O3`, `Na2O`, `CuO`, `ZnO`, `SO4`, serta `K`/`P`/`Mg` sebagai unsur ditinggal mentah — mengonversinya ke bentuk yang sudah ada akan mengarang angka yang tidak ditulis sumbernya |
 | 11 | 275 pestisida tanpa komposisi | Kadar bahan aktifnya bukan angka di sumber (mis. agens hayati berbasis populasi) |

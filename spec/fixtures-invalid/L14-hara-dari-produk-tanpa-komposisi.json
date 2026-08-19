@@ -8,7 +8,7 @@
   "applications": [
     {
       "substance": { "id": "op:sub:00000001", "label": "Nitrogen (N)" },
-      "product": { "id": "op:prd:00010001" },
+      "product": { "id": "op:prd:00015877" },
       "rate": { "value": 200, "unit": "kg/har", "basis": "per_area" },
       "nutrients_delivered": [
         { "substance": { "id": "op:sub:00000001" }, "quantity": { "value": 30, "unit": "kg/har" } }
