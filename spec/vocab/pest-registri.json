@@ -190,9 +190,21 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Borrena alata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Borreria alata",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1091 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Borrirea alata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -213,6 +225,8 @@
         "Borreia alata",
         "Borreira alata",
         "Borrelia alata",
+        "Borrena alata",
+        "Borrirea alata",
         "Borrreria alata",
         "Gulma Bedaun Lebar",
         "Gulma Daun Lebar",
@@ -244,6 +258,12 @@
           "uri": "https://www.gbif.org/species/4105416",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Otochloa nodosa",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -311,6 +331,7 @@
         "Gulma Berdaun Lebar",
         "Gulma Berdaun Rumput",
         "Gulma Berdaun Sempit",
+        "Otochloa nodosa",
         "Ottchloa nodosa",
         "Ottochioa nodosa",
         "Ottochlea nodosa",
@@ -433,6 +454,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Synedrella modiflora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Synedrella nadiflora",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -494,6 +521,7 @@
         "Guma Berdaun Lebar",
         "Synedrela nodiflora",
         "Synedrelia nodiflora",
+        "Synedrella modiflora",
         "Synedrella nadiflora",
         "Synedrella nodifloria",
         "Synedrella nodifora",
@@ -522,10 +550,23 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "220",
+          "uri": "https://www.gbif.org/species/220",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan HIGHERRANK (confidence 80). GBIF menerima nama 'Magnoliopsida'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "5398421",
           "uri": "https://www.gbif.org/species/5398421",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Micania micrantha",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -567,6 +608,7 @@
       "synonyms": [
         "Gulma Bedaun Lebar",
         "Gulma Daun Lebar",
+        "Micania micrantha",
         "Mikania micarantha",
         "Mikania michranta",
         "Mikania michrantha",
@@ -593,10 +635,23 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2705922",
+          "uri": "https://www.gbif.org/species/2705922",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Axonopus'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "2705924",
           "uri": "https://www.gbif.org/species/2705924",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Anoxopus compressus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -627,6 +682,18 @@
           "id": "Axonopus compresus",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Axonopus copressus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Axonopus crompressus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -636,10 +703,13 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Anoxopus compressus",
         "Axonophus compressus",
         "Axonoplus compressus",
         "Axonopus compresssus",
         "Axonopus compresus",
+        "Axonopus copressus",
+        "Axonopus crompressus",
         "Gulma Berdaun Lebar",
         "Gulma Berdaun Sempit"
       ],
@@ -669,6 +739,13 @@
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         },
         {
+          "scheme": "GBIF",
+          "id": "7924646",
+          "uri": "https://www.gbif.org/species/7924646",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Aedes'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Aedes aegypt",
           "relation": "exact",
@@ -685,6 +762,12 @@
           "id": "Aedes aegyptii",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aedes aepgyti",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -696,6 +779,7 @@
       "synonyms": [
         "Aedes aegypt",
         "Aedes aegyptii",
+        "Aedes aepgyti",
         "Jentik Nyamuk",
         "Larva",
         "Larva Nyamuk",
@@ -759,6 +843,18 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Digitaria cliaris",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Digitaria cliliaris",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Digitaria cyliaris",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
@@ -794,6 +890,8 @@
         "Digiaria ciliaris",
         "Digitaria ciliarsis",
         "Digitaria cilliaris",
+        "Digitaria cliaris",
+        "Digitaria cliliaris",
         "Digitaria cyliaris",
         "Digitaris ciliaris",
         "Digitartia cyliaris",
@@ -823,6 +921,13 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2056616",
+          "uri": "https://www.gbif.org/species/2056616",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Nilaparvata'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "2056628",
           "uri": "https://www.gbif.org/species/2056628",
           "relation": "exact",
@@ -830,9 +935,27 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Nilaparvata iugens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Nilaparvata lugens",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 441 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Nilapavarta lugens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Nilavarpata lugens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 10 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -850,6 +973,9 @@
       "synonyms": [
         "Hama Wereng Batang Coklat",
         "Hama Wereng Coklat",
+        "Nilaparvata iugens",
+        "Nilapavarta lugens",
+        "Nilavarpata lugens",
         "Nilavarvata lugens",
         "Wereng Batang Cokelat",
         "Wereng Batang Coklat",
@@ -875,6 +1001,13 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "3203589",
+          "uri": "https://www.gbif.org/species/3203589",
+          "relation": "broad",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Phytophthora'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "3203716",
           "uri": "https://www.gbif.org/species/3203716",
           "relation": "exact",
@@ -891,6 +1024,18 @@
           "id": "Phythophthora infestans",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythophtora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythopthora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -921,6 +1066,12 @@
           "id": "Phytophthora insestans",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora insfestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -961,10 +1112,13 @@
         "Penyakit Busuk Daun",
         "Phitophthora infestans",
         "Phythophthora infestans",
+        "Phythophtora infestans",
+        "Phythopthora infestans",
         "Phytophthora infenstans",
         "Phytophthora infestan",
         "Phytophthora infestns",
         "Phytophthora insestans",
+        "Phytophthora insfestans",
         "Phytophthrora infestans",
         "Phytophtora infenstans",
         "Phytophtora infestans",
@@ -1138,6 +1292,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Ishaemum timorense",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 14 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Ishcaemum timorense",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
@@ -1166,6 +1326,7 @@
         "Ischaeum timorense",
         "Ischaeumum timorense",
         "Ischemum timorense",
+        "Ishaemum timorense",
         "Ishcaemum timorense",
         "Ishchaemum timorense"
       ],
@@ -1223,6 +1384,24 @@
           "id": "Eluesine indica",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Elusine indica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Eulesine indica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Euleusine indica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1236,6 +1415,9 @@
         "Eleusine indicata",
         "Eleusinie indica",
         "Eluesine indica",
+        "Elusine indica",
+        "Eulesine indica",
+        "Euleusine indica",
         "Golongan Rumput",
         "Gulma Berdaun Lebar",
         "Gulma Berdaun Sempit"
@@ -1453,6 +1635,13 @@
           "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 98)."
         },
         {
+          "scheme": "GBIF",
+          "id": "3860554",
+          "uri": "https://www.gbif.org/species/3860554",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Climedia'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Clidemia hirta",
           "relation": "exact",
@@ -1469,6 +1658,18 @@
           "id": "Clidermia hirta",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 24 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Clidernia hirta",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Climedia hirta",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1480,6 +1681,8 @@
       "synonyms": [
         "Clidemima hirta",
         "Clidermia hirta",
+        "Clidernia hirta",
+        "Climedia hirta",
         "Gulma Bedaun Lebar",
         "Gulma Daun Lebar",
         "Gulma Golongan Rumput",
@@ -1534,6 +1737,12 @@
           "id": "Asytasia gangetica",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Asytasisa gangetica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1546,6 +1755,7 @@
         "Asystasia gengetica",
         "Asystasisa gangetica",
         "Asytasia gangetica",
+        "Asytasisa gangetica",
         "Gulma Daun Lebar",
         "Teki"
       ],
@@ -1648,6 +1858,19 @@
           "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 99)."
         },
         {
+          "scheme": "GBIF",
+          "id": "7824453",
+          "uri": "https://www.gbif.org/species/7824453",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Chromolaena'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Chromolaena adorata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Chromolaena odorarta",
           "relation": "exact",
@@ -1682,6 +1905,12 @@
           "id": "Chromolsena odorata",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cromolaena odorata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1691,11 +1920,13 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Chromolaena adorata",
         "Chromolaena odorarta",
         "Chromolaena odoratum",
         "Chromolaenan odorata",
         "Chromolena odorata",
         "Chromolsena odorata",
+        "Cromolaena odorata",
         "Gulma Bedaun Lebar",
         "Gulma Berkayu",
         "Gulma Daun Lebar",
@@ -1735,6 +1966,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Setaria flicata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Setaria plicat",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -1761,6 +1998,7 @@
       },
       "synonyms": [
         "Setarai plicata",
+        "Setaria flicata",
         "Setaria plicat"
       ]
     },
@@ -1780,6 +2018,12 @@
           "uri": "https://www.gbif.org/species/2616325",
           "relation": "exact",
           "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Altemaria porri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -1813,6 +2057,7 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Altemaria porri",
         "Altenaria porri",
         "Alternari porri",
         "Alternaria porii",
@@ -1849,6 +2094,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Schirpophaga incertulas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Scipophaga incertulas",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
@@ -1858,6 +2109,12 @@
           "id": "Scircophaga incertulas",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Scirphopaga incertulas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -1900,6 +2157,12 @@
           "id": "Scripophaga incertulas",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sirpophaga incertulas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1915,14 +2178,17 @@
         "Penggerek Batang Padi Kuning",
         "Penggerek Padi Kuning",
         "Pengggerek Batang Padi Kuning",
+        "Schirpophaga incertulas",
         "Scipophaga incertulas",
         "Scircophaga incertulas",
+        "Scirphopaga incertulas",
         "Scirphophaga incertulas",
         "Scirpohaga incerculas",
         "Scirpophaga inncertulas",
         "Scirpophaga insertulas",
         "Scirpophaga interculas",
-        "Scripophaga incertulas"
+        "Scripophaga incertulas",
+        "Sirpophaga incertulas"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -1950,6 +2216,19 @@
           "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 98)."
         },
         {
+          "scheme": "GBIF",
+          "id": "3582990",
+          "uri": "https://www.gbif.org/species/3582990",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Fimbrystylis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Fibristylis miliacea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Fimbristilis miliacea",
           "relation": "exact",
@@ -1960,6 +2239,12 @@
           "id": "Fimbristilis miliaceae",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Fimbristilys miliacea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -2023,9 +2308,33 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Fimbritylis milicea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Fimbrystilis miliacea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Fimbrystylis miliacea",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 17 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Fimbrystylis milicea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Frimbristylis miliacea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -2035,8 +2344,10 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Fibristylis miliacea",
         "Fimbristilis miliacea",
         "Fimbristilis miliaceae",
+        "Fimbristilys miliacea",
         "Fimbristylis milacea",
         "Fimbristylis miliaceae",
         "Fimbristylis milicea",
@@ -2046,7 +2357,11 @@
         "Fimbristylis milliace",
         "Fimbristylis milliacea",
         "Fimbrisylis miliacea",
+        "Fimbritylis milicea",
+        "Fimbrystilis miliacea",
         "Fimbrystylis miliacea",
+        "Fimbrystylis milicea",
+        "Frimbristylis miliacea",
         "Gulma Golongan Rumput",
         "Gulma Teki"
       ],
@@ -2077,6 +2392,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Imerata cylindrica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Imperata cylindica",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -2104,6 +2425,7 @@
         "Alang Alang",
         "Gulma Berdaun Lebar",
         "Gulma Berdaun Sempit",
+        "Imerata cylindrica",
         "Imperata cylindica",
         "Imperta cylindrica",
         "Teki"
@@ -2264,6 +2586,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Rhicardia brasiliensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Richardia brasilensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
@@ -2298,6 +2626,7 @@
         "Gulma Daun Lebar",
         "Gulma Golongan Rumput",
         "Gulma Rumput",
+        "Rhicardia brasiliensis",
         "Richardia brasilensis",
         "Richardia brassilensis",
         "Richardia brassiliensis"
@@ -2381,6 +2710,13 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2703864",
+          "uri": "https://www.gbif.org/species/2703864",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Leptochloa'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "2703873",
           "uri": "https://www.gbif.org/species/2703873",
           "relation": "exact",
@@ -2394,6 +2730,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Lephtocloa chinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Leptchloa chinensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -2403,6 +2745,12 @@
           "id": "Leptochloa chinensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 172 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Leptochloa cinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -2423,7 +2771,9 @@
         "Gulma Daun Sempit",
         "Gulma Golongan Rumput Pvt",
         "Lephtochloa chinensis",
+        "Lephtocloa chinensis",
         "Leptchloa chinensis",
+        "Leptochloa cinensis",
         "Leptochloca chinensis"
       ],
       "taxon_verification": {
@@ -2518,10 +2868,42 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Echinochloa crus-galli",
+          "scheme": "GBIF",
+          "id": "2702794",
+          "uri": "https://www.gbif.org/species/2702794",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan HIGHERRANK (confidence 80). GBIF menerima nama 'Echinochloa'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2702808",
+          "uri": "https://www.gbif.org/species/2702808",
           "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 164 baris penggunaan."
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochiloa crus-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochla crus-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochlia cruss-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochlo crus-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -2530,19 +2912,93 @@
           "note": "Bentuk terpotong pada label sumber; nama spesies yang sah adalah Echinochloa crus-galli."
         },
         {
-          "scheme": "GBIF",
-          "id": "2702808",
-          "uri": "https://www.gbif.org/species/2702808",
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa crus-galii",
           "relation": "exact",
-          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa crus-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 164 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa crusgalii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa crusgalli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 24 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa cruss-gali",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa cruss-galii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa cruss-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 53 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinochloa crussgalli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinocloa crus-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echinocloa cruss-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Echiochloa crus-galli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Echinochiloa crus-galli",
+        "Echinochla crus-galli",
+        "Echinochlia cruss-galli",
+        "Echinochlo crus-galli",
+        "Echinochloa crus-galii",
+        "Echinochloa crusgalii",
+        "Echinochloa crusgalli",
+        "Echinochloa cruss-gali",
+        "Echinochloa cruss-galii",
+        "Echinochloa cruss-galli",
+        "Echinochloa crussgalli",
+        "Echinocloa crus-galli",
+        "Echinocloa cruss-galli",
+        "Echiochloa crus-galli",
         "Golongan Rumput",
         "Gulma Berdaun Lebar"
       ],
@@ -2565,28 +3021,36 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "1553308",
+          "uri": "https://www.gbif.org/species/1553308",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Liriomyza chinensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 154 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "1553308",
-          "uri": "https://www.gbif.org/species/1553308",
+          "scheme": "KEMENTAN",
+          "id": "Lyriomiza chinensis",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Penggorok Daun",
         "Hama Pengorok Daun",
         "Lalat Pengorok Daun",
+        "Lyriomiza chinensis",
         "Penggorok Daun"
       ],
       "taxon_verification": {
@@ -2607,6 +3071,13 @@
       "scientific_name": "Spodoptera frugiperda",
       "taxonomic_rank": "species",
       "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1765207",
+          "uri": "https://www.gbif.org/species/1765207",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Spodoptera'; ejaan registri dipertahankan pada scientific_name."
+        },
         {
           "scheme": "GBIF",
           "id": "5109855",
@@ -2631,6 +3102,12 @@
           "id": "Spodoptera frungiperda",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera fungiperda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -2642,7 +3119,8 @@
       "synonyms": [
         "Hama Ulat Grayak",
         "Spodoptera frugiferda",
-        "Spodoptera frungiperda"
+        "Spodoptera frungiperda",
+        "Spodoptera fungiperda"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -2671,6 +3149,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Cyanodon dactylon",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Cynodon dactilon",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 14 baris penggunaan."
@@ -2695,6 +3179,7 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Cyanodon dactylon",
         "Cynodon dactilon",
         "Cynodon dactycon",
         "Golongan Rumput",
@@ -2772,6 +3257,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Marselia crenata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Marsila crenata",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -2793,6 +3284,12 @@
           "id": "Mersilea crenata",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mersilea creneta",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -2803,9 +3300,11 @@
       },
       "synonyms": [
         "Gulma Golongan Rumput",
+        "Marselia crenata",
         "Marsila crenata",
         "Marsilea creanata",
-        "Mersilea crenata"
+        "Mersilea crenata",
+        "Mersilea creneta"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -2834,9 +3333,21 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Phyricularia oryzae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Piricularia oryzae",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pycularia oryzae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -2861,7 +3372,9 @@
         "Blas",
         "Penyakit Blas Daun Dan Blas Leher",
         "Penyakit Blast",
+        "Phyricularia oryzae",
         "Piricularia oryzae",
+        "Pycularia oryzae",
         "Pyricularia orizae"
       ],
       "taxon_verification": {
@@ -2883,26 +3396,48 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Helicoverpa armigera",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 129 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "8108800",
           "uri": "https://www.gbif.org/species/8108800",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8109351",
+          "uri": "https://www.gbif.org/species/8109351",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Helicoverpa'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Heclicoverpa armigera",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helicoverpa amigera",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helicoverpa armigera",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 129 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Ulat Buah",
+        "Heclicoverpa armigera",
+        "Helicoverpa amigera",
         "Penggerek Pucuk",
         "Penggerek Tongkol",
         "Ulat Buah",
@@ -3121,6 +3656,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Collectotricum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Colletotrchum capsici",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -3136,6 +3677,12 @@
           "id": "Colletotricum capsici",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletrotichum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -3146,8 +3693,10 @@
       },
       "synonyms": [
         "Antraknosa",
+        "Collectotricum capsici",
         "Colletotrchum capsici",
         "Colletotricum capsici",
+        "Colletrotichum capsici",
         "Penyakit Antarknosa",
         "Penyakit Antraknose",
         "Penyakit Antranoksa",
@@ -3338,25 +3887,33 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Crocidolomia pavonana",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 85 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "1879340",
           "uri": "https://www.gbif.org/species/1879340",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Crcidolomia pavonana",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Crocidolomia pavonana",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 85 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Crcidolomia pavonana",
         "Hama Perusak Krop",
         "Hama Ulat Krop",
         "Perusak Daun",
@@ -3383,6 +3940,13 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "1553283",
+          "uri": "https://www.gbif.org/species/1553283",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Liriomyza'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "1553410",
           "uri": "https://www.gbif.org/species/1553410",
           "relation": "exact",
@@ -3396,9 +3960,21 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Liriomyza hudobrensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Liriomyza huidobrensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 85 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Liriomyza huidobrensism",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -3417,6 +3993,8 @@
         "Hama Pengorok Daun",
         "Lalat Penggorok Daun",
         "Liriomyza haidobrensis",
+        "Liriomyza hudobrensis",
+        "Liriomyza huidobrensism",
         "Lyriomyza huidobrensis",
         "Penggorok Daun"
       ],
@@ -3557,8 +4135,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001113"
+        }
       },
       "synonyms": [
         "Gulma Daun Lebar",
@@ -3750,10 +4332,23 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "1870449",
+          "uri": "https://www.gbif.org/species/1870449",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Etiella'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "1870450",
           "uri": "https://www.gbif.org/species/1870450",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Etiella zickenella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -3799,6 +4394,7 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Etiella zickenella",
         "Etiella zicnkenella",
         "Etiella zinckinella",
         "Etiella zincknella",
@@ -3986,6 +4582,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Ipomia triloba",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Ipomoea tribola",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -4006,6 +4608,7 @@
       "synonyms": [
         "Gulma Golongan Rumput",
         "Ipomea triloba",
+        "Ipomia triloba",
         "Ipomoea tribola"
       ],
       "taxon_verification": {
@@ -4112,10 +4715,23 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2007379",
+          "uri": "https://www.gbif.org/species/2007379",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Coptotermes'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "9785354",
           "uri": "https://www.gbif.org/species/9785354",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Captotermes cuvignathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -4146,6 +4762,12 @@
           "id": "Coptotermes curvignsathus",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coptotermes cuvignathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -4155,10 +4777,12 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Captotermes cuvignathus",
         "Coprtotermes curvignathus",
         "Coptotermes currvignathus",
         "Coptotermes curvignatus",
         "Coptotermes curvignsathus",
+        "Coptotermes cuvignathus",
         "Hama Rayap",
         "Hama Rayap Tanah",
         "Kayu Gergajian",
@@ -4314,6 +4938,13 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "3084921",
+          "uri": "https://www.gbif.org/species/3084921",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Alternanthera'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "3084923",
           "uri": "https://www.gbif.org/species/3084923",
           "relation": "exact",
@@ -4345,6 +4976,18 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Alternanthera piloxeroides",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 31 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Althenanthera philoxeroides",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Althernanthera philoxeroides",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 5 baris penggunaan."
@@ -4352,6 +4995,12 @@
         {
           "scheme": "KEMENTAN",
           "id": "Althernanthera phyloxeroides",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Althernathera philoxeroides",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -4373,8 +5022,11 @@
         "Altenanthera philoxeroides",
         "Alternantehra philoxeroides",
         "Alternanthera philaxeroides",
+        "Alternanthera piloxeroides",
+        "Althenanthera philoxeroides",
         "Althernanthera philoxeroides",
-        "Althernanthera phyloxeroides"
+        "Althernanthera phyloxeroides",
+        "Althernathera philoxeroides"
       ]
     },
     {
@@ -4497,6 +5149,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Digitaria adcendens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Digitaria adscendens",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 56 baris penggunaan."
@@ -4512,6 +5170,12 @@
           "id": "Digitaria adscendes",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Digitaria ascendens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -4521,8 +5185,10 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Digitaria adcendens",
         "Digitaria adscendense",
         "Digitaria adscendes",
+        "Digitaria ascendens",
         "Golongan Rumput",
         "Gulma Berdaun Sempit",
         "Gulma Rumput",
@@ -4552,6 +5218,19 @@
           "uri": "https://www.gbif.org/species/3084719",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "7286406",
+          "uri": "https://www.gbif.org/species/7286406",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan HIGHERRANK (confidence 93). GBIF menerima nama 'Portula'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Portula oleracea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -4592,6 +5271,7 @@
       },
       "synonyms": [
         "Gulma Golongan Rumput",
+        "Portula oleracea",
         "Portulaca olaracea",
         "Portulaca oleraceae",
         "Portulaca olerachea",
@@ -4708,8 +5388,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "synonyms": [
         "Golongan Rumput"
@@ -4735,10 +5419,23 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2713455",
+          "uri": "https://www.gbif.org/species/2713455",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Cyperus'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "2721633",
           "uri": "https://www.gbif.org/species/2721633",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cyperus cylingia",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -4784,6 +5481,7 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Cyperus cylingia",
         "Cyperus kilingia",
         "Cyperus killingia",
         "Cyperus kylingga",
@@ -5252,10 +5950,29 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2563219",
+          "uri": "https://www.gbif.org/species/2563219",
+          "relation": "broad",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan HIGHERRANK (confidence 91). GBIF menerima nama 'Colletotrichum'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "2569005",
           "uri": "https://www.gbif.org/species/2569005",
           "relation": "exact",
           "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletothricum gloeosporioides",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum gleosporiodes",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -5283,8 +6000,11 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Colletothricum gloeosporioides",
+        "Colletotrichum gleosporiodes",
         "Colletotrichum gloeosporiodes",
         "Colletotrichum gloeosporoides",
+        "Penyakit Busuk Basah",
         "Penyakit Busuk Buah",
         "Penyakit Gugur Daun"
       ],
@@ -5469,6 +6189,12 @@
           "id": "Fimbristyllis littoralis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Frimbristylis littoralis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -5486,7 +6212,8 @@
       },
       "synonyms": [
         "Fimbristylis litoralis",
-        "Fimbristyllis littoralis"
+        "Fimbristyllis littoralis",
+        "Frimbristylis littoralis"
       ]
     },
     {
@@ -5648,6 +6375,13 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2439223",
+          "uri": "https://www.gbif.org/species/2439223",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Mammalia; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Rattus'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "2439275",
           "uri": "https://www.gbif.org/species/2439275",
           "relation": "exact",
@@ -5658,6 +6392,12 @@
           "id": "Rattus argentiventer",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 34 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rattus orgentiventer",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -5680,6 +6420,7 @@
         "kingdom": "Animalia"
       },
       "synonyms": [
+        "Rattus orgentiventer",
         "Ratus argentiventer"
       ]
     },
@@ -5910,28 +6651,43 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "1420961",
+          "uri": "https://www.gbif.org/species/1420961",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4799962",
+          "uri": "https://www.gbif.org/species/4799962",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Trips'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Thrips tabaci",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 32 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "1420961",
-          "uri": "https://www.gbif.org/species/1420961",
+          "scheme": "KEMENTAN",
+          "id": "Trips tabaci",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Ham Thrips",
         "Hama Thrips",
-        "Thrips"
+        "Thrips",
+        "Trips tabaci"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -5967,8 +6723,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001065"
+        }
       },
       "synonyms": [
         "Gulma Daun Lebar",
@@ -6051,6 +6811,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Phythopthora palmivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Phytophthora palmivora",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 30 baris penggunaan."
@@ -6060,6 +6826,12 @@
           "id": "Phytophtora palmivora",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytoptora palmivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6072,7 +6844,9 @@
         "Penyakit Busuk Pangkal Batang",
         "Penyakit Kanker Batang",
         "Phythophthora palmivora",
-        "Phytophtora palmivora"
+        "Phythopthora palmivora",
+        "Phytophtora palmivora",
+        "Phytoptora palmivora"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -6453,6 +7227,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Erigon sumatrensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Erygeron sumatraensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -6475,6 +7255,7 @@
         "Erigenon sumatrensis",
         "Erigeron sumantrensis",
         "Erigeron sumtraensis",
+        "Erigon sumatrensis",
         "Erygeron sumatraensis"
       ]
     },
@@ -6573,6 +7354,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Canopomorha cramerella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Canopomorpha cramerella",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
@@ -6591,9 +7378,11 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Canopomorha cramerella",
         "Canopomorpha cramerella",
         "Hama Penggerek Buah",
-        "Penggerek Buah Kakao"
+        "Penggerek Buah Kakao",
+        "Penggerek Buah Kako"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -6629,8 +7418,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "synonyms": [
         "Gulma Berdaun Lebar",
@@ -6772,10 +7565,11 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Oxya chinensis",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 24 baris penggunaan."
+          "scheme": "GBIF",
+          "id": "1700877",
+          "uri": "https://www.gbif.org/species/1700877",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Oxya'; ejaan registri dipertahankan pada scientific_name."
         },
         {
           "scheme": "GBIF",
@@ -6783,15 +7577,29 @@
           "uri": "https://www.gbif.org/species/1700917",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oxya chinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 24 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oxya cinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
-        "Belalang"
+        "Belalang",
+        "Oxya cinensis"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -6820,15 +7628,51 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Spenochlea zeylanica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 83 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spenoclea zeylanica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Sphenochlea zeylanica",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 14 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Sphenochloa zeylanica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sphenochloea zeylanica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sphenocholea zeylanica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Sphenoclea zeylanica",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 24 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sphenodea zeylanica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6845,7 +7689,13 @@
         "kingdom": "Plantae"
       },
       "synonyms": [
-        "Sphenochlea zeylanica"
+        "Spenochlea zeylanica",
+        "Spenoclea zeylanica",
+        "Sphenochlea zeylanica",
+        "Sphenochloa zeylanica",
+        "Sphenochloea zeylanica",
+        "Sphenocholea zeylanica",
+        "Sphenodea zeylanica"
       ]
     },
     {
@@ -7631,23 +8481,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "2007324",
+          "uri": "https://www.gbif.org/species/2007324",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Cryptotermes cynocephalus",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 19 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "2007324",
-          "uri": "https://www.gbif.org/species/2007324",
+          "scheme": "KEMENTAN",
+          "id": "Cyptotermes cynocephalus",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -7655,7 +8512,10 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Cyptotermes cynocephalus"
+      ]
     },
     {
       "id": "op:pst:00001131",
@@ -7912,6 +8772,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Phytophora capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Phytophthora capsici",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 18 baris penggunaan."
@@ -7935,6 +8801,7 @@
         "Penyakit Busuk Pangkal",
         "Penyakit Busuk Pangkal Batang",
         "Penyakit Hawar Daun",
+        "Phytophora capsici",
         "Phytopthora capsici"
       ],
       "taxon_verification": {
@@ -7956,25 +8823,40 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Agrotis ipsilon",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 18 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "1771245",
           "uri": "https://www.gbif.org/species/1771245",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8407958",
+          "uri": "https://www.gbif.org/species/8407958",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Agrotis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Agrotis epsilon",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Agrotis ipsilon",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 18 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Agrotis epsilon",
         "Hama Ulat Tanah"
       ],
       "taxon_verification": {
@@ -8001,6 +8883,12 @@
           "uri": "https://www.gbif.org/species/2706188",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dactiloctenium aegyptum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -8034,6 +8922,7 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Dactiloctenium aegyptum",
         "Dactyloctenium aegypitum",
         "Dactyloctenium aegyptum",
         "Dactylotenium aegyptium",
@@ -8817,8 +9706,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001012"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -9185,6 +10078,12 @@
           "id": "Sitophilus zeamais",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sitophylus zeamays",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -9197,7 +10096,8 @@
         "Hama",
         "Hama Gudang Komoditas Jagung",
         "Sitohilus zeamais",
-        "Sitophillus zeamais"
+        "Sitophillus zeamais",
+        "Sitophylus zeamays"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -9262,10 +10162,11 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Plusia chalcites",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
+          "scheme": "GBIF",
+          "id": "1772155",
+          "uri": "https://www.gbif.org/species/1772155",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Plusia'; ejaan registri dipertahankan pada scientific_name."
         },
         {
           "scheme": "GBIF",
@@ -9273,15 +10174,29 @@
           "uri": "https://www.gbif.org/species/9632143",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plusia calchites",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plusia chalcites",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Perusak Daun",
+        "Plusia calchites",
         "Ulat Daun",
         "Ulat Jengkal"
       ],
@@ -9453,26 +10368,34 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "4775727",
+          "uri": "https://www.gbif.org/species/4775727",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Nephotettix virescens",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "4775727",
-          "uri": "https://www.gbif.org/species/4775727",
+          "scheme": "KEMENTAN",
+          "id": "Nepotettix viriescens",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Hama Wereng Hijau",
+        "Nepotettix viriescens",
         "Wereng Daun"
       ],
       "taxon_verification": {
@@ -10616,6 +11539,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Blatela germanica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Blatella germacica",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -10646,6 +11575,7 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Blatela germanica",
         "Blatella germacica",
         "Blatella germanica",
         "Blattela germanica",
@@ -10977,8 +11907,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001009"
+        }
       },
       "synonyms": [
         "Wereng Batang Cokelat",
@@ -11187,8 +12121,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001023"
+        }
       },
       "synonyms": [
         "Penggerek Batang",
@@ -11610,8 +12548,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001010"
+        }
       },
       "synonyms": [
         "Penyakit Busuk Daun"
@@ -12326,6 +13268,12 @@
           "id": "Crassochephalum crepidioides",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Grassocephalum crepidiodes",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -12343,7 +13291,8 @@
       },
       "synonyms": [
         "Crassocephalum crepidiodes",
-        "Crassochephalum crepidioides"
+        "Crassochephalum crepidioides",
+        "Grassocephalum crepidiodes"
       ]
     },
     {
@@ -12395,6 +13344,13 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2964887",
+          "uri": "https://www.gbif.org/species/2964887",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Centrosema'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "2964904",
           "uri": "https://www.gbif.org/species/2964904",
           "relation": "exact",
@@ -12411,6 +13367,18 @@
           "id": "Centrosema pubescens",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 8 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Centrosema puescens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Centrosema pusbescens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -12427,7 +13395,9 @@
         "kingdom": "Plantae"
       },
       "synonyms": [
-        "Centrocema pubescens"
+        "Centrocema pubescens",
+        "Centrosema puescens",
+        "Centrosema pusbescens"
       ]
     },
     {
@@ -12679,25 +13649,33 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Atherigona exigua",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 7 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "1530611",
           "uri": "https://www.gbif.org/species/1530611",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Altherigona exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Atherigona exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 7 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Altherigona exigua",
         "Hama Lalat Bibit"
       ],
       "taxon_verification": {
@@ -13502,8 +14480,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001068"
+        }
       },
       "synonyms": [
         "Golongan Rumput"
@@ -13768,8 +14750,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001010"
+        }
       },
       "synonyms": [
         "Hawar Daun",
@@ -14734,26 +15720,41 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "2925463",
+          "uri": "https://www.gbif.org/species/2925463",
+          "relation": "exact",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Stachytarpetha jamaicensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Stachytarpheta jamaicensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "2925463",
-          "uri": "https://www.gbif.org/species/2925463",
+          "scheme": "KEMENTAN",
+          "id": "Strachytarpheta jamaicensis",
           "relation": "exact",
-          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 98)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
-        "Gulma Golongan Rumput"
+        "Gulma Golongan Rumput",
+        "Stachytarpetha jamaicensis",
+        "Strachytarpheta jamaicensis"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -15023,6 +16024,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Coptermes gestroi",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Coptotermes gestroi",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 5 baris penggunaan."
@@ -15048,6 +16055,7 @@
         "kingdom": "Animalia"
       },
       "synonyms": [
+        "Coptermes gestroi",
         "Coptothermes gestroi"
       ]
     },
@@ -15558,6 +16566,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Momonorium pharaonis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Monomorium pharaonis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 5 baris penggunaan."
@@ -15578,6 +16592,7 @@
       },
       "synonyms": [
         "Manomorium pharaonis",
+        "Momonorium pharaonis",
         "Semut Pharaoh"
       ]
     },
@@ -16276,10 +17291,11 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Colletotrichum circinans",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+          "scheme": "GBIF",
+          "id": "2563219",
+          "uri": "https://www.gbif.org/species/2563219",
+          "relation": "broad",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Colletotrichum'; ejaan registri dipertahankan pada scientific_name."
         },
         {
           "scheme": "GBIF",
@@ -16287,12 +17303,25 @@
           "uri": "https://www.gbif.org/species/2568930",
           "relation": "exact",
           "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum circinans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum circinas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -16300,7 +17329,10 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Fungi"
-      }
+      },
+      "synonyms": [
+        "Colletotrichum circinas"
+      ]
     },
     {
       "id": "op:pst:00001327",
@@ -16328,8 +17360,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001005"
+        }
       },
       "synonyms": [
         "Gulma Daun Lebar"
@@ -16656,8 +17692,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001024"
+        }
       },
       "accepted_scientific_name": "Fimbrystylis",
       "taxon_verification": {
@@ -16968,8 +18008,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -16999,8 +18043,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001037"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -17243,8 +18291,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001024"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -17280,6 +18332,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Phyllocnitis critrella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Phylocnistis citrella",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -17294,6 +18352,7 @@
       "synonyms": [
         "Hama Penggorok Daun",
         "Penggerek Daun",
+        "Phyllocnitis critrella",
         "Phylocnistis citrella"
       ],
       "taxon_verification": {
@@ -18718,8 +19777,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001553"
+        }
       },
       "synonyms": [
         "Hama Semut Api",
@@ -19224,8 +20287,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001008"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -19247,23 +20314,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Tryporyza incertulas",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "8368107",
           "uri": "https://www.gbif.org/species/8368107",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tryporiza incertulas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tryporyza incertulas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -19271,7 +20345,10 @@
         "checked_at": "2026-08-19",
         "confidence": 97,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Tryporiza incertulas"
+      ]
     },
     {
       "id": "op:pst:00001400",
@@ -19548,8 +20625,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001020"
+        }
       },
       "accepted_scientific_name": "Chromolaena",
       "taxon_verification": {
@@ -19767,8 +20848,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001006"
+        }
       },
       "synonyms": [
         "Gulma Berdaun Sempit"
@@ -19793,10 +20878,11 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Melochia corchorifolia",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+          "scheme": "GBIF",
+          "id": "3152114",
+          "uri": "https://www.gbif.org/species/3152114",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Melochia'; ejaan registri dipertahankan pada scientific_name."
         },
         {
           "scheme": "GBIF",
@@ -19804,12 +20890,25 @@
           "uri": "https://www.gbif.org/species/3152125",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Melochia chorcorifolia",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Melochia corchorifolia",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -19817,7 +20916,10 @@
         "checked_at": "2026-08-19",
         "confidence": 97,
         "kingdom": "Plantae"
-      }
+      },
+      "synonyms": [
+        "Melochia chorcorifolia"
+      ]
     },
     {
       "id": "op:pst:00001413",
@@ -19997,8 +21099,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000001"
+        }
       },
       "accepted_scientific_name": "Trips",
       "taxon_verification": {
@@ -20384,8 +21490,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001023"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -20863,8 +21973,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -21049,25 +22163,33 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "5163369",
+          "uri": "https://www.gbif.org/species/5163369",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Coccus viridis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "5163369",
-          "uri": "https://www.gbif.org/species/5163369",
+          "scheme": "KEMENTAN",
+          "id": "Cocus viridis",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Cocus viridis",
         "Kutu Hijau"
       ],
       "taxon_verification": {
@@ -21265,8 +22387,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001009"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -21602,8 +22728,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001038"
+        }
       },
       "synonyms": [
         "Penggerek Buah"
@@ -21628,23 +22758,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "1958454",
+          "uri": "https://www.gbif.org/species/1958454",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Hyposidra talaca",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "1958454",
-          "uri": "https://www.gbif.org/species/1958454",
+          "scheme": "KEMENTAN",
+          "id": "Hyprosida talaca",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -21652,7 +22789,10 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Hyprosida talaca"
+      ]
     },
     {
       "id": "op:pst:00001459",
@@ -21990,8 +23130,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001113"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -22225,8 +23369,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001024"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -22350,8 +23498,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -22624,8 +23776,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001233"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -22914,8 +24070,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -23023,8 +24183,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001013"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -23054,8 +24218,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001065"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -23499,8 +24667,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001013"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -24054,8 +25226,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001094"
+        }
       },
       "accepted_scientific_name": "Trips",
       "taxon_verification": {
@@ -24176,8 +25352,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001010"
+        }
       },
       "accepted_scientific_name": "Phytophthora",
       "taxon_verification": {
@@ -24292,6 +25472,12 @@
         },
         {
           "scheme": "KEMENTAN",
+          "id": "Centhoteca lappacea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
           "id": "Centotheca lappacea",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
@@ -24317,6 +25503,7 @@
         "kingdom": "Plantae"
       },
       "synonyms": [
+        "Centhoteca lappacea",
         "Centotheca lappaceae"
       ]
     },
@@ -24561,8 +25748,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001002"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -25116,8 +26307,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001007"
+        }
       },
       "accepted_scientific_name": "Aedes",
       "taxon_verification": {
@@ -25235,6 +26430,12 @@
           "id": "Jussiaea repens",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jussica repens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -25251,7 +26452,8 @@
         "kingdom": "Plantae"
       },
       "synonyms": [
-        "Jusiaea repens"
+        "Jusiaea repens",
+        "Jussica repens"
       ]
     },
     {
@@ -25379,10 +26581,23 @@
       "mappings": [
         {
           "scheme": "GBIF",
+          "id": "2029924",
+          "uri": "https://www.gbif.org/species/2029924",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Selenopsis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "5035187",
           "uri": "https://www.gbif.org/species/5035187",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Selenopsis germinata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -25395,6 +26610,12 @@
           "id": "Solenopsis geminate",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Solenopsis germinate",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -25404,8 +26625,11 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Hama Semut Api",
+        "Selenopsis germinata",
         "Semut Api",
-        "Solenopsis geminate"
+        "Solenopsis geminate",
+        "Solenopsis germinate"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -25441,8 +26665,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -25801,23 +27029,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Rottboellia cochinchinensis",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "2704075",
           "uri": "https://www.gbif.org/species/2704075",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rottbelia cochinchinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rottboellia cochinchinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -25825,7 +27060,10 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Plantae"
-      }
+      },
+      "synonyms": [
+        "Rottbelia cochinchinensis"
+      ]
     },
     {
       "id": "op:pst:00001565",
@@ -25919,8 +27157,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001043"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -25950,8 +27192,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001020"
+        }
       },
       "synonyms": [
         "Gulma Golongan Rumput"
@@ -26316,8 +27562,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001009"
+        }
       },
       "synonyms": [
         "Wereng Coklat"
@@ -26464,8 +27714,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001399"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -26547,8 +27801,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -26844,23 +28102,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Heliotropium indicum",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "2925788",
           "uri": "https://www.gbif.org/species/2925788",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Heliotropenium indicum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Heliotropium indicum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -26868,7 +28133,10 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Plantae"
-      }
+      },
+      "synonyms": [
+        "Heliotropenium indicum"
+      ]
     },
     {
       "id": "op:pst:00001592",
@@ -27176,8 +28444,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001006"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -27495,8 +28767,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -27836,8 +29112,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001029"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -28036,8 +29316,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001081"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -28505,8 +29789,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001036"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -29024,8 +30312,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001068"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -29745,8 +31037,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001113"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -29856,8 +31152,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000001"
+        }
       },
       "accepted_scientific_name": "Thrips",
       "taxon_verification": {
@@ -30114,8 +31414,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001022"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -30560,8 +31864,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001097"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -30660,8 +31968,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000005"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -31712,8 +33024,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001112"
+        }
       },
       "accepted_scientific_name": "Oxya",
       "taxon_verification": {
@@ -31881,8 +33197,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001444"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32421,8 +33741,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001061"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32618,8 +33942,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001113"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32901,8 +34229,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001235"
+        }
       },
       "accepted_scientific_name": "Centrosema",
       "taxon_verification": {
@@ -33039,8 +34371,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -33376,8 +34712,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00002332"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -33689,8 +35029,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001008"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -33906,8 +35250,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001024"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -34154,8 +35502,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001296"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -34740,8 +36092,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001001"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -34771,8 +36127,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001168"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -34917,8 +36277,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001085"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -35039,8 +36403,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001055"
+        }
       },
       "accepted_scientific_name": "Etiella",
       "taxon_verification": {
@@ -35143,8 +36511,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001032"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -35174,8 +36546,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001034"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -36145,8 +37521,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001036"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -36298,8 +37678,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001108"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -36329,8 +37713,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001004"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -36402,8 +37790,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001308"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -37433,8 +38825,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001130"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -37844,8 +39240,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001351"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -38233,8 +39633,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001027"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -38356,8 +39760,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -38546,8 +39954,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001033"
+        }
       },
       "accepted_scientific_name": "Spodoptera",
       "taxon_verification": {
@@ -39088,8 +40500,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001059"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -39480,8 +40896,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001024"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -39659,8 +41079,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001242"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -40278,8 +41702,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -40309,8 +41737,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001024"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -40347,8 +41779,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001029"
+        }
       },
       "accepted_scientific_name": "Leptochloa",
       "taxon_verification": {
@@ -40409,8 +41845,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001105"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -40671,8 +42111,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001043"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -41094,8 +42538,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001553"
+        }
       },
       "accepted_scientific_name": "Selenopsis",
       "taxon_verification": {
@@ -42498,8 +43946,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001194"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -42529,8 +43981,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001289"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -42953,8 +44409,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001113"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -43106,8 +44566,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001136"
+        }
       },
       "accepted_scientific_name": "Agrotis",
       "taxon_verification": {
@@ -43175,8 +44639,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001048"
+        }
       },
       "accepted_scientific_name": "Liriomyza",
       "taxon_verification": {
@@ -43349,8 +44817,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001038"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -43715,8 +45187,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001564"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -44223,8 +45699,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001135"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -44254,8 +45734,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001097"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -44647,8 +46131,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001081"
+        }
       },
       "accepted_scientific_name": "Colletotrichum",
       "taxon_verification": {
@@ -44837,8 +46325,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001023"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -44902,23 +46394,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "6135381",
+          "uri": "https://www.gbif.org/species/6135381",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Arachnida; kecocokan EXACT (confidence 98)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Hemitarsonemus latus",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "6135381",
-          "uri": "https://www.gbif.org/species/6135381",
+          "scheme": "KEMENTAN",
+          "id": "Hermitarsonemus latus",
           "relation": "exact",
-          "note": "Kingdom Animalia, kelas Arachnida; kecocokan EXACT (confidence 98)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -44926,7 +46425,10 @@
         "checked_at": "2026-08-19",
         "confidence": 98,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Hermitarsonemus latus"
+      ]
     },
     {
       "id": "op:pst:00002067",
@@ -45016,8 +46518,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001137"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -45358,8 +46864,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001061"
+        }
       },
       "accepted_scientific_name": "Coptotermes",
       "taxon_verification": {
@@ -45715,8 +47225,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001591"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -45963,23 +47477,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "5289612",
+          "uri": "https://www.gbif.org/species/5289612",
+          "relation": "exact",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 97)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Chloris barbata",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "5289612",
-          "uri": "https://www.gbif.org/species/5289612",
+          "scheme": "KEMENTAN",
+          "id": "Cloris barbata",
           "relation": "exact",
-          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 97)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -45987,7 +47508,10 @@
         "checked_at": "2026-08-19",
         "confidence": 97,
         "kingdom": "Plantae"
-      }
+      },
+      "synonyms": [
+        "Cloris barbata"
+      ]
     },
     {
       "id": "op:pst:00002095",
@@ -46470,8 +47994,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001006"
+        }
       },
       "accepted_scientific_name": "Axonopus",
       "taxon_verification": {
@@ -46997,8 +48525,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00002094"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -47108,8 +48640,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00002263"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -47254,8 +48790,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001047"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -47955,8 +49495,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -48230,8 +49774,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001458"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -48345,8 +49893,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001525"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -48535,8 +50087,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001326"
+        }
       },
       "accepted_scientific_name": "Colletotrichum",
       "taxon_verification": {
@@ -49575,8 +51131,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001031"
+        }
       },
       "accepted_scientific_name": "Echinochloa",
       "taxon_verification": {
@@ -49762,8 +51322,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001089"
+        }
       },
       "accepted_scientific_name": "Rattus",
       "taxon_verification": {
@@ -50148,8 +51712,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001235"
+        }
       },
       "accepted_scientific_name": "Centrosema",
       "taxon_verification": {
@@ -50514,8 +52082,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001025"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -50583,8 +52155,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001065"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -50694,8 +52270,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001017"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -52177,8 +53757,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001018"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -52522,23 +54106,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
-          "scheme": "KEMENTAN",
-          "id": "Lindernia antipoda",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
           "scheme": "GBIF",
           "id": "3171886",
           "uri": "https://www.gbif.org/species/3171886",
           "relation": "exact",
           "note": "Kingdom Plantae, kelas Magnoliopsida; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lindemia antipoda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lindernia antipoda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -52546,7 +54137,10 @@
         "checked_at": "2026-08-19",
         "confidence": 98,
         "kingdom": "Plantae"
-      }
+      },
+      "synonyms": [
+        "Lindemia antipoda"
+      ]
     },
     {
       "id": "op:pst:00002264",
@@ -52663,8 +54257,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001164"
+        }
       },
       "accepted_scientific_name": "Plusia",
       "taxon_verification": {
@@ -52867,8 +54465,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00002066"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -53327,8 +54929,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001549"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -53365,8 +54971,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001048"
+        }
       },
       "accepted_scientific_name": "Liriomyza",
       "taxon_verification": {
@@ -53545,8 +55155,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001072"
+        }
       },
       "accepted_scientific_name": "Cyperus",
       "taxon_verification": {
@@ -53576,8 +55190,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001037"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -53718,8 +55336,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001013"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -54379,8 +56001,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001289"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -55004,8 +56630,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001021"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -55042,8 +56672,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001017"
+        }
       },
       "accepted_scientific_name": "Climedia",
       "taxon_verification": {
@@ -55138,23 +56772,30 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "2614031",
+          "uri": "https://www.gbif.org/species/2614031",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Didymella bryoniae",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "2614031",
-          "uri": "https://www.gbif.org/species/2614031",
+          "scheme": "KEMENTAN",
+          "id": "Dydimella bryoniae",
           "relation": "exact",
-          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 98)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -55162,7 +56803,10 @@
         "checked_at": "2026-08-19",
         "confidence": 98,
         "kingdom": "Fungi"
-      }
+      },
+      "synonyms": [
+        "Dydimella bryoniae"
+      ]
     },
     {
       "id": "op:pst:00002333",
@@ -55431,8 +57075,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001113"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -55542,8 +57190,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001412"
+        }
       },
       "accepted_scientific_name": "Melochia",
       "taxon_verification": {
@@ -55927,8 +57579,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001069"
+        }
       },
       "accepted_scientific_name": "Portula",
       "taxon_verification": {
@@ -56116,8 +57772,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001001"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -56147,8 +57807,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001162"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",

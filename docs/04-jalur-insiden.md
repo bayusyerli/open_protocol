@@ -4,7 +4,7 @@
 > Untuk orang yang baru melihat masalah di depan mata. Tanpa akun, tanpa petak terdaftar, tanpa rencana — tiga ketukan sampai jawaban.
 > Angka **dari registri pascapenggabungan ejaan zat** (`1a0f077`, `04b91c6`)
 > **dan penyatuan komoditas serumpun serta OPT kembar** — 488 komoditas jadi 274,
-> 1.370 OPT jadi 914
+> 1.370 OPT jadi 783
 >
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
@@ -27,7 +27,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nyaris nol.** Dari 914 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, 5 di antaranya bertekst |
+| **Ini apa?** | **Nyaris nol.** Dari 783 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, 5 di antaranya bertekst |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
@@ -47,9 +47,9 @@ masuk lewat kosakata petani sendiri juga belum ada.
   salah yang percaya diri menghasilkan semprotan salah — uang hilang, tanaman tetap
   mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
   dekat ke tanggung jawab hukum.
-- **Runtuhkan merek jadi bahan aktif dan kadarnya.** 242 produk terdaftar untuk
+- **Runtuhkan merek jadi bahan aktif dan kadarnya.** 246 produk terdaftar untuk
   trips di cabai, tetapi isinya hanya 72 bahan aktif — yang, karena satu bahan
-  dipakai pada banyak kadar, jatuh jadi 164 kartu bahan+kadar. Menampilkan 242 nama
+  dipakai pada banyak kadar, jatuh jadi 164 kartu bahan+kadar. Menampilkan 246 nama
   dagang adalah menyalin kebingungan kios ke dalam layar.
 - **Informasi negatif didahulukan.** Apa yang dilarang, dan apa yang tidak akan
   menolong. Ini yang paling bernilai bagi petani, dan justru paling kecil risiko
@@ -112,7 +112,7 @@ bukti apa-apa** — dan karena itu layarnya berhenti pada fakta, bukan pada kesi
 
 ## 5. Peringatan bahan dilarang — dan lingkupnya
 
-Dari 242 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
+Dari 246 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
 **34 memuat bahan yang namanya tercantum di Lampiran I.A Permentan 43/2019**.
 Peringatan itu bisa diberikan hari ini tanpa data tambahan — asalkan lingkupnya ikut
 disebut.
@@ -164,12 +164,12 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
 
 - **Lima kalimat gejala.** Dari sepuluh OPT cabai terkurasi, lima sudah punya
   deskripsi gejala — tersimpan pada medan `definition`, bukan pada medan bernama
-  gejala. Ulat grayak justru punya 183 produk terdaftar di cabai tetapi tidak bisa
+  gejala. Ulat grayak justru punya 184 produk terdaftar di cabai tetapi tidak bisa
   dimasuki karena teksnya belum ada. Setengah hari kerja membuka seluruh jalur reaktif
   komoditas beachhead.
 - **Sepuluh OPT itu tidak terbatas pada cabai.** Registri menautkannya jauh lebih
-  luas — trips ke 15 komoditas dengan 279 produk, ulat grayak ke 13 komoditas dengan
-  319 produk. Teks gejala yang ditulis untuk cabai langsung terpakai di luar cabai.
+  luas — trips ke 15 komoditas dengan 283 produk, ulat grayak ke 13 komoditas dengan
+  320 produk. Teks gejala yang ditulis untuk cabai langsung terpakai di luar cabai.
 - **Tetapkan aturan urutan merek dan umumkan di layar.** Rancangan ini memakai nomor
   pendaftaran menaik. Apa pun pilihannya, ia harus tertulis dan tidak boleh bisa
   dibeli.
@@ -179,9 +179,12 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
   entitas, bawang merah 17, karet 13 — sebagian besar karena dosis bocor ke dalam
   nama sasaran: "Cabai (1,5 ml/l)", "Cabai (700 ml/ha )". **214 entitas disatukan**,
   488 komoditas registri jadi 274, dan trips di cabai naik dari 234 ke 238 produk.
-  **Sumbu OPT menyusul**: 456 entitas lagi disatukan, 1.370 jadi 914, dan cabai
-  turun dari 97 jadi 81 OPT — bukan karena data hilang, melainkan karena ejaan yang
-  terbelah kembali jadi satu. Trips naik ke 242.
+  **Sumbu OPT menyusul dalam dua putaran**: 456 entitas disatukan lewat verifikasi
+  GBIF, lalu 131 lagi yang salah ketiknya begitu parah sampai GBIF tak mengenalinya
+  (`Trips parvispinus`, `Echinochloa cruss-gali`, `Selenopsis germinata`) lewat tabel
+  putusan tangan. **1.370 OPT jadi 783**, dan cabai turun dari 97 jadi 74 OPT — bukan
+  karena data hilang, melainkan karena ejaan yang terbelah kembali jadi satu. Trips
+  naik dari 234 ke 246 produk.
 
   Yang dalam kurung tidak semuanya derau, dan di situlah kehati-hatiannya. Yang
   dilepas: dosis, dan **penciri fase TBM/TM**. Yang ditahan: **TOT**, **pra tumbuh**
@@ -209,7 +212,7 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
    keriting ke atas*, *daun menguning dan keriting*, *serangga putih beterbangan*. Di
    bawahnya tertulis bahwa gejala dikurasi tangan dan mesin tidak menebak dari foto.
 2. **Hasil.** Dugaan OPT dengan nama ilmiahnya, lalu blok **"pastikan dulu"** berisi
-   dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *242 produk
+   dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *246 produk
    terdaftar untuk ini di cabai, tetapi isinya hanya 72 bahan aktif berbeda* — lalu
    kartu peringatan bahan dilarang **beserta lingkup larangannya**.
 3. **Kartu bahan + kadar.** Lima kelompok, diurutkan menurut jumlah produk. Tiap kartu

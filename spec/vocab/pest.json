@@ -65,10 +65,30 @@
         },
         {
           "scheme": "GBIF",
+          "id": "1420882",
+          "uri": "https://www.gbif.org/species/1420882",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Thrips'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
           "id": "4799919",
           "uri": "https://www.gbif.org/species/4799919",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4799962",
+          "uri": "https://www.gbif.org/species/4799962",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Trips'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips palrvispinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
@@ -105,6 +125,12 @@
           "id": "Thrips sp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 55 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Trips parvispinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -119,10 +145,12 @@
         "Hama Trips",
         "Hama Trpis",
         "Thrips",
+        "Thrips palrvispinus",
         "Thrips parvipinus",
         "Thrips parvisipinus",
         "Thrips pervispinus",
-        "Thrips pirvispinus"
+        "Thrips pirvispinus",
+        "Trips parvispinus"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -543,6 +571,7 @@
         "Spedoptera litura",
         "Spodeptera litura",
         "Spodotera litura",
+        "Sprodoptera litura",
         "Ulat Grayak"
       ],
       "taxonomic_rank": "species",
