@@ -1,0 +1,183 @@
+# Jalur Insiden
+
+> Rancangan · permukaan reaktif · jalur 1 · masuk dari gejala
+> Untuk orang yang baru melihat masalah di depan mata. Tanpa akun, tanpa petak terdaftar, tanpa rencana — tiga ketukan sampai jawaban.
+> Angka **dari registri pascapenggabungan ejaan** (`1a0f077`, `04b91c6`)
+>
+> Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
+> utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
+>
+> Jalur 1 dari [03-lima-pintu.md](03-lima-pintu.md). Jalur 2 ada di
+> [05-jalur-produk.md](05-jalur-produk.md).
+
+---
+
+## 1. Kenapa bentuknya reaktif
+
+Keputusan pestisida memang reaktif: masalah muncul, dan orang butuh jawaban
+sekarang. Momen itu bukan masalah yang harus diatasi — ia titik masuk terbaik yang
+akan pernah dimiliki platform ini, karena urgensi menciptakan kesediaan terlibat
+yang tidak bisa dibuat-buat oleh fitur perencanaan mana pun, dan karena ia tidak
+menuntut persiapan apa pun.
+
+Momen panik punya empat pertanyaan berurutan. Registri menjawab tiga, dan gagal
+total di satu — sayangnya yang pertama.
+
+| Pertanyaan | Jawaban data |
+|---|---|
+| **Ini apa?** | **Nol.** Dari 1.360 OPT di registri, tidak satu pun punya deskripsi gejala |
+| **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
+| **Dosisnya berapa?** | Kuat — 80% membawa dosis |
+| **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
+
+Bahkan `synonyms` pada OPT registri, yang semula diduga memuat nama lokal, ternyata
+berisi salah ketik registri — "Gulma Bedaun Lebar", "Guma Berdaun Lebar". Jalur
+masuk lewat kosakata petani sendiri juga belum ada.
+
+---
+
+## 2. Empat keputusan rancangan
+
+- **Masuk lewat apa yang terlihat, bukan nama hama.** Petani yang panik tidak tahu
+  kata "trips". Ia tahu daunnya mengeriting ke atas. Menutup lubang gejala untuk
+  cabai hanya butuh enam kalimat.
+- **Mesin tidak menebak, orang yang memilih.** Tidak ada pengenal foto. Diagnosis
+  salah yang percaya diri menghasilkan semprotan salah — uang hilang, tanaman tetap
+  mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
+  dekat ke tanggung jawab hukum.
+- **Runtuhkan merek jadi bahan aktif dan kadarnya.** 244 produk terdaftar untuk
+  trips di cabai, tetapi isinya hanya 72 bahan aktif. Menampilkan 244 nama dagang
+  adalah menyalin kebingungan kios ke dalam layar.
+- **Informasi negatif didahulukan.** Apa yang dilarang, dan apa yang tidak akan
+  menolong. Ini yang paling bernilai bagi petani, dan justru paling kecil risiko
+  hukumnya.
+
+---
+
+## 3. Tiga kekeliruan pada kartu bahan
+
+Rancangan pertama menyembunyikan nama merek dan mengelompokkan hanya menurut bahan
+aktif. Data membuktikan keduanya salah — dan yang ketiga menyangkut keselamatan.
+
+**1 · Merek disembunyikan**
+
+Petani membeli merek, bukan bahan aktif. Menyebut "abamektin" di kios akan dijawab
+"yang mana? ada 65". Menyembunyikan merek menyerahkan langkah terakhir ke pihak yang
+hidup dari margin penjualan — jadi justru **kurang** netral, bukan lebih. `L3` tidak
+melarang ini: aturan itu mengikat langkah protokol, bukan tampilan registri.
+
+**2 · Dikelompokkan per bahan saja**
+
+Satu entitas `op:sub:00000007` "Abamektin" ternyata dipakai pada **15 kadar
+berbeda**, dari 7 g/L sampai 72 g/L — rentang sepuluh kali lipat. Kesetaraan hanya
+benar pada pasangan **bahan + kadar**, bukan pada nama bahannya.
+
+**3 · Dosis ditempel ke bahan**
+
+Kekeliruan paling berbahaya. Dari 25 produk berisi Abamektin 18 g/L, dosis
+terdaftarnya berbeda-beda: 0,5 · 0,75 · 1 · 1,5 · 1–2 ml/l — dan satu produk memakai
+satuan yang sama sekali lain, `1 l/ha`. **Dosis milik pendaftaran tiap produk, bukan
+milik bahannya.** Kartu lama menampilkan satu rentang tanpa kadar; itu bisa melukai
+orang.
+
+Bentuk yang benar: kelompok adalah **bahan aktif + kadar**, daftar merek bersarang di
+bawahnya, urutan diumumkan di layar, dan tiap merek membawa nomor pendaftaran, masa
+berlaku, serta dosisnya sendiri.
+
+---
+
+## 4. Kasus nol produk: layar terpenting di jalur ini
+
+Virus kuning keriting punya gejala yang jelas dan **nol produk terdaftar**. Itu bukan
+lubang data — itu kebenaran agronomi: tidak ada pestisida yang menyembuhkan virus.
+
+Petani datang ke kios dengan daun menguning. **Kios akan menjual sesuatu** — hampir
+pasti insektisida. Uang keluar, tanaman tetap mati. Di sinilah platform punya nilai
+yang tidak bisa ditandingi siapa pun yang hidup dari margin penjualan: kemampuan
+berkata *"jangan beli apa-apa untuk ini"*, lalu menunjuk satu tindakan yang memang
+berguna — mengendalikan kutu kebul sebagai vektornya, yang punya 29 produk terdaftar.
+
+Isi layarnya: pernyataan bahwa tak satu pun pestisida terdaftar menyembuhkannya, tiga
+tindakan yang berpengaruh (cabut tanaman terinfeksi, kendalikan vektornya, pilih
+varietas tahan musim depan), lalu satu jalan keluar konkret ke vektor.
+
+**Bandingkan dengan cabang serupa di jalur 4.** Nol produk untuk virus adalah
+kebenaran agronomi. Nama varietas yang tidak ditemukan di registri benih **bukan
+bukti apa-apa** — dan karena itu layarnya berhenti pada fakta, bukan pada kesimpulan.
+
+---
+
+## 5. Peringatan bahan dilarang
+
+Dari 244 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
+**36 memuat bahan dilarang apa pun**. Peringatan itu bisa diberikan hari ini, tanpa
+data tambahan.
+
+Angka 36 itu naik dari 33 setelah `04b91c6`. Sebabnya bukan data berubah: entitas
+`"Klorpirifos"` memegang blok `hazard` lengkap sementara `"CHLORPYRIFOS"` tidak
+memegang satu pun, sehingga selama keduanya terbelah, produk yang registrinya
+menuliskan nama Inggris tidak terlihat oleh pemeriksaan larangan mana pun.
+
+---
+
+## 6. Rekaman sebagai efek samping
+
+Tidak ada yang diminta mencatat. Orang bertanya karena butuh. Tetapi setiap
+pertanyaan adalah peristiwa bertanggal, berlokasi, dan ber-OPT — tanpa nama, tanpa
+nomor telepon, tanpa geometri petak, sehingga tidak ada beban PDP yang perlu dipikul.
+
+Seribu pertanyaan menghasilkan peta sebaran mingguan per kecamatan: *"trips sedang
+menyebar di sini minggu ini"* — lapisan antisipatif yang tidak seorang pun perlu
+merencanakannya, diproduksi dari perilaku reaktif orang lain.
+
+Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainkan
+**insiden → jawaban → rekaman sampingan → peringatan wilayah**.
+
+---
+
+## 7. Prasyarat rilis
+
+- **Enam kalimat gejala.** Dari sepuluh OPT cabai terkurasi, baru empat yang punya
+  deskripsi gejala. Ulat grayak justru punya 259 produk terdaftar tetapi tidak bisa
+  dimasuki karena tidak ada teks gejalanya. Setengah hari kerja membuka seluruh jalur
+  reaktif komoditas beachhead.
+- **Tetapkan aturan urutan merek dan umumkan di layar.** Rancangan ini memakai nomor
+  pendaftaran menaik. Apa pun pilihannya, ia harus tertulis dan tidak boleh bisa
+  dibeli.
+- **Putuskan perlakuan bahan dilarang** yang masih memegang pendaftaran aktif —
+  lihat [05-jalur-produk.md](05-jalur-produk.md) bagian kasus LARBAN.
+- **Pembersihan label komoditas.** "Kelapa Sawit (TBM)" tercatat dalam tiga ejaan
+  berbeda. Untuk cabai perlu diperiksa sebelum rilis.
+
+---
+
+## Alur layar
+
+1. **Pilih gejala.** Daftar pendek gejala yang terlihat, bukan nama hama: *daun
+   keriting ke atas*, *daun menguning dan keriting*, *serangga putih beterbangan*. Di
+   bawahnya tertulis bahwa gejala dikurasi tangan dan mesin tidak menebak dari foto.
+2. **Hasil.** Dugaan OPT dengan nama ilmiahnya, lalu blok **"pastikan dulu"** berisi
+   dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *244 produk
+   terdaftar untuk ini di cabai, tetapi isinya hanya 72 bahan aktif berbeda* — lalu
+   kartu peringatan bahan dilarang.
+3. **Kartu bahan + kadar.** Lima kelompok, diurutkan menurut jumlah produk. Tiap kartu
+   bisa dibuka jadi daftar merek dengan nomor pendaftaran, masa berlaku, dan **dosis
+   terdaftar milik tiap produk** — yang berbeda-beda walau isinya sama. Aturan
+   urutannya diumumkan di dalam daftar itu sendiri.
+4. **Cabang nol produk.** Untuk virus kuning keriting, tidak ada kartu bahan sama
+   sekali. Yang tampil: pernyataan bahwa tak satu pun pestisida terdaftar
+   menyembuhkannya, tiga tindakan yang memang berpengaruh, lalu satu jalan keluar
+   konkret — mengendalikan kutu kebul sebagai vektornya.
+5. **Kaki tiap hasil.** Satu baris yang menyatakan pertanyaan itu tercatat sebagai satu
+   kejadian di kecamatan, tanpa nama dan tanpa nomor telepon.
+
+---
+
+## Yang sengaja tidak dijanjikan
+
+Layar ini **tidak menampilkan tanggal aman panen**, padahal tenggang panen adalah
+angka yang paling melukai kalau salah. Alasannya: PHI hanya ada di 290 dari 23.058
+penggunaan berlabel. Yang tertulis sebagai gantinya adalah bahwa tenggang panen tidak
+tercatat di registri, dan pertanyaannya dibawa ke penyuluh.
+
+Lebih baik mengaku tidak tahu daripada mengarang angka yang menyangkut keselamatan.
