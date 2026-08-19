@@ -42,7 +42,13 @@
           "url": "https://www.sciencedirect.com/science/article/abs/pii/S0956053X23006049"
         }
       ]
-    }
+    },
+    "id_blocks": [
+      {
+        "from": 1,
+        "to": 999
+      }
+    ]
   },
   "items": [
     {

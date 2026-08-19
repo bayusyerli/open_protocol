@@ -270,6 +270,25 @@ dipakai — bukan disimpulkan dari peringkat hasil pencarian.
 
 ---
 
+### D22 — nomor ID dialokasikan per blok, bukan dari satu antrean
+
+Awalnya nomor terkurasi diberikan berurutan dari `maksimum global + 1`. Itu bekerja sempurna
+selama hanya ada satu penulis, dan patah pada hari pertama ada dua: dua sesi menghitung
+maksimum dari keadaan yang sama-sama sudah usang, lalu memberikan nomor identik ke entitas
+berbeda.
+
+Sekarang setiap berkas menyatakan `id_blocks` dan mengambil nomor dari bloknya sendiri.
+Penambahan paralel jadi aman tanpa koordinasi apa pun — tidak ada penulis yang perlu tahu
+apa yang sedang dikerjakan penulis lain.
+
+Yang dikorbankan: nomor jadi tidak rapat, dan ada tabel blok yang harus dirawat
+(`00-konvensi-kerja-paralel.md`). Murah dibanding penomoran ulang massal.
+
+Aturan `L23`, `L24`, dan `L25` menegakkannya. Tanpa itu ini hanya kesepakatan lisan, dan
+kesepakatan lisan tidak bertahan melewati sesi berikutnya.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -284,6 +303,7 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 6 | **Bahasa** — wajib `id`, `en` dianjurkan | Cukup untuk sekarang. Bahasa daerah menunggu bukti kebutuhan dari Fase 1 |
 | 7 | Basis URI dan awalan `op:` | Menunggu keputusan nama di Fase 0 |
 | 8 | Rekonsiliasi 890 nama komoditas dan 1.531 nama OPT dari label ke kosakata | Belum. Teks aslinya sudah tersimpan, jadi bisa dikerjakan kapan saja |
-| 9 | Bahan tambahan (23 dilarang, 7 dibatasi) belum ditanam | Skemanya sudah siap; belum ada entitas `Substance` untuk bahan tambahan |
+| 9 | Lampiran I.B melompati nomor 18 dan 21 pada lapisan teks PDF | Perlu pemeriksaan visual dokumen asli — entah sumbernya memang melompat, entah ekstraksinya kehilangan dua baris |
+| 12 | CAS asam sulfat ditulis `7669-93-9` di Permentan 43/2019 | Nomor bakunya `7664-93-9`, dan itu yang dipakai Permentan 39/2015. Direkam apa adanya plus penanda |
 | 10 | Kandungan hara pupuk tidak ada di registri mana pun | Perlu sumber lain — label kemasan, atau data dari principal langsung |
 | 11 | 275 pestisida tanpa komposisi | Kadar bahan aktifnya bukan angka di sumber (mis. agens hayati berbasis populasi) |

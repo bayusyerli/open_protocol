@@ -1,0 +1,199 @@
+﻿sumber,dimensi,kategori,jumlah,persen
+SIMPEL,kelompok_indikatif,3. Hara Majemuk (mis. NPK),1901,32.36
+SIMPEL,kelompok_indikatif,1. Organik & Bahan Humat,1100,18.72
+SIMPEL,kelompok_indikatif,8. Tidak tercantum,1035,17.62
+SIMPEL,kelompok_indikatif,6. Hara Tunggal / An-organik,753,12.82
+SIMPEL,kelompok_indikatif,2. Hayati,577,9.82
+SIMPEL,kelompok_indikatif,5. Pembenah Tanah / Amelioran,460,7.83
+SIMPEL,kelompok_indikatif,4. Hara Makro-Mikro Campuran,49,0.83
+SIMPEL,jenis_formula,Pupuk Hara Makro Majemuk,1847,31.44
+SIMPEL,jenis_formula,(tidak tercantum),1035,17.62
+SIMPEL,jenis_formula,Pupuk Organik,921,15.68
+SIMPEL,jenis_formula,Hayati Majemuk,468,7.97
+SIMPEL,jenis_formula,Dolomit,326,5.55
+SIMPEL,jenis_formula,Pupuk Fosfat Alam Untuk Pertanian,174,2.96
+SIMPEL,jenis_formula,Pupuk Kalium Klorida (KCl),122,2.08
+SIMPEL,jenis_formula,Senyawa Humat,113,1.92
+SIMPEL,jenis_formula,Pupuk Amonium Sulfat (ZA) {NH4)2SO4},104,1.77
+SIMPEL,jenis_formula,Hayati Tunggal,79,1.34
+SIMPEL,jenis_formula,Pupuk Hara Mikro Tunggal,71,1.21
+SIMPEL,jenis_formula,Kaptan,71,1.21
+SIMPEL,jenis_formula,Pupuk Hara Mikro Majemuk,54,0.92
+SIMPEL,jenis_formula,Pupuk Amonium Klorida (NH4Cl),53,0.90
+SIMPEL,jenis_formula,Pupuk Triple Super Fosfat (TSP) {3Ca(H2PO4)2},50,0.85
+SIMPEL,jenis_formula,Organik,48,0.82
+SIMPEL,jenis_formula,Pupuk Hara Makro-Mikro Campuran,45,0.77
+SIMPEL,jenis_formula,Pembenah Tanah Dolomit,33,0.56
+SIMPEL,jenis_formula,Pupuk Hayati Majemuk,27,0.46
+SIMPEL,jenis_formula,Pupuk Urea {CO(NH2)2},25,0.43
+SIMPEL,jenis_formula,Pupuk Hara Makro Tunggal,24,0.41
+SIMPEL,jenis_formula,Pupuk Diamonium Fosfat (DAP) {(NH4)2HPO4},22,0.37
+SIMPEL,jenis_formula,Pupuk Kalsium Nitrat {CaNO3)2.2H2O},19,0.32
+SIMPEL,jenis_formula,Zeolit,18,0.31
+SIMPEL,jenis_formula,Pupuk Mono Amonium Fosfat (MAP) (NH4H2PO4),16,0.27
+SIMPEL,jenis_formula,Super Fosfat (SP-36) {Ca(H2PO4),15,0.26
+SIMPEL,jenis_formula,Pupuk Super Phosphate Tunggal {Ca(H2PO4)2},13,0.22
+SIMPEL,jenis_formula,Pembenah Tanah Senyawa Humat,9,0.15
+SIMPEL,jenis_formula,Pembenah Tanah Organik,9,0.15
+SIMPEL,jenis_formula,Pupuk Kalium Nitrat (KNO3),8,0.14
+SIMPEL,jenis_formula,Pupuk Kiserite (MgSO4.H2O),7,0.12
+SIMPEL,jenis_formula,Pupuk Benefesial,5,0.09
+SIMPEL,jenis_formula,Pupuk Hara Makro Tunggal dan Hara Benefisial Silika,5,0.09
+SIMPEL,jenis_formula,Pupuk Potassium Magnesium Sulfate Teknis (MgSO4.7H2O),5,0.09
+SIMPEL,jenis_formula,"Pupuk Campuran (Hara Makro, Hara Mikro dan Hara benefisial)",4,0.07
+SIMPEL,jenis_formula,Karbon Tanah,4,0.07
+SIMPEL,jenis_formula,WHC,4,0.07
+SIMPEL,jenis_formula,Pupuk Hara Makro Primer,4,0.07
+SIMPEL,jenis_formula,Pupuk Hara Makro Sekunder,3,0.05
+SIMPEL,jenis_formula,Pembenah Tanah Fungsi Khusus,3,0.05
+SIMPEL,jenis_formula,Pupuk Hayati Tunggal,3,0.05
+SIMPEL,jenis_formula,Pupuk Borat (Na2B407.5H2O),3,0.05
+SIMPEL,jenis_formula,Pupuk Amonium Nitrat (NH4NO3),2,0.03
+SIMPEL,jenis_formula,Pupuk Kalium Sulfat (K2SO4),2,0.03
+SIMPEL,jenis_formula,Seng (Zn) ZnSO4.7H20,1,0.02
+SIMPEL,jenis_formula,Pembenah Tanah Kapur Pertanian,1,0.02
+SIMPEL,bentuk_formula,Butiran (Granular),2444,41.60
+SIMPEL,bentuk_formula,Cair (Liquid),1503,25.58
+SIMPEL,bentuk_formula,Tepung (Powder),1325,22.55
+SIMPEL,bentuk_formula,Bentuk Lainnya,468,7.97
+SIMPEL,bentuk_formula,Prill,72,1.23
+SIMPEL,bentuk_formula,Pelet,30,0.51
+SIMPEL,bentuk_formula,Tablet,26,0.44
+SIMPEL,bentuk_formula,Batang (Stick),7,0.12
+LEGACY,kategori,An-organik,1032,78.12
+LEGACY,kategori,Organik/Hayati/Pembenah Tanah,289,21.88
+LEGACY,jenis_formula,an-organik,355,26.87
+LEGACY,jenis_formula,NPK Padat (SNI),255,19.30
+LEGACY,jenis_formula,organik,168,12.72
+LEGACY,jenis_formula,hayati,61,4.62
+LEGACY,jenis_formula,Fosfat Alam untuk Pertanian (SNI),38,2.88
+LEGACY,jenis_formula,Potassium Nitrat,33,2.50
+LEGACY,jenis_formula,Pembenah Tanah Dolomit,25,1.89
+LEGACY,jenis_formula,Kalium Klorida (KCL) (SNI),21,1.59
+LEGACY,jenis_formula,(kosong),19,1.44
+LEGACY,jenis_formula,Amonium Sulfat (ZA) (SNI),18,1.36
+LEGACY,jenis_formula,dekomposer,14,1.06
+LEGACY,jenis_formula,NPK Cair,14,1.06
+LEGACY,jenis_formula,Nitrogen Phosphate,13,0.98
+LEGACY,jenis_formula,Diammonium Phosphate,12,0.91
+LEGACY,jenis_formula,pembenah tanah,10,0.76
+LEGACY,jenis_formula,Makro Majemuk,10,0.76
+LEGACY,jenis_formula,Triple Super Fosfat (TSP) (SNI),10,0.76
+LEGACY,jenis_formula,Ammonium chlorida,10,0.76
+LEGACY,jenis_formula,Mono Potassium Phosphate,10,0.76
+LEGACY,jenis_formula,NK,10,0.76
+LEGACY,jenis_formula,Mikro Majemuk,9,0.68
+LEGACY,jenis_formula,Pembenah Tanah Kapur Pertanian,9,0.68
+LEGACY,jenis_formula,Makro Mikro Campuran,8,0.61
+LEGACY,jenis_formula,Calsium nitrat,7,0.53
+LEGACY,jenis_formula,Mikro Tunggal,6,0.45
+LEGACY,jenis_formula,NPK + TE,5,0.38
+LEGACY,jenis_formula,silika padat,5,0.38
+LEGACY,jenis_formula,Mikro Majemuk Cair,5,0.38
+LEGACY,jenis_formula,Magnesium Sulphate,5,0.38
+LEGACY,jenis_formula,Silika padat,5,0.38
+LEGACY,jenis_formula,Makro Mikro Majemuk,4,0.30
+LEGACY,jenis_formula,Super Fosfat (SP-36) (SNI),4,0.30
+LEGACY,jenis_formula,Makro Sekunder Majemuk,4,0.30
+LEGACY,jenis_formula,NPK cair,4,0.30
+LEGACY,jenis_formula,Potassium Magnesium Calcium Sulfate,4,0.30
+LEGACY,jenis_formula,Urea (SNI),3,0.23
+LEGACY,jenis_formula,"Nitrogen dan Kalium (N,K)",3,0.23
+LEGACY,jenis_formula,PK,3,0.23
+LEGACY,jenis_formula,Mikro Majemuk/ Padat Butiran,2,0.15
+LEGACY,jenis_formula,Potassium Magnesium Sulfate,2,0.15
+LEGACY,jenis_formula,Makro Tunggal MgO,2,0.15
+LEGACY,jenis_formula,NPK cair ( PPC),2,0.15
+LEGACY,jenis_formula,mikro majemuk padat butiran,2,0.15
+LEGACY,jenis_formula,Kieserite,2,0.15
+LEGACY,jenis_formula,NK 18-32,2,0.15
+LEGACY,jenis_formula,An-organik Campuran,2,0.15
+LEGACY,jenis_formula,Pembenah Tanah Zeolit,2,0.15
+LEGACY,jenis_formula,Pupuk Borat,2,0.15
+LEGACY,jenis_formula,Makro Campuran,2,0.15
+LEGACY,jenis_formula,"Makro Primer, Makro Sekunder dan Silika (P2O5; CaO; Mg; Si)",2,0.15
+LEGACY,jenis_formula,Kalium Sulfat,2,0.15
+LEGACY,jenis_formula,NP,2,0.15
+LEGACY,jenis_formula,Potashplus,2,0.15
+LEGACY,jenis_formula,Mono Ammonium Phosphate,2,0.15
+LEGACY,jenis_formula,Kalium Sulfat (ZK),2,0.15
+LEGACY,jenis_formula,Kieserit,2,0.15
+LEGACY,jenis_formula,Hara Makro Sekunder MgO (Magnesium),2,0.15
+LEGACY,jenis_formula,An-Organik Cair NK Min 8%,2,0.15
+LEGACY,jenis_formula,Rock Phosphate,2,0.15
+LEGACY,jenis_formula,"hara mikro cair Fe: 0,5%, Mn: 3%, Zn: 6%, B: 0,5%",2,0.15
+LEGACY,jenis_formula,NK 17 - 28,2,0.15
+LEGACY,jenis_formula,"Hara Makro Sekunder MgO, CaO",2,0.15
+LEGACY,jenis_formula,NPK cair + Zn-B,2,0.15
+LEGACY,jenis_formula,Magnesium (MgO),1,0.08
+LEGACY,jenis_formula,KALIUM NITRAT (KNO3),1,0.08
+LEGACY,jenis_formula,Ferum,1,0.08
+LEGACY,jenis_formula,An-Organik Cair (Majemuk Makro),1,0.08
+LEGACY,jenis_formula,ZnSO4,1,0.08
+LEGACY,jenis_formula,An-organik,1,0.08
+LEGACY,jenis_formula,Nitrogen sulfat,1,0.08
+LEGACY,jenis_formula,Hara Mikro Padat,1,0.08
+LEGACY,jenis_formula,Makro Majemuk NP Granul,1,0.08
+LEGACY,jenis_formula,Kieserite (Magnesium Sulphate Powder),1,0.08
+LEGACY,jenis_formula,Mikro Majemuk Padat,1,0.08
+LEGACY,jenis_formula,Hara Mikro Tunggal Boron,1,0.08
+LEGACY,jenis_formula,Makro Sekunder dan Makro Primer,1,0.08
+LEGACY,jenis_formula,Silika Cair,1,0.08
+LEGACY,jenis_formula,NPK Caiir,1,0.08
+LEGACY,jenis_formula,Nitrogen Sulfur,1,0.08
+LEGACY,jenis_formula,Nitrogen dan Kalium,1,0.08
+LEGACY,jenis_formula,Pupuk An-organik Silica,1,0.08
+LEGACY,jenis_formula,Makro Majemuk cair,1,0.08
+LEGACY,jenis_formula,Pupuk Mikro,1,0.08
+LEGACY,jenis_formula,CuSO4,1,0.08
+LEGACY,jenis_formula,Kalium,1,0.08
+LEGACY,jenis_formula,Makro Majemuk NP,1,0.08
+LEGACY,jenis_formula,An-Organik Makro Majemuk Padat PK,1,0.08
+LEGACY,jenis_formula,"Kalsium, Mangan, Zinc, Magnesium, Boron",1,0.08
+LEGACY,jenis_formula,Makro MIkro Majemuk,1,0.08
+LEGACY,jenis_formula,Pupuk Makro Majemuk NP,1,0.08
+LEGACY,jenis_formula,NPK Cair dan Mikro Nutrisi cair,1,0.08
+LEGACY,jenis_formula,An-Organik Cair Majemuk NK,1,0.08
+LEGACY,jenis_formula,Pupuk Makro-Mikro Campuran,1,0.08
+LEGACY,jenis_formula,MIkro Majemuk,1,0.08
+LEGACY,jenis_formula,Kieserite (Tepung),1,0.08
+LEGACY,jenis_formula,Pupuk Kieserite,1,0.08
+LEGACY,jenis_formula,Ferum (Fe) 25%,1,0.08
+LEGACY,jenis_formula,Mikro Tunggal Zn,1,0.08
+LEGACY,jenis_formula,Mikro Tunggal Fe,1,0.08
+LEGACY,jenis_formula,Mikro Tunggal Cu,1,0.08
+LEGACY,jenis_formula,KNO3,1,0.08
+LEGACY,jenis_formula,Nitrogen dan Kalium (N.K ),1,0.08
+LEGACY,jenis_formula,SILIKA CAIR,1,0.08
+LEGACY,jenis_formula,Makro - Mikro NPK + Zn - B,1,0.08
+LEGACY,jenis_formula,An-Organik Cair NK,1,0.08
+LEGACY,jenis_formula,NK 15-35,1,0.08
+LEGACY,jenis_formula,NK 20-30,1,0.08
+LEGACY,jenis_formula,KIESERITE,1,0.08
+LEGACY,jenis_formula,Mikro Makro Campuran,1,0.08
+LEGACY,jenis_formula,MIKRO CAIR,1,0.08
+LEGACY,jenis_formula,Kalium Nitrat,1,0.08
+LEGACY,jenis_formula,Pupuk An-Organik Cair,1,0.08
+LEGACY,jenis_formula,Pupuk An-Organik Silica,1,0.08
+LEGACY,jenis_formula,Makro Majemuk Primer dan Makro Majemuk Sekunder,1,0.08
+LEGACY,jenis_formula,Polysulphate,1,0.08
+LEGACY,jenis_formula,"N, K2O , CaO",1,0.08
+LEGACY,jenis_formula,"N, K2O, CaO",1,0.08
+LEGACY,jenis_formula,Zinc Sulphate Heptahydrate,1,0.08
+LEGACY,jenis_formula,Pupuk NK (CPN-KNO3),1,0.08
+LEGACY,jenis_formula,Copper sulphate pentahydrate (CuSO4),1,0.08
+LEGACY,jenis_formula,MAKRO PADAT,1,0.08
+LEGACY,jenis_formula,Makro Majemuk Cair,1,0.08
+LEGACY,jenis_formula,Kalsium,1,0.08
+LEGACY,jenis_formula,NK Butiran,1,0.08
+LEGACY,jenis_formula,KALIUM,1,0.08
+LEGACY,jenis_formula,Poly 4,1,0.08
+LEGACY,jenis_formula,Mikro,1,0.08
+LEGACY,jenis_formula,Nitrogen dan kalium,1,0.08
+LEGACY,jenis_formula,"Pupuk Mikro Majemuk (Zn, B dan Mn)",1,0.08
+LEGACY,jenis_formula,Makro Majemuk PK,1,0.08
+LEGACY,jenis_formula,ZnCu,1,0.08
+LEGACY,jenis_formula,Hara Makro dan Mikro Campuran,1,0.08
+LEGACY,jenis_formula,Pupuk NK,1,0.08
+LEGACY,jenis_formula,Kiserit,1,0.08
+LEGACY,jenis_formula,Mikro Majemuk Padat Tepung,1,0.08

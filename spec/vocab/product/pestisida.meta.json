@@ -27,6 +27,12 @@
       ]
     },
     "storage": "ndjson",
-    "count": 7724
+    "count": 7724,
+    "id_blocks": [
+      {
+        "from": 1001,
+        "to": 9999
+      }
+    ]
   }
 }

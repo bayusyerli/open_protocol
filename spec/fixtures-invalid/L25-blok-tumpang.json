@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "substance",
+    "label": { "id": "Fixture uji — blok bertindih dengan substance-organik.json" },
+    "id_blocks": [{ "from": 1750, "to": 1800 }],
+    "lifecycle": { "version": "0.1.0", "status": "draft" }
+  },
+  "items": [
+    {
+      "id": "op:sub:00001760",
+      "key": "bahan-di-blok-bertindih",
+      "label": { "id": "Bahan pada blok yang bertindih" },
+      "substance_classes": ["other"],
+      "no_mapping_reason": "Fixture uji untuk membuktikan aturan L25 menyala.",
+      "lifecycle": { "version": "0.1.0", "status": "draft" }
+    }
+  ]
+}

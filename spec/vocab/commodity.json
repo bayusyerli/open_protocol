@@ -27,7 +27,13 @@
           "publisher": "NCBI"
         }
       ]
-    }
+    },
+    "id_blocks": [
+      {
+        "from": 1,
+        "to": 999
+      }
+    ]
   },
   "items": [
     {

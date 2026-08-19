@@ -45,10 +45,24 @@
           "publisher": "Kementerian Pertanian RI",
           "year": 2019,
           "url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
-          "locator": "Lampiran I.A (102 bahan aktif dilarang) dan Lampiran III.A (9 bahan aktif terbatas). Status: berlaku; mencabut Permentan 39/2015 dan 06/2018."
+          "locator": "Lampiran I.A (102 bahan aktif dilarang) dan Lampiran III.A (9 bahan aktif terbatas). Status: berlaku; mencabut Permentan 39/2015 dan 06/2018. Ditambah Lampiran I.B (23 bahan tambahan dilarang) dan Lampiran III.B (7 bahan tambahan dibatasi, dengan batas pemaparan). CATATAN: pada lapisan teks PDF, Lampiran I.B melompati nomor 18 dan 21 — perlu pemeriksaan visual terhadap dokumen aslinya."
         }
       ]
-    }
+    },
+    "id_blocks": [
+      {
+        "from": 6,
+        "to": 8
+      },
+      {
+        "from": 101,
+        "to": 1690
+      },
+      {
+        "from": 5001,
+        "to": 9999
+      }
+    ]
   },
   "items": [
     {
@@ -45269,7 +45283,8 @@
         "id": "Etilen oksida (ethylene oxide)"
       },
       "substance_classes": [
-        "active_ingredient"
+        "active_ingredient",
+        "additive"
       ],
       "pesticide_action": [
         "other"
@@ -45291,6 +45306,19 @@
             "authority": "KEMENTAN",
             "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
             "citation": "Lampiran I.A no. 25",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          },
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 2",
             "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
             "verified_at": "2026-08-19"
           }
@@ -45563,7 +45591,8 @@
         "id": "Formaldehida (formaldehide)"
       },
       "substance_classes": [
-        "active_ingredient"
+        "active_ingredient",
+        "additive"
       ],
       "pesticide_action": [
         "other"
@@ -45587,6 +45616,27 @@
             "citation": "Lampiran I.A no. 31",
             "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
             "verified_at": "2026-08-19"
+          },
+          {
+            "jurisdiction": "ID",
+            "status": "restricted",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran III.B no. 3",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19",
+            "exposure_limit": [
+              {
+                "scope": "semua bidang penggunaan pestisida",
+                "max_value": 0.13,
+                "unit": "%",
+                "as_written": "Maks. 0,13%"
+              }
+            ]
           }
         ]
       },
@@ -48333,6 +48383,1473 @@
         "created_at": "2026-08-19T00:00:00Z"
       },
       "cas_number": "109-94-4"
+    },
+    {
+      "id": "op:sub:00005101",
+      "key": "silika-chrystalline-silica",
+      "label": {
+        "id": "Silika chrystalline (silica)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 1",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Silika chrystalline (silica)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "14808-60-7"
+    },
+    {
+      "id": "op:sub:00005102",
+      "key": "nickel-and-nickel-compounds-essentially-sulphate-and-sulphide",
+      "label": {
+        "id": "Nickel and nickel compounds (essentially sulphate and sulphide)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 3",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Nickel and nickel compounds (essentially sulphate and sulphide)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sub:00005103",
+      "key": "benzidin-benzidine",
+      "label": {
+        "id": "Benzidin (Benzidine)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 4",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Benzidin (Benzidine)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "92-87-5"
+    },
+    {
+      "id": "op:sub:00005104",
+      "key": "1-2-dikloropropan-1-2-dichloropropane",
+      "label": {
+        "id": "1,2-dikloropropan (1,2-dichloropropane)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 5",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "1,2-dikloropropan (1,2-dichloropropane)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "78-87-5"
+    },
+    {
+      "id": "op:sub:00005105",
+      "key": "1-3-butadie-1-3-butadiene",
+      "label": {
+        "id": "1,3-butadie (1,3-butadiene)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 6",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "1,3-butadie (1,3-butadiene)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "106-99-0"
+    },
+    {
+      "id": "op:sub:00005106",
+      "key": "orto-toluidin-ortho-toluidine",
+      "label": {
+        "id": "Orto-toluidin (Ortho-toluidine)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 7",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Orto-toluidin (Ortho-toluidine)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "95-53-4"
+    },
+    {
+      "id": "op:sub:00005107",
+      "key": "trikloroetilen-trichloroethylene",
+      "label": {
+        "id": "Trikloroetilen (Trichloroethylene)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 8",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Trikloroetilen (Trichloroethylene)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "79-01-6"
+    },
+    {
+      "id": "op:sub:00005108",
+      "key": "vinil-klorida-vinyl-chloride",
+      "label": {
+        "id": "Vinil klorida (Vinyl chloride)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 9",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Vinil klorida (Vinyl chloride)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "75-01-4"
+    },
+    {
+      "id": "op:sub:00005109",
+      "key": "akrilamida-acrylamide",
+      "label": {
+        "id": "Akrilamida (Acrylamide)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 10",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Akrilamida (Acrylamide)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "79-06-1"
+    },
+    {
+      "id": "op:sub:00005110",
+      "key": "senyawa-alfa-toluene-klorida-termasuk-benzal-klorida-benzotriklorida-ben",
+      "label": {
+        "id": "Senyawa alfa toluene klorida, termasuk benzal klorida, benzotriklorida, benzil klorida dan benzoil klorida (alpha-Chlorinated toluenes (benzal chloride, benzotrichloride, benzyl chloride) and benzoyl chloride"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 11",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Senyawa alfa toluene klorida, termasuk benzal klorida, benzotriklorida, benzil klorida dan benzoil klorida (alpha-Chlorinated toluenes (benzal chloride, benzotrichloride, benzyl chloride) and benzoyl chloride",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "98-87-3"
+    },
+    {
+      "id": "op:sub:00005111",
+      "key": "4-kloro-orto-toluidin-4-chloro-ortho-toluidine",
+      "label": {
+        "id": "4-Kloro-orto-toluidin (4-Chloro-ortho-toluidine)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 12",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "4-Kloro-orto-toluidin (4-Chloro-ortho-toluidine)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "95-69-2"
+    },
+    {
+      "id": "op:sub:00005112",
+      "key": "diklorometan-atau-metilen-klorida-dichloromethane-or-methylene-chloride",
+      "label": {
+        "id": "Diklorometan atau metilen klorida (Dichloromethane or Methylene chloride)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 13",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diklorometan atau metilen klorida (Dichloromethane or Methylene chloride)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "75-09-2"
+    },
+    {
+      "id": "op:sub:00005113",
+      "key": "dietil-sulfat-diethyl-sulfate",
+      "label": {
+        "id": "Dietil sulfat (Diethyl sulfate)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 14",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dietil sulfat (Diethyl sulfate)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "64-67-5"
+    },
+    {
+      "id": "op:sub:00005114",
+      "key": "dimetilkarbamoil-klorida-dimethylcarbamoyl-chloride",
+      "label": {
+        "id": "Dimetilkarbamoil klorida (Dimethylcarbamoyl chloride)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 15",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dimetilkarbamoil klorida (Dimethylcarbamoyl chloride)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "79-44-7"
+    },
+    {
+      "id": "op:sub:00005115",
+      "key": "1-2-dimetilhidrazin-1-2-dimethylhydrazine",
+      "label": {
+        "id": "1,2-Dimetilhidrazin (1,2- Dimethylhydrazine)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 16",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "1,2-Dimetilhidrazin (1,2- Dimethylhydrazine)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "540-73-8"
+    },
+    {
+      "id": "op:sub:00005116",
+      "key": "dimetil-sulfat-dimethyl-sulfate",
+      "label": {
+        "id": "Dimetil sulfat (Dimethyl sulfate)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 17",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dimetil sulfat (Dimethyl sulfate)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "77-78-1"
+    },
+    {
+      "id": "op:sub:00005117",
+      "key": "etil-karbamat-ethyl-carbamate",
+      "label": {
+        "id": "Etil karbamat (Ethyl carbamate)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 19",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Etil karbamat (Ethyl carbamate)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "51-79-6"
+    },
+    {
+      "id": "op:sub:00005118",
+      "key": "etilen-dibromida-ethylene-dibromide",
+      "label": {
+        "id": "Etilen dibromida (Ethylene dibromide)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 20",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Etilen dibromida (Ethylene dibromide)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "106-93-4"
+    },
+    {
+      "id": "op:sub:00005119",
+      "key": "tetrakloroetilene-atau-perkloroetilen-tetrachloroethylene-or-perchloroet",
+      "label": {
+        "id": "Tetrakloroetilene atau perkloroetilen (Tetrachloroethylene or Perchloroethylene)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 22",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetrakloroetilene atau perkloroetilen (Tetrachloroethylene or Perchloroethylene)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "127-18-4"
+    },
+    {
+      "id": "op:sub:00005120",
+      "key": "tetrafluoroetilen-tetrafluoroethylene",
+      "label": {
+        "id": "Tetrafluoroetilen (Tetrafluoroethylene)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 23",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetrafluoroetilen (Tetrafluoroethylene)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "116-14-3"
+    },
+    {
+      "id": "op:sub:00005121",
+      "key": "1-2-3-trikloropropan-1-2-3-trichloropropane",
+      "label": {
+        "id": "1,2,3-trikloropropan (1,2,3-Trichloropropane)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 24",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "1,2,3-trikloropropan (1,2,3-Trichloropropane)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "96-18-4"
+    },
+    {
+      "id": "op:sub:00005122",
+      "key": "dimetil-formamida-dimetil-formamide",
+      "label": {
+        "id": "Dimetil formamida (Dimetil formamide)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "prohibited",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran I.B no. 25",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19"
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dimetil formamida (Dimetil formamide)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran I.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "68-12-2"
+    },
+    {
+      "id": "op:sub:00005123",
+      "key": "asam-sulfur-sulfuric-acid",
+      "label": {
+        "id": "Asam Sulfur (Sulfuric acid)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "restricted",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran III.B no. 1",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19",
+            "exposure_limit": [
+              {
+                "scope": "aplikasi tanaman padi",
+                "max_value": 200,
+                "unit": "[ppm]",
+                "as_written": "Maks. 200 ppm pada aplikasi tanaman padi"
+              },
+              {
+                "scope": "aplikasi selain tanaman padi",
+                "max_value": 2000,
+                "unit": "[ppm]",
+                "as_written": "Maks. 2.000 ppm pada aplikasi selain tanaman padi"
+              }
+            ]
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Asam Sulfur (Sulfuric acid)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran III.B Permentan 43/2019. Peraturan menuliskan CAS 7669-93-9; nomor CAS baku untuk asam sulfat adalah 7664-93-9 (dan itu yang dipakai Permentan 39/2015). PERLU VERIFIKASI ke dokumen aslinya."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "7669-93-9"
+    },
+    {
+      "id": "op:sub:00005124",
+      "key": "benzena-benzene",
+      "label": {
+        "id": "Benzena (benzene)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "restricted",
+            "scope": [
+              "semua bidang penggunaan pestisida"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran III.B no. 2",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19",
+            "exposure_limit": [
+              {
+                "scope": "semua bidang penggunaan pestisida",
+                "max_value": 1,
+                "unit": "[ppm]",
+                "as_written": "Maks. 1 ppm"
+              }
+            ]
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Benzena (benzene)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran III.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "71-43-2"
+    },
+    {
+      "id": "op:sub:00005125",
+      "key": "metanol-methanol",
+      "label": {
+        "id": "Metanol (methanol)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "restricted",
+            "scope": [
+              "pestisida rumah tangga",
+              "pengelolaan tanaman"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran III.B no. 4",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19",
+            "exposure_limit": [
+              {
+                "scope": "pestisida rumah tangga",
+                "max_value": 200,
+                "unit": "[ppm]",
+                "as_written": "Maks. 200 ppm"
+              },
+              {
+                "scope": "pengelolaan tanaman",
+                "max_value": 250,
+                "unit": "[ppm]",
+                "as_written": "Maks. 250 ppm"
+              }
+            ]
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Metanol (methanol)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran III.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "67-56-1"
+    },
+    {
+      "id": "op:sub:00005126",
+      "key": "n-metil-pirolidon-n-methyl-pirolidon",
+      "label": {
+        "id": "N-Metil Pirolidon (N-methyl Pirolidon)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "restricted",
+            "scope": [
+              "pestisida rumah tangga",
+              "pengelolaan tanaman"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran III.B no. 5",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19",
+            "exposure_limit": [
+              {
+                "scope": "pestisida rumah tangga",
+                "max_value": 25,
+                "unit": "[ppm]",
+                "as_written": "Maks. 25 ppm"
+              },
+              {
+                "scope": "pengelolaan tanaman",
+                "max_value": 600,
+                "unit": "[ppm]",
+                "as_written": "Maks. 600 ppm"
+              }
+            ]
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "N-Metil Pirolidon (N-methyl Pirolidon)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran III.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "872-50-4"
+    },
+    {
+      "id": "op:sub:00005127",
+      "key": "piridin-base-pyridine-base",
+      "label": {
+        "id": "Piridin Base (pyridine base)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "restricted",
+            "scope": [
+              "pengelolaan tanaman"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran III.B no. 6",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19",
+            "exposure_limit": [
+              {
+                "scope": "pengelolaan tanaman",
+                "max_value": 5,
+                "unit": "[ppm]",
+                "as_written": "Maks. 5 ppm"
+              }
+            ]
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Piridin Base (pyridine base)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran III.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "68391-11-7"
+    },
+    {
+      "id": "op:sub:00005128",
+      "key": "toluen-toluene",
+      "label": {
+        "id": "Toluen (toluene)"
+      },
+      "substance_classes": [
+        "additive"
+      ],
+      "pesticide_action": [
+        "other"
+      ],
+      "definition": {
+        "id": "Bahan tambahan formulasi pestisida. Ada di kosakata supaya sistem bisa menolaknya bila muncul pada komposisi produk atau resep sediaan."
+      },
+      "hazard": {
+        "restricted_in": [
+          "ID"
+        ],
+        "regulatory_status": [
+          {
+            "jurisdiction": "ID",
+            "status": "restricted",
+            "scope": [
+              "pestisida rumah tangga"
+            ],
+            "applies_to": "additive",
+            "authority": "KEMENTAN",
+            "instrument": "Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida",
+            "citation": "Lampiran III.B no. 7",
+            "source_url": "https://peraturan.bpk.go.id/Details/201255/permentan-no-43-tahun-2019",
+            "verified_at": "2026-08-19",
+            "exposure_limit": [
+              {
+                "scope": "pestisida rumah tangga",
+                "max_value": 50,
+                "unit": "[ppm]",
+                "as_written": "Maks. 50 ppm"
+              }
+            ]
+          }
+        ]
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Toluen (toluene)",
+          "relation": "exact",
+          "note": "Nama sebagaimana tertulis pada Lampiran III.B Permentan 43/2019."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "cas_number": "108-88-3"
     }
   ]
 }

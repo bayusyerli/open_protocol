@@ -24,15 +24,33 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
   const errors = [];
   const warnings = [];
 
+  // Catat, per berkas: awalan jenis entitas, nomor yang dipakai, dan blok yang diklaim.
+  const members = new Map();
+  const noteMember = (file, id, blocks) => {
+    const [, prefix, local] = id.split(':');
+    const num = Number(local);
+    if (!Number.isInteger(num)) return;
+    const m = members.get(file) ?? { prefix, nums: [], blocks };
+    m.blocks = m.blocks ?? blocks;
+    m.nums.push(num);
+    members.set(file, m);
+  };
+
   // Setiap berkas jadi satu unit, kecuali koleksi yang dibentangkan jadi satu unit per item.
   const docs = [];
   const vocabTypes = new Set();
+  const blockClaims = [];
+  const prefixFiles = new Map();
   for (const dir of dirs) {
     const entries = readdirSync(dir, { withFileTypes: true });
     for (const sub of entries.filter((e) => e.isDirectory())) dirs.push(join(dir, sub.name));
     for (const f of entries.filter((e) => e.isFile()).map((e) => e.name).filter((x) => x.endsWith('.json'))) {
       const raw = JSON.parse(readFileSync(join(dir, f), 'utf8'));
       const label = `${dir}/${f}`;
+      const claim = (label2, node, prefixOf) => {
+        const bl = node?.id_blocks;
+        if (bl) blockClaims.push({ file: label2, blocks: bl, prefix: prefixOf });
+      };
       if (f.endsWith('.meta.json')) {
         // Berkas besar disimpan sebagai NDJSON — satu entitas per baris, supaya
         // diff-nya tetap terbaca dan berkasnya bisa dibaca sambil jalan.
@@ -46,18 +64,27 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
         lines.forEach((line, i) => {
           const item = JSON.parse(line);
           docs.push({ file: `${basename(nd)}:${i + 1} ${item.key ?? item.id ?? ''}`, doc: item, forcedSchema: itemSchema });
-          if (dir.startsWith('vocab') && typeof item.id === 'string') vocabTypes.add(item.id.split(':')[1]);
+          if (typeof item.id === 'string') {
+            if (dir.startsWith('vocab')) vocabTypes.add(item.id.split(':')[1]);
+            noteMember(label, item.id, raw.collection?.id_blocks);
+          }
         });
       } else if (raw.collection && Array.isArray(raw.items)) {
         docs.push({ file: label, doc: raw, isCollection: true });
         const itemSchema = `${raw.collection.entity_type}.schema.json`;
         raw.items.forEach((item, i) => {
           docs.push({ file: `${label} [${i}] ${item.key ?? item.id ?? ''}`, doc: item, forcedSchema: itemSchema });
-          if (dir === 'vocab' && typeof item.id === 'string') vocabTypes.add(item.id.split(':')[1]);
+          if (typeof item.id === 'string') {
+            if (dir === 'vocab') vocabTypes.add(item.id.split(':')[1]);
+            noteMember(label, item.id, raw.collection?.id_blocks);
+          }
         });
       } else {
         docs.push({ file: label, doc: raw });
-        if (dir === 'vocab' && typeof raw.id === 'string') vocabTypes.add(raw.id.split(':')[1]);
+        if (typeof raw.id === 'string') {
+          if (dir === 'vocab') vocabTypes.add(raw.id.split(':')[1]);
+          noteMember(label, raw.id, raw.id_blocks);
+        }
       }
     }
   }
@@ -322,6 +349,51 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
         }
         if (rule === 'required' && !has) {
           fail(file, 'L13-bentuk-langkah', `Jenis tindakan "${opType.key}" wajib membawa ${human}, tetapi langkah ini tidak membawanya.`);
+        }
+      }
+    }
+  }
+
+  // ---------- 3. Alokasi blok nomor ----------
+  // Nomor berurutan dari satu antrean tunggal mensyaratkan satu penulis. Blok per berkas
+  // membuat dua pihak bisa menambah entitas bersamaan tanpa saling menimpa.
+  const inAny = (n, blocks) => blocks.some((b) => n >= b.from && n <= b.to);
+  const perPrefix = new Map();
+  for (const [file, m] of members) {
+    if (!perPrefix.has(m.prefix)) perPrefix.set(m.prefix, []);
+    perPrefix.get(m.prefix).push({ file, ...m });
+  }
+
+  for (const [file, m] of members) {
+    // L23 — entitas harus berada di dalam blok yang diklaim berkasnya
+    if (!m.blocks) continue;
+    const luar = [...new Set(m.nums.filter((n) => !inAny(n, m.blocks)))].sort((a, b) => a - b);
+    if (luar.length) {
+      const daftar = luar.slice(0, 5).join(', ') + (luar.length > 5 ? `, dan ${luar.length - 5} lagi` : '');
+      fail(file, 'L23-luar-blok', `${luar.length} entitas di luar blok yang diklaim (${m.blocks.map((b) => `${b.from}-${b.to}`).join(', ')}): ${daftar}.`);
+    }
+  }
+
+  for (const [prefix, list] of perPrefix) {
+    if (list.length < 2) continue;
+    // L24 — berkas yang berbagi jenis entitas wajib menyatakan bloknya
+    for (const m of list) {
+      if (!m.blocks) {
+        fail(m.file, 'L24-blok-wajib', `Jenis entitas "${prefix}" dipakai ${list.length} berkas, jadi berkas ini wajib menyatakan id_blocks. Tanpa itu, penambahan paralel akan bertabrakan diam-diam.`);
+      }
+    }
+    // L25 — blok yang diklaim tidak boleh tumpang tindih
+    for (let i = 0; i < list.length; i++) {
+      for (let j = i + 1; j < list.length; j++) {
+        for (const a of list[i].blocks ?? []) {
+          for (const b of list[j].blocks ?? []) {
+            if (a.from <= b.to && b.from <= a.to) {
+              // Dilaporkan pada kedua berkas: keduanya perlu diperbaiki, dan yang
+              // menemukan galat ini belum tentu pemilik berkas yang disebut lebih dulu.
+              fail(list[i].file, 'L25-blok-tumpang', `Blok ${a.from}-${a.to} bertindih dengan ${b.from}-${b.to} milik ${list[j].file} pada jenis entitas "${prefix}".`);
+              fail(list[j].file, 'L25-blok-tumpang', `Blok ${b.from}-${b.to} bertindih dengan ${a.from}-${a.to} milik ${list[i].file} pada jenis entitas "${prefix}".`);
+            }
+          }
         }
       }
     }

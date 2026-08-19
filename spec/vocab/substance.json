@@ -28,7 +28,17 @@
           "url": "https://psp.pertanian.go.id/layanan-publik/peraturan-perundangan-terkait-pupuk-dan-pestisida"
         }
       ]
-    }
+    },
+    "id_blocks": [
+      {
+        "from": 1,
+        "to": 5
+      },
+      {
+        "from": 9,
+        "to": 99
+      }
+    ]
   },
   "items": [
     {

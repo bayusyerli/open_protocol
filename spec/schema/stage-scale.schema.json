@@ -3,19 +3,50 @@
   "$id": "https://spec.openprotocols.id/v0.1/stage-scale.schema.json",
   "title": "StageScale — skala fase pertumbuhan",
   "description": "BBCH dipakai sebagai skala bawaan untuk tanaman. Skala lain (umur budidaya untuk udang, umur untuk ternak) memakai bentuk yang sama, sehingga penjadwalan berbasis fase tetap berlaku lintas sektor.",
-  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
   "type": "object",
   "properties": {
-    "id": { "type": "string", "pattern": "^op:sca:[0-9]{8}$" },
-    "basis": { "type": "string", "enum": ["phenology", "age", "size", "weight", "custom"] },
+    "id": {
+      "type": "string",
+      "pattern": "^op:sca:[0-9]{8}$"
+    },
+    "basis": {
+      "type": "string",
+      "enum": [
+        "phenology",
+        "age",
+        "size",
+        "weight",
+        "custom"
+      ]
+    },
     "applies_to": {
       "type": "object",
       "properties": {
         "commodity_kinds": {
           "type": "array",
-          "items": { "type": "string", "enum": ["crop", "livestock", "aquaculture", "fungi", "insect", "other"] }
+          "items": {
+            "type": "string",
+            "enum": [
+              "crop",
+              "livestock",
+              "aquaculture",
+              "fungi",
+              "insect",
+              "other"
+            ]
+          }
         },
-        "commodities": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Ref" } }
+        "commodities": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          }
+        }
       },
       "additionalProperties": false
     },
@@ -25,19 +56,73 @@
       "items": {
         "type": "object",
         "properties": {
-          "id": { "type": "string", "pattern": "^op:stg:[0-9]{8}$" },
-          "code": { "type": "string", "description": "Kode dalam skala aslinya, mis. '65' pada BBCH." },
-          "label": { "$ref": "common.schema.json#/$defs/LangText" },
-          "definition": { "$ref": "common.schema.json#/$defs/LangText" },
-          "principal": { "type": "integer", "minimum": 0, "maximum": 9, "description": "Fase utama BBCH (digit pertama)." },
-          "order": { "type": "integer", "minimum": 0 },
-          "mappings": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/ExternalMapping" } }
+          "id": {
+            "type": "string",
+            "pattern": "^op:stg:[0-9]{8}$"
+          },
+          "code": {
+            "type": "string",
+            "description": "Kode dalam skala aslinya, mis. '65' pada BBCH."
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "definition": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "principal": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 9,
+            "description": "Fase utama BBCH (digit pertama)."
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "mappings": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/ExternalMapping"
+            }
+          }
         },
-        "required": ["id", "code", "label", "order"],
+        "required": [
+          "id",
+          "code",
+          "label",
+          "order"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "id_blocks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Rentang nomor ID yang diklaim berkas ini. Wajib bila jenis entitasnya dipakai lebih dari satu berkas — inilah yang membuat penambahan paralel tidak bertabrakan.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ],
         "additionalProperties": false
       }
     }
   },
-  "required": ["basis", "stages"],
+  "required": [
+    "basis",
+    "stages"
+  ],
   "unevaluatedProperties": false
 }

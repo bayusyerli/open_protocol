@@ -28,7 +28,13 @@
           "url": "https://www.ebi.ac.uk/ols4/ontologies/agro"
         }
       ]
-    }
+    },
+    "id_blocks": [
+      {
+        "from": 1,
+        "to": 999
+      }
+    ]
   },
   "items": [
     {

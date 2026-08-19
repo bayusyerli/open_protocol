@@ -15,6 +15,7 @@ membongkar ulang; kalau salah, semuanya harus ditulis ulang.
 ```
 spec/
 ├── README.md                     dokumen ini
+├── 00-konvensi-kerja-paralel.md  blok ID, rentang nomor aturan, aturan main
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
@@ -143,6 +144,9 @@ linter — dan diuji di `fixtures-invalid/`.
 | `L20` | Sediaan mikroba wajib punya kriteria pelepasan bertipe cemaran |
 | `L21` | Batch yang gagal uji pelepasan tidak boleh dipakai di lahan |
 | `L22` | **Bahan aktif yang dilarang** menurut Permentan 43/2019 ditolak; yang berstatus terbatas diperingatkan |
+| `L23` | Entitas harus berada di dalam blok nomor yang diklaim berkasnya |
+| `L24` | Berkas yang berbagi jenis entitas wajib menyatakan `id_blocks` |
+| `L25` | Blok nomor tidak boleh bertindih antar-berkas |
 
 Aturan-aturan ini bukan hiasan. Saat 382 bahan aktif dimasukkan, `L1` langsung menangkap
 tabrakan `key` pada **belerang** — yang ternyata terdaftar sebagai hara sekaligus fungisida.
@@ -233,7 +237,8 @@ rujukan daring masih memakai daftar 2015 yang sudah tidak berlaku.
 | — khusus tanaman padi | 31 |
 | — khusus rumah tangga / perikanan | 2 |
 | Bahan aktif terbatas (Lampiran III.A) | **9** |
-| Bahan tambahan dilarang / dibatasi | 23 / 7 |
+| Bahan **tambahan** dilarang (Lampiran I.B) | **23** |
+| Bahan **tambahan** dibatasi (Lampiran III.B) | **7**, dengan batas pemaparan |
 
 **Silang-cek terhadap registri menghasilkan nol pelanggaran.** Tidak ada satu pun bahan
 yang dilarang untuk semua bidang yang masih terdaftar; tidak ada produk berlabel padi yang
@@ -242,6 +247,16 @@ Kedua data saling menguatkan, jadi `L22` berfungsi sebagai penjaga, bukan pember
 
 85 bahan yang dilarang tetapi tidak ada di registri tetap dimuat ke kosakata — justru supaya
 sistem punya sesuatu untuk ditolak kalau nama itu muncul di protokol atau catatan lapangan.
+
+Bahan tambahan yang dibatasi membawa **batas pemaparan per cakupan**, karena satu bahan bisa
+punya dua batas berbeda: N-metil pirolidon maksimum 25 ppm untuk pestisida rumah tangga
+tetapi 600 ppm untuk pengelolaan tanaman. Etilen oksida dan etilen dibromida muncul di dua
+lampiran sekaligus — sebagai bahan aktif dan sebagai bahan tambahan — jadi entitasnya satu
+dengan dua entri status, dibedakan lewat `applies_to`.
+
+Dua catatan verifikasi yang belum tuntas: pada lapisan teks PDF, Lampiran I.B melompati
+nomor **18 dan 21**, dan Lampiran III.B menuliskan CAS asam sulfat sebagai `7669-93-9`
+padahal nomor bakunya `7664-93-9`. Keduanya ditandai di data, bukan diam-diam ditambal.
 
 ### Tiga temuan tentang registrinya sendiri
 

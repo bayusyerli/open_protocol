@@ -1085,5 +1085,11 @@
   },
   "notes": {
     "id": "Untuk cabai tersedia kunci BBCH yang lebih rinci (Capsicum annuum, C. chinense, C. baccatum, terbit 2020). Perlu ditinjau apakah dipakai sebagai skala terpisah atau sebagai penajaman skala ini sebelum protokol referensi cabai dikunci."
-  }
+  },
+  "id_blocks": [
+    {
+      "from": 1,
+      "to": 1
+    }
+  ]
 }

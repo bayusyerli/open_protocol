@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "pest",
+    "label": { "id": "Fixture uji — entitas di luar blok yang diklaim" },
+    "id_blocks": [{ "from": 9001, "to": 9099 }],
+    "lifecycle": { "version": "0.1.0", "status": "draft" }
+  },
+  "items": [
+    {
+      "id": "op:pst:00008000",
+      "key": "opt-di-luar-blok",
+      "label": { "id": "OPT bernomor di luar blok" },
+      "pest_kind": "insect",
+      "no_mapping_reason": "Fixture uji untuk membuktikan aturan L23 menyala.",
+      "lifecycle": { "version": "0.1.0", "status": "draft" }
+    }
+  ]
+}

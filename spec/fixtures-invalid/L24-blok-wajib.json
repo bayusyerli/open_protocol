@@ -1,0 +1,18 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "method",
+    "label": { "id": "Fixture uji — berbagi jenis entitas tanpa menyatakan blok" },
+    "lifecycle": { "version": "0.1.0", "status": "draft" }
+  },
+  "items": [
+    {
+      "id": "op:met:00009500",
+      "key": "cara-tanpa-deklarasi-blok",
+      "label": { "id": "Cara aplikasi tanpa deklarasi blok" },
+      "method_for": "application",
+      "no_mapping_reason": "Fixture uji untuk membuktikan aturan L24 menyala.",
+      "lifecycle": { "version": "0.1.0", "status": "draft" }
+    }
+  ]
+}
