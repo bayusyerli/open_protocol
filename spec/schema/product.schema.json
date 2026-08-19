@@ -173,6 +173,10 @@
           },
           "rate_unit_text": {
             "type": "string"
+          },
+          "target_site": {
+            "$ref": "common.schema.json#/$defs/Ref",
+            "description": "Dipakai bila sasarannya tempat, bukan komoditas. Tidak boleh berbarengan dengan commodity."
           }
         },
         "required": [],
@@ -181,6 +185,11 @@
           {
             "required": [
               "commodity"
+            ]
+          },
+          {
+            "required": [
+              "target_site"
             ]
           },
           {

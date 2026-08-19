@@ -1,0 +1,821 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "target-site",
+    "label": {
+      "id": "Tempat aplikasi — sasaran yang bukan komoditas"
+    },
+    "scope": {
+      "id": "35 tempat aplikasi dari label produk: dalam ruangan, gudang, kayu gergajian, saluran air. Dipisahkan dari Commodity karena tidak satu pun organisme yang dibudidayakan."
+    },
+    "id_blocks": [
+      {
+        "from": 1,
+        "to": 999
+      }
+    ],
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Database Pestisida Terdaftar (SIMPES)",
+          "publisher": "Kementerian Pertanian RI",
+          "url": "https://ap-simpel.pertanian.go.id/",
+          "year": 2026,
+          "locator": "Diturunkan dari kolom sasaran pada 23.058 baris penggunaan berlabel; ditarik 19 Agustus 2026."
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:sit:00000001",
+      "key": "di-dalam-ruangan",
+      "label": {
+        "id": "Di dalam ruangan"
+      },
+      "site_kind": "indoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Di dalam ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 1047 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Di Dalam Ruangan",
+        "Di dalam Ruangan",
+        "Di dalam Ruangan:",
+        "Di dalam ruangan :",
+        "Di dalam ruangan:",
+        "di dalam ruangan"
+      ]
+    },
+    {
+      "id": "op:sit:00000002",
+      "key": "di-dalam-dan-di-luar-ruangan",
+      "label": {
+        "id": "Di dalam dan di luar ruangan"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Di dalam dan di luar ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 154 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Di dalam  dan di luar ruangan",
+        "Di dalam dan di luar ruangan :",
+        "Di dalam dan di luar ruangan:",
+        "di dalam dan di luar ruangan"
+      ]
+    },
+    {
+      "id": "op:sit:00000003",
+      "key": "kayu-gergajian",
+      "label": {
+        "id": "Kayu gergajian"
+      },
+      "site_kind": "timber",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kayu gergajian",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 59 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Kayu Gergajian"
+      ]
+    },
+    {
+      "id": "op:sit:00000004",
+      "key": "pemukiman-bangunan-dan-rumah-tangga",
+      "label": {
+        "id": "Pemukiman, Bangunan dan Rumah Tangga"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pemukiman, Bangunan dan Rumah Tangga",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 36 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Pemukiman, Bangunan, dan Rumah Tangga",
+        "Pemukiman, bangunan dan rumah tangga"
+      ]
+    },
+    {
+      "id": "op:sit:00000005",
+      "key": "di-dalam-dan-luar-ruangan",
+      "label": {
+        "id": "Di dalam dan luar ruangan"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Di dalam dan luar ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 36 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Di dalam dan Luar Ruangan",
+        "Di dalam dan luar ruangan :",
+        "di dalam dan luar ruangan"
+      ]
+    },
+    {
+      "id": "op:sit:00000006",
+      "key": "permukiman-bangunan-rumah-tangga",
+      "label": {
+        "id": "Permukiman, Bangunan, Rumah tangga"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Permukiman, Bangunan, Rumah tangga",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 26 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000007",
+      "key": "pemukiman-dan-rumah-tangga",
+      "label": {
+        "id": "Pemukiman dan Rumah Tangga"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pemukiman dan Rumah Tangga",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 25 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000008",
+      "key": "di-luar-ruangan",
+      "label": {
+        "id": "Di luar ruangan"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Di luar ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 24 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Di luar Ruangan",
+        "Di luar ruangan :",
+        "di luar ruangan"
+      ]
+    },
+    {
+      "id": "op:sit:00000009",
+      "key": "kandang-ternak",
+      "label": {
+        "id": "Kandang ternak"
+      },
+      "site_kind": "livestock_housing",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kandang ternak",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 23 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Kandang Ternak",
+        "Kandang ternak :",
+        "Kandang ternak:"
+      ]
+    },
+    {
+      "id": "op:sit:00000010",
+      "key": "didalam-ruangan",
+      "label": {
+        "id": "Didalam ruangan"
+      },
+      "site_kind": "indoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Didalam ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 16 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Didalam Ruangan"
+      ]
+    },
+    {
+      "id": "op:sit:00000011",
+      "key": "tanah-bangunan",
+      "label": {
+        "id": "Tanah bangunan"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tanah bangunan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 9 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Tanah Bangunan"
+      ]
+    },
+    {
+      "id": "op:sit:00000012",
+      "key": "didalam-dan-diluar-ruangan",
+      "label": {
+        "id": "Didalam dan Diluar Ruangan"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Didalam dan Diluar Ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 9 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Didalam dan diluar ruangan"
+      ]
+    },
+    {
+      "id": "op:sit:00000013",
+      "key": "bangunan-dan-rumah-tangga",
+      "label": {
+        "id": "Bangunan dan Rumah Tangga"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bangunan dan Rumah Tangga",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 8 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000014",
+      "key": "gudang-penyimpanan",
+      "label": {
+        "id": "Gudang penyimpanan"
+      },
+      "site_kind": "storage",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Gudang penyimpanan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 8 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000015",
+      "key": "rumput-lapangan-golf",
+      "label": {
+        "id": "Rumput lapangan golf"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rumput lapangan golf",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 8 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000016",
+      "key": "bangunan",
+      "label": {
+        "id": "Bangunan"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bangunan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 7 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000017",
+      "key": "pondasi-bangunan",
+      "label": {
+        "id": "Pondasi bangunan"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pondasi bangunan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 7 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000018",
+      "key": "hama-gudang",
+      "label": {
+        "id": "Hama gudang"
+      },
+      "site_kind": "storage",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hama gudang",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 6 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000019",
+      "key": "bangunan-bukan-perumahan",
+      "label": {
+        "id": "Bangunan bukan perumahan"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bangunan bukan perumahan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 5 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000020",
+      "key": "tempat-penampungan-air",
+      "label": {
+        "id": "Tempat penampungan air:"
+      },
+      "site_kind": "other",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tempat penampungan air:",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 5 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000021",
+      "key": "pemukiman-bangunan-rumah-tangga",
+      "label": {
+        "id": "Pemukiman, Bangunan & Rumah Tangga"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pemukiman, Bangunan & Rumah Tangga",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 5 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000022",
+      "key": "didalam-dan-di-luar-ruangan",
+      "label": {
+        "id": "Didalam dan di luar ruangan"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Didalam dan di luar ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 4 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000023",
+      "key": "nyamuk-di-dalam-dan-di-luar-ruangan",
+      "label": {
+        "id": "Nyamuk di dalam dan di luar ruangan"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Nyamuk di dalam dan di luar ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 4 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000024",
+      "key": "lapangan-golf",
+      "label": {
+        "id": "Lapangan Golf"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lapangan Golf",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 4 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000025",
+      "key": "dalam-ruangan",
+      "label": {
+        "id": "dalam ruangan"
+      },
+      "site_kind": "indoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "dalam ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 3 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "synonyms": [
+        "Dalam ruangan"
+      ]
+    },
+    {
+      "id": "op:sit:00000026",
+      "key": "pemukiman",
+      "label": {
+        "id": "Pemukiman"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pemukiman",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 3 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000027",
+      "key": "di-dalam-dan-di-luar-ruangan-nyamuk",
+      "label": {
+        "id": "Di dalam dan di luar ruangan: nyamuk"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Di dalam dan di luar ruangan: nyamuk",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 2 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000028",
+      "key": "kandang-ayam",
+      "label": {
+        "id": "Kandang ayam"
+      },
+      "site_kind": "livestock_housing",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kandang ayam",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 2 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000029",
+      "key": "dinding-ruangan",
+      "label": {
+        "id": "Dinding ruangan"
+      },
+      "site_kind": "other",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dinding ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 2 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000030",
+      "key": "d-dalam-ruangan-dan-di-luar-ruangan",
+      "label": {
+        "id": "D dalam ruangan dan di luar ruangan :"
+      },
+      "site_kind": "indoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "D dalam ruangan dan di luar ruangan :",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 2 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000031",
+      "key": "di-dalam-ruangan-dan-di-luar-ruagan",
+      "label": {
+        "id": "di dalam ruangan dan di luar ruagan :"
+      },
+      "site_kind": "indoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "di dalam ruangan dan di luar ruagan :",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 2 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000032",
+      "key": "pemukiman-bangunan-an-rumah-tangga",
+      "label": {
+        "id": "Pemukiman, bangunan an rumah tangga"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pemukiman, bangunan an rumah tangga",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 1 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000033",
+      "key": "pondasi-bangunan-tanah-bangunan",
+      "label": {
+        "id": "Pondasi bangunan/tanah bangunan"
+      },
+      "site_kind": "building",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pondasi bangunan/tanah bangunan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 1 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000034",
+      "key": "kayu-lapis",
+      "label": {
+        "id": "Kayu lapis"
+      },
+      "site_kind": "timber",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Kayu lapis",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 1 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sit:00000035",
+      "key": "diluar-ruangan",
+      "label": {
+        "id": "diluar ruangan"
+      },
+      "site_kind": "outdoor",
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "diluar ruangan",
+          "relation": "exact",
+          "note": "Tempat aplikasi pada label produk terdaftar; muncul pada 1 baris."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    }
+  ]
+}

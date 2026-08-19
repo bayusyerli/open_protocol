@@ -142,13 +142,24 @@
           "id": "c_7885",
           "relation": "close",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tomat",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 313 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Tomat :",
+        "Tomat:",
+        "tomat"
+      ]
     },
     {
       "id": "op:cmd:00000004",
@@ -177,13 +188,28 @@
           "id": "c_7028",
           "relation": "close",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang merah",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1070 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Bawang  merah",
+        "Bawang Merah",
+        "Bawang merah :",
+        "Bawang merah:",
+        "Budidaya Bawang Merah",
+        "Budidaya bawang merah",
+        "bawang merah"
+      ]
     },
     {
       "id": "op:cmd:00000005",
@@ -250,13 +276,56 @@
           "id": "c_6599",
           "relation": "close",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Padi",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3439 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Budidaya Padi",
+        "Budidaya Padi (TOT)",
+        "Budidaya Padi Sawah",
+        "Budidaya Padi Sawah (TOT)",
+        "Budidaya Padi Sawah Pasang Surut (TOT)",
+        "Budidaya Padi sawah",
+        "Budidaya padi",
+        "Budidaya padi sawah",
+        "Budidaya padi sawah  (TOT)",
+        "Budidaya padi sawah (TOT)",
+        "Budidaya padi sawah (TOT):",
+        "Budidaya padi sawah :",
+        "Budidaya padi sawah pasang surut (TOT)",
+        "Budidaya padi sawah:",
+        "Budidaya padi:",
+        "PADI SAWAH",
+        "Padi (TOT)",
+        "Padi :",
+        "Padi Gogo",
+        "Padi Gogo (TOT)",
+        "Padi Sawah",
+        "Padi Sawah (TOT)",
+        "Padi gogo",
+        "Padi gogo (TOT)",
+        "Padi pasang surut",
+        "Padi pasang surut (TOT)",
+        "Padi sawah",
+        "Padi sawah (TOT)",
+        "Padi sawah :",
+        "Padi sawah pasang surut",
+        "Padi sawah pasang surut (TOT)",
+        "Padi sawah:",
+        "Padi:",
+        "padi",
+        "padi sawah"
+      ]
     }
   ]
 }

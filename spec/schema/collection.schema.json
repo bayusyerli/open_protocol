@@ -25,7 +25,8 @@
             "pest",
             "region",
             "deviation-reason",
-            "preparation"
+            "preparation",
+            "target-site"
           ]
         },
         "label": {

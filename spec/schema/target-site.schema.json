@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/target-site.schema.json",
+  "title": "TargetSite — tempat aplikasi yang bukan komoditas",
+  "description": "Registri pestisida mencampur komoditas dengan tempat aplikasi: 'Di dalam ruangan', 'Gudang', 'Kayu gergajian'. Memaksanya jadi Commodity akan mengarang ontologi, karena tidak satu pun dari itu organisme yang dibudidayakan.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:sit:[0-9]{8}$"
+    },
+    "site_kind": {
+      "type": "string",
+      "enum": [
+        "indoor",
+        "outdoor",
+        "building",
+        "storage",
+        "timber",
+        "waterway",
+        "public_space",
+        "livestock_housing",
+        "other"
+      ]
+    },
+    "id_blocks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "required": [
+    "site_kind"
+  ],
+  "unevaluatedProperties": false
+}

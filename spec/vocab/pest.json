@@ -55,13 +55,35 @@
           "id": "THRIPL",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips parvispinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 267 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 55 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Hama Thrips",
+        "Hama Thrips (4 Ml/L )",
+        "Hama Trip",
+        "Hama Trips",
+        "Hama Trips (1 G/L)",
+        "Hama Trpis",
+        "Thrips"
+      ],
+      "taxonomic_rank": "species"
     },
     {
       "id": "op:pst:00000002",
@@ -86,13 +108,28 @@
           "id": "MYZUPE",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Myzus persicae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 283 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Hama Kutu Daun",
+        "Hama Kutu Daun (0 75 Ml/L )",
+        "Kutu Daun",
+        "Kutu Daun (0 2 Ml/L)",
+        "Kutu Daun (0 4 Ml/L)",
+        "Kutu Daun (0 5 Ml/L )"
+      ],
+      "taxonomic_rank": "species"
     },
     {
       "id": "op:pst:00000003",
@@ -117,13 +154,40 @@
           "id": "BEMITA",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bemisia tabaci",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 79 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bemicia tabaci",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bemisia tabacii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Hama Kutu Kebul",
+        "Kutu Kebul",
+        "Kutu Kebul (0 1 G/L)",
+        "Kutu Kebul (0 2 Ml/L)",
+        "Kutu Kebul (3 Ml/L )",
+        "Kutu Putih"
+      ],
+      "taxonomic_rank": "species"
     },
     {
       "id": "op:pst:00000004",
@@ -145,13 +209,91 @@
           "id": "DACUDO",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera dorsalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera spp",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dacus ferrugineus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera sp",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dacus spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera sp. 0.5 ml/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera tryoni",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactocera dorsalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera ferrungineus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dacus sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Lalat Buah",
+        "Lalat Buah (0 5 Ml/L )",
+        "Lalat Buah (1 G/L)"
+      ],
+      "taxonomic_rank": "genus"
     },
     {
       "id": "op:pst:00000005",
@@ -173,13 +315,177 @@
           "id": "SPODLI",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera litura",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 310 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 264 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera frugiperda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 148 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodotera litura",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aulacophora femoralis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera frugiferda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera sp. 0.125 ml/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exigua 0.5 ml/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sprodoptera litura",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mythmna sepurata 0,75 ml/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodopters exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera litura 1 ml/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera litura 2 ml/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spedoptera litura",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera fungiperda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptra exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mythimna separata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exigua 750 ml/ha",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exiqua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exigua 1 g/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodotera exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera frungiperda",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodeptera litura",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera litura 0.5 ml/l",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Hama Perusak Daun",
+        "Hama Ulat Grayak",
+        "Hama Ulat Grayak (2 G/L )",
+        "Kutu Daun",
+        "Ulat Grayak",
+        "Ulat Grayak (0 375 Ml/L)",
+        "Ulat Grayak (1 5 Ml/L)",
+        "Ulat Grayak (1 Ml/L)",
+        "Ulat Grayak (2 Ml/L )",
+        "Ulat Grayak (2 Ml/L)",
+        "Ulat Grayak (3 Ml/L)"
+      ],
+      "taxonomic_rank": "species"
     },
     {
       "id": "op:pst:00000006",
@@ -201,13 +507,62 @@
           "id": "TETRUR",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranychus sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranychus urticae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranychus cinnabarinus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Panonychus citri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tentranichus sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranycus urticae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranycus sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Hama Tungau",
+        "Tungau",
+        "Tungau (0 05 G/L)",
+        "Tungau Merah"
+      ],
+      "taxonomic_rank": "genus"
     },
     {
       "id": "op:pst:00000007",
@@ -232,13 +587,51 @@
           "id": "COLLSP",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 106 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 22 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum spp",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Penyakit Antraknosa",
+        "Penyakit Antraknosa (1 5 G/L)",
+        "Penyakit Antraknosa (1 5 Ml/L)",
+        "Penyakit Antraknosa (1 6 Ml/L)",
+        "Penyakit Antraknosa (1 G/L)",
+        "Penyakit Antraknosa (2 G/L)",
+        "Penyakit Antraknosa Pada Buah",
+        "Penyakit Antraknose",
+        "Penyakit Antranoksa",
+        "Penyakit Atraknosa",
+        "Penyakit Busuk Buah"
+      ],
+      "taxonomic_rank": "species"
     },
     {
       "id": "op:pst:00000008",
@@ -260,13 +653,28 @@
           "id": "FUSAOX",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Fusarium oxysporum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 19 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Penyakit Layu",
+        "Penyakit Layu (1 75 G/L)",
+        "Penyakit Layu Fusarium",
+        "Penyakit Moler",
+        "Penyakit Rebah Kecambah",
+        "Penyakut Layu Fusarium"
+      ],
+      "taxonomic_rank": "species"
     },
     {
       "id": "op:pst:00000009",
@@ -288,13 +696,24 @@
           "id": "RALSSL",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ralstonia solanacearum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Penyakit Layu Bacteri (2 G/L)",
+        "Penyakit Layu Bakteri"
+      ],
+      "taxonomic_rank": "species"
     },
     {
       "id": "op:pst:00000010",
