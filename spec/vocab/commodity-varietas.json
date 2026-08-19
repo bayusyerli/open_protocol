@@ -826,6 +826,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000009",
+        "label": "BBCH — Sayuran umbi lapis (bawang merah, bawang putih, bawang daun)"
       }
     },
     {
@@ -1046,6 +1050,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
       }
     },
     {
@@ -2429,6 +2437,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000006",
+        "label": "BBCH — Kedelai (Glycine max)"
       }
     },
     {
@@ -2451,6 +2463,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000006",
+        "label": "BBCH — Kedelai (Glycine max)"
       }
     },
     {
@@ -4454,6 +4470,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000006",
+        "label": "BBCH — Kedelai (Glycine max)"
       }
     },
     {
@@ -5158,6 +5178,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000008",
+        "label": "BBCH — Kopi (Coffea sp.)"
       }
     },
     {
@@ -5180,6 +5204,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000008",
+        "label": "BBCH — Kopi (Coffea sp.)"
       }
     },
     {
@@ -5424,6 +5452,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
       }
     },
     {
@@ -5468,6 +5500,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
       }
     },
     {
@@ -6282,6 +6318,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
       }
     },
     {
@@ -7081,6 +7121,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000010",
+        "label": "BBCH — Sayuran daun berkrop (kubis, sawi putih, selada)"
       }
     },
     {
@@ -8073,6 +8117,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000010",
+        "label": "BBCH — Sayuran daun berkrop (kubis, sawi putih, selada)"
       }
     },
     {
@@ -8471,6 +8519,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
       }
     },
     {
@@ -9243,6 +9295,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
       }
     },
     {

@@ -1,0 +1,1260 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000009",
+  "key": "bbch-bawang",
+  "label": {
+    "id": "BBCH — Sayuran umbi lapis (bawang merah, bawang putih, bawang daun)",
+    "en": "BBCH scale — bulb vegetables"
+  },
+  "definition": {
+    "id": "Skala fenologi BBCH untuk sayuran umbi lapis. Sumber menyebut jenis cakupannya satu per satu: bawang bombai (Allium cepa), bawang daun (A. porrum), bawang putih (A. sativum), dan bawang merah (A. ascalonicum). Fase utama 2 dan 3 tidak dipakai; pembentukan umbi ada di fase utama 4."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00000004",
+        "label": "Bawang merah"
+      },
+      {
+        "id": "op:cmd:00001073",
+        "label": "Bawang Putih"
+      },
+      {
+        "id": "op:cmd:00002035",
+        "label": "Bawang Bombay"
+      },
+      {
+        "id": "op:cmd:00001103",
+        "label": "Bawang daun"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "scheme": "BBCH",
+      "id": "bbch-bulb-vegetables",
+      "relation": "exact",
+      "note": "Kunci BBCH sayuran umbi lapis, dirujuk monograf ke Feller dkk. (1995 a)."
+    }
+  ],
+  "notes": {
+    "id": "Sumber memberi rumusan berbeda untuk sebagian kode menurut jenisnya: kode 47 dan 49 punya bacaan tersendiri untuk bawang daun, dan keduanya disalin ke dalam satu label. Kode 00, 05, dan 09 juga punya bacaan ganda — untuk tanaman dari benih dan untuk tanaman dari umbi bibit, siung, atau bawang merah. Yang belum dibawa: kode 3 digit tanpa padanan 2 digit pada fase perkecambahan (010 kotiledon tampak sebagai kait, 011 fase kait, 012 fase cambuk)."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00000800",
+      "code": "00",
+      "label": {
+        "id": "Benih kering; umbi dorman",
+        "en": "Dry seed, dormant bulb"
+      },
+      "principal": 0,
+      "order": 0,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "00",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "000",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000801",
+      "code": "01",
+      "label": {
+        "id": "Awal imbibisi benih",
+        "en": "Beginning of seed imbibition"
+      },
+      "principal": 0,
+      "order": 1,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "01",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "001",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000802",
+      "code": "03",
+      "label": {
+        "id": "Imbibisi benih selesai",
+        "en": "Seed imbibition complete"
+      },
+      "principal": 0,
+      "order": 3,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "03",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "003",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000803",
+      "code": "05",
+      "label": {
+        "id": "Radikula muncul dari benih; akar mulai tampak",
+        "en": "Radicle emerged from seed. Roots appearing"
+      },
+      "principal": 0,
+      "order": 5,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "05",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "005",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000804",
+      "code": "07",
+      "label": {
+        "id": "Kotiledon menembus kulit benih",
+        "en": "Cotyledon breaking through seed coat"
+      },
+      "principal": 0,
+      "order": 7,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "07",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "007",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000805",
+      "code": "09",
+      "label": {
+        "id": "Kemunculan: kotiledon menembus permukaan tanah; tunas hijau tampak",
+        "en": "Emergence: cotyledon breaks through soil surface. Green shoot visible"
+      },
+      "principal": 0,
+      "order": 9,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "09",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "009",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000806",
+      "code": "10",
+      "label": {
+        "id": "Fase cambuk lanjut: cambuk mulai mengering",
+        "en": "Advanced whip stage: whip begins to die off"
+      },
+      "principal": 1,
+      "order": 10,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "10",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "100",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000807",
+      "code": "11",
+      "label": {
+        "id": "Daun pertama (> 3 cm) jelas tampak",
+        "en": "First leaf (> 3 cm) clearly visible"
+      },
+      "principal": 1,
+      "order": 11,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "11",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "101",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000808",
+      "code": "12",
+      "label": {
+        "id": "Daun ke-2 (> 3 cm) jelas tampak",
+        "en": "2nd leaf (> 3 cm) clearly visible"
+      },
+      "principal": 1,
+      "order": 12,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "12",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "102",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000809",
+      "code": "13",
+      "label": {
+        "id": "Daun ke-3 (> 3 cm)",
+        "en": "3rd leaf (> 3 cm)"
+      },
+      "principal": 1,
+      "order": 13,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "13",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "103",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000810",
+      "code": "14",
+      "label": {
+        "id": "Daun ke-4 (> 3 cm) jelas tampak",
+        "en": "4th leaf (> 3 cm) clearly visible"
+      },
+      "principal": 1,
+      "order": 14,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "14",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "104",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000811",
+      "code": "15",
+      "label": {
+        "id": "Daun ke-5 (> 3 cm) jelas tampak",
+        "en": "5th leaf (> 3 cm) clearly visible"
+      },
+      "principal": 1,
+      "order": 15,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "15",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "105",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000812",
+      "code": "16",
+      "label": {
+        "id": "Daun ke-6 (> 3 cm) jelas tampak",
+        "en": "6th leaf (> 3 cm) clearly visible"
+      },
+      "principal": 1,
+      "order": 16,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "16",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "106",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000813",
+      "code": "17",
+      "label": {
+        "id": "Daun ke-7 (> 3 cm) jelas tampak",
+        "en": "7th leaf (> 3 cm) clearly visible"
+      },
+      "principal": 1,
+      "order": 17,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "17",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "107",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000814",
+      "code": "18",
+      "label": {
+        "id": "Daun ke-8 (> 3 cm) jelas tampak",
+        "en": "8th leaf (> 3 cm) clearly visible"
+      },
+      "principal": 1,
+      "order": 18,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "18",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "108",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000815",
+      "code": "19",
+      "label": {
+        "id": "9 daun atau lebih jelas tampak",
+        "en": "9 or more leaves clearly visible"
+      },
+      "principal": 1,
+      "order": 19,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "19",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "109",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000816",
+      "code": "41",
+      "label": {
+        "id": "Pangkal daun mulai menebal atau memanjang",
+        "en": "Leaf bases begin to thicken or extend"
+      },
+      "principal": 4,
+      "order": 41,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "41",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "401",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000817",
+      "code": "43",
+      "label": {
+        "id": "30% garis tengah umbi atau batang semu yang diharapkan tercapai",
+        "en": "30% of the expected bulb or shaft diameter reached"
+      },
+      "principal": 4,
+      "order": 43,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "43",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "403",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000818",
+      "code": "45",
+      "label": {
+        "id": "50% garis tengah umbi atau batang semu yang diharapkan tercapai",
+        "en": "50% of the expected bulb or shaft diameter reached"
+      },
+      "principal": 4,
+      "order": 45,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "45",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "405",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000819",
+      "code": "47",
+      "label": {
+        "id": "Mulai membentuk tangkai bunga; 10% tanaman daunnya rebah. Untuk bawang daun: 70% panjang dan garis tengah batang semu tercapai",
+        "en": "Bolting begins; in 10% of the plants leaves bent over / 70% of the expected shaft length and diameter reached"
+      },
+      "principal": 4,
+      "order": 47,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "47",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "407",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000820",
+      "code": "48",
+      "label": {
+        "id": "Daun rebah pada 50% tanaman",
+        "en": "Leaves bent over in 50% of plants"
+      },
+      "principal": 4,
+      "order": 48,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "48",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "408",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000821",
+      "code": "49",
+      "label": {
+        "id": "Daun mati, ujung umbi kering, dormansi. Untuk bawang daun: pertumbuhan selesai, panjang dan garis tengah batang khas varietas tercapai",
+        "en": "Leaves dead, bulb top dry; dormancy / Growth complete; length and stem diameter typical for variety reached"
+      },
+      "principal": 4,
+      "order": 49,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "49",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "409",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000822",
+      "code": "51",
+      "label": {
+        "id": "Umbi bawang mulai memanjang",
+        "en": "Onion bulb begins to elongate"
+      },
+      "principal": 5,
+      "order": 51,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "51",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "501",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000823",
+      "code": "53",
+      "label": {
+        "id": "30% panjang tangkai bunga yang diharapkan tercapai",
+        "en": "30% of the expected length of flower stem reached"
+      },
+      "principal": 5,
+      "order": 53,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "53",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "503",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000824",
+      "code": "55",
+      "label": {
+        "id": "Tangkai bunga mencapai panjang penuh; seludang masih menutup",
+        "en": "Flower stem at full length; sheath closed"
+      },
+      "principal": 5,
+      "order": 55,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "55",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "505",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000825",
+      "code": "57",
+      "label": {
+        "id": "Seludang pecah terbuka",
+        "en": "Sheath burst open"
+      },
+      "principal": 5,
+      "order": 57,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "57",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "507",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000826",
+      "code": "59",
+      "label": {
+        "id": "Mahkota bunga pertama tampak; bunga masih tertutup",
+        "en": "First flower petals visible; flowers still closed"
+      },
+      "principal": 5,
+      "order": 59,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "59",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "509",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000827",
+      "code": "60",
+      "label": {
+        "id": "Bunga pertama mekar, tersebar",
+        "en": "First flowers open (sporadically)"
+      },
+      "principal": 6,
+      "order": 60,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "60",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "600",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000828",
+      "code": "61",
+      "label": {
+        "id": "Awal berbunga: 10% bunga mekar",
+        "en": "Beginning of flowering: 10% of flowers open"
+      },
+      "principal": 6,
+      "order": 61,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "61",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "601",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000829",
+      "code": "62",
+      "label": {
+        "id": "20% bunga mekar",
+        "en": "20% of flowers open"
+      },
+      "principal": 6,
+      "order": 62,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "62",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "602",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000830",
+      "code": "63",
+      "label": {
+        "id": "30% bunga mekar",
+        "en": "30% of flowers open"
+      },
+      "principal": 6,
+      "order": 63,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "63",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "603",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000831",
+      "code": "64",
+      "label": {
+        "id": "40% bunga mekar",
+        "en": "40% of flowers open"
+      },
+      "principal": 6,
+      "order": 64,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "64",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "604",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000832",
+      "code": "65",
+      "label": {
+        "id": "Berbunga penuh: 50% bunga mekar",
+        "en": "Full flowering: 50% of flowers open"
+      },
+      "principal": 6,
+      "order": 65,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "65",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "605",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000833",
+      "code": "67",
+      "label": {
+        "id": "Pembungaan berakhir: 70% mahkota gugur atau kering",
+        "en": "Flowering finishing: 70% of petals fallen or dry"
+      },
+      "principal": 6,
+      "order": 67,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "67",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "607",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000834",
+      "code": "69",
+      "label": {
+        "id": "Akhir berbunga",
+        "en": "End of flowering"
+      },
+      "principal": 6,
+      "order": 69,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "69",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "609",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000835",
+      "code": "71",
+      "label": {
+        "id": "Kapsul pertama terbentuk",
+        "en": "First capsules formed"
+      },
+      "principal": 7,
+      "order": 71,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "71",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "701",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000836",
+      "code": "72",
+      "label": {
+        "id": "20% kapsul terbentuk",
+        "en": "20% of capsules formed"
+      },
+      "principal": 7,
+      "order": 72,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "72",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "702",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000837",
+      "code": "73",
+      "label": {
+        "id": "30% kapsul terbentuk",
+        "en": "30% of capsules formed"
+      },
+      "principal": 7,
+      "order": 73,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "73",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "703",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000838",
+      "code": "74",
+      "label": {
+        "id": "40% kapsul terbentuk",
+        "en": "40% of capsules formed"
+      },
+      "principal": 7,
+      "order": 74,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "74",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "704",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000839",
+      "code": "75",
+      "label": {
+        "id": "50% kapsul terbentuk",
+        "en": "50% of capsules formed"
+      },
+      "principal": 7,
+      "order": 75,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "75",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "705",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000840",
+      "code": "76",
+      "label": {
+        "id": "60% kapsul terbentuk",
+        "en": "60% of capsules formed"
+      },
+      "principal": 7,
+      "order": 76,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "76",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "706",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000841",
+      "code": "77",
+      "label": {
+        "id": "70% kapsul terbentuk",
+        "en": "70% of capsules formed"
+      },
+      "principal": 7,
+      "order": 77,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "77",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "707",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000842",
+      "code": "78",
+      "label": {
+        "id": "80% kapsul terbentuk",
+        "en": "80% of capsules formed"
+      },
+      "principal": 7,
+      "order": 78,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "78",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        },
+        {
+          "scheme": "BBCH",
+          "id": "708",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000843",
+      "code": "79",
+      "label": {
+        "id": "Perkembangan kapsul selesai; biji masih pucat",
+        "en": "Capsule development complete; seeds pale"
+      },
+      "principal": 7,
+      "order": 79,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "79",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "709",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000844",
+      "code": "81",
+      "label": {
+        "id": "Awal pemasakan: 10% kapsul masak",
+        "en": "Beginning of ripening: 10% of capsules ripe"
+      },
+      "principal": 8,
+      "order": 81,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "81",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "801",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000845",
+      "code": "85",
+      "label": {
+        "id": "Kapsul pertama pecah",
+        "en": "First capsules bursting"
+      },
+      "principal": 8,
+      "order": 85,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "85",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "805",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000846",
+      "code": "89",
+      "label": {
+        "id": "Masak penuh: biji hitam dan keras",
+        "en": "Fully ripe: seeds black and hard"
+      },
+      "principal": 8,
+      "order": 89,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "89",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "809",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000847",
+      "code": "92",
+      "label": {
+        "id": "Daun dan tunas mulai berubah warna",
+        "en": "Leaves and shoots beginning to discolour"
+      },
+      "principal": 9,
+      "order": 92,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "92",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "902",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000848",
+      "code": "95",
+      "label": {
+        "id": "50% daun kuning atau mati",
+        "en": "50% of leaves yellow or dead"
+      },
+      "principal": 9,
+      "order": 95,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "95",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "905",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000849",
+      "code": "97",
+      "label": {
+        "id": "Tanaman atau bagian di atas tanah mati",
+        "en": "Plants or above ground parts dead"
+      },
+      "principal": 9,
+      "order": 97,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "97",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "907",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000850",
+      "code": "99",
+      "label": {
+        "id": "Produk hasil panen (biji)",
+        "en": "Harvested product (seeds)"
+      },
+      "principal": 9,
+      "order": 99,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "99",
+          "relation": "exact"
+        },
+        {
+          "scheme": "BBCH",
+          "id": "909",
+          "relation": "exact",
+          "note": "Padanan kode 3 digit pada kunci yang sama; menunjuk fase yang sama."
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Growth stages of mono- and dicotyledonous plants — BBCH Monograph",
+        "publisher": "Federal Biological Research Centre for Agriculture and Forestry (BBA)",
+        "year": 2001,
+        "locator": "Edisi ke-2, disunting Uwe Meier; kunci sayuran umbi lapis dirujuk ke Feller dkk. (1995 a)"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 9,
+      "to": 9
+    }
+  ]
+}

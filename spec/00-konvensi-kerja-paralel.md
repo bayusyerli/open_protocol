@@ -41,10 +41,22 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `sca` | `vocab/stage-scale-doc-udang.json` | 2 | berkas entitas tunggal |
 | `sca` | `vocab/stage-scale-bbch-padi.json` | 3 | berkas entitas tunggal |
 | `sca` | `vocab/stage-scale-bbch-jagung.json` | 4 | berkas entitas tunggal |
+| `sca` | `vocab/stage-scale-bbch-cucurbit.json` | 5 | berkas entitas tunggal |
+| `sca` | `vocab/stage-scale-bbch-kedelai.json` | 6 | berkas entitas tunggal |
+| `sca` | `vocab/stage-scale-bbch-kentang.json` | 7 | berkas entitas tunggal |
+| `sca` | `vocab/stage-scale-bbch-kopi.json` | 8 | berkas entitas tunggal |
+| `sca` | `vocab/stage-scale-bbch-bawang.json` | 9 | berkas entitas tunggal |
+| `sca` | `vocab/stage-scale-bbch-kubis.json` | 10 | berkas entitas tunggal |
 | `stg` | `vocab/stage-scale-bbch-solanaceae.json` | 1–99 | fase di dalam skala |
 | `stg` | `vocab/stage-scale-doc-udang.json` | 100–199 | fase di dalam skala |
 | `stg` | `vocab/stage-scale-bbch-padi.json` | 200–299 | fase di dalam skala |
 | `stg` | `vocab/stage-scale-bbch-jagung.json` | 300–399 | fase di dalam skala |
+| `stg` | `vocab/stage-scale-bbch-cucurbit.json` | 400–499 | fase di dalam skala |
+| `stg` | `vocab/stage-scale-bbch-kedelai.json` | 500–599 | fase di dalam skala |
+| `stg` | `vocab/stage-scale-bbch-kentang.json` | 600–699 | fase di dalam skala |
+| `stg` | `vocab/stage-scale-bbch-kopi.json` | 700–799 | fase di dalam skala |
+| `stg` | `vocab/stage-scale-bbch-bawang.json` | 800–899 | fase di dalam skala |
+| `stg` | `vocab/stage-scale-bbch-kubis.json` | 900–999 | fase di dalam skala |
 | `cmd` | `vocab/commodity.json` | 1–999 | dikurasi tangan |
 | `cmd` | `vocab/commodity-registri.json` | 1000–1999 | sasaran dari label produk |
 | `cmd` | `vocab/commodity-varietas.json` | 2000–2999 | jenis tanaman dari registri varietas |
@@ -55,7 +67,7 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `dev` `met` `opt` `sed` `var` | masing-masing satu berkas | 1–999 | belum dipakai bersama |
 
 **Belum dialokasikan** pada jenis `sub`: 100, 1691–1700, 2000–4999, 10000 ke atas; pada `cmd`: 3000 ke atas;
-pada `vty`: 1–999 dan 20000 ke atas; pada `stg`: 400 ke atas.
+pada `vty`: 1–999 dan 20000 ke atas; pada `sca`: 11 ke atas; pada `stg`: 1000 ke atas.
 
 Fase (`stg`) hidup di dalam berkas skalanya, bukan sebagai dokumen tersendiri, sehingga
 aturan `L1` dan `L23` tidak menyentuhnya. Bloknya tetap dicatat di sini dan dijaga tangan —

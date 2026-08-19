@@ -62,6 +62,51 @@ const CAKUPAN = {
     'op:cmd:00002135', // Jagung Pulut
     'op:cmd:00002136', // Jagung Pulut Manis
   ],
+  // BBCH — cucurbit: jenis yang disebut kuncinya sendiri
+  'stage-scale-bbch-cucurbit.json': [
+    'op:cmd:00001021', // Semangka — Citrullus
+    'op:cmd:00001031', // Melon — Cucumis melo
+    'op:cmd:00002045', // Blewah — Cucumis melo
+    'op:cmd:00001045', // Mentimun — Cucumis sativus
+    'op:cmd:00002280', // Mentimun Suri — Cucumis melo
+    'op:cmd:00002378', // Squash — Cucurbita pepo
+    'op:cmd:00002241', // Labu
+    'op:cmd:00002243', // Labu Kuning
+    'op:cmd:00002412', // Waluh
+  ],
+  // BBCH — kedelai (Glycine max)
+  'stage-scale-bbch-kedelai.json': [
+    'op:cmd:00001007', // Kedelai
+    'op:cmd:00002197', // Kedelai Hitam
+    'op:cmd:00002106', // Edamame
+    'op:cmd:00002107', // Edamame (Kedelai Sayur)
+  ],
+  // BBCH — kentang (Solanum tuberosum)
+  'stage-scale-bbch-kentang.json': [
+    'op:cmd:00001008', // Kentang
+  ],
+  // BBCH — kopi (Coffea sp.), kuncinya berlaku untuk arabika maupun robusta
+  'stage-scale-bbch-kopi.json': [
+    'op:cmd:00001009', // Budidaya kopi (TBM) — nama bawaan label pestisida, 125 varietas menunjuk ke sini
+    'op:cmd:00002229', // Kopi Arabika
+    'op:cmd:00002230', // Kopi Robusta
+  ],
+  // BBCH — sayuran umbi lapis: Allium cepa, A. porrum, A. sativum, A. ascalonicum
+  'stage-scale-bbch-bawang.json': [
+    'op:cmd:00000004', // Bawang merah — A. ascalonicum
+    'op:cmd:00001073', // Bawang Putih — A. sativum
+    'op:cmd:00002035', // Bawang Bombay — A. cepa
+    // Bawang daun: di Indonesia lazimnya A. fistulosum, sementara kunci menyebut A. porrum.
+    // Tetap ditautkan — keduanya allium tak berumbi yang dipanen batang semunya, dan bacaan
+    // kode 47 & 49 untuk bawang daun pada kunci ini berlaku sama.
+    'op:cmd:00001103', // Bawang daun
+  ],
+  // BBCH — sayuran daun BERKROP: kubis, sawi putih/petsai, selada krop, endive
+  'stage-scale-bbch-kubis.json': [
+    'op:cmd:00001011', // Kubis — Brassica oleracea var. capitata
+    'op:cmd:00002315', // Petsai — sawi putih, Brassica chinensis
+    'op:cmd:00002360', // Sawi Putih — nama lain petsai
+  ],
   // Umur budidaya udang vaname (DOC)
   'stage-scale-doc-udang.json': [
     'op:cmd:00000005', // Udang vaname
@@ -71,6 +116,26 @@ const CAKUPAN = {
 // Sengaja TIDAK ditautkan, beserta alasannya. Ditulis di sini supaya keputusannya
 // bisa dibantah orang berikutnya, bukan hilang jadi daftar yang tampak lengkap.
 const DIKECUALIKAN = {
+  'op:cmd:00002220': 'Kentang Hitam — Plectranthus rotundifolius, bukan Solanum tuberosum; namanya menipu',
+  'op:cmd:00001261': 'Bawang — nama generik tanpa jenis; kunci menyebut empat jenis Allium yang berbeda perlakuannya',
+  'op:cmd:00001221': 'Kubis Bunga — kembang kol, Brassica oleracea var. botrytis; masuk kunci "other brassica vegetables" yang belum disalin',
+  'op:cmd:00002303': 'Pak Choi — sawi yang TIDAK berkrop; masuk kunci "leaf vegetables not forming heads" yang belum disalin',
+  'op:cmd:00001132': 'Sawi — tidak berkrop, alasan sama seperti Pak Choi',
+  'op:cmd:00002359': 'Sawi Hijau — tidak berkrop, alasan sama',
+  'op:cmd:00002358': 'Sawi Caisim — tidak berkrop, alasan sama',
+  'op:cmd:00002357': 'Sawi Bakso — tidak berkrop, alasan sama',
+  'op:cmd:00002080': 'Caisin (Sawi Hijau) — tidak berkrop, alasan sama',
+  'op:cmd:00002286': 'Mustard — sawi daun, tidak berkrop, alasan sama',
+  'op:cmd:00002364': 'Selada — kunci hanya mencakup selada KROP (Lactuca sativa var. capitata); jenis selada tidak bisa dipastikan dari namanya',
+  'op:cmd:00002374': 'Slada — ejaan lain selada, alasan sama',
+  'op:cmd:00002365': 'Selada Air — Nasturtium officinale, suku dan tempat tumbuh berbeda sama sekali',
+  'op:cmd:00002242': 'Labu Air — Lagenaria siceraria, genus lain; kunci cucurbit tidak menyebutnya',
+  'op:cmd:00002245': 'Labu Siam — Sechium edule, genus lain',
+  'op:cmd:00002244': 'Labu Putih — nama daerah yang ambigu, bisa Benincasa hispida atau Lagenaria; tidak bisa dipastikan',
+  'op:cmd:00002309': 'Paria — Momordica charantia, tidak disebut kunci cucurbit',
+  'op:cmd:00002308': 'Pare Belut — Momordica charantia, alasan sama',
+  'op:cmd:00002110': 'Gambas — Luffa acutangula, tidak disebut kunci cucurbit',
+  'op:cmd:00002297': 'Oyong — Luffa acutangula, alasan sama',
   'op:cmd:00002347': 'Rumput Padi-Padian — kelompok gulma Poaceae, bukan Oryza sativa; namanya menipu',
   'op:cmd:00001023': 'Beras di penyimpanan — produk pascapanen, bukan tanaman yang tumbuh; skala fenologi tidak berlaku',
   'op:cmd:00002075': 'Cabe Jawa — Piper retrofractum, famili Piperaceae, bukan Solanaceae',

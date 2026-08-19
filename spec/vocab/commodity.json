@@ -212,7 +212,11 @@
         "Budidaya Bawang Merah",
         "Budidaya bawang merah",
         "bawang merah"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000009",
+        "label": "BBCH — Sayuran umbi lapis (bawang merah, bawang putih, bawang daun)"
+      }
     },
     {
       "id": "op:cmd:00000005",

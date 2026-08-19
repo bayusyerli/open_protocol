@@ -446,6 +446,67 @@ Model fase yang menganggap satu kode berarti satu keadaan tanaman akan salah di 
 
 ---
 
+### D30 — kunci cucurbit punya dua kolom kode; yang dipakai kolom 2 digit
+
+Kunci BBCH cucurbit (Feller dkk., 1995 b) menabelkan dua kolom sekaligus: kode 2 digit dan
+kode 3 digit. Kolom 3 digit ada karena tanaman bercabang bisa dicatat jauh lebih rinci —
+daun ke-10 sampai ke-19 pada batang utama, tunas samping sekunder dan tersier, serta bakal
+bunga, bunga, dan buah pada tunas-tunas itu.
+
+Yang diambil: **kolom 2 digit jadi entitas fase**, sama seperti tiga skala BBCH lain di
+repositori ini, dan **padanan 3 digitnya disimpan sebagai pemetaan kedua** pada fase yang
+sama. Jadi tidak ada informasi yang dibuang pada fase yang memang punya dua kode.
+
+Fase yang **hanya** ada di kolom 3 digit sengaja belum dibawa. Membawanya berarti membuat
+entitas fase yang tidak punya padanan di skala lain, dan penjadwalan protokol belum
+membutuhkannya. Ditinggal sebagai pekerjaan tersendiri, dicatat di `notes` berkasnya —
+bukan disamarkan seolah kuncinya memang sesingkat itu.
+
+Catatan sumber yang layak diingat: monograf menulis "calabash = *Cucurbita pepo* L. var.
+*giromontiina*", padahal *giromontiina* adalah zukini sementara calabash lazimnya *Lagenaria
+siceraria*. Nama jenis di sumbernya sendiri tidak rapi, jadi penautan komoditas dilakukan
+menurut jenis yang jelas disebut — *Citrullus*, *Cucumis*, *Cucurbita* — bukan menurut nama
+umumnya. Paria (*Momordica*), oyong (*Luffa*), labu air (*Lagenaria*), dan labu siam
+(*Sechium*) karena itu tidak ditautkan meski sama-sama suku Cucurbitaceae.
+
+---
+
+### D31 — lima kunci berikutnya, dan empat jebakan yang muncul saat menyalinnya
+
+Kedelai, kentang, kopi, sayuran umbi lapis, dan sayuran daun berkrop disalin dari monograf
+yang sama. 317 fase baru, cakupan varietas naik dari 41,1% ke 48,0%. Empat hal yang tidak
+akan terlihat kalau kuncinya diasumsikan seragam:
+
+**Kedelai punya dua rumusan untuk kode yang sama.** Sumber memberi bacaan berbeda untuk
+varietas determinat dan indeterminat pada fase 61–69, 71–79, dan 81–89 — pada determinat kode
+71 berarti "sekitar 10% polong mencapai panjang akhir", pada indeterminat "awal perkembangan
+polong". Yang disalin rumusan determinat; rumusan indeterminat dicatat utuh di `notes`. Kalau
+protokol kedelai nanti membedakan keduanya, skala ini perlu dipecah dua — dan itu keputusan
+yang menunggu bukti lapangan, bukan yang diputuskan sekarang. Kode 76 dan 78 memang tidak ada
+di sumber, jadi tidak dibuat.
+
+**Kentang punya dua jalur perkembangan berdampingan.** Fase utama 0 dan 1 ditabelkan dua
+kolom: tanaman dari umbi dan tanaman dari biji. Keduanya disalin ke dalam satu label supaya
+tidak ada yang hilang. Fase utama 4 kentang berisi pembentukan umbi — bagian yang sama sekali
+tidak ada pada kunci Solanaceae sayuran buah, dan itulah alasan konkret kentang tidak boleh
+menumpang kunci itu (lihat D28).
+
+**Kode fase 2 dan 3 pada kopi memakai satuan puluhan.** Kode 21 berarti *10 pasang* cabang
+primer dan 29 berarti *90 pasang atau lebih*; kode 31 berarti *10 buku* dan 39 berarti *90
+buku atau lebih*. Setiap kunci lain di repositori ini memakai satuan satuan pada posisi yang
+sama. Membacanya seragam akan meleset sepuluh kali lipat.
+
+**Berkrop atau tidak berkrop adalah batas antara dua kunci berbeda.** Kunci sayuran daun
+berkrop mencakup kubis, sawi putih, selada krop, dan endive. Pak choi, caisim, sawi hijau,
+mustard, dan selada daun tidak berkrop — semuanya masuk kunci "leaf vegetables not forming
+heads" yang belum disalin, jadi sekitar 130 varietas sengaja dibiarkan tanpa skala daripada
+ditautkan ke kunci yang salah. Kembang kol pun bukan di sini melainkan di kunci brassica lain.
+
+Satu nama lagi yang menipu: **"Kentang Hitam" bukan kentang.** Ia *Plectranthus rotundifolius*,
+suku Lamiaceae — sekerabat kemangi, bukan Solanaceae. Dikecualikan dengan alasan tertulis.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -473,4 +534,5 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | Kegranularan registri dipertahankan, tetapi `Commodity` belum punya hubungan hierarkis internal — pengelompokan seharusnya lewat konsep broader AGROVOC yang belum dipetakan |
 | 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
-| 22 | 67,5% varietas belum punya skala fase | Turun dari 89% setelah kunci padi dan jagung masuk. Sisa terbesar: durian (495 varietas), semangka (367), mentimun (305), tembakau (267), krisan (247) — sebagiannya punya kunci BBCH resmi, sebagiannya belum pernah dibuatkan |
+| 22 | 52,0% varietas belum punya skala fase | Turun dari 89% setelah sepuluh kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168). Yang paling dekat: kunci sayuran daun TIDAK berkrop — sudah ada di monograf, dan di situlah tempat sekitar 130 varietas sawi, caisim, pak choi, dan selada daun |
+| 23 | Durian tidak punya kunci BBCH yang pernah diterbitkan | Bukan kelalaian pencarian: monograf memuat 28 kunci tanaman dan durian bukan salah satunya, dan penelusuran pustaka tidak menemukan terbitan lain. Yang ada penelitian fenologi berkosakata sendiri — kuncup "mata ketam", antesis, lalu umur buah dalam hari setelah antesis. Menyusunnya berarti membuat skala baru seperti skala DOC udang, bukan menyalin; perlu keputusan tersendiri |

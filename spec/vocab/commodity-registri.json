@@ -265,7 +265,11 @@
         "Kedelai :",
         "Kedelai:",
         "kedelai"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000006",
+        "label": "BBCH — Kedelai (Glycine max)"
+      }
     },
     {
       "id": "op:cmd:00001008",
@@ -294,7 +298,11 @@
         "Kentang :",
         "Kentang:",
         "kentang"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000007",
+        "label": "BBCH — Kentang (Solanum tuberosum)"
+      }
     },
     {
       "id": "op:cmd:00001009",
@@ -325,7 +333,11 @@
         "Kopi  :",
         "Kopi (TBM)",
         "Kopi (TM)"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000008",
+        "label": "BBCH — Kopi (Coffea sp.)"
+      }
     },
     {
       "id": "op:cmd:00001010",
@@ -385,7 +397,11 @@
         "KUBIS",
         "Kubis:",
         "kubis"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000010",
+        "label": "BBCH — Sayuran daun berkrop (kubis, sawi putih, selada)"
+      }
     },
     {
       "id": "op:cmd:00001014",
@@ -595,7 +611,11 @@
       },
       "synonyms": [
         "semangka"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
+      }
     },
     {
       "id": "op:cmd:00001022",
@@ -857,7 +877,11 @@
       },
       "synonyms": [
         "Melon :"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
+      }
     },
     {
       "id": "op:cmd:00001032",
@@ -1178,7 +1202,11 @@
       },
       "synonyms": [
         "Mentimun:"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000005",
+        "label": "BBCH — Cucurbit (semangka, melon, mentimun, labu)"
+      }
     },
     {
       "id": "op:cmd:00001046",
@@ -1739,7 +1767,11 @@
       },
       "synonyms": [
         "Bawang putih"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000009",
+        "label": "BBCH — Sayuran umbi lapis (bawang merah, bawang putih, bawang daun)"
+      }
     },
     {
       "id": "op:cmd:00001074",
@@ -2392,7 +2424,11 @@
       },
       "synonyms": [
         "Bawang Daun"
-      ]
+      ],
+      "default_stage_scale": {
+        "id": "op:sca:00000009",
+        "label": "BBCH — Sayuran umbi lapis (bawang merah, bawang putih, bawang daun)"
+      }
     },
     {
       "id": "op:cmd:00001104",

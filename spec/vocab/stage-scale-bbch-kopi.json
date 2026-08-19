@@ -1,0 +1,1154 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000008",
+  "key": "bbch-kopi",
+  "label": {
+    "id": "BBCH — Kopi (Coffea sp.)",
+    "en": "BBCH scale — coffee"
+  },
+  "definition": {
+    "id": "Skala fenologi BBCH untuk kopi. Berbeda dari kunci tanaman semusim, fase utama 0 mencakup tiga cara perbanyakan sekaligus — benih, setek, dan stum — dan fase utama 9 menggambarkan penuaan pohon bertahun-tahun, bukan akhir satu musim. Hanya punya kolom kode 2 digit."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00001009",
+        "label": "Budidaya kopi (TBM)"
+      },
+      {
+        "id": "op:cmd:00002229",
+        "label": "Kopi Arabika"
+      },
+      {
+        "id": "op:cmd:00002230",
+        "label": "Kopi Robusta"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "scheme": "BBCH",
+      "id": "bbch-coffee",
+      "relation": "exact",
+      "note": "Kunci BBCH kopi, dirujuk monograf ke Arcila-Pulgarín dkk.; saat monograf terbit berstatus in press."
+    }
+  ],
+  "notes": {
+    "id": "Fase utama 2 dan 3 memakai satuan puluhan, bukan satuan: kode 21 berarti 10 pasang cabang primer dan 29 berarti 90 pasang atau lebih; kode 31 berarti 10 buku pada cabang dan 39 berarti 90 buku atau lebih. Salah membacanya sebagai hitungan satuan akan meleset sepuluh kali lipat. Fase utama 4 tidak dipakai."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00000700",
+      "code": "00",
+      "label": {
+        "id": "Benih kering, kadar air 11–12%, berwarna krem bila kulit tanduk masih ada atau hijau kebiruan bila kulit tanduk dan kulit ari dilepas. Setek satu buku sepanjang 60 mm dengan dua daun dipangkas separuh. Stum berbuku tebal tanpa tunas",
+        "en": "Dry seed (11-12% moisture content), beige color if parchment present or bluish-green if parchment and silver skin removed. Cutting (orthotropic, mononodal, 60 mm long, two half trimmed leaves). Stump with bulky nodes and no buds visible"
+      },
+      "principal": 0,
+      "order": 0,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "00",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000701",
+      "code": "01",
+      "label": {
+        "id": "Awal imbibisi benih, biji membengkak, keputihan, radikula belum tampak. Setek sudah ditanam di media perakaran, belum ada tunas maupun kalus",
+        "en": "Beginning of seed imbibition, bean swollen, whitish, no radicle visible. Cutting planted in rooting media, no shoots visible, no callus visible"
+      },
+      "principal": 0,
+      "order": 1,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "01",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000702",
+      "code": "02",
+      "label": {
+        "id": "Imbibisi benih selesai, biji keputihan, ada pembengkakan kecil di ujung tempat embrio berada. Kalus mulai terbentuk pada setek; tunas mulai pecah pada stum",
+        "en": "Seed imbibition complete, bean whitish, small swelling visible at one end of bean where the embryo is located. Callus formation begins on cuttings. Bud burst start on stumps"
+      },
+      "principal": 0,
+      "order": 2,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "02",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000703",
+      "code": "05",
+      "label": {
+        "id": "Radikula benih menyembul dan melengkung. Tunas dan akar terbentuk pada setek; tunas hijau membulat tampak pada stum",
+        "en": "Seed radicle protrusion and hooking. Shoot and root formation on the cuttings. Green, rounded buds visible on the stumps"
+      },
+      "principal": 0,
+      "order": 5,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "05",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000704",
+      "code": "06",
+      "label": {
+        "id": "Radikula memanjang, bulu akar dan akar lateral terbentuk pada benih maupun setek",
+        "en": "Elongation of radicle, formation of root hairs and lateral roots on seeds and cuttings"
+      },
+      "principal": 0,
+      "order": 6,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "06",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000705",
+      "code": "07",
+      "label": {
+        "id": "Hipokotil bersama kotiledon menembus kulit benih. Setek sudah membentuk tunas dan akar bercabang",
+        "en": "Hypocotyl with cotyledons breaking through the seed coat. Cuttings have formed shoots and branched roots"
+      },
+      "principal": 0,
+      "order": 7,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "07",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000706",
+      "code": "09",
+      "label": {
+        "id": "Kemunculan: benih muncul dari tanah dengan hipokotil dan kotiledon masih terbungkus kulit tanduk. Setek berakar 6–7 cm dengan tunas 1–2 buku. Stum menumbuhkan tunas dengan bakal daun pertama",
+        "en": "Emergence: Seeds have emerged from soil and show the hypocotile with cotyledons still enclosed in the parchment. The cuttings present roots 6-7 cm. long and shoots with 1-2 nodes. Stumps show sprouts with first leaf initials"
+      },
+      "principal": 0,
+      "order": 9,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "09",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000707",
+      "code": "10",
+      "label": {
+        "id": "Kotiledon membuka penuh; sepasang daun sejati pertama memisah pada tunas atau pada cabang pohon kopi",
+        "en": "Cotyledons completely unfolded. First pair of true leaves separating on shoot or first pair of true leaves separating on branch of the coffee tree"
+      },
+      "principal": 1,
+      "order": 10,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "10",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000708",
+      "code": "11",
+      "label": {
+        "id": "Sepasang daun pertama membuka, belum berukuran penuh; daun hijau muda atau perunggu",
+        "en": "First leaf pair unfolded, not yet at full size. Leaves are light green or bronze"
+      },
+      "principal": 1,
+      "order": 11,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "11",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000709",
+      "code": "12",
+      "label": {
+        "id": "2 pasang daun membuka, belum berukuran penuh; daun hijau muda atau perunggu",
+        "en": "2 leaf pairs unfolded, not yet at full size. Leaves are light green or bronze"
+      },
+      "principal": 1,
+      "order": 12,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "12",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000710",
+      "code": "13",
+      "label": {
+        "id": "3 pasang daun membuka, belum berukuran penuh; pasangan daun ketiga dari pucuk berwarna hijau tua",
+        "en": "3 leaf pairs unfolded, not yet full size. The third leaf pair from apex is dark green"
+      },
+      "principal": 1,
+      "order": 13,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "13",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000711",
+      "code": "14",
+      "label": {
+        "id": "4 pasang daun membuka; pasangan daun keempat dari pucuk hijau tua dan berukuran penuh",
+        "en": "4 leaf pairs unfolded. The fourth leaf pair from apex is dark green and has reached full size"
+      },
+      "principal": 1,
+      "order": 14,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "14",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000712",
+      "code": "15",
+      "label": {
+        "id": "5 pasang daun membuka",
+        "en": "5 leaf pairs unfolded"
+      },
+      "principal": 1,
+      "order": 15,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "15",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000713",
+      "code": "16",
+      "label": {
+        "id": "6 pasang daun membuka",
+        "en": "6 leaf pairs unfolded"
+      },
+      "principal": 1,
+      "order": 16,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "16",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000714",
+      "code": "17",
+      "label": {
+        "id": "7 pasang daun membuka",
+        "en": "7 leaf pairs unfolded"
+      },
+      "principal": 1,
+      "order": 17,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "17",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000715",
+      "code": "18",
+      "label": {
+        "id": "8 pasang daun membuka",
+        "en": "8 leaf pairs unfolded"
+      },
+      "principal": 1,
+      "order": 18,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "18",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000716",
+      "code": "19",
+      "label": {
+        "id": "9 pasang daun atau lebih membuka",
+        "en": "9 or more leaf pairs unfolded"
+      },
+      "principal": 1,
+      "order": 19,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "19",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000717",
+      "code": "20",
+      "label": {
+        "id": "Sepasang cabang primer pertama tampak",
+        "en": "First pair of primary branches are visible"
+      },
+      "principal": 2,
+      "order": 20,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "20",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000718",
+      "code": "21",
+      "label": {
+        "id": "10 pasang cabang primer tampak",
+        "en": "10 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 21,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "21",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000719",
+      "code": "22",
+      "label": {
+        "id": "20 pasang cabang primer tampak",
+        "en": "20 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 22,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "22",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000720",
+      "code": "23",
+      "label": {
+        "id": "30 pasang cabang primer tampak",
+        "en": "30 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 23,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "23",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000721",
+      "code": "24",
+      "label": {
+        "id": "40 pasang cabang primer tampak",
+        "en": "40 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 24,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "24",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000722",
+      "code": "25",
+      "label": {
+        "id": "50 pasang cabang primer tampak",
+        "en": "50 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 25,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "25",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000723",
+      "code": "26",
+      "label": {
+        "id": "60 pasang cabang primer tampak",
+        "en": "60 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 26,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "26",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000724",
+      "code": "27",
+      "label": {
+        "id": "70 pasang cabang primer tampak",
+        "en": "70 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 27,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "27",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000725",
+      "code": "28",
+      "label": {
+        "id": "80 pasang cabang primer tampak",
+        "en": "80 pair of primary branches visible"
+      },
+      "principal": 2,
+      "order": 28,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "28",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000726",
+      "code": "29",
+      "label": {
+        "id": "90 pasang cabang primer atau lebih tampak",
+        "en": "90 or more pairs of primary branches visible"
+      },
+      "principal": 2,
+      "order": 29,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "29",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000727",
+      "code": "31",
+      "label": {
+        "id": "10 buku pada cabang",
+        "en": "10 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 31,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "31",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000728",
+      "code": "32",
+      "label": {
+        "id": "20 buku pada cabang",
+        "en": "20 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 32,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "32",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000729",
+      "code": "33",
+      "label": {
+        "id": "30 buku pada cabang",
+        "en": "30 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 33,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "33",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000730",
+      "code": "34",
+      "label": {
+        "id": "40 buku pada cabang",
+        "en": "40 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 34,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "34",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000731",
+      "code": "35",
+      "label": {
+        "id": "50 buku pada cabang",
+        "en": "50 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 35,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "35",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000732",
+      "code": "36",
+      "label": {
+        "id": "60 buku pada cabang",
+        "en": "60 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 36,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "36",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000733",
+      "code": "37",
+      "label": {
+        "id": "70 buku pada cabang",
+        "en": "70 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 37,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "37",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000734",
+      "code": "38",
+      "label": {
+        "id": "80 buku pada cabang",
+        "en": "80 nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 38,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "38",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000735",
+      "code": "39",
+      "label": {
+        "id": "90 buku atau lebih pada cabang",
+        "en": "90 or more nodes present in the branch(es)"
+      },
+      "principal": 3,
+      "order": 39,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "39",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000736",
+      "code": "51",
+      "label": {
+        "id": "Kuncup perbungaan membengkak di ketiak daun",
+        "en": "Inflorescence buds swelling in leaf axils"
+      },
+      "principal": 5,
+      "order": 51,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "51",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000737",
+      "code": "53",
+      "label": {
+        "id": "Kuncup perbungaan pecah dan terbungkus lendir kecoklatan; bunga belum tampak",
+        "en": "Inflorescence buds burst and covered by brown mucilage; no flowers visible"
+      },
+      "principal": 5,
+      "order": 53,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "53",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000738",
+      "code": "57",
+      "label": {
+        "id": "Bunga tampak, masih tertutup dan rapat, pada perbungaan bermahkota banyak — 3–4 bunga per perbungaan",
+        "en": "Flowers visible, still closed and tightly join, borne on multiflowered inflorescence (3-4 flowers per inflorescence)"
+      },
+      "principal": 5,
+      "order": 57,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "57",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000739",
+      "code": "58",
+      "label": {
+        "id": "Bunga tampak, merenggang, masih tertutup, mahkota 4–6 mm dan hijau (fase dorman)",
+        "en": "Flowers visible, untight, still closed, petals 4-6 mm long and green (dormant stage)"
+      },
+      "principal": 5,
+      "order": 58,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "58",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000740",
+      "code": "59",
+      "label": {
+        "id": "Bunga dengan mahkota memanjang 6–10 mm, masih tertutup dan berwarna putih",
+        "en": "Flowers with petals elongated (6-10 mm long), still closed and white color"
+      },
+      "principal": 5,
+      "order": 59,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "59",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000741",
+      "code": "60",
+      "label": {
+        "id": "Bunga pertama mekar",
+        "en": "First flowers open"
+      },
+      "principal": 6,
+      "order": 60,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "60",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000742",
+      "code": "61",
+      "label": {
+        "id": "10% bunga mekar",
+        "en": "10% of flowers open"
+      },
+      "principal": 6,
+      "order": 61,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "61",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000743",
+      "code": "63",
+      "label": {
+        "id": "30% bunga mekar",
+        "en": "30% of flowers open"
+      },
+      "principal": 6,
+      "order": 63,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "63",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000744",
+      "code": "65",
+      "label": {
+        "id": "50% bunga mekar",
+        "en": "50% of flowers open"
+      },
+      "principal": 6,
+      "order": 65,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "65",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000745",
+      "code": "67",
+      "label": {
+        "id": "70% bunga mekar",
+        "en": "70% of flowers open"
+      },
+      "principal": 6,
+      "order": 67,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "67",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000746",
+      "code": "69",
+      "label": {
+        "id": "90% bunga mekar",
+        "en": "90% of flowers open"
+      },
+      "principal": 6,
+      "order": 69,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "69",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000747",
+      "code": "70",
+      "label": {
+        "id": "Buah tampak sebagai beri kecil kekuningan",
+        "en": "Fruits visible as small yellowish berries"
+      },
+      "principal": 7,
+      "order": 70,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "70",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000748",
+      "code": "71",
+      "label": {
+        "id": "Buah jadi: awal pertumbuhan beri, buah mencapai 10% ukuran akhir (sebesar kepala jarum)",
+        "en": "Fruit set: Beginning of berry growth. Fruits have reached 10% of final size (pinheads)"
+      },
+      "principal": 7,
+      "order": 71,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "71",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000749",
+      "code": "73",
+      "label": {
+        "id": "Buah hijau muda, isinya cair dan bening; buah mencapai 30% ukuran akhir (pertumbuhan cepat)",
+        "en": "Fruits are light green and contents are liquid and crystalline. Fruits have reached 30% of final size (fast growth)"
+      },
+      "principal": 7,
+      "order": 73,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "73",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000750",
+      "code": "75",
+      "label": {
+        "id": "Buah hijau muda, isinya cair dan bening; buah mencapai 50% ukuran akhir",
+        "en": "Fruits are light green and its contents are liquid and crystalline. Fruits have reached 50% of final size"
+      },
+      "principal": 7,
+      "order": 75,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "75",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000751",
+      "code": "77",
+      "label": {
+        "id": "Buah hijau tua, isinya padat dan putih; buah mencapai 70% ukuran akhir",
+        "en": "Fruits are dark green and its contents are solid and white. Fruits have reached 70% of final size"
+      },
+      "principal": 7,
+      "order": 77,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "77",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000752",
+      "code": "79",
+      "label": {
+        "id": "Buah hijau pucat, isinya padat dan putih; kemasakan fisiologis selesai, buah mencapai 90% ukuran akhir",
+        "en": "Fruits are pale green and its contents are solid and white. Physiological maturity is complete. Fruits have reached 90% of final size"
+      },
+      "principal": 7,
+      "order": 79,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "79",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000753",
+      "code": "81",
+      "label": {
+        "id": "Awal perubahan warna buah dari hijau pucat ke kuning atau merah",
+        "en": "Beginning of change of fruit coloration from pale green to yellow or red"
+      },
+      "principal": 8,
+      "order": 81,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "81",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000754",
+      "code": "85",
+      "label": {
+        "id": "Warna buah menguat — kuning atau merah, khas varietas; buah belum siap dipetik",
+        "en": "Increase in intensity (variety-specific), yellow or red, fruit color; fruit not yet ready for picking"
+      },
+      "principal": 8,
+      "order": 85,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "85",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000755",
+      "code": "88",
+      "label": {
+        "id": "Buah berwarna masak penuh dan siap dipetik",
+        "en": "Fruit is fully-ripe color and ready for picking"
+      },
+      "principal": 8,
+      "order": 88,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "88",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000756",
+      "code": "89",
+      "label": {
+        "id": "Lewat masak: mulai menghitam atau mengering; buah bertahan di pohon atau mulai gugur",
+        "en": "Overripe; beginning of darkening or drying; fruits stay on the tree or abscission begins"
+      },
+      "principal": 8,
+      "order": 89,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "89",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000757",
+      "code": "90",
+      "label": {
+        "id": "Tunas selesai berkembang; tanaman tampak hijau tua pekat, daun berukuran normal, dan panen berada di bagian bawah tanaman",
+        "en": "Shoots have completed their development; the plant appears of an intense dark green color, leaves are of normal size and harvest locates at the bottom part of the plant"
+      },
+      "principal": 9,
+      "order": 90,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "90",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000758",
+      "code": "93",
+      "label": {
+        "id": "Daun tua berubah dari hijau pekat ke kuning berbercak merah, dan gugur terutama pada saat panen",
+        "en": "Older leaves change its color from deep green to yellow with red spots, and fall specially at harvesting time"
+      },
+      "principal": 9,
+      "order": 93,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "93",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000759",
+      "code": "94",
+      "label": {
+        "id": "Tajuk berubah hijau pucat; daun gugur di bagian bawah batang utama dan cabang bawah",
+        "en": "The foliage changes to a pale green color. Defoliation is observed on the bottom part of the main stem and lower branches"
+      },
+      "principal": 9,
+      "order": 94,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "94",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000760",
+      "code": "97",
+      "label": {
+        "id": "Zona produksi berpindah ke bagian atas tunas utama dan bagian luar cabang; daun lebih kecil dari normal, daun gugur banyak di bagian bawah dan dalam, sebagian cabang bawah mati",
+        "en": "The production zone has moved towards the upper parts in the main shoot and outer parts of branches, leaves are of smaller size than normal, strong defoliation is observed on the bottom and inner part of the plant, some dead branches are observed at the bottom"
+      },
+      "principal": 9,
+      "order": 97,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "97",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000761",
+      "code": "98",
+      "label": {
+        "id": "Zona produksi tinggal beberapa cabang di pucuk dan beberapa buku di ujungnya; tanaman meranggas berat, penuaan tinggi, 90% panen atau lebih selesai",
+        "en": "The production zone is limited to a very few branches on the top of the shoot and a very few nodes on the tip of these branches, and the plant is heavily defoliated. A high-degree of senescence has been reached. 90% or more of the harvest completed"
+      },
+      "principal": 9,
+      "order": 98,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "98",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000762",
+      "code": "99",
+      "label": {
+        "id": "Perlakuan pascapanen atau penyimpanan",
+        "en": "Post harvest or storage treatments"
+      },
+      "principal": 9,
+      "order": 99,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "99",
+          "relation": "exact"
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Growth stages of mono- and dicotyledonous plants — BBCH Monograph",
+        "publisher": "Federal Biological Research Centre for Agriculture and Forestry (BBA)",
+        "year": 2001,
+        "locator": "Edisi ke-2, disunting Uwe Meier; kunci kopi dirujuk ke Arcila-Pulgarín dkk., in press"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 8,
+      "to": 8
+    }
+  ]
+}
