@@ -94,7 +94,38 @@ anggap ada penulis lain yang aktif.
 
 ---
 
-## 4. Aturan main
+## 4. Penyeragaman nama principal
+
+Registri Kementan menulis nama pemegang pendaftaran dengan ejaan yang tidak konsisten.
+Dua sisi repositori ini memakai **satu** cara, jangan sampai jadi dua:
+
+| Sisi | Pemetaan | Data |
+|---|---|---|
+| Benih | `proseed_data/pemohon_alias.csv` | `varietas_terdaftar.csv` kolom `pemohon` + `pemohon_kanonik` |
+| Pupuk & pestisida | `pukpes_data/principal_alias.csv` | `principal_kanonik.csv` kolom `nama_asli` + `nama_kanonik` |
+
+Aturannya:
+
+- **Nama asli tidak pernah ditimpa.** Hasil penyeragaman selalu masuk kolom terpisah.
+- **Setiap penggabungan dicatat beserta alasannya** di berkas alias, memakai kosakata `dasar`
+  yang sama di kedua sisi: `kanonik`, `ejaan/kapitalisasi/spasi`, `tanda-baca`,
+  `beda-bentuk-badan`.
+- **Pemilihan bentuk kanonik**, berurutan: ada prefiks badan hukum → bukan ALL CAPS → tanpa
+  spasi ganda atau spasi ekor → paling sering muncul.
+- **`perlu_tinjau=ya`** untuk nama yang sama tetapi bentuk badannya berbeda (CV vs PT vs UD).
+  Digabung karena hampir pasti salah entri, ditandai supaya bisa dipisah lagi.
+- **Singkatan tidak pernah digabung.** `PT BCA` mungkin PT Benih Citra Asia, `PT BISI` bisa
+  PT BISI International atau PT Benih Inti Subur Intani — dua-duanya masuk akal. Tandai,
+  jangan tebak.
+- **Membalik penggabungan** = sunting berkas alias, bangkitkan ulang kolom kanoniknya. Tidak
+  ada data asli yang hilang.
+
+Catatan: `pukpes_data/produsen_master.csv` dibuat sebelum konvensi ini disepakati dan memakai
+cara lama — nama asli tidak disimpan, alasan penggabungan tidak dicatat, dan bentuk
+kanoniknya kadang keliru (ia memilih `PT. SINAR␣␣GENERAL INDUSTRIES` dengan spasi ganda).
+Berkas itu dibiarkan apa adanya sebagai jejak, tetapi yang mengikat adalah `principal_alias.csv`.
+
+## 5. Aturan main
 
 - **Jangan hapus berkas yang bukan kamu buat.** Konfirmasi ke pemilik repositori dulu.
 - **Jangan nomori ulang ID milik orang lain.** Kalau bertabrakan, yang pindah adalah entitas
@@ -120,7 +151,7 @@ anggap ada penulis lain yang aktif.
 
 ---
 
-## 5. Yang menegakkan ini
+## 6. Yang menegakkan ini
 
 Konvensi yang hanya tertulis akan dilanggar diam-diam. Tiga aturan pemeriksa menegakkannya:
 

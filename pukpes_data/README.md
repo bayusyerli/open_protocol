@@ -57,3 +57,17 @@ lengkap termasuk hama sasaran & dosis).
 - `pukpes_database.xlsx` — workbook 5 sheet (Ringkasan, Produsen Master,
   Pupuk Terdaftar, Pupuk Legacy, Pestisida Terdaftar); header berwarna, auto-filter,
   freeze pane. Kolom JSON mentah pestisida tidak disertakan di Excel (tetap ada di CSV & raw/).
+
+## Penyeragaman nama principal (19 Agustus 2026)
+
+| Berkas | Isi |
+|---|---|
+| `principal_kanonik.csv` | 2.304 nama sebagaimana tertulis di registri + kolom `nama_kanonik` |
+| `principal_alias.csv` | 681 baris pemetaan beserta alasannya (`dasar`, `perlu_tinjau`) |
+
+2.304 nama mentah menjadi 1.949 principal; 355 varian digabung, 7 ditandai perlu ditinjau
+karena bentuk badan hukumnya berbeda. Konvensinya sama dengan sisi benih di
+`proseed_data/pemohon_alias.csv` dan dijelaskan di `spec/00-konvensi-kerja-paralel.md`.
+
+`produsen_master.csv` dibuat lebih dulu dengan cara lain — nama asli tidak disimpan dan
+alasan penggabungan tidak dicatat. Dibiarkan sebagai jejak; yang mengikat `principal_alias.csv`.
