@@ -107,6 +107,41 @@ const CAKUPAN = {
     'op:cmd:00002315', // Petsai — sawi putih, Brassica chinensis
     'op:cmd:00002360', // Sawi Putih — nama lain petsai
   ],
+  // BBCH — sayuran daun TIDAK berkrop; catatan kaki kuncinya menyebut cakupan lebih luas
+  // dari tiga jenis contohnya: "jenis beroset" dan "jenis tanpa roset"
+  'stage-scale-bbch-daun-tak-berkrop.json': [
+    'op:cmd:00001132', // Sawi
+    'op:cmd:00002359', // Sawi Hijau
+    'op:cmd:00002079', // Caisin
+    'op:cmd:00002080', // Caisin (Sawi Hijau)
+    'op:cmd:00002358', // Sawi Caisim
+    'op:cmd:00002357', // Sawi Bakso
+    'op:cmd:00002286', // Mustard
+    'op:cmd:00002303', // Pak Choi
+    'op:cmd:00002364', // Selada
+    'op:cmd:00002374', // Slada
+    'op:cmd:00002178', // Kailan — Brassica oleracea, sekerabat kale yang disebut kunci
+  ],
+  // BBCH — brassica lain: kembang kol, brokoli, kubis brussel
+  'stage-scale-bbch-brassica-lain.json': [
+    'op:cmd:00001221', // Kubis Bunga — kembang kol
+    'op:cmd:00001248', // Brokoli
+  ],
+  // BBCH — sayuran umbi & batang
+  'stage-scale-bbch-umbi-batang.json': [
+    'op:cmd:00001105', // Wortel — Daucus carota
+    'op:cmd:00002262', // Lobak — Raphanus sativus
+  ],
+  // BBCH — buncis: Phaseolus vulgaris, BUKAN Vigna
+  'stage-scale-bbch-buncis.json': [
+    'op:cmd:00001344', // Kacang Buncis
+    'op:cmd:00001186', // Buncis
+    'op:cmd:00002175', // Kacang Merah — Phaseolus vulgaris
+  ],
+  // BBCH — kacang tanah
+  'stage-scale-bbch-kacang-tanah.json': [
+    'op:cmd:00001034', // Kacang tanah
+  ],
   // Umur budidaya udang vaname (DOC)
   'stage-scale-doc-udang.json': [
     'op:cmd:00000005', // Udang vaname
@@ -116,18 +151,23 @@ const CAKUPAN = {
 // Sengaja TIDAK ditautkan, beserta alasannya. Ditulis di sini supaya keputusannya
 // bisa dibantah orang berikutnya, bukan hilang jadi daftar yang tampak lengkap.
 const DIKECUALIKAN = {
+  'op:cmd:00002036': 'Bayam — Amaranthus, bukan Spinacia yang disebut kunci; tumbuh tegak, bukan beroset',
+  'op:cmd:00002181': 'Kangkung — Ipomoea aquatica, suku Convolvulaceae, merambat dan sebagian tumbuh di air',
+  'op:cmd:00002182': 'Kangkung Darat — alasan sama seperti Kangkung',
+  'op:cmd:00002365': 'Selada Air — Nasturtium officinale, suku dan tempat tumbuh berbeda sama sekali',
+  'op:cmd:00002042': 'Bit — monograf memberinya kunci tersendiri (Beet, Meier dkk. 1993) yang belum disalin',
+  'op:cmd:00001026': 'Kacang panjang — Vigna unguiculata; kunci buncis menyebut Phaseolus',
+  'op:cmd:00002177': 'Kacang Tunggak — Vigna unguiculata, alasan sama',
+  'op:cmd:00001032': 'Kacang hijau — Vigna radiata, alasan sama',
+  'op:cmd:00002171': 'Kacang Kapri — Pisum sativum; monograf punya kunci Pea tersendiri yang belum disalin',
+  'op:cmd:00002169': 'Kacang Ercis — Pisum sativum, alasan sama',
+  'op:cmd:00002172': 'Kacang Komak — Lablab purpureus, marga lain',
+  'op:cmd:00002173': 'Kacang Koro — Canavalia, marga lain',
+  'op:cmd:00002174': 'Kacang Koro Benguk — Mucuna pruriens, marga lain',
+  'op:cmd:00002170': 'Kacang Gude — Cajanus cajan, marga lain',
+  'op:cmd:00002176': 'Kacang Nasi — jenisnya tidak bisa dipastikan dari namanya',
   'op:cmd:00002220': 'Kentang Hitam — Plectranthus rotundifolius, bukan Solanum tuberosum; namanya menipu',
   'op:cmd:00001261': 'Bawang — nama generik tanpa jenis; kunci menyebut empat jenis Allium yang berbeda perlakuannya',
-  'op:cmd:00001221': 'Kubis Bunga — kembang kol, Brassica oleracea var. botrytis; masuk kunci "other brassica vegetables" yang belum disalin',
-  'op:cmd:00002303': 'Pak Choi — sawi yang TIDAK berkrop; masuk kunci "leaf vegetables not forming heads" yang belum disalin',
-  'op:cmd:00001132': 'Sawi — tidak berkrop, alasan sama seperti Pak Choi',
-  'op:cmd:00002359': 'Sawi Hijau — tidak berkrop, alasan sama',
-  'op:cmd:00002358': 'Sawi Caisim — tidak berkrop, alasan sama',
-  'op:cmd:00002357': 'Sawi Bakso — tidak berkrop, alasan sama',
-  'op:cmd:00002080': 'Caisin (Sawi Hijau) — tidak berkrop, alasan sama',
-  'op:cmd:00002286': 'Mustard — sawi daun, tidak berkrop, alasan sama',
-  'op:cmd:00002364': 'Selada — kunci hanya mencakup selada KROP (Lactuca sativa var. capitata); jenis selada tidak bisa dipastikan dari namanya',
-  'op:cmd:00002374': 'Slada — ejaan lain selada, alasan sama',
   'op:cmd:00002365': 'Selada Air — Nasturtium officinale, suku dan tempat tumbuh berbeda sama sekali',
   'op:cmd:00002242': 'Labu Air — Lagenaria siceraria, genus lain; kunci cucurbit tidak menyebutnya',
   'op:cmd:00002245': 'Labu Siam — Sechium edule, genus lain',

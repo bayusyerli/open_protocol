@@ -507,6 +507,44 @@ suku Lamiaceae — sekerabat kemangi, bukan Solanaceae. Dikecualikan dengan alas
 
 ---
 
+### D32 — lima kunci sayuran & kacang, dan dua salah ketik yang ikut disalin
+
+Sayuran daun tidak berkrop, brassica lain, sayuran umbi & batang, buncis, dan kacang tanah:
+316 fase baru, cakupan varietas naik dari 48,0% ke 52,4% — melewati separuh.
+
+**Catatan kaki sumber yang memperluas cakupannya sendiri.** Kunci sayuran daun tidak berkrop
+menyebut tiga jenis contoh — bayam eropa, selada daun, kale — dan kalau berhenti di situ,
+sekitar 130 varietas sawi, caisim, dan pak choi akan tetap tanpa skala. Tetapi catatan
+kakinya berbunyi "untuk selada tanpa krop, bayam eropa, **dan jenis dengan pertumbuhan
+beroset**" serta "untuk kale **dan jenis tanpa pertumbuhan roset**". Kuncinya sendiri
+menyatakan berlaku menurut bentuk pertumbuhan, bukan menurut daftar jenis. Penautan sawi dan
+pak choi karena itu bersandar pada teks sumbernya, bukan pada kemiripan yang saya nilai
+sendiri — dan itu beda yang menentukan.
+
+**Dua salah ketik monograf ikut disalin, ditandai.** Pada kunci sayuran daun tidak berkrop,
+fase 83, 84, 86, 87, dan 88 semuanya menulis "atau 20% biji" padahal deretnya jelas 30%, 40%,
+60%, 70%, 80%. Pada kunci kacang tanah, fase 92 menulis "About 40%" padahal deretnya
+10-20-30-40 dan kode 94 juga 40%. Yang diambil: `label.en` menyalin teks sumber apa adanya,
+`label.id` memakai angka yang runtut dengan deretnya, dan tiap fase membawa penanda pada
+`mappings.note`. Menyalin bulat-bulat akan menurunkan angka yang salah ke lapangan; membetulkan
+diam-diam akan menghapus jejak bahwa sumbernya keliru. Yang ketiga — menandainya — memberi
+keduanya. Judul fase utama 8 pada kunci sayuran umbi juga tertulis "Rispening"; itu judul,
+bukan deskripsi fase, jadi cukup dicatat di `notes`.
+
+**Phaseolus bukan Vigna.** Kunci buncis menyebut *Phaseolus vulgaris* var. *nanus*. Kacang
+panjang (224 varietas), kacang tunggak (29), dan kacang hijau (60) semuanya *Vigna* —
+seluruhnya 313 varietas yang tidak ditautkan meski namanya sama-sama "kacang". Kapri dan
+ercis *Pisum sativum*, yang punya kunci sendiri di monograf dan belum disalin. Kacang komak,
+koro, koro benguk, dan gude masing-masing marga lain lagi.
+
+**Fase utama 6 kacang tanah bukan cuma pembungaan.** Kode 62, 64, 66, dan 68 menggambarkan
+perjalanan ginofor — tangkai buah yang tumbuh dari bunga, memanjang, lalu menembus tanah
+tempat polong terbentuk. Tanpa keempat kode itu, perkembangan polong kacang tanah tidak bisa
+dijadwalkan sama sekali, dan skala yang menyalin "pembungaan" saja akan kehilangan justru
+bagian yang menentukan hasil.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -534,5 +572,5 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | Kegranularan registri dipertahankan, tetapi `Commodity` belum punya hubungan hierarkis internal — pengelompokan seharusnya lewat konsep broader AGROVOC yang belum dipetakan |
 | 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
-| 22 | 52,0% varietas belum punya skala fase | Turun dari 89% setelah sepuluh kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168). Yang paling dekat: kunci sayuran daun TIDAK berkrop — sudah ada di monograf, dan di situlah tempat sekitar 130 varietas sawi, caisim, pak choi, dan selada daun |
+| 22 | 47,6% varietas belum punya skala fase | Turun dari 89% setelah lima belas kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168), alpukat (145). Kunci monograf yang masih tersisa tinggal bit dan kacang polong; selebihnya perlu kunci dari luar monograf, atau belum pernah ada |
 | 23 | Durian tidak punya kunci BBCH yang pernah diterbitkan | Bukan kelalaian pencarian: monograf memuat 28 kunci tanaman dan durian bukan salah satunya, dan penelusuran pustaka tidak menemukan terbitan lain. Yang ada penelitian fenologi berkosakata sendiri — kuncup "mata ketam", antesis, lalu umur buah dalam hari setelah antesis. Menyusunnya berarti membuat skala baru seperti skala DOC udang, bukan menyalin; perlu keputusan tersendiri |

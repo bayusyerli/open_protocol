@@ -1,0 +1,1356 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000012",
+  "key": "bbch-brassica-lain",
+  "label": {
+    "id": "BBCH — Brassica lain (kembang kol, brokoli, kubis brussel)",
+    "en": "BBCH scale — other brassica vegetables"
+  },
+  "definition": {
+    "id": "Skala fenologi BBCH untuk brassica yang dipanen bunga atau kuncupnya: kubis brussel (Brassica oleracea var. gemmifera), kembang kol (var. botrytis), dan brokoli (var. italica). Fase utama 4 punya dua bacaan berdampingan — perkembangan kuncup samping untuk kubis brussel, pembentukan massa bunga untuk kembang kol dan brokoli — dan keduanya disalin ke dalam satu label."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00001221",
+        "label": "Kubis Bunga"
+      },
+      {
+        "id": "op:cmd:00001248",
+        "label": "Brokoli"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "scheme": "BBCH",
+      "id": "bbch-other-brassica",
+      "relation": "exact",
+      "note": "Kunci BBCH brassica lain, dirujuk monograf ke Feller dkk. (1995 a)."
+    }
+  ],
+  "notes": {
+    "id": "Fase utama 2 hanya berlaku untuk brokoli, fase utama 3 hanya untuk kubis brussel, dan fase 41–49 serta 51 punya bacaan berbeda menurut jenisnya. Kode 42 dan 44 tidak ada di sumber. Panen konsumsi terjadi pada fase 49; fase 5 sampai 8 hanya terjadi pada tanaman yang dibiarkan berbunga untuk produksi benih."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00001100",
+      "code": "00",
+      "label": {
+        "id": "Benih kering",
+        "en": "Dry seed"
+      },
+      "principal": 0,
+      "order": 0,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "00",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001101",
+      "code": "01",
+      "label": {
+        "id": "Awal imbibisi benih",
+        "en": "Beginning of seed imbibition"
+      },
+      "principal": 0,
+      "order": 1,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "01",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001102",
+      "code": "03",
+      "label": {
+        "id": "Imbibisi benih selesai",
+        "en": "Seed imbibition complete"
+      },
+      "principal": 0,
+      "order": 3,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "03",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001103",
+      "code": "05",
+      "label": {
+        "id": "Radikula muncul dari benih",
+        "en": "Radicle emerged from seed"
+      },
+      "principal": 0,
+      "order": 5,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "05",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001104",
+      "code": "07",
+      "label": {
+        "id": "Hipokotil bersama kotiledon menembus kulit benih",
+        "en": "Hypocotyl with cotyledons breaking through seed coat"
+      },
+      "principal": 0,
+      "order": 7,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "07",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001105",
+      "code": "09",
+      "label": {
+        "id": "Kemunculan: kotiledon menembus permukaan tanah",
+        "en": "Emergence: cotyledons break through soil surface"
+      },
+      "principal": 0,
+      "order": 9,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "09",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001106",
+      "code": "10",
+      "label": {
+        "id": "Kotiledon membuka penuh; titik tumbuh atau bakal daun sejati tampak",
+        "en": "Cotyledons completely unfolded; growing point or true leaf initial visible"
+      },
+      "principal": 1,
+      "order": 10,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "10",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001107",
+      "code": "11",
+      "label": {
+        "id": "Daun sejati pertama membuka",
+        "en": "First true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 11,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "11",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001108",
+      "code": "12",
+      "label": {
+        "id": "Daun sejati ke-2 membuka",
+        "en": "2nd true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 12,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "12",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001109",
+      "code": "13",
+      "label": {
+        "id": "Daun sejati ke-3 membuka",
+        "en": "3rd true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 13,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "13",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001110",
+      "code": "14",
+      "label": {
+        "id": "Daun sejati ke-4 membuka",
+        "en": "4th true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 14,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "14",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001111",
+      "code": "15",
+      "label": {
+        "id": "Daun sejati ke-5 membuka",
+        "en": "5th true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 15,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "15",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001112",
+      "code": "16",
+      "label": {
+        "id": "Daun sejati ke-6 membuka",
+        "en": "6th true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 16,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "16",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001113",
+      "code": "17",
+      "label": {
+        "id": "Daun sejati ke-7 membuka",
+        "en": "7th true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 17,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "17",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001114",
+      "code": "18",
+      "label": {
+        "id": "Daun sejati ke-8 membuka",
+        "en": "8th true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 18,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "18",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001115",
+      "code": "19",
+      "label": {
+        "id": "9 daun sejati atau lebih membuka",
+        "en": "9 or more true leaves unfolded"
+      },
+      "principal": 1,
+      "order": 19,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "19",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001116",
+      "code": "21",
+      "label": {
+        "id": "Tunas samping pertama tampak — untuk brokoli",
+        "en": "First side shoot visible (for broccoli)"
+      },
+      "principal": 2,
+      "order": 21,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "21",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001117",
+      "code": "22",
+      "label": {
+        "id": "Tunas samping ke-2 tampak",
+        "en": "2nd side shoot visible"
+      },
+      "principal": 2,
+      "order": 22,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "22",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001118",
+      "code": "23",
+      "label": {
+        "id": "Tunas samping ke-3 tampak",
+        "en": "3rd side shoot visible"
+      },
+      "principal": 2,
+      "order": 23,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "23",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001119",
+      "code": "24",
+      "label": {
+        "id": "Tunas samping ke-4 tampak",
+        "en": "4th side shoot visible"
+      },
+      "principal": 2,
+      "order": 24,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "24",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001120",
+      "code": "25",
+      "label": {
+        "id": "Tunas samping ke-5 tampak",
+        "en": "5th side shoot visible"
+      },
+      "principal": 2,
+      "order": 25,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "25",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001121",
+      "code": "26",
+      "label": {
+        "id": "Tunas samping ke-6 tampak",
+        "en": "6th side shoot visible"
+      },
+      "principal": 2,
+      "order": 26,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "26",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001122",
+      "code": "27",
+      "label": {
+        "id": "Tunas samping ke-7 tampak",
+        "en": "7th side shoot visible"
+      },
+      "principal": 2,
+      "order": 27,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "27",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001123",
+      "code": "28",
+      "label": {
+        "id": "Tunas samping ke-8 tampak",
+        "en": "8th side shoot visible"
+      },
+      "principal": 2,
+      "order": 28,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "28",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001124",
+      "code": "29",
+      "label": {
+        "id": "9 tunas samping atau lebih tampak",
+        "en": "9 or more side shoots visible"
+      },
+      "principal": 2,
+      "order": 29,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "29",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001125",
+      "code": "31",
+      "label": {
+        "id": "Tunas utama mencapai 10% tinggi yang khas varietas — untuk kubis brussel",
+        "en": "Main shoot has reached 10% of the expected height typical for the variety (for brussels sprout)"
+      },
+      "principal": 3,
+      "order": 31,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "31",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001126",
+      "code": "32",
+      "label": {
+        "id": "Tunas utama mencapai 20% tinggi yang khas varietas",
+        "en": "Main shoot has reached 20% of the expected height typical for the variety"
+      },
+      "principal": 3,
+      "order": 32,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "32",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001127",
+      "code": "33",
+      "label": {
+        "id": "Tunas utama mencapai 30% tinggi yang khas varietas",
+        "en": "Main shoot has reached 30% of the expected height typical for the variety"
+      },
+      "principal": 3,
+      "order": 33,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "33",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001128",
+      "code": "34",
+      "label": {
+        "id": "Tunas utama mencapai 40% tinggi yang khas varietas",
+        "en": "Main shoot has reached 40% of the expected height typical for the variety"
+      },
+      "principal": 3,
+      "order": 34,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "34",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001129",
+      "code": "35",
+      "label": {
+        "id": "Tunas utama mencapai 50% tinggi yang khas varietas",
+        "en": "Main shoot has reached 50% of the expected height typical for the variety"
+      },
+      "principal": 3,
+      "order": 35,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "35",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001130",
+      "code": "36",
+      "label": {
+        "id": "Tunas utama mencapai 60% tinggi yang khas varietas",
+        "en": "Main shoot has reached 60% of the expected height typical for the variety"
+      },
+      "principal": 3,
+      "order": 36,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "36",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001131",
+      "code": "37",
+      "label": {
+        "id": "Tunas utama mencapai 70% tinggi yang khas varietas",
+        "en": "Main shoot has reached 70% of the expected height typical for the variety"
+      },
+      "principal": 3,
+      "order": 37,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "37",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001132",
+      "code": "38",
+      "label": {
+        "id": "Tunas utama mencapai 80% tinggi yang khas varietas",
+        "en": "Main shoot has reached 80% of the expected height typical for the variety"
+      },
+      "principal": 3,
+      "order": 38,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "38",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001133",
+      "code": "39",
+      "label": {
+        "id": "Tunas utama mencapai tinggi yang khas varietas",
+        "en": "Main shoot has reached the height typical for the variety"
+      },
+      "principal": 3,
+      "order": 39,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "39",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001134",
+      "code": "41",
+      "label": {
+        "id": "Kubis brussel: kuncup samping mulai berkembang. Kembang kol dan brokoli: massa bunga mulai terbentuk, lebar titik tumbuh > 1 cm",
+        "en": "Lateral buds begin to develop / Cauliflower heads begin to form; width of growing tip > 1 cm"
+      },
+      "principal": 4,
+      "order": 41,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "41",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001135",
+      "code": "43",
+      "label": {
+        "id": "Kubis brussel: kuncup pertama menutup rapat. Kembang kol dan brokoli: 30% garis tengah massa bunga tercapai",
+        "en": "First sprouts tightly closed / 30% of the expected head diameter reached"
+      },
+      "principal": 4,
+      "order": 43,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "43",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001136",
+      "code": "45",
+      "label": {
+        "id": "Kubis brussel: 50% kuncup menutup rapat. Kembang kol dan brokoli: 50% garis tengah massa bunga tercapai",
+        "en": "50% of the sprouts tightly closed / 50% of the expected head diameter reached"
+      },
+      "principal": 4,
+      "order": 45,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "45",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001137",
+      "code": "46",
+      "label": {
+        "id": "Kubis brussel: 60% kuncup menutup rapat. Kembang kol dan brokoli: 60% garis tengah tercapai",
+        "en": "60% of the sprouts tightly closed / 60% of the expected head diameter reached"
+      },
+      "principal": 4,
+      "order": 46,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "46",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001138",
+      "code": "47",
+      "label": {
+        "id": "Kubis brussel: 70% kuncup menutup rapat. Kembang kol dan brokoli: 70% garis tengah tercapai",
+        "en": "70% of the sprouts tightly closed / 70% of the expected head diameter reached"
+      },
+      "principal": 4,
+      "order": 47,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "47",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001139",
+      "code": "48",
+      "label": {
+        "id": "Kubis brussel: 80% kuncup menutup rapat. Kembang kol dan brokoli: 80% garis tengah tercapai",
+        "en": "80% of the sprouts tightly closed / 80% of the expected head diameter reached"
+      },
+      "principal": 4,
+      "order": 48,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "48",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001140",
+      "code": "49",
+      "label": {
+        "id": "Kubis brussel: kuncup di bawah tunas ujung menutup rapat. Kembang kol dan brokoli: ukuran dan bentuk khas tercapai, massa bunga menutup rapat",
+        "en": "Sprouts below terminal bud tightly closed / Typical size and form reached; head tightly closed"
+      },
+      "principal": 4,
+      "order": 49,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "49",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001141",
+      "code": "51",
+      "label": {
+        "id": "Kubis brussel: perbungaan utama tampak di antara daun teratas. Kembang kol dan brokoli: cabang perbungaan mulai memanjang",
+        "en": "Main inflorescence visible between uppermost leaves / Branches of inflorescence begin to elongate"
+      },
+      "principal": 5,
+      "order": 51,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "51",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001142",
+      "code": "55",
+      "label": {
+        "id": "Bunga pertama tampak, masih tertutup",
+        "en": "First individual flowers visible (still closed)"
+      },
+      "principal": 5,
+      "order": 55,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "55",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001143",
+      "code": "59",
+      "label": {
+        "id": "Mahkota bunga pertama tampak; bunga masih tertutup",
+        "en": "First flower petals visible; flowers still closed"
+      },
+      "principal": 5,
+      "order": 59,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "59",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001144",
+      "code": "60",
+      "label": {
+        "id": "Bunga pertama mekar, tersebar",
+        "en": "First flowers open (sporadically)"
+      },
+      "principal": 6,
+      "order": 60,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "60",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001145",
+      "code": "61",
+      "label": {
+        "id": "Awal berbunga: 10% bunga mekar",
+        "en": "Beginning of flowering: 10% of flowers open"
+      },
+      "principal": 6,
+      "order": 61,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "61",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001146",
+      "code": "62",
+      "label": {
+        "id": "20% bunga mekar",
+        "en": "20% of flowers open"
+      },
+      "principal": 6,
+      "order": 62,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "62",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001147",
+      "code": "63",
+      "label": {
+        "id": "30% bunga mekar",
+        "en": "30% of flowers open"
+      },
+      "principal": 6,
+      "order": 63,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "63",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001148",
+      "code": "64",
+      "label": {
+        "id": "40% bunga mekar",
+        "en": "40% of flowers open"
+      },
+      "principal": 6,
+      "order": 64,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "64",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001149",
+      "code": "65",
+      "label": {
+        "id": "Berbunga penuh: 50% bunga mekar",
+        "en": "Full flowering: 50% of flowers open"
+      },
+      "principal": 6,
+      "order": 65,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "65",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001150",
+      "code": "67",
+      "label": {
+        "id": "Pembungaan berakhir: sebagian besar mahkota gugur atau kering",
+        "en": "Flowering finishing: majority of petals fallen or dry"
+      },
+      "principal": 6,
+      "order": 67,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "67",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001151",
+      "code": "69",
+      "label": {
+        "id": "Akhir berbunga",
+        "en": "End of flowering"
+      },
+      "principal": 6,
+      "order": 69,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "69",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001152",
+      "code": "71",
+      "label": {
+        "id": "Buah pertama terbentuk",
+        "en": "First fruits formed"
+      },
+      "principal": 7,
+      "order": 71,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "71",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001153",
+      "code": "72",
+      "label": {
+        "id": "20% buah mencapai ukuran khasnya",
+        "en": "20% of fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 72,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "72",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001154",
+      "code": "73",
+      "label": {
+        "id": "30% buah mencapai ukuran khasnya",
+        "en": "30% of fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 73,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "73",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001155",
+      "code": "74",
+      "label": {
+        "id": "40% buah mencapai ukuran khasnya",
+        "en": "40% of fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 74,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "74",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001156",
+      "code": "75",
+      "label": {
+        "id": "50% buah mencapai ukuran khasnya",
+        "en": "50% of fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 75,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "75",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001157",
+      "code": "76",
+      "label": {
+        "id": "60% buah mencapai ukuran khasnya",
+        "en": "60% of fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 76,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "76",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001158",
+      "code": "77",
+      "label": {
+        "id": "70% buah mencapai ukuran khasnya",
+        "en": "70% of fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 77,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "77",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001159",
+      "code": "78",
+      "label": {
+        "id": "80% buah mencapai ukuran khasnya",
+        "en": "80% of fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 78,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "78",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001160",
+      "code": "79",
+      "label": {
+        "id": "Buah mencapai ukuran khasnya",
+        "en": "Fruits have reached typical size"
+      },
+      "principal": 7,
+      "order": 79,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "79",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001161",
+      "code": "81",
+      "label": {
+        "id": "Awal pemasakan: 10% buah masak",
+        "en": "Beginning of ripening: 10% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 81,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "81",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001162",
+      "code": "82",
+      "label": {
+        "id": "20% buah masak",
+        "en": "20% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 82,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "82",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001163",
+      "code": "83",
+      "label": {
+        "id": "30% buah masak",
+        "en": "30% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 83,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "83",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001164",
+      "code": "84",
+      "label": {
+        "id": "40% buah masak",
+        "en": "40% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 84,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "84",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001165",
+      "code": "85",
+      "label": {
+        "id": "50% buah masak",
+        "en": "50% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 85,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "85",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001166",
+      "code": "86",
+      "label": {
+        "id": "60% buah masak",
+        "en": "60% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 86,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "86",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001167",
+      "code": "87",
+      "label": {
+        "id": "70% buah masak",
+        "en": "70% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 87,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "87",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001168",
+      "code": "88",
+      "label": {
+        "id": "80% buah masak",
+        "en": "80% of fruits ripe"
+      },
+      "principal": 8,
+      "order": 88,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "88",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001169",
+      "code": "89",
+      "label": {
+        "id": "Masak penuh: biji pada seluruh tanaman berwarna khas dan keras",
+        "en": "Fully ripe: seeds on the whole plant of typical color and hard"
+      },
+      "principal": 8,
+      "order": 89,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "89",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001170",
+      "code": "92",
+      "label": {
+        "id": "Daun dan tunas mulai berubah warna",
+        "en": "Leaves and shoots beginning to discolour"
+      },
+      "principal": 9,
+      "order": 92,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "92",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001171",
+      "code": "95",
+      "label": {
+        "id": "50% daun kuning atau mati",
+        "en": "50% of leaves yellow or dead"
+      },
+      "principal": 9,
+      "order": 95,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "95",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001172",
+      "code": "97",
+      "label": {
+        "id": "Tanaman mati",
+        "en": "Plants dead"
+      },
+      "principal": 9,
+      "order": 97,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "97",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001173",
+      "code": "99",
+      "label": {
+        "id": "Produk hasil panen (biji)",
+        "en": "Harvested product (seeds)"
+      },
+      "principal": 9,
+      "order": 99,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "99",
+          "relation": "exact"
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Growth stages of mono- and dicotyledonous plants — BBCH Monograph",
+        "publisher": "Federal Biological Research Centre for Agriculture and Forestry (BBA)",
+        "year": 2001,
+        "locator": "Edisi ke-2, disunting Uwe Meier; kunci brassica lain dirujuk ke Feller dkk. (1995 a)"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 12,
+      "to": 12
+    }
+  ]
+}

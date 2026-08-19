@@ -1,0 +1,1042 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000014",
+  "key": "bbch-buncis",
+  "label": {
+    "id": "BBCH — Buncis (Phaseolus vulgaris)",
+    "en": "BBCH scale — bean"
+  },
+  "definition": {
+    "id": "Skala fenologi BBCH untuk buncis, Phaseolus vulgaris var. nanus. Kunci ini menyebut Phaseolus, BUKAN Vigna — kacang panjang, kacang tunggak, dan kacang hijau adalah Vigna dan tidak tercakup. Fase utama 3 dan 4 tidak dipakai. Kode 11 tidak ada: deret daun melompat dari 10 ke 12 karena buncis membuka sepasang daun tunggal lebih dulu sebelum daun trifoliat pertama."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00001344",
+        "label": "Kacang Buncis"
+      },
+      {
+        "id": "op:cmd:00001186",
+        "label": "Buncis"
+      },
+      {
+        "id": "op:cmd:00002175",
+        "label": "Kacang Merah"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "scheme": "BBCH",
+      "id": "bbch-bean",
+      "relation": "exact",
+      "note": "Kunci BBCH buncis, dirujuk monograf ke Feller dkk. (1995 b)."
+    }
+  ],
+  "notes": {
+    "id": "Sumber memberi bacaan kedua untuk sebagian kode pada fase 6 sampai 8, ditujukan bagi varietas yang masa berbunganya tidak terbatas: kode 61 \"awal berbunga\", 65 \"periode utama berbunga\", 71 \"awal perkembangan polong\", 75 \"periode utama perkembangan polong\", 81 \"biji mulai masak\", 85 \"periode utama pemasakan\". Yang disalin bacaan untuk varietas bermasa berbunga terbatas; bacaan kedua belum dimodelkan sebagai fase terpisah."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00001300",
+      "code": "00",
+      "label": {
+        "id": "Benih kering",
+        "en": "Dry seed"
+      },
+      "principal": 0,
+      "order": 0,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "00",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001301",
+      "code": "01",
+      "label": {
+        "id": "Awal imbibisi benih",
+        "en": "Beginning of seed imbibition"
+      },
+      "principal": 0,
+      "order": 1,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "01",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001302",
+      "code": "03",
+      "label": {
+        "id": "Imbibisi benih selesai",
+        "en": "Seed imbibition complete"
+      },
+      "principal": 0,
+      "order": 3,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "03",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001303",
+      "code": "05",
+      "label": {
+        "id": "Radikula muncul dari benih",
+        "en": "Radicle emerged from seed"
+      },
+      "principal": 0,
+      "order": 5,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "05",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001304",
+      "code": "07",
+      "label": {
+        "id": "Hipokotil bersama kotiledon menembus kulit benih",
+        "en": "Hypocotyl with cotyledons breaking through seed coat"
+      },
+      "principal": 0,
+      "order": 7,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "07",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001305",
+      "code": "08",
+      "label": {
+        "id": "Hipokotil mencapai permukaan tanah; lengkung hipokotil tampak",
+        "en": "Hypocotyl reaches the soil surface; hypocotyl arch visible"
+      },
+      "principal": 0,
+      "order": 8,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "08",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001306",
+      "code": "09",
+      "label": {
+        "id": "Kemunculan: hipokotil bersama kotiledon menembus permukaan tanah (fase pecah tanah)",
+        "en": "Emergence: hypocotyl with cotyledons break through soil surface (\"cracking stage\")"
+      },
+      "principal": 0,
+      "order": 9,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "09",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001307",
+      "code": "10",
+      "label": {
+        "id": "Kotiledon membuka penuh",
+        "en": "Cotyledons completely unfolded"
+      },
+      "principal": 1,
+      "order": 10,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "10",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001308",
+      "code": "12",
+      "label": {
+        "id": "2 daun penuh — sepasang daun pertama membuka",
+        "en": "2 full leaves (first leaf pair unfolded)"
+      },
+      "principal": 1,
+      "order": 12,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "12",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001309",
+      "code": "13",
+      "label": {
+        "id": "Daun sejati ke-3 — daun trifoliat pertama — membuka",
+        "en": "3rd true leaf (first trifoliate leaf) unfolded"
+      },
+      "principal": 1,
+      "order": 13,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "13",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001310",
+      "code": "14",
+      "label": {
+        "id": "Daun ke-4 membuka",
+        "en": "4th leaf unfolded"
+      },
+      "principal": 1,
+      "order": 14,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "14",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001311",
+      "code": "15",
+      "label": {
+        "id": "Daun ke-5 membuka",
+        "en": "5th leaf unfolded"
+      },
+      "principal": 1,
+      "order": 15,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "15",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001312",
+      "code": "16",
+      "label": {
+        "id": "Daun ke-6 membuka",
+        "en": "6th leaf unfolded"
+      },
+      "principal": 1,
+      "order": 16,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "16",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001313",
+      "code": "17",
+      "label": {
+        "id": "Daun ke-7 membuka",
+        "en": "7th leaf unfolded"
+      },
+      "principal": 1,
+      "order": 17,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "17",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001314",
+      "code": "18",
+      "label": {
+        "id": "Daun ke-8 membuka",
+        "en": "8th leaf unfolded"
+      },
+      "principal": 1,
+      "order": 18,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "18",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001315",
+      "code": "19",
+      "label": {
+        "id": "9 daun atau lebih membuka — 2 daun penuh dan 7 daun trifoliat atau lebih",
+        "en": "9 or more leaves (2 full leaves, 7 or more trifoliate) unfolded"
+      },
+      "principal": 1,
+      "order": 19,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "19",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001316",
+      "code": "21",
+      "label": {
+        "id": "Tunas samping pertama tampak",
+        "en": "First side shoot visible"
+      },
+      "principal": 2,
+      "order": 21,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "21",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001317",
+      "code": "22",
+      "label": {
+        "id": "Tunas samping ke-2 tampak",
+        "en": "2nd side shoot visible"
+      },
+      "principal": 2,
+      "order": 22,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "22",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001318",
+      "code": "23",
+      "label": {
+        "id": "Tunas samping ke-3 tampak",
+        "en": "3rd side shoot visible"
+      },
+      "principal": 2,
+      "order": 23,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "23",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001319",
+      "code": "24",
+      "label": {
+        "id": "Tunas samping ke-4 tampak",
+        "en": "4th side shoot visible"
+      },
+      "principal": 2,
+      "order": 24,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "24",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001320",
+      "code": "25",
+      "label": {
+        "id": "Tunas samping ke-5 tampak",
+        "en": "5th side shoot visible"
+      },
+      "principal": 2,
+      "order": 25,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "25",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001321",
+      "code": "26",
+      "label": {
+        "id": "Tunas samping ke-6 tampak",
+        "en": "6th side shoot visible"
+      },
+      "principal": 2,
+      "order": 26,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "26",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001322",
+      "code": "27",
+      "label": {
+        "id": "Tunas samping ke-7 tampak",
+        "en": "7th side shoot visible"
+      },
+      "principal": 2,
+      "order": 27,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "27",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001323",
+      "code": "28",
+      "label": {
+        "id": "Tunas samping ke-8 tampak",
+        "en": "8th side shoot visible"
+      },
+      "principal": 2,
+      "order": 28,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "28",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001324",
+      "code": "29",
+      "label": {
+        "id": "9 tunas samping atau lebih tampak",
+        "en": "9 or more side shoots visible"
+      },
+      "principal": 2,
+      "order": 29,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "29",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001325",
+      "code": "51",
+      "label": {
+        "id": "Kuncup bunga pertama tampak",
+        "en": "First flower buds visible"
+      },
+      "principal": 5,
+      "order": 51,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "51",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001326",
+      "code": "55",
+      "label": {
+        "id": "Kuncup bunga pertama membesar",
+        "en": "First flower buds enlarged"
+      },
+      "principal": 5,
+      "order": 55,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "55",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001327",
+      "code": "59",
+      "label": {
+        "id": "Mahkota pertama tampak, bunga masih tertutup",
+        "en": "First petals visible, flowers still closed"
+      },
+      "principal": 5,
+      "order": 59,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "59",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001328",
+      "code": "60",
+      "label": {
+        "id": "Bunga pertama mekar, tersebar dalam populasi",
+        "en": "First flowers open (sporadically within the population)"
+      },
+      "principal": 6,
+      "order": 60,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "60",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001329",
+      "code": "61",
+      "label": {
+        "id": "Awal berbunga: 10% bunga mekar",
+        "en": "Beginning of flowering: 10% of flowers open"
+      },
+      "principal": 6,
+      "order": 61,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "61",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001330",
+      "code": "62",
+      "label": {
+        "id": "20% bunga mekar",
+        "en": "20% of flowers open"
+      },
+      "principal": 6,
+      "order": 62,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "62",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001331",
+      "code": "63",
+      "label": {
+        "id": "30% bunga mekar",
+        "en": "30% of flowers open"
+      },
+      "principal": 6,
+      "order": 63,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "63",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001332",
+      "code": "64",
+      "label": {
+        "id": "40% bunga mekar",
+        "en": "40% of flowers open"
+      },
+      "principal": 6,
+      "order": 64,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "64",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001333",
+      "code": "65",
+      "label": {
+        "id": "Berbunga penuh: 50% bunga mekar",
+        "en": "Full flowering: 50% of flowers open"
+      },
+      "principal": 6,
+      "order": 65,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "65",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001334",
+      "code": "67",
+      "label": {
+        "id": "Pembungaan berakhir: sebagian besar mahkota gugur atau kering",
+        "en": "Flowering finishing: majority of petals fallen or dry"
+      },
+      "principal": 6,
+      "order": 67,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "67",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001335",
+      "code": "69",
+      "label": {
+        "id": "Akhir berbunga: polong pertama tampak",
+        "en": "End of flowering: first pods visible"
+      },
+      "principal": 6,
+      "order": 69,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "69",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001336",
+      "code": "71",
+      "label": {
+        "id": "10% polong mencapai panjang khasnya",
+        "en": "10% of pods have reached typical length"
+      },
+      "principal": 7,
+      "order": 71,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "71",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001337",
+      "code": "72",
+      "label": {
+        "id": "20% polong mencapai panjang khasnya",
+        "en": "20% of pods have reached typical length"
+      },
+      "principal": 7,
+      "order": 72,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "72",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001338",
+      "code": "73",
+      "label": {
+        "id": "30% polong mencapai panjang khasnya",
+        "en": "30% of pods have reached typical length"
+      },
+      "principal": 7,
+      "order": 73,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "73",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001339",
+      "code": "74",
+      "label": {
+        "id": "40% polong mencapai panjang khasnya",
+        "en": "40% of pods have reached typical length"
+      },
+      "principal": 7,
+      "order": 74,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "74",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001340",
+      "code": "75",
+      "label": {
+        "id": "50% polong mencapai panjang khasnya, biji mulai mengisi",
+        "en": "50% of pods have reached typical length, beans beginning to fill out"
+      },
+      "principal": 7,
+      "order": 75,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "75",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001341",
+      "code": "76",
+      "label": {
+        "id": "60% polong mencapai panjang khasnya",
+        "en": "60% of pods have reached typical length"
+      },
+      "principal": 7,
+      "order": 76,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "76",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001342",
+      "code": "77",
+      "label": {
+        "id": "70% polong mencapai panjang khasnya, polong masih patah bersih",
+        "en": "70% of pods have reached typical length, pods still break cleanly"
+      },
+      "principal": 7,
+      "order": 77,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "77",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001343",
+      "code": "78",
+      "label": {
+        "id": "80% polong mencapai panjang khasnya",
+        "en": "80% of pods have reached typical length"
+      },
+      "principal": 7,
+      "order": 78,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "78",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001344",
+      "code": "79",
+      "label": {
+        "id": "Polong: biji satu per satu mudah terlihat",
+        "en": "Pods: individual beans easily visible"
+      },
+      "principal": 7,
+      "order": 79,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "79",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001345",
+      "code": "81",
+      "label": {
+        "id": "10% polong masak, biji keras",
+        "en": "10% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 81,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "81",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001346",
+      "code": "82",
+      "label": {
+        "id": "20% polong masak, biji keras",
+        "en": "20% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 82,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "82",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001347",
+      "code": "83",
+      "label": {
+        "id": "30% polong masak, biji keras",
+        "en": "30% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 83,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "83",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001348",
+      "code": "84",
+      "label": {
+        "id": "40% polong masak, biji keras",
+        "en": "40% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 84,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "84",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001349",
+      "code": "85",
+      "label": {
+        "id": "50% polong masak, biji keras",
+        "en": "50% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 85,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "85",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001350",
+      "code": "86",
+      "label": {
+        "id": "60% polong masak, biji keras",
+        "en": "60% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 86,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "86",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001351",
+      "code": "87",
+      "label": {
+        "id": "70% polong masak, biji keras",
+        "en": "70% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 87,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "87",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001352",
+      "code": "88",
+      "label": {
+        "id": "80% polong masak, biji keras",
+        "en": "80% of pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 88,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "88",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001353",
+      "code": "89",
+      "label": {
+        "id": "Masak penuh: polong masak, biji keras",
+        "en": "Fully ripe: pods ripe (beans hard)"
+      },
+      "principal": 8,
+      "order": 89,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "89",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001354",
+      "code": "97",
+      "label": {
+        "id": "Tanaman mati",
+        "en": "Plants dead"
+      },
+      "principal": 9,
+      "order": 97,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "97",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001355",
+      "code": "99",
+      "label": {
+        "id": "Produk hasil panen",
+        "en": "Harvested product"
+      },
+      "principal": 9,
+      "order": 99,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "99",
+          "relation": "exact"
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Growth stages of mono- and dicotyledonous plants — BBCH Monograph",
+        "publisher": "Federal Biological Research Centre for Agriculture and Forestry (BBA)",
+        "year": 2001,
+        "locator": "Edisi ke-2, disunting Uwe Meier; kunci buncis dirujuk ke Feller dkk. (1995 b)"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 14,
+      "to": 14
+    }
+  ]
+}

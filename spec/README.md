@@ -178,6 +178,11 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `stage-scale-bbch-kopi.json` | **63 fase BBCH kopi** — benih, setek, dan stum sekaligus | BBCH |
 | `stage-scale-bbch-bawang.json` | **51 fase BBCH sayuran umbi lapis** — bawang merah, putih, daun | BBCH |
 | `stage-scale-bbch-kubis.json` | **60 fase BBCH sayuran daun berkrop** — kubis, petsai | BBCH |
+| `stage-scale-bbch-daun-tak-berkrop.json` | **63 fase BBCH sayuran daun tidak berkrop** — sawi, caisim, pak choi, selada daun | BBCH |
+| `stage-scale-bbch-brassica-lain.json` | **74 fase BBCH brassica lain** — kembang kol, brokoli | BBCH |
+| `stage-scale-bbch-umbi-batang.json` | **54 fase BBCH sayuran umbi & batang** — wortel, lobak | BBCH |
+| `stage-scale-bbch-buncis.json` | **56 fase BBCH buncis** — Phaseolus, bukan Vigna | BBCH |
+| `stage-scale-bbch-kacang-tanah.json` | **69 fase BBCH kacang tanah** — termasuk perjalanan ginofor | BBCH |
 | `stage-scale-doc-udang.json` | 4 fase berbasis umur budidaya udang — ditautkan ke 1 komoditas | — (beralasan) |
 | `operation-type.json` | **61 jenis tindakan**, hierarkis, dari olah tanah sampai pengangkutan | 28 ke AgrO / ICASA |
 | `variable.json` | **46 variabel** — pertumbuhan, OPT, tanah, air, cuaca, hasil | 15 ke ICASA / AgrO |
@@ -375,7 +380,7 @@ Varietas tidak menyimpan skala fasenya sendiri — ia mewarisi lewat komoditas. 
 adalah sifat tanamannya, bukan sifat varietasnya, dan `Cycle.stage_scale` tetap tersedia
 untuk siklus yang perlu menyimpang.
 
-**5.392 dari 11.227 varietas (48,0%) mewarisi skala fase**, lewat sepuluh skala dan 57
+**5.878 dari 11.227 varietas (52,4%) mewarisi skala fase**, lewat lima belas skala dan 78
 komoditas:
 
 | Skala | Fase | Komoditas | Varietas |
@@ -389,6 +394,11 @@ komoditas:
 | BBCH kopi | 63 | 3 | 159 |
 | BBCH sayuran umbi lapis — bawang merah, putih, daun | 51 | 4 | 122 |
 | BBCH sayuran daun berkrop — kubis, petsai | 60 | 3 | 161 |
+| BBCH sayuran daun tidak berkrop — sawi, caisim, pak choi, selada | 63 | 11 | 169 |
+| BBCH brassica lain — kembang kol, brokoli | 74 | 2 | 77 |
+| BBCH sayuran umbi & batang — wortel, lobak | 54 | 2 | 38 |
+| BBCH buncis | 56 | 3 | 113 |
+| BBCH kacang tanah | 69 | 1 | 89 |
 | Umur budidaya udang vaname (DOC) | 4 | 1 | — |
 
 Kunci padi dan jagung disalin dari **BBCH Monograph edisi ke-2 (2001)**, bukan dari
@@ -404,7 +414,7 @@ pada tanaman yang sama.
 
 **Kentang dan tembakau sengaja tidak ditautkan** walau sama-sama Solanaceae: keduanya punya
 kunci BBCH sendiri, dan kunci sayuran buah tidak mengenal pembentukan umbi maupun pemangkasan
-pucuk. Dua puluh sembilan komoditas dikecualikan dengan alasan tertulis di
+pucuk. Tiga puluh tiga komoditas dikecualikan dengan alasan tertulis di
 `tools/tautkan-skala-fase.mjs` — Cabe Jawa ternyata *Piper retrofractum*, famili Piperaceae;
 tiga nama "terong" merujuk *Solanum betaceum* yang berupa pohon; "Rumput Padi-Padian" adalah
 kelompok gulma Poaceae, bukan padi; dan pada kelompok cucurbit, paria (*Momordica*), oyong
@@ -420,16 +430,15 @@ yang pernah diterbitkan siapa pun. Yang ada: penelitian fenologi dengan kosakata
 fase kuncup "mata ketam", antesis, lalu umur buah dalam hari setelah antesis. Menyusun skala
 durian berarti membuat skala baru seperti skala DOC udang, bukan menyalin yang sudah ada.
 
-Yang paling dekat untuk disalin berikutnya: kunci **sayuran daun tidak berkrop** —
-monograf memuatnya, dan itulah tempat sawi, caisim, pak choi, dan selada daun (sekitar 130
-varietas) yang sengaja tidak ditautkan ke kunci berkrop. Menyusul kunci **brassica lain**
-untuk kembang kol (60 varietas), serta kunci **sayuran umbi dan batang**, **kacang buncis**,
-dan **kacang tanah**.
+Yang tersisa di monograf dan belum disalin tinggal sedikit: kunci **bit** (Meier dkk. 1993)
+untuk 3 varietas, kunci **kacang polong** (Pisum) untuk kapri dan ercis, serta kunci buah
+iklim sedang — pome, stone fruit, stroberi, currant, anggur — yang tidak punya padanan
+komoditas di registri Indonesia.
 
-Sisa besar yang kuncinya belum diketahui ada atau tidak: tembakau (267 varietas), krisan
-(247), kacang panjang (224 — kunci *bean* di monograf menyebut *Phaseolus*, sedangkan kacang
-panjang *Vigna unguiculata*, jadi perlu dicek dulu, bukan diasumsikan), pisang (185), tebu
-(168).
+Sisa besar yang kuncinya belum diketahui ada atau tidak: durian (495 varietas), tembakau
+(267), krisan (247), **kacang panjang (224)** — kunci *bean* menyebut *Phaseolus* sedangkan
+kacang panjang *Vigna unguiculata*, jadi perlu kunci tersendiri, bukan diasumsikan — lalu
+pisang (185), tebu (168), alpukat (145), ubi jalar (119).
 
 Aturan `L28` menjaga tautannya tetap sepakat dua arah: komoditas tidak boleh mengaku memakai
 skala yang tidak mencantumkannya.
