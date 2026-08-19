@@ -175,7 +175,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `product/pestisida.ndjson` | **7.724 produk pestisida** terdaftar, dengan 23.058 penggunaan berlabel | KEMENTAN |
 | `product/pupuk.ndjson` | **7.196 produk pupuk** terdaftar (SIMPEL + SIMPUK 2020) | KEMENTAN |
 | `pest.json` | 10 OPT utama cabai | 10 ke EPPO, semua perlu verifikasi |
-| `pest-registri.json` | **1.360 organisme sasaran** dari label produk | KEMENTAN |
+| `pest-registri.json` | **1.360 organisme sasaran** dari label produk | KEMENTAN + GBIF |
 | `commodity-registri.json` | **482 komoditas sasaran** dari label produk | KEMENTAN |
 | `target-site.json` | 35 tempat aplikasi — bukan komoditas | KEMENTAN |
 | `commodity.json` | 5 komoditas — 4 hortikultura, 1 perikanan budidaya | NCBITaxon, AGROVOC |
@@ -286,6 +286,38 @@ berdaun lebar" — 7.512 pemakaian — menaungi puluhan spesies. Nama Indonesia 
 **Penciri fase dan sistem dilebur ke nama kanonik.** "Kelapa sawit (TBM)", "(TM)", dan
 "Kelapa sawit" adalah satu komoditas; TBM/TM adalah fase, dan "sawah"/"gogo" adalah sistem
 budidaya. Bentuk aslinya tetap tersimpan sebagai `synonyms` dan di `commodity_label`.
+
+### Verifikasi taksonomi ke GBIF
+
+`pest_kind` semula disimpulkan dari nama Indonesia yang menyertai — "penyakit busuk daun"
+ditebak jamur, "ulat grayak" ditebak serangga. Seluruh 1.370 nama ilmiah kini diperiksa ke
+[GBIF Backbone Taxonomy](https://api.gbif.org/v1/species/match), dan `pest_kind` diturunkan
+dari kingdom serta kelasnya.
+
+| | |
+|---|---:|
+| Tercocok di GBIF | 1.168 (85%) |
+| — persis | 451 |
+| — fuzzy (koreksi salah ketik registri) | 500 |
+| — sampai tingkat genus | 217 |
+| Klasifikasi terkonfirmasi | 1.081 |
+| **Klasifikasi terkoreksi** | **81** |
+| Tidak tercocok, tetap simpulan | 202 |
+
+**Koreksi terpenting: 42 organisme berpindah dari jamur ke oomycete** — Phytophthora,
+Pythium, Peronospora, Plasmopara. Ini bukan soal kerapian taksonomi: metalaksil dan
+dimetomorf bekerja pada oomycete dan tidak pada jamur sejati, sehingga salah golong berarti
+salah pilih bahan aktif. `pest_kind` mendapat nilai baru `disease_oomycete` untuk ini.
+
+Koreksi lain: 13 dari serangga ke gulma, 6 dari jamur ke bakteri, 4 ke tungau, 4 ke
+vertebrata. Semuanya kekeliruan yang tidak mungkin ketahuan dari nama Indonesianya saja.
+
+**Yang tidak dipaksakan.** Fuzzy tingkat genus sempat dicoba untuk 202 yang tak tercocok, lalu
+dibatalkan: `Altemaria` dicocokkan GBIF ke `Algemaria`, bukan `Alternaria`. Satu kasus serupa
+lolos lebih awal — `Pysalis angulate` dicocokkan ke ngengat `Pyralis` padahal hampir pasti
+gulma *Physalis*. Karena `pest_kind` menentukan pilihan pengendalian, ketidakpastian yang
+dinyatakan lebih aman daripada taksonomi yang salah tapi terlihat rapi. 209 entitas membawa
+`taxon_verification.needs_review` beserta alasannya.
 
 ### Tiga temuan tentang registrinya sendiri
 

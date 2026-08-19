@@ -21,12 +21,14 @@
         "disease_fungal",
         "disease_bacterial",
         "disease_viral",
+        "disease_oomycete",
         "nematode",
         "weed",
         "vertebrate",
         "mollusc",
         "abiotic"
-      ]
+      ],
+      "description": "Oomycete dipisahkan dari jamur sejati karena bedanya menentukan pilihan bahan aktif: metalaksil dan dimetomorf bekerja pada oomycete, tidak pada jamur sejati. GBIF menempatkannya di kingdom Chromista."
     },
     "scientific_name": {
       "type": "string"
@@ -50,6 +52,50 @@
         "unspecified"
       ],
       "description": "Banyak sasaran pada label bukan spesies melainkan kelompok fungsional — 'gulma berdaun lebar'. Perbedaannya harus terlihat, bukan disamarkan."
+    },
+    "accepted_scientific_name": {
+      "type": "string",
+      "description": "Nama yang diterima menurut sumber taksonomi luar. Dipisahkan dari scientific_name supaya ejaan asli registri tetap utuh — registri banyak memuat salah ketik, dan menimpanya akan memutus jejak ke sumbernya."
+    },
+    "taxon_verification": {
+      "type": "object",
+      "description": "Jejak pemeriksaan taksonomi. Menyimpan mutu kecocokannya, bukan hanya hasilnya, supaya yang meragukan bisa ditinjau ulang.",
+      "properties": {
+        "source": {
+          "type": "string"
+        },
+        "match_type": {
+          "type": "string",
+          "enum": [
+            "exact",
+            "fuzzy",
+            "higher_rank",
+            "none"
+          ]
+        },
+        "confidence": {
+          "type": "integer"
+        },
+        "kingdom": {
+          "type": "string"
+        },
+        "checked_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "needs_review": {
+          "type": "boolean"
+        },
+        "review_reason": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "source",
+        "match_type",
+        "checked_at"
+      ],
+      "additionalProperties": false
     }
   },
   "required": [

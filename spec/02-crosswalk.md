@@ -102,7 +102,7 @@ Angka dari `npm run check`, bukan perkiraan.
 | `stage-scale` | 2 | 1 (50%) | — |
 | **Total** | **18.722** | **18.577 (99%)** | **18** |
 
-Skema tujuan yang benar-benar terpakai: KEMENTAN (18.504), AGRO (38), ICASA (33), EPPO (10), NCBITaxon (6), BBCH (2), CHEBI (1), SNI (1). Di luar `mappings`, 58 bahan aktif membawa kode cara kerja IRAC, FRAC, atau HRAC pada `mode_of_action`.
+Skema tujuan yang benar-benar terpakai: KEMENTAN (18.504), GBIF (1.153), AGRO (38), ICASA (33), EPPO (10), NCBITaxon (6), BBCH (2), CHEBI (1), SNI (1). Di luar `mappings`, 58 bahan aktif membawa kode cara kerja IRAC, FRAC, atau HRAC pada `mode_of_action`.
 
 
 **Registri nasional adalah kosakata yang sah.** Untuk bahan aktif pestisida, otoritas
@@ -125,6 +125,11 @@ pengamatan OPT berbasis ambang yang jadi tulang punggung PHT di Indonesia.
 Ini temuan, bukan kegagalan. Kalau porsi `no_mapping_reason` tetap tinggi setelah
 penelusuran ulang, itu justru bahan kontribusi balik ke AgrO — dan alasan yang bagus
 bagi proyek ini untuk hadir di forum kosakata agronomi, bukan sekadar memakainya.
+
+**GBIF sebagai sumber taksonomi.** Seluruh 1.370 nama ilmiah OPT diperiksa ke GBIF Backbone
+Taxonomy: 1.168 tercocok (451 persis, 500 fuzzy, 217 sampai tingkat genus) dan membawa
+`usageKey` yang bisa dirujuk global. 202 sisanya tidak tercocok dan tetap memakai klasifikasi
+simpulan, ditandai `needs_review` pada `taxon_verification`.
 
 ## Cara menambah pemetaan
 

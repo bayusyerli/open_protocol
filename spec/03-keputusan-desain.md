@@ -310,6 +310,28 @@ sebelum datanya dianggap selesai.
 
 ---
 
+### D24 — klasifikasi hayati diambil dari sumber taksonomi, bukan dari nama Indonesia
+
+`pest_kind` awalnya disimpulkan dengan mencocokkan kata pada nama Indonesia. Cara itu 79%
+benar — cukup baik untuk terlihat berhasil, dan cukup buruk untuk menyesatkan.
+
+Pemeriksaan ke GBIF mengoreksi 81 klasifikasi, 42 di antaranya jamur yang sebenarnya
+oomycete. Bedanya menentukan bahan aktif: metalaksil bekerja pada oomycete, tidak pada jamur
+sejati. Kekeliruan itu mustahil terlihat dari nama Indonesia, karena keduanya sama-sama
+disebut "penyakit busuk daun".
+
+Batas yang ditarik: pencocokan fuzzy diterima untuk memperbaiki salah ketik, tetapi ditolak
+ketika kemiripannya rendah DAN hasilnya berbeda kingdom dari simpulan semula. Percobaan
+fuzzy tingkat genus dibatalkan sepenuhnya setelah `Altemaria` dicocokkan ke `Algemaria`
+alih-alih `Alternaria`. Untuk field yang menentukan pilihan pengendalian, 202 entitas dengan
+ketidakpastian yang dinyatakan lebih berguna daripada 202 entitas yang rapi tetapi salah.
+
+Ejaan asli registri tetap disimpan di `scientific_name`; nama yang diterima GBIF masuk
+`accepted_scientific_name`. Menimpanya akan memutus jejak ke sumber, dan registri itu memang
+penuh salah ketik — lima ejaan berbeda untuk *Phytophthora* saja.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -324,7 +346,7 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 6 | **Bahasa** — wajib `id`, `en` dianjurkan | Cukup untuk sekarang. Bahasa daerah menunggu bukti kebutuhan dari Fase 1 |
 | 7 | Basis URI dan awalan `op:` | Menunggu keputusan nama di Fase 0 |
 | 8 | 3,9% baris OPT dan 1,5% sasaran masih tak tertaut | Nama sumbernya terpotong atau bukan nama sasaran; ditinggalkan apa adanya |
-| 13 | `pest_kind` disimpulkan dari nama Indonesia, belum diverifikasi taksonomis | 1.360 organisme; perlu pemeriksaan terhadap EPPO atau GBIF |
+| 13 | 202 OPT tidak tercocok di GBIF | Nama sumbernya salah ketik terlalu jauh; klasifikasinya masih simpulan dan ditandai `needs_review` |
 | 14 | Kelompok fungsional seperti "gulma berdaun lebar" belum jadi entitas | Sekarang hanya tersimpan sebagai synonyms pada spesies anggotanya |
 | 9 | Lampiran I.B melompati nomor 18 dan 21 pada lapisan teks PDF | Perlu pemeriksaan visual dokumen asli — entah sumbernya memang melompat, entah ekstraksinya kehilangan dua baris |
 | 12 | CAS asam sulfat ditulis `7669-93-9` di Permentan 43/2019 | Nomor bakunya `7664-93-9`, dan itu yang dipakai Permentan 39/2015. Direkam apa adanya plus penanda |

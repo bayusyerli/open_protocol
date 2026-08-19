@@ -21,6 +21,13 @@
           "title": "EPPO Global Database",
           "publisher": "EPPO",
           "url": "https://gd.eppo.int/"
+        },
+        {
+          "title": "GBIF Backbone Taxonomy — species match API",
+          "publisher": "Global Biodiversity Information Facility",
+          "url": "https://api.gbif.org/v1/species/match",
+          "year": 2026,
+          "locator": "Seluruh nama ilmiah diperiksa 19 Agustus 2026. pest_kind diturunkan dari kingdom dan kelas, bukan lagi dari nama Indonesia."
         }
       ]
     },
@@ -67,6 +74,13 @@
           "id": "Thrips sp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 55 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4799919",
+          "uri": "https://www.gbif.org/species/4799919",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
@@ -81,7 +95,14 @@
         "Hama Trpis",
         "Thrips"
       ],
-      "taxonomic_rank": "species"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      }
     },
     {
       "id": "op:pst:00000002",
@@ -112,6 +133,13 @@
           "id": "Myzus persicae",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 283 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2076179",
+          "uri": "https://www.gbif.org/species/2076179",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
@@ -124,7 +152,14 @@
         "Hama Trips",
         "Kutu Daun"
       ],
-      "taxonomic_rank": "species"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      }
     },
     {
       "id": "op:pst:00000003",
@@ -167,6 +202,13 @@
           "id": "Bemisia tabacii",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2012126",
+          "uri": "https://www.gbif.org/species/2012126",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
@@ -180,7 +222,14 @@
         "Kutu Kebul",
         "Kutu Putih"
       ],
-      "taxonomic_rank": "species"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      }
     },
     {
       "id": "op:pst:00000004",
@@ -268,6 +317,13 @@
           "id": "Dacus sp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "7930834",
+          "uri": "https://www.gbif.org/species/7930834",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
@@ -278,7 +334,14 @@
       "synonyms": [
         "Lalat Buah"
       ],
-      "taxonomic_rank": "genus"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      }
     },
     {
       "id": "op:pst:00000005",
@@ -402,6 +465,13 @@
           "id": "Spodeptera litura",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5109882",
+          "uri": "https://www.gbif.org/species/5109882",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
@@ -415,7 +485,14 @@
         "Kutu Daun",
         "Ulat Grayak"
       ],
-      "taxonomic_rank": "species"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      }
     },
     {
       "id": "op:pst:00000006",
@@ -479,6 +556,13 @@
           "id": "Tetranycus sp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2130185",
+          "uri": "https://www.gbif.org/species/2130185",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Arachnida; kecocokan EXACT (confidence 98)."
         }
       ],
       "lifecycle": {
@@ -491,7 +575,14 @@
         "Tungau",
         "Tungau Merah"
       ],
-      "taxonomic_rank": "genus"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      }
     },
     {
       "id": "op:pst:00000007",
@@ -540,6 +631,13 @@
           "id": "Colletotrichum spp",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2563219",
+          "uri": "https://www.gbif.org/species/2563219",
+          "relation": "broad",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Colletotrichum'; ejaan registri dipertahankan pada scientific_name."
         }
       ],
       "lifecycle": {
@@ -555,7 +653,15 @@
         "Penyakit Atraknosa",
         "Penyakit Busuk Buah"
       ],
-      "taxonomic_rank": "species"
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Colletotrichum",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Fungi"
+      }
     },
     {
       "id": "op:pst:00000008",
@@ -583,6 +689,13 @@
           "id": "Fusarium oxysporum",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 19 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5251961",
+          "uri": "https://www.gbif.org/species/5251961",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
@@ -597,7 +710,14 @@
         "Penyakit Rebah Kecambah",
         "Penyakut Layu Fusarium"
       ],
-      "taxonomic_rank": "species"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      }
     },
     {
       "id": "op:pst:00000009",
@@ -625,6 +745,13 @@
           "id": "Ralstonia solanacearum",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "3219898",
+          "uri": "https://www.gbif.org/species/3219898",
+          "relation": "exact",
+          "note": "Kingdom Bacteria, kelas Gammaproteobacteria; kecocokan EXACT (confidence 99)."
         }
       ],
       "lifecycle": {
@@ -635,7 +762,14 @@
       "synonyms": [
         "Penyakit Layu Bakteri"
       ],
-      "taxonomic_rank": "species"
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Bacteria"
+      }
     },
     {
       "id": "op:pst:00000010",
@@ -660,12 +794,27 @@
           "id": "BEGOSP",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "10192970",
+          "uri": "https://www.gbif.org/species/10192970",
+          "relation": "exact",
+          "note": "Kingdom Viruses, kelas Repensiviricetes; kecocokan EXACT (confidence 100)."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 100,
+        "kingdom": "Viruses"
       }
     }
   ]

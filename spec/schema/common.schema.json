@@ -497,6 +497,7 @@
             "ADAPT",
             "CROP_ONTOLOGY",
             "EPPO",
+            "GBIF",
             "NCBITaxon",
             "CHEBI",
             "UCUM",
