@@ -1,0 +1,18 @@
+{
+  "$schema": "../schema/product.schema.json",
+  "id": "op:prd:00000900",
+  "key": "fixture-tautan-opt-melenceng",
+  "label": { "id": "Fixture uji — tautan OPT tidak cocok dengan labelnya" },
+  "product_category": "pesticide",
+  "registration": { "authority": "KEMENTAN", "number": "UJI-L26", "status": "unverified" },
+  "label_uses": [
+    {
+      "commodity_label": "Cabai",
+      "pest_label": "Trips",
+      "pest_scientific_name": "Thrips parvispinus",
+      "pest": { "id": "op:pst:00000005", "label": "Ulat grayak" }
+    }
+  ],
+  "no_mapping_reason": "Fixture uji untuk membuktikan aturan L26 menyala.",
+  "lifecycle": { "version": "0.1.0", "status": "draft" }
+}

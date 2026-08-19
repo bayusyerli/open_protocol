@@ -138,9 +138,12 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
     if (!doc.id) continue;
     if (seenId.has(doc.id)) fail(file, 'L1-id-unik', `ID ${doc.id} sudah dipakai di ${seenId.get(doc.id)}.`);
     seenId.set(doc.id, file);
+    // key unik PER JENIS ENTITAS, bukan lintas jenis: daun tembakau sah menjadi
+    // komoditas sekaligus bahan nabati, dan URL-nya toh sudah dipisah per jenis.
     if (doc.key) {
-      if (seenKey.has(doc.key)) fail(file, 'L1-key-unik', `key "${doc.key}" sudah dipakai di ${seenKey.get(doc.key)}.`);
-      seenKey.set(doc.key, file);
+      const scoped = `${doc.id.split(':')[1]}/${doc.key}`;
+      if (seenKey.has(scoped)) fail(file, 'L1-key-unik', `key "${doc.key}" sudah dipakai untuk jenis entitas yang sama di ${seenKey.get(scoped)}.`);
+      seenKey.set(scoped, file);
     }
   }
 
@@ -313,6 +316,21 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
         } else if (rs.status === 'restricted' && (semua || kena)) {
           warn(file, 'L22-bahan-terbatas', `applications[${i}] memakai "${sub.label?.id ?? sub.key}" yang berstatus TERBATAS menurut ${rs.instrument} (${rs.citation}). Pemakaiannya menuntut Sertifikat Penggunaan Pestisida Terbatas.`);
         }
+      }
+    }
+
+    // L26 — tautan OPT harus cocok dengan nama ilmiah yang tertulis di label
+    // Rekonsiliasi 1.531 nama sasaran dikerjakan mesin; ini yang menahan hasilnya
+    // supaya tidak melenceng diam-diam saat kosakatanya berubah.
+    for (const [i, u] of (doc.label_uses ?? []).entries()) {
+      const ref = u.pest?.id && entityById.get(u.pest.id);
+      if (!ref || !u.pest_scientific_name) continue;
+      const bersih = (x) => String(x).replace(/\s*\([^)]*\)\s*/g, ' ').replace(/\s+/g, ' ').trim().toLowerCase();
+      if (ref.scientific_name && bersih(ref.scientific_name) !== bersih(u.pest_scientific_name)) {
+        fail(file, 'L26-tautan-opt', `label_uses[${i}] menunjuk "${ref.key}" (${ref.scientific_name}) padahal labelnya menulis "${u.pest_scientific_name}".`);
+      }
+      if (u.commodity && u.target_site) {
+        fail(file, 'L26-sasaran-ganda', `label_uses[${i}] menunjuk komoditas sekaligus tempat aplikasi. Sasaran hanya boleh salah satu.`);
       }
     }
 

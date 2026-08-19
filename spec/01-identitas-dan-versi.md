@@ -22,8 +22,10 @@ Nomor sengaja tidak bermakna: begitu ID bisa dibaca isinya, orang akan
 menyimpulkan sesuatu darinya, dan perubahan isi jadi tidak mungkin.
 
 Setiap entitas juga punya **`key`** — slug ASCII yang stabil (`cabai-merah-besar`)
-untuk URL, API, dan pembacaan manusia. `key` unik dan tidak boleh dipakai ulang
-setelah terbit. Kalau nama berubah, `key` lama ditandai usang dan diarahkan ke yang
+untuk URL, API, dan pembacaan manusia. `key` unik **di dalam jenis entitasnya** — bukan
+lintas jenis — dan tidak boleh dipakai ulang setelah terbit. Daun tembakau sah menjadi
+komoditas sekaligus bahan nabati untuk sediaan; memaksa slug-nya unik secara global akan
+menolak fakta yang benar. Kalau nama berubah, `key` lama ditandai usang dan diarahkan ke yang
 baru — tidak pernah dipindahtangankan ke entitas lain.
 
 ### Data usaha tani — UUIDv7

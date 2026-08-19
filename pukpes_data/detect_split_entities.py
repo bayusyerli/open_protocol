@@ -17,79 +17,101 @@ def split(name):
 
 reg=collections.defaultdict(lambda:{"types":collections.Counter(),"simpel":0,"legacy":0,"pest":0})
 for r in s:
-    _,c=split(r.get("perusahaanName"))
-    if c: reg[c]["simpel"]+=1
+    _,c=split(r.get("perusahaanName"));       c and reg[c].__setitem__("simpel",reg[c]["simpel"]+1)
 for r in l:
     t,c=split(r.get("pemegang_nomor_pendaftaran"))
     if c:
         reg[c]["legacy"]+=1
         if t: reg[c]["types"][t]+=1
 for r in p:
-    tp=split(r.get("jenisPerseroan"))[0]
-    _,c=split(r.get("perusahaanName"))
+    tp=split(r.get("jenisPerseroan"))[0]; _,c=split(r.get("perusahaanName"))
     if c:
         reg[c]["pest"]+=1
         if tp: reg[c]["types"][tp]+=1
+cores=[c for c in reg if (reg[c]["simpel"]+reg[c]["legacy"]+reg[c]["pest"])>0]
 tot=lambda c: reg[c]["simpel"]+reg[c]["legacy"]+reg[c]["pest"]
-
 df=collections.Counter()
-for c in reg:
+for c in cores:
     for tk in set(c.split()): df[tk]+=1
 
+def lev(a,b):
+    if abs(len(a)-len(b))>2: return 9
+    prev=list(range(len(b)+1))
+    for i,ca in enumerate(a,1):
+        cur=[i]
+        for j,cb in enumerate(b,1):
+            cur.append(min(prev[j]+1,cur[-1]+1,prev[j-1]+(ca!=cb)))
+        prev=cur
+    return prev[-1]
 def is_prefix(a,b):
-    ta,tb=a.split(),b.split()
-    return len(ta)<len(tb) and tb[:len(ta)]==ta
+    ta,tb=a.split(),b.split(); return len(ta)<len(tb) and tb[:len(ta)]==ta
+GEN={"INDONESIA","NUSANTARA","TBK","PT","PERSERO","GROUP","INTERNASIONAL","INDO",
+     "AGRO","AGRI","KIMIA","CHEMICAL","GRESIK","PERKASA"}
 
-# Detektor 1: core identik >=2 tipe
-d1=[(c,dict(reg[c]["types"])) for c in reg if len(reg[c]["types"])>=2]
-d1.sort(key=lambda x:-tot(x[0]))
+# --- pasangan struktural dalam bucket token-depan ---
+bucket=collections.defaultdict(list)
+for c in cores: bucket[c.split()[0]].append(c)
+parent={c:c for c in cores}
+def find(x):
+    while parent[x]!=x: parent[x]=parent[parent[x]]; x=parent[x]
+    return x
+def union(a,b): parent[find(a)]=find(b)
+edges={}
+for tk,mem in bucket.items():
+    for i in range(len(mem)):
+        for j in range(i+1,len(mem)):
+            a,b=mem[i],mem[j]
+            rel=None
+            if is_prefix(a,b) or is_prefix(b,a):
+                base,ext=(a,b) if is_prefix(a,b) else (b,a)
+                extra=ext.split()[len(base.split()):]
+                rel="identik+suffix" if all(e in GEN for e in extra) else "induk⊂perluasan"
+            elif len(a.split())==len(b.split()) and lev(a,b)<=2 and min(len(a),len(b))>=8:
+                rel="ejaan-mirip"
+            if rel:
+                union(a,b); edges[frozenset((a,b))]=rel
 
-# Detektor 2: klaster token-depan langka (df<=10), >=2 core, + sinyal
-STOP={"PT","CV","UD"}
-lead=collections.defaultdict(set)
-for c in reg:
-    toks=c.split()
-    if toks and df[toks[0]]<=10 and len(toks[0])>=4:
-        lead[toks[0]].add(c)
+# --- identik multi-tipe (CV & PT sekaligus pd nama sama) = grup 1-anggota tapi kuat ---
+groups=collections.defaultdict(set)
+for c in cores: groups[find(c)].add(c)
+groups={k:v for k,v in groups.items() if len(v)>=2}
 
-fam=[]
-for tok,members in lead.items():
-    members=[m for m in members if tot(m)>0]
-    if len(members)<2: continue
+def conf(members):
+    ms=set(members)
+    rels={edges[e] for e in edges if len(e&ms)==2}
     types=set(); 
     for m in members: types|=set(reg[m]["types"])
-    cv_pt = ("PT" in types) and (("CV" in types) or ("UD" in types))
-    prefix_rel = any(is_prefix(a,b) for a in members for b in members if a!=b)
-    legacy_only=[m for m in members if reg[m]["legacy"]>0 and reg[m]["simpel"]==0 and reg[m]["pest"]==0]
-    fresh     =[m for m in members if reg[m]["simpel"]>0]
-    regen = bool(legacy_only) and bool(fresh)
-    if not (cv_pt or prefix_rel or regen): continue
-    conf = "TINGGI" if cv_pt else ("SEDANG-TINGGI" if (prefix_rel and regen) else "SEDANG")
-    sig=[]
-    if cv_pt: sig.append("CV↔PT")
-    if prefix_rel: sig.append("induk⊂perluasan")
-    if regen: sig.append("legacy↔baru")
-    fam.append((conf, tok, sorted(members,key=lambda m:-tot(m)), sum(tot(m) for m in members), " + ".join(sig)))
-order={"TINGGI":0,"SEDANG-TINGGI":1,"SEDANG":2}
-fam.sort(key=lambda x:(order[x[0]], -x[3]))
+    cvpt=("PT" in types) and (("CV" in types) or ("UD" in types))
+    if "ejaan-mirip" in rels or "identik+suffix" in rels: return "TINGGI", rels, cvpt, types
+    # induk⊂perluasan: kuat jika token depan langka
+    lead_rare = df[list(members)[0].split()[0]]<=12
+    return ("SEDANG-TINGGI" if (cvpt and lead_rare) else "SEDANG"), rels, cvpt, types
 
-print(f"=== DETEKTOR 1: nama identik di >=2 bentuk badan usaha ({len(d1)}) ===")
-for c,ty in d1:
-    print(f"  [{'/'.join(f'{k}×{v}' for k,v in ty.items())}]  {c}  (simpel {reg[c]['simpel']}, legacy {reg[c]['legacy']}, pest {reg[c]['pest']})")
+out=[]
+for _,members in groups.items():
+    members=sorted(members,key=lambda m:-tot(m))
+    cf,rels,cvpt,types=conf(members)
+    out.append((cf,members,sum(tot(m) for m in members),rels,cvpt,types))
+# tambah D1 identik multi-tipe yg belum tergabung
+for c in cores:
+    if len(reg[c]["types"])>=2 and find(c)==c and c not in [m for _,ms,*_ in out for m in ms]:
+        out.append(("TINGGI",[c],tot(c),{"identik-multitipe"},True,set(reg[c]["types"])))
+rank={"TINGGI":0,"SEDANG-TINGGI":1,"SEDANG":2}
+out.sort(key=lambda x:(rank[x[0]],-x[2]))
 
-print(f"\n=== DETEKTOR 2: keluarga entitas (klaster merek langka) — {len(fam)} grup ===")
-for conf,tok,members,t,sig in fam[:22]:
-    print(f"\n  [{conf}] «{tok}»  total {t} produk  — sinyal: {sig}")
+print(f"Core unik: {len(cores)} | grup struktural: {len(out)}")
+for cf,members,t,rels,cvpt,types in out:
+    tag=("CV↔PT " if cvpt else "")+";".join(sorted(rels))
+    print(f"\n[{cf}] total {t}  ({tag})")
     for m in members:
-        d=reg[m]; ty="/".join(f"{k}×{v}" for k,v in d["types"].items()) or "—(SIMPEL)"
-        print(f"     [{ty:<10}] {m}  (simpel {d['simpel']}, legacy {d['legacy']}, pest {d['pest']})")
+        d=reg[m]; ty="/".join(f"{k}×{v}" for k,v in d["types"].items()) or "—"
+        print(f"    [{ty:<9}] {m}  (s{d['simpel']}/l{d['legacy']}/p{d['pest']})")
 
 with open("grup_entitas_terpecah.csv","w",newline="",encoding="utf-8-sig") as f:
-    w=csv.writer(f); w.writerow(["confidence","grup_merek","sinyal","entitas_core","tipe","simpel","legacy","pest","total"])
-    for c,ty in d1:
-        w.writerow(["TINGGI(identik)",c,"nama identik multi-tipe",c,"/".join(f"{k}×{v}" for k,v in ty.items()),reg[c]["simpel"],reg[c]["legacy"],reg[c]["pest"],tot(c)])
-    for conf,tok,members,t,sig in fam:
+    w=csv.writer(f); w.writerow(["confidence","relasi","cv_pt","entitas_core","tipe","simpel","legacy","pest","total_grup"])
+    for cf,members,t,rels,cvpt,types in out:
         for m in members:
             d=reg[m]
-            w.writerow([conf,tok,sig,m,"/".join(f"{k}×{v}" for k,v in d["types"].items()),d["simpel"],d["legacy"],d["pest"],tot(m)])
-print(f"\nSaved grup_entitas_terpecah.csv  (D1={len(d1)} grup, D2={len(fam)} grup)")
+            w.writerow([cf,";".join(sorted(rels)),"ya" if cvpt else "-",m,
+                        "/".join(f"{k}×{v}" for k,v in d["types"].items()),d["simpel"],d["legacy"],d["pest"],t])
+print(f"\nSaved grup_entitas_terpecah.csv ({len(out)} grup)")

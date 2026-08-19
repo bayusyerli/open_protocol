@@ -89,20 +89,20 @@ Angka dari `npm run check`, bukan perkiraan.
 
 | Jenis | Entitas | Termapping | Perlu verifikasi |
 |---|---:|---:|---:|
-| `product` | 14.923 | 14.920 (100%) | 0 |
-| `substance` | 1.600 | 1.598 (100%) | 1 |
-| `operation-type` | 61 | 28 (46%) | 0 |
-| `variable` | 46 | 15 (33%) | 0 |
-| `method` | 19 | 9 (47%) | 0 |
-| `deviation-reason` | 11 | 0 | 0 |
-| `pest` | 10 | 10 (100%) | 10 |
-| `commodity` | 5 | 5 (100%) | 5 |
-| `stage-scale` | 2 | 1 (50%) | 0 |
-| **Total** | **16.677** | **16.586 (99%)** | **16** |
+| `product` | 14.923 | 14.920 (100%) | — |
+| `substance` | 1.734 | 1.711 (99%) | — |
+| `pest` | 1.370 | 1.370 (100%) | — |
+| `commodity` | 488 | 488 (100%) | — |
+| `operation-type` | 67 | 28 (42%) | — |
+| `variable` | 57 | 15 (26%) | — |
+| `target-site` | 35 | 35 (100%) | — |
+| `method` | 23 | 9 (39%) | — |
+| `preparation` | 12 | 0 (0%) | — |
+| `deviation-reason` | 11 | 0 (0%) | — |
+| `stage-scale` | 2 | 1 (50%) | — |
+| **Total** | **18.722** | **18.577 (99%)** | **18** |
 
-Skema tujuan yang benar-benar terpakai: KEMENTAN (16.513 kaitan), AgrO (38), ICASA (33),
-EPPO (10), NCBITaxon (5), BBCH (2), CHEBI (1), SNI (1). Di luar `mappings`, 58 bahan aktif
-membawa kode cara kerja IRAC, FRAC, atau HRAC pada `mode_of_action`.
+Skema tujuan yang benar-benar terpakai: KEMENTAN (18.504), AGRO (38), ICASA (33), EPPO (10), NCBITaxon (6), BBCH (2), CHEBI (1), SNI (1). Di luar `mappings`, 58 bahan aktif membawa kode cara kerja IRAC, FRAC, atau HRAC pada `mode_of_action`.
 
 
 **Registri nasional adalah kosakata yang sah.** Untuk bahan aktif pestisida, otoritas

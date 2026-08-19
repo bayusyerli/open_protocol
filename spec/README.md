@@ -147,6 +147,7 @@ linter — dan diuji di `fixtures-invalid/`.
 | `L23` | Entitas harus berada di dalam blok nomor yang diklaim berkasnya |
 | `L24` | Berkas yang berbagi jenis entitas wajib menyatakan `id_blocks` |
 | `L25` | Blok nomor tidak boleh bertindih antar-berkas |
+| `L26` | Tautan OPT harus cocok dengan nama ilmiah di label; sasaran tidak boleh komoditas sekaligus tempat |
 
 Aturan-aturan ini bukan hiasan. Saat 382 bahan aktif dimasukkan, `L1` langsung menangkap
 tabrakan `key` pada **belerang** — yang ternyata terdaftar sebagai hara sekaligus fungisida.
@@ -174,6 +175,9 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `product/pestisida.ndjson` | **7.724 produk pestisida** terdaftar, dengan 23.058 penggunaan berlabel | KEMENTAN |
 | `product/pupuk.ndjson` | **7.196 produk pupuk** terdaftar (SIMPEL + SIMPUK 2020) | KEMENTAN |
 | `pest.json` | 10 OPT utama cabai | 10 ke EPPO, semua perlu verifikasi |
+| `pest-registri.json` | **1.360 organisme sasaran** dari label produk | KEMENTAN |
+| `commodity-registri.json` | **482 komoditas sasaran** dari label produk | KEMENTAN |
+| `target-site.json` | 35 tempat aplikasi — bukan komoditas | KEMENTAN |
 | `commodity.json` | 5 komoditas — 4 hortikultura, 1 perikanan budidaya | NCBITaxon, AGROVOC |
 | `deviation-reason.json` | 11 alasan simpangan, dengan sinyal tindak lanjutnya | — (beralasan) |
 | `product.json` | 3 **contoh** produk, semua `unverified` — bukan registry | — (beralasan) |
@@ -257,6 +261,31 @@ dengan dua entri status, dibedakan lewat `applies_to`.
 Dua catatan verifikasi yang belum tuntas: pada lapisan teks PDF, Lampiran I.B melompati
 nomor **18 dan 21**, dan Lampiran III.B menuliskan CAS asam sulfat sebagai `7669-93-9`
 padahal nomor bakunya `7664-93-9`. Keduanya ditandai di data, bukan diam-diam ditambal.
+
+### Rekonsiliasi sasaran pada label
+
+23.058 baris penggunaan berlabel memakai teks bebas untuk menyebut sasarannya. Sekarang
+sudah ditautkan ke kosakata:
+
+| | |
+|---|---:|
+| Tertaut ke komoditas | 91,7% |
+| Tertaut ke tempat aplikasi | 6,7% |
+| **Sasaran tertaut** | **98,5%** |
+| **OPT tertaut** | **96,1%** |
+
+Tiga keputusan yang membentuk hasilnya.
+
+**Tempat aplikasi dipisahkan dari komoditas.** "Di dalam ruangan", "Gudang", "Kayu
+gergajian" bukan organisme yang dibudidayakan. Memaksanya jadi `Commodity` akan mengarang
+ontologi, jadi ada entitas tersendiri `TargetSite` — 35 entri, 6,7% pemakaian.
+
+**Identitas OPT diambil dari nama ilmiah, bukan nama Indonesia.** Satu nama seperti "gulma
+berdaun lebar" — 7.512 pemakaian — menaungi puluhan spesies. Nama Indonesia jadi `synonyms`.
+
+**Penciri fase dan sistem dilebur ke nama kanonik.** "Kelapa sawit (TBM)", "(TM)", dan
+"Kelapa sawit" adalah satu komoditas; TBM/TM adalah fase, dan "sawah"/"gogo" adalah sistem
+budidaya. Bentuk aslinya tetap tersimpan sebagai `synonyms` dan di `commodity_label`.
 
 ### Tiga temuan tentang registrinya sendiri
 

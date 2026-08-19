@@ -39,7 +39,12 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `prd` | `vocab/product/pupuk.meta.json` | 10001–19999 | registri pupuk |
 | `sca` | `vocab/stage-scale-bbch-solanaceae.json` | 1 | berkas entitas tunggal |
 | `sca` | `vocab/stage-scale-doc-udang.json` | 2 | berkas entitas tunggal |
-| `cmd` `dev` `met` `opt` `pst` `sed` `var` | masing-masing satu berkas | 1–999 | belum dipakai bersama |
+| `cmd` | `vocab/commodity.json` | 1–999 | dikurasi tangan |
+| `cmd` | `vocab/commodity-registri.json` | 1000–1999 | sasaran dari label produk |
+| `pst` | `vocab/pest.json` | 1–999 | dikurasi tangan |
+| `pst` | `vocab/pest-registri.json` | 1000–3999 | sasaran dari label produk |
+| `sit` | `vocab/target-site.json` | 1–999 | tempat aplikasi |
+| `dev` `met` `opt` `sed` `var` | masing-masing satu berkas | 1–999 | belum dipakai bersama |
 
 **Belum dialokasikan** pada jenis `sub`: 100, 1691–1700, 2000–4999, 10000 ke atas.
 Ambil dari situ bila butuh blok baru, lalu tambahkan barisnya ke tabel ini.
@@ -61,7 +66,7 @@ Nomor aturan sama langkanya dengan nomor ID, dan sama mudahnya bertabrakan.
 |---|---|---|
 | `L1`–`L15` | Struktur inti, netralitas vendor, PDP, keselamatan dasar | seluruhnya |
 | `L16`–`L21` | Sediaan buatan petani | seluruhnya |
-| `L22`–`L29` | Kepatuhan regulasi dan integritas kosakata | `L22`–`L25` |
+| `L22`–`L29` | Kepatuhan regulasi dan integritas kosakata | `L22`–`L26` |
 | `L30`–`L39` | **Belum diklaim** | — |
 | `L40`+ | **Belum diklaim** | — |
 

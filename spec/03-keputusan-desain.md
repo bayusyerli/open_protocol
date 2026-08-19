@@ -289,6 +289,27 @@ kesepakatan lisan tidak bertahan melewati sesi berikutnya.
 
 ---
 
+### D23 — kolom nama ilmiah pada registri diperlakukan sebagai teks bebas, bukan data
+
+Kolom nama ilmiah di registri pestisida terlihat seperti data terstruktur. Ternyata bukan:
+isinya kerap menempelkan dosis (`Thrips sp. (2 g/10 l`, tanda kurungnya bahkan tidak
+tertutup), kalimat peringatan (`Ludwigia octovalvisKalimat peringatan: Sisa gulma...`), dan
+beberapa spesies berturut-turut tanpa pemisah (`Ageratum conyzoidesAlternanthera
+piloxeroidesAlternanthera sesilis...`).
+
+Percobaan pertama memakai isi kolom itu apa adanya sebagai identitas, dan menghasilkan 1.806
+"spesies" yang sebagian nyata-nyata sampah. Aturan `L26` yang baru dibuat langsung menolak
+237 tautan — di pekerjaan sendiri, sebelum sempat tersimpan.
+
+Pendekatan yang dipakai sekarang: ambil **binomial di awal string** dan buang sisanya. Hasilnya
+1.360 organisme dari 96,1% baris. Sisa 3,9% dibiarkan tidak tertaut, bukan ditebak.
+
+Pelajarannya bukan soal parsing. Aturan pemeriksa ternyata paling berguna justru saat
+menangkap kesalahan penulisnya sendiri — dan itu hanya bisa terjadi kalau aturannya ditulis
+sebelum datanya dianggap selesai.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -302,7 +323,9 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 5 | `Plot` bisa berubah bentuk antar-musim | `geoids` sudah menampung riwayat, tetapi versi geometri belum dimodelkan |
 | 6 | **Bahasa** — wajib `id`, `en` dianjurkan | Cukup untuk sekarang. Bahasa daerah menunggu bukti kebutuhan dari Fase 1 |
 | 7 | Basis URI dan awalan `op:` | Menunggu keputusan nama di Fase 0 |
-| 8 | Rekonsiliasi 890 nama komoditas dan 1.531 nama OPT dari label ke kosakata | Belum. Teks aslinya sudah tersimpan, jadi bisa dikerjakan kapan saja |
+| 8 | 3,9% baris OPT dan 1,5% sasaran masih tak tertaut | Nama sumbernya terpotong atau bukan nama sasaran; ditinggalkan apa adanya |
+| 13 | `pest_kind` disimpulkan dari nama Indonesia, belum diverifikasi taksonomis | 1.360 organisme; perlu pemeriksaan terhadap EPPO atau GBIF |
+| 14 | Kelompok fungsional seperti "gulma berdaun lebar" belum jadi entitas | Sekarang hanya tersimpan sebagai synonyms pada spesies anggotanya |
 | 9 | Lampiran I.B melompati nomor 18 dan 21 pada lapisan teks PDF | Perlu pemeriksaan visual dokumen asli — entah sumbernya memang melompat, entah ekstraksinya kehilangan dua baris |
 | 12 | CAS asam sulfat ditulis `7669-93-9` di Permentan 43/2019 | Nomor bakunya `7664-93-9`, dan itu yang dipakai Permentan 39/2015. Direkam apa adanya plus penanda |
 | 10 | Kandungan hara pupuk tidak ada di registri mana pun | Perlu sumber lain — label kemasan, atau data dari principal langsung |

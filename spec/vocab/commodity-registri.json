@@ -6,7 +6,7 @@
       "id": "Komoditas sasaran dari label produk terdaftar"
     },
     "scope": {
-      "id": "514 komoditas hasil rekonsiliasi 514 bentuk nama pada label. Penciri fase (TBM/TM) dan sistem budidaya (sawah, gogo) dibuang dari nama kanonik dan disimpan sebagai synonyms — keduanya sifat siklus, bukan komoditas yang berbeda. Semua diberi kind 'crop' berdasarkan penyaringan tempat aplikasi; belum diperiksa satu per satu. 4 bentuk dibuang karena bukan nama sasaran melainkan penanda data kosong pada registri ('-', 'NA', 'tidak ada'); nomor ID-nya dibiarkan berlubang karena ID tidak pernah didaur ulang. 3 entitas digabung ke kosakata yang sudah dikurasi tangan dan tidak diduplikasi di sini."
+      "id": "514 komoditas hasil rekonsiliasi 514 bentuk nama pada label. Penciri fase (TBM/TM) dan sistem budidaya (sawah, gogo) dibuang dari nama kanonik dan disimpan sebagai synonyms — keduanya sifat siklus, bukan komoditas yang berbeda. Semua diberi kind 'crop' berdasarkan penyaringan tempat aplikasi; belum diperiksa satu per satu. 4 bentuk dibuang karena bukan nama sasaran melainkan penanda data kosong pada registri ('-', 'NA', 'tidak ada'); nomor ID-nya dibiarkan berlubang karena ID tidak pernah didaur ulang. 3 entitas digabung ke kosakata yang sudah dikurasi tangan dan tidak diduplikasi di sini. 25 entri lagi dibuang karena isinya catatan administratif registri, bukan sasaran (mis. 'Izin Tetap Ulang Bahan Teknis', 'tidak tersedia untuk ekspor'); teks itu memang muncul di kolom sasaran, bukan salah baca."
     },
     "id_blocks": [
       {
@@ -1145,31 +1145,6 @@
       ]
     },
     {
-      "id": "op:cmd:00001044",
-      "key": "izin-tetap-ulang-bahan-teknis",
-      "label": {
-        "id": "Izin Tetap Ulang Bahan Teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Izin Tetap Ulang Bahan Teknis",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 23 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      },
-      "synonyms": [
-        "Izin tetap ulang bahan teknis",
-        "izin tetap ulang bahan teknis"
-      ]
-    },
-    {
       "id": "op:cmd:00001045",
       "key": "mentimun",
       "label": {
@@ -1473,27 +1448,6 @@
       }
     },
     {
-      "id": "op:cmd:00001058",
-      "key": "tidak-tersedia-untuk-ekspor",
-      "label": {
-        "id": "tidak tersedia untuk ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "tidak tersedia untuk ekspor",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 16 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001059",
       "key": "padi-tapin-tanam-pindah",
       "label": {
@@ -1593,31 +1547,6 @@
       ]
     },
     {
-      "id": "op:cmd:00001064",
-      "key": "untuk-keperluan-ekspor",
-      "label": {
-        "id": "Untuk keperluan ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Untuk keperluan ekspor",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 13 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      },
-      "synonyms": [
-        "Untuk keperluan Ekspor",
-        "untuk keperluan ekspor"
-      ]
-    },
-    {
       "id": "op:cmd:00001065",
       "key": "persiapan-budidaya-jagung",
       "label": {
@@ -1684,30 +1613,6 @@
       },
       "synonyms": [
         "Tebu keprasan (Ratooncane)"
-      ]
-    },
-    {
-      "id": "op:cmd:00001068",
-      "key": "bahan-teknis",
-      "label": {
-        "id": "Bahan Teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Bahan Teknis",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 12 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      },
-      "synonyms": [
-        "bahan teknis"
       ]
     },
     {
@@ -3510,27 +3415,6 @@
       }
     },
     {
-      "id": "op:cmd:00001152",
-      "key": "tidak-dilakukan-percobaan-efikasi-hanya-didaftarkan-untuk-bahan-teknis",
-      "label": {
-        "id": "Tidak dilakukan percobaan efikasi. Hanya didaftarkan untuk Bahan Teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tidak dilakukan percobaan efikasi. Hanya didaftarkan untuk Bahan Teknis",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001153",
       "key": "hutan-tanaman-industri-akasia-0-75-1-l-ha",
       "label": {
@@ -3639,27 +3523,6 @@
       ]
     },
     {
-      "id": "op:cmd:00001158",
-      "key": "tidak-ada-penggunaan-terdaftar-pestisida-ekspor",
-      "label": {
-        "id": "Tidak Ada Penggunaan Terdaftar (Pestisida Ekspor)"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tidak Ada Penggunaan Terdaftar (Pestisida Ekspor)",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001159",
       "key": "karantina-dan-pra-pengapalan",
       "label": {
@@ -3682,27 +3545,6 @@
       "synonyms": [
         "Karantina dan Pra pengapalan:"
       ]
-    },
-    {
-      "id": "op:cmd:00001160",
-      "key": "tidak-ada-tetap-ulang-bahan-teknis",
-      "label": {
-        "id": "tidak ada (Tetap ulang Bahan Teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "tidak ada (Tetap ulang Bahan Teknis",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
     },
     {
       "id": "op:cmd:00001161",
@@ -4356,51 +4198,6 @@
       }
     },
     {
-      "id": "op:cmd:00001192",
-      "key": "kebutuhan-ekspor",
-      "label": {
-        "id": "Kebutuhan Ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Kebutuhan Ekspor",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      },
-      "synonyms": [
-        "Kebutuhan ekspor"
-      ]
-    },
-    {
-      "id": "op:cmd:00001193",
-      "key": "tidak-termasuk-salah-satu-persyaratan-pendaftaran-izin-tetap-baru-baha",
-      "label": {
-        "id": "Tidak Termasuk Salah Satu Persyaratan Pendaftaran Izin Tetap Baru Bahan Teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tidak Termasuk Salah Satu Persyaratan Pendaftaran Izin Tetap Baru Bahan Teknis",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001194",
       "key": "padi-2-ml-l",
       "label": {
@@ -4456,27 +4253,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "Kedelai (2 ml/l)",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001197",
-      "key": "tidak-dilakukan-uji-efikasi-pada-pendaftaran-produk-ekspor",
-      "label": {
-        "id": "Tidak dilakukan uji efikasi pada pendaftaran produk ekspor."
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tidak dilakukan uji efikasi pada pendaftaran produk ekspor.",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
@@ -5515,30 +5291,6 @@
       }
     },
     {
-      "id": "op:cmd:00001246",
-      "key": "ekspor",
-      "label": {
-        "id": "Ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Ekspor",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      },
-      "synonyms": [
-        "ekspor"
-      ]
-    },
-    {
       "id": "op:cmd:00001247",
       "key": "agita-10-wg",
       "label": {
@@ -5777,27 +5529,6 @@
       "synonyms": [
         "Tambak udang windu dan bandeng"
       ]
-    },
-    {
-      "id": "op:cmd:00001258",
-      "key": "produk-ekspor",
-      "label": {
-        "id": "Produk Ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Produk Ekspor",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
     },
     {
       "id": "op:cmd:00001259",
@@ -6832,27 +6563,6 @@
       }
     },
     {
-      "id": "op:cmd:00001308",
-      "key": "tidak-dilakukan-percobaan-efikasi-hanya-didaftarkan-untuk-keperluan-ek",
-      "label": {
-        "id": "Tidak dilakukan percobaan efikasi. Hanya didaftarkan untuk keperluan ekspor."
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tidak dilakukan percobaan efikasi. Hanya didaftarkan untuk keperluan ekspor.",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001309",
       "key": "proxel-106-preservative",
       "label": {
@@ -6905,27 +6615,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "Budidaya Eucalyptus sp.",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001312",
-      "key": "tidak-ada-pendaftaran-bahan-teknis",
-      "label": {
-        "id": "Tidak ada (Pendaftaran Bahan Teknis)"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tidak ada (Pendaftaran Bahan Teknis)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -7693,48 +7382,6 @@
       }
     },
     {
-      "id": "op:cmd:00001349",
-      "key": "produk-ini-hanya-digunakan-untuk-keperluan-eksport-dan-tidak-untuk-dip",
-      "label": {
-        "id": "Produk ini hanya digunakan untuk keperluan eksport dan tidak untuk dipergunakan/ diperjualbelikan di Indonesia."
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Produk ini hanya digunakan untuk keperluan eksport dan tidak untuk dipergunakan/ diperjualbelikan di Indonesia.",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001350",
-      "key": "izin-tetap-bahan-teknis",
-      "label": {
-        "id": "izin tetap bahan teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "izin tetap bahan teknis",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001351",
       "key": "tanaman-hti-acacia-mangium",
       "label": {
@@ -8207,27 +7854,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "Jambu biji",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001375",
-      "key": "tidak-tersedia-untuk-bahan-teknis",
-      "label": {
-        "id": "tidak tersedia untuk bahan teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "tidak tersedia untuk bahan teknis",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -9016,27 +8642,6 @@
       }
     },
     {
-      "id": "op:cmd:00001413",
-      "key": "produk-ini-didaftarkan-untuk-keperluan-ekspor-dan-tidak-didaftarkan-un",
-      "label": {
-        "id": "Produk ini didaftarkan untuk keperluan ekspor dan tidak didaftarkan untuk keperluan dalam negeri."
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Produk ini didaftarkan untuk keperluan ekspor dan tidak didaftarkan untuk keperluan dalam negeri.",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001414",
       "key": "densil-df-antimicrobial",
       "label": {
@@ -9110,27 +8715,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "Alpukat",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001418",
-      "key": "tetap-ulang-bahan-teknis",
-      "label": {
-        "id": "Tetap ulang bahan teknis"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tetap ulang bahan teknis",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -9341,48 +8925,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "Proxel CMC Preservative",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001429",
-      "key": "izin-ekspor",
-      "label": {
-        "id": "Izin Ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Izin Ekspor",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001430",
-      "key": "keperluan-ekspor",
-      "label": {
-        "id": "Keperluan Ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Keperluan Ekspor",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -9656,27 +9198,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "ACTICIDE NC",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001444",
-      "key": "untuk-ekspor",
-      "label": {
-        "id": "Untuk Ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Untuk Ekspor",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -10444,27 +9965,6 @@
       }
     },
     {
-      "id": "op:cmd:00001481",
-      "key": "untuk-pendaftaran-ekspor",
-      "label": {
-        "id": "Untuk pendaftaran ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Untuk pendaftaran ekspor",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
       "id": "op:cmd:00001482",
       "key": "tembakau-di-penyimpanan",
       "label": {
@@ -10643,27 +10143,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "ACTICIDE RS",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001491",
-      "key": "na-kebutuhan-ekspor",
-      "label": {
-        "id": "NA (Kebutuhan Ekspor)"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "NA (Kebutuhan Ekspor)",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
@@ -11084,27 +10563,6 @@
         {
           "scheme": "KEMENTAN",
           "id": "Proxel MB",
-          "relation": "exact",
-          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        }
-      ],
-      "lifecycle": {
-        "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
-    },
-    {
-      "id": "op:cmd:00001512",
-      "key": "tetap-ulang-ekspor",
-      "label": {
-        "id": "Tetap ulang ekspor"
-      },
-      "kind": "crop",
-      "mappings": [
-        {
-          "scheme": "KEMENTAN",
-          "id": "Tetap ulang ekspor",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }

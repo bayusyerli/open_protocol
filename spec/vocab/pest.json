@@ -76,10 +76,8 @@
       },
       "synonyms": [
         "Hama Thrips",
-        "Hama Thrips (4 Ml/L )",
         "Hama Trip",
         "Hama Trips",
-        "Hama Trips (1 G/L)",
         "Hama Trpis",
         "Thrips"
       ],
@@ -123,11 +121,8 @@
       },
       "synonyms": [
         "Hama Kutu Daun",
-        "Hama Kutu Daun (0 75 Ml/L )",
-        "Kutu Daun",
-        "Kutu Daun (0 2 Ml/L)",
-        "Kutu Daun (0 4 Ml/L)",
-        "Kutu Daun (0 5 Ml/L )"
+        "Hama Trips",
+        "Kutu Daun"
       ],
       "taxonomic_rank": "species"
     },
@@ -181,10 +176,8 @@
       },
       "synonyms": [
         "Hama Kutu Kebul",
+        "Kutu Daun",
         "Kutu Kebul",
-        "Kutu Kebul (0 1 G/L)",
-        "Kutu Kebul (0 2 Ml/L)",
-        "Kutu Kebul (3 Ml/L )",
         "Kutu Putih"
       ],
       "taxonomic_rank": "species"
@@ -254,12 +247,6 @@
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Bactrocera sp. 0.5 ml/l",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
           "id": "Bactrocera tryoni",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
@@ -289,9 +276,7 @@
         "created_at": "2026-08-19T00:00:00Z"
       },
       "synonyms": [
-        "Lalat Buah",
-        "Lalat Buah (0 5 Ml/L )",
-        "Lalat Buah (1 G/L)"
+        "Lalat Buah"
       ],
       "taxonomic_rank": "genus"
     },
@@ -360,43 +345,13 @@
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Spodoptera sp. 0.125 ml/l",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera exigua 0.5 ml/l",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
           "id": "Sprodoptera litura",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Mythmna sepurata 0,75 ml/l",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
           "id": "Spodopters exigua",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera litura 1 ml/l",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera litura 2 ml/l",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
@@ -426,19 +381,7 @@
         },
         {
           "scheme": "KEMENTAN",
-          "id": "Spodoptera exigua 750 ml/ha",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
           "id": "Spodoptera exiqua",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera exigua 1 g/l",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         },
@@ -459,12 +402,6 @@
           "id": "Spodeptera litura",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
-        },
-        {
-          "scheme": "KEMENTAN",
-          "id": "Spodoptera litura 0.5 ml/l",
-          "relation": "exact",
-          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -475,15 +412,8 @@
       "synonyms": [
         "Hama Perusak Daun",
         "Hama Ulat Grayak",
-        "Hama Ulat Grayak (2 G/L )",
         "Kutu Daun",
-        "Ulat Grayak",
-        "Ulat Grayak (0 375 Ml/L)",
-        "Ulat Grayak (1 5 Ml/L)",
-        "Ulat Grayak (1 Ml/L)",
-        "Ulat Grayak (2 Ml/L )",
-        "Ulat Grayak (2 Ml/L)",
-        "Ulat Grayak (3 Ml/L)"
+        "Ulat Grayak"
       ],
       "taxonomic_rank": "species"
     },
@@ -559,7 +489,6 @@
       "synonyms": [
         "Hama Tungau",
         "Tungau",
-        "Tungau (0 05 G/L)",
         "Tungau Merah"
       ],
       "taxonomic_rank": "genus"
@@ -620,11 +549,6 @@
       },
       "synonyms": [
         "Penyakit Antraknosa",
-        "Penyakit Antraknosa (1 5 G/L)",
-        "Penyakit Antraknosa (1 5 Ml/L)",
-        "Penyakit Antraknosa (1 6 Ml/L)",
-        "Penyakit Antraknosa (1 G/L)",
-        "Penyakit Antraknosa (2 G/L)",
         "Penyakit Antraknosa Pada Buah",
         "Penyakit Antraknose",
         "Penyakit Antranoksa",
@@ -668,7 +592,6 @@
       },
       "synonyms": [
         "Penyakit Layu",
-        "Penyakit Layu (1 75 G/L)",
         "Penyakit Layu Fusarium",
         "Penyakit Moler",
         "Penyakit Rebah Kecambah",
@@ -710,7 +633,6 @@
         "created_at": "2026-08-19T00:00:00Z"
       },
       "synonyms": [
-        "Penyakit Layu Bacteri (2 G/L)",
         "Penyakit Layu Bakteri"
       ],
       "taxonomic_rank": "species"
