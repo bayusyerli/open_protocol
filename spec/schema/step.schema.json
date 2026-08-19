@@ -1,0 +1,433 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/step.schema.json",
+  "title": "Step — satu langkah budidaya, direncanakan atau dikerjakan",
+  "description": "Entitas paling penting di Lapis 1. Rencana dan realisasi memakai bentuk yang SAMA, dibedakan hanya oleh 'mode'. Kesamaan bentuk inilah yang membuat kepatuhan protokol bisa dihitung tanpa penerjemahan antar-model.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:stp:[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "cycle": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "mode": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "executed"
+      ]
+    },
+    "operation_type": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "timing": {
+      "$ref": "common.schema.json#/$defs/Timing"
+    },
+    "occurred_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "plan_ref": {
+      "$ref": "common.schema.json#/$defs/Ref",
+      "description": "Langkah rencana yang dipenuhi oleh langkah realisasi ini. Kosong berarti tindakan di luar rencana — itu juga temuan yang berharga."
+    },
+    "protocol_step_key": {
+      "type": "string",
+      "description": "Kunci langkah di dalam protokol Lapis 2, supaya kepatuhan bisa diagregasi lintas petani yang memakai protokol sama."
+    },
+    "applications": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/InputApplication"
+      }
+    },
+    "observations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Observation"
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "description": "Hasil yang keluar dari langkah ini, mis. panen.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variable": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "quantity": {
+            "$ref": "common.schema.json#/$defs/Quantity"
+          },
+          "grade": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "variable",
+          "quantity"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "area_covered": {
+      "$ref": "common.schema.json#/$defs/Quantity"
+    },
+    "labor": {
+      "type": "object",
+      "properties": {
+        "person_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "crew_size": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "family",
+            "hired",
+            "exchange",
+            "mechanised",
+            "mixed"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "cost": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "component": {
+          "type": "string",
+          "enum": [
+            "input",
+            "labor",
+            "machinery",
+            "service",
+            "transport",
+            "other"
+          ]
+        }
+      },
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "additionalProperties": false
+    },
+    "performed_by": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "deviation": {
+      "type": "object",
+      "description": "Diisi saat realisasi berbeda dari rencana, termasuk saat langkah rencana tidak dikerjakan sama sekali.",
+      "properties": {
+        "reason": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "skipped",
+            "late",
+            "early",
+            "different_rate",
+            "different_input",
+            "different_method",
+            "extra_step"
+          ]
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "reason",
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string"
+          },
+          "media_type": {
+            "type": "string"
+          },
+          "captured_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "location": {
+            "$ref": "common.schema.json#/$defs/Geometry"
+          }
+        },
+        "required": [
+          "uri",
+          "media_type"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "recorded_by": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "recording_lag_note": {
+      "type": "string",
+      "description": "Pencatatan mundur beberapa hari itu wajar di lapangan. Jangan disembunyikan — mutu data ikut dinilai dari sini."
+    },
+    "data_classification": {
+      "$ref": "common.schema.json#/$defs/DataClassification"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "cycle",
+    "mode",
+    "operation_type",
+    "data_classification"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "planned"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "then": {
+        "required": [
+          "timing"
+        ],
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "occurred_at"
+              ]
+            },
+            {
+              "required": [
+                "deviation"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "executed"
+          }
+        },
+        "required": [
+          "mode"
+        ]
+      },
+      "then": {
+        "required": [
+          "occurred_at"
+        ],
+        "not": {
+          "required": [
+            "timing"
+          ]
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "InputApplication": {
+      "type": "object",
+      "description": "Aturan netralitas vendor hidup di sini: 'substance' selalu wajib, 'product' selalu opsional. Protokol yang diterbitkan hanya boleh memakai substance dan preparation — penegakannya ada di linter, lihat check.mjs aturan L3.",
+      "properties": {
+        "substance": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "product": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "preparation": {
+          "$ref": "common.schema.json#/$defs/Ref",
+          "description": "Sediaan buatan sendiri yang dipakai. BOLEH muncul pada langkah rencana milik protokol — resepnya terbuka dan tidak menunjuk merek, jadi netralitas vendor tidak dilanggar. Justru inilah satu-satunya bentuk formulasi konkret yang boleh dianjurkan protokol."
+        },
+        "preparation_batch": {
+          "$ref": "common.schema.json#/$defs/Ref",
+          "description": "Batch tertentu yang benar-benar dipakai. Data usaha tani, jadi hanya masuk akal pada mode 'executed' — aturan L3 menolaknya di langkah rencana milik protokol, sama seperti produk."
+        },
+        "rate": {
+          "$ref": "common.schema.json#/$defs/Rate"
+        },
+        "carrier": {
+          "$ref": "common.schema.json#/$defs/Rate",
+          "description": "Volume larutan pembawa, mis. 500 L/ha. Wajib bila dosis dinyatakan sebagai konsentrasi."
+        },
+        "method": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "target": {
+          "type": "object",
+          "properties": {
+            "pest": {
+              "$ref": "common.schema.json#/$defs/Ref"
+            },
+            "plant_part": {
+              "type": "string",
+              "enum": [
+                "whole_plant",
+                "leaf",
+                "stem",
+                "root",
+                "fruit",
+                "flower",
+                "seed",
+                "soil",
+                "water"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "phi_days": {
+          "type": "number",
+          "minimum": 0
+        },
+        "rei_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "nutrients_delivered": {
+          "type": "array",
+          "description": "Turunan hitung, bukan masukan. Disimpan supaya neraca hara dan kepatuhan kuota subsidi bisa diperiksa tanpa menghitung ulang.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "substance": {
+                "$ref": "common.schema.json#/$defs/Ref"
+              },
+              "quantity": {
+                "$ref": "common.schema.json#/$defs/Quantity"
+              }
+            },
+            "required": [
+              "substance",
+              "quantity"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "subsidised": {
+          "type": "boolean",
+          "description": "Apakah input ini berasal dari alokasi pupuk bersubsidi. Menentukan apakah biaya nyata petani sama dengan harga pasar."
+        }
+      },
+      "required": [
+        "substance",
+        "rate"
+      ],
+      "additionalProperties": false
+    },
+    "Observation": {
+      "type": "object",
+      "properties": {
+        "variable": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "value": {
+          "type": [
+            "number",
+            "string",
+            "boolean"
+          ]
+        },
+        "unit": {
+          "$ref": "common.schema.json#/$defs/UcumCode"
+        },
+        "method": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "target": {
+          "type": "object",
+          "properties": {
+            "pest": {
+              "$ref": "common.schema.json#/$defs/Ref"
+            },
+            "plant_part": {
+              "type": "string"
+            }
+          },
+          "additionalProperties": false
+        },
+        "sample": {
+          "type": "object",
+          "properties": {
+            "size": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "scope": {
+              "type": "string",
+              "enum": [
+                "per_plant",
+                "per_hill",
+                "per_trap",
+                "per_m2",
+                "per_leaf",
+                "per_plot",
+                "per_sample",
+                "whole_cycle"
+              ]
+            }
+          },
+          "additionalProperties": false
+        },
+        "observed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "location": {
+          "$ref": "common.schema.json#/$defs/Geometry"
+        }
+      },
+      "required": [
+        "variable",
+        "value"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

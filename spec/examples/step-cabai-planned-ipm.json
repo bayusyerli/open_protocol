@@ -1,0 +1,33 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8269-4e80-7dcb-bd00-2121df819e98",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "planned",
+  "operation_type": { "id": "op:opt:00000032", "label": "Pengendalian OPT" },
+  "protocol_step_key": "cabai-dataran-rendah/kendali-trips-ambang",
+  "timing": {
+    "kind": "condition",
+    "condition": {
+      "compare": {
+        "variable": { "id": "op:var:00000012", "label": "Populasi trips per daun muda" },
+        "operator": ">=",
+        "value": 5,
+        "unit": "1",
+        "scope": "per_leaf"
+      }
+    }
+  },
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000007", "label": "Abamektin" },
+      "rate": { "value": 0.5, "unit": "mL/L", "basis": "per_volume_water" },
+      "carrier": { "value": 500, "unit": "L/har", "basis": "per_area" },
+      "method": { "id": "op:met:00000001", "label": "Penyemprotan" },
+      "target": { "pest": { "id": "op:pst:00000001", "label": "Trips" }, "plant_part": "leaf" },
+      "phi_days": 7,
+      "rei_hours": 12
+    }
+  ],
+  "data_classification": "farm_private",
+  "notes": "Aplikasi berbasis ambang, bukan berbasis kalender. Ini yang membedakan protokol dari jadwal semprot rutin."
+}

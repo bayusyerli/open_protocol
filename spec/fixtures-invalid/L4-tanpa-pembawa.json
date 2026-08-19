@@ -1,0 +1,17 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8300-0000-7000-8000-000000000002",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "planned",
+  "operation_type": { "id": "op:opt:00000032" },
+  "timing": { "kind": "relative", "anchor": "transplanting", "offset": { "value": 21, "unit": "d" } },
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000007" },
+      "rate": { "value": 0.5, "unit": "mL/L", "basis": "per_volume_water" },
+      "target": { "pest": { "id": "op:pst:00000001" } },
+      "phi_days": 7
+    }
+  ],
+  "data_classification": "farm_private"
+}

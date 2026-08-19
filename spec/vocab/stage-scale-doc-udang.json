@@ -1,0 +1,66 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000002",
+  "key": "doc-udang-vaname",
+  "label": {
+    "id": "Umur budidaya udang vaname (DOC)"
+  },
+  "definition": {
+    "id": "Fase berdasarkan hari ke-berapa sejak tebar benur. Bukan fenologi, tetapi memakai bentuk entitas yang sama sehingga penjadwalan berbasis fase tetap berlaku."
+  },
+  "basis": "age",
+  "applies_to": {
+    "commodity_kinds": [
+      "aquaculture"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00000005",
+        "label": "Udang vaname"
+      }
+    ]
+  },
+  "stages": [
+    {
+      "id": "op:stg:00000100",
+      "code": "DOC0-15",
+      "label": {
+        "id": "Pasca tebar"
+      },
+      "order": 0
+    },
+    {
+      "id": "op:stg:00000101",
+      "code": "DOC16-45",
+      "label": {
+        "id": "Pembesaran awal"
+      },
+      "order": 1
+    },
+    {
+      "id": "op:stg:00000102",
+      "code": "DOC46-80",
+      "label": {
+        "id": "Pembesaran lanjut"
+      },
+      "order": 2
+    },
+    {
+      "id": "op:stg:00000103",
+      "code": "DOC81+",
+      "label": {
+        "id": "Menjelang panen"
+      },
+      "order": 3
+    }
+  ],
+  "no_mapping_reason": "Tidak ada skala fase baku yang diterbitkan untuk budidaya udang vaname di Indonesia; ini kesepakatan praktisi. Ditinjau ulang bila SNI atau standar KKP terbit.",
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0"
+  }
+}

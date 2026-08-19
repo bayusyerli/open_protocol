@@ -1,0 +1,713 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "substance",
+    "label": {
+      "id": "Bahan generik — bahan baku sediaan buatan sendiri"
+    },
+    "scope": {
+      "id": "Bahan yang dipakai petani membuat sediaannya sendiri: kotoran ternak, sisa tanaman, bahan nabati, dan bahan tambahan. Berkas ini juga memuat daftar bahan yang DILARANG dipakai, beserta alasannya — daftar larangan disimpan bersama bahannya supaya tidak bisa terlewat."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "UU No. 22 Tahun 2019 tentang Sistem Budi Daya Pertanian Berkelanjutan",
+          "publisher": "Republik Indonesia",
+          "year": 2019,
+          "url": "https://peraturan.bpk.go.id/Details/123688/uu-no-22-tahun-2019"
+        },
+        {
+          "title": "SNI 6729:2016 Sistem pertanian organik",
+          "publisher": "Badan Standardisasi Nasional",
+          "year": 2016
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:sub:00001701",
+      "key": "kotoran-sapi",
+      "label": {
+        "id": "Kotoran sapi (kohe sapi)"
+      },
+      "definition": {
+        "id": "Kotoran ternak sapi dalam keadaan segar atau belum matang. Kaya bahan organik dan serat, hara rendah per satuan bobot."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed",
+        "sanitation_required": true,
+        "reference_composition": [
+          {
+            "nutrient_form": "N",
+            "min": 0.3,
+            "max": 0.8,
+            "unit": "%",
+            "basis": "fresh_weight"
+          },
+          {
+            "nutrient_form": "P2O5",
+            "min": 0.1,
+            "max": 0.4,
+            "unit": "%",
+            "basis": "fresh_weight"
+          },
+          {
+            "nutrient_form": "K2O",
+            "min": 0.2,
+            "max": 0.6,
+            "unit": "%",
+            "basis": "fresh_weight"
+          }
+        ]
+      },
+      "default_unit": "kg",
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Rentang kandungan hara pupuk kandang — rangkuman pustaka penyuluhan Indonesia",
+            "publisher": "Belum ditelusuri ke sumber primer",
+            "year": 2026,
+            "locator": "PERLU VERIFIKASI: angka indikatif, harus diganti hasil uji laboratorium sebelum status naik ke published"
+          }
+        ]
+      },
+      "notes": {
+        "id": "Bobot basah. Kadar air kotoran sapi segar tinggi, sehingga hara per kilogram bahan basah jauh lebih rendah daripada per kilogram bahan kering."
+      }
+    },
+    {
+      "id": "op:sub:00001702",
+      "key": "kotoran-kambing",
+      "label": {
+        "id": "Kotoran kambing (kohe kambing)"
+      },
+      "definition": {
+        "id": "Kotoran ternak kambing atau domba, berbentuk butiran, kadar air lebih rendah daripada kotoran sapi."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed",
+        "sanitation_required": true,
+        "reference_composition": [
+          {
+            "nutrient_form": "N",
+            "min": 0.5,
+            "max": 1.5,
+            "unit": "%",
+            "basis": "fresh_weight"
+          },
+          {
+            "nutrient_form": "P2O5",
+            "min": 0.2,
+            "max": 0.6,
+            "unit": "%",
+            "basis": "fresh_weight"
+          },
+          {
+            "nutrient_form": "K2O",
+            "min": 0.8,
+            "max": 2.0,
+            "unit": "%",
+            "basis": "fresh_weight"
+          }
+        ]
+      },
+      "default_unit": "kg",
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Rentang kandungan hara pupuk kandang — rangkuman pustaka penyuluhan Indonesia",
+            "publisher": "Belum ditelusuri ke sumber primer",
+            "year": 2026,
+            "locator": "PERLU VERIFIKASI: angka indikatif, harus diganti hasil uji laboratorium sebelum status naik ke published"
+          }
+        ]
+      },
+      "notes": {
+        "id": "Butirannya keras dan lambat terurai; tanpa pengomposan atau pencacahan, haranya lepas jauh lebih lambat daripada yang diperkirakan petani."
+      }
+    },
+    {
+      "id": "op:sub:00001703",
+      "key": "kotoran-ayam",
+      "label": {
+        "id": "Kotoran ayam (kohe ayam)"
+      },
+      "definition": {
+        "id": "Kotoran unggas, termasuk campuran sekam alas kandang. Hara tertinggi di antara pupuk kandang lazim, sekaligus paling panas."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed",
+        "sanitation_required": true,
+        "reference_composition": [
+          {
+            "nutrient_form": "N",
+            "min": 1.0,
+            "max": 2.5,
+            "unit": "%",
+            "basis": "fresh_weight"
+          },
+          {
+            "nutrient_form": "P2O5",
+            "min": 0.8,
+            "max": 2.0,
+            "unit": "%",
+            "basis": "fresh_weight"
+          },
+          {
+            "nutrient_form": "K2O",
+            "min": 0.4,
+            "max": 1.2,
+            "unit": "%",
+            "basis": "fresh_weight"
+          }
+        ]
+      },
+      "default_unit": "kg",
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Rentang kandungan hara pupuk kandang — rangkuman pustaka penyuluhan Indonesia",
+            "publisher": "Belum ditelusuri ke sumber primer",
+            "year": 2026,
+            "locator": "PERLU VERIFIKASI: angka indikatif, harus diganti hasil uji laboratorium sebelum status naik ke published"
+          }
+        ]
+      },
+      "notes": {
+        "id": "Risiko Salmonella paling tinggi di antara kotoran ternak lazim, dan paling sering menyebabkan tanaman terbakar bila diberikan mentah."
+      }
+    },
+    {
+      "id": "op:sub:00001704",
+      "key": "urine-sapi",
+      "label": {
+        "id": "Urine sapi"
+      },
+      "definition": {
+        "id": "Air kencing ternak sapi, dipakai sebagai bahan pupuk organik cair dan pembawa ekstrak nabati."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Boleh dipakai setelah difermentasi tertutup minimal 7 hari. Urine segar mengandung urea yang cepat berubah jadi amonia dan membakar tanaman, dan membawa cemaran patogen dari saluran kemih ternak.",
+        "sanitation_required": true,
+        "reference_composition": [
+          {
+            "nutrient_form": "N",
+            "min": 0.4,
+            "max": 1.2,
+            "unit": "%",
+            "basis": "fresh_weight"
+          },
+          {
+            "nutrient_form": "K2O",
+            "min": 0.4,
+            "max": 1.5,
+            "unit": "%",
+            "basis": "fresh_weight"
+          }
+        ]
+      },
+      "default_unit": "L",
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Rentang kandungan hara pupuk kandang — rangkuman pustaka penyuluhan Indonesia",
+            "publisher": "Belum ditelusuri ke sumber primer",
+            "year": 2026,
+            "locator": "PERLU VERIFIKASI: angka indikatif, harus diganti hasil uji laboratorium sebelum status naik ke published"
+          }
+        ]
+      }
+    },
+    {
+      "id": "op:sub:00001705",
+      "key": "sekam-padi",
+      "label": {
+        "id": "Sekam padi"
+      },
+      "definition": {
+        "id": "Kulit gabah sisa penggilingan. Sumber karbon dengan C/N sangat tinggi, dipakai sebagai bahan pengatur kelembapan dan porositas tumpukan kompos."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed"
+      },
+      "default_unit": "kg"
+    },
+    {
+      "id": "op:sub:00001706",
+      "key": "jerami-padi",
+      "label": {
+        "id": "Jerami padi"
+      },
+      "definition": {
+        "id": "Batang dan daun padi sisa panen. Sumber karbon utama pengomposan di sentra padi."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed"
+      },
+      "default_unit": "kg"
+    },
+    {
+      "id": "op:sub:00001707",
+      "key": "arang-sekam",
+      "label": {
+        "id": "Arang sekam"
+      },
+      "definition": {
+        "id": "Sekam padi yang dibakar tidak sempurna (pirolisis sederhana). Dipakai sebagai pembenah tanah dan campuran media semai."
+      },
+      "substance_classes": [
+        "amendment",
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed"
+      },
+      "default_unit": "kg",
+      "notes": {
+        "id": "Bukan sumber hara. Manfaatnya pada porositas, daya pegang air, dan sebagai rumah mikroba — bukan pada kandungan N-P-K."
+      }
+    },
+    {
+      "id": "op:sub:00001708",
+      "key": "molase",
+      "label": {
+        "id": "Molase (tetes tebu)"
+      },
+      "definition": {
+        "id": "Sisa kristalisasi gula tebu, dipakai sebagai sumber energi mikroba pada fermentasi dan perbanyakan hayati."
+      },
+      "substance_classes": [
+        "carrier",
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Pada seduhan berbahan kotoran ternak, penambahan gula memicu perbanyakan patogen manusia. Percobaan pada compost tea menunjukkan Salmonella naik dari 1 menjadi lebih dari 350.000 cfu/mL dalam 72 jam pada kadar molase 1%, sementara pada kadar 0,2% perbanyakan itu tidak terjadi. Batas 0,2% dipakai sebagai batas aman."
+      },
+      "default_unit": "L",
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Effect of Molasses on Regrowth of E. coli O157:H7 and Salmonella in Compost Teas",
+            "publisher": "Compost Science & Utilization 12(1)",
+            "year": 2004,
+            "url": "https://www.tandfonline.com/doi/abs/10.1080/1065657X.2004.10702163"
+          }
+        ]
+      }
+    },
+    {
+      "id": "op:sub:00001709",
+      "key": "kompos-matang",
+      "label": {
+        "id": "Kompos matang"
+      },
+      "definition": {
+        "id": "Bahan organik yang sudah terurai stabil, gelap, berbau tanah, dan tidak lagi memanas. Dipakai sebagai penanda hara pada langkah aplikasi; cara membuatnya ada di entitas sediaan."
+      },
+      "substance_classes": [
+        "organic_matter",
+        "amendment"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed"
+      },
+      "default_unit": "kg"
+    },
+    {
+      "id": "op:sub:00001710",
+      "key": "daun-mimba",
+      "label": {
+        "id": "Daun dan biji mimba (Azadirachta indica)"
+      },
+      "definition": {
+        "id": "Bahan nabati sumber azadirachtin, bahan aktif insektisida yang juga terdaftar resmi dalam bentuk formulasi pabrik."
+      },
+      "substance_classes": [
+        "botanical_material"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Boleh dipakai untuk keperluan sendiri, tidak boleh diedarkan tanpa pendaftaran. Kadar azadirachtin pada bahan segar tidak diketahui tanpa uji, sehingga dosis ekstrak buatan sendiri tidak setara dosis produk terdaftar."
+      },
+      "default_unit": "kg",
+      "notes": {
+        "id": "Bahan aktifnya, azadirachtin, sudah ada sebagai entitas tersendiri (op:sub:00000747) karena terdaftar di registri Kementan. Entitas ini adalah bahan bakunya, bukan bahan aktifnya."
+      }
+    },
+    {
+      "id": "op:sub:00001711",
+      "key": "bonggol-pisang",
+      "label": {
+        "id": "Bonggol pisang"
+      },
+      "definition": {
+        "id": "Pangkal batang pisang, bahan baku bioaktivator MOL yang paling lazim di Jawa."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed"
+      },
+      "default_unit": "kg"
+    },
+    {
+      "id": "op:sub:00001712",
+      "key": "asap-cair",
+      "label": {
+        "id": "Asap cair (liquid smoke)"
+      },
+      "definition": {
+        "id": "Kondensat pirolisis tempurung kelapa atau sekam, dipakai sebagai bahan tambahan pestisida nabati dan pengawet."
+      },
+      "substance_classes": [
+        "botanical_material"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Bersifat asam kuat dan fitotoksik pada kadar tinggi. Wajib diencerkan dan diuji pada beberapa tanaman contoh sebelum dipakai sehamparan."
+      },
+      "default_unit": "L"
+    },
+    {
+      "id": "op:sub:00001713",
+      "key": "daun-tembakau",
+      "label": {
+        "id": "Daun tembakau (Nicotiana tabacum)"
+      },
+      "definition": {
+        "id": "Daun tembakau dan puntung rokok, dipakai luas sebagai bahan rendaman pengendali hama."
+      },
+      "substance_classes": [
+        "botanical_material"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "prohibited",
+        "reason": "Bahan aktifnya nikotin: neurotoksin yang terserap lewat kulit, dengan dosis mematikan pada anak serendah sekitar 1 mg/kg bobot badan. Nikotin sudah tidak disetujui sebagai bahan aktif pestisida di Uni Eropa, dilarang dalam standar pertanian organik, dan tidak pernah terdaftar di Indonesia. Rendaman buatan sendiri kadarnya tidak diketahui, sehingga pembuatnya lebih terpapar daripada hamanya."
+      },
+      "default_unit": "kg",
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Nicotine from tobacco - a \"natural\" pesticide?",
+            "publisher": "CVUA Stuttgart",
+            "url": "https://www.cvuas.de/pesticides/beitrag_en.asp?subid=1&Thema_ID=5&ID=2963&lang=EN"
+          }
+        ]
+      }
+    },
+    {
+      "id": "op:sub:00001714",
+      "key": "akar-tuba",
+      "label": {
+        "id": "Akar tuba (Derris elliptica)"
+      },
+      "definition": {
+        "id": "Akar tanaman tuba, sumber rotenon, dipakai turun-temurun sebagai racun ikan dan insektisida."
+      },
+      "substance_classes": [
+        "botanical_material"
+      ],
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "prohibited",
+        "reason": "Bahan aktifnya rotenon: sangat beracun bagi ikan dan organisme perairan, dan penelitian sejak 1990-an mengaitkan paparannya dengan penyakit Parkinson. Izin rotenon di Uni Eropa dicabut penuh pada 31 Oktober 2011. Pemakaian di sawah beririgasi memindahkan racunnya langsung ke perairan umum."
+      },
+      "default_unit": "kg",
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Rotenone - a review of its toxicity and use for fisheries management",
+            "publisher": "Department of Conservation, New Zealand",
+            "url": "https://www.doc.govt.nz/documents/science-and-technical/sfc211.pdf"
+          }
+        ]
+      }
+    },
+    {
+      "id": "op:sub:00001715",
+      "key": "air",
+      "label": {
+        "id": "Air"
+      },
+      "definition": {
+        "id": "Air sebagai pelarut dan pembawa pada sediaan cair."
+      },
+      "substance_classes": [
+        "water"
+      ],
+      "default_unit": "L",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed"
+      }
+    },
+    {
+      "id": "op:sub:00001716",
+      "key": "media-serealia",
+      "label": {
+        "id": "Media serealia (beras atau jagung giling)"
+      },
+      "definition": {
+        "id": "Butiran serealia matang yang dipakai sebagai media padat perbanyakan jamur berguna."
+      },
+      "substance_classes": [
+        "carrier"
+      ],
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Media serealia yang lembap juga media terbaik bagi Aspergillus penghasil aflatoksin. Wajib disterilkan dengan pengukusan penuh dan dikerjakan pada wadah tertutup; media yang berjamur hijau-kuning harus dibakar, bukan dipakai."
+      }
+    },
+    {
+      "id": "op:sub:00001717",
+      "key": "akar-bambu",
+      "label": {
+        "id": "Perakaran dan tanah rizosfer bambu"
+      },
+      "definition": {
+        "id": "Tanah dan akar halus dari rumpun bambu, dipakai sebagai sumber inokulum bakteri pemacu pertumbuhan."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Inokulum dari alam bebas adalah campuran yang tidak diketahui isinya. Tidak ada jaminan galur yang terbawa aman bagi manusia maupun tanaman, dan identitasnya tidak bisa dipastikan tanpa laboratorium."
+      }
+    },
+    {
+      "id": "op:sub:00001718",
+      "key": "daun-mahoni",
+      "label": {
+        "id": "Daun dan biji mahoni (Swietenia mahagoni)"
+      },
+      "definition": {
+        "id": "Bahan nabati yang dipakai sebagai bahan pestisida nabati."
+      },
+      "substance_classes": [
+        "botanical_material"
+      ],
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Boleh dipakai untuk keperluan sendiri. Kadar bahan aktifnya tidak diketahui tanpa uji, sehingga dosisnya tidak bisa disetarakan dengan produk terdaftar."
+      }
+    },
+    {
+      "id": "op:sub:00001719",
+      "key": "rimpang-kunyit",
+      "label": {
+        "id": "Rimpang kunyit (Curcuma domestica)"
+      },
+      "definition": {
+        "id": "Rimpang kunyit sebagai bahan tambahan pestisida nabati."
+      },
+      "substance_classes": [
+        "botanical_material"
+      ],
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "allowed"
+      }
+    },
+    {
+      "id": "op:sub:00001720",
+      "key": "biomassa-rumput-segar",
+      "label": {
+        "id": "Biomassa rumput dan daun segar campuran"
+      },
+      "definition": {
+        "id": "Campuran daun rumput sehat yang dipetik dari lahan, dipakai sebagai bahan elisitor."
+      },
+      "substance_classes": [
+        "botanical_material"
+      ],
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "reason": "Bahannya tidak dibakukan: jenis rumput, umur, dan kondisi tumbuhnya berbeda tiap kali dibuat, sehingga isi sediaannya tidak bisa dinyatakan maupun diulang. Boleh dicatat sebagai praktik, tidak boleh dianjurkan mesin sebagai pengganti hara."
+      }
+    },
+    {
+      "id": "op:sub:00001721",
+      "key": "limbah-sayur",
+      "label": {
+        "id": "Limbah sayur dan buah"
+      },
+      "definition": {
+        "id": "Sisa sayur dan buah dari dapur atau pasar, bahan baku pupuk organik cair."
+      },
+      "substance_classes": [
+        "organic_matter"
+      ],
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "on_farm": {
+        "status": "restricted",
+        "sanitation_required": true,
+        "reason": "Limbah pasar bercampur sisa hewani dan bisa membawa patogen manusia. Wajib dipisahkan dari sisa daging dan difermentasi tertutup sebelum dipakai."
+      }
+    }
+  ]
+}

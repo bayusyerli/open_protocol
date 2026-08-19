@@ -1,0 +1,10 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "product",
+    "label": { "id": "Fixture uji — jumlah entitas sengaja tidak cocok" },
+    "storage": "ndjson",
+    "count": 5,
+    "lifecycle": { "version": "0.1.0", "status": "draft" }
+  }
+}

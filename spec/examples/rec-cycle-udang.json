@@ -1,0 +1,15 @@
+{
+  "$schema": "../schema/cycle.schema.json",
+  "id": "op:cyc:019e81c4-8300-7e52-9746-f999cb897f03",
+  "plot": { "id": "op:plt:019e8156-a600-7a88-b835-9961f5b88f77", "label": "Petak A3" },
+  "commodity": { "id": "op:cmd:00000005", "label": "Udang vaname" },
+  "stage_scale": { "id": "op:sca:00000002", "label": "Umur budidaya (DOC)" },
+  "system": { "production": "pond_intensive" },
+  "anchors": [{ "event": "stocking", "date": "2026-06-10" }],
+  "planned_start": "2026-06-10",
+  "planned_end": "2026-09-18",
+  "population": { "value": 100, "unit": "1/m2", "basis": "per_area" },
+  "status": "active",
+  "data_classification": "farm_private",
+  "created_at": "2026-06-09T00:00:00Z"
+}

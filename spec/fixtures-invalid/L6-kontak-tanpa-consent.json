@@ -1,0 +1,9 @@
+{
+  "$schema": "../schema/actor.schema.json",
+  "id": "op:act:019e8300-0000-7000-8000-000000000004",
+  "actor_type": "person",
+  "display_name": "Petani contoh",
+  "roles": ["farmer"],
+  "contact": { "phone": "0800000000" },
+  "data_classification": "personal_data"
+}

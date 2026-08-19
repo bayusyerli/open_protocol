@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/commodity.schema.json",
+  "title": "Commodity — komoditas yang dibudidayakan",
+  "description": "Sengaja tanpa field 'kelompok komoditas': pengelompokan diambil dari konsep broader AGROVOC lewat mappings, bukan dari taksonomi buatan sendiri.",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:cmd:[0-9]{8}$" },
+    "kind": {
+      "type": "string",
+      "enum": ["crop", "livestock", "aquaculture", "fungi", "insect", "other"]
+    },
+    "scientific_name": { "type": "string" },
+    "default_stage_scale": { "$ref": "common.schema.json#/$defs/Ref" },
+    "perennial": { "type": "boolean" },
+    "typical_cycle_length": { "$ref": "common.schema.json#/$defs/Duration" },
+    "harvest_pattern": {
+      "type": "string",
+      "enum": ["single", "multiple", "continuous"],
+      "description": "Cabai dipanen berkali-kali; padi sekali. Ini mengubah bentuk kalender."
+    }
+  },
+  "required": ["kind"],
+  "unevaluatedProperties": false
+}

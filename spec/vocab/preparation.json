@@ -1,0 +1,2210 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "preparation",
+    "label": {
+      "id": "Sediaan buatan sendiri — inti hortikultura"
+    },
+    "scope": {
+      "id": "Resep terbuka masukan yang dibuat petani sendiri: kompos, pupuk kandang, bokashi, kascing, MOL, pupuk organik cair, biakan agens hayati, ekstrak nabati, arang sekam, dan elisitor. Setiap entri wajib menyatakan kedudukan hukum, kriteria pelepasan, dan tingkat buktinya. Sediaan yang tidak bisa dinyatakan jujur tetap dimasukkan dengan tingkat bukti D dan catatan apa adanya — menghilangkannya dari kosakata tidak menghilangkannya dari lapangan."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "UU No. 22 Tahun 2019 tentang Sistem Budi Daya Pertanian Berkelanjutan",
+          "publisher": "Republik Indonesia",
+          "year": 2019,
+          "url": "https://peraturan.bpk.go.id/Details/123688/uu-no-22-tahun-2019"
+        },
+        {
+          "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+          "publisher": "Kementerian Pertanian",
+          "year": 2011,
+          "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+          "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+        },
+        {
+          "title": "7 CFR 205.203 — Soil fertility and crop nutrient management practice standard",
+          "publisher": "USDA National Organic Program",
+          "url": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-I/subchapter-M/part-205/subpart-C/section-205.203"
+        },
+        {
+          "title": "Determining the extraction conditions and phytotoxicity threshold for compost maturity evaluation using the seed germination index method",
+          "publisher": "Waste Management",
+          "year": 2023,
+          "url": "https://www.sciencedirect.com/science/article/abs/pii/S0956053X23006049"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:sed:00000001",
+      "key": "kompos-kohe-sapi-termofilik",
+      "label": {
+        "id": "Kompos kotoran sapi, proses termofilik"
+      },
+      "definition": {
+        "id": "Pengomposan aerob kotoran sapi dengan sekam dan jerami sampai matang, dengan suhu tumpukan ditahan di atas 55 derajat Celsius supaya patogen manusia dan biji gulma mati."
+      },
+      "preparation_class": "compost",
+      "intended_functions": [
+        "nutrient_supply",
+        "soil_conditioning"
+      ],
+      "regulatory": {
+        "regime": [
+          "fertilizer_like"
+        ],
+        "own_use_only": false,
+        "circulation": "limited_kabupaten_kota",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 71 ayat (2)",
+            "effect": "Pupuk yang diedarkan wajib terdaftar."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 72",
+            "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+          }
+        ]
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001701",
+            "label": "Kotoran sapi (kohe sapi)"
+          },
+          "role": "nitrogen_source",
+          "proportion": {
+            "value": 3,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001705",
+            "label": "Sekam padi"
+          },
+          "role": "carbon_source",
+          "proportion": {
+            "value": 2,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001706",
+            "label": "Jerami padi"
+          },
+          "role": "carbon_source",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          },
+          "optional": true
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          },
+          "note": {
+            "id": "Ditambahkan sampai uji kepal terpenuhi, bukan sampai takaran tertentu."
+          }
+        }
+      ],
+      "process": {
+        "kind": "aerobic_composting",
+        "duration": {
+          "value": 45,
+          "unit": "d"
+        },
+        "vessel": "covered_heap",
+        "sanitation": {
+          "regime": "thermophilic_windrow",
+          "min_temperature": {
+            "value": 55,
+            "unit": "Cel"
+          },
+          "hold_days": 15,
+          "turnings": 5
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Tumpukan mencapai suhu termofilik"
+            },
+            "variable": {
+              "id": "op:var:00000047",
+              "label": "Suhu tumpukan sediaan"
+            },
+            "target": {
+              "variable": {
+                "id": "op:var:00000047",
+                "label": "Suhu tumpukan sediaan"
+              },
+              "operator": ">=",
+              "value": 55,
+              "unit": "Cel"
+            },
+            "check_method": {
+              "id": "Termometer batang ditusukkan sepertiga kedalaman, tiga titik, hari ke-3 sampai ke-7. Ambil nilai terendah."
+            },
+            "failure_action": {
+              "id": "Bila tidak mencapai 55 derajat: tumpukan terlalu kecil, terlalu kering, atau terlalu banyak karbon. Perbesar tumpukan minimal 1 meter kubik, siram sampai uji kepal terpenuhi, tambah bahan hijau, lalu hitung ulang hari sanitasi dari awal."
+            }
+          },
+          {
+            "name": {
+              "id": "Kadar air tumpukan"
+            },
+            "variable": {
+              "id": "op:var:00000049",
+              "label": "Kadar air sediaan"
+            },
+            "target": {
+              "variable": {
+                "id": "op:var:00000049",
+                "label": "Kadar air sediaan"
+              },
+              "operator": ">=",
+              "value": 50,
+              "unit": "%"
+            },
+            "check_method": {
+              "id": "Uji kepal: bahan dikepal, air tidak menetes tetapi gumpalan tetap utuh."
+            },
+            "failure_action": {
+              "id": "Terlalu kering, siram lalu balik. Terlalu basah, tambah sekam dan balik supaya tidak jadi anaerob."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000051",
+              "label": "Indeks perkecambahan"
+            },
+            "operator": ">=",
+            "value": 80,
+            "unit": "%"
+          },
+          "kind": "maturity",
+          "method": {
+            "id": "op:met:00000021",
+            "label": "Uji perkecambahan"
+          },
+          "field_proxy": {
+            "id": "Kecambahkan 20 benih kangkung pada rendaman kompos 1:5 dan 20 benih pada air biasa. Bila yang tumbuh pada rendaman kurang dari 16 dari 20, kompos belum matang."
+          },
+          "rationale": {
+            "id": "Indeks perkecambahan di atas 80% menandakan racun tumbuh — amonia, asam organik rantai pendek, fenol — sudah habis. Di bawah 50% berarti kompos masih meracuni tanaman."
+          },
+          "source": {
+            "title": "Determining the extraction conditions and phytotoxicity threshold for compost maturity evaluation using the seed germination index method",
+            "publisher": "Waste Management",
+            "year": 2023,
+            "url": "https://www.sciencedirect.com/science/article/abs/pii/S0956053X23006049"
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000047",
+              "label": "Suhu tumpukan sediaan"
+            },
+            "operator": "<=",
+            "value": 40,
+            "unit": "Cel"
+          },
+          "kind": "maturity",
+          "field_proxy": {
+            "id": "Tumpukan tidak lagi memanas kembali setelah dibalik."
+          },
+          "rationale": {
+            "id": "Kompos yang masih memanas berarti masih ada bahan mudah terurai; bila diberikan sekarang, mikrobanya akan merebut nitrogen dari tanaman."
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000053",
+              "label": "Cemaran Escherichia coli"
+            },
+            "operator": "<=",
+            "value": 100,
+            "unit": "{MPN}/g"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Tanpa laboratorium, bukti penggantinya adalah catatan suhu: 55 derajat ke atas selama 15 hari dengan 5 kali pembalikan."
+          },
+          "rationale": {
+            "id": "Batas mengikuti persyaratan teknis minimal pupuk organik padat."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        }
+      ],
+      "composition_basis": "reference",
+      "application": {
+        "default_rate": {
+          "value": 10000,
+          "unit": "kg/har",
+          "basis": "per_area",
+          "min": 5000,
+          "max": 20000
+        },
+        "default_method": {
+          "id": "op:met:00000003",
+          "label": "Tabur merata"
+        }
+      },
+      "safety": {
+        "hazards": [
+          {
+            "id": "Debu dan spora jamur saat membalik tumpukan kering."
+          }
+        ],
+        "ppe": [
+          "gloves",
+          "mask",
+          "boots"
+        ],
+        "note": {
+          "id": "Karena proses termofilik terpenuhi, tenggang waktu 90/120 hari untuk kotoran mentah tidak berlaku."
+        }
+      },
+      "yield_ratio": {
+        "output_per_input": 0.5,
+        "note": {
+          "id": "Sekitar separuh bobot awal hilang sebagai air dan karbon dioksida."
+        }
+      },
+      "shelf_life": {
+        "value": 6,
+        "unit": "mo"
+      },
+      "storage": {
+        "id": "Terlindung hujan, tidak ditutup rapat — kompos matang tetap perlu udara."
+      },
+      "evidence_tier": "B",
+      "evidence_note": {
+        "id": "Proses termofilik dan ambangnya diambil dari standar organik Amerika Serikat yang sudah dipakai lintas negara, bukan dari uji lokal. Yang berbukti kuat adalah sanitasinya. Tanggapan hasil panennya berbeda-beda menurut tanah dan musim, dan bahan organik biasanya baru terasa pada musim kedua ke atas — jangan dijanjikan pada musim pertama."
+      },
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "7 CFR 205.203 — Soil fertility and crop nutrient management practice standard",
+            "publisher": "USDA National Organic Program",
+            "url": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-I/subchapter-M/part-205/subpart-C/section-205.203"
+          },
+          {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          },
+          {
+            "title": "Determining the extraction conditions and phytotoxicity threshold for compost maturity evaluation using the seed germination index method",
+            "publisher": "Waste Management",
+            "year": 2023,
+            "url": "https://www.sciencedirect.com/science/article/abs/pii/S0956053X23006049"
+          }
+        ]
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000002",
+      "key": "pupuk-kandang-matang",
+      "label": {
+        "id": "Pupuk kandang matang (didiamkan, tanpa proses termofilik)"
+      },
+      "definition": {
+        "id": "Kotoran ternak yang ditumpuk dan didiamkan sampai tidak lagi berbau menyengat, tanpa pengendalian suhu. Ini praktik yang paling lazim, dan justru yang paling sering menyalahi asumsi keamanan pangan."
+      },
+      "preparation_class": "aged_manure",
+      "intended_functions": [
+        "nutrient_supply",
+        "soil_conditioning"
+      ],
+      "regulatory": {
+        "regime": [
+          "fertilizer_like"
+        ],
+        "own_use_only": false,
+        "circulation": "limited_kabupaten_kota",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 71 ayat (2)",
+            "effect": "Pupuk yang diedarkan wajib terdaftar."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 72",
+            "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+          }
+        ]
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001701",
+            "label": "Kotoran sapi (kohe sapi)"
+          },
+          "role": "nitrogen_source",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "aging",
+        "duration": {
+          "value": 60,
+          "unit": "d"
+        },
+        "vessel": "covered_heap",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Bau menyengat hilang"
+            },
+            "check_method": {
+              "id": "Tidak lagi tercium bau amonia tajam saat tumpukan dibongkar."
+            },
+            "failure_action": {
+              "id": "Masih menyengat berarti belum siap; diamkan lebih lama atau alihkan ke pengomposan termofilik."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000051",
+              "label": "Indeks perkecambahan"
+            },
+            "operator": ">=",
+            "value": 80,
+            "unit": "%"
+          },
+          "kind": "maturity",
+          "method": {
+            "id": "op:met:00000021",
+            "label": "Uji perkecambahan"
+          },
+          "field_proxy": {
+            "id": "Uji perkecambahan seperti pada kompos termofilik."
+          },
+          "rationale": {
+            "id": "Kematangan tetap harus dibuktikan walau sanitasi tidak dilakukan."
+          }
+        }
+      ],
+      "composition_basis": "reference",
+      "application": {
+        "default_rate": {
+          "value": 10000,
+          "unit": "kg/har",
+          "basis": "per_area"
+        },
+        "default_method": {
+          "id": "op:met:00000003",
+          "label": "Tabur merata"
+        }
+      },
+      "safety": {
+        "preharvest_interval_days": 120,
+        "hazards": [
+          {
+            "id": "Patogen manusia yang terbawa kotoran mentah — Escherichia coli, Salmonella."
+          }
+        ],
+        "ppe": [
+          "gloves",
+          "boots"
+        ],
+        "note": {
+          "id": "120 hari bila bagian yang dimakan bersentuhan dengan tanah (bawang, wortel, selada). 90 hari bila tidak (cabai, tomat berpanggung). Angka ini mengikuti aturan yang sudah lama dipakai standar organik Amerika Serikat dan diterima otoritas keamanan pangannya."
+        }
+      },
+      "evidence_tier": "C",
+      "evidence_note": {
+        "id": "Didiamkan bukan disanitasi. Suhu tumpukan yang tidak dikendalikan tidak menjamin patogen manusia mati, sehingga tenggang waktu ke panen menjadi satu-satunya pengaman yang tersisa. Bila sediaan ini dipakai untuk sayuran yang dimakan mentah, sarankan beralih ke kompos termofilik."
+      },
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "7 CFR 205.203 — Soil fertility and crop nutrient management practice standard",
+            "publisher": "USDA National Organic Program",
+            "url": "https://www.ecfr.gov/current/title-7/subtitle-B/chapter-I/subchapter-M/part-205/subpart-C/section-205.203"
+          }
+        ]
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000003",
+      "key": "bokashi-kohe-kambing",
+      "label": {
+        "id": "Bokashi kotoran kambing"
+      },
+      "definition": {
+        "id": "Fermentasi kotoran kambing dengan dedak dan bioaktivator dalam wadah tertutup, matang dalam dua pekan. Cepat, tetapi tidak melewati fase panas yang mematikan patogen."
+      },
+      "preparation_class": "bokashi",
+      "intended_functions": [
+        "nutrient_supply",
+        "soil_conditioning"
+      ],
+      "regulatory": {
+        "regime": [
+          "fertilizer_like"
+        ],
+        "own_use_only": false,
+        "circulation": "limited_kabupaten_kota",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 71 ayat (2)",
+            "effect": "Pupuk yang diedarkan wajib terdaftar."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 72",
+            "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+          }
+        ]
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001702",
+            "label": "Kotoran kambing (kohe kambing)"
+          },
+          "role": "nitrogen_source",
+          "proportion": {
+            "value": 5,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001705",
+            "label": "Sekam padi"
+          },
+          "role": "carbon_source",
+          "proportion": {
+            "value": 2,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001708",
+            "label": "Molase (tetes tebu)"
+          },
+          "role": "energy_source",
+          "proportion": {
+            "value": 0.2,
+            "unit": "percent_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "anaerobic_fermentation",
+        "duration": {
+          "value": 14,
+          "unit": "d"
+        },
+        "vessel": "closed_drum",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Wadah benar-benar tertutup"
+            },
+            "check_method": {
+              "id": "Tidak ada celah udara; bahan dipadatkan sebelum ditutup."
+            },
+            "failure_action": {
+              "id": "Bila masuk udara, muncul jamur putih tebal dan bau busuk. Batch dibuang, jangan dipakai."
+            }
+          },
+          {
+            "name": {
+              "id": "Bau akhir asam manis, bukan busuk"
+            },
+            "check_method": {
+              "id": "Dibuka pada hari ke-14: berbau seperti tape atau asam manis."
+            },
+            "failure_action": {
+              "id": "Bau busuk atau amonia berarti fermentasi gagal; kembalikan ke tumpukan kompos aerob, jangan diberikan ke tanaman."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000050",
+              "label": "pH sediaan"
+            },
+            "operator": "<=",
+            "value": 4.5,
+            "unit": "1"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Kertas lakmus pada perasan bahan. Warna merah jelas berarti asam."
+          },
+          "rationale": {
+            "id": "Fermentasi yang berhasil menurunkan pH di bawah 4,5, dan keasaman itu menekan bakteri enterik. pH yang tetap netral berarti yang tumbuh bukan bakteri asam laktat."
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000051",
+              "label": "Indeks perkecambahan"
+            },
+            "operator": ">=",
+            "value": 80,
+            "unit": "%"
+          },
+          "kind": "maturity",
+          "method": {
+            "id": "op:met:00000021",
+            "label": "Uji perkecambahan"
+          },
+          "rationale": {
+            "id": "Bokashi segar bersifat sangat asam dan bisa membakar akar bila langsung kena."
+          }
+        }
+      ],
+      "composition_basis": "reference",
+      "application": {
+        "default_rate": {
+          "value": 5000,
+          "unit": "kg/har",
+          "basis": "per_area"
+        },
+        "default_method": {
+          "id": "op:met:00000004",
+          "label": "Aplikasi larikan"
+        }
+      },
+      "safety": {
+        "preharvest_interval_days": 90,
+        "ppe": [
+          "gloves",
+          "boots"
+        ],
+        "note": {
+          "id": "Beri jeda minimal 7 hari antara pemberian bokashi dan penanaman, karena keasamannya masih tinggi saat baru dibuka."
+        }
+      },
+      "evidence_tier": "C",
+      "evidence_note": {
+        "id": "Fermentasi anaerob berlangsung hangat, bukan panas. Tidak ada dasar untuk menganggapnya menyanitasi bahan mentah, sehingga tenggang waktu ke panen tetap berlaku sama seperti pupuk kandang yang hanya didiamkan."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000004",
+      "key": "vermikompos-kascing",
+      "label": {
+        "id": "Vermikompos (kascing)"
+      },
+      "definition": {
+        "id": "Bahan organik yang diuraikan cacing tanah menjadi kotoran cacing halus. Prosesnya harus tetap dingin — cacing mati di atas 35 derajat Celsius."
+      },
+      "preparation_class": "vermicompost",
+      "intended_functions": [
+        "nutrient_supply",
+        "soil_conditioning"
+      ],
+      "regulatory": {
+        "regime": [
+          "fertilizer_like"
+        ],
+        "own_use_only": false,
+        "circulation": "limited_kabupaten_kota",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 71 ayat (2)",
+            "effect": "Pupuk yang diedarkan wajib terdaftar."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 72",
+            "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+          }
+        ]
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001701",
+            "label": "Kotoran sapi (kohe sapi)"
+          },
+          "role": "nitrogen_source",
+          "proportion": {
+            "value": 3,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001706",
+            "label": "Jerami padi"
+          },
+          "role": "carbon_source",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "vermicomposting",
+        "duration": {
+          "value": 60,
+          "unit": "d"
+        },
+        "vessel": "worm_bin",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Bahan sudah didiamkan sebelum cacing dimasukkan"
+            },
+            "check_method": {
+              "id": "Kotoran segar didiamkan minimal 7 hari supaya panas awalnya lewat."
+            },
+            "failure_action": {
+              "id": "Cacing yang dimasukkan ke bahan yang masih memanas akan mati atau kabur."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000051",
+              "label": "Indeks perkecambahan"
+            },
+            "operator": ">=",
+            "value": 80,
+            "unit": "%"
+          },
+          "kind": "maturity",
+          "method": {
+            "id": "op:met:00000021",
+            "label": "Uji perkecambahan"
+          },
+          "rationale": {
+            "id": "Kascing dipanen setelah bahan asalnya tidak lagi dikenali dan berbentuk butiran halus."
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000053",
+              "label": "Cemaran Escherichia coli"
+            },
+            "operator": "<=",
+            "value": 100,
+            "unit": "{MPN}/g"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Tidak ada penanda lapangan yang sahih. Bila tidak diuji, perlakukan seperti pupuk kandang yang hanya didiamkan."
+          },
+          "rationale": {
+            "id": "Proses vermikompos tidak pernah panas, sehingga patogen bahan asal bisa bertahan."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        }
+      ],
+      "composition_basis": "reference",
+      "application": {
+        "default_rate": {
+          "value": 2000,
+          "unit": "kg/har",
+          "basis": "per_area"
+        },
+        "default_method": {
+          "id": "op:met:00000003",
+          "label": "Tabur merata"
+        }
+      },
+      "safety": {
+        "preharvest_interval_days": 90,
+        "ppe": [
+          "gloves"
+        ]
+      },
+      "evidence_tier": "B",
+      "evidence_note": {
+        "id": "Perbaikan sifat fisik tanah dan pasokan hara mikro dari kascing berbukti cukup baik. Yang tidak berbukti adalah klaim penekanan penyakit; jangan dipakai menggantikan langkah pengendalian."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000005",
+      "key": "mol-bonggol-pisang",
+      "label": {
+        "id": "MOL bonggol pisang"
+      },
+      "definition": {
+        "id": "Larutan mikroorganisme lokal hasil fermentasi bonggol pisang. Dipakai sebagai starter pengomposan dan penyubur cair encer."
+      },
+      "preparation_class": "bioactivator",
+      "intended_functions": [
+        "decomposition_starter",
+        "growth_stimulation"
+      ],
+      "regulatory": {
+        "regime": [
+          "fertilizer_like"
+        ],
+        "own_use_only": false,
+        "circulation": "limited_kabupaten_kota",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 71 ayat (2)",
+            "effect": "Pupuk yang diedarkan wajib terdaftar."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 72",
+            "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+          }
+        ]
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001711",
+            "label": "Bonggol pisang"
+          },
+          "role": "active_material",
+          "proportion": {
+            "value": 5,
+            "unit": "parts_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001708",
+            "label": "Molase (tetes tebu)"
+          },
+          "role": "energy_source",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 20,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "anaerobic_fermentation",
+        "duration": {
+          "value": 14,
+          "unit": "d"
+        },
+        "vessel": "jerrycan",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Gas keluar, udara tidak masuk"
+            },
+            "check_method": {
+              "id": "Tutup jeriken diberi selang ke botol berisi air, supaya gas fermentasi keluar tanpa udara luar masuk."
+            },
+            "failure_action": {
+              "id": "Tanpa jalan keluar gas, wadah bisa menggembung dan pecah."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000050",
+              "label": "pH sediaan"
+            },
+            "operator": "<=",
+            "value": 4.5,
+            "unit": "1"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Kertas lakmus. Bau harus asam segar seperti tape; bau busuk atau tengik berarti gagal dan harus dibuang."
+          },
+          "rationale": {
+            "id": "Fermentasi yang berhasil bersifat asam. Larutan yang tetap netral dan berbau busuk berarti yang tumbuh bakteri pembusuk, bukan bakteri asam laktat — dan itu tidak boleh disemprotkan ke tanaman pangan."
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000055",
+              "label": "Kemurnian biakan"
+            },
+            "operator": ">=",
+            "value": 0,
+            "unit": "%"
+          },
+          "kind": "sensory",
+          "field_proxy": {
+            "id": "Permukaan boleh berselaput putih tipis. Selaput hitam atau hijau berarti batch gagal."
+          },
+          "rationale": {
+            "id": "Penanda kasar, sengaja tidak diberi ambang angka karena tidak ada dasar mengukurnya di kebun."
+          }
+        }
+      ],
+      "composition_basis": "unknown",
+      "application": {
+        "default_rate": {
+          "value": 5,
+          "unit": "mL/L",
+          "basis": "per_volume_water"
+        },
+        "default_method": {
+          "id": "op:met:00000007",
+          "label": "Kocor"
+        },
+        "dilution": "1:200"
+      },
+      "safety": {
+        "ppe": [
+          "gloves"
+        ],
+        "note": {
+          "id": "Jangan disemprotkan ke bagian tanaman yang akan dipanen dalam waktu dekat; larutan fermentasi mentah bukan bahan yang steril."
+        }
+      },
+      "shelf_life": {
+        "value": 3,
+        "unit": "mo"
+      },
+      "evidence_tier": "D",
+      "evidence_note": {
+        "id": "Bukti efikasinya lemah dan tidak konsisten. Penelitian yang ada memakai bahan, takaran, dan lama fermentasi yang berbeda-beda, sehingga hasilnya tidak bisa dijumlahkan. Manfaat yang paling masuk akal secara mekanisme adalah sebagai starter pengomposan, bukan sebagai sumber hara — kandungan haranya terlalu encer untuk itu. Jangan disajikan mesin sebagai pengganti pemupukan."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000006",
+      "key": "poc-limbah-sayur",
+      "label": {
+        "id": "Pupuk organik cair dari limbah sayur"
+      },
+      "definition": {
+        "id": "Fermentasi sisa sayur dan buah menjadi larutan penyubur. Murah dan mengurangi limbah, tetapi kandungan haranya rendah dan sangat berubah-ubah."
+      },
+      "preparation_class": "liquid_organic_fertilizer",
+      "intended_functions": [
+        "nutrient_supply"
+      ],
+      "regulatory": {
+        "regime": [
+          "fertilizer_like"
+        ],
+        "own_use_only": false,
+        "circulation": "limited_kabupaten_kota",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 71 ayat (2)",
+            "effect": "Pupuk yang diedarkan wajib terdaftar."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 72",
+            "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+          }
+        ]
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001721",
+            "label": "Limbah sayur dan buah"
+          },
+          "role": "active_material",
+          "proportion": {
+            "value": 3,
+            "unit": "parts_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001708",
+            "label": "Molase (tetes tebu)"
+          },
+          "role": "energy_source",
+          "proportion": {
+            "value": 0.2,
+            "unit": "percent_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 10,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "anaerobic_fermentation",
+        "duration": {
+          "value": 21,
+          "unit": "d"
+        },
+        "vessel": "jerrycan",
+        "sanitation": {
+          "regime": "none"
+        }
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000050",
+              "label": "pH sediaan"
+            },
+            "operator": ">=",
+            "value": 4,
+            "unit": "1"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Kertas lakmus. Di luar rentang 4-9, jangan dipakai."
+          },
+          "rationale": {
+            "id": "Rentang pH mengikuti persyaratan teknis minimal pupuk cair organik."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000053",
+              "label": "Cemaran Escherichia coli"
+            },
+            "operator": "<=",
+            "value": 100,
+            "unit": "{MPN}/mL"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Tidak ada penanda lapangan. Bila bahan bakunya limbah pasar bercampur sisa hewani, jangan disemprot ke bagian tanaman yang dimakan."
+          },
+          "rationale": {
+            "id": "Batas mengikuti persyaratan teknis minimal pupuk cair organik."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        }
+      ],
+      "composition_basis": "unknown",
+      "application": {
+        "default_rate": {
+          "value": 5,
+          "unit": "mL/L",
+          "basis": "per_volume_water"
+        },
+        "dilution": "1:200"
+      },
+      "safety": {
+        "preharvest_interval_days": 90,
+        "ppe": [
+          "gloves",
+          "mask"
+        ]
+      },
+      "evidence_tier": "D",
+      "evidence_note": {
+        "id": "Kandungan haranya jauh di bawah persyaratan teknis minimal pupuk cair organik, yang menuntut N, P2O5, dan K2O masing-masing 3-6%. Sediaan ini pantas disebut penambah bahan organik dan mikroba, bukan pupuk. Menyetarakannya dengan pupuk akan membuat rencana pemupukan kekurangan hara tanpa disadari."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000007",
+      "key": "biakan-trichoderma-media-serealia",
+      "label": {
+        "id": "Perbanyakan Trichoderma pada media serealia"
+      },
+      "definition": {
+        "id": "Memperbanyak jamur Trichoderma pada beras atau jagung giling yang sudah disterilkan, untuk pengendalian penyakit tular tanah."
+      },
+      "preparation_class": "microbial_culture",
+      "intended_functions": [
+        "disease_suppression",
+        "soil_conditioning"
+      ],
+      "regulatory": {
+        "regime": [
+          "pesticide_like"
+        ],
+        "own_use_only": true,
+        "circulation": "own_use_only",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 75",
+            "effect": "Definisi pestisida mencakup jasad renik, virus, dan zat perangsang tumbuh di luar pupuk — ditentukan oleh kegunaan, bukan oleh asal bahan."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 77 ayat (1)",
+            "effect": "Setiap orang dilarang mengedarkan DAN/ATAU MENGGUNAKAN pestisida yang tidak terdaftar, membahayakan kesehatan masyarakat dan kelestarian lingkungan, dan/atau tidak berlabel."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 123",
+            "effect": "Ancaman pidana penjara paling lama 7 tahun dan denda paling banyak Rp5 miliar. Tidak ada pengecualian petani kecil seperti Pasal 72 untuk pupuk."
+          }
+        ],
+        "note": {
+          "id": "Ditujukan menekan patogen tanaman, sehingga masuk definisi pestisida pada Pasal 75 walau organismenya hidup. Trichoderma harzianum memang terdaftar sebagai bahan aktif, tetapi yang terdaftar adalah formulasi pabrik tertentu, bukan biakan yang diperbanyak sendiri. Perbanyakan sendiri hanya untuk dipakai sendiri."
+        }
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001716",
+            "label": "Media serealia (beras atau jagung giling)"
+          },
+          "role": "carrier",
+          "proportion": {
+            "value": 1000,
+            "unit": "parts_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00000008",
+            "label": "Trichoderma harzianum"
+          },
+          "role": "inoculum",
+          "proportion": {
+            "value": 20,
+            "unit": "parts_by_mass"
+          }
+        }
+      ],
+      "process": {
+        "kind": "solid_state_fermentation",
+        "duration": {
+          "value": 14,
+          "unit": "d"
+        },
+        "vessel": "tray",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Media benar-benar steril sebelum diinokulasi"
+            },
+            "check_method": {
+              "id": "Dikukus penuh minimal 60 menit setelah uap merata, lalu didinginkan dalam wadah tertutup."
+            },
+            "failure_action": {
+              "id": "Media yang tidak steril akan ditumbuhi jamur lain. Bila muncul koloni hijau-kekuningan atau hitam, seluruh baki dibakar — jangan diberikan ke lahan."
+            }
+          },
+          {
+            "name": {
+              "id": "Sumber inokulum jelas"
+            },
+            "check_method": {
+              "id": "Inokulum berasal dari laboratorium, balai, atau isolat yang identitasnya tercatat."
+            },
+            "failure_action": {
+              "id": "Tanpa asal-usul yang jelas, biakan tidak boleh dipakai. Memperbanyak produk komersial siap pakai juga tidak boleh: kemurniannya tidak dirancang untuk itu."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000052",
+              "label": "Kerapatan mikroba hidup"
+            },
+            "operator": ">=",
+            "value": 10000000,
+            "unit": "{cfu}/g"
+          },
+          "kind": "potency",
+          "method": {
+            "id": "op:met:00000022",
+            "label": "Hitungan cawan"
+          },
+          "field_proxy": {
+            "id": "Tanpa laboratorium, penanda kasarnya adalah media tertutup penuh spora hijau merata pada hari ke-10 sampai ke-14."
+          },
+          "rationale": {
+            "id": "Ambang mengikuti persyaratan teknis minimal pupuk hayati tunggal, minimal 1e7 cfu per gram bobot kering."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000055",
+              "label": "Kemurnian biakan"
+            },
+            "operator": ">=",
+            "value": 95,
+            "unit": "%"
+          },
+          "kind": "purity",
+          "field_proxy": {
+            "id": "Warna biakan seragam. Bercak hitam, kuning, atau merah muda berarti tercemar."
+          },
+          "rationale": {
+            "id": "Jamur Aspergillus penghasil aflatoksin tumbuh subur pada media serealia lembap yang sama."
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000053",
+              "label": "Cemaran Escherichia coli"
+            },
+            "operator": "<=",
+            "value": 1000,
+            "unit": "{MPN}/g"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Tidak ada penanda lapangan. Bila tidak diuji, jangan pakai pada sayuran yang dimakan mentah."
+          },
+          "rationale": {
+            "id": "Batas cemaran mengikuti persyaratan teknis minimal pupuk hayati."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000057",
+              "label": "Patogenitas pada tanaman uji"
+            },
+            "operator": "==",
+            "value": "negative"
+          },
+          "kind": "safety",
+          "field_proxy": {
+            "id": "Coba pada 10 bibit di persemaian sendiri lebih dulu; bila ada gejala, batch dibuang."
+          },
+          "rationale": {
+            "id": "Uji patogenitas pada tanaman uji adalah syarat baku pupuk hayati, dan berlaku sama untuk biakan buatan sendiri."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        }
+      ],
+      "composition_basis": "unknown",
+      "application": {
+        "default_rate": {
+          "value": 20,
+          "unit": "g",
+          "basis": "per_plant"
+        },
+        "default_method": {
+          "id": "op:met:00000020",
+          "label": "Pencelupan akar bibit"
+        },
+        "max_applications_per_cycle": 3
+      },
+      "safety": {
+        "phi_days": 7,
+        "phi_basis": "precautionary_default",
+        "hazards": [
+          {
+            "id": "Menghirup spora dalam jumlah besar saat memanen biakan; risiko aflatoksin bila media tercemar Aspergillus."
+          }
+        ],
+        "ppe": [
+          "gloves",
+          "mask"
+        ],
+        "note": {
+          "id": "phi_days 7 adalah angka pencegahan, bukan hasil uji residu. Tidak ada uji residu untuk biakan buatan sendiri, dan mengosongkannya akan membuat mesin memperlakukannya seolah tanpa risiko."
+        }
+      },
+      "shelf_life": {
+        "value": 1,
+        "unit": "mo"
+      },
+      "storage": {
+        "id": "Sejuk, terlindung sinar matahari langsung, dalam wadah berpori supaya tidak berembun."
+      },
+      "evidence_tier": "C",
+      "evidence_note": {
+        "id": "Organismenya punya bukti kuat; batch buatan sendiri tidak. Yang berbukti tingkat A adalah Trichoderma sebagai agens pengendali, dari uji dengan galur dan kerapatan spora yang diketahui. Batch buatan kebun tidak punya jaminan itu: telaah perbanyakan mandiri menemukan kendali mutunya jarang konsisten, dan sediaan bisa berisi mikroba lain termasuk patogen manusia. Turunkan ke tingkat D bila kriteria pelepasan tidak diuji."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000008",
+      "key": "biakan-pgpr-akar-bambu",
+      "label": {
+        "id": "Biakan PGPR dari perakaran bambu"
+      },
+      "definition": {
+        "id": "Memperbanyak bakteri pemacu pertumbuhan yang diambil dari rizosfer bambu, dalam rebusan dedak atau kentang."
+      },
+      "preparation_class": "microbial_culture",
+      "intended_functions": [
+        "growth_stimulation",
+        "disease_suppression"
+      ],
+      "regulatory": {
+        "regime": [
+          "pesticide_like"
+        ],
+        "own_use_only": true,
+        "circulation": "own_use_only",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 75",
+            "effect": "Definisi pestisida mencakup jasad renik, virus, dan zat perangsang tumbuh di luar pupuk — ditentukan oleh kegunaan, bukan oleh asal bahan."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 77 ayat (1)",
+            "effect": "Setiap orang dilarang mengedarkan DAN/ATAU MENGGUNAKAN pestisida yang tidak terdaftar, membahayakan kesehatan masyarakat dan kelestarian lingkungan, dan/atau tidak berlabel."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 123",
+            "effect": "Ancaman pidana penjara paling lama 7 tahun dan denda paling banyak Rp5 miliar. Tidak ada pengecualian petani kecil seperti Pasal 72 untuk pupuk."
+          }
+        ],
+        "note": {
+          "id": "Diklaim menekan penyakit, sehingga masuk definisi pestisida pada Pasal 75. Berbeda dari Trichoderma, isolatnya tidak diketahui identitasnya sama sekali."
+        }
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001717",
+            "label": "Perakaran dan tanah rizosfer bambu"
+          },
+          "role": "inoculum",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001708",
+            "label": "Molase (tetes tebu)"
+          },
+          "role": "energy_source",
+          "proportion": {
+            "value": 0.2,
+            "unit": "percent_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 20,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "liquid_culture",
+        "duration": {
+          "value": 14,
+          "unit": "d"
+        },
+        "vessel": "jerrycan",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Media direbus sampai mendidih dan didinginkan tertutup"
+            },
+            "check_method": {
+              "id": "Rebusan mendidih minimal 15 menit, lalu dingin dalam wadah tertutup."
+            },
+            "failure_action": {
+              "id": "Media yang tidak direbus akan menumbuhkan apa pun yang ada di air."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000052",
+              "label": "Kerapatan mikroba hidup"
+            },
+            "operator": ">=",
+            "value": 10000000,
+            "unit": "{cfu}/mL"
+          },
+          "kind": "potency",
+          "field_proxy": {
+            "id": "Tanpa laboratorium tidak bisa dipastikan. Larutan keruh saja bukan bukti."
+          },
+          "rationale": {
+            "id": "Ambang mengikuti persyaratan teknis minimal pupuk hayati cair."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000053",
+              "label": "Cemaran Escherichia coli"
+            },
+            "operator": "<=",
+            "value": 1000,
+            "unit": "{MPN}/mL"
+          },
+          "kind": "contamination",
+          "field_proxy": {
+            "id": "Tidak ada penanda lapangan."
+          },
+          "rationale": {
+            "id": "Inokulum dari tanah bebas bisa membawa bakteri enterik."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        },
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000057",
+              "label": "Patogenitas pada tanaman uji"
+            },
+            "operator": "==",
+            "value": "negative"
+          },
+          "kind": "safety",
+          "field_proxy": {
+            "id": "Uji dulu pada 10 bibit di persemaian sendiri sebelum dipakai sehamparan."
+          },
+          "rationale": {
+            "id": "Campuran yang tidak diketahui isinya bisa mengandung bakteri patogen tanaman."
+          },
+          "source": {
+            "title": "Persyaratan teknis minimal pupuk organik, pupuk hayati, dan pembenah tanah",
+            "publisher": "Kementerian Pertanian",
+            "year": 2011,
+            "locator": "Lampiran I Permentan 70/Permentan/SR.140/10/2011; angka mutakhirnya ada pada Kepmentan 261/KPTS/SR.310/M/4/2019 — PERLU VERIFIKASI",
+            "url": "https://psp.pertanian.go.id/layanan-publik/keputusan-menteri-pertanian-nomor-261-kpts-sr-310-m-4-2019-tentang-persyaratan-teknis-minimal-pupuk-organik-pupuk-hayati-dan-pembenah-tanah"
+          }
+        }
+      ],
+      "composition_basis": "unknown",
+      "application": {
+        "default_rate": {
+          "value": 10,
+          "unit": "mL/L",
+          "basis": "per_volume_water"
+        },
+        "default_method": {
+          "id": "op:met:00000007",
+          "label": "Kocor"
+        },
+        "dilution": "1:100"
+      },
+      "safety": {
+        "phi_days": 14,
+        "phi_basis": "precautionary_default",
+        "ppe": [
+          "gloves",
+          "mask"
+        ],
+        "note": {
+          "id": "Jangan disemprotkan ke bagian tanaman yang dimakan. Biakan cair dari inokulum liar tidak punya dasar keamanan pangan apa pun."
+        }
+      },
+      "shelf_life": {
+        "value": 1,
+        "unit": "mo"
+      },
+      "evidence_tier": "D",
+      "evidence_note": {
+        "id": "Isolatnya tidak diketahui. Yang diperbanyak adalah campuran bakteri yang kebetulan ada di akar bambu itu, dan tidak ada cara memastikan isinya tanpa laboratorium. Telaah global menemukan bahwa bahkan inokulan bakteri yang identitasnya diketahui pun hasil lapangannya tidak konsisten — kenaikan hasil rata-rata di iklim tropis sekitar 15%, dengan sebaran lebar dan hasil di pot jauh lebih baik daripada di lapangan. Praktik pengaturan yang lebih matang, misalnya undang-undang bioinput Brasil 2024, hanya mengizinkan perbanyakan mandiri dari galur yang berasal dari bank plasma nutfah terakreditasi. Selama itu belum ada di sini, sediaan ini pantas dicatat, tidak pantas dianjurkan."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000009",
+      "key": "ekstrak-mimba-air",
+      "label": {
+        "id": "Ekstrak air daun dan biji mimba"
+      },
+      "definition": {
+        "id": "Rendaman daun atau biji mimba tumbuk dalam air semalam, disaring, lalu disemprotkan. Bahan aktif utamanya azadirachtin."
+      },
+      "preparation_class": "botanical_extract",
+      "intended_functions": [
+        "pest_control"
+      ],
+      "regulatory": {
+        "regime": [
+          "pesticide_like"
+        ],
+        "own_use_only": true,
+        "circulation": "own_use_only",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 75",
+            "effect": "Definisi pestisida mencakup jasad renik, virus, dan zat perangsang tumbuh di luar pupuk — ditentukan oleh kegunaan, bukan oleh asal bahan."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 77 ayat (1)",
+            "effect": "Setiap orang dilarang mengedarkan DAN/ATAU MENGGUNAKAN pestisida yang tidak terdaftar, membahayakan kesehatan masyarakat dan kelestarian lingkungan, dan/atau tidak berlabel."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 123",
+            "effect": "Ancaman pidana penjara paling lama 7 tahun dan denda paling banyak Rp5 miliar. Tidak ada pengecualian petani kecil seperti Pasal 72 untuk pupuk."
+          }
+        ],
+        "note": {
+          "id": "Azadirachtin terdaftar sebagai bahan aktif di registri Kementan, tetapi yang terdaftar adalah formulasi pabrik dengan kadar yang diketahui. Rendaman buatan sendiri kadarnya tidak diketahui dan tidak berlabel, sehingga tidak boleh diedarkan dan penggunaannya berada di wilayah yang belum jelas menurut Pasal 77 ayat (1)."
+        }
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001710",
+            "label": "Daun dan biji mimba (Azadirachta indica)"
+          },
+          "role": "active_material",
+          "proportion": {
+            "value": 50,
+            "unit": "parts_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 1000,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "aqueous_extraction",
+        "duration": {
+          "value": 24,
+          "unit": "h"
+        },
+        "vessel": "open_bucket",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Disaring dan dipakai hari itu juga"
+            },
+            "check_method": {
+              "id": "Disaring dengan kain rapat; sisa ampas tidak ikut ke tangki semprot."
+            },
+            "failure_action": {
+              "id": "Azadirachtin terurai cepat oleh sinar matahari dan penyimpanan. Rendaman yang disimpan lebih dari 2 hari sudah kehilangan sebagian besar daya kerjanya, dan penyemprot akan mengira hamanya kebal padahal sediaannya yang kosong."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000050",
+              "label": "pH sediaan"
+            },
+            "operator": ">=",
+            "value": 4,
+            "unit": "1"
+          },
+          "kind": "sensory",
+          "field_proxy": {
+            "id": "Larutan berbau tajam khas mimba dan tidak berbusa busuk. Bau tengik berarti sudah terfermentasi dan harus dibuang."
+          },
+          "rationale": {
+            "id": "Tidak ada uji kadar bahan aktif yang bisa dikerjakan di kebun; yang bisa diperiksa hanya tanda kerusakan."
+          }
+        }
+      ],
+      "composition_basis": "unknown",
+      "application": {
+        "default_rate": {
+          "value": 50,
+          "unit": "mL/L",
+          "basis": "per_volume_water"
+        },
+        "default_method": {
+          "id": "op:met:00000002",
+          "label": "Penyemprotan dengan alat punggung"
+        },
+        "dilution": "1:20",
+        "max_applications_per_cycle": 6
+      },
+      "safety": {
+        "phi_days": 7,
+        "phi_basis": "precautionary_default",
+        "rei_hours": 4,
+        "hazards": [
+          {
+            "id": "Iritasi kulit dan mata. Ekstrak biji lebih pekat daripada ekstrak daun."
+          },
+          {
+            "id": "Beracun bagi ikan; jangan disemprot di petak yang airnya mengalir ke kolam."
+          }
+        ],
+        "ppe": [
+          "gloves",
+          "mask",
+          "goggles",
+          "long_sleeves"
+        ],
+        "note": {
+          "id": "Semprot sore hari. Azadirachtin cepat rusak oleh sinar matahari, dan penyemprotan sore juga mengurangi paparan pada lebah."
+        }
+      },
+      "shelf_life": {
+        "value": 2,
+        "unit": "d"
+      },
+      "evidence_tier": "C",
+      "evidence_note": {
+        "id": "Telaah 12 bahan nabati buatan sendiri pada kondisi lapangan nyata menemukan semuanya punya sebagian daya kerja, tetapi efikasinya bervariasi dan umumnya lebih rendah daripada pembanding sintetis. Penyebab variasinya jelas: kadar bahan aktif berbeda menurut cuaca dan cara pembuatan. Penulisnya menyarankan pembakuan resep oleh lembaga penelitian, dan lebih banyak kajian risiko kesehatan bagi pembuatnya. Perlakukan sebagai penekan populasi, bukan penuntas serangan."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000010",
+      "key": "formula-nabati-balingtan",
+      "label": {
+        "id": "Formula pestisida nabati Balingtan"
+      },
+      "definition": {
+        "id": "Campuran ekstrak daun mimba, daun mahoni, dan rimpang kunyit dengan urine sapi, asap cair, dan air, mengikuti perbandingan yang diterbitkan Balai Penelitian Lingkungan Pertanian."
+      },
+      "preparation_class": "botanical_extract",
+      "intended_functions": [
+        "pest_control"
+      ],
+      "regulatory": {
+        "regime": [
+          "pesticide_like"
+        ],
+        "own_use_only": true,
+        "circulation": "own_use_only",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 75",
+            "effect": "Definisi pestisida mencakup jasad renik, virus, dan zat perangsang tumbuh di luar pupuk — ditentukan oleh kegunaan, bukan oleh asal bahan."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 77 ayat (1)",
+            "effect": "Setiap orang dilarang mengedarkan DAN/ATAU MENGGUNAKAN pestisida yang tidak terdaftar, membahayakan kesehatan masyarakat dan kelestarian lingkungan, dan/atau tidak berlabel."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 123",
+            "effect": "Ancaman pidana penjara paling lama 7 tahun dan denda paling banyak Rp5 miliar. Tidak ada pengecualian petani kecil seperti Pasal 72 untuk pupuk."
+          }
+        ],
+        "note": {
+          "id": "Diterbitkan lembaga penelitian pemerintah sebagai petunjuk teknis, tetapi petunjuk teknis bukan pendaftaran. Formula ini tidak punya nomor pendaftaran dan tidak berlabel."
+        }
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001710",
+            "label": "Daun dan biji mimba (Azadirachta indica)"
+          },
+          "role": "active_material",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001718",
+            "label": "Daun dan biji mahoni (Swietenia mahagoni)"
+          },
+          "role": "active_material",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001719",
+            "label": "Rimpang kunyit (Curcuma domestica)"
+          },
+          "role": "active_material",
+          "proportion": {
+            "value": 0.2,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001704",
+            "label": "Urine sapi"
+          },
+          "role": "carrier",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001712",
+            "label": "Asap cair (liquid smoke)"
+          },
+          "role": "additive",
+          "proportion": {
+            "value": 0.1,
+            "unit": "parts_by_volume"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "mechanical_mixing",
+        "vessel": "closed_drum",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Urine sapi difermentasi lebih dulu"
+            },
+            "check_method": {
+              "id": "Urine disimpan tertutup minimal 7 hari sebelum dicampur, sampai bau amonianya turun."
+            },
+            "failure_action": {
+              "id": "Urine segar membakar daun dan membawa cemaran dari saluran kemih ternak."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000050",
+              "label": "pH sediaan"
+            },
+            "operator": ">=",
+            "value": 4,
+            "unit": "1"
+          },
+          "kind": "sensory",
+          "field_proxy": {
+            "id": "Campuran homogen, tidak menggumpal, tidak berbau busuk."
+          },
+          "rationale": {
+            "id": "Tidak ada uji mutu yang tersedia untuk formula ini."
+          }
+        }
+      ],
+      "composition_basis": "unknown",
+      "application": {
+        "default_rate": {
+          "value": 50,
+          "unit": "mL/L",
+          "basis": "per_volume_water"
+        },
+        "default_method": {
+          "id": "op:met:00000002",
+          "label": "Penyemprotan dengan alat punggung"
+        },
+        "dilution": "1:20",
+        "max_applications_per_cycle": 6
+      },
+      "safety": {
+        "phi_days": 14,
+        "phi_basis": "precautionary_default",
+        "preharvest_interval_days": 90,
+        "rei_hours": 12,
+        "hazards": [
+          {
+            "id": "Asap cair bersifat asam kuat dan bisa membakar daun serta mengiritasi mata."
+          },
+          {
+            "id": "Urine ternak membawa cemaran patogen; jangan disemprot ke bagian yang dimakan mendekati panen."
+          }
+        ],
+        "ppe": [
+          "gloves",
+          "mask",
+          "goggles",
+          "long_sleeves",
+          "boots"
+        ],
+        "note": {
+          "id": "Tenggang 14 hari dipilih lebih panjang daripada ekstrak mimba karena campuran ini mengandung urine ternak dan asap cair yang tidak punya data residu sama sekali. Selain itu berlaku tenggang 90 hari sebagai sediaan berbahan kotoran ternak mentah: urine yang hanya difermentasi tujuh hari tidak melewati fase panas, jadi tidak ada dasar menganggapnya tersanitasi. Akibatnya nyata — pada cabai yang dipanen berkali-kali mulai sekitar 75 hari setelah tanam, formula ini praktis hanya bisa dipakai pada paruh pertama musim. Itu kesimpulan yang mengikuti bahannya, bukan kekurangan aturannya."
+        }
+      },
+      "evidence_tier": "B",
+      "evidence_note": {
+        "id": "Sumbernya lembaga penelitian pemerintah, jadi tingkat buktinya B — tetapi tingkat B bukan berarti lengkap. Petunjuk teknis aslinya tidak memuat dosis per satuan luas, tidak memuat OPT sasaran, tidak memuat tenggang waktu sebelum panen, dan tidak memuat kadar bahan aktif. Petunjuk itu juga menyatakan bahwa pemakaian dosis tinggi sekalipun masih relatif aman; pernyataan itu tidak didukung data dan tidak diikuti di sini. Angka dosis, tenggang panen, dan alat pelindung pada entri ini adalah tambahan pencegahan, bukan salinan sumbernya."
+      },
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Petunjuk Teknis Pembuatan Pestisida Nabati sebagai Teknologi Ramah Lingkungan",
+            "publisher": "Balai Penelitian Lingkungan Pertanian, Badan Litbang Pertanian",
+            "year": 2019,
+            "url": "https://repository.pertanian.go.id/bitstreams/150ebd42-dc24-40f2-802b-81e8ac95d079/download"
+          }
+        ]
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000011",
+      "key": "arang-sekam-pirolisis",
+      "label": {
+        "id": "Arang sekam"
+      },
+      "definition": {
+        "id": "Sekam padi dibakar tidak sempurna sampai menghitam tetapi belum jadi abu, dipakai sebagai pembenah tanah dan campuran media semai."
+      },
+      "preparation_class": "biochar",
+      "intended_functions": [
+        "soil_conditioning"
+      ],
+      "regulatory": {
+        "regime": [
+          "soil_amendment_like"
+        ],
+        "own_use_only": false,
+        "circulation": "limited_kabupaten_kota",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 71 ayat (2)",
+            "effect": "Pupuk yang diedarkan wajib terdaftar."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 72",
+            "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+          }
+        ]
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001705",
+            "label": "Sekam padi"
+          },
+          "role": "carbon_source",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "pyrolysis",
+        "duration": {
+          "value": 6,
+          "unit": "h"
+        },
+        "vessel": "kiln",
+        "sanitation": {
+          "regime": "none"
+        },
+        "critical_control_points": [
+          {
+            "name": {
+              "id": "Berhenti sebelum jadi abu"
+            },
+            "check_method": {
+              "id": "Pembakaran dihentikan dan disiram saat sekam sudah hitam merata, sebelum memutih."
+            },
+            "failure_action": {
+              "id": "Sekam yang jadi abu putih kehilangan struktur berporinya, dan yang tersisa hanya garam kalium yang bisa menaikkan pH terlalu jauh."
+            }
+          }
+        ]
+      },
+      "release_criteria": [
+        {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000050",
+              "label": "pH sediaan"
+            },
+            "operator": "<=",
+            "value": 9,
+            "unit": "1"
+          },
+          "kind": "safety",
+          "field_proxy": {
+            "id": "Arang sekam hitam merata, bukan abu putih."
+          },
+          "rationale": {
+            "id": "Abu bersifat sangat basa dan bisa mengangkat pH tanah lebih jauh daripada yang dikehendaki."
+          }
+        }
+      ],
+      "composition_basis": "reference",
+      "application": {
+        "default_rate": {
+          "value": 2000,
+          "unit": "kg/har",
+          "basis": "per_area"
+        },
+        "default_method": {
+          "id": "op:met:00000003",
+          "label": "Tabur merata"
+        }
+      },
+      "safety": {
+        "hazards": [
+          {
+            "id": "Asap pembakaran terbuka dan risiko kebakaran."
+          }
+        ],
+        "ppe": [
+          "mask",
+          "gloves"
+        ]
+      },
+      "evidence_tier": "C",
+      "evidence_note": {
+        "id": "Perbaikan porositas dan daya pegang air pada tanah berat cukup masuk akal secara mekanisme dan sering teramati. Yang tidak berbukti adalah klaim arang sekam sebagai sumber hara. Pembakaran terbuka juga menghasilkan asap yang mengganggu kesehatan; ini biaya yang jarang dihitung."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:sed:00000012",
+      "key": "biosaka-elisitor",
+      "label": {
+        "id": "Biosaka"
+      },
+      "definition": {
+        "id": "Ramuan dari lima jenis atau lebih daun rumput sehat yang diremas tangan dalam air sampai tercampur, tanpa bahan tambahan, disebut sebagai elisitor."
+      },
+      "preparation_class": "elicitor",
+      "intended_functions": [
+        "growth_stimulation"
+      ],
+      "regulatory": {
+        "regime": [
+          "unclear",
+          "pesticide_like"
+        ],
+        "own_use_only": true,
+        "circulation": "own_use_only",
+        "legal_basis": [
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 75 huruf d",
+            "effect": "Definisi pestisida mencakup bahan yang dipakai mengatur atau merangsang pertumbuhan tanaman yang tidak termasuk pupuk. Sediaan yang menyebut dirinya elisitor dan bukan pupuk justru jatuh ke rumusan ini."
+          },
+          {
+            "instrument": "UU 22/2019",
+            "article": "Pasal 77 ayat (1)",
+            "effect": "Bila benar masuk definisi pestisida, penggunaannya tanpa pendaftaran berada di wilayah yang dilarang. Ini bacaan hukum yang perlu dipastikan ahli, bukan kesimpulan yang sudah pasti."
+          }
+        ],
+        "note": {
+          "id": "Kedudukan hukumnya sengaja dinyatakan 'unclear'. Menyatakannya aman tanpa dasar akan memindahkan risiko ke petani."
+        }
+      },
+      "feedstocks": [
+        {
+          "substance": {
+            "id": "op:sub:00001720",
+            "label": "Biomassa rumput dan daun segar campuran"
+          },
+          "role": "active_material",
+          "proportion": {
+            "value": 1,
+            "unit": "parts_by_mass"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00001715",
+            "label": "Air"
+          },
+          "role": "water",
+          "proportion": {
+            "value": 100,
+            "unit": "parts_by_volume"
+          }
+        }
+      ],
+      "process": {
+        "kind": "mechanical_mixing",
+        "duration": {
+          "value": 0.5,
+          "unit": "h"
+        },
+        "vessel": "open_bucket",
+        "sanitation": {
+          "regime": "none"
+        }
+      },
+      "composition_basis": "unknown",
+      "application": {
+        "default_rate": {
+          "value": 40,
+          "unit": "mL/L",
+          "basis": "per_volume_water"
+        },
+        "default_method": {
+          "id": "op:met:00000001",
+          "label": "Penyemprotan"
+        }
+      },
+      "safety": {
+        "ppe": [
+          "gloves"
+        ],
+        "note": {
+          "id": "Jangan memakai rumput dari petak yang baru disemprot herbisida; sisa herbisida ikut terbawa ke tangki."
+        }
+      },
+      "evidence_tier": "D",
+      "evidence_note": {
+        "id": "Tidak bisa dibakukan dalam bentuknya sekarang, dan itu bukan penilaian moral melainkan akibat dari cara pembuatannya. Bahannya adalah rumput apa saja yang ada di petak, sehingga isinya berbeda tiap kali dibuat dan tidak ada yang bisa diukur, diulang, atau diuji. Peneliti BRIN mempersoalkan tepat hal itu; kajian yang dirujuk pun dinilai masih prematur, dan klaim bahwa sediaan ini bisa menggantikan sampai 90% pemupukan tidak terbukti — pada percobaan yang membandingkannya, pemberian tanpa pupuk justru memberi hasil terendah. Dicatat di sini supaya bisa direkam bila petani memakainya, bukan supaya bisa dianjurkan. Kriteria pelepasannya sengaja dikosongkan: tidak ada satu pun yang bisa ditulis dengan jujur."
+      },
+      "notes": {
+        "id": "Masuk sebagai bahan uji kejujuran model: bila kerangka ini tidak sanggup menampung praktik yang sedang ramai tanpa ikut mengiklankannya, kerangkanya yang perlu diperbaiki."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    }
+  ]
+}

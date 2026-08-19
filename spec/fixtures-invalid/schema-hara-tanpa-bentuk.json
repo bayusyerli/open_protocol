@@ -1,0 +1,9 @@
+{
+  "$schema": "../schema/substance.schema.json",
+  "id": "op:sub:00009999",
+  "key": "hara-tanpa-bentuk",
+  "label": { "id": "Hara tanpa bentuk yang dinyatakan" },
+  "substance_classes": ["nutrient", "active_ingredient"],
+  "no_mapping_reason": "Fixture uji; sengaja dibuat cacat untuk membuktikan aturan bentuk hara menyala.",
+  "lifecycle": { "version": "0.1.0", "status": "draft" }
+}

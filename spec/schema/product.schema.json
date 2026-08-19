@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/product.schema.json",
+  "title": "Product — produk komersial",
+  "description": "Produk hanya boleh masuk registry bila punya izin edar yang bisa diverifikasi. Komposisi dinyatakan sebagai massa/volume per massa/volume — mengikuti konvensi ADAPT — bukan persentase atau dosis per hektar.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:prd:[0-9]{8}$"
+    },
+    "product_category": {
+      "type": "string",
+      "enum": [
+        "pesticide",
+        "fertilizer",
+        "soil_amendment",
+        "biological",
+        "seed",
+        "feed",
+        "growth_regulator",
+        "other"
+      ]
+    },
+    "use_domain": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Ranah pemakaian sesuai registri. Kosong di sebagian besar baris pestisida, jadi 'unknown' adalah nilai yang jujur, bukan kelalaian.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "crop_protection",
+          "crop_nutrition",
+          "household",
+          "public_health",
+          "veterinary",
+          "stored_product",
+          "forestry",
+          "fishery",
+          "unknown"
+        ]
+      }
+    },
+    "manufacturer": {
+      "type": "string"
+    },
+    "registration": {
+      "type": "object",
+      "description": "Tanpa ini produk tidak boleh diterbitkan. Untuk Indonesia otoritasnya KEMENTAN.",
+      "properties": {
+        "authority": {
+          "type": "string"
+        },
+        "number": {
+          "type": "string",
+          "minLength": 3
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "active",
+            "expired",
+            "revoked",
+            "unverified"
+          ]
+        },
+        "verified_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "valid_from": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "authority",
+        "number",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "formulation": {
+      "type": "string",
+      "description": "Kode formulasi, mis. EC, WP, SL, SC, GR."
+    },
+    "composition": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "substance": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "value": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode",
+            "description": "Massa/volume per massa/volume, mis. g/L atau g/kg."
+          }
+        },
+        "required": [
+          "substance",
+          "value",
+          "unit"
+        ],
+        "additionalProperties": false
+      },
+      "description": "Opsional sejak v0.1: registri pupuk Kementan TIDAK memuat kandungan hara sama sekali, sehingga 5.875 pupuk terdaftar masuk tanpa komposisi. Aturan L14 menolak pemakaiannya untuk memenuhi rekomendasi hara — produk boleh ada di registri, tetapi tidak boleh dipakai menghitung apa yang benar-benar diberikan ke tanaman."
+    },
+    "label_uses": {
+      "type": "array",
+      "description": "Penggunaan sesuai label terdaftar. Untuk produk yang ditarik massal dari registri, sasaran disimpan sebagai teks apa adanya (commodity_label, pest_label) karena registri memakai teks bebas; rekonsiliasi ke kosakata adalah pekerjaan kurasi terpisah. Registri TIDAK memuat tenggang waktu sebelum panen, sehingga phi_days kosong di seluruh baris tarikan massal — itu temuan tentang registrinya, bukan kelalaian pencatatan.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "commodity": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "pest": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "rate": {
+            "$ref": "common.schema.json#/$defs/Rate"
+          },
+          "carrier": {
+            "$ref": "common.schema.json#/$defs/Rate"
+          },
+          "method": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "phi_days": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Tenggang waktu sebelum panen."
+          },
+          "rei_hours": {
+            "type": "number",
+            "minimum": 0,
+            "description": "Tenggang waktu sebelum orang boleh masuk kembali."
+          },
+          "max_applications_per_cycle": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "commodity_label": {
+            "type": "string",
+            "description": "Nama sasaran persis seperti tertulis di registri. Teks bebas — 890 varian, belum direkonsiliasi ke kosakata komoditas."
+          },
+          "pest_label": {
+            "type": "string",
+            "description": "Nama OPT sasaran persis seperti tertulis di registri. 1.531 varian, belum direkonsiliasi."
+          },
+          "pest_scientific_name": {
+            "type": "string"
+          },
+          "rate_text": {
+            "type": "string",
+            "description": "Dosis apa adanya dari registri, mis. '150 - 300'. Dipertahankan karena 23% baris memakai rentang atau kosong, dan memaksanya jadi angka tunggal akan memalsukan sumbernya."
+          },
+          "rate_unit_text": {
+            "type": "string"
+          }
+        },
+        "required": [],
+        "additionalProperties": false,
+        "anyOf": [
+          {
+            "required": [
+              "commodity"
+            ]
+          },
+          {
+            "required": [
+              "commodity_label"
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "product_category",
+    "registration"
+  ],
+  "unevaluatedProperties": false
+}

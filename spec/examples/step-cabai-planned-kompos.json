@@ -1,0 +1,53 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8301-0000-7b10-8a02-0d1e2f3a4b02",
+  "cycle": {
+    "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d"
+  },
+  "mode": "planned",
+  "operation_type": {
+    "id": "op:opt:00000026",
+    "label": "Pemupukan dasar"
+  },
+  "protocol_step_key": "cabai-dataran-rendah/pemupukan-dasar-organik",
+  "timing": {
+    "kind": "relative",
+    "anchor": "transplanting",
+    "offset": {
+      "value": -14,
+      "unit": "d"
+    }
+  },
+  "applications": [
+    {
+      "substance": {
+        "id": "op:sub:00001709",
+        "label": "Kompos matang"
+      },
+      "preparation": {
+        "id": "op:sed:00000001",
+        "label": "Kompos kotoran sapi, proses termofilik"
+      },
+      "rate": {
+        "value": 10000,
+        "unit": "kg/har",
+        "basis": "per_area",
+        "min": 5000,
+        "max": 20000
+      },
+      "method": {
+        "id": "op:met:00000003",
+        "label": "Tabur merata"
+      },
+      "target": {
+        "plant_part": "soil"
+      }
+    }
+  ],
+  "area_covered": {
+    "value": 0.28,
+    "unit": "har"
+  },
+  "data_classification": "farm_private",
+  "notes": "Menyebut resep sediaan pada langkah rencana milik protokol TIDAK melanggar netralitas vendor: resepnya terbuka, berlisensi CC-BY-SA, dan tidak menunjuk merek siapa pun. Yang tidak boleh muncul di sini adalah batch tertentu — itu data satu kebun."
+}

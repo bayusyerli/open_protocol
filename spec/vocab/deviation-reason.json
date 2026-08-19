@@ -1,0 +1,204 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "deviation-reason",
+    "label": {
+      "id": "Alasan simpangan pelaksanaan"
+    },
+    "scope": {
+      "id": "Kosakata terkecil di seluruh sistem, tetapi paling bernilai: inilah data yang memperbaiki protokol. Field signals menyatakan apa yang harus ditindaklanjuti tim saat alasan tertentu sering muncul."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": []
+    }
+  },
+  "items": [
+    {
+      "id": "op:dev:00000001",
+      "key": "tidak-diperlukan",
+      "label": {
+        "id": "Tidak diperlukan"
+      },
+      "category": "not_needed",
+      "signals": "protocol_problem",
+      "definition": {
+        "id": "Pelaksana menilai langkah ini tidak perlu pada kondisi lapangan saat itu."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000002",
+      "key": "input-tidak-tersedia",
+      "label": {
+        "id": "Input tidak tersedia"
+      },
+      "category": "input_unavailable",
+      "signals": "access_problem",
+      "definition": {
+        "id": "Bahan tidak ada di kios, atau jatah subsidi habis."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000003",
+      "key": "tidak-ada-dana",
+      "label": {
+        "id": "Tidak ada dana"
+      },
+      "category": "no_funds",
+      "signals": "access_problem",
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000004",
+      "key": "cuaca",
+      "label": {
+        "id": "Terhalang cuaca"
+      },
+      "category": "weather",
+      "signals": "external_shock",
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000005",
+      "key": "tenaga-kerja-tidak-ada",
+      "label": {
+        "id": "Tenaga kerja tidak tersedia"
+      },
+      "category": "labor_unavailable",
+      "signals": "access_problem",
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000006",
+      "key": "anjuran-berubah",
+      "label": {
+        "id": "Anjuran berubah"
+      },
+      "category": "advice_changed",
+      "signals": "protocol_problem",
+      "definition": {
+        "id": "Penyuluh atau protokol memberi arahan berbeda setelah rencana disusun."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000007",
+      "key": "opt-tidak-ada",
+      "label": {
+        "id": "OPT tidak ditemukan"
+      },
+      "category": "pest_absent",
+      "signals": "protocol_problem",
+      "definition": {
+        "id": "Sering muncul berarti jadwal kalender dipakai di tempat yang seharusnya berbasis ambang."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000008",
+      "key": "serangan-lebih-berat",
+      "label": {
+        "id": "Serangan lebih berat dari perkiraan"
+      },
+      "category": "pest_worse",
+      "signals": "protocol_problem",
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000009",
+      "key": "harga-berubah",
+      "label": {
+        "id": "Harga input atau hasil berubah"
+      },
+      "category": "price_change",
+      "signals": "external_shock",
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000010",
+      "key": "keliru",
+      "label": {
+        "id": "Keliru mengerjakan atau mencatat"
+      },
+      "category": "mistake",
+      "signals": "recording_problem",
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:dev:00000011",
+      "key": "lain-lain",
+      "label": {
+        "id": "Lain-lain"
+      },
+      "category": "other",
+      "signals": "recording_problem",
+      "definition": {
+        "id": "Sering muncul berarti kosakata ini perlu ditambah."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    }
+  ]
+}

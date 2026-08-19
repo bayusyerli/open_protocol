@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/variable.schema.json",
+  "title": "Variable — sesuatu yang bisa diamati atau diukur",
+  "description": "Padanan konsep 'variable' pada ICASA dan 'trait' pada Crop Ontology. Setiap variabel wajib menyatakan tipe nilainya supaya pencatatan tidak berubah jadi teks bebas.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:var:[0-9]{8}$"
+    },
+    "subject": {
+      "type": "string",
+      "enum": [
+        "plant",
+        "animal",
+        "soil",
+        "water",
+        "weather",
+        "pest",
+        "produce",
+        "economics",
+        "labor",
+        "preparation",
+        "other"
+      ],
+      "description": "Apa yang diamati. 'preparation' dipakai variabel yang menggambarkan sediaan buatan sendiri — suhu tumpukan, kematangan, cemaran — yang bukan sifat tanah, tanaman, maupun air."
+    },
+    "value_type": {
+      "type": "string",
+      "enum": [
+        "quantity",
+        "integer",
+        "category",
+        "boolean",
+        "text",
+        "date"
+      ]
+    },
+    "default_unit": {
+      "$ref": "common.schema.json#/$defs/UcumCode"
+    },
+    "categories": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "string"
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          }
+        },
+        "required": [
+          "code",
+          "label"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "range": {
+      "type": "object",
+      "properties": {
+        "min": {
+          "type": "number"
+        },
+        "max": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false
+    },
+    "method_hint": {
+      "$ref": "common.schema.json#/$defs/LangText"
+    }
+  },
+  "required": [
+    "subject",
+    "value_type"
+  ],
+  "unevaluatedProperties": false,
+  "$comment": "Aturan silang (quantity wajib punya default_unit, category wajib punya categories) ditegakkan di linter, bukan di skema, supaya pesan galatnya bisa dibaca manusia."
+}

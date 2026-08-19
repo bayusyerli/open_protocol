@@ -1,0 +1,35 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8232-6000-705d-b41c-424e305f3ff7",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "executed",
+  "operation_type": { "id": "op:opt:00000027", "label": "Pemupukan susulan" },
+  "plan_ref": { "id": "op:stp:019e81fb-7180-71be-b686-0d7a2afbe55e" },
+  "protocol_step_key": "cabai-dataran-rendah/pemupukan-susulan-2",
+  "occurred_at": "2026-08-11T23:30:00Z",
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000001", "label": "Nitrogen (N)" },
+      "product": { "id": "op:prd:00000001", "label": "Urea bersubsidi" },
+      "rate": { "value": 65, "unit": "kg/har", "basis": "per_area" },
+      "method": { "id": "op:met:00000005", "label": "Larikan samping" },
+      "subsidised": true,
+      "nutrients_delivered": [
+        { "substance": { "id": "op:sub:00000001", "label": "Nitrogen (N)" }, "quantity": { "value": 29.9, "unit": "kg/har" } }
+      ]
+    }
+  ],
+  "area_covered": { "value": 0.28, "unit": "har" },
+  "labor": { "person_hours": 4, "crew_size": 2, "source": "family" },
+  "cost": { "amount": 41000, "currency": "IDR", "component": "input" },
+  "performed_by": { "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4", "label": "Pak Slamet" },
+  "deviation": {
+    "reason": { "id": "op:dev:00000002", "label": "Input tidak tersedia" },
+    "kind": "late",
+    "note": "Terlambat 6 hari; jatah Urea di kios habis. K2O tidak diaplikasikan sama sekali karena KCl tidak ada."
+  },
+  "recorded_at": "2026-08-13T02:10:00Z",
+  "recorded_by": { "id": "op:act:019e80b1-da80-71e4-b2a9-4fb142e44122", "label": "Penyuluh Wilayah 3" },
+  "recording_lag_note": "Dicatat 2 hari setelah kejadian.",
+  "data_classification": "farm_private"
+}

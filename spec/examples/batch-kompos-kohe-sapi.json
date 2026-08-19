@@ -1,0 +1,216 @@
+{
+  "$schema": "../schema/preparation-batch.schema.json",
+  "id": "op:bat:019e8300-1200-7a41-9c22-6b1f0d4e7a01",
+  "preparation": {
+    "id": "op:sed:00000001",
+    "label": "Kompos kotoran sapi, proses termofilik"
+  },
+  "batch_code": "KOMPOS-A3",
+  "made_by": {
+    "id": "op:act:019e8100-0000-7000-8000-000000000001"
+  },
+  "started_at": "2026-05-02T07:00:00+07:00",
+  "completed_at": "2026-06-16T07:00:00+07:00",
+  "feedstock_actuals": [
+    {
+      "substance": {
+        "id": "op:sub:00001701",
+        "label": "Kotoran sapi (kohe sapi)"
+      },
+      "quantity": {
+        "value": 1800,
+        "unit": "kg"
+      },
+      "origin": "kandang sendiri, 4 ekor sapi"
+    },
+    {
+      "substance": {
+        "id": "op:sub:00001705",
+        "label": "Sekam padi"
+      },
+      "quantity": {
+        "value": 400,
+        "unit": "kg"
+      },
+      "origin": "penggilingan padi desa, gratis"
+    },
+    {
+      "substance": {
+        "id": "op:sub:00001706",
+        "label": "Jerami padi"
+      },
+      "quantity": {
+        "value": 200,
+        "unit": "kg"
+      },
+      "origin": "sawah sendiri musim lalu"
+    }
+  ],
+  "process_log": [
+    {
+      "observed_at": "2026-05-05T08:00:00+07:00",
+      "variable": {
+        "id": "op:var:00000047",
+        "label": "Suhu tumpukan sediaan"
+      },
+      "value": 58,
+      "unit": "Cel",
+      "note": "titik terendah dari 3 tusukan"
+    },
+    {
+      "observed_at": "2026-05-09T08:00:00+07:00",
+      "variable": {
+        "id": "op:var:00000047"
+      },
+      "value": 62,
+      "unit": "Cel",
+      "note": "dibalik ke-1"
+    },
+    {
+      "observed_at": "2026-05-13T08:00:00+07:00",
+      "variable": {
+        "id": "op:var:00000047"
+      },
+      "value": 61,
+      "unit": "Cel",
+      "note": "dibalik ke-2"
+    },
+    {
+      "observed_at": "2026-05-17T08:00:00+07:00",
+      "variable": {
+        "id": "op:var:00000047"
+      },
+      "value": 57,
+      "unit": "Cel",
+      "note": "dibalik ke-3"
+    },
+    {
+      "observed_at": "2026-05-21T08:00:00+07:00",
+      "variable": {
+        "id": "op:var:00000047"
+      },
+      "value": 56,
+      "unit": "Cel",
+      "note": "dibalik ke-4"
+    },
+    {
+      "observed_at": "2026-05-25T08:00:00+07:00",
+      "variable": {
+        "id": "op:var:00000047"
+      },
+      "value": 55,
+      "unit": "Cel",
+      "note": "dibalik ke-5, hari ke-23 sejak mulai"
+    },
+    {
+      "observed_at": "2026-06-16T08:00:00+07:00",
+      "variable": {
+        "id": "op:var:00000047"
+      },
+      "value": 31,
+      "unit": "Cel",
+      "note": "tidak memanas lagi setelah dibalik"
+    }
+  ],
+  "qc": [
+    {
+      "variable": {
+        "id": "op:var:00000051",
+        "label": "Indeks perkecambahan"
+      },
+      "value": 92,
+      "unit": "%",
+      "method": {
+        "id": "op:met:00000021",
+        "label": "Uji perkecambahan"
+      },
+      "criterion_met": true,
+      "tested_at": "2026-06-16",
+      "tested_by": "mandiri"
+    },
+    {
+      "variable": {
+        "id": "op:var:00000047",
+        "label": "Suhu tumpukan sediaan"
+      },
+      "value": 31,
+      "unit": "Cel",
+      "criterion_met": true,
+      "tested_at": "2026-06-16",
+      "tested_by": "mandiri"
+    },
+    {
+      "variable": {
+        "id": "op:var:00000053",
+        "label": "Cemaran Escherichia coli"
+      },
+      "value": 20,
+      "unit": "{MPN}/g",
+      "method": {
+        "id": "op:met:00000017",
+        "label": "Uji laboratorium"
+      },
+      "criterion_met": true,
+      "tested_at": "2026-06-18",
+      "tested_by": "Laboratorium Tanah Dinas Pertanian Kabupaten"
+    }
+  ],
+  "qc_verdict": "pass",
+  "composition_basis": "measured",
+  "measured_composition": [
+    {
+      "substance": {
+        "id": "op:sub:00000001",
+        "label": "Nitrogen (N)"
+      },
+      "value": 0.55,
+      "unit": "%",
+      "basis": "dry_weight",
+      "lab": "Laboratorium Tanah Dinas Pertanian Kabupaten",
+      "tested_at": "2026-06-18"
+    },
+    {
+      "substance": {
+        "id": "op:sub:00000002",
+        "label": "Fosfor (P2O5)"
+      },
+      "value": 0.31,
+      "unit": "%",
+      "basis": "dry_weight",
+      "lab": "Laboratorium Tanah Dinas Pertanian Kabupaten",
+      "tested_at": "2026-06-18"
+    },
+    {
+      "substance": {
+        "id": "op:sub:00000003",
+        "label": "Kalium (K2O)"
+      },
+      "value": 0.48,
+      "unit": "%",
+      "basis": "dry_weight",
+      "lab": "Laboratorium Tanah Dinas Pertanian Kabupaten",
+      "tested_at": "2026-06-18"
+    }
+  ],
+  "quantity_produced": {
+    "value": 1150,
+    "unit": "kg"
+  },
+  "quantity_remaining": {
+    "value": 350,
+    "unit": "kg"
+  },
+  "cost": {
+    "amount": 420000,
+    "currency": "IDR",
+    "component": "labor",
+    "note": "Bahannya gratis; seluruh biaya adalah 28 jam tenaga kerja keluarga yang dihargai setara upah harian setempat. Kalau jam ini dicatat nol, kompos akan tampak gratis dan perbandingan dengan pupuk pabrik jadi menyesatkan."
+  },
+  "labor": {
+    "person_hours": 28,
+    "source": "family"
+  },
+  "recorded_at": "2026-06-18T19:30:00+07:00",
+  "data_classification": "farm_private",
+  "notes": "Susut 52% dari 2.400 kg bahan awal jadi 1.150 kg kompos — sesuai perkiraan yield_ratio 0,5 pada resepnya."
+}

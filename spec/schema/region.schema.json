@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/region.schema.json",
+  "title": "Region — wilayah administratif dan zona agroekologi",
+  "description": "Kode wilayah mengikuti kode resmi (BPS/Kemendagri untuk Indonesia). Zona agroekologi dipisah karena batasnya tidak mengikuti batas administratif.",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:rgn:[0-9]{8}$" },
+    "level": { "type": "string", "enum": ["country", "province", "regency", "district", "village", "agroecological_zone"] },
+    "code": { "type": "string" },
+    "code_scheme": { "type": "string", "description": "Mis. 'BPS' atau 'ISO3166-2'." },
+    "parent": { "$ref": "common.schema.json#/$defs/Ref" },
+    "elevation_range": {
+      "type": "object",
+      "properties": { "min_m": { "type": "number" }, "max_m": { "type": "number" } },
+      "additionalProperties": false
+    }
+  },
+  "required": ["level"],
+  "unevaluatedProperties": false
+}

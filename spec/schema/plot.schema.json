@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/plot.schema.json",
+  "title": "Plot — unit produksi terkecil yang dikelola sebagai satu kesatuan",
+  "description": "Disebut Field atau CropZone di ADAPT. Dibuat agnostik lewat 'kind' supaya kolam tambak dan kandang memakai entitas yang sama dengan petak sawah.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:plt:[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "field",
+        "paddy_field",
+        "greenhouse",
+        "screenhouse",
+        "nursery",
+        "orchard_block",
+        "pond",
+        "cage",
+        "pen",
+        "hydroponic_unit",
+        "other"
+      ]
+    },
+    "label": {
+      "type": "string",
+      "description": "Nama lokal yang dipakai petani, mis. 'sawah kidul'."
+    },
+    "holder": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "region": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "geometry": {
+      "$ref": "common.schema.json#/$defs/Geometry"
+    },
+    "geometry_quality": {
+      "type": "string",
+      "enum": [
+        "surveyed_polygon",
+        "walked_polygon",
+        "drawn_polygon",
+        "single_point",
+        "unknown"
+      ],
+      "description": "Kejujuran soal mutu geometri. EUDR menuntut poligon; titik tunggal harus terlihat sebagai titik tunggal, bukan disamarkan."
+    },
+    "area": {
+      "$ref": "common.schema.json#/$defs/Quantity"
+    },
+    "geoids": {
+      "type": "array",
+      "description": "Identitas geospasial deterministik dari pihak luar, mis. GeoID AgStack. Bisa lebih dari satu karena berubah bila batas lahan direvisi.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "enum": [
+              "AGSTACK",
+              "OTHER"
+            ]
+          },
+          "value": {
+            "type": "string"
+          },
+          "computed_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "scheme",
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "tenure": {
+      "type": "string",
+      "enum": [
+        "owned",
+        "rented",
+        "sharecropped",
+        "managed",
+        "communal",
+        "unknown"
+      ]
+    },
+    "elevation_m": {
+      "type": "number"
+    },
+    "slope_pct": {
+      "type": "number",
+      "minimum": 0
+    },
+    "irrigation_type": {
+      "type": "string",
+      "enum": [
+        "rainfed",
+        "technical",
+        "semi_technical",
+        "simple",
+        "pump",
+        "drip",
+        "sprinkler",
+        "none"
+      ]
+    },
+    "soil": {
+      "type": "object",
+      "properties": {
+        "texture": {
+          "type": "string"
+        },
+        "ph": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 14
+        },
+        "organic_c_pct": {
+          "type": "number",
+          "minimum": 0
+        },
+        "tested_at": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "additionalProperties": false
+    },
+    "data_classification": {
+      "$ref": "common.schema.json#/$defs/DataClassification"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "kind",
+    "holder",
+    "area",
+    "data_classification"
+  ],
+  "additionalProperties": false
+}

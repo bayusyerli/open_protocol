@@ -1,0 +1,16 @@
+{
+  "name": "open-protocols-spec",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Spesifikasi Lapis 1 (ontologi) Open Protocols — skema, contoh, dan pemeriksa.",
+  "scripts": {
+    "check": "node validate.mjs",
+    "test": "node test-rules.mjs",
+    "all": "npm run check && npm test"
+  },
+  "devDependencies": {
+    "ajv": "^8.17.1",
+    "ajv-formats": "^3.0.1"
+  }
+}

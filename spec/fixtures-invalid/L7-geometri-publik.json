@@ -1,0 +1,9 @@
+{
+  "$schema": "../schema/plot.schema.json",
+  "id": "op:plt:019e8300-0000-7000-8000-000000000005",
+  "kind": "field",
+  "holder": { "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4" },
+  "geometry": { "type": "Point", "coordinates": [110.0, -7.0] },
+  "area": { "value": 0.5, "unit": "har" },
+  "data_classification": "public"
+}

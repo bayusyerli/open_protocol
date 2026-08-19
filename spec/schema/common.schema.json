@@ -1,0 +1,778 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/common.schema.json",
+  "title": "Open Protocols — tipe bersama (Lapis 1)",
+  "description": "Tipe dasar yang dipakai ulang oleh seluruh entitas. Base URI masih sementara sampai keputusan nama di Fase 0 selesai.",
+  "$defs": {
+    "CuratedId": {
+      "description": "ID entitas vokabuler yang dikurasi dewan redaksi. Nomor 8 digit, diberikan sekali, tidak pernah didaur ulang.",
+      "type": "string",
+      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|dev):[0-9]{8}$"
+    },
+    "RecordId": {
+      "description": "ID data usaha tani. UUIDv7 supaya bisa dibuat offline tanpa server dan tetap terurut menurut waktu.",
+      "type": "string",
+      "pattern": "^op:(act|plt|cyc|stp|obs|bat):[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "Id": {
+      "description": "ID apa pun yang sah di Open Protocols.",
+      "oneOf": [
+        {
+          "$ref": "#/$defs/CuratedId"
+        },
+        {
+          "$ref": "#/$defs/RecordId"
+        }
+      ]
+    },
+    "Ref": {
+      "description": "Rujukan ke entitas lain. Label ikut disalin supaya berkas tetap terbaca manusia; label BUKAN sumber kebenaran.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/Id"
+        },
+        "label": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "Key": {
+      "description": "Alias slug yang stabil. Unik, tidak boleh dipakai ulang setelah terbit. Boleh dipakai di URL dan API.",
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 2,
+      "maxLength": 80
+    },
+    "LangText": {
+      "description": "Teks multibahasa. Kunci = kode bahasa BCP-47. 'id' wajib ada; 'en' sangat dianjurkan supaya bisa dipakai lintas negara nanti.",
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z]{2}(-[A-Za-z0-9]+)*$"
+      },
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      },
+      "required": [
+        "id"
+      ]
+    },
+    "UcumCode": {
+      "description": "Satuan sebagai kode UCUM. Sengaja TIDAK dibuat registry satuan sendiri.",
+      "type": "string",
+      "minLength": 1,
+      "examples": [
+        "kg",
+        "kg/ha",
+        "L/ha",
+        "mL/L",
+        "g/L",
+        "mm",
+        "Cel",
+        "%",
+        "1",
+        "kg/[arb'U]"
+      ]
+    },
+    "Quantity": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "$ref": "#/$defs/UcumCode"
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "RateBasis": {
+      "description": "Dasar penghitungan dosis. Ini yang membuat model tetap berlaku dari padi sampai tambak udang.",
+      "type": "string",
+      "enum": [
+        "per_area",
+        "per_plant",
+        "per_animal",
+        "per_row_length",
+        "per_volume_water",
+        "per_mass_biomass",
+        "per_volume_pond",
+        "per_mass_seed",
+        "absolute"
+      ]
+    },
+    "Rate": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number",
+          "minimum": 0
+        },
+        "unit": {
+          "$ref": "#/$defs/UcumCode"
+        },
+        "basis": {
+          "$ref": "#/$defs/RateBasis"
+        },
+        "min": {
+          "type": "number",
+          "minimum": 0
+        },
+        "max": {
+          "type": "number",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "basis"
+      ],
+      "additionalProperties": false
+    },
+    "Duration": {
+      "type": "object",
+      "properties": {
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "d",
+            "wk",
+            "mo",
+            "a",
+            "h"
+          ]
+        }
+      },
+      "required": [
+        "value",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "AnchorEvent": {
+      "description": "Titik acuan waktu dalam satu siklus. Tidak semua komoditas punya semuanya.",
+      "type": "string",
+      "enum": [
+        "cycle_start",
+        "land_preparation",
+        "sowing",
+        "transplanting",
+        "stocking",
+        "grafting",
+        "pruning",
+        "flowering",
+        "first_harvest",
+        "cycle_end",
+        "previous_step"
+      ]
+    },
+    "Comparison": {
+      "type": "object",
+      "properties": {
+        "variable": {
+          "$ref": "#/$defs/Ref"
+        },
+        "operator": {
+          "type": "string",
+          "enum": [
+            ">",
+            ">=",
+            "<",
+            "<=",
+            "==",
+            "!="
+          ]
+        },
+        "value": {
+          "type": [
+            "number",
+            "string",
+            "boolean"
+          ]
+        },
+        "unit": {
+          "$ref": "#/$defs/UcumCode"
+        },
+        "scope": {
+          "description": "Basis pengamatan ambang, mis. rumpun, tanaman, perangkap, m2.",
+          "type": "string",
+          "enum": [
+            "per_plant",
+            "per_hill",
+            "per_trap",
+            "per_m2",
+            "per_leaf",
+            "per_plot",
+            "per_sample",
+            "whole_cycle"
+          ]
+        }
+      },
+      "required": [
+        "variable",
+        "operator",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    "Condition": {
+      "description": "Syarat pemicu. Bisa satu perbandingan, atau gabungan boolean.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "compare": {
+              "$ref": "#/$defs/Comparison"
+            }
+          },
+          "required": [
+            "compare"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "all_of": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Condition"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "all_of"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "any_of": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/Condition"
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "any_of"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Timing": {
+      "description": "Kapan sebuah langkah dijadwalkan. Lima bentuk; hanya dipakai pada langkah bermode 'planned'.",
+      "oneOf": [
+        {
+          "title": "Tanggal pasti",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "absolute"
+            },
+            "date": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          "required": [
+            "kind",
+            "date"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "Relatif terhadap kejadian acuan (mis. 30 HST)",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "relative"
+            },
+            "anchor": {
+              "$ref": "#/$defs/AnchorEvent"
+            },
+            "anchor_step": {
+              "$ref": "#/$defs/Ref"
+            },
+            "offset": {
+              "$ref": "#/$defs/Duration"
+            },
+            "window": {
+              "$ref": "#/$defs/Duration"
+            }
+          },
+          "required": [
+            "kind",
+            "anchor",
+            "offset"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "Pada fase pertumbuhan (mis. BBCH 51)",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "stage"
+            },
+            "scale": {
+              "$ref": "#/$defs/Ref"
+            },
+            "stage": {
+              "$ref": "#/$defs/Ref"
+            },
+            "position": {
+              "type": "string",
+              "enum": [
+                "at",
+                "start",
+                "end",
+                "throughout"
+              ],
+              "default": "at"
+            }
+          },
+          "required": [
+            "kind",
+            "scale",
+            "stage"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "Dipicu ambang pengamatan",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "condition"
+            },
+            "condition": {
+              "$ref": "#/$defs/Condition"
+            }
+          },
+          "required": [
+            "kind",
+            "condition"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "title": "Berulang",
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "recurrence"
+            },
+            "every": {
+              "$ref": "#/$defs/Duration"
+            },
+            "from": {
+              "$ref": "#/$defs/Timing"
+            },
+            "until": {
+              "$ref": "#/$defs/Timing"
+            },
+            "max_count": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "required": [
+            "kind",
+            "every",
+            "from"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "Position": {
+      "type": "array",
+      "items": {
+        "type": "number"
+      },
+      "minItems": 2,
+      "maxItems": 3
+    },
+    "Geometry": {
+      "description": "GeoJSON RFC 7946 — selalu WGS84 (EPSG:4326). Konversi ke WKT saat menukar data dengan ADAPT.",
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "Point"
+            },
+            "coordinates": {
+              "$ref": "#/$defs/Position"
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "Polygon"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/Position"
+                },
+                "minItems": 4
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "MultiPolygon"
+            },
+            "coordinates": {
+              "type": "array",
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/Position"
+                  },
+                  "minItems": 4
+                },
+                "minItems": 1
+              },
+              "minItems": 1
+            }
+          },
+          "required": [
+            "type",
+            "coordinates"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ExternalMapping": {
+      "description": "Kaitan ke kosakata luar. Relasi memakai semantik SKOS supaya kaitan yang tidak persis tetap jujur.",
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "type": "string",
+          "enum": [
+            "AGROVOC",
+            "AGRO",
+            "ICASA",
+            "ADAPT",
+            "CROP_ONTOLOGY",
+            "EPPO",
+            "NCBITaxon",
+            "CHEBI",
+            "UCUM",
+            "BBCH",
+            "FRAC",
+            "IRAC",
+            "HRAC",
+            "GS1",
+            "SNI",
+            "KEMENTAN",
+            "BPS",
+            "AGSTACK",
+            "OTHER"
+          ]
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "relation": {
+          "type": "string",
+          "enum": [
+            "exact",
+            "close",
+            "broad",
+            "narrow",
+            "related"
+          ],
+          "default": "exact"
+        },
+        "note": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "scheme",
+        "id",
+        "relation"
+      ],
+      "additionalProperties": false
+    },
+    "SourceRef": {
+      "type": "object",
+      "properties": {
+        "title": {
+          "type": "string"
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer",
+          "minimum": 1900,
+          "maximum": 2100
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "license": {
+          "type": "string",
+          "description": "Pengenal lisensi SPDX bila ada, mis. CC-BY-4.0."
+        },
+        "locator": {
+          "type": "string",
+          "description": "Halaman, bab, atau tabel."
+        }
+      },
+      "required": [
+        "title"
+      ],
+      "additionalProperties": false
+    },
+    "Contributor": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "affiliation": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string",
+          "enum": [
+            "author",
+            "reviewer",
+            "editor",
+            "translator",
+            "data_steward"
+          ]
+        },
+        "orcid": {
+          "type": "string",
+          "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$"
+        },
+        "conflict_of_interest": {
+          "type": "string",
+          "description": "Wajib diisi bila kontributor punya kepentingan komersial pada produk terkait. 'none' bila tidak ada."
+        }
+      },
+      "required": [
+        "name",
+        "role"
+      ],
+      "additionalProperties": false
+    },
+    "Provenance": {
+      "type": "object",
+      "properties": {
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/SourceRef"
+          }
+        },
+        "contributors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Contributor"
+          }
+        },
+        "derived_from": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/Ref"
+          }
+        },
+        "license": {
+          "type": "string",
+          "description": "Lisensi entitas ini, pengenal SPDX. Bawaan konten: CC-BY-SA-4.0."
+        }
+      },
+      "additionalProperties": false
+    },
+    "EvidenceTier": {
+      "description": "A uji multi-lokasi/multi-musim · B standar institusi resmi · C konsensus praktisi & penyuluh · D pengalaman tunggal belum terverifikasi.",
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    "Lifecycle": {
+      "type": "object",
+      "properties": {
+        "version": {
+          "type": "string",
+          "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "draft",
+            "review",
+            "published",
+            "deprecated",
+            "superseded"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "reviewed_at": {
+          "type": "string",
+          "format": "date"
+        },
+        "review_due": {
+          "type": "string",
+          "format": "date"
+        },
+        "superseded_by": {
+          "$ref": "#/$defs/Ref"
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "description": "Hash JSON terkanonikalisasi. Wajib untuk apa pun yang berstatus published."
+        }
+      },
+      "required": [
+        "version",
+        "status"
+      ],
+      "additionalProperties": false
+    },
+    "DataClassification": {
+      "description": "Penanda UU 27/2022. Menentukan aturan ekspor, retensi, dan berbagi.",
+      "type": "string",
+      "enum": [
+        "public",
+        "farm_private",
+        "personal_data",
+        "commercially_sensitive"
+      ]
+    },
+    "CuratedEntity": {
+      "description": "Bentuk dasar setiap entitas vokabuler. Aturan pemetaan wajib ditegakkan di sini.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/CuratedId"
+        },
+        "key": {
+          "$ref": "#/$defs/Key"
+        },
+        "label": {
+          "$ref": "#/$defs/LangText"
+        },
+        "definition": {
+          "$ref": "#/$defs/LangText"
+        },
+        "synonyms": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "lifecycle": {
+          "$ref": "#/$defs/Lifecycle"
+        },
+        "mappings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/ExternalMapping"
+          }
+        },
+        "no_mapping_reason": {
+          "type": "string",
+          "minLength": 10,
+          "description": "Wajib bila tidak ada satu pun pemetaan. Memaksa istilah baru dipertanggungjawabkan, bukan dibuat karena malas mencari."
+        },
+        "provenance": {
+          "$ref": "#/$defs/Provenance"
+        },
+        "notes": {
+          "$ref": "#/$defs/LangText"
+        },
+        "$schema": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "key",
+        "label",
+        "lifecycle"
+      ],
+      "anyOf": [
+        {
+          "properties": {
+            "mappings": {
+              "minItems": 1
+            }
+          },
+          "required": [
+            "mappings"
+          ]
+        },
+        {
+          "required": [
+            "no_mapping_reason"
+          ]
+        }
+      ]
+    }
+  }
+}

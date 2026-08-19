@@ -1,0 +1,42 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8400-0000-7c00-8a03-000000009904",
+  "cycle": {
+    "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d"
+  },
+  "mode": "planned",
+  "operation_type": {
+    "id": "op:opt:00000026"
+  },
+  "protocol_step_key": "uji/pemupukan-dasar",
+  "timing": {
+    "kind": "relative",
+    "anchor": "transplanting",
+    "offset": {
+      "value": -14,
+      "unit": "d"
+    }
+  },
+  "applications": [
+    {
+      "substance": {
+        "id": "op:sub:00001709"
+      },
+      "preparation": {
+        "id": "op:sed:00000001"
+      },
+      "preparation_batch": {
+        "id": "op:bat:019e8400-0000-7c00-8b01-000000009902"
+      },
+      "rate": {
+        "value": 10000,
+        "unit": "kg/har",
+        "basis": "per_area"
+      },
+      "method": {
+        "id": "op:met:00000003"
+      }
+    }
+  ],
+  "data_classification": "farm_private"
+}

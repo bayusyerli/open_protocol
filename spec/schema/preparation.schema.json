@@ -1,0 +1,457 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/preparation.schema.json",
+  "title": "Preparation — sediaan yang dibuat sendiri di kebun",
+  "description": "Lapis ketiga masukan, di antara Substance dan Product. Substance menjawab 'bahan apa', Product menjawab 'barang siapa'. Preparation menjawab 'dibuat bagaimana' — kompos, bokashi, MOL, biakan Trichoderma, ekstrak mimba. Bukan Product karena tidak punya izin edar dan tidak diperjualbelikan; bukan Substance karena ia campuran hasil proses, bukan bahan tunggal. Karena resepnya terbuka dan tidak menunjuk merek, sediaan BOLEH disebut dalam langkah rencana milik protokol — lihat aturan L3.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:sed:[0-9]{8}$"
+    },
+    "preparation_class": {
+      "type": "string",
+      "description": "Bentuk sediaan. Menentukan aturan mutu mana yang berlaku dan uji pelepasan mana yang masuk akal.",
+      "enum": [
+        "compost",
+        "vermicompost",
+        "aged_manure",
+        "bokashi",
+        "liquid_organic_fertilizer",
+        "microbial_culture",
+        "bioactivator",
+        "botanical_extract",
+        "biochar",
+        "mineral_amendment",
+        "elicitor",
+        "other"
+      ]
+    },
+    "intended_functions": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Untuk apa sediaan ini dibuat. Ini BUKAN keterangan pemasaran — ia menentukan rezim hukumnya. UU 22/2019 Pasal 75 mendefinisikan pestisida lewat KEGUNAAN, dan definisinya mencakup jasad renik serta zat pengatur tumbuh. Begitu sebuah sediaan ditujukan mengendalikan OPT, ia masuk definisi pestisida walau bahannya daun.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "nutrient_supply",
+          "soil_conditioning",
+          "decomposition_starter",
+          "pest_control",
+          "disease_suppression",
+          "growth_stimulation",
+          "water_quality",
+          "seed_treatment"
+        ]
+      }
+    },
+    "regulatory": {
+      "type": "object",
+      "description": "Kedudukan hukum sediaan ini di Indonesia. Wajib dinyatakan, bukan disimpulkan mesin, karena salah menyimpulkannya membuat petani menanggung risiko pidana yang tidak ia ketahui.",
+      "properties": {
+        "regime": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "fertilizer_like",
+              "soil_amendment_like",
+              "pesticide_like",
+              "unclear"
+            ]
+          }
+        },
+        "own_use_only": {
+          "type": "boolean",
+          "description": "true bila sediaan hanya boleh dipakai sendiri dan tidak boleh diedarkan. Untuk sediaan berezim pestisida, ini selalu true selama belum terdaftar."
+        },
+        "circulation": {
+          "type": "string",
+          "description": "Sejauh mana sediaan boleh berpindah tangan. 'limited_kabupaten_kota' adalah kelonggaran khusus pupuk buatan petani kecil pada UU 22/2019 Pasal 72 ayat (2) — tidak ada padanannya untuk pestisida.",
+          "enum": [
+            "own_use_only",
+            "limited_kabupaten_kota",
+            "requires_registration",
+            "unclear"
+          ]
+        },
+        "legal_basis": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "instrument": {
+                "type": "string"
+              },
+              "article": {
+                "type": "string"
+              },
+              "effect": {
+                "type": "string",
+                "minLength": 10
+              }
+            },
+            "required": [
+              "instrument",
+              "article",
+              "effect"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "note": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        }
+      },
+      "required": [
+        "regime",
+        "own_use_only",
+        "circulation"
+      ],
+      "additionalProperties": false
+    },
+    "feedstocks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Bahan penyusun, dinyatakan sebagai bagian (parts) supaya resep bisa diperbesar-perkecil tanpa menulis ulang. Setiap bahan menunjuk Substance, sehingga larangan bahan dan komposisi rujukan hidup di satu tempat.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "substance": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "carbon_source",
+              "nitrogen_source",
+              "inoculum",
+              "carrier",
+              "water",
+              "additive",
+              "active_material",
+              "energy_source"
+            ]
+          },
+          "proportion": {
+            "type": "object",
+            "properties": {
+              "value": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "unit": {
+                "type": "string",
+                "enum": [
+                  "parts_by_mass",
+                  "parts_by_volume",
+                  "percent_by_mass",
+                  "percent_by_volume"
+                ]
+              },
+              "min": {
+                "type": "number",
+                "minimum": 0
+              },
+              "max": {
+                "type": "number",
+                "minimum": 0
+              }
+            },
+            "required": [
+              "value",
+              "unit"
+            ],
+            "additionalProperties": false
+          },
+          "optional": {
+            "type": "boolean"
+          },
+          "note": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          }
+        },
+        "required": [
+          "substance",
+          "role",
+          "proportion"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "process": {
+      "type": "object",
+      "description": "Cara membuatnya. Yang penting bukan urutan langkahnya, melainkan titik kendali yang menentukan sediaan itu aman dan matang atau tidak.",
+      "properties": {
+        "kind": {
+          "type": "string",
+          "enum": [
+            "aerobic_composting",
+            "anaerobic_fermentation",
+            "vermicomposting",
+            "aging",
+            "aqueous_extraction",
+            "decoction",
+            "solid_state_fermentation",
+            "liquid_culture",
+            "pyrolysis",
+            "mechanical_mixing"
+          ]
+        },
+        "duration": {
+          "$ref": "common.schema.json#/$defs/Duration"
+        },
+        "vessel": {
+          "type": "string",
+          "enum": [
+            "open_windrow",
+            "covered_heap",
+            "closed_drum",
+            "jerrycan",
+            "pit",
+            "worm_bin",
+            "tray",
+            "kiln",
+            "open_bucket"
+          ]
+        },
+        "sanitation": {
+          "type": "object",
+          "description": "Bukti bahwa patogen manusia yang terbawa bahan mentah benar-benar ditekan. Ambang termofilik mengikuti praktik yang sudah teruji di NOP 7 CFR 205.203: 55 derajat Celsius ke atas, ditahan beberapa hari, dengan pembalikan.",
+          "properties": {
+            "regime": {
+              "type": "string",
+              "enum": [
+                "thermophilic_windrow",
+                "thermophilic_static",
+                "none",
+                "unknown"
+              ]
+            },
+            "min_temperature": {
+              "$ref": "common.schema.json#/$defs/Quantity"
+            },
+            "hold_days": {
+              "type": "number",
+              "minimum": 0
+            },
+            "turnings": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "regime"
+          ],
+          "additionalProperties": false
+        },
+        "critical_control_points": {
+          "type": "array",
+          "description": "Titik yang kalau meleset membuat seluruh batch gagal, beserta cara memeriksanya di kebun tanpa laboratorium.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "$ref": "common.schema.json#/$defs/LangText"
+              },
+              "variable": {
+                "$ref": "common.schema.json#/$defs/Ref"
+              },
+              "target": {
+                "$ref": "common.schema.json#/$defs/Comparison"
+              },
+              "check_method": {
+                "$ref": "common.schema.json#/$defs/LangText"
+              },
+              "failure_action": {
+                "$ref": "common.schema.json#/$defs/LangText"
+              }
+            },
+            "required": [
+              "name",
+              "check_method",
+              "failure_action"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "additionalProperties": false
+    },
+    "release_criteria": {
+      "type": "array",
+      "description": "Syarat sebuah batch boleh dipakai. Inilah yang membedakan resep dari SOP: resep memberi tahu cara membuat, SOP memberi tahu cara mengetahui hasilnya layak pakai. Kosong berarti sediaan ini belum bisa disebut standar.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "compare": {
+            "$ref": "common.schema.json#/$defs/Comparison"
+          },
+          "kind": {
+            "type": "string",
+            "enum": [
+              "maturity",
+              "contamination",
+              "potency",
+              "purity",
+              "sensory",
+              "safety"
+            ]
+          },
+          "method": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "field_proxy": {
+            "$ref": "common.schema.json#/$defs/LangText",
+            "description": "Cara memeriksa tanpa laboratorium. Kriteria yang hanya bisa diuji di laboratorium akan dilewati petani, dan kriteria yang dilewati sama saja dengan tidak ada."
+          },
+          "rationale": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "source": {
+            "$ref": "common.schema.json#/$defs/SourceRef"
+          }
+        },
+        "required": [
+          "compare",
+          "kind"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "composition_basis": {
+      "type": "string",
+      "description": "Dari mana angka kandungan hara sediaan ini berasal. 'reference' berarti dari tabel rujukan bahan bakunya — cukup untuk perkiraan, tidak cukup untuk klaim. Aturan L18 melarang menghitung hara yang diberikan dari batch yang bukan 'measured'.",
+      "enum": [
+        "measured",
+        "reference",
+        "unknown"
+      ]
+    },
+    "application": {
+      "type": "object",
+      "description": "Anjuran pemakaian bawaan. Boleh ditimpa protokol per komoditas.",
+      "properties": {
+        "default_rate": {
+          "$ref": "common.schema.json#/$defs/Rate"
+        },
+        "default_method": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "dilution": {
+          "type": "string",
+          "description": "Perbandingan pengenceran sebelum pakai, mis. '1:200'."
+        },
+        "max_applications_per_cycle": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "safety": {
+      "type": "object",
+      "properties": {
+        "phi_days": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Tenggang waktu sebelum panen. Untuk sediaan buatan sendiri angka ini hampir tidak pernah tersedia dari uji residu; nyatakan dasarnya di phi_basis dan pilih angka yang aman, jangan mengosongkannya."
+        },
+        "phi_basis": {
+          "type": "string",
+          "enum": [
+            "residue_study",
+            "registered_analogue",
+            "precautionary_default",
+            "not_established"
+          ]
+        },
+        "preharvest_interval_days": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Jarak antara pemberian ke tanah dan panen, untuk sediaan berbahan kotoran ternak yang tidak melewati proses termofilik. Rujukan yang dipakai luas: 120 hari bila bagian yang dimakan bersentuhan dengan tanah, 90 hari bila tidak."
+        },
+        "rei_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "hazards": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          }
+        },
+        "ppe": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "gloves",
+              "mask",
+              "goggles",
+              "boots",
+              "long_sleeves",
+              "none_required"
+            ]
+          }
+        },
+        "note": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        }
+      },
+      "additionalProperties": false
+    },
+    "yield_ratio": {
+      "type": "object",
+      "description": "Perkiraan keluaran per masukan, untuk menyusun RAB dan kebutuhan bahan.",
+      "properties": {
+        "output_per_input": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "note": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        }
+      },
+      "required": [
+        "output_per_input"
+      ],
+      "additionalProperties": false
+    },
+    "shelf_life": {
+      "$ref": "common.schema.json#/$defs/Duration"
+    },
+    "storage": {
+      "$ref": "common.schema.json#/$defs/LangText"
+    },
+    "evidence_tier": {
+      "$ref": "common.schema.json#/$defs/EvidenceTier"
+    },
+    "evidence_note": {
+      "$ref": "common.schema.json#/$defs/LangText",
+      "description": "Apa yang benar-benar diketahui dan apa yang belum. Wajib jujur: sebagian besar sediaan buatan sendiri berada di tingkat C atau D, dan menaikkannya tanpa bukti adalah cara tercepat merusak kepercayaan agronom."
+    }
+  },
+  "required": [
+    "preparation_class",
+    "intended_functions",
+    "regulatory",
+    "feedstocks",
+    "process",
+    "composition_basis",
+    "evidence_tier"
+  ],
+  "unevaluatedProperties": false
+}

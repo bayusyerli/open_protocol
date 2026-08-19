@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8301-0000-7b10-8a01-0d1e2f3a4b01",
+  "cycle": {
+    "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d"
+  },
+  "mode": "planned",
+  "operation_type": {
+    "id": "op:opt:00000063",
+    "label": "Pengomposan"
+  },
+  "protocol_step_key": "cabai-dataran-rendah/mulai-kompos",
+  "timing": {
+    "kind": "relative",
+    "anchor": "transplanting",
+    "offset": {
+      "value": -60,
+      "unit": "d"
+    },
+    "window": {
+      "value": 7,
+      "unit": "d"
+    }
+  },
+  "labor": {
+    "person_hours": 28,
+    "crew_size": 2,
+    "source": "family"
+  },
+  "data_classification": "farm_private",
+  "notes": "Langkah yang tidak ada pada protokol bermasukan pabrik: kompos harus dimulai 60 hari sebelum pindah tanam supaya matang tepat waktu. Inilah alasan sediaan buatan sendiri mengubah kalender musim, bukan sekadar mengganti isi karung."
+}

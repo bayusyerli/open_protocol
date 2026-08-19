@@ -1,0 +1,10 @@
+{
+  "$schema": "../schema/variable.schema.json",
+  "id": "op:var:00009999",
+  "key": "variabel-tanpa-satuan",
+  "label": { "id": "Bobot buah tanpa satuan" },
+  "subject": "produce",
+  "value_type": "quantity",
+  "no_mapping_reason": "Fixture uji; sengaja dibuat cacat untuk membuktikan aturan L11 menyala.",
+  "lifecycle": { "version": "0.1.0", "status": "draft" }
+}

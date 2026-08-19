@@ -1,0 +1,1089 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000001",
+  "key": "bbch-solanaceae",
+  "label": {
+    "id": "BBCH — Solanaceae (cabai, tomat, terung)",
+    "en": "BBCH scale — solanaceous fruit"
+  },
+  "definition": {
+    "id": "Skala fenologi BBCH untuk sayuran buah famili Solanaceae. Memuat 37 kode yang ditabelkan di sumber, ditambah kode antara pada deret ke-n (daun, tunas samping, perbungaan, dompolan buah) yang mengikuti pola baku BBCH dan ditandai di field mappings.note masing-masing. Fase utama 3 dan 4 memang tidak dipakai pada kelompok ini."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": []
+  },
+  "stages": [
+    {
+      "id": "op:stg:00000001",
+      "code": "00",
+      "label": {
+        "id": "Benih kering"
+      },
+      "principal": 0,
+      "order": 0,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "00",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000002",
+      "code": "01",
+      "label": {
+        "id": "Awal imbibisi benih"
+      },
+      "principal": 0,
+      "order": 1,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "01",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000003",
+      "code": "03",
+      "label": {
+        "id": "Imbibisi benih selesai"
+      },
+      "principal": 0,
+      "order": 3,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "03",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000004",
+      "code": "05",
+      "label": {
+        "id": "Radikula keluar dari benih"
+      },
+      "principal": 0,
+      "order": 5,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "05",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000005",
+      "code": "07",
+      "label": {
+        "id": "Hipokotil dengan kotiledon menembus kulit benih"
+      },
+      "principal": 0,
+      "order": 7,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "07",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000006",
+      "code": "09",
+      "label": {
+        "id": "Kemunculan: kotiledon menembus permukaan tanah"
+      },
+      "principal": 0,
+      "order": 9,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "09",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000007",
+      "code": "10",
+      "label": {
+        "id": "Kotiledon membuka penuh"
+      },
+      "principal": 1,
+      "order": 10,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "10",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000008",
+      "code": "11",
+      "label": {
+        "id": "Daun sejati ke-1 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 11,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "11",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000009",
+      "code": "12",
+      "label": {
+        "id": "Daun sejati ke-2 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 12,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "12",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000010",
+      "code": "13",
+      "label": {
+        "id": "Daun sejati ke-3 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 13,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "13",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000011",
+      "code": "14",
+      "label": {
+        "id": "Daun sejati ke-4 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 14,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "14",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000012",
+      "code": "15",
+      "label": {
+        "id": "Daun sejati ke-5 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 15,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "15",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000013",
+      "code": "16",
+      "label": {
+        "id": "Daun sejati ke-6 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 16,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "16",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000014",
+      "code": "17",
+      "label": {
+        "id": "Daun sejati ke-7 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 17,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "17",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000015",
+      "code": "18",
+      "label": {
+        "id": "Daun sejati ke-8 pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 18,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "18",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000016",
+      "code": "19",
+      "label": {
+        "id": "Sembilan daun sejati atau lebih pada batang utama membuka penuh"
+      },
+      "principal": 1,
+      "order": 19,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "19",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000017",
+      "code": "21",
+      "label": {
+        "id": "Tunas samping apikal primer ke-1 tampak"
+      },
+      "principal": 2,
+      "order": 21,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "21",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000018",
+      "code": "22",
+      "label": {
+        "id": "Tunas samping apikal primer ke-2 tampak"
+      },
+      "principal": 2,
+      "order": 22,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "22",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000019",
+      "code": "23",
+      "label": {
+        "id": "Tunas samping apikal primer ke-3 tampak"
+      },
+      "principal": 2,
+      "order": 23,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "23",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000020",
+      "code": "24",
+      "label": {
+        "id": "Tunas samping apikal primer ke-4 tampak"
+      },
+      "principal": 2,
+      "order": 24,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "24",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000021",
+      "code": "25",
+      "label": {
+        "id": "Tunas samping apikal primer ke-5 tampak"
+      },
+      "principal": 2,
+      "order": 25,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "25",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000022",
+      "code": "26",
+      "label": {
+        "id": "Tunas samping apikal primer ke-6 tampak"
+      },
+      "principal": 2,
+      "order": 26,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "26",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000023",
+      "code": "27",
+      "label": {
+        "id": "Tunas samping apikal primer ke-7 tampak"
+      },
+      "principal": 2,
+      "order": 27,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "27",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000024",
+      "code": "28",
+      "label": {
+        "id": "Tunas samping apikal primer ke-8 tampak"
+      },
+      "principal": 2,
+      "order": 28,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "28",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000025",
+      "code": "29",
+      "label": {
+        "id": "Sembilan tunas samping apikal primer atau lebih tampak"
+      },
+      "principal": 2,
+      "order": 29,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "29",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000026",
+      "code": "51",
+      "label": {
+        "id": "Perbungaan ke-1 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 51,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "51",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000027",
+      "code": "52",
+      "label": {
+        "id": "Perbungaan ke-2 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 52,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "52",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000028",
+      "code": "53",
+      "label": {
+        "id": "Perbungaan ke-3 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 53,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "53",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000029",
+      "code": "54",
+      "label": {
+        "id": "Perbungaan ke-4 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 54,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "54",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000030",
+      "code": "55",
+      "label": {
+        "id": "Perbungaan ke-5 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 55,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "55",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000031",
+      "code": "56",
+      "label": {
+        "id": "Perbungaan ke-6 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 56,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "56",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000032",
+      "code": "57",
+      "label": {
+        "id": "Perbungaan ke-7 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 57,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "57",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000033",
+      "code": "58",
+      "label": {
+        "id": "Perbungaan ke-8 tampak, kuncup pertama tegak"
+      },
+      "principal": 5,
+      "order": 58,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "58",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000034",
+      "code": "59",
+      "label": {
+        "id": "Sembilan perbungaan atau lebih tampak"
+      },
+      "principal": 5,
+      "order": 59,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "59",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000035",
+      "code": "61",
+      "label": {
+        "id": "Perbungaan ke-1: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 61,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "61",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000036",
+      "code": "62",
+      "label": {
+        "id": "Perbungaan ke-2: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 62,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "62",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000037",
+      "code": "63",
+      "label": {
+        "id": "Perbungaan ke-3: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 63,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "63",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000038",
+      "code": "64",
+      "label": {
+        "id": "Perbungaan ke-4: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 64,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "64",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000039",
+      "code": "65",
+      "label": {
+        "id": "Perbungaan ke-5: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 65,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "65",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000040",
+      "code": "66",
+      "label": {
+        "id": "Perbungaan ke-6: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 66,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "66",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000041",
+      "code": "67",
+      "label": {
+        "id": "Perbungaan ke-7: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 67,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "67",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000042",
+      "code": "68",
+      "label": {
+        "id": "Perbungaan ke-8: bunga pertama mekar"
+      },
+      "principal": 6,
+      "order": 68,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "68",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000043",
+      "code": "69",
+      "label": {
+        "id": "Sembilan perbungaan atau lebih dengan bunga mekar"
+      },
+      "principal": 6,
+      "order": 69,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "69",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000044",
+      "code": "71",
+      "label": {
+        "id": "Dompolan buah ke-1: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 71,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "71",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000045",
+      "code": "72",
+      "label": {
+        "id": "Dompolan buah ke-2: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 72,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "72",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000046",
+      "code": "73",
+      "label": {
+        "id": "Dompolan buah ke-3: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 73,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "73",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000047",
+      "code": "74",
+      "label": {
+        "id": "Dompolan buah ke-4: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 74,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "74",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000048",
+      "code": "75",
+      "label": {
+        "id": "Dompolan buah ke-5: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 75,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "75",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000049",
+      "code": "76",
+      "label": {
+        "id": "Dompolan buah ke-6: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 76,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "76",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000050",
+      "code": "77",
+      "label": {
+        "id": "Dompolan buah ke-7: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 77,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "77",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000051",
+      "code": "78",
+      "label": {
+        "id": "Dompolan buah ke-8: buah pertama mencapai ukuran khas varietas"
+      },
+      "principal": 7,
+      "order": 78,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "78",
+          "relation": "exact",
+          "note": "Kode antara. Mengikuti pola deret ke-n pada sistem BBCH; tidak ditabelkan terpisah di sumber."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000052",
+      "code": "79",
+      "label": {
+        "id": "Sembilan dompolan buah atau lebih dengan buah berukuran khas"
+      },
+      "principal": 7,
+      "order": 79,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "79",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000053",
+      "code": "81",
+      "label": {
+        "id": "10% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 81,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "81",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000054",
+      "code": "82",
+      "label": {
+        "id": "20% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 82,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "82",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000055",
+      "code": "83",
+      "label": {
+        "id": "30% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 83,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "83",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000056",
+      "code": "84",
+      "label": {
+        "id": "40% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 84,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "84",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000057",
+      "code": "85",
+      "label": {
+        "id": "50% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 85,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "85",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000058",
+      "code": "86",
+      "label": {
+        "id": "60% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 86,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "86",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000059",
+      "code": "87",
+      "label": {
+        "id": "70% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 87,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "87",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000060",
+      "code": "88",
+      "label": {
+        "id": "80% buah menunjukkan warna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 88,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "88",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000061",
+      "code": "89",
+      "label": {
+        "id": "Masak penuh: buah berwarna masak penuh yang khas"
+      },
+      "principal": 8,
+      "order": 89,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "89",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000062",
+      "code": "97",
+      "label": {
+        "id": "Tanaman mati"
+      },
+      "principal": 9,
+      "order": 97,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "97",
+          "relation": "exact"
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00000063",
+      "code": "99",
+      "label": {
+        "id": "Produk terpanen"
+      },
+      "principal": 9,
+      "order": 99,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "99",
+          "relation": "exact"
+        }
+      ]
+    }
+  ],
+  "mappings": [
+    {
+      "scheme": "BBCH",
+      "id": "bbch-solanaceous-fruit",
+      "relation": "exact",
+      "note": "Kunci BBCH untuk sayuran buah Solanaceae, Feller dkk. (1995), dimuat dalam BBCH Monograph."
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "sources": [
+      {
+        "title": "Growth stages of mono- and dicotyledonous plants — BBCH Monograph",
+        "publisher": "Julius Kuhn-Institut (JKI)",
+        "year": 2018
+      },
+      {
+        "title": "Phanologische Entwicklungsstadien von Gemusepflanzen: II. Fruchtgemuse und Hulsenfruchte",
+        "publisher": "Nachrichtenblatt des Deutschen Pflanzenschutzdienstes",
+        "year": 1995,
+        "locator": "Feller dkk."
+      }
+    ],
+    "contributors": [],
+    "license": "CC-BY-SA-4.0"
+  },
+  "notes": {
+    "id": "Untuk cabai tersedia kunci BBCH yang lebih rinci (Capsicum annuum, C. chinense, C. baccatum, terbit 2020). Perlu ditinjau apakah dipakai sebagai skala terpisah atau sebagai penajaman skala ini sebelum protokol referensi cabai dikunci."
+  }
+}

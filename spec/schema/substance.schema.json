@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/substance.schema.json",
+  "title": "Substance — bahan generik (lapis netral-vendor)",
+  "description": "Semua rekomendasi disusun di level ini. Produk komersial hanya boleh muncul sebagai cara memenuhi rekomendasi, tidak pernah sebagai rekomendasi itu sendiri.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:sub:[0-9]{8}$"
+    },
+    "substance_classes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Peran bahan. Sengaja jamak: belerang terdaftar sebagai hara sekaligus fungisida, dan memaksanya jadi satu peran akan memalsukan salah satunya. 'organic_matter' dan 'botanical_material' dipakai bahan baku sediaan buatan sendiri — kotoran ternak, sekam, daun mimba — yang bukan hara tunggal dan bukan bahan aktif terdaftar.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "nutrient",
+          "active_ingredient",
+          "biological",
+          "amendment",
+          "growth_regulator",
+          "feed",
+          "water",
+          "organic_matter",
+          "botanical_material",
+          "carrier",
+          "other"
+        ]
+      }
+    },
+    "pesticide_action": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Golongan sebagaimana didaftarkan pada registri Kementan. Registri mencampur golongan sasaran (insektisida, herbisida) dengan ranah pemakaian (rumah tangga, pengendalian vektor, peternakan); keduanya dipertahankan apa adanya karena memetakannya ke taksonomi yang lebih rapi akan membuang informasi yang ada di sumber.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "insecticide",
+          "fungicide",
+          "herbicide",
+          "bactericide",
+          "acaricide",
+          "nematicide",
+          "molluscicide",
+          "rodenticide",
+          "plant_growth_regulator",
+          "attractant",
+          "fumigant",
+          "wood_preservative",
+          "repellent",
+          "household",
+          "public_health",
+          "veterinary",
+          "other"
+        ]
+      }
+    },
+    "nutrient_form": {
+      "type": "string",
+      "description": "Bentuk hara sebagaimana lazim dinyatakan pada label pupuk. Hanya untuk substance_class 'nutrient'.",
+      "enum": [
+        "N",
+        "P2O5",
+        "K2O",
+        "CaO",
+        "MgO",
+        "S",
+        "B",
+        "Cu",
+        "Fe",
+        "Mn",
+        "Mo",
+        "Zn",
+        "Cl",
+        "Si",
+        "Na",
+        "organic_C"
+      ]
+    },
+    "cas_number": {
+      "type": "string",
+      "pattern": "^[0-9]{2,7}-[0-9]{2}-[0-9]$"
+    },
+    "organism": {
+      "type": "object",
+      "description": "Untuk agens hayati: spesies dan galur.",
+      "properties": {
+        "scientific_name": {
+          "type": "string"
+        },
+        "strain": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "scientific_name"
+      ],
+      "additionalProperties": false
+    },
+    "mode_of_action": {
+      "type": "array",
+      "description": "Kode golongan cara kerja. Dasar aturan rotasi anti-resistensi nanti.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "enum": [
+              "FRAC",
+              "IRAC",
+              "HRAC"
+            ]
+          },
+          "code": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "scheme",
+          "code"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "hazard": {
+      "type": "object",
+      "properties": {
+        "who_class": {
+          "type": "string",
+          "enum": [
+            "Ia",
+            "Ib",
+            "II",
+            "III",
+            "U"
+          ]
+        },
+        "restricted_in": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Ringkasan kode negara tempat bahan ini dilarang atau dibatasi. Rinciannya ada di regulatory_status."
+        },
+        "regulatory_status": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Status hukum bahan aktif di suatu yurisdiksi. Setiap entri wajib menyebut instrumen hukumnya supaya bisa ditelusuri dan diperbarui saat regulasinya berubah.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "jurisdiction": {
+                "type": "string",
+                "description": "Kode negara ISO 3166-1 alfa-2."
+              },
+              "status": {
+                "type": "string",
+                "enum": [
+                  "prohibited",
+                  "restricted"
+                ]
+              },
+              "scope": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "string"
+                },
+                "description": "Bidang penggunaan yang terkena, sebagaimana ditulis di regulasinya."
+              },
+              "commodities": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/Ref"
+                },
+                "description": "Komoditas yang terkena, bila cakupannya bisa dipetakan ke kosakata."
+              },
+              "authority": {
+                "type": "string"
+              },
+              "instrument": {
+                "type": "string",
+                "description": "Nama dan nomor peraturannya."
+              },
+              "citation": {
+                "type": "string",
+                "description": "Letak persisnya di dalam peraturan."
+              },
+              "source_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "verified_at": {
+                "type": "string",
+                "format": "date"
+              }
+            },
+            "required": [
+              "jurisdiction",
+              "status",
+              "scope",
+              "authority",
+              "instrument",
+              "citation"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "default_unit": {
+      "$ref": "common.schema.json#/$defs/UcumCode"
+    },
+    "on_farm": {
+      "type": "object",
+      "description": "Kedudukan bahan ini bila dipakai membuat sediaan sendiri di kebun. Ada karena sebagian bahan yang lazim dipakai petani justru yang paling berbahaya: nikotin dari tembakau dan rotenon dari akar tuba dipakai luas, keduanya sudah dicabut izinnya di Uni Eropa dan tidak pernah terdaftar di Indonesia.",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "allowed",
+            "restricted",
+            "prohibited"
+          ],
+          "description": "allowed — boleh dipakai. restricted — boleh dengan syarat tertulis di 'reason'. prohibited — mesin tidak boleh menganjurkannya dalam keadaan apa pun."
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 20,
+          "description": "Wajib bila status bukan 'allowed'. Alasannya harus alasan, bukan label."
+        },
+        "sanitation_required": {
+          "type": "boolean",
+          "description": "true untuk bahan yang berpotensi membawa patogen manusia — kotoran ternak segar, urine, limbah dapur. Menyalakan aturan L17: sediaannya wajib punya proses sanitasi yang dinyatakan, atau tenggang waktu sebelum panen."
+        },
+        "reference_composition": {
+          "type": "array",
+          "minItems": 1,
+          "description": "Kandungan rujukan sebagai RENTANG, tidak pernah sebagai angka tunggal. Kotoran sapi dari dua kandang berbeda bisa berbeda dua kali lipat; angka tunggal akan menjanjikan ketelitian yang tidak ada. Hanya boleh dipakai untuk perkiraan, tidak untuk klaim.",
+          "items": {
+            "type": "object",
+            "properties": {
+              "nutrient_form": {
+                "type": "string",
+                "description": "Bentuk hara sebagaimana lazim dinyatakan pada label pupuk. Hanya untuk substance_class 'nutrient'.",
+                "enum": [
+                  "N",
+                  "P2O5",
+                  "K2O",
+                  "CaO",
+                  "MgO",
+                  "S",
+                  "B",
+                  "Cu",
+                  "Fe",
+                  "Mn",
+                  "Mo",
+                  "Zn",
+                  "Cl",
+                  "Si",
+                  "Na",
+                  "organic_C"
+                ]
+              },
+              "min": {
+                "type": "number"
+              },
+              "max": {
+                "type": "number"
+              },
+              "unit": {
+                "$ref": "common.schema.json#/$defs/UcumCode"
+              },
+              "basis": {
+                "type": "string",
+                "enum": [
+                  "dry_weight",
+                  "fresh_weight"
+                ]
+              }
+            },
+            "required": [
+              "nutrient_form",
+              "min",
+              "max",
+              "unit",
+              "basis"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "status"
+      ],
+      "additionalProperties": false,
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "restricted",
+              "prohibited"
+            ]
+          }
+        },
+        "required": [
+          "status"
+        ]
+      },
+      "then": {
+        "required": [
+          "reason"
+        ]
+      }
+    }
+  },
+  "required": [
+    "substance_classes"
+  ],
+  "unevaluatedProperties": false,
+  "if": {
+    "properties": {
+      "substance_classes": {
+        "contains": {
+          "const": "nutrient"
+        }
+      }
+    },
+    "required": [
+      "substance_classes"
+    ]
+  },
+  "then": {
+    "required": [
+      "nutrient_form"
+    ]
+  },
+  "$defs": {}
+}

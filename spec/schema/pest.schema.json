@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/pest.schema.json",
+  "title": "Pest — organisme pengganggu tumbuhan",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:pst:[0-9]{8}$" },
+    "pest_kind": {
+      "type": "string",
+      "enum": ["insect", "mite", "disease_fungal", "disease_bacterial", "disease_viral", "nematode", "weed", "vertebrate", "mollusc", "abiotic"]
+    },
+    "scientific_name": { "type": "string" },
+    "hosts": { "type": "array", "items": { "$ref": "common.schema.json#/$defs/Ref" } },
+    "damaging_stage": { "$ref": "common.schema.json#/$defs/LangText" }
+  },
+  "required": ["pest_kind"],
+  "unevaluatedProperties": false
+}

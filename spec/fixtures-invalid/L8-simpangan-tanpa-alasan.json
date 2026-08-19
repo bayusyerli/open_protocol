@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8300-0000-7000-8000-000000000007",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "executed",
+  "operation_type": { "id": "op:opt:00000027" },
+  "plan_ref": { "id": "op:stp:019e8300-0000-7000-8000-000000000006" },
+  "occurred_at": "2026-07-20T01:00:00Z",
+  "applications": [
+    { "substance": { "id": "op:sub:00000001" }, "rate": { "value": 20, "unit": "kg/har", "basis": "per_area" } }
+  ],
+  "data_classification": "farm_private"
+}

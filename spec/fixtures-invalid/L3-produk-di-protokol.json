@@ -1,0 +1,17 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8300-0000-7000-8000-000000000001",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "planned",
+  "operation_type": { "id": "op:opt:00000027" },
+  "protocol_step_key": "cabai-dataran-rendah/pemupukan-1",
+  "timing": { "kind": "relative", "anchor": "transplanting", "offset": { "value": 14, "unit": "d" } },
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000001" },
+      "product": { "id": "op:prd:00000001", "label": "Merek tertentu" },
+      "rate": { "value": 45, "unit": "kg/har", "basis": "per_area" }
+    }
+  ],
+  "data_classification": "farm_private"
+}

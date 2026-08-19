@@ -1,0 +1,180 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "product",
+    "label": {
+      "id": "Produk komersial — contoh struktur"
+    },
+    "scope": {
+      "id": "TIGA CONTOH, BUKAN REGISTRY. Semuanya berstatus registrasi unverified dan angka pada label_uses adalah contoh. Ada untuk menunjukkan bahwa produk hanya boleh masuk lewat izin edar dan bahwa label_uses adalah batas atas yang tidak boleh dilampaui rekomendasi mana pun. Registry sungguhan diisi pada Fase 3 dari daftar resmi Kementan."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2026-11-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Peraturan perundangan pupuk dan pestisida",
+          "publisher": "Ditjen PSP, Kementerian Pertanian",
+          "url": "https://psp.pertanian.go.id/layanan-publik/peraturan-perundangan-terkait-pupuk-dan-pestisida"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:prd:00000001",
+      "key": "urea-bersubsidi",
+      "label": {
+        "id": "Urea bersubsidi"
+      },
+      "product_category": "fertilizer",
+      "formulation": "GR",
+      "registration": {
+        "authority": "KEMENTAN",
+        "number": "BELUM-DIVERIFIKASI",
+        "status": "unverified"
+      },
+      "composition": [
+        {
+          "substance": {
+            "id": "op:sub:00000001",
+            "label": "Nitrogen (N)"
+          },
+          "value": 460,
+          "unit": "g/kg"
+        }
+      ],
+      "definition": {
+        "id": "Pupuk urea dalam skema subsidi. Kadar N 46% dinyatakan sebagai 460 g/kg mengikuti konvensi ADAPT: massa per massa, bukan persentase."
+      },
+      "no_mapping_reason": "Produk komersial lokal; tidak ada kosakata global yang mendaftar produk pupuk per negara. Identitasnya justru nomor izin edar nasional.",
+      "notes": {
+        "id": "Nomor pendaftaran sengaja belum diisi dan status ditandai unverified. Registry produk baru boleh diisi setelah nomor izin edar dicek ke daftar resmi Kementan. Jangan dipakai sebagai rujukan dosis di lapangan."
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:prd:00000002",
+      "key": "npk-15-15-15-bersubsidi",
+      "label": {
+        "id": "NPK 15-15-15 bersubsidi"
+      },
+      "product_category": "fertilizer",
+      "formulation": "GR",
+      "registration": {
+        "authority": "KEMENTAN",
+        "number": "BELUM-DIVERIFIKASI",
+        "status": "unverified"
+      },
+      "composition": [
+        {
+          "substance": {
+            "id": "op:sub:00000001",
+            "label": "Nitrogen (N)"
+          },
+          "value": 150,
+          "unit": "g/kg"
+        },
+        {
+          "substance": {
+            "id": "op:sub:00000002",
+            "label": "Fosfor (P2O5)"
+          },
+          "value": 150,
+          "unit": "g/kg"
+        },
+        {
+          "substance": {
+            "id": "op:sub:00000003",
+            "label": "Kalium (K2O)"
+          },
+          "value": 150,
+          "unit": "g/kg"
+        }
+      ],
+      "no_mapping_reason": "Produk komersial lokal; identitasnya adalah nomor izin edar nasional, bukan konsep dalam kosakata global.",
+      "notes": {
+        "id": "Nomor pendaftaran sengaja belum diisi dan status ditandai unverified. Registry produk baru boleh diisi setelah nomor izin edar dicek ke daftar resmi Kementan. Jangan dipakai sebagai rujukan dosis di lapangan."
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:prd:00000003",
+      "key": "insektisida-abamektin-18",
+      "label": {
+        "id": "Insektisida abamektin 18 g/L"
+      },
+      "product_category": "pesticide",
+      "formulation": "EC",
+      "registration": {
+        "authority": "KEMENTAN",
+        "number": "BELUM-DIVERIFIKASI",
+        "status": "unverified"
+      },
+      "composition": [
+        {
+          "substance": {
+            "id": "op:sub:00000007",
+            "label": "Abamektin"
+          },
+          "value": 18,
+          "unit": "g/L"
+        }
+      ],
+      "label_uses": [
+        {
+          "commodity": {
+            "id": "op:cmd:00000001",
+            "label": "Cabai merah besar"
+          },
+          "pest": {
+            "id": "op:pst:00000001",
+            "label": "Trips"
+          },
+          "rate": {
+            "value": 0.5,
+            "unit": "mL/L",
+            "basis": "per_volume_water"
+          },
+          "carrier": {
+            "value": 500,
+            "unit": "L/har",
+            "basis": "per_area"
+          },
+          "method": {
+            "id": "op:met:00000001",
+            "label": "Penyemprotan"
+          },
+          "phi_days": 7,
+          "rei_hours": 12,
+          "max_applications_per_cycle": 3
+        }
+      ],
+      "definition": {
+        "id": "Contoh produk pestisida untuk menguji struktur label_uses. Angka pada label_uses adalah CONTOH, bukan salinan label produk mana pun."
+      },
+      "no_mapping_reason": "Produk komersial lokal; identitasnya adalah nomor izin edar nasional.",
+      "notes": {
+        "id": "Nomor pendaftaran sengaja belum diisi dan status ditandai unverified. Registry produk baru boleh diisi setelah nomor izin edar dicek ke daftar resmi Kementan. Jangan dipakai sebagai rujukan dosis di lapangan."
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    }
+  ]
+}

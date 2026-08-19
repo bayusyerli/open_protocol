@@ -1,0 +1,256 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "commodity",
+    "label": {
+      "id": "Komoditas — cakupan awal"
+    },
+    "scope": {
+      "id": "Empat komoditas hortikultura kandidat beachhead, ditambah udang vaname sebagai penguji keagnostikan model. Tidak ada field kelompok komoditas: pengelompokan diambil dari konsep broader AGROVOC."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "AGROVOC",
+          "publisher": "FAO",
+          "url": "https://www.fao.org/agrovoc/"
+        },
+        {
+          "title": "NCBI Taxonomy",
+          "publisher": "NCBI"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:cmd:00000001",
+      "key": "cabai-merah-besar",
+      "label": {
+        "id": "Cabai merah besar",
+        "en": "Chili pepper"
+      },
+      "kind": "crop",
+      "scientific_name": "Capsicum annuum",
+      "perennial": false,
+      "harvest_pattern": "multiple",
+      "typical_cycle_length": {
+        "value": 120,
+        "unit": "d"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000001"
+      },
+      "mappings": [
+        {
+          "scheme": "NCBITaxon",
+          "id": "4072",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "AGROVOC",
+          "id": "c_1490",
+          "relation": "close",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:cmd:00000002",
+      "key": "cabai-rawit",
+      "label": {
+        "id": "Cabai rawit",
+        "en": "Bird's eye chili"
+      },
+      "kind": "crop",
+      "scientific_name": "Capsicum frutescens",
+      "perennial": false,
+      "harvest_pattern": "multiple",
+      "typical_cycle_length": {
+        "value": 150,
+        "unit": "d"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000001"
+      },
+      "mappings": [
+        {
+          "scheme": "NCBITaxon",
+          "id": "4234",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "AGROVOC",
+          "id": "c_1490",
+          "relation": "close",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:cmd:00000003",
+      "key": "tomat",
+      "label": {
+        "id": "Tomat",
+        "en": "Tomato"
+      },
+      "kind": "crop",
+      "scientific_name": "Solanum lycopersicum",
+      "perennial": false,
+      "harvest_pattern": "multiple",
+      "typical_cycle_length": {
+        "value": 110,
+        "unit": "d"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000001"
+      },
+      "mappings": [
+        {
+          "scheme": "NCBITaxon",
+          "id": "4081",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "AGROVOC",
+          "id": "c_7885",
+          "relation": "close",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:cmd:00000004",
+      "key": "bawang-merah",
+      "label": {
+        "id": "Bawang merah",
+        "en": "Shallot"
+      },
+      "kind": "crop",
+      "scientific_name": "Allium cepa var. aggregatum",
+      "perennial": false,
+      "harvest_pattern": "single",
+      "typical_cycle_length": {
+        "value": 65,
+        "unit": "d"
+      },
+      "mappings": [
+        {
+          "scheme": "NCBITaxon",
+          "id": "4679",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "AGROVOC",
+          "id": "c_7028",
+          "relation": "close",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:cmd:00000005",
+      "key": "udang-vaname",
+      "label": {
+        "id": "Udang vaname",
+        "en": "Whiteleg shrimp"
+      },
+      "kind": "aquaculture",
+      "scientific_name": "Penaeus vannamei",
+      "perennial": false,
+      "harvest_pattern": "single",
+      "typical_cycle_length": {
+        "value": 100,
+        "unit": "d"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000002"
+      },
+      "mappings": [
+        {
+          "scheme": "NCBITaxon",
+          "id": "6689",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "AGROVOC",
+          "id": "c_16277",
+          "relation": "close",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:cmd:00000006",
+      "key": "padi",
+      "label": {
+        "id": "Padi",
+        "en": "Rice"
+      },
+      "kind": "crop",
+      "scientific_name": "Oryza sativa",
+      "perennial": false,
+      "harvest_pattern": "single",
+      "typical_cycle_length": {
+        "value": 110,
+        "unit": "d"
+      },
+      "mappings": [
+        {
+          "scheme": "NCBITaxon",
+          "id": "4530",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "AGROVOC",
+          "id": "c_6599",
+          "relation": "close",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    }
+  ]
+}

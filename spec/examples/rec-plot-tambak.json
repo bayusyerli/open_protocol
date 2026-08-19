@@ -1,0 +1,13 @@
+{
+  "$schema": "../schema/plot.schema.json",
+  "id": "op:plt:019e8156-a600-7a88-b835-9961f5b88f77",
+  "kind": "pond",
+  "label": "Petak A3",
+  "holder": { "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4", "label": "Pak Slamet" },
+  "geometry_quality": "drawn_polygon",
+  "area": { "value": 3000, "unit": "m2" },
+  "tenure": "rented",
+  "irrigation_type": "pump",
+  "data_classification": "farm_private",
+  "created_at": "2026-06-03T00:00:00Z"
+}

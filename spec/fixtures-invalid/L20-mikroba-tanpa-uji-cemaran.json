@@ -1,0 +1,84 @@
+{
+  "$schema": "../schema/preparation.schema.json",
+  "id": "op:sed:00009904",
+  "key": "uji-biakan-tanpa-cemaran",
+  "label": {
+    "id": "Biakan mikroba tanpa kriteria cemaran"
+  },
+  "preparation_class": "microbial_culture",
+  "intended_functions": [
+    "disease_suppression"
+  ],
+  "regulatory": {
+    "regime": [
+      "pesticide_like"
+    ],
+    "own_use_only": true,
+    "circulation": "own_use_only",
+    "legal_basis": [
+      {
+        "instrument": "UU 22/2019",
+        "article": "Pasal 77 ayat (1)",
+        "effect": "Dilarang mengedarkan dan/atau menggunakan pestisida tidak terdaftar."
+      }
+    ]
+  },
+  "feedstocks": [
+    {
+      "substance": {
+        "id": "op:sub:00001716"
+      },
+      "role": "carrier",
+      "proportion": {
+        "value": 1000,
+        "unit": "parts_by_mass"
+      }
+    },
+    {
+      "substance": {
+        "id": "op:sub:00000008"
+      },
+      "role": "inoculum",
+      "proportion": {
+        "value": 20,
+        "unit": "parts_by_mass"
+      }
+    }
+  ],
+  "process": {
+    "kind": "solid_state_fermentation",
+    "duration": {
+      "value": 14,
+      "unit": "d"
+    },
+    "vessel": "tray",
+    "sanitation": {
+      "regime": "none"
+    }
+  },
+  "release_criteria": [
+    {
+      "compare": {
+        "variable": {
+          "id": "op:var:00000052"
+        },
+        "operator": ">=",
+        "value": 10000000,
+        "unit": "{cfu}/g"
+      },
+      "kind": "potency"
+    }
+  ],
+  "safety": {
+    "phi_days": 7,
+    "phi_basis": "precautionary_default"
+  },
+  "composition_basis": "unknown",
+  "evidence_tier": "D",
+  "no_mapping_reason": "Fixture uji negatif; tidak dipetakan ke kosakata luar karena bukan entitas nyata.",
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z"
+  }
+}

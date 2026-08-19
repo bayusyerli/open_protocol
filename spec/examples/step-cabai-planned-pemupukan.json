@@ -1,0 +1,31 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e81fb-7180-71be-b686-0d7a2afbe55e",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "planned",
+  "operation_type": { "id": "op:opt:00000027", "label": "Pemupukan susulan" },
+  "protocol_step_key": "cabai-dataran-rendah/pemupukan-susulan-2",
+  "timing": {
+    "kind": "stage",
+    "scale": { "id": "op:sca:00000001", "label": "BBCH — Solanaceae" },
+    "stage": { "id": "op:stg:00000026", "label": "Kuncup bunga pertama tampak" },
+    "position": "at"
+  },
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000001", "label": "Nitrogen (N)" },
+      "rate": { "value": 45, "unit": "kg/har", "basis": "per_area", "min": 40, "max": 55 },
+      "method": { "id": "op:met:00000005", "label": "Larikan samping" },
+      "target": { "plant_part": "soil" }
+    },
+    {
+      "substance": { "id": "op:sub:00000003", "label": "Kalium (K2O)" },
+      "rate": { "value": 60, "unit": "kg/har", "basis": "per_area" },
+      "method": { "id": "op:met:00000005", "label": "Larikan samping" },
+      "target": { "plant_part": "soil" }
+    }
+  ],
+  "area_covered": { "value": 0.28, "unit": "har" },
+  "data_classification": "farm_private",
+  "notes": "Dosis dinyatakan sebagai hara, bukan sebagai merek pupuk. Pemenuhannya bisa dari Urea + KCl bersubsidi atau NPK majemuk."
+}

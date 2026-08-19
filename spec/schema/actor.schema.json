@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/actor.schema.json",
+  "title": "Actor — orang atau organisasi",
+  "description": "Menyimpan sesedikit mungkin data pribadi. NIK dan nomor identitas lain sengaja TIDAK ada di lapis ini; kalau suatu saat dibutuhkan untuk e-RDKK, simpan di sistem terpisah dengan dasar pemrosesan sendiri.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:act:[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "actor_type": {
+      "type": "string",
+      "enum": [
+        "person",
+        "organization"
+      ]
+    },
+    "display_name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "roles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": [
+          "farmer",
+          "advisor",
+          "farmer_group",
+          "cooperative",
+          "offtaker",
+          "retailer",
+          "input_manufacturer",
+          "certifier",
+          "researcher",
+          "lender"
+        ]
+      }
+    },
+    "region": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "contact": {
+      "type": "object",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string",
+          "format": "email"
+        }
+      },
+      "additionalProperties": false
+    },
+    "consent": {
+      "type": "object",
+      "description": "Jejak persetujuan menurut UU 27/2022. Tanpa ini, data usaha tani milik aktor ini tidak boleh diproses di luar tujuan aslinya.",
+      "properties": {
+        "basis": {
+          "type": "string",
+          "enum": [
+            "consent",
+            "contract",
+            "legal_obligation",
+            "vital_interest",
+            "public_task",
+            "legitimate_interest"
+          ]
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "service_delivery",
+              "aggregate_research",
+              "share_with_offtaker",
+              "share_with_lender",
+              "share_with_manufacturer",
+              "public_open_data"
+            ]
+          }
+        },
+        "granted_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "revoked_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "recorded_by": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        }
+      },
+      "required": [
+        "basis",
+        "scope",
+        "granted_at"
+      ],
+      "additionalProperties": false
+    },
+    "data_classification": {
+      "$ref": "common.schema.json#/$defs/DataClassification"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "actor_type",
+    "display_name",
+    "roles",
+    "data_classification"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,45 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8400-0000-7c00-8a04-000000009906",
+  "cycle": {
+    "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d"
+  },
+  "mode": "executed",
+  "operation_type": {
+    "id": "op:opt:00000026"
+  },
+  "occurred_at": "2026-06-20T06:40:00+07:00",
+  "applications": [
+    {
+      "substance": {
+        "id": "op:sub:00001709"
+      },
+      "preparation": {
+        "id": "op:sed:00000001"
+      },
+      "preparation_batch": {
+        "id": "op:bat:019e8400-0000-7c00-8b02-000000009905"
+      },
+      "rate": {
+        "value": 10000,
+        "unit": "kg/har",
+        "basis": "per_area"
+      },
+      "method": {
+        "id": "op:met:00000003"
+      },
+      "nutrients_delivered": [
+        {
+          "substance": {
+            "id": "op:sub:00000001"
+          },
+          "quantity": {
+            "value": 55,
+            "unit": "kg/har"
+          }
+        }
+      ]
+    }
+  ],
+  "data_classification": "farm_private"
+}

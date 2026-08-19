@@ -1,0 +1,197 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "substance",
+    "label": {
+      "id": "Bahan generik — inti hortikultura"
+    },
+    "scope": {
+      "id": "Lapis netral-vendor untuk hara dan bahan non-pestisida. Bahan aktif pestisida ada di substance-pestisida.json, diturunkan dari registri resmi. Belerang, abamektin, dan Trichoderma harzianum PINDAH ke berkas itu dengan ID yang sama persis — ID tidak pernah berubah walau entitasnya berpindah berkas."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "ICASA Master Variable List",
+          "publisher": "AgMIP / ICASA",
+          "url": "https://github.com/terraref/icasa"
+        },
+        {
+          "title": "Peraturan perundangan pupuk dan pestisida",
+          "publisher": "Ditjen PSP, Kementerian Pertanian",
+          "url": "https://psp.pertanian.go.id/layanan-publik/peraturan-perundangan-terkait-pupuk-dan-pestisida"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:sub:00000001",
+      "key": "nitrogen",
+      "label": {
+        "id": "Nitrogen (N)"
+      },
+      "nutrient_form": "N",
+      "default_unit": "kg",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEAMN",
+          "relation": "related"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "substance_classes": [
+        "nutrient"
+      ]
+    },
+    {
+      "id": "op:sub:00000002",
+      "key": "fosfor-p2o5",
+      "label": {
+        "id": "Fosfor (P2O5)"
+      },
+      "nutrient_form": "P2O5",
+      "default_unit": "kg",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEAMP",
+          "relation": "related",
+          "note": "ICASA menyatakan sebagai unsur P; entitas ini sebagai P2O5 mengikuti label pupuk."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "substance_classes": [
+        "nutrient"
+      ]
+    },
+    {
+      "id": "op:sub:00000003",
+      "key": "kalium-k2o",
+      "label": {
+        "id": "Kalium (K2O)"
+      },
+      "nutrient_form": "K2O",
+      "default_unit": "kg",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEAMK",
+          "relation": "related",
+          "note": "ICASA menyatakan sebagai unsur K; entitas ini sebagai K2O mengikuti label pupuk."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "substance_classes": [
+        "nutrient"
+      ]
+    },
+    {
+      "id": "op:sub:00000004",
+      "key": "kalsium-cao",
+      "label": {
+        "id": "Kalsium (CaO)"
+      },
+      "nutrient_form": "CaO",
+      "default_unit": "kg",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEAMC",
+          "relation": "related"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "substance_classes": [
+        "nutrient"
+      ]
+    },
+    {
+      "id": "op:sub:00000005",
+      "key": "magnesium-mgo",
+      "label": {
+        "id": "Magnesium (MgO)"
+      },
+      "nutrient_form": "MgO",
+      "default_unit": "kg",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEOCD",
+          "relation": "related"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "substance_classes": [
+        "nutrient"
+      ]
+    },
+    {
+      "id": "op:sub:00000009",
+      "key": "kapur-dolomit",
+      "label": {
+        "id": "Kapur dolomit"
+      },
+      "definition": {
+        "id": "Pembenah tanah untuk menaikkan pH sekaligus menyumbang Ca dan Mg."
+      },
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "substance_classes": [
+        "amendment"
+      ]
+    },
+    {
+      "id": "op:sub:00000010",
+      "key": "pakan-udang-p32",
+      "label": {
+        "id": "Pakan udang protein 32%"
+      },
+      "definition": {
+        "id": "Pakan buatan berkadar protein kasar 32%."
+      },
+      "default_unit": "kg",
+      "no_mapping_reason": "Tidak ditemukan padanan yang tepat di AGROVOC, CHEBI, maupun ICASA setelah penelusuran. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      },
+      "substance_classes": [
+        "feed"
+      ]
+    }
+  ]
+}

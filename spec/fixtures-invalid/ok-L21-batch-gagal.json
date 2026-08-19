@@ -1,0 +1,23 @@
+{
+  "$schema": "../schema/preparation-batch.schema.json",
+  "id": "op:bat:019e8400-0000-7c00-8b01-000000009902",
+  "preparation": {
+    "id": "op:sed:00000001"
+  },
+  "batch_code": "KOMPOS-B7",
+  "started_at": "2026-05-02T07:00:00+07:00",
+  "qc": [
+    {
+      "variable": {
+        "id": "op:var:00000051"
+      },
+      "value": 41,
+      "unit": "%",
+      "criterion_met": false
+    }
+  ],
+  "qc_verdict": "fail",
+  "composition_basis": "unknown",
+  "data_classification": "farm_private",
+  "notes": "Batch yang gagal uji kematangan. Berkas ini sendiri harus lolos: mencatat kegagalan itu benar, memakainya yang salah."
+}

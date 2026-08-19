@@ -1,0 +1,68 @@
+{
+  "$schema": "../schema/preparation.schema.json",
+  "id": "op:sed:00009901",
+  "key": "uji-ekstrak-opt-tanpa-phi",
+  "label": {
+    "id": "Ekstrak nabati pengendali hama tanpa tenggang panen"
+  },
+  "preparation_class": "botanical_extract",
+  "intended_functions": [
+    "pest_control"
+  ],
+  "regulatory": {
+    "regime": [
+      "pesticide_like"
+    ],
+    "own_use_only": true,
+    "circulation": "own_use_only",
+    "legal_basis": [
+      {
+        "instrument": "UU 22/2019",
+        "article": "Pasal 77 ayat (1)",
+        "effect": "Dilarang mengedarkan dan/atau menggunakan pestisida tidak terdaftar."
+      }
+    ]
+  },
+  "feedstocks": [
+    {
+      "substance": {
+        "id": "op:sub:00001710"
+      },
+      "role": "active_material",
+      "proportion": {
+        "value": 50,
+        "unit": "parts_by_mass"
+      }
+    },
+    {
+      "substance": {
+        "id": "op:sub:00001715"
+      },
+      "role": "water",
+      "proportion": {
+        "value": 1000,
+        "unit": "parts_by_volume"
+      }
+    }
+  ],
+  "process": {
+    "kind": "aqueous_extraction",
+    "vessel": "open_bucket",
+    "sanitation": {
+      "regime": "none"
+    }
+  },
+  "safety": {
+    "ppe": [
+      "gloves"
+    ]
+  },
+  "composition_basis": "unknown",
+  "evidence_tier": "D",
+  "no_mapping_reason": "Fixture uji negatif; tidak dipetakan ke kosakata luar karena bukan entitas nyata.",
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z"
+  }
+}

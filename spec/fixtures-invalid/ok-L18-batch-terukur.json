@@ -1,0 +1,22 @@
+{
+  "$schema": "../schema/preparation-batch.schema.json",
+  "id": "op:bat:019e8400-0000-7c00-8b02-000000009905",
+  "preparation": {
+    "id": "op:sed:00000001"
+  },
+  "batch_code": "KOMPOS-C1",
+  "started_at": "2026-05-02T07:00:00+07:00",
+  "qc_verdict": "pass",
+  "composition_basis": "measured",
+  "measured_composition": [
+    {
+      "substance": {
+        "id": "op:sub:00000001"
+      },
+      "value": 0.55,
+      "unit": "%",
+      "basis": "dry_weight"
+    }
+  ],
+  "data_classification": "farm_private"
+}

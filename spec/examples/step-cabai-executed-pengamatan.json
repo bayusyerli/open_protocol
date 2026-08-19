@@ -1,0 +1,22 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e82d7-2b80-751d-b654-502525083fd1",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "executed",
+  "operation_type": { "id": "op:opt:00000046", "label": "Pengamatan OPT" },
+  "occurred_at": "2026-08-09T00:45:00Z",
+  "observations": [
+    {
+      "variable": { "id": "op:var:00000012", "label": "Populasi trips per daun muda" },
+      "value": 7,
+      "unit": "1",
+      "sample": { "size": 20, "scope": "per_leaf" },
+      "method": { "id": "op:met:00000013", "label": "Pengamatan langsung daun muda" },
+      "target": { "pest": { "id": "op:pst:00000001", "label": "Trips" }, "plant_part": "leaf" },
+      "observed_at": "2026-08-09T00:45:00Z"
+    }
+  ],
+  "performed_by": { "id": "op:act:019e80b1-da80-71e4-b2a9-4fb142e44122", "label": "Penyuluh Wilayah 3" },
+  "recorded_at": "2026-08-09T01:00:00Z",
+  "data_classification": "farm_private"
+}

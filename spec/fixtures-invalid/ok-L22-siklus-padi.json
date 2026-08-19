@@ -1,0 +1,8 @@
+{
+  "$schema": "../schema/cycle.schema.json",
+  "id": "op:cyc:019e8400-0000-7000-8000-000000000001",
+  "plot": { "id": "op:plt:019e80e8-c900-79c9-ac35-7cced06151d9" },
+  "commodity": { "id": "op:cmd:00000006", "label": "Padi" },
+  "status": "active",
+  "data_classification": "farm_private"
+}

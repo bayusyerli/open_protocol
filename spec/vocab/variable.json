@@ -1,0 +1,1167 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "variable",
+    "label": {
+      "id": "Variabel terukur dan teramati — inti hortikultura"
+    },
+    "scope": {
+      "id": "Cukup untuk mencatat pertumbuhan, pengamatan OPT berbasis ambang, sifat tanah dan air, cuaca dasar, serta hasil panen. Variabel berdenominasi mata uang sengaja tidak ada: biaya ditangani Step.cost, bukan sebagai variabel pengamatan."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "ICASA Master Variable List (icasa-mgmt-info, icasa-measured-data)",
+          "publisher": "AgMIP / ICASA",
+          "url": "https://github.com/terraref/icasa"
+        },
+        {
+          "title": "Agronomy Ontology (AgrO)",
+          "publisher": "CGIAR / OBO Foundry",
+          "url": "https://www.ebi.ac.uk/ols4/ontologies/agro"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:var:00000001",
+      "key": "tinggi-tanaman",
+      "label": {
+        "id": "Tinggi tanaman"
+      },
+      "subject": "plant",
+      "value_type": "quantity",
+      "default_unit": "cm",
+      "method_hint": {
+        "id": "Diukur dari pangkal batang di permukaan tanah sampai titik tumbuh tertinggi."
+      },
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "PHTX",
+          "relation": "close",
+          "note": "ICASA PHTX adalah tinggi maksimum; entitas ini tinggi pada saat pengamatan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000002",
+      "key": "jumlah-daun",
+      "label": {
+        "id": "Jumlah daun"
+      },
+      "subject": "plant",
+      "value_type": "integer",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000003",
+      "key": "jumlah-cabang-produktif",
+      "label": {
+        "id": "Jumlah cabang produktif"
+      },
+      "subject": "plant",
+      "value_type": "integer",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000004",
+      "key": "diameter-batang",
+      "label": {
+        "id": "Diameter batang"
+      },
+      "subject": "plant",
+      "value_type": "quantity",
+      "default_unit": "mm",
+      "method_hint": {
+        "id": "Diukur 5 cm di atas permukaan tanah."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000005",
+      "key": "indeks-luas-daun",
+      "label": {
+        "id": "Indeks luas daun"
+      },
+      "subject": "plant",
+      "value_type": "quantity",
+      "default_unit": "m2/m2",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "LAIX",
+          "relation": "close",
+          "note": "ICASA LAIX adalah nilai maksimum semusim."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000006",
+      "key": "persentase-tumbuh",
+      "label": {
+        "id": "Persentase tanaman tumbuh"
+      },
+      "subject": "plant",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000007",
+      "key": "populasi-tanaman",
+      "label": {
+        "id": "Populasi tanaman"
+      },
+      "subject": "plant",
+      "value_type": "quantity",
+      "default_unit": "1/m2",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "PLPOP",
+          "relation": "exact"
+        },
+        {
+          "scheme": "AGRO",
+          "id": "00000262",
+          "relation": "related",
+          "note": "Protokol pengukuran kerapatan tanaman."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000008",
+      "key": "umur-bibit-saat-tanam",
+      "label": {
+        "id": "Umur bibit saat pindah tanam"
+      },
+      "subject": "plant",
+      "value_type": "quantity",
+      "default_unit": "d",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "PLAGE",
+          "relation": "exact"
+        },
+        {
+          "scheme": "AGRO",
+          "id": "00000279",
+          "relation": "related"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000009",
+      "key": "jumlah-bunga-per-tanaman",
+      "label": {
+        "id": "Jumlah bunga per tanaman"
+      },
+      "subject": "plant",
+      "value_type": "integer",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000010",
+      "key": "jumlah-buah-per-tanaman",
+      "label": {
+        "id": "Jumlah buah per tanaman"
+      },
+      "subject": "plant",
+      "value_type": "integer",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000011",
+      "key": "fase-teramati",
+      "label": {
+        "id": "Fase pertumbuhan teramati"
+      },
+      "subject": "plant",
+      "value_type": "text",
+      "method_hint": {
+        "id": "Isi dengan kode fase dari skala yang dirujuk Cycle.stage_scale."
+      },
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "bbch",
+          "relation": "related",
+          "note": "Nilainya adalah kode dari StageScale yang dipakai siklus tersebut, mis. '51'."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000012",
+      "key": "populasi-trips",
+      "label": {
+        "id": "Populasi trips per daun muda"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "method_hint": {
+        "id": "Hitung trips pada daun muda ke-3 dari pucuk, minimal 20 tanaman contoh."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000013",
+      "key": "populasi-kutu-daun",
+      "label": {
+        "id": "Populasi kutu daun per daun"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000014",
+      "key": "tangkapan-lalat-buah",
+      "label": {
+        "id": "Tangkapan lalat buah per perangkap"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "method_hint": {
+        "id": "Perangkap feromon, dihitung per minggu."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000015",
+      "key": "populasi-ulat",
+      "label": {
+        "id": "Populasi ulat per tanaman"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000016",
+      "key": "intensitas-serangan-daun",
+      "label": {
+        "id": "Intensitas serangan pada daun"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "DLA%",
+          "relation": "close",
+          "note": "ICASA DLA% adalah laju pertambahan harian; entitas ini nilai sesaat."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000017",
+      "key": "luas-daun-terserang",
+      "label": {
+        "id": "Luas daun terserang"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "m2/m2",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "CLAI",
+          "relation": "close"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000018",
+      "key": "kejadian-penyakit",
+      "label": {
+        "id": "Kejadian penyakit"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "method_hint": {
+        "id": "Persentase tanaman contoh yang menunjukkan gejala."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000019",
+      "key": "keparahan-penyakit",
+      "label": {
+        "id": "Keparahan penyakit"
+      },
+      "subject": "pest",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "method_hint": {
+        "id": "Persentase jaringan terserang pada tanaman yang sakit."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000020",
+      "key": "jumlah-tanaman-terserang",
+      "label": {
+        "id": "Jumlah tanaman terserang"
+      },
+      "subject": "pest",
+      "value_type": "integer",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000021",
+      "key": "ph-tanah",
+      "label": {
+        "id": "pH tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "method_hint": {
+        "id": "pH H2O 1:2,5 kecuali dinyatakan lain."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000022",
+      "key": "c-organik-tanah",
+      "label": {
+        "id": "C-organik tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000023",
+      "key": "n-total-tanah",
+      "label": {
+        "id": "N-total tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000024",
+      "key": "p-tersedia-tanah",
+      "label": {
+        "id": "P tersedia tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "mg/kg",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000025",
+      "key": "k-tertukar-tanah",
+      "label": {
+        "id": "K tertukar tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "cmol/kg",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000026",
+      "key": "kadar-air-tanah",
+      "label": {
+        "id": "Kadar air tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000027",
+      "key": "dhl-tanah",
+      "label": {
+        "id": "Daya hantar listrik tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "dS/m",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000028",
+      "key": "kedalaman-olah",
+      "label": {
+        "id": "Kedalaman olah tanah"
+      },
+      "subject": "soil",
+      "value_type": "quantity",
+      "default_unit": "cm",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "TIDEP",
+          "relation": "exact"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000029",
+      "key": "ph-air",
+      "label": {
+        "id": "pH air"
+      },
+      "subject": "water",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000030",
+      "key": "suhu-air",
+      "label": {
+        "id": "Suhu air"
+      },
+      "subject": "water",
+      "value_type": "quantity",
+      "default_unit": "Cel",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000031",
+      "key": "oksigen-terlarut",
+      "label": {
+        "id": "Oksigen terlarut"
+      },
+      "subject": "water",
+      "value_type": "quantity",
+      "default_unit": "mg/L",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000032",
+      "key": "salinitas-air",
+      "label": {
+        "id": "Salinitas air"
+      },
+      "subject": "water",
+      "value_type": "quantity",
+      "default_unit": "g/L",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000033",
+      "key": "dhl-larutan",
+      "label": {
+        "id": "Daya hantar listrik larutan"
+      },
+      "subject": "water",
+      "value_type": "quantity",
+      "default_unit": "mS/cm",
+      "method_hint": {
+        "id": "Untuk hidroponik dan fertigasi."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000034",
+      "key": "curah-hujan",
+      "label": {
+        "id": "Curah hujan"
+      },
+      "subject": "weather",
+      "value_type": "quantity",
+      "default_unit": "mm",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000035",
+      "key": "suhu-udara",
+      "label": {
+        "id": "Suhu udara"
+      },
+      "subject": "weather",
+      "value_type": "quantity",
+      "default_unit": "Cel",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000036",
+      "key": "kelembapan-udara",
+      "label": {
+        "id": "Kelembapan udara relatif"
+      },
+      "subject": "weather",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000037",
+      "key": "hasil-panen-segar",
+      "label": {
+        "id": "Hasil panen segar"
+      },
+      "subject": "produce",
+      "value_type": "quantity",
+      "default_unit": "kg/har",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "HFAM",
+          "relation": "close",
+          "note": "ICASA HFAM adalah hasil pada masak panen; entitas ini mencakup panen bertahap."
+        },
+        {
+          "scheme": "ICASA",
+          "id": "FFAH",
+          "relation": "related"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000038",
+      "key": "bobot-buah-rerata",
+      "label": {
+        "id": "Bobot buah rerata"
+      },
+      "subject": "produce",
+      "value_type": "quantity",
+      "default_unit": "g",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000039",
+      "key": "jumlah-buah-panen",
+      "label": {
+        "id": "Jumlah buah dipanen"
+      },
+      "subject": "produce",
+      "value_type": "integer",
+      "default_unit": "1",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000040",
+      "key": "kelas-mutu",
+      "label": {
+        "id": "Kelas mutu"
+      },
+      "subject": "produce",
+      "value_type": "category",
+      "categories": [
+        {
+          "code": "A",
+          "label": {
+            "id": "Kelas A — mutu utama"
+          }
+        },
+        {
+          "code": "B",
+          "label": {
+            "id": "Kelas B — mutu menengah"
+          }
+        },
+        {
+          "code": "C",
+          "label": {
+            "id": "Kelas C — mutu rendah"
+          }
+        },
+        {
+          "code": "afkir",
+          "label": {
+            "id": "Afkir — tidak layak jual"
+          }
+        }
+      ],
+      "mappings": [
+        {
+          "scheme": "SNI",
+          "id": "8969:2021",
+          "relation": "related",
+          "note": "Penggolongan produk merujuk IndoGAP; kelas rinci per komoditas menyusul."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000041",
+      "key": "kadar-air-panen",
+      "label": {
+        "id": "Kadar air saat panen"
+      },
+      "subject": "produce",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "HMAH",
+          "relation": "close"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000042",
+      "key": "susut-pascapanen",
+      "label": {
+        "id": "Susut pascapanen"
+      },
+      "subject": "produce",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; variabel praktik pengamatan lokal. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000043",
+      "key": "air-irigasi-diberikan",
+      "label": {
+        "id": "Jumlah air irigasi diberikan"
+      },
+      "subject": "other",
+      "value_type": "quantity",
+      "default_unit": "mm",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "IRVAL",
+          "relation": "exact"
+        },
+        {
+          "scheme": "AGRO",
+          "id": "00000010",
+          "relation": "related"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000044",
+      "key": "n-diberikan",
+      "label": {
+        "id": "N diberikan"
+      },
+      "subject": "other",
+      "value_type": "quantity",
+      "default_unit": "kg/har",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEAMN",
+          "relation": "exact"
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000045",
+      "key": "p2o5-diberikan",
+      "label": {
+        "id": "P2O5 diberikan"
+      },
+      "subject": "other",
+      "value_type": "quantity",
+      "default_unit": "kg/har",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEAMP",
+          "relation": "related",
+          "note": "ICASA FEAMP dinyatakan sebagai unsur P; entitas ini sebagai P2O5 mengikuti label pupuk. Faktor konversi P2O5 ke P = 0,4364."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000046",
+      "key": "k2o-diberikan",
+      "label": {
+        "id": "K2O diberikan"
+      },
+      "subject": "other",
+      "value_type": "quantity",
+      "default_unit": "kg/har",
+      "mappings": [
+        {
+          "scheme": "ICASA",
+          "id": "FEAMK",
+          "relation": "related",
+          "note": "ICASA FEAMK dinyatakan sebagai unsur K; entitas ini sebagai K2O mengikuti label pupuk. Faktor konversi K2O ke K = 0,8301."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000047",
+      "key": "suhu-tumpukan",
+      "label": {
+        "id": "Suhu tumpukan sediaan"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "Cel",
+      "method_hint": {
+        "id": "Termometer batang panjang ditusukkan sampai sepertiga kedalaman tumpukan, tiga titik, diambil nilai terendah."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000048",
+      "key": "rasio-c-n-bahan",
+      "label": {
+        "id": "Rasio C/N bahan"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "method_hint": {
+        "id": "Dihitung dari perbandingan bahan penyusun memakai nilai C/N rujukan tiap bahan, atau dari uji laboratorium."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000049",
+      "key": "kadar-air-sediaan",
+      "label": {
+        "id": "Kadar air sediaan"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "method_hint": {
+        "id": "Di kebun: uji kepal. Bahan dikepal, air tidak menetes tetapi gumpalan tetap utuh, kira-kira 50-60%."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000050",
+      "key": "ph-sediaan",
+      "label": {
+        "id": "pH sediaan"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "1",
+      "method_hint": {
+        "id": "Kertas lakmus atau pH-meter pada larutan; untuk sediaan padat, ekstrak 1:5 dengan air suling."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000051",
+      "key": "indeks-perkecambahan",
+      "label": {
+        "id": "Indeks perkecambahan"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "range": {
+        "min": 0,
+        "max": 200
+      },
+      "method_hint": {
+        "id": "Uji hayati kematangan: benih dikecambahkan pada ekstrak sediaan, hasilnya dibandingkan air biasa. Indeks di atas 80% berarti tidak ada racun tumbuh yang tersisa."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000052",
+      "key": "kerapatan-mikroba",
+      "label": {
+        "id": "Kerapatan mikroba hidup"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "{cfu}/g",
+      "method_hint": {
+        "id": "Hitungan cawan pada media spesifik. Rujukan pupuk hayati tunggal: minimal 1e7 cfu/g bobot kering."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000053",
+      "key": "cemaran-e-coli",
+      "label": {
+        "id": "Cemaran Escherichia coli"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "{MPN}/g",
+      "method_hint": {
+        "id": "Metode MPN. Batas pupuk organik padat pada persyaratan teknis minimal: maksimal 1e2 MPN/g."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000054",
+      "key": "cemaran-salmonella",
+      "label": {
+        "id": "Cemaran Salmonella sp."
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "{MPN}/g",
+      "method_hint": {
+        "id": "Metode MPN dengan uji lanjut pada media Salmonella."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000055",
+      "key": "kemurnian-biakan",
+      "label": {
+        "id": "Kemurnian biakan"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "method_hint": {
+        "id": "Bagian koloni yang sesuai target terhadap seluruh koloni tumbuh. Di kebun, penanda kasarnya adalah warna dan bau biakan yang seragam tanpa bercak asing."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000056",
+      "key": "c-organik-sediaan",
+      "label": {
+        "id": "C-organik sediaan"
+      },
+      "subject": "preparation",
+      "value_type": "quantity",
+      "default_unit": "%",
+      "method_hint": {
+        "id": "Uji laboratorium. Batas pupuk organik padat pada persyaratan teknis minimal: minimal 15%."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:var:00000057",
+      "key": "patogenitas-tanaman-uji",
+      "label": {
+        "id": "Patogenitas pada tanaman uji"
+      },
+      "subject": "preparation",
+      "value_type": "category",
+      "categories": [
+        {
+          "code": "negative",
+          "label": {
+            "id": "Negatif — tanaman uji tidak menunjukkan gejala"
+          }
+        },
+        {
+          "code": "positive",
+          "label": {
+            "id": "Positif — tanaman uji menunjukkan gejala, biakan tidak boleh dipakai"
+          }
+        }
+      ],
+      "method_hint": {
+        "id": "Biakan diinokulasikan ke tanaman uji; hasil wajib negatif. Diambil dari uji patogenitas pupuk hayati pada tanaman tembakau."
+      },
+      "no_mapping_reason": "Tidak ditemukan padanan di ICASA, Crop Ontology, maupun AgrO setelah penelusuran; kosakata ini menggambarkan mutu sediaan buatan sendiri, ranah yang belum dimodelkan kosakata pertanian beriklim sedang. Ditinjau ulang tiap rilis.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    }
+  ]
+}

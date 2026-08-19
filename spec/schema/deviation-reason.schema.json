@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/deviation-reason.schema.json",
+  "title": "DeviationReason — alasan realisasi menyimpang dari rencana",
+  "description": "Kosakata kecil tapi paling bernilai di seluruh sistem: inilah data yang memperbaiki protokol. Dibuat sebagai entitas terkurasi, bukan teks bebas, supaya bisa dihitung.",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:dev:[0-9]{8}$" },
+    "category": {
+      "type": "string",
+      "enum": ["not_needed", "input_unavailable", "no_funds", "weather", "labor_unavailable", "advice_changed", "pest_absent", "pest_worse", "price_change", "mistake", "other"]
+    },
+    "signals": {
+      "type": "string",
+      "enum": ["protocol_problem", "access_problem", "external_shock", "recording_problem"],
+      "description": "Apa yang seharusnya ditindaklanjuti tim ketika alasan ini sering muncul."
+    }
+  },
+  "required": ["category", "signals"],
+  "unevaluatedProperties": false
+}

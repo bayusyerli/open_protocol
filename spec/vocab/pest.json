@@ -1,0 +1,325 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "pest",
+    "label": {
+      "id": "OPT utama cabai"
+    },
+    "scope": {
+      "id": "Sepuluh OPT yang paling menentukan hasil dan biaya pada budidaya cabai di Indonesia. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2027-02-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "EPPO Global Database",
+          "publisher": "EPPO",
+          "url": "https://gd.eppo.int/"
+        }
+      ]
+    }
+  },
+  "items": [
+    {
+      "id": "op:pst:00000001",
+      "key": "trips",
+      "label": {
+        "id": "Trips"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Thrips parvispinus",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Vektor virus, menyebabkan daun keriting ke atas."
+      },
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "THRIPL",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000002",
+      "key": "kutu-daun-persik",
+      "label": {
+        "id": "Kutu daun persik"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Myzus persicae",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Vektor beberapa virus penting pada cabai."
+      },
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "MYZUPE",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000003",
+      "key": "kutu-kebul",
+      "label": {
+        "id": "Kutu kebul"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Bemisia tabaci",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Vektor virus kuning keriting."
+      },
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "BEMITA",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000004",
+      "key": "lalat-buah",
+      "label": {
+        "id": "Lalat buah"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Bactrocera dorsalis",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "DACUDO",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000005",
+      "key": "ulat-grayak",
+      "label": {
+        "id": "Ulat grayak"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Spodoptera litura",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "SPODLI",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000006",
+      "key": "tungau-merah",
+      "label": {
+        "id": "Tungau merah"
+      },
+      "pest_kind": "mite",
+      "scientific_name": "Tetranychus urticae",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "TETRUR",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000007",
+      "key": "antraknosa",
+      "label": {
+        "id": "Antraknosa"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Colletotrichum spp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Patek. Penyebab kerugian terbesar pada cabai di banyak sentra."
+      },
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "COLLSP",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000008",
+      "key": "layu-fusarium",
+      "label": {
+        "id": "Layu fusarium"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Fusarium oxysporum",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "FUSAOX",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000009",
+      "key": "layu-bakteri",
+      "label": {
+        "id": "Layu bakteri"
+      },
+      "pest_kind": "disease_bacterial",
+      "scientific_name": "Ralstonia solanacearum",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "RALSSL",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    },
+    {
+      "id": "op:pst:00000010",
+      "key": "virus-kuning",
+      "label": {
+        "id": "Virus kuning keriting"
+      },
+      "pest_kind": "disease_viral",
+      "scientific_name": "Begomovirus",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Ditularkan kutu kebul; tidak ada pengendalian kuratif, hanya pencegahan."
+      },
+      "mappings": [
+        {
+          "scheme": "EPPO",
+          "id": "BEGOSP",
+          "relation": "exact",
+          "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-19T00:00:00Z"
+      }
+    }
+  ]
+}

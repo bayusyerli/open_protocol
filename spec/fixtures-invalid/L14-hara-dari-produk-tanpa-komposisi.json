@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8300-0000-7000-8000-000000000013",
+  "cycle": { "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d" },
+  "mode": "executed",
+  "operation_type": { "id": "op:opt:00000027" },
+  "occurred_at": "2026-08-11T23:30:00Z",
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000001", "label": "Nitrogen (N)" },
+      "product": { "id": "op:prd:00010001" },
+      "rate": { "value": 200, "unit": "kg/har", "basis": "per_area" },
+      "nutrients_delivered": [
+        { "substance": { "id": "op:sub:00000001" }, "quantity": { "value": 30, "unit": "kg/har" } }
+      ]
+    }
+  ],
+  "data_classification": "farm_private"
+}

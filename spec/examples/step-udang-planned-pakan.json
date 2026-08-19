@@ -1,0 +1,31 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e82a0-3d00-75e5-9255-7e1d2f978e34",
+  "cycle": { "id": "op:cyc:019e81c4-8300-7e52-9746-f999cb897f03" },
+  "mode": "planned",
+  "operation_type": { "id": "op:opt:00000060", "label": "Pemberian pakan" },
+  "protocol_step_key": "vaname-intensif/pakan-doc16-45",
+  "timing": {
+    "kind": "recurrence",
+    "every": { "value": 1, "unit": "d" },
+    "from": {
+      "kind": "relative",
+      "anchor": "stocking",
+      "offset": { "value": 16, "unit": "d" }
+    },
+    "until": {
+      "kind": "relative",
+      "anchor": "stocking",
+      "offset": { "value": 45, "unit": "d" }
+    }
+  },
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000010", "label": "Pakan udang protein 32%" },
+      "rate": { "value": 4.0, "unit": "%", "basis": "per_mass_biomass", "min": 3.5, "max": 4.5 },
+      "method": { "id": "op:met:00000011", "label": "Tebar merata" }
+    }
+  ],
+  "data_classification": "farm_private",
+  "notes": "Bukti agnostik: entitas dan bentuk waktu yang sama dipakai untuk tambak, hanya dengan basis dosis per_mass_biomass dan skala fase berbasis umur."
+}

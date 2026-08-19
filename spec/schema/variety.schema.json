@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/variety.schema.json",
+  "title": "Variety — varietas, kultivar, klon, atau galur",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:vty:[0-9]{8}$" },
+    "commodity": { "$ref": "common.schema.json#/$defs/Ref" },
+    "variety_type": {
+      "type": "string",
+      "enum": ["cultivar", "hybrid", "open_pollinated", "clone", "line", "landrace", "strain"]
+    },
+    "release": {
+      "type": "object",
+      "description": "Pelepasan varietas resmi. Untuk Indonesia: SK Menteri Pertanian.",
+      "properties": {
+        "authority": { "type": "string" },
+        "decree_number": { "type": "string" },
+        "year": { "type": "integer" }
+      },
+      "required": ["authority"],
+      "additionalProperties": false
+    },
+    "maintainer": { "type": "string" },
+    "traits": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variable": { "$ref": "common.schema.json#/$defs/Ref" },
+          "value": { "type": ["number", "string", "boolean"] },
+          "unit": { "$ref": "common.schema.json#/$defs/UcumCode" }
+        },
+        "required": ["variable", "value"],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["commodity", "variety_type"],
+  "unevaluatedProperties": false
+}

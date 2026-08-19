@@ -1,0 +1,50 @@
+{
+  "$schema": "../schema/preparation.schema.json",
+  "id": "op:sed:00009902",
+  "key": "uji-kompos-kohe-ayam-mentah",
+  "label": {
+    "id": "Kotoran ayam diberikan tanpa sanitasi maupun tenggang"
+  },
+  "preparation_class": "aged_manure",
+  "intended_functions": [
+    "nutrient_supply"
+  ],
+  "regulatory": {
+    "regime": [
+      "fertilizer_like"
+    ],
+    "own_use_only": false,
+    "circulation": "limited_kabupaten_kota"
+  },
+  "feedstocks": [
+    {
+      "substance": {
+        "id": "op:sub:00001703"
+      },
+      "role": "nitrogen_source",
+      "proportion": {
+        "value": 1,
+        "unit": "parts_by_volume"
+      }
+    }
+  ],
+  "process": {
+    "kind": "aging",
+    "duration": {
+      "value": 14,
+      "unit": "d"
+    },
+    "vessel": "covered_heap",
+    "sanitation": {
+      "regime": "none"
+    }
+  },
+  "composition_basis": "reference",
+  "evidence_tier": "D",
+  "no_mapping_reason": "Fixture uji negatif; tidak dipetakan ke kosakata luar karena bukan entitas nyata.",
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z"
+  }
+}

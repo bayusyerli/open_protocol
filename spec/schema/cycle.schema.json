@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/cycle.schema.json",
+  "title": "Cycle — satu siklus budidaya pada satu Plot",
+  "description": "Wadah yang menyatukan rencana dan realisasi. 'anchors' adalah kunci: penjadwalan relatif seperti '30 HST' baru bisa dihitung setelah kejadian acuannya benar-benar terjadi.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:cyc:[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "plot": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "commodity": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "variety": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "variety_local_name": {
+      "type": "string",
+      "description": "Untuk varietas lokal yang belum ada di registry. Jangan memaksa petani memilih yang salah."
+    },
+    "stage_scale": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "system": {
+      "type": "object",
+      "properties": {
+        "cropping": {
+          "type": "string",
+          "enum": [
+            "monoculture",
+            "intercrop",
+            "relay",
+            "rotation",
+            "agroforestry",
+            "polyculture"
+          ]
+        },
+        "production": {
+          "type": "string",
+          "enum": [
+            "open_field",
+            "protected",
+            "hydroponic",
+            "aquaponic",
+            "pond_extensive",
+            "pond_intensive",
+            "cage",
+            "housed",
+            "free_range"
+          ]
+        },
+        "certification_target": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Mis. IndoGAP, organik SNI, RA. Menentukan pencatatan tambahan yang wajib."
+        }
+      },
+      "additionalProperties": false
+    },
+    "protocol_ref": {
+      "type": "object",
+      "description": "Protokol Lapis 2 yang diikuti siklus ini, dikunci pada versi dan hash-nya supaya perbandingan tetap sahih walau protokolnya berubah kemudian.",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "content_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "anchors": {
+      "type": "array",
+      "description": "Kejadian acuan beserta tanggal aktualnya.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "event": {
+            "$ref": "common.schema.json#/$defs/AnchorEvent"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "event",
+          "date"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "planned_start": {
+      "type": "string",
+      "format": "date"
+    },
+    "planned_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "actual_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "population": {
+      "type": "object",
+      "description": "Populasi awal. Dipakai untuk mengubah dosis antar-basis, mis. dari per_plant ke per_area.",
+      "properties": {
+        "value": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "unit": {
+          "$ref": "common.schema.json#/$defs/UcumCode"
+        },
+        "basis": {
+          "$ref": "common.schema.json#/$defs/RateBasis"
+        }
+      },
+      "required": [
+        "value",
+        "unit",
+        "basis"
+      ],
+      "additionalProperties": false
+    },
+    "targets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variable": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode"
+          }
+        },
+        "required": [
+          "variable",
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "planned",
+        "active",
+        "harvested",
+        "closed",
+        "failed",
+        "abandoned"
+      ]
+    },
+    "failure_reason": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "data_classification": {
+      "$ref": "common.schema.json#/$defs/DataClassification"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "plot",
+    "commodity",
+    "status",
+    "data_classification"
+  ],
+  "additionalProperties": false
+}

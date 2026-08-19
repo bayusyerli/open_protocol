@@ -1,0 +1,9 @@
+{
+  "$schema": "../schema/commodity.schema.json",
+  "id": "op:cmd:00009999",
+  "key": "komoditas-tanpa-pemetaan",
+  "label": { "id": "Komoditas tanpa pemetaan" },
+  "kind": "crop",
+  "mappings": [],
+  "lifecycle": { "version": "0.1.0", "status": "draft" }
+}

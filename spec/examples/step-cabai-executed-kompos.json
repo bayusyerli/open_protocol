@@ -1,0 +1,93 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8301-0000-7b10-8a03-0d1e2f3a4b03",
+  "cycle": {
+    "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d"
+  },
+  "mode": "executed",
+  "operation_type": {
+    "id": "op:opt:00000026",
+    "label": "Pemupukan dasar"
+  },
+  "plan_ref": {
+    "id": "op:stp:019e8301-0000-7b10-8a02-0d1e2f3a4b02"
+  },
+  "protocol_step_key": "cabai-dataran-rendah/pemupukan-dasar-organik",
+  "occurred_at": "2026-06-20T06:40:00+07:00",
+  "applications": [
+    {
+      "substance": {
+        "id": "op:sub:00001709",
+        "label": "Kompos matang"
+      },
+      "preparation": {
+        "id": "op:sed:00000001",
+        "label": "Kompos kotoran sapi, proses termofilik"
+      },
+      "preparation_batch": {
+        "id": "op:bat:019e8300-1200-7a41-9c22-6b1f0d4e7a01",
+        "label": "KOMPOS-A3"
+      },
+      "rate": {
+        "value": 10000,
+        "unit": "kg/har",
+        "basis": "per_area"
+      },
+      "method": {
+        "id": "op:met:00000003",
+        "label": "Tabur merata"
+      },
+      "target": {
+        "plant_part": "soil"
+      },
+      "nutrients_delivered": [
+        {
+          "substance": {
+            "id": "op:sub:00000001",
+            "label": "Nitrogen (N)"
+          },
+          "quantity": {
+            "value": 55,
+            "unit": "kg/har"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00000002",
+            "label": "Fosfor (P2O5)"
+          },
+          "quantity": {
+            "value": 31,
+            "unit": "kg/har"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00000003",
+            "label": "Kalium (K2O)"
+          },
+          "quantity": {
+            "value": 48,
+            "unit": "kg/har"
+          }
+        }
+      ],
+      "subsidised": false
+    }
+  ],
+  "area_covered": {
+    "value": 0.28,
+    "unit": "har"
+  },
+  "labor": {
+    "person_hours": 6,
+    "crew_size": 2,
+    "source": "family"
+  },
+  "performed_by": {
+    "id": "op:act:019e8100-0000-7000-8000-000000000001"
+  },
+  "recorded_at": "2026-06-20T18:10:00+07:00",
+  "data_classification": "farm_private",
+  "notes": "Angka hara boleh ditulis karena batch KOMPOS-A3 benar-benar diuji laboratorium. Kalau batch-nya hanya bersandar tabel rujukan, aturan L18 menolak baris nutrients_delivered ini — dan itu benar: kandungan kompos berbeda antar-batch."
+}

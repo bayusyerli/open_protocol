@@ -1,0 +1,32 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "product",
+    "label": {
+      "id": "Registri produk pupuk terdaftar"
+    },
+    "scope": {
+      "id": "7.196 pupuk terdaftar: 5.875 dari basis SIMPEL terkini dan 1.321 dari basis lama SIMPUK 2020. TIDAK ADA SATU PUN yang punya composition — registri pupuk Kementan tidak memuat kandungan hara sama sekali. Aturan L14 menolak pemakaiannya untuk menghitung hara yang diberikan."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2026-11-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Database Pupuk dan Pestisida Terdaftar (PVTPP)",
+          "publisher": "Kementerian Pertanian RI",
+          "url": "https://ap-simpel.pertanian.go.id/",
+          "year": 2026,
+          "locator": "Endpoint POST /pupuk/json_pupuk_publik_simpel dan /pupuk/json_pupuk_publik_new; ditarik 19 Agustus 2026. Kementan menyatakan data untuk informasi umum dan menganjurkan verifikasi ke PVTPP."
+        }
+      ]
+    },
+    "storage": "ndjson",
+    "count": 7196
+  }
+}

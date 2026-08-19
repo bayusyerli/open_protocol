@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/operation-type.schema.json",
+  "title": "OperationType — jenis tindakan budidaya",
+  "description": "Hierarkis lewat 'broader'. Field 'expects' membuat kesalahan bentuk bisa ditangkap otomatis: langkah pengamatan yang membawa aplikasi input adalah kesalahan pencatatan.",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:opt:[0-9]{8}$" },
+    "broader": { "$ref": "common.schema.json#/$defs/Ref" },
+    "applies_to_kinds": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["crop", "livestock", "aquaculture", "fungi", "insect", "other"] },
+      "minItems": 1
+    },
+    "expects": {
+      "type": "object",
+      "properties": {
+        "applications": { "type": "string", "enum": ["required", "optional", "forbidden"], "default": "optional" },
+        "observations": { "type": "string", "enum": ["required", "optional", "forbidden"], "default": "optional" },
+        "yield_output": { "type": "string", "enum": ["required", "optional", "forbidden"], "default": "forbidden" }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": ["applies_to_kinds"],
+  "unevaluatedProperties": false
+}

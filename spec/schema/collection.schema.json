@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/collection.schema.json",
+  "title": "Collection — berkas kumpulan entitas terkurasi",
+  "description": "Wadah untuk kosakata yang ditinjau sebagai satu kesatuan. Setiap item tetap membawa lifecycle dan pemetaannya sendiri; wadah ini hanya memudahkan peninjauan oleh dewan redaksi. Item divalidasi terhadap skema entitasnya oleh pemeriksa, berdasarkan entity_type.",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string"
+    },
+    "collection": {
+      "type": "object",
+      "properties": {
+        "entity_type": {
+          "type": "string",
+          "enum": [
+            "commodity",
+            "variety",
+            "stage-scale",
+            "substance",
+            "product",
+            "operation-type",
+            "variable",
+            "method",
+            "pest",
+            "region",
+            "deviation-reason",
+            "preparation"
+          ]
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        },
+        "scope": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        },
+        "lifecycle": {
+          "$ref": "common.schema.json#/$defs/Lifecycle"
+        },
+        "provenance": {
+          "$ref": "common.schema.json#/$defs/Provenance"
+        },
+        "storage": {
+          "type": "string",
+          "enum": [
+            "inline",
+            "ndjson"
+          ],
+          "default": "inline",
+          "description": "'ndjson' berarti entitasnya ada di berkas .ndjson bersebelahan, satu per baris. Dipakai untuk kumpulan besar supaya diff-nya tetap terbaca per rekaman."
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Jumlah entitas yang diharapkan. Diperiksa terhadap isi berkas."
+        }
+      },
+      "required": [
+        "entity_type",
+        "label",
+        "lifecycle"
+      ],
+      "additionalProperties": false
+    },
+    "items": {
+      "type": "array",
+      "minItems": 1
+    }
+  },
+  "required": [
+    "collection"
+  ],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "collection": {
+            "properties": {
+              "storage": {
+                "const": "ndjson"
+              }
+            },
+            "required": [
+              "storage"
+            ]
+          }
+        },
+        "required": [
+          "collection"
+        ]
+      },
+      "then": {
+        "not": {
+          "required": [
+            "items"
+          ]
+        }
+      },
+      "else": {
+        "required": [
+          "items"
+        ],
+        "properties": {
+          "items": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

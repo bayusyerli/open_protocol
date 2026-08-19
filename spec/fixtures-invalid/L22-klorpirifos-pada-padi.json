@@ -1,0 +1,18 @@
+{
+  "$schema": "../schema/step.schema.json",
+  "id": "op:stp:019e8400-0000-7000-8000-000000000002",
+  "cycle": { "id": "op:cyc:019e8400-0000-7000-8000-000000000001", "label": "Musim padi contoh" },
+  "mode": "planned",
+  "operation_type": { "id": "op:opt:00000032", "label": "Aplikasi pestisida" },
+  "timing": { "kind": "relative", "anchor": "transplanting", "offset": { "value": 21, "unit": "d" } },
+  "applications": [
+    {
+      "substance": { "id": "op:sub:00000105", "label": "Klorpirifos" },
+      "rate": { "value": 1, "unit": "L/har", "basis": "per_area" },
+      "target": { "pest": { "id": "op:pst:00000005" } },
+      "phi_days": 14
+    }
+  ],
+  "data_classification": "farm_private",
+  "notes": "Fixture uji: klorpirifos dilarang untuk tanaman padi menurut Permentan 43/2019 Lampiran I.A no. 88."
+}

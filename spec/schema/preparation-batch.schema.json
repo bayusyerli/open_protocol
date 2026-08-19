@@ -1,0 +1,307 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/preparation-batch.schema.json",
+  "title": "PreparationBatch — satu kali pembuatan sediaan di kebun",
+  "description": "Data usaha tani, milik petani. Preparation adalah resepnya; batch adalah adonan yang benar-benar dibuat, dari bahan yang benar-benar ada, pada tanggal tertentu. Pemisahan ini yang membuat rantai telusur lengkap: petak → langkah → batch → resep → bahan baku. Tanpa entitas ini, masukan buatan sendiri tidak terlihat sama sekali di catatan usaha tani, dan seluruh neraca hara jadi bohong.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:bat:[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "preparation": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "batch_code": {
+      "type": "string",
+      "description": "Kode yang ditulis petani di wadahnya sendiri, mis. 'KOMPOS-A3'. Tanpa ini batch tidak bisa dicocokkan dengan tumpukan yang ada di lapangan."
+    },
+    "made_by": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "started_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "step": {
+      "$ref": "common.schema.json#/$defs/Ref",
+      "description": "Langkah yang menjadwalkan atau mengerjakan pembuatan ini, bila pembuatannya memang bagian dari satu siklus. Kosong bila batch dibuat lepas dari siklus mana pun — dan itu lazim."
+    },
+    "feedstock_actuals": {
+      "type": "array",
+      "description": "Bahan yang BENAR-BENAR dipakai, bukan yang tertulis di resep. Selisih antara keduanya adalah data paling berguna untuk memperbaiki resep.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "substance": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "quantity": {
+            "$ref": "common.schema.json#/$defs/Quantity"
+          },
+          "origin": {
+            "type": "string",
+            "description": "Asal bahan, mis. 'kandang sendiri', 'beli dari tetangga'. Menentukan apakah bahan itu boleh dipakai untuk sertifikasi organik."
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "substance",
+          "quantity"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "process_log": {
+      "type": "array",
+      "description": "Catatan proses berjalan — terutama suhu tumpukan. Inilah satu-satunya bukti yang bisa dibuat petani sendiri bahwa proses termofilik benar-benar terjadi.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "variable": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "value": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode"
+          },
+          "note": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "observed_at",
+          "variable",
+          "value"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "qc": {
+      "type": "array",
+      "description": "Hasil uji terhadap kriteria pelepasan resepnya.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "variable": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "value": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode"
+          },
+          "method": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "criterion_met": {
+            "type": "boolean"
+          },
+          "tested_at": {
+            "type": "string",
+            "format": "date"
+          },
+          "tested_by": {
+            "type": "string",
+            "description": "Nama laboratorium, atau 'mandiri' bila diuji sendiri di kebun."
+          }
+        },
+        "required": [
+          "variable",
+          "value",
+          "criterion_met"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "qc_verdict": {
+      "type": "string",
+      "description": "Kesimpulan atas seluruh kriteria pelepasan. 'not_tested' adalah jawaban yang sah dan jujur — jauh lebih baik daripada 'pass' yang dikarang.",
+      "enum": [
+        "pass",
+        "fail",
+        "partial",
+        "not_tested"
+      ]
+    },
+    "composition_basis": {
+      "type": "string",
+      "enum": [
+        "measured",
+        "reference",
+        "unknown"
+      ]
+    },
+    "measured_composition": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Hasil analisis batch ini. Hanya ini yang boleh dipakai menghitung hara yang benar-benar diberikan (aturan L18).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "substance": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "value": {
+            "type": "number"
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode"
+          },
+          "basis": {
+            "type": "string",
+            "enum": [
+              "dry_weight",
+              "fresh_weight"
+            ]
+          },
+          "lab": {
+            "type": "string"
+          },
+          "tested_at": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "substance",
+          "value",
+          "unit"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "quantity_produced": {
+      "$ref": "common.schema.json#/$defs/Quantity"
+    },
+    "quantity_remaining": {
+      "$ref": "common.schema.json#/$defs/Quantity"
+    },
+    "use_by": {
+      "type": "string",
+      "format": "date"
+    },
+    "cost": {
+      "type": "object",
+      "properties": {
+        "amount": {
+          "type": "number",
+          "minimum": 0
+        },
+        "currency": {
+          "type": "string",
+          "pattern": "^[A-Z]{3}$"
+        },
+        "component": {
+          "type": "string",
+          "enum": [
+            "input",
+            "labor",
+            "machinery",
+            "service",
+            "transport",
+            "other"
+          ]
+        },
+        "note": {
+          "type": "string",
+          "description": "Biaya sediaan buatan sendiri didominasi tenaga kerja, dan tenaga kerja keluarga sering dicatat nol. Nol yang tidak dijelaskan membuat perbandingan biaya dengan pupuk pabrik menyesatkan."
+        }
+      },
+      "required": [
+        "amount",
+        "currency"
+      ],
+      "additionalProperties": false
+    },
+    "labor": {
+      "type": "object",
+      "properties": {
+        "person_hours": {
+          "type": "number",
+          "minimum": 0
+        },
+        "source": {
+          "type": "string",
+          "enum": [
+            "family",
+            "hired",
+            "exchange",
+            "mechanised",
+            "mixed"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "uri": {
+            "type": "string"
+          },
+          "media_type": {
+            "type": "string"
+          },
+          "captured_at": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "uri",
+          "media_type"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "recorded_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "recorded_by": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "data_classification": {
+      "$ref": "common.schema.json#/$defs/DataClassification"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "id",
+    "preparation",
+    "started_at",
+    "qc_verdict",
+    "composition_basis",
+    "data_classification"
+  ],
+  "additionalProperties": false
+}

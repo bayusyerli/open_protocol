@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/method.schema.json",
+  "title": "Method — cara aplikasi atau cara pengamatan",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:met:[0-9]{8}$" },
+    "method_for": { "type": "string", "enum": ["application", "observation", "harvest", "postharvest"] },
+    "compatible_bases": {
+      "type": "array",
+      "items": { "$ref": "common.schema.json#/$defs/RateBasis" },
+      "description": "Dasar dosis yang masuk akal untuk cara ini. Penyemprotan tidak masuk akal dengan basis per_animal."
+    }
+  },
+  "required": ["method_for"],
+  "unevaluatedProperties": false
+}
