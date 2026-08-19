@@ -2,3 +2,7 @@ node_modules/
 .DS_Store
 *.log
 data-registri/
+
+# Indeks turunan — dibangun ulang dengan `node spec/tools/bangun-indeks.mjs --tulis`.
+# 5.142 berkas, 21 MB, deterministik dan sepenuhnya diturunkan dari spec/vocab/.
+spec/indeks/

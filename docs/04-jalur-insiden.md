@@ -25,7 +25,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nol.** Dari 1.360 OPT di registri, tidak satu pun punya deskripsi gejala |
+| **Ini apa?** | **Nyaris nol.** Dari 1.360 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, 5 di antaranya bertekst |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
@@ -40,14 +40,15 @@ masuk lewat kosakata petani sendiri juga belum ada.
 
 - **Masuk lewat apa yang terlihat, bukan nama hama.** Petani yang panik tidak tahu
   kata "trips". Ia tahu daunnya mengeriting ke atas. Menutup lubang gejala untuk
-  cabai hanya butuh enam kalimat.
+  cabai tinggal butuh lima kalimat — lima dari sepuluh OPT terkurasi sudah punya.
 - **Mesin tidak menebak, orang yang memilih.** Tidak ada pengenal foto. Diagnosis
   salah yang percaya diri menghasilkan semprotan salah — uang hilang, tanaman tetap
   mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
   dekat ke tanggung jawab hukum.
-- **Runtuhkan merek jadi bahan aktif dan kadarnya.** 244 produk terdaftar untuk
-  trips di cabai, tetapi isinya hanya 72 bahan aktif. Menampilkan 244 nama dagang
-  adalah menyalin kebingungan kios ke dalam layar.
+- **Runtuhkan merek jadi bahan aktif dan kadarnya.** 234 produk terdaftar untuk
+  trips di cabai, tetapi isinya hanya 72 bahan aktif — yang, karena satu bahan
+  dipakai pada banyak kadar, jatuh jadi 161 kartu bahan+kadar. Menampilkan 234 nama
+  dagang adalah menyalin kebingungan kios ke dalam layar.
 - **Informasi negatif didahulukan.** Apa yang dilarang, dan apa yang tidak akan
   menolong. Ini yang paling bernilai bagi petani, dan justru paling kecil risiko
   hukumnya.
@@ -107,16 +108,38 @@ bukti apa-apa** — dan karena itu layarnya berhenti pada fakta, bukan pada kesi
 
 ---
 
-## 5. Peringatan bahan dilarang
+## 5. Peringatan bahan dilarang — dan lingkupnya
 
-Dari 244 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
-**36 memuat bahan dilarang apa pun**. Peringatan itu bisa diberikan hari ini, tanpa
-data tambahan.
+Dari 234 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
+**34 memuat bahan yang namanya tercantum di Lampiran I.A Permentan 43/2019**.
+Peringatan itu bisa diberikan hari ini tanpa data tambahan — asalkan lingkupnya ikut
+disebut.
 
-Angka 36 itu naik dari 33 setelah `04b91c6`. Sebabnya bukan data berubah: entitas
-`"Klorpirifos"` memegang blok `hazard` lengkap sementara `"CHLORPYRIFOS"` tidak
-memegang satu pun, sehingga selama keduanya terbelah, produk yang registrinya
-menuliskan nama Inggris tidak terlihat oleh pemeriksaan larangan mana pun.
+**Larangannya berlingkup, dan lingkupnya menentukan.** Klorpirifos dilarang untuk
+**rumah tangga** dan untuk **tanaman padi**; tidak satu pun catatan larangannya
+mengenai cabai. Menandai kartunya "dilarang" di layar cabai sama kelirunya dengan
+menyembunyikannya di layar padi. Yang benar: sebutkan bahwa zatnya dilarang, sebutkan
+untuk apa, lalu berhenti — bentuk yang sama dengan kartu LARBAN di
+[05-jalur-produk.md](05-jalur-produk.md).
+
+Penelusuran seluruh registri menunjukkan ini bukan kekhususan cabai:
+
+| Pemeriksaan | Hasil |
+|---|---|
+| Zat dilarang **menyeluruh** — lingkup "semua bidang penggunaan pestisida" | 91 |
+| Di antaranya yang masih muncul pada produk terdaftar | **0** |
+| Zat dilarang **khusus komoditas** — seluruhnya tanaman padi | 31 |
+| Produk yang justru terdaftar untuk komoditas yang melarang isinya | **0** |
+
+Artinya seluruh bahan dilarang yang masih beredar dilarang untuk padi atau rumah
+tangga, bukan untuk komoditas tempat ia terdaftar. Registrinya konsisten; yang keliru
+adalah peringatan yang tidak menyebut lingkup.
+
+**Penggabungan ejaan tetap menutup lubang keselamatan.** Entitas `"Klorpirifos"`
+memegang blok `hazard` lengkap, sementara `"CHLORPYRIFOS"` dan `"Klorpirifos
+(chlorpyrifos)"` tidak memegang satu pun. Selama ketiganya terbelah, **20 produk**
+yang registrinya menuliskan ejaan Inggris tak terlihat oleh pemeriksaan larangan mana
+pun — termasuk pemeriksaan padi, yang justru tempat larangan itu berlaku.
 
 ---
 
@@ -137,10 +160,14 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
 
 ## 7. Prasyarat rilis
 
-- **Enam kalimat gejala.** Dari sepuluh OPT cabai terkurasi, baru empat yang punya
-  deskripsi gejala. Ulat grayak justru punya 259 produk terdaftar tetapi tidak bisa
-  dimasuki karena tidak ada teks gejalanya. Setengah hari kerja membuka seluruh jalur
-  reaktif komoditas beachhead.
+- **Lima kalimat gejala.** Dari sepuluh OPT cabai terkurasi, lima sudah punya
+  deskripsi gejala — tersimpan pada medan `definition`, bukan pada medan bernama
+  gejala. Ulat grayak justru punya 177 produk terdaftar di cabai tetapi tidak bisa
+  dimasuki karena teksnya belum ada. Setengah hari kerja membuka seluruh jalur reaktif
+  komoditas beachhead.
+- **Sepuluh OPT itu tidak terbatas pada cabai.** Registri menautkannya jauh lebih
+  luas — trips ke 18 komoditas dengan 275 produk, ulat grayak ke 21 komoditas dengan
+  313 produk. Teks gejala yang ditulis untuk cabai langsung terpakai di luar cabai.
 - **Tetapkan aturan urutan merek dan umumkan di layar.** Rancangan ini memakai nomor
   pendaftaran menaik. Apa pun pilihannya, ia harus tertulis dan tidak boleh bisa
   dibeli.
@@ -157,9 +184,9 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
    keriting ke atas*, *daun menguning dan keriting*, *serangga putih beterbangan*. Di
    bawahnya tertulis bahwa gejala dikurasi tangan dan mesin tidak menebak dari foto.
 2. **Hasil.** Dugaan OPT dengan nama ilmiahnya, lalu blok **"pastikan dulu"** berisi
-   dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *244 produk
+   dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *234 produk
    terdaftar untuk ini di cabai, tetapi isinya hanya 72 bahan aktif berbeda* — lalu
-   kartu peringatan bahan dilarang.
+   kartu peringatan bahan dilarang **beserta lingkup larangannya**.
 3. **Kartu bahan + kadar.** Lima kelompok, diurutkan menurut jumlah produk. Tiap kartu
    bisa dibuka jadi daftar merek dengan nomor pendaftaran, masa berlaku, dan **dosis
    terdaftar milik tiap produk** — yang berbeda-beda walau isinya sama. Aturan

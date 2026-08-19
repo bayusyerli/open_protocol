@@ -17,7 +17,7 @@
 Setelah kedua jalur dibangun, urutannya jadi jelas — dan bukan urutan yang diduga
 semula.
 
-- **Tidak butuh kurasi sama sekali.** Jalur gejala menunggu enam kalimat ditulis dan
+- **Tidak butuh kurasi sama sekali.** Jalur gejala menunggu lima kalimat ditulis dan
   hanya melayani cabai. Jalur produk bekerja hari ini di seluruh **7.724 pestisida**,
   **7.196 pupuk**, dan **11.227 varietas**, karena komposisi terisi 96,4% pada
   pestisida dan 71,3% pada pupuk.
@@ -67,21 +67,27 @@ tidak punya cara tahu isinya sama.
 
 LARBAN 500/50 EC memegang pendaftaran Kementan `01010120124476` yang **aktif sampai
 26 April 2028**, terdaftar untuk trips dan kutu daun pada cabai dengan dosis 1,5 ml/l.
-Isinya Klorpirifos 500 g/L + Sipermetrin 50 g/L — dan **klorpirifos ada di daftar
-bahan yang dilarang.**
+Isinya Klorpirifos 500 g/L + Sipermetrin 50 g/L — dan **klorpirifos tercantum di
+daftar bahan yang dilarang**, untuk *rumah tangga* dan *tanaman padi* (Permentan
+43/2019 Lampiran I.A no. 71 dan no. 88).
 
-Kedua fakta itu sama-sama ada di data, dan bertabrakan. Layar tidak boleh memilih
-salah satunya diam-diam. Yang benar adalah menampilkan keduanya apa adanya, lalu
-berhenti — mengatakan bahwa produknya ilegal adalah kesimpulan hukum yang bukan
-wewenang platform, dan menyembunyikan larangannya jelas lebih buruk lagi.
+Kedua fakta itu sama-sama ada di data, dan tegangannya nyata sekalipun tidak
+bertabrakan: pendaftarannya untuk cabai, sedangkan larangannya untuk padi dan rumah
+tangga. Justru karena itu layar tidak boleh memilih salah satunya diam-diam. Yang
+benar adalah menampilkan keduanya **beserta lingkupnya**, lalu berhenti — mengatakan
+produknya ilegal adalah kesimpulan hukum yang bukan wewenang platform, menyembunyikan
+larangannya jelas lebih buruk, dan menuliskan "dilarang" tanpa menyebut untuk apa
+adalah pernyataan hukum yang keliru.
 
 > **Keputusan kebijakan yang menunggu**
 >
-> Ada **14 produk** seperti ini yang terdaftar untuk trips di cabai, dan **36 produk**
-> memuat bahan dilarang apa pun. Perlu diputuskan: ditolak tampil, ditampilkan dengan
-> peringatan, atau bergantung pada status pendaftarannya. Kecondongan dokumen ini:
-> **ditampilkan dengan peringatan** — menyembunyikannya berarti petani tetap
-> membelinya, hanya tanpa tahu.
+> Ada **14 produk** seperti ini yang terdaftar untuk trips di cabai, dan **34 produk**
+> memuat bahan yang namanya tercantum di Lampiran I.A. Perlu diputuskan: ditolak
+> tampil, ditampilkan dengan peringatan, atau bergantung pada status pendaftarannya.
+> Kecondongan dokumen ini: **ditampilkan dengan peringatan berlingkup** —
+> menyembunyikannya berarti petani tetap membelinya, hanya tanpa tahu; sedangkan
+> peringatan tanpa lingkup menyatakan hukum yang tidak benar. Rinciannya di
+> [04-jalur-insiden.md](04-jalur-insiden.md) bagian 5.
 
 ---
 
