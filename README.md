@@ -22,11 +22,19 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/08-jalur-sediaan-pupuk.md`](docs/08-jalur-sediaan-pupuk.md) | Jalur 5 — sisi yang lapang: di luar rezim pendaftaran lewat Pasal 72, tidak menunggu apa pun |
 | [`docs/09-jalur-sediaan-pengendali.md`](docs/09-jalur-sediaan-pengendali.md) | Jalur 6 — sisi yang terikat: Pasal 77 melarang mengedarkan dan menggunakan, menunggu pendapat hukum |
 
-Kosakata sudah terisi: 63 fase BBCH Solanaceae, 67 jenis tindakan, 57 variabel, 23 cara
-aplikasi, 10 OPT cabai, dan 11 alasan simpangan. Di atasnya, seluruh registri resmi Kementan
-sudah masuk: **1.593 bahan aktif** dan **14.920 produk terdaftar** — 7.724 pestisida dengan
-23.058 penggunaan berlabel, dan 7.196 pupuk. Totalnya 16.677 entitas, 99% terkait ke
-KEMENTAN, AgrO, ICASA, EPPO, atau BBCH.
+Kosakata sudah terisi: **15 skala fase dengan 868 fase** — empat belas kunci BBCH dari
+monografnya (Solanaceae, padi, jagung, kedelai, kentang, kopi, cucurbit, brassica, buncis,
+kacang tanah, dan lainnya) plus satu skala umur budidaya udang — ditambah 67 jenis tindakan,
+57 variabel, 23 cara aplikasi, 10 OPT cabai terkurasi, dan 11 alasan simpangan.
+
+Di atasnya, seluruh registri resmi Kementan sudah masuk: **14.920 produk terdaftar** —
+7.724 pestisida dengan 23.058 penggunaan berlabel, dan 7.196 pupuk — beserta **1.399
+substansi pestisida** (1.706 termasuk yang sudah digantikan penggabungan), 1.360 OPT, dan
+906 komoditas. Registri varietas menyusul dengan **11.227 varietas**, 52,4% di antaranya
+mewarisi skala fase lewat komoditasnya.
+
+`npm run all` memeriksa 30.422 dokumen; 99,5% membawa pemetaan ke KEMENTAN, AgrO, ICASA,
+EPPO, GBIF, atau BBCH.
 
 Ditarik ulang kapan saja dengan `node spec/tools/tarik-registri.mjs`.
 
@@ -65,3 +73,7 @@ Tiga lapis yang sengaja dipisah:
    terbuka, yang boleh disebut utuh karena bukan milik siapa pun.
 3. **Eksekusi** — rencana musim, pencatatan realisasi, dan selisih di antara keduanya.
    Primitifnya sudah ada di Lapis 1 (`Step`); aplikasinya belum dibangun.
+
+Di samping ketiganya ada **permukaan baca-saja** yang tidak menuntut pencatatan sama sekali:
+enam jalur masuk ke registri yang sudah dipegang, seluruhnya bisa dibangun dari data hari ini.
+Rancangannya di [`docs/03-enam-pintu.md`](docs/03-enam-pintu.md) beserta enam dokumen jalurnya.
