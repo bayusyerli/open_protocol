@@ -97,24 +97,32 @@ Empat jalur pertama semuanya mengandaikan **produk terdaftar**. Sediaan buatan s
 
 Sikap yang sudah diambil spesifikasi, dan yang layar harus ikuti: **nyatakan status hukumnya apa adanya, tandai `own_use_only`, jangan menyimpulkan aman.** Bacaan Pasal 77 ayat (1) — kumulatif atau alternatif — adalah pertanyaan hukum yang menunggu penasihat hukum sebelum Fase 4, bukan pertanyaan yang boleh dijawab perancang layar.
 
-| Rezim | Sediaan | Peredaran | Yang wajib ikut tampil |
-|---|---|---|---|
-| **fertilizer_like** — kompos, pupuk kandang, bokashi, kascing, MOL, POC | 6 | `limited_kabupaten_kota` | Tingkat bukti, kriteria pelepasan, tenggang panen bila berbahan kotoran mentah |
-| **soil_amendment_like** — arang sekam | 1 | `limited_kabupaten_kota` | Sama seperti di atas |
-| **pesticide_like** — Trichoderma, PGPR, mimba, formula Balingtan | 4 | `own_use_only` | Status hukum · PHI · APD |
-| **unclear + pesticide_like** — Biosaka — tanpa kriteria pelepasan | 1 | `own_use_only` | Boleh dicatat, tidak boleh dianjurkan |
+| Jalur | Rezim | Sediaan | Peredaran | Yang wajib ikut tampil |
+|---|---|---|---|---|
+| **5 · pupuk** — tanpa prasyarat | `fertilizer_like` — kompos, pupuk kandang, bokashi, kascing, MOL, POC | 6 | `limited_kabupaten_kota` | Tingkat bukti, kriteria pelepasan, tenggang panen bila berbahan kotoran mentah |
+| **5 · pupuk** — tanpa prasyarat | `soil_amendment_like` — arang sekam | 1 | `limited_kabupaten_kota` | Sama seperti di atas |
+| **6 · pengendali** — menunggu pendapat hukum | `pesticide_like` — Trichoderma, PGPR, mimba, formula Balingtan | 4 | `own_use_only` | Status hukum · PHI beserta dasarnya · APD |
+| **6 · pengendali** — menunggu pendapat hukum | `unclear` + `pesticide_like` — Biosaka — tanpa kriteria pelepasan | 1 | `own_use_only` | Boleh dicatat, tidak boleh dianjurkan — tanpa dosis dan cara |
 
-*Kedua belas sediaan, dikelompokkan menurut rezim hukumnya. Tingkat bukti B/C/D mengikuti tangga bukti yang sama dengan protokol.*
+*Kedua belas sediaan, ditata menurut jalur yang menampungnya. Tingkat bukti B/C/D mengikuti tangga bukti yang sama dengan protokol.*
 
-Kenapa jalur ini juga jadi tujuan · **Jawaban untuk “tidak ada uangnya”**
+Kenapa keduanya juga jadi tujuan · **Jawaban untuk “tidak ada uangnya”**
 
-Jalur 1 bisa berakhir dengan 244 produk yang tak satu pun terbeli. Jalur 3 bisa berakhir dengan angka rupiah per kg hara yang di luar jangkauan. Keduanya butuh cabang yang tidak menjual apa pun — dan lapis inilah cabangnya. Hari ini tidak ada layanan mana pun yang melayani keadaan itu.
+Dua jalur bisa berakhir buntu karena harga, dan masing-masing bermuara ke sisi yang berbeda — bukan ke satu “lapis sediaan” yang sama.
+
+**Jalur 3 → jalur 5.** Rupiah per kg hara di luar jangkauan; cabangnya kompos atau kascing. Jalur ini **terbuka sekarang**.
+
+**Jalur 1 → jalur 6.** 244 produk yang tak satu pun terbeli; cabangnya ekstrak nabati atau agens hayati. Jalur ini **masih tertutup** sampai bacaan Pasal 77 ayat (1) dijawab — sampai itu ia boleh ditampilkan, tetapi tidak boleh muncul sebagai “yang bisa kamu pakai”.
+
+Aturan yang menentukan sebuah resep masuk jalur mana · **Satu klaim pengendalian sudah cukup**
+
+Pasal 75 menentukan pestisida dari kegunaan yang *diklaim*, jadi satu fungsi yang menyentuh pengendalian OPT menarik seluruh sediaan ke jalur 6 — walau fungsi lainnya murni menyuburkan. MOL bonggol pisang dan biakan PGPR sama-sama mengklaim merangsang pertumbuhan; yang memindahkan PGPR hanyalah klaim tambahan bahwa ia menekan penyakit.
 
 Temuan yang jarang disadari · **Satu-satunya formulasi konkret yang boleh dianjurkan**
 
 Aturan `L3` melarang langkah protokol menyebut produk komersial, sehingga protokol netral-vendor hanya bisa berkata “45 kg N per hektar” lalu berhenti. Sebuah `Preparation` bukan milik siapa pun — ia resep berlisensi terbuka. **Maka resep terbuka adalah satu-satunya formulasi konkret yang boleh disebut utuh oleh protokol netral.**
 
-Yang tidak pernah boleh muncul · **Dua bahan pada daftar larangan**
+Yang tidak pernah boleh muncul · jalur 6 · **Dua bahan pada daftar larangan**
 
 Daun tembakau dan akar tuba ada di antara 21 bahan baku, dan keduanya bertanda **tidak pernah boleh dianjurkan**. Keduanya lazim dipakai di lapangan, jadi menampilkannya sebagai “resep populer” akan aktif membahayakan — aturan `L19` menolaknya di tingkat data, dan layar harus menolaknya di tingkat tampilan.
 
@@ -153,6 +161,7 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 | **Golongan IRAC/FRAC** — 58 dari 1.399 bahan aktif | Nasihat rotasi hanya bisa setingkat bahan aktif, belum setingkat golongan | Kurasi · 200 bahan teratas |
 | **Sifat agronomi varietas** — 35 dari 11.227 | Rekomendasi varietas mustahil dan tidak boleh dijanjikan | Besar · kurasi berskala, bukan tarikan registri |
 | **Sertifikasi lot benih & bibit** — 44 dari 11.227 menyinggung | Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau polybag yang di tangan | Sumber lain · label & sertifikat BPSB |
+| **Kadar hara sediaan sendiri** — tidak ada sampai satu batch diuji | Jalur 5 tidak bisa masuk kalkulator jalur 3 dengan angka — `L18` menolaknya | Sumber lain · uji batch, atau tampilkan tanpa angka |
 | **Berat jenis pupuk cair** — nol | 1.721 pupuk cair tidak sebanding dengan yang padat | Sumber lain |
 
 *“Kurasi” berarti pekerjaan tangan yang terbatas dan bisa dijadwalkan. “Sumber lain” berarti data itu tidak akan pernah datang dari registri pendaftaran.*
@@ -164,8 +173,8 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 1. **Jalur 2 — produk.** Tidak butuh kurasi sama sekali, bekerja hari ini di 7.724 pestisida, 7.196 pupuk, dan 11.227 varietas sekaligus. Ia juga yang membuat temuan 63,5% bisa dipakai orang — angka itu naik dari 62,8% setelah 108 id zat yang terbelah ejaan disatukan, jadi 56 produk yang dulu tak terdeteksi kembar kini terlihat.
 1. **Jalur 3 — hitungan hara.** Aritmetikanya lengkap; hanya perlu satu masukan harga. Menyentuh pos biaya terbesar petani.
 1. **Jalur 4 — keabsahan benih & bibit.** Datanya siap penuh, dan taruhannya paling tinggi per keputusan — terutama pada 2.725 varietas berbibit, yang kesalahannya baru ketahuan empat sampai tujuh tahun kemudian.
+1. **Jalur 5 — sediaan pupuk sendiri.** Naik ke sini justru karena tidak menunggu apa pun: tujuh resep berada di luar rezim pendaftaran lewat Pasal 72, dan bisa ikut jalur 3 sejak awal sebagai cabang “tidak ada uangnya”.
 1. **Jalur 1 — insiden.** Menunggu enam kalimat gejala. Setengah hari kerja untuk komoditas beachhead.
-1. **Jalur 5 — sediaan pupuk sendiri.** Tidak menunggu apa pun: tujuh resep berada di luar rezim pendaftaran lewat Pasal 72, dan bisa ikut jalur 3 sejak awal sebagai cabang “tidak ada uangnya”.
 1. **Jalur 6 — sediaan pengendali sendiri.** Terakhir, dan bukan karena datanya kurang. Bacaan Pasal 77 ayat (1) harus dijawab penasihat hukum sebelum Fase 4; sampai itu resepnya boleh ditampilkan beserta status hukumnya, tetapi tidak sebagai anjuran.
 
 > **Konsekuensi untuk dokumen STP**
