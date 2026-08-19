@@ -41,12 +41,15 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `sca` | `vocab/stage-scale-doc-udang.json` | 2 | berkas entitas tunggal |
 | `cmd` | `vocab/commodity.json` | 1–999 | dikurasi tangan |
 | `cmd` | `vocab/commodity-registri.json` | 1000–1999 | sasaran dari label produk |
+| `cmd` | `vocab/commodity-varietas.json` | 2000–2999 | jenis tanaman dari registri varietas |
+| `vty` | `vocab/variety/varietas.meta.json` | 1000–19999 | registri varietas; 1–999 disisakan untuk kurasi tangan |
 | `pst` | `vocab/pest.json` | 1–999 | dikurasi tangan |
 | `pst` | `vocab/pest-registri.json` | 1000–3999 | sasaran dari label produk |
 | `sit` | `vocab/target-site.json` | 1–999 | tempat aplikasi |
 | `dev` `met` `opt` `sed` `var` | masing-masing satu berkas | 1–999 | belum dipakai bersama |
 
-**Belum dialokasikan** pada jenis `sub`: 100, 1691–1700, 2000–4999, 10000 ke atas.
+**Belum dialokasikan** pada jenis `sub`: 100, 1691–1700, 2000–4999, 10000 ke atas; pada `cmd`: 3000 ke atas;
+pada `vty`: 1–999 dan 20000 ke atas.
 Ambil dari situ bila butuh blok baru, lalu tambahkan barisnya ke tabel ini.
 
 ### Cara mengklaim blok

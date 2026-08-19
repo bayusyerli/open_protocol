@@ -3,7 +3,7 @@
   "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610f67d",
   "plot": { "id": "op:plt:019e80e8-c900-79c9-ac35-7cced06151d9", "label": "Tegal lor" },
   "commodity": { "id": "op:cmd:00000001", "label": "Cabai merah besar" },
-  "variety_local_name": "Lado F1 (belum ada di registry)",
+  "variety_local_name": "Lado F1 (registri varietas memuat 'Lado' dari PT East West Seed Indonesia pada cabai keriting; belum dipastikan varietas yang sama, dan siklus ini cabai merah besar)",
   "stage_scale": { "id": "op:sca:00000001", "label": "BBCH — Solanaceae" },
   "system": {
     "cropping": "monoculture",

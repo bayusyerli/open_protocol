@@ -20,8 +20,9 @@ spec/
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
 ├── schema/                       19 berkas JSON Schema (draft 2020-12)
-├── vocab/                        kosakata terkurasi — 1.764 entitas + 67 fase
-│   └── product/                  registri produk — 14.920 entitas (NDJSON)
+├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
+│   ├── product/                  registri produk — 14.920 entitas (NDJSON)
+│   └── variety/                  registri varietas — 11.227 entitas (NDJSON)
 ├── examples/                     10 contoh nyata: cabai, kopi, udang vaname
 ├── fixtures-invalid/             contoh yang HARUS ditolak — bukti aturannya bekerja
 ├── tools/                        penarik registri Kementan & pengisi komposisi pupuk, bisa diulang
@@ -51,7 +52,7 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | Entitas | Prefiks | Isi |
 |---|---|---|
 | `Commodity` | `op:cmd` | Komoditas yang dibudidayakan. `kind` mencakup crop, livestock, aquaculture, fungi, insect |
-| `Variety` | `op:vty` | Varietas, kultivar, klon, galur. Menyimpan SK pelepasan |
+| `Variety` | `op:vty` | Varietas, kultivar, klon, galur. Menyimpan seluruh perizinan — pelepasan, pendaftaran, perlindungan — karena akibat hukum ketiganya berbeda |
 | `StageScale` / `Stage` | `op:sca` / `op:stg` | Skala fase. BBCH untuk tanaman; skala berbasis umur untuk non-tanaman |
 | `Substance` | `op:sub` | Bahan generik: hara, bahan aktif, agens hayati, pembenah, pakan. **Lapis netral-vendor** |
 | `Preparation` | `op:sed` | **Sediaan buatan sendiri** — resep terbuka kompos, MOL, ekstrak nabati. Boleh masuk protokol; produk tidak |
@@ -171,13 +172,15 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `operation-type.json` | **61 jenis tindakan**, hierarkis, dari olah tanah sampai pengangkutan | 28 ke AgrO / ICASA |
 | `variable.json` | **46 variabel** — pertumbuhan, OPT, tanah, air, cuaca, hasil | 15 ke ICASA / AgrO |
 | `method.json` | 19 cara aplikasi dan pengamatan, dengan `compatible_bases` | 9 ke AgrO / ICASA |
-| `substance.json` | 7 bahan non-pestisida — hara utama, pembenah, pakan | ICASA |
+| `substance.json` | 17 bahan non-pestisida — hara makro & mikro, pembenah, pakan | ICASA |
 | `substance-pestisida.json` | **1.593 bahan aktif** — seluruh yang tercantum di registri | 1.593 ke KEMENTAN, 58 punya kode IRAC/FRAC/HRAC |
 | `product/pestisida.ndjson` | **7.724 produk pestisida** terdaftar, dengan 23.058 penggunaan berlabel | KEMENTAN |
 | `product/pupuk.ndjson` | **7.196 produk pupuk** terdaftar (SIMPEL + SIMPUK 2020) | KEMENTAN |
+| `variety/varietas.ndjson` | **11.227 varietas terdaftar** — pelepasan, pendaftaran, dan perlindungan varietas | KEMENTAN |
 | `pest.json` | 10 OPT utama cabai | 10 ke EPPO, semua perlu verifikasi |
 | `pest-registri.json` | **1.360 organisme sasaran** dari label produk | KEMENTAN + GBIF |
 | `commodity-registri.json` | **482 komoditas sasaran** dari label produk | KEMENTAN |
+| `commodity-varietas.json` | **418 jenis tanaman** dari registri varietas yang belum ada di kosakata | KEMENTAN |
 | `target-site.json` | 35 tempat aplikasi — bukan komoditas | KEMENTAN |
 | `commodity.json` | 5 komoditas — 4 hortikultura, 1 perikanan budidaya | NCBITaxon, AGROVOC |
 | `deviation-reason.json` | 11 alasan simpangan, dengan sinyal tindak lanjutnya | — (beralasan) |
@@ -319,6 +322,42 @@ lolos lebih awal — `Pysalis angulate` dicocokkan ke ngengat `Pyralis` padahal 
 gulma *Physalis*. Karena `pest_kind` menentukan pilihan pengendalian, ketidakpastian yang
 dinyatakan lebih aman daripada taksonomi yang salah tapi terlihat rapi. 209 entitas membawa
 `taxon_verification.needs_review` beserta alasannya.
+
+### Registri varietas — tulang punggung sisi benih
+
+Registri PUKPES tidak memuat benih sama sekali. Yang memberi "nomor pendaftaran" untuk
+lapis benih adalah [registri perizinan varietas
+Kementan](https://perizinan.pertanian.go.id/) (SIPERINTIS), ditarik 19 Agustus 2026:
+**11.235 catatan, 11.617 perizinan**, tahun 1945–2026.
+
+**Satu entitas untuk satu catatan registri, bukan untuk satu nama.** 9.706 nama untuk
+11.235 catatan: 1.350 nama dipakai lebih dari sekali — PERTIWI, MADU, dan MUTIARA masing-masing
+menempel pada beberapa komoditas — dan 772 kelompok nama+jenis berulang dengan pemohon atau
+tahun berbeda. Tidak satu pun kelompok itu isinya identik persis, jadi menggabungkannya berarti
+menebak bahwa dua catatan menyebut varietas yang sama. FEIRA IPB muncul tiga kali pada cabai
+rawit: 2021, 2023, dan 2025, dengan dua fakultas IPB berbeda sebagai pemohon.
+
+**Tiga jenis perizinan, tiga akibat hukum.** Pelepasan (5.826) mengizinkan peredaran,
+pendaftaran (5.181) mencatat keberadaan, perlindungan (580) memberi hak kekayaan intelektual.
+Meringkusnya jadi satu field `release` akan menyamakan tiga hal yang tidak sama, jadi
+`Variety` menyimpan seluruhnya di `permits` dan mengisi `release` hanya bila memang ada
+pelepasan.
+
+**Tipe varietas hampir seluruhnya tidak diketahui.** Hanya 1.173 dari 11.227 varietas
+menyebutkan sendiri tipenya — 570 hibrida, 427 inbrida, 154 varietas lokal, 22 klon. Sisanya
+dikosongkan. Hibrida atau bukan menentukan boleh-tidaknya petani menyimpan benih sendiri
+untuk musim berikutnya; menebaknya untuk 10.054 varietas akan mengarang jawaban atas
+pertanyaan yang justru paling penting.
+
+**418 jenis tanaman baru masuk kosakata komoditas.** 71% baris varietas tertaut ke komoditas
+yang sudah ada dari label pestisida; sisanya menyebut tanaman yang belum pernah muncul di
+registri pestisida — sagu, uwi, talas, salak, dan hampir seluruh tanaman hias. Kualifikasi
+jenis benih pada nama sumber dilepas lebih dulu, sehingga "Aglaonema Hibrida" tidak jadi
+komoditas terpisah dari Aglaonema.
+
+**Delapan catatan tidak diterbitkan** karena jenis tanamannya kosong sehingga tidak bisa
+ditautkan ke komoditas mana pun. Satu di antaranya, `kelapa ok` dari pemohon `tes ujicoba`,
+adalah data uji coba yang tertinggal di registri resmi.
 
 ### Tiga temuan tentang registrinya sendiri
 

@@ -346,6 +346,51 @@ penuh salah ketik — lima ejaan berbeda untuk *Phytophthora* saja.
 
 ---
 
+### D25 — satu entitas varietas untuk satu catatan registri, bukan untuk satu nama
+
+Registri perizinan varietas memuat 11.235 catatan dengan hanya 9.706 nama berbeda. PERTIWI,
+MADU, dan MUTIARA masing-masing menempel pada beberapa komoditas; 772 kelompok bahkan sama
+nama sekaligus sama jenis tanamannya, dan berbeda hanya pada pemohon atau tahun.
+
+Menggabungkan catatan yang sama nama berarti menyatakan bahwa keduanya varietas yang sama.
+Registri tidak menyediakan dasar untuk pernyataan itu — tidak ada satu pun kelompok yang
+isinya identik persis, dan FEIRA IPB pada cabai rawit muncul tiga kali (2021, 2023, 2025)
+dengan dua fakultas IPB berbeda sebagai pemohon. Bisa jadi itu satu varietas yang mengurus
+izin berulang, bisa jadi dua galur berbeda dengan nama sama.
+
+Yang diambil: satu catatan satu entitas, `key` dibedakan dengan akhiran urut bila
+bertabrakan. Penggabungan menyusul sebagai kurasi terpisah, dengan bukti, bukan sebagai
+efek samping impor.
+
+---
+
+### D26 — `variety_type` jadi opsional
+
+Bidang ini semula wajib. Registri tidak menyatakannya, dan hanya 1.173 dari 11.227 varietas
+menyebutkannya secara tidak langsung: jenis tanaman bertuliskan Hibrida (570) atau Inbrida
+(427), jenis perizinan Pendaftaran Varietas Lokal (154), atau nama memuat klon (22).
+
+Mengisi 10.054 sisanya dengan `cultivar` akan terlihat rapi dan menyesatkan. Hibrida atau
+bukan menentukan apakah petani boleh menyimpan benih sendiri untuk musim berikutnya — justru
+pertanyaan yang paling sering ditanyakan, dan yang paling mahal kalau dijawab salah. Kosong
+berarti tidak diketahui.
+
+---
+
+### D27 — `permits` di samping `release`, karena tiga izin berbeda akibat hukumnya
+
+Registri mencatat tiga keluarga perizinan: pelepasan (5.826) yang mengizinkan peredaran,
+pendaftaran (5.181) yang sekadar mencatat keberadaan varietas, dan perlindungan (580) yang
+memberi hak kekayaan intelektual. Satu varietas bisa punya lebih dari satu — 375 varietas
+punya dua atau tiga.
+
+`release` sendirian tidak cukup: memasukkan pendaftaran ke dalamnya akan menyatakan bahwa
+varietas itu boleh diedarkan, padahal pendaftaran tidak memberi hak itu. Jadi seluruh
+perizinan disimpan di `permits` beserta nama jenisnya apa adanya, dan `release` hanya diisi
+bila memang ada pelepasan.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -369,3 +414,7 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 16 | Cacah mikroba pupuk hayati belum jadi `composition` | 2.563 nilai CFU tersimpan di `analysis`; butuh entitas `Substance` per organisme dan aturan yang memisahkannya dari hara |
 | 17 | Bentuk oksida & unsur yang belum dimodelkan | `B2O3`, `Na2O`, `CuO`, `ZnO`, `SO4`, serta `K`/`P`/`Mg` sebagai unsur ditinggal mentah — mengonversinya ke bentuk yang sudah ada akan mengarang angka yang tidak ditulis sumbernya |
 | 11 | 275 pestisida tanpa komposisi | Kadar bahan aktifnya bukan angka di sumber (mis. agens hayati berbasis populasi) |
+| 18 | 8 catatan varietas tanpa jenis tanaman tidak diterbitkan | Tidak bisa ditautkan ke komoditas mana pun. Salah satunya `kelapa ok` dari pemohon `tes ujicoba` — data uji coba yang tertinggal di registri resmi |
+| 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | Kegranularan registri dipertahankan, tetapi `Commodity` belum punya hubungan hierarkis internal — pengelompokan seharusnya lewat konsep broader AGROVOC yang belum dipetakan |
+| 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
+| 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |

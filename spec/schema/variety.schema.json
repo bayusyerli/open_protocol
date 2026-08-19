@@ -2,41 +2,123 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://spec.openprotocols.id/v0.1/variety.schema.json",
   "title": "Variety — varietas, kultivar, klon, atau galur",
-  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
   "type": "object",
   "properties": {
-    "id": { "type": "string", "pattern": "^op:vty:[0-9]{8}$" },
-    "commodity": { "$ref": "common.schema.json#/$defs/Ref" },
+    "id": {
+      "type": "string",
+      "pattern": "^op:vty:[0-9]{8}$"
+    },
+    "commodity": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
     "variety_type": {
       "type": "string",
-      "enum": ["cultivar", "hybrid", "open_pollinated", "clone", "line", "landrace", "strain"]
+      "enum": [
+        "cultivar",
+        "hybrid",
+        "open_pollinated",
+        "clone",
+        "line",
+        "landrace",
+        "strain"
+      ],
+      "description": "Registri perizinan varietas Kementan tidak menyatakan tipe ini. Diisi hanya bila sumbernya menyebutkannya sendiri — jenis tanaman bertuliskan Hibrida atau Inbrida, nama memuat F1, jenis perizinannya Pendaftaran Varietas Lokal, atau asalnya Lokal. Kosong berarti tidak diketahui, dan itu jawaban yang jujur: hibrida atau bukan menentukan boleh-tidaknya petani menyimpan benih sendiri, jadi menebaknya lebih berbahaya daripada mengosongkannya."
     },
     "release": {
       "type": "object",
-      "description": "Pelepasan varietas resmi. Untuk Indonesia: SK Menteri Pertanian.",
+      "description": "Pelepasan varietas resmi. Untuk Indonesia: SK Menteri Pertanian. Hanya diisi bila ada perizinan berjenis pelepasan; riwayat perizinan selengkapnya ada di permits.",
       "properties": {
-        "authority": { "type": "string" },
-        "decree_number": { "type": "string" },
-        "year": { "type": "integer" }
+        "authority": {
+          "type": "string"
+        },
+        "decree_number": {
+          "type": "string"
+        },
+        "year": {
+          "type": "integer"
+        }
       },
-      "required": ["authority"],
+      "required": [
+        "authority"
+      ],
       "additionalProperties": false
     },
-    "maintainer": { "type": "string" },
+    "permits": {
+      "type": "array",
+      "description": "Seluruh perizinan yang tercatat untuk varietas ini. Satu varietas bisa punya lebih dari satu — pelepasan lalu perlindungan, misalnya — dan ketiganya berbeda akibat hukumnya: pelepasan mengizinkan peredaran, pendaftaran mencatat keberadaan, perlindungan memberi hak kekayaan intelektual. Meringkusnya jadi satu field release akan menyamakan tiga hal yang tidak sama.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "kind": {
+            "type": "string",
+            "enum": [
+              "release",
+              "registration",
+              "protection",
+              "naming_approval",
+              "other"
+            ]
+          },
+          "kind_label": {
+            "type": "string",
+            "description": "Nama jenis perizinan persis seperti tertulis di registri."
+          },
+          "decree_number": {
+            "type": "string"
+          },
+          "decree_date": {
+            "type": "string",
+            "format": "date"
+          }
+        },
+        "required": [
+          "kind",
+          "kind_label"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "origin": {
+      "type": "string",
+      "description": "Asal-usul varietas apa adanya dari registri: Dalam Negeri, Introduksi, Lokal, Luar Negeri, Hasil Pemuliaan Dalam Negeri. Disimpan sebagai teks, bukan enum, karena registri memuat juga nilai yang jelas salah entri."
+    },
+    "maintainer": {
+      "type": "string"
+    },
     "traits": {
       "type": "array",
       "items": {
         "type": "object",
         "properties": {
-          "variable": { "$ref": "common.schema.json#/$defs/Ref" },
-          "value": { "type": ["number", "string", "boolean"] },
-          "unit": { "$ref": "common.schema.json#/$defs/UcumCode" }
+          "variable": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "value": {
+            "type": [
+              "number",
+              "string",
+              "boolean"
+            ]
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode"
+          }
         },
-        "required": ["variable", "value"],
+        "required": [
+          "variable",
+          "value"
+        ],
         "additionalProperties": false
       }
     }
   },
-  "required": ["commodity", "variety_type"],
+  "required": [
+    "commodity"
+  ],
   "unevaluatedProperties": false
 }

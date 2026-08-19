@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "variety",
+    "label": {
+      "id": "Registri varietas tanaman terdaftar"
+    },
+    "scope": {
+      "id": "11227 varietas dari registri perizinan varietas Kementan, tarikan 19 Agustus 2026. Satu entitas untuk satu catatan registri, bukan untuk satu nama: 1.350 nama dipakai lebih dari sekali — PERTIWI ada pada beberapa komoditas — dan 772 kelompok nama+jenis berulang dengan pemohon atau tahun berbeda. Menggabungkannya berarti menebak bahwa dua catatan menyebut varietas yang sama, dan registri tidak menyediakan dasar untuk tebakan itu. Registri mencatat PERIZINAN, bukan benih yang beredar: varietas terdaftar tidak berarti benihnya masih dijual. 8 catatan tidak diterbitkan karena jenis tanamannya kosong sehingga tidak bisa ditautkan ke komoditas mana pun."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-19T00:00:00Z",
+      "review_due": "2026-11-19"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Registri perizinan varietas tanaman (SIPERINTIS)",
+          "publisher": "Kementerian Pertanian RI",
+          "url": "https://perizinan.pertanian.go.id/",
+          "year": 2026,
+          "locator": "GET /permohonan/v1/informasi/nama-varietas; ditarik 19 Agustus 2026. Endpoint mengembalikan seluruh registri dalam satu panggilan."
+        }
+      ]
+    },
+    "storage": "ndjson",
+    "count": 11227,
+    "id_blocks": [
+      {
+        "from": 1000,
+        "to": 19999
+      }
+    ]
+  }
+}
