@@ -102,6 +102,20 @@ anggap ada penulis lain yang aktif.
 - **ID tidak pernah didaur ulang**, bahkan setelah dipindah antar-berkas. Belerang, abamektin,
   dan Trichoderma harzianum pindah dari `substance.json` ke `substance-pestisida.json` dan
   membawa nomor 6, 7, 8 ikut serta. Itulah kenapa blok berkas itu punya potongan `6–8`.
+- **Jangan pernah `git add -A` atau `git add .`.** Stage berkas milikmu sendiri dengan
+  menyebut jalurnya satu per satu. Berkas yang kotor tapi bukan garapanmu ditinggalkan
+  saja — pemiliknya yang akan meng-commit-nya.
+
+  ```bash
+  git status --short          # lihat apa saja yang kotor
+  git add spec/vocab/berkas-yang-kamu-ubah.json spec/README.md
+  git commit
+  ```
+
+  Pada 19 Agustus 2026 satu sesi meng-commit seluruh working tree dan ikut menyapu masuk
+  kosakata sesi lain yang masih setengah jadi — 459 dari 1.806 entitas bernama sampah.
+  Pemeriksa tidak menangkapnya: bentuknya sah, hanya isinya yang belum benar. Aturan hanya
+  bisa menangkap yang bisa dinyatakan sebagai aturan, dan "nama ini sampah" bukan salah satunya.
 - **Commit sesering mungkin.** Titik pulih lebih murah daripada penggabungan manual.
 
 ---
