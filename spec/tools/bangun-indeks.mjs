@@ -78,7 +78,14 @@ const hara = larik(bacaJson('substance.json'));
 const sediaan = larik(bacaJson('preparation.json'));
 const bahanOrganik = larik(bacaJson('substance-organik.json'));
 const optTerkurasi = larik(bacaJson('pest.json'));
-const komoditas = [...larik(bacaJson('commodity.json')), ...larik(bacaJson('commodity-registri.json'))];
+// Ketiga berkas, bukan dua. Varietas banyak menunjuk blok op:cmd:00002xxx di
+// commodity-varietas.json; tanpanya nama komoditasnya jatuh balik ke salinan basi
+// pada rekaman varietas, dan penanda tahunan-nya hilang untuk 1.139 varietas.
+const komoditas = [
+  ...larik(bacaJson('commodity.json')),
+  ...larik(bacaJson('commodity-registri.json')),
+  ...larik(bacaJson('commodity-varietas.json')),
+];
 const optRegistri = larik(bacaJson('pest-registri.json'));
 
 const zatById = new Map([...zat, ...hara].map((s) => [s.id, s]));
@@ -224,8 +231,16 @@ function rinciVarietas(v) {
     nama: v.label?.id ?? '',
     jenis: 'varietas',
     komoditas: v.commodity?.id ?? null,
-    komoditasNama: v.commodity?.label ?? null,
+    komoditasNama: namaKomoditas(v.commodity?.id, v.commodity?.label),
     tipe: v.variety_type ?? null,
+    // Tiga keadaan, bukan dua. true berarti panen perdananya bertahun-tahun sehingga
+    // bibit yang salah baru ketahuan lama sesudah uangnya keluar; false berarti
+    // semusim; TIDAK ADA berarti belum diputuskan, dan layar harus diam untuknya
+    // alih-alih menebak (lihat spec/tools/tandai-tahunan.mjs — 73,1% varietas
+    // tercakup, sisanya sengaja dibiarkan tanpa putusan).
+    ...(komoditasById.get(v.commodity?.id)?.perennial === undefined
+      ? {}
+      : { tahunan: komoditasById.get(v.commodity?.id).perennial }),
     asal: v.origin ?? null,
     pemelihara: v.maintainer ?? null,
     // kind_label dibawa apa adanya: "Pendaftaran" saja mencakup empat instrumen

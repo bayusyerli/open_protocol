@@ -209,3 +209,16 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .sumber { margin: 2rem 0 0; font-size: .8rem; color: var(--teks-lemah); }
 
 .kosong { margin: 1.25rem 0 0; color: var(--teks-lemah); }
+
+/* Kartu pelepasan sengaja berbeda warna dari pendaftaran dan PVT: keempat surat
+   sama-sama terdengar "resmi", dan pelepasan yang paling sering dimaksud orang
+   ketika bertanya apakah benihnya sah. */
+.kartu.pelepasan { border-color: var(--aksen); background: var(--aksen-lemah); }
+
+.judul-bagian { margin: 1.75rem 0 .25rem; font-size: 1.05rem; }
+
+.kartu ol { margin: .6rem 0 0; padding-left: 1.2rem; }
+.kartu ol li + li { margin-top: .4rem; }
+
+.lain { margin: 2rem 0 0; font-size: .92rem; }
+.lain a { color: var(--aksen); }

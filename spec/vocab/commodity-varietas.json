@@ -851,8 +851,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002037",
@@ -1581,12 +1583,14 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "default_stage_scale": {
         "id": "op:sca:00000001",
         "label": "BBCH — Solanaceae (cabai, tomat, terung)"
-      }
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002070",
@@ -1659,12 +1663,14 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "default_stage_scale": {
         "id": "op:sca:00000001",
         "label": "BBCH — Solanaceae (cabai, tomat, terung)"
-      }
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002073",
@@ -2353,8 +2359,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": true
     },
     {
       "id": "op:cmd:00002103",
@@ -2543,8 +2551,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002111",
@@ -3595,8 +3605,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": true
     },
     {
       "id": "op:cmd:00002158",
@@ -4131,8 +4143,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002182",
@@ -7014,8 +7028,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002310",
@@ -7148,12 +7164,14 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "default_stage_scale": {
         "id": "op:sca:00000010",
         "label": "BBCH — Sayuran daun berkrop (kubis, sawi putih, selada)"
-      }
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002316",
@@ -8010,8 +8028,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": true
     },
     {
       "id": "op:cmd:00002355",
@@ -8032,8 +8052,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": true
     },
     {
       "id": "op:cmd:00002356",
@@ -8128,12 +8150,14 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "default_stage_scale": {
         "id": "op:sca:00000011",
         "label": "BBCH — Sayuran daun tidak berkrop (sawi, caisim, pak choi, selada daun)"
-      }
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002360",
@@ -8182,8 +8206,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": true
     },
     {
       "id": "op:cmd:00002362",
@@ -8472,12 +8498,14 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "default_stage_scale": {
         "id": "op:sca:00000011",
         "label": "BBCH — Sayuran daun tidak berkrop (sawi, caisim, pak choi, selada daun)"
-      }
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002375",
@@ -8520,8 +8548,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002377",
@@ -8724,8 +8754,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002386",
@@ -8922,12 +8954,14 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "default_stage_scale": {
         "id": "op:sca:00000001",
         "label": "BBCH — Solanaceae (cabai, tomat, terung)"
-      }
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002395",
@@ -9298,8 +9332,10 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
-      }
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
+      },
+      "perennial": false
     },
     {
       "id": "op:cmd:00002411",
