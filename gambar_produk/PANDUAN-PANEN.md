@@ -94,14 +94,33 @@ sama seperti seluruh packshot sah** — penyaring ukuran berkas membuangnya, pen
 resolusi menyimpannya. Tidak ada ambang tunggal yang menangkap keduanya; yang menangkap
 adalah melihat gambarnya.
 
-**Kolom nomor dicetak tapi dibiarkan kosong.** noAphidss WP mencetak "No. Pendaftaran:"
-tanpa isi; MagK32 begitu juga; KS PAK TANI mengosongkan NETTO. Ini bukan nomor yang tak
-terbaca melainkan yang tak pernah diisi — `nomor_pendaftaran_terbaca: false` benar untuk
-keduanya, tetapi sebabnya berbeda dan layak dibedakan di `notes`.
+**Tiga sebab berbeda di balik `nomor_pendaftaran_terbaca: false`,** dan ketiganya layak
+dibedakan di `notes` sebab tindak lanjutnya berbeda:
+
+1. **Kolomnya ada tapi kosong.** noAphidss WP mencetak "No. Pendaftaran:" tanpa isi;
+   MagK32 begitu juga; KS PAK TANI mengosongkan NETTO. Tidak akan pernah terbaca.
+2. **Kolomnya tidak ada sama sekali.** Panel depan Prima Karya hanya memuat nama dagang,
+   grup klasifikasi, bahan aktif, dan isi bersih — nomor pendaftaran memang tidak dicetak
+   di sisi itu. Kemasan belakang mungkin punya.
+3. **Tercetak tapi tidak terbaca.** Melengkung di sisi botol, kabur, atau terlalu kecil.
+   Ini satu-satunya yang bisa dipulihkan oleh gambar beresolusi lebih tinggi.
 
 Tandai dengan `quality.penambal`, `quality.tampak_sintetis`, `quality.logo_bukan_kemasan`.
 `G11` menahan penambal dan logo tanpa syarat; render hanya lolos bila
 `printed_registration`-nya terkoroborasi registri.
+
+**`bentuk_kemasan_generik` bisa diukur, bukan ditebak.** IoU siluet alfa terhadap seluruh
+packshot satu principal memberi angka yang memisahkan bersih pada ambang **~0,92**.
+Terukur pada 33 packshot SGI: BRANTACOL↔MERKURY 0,983 · HYDROCIDE↔TRESICUR 0,975 (kantong
+rodentisida umpan dipakai ulang untuk fungisida 1 kg) · KONTAXONE↔E-GOLD 0,953 ·
+WEEDGONE↔E-GOLD 0,929 · CER-ONE↔ORYSTAR 0,925, sedangkan sisanya di bawah 0,86. Simpan
+angkanya di `notes`.
+
+**Tetapi teknik itu gagal SENYAP pada latar yang tidak transparan.** Berkas Prima Karya
+RGBA berlatar abu-abu muda, bukan alfa; ambang non-putih menangkap hampir seluruh kanvas
+dan melaporkan botol 400 ml berimpit dengan jerigen 5 L pada IoU 0,999. Angka itu palsu.
+**Periksa `alpha.getextrema()` lebih dulu — kalau latarnya tidak transparan, jangan pakai
+IoU siluet sama sekali.**
 
 ---
 
@@ -124,7 +143,7 @@ Saring di depan, jangan diburu:
 
 Dua koreksi yang membuat taksiran cakupan berhenti terlalu optimis:
 
-- **Katalog grup, bukan katalog principal — sudah enam kali.** dharmagunawibawa · pt-sgi · santani · foragro · adilmakmurfajar · saprotan-utama. Dari 76 produk di `dharmagunawibawa.co.id`
+- **Katalog grup, bukan katalog principal — sudah tujuh kali.** dharmagunawibawa · pt-sgi · santani · foragro · adilmakmurfajar · saprotan-utama · petrosida. Pada pt-sgi tujuh produk terdaftar atas principal lain sudah bernama: FORMAT 360/120 SL, NUCLEAR 240 SL, REAKTIF 490 SL (PT. Spektra Global Intiagro) · GRIND UP 240 SL, MANDOXONE 276 SL* (PT. Spektrum Geo Inagro) · HORNET 150 EC (CV. Cinde Laras) · PROGRESSIVE 50 SC (CV. Agro Jaya Indonesia). Pada petrosida: NAGA 500 EC terdaftar atas PT. Yasida Makmur Abadi. Dari 76 produk di `dharmagunawibawa.co.id`
   hanya 14 cocok dengan 64 merek terdaftar PT. Dharma Guna Wibawa; 55 sisanya milik
   PT. Delta Giri Wacana. Memanen situsnya tetap meninggalkan ~43 merek tanpa gambar.
 - **Katalog tertinggal di belakang registri, hampir selalu.** Bayer 11 produk untuk 65
@@ -175,13 +194,26 @@ Sudah dua kali, dan polanya konsisten:
 Nama tidak mengikat apa pun; nomor pendaftaran yang mengikat. Pencarian berbasis nama
 akan melewatkan keduanya.
 
-### Varian ejaan yang MENGUBAH arti — jangan dicocokkan
+### Varian ejaan yang mengubah arti — periksa, jangan langsung tolak
 
-Berbeda dari beda spasi atau tanda hubung yang aman disatukan, enam ini ditemukan di satu
-situs saja dan seluruhnya ditolak dengan benar: `Hexacar 50/50 SC` vs `HEXACAR 50/50 EC`
-(formulasi berbeda), `Timber 15/50 WP` vs `TIMBER 50/15 WP` (kadar terbalik),
+Beda spasi atau tanda hubung aman disatukan. Beda **formulasi** tidak: `Hexacar 50/50 SC`
+vs `HEXACAR 50/50 EC` adalah dua sediaan berbeda, dan itu alasan sah menolak.
+
+**Kadar terbalik BUKAN alasan menolak.** Koreksi atas panduan versi sebelumnya, yang
+mencantumkan `Timber 15/50 WP` vs `TIMBER 50/15 WP` sebagai penolakan benar. Kemasan
+WEEDGONE mencetak `WEEDGONE 200/276 SL*` sedangkan registri menulis
+`WEEDGONE 276/200 SL*` — dan nomornya `01030120155197` **cocok persis**. Urutan di
+kemasan hanya mengikuti urutan bahan aktif yang dicetaknya sendiri.
+
+Yang memutuskan tetap nomor pendaftaran, bukan nama. Kadar terbalik adalah alasan untuk
+**memeriksa nomornya**, bukan untuk menolak. Yang benar-benar tanpa padanan tetap ditolak:
 `Extra One 600/80 SC` vs `EXTRA-ONE 680 SC`, `Metachlor 650 EC` vs `METACHLOR 550/100 EC`.
-Kalau ragu, jangan dipanen — dan catat alasannya.
+
+### Tanda bintang pada nama registri = pestisida terbatas pakai
+
+`KONTAXONE 310 SL*` dan `WEEDGONE 276/200 SL*` sama-sama mencetak "PESTISIDA TERBATAS
+PAKAI — Hanya digunakan oleh Pengguna yang bersertifikat" di kemasannya. WEEDGONE bahkan
+mencetak bintangnya di nama dagang. Berguna sebagai pembukti kecocokan tambahan.
 
 ---
 
@@ -248,6 +280,17 @@ aktif DKAUREVA terbaca "Imidakloprid 5%", padahal registri mencatat **Nitenpiram
 Pemanennya menurunkan `komposisi_terbaca` ke `false` dan mencatat kekeliruannya — itu
 perilaku yang benar, dan alasan kenapa `komposisi_terbaca` harus jujur.
 
+**Pemicunya ternyata bentuk kemasan, bukan resolusi.** Pada master 650×650 yang sama:
+**kantong** memberi tinggi huruf ~6–9 px dan terbaca bersih pada 10×; **botol** hanya
+~4–5 px, dan gagalnya **senyap** — ia tidak kabur, melainkan mengganti nama bahan dengan
+yang masuk akal. Terbukti dua kali di Rainbow: UNIZOLE terbaca "Tebukonazol 50 g/l"
+padahal registri **Heksakonazol**; POPZOLE terbaca "Protiokonazol 125 / Tebukonazol 400"
+padahal **Propikonazol 125 / Trisiklazol 400**.
+
+Kegagalan senyap lebih berbahaya daripada kegagalan kabur, sebab hasilnya terlihat sah.
+Kalau kemasannya botol dan hurufnya di bawah ~6 px, turunkan `komposisi_terbaca` ke
+`false` alih-alih memercayai bacaan sendiri.
+
 ## 7c. Nama badan hukum di kemasan juga bisa salah
 
 Bukan hanya nomornya. Kemasan BASTEN 45 WP mencetak "Pemegang Pendaftaran: PT. SANTANI
@@ -258,6 +301,16 @@ menyebut peran distributor, bukan registran.
 
 Pelajarannya: **`brand_key` yang menentukan principal, bukan halaman situs dan bukan
 tulisan di kemasan.**
+
+## 7f. Watermark bisa tinggal sesobek dan hanya tampak setelah peregangan
+
+PRIMA-CRON 500 EC dan PRIMA-FAW 50 EC membawa sisa watermark vektor berakhiran ® di tepi
+kiri bawah, terpotong bingkai, **tak terlihat sebelum rentang luminans 215–255
+direntangkan** (minimum 219–220 di antara latar 255).
+
+Keduanya bernama `whatsapp-image-*` — tetapi berkas lain bernama pola sama dengan tanggal
+berbeda (`whatsapp-image-2025-01-15`) justru bersih. **Jangan simpulkan dari nama berkas;
+ukur kolom tepinya.**
 
 ## 8. Situs yang tersusupi
 
@@ -330,3 +383,17 @@ labelnya mencetak `KANDUNGAN HARA N : 5% P2O5 : 12%` — cocok persis dengan `an
 `op:prd:00014071`. Tanpa label itu, merek tersebut tidak bisa dipersempit sama sekali.
 
 Pagu 5 MB memotong 7 dari 10 PDF label UPL (6,2–41,7 MB). Pagu baku kini 20 MB, jadi tiga di antaranya masuk; empat sisanya (di atas 20 MB) masih perlu keputusan tersendiri.
+
+
+## 12. Jalur navigasi yang mahal ditemukan
+
+**`petrosida-gresik.com`** — kategori di `/id/content/pestisida-kimia/{fungisida,herbisida,
+insektisida,moluskisida,rodentisida}`, tetapi **akarisida sendirian di
+`/id/content/pertisida-kimia/akarisida`** (salah ketik `pertisida-` di situsnya sendiri).
+Cabang non-pestisida terpisah: `/id/content/{pupuk,benih,produk-kimia,peternakan-perikanan}`.
+Total 68 halaman produk. **Sudah habis dipanen** — setiap halaman yang cocok ke registri
+sudah masuk; 47 merek registri sisanya tidak punya halaman sama sekali.
+
+**`pt-sgi.com`** — `zat_aktif` dari API kotor: beberapa nilai berspasi di depan, satu
+bertab (`Flurokspir meptil 520\tg/l`), satu bersatuan salah (`Imidacloprid 25 EC`). Cukup
+untuk membuktikan kecocokan, tidak cukup untuk dijadikan kunci.
