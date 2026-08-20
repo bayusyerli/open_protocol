@@ -11,10 +11,11 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 |---|---|
 | [`docs/00-fondasi-dan-tahapan.md`](docs/00-fondasi-dan-tahapan.md) | Dokumen fondasi: diagnosis, arsitektur tiga lapis, delapan fase beserta gate-nya, konteks regulasi Indonesia, metrik, dan risiko |
 | [`spec/`](spec/) | Spesifikasi Lapis 1 (ontologi) v0.1 — skema, kosakata, contoh, pemeriksa, dan uji negatif |
+| [`app/`](app/) | **Permukaan baca-saja yang sudah berjalan** — keenam jalur sebagai berkas statis, tanpa kerangka kerja dan tanpa server aplikasi |
 | [`docs/principal-terdaftar.md`](docs/principal-terdaftar.md) | 2.305 principal pemegang pendaftaran pupuk & pestisida, beserta keputusan cakupannya |
 | [`docs/01-sediaan-buatan-sendiri.md`](docs/01-sediaan-buatan-sendiri.md) | Riset & standar praktik meramu sendiri — kompos, MOL, bioaktivator, pestisida nabati — beserta tujuh syarat sebuah praktik boleh dianjurkan mesin |
 | [`docs/02-tiga-pasar.md`](docs/02-tiga-pasar.md) | Segmentasi, target, dan posisi — kenapa pengguna, pembayar, dan kontributor harus disegmentasi terpisah |
-| [`docs/03-enam-pintu.md`](docs/03-enam-pintu.md) | Konsep permukaan baca-saja: enam jalur masuk ke satu registri, aturan lintas jalur, dan lubang datanya |
+| [`docs/03-enam-pintu.md`](docs/03-enam-pintu.md) | Dokumen payung permukaan baca-saja: enam jalur masuk ke satu registri, aturan lintas jalur, lubang datanya, dan urutan yang ditempuh |
 | [`docs/04-jalur-insiden.md`](docs/04-jalur-insiden.md) | Jalur 1 — masuk dari gejala; kartu bahan+kadar, dan layar nol produk |
 | [`docs/05-jalur-produk.md`](docs/05-jalur-produk.md) | Jalur 2 — masuk dari kemasan; 63,5% pestisida identik, dan kasus LARBAN |
 | [`docs/06-jalur-hitungan-hara.md`](docs/06-jalur-hitungan-hara.md) | Jalur 3 — rupiah per kilogram hara, dan tiga hal yang tidak boleh dibandingkan |
@@ -25,7 +26,9 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 Kosakata sudah terisi: **15 skala fase dengan 868 fase** — empat belas kunci BBCH dari
 monografnya (Solanaceae, padi, jagung, kedelai, kentang, kopi, cucurbit, brassica, buncis,
 kacang tanah, dan lainnya) plus satu skala umur budidaya udang — ditambah 67 jenis tindakan,
-57 variabel, 23 cara aplikasi, 10 OPT cabai terkurasi, dan 11 alasan simpangan.
+57 variabel, 23 cara aplikasi, 10 OPT cabai terkurasi — kini seluruhnya bergejala,
+masing-masing dengan dua ciri pembanding yang bisa diperiksa sendiri — dan 11 alasan
+simpangan.
 
 Di atasnya, seluruh registri resmi Kementan sudah masuk: **14.920 produk terdaftar** —
 7.724 pestisida dengan 23.058 penggunaan berlabel, dan 7.196 pupuk — beserta **1.399
@@ -77,5 +80,34 @@ Tiga lapis yang sengaja dipisah:
    Primitifnya sudah ada di Lapis 1 (`Step`); aplikasinya belum dibangun.
 
 Di samping ketiganya ada **permukaan baca-saja** yang tidak menuntut pencatatan sama sekali:
-enam jalur masuk ke registri yang sudah dipegang, seluruhnya bisa dibangun dari data hari ini.
-Rancangannya di [`docs/03-enam-pintu.md`](docs/03-enam-pintu.md) beserta enam dokumen jalurnya.
+enam jalur masuk ke registri yang sudah dipegang. Rancangannya di
+[`docs/03-enam-pintu.md`](docs/03-enam-pintu.md) beserta enam dokumen jalurnya, dan
+**keenamnya sudah berjalan** di [`app/`](app/).
+
+## Permukaan baca-saja
+
+Enam halaman statis. Tanpa kerangka kerja, tanpa langkah bangun, tanpa server aplikasi —
+seluruh jawaban datang dari indeks turunan di `spec/indeks/`, yang bentuknya memang
+disusun mengikuti pertanyaan yang akan diajukan tiap layar.
+
+| Halaman | Jalur | Masuk dari |
+|---|---|---|
+| `app/jalur-1.html` | 1 · insiden | gejala yang terlihat, bukan nama hama |
+| `app/index.html` | 2 · produk | nama di kemasan |
+| `app/jalur-3.html` | 3 · hitungan | harga yang dibayar |
+| `app/jalur-4.html` | 4 · keabsahan | nama varietas |
+| `app/jalur-5.html` | 5 · sediaan pupuk | niat menyuburkan |
+| `app/jalur-6.html` | 6 · sediaan pengendali | niat mengendalikan — **status hukum, bukan anjuran** |
+
+Syarat lapangannya HP entry-level bersinyal buruk, dan itu yang menentukan bentuk
+indeksnya: satu penelusuran utuh mengambil **2 sampai 4 berkas**, 11–151 KB sebelum
+gzip, dan **tidak satu pun berkas melewati 48 KB** — anggaran yang ditegakkan
+`spec/tools/bangun-indeks.mjs` saat memecahnya.
+
+```bash
+node spec/tools/bangun-indeks.mjs --tulis   # indeks turunan, tidak disimpan di repo
+python3 -m http.server 8742                 # sajikan dari akar repositori
+```
+
+Rinciannya — termasuk apa yang tiap layar sengaja tolak tampilkan — di
+[`app/README.md`](app/README.md).

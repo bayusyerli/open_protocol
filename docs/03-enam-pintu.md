@@ -9,6 +9,10 @@
 > alurnya ditulis ulang sebagai teks.
 >
 > Dokumen payung untuk 04–09: keenam jalur, aturan lintas jalur, dan lubang datanya.
+>
+> **Keenamnya sudah berjalan** sebagai berkas statis di [`app/`](../app/), membaca
+> indeks turunan di `spec/indeks/`. Bagian 7 mencatat urutan yang benar-benar
+> ditempuh, bukan lagi rencana.
 
 ---
 
@@ -70,7 +74,7 @@ Pasal 77 melarang mengedarkan *dan menggunakan*. Menunggu pendapat hukum.
 
 | Jalur | Kategori | Ditopang data | Yang tidak sanggup |
 |---|---|---|---|
-| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis | ✕ Diagnosis. Nol dari 778 OPT registri punya deskripsi gejala; 5 dari 10 OPT terkurasi punya — lima kalimat lagi harus ditulis tangan |
+| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis; 10 OPT cabai terkurasi bergejala, masing-masing dua ciri pembanding | ✕ Diagnosis. Nol dari 778 OPT **registri** punya deskripsi gejala, jadi pintunya baru sepuluh dan baru untuk cabai |
 | **2 · Produk** — kemasan → isi → setara | Ketiganya | 96,4% pestisida & 71,3% pupuk punya komposisi; 63,5% pestisida identik dengan produk lain | ◐ Nama dagang di kemasan bisa berbeda dari nama terdaftar |
 | **3 · Hitungan** — pupuk + harga → Rp/kg hara | Pupuk | 5.130 pupuk berkomposisi angka terhadap 17 hara | ✕ Harga (nol di registri) dan status subsidi (nol dari 7.196) |
 | **4 · Keabsahan** — varietas → surat | Benih & bibit | 5.822 surat pelepasan, 5.138 pendaftaran, 580 PVT | ✕ Rekomendasi varietas. Hanya 35 dari 11.227 menyebut sifat agronomi |
@@ -154,7 +158,7 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 
 | Yang hilang | Akibatnya | Jalan keluar |
 |---|---|---|
-| **Deskripsi gejala OPT** — 0 dari 778 registri, 5 dari 10 terkurasi | Jalur 1 baru punya lima pintu masuk | Kurasi · lima kalimat lagi untuk cabai |
+| **Deskripsi gejala OPT** — 0 dari 778 OPT registri; 10 dari 10 terkurasi sudah ditulis | Jalur 1 hanya punya sepuluh pintu masuk, seluruhnya untuk cabai | Kurasi · komoditas berikutnya, dan peninjauan penyuluh atas yang sepuluh |
 | **PHI** — 290 dari 23.058 penggunaan | Tanggal aman panen tidak bisa dijanjikan di jalur mana pun | Sumber lain · foto label atau terbitan BSIP |
 | **Harga** — nol | Jalur 3 butuh satu masukan pengguna | Sumber lain · diketik sekali di kios |
 | **Penanda subsidi** — 0 dari 7.196 pupuk | Perbandingan harga tidak sadar-subsidi, padahal dokumen fondasi mensyaratkannya | Sumber lain · daftar produk bersubsidi Kementan |
@@ -168,14 +172,42 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 
 ---
 
-## 7. Urutan rilis
+## 7. Urutan yang ditempuh
 
-1. **Jalur 2 — produk.** Tidak butuh kurasi sama sekali, bekerja hari ini di 7.724 pestisida, 7.196 pupuk, dan 11.227 varietas sekaligus. Ia juga yang membuat temuan 63,5% bisa dipakai orang — angka itu naik dari 62,8% setelah 108 id zat yang terbelah ejaan disatukan, jadi 56 produk yang dulu tak terdeteksi kembar kini terlihat.
-1. **Jalur 3 — hitungan hara.** Aritmetikanya lengkap; hanya perlu satu masukan harga. Menyentuh pos biaya terbesar petani.
-1. **Jalur 4 — keabsahan benih & bibit.** Datanya siap penuh, dan taruhannya paling tinggi per keputusan — terutama pada 2.725 varietas berbibit, yang kesalahannya baru ketahuan empat sampai tujuh tahun kemudian.
-1. **Jalur 5 — sediaan pupuk sendiri.** Naik ke sini justru karena tidak menunggu apa pun: tujuh resep berada di luar rezim pendaftaran lewat Pasal 72, dan bisa ikut jalur 3 sejak awal sebagai cabang “tidak ada uangnya”.
-1. **Jalur 1 — insiden.** Menunggu lima kalimat gejala. Setengah hari kerja untuk komoditas beachhead.
-1. **Jalur 6 — sediaan pengendali sendiri.** Terakhir, dan bukan karena datanya kurang. Bacaan Pasal 77 ayat (1) harus dijawab penasihat hukum sebelum Fase 4; sampai itu resepnya boleh ditampilkan beserta status hukumnya, tetapi tidak sebagai anjuran.
+Keenamnya sudah dibangun, dalam urutan ini — dan urutannya memang mengikuti seberapa
+sedikit tiap jalur menunggu, bukan seberapa menarik.
+
+1. **Jalur 2 — produk.** Tidak butuh kurasi sama sekali, bekerja di 7.724 pestisida,
+   7.196 pupuk, dan 11.227 varietas sekaligus. Ia juga yang membuat temuan 63,5% bisa
+   dipakai orang — angka itu naik dari 62,8% setelah 108 id zat yang terbelah ejaan
+   disatukan, jadi 56 produk yang dulu tak terdeteksi kembar kini terlihat.
+1. **Jalur 4 — keabsahan benih & bibit.** Datanya siap penuh, dan taruhannya paling
+   tinggi per keputusan — terutama pada 2.725 varietas berbibit, yang kesalahannya baru
+   ketahuan empat sampai tujuh tahun kemudian.
+1. **Jalur 3 — hitungan hara.** Aritmetikanya lengkap; hanya perlu satu masukan harga.
+   Menyentuh pos biaya terbesar petani.
+1. **Jalur 5 — sediaan pupuk sendiri.** Tidak menunggu apa pun: tujuh resep di luar
+   rezim pendaftaran lewat Pasal 72, dan sudah jadi cabang “tidak ada uangnya” pada
+   kalkulator jalur 3.
+1. **Jalur 1 — insiden.** Menunggu teks gejala, dan teksnya ditulis lebih dulu. Yang
+   semula dikira “lima kalimat lagi” ternyata sepuluh entri: medan `definition` yang
+   terisi memuat catatan epidemiologi, bukan gejala. Tiap entri kini membawa gejala
+   beserta **dua ciri pembanding** yang bisa diperiksa sendiri — dan itu yang menahan
+   jalur ini dari menebak.
+1. **Jalur 6 — sediaan pengendali sendiri.** Terakhir, dan bukan karena datanya kurang.
+   Ia dibangun sebagai **catatan status hukum, bukan anjuran**: pintunya membuka dengan
+   Pasal 75, 76 ayat (2), 77 ayat (1), dan 123; ia tidak pernah jadi cabang “yang bisa
+   kamu pakai” dari jalur 1; dan bacaan Pasal 77 ayat (1) tetap dinyatakan belum
+   terjawab.
+
+> **Yang masih menunggu, dan sifatnya bukan kode**
+>
+> **Pendapat hukum atas Pasal 77 ayat (1)** — rangkaian katanya bisa dibaca kumulatif
+> maupun alternatif, dan bacaan itu menentukan apakah jalur 6 boleh naik dari catatan
+> jadi anjuran. **Peninjauan penyuluh atau BPTP** atas sepuluh teks gejala, yang
+> berstatus draft dan mengatakannya sendiri di layar. Sisanya lubang data yang sudah
+> tercatat di `meta.tidakAda` pada indeks, sehingga penyaji tidak bisa menjanjikannya
+> tanpa sadar.
 
 > **Konsekuensi untuk dokumen STP**
 >
