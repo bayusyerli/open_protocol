@@ -154,13 +154,58 @@ for (const [i, l] of baris.entries()) {
     // Yang menyelamatkannya bukan gambarnya sendiri melainkan koroborasi dari luar:
     // nomor pendaftaran tercetak yang cocok ke registri DAN milik merek ini.
     if (rec.quality?.tampak_sintetis) {
-      const pr = rec.printed_registration;
-      if (!(pr?.in_registry && pr?.matches_brand)) {
+      const pr2 = rec.printed_registration;
+      if (!(pr2?.in_registry && pr2?.matches_brand)) {
         fail(i, 'G11-sintetis-tanpa-koroborasi',
           `${rec.brand_key}: tampak render buatan mesin dan nomor pendaftarannya belum `
           + `terkoroborasi registri. Render boleh terverifikasi hanya bila printed_registration `
           + `in_registry dan matches_brand keduanya benar.`);
       }
+    }
+  }
+
+  // G13 — packshot yang direproduksi di dalam dokumen pihak lain. Bendanya nyata dan
+  // fotonya asli, tetapi yang menerbitkannya bukan pemegang pendaftaran: tidak ada yang
+  // bisa dimintai izin, dan keterangan gambar yang terbakar ke berkasnya bisa saja keliru
+  // menamai produknya. Ditemukan pada umpan artikel Nufarm, yang menerbitkan ulang gambar
+  // bernomor dari pindaian terbitan penyuluhan.
+  if (rec.review.status === 'terverifikasi' && rec.quality?.gambar_dari_dokumen) {
+    fail(i, 'G13-dari-dokumen',
+      `${rec.brand_key}: packshot direproduksi di dalam dokumen pihak lain, jadi tidak bisa `
+      + `terverifikasi — penerbitnya bukan pemegang pendaftaran, dan keterangan gambarnya `
+      + `bukan sumber yang mengikat.`);
+  }
+  if (rec.quality?.gambar_dari_dokumen && rec.source.rights !== 'pihak_ketiga') {
+    fail(i, 'G13-hak-tak-cocok',
+      `${rec.brand_key}: gambar_dari_dokumen menuntut source.rights="pihak_ketiga", `
+      + `bukan "${rec.source.rights}".`);
+  }
+
+  // G12 — nomor BERBENTUK SAH tetapi tidak ada di registri, pada gambar sintetis.
+  //
+  // Dua penjelasan yang sangat berbeda dan pemeriksa tidak bisa memilih di antaranya:
+  // pendaftaran sungguhan yang sudah dicabut atau kedaluwarsa (kasus PHONSKA, kemasan
+  // resmi tertinggal di belakang registri), ATAU nomor karangan yang meniru bentuk
+  // aslinya lalu mengacak digitnya (kasus MANTRA di katalog yang dibangkitkan mesin —
+  // 31028128227329 menyamar sebagai 01020120227329).
+  //
+  // Bahayanya nyata: kalau nomor karangan sempat masuk lapisan rujukan, jalur 2 akan
+  // menyatakan sebuah produk terdaftar padahal tidak. Nomor yang bentuknya RUSAK tidak
+  // berbahaya — ia jelas salah. Yang bentuknya SAH justru yang menipu.
+  //
+  // Yang bisa ditegakkan pemeriksa: memaksa penjelasannya ditulis, bukan dibiarkan
+  // tersirat. Manusia yang memutuskan mana dari dua penjelasan itu.
+  if (rec.printed_registration && rec.printed_registration.in_registry === false
+      && rec.quality?.tampak_sintetis) {
+    const bersih = rapikan(rec.printed_registration.number_as_read);
+    const berbentukSah = /^[0-9]{11,14}$/.test(bersih);
+    const dijelaskan = (rec.notes?.id ?? '').trim().length >= 40;
+    if (berbentukSah && !dijelaskan) {
+      fail(i, 'G12-nomor-mirip-sah',
+        `${rec.brand_key}: "${rec.printed_registration.number_as_read}" berbentuk sah `
+        + `tetapi tidak ada di registri, dan gambarnya sintetis. Wajib dijelaskan di notes: `
+        + `pendaftaran yang dicabut, atau nomor karangan yang meniru bentuknya? `
+        + `Nomor rusak jelas salah; nomor berbentuk sah justru yang menipu.`);
     }
   }
 

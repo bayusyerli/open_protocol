@@ -160,13 +160,16 @@ mengaku punya peran sama untuk merek sama.
 | `G9` | Klaim `printed_registration.in_registry` dan `matches_brand` benar terhadap registri |
 | `G10` | Merek berisi banyak pendaftaran tanpa `narrowed_to` tidak boleh `terverifikasi` |
 | `G11` | Penambal dan logo-bukan-kemasan tidak boleh `terverifikasi`; render hanya boleh bila nomor pendaftarannya terkoroborasi registri |
+| `G12` | Nomor **berbentuk sah** tetapi tidak ada di registri, pada gambar sintetis, wajib dijelaskan di `notes` — dicabut, atau karangan yang meniru bentuknya? |
+| `G13` | Packshot di dalam dokumen pihak lain tidak boleh `terverifikasi`, dan menuntut `rights=pihak_ketiga` |
 
 Kesepuluhnya punya baris pembukti di
 [`fixtures-invalid/manifes-buruk.ndjson`](fixtures-invalid/manifes-buruk.ndjson):
 
 ```bash
-node periksa.mjs fixtures-invalid/manifes-buruk.ndjson              # harus keluar 25 galat
+node periksa.mjs fixtures-invalid/manifes-buruk.ndjson              # harus keluar 33 galat
 node periksa.mjs fixtures-invalid/ok-sintetis-terkoroborasi.ndjson  # harus LOLOS 0 galat
+node periksa.mjs fixtures-invalid/ok-g12-dijelaskan.ndjson          # harus LOLOS 0 galat
 ```
 
 Cara kerja panennya — urutan menemukan situs, jebakan nama, dan situs sehat yang salah

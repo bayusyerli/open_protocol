@@ -358,6 +358,10 @@
         "bentuk_kemasan_generik": {
           "type": "boolean",
           "description": "Bentuk kemasan pada gambar dipakai ulang lintas merek, sehingga gambar ini tidak bisa dipakai memberi tahu petani seperti apa rupa botol atau karung yang harus dicarinya. Terpisah dari tampak_sintetis: render bisa saja setia pada bentuk aslinya, dan foto sungguhan pun bisa memakai kemasan contoh. Ditandai supaya permukaan baca-saja tahu kapan tidak boleh berkata \"carilah yang seperti ini\"."
+        },
+        "gambar_dari_dokumen": {
+          "type": "boolean",
+          "description": "Packshot sungguhan, tetapi direproduksi di dalam dokumen pihak lain dan membawa keterangan gambar yang terbakar ke berkasnya — mis. \"Gambar 4. Fungisida Sumilex 50 WP\" pada pindaian terbitan penyuluhan. Berbeda dari penambal maupun render: bendanya nyata dan fotonya asli, yang bermasalah rantai penerbitannya. Menuntut source.rights=pihak_ketiga, dan menutup jalan ke terverifikasi lewat G13 sebab yang menerbitkannya bukan pemegang pendaftaran — jadi tidak ada yang bisa dimintai izin, dan keterangan gambarnya bisa saja keliru menamai produknya."
         }
       },
       "additionalProperties": false

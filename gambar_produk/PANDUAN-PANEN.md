@@ -49,7 +49,7 @@ Memeriksa kode HTTP saja akan meloloskan semuanya.
 |---|---|---|
 | `403` lalu timeout | butuh User-Agent peramban (`globalagrotech.id`) | kirim UA peramban sebagai bawaan |
 | Gambar `403`, halaman `200` | **bukan hotlink — gerbangnya User-Agent.** Diuji silang pada `adilmakmurfajar.com`: UA peramban tanpa `Referer` → 200; UA peramban dengan `Referer` asing → 200; **UA curl bawaan dengan `Referer` benar → 403** | kirim UA peramban; `Referer` tidak berpengaruh |
-| Semua `/id/` `403`, gambar lolos | WAF menutup halaman, CDN terbuka (Nufarm) | peramban untuk memetakan slug, curl biasa untuk mengunduh |
+| Semua `/id/` `403`, gambar lolos | **Koreksi: `cdn.nufarm.com` BUKAN host terbuka terpisah** — ia origin Cloudflare yang sama dengan aturan WAF yang sama; `cdn.nufarm.com/id/product/*` juga 403. Hanya jalur `/wp-content/uploads/` yang lolos, tanpa daftar direktori | **Perambannya bisa dihindari:** `/id/feed/?paged=1..11` seluruhnya 200 (halaman 12 → 404). Sebelas halaman umpan plus beranda memberi 366 URL gambar CDN unik yang menutup 21 dari 88 merek. Umpan ARTIKEL yang membawa packshot-nya |
 | Tampilan kecil, berkas besar | `style` inline memaksa 175 px padahal sumbernya 2122×1564 (Petrosida) | jangan simpulkan resolusi dari HTML — baca header berkasnya |
 
 Dan kebalikannya, **situs mati yang menyamar sehat**: Solo Logo membalas `200` dengan
@@ -124,6 +124,78 @@ IoU siluet sama sekali.**
 
 ---
 
+## 4b. Katalog yang seluruhnya dibangkitkan mesin
+
+Kelas terburuk yang ditemukan, sebab ia lolos setiap penyaring otomatis. Keempat packshot
+Panen Raya yang diperiksa dibangkitkan mesin, dan gejalanya seragam:
+
+- **Nomor pendaftaran tergarbling** — `0101012822TA3Z`, `31028128227329`,
+  `BLA10401232227868`
+- **Teks badan jadi tiruan bahasa Indonesia** yang sekilas terbaca wajar
+- **Nama badan hukum rusak** — `CV SARANEA PANEN RAYA`, padahal SARAREA
+- **Label sisi botol tercetak terbalik cermin**
+- **Aksara asing nyasar** — Penthium 105 EC (Kristalindo) memuat huruf Kirilik **Б** di
+  tengah teks Indonesia, plus "Insehiteida" dan "Mat Beosito 400 m!"
+
+Yang membuatnya berbahaya: **komposisinya justru benar.** Teks besar selamat, deret angka
+panjang yang diacak. Jadi pemanen yang mencocokkan lewat komposisi akan yakin ia menemukan
+produk yang tepat, lalu membawa serta nomor pendaftaran karangan.
+
+MANTRA paling licin: mencetak `31028128227329` sedangkan yang asli `01020120227329` — ia
+**meniru bentuknya lalu mengacak digitnya**, sehingga lolos pemeriksaan panjang dan pola.
+Penyaring resolusi juga lolos: keempatnya 1080×1080 rapi.
+
+**Yang menangkapnya:** `in_registry: false` pada nomor yang bentuknya benar tetapi tidak
+ada di registri. Jangan tergoda menganggapnya salah baca lalu menggantinya dengan nomor
+registri — itu justru menanam karangan sebagai fakta. Catat apa adanya dan tandai
+`tampak_sintetis`.
+
+Aturan **`G12`** menegakkannya: nomor **berbentuk sah** yang tidak ada di registri, pada
+gambar sintetis, **wajib dijelaskan di `notes`**. Sebab ada dua penjelasan yang sangat
+berbeda dan pemeriksa tidak bisa memilih — pendaftaran sungguhan yang dicabut (kasus
+PHONSKA, kemasan resmi tertinggal di belakang registri) atau nomor karangan yang meniru
+bentuk aslinya (kasus MANTRA). Yang bisa ditegakkan mesin hanyalah memaksa penjelasannya
+ditulis; manusia yang memutuskan.
+
+Perhatikan mana yang berbahaya: nomor yang bentuknya **rusak** (`0101012822TA3Z`) jelas
+salah dan tidak menipu siapa pun, jadi G12 sengaja tidak berbunyi untuknya. Yang
+berbentuk **sah** justru yang perlu dijaga — sebab kalau ia sempat masuk lapisan rujukan,
+jalur 2 akan menyatakan sebuah produk terdaftar padahal tidak.
+
+Memindai aksara non-Latin di teks yang seharusnya Indonesia itu murah dan tajam.
+
+## 4c. Baris `ditolak` AMAN ditulis — ia tidak memblokir panen berikutnya
+
+Satu pemanen menahan lima merek yang sebenarnya layak panen karena mengira baris `ditolak`
+akan memblokir peran yang sama di putaran berikutnya lewat `G6`. **Itu tidak terjadi.**
+
+`gabung.py` memperlakukan panen berhasil sebagai **pengganti** tolakan lama, dan
+melaporkannya sebagai `DIGANTIKAN`. `G6` di `periksa.mjs` berjalan di atas manifes yang
+sudah digabung, tempat hanya satu baris yang bertahan. Diuji langsung: satu pecahan berisi
+`ditolak`, pecahan lain berisi `mentah` untuk merek+peran yang sama → manifes akhir satu
+baris berstatus `mentah`.
+
+**Jadi selalu tulis baris tolakannya.** Alasan yang menyebut angka dan URL adalah yang
+memungkinkan pemulihan — sembilan prospek pagu 5 MB dipanen ulang persis dari catatannya
+sendiri, nol pemetaan ulang. Menahannya justru membuang informasi.
+
+## 4d. Uji piksel-identik lebih tajam daripada IoU siluet
+
+Keduanya menjawab pertanyaan berbeda, dan yang satu bisa lolos sementara yang lain
+menangkap:
+
+- **IoU siluet** mengukur **bentuk**. Bagus untuk mockup 3D yang memakai model wadah yang
+  sama: SGI 0,998, UPL 1,000.
+- **Piksel-identik** mengukur **pemakaian ulang berkas sungguhan**. Pada 30 packshot Centa
+  Brasindo, IoU tertinggi hanya **0,953** — di bawah ambang 0,92? tidak, di atasnya, tapi
+  jauh dari pola mockup — sehingga penilaian berbasis IoU saja akan menyimpulkan "tidak ada
+  yang dipakai ulang". Padahal TOPTENAN 200/130 SC, BENAPIR 300 EC, dan FENA 200 EC
+  **berbagi satu foto botol dasar**: 51–53% piksel non-putihnya identik bita demi bita, dan
+  pita tutupnya nol selisih.
+
+Pakai keduanya. Dan ingat syarat §4: IoU siluet hanya sah bila latarnya benar-benar
+transparan.
+
 ## 5. Yang tidak akan pernah punya foto kemasan
 
 Saring di depan, jangan diburu:
@@ -164,6 +236,7 @@ tertayang**. Taksiran berbasis "principal ini bersitus" meleset kira-kira dua ka
 | `kenso.co.id` | **Store API** `/wp-json/wc/store/v1/products?per_page=100` | ~~`product-sitemap.xml`~~ **rusak**: 110 dari 112 `<image:loc>` menunjuk berkas tidak ada — peta menulis nama huruf kecil, server peka besar-kecil (`kentindox-website.jpg` 404, `KENTINDOX-WEBSITE.jpg` 200). Store API juga satu-satunya cara memasangkan halaman dwibahasa |
 | `asterindo.co.id` | `/wp-json/wc/store/v1/products?per_page=100` | 35 produk + `images.src`; nama berkas memuat merek |
 | `santani.id` | `sitemap.xml` — tapi `APP_URL` bocor sebagai `http://127.0.0.1:8000` | tukar prefiksnya, 93 URL produk langsung sahih |
+| `katalogcba.com` | `wp-json/wp/v2/posts?per_page=100` (4 panggilan → 314 pos; produknya `post` biasa, bukan CPT). `sitemap_index.xml` **404** — yang benar `wp-sitemap.xml` | Tiap halaman memuat packshot + Brosur JPEG + Brosur PDF sekaligus, ada di **101 dari 101** halaman merek terdaftar. Brosur 1600×2271. Nol pembatasan laju sepanjang ~200 permintaan |
 | `foragro` | `/produk?page=1..6` | `<img>` di halaman daftar sudah menunjuk berkas master; enam GET, nol halaman detail |
 | Danken | `/wp-json/wp/v2/media` | ~~pindaian label `RI.-{nomor}.png`~~ — **klaim ini salah, lihat §7d** |
 
@@ -190,6 +263,37 @@ Sudah dua kali, dan polanya konsisten:
 |---|---|
 | `LARBAN 550 EC` | `LARBAN 500/50 EC` (500 + 50) |
 | `Chloromycin 740 EC` | `CHLOROMYCIN 440/300 EC` (440 + 300) |
+| `CONTESS 80EC` | `CONTESS 30/50 EC` (30 + 50) |
+| `Wilbo Plus 585 EC` | `WILBO PLUS 530/55 EC` (530 + 55) |
+| `AVIATE 75 WG` | `AVIATE 70/5 WG` (70 + 5) |
+| `CHLORMITE 505 EC PLUS` | `CHLORMITE PLUS 459/46 EC` (459 + 45,9) |
+| `SERENDY 28 WP` | `SERENDY 18/10 WP` (18 + 10) |
+| `CORONA PRIMA 325 SC` | `CORONA PRIMA 200/125 SC` |
+| `GANDEWA 550 SC` | `GANDEWA 500/50 SC` |
+
+Ini **aturan, bukan keingintahuan.** Tiga kemasan membuktikannya sendiri dengan mencetak
+kedua sisinya serentak pada satu muka: CONTESS (`80EC` + `30 g/l + 50 g/l`), CHLORMITE
+(`505 EC PLUS` + `459 + 45,9`), dan SERENDY (`28 WP` + `18% + 10%`).
+
+**Ketaksesuaian nama jauh lebih luas dari sekadar penjumlahan.** Satu situs saja
+(katalogcba.com) memberi delapan kejadian dalam empat rupa:
+
+| Rupa | Contoh |
+|---|---|
+| Kadar dijumlahkan | `PURDAN PLUS 6 GR` = `PURDAN PLUS 3/3 GR` |
+| Kadar berbeda untuk pendaftaran yang sama | `GERXONE 288` = `276` · `CENTATOP 288` = `276` |
+| Ejaan | `RONDAPGOLD` = `RONDA GOLD` |
+| **Nama sama sekali berbeda** | `STALLONE 481 SL` = `NEW LALANG UP 481 SL` · `AGROTHANE 80 WP` = `PRIMATHANE 80 WP` · `SANDY 325/100 SL` = `JOS GANDOS 325/100 SL` |
+
+Delapan dari sepuluh terpecahkan lewat **nomor tercetak**. Nama tidak pernah jadi kunci;
+nomor yang jadi kunci. Dan slug pun bukan identitas: `LAMBADA 18 EC` berslug
+`hipomec-63-wp`, `EMACEN 30 EC` berslug `emacen-plus-55-ec`.
+
+**Saudara kembarnya: nama dagang MEMBALIK nisbahnya.** Kemasan `ACERO 40/4WP` vs registri
+`ACERO 4/40 WP`; `XENON 60/20 WG` vs `XENON 20/60 WG`. Nomor pendaftarannya **cocok
+persis** pada keduanya — jadi ini bukan produk berbeda, dan menegaskan koreksi di §7:
+kadar terbalik adalah alasan memeriksa nomornya, bukan menolak. Nomor yang memutuskan apa
+yang dibalik namanya.
 
 Nama tidak mengikat apa pun; nomor pendaftaran yang mengikat. Pencarian berbasis nama
 akan melewatkan keduanya.
@@ -262,8 +366,16 @@ Mengisi `printed_registration` dari nama berkas itu akan menanam tujuh klaim pal
 seluruhnya lolos `G9`, sebab nomornya memang terdaftar — hanya bukan milik produk yang
 dipasangi. Pemanennya mengosongkannya, dan itu keputusan yang benar.
 
+**Dan kaitannya lebih longgar lagi dari itu: halaman produk bisa memasang packshot
+produk LAIN.** Di Danken, `RI.-01030120186024-3.png` pada halaman DKBenta Plus ternyata
+**DK IURON 80 WP**, dan `RI.-01030120186024-2.png` pada halaman DKMektin ternyata
+**DK AUREVA 35 WP** — tiga produk berbeda tersangkut pada satu nomor berkas. Berkas
+`DK-{Merek}.png` dari pustaka media benar; yang berawalan `RI.` tidak bisa dipercaya dari
+arah mana pun, baik namanya maupun halaman yang memuatnya.
+
 **Aturannya: `printed_registration` diisi dari yang TERCETAK DI KEMASAN, dibaca dari
-gambarnya.** Nama berkas, slug URL, dan metadata CMS bukan sumber yang sah — ketiganya
+gambarnya** — dan mereknya ditentukan dari yang tercetak di kemasan itu juga, bukan dari
+halaman tempat ia dipasang. Nama berkas, slug URL, dan metadata CMS bukan sumber yang sah — ketiganya
 bisa berupa artefak unggahan. Satu pengecualian di Danken lolos justru karena dibaca dari
 gambarnya: DKMESONIN 500/50 SC mencetak `RI. 01030120144979` yang terbaca pada
 pembesaran 8×.
@@ -299,8 +411,48 @@ Kemasan PUMA 160 SL mencetak "PT. WIHADIL" di katalog Adil Makmur. Sebaliknya, k
 CN-G mencetak "Distributor : CV. SAPROTAN UTAMA" padahal registrannya PT — kemasan
 menyebut peran distributor, bukan registran.
 
+Dan sekali, ketaksesuaiannya **sistematis, bukan sesekali**: seluruh 30 kemasan Centa
+Brasindo mencetak "PT. CBA CHEMICAL INDUSTRY" sedangkan registri mencatat "PT. CENTA
+BRASINDO ABADI CHEMICAL INDUSTRY". Itu konvensi merek dagang principal, bukan kekeliruan.
+
 Pelajarannya: **`brand_key` yang menentukan principal, bukan halaman situs dan bukan
 tulisan di kemasan.**
+
+## 7g. Katalog tidak menunjuk berkas terbaik di embernya sendiri
+
+Ember Strapi DGW menyimpan awalan ukuran (`xsmall/` … `xlarge/`) yang merekam **kelas
+ukuran unggahan aslinya**, bukan ukuran berkasnya sekarang — dan beberapa produk diunggah
+dua kali dengan besar-kecil huruf berbeda. `xsmall/BATARA.jpg` 355×356, sedangkan
+`large/BATARA.jpg` **1310×3008**: produk yang sama, dua-duanya ada di ember, dan
+katalognya menunjuk yang kecil.
+
+Menyapu ember **menurut nama dasar** alih-alih memercayai `/katalog-produk` menaikkan
+cacah gambar ≥800 px dari **3 dari 50** jadi **31 dari 58**.
+
+Dua jebakan lanjutan di dalamnya:
+
+- **`large/large_X.png` lebih besar dalam BYTE tetapi lebih kecil dalam PIKSEL** daripada
+  `large/X.png`. Urutkan menurut piksel, bukan ukuran berkas.
+- **Saring `*LOGO*` sebelum mengurutkan menurut piksel.** `xlarge/ERASOR LOGO.png`
+  berukuran 20263×8489 dan akan memuncaki urutan resolusi mana pun. Batas nisbah sisi 3,0
+  plus saringan nama berkas membersihkannya.
+
+Dan poster promo yang sudah dicatat di §4 ternyata **bisa dipulihkan**: tujuh produk Delta
+yang gambar katalognya memang poster Instagram `beli 1 gratis 1` (seluruhnya 1080×1080,
+jadi penyaring resolusi memilihnya lebih dulu) punya packshot sungguhan **di ember yang
+sama** — IMPRESSIVE 50 WP dan DECAFEN 250 EC dipulihkan begitu, pada 1540×3000 dan
+1066×2432.
+
+## 7h. Packshot di dalam dokumen orang lain
+
+Umpan artikel Nufarm menerbitkan ulang gambar bernomor dari pindaian terbitan penyuluhan:
+empat berkas membawa keterangan yang terbakar ke gambarnya, seperti *"Gambar 4. Fungisida
+Sumilex 50 WP"*. Bendanya nyata dan fotonya asli — yang bermasalah rantai penerbitannya.
+
+Tandai `quality.gambar_dari_dokumen`, dan `source.rights` wajib `pihak_ketiga`. Aturan
+`G13` menegakkan keduanya dan menutup jalan ke `terverifikasi`: yang menerbitkannya bukan
+pemegang pendaftaran, jadi tidak ada yang bisa dimintai izin, dan keterangan gambarnya
+bisa saja keliru menamai produknya.
 
 ## 7f. Watermark bisa tinggal sesobek dan hanya tampak setelah peregangan
 
@@ -356,6 +508,12 @@ berkas bantu di direktori scratchpad. Beri awalan sendiri pada tiap berkas kerja
 dan Mo 0,001%; kemasannya mencetak Zn 0,3% dan Mo 0,12% — dan **kemasanlah yang cocok
 persis** dengan hasil analisa uji registri. Baca gambarnya, jangan teks halamannya.
 
+**Turunan bisa lebih kecil DARI master, dan URL yang ditawarkan situs bukan yang terbaik.**
+`featuredImage` Elementor di katalogcba.com menyajikan turunan `-1024x1024` untuk 22 dari 30
+packshot, sedangkan masternya sampai 1600×1600. Penawarnya sama dengan Prima Agro: buang
+sufiks `-WxH`, minta berkas polosnya. Perhatikan arahnya berlawanan dengan catatan MKD di
+bawah — di sana pengubah ukuran tidak memperbesar, di sini URL bawaan justru mengecilkan.
+
 **Pengubah ukuran tidak selalu memperbesar.** Pada MKD, `?w=1920`, `?w=2500`, dan
 `?w=4000` mengembalikan berkas byte-identik — 1920 lebar master sungguhan. Minta besar,
 lalu percayai apa yang datang.
@@ -397,3 +555,25 @@ sudah masuk; 47 merek registri sisanya tidak punya halaman sama sekali.
 **`pt-sgi.com`** — `zat_aktif` dari API kotor: beberapa nilai berspasi di depan, satu
 bertab (`Flurokspir meptil 520\tg/l`), satu bersatuan salah (`Imidacloprid 25 EC`). Cukup
 untuk membuktikan kecocokan, tidak cukup untuk dijadikan kunci.
+
+
+## 13. Prospek yang sudah dipetakan, tinggal dipanen
+
+Tercatat di sini alih-alih hilang di laporan agen. Semuanya sudah diverifikasi lewat nomor
+tercetak; yang menghalangi hanya pagu 30 merek per agen.
+
+**katalogcba.com** — lima merek yang pencocokan nama akan menolak, tetapi nomornya
+memutuskan:
+
+| `brand_key` | nomor tercetak | halaman situs |
+|---|---|---|
+| `gerxone-276-sl` | `RI. 01030120113990` | `/gerxone-288-sl/` |
+| `primaxone-plus-276-sl` | `01030120113991` | `/primaxone-plus-280-sl/` |
+| `ronda-gold-525-sl` | `01030120124437` | `/rondap-gold-525-sl/` |
+| `purdan-plus-3-3-gr` | `01010120093242` | `/purdan-plus/` |
+| `new-lalang-up-481-sl` | `01030120237912` | `/stallone-481-sl/` |
+
+**Lainnya:** ~42 merek Delta Giri Wacana punya objek di ember GCS · ~9 merek Nufarm punya
+gambar di umpan artikel · Prima Karya 44 merek cocok beresolusi 1080×1080 · SGI 58 merek ·
+Saprotan 18 merek tak-ambigu · MKD 13 · Prima Agro 15 · brosur label PT-AMA dan Kristalindo
+(`brocure/BROSUR-*.jpg.webp`, `brosur_*.jpg`) belum tersentuh sama sekali.
