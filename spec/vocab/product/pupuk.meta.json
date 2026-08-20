@@ -6,7 +6,7 @@
       "id": "Registri produk pupuk terdaftar"
     },
     "scope": {
-      "id": "7.196 pupuk terdaftar: 5.875 dari basis SIMPEL terkini dan 1.321 dari basis lama SIMPUK 2020. 5.130 di antaranya punya composition, diturunkan dari kolom hasil analisa uji registri SIMPEL — kolom itu luput saat penarikan pertama diekstrak ke CSV dan diisi belakangan oleh spec/tools/isi-komposisi-pupuk.mjs. Yang tidak punya: 745 baris SIMPEL yang analisanya hanya cacah mikroba atau sifat fisik, dan seluruh 1.321 baris basis lama yang sumbernya memang tidak memuat analisa. Aturan L14 menolak baris tanpa composition dipakai menghitung hara yang benar-benar diberikan."
+      "id": "7.196 pupuk terdaftar: 5.875 dari basis SIMPEL terkini dan 1.321 dari basis lama SIMPUK 2020. 5.130 di antaranya punya composition, diturunkan dari kolom hasil analisa uji registri SIMPEL — kolom itu luput saat penarikan pertama diekstrak ke CSV dan diisi belakangan oleh spec/tools/isi-komposisi-pupuk.mjs. Yang tidak punya: 745 baris SIMPEL yang analisanya hanya cacah mikroba atau sifat fisik, dan seluruh 1.321 baris basis lama yang sumbernya memang tidak memuat analisa. Aturan L14 menolak baris tanpa composition dipakai menghitung hara yang benar-benar diberikan. 667 baris tidak punya registration.number sama sekali: kolom nomor pada baris registri sumbernya memang kosong (26 null di SIMPEL, 641 string kosong di SIMPUK 2020), dinyatakan lewat number_absent_in_source. Sebelumnya kekosongan itu diisi karangan \"TIDAK-TERCANTUM\" yang lolos skema sebagai kalau-kalau nomor. Lihat D37."
     },
     "lifecycle": {
       "version": "0.1.0",

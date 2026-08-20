@@ -145,6 +145,21 @@ Lampiran I.A no. 93. Kemiripan nama bukan bukti.
 - **Nama dagang belum terpetakan.** Registri menyimpan nama produk terdaftar; kemasan
   sering memakai nama jualan yang berbeda. Ini lubang terbesar jalur ini dan tidak
   bisa ditutup dari data yang ada.
+- **Nomor pendaftaran bukan kunci tunggal.** 175 nomor pestisida dan 96 nomor pupuk
+  dipakai lebih dari satu baris registri — sebagian salinan yang cuma beda kapitalisasi,
+  tetapi tidak semuanya: `01010120165429` dipegang `DKLUFEM 50 WG` sekaligus
+  `DKLUFEM 10/40 WG`. Layar rincian tidak boleh menganggap satu nomor menunjuk satu
+  produk. Rinciannya di [D37](../spec/03-keputusan-desain.md).
+- **1.236 baris tidak akan pernah punya foto kemasan.** Izin bahan teknis dan izin
+  ekspor memakai skema penomoran sendiri dan produknya tidak beredar eceran. Ditandai
+  `registration.number_scheme = "bahan-teknis"`; jalur ini mengecualikannya menurut
+  kelas, bukan menurut tebakan, supaya kemiskinan gambar tidak terbaca sebagai
+  kegagalan panen.
+- **Kemasan bisa lebih benar daripada registri.** PAENAMAXI WP mencetak
+  `RI. 01020120227340` sedangkan baris registrinya `01.01.01.2022.177`. Tiga bukti bebas
+  menunjuk barisnyalah yang rusak — lihat [D37](../spec/03-keputusan-desain.md). Layar
+  yang menyatakan "nomor di kemasan tidak terdaftar" karena itu harus berhati-hati:
+  yang benar adalah menyebut ketidakcocokannya, bukan menyimpulkan kemasannya palsu.
 
 ---
 

@@ -6,7 +6,7 @@
       "id": "Registri produk pestisida terdaftar"
     },
     "scope": {
-      "id": "Seluruh 7.724 formulasi pestisida terdaftar Kementan per 19 Agustus 2026, termasuk rumah tangga, pengendalian vektor, pengawet kayu, dan peternakan. Registri portal hanya memuat izin yang MASIH BERLAKU — kedaluwarsa terawal 12 Oktober 2026 — sehingga produk yang izinnya habis hilang begitu saja dari sumber. Itu alasan snapshot ini disimpan: catatan musim lalu bisa menunjuk produk yang sudah tidak ada di portal."
+      "id": "Seluruh 7.724 formulasi pestisida terdaftar Kementan per 19 Agustus 2026, termasuk rumah tangga, pengendalian vektor, pengawet kayu, dan peternakan. Registri portal hanya memuat izin yang MASIH BERLAKU — kedaluwarsa terawal 12 Oktober 2026 — sehingga produk yang izinnya habis hilang begitu saja dari sumber. Itu alasan snapshot ini disimpan: catatan musim lalu bisa menunjuk produk yang sudah tidak ada di portal. Kolom registration.number disimpan apa adanya, termasuk 9 nomor yang membawa debris tipografis dari registrinya sendiri (titik yatim, apostrof Excel, CR/LF); bentuk seragamnya ada di number_normalized. 1.236 baris berskema bahan-teknis/ekspor — produknya tidak beredar dalam kemasan eceran, jadi nomornya tidak akan pernah muncul di foto kemasan. 15 nomor tidak terurai jadi skema mana pun dan dibiarkan utuh. Lihat D37."
     },
     "lifecycle": {
       "version": "0.1.0",

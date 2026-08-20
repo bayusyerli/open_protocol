@@ -152,6 +152,7 @@ linter — dan diuji di `fixtures-invalid/`.
 | `L27` | Komposisi produk yang melampaui 1.000 g per kg/L diperingatkan — mustahil secara fisik, artinya sumbernya keliru |
 | `L28` | Komoditas hanya boleh memakai skala fase yang memang mencakupnya — tautannya wajib sepakat dua arah |
 | `L29` | Rujukan tidak boleh menunjuk entitas berstatus `superseded` — entitas kembar dipertahankan agar ejaan aslinya bisa ditelusuri, bukan agar dipakai lagi |
+| `L30` | Kolom nomor pendaftaran tidak boleh menampung teks yang bukan nomor — kekosongan dinyatakan `number_absent_in_source`, bukan dikarang jadi penanda yang terbaca sebagai izin edar |
 
 Aturan-aturan ini bukan hiasan. Saat 382 bahan aktif dimasukkan, `L1` langsung menangkap
 tabrakan `key` pada **belerang** — yang ternyata terdaftar sebagai hara sekaligus fungisida.

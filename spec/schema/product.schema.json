@@ -52,14 +52,34 @@
     },
     "registration": {
       "type": "object",
-      "description": "Tanpa ini produk tidak boleh diterbitkan. Untuk Indonesia otoritasnya KEMENTAN.",
+      "description": "Tanpa ini produk tidak boleh diterbitkan. Untuk Indonesia otoritasnya KEMENTAN. Nomor boleh tidak ada hanya kalau baris registri otoritasnya sendiri yang tidak memuatnya — dinyatakan lewat number_absent_in_source, bukan dengan mengarang penanda di kolom number.",
       "properties": {
         "authority": {
           "type": "string"
         },
         "number": {
           "type": "string",
-          "minLength": 3
+          "minLength": 3,
+          "description": "Apa adanya sebagaimana ditulis otoritas, termasuk titik, spasi, dan debris tipografisnya. Tidak pernah ditimpa hasil penyeragaman."
+        },
+        "number_normalized": {
+          "type": "string",
+          "minLength": 3,
+          "description": "Bentuk seragam untuk dicocokkan ke nomor yang tercetak di kemasan: hanya huruf dan angka, awalan RI dibuang. Diturunkan spec/tools/periksa-nomor-registri.mjs, tidak pernah disunting tangan."
+        },
+        "number_scheme": {
+          "type": "string",
+          "description": "Skema penomoran yang dipakai baris ini. 'bahan-teknis' menandai izin bahan teknis dan izin ekspor — produknya tidak beredar dalam kemasan eceran, jadi nomornya tidak pernah muncul di foto kemasan.",
+          "enum": [
+            "formulasi",
+            "bahan-teknis",
+            "pupuk",
+            "tak-terurai"
+          ]
+        },
+        "number_absent_in_source": {
+          "description": "Baris registri otoritasnya memuat kolom nomor yang kosong. Bukan 'belum diperiksa' dan bukan 'tidak terbaca' — sumbernya yang kosong.",
+          "const": true
         },
         "valid_until": {
           "type": "string",
@@ -85,8 +105,29 @@
       },
       "required": [
         "authority",
-        "number",
         "status"
+      ],
+      "anyOf": [
+        {
+          "required": [
+            "number"
+          ]
+        },
+        {
+          "required": [
+            "number_absent_in_source"
+          ]
+        },
+        {
+          "properties": {
+            "status": {
+              "const": "unverified"
+            }
+          },
+          "required": [
+            "status"
+          ]
+        }
       ],
       "additionalProperties": false
     },

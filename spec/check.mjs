@@ -224,6 +224,33 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L30 — kolom nomor pendaftaran tidak boleh dipakai menampung teks yang bukan nomor.
+    // 667 baris pupuk pernah memuat karangan "TIDAK-TERCANTUM" di sana; karena skemanya
+    // hanya menuntut minLength 3, teks itu lolos sebagai kalau-kalau nomor dan ikut
+    // terbaca sebagai izin edar yang bisa dicocokkan ke kemasan. Kekosongan sekarang
+    // dinyatakan lewat number_absent_in_source, dan aturan ini menjaganya tetap begitu.
+    if (typeof doc.id === 'string' && doc.id.startsWith('op:prd:') && doc.registration) {
+      const reg = doc.registration;
+      if (reg.number !== undefined && !/\d/.test(reg.number)) {
+        fail(file, 'L30-nomor-bukan-nomor', `registration.number berisi "${reg.number}" yang tidak memuat satu angka pun. Kalau registri sumbernya memang tidak mencantumkan nomor, nyatakan dengan number_absent_in_source, jangan mengarang penanda yang terbaca sebagai nomor.`);
+      }
+      if (reg.number !== undefined && reg.number_absent_in_source) {
+        fail(file, 'L30-nomor-bertentangan', 'registration punya number sekaligus number_absent_in_source. Keduanya tidak bisa benar bersamaan.');
+      }
+      if (reg.number !== undefined && reg.number_normalized !== undefined) {
+        const seragam = String(reg.number).toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/^RI/, '');
+        if (reg.number_normalized !== seragam) {
+          fail(file, 'L30-seragam-menyimpang', `registration.number_normalized "${reg.number_normalized}" bukan hasil penyeragaman dari "${reg.number}" (seharusnya "${seragam}"). Kolom seragam diturunkan spec/tools/periksa-nomor-registri.mjs, bukan disunting tangan.`);
+        }
+      }
+      // Peringatan, bukan galat: bentuk yang tak terurai memang begitu di registrinya, dan
+      // tarikan ulang 20 Agustus 2026 mengembalikannya persis. Menolaknya berarti membuang
+      // baris yang sah hanya karena nomornya rusak di hulu.
+      if (reg.number_scheme === 'tak-terurai') {
+        warn(file, 'L30-nomor-tak-terurai', `registration.number "${reg.number}" tidak terurai jadi skema penomoran mana pun. Nilainya setia pada registri; yang perlu ditinjau adalah sumbernya sebelum nomor ini dipakai mencocokkan kemasan.`);
+      }
+    }
+
     // L28 — tautan skala fase harus sepakat dua arah. Komoditas boleh menunjuk skala
     // bawaannya, tetapi skala itu wajib mengakui komoditasnya. Tanpa ini, kedua sisi
     // bisa menyimpang diam-diam dan varietas mewarisi skala yang bukan cakupannya.

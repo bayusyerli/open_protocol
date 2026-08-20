@@ -685,6 +685,108 @@ fenologinya belum diperiksa terhadap skala ini.
 
 ---
 
+### D37 — nomor pendaftaran yang menyimpang dipertahankan, karena yang menyimpang registrinya
+
+2.048 dari 14.920 nomor pendaftaran tidak cocok dengan dua bentuk yang dikira baku — pestisida
+14 digit rapat dan pupuk empat kelompok bertitik. Dugaan awalnya cacat ekstraksi; titik di depan
+pada `.01030120083156` terlihat seperti artefak yang khas.
+
+**Bukan.** Perbandingan baris demi baris terhadap respons JSON mentah 19 Agustus 2026, lalu
+penarikan ulang 20 Agustus 2026, mengembalikan seluruh 1.376 bentuk menyimpang **persis** —
+titik di depan, titik di belakang pada `01010120165526.`, apostrof pelindung teks ala Excel pada
+`'01010120124320`, dan `\r\n` di ekor `01030120248599`. Kementan sendiri yang menyimpannya
+begitu. Seluruh sunting yang pernah dilakukan penarikan hanya lima: empat spasi tepi dan satu
+CR/LF yang terpangkas — dan itu pun melanggar pasal 4, karena memangkas tanpa menyimpan aslinya.
+
+**Yang dikira menyimpang sebagian besar bukan menyimpang, melainkan skema kedua.** 1.236 baris
+memakai bentuk `KK.TTTT.NNN` — 7 sampai 10 digit. 1.235 di antaranya izin bahan teknis atau
+ekspor: 925 berperihal Bahan Teknis, 310 berperihal Ekspor. Sisa satunya, `042007211`
+**IPA GLIFOSAT 62 TC**, berperihal "Ulang Ganjil" — tetapi `TC` pada namanya berarti *technical
+concentrate*, jadi ia bahan teknis juga; yang beda cuma label perihalnya.
+`BidangPenggunaanNama` kosong pada 1.223 dari 1.236 — masuk akal, bahan teknis tidak punya
+bidang penggunaan lapangan. Akibatnya untuk jalur 2:
+**produk-produk ini tidak pernah beredar dalam kemasan eceran**, jadi nomornya tidak akan pernah
+muncul di foto kemasan. Mencocokkannya bukan pekerjaan yang gagal; ia pekerjaan yang tidak ada.
+Kolom `number_scheme` menandainya supaya jalur 2 bisa mengecualikannya menurut kelas, bukan
+menurut tebakan.
+
+**Basis lama SIMPUK 2020 tidak memakai bentuk lain.** Dugaan bahwa era pendaftaran berbeda
+memakai penomoran berbeda tidak terbukti: 1.321 baris SIMPUK memakai `AA.BB.TTTT.NNN` yang sama
+dengan SIMPEL, dengan kodebuku kelompok pertama yang sama pula — `01` anorganik, `02` organik,
+`03` hayati, `04` pembenah tanah. Yang khas SIMPUK hanya empat spasi tepi dan lima nomor tak
+baku, satu di antaranya baris uji yang lolos ke produksi: `01/Test/2018`, merek
+**"Intel (Test)"**.
+
+Pad nomor urutnya sendiri tidak konsisten di kedua era: `01.03.2018.049` dipadkan jadi tiga
+angka, `02.02.2024.6` tidak dipadkan sama sekali. Karena itu penyeragaman tidak menyentuh pad —
+ia hanya membuang pemisah.
+
+**Nomor pestisida ternyata memerikan dirinya sendiri.** Kelompok kedua adalah digit jenis, dan
+kodebuku itu bisa dipulihkan dari sebaran 6.474 nomor formulasi: `01` insektisida, `02`
+fungisida, `03` herbisida, sampai `14` akarisida. Konsistensinya di atas 99% pada golongan
+besar. Itu memberi **pemeriksaan silang gratis**: nomor yang digit jenisnya melawan jenis yang
+dinyatakan barisnya sendiri patut dicurigai. 27 baris begitu, setelah pasangan yang sebenarnya
+subkategori wajar — digit `08` memayungi Pestisida Rumah Tangga sekaligus Repelen — disaring
+keluar dengan ambang 1%.
+
+**Kasus PAENAMAXI WP diputuskan, dan yang keliru registrinya.** Kemasannya mencetak
+`RI. 01020120227340`; barisnya di registri `01.01.01.2022.177`. Tiga bukti bebas satu sama lain
+menunjuk arah yang sama:
+
+1. Digit jenis pada nomor registri `01` berarti insektisida, padahal barisnya sendiri menyatakan
+   **Fungisida**. Nomor di kemasan berdigit `02` — fungisida, cocok.
+2. Nomor urut ternyata **pencacah tunggal yang menaik**, bukan cacahan per tahun. Rentang 2022
+   adalah 7273–7724. `177` adalah satu-satunya nilai 2022 di bawah 1.000 dari 447 baris; `7340`
+   jatuh di tengah rentangnya.
+3. `7340` justru **lubang yang kosong**: 7335, 7336, 7337, 7338, 7339, 7341, 7342, 7343, 7344,
+   dan 7345 semuanya terpakai. Nomor di kemasan mengisi persis slot yang hilang.
+
+Jadi barisnya rusak, kemasannya benar — dan `printed_registration.in_registry=false` yang
+dicatat panen gambar adalah pencatatan yang **tepat**, bukan kekeliruan pencocokan.
+Nilai `01.01.01.2022.177` tetap disimpan apa adanya; yang ditambahkan hanya catatan ini.
+Perbaikannya bukan wewenang repositori — verifikasi ke PVTPP yang berhak mengubahnya.
+
+**19 nomor tidak bisa diuraikan dan tidak ditebak** — 15 pestisida, 4 pupuk. `0501010120175803` tampak seperti
+`01010120175803` dengan `05` menempel di depan; `1010120217255` tampak seperti nomor 14 digit
+yang kehilangan nol di depannya. Keduanya menguraikan diri jadi nomor yang masuk akal — tetapi
+tidak satu pun kembarannya ada di registri sebagai pembanding, jadi keduanya tetap dugaan.
+`number_scheme` menandainya `tak-terurai`, `L30` memperingatkannya, dan nilainya dibiarkan utuh.
+Kemiripan bentuk bukan bukti — sama seperti `"Chlorpyrifos methyl"` yang sengaja tidak digabung
+di `04b91c6`.
+
+**Nomor urut tidak dipadkan nol.** Sempat dipertimbangkan menyeragamkan `0101011978335` jadi
+14 digit `01010119780335`. Panen gambar kemasan membantahnya: **LANNATE 25 WP mencetak
+`RI. 0101011978335` apa adanya**, 13 digit, dan cocok ke registri tanpa perlakuan apa pun.
+Kemasan mencetak nomor sebagaimana registri menyimpannya. Penyeragaman karena itu hanya
+membuang yang bukan huruf-angka dan awalan `RI` — resep yang sama persis dengan `rapikan()`
+di `gambar_produk/periksa.mjs`, supaya kedua sisi tidak menyeragamkan dengan dua cara.
+
+**`TIDAK-TERCANTUM` dicabut.** 667 baris pupuk memuat teks itu di `registration.number` — 26
+dari SIMPEL yang kolomnya `null`, 641 dari SIMPUK yang kolomnya string kosong. Karena skemanya
+hanya menuntut `minLength: 3`, teks karangan itu lolos sebagai kalau-kalau nomor. Yang dipilih:
+`number` **dihilangkan**, dan kekosongannya dinyatakan lewat `number_absent_in_source: true`.
+
+Yang **tidak** dipilih: menyetel `status: "unverified"`. Status ketiga ratus baris itu diketahui
+dan benar — 26 masih berlaku, 641 sudah kedaluwarsa, keduanya dari tanggal yang nyata di
+registri. Menukarnya jadi `unverified` akan membuang fakta yang diketahui demi menyatakan fakta
+yang lain. Yang tidak diketahui hanya nomornya, jadi hanya nomor yang dikosongkan. `unverified`
+tetap dipakai di tempat yang memang cocok — tiga contoh di `vocab/product.json`, yang ternyata
+menyimpan penyakit yang sama dengan penanda berbeda, `"BELUM-DIVERIFIKASI"`, dan sudah
+berstatus `unverified` sejak awal sehingga penandanya cuma pengulangan. `L30` menangkapnya
+pada jalannya yang pertama.
+
+Ini melunakkan D12 dengan sengaja: nomor boleh tidak ada, tetapi hanya kalau **baris registri
+otoritasnya sendiri** yang tidak memuatnya — klaim yang bisa diperiksa ke sumber, bukan pintu
+keluar yang bisa dipakai siapa saja.
+
+**175 nomor pestisida dan 96 nomor pupuk dipakai lebih dari satu baris.** Sebagian salinan yang
+cuma beda kapitalisasi atau spasi ekor, tetapi tidak semuanya — `01010120165429` dipegang
+`DKLUFEM 50 WG` sekaligus `DKLUFEM 10/40 WG`. Nomor pendaftaran karena itu **bukan kunci
+tunggal**, dan jalur 2 tidak boleh menganggap satu nomor menunjuk satu produk. Belum ditindak;
+dicatat di sini supaya tidak ditemukan lagi dari nol.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
