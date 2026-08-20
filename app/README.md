@@ -10,6 +10,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `jalur-3.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
 | `jalur-4.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
 | `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
+| `jalur-6.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
 
 `varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
 sendiri, dan di jalur 2 kalau yang dicari ternyata varietas — satu perender, dua
@@ -47,6 +48,7 @@ peramban:
 | 3 · pupuk | 3 | 67 KB | 48,0 KB |
 | 4 · varietas | 2 | 63 KB | 47,7 KB |
 | 5 · resep | 2 | 11 KB | 7,9 KB |
+| 6 · resep | 2 | 12 KB | 7,9 KB |
 
 Tidak satu pun berkas melewati 48 KB. Itu bukan kebetulan: anggaran itu ditegakkan
 `spec/tools/bangun-indeks.mjs` saat memecah indeksnya.
@@ -129,6 +131,35 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
 - **Bahan bersyarat membawa syaratnya.** Molase, urine ternak, media serealia, dan
   inokulum alam bebas ditandai beserta alasannya — status tanpa alasan adalah perintah
   tanpa sebab, dan itu yang paling mudah diabaikan.
+
+### Khusus jalur 6
+
+Jalur ini satu-satunya yang **dibangun untuk tidak menganjurkan**. Untuk pestisida,
+larangannya tidak berhenti di peredaran: Pasal 77 ayat (1) menyebut “mengedarkan
+**dan/atau menggunakan**”, kata yang tidak muncul di sisi pupuk, dan tidak ada pasal
+yang sepadan dengan Pasal 72.
+
+- **Pintunya membuka dengan pasalnya**, bukan menutup dengannya. Pasal 75, 76 ayat
+  (2), 77 ayat (1), dan 123 tercetak sebelum apa pun yang bisa dibuka.
+- **Bacaan Pasal 77 ayat (1) dinyatakan belum terjawab.** Rangkaian katanya bisa
+  kumulatif maupun alternatif; itu pertanyaan hukum, bukan agronomi. Layar menyatakan
+  status apa adanya, menandai `own_use_only`, dan **tidak menyimpulkan aman**.
+- **Tidak pernah jadi cabang “yang bisa kamu pakai” dari jalur 1.** Ia berdiri
+  sendiri; tautan di kaki halaman diberi label status, bukan ajakan.
+- **Kriteria yang mengaku batasnya ditampilkan apa adanya.** PGPR: *“Tanpa
+  laboratorium tidak bisa dipastikan. Larutan keruh saja bukan bukti.”* — kriteria
+  pelepasan yang menyatakan dirinya tidak bisa dipenuhi di kebun.
+- **PHI selalu menyebut dasarnya.** Keempat angkanya `precautionary_default` — bawaan
+  yang sengaja berhati-hati, bukan hasil uji residu. Kartunya berjudul demikian.
+- **Biosaka berhenti sebelum dosis.** Kosakata memuat 40 mL/L; layar sengaja tidak
+  menampilkannya, karena tanpa kriteria pelepasan sediaan itu tidak bisa dibakukan —
+  dan dosis atas sesuatu yang isinya tidak diketahui bukan takaran melainkan tebakan.
+  Layar mengatakan penahanan itu disengaja.
+- **Dua bahan terlarang ikut ditampilkan**, di bawah pemisah, dengan penolakan `L19`
+  lebih dulu — bukan disembunyikan. Yang mencarinya harus sampai ke alasannya; kalau
+  hasil pencariannya kosong, ia akan mencari di tempat lain yang tidak menjelaskan
+  apa pun. Tidak ada dosis, tidak ada cara pakai, dan satu jalan keluar ke resep yang
+  punya kriteria pelepasan.
 
 ### Khusus jalur 4
 

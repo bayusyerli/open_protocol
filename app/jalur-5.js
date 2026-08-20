@@ -70,12 +70,19 @@ const OPERATOR = { '>=': '≥', '<=': '≤', '>': '>', '<': '<', '==': '=' };
  * biakan MOL memakainya dengan alasan tertulis "tidak ada dasar mengukurnya di kebun" —
  * dan mencetaknya sebagai ambang mengubah ketiadaan ambang jadi ambang.
  */
+// Sebagian pembandingan KATEGORIK, bukan berangka: patogenitas pada tanaman uji
+// dibandingkan dengan "negative". Melewatkannya ke pemformat angka menghasilkan NaN
+// dan mencetak "Patogenitas pada tanaman uji = NaN" di layar.
+const KATEGORI = { negative: 'negatif', positive: 'positif' };
+
 function pembanding(x) {
   if (!x.ubah) return null;
-  const kosong = x.nilai == null || (x.operator === '>=' && Number(x.nilai) === 0);
+  const angka = typeof x.nilai === 'number';
+  const kosong = x.nilai == null || (angka && x.operator === '>=' && x.nilai === 0);
   if (kosong) return { teks: x.ubah, berambang: false };
   const sat = satuanTerbaca(x.satuan);
-  return { teks: `${x.ubah} ${OPERATOR[x.operator] ?? x.operator} ${angkaId(x.nilai)}${sat ? ' ' + sat : ''}`, berambang: true };
+  const nilai = angka ? angkaId(x.nilai) : (KATEGORI[x.nilai] ?? String(x.nilai));
+  return { teks: `${x.ubah} ${OPERATOR[x.operator] ?? x.operator} ${nilai}${sat ? ' ' + sat : ''}`, berambang: true };
 }
 
 let daftarResep = null;
