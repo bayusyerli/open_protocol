@@ -21,7 +21,7 @@
 | Lapis | Keadaan | Bukti |
 |---|---|---|
 | **1 · Ontologi** | **Matang** | 21 skema di `spec/schema/`, kosakata terkurasi + registri Kementan, pemeriksa `L1`–`L29` beserta uji negatifnya, 52/52 pemeriksaan angka lolos |
-| **2 · Protokol** | **Kosong** | Tidak ada `protocol.schema.json`, tidak ada contoh, tidak ada permukaan |
+| **2 · Protokol** | **Berskema, satu protokol** | `protocol.schema.json`, aturan `L30`–`L33`, `L3` diperluas ke dokumen protokol, dan satu protokol cabai empat langkah. Belum ada permukaan |
 | **3 · Eksekusi** | **Berskema, tanpa permukaan** | `plot`, `cycle`, `step` lengkap; 14 contoh nyata cabai, kopi, dan udang; nol layar untuk membuatnya |
 
 Permukaan yang berjalan seluruhnya milik lapisan rujukan: **enam jalur** baca-saja di
@@ -60,8 +60,8 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 | Modul | Fase | Isi | Bergantung pada |
 |---|---|---|---|
 | **M0 · Trust layer** | 1 | Kadensi penyegaran registri, pendapat hukum, lisensi, review agronom | — |
-| **MI · Instrumentasi** | 2 | Ukur repeat use dan waktu ke jawaban pada enam jalur | — |
-| **M1 · Protokol** | 3 (prasyarat) | Skema Lapis 2, aturan pemeriksa, satu protokol cabai nyata | M0 selesai untuk jalur 6 |
+| **MI · Instrumentasi** | 2 | **Selesai** — lihat [11-instrumentasi.md](11-instrumentasi.md) | — |
+| **M1 · Protokol** | 3 (prasyarat) | **Selesai** — skema Lapis 2, `L30`–`L33`, satu protokol cabai empat langkah | M0 selesai untuk jalur 6 |
 | **M2 · Rencana musim** | 3 | Protokol + Plot + tanggal → `Cycle` + `Step[] mode=planned` | M1 |
 | **M3 · Realisasi & simpangan** | 3 | `Step mode=actual`, alasan simpangan, bukti lapangan | M2 |
 | **M4 · Berkas bukti** | 3 | `Cycle` + `Step[]` → dokumen siap audit | M3 |
@@ -174,31 +174,32 @@ fitur yang dibuang, melainkan fitur yang menunggu jalur datanya.
 
 ---
 
-## 5. Utang yang harus lunas sebelum fase ketiga
+## 5. Utang yang sudah lunas, dan sisanya
 
-Bukan alasan memulai sekarang, tetapi tidak boleh dilupakan.
+`cycle.schema.json` memuat `protocol_ref` dan `step.schema.json` memuat
+`protocol_step_key` sejak sebelum Lapis 2 ada. Keduanya kini menunjuk entitas yang
+sungguh ada: `op:proto:00000001`, kunci `cabai-dataran-rendah`, empat langkah.
+Seluruh `protocol_step_key` di sisi cabai resolve.
 
-`cycle.schema.json` sudah memuat `protocol_ref` dengan `{id, version, content_hash}`, dan
-`step.schema.json` sudah memuat `protocol_step_key`. Keduanya menunjuk entitas Protokol
-yang belum ada skemanya. Wujud konkretnya ada di `spec/examples/rec-cycle-cabai.json`:
+Tiga hal yang ditentukan data lama, dan diikuti apa adanya:
 
-```json
-"protocol_ref": {
-  "id": "op:proto:00000001",
-  "version": "0.1.0",
-  "content_hash": "sha256:0000…0000"
-}
-```
+1. **Prefiksnya `op:proto`** — sudah dipakai `rec-cycle-cabai.json`, kini terdaftar di
+   pola `CuratedId`.
+2. **Kunci langkah bernamaruang** `<kunci-protokol>/<kunci-langkah>`, juga sudah
+   ditentukan contoh yang ada.
+3. **`content_hash` palsu dicopot.** Contoh itu memuat `sha256:0000…0000` — nol semua.
+   Ia opsional di skema, dan hash palsu yang terlihat sungguhan lebih buruk daripada
+   tidak ada.
 
-Tiga hal yang sudah ditentukan data itu, dan tidak boleh ditentukan ulang seenaknya:
+Yang **belum** lunas:
 
-1. **Prefiksnya `op:proto`,** bukan `op:pro`. Versi 0.1 dokumen ini salah menulisnya.
-2. **`proto` belum ada di pola `CuratedId`** pada `common.schema.json`, jadi menambahkannya
-   bagian dari M1.
-3. **`content_hash`-nya masih nol semua** — placeholder. Belum ada satu entitas pun
-   berstatus `published` di repositori, sehingga `L2` belum pernah menyala dan
-   kanonikalisasi JSON untuk menghitung hash itu **belum didefinisikan di mana pun**.
-   Itu keputusan yang menunggu, bukan detail penulisan.
+- **Kanonikalisasi `content_hash`** masih belum didefinisikan; lihat bagian 7. Protokol
+  cabai berstatus `draft`, jadi `L2` belum menagihnya.
+- **Satu rujukan masih menggantung:** `step-udang-planned-pakan.json` menyebut protokol
+  `vaname-intensif` yang belum ditulis. Di luar cakupan M1, dan menjadi calon aturan
+  `L34` — rujukan `protocol_step_key` yang tidak resolve — begitu protokol udangnya ada.
+  Aturan itu sengaja belum ditulis: aturan yang menyalak pada data yang memang belum
+  lengkap akan dilewati orang, bukan diperbaiki.
 
 ---
 

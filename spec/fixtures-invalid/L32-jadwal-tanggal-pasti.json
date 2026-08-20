@@ -1,0 +1,238 @@
+{
+  "$schema": "../schema/protocol.schema.json",
+  "id": "op:proto:00009003",
+  "key": "fixture-l32-jadwal-tanggal-pasti",
+  "label": {
+    "id": "Cabai merah besar — dataran rendah, lahan terbuka"
+  },
+  "definition": {
+    "id": "Protokol contoh Lapis 2: tiga langkah yang menunjukkan ketiga bentuk penjadwalan yang boleh dipakai templat — relatif terhadap kejadian acuan, pada fase pertumbuhan, dan dipicu ambang pengamatan."
+  },
+  "evidence_tier": "D",
+  "evidence_note": "Tingkat D dipilih dengan sadar, dan bukan karena isinya diragukan. Ketiga langkah di bawah disalin utuh dari contoh langkah rencana yang sudah ada di spec/examples/, yang menunjukkan bentuk yang benar — bukan hasil uji lapangan, bukan standar institusi, dan belum ditinjau agronom bernama. Menaikkannya ke C atau B menuntut orang yang mau menempelkan namanya, dan itu pertanyaan kelima yang masih terbuka di docs/02 bagian 8. Aturan L31 menahan tingkat D dari status published, jadi protokol ini tidak bisa naik tanpa perubahan yang terlihat di riwayat.",
+  "applicability": {
+    "commodity": {
+      "id": "op:cmd:00000001",
+      "label": "Cabai merah besar"
+    },
+    "system": {
+      "cropping": "monoculture",
+      "production": "open_field",
+      "certification_target": [
+        "IndoGAP SNI 8969:2021"
+      ]
+    },
+    "altitude_m": {
+      "min": 0,
+      "max": 400
+    },
+    "notes": {
+      "id": "Cakupan sengaja disempitkan. Protokol tanpa batas ketinggian dan sistem budidaya akan dipakai di tempat yang fenologinya berbeda, dan jadwal berbasis fase justru yang paling cepat meleset di sana."
+    }
+  },
+  "stage_scale": {
+    "id": "op:sca:00000001",
+    "label": "BBCH — Solanaceae"
+  },
+  "steps": [
+    {
+      "key": "pemupukan-dasar-organik",
+      "label": {
+        "id": "Pemupukan dasar organik sebelum tanam"
+      },
+      "operation_type": {
+        "id": "op:opt:00000026",
+        "label": "Pemupukan dasar"
+      },
+      "timing": {
+        "kind": "absolute",
+        "date": "2026-07-01"
+      },
+      "applications": [
+        {
+          "substance": {
+            "id": "op:sub:00001709",
+            "label": "Kompos matang"
+          },
+          "preparation": {
+            "id": "op:sed:00000001",
+            "label": "Kompos kotoran sapi, proses termofilik"
+          },
+          "rate": {
+            "value": 10000,
+            "unit": "kg/har",
+            "basis": "per_area",
+            "min": 5000,
+            "max": 20000
+          },
+          "method": {
+            "id": "op:met:00000003",
+            "label": "Tabur merata"
+          },
+          "target": {
+            "plant_part": "soil"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Dijadwalkan relatif terhadap pindah tanam, bukan tanggal: 14 hari sebelum, supaya komposnya sempat menyatu dengan tanah. Sediaan buatan sendiri boleh masuk protokol karena resepnya terbuka; yang tidak boleh masuk adalah batch tertentu, dan L3 menolaknya."
+      }
+    },
+    {
+      "key": "pemupukan-susulan-2",
+      "label": {
+        "id": "Pemupukan susulan saat kuncup bunga pertama"
+      },
+      "operation_type": {
+        "id": "op:opt:00000027",
+        "label": "Pemupukan susulan"
+      },
+      "timing": {
+        "kind": "stage",
+        "scale": {
+          "id": "op:sca:00000001",
+          "label": "BBCH — Solanaceae"
+        },
+        "stage": {
+          "id": "op:stg:00000026",
+          "label": "Kuncup bunga pertama tampak"
+        },
+        "position": "at"
+      },
+      "applications": [
+        {
+          "substance": {
+            "id": "op:sub:00000001",
+            "label": "Nitrogen (N)"
+          },
+          "rate": {
+            "value": 45,
+            "unit": "kg/har",
+            "basis": "per_area",
+            "min": 40,
+            "max": 55
+          },
+          "method": {
+            "id": "op:met:00000005",
+            "label": "Larikan samping"
+          },
+          "target": {
+            "plant_part": "soil"
+          }
+        },
+        {
+          "substance": {
+            "id": "op:sub:00000003",
+            "label": "Kalium (K2O)"
+          },
+          "rate": {
+            "value": 60,
+            "unit": "kg/har",
+            "basis": "per_area"
+          },
+          "method": {
+            "id": "op:met:00000005",
+            "label": "Larikan samping"
+          },
+          "target": {
+            "plant_part": "soil"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Dijadwalkan pada fase BBCH, bukan hari ke sekian. Inilah yang membuat protokol tetap benar ketika musimnya mundur atau varietasnya lebih genjah."
+      }
+    },
+    {
+      "key": "kendali-trips-ambang",
+      "label": {
+        "id": "Pengendalian trips setelah ambang terlampaui"
+      },
+      "operation_type": {
+        "id": "op:opt:00000032",
+        "label": "Pengendalian OPT"
+      },
+      "timing": {
+        "kind": "condition",
+        "condition": {
+          "compare": {
+            "variable": {
+              "id": "op:var:00000012",
+              "label": "Populasi trips per daun muda"
+            },
+            "operator": ">=",
+            "value": 5,
+            "unit": "1",
+            "scope": "per_leaf"
+          }
+        }
+      },
+      "applications": [
+        {
+          "substance": {
+            "id": "op:sub:00000007",
+            "label": "Abamektin"
+          },
+          "rate": {
+            "value": 0.5,
+            "unit": "mL/L",
+            "basis": "per_volume_water"
+          },
+          "carrier": {
+            "value": 500,
+            "unit": "L/har",
+            "basis": "per_area"
+          },
+          "method": {
+            "id": "op:met:00000001",
+            "label": "Penyemprotan"
+          },
+          "target": {
+            "pest": {
+              "id": "op:pst:00000001",
+              "label": "Trips"
+            },
+            "plant_part": "leaf"
+          },
+          "phi_days": 7,
+          "rei_hours": 12
+        }
+      ],
+      "notes": {
+        "id": "Dipicu ambang pengamatan, bukan jadwal. Langkah ini boleh tidak pernah berjalan sama sekali dalam satu musim — dan itu hasil yang benar, bukan kepatuhan yang gagal. Bahan aktif disebut generik; merek dipilih di lapangan dan hanya muncul pada langkah bermode executed."
+      }
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-20T00:00:00Z"
+  },
+  "provenance": {
+    "sources": [
+      {
+        "title": "Open Protocols — Fondasi & Tahapan, bagian 2 (Lapis 2)",
+        "publisher": "Open Protocols",
+        "year": 2026,
+        "locator": "docs/00-fondasi-dan-tahapan.md"
+      },
+      {
+        "title": "Contoh langkah rencana cabai",
+        "publisher": "Open Protocols",
+        "year": 2026,
+        "locator": "spec/examples/step-cabai-planned-*.json"
+      }
+    ],
+    "license": "CC-BY-SA-4.0"
+  },
+  "no_mapping_reason": "Protokol budidaya tidak punya padanan entitas di AGROVOC, AgrO, maupun ICASA — ketiganya memetakan konsep dan variabel, bukan rangkaian tindakan berversi. Pemetaan yang ada justru di dalamnya: komoditas, fase, bahan, dan jenis tindakan masing-masing sudah terpetakan pada entitasnya sendiri.",
+  "notes": {
+    "id": "Fixture uji: langkah templat dijadwalkan pada tanggal kalender. Milik satu siklus, bukan templat."
+  },
+  "id_blocks": [
+    {
+      "from": 9001,
+      "to": 9099
+    }
+  ]
+}

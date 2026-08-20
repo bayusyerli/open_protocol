@@ -10,7 +10,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | Jalur | Isi |
 |---|---|
 | [`docs/00-fondasi-dan-tahapan.md`](docs/00-fondasi-dan-tahapan.md) | Dokumen fondasi: diagnosis, arsitektur tiga lapis, delapan fase beserta gate-nya, konteks regulasi Indonesia, metrik, dan risiko |
-| [`spec/`](spec/) | Spesifikasi Lapis 1 (ontologi) v0.1 — skema, kosakata, contoh, pemeriksa, dan uji negatif |
+| [`spec/`](spec/) | Spesifikasi Lapis 1 (ontologi) dan **Lapis 2 (protokol)** v0.1 — skema, kosakata, contoh, pemeriksa, dan uji negatif |
 | [`app/`](app/) | **Permukaan baca-saja yang sudah berjalan** — keenam jalur sebagai berkas statis, tanpa kerangka kerja dan tanpa server aplikasi |
 | [`docs/10-peta-modul.md`](docs/10-peta-modul.md) | Peta modul & urutan bangun menurut tiga fase model bisnis: trust layer dan instrumentasi lebih dulu, Lapis 2 sebagai prasyarat fase ketiga, dan tiga fitur yang terhalang lubang data |
 | [`docs/11-instrumentasi.md`](docs/11-instrumentasi.md) | Instrumentasi enam jalur: definisi tiap angka, empat batas rancangannya, dan kenapa nol serta tak-sanggup bukan kegagalan |

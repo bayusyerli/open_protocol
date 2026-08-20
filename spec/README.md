@@ -19,7 +19,7 @@ spec/
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
-├── schema/                       19 berkas JSON Schema (draft 2020-12)
+├── schema/                       22 berkas JSON Schema (draft 2020-12)
 ├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
 │   ├── product/                  registri produk — 14.920 entitas (NDJSON)
 │   └── variety/                  registri varietas — 11.227 entitas (NDJSON)
@@ -57,6 +57,7 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Substance` | `op:sub` | Bahan generik: hara, bahan aktif, agens hayati, pembenah, pakan. **Lapis netral-vendor** |
 | `Preparation` | `op:sed` | **Sediaan buatan sendiri** — resep terbuka kompos, MOL, ekstrak nabati. Boleh masuk protokol; produk tidak |
 | `Product` | `op:prd` | Produk komersial. Wajib punya izin edar yang bisa diverifikasi |
+| `Protocol` | `op:proto` | **Lapis 2** — protokol budidaya berversi: tingkat bukti, cakupan berlaku, penulis bernama, dan langkah bertemplate. Hanya boleh menyebut `Substance` dan `Preparation`; `Product` ditolak `L3` |
 | `OperationType` | `op:opt` | Jenis tindakan, hierarkis |
 | `Variable` | `op:var` | Apa pun yang bisa diamati atau diukur |
 | `Method` | `op:met` | Cara aplikasi atau cara pengamatan |

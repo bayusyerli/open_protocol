@@ -7,7 +7,7 @@
     "CuratedId": {
       "description": "ID entitas vokabuler yang dikurasi dewan redaksi. Nomor 8 digit, diberikan sekali, tidak pernah didaur ulang.",
       "type": "string",
-      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev):[0-9]{8}$"
+      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev|proto):[0-9]{8}$"
     },
     "RecordId": {
       "description": "ID data usaha tani. UUIDv7 supaya bisa dibuat offline tanpa server dan tetap terurut menurut waktu.",

@@ -153,15 +153,33 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       fail(file, 'L2-hash-terbit', 'Status "published" tanpa lifecycle.content_hash: versi terbit tidak boleh bisa berubah diam-diam.');
     }
 
-    // L3 — netralitas vendor: langkah protokol terbit tidak boleh menyebut produk komersial
-    if (doc.mode === 'planned' && doc.protocol_step_key) {
-      for (const [i, a] of (doc.applications ?? []).entries()) {
+    const isProtocol = typeof doc.id === 'string' && doc.id.startsWith('op:proto:');
+
+    // L3 — netralitas vendor. Berlaku pada DUA bentuk, dan keduanya harus dijaga:
+    // langkah rencana milik protokol (step.schema.json, punya `mode` di tingkat atas),
+    // dan dokumen protokolnya sendiri (protocol.schema.json), yang langkahnya bersarang
+    // sehingga tidak punya `mode` sama sekali. Bentuk kedua ada belakangan, dan sempat
+    // luput: aturan ini menjaga instansnya sejak awal tetapi tidak menjaga templatnya —
+    // padahal di templat itulah rekomendasi sesungguhnya hidup.
+    //
+    // Diperluas, bukan diberi nomor baru. Netralitas vendor satu prinsip; memecahnya jadi
+    // dua nomor akan membuat salah satunya bisa dilonggarkan tanpa yang lain ikut terlihat.
+    const netralitas = (apps, di) => {
+      for (const [i, a] of (apps ?? []).entries()) {
         if (a.product) {
-          fail(file, 'L3-netralitas-vendor', `applications[${i}] pada langkah rencana milik protokol menyebut produk komersial. Rekomendasi harus generik; produk hanya boleh muncul pada mode "executed".`);
+          fail(file, 'L3-netralitas-vendor', `${di}applications[${i}] menyebut produk komersial. Rekomendasi harus generik; produk hanya boleh muncul pada mode "executed".`);
         }
         if (a.preparation_batch) {
-          fail(file, 'L3-netralitas-vendor', `applications[${i}] pada langkah rencana milik protokol menunjuk batch sediaan tertentu. Batch adalah data satu kebun; yang boleh masuk protokol hanya resepnya (preparation).`);
+          fail(file, 'L3-netralitas-vendor', `${di}applications[${i}] menunjuk batch sediaan tertentu. Batch adalah data satu kebun; yang boleh masuk protokol hanya resepnya (preparation).`);
         }
+      }
+    };
+    if (doc.mode === 'planned' && doc.protocol_step_key) {
+      netralitas(doc.applications, 'Langkah rencana milik protokol: ');
+    }
+    if (isProtocol) {
+      for (const [n, langkah] of (doc.steps ?? []).entries()) {
+        netralitas(langkah.applications, `steps[${n}] "${langkah.key}": `);
       }
     }
 
@@ -269,6 +287,60 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       const prod = a.product?.id && entityById.get(a.product.id);
       if (prod && !prod.composition?.length && a.nutrients_delivered?.length) {
         fail(file, 'L14-komposisi', `applications[${i}] menghitung nutrients_delivered dari produk "${prod.key}" yang tidak punya composition. Sebagian pupuk terdaftar memang tidak punya kadar hara di registri — basis lama SIMPUK dan baris yang analisanya cuma cacah mikroba atau sifat fisik — jadi angka itu tidak bisa diturunkan dari mana pun.`);
+      }
+    }
+
+    // ---- Aturan protokol Lapis 2 (L30-L32) ----
+
+    // L30 — skala fase yang dipakai protokol wajib mencakup komoditasnya. Kembaran L28
+    // di sisi protokol: kalau protokol cabai menjadwalkan langkahnya pada fase BBCH milik
+    // kunci serealia, seluruh penjadwalannya salah dan tidak ada yang menyalak — bentuknya
+    // sah, hanya fenologinya yang bukan milik tanaman itu.
+    if (isProtocol && doc.stage_scale?.id && doc.applicability?.commodity?.id) {
+      const skala = entityById.get(doc.stage_scale.id);
+      const diakui = (skala?.applies_to?.commodities ?? []).some((c) => c.id === doc.applicability.commodity.id);
+      if (skala && !diakui) {
+        fail(file, 'L30-skala-cakupan', `Protokol ini memakai skala ${doc.stage_scale.id} tetapi skala itu tidak mencantumkan komoditas ${doc.applicability.commodity.id} di applies_to.commodities. Langkah yang dijadwalkan pada fase milik tanaman lain akan tepat waktu di atas kertas dan salah di lahan.`);
+      }
+    }
+
+    // L31 — tingkat bukti wajib berdasar. Tingkat bukti inilah yang dijual ke lembaga
+    // sertifikasi, jadi ia satu-satunya medan yang tidak boleh bisa diisi sendiri tanpa
+    // konsekuensi. Dua bentuk penyalahgunaannya berbeda dan keduanya ditolak di sini.
+    if (isProtocol) {
+      const sumber = doc.provenance?.sources?.length ?? 0;
+      if ((doc.evidence_tier === 'A' || doc.evidence_tier === 'B') && !sumber) {
+        fail(file, 'L31-bukti-berdasar', `Tingkat bukti "${doc.evidence_tier}" berarti uji multi-lokasi atau standar institusi resmi, tetapi provenance.sources kosong. Klaim tingkat itu tanpa menyebut sumbernya tidak bisa diperiksa siapa pun — dan tepat itulah yang dibeli pembayar.`);
+      }
+      if (doc.evidence_tier === 'D' && doc.lifecycle?.status === 'published') {
+        fail(file, 'L31-bukti-berdasar', 'Tingkat bukti "D" adalah pengalaman tunggal yang belum terverifikasi, jadi ia tidak boleh berstatus published. Menerbitkannya berarti menyajikan satu pengalaman sebagai anjuran.');
+      }
+    }
+
+    // L32 — langkah protokol tidak boleh berjadwal tanggal pasti. Protokol berlaku lintas
+    // musim dan lintas petak; tanggal kalender milik satu siklus, bukan milik templat.
+    // Timing punya lima bentuk dan empat sisanya — relatif, fase, ambang, kondisional —
+    // semuanya berpindah dengan benar. Hanya "absolute" yang tidak bisa.
+    if (isProtocol) {
+      for (const [n, langkah] of (doc.steps ?? []).entries()) {
+        if (langkah.timing?.kind === 'absolute') {
+          fail(file, 'L32-jadwal-templat', `steps[${n}] "${langkah.key}" memakai timing "absolute" (${langkah.timing.date}). Tanggal kalender milik satu siklus, bukan templat — pakai "relative" terhadap kejadian acuan, atau "stage" pada fase pertumbuhan.`);
+        }
+      }
+    }
+
+    // L33 — protokol terbit wajib punya penulis bernama dan tanggal tinjau ulang. Ini
+    // penangkal langsung pola kegagalan (c) di docs/00: "Package of Practices" klasik
+    // diterbitkan sekali, tanpa penanggung jawab dan tanpa jadwal tinjau, lalu tidak
+    // pernah bisa dikoreksi. Yang membuat protokol berbeda dari PDF bukan formatnya,
+    // melainkan adanya orang yang namanya menempel dan tanggal ia harus dilihat lagi.
+    if (isProtocol && doc.lifecycle?.status === 'published') {
+      const penulis = (doc.provenance?.contributors ?? []).some((c) => c.role === 'author');
+      if (!penulis) {
+        fail(file, 'L33-penulis-tinjau', 'Protokol berstatus published tanpa satu pun kontributor ber-role "author". Protokol tanpa penanggung jawab tidak bisa dikoreksi, dan tidak bisa ditagih siapa pun.');
+      }
+      if (!doc.lifecycle?.review_due) {
+        fail(file, 'L33-penulis-tinjau', 'Protokol berstatus published tanpa lifecycle.review_due. Tanpa tanggal tinjau ulang, protokol yang benar hari ini akan tetap tayang setelah varietas, OPT, dan harga inputnya berubah.');
       }
     }
 

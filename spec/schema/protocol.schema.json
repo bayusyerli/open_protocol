@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/protocol.schema.json",
+  "title": "Protocol — protokol budidaya berversi (Lapis 2)",
+  "description": "Lapis yang menamai proyek ini, dan lapis terakhir yang dispesifikasikan. Cycle sudah lebih dulu memuat protocol_ref dan Step sudah memuat protocol_step_key, jadi bentuk di sini harus cocok dengan keduanya, bukan sebaliknya. Yang membedakannya dari artikel budidaya: versi, penulis bernama, tingkat bukti, cakupan berlaku, dan provenance — kelimanya wajib, karena tanpa itu protokol cuma PDF dengan tampilan lebih bagus.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "$ref": "common.schema.json#/$defs/CuratedId"
+    },
+    "key": {
+      "$ref": "common.schema.json#/$defs/Key"
+    },
+    "label": {
+      "$ref": "common.schema.json#/$defs/LangText"
+    },
+    "definition": {
+      "$ref": "common.schema.json#/$defs/LangText"
+    },
+    "lifecycle": {
+      "$ref": "common.schema.json#/$defs/Lifecycle"
+    },
+    "provenance": {
+      "$ref": "common.schema.json#/$defs/Provenance"
+    },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/ExternalMapping"
+      }
+    },
+    "no_mapping_reason": {
+      "type": "string",
+      "minLength": 10
+    },
+    "notes": {
+      "$ref": "common.schema.json#/$defs/LangText"
+    },
+    "evidence_tier": {
+      "$ref": "common.schema.json#/$defs/EvidenceTier"
+    },
+    "evidence_note": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Kenapa tingkat itu, bukan yang lain. Tingkat bukti tanpa alasan adalah klaim tanpa dasar, dan justru tingkat inilah yang dijual ke lembaga sertifikasi."
+    },
+    "applicability": {
+      "type": "object",
+      "description": "Cakupan berlaku. Protokol tanpa cakupan yang jelas adalah protokol yang salah di sebagian besar lahan — karena itu komoditasnya wajib, bukan opsional.",
+      "properties": {
+        "commodity": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "varieties": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          }
+        },
+        "regions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          }
+        },
+        "system": {
+          "type": "object",
+          "properties": {
+            "cropping": {
+              "type": "string",
+              "enum": [
+                "monoculture",
+                "intercrop",
+                "relay",
+                "rotation",
+                "agroforestry",
+                "polyculture"
+              ]
+            },
+            "production": {
+              "type": "string",
+              "enum": [
+                "open_field",
+                "protected",
+                "hydroponic",
+                "aquaponic",
+                "pond_extensive",
+                "pond_intensive",
+                "cage",
+                "housed",
+                "free_range"
+              ]
+            },
+            "certification_target": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "additionalProperties": false
+        },
+        "altitude_m": {
+          "type": "object",
+          "properties": {
+            "min": {
+              "type": "number"
+            },
+            "max": {
+              "type": "number"
+            }
+          },
+          "additionalProperties": false
+        },
+        "season": {
+          "type": "string",
+          "description": "Mis. musim kemarau, musim hujan. Bebas teks karena penamaannya berbeda antardaerah."
+        },
+        "notes": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        }
+      },
+      "required": [
+        "commodity"
+      ],
+      "additionalProperties": false
+    },
+    "stage_scale": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/ProtocolStep"
+      }
+    },
+    "changelog": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version": {
+            "type": "string",
+            "pattern": "^(0|[1-9]\\d*)\\.(0|[1-9]\\d*)\\.(0|[1-9]\\d*)$"
+          },
+          "date": {
+            "type": "string",
+            "format": "date"
+          },
+          "change": {
+            "type": "string",
+            "minLength": 10
+          }
+        },
+        "required": [
+          "version",
+          "date",
+          "change"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "$schema": {
+      "type": "string"
+    },
+    "id_blocks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Rentang nomor ID yang diklaim berkas ini. Wajib bila jenis entitasnya dipakai lebih dari satu berkas — inilah yang membuat penambahan paralel tidak bertabrakan.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "id",
+    "key",
+    "label",
+    "lifecycle",
+    "evidence_tier",
+    "evidence_note",
+    "applicability",
+    "steps"
+  ],
+  "additionalProperties": false,
+  "$defs": {
+    "ProtocolStep": {
+      "type": "object",
+      "description": "Satu langkah bertemplate. Bentuknya sengaja memakai ulang InputApplication dan Observation milik step.schema.json — kalau protokol dan realisasi memakai kosakata berbeda, keduanya akan menyimpang diam-diam dan perbandingan rencana-realita kehilangan dasarnya.",
+      "properties": {
+        "key": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "Kunci stabil langkah ini di dalam protokol. Inilah yang disalin Step.protocol_step_key saat protokol dijalankan, jadi ia tidak boleh berubah setelah terbit."
+        },
+        "label": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        },
+        "operation_type": {
+          "$ref": "common.schema.json#/$defs/Ref"
+        },
+        "timing": {
+          "$ref": "common.schema.json#/$defs/Timing"
+        },
+        "condition": {
+          "$ref": "common.schema.json#/$defs/Condition",
+          "description": "Syarat langkah ini berlaku. Inilah yang membedakan protokol dari kalender: 'semprot bila tangkapan melewati ambang', bukan 'semprot hari ke-30'."
+        },
+        "applications": {
+          "type": "array",
+          "items": {
+            "$ref": "step.schema.json#/$defs/InputApplication"
+          }
+        },
+        "observations": {
+          "type": "array",
+          "items": {
+            "$ref": "step.schema.json#/$defs/Observation"
+          }
+        },
+        "optional": {
+          "type": "boolean",
+          "default": false
+        },
+        "notes": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        }
+      },
+      "required": [
+        "key",
+        "label",
+        "operation_type",
+        "timing"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

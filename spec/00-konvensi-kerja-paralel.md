@@ -83,6 +83,7 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `vty` | `vocab/variety/varietas.meta.json` | 1000–19999 | registri varietas; 1–999 disisakan untuk kurasi tangan |
 | `pst` | `vocab/pest.json` | 1–999 | dikurasi tangan |
 | `pst` | `vocab/pest-registri.json` | 1000–3999 | sasaran dari label produk |
+| `proto` | `vocab/protocol-cabai-dataran-rendah.json` | 1 | berkas entitas tunggal, seperti skala fase |
 | `sit` | `vocab/target-site.json` | 1–999 | tempat aplikasi |
 | `dev` `met` `opt` `sed` `var` | masing-masing satu berkas | 1–999 | belum dipakai bersama |
 
@@ -112,7 +113,7 @@ Nomor aturan sama langkanya dengan nomor ID, dan sama mudahnya bertabrakan.
 | `L1`–`L15` | Struktur inti, netralitas vendor, PDP, keselamatan dasar | seluruhnya |
 | `L16`–`L21` | Sediaan buatan petani | seluruhnya |
 | `L22`–`L29` | Kepatuhan regulasi dan integritas kosakata | seluruhnya |
-| `L30`–`L39` | **Belum diklaim** | — |
+| `L30`–`L39` | Protokol Lapis 2 | `L30`–`L33` |
 | `L40`+ | **Belum diklaim** | — |
 
 Sebelum menambah aturan, jalankan:
