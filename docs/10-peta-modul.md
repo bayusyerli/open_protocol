@@ -20,7 +20,7 @@
 
 | Lapis | Keadaan | Bukti |
 |---|---|---|
-| **1 · Ontologi** | **Matang** | 21 skema di `spec/schema/`, kosakata terkurasi + registri Kementan, pemeriksa `L1`–`L29` beserta uji negatifnya, 52/52 pemeriksaan angka lolos |
+| **1 · Ontologi** | **Matang** | 22 skema di `spec/schema/`, kosakata terkurasi + registri Kementan, pemeriksa `L1`–`L29` beserta uji negatifnya, 52/52 pemeriksaan angka lolos |
 | **2 · Protokol** | **Berskema, satu protokol** | `protocol.schema.json`, aturan `L30`–`L33`, `L3` diperluas ke dokumen protokol, dan satu protokol cabai empat langkah. Belum ada permukaan |
 | **3 · Eksekusi** | **Berskema, tanpa permukaan** | `plot`, `cycle`, `step` lengkap; 14 contoh nyata cabai, kopi, dan udang; nol layar untuk membuatnya |
 
@@ -75,6 +75,24 @@ Sebagian besar bukan kode, dan justru itu sebabnya mudah tertunda.
   diulang, tetapi belum ada yang menetapkan seberapa sering ia dijalankan dan siapa yang
   memeriksa hasilnya. Registri yang basi pada lapisan gratis bukan sekadar tidak akurat —
   ia menyatakan produk terdaftar padahal izinnya sudah lewat.
+
+  > **Kegagalan yang sama bisa datang dari dua sumber, dan baru satu yang terjaga.**
+  > Layar yang menyatakan sebuah produk terdaftar padahal tidak bisa lahir dari registri
+  > yang basi — pendaftaran sungguhan yang sudah kedaluwarsa — atau dari **nomor karangan
+  > yang meniru bentuk aslinya**. Sumber kedua kini ditangkap di hulu oleh aturan `G12`
+  > pada [`gambar_produk/periksa.mjs`](../gambar_produk/periksa.mjs), yang menolak gambar
+  > sintetis bernomor berbentuk sah tetapi tidak ada di registri, kecuali penjelasannya
+  > ditulis. Contoh yang memicunya: `31028128227329` menyamar sebagai `01020120227329`
+  > di sebuah katalog yang seluruhnya dibangkitkan mesin.
+  >
+  > **Sumber pertama masih terbuka lebar,** dan `G12` tidak menyentuhnya sama sekali —
+  > ia menjaga jalur masuk gambar, bukan kesegaran registrinya. Kadensi penyegaran tetap
+  > keputusan yang belum diambil.
+  >
+  > Satu pelajaran dari `G12` berlaku untuk keduanya: **nomor yang bentuknya rusak tidak
+  > berbahaya, karena ia jelas salah.** Yang berbentuk sah justru yang menipu — dan
+  > pendaftaran basi berbentuk sah persis seperti pendaftaran hidup. Itu kebalikan dari
+  > naluri biasa, yang cenderung mencurigai yang tampak kacau.
 - **Pendapat hukum Pasal 77 ayat (1).** Menentukan apakah jalur 6 boleh naik dari catatan
   status hukum jadi anjuran. Ancamannya 7 tahun dan Rp5 miliar; lihat
   [09-jalur-sediaan-pengendali.md](09-jalur-sediaan-pengendali.md).
