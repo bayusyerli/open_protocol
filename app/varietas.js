@@ -3,7 +3,7 @@
  *
  * Yang dijawab layar ini: apakah nama varietas ini ada di registri, dan surat apa
  * yang dipegangnya. Yang TIDAK dijawabnya: varietas mana yang sebaiknya ditanam —
- * hanya 35 dari 11.227 rekaman menyebut sifat agronomi apa pun, jadi rekomendasi di
+ * NOL dari 11.227 rekaman menyebut sifat agronomi apa pun, jadi rekomendasi di
  * atasnya berarti mengarang. Dan taruhan benih adalah taruhan seluruh musim.
  */
 
@@ -83,9 +83,10 @@ const KARTU_LOT = `
       berasal dari varietas itu.
     </p>
     <p class="catatan">
-      Dokumen untuk itu adalah label dan sertifikat lot dari BPSB, dan hanya 44 dari
-      11.227 rekaman menyinggungnya sama sekali — jadi pemeriksaannya tidak bisa
-      dilakukan dari sini.
+      Dokumen untuk itu adalah label dan sertifikat lot dari BPSB, dan registri ini
+      <strong>tidak memuatnya sama sekali</strong> — 44 rekaman memang menyebut BPSB,
+      tetapi seluruhnya sebagai nama pemelihara. Pemeriksaannya tidak bisa dilakukan
+      dari sini.
     </p>
   </div>`;
 

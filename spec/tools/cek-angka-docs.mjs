@@ -148,6 +148,27 @@ cek('09', 'PHI precautionary_default', SED.filter((s) => s.safety?.phi_basis ===
 cek('08/09', 'bahan baku', L(J('spec/vocab/substance-organik.json')).length, 21);
 cek('08/09', 'bahan terlarang', L(J('spec/vocab/substance-organik.json')).filter((b) => b.on_farm?.status === 'prohibited').length, 2);
 
+// Sapuan teks: angka yang PERNAH salah dan sudah dikoreksi tidak boleh muncul lagi
+// di mana pun — termasuk di app/, yang menampilkannya ke pengguna. Koreksi dokumen
+// sempat tidak ikut ke layar, dan itu ketahuan hanya karena disapu.
+const BEKAS_SALAH = [
+  [/290 dari 23\.058/, 'PHI 290 — sebenarnya nol'],
+  [/hanya 35\b[^.]{0,40}sifat agronomi|35 dari 11\.227/, 'sifat agronomi 35 — sebenarnya nol'],
+  [/44 dari 11\.227 rekaman menyinggung/, 'sertifikasi lot 44 menyinggung — sebenarnya nol'],
+  [/15 kadar berbeda/, 'abamektin 15 kadar — sebenarnya 33'],
+  [/Dari 25 produk berisi Abamektin/, 'abamektin 18 g/L 25 produk — sebenarnya 26'],
+  [/778 OPT registri/, '778 OPT registri — sebenarnya 768 registri + 10 terkurasi'],
+];
+const sapuDir = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+  e.isDirectory() ? sapuDir(`${d}/${e.name}`) : [`${d}/${e.name}`]);
+const berkas = [...sapuDir('docs'), ...sapuDir('app'), ...sapuDir('spec/tools')]
+  .filter((f) => /\.(md|html|js|mjs)$/.test(f) && !f.endsWith('cek-angka-docs.mjs'));
+for (const f of berkas) {
+  const isi = readFileSync(f, 'utf8');
+  for (const [re, sebab] of BEKAS_SALAH)
+    if (re.test(isi)) hasil.push({ doc: 'sapuan', klaim: `${f}: ${sebab}`, nyata: 'ADA', harap: 'tidak ada', ok: false });
+}
+
 const gagal = hasil.filter((h) => !h.ok);
 for (const h of hasil) console.log(`${h.ok ? '  ok  ' : ' BEDA '} ${h.doc.padEnd(7)} ${h.klaim.padEnd(34)} data=${String(h.nyata).padStart(7)}  dokumen=${h.harap}`);
 console.log(`\n${hasil.length - gagal.length}/${hasil.length} cocok, ${gagal.length} berbeda`);

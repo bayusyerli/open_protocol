@@ -255,7 +255,7 @@ function rinciVarietas(v) {
 // ---------------------------------------------------------------------------
 // Indeks OPT: komoditas -> OPT -> bahan+kadar -> merek  (jalur 1)
 // Dikelompokkan menurut PASANGAN bahan dan kadar, bukan menurut bahannya saja:
-// satu entitas "Abamektin" dipakai pada 15 kadar berbeda, dari 7 sampai 72 g/L.
+// satu entitas "Abamektin" dipakai pada 33 kadar berbeda, 24 di antaranya dalam g/L.
 // Dosis menempel pada tiap merek, bukan pada bahannya — 25 produk berisi
 // Abamektin 18 g/L punya dosis terdaftar 0,5 sampai 2 ml/l, dan satu di antaranya
 // memakai satuan yang sama sekali lain.
@@ -265,7 +265,9 @@ const perKomoditas = new Map();
 // pintunya OPT — tanpa id OPT, tidak ada tempat menaruhnya. Tetapi ia TIDAK boleh
 // hilang begitu saja: 2.438 dari 23.058 (10,6%) berada dalam keadaan itu, dan
 // pembangun versi pertama membuangnya tanpa sepatah kata, sehingga trips di cabai
-// terbaca 57 produk padahal registrinya memuat 286. Semuanya tetap terbaca dari
+// terbaca 57 produk saat itu padahal pencocokan label memberi 286. (Angka 57 itu
+// keadaan sebelum penyatuan komoditas dan OPT; sesudahnya irisan Cabai x Trips
+// terkurasi jadi 246.) Semuanya tetap terbaca dari
 // sisi produk (`guna` pada rincian produk membawa null apa adanya); yang dicatat di
 // sini adalah berapa banyak yang tidak bisa dijangkau dari jalur 1.
 const terbuang = { tanpaOpt: 0, tanpaKomoditas: 0, tanpaKeduanya: 0, penggunaan: 0 };

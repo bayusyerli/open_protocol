@@ -79,7 +79,7 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
   yang benar-benar memutuskan — uji gelas untuk membedakan layu bakteri dari fusarium,
   dan kertas putih untuk membedakan trips dari virus kuning.
 - **Merek diruntuhkan jadi bahan aktif + kadar.** Kesetaraan hanya benar pada pasangan
-  itu: satu entitas “Abamektin” dipakai pada 15 kadar berbeda, dari 7 sampai 72 g/L.
+  itu: satu entitas “Abamektin” dipakai pada 33 kadar berbeda, 24 di antaranya g/L.
 - **Dosis tidak pernah ditempel ke bahan.** Ia muncul per merek, karena dosis milik
   pendaftaran tiap produk — 26 merek Abamektin 18 g/L membawa 11 dosis yang berbeda.
 - **Cabang nol produk adalah layar terpentingnya.** Untuk virus kuning keriting layar
@@ -163,8 +163,9 @@ yang sepadan dengan Pasal 72.
 
 ### Khusus jalur 4
 
-- **Bukan katalog agronomi.** Hanya 35 dari 11.227 varietas menyebut sifat agronomi
-  apa pun, jadi halaman menolak menjawab "varietas mana yang sebaiknya ditanam" dan
+- **Bukan katalog agronomi.** **Nol** dari 11.227 varietas menyebut sifat agronomi
+  apa pun — 30 rekaman memuat kata seperti "tahan", tetapi seluruhnya di nama
+  pemelihara. Halaman menolak menjawab "varietas mana yang sebaiknya ditanam" dan
   menyatakan alasannya di muka.
 - **Sebutan resmi ditampilkan apa adanya.** "Pendaftaran" saja mencakup empat
   instrumen; meratakannya jadi satu kata "terdaftar" membuang persis keterangan yang

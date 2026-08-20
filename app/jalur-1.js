@@ -11,13 +11,13 @@
  *      salah yang percaya diri menghasilkan semprotan salah.
  *   3. Merek diruntuhkan jadi BAHAN AKTIF + KADAR. Kesetaraan hanya benar pada
  *      pasangan itu, bukan pada nama bahannya: satu entitas "Abamektin" dipakai pada
- *      15 kadar berbeda, dari 7 sampai 72 g/L.
+ *      33 kadar berbeda, 24 di antaranya dalam g/L.
  *   4. Informasi negatif didahulukan — apa yang dilarang, dan apa yang tidak akan
  *      menolong. Itu yang paling bernilai, dan paling kecil risiko hukumnya.
  *
- * Dosis TIDAK PERNAH ditempel ke bahan. Dari 25 produk berisi Abamektin 18 g/L, dosis
- * terdaftarnya 0,5 · 0,75 · 1 · 1,5 · 1–2 ml/l — dan satu memakai satuan yang sama
- * sekali lain. Dosis milik pendaftaran tiap produk.
+ * Dosis TIDAK PERNAH ditempel ke bahan. Dari 26 produk berisi Abamektin 18 g/L yang
+ * terdaftar untuk trips di cabai, dosisnya 0,375 · 0,5 · 0,75 · 1 · 1,5 · 1–2 · 2 ml/l
+ * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
 import { ambil, teks } from './pustaka.js';
