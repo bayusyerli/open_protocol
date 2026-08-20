@@ -1,0 +1,228 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000021",
+  "key": "fase-kacang-panjang",
+  "label": {
+    "id": "Fase budidaya kacang panjang (Vigna unguiculata ssp. sesquipedalis)",
+    "en": "Yardlong bean cultivation stage scale"
+  },
+  "definition": {
+    "id": "Lima belas fase budidaya kacang panjang, dari perkecambahan sampai akhir siklus. BUKAN skala BBCH: kunci BBCH buncis menyebut Phaseolus vulgaris, sedangkan kacang panjang Vigna unguiculata — marga lain — dan tidak ada kunci BBCH yang pernah diterbitkan untuk jenis ini. Urutan fasenya mengikuti pola penahapan legum yang lazim (VE, VC, V1 ke atas, R1 sampai R7, RH), dan padanannya disebut pada tiap fase supaya bisa dibandingkan. Satu hal yang tidak dimiliki kunci buncis dan justru menentukan cara kerja di kebun: kacang panjang tipe merambat DIPANEN BERULANG selama berminggu-minggu sementara tanaman masih berbunga, sehingga fase panen berjalan bersamaan dengan fase pembungaan dan pembentukan polong, bukan sesudahnya."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00001026",
+        "label": "Kacang panjang"
+      },
+      {
+        "id": "op:cmd:00002177",
+        "label": "Kacang Tunggak"
+      }
+    ]
+  },
+  "no_mapping_reason": "Tidak ada kunci BBCH yang pernah diterbitkan untuk Vigna unguiculata. Kunci buncis pada BBCH Monograph menyebut Phaseolus vulgaris var. nanus; pustaka memang memakai kodenya pada Vigna, tetapi itu pemakaian informal, bukan kunci terbitan, dan menyalinnya akan mengarang kewenangan yang tidak dimiliki sumbernya. Ditinjau ulang bila kunci BBCH untuk Vigna unguiculata terbit.",
+  "notes": {
+    "id": "Padanan fase VE/VC/V/R/RH disebut pada tiap fase karena penahapan itu yang dipakai pustaka kacang tunggak, dan Bean IPM mendokumentasikannya. Halaman Bean IPM sendiri menolak diambil mesin pada Agustus 2026, jadi rumusan di berkas ini tulisan kami yang mengikuti pola penahapan legum, BUKAN salinan halaman itu — perbedaan yang perlu diketahui siapa pun yang mau memverifikasi. Jangkar hari pada sisi polong berasal dari Ofori & Klogo (2005), yang dibaca utuh: polong dan biji membesar paling cepat 0–15 hari sesudah bunga mekar, waktu terbaik memetik polong segar 15 hari, kadar air turun pada 15–25 hari, dan 20 hari memberi kompromi terbaik untuk benih. Angka itu dari percobaan di Ghana; kultivar dan iklim Indonesia bisa menggeser, dan penggeseran itu justru yang perlu diukur di Fase 1. Skala ini berstatus draft dan dimaksudkan diperbaiki dengan pengamatan lapangan, bukan dianggap selesai."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00002100",
+      "code": "KPJ-V0",
+      "label": {
+        "id": "Perkecambahan"
+      },
+      "definition": {
+        "id": "Benih menyerap air, radikula muncul, hipokotil memanjang ke arah permukaan tanah. Perkecambahan kacang panjang berlangsung 5–10 hari pada suhu 20–30 °C."
+      },
+      "order": 0
+    },
+    {
+      "id": "op:stg:00002101",
+      "code": "KPJ-V1",
+      "label": {
+        "id": "Kemunculan"
+      },
+      "definition": {
+        "id": "Kotiledon menembus permukaan tanah. Padanan fase VE pada penahapan legum."
+      },
+      "order": 1
+    },
+    {
+      "id": "op:stg:00002102",
+      "code": "KPJ-V2",
+      "label": {
+        "id": "Daun primer"
+      },
+      "definition": {
+        "id": "Sepasang daun primer membuka pada buku ke-1 dan ke-2, kotiledon masih ada. Padanan fase VC."
+      },
+      "order": 2
+    },
+    {
+      "id": "op:stg:00002103",
+      "code": "KPJ-V3",
+      "label": {
+        "id": "Daun trifoliat pertama"
+      },
+      "definition": {
+        "id": "Daun trifoliat pertama membuka pada buku ke-3. Padanan fase V1; buku berikutnya menyusul satu per satu."
+      },
+      "order": 3
+    },
+    {
+      "id": "op:stg:00002104",
+      "code": "KPJ-V4",
+      "label": {
+        "id": "Perkembangan daun dan percabangan"
+      },
+      "definition": {
+        "id": "Daun trifoliat berikutnya membuka pada buku ke-4 ke atas, dan cabang mulai terbentuk. Di sinilah dua tipe tumbuh kacang panjang memisah: tipe merambat mulai memanjat dan perlu lanjaran, tipe kerdil tidak. Tipe merambat lebih lambat mulai berpolong tetapi berbuah jauh lebih lama, dan itu tipe yang lazim ditanam untuk pasar."
+      },
+      "order": 4
+    },
+    {
+      "id": "op:stg:00002105",
+      "code": "KPJ-G0",
+      "label": {
+        "id": "Kuncup bunga pertama"
+      },
+      "definition": {
+        "id": "Kuncup bunga pertama tampak pada ketiak daun. Pembungaan kacang panjang menyusul percabangan, bukan menggantikannya — tanaman tetap tumbuh sambil berbunga."
+      },
+      "order": 5
+    },
+    {
+      "id": "op:stg:00002106",
+      "code": "KPJ-G1",
+      "label": {
+        "id": "Bunga pertama mekar"
+      },
+      "definition": {
+        "id": "Satu bunga mekar pada tanaman. Padanan fase R1. Kacang panjang menyerbuk sendiri, sehingga bunga yang mekar hampir selalu jadi polong bila tidak ada gangguan."
+      },
+      "order": 6
+    },
+    {
+      "id": "op:stg:00002107",
+      "code": "KPJ-G2",
+      "label": {
+        "id": "Mekar penuh"
+      },
+      "definition": {
+        "id": "Sebagian besar bunga mekar. Padanan fase R2. Pembungaan berlangsung dua sampai empat minggu dan pada tipe merambat berlanjut bersamaan dengan pemanenan polong — inilah sebabnya siklus kacang panjang tidak bisa digambarkan sebagai deret fase yang saling menggantikan."
+      },
+      "order": 7
+    },
+    {
+      "id": "op:stg:00002108",
+      "code": "KPJ-B0",
+      "label": {
+        "id": "Polong terbentuk"
+      },
+      "definition": {
+        "id": "Polong pertama mencapai panjang maksimumnya. Padanan fase R3. Menurut Ofori & Klogo, polong dan biji membesar paling cepat pada 0–15 hari sesudah bunga mekar."
+      },
+      "order": 8
+    },
+    {
+      "id": "op:stg:00002109",
+      "code": "KPJ-B1",
+      "label": {
+        "id": "Polong siap petik"
+      },
+      "definition": {
+        "id": "Polong mencapai ukuran pasar: masih licin, mudah dipatahkan, biji di dalamnya belum menonjol. Ofori & Klogo mendapati waktu terbaik memetik polong segar adalah 15 hari sesudah bunga mekar, saat kadar air polong 847 g/kg. Memetik lebih lambat menurunkan mutu dan menaikkan serangan penggerek polong."
+      },
+      "order": 9
+    },
+    {
+      "id": "op:stg:00002110",
+      "code": "KPJ-B2",
+      "label": {
+        "id": "Panen berulang"
+      },
+      "definition": {
+        "id": "Pemetikan berulang setiap beberapa hari selama pembungaan masih berlangsung. Fase ini berjalan bersamaan dengan G2 dan B0 — bukan sesudahnya — dan bisa berlangsung berminggu-minggu pada tipe merambat. Fase inilah yang paling membedakan kacang panjang dari buncis Phaseolus yang dipanen serentak."
+      },
+      "order": 10
+    },
+    {
+      "id": "op:stg:00002111",
+      "code": "KPJ-B3",
+      "label": {
+        "id": "Pengisian biji"
+      },
+      "definition": {
+        "id": "Pada polong yang sengaja tidak dipetik, biji terisi penuh dan polong berhenti memanjang. Padanan fase R5–R6. Kadar air polong dan biji mulai turun pada 15–25 hari sesudah bunga mekar."
+      },
+      "order": 11
+    },
+    {
+      "id": "op:stg:00002112",
+      "code": "KPJ-B4",
+      "label": {
+        "id": "Masak fisiologis"
+      },
+      "definition": {
+        "id": "Polong berubah ke warna masak dan mengering. Padanan fase R7. Ofori & Klogo mendapati polong pada 20 hari sesudah bunga mekar memberi kompromi terbaik antara hasil biji kering, daya kecambah, dan vigor bibit."
+      },
+      "order": 12
+    },
+    {
+      "id": "op:stg:00002113",
+      "code": "KPJ-B5",
+      "label": {
+        "id": "Masak panen benih"
+      },
+      "definition": {
+        "id": "Sebagian besar polong sudah berwarna masak dan kering, siap dipanen sebagai benih. Padanan fase RH."
+      },
+      "order": 13
+    },
+    {
+      "id": "op:stg:00002114",
+      "code": "KPJ-S0",
+      "label": {
+        "id": "Akhir siklus"
+      },
+      "definition": {
+        "id": "Tanaman berhenti berbunga dan mengering. Pada tipe merambat, fase ini datang jauh sesudah panen pertama, sehingga umur satu pertanaman ditentukan berhentinya pembungaan, bukan tanggal panen."
+      },
+      "order": 14
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-02-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Optimum Time for Harvesting Yardlong Bean (Vigna sesquipedalis) for High Yield and Quality of Pods and Seeds",
+        "publisher": "Journal of Agriculture & Social Sciences 1(2):86–88",
+        "year": 2005,
+        "locator": "K. Ofori & P.Y. Klogo, Department of Crop Science, University of Ghana; tiga fase perkembangan polong 0–15, 15–25 hari sesudah bunga mekar, panen polong segar terbaik 15 hari, benih terbaik 20 hari"
+      },
+      {
+        "title": "Cowpea Growth Stages",
+        "publisher": "Bean IPM (beanipm.pbgworks.org)",
+        "url": "https://beanipm.pbgworks.org/cowpea",
+        "locator": "Penahapan VE, VC, V1 ke atas, R1–R7, RH untuk Vigna unguiculata. Dipakai sebagai rujukan pola penahapan; halamannya tidak bisa diambil mesin, jadi rumusan fase di berkas ini bukan salinannya"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 21,
+      "to": 21
+    }
+  ]
+}

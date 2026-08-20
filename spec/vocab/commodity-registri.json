@@ -1422,7 +1422,11 @@
         "Kacang Panjang",
         "kacang panjang"
       ],
-      "perennial": false
+      "perennial": false,
+      "default_stage_scale": {
+        "id": "op:sca:00000021",
+        "label": "Fase budidaya kacang panjang (Vigna unguiculata ssp. sesquipedalis)"
+      }
     },
     {
       "id": "op:cmd:00001027",

@@ -164,6 +164,11 @@ const CAKUPAN = {
     'op:cmd:00001171', // Durian
     'op:cmd:00002104', // Durian Mandong — durian lokal Jawa, Durio zibethinus
   ],
+  // Fase budidaya kacang panjang — skala susunan sendiri, bukan BBCH
+  'stage-scale-kacang-panjang.json': [
+    'op:cmd:00001026', // Kacang panjang — Vigna unguiculata ssp. sesquipedalis
+    'op:cmd:00002177', // Kacang Tunggak — Vigna unguiculata ssp. unguiculata, jenis yang sama; jalur benihnya ada di fase B3-B5
+  ],
   // Umur budidaya udang vaname (DOC)
   'stage-scale-doc-udang.json': [
     'op:cmd:00000005', // Udang vaname
@@ -178,8 +183,6 @@ const DIKECUALIKAN = {
   'op:cmd:00002181': 'Kangkung — Ipomoea aquatica, suku Convolvulaceae, merambat dan sebagian tumbuh di air',
   'op:cmd:00002182': 'Kangkung Darat — alasan sama seperti Kangkung',
   'op:cmd:00002365': 'Selada Air — Nasturtium officinale, suku dan tempat tumbuh berbeda sama sekali',
-  'op:cmd:00001026': 'Kacang panjang — Vigna unguiculata; kunci buncis menyebut Phaseolus',
-  'op:cmd:00002177': 'Kacang Tunggak — Vigna unguiculata, alasan sama',
   'op:cmd:00001032': 'Kacang hijau — Vigna radiata, alasan sama',
   'op:cmd:00002172': 'Kacang Komak — Lablab purpureus, marga lain',
   'op:cmd:00002173': 'Kacang Koro — Canavalia, marga lain',

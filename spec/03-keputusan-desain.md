@@ -685,6 +685,44 @@ fenologinya belum diperiksa terhadap skala ini.
 
 ---
 
+### D37 — kacang panjang: menyusun sendiri, tetapi dengan pijakan yang lebih banyak daripada durian
+
+Kacang panjang 224 varietas, dan seperti durian tidak punya kunci BBCH terbitan. Bedanya, di
+sini ada dua pijakan yang durian tidak punya, dan keduanya dipakai — sehingga skalanya bukan
+karangan bebas melainkan susunan di atas yang sudah ada.
+
+**Pijakan pertama: penahapan legum yang sudah lazim.** Kacang tunggak — jenis yang sama,
+*Vigna unguiculata* — punya penahapan VE, VC, V1 ke atas, R1 sampai R7, RH yang dipakai luas
+dan didokumentasikan Bean IPM. Tiap fase di skala ini menyebut padanannya, sehingga catatan
+kacang panjang bisa dibandingkan dengan pustaka kacang tunggak tanpa menerjemahkan ulang.
+Halaman Bean IPM sendiri menolak diambil mesin pada Agustus 2026, jadi rumusan fase di berkas
+ini **tulisan kami yang mengikuti polanya, bukan salinannya** — dan itu dinyatakan di `notes`,
+karena perbedaan itu menentukan bagi siapa pun yang mau memverifikasi.
+
+**Pijakan kedua: jangkar hari yang terukur.** Ofori & Klogo (2005) mengukur perkembangan
+polong dan biji kacang panjang: membesar paling cepat pada 0–15 hari sesudah bunga mekar,
+waktu terbaik memetik polong segar 15 hari saat kadar air polong 847 g/kg, kadar air turun
+pada 15–25 hari, dan 20 hari memberi kompromi terbaik untuk benih. Percobaannya di Ghana;
+kultivar dan iklim Indonesia bisa menggeser angka itu, dan penggeseran itu justru yang perlu
+diukur di Fase 1.
+
+**Satu bentuk yang tidak dimiliki kunci buncis, dan yang menentukan cara kerja di kebun:
+panen berulang.** Kacang panjang tipe merambat dipetik setiap beberapa hari selama
+berminggu-minggu sementara tanaman masih berbunga. Fase `KPJ-B2` karena itu berjalan
+**bersamaan** dengan fase pembungaan dan pembentukan polong, bukan sesudahnya. Kunci buncis
+*Phaseolus* menggambarkan tanaman yang dipanen serentak, dan deret fasenya yang saling
+menggantikan akan salah menggambarkan kacang panjang sejak fase 7.
+
+Kacang tunggak ikut ditautkan ke skala ini: jenis yang sama, dan jalur benihnya sudah ada di
+fase B3 sampai B5. Kacang hijau tidak — *Vigna radiata*, jenis lain.
+
+Dua skala susunan sendiri sekarang, durian dan kacang panjang, dan keduanya memakai pola yang
+sama: kode berawalan huruf yang mengumumkan bukan-BBCH, `no_mapping_reason` yang menyebut
+alasannya, batas antara yang bersumber dan yang tidak ditarik di dalam `notes`, dan
+`review_due` enam bulan karena yang ditunggu pengamatan lapangan, bukan terbitan baru.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -714,4 +752,4 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
 | 22 | 47,6% varietas belum punya skala fase | Turun dari 89% setelah lima belas kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168), alpukat (145). Kunci monograf yang masih tersisa tinggal bit dan kacang polong; selebihnya perlu kunci dari luar monograf, atau belum pernah ada |
 | 25 | Berapa mesostage alpukat di Indonesia? | Kunci alpukat menyalin dua trubus per tahun mengikuti Spanyol selatan. Jumlah trubus di sini perlu diamati sendiri; bisa lebih, bisa kurang, dan mesostage tambahan boleh dibuat menurut sumbernya |
-| 23 | Skala durian susunan sendiri belum diuji lapangan | 14 fase disusun dari kosakata praktisi dan dua terbitan yang bisa dirujuk. Yang perlu diuji ke pekebun: apakah batas fasenya sama dengan yang mereka pakai, dan apakah fase gugur buah muda perlu dipecah dua |
+| 23 | Dua skala susunan sendiri belum diuji lapangan | Durian 14 fase dan kacang panjang 15 fase, disusun dari kosakata praktisi, pola penahapan legum, dan terbitan yang bisa dirujuk. Yang perlu diuji ke pekebun: apakah batas fasenya sama dengan yang mereka pakai, dan untuk kacang panjang apakah 15 hari sesudah bunga mekar juga waktu petik terbaik di sini |

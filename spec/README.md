@@ -192,6 +192,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `stage-scale-bbch-tembakau.json` | **156 fase tembakau** (CORESTA) — sampai pengeringan daun pascapanen | CORESTA |
 | `stage-scale-bbch-alpukat.json` | **95 fase alpukat** — BBCH diperluas, dua trubus per tahun | BBCH |
 | `stage-scale-durian.json` | **14 fase durian** — susunan sendiri, bukan BBCH; sampai pemeraman | — (beralasan) |
+| `stage-scale-kacang-panjang.json` | **15 fase kacang panjang** — susunan sendiri; panen berulang jadi fase tersendiri | — (beralasan) |
 | `stage-scale-doc-udang.json` | 4 fase berbasis umur budidaya udang — ditautkan ke 1 komoditas | — (beralasan) |
 | `operation-type.json` | **61 jenis tindakan**, hierarkis, dari olah tanah sampai pengangkutan | 28 ke AgrO / ICASA |
 | `variable.json` | **46 variabel** — pertumbuhan, OPT, tanah, air, cuaca, hasil | 15 ke ICASA / AgrO |
@@ -400,6 +401,7 @@ komoditas:
 | BBCH — Cucurbit (semangka, melon, mentimun, labu) | 63 | 9 | 959 |
 | Fase budidaya durian (Durio zibethinus) | 14 | 2 | 496 |
 | CORESTA — Tembakau (Nicotiana tabacum) | 156 | 1 | 267 |
+| Fase budidaya kacang panjang (Vigna unguiculata ssp. sesquipedalis) | 15 | 2 | 253 |
 | BBCH — Kedelai (Glycine max) | 66 | 4 | 228 |
 | BBCH — Sayuran daun tidak berkrop (sawi, caisim, pak choi, selada daun) | 63 | 11 | 169 |
 | BBCH — Sayuran daun berkrop (kubis, sawi putih, selada) | 60 | 3 | 161 |
@@ -449,7 +451,7 @@ BBCH Monograph yang punya padanan komoditas di registri Indonesia. Yang tersisa 
 hanya kunci buah iklim sedang — pome, stone fruit, stroberi, currant, anggur, hop — yang tidak
 punya varietas terdaftar di sini.
 
-Tiga sudah masuk. **Tembakau**, dari CORESTA Guide N° 7 — bukan kunci BBCH Monograph, melainkan
+Empat sudah masuk. **Tembakau**, dari CORESTA Guide N° 7 — bukan kunci BBCH Monograph, melainkan
 skala turunan yang menyatakan dirinya berbasis BBCH diperluas. Berkasnya gratis tetapi situsnya
 memakai pemeriksaan bot, jadi PDF-nya diunduh manusia lalu disalin dari salinan lokal.
 
@@ -460,12 +462,15 @@ Dan **durian** — yang kuncinya memang tidak pernah ada, sehingga skalanya disu
 seperti skala DOC udang: 14 fase, bertanda `no_mapping_reason`, dengan urutan fase memakai
 kosakata praktisi dan jangkar hari hanya di tempat yang ada rujukannya.
 
+Dan **kacang panjang** — juga tanpa kunci terbitan, jadi disusun sendiri: 15 fase, dengan
+padanan penahapan legum disebut pada tiap fase, dan jangkar hari polong dari Ofori & Klogo
+(2005).
+
 Sisa terbesar masih butuh sumber di luar monograf, dan keadaannya berbeda-beda:
 
 | Komoditas | Varietas | Kunci BBCH-nya | Kenapa belum masuk |
 |---|---:|---|---|
 | Krisan | 247 | belum ditemukan | Penelusuran belum menemukan kunci BBCH krisan yang diterbitkan |
-| Kacang panjang | 224 | **tidak ada** | Pustaka memakai kode kunci buncis apa adanya untuk *Vigna*, tetapi itu pemakaian informal, bukan kunci terbitan |
 | Pisang | 185 | **usulan, belum terbit** | Gonzales dkk., "Proposal for codification of the phenological cycle of edible Musaceae" — berstatus *in preparation*, dan kodenya 4 digit, beda bentuk dari seluruh skala di sini |
 | Tebu | 168 | ada, berbayar | BBCH diadaptasi untuk tebu di buku Wiley; teksnya di balik akses berbayar |
 
