@@ -203,19 +203,42 @@ for (const r of ringkas) {
   }
 }
 
-// Kedua registri diindeks bersama saat mencocokkan nomor yang tercetak di kemasan, jadi satu
-// nomor yang muncul di kedua berkas akan tertaut ke produk yang salah. Hari ini tidak ada, dan
-// bukan karena beruntung: posisi 5-6 memisahkannya — pestisida menaruh kelompok ketiganya yang
-// selalu `01` di sana, pupuk menaruh separuh awal tahunnya yang selalu `20`. Diperiksa tiap
-// jalan supaya penarikan berikutnya tidak diam-diam merusaknya.
-const [a, b] = ringkas;
-const bertindih = [...a.nomor].filter((n) => b.nomor.has(n));
-console.log(`\n== lintas registri: ${a.nomor.size} nomor pestisida, ${b.nomor.size} nomor pupuk`);
-if (bertindih.length === 0) {
-  console.log('   tidak ada nomor yang dipakai kedua registri.');
-} else {
-  console.log(`   ${bertindih.length} NOMOR DIPAKAI KEDUA REGISTRI — pencocokan kemasan bisa tertaut ke produk yang salah:`);
-  for (const n of bertindih) console.log(`     ${n}`);
+// Ketiga registri diindeks bersama saat mencocokkan nomor yang dibaca dari kemasan atau label
+// benih, jadi satu nomor yang muncul di dua berkas akan tertaut ke barang yang salah. Hari ini
+// tidak ada, dan bukan karena beruntung:
+//   pestisida vs pupuk  — posisi 5-6. Pestisida menaruh kelompok ketiganya yang selalu `01`
+//                         di sana; pupuk menaruh separuh awal tahunnya yang selalu `20`.
+//   varietas vs produk  — nomor SK hampir selalu berhuruf, dan yang murni angka pun panjangnya
+//                         5 atau 21 sedangkan nomor produk 7 sampai 16.
+// Diperiksa tiap jalan supaya penarikan berikutnya tidak diam-diam merusaknya.
+const nomorVarietas = new Set();
+try {
+  const vjalur = new URL('../vocab/variety/varietas.ndjson', import.meta.url);
+  for (const l of readFileSync(vjalur, 'utf8').split('\n')) {
+    if (!l.trim()) continue;
+    const doc = JSON.parse(l);
+    for (const p of doc.permits ?? []) if (p.decree_number) nomorVarietas.add(seragamkan(p.decree_number));
+    if (doc.release?.decree_number) nomorVarietas.add(seragamkan(doc.release.decree_number));
+  }
+} catch { /* berkas varietas belum ada; lewati saja */ }
+
+const semua = [
+  { nama: 'pestisida', set: ringkas[0].nomor },
+  { nama: 'pupuk', set: ringkas[1].nomor },
+  ...(nomorVarietas.size ? [{ nama: 'varietas', set: nomorVarietas }] : []),
+];
+console.log('\n== lintas registri: ' + semua.map((s) => `${s.set.size} nomor ${s.nama}`).join(', '));
+let adaBentrok = false;
+for (let i = 0; i < semua.length; i++) {
+  for (let j = i + 1; j < semua.length; j++) {
+    const bertindih = [...semua[i].set].filter((n) => semua[j].set.has(n));
+    if (!bertindih.length) continue;
+    adaBentrok = true;
+    console.log(`   ${bertindih.length} NOMOR DIPAKAI ${semua[i].nama.toUpperCase()} SEKALIGUS ${semua[j].nama.toUpperCase()}`
+      + ' — pencocokan bisa tertaut ke barang yang salah:');
+    for (const n of bertindih.slice(0, 20)) console.log(`     ${n}`);
+  }
 }
+if (!adaBentrok) console.log('   tidak ada nomor yang dipakai lebih dari satu registri.');
 
 console.log(tulis ? '\nDitulis ke vocab/product/.\n' : '\nLaporan saja. Tambahkan --tulis untuk menyimpan.\n');

@@ -953,6 +953,71 @@ sudah menghasilkan bentuk yang benar.
 
 ---
 
+### D40 — nomor varietas terpisah dari nomor produk oleh abjad, dan kembarnya justru bawaan rancangan
+
+Sisi varietas diperiksa dengan cara yang sama. Hasilnya berbeda dari kedua sisi produk, dan
+perbedaannya berasal dari satu hal: **nomor varietas adalah nomor surat keputusan, bukan nomor
+seri produk.** Satu SK memang bisa melepas banyak varietas sekaligus — itu bentuk dokumennya,
+bukan cacatnya.
+
+**Lintas registri nihil, dan kali ini terpisah oleh abjad.** 11.169 nomor varietas diadu dengan
+7.540 nomor pestisida dan 6.418 nomor pupuk: irisannya **nol pada kedua pasangan**. Hanya 67
+nomor varietas yang murni angka — 17 sepanjang 5 digit dan 50 sepanjang 21 digit — sedangkan
+nomor produk berkisar 7 sampai 16 digit. **Pitanya tidak bersentuhan sama sekali.** Sisanya,
+11.102 nomor, memuat huruf: `PVHP`, `PVL`, `Kpts`, `PPVT`, `B-`. Pemisahan yang lebih tegas
+daripada pupuk lawan pestisida di D39, yang hanya dipisahkan satu posisi digit.
+
+**Antar-jenis surat juga nihil.** Empat jenis izin — pelepasan, pendaftaran, perlindungan,
+penamaan — tidak pernah berbagi satu nomor. Itu tidak sepele: pendaftaran dan penamaan **memakai
+pencacah surat keluar yang sama**, terlihat dari `B-852` pendaftaran, `B-853` penamaan, `B-857`
+pendaftaran, `B-858` penamaan. Pencacahnya bersama, tetapi tidak pernah diterbitkan dua kali.
+
+**73 nomor dipakai lebih dari satu varietas, dan 45 di antaranya memang begitu seharusnya** —
+satu SK, beberapa varietas, komoditas sama. 28 sisanya melintasi komoditas:
+
+| | Grup | Bacaan |
+|---|---:|---|
+| Pelepasan, nama varietas berbeda | 19 | SK gabungan lintas komoditas — lazim di era pelepasan |
+| `PVL`, nama sama | 5 | varietas lokal bernama daerahnya, satu SK per daerah |
+| `PVHP`, nama sama | 3 | **perlu diperiksa** |
+| lain-lain | 1 | |
+
+Yang **bukan** masalah, sekalipun kelihatannya begitu: `374/Kpts/LB.240/6/2004` memuat Mekongga
+(padi) dan Hibrida BISI-16 (jagung) — satu SK pelepasan yang memang menggabungkan banyak
+komoditas. Begitu juga `31/PVL/2007` yang mendaftarkan Duku **Palembang** dan Nenas
+**Palembang**: varietas lokal dinamai menurut daerah asalnya, jadi satu daerah yang mendaftarkan
+beberapa tanaman dalam satu SK akan menghasilkan beberapa varietas bernama sama. Empat lainnya
+serupa — Alor, Pontianak, Sulawesi Utara, Berastagi.
+
+**Tiga yang tidak punya penjelasan sejinak itu**, seluruhnya `PVHP` — varietas hasil pemuliaan,
+yang namanya merek, bukan nama tempat:
+
+```
+57/PVHP/2010    "Semi"             Budidaya kopi (Pemkab Purworejo)  |  Mentimun (PT BCA)
+114/PVHP/2013   "Azzura"           Krisan (Balithi)                  |  Oyong (East West Seed)
+331/PVHP/2015   "Prima Agrihorti"  Cabai rawit (Balitbangtan)        |  Dendrobium (Balithi)
+```
+
+Dua pemulia yang tidak berkaitan berbagi satu nomor pendaftaran, untuk tanaman yang tidak
+berkaitan, dengan nama varietas yang sama persis. Belum ditindak — dicatat supaya bisa
+diverifikasi ke PPVTPP.
+
+**Dua pasang lagi bukan tabrakan melainkan varietas yang tercatat dua kali** di bawah dua ejaan
+komoditas: `5083/Kpts/SR.120/12/2011` memuat "Lai Bibir Merah" berkomoditas *Durian* dan "Bibir
+Merah" berkomoditas *Lai*; `5084` memuat pasangan serupa untuk Mandong. Lai adalah *Durio
+kutejensis* — jenis lain dalam marga yang sama, dan justru karena itu D36 sengaja tidak
+menautkannya ke skala durian. Registri rupanya memperlakukan keduanya kadang satu kadang dua.
+
+**356 izin tidak memuat nomor sama sekali** — 336 pelepasan dan 20 pendaftaran. Bedanya dengan
+sisi produk: di sini kekosongan itu **memang dibiarkan kosong**. `decree_number` tidak pernah
+diwajibkan skema varietas, jadi tidak ada yang perlu dikarang untuk mengisinya. Pola yang baru
+dipasang di sisi produk lewat `number_absent_in_source` (D37) sudah berlaku di sisi varietas
+sejak awal, tanpa disebut demikian.
+
+`periksa-nomor-registri.mjs` sekarang mengadu ketiga registri sekaligus, bukan hanya dua.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
