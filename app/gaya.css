@@ -222,3 +222,62 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 .lain { margin: 2rem 0 0; font-size: .92rem; }
 .lain a { color: var(--aksen); }
+
+/* ------------------------------------------------------- kalkulator jalur 3 */
+.masukan { margin-top: .9rem; }
+.masukan label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .3rem; }
+
+.masukan input {
+  width: 100%;
+  padding: .7rem .8rem;
+  font: inherit;
+  font-variant-numeric: tabular-nums;
+  color: var(--teks);
+  background: var(--latar);
+  border: 2px solid var(--garis);
+  border-radius: var(--sudut);
+}
+
+.masukan input:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+.preset { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .45rem; }
+
+.preset button {
+  padding: .35rem .7rem;
+  font: inherit;
+  font-size: .85rem;
+  color: var(--teks-lemah);
+  background: transparent;
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.preset button:hover { border-color: var(--aksen); color: var(--teks); }
+.preset button:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+/* Angka besar sengaja tidak diberi warna aksen: ia hasil aritmetika atas harga yang
+   dimasukkan pengguna, bukan temuan atau anjuran. */
+.kartu.sorot { border-width: 2px; }
+.angka-besar { margin: 0; font-size: 2.1rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.angka-label { margin: .15rem 0 0; color: var(--teks-lemah); font-size: .9rem; }
+
+.bilah {
+  height: .5rem;
+  margin: .7rem 0 0;
+  background: var(--garis);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.bilah span { display: block; height: 100%; background: var(--aksen); }
+
+.daftar.polos { margin-top: .8rem; }
+.daftar.polos li {
+  padding: .55rem .85rem;
+  background: var(--latar);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+}
+.daftar.polos .nama { display: block; font-weight: 600; font-size: .92rem; }
+.daftar.polos .sub { display: block; font-size: .8rem; color: var(--teks-lemah); }

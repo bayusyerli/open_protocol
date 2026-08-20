@@ -6,6 +6,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | Halaman | Jalur | Rancangan |
 |---|---|---|
 | `index.html` | 2 — masuk dari kemasan: isi produk dan merek lain yang isinya sama | [`docs/05-jalur-produk.md`](../docs/05-jalur-produk.md) |
+| `jalur-3.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
 | `jalur-4.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
 
 `varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
@@ -40,6 +41,7 @@ peramban:
 |---|---|---|---|
 | 2 · produk berlarangan | 4 | 151 KB | 47,4 KB |
 | 2 · produk biasa | 3 | 108 KB | 47,8 KB |
+| 3 · pupuk | 3 | 67 KB | 48,0 KB |
 | 4 · varietas | 2 | 63 KB | 47,7 KB |
 
 Tidak satu pun berkas melewati 48 KB. Itu bukan kebetulan: anggaran itu ditegakkan
@@ -60,6 +62,27 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
 - **Isi sama bukan berarti dosis sama.** Dosis milik pendaftaran tiap produk.
 - **Nama dagang belum terpetakan.** Nama yang tidak ketemu bukan bukti produknya
   tidak terdaftar, dan layar mengatakannya.
+
+### Khusus jalur 3
+
+- **Harga bukan dari registri.** Registri tidak memuat harga sama sekali; angkanya
+  masukan pengguna, dan tandanya tetap terlihat di setiap hasil.
+- **Pembagiannya ditulis terbuka.** Harga per kg ÷ fraksi hara = rupiah per kg hara,
+  ketiganya tampil, supaya bisa dibantah siapa pun yang tidak percaya.
+- **Hara total, bukan per hara.** Nitrogen tidak bisa dibeli terpisah dari yang lain,
+  jadi membagi per hara sendiri-sendiri menyesatkan. Nisbahnya ditampilkan terpisah.
+- **Padat dan cair tidak dicampur.** Basisnya selalu disebut — per kilogram atau per
+  liter — dan kadar keduanya tidak pernah dikonversi, karena berat jenis tidak ada di
+  registri. Nol dari 5.130 pupuk berkomposisi mencampur kedua basis, jadi tiap produk
+  punya satu basis yang jelas.
+- **HET bersubsidi selalu bersyarat.** Maksimal 2 hektare, wajib SIMLUHTAN dan e-RDKK.
+  Angkanya dari Perpres 6/2025 dan Permentan 15/2025 — registri tidak menandai status
+  subsidi pada satu pun dari 7.196 pupuknya, jadi kecocokan skemanya ditebak dari
+  bentuk komposisi dan itu dinyatakan di layar.
+- **Cabang "tidak sanggup" tampil tanpa angka.** Tujuh resep jalur 5 ditampilkan tanpa
+  rupiah per kg hara: `L18` menolak menghitung hara dari batch yang belum diuji, dan
+  kadar kompos berbeda tiap tumpukan. Menyembunyikannya berarti yang tidak sanggup
+  membeli tidak melihat pilihan apa pun.
 
 ### Khusus jalur 4
 
