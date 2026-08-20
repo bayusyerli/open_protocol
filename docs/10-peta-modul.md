@@ -64,7 +64,7 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 | **M1 · Protokol** | 3 (prasyarat) | **Selesai** — skema Lapis 2, `L30`–`L33`, satu protokol cabai empat langkah | M0 selesai untuk jalur 6 |
 | **M2 · Rencana musim** | 3 | **Penyusun selesai** — `spec/tools/susun-rencana.mjs`; belum ada permukaan | M1 |
 | **M3 · Realisasi & simpangan** | 3 | **Pemeriksa selesai** — `spec/tools/periksa-musim.mjs`; permukaan pencatatan belum ada | M2 |
-| **M4 · Berkas bukti** | 3 | `Cycle` + `Step[]` → dokumen siap audit | M3 |
+| **M4 · Berkas bukti** | 3 | **Penyusun selesai** — `spec/tools/susun-bukti.mjs` | M3 |
 | **M5 · API & ekspor** | Fase 7 | Antarmuka publik, versioning data | M1–M4 |
 
 ### M0 · Trust layer — fase pertama
@@ -184,6 +184,28 @@ rapi-tidaknya: ingatan dosis dan waktu memudar.
 Bertulang SNI 8969 (IndoGAP), bukan taksonomi tandingan. Ini yang dibeli offtaker dan
 lembaga sertifikasi, dan alasan M1 harus benar lebih dulu: yang diaudit adalah kepatuhan
 terhadap protokol berversi, bukan catatan lepas.
+
+`spec/tools/susun-bukti.mjs` mengeluarkan dokumen Markdown lima bagian: identitas,
+rantai rencana–realisasi, masukan yang benar-benar dipakai beserta nomor pendaftarannya,
+pengamatan, dan **ambang terlampaui tanpa tindakan tercatat**.
+
+Bagian keempat itu yang paling dicari auditor dan paling mudah luput. Pada contoh cabai
+ia langsung menyalak: ambang trips `>= 5` terlampaui menurut pengamatan sendiri (nilai 7,
+9 Agustus) dan tidak ada satu pun langkah realisasi yang menyebut
+`cabai-dataran-rendah/kendali-trips-ambang`.
+
+> **Diam di titik itu punya dua arti yang jauh berbeda bagi pembeli:** tindakan yang
+> dikerjakan tetapi tidak dicatat, atau keputusan sadar untuk tidak bertindak. Berkas
+> bukti tidak bisa membedakan keduanya, dan tidak berpura-pura bisa.
+
+Bagian kelima — **yang tidak bisa dibuktikan berkas ini** — bukan kerendahan hati,
+melainkan syarat supaya empat bagian sebelumnya bisa dipercaya. Dokumen bukti yang tidak
+menyebut batasnya memaksa auditor menebak batas itu sendiri, dan tebakan yang salah ke
+arah mana pun merugikan: menolak yang sah, atau meloloskan yang tidak.
+
+Geometri petak tidak pernah diekspor. `L7` sudah menolaknya diberi label publik, dan
+klasifikasi data siklus disebut apa adanya di kaki dokumen — mengeluarkannya menuntut
+persetujuan pemegang lahan, dan persetujuan itu bukan bagian dari berkas ini.
 
 ### M5 · API dan ekspor
 
