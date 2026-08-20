@@ -1,11 +1,12 @@
 // Pemeriksa manifes gambar. Menegakkan spec/schema/product-image.schema.json ditambah
-// tiga aturan yang tidak bisa dinyatakan skema.
+// aturan yang tidak bisa dinyatakan skema.
 //
 //   node periksa.mjs [manifes.ndjson]
 //
-// Sengaja berdiri sendiri, tidak disambung ke spec/check.mjs: manifes ini tinggal di
-// folder kerja, bukan di spec/vocab/, dan `npm run all` tidak perlu ikut menunggu
-// pembacaan 11 MB ndjson produk hanya untuk memeriksa gambar.
+// Butuh indeks-merek.json — bangun dengan `python3 merek.py`. Indeks itu, bukan ndjson
+// registri, yang jadi wewenang soal merek: ia sudah mengkanonikkan nama produsen lewat
+// principal_alias.csv, dan tanpa itu satu perusahaan yang ditulis dua cara akan tampak
+// sebagai dua merek berbeda.
 
 import { readFileSync, existsSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -25,26 +26,24 @@ for (const f of ['common.schema.json', 'product-image.schema.json']) {
 }
 const validate = ajv.getSchema('https://spec.openprotocols.id/v0.1/product-image.schema.json');
 
-if (!existsSync(manifes)) {
-  console.error(`Manifes tidak ada: ${manifes}`);
+if (!existsSync(manifes)) { console.error(`Manifes tidak ada: ${manifes}`); process.exit(1); }
+
+const ixPath = join(akar, 'indeks-merek.json');
+if (!existsSync(ixPath)) {
+  console.error('indeks-merek.json tidak ada. Jalankan: python3 merek.py');
   process.exit(1);
 }
+const merek = JSON.parse(readFileSync(ixPath, 'utf8')).merek;
+const nomorTerdaftar = new Set();
+for (const m of Object.values(merek)) for (const r of m.registrations) nomorTerdaftar.add(r.number);
+
 const baris = readFileSync(manifes, 'utf8').split('\n').filter((l) => l.trim());
 const galat = [];
 const fail = (i, rule, msg) => galat.push({ i: i + 1, rule, msg });
 
-// Kunci produk sah, dibaca sekali dari kedua ndjson registri.
-const idProduk = new Set();
-for (const f of ['pestisida.ndjson', 'pupuk.ndjson']) {
-  const p = join(spec, 'vocab', 'product', f);
-  if (!existsSync(p)) continue;
-  for (const l of readFileSync(p, 'utf8').split('\n')) {
-    if (l.trim()) idProduk.add(JSON.parse(l).id);
-  }
-}
-
-const skuPeran = new Map();  // sku_key + role -> baris pertama
-const perPhash = new Map();  // phash -> daftar sku_key
+const merekPeran = new Map();
+const perPhash = new Map();
+const spanBaris = [];
 
 for (const [i, l] of baris.entries()) {
   let rec;
@@ -55,34 +54,70 @@ for (const [i, l] of baris.entries()) {
     continue;
   }
 
-  // G2 — produk yang ditunjuk harus benar-benar ada di registri.
-  if (idProduk.size && !idProduk.has(rec.product.id)) {
-    fail(i, 'G2-produk-hilang', `${rec.product.id} tidak ada di registri produk.`);
+  const m = merek[rec.brand_key];
+
+  // G2 — merek harus benar-benar ada, dan produsen kanoniknya harus cocok.
+  if (!m) {
+    fail(i, 'G2-merek-hilang', `brand_key "${rec.brand_key}" tidak ada di indeks merek.`);
+  } else {
+    if (rec.brand.manufacturer_canonical !== m.manufacturer_canonical) {
+      fail(i, 'G2-produsen-beda',
+        `manufacturer_canonical "${rec.brand.manufacturer_canonical}" != indeks "${m.manufacturer_canonical}". `
+        + `brand_key dibentuk dari bentuk kanonik, jadi keduanya tidak boleh berbeda.`);
+    }
+    // G7 — span wajib angka sebenarnya, bukan taksiran.
+    if (rec.span.registrations !== m.registrations.length) {
+      fail(i, 'G7-span-beda',
+        `span.registrations ${rec.span.registrations} != ${m.registrations.length} di indeks. `
+        + `Angka ini yang menyatakan seberapa ambigu barisnya; salah di sini menyesatkan pembacanya.`);
+    }
+    // G8 — penyempitan hanya boleh menunjuk pendaftaran di bawah merek ini.
+    const milik = new Set(m.registrations.map((r) => r.id));
+    for (const n of rec.narrowed_to ?? []) {
+      if (!milik.has(n.id)) {
+        fail(i, 'G8-sempit-asing', `narrowed_to ${n.id} bukan pendaftaran di bawah ${rec.brand_key}.`);
+      }
+    }
+    if (rec.narrowing?.basis === 'merek_tunggal' && m.registrations.length !== 1) {
+      fail(i, 'G8-tunggal-palsu',
+        `narrowing.basis "merek_tunggal" padahal merek ini menaungi ${m.registrations.length} pendaftaran.`);
+    }
+    // G9 — nomor tercetak: klaim in_registry harus benar.
+    if (rec.printed_registration) {
+      const ada = nomorTerdaftar.has(rec.printed_registration.number_as_read);
+      if (ada !== rec.printed_registration.in_registry) {
+        fail(i, 'G9-tercetak-salah',
+          `printed_registration.in_registry=${rec.printed_registration.in_registry} `
+          + `tetapi "${rec.printed_registration.number_as_read}" ${ada ? 'ADA' : 'TIDAK ADA'} di registri.`);
+      }
+    }
+    if (m.registrations.length > 1 && !rec.narrowed_to && rec.review.status === 'terverifikasi') {
+      fail(i, 'G10-ambigu-terbit',
+        `${rec.brand_key} menaungi ${m.registrations.length} pendaftaran tanpa narrowed_to, `
+        + `jadi tidak boleh berstatus terverifikasi — ia belum menunjuk apa pun secara pasti.`);
+    }
+    spanBaris.push([rec.brand_key, m.registrations.length, !!rec.narrowed_to]);
   }
 
-  // G3 — netralitas vendor (turunan L3). Watermark dan overlay promosi tidak boleh terbit.
+  // G3 — netralitas vendor (turunan L3).
   if (rec.review.status === 'terverifikasi') {
-    if (rec.quality?.overlay_promosi) {
-      fail(i, 'G3-netralitas', `${rec.sku_key}: overlay promosi tidak boleh berstatus terverifikasi.`);
-    }
-    if (rec.quality?.watermark) {
-      fail(i, 'G3-netralitas', `${rec.sku_key}: watermark pihak ketiga tidak boleh berstatus terverifikasi.`);
-    }
+    if (rec.quality?.overlay_promosi) fail(i, 'G3-netralitas', `${rec.brand_key}: overlay promosi tidak boleh terverifikasi.`);
+    if (rec.quality?.watermark) fail(i, 'G3-netralitas', `${rec.brand_key}: watermark pihak ketiga tidak boleh terverifikasi.`);
   }
 
-  // G4 — hak cipta. Biner hanya boleh ada bila redistributable, atau statusnya masih kerja.
+  // G4 — hak cipta.
   if (rec.source.redistributable === true) {
     const sah = rec.source.permission === 'izin_tertulis'
       || rec.source.rights === 'foto_sendiri'
       || (rec.source.license && rec.source.license !== 'tidak_diketahui');
     if (!sah) {
       fail(i, 'G4-hak-cipta',
-        `${rec.sku_key}: redistributable=true tanpa izin tertulis, foto sendiri, atau lisensi. `
+        `${rec.brand_key}: redistributable=true tanpa izin tertulis, foto sendiri, atau lisensi. `
         + `Repositori ini CC-BY-SA-4.0; menyalin foto orang tidak mengubah haknya.`);
     }
   }
 
-  // G5 — berkas yang disebut manifes harus ada, dan hash-nya harus cocok.
+  // G5 — berkas ada dan hash-nya cocok.
   for (const f of [rec.file, ...(rec.variants ?? [])].filter(Boolean)) {
     const p = join(akar, f.path);
     if (!existsSync(p)) { fail(i, 'G5-berkas-hilang', f.path); continue; }
@@ -92,33 +127,33 @@ for (const [i, l] of baris.entries()) {
     if (statSync(p).size !== f.bytes) fail(i, 'G5-bytes-beda', f.path);
   }
 
-  // G6 — satu peran satu gambar per SKU. Dua "kemasan_depan" berarti salah satunya salah.
-  const k = `${rec.sku_key}|${rec.role}`;
-  if (skuPeran.has(k)) fail(i, 'G6-peran-ganda', `${k} sudah dipakai baris ${skuPeran.get(k) + 1}.`);
-  else skuPeran.set(k, i);
+  // G6 — satu peran satu gambar per MEREK.
+  const k = `${rec.brand_key}|${rec.role}`;
+  if (merekPeran.has(k)) fail(i, 'G6-peran-ganda', `${k} sudah dipakai baris ${merekPeran.get(k) + 1}.`);
+  else merekPeran.set(k, i);
 
-  if (rec.file?.phash) {
-    perPhash.set(rec.file.phash, [...(perPhash.get(rec.file.phash) ?? []), rec.sku_key]);
-  }
+  if (rec.file?.phash) perPhash.set(rec.file.phash, [...(perPhash.get(rec.file.phash) ?? []), rec.brand_key]);
 }
 
-// Bukan galat: foto yang sama dipakai lintas pendaftaran adalah temuan yang ingin dilihat.
 const dipakaiUlang = [...perPhash.entries()]
-  .map(([h, s]) => [h, [...new Set(s)]])
-  .filter(([, s]) => s.length > 1)
+  .map(([h, s]) => [h, [...new Set(s)]]).filter(([, s]) => s.length > 1)
   .sort((a, b) => b[1].length - a[1].length);
 
+const ambigu = spanBaris.filter(([, n, sempit]) => n > 1 && !sempit);
 console.log(`\nManifes : ${baris.length} baris`);
-console.log(`Berkas  : ${[...skuPeran.keys()].length} pasangan sku+peran unik\n`);
+console.log(`Merek   : ${new Set(spanBaris.map((x) => x[0])).size} unik, ${merekPeran.size} pasangan merek+peran\n`);
 
+if (ambigu.length) {
+  console.log(`TEMUAN  baris tingkat merek tanpa penyempitan (${ambigu.length}):`);
+  for (const [k, n] of ambigu.slice(0, 10)) console.log(`        ${k.padEnd(44)} 1 dari ${n} pendaftaran`);
+  console.log('        Sah, dan memang bentuk yang dipilih — tetapi tidak boleh naik ke terverifikasi.\n');
+}
 if (dipakaiUlang.length) {
-  console.log(`TEMUAN  foto sama dipakai lintas SKU (${dipakaiUlang.length} kelompok):`);
-  for (const [h, s] of dipakaiUlang.slice(0, 10)) {
-    console.log(`        ${h.slice(8, 16)}…  ${s.length} SKU  ${s.slice(0, 3).join(', ')}${s.length > 3 ? ', …' : ''}`);
-  }
+  console.log(`TEMUAN  foto sama dipakai lintas merek (${dipakaiUlang.length} kelompok):`);
+  for (const [h, s] of dipakaiUlang.slice(0, 10)) console.log(`        ${h.slice(8, 16)}…  ${s.length} merek  ${s.slice(0, 3).join(', ')}`);
   console.log('');
 }
 
-for (const e of galat) console.log(`GALAT   baris ${String(e.i).padEnd(5)} ${e.rule.padEnd(18)} ${e.msg}`);
+for (const e of galat) console.log(`GALAT   baris ${String(e.i).padEnd(5)} ${e.rule.padEnd(20)} ${e.msg}`);
 if (galat.length) { console.log(`\n${galat.length} galat.\n`); process.exit(1); }
 console.log('Lolos: 0 galat.\n');

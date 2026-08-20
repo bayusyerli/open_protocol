@@ -1,5 +1,5 @@
 {
-  "catatan": "Sapuan pilot. Dibangkitkan dari spec/vocab/product/*.ndjson pada 20 Agustus 2026. Tingkat produk, bukan tingkat kemasan — registri Kementan tidak punya kolom ukuran kemasan, jadi sku_key di sini sama dengan key produk.",
+  "catatan": "Sapuan pilot. Dibangkitkan dari spec/vocab/product/*.ndjson pada 20 Agustus 2026. Tingkat produk, bukan tingkat kemasan — registri Kementan tidak punya kolom ukuran kemasan, jadi daftar ini tingkat pendaftaran; kunci gambar sendiri tingkat merek, lihat README.",
   "sumber_yang_diizinkan": [
     "situs pemegang pendaftaran",
     "portal registri Kementan (SIMPEL/PVTPP)"
@@ -12,7 +12,6 @@
   "jumlah": 25,
   "sasaran": [
     {
-      "sku_key": "northam-480-sc-01030120269427",
       "product": {
         "id": "op:prd:00001001",
         "label": "NORTHAM 480 SC"
@@ -20,10 +19,10 @@
       "manufacturer": "PT. DELTAGRO MULIA SEJATI",
       "kind": "pestisida",
       "registration_number": "01030120269427",
-      "formulation": "pratumbuh berbentuk pekatan suspensi"
+      "formulation": "pratumbuh berbentuk pekatan suspensi",
+      "product_key": "northam-480-sc-01030120269427"
     },
     {
-      "sku_key": "bersihtop-200-sl-01030120269339",
       "product": {
         "id": "op:prd:00001010",
         "label": "BERSIHTOP 200 SL"
@@ -31,10 +30,10 @@
       "manufacturer": "PT. TIGA MUARA EMAS MAKMUR",
       "kind": "pestisida",
       "registration_number": "01030120269339",
-      "formulation": "non selektif, kontak dan sedikit sistemik, purnatumbuh berbentuk larutan dalam air"
+      "formulation": "non selektif, kontak dan sedikit sistemik, purnatumbuh berbentuk larutan dalam air",
+      "product_key": "bersihtop-200-sl-01030120269339"
     },
     {
-      "sku_key": "prima-buah-250-sc-01040120258983",
       "product": {
         "id": "op:prd:00001030",
         "label": "PRIMA-BUAH 250 SC"
@@ -42,10 +41,10 @@
       "manufacturer": "PT. PRIMA KARYA BERJAYA",
       "kind": "pestisida",
       "registration_number": "01040120258983",
-      "formulation": "berbentuk pekatan suspensi"
+      "formulation": "berbentuk pekatan suspensi",
+      "product_key": "prima-buah-250-sc-01040120258983"
     },
     {
-      "sku_key": "larban-500-50-ec-01010120124476",
       "product": {
         "id": "op:prd:00001040",
         "label": "LARBAN 500/50 EC"
@@ -53,10 +52,10 @@
       "manufacturer": "PT. TRIDA KIMIA SAKTI",
       "kind": "pestisida",
       "registration_number": "01010120124476",
-      "formulation": "racun kontak, lambung dan pernafasan berbentuk pekatan yang dapat diemulsikan"
+      "formulation": "racun kontak, lambung dan pernafasan berbentuk pekatan yang dapat diemulsikan",
+      "product_key": "larban-500-50-ec-01010120124476"
     },
     {
-      "sku_key": "salvatore-plus-12-18-wp-01030120237930",
       "product": {
         "id": "op:prd:00001056",
         "label": "SALVATORE PLUS 12/18 WP"
@@ -64,10 +63,10 @@
       "manufacturer": "PT. DELTA GIRI WACANA",
       "kind": "pestisida",
       "registration_number": "01030120237930",
-      "formulation": "sistemik dan selektif pra tumbuh dan purna tumbuh berbentuk tepung yang dapat disuspensikan"
+      "formulation": "sistemik dan selektif pra tumbuh dan purna tumbuh berbentuk tepung yang dapat disuspensikan",
+      "product_key": "salvatore-plus-12-18-wp-01030120237930"
     },
     {
-      "sku_key": "protrobin-300-100-ew-01020120238049",
       "product": {
         "id": "op:prd:00001060",
         "label": "PROTROBIN 300/100 EW"
@@ -75,10 +74,10 @@
       "manufacturer": "PT. RAINBOW AGROSCIENCES",
       "kind": "pestisida",
       "registration_number": "01020120238049",
-      "formulation": "sistemik yang bersifat protektif dan kuratif berbentuk emulsi minyak dalam air"
+      "formulation": "sistemik yang bersifat protektif dan kuratif berbentuk emulsi minyak dalam air",
+      "product_key": "protrobin-300-100-ew-01020120238049"
     },
     {
-      "sku_key": "aji-ban-40-120-sc-01010120248350",
       "product": {
         "id": "op:prd:00001076",
         "label": "AJI-BAN 40/120 SC"
@@ -86,10 +85,10 @@
       "manufacturer": "PT. AGRO JAYA INDUSTRI",
       "kind": "pestisida",
       "registration_number": "01010120248350",
-      "formulation": "racun kontak dan lambung berbentuk pekatan suspensi"
+      "formulation": "racun kontak dan lambung berbentuk pekatan suspensi",
+      "product_key": "aji-ban-40-120-sc-01010120248350"
     },
     {
-      "sku_key": "cadre-240-sl-01030119981442",
       "product": {
         "id": "op:prd:00001119",
         "label": "CADRE 240 SL"
@@ -97,10 +96,10 @@
       "manufacturer": "PT. BASF INDONESIA",
       "kind": "pestisida",
       "registration_number": "01030119981442",
-      "formulation": "purna tumbuh \nselektif berbentuk larutan \ndalam air"
+      "formulation": "purna tumbuh \nselektif berbentuk larutan \ndalam air",
+      "product_key": "cadre-240-sl-01030119981442"
     },
     {
-      "sku_key": "merah-putih-241-sl-01030120227675",
       "product": {
         "id": "op:prd:00001156",
         "label": "MERAH PUTIH 241 SL"
@@ -108,10 +107,10 @@
       "manufacturer": "PT. CENTA BRASINDO ABADI CHEMICAL INDUSTRY",
       "kind": "pestisida",
       "registration_number": "01030120227675",
-      "formulation": "sistemik purna tumbuh berbentuk larutan dalam air"
+      "formulation": "sistemik purna tumbuh berbentuk larutan dalam air",
+      "product_key": "merah-putih-241-sl-01030120227675"
     },
     {
-      "sku_key": "milano-375-75-sc-01020120248663",
       "product": {
         "id": "op:prd:00001195",
         "label": "MILANO 375/75 SC"
@@ -119,10 +118,10 @@
       "manufacturer": "PT. SARI KRESNA KIMIA",
       "kind": "pestisida",
       "registration_number": "01020120248663",
-      "formulation": "yang bersifat protektif dan kuratif  berbentuk pekatan suspensi"
+      "formulation": "yang bersifat protektif dan kuratif  berbentuk pekatan suspensi",
+      "product_key": "milano-375-75-sc-01020120248663"
     },
     {
-      "sku_key": "virya-300-150-sc-01020120248562",
       "product": {
         "id": "op:prd:00001264",
         "label": "VIRYA 300/150 SC"
@@ -130,10 +129,10 @@
       "manufacturer": "PT. MAXXI AGRI INDONESIA",
       "kind": "pestisida",
       "registration_number": "01020120248562",
-      "formulation": "Fungisida sistemik yang bersifat protektif dan kuratif berbentuk pekatan suspensi"
+      "formulation": "Fungisida sistemik yang bersifat protektif dan kuratif berbentuk pekatan suspensi",
+      "product_key": "virya-300-150-sc-01020120248562"
     },
     {
-      "sku_key": "sigplus-turbo-276-sl-01030120248700",
       "product": {
         "id": "op:prd:00001271",
         "label": "SIGPLUS TURBO 276 SL*"
@@ -141,10 +140,10 @@
       "manufacturer": "PT. REJEKI INDO AGROTEC",
       "kind": "pestisida",
       "registration_number": "01030120248700",
-      "formulation": "kontak purnatumbuh berbentuk larutan dalam air"
+      "formulation": "kontak purnatumbuh berbentuk larutan dalam air",
+      "product_key": "sigplus-turbo-276-sl-01030120248700"
     },
     {
-      "sku_key": "abasri-80-od-01030120248225",
       "product": {
         "id": "op:prd:00001345",
         "label": "ABASRI 80 OD"
@@ -152,10 +151,10 @@
       "manufacturer": "PT. ADVANSIA INDOTANI",
       "kind": "pestisida",
       "registration_number": "01030120248225",
-      "formulation": "selektif purna tumbuh berbentuk larutan dalam minyak"
+      "formulation": "selektif purna tumbuh berbentuk larutan dalam minyak",
+      "product_key": "abasri-80-od-01030120248225"
     },
     {
-      "sku_key": "sonet-75-wp-01010120248704",
       "product": {
         "id": "op:prd:00001718",
         "label": "SONET 75 WP"
@@ -163,10 +162,10 @@
       "manufacturer": "PT. ETONG CHEMICAL INDONESIA",
       "kind": "pestisida",
       "registration_number": "01010120248704",
-      "formulation": "racun kontak dan lambung berbentuk tepung yang dapat didispersikan"
+      "formulation": "racun kontak dan lambung berbentuk tepung yang dapat didispersikan",
+      "product_key": "sonet-75-wp-01010120248704"
     },
     {
-      "sku_key": "safixone-200-sl-01030120259280",
       "product": {
         "id": "op:prd:00001970",
         "label": "SAFIXONE 200 SL"
@@ -174,10 +173,10 @@
       "manufacturer": "PT. MULTI SARANA INDOTANI",
       "kind": "pestisida",
       "registration_number": "01030120259280",
-      "formulation": "kontak purnatumbuh berbentuk larutan dalam air"
+      "formulation": "kontak purnatumbuh berbentuk larutan dalam air",
+      "product_key": "safixone-200-sl-01030120259280"
     },
     {
-      "sku_key": "daun-sawit-01-01-2025-959",
       "product": {
         "id": "op:prd:00010048",
         "label": "DAUN SAWIT"
@@ -185,10 +184,10 @@
       "manufacturer": "PT. Multi Mas Chemindo",
       "kind": "pupuk",
       "registration_number": "01.01.2025.959",
-      "formulation": "Butiran (Granular)"
+      "formulation": "Butiran (Granular)",
+      "product_key": "daun-sawit-01-01-2025-959"
     },
     {
-      "sku_key": "lao-ying-01-08-2025-834",
       "product": {
         "id": "op:prd:00010058",
         "label": "LAO YING"
@@ -196,10 +195,10 @@
       "manufacturer": "MEST INDONESIY",
       "kind": "pupuk",
       "registration_number": "01.08.2025.834",
-      "formulation": "Bentuk Lainnya"
+      "formulation": "Bentuk Lainnya",
+      "product_key": "lao-ying-01-08-2025-834"
     },
     {
-      "sku_key": "bm-vigor-03-02-2025-114",
       "product": {
         "id": "op:prd:00010060",
         "label": "BM VIGOR"
@@ -207,10 +206,10 @@
       "manufacturer": "BEHN MEYER AGRICARE",
       "kind": "pupuk",
       "registration_number": "03.02.2025.114",
-      "formulation": "Cair (Liquid)"
+      "formulation": "Cair (Liquid)",
+      "product_key": "bm-vigor-03-02-2025-114"
     },
     {
-      "sku_key": "kancil-emas-01-08-2024-1097",
       "product": {
         "id": "op:prd:00010091",
         "label": "KANCIL EMAS"
@@ -218,10 +217,10 @@
       "manufacturer": "PT. SANLEX MALINDO",
       "kind": "pupuk",
       "registration_number": "01.08.2024.1097",
-      "formulation": "Bentuk Lainnya"
+      "formulation": "Bentuk Lainnya",
+      "product_key": "kancil-emas-01-08-2024-1097"
     },
     {
-      "sku_key": "phonska-01-01-2022-1248",
       "product": {
         "id": "op:prd:00010212",
         "label": "PHONSKA"
@@ -229,10 +228,10 @@
       "manufacturer": "PETROKIMIA GRESIK",
       "kind": "pupuk",
       "registration_number": "01.01.2022.1248",
-      "formulation": "Butiran (Granular)"
+      "formulation": "Butiran (Granular)",
+      "product_key": "phonska-01-01-2022-1248"
     },
     {
-      "sku_key": "fertila-01-08-2020-678",
       "product": {
         "id": "op:prd:00010249",
         "label": "FERTILA"
@@ -240,10 +239,10 @@
       "manufacturer": "SAPROTAN UTAMA",
       "kind": "pupuk",
       "registration_number": "01.08.2020.678",
-      "formulation": "Bentuk Lainnya"
+      "formulation": "Bentuk Lainnya",
+      "product_key": "fertila-01-08-2020-678"
     },
     {
-      "sku_key": "phonska-plus-01-01-2021-538",
       "product": {
         "id": "op:prd:00010329",
         "label": "PHONSKA PLUS"
@@ -251,10 +250,10 @@
       "manufacturer": "PETROKIMIA GRESIK",
       "kind": "pupuk",
       "registration_number": "01.01.2021.538",
-      "formulation": "Butiran (Granular)"
+      "formulation": "Butiran (Granular)",
+      "product_key": "phonska-plus-01-01-2021-538"
     },
     {
-      "sku_key": "hx-mkp-01-01-2022-1746",
       "product": {
         "id": "op:prd:00010405",
         "label": "HX-MKP"
@@ -262,10 +261,10 @@
       "manufacturer": "DGW PUPUK INDONESIA",
       "kind": "pupuk",
       "registration_number": "01.01.2022.1746",
-      "formulation": "Butiran (Granular)"
+      "formulation": "Butiran (Granular)",
+      "product_key": "hx-mkp-01-01-2022-1746"
     },
     {
-      "sku_key": "compaction-dgw-01-01-2019-127",
       "product": {
         "id": "op:prd:00015877",
         "label": "COMPACTION DGW"
@@ -273,10 +272,10 @@
       "manufacturer": "PT. Hextar Fertilizer Indonesia",
       "kind": "pupuk",
       "registration_number": "01.01.2019.127",
-      "formulation": "Butiran"
+      "formulation": "Butiran",
+      "product_key": "compaction-dgw-01-01-2019-127"
     },
     {
-      "sku_key": "provit-maxi-01-08-2019-063",
       "product": {
         "id": "op:prd:00015911",
         "label": "PROVIT MAXI"
@@ -284,7 +283,8 @@
       "manufacturer": "PT.MEROKE TETAP JAYA",
       "kind": "pupuk",
       "registration_number": "01.08.2019.063",
-      "formulation": "Kristal"
+      "formulation": "Kristal",
+      "product_key": "provit-maxi-01-08-2019-063"
     }
   ]
 }

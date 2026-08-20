@@ -1,72 +1,147 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://spec.openprotocols.id/v0.1/product-image.schema.json",
-  "title": "ProductImage — gambar kemasan produk, satu berkas satu SKU",
-  "description": "Gambar BUKAN entitas kosakata. Ia lampiran berbukti pada produk terdaftar, jadi tidak memakai awalan op: sendiri dan tidak menghabiskan blok nomor siapa pun. Alasannya dua. Pertama, gambar tidak pernah jadi rujukan protokol — yang dirujuk selalu produknya. Kedua, registri ditarik ulang berkala oleh tools/tarik-registri.mjs dan menimpa vocab/product/*.ndjson; apa pun yang ditulis inline di sana akan hilang tanpa jejak pada penarikan berikutnya. Karena itu gambar hidup sebagai berkas pendamping berkunci sku_key.",
+  "title": "ProductImage — gambar kemasan, berkunci merek",
+  "description": "Gambar BUKAN entitas kosakata. Ia lampiran berbukti pada MEREK, bukan pada satu pendaftaran. Alasannya ditemukan saat panen pilot dan bukan dipilih di meja: situs pemegang pendaftaran menjual merek, sedangkan registri Kementan mendaftarkan formulasi. LAO YING menaungi 114 pendaftaran, DAUN SAWIT 76, dan tidak satu pun situs mencantumkan nomor pendaftaran di teks halamannya. Mengunci gambar ke satu op:prd akan menyatakan kepastian yang tidak dimiliki sumbernya. Gambar juga tidak pernah jadi rujukan protokol, dan tools/tarik-registri.mjs menimpa vocab/product/*.ndjson tiap penarikan — apa pun yang ditulis inline di sana hilang tanpa jejak. Karena itu gambar hidup sebagai berkas pendamping berkunci brand_key.",
   "type": "object",
   "properties": {
-    "sku_key": {
-      "$ref": "common.schema.json#/$defs/Key",
-      "description": "Identitas SKU. Bentuknya '<key-produk>' bila kemasan belum diketahui, atau '<key-produk>-<ukuran>' bila diketahui, mis. 'northam-480-sc-01030120269427-250ml'. Registri Kementan mendaftarkan FORMULASI, bukan kemasan — lubang yang sudah dinyatakan di docs/05-jalur-produk.md. Bentuk kunci ini sengaja merosot dengan rapi: gambar yang dikumpulkan hari ini di tingkat produk tetap sah, dan penambahan ukuran kemasan nanti tidak memaksa seluruh koleksi dikunci ulang."
+    "brand_key": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "minLength": 2,
+      "maxLength": 120,
+      "description": "Slug dari nama dagang digabung nama produsen kanonik, mis. 'daun-sawit-pt-multi-mas-chemindo'. Nama dagang SAJA tidak cukup: 581 nama dipakai lebih dari satu produsen, dan 22 produsen berbeda sama-sama mendaftarkan 'GLYPHOSATE 95 TC'. Produsennya wajib bentuk kanonik menurut pukpes_data/principal_alias.csv — tanpa itu LAO YING pecah jadi dua merek palsu, 80 pendaftaran di bawah 'MEST INDONESIY' dan 34 di bawah 'PT. MEST INDONESIY'. Batasnya 120 aksara, bukan 80 seperti $defs/Key, sebab empat merek sah melampaui 80 dan memotongnya hanya akan merusak yang panjang."
     },
-    "product": {
-      "$ref": "common.schema.json#/$defs/Ref",
-      "description": "Jangkar wajib ke op:prd:XXXXXXXX. Gambar tanpa produk yang bisa ditunjuk tidak punya alasan disimpan."
+    "brand": {
+      "type": "object",
+      "description": "Identitas merek dengan nama aslinya dipertahankan. Konvensi kerja paralel pasal 4 berlaku di sini: nama asli tidak pernah ditimpa, dan setiap penggabungan dicatat beserta alasannya.",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Nama dagang persis seperti tertulis di registri, termasuk kapitalisasi dan spasinya."
+        },
+        "name_variants": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "Ejaan lain di registri yang meluruh ke brand_key yang sama. Pembentukan slug menyatukan 163 kelompok semacam ini — 'PROWL  330  EC' berspasi ganda dengan 'PROWL 330 EC', 'Hogasan 27 AL' dengan 'HOGASAN 27 AL', '2,4 D 98 TC' dengan '2,4-D 98 TC'. Penyatuannya benar, tetapi harus terlihat, bukan terjadi diam-diam."
+        },
+        "manufacturer": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Nama pemegang pendaftaran apa adanya dari registri."
+        },
+        "manufacturer_canonical": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Bentuk kanonik menurut pukpes_data/principal_alias.csv. Inilah yang membentuk brand_key."
+        }
+      },
+      "required": ["name", "manufacturer", "manufacturer_canonical"],
+      "additionalProperties": false
+    },
+    "span": {
+      "type": "object",
+      "description": "Berapa banyak pendaftaran yang bernaung di bawah merek ini. Bidang inilah yang membuat baris jujur tentang ketakpastiannya: span 1 berarti merek dan pendaftaran berimpit, span 76 berarti gambar ini berlaku untuk salah satu dari 76 dan belum tentu yang mana. 88,1% merek berisi tepat satu pendaftaran, tetapi 35,0% pendaftaran hidup di merek berisi banyak.",
+      "properties": {
+        "registrations": { "type": "integer", "minimum": 1 },
+        "counted_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Tanggal hitungan. Registri berubah, jadi angka tanpa tanggal tidak bisa dipercaya."
+        }
+      },
+      "required": ["registrations", "counted_at"],
+      "additionalProperties": false
+    },
+    "narrowed_to": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Bagian dari pendaftaran merek ini yang benar-benar dipersempit oleh bukti pada gambarnya. Kosong berarti gambar berlaku setara untuk seluruh merek. WAJIB disertai narrowing.",
+      "items": { "$ref": "common.schema.json#/$defs/Ref" }
+    },
+    "narrowing": {
+      "type": "object",
+      "description": "Bagaimana penyempitan itu ditegakkan. Tanpa ini, narrowed_to hanya tebakan yang dirapikan.",
+      "properties": {
+        "basis": {
+          "type": "string",
+          "enum": [
+            "komposisi_tercetak",
+            "nomor_pendaftaran_tercetak",
+            "warna",
+            "ukuran_kemasan",
+            "jenis_terdaftar",
+            "pendaftaran_penerus",
+            "merek_tunggal"
+          ],
+          "description": "komposisi_tercetak adalah yang terkuat dan terbukti bisa dipakai: angka NPK di karung dicocokkan ke hasil analisa uji registri — FERTILA 0-16-17 bertemu P2O5 16% + K2O 17% tanpa N, dan itu unik di antara 20 pendaftaran FERTILA. merek_tunggal dipakai bila span.registrations = 1, sehingga tidak ada yang perlu dipersempit."
+        },
+        "evidence": {
+          "type": "string",
+          "minLength": 5,
+          "description": "Apa yang terbaca dan kenapa itu memilih pendaftaran tersebut."
+        },
+        "strength": {
+          "type": "string",
+          "enum": ["kuat", "sedang", "lemah"],
+          "description": "lemah dipakai bila kecocokannya lewat pendaftaran penerus atau basis lama SIMPUK yang tidak menyimpan komposisi."
+        }
+      },
+      "required": ["basis", "evidence"],
+      "additionalProperties": false
+    },
+    "printed_registration": {
+      "type": "object",
+      "description": "Nomor pendaftaran yang TERCETAK di kemasan, apa adanya. Dipisah dari narrowed_to karena panen pilot menemukan dua kemasan di situs resmi yang mencetak nomor yang bukan miliknya: packshot PHONSKA mencetak 01.01.2018.251 yang sudah tidak ada di registri, dan karung COMPACTION DGW mencetak 01.01.2022.111x sedangkan barisnya 01.01.2019.127. Karya seni kemasan tertinggal di belakang registrinya, jadi nomor tercetak adalah bukti, bukan kunci.",
+      "properties": {
+        "number_as_read": { "type": "string", "minLength": 3 },
+        "in_registry": {
+          "type": "boolean",
+          "description": "Benar bila nomor itu benar-benar ada di registri tarikan terakhir. Salah adalah temuan yang perlu dilihat, bukan galat yang perlu dibetulkan."
+        },
+        "matches_brand": {
+          "type": "boolean",
+          "description": "Benar bila nomor itu termasuk pendaftaran di bawah merek ini."
+        }
+      },
+      "required": ["number_as_read", "in_registry"],
+      "additionalProperties": false
     },
     "pack": {
       "type": "object",
-      "description": "Ukuran kemasan. Kosong = gambar berlaku di tingkat produk, bukan tingkat kemasan. Kosong adalah jawaban jujur untuk hampir seluruh baris pada tahap ini.",
+      "description": "Ukuran kemasan yang tampak pada gambar. Halaman detail SIMPEL ternyata menyimpan kolom 'Ukuran Kemasan' walau endpoint massalnya tidak, jadi bidang ini bisa direkonsiliasi ke registri kelak.",
       "properties": {
         "value": { "type": "number", "exclusiveMinimum": 0 },
         "unit": { "$ref": "common.schema.json#/$defs/UcumCode" },
-        "text": {
-          "type": "string",
-          "description": "Tulisan ukuran apa adanya seperti terbaca di kemasan, mis. '250 ml' atau '1 Kg'. Dipertahankan karena sumbernya foto, bukan basis data."
-        }
+        "text": { "type": "string", "description": "Tulisan ukuran apa adanya seperti terbaca di kemasan." }
       },
       "required": ["text"],
       "additionalProperties": false
     },
     "role": {
       "type": "string",
-      "description": "Apa yang diperlihatkan gambar. Dipisah karena nilai buktinya berbeda jauh: 'panel_label' bisa dipakai memverifikasi nomor pendaftaran, 'bidikan_produk' hanya hiasan.",
-      "enum": [
-        "kemasan_depan",
-        "kemasan_belakang",
-        "kemasan_samping",
-        "panel_label",
-        "bidikan_produk",
-        "sedang_dipakai",
-        "logo",
-        "lainnya"
-      ]
+      "description": "Apa yang diperlihatkan gambar. Nilai buktinya berbeda jauh: 'panel_label' bisa dipakai membaca komposisi dan mempersempit pendaftaran, 'bidikan_produk' hanya hiasan.",
+      "enum": ["kemasan_depan", "kemasan_belakang", "kemasan_samping", "panel_label", "bidikan_produk", "sedang_dipakai", "logo", "lainnya"]
     },
     "source": {
       "type": "object",
-      "description": "Dari mana gambar berasal dan apa yang boleh dilakukan terhadapnya. Wajib terisi SEBELUM berkasnya diunduh, bukan sesudah — sebab satu-satunya saat asal-usul masih diketahui pasti adalah saat pengambilan.",
+      "description": "Dari mana gambar berasal dan apa yang boleh dilakukan terhadapnya. Wajib terisi SEBELUM berkasnya diunduh — satu-satunya saat asal-usul masih diketahui pasti adalah saat pengambilan.",
       "properties": {
-        "url": { "type": "string", "format": "uri", "description": "URL berkas gambarnya sendiri." },
-        "page_url": { "type": "string", "format": "uri", "description": "Halaman tempat gambar itu ditemukan." },
-        "publisher": { "type": "string", "description": "Siapa yang menayangkan, mis. 'PT Deltagro Mulia Sejati' atau nama lokapasar." },
+        "url": { "type": "string", "format": "uri" },
+        "page_url": { "type": "string", "format": "uri" },
+        "publisher": { "type": "string" },
         "retrieved_at": { "type": "string", "format": "date-time" },
         "rights": {
           "type": "string",
-          "description": "Siapa pemegang hak cipta gambar, sejauh bisa ditetapkan. 'tidak_diketahui' adalah nilai yang sah dan justru yang paling sering benar.",
           "enum": ["pemegang_pendaftaran", "lokapasar", "pihak_ketiga", "foto_sendiri", "tidak_diketahui"]
         },
-        "license": {
-          "type": "string",
-          "description": "Pengenal SPDX bila ada. Ketiadaan lisensi berarti hak cipta penuh, bukan bebas pakai."
-        },
+        "license": { "type": "string", "description": "Pengenal SPDX bila ada. Ketiadaan lisensi berarti hak cipta penuh, bukan bebas pakai." },
         "credit": { "type": "string" },
-        "permission": {
-          "type": "string",
-          "enum": ["izin_tertulis", "belum_diminta", "ditolak", "tidak_perlu"],
-          "default": "belum_diminta"
-        },
+        "permission": { "type": "string", "enum": ["izin_tertulis", "belum_diminta", "ditolak", "tidak_perlu"], "default": "belum_diminta" },
         "redistributable": {
           "type": "boolean",
-          "description": "Satu-satunya saklar yang menentukan berkas biner boleh ikut terbit. Repositori ini berlisensi CC-BY-SA-4.0; foto kemasan milik pemegang pendaftaran TIDAK bisa direlisensi jadi CC-BY-SA hanya karena disalin ke sini. Bawaannya salah, dan hanya boleh jadi benar lewat 'izin_tertulis', 'foto_sendiri', atau lisensi SPDX yang mengizinkan."
+          "description": "Satu-satunya saklar yang menentukan berkas biner boleh ikut terbit. Repositori ini CC-BY-SA-4.0; foto kemasan milik pemegang pendaftaran tidak bisa direlisensi hanya karena disalin ke sini."
         }
       },
       "required": ["url", "retrieved_at", "rights", "redistributable"],
@@ -74,61 +149,49 @@
     },
     "file": {
       "type": "object",
-      "description": "Sifat berkas SESUDAH dinormalkan. Angka di sini menggambarkan berkas hasil, bukan berkas asal — sifat asalnya tidak disimpan karena tidak pernah dipakai.",
+      "description": "Sifat berkas SESUDAH dinormalkan.",
       "properties": {
-        "path": { "type": "string", "description": "Jalur relatif terhadap folder kerja." },
+        "path": { "type": "string" },
         "rendition": {
           "type": "string",
           "enum": ["besar", "sedang", "kecil", "kartu"],
-          "description": "besar = sisi terpanjang 1600 px | sedang = 800 | kecil = 320 | kartu = 800x800 berlatar rata, satu-satunya yang boleh dipadatkan ke 1:1."
+          "description": "besar = sisi terpanjang 1600 px | sedang = 800 | kecil = 320 | kartu = 800x800 berlatar rata. Rendition yang tidak benar-benar memperkecil sumbernya tidak dibuat."
         },
         "format": { "type": "string", "enum": ["webp", "png"] },
         "width_px": { "type": "integer", "minimum": 1 },
         "height_px": { "type": "integer", "minimum": 1 },
         "bytes": { "type": "integer", "minimum": 1 },
-        "sha256": {
-          "type": "string",
-          "pattern": "^sha256:[0-9a-f]{64}$",
-          "description": "Hash berkas ternormalkan. Menyamakan bentuk dengan lifecycle.content_hash."
-        },
+        "sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
         "phash": {
           "type": "string",
           "pattern": "^dhash64:[0-9a-f]{16}$",
-          "description": "Cap perseptual 64 bit. Bukan untuk deduplikasi berkas — sha256 sudah menangani itu — melainkan untuk menemukan SATU FOTO YANG SAMA dipakai ulang lintas pendaftaran. Pada registri yang 63,5% pestisidanya identik secara komposisi, pemakaian ulang foto adalah temuan, bukan galat."
+          "description": "Cap perseptual 64 bit, untuk menemukan satu foto dipakai ulang lintas MEREK. Pada kunci tingkat merek ini justru makin berguna: satu produsen yang memakai satu foto untuk beberapa mereknya sekaligus adalah hal yang ingin terlihat."
         },
         "color_space": { "const": "sRGB" },
         "has_alpha": { "type": "boolean" },
-        "background": {
-          "type": "string",
-          "enum": ["putih", "transparan", "berlatar", "tidak_seragam"],
-          "description": "Ditandai, tidak dipaksakan. Memutihkan latar berarti menyunting bukti."
-        },
-        "exif_stripped": {
-          "const": true,
-          "description": "Selalu benar. EXIF foto lapangan membawa titik GPS orang yang memotret — data pribadi menurut UU 27/2022 yang ikut terbawa tanpa dasar pemrosesan. Dibuang saat normalisasi, bukan saat terbit."
-        }
+        "background": { "type": "string", "enum": ["putih", "transparan", "berlatar", "tidak_seragam"] },
+        "exif_stripped": { "const": true, "description": "Selalu benar. EXIF foto lapangan membawa titik GPS pemotretnya — data pribadi menurut UU 27/2022." }
       },
       "required": ["path", "rendition", "format", "width_px", "height_px", "bytes", "sha256", "phash", "color_space", "exif_stripped"],
       "additionalProperties": false
     },
-    "variants": {
-      "type": "array",
-      "description": "Turunan ukuran lain dari berkas yang sama. Kosong bila hanya satu rendition dibuat.",
-      "items": { "$ref": "#/properties/file" }
-    },
+    "variants": { "type": "array", "items": { "$ref": "#/properties/file" } },
     "quality": {
       "type": "object",
-      "description": "Sifat yang menentukan gambar ini bukti atau hiasan, dan boleh tayang atau tidak.",
       "properties": {
         "nomor_pendaftaran_terbaca": {
           "type": "boolean",
-          "description": "Nomor pendaftaran pada kemasan terbaca di gambar. Inilah satu-satunya sifat yang membuat sebuah gambar bernilai verifikasi: ia menghubungkan benda fisik di tangan petani ke baris registri."
+          "description": "Nomor pendaftaran di kemasan TERBACA. Sengaja tidak bernama 'cocok': dua kemasan resmi pada panen pilot mencetak nomor yang bukan milik barisnya. Terbaca dan cocok adalah dua hal, dan nilainya disimpan di printed_registration."
+        },
+        "komposisi_terbaca": {
+          "type": "boolean",
+          "description": "Angka hara atau bahan aktif tercetak dan terbaca. Inilah yang paling sering menyelamatkan pemetaan merek berisi banyak pendaftaran."
         },
         "label_terbaca": { "type": "boolean" },
         "watermark": { "type": "boolean" },
         "overlay_promosi": {
           "type": "boolean",
-          "description": "Ada harga, cap diskon, lencana lokapasar, atau ajakan beli menempel di gambar. Aturan L3 melarang permukaan ini membawa dorongan jualan; gambar berlabel ini tidak boleh naik ke status terverifikasi."
+          "description": "Ada harga, cap diskon, lencana lokapasar, atau ajakan beli menempel di gambar. Aturan L3 melarang permukaan ini membawa dorongan jualan."
         },
         "terpotong": { "type": "boolean" },
         "skor_blur": { "type": "number", "minimum": 0 }
@@ -138,10 +201,7 @@
     "review": {
       "type": "object",
       "properties": {
-        "status": {
-          "type": "string",
-          "enum": ["mentah", "ternormalisasi", "terverifikasi", "ditolak"]
-        },
+        "status": { "type": "string", "enum": ["mentah", "ternormalisasi", "terverifikasi", "ditolak"] },
         "by": { "type": "string" },
         "at": { "type": "string", "format": "date-time" },
         "reason": { "type": "string", "minLength": 5 }
@@ -152,24 +212,23 @@
     "notes": { "$ref": "common.schema.json#/$defs/LangText" },
     "$schema": { "type": "string" }
   },
-  "required": ["sku_key", "product", "role", "source", "review"],
+  "required": ["brand_key", "brand", "span", "role", "source", "review"],
   "additionalProperties": false,
   "allOf": [
     {
       "description": "Status di atas mentah menuntut berkas yang sudah dinormalkan.",
-      "if": {
-        "properties": { "review": { "properties": { "status": { "enum": ["ternormalisasi", "terverifikasi"] } }, "required": ["status"] } },
-        "required": ["review"]
-      },
+      "if": { "properties": { "review": { "properties": { "status": { "enum": ["ternormalisasi", "terverifikasi"] } }, "required": ["status"] } }, "required": ["review"] },
       "then": { "required": ["file"] }
     },
     {
-      "description": "Penolakan wajib menyebut alasannya, supaya gambar yang sama tidak dipanen ulang oleh putaran berikutnya.",
-      "if": {
-        "properties": { "review": { "properties": { "status": { "const": "ditolak" } }, "required": ["status"] } },
-        "required": ["review"]
-      },
+      "description": "Penolakan wajib menyebut alasannya, supaya tidak dipanen ulang putaran berikutnya.",
+      "if": { "properties": { "review": { "properties": { "status": { "const": "ditolak" } }, "required": ["status"] } }, "required": ["review"] },
       "then": { "properties": { "review": { "required": ["reason"] } } }
+    },
+    {
+      "description": "Penyempitan tanpa dasar adalah tebakan yang dirapikan.",
+      "if": { "required": ["narrowed_to"] },
+      "then": { "required": ["narrowing"] }
     }
   ]
 }

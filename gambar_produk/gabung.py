@@ -8,7 +8,7 @@ pemisahannya per berkas, bukan per blok nomor.
 
     python3 gabung.py
 
-Tabrakan sku_key+role antar-agen dilaporkan, tidak didiamkan: dua agen yang mengaku
+Tabrakan brand_key+role antar-agen dilaporkan, tidak didiamkan: dua agen yang mengaku
 punya "kemasan_depan" untuk SKU yang sama berarti salah satunya keliru sasaran.
 """
 
@@ -33,7 +33,7 @@ for p in pecahan:
         except json.JSONDecodeError as e:
             rusak.append(f"{p.name}:{no} {e}")
             continue
-        k = (rec.get("sku_key"), rec.get("role"))
+        k = (rec.get("brand_key"), rec.get("role"))
         if k in asal:
             tabrakan.append(f"{k[0]} | {k[1]} — {p.name} vs {asal[k]}")
             continue
@@ -50,11 +50,11 @@ for r in baris:
 (akar / "manifes.ndjson").write_text(
     "".join(json.dumps(r, ensure_ascii=False) + "\n" for r in baris), encoding="utf-8")
 
-sku = {r.get("sku_key") for r in baris}
-dapat = {r.get("sku_key") for r in baris if r.get("review", {}).get("status") != "ditolak"}
+merek = {r.get("brand_key") for r in baris}
+dapat = {r.get("brand_key") for r in baris if r.get("review", {}).get("status") != "ditolak"}
 print(f"\nmanifes.ndjson: {len(baris)} baris dari {len(pecahan)} pecahan")
 print(f"status        : " + " · ".join(f"{k} {v}" for k, v in sorted(status.items())))
-print(f"cakupan       : {len(dapat)}/{len(sku)} SKU dapat gambar")
+print(f"cakupan       : {len(dapat)}/{len(merek)} merek dapat gambar")
 for t in tabrakan:
     print(f"TABRAKAN  {t}")
 for r in rusak:

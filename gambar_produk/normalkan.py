@@ -122,7 +122,7 @@ def rendition_terpakai(asal: Path, diminta: list[str]) -> list[str]:
             pakai.append(r)
     return pakai
 
-def normalkan(asal: Path, keluar: Path, sku_key: str, peran: str, rendition: str) -> dict:
+def normalkan(asal: Path, keluar: Path, brand_key: str, peran: str, rendition: str) -> dict:
     img = Image.open(asal)
     img = ImageOps.exif_transpose(img)   # orientasi dipanggang, lalu EXIF-nya hilang
     img = ke_srgb(img)
@@ -145,7 +145,7 @@ def normalkan(asal: Path, keluar: Path, sku_key: str, peran: str, rendition: str
     fmt = "png" if beralfa else "webp"
     data = muat_ke_anggaran(img, fmt, MAKS_BYTES[rendition])
 
-    nama = f"{sku_key}__{peran}__{rendition}.{fmt}"
+    nama = f"{brand_key}__{peran}__{rendition}.{fmt}"
     tujuan = keluar / nama
     tujuan.parent.mkdir(parents=True, exist_ok=True)
     tujuan.write_bytes(data)
@@ -200,7 +200,7 @@ def main() -> int:
             gagal += 1
             continue
         try:
-            hasil = [normalkan(asal, keluar, rec["sku_key"], rec["role"], r)
+            hasil = [normalkan(asal, keluar, rec["brand_key"], rec["role"], r)
                      for r in rendition_terpakai(asal, rends)]
         except Exception as e:                                    # noqa: BLE001
             rec.setdefault("review", {}).update(
