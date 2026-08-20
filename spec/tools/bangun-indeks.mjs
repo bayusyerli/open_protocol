@@ -26,7 +26,8 @@
 //   setara/<nnn>.json      sidik komposisi -> daftar produk yang isinya identik
 //   opt/<komoditas>.json        komoditas -> daftar OPT beserta jumlahnya
 //   opt/<komoditas>/<opt>.json  bahan+kadar -> merek untuk satu OPT (jalur 1)
-//   sediaan.json           dua belas resep utuh; kecil, jadi tidak dipecah
+//   sediaan.json           daftar dua belas resep beserta bahan bakunya
+//   sediaan/<id>.json      resep utuh: hukum, bahan, proses, kriteria, keselamatan
 //   gejala.json            OPT terkurasi + teks gejalanya — pintu masuk jalur 1
 //   larangan.json          id zat -> catatan larangan beserta lingkupnya
 //   varian.json            satu tanaman dalam beberapa fase atau sistem budidaya —
@@ -521,6 +522,7 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
 // ---------------------------------------------------------------------------
 // Sediaan sendiri: kecil, dibawa utuh, tetapi dipisah menurut jalurnya
 // ---------------------------------------------------------------------------
+const kunciSediaan = (id) => id.replace(/[^a-z0-9]/gi, '');
 const sisi = (s) => (/pesticide|unclear/.test((s.regulatory?.regime ?? []).join('+')) ? 'pengendali' : 'pupuk');
 const berkasSediaan = {
   bahan: bahanOrganik
@@ -551,9 +553,109 @@ const berkasSediaan = {
       adaKriteria: Boolean(s.release_criteria?.length),
       phi: s.safety?.phi_days ?? null,
       phiDasar: s.safety?.phi_basis ?? null,
+      berkas: `sediaan/${kunciSediaan(s.id)}`,
     }))
     .sort((a, b) => a.id.localeCompare(b.id)),
 };
+
+// Resep utuhnya di berkas sendiri-sendiri. Daftarnya kecil dan diambil jalur 3 juga
+// (sebagai cabang "tidak sanggup"), jadi ia tidak boleh ikut menanggung bobot dua
+// belas resep lengkap beserta titik kendali dan kriteria pelepasannya.
+const berkasResep = {};
+for (const s of sediaan) {
+  berkasResep[kunciSediaan(s.id)] = {
+    id: s.id,
+    nama: s.label?.id ?? '',
+    jalur: sisi(s) === 'pupuk' ? 5 : 6,
+    definisi: s.definition?.id ?? null,
+    kelas: s.preparation_class ?? null,
+    fungsi: (s.intended_functions ?? []).slice().sort(),
+    bukti: s.evidence_tier ?? null,
+    buktiCatatan: s.evidence_note?.id ?? null,
+    // Kedudukan hukumnya didahulukan dan pasalnya dibawa apa adanya: bunyi Pasal 72
+    // itulah yang membuat sisi pupuk lapang, dan meringkasnya jadi "boleh" membuang
+    // syarat peredaran terbatas yang menyertainya.
+    hukum: {
+      rezim: (s.regulatory?.regime ?? []).slice().sort(),
+      peredaran: s.regulatory?.circulation ?? null,
+      hanyaSendiri: s.regulatory?.own_use_only ?? null,
+      dasar: (s.regulatory?.legal_basis ?? []).map((d) => ({
+        instrumen: d.instrument ?? null,
+        pasal: d.article ?? null,
+        bunyi: d.effect ?? null,
+      })),
+    },
+    bahan: (s.feedstocks ?? []).map((f) => ({
+      zat: f.substance?.id ?? null,
+      nama: f.substance?.label ?? null,
+      peran: f.role ?? null,
+      takaran: f.proportion ? { nilai: f.proportion.value, satuan: f.proportion.unit } : null,
+      pilihan: f.optional ?? false,
+    })),
+    proses: s.process
+      ? {
+          cara: s.process.kind ?? null,
+          lama: s.process.duration ?? null,
+          wadah: s.process.vessel ?? null,
+          sanitasi: s.process.sanitation ?? null,
+          titikKendali: (s.process.critical_control_points ?? []).map((t) => ({
+            nama: t.name?.id ?? null,
+            ubah: t.target?.variable?.label ?? null,
+            operator: t.target?.operator ?? null,
+            nilai: t.target?.value ?? null,
+            satuan: t.target?.unit ?? null,
+            cara: t.check_method?.id ?? null,
+            kalauMeleset: t.on_deviation?.id ?? null,
+          })),
+        }
+      : null,
+    // field_proxy yang KOSONG tidak diisi apa pun. Pada bokashi dan vermikompos
+    // kosakata memang belum memuatnya, dan layar harus mengatakannya alih-alih
+    // mengarang uji kebun yang tidak pernah diputuskan siapa pun.
+    // Bagian pembandingnya dibawa terpisah, bukan sudah tergabung jadi satu kalimat.
+    // Sebagian kriteria sengaja TIDAK berambang angka — kemurnian biakan MOL memakai
+    // ">= 0 %" dengan alasan tertulis "tidak ada dasar mengukurnya di kebun" — dan
+    // menggabungkannya lebih dulu memaksa penyaji mencetak ambang yang justru
+    // sengaja tidak ada.
+    kriteria: (s.release_criteria ?? []).map((k) => ({
+      jenis: k.kind ?? null,
+      ubah: k.compare?.variable?.label ?? null,
+      operator: k.compare?.operator ?? null,
+      nilai: k.compare?.value ?? null,
+      satuan: k.compare?.unit ?? null,
+      metode: k.method?.label ?? null,
+      diKebun: k.field_proxy?.id ?? null,
+      alasan: k.rationale?.id ?? null,
+    })),
+    pemakaian: s.application
+      ? {
+          dosis: s.application.default_rate
+            ? {
+                nilai: s.application.default_rate.value,
+                satuan: s.application.default_rate.unit,
+                basis: s.application.default_rate.basis ?? null,
+                min: s.application.default_rate.min ?? null,
+                maks: s.application.default_rate.max ?? null,
+              }
+            : null,
+          cara: s.application.default_method?.label ?? null,
+        }
+      : null,
+    keselamatan: {
+      bahaya: (s.safety?.hazards ?? []).map((h) => h.id ?? String(h)),
+      apd: s.safety?.ppe ?? [],
+      catatan: s.safety?.note?.id ?? null,
+      phi: s.safety?.phi_days ?? null,
+      phiDasar: s.safety?.phi_basis ?? null,
+    },
+    rendemen: s.yield_ratio ? { nisbah: s.yield_ratio.output_per_input, catatan: s.yield_ratio.note?.id ?? null } : null,
+    simpan: { lama: s.shelf_life ?? null, cara: s.storage?.id ?? null },
+    // L18 menolak menghitung hara dari batch yang belum diuji, dan kadar kompos
+    // berbeda tiap tumpukan. Ini yang menahan resep-resep ini keluar dari kalkulator
+    // jalur 3 dengan angka.
+    dasarKomposisi: s.composition_basis ?? null,
+  };
+}
 
 // ---------------------------------------------------------------------------
 // Pintu masuk jalur 1: OPT terkurasi beserta teks gejalanya
@@ -680,6 +782,7 @@ const simpan = (p, data) => berkas.set(p, JSON.stringify(data) + '\n');
 simpan('meta.json', meta);
 for (const [nomor, isi] of berkasSetara) simpan(`setara/${nomor}.json`, isi);
 simpan('sediaan.json', berkasSediaan);
+for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.json`, isi);
 simpan('gejala.json', gejala);
 simpan('varian.json', varian);
 simpan('larangan.json', Object.fromEntries([...laranganZat].sort()));

@@ -281,3 +281,34 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 }
 .daftar.polos .nama { display: block; font-weight: 600; font-size: .92rem; }
 .daftar.polos .sub { display: block; font-size: .8rem; color: var(--teks-lemah); }
+
+/* ---------------------------------------------------------- resep jalur 5 */
+.daftar button.terpilih { border-color: var(--aksen); background: var(--aksen-lemah); }
+
+.tanda-syarat {
+  display: inline-block;
+  margin-left: .4rem;
+  padding: .05rem .4rem;
+  font-size: .7rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background: var(--awas-lemah);
+  color: var(--awas);
+  border: 1px solid var(--awas);
+}
+
+.kriteria { margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--garis); }
+.kriteria:first-of-type { margin-top: .3rem; padding-top: 0; border-top: 0; }
+.kriteria-ukuran { margin: 0; font-weight: 600; font-size: .95rem; }
+
+/* Padanan lapangan sengaja disorot: uji laboratorium yang jadi dua gelas dan seminggu
+   menunggu adalah bagian paling berharga di kosakata ini, dan yang paling mudah
+   terlewat di antara kriteria resminya. */
+.kriteria-kebun {
+  margin: .5rem 0 0;
+  padding: .6rem .75rem;
+  font-size: .9rem;
+  background: var(--aksen-lemah);
+  border-left: 3px solid var(--aksen);
+  border-radius: 0 var(--sudut) var(--sudut) 0;
+}

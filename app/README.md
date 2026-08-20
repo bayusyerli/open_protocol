@@ -8,6 +8,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `index.html` | 2 — masuk dari kemasan: isi produk dan merek lain yang isinya sama | [`docs/05-jalur-produk.md`](../docs/05-jalur-produk.md) |
 | `jalur-3.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
 | `jalur-4.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
+| `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
 
 `varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
 sendiri, dan di jalur 2 kalau yang dicari ternyata varietas — satu perender, dua
@@ -43,6 +44,7 @@ peramban:
 | 2 · produk biasa | 3 | 108 KB | 47,8 KB |
 | 3 · pupuk | 3 | 67 KB | 48,0 KB |
 | 4 · varietas | 2 | 63 KB | 47,7 KB |
+| 5 · resep | 2 | 11 KB | 7,9 KB |
 
 Tidak satu pun berkas melewati 48 KB. Itu bukan kebetulan: anggaran itu ditegakkan
 `spec/tools/bangun-indeks.mjs` saat memecah indeksnya.
@@ -83,6 +85,29 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
   rupiah per kg hara: `L18` menolak menghitung hara dari batch yang belum diuji, dan
   kadar kompos berbeda tiap tumpukan. Menyembunyikannya berarti yang tidak sanggup
   membeli tidak melihat pilihan apa pun.
+
+### Khusus jalur 5
+
+- **Pasal 72 tercetak apa adanya**, bukan diringkas jadi “boleh”. Yang membuat sisi
+  ini lapang adalah bunyinya sendiri, beserta syarat peredaran terbatas satu
+  kabupaten/kota yang menyertainya — dan Pasal 73 yang tetap melarang mengedarkan.
+- **Peringatan silang wajib ikut** pada dua fungsi yang merentang kedua sisi —
+  memperbaiki tanah dan merangsang pertumbuhan. Satu klaim pengendalian sudah cukup
+  memindahkan sediaan ke rezim pestisida; MOL dan PGPR ditampilkan berdampingan
+  sebagai contohnya.
+- **Padanan lapangan disorot tersendiri.** Uji laboratorium yang jadi dua gelas dan
+  seminggu menunggu adalah bagian paling berharga di kosakata ini. Bila kosakata belum
+  memuatnya — bokashi dan vermikompos — layar **mengatakannya**, bukan mengarang uji
+  kebun yang belum pernah diputuskan siapa pun.
+- **Ambang yang sengaja tidak ada tidak dicetak sebagai ambang.** Kemurnian biakan MOL
+  memakai `>= 0 %` dengan alasan tertulis “tidak ada dasar mengukurnya di kebun”;
+  layar menampilkan namanya saja beserta keterangan bahwa ia penanda kasar.
+- **Tiap resep ditutup batas hara.** `L18` menolak menghitung hara dari batch yang
+  belum diuji, jadi resep-resep ini tidak pernah muncul di kalkulator jalur 3 dengan
+  rupiah per kg hara.
+- **Bahan bersyarat membawa syaratnya.** Molase, urine ternak, media serealia, dan
+  inokulum alam bebas ditandai beserta alasannya — status tanpa alasan adalah perintah
+  tanpa sebab, dan itu yang paling mudah diabaikan.
 
 ### Khusus jalur 4
 
