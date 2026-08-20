@@ -130,6 +130,20 @@ for (const [i, l] of baris.entries()) {
     if (rec.quality?.watermark) fail(i, 'G3-netralitas', `${rec.brand_key}: watermark pihak ketiga tidak boleh terverifikasi.`);
   }
 
+  // G11 — gambar yang bukan foto kemasan. Berkasnya ada, resolusinya bisa bagus, tetapi
+  // ia tidak menggambarkan benda yang beredar. Justru lebih berbahaya daripada tidak ada
+  // gambar: penambal m2u 1024x1024 adalah berkas terbesar di situsnya, sehingga penyaring
+  // berbasis resolusi akan memilihnya lebih dulu.
+  if (rec.review.status === 'terverifikasi') {
+    for (const [f, sebab] of [
+      ['penambal', 'gambar penambal, bukan foto kemasan'],
+      ['tampak_sintetis', 'tampak render buatan mesin, bukan foto benda yang beredar'],
+      ['logo_bukan_kemasan', 'hanya logo merek, bukan foto kemasan'],
+    ]) {
+      if (rec.quality?.[f]) fail(i, 'G11-bukan-kemasan', `${rec.brand_key}: ${sebab}.`);
+    }
+  }
+
   // G4 — hak cipta.
   if (rec.source.redistributable === true) {
     const sah = rec.source.permission === 'izin_tertulis'

@@ -159,13 +159,17 @@ mengaku punya peran sama untuk merek sama.
 | `G8` | `narrowed_to` hanya menunjuk pendaftaran di bawah merek itu; `merek_tunggal` hanya sah bila span = 1 |
 | `G9` | Klaim `printed_registration.in_registry` dan `matches_brand` benar terhadap registri |
 | `G10` | Merek berisi banyak pendaftaran tanpa `narrowed_to` tidak boleh `terverifikasi` |
+| `G11` | Penambal, render sintetis, dan logo-bukan-kemasan tidak boleh `terverifikasi` |
 
 Kesepuluhnya punya baris pembukti di
 [`fixtures-invalid/manifes-buruk.ndjson`](fixtures-invalid/manifes-buruk.ndjson):
 
 ```bash
-node periksa.mjs fixtures-invalid/manifes-buruk.ndjson   # harus keluar 13 galat
+node periksa.mjs fixtures-invalid/manifes-buruk.ndjson   # harus keluar 20 galat
 ```
+
+Cara kerja panennya — urutan menemukan situs, jebakan nama, dan situs sehat yang salah
+dinilai mati — ada di [`PANDUAN-PANEN.md`](PANDUAN-PANEN.md).
 
 Nomornya sengaja `G`, bukan `L`. Aturan `L` milik `spec/check.mjs` dan blok `L30`+ belum
 diklaim siapa pun; folder kerja tidak berhak mengambilnya.

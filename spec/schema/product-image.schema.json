@@ -342,6 +342,18 @@
         "skor_blur": {
           "type": "number",
           "minimum": 0
+        },
+        "penambal": {
+          "type": "boolean",
+          "description": "Gambar penambal yang dipasang situs ketika foto produknya belum ada — bukan foto kemasan sama sekali. Ditemukan tiga kali pada satu gelombang pemetaan, dan bentuknya berbahaya: m2u memakai satu Placeholder-produk.png 1024x1024 untuk sepuluh produk sekaligus, dan berkas itu justru yang TERBESAR di situsnya, sehingga penyaring berbasis resolusi akan memilihnya lebih dulu. Bentuk lain: SVG berisi teks nama produk, ikon kategori, dan entri uji coba yang tertinggal seperti \"Test Prod1\"."
+        },
+        "tampak_sintetis": {
+          "type": "boolean",
+          "description": "Gambar tampak render atau buatan mesin, bukan foto benda sungguhan. Sebagian katalog memasang berkas bernama berakhiran -ai. Untuk registri yang gunanya mencocokkan benda fisik di tangan petani ke baris registri, render tidak bisa jadi bukti: ia menggambarkan kemasan yang dimaksudkan, bukan kemasan yang beredar. Ditandai, tidak dibuang — render tetap berguna untuk mengenali merek."
+        },
+        "logo_bukan_kemasan": {
+          "type": "boolean",
+          "description": "Halaman produk menayangkan logo merek alih-alih foto kemasan. Berbeda dari role=logo, yang dipakai ketika logo memang sengaja dipanen; bidang ini menandai bahwa yang tersedia HANYA logo, sehingga merek itu masih terhitung tanpa gambar kemasan."
         }
       },
       "additionalProperties": false
