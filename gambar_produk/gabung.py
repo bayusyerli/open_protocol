@@ -22,7 +22,7 @@ if not pecahan:
     print("Tidak ada pecahan manifes-agen-*.ndjson.", file=sys.stderr)
     sys.exit(1)
 
-baris, asal, tabrakan, rusak = [], {}, [], []
+baris, asal, tabrakan, digantikan, rusak = [], {}, [], [], []
 for p in pecahan:
     n = 0
     for no, l in enumerate(p.read_text(encoding="utf-8").splitlines(), 1):
@@ -34,10 +34,24 @@ for p in pecahan:
             rusak.append(f"{p.name}:{no} {e}")
             continue
         k = (rec.get("brand_key"), rec.get("role"))
+        st = rec.get("review", {}).get("status")
         if k in asal:
-            tabrakan.append(f"{k[0]} | {k[1]} — {p.name} vs {asal[k]}")
+            lama_i = asal[k][1]
+            st_lama = baris[lama_i].get("review", {}).get("status")
+            # Panen yang berhasil menggantikan tolakan lama. Itu bukan tabrakan melainkan
+            # kemajuan: prospek yang dulu tertolak pagu unduh, lalu dipanen ulang dengan
+            # pagu baru, harus menang atas baris tolakannya sendiri.
+            if st_lama == "ditolak" and st != "ditolak":
+                digantikan.append(f"{k[0]} | {k[1]} — {p.name} menggantikan tolakan di {asal[k][0]}")
+                baris[lama_i] = rec
+                asal[k] = (p.name, lama_i)
+                n += 1
+                continue
+            if st == "ditolak" and st_lama != "ditolak":
+                continue  # tolakan lama kalah dari panen yang sudah ada; diam saja
+            tabrakan.append(f"{k[0]} | {k[1]} — {p.name} vs {asal[k][0]}")
             continue
-        asal[k] = p.name
+        asal[k] = (p.name, len(baris))
         baris.append(rec)
         n += 1
     print(f"  {p.name:26} {n:3} baris")
@@ -55,6 +69,8 @@ dapat = {r.get("brand_key") for r in baris if r.get("review", {}).get("status") 
 print(f"\nmanifes.ndjson: {len(baris)} baris dari {len(pecahan)} pecahan")
 print(f"status        : " + " · ".join(f"{k} {v}" for k, v in sorted(status.items())))
 print(f"cakupan       : {len(dapat)}/{len(merek)} merek dapat gambar")
+for d in digantikan:
+    print(f"DIGANTIKAN {d}")
 for t in tabrakan:
     print(f"TABRAKAN  {t}")
 for r in rusak:

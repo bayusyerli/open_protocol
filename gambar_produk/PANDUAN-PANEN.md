@@ -202,9 +202,13 @@ Kalau ragu, jangan dipanen — dan catat alasannya.
   belas berkas, dan justru yang paling terbaca nomornya.
 
   Batas itu ada untuk membatasi transfer, bukan mutu — `normalkan.py` memperkecilnya ke
-  1600 px / 400 KB apa pun ukuran sumbernya. **Gelombang berikutnya sebaiknya memakai
-  `--max-filesize 20000000`.** URL dan ukurannya sudah tercatat di baris `ditolak`
-  masing-masing, jadi bisa diambil tanpa memetakan ulang.
+  1600 px / 400 KB apa pun ukuran sumbernya.
+
+  **Pagu baku sekarang `--max-filesize 20000000`.** Kesembilan prospek yang tertolak
+  pagu lama sudah dipanen ulang dari URL yang tercatat di baris tolakannya — nol
+  pemetaan ulang, nol kegagalan, termasuk SMACK DOWN 13,4 MB. Itu pembenaran praktis
+  kenapa alasan tolakan harus spesifik: alasan yang menyebut angka dan URL bisa
+  dipulihkan, alasan yang berbunyi "tidak ketemu" tidak.
 
 ## 7d. Nama berkas yang tampak terstruktur belum tentu data
 
@@ -325,4 +329,4 @@ Contoh nilainya: packshot NUTREO tidak mencetak angka hara sama sekali, sedangka
 labelnya mencetak `KANDUNGAN HARA N : 5% P2O5 : 12%` — cocok persis dengan `analysis`
 `op:prd:00014071`. Tanpa label itu, merek tersebut tidak bisa dipersempit sama sekali.
 
-Batas 5 MB memotong 7 dari 10 PDF label UPL (6,2–41,7 MB). Naikkan batasnya.
+Pagu 5 MB memotong 7 dari 10 PDF label UPL (6,2–41,7 MB). Pagu baku kini 20 MB, jadi tiga di antaranya masuk; empat sisanya (di atas 20 MB) masih perlu keputusan tersendiri.
