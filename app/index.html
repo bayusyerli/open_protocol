@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cek isi produk — Open Protocols</title>
+<meta name="description" content="Cari produk pestisida, pupuk, atau varietas terdaftar; lihat isinya, dan merek lain yang isinya sama persis.">
+<link rel="stylesheet" href="gaya.css">
+</head>
+<body>
+
+<header class="atas">
+  <p class="jalur">Jalur 2 · masuk dari kemasan</p>
+  <h1>Sebenarnya ini apa?</h1>
+  <p class="lede">
+    Ketik nama yang tertulis di botol, karung, atau sachet. Yang keluar: isinya,
+    nomor pendaftarannya, dan <strong>merek lain yang isinya sama persis</strong>.
+  </p>
+</header>
+
+<main>
+
+  <!-- Dibuang JS saat ia jalan. Tanpa JS, pencarian memang tidak bisa bekerja —
+       lebih baik mengatakannya daripada menampilkan kotak yang diam saja. -->
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Pencarian butuh JavaScript</h2>
+    <p>
+      Halaman ini membaca berkas indeks langsung dari peramban — tidak ada server yang
+      bisa mencarikan. Kalau JavaScript dimatikan, kotak pencarian di bawah tidak akan
+      menanggapi apa pun.
+    </p>
+  </div>
+
+  <form class="cari" id="formCari" role="search" onsubmit="return false">
+    <label for="q">Nama produk pada kemasan</label>
+    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="misal: LARBAN, Gramoxone, NPK" enterkeyhint="search" disabled>
+    <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
+  </form>
+
+  <section id="hasil" aria-live="polite"></section>
+  <section id="rincian" tabindex="-1"></section>
+
+  <details class="batas">
+    <summary>Batas yang perlu diketahui sebelum memakai halaman ini</summary>
+    <div class="batas-isi">
+      <h3>Nama di kemasan bisa berbeda dari nama terdaftar</h3>
+      <p>
+        Registri menyimpan nama produk <em>terdaftar</em>. Kemasan sering memakai nama
+        jualan yang lain, dan pemetaan antara keduanya belum ada. Kalau nama di botol
+        tidak ketemu, itu <strong>bukan bukti produknya tidak terdaftar</strong>.
+      </p>
+
+      <h3>Urutan merek tidak bisa dibeli</h3>
+      <p>
+        Daftar merek diurutkan menurut <strong>nomor pendaftaran menaik</strong>. Tanpa
+        peringkat, tanpa bintang, tanpa slot berbayar — urutannya ditentukan struktur
+        data, bukan kebijakan yang bisa diubah.
+      </p>
+
+      <h3>Isi sama bukan berarti dosis sama</h3>
+      <p>
+        Dosis milik pendaftaran tiap produk, bukan milik bahannya. Dua produk dengan
+        bahan dan kadar yang identik bisa punya dosis terdaftar yang berbeda, dan bisa
+        terdaftar untuk tanaman yang berbeda.
+      </p>
+
+      <h3>Halaman ini tidak menyimpulkan legal atau ilegal</h3>
+      <p>
+        Kalau sebuah produk memuat bahan yang tercantum di daftar larangan, yang
+        ditampilkan adalah <em>kedua fakta apa adanya</em> beserta lingkup larangannya —
+        bukan kesimpulan hukum, yang memang bukan wewenang platform ini.
+      </p>
+    </div>
+  </details>
+
+  <p class="sumber" id="sumber">Sumber: registri Kementan.</p>
+
+</main>
+
+<script src="jalur-2.js" defer></script>
+</body>
+</html>

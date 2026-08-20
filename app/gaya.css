@@ -1,0 +1,211 @@
+/* Jalur 2 — permukaan baca-saja.
+   Dirancang untuk HP entry-level bersinyal buruk: tanpa font luar, tanpa gambar,
+   tanpa kerangka kerja. Seluruh warna lewat token supaya tema terang, gelap, dan
+   "ikut sistem" tergarap ketiganya. */
+
+:root {
+  --latar: #fbfaf7;
+  --latar-kartu: #ffffff;
+  --garis: #e2ddd3;
+  --teks: #1c1a17;
+  --teks-lemah: #5f5850;
+  --aksen: #2f6d4f;
+  --aksen-lemah: #eaf2ed;
+  --awas: #8a4b12;
+  --awas-lemah: #fdf1e3;
+  --bahaya: #9b2226;
+  --bahaya-lemah: #fbeceb;
+  --sudut: 10px;
+  --lebar: 44rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --latar: #16181a;
+    --latar-kartu: #1e2124;
+    --garis: #333a3f;
+    --teks: #e9e6e1;
+    --teks-lemah: #a49d94;
+    --aksen: #7fc0a0;
+    --aksen-lemah: #1d2f27;
+    --awas: #e0a56a;
+    --awas-lemah: #2e2419;
+    --bahaya: #f08a86;
+    --bahaya-lemah: #33201f;
+  }
+}
+
+:root[data-theme="dark"] {
+  --latar: #16181a;
+  --latar-kartu: #1e2124;
+  --garis: #333a3f;
+  --teks: #e9e6e1;
+  --teks-lemah: #a49d94;
+  --aksen: #7fc0a0;
+  --aksen-lemah: #1d2f27;
+  --awas: #e0a56a;
+  --awas-lemah: #2e2419;
+  --bahaya: #f08a86;
+  --bahaya-lemah: #33201f;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 1.25rem 1rem 4rem;
+  background: var(--latar);
+  color: var(--teks);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  -webkit-text-size-adjust: 100%;
+}
+
+header, main { max-width: var(--lebar); margin: 0 auto; }
+
+.jalur {
+  margin: 0 0 .35rem;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--teks-lemah);
+}
+
+h1 { margin: 0 0 .5rem; font-size: 1.65rem; line-height: 1.25; }
+h2 { font-size: 1.1rem; margin: 0 0 .5rem; }
+h3 { font-size: .95rem; margin: 1.2rem 0 .3rem; }
+.lede { margin: 0 0 1.75rem; color: var(--teks-lemah); }
+
+/* ---------------------------------------------------------------- pencarian */
+.cari label {
+  display: block;
+  font-size: .85rem;
+  font-weight: 600;
+  margin-bottom: .35rem;
+}
+
+.cari input {
+  width: 100%;
+  padding: .8rem .9rem;
+  font-size: 1.05rem;
+  font-family: inherit;
+  color: var(--teks);
+  background: var(--latar-kartu);
+  border: 2px solid var(--garis);
+  border-radius: var(--sudut);
+}
+
+.cari input:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+.bantuan { margin: .4rem 0 0; font-size: .82rem; color: var(--teks-lemah); }
+
+/* ------------------------------------------------------------------- hasil */
+.daftar { list-style: none; margin: 1.25rem 0 0; padding: 0; }
+
+.daftar li + li { margin-top: .5rem; }
+
+.daftar button {
+  width: 100%;
+  text-align: left;
+  padding: .7rem .85rem;
+  font: inherit;
+  color: var(--teks);
+  background: var(--latar-kartu);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  cursor: pointer;
+}
+
+.daftar button:hover { border-color: var(--aksen); }
+.daftar button:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+.daftar .nama { display: block; font-weight: 600; }
+.daftar .sub { display: block; font-size: .82rem; color: var(--teks-lemah); }
+
+.lencana {
+  display: inline-block;
+  padding: .05rem .45rem;
+  margin-left: .4rem;
+  font-size: .7rem;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  vertical-align: .12em;
+  border-radius: 999px;
+  background: var(--aksen-lemah);
+  color: var(--aksen);
+}
+
+/* ------------------------------------------------------------------ kartu */
+.kartu {
+  margin: 1.25rem 0 0;
+  padding: 1rem 1.1rem;
+  background: var(--latar-kartu);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+}
+
+.kartu.peringatan { border-color: var(--awas); background: var(--awas-lemah); }
+.kartu.tabrakan { border-color: var(--bahaya); background: var(--bahaya-lemah); }
+.kartu > :first-child { margin-top: 0; }
+.kartu > :last-child { margin-bottom: 0; }
+
+.kunci {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: .3rem .9rem;
+  margin: 0;
+  font-size: .92rem;
+}
+
+.kunci dt { color: var(--teks-lemah); }
+.kunci dd { margin: 0; }
+
+@media (max-width: 30rem) {
+  .kunci { grid-template-columns: 1fr; gap: 0; }
+  .kunci dt { margin-top: .55rem; font-size: .8rem; }
+}
+
+.pembungkus-tabel { overflow-x: auto; margin: .75rem 0 0; }
+
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--garis); }
+th { font-weight: 600; color: var(--teks-lemah); white-space: nowrap; }
+td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+.tanda-larangan {
+  display: inline-block;
+  margin-left: .4rem;
+  padding: .05rem .4rem;
+  font-size: .7rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background: var(--bahaya-lemah);
+  color: var(--bahaya);
+  border: 1px solid var(--bahaya);
+}
+
+.catatan { margin: .8rem 0 0; font-size: .83rem; color: var(--teks-lemah); }
+.catatan strong { color: var(--teks); }
+
+.kembali {
+  margin: 1.5rem 0 0;
+  padding: .55rem .9rem;
+  font: inherit;
+  color: var(--teks);
+  background: transparent;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  cursor: pointer;
+}
+
+.kembali:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+/* ------------------------------------------------------------------ batas */
+.batas { margin: 2.5rem 0 0; border-top: 1px solid var(--garis); padding-top: 1rem; }
+.batas summary { cursor: pointer; font-weight: 600; font-size: .92rem; }
+.batas-isi { font-size: .9rem; color: var(--teks-lemah); }
+.batas-isi strong, .batas-isi em { color: var(--teks); }
+
+.sumber { margin: 2rem 0 0; font-size: .8rem; color: var(--teks-lemah); }
+
+.kosong { margin: 1.25rem 0 0; color: var(--teks-lemah); }
