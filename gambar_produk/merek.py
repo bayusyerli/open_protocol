@@ -87,9 +87,33 @@ def main() -> int:
     ap.add_argument("--ringkas", action="store_true")
     ap.add_argument("--cari", metavar="op:prd:XXXXXXXX",
                     help="cetak blok brand/span siap tempel untuk satu pendaftaran")
+    ap.add_argument("--principal", metavar="NAMA KANONIK",
+                    help="daftar seluruh merek di bawah satu principal, untuk dicocokkan "
+                         "ke produk yang tayang di situsnya")
     args = ap.parse_args()
 
     ix = bangun()
+
+    if args.principal:
+        target = args.principal.strip().upper()
+        hit = {k: v for k, v in ix["merek"].items()
+               if v["manufacturer_canonical"].upper() == target}
+        if not hit:
+            dekat = sorted({v["manufacturer_canonical"] for v in ix["merek"].values()
+                            if target.split()[-1] in v["manufacturer_canonical"].upper()})
+            print(f"Tidak ada principal bernama persis {args.principal!r}.", file=sys.stderr)
+            if dekat:
+                print("Mungkin maksudmu: " + " | ".join(dekat[:5]), file=sys.stderr)
+            return 1
+        print(f"# {len(hit)} merek di bawah {args.principal}", file=sys.stderr)
+        print("# brand_key<TAB>nama dagang<TAB>span<TAB>nomor pendaftaran", file=sys.stderr)
+        for k, v in sorted(hit.items(), key=lambda x: -len(x[1]["registrations"])):
+            n = len(v["registrations"])
+            nomor = ",".join(r["number"] for r in v["registrations"][:3])
+            if n > 3:
+                nomor += ",..."
+            print(f"{k}\t{v['name']}\t{n}\t{nomor}")
+        return 0
 
     if args.cari:
         for k, v in ix["merek"].items():

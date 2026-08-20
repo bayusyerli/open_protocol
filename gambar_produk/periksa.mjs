@@ -42,9 +42,14 @@ const merek = JSON.parse(readFileSync(ixPath, 'utf8')).merek;
 // ingin disimpan.
 const rapikan = (s) => String(s).toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/^RI/, '');
 const nomorTerdaftar = new Map();
+// 667 baris registri memakai penanda "TIDAK-TERCANTUM" sebagai ganti nomor. Itu penanda
+// kekosongan, bukan nomor, dan kalau ikut masuk indeks maka baris yang mencatat teks itu
+// sebagai number_as_read akan lolos G9 seolah nomornya terdaftar.
+const BUKAN_NOMOR = new Set(['TIDAKTERCANTUM', '']);
 for (const m of Object.values(merek)) {
   for (const r of m.registrations) {
     const k = rapikan(r.number);
+    if (BUKAN_NOMOR.has(k)) continue;
     nomorTerdaftar.set(k, [...(nomorTerdaftar.get(k) ?? []), r]);
   }
 }
@@ -135,12 +140,27 @@ for (const [i, l] of baris.entries()) {
   // gambar: penambal m2u 1024x1024 adalah berkas terbesar di situsnya, sehingga penyaring
   // berbasis resolusi akan memilihnya lebih dulu.
   if (rec.review.status === 'terverifikasi') {
+    // Penambal dan logo tidak membawa isi label sama sekali; tidak ada yang bisa
+    // dikoroborasi, jadi keduanya tertahan tanpa syarat.
     for (const [f, sebab] of [
       ['penambal', 'gambar penambal, bukan foto kemasan'],
-      ['tampak_sintetis', 'tampak render buatan mesin, bukan foto benda yang beredar'],
       ['logo_bukan_kemasan', 'hanya logo merek, bukan foto kemasan'],
     ]) {
       if (rec.quality?.[f]) fail(i, 'G11-bukan-kemasan', `${rec.brand_key}: ${sebab}.`);
+    }
+    // Render lain perkaranya. Ia tidak bisa menjawab "seperti apa rupa kemasannya" —
+    // siluet dua botol beda merek pernah terukur berimpit pada IoU 0,998 — tetapi isi
+    // labelnya karya seni resmi principal, dan justru lebih terbaca daripada foto.
+    // Yang menyelamatkannya bukan gambarnya sendiri melainkan koroborasi dari luar:
+    // nomor pendaftaran tercetak yang cocok ke registri DAN milik merek ini.
+    if (rec.quality?.tampak_sintetis) {
+      const pr = rec.printed_registration;
+      if (!(pr?.in_registry && pr?.matches_brand)) {
+        fail(i, 'G11-sintetis-tanpa-koroborasi',
+          `${rec.brand_key}: tampak render buatan mesin dan nomor pendaftarannya belum `
+          + `terkoroborasi registri. Render boleh terverifikasi hanya bila printed_registration `
+          + `in_registry dan matches_brand keduanya benar.`);
+      }
     }
   }
 

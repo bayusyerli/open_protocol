@@ -103,6 +103,39 @@ def muat_ke_anggaran(img: Image.Image, fmt: str, anggaran: int) -> bytes:
     return buf.getvalue()  # sudah di mutu minimum; ukuran kalah dari keterbacaan
 
 
+def rasterkan_pdf(src: Path, kerja: Path) -> Path:
+    """Merasterkan halaman pertama PDF jadi PNG lewat sips.
+
+    Karya seni label cetak sering diterbitkan sebagai PDF, dan itu bukti terbaik yang ada:
+    nomor pendaftaran dan komposisi tercetak tajam, tanpa silau maupun lengkungan. Pillow
+    tidak bisa membukanya, jadi lapisan tipis ini yang menjembatani.
+
+    Bergantung `sips`, yang hanya ada di macOS. Di tempat lain berkas PDF akan ditolak
+    dengan alasan yang jelas ketimbang gagal diam-diam.
+
+    BATASNYA NYATA: sips merasterkan pada 72 dpi dan tidak bisa disuruh merender ulang
+    lebih besar. `--resampleHeightWidthMax 2400` hanya MEMPERBESAR raster 72 dpi itu —
+    diuji, dan ketajaman per piksel justru turun dari 1010 ke 339. Karena itu bendera itu
+    sengaja tidak dipakai: memperbesar melanggar aturan yang sama dengan yang berlaku
+    untuk gambar biasa.
+
+    Akibatnya halaman A4 keluar 595x842, di bawah target rendition `besar`. Untuk membaca
+    nomor pendaftaran dari karya seni label, **lapisan teks PDF-nya** jauh lebih tepat
+    daripada raster ini — ia memberi angkanya persis, bukan hasil menebak piksel.
+    """
+    import shutil
+    import subprocess
+
+    if not shutil.which("sips"):
+        raise RuntimeError("berkas PDF butuh sips untuk dirasterkan; sips tidak ada di sistem ini")
+    kerja.mkdir(parents=True, exist_ok=True)
+    keluar = kerja / (src.stem + ".png")
+    r = subprocess.run(["sips", "-s", "format", "png", str(src), "--out", str(keluar)],
+                       capture_output=True, text=True)
+    if r.returncode != 0 or not keluar.exists():
+        raise RuntimeError(f"sips gagal merasterkan {src.name}: {r.stderr.strip()[:120]}")
+    return keluar
+
 def rendition_terpakai(asal: Path, diminta: list[str]) -> list[str]:
     """Membuang rendition yang tidak bisa diisi sumbernya.
 
@@ -114,6 +147,8 @@ def rendition_terpakai(asal: Path, diminta: list[str]) -> list[str]:
     Yang pertama selalu dibuat — itu berkas dasarnya. Sisanya hanya bila benar-benar
     memperkecil. 'kartu' selalu dibuat karena ia memadatkan ke 1:1, bukan memperkecil.
     """
+    if asal.suffix.lower() == ".pdf":
+        return diminta[:1] + [r for r in diminta[1:] if r == "kartu"]
     with Image.open(asal) as im:
         sisi_asal = max(ImageOps.exif_transpose(im).size)
     pakai = []
@@ -123,6 +158,8 @@ def rendition_terpakai(asal: Path, diminta: list[str]) -> list[str]:
     return pakai
 
 def normalkan(asal: Path, keluar: Path, brand_key: str, peran: str, rendition: str) -> dict:
+    if asal.suffix.lower() == ".pdf":
+        asal = rasterkan_pdf(asal, keluar / "_raster")
     img = Image.open(asal)
     img = ImageOps.exif_transpose(img)   # orientasi dipanggang, lalu EXIF-nya hilang
     img = ke_srgb(img)
