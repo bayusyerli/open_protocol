@@ -63,7 +63,7 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 | **MI · Instrumentasi** | 2 | **Selesai** — lihat [11-instrumentasi.md](11-instrumentasi.md) | — |
 | **M1 · Protokol** | 3 (prasyarat) | **Selesai** — skema Lapis 2, `L30`–`L33`, satu protokol cabai empat langkah | M0 selesai untuk jalur 6 |
 | **M2 · Rencana musim** | 3 | **Penyusun selesai** — `spec/tools/susun-rencana.mjs`; belum ada permukaan | M1 |
-| **M3 · Realisasi & simpangan** | 3 | `Step mode=actual`, alasan simpangan, bukti lapangan | M2 |
+| **M3 · Realisasi & simpangan** | 3 | **Pemeriksa selesai** — `spec/tools/periksa-musim.mjs`; permukaan pencatatan belum ada | M2 |
 | **M4 · Berkas bukti** | 3 | `Cycle` + `Step[]` → dokumen siap audit | M3 |
 | **M5 · API & ekspor** | Fase 7 | Antarmuka publik, versioning data | M1–M4 |
 
@@ -158,10 +158,26 @@ rupiah per kilogram hara di jalur 3, dari harga yang dimasukkan pengguna sendiri
 oleh `mode`. Selisih keduanya asetnya, bukan limbahnya — 11 alasan simpangan sudah
 terkurasi, dan `DeviationReason` punya medan `signals`.
 
-> **Sinyal batal yang mengikat modul ini.** Kalau kurang dari 30% simpangan punya alasan
-> terisi, datanya tidak jujur dan seluruh klaim ke pembayar kehilangan dasar. Kalau kurang
-> dari 70% tugas terjadwal tercatat, yang salah produknya, bukan segmennya.
-> Sumber: [02-tiga-pasar.md](02-tiga-pasar.md) bagian 7.
+`spec/tools/periksa-musim.mjs` memautkan realisasi ke rencananya lewat `plan_ref`, dengan
+`protocol_step_key` sebagai cadangan, lalu mengadu hasilnya dengan kedua ambang.
+
+> **Ambang kedua tidak bisa gagal apa adanya, dan itu masalah.** `step.schema.json`
+> menetapkan `deviation.reason` sebagai medan **wajib**. Jadi setiap simpangan yang
+> tercatat pasti punya alasan, dan "persentase simpangan yang punya alasan" selalu 100%
+> menurut bentuknya sendiri. Ambang 30% tidak akan pernah menyala — bukan karena datanya
+> jujur, melainkan karena pertanyaannya tidak bisa dijawab tidak.
+>
+> Risikonya pindah ke alasan tampung-segalanya. Dua dari sebelas alasan bersinyal
+> `recording_problem` — **"lain-lain"** dan **"keliru"** — dan keduanya bisa menutup apa
+> pun tanpa berbohong. Karena itu yang diukur adalah proporsi simpangan yang alasannya
+> **substantif**. Ini pembacaan ulang, bukan pelonggaran: yang dituju
+> [02-tiga-pasar.md](02-tiga-pasar.md) bagian 7 adalah kejujuran data, dan pengukuran
+> yang tidak bisa gagal tidak mengukur kejujuran apa pun.
+
+Dua hal lain ikut dihitung karena keduanya menentukan mutu data yang dijual:
+**tindakan di luar rencana** (`plan_ref` kosong — bukan pelanggaran, melainkan temuan),
+dan **jeda pencatatan** dari `occurred_at` ke `recorded_at`. Jeda panjang bukan soal
+rapi-tidaknya: ingatan dosis dan waktu memudar.
 
 ### M4 · Berkas bukti
 

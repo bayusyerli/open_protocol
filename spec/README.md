@@ -27,6 +27,7 @@ spec/
 ├── fixtures-invalid/             contoh yang HARUS ditolak — bukti aturannya bekerja
 ├── tools/                        penarik registri Kementan & pengisi komposisi pupuk, bisa diulang
 │                                 plus susun-rencana.mjs — protokol + petak + tanggal → rencana musim
+│                                 dan periksa-musim.mjs — rencana lawan realisasi, diadu sinyal batal
 ├── check.mjs                     logika pemeriksa
 ├── validate.mjs                  CLI pemeriksa
 └── test-rules.mjs                uji negatif
