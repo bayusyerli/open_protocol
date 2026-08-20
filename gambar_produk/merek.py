@@ -85,9 +85,34 @@ def bangun() -> dict:
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--ringkas", action="store_true")
+    ap.add_argument("--cari", metavar="op:prd:XXXXXXXX",
+                    help="cetak blok brand/span siap tempel untuk satu pendaftaran")
     args = ap.parse_args()
 
     ix = bangun()
+
+    if args.cari:
+        for k, v in ix["merek"].items():
+            hit = [r for r in v["registrations"] if r["id"] == args.cari]
+            if not hit:
+                continue
+            blok = {
+                "brand_key": k,
+                "brand": {"name": v["name"], "manufacturer": v["manufacturer"],
+                          "manufacturer_canonical": v["manufacturer_canonical"]},
+                "span": {"registrations": len(v["registrations"]), "counted_at": "2026-08-20"},
+            }
+            if v["name_variants"]:
+                blok["brand"]["name_variants"] = v["name_variants"]
+            print(json.dumps(blok, ensure_ascii=False))
+            print(f"# {len(v['registrations'])} pendaftaran di bawah merek ini; "
+                  f"{args.cari} = {hit[0]['number']}", file=sys.stderr)
+            if len(v["registrations"]) > 1:
+                print("# span > 1: gambar hanya boleh dipersempit lewat bukti yang terbaca "
+                      "di gambarnya (narrowed_to + narrowing).", file=sys.stderr)
+            return 0
+        print(f"{args.cari} tidak ada di registri.", file=sys.stderr)
+        return 1
     m = ix["merek"]
     if not m:
         print("Registri produk tidak ditemukan.", file=sys.stderr)

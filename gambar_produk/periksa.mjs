@@ -34,8 +34,20 @@ if (!existsSync(ixPath)) {
   process.exit(1);
 }
 const merek = JSON.parse(readFileSync(ixPath, 'utf8')).merek;
-const nomorTerdaftar = new Set();
-for (const m of Object.values(merek)) for (const r of m.registrations) nomorTerdaftar.add(r.number);
+// Nomor pendaftaran ditulis berbeda-beda: registri pestisida rapat (01030120269427),
+// registri pupuk bertitik (02.02.2025.310), dan kemasan kerap memberi awalan "RI." atau
+// "RI. ". Bidangnya bernama number_as_read — apa adanya seperti terbaca — jadi yang
+// menormalkan harus pemeriksanya, bukan pemanennya. Putaran pertama memaksa dua agen
+// mengambil dua kesimpulan berbeda soal ini, dan yang satu memotong awalan yang justru
+// ingin disimpan.
+const rapikan = (s) => String(s).toUpperCase().replace(/[^A-Z0-9]/g, '').replace(/^RI/, '');
+const nomorTerdaftar = new Map();
+for (const m of Object.values(merek)) {
+  for (const r of m.registrations) {
+    const k = rapikan(r.number);
+    nomorTerdaftar.set(k, [...(nomorTerdaftar.get(k) ?? []), r]);
+  }
+}
 
 const baris = readFileSync(manifes, 'utf8').split('\n').filter((l) => l.trim());
 const galat = [];
@@ -84,11 +96,24 @@ for (const [i, l] of baris.entries()) {
     }
     // G9 — nomor tercetak: klaim in_registry harus benar.
     if (rec.printed_registration) {
-      const ada = nomorTerdaftar.has(rec.printed_registration.number_as_read);
+      const cocok = nomorTerdaftar.get(rapikan(rec.printed_registration.number_as_read)) ?? [];
+      const ada = cocok.length > 0;
       if (ada !== rec.printed_registration.in_registry) {
         fail(i, 'G9-tercetak-salah',
           `printed_registration.in_registry=${rec.printed_registration.in_registry} `
           + `tetapi "${rec.printed_registration.number_as_read}" ${ada ? 'ADA' : 'TIDAK ADA'} di registri.`);
+      }
+      // matches_brand juga diperiksa: nomor bisa sah tetapi milik pendaftaran merek lain —
+      // itu justru pola yang tiga kali tertangkap pada panen pilot.
+      if (rec.printed_registration.matches_brand !== undefined) {
+        const milikMerek = cocok.some((r) => milik.has(r.id));
+        if (milikMerek !== rec.printed_registration.matches_brand) {
+          fail(i, 'G9-tercetak-merek',
+            `printed_registration.matches_brand=${rec.printed_registration.matches_brand} `
+            + `tetapi "${rec.printed_registration.number_as_read}" ${milikMerek ? 'MEMANG' : 'BUKAN'} `
+            + `pendaftaran di bawah ${rec.brand_key}`
+            + (cocok.length && !milikMerek ? ` (melainkan ${cocok[0].id}).` : '.'));
+        }
       }
     }
     if (m.registrations.length > 1 && !rec.narrowed_to && rec.review.status === 'terverifikasi') {

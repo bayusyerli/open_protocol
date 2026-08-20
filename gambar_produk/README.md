@@ -55,6 +55,7 @@ dan `narrowing.basis` menyatakan bagaimana:
 | Dasar | Kekuatan | Contoh dari panen pilot |
 |---|---|---|
 | `komposisi_tercetak` | terkuat yang terbukti | Karung `FERTILA 0-16-17` bertemu hasil analisa uji P₂O₅ 16% + K₂O 17% **tanpa N** — unik di antara 20 pendaftaran FERTILA |
+| `label_uses_tercetak` | sama tajam | Kemasan LARBAN mencetak nama dagang `LARBAN 550 EC` sedangkan registri mencatat `LARBAN 500/50 EC`; yang mengikat bukan namanya melainkan daftar penggunaan berlabelnya (Cabai · *Thrips parvispinus* · 1,5 ml/l) |
 | `jenis_terdaftar` | lemah | Karung ZA cocok jenis, tetapi situs menayangkan empat varian ZA bermerek sama |
 | `pendaftaran_penerus` | lemah | Baris SIMPUK lama tanpa komposisi, dicocokkan lewat penerusnya |
 | `merek_tunggal` | kuat | `span.registrations` = 1, tidak ada yang perlu dipersempit |
@@ -74,8 +75,20 @@ nomor yang bukan miliknya**:
   yang dipanen. Diperkuat ketidakcocokan warna: halaman menyebut Biru Muda, registri
   legacy mencatat Merah kecoklatan.
 
+Panen ulang menambah kasus ketiga: kemasan SALVATORE yang ditayangkan DGW mencetak
+`RI. 01030120185988` — itu SALVATORE 12/18 WP milik PT. Dharma Guna Wibawa, bukan
+SALVATORE PLUS milik PT. Delta Giri Wacana yang jadi sasaran. Ditolak.
+
 Karena itu `quality.nomor_pendaftaran_terbaca` berarti nomornya **terbaca**, bukan
-**cocok**. Karya seni kemasan bisa tertinggal di belakang registrinya.
+**cocok**. Karya seni kemasan bisa tertinggal di belakang registrinya, dan situs
+principal bisa menayangkan kemasan milik pendaftaran lain.
+
+`number_as_read` disimpan **apa adanya seperti terbaca**, termasuk awalan `RI.` dan
+spasinya. Yang menormalkan adalah `periksa.mjs`, bukan pemanennya — registri pestisida
+menulis nomor rapat (`01030120269427`), registri pupuk bertitik (`02.02.2025.310`), dan
+kemasan kerap memberi awalan. Membebankan penyeragaman itu ke pemanen membuat dua agen
+mengambil dua kesimpulan berbeda, dan yang satu memotong awalan yang justru ingin
+disimpan.
 
 ## Profil normalisasi
 
@@ -144,14 +157,14 @@ mengaku punya peran sama untuk merek sama.
 | `G6` | Satu peran satu gambar per merek |
 | `G7` | `span.registrations` sama dengan hitungan indeks |
 | `G8` | `narrowed_to` hanya menunjuk pendaftaran di bawah merek itu; `merek_tunggal` hanya sah bila span = 1 |
-| `G9` | Klaim `printed_registration.in_registry` benar terhadap registri |
+| `G9` | Klaim `printed_registration.in_registry` dan `matches_brand` benar terhadap registri |
 | `G10` | Merek berisi banyak pendaftaran tanpa `narrowed_to` tidak boleh `terverifikasi` |
 
 Kesepuluhnya punya baris pembukti di
 [`fixtures-invalid/manifes-buruk.ndjson`](fixtures-invalid/manifes-buruk.ndjson):
 
 ```bash
-node periksa.mjs fixtures-invalid/manifes-buruk.ndjson   # harus keluar 12 galat
+node periksa.mjs fixtures-invalid/manifes-buruk.ndjson   # harus keluar 13 galat
 ```
 
 Nomornya sengaja `G`, bukan `L`. Aturan `L` milik `spec/check.mjs` dan blok `L30`+ belum
