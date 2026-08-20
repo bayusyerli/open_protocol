@@ -45,6 +45,7 @@ Satu profil, tidak ada varian per sumber.
 | `kartu` | 800×800, dipadatkan | Satu-satunya rendition yang boleh jadi 1:1 |
 | Nisbah sisi | dipertahankan | Tidak pernah ditarik; kemasan yang ditarik jadi bohong |
 | Perbesaran | tidak pernah | Memperbesar berarti mengarang piksel |
+| Rendition yang tidak muat | dilewati | Sumber 300 px yang diminta `besar` dan `sedang` menghasilkan dua berkas byte-identik; dua salinan sama persis dengan dua nama berbeda adalah kebohongan kecil tentang isi koleksi |
 | Format | WebP, atau PNG bila beralfa | |
 | Anggaran byte | 400 KB · 150 KB · 40 KB | Mutu turun bertahap 82→55, berhenti di situ |
 | Orientasi | EXIF dipanggang, lalu dibuang | |

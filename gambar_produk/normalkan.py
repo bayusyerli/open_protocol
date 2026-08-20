@@ -103,6 +103,25 @@ def muat_ke_anggaran(img: Image.Image, fmt: str, anggaran: int) -> bytes:
     return buf.getvalue()  # sudah di mutu minimum; ukuran kalah dari keterbacaan
 
 
+def rendition_terpakai(asal: Path, diminta: list[str]) -> list[str]:
+    """Membuang rendition yang tidak bisa diisi sumbernya.
+
+    Sumber 300x380 yang diminta besar/sedang/kecil menghasilkan dua berkas byte-identik:
+    1600 dan 800 sama-sama lebih besar dari 380, dan aturan "tidak pernah diperbesar"
+    membuat keduanya berhenti di 380. Dua salinan sama persis dengan dua nama berbeda
+    adalah kebohongan kecil tentang apa yang dimiliki koleksi ini.
+
+    Yang pertama selalu dibuat — itu berkas dasarnya. Sisanya hanya bila benar-benar
+    memperkecil. 'kartu' selalu dibuat karena ia memadatkan ke 1:1, bukan memperkecil.
+    """
+    with Image.open(asal) as im:
+        sisi_asal = max(ImageOps.exif_transpose(im).size)
+    pakai = []
+    for i, r in enumerate(diminta):
+        if i == 0 or r == "kartu" or SISI_TERPANJANG[r] < sisi_asal:
+            pakai.append(r)
+    return pakai
+
 def normalkan(asal: Path, keluar: Path, sku_key: str, peran: str, rendition: str) -> dict:
     img = Image.open(asal)
     img = ImageOps.exif_transpose(img)   # orientasi dipanggang, lalu EXIF-nya hilang
@@ -181,7 +200,8 @@ def main() -> int:
             gagal += 1
             continue
         try:
-            hasil = [normalkan(asal, keluar, rec["sku_key"], rec["role"], r) for r in rends]
+            hasil = [normalkan(asal, keluar, rec["sku_key"], rec["role"], r)
+                     for r in rendition_terpakai(asal, rends)]
         except Exception as e:                                    # noqa: BLE001
             rec.setdefault("review", {}).update(
                 {"status": "ditolak", "reason": f"gagal dinormalkan: {e}", "at": sekarang})
