@@ -153,6 +153,12 @@ Lampiran I.A no. 93. Kemiripan nama bukan bukti.
   bisa dicari**, supaya kemasan lama yang masih di gudang tetap ketemu. Hanya 17 nomor
   yang benar-benar menaungi produk tak berhubungan, 10 di antaranya izin ekspor yang
   tidak beredar eceran. Rinciannya di [D38](../spec/03-keputusan-desain.md).
+- **Di sisi pupuk aturannya terbalik, dan lebih keras.** 96 nomor dipakai 207 baris,
+  tetapi di sini **54 di antaranya benar-benar tidak menunjuk satu produk** —
+  `010120231464` dipegang NITROKU (Pupuk Kujang), MS3PO, AGUNG LENGKAP PRATAMA, dan
+  Soil Gold sekaligus: empat perusahaan tak berkaitan, empat merek. Layar pupuk karena
+  itu **wajib menampilkan seluruh pendaftaran** yang menyandang satu nomor, tidak boleh
+  memilih satu diam-diam. Rinciannya di [D39](../spec/03-keputusan-desain.md).
 - **1.236 baris tidak akan pernah punya foto kemasan.** Izin bahan teknis dan izin
   ekspor memakai skema penomoran sendiri dan produknya tidak beredar eceran. Ditandai
   `registration.number_scheme = "bahan-teknis"`; jalur ini mengecualikannya menurut

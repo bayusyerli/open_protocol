@@ -852,8 +852,81 @@ sehingga kemasan lama yang masih di gudang tetap ketemu — dan tanggal terbit t
 ditampilkan sebagai masa berlaku. Hanya 17 nomor yang butuh perlakuan lain, dan 10 di antaranya
 izin ekspor yang memang tidak pernah muncul di kemasan eceran.
 
-Belum ditindak; penggabungannya menunggu keputusan bentuk penyajian. 96 nomor kembar di sisi
-pupuk belum diperiksa dengan cara yang sama.
+Belum ditindak; penggabungannya menunggu keputusan bentuk penyajian. Sisi pupuk diperiksa di D39
+dan hasilnya kebalikannya.
+
+---
+
+### D39 — di sisi pupuk nomor kembar justru tabrakan sungguhan, kebalikan dari pestisida
+
+96 nomor pupuk dipakai 207 baris. Kesimpulan D38 **tidak berlaku di sini**, dan itu sendiri
+temuan: dua registri di bawah satu kementerian memakai disiplin penomoran yang berbeda.
+
+**Struktur nomornya beda lebih dulu.** Nomor pestisida memakai satu pencacah menaik seumur
+registri (rentang 2022 = 7273–7724, D37). Nomor pupuk memakai pencacah yang **diulang tiap
+tahun dan tiap kode jenis**: 2024 berjalan 1–1301, 2025 mengulang dari 1 lagi. Karena itu
+`AA.BB` bukan hiasan melainkan bagian kunci — 1.215 pasangan (tahun, urut) dipakai oleh
+kombinasi `AA.BB` yang berbeda. Kunci yang sah adalah keempat kelompoknya sekaligus, dan 96
+nomor tetap bertabrakan bahkan pada kunci penuh itu.
+
+| Mekanisme | Grup | Baris | Basis | Era terbanyak |
+|---|---:|---:|---|---|
+| Pendaftaran tak berhubungan berbagi nomor | 50 | 112 | seluruhnya SIMPEL | 38 dari 2023 |
+| Baris ganda — isinya identik, id barisnya beda | 37 | 75 | 65 SIMPUK, 10 SIMPEL | 29 dari 2020 |
+| Perpanjangan | 5 | 10 | campur | 2016–2018 |
+| Satu pemegang, beberapa merek berbeda | 4 | 10 | SIMPEL | 2021–2022 |
+
+**Tabrakan 2020 adalah satu impor yang rusak, bukan 29 kejadian terpisah.** Seluruh 29 baris
+gandanya ada di SIMPUK 2020, menempati nomor urut yang **berderet** — 093, 094, 095, 097, 098,
+099, 101–107, 117, 118, 125, 126 — dan tiap pasangannya sama persis sampai ke hasil analisa uji
+pada 34 dari 37 grup. Merek, pemegang, tahun, jenis, semuanya kembar. Ini bukan dua pendaftaran;
+ini satu baris yang tercatat dua kali dalam satu rentang impor.
+
+**Tabrakan 2023 justru sebaliknya, dan inilah yang serius.** 50 nomor dipegang pendaftaran yang
+sama sekali tak berhubungan — merek berbeda, pemegang berbeda, jenis pupuk berbeda, dan
+seluruhnya di SIMPEL. Sepuluh di antaranya bahkan menampung tiga sampai empat pendaftaran:
+
+```
+010120231464  NITROKU (Pupuk Kujang)          MS3PO (CV. Subur Makmur Nusantara)
+              AGUNG LENGKAP PRATAMA (API)     Soil Gold (Wells Prima Global)
+
+010320231310  N-RICH (Agri Mandiri Sejahtera) RAJA BUAH (Jaya Perkasa)
+              FT (Asia Pupuk Guna Lestari)
+```
+
+Empat perusahaan yang tidak berkaitan, empat merek, satu nomor pendaftaran. Tidak ada tafsir
+yang membuat ini jinak.
+
+**Empat grup "satu pemegang, beberapa merek" juga tabrakan, bukan ganti nama.** PT Saraswanti
+Anugerah Makmur memegang `01012022601` untuk PALMO, HALEI+, KOKA, dan PUKALET sekaligus. PT
+Meroke Tetap Jaya memegang `01012022515` untuk MerokeTSP (Pupuk Triple Super Fosfat) **dan**
+Mutiara PROFESSIONAL (Pupuk Hara Makro Majemuk) — dua jenis pupuk yang berbeda, jadi tidak
+mungkin satu pendaftaran yang berganti nama seperti pola di D38.
+
+**Perpanjangan di sisi pupuk justru dirancang lebih baik.** Nomor **dibawa** melintasi
+perpanjangan, bahkan melintasi pergantian sistem: `Mentari` (PT Permata Agro Persada) tercatat
+`01.03.2018.278` berlaku 2018–2023 di SIMPUK 2020, lalu nomor yang sama berlaku 2023–2028 di
+SIMPEL. Sambungan yang rapi — dan kebalikan dari pestisida, yang menerbitkan baris baru setiap
+perpanjangan sambil membiarkan yang lama tetap tampil.
+
+**Pemeriksaan silang kode jenis berlaku di sini juga.** `AA` menandai keluarga pupuk dan
+konsistensinya nyaris sempurna: `01` anorganik 3.162 dari 3.162, `03` hayati 619 dari 619, `02`
+organik 1.036 dari 1.042. Dijalankan pada grup kembar, hanya dua baris yang bertentangan dengan
+digitnya sendiri — **LAO YING** dan **DAUN SAWIT**, keduanya Pupuk Kiserite (MgSO₄·H₂O), zat
+anorganik, memegang nomor berawalan `02` yang berarti organik. Keduanya bertabrakan dengan baris
+pupuk organik yang sah. Pola yang sama dengan PAENAMAXI WP dan INDODINE 6 GR: dua isyarat bebas
+menunjuk baris yang sama.
+
+**Akibatnya untuk jalur 2 berbeda dari sisi pestisida.** Di sana nomor hampir selalu menunjuk
+satu pendaftaran dan yang perlu diperbaiki cuma penyajiannya. Di sini **54 dari 96 nomor
+benar-benar tidak bisa menunjuk satu produk** — 50 tak berhubungan dan 4 satu pemegang beberapa
+merek. Layar pupuk karena itu tidak boleh menyimpulkan produk dari nomor saja; nomor yang
+menghasilkan lebih dari satu pendaftaran harus **menampilkan semuanya** dan mengatakan
+registrinya memang begitu, bukan memilih satu diam-diam.
+
+Angkanya kecil — 54 dari 6.525 nomor pupuk bernomor, 0,8% — tetapi kekeliruannya jenis yang
+tidak boleh disembunyikan: pengguna yang mengetik nomor dari karung dan melihat satu produk akan
+mengira sudah pasti, padahal belum.
 
 ---
 
