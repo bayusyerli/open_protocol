@@ -999,8 +999,63 @@ yang namanya merek, bukan nama tempat:
 ```
 
 Dua pemulia yang tidak berkaitan berbagi satu nomor pendaftaran, untuk tanaman yang tidak
-berkaitan, dengan nama varietas yang sama persis. Belum ditindak — dicatat supaya bisa
-diverifikasi ke PPVTPP.
+berkaitan, dengan nama varietas yang sama persis. Ketiganya lalu diperiksa ke luar — hasilnya
+di bawah.
+
+**Situs PPVTPP ternyata tidak memuat registri varietas yang bisa dicari.** Yang diterbitkannya:
+*Berita Resmi PVT* — berkas PDF per varietas, isinya pemberian dan permohonan **hak PVT**, dan
+yang tampil hanya terbitan terbaru — serta pencarian yang menyusuri isi situs (artikel,
+regulasi, laporan), bukan daftar varietas. Registri varietas milik kementerian itu justru
+SIPERINTIS di `perizinan.pertanian.go.id`, yaitu sumber `proseed_data/` sendiri. Memeriksanya ke
+sana berarti bertanya pada sumber yang sama. Pembanding bebas akhirnya diambil dari
+**Direktorat Perbenihan Hortikultura** — `perbenihanhorti.id/proseed/db-vardaf`, 3.503 varietas
+hortikultura beserta nomor SK dan tautan PDF SK-nya. Berkas itu sudah disebut di
+`proseed_data/README.md` sebagai sumber sekunder; ternyata ia justru pembanding yang dibutuhkan.
+
+Batasnya harus disebut: registri hortikultura itu memuat SK **pelepasan dan penetapan**
+(`Kpts/SR.120`, `Kpts/PV.240`, dan seterusnya) dan **nol nomor PVHP**. Jadi ia bisa
+membuktikan sebuah varietas ada dan kapan di-SK-kan, tetapi tidak bisa membenarkan atau
+membantah nomor PVHP secara langsung.
+
+**`114/PVHP/2013` "Azzura" — kedua varietasnya nyata, dan keduanya di-SK-kan sendiri-sendiri.**
+
+```
+Krisan/Seruni  "Azzura"  Balai Penelitian Tanaman Hias   009/Kpts/SR.120/D.2.7/4/2013
+Oyong/Gambas   "Azura"   PT East West Seed Indonesia     103/Kpts/SR.120/D.2.7/10/2013
+```
+
+Dua SK berbeda, berjarak enam bulan, dan **ejaannya pun berbeda** — dua z lawan satu. Oyong
+"Azura F1" sampai hari ini dijual di bawah merek Cap Panah Merah. Karena keduanya diproses
+terpisah, satu nomor PVHP yang menaungi keduanya tidak bisa dibaca sebagai "satu SK untuk dua
+varietas". Salah satunya keliru; mana yang keliru tidak bisa ditentukan dari sini.
+
+**`331/PVHP/2015` "Prima Agrihorti" — baris dendrobiumnya hampir pasti tidak ada.** Cabai Rawit
+Prima Agrihorti nyata: Balai Penelitian Tanaman Sayuran, `112/Kpts/SR.120/D.2.7/9/2015`.
+Dendrobium bernama Prima Agrihorti **tidak muncul di mana pun** — bukan di 90 varietas anggrek
+yang terdaftar di registri hortikultura, bukan di jajaran dendrobium Balithi yang justru rapat
+bernama serupa: Dian, Syifa, Permata, Smita, Laksmi, Nirmala, Kiara, Anggun. "Permata Agrihorti"
+memang dendrobium Balithi yang nyata; apakah "Prima" lahir dari situ hanya dugaan, dan tidak
+dicatat sebagai temuan.
+
+**`57/PVHP/2010` "Semi" — belum tuntas, tetapi baris kopinya membawa keanehan sendiri.** Mentimun
+"Semi F1" nyata dan masih dijual PT Benih Citra Asia hari ini. Kopi bernama "Semi" dari
+Pemerintah Kabupaten Purworejo tidak berjejak di mana pun. Baris kopi itu juga satu-satunya di
+seluruh 11.235 catatan yang kolom `tahun`-nya **15 tahun sesudah** tahun SK-nya — 2025 lawan
+2010. Perlu dicatat bahwa `tahun` di registri itu umumnya tahun varietasnya, bukan tahun SK, dan
+biasanya lebih **awal** dari SK-nya: dari 190 catatan yang kedua tahunnya berbeda, hanya 11 yang
+tahunnya lebih belakangan, dan hanya satu yang sejauh 15 tahun. Yaitu baris ini.
+
+**Satu temuan sampingan yang menyentuh sisi lain repositori.** Registri hortikultura mencatat
+seluruh mentimun PT Benih Citra Asia dengan nama berkode — `KE 441`, `CU 2373`, `KE 4285` — dan
+tidak ada satu pun bernama "Semi". Sementara SIPERINTIS mencatat "Semi". Jadi kedua sisi lubang
+yang disebut jalur 2 sebagai lubang terbesarnya — *nama dagang belum terpetakan* — terlihat
+sekaligus pada satu varietas: yang satu menyimpan nama jualan, yang lain menyimpan kode
+terdaftarnya.
+
+Bonus lain: pasangan mentimun "Semi" milik `PT BCA` di SIPERINTIS cocok dengan produk PT Benih
+Citra Asia yang nyata. Itu **bukti**, bukan tebakan, untuk singkatan yang sengaja tidak digabung
+di `proseed_data/pemohon_alias.csv` (pasal 4). Penggabungannya tidak dilakukan di sini karena
+mengubah cacah principal di seluruh repositori — keputusannya diserahkan, buktinya dicatat.
 
 **Dua pasang lagi bukan tabrakan melainkan varietas yang tercatat dua kali** di bawah dua ejaan
 komoditas: `5083/Kpts/SR.120/12/2011` memuat "Lai Bibir Merah" berkomoditas *Durian* dan "Bibir
