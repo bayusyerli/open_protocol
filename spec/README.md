@@ -29,6 +29,7 @@ spec/
 │                                 plus susun-rencana.mjs — protokol + petak + tanggal → rencana musim
 │                                 dan periksa-musim.mjs — rencana lawan realisasi, diadu sinyal batal
 │                                 dan susun-bukti.mjs — siklus → berkas bukti siap audit
+│                                 dan ekspor-petani.mjs — bundel catatan beserta kosakatanya
 ├── check.mjs                     logika pemeriksa
 ├── validate.mjs                  CLI pemeriksa
 └── test-rules.mjs                uji negatif

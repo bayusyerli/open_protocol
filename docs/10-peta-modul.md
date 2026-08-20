@@ -65,7 +65,7 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 | **M2 · Rencana musim** | 3 | **Penyusun selesai** — `spec/tools/susun-rencana.mjs`; belum ada permukaan | M1 |
 | **M3 · Realisasi & simpangan** | 3 | **Pemeriksa selesai** — `spec/tools/periksa-musim.mjs`; permukaan pencatatan belum ada | M2 |
 | **M4 · Berkas bukti** | 3 | **Penyusun selesai** — `spec/tools/susun-bukti.mjs` | M3 |
-| **M5 · API & ekspor** | Fase 7 | Antarmuka publik, versioning data | M1–M4 |
+| **M5 · API & ekspor** | Fase 7 | **Ekspor selesai** — `spec/tools/ekspor-petani.mjs`; API ditunda, lihat di bawah | M1–M4 |
 
 ### M0 · Trust layer — fase pertama
 
@@ -227,8 +227,49 @@ persetujuan pemegang lahan, dan persetujuan itu bukan bagian dari berkas ini.
 
 ### M5 · API dan ekspor
 
-Fase 7 pada [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md). Interoperabilitas
-tanpa Lapis 2 hanya mengekspor catatan tanpa rujukan.
+Fase 7 pada [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md). Objeksi versi 0.1 —
+*interoperabilitas tanpa Lapis 2 hanya mengekspor catatan tanpa rujukan* — sudah gugur
+sejak M1 selesai. Modul ini karena itu dipecah, dan hanya separuhnya dikerjakan.
+
+**Ekspor: selesai.** `spec/tools/ekspor-petani.mjs` mengeluarkan seluruh catatan satu
+siklus sebagai bundel yang bisa dibaca tanpa platform ini.
+
+> **Kenapa ini bukan sekadar dump.** Keputusan ke-5 di
+> [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md) berbunyi *"data usaha tani milik
+> petani, bukan milik platform"*, dan [02-tiga-pasar.md](02-tiga-pasar.md) menjualnya
+> sebagai penghapus kekhawatiran kunci-vendor. Sampai M5, klaim itu **tidak punya satu pun
+> mekanisme di belakangnya** — tidak ada cara mengeluarkan datanya. Kepemilikan yang tidak
+> bisa dijalankan adalah kepemilikan di atas kertas.
+>
+> Dan menyalin catatan apa adanya tidak menyelesaikannya: hasilnya berkas penuh nomor
+> seperti `op:sub:00000001`, dan penerimanya tetap terkunci — hanya berpindah dari
+> terkunci-di-platform jadi terkunci-di-kamus-yang-tidak-ia-punya. **Portabilitas palsu.**
+> Karena itu bundelnya membawa kosakatanya: tiap nomor yang dirujuk ditelusuri dan
+> definisinya ikut, termasuk fase yang harus diangkat dari dalam dokumen skalanya.
+
+Rujukan yang tersisa **dipilah, bukan diratakan**, karena tiga golongannya berbeda jauh:
+rujukan ke **orang** ditahan (data pribadi UU 27/2022, dan mengekspornya keputusan
+tersendiri), **rekaman lain** disebut supaya bisa diekspor terpisah, dan **kosakata yang
+tidak tertelusuri** diakui sebagai kekurangan bundel. Geometri petak tidak pernah ikut,
+sama seperti berkas bukti.
+
+> **Efek samping yang berguna:** ekspornya jadi pemeriksa kedua yang bebas. Pada contoh
+> cabai ia menemukan `op:rgn:00003318` menggantung — `spec/vocab/region.json` tidak ada
+> sama sekali. `L10` sengaja diam untuk itu, karena jenis kosakata yang belum dimuat
+> dilewatinya supaya tidak berisik sebelum waktunya. Ekspor tidak punya kemewahan itu:
+> yang tidak bisa ditelusuri akan terlihat oleh penerimanya.
+
+**API: ditunda, dan bukan karena kurang waktu.** Ia terhalang tiga keputusan yang belum
+diambil, bukan pekerjaan yang belum dikerjakan:
+
+1. **Tidak ada server aplikasi,** dan itu pilihan rancangan — enam jalur berjalan sebagai
+   berkas statis. Menambahkan server mengubah sifat produknya, dan itu keputusan tersendiri.
+2. **Model persetujuan dan autentikasi belum diputuskan.** API yang menyajikan data usaha
+   tani menuntut jawaban atas siapa boleh membaca apa, atas persetujuan siapa — dan itu
+   pertanyaan keempat yang masih terbuka di bagian 7.
+3. **Kontraknya butuh lawan bicara.** API dijual pada tingkat Assurance, dan bentuknya
+   ditentukan integrator yang benar-benar memakainya. Merancangnya sebelum ada satu pun
+   pembayar berarti menebak.
 
 ---
 
