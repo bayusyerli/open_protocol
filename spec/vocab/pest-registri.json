@@ -1534,29 +1534,80 @@
       "taxonomic_rank": "species",
       "mappings": [
         {
+          "scheme": "GBIF",
+          "id": "2766015",
+          "uri": "https://www.gbif.org/species/2766015",
+          "relation": "exact",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4017866",
+          "uri": "https://www.gbif.org/species/4017866",
+          "relation": "close",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan FUZZY (confidence 80). GBIF menerima nama 'Monochorla vaginalis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8249604",
+          "uri": "https://www.gbif.org/species/8249604",
+          "relation": "broad",
+          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan HIGHERRANK (confidence 93). GBIF menerima nama 'Monochoria'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Monocharia vaginalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 32 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Monochora vaginalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Monochorea vaginalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Monochoria aginalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Monochoria vaginalis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 347 baris penggunaan."
         },
         {
-          "scheme": "GBIF",
-          "id": "2766015",
-          "uri": "https://www.gbif.org/species/2766015",
+          "scheme": "KEMENTAN",
+          "id": "Monocoria vaginalis",
           "relation": "exact",
-          "note": "Kingdom Plantae, kelas Liliopsida; kecocokan EXACT (confidence 97)."
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Gulma Bedaun Lebar",
+        "Gulma Berdaun Lebar Pvt",
         "Gulma Daun Lebar",
         "Gulma Golongan Daun Lebar",
         "Gulma Golongan Rumput",
+        "Monocharia vaginalis",
+        "Monochora vaginalis",
+        "Monochorea vaginalis",
+        "Monochoria aginalis",
+        "Monocoria vaginalis",
         "Teki"
       ],
       "taxon_verification": {
@@ -5963,6 +6014,13 @@
           "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 99)."
         },
         {
+          "scheme": "GBIF",
+          "id": "8202426",
+          "uri": "https://www.gbif.org/species/8202426",
+          "relation": "close",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan FUZZY (confidence 80). GBIF menerima nama 'Colletotrichum gloesporioides'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
           "scheme": "KEMENTAN",
           "id": "Colletothricum gloeosporioides",
           "relation": "exact",
@@ -5991,6 +6049,12 @@
           "id": "Colletotrichum gloeosporoides",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotricum gloesporoides",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6004,6 +6068,7 @@
         "Colletotrichum gleosporiodes",
         "Colletotrichum gloeosporiodes",
         "Colletotrichum gloeosporoides",
+        "Colletotricum gloesporoides",
         "Penyakit Busuk Basah",
         "Penyakit Busuk Buah",
         "Penyakit Gugur Daun"
@@ -6569,8 +6634,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001015"
+        }
       },
       "synonyms": [
         "Gulma Daun Lebar"
@@ -27002,9 +27071,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001015"
+        }
       },
       "accepted_scientific_name": "Monochorla vaginalis",
       "taxon_verification": {
@@ -34264,8 +34336,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001015"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -43238,8 +43314,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001015"
+        }
       },
       "accepted_scientific_name": "Monochoria",
       "taxon_verification": {
@@ -44378,7 +44458,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-20T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001562"
+          "id": "op:pst:00001015"
         }
       },
       "accepted_scientific_name": "Monochorla vaginalis",
@@ -50619,8 +50699,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001081"
+        }
       },
       "accepted_scientific_name": "Colletotrichum gloesporioides",
       "taxon_verification": {

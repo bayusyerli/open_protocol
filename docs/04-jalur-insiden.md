@@ -4,7 +4,7 @@
 > Untuk orang yang baru melihat masalah di depan mata. Tanpa akun, tanpa petak terdaftar, tanpa rencana — tiga ketukan sampai jawaban.
 > Angka **dari registri pascapenggabungan ejaan zat** (`1a0f077`, `04b91c6`)
 > **dan penyatuan komoditas serumpun serta OPT kembar** — 488 komoditas jadi 274,
-> 1.370 OPT jadi 783
+> 1.370 OPT jadi 778
 >
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
@@ -27,7 +27,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nyaris nol.** Dari 783 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, 5 di antaranya bertekst |
+| **Ini apa?** | **Nyaris nol.** Dari 778 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, 5 di antaranya bertekst |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
@@ -182,7 +182,7 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
   **Sumbu OPT menyusul dalam dua putaran**: 456 entitas disatukan lewat verifikasi
   GBIF, lalu 131 lagi yang salah ketiknya begitu parah sampai GBIF tak mengenalinya
   (`Trips parvispinus`, `Echinochloa cruss-gali`, `Selenopsis germinata`) lewat tabel
-  putusan tangan. **1.370 OPT jadi 783**, dan cabai turun dari 97 jadi 74 OPT — bukan
+  putusan tangan. **1.370 OPT jadi 778**, dan cabai turun dari 97 jadi 74 OPT — bukan
   karena data hilang, melainkan karena ejaan yang terbelah kembali jadi satu. Trips
   naik dari 234 ke 246 produk.
 

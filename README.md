@@ -29,7 +29,7 @@ kacang tanah, dan lainnya) plus satu skala umur budidaya udang — ditambah 67 j
 
 Di atasnya, seluruh registri resmi Kementan sudah masuk: **14.920 produk terdaftar** —
 7.724 pestisida dengan 23.058 penggunaan berlabel, dan 7.196 pupuk — beserta **1.399
-substansi pestisida** (1.706 termasuk yang digantikan penggabungan ejaan), **783 OPT**
+substansi pestisida** (1.706 termasuk yang digantikan penggabungan ejaan), **778 OPT**
 (1.370 termasuk yang digantikan penyatuan kembar dan salah ketik), dan **692
 komoditas** (906 termasuk yang digantikan penyatuan serumpun). Registri varietas
 menyusul dengan **11.227 varietas**, 52,4% di antaranya mewarisi skala fase lewat

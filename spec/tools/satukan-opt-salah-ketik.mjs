@@ -59,8 +59,34 @@ const tulis = process.argv.includes('--tulis');
 //   dasar 'epitet'       sebaliknya
 //   dasar 'genus+epitet' dua-duanya, dan tetap tak meragukan
 //   dasar 'golongan'     pest_kind yang kalah keliru; penyatuan membetulkannya
+//   dasar 'hantu'        accepted_scientific_name dari GBIF sendiri bukan nama yang
+//                        ada; lihat catatan di bawah tabel
 // ---------------------------------------------------------------------------
 const GABUNG = {
+  // --- Gugus Monochoria vaginalis: ambiguitas yang ternyata palsu ------------
+  // Ketiga entitas ini semula ditolak karena punya DUA padanan berjarak dua huruf
+  // atau kurang, dan menebak di antara keduanya bukan wewenang skrip. Padanan
+  // keduanya ternyata "Monochora vaginalis", yang lolos jadi sasaran hanya karena
+  // GBIF mencocokkannya pada confidence 80 — yang terendah di seluruh kosakata ini —
+  // ke "Monochorla vaginalis". Nama itu tidak ada. Genus Pontederiaceae-nya
+  // Monochoria, dan "Monochoria vaginalis" memang ada di sini dengan cocok exact dan
+  // 347 rujukan. Jadi tidak ada dua pilihan: yang satu nama sungguhan, yang lain
+  // salah ketik yang kebetulan dapat nama accepted karangan.
+  //
+  // "Monochora vaginalis" sendiri ikut disatukan walau ia bukan calon mekanis —
+  // menurut aturan ia justru "sasaran terverifikasi". Itu persis yang harus
+  // diperbaiki tangan: verifikasi berconfidence 80 ke nama yang tidak ada bukan
+  // verifikasi.
+  'op:pst:00001092': { ke: 'op:pst:00001015', dari: 'Monocharia vaginalis', jadi: 'Monochoria vaginalis', dasar: 'hantu' },
+  'op:pst:00001749': { ke: 'op:pst:00001015', dari: 'Monocoria vaginalis', jadi: 'Monochoria vaginalis', dasar: 'hantu' },
+  'op:pst:00001983': { ke: 'op:pst:00001015', dari: 'Monochoria aginalis', jadi: 'Monochoria vaginalis', dasar: 'hantu' },
+  'op:pst:00001562': { ke: 'op:pst:00001015', dari: 'Monochora vaginalis', jadi: 'Monochoria vaginalis', dasar: 'hantu' },
+
+  // --- Satu hantu lagi, pola yang sama --------------------------------------
+  // "Colletotrichum gloesporioides" kurang satu huruf dari gloeosporioides, dan
+  // entitas yang mengejanya benar ada di sini dengan cocok exact dan 48 rujukan.
+  'op:pst:00002174': { ke: 'op:pst:00001081', dari: 'Colletotricum gloesporoides', jadi: 'Colletotrichum gloeosporioides', dasar: 'hantu' },
+
   'op:pst:00001546': { ke: 'op:pst:00001007', dari: 'Aedes aepgyti', jadi: 'Aedes aegypti', dasar: 'epitet' },
   'op:pst:00002018': { ke: 'op:pst:00001136', dari: 'Agrotis epsilon', jadi: 'Agrotis ipsilon', dasar: 'epitet' },
   'op:pst:00001675': { ke: 'op:pst:00001022', dari: 'Altemaria porri', jadi: 'Alternaria porri', dasar: 'genus' },

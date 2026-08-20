@@ -265,8 +265,13 @@ for (const p of pestisida) {
     const kc = u.commodity.id;
     if (!perKomoditas.has(kc)) perKomoditas.set(kc, { nama: namaKomoditas(kc, u.commodity_label), opt: new Map() });
     const kom = perKomoditas.get(kc);
-    if (!kom.opt.has(u.pest.id)) kom.opt.set(u.pest.id, { nama: namaOpt(u.pest.id, u.pest_label), grup: new Map() });
+    if (!kom.opt.has(u.pest.id)) kom.opt.set(u.pest.id, { nama: namaOpt(u.pest.id, u.pest_label), grup: new Map(), produk: new Set() });
     const opt = kom.opt.get(u.pest.id);
+    // Dicatat dari pendaftarannya sendiri, bukan dari keanggotaan kartu. Produk yang
+    // komposisinya kosong tidak menghasilkan kartu bahan+kadar mana pun, dan kalau
+    // jumlahnya diturunkan dari kartu ia lenyap dari hitungan — layar berkata "183
+    // produk terdaftar" padahal registrinya memuat 184.
+    opt.produk.add(p.id);
     for (const c of p.composition ?? []) {
       const kunci = `${c.substance.id}|${c.value}|${c.unit}`;
       if (!opt.grup.has(kunci)) {
@@ -428,13 +433,16 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
     const grup = [...o.grup.values()]
       .map((g) => ({ ...g, merek: g.merek.slice().sort((a, b) => (a.daftar ?? '').localeCompare(b.daftar ?? '')) }))
       .sort((a, b) => b.merek.length - a.merek.length || a.zat.localeCompare(b.zat));
-    const produk = new Set();
-    for (const g of grup) for (const m of g.merek) produk.add(m.id);
+    const berkartu = new Set();
+    for (const g of grup) for (const m of g.merek) berkartu.add(m.id);
     const ko = kunciKomoditas(oid);
     daftarOpt.push({
       id: oid,
       nama: o.nama,
-      produk: produk.size,
+      produk: o.produk.size,
+      // Selisihnya dinyatakan, bukan didiamkan: sekian produk terdaftar untuk OPT ini
+      // tetapi komposisinya kosong di registri, jadi tidak bisa muncul sebagai kartu.
+      tanpaKartu: o.produk.size - berkartu.size,
       // Dua angka berbeda yang mudah tertukar: 72 bahan aktif tetapi 161 kartu,
       // karena satu bahan dipakai pada banyak kadar. Layar menyebut yang pertama
       // sebagai angka besar dan menampilkan yang kedua sebagai kartu, jadi keduanya
@@ -550,9 +558,7 @@ const gejala = optTerkurasi
     for (const [kc, v] of perKomoditas) {
       const o = v.opt.get(k.id);
       if (!o) continue;
-      const produk = new Set();
-      for (const g of o.grup.values()) for (const m of g.merek) produk.add(m.id);
-      di.push({ komoditas: kc, nama: v.nama, produk: produk.size, berkas: `opt/${kunciKomoditas(kc)}/${kunciKomoditas(k.id)}` });
+      di.push({ komoditas: kc, nama: v.nama, produk: o.produk.size, berkas: `opt/${kunciKomoditas(kc)}/${kunciKomoditas(k.id)}` });
     }
     return {
       id: k.id,
