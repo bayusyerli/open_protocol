@@ -183,6 +183,9 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `stage-scale-bbch-umbi-batang.json` | **54 fase BBCH sayuran umbi & batang** — wortel, lobak | BBCH |
 | `stage-scale-bbch-buncis.json` | **56 fase BBCH buncis** — Phaseolus, bukan Vigna | BBCH |
 | `stage-scale-bbch-kacang-tanah.json` | **69 fase BBCH kacang tanah** — termasuk perjalanan ginofor | BBCH |
+| `stage-scale-bbch-bit.json` | **50 fase BBCH bit** — berbunga baru pada tahun kedua | BBCH |
+| `stage-scale-bbch-kacang-polong.json` | **57 fase BBCH kacang polong** — kapri dan ercis | BBCH |
+| `stage-scale-bbch-tembakau.json` | **156 fase tembakau** (CORESTA) — sampai pengeringan daun pascapanen | CORESTA |
 | `stage-scale-doc-udang.json` | 4 fase berbasis umur budidaya udang — ditautkan ke 1 komoditas | — (beralasan) |
 | `operation-type.json` | **61 jenis tindakan**, hierarkis, dari olah tanah sampai pengangkutan | 28 ke AgrO / ICASA |
 | `variable.json` | **46 variabel** — pertumbuhan, OPT, tanah, air, cuaca, hasil | 15 ke ICASA / AgrO |
@@ -380,7 +383,7 @@ Varietas tidak menyimpan skala fasenya sendiri — ia mewarisi lewat komoditas. 
 adalah sifat tanamannya, bukan sifat varietasnya, dan `Cycle.stage_scale` tetap tersedia
 untuk siklus yang perlu menyimpang.
 
-**5.878 dari 11.227 varietas (52,4%) mewarisi skala fase**, lewat lima belas skala dan 78
+**6.150 dari 11.227 varietas (54,8%) mewarisi skala fase**, lewat delapan belas skala dan 82
 komoditas:
 
 | Skala | Fase | Komoditas | Varietas |
@@ -399,6 +402,9 @@ komoditas:
 | BBCH sayuran umbi & batang — wortel, lobak | 54 | 2 | 38 |
 | BBCH buncis | 56 | 3 | 113 |
 | BBCH kacang tanah | 69 | 1 | 89 |
+| BBCH bit | 50 | 1 | 3 |
+| BBCH kacang polong — kapri, ercis | 57 | 2 | 2 |
+| CORESTA tembakau | 156 | 1 | 267 |
 | Umur budidaya udang vaname (DOC) | 4 | 1 | — |
 
 Kunci padi dan jagung disalin dari **BBCH Monograph edisi ke-2 (2001)**, bukan dari
@@ -414,7 +420,7 @@ pada tanaman yang sama.
 
 **Kentang dan tembakau sengaja tidak ditautkan** walau sama-sama Solanaceae: keduanya punya
 kunci BBCH sendiri, dan kunci sayuran buah tidak mengenal pembentukan umbi maupun pemangkasan
-pucuk. Tiga puluh tiga komoditas dikecualikan dengan alasan tertulis di
+pucuk. Tiga puluh komoditas dikecualikan dengan alasan tertulis di
 `tools/tautkan-skala-fase.mjs` — Cabe Jawa ternyata *Piper retrofractum*, famili Piperaceae;
 tiga nama "terong" merujuk *Solanum betaceum* yang berupa pohon; "Rumput Padi-Padian" adalah
 kelompok gulma Poaceae, bukan padi; dan pada kelompok cucurbit, paria (*Momordica*), oyong
@@ -430,15 +436,25 @@ yang pernah diterbitkan siapa pun. Yang ada: penelitian fenologi dengan kosakata
 fase kuncup "mata ketam", antesis, lalu umur buah dalam hari setelah antesis. Menyusun skala
 durian berarti membuat skala baru seperti skala DOC udang, bukan menyalin yang sudah ada.
 
-Yang tersisa di monograf dan belum disalin tinggal sedikit: kunci **bit** (Meier dkk. 1993)
-untuk 3 varietas, kunci **kacang polong** (Pisum) untuk kapri dan ercis, serta kunci buah
-iklim sedang — pome, stone fruit, stroberi, currant, anggur — yang tidak punya padanan
-komoditas di registri Indonesia.
+**Monograf sudah habis dipakai.** Ketujuh belas skala di atas menghabiskan seluruh kunci
+BBCH Monograph yang punya padanan komoditas di registri Indonesia. Yang tersisa di dalamnya
+hanya kunci buah iklim sedang — pome, stone fruit, stroberi, currant, anggur, hop — yang tidak
+punya varietas terdaftar di sini.
 
-Sisa besar yang kuncinya belum diketahui ada atau tidak: durian (495 varietas), tembakau
-(267), krisan (247), **kacang panjang (224)** — kunci *bean* menyebut *Phaseolus* sedangkan
-kacang panjang *Vigna unguiculata*, jadi perlu kunci tersendiri, bukan diasumsikan — lalu
-pisang (185), tebu (168), alpukat (145), ubi jalar (119).
+Satu sudah masuk: **tembakau**, dari CORESTA Guide N° 7 — bukan kunci BBCH Monograph, melainkan
+skala turunan yang menyatakan dirinya berbasis BBCH diperluas. Berkasnya gratis tetapi situsnya
+memakai pemeriksaan bot, jadi PDF-nya diunduh manusia lalu disalin dari salinan lokal.
+
+Sisa terbesar masih butuh sumber di luar monograf, dan keadaannya berbeda-beda:
+
+| Komoditas | Varietas | Kunci BBCH-nya | Kenapa belum masuk |
+|---|---:|---|---|
+| Durian | 495 | **tidak ada** | Tidak pernah diterbitkan siapa pun; yang ada penelitian fenologi berkosakata sendiri |
+| Krisan | 247 | belum ditemukan | Penelusuran belum menemukan kunci BBCH krisan yang diterbitkan |
+| Kacang panjang | 224 | **tidak ada** | Pustaka memakai kode kunci buncis apa adanya untuk *Vigna*, tetapi itu pemakaian informal, bukan kunci terbitan |
+| Pisang | 185 | **usulan, belum terbit** | Gonzales dkk., "Proposal for codification of the phenological cycle of edible Musaceae" — berstatus *in preparation*, dan kodenya 4 digit, beda bentuk dari seluruh skala di sini |
+| Tebu | 168 | ada, berbayar | BBCH diadaptasi untuk tebu di buku Wiley; teksnya di balik akses berbayar |
+| Alpukat | 145 | **ada, terbit** | Scientia Horticulturae (2013), BBCH diperluas 3 digit sampai kode 719 |
 
 Aturan `L28` menjaga tautannya tetap sepakat dua arah: komoditas tidak boleh mengaku memakai
 skala yang tidak mencantumkannya.

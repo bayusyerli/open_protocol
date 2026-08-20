@@ -1093,7 +1093,11 @@
       "synonyms": [
         "Tembakau:"
       ],
-      "perennial": false
+      "perennial": false,
+      "default_stage_scale": {
+        "id": "op:sca:00000018",
+        "label": "CORESTA — Tembakau (Nicotiana tabacum)"
+      }
     },
     {
       "id": "op:cmd:00001019",

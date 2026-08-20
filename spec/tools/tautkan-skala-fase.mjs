@@ -142,6 +142,19 @@ const CAKUPAN = {
   'stage-scale-bbch-kacang-tanah.json': [
     'op:cmd:00001034', // Kacang tanah
   ],
+  // BBCH — bit (Beta vulgaris)
+  'stage-scale-bbch-bit.json': [
+    'op:cmd:00002042', // Bit
+  ],
+  // BBCH — kacang polong (Pisum sativum)
+  'stage-scale-bbch-kacang-polong.json': [
+    'op:cmd:00002171', // Kacang Kapri
+    'op:cmd:00002169', // Kacang Ercis
+  ],
+  // CORESTA — tembakau
+  'stage-scale-bbch-tembakau.json': [
+    'op:cmd:00001018', // Tembakau
+  ],
   // Umur budidaya udang vaname (DOC)
   'stage-scale-doc-udang.json': [
     'op:cmd:00000005', // Udang vaname
@@ -155,12 +168,9 @@ const DIKECUALIKAN = {
   'op:cmd:00002181': 'Kangkung — Ipomoea aquatica, suku Convolvulaceae, merambat dan sebagian tumbuh di air',
   'op:cmd:00002182': 'Kangkung Darat — alasan sama seperti Kangkung',
   'op:cmd:00002365': 'Selada Air — Nasturtium officinale, suku dan tempat tumbuh berbeda sama sekali',
-  'op:cmd:00002042': 'Bit — monograf memberinya kunci tersendiri (Beet, Meier dkk. 1993) yang belum disalin',
   'op:cmd:00001026': 'Kacang panjang — Vigna unguiculata; kunci buncis menyebut Phaseolus',
   'op:cmd:00002177': 'Kacang Tunggak — Vigna unguiculata, alasan sama',
   'op:cmd:00001032': 'Kacang hijau — Vigna radiata, alasan sama',
-  'op:cmd:00002171': 'Kacang Kapri — Pisum sativum; monograf punya kunci Pea tersendiri yang belum disalin',
-  'op:cmd:00002169': 'Kacang Ercis — Pisum sativum, alasan sama',
   'op:cmd:00002172': 'Kacang Komak — Lablab purpureus, marga lain',
   'op:cmd:00002173': 'Kacang Koro — Canavalia, marga lain',
   'op:cmd:00002174': 'Kacang Koro Benguk — Mucuna pruriens, marga lain',

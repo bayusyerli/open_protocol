@@ -1,0 +1,2869 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000018",
+  "key": "bbch-tembakau",
+  "label": {
+    "id": "CORESTA — Tembakau (Nicotiana tabacum)",
+    "en": "CORESTA growth stage scale — tobacco"
+  },
+  "definition": {
+    "id": "Skala fase tembakau menurut CORESTA Guide N° 7, yang menyatakan dirinya berbasis BBCH diperluas. Empat hal membuatnya berbeda dari kunci BBCH mana pun di repositori ini. Pertama, ia memisahkan fase persemaian dan fase lapangan, karena pindah tanam memutus kesinambungan pemanjangan batang dan pertumbuhan daun. Kedua, ia membedakan tunas air bawah dari tunas kepala, dua hal yang perlakuannya berbeda. Ketiga, ia memakai tutupan tajuk — dalam barisan dan antarbarisan — sebagai fase tersendiri karena menentukan penjadwalan irigasi dan penyemprotan. Keempat, dan paling khas, fase utama 9 bukan penuaan melainkan PANEN DAN PENGERINGAN: pemetikan daun, pewarnaan lamina, pengeringan lamina, lalu pengeringan tulang daun. Tidak ada skala lain di sini yang meneruskan penomoran fase sampai ke pascapanen."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00001018",
+        "label": "Tembakau"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "scheme": "OTHER",
+      "id": "CORESTA-Guide-7",
+      "relation": "exact",
+      "note": "CORESTA Guide N° 7 versi 2 (Desember 2019). Kuncinya sendiri merujuk BBCH Monograph edisi ke-2 (2001) sebagai dasar."
+    }
+  ],
+  "notes": {
+    "id": "Kode 2 digit dipakai pada fase utama 0, 4, 5, 6, 7, dan 8; kode 4 DIGIT pada fase utama 1, 2, 3, dan 9, karena keempatnya perlu membedakan meso-stage. Supaya seluruh fase tetap terurut benar dalam satu deret, bidang order memakai kunci ternormalisasi 4 digit: kode 2 digit dikalikan 100, sehingga 49 menjadi 4900 dan tetap berada sebelum 50 yang menjadi 5000. Yang belum dibawa: deret jumlah daun dan jumlah tunas yang oleh sumbernya ditulis terbuka — 10nn, 11nn, 20nn, 21nn — karena jumlah daun tembakau bergantung varietas dan pemangkasan pucuk, dan menetapkan batas atas berarti mengarang batas yang tidak ada di sumber. Yang tertabelkan, 1000–1005 dan seterusnya, disalin apa adanya; kode berikutnya bisa dibentuk mengikuti pola yang sama. Sumber juga menetapkan dua konvensi penulisan: tanda hubung untuk rentang (51-69) dan garis miring untuk fase yang berlangsung bersamaan (1112/3103). Ambang tegakan: satu hamparan dianggap mencapai suatu fase bila 50% tanamannya sudah mencapainya."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00001700",
+      "code": "00",
+      "label": {
+        "id": "Benih kering",
+        "en": "Dry seed"
+      },
+      "principal": 0,
+      "order": 0,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "00",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001701",
+      "code": "01",
+      "label": {
+        "id": "Awal imbibisi",
+        "en": "Beginning of imbibition"
+      },
+      "principal": 0,
+      "order": 100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "01",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001702",
+      "code": "03",
+      "label": {
+        "id": "Imbibisi selesai",
+        "en": "Imbibition complete"
+      },
+      "principal": 0,
+      "order": 300,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "03",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001703",
+      "code": "05",
+      "label": {
+        "id": "Radikula muncul dari benih",
+        "en": "Radicle emerged from seed"
+      },
+      "principal": 0,
+      "order": 500,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "05",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001704",
+      "code": "06",
+      "label": {
+        "id": "Radikula memanjang, bulu akar terbentuk",
+        "en": "Radicle elongated, root hairs developing"
+      },
+      "principal": 0,
+      "order": 600,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "06",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001705",
+      "code": "07",
+      "label": {
+        "id": "Hipokotil bersama kotiledon muncul dari benih",
+        "en": "Hypocotyl with cotyledons emerged from seed"
+      },
+      "principal": 0,
+      "order": 700,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "07",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001706",
+      "code": "08",
+      "label": {
+        "id": "Hipokotil tumbuh ke arah permukaan tanah",
+        "en": "Hypocotyl growing towards soil surface"
+      },
+      "principal": 0,
+      "order": 800,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "08",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001707",
+      "code": "09",
+      "label": {
+        "id": "Kemunculan: kotiledon menembus permukaan tanah",
+        "en": "Emergence: cotyledons breaking through soil surface"
+      },
+      "principal": 0,
+      "order": 900,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "09",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001708",
+      "code": "1000",
+      "label": {
+        "id": "Persemaian: kotiledon membuka penuh",
+        "en": "Seedling: cotyledons completely unfolded"
+      },
+      "principal": 1,
+      "order": 1000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1000",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001709",
+      "code": "1001",
+      "label": {
+        "id": "Persemaian: daun sejati ke-1 membuka",
+        "en": "Seedling: 1st true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 1001,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1001",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001710",
+      "code": "1002",
+      "label": {
+        "id": "Persemaian: daun sejati ke-2 membuka",
+        "en": "Seedling: 2nd true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 1002,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1002",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001711",
+      "code": "1003",
+      "label": {
+        "id": "Persemaian: daun sejati ke-3 membuka",
+        "en": "Seedling: 3rd true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 1003,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1003",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001712",
+      "code": "1004",
+      "label": {
+        "id": "Persemaian: daun sejati ke-4 membuka",
+        "en": "Seedling: 4th true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 1004,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1004",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001713",
+      "code": "1005",
+      "label": {
+        "id": "Persemaian: daun sejati ke-5 membuka",
+        "en": "Seedling: 5th true leaf unfolded"
+      },
+      "principal": 1,
+      "order": 1005,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1005",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001714",
+      "code": "1100",
+      "label": {
+        "id": "Tanaman lapangan: pindah tanam",
+        "en": "Field plant: transplanting"
+      },
+      "principal": 1,
+      "order": 1100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1100",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001715",
+      "code": "1101",
+      "label": {
+        "id": "Tanaman lapangan: daun ke-1 membuka (panjang > 4 cm)",
+        "en": "Field plant: 1st leaf unfolded (>4 cm length)"
+      },
+      "principal": 1,
+      "order": 1101,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1101",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001716",
+      "code": "1102",
+      "label": {
+        "id": "Tanaman lapangan: daun ke-2 membuka (panjang > 4 cm)",
+        "en": "Field plant: 2nd leaf unfolded (>4 cm length)"
+      },
+      "principal": 1,
+      "order": 1102,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1102",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001717",
+      "code": "1103",
+      "label": {
+        "id": "Tanaman lapangan: daun ke-3 membuka (panjang > 4 cm)",
+        "en": "Field plant: 3rd leaf unfolded (>4 cm length)"
+      },
+      "principal": 1,
+      "order": 1103,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1103",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001718",
+      "code": "1104",
+      "label": {
+        "id": "Tanaman lapangan: daun ke-4 membuka (panjang > 4 cm)",
+        "en": "Field plant: 4th leaf unfolded (>4 cm length)"
+      },
+      "principal": 1,
+      "order": 1104,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1104",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001719",
+      "code": "1105",
+      "label": {
+        "id": "Tanaman lapangan: daun ke-5 membuka (panjang > 4 cm)",
+        "en": "Field plant: 5th leaf unfolded (>4 cm length)"
+      },
+      "principal": 1,
+      "order": 1105,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "1105",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001720",
+      "code": "2000",
+      "label": {
+        "id": "Perkembangan tunas air bawah",
+        "en": "Ground sucker development"
+      },
+      "principal": 2,
+      "order": 2000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2000",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001721",
+      "code": "2001",
+      "label": {
+        "id": "Tunas air bawah ke-1 tampak",
+        "en": "1st ground sucker visible"
+      },
+      "principal": 2,
+      "order": 2001,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2001",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001722",
+      "code": "2002",
+      "label": {
+        "id": "Tunas air bawah ke-2 tampak",
+        "en": "2nd ground sucker visible"
+      },
+      "principal": 2,
+      "order": 2002,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2002",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001723",
+      "code": "2003",
+      "label": {
+        "id": "Tunas air bawah ke-3 tampak",
+        "en": "3rd ground sucker visible"
+      },
+      "principal": 2,
+      "order": 2003,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2003",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001724",
+      "code": "2004",
+      "label": {
+        "id": "Tunas air bawah ke-4 tampak",
+        "en": "4th ground sucker visible"
+      },
+      "principal": 2,
+      "order": 2004,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2004",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001725",
+      "code": "2005",
+      "label": {
+        "id": "Tunas air bawah ke-5 tampak",
+        "en": "5th ground sucker visible"
+      },
+      "principal": 2,
+      "order": 2005,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2005",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001726",
+      "code": "2100",
+      "label": {
+        "id": "Perkembangan tunas kepala",
+        "en": "Head sucker development"
+      },
+      "principal": 2,
+      "order": 2100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2100",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001727",
+      "code": "2101",
+      "label": {
+        "id": "Tunas kepala ke-1 tampak",
+        "en": "1st head sucker visible"
+      },
+      "principal": 2,
+      "order": 2101,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2101",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001728",
+      "code": "2102",
+      "label": {
+        "id": "Tunas kepala ke-2 tampak",
+        "en": "2nd head sucker visible"
+      },
+      "principal": 2,
+      "order": 2102,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2102",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001729",
+      "code": "2103",
+      "label": {
+        "id": "Tunas kepala ke-3 tampak",
+        "en": "3rd head sucker visible"
+      },
+      "principal": 2,
+      "order": 2103,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2103",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001730",
+      "code": "2104",
+      "label": {
+        "id": "Tunas kepala ke-4 tampak",
+        "en": "4th head sucker visible"
+      },
+      "principal": 2,
+      "order": 2104,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2104",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001731",
+      "code": "2105",
+      "label": {
+        "id": "Tunas kepala ke-5 tampak",
+        "en": "5th head sucker visible"
+      },
+      "principal": 2,
+      "order": 2105,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "2105",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001732",
+      "code": "3000",
+      "label": {
+        "id": "Persemaian: awal pemanjangan batang",
+        "en": "Seedling: beginning of stem elongation"
+      },
+      "principal": 3,
+      "order": 3000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3000",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001733",
+      "code": "3001",
+      "label": {
+        "id": "Persemaian: batang mencapai 10% panjang khasnya",
+        "en": "Seedling: stem reaches 10 % of typical length"
+      },
+      "principal": 3,
+      "order": 3001,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3001",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001734",
+      "code": "3002",
+      "label": {
+        "id": "Persemaian: batang mencapai 20% panjang khasnya",
+        "en": "Seedling: stem reaches 20 % of typical length"
+      },
+      "principal": 3,
+      "order": 3002,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3002",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001735",
+      "code": "3003",
+      "label": {
+        "id": "Persemaian: batang mencapai 30% panjang khasnya",
+        "en": "Seedling: stem reaches 30 % of typical length"
+      },
+      "principal": 3,
+      "order": 3003,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3003",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001736",
+      "code": "3004",
+      "label": {
+        "id": "Persemaian: batang mencapai 40% panjang khasnya",
+        "en": "Seedling: stem reaches 40 % of typical length"
+      },
+      "principal": 3,
+      "order": 3004,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3004",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001737",
+      "code": "3005",
+      "label": {
+        "id": "Persemaian: batang mencapai 50% panjang khasnya",
+        "en": "Seedling: stem reaches 50 % of typical length"
+      },
+      "principal": 3,
+      "order": 3005,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3005",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001738",
+      "code": "3006",
+      "label": {
+        "id": "Persemaian: batang mencapai 60% panjang khasnya",
+        "en": "Seedling: stem reaches 60 % of typical length"
+      },
+      "principal": 3,
+      "order": 3006,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3006",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001739",
+      "code": "3007",
+      "label": {
+        "id": "Persemaian: batang mencapai 70% panjang khasnya",
+        "en": "Seedling: stem reaches 70 % of typical length"
+      },
+      "principal": 3,
+      "order": 3007,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3007",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001740",
+      "code": "3008",
+      "label": {
+        "id": "Persemaian: batang mencapai 80% panjang khasnya",
+        "en": "Seedling: stem reaches 80 % of typical length"
+      },
+      "principal": 3,
+      "order": 3008,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3008",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001741",
+      "code": "3009",
+      "label": {
+        "id": "Persemaian: batang mencapai 90% panjang khasnya",
+        "en": "Seedling: stem reaches 90 % of typical length"
+      },
+      "principal": 3,
+      "order": 3009,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3009",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001742",
+      "code": "3100",
+      "label": {
+        "id": "Tanaman lapangan: awal pemanjangan batang (pindah tanam)",
+        "en": "Field plant: beginning of stem elongation (transplanting)"
+      },
+      "principal": 3,
+      "order": 3100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3100",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001743",
+      "code": "3101",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 10% panjang khasnya",
+        "en": "Field plant: stem reaches 10 % of typical length"
+      },
+      "principal": 3,
+      "order": 3101,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3101",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001744",
+      "code": "3102",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 20% panjang khasnya",
+        "en": "Field plant: stem reaches 20 % of typical length"
+      },
+      "principal": 3,
+      "order": 3102,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3102",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001745",
+      "code": "3103",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 30% panjang khasnya",
+        "en": "Field plant: stem reaches 30 % of typical length"
+      },
+      "principal": 3,
+      "order": 3103,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3103",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001746",
+      "code": "3104",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 40% panjang khasnya",
+        "en": "Field plant: stem reaches 40 % of typical length"
+      },
+      "principal": 3,
+      "order": 3104,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3104",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001747",
+      "code": "3105",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 50% panjang khasnya",
+        "en": "Field plant: stem reaches 50 % of typical length"
+      },
+      "principal": 3,
+      "order": 3105,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3105",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001748",
+      "code": "3106",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 60% panjang khasnya",
+        "en": "Field plant: stem reaches 60 % of typical length"
+      },
+      "principal": 3,
+      "order": 3106,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3106",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001749",
+      "code": "3107",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 70% panjang khasnya",
+        "en": "Field plant: stem reaches 70 % of typical length"
+      },
+      "principal": 3,
+      "order": 3107,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3107",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001750",
+      "code": "3108",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 80% panjang khasnya",
+        "en": "Field plant: stem reaches 80 % of typical length"
+      },
+      "principal": 3,
+      "order": 3108,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3108",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001751",
+      "code": "3109",
+      "label": {
+        "id": "Tanaman lapangan: batang mencapai 90% panjang khasnya",
+        "en": "Field plant: stem reaches 90 % of typical length"
+      },
+      "principal": 3,
+      "order": 3109,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3109",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001752",
+      "code": "3200",
+      "label": {
+        "id": "Tutupan dalam barisan: pindah tanam",
+        "en": "Crop cover within rows: transplanting"
+      },
+      "principal": 3,
+      "order": 3200,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3200",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001753",
+      "code": "3201",
+      "label": {
+        "id": "10% panjang barisan tertutup tajuk",
+        "en": "10 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3201,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3201",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001754",
+      "code": "3202",
+      "label": {
+        "id": "20% panjang barisan tertutup tajuk",
+        "en": "20 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3202,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3202",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001755",
+      "code": "3203",
+      "label": {
+        "id": "30% panjang barisan tertutup tajuk",
+        "en": "30 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3203,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3203",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001756",
+      "code": "3204",
+      "label": {
+        "id": "40% panjang barisan tertutup tajuk",
+        "en": "40 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3204,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3204",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001757",
+      "code": "3205",
+      "label": {
+        "id": "50% panjang barisan tertutup tajuk",
+        "en": "50 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3205,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3205",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001758",
+      "code": "3206",
+      "label": {
+        "id": "60% panjang barisan tertutup tajuk",
+        "en": "60 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3206,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3206",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001759",
+      "code": "3207",
+      "label": {
+        "id": "70% panjang barisan tertutup tajuk",
+        "en": "70 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3207,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3207",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001760",
+      "code": "3208",
+      "label": {
+        "id": "80% panjang barisan tertutup tajuk",
+        "en": "80 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3208,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3208",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001761",
+      "code": "3209",
+      "label": {
+        "id": "90% panjang barisan tertutup tajuk",
+        "en": "90 % of row length covered"
+      },
+      "principal": 3,
+      "order": 3209,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3209",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001762",
+      "code": "3300",
+      "label": {
+        "id": "Tutupan antarbarisan: pindah tanam",
+        "en": "Crop cover between rows: transplanting"
+      },
+      "principal": 3,
+      "order": 3300,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3300",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001763",
+      "code": "3301",
+      "label": {
+        "id": "10% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "10 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3301,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3301",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001764",
+      "code": "3302",
+      "label": {
+        "id": "20% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "20 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3302,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3302",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001765",
+      "code": "3303",
+      "label": {
+        "id": "30% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "30 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3303,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3303",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001766",
+      "code": "3304",
+      "label": {
+        "id": "40% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "40 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3304,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3304",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001767",
+      "code": "3305",
+      "label": {
+        "id": "50% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "50 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3305,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3305",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001768",
+      "code": "3306",
+      "label": {
+        "id": "60% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "60 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3306,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3306",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001769",
+      "code": "3307",
+      "label": {
+        "id": "70% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "70 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3307,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3307",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001770",
+      "code": "3308",
+      "label": {
+        "id": "80% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "80 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3308,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3308",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001771",
+      "code": "3309",
+      "label": {
+        "id": "90% permukaan tanah antarbarisan tertutup tajuk",
+        "en": "90 % of ground between rows covered"
+      },
+      "principal": 3,
+      "order": 3309,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "3309",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001772",
+      "code": "40",
+      "label": {
+        "id": "Daun panen pertama membuka penuh dan mulai masak",
+        "en": "1st harvestable leaf fully expanded and beginning to ripen"
+      },
+      "principal": 4,
+      "order": 4000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "40",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001773",
+      "code": "41",
+      "label": {
+        "id": "10% daun panen sudah masak",
+        "en": "10 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "41",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001774",
+      "code": "42",
+      "label": {
+        "id": "20% daun panen sudah masak",
+        "en": "20 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4200,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "42",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001775",
+      "code": "43",
+      "label": {
+        "id": "30% daun panen sudah masak",
+        "en": "30 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4300,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "43",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001776",
+      "code": "44",
+      "label": {
+        "id": "40% daun panen sudah masak",
+        "en": "40 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4400,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "44",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001777",
+      "code": "45",
+      "label": {
+        "id": "50% daun panen sudah masak",
+        "en": "50 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4500,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "45",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001778",
+      "code": "46",
+      "label": {
+        "id": "60% daun panen sudah masak",
+        "en": "60 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4600,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "46",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001779",
+      "code": "47",
+      "label": {
+        "id": "70% daun panen sudah masak",
+        "en": "70 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4700,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "47",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001780",
+      "code": "48",
+      "label": {
+        "id": "80% daun panen sudah masak",
+        "en": "80 % of harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4800,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "48",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001781",
+      "code": "49",
+      "label": {
+        "id": "Seluruh daun panen sudah masak",
+        "en": "All harvestable leaves ripe"
+      },
+      "principal": 4,
+      "order": 4900,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "49",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001782",
+      "code": "50",
+      "label": {
+        "id": "Kuncup ujung membengkak, perbungaan belum tampak",
+        "en": "Apical bud swelling but inflorescence not yet visible"
+      },
+      "principal": 5,
+      "order": 5000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "50",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001783",
+      "code": "51",
+      "label": {
+        "id": "Perbungaan tampak di antara daun pucuk",
+        "en": "Inflorescence visible between apical leaves"
+      },
+      "principal": 5,
+      "order": 5100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "51",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001784",
+      "code": "55",
+      "label": {
+        "id": "Mahkota pertama tampak tetapi masih tertutup",
+        "en": "1st corolla visible but still closed"
+      },
+      "principal": 5,
+      "order": 5500,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "55",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001785",
+      "code": "59",
+      "label": {
+        "id": "Kelopak pertama tampak tetapi belum mekar",
+        "en": "First petals visible but not yet open"
+      },
+      "principal": 5,
+      "order": 5900,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "59",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001786",
+      "code": "60",
+      "label": {
+        "id": "Awal berbunga: kelopak pertama mekar",
+        "en": "Beginning of flowering: first petals open"
+      },
+      "principal": 6,
+      "order": 6000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "60",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001787",
+      "code": "61",
+      "label": {
+        "id": "10% bunga mekar",
+        "en": "10 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "61",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001788",
+      "code": "62",
+      "label": {
+        "id": "20% bunga mekar",
+        "en": "20 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6200,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "62",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001789",
+      "code": "63",
+      "label": {
+        "id": "30% bunga mekar",
+        "en": "30 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6300,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "63",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001790",
+      "code": "64",
+      "label": {
+        "id": "40% bunga mekar",
+        "en": "40 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6400,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "64",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001791",
+      "code": "65",
+      "label": {
+        "id": "50% bunga mekar",
+        "en": "50 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6500,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "65",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001792",
+      "code": "66",
+      "label": {
+        "id": "60% bunga mekar",
+        "en": "60 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6600,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "66",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001793",
+      "code": "67",
+      "label": {
+        "id": "70% bunga mekar",
+        "en": "70 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6700,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "67",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001794",
+      "code": "68",
+      "label": {
+        "id": "80% bunga mekar",
+        "en": "80 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6800,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "68",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001795",
+      "code": "69",
+      "label": {
+        "id": "Lebih dari 90% bunga mekar",
+        "en": "More than 90 % of flowers open"
+      },
+      "principal": 6,
+      "order": 6900,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "69",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001796",
+      "code": "70",
+      "label": {
+        "id": "Kapsul hijau pertama terbentuk",
+        "en": "1st green capsules formed"
+      },
+      "principal": 7,
+      "order": 7000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "70",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001797",
+      "code": "71",
+      "label": {
+        "id": "10% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "10 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "71",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001798",
+      "code": "72",
+      "label": {
+        "id": "20% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "20 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7200,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "72",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001799",
+      "code": "73",
+      "label": {
+        "id": "30% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "30 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7300,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "73",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001800",
+      "code": "74",
+      "label": {
+        "id": "40% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "40 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7400,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "74",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001801",
+      "code": "75",
+      "label": {
+        "id": "50% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "50 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7500,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "75",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001802",
+      "code": "76",
+      "label": {
+        "id": "60% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "60 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7600,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "76",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001803",
+      "code": "77",
+      "label": {
+        "id": "70% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "70 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7700,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "77",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001804",
+      "code": "78",
+      "label": {
+        "id": "80% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "80 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7800,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "78",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001805",
+      "code": "79",
+      "label": {
+        "id": "Lebih dari 90% kapsul hijau membengkak sampai ukuran khasnya",
+        "en": "More than 90 % green capsules swollen to typical size"
+      },
+      "principal": 7,
+      "order": 7900,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "79",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001806",
+      "code": "80",
+      "label": {
+        "id": "Awal pemasakan: kapsul biji tertua mulai menggelap",
+        "en": "Beginning of ripening, oldest seed capsules darkening"
+      },
+      "principal": 8,
+      "order": 8000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "80",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001807",
+      "code": "81",
+      "label": {
+        "id": "10% kapsul biji menggelap",
+        "en": "10 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "81",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001808",
+      "code": "82",
+      "label": {
+        "id": "20% kapsul biji menggelap",
+        "en": "20 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8200,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "82",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001809",
+      "code": "83",
+      "label": {
+        "id": "30% kapsul biji menggelap",
+        "en": "30 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8300,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "83",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001810",
+      "code": "84",
+      "label": {
+        "id": "40% kapsul biji menggelap",
+        "en": "40 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8400,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "84",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001811",
+      "code": "85",
+      "label": {
+        "id": "50% kapsul biji menggelap",
+        "en": "50 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8500,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "85",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001812",
+      "code": "86",
+      "label": {
+        "id": "60% kapsul biji menggelap",
+        "en": "60 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8600,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "86",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001813",
+      "code": "87",
+      "label": {
+        "id": "70% kapsul biji menggelap",
+        "en": "70 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8700,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "87",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001814",
+      "code": "88",
+      "label": {
+        "id": "80% kapsul biji menggelap",
+        "en": "80 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8800,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "88",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001815",
+      "code": "89",
+      "label": {
+        "id": "Lebih dari 90% kapsul biji menggelap",
+        "en": "More than 90 % of seed capsules darkened"
+      },
+      "principal": 8,
+      "order": 8900,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "89",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001816",
+      "code": "9000",
+      "label": {
+        "id": "Panen daun: daun bawah masak penuh dan siap dipetik",
+        "en": "Harvesting: lower leaves fully ripe and ready to be harvested"
+      },
+      "principal": 9,
+      "order": 9000,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9000",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001817",
+      "code": "9001",
+      "label": {
+        "id": "10% daun sudah dipetik",
+        "en": "10 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9001,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9001",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001818",
+      "code": "9002",
+      "label": {
+        "id": "20% daun sudah dipetik",
+        "en": "20 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9002,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9002",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001819",
+      "code": "9003",
+      "label": {
+        "id": "30% daun sudah dipetik",
+        "en": "30 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9003,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9003",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001820",
+      "code": "9004",
+      "label": {
+        "id": "40% daun sudah dipetik",
+        "en": "40 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9004,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9004",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001821",
+      "code": "9005",
+      "label": {
+        "id": "50% daun sudah dipetik",
+        "en": "50 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9005,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9005",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001822",
+      "code": "9006",
+      "label": {
+        "id": "60% daun sudah dipetik",
+        "en": "60 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9006,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9006",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001823",
+      "code": "9007",
+      "label": {
+        "id": "70% daun sudah dipetik",
+        "en": "70 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9007,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9007",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001824",
+      "code": "9008",
+      "label": {
+        "id": "80% daun sudah dipetik",
+        "en": "80 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9008,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9008",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001825",
+      "code": "9009",
+      "label": {
+        "id": "90% daun sudah dipetik",
+        "en": "90 % of leaves harvested"
+      },
+      "principal": 9,
+      "order": 9009,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9009",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001826",
+      "code": "9100",
+      "label": {
+        "id": "Tahap pewarnaan: awal pengeringan",
+        "en": "Colouring phase: start of curing"
+      },
+      "principal": 9,
+      "order": 9100,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9100",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001827",
+      "code": "9101",
+      "label": {
+        "id": "10% lamina daun berubah warna",
+        "en": "10 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9101,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9101",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001828",
+      "code": "9102",
+      "label": {
+        "id": "20% lamina daun berubah warna",
+        "en": "20 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9102,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9102",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001829",
+      "code": "9103",
+      "label": {
+        "id": "30% lamina daun berubah warna",
+        "en": "30 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9103,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9103",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001830",
+      "code": "9104",
+      "label": {
+        "id": "40% lamina daun berubah warna",
+        "en": "40 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9104,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9104",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001831",
+      "code": "9105",
+      "label": {
+        "id": "50% lamina daun berubah warna",
+        "en": "50 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9105,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9105",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001832",
+      "code": "9106",
+      "label": {
+        "id": "60% lamina daun berubah warna",
+        "en": "60 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9106,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9106",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001833",
+      "code": "9107",
+      "label": {
+        "id": "70% lamina daun berubah warna",
+        "en": "70 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9107,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9107",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001834",
+      "code": "9108",
+      "label": {
+        "id": "80% lamina daun berubah warna",
+        "en": "80 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9108,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9108",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001835",
+      "code": "9109",
+      "label": {
+        "id": "90% lamina daun berubah warna",
+        "en": "90 % of leaf lamina coloured"
+      },
+      "principal": 9,
+      "order": 9109,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9109",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001836",
+      "code": "9200",
+      "label": {
+        "id": "Tahap pengeringan lamina: awal pengeringan lamina",
+        "en": "Lamina drying phase: start of lamina drying"
+      },
+      "principal": 9,
+      "order": 9200,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9200",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001837",
+      "code": "9201",
+      "label": {
+        "id": "10% lamina daun kering",
+        "en": "10 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9201,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9201",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001838",
+      "code": "9202",
+      "label": {
+        "id": "20% lamina daun kering",
+        "en": "20 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9202,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9202",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001839",
+      "code": "9203",
+      "label": {
+        "id": "30% lamina daun kering",
+        "en": "30 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9203,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9203",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001840",
+      "code": "9204",
+      "label": {
+        "id": "40% lamina daun kering",
+        "en": "40 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9204,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9204",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001841",
+      "code": "9205",
+      "label": {
+        "id": "50% lamina daun kering",
+        "en": "50 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9205,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9205",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001842",
+      "code": "9206",
+      "label": {
+        "id": "60% lamina daun kering",
+        "en": "60 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9206,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9206",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001843",
+      "code": "9207",
+      "label": {
+        "id": "70% lamina daun kering",
+        "en": "70 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9207,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9207",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001844",
+      "code": "9208",
+      "label": {
+        "id": "80% lamina daun kering",
+        "en": "80 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9208,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9208",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001845",
+      "code": "9209",
+      "label": {
+        "id": "90% lamina daun kering",
+        "en": "90 % of leaf lamina dry"
+      },
+      "principal": 9,
+      "order": 9209,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9209",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001846",
+      "code": "9300",
+      "label": {
+        "id": "Tahap pengeringan tulang daun: awal pengeringan tulang daun utama",
+        "en": "Mid-vein drying phase: start of mid-vein drying"
+      },
+      "principal": 9,
+      "order": 9300,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9300",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001847",
+      "code": "9301",
+      "label": {
+        "id": "10% tulang daun utama kering",
+        "en": "10 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9301,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9301",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001848",
+      "code": "9302",
+      "label": {
+        "id": "20% tulang daun utama kering",
+        "en": "20 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9302,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9302",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001849",
+      "code": "9303",
+      "label": {
+        "id": "30% tulang daun utama kering",
+        "en": "30 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9303,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9303",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001850",
+      "code": "9304",
+      "label": {
+        "id": "40% tulang daun utama kering",
+        "en": "40 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9304,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9304",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001851",
+      "code": "9305",
+      "label": {
+        "id": "50% tulang daun utama kering",
+        "en": "50 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9305,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9305",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001852",
+      "code": "9306",
+      "label": {
+        "id": "60% tulang daun utama kering",
+        "en": "60 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9306,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9306",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001853",
+      "code": "9307",
+      "label": {
+        "id": "70% tulang daun utama kering",
+        "en": "70 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9307,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9307",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001854",
+      "code": "9308",
+      "label": {
+        "id": "80% tulang daun utama kering",
+        "en": "80 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9308,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9308",
+          "relation": "close",
+          "note": "Kode antara. Sumber menulis \"stages continuous till\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001855",
+      "code": "9309",
+      "label": {
+        "id": "90% tulang daun utama kering",
+        "en": "90 % of mid-vein dried"
+      },
+      "principal": 9,
+      "order": 9309,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "9309",
+          "relation": "close",
+          "note": "Kode pada skala CORESTA untuk tembakau, yang menyatakan dirinya berbasis BBCH diperluas. Relasi ditandai close, bukan exact: kodenya bukan berasal dari BBCH Monograph melainkan dari kunci turunan yang menambah meso-stage khas tembakau."
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "A Scale For Coding Growth Stages in Tobacco Crops — CORESTA Guide N° 7",
+        "publisher": "Cooperation Centre for Scientific Research Relative to Tobacco (CORESTA)",
+        "year": 2019,
+        "url": "https://www.coresta.org/scale-coding-growth-stages-tobacco-crops-29211.html",
+        "locator": "Versi 2, Desember 2019; Growth Stages and Identification Keys for Tobacco Task Force — Henri Papenfus, Norbert Billenkamp. Lampiran: Coding for growth stages in tobacco"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 18,
+      "to": 18
+    }
+  ]
+}

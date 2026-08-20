@@ -545,6 +545,76 @@ bagian yang menentukan hasil.
 
 ---
 
+### D33 — monograf habis; sisanya tidak bisa diselesaikan dengan cara yang sama
+
+Bit dan kacang polong menutup daftar: ketujuh belas skala di repositori ini menghabiskan
+seluruh kunci BBCH Monograph yang punya padanan komoditas di registri Indonesia. Keduanya
+hanya menambah lima varietas — dikerjakan bukan karena besar, melainkan karena murah dan
+menutup satu sumber sampai tuntas.
+
+Bit menyimpan satu bentuk yang belum pernah muncul: **fase berbunganya baru terjadi pada
+tahun kedua**, karena bit tanaman dua tahunan yang perlu melewati periode dingin. Di iklim
+tropis fase 51–89 praktis tak akan tercapai kecuali di dataran tinggi untuk produksi benih.
+Deret daunnya juga melompat — 12 berarti 2 daun (pasangan pertama), 14 berarti 4 daun
+(pasangan kedua), dan kode 13 memang tidak ada, karena bit berdaun berpasangan.
+
+**Sisanya tidak bisa diselesaikan dengan menyalin.** Penelusuran untuk tujuh komoditas
+terbesar yang belum punya skala menghasilkan empat keadaan yang berbeda-beda, dan
+membedakannya penting karena tindak lanjutnya tidak sama:
+
+1. **Kuncinya ada dan gratis, tetapi tidak terambil.** Tembakau punya CORESTA Guide No. 7
+   (Desember 2019), berbasis BBCH diperluas, mencakup persemaian sampai pengeringan daun.
+   Situs penerbitnya memakai pemeriksaan bot otomatis. Menembus pemeriksaan semacam itu tidak
+   dilakukan; berkasnya perlu diunduh manusia lalu disalin dari salinan lokal.
+2. **Kuncinya terbit tetapi bentuknya berbeda.** Alpukat punya kunci di Scientia Horticulturae
+   (2013) memakai BBCH diperluas 3 digit sampai kode 719. Bisa disalin, tetapi perlu keputusan
+   lebih dulu: apakah skala 3 digit disimpan apa adanya, atau diringkas ke 2 digit seperti
+   yang dilakukan pada kunci cucurbit dan kentang.
+3. **Usulannya ada tetapi belum terbit.** Pisang punya usulan kodifikasi Gonzales dkk. yang
+   masih berstatus *in preparation*, dengan kode 4 digit. Reproduksi yang beredar bukan sumber
+   primer, dan menyalinnya berarti menurunkan mutu bukti seluruh berkas skala di sini.
+4. **Kuncinya memang tidak ada.** Durian dan kacang panjang. Untuk kacang panjang, pustaka
+   memakai kode kunci buncis apa adanya pada *Vigna* — pemakaian informal, bukan kunci
+   terbitan, dan menyalinnya akan mengarang kewenangan yang tidak dimiliki sumbernya.
+
+Untuk golongan keempat, pilihannya sama seperti udang vaname: menyusun skala sendiri, ditandai
+`no_mapping_reason`, dengan sumber yang disebut apa adanya. Itu keputusan yang belum diambil.
+
+---
+
+### D34 — tembakau masuk dari CORESTA, dan bentuknya memaksa dua penyesuaian
+
+Kunci tembakau bukan bagian BBCH Monograph. Ia CORESTA Guide N° 7 (Desember 2019), skala
+turunan yang menyatakan dirinya berbasis BBCH diperluas dan merujuk monograf sebagai dasar.
+156 fase, 267 varietas — tambahan terbesar dari satu kunci sejauh ini.
+
+**Relasi pemetaannya `close`, bukan `exact`.** Kodenya bukan berasal dari BBCH Monograph
+melainkan dari kunci turunan yang menambah meso-stage khas tembakau. Menandainya `exact` akan
+menyatakan kesetaraan yang tidak dimiliki sumbernya. Pemetaan koleksinya sendiri memakai
+skema `OTHER` dengan pengenal `CORESTA-Guide-7`, bukan `BBCH`.
+
+**Bidang `order` memakai kunci ternormalisasi.** Kunci ini memakai kode 2 digit pada fase
+utama 0, 4, 5, 6, 7, 8 dan kode **4 digit** pada fase utama 1, 2, 3, dan 9. Mengurutkan
+`Number(code)` apa adanya akan menempatkan fase 40 sebelum 1000 — salah urut sejauh satu
+siklus. Jadi kode 2 digit dikalikan 100 pada `order`: 49 menjadi 4900 dan tetap berada sebelum
+50 yang menjadi 5000. `code` sendiri tetap apa adanya.
+
+**Fase utama 9 bukan penuaan, melainkan panen dan pengeringan.** Pemetikan daun, pewarnaan
+lamina, pengeringan lamina, lalu pengeringan tulang daun — masing-masing sepuluh kode. Tidak
+ada skala lain di repositori ini yang meneruskan penomoran fase sampai ke pascapanen, dan
+itulah alasan kunci Solanaceae sayuran buah tidak akan pernah cocok untuk tembakau meski
+keduanya sesuku.
+
+**Deret terbuka tidak diberi batas.** Sumber menulis jumlah daun dan tunas sebagai `10nn`,
+`11nn`, `20nn`, `21nn` — terbuka, karena jumlah daun tembakau bergantung varietas dan
+pemangkasan pucuk. Yang tertabelkan disalin (1000–1005 dan seterusnya); menetapkan batas atas
+berarti mengarang batas yang tidak ada di sumbernya.
+
+Berkas PDF-nya sendiri tidak ikut masuk repositori: dokumen CORESTA, bukan konten
+berlisensi terbuka. Yang masuk hasil penyalinannya, dengan sumber disebut lengkap.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -573,4 +643,5 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
 | 22 | 47,6% varietas belum punya skala fase | Turun dari 89% setelah lima belas kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168), alpukat (145). Kunci monograf yang masih tersisa tinggal bit dan kacang polong; selebihnya perlu kunci dari luar monograf, atau belum pernah ada |
+| 25 | Alpukat dan pisang: kunci 3 dan 4 digit | Alpukat terbit di Scientia Horticulturae (2013) dengan kode sampai 719; pisang masih usulan belum terbit dengan kode 4 digit. Perlu keputusan bentuk kode lebih dulu — disimpan apa adanya atau diringkas ke 2 digit seperti kunci cucurbit |
 | 23 | Durian tidak punya kunci BBCH yang pernah diterbitkan | Bukan kelalaian pencarian: monograf memuat 28 kunci tanaman dan durian bukan salah satunya, dan penelusuran pustaka tidak menemukan terbitan lain. Yang ada penelitian fenologi berkosakata sendiri — kuncup "mata ketam", antesis, lalu umur buah dalam hari setelah antesis. Menyusunnya berarti membuat skala baru seperti skala DOC udang, bukan menyalin; perlu keputusan tersendiri |
