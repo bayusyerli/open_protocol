@@ -7,7 +7,8 @@
   "scripts": {
     "check": "node validate.mjs",
     "test": "node test-rules.mjs",
-    "all": "npm run check && npm test"
+    "all": "npm run check && npm test && npm run angka",
+    "angka": "node tools/cek-angka-docs.mjs"
   },
   "devDependencies": {
     "ajv": "^8.17.1",

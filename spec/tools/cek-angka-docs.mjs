@@ -8,17 +8,41 @@
 // termasuk "PHI 290 dari 23.058", yang ternyata nol dan sempat tersebar ke dua layar
 // aplikasi dan ke meta.tidakAda pada indeks.
 //
-// Angka harapan di bawah adalah yang TERTULIS DI DOKUMEN. Kalau data bergeser, alat
-// ini menyebut selisihnya; yang harus diperbaiki bisa dokumennya, bisa juga sondaan
-// di sini — dan membedakan keduanya tetap pekerjaan manusia. Dua kekeliruan sondaan
-// sudah terjadi dan keduanya ditinggalkan sebagai catatan: pupuk cair dihitung dari
-// `formulation`, bukan dari satuan komposisi; dan "Abamektin 18" wajib menyaring
-// satuan g/L, karena ada produk berabamektin 18 PERSEN.
+// APA YANG ALAT INI TANGKAP, DAN APA YANG TIDAK
+// Angka harapan di bawah DISALIN dari dokumen ke dalam skrip ini — ia tidak dibaca
+// dari berkasnya. Akibatnya alat ini punya dua bagian dengan daya yang berbeda:
+//
+//   1. Lima puluh dua pemeriksaan angka: DATA lawan angka yang tersalin di sini.
+//      Menangkap data yang bergeser — tarikan registri baru, penggabungan kosakata —
+//      sehingga angka yang dulu benar jadi salah.
+//   2. Sapuan teks: menangkap pola angka yang PERNAH salah kalau ia muncul lagi, di
+//      docs/, app/, maupun spec/tools/.
+//
+// Yang TIDAK ditangkap keduanya: angka baru yang salah, ditulis ke dokumen setelah
+// ini. Mengubah "26 produk" jadi "99 produk" di docs/05 tidak membuat alat ini
+// menyalak, karena harapannya ada di sini, bukan di sana. Menutup lubang itu berarti
+// mengurai angka dari prosa, dan prosa ini menulis angka dalam belasan bentuk —
+// pekerjaan tersendiri yang belum dikerjakan.
+//
+// Jadi "52/52 cocok" berarti: data belum bergeser dari yang tercatat di sini. Bukan:
+// seluruh angka di dokumen sudah diperiksa ulang.
+//
+// Dua kekeliruan SONDAAN sudah terjadi dan keduanya ditinggalkan sebagai catatan:
+// pupuk cair dihitung dari `formulation`, bukan dari satuan komposisi; dan
+// "Abamektin 18" wajib menyaring satuan g/L, karena ada produk berabamektin 18 PERSEN.
+// Membedakan "dokumennya salah" dari "sondaannya salah" tetap pekerjaan manusia.
 
 import { readFileSync, readdirSync } from 'node:fs';
+import { join, dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Lintasan diselesaikan dari letak berkas ini, bukan dari cwd — `npm run all`
+// berjalan dari spec/, sedangkan yang dibaca ada di akar repositori.
+const akar = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
+const dari = (p) => join(akar, p);
 const L = (o) => (Array.isArray(o) ? o : Object.values(o).find(Array.isArray));
-const J = (p) => JSON.parse(readFileSync(p, 'utf8'));
-const nd = (p) => readFileSync(p, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l));
+const J = (p) => JSON.parse(readFileSync(dari(p), 'utf8'));
+const nd = (p) => readFileSync(dari(p), 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l));
 
 const P = nd('spec/vocab/product/pestisida.ndjson');
 const PU = nd('spec/vocab/product/pupuk.ndjson');
@@ -159,12 +183,12 @@ const BEKAS_SALAH = [
   [/Dari 25 produk berisi Abamektin/, 'abamektin 18 g/L 25 produk — sebenarnya 26'],
   [/778 OPT registri/, '778 OPT registri — sebenarnya 768 registri + 10 terkurasi'],
 ];
-const sapuDir = (d) => readdirSync(d, { withFileTypes: true }).flatMap((e) =>
+const sapuDir = (d) => readdirSync(dari(d), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? sapuDir(`${d}/${e.name}`) : [`${d}/${e.name}`]);
 const berkas = [...sapuDir('docs'), ...sapuDir('app'), ...sapuDir('spec/tools')]
   .filter((f) => /\.(md|html|js|mjs)$/.test(f) && !f.endsWith('cek-angka-docs.mjs'));
 for (const f of berkas) {
-  const isi = readFileSync(f, 'utf8');
+  const isi = readFileSync(dari(f), 'utf8');
   for (const [re, sebab] of BEKAS_SALAH)
     if (re.test(isi)) hasil.push({ doc: 'sapuan', klaim: `${f}: ${sebab}`, nyata: 'ADA', harap: 'tidak ada', ok: false });
 }
@@ -172,3 +196,8 @@ for (const f of berkas) {
 const gagal = hasil.filter((h) => !h.ok);
 for (const h of hasil) console.log(`${h.ok ? '  ok  ' : ' BEDA '} ${h.doc.padEnd(7)} ${h.klaim.padEnd(34)} data=${String(h.nyata).padStart(7)}  dokumen=${h.harap}`);
 console.log(`\n${hasil.length - gagal.length}/${hasil.length} cocok, ${gagal.length} berbeda`);
+console.log('Artinya: data belum bergeser dari angka yang tersalin di alat ini.');
+console.log('BUKAN: seluruh angka di dokumen sudah diperiksa ulang — angka baru yang');
+console.log('salah, ditulis sesudah ini, tidak akan tertangkap.');
+// Keluar dengan status gagal supaya `npm run all` berhenti, bukan sekadar mencetak.
+if (gagal.length) process.exit(1);
