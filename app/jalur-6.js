@@ -17,6 +17,9 @@
  */
 
 import { ambil, teks } from './pustaka.js';
+import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+
+catatBuka(6);
 
 const el = {
   fungsi: document.getElementById('fungsi'),
@@ -289,11 +292,13 @@ async function bukaResep(berkas) {
       ${blokHukum(r)}${blokBahan(r)}${blokProses(r)}
       ${bisaDibakukan ? blokKriteria(r) + blokPakai(r) : blokTakBisaDibakukan(r)}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
+    catatJawab(6, bisaDibakukan ? UKUR.isi : UKUR.takSanggup);
     document.getElementById('kembali').addEventListener('click', () => {
       el.resep.innerHTML = '';
       el.daftar.scrollIntoView({ block: 'start' });
     });
   } catch (e) {
+    catatJawab(6, UKUR.gagal);
     el.resep.innerHTML = `<div class="kartu peringatan"><h2>Resepnya gagal diambil</h2>
       <p class="catatan">${teks(e.message)}</p></div>`;
   }

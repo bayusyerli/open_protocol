@@ -10,6 +10,9 @@
 
 import { ambil, muatMeta, cari, gambarHasil, teks } from './pustaka.js';
 import { layarVarietas, layarTakDitemukan } from './varietas.js';
+import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+
+catatBuka(4);
 
 const el = {
   q: document.getElementById('q'),
@@ -30,11 +33,13 @@ async function buka(id, pecahan) {
     const v = (await ambil(pecahan)).find((x) => x.id === id);
     if (!v) throw new Error('tidak ada di pecahannya');
     el.rincian.innerHTML = await layarVarietas(v);
+    catatJawab(4, UKUR.isi);
     el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
       el.rincian.innerHTML = '';
       el.q.focus();
     });
   } catch (e) {
+    catatJawab(4, UKUR.gagal);
     el.rincian.innerHTML = `<div class="kartu peringatan">
       <h2>Rinciannya gagal diambil</h2>
       <p>Sambungan terputus atau berkasnya tidak ada. Coba lagi — yang sudah terambil
@@ -75,6 +80,7 @@ async function jalankan() {
       // dan layar itulah yang paling bernilai di seluruh jalur 4.
       el.hasil.innerHTML = '';
       el.rincian.innerHTML = await layarTakDitemukan(kueri);
+      catatJawab(4, UKUR.takSanggup);
       return;
     }
     gambarHasil(el.hasil, hasil, kueri, () => '');

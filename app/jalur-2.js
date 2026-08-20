@@ -14,6 +14,9 @@
 
 import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI } from './pustaka.js';
 import { layarVarietas } from './varietas.js';
+import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+
+catatBuka(2);
 
 const el = {
   q: document.getElementById('q'),
@@ -181,11 +184,13 @@ async function buka(id, pecahan) {
         ${blokLarangan(p.isi)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_KEMBALI}`;
     }
 
+    catatJawab(2, UKUR.isi);
     el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
       el.rincian.innerHTML = '';
       el.q.focus();
     });
   } catch (e) {
+    catatJawab(2, UKUR.gagal);
     el.rincian.innerHTML = `<div class="kartu peringatan">
       <h2>Rinciannya gagal diambil</h2>
       <p>Sambungan terputus atau berkasnya tidak ada. Coba lagi — yang sudah terambil

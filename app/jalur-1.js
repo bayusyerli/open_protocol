@@ -21,6 +21,9 @@
  */
 
 import { ambil, teks } from './pustaka.js';
+import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+
+catatBuka(1);
 
 const el = {
   gejala: document.getElementById('gejala'),
@@ -279,6 +282,7 @@ async function bukaOpt(id) {
     el.hasil.innerHTML = blokPastikan(k) +
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
+    catatJawab(1, k.di.length ? UKUR.isi : UKUR.nol);
     document.getElementById('kembali').addEventListener('click', () => {
       el.hasil.innerHTML = '';
       el.gejala.scrollIntoView({ block: 'start' });
@@ -286,6 +290,7 @@ async function bukaOpt(id) {
     // Kalau hanya satu komoditas, langsung buka — satu ketukan lebih sedikit.
     if (k.di.length === 1) await bukaKomoditas(k.di[0].berkas, k);
   } catch (e) {
+    catatJawab(1, UKUR.gagal);
     el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
       <p class="catatan">${teks(e.message)}</p></div>`;
   }

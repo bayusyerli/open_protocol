@@ -10,6 +10,9 @@
  */
 
 import { ambil, teks } from './pustaka.js';
+import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+
+catatBuka(5);
 
 const el = {
   fungsi: document.getElementById('fungsi'),
@@ -283,11 +286,13 @@ async function bukaResep(berkas) {
       </div>
       ${blokHukum(r)}${blokBahan(r)}${blokProses(r)}${blokKriteria(r)}${blokPakai(r)}${BLOK_HARA}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
+    catatJawab(5, UKUR.isi);
     document.getElementById('kembali').addEventListener('click', () => {
       el.resep.innerHTML = '';
       el.daftar.scrollIntoView({ block: 'start' });
     });
   } catch (e) {
+    catatJawab(5, UKUR.gagal);
     el.resep.innerHTML = `<div class="kartu peringatan"><h2>Resepnya gagal diambil</h2>
       <p class="catatan">${teks(e.message)}</p></div>`;
   }

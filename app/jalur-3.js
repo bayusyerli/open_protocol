@@ -12,6 +12,9 @@
  */
 
 import { ambil, muatMeta, cari, gambarHasil, teks } from './pustaka.js';
+import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+
+catatBuka(3);
 
 const el = {
   q: document.getElementById('q'),
@@ -293,12 +296,14 @@ async function buka(id, pecahan) {
       }));
     }
 
+    catatJawab(3, h ? UKUR.isi : UKUR.takSanggup);
     el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
       el.rincian.innerHTML = '';
       kini = null;
       el.q.focus();
     });
   } catch (e) {
+    catatJawab(3, UKUR.gagal);
     el.rincian.innerHTML = `<div class="kartu peringatan">
       <h2>Rinciannya gagal diambil</h2>
       <p>Sambungan terputus atau berkasnya tidak ada. Coba lagi.</p>
