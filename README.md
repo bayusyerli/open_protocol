@@ -12,6 +12,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/00-fondasi-dan-tahapan.md`](docs/00-fondasi-dan-tahapan.md) | Dokumen fondasi: diagnosis, arsitektur tiga lapis, delapan fase beserta gate-nya, konteks regulasi Indonesia, metrik, dan risiko |
 | [`spec/`](spec/) | Spesifikasi Lapis 1 (ontologi) v0.1 — skema, kosakata, contoh, pemeriksa, dan uji negatif |
 | [`app/`](app/) | **Permukaan baca-saja yang sudah berjalan** — keenam jalur sebagai berkas statis, tanpa kerangka kerja dan tanpa server aplikasi |
+| [`docs/10-peta-modul.md`](docs/10-peta-modul.md) | Peta modul & urutan bangun: Lapis 2 masih kosong sementara Lapis 1 sudah merujuknya, tiga fitur yang terhalang lubang data, dan iterasi pertama |
 | [`docs/principal-terdaftar.md`](docs/principal-terdaftar.md) | 2.305 principal pemegang pendaftaran pupuk & pestisida, beserta keputusan cakupannya |
 | [`docs/01-sediaan-buatan-sendiri.md`](docs/01-sediaan-buatan-sendiri.md) | Riset & standar praktik meramu sendiri — kompos, MOL, bioaktivator, pestisida nabati — beserta tujuh syarat sebuah praktik boleh dianjurkan mesin |
 | [`docs/02-tiga-pasar.md`](docs/02-tiga-pasar.md) | Segmentasi, target, dan posisi — kenapa pengguna, pembayar, dan kontributor harus disegmentasi terpisah |
