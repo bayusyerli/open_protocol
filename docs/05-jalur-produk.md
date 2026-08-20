@@ -99,8 +99,8 @@ Dua angka yang mudah tertukar, dan keduanya benar untuk pertanyaan yang berbeda:
 
 | Pertanyaan | Contoh | Angka |
 |---|---|---|
-| Berapa yang terdaftar untuk **masalah ini**? | Abamektin 18 g/L untuk trips di cabai | 25 produk |
-| Berapa yang isinya **sama persis**, di mana pun? | Abamektin 18 g/L di seluruh registri | 57 produk |
+| Berapa yang terdaftar untuk **masalah ini**? | Abamektin 18 g/L untuk trips di cabai | 26 produk |
+| Berapa yang isinya **sama persis**, di mana pun? | Abamektin 18 g/L di seluruh registri | 58 produk |
 
 Jalur gejala memakai angka bercakupan masalah; jalur produk memakai angka menyeluruh.
 Menyatukan keduanya keliru, jadi layar menyebut cakupannya terang-terangan: *"di

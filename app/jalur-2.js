@@ -114,8 +114,8 @@ function blokGuna(p) {
       </div>
       <p class="catatan">
         Di luar daftar ini, produk tersebut <strong>tidak terdaftar</strong> untuk dipakai.
-        Tenggang panen tidak ditampilkan karena registri hanya mencatatnya pada 290 dari
-        23.058 penggunaan berlabel — terlalu jarang untuk dijanjikan.
+        Tenggang panen tidak ditampilkan karena <strong>registri tidak memuatnya sama
+        sekali</strong> — nol dari 23.058 penggunaan berlabel.
       </p>
     </div>`;
 }

@@ -48,7 +48,7 @@
 //
 // YANG SENGAJA TIDAK DIINDEKS, KARENA MEMANG BELUM ADA DI SUMBERNYA
 //   gejala OPT      0 dari 1.360 — jalur 1 belum punya pintu masuk
-//   PHI             290 dari 23.058 penggunaan — terlalu jarang untuk dijanjikan
+//   PHI             NOL dari 23.058 penggunaan — tidak ada sama sekali
 //   harga           nol — masukan pengguna di jalur 3
 //   berat jenis     nol — pupuk cair tidak sebanding dengan yang padat
 // Keempatnya dicatat di meta.json supaya sisi penyaji tahu ia tidak boleh
@@ -794,7 +794,7 @@ const meta = {
   tidakAda: {
     gejalaOpt:
       'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 10 OPT cabai terkurasi di pest.json, 5 di antaranya bertekst gejala (lihat gejala.json). Di luar sepuluh itu jalur 1 tidak punya pintu masuk.',
-    phi: 'Hanya 290 dari 23.058 penggunaan berlabel menyinggung tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
+    phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. Jalur 3 mengandalkan satu masukan pengguna.',
     beratJenis: 'Tidak ada, sehingga pupuk cair tidak sebanding dengan yang padat.',
     namaDagang: 'Registri menyimpan nama produk terdaftar; nama di kemasan bisa berbeda dan belum terpetakan.',

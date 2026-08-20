@@ -27,7 +27,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nyaris nol.** Dari 778 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, 5 di antaranya bertekst |
+| **Ini apa?** | **Nyaris nol.** Dari 768 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, seluruhnya kini bertekst |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
@@ -71,15 +71,15 @@ melarang ini: aturan itu mengikat langkah protokol, bukan tampilan registri.
 
 **2 · Dikelompokkan per bahan saja**
 
-Satu entitas `op:sub:00000007` "Abamektin" ternyata dipakai pada **15 kadar
-berbeda**, dari 7 g/L sampai 72 g/L — rentang sepuluh kali lipat. Kesetaraan hanya
+Satu entitas `op:sub:00000007` "Abamektin" ternyata dipakai pada **33 kadar
+berbeda** — 24 di antaranya dalam g/L, sisanya dalam persen. Kesetaraan hanya
 benar pada pasangan **bahan + kadar**, bukan pada nama bahannya.
 
 **3 · Dosis ditempel ke bahan**
 
-Kekeliruan paling berbahaya. Dari 25 produk berisi Abamektin 18 g/L, dosis
-terdaftarnya berbeda-beda: 0,5 · 0,75 · 1 · 1,5 · 1–2 ml/l — dan satu produk memakai
-satuan yang sama sekali lain, `1 l/ha`. **Dosis milik pendaftaran tiap produk, bukan
+Kekeliruan paling berbahaya. Dari 26 produk berisi Abamektin 18 g/L yang terdaftar
+untuk trips di cabai, dosis terdaftarnya berbeda-beda: 0,375 · 0,5 · 0,75 · 1 · 1,5 ·
+1–2 · 2 ml/l — dan satu produk memakai satuan yang sama sekali lain, `1 l/ha`. **Dosis milik pendaftaran tiap produk, bukan
 milik bahannya.** Kartu lama menampilkan satu rentang tanpa kadar; itu bisa melukai
 orang.
 
@@ -231,8 +231,8 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
 ## Yang sengaja tidak dijanjikan
 
 Layar ini **tidak menampilkan tanggal aman panen**, padahal tenggang panen adalah
-angka yang paling melukai kalau salah. Alasannya: PHI hanya ada di 290 dari 23.058
-penggunaan berlabel. Yang tertulis sebagai gantinya adalah bahwa tenggang panen tidak
+angka yang paling melukai kalau salah. Alasannya: **registri tidak memuatnya sama
+sekali** — nol dari 23.058 penggunaan berlabel. Yang tertulis sebagai gantinya adalah bahwa tenggang panen tidak
 tercatat di registri, dan pertanyaannya dibawa ke penyuluh.
 
 Lebih baik mengaku tidak tahu daripada mengarang angka yang menyangkut keselamatan.

@@ -14,7 +14,7 @@
 
 ## 1. Kenapa bukan “varietas mana yang sebaiknya ditanam”
 
-Dari seluruh 11.227 varietas, **hanya 35 menyebut sifat agronomi apa pun** — ketahanan, umur panen, potensi hasil. `variety_type` baru terisi di 1.173 rekaman.
+Dari seluruh 11.227 varietas, **tidak satu pun menyebut sifat agronomi apa pun** — ketahanan, umur panen, potensi hasil. Tiga puluh rekaman memang memuat kata seperti “tahan”, tetapi seluruhnya di dalam *nama pemelihara*, bukan sebagai sifat varietasnya. `variety_type` baru terisi di 1.173 rekaman.
 
 Yang ada di registri justru berkas perizinan. Artinya ini **daftar keabsahan, bukan katalog agronomi.** Membangun rekomendasi varietas di atasnya berarti mengarang sifat yang tidak pernah ada datanya — dan taruhan benih adalah taruhan seluruh musim.
 
@@ -46,7 +46,7 @@ Registri ini mendaftarkan **varietas**, bukan bahan perbanyakannya. Satu varieta
 
 > **Batas yang paling penting di seluruh jalur ini**
 >
-> **Pelepasan varietas bukan sertifikasi lot.** Registri menjawab “apakah varietas ini dilepas”, dan berhenti di situ. Ia tidak bisa menjawab apakah *bungkus benih* atau *bibit di polybag* yang ada di tanganmu benar-benar berasal dari varietas itu — dokumen untuk itu adalah label dan sertifikat lot dari BPSB, dan hanya 44 dari 11.227 rekaman menyinggungnya sama sekali.
+> **Pelepasan varietas bukan sertifikasi lot.** Registri menjawab “apakah varietas ini dilepas”, dan berhenti di situ. Ia tidak bisa menjawab apakah *bungkus benih* atau *bibit di polybag* yang ada di tanganmu benar-benar berasal dari varietas itu — dokumen untuk itu adalah label dan sertifikat lot dari BPSB, dan registri ini **tidak memuatnya sama sekali** — 44 rekaman memang menyebut BPSB, tetapi seluruhnya sebagai *nama pemelihara*, bukan sebagai sertifikat lot.
 >
 > Untuk bibit tanaman tahunan, lubang itu paling lebar: tidak ada cara memverifikasi sambungan durian selain memercayai penangkarnya. Yang bisa diberikan layar ini adalah lapisan pertama — bahwa nama varietasnya nyata, siapa pemeliharanya, dan surat apa yang ada di baliknya.
 
@@ -101,7 +101,7 @@ Karena itu layarnya berhenti pada fakta dan mengubahnya jadi pertanyaan yang bis
 
 ## 6. Yang belum ada di data
 
-- **Sifat agronomi.** 35 dari 11.227. Tanpa ini tidak ada rekomendasi varietas yang jujur — dan menambahkannya berarti kerja kurasi besar, bukan tarikan registri.
+- **Sifat agronomi.** Nol dari 11.227. Tanpa ini tidak ada rekomendasi varietas yang jujur — dan menambahkannya berarti kerja kurasi besar, bukan tarikan registri.
 - **Masa berlaku surat.** seluruh 580 surat `protection` tidak membawa tanggal sama sekali, dan 5.801 dari 5.826 surat pelepasan hanya membawa nomor SK tanpa tanggal. Jadi layar tidak bisa menyatakan sebuah surat masih berlaku — hanya bahwa ia ada.
 - **Nama dagang.** Registri menyimpan nama varietas, bukan nama di kemasan. Pemetaan nama dagang → varietas adalah lubang terbesar untuk jalur ini, dan tidak bisa ditutup dari data yang ada.
 - **Produsen benih.** Yang tercatat `maintainer` — pemelihara varietasnya, belum tentu yang mengemas benih di tanganmu.
