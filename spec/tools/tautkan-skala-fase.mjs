@@ -159,6 +159,11 @@ const CAKUPAN = {
   'stage-scale-bbch-alpukat.json': [
     'op:cmd:00001417', // Alpukat
   ],
+  // Fase budidaya durian — skala susunan sendiri, bukan BBCH
+  'stage-scale-durian.json': [
+    'op:cmd:00001171', // Durian
+    'op:cmd:00002104', // Durian Mandong — durian lokal Jawa, Durio zibethinus
+  ],
   // Umur budidaya udang vaname (DOC)
   'stage-scale-doc-udang.json': [
     'op:cmd:00000005', // Udang vaname
@@ -168,6 +173,7 @@ const CAKUPAN = {
 // Sengaja TIDAK ditautkan, beserta alasannya. Ditulis di sini supaya keputusannya
 // bisa dibantah orang berikutnya, bukan hilang jadi daftar yang tampak lengkap.
 const DIKECUALIKAN = {
+  'op:cmd:00002103': 'Durian Lai — Durio kutejensis, jenis lain dalam marga yang sama; kedua varietasnya dari Kalimantan dan fenologinya belum diperiksa terhadap skala ini',
   'op:cmd:00002036': 'Bayam — Amaranthus, bukan Spinacia yang disebut kunci; tumbuh tegak, bukan beroset',
   'op:cmd:00002181': 'Kangkung — Ipomoea aquatica, suku Convolvulaceae, merambat dan sebagian tumbuh di air',
   'op:cmd:00002182': 'Kangkung Darat — alasan sama seperti Kangkung',

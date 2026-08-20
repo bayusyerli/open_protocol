@@ -2410,6 +2410,10 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
+      },
+      "default_stage_scale": {
+        "id": "op:sca:00000020",
+        "label": "Fase budidaya durian (Durio zibethinus)"
       }
     },
     {

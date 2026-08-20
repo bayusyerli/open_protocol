@@ -643,6 +643,48 @@ dua fase utama yang berjalan serentak, sesuatu yang tidak terjadi pada tanaman s
 
 ---
 
+### D36 — skala durian disusun sendiri, dan batas antara yang bersumber dan yang tidak ditarik tegas
+
+Durian 496 varietas terdaftar, terbanyak kedua sesudah padi di antara komoditas yang belum
+punya skala, dan kunci BBCH-nya tidak pernah ada. Yang diambil: menyusun skala sendiri
+mengikuti pola skala DOC udang vaname — empat belas fase, dari istirahat setelah panen sampai
+pemeraman, bertanda `no_mapping_reason`, dan **tidak menyebut dirinya BBCH**. Kodenya berawalan
+`DUR-` supaya kodenya sendiri mengumumkan bahwa ia bukan kode BBCH.
+
+**Batas antara yang bersumber dan yang tidak ditarik di dalam berkasnya.** Yang dicantumkan:
+jangkar hari pada sisi buah, dari Husin dkk. (2023) pada kultivar D24 — buah muda 90 hari
+setelah antesis, masak 120 hari, matang penuh sekitar tujuh hari sesudah dipetik. Pembagian
+fase vegetatif mengikuti pemantauan fenologi 30 bulan di Queensland utara oleh Diczbalis dkk.,
+yang menilai pucuk sebagai baru, mengeras, atau tua.
+
+Yang **sengaja tidak** dicantumkan: angka hari dari mata ketam sampai antesis, dan lama periode
+kering yang memicu induksi. Keduanya beredar luas di pustaka penyuluhan — biasanya "sekitar
+sebulan" dan "18 hari kering" — tetapi rujukannya tidak bisa dilacak sampai ke pengamatan
+aslinya. Menaruhnya akan memberi kesan pasti yang tidak dimiliki sumbernya, dan fase itu tetap
+bisa dikenali dari bentuknya tanpa angka.
+
+**Tiga hal yang membuat durian tidak muat di kunci tanaman semusim mana pun**, dan yang membuat
+skala ini bukan sekadar penyederhanaan:
+
+1. **Pembungaannya dipicu cekaman kering, bukan umur.** Panjang siklusnya ditentukan cuaca.
+   Skala berbasis hari sejak tanam tidak akan pernah cocok; skala berbasis bentuk yang teramati
+   akan cocok.
+2. **Penyerbukannya malam hari, terutama oleh kelelawar.** Fase antesis karena itu punya akibat
+   langsung pada aturan penyemprotan — sesuatu yang tidak muncul pada tanaman berbunga siang.
+3. **Panennya punya dua cara sah yang berakhir berbeda.** Dipetik pada masak fisiologis lalu
+   diperam, atau dibiarkan masak di pohon sampai jatuh sendiri. Skala yang memaksa satu akhir
+   akan salah untuk separuh kebun. Fase `DUR-P1` pemeraman karena itu ditandai hanya berlaku
+   untuk buah yang dipetik.
+
+Statusnya `draft` dengan `review_due` enam bulan, bukan setahun seperti skala salinan. Skala
+salinan menunggu sumbernya berubah; skala ini menunggu pengamatan lapangan Fase 1 —
+dan itu jadwal yang berbeda.
+
+Durian Lai tidak ditautkan: ia *Durio kutejensis*, jenis lain dalam marga yang sama, dan
+fenologinya belum diperiksa terhadap skala ini.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -672,4 +714,4 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
 | 22 | 47,6% varietas belum punya skala fase | Turun dari 89% setelah lima belas kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168), alpukat (145). Kunci monograf yang masih tersisa tinggal bit dan kacang polong; selebihnya perlu kunci dari luar monograf, atau belum pernah ada |
 | 25 | Berapa mesostage alpukat di Indonesia? | Kunci alpukat menyalin dua trubus per tahun mengikuti Spanyol selatan. Jumlah trubus di sini perlu diamati sendiri; bisa lebih, bisa kurang, dan mesostage tambahan boleh dibuat menurut sumbernya |
-| 23 | Durian tidak punya kunci BBCH yang pernah diterbitkan | Bukan kelalaian pencarian: monograf memuat 28 kunci tanaman dan durian bukan salah satunya, dan penelusuran pustaka tidak menemukan terbitan lain. Yang ada penelitian fenologi berkosakata sendiri — kuncup "mata ketam", antesis, lalu umur buah dalam hari setelah antesis. Menyusunnya berarti membuat skala baru seperti skala DOC udang, bukan menyalin; perlu keputusan tersendiri |
+| 23 | Skala durian susunan sendiri belum diuji lapangan | 14 fase disusun dari kosakata praktisi dan dua terbitan yang bisa dirujuk. Yang perlu diuji ke pekebun: apakah batas fasenya sama dengan yang mereka pakai, dan apakah fase gugur buah muda perlu dipecah dua |
