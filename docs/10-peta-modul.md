@@ -62,7 +62,7 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 | **M0 · Trust layer** | 1 | Kadensi penyegaran registri, pendapat hukum, lisensi, review agronom | — |
 | **MI · Instrumentasi** | 2 | **Selesai** — lihat [11-instrumentasi.md](11-instrumentasi.md) | — |
 | **M1 · Protokol** | 3 (prasyarat) | **Selesai** — skema Lapis 2, `L30`–`L33`, satu protokol cabai empat langkah | M0 selesai untuk jalur 6 |
-| **M2 · Rencana musim** | 3 | Protokol + Plot + tanggal → `Cycle` + `Step[] mode=planned` | M1 |
+| **M2 · Rencana musim** | 3 | **Penyusun selesai** — `spec/tools/susun-rencana.mjs`; belum ada permukaan | M1 |
 | **M3 · Realisasi & simpangan** | 3 | `Step mode=actual`, alasan simpangan, bukti lapangan | M2 |
 | **M4 · Berkas bukti** | 3 | `Cycle` + `Step[]` → dokumen siap audit | M3 |
 | **M5 · API & ekspor** | Fase 7 | Antarmuka publik, versioning data | M1–M4 |
@@ -125,9 +125,32 @@ Aturan pemeriksa baru di blok `L30`+, ditambah satu perluasan:
 
 ### M2 · Penyusun rencana musim
 
-RAB-nya tidak dibangun dari nol: kalkulator rupiah per kilogram hara **sudah berjalan**
-sebagai jalur 3, lihat [06-jalur-hitungan-hara.md](06-jalur-hitungan-hara.md).
-Penjadwalannya memakai `anchors` yang sudah ada di `cycle.schema.json`.
+`spec/tools/susun-rencana.mjs` menerima protokol, petak, dan tanggal acuan, lalu
+mengeluarkan `Cycle` beserta `Step` bermode `planned` yang lolos pemeriksa. ID-nya
+diturunkan dari masukan, bukan dari jam saat dijalankan, sehingga dua keluaran bisa
+dibandingkan.
+
+> **Rencana musim bukan kalender penuh, dan tidak boleh disajikan begitu.** Dari lima
+> bentuk `Timing`, hanya `relative` yang bisa jadi tanggal. Entitas `Stage` **tidak
+> memuat satu pun medan hari, durasi, atau akumulasi suhu** — hanya kode, label, dan
+> urutan. Jadi langkah berbasis fase tidak ditanggalkan, dan tidak ditebak: menebak
+> "BBCH 51 kira-kira hari ke-45" berarti mengarang fenologi, dan justru penjadwalan
+> berbasis fase dipilih [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md) **karena**
+> hari setelah tanam sering salah. Langkah berambang juga tidak bertanggal, dan boleh
+> tidak pernah berjalan sepanjang musim — itu hasil yang benar, bukan kepatuhan yang gagal.
+>
+> Pada protokol cabai empat langkah: **2 bertanggal, 1 menunggu fase, 1 bersyarat.**
+> Alat ini menyebut ketiga jumlah itu supaya yang membaca tahu berapa bagian rencananya
+> benar-benar kalender.
+
+Kebutuhan input dihitung hanya untuk dosis berbasis luas. Dosis konsentrasi tidak
+dijumlahkan karena butuh tahu berapa kali disemprot semusim, dan protokol tidak
+menyebutnya — cabang "tidak sanggup" ditampilkan tanpa angka, aturan yang sama dipakai
+kalkulator jalur 3.
+
+RAB belum dihitung: harga tidak ada di registri sama sekali. Yang sudah berjalan adalah
+rupiah per kilogram hara di jalur 3, dari harga yang dimasukkan pengguna sendiri — lihat
+[06-jalur-hitungan-hara.md](06-jalur-hitungan-hara.md).
 
 ### M3 · Realisasi dan simpangan
 
