@@ -145,11 +145,14 @@ Lampiran I.A no. 93. Kemiripan nama bukan bukti.
 - **Nama dagang belum terpetakan.** Registri menyimpan nama produk terdaftar; kemasan
   sering memakai nama jualan yang berbeda. Ini lubang terbesar jalur ini dan tidak
   bisa ditutup dari data yang ada.
-- **Nomor pendaftaran bukan kunci tunggal.** 175 nomor pestisida dan 96 nomor pupuk
-  dipakai lebih dari satu baris registri — sebagian salinan yang cuma beda kapitalisasi,
-  tetapi tidak semuanya: `01010120165429` dipegang `DKLUFEM 50 WG` sekaligus
-  `DKLUFEM 10/40 WG`. Layar rincian tidak boleh menganggap satu nomor menunjuk satu
-  produk. Rinciannya di [D37](../spec/03-keputusan-desain.md).
+- **Satu pendaftaran bisa punya beberapa baris registri.** 175 nomor pestisida dipakai
+  359 baris, karena portal hanya memuat izin yang masih berlaku dan perpanjangan
+  menambah baris alih-alih mengganti yang lama. 158 di antaranya satu pendaftaran yang
+  muncul dua kali — perpanjangan, ganti nama dagang, atau pemegang berpindah. Layar
+  rincian menggabungkannya jadi satu pendaftaran berriwayat: **nama dagang lama tetap
+  bisa dicari**, supaya kemasan lama yang masih di gudang tetap ketemu. Hanya 17 nomor
+  yang benar-benar menaungi produk tak berhubungan, 10 di antaranya izin ekspor yang
+  tidak beredar eceran. Rinciannya di [D38](../spec/03-keputusan-desain.md).
 - **1.236 baris tidak akan pernah punya foto kemasan.** Izin bahan teknis dan izin
   ekspor memakai skema penomoran sendiri dan produknya tidak beredar eceran. Ditandai
   `registration.number_scheme = "bahan-teknis"`; jalur ini mengecualikannya menurut

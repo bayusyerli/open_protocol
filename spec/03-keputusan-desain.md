@@ -779,11 +779,81 @@ Ini melunakkan D12 dengan sengaja: nomor boleh tidak ada, tetapi hanya kalau **b
 otoritasnya sendiri** yang tidak memuatnya — klaim yang bisa diperiksa ke sumber, bukan pintu
 keluar yang bisa dipakai siapa saja.
 
-**175 nomor pestisida dan 96 nomor pupuk dipakai lebih dari satu baris.** Sebagian salinan yang
-cuma beda kapitalisasi atau spasi ekor, tetapi tidak semuanya — `01010120165429` dipegang
-`DKLUFEM 50 WG` sekaligus `DKLUFEM 10/40 WG`. Nomor pendaftaran karena itu **bukan kunci
-tunggal**, dan jalur 2 tidak boleh menganggap satu nomor menunjuk satu produk. Belum ditindak;
-dicatat di sini supaya tidak ditemukan lagi dari nol.
+**175 nomor pestisida dan 96 nomor pupuk dipakai lebih dari satu baris.** Diperiksa terpisah di
+D38; ringkasnya, hampir semuanya satu pendaftaran yang muncul lebih dari sekali, bukan satu
+nomor yang menaungi dua produk.
+
+---
+
+### D38 — nomor kembar hampir selalu satu pendaftaran yang muncul dua kali, bukan dua produk
+
+175 nomor pestisida dipakai 359 baris registri. Dugaan pertama di D37 keliru dan dikoreksi di
+sini: contoh yang dipakainya, `01010120165429` untuk `DKLUFEM 50 WG` dan `DKLUFEM 10/40 WG`,
+**bukan** dua produk. 50 = 10 + 40 — itu satu produk yang kadarnya ditulis dua cara, total
+lawan per komponen. Polanya berulang dan selalu berjumlah tepat:
+
+```
+DARGO  76 WP = 70/6      ENVOY 80 WP = 62/18      ARYTOP  300 EC = 150/150
+KAMIKAZE 371 = 318/53    ASSOCIATE 200 = 40/160   CONVEY  310 SC = 10/300
+DKFENZO 120 SC = 20/100  DKLUFEM  50 WG = 10/40
+```
+
+Sebabnya: **portal hanya memuat izin yang masih berlaku (D16), dan perpanjangan tidak
+menggantikan baris lamanya — ia menambah baris baru.** Yang terlihat sebagai nomor kembar
+sebagian besar adalah satu pendaftaran yang tercatat pada dua tanggal terbit.
+
+| Yang membedakan baris sekelompok | Grup | Nomornya menaungi dua produk? |
+|---|---:|---|
+| Produk & pemegang sama, tanggal terbit beda — perpanjangan | 98 | tidak |
+| Nama dagang atau cara tulis kadar berubah | 23 | tidak, kecuali 2 |
+| Pemegang berpindah, produk sama | 21 | tidak, kecuali 2 |
+| Seluruh kolom kunci sama — salinan | 16 | tidak |
+| Berperihal Ekspor | 17 | **ya, pada 10** |
+
+**Ejaan zat ikut berubah antar-snapshot**, dan itu bukti tambahan bahwa keduanya baris yang
+sama: `cypermethrin` → `sipermetrin`, `chlorothalonil` → `klorotalonil`, `permethrin` →
+`permetrin`, `temephos` → `temefos`. Baris lama juga sering memuat zat yang sama berulang empat
+kali; baris baru memuatnya sekali. Yang berubah cara pencatatannya, bukan produknya.
+
+**Perpindahan pemegang tercatat, tetapi barisnya tidak digabung.** `01030120134713` dipegang
+PT. Bayer Indonesia sekaligus PT. Monagro Kimia, keduanya `JumlahPerubahanPemegang=1`. Jadi
+registri tahu perpindahannya terjadi — ia hanya tidak menutup baris yang lama. Satu kelompok,
+`01010120165526` P.MEC 36 EC, malah menyimpan tiga baris: CV. Prima Agro Perkasa dan dua baris
+PT. Sinergi Chem Indonesia, seluruhnya `JumlahPerubahanPemegang=0`.
+
+**17 nomor yang benar-benar menaungi produk tak berhubungan.** Sepuluh di antaranya izin
+**Ekspor** berawalan `0320`, terbit 2012–2018 — dan di sanalah nomornya jelas bukan penanda
+produk:
+
+```
+032012308  MIPC 75 WP (Petrokimia Kayaku)  +  VAPE F 0.82 AE (Fumakilla Indonesia)
+032012282  Mortein 0.2 MC + Mortein 0,15 MC (Reckitt)  +  ROLIXONE 276 SL (Rolimex)
+032017417  OXAMYL 10 GR (Inti Everspring)  +  ATTACK 25/475 EC  +  HYMAL 1150 EC (Nufarm)
+```
+
+Sisanya empat pada skema formulasi dan tiga pada bahan teknis. Yang paling menentukan:
+
+- `01040120072698` dipegang **AEPON 100 SL** (etefon, ZPT, Deltagro — dua baris) sekaligus
+  **INDODINE 6 GR** (dimehipo, insektisida, Tani Abadi Borneo). Digit jenis nomornya `04` =
+  ZPT, cocok untuk AEPON, tidak untuk INDODINE. **Dua isyarat bebas menunjuk baris yang sama**
+  — pemeriksaan silang digit jenis di D37 sudah menandai INDODINE lebih dulu, tanpa tahu soal
+  nomor kembar. Pola kerusakannya persis PAENAMAXI WP: satu baris memakai nomor milik baris lain.
+- `01030120269575` — HANDIDOR 200 SL (glufosinat, Mutiara Agro Sejati) dan HERBIKUAT 276 SL
+  (parakuat, Indo-Sino Agrochemical), **terbit pada hari yang sama**, pemegang berbeda.
+- `01010120217157` — MEZO 15 WG (emamektin, Sari Kresna Kimia) dan PASPHAT 80 SP (asefat,
+  Persada Agro Sukses).
+- `01030120011632` — RAMBO PEAK 550 SL dan RAMBO GOLD 480 SL, pemegang dan tanggal sama, tetapi
+  glifosat setaranya 408 lawan 356 g/l. Dua produk sungguhan, satu nomor.
+
+**Akibatnya untuk jalur 2, dan ini kabar baik.** Nomor pendaftaran **hampir selalu** menunjuk
+satu pendaftaran; yang perlu diperbaiki bukan pencocokannya melainkan penyajiannya. Baris
+sekelompok digabung jadi satu pendaftaran dengan riwayat — nama dagang lama tetap bisa dicari,
+sehingga kemasan lama yang masih di gudang tetap ketemu — dan tanggal terbit terbaru yang
+ditampilkan sebagai masa berlaku. Hanya 17 nomor yang butuh perlakuan lain, dan 10 di antaranya
+izin ekspor yang memang tidak pernah muncul di kemasan eceran.
+
+Belum ditindak; penggabungannya menunggu keputusan bentuk penyajian. 96 nomor kembar di sisi
+pupuk belum diperiksa dengan cara yang sama.
 
 ---
 
