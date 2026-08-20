@@ -155,6 +155,10 @@ const CAKUPAN = {
   'stage-scale-bbch-tembakau.json': [
     'op:cmd:00001018', // Tembakau
   ],
+  // BBCH diperluas — alpukat
+  'stage-scale-bbch-alpukat.json': [
+    'op:cmd:00001417', // Alpukat
+  ],
   // Umur budidaya udang vaname (DOC)
   'stage-scale-doc-udang.json': [
     'op:cmd:00000005', // Udang vaname

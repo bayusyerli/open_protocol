@@ -1,0 +1,1770 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00000019",
+  "key": "bbch-alpukat",
+  "label": {
+    "id": "BBCH — Alpukat (Persea americana)",
+    "en": "BBCH scale — avocado"
+  },
+  "definition": {
+    "id": "Skala fenologi BBCH diperluas untuk alpukat. Kodenya 3 digit dengan arti yang khas: digit ke-1 fase utama, digit ke-2 MESOSTAGE, digit ke-3 fase sekunder. Mesostage membedakan pertumbuhan yang berulang dalam satu tahun — alpukat di Spanyol selatan bertunas dua kali, sehingga 010–019 menggambarkan trubus pertama dan 020–029 trubus kedua dengan deskripsi yang sama persis. Pemanjangan tunas siléptik (fase utama 2) berlangsung bersamaan dengan pemanjangan tunas utama (fase utama 3), jadi keduanya dicatat berdampingan, bukan berurutan. Fase utama 4 dan 9 tidak dipakai, dan fase utama 8 sengaja dikecualikan penulisnya: buah alpukat tidak masak di pohon, melainkan sesudah dipanen."
+  },
+  "basis": "phenology",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ],
+    "commodities": [
+      {
+        "id": "op:cmd:00001417",
+        "label": "Alpukat"
+      }
+    ]
+  },
+  "mappings": [
+    {
+      "scheme": "BBCH",
+      "id": "bbch-avocado",
+      "relation": "exact",
+      "note": "Kunci BBCH diperluas untuk alpukat, Alcaraz, Thorp & Hormaza (2013), Scientia Horticulturae 164:434–439."
+    }
+  ],
+  "notes": {
+    "id": "Dua mesostage disalin karena keduanya ditabelkan sumbernya untuk fase utama 0 sampai 3. Penulisnya menyatakan mesostage boleh ditambah bila iklimnya menghasilkan lebih banyak periode trubus atau pembungaan; berapa kali alpukat bertrubus di Indonesia perlu diamati sendiri, dan menyalin dua begitu saja bukan berarti dua itu benar di sini. Waktu yang disebut sumber juga khas Spanyol selatan — kuncup pecah Februari/Maret, mekar akhir Maret, panen 31–37 minggu sesudah pembungaan berakhir untuk kultivar Hass — dan tidak bisa dipindahkan mentah-mentah ke tropis. Yang berlaku lintas tempat adalah urutan fasenya, bukan tanggalnya. Fase utama 5 dan 6 hanya punya mesostage 1 di sumber, dengan catatan bahwa periode pembungaan tambahan boleh ditambah sebagai mesostage baru."
+  },
+  "stages": [
+    {
+      "id": "op:stg:00001900",
+      "code": "010",
+      "label": {
+        "id": "Trubus ke-1: kuncup vegetatif dorman — kuncup tertutup dan terbungkus sisik kuncup hijau kecoklatan",
+        "en": "Trubus ke-1: Vegetative buds dormant: vegetative buds are closed and covered by green-brown bud scales"
+      },
+      "principal": 0,
+      "order": 10,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "010",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001901",
+      "code": "011",
+      "label": {
+        "id": "Trubus ke-1: awal kuncup membengkak — sisik kuncup mulai merenggang, kuncup jelas membengkak",
+        "en": "Trubus ke-1: Beginning of bud swell: bud scales begin to separate, buds visibly swollen"
+      },
+      "principal": 0,
+      "order": 11,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "011",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001902",
+      "code": "013",
+      "label": {
+        "id": "Trubus ke-1: akhir kuncup membengkak — sisik kuncup merenggang penuh, bagian dalam yang lebih hijau muda tampak",
+        "en": "Trubus ke-1: End of bud swell: bud scales completely separated, lighter green sections of inner bud scales visible"
+      },
+      "principal": 0,
+      "order": 13,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "013",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001903",
+      "code": "017",
+      "label": {
+        "id": "Trubus ke-1: awal kuncup pecah — sisik kuncup terlipat sebagian, ujung daun hijau pertama mulai tampak",
+        "en": "Trubus ke-1: Beginning of bud break: bud scales partially folded back and first green leaf tips just visible"
+      },
+      "principal": 0,
+      "order": 17,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "017",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001904",
+      "code": "019",
+      "label": {
+        "id": "Trubus ke-1: akhir kuncup pecah — ujung daun sekitar 3 mm di atas sisik kuncup, sisik luar gugur",
+        "en": "Trubus ke-1: End of bud break: leaf tips about 3 mm above bud scales, external bud scales shed"
+      },
+      "principal": 0,
+      "order": 19,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "019",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001905",
+      "code": "020",
+      "label": {
+        "id": "Trubus ke-2: kuncup vegetatif dorman — kuncup tertutup dan terbungkus sisik kuncup hijau kecoklatan",
+        "en": "Trubus ke-2: Vegetative buds dormant: vegetative buds are closed and covered by green-brown bud scales"
+      },
+      "principal": 0,
+      "order": 20,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "020",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001906",
+      "code": "021",
+      "label": {
+        "id": "Trubus ke-2: awal kuncup membengkak — sisik kuncup mulai merenggang, kuncup jelas membengkak",
+        "en": "Trubus ke-2: Beginning of bud swell: bud scales begin to separate, buds visibly swollen"
+      },
+      "principal": 0,
+      "order": 21,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "021",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001907",
+      "code": "023",
+      "label": {
+        "id": "Trubus ke-2: akhir kuncup membengkak — sisik kuncup merenggang penuh, bagian dalam yang lebih hijau muda tampak",
+        "en": "Trubus ke-2: End of bud swell: bud scales completely separated, lighter green sections of inner bud scales visible"
+      },
+      "principal": 0,
+      "order": 23,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "023",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001908",
+      "code": "027",
+      "label": {
+        "id": "Trubus ke-2: awal kuncup pecah — sisik kuncup terlipat sebagian, ujung daun hijau pertama mulai tampak",
+        "en": "Trubus ke-2: Beginning of bud break: bud scales partially folded back and first green leaf tips just visible"
+      },
+      "principal": 0,
+      "order": 27,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "027",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001909",
+      "code": "029",
+      "label": {
+        "id": "Trubus ke-2: akhir kuncup pecah — ujung daun sekitar 3 mm di atas sisik kuncup, sisik luar gugur",
+        "en": "Trubus ke-2: End of bud break: leaf tips about 3 mm above bud scales, external bud scales shed"
+      },
+      "principal": 0,
+      "order": 29,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "029",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001910",
+      "code": "110",
+      "label": {
+        "id": "Trubus ke-1: daun pertama memisah — daun membuka dengan ujung 10 mm di atas sisik kuncup",
+        "en": "Trubus ke-1: First leaves separating: leaves unfolding with leaf tips 10 mm above the bud scales"
+      },
+      "principal": 1,
+      "order": 110,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "110",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001911",
+      "code": "111",
+      "label": {
+        "id": "Trubus ke-1: daun pertama membuka — sumbu utama tunas yang sedang tumbuh tampak",
+        "en": "Trubus ke-1: First leaf unfolded: primary axis of developing shoot visible"
+      },
+      "principal": 1,
+      "order": 111,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "111",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001912",
+      "code": "112",
+      "label": {
+        "id": "Trubus ke-1: daun bertambah membuka — daun pertama mencapai 20% ukuran penuhnya",
+        "en": "Trubus ke-1: More leaves unfolded. First leaf at 20% of its full size"
+      },
+      "principal": 1,
+      "order": 112,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "112",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001913",
+      "code": "113",
+      "label": {
+        "id": "Trubus ke-1: daun bertambah membuka — daun pertama mencapai 30% ukuran penuhnya",
+        "en": "Trubus ke-1: More leaves unfolded. First leaf at 30% of its full size"
+      },
+      "principal": 1,
+      "order": 113,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "113",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001914",
+      "code": "114",
+      "label": {
+        "id": "Trubus ke-1: daun bertambah membuka — daun pertama mencapai 40% ukuran penuhnya",
+        "en": "Trubus ke-1: More leaves unfolded. First leaf at 40% of its full size"
+      },
+      "principal": 1,
+      "order": 114,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "114",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001915",
+      "code": "115",
+      "label": {
+        "id": "Trubus ke-1: daun bertambah membuka — daun pertama mencapai 50% ukuran penuhnya, tangkai daun memanjang",
+        "en": "Trubus ke-1: More leaves unfolded: first leaf of the flush at 50% of its full size, leaf petioles extending"
+      },
+      "principal": 1,
+      "order": 115,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "115",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001916",
+      "code": "116",
+      "label": {
+        "id": "Trubus ke-1: daun bertambah membuka — daun pertama mencapai 60% ukuran penuhnya",
+        "en": "Trubus ke-1: More leaves unfolded. First leaf at 60% of its full size"
+      },
+      "principal": 1,
+      "order": 116,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "116",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001917",
+      "code": "117",
+      "label": {
+        "id": "Trubus ke-1: daun bertambah membuka — daun pertama mencapai 70% ukuran penuhnya",
+        "en": "Trubus ke-1: More leaves unfolded. First leaf at 70% of its full size"
+      },
+      "principal": 1,
+      "order": 117,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "117",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001918",
+      "code": "118",
+      "label": {
+        "id": "Trubus ke-1: daun bertambah membuka — daun pertama mencapai 80% ukuran penuhnya",
+        "en": "Trubus ke-1: More leaves unfolded. First leaf at 80% of its full size"
+      },
+      "principal": 1,
+      "order": 118,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "118",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001919",
+      "code": "119",
+      "label": {
+        "id": "Trubus ke-1: seluruh daun membuka dan mengembang penuh",
+        "en": "Trubus ke-1: All leaves unfolded and fully expanded"
+      },
+      "principal": 1,
+      "order": 119,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "119",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001920",
+      "code": "120",
+      "label": {
+        "id": "Trubus ke-2: daun pertama memisah — daun membuka dengan ujung 10 mm di atas sisik kuncup",
+        "en": "Trubus ke-2: First leaves separating: leaves unfolding with leaf tips 10 mm above the bud scales"
+      },
+      "principal": 1,
+      "order": 120,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "120",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001921",
+      "code": "121",
+      "label": {
+        "id": "Trubus ke-2: daun pertama membuka — sumbu utama tunas yang sedang tumbuh tampak",
+        "en": "Trubus ke-2: First leaf unfolded: primary axis of developing shoot visible"
+      },
+      "principal": 1,
+      "order": 121,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "121",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001922",
+      "code": "122",
+      "label": {
+        "id": "Trubus ke-2: daun bertambah membuka — daun pertama mencapai 20% ukuran penuhnya",
+        "en": "Trubus ke-2: More leaves unfolded. First leaf at 20% of its full size"
+      },
+      "principal": 1,
+      "order": 122,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "122",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001923",
+      "code": "123",
+      "label": {
+        "id": "Trubus ke-2: daun bertambah membuka — daun pertama mencapai 30% ukuran penuhnya",
+        "en": "Trubus ke-2: More leaves unfolded. First leaf at 30% of its full size"
+      },
+      "principal": 1,
+      "order": 123,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "123",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001924",
+      "code": "124",
+      "label": {
+        "id": "Trubus ke-2: daun bertambah membuka — daun pertama mencapai 40% ukuran penuhnya",
+        "en": "Trubus ke-2: More leaves unfolded. First leaf at 40% of its full size"
+      },
+      "principal": 1,
+      "order": 124,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "124",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001925",
+      "code": "125",
+      "label": {
+        "id": "Trubus ke-2: daun bertambah membuka — daun pertama mencapai 50% ukuran penuhnya, tangkai daun memanjang",
+        "en": "Trubus ke-2: More leaves unfolded: first leaf of the flush at 50% of its full size, leaf petioles extending"
+      },
+      "principal": 1,
+      "order": 125,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "125",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001926",
+      "code": "126",
+      "label": {
+        "id": "Trubus ke-2: daun bertambah membuka — daun pertama mencapai 60% ukuran penuhnya",
+        "en": "Trubus ke-2: More leaves unfolded. First leaf at 60% of its full size"
+      },
+      "principal": 1,
+      "order": 126,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "126",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001927",
+      "code": "127",
+      "label": {
+        "id": "Trubus ke-2: daun bertambah membuka — daun pertama mencapai 70% ukuran penuhnya",
+        "en": "Trubus ke-2: More leaves unfolded. First leaf at 70% of its full size"
+      },
+      "principal": 1,
+      "order": 127,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "127",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001928",
+      "code": "128",
+      "label": {
+        "id": "Trubus ke-2: daun bertambah membuka — daun pertama mencapai 80% ukuran penuhnya",
+        "en": "Trubus ke-2: More leaves unfolded. First leaf at 80% of its full size"
+      },
+      "principal": 1,
+      "order": 128,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "128",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001929",
+      "code": "129",
+      "label": {
+        "id": "Trubus ke-2: seluruh daun membuka dan mengembang penuh",
+        "en": "Trubus ke-2: All leaves unfolded and fully expanded"
+      },
+      "principal": 1,
+      "order": 129,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "129",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001930",
+      "code": "210",
+      "label": {
+        "id": "Trubus ke-1: belum ada tunas siléptik",
+        "en": "Trubus ke-1: No sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 210,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "210",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001931",
+      "code": "211",
+      "label": {
+        "id": "Trubus ke-1: tunas siléptik pertama tampak",
+        "en": "Trubus ke-1: First sylleptic shoot is visible"
+      },
+      "principal": 2,
+      "order": 211,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "211",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001932",
+      "code": "212",
+      "label": {
+        "id": "Trubus ke-1: dua tunas siléptik tampak",
+        "en": "Trubus ke-1: Two sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 212,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "212",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001933",
+      "code": "213",
+      "label": {
+        "id": "Trubus ke-1: tiga tunas siléptik tampak",
+        "en": "Trubus ke-1: Three sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 213,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "213",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001934",
+      "code": "214",
+      "label": {
+        "id": "Trubus ke-1: 4 tunas siléptik tampak",
+        "en": "Trubus ke-1: 4 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 214,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "214",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001935",
+      "code": "215",
+      "label": {
+        "id": "Trubus ke-1: 5 tunas siléptik tampak",
+        "en": "Trubus ke-1: 5 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 215,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "215",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001936",
+      "code": "216",
+      "label": {
+        "id": "Trubus ke-1: 6 tunas siléptik tampak",
+        "en": "Trubus ke-1: 6 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 216,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "216",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001937",
+      "code": "217",
+      "label": {
+        "id": "Trubus ke-1: 7 tunas siléptik tampak",
+        "en": "Trubus ke-1: 7 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 217,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "217",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001938",
+      "code": "218",
+      "label": {
+        "id": "Trubus ke-1: 8 tunas siléptik tampak",
+        "en": "Trubus ke-1: 8 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 218,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "218",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001939",
+      "code": "219",
+      "label": {
+        "id": "Trubus ke-1: sembilan tunas siléptik atau lebih tampak",
+        "en": "Trubus ke-1: Nine or more sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 219,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "219",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001940",
+      "code": "220",
+      "label": {
+        "id": "Trubus ke-2: belum ada tunas siléptik",
+        "en": "Trubus ke-2: No sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 220,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "220",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001941",
+      "code": "221",
+      "label": {
+        "id": "Trubus ke-2: tunas siléptik pertama tampak",
+        "en": "Trubus ke-2: First sylleptic shoot is visible"
+      },
+      "principal": 2,
+      "order": 221,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "221",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001942",
+      "code": "222",
+      "label": {
+        "id": "Trubus ke-2: dua tunas siléptik tampak",
+        "en": "Trubus ke-2: Two sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 222,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "222",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001943",
+      "code": "223",
+      "label": {
+        "id": "Trubus ke-2: tiga tunas siléptik tampak",
+        "en": "Trubus ke-2: Three sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 223,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "223",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001944",
+      "code": "224",
+      "label": {
+        "id": "Trubus ke-2: 4 tunas siléptik tampak",
+        "en": "Trubus ke-2: 4 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 224,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "224",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001945",
+      "code": "225",
+      "label": {
+        "id": "Trubus ke-2: 5 tunas siléptik tampak",
+        "en": "Trubus ke-2: 5 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 225,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "225",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001946",
+      "code": "226",
+      "label": {
+        "id": "Trubus ke-2: 6 tunas siléptik tampak",
+        "en": "Trubus ke-2: 6 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 226,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "226",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001947",
+      "code": "227",
+      "label": {
+        "id": "Trubus ke-2: 7 tunas siléptik tampak",
+        "en": "Trubus ke-2: 7 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 227,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "227",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001948",
+      "code": "228",
+      "label": {
+        "id": "Trubus ke-2: 8 tunas siléptik tampak",
+        "en": "Trubus ke-2: 8 sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 228,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "228",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001949",
+      "code": "229",
+      "label": {
+        "id": "Trubus ke-2: sembilan tunas siléptik atau lebih tampak",
+        "en": "Trubus ke-2: Nine or more sylleptic shoots visible"
+      },
+      "principal": 2,
+      "order": 229,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "229",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001950",
+      "code": "310",
+      "label": {
+        "id": "Trubus ke-1: awal pemanjangan tunas — sumbu tunas yang sedang tumbuh tampak",
+        "en": "Trubus ke-1: Beginning of shoot extension: axes of developing shoots visible"
+      },
+      "principal": 3,
+      "order": 310,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "310",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001951",
+      "code": "311",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 10% panjang akhirnya, daun sedang membuka",
+        "en": "Trubus ke-1: 10% of final shoot length: shoots 10% of final length, leaves unfolding"
+      },
+      "principal": 3,
+      "order": 311,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "311",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001952",
+      "code": "312",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 20% panjang akhirnya",
+        "en": "Trubus ke-1: 20% of final shoot length"
+      },
+      "principal": 3,
+      "order": 312,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "312",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001953",
+      "code": "313",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 30% panjang akhirnya",
+        "en": "Trubus ke-1: 30% of final shoot length"
+      },
+      "principal": 3,
+      "order": 313,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "313",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001954",
+      "code": "314",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 40% panjang akhirnya",
+        "en": "Trubus ke-1: 40% of final shoot length"
+      },
+      "principal": 3,
+      "order": 314,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "314",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001955",
+      "code": "315",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 50% panjang akhirnya, seluruh daun sudah membuka",
+        "en": "Trubus ke-1: 50% of final shoot length: shoots 50% of final length, all leaves unfolded"
+      },
+      "principal": 3,
+      "order": 315,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "315",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001956",
+      "code": "316",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 60% panjang akhirnya",
+        "en": "Trubus ke-1: 60% of final shoot length"
+      },
+      "principal": 3,
+      "order": 316,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "316",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001957",
+      "code": "317",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 70% panjang akhirnya",
+        "en": "Trubus ke-1: 70% of final shoot length"
+      },
+      "principal": 3,
+      "order": 317,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "317",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001958",
+      "code": "318",
+      "label": {
+        "id": "Trubus ke-1: tunas mencapai 80% panjang akhirnya",
+        "en": "Trubus ke-1: 80% of final shoot length"
+      },
+      "principal": 3,
+      "order": 318,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "318",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001959",
+      "code": "319",
+      "label": {
+        "id": "Trubus ke-1: tunas melampaui 90% panjang akhirnya — pemanjangan berhenti, kuncup ujung terbentuk",
+        "en": "Trubus ke-1: Shoots more than 90% of final length: end of shoot extension (apical bud set)"
+      },
+      "principal": 3,
+      "order": 319,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "319",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001960",
+      "code": "320",
+      "label": {
+        "id": "Trubus ke-2: awal pemanjangan tunas — sumbu tunas yang sedang tumbuh tampak",
+        "en": "Trubus ke-2: Beginning of shoot extension: axes of developing shoots visible"
+      },
+      "principal": 3,
+      "order": 320,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "320",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001961",
+      "code": "321",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 10% panjang akhirnya, daun sedang membuka",
+        "en": "Trubus ke-2: 10% of final shoot length: shoots 10% of final length, leaves unfolding"
+      },
+      "principal": 3,
+      "order": 321,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "321",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001962",
+      "code": "322",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 20% panjang akhirnya",
+        "en": "Trubus ke-2: 20% of final shoot length"
+      },
+      "principal": 3,
+      "order": 322,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "322",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001963",
+      "code": "323",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 30% panjang akhirnya",
+        "en": "Trubus ke-2: 30% of final shoot length"
+      },
+      "principal": 3,
+      "order": 323,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "323",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001964",
+      "code": "324",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 40% panjang akhirnya",
+        "en": "Trubus ke-2: 40% of final shoot length"
+      },
+      "principal": 3,
+      "order": 324,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "324",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001965",
+      "code": "325",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 50% panjang akhirnya, seluruh daun sudah membuka",
+        "en": "Trubus ke-2: 50% of final shoot length: shoots 50% of final length, all leaves unfolded"
+      },
+      "principal": 3,
+      "order": 325,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "325",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001966",
+      "code": "326",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 60% panjang akhirnya",
+        "en": "Trubus ke-2: 60% of final shoot length"
+      },
+      "principal": 3,
+      "order": 326,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "326",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001967",
+      "code": "327",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 70% panjang akhirnya",
+        "en": "Trubus ke-2: 70% of final shoot length"
+      },
+      "principal": 3,
+      "order": 327,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "327",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001968",
+      "code": "328",
+      "label": {
+        "id": "Trubus ke-2: tunas mencapai 80% panjang akhirnya",
+        "en": "Trubus ke-2: 80% of final shoot length"
+      },
+      "principal": 3,
+      "order": 328,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "328",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001969",
+      "code": "329",
+      "label": {
+        "id": "Trubus ke-2: tunas melampaui 90% panjang akhirnya — pemanjangan berhenti, kuncup ujung terbentuk",
+        "en": "Trubus ke-2: Shoots more than 90% of final length: end of shoot extension (apical bud set)"
+      },
+      "principal": 3,
+      "order": 329,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "329",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001970",
+      "code": "510",
+      "label": {
+        "id": "Kuncup generatif dorman — terbungkus sisik kuncup hijau kecoklatan tanpa tanda pertumbuhan",
+        "en": "Reproductive buds dormant: buds covered with green-brown bud scales with no sign of growth"
+      },
+      "principal": 5,
+      "order": 510,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "510",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001971",
+      "code": "511",
+      "label": {
+        "id": "Awal kuncup generatif membengkak — sisik coklat muda mulai merenggang, kuncup jelas membengkak",
+        "en": "Beginning of reproductive bud swell: light brown scales begin to separate, buds visibly swollen"
+      },
+      "principal": 5,
+      "order": 511,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "511",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001972",
+      "code": "512",
+      "label": {
+        "id": "Akhir kuncup generatif membengkak — sisik kuncup merenggang penuh, bagian dalam yang lebih hijau muda tampak",
+        "en": "End of reproductive bud swell: bud scales completely separated, lighter green sections of inner bud scales visible"
+      },
+      "principal": 5,
+      "order": 512,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "512",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001973",
+      "code": "513",
+      "label": {
+        "id": "Kuncup generatif pecah — sisik terlipat, perbungaan mulai tampak di ketiak sisik kuncup",
+        "en": "Reproductive bud break: bud scales folded back, inflorescences just visible in axils of bud scales"
+      },
+      "principal": 5,
+      "order": 513,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "513",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001974",
+      "code": "514",
+      "label": {
+        "id": "Perbungaan majemuk memisah — perbungaan tunggal terpisah dan mulai memanjang",
+        "en": "Compound inflorescence separated: individual inflorescences separated and beginning of inflorescence elongation"
+      },
+      "principal": 5,
+      "order": 514,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "514",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001975",
+      "code": "515",
+      "label": {
+        "id": "Perbungaan mencapai 50% panjang akhirnya — sumbu sekunder memanjang, sumbu tersier masih terbungkus braktea, bunga kecil masih tertutup",
+        "en": "Inflorescences 50% of final length: secondary axes elongated, tertiary axes still covered by bracts, small closed flowers"
+      },
+      "principal": 5,
+      "order": 515,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "515",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001976",
+      "code": "517",
+      "label": {
+        "id": "Perbungaan mencapai 70% panjang akhirnya — sumbu tersier memanjang, bunga terpisah satu per satu, daun pada perbungaan tak terbatas mulai mengembang",
+        "en": "Inflorescences 70% of final length: tertiary axes elongated, individual flowers separated, first visible expansion of leaves on indeterminate inflorescences"
+      },
+      "principal": 5,
+      "order": 517,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "517",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001977",
+      "code": "518",
+      "label": {
+        "id": "Perbungaan mencapai 80% panjang akhirnya",
+        "en": "Inflorescences 80% of final length"
+      },
+      "principal": 5,
+      "order": 518,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "518",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001978",
+      "code": "519",
+      "label": {
+        "id": "Akhir pemanjangan perbungaan — sumbu sekunder dan tersier berkembang penuh, tangkai bunga memanjang, kelopak menutup, bunga terdiferensiasi dan tertutup, tunas pada perbungaan tak terbatas mulai memanjang",
+        "en": "End of inflorescence extension: secondary and tertiary axis fully developed, individual flower pedicels elongated, sepals closed, flowers differentiated and closed, shoot extension underway on indeterminate inflorescences"
+      },
+      "principal": 5,
+      "order": 519,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "519",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001979",
+      "code": "610",
+      "label": {
+        "id": "Bunga pertama mekar",
+        "en": "First flowers opened"
+      },
+      "principal": 6,
+      "order": 610,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "610",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001980",
+      "code": "611",
+      "label": {
+        "id": "10% bunga mekar",
+        "en": "10% of flowers opened"
+      },
+      "principal": 6,
+      "order": 611,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "611",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001981",
+      "code": "612",
+      "label": {
+        "id": "20% bunga mekar",
+        "en": "20% of flowers opened"
+      },
+      "principal": 6,
+      "order": 612,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "612",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001982",
+      "code": "613",
+      "label": {
+        "id": "30% bunga mekar",
+        "en": "30% of flowers opened"
+      },
+      "principal": 6,
+      "order": 613,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "613",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001983",
+      "code": "614",
+      "label": {
+        "id": "40% bunga mekar",
+        "en": "40% of flowers opened"
+      },
+      "principal": 6,
+      "order": 614,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "614",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001984",
+      "code": "615",
+      "label": {
+        "id": "50% bunga mekar — puncak mekar tengah",
+        "en": "50% of flowers opened; mid-bloom"
+      },
+      "principal": 6,
+      "order": 615,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "615",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001985",
+      "code": "616",
+      "label": {
+        "id": "60% bunga mekar",
+        "en": "60% of flowers opened"
+      },
+      "principal": 6,
+      "order": 616,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "616",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001986",
+      "code": "617",
+      "label": {
+        "id": "70% bunga mekar",
+        "en": "70% of flowers opened"
+      },
+      "principal": 6,
+      "order": 617,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "617",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001987",
+      "code": "618",
+      "label": {
+        "id": "80% bunga mekar",
+        "en": "80% of flowers opened"
+      },
+      "principal": 6,
+      "order": 618,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "618",
+          "relation": "exact",
+          "note": "Kode antara. Sumber menulis \"stages continue until…\"; teksnya mengikuti pola deret persen pada kunci ini. Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001988",
+      "code": "619",
+      "label": {
+        "id": "90% bunga atau lebih mekar — mekar penuh",
+        "en": "90% or more of flowers opened: full bloom"
+      },
+      "principal": 6,
+      "order": 619,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "619",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001989",
+      "code": "710",
+      "label": {
+        "id": "Belum tampak pertumbuhan bakal buah",
+        "en": "No ovary growth visible"
+      },
+      "principal": 7,
+      "order": 710,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "710",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001990",
+      "code": "711",
+      "label": {
+        "id": "Awal pertumbuhan bakal buah — menyusul pembuahan dan buah jadi",
+        "en": "Initial ovary growth: following fertilization and fruit set"
+      },
+      "principal": 7,
+      "order": 711,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "711",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001991",
+      "code": "712",
+      "label": {
+        "id": "Gugur buah muda pertama — bakal buah hijau dikelilingi kelopak yang mengering, garis tengah buah yang bertahan 5–10 mm",
+        "en": "First fruitlet abscission: ovaries green and surrounded by dying sepals, diameter of retained fruit 5–10 mm"
+      },
+      "principal": 7,
+      "order": 712,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "712",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001992",
+      "code": "715",
+      "label": {
+        "id": "Buah mencapai 50% ukuran akhirnya — periode utama kedua gugur buah",
+        "en": "50% of final fruit size: second main period of fruit drop"
+      },
+      "principal": 7,
+      "order": 715,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "715",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001993",
+      "code": "717",
+      "label": {
+        "id": "Buah mencapai 70% ukuran akhirnya",
+        "en": "70% of final fruit size"
+      },
+      "principal": 7,
+      "order": 717,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "717",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    },
+    {
+      "id": "op:stg:00001994",
+      "code": "719",
+      "label": {
+        "id": "Buah mencapai 90% ukuran akhirnya atau lebih — siap dipanen untuk pasar",
+        "en": "90% or more of final fruit size: fruit ready for commercial harvest"
+      },
+      "principal": 7,
+      "order": 719,
+      "mappings": [
+        {
+          "scheme": "BBCH",
+          "id": "719",
+          "relation": "exact",
+          "note": "Kode pada skala BBCH diperluas untuk alpukat, Alcaraz dkk. (2013). Digit ke-2 adalah mesostage, bukan fase sekunder."
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z",
+    "review_due": "2027-08-19"
+  },
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Phenological growth stages of avocado (Persea americana) according to the BBCH scale",
+        "publisher": "Scientia Horticulturae 164, 434–439 (Elsevier)",
+        "year": 2013,
+        "locator": "M.L. Alcaraz, T.G. Thorp, J.I. Hormaza; Tabel 1 dan bagian 3.1–3.7"
+      }
+    ]
+  },
+  "id_blocks": [
+    {
+      "from": 19,
+      "to": 19
+    }
+  ]
+}

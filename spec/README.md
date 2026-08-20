@@ -186,6 +186,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `stage-scale-bbch-bit.json` | **50 fase BBCH bit** — berbunga baru pada tahun kedua | BBCH |
 | `stage-scale-bbch-kacang-polong.json` | **57 fase BBCH kacang polong** — kapri dan ercis | BBCH |
 | `stage-scale-bbch-tembakau.json` | **156 fase tembakau** (CORESTA) — sampai pengeringan daun pascapanen | CORESTA |
+| `stage-scale-bbch-alpukat.json` | **95 fase alpukat** — BBCH diperluas, dua trubus per tahun | BBCH |
 | `stage-scale-doc-udang.json` | 4 fase berbasis umur budidaya udang — ditautkan ke 1 komoditas | — (beralasan) |
 | `operation-type.json` | **61 jenis tindakan**, hierarkis, dari olah tanah sampai pengangkutan | 28 ke AgrO / ICASA |
 | `variable.json` | **46 variabel** — pertumbuhan, OPT, tanah, air, cuaca, hasil | 15 ke ICASA / AgrO |
@@ -383,7 +384,7 @@ Varietas tidak menyimpan skala fasenya sendiri — ia mewarisi lewat komoditas. 
 adalah sifat tanamannya, bukan sifat varietasnya, dan `Cycle.stage_scale` tetap tersedia
 untuk siklus yang perlu menyimpang.
 
-**6.150 dari 11.227 varietas (54,8%) mewarisi skala fase**, lewat delapan belas skala dan 82
+**6.295 dari 11.227 varietas (56,1%) mewarisi skala fase**, lewat sembilan belas skala dan 83
 komoditas:
 
 | Skala | Fase | Komoditas | Varietas |
@@ -405,6 +406,7 @@ komoditas:
 | BBCH bit | 50 | 1 | 3 |
 | BBCH kacang polong — kapri, ercis | 57 | 2 | 2 |
 | CORESTA tembakau | 156 | 1 | 267 |
+| BBCH alpukat | 95 | 1 | 145 |
 | Umur budidaya udang vaname (DOC) | 4 | 1 | — |
 
 Kunci padi dan jagung disalin dari **BBCH Monograph edisi ke-2 (2001)**, bukan dari
@@ -441,9 +443,12 @@ BBCH Monograph yang punya padanan komoditas di registri Indonesia. Yang tersisa 
 hanya kunci buah iklim sedang — pome, stone fruit, stroberi, currant, anggur, hop — yang tidak
 punya varietas terdaftar di sini.
 
-Satu sudah masuk: **tembakau**, dari CORESTA Guide N° 7 — bukan kunci BBCH Monograph, melainkan
+Dua sudah masuk. **Tembakau**, dari CORESTA Guide N° 7 — bukan kunci BBCH Monograph, melainkan
 skala turunan yang menyatakan dirinya berbasis BBCH diperluas. Berkasnya gratis tetapi situsnya
 memakai pemeriksaan bot, jadi PDF-nya diunduh manusia lalu disalin dari salinan lokal.
+
+Dan **alpukat**, dari Alcaraz, Thorp & Hormaza (2013) di Scientia Horticulturae — BBCH
+diperluas 3 digit, tersedia terbuka di arsip pustaka alpukat.
 
 Sisa terbesar masih butuh sumber di luar monograf, dan keadaannya berbeda-beda:
 
@@ -454,7 +459,6 @@ Sisa terbesar masih butuh sumber di luar monograf, dan keadaannya berbeda-beda:
 | Kacang panjang | 224 | **tidak ada** | Pustaka memakai kode kunci buncis apa adanya untuk *Vigna*, tetapi itu pemakaian informal, bukan kunci terbitan |
 | Pisang | 185 | **usulan, belum terbit** | Gonzales dkk., "Proposal for codification of the phenological cycle of edible Musaceae" — berstatus *in preparation*, dan kodenya 4 digit, beda bentuk dari seluruh skala di sini |
 | Tebu | 168 | ada, berbayar | BBCH diadaptasi untuk tebu di buku Wiley; teksnya di balik akses berbayar |
-| Alpukat | 145 | **ada, terbit** | Scientia Horticulturae (2013), BBCH diperluas 3 digit sampai kode 719 |
 
 Aturan `L28` menjaga tautannya tetap sepakat dua arah: komoditas tidak boleh mengaku memakai
 skala yang tidak mencantumkannya.

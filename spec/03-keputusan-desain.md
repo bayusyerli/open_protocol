@@ -615,6 +615,34 @@ berlisensi terbuka. Yang masuk hasil penyalinannya, dengan sumber disebut lengka
 
 ---
 
+### D35 — alpukat memperkenalkan mesostage: pengulangan dalam satu tahun
+
+Kunci alpukat (Alcaraz, Thorp & Hormaza, 2013) memakai BBCH diperluas 3 digit, tetapi digit
+tengahnya bukan fase sekunder melainkan **mesostage** — penanda periode pertumbuhan yang
+berulang dalam satu tahun. Alpukat di Spanyol selatan bertunas dua kali, sehingga 010–019
+menggambarkan trubus pertama dan 020–029 trubus kedua dengan deskripsi yang sama persis.
+Baru kunci ini yang membawa gagasan itu ke repositori; kunci tembakau memakai meso-stage
+untuk membedakan tempat (persemaian vs lapangan), bukan pengulangan waktu.
+
+**Dua mesostage disalin, dan itu belum tentu benar di sini.** Penulisnya menyatakan mesostage
+boleh ditambah bila iklimnya menghasilkan lebih banyak periode trubus atau pembungaan. Berapa
+kali alpukat bertrubus di Indonesia perlu diamati sendiri; menyalin dua begitu saja bukan
+berarti dua itu jumlah yang benar untuk sini. Dicatat di `notes`, bukan didiamkan.
+
+**Tanggalnya tidak ikut, urutannya ikut.** Sumber menyebut kuncup pecah Februari/Maret, mekar
+akhir Maret, panen 31–37 minggu sesudah pembungaan berakhir untuk kultivar Hass. Itu kalender
+Spanyol selatan. Yang berlaku lintas tempat adalah urutan fase dan pengertian tiap fase; yang
+tidak, adalah tanggalnya. Skala fase di repositori ini memang tidak menyimpan tanggal — dan
+kasus alpukat menunjukkan kenapa pemisahan itu penting, bukan sekadar rapi.
+
+**Fase utama 8 dikecualikan penulisnya, bukan luput.** Buah alpukat tidak masak di pohon
+melainkan sesudah dipanen, jadi "ripening or maturity of fruit/seed" tidak berlaku. Fase utama
+4 dan 9 juga tidak dipakai. Satu lagi yang khas: pemanjangan tunas siléptik (fase utama 2)
+berlangsung **bersamaan** dengan pemanjangan tunas utama (fase utama 3), bukan sesudahnya —
+dua fase utama yang berjalan serentak, sesuatu yang tidak terjadi pada tanaman semusim.
+
+---
+
 ## Pertanyaan yang masih terbuka
 
 Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
@@ -643,5 +671,5 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
 | 22 | 47,6% varietas belum punya skala fase | Turun dari 89% setelah lima belas kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168), alpukat (145). Kunci monograf yang masih tersisa tinggal bit dan kacang polong; selebihnya perlu kunci dari luar monograf, atau belum pernah ada |
-| 25 | Alpukat dan pisang: kunci 3 dan 4 digit | Alpukat terbit di Scientia Horticulturae (2013) dengan kode sampai 719; pisang masih usulan belum terbit dengan kode 4 digit. Perlu keputusan bentuk kode lebih dulu — disimpan apa adanya atau diringkas ke 2 digit seperti kunci cucurbit |
+| 25 | Berapa mesostage alpukat di Indonesia? | Kunci alpukat menyalin dua trubus per tahun mengikuti Spanyol selatan. Jumlah trubus di sini perlu diamati sendiri; bisa lebih, bisa kurang, dan mesostage tambahan boleh dibuat menurut sumbernya |
 | 23 | Durian tidak punya kunci BBCH yang pernah diterbitkan | Bukan kelalaian pencarian: monograf memuat 28 kunci tanaman dan durian bukan salah satunya, dan penelusuran pustaka tidak menemukan terbitan lain. Yang ada penelitian fenologi berkosakata sendiri — kuncup "mata ketam", antesis, lalu umur buah dalam hari setelah antesis. Menyusunnya berarti membuat skala baru seperti skala DOC udang, bukan menyalin; perlu keputusan tersendiri |
