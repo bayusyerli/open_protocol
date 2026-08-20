@@ -96,6 +96,29 @@
         "checked_at"
       ],
       "additionalProperties": false
+    },
+    "symptoms": {
+      "$ref": "common.schema.json#/$defs/LangText",
+      "description": "Apa yang TERLIHAT di kebun, dalam kata-kata orang yang melihatnya — bukan nama hamanya. Jalur insiden masuk lewat sini: yang panik tahu daunnya mengeriting ke atas, ia tidak tahu kata 'trips'. Dipisahkan dari `definition`, yang memuat catatan epidemiologi dan bukan gejala."
+    },
+    "distinguishing": {
+      "type": "array",
+      "description": "Ciri pembanding yang bisa diperiksa sendiri tanpa alat, dan apa yang terbantah kalau hasilnya begitu. Mesin tidak menebak; ini yang membuat orang bisa memastikan sendiri sebelum menyemprot. `rules_out` menunjuk OPT yang paling mudah tertukar dengannya.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "check": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "rules_out": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          }
+        },
+        "required": [
+          "check"
+        ],
+        "additionalProperties": false
+      }
     }
   },
   "required": [

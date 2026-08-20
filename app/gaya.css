@@ -312,3 +312,33 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
   border-left: 3px solid var(--aksen);
   border-radius: 0 var(--sudut) var(--sudut) 0;
 }
+
+/* ------------------------------------------------------- kartu bahan jalur 1 */
+.periksa { margin: .7rem 0 0; padding-left: 1.3rem; }
+.periksa li + li { margin-top: .7rem; }
+.periksa .sub { display: block; margin-top: .25rem; font-size: .82rem; color: var(--teks-lemah); }
+
+.kartu.bahan { padding: 0; overflow: hidden; }
+
+.bahan-kepala {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .5rem;
+  width: 100%;
+  padding: .85rem 1rem;
+  text-align: left;
+  font: inherit;
+  color: var(--teks);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+}
+
+.bahan-kepala:hover { background: var(--aksen-lemah); }
+.bahan-kepala:focus-visible { outline: 3px solid var(--aksen); outline-offset: -3px; }
+.bahan-nama { font-weight: 600; }
+.bahan-jumlah { font-size: .85rem; color: var(--teks-lemah); margin-left: auto; }
+.bahan-kepala[aria-expanded="true"] { background: var(--aksen-lemah); }
+.bahan-isi { padding: 0 1rem 1rem; }
+.bahan-isi > :first-child { margin-top: 0; }

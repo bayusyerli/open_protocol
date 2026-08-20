@@ -159,6 +159,32 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun muda mengeriting ke ATAS seperti mangkuk, dan permukaan bawahnya keperakan atau kecoklatan seperti tergores halus. Bunga dan tunas rontok sebelum jadi buah; tanaman kerdil dan pucuknya mengumpul."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Kibaskan daun pucuk di atas kertas putih. Trips terlihat sebagai serangga kuning kecoklatan sepanjang 1–2 mm yang langsung bergerak cepat. Kalau tidak ada yang bergerak, penyebabnya bukan trips."
+          },
+          "rules_out": {
+            "id": "op:pst:00000010",
+            "label": "Virus kuning keriting"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat warna daun yang mengeriting. Pada trips daunnya tetap hijau dengan goresan keperakan; kalau daunnya menguning terang dan mengecil tanpa goresan, itu gejala virus dan tidak ada semprotan yang menyembuhkannya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000010",
+            "label": "Virus kuning keriting"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -238,6 +264,32 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun muda mengeriting ke BAWAH dan mengerut. Permukaan daun lengket, sering ditumbuhi jelaga hitam, dan semut naik-turun di batang."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Balik daun pucuk. Kutu daun bertubuh lunak seperti buah pir kecil, hijau atau kekuningan, berkelompok rapat dan bergerak lambat — berbeda dari trips yang langsing dan berlari cepat."
+          },
+          "rules_out": {
+            "id": "op:pst:00000001",
+            "label": "Trips"
+          }
+        },
+        {
+          "check": {
+            "id": "Raba permukaan daun. Lengket berarti ada embun madu, dan itu hanya dihasilkan kutu daun atau kutu kebul. Trips dan tungau tidak menghasilkannya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000006",
+            "label": "Tungau merah"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -311,6 +363,28 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Serangga putih sangat kecil beterbangan berhamburan saat tanaman disentuh, lalu hinggap lagi. Daun lengket dan berjelaga hitam, dan lama-lama menguning."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Goyang tanaman. Kutu kebul terbang seperti serbuk bedak putih lalu kembali hinggap; kutu daun tidak terbang berhamburan seperti itu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000002",
+            "label": "Kutu daun persik"
+          }
+        },
+        {
+          "check": {
+            "id": "Balik daun bawah. Nimfa kutu kebul menempel seperti sisik bening pipih dan tidak bergerak sama sekali — mudah dikira kotoran."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -425,6 +499,32 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah berlubang tusukan sebesar ujung jarum, di sekitarnya melunak dan basah, lalu gugur sebelum tua. Di dalam buah yang gugur ada belatung putih."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah buah yang gugur. Kalau ada belatung putih tanpa kaki yang melenting saat disentuh, itu lalat buah. Antraknosa tidak pernah berbelatung."
+          },
+          "rules_out": {
+            "id": "op:pst:00000007",
+            "label": "Antraknosa"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat bentuk kerusakannya. Lalat buah meninggalkan titik tusukan dengan daerah lembek berair di sekitarnya; antraknosa memberi bercak melingkar cekung dan kering dengan titik hitam di tengahnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000007",
+            "label": "Antraknosa"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -581,6 +681,24 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun berlubang tidak beraturan sampai tinggal tulang daunnya, dan kerusakannya bertambah cepat dalam semalam. Ada butiran kotoran hitam menumpuk di ketiak daun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok."
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -673,6 +791,28 @@
         "checked_at": "2026-08-19",
         "confidence": 98,
         "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun berbintik kuning halus rapat seperti tertusuk jarum, lalu menguning menyeluruh, kecoklatan, dan kering. Serangan berat meninggalkan anyaman benang halus di pucuk dan bawah daun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cari anyaman benang halus di bawah daun dan di sela pucuk, paling jelas kena sinar miring. Trips dan kutu tidak pernah membuat anyaman."
+          },
+          "rules_out": {
+            "id": "op:pst:00000001",
+            "label": "Trips"
+          }
+        },
+        {
+          "check": {
+            "id": "Balik daun dan tatap lama. Tungau tampak sebagai titik-titik bergerak jauh lebih kecil dari trips — di bawah setengah milimeter, kemerahan atau kehijauan dengan dua bercak gelap."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -734,7 +874,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Antraknosa",
@@ -752,6 +893,28 @@
         "checked_at": "2026-08-19",
         "confidence": 94,
         "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak melingkar cekung pada buah, mula-mula berair lalu meluas dan menghitam. Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar. Buah akhirnya mengering dan keriput."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat titik hitam di tengah bercak. Susunannya melingkar sepusat, dan itu tubuh buah jamurnya — tidak ada pada busuk karena tusukan lalat buah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000004",
+            "label": "Lalat buah"
+          }
+        },
+        {
+          "check": {
+            "id": "Tekan bercaknya. Antraknosa cekung dan kering seperti kulit tertarik ke dalam; busuk bakteri lembek berair dan berbau."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -792,7 +955,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Layu",
@@ -808,6 +972,28 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Tanaman layu perlahan selama beberapa hari. Daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah pangkal batang membujur. Pembuluh di dalamnya berwarna coklat memanjang, sementara jaringan lain masih putih."
+          }
+        },
+        {
+          "check": {
+            "id": "UJI GELAS. Potong batang dekat pangkal, celupkan ujungnya ke gelas berisi air bening, diamkan lima menit. Kalau TIDAK keluar lendir putih, penyebabnya fusarium, bukan bakteri."
+          },
+          "rules_out": {
+            "id": "op:pst:00000009",
+            "label": "Layu bakteri"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -848,7 +1034,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Layu Bakteri"
@@ -860,6 +1047,32 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Bacteria"
+      },
+      "symptoms": {
+        "id": "Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "UJI GELAS. Potong batang dekat pangkal, celupkan ujungnya ke gelas berisi air bening, diamkan lima menit. Untaian lendir putih susu yang turun perlahan dari potongan berarti layu bakteri."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan warna daun saat layu. Layu bakteri menyerang cepat dengan daun masih hijau; fusarium menguningkan daun bawah lebih dulu dan berjalan berhari-hari."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     },
     {
@@ -897,7 +1110,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-20T00:00:00Z"
       },
       "taxonomic_rank": "genus",
       "taxon_verification": {
@@ -906,6 +1120,32 @@
         "checked_at": "2026-08-19",
         "confidence": 100,
         "kingdom": "Viruses"
+      },
+      "symptoms": {
+        "id": "Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa daun yang menguning itu sendiri. Tidak ada lubang, bercak, goresan, anyaman, atau serangga di atasnya — yang berubah hanya warna dan bentuknya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000001",
+            "label": "Trips"
+          }
+        },
+        {
+          "check": {
+            "id": "Goyang tanaman di sekitarnya dan cari kutu kebul putih yang beterbangan. Virus ini ditularkan kutu kebul, jadi kehadirannya menguatkan — tetapi mengendalikan kutu kebulnya tidak menyembuhkan tanaman yang sudah terkena."
+          },
+          "rules_out": {
+            "id": "op:pst:00000003",
+            "label": "Kutu kebul"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]

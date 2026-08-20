@@ -475,7 +475,22 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
     // karena p50-nya cuma 0,4 KB dan menambah perjalanan untuk semuanya justru
     // merugikan kasus yang lazim. Penyaji cukup memeriksa satu medan: kalau
     // `merekDi` ada, daftar merek diambil saat kartu dibuka.
-    const utuh = { komoditas: kc, komoditasNama: v.nama, opt: oid, optNama: o.nama, grup };
+    // Jumlahnya ikut ke berkas rincian, bukan cuma ke daftar: pada OPT terpadat daftar
+    // mereknya dikeluarkan ke berkas terpisah, jadi penyaji yang menghitung ulang dari
+    // keanggotaan kartu akan mendapat nol.
+    const produkBerlarangan = new Set();
+    for (const g of grup) if (g.larangan || g.laranganLain) for (const m of g.merek) produkBerlarangan.add(m.id);
+    const utuh = {
+      komoditas: kc,
+      komoditasNama: v.nama,
+      opt: oid,
+      optNama: o.nama,
+      produk: o.produk.size,
+      zat: new Set(grup.map((g) => g.zat)).size,
+      kartu: grup.length,
+      berlarangan: produkBerlarangan.size,
+      grup,
+    };
     if (Buffer.byteLength(JSON.stringify(utuh), 'utf8') > ANGGARAN) {
       // Dikeluarkan per kartu, bukan sekaligus: mengeluarkan seluruh merek satu OPT
       // ke satu berkas hanya memindahkan berkas 84 KB, dan yang membukanya cuma
@@ -503,8 +518,12 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
       utuh.kartuLain = halaman.slice(1).reduce((a, h) => a + h.length, 0);
       // Medan `kartuDi` dan `kartuLain` sendiri ikut memakan tempat, jadi halaman
       // pertama dirapatkan sampai berkasnya benar-benar muat — bukan sampai kira-kira.
+      // Kelonggaran 512 bita: `kartuDi` ditulis SESUDAH pemangkasan ini, jadi
+      // memangkas sampai pas di anggaran menyisakan berkas yang lewat beberapa bita
+      // begitu daftar halamannya ikut masuk.
+      const SISIPAN = 512;
       const sisa = [];
-      while (utuh.grup.length > 1 && Buffer.byteLength(JSON.stringify(utuh), 'utf8') > ANGGARAN) {
+      while (utuh.grup.length > 1 && Buffer.byteLength(JSON.stringify(utuh), 'utf8') > ANGGARAN - SISIPAN) {
         sisa.unshift(utuh.grup.pop());
         utuh.kartuLain++;
       }
@@ -660,11 +679,12 @@ for (const s of sediaan) {
 // ---------------------------------------------------------------------------
 // Pintu masuk jalur 1: OPT terkurasi beserta teks gejalanya
 // ---------------------------------------------------------------------------
-// Teks gejala yang dicari jalur 1 ternyata sudah ada, tersimpan di `definition` pada
-// pest.json — bukan di medan bernama gejala, dan bukan pada 1.360 OPT registri.
-// Lima dari sepuluh OPT cabai terkurasi memilikinya; lima sisanya kosong, dan yang
-// kosong itulah yang menutup pintu meski produknya banyak — ulat grayak punya 177
-// produk terdaftar dan tetap tak bisa dimasuki.
+// `definition` pada pest.json sempat terhitung sebagai teks gejala. Isinya bukan:
+// "Vektor virus kuning keriting" catatan epidemiologi, bukan apa yang terlihat orang
+// yang berdiri di depan tanamannya. Sesudah spec/tools/tulis-gejala-opt.mjs,
+// gejalanya punya medan sendiri — `symptoms` — beserta `distinguishing`, dua ciri
+// yang bisa diperiksa sendiri tanpa alat. Keduanya dibawa ke sini; `definition` ikut
+// juga, tetapi sebagai keterangan tambahan, bukan sebagai gejala.
 //
 // `hosts` pada entri terkurasi menunjuk "Cabai merah besar" (op:cmd:00000001)
 // sementara pendaftarannya ada di bawah "Cabai" (op:cmd:00001003), jadi komoditasnya
@@ -682,10 +702,19 @@ const gejala = optTerkurasi
       nama: k.label?.id ?? '',
       ilmiah: k.scientific_name ?? null,
       jenis: k.pest_kind ?? null,
-      gejala: k.definition?.id ?? null,
+      gejala: k.symptoms?.id ?? null,
+      keterangan: k.definition?.id ?? null,
+      // Ciri pembanding ikut, dan `membantah` menunjuk OPT yang paling mudah tertukar
+      // dengannya. Mesin tidak menebak — ini yang membuat orang bisa memastikan
+      // sendiri sebelum menyemprot.
+      pembanding: (k.distinguishing ?? []).map((d) => ({
+        cek: d.check?.id ?? null,
+        membantah: d.rules_out ?? null,
+      })),
+      catatan: k.notes?.id ?? null,
       // Dinyatakan, bukan disembunyikan: tanpa teks gejala OPT ini tidak punya pintu
       // masuk sama sekali, sebanyak apa pun produk terdaftarnya.
-      adaPintu: Boolean(k.definition?.id),
+      adaPintu: Boolean(k.symptoms?.id),
       di: di.sort((a, b) => b.produk - a.produk || a.komoditas.localeCompare(b.komoditas)),
     };
   })

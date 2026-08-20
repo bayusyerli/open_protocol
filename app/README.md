@@ -5,6 +5,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 
 | Halaman | Jalur | Rancangan |
 |---|---|---|
+| `jalur-1.html` | 1 — masuk dari gejala: dugaan penyebab, dua cara memastikan, bahan aktif yang terdaftar | [`docs/04-jalur-insiden.md`](../docs/04-jalur-insiden.md) |
 | `index.html` | 2 — masuk dari kemasan: isi produk dan merek lain yang isinya sama | [`docs/05-jalur-produk.md`](../docs/05-jalur-produk.md) |
 | `jalur-3.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
 | `jalur-4.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
@@ -40,6 +41,7 @@ peramban:
 
 | Jalur | Berkas | Sebelum gzip | Berkas terbesar |
 |---|---|---|---|
+| 1 · gejala → bahan | 4 | 108 KB | 38,8 KB |
 | 2 · produk berlarangan | 4 | 151 KB | 47,4 KB |
 | 2 · produk biasa | 3 | 108 KB | 47,8 KB |
 | 3 · pupuk | 3 | 67 KB | 48,0 KB |
@@ -64,6 +66,25 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
 - **Isi sama bukan berarti dosis sama.** Dosis milik pendaftaran tiap produk.
 - **Nama dagang belum terpetakan.** Nama yang tidak ketemu bukan bukti produknya
   tidak terdaftar, dan layar mengatakannya.
+
+### Khusus jalur 1
+
+- **Masuk lewat apa yang terlihat**, bukan nama hama. Yang panik tahu daunnya
+  mengeriting ke atas; ia tidak tahu kata “trips”.
+- **Mesin tidak menebak.** Tidak ada pengenal foto. Setiap dugaan dibuka dengan blok
+  “pastikan dulu” berisi **dua ciri yang bisa diperiksa sendiri tanpa alat**, dan tiap
+  ciri menyebut OPT mana yang terbantah kalau hasilnya begitu. Dua di antaranya uji
+  yang benar-benar memutuskan — uji gelas untuk membedakan layu bakteri dari fusarium,
+  dan kertas putih untuk membedakan trips dari virus kuning.
+- **Merek diruntuhkan jadi bahan aktif + kadar.** Kesetaraan hanya benar pada pasangan
+  itu: satu entitas “Abamektin” dipakai pada 15 kadar berbeda, dari 7 sampai 72 g/L.
+- **Dosis tidak pernah ditempel ke bahan.** Ia muncul per merek, karena dosis milik
+  pendaftaran tiap produk — 26 merek Abamektin 18 g/L membawa 11 dosis yang berbeda.
+- **Cabang nol produk adalah layar terpentingnya.** Untuk virus kuning keriting layar
+  berkata *“jangan beli apa pun untuk ini”*, menyebut tiga tindakan yang memang
+  berpengaruh, lalu menawarkan satu jalan keluar konkret ke vektornya.
+- **Gejalanya berstatus draft** dan layar mengatakannya: disusun dari pengetahuan
+  agronomi mapan, bukan dari registri, dan wajib ditinjau penyuluh atau BPTP.
 
 ### Khusus jalur 3
 
