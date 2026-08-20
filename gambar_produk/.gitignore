@@ -6,3 +6,6 @@ ternormalkan/
 # Turunan dari spec/vocab/product/*.ndjson + pukpes_data/principal_alias.csv.
 # Bangun ulang dengan `python3 merek.py`.
 indeks-merek.json
+
+# Potongan kerja per gelombang — turunan dari principal-antrean.csv.
+potongan/
