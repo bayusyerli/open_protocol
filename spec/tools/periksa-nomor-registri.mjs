@@ -174,7 +174,8 @@ for (const { nama, urai } of berkas) {
     return perPasangan.get(`${b.digit}|${b.menurutBaris}`) / perDigit.get(b.digit) <= 0.01;
   });
 
-  ringkas.push({ nama, total: baris.length, hitung, takTerurai, langka, kembar, dikosongkan, debris });
+  ringkas.push({ nama, total: baris.length, hitung, takTerurai, langka, kembar, dikosongkan, debris,
+                 nomor: new Set(perNomor.keys()) });
 
   if (tulis) {
     writeFileSync(jalur, keluar.map((d) => JSON.stringify(d)).join('\n') + '\n');
@@ -200,6 +201,21 @@ for (const r of ringkas) {
       console.log(`     ${b.asli.padEnd(22)} digit ${b.digit} = ${b.menurutDigit.padEnd(28)} baris = ${b.menurutBaris.padEnd(24)} ${b.label}`);
     }
   }
+}
+
+// Kedua registri diindeks bersama saat mencocokkan nomor yang tercetak di kemasan, jadi satu
+// nomor yang muncul di kedua berkas akan tertaut ke produk yang salah. Hari ini tidak ada, dan
+// bukan karena beruntung: posisi 5-6 memisahkannya — pestisida menaruh kelompok ketiganya yang
+// selalu `01` di sana, pupuk menaruh separuh awal tahunnya yang selalu `20`. Diperiksa tiap
+// jalan supaya penarikan berikutnya tidak diam-diam merusaknya.
+const [a, b] = ringkas;
+const bertindih = [...a.nomor].filter((n) => b.nomor.has(n));
+console.log(`\n== lintas registri: ${a.nomor.size} nomor pestisida, ${b.nomor.size} nomor pupuk`);
+if (bertindih.length === 0) {
+  console.log('   tidak ada nomor yang dipakai kedua registri.');
+} else {
+  console.log(`   ${bertindih.length} NOMOR DIPAKAI KEDUA REGISTRI — pencocokan kemasan bisa tertaut ke produk yang salah:`);
+  for (const n of bertindih) console.log(`     ${n}`);
 }
 
 console.log(tulis ? '\nDitulis ke vocab/product/.\n' : '\nLaporan saja. Tambahkan --tulis untuk menyimpan.\n');

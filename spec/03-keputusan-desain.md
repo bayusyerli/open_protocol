@@ -928,6 +928,29 @@ Angkanya kecil — 54 dari 6.525 nomor pupuk bernomor, 0,8% — tetapi kekelirua
 tidak boleh disembunyikan: pengguna yang mengetik nomor dari karung dan melihat satu produk akan
 mengira sudah pasti, padahal belum.
 
+**Antar-registri tidak ada tabrakan, dan itu bukan keberuntungan.** 7.540 nomor pestisida dan
+6.418 nomor pupuk, **irisannya nol**. Diuji lebih keras: tidak satu pun nomor pupuk yang bisa
+diuraikan sah sebagai nomor pestisida, dan sebaliknya juga nol.
+
+Yang memisahkan adalah **posisi 5–6**. Pestisida menaruh kelompok ketiganya di sana dan
+kelompok itu praktis selalu `01` — 6.472 dari 6.473, satu-satunya kecuali `07100220124330`
+INBROM 98 LG. Pupuk menaruh separuh awal tahunnya di sana, jadi selalu `20`. Untuk skema bahan
+teknis yang lebih pendek, pemisahnya posisi 3–4: di sana pestisida menaruh separuh awal tahun
+(`19`/`20`) sedangkan pupuk menaruh kode jenis keduanya yang tidak pernah lewat `08`.
+
+Uji tahun saja **tidak akan cukup**: 221 nomor pupuk kebetulan memuat tahun yang sah menurut
+pestisida di posisi 7–10. Kode jenislah yang benar-benar memisahkan, bukan tahunnya. Karena satu
+indeks dipakai bersama saat mencocokkan nomor tercetak, kekeliruan di sini akan menautkan kemasan
+pupuk ke baris pestisida — jadi `periksa-nomor-registri.mjs` memeriksanya tiap jalan, supaya
+penarikan berikutnya tidak diam-diam merusaknya.
+
+Satu catatan sampingan dari uji yang sama: `01.01.2019157` (AGROBLEN) dan `01.012019.230`
+(NITRABIRU) — dua dari empat nomor pupuk tak terurai — menyeragam jadi `01012019157` dan
+`01012019230`, dan keduanya **jatuh persis di dalam blok `01.01.2019.xxx` yang terisi 126 baris,
+tanpa menabrak satu pun**. Titik yang hilang dan titik yang salah tempat memang satu-satunya
+cacatnya. Nilainya tetap tidak disunting; yang bertambah hanya keyakinan bahwa penyeragamannya
+sudah menghasilkan bentuk yang benar.
+
 ---
 
 ## Pertanyaan yang masih terbuka
