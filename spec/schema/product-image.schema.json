@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/product-image.schema.json",
+  "title": "ProductImage — gambar kemasan produk, satu berkas satu SKU",
+  "description": "Gambar BUKAN entitas kosakata. Ia lampiran berbukti pada produk terdaftar, jadi tidak memakai awalan op: sendiri dan tidak menghabiskan blok nomor siapa pun. Alasannya dua. Pertama, gambar tidak pernah jadi rujukan protokol — yang dirujuk selalu produknya. Kedua, registri ditarik ulang berkala oleh tools/tarik-registri.mjs dan menimpa vocab/product/*.ndjson; apa pun yang ditulis inline di sana akan hilang tanpa jejak pada penarikan berikutnya. Karena itu gambar hidup sebagai berkas pendamping berkunci sku_key.",
+  "type": "object",
+  "properties": {
+    "sku_key": {
+      "$ref": "common.schema.json#/$defs/Key",
+      "description": "Identitas SKU. Bentuknya '<key-produk>' bila kemasan belum diketahui, atau '<key-produk>-<ukuran>' bila diketahui, mis. 'northam-480-sc-01030120269427-250ml'. Registri Kementan mendaftarkan FORMULASI, bukan kemasan — lubang yang sudah dinyatakan di docs/05-jalur-produk.md. Bentuk kunci ini sengaja merosot dengan rapi: gambar yang dikumpulkan hari ini di tingkat produk tetap sah, dan penambahan ukuran kemasan nanti tidak memaksa seluruh koleksi dikunci ulang."
+    },
+    "product": {
+      "$ref": "common.schema.json#/$defs/Ref",
+      "description": "Jangkar wajib ke op:prd:XXXXXXXX. Gambar tanpa produk yang bisa ditunjuk tidak punya alasan disimpan."
+    },
+    "pack": {
+      "type": "object",
+      "description": "Ukuran kemasan. Kosong = gambar berlaku di tingkat produk, bukan tingkat kemasan. Kosong adalah jawaban jujur untuk hampir seluruh baris pada tahap ini.",
+      "properties": {
+        "value": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "$ref": "common.schema.json#/$defs/UcumCode" },
+        "text": {
+          "type": "string",
+          "description": "Tulisan ukuran apa adanya seperti terbaca di kemasan, mis. '250 ml' atau '1 Kg'. Dipertahankan karena sumbernya foto, bukan basis data."
+        }
+      },
+      "required": ["text"],
+      "additionalProperties": false
+    },
+    "role": {
+      "type": "string",
+      "description": "Apa yang diperlihatkan gambar. Dipisah karena nilai buktinya berbeda jauh: 'panel_label' bisa dipakai memverifikasi nomor pendaftaran, 'bidikan_produk' hanya hiasan.",
+      "enum": [
+        "kemasan_depan",
+        "kemasan_belakang",
+        "kemasan_samping",
+        "panel_label",
+        "bidikan_produk",
+        "sedang_dipakai",
+        "logo",
+        "lainnya"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "description": "Dari mana gambar berasal dan apa yang boleh dilakukan terhadapnya. Wajib terisi SEBELUM berkasnya diunduh, bukan sesudah — sebab satu-satunya saat asal-usul masih diketahui pasti adalah saat pengambilan.",
+      "properties": {
+        "url": { "type": "string", "format": "uri", "description": "URL berkas gambarnya sendiri." },
+        "page_url": { "type": "string", "format": "uri", "description": "Halaman tempat gambar itu ditemukan." },
+        "publisher": { "type": "string", "description": "Siapa yang menayangkan, mis. 'PT Deltagro Mulia Sejati' atau nama lokapasar." },
+        "retrieved_at": { "type": "string", "format": "date-time" },
+        "rights": {
+          "type": "string",
+          "description": "Siapa pemegang hak cipta gambar, sejauh bisa ditetapkan. 'tidak_diketahui' adalah nilai yang sah dan justru yang paling sering benar.",
+          "enum": ["pemegang_pendaftaran", "lokapasar", "pihak_ketiga", "foto_sendiri", "tidak_diketahui"]
+        },
+        "license": {
+          "type": "string",
+          "description": "Pengenal SPDX bila ada. Ketiadaan lisensi berarti hak cipta penuh, bukan bebas pakai."
+        },
+        "credit": { "type": "string" },
+        "permission": {
+          "type": "string",
+          "enum": ["izin_tertulis", "belum_diminta", "ditolak", "tidak_perlu"],
+          "default": "belum_diminta"
+        },
+        "redistributable": {
+          "type": "boolean",
+          "description": "Satu-satunya saklar yang menentukan berkas biner boleh ikut terbit. Repositori ini berlisensi CC-BY-SA-4.0; foto kemasan milik pemegang pendaftaran TIDAK bisa direlisensi jadi CC-BY-SA hanya karena disalin ke sini. Bawaannya salah, dan hanya boleh jadi benar lewat 'izin_tertulis', 'foto_sendiri', atau lisensi SPDX yang mengizinkan."
+        }
+      },
+      "required": ["url", "retrieved_at", "rights", "redistributable"],
+      "additionalProperties": false
+    },
+    "file": {
+      "type": "object",
+      "description": "Sifat berkas SESUDAH dinormalkan. Angka di sini menggambarkan berkas hasil, bukan berkas asal — sifat asalnya tidak disimpan karena tidak pernah dipakai.",
+      "properties": {
+        "path": { "type": "string", "description": "Jalur relatif terhadap folder kerja." },
+        "rendition": {
+          "type": "string",
+          "enum": ["besar", "sedang", "kecil", "kartu"],
+          "description": "besar = sisi terpanjang 1600 px | sedang = 800 | kecil = 320 | kartu = 800x800 berlatar rata, satu-satunya yang boleh dipadatkan ke 1:1."
+        },
+        "format": { "type": "string", "enum": ["webp", "png"] },
+        "width_px": { "type": "integer", "minimum": 1 },
+        "height_px": { "type": "integer", "minimum": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "description": "Hash berkas ternormalkan. Menyamakan bentuk dengan lifecycle.content_hash."
+        },
+        "phash": {
+          "type": "string",
+          "pattern": "^dhash64:[0-9a-f]{16}$",
+          "description": "Cap perseptual 64 bit. Bukan untuk deduplikasi berkas — sha256 sudah menangani itu — melainkan untuk menemukan SATU FOTO YANG SAMA dipakai ulang lintas pendaftaran. Pada registri yang 63,5% pestisidanya identik secara komposisi, pemakaian ulang foto adalah temuan, bukan galat."
+        },
+        "color_space": { "const": "sRGB" },
+        "has_alpha": { "type": "boolean" },
+        "background": {
+          "type": "string",
+          "enum": ["putih", "transparan", "berlatar", "tidak_seragam"],
+          "description": "Ditandai, tidak dipaksakan. Memutihkan latar berarti menyunting bukti."
+        },
+        "exif_stripped": {
+          "const": true,
+          "description": "Selalu benar. EXIF foto lapangan membawa titik GPS orang yang memotret — data pribadi menurut UU 27/2022 yang ikut terbawa tanpa dasar pemrosesan. Dibuang saat normalisasi, bukan saat terbit."
+        }
+      },
+      "required": ["path", "rendition", "format", "width_px", "height_px", "bytes", "sha256", "phash", "color_space", "exif_stripped"],
+      "additionalProperties": false
+    },
+    "variants": {
+      "type": "array",
+      "description": "Turunan ukuran lain dari berkas yang sama. Kosong bila hanya satu rendition dibuat.",
+      "items": { "$ref": "#/properties/file" }
+    },
+    "quality": {
+      "type": "object",
+      "description": "Sifat yang menentukan gambar ini bukti atau hiasan, dan boleh tayang atau tidak.",
+      "properties": {
+        "nomor_pendaftaran_terbaca": {
+          "type": "boolean",
+          "description": "Nomor pendaftaran pada kemasan terbaca di gambar. Inilah satu-satunya sifat yang membuat sebuah gambar bernilai verifikasi: ia menghubungkan benda fisik di tangan petani ke baris registri."
+        },
+        "label_terbaca": { "type": "boolean" },
+        "watermark": { "type": "boolean" },
+        "overlay_promosi": {
+          "type": "boolean",
+          "description": "Ada harga, cap diskon, lencana lokapasar, atau ajakan beli menempel di gambar. Aturan L3 melarang permukaan ini membawa dorongan jualan; gambar berlabel ini tidak boleh naik ke status terverifikasi."
+        },
+        "terpotong": { "type": "boolean" },
+        "skor_blur": { "type": "number", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "review": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["mentah", "ternormalisasi", "terverifikasi", "ditolak"]
+        },
+        "by": { "type": "string" },
+        "at": { "type": "string", "format": "date-time" },
+        "reason": { "type": "string", "minLength": 5 }
+      },
+      "required": ["status"],
+      "additionalProperties": false
+    },
+    "notes": { "$ref": "common.schema.json#/$defs/LangText" },
+    "$schema": { "type": "string" }
+  },
+  "required": ["sku_key", "product", "role", "source", "review"],
+  "additionalProperties": false,
+  "allOf": [
+    {
+      "description": "Status di atas mentah menuntut berkas yang sudah dinormalkan.",
+      "if": {
+        "properties": { "review": { "properties": { "status": { "enum": ["ternormalisasi", "terverifikasi"] } }, "required": ["status"] } },
+        "required": ["review"]
+      },
+      "then": { "required": ["file"] }
+    },
+    {
+      "description": "Penolakan wajib menyebut alasannya, supaya gambar yang sama tidak dipanen ulang oleh putaran berikutnya.",
+      "if": {
+        "properties": { "review": { "properties": { "status": { "const": "ditolak" } }, "required": ["status"] } },
+        "required": ["review"]
+      },
+      "then": { "properties": { "review": { "required": ["reason"] } } }
+    }
+  ]
+}
