@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Pupuk Indonesia" />
+  <link rel="icon" href="/favicon.ico">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700">
+  <link rel="stylesheet" href="/splash-screen.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn-script.com/ajax/libs/jquery/3.7.1/jquery.js"></script>
+  <title>Pupuk Indonesia</title>
+  <script type="module" crossorigin src="/assets/index-7c59e0f0.js"></script>
+  <link rel="stylesheet" href="/assets/index-d697da16.css">
+</head>
+
+<body class="page-loading">
+    <!--begin::Theme mode setup on page load-->
+    <script>
+        let themeMode = "system";
+
+        if (localStorage.getItem("kt_theme_mode_value")) {
+            themeMode = localStorage.getItem("kt_theme_mode_value");
+        }
+
+        if (themeMode === "system") {
+            themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+        }
+
+        document.documentElement.setAttribute("data-bs-theme", themeMode);
+    </script>
+    <!--end::Theme mode setup on page load-->
+
+    <div id="app"></div>
+
+    <!--begin::Loading markup-->
+    <div id="splash-screen" class="splash-screen">
+        <img src="/media/logos/favicon.png" class="dark-logo" alt="Metronic dark logo" />
+        <img src="/media/logos/favicon.png" class="light-logo" alt="Metronic light logo" />
+        <span>Loading ...</span>
+    </div>
+    <!--end::Loading markup-->
+
+    
+</body>
+
+</html>

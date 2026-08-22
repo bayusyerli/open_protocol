@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <!-- BEGIN HEAD -->
+
+  <head>
+      <!-- Begin meta tags -->
+<title>Sumber Data - Sistem Informasi Toko Tani Indonesia</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<!-- favicon -->
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:400,500,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">    
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.5.1/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin=""/>
+<link href='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.css' rel='stylesheet' />    
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/new/css/main.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css">
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/new/css/comp.css" rel="stylesheet" type="text/css" />
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>    
+<style>
+    .navbar-nav li a.active, .navbar-nav li a:hover{
+        border-bottom : 2px solid #ffc053 !important;
+    }
+
+    .navbar-nav li a{
+        border-bottom : 2px solid transparent;
+        padding-bottom: 2px !important;
+    }
+</style>
+  <!-- END HEAD -->
+  </head>
+  <body>
+    <!-- BEGIN HEADER -->
+    <nav class="navbar navbar-expand-md fixed-top  justify-content-end">
+    <style>
+            .dropdown-menu>li
+        {   position:relative;
+            -webkit-user-select: none;       
+            -moz-user-select: none; 
+            -ms-user-select: none; 
+            -o-user-select: none;
+            user-select: none;
+            cursor:pointer;
+        }
+            .dropdown-menu .sub-menu {
+            left: 100%;
+            position: absolute;
+            top: 0;
+            display:none;
+            margin-top: -1px;
+            border-top-left-radius:0;
+            border-bottom-left-radius:0;
+            border-left-color:#fff;
+            box-shadow:none;
+        }
+            .right-caret:after,.left-caret:after
+        {   content:"";
+            border-bottom: 5px solid transparent;
+            border-top: 5px solid transparent;
+            display: inline-block;
+            height: 0;
+            vertical-align: middle;
+            width: 0;
+            margin-left:5px;
+        }
+            .right-caret:after
+        {   border-left: 5px solid #ffaf46;
+        }
+            .left-caret:after
+        {   border-right: 5px solid #ffaf46;
+        }
+    </style>
+
+    <div class="container">
+        <!-- Brand -->
+        <a class="navbar-brand" href="#">
+            <div class="float-left logo">
+                <img src="http://tti.pertanian.go.id/addons/default/themes/sitoni/img/logo.png" alt="logo" />
+            </div>
+            <div class="float-right text-logo">
+                <div>SISTEM INFORMASI</div>
+                <div>TOKO TANI INDONESIA</div>
+            </div>
+            <div class="float-none"></div>
+        </a>
+
+        <!-- Toggler/collapsibe Button -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+            <i class="fa fa-bars" style="color:white;font-size:24px"></i>
+        </button>
+
+        
+        <!-- Navbar links -->
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item"><a class=" nav-link" href="http://tti.pertanian.go.id/">HOME </a></li>
+                <li class="nav-item dropdown">
+                    <a href="#" class=" nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CARA PELAPORAN <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/panduan/sms">SMS</a></li>
+                        <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/panduan/web">WEBSITE</a></li>
+                        <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/panduan/android">ANDROID</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class=" nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">LAPORAN <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="trigger right-caret dropdown-item dropdown-toggle">GAPOKTAN </a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/1">GAPOKTAN 2016</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/4">GAPOKTAN 2017</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/6">GAPOKTAN 2018</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/10">GAPOKTAN 2019</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="trigger right-caret dropdown-item dropdown-toggle">TTI </a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/2">TTI 2016</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/5">TTI 2017</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/7">TTI 2018</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/11">TTI 2019</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="trigger right-caret dropdown-item dropdown-toggle">TTIC </a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/harga/3">TTIC</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/hargattic/12">TTIC 2019</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/data/kinerja_pendamping">KINERJA PENDAMPING</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class=" nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">ABSENSI <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a class="trigger right-caret dropdown-item dropdown-toggle">PELAPORAN GAPOKTAN </a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/1">PELAPORAN GAPOKTAN 2016</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/4">PELAPORAN GAPOKTAN 2017</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/6">PELAPORAN GAPOKTAN 2018</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/10">PELAPORAN GAPOKTAN 2019</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="trigger right-caret dropdown-item dropdown-toggle">PELAPORAN TTI </a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/2">PELAPORAN TTI 2016</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/5">PELAPORAN TTI 2017</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/7">PELAPORAN TTI 2018</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/11">PELAPORAN TTI 2019</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="trigger right-caret dropdown-item dropdown-toggle">PELAPORAN TTIC </a>
+                            <ul class="dropdown-menu sub-menu">
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/index/3">PELAPORAN TTIC</a></li>
+                                <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/indexttic/12">PELAPORAN TTIC 2019</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="dropdown-item" href="http://tti.pertanian.go.id/laporan/absen/grafik_absensi">GRAFIK ABSENSI</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class=" nav-link dropdown-toggle" id="navbardrop" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">PENDAMPING <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/pendamping/index/7">PENDAMPING 2016</a></li>
+                        <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/pendamping/index/9">PENDAMPING 2017</a></li>
+                        <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/pendamping/index/10">PENDAMPING 2018</a></li>
+                        <li><a class=" dropdown-item" href="http://tti.pertanian.go.id/laporan/pendamping/index/11">PENDAMPING 2019</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item"><a class="active nav-link" href="http://tti.pertanian.go.id/laporan/sumberdata/index">SUMBER DATA </a></li>
+                <li class="nav-item"><a class=" nav-link" href="http://tti.pertanian.go.id/laporan/sp2d/index">DOKUMENSP2D </a></li>
+                <li class="nav-item">
+                    <a class=" nav-link" href="http://tti.pertanian.go.id/admin/login"><div class="menu-circle" style="float:left"><i class="fa fa-users"></i></div></a>
+                </li> 
+            </ul>
+        </div> 
+    </div>
+    <script>
+        $(function(){
+            $(".dropdown-menu > li > a.trigger").on("click",function(e){
+                var current=$(this).next();
+                var grandparent=$(this).parent().parent();
+                if($(this).hasClass('left-caret')||$(this).hasClass('right-caret'))
+                    $(this).toggleClass('right-caret left-caret');
+                grandparent.find('.left-caret').not(this).toggleClass('right-caret left-caret');
+                grandparent.find(".sub-menu:visible").not(current).hide();
+                current.toggle();
+                e.stopPropagation();
+            });
+            $(".dropdown-menu > li > a:not(.trigger)").on("click",function(){
+                var root=$(this).closest('.dropdown');
+                root.find('.left-caret').toggleClass('right-caret left-caret');
+                root.find('.sub-menu:visible').hide();
+            });
+        });
+    </script>
+</nav>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+        <div id="root">
+      
+        <style>
+  /** entry details **/
+.entry-detail-row {
+  position: relative;
+}
+.entry-detail-row:first-child .entry-detail-name {
+  border-top: none;
+}
+.entry-detail-row:first-child .entry-detail-value {
+  border-top: none;
+}
+.entry-detail-value {
+  padding: 6px 4px 6px 6px;
+  margin-left: 200px;
+  border-top: 1px dotted #D5E4F1;
+}
+.entry-detail-value > span + span:before {
+  /* for a list of values (such as location city & country) put a comma between them */
+
+  display: inline;
+  content: ",";
+  margin-left: 1px;
+  margin-right: 3px;
+  color: #666;
+  border-bottom: 1px solid #FFF;
+}
+.entry-detail-value > span + span.editable-container:before {
+  display: none;
+}
+.entry-detail-name {
+  position: absolute;
+  width: 190px;
+  text-align: right;
+  padding: 6px 10px 6px 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  font-weight: normal;
+  color: #667E99;
+  background-color: transparent;
+  border-top: 1px dotted #D5E4F1;
+}
+@media only screen and (max-width: 480px) {
+  .entry-detail-name {
+    width: 80px;
+  }
+  .entry-detail-value {
+    margin-left: 90px;
+  }
+}
+
+</style>
+
+<!-- BEGIN PAGE HEAD-->
+<div class="page-head">
+  <div class="container">
+    <!-- BEGIN PAGE TITLE -->
+    <div class="page-title">
+      <h1>Detil Sumber Data</h1>
+    </div>
+    <!-- END PAGE TITLE -->
+  </div>
+</div>
+<div class="page-content">
+  <div class="container">
+    <!-- BEGIN PAGE BREADCRUMBS -->
+      
+    		            <ul class="page-breadcrumb breadcrumb"> 
+                            <li>
+                                        <a href="http://tti.pertanian.go.id/">Home</a>
+                        <i class="fa fa-circle"></i>
+                                </li>
+                            <li>
+                                        <a href="http://tti.pertanian.go.id/laporan/sumberdata/index">Sumber Data</a>
+                        <i class="fa fa-circle"></i>
+                                </li>
+                            <li>
+                                        <span class="active">Detil Sumber Data</span>
+                                </li>
+            
+            </ul>
+            
+    <!-- END PAGE BREADCRUMBS -->
+    <!-- BEGIN PAGE CONTENT INNER -->
+    <div class="page-content-inner">
+      <div class="portlet light portlet-fit ">
+        <div class="portlet-body">
+          <div class="detail_body">
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">Penerima Kegiatan PUPM</div>
+                            <div class="entry-detail-value">Toko Putri</div>
+                          </div>
+
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">Nama Ketua</div>
+                            <div class="entry-detail-value">Encep</div>
+                          </div>
+
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">HP Ketua</div>
+                            <div class="entry-detail-value">08777363xxxx</div>
+                          </div>
+              
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">Alamat</div>
+                            <div class="entry-detail-value">Perum Graha ci pacung Pandeglang</div>
+                          </div>
+
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">Tipe</div>
+                            <div class="entry-detail-value">TTI 2016</div>
+                          </div>
+
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">Provinsi</div>
+                            <div class="entry-detail-value">Banten</div>
+                          </div>
+
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">Kota</div>
+                            <div class="entry-detail-value">Kab. Pandeglang</div>
+                          </div>
+
+            <div class="entry-detail-row">
+              <div class="entry-detail-name">Pendamping</div>
+                            <div class="entry-detail-value">Dadan Hamdani (08777396xxxx)</div>
+                          </div>
+
+            <!-- <div class="entry-detail-row">
+              <div class="entry-detail-name">HP Pendamping</div>
+                            <div class="entry-detail-value">08777396xxxx</div>
+                          </div> -->
+
+                          <div class="entry-detail-row">
+                <div class="entry-detail-name">Gapoktan Pemasok</div>
+                                                <div class="entry-detail-value"><a href="http://tti.pertanian.go.id/laporan/sumberdata/view/57">Suka Tani</a></div>
+                              </div>
+            
+            <div class="entry-detail-row">
+              <div class="entry-detail-name"></div>
+              <div class="entry-detail-value">
+              <br>
+              <a href="http://tti.pertanian.go.id/laporan/sumberdata/index" class="btn btn-danger btn-sm">Kembali</a></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+        </div>    
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <!-- BEGIN PRE-FOOTER -->
+        
+<footer>
+        <div class="footer">
+            <div class="contact">
+                    <div class="container">
+                            <div class="row">
+                              <div class="col-sm">
+                                    <div><b>TENTANG TOKO TANI INDONESIA</b><br/><br/>
+                                        Kegiatan Toko Tani Indonesia ini membawa misi untuk melindungi produsen dari jatuhnya harga dan disisi lain, melindungi konsumen dari tingginya harga pangan sehingga tercipta tata niaga pangan yang berkeadilan.
+                                    </div>
+                              </div>
+                              <div class="col-sm">
+                                    <div><b>ALAMAT</b><br/><br/>
+                
+                                        Sekretariat PUPM Badan Ketahanan Pangan
+                                        Kantor Pusat Kementerian Pertanian
+                                        Gedung E Lantai 6
+                                        Jl. Harsono RM No.3 Ragunan. Jakarta Selatan.
+                                    </div>
+                              </div>
+                              
+                            </div>
+                          </div>
+    
+                
+                
+                <ul>
+                    <li><i class="fa fa-phone" aria-hidden="true"></i><span>Telp: (021) 7804496 </span></li>
+                    <li><i class="fa fa-envelope" aria-hidden="true"></i><span>Email: sekretariat.tti@gmail.com</span></li>
+                    
+                </ul>
+                
+                <a href="#"><img alt="" src="http://tti.pertanian.go.id/addons/default/themes/sitoni/img/apk-download.png" width="100"></a>
+                
+            </div>
+            <div class="copyright">2019 &copy; Sistem Informasi Toko Tani Indonesia</div>
+        </div>
+    </footer>
+    <div>
+    
+    
+    </div>
+    </body>
+    </html>     
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v1.0.0/mapbox-gl.js'></script>
+    <script src="https://unpkg.com/leaflet@1.5.1/dist/leaflet.js" integrity="sha512-GffPMF3RvMeYyc1LWMHtK8EbPv0iNZ8/oTtHPx9/cc2ILxQ+u905qIwdpULaqDkyBKgOaB57QTMg7ztg8Jm2Og==" crossorigin=""></script>
+    <script>
+    $(document).ready(function(){
+    
+        $(".toLink").click(function(){
+            window.location = $(this).data('url');
+        });
+    
+        $(".side-right ul li").click(function(){
+            $(".side-right ol").removeClass('hidden');
+            $(".side-right ol").addClass('hidden');
+    
+            let id = $(this).data('id');
+    
+            $(".side-right ul li").removeClass('active');
+            $(this).addClass('active');
+            $("#"+id).removeClass('hidden');
+        });
+    
+        $(".select-tahun").change(function(){
+            let parentId        = $(this).data('id');
+            let selectedvalue   = $(this).val();
+    
+            console.log('parent : '+parentId,'value : '+selectedvalue);
+            console.log("#"+parentId+" > .nominal");
+            $("#"+parentId+" .nominal").removeClass('hidden');
+            $("#"+parentId+" .nominal").addClass('hidden');
+            $("#"+parentId+" .nominal"+selectedvalue).removeClass('hidden');
+        })
+    
+        $(".menu > li").click(function(){
+            let parentSelector  = $(this).parent();
+            let id              = parentSelector.data('id');
+            let selectedClass   = $(this).data('selectedclass');
+            console.log('id : '+id,' | class : '+selectedClass);
+    
+            $("#"+id+" .menu > li").removeClass('active');
+            $("#"+id+" .container-section > div.hidden").removeClass('hidden'); // clear class hidden
+            $("#"+id+" .container-section > div").addClass('hidden'); // add class hidden
+            $("#"+id+" .container-section > div."+selectedClass).removeClass('hidden'); // remove specific hidden
+            
+            $(this).addClass('active');
+        })
+        if ($('#maps').length){
+        var mymap = L.map('maps').setView([51.505, -0.09], 13);
+            token = "pk.eyJ1IjoiZGlkaWttdWx5YWRpIiwiYSI6ImNqYXJ5bms0YzRrbzMzM3BsdGFjajV5MmIifQ.AsbsnsNMRzUftZC3lGKoPA";
+            L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token='+token, {
+                attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+                maxZoom: 18,
+                id: 'mapbox.streets',
+                accessToken: 'your.mapbox.access.token'
+            }).addTo(mymap);
+        }
+    })
+    </script>
+  </body>
+
+</html>

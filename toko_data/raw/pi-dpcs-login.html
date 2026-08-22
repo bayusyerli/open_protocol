@@ -1,0 +1,148 @@
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Login | DPCS Pupuk Indonesia</title>
+    <meta content="width=device-width" name="viewport" />
+    <link rel="stylesheet" href="/Content/bootstrap.min.css">
+    <style>
+        body {
+            background: url(/Content/Login/bg2.jpg) no-repeat center left fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .logindecor {
+            background: url(/Content/Login/box.png) no-repeat;
+            width: 600px;
+            height: 336px;
+            margin-top: 1em;
+        }
+
+        .logindecor-400 {
+            background: url(/Content/Login/box-400.png) no-repeat;
+            width: 400px;
+            height: 216px;
+            margin-top: 1em;
+        }
+
+        .logininputcontainer {
+            width: 310px;
+            position: relative;
+            padding-top: 4em;
+            margin-left: 11em;
+        }
+
+        /* Allow the icon to be clickable */
+        #togglePassword {
+            pointer-events: auto;
+            cursor: pointer;
+        }
+
+            /* Optional: change color when hovering */
+            #togglePassword:hover {
+                color: #337ab7;
+            }
+
+        .form-control {
+            margin-top: 15px;
+            background-color: #ffffff;
+            background-image: none;
+            border: 1px solid #cccccc;
+            height: 34px;
+            padding: 0 10px;
+        }
+
+        .copyr {
+            margin-top: 5px;
+            font-size: 11px;
+            text-align: center;
+        }
+
+        .bumn {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="row" style="margin-top: 50px; margin-left: 10px; text-align: center;">
+                    <img src="/Content/Login/logo-bumn-dpcs-danantara.png" width="600px" style="text-align: center;" />
+                </div>
+                <div class="logindecor center-block">
+                    <div class="logininputcontainer">
+<form action="/Login/Identik" method="post" role="form">                                <img src="/Content/Login/logo-dpcs.png" width="300px" />
+                                <div class="copyr">&copy; PT Pupuk Kalimantan Timur</div>
+                            <div class="form-group has-feedback">
+                                <input class="icheckbox_square-blue" id="returnUrl" name="returnUrl" type="hidden" value="" />
+                                <input name="__RequestVerificationToken" type="hidden" value="-r-IlkKxquhlJR4jbO1xfVygL8ROIf4rRE_R6_P5Dl0b6sXpR46FhWTcAUFY4OnmGgkTtVl9eCnQBQt0zza-Py2qVq5kRsHs4jLiPl71RKk1" />
+                                
+                                <div class="form-group has-feedback">
+                                    <input class="form-control" id="Username" name="Username" placeholder="Username" type="text" value="" />
+                                    <span class="field-validation-valid" data-valmsg-for="Username" data-valmsg-replace="true"></span>
+                                    <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+                                </div>
+
+                                <div class="form-group has-feedback">
+                                    <input class="form-control" id="txtPassword" name="Password" placeholder="Password" type="password" />
+                                    <span id="togglePassword" class="glyphicon glyphicon-eye-open form-control-feedback" style="cursor: pointer; pointer-events: auto;"></span>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-8">
+                                        
+                                    </div>
+                                    <div class="col-xs-4">
+                                        <input type="submit" name="submit_btn" value="Sign In" id="submit_btn" class="btn btn-primary btn-block btn-flat">
+                                    </div>
+                                </div>
+                            </div>
+</form>                    </div>
+                    <div class="row" style="margin-top: 50px; margin-left: 10px; text-align: center;">
+                        <img src="/Content/Login/logo-anper-dpcs.png" width="600px" style="text-align: center;" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <script type="text/javascript" src="/Scripts/jquery-3.3.1.min.js"></script>
+        <script type="text/javascript" src="/Scripts/bootstrap.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        <script>
+            $(document).ready(function () {
+                $("#togglePassword").click(function () {
+                    // Toggle the type attribute
+                    var passwordField = $("#txtPassword");
+                    var type = passwordField.attr("type") === "password" ? "text" : "password";
+                    passwordField.attr("type", type);
+
+                    // Toggle the eye / eye-slash icon
+                    $(this).toggleClass("glyphicon-eye-open glyphicon-eye-close");
+                });
+
+                // Ambil data dari TempData ASP.NET
+                var msg = '';
+                var icon = '';
+
+                if (icon !== 'success' && icon !== '') {
+                    Swal.fire({
+                        title: 'Oops...',
+                        text: msg,
+                        icon: icon, // akan bernilai 'success', 'error', 'warning', dll
+                        confirmButtonColor: '#3085d6',
+                        timer: 5000, // Alert otomatis tertutup dalam 3 detik
+                        timerProgressBar: true
+                    });
+                }
+            });
+        </script>
+
+</body>
+</html>

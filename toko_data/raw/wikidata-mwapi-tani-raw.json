@@ -1,0 +1,2098 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "coord", "typeLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1557223"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lawson"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Perusahaan publik"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1557223"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lawson"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q1557223"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lawson"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "jaringan toko kelontong"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5619511"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Gunung Agung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7813650"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Merah"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.811 -6.13595)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7813655"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Tio Tek Hong"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "toko"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.831749 -6.167141)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7813655"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Tio Tek Hong"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "music store"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.831749 -6.167141)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12489668"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Karisma (toko buku)"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496264"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Gardena"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.381083333 -7.783166666)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12515847"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Solo Grand Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "mal"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.807562871 -7.566272588)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12521884"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "desa"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.852222222 -7.120277777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q14751385"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Teko Rejo"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "desa"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.527 -4.131)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19646130"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gramedia (toko buku)"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q20427755"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Metanoia"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24827986"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pulau Bae Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pulau"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(121.388611 -1.848889)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25027398"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Nuaf Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gunung"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(124.478888888 -9.33)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25069653"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Nanaka"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gili"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(121.485830555 -1.935277777)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25265967"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kalitoko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "kampung"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(130.8025038 -0.2240712)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25298178"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lowo Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "sungai"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(121.368611111 -8.793611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25298178"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lowo Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "seasonal river"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(121.368611111 -8.793611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26161384"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "kampung"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(136.531142899 -3.930384587)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26727151"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Buttu Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gunung"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.309166666 -2.978611111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28163904"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Kompak"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.83457 -6.164889)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q50924507"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pulau Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gili"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(96.117777777 2.651388888)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759013"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Deret Toko Kasoem"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.609416666 -6.917305555)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759014"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Elegance"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759023"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Deret Toko Sibayak"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759031"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Madona Jeans"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759033"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko ABC (Bandung Baru)"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759034"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Bintang Mas"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759035"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Diva Mulia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759036"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Kopi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64759053"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Oncom Raos"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q66424280"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Century Pharma"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q67900715"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Alnect"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q87669514"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Toko Schuitemaker"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97373736"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Aneka Jaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97373736"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Aneka Jaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "warisan budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97373736"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Aneka Jaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97373736"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Aneka Jaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "сagar budaya"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97602630"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Savelkoul building"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "retail building"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.740461111 -7.261636111)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106280939"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko HM"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.6309915 -0.2272853)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106280939"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko HM"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "cagar budaya Indonesia"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.6309915 -0.2272853)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106280974"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gudang PT Kurnia Jagad Abadi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gudang"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.362558416 -0.96308604)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106280974"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gudang PT Kurnia Jagad Abadi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "cagar budaya Indonesia"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.362558416 -0.96308604)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106281149"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah Bagindo Ahmadin"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106281899"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kompleks Pertokoan Bofet Sianok"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282014"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Komleks Pertokoan Penang Elektronik"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282289"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pertokoan Jl. Pemuda"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282962"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 106"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282965"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 238"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282966"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 244"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282969"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 250-248"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282971"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 252"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282974"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 256-254"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282977"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 258-260"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282979"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 262-264"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282981"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 38"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282987"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 45"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282989"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 46"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282991"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 47"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282993"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 5"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282995"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 54"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282997"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 55"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106282999"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 60"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283001"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 61"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283003"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 67"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283005"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 72"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283007"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 86"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283009"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah/Toko no. 87"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283052"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Garling I"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283054"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Pariaman Optik"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283058"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Putra Jaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283060"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Souvenir"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106283064"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Sulaman Silungkang"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109437044"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cek Toko Sebelah the Series"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109437123"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cek Toko Sebelah: Babak Baru"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q111550017"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Toko Shaga"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "mal"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8289217 -6.280333)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q111754771"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "McDonald's Toko Agung Tasikmalaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "rumah makan"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(108.21925 -7.331398)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q115403172"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pulau Toko-Toko Wawoone"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pulau"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(122.4514361 -3.8447306)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q115490510"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pulau Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gili"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(96.1232472 2.6544833)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q117322469"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah Tinggal Keluarga Asbon"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ruko"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.365548527 -0.959660742)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q117322469"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah Tinggal Keluarga Asbon"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "cagar budaya Indonesia"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.365548527 -0.959660742)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q119685474"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cerita Roti"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "bakery chain"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q120829008"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Periplus"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q121306955"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Buka Australia Pty. Ltd."
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "anak perusahaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q121306955"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Buka Australia Pty. Ltd."
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ritel non-toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q122441513"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Astro (toko daring)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q123335253"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Buku Sulaksana"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "penerbit"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124236826"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "SD Negeri 1 Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "sekolah dasar"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124236826"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "SD Negeri 1 Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "sekolah negeri"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124354233"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Roti'O"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko roti"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124824681"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "MAKO Cake and Bakery"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "bakery chain"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708186"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Bangunan Andalas"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gudang"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.3658773 -0.959380034)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708186"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Bangunan Andalas"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "cagar budaya Indonesia"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.3658773 -0.959380034)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126722538"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Eks Toko Clarity Audio"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gudang"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.362348078 -0.963203583)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126722538"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Eks Toko Clarity Audio"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "cagar budaya Indonesia"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.362348078 -0.963203583)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q127990138"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Noe Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "sungai"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(124.0058 -9.5727)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q128111570"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Noel Toko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "seasonal river"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(124.1109 -9.9613)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130263284"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Obat Babah Kuya Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.603036794 -6.917577227)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12477904"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(122.611771591 -3.984140566)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Bungkutoko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "kelurahan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q24827997"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(128.0194417 1.5969417)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pulau Takou"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gili"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q26748152"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(123.974444444 -9.9375)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Nuaf Tokos"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "gunung"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109440828"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "TokoTalk"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q109911780"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "STIKES Piala Sakti Pariaman"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "sekolah tinggi"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133932948"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Azko"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "furniture store chain"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140934505"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Komunitas Bambu"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko buku"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140934505"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Komunitas Bambu"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "penerbit"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130830572"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.630002705 -6.912368976)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Cairo Bandung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q130899205"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.612161924 -6.918849725)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Celebes Sports Bandung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131050949"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.57820075 -6.911242021)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mr. Kitchen Bandung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131344267"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.611903581 -6.902335809)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Jamu Purnama Indah"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q131930830"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Sadra Press"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "penerbit"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q132839721"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.739558333 -7.260919444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Monumen Pers Perjuangan Surabaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan komersial"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q132839721"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.739558333 -7.260919444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Monumen Pers Perjuangan Surabaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "monumen"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q135256399"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Warung Madura"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q135313357"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(108.230663588 -6.834907241)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Setia Majalengka"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "bangunan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136327866"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rimba Pet Hall and Hobby"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko hewan peliharaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136477280"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kidz Station"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "merek"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136477280"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kidz Station"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "toy goods"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136477280"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kidz Station"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136537447"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cek Toko Sebelah the Series (musim kedua)"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139807440"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jubelio"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pemerekan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139807440"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jubelio"
+      },
+      "typeLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "commercial software"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140352910"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.624460069 -6.90274646)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Buku Redjo"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko buku"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140384446"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Berdikari Book"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko buku"
+      }
+    } ]
+  }
+}

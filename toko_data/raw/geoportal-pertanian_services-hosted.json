@@ -1,0 +1,802 @@
+{
+ "currentVersion": 10.81,
+ "folders": [],
+ "services": [
+  {
+   "name": "Hosted/010225_PLP2B",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Aceh_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Admin_Desa_Indo_2022_Edit",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Administrasi_Wilayah_Sumatera",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/ALL_LINE_KONSTRUKSI_FX",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/All_Spasial_SID_Sulsel_2025_1",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/All_Spasial_SID_Sulsel_2025",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/ALL_TITIK_KONSTRUKSI_FX_Desa",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/ALL_TITIK_KONSTRUKSI_FX",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/alsintan_in",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/alsintan_in",
+   "type": "MapServer"
+  },
+  {
+   "name": "Hosted/alsintan_output_add",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/alsintan_output_add",
+   "type": "MapServer"
+  },
+  {
+   "name": "Hosted/alsintan_output_update",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/alsintan_output_update",
+   "type": "MapServer"
+  },
+  {
+   "name": "Hosted/AOI_Desain_All_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_CETAKSAWAH_BARITOUTARA",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_CETAKSAWAH_SERUYAN",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_CETAKSAWAH",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_FAPERTA_UNPAD",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_LPPM_UNPAR_TIM_SAJARWAN",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_UGM",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_UNDIP",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_UNHAS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_UNPAD_RISET_DAN_INOVASI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_POTENSI_UNTIRTA",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_CHECKED",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_FAPERTA_UNPAD",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_LPPM_UNPAR_TIM_SAJARWAN",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_PUSTEKNO_CoT_UNHAS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_UGM",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_UNDIP",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_UNHAS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_UNPAD_RISET_DAN_INOVASI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_UNTIRTA",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/AOI_SID_UPN_VETERAN_YOGYA",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/APL_KALTENG_062024",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Bali",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Banten_LBS_KP2B_Full_Admin",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Banten_LBS_KP2B",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Banten_Pandeglang_KP2B_LBS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Banten_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Batas_Admin_Desa",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Batas_Administrasi_Desa_2",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Batas_Administrasi_Desa",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Batas_Administrasi_KabupatenKota",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Batas_Administrasi_Provinsi",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Batas_Administrasi_Wilayah_Indonesia",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Batas_Desa_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Batas_Kecamatan_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Bengkulu_sawahnonlbs2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/BM_CP_All_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/BPP_Ind",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/CSV_BPP_Indonesia",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/DATA_PSR_241021",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/DIY_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/DUMMY_SLEMAN_01_MINGGIR_PETAK",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/DUMMY_SLEMAN_02_MOYUDAN_ADMINDESA",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/DUMMY_SLEMAN_02_MOYUDAN_PETAK_NONLBS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Flapgate_All_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/flight_in_update",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/flight_in_update",
+   "type": "MapServer"
+  },
+  {
+   "name": "Hosted/flight_in",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/flight_in",
+   "type": "MapServer"
+  },
+  {
+   "name": "Hosted/Gabungan_Konstruksi_Tanah_Miring",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/HGU_KALSEL",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/IGT_Sawit_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/INDIKASI_AOI_HSU",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Indikasi_SawahNonLBS_DIYogyakarta_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Jambi_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_04_GUMUKMAS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_05_UMBULSARI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_06_TANGGUL",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_07_SEMBORO",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_08_PUGER",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_09_BANGSALSARI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_10_BALUNG",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_11_WULUHAN",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_12_AMBULU",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_13_RAMBIPUJI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_14_PANTI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_15_SUKORAMBI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_16_JENGGAWAH",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_17_AJUNG",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_18_TEMPUREJO",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_19_KALIWATES",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_20_PATRANG",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_21_SUMBERSARI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_22_ARJASA",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_23_MUMBULSARI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_24_PAKUSARI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_25_JELBUK",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_26_MAYANG",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_27_KALISAT",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_28_LEDOKOMBO",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_29_SUKOWONO",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_30_SILO",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/JEMBER_31_SUMBERJAMBE",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Join_Features_to_BPP_SHP_BPP_Indonesia",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/KALTENG_DAERAH_IRIGASI",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/KALTENG_LBS2024",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/KALTENG_WADMKK",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Kalteng",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/KAWASAN_HUTAN_KALSEL",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Kedirinaturagen",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/KEGIATAN_DITPPL",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/KEGIATANPPL_KALTENG_03122024",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Lahan_SID_Kab_Merauke_250724",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Lampung_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/LBS2019_TILE",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/LBS2024_TILE",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/LBS_HSU",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Lokasi_Tahap_1",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/LP2BNasional_JoinAtribut2",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Optic_RGB_Landsat8_9_JAN25",
+   "type": "MapServer"
+  },
+  {
+   "name": "Hosted/Paket_BPLIP_Jayapura_1",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/PapuaSelatan",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Pelengkap_All_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Pemetaan_Jaringan_Irigasi",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/PERIZINAN_KALTENG",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PERKEBUNAN_SAWIT_KALTENG",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Peta_Kerja_Kota_Cilegon",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Peta_Kerja_Kota_Serang",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Peta_Kerja_Lebak",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Peta_Kerja_Pandeglang",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Peta_Kerja_Serang",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Peta_Kerja_Tangerang",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Petak_All_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/PetaKerja1_Riau_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Aceh_2023_1",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Aceh_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Babel_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Banten_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Bengkulu_2023_1",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Bengkulu_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_DIY_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Jambi_2023_New",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Jambi_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Kalbar_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Kalsel_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Kaltara_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Kalteng_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Kaltim_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Kepri_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Lampung1_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Lampung_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Riau_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Sultra_2023_New",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Sumbar_2023_1",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Sumbar_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Sumsel_2023_1",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Sumsel_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Sumut_2023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/PetaKerja_Sumut_21092023",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Pintu_Air",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POLIGON_BALANGAN",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POLIGON_BANJAR",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POLIGON_HSS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POLIGON_HST",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POLIGON_HSU",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POLIGON_TABALONG",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POLYGON",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/POTENSI_930_KALTENG_25102024_FINAL",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/RDKK",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Realisasi_CS_Sulsel",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Realisasi_T2_LC_LL",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Riau_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/RTRWP_RekomRapatLinsek",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Saluran_All_Merauke",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/SAWIT_KALTENG_2023_NOLABEL",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/Sawit_Kalteng_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/service_569860f38c3645fb98f41e4a208e31aa",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/SHP_CPCL_Tebu_Rembang",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/SID_EKSISTING_03122024",
+   "type": "VectorTileServer"
+  },
+  {
+   "name": "Hosted/sid_oplah",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/SLEMAN_04_GAMPING_POLIGON",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Spasial_3003_Analisis",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Sultra_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Sumbar_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Sumsel_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Sumut_SawahNonLBS_2023",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/survey123_12a4be9c00074ebabb86b088bf629283_form",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/survey123_ab461d88139f418e859be1802ce22546_form",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/survey123_d5ba72f7a04848ffa1c6153e3a68719a_form",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/survey123_d5ba72f7a04848ffa1c6153e3a68719a",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/survey123_dcda5a3bd8ce42a989d17b8d832e6445_fieldworker",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/survey123_dcda5a3bd8ce42a989d17b8d832e6445_stakeholder",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/tanam_test1",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/teskab",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/UPLAND",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Usulan_Lokasi_Replanting",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/Usulan_Saluran_dan_Normalisasi",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/USULAN_UNIVERSITAS_CHECKED",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/WADMKD_BALANGAN",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/WADMKD_BATOLA",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/WADMKD_HSS",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/WADMKD_HST",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/WADMKD_HSU",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hosted/WADMKD_TABALONG",
+   "type": "FeatureServer"
+  }
+ ]
+}

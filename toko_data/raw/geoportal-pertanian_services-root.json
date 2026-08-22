@@ -1,0 +1,110 @@
+{
+ "currentVersion": 10.81,
+ "folders": [
+  "Collector",
+  "Hortikultura",
+  "Hosted",
+  "Karantina",
+  "Perkebunan",
+  "PSP",
+  "Pusdatin",
+  "Tanaman_Pangan",
+  "test",
+  "Utilities",
+  "yyy"
+ ],
+ "services": [
+  {
+   "name": "Batas_Administrasi",
+   "type": "MapServer"
+  },
+  {
+   "name": "BawangMerah",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "BawangMerah",
+   "type": "MapServer"
+  },
+  {
+   "name": "BawangPutih",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "BawangPutih",
+   "type": "MapServer"
+  },
+  {
+   "name": "Hortikultura",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Hortikultura",
+   "type": "MapServer"
+  },
+  {
+   "name": "KawasanPertanian",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "KawasanPertanian",
+   "type": "MapServer"
+  },
+  {
+   "name": "Kewenangan_Irigasi",
+   "type": "MapServer"
+  },
+  {
+   "name": "LBS_2024",
+   "type": "MapServer"
+  },
+  {
+   "name": "Peta_Daerah_Irigasi_Pertanian_MIL1",
+   "type": "MapServer"
+  },
+  {
+   "name": "Peternakan",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Peternakan",
+   "type": "MapServer"
+  },
+  {
+   "name": "RumahPotongHewan",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "RumahPotongHewan",
+   "type": "MapServer"
+  },
+  {
+   "name": "SaranaPrasarana",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "SaranaPrasarana",
+   "type": "MapServer"
+  },
+  {
+   "name": "SDMPertanian",
+   "type": "MapServer"
+  },
+  {
+   "name": "Sekretariat_Jendral",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "Sekretariat_Jendral",
+   "type": "MapServer"
+  },
+  {
+   "name": "SIMOTANDI",
+   "type": "FeatureServer"
+  },
+  {
+   "name": "SIMOTANDI",
+   "type": "MapServer"
+  }
+ ]
+}

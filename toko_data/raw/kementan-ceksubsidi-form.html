@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Cek Subsidi Pupuk</title>
+
+	<!-- Google Font: Source Sans Pro -->
+	<style type="text/css">@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/300/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/300/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/300/normal.woff2);unicode-range:U+1F00-1FFF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/300/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/300/normal.woff2);unicode-range:U+0370-03FF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/300/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:300;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/300/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/normal.woff2);unicode-range:U+0370-03FF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/normal.woff2);unicode-range:U+1F00-1FFF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/400/italic.woff2);unicode-range:U+0370-03FF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/400/italic.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/400/italic.woff2);unicode-range:U+1F00-1FFF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/400/italic.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/400/italic.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/400/italic.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:italic;font-weight:400;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/400/italic.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(/cf-fonts/s/source-sans-pro/5.2.4/vietnamese/700/normal.woff2);unicode-range:U+0102-0103,U+0110-0111,U+0128-0129,U+0168-0169,U+01A0-01A1,U+01AF-01B0,U+0300-0301,U+0303-0304,U+0308-0309,U+0323,U+0329,U+1EA0-1EF9,U+20AB;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek/700/normal.woff2);unicode-range:U+0370-03FF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(/cf-fonts/s/source-sans-pro/5.2.4/greek-ext/700/normal.woff2);unicode-range:U+1F00-1FFF;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic/700/normal.woff2);unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(/cf-fonts/s/source-sans-pro/5.2.4/cyrillic-ext/700/normal.woff2);unicode-range:U+0460-052F,U+1C80-1C88,U+20B4,U+2DE0-2DFF,U+A640-A69F,U+FE2E-FE2F;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:fallback;}@font-face {font-family:'Source Sans Pro';font-style:normal;font-weight:700;src:url(/cf-fonts/s/source-sans-pro/5.2.4/latin-ext/700/normal.woff2);unicode-range:U+0100-02AF,U+0304,U+0308,U+0329,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20CF,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:fallback;}</style>
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+	<!-- Select2 -->
+	<link rel="stylesheet" href="plugins/select2/css/select2.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="dist/css/adminlte.min.css">
+
+	<!-- jQuery -->
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	<!-- Select2 -->
+	<script src="plugins/select2/js/select2.full.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="dist/js/adminlte.min.js"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('.select2').select2();
+
+			$("#propinsi").change(function(){
+				var propinsi = $(this).val();
+				$.ajax({
+					url: "ambilkota.php",
+					data: { propinsi: propinsi },
+					cache: false,
+					success: function(msg){
+						$("#kota").html(msg);
+						$("#kec").html('<option value="">- Harap Pilih KABUPATEN / KOTA Terlebih Dahulu -</option>');
+						$("#desa").html('<option value="">- Harap Pilih KECAMATAN Terlebih Dahulu -</option>');
+					}
+				});
+			});
+
+			$("#kota").change(function(){
+				var kota = $("#kota").val();
+				$.ajax({
+					url: "ambilkecamatan.php",
+					data: "kota="+kota,
+					cache: false,
+					success: function(msg){
+						$("#kec").html(msg);
+					}
+				});
+			});
+
+			$("#kec").change(function(){
+				var kec = $(this).val();
+				$.ajax({
+					url: "ambildesa.php",
+					data: { kec: kec },
+					cache: false,
+					success: function(msg){
+						$("#desa").html(msg);
+					}
+				});
+			});
+
+			$("#desa").change(function(){
+				var desa = $("#desa").val();
+				$.ajax({
+					url: "ambilpoktan.php",
+					data: "desa="+desa,
+					cache: false,
+					success: function(msg){
+						$("#idpoktan").html(msg);
+					}
+				});
+			});
+
+		});
+
+	</script>   
+</head>
+<body class="hold-transition sidebar-mini">
+	<div class="wrapper">
+		 <!-- Navbar -->
+ <nav class="main-header navbar navbar-expand navbar-dark">
+  <!-- Left navbar links -->
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="https://pupukbersubsidi.pertanian.go.id/ceksubsidi/search" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item d-none d-sm-inline-block">
+      <a href="#" class="nav-link">Contact</a>
+    </li>
+  </ul>
+
+  <!-- Right navbar links -->
+  <ul class="navbar-nav ml-auto">      
+    <li class="nav-item">
+      <a class="nav-link" data-widget="fullscreen" href="#" role="button">
+        <i class="fas fa-expand-arrows-alt"></i>
+      </a>
+    </li>
+    
+  </ul>
+</nav>
+  <!-- /.navbar -->		<!-- Main Sidebar Container -->
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+	<!-- Brand Logo -->
+	<a href="https://pupukbersubsidi.pertanian.go.id/" class="brand-link">
+		<img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+		<span class="brand-text font-weight-light">E Alokasi Pupuk</span>
+	</a>
+
+
+
+ <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user panel (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="dist/img/seed160.png" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="https://pupukbersubsidi.pertanian.go.id/ceksubsidi/search" class="d-block">Portal Pencarian </a>
+        </div>
+      </div>
+  </div>
+  <!-- /.sidebar -->
+</aside>
+
+		<!-- Content Wrapper. Contains page content -->
+		<div class="content-wrapper">
+			<!-- Main content -->
+			<section class="content">
+				<div class="container-fluid">
+					<h6 class="text-center display-4">PENCARIAN DATA PM (PENERIMA MANFAAT) SUBSIDI PUPUK 2026</h6>
+
+					<!-- jquery validation -->
+					<div class="card card-primary">
+						<div class="card-header">
+							<h3 class="card-title">Petunjuk Pencarian <small>Data</small></h3>
+						</div>
+						<!-- /.card-header -->
+
+						<div class="card-body">
+							<div class="form-group">
+
+								1. Masukkan Provinsi, Kabupaten, Kecamatan.
+								<br>
+								2. Masukkan nama PM (Penerima Manfaat) sesuai KTP
+								<br>
+								3. Ketikkan kode captcha yang tertera
+								<br>
+								4. Jika huruf kode kurang jelas, klik tombol REFRESH  untuk mendapatkan huruf kode baru
+								<br>
+								5. Klik tombol CARI DATA
+								<br>
+
+								Note :
+								Sistem Cek Subsidi Pupuk akan mencari Nama PM (Penerima Manfaat) sesuai Wilayah yang Anda inputkan
+							</div>
+						</div>
+					</div>
+					<!-- /.card-body -->
+
+
+					<form  method="post" action="search_hasil.php">
+						<div class="row">
+							<div class="col-md-10 offset-md-1">
+								<div class="row">
+									<div class="col-6">
+										<div class="form-group">
+											<label>PROVINSI</label>
+											<select name="propinsi" id="propinsi" class="select2" data-placeholder="PILIH PROVINSI" style="width: 100%;" required="">
+												<option value="">-- PROVINSI --</option>
+												<option value="11">ACEH</option><option value="51">BALI</option><option value="36">BANTEN</option><option value="17">BENGKULU</option><option value="34">DAERAH ISTIMEWA YOGYAKARTA</option><option value="31">DKI JAKARTA</option><option value="75">GORONTALO</option><option value="15">JAMBI</option><option value="32">JAWA BARAT</option><option value="33">JAWA TENGAH</option><option value="35">JAWA TIMUR</option><option value="61">KALIMANTAN BARAT</option><option value="63">KALIMANTAN SELATAN</option><option value="62">KALIMANTAN TENGAH</option><option value="64">KALIMANTAN TIMUR</option><option value="65">KALIMANTAN UTARA</option><option value="19">KEPULAUAN BANGKA BELITUNG</option><option value="21">KEPULAUAN RIAU</option><option value="18">LAMPUNG</option><option value="81">MALUKU</option><option value="82">MALUKU UTARA</option><option value="52">NUSA TENGGARA BARAT</option><option value="53">NUSA TENGGARA TIMUR</option><option value="91">P A P U A</option><option value="92">PAPUA BARAT</option><option value="96">PAPUA BARAT DAYA</option><option value="95">PAPUA PEGUNUNGAN</option><option value="93">PAPUA SELATAN</option><option value="94">PAPUA TENGAH</option><option value="14">RIAU</option><option value="76">SULAWESI BARAT</option><option value="73">SULAWESI SELATAN</option><option value="72">SULAWESI TENGAH</option><option value="74">SULAWESI TENGGARA</option><option value="71">SULAWESI UTARA</option><option value="13">SUMATERA BARAT</option><option value="16">SUMATERA SELATAN</option><option value="12">SUMATERA UTARA</option>
+											</select>
+										</div>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label>KABUPATEN / KOTA:</label>
+										<select name="kota" id="kota" class="select2" style="width: 100%;" required="">
+											<option value="">- Harap Pilih PROVINSI Terlebih Dahulu -</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label>KECAMATAN:</label>
+										<select name="kec" id="kec" class="select2" style="width: 100%;" required="">
+											<option value="">- Harap Pilih KABUPATEN / KOTA Terlebih Dahulu -</option>
+										</select>
+									</div>
+								</div>
+
+
+								<div class="col-6">
+									<div class="form-group">
+										<label>KELURAHAN / DESA:</label>
+										<select name="desa" id="desa" class="select2" style="width: 100%;" required="">
+											<option value="">- Harap Pilih KECAMATAN Terlebih Dahulu -</option>
+										</select>
+									</div>
+								</div>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label>KELOMPOK TANI:</label>
+										<select name="idpoktan" id="idpoktan" class="select2" style="width: 100%;" required="">
+											<option value="">- Harap Pilih KELURAHAN / DESA Terlebih Dahulu -</option>
+										</select>
+									</div>
+								</div>
+
+
+
+
+								<div class="col-6">
+									<div class="form-group">
+										<div class="input-group input-group-lg">
+											<input type="search" name="nama_petani" class="form-control form-control-lg" placeholder="NAMA SESUAI KTP" value="" required="" autocomplete="off">
+										</div>
+									</div>  
+								</div>
+
+								<div class="col-6">
+									<div class="form-group">
+										<label>captcha:</label>
+										<input type="text" name="captcha_input" id="captcha_input" required>
+										<img src="generate_captcha.php" alt="Captcha">
+
+									</div>  
+								</div> 
+
+								<div class="input-group-append">
+									<button onclick="window.open('https://pupukbersubsidi.pertanian.go.id/ceksubsidi/search')" class="btn btn-lg btn-warning">
+										REFRESH <i class="fa fa-sync"></i>
+									</button>
+								</div>
+								<br>
+
+								<div class="input-group-append">
+									<button type="submit" class="btn btn-lg btn-success">
+										CARI DATA <i class="fa fa-search"></i>
+									</button>
+								</div>
+
+
+							</div>
+						</div>
+					</form>
+				</div>
+			</section>
+		</div>
+
+		<!-- Main Footer -->
+  <footer class="main-footer">
+    <strong>Copyright Kementan <a href="https://pupukbersubsidi.pertanian.go.id/ceksubsidi">CEK DATA SUBSIDI</a>.</strong>
+    All rights reserved.
+    <div class="float-right d-none d-sm-inline-block">
+      <b>Version</b> 1.0.0
+    </div>
+  </footer>
+
+
+
+
+
+		<!-- Control Sidebar -->
+		<aside class="control-sidebar control-sidebar-dark">
+			<!-- Control sidebar content goes here -->
+		</aside>
+		<!-- /.control-sidebar -->
+	</div>
+	<!-- ./wrapper -->
+<script>(function(){function c(){var b=a.contentDocument||(a.contentWindow&&a.contentWindow.document);if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a2f01efdfa8dd901',t:'MTc4NzM4MzI5MA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

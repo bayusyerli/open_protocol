@@ -1,0 +1,6208 @@
+{
+  "head" : {
+    "vars" : [ "item", "itemLabel", "coord", "typeLabel" ]
+  },
+  "results" : {
+    "bindings" : [ {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12471782"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(128.179833333 -3.693611111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Ambon Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12472499"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.224777777 -7.503888888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Armada Town Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12472904"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.345472222 -0.051361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Ayani Megamal"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12473013"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.665333333 -6.284805555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "BSD Junction"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12473520"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(124.825277777 1.462333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Bahu Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12474159"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.611027777 -6.908583333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Bandung Indah Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12474416"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(114.60355556 -3.32335833)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Duta Mall Banjarmasin"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12474895"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.351083333 -0.902111111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Basko Grand Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12475637"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.844277777 -6.566666666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Bellanova Country Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12476683"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.008 -6.256083333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Blu Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12476990"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.462388888 0.140638888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Bontang Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12477126"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8073 -6.6013)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Botani Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12477299"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(122.511555555 -3.988333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Brylian Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12477330"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.92425 -6.217694444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Buaran Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12478205"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.6675204 3.5847714)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cambridge City Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12478514"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(105.25225 -5.420333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Central Plaza Lampung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12478766"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.894194444 -6.369611111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lippo Icon Cibubur"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12479019"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.539611111 -6.87825)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cimahi Supermall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12479368"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(101.447027777 0.510222222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Citra Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12479712"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.002777777 1.141222222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "DC Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12479725"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.412555555 -6.983361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "DP Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12480940"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.737694444 -7.302)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Darmo Trade Centre"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12481176"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.6746556 3.5941636)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Deli Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12481292"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.793388888 -6.394611111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Depok Town Center, Sawangan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12481437"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.010777777 -7.827722222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Dhoho Plaza Kediri"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12481612"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(115.1681585 -8.7291495)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Discovery Shopping Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12482242"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(116.8578687 -1.2740459)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "E-Walk Balikpapan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12482470"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.790735 -6.127589)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Emporium Pluit Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12482525"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.82275 -6.192333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Entertainment X'nter"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12483020"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(123.613083333 -10.174166666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Flobamora Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12483214"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.907416666 -6.160166666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gading Food City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12483303"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.780399 -7.2756269)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Galaxy Mall Surabaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12483309"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.379138888 -7.782833333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Galeria Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12484417"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(123.062 0.53775)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gorontalo Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12484458"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.7500309 -7.2619491)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grand City Surabaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12484460"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.984527777 -6.249333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grand Metropolitan Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12484462"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.673833333 3.590055555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grand Palladium Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12484977"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.579583333 3.305777777)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gusher Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12485602"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(95.330861111 5.554805555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Hermes Palace Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12486159"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.823777777 -6.393083333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ITC Depok"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12486160"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.877638888 -6.163722222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ITC Cempaka Mas Mega Grosir"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12486702"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.75775 -2.983694444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "International Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12486840"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.597 -6.905805555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Istana Plaza Bandung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12487190"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.62 -1.604583333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jambi Prima Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12487192"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.587194444 -1.621861111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jambi Town Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12487475"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(127.390611111 0.791527777)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jatiland Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12487803"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.712944444 -6.669361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jepara Trade and Tourism Center"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12490256"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.015777777 -7.812333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kediri Town Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12492501"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.86829376 -6.27087784)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kramat Jati Indah Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12493290"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.906166666 -6.16025)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "La Piazza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12494990"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(122.5122065 -3.9921675)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lippo Plaza Kendari"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12495747"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.848805555 -6.154555555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "MGK Kemayoran"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496258"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(140.673666666 -2.604333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Abepura"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496259"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.85875 -6.365055555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Cimanggis"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496260"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.783916666 -6.324888888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Cinere"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496262"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(101.430194444 0.535277777)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Ciputra Seraya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496263"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.423611111 -6.988777777)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Ciputra Semarang"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496264"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.381083333 -7.783166666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Gardena"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496265"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.390666666 -5.169416666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal GTC"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496266"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.14719 -0.47515)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Lembuswana"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496267"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.136950894 -6.33408172)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Lippo Cikarang"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496268"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(122.518888888 -3.964444444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Mandonga"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496269"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.336861111 -0.024777777)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Matahari Pontianak"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496270"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.14682007 -0.50098002)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Mesra Indah"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496271"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.446694444 -5.157861111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Panakkukang"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496272"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.335666666 -0.031472222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Pontianak"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496273"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.734222222 -6.188222222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Puri Indah"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496274"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.416916666 -5.153527777)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Ratu Indah"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496275"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(101.418333333 0.499444444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal SKA"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496277"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.876138888 -0.908361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Tatura"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496320"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.618592493 -7.95697992)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Malang Town Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496402"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.366194444 -7.792972222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Malioboro Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496409"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.292416666 -6.327861111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mall Karawang Central Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496410"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(101.446277777 1.663444444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mall Ramayana Dumai"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496411"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.4535 0.906916666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mall Ramayana Tanjung Pinang"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496494"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(124.830944444 1.471222222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Manado Town Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12496645"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8316377 -6.1387841)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mangga Dua Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12497652"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.928777777 -6.922111111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mayofield Mall Sukabumi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12497701"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.6867939 3.58767)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Medan Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12497735"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.6075 -6.226722222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mega Mal Karawaci"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12497736"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.055888888 1.129583333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mega Mall Batam Center"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12497738"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(102.266833333 -3.793805555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mega Mall Bengkulu"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12497745"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(124.834166666 1.484277777)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Megamall Manado"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12502222"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(113.9154 -2.2067)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Palangka Raya Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12502259"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.753694444 -2.985111111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Palembang Indah Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12502260"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.741805555 -2.976694444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Palembang Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12502319"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.842305555 -0.883388888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Palu Grand Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12503208"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.596027777 -6.88925)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Paris Van Java"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126707794"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.055807765 -5.886394538)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Caputra Mitra Sejati"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708001"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.918400239 1.073829218)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Karimun Anugrah Sejati"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708211"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.914042155 -6.104234909)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Dok & Perkapalan Kodja Bahari"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708239"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.943267524 1.011755599)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Citra Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708276"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(105.333000931 -5.501096734)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Noahtu Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708294"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.700546222 3.781154725)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Waruna Shipyard Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708312"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.941403257 1.016593954)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Patria Maritim Perkasa"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708353"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.946565768 1.010441324)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Pertama Pacific Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708356"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.950150352 1.012361605)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Karyasindo Samudra Biru Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708358"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.935357437 1.018217556)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Marindo Jaya Samudera"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708361"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.935439237 1.020580739)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Tunas Karya Bahari"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708367"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.94095984 1.018352325)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Lautan Lestari Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708691"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.679704916 3.775336631)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Karya Delka Maritim"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708706"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(102.158810484 1.202930001)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Bengkalis Dockindo Perkasa"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708712"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.916201144 1.07769242)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Amnor Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708724"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.913411833 1.055514942)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Bandar Abadi Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708742"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.898450122 1.084688242)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Batamec Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708758"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.936843663 1.117724302)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Bandar Victory Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708782"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.938498454 1.114028089)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Cahaya Samudera Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708784"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.957895677 1.009089129)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Delta Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708789"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.342138433 1.014781918)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Karimun Marine Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708790"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.914683929 1.039095302)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Kumala Indonesia Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708797"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.961128562 1.010052202)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Marcopolo Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126708799"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.911476526 1.046902262)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Marinatama Gemanusa Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709438"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.139166666 -6.848333333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Citra Bahari Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709446"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.336553329 1.02168398)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Multi Ocean Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709458"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.922456217 1.030779471)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Palma Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709459"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.932690818 1.105764638)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Nongsa Jaya Buana"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709492"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.139506187 -6.848081745)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Sarana Bahtera Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709518"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.909444444 1.093888888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Paxocean Nanindah Mutiara Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709533"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.037276977 -6.085959161)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Merpati Marine"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709547"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.728954493 -6.126051128)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Mutiara Fibrindo"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709565"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.953016018 1.013015617)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Usda Seroja Jaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709571"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.637142462 -6.291536422)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Carita Boat Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126709580"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.93746789 1.012107647)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Sentek Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710148"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.078927647 -1.950486727)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Dok dan Perkapalan Air Kantung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710226"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.139804697 -2.097517071)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Pahala Harapan Lestari"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710259"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.806476345 -2.989989933)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Dockyard Baguskuning"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710272"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.875322718 -2.959027843)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Marine Bahagia Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710284"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.08806833 -5.904298459)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Krakatau Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710394"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.102117859 -5.948816549)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Maju Maritim Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710401"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.107416531 -5.975266851)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Samudra Marine Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710456"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.86708407 -6.117141204)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Bayu Bahari Sentosa"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710458"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.866669866 -6.116360525)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Dok Duasatu Nusantara"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710517"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.421610189 -6.950139437)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Yasa Wahana Tirta Samudera"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710530"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.699079339 -7.247489623)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Samudera Indoraya Perkasa"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710544"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.719686537 -7.171328187)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Galangan Kapal Madura"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710554"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.11243013 -0.524648822)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Muji Rahayu Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710555"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.722352414 -7.209110069)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Dumas Tanjung Perak Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710556"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.293570194 0.010702071)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Steadfest Marine"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710622"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.520776296 3.39046274)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Kayan Marine Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710632"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.045482706 -0.538551111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Pancaran Samudera Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710752"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(125.200178989 1.444600208)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Unggul Sejati Abadi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126710864"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(125.203503663 1.445556569)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Samudera Puranabile Abadi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126711021"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.432229954 -5.108238978)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "IKI Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126711337"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(131.269554867 -0.961086043)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Dokindo Almas Papua Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126711682"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(128.122214931 -3.685922401)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Pasifik Dok Maluku"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126719169"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.733722024 -7.202302711)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Adiluhung Saranasegara Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126729088"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.141194705 -6.850376488)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Sanur Marindo Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126729193"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.139381423 -6.850830452)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Tegal Shipyard Utama"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126729297"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.418441839 -6.947264191)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Jasa Marine Indah"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126729340"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.665005437 -7.172124819)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Indonesia Marina Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2130970"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.9084263 -6.1572666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Kelapa Gading"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2195759"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.7920004 -6.1783723)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Taman Anggrek"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2265352"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(116.119805555 -8.587444444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mataram Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2293641"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.797555555 -6.244194444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Blok M"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2441897"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.605472222 -6.89325)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cihampelas Walk"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2551707"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.784339 -6.2655371)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pondok Indah Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q2551984"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8919187 -6.1457739)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Artha Gading"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7122628"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.809645 -6.224452)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pacific Place"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7203616"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.821731 -6.193067)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7203647"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.7994139 -6.2254694)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Senayan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7203665"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.7384431 -7.2623683)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Tunjungan Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7296055"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8009711 -6.2264834)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Ratu Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7374725"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.734461 -7.309195)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Royal Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7383932"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.834805555 -6.372972222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "MargoCity"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7710059"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8163898 -6.1940582)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Thamrin City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7720162"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.902778 -6.149444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Sports Mall Kelapa Gading"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5974722"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.802816 -6.166561)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ITC Roxy Mas"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6743956"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.786944444 -6.168055555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Ciputra"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q6743994"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8918949 -6.1514549)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mall of Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q10985492"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(108.551905 -6.713326)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grage Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3074946"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.7977927 -6.2267248)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Senayan City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3902099"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.584638888 -6.893416666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "dbotanica bandung mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4835571"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.73333333 -7.25472222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "BG Junction"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q4852963"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.9918838 -6.2483526)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Metropolitan Mall Bekasi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5061611"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.7906723 -6.1773686)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Central Park Jakarta"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5427419"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.803833 -6.224516)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "FX Lifestyle x'nter"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5594677"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8204412 -6.1951801)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grand Indonesia Shopping Town"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q5595133"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.583194444 3.308861111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grand Tarakan Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12503425"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.660972222 -6.587472222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Jepara 2"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12503426"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.691638888 -6.712638888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Karangrandu"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12503461"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.711083333 -6.643416666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Ngabul"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12503496"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.73220732 -7.245942103)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Turi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12504074"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.81217 -6.28625)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "The Park Pejaten"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12505813"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.35575 -0.949888888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Andalas"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12505815"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(111.519916666 -7.625666666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Madiun"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12505816"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.6634857 3.5931948)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Medan Fair"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12505817"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.644638888 3.5995)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "The Plaza Millenium"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12505818"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.631833333 -0.225)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Payakumbuh"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12505819"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.677277777 -6.889694444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Pekalongan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12507057"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.915825 -6.183465)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pulogadung Trade Center"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12507360"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.865638888 -6.262305555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pusat Grosir Cililitan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12507364"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.685774329 3.59038331)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pusat Pasar"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12507580"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(122.510027777 -3.981361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rabam Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12507791"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.364083333 -7.797111111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Ramai Family Mall (RaFa)"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12511464"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(140.666 -2.6108)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Saga"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12511743"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.15558 -0.52627)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Samarinda Global City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12511744"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.154888888 -0.5035)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Samarinda Central Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12511745"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.14689 -0.46971)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Samarinda Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12513669"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.146222222 -6.258388888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Sentra Grosir Cikarang"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12514132"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.667888888 -6.588833333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Shopping Centre Jepara"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12515684"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.7965 -6.188833333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Slipi Jaya Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12517712"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.6713685 3.5820025)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Sun Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12518071"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.67511111 -7.28958333)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pakuwon Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12518073"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.6075 -6.226722222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Supermall Karawaci"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12518102"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.73 -7.29444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Surabaya Town Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12519057"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.881416666 -6.291361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Tamini Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12520936"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.667444444 -6.295611111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Teraskota"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12521183"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.6923203 3.5866718)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Thamrin Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12521288"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(116.839194444 -1.278305555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "The Plaza Balikpapan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12522090"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(104.002222222 1.039611111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Top 100 Batuaji"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12523764"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8304266 -6.1334584)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "WTC Mangga Dua"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13095806"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.36542 -7.79886)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Beringharjo"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13406509"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.4325 -7.006416666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Java Supermall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13407275"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.401111111 -7.781944444)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Ambarukmo Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16744629"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.35493728 -7.825120718)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Satwa dan Tanaman Hias Yogyakarta"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q16746872"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.360023718 -7.808179861)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Ngasem"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q17052512"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8296141 -6.2246152)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kuningan City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19728724"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(105.25922 -5.38216)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Boemi Kedaton"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19728725"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(140.70641 -2.53511)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Jayapura"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19729401"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.413265 -5.132837)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "MTC Karebosi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19734196"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(108.969638888 0.899138888)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Singkawang Grand Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19741972"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.00102157 -6.22608505)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Summarecon Mal Bekasi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19746183"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.653982797 -6.221966135)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mall @ alam sutera"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19748629"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.62813889 -6.24130556)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Summarecon Mall Serpong"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25469949"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.628425 -7.968741666)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Rakyat Oro-Oro Dowo"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q25469951"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.623555555 -7.976361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mall Olympic Garden"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31174438"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.824379238 -6.13608802)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ITC Mangga Dua"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q48726478"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.811473 -6.259418)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Kemang Village"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q53829248"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.903138888 -6.214055555)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Yogya Plaza Klender"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q56394508"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(119.4041 -5.152426)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Phinisi Point"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q57911511"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.63652222 -6.30208056)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pekan Raya Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64560539"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.714296471 -6.151652933)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Matahari Puri Daan Mogot"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q64560543"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.796084 -6.1534123)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Seasons City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q96651283"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.45899 -7.28067)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Saloka Park"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97211628"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.020154 -6.259178)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "BTC Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97211711"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.021265 -6.258503)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Bekasi Trade Center"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97375201"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.972291529 -6.270639158)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grand Galaxy Park"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q115496664"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.365517 -7.782615)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Kranggan Yogyakarta"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q115942204"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.377561 -7.801834)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Sentul"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q120260552"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.728725917 -7.33869694)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Trans Icon Mall Surabaya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124094163"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(115.18477 -8.70251)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Trans Studio Bali"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124858069"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.952224632 -6.172197995)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ÆON Mall Jakarta Garden City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124858070"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.643573 -6.304636)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ÆON Mall BSD City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124858112"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.890212982 -6.19408278)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Arion Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124858119"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.864397412 -6.2138914)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cityplaza Jatinegara"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q124858130"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.877885912 -6.224070438)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mall@Bassura"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q125186303"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8036355 -6.2125624)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Senayan Park"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126616156"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.701802812 3.539672267)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Indogrosir Medan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126616158"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.796238974 3.527337386)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Suzuya Tanjung Morawa"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126616311"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.496910625 3.608328869)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Binjai Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133862962"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(113.90538 -2.21433)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Lippo Plaza Palangka Raya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133863422"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(114.39925 -2.98684)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Citimall Kuala Kapuas"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133868139"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(114.58990753 -3.326309392)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Plaza Arjuna"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133991844"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.636813642 -7.97274522)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pasar Klojen"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q135657347"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.894559 -6.174461)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Bella Terra Lifestyle Center"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136330260"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.989702628 -6.255890397)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pakuwon Mall Bekasi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136330775"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.046871136 -6.293092522)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Living World Grand Wisata Bekasi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136332447"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.9753996 -6.399458196)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Metropolitan Mall Cileungsi"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435034"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.60515 -6.92201)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "The Kings Shopping Centre"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435326"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.61718 -6.90408)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Heritage The Factory Outlet"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435385"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.59352 -6.95074)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Grutty Sepatu"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435408"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.69973085 -6.955712657)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Summarecon Mall Bandung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435457"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.608463828 -6.916859207)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Braga Citywalk"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435461"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.608870821 -6.898504621)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Balubur Town Square"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435465"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.608789794 -6.907720409)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Istana BEC"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136435471"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.599418412 -6.881884151)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Rumah Mode Bandung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136768547"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.846413888 -6.150026388)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "K Mall at Menara Jakarta"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136783810"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.19538 -6.351)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ÆON Mall Deltamas"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q137217053"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.39793 -0.91616)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Basko City Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q137217282"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.72863 -6.13904)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Green Sedayu Mall"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q137299544"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.825838 -6.223707)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ITC Kuningan"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138329561"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.9258125 -6.3833125)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Mal Ciputra Cibubur"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138837823"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(113.9231211 -2.2485353)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Duta Mall Palangka Raya"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139970960"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(109.369536 -0.076426293)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gaia Bumi Raya City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139996298"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.85787 -6.56698)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "ÆON Mall Sentul City"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140353300"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(111.650535 -2.710338)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Citimall Pangkalan Bun"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "pusat perbelanjaan"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q28163904"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.83457 -6.164889)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko Kompak"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106280939"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(100.6309915 -0.2272853)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Toko HM"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "toko"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3139993"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(117.47878 0.186304)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pupuk Kalimantan Timur"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q3270617"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.831529 -6.122743)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Taman Impian Jaya Ancol"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q7885208"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.650717461 -6.300636511)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Unilever Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q9990704"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.045172903 -6.091166445)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Tesco Indomaritim"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12471665"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.743396 -7.237887)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Alumindo Light Metal Industry"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12478358"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.58024 -6.18824)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Cap Lang"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12487407"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.61845 -7.965847)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jasa Tirta I"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12501564"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.741428835 -7.205052196)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PAL Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12504353"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.727049 -7.319302)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT PLN Nusantara Power"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12504638"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.916125278 1.034519994)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Bumi Laut Perkasa"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q12523164"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(107.5147359 -6.8662569)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Ultrajaya Milk"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q13098421"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.389088455 -7.779345683)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Waroeng Steak & Shake"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q18055308"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.942261448 1.015905968)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Palindo Marine"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q19752345"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.746022 -7.234978)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Pabrik Kertas Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q31174507"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.907889205 -6.194203222)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jakarta Industrial Estate Pulogadung"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97213751"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.540106095 -6.188953702)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Paragon Technology and Innovation"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97213751"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.763307806 -6.225772511)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Paragon Technology and Innovation"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q97229108"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(114.382217449 -8.190812548)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "North Sea Boats"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106917785"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(103.372589072 2.314927261)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Batam Aero Technic"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q106926954"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(127.432183622 2.149218258)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Lion Hotel & Plaza"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126729407"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.493783995 -6.90253512)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Orela Shipyard"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q126729531"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(112.367925023 -6.868841545)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "PT Tri Ratna Diesel Indonesia"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q133187915"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.827096 -6.236134)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Best Agro International"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q136293163"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(105.28864 -4.703605)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Gunung Madu Plantations"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q137115787"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(115.1501667 -8.8159897)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Wet Plate Kitchen"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q137393597"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.930777777 -6.281361111)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Sabana Fried Chicken"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q137582941"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.726591482 -6.295935057)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "Kandank Jurank Doank"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q137597611"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.7690279 -6.254762)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Tiger Wong Entertainment"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q138589858"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.8939375 -6.1065625)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Jakarta International Container Terminal"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139820439"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(110.7798851 -7.5409246)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Solo Harmony Furniture"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q139846032"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(106.7931194 -6.1303159)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "Inti Solar"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    }, {
+      "item" : {
+        "type" : "uri",
+        "value" : "http://www.wikidata.org/entity/Q140561660"
+      },
+      "coord" : {
+        "datatype" : "http://www.opengis.net/ont/geosparql#wktLiteral",
+        "type" : "literal",
+        "value" : "Point(98.660601102 3.607700301)"
+      },
+      "itemLabel" : {
+        "xml:lang" : "en",
+        "type" : "literal",
+        "value" : "PT Lucky Intercoco"
+      },
+      "typeLabel" : {
+        "xml:lang" : "id",
+        "type" : "literal",
+        "value" : "perusahaan bisnis"
+      }
+    } ]
+  }
+}

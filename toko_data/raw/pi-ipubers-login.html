@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - WebAdmin</title>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-GD2BSR66TS"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-GD2BSR66TS');
+</script>
+    <link rel="stylesheet" href="https://cdn.rms-pi.com/ipubers/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="icon" type="image/ico" href="https://cdn.rms-pi.com/ipubers/iPubers.ico" sizes="32x32">
+    <link rel="icon" type="image/x-icon" href="https://cdn.rms-pi.com/ipubers/iPubers.ico" sizes="16x16">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@500&family=Wix+Madefor+Text:wght@400;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.rms-pi.com/ipubers/css/style.css?v=1.0" />
+</head>
+<body>
+    
+<div class="content">
+    <div class="form-login login-psp">
+
+ <form class="form-login-form" id="account" method="post">
+            
+            <div class="img-logo-container">
+                <img src="https://cdn.rms-pi.com/ipubers/img/logoiPubers.svg" class="logo-login" alt="" />
+                <p class="title">Selamat Datang Kembali!</p>
+                <p class="sub-title">Silahkan Login Dengan Username Dan Password <br />Untuk Melanjutkan</p>
+            </div>
+            <div class="form-group with-label">
+                <label for="inputUsername">Username <span class="text-danger">*</span></label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white border-right-0">
+                            <i class="fas fa-user-edit"></i>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control border-left-0 pl-0" id="inputUsername" autocomplete="off" data-val="true" data-val-required="The UserName field is required." name="Input.UserName" value="" />
+                </div>
+            </div>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Input.UserName" data-valmsg-replace="true"></span>
+
+            <div class="form-group with-label">
+                <label for="passwd">Kata Sandi <span class="text-danger">*</span></label>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text bg-white border-right-0">
+                            <i class="fas fa-lock"></i>
+                        </span>
+                    </div>
+                    <input type="password" class="form-control border-left-0 border-right-0 pl-0" id="passwd" autocomplete="new-password" data-val="true" data-val-required="The Password field is required." name="Input.Password" />
+
+                    <div class="input-group-append">
+                        <span class="input-group-text bg-white border-left-0" onclick="toogleVisible()"><i id="pin-icon" class="fas fa-eye"></i></span>
+                    </div>
+                </div>
+            </div>
+            <span class="text-danger field-validation-valid" data-valmsg-for="Input.Password" data-valmsg-replace="true"></span>
+
+            <div class="text-danger validation-summary-valid" data-valmsg-summary="true"><ul><li style="display:none"></li>
+</ul></div>
+            <button type="submit" class="btn btn-block btn-login">Masuk Dashboard</button>
+
+            <div class="row text-center w-100">
+                <p class="support-label">Didukung oleh</p>
+                <ul class="list-support-image list-group list-group-horizontal justify-content-center w-100">
+                    <li class="list-group-item border-0 bg-transparent">
+                        <img src="https://cdn.rms-pi.com/ipubers/img/logo-kementan.svg" class="" />
+                    </li>
+                    <li class="list-group-item border-0 bg-transparent">
+                        <img src="https://storage.googleapis.com/cdn-test-rekan/ipubers/img/Danantara_Indonesia_Logo_Black.png" style="width:76px" class="" />
+                    </li>
+                    <li class="list-group-item border-0 bg-transparent">
+                        <img src="https://cdn.rms-pi.com/ipubers/img/logo-pihc.svg" class="" />
+                    </li>
+                </ul>
+            </div>
+        <input name="__RequestVerificationToken" type="hidden" value="CfDJ8HPsDDMgigdKqxzo4iBynqRm9nRGJLTtHCmQtTmEUr3a8s1y3Ghsb6wNj-fyIIuC1-vM-V9CkD0c71a3mUyEB1Ndvw1ZSAZI7ISsadLcjc9gkGQDFWEplRTAZ2oe_Gp7fd23-xV006sYI6_52K5NKwQ" /></form>
+    </div>
+    <div class="image-login carousel slide" id="slide" data-ride="carousel">
+        <!-- Indicators -->
+
+        <!-- The slideshow -->
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <div class="img-slide-container">
+                    <img src="https://cdn.rms-pi.com/ipubers/img/bg-login-psp.jpg" class="img-slide" style="position: relative; margin: auto; height: 100%; width: 100%; max-height: 100%" />
+                </div>
+            </div>
+        </div>
+
+        <!-- Left and right controls -->
+    </div>
+</div>
+<script>
+    function toogleVisible() {
+        var x = document.getElementById("passwd");
+        var y = document.getElementById("pin-icon");
+        if (x.type === "password") {
+            x.type = "text";
+            y.classList.remove("fa-eye");
+            y.classList.add("fa-eye-slash");
+        } else {
+            x.type = "password";
+            y.classList.remove("fa-eye-slash");
+            y.classList.add("fa-eye");
+        }
+    }
+</script>
+
+
+    <script src="https://cdn.rms-pi.com/ipubers/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.rms-pi.com/ipubers/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.rms-pi.com/ipubers/js/site.js"></script>
+    
+    
+
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.17.0/jquery.validate.min.js" crossorigin="anonymous" integrity="sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o+ok+t/SAKlL5mvXLr0OXNi1Hp">
+    </script>
+<script>(window.jQuery && window.jQuery.validator||document.write("\u003Cscript src=\u0022https://cdn.rms-pi.com/ipubers/lib/jquery-validation/dist/jquery.validate.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-rZfj/ogBloos6wzLGpPkkOr/gpkBNLZ6b6yLy4o\u002Bok\u002Bt/SAKlL5mvXLr0OXNi1Hp\u0022\u003E\u003C/script\u003E"));</script>
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.9/jquery.validate.unobtrusive.min.js" crossorigin="anonymous" integrity="sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds">
+    </script>
+<script>(window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive||document.write("\u003Cscript src=\u0022https://cdn.rms-pi.com/ipubers/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js\u0022 crossorigin=\u0022anonymous\u0022 integrity=\u0022sha384-ifv0TYDWxBHzvAk2Z0n8R434FL1Rlv/Av18DXE43N/1rvHyOG4izKst0f2iSLdds\u0022\u003E\u003C/script\u003E"));</script>
+
+
+
+</body>
+</html>

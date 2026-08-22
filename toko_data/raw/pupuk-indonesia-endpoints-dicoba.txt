@@ -1,0 +1,50 @@
+# Audit trail — penelusuran kios/toko pupuk resmi PT Pupuk Indonesia & anak usaha
+# Tanggal: 2026-08-22
+# Sasaran: daftar kios/KPL Lini IV di Pulau Jawa + koordinat, dari kanal RESMI PI
+# Hasil ringkas: 0 baris berkoordinat, 0 baris beralamat dari kanal korporat PI.
+#   Basis data kios PI ada di sistem berlogin (RMS/iPubers/DPCS/e-RDKK); tidak
+#   seperti PUKPES, endpoint di baliknya TERTUTUP (404 / shell SPA login / CAPTCHA).
+#   Host GIS PI (gis.pupuk-indonesia.com) difirewall. Situs anak usaha hanya prosa.
+#
+# Format: <hasil> <url> :: catatan
+
+# --- Situs korporat Pupuk Indonesia
+200  https://www.pupuk-indonesia.com/                    :: homepage; tak ada locator kios, hanya peta rayonisasi (gambar) + tautan portal berlogin
+200  https://www.pupuk-indonesia.com/product/marketing   :: PSO/rayonisasi (gambar .jpeg), tanpa titik/koordinat
+200  https://www.pupuk-indonesia.com/product/stock        :: iframe -> dpcs-dev (template demo), tanpa data kios
+200  https://www.pupuk-indonesia.com/sitemap              :: tak ada halaman "cari kios"
+200  https://distribution-branding.pupuk-indonesia.com/   :: dokumen produk & /api/produk/{id} (katalog produk, BUKAN kios)
+
+# --- Subdomain PI hasil brute-force DNS + crt.sh
+LOGIN   https://dpcs.pupuk-indonesia.com/                 :: DPCS login (ASP.NET). /api, /api/kios, /swagger -> 404
+LOGIN   https://rekan.pupuk-indonesia.com/                :: RMS "WebAdmin" login (ASP.NET Identity). aset dari cdn.rms-pi.com
+LOGIN   https://ipubers.pupuk-indonesia.com/              :: iPubers login (React). /api & /api/kios -> shell SPA "Login", bukan JSON
+LOGIN   https://dashboard.pupuk-indonesia.com/login       :: dashboard login
+FIREWALL gis.pupuk-indonesia.com                          :: resolve 34.101.47.159 (GCP), tapi 80/443 connect gagal (via nama & IP+Host)
+FIREWALL retail.pupuk-indonesia.com                       :: resolve 36.89.154.91, tak merespons
+DEMO    https://dpcs-dev.pupuk-indonesia.com/             :: SPA Vite/Metronic8 DEMO (chunk: Campaigns/InviteFriends/UpgradePlan/SignIn);
+                                                             baseURL=preview.keenthemes.com/metronic8/laravel/api (API demo template); TANPA data kios
+PARKED  https://rms-pi.com/                               :: domain parkir (LANDER/PW); hanya cdn.rms-pi.com yang menyajikan aset gambar
+FIREWALL ipubers.rms-pi.com                               :: resolve 34.128.94.187, tak merespons
+200(1)  https://storage.googleapis.com/cdn-test-rekan/    :: bucket GCS listable, hanya 1 objek (logo), tanpa data
+
+# --- Portal Kementan (dalam daftar sasaran; jaringan distribusi subsidi)
+LOGIN   https://pupukbersubsidi.pertanian.go.id/          :: portal e-RDKK/e-Alokasi/e-Verval/iPubers 2025 — semua Login
+CAPTCHA https://pupukbersubsidi.pertanian.go.id/ceksubsidi/search :: cek per-NIK; dropdown ambilkota/ambilkecamatan/ambildesa/ambilpoktan
+                                                             (poktan/desa, BUKAN direktori kios); ada generate_captcha.php -> TIDAK dilewati
+200     https://psp.pertanian.go.id/                       :: situs berita/regulasi Ditjen PSP; "layanan-publik?category=Pupuk Bersubsidi"
+                                                             = regulasi alokasi, bukan direktori kios berkoordinat
+
+# --- Anak usaha (locator/distribusi publik)
+200  https://petrokimia-gresik.com/map/gudang-distribution-centre :: prosa; hanya 5 kota gudang DC (Medan/Padang/Lampung/Makassar/Gresik), tanpa koordinat
+200  https://pusri.co.id/id/distribution                 :: prosa syarat jadi distributor; tanpa daftar/koordinat
+200  https://pupuk-kujang.co.id/marketing/distribution    :: 3 tab (Wilayah/Alur/Distributor&Kios) — semua prosa & cakupan kabupaten; tanpa daftar/koordinat
+(cek) https://pupukkaltim.com/id/p/distribusi            :: prosa; tanpa daftar kios/koordinat
+(cek) https://pim.co.id/                                  :: tanpa locator kios
+
+# --- Kesimpulan
+# Kanal RESMI korporat PT Pupuk Indonesia + anak usaha TIDAK mengekspos daftar kios
+# berkoordinat yang dapat dibaca mesin. Data kios (KPL Lini IV) berada di sistem
+# transaksional berlogin dan endpoint di baliknya tertutup. Sumber koordinat kios
+# yang layak justru ada di kanal LAIN (open data provinsi / geoportal Kementan /
+# OSM) — sedang digarap sesi paralel di direktori raw/ ini.

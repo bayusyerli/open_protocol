@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<!-- 
+Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.6
+Version: 4.5.6
+Author: KeenThemes
+Website: http://www.keenthemes.com/
+Contact: support@keenthemes.com
+Follow: www.twitter.com/keenthemes
+Dribbble: www.dribbble.com/keenthemes
+Like: www.facebook.com/keenthemes
+Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+Renew Support: http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes
+License: You must have a valid license purchased only from themeforest(the above link) in order to legally use the theme for your project.
+-->
+<!--[if IE 8]> <html lang="en" class="ie8 no-js"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9 no-js"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+  <!--<![endif]-->
+  <!-- BEGIN HEAD -->
+
+  <head>
+      <!-- Begin meta tags -->
+<title>Dashboard - Sistem Informasi Toko Tani Indonesia</title>
+
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta content="width=device-width, initial-scale=1" name="viewport" />
+<meta content="" name="description" />
+<meta content="" name="author" />
+<!-- BEGIN GLOBAL MANDATORY STYLES -->
+<link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/simple-line-icons/simple-line-icons.min.css" rel="stylesheet" type="text/css" />
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/bootstrap-switch/css/bootstrap-switch.min.css" rel="stylesheet" type="text/css" />
+<!-- END GLOBAL MANDATORY STYLES -->
+<!-- BEGIN PAGE LEVEL PLUGINS -->
+
+<!-- END PAGE LEVEL PLUGINS -->
+<!-- BEGIN THEME GLOBAL STYLES -->
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/css/components.min.css" rel="stylesheet" id="style_components" type="text/css" />
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
+<!-- END THEME GLOBAL STYLES -->
+<!-- BEGIN THEME LAYOUT STYLES -->
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/layouts/layout3/css/layout.min.css" rel="stylesheet" type="text/css" />
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/layouts/layout3/css/themes/red-sunglo.min.css" rel="stylesheet" type="text/css" id="style_color" />
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/layouts/layout3/css/custom.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- favicon -->
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/img/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+<link href="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/pages/css/blog.min.css" rel="stylesheet" type="text/css" />
+<script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/jquery.min.js" type="text/javascript"></script>
+  <!-- END HEAD -->
+
+  <body class="page-container-bg-solid page-header-menu-fixed">
+    <!-- BEGIN HEADER -->
+    <style>
+  .row-header{
+    padding-top:10px;
+  }
+  .site_name{
+    float: left;
+    color:#E7505A;
+    font-size:20px;
+    padding-top:10px;
+    padding-left: 21px;
+  }
+  .lg{
+    width: auto !important;
+  }
+
+  .site_name_mobile{
+    display: none;
+  }
+  .site_name_full{
+    display: block;
+  }
+  @media (max-width: 660px) {
+    .site_name_mobile{
+      display: block;
+      width:100px;
+    }
+    .site_name_full{
+      display:none;
+    }
+  }
+</style>
+<div class="page-header">
+  <!-- BEGIN HEADER TOP -->
+  <div class="page-header-top">
+    <div class="container">
+      <!-- BEGIN LOGO -->
+      <div class="page-logo lg">
+        <a href="http://tti.pertanian.go.id/">
+          <div class="row row-header">
+            <div class="col-sm-12">
+              <div style="float:left;">
+                <img alt="" src="http://tti.pertanian.go.id/addons/default/themes/sitoni/img/logo.png" width="50">
+              </div>
+              <div class="site_name">
+                <span class="site_name_full">Sistem Informasi Toko Tani Indonesia</span>
+                <span class="site_name_mobile">SITANI</span>
+              </div>
+            </div>
+            <!-- <div class="col-sm-10">
+              <span class="site_name_full">Sistem Informasi Toko Tani Indonesia</span>
+              <span class="site_name_mobile">SITANI</span>
+            </div> -->
+          </div>
+
+          
+        </a>
+      </div>
+      <!-- END LOGO -->
+      <!-- BEGIN RESPONSIVE MENU TOGGLER -->
+      <a href="javascript:;" class="menu-toggler"></a>
+      <!-- END RESPONSIVE MENU TOGGLER -->
+      <!-- BEGIN TOP NAVIGATION MENU -->
+      <div class="top-menu ">
+        <ul class="nav navbar-nav pull-right">
+          <!-- BEGIN USER LOGIN DROPDOWN -->
+                      <li class="dropdown red-sunglo">
+                <a href="http://tti.pertanian.go.id/admin/login" class="dropdown-toggle">
+                  <span class="btn btn-sm red">
+                    <i class="icon-login"></i> Login
+                  </span>
+                </a>
+            </li>
+                    <!-- END USER LOGIN DROPDOWN -->
+        </ul>
+      </div>
+      <!-- END TOP NAVIGATION MENU -->
+    </div>
+  </div>
+  <!-- END HEADER TOP -->
+  <!-- BEGIN HEADER MENU -->
+  <div class="page-header-menu" >
+    <div class="container">
+      <!-- BEGIN MEGA MENU -->
+      <!-- DOC: Apply "hor-menu-light" class after the "hor-menu" class below to have a horizontal menu with white background -->
+      <!-- DOC: Remove data-hover="dropdown" and data-close-others="true" attributes below to disable the dropdown opening on mouse hover -->
+      <div class="hor-menu hor">
+        <ul class="nav navbar-nav">
+          <li class="first current has_current"><a href="http://tti.pertanian.go.id/">Home</a></li><li class="menu-dropdown classic-menu-dropdown has_current"><a href="http://tti.pertanian.go.id/#">Cara Pelaporan</a><ul class="dropdown-menu"><li class="first has_current"><a href="http://tti.pertanian.go.id/laporan/panduan/sms"><i class="fa fa-envelope-o"></i> SMS</a></li><li class="has_current"><a href="http://tti.pertanian.go.id/laporan/panduan/web"><i class="fa fa-desktop"></i> Website</a></li><li class="last has_current"><a href="http://tti.pertanian.go.id/laporan/panduan/android"><i class="fa fa-android"></i> Android</a></li></ul></li><li class="menu-dropdown classic-menu-dropdown has_current"><a href="http://tti.pertanian.go.id/#">Laporan</a><ul class="dropdown-menu"><li class="first has_current"><a href="http://tti.pertanian.go.id/laporan/data/harga/1">Gapoktan</a></li><li class="has_current"><a href="http://tti.pertanian.go.id/laporan/data/harga/2">TTI</a></li><li class="last has_current"><a href="http://tti.pertanian.go.id/laporan/data/kinerja_pendamping">Kinerja Pendamping</a></li></ul></li><li class="menu-dropdown classic-menu-dropdown has_current"><a href="http://tti.pertanian.go.id/#">Absensi</a><ul class="dropdown-menu"><li class="first has_current"><a href="http://tti.pertanian.go.id/laporan/absen/index/1">Pelaporan Gapoktan</a></li><li class="has_current"><a href="http://tti.pertanian.go.id/laporan/absen/index/2">Pelaporan TTI</a></li><li class="last has_current"><a href="http://tti.pertanian.go.id/laporan/absen/grafik_absensi">Grafik Absensi</a></li></ul></li><li class="has_current"><a href="http://tti.pertanian.go.id/laporan/pendamping/index">Pendamping</a></li><li class="has_current"><a href="http://tti.pertanian.go.id/laporan/sumberdata/index">Sumber Data</a></li><li><a href="http://tti.pertanian.go.id/blog">Serba Serbi</a></li><li class="last has_current"><a href="http://tti.pertanian.go.id/laporan/sp2d/index">Dokumen SP2D</a></li>
+        </ul>
+      </div>
+      <!-- END MEGA MENU -->
+    </div>
+  </div>
+  <!-- END HEADER MENU -->
+</div>
+    <!-- END HEADER -->
+    <!-- BEGIN CONTAINER -->
+    <div class="page-container">
+      <!-- BEGIN CONTENT -->
+      <div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <!-- BEGIN PAGE CONTENT BODY -->
+        <style>
+  .loading_content{
+    color: #a7b2c0;
+    text-align: center;
+    margin: 10px;
+  }
+  .img-center{
+    margin-left: auto;
+    margin-right: auto;
+  }
+</style>
+
+<div class="page-content">
+  <div class="container">
+    <!-- BEGIN PAGE CONTENT INNER -->
+    <div class="page-content-inner">
+      <br>
+      <div class="row">
+        <div class="col-md-5 col-sm-5">
+          <iframe width="100%" height="220" src="https://www.youtube.com/embed/86UXqkxwv3o?autoplay=1&loop=1&playlist=86UXqkxwv3o" frameborder="0" allowfullscreen></iframe>
+        </div>
+        <div class="col-md-7 col-sm-7">
+          <img src="http://tti.pertanian.go.id/addons/default/themes/sitoni/img/TONI.jpg" style="width:100%; height:219px;">
+        </div>
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 margin-bottom-10">
+          <div class="dashboard-stat blue">
+            <div class="visual">
+              <i class="fa fa-group fa-icon-medium"></i>
+            </div>
+            <div class="details">
+              <div class="number"> 493 </div>
+              <div class="desc"> Total Pendamping </div>
+            </div>
+            <a class="more" href="http://tti.pertanian.go.id/laporan/pendamping/index"> Selengkapnya
+              <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+          <div class="dashboard-stat red">
+            <div class="visual">
+                <i class="fa fa-home"></i>
+            </div>
+            <div class="details">
+              <div class="number"> 493 </div>
+              <div class="desc"> Total Gapoktan </div>
+            </div>
+            <a class="more" href="http://tti.pertanian.go.id/laporan/sumberdata/index?f-tipe_laporan=1"> Selengkapnya
+              <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12">
+          <div class="dashboard-stat green">
+            <div class="visual">
+              <i class="fa fa-building-o fa-icon-medium"></i>
+            </div>
+            <div class="details">
+              <div class="number"> 1,561 </div>
+              <div class="desc"> Total TTI </div>
+            </div>
+            <a class="more" href="http://tti.pertanian.go.id/laporan/sumberdata/index?f-tipe_laporan=2"> Selengkapnya
+              <i class="m-icon-swapright m-icon-white"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- BEGIN ROW -->
+      <div class="row">
+        <div class="col-md-7 col-sm-7">
+          <!-- 10 laporan terakhir -->
+          <div class="portlet light">
+            <div class="portlet-title">
+              <div class="caption caption-md">
+                <i class="icon-bar-chart font-dark hide"></i>
+                <span class="caption-subject font-dark uppercase bold">10 Laporan Terakhir</span>
+              </div>
+            </div>
+            <div class="portlet-body">
+              <div class="scroller" style="height: 200px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2" id="ten_last_report">
+                <div class="loading_content">
+                  <i class='fa fa-spinner fa-pulse fa-2x'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Grafik GAPOKTAN -->
+          <div class="portlet light">
+            <div class="portlet-title">
+              <div class="caption caption-md">
+                <i class="icon-bar-chart font-dark hide"></i>
+                <span class="caption-subject font-dark uppercase bold">Grafik Laporan Gapoktan</span>
+              </div>
+              <div class="actions">
+                <a class="btn btn-transparent red-sunglo  btn-sm" href="http://tti.pertanian.go.id/laporan/data/harga/1">Selengkapnya  <i class="fa fa-share"></i></a>
+              </div>
+            </div>
+            <div class="portlet-body" id="laporan_gapoktan">
+              <div class="loading_content">
+                <i class='fa fa-spinner fa-pulse fa-2x'></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="portlet light">
+            <div class="portlet-title">
+              <div class="caption caption-md">
+                <i class="icon-bar-chart font-dark hide"></i>
+                <span class="caption-subject font-dark uppercase bold">Grafik Laporan TTI </span>
+              </div>
+              <div class="actions">
+                <a class="btn btn-transparent red-sunglo  btn-sm" href="http://tti.pertanian.go.id/laporan/data/harga/2">Selengkapnya  <i class="fa fa-share"></i></a>
+              </div>
+            </div>
+            <div class="portlet-body" id="laporan_tti">
+              <div class="loading_content">
+                <i class='fa fa-spinner fa-pulse fa-2x'></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-5 col-sm-5">
+          <!-- Grafik persentasi pendamping yang sudah dan belum lapor -->
+          <!-- <div class="portlet light">
+            <div class="portlet-title">
+              <div class="caption caption-md">
+                <i class="icon-bar-chart font-dark hide"></i>
+                <span class="caption-subject font-dark uppercase bold">Persentasi Pelaporan Pendamping</span>
+              </div>
+            </div>
+            <div class="portlet-body">
+              <div class="loading_content">
+                <i class='fa fa-spinner fa-pulse fa-2x'></i>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- Pengumuman -->
+          <div class="portlet light">
+            <div class="portlet-title">
+              <div class="caption caption-md">
+                <i class="icon-bar-chart font-dark hide"></i>
+                <span class="caption-subject font-dark uppercase bold">Pengumuman</span>
+              </div>
+            </div>
+            <div class="portlet-body" id="pengumuman">
+              <div>
+                                  <img src="http://tti.pertanian.go.id/files/thumb/455bf9ddb2f62da/300" alt="" class="img-responsive img-center" />
+                                  <img src="http://tti.pertanian.go.id/files/thumb/5ee93864babc2db/300" alt="" class="img-responsive img-center" />
+                
+              </div>
+            </div>
+          </div>
+
+
+          <!-- Harga tertinggi/terendah Gapoktan -->
+          <div class="portlet light">
+            <div class="portlet-title">
+              <div class="caption caption-md">
+                <i class="icon-bar-chart font-dark hide"></i>
+                <span class="caption-subject font-dark uppercase bold">Harga Gapoktan/TTI Minggu ini</span>
+              </div>
+            </div>
+            <div class="portlet-body" id="min_max_harga">
+              <div class="loading_content">
+                <i class='fa fa-spinner fa-pulse fa-2x'></i>
+              </div>
+              
+            </div>
+          </div>
+
+          <div class="portlet light">
+            <div class="portlet-title">
+              <div class="caption caption-md">
+                <i class="icon-bar-chart font-dark hide"></i>
+                <span class="caption-subject font-dark uppercase bold">Dialog Interaktif</span>
+              </div>
+
+              <div class="actions">
+                <a class="btn btn-sm red-sunglo " data-toggle="modal" href="#form-dialog"><i class="fa fa-commenting-o"></i> Isi Dialog </a>
+              </div>
+            </div>
+            <div class="portlet-body">
+              <div class="scroller" style="height: 313px;" data-always-visible="1" data-rail-visible1="0" data-handle-color="#D7DCE2" id="dialog_interaktif"> 
+                <div class="loading_content">
+                  <i class='fa fa-spinner fa-pulse fa-2x'></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END ROW -->
+    </div>
+  </div>
+</div>
+
+<script src="http://tti.pertanian.go.id/addons/default/modules/laporan/js/highcharts.js" type="text/javascript"></script>
+<script src="http://tti.pertanian.go.id/addons/default/modules/laporan/js/exporting.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    $("#laporan_gapoktan").load("http://tti.pertanian.go.id/laporan/data/grafik_laporan" + '/1', function() {});
+    $("#laporan_tti").load("http://tti.pertanian.go.id/laporan/data/grafik_laporan" + '/2', function() {});
+    $("#min_max_harga").load("http://tti.pertanian.go.id/laporan/data/min_max_harga", function() {});
+    load_dialog();
+    load_ten_last_report();
+  });
+
+  function load_dialog(){
+    $("#dialog_interaktif").load("http://tti.pertanian.go.id/laporan/data/dialog_interaktif", function() {});
+  }
+
+  function load_ten_last_report(){
+    $("#ten_last_report").load("http://tti.pertanian.go.id/laporan/data/ten_last_report", function() {});
+    var waktu = setTimeout("load_ten_last_report()",3000);
+  }
+</script>
+        <!-- END CONTENT BODY -->
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END CONTAINER -->
+    <!-- BEGIN FOOTER -->
+    <!-- BEGIN PRE-FOOTER -->
+            <div class="page-prefooter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-5 col-sm-6 col-xs-12 footer-block">
+                        <h2>Tentang Toko Tani Indonesia</h2>
+                        <p> Kegiatan Toko Tani Indonesia ini membawa misi untuk melindungi produsen dari jatuhnya harga dan disisi lain, melindungi konsumen dari tingginya harga pangan sehingga tercipta tata niaga pangan yang berkeadilan.</p>
+                    </div>
+                    <!-- <div class="col-md-3 col-sm-6 col-xs12 footer-block">
+                        <h2>Subscribe Email</h2>
+                        <div class="subscribe-form">
+                            <form action="javascript:;">
+                                <div class="input-group">
+                                    <input type="text" placeholder="mail@email.com" class="form-control">
+                                    <span class="input-group-btn">
+                                        <button class="btn" type="submit">Submit</button>
+                                    </span>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+                        <h2>Follow Us On</h2>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="javascript:;" data-original-title="rss" class="rss"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-original-title="facebook" class="facebook"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-original-title="twitter" class="twitter"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-original-title="googleplus" class="googleplus"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-original-title="linkedin" class="linkedin"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-original-title="youtube" class="youtube"></a>
+                            </li>
+                            <li>
+                                <a href="javascript:;" data-original-title="vimeo" class="vimeo"></a>
+                            </li>
+                        </ul>
+                    </div> -->
+
+                    <div class="col-md-4 col-sm-6 col-xs-12 footer-block">
+                        <h2>Alamat</h2>
+                        <address class="margin-bottom-10">
+                           
+                            Sekretariat PUPM Badan Ketahanan Pangan<br>
+                            Kantor Pusat Kementerian Pertanian<br>
+                            Gedung E Lantai 6<br>
+                            Jl. Harsono RM No.3 Ragunan. Jakarta Selatan.
+                            
+                        </address>
+                    </div>
+                    <div class="col-md-3 col-sm-6 col-xs-12 footer-block">
+                        <h2>Kontak Kami</h2>
+                        <address class="margin-bottom-10"> Telp: (021) 7804496
+                            <br> Email:
+                            <a href="mailto:info@metronic.com">sekretariat.tti@gmail.com</a>
+                        </address>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PRE-FOOTER -->
+        <!-- BEGIN INNER FOOTER -->
+        <div class="page-footer">
+            <div class="container"> 2016 &copy; Sistem Informasi Toko Tani Indonesia.
+                <!-- <a href="http://themeforest.net/item/metronic-responsive-admin-dashboard-template/4021469?ref=keenthemes" title="Purchase Metronic just for 27$ and get lifetime updates for free" target="_blank">Purchase Metronic!</a> -->
+            </div>
+        </div>
+        <div class="scroll-to-top">
+            <i class="icon-arrow-up"></i>
+        </div>
+        <!-- END INNER FOOTER -->
+        <!-- END FOOTER -->
+        <!--[if lt IE 9]>
+<script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/respond.min.js"></script>
+<script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/excanvas.min.js"></script> 
+<![endif]-->
+        <!-- BEGIN CORE PLUGINS -->
+
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/js.cookie.min.js" type="text/javascript"></script>
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js" type="text/javascript"></script>
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/plugins/bootstrap-switch/js/bootstrap-switch.min.js" type="text/javascript"></script>
+        <!-- END CORE PLUGINS -->
+        <!-- BEGIN PAGE LEVEL PLUGINS -->
+        
+        <!-- END PAGE LEVEL PLUGINS -->
+        <!-- BEGIN THEME GLOBAL SCRIPTS -->
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/global/scripts/app.min.js" type="text/javascript"></script>
+        <!-- END THEME GLOBAL SCRIPTS -->
+        <!-- BEGIN PAGE LEVEL SCRIPTS -->
+        
+        <!-- END PAGE LEVEL SCRIPTS -->
+        <!-- BEGIN THEME LAYOUT SCRIPTS -->
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/layouts/layout3/scripts/layout.min.js" type="text/javascript"></script>
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/layouts/layout3/scripts/demo.min.js" type="text/javascript"></script>
+        <script src="http://tti.pertanian.go.id/addons/default/themes/sitoni/assets/layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
+        <!-- END THEME LAYOUT SCRIPTS -->
+  </body>
+
+</html>

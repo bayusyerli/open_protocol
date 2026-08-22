@@ -1,0 +1,1815 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+<title>Badan Pangan Nasional - Home</title>
+<meta name="description" content="">
+<meta name="title" content="Home">
+<meta name="author" content="Badan Pangan Nasional">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Badan Pangan Nasional">
+<link rel="icon" type="image/png" href="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/img/fav.png">
+<link href="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/slick-carousel/slick.css" rel="stylesheet">
+<link href="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/slick-carousel/slick-theme.css" rel="stylesheet">
+<link href="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/photoswipe/photoswipe.css" rel="stylesheet">
+<link href="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.css" rel="stylesheet">
+<!-- <link href="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/css/style.min.css?" rel="stylesheet"> -->
+<link href="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/css/style.css?" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tw-elements/dist/css/index.min.css" />
+<script src="https://cdn.tailwindcss.com"></script>
+<!-- <script src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/tailwind.3.2.1.js"></script> -->
+<script src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<script src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/slick-carousel/slick.min.js"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        fontFamily: {
+          sans: ['Inter', 'sans-serif'],
+        },
+        animation: {
+          marquee: 'marquee 45s linear infinite',
+          marquee2: 'marquee2 45s linear infinite',
+        },
+        keyframes: {
+          marquee: {
+            '0%': { transform: 'translateX(0%)' },
+            '100%': { transform: 'translateX(-100%)' },
+          },
+          marquee2: {
+            '0%': { transform: 'translateX(100%)' },
+            '100%': { transform: 'translateX(0%)' },
+          },
+        },
+      }
+    }
+  }
+</script>
+<script src="/modules/system/assets/js/framework-bundle.js"></script>
+<link rel="stylesheet" property="stylesheet" href="/modules/system/assets/css/framework-extras.css">
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const fetchRunningTextData = () => {
+            const apiUrl = '/api/panel-harga/' + document.getElementById('tanggal').value + '/' + document.getElementById('jenis_pedagang').value;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const runningTextContainer = document.getElementById('runningTextContainer');
+                    runningTextContainer.innerHTML = '<span><b>Update Harga Pangan Nasional -> &nbsp; </b></span>';
+
+                    data.data.forEach(item => {
+                        const name = item.name;
+                        const averagePrice = item.geomean;
+
+                        const priceElement = document.createElement('div');
+                        priceElement.classList.add('flex', 'space-x-5');
+                        priceElement.innerHTML = `&nbsp; <b>${name}</b>&nbsp;: Rp${averagePrice.toLocaleString('id-ID')} &nbsp; | &nbsp;`;
+                        runningTextContainer.appendChild(priceElement);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        };
+
+        // Fetch data on page load
+        fetchRunningTextData();
+
+        // Optionally, you can set an interval to update the data periodically
+        setInterval(fetchRunningTextData, 3000); // Update every 60 seconds
+    });
+</script>
+<script type="module">
+    import PhotoSwipeLightbox from "https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/photoswipe/photoswipe-lightbox.esm.min.js";
+    import PhotoSwipeModule from  "https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/photoswipe/photoswipe.esm.min.js";
+    import PhotoSwipeDynamicCaption from "https://badanpangan.go.id/themes/badan-pangan-nasional/assets/vendor/photoswipe-dynamic-caption-plugin/photoswipe-dynamic-caption-plugin.esm.js";
+
+    window.PhotoSwipeLightbox = PhotoSwipeLightbox;
+    window.PhotoSwipeModule = PhotoSwipeModule;
+    window.PhotoSwipeDynamicCaption = PhotoSwipeDynamicCaption;
+</script>  <meta name="turbo-visit-control" content="reload" />
+</head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-3TDYVTTCQ6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-3TDYVTTCQ6');
+</script>
+<script src="https://cdn.jsdelivr.net/npm/sienna-accessibility@latest/dist/sienna-accessibility.umd.js" defer></script>
+<body>
+  <header>
+    
+    
+
+
+<div class="relative z-[100]">
+  <div class="menu-scroll">
+    <div class="text-white bg-[#1e7816]">
+      <div class="container mx-auto flex flex-wrap space-x-2 px-5 md:px-10 py-2">
+                  <a href="https://www.instagram.com/badanpangannasional/" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/instagram-white.png" alt="" class="h-5"></a>
+                  <a href="https://twitter.com/badanpangan" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/twitter-white.png" alt="" class="h-5"></a>
+                  <a href="https://www.facebook.com/badanpangan/" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/facebook-white.png" alt="" class="h-5"></a>
+                  <a href="https://www.youtube.com/@badanpangannasionalofficial" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/youtube-white.png" alt="" class="h-5"></a>
+              </div>
+    </div>
+    <div class="bg-[#f6f6f2] drop-shadow-lg">
+      <div class="container mx-auto px-5 md:px-10 text-gray-700 dark-mode:text-gray-200 dark-mode:bg-gray-800">
+        <div x-data="{ open: false }" class="flex flex-col md:items-center md:justify-between md:flex-row">
+          <div class="p-4 pl-0 flex flex-row items-center justify-between">
+            <a href="https://badanpangan.go.id" class="text-lg font-semibold tracking-widest uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/logo-trans.png" alt=""></a>
+            <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
+              <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
+                <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
+                <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+              </svg>
+            </button>
+          </div>
+
+          <nav :class="{'block': open, 'hidden': !open}" class="md:block z-10" id="top-nav">
+            <ul class="flex flex-col flex-grow pb-4 md:pb-0 md:justify-end md:flex-row md:space-x-2">
+              <!-- Beranda -->
+              <li class="block">
+                <a href="https://badanpangan.go.id" class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Home</a>
+              </li>
+
+                      
+      
+                        
+                              <li class="group/level-0 block">
+              <a href="javascript:void(0);" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:mt-0 md:ml-1 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 font-semibold flex-1">Profil</span>
+                <span>
+                  <svg class="inline fill-current h-4 w-4 transform group-hover/level-0:-rotate-180
+              transition duration-150 ease-in-out align-sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white rounded-md transform scale-0 group-hover/level-0:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/sejarah" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Sejarah</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/visi-misi" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Visi-Misi</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/tugas-fungsi" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Tugas Fungsi</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/logo" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Logo</a>
+                      </li>
+        
+      
+    
+      
+                        
+                              <li class="relative group/level-1">
+              <a href="javascript:void(0);" class="w-full text-left flex items-center outline-none focus:outline-none min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 flex-1">Profil Pejabat</span>
+                <span class="mr-auto">
+                  <svg class="fill-current h-4 w-4
+              transition duration-150 ease-in-out -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white border rounded-md absolute top-0 right-1 transition duration-150 ease-in-out origin-top-left min-w-96 text-gray-700 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 translate-x-full scale-0 group-hover/level-1:translate-x-[101%] group-hover/level-1:scale-100 hidden group-hover/level-1:block">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/profil-pejabat-badan-pangan-nasional" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Profil Pejabat Badan Pangan Nasional</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/profil-kepala-badan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Kepala Badan Pangan Nasional</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/sekretariat-utama" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Plt. Sekretaris Utama</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/deputi-bidang-ketersediaan-dan-stabilisasi-pangan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Deputi I Bidang Ketersediaan Dan Stabilisasi Pangan</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/deputi-iii-bidang-penganekaragaman-konsumsi-dan-keamanan-pangan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Deputi III Bidang Penganekaragaman Konsumsi Dan Keamanan Pangan</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/struktur" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Struktur Organisasi</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+      
+                        
+                              <li class="group/level-0 block">
+              <a href="javascript:void(0);" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:mt-0 md:ml-1 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 font-semibold flex-1">Program</span>
+                <span>
+                  <svg class="inline fill-current h-4 w-4 transform group-hover/level-0:-rotate-180
+              transition duration-150 ease-in-out align-sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white rounded-md transform scale-0 group-hover/level-0:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/kebijakan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">JDIH (REGULASI PERATURAN BAPANAS)</a>
+                      </li>
+        
+      
+    
+      
+                        
+                              <li class="relative group/level-1">
+              <a href="javascript:void(0);" class="w-full text-left flex items-center outline-none focus:outline-none min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 flex-1">Kegiatan</span>
+                <span class="mr-auto">
+                  <svg class="fill-current h-4 w-4
+              transition duration-150 ease-in-out -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white border rounded-md absolute top-0 right-1 transition duration-150 ease-in-out origin-top-left min-w-96 text-gray-700 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 translate-x-full scale-0 group-hover/level-1:translate-x-[101%] group-hover/level-1:scale-100 hidden group-hover/level-1:block">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/pasokan-dan-harga-pangan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Pasokan dan Harga Pangan</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/kerawanan-pangan-dan-gizi" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Kerawanan Pangan dan Gizi</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/ketersediaan-pangan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Ketersediaan Pangan</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/keamanan-pangan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Keamanan Pangan</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/konsumsi-pangan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Konsumsi Pangan</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+      
+                        
+                              <li class="group/level-0 block">
+              <a href="javascript:void(0);" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:mt-0 md:ml-1 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 font-semibold flex-1">PPID</span>
+                <span>
+                  <svg class="inline fill-current h-4 w-4 transform group-hover/level-0:-rotate-180
+              transition duration-150 ease-in-out align-sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white rounded-md transform scale-0 group-hover/level-0:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/ppid" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">PROFIL PPID BADAN PANGAN NASIONAL</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/layanan-dan-akses-informasi-publik" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Layanan dan Akses Informasi Publik</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/prosedur-ppid" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Prosedur PPID</a>
+                      </li>
+        
+      
+    
+      
+                        
+                              <li class="relative group/level-1">
+              <a href="javascript:void(0);" class="w-full text-left flex items-center outline-none focus:outline-none min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 flex-1">Informasi Berkala</span>
+                <span class="mr-auto">
+                  <svg class="fill-current h-4 w-4
+              transition duration-150 ease-in-out -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white border rounded-md absolute top-0 right-1 transition duration-150 ease-in-out origin-top-left min-w-96 text-gray-700 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 translate-x-full scale-0 group-hover/level-1:translate-x-[101%] group-hover/level-1:scale-100 hidden group-hover/level-1:block">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/badan-pangan-nasional" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">BADAN PANGAN NASIONAL</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/informasi-serta-merta" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Informasi Serta-Merta</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/informasi-setiap-saat" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Informasi Setiap Saat</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/tata-cara-pengaduan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Tata Cara Pengaduan</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/wiki/laporan-bulanan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Laporan Bulanan</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+
+              <!-- Static Pages -->
+                      
+      
+                        
+                  <li class="block">
+                          <a href="/pengumuman" class="block px-4 py-2 mt-2 text-sm font-semibold rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Pengumuman</a>
+                      </li>
+        
+      
+    
+      
+                        
+                              <li class="group/level-0 block">
+              <a href="javascript:void(0);" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:mt-0 md:ml-1 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 font-semibold flex-1">Media</span>
+                <span>
+                  <svg class="inline fill-current h-4 w-4 transform group-hover/level-0:-rotate-180
+              transition duration-150 ease-in-out align-sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white rounded-md transform scale-0 group-hover/level-0:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="/galeri/foto" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Galeri Foto</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="/galeri/video" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Galeri Video</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+      
+                        
+                              <li class="group/level-0 block">
+              <a href="javascript:void(0);" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:w-auto md:mt-0 md:ml-1 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 font-semibold flex-1">Publikasi</span>
+                <span>
+                  <svg class="inline fill-current h-4 w-4 transform group-hover/level-0:-rotate-180
+              transition duration-150 ease-in-out align-sub" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white rounded-md transform scale-0 group-hover/level-0:scale-100 absolute transition duration-150 ease-in-out origin-top min-w-32 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="/agenda-kegiatan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Agenda Kegiatan</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="/standar-pelayanan" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Standar pelayanan</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://badanpangan.go.id/skm" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Survei Kepuasan Masyarakat</a>
+                      </li>
+        
+      
+    
+      
+    
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="https://pustaka.badanpangan.go.id/" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Buku Digital</a>
+                      </li>
+        
+      
+    
+      
+                        
+                              <li class="relative group/level-1">
+              <a href="javascript:void(0);" class="w-full text-left flex items-center outline-none focus:outline-none min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">
+                <span class="pr-1 flex-1">Jadwal Rilis</span>
+                <span class="mr-auto">
+                  <svg class="fill-current h-4 w-4
+              transition duration-150 ease-in-out -rotate-90" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                    <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" />
+                  </svg>
+                </span>
+              </a>
+              <ul class="bg-white border rounded-md absolute top-0 right-1 transition duration-150 ease-in-out origin-top-left min-w-96 text-gray-700 shadow-lg px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800 translate-x-full scale-0 group-hover/level-1:translate-x-[101%] group-hover/level-1:scale-100 hidden group-hover/level-1:block">
+                        
+      
+                        
+                  <li class="block">
+                          <a href="/jadwal-rilis-2023" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">2023</a>
+                      </li>
+        
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="/jadwal-rilis-2024" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">2024</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+      
+                        
+                  <li class="block">
+                          <a href="/katalog-data" class="min-w-[200px] block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline">Katalog Data</a>
+                      </li>
+        
+      
+    
+              </ul>
+            </li>
+                  
+      
+    
+              <!-- [END] Static Pages -->
+
+                              <!-- <li class="block">
+                    <a href="https://badanpangan.go.id/secret-admin" class="block px-4 py-2 mt-2 text-sm font-semibold text-white bg-[#1e7816] rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:bg-[#1e7816] hover:text-white focus:bg-[#1e7816] focus:text-white focus:outline-none focus:shadow-outline" target="backend">Backend Area</a>
+                </li> -->
+              
+                          </ul>
+          </nav>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+    <style>
+    /* Slider */
+.slick-slider {
+    position: relative;
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.slick-list {
+    position: relative;
+
+    display: block;
+    overflow: hidden;
+
+    margin: 0;
+    padding: 0;
+}
+
+.slick-list:focus {
+    outline: none;
+}
+
+.slick-list.dragging {
+    cursor: pointer;
+    cursor: hand;
+}
+
+.slick-slider .slick-track,
+.slick-slider .slick-list {
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    -o-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+
+.slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block;
+  max-height: 700px;
+  /* overflow: hidden; */
+}
+
+.slick-track:before,
+.slick-track:after {
+    display: table;
+
+    content: '';
+}
+
+.slick-track:after {
+    clear: both;
+}
+
+.slick-loading .slick-track {
+    visibility: hidden;
+}
+
+.slick-slide {
+    display: none;
+    float: left;
+    height: 100%;
+    min-height: 1px;
+    width: 100%;
+
+    &:focus,
+    &:hover {
+        outline: 0;
+    }
+}
+
+[dir='rtl'] .slick-slide {
+    float: right;
+}
+
+.slick-slide img {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+.slick-slide.slick-loading img {
+    display: none;
+}
+
+.slick-slide.dragging img {
+    pointer-events: none;
+}
+
+.slick-initialized .slick-slide {
+    display: block;
+}
+
+.slick-loading .slick-slide {
+    visibility: hidden;
+}
+
+.slick-vertical .slick-slide {
+    display: block;
+
+    height: auto;
+
+    border: 1px solid transparent;
+}
+
+.slick-arrow.slick-hidden {
+    display: none;
+}
+
+/* Slider */
+.slick-loading .slick-list {
+    background: #fff url('./ajax-loader.gif') center center no-repeat;
+}
+
+/* Arrows */
+.slick-prev,
+.slick-next {
+    font-size: 0;
+    line-height: 0;
+
+    position: absolute;
+    top: 50%;
+
+    display: block;
+
+    width: 48px;
+    height: 48px;
+    padding: 0;
+    -webkit-transform: translate(0, -50%);
+    -ms-transform: translate(0, -50%);
+    transform: translate(0, -50%);
+
+    cursor: pointer;
+
+    color: transparent;
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.slick-prev:hover,
+.slick-prev:focus,
+.slick-next:hover,
+.slick-next:focus {
+    color: transparent;
+    outline: none;
+    background: transparent;
+}
+
+.slick-prev:hover:before,
+.slick-prev:focus:before,
+.slick-next:hover:before,
+.slick-next:focus:before {
+    opacity: 1;
+}
+
+.slick-prev.slick-disabled:before,
+.slick-next.slick-disabled:before {
+    opacity: .25;
+}
+
+.slick-prev:before,
+.slick-next:before {
+    font-family: 'FontAwesome';
+    font-size: 48px;
+  font-weight: bold;
+    line-height: 1;
+
+    opacity: .75;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  transition: opacity 0.25s;
+}
+
+.slick-prev {
+    left: 0;
+    z-index: 1;
+}
+
+[dir='rtl'] .slick-prev {
+    right: 0;
+    left: auto;
+}
+
+.slick-prev:before {
+    content: '\f104';
+}
+
+[dir='rtl'] .slick-prev:before {
+    content: '\f105';
+}
+
+.slick-next {
+    right: 0;
+}
+
+[dir='rtl'] .slick-next {
+    right: auto;
+    left: 0;
+}
+
+.slick-next:before {
+    content: '\f105';
+}
+
+[dir='rtl'] .slick-next:before {
+    content: '\f104';
+}
+
+/* Dots */
+.slick-dotted.slick-slider {
+    margin-bottom: 0;
+}
+
+.slick-dots {
+    position: absolute;
+    bottom: 16px;
+
+    display: block;
+
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+    list-style: none;
+
+    text-align: center;
+}
+
+.slick-dots li {
+    position: relative;
+
+    display: inline-block;
+
+    width: 10px;
+    height: 10px;
+    margin: 0 6px;
+    padding: 0;
+
+    cursor: pointer;
+}
+
+.slick-dots li button {
+    font-size: 0;
+    line-height: 0;
+
+    display: block;
+
+    width: 10px;
+    height: 10px;
+    padding: 8px;
+
+    cursor: pointer;
+
+    color: transparent;
+    border: 0;
+    outline: none;
+    background: transparent;
+}
+
+.slick-dots li button:hover,
+.slick-dots li button:focus {
+    outline: none;
+}
+
+.slick-dots li button:hover:before,
+.slick-dots li button:focus:before {
+    opacity: 1;
+}
+
+.slick-dots li button:before {
+    font-family: 'FontAwesome';
+    font-size: 10px;
+    line-height: 1;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 10px;
+    height: 10px;
+
+    content: '\f111';
+    text-align: center;
+
+    opacity: .25;
+    color: white;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: opacity 0.25s;
+}
+
+.slick-dots li.slick-active button:before {
+    opacity: .75;
+    color: white;
+}
+
+/**
+ * Photo
+ */
+
+/* For Desktop View */
+@media screen and (min-width: 1024px) {
+.caption-jumbroton{
+        font-size: 2em;
+        line-height: 50%;
+    }
+
+    .desc-jumbroton{
+        font-size: 1.5em;
+        line-height: 0;
+    }
+    .photo {
+      background-size: cover;
+      background-position: center center;
+      min-height: 400px;
+      max-height:700px;
+      padding-bottom: 0%;
+      will-change: transform;
+      
+      &.is-animating {
+        animation: scale 5s ease-in-out forwards;
+      }
+      
+      &:before {
+        content: "";
+        display: block;
+      }
+      
+      * > {
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+      }
+
+    }
+}
+ 
+/* For Tablet View */
+@media screen and (min-device-width: 768px)
+and (max-device-width: 1023px) {
+.photo {
+      background-size: cover;
+      background-position: center center;
+      min-height: 250px;
+      max-height: 400px;
+      padding-bottom: 0%;
+      will-change: transform;
+      
+      &.is-animating {
+        animation: scale 5s ease-in-out forwards;
+      }
+    
+      &:before {
+        content: "";
+        display: block;
+      }
+      * > {
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+      }
+    }
+    .caption-jumbroton{
+        font-size: 1.5em;
+        line-height: 1;
+    }
+    .desc-jumbroton{
+        font-size: 1em;
+        line-height: 1;
+    }
+}
+ 
+/* For Mobile Portrait View */
+@media screen and (min-device-width: 320px)
+and (max-device-width: 757px) {
+.photo {
+      background-size: cover;
+      background-position: center center;
+      min-height: 150px;
+      max-height: 300px;
+      padding-bottom: 0%;
+      will-change: transform;
+      
+      &.is-animating {
+        animation: scale 5s ease-in-out forwards;
+      }
+    
+      &:before {
+        content: "";
+        display: block;
+      }
+      * > {
+            display: block;
+            height: 100%;
+            left: 0;
+            position: absolute;
+            top: 0;
+            width: 100%;
+      }
+    }
+    .caption-jumbroton{
+        font-size: 1em;
+        line-height: 1;
+    }
+    .desc-jumbroton{
+        font-size: 0.5em;
+        line-height: 1;
+    }
+}
+ 
+/* For Mobile Landscape View */
+@media screen and (max-device-width: 640px)
+and (orientation: landscape) {
+
+}
+ 
+/* For Mobile Phones Portrait or Landscape View */
+@media screen and (max-device-width: 640px) {
+
+}
+ 
+/* For iPhone 4 Portrait or Landscape View */
+@media screen and (min-device-width: 320px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+ 
+/* For iPhone 5 Portrait or Landscape View */
+@media (device-height: 568px) and (device-width: 320px)
+and (-webkit-min-device-pixel-ratio: 2) {
+
+}
+ 
+/* For iPhone 6 and 6 plus Portrait or Landscape View */
+@media (min-device-height: 667px) and (min-device-width: 375px)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+
+@keyframes scale {
+    0% {
+        transform: scale(1.0);
+    }
+    100% {
+        transform: scale(1.1) rotate(0.01deg); // Rotate fixes shaking animation in some browsers. http://stackoverflow.com/questions/28992549/internet-explorer-and-css-transform-value-of-scale-on-keyframes
+    }
+}
+
+/**
+ * Wrapper
+ */
+.carousel-caption {
+    position: absolute;
+    right: 15%;
+    bottom: 3px;
+    left: 15%;
+    z-index: 10;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #fff;
+    text-align: center;
+}
+.wrapper {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 45em;
+  width: 90%;
+}
+</style>
+<div class="slick-slider js-slick">
+      <div class="photo" style="background-image: url('https://badanpangan.go.id/storage/app/media/2025/banner-800-x-244-px-3.webp');background-repeat: no-repeat">
+        <div class="carousel-caption">
+          <div>
+            <p class= ".fr-element.fr-view h3fr caption-jumbroton" style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);"><b>PANGAN KUAT INDONESIA BERDAULAT</b></p>
+            <p class= "desc-jumbroton" style="text-shadow: 2px 4px 3px rgba(0,0,0,0.3);"></p>
+          </div>
+        </div>
+  </div>
+
+  </div>
+<script>
+    $(document).ready(function () {
+  $('.js-slick').slick({
+    autoplay: true,
+    autoplaySpeed: 5000,
+    dots: true,
+    draggable: false,
+    fade: true,
+    speed: 1000
+  });
+  
+  $('.js-slick').on('beforeChange', function(event, slick, currentSlide, nextSlide) {
+    $(slick.$slides).removeClass('is-animating');
+  });
+  
+  $('.js-slick').on('afterChange', function(event, slick, currentSlide, nextSlide) {
+    $(slick.$slides.get(currentSlide)).addClass('is-animating');
+  });
+});
+    
+</script>    
+  </header>
+
+  <style>
+
+    #other-links .slick-prev,
+    #other-links .slick-next {
+        width: 42px;
+        height: 42px;
+        background-color: #1e7816 !important;
+        border-radius: 9999px;
+        z-index: 10;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+
+    #other-links .slick-prev:hover,
+    #other-links .slick-next:hover {
+        background-color: #145a10 !important;
+    }
+
+    #other-links .slick-prev:before,
+    #other-links .slick-next:before {
+        color: #ffffff !important;
+        opacity: 1 !important;
+        font-size: 20px !important;
+    }
+    
+    .videoWrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 */
+      height: 0;
+    }
+    .videoWrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .custom-search-input {
+        padding: 10px 15px;
+        border: 2px solid #f6f6f2;
+        border-radius: 20px 0 0 20px;
+        transition: border-color 0.3s ease;
+        width: 100%;
+    }
+
+    .custom-search-input:focus {
+        border-color: #1e7816;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    .btn-primary {
+        border-radius: 0 20px 20px 0;
+        background-color: #1e7816;
+        border-color: #1e7816;
+        color: #ffffff;
+        height: 47px;
+        width: 120px;
+    }
+
+    .btn-primary:hover {
+        background-color: #1e7816;
+        border-color: #1e7816;
+    }
+
+    .input-group.search-bar {
+        display: flex;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    @media (max-width: 768px) {
+        .input-group.search-bar {
+            flex-direction: column;
+            width: 100%;
+        }
+
+        .custom-search-input, .btn-primary {
+            border-radius: 20px;
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        .btn-primary {
+            margin-top: 10px;
+        }
+    }
+    .marquee {
+        display: flex;
+        white-space: nowrap;
+        animation: marquee 100s linear infinite;
+        direction: right;
+   
+    }
+
+    @keyframes marquee {
+        0% {
+            transform: translateX(10%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
+</style>
+<meta name="description" content="Berita Terbaru · Harga Pangan · Peta Ketahanan dan Kerentanan Pangan · Aplikasi Kami · Tautan Lain · Media · Social Media. Tweets by BadanPangan.">
+
+
+
+
+
+
+<div class="bg-[#edbb1e] text-[#1e7816] drop-shadow-xl text-right py-4 text-base">
+    <div class="relative flex overflow-x-hidden">
+        <div class="animate-marquee whitespace-nowrap" style="animation: marquee 30s linear infinite">
+            <div class="flex space-x-5">
+                <p>Selamat Datang di Website Badan Pangan Nasional</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-full bg-[#f1f1f1] py-8">
+    <div class="container mx-auto px-5 md:px-10">
+        <h1 class="text-2xl lg:text-5xl font-bold mb-4 text-center text-[#1e7816]">Berita Terbaru</h1>
+        <div class="w-28 bg-[#cccccc] h-2 mb-10 rounded-full mx-auto"></div>
+
+        <!-- Search Form -->
+        <div class="text-center mb-8">
+            <form action="/blog/search" method="get">
+                <div class="input-group search-bar justify-center">
+                    <input type="text" name="term" class="form-control custom-search-input" placeholder="Cari Berita">
+                    <button type="submit" class="btn btn-primary">Cari Berita</button>
+                </div>
+            </form>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10 gap-y-16">
+                        <div class="drop-shadow-xl bg-[#eeeeee] h-full rounded-t-xl">
+                <div>
+                                        <img src="https://badanpangan.go.id/storage/app/media/2026/8.%20Agustus/WhatsApp%20Image%202026-08-20%20at%2008.15.51.jpeg" class="object-cover w-full h-64 rounded-t-xl" alt="">
+                                    </div>
+                <div class="relative mb-[30px]">
+                    <div class="text-white text-center bg-[#1e7816] absolute top-[-35px] right-[18px] w-[70px] border-4 border-white py-2">
+                        <div class="text-2xl font-bold leading-6">20</div>
+                        <div class="text-xl leading-6">Agt</div>
+                    </div>
+                </div>
+                                <div class="p-5">
+                    <div class="mb-5 font-bold text-xl text-[#1e7816] text-justify">
+                        <a href="https://badanpangan.go.id/blog/post/perkuat-jaring-pengaman-bagi-peternak-mikro-bapanas-usul-tambahan-150-ribu-ton-sphp-jagung-pakan">Perkuat Jaring Pengaman bagi Peternak Mikro, Bapanas Usul Tambahan 150 Ribu Ton SPHP Jagung Pakan</a>
+                    </div>
+                </div>
+            </div>
+                        <div class="drop-shadow-xl bg-[#eeeeee] h-full rounded-t-xl">
+                <div>
+                                        <img src="https://badanpangan.go.id/storage/app/media/2026/8.%20Agustus/WhatsApp%20Image%202026-08-20%20at%2007.24.34.jpeg" class="object-cover w-full h-64 rounded-t-xl" alt="">
+                                    </div>
+                <div class="relative mb-[30px]">
+                    <div class="text-white text-center bg-[#1e7816] absolute top-[-35px] right-[18px] w-[70px] border-4 border-white py-2">
+                        <div class="text-2xl font-bold leading-6">20</div>
+                        <div class="text-xl leading-6">Agt</div>
+                    </div>
+                </div>
+                                <div class="p-5">
+                    <div class="mb-5 font-bold text-xl text-[#1e7816] text-justify">
+                        <a href="https://badanpangan.go.id/blog/post/dari-tenda-pengungsian-bantuan-pangan-topang-warga-ntt-pascagemp">Dari Tenda Pengungsian, Bantuan Pangan Topang Warga NTT Pascagemp</a>
+                    </div>
+                </div>
+            </div>
+                        <div class="drop-shadow-xl bg-[#eeeeee] h-full rounded-t-xl">
+                <div>
+                                        <img src="https://badanpangan.go.id/storage/app/media/2026/8.%20Agustus/WhatsApp%20Image%202026-08-19%20at%2020.22.54.jpeg" class="object-cover w-full h-64 rounded-t-xl" alt="">
+                                    </div>
+                <div class="relative mb-[30px]">
+                    <div class="text-white text-center bg-[#1e7816] absolute top-[-35px] right-[18px] w-[70px] border-4 border-white py-2">
+                        <div class="text-2xl font-bold leading-6">20</div>
+                        <div class="text-xl leading-6">Agt</div>
+                    </div>
+                </div>
+                                <div class="p-5">
+                    <div class="mb-5 font-bold text-xl text-[#1e7816] text-justify">
+                        <a href="https://badanpangan.go.id/blog/post/bawa-langsung-bantuan-pangan-langkah-cepat-kepala-bapanas-amran-pastikan-beras-pengungsi-ntt-aman">Bawa Langsung Bantuan Pangan, Langkah Cepat Kepala Bapanas Amran Pastikan Beras Pengungsi NTT Aman</a>
+                    </div>
+                </div>
+            </div>
+                        <div class="drop-shadow-xl bg-[#eeeeee] h-full rounded-t-xl">
+                <div>
+                                        <img src="https://badanpangan.go.id/storage/app/media/2026/8.%20Agustus/WhatsApp%20Image%202026-08-19%20at%2010.47.47.jpeg" class="object-cover w-full h-64 rounded-t-xl" alt="">
+                                    </div>
+                <div class="relative mb-[30px]">
+                    <div class="text-white text-center bg-[#1e7816] absolute top-[-35px] right-[18px] w-[70px] border-4 border-white py-2">
+                        <div class="text-2xl font-bold leading-6">19</div>
+                        <div class="text-xl leading-6">Agt</div>
+                    </div>
+                </div>
+                                <div class="p-5">
+                    <div class="mb-5 font-bold text-xl text-[#1e7816] text-justify">
+                        <a href="https://badanpangan.go.id/blog/post/bapanas-perkuat-peran-ahli-untuk-dukung-ketahanan-pangan">Bapanas Perkuat Peran Ahli untuk Dukung Ketahanan Pangan</a>
+                    </div>
+                </div>
+            </div>
+                        <div class="drop-shadow-xl bg-[#eeeeee] h-full rounded-t-xl">
+                <div>
+                                        <img src="https://badanpangan.go.id/storage/app/media/2026/8.%20Agustus/WhatsApp%20Image%202026-08-18%20at%2009.45.05.jpeg" class="object-cover w-full h-64 rounded-t-xl" alt="">
+                                    </div>
+                <div class="relative mb-[30px]">
+                    <div class="text-white text-center bg-[#1e7816] absolute top-[-35px] right-[18px] w-[70px] border-4 border-white py-2">
+                        <div class="text-2xl font-bold leading-6">19</div>
+                        <div class="text-xl leading-6">Agt</div>
+                    </div>
+                </div>
+                                <div class="p-5">
+                    <div class="mb-5 font-bold text-xl text-[#1e7816] text-justify">
+                        <a href="https://badanpangan.go.id/blog/post/mbg-bikin-hasil-petani-dan-peternak-makin-terserap">MBG Bikin Hasil Petani dan Peternak Makin Terserap</a>
+                    </div>
+                </div>
+            </div>
+                        <div class="drop-shadow-xl bg-[#eeeeee] h-full rounded-t-xl">
+                <div>
+                                        <img src="https://badanpangan.go.id/storage/app/media/2026/8.%20Agustus/WhatsApp%20Image%202026-08-18%20at%2012.14.11%20PM.jpeg" class="object-cover w-full h-64 rounded-t-xl" alt="">
+                                    </div>
+                <div class="relative mb-[30px]">
+                    <div class="text-white text-center bg-[#1e7816] absolute top-[-35px] right-[18px] w-[70px] border-4 border-white py-2">
+                        <div class="text-2xl font-bold leading-6">18</div>
+                        <div class="text-xl leading-6">Agt</div>
+                    </div>
+                </div>
+                                <div class="p-5">
+                    <div class="mb-5 font-bold text-xl text-[#1e7816] text-justify">
+                        <a href="https://badanpangan.go.id/blog/post/kepala-bapanas-amran-lantik-12-pejabat-pimpinan-tinggi-pratama-tegaskan-jangan-kkn">Kepala Bapanas Amran Lantik 12 Pejabat Pimpinan Tinggi Pratama, Tegaskan Jangan KKN</a>
+                    </div>
+                </div>
+            </div>
+                    </div>
+        <p class="my-10 text-center"><a href="https://badanpangan.go.id/berita" class="bg-[#1e7816] rounded-full drop-shadow-lg text-white py-2 px-4">Selengkapnya</a></p>
+    </div>
+</div>
+
+
+    
+<div class="w-full bg-white py-16">
+    <div class="container mx-auto px-5 md:px-10">
+        <h1 class="text-2xl lg:text-5xl font-bold mb-4 text-center text-[#1f7715]">Peta Ketahanan dan Kerentanan Pangan</h1>
+        <section class="hero container max-w-screen-lg mx-auto pb-10 flex justify-center">
+            <img src="https://badanpangan.go.id/storage/app/media/cropped-images/0.%20fsva_2025_komposit_page-0001-0-0-0-0-1756371353.jpg" alt="" class="text-center">
+        </section>
+        <div class="mb-5 text-center">
+            <h5 class="text-md font-bold mb-4 text-center text-[#1f7715]">Untuk lebih detilnya, silahkan klik tombol di bawah</h5>
+            <a href="https://fsva.badanpangan.go.id/" target="_blank" class="bg-red-500 rounded-lg inline-block text-xl p-3 text-white">Buka Peta Ketahanan dan Kerentanan Pangan</a>
+        </div>
+                <!-- <div class="grid md:grid-cols-3 gap-10">
+          <div class="px-6 py-4 rounded-full bg-white font-bold text-center text-4xl text-[#1f7715]">Aman</div>
+          <div class="px-6 py-4 rounded-full bg-[#edbb1e] font-bold text-center text-4xl text-[#1f7715]">Cukup Rawan</div>
+          <div class="px-6 py-4 rounded-full bg-[#c40c0c] font-bold text-center text-4xl text-white">Sangat Rawan</div>
+        </div> -->
+    </div>
+</div>
+
+<div id="other-links" class="w-full bg-[#f6f6f2] py-8">
+    <div class="container mx-auto px-5 md:px-10">
+        <h1 class="text-2xl lg:text-5xl font-bold mb-4 text-center text-[#1e7816]">Aplikasi Kami</h1>
+        <div class="w-28 bg-[#cccccc] h-2 mb-10 rounded-full mx-auto"></div>
+        <div class="slick-wrapper py-10">
+                        <div class="px-8">
+                <a href="https://esakip.badanpangan.go.id/login/log_in"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/2026/Logo%20e-SAKIP.jpg'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://pustaka.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/2026/Logo%20Pustaka%20NFA.jpg'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://data.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/logosdp.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://jdih.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/2024/JDIH/JDIH%20NFA_1_.jpg'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://sbp.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/Stop%20Boro%20Pangan.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://csirt.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/SWKV8fdg244whnkSPUYeTJBcAdOIhCSbbWduOVaI-removebg-preview.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://fsva.badanpangan.go.id"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/logo-fsva.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://proyeksineracapangan.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/logo-neracapangan.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://sapa.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/icon%20sapa2.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://sipangan.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/logo_SiPangan.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://sinbm.badanpangan.go.id/national?year=2024&amp;tab=calories"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/logo-nbm.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://sipsat.badanpangan.go.id/"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/Logo-PSAT.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://badanpangan.go.id/wiki/layanan-dan-akses-informasi-publik"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/PPID.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://data.badanpangan.go.id/visualizations/3"  target="_blank"                    class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/Screenshot%202026-06-30%20113619.png'); height: 200px;"></span>
+                </a>
+            </div>
+                    </div>
+    </div>
+</div>
+
+
+<div id="other-links" class="w-full bg-[#f6f6f2] py-8">
+    <div class="container mx-auto px-5 md:px-10">
+        <h1 class="text-2xl lg:text-5xl font-bold mb-4 text-center text-[#1e7816]">Tautan Lain</h1>
+        <div class="w-28 bg-[#cccccc] h-2 mb-10 rounded-full mx-auto"></div>
+        <div class="slick-wrapper py-10">
+                        <div class="px-8">
+                <a href="https://prod.lapor.go.id/" target="_blank" class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/laporgoid.png'); height: 200px;"></span>
+                </a>
+            </div>
+                        <div class="px-8">
+                <a href="https://katalog.data.go.id/organization/badan-pangan-nasional" target="_blank" class="block p-5 bg-white drop-shadow rounded-xl">
+                    <span class="block bg-center bg-contain bg-no-repeat " style="background-image: url('https://badanpangan.go.id/storage/app/media/2023-03-21-140158.410522logo-satu-data-id.png'); height: 200px;"></span>
+                </a>
+            </div>
+                    </div>
+    </div>
+</div>
+
+<div class="w-full bg-[#ffffff] py-16 bg-no-repeat bg-white"
+     style="background-image: url('https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/bg-video-dark.jpg'); background-position: 50% 70%;">
+    <div class="container mx-auto px-5 md:px-10">
+        <h1 class="text-2xl lg:text-5xl font-bold mb-4 text-center text-white">Media</h1>
+        <div class="w-28 bg-[#cccccc] h-2 mb-10 rounded-full mx-auto"></div>
+        <div id="first-video">
+            <iframe referrerpolicy='strict-origin-when-cross-origin'
+  src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UULFT9nnYOnvZtLyiiH9qmwSEg">
+</iframe>
+        </div>
+        <div class="grid md:grid-cols-2 gap-10 mt-10 videos">
+            <div>
+               <iframe referrerpolicy='strict-origin-when-cross-origin'
+  src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UULFT9nnYOnvZtLyiiH9qmwSEg&index=2">
+</iframe>
+            </div>
+            <div>
+          <iframe referrerpolicy='strict-origin-when-cross-origin'
+  src="https://www.youtube-nocookie.com/embed?listType=playlist&list=UULFT9nnYOnvZtLyiiH9qmwSEg&index=3">
+</iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="w-full bg-[#f6f6f2] py-16">
+    <div class="container mx-auto px-0">
+        <div class="lg:col-span-2 lg:pr-3">
+                        <!-- Jika menggunakan embed dari Instagram -->
+            <!-- <iframe src="https://www.instagram.com/p/COJ0oK5h7sQ/embed" width="400" height="480" frameborder="0" scrolling="no" allowtransparency="true"></iframe> -->
+            
+            <!-- Jika menggunakan feed dari layanan pihak ketiga -->
+            <!-- <div data-mc-src="0a670b4a-8ada-4894-b2ef-1dba58f5b0ea#instagram"></div>
+            <script
+                src="https://cdn2.woxo.tech/a.js#637f8aee1d0e7e5b6e540f31"
+                async data-usrc>
+            </script> -->
+            
+            <!-- Jika menggunakan iframe dengan URL khusus -->
+            <!--<iframe name="instagram" id="instagram" src="/instagram"
+                    class="w-full mb-10 h-[300px] sm:h-[460px] md:h-[510px] lg:h-[700px]"></iframe>-->
+            
+            <!-- Contoh penggunaan EmbedSocial -->
+                        <div class="w-full">
+                <h1 class="text-2xl lg:text-3xl font-bold mb-4 text-[#1e7816]">Social Media</h1>
+                <div class="w-full overflow-x-hidden">
+                    <a class="twitter-timeline" href="https://twitter.com/BadanPangan?ref_src=twsrc%5Etfw">Tweets by BadanPangan</a> 
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+    </div>
+</div>
+<br>
+
+
+
+
+
+
+  
+  <div class="w-full bg-[#092507] py-16 text-white text-sm">
+  <div class="container mx-auto px-5 md:px-10">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mt-10">
+      <div>
+        <img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/logo-trans.png" alt="">
+        <div class="text-4xl mt-8 font-bold">BADAN PANGAN NASIONAL &nbsp;</div>
+            <div style="height:10px;font-size:1px;"></div> 
+        <small> Sejak 25/01/2023 </small>
+                <script type="text/javascript" src="https://www.freevisitorcounters.com/en/home/counter/997102/t/0"></script>
+      </div>
+      <div>
+        <div class="mb-5 font-semibold text-2xl">Kantor</div>
+        <table class="table-transparan">
+          <tr>
+            <td class="pb-5 w-14 align-top"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/home-white.png" alt="" class="h-6"></td>
+            <td class="pb-5 align-top pl-3">Jalan Harsono RM No.3, Ragunan, Ps. Minggu, Jakarta Selatan, DKI Jakarta 12550</td>
+          </tr>
+          <tr>
+            <td class="pb-5 w-14 align-top"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/telephone-handle-silhouette-white.png" alt="" class="h-6"></td>
+            <td class="pb-5 align-top pl-3">(021) 7807377</td>
+          </tr>
+          <tr>
+            <td class="pb-5 w-14 align-top"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/envelope-white.png" alt="" class="h-6"></td>
+            <td class="pb-5 align-top pl-3">komunikasi@badanpangan.go.id</td>
+          </tr>
+        </table>
+        <div class="my-5 font-semibold text-2xl">Media Sosial</div>
+        <div class="flex flex-wrap space-x-2">
+                      <a href="https://www.instagram.com/badanpangannasional/" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/instagram-white.png" alt="" class="h-6"></a>
+                      <a href="https://twitter.com/badanpangan" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/twitter-white.png" alt="" class="h-6"></a>
+                      <a href="https://www.facebook.com/badanpangan/" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/facebook-white.png" alt="" class="h-6"></a>
+                      <a href="https://www.youtube.com/@badanpangannasionalofficial" target="_blank"><img src="https://badanpangan.go.id/themes/badan-pangan-nasional/assets/public/img/youtube-white.png" alt="" class="h-6"></a>
+                  </div>
+      </div>
+      <div>
+        <div class="mb-5 font-semibold text-2xl">Tautan Terkait</div>
+                  <div><a href="https://pertanian.go.id/" target="_blank" class="block py-2 border-b">Kementerian Pertanian</a></div>
+                  <div><a href="https://kkp.go.id/" target="_blank" class="block py-2 border-b">Kementerian Kelautan dan Perikanan</a></div>
+                  <div><a href="https://kemkes.go.id/" target="_blank" class="block py-2 border-b">Kementerian Kesehatan</a></div>
+                  <div><a href="https://www.kemendag.go.id" target="_blank" class="block py-2 border-b">Kementerian Perdagangan</a></div>
+                  <div><a href="https://www.kominfo.go.id" target="_blank" class="block py-2 border-b">Kementerian Komunikasi dan Informatika</a></div>
+                  <div><a href=" https://www.bmkg.go.id" target="_blank" class="block py-2 border-b">Badan Meteorologi, Klimatologi, dan Geofisika</a></div>
+                  <div><a href="https://www.bps.go.id" target="_blank" class="block py-2 border-b">Badan Pusat Statistik</a></div>
+                  <div><a href="https://www.big.go.id" target="_blank" class="block py-2 border-b">Badan Informasi Geospasial</a></div>
+                  <div><a href="https://www.bulog.co.id" target="_blank" class="block py-2 border-b">Perum BULOG</a></div>
+                  <div><a href="https://www.idfood.co.id" target="_blank" class="block py-2 border-b">ID FOOD</a></div>
+              </div>
+            <div class="max-w-md rounded-xl border border-emerald-200 p-5">
+  <div class="mb-2 inline-flex items-center gap-2 rounded-full bg-yellow-100 px-3 py-1 text-xs font-semibold text-emerald-900">
+    <span class="h-2 w-2 rounded-full bg-emerald-600"></span>
+    Whistleblowing System
+  </div>
+
+  <h3 class="text-base font-bold text-white">Jangan takut untuk lapor!</h3>
+  <p class="mt-1 text-sm text-white">
+    Cegah pelanggaran dengan melakukan pengaduan melalui Whistleblowing System. Hubungi:
+  </p>
+
+  <div class="mt-4 flex items-center gap-3 rounded-lg bg-white p-4">
+    <div class="flex h-9 w-9 items-center justify-center rounded-lg bg-emerald-600 text-white text-sm font-bold">
+      @
+    </div>
+
+    <div class="min-w-0">
+      <div class="text-xs text-emerald-900/60">Email</div>
+      <a
+        href="mailto:wbsbapanas@gmail.com"
+        class="text-sm font-semibold text-emerald-700 hover:text-emerald-900 underline decoration-dashed decoration-yellow-400 underline-offset-4"
+      >
+        wbsbapanas@gmail.com
+      </a>
+    </div>
+  </div>
+</div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</div>
+
+<div class="bg-[#1f7817] text-[#eeeeee] text-sm">
+  <div class="container mx-auto px-5 md:px-10 py-4">
+    <div class="flex flex-wrap justify-between">
+      <div>Copyright &copy; 2026 Badan Pangan Nasional. All Rights Reserved.</div>
+      <div class="flex flex-wrap space-x-5">
+        <a target="_blank" rel="noopener noreferrer" href="/privacy-policy">Privacy</a>
+        <a target="_blank" rel="noopener noreferrer" href="/sitemap.html">Sitemap</a>
+        <a target="_blank" rel="noopener noreferrer" href="/syarat-dan-ketentuan">Terms &amp; Conditions</a>
+      </div>
+    </div>
+
+  </div>
+</div>  
+
+  <script type="text/javascript">
+    $(() => {
+
+        $('#custom_block_1 .slick-wrapper').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 1,
+            slidesToScroll: 1
+        });
+        $('#other-links .slick-wrapper').slick({
+            dots: true,
+            infinite: false,
+            speed: 300,
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            responsive: [
+                {
+                    breakpoint: 1440,
+                    settings: {
+                        slidesToShow: 3,
+                        slidesToScroll: 3,
+                        infinite: true,
+                        dots: true
+                    }
+                },
+                {
+                    breakpoint: 960,
+                    settings: {
+                        slidesToShow: 2,
+                        slidesToScroll: 2
+                    }
+                },
+                {
+                    breakpoint: 576,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+
+        $('#first-video iframe').attr('height', 500).addClass('w-full');
+        $('.videos iframe').addClass('w-full');
+
+        // const instagramWidget = 'iframe[title="Instagram widgets for website"]';
+
+        const instagramWidget = '#instagram';
+
+        $(instagramWidget).on('load', function () {
+            $(this).contents().find('head').append(`<style>
+          .wx-title {
+            font-weight: bold;
+            font-size:  20px;
+          }
+          .wx-widget-container {
+            padding-top: 10px;
+            padding-bottom: 20px;
+            background-color: white;
+            border-radius: 12px;
+           }
+          .wx-title-container > div {
+            justify-content: start;
+          }
+          .wx-title-container img {
+            width: 60px;
+            height: 60px;
+          }
+          .wx-card {
+            cursor: pointer;
+          }
+          .wx-follow-us-link {
+            background: rgb(0, 149, 246);
+            color: white;
+            padding: 10px;
+          }
+          .wx-follow-us-link:hover {
+            color: white;
+            font-weight: bold;
+          }
+        </style>`);
+        });
+
+        const instagramChecker = setInterval(() => {
+            console.log('check IG widget');
+            // console.log($(instagramWidget).length)
+            // console.log($(instagramWidget).contents())
+            if ($(instagramWidget).contents().find('.wx-footer').length) {
+                modifyInstagramWidget();
+            }
+        }, 500);
+
+        function modifyInstagramWidget() {
+            clearInterval(instagramChecker);
+            console.log('IG check stopped.');
+            const $ig = $(instagramWidget).contents();
+            $ig.find('.wx-footer').siblings('a').remove();
+
+            $ig.on('click', '.wx-card', function () {
+                const url = $(this).find('> div').attr('href');
+                if (url) {
+                    window.open(url);
+                }
+            })
+        }
+    });
+</script>
+<script src="https://cdn.jsdelivr.net/npm/tw-elements/dist/js/index.min.js"></script>
+
+
+<!-- GetButton.io widget -->
+<script type="text/javascript">
+  (function () {
+      var options = {
+          call: "(021) 7807377", // Call phone number
+          whatsapp: "6282221009229", // WhatsApp number
+          call_to_action: "Tanya Kami", // Call to action
+          button_color: "#FF6550", // Color of button
+          position: "right", // Position may be 'right' or 'left'
+          order: "call", // Order of buttons
+      };
+      var proto = 'https:', host = "getbutton.io", url = proto + '//static.' + host;
+      var s = document.createElement('script'); s.type = 'text/javascript'; s.async = true; s.src = url + '/widget-send-button/js/init.js';
+      s.onload = function () { WhWidgetSendButton.init(host, proto, options); };
+      var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
+  })();
+</script>
+<!-- /GetButton.io widget -->
+
+<script type="text/javascript">
+	/**
+    * Make top menu follow scroll
+    */
+  var fixed_top = $(".menu-scroll");
+  $(window).on("scroll", function () {
+    if ($(this).scrollTop() > 100) {
+      fixed_top.addClass("menu-fixed animated fadeInDown");
+    } else {
+      fixed_top.removeClass("menu-fixed animated fadeInDown");
+    }
+  });
+
+  $(() => {
+      // console.log(window.location.pathname)
+      if (window.location.pathname.length > 1) {
+          $(`#top-nav>ul>li:not(#site-picker) a`).each(function(){
+              if($(this).attr('href').search(window.location.pathname) >= 0) {
+                  // console.log($(this).attr('href'))
+                  let listItem = $(this).parents("li");
+                    listItem.find('>a').toggleClass('active-top-menu')
+                  // if(firstGroup.length) {
+                  // } else {
+                  //     $(this).toggleClass('active-top-menu');
+                  // }
+              }
+          });
+      } else {
+          let host = 'https://badanpangan.go.id';
+          $(`#top-nav>ul>li:not(#site-picker)>a[href="${host}"]`).toggleClass('active-top-menu')
+      }
+  })
+</script></body>
+
+</html>
