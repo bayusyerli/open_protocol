@@ -10,6 +10,12 @@
 > Turunan dari [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md),
 > [02-tiga-pasar.md](02-tiga-pasar.md), [03-enam-pintu.md](03-enam-pintu.md),
 > ditambah benchmarking 21 sistem — 9 luar negeri, 12 Indonesia.
+>
+> **Dikoreksi 22 Agustus 2026.** Kapabilitas **C4** semula berbunyi *"PINJAM + BANGUN"*
+> dengan Panel Harga Bapanas sebagai calon pinjaman.
+> [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md) membatalkannya, dan
+> ikut menjawab pertanyaan terbuka nomor 7. Tiga belas tempat diperbaiki; jejaknya
+> ditinggalkan, bukan dihapus.
 
 ---
 
@@ -31,11 +37,18 @@ ia mengubah keputusan bangun:
    model bahasa selalu menjawab. Registri yang sanggup berkata *"tidak tahu, dan ini
    sebabnya"* adalah kelangkaan — dan kolom "yang tidak sanggup" di
    [03-enam-pintu.md](03-enam-pintu.md) sudah menjadikannya kebiasaan.
-4. **Harga adalah lubang terbesar bagi petani yang bisa ditutup tanpa jadi pedagang.**
-   NTP subsektor hortikultura naik 7,08% pada Mei 2026 lalu turun 8,49% pada Juli 2026 —
-   kenaikan tertinggi dan penurunan terdalam dalam satu triwulan. Bapanas sudah memantau
-   harga di tingkat produsen. Menyambungkannya ke kalkulator biaya mengubah keputusan
-   panen dan jual, tanpa menyentuh kepemilikan barang.
+4. **Harga adalah lubang terbesar bagi petani, dan tak ada yang bisa dipinjam untuk
+   menutupnya.** NTP subsektor hortikultura naik 7,08% pada Mei 2026 lalu turun 8,49% pada
+   Juli 2026 — kenaikan tertinggi dan penurunan terdalam dalam satu triwulan. Versi pertama
+   dokumen ini mengusulkan meminjam Panel Harga Bapanas;
+   [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md) **membatalkannya pada dua
+   titik.** Panel itu mati sejak Oktober 2025 — API 401, Wayback 502, bukan gangguan sesaat.
+   Dan yang dicatat negara sebagai "harga produsen" ternyata **harga beli pengumpul**:
+   endpoint `GetRefMarket` PIHPS memperlihatkan Kab. Karawang — salah satu lumbung padi
+   terbesar Indonesia — bersandar pada **satu responden**, dan dia pengumpul. Jarak antara
+   harga acuan dan harga petani karena itu **terpasang di dalam definisinya**, bukan celah
+   cakupan yang bisa dirapatkan dengan menambah sampel. Harga yang benar-benar diterima
+   petani tidak punya sumber sama sekali.
 5. **"Bermakna bagi semua pemangku kepentingan" tidak dicapai dengan satu modul per
    pihak.** Dicapai dengan **satu rekaman, banyak bacaan**: catatan musim yang sama
    dibaca petani sebagai jadwal, penyuluh sebagai laporan, offtaker sebagai bukti, bank
@@ -171,7 +184,10 @@ daftar fitur. Kolom **pemegang de facto** sengaja dibedakan dari "petani" — da
 | **PHSL / Nutrient Manager, PUPS, Sipapudi** | Anjuran hara spesifik lokasi | **PINJAM** logikanya; hindari kalkulator hara tandingan |
 | **PUTS / PUTK / PUTR / PUHT** | Uji tanah cepat di lapangan, semi kuantitatif | **SAMBUNG** — terima hasilnya sebagai `Observation` |
 | **Cyber Extension** (cybext.id) | Repositori materi penyuluhan | **PINJAM** sebagai korpus Fase 1; **bukan** pesaing — bentuknya artikel, bukan protokol berversi |
-| **Panel Harga Pangan** (Bapanas) | Harga **tingkat produsen** — GKP di petani, cabai merah keriting, cabai rawit merah, bawang merah di petani | **PINJAM.** Ini menutup lubang harga tanpa jadi pedagang |
+| ~~**Panel Harga Pangan** (Bapanas)~~ | **Mati sejak Oktober 2025** — halaman pemeliharaan, seluruh endpoint API 401, Wayback 502 | **BATAL.** Penggantinya di [16](16-sumber-harga-komoditas.md) |
+| **SP2KP Kemendag** | Eceran harian, 1.229 pasar, Jan 2024→; **satu-satunya harga harian pemerintah berlisensi terbuka** | **PINJAM.** Atribusi wajib; endpoint utamanya membocorkan PII pencacah — pakai yang bersih |
+| **PIHPS** Bank Indonesia | Eceran, grosir, dan "produsen" — yang terakhir sebenarnya harga pengumpul | **PINJAM terbatas, berlabel jujur.** Benih privat, bukan lapis terbit |
+| **Survei Harga Produsen Gabah** BPS | **Satu-satunya sumber resmi yang benar-benar bertanya kepada petani** — hanya gabah, hanya bulanan, di balik kunci API | **SAMBUNG** setelah kunci WebAPI didaftarkan |
 | **BMKG** — SLI, prakiraan musim, radar sampai desa | Prakiraan harian sampai musiman, indeks kekeringan, ENSO/IOD | **PINJAM** |
 | **SIMLUHTAN · e-RDKK · iPubers · Kartu Tani** | Kepesertaan penyuluhan, usulan & penebusan pupuk subsidi; ±27.000 kios | **SAMBUNG.** Rencana musim harus bisa dicetak dalam bentuk yang cocok alur RDKK |
 | **SIAP** (asuransi) | Pendaftaran AUTP: premi petani Rp36.000/ha/musim, subsidi Rp144.000, ganti rugi s.d. ±Rp6 juta/ha | **SAMBUNG** kelak. Kendalanya administrasi, bukan tarif — dan itu bisa dibantu |
@@ -212,7 +228,8 @@ daftar fitur. Kolom **pemegang de facto** sengaja dibedakan dari "petani" — da
 | Kapan tanam | Katam, BMKG | baik, skala kecamatan | turun ke petak; sambung ke rencana |
 | Hara & dosis | PHSL, Nutrient Expert, PUTS | baik | **kuota & harga subsidi** — 0 dari 7.196 pupuk |
 | Diagnosis OPT | Plantix, Nuru, POPT | sedang | gejala terkurasi berbahasa lokal; **0 dari 768** |
-| Harga | Panel Harga Bapanas | baik di komoditas strategis | sambungan ke biaya petak sendiri |
+| Harga eceran | SP2KP Kemendag | baik, lisensi terbuka | sambungan ke biaya petak sendiri |
+| **Harga yang diterima petani** | **tidak ada** | — | **menganga — dan bukan celah cakupan, melainkan definisi** |
 | Cuaca | BMKG | baik | dibaca sebagai tindakan, bukan angka |
 | Keaslian input | **tidak ada** | — | **menganga — Rp3,3 T** |
 | Keabsahan benih/varietas | PVTPP, BPSB (terpisah-pisah) | sedang | satu pintu; **sifat agronomi 0 dari 11.227** |
@@ -299,12 +316,12 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas | **selesai** |
 | C2 | **Keaslian & anti-palsu** — periksa nomor, ciri kemasan yang bisa dicek sendiri, jalur lapor kecurigaan | petani, kios, penyuluh, principal, penegak | #4, #6 — sebelum uang keluar | registri sudah ada; aturan `G12` sudah menolak nomor karangan di jalur gambar | **BANGUN** |
 | C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri | **BANGUN bertahap** |
-| C4 | Harga — acuan produsen + setoran petani | petani, poktan, offtaker | #1, #13, #15 | 0 di registri; Bapanas punya sisi acuan | **PINJAM + BANGUN** |
+| C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | 0 di registri; Bapanas **mati**; SP2KP terbuka tetapi eceran | **BANGUN** (+ pinjam sisi eceran) |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
 | C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | fondasi ada: 234 toko terbit (OSM), 2.181 benih TTI beralamat | **BANGUN** |
 | C8 | Sifat agronomi varietas | petani, penyuluh, penangkar | #3 | **0 dari 11.227** | **TUNDA** |
-| C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | **0 dari 7.196** | **TUNDA + SAMBUNG** (e-RDKK) |
+| C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** kini terbuka — bebas hak cipta lewat [16](16-sumber-harga-komoditas.md) | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** |
 
 > **C2 adalah kapabilitas dengan rasio nilai-terhadap-biaya tertinggi di seluruh dokumen.**
 > Datanya sudah dipegang, taksiran kerugiannya Rp3,3 triliun, tak ada pesaing yang
@@ -387,22 +404,30 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | Putusan | Jumlah | Nomor |
 |---|---:|---|
 | **selesai** | 4 | C1, D1, D2, F2 |
-| **BANGUN** — gelombang 0–1 | 16 | A1, A2, A3, A5, B1, B2⁽ᵖ⁾, B3, B4, C2, C3⁽ᵇ⁾, C7, D3, D4, D5, G1, G5 |
+| **BANGUN** — gelombang 0–1 | 17 | A1, A2, A3, A5, B1, B2⁽ᵖ⁾, B3, B4, C2, C3⁽ᵇ⁾, **C4**⁽ʰ⁾, C7, D3, D4, D5, G1, G5 |
 | **BANGUN** — gelombang 2 · fase 3 | 7 | E1, E2, E3, E4, E5, F1, G2 |
 | **BANGUN hati-hati** | 1 | G3 — juga **SAMBUNG** ke rantai POPT |
-| **PINJAM / SAMBUNG** | 4 | C4⁽ᵖ⁾, C5, C6, C9⁽ᵗ⁾ |
+| **PINJAM / SAMBUNG** | 3 | C5, C6, C9⁽ᵗ⁾ |
 | **TUNDA** | 7 | A4, B5, C8, D6, F3, F4⁽ᵈ⁾, G4 |
 
-- ⁽ᵖ⁾ **sebagian** — B2 tanpa PHI; C4 sisi acuan dipinjam, sisi setoran petani dibangun.
+- ⁽ᵖ⁾ **sebagian** — B2 tanpa PHI.
+- ⁽ʰ⁾ **naik dari pinjam jadi bangun** — sisi eceran tetap dipinjam dari SP2KP; harga petani tidak punya sumber.
 - ⁽ᵇ⁾ **bertahap** — 10 dari 778 OPT hari ini.
 - ⁽ᵗ⁾ **tertunda** sampai status subsidi punya jalur data; sambungannya ke e-RDKK bisa lebih dulu.
 - ⁽ᵈ⁾ **dibangun belakangan**, setelah E5 berjalan.
 
-> **Angka yang paling menentukan bukan 16, melainkan 6.** Enam kapabilitas — C4, C5, C6,
-> C9, dan sisi sambungan G3 serta F4 — dijawab dengan meminjam atau menyambung, bukan
+> **Angka yang paling menentukan bukan 17, melainkan 5.** Lima kapabilitas — C5, C6, C9,
+> dan sisi sambungan G3 serta F4 — dijawab dengan meminjam atau menyambung, bukan
 > membangun. Semuanya menyangkut kebutuhan yang paling sering diminta pertama kali: cuaca,
-> kalender tanam, harga, status tanah, kuota subsidi. Godaan membangun ulang salah satunya
-> akan datang, dan setiap kali ia datang jawabannya sudah tertulis di sini.
+> kalender tanam, status tanah, kuota subsidi. Godaan membangun ulang salah satunya akan
+> datang, dan setiap kali ia datang jawabannya sudah tertulis di sini.
+>
+> **Semula enam, dan yang keenam gugur dalam hitungan hari.** C4 dipindahkan ke kolom
+> bangun setelah pinjaman yang ditunjuknya ternyata mati sejak Oktober 2025. Pelajarannya
+> berlaku untuk lima yang tersisa: **meminjam bukan keputusan sekali jalan.** Sumber pinjaman
+> perlu diperiksa hidup-matinya pada kadensi yang sama dengan registri — lihat
+> [12-kadensi-registri.md](12-kadensi-registri.md) — dan yang mati harus punya cabang siap
+> pakai, bukan ditemukan saat layarnya kosong di depan petani.
 
 ---
 
@@ -437,7 +462,8 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 ### Gelombang 1 — jangkauan & kontribusi (fase 2)
 
 **A2** WhatsApp · **B3** sanggahan terbuka · **G1** alur kontribusi bernama ·
-**G5** identitas petak · **C3** OPT bergejala bertahap · **C4/C5/C6** pinjam-sambung.
+**G5** identitas petak · **C3** OPT bergejala bertahap · **C5/C6** pinjam-sambung ·
+**C4** harga — pinjam sisi eceran dari SP2KP, bangun sisi setoran petani.
 
 > **G1 tidak boleh menunggu fase 3.** Pertanyaan ke-5 di [02-tiga-pasar.md](02-tiga-pasar.md)
 > bagian 8 — apa yang membuat agronom mau menempelkan namanya — tidak akan terjawab lewat
@@ -520,9 +546,16 @@ menurut kerusakan kalau jawabannya berbeda dari dugaan.
 6. **Apa yang terjadi hari ini ketika seseorang mencurigai pupuk palsu?** Ada jalur
    laporannya atau tidak, dan siapa yang menanganinya. Menentukan apakah C2 berhenti di
    pemeriksaan atau berlanjut ke pelaporan.
-7. **Berapa besar sebenarnya jarak antara harga acuan Bapanas dan harga yang diterima
-   petani** di sentra beachhead? Kalau jaraknya kecil, C4 cukup dipinjam. Kalau besar,
-   setoran petani menjadi wajib — dan itu kapabilitas yang jauh lebih berat.
+7. ~~Berapa jarak antara harga acuan Bapanas dan harga yang diterima petani?~~
+   **Terjawab** oleh [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md), dan
+   jawabannya menutup pertanyaannya sendiri: acuan itu **harga pengumpul**, jadi jaraknya
+   bukan besaran yang bisa diukur — ia definisi. Setoran petani wajib.
+
+   **Yang menggantikannya:** *berapa harga yang benar-benar diterima petani di sentra
+   beachhead, dan maukah ia menyetorkannya?* Tidak ada satu pun sumber resmi yang
+   mengukurnya — bahkan Survei Harga Produsen Gabah BPS hanya menutupi gabah. Kalau petani
+   tidak mau menyetor, C4 berhenti di harga eceran, dan seluruh janji "menutup lubang harga"
+   gugur bersamanya.
 
 > **Cara memakai dokumen ini** — sama seperti [02-tiga-pasar.md](02-tiga-pasar.md): ini
 > usulan, bukan keputusan terkunci. Kolom **pemegang de facto** di bagian 2 adalah
@@ -552,7 +585,7 @@ menurut kerusakan kalau jawabannya berbeda dari dugaan.
 
 - Katam Terpadu — [BSIP Jawa Tengah](https://jateng.bsip.pertanian.go.id/layanan/layanan-lainnya/katam-terpadu-sc); [Cyber Extension](http://cybex.pertanian.go.id/artikel/89739/kalender-tanam-terpadu-katam-terpadu/)
 - Uji tanah & hara spesifik lokasi — [BBPadi, pemupukan berimbang spesifik lokasi](https://bbpadi.litbang.pertanian.go.id/index.php/info-berita/info-teknologi/penerapan-pemupukan-berimbang-spesifik-lokasi); [PUTS (Cyber Extension)](https://cybext.id/detail/materi/instrumen-menentukan-status-hara-tanah-sawah-melalui-penggunaan-perangkat-uji-tanah-sawah-(puts)-)
-- Harga — [Panel Harga Pangan Bapanas, harga produsen](https://panelharga.badanpangan.go.id/harga-produsen); [PIHPS Bank Indonesia](https://www.bi.go.id/hargapangan)
+- Harga — seluruhnya dipilah ulang di [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md). [Panel Harga Pangan Bapanas](https://panelharga.badanpangan.go.id/harga-produsen) **mati sejak Oktober 2025**; [PIHPS Bank Indonesia](https://www.bi.go.id/hargapangan) hidup tetapi "produsen"-nya harga pengumpul; [SP2KP Kemendag](https://satudata.kemendag.go.id/) satu-satunya yang berlisensi terbuka
 - Iklim — [Sekolah Lapang Iklim BMKG](https://iklim.bmkg.go.id/SLI/main/); [sinergi BMKG–Kementan untuk ketahanan pangan](https://www.bmkg.go.id/berita/utama/bmkg-dan-kementerian-pertanian-perkuat-sinergi-data-iklim-dan-teknologi-cuaca-untuk-ketahanan-pangan-nasional)
 - OPT — [peran POPT dalam pengamatan & peringatan dini](https://distankan.bulelengkab.go.id/informasi/detail/artikel/56_peran-popt-dalam-mengawal-produksi-pertanian-dari-ancaman-hama-penyakit-banjir-dan-kekeringan); [SILAP OPT (BBPPTP Medan)](https://silapopt.com/)
 - Asuransi — [AUTP: premi, ganti rugi, dan kendala administrasi (Koran Jakarta)](https://koran-jakarta.com/2026-01-30/pengamat-asuransi-usaha-tani-padi-jadi-tameng-petani-hadapi-risiko-gagal-panen); [tantangan implementasi (Eratani)](https://eratani.co.id/blog/article/read/Asuransi-Usaha-Tani-Padi-Manfaat-dan-Tantangan-dalam-Implementasinya)
@@ -575,7 +608,8 @@ menurut kerusakan kalau jawabannya berbeda dari dugaan.
 
 [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md) · [02-tiga-pasar.md](02-tiga-pasar.md) ·
 [03-enam-pintu.md](03-enam-pintu.md) · [10-peta-modul.md](10-peta-modul.md) ·
-[11-instrumentasi.md](11-instrumentasi.md) · [toko_data/LAPIS.md](../toko_data/LAPIS.md)
+[11-instrumentasi.md](11-instrumentasi.md) · [12-kadensi-registri.md](12-kadensi-registri.md) ·
+[16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md) · [toko_data/LAPIS.md](../toko_data/LAPIS.md)
 
 ---
 
