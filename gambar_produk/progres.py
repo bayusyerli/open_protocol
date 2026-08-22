@@ -136,6 +136,7 @@ def bangun() -> str:
             "kosong": "situs sehat, gambar belum diunggah — **periksa ulang berkala**",
             "rusak": "situs ada tapi tak berfungsi", "mati": "domain bukan milik principal lagi",
             "tidak-ada": "tidak pernah punya situs",
+            "surat-saja": "domain hidup tetapi hanya melayani surat — **domainnya sudah ketemu**",
             "belum-diperiksa": "belum disentuh sapuan"}
     w("## Status situs principal\n")
     w("| Status | Principal | Merek | Artinya |")
