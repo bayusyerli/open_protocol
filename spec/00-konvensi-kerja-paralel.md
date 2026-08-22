@@ -115,7 +115,7 @@ Nomor aturan sama langkanya dengan nomor ID, dan sama mudahnya bertabrakan.
 | `L1`–`L15` | Struktur inti, netralitas vendor, PDP, keselamatan dasar | seluruhnya |
 | `L16`–`L21` | Sediaan buatan petani | seluruhnya |
 | `L22`–`L29` | Kepatuhan regulasi dan integritas kosakata | seluruhnya |
-| `L30`–`L39` | Protokol Lapis 2 | `L30`–`L33` |
+| `L30`–`L39` | Protokol Lapis 2 dan keutuhan isi | `L30`–`L34` |
 | `L40`+ | **Belum diklaim** | — |
 
 Sebelum menambah aturan, jalankan:

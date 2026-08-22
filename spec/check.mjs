@@ -7,6 +7,7 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
+import { hitungHash } from './kanonik.mjs';
 import addFormats from 'ajv-formats';
 
 export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] } = {}) {
@@ -151,6 +152,32 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
     // L2 — apa pun yang berstatus published wajib punya content_hash
     if (doc.lifecycle?.status === 'published' && !doc.lifecycle?.content_hash) {
       fail(file, 'L2-hash-terbit', 'Status "published" tanpa lifecycle.content_hash: versi terbit tidak boleh bisa berubah diam-diam.');
+    }
+
+    // L34 — content_hash harus benar-benar cocok dengan isinya.
+    //
+    // L2 menuntut hash-nya ADA; aturan ini menuntut hash-nya BENAR. Tanpa yang kedua,
+    // yang pertama bisa dipenuhi angka apa pun — dan memang pernah: rec-cycle-cabai.json
+    // sempat memuat sha256:0000...0000. Hash yang tidak bisa dihitung ulang bukan
+    // penjagaan, melainkan hiasan yang menyerupai penjagaan.
+    //
+    // Kanonikalisasinya RFC 8785, didefinisikan di kanonik.mjs beserta alasan tiga medan
+    // pembukuan berkas dikecualikan.
+    if (doc.lifecycle?.content_hash) {
+      const seharusnya = hitungHash(doc);
+      if (doc.lifecycle.content_hash !== seharusnya) {
+        fail(file, 'L34-hash-cocok', `lifecycle.content_hash tidak cocok dengan isinya. Tertulis ${doc.lifecycle.content_hash}, seharusnya ${seharusnya}. Entah isinya berubah tanpa hash-nya ikut disegarkan, entah hash-nya tidak pernah dihitung — dan keduanya membuat medan ini tidak bisa dipercaya. Segarkan dengan: node tools/hitung-hash.mjs --tulis`);
+      }
+    }
+
+    // L34 — kunci protokol pada protocol_ref harus cocok dengan protokol yang ditunjuk.
+    // Inilah gunanya pin itu ada: perbandingan rencana-realita baru sahih kalau protokol
+    // yang dipakai siklus ini bisa dipastikan sama dengan yang dibaca sekarang.
+    if (doc.protocol_ref?.content_hash) {
+      const proto = entityById.get(doc.protocol_ref.id);
+      if (proto && proto.lifecycle?.content_hash && proto.lifecycle.content_hash !== doc.protocol_ref.content_hash) {
+        fail(file, 'L34-hash-cocok', `protocol_ref menyematkan ${doc.protocol_ref.content_hash} untuk ${doc.protocol_ref.id}, tetapi protokol itu sekarang berhash ${proto.lifecycle.content_hash}. Protokolnya berubah sesudah siklus ini disusun; entah pin-nya perlu disegarkan sengaja, entah perubahan protokolnya yang keliru.`);
+      }
     }
 
     const isProtocol = typeof doc.id === 'string' && doc.id.startsWith('op:proto:');

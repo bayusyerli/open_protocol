@@ -1,6 +1,6 @@
 {
   "$schema": "../schema/protocol.schema.json",
-  "id": "op:proto:00009005",
+  "id": "op:proto:00009001",
   "key": "fixture-l3-protokol-menyebut-produk",
   "label": {
     "id": "Cabai merah besar — dataran rendah, lahan terbuka"
@@ -240,7 +240,7 @@
   "id_blocks": [
     {
       "from": 9001,
-      "to": 9099
+      "to": 9100
     }
   ]
 }

@@ -21,7 +21,7 @@
 | Lapis | Keadaan | Bukti |
 |---|---|---|
 | **1 · Ontologi** | **Matang** | 22 skema di `spec/schema/`, kosakata terkurasi + registri Kementan, pemeriksa `L1`–`L29` beserta uji negatifnya, 52/52 pemeriksaan angka lolos |
-| **2 · Protokol** | **Berskema, satu protokol** | `protocol.schema.json`, aturan `L30`–`L33`, `L3` diperluas ke dokumen protokol, dan satu protokol cabai empat langkah. Belum ada permukaan |
+| **2 · Protokol** | **Berskema, satu protokol** | `protocol.schema.json`, aturan `L30`–`L34`, `L3` diperluas ke dokumen protokol, dan satu protokol cabai empat langkah. Belum ada permukaan |
 | **3 · Eksekusi** | **Berskema, tanpa permukaan** | `plot`, `cycle`, `step` lengkap; 14 contoh nyata cabai, kopi, dan udang; nol layar untuk membuatnya |
 
 Permukaan yang berjalan seluruhnya milik lapisan rujukan: **enam jalur** baca-saja di
@@ -321,8 +321,9 @@ Tiga hal yang ditentukan data lama, dan diikuti apa adanya:
 
 Yang **belum** lunas:
 
-- **Kanonikalisasi `content_hash`** masih belum didefinisikan; lihat bagian 7. Protokol
-  cabai berstatus `draft`, jadi `L2` belum menagihnya.
+- **Kanonikalisasi `content_hash` — SUDAH DIPUTUSKAN**, 20 Agustus 2026: RFC 8785 (JCS),
+  diterapkan `spec/kanonik.mjs`. Protokol cabai kini berhash sungguhan, dan
+  `rec-cycle-cabai.json` menyematkannya di `protocol_ref`. Utang ini lunas.
 - **Satu rujukan masih menggantung:** `step-udang-planned-pakan.json` menyebut protokol
   `vaname-intensif` yang belum ditulis. Di luar cakupan M1, dan menjadi calon aturan
   `L34` — rujukan `protocol_step_key` yang tidak resolve — begitu protokol udangnya ada.
@@ -350,8 +351,19 @@ pertama — sengaja.
 
 ## 7. Yang belum diputuskan
 
-1. **Kanonikalisasi `content_hash`.** Lihat bagian 5. Menyentuh `L2`, `protocol_ref`, dan
-   setiap entitas yang kelak berstatus `published`.
+1. ~~Kanonikalisasi `content_hash`.~~ **Selesai** — RFC 8785 (JCS), lihat bagian 5.
+
+   > **Kenapa standar terbitan, bukan aturan sendiri.** JCS punya vektor uji dan bisa
+   > diulang di bahasa mana pun; aturan buatan sendiri harus dijelaskan tiap kali ada
+   > yang bertanya, dan tidak bisa diperiksa pihak lain. Tiga medan dikecualikan karena
+   > ia pembukuan **berkas**, bukan isi **entitas**: `$schema` (lintasan relatif, berubah
+   > begitu berkasnya dipindahkan — dan bundel ekspor memang memindahkannya), `id_blocks`
+   > (klaim rentang antar-sesi), dan `lifecycle.content_hash` sendiri.
+   >
+   > `L34` menegakkannya dua sisi: hash entitas harus cocok dengan isinya, dan
+   > `protocol_ref.content_hash` harus cocok dengan protokol yang ditunjuk. `L2` menuntut
+   > hash-nya **ada**; `L34` menuntut hash-nya **benar**. Tanpa yang kedua, yang pertama
+   > bisa dipenuhi angka apa pun — dan memang pernah.
 2. **Apakah protokol boleh mewarisi protokol lain?** Menggoda untuk cabai dataran rendah
    versus dataran tinggi, tetapi pewarisan membuat `content_hash` dan tingkat bukti
    berlapis — dan tingkat bukti tidak boleh diwarisi diam-diam.

@@ -1,6 +1,6 @@
 {
   "$schema": "../schema/protocol.schema.json",
-  "id": "op:proto:00009003",
+  "id": "op:proto:00009301",
   "key": "fixture-l32-jadwal-tanggal-pasti",
   "label": {
     "id": "Cabai merah besar — dataran rendah, lahan terbuka"
@@ -231,8 +231,8 @@
   },
   "id_blocks": [
     {
-      "from": 9001,
-      "to": 9099
+      "from": 9301,
+      "to": 9400
     }
   ]
 }

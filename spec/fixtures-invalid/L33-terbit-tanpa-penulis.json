@@ -1,6 +1,6 @@
 {
   "$schema": "../schema/protocol.schema.json",
-  "id": "op:proto:00009004",
+  "id": "op:proto:00009401",
   "key": "fixture-l33-terbit-tanpa-penulis",
   "label": {
     "id": "Cabai merah besar — dataran rendah, lahan terbuka"
@@ -236,8 +236,8 @@
   },
   "id_blocks": [
     {
-      "from": 9001,
-      "to": 9099
+      "from": 9401,
+      "to": 9500
     }
   ]
 }

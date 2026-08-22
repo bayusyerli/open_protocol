@@ -1,6 +1,6 @@
 {
   "$schema": "../schema/protocol.schema.json",
-  "id": "op:proto:00009001",
+  "id": "op:proto:00009101",
   "key": "fixture-l30-skala-luar-cakupan",
   "label": {
     "id": "Cabai merah besar — dataran rendah, lahan terbuka"
@@ -235,8 +235,8 @@
   },
   "id_blocks": [
     {
-      "from": 9001,
-      "to": 9099
+      "from": 9101,
+      "to": 9200
     }
   ]
 }

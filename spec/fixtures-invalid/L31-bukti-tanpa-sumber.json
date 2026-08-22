@@ -1,6 +1,6 @@
 {
   "$schema": "../schema/protocol.schema.json",
-  "id": "op:proto:00009002",
+  "id": "op:proto:00009201",
   "key": "fixture-l31-bukti-tanpa-sumber",
   "label": {
     "id": "Cabai merah besar — dataran rendah, lahan terbuka"
@@ -221,8 +221,8 @@
   },
   "id_blocks": [
     {
-      "from": 9001,
-      "to": 9099
+      "from": 9201,
+      "to": 9300
     }
   ]
 }

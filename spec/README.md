@@ -30,6 +30,7 @@ spec/
 │                                 dan periksa-musim.mjs — rencana lawan realisasi, diadu sinyal batal
 │                                 dan susun-bukti.mjs — siklus → berkas bukti siap audit
 │                                 dan ekspor-petani.mjs — bundel catatan beserta kosakatanya
+├── kanonik.mjs                   kanonikalisasi RFC 8785 & content_hash
 ├── check.mjs                     logika pemeriksa
 ├── validate.mjs                  CLI pemeriksa
 └── test-rules.mjs                uji negatif

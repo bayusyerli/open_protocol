@@ -1,0 +1,19 @@
+{
+  "$schema": "../schema/cycle.schema.json",
+  "id": "op:cyc:019e8fff-0000-7000-8000-00000000f34a",
+  "plot": {
+    "id": "op:plt:019e80e8-c900-79c9-ac35-7cced06151d9",
+    "label": "Tegal lor"
+  },
+  "commodity": {
+    "id": "op:cmd:00000001",
+    "label": "Cabai merah besar"
+  },
+  "protocol_ref": {
+    "id": "op:proto:00000001",
+    "version": "0.1.0",
+    "content_hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+  },
+  "status": "planned",
+  "data_classification": "farm_private"
+}
