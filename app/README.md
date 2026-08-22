@@ -75,10 +75,11 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
 - **Masuk lewat apa yang terlihat**, bukan nama hama. Yang panik tahu daunnya
   mengeriting ke atas; ia tidak tahu kata “trips”.
 - **Mesin tidak menebak.** Tidak ada pengenal foto. Setiap dugaan dibuka dengan blok
-  “pastikan dulu” berisi **dua ciri yang bisa diperiksa sendiri tanpa alat**, dan tiap
-  ciri menyebut OPT mana yang terbantah kalau hasilnya begitu. Dua di antaranya uji
-  yang benar-benar memutuskan — uji gelas untuk membedakan layu bakteri dari fusarium,
-  dan kertas putih untuk membedakan trips dari virus kuning.
+  “pastikan dulu” berisi **dua ciri yang bisa diperiksa sendiri tanpa alat**. Empat belas
+  dari dua puluh ciri menyebut OPT mana yang **terbantah** kalau hasilnya begitu; enam
+  sisanya hanya menguatkan, dan layar tidak mengarang pembantahan untuk mereka. Dua ciri
+  di antaranya uji yang benar-benar memutuskan — uji gelas untuk membedakan layu bakteri
+  dari fusarium, dan kertas putih untuk membedakan trips dari virus kuning.
 - **Merek diruntuhkan jadi bahan aktif + kadar.** Kesetaraan hanya benar pada pasangan
   itu: satu entitas “Abamektin” dipakai pada 33 kadar berbeda, 24 di antaranya g/L.
 - **Dosis tidak pernah ditempel ke bahan.** Ia muncul per merek, karena dosis milik

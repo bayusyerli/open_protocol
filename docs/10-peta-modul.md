@@ -118,7 +118,15 @@ Sebagian besar bukan kode, dan justru itu sebabnya mudah tertunda.
   > kurasi di atasnya), dokumen pihak ketiga seperti CORESTA Guide N° 7, dan **data usaha
   > tani yang milik petani**.
 - **Review agronom** atas sepuluh teks gejala jalur 1, yang berstatus draft dan
-  mengatakannya sendiri di layar.
+  mengatakannya sendiri di layar. **Daftar tinjauannya siap** di
+  [14-tinjauan-gejala.md](14-tinjauan-gejala.md), dibangkitkan dari kosakata sehingga bisa
+  disegarkan setelah teksnya berubah — dan teksnya memang akan berubah sebagai hasil
+  tinjauan.
+
+  > **Menyusunnya menemukan cacat data.** Enam dari dua puluh ciri pembanding tidak
+  > menyebut apa yang dibantahnya, dan `app/README.md` sempat mengklaim seluruhnya
+  > menyebut. Klaim itu sudah dibetulkan. Delapan dari sepuluh entri kini bertanda
+  > "didahulukan", dihitung dari datanya dan bukan dari penilaian agronomi.
 
 > **Cabang yang harus disiapkan.** Kalau pendapat hukumnya memberatkan, jalur 6 tetap ada
 > sebagai catatan status hukum tetapi wedge turun jadi lima pintu. Jalur 5 tidak ikut
