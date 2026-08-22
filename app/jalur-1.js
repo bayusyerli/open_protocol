@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, teks } from './pustaka.js';
+import { ambil, teks, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 
 catatBuka(1);
@@ -337,6 +337,12 @@ el.hasil.addEventListener('click', async (ev) => {
       `Sumber: registri pestisida Kementan lewat <code>spec/indeks/</code>. ` +
       `Gejala dan ciri pembanding dari <code>spec/vocab/pest.json</code> — ` +
       `${berpintu.length} OPT cabai terkurasi, berstatus draft.`;
+
+    // Datang dari beranda dengan satu gejala sudah terpilih. Daftarnya tetap
+    // digambar lebih dulu: yang dibuka lewat pencarian teks belum tentu yang
+    // dimaksud, dan tombol "pilih gejala lain" harus mendarat pada sesuatu.
+    const { opt } = tautanMasuk();
+    if (opt) await bukaOpt(opt);
   } catch (e) {
     el.gejala.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Dibangun ulang dengan <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>

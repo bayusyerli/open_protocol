@@ -224,6 +224,35 @@ function rinciProduk(p, jenis) {
 }
 
 // ---------------------------------------------------------------------------
+// Pembeda SKU — komposisi ikut ke kepala pencarian
+// ---------------------------------------------------------------------------
+// Nama saja tidak membedakan produk. "PHONSKA" milik Petrokimia Gresik ada empat
+// kali dengan grade berbeda — 15-8-10, 15-15-10, 15-10-15, 10-10-10 — dan "Pupuk
+// Indonesia Holding Company Phonska Plus" delapan kali. Semuanya SKU yang berlainan,
+// bukan rekaman ganda. Daftar hasil yang menampilkan empat baris identik menyuruh
+// orang menebak mana yang di tangannya, jadi yang membedakannya ikut ke kepala
+// pencarian — bukan cuma ke layar rinciannya.
+//
+// Grade NPK hanya dibentuk kalau N, P2O5, dan K2O ketiganya tercatat DAN ketiganya
+// dalam g/kg. Kalau satuannya campur atau salah satunya hilang, angka yang dibagi
+// sepuluh itu bukan grade, dan menuliskannya sebagai grade adalah mengarang.
+const NPK = ['op:sub:00000001', 'op:sub:00000002', 'op:sub:00000003'];
+const angka = (x) => String(Math.round(Number(x) * 100) / 100);
+
+function pembeda(r) {
+  const isi = r.isi ?? [];
+  if (!isi.length) return null;
+
+  const npk = NPK.map((id) => isi.find((c) => c.zat === id));
+  if (npk.every((c) => c && c.satuan === 'g/kg')) return `NPK ${npk.map((c) => angka(c.nilai / 10)).join('-')}`;
+
+  // Dua bahan pertama, lalu sisanya dihitung. Kartu hasil di HP cuma punya satu
+  // baris; memuat tujuh hara di sana menenggelamkan namanya sendiri.
+  const dua = isi.slice(0, 2).map((c) => `${c.nama} ${angka(c.nilai)} ${c.satuan}`);
+  return dua.join(' · ') + (isi.length > 2 ? ` · +${isi.length - 2}` : '');
+}
+
+// ---------------------------------------------------------------------------
 // Rincian varietas — surat yang dipegang, apa adanya
 // ---------------------------------------------------------------------------
 function rinciVarietas(v) {
@@ -404,16 +433,134 @@ const petaPecahan = new Map();
 pecahanProduk.forEach((s, i) => s.forEach((r) => petaPecahan.set(r.id, `produk/${String(i).padStart(3, '0')}`)));
 pecahanVarietas.forEach((s, i) => s.forEach((r) => petaPecahan.set(r.id, `varietas/${String(i).padStart(3, '0')}`)));
 
+// ---------------------------------------------------------------------------
+// Bahan aktif → kadar → merek
+// ---------------------------------------------------------------------------
+// Dikelompokkan menurut bahan DAN kadar, tidak pernah menurut bahan saja. Satu
+// entitas "Abamektin" dipakai pada 30 kadar berbeda di registri; menampilkan 127
+// merek dalam satu daftar datar menyiratkan semuanya bisa saling menggantikan, dan
+// itu tidak benar — kesetaraan hanya berlaku pada pasangan bahan+kadar. Aturan yang
+// sama sudah dipakai jalur 1; di sini ia dibuka lewat pintu lain.
+//
+// Hanya bahan aktif pestisida. Unsur hara pupuk sengaja tidak masuk: "seluruh produk
+// yang memuat Nitrogen" adalah 2.582 pupuk — hampir seluruh registrinya — dan daftar
+// sepanjang itu tidak menjawab apa pun. Pertanyaan haranya dijawab jalur 3, dalam
+// rupiah per kilogram hara, bukan dalam daftar merek.
+const zatPestisida = new Set(zat.map((z) => z.id));
+const perZat = new Map();
+for (const r of semuaProduk) {
+  if (r.jenis !== 'pestisida') continue;
+  for (const c of r.isi) {
+    if (!zatPestisida.has(c.zat)) continue;
+    let z = perZat.get(c.zat);
+    if (!z) perZat.set(c.zat, (z = { nama: c.nama, larangan: !!c.larangan, kadar: new Map() }));
+    const kk = `${angka(c.nilai)} ${c.satuan}`;
+    if (!z.kadar.has(kk)) z.kadar.set(kk, []);
+    z.kadar.get(kk).push(r);
+  }
+}
+
+// Di dalam kartu "Abamektin 18 g/L", menuliskan "Abamektin 18 g/L" pada tiap
+// anggotanya tidak memberi tahu apa pun — itu judul kartunya sendiri. Yang
+// membedakan anggotanya justru bahan LAIN yang ikut di dalamnya: sebagian produk
+// abamektin murni, sebagian campuran. Jadi `f` di sini memuat sisanya, dan produk
+// berbahan tunggal tidak membawa medan itu sama sekali.
+const anggotaBahan = (r, zatIni) => {
+  const lain = r.isi.filter((c) => c.zat !== zatIni);
+  const f = lain.length
+    ? `+ ${lain.slice(0, 2).map((c) => `${c.nama} ${angka(c.nilai)} ${c.satuan}`).join(' · ')}` +
+      (lain.length > 2 ? ` · +${lain.length - 2}` : '')
+    : null;
+  return { i: r.id, n: r.nama, k: r.produsen ?? null, p: petaPecahan.get(r.id), ...(f ? { f } : {}) };
+};
+const bahanRinci = [...perZat.entries()]
+  .sort((a, b) => a[0].localeCompare(b[0]))
+  .map(([id, z]) => ({
+    id,
+    nama: z.nama,
+    larangan: z.larangan,
+    produk: new Set([...z.kadar.values()].flat().map((r) => r.id)).size,
+    // Kadar terpadat lebih dulu: yang mencari "Abamektin" hampir selalu memegang
+    // salah satu kadar yang lazim, bukan yang cuma dipakai satu produk.
+    kadar: [...z.kadar.entries()]
+      .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
+      .map(([k, daftar]) => ({
+        k,
+        m: daftar
+          .slice()
+          .sort((a, b) => (a.daftar ?? '').localeCompare(b.daftar ?? ''))
+          .map((r) => anggotaBahan(r, id)),
+      })),
+  }));
+
+// Satu bahan bisa sendirian melewati anggaran: Sipermetrin dipakai 183 produk pada
+// 37 kadar, dan nama pemegang pendaftaran tidak pendek. Yang dikeluarkan daftar
+// mereknya per kadar — pola yang sama dengan `merekDi` pada berkas OPT — jadi daftar
+// kartu kadarnya tetap sekali ambil, dan mereknya menyusul saat kartu itu dibuka.
+// Penyaji cukup memeriksa satu medan: kalau `merekDi` ada, `m` tidak.
+const kunciZat = (id) => id.replace(/[^a-z0-9]/gi, '');
+const berkasBahanMerek = {};
+const SISIPAN_BAHAN = 512;
+for (const b of bahanRinci) {
+  if (Buffer.byteLength(JSON.stringify(b), 'utf8') <= ANGGARAN - SISIPAN_BAHAN) continue;
+  const kz = kunciZat(b.id);
+  pecah(b.kadar.map((k) => ({ k: k.k, m: k.m }))).forEach((isi, i) => {
+    const nomor = String(i).padStart(2, '0');
+    const merek = {};
+    for (const x of isi) merek[x.k] = x.m;
+    berkasBahanMerek[`${kz}-merek-${nomor}`] = merek;
+    for (const x of isi) {
+      const kartu = b.kadar.find((y) => y.k === x.k);
+      kartu.merek = x.m.length;
+      kartu.merekDi = `bahan/${kz}-merek-${nomor}`;
+      delete kartu.m;
+    }
+  });
+}
+
+const pecahanBahan = pecah(bahanRinci);
+const berkasBahan = [];
+const petaBahan = new Map();
+pecahanBahan.forEach((kelompok, i) => {
+  const nomor = String(i).padStart(3, '0');
+  const isi = {};
+  for (const b of kelompok) {
+    isi[b.id] = { n: b.nama, larangan: b.larangan, produk: b.produk, kadar: b.kadar };
+    petaBahan.set(b.id, `bahan/${nomor}`);
+  }
+  berkasBahan.push([nomor, isi]);
+});
+
 const cari = {};
+const tambah = (nama, entri) => {
+  const e = ember(nama);
+  (cari[e] ??= []).push(entri);
+};
+
 for (const r of [...semuaProduk, ...semuaVarietas]) {
-  const e = ember(r.nama);
-  if (!cari[e]) cari[e] = [];
-  cari[e].push({
+  // `f` cuma ditulis kalau ada isinya — medan bernilai null pada 26 ribu entri
+  // memakan pecahan tanpa memberi tahu apa pun.
+  const f = r.jenis === 'varietas' ? null : pembeda(r);
+  tambah(r.nama, {
     n: r.nama,
     i: r.id,
     j: r.jenis,
     k: r.jenis === 'varietas' ? r.komoditasNama : r.produsen,
+    ...(f ? { f } : {}),
     p: petaPecahan.get(r.id),
+  });
+}
+
+// Bahan aktif masuk ke ember yang sama dengan nama produk, bukan ke indeks terpisah:
+// yang mengetik "Abamektin" tidak tahu — dan tidak perlu tahu — bahwa yang diketiknya
+// bahan, bukan merek. Satu kotak, satu pengambilan, jenisnya dinyatakan di kartunya.
+for (const b of bahanRinci) {
+  tambah(b.nama, {
+    n: b.nama,
+    i: b.id,
+    j: 'bahan',
+    k: `${b.produk} produk terdaftar · ${b.kadar.length} kadar`,
+    p: petaBahan.get(b.id),
   });
 }
 for (const e of Object.keys(cari)) cari[e].sort((a, b) => a.n.localeCompare(b.n) || a.i.localeCompare(b.i));
@@ -723,6 +870,31 @@ const gejala = optTerkurasi
   .sort((a, b) => a.id.localeCompare(b.id));
 
 // ---------------------------------------------------------------------------
+// Kepala pencarian gejala
+// ---------------------------------------------------------------------------
+// Gejala tidak bisa diember menurut dua huruf pertama seperti nama: yang mengetik
+// "daun mengeriting ke atas" tidak sedang mengetik awalan sebuah nama, ia sedang
+// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — sepuluh OPT,
+// sekitar 5 KB — lalu dicocokkan kata per kata di peramban.
+//
+// Yang ikut hanya nama, nama ilmiah, dan teks gejalanya. Ciri pembanding TIDAK ikut:
+// begitu satu gejala dibuka, jalur 1 yang merendernya, dan di sanalah blok "pastikan
+// dulu" berada. Gejala tanpa blok itu adalah tebakan yang dipoles, jadi pintu ini
+// tidak boleh bisa dibuka tanpa melewatinya.
+const gejalaCari = gejala
+  .filter((g) => g.adaPintu)
+  .map((g) => ({
+    i: g.id,
+    n: g.nama,
+    l: g.ilmiah ?? null,
+    // Satu medan teks, bukan tiga: penyaji cukup mencocokkan sekali, dan bobot antar
+    // medan yang tidak pernah diputuskan siapa pun tidak perlu dikarang di sini.
+    t: [g.nama, g.ilmiah, g.gejala, g.keterangan].filter(Boolean).join(' '),
+    produk: g.di.reduce((a, b) => a + b.produk, 0),
+    komoditas: g.di.length,
+  }));
+
+// ---------------------------------------------------------------------------
 // Varian satu tanaman — pembedaan yang SENGAJA dipertahankan
 // ---------------------------------------------------------------------------
 // Dulu berkas ini berisi kandidat kurasi: nama komoditas yang terpecah karena dosis
@@ -767,11 +939,14 @@ const meta = {
     komoditasBervarian: Object.keys(varian).length,
     optTerkurasi: gejala.length,
     optBerpintu: gejala.filter((g) => g.adaPintu).length,
+    bahanAktifTerpakai: bahanRinci.length,
+    kartuBahanKadar: bahanRinci.reduce((a, b) => a + b.kadar.length, 0),
   },
   pecahan: {
     cari: Object.keys(cari).sort(),
     cariDalam,
     setara: pecahanSetara.length,
+    bahan: pecahanBahan.length,
     produk: pecahanProduk.length,
     varietas: pecahanVarietas.length,
     opt: [...perKomoditas.keys()].map(kunciKomoditas).sort(),
@@ -798,6 +973,8 @@ const meta = {
       'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 10 OPT cabai terkurasi di pest.json, 5 di antaranya bertekst gejala (lihat gejala.json). Di luar sepuluh itu jalur 1 tidak punya pintu masuk.',
     phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. Jalur 3 mengandalkan satu masukan pengguna.',
+    bahanHara:
+      'Indeks bahan hanya memuat bahan aktif pestisida. Unsur hara pupuk tidak diindeks sebagai bahan yang bisa dicari — Nitrogen sendiri ada di 2.582 pupuk, dan daftar sepanjang itu tidak menjawab apa pun. Pertanyaan haranya dijawab jalur 3.',
     beratJenis: 'Tidak ada, sehingga pupuk cair tidak sebanding dengan yang padat.',
     namaDagang: 'Registri menyimpan nama produk terdaftar; nama di kemasan bisa berbeda dan belum terpetakan.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
@@ -812,9 +989,12 @@ const simpan = (p, data) => berkas.set(p, JSON.stringify(data) + '\n');
 
 simpan('meta.json', meta);
 for (const [nomor, isi] of berkasSetara) simpan(`setara/${nomor}.json`, isi);
+for (const [nomor, isi] of berkasBahan) simpan(`bahan/${nomor}.json`, isi);
+for (const [k, isi] of Object.entries(berkasBahanMerek).sort()) simpan(`bahan/${k}.json`, isi);
 simpan('sediaan.json', berkasSediaan);
 for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.json`, isi);
 simpan('gejala.json', gejala);
+simpan('gejala-cari.json', gejalaCari);
 simpan('varian.json', varian);
 simpan('larangan.json', Object.fromEntries([...laranganZat].sort()));
 for (const [e, isi] of Object.entries(cari).sort()) simpan(`cari/${e}.json`, isi);
@@ -830,7 +1010,7 @@ const terbesar = [...berkas.entries()]
 
 const kb = (n) => (n / 1024).toFixed(1) + ' KB';
 if (process.argv.includes('--sebaran')) {
-  for (const awalan of ['cari/', 'produk/', 'varietas/', 'setara/', 'opt/']) {
+  for (const awalan of ['cari/', 'produk/', 'varietas/', 'setara/', 'bahan/', 'opt/']) {
     const u = [...berkas].filter(([p]) => p.startsWith(awalan)).map(([, s]) => Buffer.byteLength(s)).sort((a, b) => a - b);
     if (!u.length) continue;
     const q = (f) => kb(u[Math.min(u.length - 1, Math.floor(u.length * f))]);
@@ -843,6 +1023,7 @@ console.log(`Ukuran seluruhnya   : ${(ukuran / 1024 / 1024).toFixed(2)} MB`);
 console.log(`  meta.json         : ${kb(Buffer.byteLength(berkas.get('meta.json')))}`);
 console.log(`  kepala pencarian  : ${kb([...berkas].filter(([p]) => p.startsWith('cari/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(cari).length} ember`);
 console.log(`  setara/           : ${kb([...berkas].filter(([p]) => p.startsWith('setara/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${pecahanSetara.length} pecahan — ${meta.jumlah.kelompokSetara} kelompok, ${meta.jumlah.produkSetara} produk`);
+console.log(`  bahan/            : ${kb([...berkas].filter(([p]) => p.startsWith('bahan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${pecahanBahan.length} pecahan — ${meta.jumlah.bahanAktifTerpakai} bahan aktif, ${meta.jumlah.kartuBahanKadar} kartu bahan+kadar`);
 // Dilaporkan selalu, bukan cuma saat diminta: pemecahan yang diam-diam melewati
 // anggarannya terbaca seolah semuanya muat.
 const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);

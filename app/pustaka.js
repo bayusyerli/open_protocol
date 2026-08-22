@@ -12,7 +12,15 @@ const ingatan = new Map();
 
 export async function ambil(jalan) {
   if (ingatan.has(jalan)) return ingatan.get(jalan);
-  const janji = fetch(`${BASIS}/${jalan}.json`).then((r) => {
+  // `no-cache` berarti "tanya dulu", bukan "jangan simpan": peramban tetap menyimpan
+  // berkasnya dan mengirim permintaan bersyarat, jadi yang belum berubah dijawab 304
+  // tanpa isi. Ini dibayar satu perjalanan pulang-pergi per pecahan per muat halaman,
+  // dan itu memang mahal di sinyal buruk — tetapi indeksnya turunan dan dibangun ulang
+  // dengan `bangun-indeks.mjs`. Tanpa ini, yang membangun ulang akan melihat data lama
+  // tanpa satu pun tanda bahwa yang dilihatnya sudah basi, dan diam-diam salah lebih
+  // buruk daripada lambat. Anggaran byte di app/README.md tidak berubah karenanya:
+  // 304 tidak membawa isi.
+  const janji = fetch(`${BASIS}/${jalan}.json`, { cache: 'no-cache' }).then((r) => {
     if (!r.ok) throw new Error(`${jalan}: ${r.status}`);
     return r.json();
   });
@@ -34,7 +42,7 @@ export const tanggal = (s) => {
   return Number.isNaN(+d) ? s : d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 };
 
-export const JENIS = { pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas' };
+export const JENIS = { pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif', gejala: 'Gejala' };
 
 let meta = null;
 export const bacaMeta = () => meta;
@@ -133,6 +141,9 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
           <button type="button" data-id="${teks(x.i)}" data-pecahan="${teks(x.p)}">
             <span class="nama">${teks(x.n)}<span class="lencana">${teks(JENIS[x.j] ?? x.j)}</span></span>
             <span class="sub">${teks(x.k ?? '—')}</span>
+            ${x.f ? `<span class="pembeda">${teks(x.f)}</span>`
+              : (x.j === 'pupuk' || x.j === 'pestisida')
+                ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : ''}
           </button>
         </li>`).join('')}
     </ul>`;
@@ -145,3 +156,66 @@ export function tombolKembali(el, wadah, fokus) {
 
 export const HTML_KEMBALI =
   '<button type="button" class="kembali" id="kembali">← Kembali ke hasil pencarian</button>';
+
+// ---------------------------------------------------------------------------
+// Pencarian gejala
+// ---------------------------------------------------------------------------
+// Gejala tidak bisa diember menurut dua huruf pertama: yang mengetik "daun
+// mengeriting ke atas" bukan sedang mengetik awalan sebuah nama, ia sedang menyebut
+// apa yang dilihatnya. Kepalanya kecil — sepuluh OPT, 3,2 KB — jadi dibawa utuh
+// sekali per sesi lalu dicocokkan kata per kata di sini.
+
+const kata = (s) => (s ?? '')
+  .normalize('NFKD').toLowerCase().replace(/[^a-z0-9\s]/g, ' ')
+  .split(/\s+/).filter(Boolean);
+
+export async function cariGejala(kueri) {
+  const kk = kata(kueri).filter((w) => w.length >= 3);
+  if (!kk.length) return [];
+  const daftar = await ambil('gejala-cari');
+
+  // Separuh kata harus cocok, dibulatkan ke atas. Tanpa ambang itu satu kata lazim
+  // seperti "daun" memanggil kesepuluh gejalanya, dan daftar yang selalu penuh sama
+  // tidak berartinya dengan daftar yang selalu kosong.
+  const ambang = Math.ceil(kk.length / 2);
+
+  return daftar
+    .map((g) => {
+      const t = kata(g.t);
+      const ada = new Set(t);
+      // Kata utuh, atau awalan sepanjang minimal empat huruf — supaya "kerit"
+      // menemukan "mengeriting" tanpa "ata" ikut menemukan "atas".
+      const cocok = kk.filter((w) => ada.has(w) || (w.length >= 4 && t.some((x) => x.startsWith(w))));
+      return { ...g, cocok: cocok.length, dari: kk.length };
+    })
+    .filter((g) => g.cocok >= ambang)
+    .sort((a, b) => b.cocok - a.cocok || b.produk - a.produk)
+    .slice(0, 6);
+}
+
+// ---------------------------------------------------------------------------
+// Tautan masuk dari beranda
+// ---------------------------------------------------------------------------
+// Beranda hanya mencari nama; yang membuka rinciannya tetap jalur yang memang
+// perendernya. Bentuk tautannya dibaca di satu tempat supaya kedua jalur membacanya
+// sama, dan supaya nanti tidak ada jalur ketiga yang mengarangnya sendiri.
+//
+// Nilainya datang dari bilah alamat, jadi tidak dipercaya: `pecahan` ikut menyusun
+// jalur berkas yang diambil, jadi hanya bentuk `nama/berkas` yang diterima.
+
+const BENTUK_PECAHAN = /^[a-z]+\/[a-z0-9_-]+$/i;
+const BENTUK_ID = /^op:[a-z]{3}:[0-9]+$/;
+
+export function tautanMasuk() {
+  const p = new URLSearchParams(location.search);
+  const pecahan = p.get('pecahan');
+  const opt = p.get('opt');
+  return {
+    q: p.get('q'),
+    id: p.get('id'),
+    pecahan: pecahan && BENTUK_PECAHAN.test(pecahan) ? pecahan : null,
+    // Jalur 1 tidak memakai pecahan: daftar gejalanya dibawa utuh, jadi yang perlu
+    // disebut cuma OPT mana yang dibuka.
+    opt: opt && BENTUK_ID.test(opt) ? opt : null,
+  };
+}
