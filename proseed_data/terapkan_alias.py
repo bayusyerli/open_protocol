@@ -18,13 +18,16 @@ benar-benar terkena perubahan alias — kecuali dua kolom yang diperbaiki menyel
   `tahun_pertama` — "< 1945" kini dihitung sebagai lebih awal dari angka mana pun, bukan
                     dibuang. Satu pemohon terkena.
 
-Yang TIDAK diperbaiki, dan sebabnya: `jumlah_varietas` sebenarnya mencacah BARIS, bukan varietas
-unik — satu varietas yang memegang pelepasan sekaligus pendaftaran terhitung dua kali. PT East
-West Seed Indonesia tertulis 428, varietas uniknya 292. Mengubahnya berarti mengubah arti angka
-yang sudah terbit, jadi ia dicatat di README dan menunggu keputusan.
+`jumlah_varietas` mencacah **varietas unik**, bukan baris. varietas_terdaftar.csv adalah
+pembentangan (varietas x jenis perizinan), jadi varietas yang memegang pelepasan sekaligus
+pendaftaran menempati dua baris. Batas recordnya hanya ada di raw/nama-varietas.json, jadi ke
+sanalah cacahnya bertanya — dan kesejajaran kedua berkas diperiksa tiap jalan, bukan diandaikan.
+Kolom `varietas` di pemohon_alias.csv mengukur hal yang sama per ejaan mentah, jadi ikut dihitung
+dengan cara itu.
 """
 
 import csv
+import json
 import re
 import sys
 from collections import Counter
@@ -92,6 +95,7 @@ def tahun_kunci(t: str):
     return (int(t), 1)
 
 AKAR = Path(__file__).resolve().parent
+MENTAH = AKAR / "raw" / "nama-varietas.json"
 ALIAS = AKAR / "pemohon_alias.csv"
 VARIETAS = AKAR / "varietas_terdaftar.csv"
 PEMOHON = AKAR / "pemohon_varietas.csv"
@@ -108,6 +112,28 @@ def tulis(p, baris):
         w = csv.DictWriter(f, fieldnames=list(baris[0].keys()))
         w.writeheader()
         w.writerows(baris)
+
+
+def indeks_varietas(varietas):
+    """Memetakan tiap baris CSV ke record varietas di registri mentah.
+
+    varietas_terdaftar.csv adalah pembentangan (varietas x jenis perizinan): satu varietas
+    yang memegang pelepasan sekaligus pendaftaran menempati dua baris. Karena itu mencacah
+    baris bukan mencacah varietas. Batas recordnya hanya ada di berkas mentah, jadi ke sanalah
+    kita bertanya — dan kesejajarannya diperiksa, bukan diandaikan."""
+    mentah = json.loads(MENTAH.read_text(encoding="utf-8"))
+    mentah = mentah if isinstance(mentah, list) else mentah["data"]
+    pasangan = [i for i, rec in enumerate(mentah) for _ in (rec.get("permohonan") or [{}])]
+    if len(pasangan) != len(varietas):
+        raise SystemExit(f"Baris CSV {len(varietas)} tidak sejajar dengan pembentangan mentah "
+                         f"{len(pasangan)}. Kolom jumlah_varietas tidak bisa dihitung.")
+    for idx, row in zip(pasangan, varietas):
+        rec = mentah[idx]
+        if (rec.get("nama_varietas") or "") != row["nama_varietas"] or \
+           (rec.get("pemohon") or "") != row["pemohon"]:
+            raise SystemExit("Urutan baris CSV tidak lagi sejajar dengan berkas mentah — "
+                             "jalankan ulang penarikan atau perbaiki urutannya lebih dulu.")
+    return pasangan
 
 
 def main() -> int:
@@ -133,9 +159,11 @@ def main() -> int:
 
     # --- pemohon_varietas.csv: hanya baris yang terkena ---
     pemohon = baca(PEMOHON)
-    per_kanonik = {}
-    for r in varietas:
+    rec_id = indeks_varietas(varietas)
+    per_kanonik, per_varietas = {}, {}
+    for idx, r in zip(rec_id, varietas):
         per_kanonik.setdefault(r["pemohon_kanonik"], []).append(r)
+        per_varietas.setdefault(r["pemohon_kanonik"], set()).add(idx)
 
     kena = {baru for _, _, baru in berubah} | {lama for _, lama, _ in berubah}
     hapus, sunting = [], []
@@ -152,7 +180,7 @@ def main() -> int:
         izin = Counter(r["jenis_perizinan"].strip() for r in rs if r["jenis_perizinan"].strip())
         th = sorted((r["tahun"].strip() for r in rs if tahun_dipakai(r["tahun"])), key=tahun_kunci)
         baru = {
-            "jumlah_varietas": str(len(rs)),
+            "jumlah_varietas": str(len(per_varietas.get(nama, ()))),
             "jumlah_ejaan_digabung": str(sum(1 for v in peta.values() if v == nama)),
             "komoditas_utama": kom.most_common(1)[0][0] if kom else "",
             "komoditas_semua": ";".join(k for k, _ in kom.most_common()),
@@ -166,10 +194,14 @@ def main() -> int:
             row.update(baru)
 
     # --- perbaikan kolom turunan yang berlaku untuk seluruh baris ---
-    naik, tahun_baik = [], []
+    naik, tahun_baik, cacah = [], [], []
     for row in pemohon:
         nama = row["pemohon"]
         rs = per_kanonik.get(nama, [])
+        unik = str(len(per_varietas.get(nama, ())))
+        if row["jumlah_varietas"] != unik:
+            cacah.append((nama, row["jumlah_varietas"], unik))
+            row["jumlah_varietas"] = unik
         if row["jenis_badan"] == "perorangan/lainnya":
             g = golongkan(nama)
             if g:
@@ -185,6 +217,9 @@ def main() -> int:
         print(f"   {b:17s} {j:>4s}  {nama[:56]}")
     if len(naik) > 12:
         print(f"   ... dan {len(naik) - 12} lagi")
+    print(f"jumlah_varietas: dari cacah baris jadi cacah varietas unik pada {len(cacah)} baris")
+    for nama, l, b in sorted(cacah, key=lambda t: int(t[1]) - int(t[2]), reverse=True)[:10]:
+        print(f"   {nama[:50]:52s} {l:>4s} -> {b:>4s}")
     print(f"tahun_pertama diperbaiki : {len(tahun_baik)} baris")
     for nama, l, b in tahun_baik:
         print(f"   {nama[:52]:54s} {l!r} -> {b!r}")
@@ -198,10 +233,27 @@ def main() -> int:
         for k, (l, b) in beda.items():
             print(f"      {k}: {l!r} -> {b!r}")
 
+    # Kolom `varietas` di berkas alias mengukur hal yang sama, per ejaan mentah — jadi ia
+    # ikut dibetulkan, supaya dua kolom yang sama-sama bernama varietas tidak mencacah dua
+    # hal yang berbeda.
+    unik_asli = {}
+    for idx, r in zip(rec_id, varietas):
+        unik_asli.setdefault(r["pemohon"], set()).add(idx)
+    alias_ubah = []
+    for a in alias:
+        n = str(len(unik_asli.get(a["pemohon_asli"], ())))
+        if a["varietas"] != n:
+            alias_ubah.append((a["pemohon_asli"], a["varietas"], n))
+            a["varietas"] = n
+    print(f"pemohon_alias.csv      : kolom varietas dibetulkan pada {len(alias_ubah)} baris")
+    for nama, l, b in sorted(alias_ubah, key=lambda t: int(t[1]) - int(t[2]), reverse=True)[:6]:
+        print(f"   {nama[:48]:50s} {l:>4s} -> {b:>4s}")
+
     if menulis:
         tulis(VARIETAS, varietas)
         tulis(PEMOHON, pemohon)
-        print("\nDitulis: varietas_terdaftar.csv, pemohon_varietas.csv")
+        tulis(ALIAS, alias)
+        print("\nDitulis: varietas_terdaftar.csv, pemohon_varietas.csv, pemohon_alias.csv")
     else:
         print("\nPeriksa saja. Tambahkan --tulis untuk menyimpan.")
     return 0

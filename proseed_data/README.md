@@ -124,13 +124,22 @@ Dua kolom diperbaiki menyeluruh pada 20 Agustus 2026: `jenis_badan` (137 baris, 
 Balai Penelitian Jagung dan Serealia Lain tertulis mulai 1964 padahal punya baris yang
 lebih tua. Satu pemohon terkena.
 
-**Yang belum diperbaiki, dan sebabnya.** `jumlah_varietas` sebenarnya mencacah **baris**,
-bukan varietas unik. `varietas_terdaftar.csv` berisi satu baris per (varietas × jenis
-perizinan), jadi varietas yang memegang pelepasan sekaligus pendaftaran terhitung dua
-kali. PT East West Seed Indonesia tertulis 428, varietas uniknya **292**; Balai Penelitian
-Tanaman Hias 351 lawan 262. Selisihnya besar dan namanya menyesatkan, tetapi
-memperbaikinya mengubah arti angka yang sudah terbit dan mengubah urutan seluruh berkas —
-jadi ia dicatat di sini dan menunggu keputusan, bukan diperbaiki diam-diam.
+**`jumlah_varietas` kini mencacah varietas unik, bukan baris** (diperbaiki 20 Agustus
+2026, 101 baris berubah). `varietas_terdaftar.csv` berisi satu baris per (varietas ×
+jenis perizinan), jadi varietas yang memegang pelepasan sekaligus pendaftaran menempati
+dua baris dan dulu terhitung dua kali: PT East West Seed Indonesia tertulis 428 padahal
+varietasnya **347**; Balai Penelitian Tanaman Hias 351 lawan **323**.
+
+Batas record varietas tidak ada di CSV — ia hanya ada di `raw/nama-varietas.json`. Jadi
+cacahnya bertanya ke sana, dan **kesejajaran kedua berkas diperiksa tiap jalan**: 11.617
+baris CSV harus sejajar dengan pembentangan 11.235 record mentah, dan nama serta pemohon
+tiap pasangan harus cocok. Kalau tidak, alat berhenti dengan galat alih-alih diam-diam
+salah hitung. Hasilnya bisa direkonsiliasi: 10.193 varietas di agregat + 1.042 record yang
+pemohonnya kosong = 11.235 record mentah, tepat.
+
+Kolom `varietas` di `pemohon_alias.csv` mengukur hal yang sama per ejaan mentah dan ikut
+dibetulkan — 32 baris, terbesar `PT East West Seed Indonesia` 420 → 340. Dua kolom yang
+sama-sama bernama varietas kini mencacah hal yang sama.
 
 ## Peringatan lain yang harus dipegang
 - **`kode` kosong di seluruh 11.235 record**; `pemohon` kosong pada 1.042 record
