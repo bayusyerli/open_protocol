@@ -21,6 +21,7 @@
  */
 
 import { ambil, muatMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js';
+
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
@@ -37,6 +38,7 @@ const el = {
 
 document.getElementById('tanpaJs')?.remove();
 
+let kamusLokal = [];
 let daftarOpt = null;
 let larangan = null;
 
@@ -85,7 +87,31 @@ function blokPastikan(k) {
       </ol>
       ${k.keterangan ? `<p class="catatan">${teks(k.keterangan)}</p>` : ''}
       ${k.catatan ? `<p class="catatan">${teks(k.catatan)}</p>` : ''}
+      ${blokNamaLokal(k)}
     </div>`;
+}
+
+// Nama lokal ditempel di blok "pastikan dulu", bukan di judul layar. Alasannya sama
+// dengan alasan blok ini ada: nama lokal tingkat D, dan menaruhnya sebagai judul
+// membuatnya terbaca sebagai identifikasi. Di sini ia justru satu keterangan lagi yang
+// harus dicocokkan pembaca — "orang menyebutnya begini; apakah itu yang kamu lihat?"
+//
+// Yang bertaksa menyebut apa yang tidak dibedakannya. Wilayah selalu ikut disebut,
+// termasuk saat tidak diketahui: kamus yang diam soal wilayah menyodorkan nama satu
+// daerah kepada seluruh negeri.
+function blokNamaLokal(k) {
+  const cocok = kamusLokal.filter((x) => x.ke.some((r) => r.i === k.id));
+  if (!cocok.length) return '';
+  const taksa = cocok.filter((x) => x.ke.length > 1);
+  return `
+    <p class="catatan nama-lokal">
+      <strong>Sebagian orang menyebutnya
+      ${cocok.map((x) => `“${teks(x.n)}”`).join(', ')}.</strong>
+      Dari satu jawaban lapangan, belum ditinjau penyuluh, dan
+      <strong>belum diketahui dipakai di daerah mana</strong> — jadi nama ini bukan
+      penentu, melainkan satu petunjuk lagi untuk dicocokkan.
+      ${taksa.length ? teks(taksa[0].taksa) : ''}
+    </p>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -327,7 +353,14 @@ el.hasil.addEventListener('click', async (ev) => {
 
 (async function mulai() {
   try {
-    daftarOpt = await ambil('gejala');
+    // Dua pengambilan sekaligus, bukan berurutan: kamusnya kecil dan tidak
+    // menghalangi apa pun, tetapi kartu OPT butuh keduanya sudah ada.
+    const [gejalaAda, lokalAda] = await Promise.all([
+      ambil('gejala'),
+      ambil('nama-lokal').catch(() => []),
+    ]);
+    daftarOpt = gejalaAda;
+    kamusLokal = lokalAda;
     const berpintu = daftarOpt.filter((k) => k.adaPintu);
     if (berpintu.length < daftarOpt.length) {
       el.gejala.innerHTML = `<p class="catatan">${daftarOpt.length - berpintu.length} OPT
@@ -344,8 +377,9 @@ el.hasil.addEventListener('click', async (ev) => {
       sumber: [
         { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT cabai` },
         { dari: 'pestisida', cakupan: 'bahan aktif, kadar, dan merek yang terdaftar untuk OPT itu' },
+        { dari: 'namaLokal', cakupan: `${kamusLokal.filter((x) => x.ke.length).length} nama daerah dari ${kamusLokal.length} yang tercatat, sebagai petunjuk tambahan — bukan sebagai penentu` },
       ],
-      takDijawab: ['gejalaOpt', 'phi', 'namaDagang'],
+      takDijawab: ['gejalaOpt', 'wilayahNamaLokal', 'phi', 'namaDagang'],
     });
 
     // Datang dari beranda dengan satu gejala sudah terpilih. Daftarnya tetap

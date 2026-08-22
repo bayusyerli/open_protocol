@@ -80,6 +80,7 @@ const hara = larik(bacaJson('substance.json'));
 const sediaan = larik(bacaJson('preparation.json'));
 const bahanOrganik = larik(bacaJson('substance-organik.json'));
 const optTerkurasi = larik(bacaJson('pest.json'));
+const namaLokal = larik(bacaJson('nama-lokal.json'));
 // Ketiga berkas, bukan dua. Varietas banyak menunjuk blok op:cmd:00002xxx di
 // commodity-varietas.json; tanpanya nama komoditasnya jatuh balik ke salinan basi
 // pada rekaman varietas, dan penanda tahunan-nya hilang untuk 1.139 varietas.
@@ -921,6 +922,45 @@ const gejalaCari = gejala
   }));
 
 // ---------------------------------------------------------------------------
+// Kamus nama lokal — A3
+// ---------------------------------------------------------------------------
+// Petani tidak menyebut Thrips parvispinus; ia menyebut nama lokalnya. Tanpa kamus ini
+// jalur 1 hanya bisa dipakai orang yang sudah tahu jawabannya.
+//
+// Kecil, jadi dibawa utuh sekali per sesi — pola yang sama seperti gejala-cari.json.
+// Tiga hal ikut, dan ketiganya penting justru karena tidak enak dibaca:
+//   - satu nama boleh menunjuk LEBIH DARI SATU OPT, dan `taksa` menyatakan apa yang
+//     tidak dibedakannya. Memilih satu diam-diam akan mendahului uji pembanding yang
+//     justru dibangun untuk memutuskannya.
+//   - nama yang BELUM terpetakan tetap ikut, dengan alasannya. Hasil nol membuat orang
+//     mencari di tempat lain yang tidak menjelaskan apa pun.
+//   - `wilayah` selalu ikut, termasuk saat kosong, beserta sebab kosongnya. Kamus nama
+//     lokal yang tidak tahu batas wilayahnya menyodorkan nama satu daerah kepada
+//     seluruh negeri.
+const namaLokalCari = namaLokal
+  .map((x) => ({
+    n: x.name,
+    // Hanya OPT yang memang punya pintu di jalur 1; menautkan ke OPT tanpa teks gejala
+    // menghasilkan tautan yang mendarat di layar kosong.
+    ke: (x.refers_to ?? [])
+      .filter((r) => gejala.some((g) => g.id === r.id && g.adaPintu))
+      .map((r) => ({ i: r.id, l: r.label ?? null })),
+    ...(x.ambiguous_note?.id ? { taksa: x.ambiguous_note.id } : {}),
+    ...(x.unmapped_reason ? { belum: x.unmapped_reason } : {}),
+    wilayah: (x.regions ?? []).map((r) => r.label ?? r.id),
+    ...(x.region_unknown_reason ? { wilayahSebab: x.region_unknown_reason } : {}),
+    bukti: x.evidence_tier,
+  }))
+  .sort((a, b) => a.n.localeCompare(b.n));
+
+// Rujukan yang gugur karena OPT-nya tidak berpintu dinyatakan, bukan didiamkan: kalau
+// suatu saat sebuah nama kehilangan seluruh rujukannya di sini, ia akan tampil sebagai
+// "belum terpetakan" tanpa ada yang menulis alasannya.
+const namaLokalGugur = namaLokal
+  .flatMap((x) => (x.refers_to ?? []).filter((r) => !gejala.some((g) => g.id === r.id && g.adaPintu)))
+  .length;
+
+// ---------------------------------------------------------------------------
 // Varian satu tanaman — pembedaan yang SENGAJA dipertahankan
 // ---------------------------------------------------------------------------
 // Dulu berkas ini berisi kandidat kurasi: nama komoditas yang terpecah karena dosis
@@ -1043,6 +1083,19 @@ const batas = {
       alasan:
         'Belum ditetapkan, dan itu disengaja. Teksnya disusun dari agronomi mapan — bukan dari registri — dan belum ditinjau penyuluh atau BPTP; daftar tinjauannya sudah siap di docs/14-tinjauan-gejala.md. Menandainya C berarti mengklaim konsensus penyuluh yang belum pernah diminta kepada seorang penyuluh pun.',
     },
+    namaLokal: {
+      label: 'Kamus nama lokal',
+      penerbit: 'Open Protocols',
+      url: null,
+      tarikan: tanggalTerbaru(namaLokal),
+      tinjau: koleksi('nama-lokal.json').lifecycle?.review_due ?? null,
+      status: statusKumpulan(namaLokal),
+      lisensi: 'CC-BY-SA-4.0',
+      cacah: namaLokal.length,
+      tingkat: 'D',
+      alasan:
+        'Pengalaman tunggal belum terverifikasi, dan itu memang bunyinya: keenam nama datang dari satu jawaban lapangan pada 22 Agustus 2026, belum diperiksa penyuluh atau BPTP. Bukan C, karena C berarti konsensus praktisi — satu penjawab bukan konsensus. Tingkat ini justru yang membuat kamusnya boleh tampil: nama yang salah petakan tertangkap blok "pastikan dulu" di jalur 1, asalkan layar tidak berpura-pura yakin.',
+    },
     sediaan: {
       label: 'Resep sediaan buatan sendiri',
       penerbit: 'Open Protocols',
@@ -1079,6 +1132,9 @@ const meta = {
     komoditasBervarian: Object.keys(varian).length,
     optTerkurasi: gejala.length,
     optBerpintu: gejala.filter((g) => g.adaPintu).length,
+    namaLokal: namaLokalCari.length,
+    namaLokalTerpetakan: namaLokalCari.filter((x) => x.ke.length).length,
+    namaLokalTaksa: namaLokalCari.filter((x) => x.ke.length > 1).length,
     bahanAktifTerpakai: bahanRinci.length,
     kartuBahanKadar: bahanRinci.reduce((a, b) => a + b.kadar.length, 0),
   },
@@ -1120,6 +1176,8 @@ const meta = {
       'Kadar hara sediaan buatan sendiri tidak diketahui sebelum batchnya diuji: L18 menolak menghitung hara dari batch yang belum diuji, dan kadar kompos berbeda tiap tumpukan. Karena itu resep jalur 5 muncul di jalur 3 tanpa rupiah per kg hara — tanpa angka, bukan dengan angka taksiran.',
     namaDagang: 'Registri menyimpan nama produk terdaftar; nama di kemasan bisa berbeda dan belum terpetakan.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
+    wilayahNamaLokal:
+      'Tidak satu pun dari enam nama lokal menyebutkan wilayah pemakaiannya. Sumbernya berbunyi "setiap daerah memiliki bahasa lokal yang berbeda, tapi umumnya", dan "umumnya" bukan nama tempat. Jadi kamus ini tidak bisa mengatakan sebuah nama dipakai di daerah pembacanya — ia hanya bisa mengatakan nama itu pernah didengar.',
   },
 };
 
@@ -1137,6 +1195,7 @@ simpan('sediaan.json', berkasSediaan);
 for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.json`, isi);
 simpan('gejala.json', gejala);
 simpan('gejala-cari.json', gejalaCari);
+simpan('nama-lokal.json', namaLokalCari);
 simpan('varian.json', varian);
 simpan('larangan.json', Object.fromEntries([...laranganZat].sort()));
 for (const [e, isi] of Object.entries(cari).sort()) simpan(`cari/${e}.json`, isi);
@@ -1201,6 +1260,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
 console.log('Enam berkas terbesar:');
 for (const [p, n] of terbesar) console.log(`  ${kb(n).padStart(10)}  ${p}`);

@@ -224,6 +224,31 @@ const kata = (s) => (s ?? '')
   .normalize('NFKD').toLowerCase().replace(/[^a-z0-9\s]/g, ' ')
   .split(/\s+/).filter(Boolean);
 
+// ---------------------------------------------------------------------------
+// Kamus nama lokal — A3
+// ---------------------------------------------------------------------------
+// Yang mengetik "patek" tidak sedang mengetik awalan nama terdaftar, dan tidak sedang
+// menyebut gejala — ia menyebut nama penyakitnya dalam bahasanya sendiri. Kamusnya
+// kecil, jadi dibawa utuh sekali per sesi seperti kepala gejala.
+//
+// Yang belum terpetakan ikut dikembalikan, dan itu disengaja: "bercak daun" yang
+// dijawab nol terbaca sebagai "tidak ada penyakitnya", sedangkan yang dijawab
+// "namanya kami kenal, cakupannya yang belum ada" mengirim orang ke tempat yang benar.
+export async function cariNamaLokal(kueri) {
+  const r = rapikan(kueri);
+  if (r.length < 3) return [];
+  const daftar = await ambil('nama-lokal');
+  return daftar
+    .filter((x) => rapikan(x.n).includes(r))
+    // Yang persis lebih dulu, lalu yang terpetakan, lalu abjad. Nama yang belum
+    // terpetakan tetap tampil, cuma tidak mendahului yang bisa dibuka.
+    .sort((a, b) =>
+      (rapikan(b.n) === r) - (rapikan(a.n) === r) ||
+      (b.ke.length > 0) - (a.ke.length > 0) ||
+      a.n.localeCompare(b.n))
+    .slice(0, 6);
+}
+
 export async function cariGejala(kueri) {
   const kk = kata(kueri).filter((w) => w.length >= 3);
   if (!kk.length) return [];

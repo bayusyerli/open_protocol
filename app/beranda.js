@@ -9,7 +9,7 @@
  * indeks yang sama, pemecahan ember yang sama, urutan yang sama.
  */
 
-import { muatMeta, cari, cariGejala, namaBerdekatan, teks, JENIS } from './pustaka.js';
+import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, teks, JENIS } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { pasangBatas } from './batas.js';
 
@@ -66,14 +66,53 @@ const kartuNama = (x, kueri) => `
     </a>
   </li>`;
 
+// Satu nama lokal bisa menunjuk lebih dari satu OPT, dan itu bukan kekurangan yang
+// disembunyikan melainkan jawabannya sendiri: "layu" memang tidak membedakan fusarium
+// dari bakteri. Yang bertaksa jadi beberapa tautan berdampingan beserta kalimat yang
+// menyebut apa yang tidak dibedakannya; memilih satu diam-diam akan mendahului uji
+// pembanding yang justru dibangun jalur 1 untuk memutuskannya.
+const kartuNamaLokal = (x) => {
+  if (!x.ke.length) {
+    return `
+      <li class="hasil-belum">
+        <span>
+          <span class="nama-hasil">${teks(x.n)}</span>
+          <span class="sub-hasil">${teks(x.belum ?? 'Belum terpetakan.')}</span>
+        </span>
+        <span class="lencana">Belum terpetakan</span>
+      </li>`;
+  }
+  return x.ke.map((k, i) => `
+    <li>
+      <a href="jalur-1.html?${new URLSearchParams({ opt: k.i })}" data-jenis="nama-lokal">
+        <span>
+          <span class="nama-hasil">${teks(x.n)} <em>→ ${teks(k.l ?? k.i)}</em></span>
+          ${i === 0 && x.taksa ? `<span class="sub-hasil">${teks(x.taksa)}</span>` : ''}
+        </span>
+        <span class="lencana">Nama lokal</span>
+      </a>
+    </li>`).join('');
+};
+
 const kelompok = (judul, catatan, isi) => `
   <div class="kelompok-hasil">
     <p class="ringkas-hasil"><strong>${judul}</strong>${catatan ? ` — ${catatan}` : ''}</p>
     <ul class="daftar-hasil">${isi}</ul>
   </div>`;
 
-function gambar(nama, bahan, gejala, kueri) {
+function gambar(nama, bahan, gejala, lokal, kueri) {
   const bagian = [];
+
+  // Nama lokal paling dulu. Yang mengetik "patek" sudah tahu apa yang dilihatnya dan
+  // sedang menyebut namanya; itu kueri paling spesifik yang bisa masuk ke kotak ini.
+  // Tingkat buktinya disebut di judul kelompoknya, bukan disembunyikan: kamusnya dari
+  // satu jawaban lapangan, dan layar tidak boleh terdengar lebih yakin daripada itu.
+  if (lokal.length) {
+    bagian.push(kelompok(
+      `${lokal.length} nama lokal cocok`,
+      'dari satu jawaban lapangan, <strong>belum ditinjau</strong> — dan belum diketahui dipakai di daerah mana',
+      lokal.map(kartuNamaLokal).join('')));
+  }
 
   // Gejala lebih dulu. Kalau kueri memang cocok dengan apa yang terlihat di kebun,
   // itu hampir pasti yang dimaksud — dan itu pula cabang bertaruhan paling tinggi.
@@ -145,13 +184,14 @@ async function jalankan() {
   try {
     // Keduanya sekaligus, bukan berurutan: yang satu mengambil satu ember nama, yang
     // lain satu kepala gejala 3,2 KB yang sesudahnya teringat sesi ini.
-    const [namaHasil, gejala] = await Promise.all([
+    const [namaHasil, gejala, lokal] = await Promise.all([
       cari(kueri),
       cariGejala(kueri).catch(() => []),
+      cariNamaLokal(kueri).catch(() => []),
     ]);
     const { hasil, kurang } = namaHasil;
 
-    if (kurang && !gejala.length) {
+    if (kurang && !gejala.length && !lokal.length) {
       el.hasil.innerHTML =
         `<p class="ringkas-hasil">Tambah ${kurang} huruf lagi supaya pecahan indeksnya cukup sempit.</p>`;
       return;
@@ -161,8 +201,8 @@ async function jalankan() {
     const daftar = hasil ?? [];
     const bahan = daftar.filter((x) => x.j === 'bahan');
     const nama = daftar.filter((x) => x.j !== 'bahan');
-    if (!nama.length && !bahan.length && !gejala.length) return gambarKosong(kueri);
-    gambar(nama, bahan, gejala, kueri);
+    if (!nama.length && !bahan.length && !gejala.length && !lokal.length) return gambarKosong(kueri);
+    gambar(nama, bahan, gejala, lokal, kueri);
   } catch (e) {
     el.hasil.innerHTML = `
       <div class="pesan galat">
@@ -249,8 +289,8 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
     // menjawab tiga macam pertanyaan menyembunyikan bahwa jawabannya datang dari
     // sumber yang berbeda usia — di sinilah perbedaan itu dinyatakan.
     pasangBatas(el.batas, {
-      sumber: ['pestisida', 'pupuk', 'varietas', 'kurasiOpt'],
-      takDijawab: ['namaDagang', 'bahanHara', 'harga'],
+      sumber: ['pestisida', 'pupuk', 'varietas', 'kurasiOpt', 'namaLokal'],
+      takDijawab: ['namaDagang', 'wilayahNamaLokal', 'bahanHara', 'harga'],
     });
 
     el.cacah.innerHTML = [

@@ -1,0 +1,140 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "nama-lokal",
+    "label": {
+      "id": "Kamus nama lokal"
+    },
+    "scope": {
+      "id": "Enam nama pertama, seluruhnya untuk OPT cabai, seluruhnya dari satu jawaban lapangan pada 22 Agustus 2026. Kamus ini sengaja memuat nama yang BELUM bisa dipetakan — dua dari enam — karena hasil pencarian nol membuat orang mencari di tempat lain yang tidak menjelaskan apa pun. Tidak satu pun rekaman di sini menyebutkan wilayah pemakaiannya: jawabannya berbunyi 'setiap daerah memiliki bahasa lokal yang berbeda, tapi umumnya', dan 'umumnya' bukan nama tempat. Cakupan komoditas dan nama dagang, yang juga termasuk A3, belum dimulai."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-23T00:00:00Z",
+      "review_due": "2026-11-23"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Jawaban lapangan Fase 1, pertanyaan 2 — nama lokal sepuluh OPT cabai",
+          "publisher": "Open Protocols",
+          "year": 2026,
+          "locator": "Dijawab pemilik repositori 22 Agustus 2026; kutipan lengkapnya tercatat di docs/15-kapabilitas-lintas-pemangku.md bagian 9 butir 2. Satu penjawab, tanpa pembanding.",
+          "retrieved": "2026-08-22"
+        }
+      ]
+    },
+    "storage": "inline",
+    "count": 6
+  },
+  "items": [
+    {
+      "key": "patek",
+      "name": "patek",
+      "refers_to": [
+        { "id": "op:pst:00000007", "label": "Antraknosa" }
+      ],
+      "regions": [],
+      "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai, dan 'umumnya' bukan nama tempat — memperlakukannya sebagai nasional berarti mengarang cakupan yang tidak pernah dinyatakan.",
+      "evidence_tier": "D",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Dari keenam nama, ini yang pemetaannya paling sedikit diperdebatkan — 'penyakit patek pada cabai' lazim dipakai untuk antraknosa — tetapi kelaziman yang tidak diverifikasi tetap tingkat D, bukan C.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z"
+      }
+    },
+    {
+      "key": "layu",
+      "name": "layu",
+      "refers_to": [
+        { "id": "op:pst:00000008", "label": "Layu fusarium" },
+        { "id": "op:pst:00000009", "label": "Layu bakteri" }
+      ],
+      "ambiguous_note": {
+        "id": "Nama ini tidak membedakan layu fusarium dari layu bakteri, dan itu bukan kekurangan kamusnya melainkan keadaan yang sebenarnya: keduanya terlihat sama di kebun. Justru di sinilah uji gelas berguna — potongan batang dicelup air bening, dan lendir putih yang mengepul menandakan bakteri."
+      },
+      "regions": [],
+      "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
+      "evidence_tier": "D",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Yang diyakini di sini bukan kepada apa nama ini menunjuk, melainkan bahwa ia MENUNJUK DUA HAL — dan ketaksaan itu sendiri yang jadi isi jawabannya.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z"
+      }
+    },
+    {
+      "key": "keriting-daun",
+      "name": "keriting daun",
+      "refers_to": [
+        { "id": "op:pst:00000010", "label": "Virus kuning keriting" },
+        { "id": "op:pst:00000001", "label": "Trips" }
+      ],
+      "ambiguous_note": {
+        "id": "Daun yang mengeriting bisa datang dari virus kuning maupun dari trips, dan keduanya menuntut tindakan yang berlawanan: satu tidak bisa diobati semprotan sama sekali, satu lagi bisa. Kertas putih yang dikibaskan di bawah pucuk memutuskannya — trips terlihat bergerak, virus tidak meninggalkan apa pun."
+      },
+      "regions": [],
+      "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
+      "evidence_tier": "D",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Kedua rujukan diambil karena jalur 1 memang sudah memperlakukan pasangan ini sebagai pasangan yang perlu dibedakan; memilih salah satunya di sini akan mendahului uji yang justru dibangun untuk memutuskannya.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z"
+      }
+    },
+    {
+      "key": "bule",
+      "name": "bule",
+      "refers_to": [
+        { "id": "op:pst:00000010", "label": "Virus kuning keriting" },
+        { "id": "op:pst:00000001", "label": "Trips" }
+      ],
+      "ambiguous_note": {
+        "id": "Nama ini menyebut rupa daun yang memucat, dan dua penyebab menghasilkan rupa itu: virus kuning membuatnya menguning pucat, trips meninggalkan goresan keperakan. Yang membedakan bukan warnanya melainkan ada tidaknya serangga yang bergerak saat pucuk dikibaskan di atas kertas putih."
+      },
+      "regions": [],
+      "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
+      "evidence_tier": "D",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP, dan yang paling tidak pasti di antara empat yang terpetakan. Dua rujukan diambil justru karena ketidakpastian itu: menetapkan satu berarti mengarang kepastian yang tidak dimiliki, dan salah menetapkannya akan menyuruh orang berhenti menyemprot padahal semprotan berguna, atau sebaliknya.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z"
+      }
+    },
+    {
+      "key": "lodoh",
+      "name": "lodoh",
+      "refers_to": [],
+      "unmapped_reason": "Dua calonnya bertabrakan dan tidak satu pun bisa dipastikan dari satu jawaban. 'Lodoh' menyebut keadaan membusuk lunak, yang di cabai dipakai baik untuk rebah kecambah pada persemaian maupun untuk buah yang membusuk. Rebah kecambah tercatat sebagai sinonim registri milik layu fusarium, sementara buah membusuk milik antraknosa — jadi menebak salah satunya berarti memilih di antara dua penyakit yang tindakannya berbeda.",
+      "regions": [],
+      "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
+      "evidence_tier": "D",
+      "evidence_note": "Satu jawaban lapangan. Yang tercatat di sini hanya bahwa namanya dipakai; kepada apa ia menunjuk justru pertanyaan yang dibawa ke peninjau.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z"
+      }
+    },
+    {
+      "key": "bercak-daun",
+      "name": "bercak daun",
+      "refers_to": [],
+      "unmapped_reason": "Rujukannya kemungkinan besar memang tidak ada di sini. Bercak daun pada cabai umumnya menunjuk penyakit bercak daun serkospora, dan penyakit itu bukan salah satu dari sepuluh OPT cabai yang terkurasi. Ini kekosongan cakupan, bukan pemetaan yang belum selesai — dan menautkannya paksa ke salah satu dari sepuluh akan menyembunyikan kekosongan itu.",
+      "regions": [],
+      "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
+      "evidence_tier": "D",
+      "evidence_note": "Satu jawaban lapangan. Namanya dicatat justru karena tidak terpetakan: yang mencarinya harus sampai pada keterangan bahwa cakupannya belum ada, bukan pada hasil nol yang terbaca sebagai 'tidak ada penyakitnya'.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z"
+      }
+    }
+  ]
+}

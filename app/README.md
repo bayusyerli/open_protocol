@@ -196,6 +196,51 @@ kenapa" memang berbeda di tiap jalur.
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
 
+### Kamus nama lokal — A3
+
+Petani tidak menyebut *Thrips parvispinus*; ia menyebut nama lokalnya. Tanpa kamus ini,
+jalur 1 hanya bisa dipakai orang yang **sudah tahu jawabannya**. Enam nama pertama masuk
+23 Agustus 2026, seluruhnya dari satu jawaban lapangan: *bule, patek, lodoh, layu, bercak
+daun, keriting daun.*
+
+- **Bukan entitas, dan karena itu tanpa `op:` id.** "Patek" bukan sesuatu yang ada di
+  dunia — ia nama untuk antraknosa. Yang disimpan pemetaan, bukan hal. Blok prefiks ID
+  adalah enum tertutup yang dinyatakan mengikat sejak v0.1 di
+  [`spec/01-identitas-dan-versi.md`](../spec/01-identitas-dan-versi.md), dan menambahnya
+  untuk sesuatu yang bukan entitas menukar kaidah mahal dengan kemudahan murah.
+- **Terpisah dari `synonyms`, dan itu bukan kerapian.** Medan `synonyms` pada entitas
+  terkurasi berisi **varian ejaan registri** — `Thrips palrvispinus`, `Spedoptera litura`,
+  `Penyakut Layu Fusarium` — yaitu salah ketik mesin yang dikumpulkan untuk mencocokkan
+  rekaman. Menaruh "bule" di sana membuat nama yang diucapkan manusia tidak bisa dibedakan
+  dari salah ketik, dan menghapus dua keterangan yang justru paling menentukan: dipakai
+  **di mana**, dan diketahui **dari siapa**.
+- **Satu nama boleh menunjuk lebih dari satu OPT, dan itu jawabannya sendiri.** "Layu"
+  memang tidak membedakan fusarium dari bakteri; "bule" dan "keriting daun" tidak
+  membedakan virus kuning dari trips. Layar menampilkan keduanya berdampingan beserta
+  kalimat yang menyebut apa yang tidak dibedakan, lalu menyerahkannya ke uji pembanding
+  yang memang sudah ada di jalur 1 — uji gelas dan kertas putih. Memilih satu diam-diam
+  berarti mendahului uji yang dibangun untuk memutuskannya.
+- **Dua dari enam belum terpetakan, dan tetap ditampilkan.** "Lodoh" punya dua calon yang
+  bertabrakan — rebah kecambah milik layu fusarium, atau buah membusuk milik antraknosa.
+  "Bercak daun" kemungkinan besar menunjuk serkospora, yang **bukan** salah satu dari
+  sepuluh OPT terkurasi; itu kekosongan cakupan, bukan pemetaan yang belum selesai.
+  Keduanya muncul di hasil pencarian sebagai kartu bergaris putus beserta alasannya,
+  karena hasil nol terbaca sebagai *"tidak ada penyakitnya"* dan mengirim orang mencari
+  di tempat yang tidak menjelaskan apa pun.
+- **Tidak satu pun tahu wilayahnya, dan layar mengatakannya.** Sumbernya berbunyi *"setiap
+  daerah memiliki bahasa lokal yang berbeda, tapi umumnya…"* — dan "umumnya" bukan nama
+  tempat. Medan `regions` kosong pada keenamnya, dengan `region_unknown_reason` wajib
+  terisi; skema menolak wilayah kosong yang tidak menyebutkan sebabnya. Kamus nama lokal
+  yang diam soal wilayah menyodorkan nama satu daerah kepada seluruh negeri.
+- **Tingkat bukti D, dan justru itu yang membuatnya boleh tampil.** Satu penjawab bukan
+  konsensus, jadi bukan C. Nama yang salah petakan tertangkap blok "pastikan dulu" di
+  jalur 1 — asalkan layar tidak berpura-pura yakin. Di jalur 1 lencana **D** ini berdiri
+  bersama **B** milik registri dan lencana *belum ditetapkan* milik kurasi gejala: tiga
+  tingkat bukti berbeda pada satu layar, masing-masing dengan alasannya.
+- **Nama lokal ditempel di blok "pastikan dulu", bukan di judul layar.** Sebagai judul ia
+  terbaca sebagai identifikasi; di dalam blok itu ia satu keterangan lagi yang harus
+  dicocokkan pembaca.
+
 ### Tema — satu ikon, tiga keadaan, kedelapan halaman
 
 Ketukannya berputar sistem → terang → gelap → sistem, dan ikonnya menyatakan yang sedang

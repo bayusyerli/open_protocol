@@ -13,6 +13,7 @@
       "properties": {
         "entity_type": {
           "type": "string",
+          "description": "Menentukan skema yang dipakai memeriksa tiap anggota: `<entity_type>.schema.json`. Namanya menyebut BENTUK anggotanya, bukan klaim bahwa tiap anggota entitas ber-`op:` id — `nama-lokal` misalnya berisi pemetaan, dan pemetaan tidak diberi id karena bukan hal yang ada di dunia.",
           "enum": [
             "commodity",
             "variety",
@@ -26,7 +27,8 @@
             "region",
             "deviation-reason",
             "preparation",
-            "target-site"
+            "target-site",
+            "nama-lokal"
           ]
         },
         "label": {

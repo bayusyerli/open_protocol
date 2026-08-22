@@ -311,6 +311,19 @@ a { color: var(--hijau-2); }
 }
 .daftar-hasil a[data-jenis="pupuk"] { --tepi: var(--tosca); }
 .daftar-hasil a[data-jenis="varietas"] { --tepi: var(--jingga); }
+.daftar-hasil a[data-jenis="nama-lokal"] { --tepi: var(--amber); }
+
+/* Nama lokal yang belum terpetakan: sengaja BUKAN tautan, karena tidak ada layar yang
+   bisa dibuka untuknya. Yang ditawarkan keterangannya, bukan harapan palsu bahwa ada
+   sesuatu di baliknya — dan tetap ditampilkan, karena hasil nol terbaca sebagai
+   "tidak ada penyakitnya". */
+.daftar-hasil .hasil-belum {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center; gap: 10px;
+  padding: 13px 15px;
+  border: 1px dashed var(--garis); border-left: 4px solid var(--amber);
+  border-radius: 12px; background: transparent;
+}
 .nama-hasil { display: block; font-weight: 700; overflow-wrap: anywhere; }
 .sub-hasil { display: block; color: var(--lemah); font-size: 12.5px; overflow-wrap: anywhere; }
 .lencana {
