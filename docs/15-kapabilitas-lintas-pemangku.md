@@ -248,7 +248,7 @@ berada di dalam aturan netralitas serta larangan memegang barang.
 
 ---
 
-## 5. Rekomendasi kapabilitas — 30 kapabilitas, 7 kelompok
+## 5. Rekomendasi kapabilitas — 39 kapabilitas, 7 kelompok
 
 Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
@@ -393,10 +393,10 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | **PINJAM / SAMBUNG** | 4 | C4⁽ᵖ⁾, C5, C6, C9⁽ᵗ⁾ |
 | **TUNDA** | 7 | A4, B5, C8, D6, F3, F4⁽ᵈ⁾, G4 |
 
-⁽ᵖ⁾ sebagian — B2 tanpa PHI; C4 sisi acuan dipinjam, sisi setoran petani dibangun.
-⁽ᵇ⁾ bertahap — 10 dari 778 OPT hari ini.
-⁽ᵗ⁾ tertunda sampai status subsidi punya jalur data; sambungannya ke e-RDKK bisa lebih dulu.
-⁽ᵈ⁾ dibangun belakangan, setelah E5 berjalan.
+- ⁽ᵖ⁾ **sebagian** — B2 tanpa PHI; C4 sisi acuan dipinjam, sisi setoran petani dibangun.
+- ⁽ᵇ⁾ **bertahap** — 10 dari 778 OPT hari ini.
+- ⁽ᵗ⁾ **tertunda** sampai status subsidi punya jalur data; sambungannya ke e-RDKK bisa lebih dulu.
+- ⁽ᵈ⁾ **dibangun belakangan**, setelah E5 berjalan.
 
 > **Angka yang paling menentukan bukan 16, melainkan 6.** Enam kapabilitas — C4, C5, C6,
 > C9, dan sisi sambungan G3 serta F4 — dijawab dengan meminjam atau menyambung, bukan
@@ -409,7 +409,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 ## 6. Urutan — ditempelkan ke tiga fase yang sudah ada
 
 Urutan di [10-peta-modul.md](10-peta-modul.md) tidak diubah. Yang dilakukan bagian ini
-**menempelkan 30 kapabilitas ke tiga fase itu**, dan menambahkan satu gelombang nol yang
+**menempelkan 39 kapabilitas ke tiga fase itu**, dan menambahkan satu gelombang nol yang
 seluruhnya berada di dalam lapisan gratis.
 
 ### Gelombang 0 — memperdalam yang gratis (fase 1–2, sekarang)
