@@ -27,11 +27,10 @@
     </span>
   </a>
   <div class="aksi-kepala">
-    <div class="kendali-tema" role="group" aria-label="Tampilan layar">
-      <button type="button" data-tema="sistem" aria-pressed="true">Sistem</button>
-      <button type="button" data-tema="terang" aria-pressed="false">Terang</button>
-      <button type="button" data-tema="gelap" aria-pressed="false">Gelap</button>
-    </div>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang.">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17Z" fill="currentColor" stroke="none"/></svg>
+    </button>
     <span class="cip-jaringan" id="cipJaringan"><i></i><span>Memeriksa jaringan</span></span>
     <button class="tombol-teks" type="button" data-buka-tentang>Tentang data</button>
   </div>
