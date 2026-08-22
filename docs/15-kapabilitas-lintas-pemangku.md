@@ -11,6 +11,11 @@
 > [02-tiga-pasar.md](02-tiga-pasar.md), [03-enam-pintu.md](03-enam-pintu.md),
 > ditambah benchmarking 21 sistem — 9 luar negeri, 12 Indonesia.
 >
+> **Jawaban lapangan pertama masuk 22 Agustus 2026** — lima dari tujuh pertanyaan
+> Fase 1 dijawab pemilik repo. Satu di antaranya mengganti premis **C2**, satu membalik
+> dugaan tentang **E5**, satu mengisi **A3**, dan satu memunculkan lapis yang daftar ini
+> belum punya sama sekali: **G6**. Jawabannya tercantum di bagian 9.
+>
 > **Dikoreksi 22 Agustus 2026.** Kapabilitas **C4** semula berbunyi *"PINJAM + BANGUN"*
 > dengan Panel Harga Bapanas sebagai calon pinjaman.
 > [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md) membatalkannya, dan
@@ -58,7 +63,7 @@ ia mengubah keputusan bangun:
    yang menyebut alasan dan tingkat buktinya bukan cuma anjuran — ia kurikulum. Ini satu-
    satunya kapabilitas yang bermakna bagi pihak yang belum jadi petani.
 
-**Rekomendasi inti:** 39 kapabilitas dalam 7 kelompok (bagian 5), dengan putusan
+**Rekomendasi inti:** 40 kapabilitas dalam 7 kelompok (bagian 5), dengan putusan
 per kapabilitas — **bangun, pinjam, sambung, tunda, jangan**. Empat sudah selesai. Yang
 layak dibangun **sekarang, tanpa satu pun keputusan terbuka dan tanpa sumber data baru**,
 hanya sepuluh. Enam kapabilitas dijawab dengan **pinjam atau sambung** — sudah ada yang
@@ -246,8 +251,9 @@ daftar fitur. Kolom **pemegang de facto** sengaja dibedakan dari "petani" — da
 Bukan setiap lubang layak diisi kita. Tujuh ini lolos empat syarat bagian 1 **dan**
 berada di dalam aturan netralitas serta larangan memegang barang.
 
-1. **Keaslian input** — memeriksa yang di tangan sebelum dipakai. Datanya sudah ada
-   (14.920 produk terdaftar); yang kurang cuma pintunya dan jalur laporannya.
+1. **Keaslian input** — memeriksa **kandungan yang tercetak** pada yang di tangan, sebelum
+   dipakai. Datanya sudah ada (14.920 produk terdaftar, 96,4% pestisida berkomposisi); yang
+   kurang cuma pintunya.
 2. **Batas yang dinyatakan** — jawaban yang menyebut apa yang tidak diketahuinya.
    Sudah jadi budaya repo; belum jadi komponen yang bisa dipakai ulang.
 3. **Nama lokal** — jembatan antara apa yang petani sebut dan apa yang registri catat.
@@ -265,7 +271,7 @@ berada di dalam aturan netralitas serta larangan memegang barang.
 
 ---
 
-## 5. Rekomendasi kapabilitas — 39 kapabilitas, 7 kelompok
+## 5. Rekomendasi kapabilitas — 40 kapabilitas, 7 kelompok
 
 Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
@@ -281,7 +287,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | beranda satu kotak sudah ada; belum semua jalur tersambung | **BANGUN** |
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | belum ada | **BANGUN** (gel. 1) |
-| A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | belum ada; termurah dari seluruh daftar | **BANGUN** (gel. 0) |
+| A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **enam nama pertama terkumpul**; termurah dari seluruh daftar | **BANGUN** (gel. 0) |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
 | A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | indeks sudah ≤48 KB per berkas — separuh jalan | **BANGUN** (gel. 0) |
 
@@ -289,6 +295,11 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > menyebut nama lokalnya. Tanpa kamus itu, jalur 1 hanya bisa dipakai orang yang sudah
 > tahu jawabannya. Ini juga satu-satunya kapabilitas yang menjadi lebih baik justru karena
 > sumbangan pengguna — dan karena itu pintu masuk termurah ke kontribusi.
+>
+> **Enam nama pertama sudah ada:** *bule, patek, lodoh, layu, bercak daun, keriting daun.*
+> Peringatan yang datang bersamanya sama pentingnya dengan namanya: **setiap daerah
+> berbeda.** Jadi kamusnya tidak boleh berbentuk satu daftar nasional — ia perlu tahu
+> nama itu dipakai di mana, dan berani mengatakan tidak tahu di luar wilayah itu.
 
 ### B · JAWAB — mutu dan batas jawaban
 
@@ -314,7 +325,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas | **selesai** |
-| C2 | **Keaslian & anti-palsu** — periksa nomor, ciri kemasan yang bisa dicek sendiri, jalur lapor kecurigaan | petani, kios, penyuluh, principal, penegak | #4, #6 — sebelum uang keluar | registri sudah ada; aturan `G12` sudah menolak nomor karangan di jalur gambar | **BANGUN** |
+| C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | 96,4% pestisida & 71,3% pupuk berkomposisi; **667 dari 7.196 pupuk (9,3%) tak bernomor sama sekali** | **BANGUN** |
 | C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri | **BANGUN bertahap** |
 | C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | 0 di registri; Bapanas **mati**; SP2KP terbuka tetapi eceran | **BANGUN** (+ pinjam sisi eceran) |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
@@ -323,16 +334,32 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | C8 | Sifat agronomi varietas | petani, penyuluh, penangkar | #3 | **0 dari 11.227** | **TUNDA** |
 | C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** kini terbuka — bebas hak cipta lewat [16](16-sumber-harga-komoditas.md) | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** |
 
-> **C2 adalah kapabilitas dengan rasio nilai-terhadap-biaya tertinggi di seluruh dokumen.**
-> Datanya sudah dipegang, taksiran kerugiannya Rp3,3 triliun, tak ada pesaing yang
-> memegangnya, dan ia langsung memenuhi keempat syarat: keputusannya jelas (jadi beli
-> atau tidak), pemiliknya jelas (yang memegang karung), saatnya jelas (di kios, sebelum
-> bayar), dan salahnya ketahuan (nomor cocok atau tidak).
+> **C2 tetap kapabilitas dengan rasio nilai-terhadap-biaya tertinggi — tetapi masukannya
+> diganti.** Versi pertama dokumen ini memakai **nomor pendaftaran** sebagai pintu.
+> Jawaban lapangan membatalkannya: *"Tidak. Biasanya langsung lihat kemasan, cek
+> kandungan."* Dan cadangan yang sudah disiapkan — pindah ke kios — ikut gugur, karena
+> kios bergerak menurut **insentif principal**, motif yang berlawanan dengan pemeriksaan.
 >
-> **Batasnya harus dinyatakan sejak layar pertama:** nomor yang cocok membuktikan
-> **nomornya terdaftar**, bukan **isi karungnya benar**. Menyamakan keduanya akan membuat
-> platform ini menjamin sesuatu yang tidak bisa dijaminnya — dan pemalsu yang menyalin
-> nomor sah akan lolos justru dengan bantuan kita.
+> **Registri membenarkannya dari sisi yang sama sekali lain.** 667 dari 7.196 pupuk —
+> **9,3%** — tidak punya nomor pendaftaran sama sekali, sementara 71,3% punya komposisi.
+> Dua garis bukti yang tidak berhubungan menunjuk arah yang sama, jadi keputusannya tidak
+> bergantung pada satu wawancara.
+>
+> **Premis penggantinya lebih kuat, bukan sekadar berbeda:** ia melacak perilaku yang
+> **sudah terjadi**, bukan perilaku yang diharapkan terjadi. Keempat syarat tetap
+> terpenuhi, dan syarat keempat justru menajam — kadar yang mustahil bisa ditangkap mesin.
+>
+> **Batasnya berpindah, dan ia tidak hilang.** Kandungan yang cocok membuktikan **label
+> sesuai dengan yang terdaftar**; ia tetap **tidak** membuktikan isi karung. Justru di
+> situ bahayanya paling tajam: kasus pupuk palsu Rp3,3 triliun **persis berupa karung yang
+> berbeda dari labelnya sendiri** — NPK di bawah 1% padahal minimum 15%. Pemeriksaan
+> kandungan lebih kuat daripada pemeriksaan nomor, dan tetap buta terhadap isi yang
+> berbohong pada labelnya sendiri. Nyatakan itu di layar, bukan di catatan kaki.
+>
+> **Berhenti di pemeriksaan.** Ditanya apa yang terjadi hari ini saat seseorang mencurigai
+> pupuk palsu, jawabannya *"berhenti di pemeriksaan"* — tidak ada jalur lapor yang
+> menampung. Jalur lapor karena itu dicabut dari cakupan C2; membangun kotak masuk yang
+> tak seorang pun di ujungnya lebih buruk daripada tidak membangunnya.
 
 ### D · HITUNG — kalkulator yang tidak menganjurkan
 
@@ -358,7 +385,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | skema **selesai**; permukaan belum | **BANGUN** (fase 3) |
 | E3 | Simpangan rencana–realisasi | petugas lapang, offtaker | mutu data | pemeriksa **selesai** | **BANGUN** (fase 3) |
 | E4 | Pengingat berbasis **fase**, bukan tanggal | petani, petugas lapang | ketepatan waktu tindakan | `Stage` sengaja **tanpa medan hari** — hanya 2 dari 4 langkah cabai bertanggal | **BANGUN** (fase 3) dengan batasnya dinyatakan |
-| E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | belum ada | **BANGUN** (fase 3) |
+| E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | belum ada — dan **petani kecil umumnya mengandalkan ingatan**, bukan buku | **BANGUN** (fase 3) |
 
 > **E5 adalah satu-satunya kapabilitas dalam kelompok ini yang petani mau isi untuk
 > dirinya sendiri.** E1–E3 dibayar oleh pembeli hilir, dan itu sah — tapi ia menempatkan
@@ -366,6 +393,14 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > Buku kas membalik arahnya: petani mencatat karena ia sendiri ingin tahu untungnya berapa,
 > dan catatan itu **kebetulan** memenuhi sebagian besar kebutuhan bukti. Ini penerapan
 > paling langsung dari "satu rekaman, banyak bacaan".
+>
+> **Satu dugaan di sini terbukti meleset, dan ke arah yang lebih sulit.** Bagian 9
+> menduga buku kas sudah ada dalam bentuk apa pun, sehingga E5 tinggal memindahkan bentuk.
+> Jawaban lapangannya: *"kalaupun ada dalam bentuk buku kertas. Umumnya petani kecil
+> mengandalkan ingatan saja."* Jadi E5 **kebiasaan baru**, bukan pemindahan bentuk — dan
+> kebiasaan baru jauh lebih mahal diterima. *Ingin tahu untungnya berapa* tidak sama
+> dengan *mau mencatat*, dan jarak antara keduanya yang harus dirancang, bukan diasumsikan
+> hilang.
 
 ### F · BUKTI & AKSES — hilir yang menarik hulu
 
@@ -391,6 +426,27 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | belum ada; rantai POPT sudah ada | **BANGUN hati-hati + SAMBUNG** |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
 | G5 | Identitas petak stabil tanpa memiliki geometrinya | semua | dasar semua rekaman | `L7` sudah menolak geometri publik; AgStack GeoID sebagai preseden | **BANGUN** |
+| G6 | **Lapis pengalaman peer** — pengamatan lapangan diagregasi di tingkat bahan aktif, selalu berpenyebut | petani, poktan, penyuluh | #3, #4, #6, #9 — kanal keputusan yang sebenarnya | `Observation` ada; pengumpulan hanya mungkin di atas E1–E5 | **BANGUN** (fase 3) |
+
+> **G6 lahir dari jawaban yang sama yang membatalkan premis C2.** Kalimat lengkapnya
+> berbunyi *"umumnya rekomendasi dari peers"* — artinya kanal keputusan yang sebenarnya
+> bukan layar mana pun, melainkan penularan antarpetani. Daftar ini semula tidak punya
+> lapis itu sama sekali.
+>
+> **Dan ia paling mudah dirancang jadi hal yang justru dilarang bagian 7.** Lapis peer
+> yang lalai *adalah* sistem ulasan produk. Empat syarat yang membuatnya berdiri di sisi
+> yang benar: agregasi berhenti di **tingkat bahan aktif atau hara**, **penyebut selalu
+> ikut**, **tidak pernah diurutkan menurut frekuensi**, dan **ditahan sama sekali di bawah
+> penyebut minimum** — sebab penyebut kecil tempat termurah untuk dibajak.
+>
+> **Pengumpulannya sengaja mahal.** Sumbangan hanya boleh datang sebagai efek samping
+> catatan musim yang memang sudah dibuat, bukan dari formulir terbuka — karena **mahal
+> dibuat berarti mahal dipalsukan.** Itu juga yang menjaga janji "tanpa akun": lapisan
+> gratis hanya **menyebarkan**, tidak pernah **mengumpulkan**.
+>
+> **Risiko sisa yang tidak tertutup:** principal yang produknya mendominasi satu bahan
+> aktif tetap diuntungkan tanpa pernah disebut namanya. Penyebut dan larangan mengurutkan
+> memperlambat, tidak menghapus.
 
 > **G3 punya satu bahaya yang harus dirancang lebih dulu, bukan ditambal.** Laporan gejala
 > dari warga adalah data mentah; **menyebutnya wabah adalah kesimpulan.** Peta yang
@@ -399,13 +455,13 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > Karena itu perannya **memberi lengan pada rantai POPT yang sudah ada**, bukan
 > menggantikannya: laporan warga masuk sebagai pengamatan, verifikasi tetap milik POPT.
 
-### Rekapitulasi putusan — 39 kapabilitas
+### Rekapitulasi putusan — 40 kapabilitas
 
 | Putusan | Jumlah | Nomor |
 |---|---:|---|
 | **selesai** | 4 | C1, D1, D2, F2 |
 | **BANGUN** — gelombang 0–1 | 17 | A1, A2, A3, A5, B1, B2⁽ᵖ⁾, B3, B4, C2, C3⁽ᵇ⁾, **C4**⁽ʰ⁾, C7, D3, D4, D5, G1, G5 |
-| **BANGUN** — gelombang 2 · fase 3 | 7 | E1, E2, E3, E4, E5, F1, G2 |
+| **BANGUN** — gelombang 2 · fase 3 | 8 | E1, E2, E3, E4, E5, F1, G2, **G6** |
 | **BANGUN hati-hati** | 1 | G3 — juga **SAMBUNG** ke rantai POPT |
 | **PINJAM / SAMBUNG** | 3 | C5, C6, C9⁽ᵗ⁾ |
 | **TUNDA** | 7 | A4, B5, C8, D6, F3, F4⁽ᵈ⁾, G4 |
@@ -434,7 +490,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 ## 6. Urutan — ditempelkan ke tiga fase yang sudah ada
 
 Urutan di [10-peta-modul.md](10-peta-modul.md) tidak diubah. Yang dilakukan bagian ini
-**menempelkan 39 kapabilitas ke tiga fase itu**, dan menambahkan satu gelombang nol yang
+**menempelkan 40 kapabilitas ke tiga fase itu**, dan menambahkan satu gelombang nol yang
 seluruhnya berada di dalam lapisan gratis.
 
 ### Gelombang 0 — memperdalam yang gratis (fase 1–2, sekarang)
@@ -447,7 +503,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 |---|---|---|
 | 1 | **B1** komponen batas jawaban | Prasyarat semua layar berikutnya; tanpa ini tiap layar baru menambah utang kepercayaan |
 | 2 | **A3** kamus nama lokal | Menentukan apakah jalur 1 bisa dipakai orang yang belum tahu jawabannya |
-| 3 | **C2** keaslian & anti-palsu | Nilai tertinggi per biaya di seluruh dokumen |
+| 3 | **C2** keaslian & anti-palsu — lewat **kandungan**, bukan nomor | Nilai tertinggi per biaya, dan kini melacak perilaku yang sudah terjadi |
 | 4 | **D4 + D5** kalibrasi & takaran | Termurah; menyentuh keselamatan; tidak butuh data baru |
 | 5 | **B4** antrean pertanyaan tak terjawab | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
 | 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
@@ -472,7 +528,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 ### Gelombang 2 — eksekusi berbayar (fase 3)
 
 **E1–E4** rencana, realisasi, simpangan, pengingat · **E5** buku kas ·
-**F1** berkas bukti · **G2** umpan balik menaikkan tingkat bukti.
+**F1** berkas bukti · **G2** umpan balik menaikkan tingkat bukti · **G6** lapis peer.
 
 > **E5 didahulukan dari E1 di dalam gelombang ini**, meski nomornya belakangan. E1–E3
 > dibayar hilir; E5 diisi karena petani ingin tahu untungnya sendiri. Yang kedua adalah
@@ -496,7 +552,7 @@ Sama mengikatnya dengan daftar bangun. Enam pertama sudah ada di
 | Lapak jual-beli input atau hasil panen | Larangan memegang barang, keputusan ke-1 dokumen fondasi |
 | Pembiayaan di neraca sendiri | Pola kegagalan eFishery/TaniHub |
 | Kemitraan yang menuntut seluruh hasil dijual ke satu pihak | Menutup pilihan pasar petani; itu mitra, bukan infrastruktur |
-| Peringkat atau ulasan produk komersial | Ditolak `L3`; dan peringkat adalah penempatan berbayar yang menyamar |
+| **Peringkat, ulasan, atau sinyal popularitas atas produk komersial** | Ditolak `L3`; dan peringkat adalah penempatan berbayar yang menyamar. Berlaku sama pada bentuk yang tidak menyebut dirinya peringkat: urutan menurut seberapa sering sesuatu dipakai, label "paling banyak dipilih", jumlah bintang, dan **agregasi pengalaman pengguna pada tingkat produk**. Pengalaman pengguna hanya boleh masuk sebagai `Observation`, diagregasi **paling rinci pada tingkat bahan aktif atau hara**, **selalu dengan penyebutnya**, **tidak pernah diurutkan menurut frekuensi**, dan **ditahan sama sekali di bawah penyebut minimum** — sebab penyebut kecil adalah tempat termurah untuk dibajak |
 | Kalender tanam sendiri | Katam sudah ada dan lebih baik; membangun ulang adalah pemborosan terbesar yang mungkin |
 | Kalkulator hara tandingan | PHSL/Nutrient Expert sudah ada; yang kurang adalah sambungannya ke kuota subsidi |
 | **Peta wabah OPT tanpa verifikasi** | Laporan warga adalah pengamatan; menyebutnya wabah memicu penyemprotan massal yang merugikan petani dan menguntungkan penjual |
@@ -526,26 +582,53 @@ apa adanya, dan sudah tercermin di baris **E**.
 
 ---
 
-## 9. Yang harus diuji Fase 1 — tujuh pertanyaan dari dokumen ini
+## 9. Yang harus diuji Fase 1 — lima terjawab, dua masih terbuka
 
 Ditambahkan ke lima pertanyaan di [02-tiga-pasar.md](02-tiga-pasar.md) bagian 8, diurutkan
 menurut kerusakan kalau jawabannya berbeda dari dugaan.
 
-1. **Apakah petani atau kios benar-benar memeriksa nomor pendaftaran sebelum membeli —
-   atau keputusan itu sudah selesai sebelum karung dilihat?** Kalau yang kedua, C2 harus
-   dirancang untuk kios dan penyuluh, bukan petani, dan seluruh urutan gelombang 0 berubah.
-2. **Nama lokal apa yang sebenarnya dipakai** untuk sepuluh OPT cabai yang sudah terkurasi,
-   di dua sampai tiga sentra? Ini masukan langsung A3, dan bisa dikumpulkan di wawancara
-   yang sama tanpa tambahan biaya.
-3. **Berapa kali dalam semusim seorang petani menghitung ongkos?** Menentukan apakah D3
-   punya momen, atau cuma terasa berguna saat ditanyakan.
-4. **Siapa yang menakar dosis di lahan** — petani sendiri atau buruh semprot? Menentukan
-   siapa pengguna D4/D5, dan bahasanya.
-5. **Apakah buku kas per petak sudah ada dalam bentuk apa pun?** Kalau ya, E5 adalah
-   pemindahan bentuk — jauh lebih mudah diterima daripada kebiasaan baru.
-6. **Apa yang terjadi hari ini ketika seseorang mencurigai pupuk palsu?** Ada jalur
-   laporannya atau tidak, dan siapa yang menanganinya. Menentukan apakah C2 berhenti di
-   pemeriksaan atau berlanjut ke pelaporan.
+**Lima terjawab pada 22 Agustus 2026** oleh pemilik repo. Ini **satu narasumber, bukan
+wawancara Fase 1** — bobotnya diperlakukan sebagaimana mestinya, dan yang paling menentukan
+di antaranya kebetulan punya pembenaran kedua dari registri sendiri.
+
+1. ~~Apakah petani atau kios benar-benar memeriksa nomor pendaftaran sebelum membeli?~~
+   **Terjawab — dan ia mengganti premis C2.**
+
+   > *"Tidak. Biasanya langsung lihat kemasan, cek kandungan. Umumnya rekomendasi dari
+   > peers. Khususnya petani. Kalau kios, tergantung dari insentif dari principal dan
+   > potensi demand."*
+
+   Tiga akibat. **Nomor bukan pintu** — C2 pindah ke kandungan. **Cadangannya ikut gugur**:
+   pindah ke kios tidak menyelamatkan, karena kios bergerak menurut insentif principal,
+   motif yang berlawanan dengan pemeriksaan. Dan **"rekomendasi dari peers" memunculkan
+   G6** — lapis yang daftar ini semula tidak punya sama sekali.
+
+   Registri membenarkannya dari sisi lain: **667 dari 7.196 pupuk (9,3%) tak bernomor sama
+   sekali**, sementara 71,3% berkomposisi. Dua garis bukti yang tidak berhubungan.
+2. ~~Nama lokal apa yang dipakai untuk sepuluh OPT cabai?~~ **Terjawab sebagian.**
+
+   > *"Setiap daerah memiliki bahasa lokal yang berbeda. Tapi umumnya: bule, patek, lodoh,
+   > layu, bercak daun, keriting daun."*
+
+   Enam nama pertama untuk A3 — dan peringatannya sama pentingnya: kamusnya harus tahu
+   nama itu dipakai **di mana**, bukan satu daftar nasional.
+3. **Berapa kali dalam semusim seorang petani menghitung ongkos?** *Masih terbuka.*
+   Menentukan apakah D3 punya momen, atau cuma terasa berguna saat ditanyakan.
+4. ~~Siapa yang menakar dosis di lahan?~~ **Terjawab: *"keduanya."*** D4/D5 melayani petani
+   **dan** buruh semprot, jadi bahasanya harus jalan untuk orang yang tidak memilih dosisnya
+   sendiri — bukan hanya untuk yang memutuskan.
+5. ~~Apakah buku kas per petak sudah ada dalam bentuk apa pun?~~ **Terjawab, dan dugaannya
+   meleset ke arah yang lebih sulit.**
+
+   > *"Biasanya kalaupun ada dalam bentuk buku kertas. Umumnya petani kecil mengandalkan
+   > ingatan saja."*
+
+   Dokumen ini menduga E5 tinggal memindahkan bentuk. Ternyata **kebiasaan baru** — jauh
+   lebih mahal diterima.
+6. ~~Apa yang terjadi ketika seseorang mencurigai pupuk palsu?~~ **Terjawab: *"berhenti di
+   pemeriksaan."*** Tidak ada jalur lapor yang menampung, jadi **pelaporan dicabut dari
+   cakupan C2.** Kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak
+   ada kotak masuk.
 7. ~~Berapa jarak antara harga acuan Bapanas dan harga yang diterima petani?~~
    **Terjawab** oleh [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md), dan
    jawabannya menutup pertanyaannya sendiri: acuan itu **harga pengumpul**, jadi jaraknya
@@ -556,6 +639,15 @@ menurut kerusakan kalau jawabannya berbeda dari dugaan.
    mengukurnya — bahkan Survei Harga Produsen Gabah BPS hanya menutupi gabah. Kalau petani
    tidak mau menyetor, C4 berhenti di harga eceran, dan seluruh janji "menutup lubang harga"
    gugur bersamanya.
+
+**Dua pertanyaan baru lahir dari jawaban di atas**, dan keduanya menggantikan yang tertutup:
+
+- **Seberapa jauh nama lokal berbeda antarsentra?** Jawaban ke-2 menyebut perbedaannya ada
+  tetapi tidak seberapa besar. Kalau bedanya kecil, A3 satu kamus dengan penanda wilayah.
+  Kalau besar, A3 harus per wilayah sejak awal — dan biayanya berlipat.
+- **Apa yang membuat seorang petani mau menyetorkan pengalamannya?** Seluruh G6 berdiri di
+  atasnya, dan jawaban ke-5 memberi pertanda buruk: yang mengandalkan ingatan untuk
+  urusannya sendiri belum tentu mau mencatat untuk orang lain.
 
 > **Cara memakai dokumen ini** — sama seperti [02-tiga-pasar.md](02-tiga-pasar.md): ini
 > usulan, bukan keputusan terkunci. Kolom **pemegang de facto** di bagian 2 adalah
