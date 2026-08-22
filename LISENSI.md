@@ -77,6 +77,34 @@ repositori ini.
 > menyertakan berkasnya. Catatan yang sama sudah ada di `git notes` pada
 > commit yang melacaknya.
 
+### Direktori toko dari registri principal
+
+`toko_data/raw/syngenta*.ndjson` dan turunannya di `toko_data/toko-tani-jawa*`
+mencerminkan **direktori pengecer Syngenta Indonesia**, diambil dari endpoint
+JSON:API-nya yang terbuka untuk dibaca tanpa autentikasi.
+
+Perlu dibedakan dari registri pemerintah di atas. Nomor pendaftaran pestisida dan
+varietas adalah fakta dari catatan publik yang tidak dimiliki siapa pun. Daftar
+siapa yang menjual apa di mana **bukan** catatan pemerintah — ia kompilasi yang
+disusun perusahaannya sendiri. Bahwa ia bisa dibaca publik tidak dengan sendirinya
+membuatnya bebas disebarkan ulang, dan alasan "fakta bukan milik siapa pun" tidak
+berlaku sekuat itu di sini.
+
+Karena itu setiap baris membawa kolom `lisensi` yang menyebut pemiliknya, dan kolom
+itu ikut sampai ke berkas gabungan — sumbernya bercampur, dan `opendata-jateng`
+yang CC-BY memang bebas disebarkan ulang sementara yang ini tidak.
+
+Yang kami lisensikan CC BY-SA tetap hanya **kurasi di atasnya**: pembakuan ejaan
+provinsi ke ISO 3166-2:ID, pemindahan 84 baris Banten dan DI Yogyakarta yang salah
+arsip, pengenalan koordinat isian otomatis, dan penilaian tentang titik mana yang
+tidak layak dipercaya. Isi direktorinya bukan.
+
+> Sebelum kumpulan ini disebarkan ulang sebagai berkas mandiri — bukan ditampilkan
+> sebagai rujukan lokasi di dalam aplikasi — hak sebarnya perlu diperiksa lebih
+> dulu, seperti berkas CORESTA di atas. Catatan cara pengambilan dan seluruh
+> temuan mutu datanya ada di
+> [`toko_data/laporan-syngenta.md`](toko_data/laporan-syngenta.md).
+
 ### Data usaha tani
 
 Keputusan ke-5 di [`docs/00`](docs/00-fondasi-dan-tahapan.md) berbunyi **data
