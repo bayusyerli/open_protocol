@@ -1054,8 +1054,28 @@ terdaftarnya.
 
 Bonus lain: pasangan mentimun "Semi" milik `PT BCA` di SIPERINTIS cocok dengan produk PT Benih
 Citra Asia yang nyata. Itu **bukti**, bukan tebakan, untuk singkatan yang sengaja tidak digabung
-di `proseed_data/pemohon_alias.csv` (pasal 4). Penggabungannya tidak dilakukan di sini karena
-mengubah cacah principal di seluruh repositori — keputusannya diserahkan, buktinya dicatat.
+di `proseed_data/pemohon_alias.csv`.
+
+**Penggabungannya kemudian dilakukan, 20 Agustus 2026.** Buktinya diperkuat lebih dulu: nama
+varietas di 78 baris `PT BCA` memakai kode dua huruf, dan **12 dari 13 kode itu menunjuk tanaman
+yang sama** dengan yang dipakai `PT Benih Citra Asia` — termasuk yang ganjil dan karena itu sulit
+kebetulan: `SL` untuk tomat, `MC` dan `PA` sama-sama paria, `VA` kacang panjang. Hanya `BA`
+(bayam, satu varietas) yang tidak ada di sisi satunya. Portofolio komoditasnya sama, dan tahunnya
+2010–2012 tidak beririsan dengan baris `PT Benih Citra Asia` yang lain.
+
+Pasal 4 karena itu diubah: singkatan bukan lagi "tidak pernah digabung" melainkan "tidak digabung
+atas dasar dugaan" — boleh digabung kalau identitasnya dibuktikan, dan **buktinya wajib menempel
+pada pemetaannya**, di kolom `bukti` yang baru di berkas alias, bukan cuma di catatan commit.
+`dasar` bertambah satu istilah, `singkatan`. `PT BISI` dan `PT SHS` tetap terpisah karena
+buktinya belum ada.
+
+Sekalian dibuat pelaksana yang selama ini tidak ada: `proseed_data/terapkan_alias.py`. Pasal 4
+sudah lama menjanjikan bahwa membalik penggabungan cukup dengan menyunting berkas alias lalu
+membangkitkan ulang kolom kanoniknya, tetapi tidak ada yang membangkitkannya — kolom itu dibuat
+sekali dengan cara yang tidak tercatat. Alat itu diuji lebih dulu dengan menjalankannya tanpa
+perubahan alias sama sekali: keluarannya sama persis, byte demi byte. Baru sesudah itu
+penggabungannya diterapkan. Cacah pemohon 1.259 → 1.258; `PT Benih Citra Asia` 220 → 298
+varietas. Kolom `pemohon` tidak disentuh — 78 barisnya masih tertulis `PT BCA`.
 
 **Dua pasang lagi bukan tabrakan melainkan varietas yang tercatat dua kali** di bawah dua ejaan
 komoditas: `5083/Kpts/SR.120/12/2011` memuat "Lai Bibir Merah" berkomoditas *Durian* dan "Bibir

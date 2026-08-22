@@ -154,16 +154,27 @@ Aturannya:
 - **Nama asli tidak pernah ditimpa.** Hasil penyeragaman selalu masuk kolom terpisah.
 - **Setiap penggabungan dicatat beserta alasannya** di berkas alias, memakai kosakata `dasar`
   yang sama di kedua sisi: `kanonik`, `ejaan/kapitalisasi/spasi`, `tanda-baca`,
-  `beda-bentuk-badan`.
+  `beda-bentuk-badan`, `singkatan`.
 - **Pemilihan bentuk kanonik**, berurutan: ada prefiks badan hukum → bukan ALL CAPS → tanpa
   spasi ganda atau spasi ekor → paling sering muncul.
 - **`perlu_tinjau=ya`** untuk nama yang sama tetapi bentuk badannya berbeda (CV vs PT vs UD).
   Digabung karena hampir pasti salah entri, ditandai supaya bisa dipisah lagi.
-- **Singkatan tidak pernah digabung.** `PT BCA` mungkin PT Benih Citra Asia, `PT BISI` bisa
-  PT BISI International atau PT Benih Inti Subur Intani — dua-duanya masuk akal. Tandai,
-  jangan tebak.
+- **Singkatan tidak digabung atas dasar dugaan.** `PT BISI` bisa PT BISI International atau
+  PT Benih Inti Subur Intani — dua-duanya masuk akal, jadi ia ditandai, bukan ditebak.
+  Singkatan hanya boleh digabung kalau identitasnya **dibuktikan**, dan buktinya ditulis di
+  kolom `bukti` berkas alias — bukan di catatan commit, bukan di README saja, melainkan
+  menempel pada pemetaannya sendiri supaya ikut terbaca saat penggabungannya ditinjau.
+  Kemiripan nama bukan bukti; kesamaan komoditas saja juga bukan.
+
+  Satu-satunya yang sudah memenuhi syarat itu: `PT BCA` → `PT Benih Citra Asia`, 20 Agustus
+  2026, atas dasar 12 dari 13 kode nama varietasnya menunjuk tanaman yang sama — termasuk
+  kode ganjil seperti `SL` untuk tomat dan `VA` untuk kacang panjang — ditambah satu
+  produknya yang terverifikasi ke registri Direktorat Perbenihan Hortikultura. `PT BISI` dan
+  `PT SHS` tetap terpisah.
 - **Membalik penggabungan** = sunting berkas alias, bangkitkan ulang kolom kanoniknya. Tidak
-  ada data asli yang hilang.
+  ada data asli yang hilang. Sisi benih punya pelaksananya: `proseed_data/terapkan_alias.py`,
+  yang menghasilkan berkas sama persis kalau aliasnya tidak berubah. Sisi pupuk dan pestisida
+  belum punya.
 
 Catatan: `pukpes_data/produsen_master.csv` dibuat sebelum konvensi ini disepakati dan memakai
 cara lama — nama asli tidak disimpan, alasan penggabungan tidak dicatat, dan bentuk
