@@ -5,6 +5,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 
 | Halaman | Jalur | Rancangan |
 |---|---|---|
+| `beranda.html` | — pintu depan: satu kotak pencarian, lalu diserahkan ke jalur yang punya perendernya | — |
 | `jalur-1.html` | 1 — masuk dari gejala: dugaan penyebab, dua cara memastikan, bahan aktif yang terdaftar | [`docs/04-jalur-insiden.md`](../docs/04-jalur-insiden.md) |
 | `index.html` | 2 — masuk dari kemasan: isi produk dan merek lain yang isinya sama | [`docs/05-jalur-produk.md`](../docs/05-jalur-produk.md) |
 | `jalur-3.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
@@ -12,6 +13,23 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
 | `jalur-6.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
 | `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
+
+`beranda.html` tidak punya perender rincian sama sekali. Ia mencari, lalu menautkan
+ke jalur yang memang perendernya — produk dan **bahan aktif** ke jalur 2, varietas ke
+jalur 4, **gejala** ke jalur 1 — lewat `?id=…&pecahan=…` atau `?opt=…` yang dibaca
+`tautanMasuk()` di `pustaka.js`. Menyalin layar rinciannya ke pintu depan berarti dua
+layar yang sama akan menyimpang diam-diam begitu salah satunya diperbaiki.
+
+Satu kotak menjawab tiga macam pertanyaan sekaligus, karena yang mengetik "Abamektin"
+tidak tahu — dan tidak perlu tahu — bahwa yang diketiknya bahan dan bukan merek.
+Bahan aktif ikut ke ember `cari/` yang sama dengan nama, jadi keduanya datang dalam
+satu pengambilan; gejala punya kepalanya sendiri (`gejala-cari.json`, 3,1 KB) karena
+"daun mengeriting ke atas" bukan awalan sebuah nama dan tidak bisa diember begitu.
+
+`bahan.js` dan `varietas.js` sama-sama perender bersama, bukan halaman. Kartu
+bahan+kadar di jalur 2 memakai kelas dan perilaku buka-tutup yang persis sama dengan
+kartu bahan jalur 1: keduanya menyatakan hal yang sama, dan memberinya dua rupa
+membuat orang mengira keduanya dua hal yang berbeda.
 
 `varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
 sendiri, dan di jalur 2 kalau yang dicari ternyata varietas — satu perender, dua
@@ -32,7 +50,7 @@ menyajikan `app/` saja tidak cukup:
 python3 -m http.server 8742
 ```
 
-Buka `http://localhost:8742/app/`. Konfigurasi `open-protocols` di
+Buka `http://localhost:8742/app/beranda.html`. Konfigurasi `open-protocols` di
 `.claude/launch.json` sudah melakukan persis itu, dengan `autoPort` supaya tidak
 bertabrakan dengan sesi lain yang memakai repositori sama.
 
@@ -43,6 +61,8 @@ peramban:
 
 | Jalur | Berkas | Sebelum gzip | Berkas terbesar |
 |---|---|---|---|
+| beranda · muat + satu pencarian | 7 | 104 KB | 45,3 KB |
+| 2 · bahan aktif → satu kartu kadar | 9 | 87 KB | 20,4 KB |
 | 1 · gejala → bahan | 4 | 108 KB | 38,8 KB |
 | 2 · produk berlarangan | 4 | 151 KB | 47,4 KB |
 | 2 · produk biasa | 3 | 108 KB | 47,8 KB |
@@ -69,6 +89,54 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
 - **Isi sama bukan berarti dosis sama.** Dosis milik pendaftaran tiap produk.
 - **Nama dagang belum terpetakan.** Nama yang tidak ketemu bukan bukti produknya
   tidak terdaftar, dan layar mengatakannya.
+
+### Khusus beranda
+
+- **Satu kotak, tiga macam jawaban.** Nama terdaftar, bahan aktif, dan gejala datang
+  dalam tiga kelompok terpisah dengan judulnya masing-masing — bukan satu daftar datar.
+  Ketiganya menjawab pertanyaan yang berbeda, dan mencampurnya dalam satu urutan
+  memaksa pembaca menebak kenapa sebuah baris ada di situ. Urutannya gejala, bahan,
+  lalu nama: kalau kueri memang cocok dengan apa yang terlihat di kebun, itu hampir
+  pasti yang dimaksud — dan itu pula cabang bertaruhan paling tinggi.
+- **Komposisi ikut ke daftar hasil.** "PHONSKA" milik Petrokimia Gresik ada empat kali
+  dengan grade berbeda — 15-8-10, 15-15-10, 15-10-15, 10-10-10 — dan "Pupuk Indonesia
+  Holding Company Phonska Plus" delapan kali. Semuanya SKU yang berlainan, bukan rekaman
+  ganda. Grade NPK hanya dibentuk kalau N, P2O5, dan K2O ketiganya tercatat **dan**
+  ketiganya g/kg; kalau tidak, yang tampil komposisinya apa adanya. Produk yang
+  komposisinya memang kosong di registri mengatakannya, bukan menyisakan baris hilang.
+- **Bahan aktif tidak pernah diratakan.** Satu entitas "Abamektin" dipakai pada 33 kadar
+  berbeda; daftarnya dipecah per kadar, karena kesetaraan hanya benar pada pasangan
+  bahan + kadar. Dosis tidak ikut ke layar bahan sama sekali — ia milik pendaftaran tiap
+  produk. Di dalam satu kartu kadar, yang ditampilkan justru bahan **lain** di dalamnya:
+  sebagian abamektin murni, sebagian campuran, dan itu yang membedakan anggotanya.
+- **Unsur hara sengaja tidak bisa dicari sebagai bahan.** Nitrogen sendiri ada di 2.582
+  pupuk — hampir seluruh registrinya — dan daftar sepanjang itu tidak menjawab apa pun.
+  Pertanyaan haranya dijawab jalur 3, dalam rupiah per kilogram hara. Batas itu tertulis
+  di layar, bukan cuma di sini.
+- **Gejala menyebut berapa kata yang cocok**, dan ambangnya separuh kata dibulatkan ke
+  atas. Tanpa ambang itu satu kata lazim seperti "daun" memanggil kesepuluh gejalanya,
+  dan daftar yang selalu penuh sama tidak berartinya dengan daftar yang selalu kosong.
+  Statusnya draft disebut di judul kelompoknya, bukan disembunyikan di kaki halaman.
+- **Pintu depan tidak punya perender.** Ia mencari nama, lalu menyerahkan yang
+  ditemukan ke jalur yang memang perendernya. Satu layar rincian, satu tempat — kalau
+  disalin ke sini, keduanya akan menyimpang begitu salah satunya diperbaiki.
+- **Yang dicari dinyatakan, begitu juga yang belum bisa.** Kotak ini mencari
+  **nama terdaftar** — produk, pupuk, varietas. Bahan aktif dan gejala belum bisa
+  dicari dari sini, dan layar mengatakannya alih-alih membiarkan hasil nol terbaca
+  sebagai "tidak ada".
+- **Saran ejaan tidak mengganti kueri.** Kalau nol hasil karena satu-dua huruf keliru,
+  layar bertanya "apakah maksudnya…" dan kueri aslinya tetap di kotak. Yang dikirim ke
+  jalur tujuan adalah nama yang benar, bukan salah ketiknya — mengirim salah ketiknya
+  membuat jalur tujuan mencari sesuatu yang memang nol.
+- **Nol hasil dibuka dengan alasannya.** Nama di kemasan sering berbeda dari nama
+  terdaftarnya, dan pemetaannya belum ada; layar menyebut itu lebih dulu sebelum
+  apa pun yang lain.
+- **Tema tiga keadaan, bukan dua.** "Ikut sistem" adalah bawaan dan harus bisa dipilih
+  kembali; tombol terang/gelap saja tidak memberi jalan pulang. Pilihannya dipasang
+  sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+- **Beranda tidak ikut terinstrumentasi.** `ukur.js` menghitung per jalur, dan pintu
+  depan bukan jalur — memberinya nomor karangan akan mengubah tabel yang sudah
+  didefinisikan di [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md).
 
 ### Khusus jalur 1
 

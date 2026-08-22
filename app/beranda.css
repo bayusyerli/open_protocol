@@ -1,0 +1,473 @@
+/* Beranda — permukaan masuk.
+   Enam jalur sudah ada dan tidak berubah; halaman ini cuma pintu depannya.
+
+   Aturan yang sama dengan gaya.css: HP entry-level, sinyal buruk. Tanpa font luar,
+   tanpa gambar, tanpa kerangka kerja. Warna lewat token supaya terang, gelap, dan
+   "ikut sistem" tergarap ketiganya — bukan dua dari tiga. */
+
+:root {
+  color-scheme: light;
+
+  --tinta: #123126;
+  --lemah: #5f6e66;
+  --pudar: #87948d;
+
+  --kertas: #fffef8;
+  --kanvas: #f5f6ee;
+  --permukaan: #e9eee5;
+  --garis: #cfdbd2;
+
+  --hijau: #00442f;
+  --hijau-2: #00745d;
+  --hijau-lembut: #e7f1e9;
+  --hijau-sorot: #006149;
+  --limau: #79d20a;
+  --limau-lembut: #edf8d9;
+  --tosca: #087a73;
+  --jingga: #ec6a2c;
+  --amber: #976000;
+  --amber-lembut: #fff1d2;
+  --merah: #993d36;
+  --merah-lembut: #fae8e5;
+
+  --di-aksen: #ffffff;
+  --isian: #ffffff;
+  --bayang: 0 18px 48px rgb(0 68 47 / 10%);
+  --sudut: 16px;
+
+  font-family: "Avenir Next", Avenir, Inter, ui-sans-serif, system-ui, -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-synthesis: none;
+}
+
+/* Gelap ditulis dua kali dengan sengaja: sekali untuk yang belum memilih apa pun
+   (ikut sistem), sekali untuk yang memilih gelap secara eksplisit. Menaruhnya hanya
+   di media query membuat tombol tema tidak bisa melawan sistem. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) { color-scheme: dark; }
+  :root:not([data-tema="terang"]) {
+    --tinta: #edf5ef;
+    --lemah: #b4c2b9;
+    --pudar: #899a90;
+    --kertas: #17261f;
+    --kanvas: #0d1712;
+    --permukaan: #203229;
+    --garis: #385044;
+    --hijau: #91e0c2;
+    --hijau-2: #54c7a6;
+    --hijau-lembut: #1d382c;
+    --hijau-sorot: #b4f0d7;
+    --limau: #8ddd24;
+    --limau-lembut: #293b1b;
+    --tosca: #67d0c8;
+    --jingga: #ff9a64;
+    --amber: #f4c45e;
+    --amber-lembut: #3c3018;
+    --merah: #ffaaa3;
+    --merah-lembut: #452724;
+    --di-aksen: #0d1712;
+    --isian: #101e17;
+    --bayang: 0 18px 48px rgb(0 0 0 / 30%);
+  }
+}
+:root[data-tema="gelap"] { color-scheme: dark; }
+:root[data-tema="gelap"] {
+  --tinta: #edf5ef;
+  --lemah: #b4c2b9;
+  --pudar: #899a90;
+  --kertas: #17261f;
+  --kanvas: #0d1712;
+  --permukaan: #203229;
+  --garis: #385044;
+  --hijau: #91e0c2;
+  --hijau-2: #54c7a6;
+  --hijau-lembut: #1d382c;
+  --hijau-sorot: #b4f0d7;
+  --limau: #8ddd24;
+  --limau-lembut: #293b1b;
+  --tosca: #67d0c8;
+  --jingga: #ff9a64;
+  --amber: #f4c45e;
+  --amber-lembut: #3c3018;
+  --merah: #ffaaa3;
+  --merah-lembut: #452724;
+  --di-aksen: #0d1712;
+  --isian: #101e17;
+  --bayang: 0 18px 48px rgb(0 0 0 / 30%);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background-color: var(--kanvas);
+  background-image:
+    linear-gradient(rgb(0 68 47 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(0 68 47 / 4%) 1px, transparent 1px);
+  background-size: 34px 34px;
+  color: var(--tinta);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+:root[data-tema="gelap"] body,
+:root:not([data-tema="terang"]) body { }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) body {
+    background-image:
+      linear-gradient(rgb(145 224 194 / 4%) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(145 224 194 / 4%) 1px, transparent 1px);
+  }
+}
+:root[data-tema="gelap"] body {
+  background-image:
+    linear-gradient(rgb(145 224 194 / 4%) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(145 224 194 / 4%) 1px, transparent 1px);
+}
+
+button, input { font: inherit; color: inherit; }
+button { cursor: pointer; }
+a { color: var(--hijau-2); }
+:focus-visible { outline: 3px solid var(--limau); outline-offset: 2px; }
+
+.khusus-pembaca {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+.lewati {
+  position: absolute; left: -9999px; top: 8px; z-index: 20;
+  padding: 10px 16px; border-radius: 10px;
+  background: var(--hijau); color: var(--di-aksen); text-decoration: none;
+}
+.lewati:focus { left: 8px; }
+
+/* --- kepala -------------------------------------------------------------- */
+
+.kepala {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; flex-wrap: wrap;
+  padding: 12px clamp(14px, 5vw, 40px);
+  border-bottom: 1px solid var(--garis);
+  background: color-mix(in srgb, var(--kertas) 94%, transparent);
+  backdrop-filter: blur(8px);
+}
+.merek { display: flex; text-decoration: none; color: inherit; line-height: 1.15; }
+.merek strong { display: block; font-size: 18px; letter-spacing: -.03em; }
+.merek small {
+  display: block; color: var(--lemah);
+  font-size: 10px; font-weight: 700; letter-spacing: .16em;
+}
+.aksi-kepala { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+.kendali-tema {
+  display: inline-flex; padding: 3px; gap: 2px;
+  border: 1px solid var(--garis); border-radius: 999px; background: var(--permukaan);
+}
+.kendali-tema button {
+  padding: 5px 12px; border: 0; border-radius: 999px;
+  background: transparent; color: var(--lemah);
+  font-size: 12px; font-weight: 650;
+}
+.kendali-tema button[aria-pressed="true"] {
+  background: var(--hijau); color: var(--di-aksen);
+}
+
+.cip-jaringan {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: var(--lemah); font-size: 12px;
+}
+.cip-jaringan i {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--limau); flex: none;
+}
+.cip-jaringan[data-luring="ya"] i { background: var(--amber); }
+
+.tombol-teks {
+  padding: 5px 2px; border: 0; background: transparent;
+  color: var(--hijau-2); font-size: 12px; font-weight: 650;
+  text-decoration: underline; text-underline-offset: 3px;
+}
+
+/* --- badan --------------------------------------------------------------- */
+
+.beranda {
+  max-width: 1240px; margin: 0 auto;
+  padding: clamp(34px, 6vw, 70px) clamp(16px, 5vw, 60px) 70px;
+}
+.hero { max-width: 780px; margin: 0 auto; }
+
+.mata {
+  margin: 0 0 10px; color: var(--hijau-2);
+  font-size: 11px; font-weight: 750; letter-spacing: .14em; text-transform: uppercase;
+}
+
+.panel-aksi {
+  padding: clamp(18px, 2.5vw, 30px);
+  border: 1px solid var(--garis); border-top: 7px solid var(--limau);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--kertas) 94%, transparent);
+  box-shadow: var(--bayang);
+}
+.panel-aksi h1 {
+  margin: 0; font-size: clamp(24px, 2.6vw, 32px);
+  line-height: 1.1; letter-spacing: -.04em;
+}
+
+.cangkang-cari {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto auto;
+  align-items: center; gap: 8px;
+  min-height: 66px; margin-top: 18px;
+  padding: 6px 6px 6px 15px;
+  border: 2px solid var(--hijau); border-radius: 14px; background: var(--kertas);
+}
+.cangkang-cari:focus-within {
+  border-color: var(--hijau-2);
+  box-shadow: 0 0 0 4px rgb(121 210 10 / 24%);
+}
+.ikon-cari {
+  color: var(--hijau); font-size: 26px; line-height: 1;
+  transform: rotate(-18deg);
+}
+.cangkang-cari input {
+  width: 100%; min-width: 0; padding: 16px 4px;
+  border: 0; outline: 0; background: transparent; font-size: 17px;
+}
+.cangkang-cari input::placeholder { color: var(--pudar); }
+/* Silang bawaan WebKit menumpuk dengan tombol hapus sendiri — dua silang bersebelahan
+   di kotak yang sama membuat yang satu tampak rusak. */
+.cangkang-cari input::-webkit-search-cancel-button,
+.cangkang-cari input::-webkit-search-decoration {
+  -webkit-appearance: none; appearance: none;
+}
+.cangkang-cari input:disabled { cursor: progress; }
+.tombol-hapus {
+  width: 34px; height: 34px; border: 0; border-radius: 50%;
+  background: transparent; color: var(--lemah); font-size: 22px; line-height: 1;
+}
+.tombol-hapus:hover { background: var(--permukaan); }
+.tombol-hapus[hidden] { display: none; }
+.tombol-cari {
+  min-height: 48px; padding: 0 20px; border: 0; border-radius: 10px;
+  background: var(--hijau); color: var(--di-aksen); font-weight: 720;
+}
+.tombol-cari:hover:not(:disabled) { background: var(--hijau-sorot); }
+.tombol-cari:disabled { opacity: .5; cursor: not-allowed; }
+
+.saran { margin-top: 12px; }
+.kepala-saran {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 10px; margin-bottom: 9px;
+}
+.kepala-saran strong { font-size: 13px; }
+.kepala-saran small { color: var(--lemah); font-size: 11px; }
+.kisi-saran { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+.kisi-saran > * {
+  display: block; min-width: 0; padding: 10px 11px;
+  border: 1px solid var(--garis); border-radius: 10px;
+  background: var(--kanvas); color: inherit; text-align: left; text-decoration: none;
+}
+.kisi-saran > :hover, .kisi-saran > :focus-visible {
+  border-color: var(--hijau-2); background: var(--hijau-lembut);
+}
+.kisi-saran small, .kisi-saran strong { display: block; overflow-wrap: anywhere; }
+.kisi-saran small { margin-bottom: 3px; color: var(--lemah); font-size: 10px; }
+.kisi-saran strong { font-size: 13px; }
+
+.bantuan-cari { margin: 12px 2px 0; color: var(--lemah); font-size: 12.5px; line-height: 1.5; }
+.bantuan-cari code {
+  padding: 1px 5px; border-radius: 5px;
+  background: var(--permukaan); font-size: .92em;
+}
+
+/* --- hasil --------------------------------------------------------------- */
+
+.hasil { max-width: 780px; margin: 22px auto 0; }
+.hasil:empty { display: none; }
+.ringkas-hasil { margin: 0 0 10px; color: var(--lemah); font-size: 12.5px; }
+.daftar-hasil { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.daftar-hasil a {
+  --tepi: var(--hijau);
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center; gap: 10px;
+  padding: 13px 15px;
+  border: 1px solid var(--garis); border-left: 4px solid var(--tepi);
+  border-radius: 12px; background: var(--kertas);
+  color: inherit; text-decoration: none;
+}
+.daftar-hasil a:hover, .daftar-hasil a:focus-visible {
+  border-color: var(--hijau-2); background: var(--hijau-lembut);
+}
+.daftar-hasil a[data-jenis="pupuk"] { --tepi: var(--tosca); }
+.daftar-hasil a[data-jenis="varietas"] { --tepi: var(--jingga); }
+.nama-hasil { display: block; font-weight: 700; overflow-wrap: anywhere; }
+.sub-hasil { display: block; color: var(--lemah); font-size: 12.5px; overflow-wrap: anywhere; }
+.lencana {
+  padding: 3px 9px; border-radius: 999px;
+  background: var(--permukaan); color: var(--lemah);
+  font-size: 10.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.pesan {
+  padding: 15px 17px; border: 1px solid var(--garis);
+  border-left: 4px solid var(--amber); border-radius: 12px;
+  background: var(--amber-lembut);
+}
+.pesan.galat { border-left-color: var(--merah); background: var(--merah-lembut); }
+.pesan h2 { margin: 0 0 6px; font-size: 15px; }
+.pesan p { margin: 0 0 8px; font-size: 13.5px; }
+.pesan p:last-child { margin-bottom: 0; }
+.pesan .catatan { color: var(--lemah); font-size: 12px; }
+
+/* --- jalur --------------------------------------------------------------- */
+
+.bagian-jalur { margin-top: clamp(56px, 8vw, 90px); }
+.kepala-bagian {
+  display: flex; align-items: end; justify-content: space-between;
+  gap: 30px; flex-wrap: wrap;
+}
+.kepala-bagian h2 {
+  margin: 0; font-size: clamp(26px, 4vw, 40px);
+  font-weight: 750; line-height: 1.08; letter-spacing: -.04em;
+}
+.kepala-bagian > p { max-width: 320px; margin: 0; color: var(--lemah); font-size: 13px; }
+
+.kisi-jalur {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 10px; margin-top: 26px;
+}
+.kisi-jalur a {
+  --tepi: var(--hijau);
+  display: flex; flex-direction: column; gap: 6px;
+  min-height: 150px; padding: 18px 20px 20px;
+  border: 1px solid var(--garis); border-top: 5px solid var(--tepi);
+  border-radius: 14px; background: var(--kertas);
+  color: inherit; text-decoration: none;
+  transition: transform .15s ease, border-color .15s ease;
+}
+.kisi-jalur a:nth-child(2), .kisi-jalur a:nth-child(5) { --tepi: var(--limau); }
+.kisi-jalur a:nth-child(3) { --tepi: var(--tosca); }
+.kisi-jalur a:nth-child(4) { --tepi: var(--jingga); }
+.kisi-jalur a:nth-child(6) { --tepi: var(--merah); }
+.kisi-jalur a:hover, .kisi-jalur a:focus-visible {
+  border-color: var(--hijau-2); transform: translateY(-2px);
+}
+.kisi-jalur span {
+  color: var(--hijau-2); font-size: 11px; font-weight: 750; letter-spacing: .1em;
+}
+.kisi-jalur strong { font-size: 16px; letter-spacing: -.02em; }
+.kisi-jalur small { color: var(--lemah); font-size: 12.5px; line-height: 1.45; }
+
+/* --- kaki ---------------------------------------------------------------- */
+
+.kaki {
+  padding: 26px clamp(16px, 5vw, 60px) 40px;
+  border-top: 1px solid var(--garis);
+  color: var(--lemah); font-size: 12.5px;
+}
+.kaki p { max-width: 1240px; margin: 0 auto 8px; }
+.kaki strong { color: var(--tinta); }
+
+/* --- lembar "tentang data" ----------------------------------------------- */
+
+.lembar {
+  width: min(560px, calc(100vw - 28px));
+  padding: 0; border: 1px solid var(--garis); border-radius: 18px;
+  background: var(--kertas); color: var(--tinta);
+}
+.lembar::backdrop { background: rgb(9 24 18 / 55%); }
+/* Isinya lebih panjang dari layar HP; yang menggulir isinya, bukan halaman di
+   belakangnya, supaya kepala lembar tetap kelihatan. `display` hanya saat terbuka —
+   <dialog> memakai display:none untuk menyembunyikan dirinya. */
+.lembar[open] { display: flex; flex-direction: column; max-height: min(86vh, 760px); }
+.isi-lembar { overflow-y: auto; overscroll-behavior: contain; }
+.kepala-lembar {
+  display: flex; align-items: start; justify-content: space-between; gap: 14px;
+  margin: 0; padding: 20px 22px 12px;
+  border-bottom: 1px solid var(--garis);
+}
+.kepala-lembar h2 { margin: 4px 0 0; font-size: 20px; letter-spacing: -.03em; }
+.kepala-lembar button {
+  width: 34px; height: 34px; flex: none;
+  border: 1px solid var(--garis); border-radius: 50%;
+  background: var(--permukaan); font-size: 18px; line-height: 1;
+}
+.isi-lembar { padding: 16px 22px 22px; }
+.isi-lembar h3 { margin: 16px 0 4px; font-size: 14px; }
+.isi-lembar h3:first-child { margin-top: 0; }
+.isi-lembar p { margin: 0 0 8px; font-size: 13.5px; }
+.isi-lembar dl {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  gap: 4px 12px; margin: 0 0 4px; font-size: 13.5px;
+}
+.isi-lembar dt { color: var(--lemah); }
+.isi-lembar dd { margin: 0; font-variant-numeric: tabular-nums; text-align: right; }
+
+/* --- layar sempit --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .kisi-jalur { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  /* Kepala harus muat satu baris di HP: yang di bawahnya adalah kotak pencarian, dan
+     itu yang seharusnya kelihatan tanpa menggulir. Teks cip jaringan dilipat jadi
+     titik saja — warnanya sudah membawa keterangannya, dan kalimat penuhnya tetap
+     terbaca pembaca layar. */
+  .kepala { gap: 8px; padding: 9px 14px; flex-wrap: nowrap; }
+  .merek strong { font-size: 16px; }
+  .merek small { font-size: 9px; letter-spacing: .12em; }
+  .aksi-kepala { gap: 8px; }
+  .kendali-tema { padding: 2px; }
+  .kendali-tema button { padding: 4px 9px; font-size: 11px; }
+  .cip-jaringan span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .tombol-teks { font-size: 11px; }
+
+  .cangkang-cari {
+    grid-template-columns: auto minmax(0, 1fr) auto;
+    padding: 6px 6px 6px 12px;
+  }
+  .tombol-cari { grid-column: 1 / -1; width: 100%; }
+  .kisi-saran { grid-template-columns: 1fr; }
+  .kisi-jalur { grid-template-columns: 1fr; }
+  .kisi-jalur a { min-height: 0; }
+}
+
+@media (max-width: 400px) {
+  .kendali-tema button { padding: 4px 7px; font-size: 10.5px; }
+  .aksi-kepala .tombol-teks { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* --- kelompok hasil ------------------------------------------------------- */
+/* Tiga kelompok, bukan satu daftar datar: gejala, bahan aktif, lalu nama terdaftar.
+   Ketiganya menjawab pertanyaan yang berbeda, dan mencampurnya dalam satu urutan
+   memaksa pembaca menebak kenapa sebuah baris ada di situ. */
+
+.kelompok-hasil + .kelompok-hasil { margin-top: 26px; }
+.ringkas-hasil strong { color: var(--tinta); }
+
+.pembeda-hasil {
+  display: block;
+  margin-top: 3px;
+  color: var(--hijau-2);
+  font-size: 12.5px;
+  font-variant-numeric: tabular-nums;
+  overflow-wrap: anywhere;
+}
+.nama-hasil em { color: var(--lemah); font-size: 13px; font-weight: 500; }
+
+.daftar-hasil a[data-jenis="bahan"] { --tepi: var(--limau); }
+.daftar-hasil a[data-jenis="gejala"] { --tepi: var(--amber); }
+.daftar-hasil a[data-jenis="gejala"] .lencana { background: var(--amber-lembut); color: var(--amber); }
+.daftar-hasil a[data-jenis="bahan"] .lencana { background: var(--limau-lembut); color: var(--hijau); }
+/* Kosongnya dinyatakan, bukan dibiarkan jadi baris hilang. Sekitar 2.000 pupuk tidak
+   punya komposisi di registri; kartu tanpa keterangan apa pun terbaca seperti cacat
+   tampilan, padahal itu keadaan datanya. */
+.kosong-pembeda { color: var(--pudar); font-style: italic; }
+/* Tombol di tengah kalimat tidak boleh membawa bantalannya sendiri — titik di
+   belakangnya jadi terlihat menggantung. */
+.bantuan-cari .tombol-teks { padding: 0; }

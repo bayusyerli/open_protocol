@@ -346,3 +346,33 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 /* Pemisah untuk bahan yang ditolak: mereka TIDAK disembunyikan, tetapi juga tidak
    berdiri sejajar dengan resep yang boleh. */
 .pemisah { margin: 2rem 0 0; border: 0; border-top: 2px dashed var(--bahaya); }
+
+/* Pembeda SKU pada daftar hasil.
+   Nama saja tidak membedakan: "PHONSKA" milik Petrokimia Gresik ada empat kali
+   dengan grade NPK yang berlainan. Yang membedakannya komposisi, jadi komposisi
+   ikut ke barisnya — bukan cuma ke layar rinciannya. */
+.daftar .pembeda {
+  display: block;
+  margin-top: .25rem;
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--aksen);
+}
+:root[data-theme="dark"] .daftar .pembeda { color: var(--aksen); }
+
+/* Nama merek di dalam tabel: tetap tombol, karena ia membuka layar — tetapi
+   berpakaian tautan, karena itulah yang dilakukannya. */
+.tautan {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--aksen);
+  font: inherit;
+  text-align: left;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  cursor: pointer;
+}
+.tautan:hover { text-decoration-thickness: 2px; }
+.tautan:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
+.daftar .pembeda.kosong-pembeda { color: var(--teks-lemah); font-style: italic; }

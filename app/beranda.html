@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#00442f">
+<title>Mau cek apa hari ini? — Open Protocols</title>
+<meta name="description" content="Pintu masuk ke registri pertanian terbuka: cari nama produk, pupuk, atau varietas terdaftar, atau mulai dari masalah yang terlihat di kebun.">
+<!-- Tema dipasang sebelum gaya supaya tidak berkedip putih dulu di layar gelap. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="stylesheet" href="beranda.css">
+</head>
+<body>
+
+<a class="lewati" href="#konten">Lewati ke isi</a>
+
+<header class="kepala">
+  <a class="merek" href="beranda.html">
+    <span>
+      <strong>Open Protocols</strong>
+      <small>DATA PERTANIAN TERBUKA</small>
+    </span>
+  </a>
+  <div class="aksi-kepala">
+    <div class="kendali-tema" role="group" aria-label="Tampilan layar">
+      <button type="button" data-tema="sistem" aria-pressed="true">Sistem</button>
+      <button type="button" data-tema="terang" aria-pressed="false">Terang</button>
+      <button type="button" data-tema="gelap" aria-pressed="false">Gelap</button>
+    </div>
+    <span class="cip-jaringan" id="cipJaringan"><i></i><span>Memeriksa jaringan</span></span>
+    <button class="tombol-teks" type="button" data-buka-tentang>Tentang data</button>
+  </div>
+</header>
+
+<main class="beranda" id="konten">
+
+  <div class="hero">
+    <div class="panel-aksi">
+      <p class="mata">Mulai di sini</p>
+      <h1>Mau cek apa hari ini?</h1>
+
+      <noscript>
+        <p class="bantuan-cari">
+          <strong>Pencarian butuh JavaScript.</strong> Halaman ini membaca berkas indeks
+          langsung dari peramban — tidak ada server yang bisa mencarikan. Keenam jalur di
+          bawah tetap bisa dibuka, tetapi kotak pencarian tidak akan menanggapi apa pun.
+        </p>
+      </noscript>
+
+      <form class="cangkang-cari" id="formCari" role="search">
+        <label class="khusus-pembaca" for="q">Nama produk, bahan aktif, atau gejala tanaman</label>
+        <span class="ikon-cari" aria-hidden="true">⌕</span>
+        <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+               enterkeyhint="search" placeholder="Nama, bahan, atau gejala"
+               aria-describedby="bantuanCari" disabled>
+        <button class="tombol-hapus" type="button" id="hapus" aria-label="Hapus pencarian" hidden>×</button>
+        <button class="tombol-cari" type="submit" disabled>Cari</button>
+      </form>
+
+      <section class="saran" id="saran" aria-label="Contoh yang bisa dicari">
+        <div class="kepala-saran">
+          <strong>Yang bisa dicari</strong>
+          <small>Sentuh salah satu, atau ketik sendiri.</small>
+        </div>
+        <div class="kisi-saran">
+          <button type="button" data-kueri="Phonska"><small>Nama pupuk</small><strong>Phonska</strong></button>
+          <button type="button" data-kueri="Abamektin"><small>Bahan aktif</small><strong>Abamektin</strong></button>
+          <button type="button" data-kueri="daun mengeriting ke atas"><small>Gejala di kebun</small><strong>Daun mengeriting ke atas</strong></button>
+          <button type="button" data-kueri="Ciherang"><small>Nama varietas padi</small><strong>Ciherang</strong></button>
+        </div>
+      </section>
+
+      <p class="bantuan-cari" id="bantuanCari">
+        Satu kotak: <strong>nama terdaftar</strong>, <strong>bahan aktif</strong>, dan
+        <strong>gejala</strong> yang terlihat di tanaman. Nama di kemasan sering berbeda
+        dari nama terdaftarnya, jadi nama yang tidak ketemu <strong>bukan bukti produknya
+        tidak terdaftar</strong>. Batas selengkapnya di
+        <button class="tombol-teks" type="button" data-buka-tentang>Tentang data</button>.
+      </p>
+    </div>
+  </div>
+
+  <section class="hasil" id="hasil" aria-live="polite" aria-label="Hasil pencarian"></section>
+
+  <section class="bagian-jalur" aria-labelledby="judulJalur">
+    <div class="kepala-bagian">
+      <div>
+        <p class="mata">Pilihan pencarian lain</p>
+        <h2 id="judulJalur">Mulai dari hal yang ingin dicek</h2>
+      </div>
+      <p>Pilih cara yang paling sesuai dengan masalah di lapangan.</p>
+    </div>
+    <div class="kisi-jalur">
+      <a href="jalur-1.html"><span>01</span><strong>Tanaman bermasalah</strong><small>Pilih gejala yang terlihat sebelum mencari bahan aktif</small></a>
+      <a href="index.html"><span>02</span><strong>Cek isi produk</strong><small>Lihat bahan aktif dan merek lain yang isinya sama persis</small></a>
+      <a href="jalur-3.html"><span>03</span><strong>Bandingkan harga pupuk</strong><small>Rupiah per kilogram hara, bukan per karung</small></a>
+      <a href="jalur-4.html"><span>04</span><strong>Cek nama varietas</strong><small>Surat apa yang dipegang varietasnya — bukan anjuran tanam</small></a>
+      <a href="jalur-5.html"><span>05</span><strong>Buat pupuk sendiri</strong><small>Resep terbuka beserta syarat, batas mutu, dan pasalnya</small></a>
+      <a href="jalur-6.html"><span>06</span><strong>Pengendali buatan sendiri</strong><small>Status hukumnya — bukan petunjuk pemakaian</small></a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="kaki">
+  <p><strong>Open Protocols</strong> — gratis, tanpa akun, dan kata yang dicari tidak dikirim ke mana pun.</p>
+  <p id="sumber">Sumber: registri Kementan lewat <code>spec/indeks/</code>.</p>
+  <p>
+    <button class="tombol-teks" type="button" data-buka-tentang>Tentang data</button> ·
+    <a href="ukur.html">Apa yang tercatat di peranti ini →</a> ·
+    <a href="README.md">Tentang permukaan ini →</a>
+  </p>
+</footer>
+
+<dialog class="lembar" id="lembarTentang" aria-labelledby="judulTentang">
+  <form method="dialog" class="kepala-lembar">
+    <div>
+      <p class="mata">Tentang data</p>
+      <h2 id="judulTentang">Dari mana angkanya, dan apa yang tidak ada</h2>
+    </div>
+    <button aria-label="Tutup">×</button>
+  </form>
+  <div class="isi-lembar">
+    <h3>Yang ada di indeks</h3>
+    <dl id="cacahTentang"><dt>Memuat…</dt><dd>—</dd></dl>
+
+    <h3>Dari mana</h3>
+    <p>
+      Registri resmi Kementan, disalin apa adanya ke <code>spec/indeks/</code>. Indeksnya
+      turunan dan dibangun ulang dengan <code>bangun-indeks.mjs</code>; tidak ada server
+      dan tidak ada basis data di belakang halaman ini.
+    </p>
+
+    <h3>Yang bisa dicari, dan sampai mana</h3>
+    <p>
+      <strong>Nama terdaftar</strong> — produk pestisida, pupuk, dan varietas. Yang
+      dicocokkan nama <em>terdaftar</em>, bukan nama jualan di kemasan; pemetaan antara
+      keduanya belum ada.
+    </p>
+    <p>
+      <strong>Bahan aktif</strong> — hanya bahan aktif pestisida, dan daftarnya dipecah
+      per kadar karena kesetaraan cuma berlaku pada pasangan bahan <em>dan</em> kadar.
+      Unsur hara pupuk sengaja tidak ikut: Nitrogen sendiri ada di 2.582 pupuk, hampir
+      seluruh registrinya, dan daftar sepanjang itu tidak menjawab apa pun. Pertanyaan
+      haranya dijawab <a href="jalur-3.html">jalur 3</a>, dalam rupiah per kilogram hara.
+    </p>
+    <p>
+      <strong>Gejala</strong> — baru 10 OPT cabai terkurasi, <strong>berstatus
+      draft</strong>: disusun dari pengetahuan agronomi mapan, bukan dari registri, dan
+      wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan. Nol dari
+      1.360 OPT registri membawa deskripsi gejala sama sekali.
+    </p>
+
+    <h3>Yang tidak ada di dalamnya</h3>
+    <p>
+      <strong>Harga.</strong> Registri tidak memuat harga sama sekali — angka di jalur 3
+      adalah masukan pengguna sendiri.
+    </p>
+    <p>
+      <strong>Anjuran.</strong> Urutan merek memakai nomor pendaftaran menaik: tanpa
+      peringkat, tanpa slot berbayar. Halaman ini juga tidak menyimpulkan legal atau
+      ilegal — larangan ditampilkan beserta lingkup dan pasalnya, lalu berhenti.
+    </p>
+    <p>
+      <strong>Sifat agronomi varietas.</strong> Nol dari 11.227 varietas menyebutnya, jadi
+      pertanyaan “varietas mana yang sebaiknya ditanam” memang tidak dijawab di sini.
+    </p>
+
+    <h3>Yang tercatat tentang kamu</h3>
+    <p>
+      Kata yang dicari tidak dikirim ke mana pun. Yang tersimpan hanya hitungan di peranti
+      ini sendiri, dan isinya bisa dilihat serta dihapus di
+      <a href="ukur.html">catatan penggunaan</a>.
+    </p>
+  </div>
+</dialog>
+
+<script type="module" src="beranda.js"></script>
+</body>
+</html>

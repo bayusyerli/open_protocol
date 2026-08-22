@@ -8,7 +8,7 @@
  * dua pintu, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, tautanMasuk } from './pustaka.js';
 import { layarVarietas, layarTakDitemukan } from './varietas.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 
@@ -99,6 +99,12 @@ async function jalankan() {
       `${m.jumlah.varietas.toLocaleString('id-ID')} varietas terdaftar. ` +
       `Nama varietas, komoditas, pemelihara, jenis surat, dan nomor SK diambil apa adanya.`;
     el.q.disabled = false;
+
+    // Datang dari beranda: kuerinya dipulihkan supaya tombol kembali peramban tidak
+    // mendarat di halaman kosong, dan entri yang diklik langsung dibuka.
+    const masuk = tautanMasuk();
+    if (masuk.q) { el.q.value = masuk.q; await jalankan(); }
+    if (masuk.id && masuk.pecahan) await buka(masuk.id, masuk.pecahan);
   } catch (e) {
     el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan

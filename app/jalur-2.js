@@ -12,8 +12,9 @@
  * yang sama dengan jalur 4, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk } from './pustaka.js';
 import { layarVarietas } from './varietas.js';
+import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 
 catatBuka(2);
@@ -29,6 +30,7 @@ const el = {
 document.getElementById('tanpaJs')?.remove();
 
 let larangan = null;
+let bahanKini = null;
 
 // ---------------------------------------------------------------------------
 // Blok-blok layar rincian
@@ -154,10 +156,30 @@ async function blokSetara(p) {
 }
 
 // ---------------------------------------------------------------------------
+function selesai() {
+  catatJawab(2, UKUR.isi);
+  el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
+    el.rincian.innerHTML = '';
+    el.q.focus();
+  });
+}
+
 async function buka(id, pecahan) {
   el.rincian.innerHTML = '<p class="kosong">Mengambil rincian…</p>';
   el.rincian.focus();
   try {
+    // Bahan aktif masuk lewat pintu yang sama dengan merek. Yang mengetik "Abamektin"
+    // tidak tahu — dan tidak perlu tahu — bahwa yang diketiknya bahan, bukan merek;
+    // memaksanya memilih pintu lebih dulu berarti menyuruhnya menjawab pertanyaan
+    // yang justru sedang ia bawa ke sini.
+    if (pecahan.startsWith('bahan/')) {
+      const b = (await ambil(pecahan))[id];
+      if (!b) throw new Error('tidak ada di pecahannya');
+      bahanKini = b;
+      el.rincian.innerHTML = layarBahan(id, b);
+      return selesai();
+    }
+
     const p = (await ambil(pecahan)).find((x) => x.id === id);
     if (!p) throw new Error('tidak ada di pecahannya');
 
@@ -184,11 +206,7 @@ async function buka(id, pecahan) {
         ${blokLarangan(p.isi)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_KEMBALI}`;
     }
 
-    catatJawab(2, UKUR.isi);
-    el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
-      el.rincian.innerHTML = '';
-      el.q.focus();
-    });
+    selesai();
   } catch (e) {
     catatJawab(2, UKUR.gagal);
     el.rincian.innerHTML = `<div class="kartu peringatan">
@@ -200,9 +218,29 @@ async function buka(id, pecahan) {
 }
 
 for (const wadah of [el.hasil, el.rincian]) {
-  wadah.addEventListener('click', (ev) => {
+  wadah.addEventListener('click', async (ev) => {
     const t = ev.target.closest('button[data-id]');
-    if (t) buka(t.dataset.id, t.dataset.pecahan);
+    if (t) return buka(t.dataset.id, t.dataset.pecahan);
+
+    // Daftar merek per kadar diambil saat kartunya dibuka, bukan saat layarnya
+    // digambar: Sipermetrin punya 37 kadar, dan yang membukanya cuma butuh satu.
+    const kad = ev.target.closest('button[data-buka]');
+    if (!kad || !bahanKini) return;
+    const i = Number(kad.dataset.buka);
+    const isi = document.getElementById(`bahan-${i}`);
+    if (!isi.hidden) {
+      isi.hidden = true;
+      kad.setAttribute('aria-expanded', 'false');
+      return;
+    }
+    isi.innerHTML = '<p class="kosong">Mengambil daftar mereknya…</p>';
+    isi.hidden = false;
+    kad.setAttribute('aria-expanded', 'true');
+    try {
+      isi.innerHTML = tabelMerek(await merekKadar(bahanKini.kadar[i]));
+    } catch (e) {
+      isi.innerHTML = `<p class="kosong">Daftar mereknya gagal diambil. ${teks(e.message)}</p>`;
+    }
   });
 }
 
@@ -249,6 +287,12 @@ async function jalankan() {
       `${j.varietas.toLocaleString('id-ID')} varietas. ` +
       `${j.produkSetara.toLocaleString('id-ID')} produk berada dalam ${j.kelompokSetara.toLocaleString('id-ID')} kelompok berisi sama.`;
     el.q.disabled = false;
+
+    // Datang dari beranda: kuerinya dipulihkan supaya tombol kembali peramban tidak
+    // mendarat di halaman kosong, dan entri yang diklik langsung dibuka.
+    const masuk = tautanMasuk();
+    if (masuk.q) { el.q.value = masuk.q; await jalankan(); }
+    if (masuk.id && masuk.pecahan) await buka(masuk.id, masuk.pecahan);
   } catch (e) {
     el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan
