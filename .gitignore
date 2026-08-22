@@ -6,3 +6,8 @@ data-registri/
 # Indeks turunan — dibangun ulang dengan `node spec/tools/bangun-indeks.mjs --tulis`.
 # 5.142 berkas, 21 MB, deterministik dan sepenuhnya diturunkan dari spec/vocab/.
 spec/indeks/
+
+# Respons mentah Google Places. ToS Maps Platform melarang menyimpan
+# koordinat/nama/alamat lebih dari ~30 hari dan melarang menerbitkan ulang.
+# Hanya place_id yang boleh naik ke repo, lewat toko_data/place-id.ndjson.
+toko_data/privat/
