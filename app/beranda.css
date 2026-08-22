@@ -160,18 +160,23 @@ a { color: var(--hijau-2); }
 }
 .aksi-kepala { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
 
-.kendali-tema {
-  display: inline-flex; padding: 3px; gap: 2px;
-  border: 1px solid var(--garis); border-radius: 999px; background: var(--permukaan);
+/* Satu ikon, tiga keadaan — bukan dua.
+   "Ikut sistem" adalah bawaan dan harus bisa dipilih kembali; tombol yang cuma
+   berpindah terang/gelap tidak memberi jalan pulang. Jadi ketukannya berputar
+   sistem → terang → gelap → sistem, dan ikonnya menyatakan yang sedang berlaku. */
+.tombol-tema {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  background: var(--permukaan);
+  color: var(--hijau);
 }
-.kendali-tema button {
-  padding: 5px 12px; border: 0; border-radius: 999px;
-  background: transparent; color: var(--lemah);
-  font-size: 12px; font-weight: 650;
-}
-.kendali-tema button[aria-pressed="true"] {
-  background: var(--hijau); color: var(--di-aksen);
-}
+.tombol-tema:hover { border-color: var(--hijau-2); background: var(--hijau-lembut); }
+.tombol-tema svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
 
 .cip-jaringan {
   display: inline-flex; align-items: center; gap: 6px;
@@ -418,8 +423,7 @@ a { color: var(--hijau-2); }
   .merek strong { font-size: 16px; }
   .merek small { font-size: 9px; letter-spacing: .12em; }
   .aksi-kepala { gap: 8px; }
-  .kendali-tema { padding: 2px; }
-  .kendali-tema button { padding: 4px 9px; font-size: 11px; }
+  .tombol-tema { width: 32px; height: 32px; }
   .cip-jaringan span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .tombol-teks { font-size: 11px; }
 
@@ -434,7 +438,6 @@ a { color: var(--hijau-2); }
 }
 
 @media (max-width: 400px) {
-  .kendali-tema button { padding: 4px 7px; font-size: 10.5px; }
   .aksi-kepala .tombol-teks { display: none; }
 }
 
