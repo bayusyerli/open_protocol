@@ -11,17 +11,44 @@ const BASIS = '../spec/indeks';
 
 const ingatan = new Map();
 
+// Cap bangunan, dibaca dari meta.json. Ia yang membedakan satu indeks dari indeks
+// berikutnya, dan karena itu ia yang membebaskan pecahan dari keharusan ditanyakan.
+let cap = null;
+
+/* Satu berkas ditanya, sisanya tidak.
+ *
+ * Sampai 23 Agustus 2026 setiap pengambilan memakai `cache: 'no-cache'` — "tanya dulu",
+ * bukan "jangan simpan". Bytenya memang hemat: yang belum berubah dijawab 304 tanpa isi,
+ * terukur 300 byte untuk berkas 13,5 KB. Yang tetap dibayar perjalanan pulang-perginya,
+ * satu per berkas per muat halaman. Pada satu penelusuran 3–5 berkas dan RTT 300–600 ms
+ * itu 1–3 detik sebelum apa pun tergambar, diulang tiap pindah halaman — pada permukaan
+ * yang syarat lapangan nomor satunya justru sinyal buruk.
+ *
+ * Alasan `no-cache` sendiri tidak keliru: tanpa bertanya, yang membangun ulang indeks
+ * akan melihat data lama tanpa satu pun tanda, dan diam-diam salah lebih buruk daripada
+ * lambat. Yang berubah sekarang sebabnya, bukan gejalanya. `bangun-indeks.mjs` menerbitkan
+ * `meta.cap`, hash atas seluruh pecahan, dan cap itu ditempelkan ke tiap URL. Isi berubah
+ * → cap berubah → URL berubah → salinan lama tidak akan pernah terpakai lagi. Basi jadi
+ * mustahil, jadi bertanya jadi tidak perlu.
+ *
+ * Yang tersisa satu pertanyaan per muat halaman, untuk meta.json sendiri: ia titik masuk
+ * yang menyebutkan capnya, jadi ia satu-satunya yang namanya tidak boleh ikut berubah.
+ *
+ * Berapa lama salinan bercap disimpan tetap urusan yang menyajikan. Tanpa header
+ * `Cache-Control` peramban memakai perkiraannya sendiri; dengan `immutable` ia berhenti
+ * bertanya sama sekali. Keduanya kini aman — sebelum ada cap, tidak satu pun aman.
+ */
 export async function ambil(jalan) {
+  // Pecahan tidak bisa diambil sebelum capnya diketahui. Ini tidak menambah perjalanan:
+  // tiap halaman memang sudah memuat meta.json, hanya urutannya yang dipastikan.
+  if (jalan !== 'meta' && cap === null) await muatMeta();
   if (ingatan.has(jalan)) return ingatan.get(jalan);
-  // `no-cache` berarti "tanya dulu", bukan "jangan simpan": peramban tetap menyimpan
-  // berkasnya dan mengirim permintaan bersyarat, jadi yang belum berubah dijawab 304
-  // tanpa isi. Ini dibayar satu perjalanan pulang-pergi per pecahan per muat halaman,
-  // dan itu memang mahal di sinyal buruk — tetapi indeksnya turunan dan dibangun ulang
-  // dengan `bangun-indeks.mjs`. Tanpa ini, yang membangun ulang akan melihat data lama
-  // tanpa satu pun tanda bahwa yang dilihatnya sudah basi, dan diam-diam salah lebih
-  // buruk daripada lambat. Anggaran byte di app/README.md tidak berubah karenanya:
-  // 304 tidak membawa isi.
-  const janji = fetch(`${BASIS}/${jalan}.json`, { cache: 'no-cache' }).then((r) => {
+
+  const alamat = jalan === 'meta'
+    ? `${BASIS}/meta.json`
+    : `${BASIS}/${jalan}.json?v=${encodeURIComponent(cap)}`;
+
+  const janji = fetch(alamat, jalan === 'meta' ? { cache: 'no-cache' } : undefined).then((r) => {
     if (!r.ok) throw new Error(`${jalan}: ${r.status}`);
     return r.json();
   });
@@ -50,6 +77,8 @@ let meta = null;
 export const bacaMeta = () => meta;
 export async function muatMeta() {
   meta = await ambil('meta');
+  // Dipasang sebelum pengambilan pecahan mana pun; `ambil()` menunggu ini.
+  cap = meta.cap ?? 'x';
   return meta;
 }
 

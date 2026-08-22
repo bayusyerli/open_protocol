@@ -1,7 +1,6 @@
 # Audit Permukaan `app/` — sembilan temuan, dan apa yang ternyata bersih
 
-> Audit · 23 Agustus 2026 · status **selesai; delapan dari sembilan temuan sudah diperbaiki**
-> — sisa satu: temuan 5.
+> Audit · 23 Agustus 2026 · status **selesai; kesembilan temuan sudah diperbaiki**
 > Cakupan: kedelapan halaman di [`app/`](../app/) — beranda, jalur 1–6, dan `ukur.html`.
 > Metode: sapuan statis atas seluruh berkas, lalu **pemeriksaan berjalan di peramban**
 > pada tiap halaman — bukan pembacaan kode saja.
@@ -19,7 +18,7 @@
 | 2 | ~~Klaim *"nomor pendaftaran menaik"* tidak sepenuhnya benar~~ — **diperbaiki** | sedang | `bangun-indeks.mjs`, `jalur-1.js`, `bahan.js` |
 | 3 | ~~Satu tautan tanpa gaya — 1,72:1 di tema gelap~~ — **diperbaiki** | sedang | `gaya.css` |
 | 4 | ~~`tombolKembali()` mati, dan enam salinan penangannya hidup~~ — **diperbaiki** | sedang | `pustaka.js`, enam jalur |
-| 5 | Setiap muat halaman membayar satu perjalanan pulang-pergi per berkas | sedang | `pustaka.js:24` |
+| 5 | ~~Setiap muat halaman membayar satu perjalanan pulang-pergi per berkas~~ — **diperbaiki** | sedang | `bangun-indeks.mjs`, `pustaka.js` |
 | 6 | ~~`batas.js` merender tingkat bukti yang sudah dinyatakannya cacat~~ — **diperbaiki** | kecil | `batas.js` |
 | 7 | ~~Jalur 2 melompat `h1 → h3`~~ — **diperbaiki** | kecil | enam HTML, `gaya.css` |
 | 8 | ~~Dua halaman menaut ke dirinya sendiri~~ — **diperbaiki** | kecil | `index.html`, `jalur-4.html` |
@@ -210,6 +209,32 @@ proyek ini justru *"HP entry-level, sinyal buruk"*.
 berubah kalau isinya berubah. Dengan itu berkasnya bisa disajikan `immutable`: nol
 revalidasi, dan tetap mustahil melihat data lama.
 
+> **Diperbaiki 23 Agustus 2026.** Yang dicabut sebabnya, bukan gejalanya.
+> `bangun-indeks.mjs` menerbitkan `meta.cap` — hash atas seluruh pecahan — dan `ambil()`
+> menempelkannya ke tiap URL sebagai `?v=`. Isi berubah → cap berubah → URL berubah →
+> salinan lama tidak akan pernah terpakai lagi. Karena basi jadi **mustahil**, `no-cache`
+> boleh dicabut dari pecahan; yang tersisa satu permintaan bersyarat per muat halaman
+> untuk `meta.json`, satu-satunya berkas yang namanya tidak boleh ikut berubah karena
+> dialah yang menyebutkan capnya.
+>
+> Terukur pada muatan kedua jalur 4: `meta.json` 300 B (bersyarat), `varietas/000` dan
+> `cari/el` **0 B, tanpa jaringan**. Tiga perjalanan pulang-pergi jadi satu.
+>
+> Sifat pengamannya diuji terpisah, karena itu yang paling menentukan: URL bercap sama
+> dijawab dari cache tanpa jaringan (0 B); URL bercap berbeda menembus cache dan mengunduh
+> penuh (49 KB). Capnya deterministik — membangun ulang sumber yang sama menghasilkan cap
+> yang sama, jadi pembangunan ulang yang tidak mengubah apa pun tidak membuang cache
+> pembaca sama sekali.
+>
+> **Setengah lagi bukan milik kode ini, dan sengaja tidak dipalsukan.** Berapa lama
+> salinan bercap disimpan urusan yang menyajikan, dan repositori ini belum punya host:
+> `python3 -m http.server` tidak mengirim `Cache-Control` sama sekali, jadi angka 0 B di
+> atas bersandar pada perkiraan peramban, bukan pada instruksi. Begitu hostnya dipilih,
+> pecahan bercap disajikan `Cache-Control: public, max-age=31536000, immutable` dan
+> `meta.json` dengan `no-cache` — itu mengubah "biasanya tidak bertanya" jadi "tidak
+> pernah bertanya". Yang dikerjakan di sini membuat keduanya **aman dipasang**; sebelum
+> ada cap, tidak satu pun aman.
+
 ### 6 · `batas.js` merender tingkat bukti yang sudah dinyatakannya cacat — kecil
 
 `periksa()` menolak tingkat di luar A–D dan mencatatnya ke daftar `salah`; tetapi
@@ -359,10 +384,10 @@ permukaan rapuh.
 3. **Sampel nomor pendaftaran 4.000 dari 7.724** pestisida; sebaran panjangnya bisa
    sedikit berbeda pada keseluruhan, tetapi keberadaan nomor tak seragam sudah cukup
    membuktikan temuan 2.
-4. **Delapan dari sembilan sudah diperbaiki**, ditandai di tempatnya masing-masing.
-   Yang tersisa **temuan 5** — satu perjalanan pulang-pergi per berkas tiap muat halaman.
-   Ia satu-satunya yang menuntut perubahan cara indeks dinamai dan disajikan, bukan
-   perbaikan setempat, dan karena itu ditahan sebagai pekerjaan tersendiri.
+4. **Kesembilan temuan sudah diperbaiki**, ditandai di tempatnya masing-masing. Satu
+   di antaranya — temuan 5 — hanya tuntas separuh di dalam repositori: sisi hostnya
+   menunggu host, dan itu dinyatakan di tempatnya alih-alih dihitung sebagai selesai
+   penuh.
 5. **Temuan 6 dan sebagian temuan 9 berasal dari kode yang ditulis hari ini juga**, dalam
    sesi yang sama dengan audit ini. Audit atas pekerjaan sendiri lebih lemah daripada
    audit orang lain, dan keduanya sengaja tidak diturunkan bobotnya karena itu.

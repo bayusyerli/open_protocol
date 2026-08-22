@@ -94,6 +94,41 @@ itu justru yang paling tidak boleh tampil tanpa menyebut tingkat buktinya, dan m
 batas jawaban di berkas terpisah akan menambah satu perjalanan pulang-pergi pada tujuh
 jalur untuk menghemat satu pada tiga.
 
+### Angka di atas muatan pertama; yang kedua hampir gratis
+
+Tabel itu mengukur **muatan dingin**. Sejak 23 Agustus 2026 muatan berikutnya jauh lebih
+murah, dan yang membuatnya murah bukan penghematan byte melainkan hilangnya pertanyaan.
+
+`bangun-indeks.mjs` menerbitkan `meta.cap` — hash atas seluruh pecahan — dan `ambil()`
+menempelkannya ke tiap URL sebagai `?v=`. Isi berubah, cap berubah, URL berubah, dan
+salinan lama tidak akan pernah terpakai lagi. Karena basi jadi mustahil, pecahannya tidak
+perlu ditanyakan lagi.
+
+Terukur pada muatan kedua jalur 4:
+
+| Berkas | Dikirim | Dipakai |
+|---|---|---|
+| `meta.json` | 300 B — satu permintaan bersyarat | 13,5 KB |
+| `varietas/000.json?v=…` | **0 B — tanpa jaringan** | 48,8 KB |
+| `cari/el.json?v=…` | **0 B — tanpa jaringan** | 4,0 KB |
+
+Sebelumnya ketiganya sama-sama dibayar satu perjalanan pulang-pergi. Sekarang tinggal satu
+— untuk `meta.json` sendiri, satu-satunya berkas yang namanya tidak boleh ikut berubah
+karena dialah yang menyebutkan capnya.
+
+Sifat pengamannya diuji terpisah, karena itu yang paling menentukan: URL bercap sama
+dijawab dari cache tanpa jaringan (0 B), URL bercap berbeda menembus cache dan mengunduh
+penuh (49 KB). Membangun ulang sumber yang sama menghasilkan cap yang sama, jadi
+pembangunan ulang yang tidak mengubah apa pun tidak membuang cache pembaca sama sekali.
+
+> **Yang masih bisa dikerjakan, dan bukan oleh kode ini.** Berapa lama salinan bercap
+> disimpan tetap urusan yang menyajikan. Repositori ini belum punya host — `python3 -m
+> http.server` tidak mengirim `Cache-Control` sama sekali, jadi yang bekerja di atas
+> perkiraan peramban. Begitu hostnya dipilih, pecahan bercap sebaiknya disajikan
+> `Cache-Control: public, max-age=31536000, immutable`, dan `meta.json` dengan
+> `no-cache`. Itu mengubah "biasanya tidak bertanya" jadi "tidak pernah bertanya".
+> Sebelum ada cap, tidak satu pun dari keduanya aman dipasang.
+
 `larangan.json` (27,6 KB) hanya diambil kalau produk yang dibuka memang memuat bahan
 berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
 

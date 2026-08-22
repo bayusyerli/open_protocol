@@ -55,6 +55,7 @@
 // menjanjikannya, alih-alih menemukan sendiri bahwa datanya kosong.
 
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, readdirSync, statSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -1142,6 +1143,35 @@ for (const [e, isi] of Object.entries(cari).sort()) simpan(`cari/${e}.json`, isi
 pecahanProduk.forEach((s, i) => simpan(`produk/${String(i).padStart(3, '0')}.json`, s));
 pecahanVarietas.forEach((s, i) => simpan(`varietas/${String(i).padStart(3, '0')}.json`, s));
 for (const [k, isi] of Object.entries(berkasOpt).sort()) simpan(`opt/${k}.json`, isi);
+
+// ---------------------------------------------------------------------------
+// Cap bangunan — supaya penyaji tidak perlu bertanya "sudah berubah belum?"
+// ---------------------------------------------------------------------------
+// Sampai 23 Agustus 2026 `ambil()` di app/pustaka.js memakai `cache: 'no-cache'`:
+// peramban selalu bertanya ke server, bahkan untuk berkas yang tidak berubah. Bytenya
+// memang hemat — jawaban 304 cuma ~300 byte — tetapi satu perjalanan pulang-pergi tetap
+// dibayar per berkas per muat halaman, dan syarat lapangan permukaan ini justru sinyal
+// buruk. Alasan `no-cache` sendiri sah: tanpa bertanya, yang membangun ulang indeks akan
+// melihat data lama tanpa satu pun tanda.
+//
+// Cap ini menghapus sebabnya, bukan gejalanya. Ia hash atas SELURUH pecahan yang
+// diterbitkan, dan penyaji menempelkannya sebagai `?v=` pada tiap pengambilan. Isi
+// berubah -> cap berubah -> URL berubah -> salinan lama tidak akan pernah terpakai lagi.
+// Karena mustahil basi, `no-cache` boleh dicabut dan hanya meta.json yang perlu ditanya.
+//
+// Dihitung atas berkas selain meta.json, karena capnya sendiri masuk ke meta.json.
+// Keluarannya deterministik (lihat kepala berkas ini), jadi membangun ulang sumber yang
+// sama menghasilkan cap yang sama — dan cap yang tidak berubah berarti cache pembaca
+// tidak perlu dibuang sama sekali.
+const capIsi = createHash('sha256');
+for (const [jalan, isi] of [...berkas.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+  if (jalan === 'meta.json') continue;
+  capIsi.update(jalan);
+  capIsi.update('\u0000');
+  capIsi.update(isi);
+}
+meta.cap = capIsi.digest('hex').slice(0, 12);
+simpan('meta.json', meta);
 
 const ukuran = [...berkas.values()].reduce((a, s) => a + Buffer.byteLength(s), 0);
 const terbesar = [...berkas.entries()]
