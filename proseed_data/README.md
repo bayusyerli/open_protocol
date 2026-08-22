@@ -32,16 +32,30 @@ Nomor SK terisi pada 11.504 dari 11.617 baris.
 
 ## Sebaran pemohon
 
-| Jenis badan | Jumlah |
-|---|---:|
-| Pemerintah (balai, dinas, pemda) | 683 |
-| Perorangan / lainnya | 326 |
-| PT | 238 |
-| CV | 64 |
-| Perguruan tinggi | 29 |
-| Lembaga riset | 20 |
-| UD | 9 |
-| Koperasi | 1 |
+Angka kiri menghitung 1.370 ejaan mentah; angka kanan menghitung 1.258 pemohon
+sesudah ejaan diseragamkan **dan** penggolongannya diperbaiki 20 Agustus 2026.
+
+| Jenis badan | Ejaan mentah | Pemohon kanonik |
+|---|---:|---:|
+| Pemerintah (balai, dinas, pemda) | 683 | 737 |
+| Perorangan / lainnya | 326 | 144 |
+| PT | 238 | 208 |
+| CV | 64 | 60 |
+| Perguruan tinggi | 29 | 53 |
+| Lembaga riset | 20 | 48 |
+| UD | 9 | 7 |
+| Koperasi | 1 | 1 |
+
+Kolom kanonik bukan sekadar hasil penggabungan ejaan. 137 baris semula tergolong
+`perorangan/lainnya` padahal namanya jelas lembaga — BRIN (114 varietas), BB Padi
+(106), LIPI, BATAN, IPB, dan seterusnya. Penggolongannya kini memakai aturan yang
+tertulis di `terapkan_alias.py`: **golongan ditentukan pihak yang disebut pertama**,
+sehingga "Balittas & PT Philip Morris Indonesia" masuk Pemerintah dan "IPB dan
+Pemerintah Kabupaten Kapuas" masuk Perguruan tinggi. Aturan itu tidak sempurna —
+"Direktorat Riset, PPM dan Inovasi Universitas Padjajaran" jadi Pemerintah karena
+kata pertamanya, padahal ia unit universitas — tetapi ia tertulis dan bisa
+diperiksa, dan hanya dipakai untuk **menaikkan** baris dari `perorangan/lainnya`,
+tidak pernah mengubah golongan yang sudah terisi.
 
 **Yang berbadan usaha — 312 baris, sekitar 268 entitas setelah normalisasi ejaan
 — itulah principal benih sebenarnya.** Sisanya lembaga publik dan pemulia
@@ -105,12 +119,18 @@ menjalankan `python3 proseed_data/terapkan_alias.py --tulis`.
 `pemohon` tidak pernah disentuh. Dijalankan tanpa perubahan alias, ia menghasilkan
 berkas yang sama persis — itu yang membuatnya bisa dipercaya.
 
-Ia sengaja **tidak** membangun ulang seluruh `pemohon_varietas.csv`, karena itu akan
-ikut mengubah 1.006 baris akibat tiga kebiasaan pembuat aslinya yang maksudnya tidak
-bisa dipastikan: `tahun_pertama` mengabaikan tahun bernilai `-`; BRIN digolongkan
-`perorangan/lainnya`, bukan `Lembaga riset`; dan kolom `varietas` di berkas alias
-tidak selalu sama dengan cacah baris `pemohon` yang sepadan. Ketiganya dicatat di
-sini, tidak diperbaiki diam-diam.
+Dua kolom diperbaiki menyeluruh pada 20 Agustus 2026: `jenis_badan` (137 baris, lihat
+**Sebaran pemohon**) dan `tahun_pertama`, yang tadinya membuang nilai `< 1945` sehingga
+Balai Penelitian Jagung dan Serealia Lain tertulis mulai 1964 padahal punya baris yang
+lebih tua. Satu pemohon terkena.
+
+**Yang belum diperbaiki, dan sebabnya.** `jumlah_varietas` sebenarnya mencacah **baris**,
+bukan varietas unik. `varietas_terdaftar.csv` berisi satu baris per (varietas × jenis
+perizinan), jadi varietas yang memegang pelepasan sekaligus pendaftaran terhitung dua
+kali. PT East West Seed Indonesia tertulis 428, varietas uniknya **292**; Balai Penelitian
+Tanaman Hias 351 lawan 262. Selisihnya besar dan namanya menyesatkan, tetapi
+memperbaikinya mengubah arti angka yang sudah terbit dan mengubah urutan seluruh berkas —
+jadi ia dicatat di sini dan menunggu keputusan, bukan diperbaiki diam-diam.
 
 ## Peringatan lain yang harus dipegang
 - **`kode` kosong di seluruh 11.235 record**; `pemohon` kosong pada 1.042 record

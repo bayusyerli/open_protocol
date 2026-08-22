@@ -9,22 +9,87 @@ penggabungan cukup dengan menyunting berkas alias lalu membangkitkan ulang kolom
 Sampai berkas ini ada, janji itu tidak punya pelaksana.
 
 Kolom `pemohon` di varietas_terdaftar.csv tidak pernah disentuh; yang ditulis ulang hanya
-`pemohon_kanonik`. Pada pemohon_varietas.csv hanya baris yang benar-benar terkena yang diubah —
-membangun ulang seluruh berkas akan ikut mengubah 1.006 baris karena tiga kebiasaan pembuat
-aslinya yang tidak bisa dipastikan maksudnya, dan itu pekerjaan lain:
+`pemohon_kanonik`. Di pemohon_varietas.csv, kolom agregat hanya dihitung ulang untuk baris yang
+benar-benar terkena perubahan alias — kecuali dua kolom yang diperbaiki menyeluruh:
 
-  1. `tahun_pertama` mengabaikan tahun bernilai "-" (mis. Balitkabi 1918, bukan "-");
-  2. BRIN digolongkan "perorangan/lainnya", bukan "Lembaga riset";
-  3. kolom `varietas` di berkas alias tidak sama dengan cacah baris `pemohon` yang sepadan
-     (mis. Pemerintah Kabupaten Banyuwangi tertulis 37, sedangkan barisnya 40).
+  `jenis_badan`   — hanya untuk MENAIKKAN baris yang tergolong "perorangan/lainnya" padahal
+                    namanya jelas lembaga: BRIN, LIPI, BATAN, BB Padi, IPB, dan seterusnya.
+                    Golongan yang sudah terisi tidak pernah diubah.
+  `tahun_pertama` — "< 1945" kini dihitung sebagai lebih awal dari angka mana pun, bukan
+                    dibuang. Satu pemohon terkena.
 
-Ketiganya dicatat, tidak diperbaiki diam-diam.
+Yang TIDAK diperbaiki, dan sebabnya: `jumlah_varietas` sebenarnya mencacah BARIS, bukan varietas
+unik — satu varietas yang memegang pelepasan sekaligus pendaftaran terhitung dua kali. PT East
+West Seed Indonesia tertulis 428, varietas uniknya 292. Mengubahnya berarti mengubah arti angka
+yang sudah terbit, jadi ia dicatat di README dan menunggu keputusan.
 """
 
 import csv
+import re
 import sys
 from collections import Counter
 from pathlib import Path
+
+# --- penggolongan badan pemohon -------------------------------------------------------------
+# Hanya dipakai untuk MENAIKKAN baris yang tergolong "perorangan/lainnya" padahal namanya jelas
+# lembaga. Golongan yang sudah terisi tidak pernah diubah — beberapa di antaranya pilihan sadar
+# pembuat aslinya (Balai Penelitian ... digolongkan Pemerintah, bukan Lembaga riset).
+#
+# Akronim dicocokkan sebagai kata utuh. Tanpa itu "phiLIPIn" terbaca LIPI dan perusahaan Filipina
+# ikut jadi lembaga riset.
+AKRONIM = {
+    "Lembaga riset": ["BRIN", "LIPI", "BATAN", "PATIR", "PAIR", "P3GI", "IOPRI", "PRTAIR"],
+    "Perguruan tinggi": ["IPB", "UGM", "UNPAD", "UNSOED", "UNS", "UNDANA", "LPPM", "DRPMI",
+                         "PKBT", "PPSHB"],
+    "Pemerintah": ["BPTP", "BPSB", "BPSBTPH", "BRMP", "BB", "UPTD"],
+}
+FRASA = {
+    "Perguruan tinggi": ["universitas", "institut pertanian", "fakultas", "faperta", "politeknik",
+                         "sekolah tinggi", "sekolah vokasi"],
+    "Lembaga riset": ["pusat penelitian", "puslit", "pusat riset", "badan penelitian",
+                      "organisasi riset", "forestry institute", "pusat aplikasi isotop",
+                      "pusat alikasi isotop", "pusat inovasi lipi", "badan riset dan inovasi"],
+    "Pemerintah": ["pemerintah", "pemeritah", "dinas", "diperta", "direktorat", "kementerian",
+                   "balai", "balit", "loka penelitian", "perhutani", "instansi pemerintah",
+                   "provinsi", "kabupaten", "kota "],
+}
+
+
+def golongkan(nama: str):
+    """Golongan menurut pihak yang disebut PERTAMA. Nama beranggota banyak — konsorsium,
+    kerja sama balai dengan perusahaan — dinilai dari pemohon utamanya, dan aturan itu
+    disebutkan supaya hasilnya bisa diperiksa, bukan ditebak ulang tiap kali."""
+    s = nama.strip()
+    # Posisi kemunculan paling awal dari tiap petunjuk; yang paling depan menang.
+    calon = []
+    for golongan, akronims in AKRONIM.items():
+        for a in akronims:
+            m = re.search(rf"\b{re.escape(a)}\b", s, re.IGNORECASE)
+            if m:
+                calon.append((m.start(), golongan))
+    for golongan, frasas in FRASA.items():
+        for f in frasas:
+            i = s.lower().find(f)
+            if i >= 0:
+                calon.append((i, golongan))
+    if not calon:
+        return None
+    return min(calon)[1]
+
+
+def tahun_dipakai(t: str) -> bool:
+    t = t.strip()
+    return bool(re.match(r"^<?\s*\d{4}$", t))
+
+
+def tahun_kunci(t: str):
+    """Untuk mengurutkan tahun. "< 1945" lebih awal dari angka mana pun; nilai bukan tahun
+    seperti "-" dan string kosong dibuang oleh pemanggilnya."""
+    t = t.strip()
+    if t.startswith("<"):
+        angka = re.search(r"\d{4}", t)
+        return (int(angka.group()) - 1, 0) if angka else (0, 0)
+    return (int(t), 1)
 
 AKAR = Path(__file__).resolve().parent
 ALIAS = AKAR / "pemohon_alias.csv"
@@ -85,7 +150,7 @@ def main() -> int:
             continue
         kom = Counter(r["komoditas"].strip() for r in rs if r["komoditas"].strip())
         izin = Counter(r["jenis_perizinan"].strip() for r in rs if r["jenis_perizinan"].strip())
-        th = sorted(r["tahun"].strip() for r in rs if r["tahun"].strip().isdigit())
+        th = sorted((r["tahun"].strip() for r in rs if tahun_dipakai(r["tahun"])), key=tahun_kunci)
         baru = {
             "jumlah_varietas": str(len(rs)),
             "jumlah_ejaan_digabung": str(sum(1 for v in peta.values() if v == nama)),
@@ -99,6 +164,30 @@ def main() -> int:
         if beda:
             sunting.append((nama, beda))
             row.update(baru)
+
+    # --- perbaikan kolom turunan yang berlaku untuk seluruh baris ---
+    naik, tahun_baik = [], []
+    for row in pemohon:
+        nama = row["pemohon"]
+        rs = per_kanonik.get(nama, [])
+        if row["jenis_badan"] == "perorangan/lainnya":
+            g = golongkan(nama)
+            if g:
+                naik.append((nama, row["jenis_badan"], g, row["jumlah_varietas"]))
+                row["jenis_badan"] = g
+        th = sorted((r["tahun"].strip() for r in rs if tahun_dipakai(r["tahun"])), key=tahun_kunci)
+        if th and row["tahun_pertama"] != th[0]:
+            tahun_baik.append((nama, row["tahun_pertama"], th[0]))
+            row["tahun_pertama"] = th[0]
+
+    print(f"\njenis_badan dinaikkan dari perorangan/lainnya : {len(naik)} baris")
+    for nama, l, b, j in sorted(naik, key=lambda t: -int(t[3]))[:12]:
+        print(f"   {b:17s} {j:>4s}  {nama[:56]}")
+    if len(naik) > 12:
+        print(f"   ... dan {len(naik) - 12} lagi")
+    print(f"tahun_pertama diperbaiki : {len(tahun_baik)} baris")
+    for nama, l, b in tahun_baik:
+        print(f"   {nama[:52]:54s} {l!r} -> {b!r}")
 
     pemohon.sort(key=lambda x: -int(x["jumlah_varietas"]))
     print(f"\npemohon_varietas.csv   : {len(pemohon)} baris")
