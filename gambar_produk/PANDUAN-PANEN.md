@@ -47,6 +47,63 @@ Aturannya:
 Satu-satunya tanda `mati` yang bertahan di semua titik pandang: **tidak ada A record sama
 sekali.** Selebihnya menunggu pemeriksaan ulang dari jaringan lain.
 
+### Cara keenam, dan ia mengalahkan penawar di bawah ini
+
+**Sertifikat TLS yang tidak cocok nama host.** `naturalnusantara.co.id` hidup — 200,
+74 KB — tetapi curl bawaan gagal, peramban menolak, dan **`r.jina.ai` pun
+`ERR_ABORTED`**. Hanya `curl -k` menembusnya. Begitu juga `greatgiantpineapple.com`:
+gagal di curl polos **dan** di proksi, dua-duanya `ERR_CERT_COMMON_NAME_INVALID`.
+
+Ini memalsukan `mati` pada **setiap alat yang memverifikasi TLS, termasuk proksi**. Jadi
+urutannya: coba langsung → coba `curl -k` → baru coba proksi. Melompati `-k` membuat
+penawar di bawah tampak gagal padahal soalnya lain.
+
+### Jalan pintas keluar dari blok buta: `r.jina.ai`
+
+    curl -s https://r.jina.ai/https://situs-yang-buta.com
+
+Diuji terhadap ketiga situs yang blok /24-nya buta bagi kita, dan **ketiganya menjawab
+200 dengan isi yang benar**: `petrosida-gresik.com`, `katalogcba.com`, `asterindo.co.id`.
+
+Batasnya harus dipahami sebelum dipakai:
+
+- **Ia mengembalikan teks, bukan bita gambar** — jadi bukan jalur panen. Unduhan berkas
+  tetap menuntut jangkauan langsung.
+- **Tetapi untuk PEMETAAN ia utuh, bukan setengah.** Ia meneruskan **API JSON apa adanya**,
+  termasuk `media_details` WordPress. Jadi pada host yang tak terjangkau, **dimensi gambar
+  tetap terukur** — terbukti pada `ptbionusa.co.id`: 94 objek dengan lebar dan tinggi
+  lengkap. Sebuah situs bisa dinilai `ada` atau `tipis` dengan benar tanpa pernah
+  menyentuhnya langsung.
+- **Ia juga pembeda dua arah.** Kalau proksi gagal dengan galat yang SAMA PERSIS seperti
+  jalur langsung, yang rusak situsnya, bukan jangkauan kita. Satu agen memutuskan `rusak`
+  justru begitu: Polowijo Gosari membalas 508 "Resource Limit Is Reached" identik lewat
+  https, http, www, **dan** proksi. Bandingkan `katalogcba.com` yang lewat proksi menjawab
+  200 — di situ yang buta kita.
+- **DAN KEGAGALANNYA BISA MEMBALAS 200.** Ketika `r.jina.ai` kena tantangan Cloudflare,
+  ia mengembalikan halaman "Just a moment..." **5,7 KB yang identik bita demi bita untuk
+  enam domain berbeda** — kode 200, ada isinya, dan terbaca seolah situsnya hidup. Ukur
+  panjang badannya dan curigai isi yang sama persis lintas domain. `api.allorigins.win`
+  saat itu membalas 522 bahkan untuk `example.com`.
+
+  **Dan proksi mencegah lebih dari `mati` palsu: ia mencegah ATRIBUSI palsu.** Pada satu
+  potongan, lima domain akronim membalas `000` dari titik pandang kami. Tanpa proksi
+  kelimanya akan tercatat `rusak` **dan** dikreditkan ke principal yang salah — dua
+  kekeliruan sekaligus, dan yang kedua lebih berbahaya sebab hasilnya terlihat seperti
+  keberhasilan.
+
+  Ketika ketiga proksi tumbang, yang bekerja adalah **Wayback CDX** — dengan dua syarat:
+  pakai `--compressed` (tanpa itu gzip-nya terbaca sebagai sampah biner), dan **mundur satu
+  cuplikan** kalau yang terbaru justru mengarsipkan halaman tantangan bot.
+- **Ia bisa tumbang, dan pernah tumbang berbarengan dengan penggantinya.** Satu agen
+  menemukan `r.jina.ai` 403 tantangan Cloudflare, `allorigins` 500, dan `codetabs` 522
+  serentak. Ketika itu terjadi, bukti pihak ketiga yang tersisa adalah **indeks mesin
+  pencari** — cukup untuk membuktikan situs hidup, jadi cukup untuk mencegah `mati` palsu.
+- Ia pihak ketiga yang melihat permintaanmu. Jangan lewatkan apa pun yang tidak layak
+  dilihat pihak ketiga; untuk sapuan katalog publik ini tidak masalah.
+
+Nilainya: ia **mencegah `mati` palsu**. Sebuah situs yang menjawab lewat jalur ini jelas
+hidup, dan yang buta pasti titik pandang kita.
+
 ---
 
 ## 1. Urutan menemukan situs
@@ -85,7 +142,7 @@ menghabiskan pengambilan.
 
 3. **Tebakan dari nama MEREK, bukan nama PT.** Merek Aster* → `asterindo.co.id`; merek
    AMA* → `pt-ama.co.id`. Tebakan dari nama perusahaan hampir selalu gagal.
-4. **Nama induk global.** Sebagian principal berdagang dengan nama lain sama sekali:
+5. **Nama induk global.** Sebagian principal berdagang dengan nama lain sama sekali:
    PT. Bina Guna Kimia = FMC Indonesia · PT. Royal Agro Indonesia = ADAMA Indonesia ·
    PT. Catur Agrodaya Mandiri = UPL · PT. Da Ming Indonesia = Asiana Chemical ·
    PT. Discovery Environmental Science = Envu, yang tak terlihat dari nama PT dan hanya
@@ -116,12 +173,30 @@ menghabiskan pengambilan.
 | `tunasharapan.com` | halaman jual HugeDomains — yang benar **`tunasharapan-murni.com`** dengan tanda hubung, dan bentuk tanpa hubung itulah yang lebih dulu ditebak orang |
 | `east-chem.com` | EASTCHEM di Lomé, Togo — punya server surat sendiri, judulnya cocok persis |
 | `agrochemica.com` | EW Nutrition |
+| `nasa.co.id` | **paling licin** — NASA adalah akronim dagang Natural Nusantara sendiri dan TLD-nya benar, tetapi isinya produsen alas kaki |
+| `cvabadijaya.com` | badan hukum cocok **persis** (CV. Abadi Jaya) — distributor makanan Medan |
+| `saranatani.id` | pertanian sungguhan, TLD benar — tetapi **UD** Sarana Tani, kios eceran, bukan **PT** Sarana Tani Indonesia Makmur |
+| `sapujos.com` | **situs judi daring**, ditebak dari merek SAPUJOS 480 SL — kejadian kedua setelah `hokitan.com` |
+| `bumiagrofertilizer.co.id` | **situs judi ketiga**, dan yang paling meyakinkan: nama badan hukum cocok **persis** pada TLD yang benar |
+| `mahkota.co.id` | dealer mobil Suzuki — situs Wilmar yang benar `pupukmahkota.co.id` |
+| `hanoman.co.id` | PT Hanoman Cendekia Interaktif, TI/FinTech — hidup, MX Google, Wayback segar 2026. **DNS, MX, dan kesegaran arsip semuanya hijau, dan ketiganya salah** |
+| `mahkotaagro.com` | **kelas baru: rombeng tanpa atribusi** — 8,8 KB, produk contoh ("Pupuk NPK Super"), satu logo, dan **tidak ada nama badan hukum di mana pun**. Bukan situs orang lain, melainkan situs yang tidak bisa dikaitkan ke siapa pun. Ragu → pesimis |
 | **`agrofarm.co.id`** | **yang paling berbahaya**: hidup, 644 KB, nama perusahaan cocok persis pada TLD yang benar, isinya pertanian sungguhan, punya MX sendiri — tetapi ia **portal berita agribisnis**, bukan PT Agrofarm Nusa Raya. Lolos setiap heuristik kecuali dibaca |
 
 **Saudara yang menjebak ada di dalam registri sendiri**, bukan cuma di domain:
 `CV. UNI AGRO CHEMICA` ≠ `CV. AGRO CHEMICA`, dan `PT SARI KRESNA KIMIA` ≠ `PT SARI KIMIA
 UNGGUL` — yang pertama justru situs tersusupi di §8. Nama principal yang mirip bukan
 petunjuk bahwa mereka berkerabat.
+
+**Dan sumbunya bukan cuma PT-lawan-PT: merek principal A bisa sama dengan NAMA PERUSAHAAN
+principal B, keduanya di registri yang sama.** `biotis.co.id` milik PT. Biotis Agrindo,
+sedangkan BIOTIS adalah merek terdaftar **PT POLARCHEM**. Menebak domain dari merek
+BIOTIS mendarat di perusahaan lain yang juga sah, juga terdaftar, dan juga di sektor yang
+sama.
+
+Contoh terhalus: `ynbenxing.com` milik PT Indonesia Benxing **New Material**, sedangkan
+yang dicari PT Indonesia Benxing **Industrial** — **di kawasan industri yang sama**. Nama
+nyaris identik, alamat cocok; yang memisahkan keduanya hanya membaca daftar produknya.
 
 Memeriksa kode HTTP saja akan meloloskan semuanya.
 
@@ -289,6 +364,50 @@ menangkap:
 Pakai keduanya. Dan ingat syarat §4: IoU siluet hanya sah bila latarnya benar-benar
 transparan.
 
+## 4d. Periksa `robots.txt` sebelum memanen — dan patuhi
+
+Satu situs di sapuan ini menyatakan penolakannya secara eksplisit:
+
+    User-agent: ClaudeBot
+    Disallow: /
+
+    Content-Signal: search=yes, ai-train=no, use=reference
+
+`permatanegeriindonesia.com` adalah domain yang benar, nama perusahaannya cocok persis,
+pertaniannya sungguhan, dan lima dari enam merek registrinya ada di sana. Secara teknis ia
+`ada`. **Tetapi ia tidak boleh dipanen**, dan agen yang menemukannya benar menandainya
+JANGAN DIPANEN.
+
+Ambil `robots.txt` sebelum mengunduh berkas pertama. Kalau ia melarang — lewat
+`User-agent:` yang menyebut perayap kita, atau lewat `Content-Signal` yang menolak
+`ai-train`/`ai-input` — catat sebagai `kosong` dengan alasan itu, dan lanjut. Tidak ada
+gambar yang cukup berharga untuk mengabaikan penolakan yang ditulis pemiliknya sendiri.
+
+Situs itu juga contoh kelas jebakan tersendiri, lebih halus dari `agrofarm.co.id`: di sana
+**principal-nya yang salah**; di sini **principal-nya benar, penerbitnya yang salah** — ia
+etalase putih-label Indonetwork dengan seluruh gambarnya di CDN lokapasar.
+
+## 4e. Dua peramal murah yang memisahkan produktif dari tandus
+
+Diukur pada satu potongan 30 principal, dan keduanya bisa dihitung **sebelum satu
+pengambilan pun dimulai**:
+
+1. **Bentuk badan hukum.** Lima dari enam berbentuk `CV.` atau tanpa `PT` di potongan itu
+   berakhir `tidak-ada` atau `tipis`. Bukan kaidah mutlak, tetapi cukup untuk mengurutkan.
+
+   **Dan yang meramal paling tajam, menurut agen yang mengukurnya: siapa pembelinya.**
+   Principal yang menjual ke **perkebunan** punya situs — Central Alam, Bintang Timur
+   Pasifik, Alif Raya, Everchem, Wilmar. Yang menjual **kompos dan organik ke petani
+   kecil** tidak punya sama sekali — Mission Tani, Eca Tani, Agro Tani Marisi, Estu Seba,
+   Novie Agro, Tunas Forest; seluruh jejaknya halaman Facebook distributor dan lokapasar
+   yang dilarang. Segmen organik-petani-kecil bisa dilewati di depan.
+2. **Porsi TC 100%.** Principal yang SELURUH mereknya bahan teknis bisa dicoret tanpa
+   memeriksa apa pun. Perhatikan ini berbeda dari "porsi TC tinggi" yang sudah gugur di
+   §5: yang meramal bukan porsinya, melainkan **keseluruhannya**.
+
+Sebaliknya, cakupan efektif harus dihitung setelah TC dibuang: satu principal tampak 3
+dari 6 padahal sebenarnya **3 dari 4**, sebab dua sisanya memang bahan teknis.
+
 ## 5. Yang tidak akan pernah punya foto kemasan
 
 Saring di depan, jangan diburu:
@@ -327,6 +446,11 @@ Saring di depan, jangan diburu:
 
 Dua koreksi yang membuat taksiran cakupan berhenti terlalu optimis:
 
+- **Katalog kedelapan, dan ia ditemukan lewat jebakan saudara.** `foragro.co.id`
+  berjenama Foragro **Mitra Sejati** — yang sudah dipanen — tetapi membawa **8 dari 9**
+  merek Foragro **Maju Sejahtera**. Kebalikan kasus Arysta: di sana namanya cocok tetapi
+  mereknya tidak ada; di sini namanya tidak cocok tetapi mereknya ada. Satu sapuan enam
+  GET melayani dua principal — **jangan dipanen dua kali.**
 - **Dua katalog grup menaungi principal yang dipetakan di gelombang berbeda**, dan
   memanennya dua kali adalah pemborosan: `santani.id` juga menaungi 19 dari 24 merek
   PT. SANTANI SEJAHTERA di samping PT. SANTANI AGRO PERKASA yang sudah dipanen; dan
@@ -343,6 +467,20 @@ Dua koreksi yang membuat taksiran cakupan berhenti terlalu optimis:
 
 Ukurannya: pada satu potongan, 165 merek "punya situs" tetapi hanya **83 benar-benar
 tertayang**. Taksiran berbasis "principal ini bersitus" meleset kira-kira dua kali lipat.
+
+**TETAPI aturan ini terbalik pada principal kecil, dan sebabnya struktural.** Di ekor,
+empat principal sekaligus mencapai **5 dari 5** — cakupan penuh, sesuatu yang tidak pernah
+terjadi sekali pun pada principal besar (Bayer 11 dari 65, Syngenta 31 dari 84).
+
+Alasannya: principal berlima-merek yang repot membangun situs menayangkan **seluruh**
+katalognya, sedangkan principal berpuluh-merek selalu tertinggal di belakang registrinya.
+Jadi jurang optimisme itu sifat principal BESAR, bukan sifat web. Di ekor, "punya situs"
+justru hampir berarti "punya semuanya" — yang jarang adalah situsnya, bukan
+kelengkapannya.
+
+Ini juga yang mendamaikan verdik yang bertentangan antar-potongan ekor: yang melaporkan
+2–9% dan yang melaporkan 25% sama-sama benar. Ekornya **lebih sering kosong, tetapi ketika
+berisi ia berisi penuh.**
 
 ---
 
@@ -384,12 +522,19 @@ Sudah dua kali, dan polanya konsisten:
 | `LARBAN 550 EC` | `LARBAN 500/50 EC` (500 + 50) |
 | `Chloromycin 740 EC` | `CHLOROMYCIN 440/300 EC` (440 + 300) |
 | `CONTESS 80EC` | `CONTESS 30/50 EC` (30 + 50) |
+| `BroadPlus 77 WP` | `0,7/0,7/75` — **tiga komponen**, dan hasilnya dibulatkan |
+| `Equation Pro 52` | `29/22,5` (= 51,5, dibulatkan) |
+| `INARI 72 WP` | `37,5/35` (= 72,5, dibulatkan) |
 | `Wilbo Plus 585 EC` | `WILBO PLUS 530/55 EC` (530 + 55) |
 | `AVIATE 75 WG` | `AVIATE 70/5 WG` (70 + 5) |
 | `CHLORMITE 505 EC PLUS` | `CHLORMITE PLUS 459/46 EC` (459 + 45,9) |
 | `SERENDY 28 WP` | `SERENDY 18/10 WP` (18 + 10) |
 | `CORONA PRIMA 325 SC` | `CORONA PRIMA 200/125 SC` |
 | `GANDEWA 550 SC` | `GANDEWA 500/50 SC` |
+
+**Penjumlahannya bisa DIBULATKAN, dan bisa lebih dari dua komponen.** Pencocokan yang
+menuntut jumlah persis akan melewatkan ketiga contoh terakhir di tabel. Pakai toleransi
+sekitar satu satuan, dan jangan asumsikan hanya dua bahan aktif.
 
 Ini **aturan, bukan keingintahuan.** Tiga kemasan membuktikannya sendiri dengan mencetak
 kedua sisinya serentak pada satu muka: CONTESS (`80EC` + `30 g/l + 50 g/l`), CHLORMITE
@@ -553,7 +698,24 @@ Dua jebakan lanjutan di dalamnya:
 
 - **`large/large_X.png` lebih besar dalam BYTE tetapi lebih kecil dalam PIKSEL** daripada
   `large/X.png`. Urutkan menurut piksel, bukan ukuran berkas.
-- **Saring `*LOGO*` sebelum mengurutkan menurut piksel.** `xlarge/ERASOR LOGO.png`
+- **Beranda bukan bukti pada perusahaan berlini banyak.** `sumberbuanaperkasa.com` terbaca
+sebagai distributor mesin industri dan mencetak nol pada setiap istilah merek di
+berandanya — tetapi kategori Pupuk Organik-nya membawa MYCO/PSB/mikoriza, dan Store
+API-nya menamai produknya lengkap. Perusahaannya benar. Periksa kategorinya, jangan
+berhenti di beranda.
+
+**Apex saja berbohong.** `wilmar-international.com` tidak punya A record di apex sementara
+`www.`-nya resolve lewat Incapsula. Sapuan yang hanya memeriksa apex mencatatnya mati —
+`saring-ekor.py` karena itu memeriksa keduanya.
+
+**Kolam parkir dikenali dari IP-nya, bukan halamannya — dan satu tanda membatalkan
+belasan kandidat sekaligus.** Dua pasang yang berulang lintas potongan:
+`54.243.117.197`/`13.223.25.84` (HugeDomains) dan `13.248.169.48`/`76.223.54.146`
+(lander AWS, badan **114 bita** berisi `window.location.href="/lander"`, MX null `0 .`).
+Pada satu potongan pasangan kedua memegang sepuluh domain kandidat sekaligus. Tanda
+kedaluwarsa lain: `ns1/ns2.dns-expired.com` dan `EXPIRE1/EXPIRE2.MYSRSX.COM`.
+
+**Saring `*LOGO*` sebelum mengurutkan menurut piksel.** `xlarge/ERASOR LOGO.png`
   berukuran 20263×8489 dan akan memuncaki urutan resolusi mana pun. Batas nisbah sisi 3,0
   plus saringan nama berkas membersihkannya.
 
@@ -583,6 +745,21 @@ direntangkan** (minimum 219–220 di antara latar 255).
 Keduanya bernama `whatsapp-image-*` — tetapi berkas lain bernama pola sama dengan tanggal
 berbeda (`whatsapp-image-2025-01-15`) justru bersih. **Jangan simpulkan dari nama berkas;
 ukur kolom tepinya.**
+
+## 7i. Gambar dari luar principal bisa memotret barang palsu
+
+Satu agen menemukan liputan pers bahwa pabrik PT. Centra Agro Pratama tutup pada 2014
+sementara **karung SAPI LIAR palsu terus beredar di Riau sebagai perkara pidana**.
+
+Akibatnya lurus: gambar merek itu yang diambil dari mana pun selain principal-nya sendiri
+berisiko memotret **barang palsu**, lalu menyimpannya sebagai rujukan seperti apa kemasan
+yang sah. Untuk registri yang gunanya membantu petani memeriksa produk, itu kebalikan dari
+tujuannya.
+
+Ini memperkuat larangan lokapasar dari arah yang berbeda: bukan cuma soal hak cipta dan
+watermark, melainkan soal **apa yang sebenarnya ada di dalam gambar**. Kalau sebuah merek
+diketahui dipalsukan, gambar dari luar principal tidak boleh dipakai sama sekali — catat
+alasannya, jangan panen.
 
 ## 8. Situs yang tersusupi
 
@@ -718,8 +895,11 @@ mengembalikan 768 objek. Katalognya menautkan `_productThumb/` pada 300×380 —
 membuatnya dinilai tipis — padahal **membuang segmen itu memberi 1134×1436**. Pola yang
 persis sama dengan ember DGW di §7g.
 
-**Sufiks `-WxH` bisa jadi bagian dari nama unggahan, dan bisa BOHONG.**
-`AVIANI-1080x1080-2.png` sebenarnya 800×800, dan membuang sufiksnya justru 404. Jadi
+**Sufiks `-WxH` bisa jadi bagian dari nama unggahan, dan bisa BOHONG — atau JUJUR.**
+`AVIANI-1080x1080-2.png` sebenarnya 800×800, dan membuang sufiksnya justru 404. Sebaliknya
+`ARJUNA-300x300-1.png` di Belirang memang benar 300×300, dan membuangnya juga 404. Jadi
+sufiks itu tidak memberi tahu apa pun: bisa turunan, bisa bagian nama; angkanya bisa benar,
+bisa salah. Jadi
 aturan "buang `-WxH` untuk dapat master" gagal ke dua arah di situs ini: sufiksnya bukan
 turunan, dan angkanya bukan ukurannya. Ukur berkasnya, jangan percaya namanya.
 
