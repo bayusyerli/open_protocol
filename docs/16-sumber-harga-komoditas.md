@@ -88,8 +88,10 @@ memblokir `anthropic-ai` dan `Claude-Web`). Tidak dipanen.
 
 ## 3. Yang tidak ada di mana pun
 
-- **Gabah tidak ada di sumber harian mana pun.** PIHPS tidak memuatnya; BPS hanya bulanan dan
-  di balik kunci.
+- **Gabah tidak ada di sumber harian mana pun** — PIHPS tidak memuatnya. Tetapi **bulanan
+  sudah tertutup**: CSV produsen Bapanas memuat `GKP Tk. Petani` untuk 38 provinsi,
+  2023–2026, terunduh terbuka tanpa kunci — lihat bagian 3a. Yang benar-benar terkunci
+  tinggal frekuensi hariannya.
 - **Jawa Barat dan Banten tanpa jalan pintas.** Jabar provinsi hortikultura terbesar di Jawa,
   dan di belakang portalnya nol portal CKAN kabupaten. Banten tidak punya sistem sama sekali
   sejak PRIANGAN mati.
@@ -99,6 +101,46 @@ memblokir `anthropic-ai` dan `Claude-Web`). Tidak dipanen.
 - **Nol dari 13 agritech memberi harga petani.** Alasannya struktural, bukan teknis: selisih
   beli-dari-petani dan jual-ke-konsumen persis adalah marjin mereka. Arah pencarian ini
   tertutup permanen dan tidak perlu diulang.
+
+### 3a. Gabah tingkat petani: sudah terbuka, bulanan
+
+Diverifikasi 22 Agustus 2026 dengan menarik sendiri berkasnya. CSV harga produsen Bapanas
+(`data.badanpangan.go.id`, HTTP 200, tanpa kunci, tanpa autentikasi) memuat 17 komoditas
+tingkat produsen — termasuk yang paling dicari:
+
+| Komoditas | Cakupan |
+|---|---|
+| `GKP Tk. Petani` | 2.256 baris · 38 provinsi · 2023–2026 · **63% sel terisi** |
+| `GKP Tk. Penggilingan`, `GKG Tk. Penggilingan` | pasangannya, sehingga selisih petani→penggilingan bisa dihitung langsung |
+| `Bawang Merah`, `Cabai Merah Besar`, `Cabai Merah Keriting`, `Cabai Rawit Merah`, `Jagung Pipilan Kering`, `Kedelai Biji Kering` — semuanya **Tingkat Petani** | hortikultura & palawija di tingkat petani |
+
+Dua hitungan yang langsung keluar darinya, dan keduanya adalah kalibrasi yang dibutuhkan
+modul harga:
+
+- **Selisih GKP petani → penggilingan: median 5,6%** (n=628 pasangan provinsi-bulan).
+- **Terhadap HPP Rp6.500/kg** (Kepbadan 14/2025): pada 2025, **68 dari 235 pengamatan
+  provinsi-bulan berada di bawah HPP — 28%**; pada 2026 turun ke 15%. Median 2025
+  Rp6.557/kg, 2026 Rp6.696/kg.
+
+> Angka 28% itu berasal dari data pemerintah sendiri. Ia mengukur seberapa sering lantai
+> harga tidak tercapai di tingkat petani — persis pertanyaan yang membuat modul harga layak
+> dibangun, dan ia bisa dijawab hari ini tanpa menunggu kunci API apa pun.
+
+**Lisensinya tetap kosong**, jadi berkas ini **benih privat**: dipakai untuk menghitung dan
+mengkalibrasi, tidak diterbitkan. Untuk kebutuhan kalibrasi selisih pasar→petani, tingkat itu
+memang sudah cukup.
+
+**Dua catatan bentuk.** Harga tersimpan sebagai string ber-prefiks (`"Rp5,494"`), bukan
+angka. Dan penamaan komoditasnya belum baku: `Beras Medium Tingkat Penggilingan` dan
+`Beras Medium Tk. Penggilingan` hadir sebagai dua entri untuk hal yang sama — pola yang sama
+seperti `Minyak Kita` versus `Minyakita`. Normalkan saat penyerapan.
+
+**Yang buntu:** dataset BPS di data.go.id — *Rata-rata Harga Gabah Bulanan … di Tingkat
+Petani*, pasangan penggilingannya, dan *Kasus Harga Gabah di Bawah HPP* — metadatanya nyata
+(15 berkas tahunan, 2008–2022) tetapi **15 dari 16 tautan sumber dayanya menunjuk
+`http://10.42.0.15`**, alamat LAN privat yang bocor ke katalog publik. Satu-satunya tautan
+publiknya hanyalah beranda `bps.go.id`. Tidak terjangkau, dan bukan karena jaringan lokal.
+
 
 ---
 
