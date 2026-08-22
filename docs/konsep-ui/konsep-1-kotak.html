@@ -1,0 +1,997 @@
+<meta charset="utf-8">
+<title>Kotak Tanya</title>
+<meta name="description" content="Konsep 1 — pintu depan satu kotak: semua hal adalah pertanyaan, dan tiap jawaban menyebut batasnya sendiri.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap">
+
+<style>
+/* ==========================================================================
+   KONSEP 1 · KOTAK TANYA
+   Tesis: kotak tanya adalah seluruh produknya. Kromnya minimal, dan
+   waktu-ke-jawaban satu-satunya metrik.
+
+   Rupa: melanjutkan app/beranda.css apa adanya — hijau tua #00442f yang sudah
+   jadi theme-color repo — lalu mendisiplinkannya: satu kolom, satu lebar, dan
+   kotak yang tidak pernah berpindah tempat di layar mana pun.
+
+   Huruf: Archivo untuk judul dan kendali (grotesque papan nama, tebal, lebar);
+   Atkinson Hyperlegible untuk seluruh teks bacaan. Yang kedua bukan selera —
+   ia huruf keterbacaan rendah-penglihatan, dan 80,24% pengguna digital di
+   sektor ini berumur di atas 39 tahun.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --tinta:      #10241c;
+  --lemah:      #4d6157;
+  --pudar:      #7d8f85;
+
+  --kertas:     #fcfcf7;
+  --kanvas:     #eff1e8;
+  --relung:     #e3e8dd;
+  --garis:      #ccd8cb;
+  --garis-tua:  #a9bcaa;
+
+  --hijau:      #00442f;
+  --hijau-isi:  #e4efe6;
+  --limau:      #4c8a05;
+  --limau-isi:  #edf6d8;
+  --amber:      #7f5300;
+  --amber-isi:  #fdf0d4;
+  --tolak:      #8a352b;
+  --tolak-isi:  #f9e8e4;
+
+  --di-hijau:   #ffffff;
+  --fokus:      #007f5a;
+
+  --sudut: 4px;
+  --kolom: 35rem;
+
+  --sans: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --baca: "Atkinson Hyperlegible", "Verdana", "DejaVu Sans", sans-serif;
+  --mono: ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --tinta:      #e8f2ea;
+    --lemah:      #a8bcae;
+    --pudar:      #7d9285;
+    --kertas:     #16231d;
+    --kanvas:     #0c1512;
+    --relung:     #1e2f27;
+    --garis:      #32473b;
+    --garis-tua:  #4c6656;
+    --hijau:      #8fdcbe;
+    --hijau-isi:  #1a3227;
+    --limau:      #9dd93c;
+    --limau-isi:  #26361a;
+    --amber:      #f0c065;
+    --amber-isi:  #372c14;
+    --tolak:      #f2a297;
+    --tolak-isi:  #3d2320;
+    --di-hijau:   #0c1512;
+    --fokus:      #63d3aa;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --tinta:      #e8f2ea;
+  --lemah:      #a8bcae;
+  --pudar:      #7d9285;
+  --kertas:     #16231d;
+  --kanvas:     #0c1512;
+  --relung:     #1e2f27;
+  --garis:      #32473b;
+  --garis-tua:  #4c6656;
+  --hijau:      #8fdcbe;
+  --hijau-isi:  #1a3227;
+  --limau:      #9dd93c;
+  --limau-isi:  #26361a;
+  --amber:      #f0c065;
+  --amber-isi:  #372c14;
+  --tolak:      #f2a297;
+  --tolak-isi:  #3d2320;
+  --di-hijau:   #0c1512;
+  --fokus:      #63d3aa;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--kanvas);
+  color: var(--tinta);
+  font-family: var(--baca);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+h1, h2, h3, .mata, button, input, .nomor { font-family: var(--sans); }
+
+:where(a, button, input, summary):focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* ---------------------------------------------------------- krom peninjau
+   Bilah ini BUKAN bagian produk. Ia ada supaya peninjau bisa melompat ke
+   layar mana pun tanpa harus menebak kueri yang memicunya. */
+.krom {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background: var(--tinta);
+  color: var(--kanvas);
+  border-bottom: 2px solid var(--garis-tua);
+}
+.krom-dalam {
+  max-width: var(--kolom);
+  margin: 0 auto;
+  padding: .5rem .9rem .6rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .4rem .55rem;
+}
+.krom-tanda {
+  font-family: var(--sans);
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  opacity: .6;
+  width: 100%;
+}
+.krom button {
+  font-size: .78rem;
+  font-weight: 600;
+  padding: .42rem .6rem;
+  min-height: 34px;
+  color: var(--kanvas);
+  background: transparent;
+  border: 1px solid rgb(255 255 255 / 28%);
+  border-radius: var(--sudut);
+  cursor: pointer;
+}
+:root[data-theme="dark"] .krom button,
+.krom button { color: var(--kanvas); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .krom button { border-color: rgb(255 255 255 / 20%); }
+}
+.krom button:hover { background: rgb(255 255 255 / 12%); }
+.krom button[aria-pressed="true"] {
+  background: var(--kanvas);
+  color: var(--tinta);
+  border-color: var(--kanvas);
+}
+
+/* ------------------------------------------------------------------ kepala */
+.kepala {
+  border-bottom: 1px solid var(--garis);
+  background: var(--kanvas);
+}
+.kepala-dalam {
+  max-width: var(--kolom);
+  margin: 0 auto;
+  padding: .8rem .9rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.merek strong {
+  display: block;
+  font-family: var(--sans);
+  font-size: .95rem;
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+.merek small {
+  display: block;
+  font-family: var(--sans);
+  font-size: .6rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--pudar);
+}
+.tema { display: flex; gap: 0; border: 1px solid var(--garis); border-radius: var(--sudut); overflow: hidden; }
+.tema button {
+  font-size: .72rem;
+  font-weight: 600;
+  padding: .38rem .5rem;
+  min-height: 32px;
+  border: 0;
+  background: var(--kertas);
+  color: var(--lemah);
+  cursor: pointer;
+}
+.tema button + button { border-left: 1px solid var(--garis); }
+.tema button[aria-pressed="true"] { background: var(--hijau); color: var(--di-hijau); }
+
+/* -------------------------------------------------------------------- pentas
+   Kotak tidak pernah berpindah: ia selalu di sini, di layar mana pun.
+   Yang berubah cuma apa yang tumbuh di bawahnya. */
+main {
+  max-width: var(--kolom);
+  margin: 0 auto;
+  padding: 1.4rem .9rem 5rem;
+}
+
+.tanya { display: grid; gap: .7rem; }
+
+.tanya h1 {
+  margin: 0;
+  font-size: 1.75rem;
+  line-height: 1.15;
+  font-weight: 700;
+  letter-spacing: -.02em;
+  text-wrap: balance;
+}
+
+.kotak {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .5rem;
+}
+.kotak input {
+  min-width: 0;
+  padding: .85rem .85rem;
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--tinta);
+  background: var(--kertas);
+  border: 2px solid var(--garis-tua);
+  border-radius: var(--sudut);
+}
+.kotak input::placeholder { color: var(--pudar); font-weight: 400; }
+.kotak button {
+  padding: 0 1.15rem;
+  min-height: 52px;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--di-hijau);
+  background: var(--hijau);
+  border: 2px solid var(--hijau);
+  border-radius: var(--sudut);
+  cursor: pointer;
+}
+
+.contoh { display: flex; flex-wrap: wrap; gap: .4rem; }
+.contoh button {
+  padding: .5rem .7rem;
+  min-height: 42px;
+  font-size: .82rem;
+  font-weight: 600;
+  color: var(--lemah);
+  background: var(--kertas);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  cursor: pointer;
+  text-align: left;
+}
+.contoh button:hover { border-color: var(--hijau); color: var(--tinta); }
+.contoh button b { color: var(--tinta); font-weight: 700; }
+
+.nota-kotak {
+  margin: 0;
+  font-size: .84rem;
+  line-height: 1.5;
+  color: var(--lemah);
+}
+.nota-kotak strong { color: var(--tinta); }
+
+/* ------------------------------------------------------------------ jawaban */
+.jawab { margin-top: 1.6rem; display: grid; gap: 1rem; }
+.jawab:empty { margin: 0; }
+
+.mata {
+  margin: 0;
+  font-size: .66rem;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--pudar);
+}
+
+.kartu {
+  background: var(--kertas);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  padding: .95rem 1rem;
+}
+.kartu > :first-child { margin-top: 0; }
+.kartu > :last-child { margin-bottom: 0; }
+.kartu h2 { margin: .15rem 0 .5rem; font-size: 1.2rem; line-height: 1.25; font-weight: 700; }
+.kartu h3 { margin: 1.1rem 0 .4rem; font-size: .95rem; font-weight: 700; }
+.kartu p { margin: .5rem 0; }
+
+.kartu.tolak { border-color: var(--tolak); border-left-width: 6px; background: var(--tolak-isi); }
+.kartu.awas  { border-color: var(--amber); border-left-width: 6px; background: var(--amber-isi); }
+
+.ilmiah { font-style: italic; color: var(--lemah); font-size: .92rem; }
+
+.draft {
+  display: inline-block;
+  padding: .1rem .45rem;
+  font-family: var(--sans);
+  font-size: .64rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--amber);
+  background: var(--amber-isi);
+  border: 1px solid var(--amber);
+  border-radius: 999px;
+}
+
+/* pastikan dulu — dua ciri yang bisa diperiksa sendiri */
+.periksa { margin: .5rem 0 0; padding: 0; list-style: none; display: grid; gap: .7rem; counter-reset: p; }
+.periksa li {
+  position: relative;
+  padding: .1rem 0 0 2rem;
+  counter-increment: p;
+}
+.periksa li::before {
+  content: counter(p);
+  position: absolute;
+  left: 0; top: .1rem;
+  width: 1.5rem; height: 1.5rem;
+  display: grid; place-items: center;
+  font-family: var(--sans);
+  font-size: .78rem;
+  font-weight: 700;
+  color: var(--di-hijau);
+  background: var(--hijau);
+  border-radius: 50%;
+}
+.periksa .bantah {
+  display: block;
+  margin-top: .3rem;
+  font-size: .84rem;
+  color: var(--lemah);
+}
+.periksa .bantah b { color: var(--tinta); }
+
+/* angka besar — fakta, bukan anjuran */
+.cacah { display: grid; gap: .1rem; margin: .3rem 0 0; }
+.cacah b {
+  font-family: var(--sans);
+  font-size: 2.6rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -.03em;
+  font-variant-numeric: tabular-nums;
+}
+.cacah span { font-size: .88rem; color: var(--lemah); }
+
+/* kartu bahan + kadar */
+.bahan { border: 1px solid var(--garis); border-radius: var(--sudut); overflow: hidden; background: var(--kertas); }
+.bahan + .bahan { margin-top: .5rem; }
+.bahan > summary {
+  padding: .75rem .85rem;
+  min-height: 52px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .4rem;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-weight: 600;
+  list-style: none;
+}
+.bahan > summary::-webkit-details-marker { display: none; }
+.bahan > summary::after {
+  content: "+";
+  margin-left: auto;
+  font-size: 1.2rem;
+  color: var(--hijau);
+}
+.bahan[open] > summary::after { content: "\2212"; }
+.bahan[open] > summary { background: var(--hijau-isi); }
+.bahan .kadar { font-family: var(--mono); font-size: .88rem; color: var(--lemah); }
+.bahan .isi { padding: 0 .85rem .85rem; }
+
+.pembungkus-tabel { overflow-x: auto; margin: .6rem 0 0; }
+table { border-collapse: collapse; width: 100%; font-size: .86rem; }
+th, td { text-align: left; padding: .45rem .55rem; border-bottom: 1px solid var(--garis); vertical-align: top; }
+th { font-family: var(--sans); font-weight: 700; color: var(--lemah); white-space: nowrap; font-size: .76rem; text-transform: uppercase; letter-spacing: .06em; }
+td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant-numeric: tabular-nums; font-size: .82rem; }
+
+/* ----------------------------------------------------------- batas jawaban
+   B1. Bukan catatan kaki: ia bagian dari kartu jawaban, dan tiap layar
+   jawaban punya satu. Kalau tidak ada, layarnya belum selesai. */
+.batas {
+  border: 2px solid var(--garis-tua);
+  border-radius: var(--sudut);
+  background: var(--relung);
+}
+.batas > summary {
+  padding: .7rem .85rem;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  cursor: pointer;
+  font-family: var(--sans);
+  font-size: .88rem;
+  font-weight: 700;
+  list-style: none;
+}
+.batas > summary::-webkit-details-marker { display: none; }
+.batas > summary::before {
+  content: "";
+  width: .7rem; height: .7rem;
+  flex: none;
+  border: 2px solid var(--tinta);
+  border-radius: 50%;
+}
+.batas > summary::after { content: "Buka"; margin-left: auto; font-weight: 600; font-size: .78rem; color: var(--lemah); }
+.batas[open] > summary::after { content: "Tutup"; }
+.batas .isi { padding: 0 .85rem .85rem; font-size: .88rem; }
+.batas dl { margin: 0; display: grid; grid-template-columns: 8.5rem 1fr; gap: .3rem .8rem; }
+.batas dt { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: var(--lemah); padding-top: .15rem; }
+.batas dd { margin: 0; }
+.batas .tidaktahu { margin: .8rem 0 0; padding-top: .7rem; border-top: 1px solid var(--garis-tua); }
+.batas .tidaktahu strong { display: block; font-family: var(--sans); font-size: .74rem; letter-spacing: .05em; text-transform: uppercase; color: var(--lemah); }
+.batas ul { margin: .35rem 0 0; padding-left: 1.1rem; }
+.batas li + li { margin-top: .25rem; }
+
+@media (max-width: 26rem) {
+  .batas dl { grid-template-columns: 1fr; gap: 0; }
+  .batas dt { margin-top: .5rem; }
+}
+
+/* --------------------------------------------------------- antrean (B4) */
+.antrean { display: grid; gap: .45rem; margin: .6rem 0 0; padding: 0; list-style: none; }
+.antrean li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: .3rem .8rem;
+  align-items: baseline;
+  padding: .55rem .7rem;
+  background: var(--kanvas);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  font-size: .88rem;
+}
+.antrean .berapa {
+  font-family: var(--mono);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--lemah);
+  white-space: nowrap;
+}
+.antrean .apa { grid-column: 1 / -1; font-size: .8rem; color: var(--lemah); }
+
+.aksi { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; }
+.aksi button, .aksi a {
+  padding: .65rem .9rem;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--sans);
+  font-size: .88rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--di-hijau);
+  background: var(--hijau);
+  border: 2px solid var(--hijau);
+  border-radius: var(--sudut);
+  cursor: pointer;
+}
+.aksi .sekunder { color: var(--tinta); background: transparent; border-color: var(--garis-tua); }
+
+.kaki {
+  max-width: var(--kolom);
+  margin: 0 auto;
+  padding: 1.2rem .9rem 3rem;
+  font-size: .8rem;
+  color: var(--lemah);
+  border-top: 1px solid var(--garis);
+}
+.kaki p { margin: .3rem 0; }
+
+@media (prefers-reduced-motion: no-preference) {
+  .jawab > * { animation: naik .18s ease-out both; }
+  @keyframes naik { from { opacity: 0; transform: translateY(4px); } }
+}
+</style>
+
+<div class="krom">
+  <div class="krom-dalam">
+    <span class="krom-tanda">Konsep 1 · Kotak Tanya — krom peninjau, bukan bagian produk</span>
+    <button type="button" data-layar="masuk" aria-pressed="true">1 · Layar masuk</button>
+    <button type="button" data-layar="trips" aria-pressed="false">2 · Jawaban</button>
+    <button type="button" data-layar="virus" aria-pressed="false">3 · Menolak menjawab</button>
+    <button type="button" data-layar="nol" aria-pressed="false">4 · Tidak sanggup</button>
+  </div>
+</div>
+
+<header class="kepala">
+  <div class="kepala-dalam">
+    <a class="merek" href="#konten" style="text-decoration:none;color:inherit">
+      <strong>Open Protocols</strong>
+      <small>Data pertanian terbuka</small>
+    </a>
+    <div class="tema" role="group" aria-label="Tampilan layar">
+      <button type="button" data-tema="sistem" aria-pressed="true">Sistem</button>
+      <button type="button" data-tema="light" aria-pressed="false">Terang</button>
+      <button type="button" data-tema="dark" aria-pressed="false">Gelap</button>
+    </div>
+  </div>
+</header>
+
+<main id="konten">
+  <div class="tanya">
+    <p class="mata">Mulai di sini</p>
+    <h1>Mau cek apa hari ini?</h1>
+
+    <form class="kotak" id="formCari" role="search">
+      <label class="visually-hidden" for="q" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Nama produk, bahan aktif, atau gejala tanaman</label>
+      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+             enterkeyhint="search" placeholder="Nama, bahan, atau gejala">
+      <button type="submit">Cari</button>
+    </form>
+
+    <div class="contoh" id="contoh">
+      <button type="button" data-kueri="daun mengeriting ke atas"><b>Daun mengeriting ke atas</b></button>
+      <button type="button" data-kueri="daun menguning mengecil keriting"><b>Daun menguning dan mengecil</b></button>
+      <button type="button" data-kueri="MANTRA 80 WP"><b>MANTRA 80 WP</b></button>
+      <button type="button" data-kueri="varietas cabai paling tahan"><b>Varietas cabai paling tahan</b></button>
+    </div>
+
+    <p class="nota-kotak">
+      Satu kotak: <strong>gejala yang terlihat</strong>, <strong>bahan aktif</strong>, dan
+      <strong>nama terdaftar</strong>. Nama di kemasan sering berbeda dari nama
+      terdaftarnya, jadi nama yang tidak ketemu <strong>bukan bukti produknya tidak
+      terdaftar</strong>.
+    </p>
+  </div>
+
+  <div class="jawab" id="jawab" aria-live="polite"></div>
+</main>
+
+<footer class="kaki">
+  <p><strong>Open Protocols</strong> — gratis, tanpa akun, dan kata yang dicari tidak dikirim ke mana pun.</p>
+  <p>Sumber: registri Kementan lewat <code>spec/indeks/</code> · isi layar ini diambil apa adanya dari <code>spec/vocab/</code>.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------------------------------------------------------- data
+     Seluruhnya disalin dari spec/vocab/ dan docs/. Tidak ada satu pun nomor
+     pendaftaran, nama merek, atau angka cacah yang dikarang. */
+
+  var GEJALA = [
+    {
+      id: "trips",
+      opt: "Trips",
+      ilmiah: "Thrips parvispinus",
+      teks: "Daun muda mengeriting ke ATAS seperti mangkuk, dan permukaan bawahnya keperakan atau kecoklatan seperti tergores halus. Bunga dan tunas rontok sebelum jadi buah; tanaman kerdil dan pucuknya mengumpul.",
+      kata: "daun muda mengeriting ke atas mangkuk keperakan kecoklatan tergores bunga tunas rontok kerdil pucuk"
+    },
+    {
+      id: "virus",
+      opt: "Virus kuning keriting",
+      ilmiah: "Begomovirus",
+      teks: "Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun.",
+      kata: "daun muda menguning terang mengecil mengeriting ke atas tulang menebal kerdil buah sedikit kecil disemprot"
+    },
+    {
+      id: "kutu-kebul",
+      opt: "Kutu kebul",
+      ilmiah: "Bemisia tabaci",
+      teks: "Serangga putih sangat kecil beterbangan berhamburan saat tanaman disentuh, lalu hinggap lagi. Daun lengket dan berjelaga hitam, dan lama-lama menguning.",
+      kata: "serangga putih kecil beterbangan berhamburan disentuh hinggap daun lengket berjelaga hitam menguning"
+    },
+    {
+      id: "layu-bakteri",
+      opt: "Layu bakteri",
+      ilmiah: "Ralstonia solanacearum",
+      teks: "Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah.",
+      kata: "tanaman layu mendadak hari daun masih hijau menguning pangkal batang kecoklatan basah"
+    },
+    {
+      id: "layu-fusarium",
+      opt: "Layu fusarium",
+      ilmiah: "Fusarium oxysporum",
+      teks: "Tanaman layu perlahan selama beberapa hari. Daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap.",
+      kata: "tanaman layu perlahan hari daun bawah menguning satu sisi menetap tanah lembap"
+    }
+  ];
+
+  /* Merek Abamektin 18 g/L yang terdaftar untuk Trips pada Cabai.
+     Nomor pendaftaran, pemegang, dosis, dan masa berlaku disalin dari
+     spec/vocab/product/pestisida.ndjson. Urutan: nomor pendaftaran menaik. */
+  var ABAMEKTIN = [
+    { nama: "STARMEK 18 EC",  no: "01010120031935", pemegang: "CV. SAPROTAN UTAMA",             dosis: "1–2 ml/l",  sampai: "4 Okt 2027" },
+    { nama: "MATROS 18 EC",   no: "01010120042102", pemegang: "PT. PETROKIMIA KAYAKU",          dosis: "1 ml/l",         sampai: "19 Sep 2029" },
+    { nama: "DUIT 18 EC",     no: "01010120114126", pemegang: "PT. SINAR GENERAL INDUSTRIES",   dosis: "1 ml/l",         sampai: "14 Jan 2027" },
+    { nama: "OPTIMECT 18 EC", no: "01010120155379", pemegang: "CV. SARAREA PANEN RAYA",         dosis: "1,5 ml/l",       sampai: "11 Jul 2030" },
+    { nama: "GMAX 18 EC",     no: "01010120186036", pemegang: "CV. ARTHA BUANA MANDIRI",        dosis: "2 ml/l",         sampai: "28 Agu 2028" },
+    { nama: "BOSCAPLUS 18 EC",no: "01010120196250", pemegang: "CV. GRAHA AGRO",                 dosis: "1,5 ml/l",       sampai: "5 Mar 2029" },
+    { nama: "AVJUNSU 18 EC",  no: "01010120196412", pemegang: "PT. ETONG CHEMICAL INDONESIA",   dosis: "1 ml/l",         sampai: "19 Sep 2029" },
+    { nama: "VENOMEX 18 EC",  no: "01010120206881", pemegang: "PT. BINGEI AGUNG",               dosis: "1 ml/l",         sampai: "13 Nov 2030" }
+  ];
+
+  var PRODUK = {
+    "mantra 80 wp": {
+      nama: "MANTRA 80 WP",
+      no: "01020120227329",
+      pemegang: "CV. SARAREA PANEN RAYA",
+      jenis: "Fungisida yang bersifat protektif berbentuk tepung yang dapat disuspensikan",
+      isi: "Mankozeb 80%",
+      berlaku: "27 Jun 2022 – 27 Jun 2027",
+      diperiksa: "19 Agu 2026",
+      pakai: [
+        ["Cabai", "Penyakit Busuk Daun", "Phytophthora infestans", "2 g/l"],
+        ["Tomat", "Penyakit Busuk Daun", "Phytophthora infestans", "2 g/l"],
+        ["Bawang Merah", "Penyakit Bercak Daun", "Alternaria porri", "2 g/l"]
+      ]
+    }
+  };
+
+  var el = document.getElementById("jawab");
+  var kotak = document.getElementById("q");
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    });
+  }
+
+  /* Blok batas jawaban — B1. Satu fungsi, dipakai tiap layar jawaban, supaya
+     tidak ada layar yang bisa lupa memasangnya. */
+  function batas(o) {
+    return '<details class="batas"' + (o.buka ? " open" : "") + '>' +
+      '<summary>Batas jawaban ini</summary>' +
+      '<div class="isi">' +
+        '<dl>' +
+          '<dt>Tingkat bukti</dt><dd>' + o.bukti + '</dd>' +
+          '<dt>Sumber</dt><dd>' + o.sumber + '</dd>' +
+          '<dt>Tanggal data</dt><dd>' + o.tanggal + '</dd>' +
+          '<dt>Bentuk jawaban</dt><dd>' + o.bentuk + '</dd>' +
+        '</dl>' +
+        '<div class="tidaktahu"><strong>Yang tidak diketahui layar ini</strong><ul>' +
+          o.tidak.map(function (t) { return "<li>" + t + "</li>"; }).join("") +
+        '</ul></div>' +
+      '</div></details>';
+  }
+
+  /* ------------------------------------------------------------- layar 2 */
+  function layarTrips() {
+    var g = GEJALA[0];
+    return '' +
+    '<p class="mata">Gejala cocok — 5 dari 6 kata</p>' +
+    '<div class="kartu">' +
+      '<h2>Trips <span class="draft">Draft</span></h2>' +
+      '<p class="ilmiah">Thrips parvispinus · serangga · inang terkurasi: cabai merah besar</p>' +
+      '<p>' + esc(g.teks) + '</p>' +
+
+      '<h3>Pastikan dulu — dua ciri yang bisa kamu periksa sendiri</h3>' +
+      '<ol class="periksa">' +
+        '<li>Kibaskan daun pucuk di atas kertas putih. Trips terlihat sebagai serangga kuning kecoklatan sepanjang 1–2 mm yang langsung bergerak cepat. Kalau tidak ada yang bergerak, penyebabnya bukan trips.' +
+          '<span class="bantah">Kalau begitu hasilnya, yang <b>terbantah</b> adalah Virus kuning keriting.</span></li>' +
+        '<li>Lihat warna daun yang mengeriting. Pada trips daunnya tetap hijau dengan goresan keperakan; kalau daunnya menguning terang dan mengecil tanpa goresan, itu gejala virus dan tidak ada semprotan yang menyembuhkannya.' +
+          '<span class="bantah">Kalau begitu hasilnya, yang <b>terbantah</b> adalah Virus kuning keriting.</span></li>' +
+      '</ol>' +
+      '<p style="font-size:.86rem;color:var(--lemah)">Mesin tidak menebak dari foto. Kamu yang memutuskan setelah memeriksa.</p>' +
+    '</div>' +
+
+    '<div class="kartu">' +
+      '<p class="mata">Kalau ternyata benar trips di cabai</p>' +
+      '<div class="cacah"><b>246</b><span>produk terdaftar untuk trips di cabai — tetapi isinya hanya <strong>72 bahan aktif</strong>, yang jatuh jadi 164 kartu bahan + kadar.</span></div>' +
+      '<p style="font-size:.88rem;color:var(--lemah);margin-top:.7rem">Menampilkan 246 nama dagang berarti menyalin kebingungan kios ke dalam layar. Yang setara hanya pasangan <strong>bahan + kadar</strong>, bukan nama bahannya: satu entitas &ldquo;Abamektin&rdquo; dipakai pada 33 kadar berbeda.</p>' +
+
+      '<h3>Bahan aktif + kadar</h3>' +
+      '<details class="bahan" open>' +
+        '<summary><span>Abamektin</span> <span class="kadar">18 g/L</span></summary>' +
+        '<div class="isi">' +
+          '<p style="font-size:.86rem;color:var(--lemah);margin:.3rem 0 0">26 merek berisi Abamektin 18 g/L terdaftar untuk trips di cabai, dan dosis terdaftarnya <strong>berbeda-beda</strong> — dosis milik pendaftaran tiap produk, bukan milik bahannya. Urutan di bawah: <strong>nomor pendaftaran menaik</strong>. Tanpa peringkat, tanpa slot berbayar.</p>' +
+          '<div class="pembungkus-tabel"><table>' +
+            '<thead><tr><th>Merek</th><th>Nomor pendaftaran</th><th>Dosis terdaftar</th><th>Berlaku s.d.</th></tr></thead><tbody>' +
+            ABAMEKTIN.map(function (m) {
+              return "<tr><td><strong>" + esc(m.nama) + "</strong><br><span style=\"font-size:.78rem;color:var(--lemah)\">" + esc(m.pemegang) + "</span></td>" +
+                "<td class=\"nomor\">" + esc(m.no) + "</td><td class=\"dosis\">" + esc(m.dosis) + "</td><td class=\"dosis\">" + esc(m.sampai) + "</td></tr>";
+            }).join("") +
+            '</tbody></table></div>' +
+          '<p style="font-size:.82rem;color:var(--lemah);margin:.6rem 0 0">Delapan dari 26 ditampilkan. <strong>Isi sama bukan berarti dosis sama.</strong></p>' +
+        '</div>' +
+      '</details>' +
+      '<details class="bahan">' +
+        '<summary><span>Spinetoram</span> <span class="kadar">Kadar lain</span></summary>' +
+        '<div class="isi"><p style="font-size:.88rem;margin:.5rem 0 0">Kartu lain mengikuti bentuk yang sama: satu kartu per pasangan bahan + kadar, merek bersarang di bawahnya, dosis milik tiap pendaftaran.</p></div>' +
+      '</details>' +
+    '</div>' +
+
+    '<div class="kartu awas">' +
+      '<h3 style="margin-top:0">Bahan berlarangan — dan lingkup larangannya</h3>' +
+      '<p>Dari 246 produk terdaftar untuk trips di cabai, <strong>14 mengandung klorpirifos</strong> dan <strong>34 memuat bahan yang namanya tercantum di Lampiran I.A Permentan 43/2019</strong>.</p>' +
+      '<p><strong>Larangannya berlingkup, dan lingkupnya menentukan.</strong> Klorpirifos dilarang untuk <strong>rumah tangga</strong> (Lampiran I.A no. 71) dan untuk <strong>tanaman padi</strong> (Lampiran I.A no. 88). Tidak satu pun catatan larangannya mengenai cabai.</p>' +
+      '<div class="pembungkus-tabel"><table>' +
+        '<thead><tr><th>Contoh nyata</th><th>Nomor pendaftaran</th><th>Isi</th></tr></thead><tbody>' +
+        '<tr><td><strong>LARBAN 500/50 EC</strong><br><span style="font-size:.78rem;color:var(--lemah)">PT. TRIDA KIMIA SAKTI</span></td><td class="nomor">01010120124476</td><td>Klorpirifos 500 g/L + Sipermetrin 50 g/L</td></tr>' +
+        '</tbody></table></div>' +
+      '<p style="font-size:.9rem">Produk ini <strong>terdaftar untuk cabai</strong>, dan larangan klorpirifos tidak mengenainya di sini. Produk yang sama pada <strong>padi</strong> akan ditolak pemeriksa. Menandai kartunya &ldquo;dilarang&rdquo; di layar cabai sama kelirunya dengan menyembunyikannya di layar padi.</p>' +
+      '<p style="font-size:.9rem;color:var(--lemah)">Layar menyebut bahwa zatnya dilarang, menyebut untuk apa, lalu berhenti — menyimpulkan legal atau ilegal bukan wewenang platform ini.</p>' +
+    '</div>' +
+
+    batas({
+      bukti: "Teks gejala <strong>draft</strong>, disusun dari pengetahuan agronomi mapan — bukan dari registri. Wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan. Daftar produk: registri, bukan draft.",
+      sumber: "Registri Kementan (23.058 penggunaan berlabel, 96,1% tertaut OPT) · kosakata OPT terkurasi <code>spec/vocab/pest.json</code>",
+      tanggal: "Registri diperiksa 19 Agustus 2026 · teks gejala diperbarui 20 Agustus 2026",
+      bentuk: "<strong>Anjuran setingkat bahan aktif.</strong> Produk komersial hanya muncul sebagai pemenuhan, lewat nomor pendaftaran resmi.",
+      tidak: [
+        "<strong>Tenggang panen (PHI).</strong> Nol dari 23.058 penggunaan berlabel memuatnya, jadi layar ini tidak menampilkan tanggal aman panen sama sekali. Bawa pertanyaan itu ke penyuluh.",
+        "<strong>Ini trips atau bukan.</strong> Tidak ada pengenal foto, dan gejala saja tidak memutuskan. Dua ciri di atas yang memutuskan, dan kamu yang memeriksanya.",
+        "<strong>Golongan IRAC untuk rotasi.</strong> Baru 58 dari 1.399 bahan aktif punya golongannya, jadi nasihat rotasi berhenti di tingkat bahan aktif.",
+        "<strong>Nama lokal.</strong> Kamus sinonim daerah belum ada. Kalau kamu menyebutnya dengan nama lain, kotak ini belum tentu menemukannya."
+      ]
+    });
+  }
+
+  /* ------------------------------------------------------------- layar 3
+     Menolak menjawab. Ini bukan kegagalan pencarian: nol produk untuk virus
+     adalah kebenaran agronomi, dan layar ini yang paling bernilai di jalur. */
+  function layarVirus() {
+    return '' +
+    '<p class="mata">Gejala cocok — 6 dari 7 kata</p>' +
+    '<div class="kartu">' +
+      '<h2>Virus kuning keriting <span class="draft">Draft</span></h2>' +
+      '<p class="ilmiah">Begomovirus · penyakit virus · ditularkan kutu kebul</p>' +
+      '<p>Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun.</p>' +
+      '<h3>Pastikan dulu</h3>' +
+      '<ol class="periksa">' +
+        '<li>Periksa daun yang menguning itu sendiri. Tidak ada lubang, bercak, goresan, anyaman, atau serangga di atasnya — yang berubah hanya warna dan bentuknya.' +
+          '<span class="bantah">Kalau begitu hasilnya, yang <b>terbantah</b> adalah Trips.</span></li>' +
+        '<li>Goyang tanaman di sekitarnya dan cari kutu kebul putih yang beterbangan. Virus ini ditularkan kutu kebul, jadi kehadirannya menguatkan — tetapi mengendalikan kutu kebulnya tidak menyembuhkan tanaman yang sudah terkena.' +
+          '<span class="bantah">Kalau begitu hasilnya, yang <b>terbantah</b> adalah Kutu kebul sebagai penyebab langsung.</span></li>' +
+      '</ol>' +
+    '</div>' +
+
+    '<div class="kartu tolak">' +
+      '<p class="mata" style="color:var(--tolak)">Jawaban: jangan beli apa pun untuk ini</p>' +
+      '<div class="cacah"><b>0</b><span>pestisida terdaftar yang menyembuhkan virus kuning keriting.</span></div>' +
+      '<p style="margin-top:.8rem">Ini <strong>bukan lubang data</strong>. Tidak ada pestisida yang menyembuhkan virus — itu kebenaran agronomi, dan registri memang benar ketika kosong di sini.</p>' +
+      '<h3>Tiga tindakan yang memang berpengaruh</h3>' +
+      '<ol class="periksa">' +
+        '<li>Cabut tanaman yang sudah terinfeksi, dan buang jauh dari pertanaman.</li>' +
+        '<li>Kendalikan <strong>kutu kebul</strong> sebagai vektornya — itu yang punya produk terdaftar, bukan virusnya.</li>' +
+        '<li>Pilih varietas tahan untuk musim depan, lewat penyuluh atau penangkar setempat.</li>' +
+      '</ol>' +
+      '<div class="aksi">' +
+        '<button type="button" data-kueri="serangga putih beterbangan">Buka gejala kutu kebul →</button>' +
+      '</div>' +
+    '</div>' +
+
+    batas({
+      buka: true,
+      bukti: "Pernyataan &ldquo;nol produk&rdquo; adalah <strong>fakta registri</strong>, bukan draft. Teks gejalanya draft dan wajib ditinjau penyuluh atau BPTP.",
+      sumber: "Registri Kementan · penelusuran seluruh 7.724 pestisida terdaftar",
+      tanggal: "Registri diperiksa 19 Agustus 2026",
+      bentuk: "<strong>Status &amp; batas.</strong> Layar ini menolak menganjurkan pembelian, dan penolakannya adalah jawabannya.",
+      tidak: [
+        "<strong>Varietas mana yang tahan.</strong> Nol dari 11.227 varietas di registri menyebut sifat agronomi apa pun, jadi tindakan ketiga di atas berhenti pada &ldquo;tanya penyuluh&rdquo; dan tidak menyebut satu nama pun.",
+        "<strong>Seberapa parah serangan di wilayahmu.</strong> Laporan warga adalah pengamatan; menyebutnya wabah adalah kesimpulan, dan verifikasinya milik POPT.",
+        "<strong>Apakah tanaman lain di petakmu sudah tertular.</strong> Layar ini tidak tahu apa pun tentang petakmu, dan memang tidak menyimpannya."
+      ]
+    });
+  }
+
+  /* ------------------------------------------------------------- layar 4
+     Tidak sanggup menjawab + B4: pertanyaannya dicatat sebagai kebutuhan data. */
+  function layarNol(kueri) {
+    var q = kueri || "varietas cabai paling tahan";
+    return '' +
+    '<div class="kartu tolak">' +
+      '<p class="mata" style="color:var(--tolak)">Tidak sanggup dijawab</p>' +
+      '<h2>&ldquo;' + esc(q) + '&rdquo;</h2>' +
+      '<p>Kotak ini mengerti pertanyaannya. Yang tidak ada adalah <strong>datanya</strong> — dan itu dua hal yang berbeda, jadi layar ini menyebut yang mana.</p>' +
+      '<div class="cacah" style="margin-top:.9rem"><b>0</b><span>dari <strong>11.227</strong> varietas terdaftar menyebut sifat agronomi apa pun — tahan penyakit, umur panen, potensi hasil, satu pun tidak.</span></div>' +
+      '<p style="margin-top:.9rem;font-size:.9rem">Tiga puluh rekaman memang memuat kata seperti &ldquo;tahan&rdquo;, tetapi seluruhnya di dalam <em>nama pemelihara</em>, bukan sebagai sifat varietasnya.</p>' +
+      '<p><strong>Yang bisa dijawab sekarang:</strong> apakah sebuah nama varietas benar-benar punya surat pelepasan atau pendaftaran. Itu verifikasi, bukan rekomendasi.</p>' +
+      '<div class="aksi">' +
+        '<button type="button" data-kueri="Ciherang">Cek satu nama varietas →</button>' +
+        '<button type="button" class="sekunder" data-layar="masuk">Kembali ke kotak</button>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="kartu">' +
+      '<p class="mata">Pertanyaan ini dicatat</p>' +
+      '<h2>Antrean pertanyaan tak terjawab</h2>' +
+      '<p style="font-size:.9rem">Yang tidak bisa dijawab tidak hilang saat layar ditutup. Ia dicatat sebagai <strong>kebutuhan data</strong>, tanpa nama dan tanpa nomor telepon — dan urutannya menentukan registri mana yang layak ditarik berikutnya.</p>' +
+      '<ul class="antrean">' +
+        '<li><span>Sifat agronomi varietas</span><span class="berapa">terhalang data</span><span class="apa">0 dari 11.227 · butuh kurasi berskala, bukan tarikan registri</span></li>' +
+        '<li><span>Tenggang panen (PHI)</span><span class="berapa">terhalang data</span><span class="apa">0 dari 23.058 penggunaan berlabel · butuh foto label atau terbitan BSIP</span></li>' +
+        '<li><span>Gejala OPT di luar cabai</span><span class="berapa">10 dari 778</span><span class="apa">0 dari 768 OPT registri punya deskripsi gejala · butuh kurasi tangan</span></li>' +
+        '<li><span>Nama lokal OPT dan gejala</span><span class="berapa">belum ada</span><span class="apa">termurah dari seluruh daftar · satu-satunya yang membaik justru dari sumbangan pengguna</span></li>' +
+        '<li><span>Status subsidi pupuk</span><span class="berapa">0 dari 7.196</span><span class="apa">registri tidak menandainya sama sekali · HET-nya ada di peraturan, bukan di registri</span></li>' +
+        '<li><span>Harga yang benar-benar diterima petani</span><span class="berapa">tidak ada sumbernya</span><span class="apa">yang dicatat negara sebagai &ldquo;harga produsen&rdquo; ternyata harga beli pengumpul · hanya setoran petani yang bisa menutupnya</span></li>' +
+      '</ul>' +
+      '<p style="font-size:.84rem;color:var(--lemah);margin-top:.8rem">Yang tercatat: kata yang dicari, tanggal, dan kecamatan. Bukan siapa yang mencari.</p>' +
+    '</div>' +
+
+    batas({
+      bukti: "— tidak ada jawaban, jadi tidak ada tingkat bukti yang bisa dinyatakan.",
+      sumber: "Registri Kementan · <code>spec/indeks/</code> beserta <code>meta.tidakAda</code>, yang memuat daftar lubang datanya sendiri",
+      tanggal: "Registri diperiksa 19 Agustus 2026",
+      bentuk: "<strong>Status &amp; batas.</strong> Menolak menjawab adalah jawaban, dan layar ini dirancang untuk itu — bukan disajikan sebagai kegagalan pencarian.",
+      tidak: [
+        "Apakah nama yang kamu ketik memang tidak terdaftar. Nama di kemasan sering berbeda dari nama terdaftarnya, dan pemetaan antara keduanya belum ada.",
+        "Apakah pertanyaan ini sering ditanyakan orang lain di kecamatanmu — hitungannya baru berarti setelah cukup banyak pertanyaan masuk."
+      ]
+    });
+  }
+
+  function layarProduk(p) {
+    return '' +
+    '<p class="mata">Nama terdaftar — cocok persis</p>' +
+    '<div class="kartu">' +
+      '<h2>' + esc(p.nama) + '</h2>' +
+      '<p class="ilmiah">' + esc(p.jenis) + '</p>' +
+      '<div class="pembungkus-tabel"><table><tbody>' +
+        '<tr><th>Nomor pendaftaran</th><td class="nomor">' + esc(p.no) + '</td></tr>' +
+        '<tr><th>Pemegang</th><td>' + esc(p.pemegang) + '</td></tr>' +
+        '<tr><th>Isi</th><td>' + esc(p.isi) + '</td></tr>' +
+        '<tr><th>Masa berlaku</th><td class="dosis">' + esc(p.berlaku) + '</td></tr>' +
+      '</tbody></table></div>' +
+      '<h3>Terdaftar untuk</h3>' +
+      '<div class="pembungkus-tabel"><table>' +
+        '<thead><tr><th>Komoditas</th><th>OPT sasaran</th><th>Dosis</th></tr></thead><tbody>' +
+        p.pakai.map(function (u) {
+          return "<tr><td>" + esc(u[0]) + "</td><td>" + esc(u[1]) + "<br><span class=\"ilmiah\" style=\"font-size:.8rem\">" + esc(u[2]) + "</span></td><td class=\"dosis\">" + esc(u[3]) + "</td></tr>";
+        }).join("") +
+      '</tbody></table></div>' +
+    '</div>' +
+    batas({
+      bukti: "<strong>Fakta terdaftar.</strong> Disalin apa adanya dari registri — bukan anjuran, dan bukan penilaian mutu.",
+      sumber: "Registri Kementan · <code>spec/vocab/product/pestisida.ndjson</code>",
+      tanggal: "Rekaman ini diperiksa terhadap registri pada " + esc(p.diperiksa),
+      bentuk: "<strong>Fakta terdaftar.</strong> Registri sanggup menjawab, tetapi jawabannya bukan anjuran.",
+      tidak: [
+        "<strong>Apakah isi kemasan yang kamu pegang benar-benar ini.</strong> Nomor yang cocok membuktikan <em>nomornya terdaftar</em>, bukan <em>isi karungnya benar</em>.",
+        "<strong>Tenggang panen.</strong> Nol dari 23.058 penggunaan berlabel memuatnya.",
+        "<strong>Harga.</strong> Registri tidak memuat harga sama sekali."
+      ]
+    });
+  }
+
+  /* ------------------------------------------------------------- perutean */
+  function normal(s) { return String(s).toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim(); }
+
+  function cari(kueri) {
+    var q = normal(kueri);
+    if (!q) { el.innerHTML = ""; return; }
+
+    if (PRODUK[q]) { render(layarProduk(PRODUK[q]), kueri); return; }
+    if (q.indexOf("ciherang") > -1) { render(layarVarietas(), kueri); return; }
+
+    /* Gejala: ambang separuh kata dibulatkan ke atas. Tanpa ambang itu, satu
+       kata lazim seperti "daun" memanggil kesepuluh gejalanya. */
+    var kata = q.split(" ").filter(function (w) { return w.length > 2; });
+    var ambang = Math.ceil(kata.length / 2);
+    var terbaik = null, skorTerbaik = 0;
+    GEJALA.forEach(function (g) {
+      var bank = normal(g.kata);
+      var skor = kata.filter(function (w) { return bank.indexOf(w) > -1; }).length;
+      if (skor > skorTerbaik) { skorTerbaik = skor; terbaik = g; }
+    });
+
+    if (terbaik && skorTerbaik >= ambang && skorTerbaik > 0) {
+      if (terbaik.id === "virus") { render(layarVirus(), kueri); return; }
+      if (terbaik.id === "trips") { render(layarTrips(), kueri); return; }
+      render(layarGejalaUmum(terbaik, skorTerbaik, kata.length), kueri);
+      return;
+    }
+    render(layarNol(kueri), kueri);
+  }
+
+  function layarGejalaUmum(g, skor, dari) {
+    return '' +
+    '<p class="mata">Gejala cocok — ' + skor + ' dari ' + dari + ' kata</p>' +
+    '<div class="kartu">' +
+      '<h2>' + esc(g.opt) + ' <span class="draft">Draft</span></h2>' +
+      '<p class="ilmiah">' + esc(g.ilmiah) + '</p>' +
+      '<p>' + esc(g.teks) + '</p>' +
+      '<p style="font-size:.88rem;color:var(--lemah)">Layar penuhnya mengikuti bentuk yang sama dengan Trips: dua ciri pembanding lebih dulu, lalu kartu bahan aktif + kadar, lalu batasnya.</p>' +
+    '</div>' +
+    batas({
+      bukti: "Teks gejala <strong>draft</strong> — disusun dari pengetahuan agronomi mapan, bukan dari registri.",
+      sumber: "<code>spec/vocab/pest.json</code> · 10 OPT cabai terkurasi",
+      tanggal: "Diperbarui 20 Agustus 2026",
+      bentuk: "<strong>Anjuran setingkat bahan aktif</strong>, setelah dua ciri diperiksa.",
+      tidak: [
+        "<strong>Gejala di luar cabai.</strong> Nol dari 768 OPT registri punya deskripsi gejala; yang terkurasi baru sepuluh, dan semuanya cabai.",
+        "<strong>Tenggang panen.</strong> Nol dari 23.058 penggunaan berlabel memuatnya."
+      ]
+    });
+  }
+
+  function layarVarietas() {
+    return '' +
+    '<p class="mata">Nama varietas — cocok</p>' +
+    '<div class="kartu">' +
+      '<h2>Bioni 63 Ciherang Agritan</h2>' +
+      '<p class="ilmiah">Padi · inbrida</p>' +
+      '<div class="pembungkus-tabel"><table><tbody>' +
+        '<tr><th>Surat</th><td>Pelepasan Varietas Tanaman</td></tr>' +
+        '<tr><th>Nomor SK</th><td class="nomor">721/HK.540/C/04/2020 43930</td></tr>' +
+        '<tr><th>Tahun</th><td class="dosis">2020</td></tr>' +
+        '<tr><th>Pemelihara</th><td>Balai Besar Penelitian dan Pengembangan Bioteknologi dan sumber Daya Genetik Pertanian</td></tr>' +
+      '</tbody></table></div>' +
+      '<p style="font-size:.9rem;margin-top:.8rem">Sebutan resminya ditampilkan apa adanya. &ldquo;Pendaftaran&rdquo; saja mencakup empat instrumen yang berbeda, dan meratakannya jadi satu kata &ldquo;terdaftar&rdquo; membuang persis keterangan yang membedakan.</p>' +
+    '</div>' +
+    batas({
+      bukti: "<strong>Fakta terdaftar.</strong> Surat ini <em>ada</em>. Itu seluruh klaimnya.",
+      sumber: "Registri Kementan · 5.822 surat pelepasan, 5.138 pendaftaran, 580 PVT",
+      tanggal: "Registri diperiksa 19 Agustus 2026",
+      bentuk: "<strong>Fakta terdaftar</strong> — verifikasi, bukan rekomendasi varietas.",
+      tidak: [
+        "<strong>Masa berlaku surat.</strong> 11.320 dari 11.609 surat hanya memuat nomor SK tanpa tanggal, jadi layar cuma bisa mengatakan sebuah surat <em>ada</em>.",
+        "<strong>Apakah benih di bungkus yang kamu pegang memang varietas ini.</strong> Pelepasan bukan sertifikasi lot — yang berlaku untuk itu label dan sertifikat lot BPSB.",
+        "<strong>Sifat agronominya.</strong> Nol dari 11.227 varietas menyebutnya."
+      ]
+    });
+  }
+
+  function render(html, kueri) {
+    el.innerHTML = html;
+    if (kueri !== undefined && kotak.value !== kueri) kotak.value = kueri;
+    pasangTombol();
+  }
+
+  function pasangTombol() {
+    el.querySelectorAll("[data-kueri]").forEach(function (b) {
+      b.addEventListener("click", function () { cari(b.dataset.kueri); window.scrollTo({ top: 0, behavior: "smooth" }); });
+    });
+    el.querySelectorAll("[data-layar]").forEach(function (b) {
+      b.addEventListener("click", function () { pilihLayar(b.dataset.layar); });
+    });
+  }
+
+  /* -------------------------------------------------------------- kendali */
+  document.getElementById("formCari").addEventListener("submit", function (e) {
+    e.preventDefault();
+    cari(kotak.value);
+  });
+
+  document.getElementById("contoh").querySelectorAll("[data-kueri]").forEach(function (b) {
+    b.addEventListener("click", function () { cari(b.dataset.kueri); });
+  });
+
+  var tombolLayar = document.querySelectorAll(".krom [data-layar]");
+  function pilihLayar(nama) {
+    tombolLayar.forEach(function (t) { t.setAttribute("aria-pressed", String(t.dataset.layar === nama)); });
+    if (nama === "masuk") { el.innerHTML = ""; kotak.value = ""; kotak.focus(); }
+    else if (nama === "trips") { render(layarTrips(), "daun mengeriting ke atas"); }
+    else if (nama === "virus") { render(layarVirus(), "daun menguning mengecil keriting"); }
+    else if (nama === "nol") { render(layarNol("varietas cabai paling tahan"), "varietas cabai paling tahan"); }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+  tombolLayar.forEach(function (t) {
+    t.addEventListener("click", function () { pilihLayar(t.dataset.layar); });
+  });
+
+  /* Tema tiga keadaan, bukan dua. "Ikut sistem" adalah bawaan dan harus bisa
+     dipilih kembali; tombol terang/gelap saja tidak memberi jalan pulang. */
+  var tombolTema = document.querySelectorAll(".tema [data-tema]");
+  tombolTema.forEach(function (t) {
+    t.addEventListener("click", function () {
+      var pilih = t.dataset.tema;
+      if (pilih === "sistem") delete document.documentElement.dataset.theme;
+      else document.documentElement.dataset.theme = pilih;
+      tombolTema.forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.tema === pilih)); });
+    });
+  });
+})();
+</script>
