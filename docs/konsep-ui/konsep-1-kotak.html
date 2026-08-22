@@ -499,6 +499,32 @@ td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant
 }
 .kaki p { margin: .3rem 0; }
 
+/* ------------------------------------------------------- kartu teruskan
+   Lapis peer yang dipilih konsep ini: bukan kanal ulasan, melainkan
+   kartu jawaban yang tetap utuh setelah diteruskan berkali-kali. Tidak ada
+   yang bisa divoting, jadi tidak ada yang bisa dibeli. */
+.kartu-teruskan {
+  border: 2px dashed var(--garis-tua);
+  border-radius: var(--sudut);
+  background: var(--kanvas);
+  padding: .9rem 1rem;
+  font-family: var(--mono);
+  font-size: .84rem;
+  line-height: 1.55;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  color: var(--tinta);
+  margin: .7rem 0 0;
+}
+
+.salin-status {
+  margin: .5rem 0 0;
+  font-size: .84rem;
+  font-weight: 700;
+  color: var(--hijau);
+  min-height: 1.3em;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .jawab > * { animation: naik .18s ease-out both; }
   @keyframes naik { from { opacity: 0; transform: translateY(4px); } }
@@ -512,6 +538,7 @@ td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant
     <button type="button" data-layar="trips" aria-pressed="false">2 · Jawaban</button>
     <button type="button" data-layar="virus" aria-pressed="false">3 · Menolak menjawab</button>
     <button type="button" data-layar="nol" aria-pressed="false">4 · Tidak sanggup</button>
+    <button type="button" data-layar="teruskan" aria-pressed="false">5 · Kartu teruskan</button>
   </div>
 </div>
 
@@ -726,6 +753,13 @@ td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant
       '<p style="font-size:.9rem;color:var(--lemah)">Layar menyebut bahwa zatnya dilarang, menyebut untuk apa, lalu berhenti — menyimpulkan legal atau ilegal bukan wewenang platform ini.</p>' +
     '</div>' +
 
+    '<div class="kartu">' +
+      '<p class="mata">Kalau mau dibagikan</p>' +
+      '<h3 style="margin-top:.15rem">Teruskan jawabannya, batasnya ikut</h3>' +
+      '<p style="font-size:.92rem">Keputusan di lapangan sering datang dari sesama petani. Kartu teks ini dirancang tetap utuh setelah diteruskan berkali-kali — tanpa merek, tanpa peringkat, dan batasnya melekat di badan teksnya.</p>' +
+      '<div class="aksi"><button type="button" data-layar="teruskan">Lihat kartu yang bisa diteruskan →</button></div>' +
+    '</div>' +
+
     batas({
       bukti: "Teks gejala <strong>draft</strong>, disusun dari pengetahuan agronomi mapan — bukan dari registri. Wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan. Daftar produk: registri, bukan draft.",
       sumber: "Registri Kementan (23.058 penggunaan berlabel, 96,1% tertaut OPT) · kosakata OPT terkurasi <code>spec/vocab/pest.json</code>",
@@ -814,7 +848,7 @@ td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant
         '<li><span>Sifat agronomi varietas</span><span class="berapa">terhalang data</span><span class="apa">0 dari 11.227 · butuh kurasi berskala, bukan tarikan registri</span></li>' +
         '<li><span>Tenggang panen (PHI)</span><span class="berapa">terhalang data</span><span class="apa">0 dari 23.058 penggunaan berlabel · butuh foto label atau terbitan BSIP</span></li>' +
         '<li><span>Gejala OPT di luar cabai</span><span class="berapa">10 dari 778</span><span class="apa">0 dari 768 OPT registri punya deskripsi gejala · butuh kurasi tangan</span></li>' +
-        '<li><span>Nama lokal OPT dan gejala</span><span class="berapa">belum ada</span><span class="apa">termurah dari seluruh daftar · satu-satunya yang membaik justru dari sumbangan pengguna</span></li>' +
+        '<li><span>Nama lokal OPT dan gejala</span><span class="berapa">6 terkumpul</span><span class="apa">bule · patek · lodoh · layu · bercak daun · keriting daun — dari wawancara lapangan, <strong>belum dipetakan</strong> ke OPT mana pun karena artinya berbeda tiap daerah</span></li>' +
         '<li><span>Status subsidi pupuk</span><span class="berapa">0 dari 7.196</span><span class="apa">registri tidak menandainya sama sekali · HET-nya ada di peraturan, bukan di registri</span></li>' +
         '<li><span>Harga yang benar-benar diterima petani</span><span class="berapa">tidak ada sumbernya</span><span class="apa">yang dicatat negara sebagai &ldquo;harga produsen&rdquo; ternyata harga beli pengumpul · hanya setoran petani yang bisa menutupnya</span></li>' +
       '</ul>' +
@@ -944,6 +978,82 @@ td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant
     });
   }
 
+  /* ------------------------------------------------------------- layar 5
+     Lapis peer. Jawaban lapangan Q1: keputusan datang dari "rekomendasi
+     peers". Yang kurang bukan tempatnya — percakapan itu sudah terjadi di
+     grup WhatsApp — melainkan mutu bahan yang beredar di sana. Jadi lapis
+     peer di konsep ini berbentuk KARTU YANG BISA DITERUSKAN, bukan kanal
+     ulasan: tidak ada yang bisa divoting, jadi tidak ada yang bisa dibeli. */
+  var TEKS_KARTU =
+    "TRIPS (Thrips parvispinus) — dugaan, bukan diagnosis\n" +
+    "\n" +
+    "Gejala: daun muda mengeriting ke ATAS seperti mangkuk, permukaan\n" +
+    "bawahnya keperakan seperti tergores halus.\n" +
+    "\n" +
+    "PASTIKAN DULU (periksa sendiri, tanpa alat):\n" +
+    "1. Kibaskan daun pucuk di atas kertas putih. Kalau tidak ada yang\n" +
+    "   bergerak, penyebabnya BUKAN trips.\n" +
+    "2. Daun trips tetap hijau bergores perak. Kalau menguning terang dan\n" +
+    "   mengecil, itu virus — tidak ada semprotan yang menyembuhkannya.\n" +
+    "\n" +
+    "KALAU BENAR TRIPS DI CABAI:\n" +
+    "246 produk terdaftar, isinya hanya 72 bahan aktif.\n" +
+    "Bahan aktif, bukan merek. Dosis milik pendaftaran tiap produk.\n" +
+    "\n" +
+    "BATAS JAWABAN INI:\n" +
+    "- Teks gejala berstatus DRAFT, belum ditinjau penyuluh/BPTP.\n" +
+    "- Tenggang panen TIDAK diketahui: 0 dari 23.058 penggunaan berlabel\n" +
+    "  di registri memuatnya. Tanya penyuluh.\n" +
+    "- Registri Kementan, diperiksa 19 Agustus 2026.\n" +
+    "\n" +
+    "Tanpa peringkat merek. Tanpa slot berbayar.\n" +
+    "Open Protocols — data pertanian terbuka";
+
+  function layarTeruskan() {
+    return '' +
+    '<p class="mata">Lapis peer</p>' +
+    '<div class="kartu">' +
+      '<h2>Kartu yang bisa diteruskan</h2>' +
+      '<p>Keputusan di lapangan datang dari <strong>rekomendasi sesama petani</strong> — itu jawaban wawancara, bukan dugaan. Percakapan itu sudah terjadi setiap hari di grup WhatsApp.</p>' +
+      '<p><strong>Yang kurang bukan tempatnya, melainkan mutu bahan yang beredar di sana.</strong> Jadi lapis peer di konsep ini bukan kanal ulasan di dalam aplikasi. Ia satu kartu yang dirancang untuk <em>tetap utuh</em> setelah diteruskan sepuluh kali — batasnya ikut berjalan bersama jawabannya.</p>' +
+      '<div class="kartu-teruskan" id="isiKartu">' + esc(TEKS_KARTU) + '</div>' +
+      '<div class="aksi">' +
+        '<button type="button" id="salinKartu">Salin kartu</button>' +
+        '<button type="button" class="sekunder" data-kueri="daun mengeriting ke atas">Kembali ke jawaban</button>' +
+      '</div>' +
+      '<p class="salin-status" id="statusSalin" role="status"></p>' +
+    '</div>' +
+
+    '<div class="kartu">' +
+      '<h3 style="margin-top:0">Kenapa bentuknya begini, bukan kolom ulasan</h3>' +
+      '<p style="font-size:.92rem">Kolom ulasan produk adalah anti-kapabilitas yang sudah ditolak: <em>peringkat adalah penempatan berbayar yang menyamar</em>. Dan motifnya bukan hipotetis — kios di lapangan bergerak menurut <strong>insentif principal</strong>, jadi sudah ada pihak beranggaran yang berkepentingan memengaruhi apa yang direkomendasikan.</p>' +
+      '<h3>Empat sifat yang membuatnya tidak bisa dibajak</h3>' +
+      '<ol class="periksa">' +
+        '<li><strong>Tidak ada yang bisa divoting.</strong> Kartu ini tidak punya bintang, jumlah suka, atau urutan populer — jadi tidak ada yang bisa dibeli.' +
+          '<span class="bantah">Astroturf butuh papan skor. Kartu ini tidak menyediakannya.</span></li>' +
+        '<li><strong>Berhenti di tingkat bahan aktif.</strong> Kartu menyebut &ldquo;72 bahan aktif&rdquo;, tidak pernah satu merek pun. Aturan <code>L3</code>, dan ia yang membuat kartu ini tidak bernilai bagi siapa pun yang ingin membeli penyebutan.' +
+          '<span class="bantah">Kalau sebuah kartu menyebut merek, ia <b>bukan</b> kartu dari sini.</span></li>' +
+        '<li><strong>Batasnya ikut diteruskan.</strong> Bagian &ldquo;BATAS JAWABAN INI&rdquo; melekat di badan teks, bukan di tautan yang bisa hilang. Yang menerima kartu di tangan kesepuluh tetap membaca bahwa tenggang panen tidak diketahui.' +
+          '<span class="bantah">Kartu yang batasnya dipotong akan terlihat ganjil — dan itu disengaja.</span></li>' +
+        '<li><strong>Tanpa akun, tanpa data pribadi.</strong> Menyalin kartu tidak menyumbang apa pun ke platform dan tidak mengirim apa pun ke mana pun. Lapisan gratis tetap utuh.' +
+          '<span class="bantah">Tidak ada identitas yang perlu dijaga, karena tidak ada yang dikumpulkan.</span></li>' +
+      '</ol>' +
+    '</div>' +
+
+    batas({
+      buka: true,
+      bukti: "Kartu mewarisi tingkat bukti isinya apa adanya — teks gejala <strong>draft</strong>, daftar produk <strong>fakta terdaftar</strong>. Meneruskannya tidak menaikkan tingkat bukti apa pun.",
+      sumber: "Registri Kementan · <code>spec/vocab/pest.json</code>",
+      tanggal: "Tanggal ikut tercetak di badan kartu, supaya kartu lama ketahuan lama",
+      bentuk: "<strong>Distribusi, bukan pengumpulan.</strong> Konsep ini menyebarkan jawaban; ia tidak menerima pengalaman siapa pun.",
+      tidak: [
+        "<strong>Kartu yang sudah diteruskan tidak bisa ditarik kembali.</strong> Kalau teks gejala direvisi setelah tinjauan penyuluh, kartu lama tetap beredar — itulah sebabnya tanggal dan status draft dicetak di badannya, bukan disembunyikan.",
+        "<strong>Tidak ada yang mencegah orang mengetik ulang kartu palsu.</strong> Yang bisa dilakukan cuma membuat kartu asli punya bentuk yang khas dan konsisten — termasuk selalu menyebut batasnya.",
+        "<strong>Platform ini tidak tahu berapa kali kartunya diteruskan</strong>, dan sengaja tidak mengukurnya. Penanda apa pun di dalam kartu akan menjadikannya alat pelacak."
+      ]
+    });
+  }
+
   function render(html, kueri) {
     el.innerHTML = html;
     if (kueri !== undefined && kotak.value !== kueri) kotak.value = kueri;
@@ -957,6 +1067,20 @@ td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant
     el.querySelectorAll("[data-layar]").forEach(function (b) {
       b.addEventListener("click", function () { pilihLayar(b.dataset.layar); });
     });
+    var salin = document.getElementById("salinKartu");
+    if (salin) {
+      salin.addEventListener("click", function () {
+        var status = document.getElementById("statusSalin");
+        function beres(ok) {
+          status.textContent = ok
+            ? "Kartu tersalin — batasnya ikut tersalin."
+            : "Peramban menolak menyalin. Pilih teksnya di atas, lalu salin sendiri.";
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(TEKS_KARTU).then(function () { beres(true); }, function () { beres(false); });
+        } else { beres(false); }
+      });
+    }
   }
 
   /* -------------------------------------------------------------- kendali */
@@ -976,6 +1100,7 @@ td.nomor, td.dosis { font-family: var(--mono); white-space: nowrap; font-variant
     else if (nama === "trips") { render(layarTrips(), "daun mengeriting ke atas"); }
     else if (nama === "virus") { render(layarVirus(), "daun menguning mengecil keriting"); }
     else if (nama === "nol") { render(layarNol("varietas cabai paling tahan"), "varietas cabai paling tahan"); }
+    else if (nama === "teruskan") { render(layarTeruskan(), "daun mengeriting ke atas"); }
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
   tombolLayar.forEach(function (t) {
