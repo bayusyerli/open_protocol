@@ -17,6 +17,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/12-kadensi-registri.md`](docs/12-kadensi-registri.md) | Kadensi penyegaran registri: per musim, siapa menarik dan siapa memeriksa, apa yang dibaca dalam diff, dan rantai yang masih putus |
 | [`docs/13-memo-hukum-pasal-77.md`](docs/13-memo-hukum-pasal-77.md) | Memo pertanyaan untuk penasihat hukum: kumulatif atau alternatif pada Pasal 77 ayat (1), dan apa yang berubah menurut jawabannya |
 | [`docs/14-tinjauan-gejala.md`](docs/14-tinjauan-gejala.md) | Daftar tinjauan sepuluh teks gejala OPT untuk agronom atau BPTP; dibangkitkan dari kosakata, dengan entri lemah ditandai sendiri |
+| [`docs/15-kapabilitas-lintas-pemangku.md`](docs/15-kapabilitas-lintas-pemangku.md) | Riset & benchmarking 21 sistem (9 luar negeri, 12 Indonesia), inventaris 16 keputusan hulu, dan 39 kapabilitas dengan putusan bangun/pinjam/sambung/tunda/jangan per kapabilitas |
 | [`docs/principal-terdaftar.md`](docs/principal-terdaftar.md) | 2.305 principal pemegang pendaftaran pupuk & pestisida, beserta keputusan cakupannya |
 | [`docs/01-sediaan-buatan-sendiri.md`](docs/01-sediaan-buatan-sendiri.md) | Riset & standar praktik meramu sendiri — kompos, MOL, bioaktivator, pestisida nabati — beserta tujuh syarat sebuah praktik boleh dianjurkan mesin |
 | [`docs/02-tiga-pasar.md`](docs/02-tiga-pasar.md) | Segmentasi, target, dan posisi — kenapa pengguna, pembayar, dan kontributor harus disegmentasi terpisah |
