@@ -14,6 +14,7 @@
   } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
 </script>
 <link rel="stylesheet" href="beranda.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
@@ -128,11 +129,16 @@
     <h3>Yang ada di indeks</h3>
     <dl id="cacahTentang"><dt>Memuat…</dt><dd>—</dd></dl>
 
-    <h3>Dari mana</h3>
-    <p>
-      Registri resmi Kementan, disalin apa adanya ke <code>spec/indeks/</code>. Indeksnya
-      turunan dan dibangun ulang dengan <code>bangun-indeks.mjs</code>; tidak ada server
-      dan tidak ada basis data di belakang halaman ini.
+    <!-- Diisi pasangBatas() di batas.js. -->
+    <section class="batas-jawaban" id="batasJawaban">
+      <p class="bj-keping">
+        Registri resmi Kementan, disalin apa adanya ke <code>spec/indeks/</code>.
+      </p>
+    </section>
+
+    <p class="bj-keping">
+      Indeksnya turunan dan dibangun ulang dengan <code>bangun-indeks.mjs</code>; tidak
+      ada server dan tidak ada basis data di belakang halaman ini.
     </p>
 
     <h3>Yang bisa dicari, dan sampai mana</h3>
@@ -155,19 +161,11 @@
       1.360 OPT registri membawa deskripsi gejala sama sekali.
     </p>
 
-    <h3>Yang tidak ada di dalamnya</h3>
-    <p>
-      <strong>Harga.</strong> Registri tidak memuat harga sama sekali — angka di jalur 3
-      adalah masukan pengguna sendiri.
-    </p>
+    <h3>Yang sengaja tidak dilakukan</h3>
     <p>
       <strong>Anjuran.</strong> Urutan merek memakai nomor pendaftaran menaik: tanpa
       peringkat, tanpa slot berbayar. Halaman ini juga tidak menyimpulkan legal atau
       ilegal — larangan ditampilkan beserta lingkup dan pasalnya, lalu berhenti.
-    </p>
-    <p>
-      <strong>Sifat agronomi varietas.</strong> Nol dari 11.227 varietas menyebutnya, jadi
-      pertanyaan “varietas mana yang sebaiknya ditanam” memang tidak dijawab di sini.
     </p>
 
     <h3>Yang tercatat tentang kamu</h3>

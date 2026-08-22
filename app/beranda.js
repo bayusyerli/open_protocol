@@ -10,6 +10,8 @@
  */
 
 import { muatMeta, cari, cariGejala, namaBerdekatan, teks, JENIS } from './pustaka.js';
+import { pasangTombolTema } from './tema.js';
+import { pasangBatas } from './batas.js';
 
 const el = {
   form: document.getElementById('formCari'),
@@ -19,6 +21,7 @@ const el = {
   saran: document.getElementById('saran'),
   hasil: document.getElementById('hasil'),
   sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
   cip: document.getElementById('cipJaringan'),
   lembar: document.getElementById('lembarTentang'),
   cacah: document.getElementById('cacahTentang'),
@@ -197,44 +200,11 @@ el.saran.addEventListener('click', (ev) => {
 // ---------------------------------------------------------------------------
 // Tema — tiga keadaan, bukan dua
 // ---------------------------------------------------------------------------
-// "Ikut sistem" adalah bawaan dan harus bisa dipilih kembali; kalau tombolnya cuma
-// terang/gelap, yang sudah pernah memilih tidak punya jalan pulang.
+// Putaran, ikon, dan labelnya pindah ke tema.js supaya kedelapan halaman memakai yang
+// sama. Selama ia tinggal di sini, pilihannya berhenti di beranda.
 
-const IKON = {
-  sistem: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17Z" fill="currentColor" stroke="none"/>',
-  terang: '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/>',
-  gelap: '<path d="M20.5 14.6A8.8 8.8 0 0 1 9.4 3.5a8.8 8.8 0 1 0 11.1 11.1Z"/>',
-};
-const SEBUTAN = { sistem: 'ikut sistem', terang: 'terang', gelap: 'gelap' };
-const PUTARAN = ['sistem', 'terang', 'gelap'];
+pasangTombolTema();
 
-const tombolTema = document.getElementById('tombolTema');
-
-function pasangTema(pilihan) {
-  if (pilihan === 'sistem') delete document.documentElement.dataset.tema;
-  else document.documentElement.dataset.tema = pilihan;
-
-  // Label menyebut yang sedang berlaku DAN yang akan terjadi kalau diketuk. Ikon
-  // sendiri tidak bisa mengatakan keduanya, dan tombol berputar yang tidak menyebut
-  // tujuannya memaksa orang mencobanya untuk tahu.
-  const lanjut = PUTARAN[(PUTARAN.indexOf(pilihan) + 1) % PUTARAN.length];
-  tombolTema.innerHTML =
-    `<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">${IKON[pilihan]}</svg>`;
-  tombolTema.setAttribute('aria-label', `Tampilan layar: ${SEBUTAN[pilihan]}. Ketuk untuk ${SEBUTAN[lanjut]}.`);
-  tombolTema.dataset.tema = pilihan;
-
-  try {
-    if (pilihan === 'sistem') localStorage.removeItem('op:tema');
-    else localStorage.setItem('op:tema', pilihan);
-  } catch { /* mode privat menolak menulis; pilihannya tetap berlaku sampai halaman ditutup */ }
-}
-
-tombolTema.addEventListener('click', () => {
-  const kini = tombolTema.dataset.tema ?? 'sistem';
-  pasangTema(PUTARAN[(PUTARAN.indexOf(kini) + 1) % PUTARAN.length]);
-});
-
-pasangTema(document.documentElement.dataset.tema ?? 'sistem');
 
 // ---------------------------------------------------------------------------
 // Jaringan — dinyatakan, bukan disembunyikan
@@ -274,6 +244,14 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
       `Sumber: registri Kementan lewat <code>spec/indeks/</code> — ` +
       `${n(j.pestisida)} pestisida, ${n(j.pupuk)} pupuk, ${n(j.varietas)} varietas. ` +
       `${n(j.produkSetara)} produk berada dalam ${n(j.kelompokSetara)} kelompok berisi sama.`;
+
+    // Empat registri di balik satu kotak, dan tanggal masing-masing. Kotak yang
+    // menjawab tiga macam pertanyaan menyembunyikan bahwa jawabannya datang dari
+    // sumber yang berbeda usia — di sinilah perbedaan itu dinyatakan.
+    pasangBatas(el.batas, {
+      sumber: ['pestisida', 'pupuk', 'varietas', 'kurasiOpt'],
+      takDijawab: ['namaDagang', 'bahanHara', 'harga'],
+    });
 
     el.cacah.innerHTML = [
       ['Pestisida terdaftar', j.pestisida],

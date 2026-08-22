@@ -6,7 +6,8 @@
  * varietas memang muncul di kedua jalur.
  */
 
-export const BASIS = '../spec/indeks';
+// Tidak diekspor: hanya `ambil()` di bawah yang memakainya.
+const BASIS = '../spec/indeks';
 
 const ingatan = new Map();
 
@@ -31,7 +32,8 @@ export async function ambil(jalan) {
   return janji;
 }
 
-export const rapikan = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
+// Tidak diekspor: pemakaiannya seluruhnya di dalam berkas ini.
+const rapikan = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
 
 export const teks = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -149,9 +151,33 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
     </ul>`;
 }
 
-export function tombolKembali(el, wadah, fokus) {
+/**
+ * Pasang perilaku tombol "kembali" yang sudah tergambar di dalam `wadah`.
+ *
+ * Versi sebelumnya, `tombolKembali()`, tidak pernah dipanggil satu berkas pun — dan
+ * sementara ia menganggur, keenam jalur menulis penangannya masing-masing: tujuh
+ * salinan dari perilaku yang sama. Sebabnya kelihatan begitu ketujuhnya disejajarkan:
+ * fungsi lamanya hanya melayani satu dari dua rupa yang benar-benar dipakai, jadi
+ * empat jalur memang tidak bisa memakainya. (Parameter pertamanya bahkan tidak
+ * terpakai di dalam badannya.)
+ *
+ * Dua rupa itu, dan keduanya bukan pilihan gaya:
+ *  - `fokus`    layar yang dibuka dari kotak cari. Kosongkan, lalu kembalikan fokus ke
+ *               kotaknya supaya yang mengetik bisa langsung mengetik lagi.
+ *  - `gulirKe`  layar yang dibuka dari daftar di halaman yang sama. Kosongkan, lalu
+ *               bawa mata kembali ke daftarnya. Fokus tidak dipindah karena yang
+ *               ditinggalkan daftar, bukan satu kontrol.
+ *  - `sesudah`  keadaan yang ikut direset; jalur 3 menyimpan pilihan produknya.
+ */
+export function pasangKembali(wadah, { fokus, gulirKe, sesudah } = {}) {
   const b = wadah.querySelector('#kembali');
-  if (b) b.addEventListener('click', () => { wadah.innerHTML = ''; fokus.focus(); });
+  if (!b) return;
+  b.addEventListener('click', () => {
+    wadah.innerHTML = '';
+    sesudah?.();
+    if (gulirKe) gulirKe.scrollIntoView({ block: 'start' });
+    fokus?.focus();
+  });
 }
 
 export const HTML_KEMBALI =
@@ -196,9 +222,9 @@ export async function cariGejala(kueri) {
 // ---------------------------------------------------------------------------
 // Tautan masuk dari beranda
 // ---------------------------------------------------------------------------
-// Beranda hanya mencari nama; yang membuka rinciannya tetap jalur yang memang
-// perendernya. Bentuk tautannya dibaca di satu tempat supaya kedua jalur membacanya
-// sama, dan supaya nanti tidak ada jalur ketiga yang mengarangnya sendiri.
+// Beranda mencari nama, bahan aktif, dan gejala; yang membuka rinciannya tetap jalur
+// yang memang perendernya. Bentuk tautannya dibaca di satu tempat supaya ketiga jalur
+// membacanya sama, dan supaya nanti tidak ada jalur keempat yang mengarangnya sendiri.
 //
 // Nilainya datang dari bilah alamat, jadi tidak dipercaya: `pecahan` ikut menyusun
 // jalur berkas yang diambil, jadi hanya bentuk `nama/berkas` yang diterima.

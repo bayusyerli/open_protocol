@@ -5,12 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cek isi produk — Open Protocols</title>
 <meta name="description" content="Cari produk pestisida, pupuk, atau varietas terdaftar; lihat isinya, dan merek lain yang isinya sama persis.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
 <link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
 <header class="atas">
-  <p class="jalur">Jalur 2 · masuk dari kemasan</p>
+  <div class="baris-atas">
+    <p class="jalur">Jalur 2 · masuk dari kemasan</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
   <h1>Sebenarnya ini apa?</h1>
   <p class="lede">
     Ketik nama yang tertulis di botol, karung, atau sachet. Yang keluar: isinya,
@@ -85,7 +99,10 @@
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
   </p>
 
-  <p class="sumber" id="sumber">Sumber: registri Kementan.</p>
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri pestisida, pupuk, dan varietas Kementan.</p>
+  </section>
 
 </main>
 

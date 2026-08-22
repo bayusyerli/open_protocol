@@ -5,12 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cek keabsahan benih &amp; bibit — Open Protocols</title>
 <meta name="description" content="Cari nama varietas benih atau bibit; lihat surat apa yang dipegangnya di registri Kementan, dan apa yang registri itu tidak bisa pastikan.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
 <link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
 <header class="atas">
-  <p class="jalur">Jalur 4 · benih &amp; bibit</p>
+  <div class="baris-atas">
+    <p class="jalur">Jalur 4 · benih &amp; bibit</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
   <h1>Varietas ini benar-benar ada?</h1>
   <p class="lede">
     Ketik nama varietas yang tertulis di bungkus benih atau label bibit. Yang keluar:
@@ -103,7 +117,10 @@
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
   </p>
 
-  <p class="sumber" id="sumber">Sumber: registri perizinan varietas Kementan.</p>
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri perizinan varietas Kementan.</p>
+  </section>
 
 </main>
 

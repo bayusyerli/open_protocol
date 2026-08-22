@@ -8,9 +8,13 @@
  * dua pintu, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, tautanMasuk, pasangKembali } from './pustaka.js';
 import { layarVarietas, layarTakDitemukan } from './varietas.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(4);
 
@@ -19,7 +23,7 @@ const el = {
   bantuan: document.getElementById('bantuan'),
   hasil: document.getElementById('hasil'),
   rincian: document.getElementById('rincian'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -34,10 +38,7 @@ async function buka(id, pecahan) {
     if (!v) throw new Error('tidak ada di pecahannya');
     el.rincian.innerHTML = await layarVarietas(v);
     catatJawab(4, UKUR.isi);
-    el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
-      el.rincian.innerHTML = '';
-      el.q.focus();
-    });
+    pasangKembali(el.rincian, { fokus: el.q });
   } catch (e) {
     catatJawab(4, UKUR.gagal);
     el.rincian.innerHTML = `<div class="kartu peringatan">
@@ -93,11 +94,14 @@ async function jalankan() {
 
 (async function mulai() {
   try {
-    const m = await muatMeta();
-    el.sumber.innerHTML =
-      `Sumber: registri perizinan varietas Kementan lewat <code>spec/indeks/</code> — ` +
-      `${m.jumlah.varietas.toLocaleString('id-ID')} varietas terdaftar. ` +
-      `Nama varietas, komoditas, pemelihara, jenis surat, dan nomor SK diambil apa adanya.`;
+    await muatMeta();
+    pasangBatas(el.batas, {
+      sumber: [{
+        dari: 'varietas',
+        cakupan: 'nama varietas, komoditas, pemelihara, jenis surat, dan nomor SK — diambil apa adanya',
+      }],
+      takDijawab: ['sertifikasiLot', 'namaDagang'],
+    });
     el.q.disabled = false;
 
     // Datang dari beranda: kuerinya dipulihkan supaya tombol kembali peramban tidak

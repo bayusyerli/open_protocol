@@ -9,8 +9,12 @@
  * hukumnya — Pasal 75 menentukan pestisida dari kegunaan yang DIKLAIM.
  */
 
-import { ambil, teks } from './pustaka.js';
+import { ambil, muatMeta, teks, pasangKembali } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(5);
 
@@ -18,7 +22,7 @@ const el = {
   fungsi: document.getElementById('fungsi'),
   daftar: document.getElementById('daftar'),
   resep: document.getElementById('resep'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -287,10 +291,7 @@ async function bukaResep(berkas) {
       ${blokHukum(r)}${blokBahan(r)}${blokProses(r)}${blokKriteria(r)}${blokPakai(r)}${BLOK_HARA}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
     catatJawab(5, UKUR.isi);
-    document.getElementById('kembali').addEventListener('click', () => {
-      el.resep.innerHTML = '';
-      el.daftar.scrollIntoView({ block: 'start' });
-    });
+    pasangKembali(el.resep, { gulirKe: el.daftar });
   } catch (e) {
     catatJawab(5, UKUR.gagal);
     el.resep.innerHTML = `<div class="kartu peringatan"><h2>Resepnya gagal diambil</h2>
@@ -329,10 +330,18 @@ el.daftar.addEventListener('click', (ev) => {
         }).join('')}
       </ul>`;
     const jalur5 = daftarResep.filter((r) => r.jalur === 5).length;
-    el.sumber.innerHTML =
-      `Sumber: <code>spec/vocab/preparation.json</code> lewat <code>spec/indeks/</code> — ` +
-      `${jalur5} resep sisi pupuk dari ${daftarResep.length}, beserta ${bahanOlehId.size} bahan bakunya. ` +
-      `Bahan, takaran, titik kendali, kriteria pelepasan, dosis, dan APD diambil apa adanya.`;
+    await muatMeta();
+    pasangBatas(el.batas, {
+      sumber: [{
+        dari: 'sediaan',
+        cakupan: `${jalur5} resep sisi pupuk dari ${daftarResep.length}, beserta ${bahanOlehId.size} bahan baku — bahan, takaran, titik kendali, kriteria pelepasan, dosis, dan APD diambil apa adanya`,
+      }],
+      takDijawab: ['haraSediaan', {
+        judul: 'Padanan lapangan untuk sebagian kriteria pelepasan',
+        teks:
+          'Sebagian kriteria pelepasan hanya bisa diperiksa di laboratorium, dan kosakata ini belum memuat padanan kebunnya untuk bokashi dan vermikompos. Layar menyebutkan kekosongan itu alih-alih mengarang uji kebun yang belum pernah diputuskan siapa pun.',
+      }],
+    });
   } catch (e) {
     el.fungsi.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan

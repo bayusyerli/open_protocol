@@ -22,7 +22,8 @@
           "publisher": "Kementerian Pertanian RI",
           "url": "https://ap-simpel.pertanian.go.id/",
           "year": 2026,
-          "locator": "Endpoint POST /Datatables_filtering/pestisida_terdaftar; ditarik 19 Agustus 2026. Kementan menyatakan data untuk informasi umum dan menganjurkan verifikasi ke PVTPP."
+          "locator": "Endpoint POST /Datatables_filtering/pestisida_terdaftar; ditarik 19 Agustus 2026. Kementan menyatakan data untuk informasi umum dan menganjurkan verifikasi ke PVTPP.",
+          "retrieved": "2026-08-19"
         }
       ]
     },

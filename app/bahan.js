@@ -38,8 +38,10 @@ export function tabelMerek(merek) {
   return `
     <p class="catatan">
       Diurutkan menurut <strong>nomor pendaftaran menaik</strong> — tanpa peringkat,
-      tanpa slot berbayar. Kolom terakhir menyebut bahan <em>lain</em> di dalamnya:
-      isi yang sama pada kadar ini belum tentu berarti produknya sama.
+      tanpa slot berbayar. Nomornya sendiri tidak muat di tabel ini; ia ada di layar
+      tiap merek, satu ketukan dari sini, jadi urutannya tetap bisa diperiksa.
+      Kolom terakhir menyebut bahan <em>lain</em> di dalamnya: isi yang sama pada kadar
+      ini belum tentu berarti produknya sama.
     </p>
     <div class="pembungkus-tabel">
       <table>

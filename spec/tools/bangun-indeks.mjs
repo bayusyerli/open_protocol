@@ -460,6 +460,34 @@ for (const r of semuaProduk) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// Urutan merek — satu pembanding, dipakai jalur 1 dan jalur 2
+// ---------------------------------------------------------------------------
+// Layar menuliskan "diurutkan menurut nomor pendaftaran MENAIK", dan sampai 23 Agustus
+// 2026 kalimat itu tidak sepenuhnya benar: pengurutannya `localeCompare` atas teksnya.
+// Nomor pendaftaran tidak seragam — 7 sampai 20 digit, dan sepuluh di antaranya bukan
+// digit murni (`01.01.01.2021.7272`, `.01030120083156`, `01010120165526.`). Pada
+// panjang yang berbeda, urutan teks bukan urutan menaik, dan yang berawalan titik
+// bahkan mendahului seluruhnya.
+//
+// Membuang non-digit sekaligus memperbaiki kesepuluh nomor cacat itu: ketiganya
+// kembali ke bentuk 14 digit yang sama seperti sisanya. Perbandingannya BigInt, karena
+// 20 digit melewati batas bilangan bulat aman JavaScript dan `Number` akan diam-diam
+// membulatkan dua nomor berbeda jadi sama.
+//
+// Yang tidak bernomor jatuh ke belakang, bukan ke depan: mereka tidak punya kunci
+// urutnya, dan menaruhnya di puncak persis terbaca sebagai slot teratas.
+const digitDaftar = (x) => String(x ?? '').replace(/\D/g, '');
+
+function urutDaftar(a, b) {
+  const da = digitDaftar(a.daftar), db = digitDaftar(b.daftar);
+  if (da && db && da !== db) return BigInt(da) < BigInt(db) ? -1 : 1;
+  if (!da !== !db) return da ? -1 : 1;
+  // Nomor sama atau sama-sama kosong: nama jadi pemutus supaya keluarannya tetap
+  // deterministik, syarat yang dinyatakan di kepala berkas ini.
+  return String(a.nama ?? '').localeCompare(String(b.nama ?? ''));
+}
+
 // Di dalam kartu "Abamektin 18 g/L", menuliskan "Abamektin 18 g/L" pada tiap
 // anggotanya tidak memberi tahu apa pun — itu judul kartunya sendiri. Yang
 // membedakan anggotanya justru bahan LAIN yang ikut di dalamnya: sebagian produk
@@ -486,10 +514,7 @@ const bahanRinci = [...perZat.entries()]
       .sort((a, b) => b[1].length - a[1].length || a[0].localeCompare(b[0]))
       .map(([k, daftar]) => ({
         k,
-        m: daftar
-          .slice()
-          .sort((a, b) => (a.daftar ?? '').localeCompare(b.daftar ?? ''))
-          .map((r) => anggotaBahan(r, id)),
+        m: daftar.slice().sort(urutDaftar).map((r) => anggotaBahan(r, id)),
       })),
   }));
 
@@ -596,7 +621,7 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
   const daftarOpt = [];
   for (const [oid, o] of [...v.opt.entries()].sort((a, b) => a[1].nama.localeCompare(b[1].nama))) {
     const grup = [...o.grup.values()]
-      .map((g) => ({ ...g, merek: g.merek.slice().sort((a, b) => (a.daftar ?? '').localeCompare(b.daftar ?? '')) }))
+      .map((g) => ({ ...g, merek: g.merek.slice().sort(urutDaftar) }))
       .sort((a, b) => b.merek.length - a.merek.length || a.zat.localeCompare(b.zat));
     const berkartu = new Set();
     for (const g of grup) for (const m of g.merek) berkartu.add(m.id);
@@ -922,11 +947,125 @@ for (const [k, anggota] of [...rumpun.entries()].sort((a, b) => a[0].localeCompa
 }
 
 // ---------------------------------------------------------------------------
+// batas — empat medan yang wajib disebut tiap layar
+// ---------------------------------------------------------------------------
+// B1 pada docs/15: tiap layar menyebut TINGKAT BUKTI, TANGGAL, SUMBER, dan APA YANG
+// TIDAK DIKETAHUINYA. Tiga di antaranya sudah ada di berkas koleksi dan siklus hidup
+// kosakata; yang belum ada cuma jalan supaya sisi penyaji bisa membacanya tanpa
+// mengunduh seluruh kosakata. Blok ini jalan itu.
+//
+// Satu aturan diwarisi dari preparation.schema.json dan diberlakukan di sini:
+// TINGKAT BUKTI TANPA ALASAN ADALAH KLAIM TANPA DASAR. Tiap entri di bawah wajib
+// membawa `alasan`, termasuk — terutama — yang tingkatnya belum ditetapkan. Yang
+// menolak menetapkan tingkat harus mengatakan kenapa, bukan mengosongkan medannya.
+
+const koleksi = (p) => bacaJson(p).collection;
+
+// Tarikan dan tinjauan datang dari berkas koleksi, bukan diketik ulang di sini:
+// mengetiknya dua kali berarti salah satunya akan basi diam-diam.
+function dariKoleksi(berkas, { label, tingkat, alasan }) {
+  const k = koleksi(berkas);
+  const s = k.provenance?.sources?.[0] ?? {};
+  return {
+    label,
+    penerbit: s.publisher ?? null,
+    url: s.url ?? null,
+    // `retrieved` baru ada sejak medan itu ditambahkan ke SourceRef. Sebelumnya
+    // tanggalnya cuma prosa di dalam `locator` dan tidak terbaca mesin — persis yang
+    // menghalangi layar menyebutkannya.
+    tarikan: s.retrieved ?? null,
+    tinjau: k.lifecycle?.review_due ?? null,
+    status: k.lifecycle?.status ?? null,
+    lisensi: k.provenance?.license ?? null,
+    cacah: k.count ?? null,
+    tingkat,
+    alasan,
+  };
+}
+
+// Kosakata terkurasi tidak punya berkas koleksi; tanggalnya diambil dari siklus hidup
+// entitasnya, yang paling akhir. Kalau satu entri diperbarui, tanggal layar ikut maju.
+const tanggalTerbaru = (daftar) =>
+  daftar
+    .map((x) => x.lifecycle?.updated_at ?? x.lifecycle?.created_at)
+    .filter(Boolean)
+    .sort()
+    .at(-1)
+    ?.slice(0, 10) ?? null;
+
+const statusKumpulan = (daftar) => {
+  const s = [...new Set(daftar.map((x) => x.lifecycle?.status).filter(Boolean))];
+  return s.length === 1 ? s[0] : s.sort().join(' + ');
+};
+
+const sebaranTingkat = {};
+for (const r of sediaan) sebaranTingkat[r.evidence_tier] = (sebaranTingkat[r.evidence_tier] ?? 0) + 1;
+
+const batas = {
+  // Disalin dari EvidenceTier di common.schema.json supaya layar tidak mengarang
+  // katanya sendiri, dan supaya "B" tidak pernah tampil sebagai huruf telanjang.
+  arti: {
+    A: 'uji multi-lokasi/multi-musim',
+    B: 'standar institusi resmi',
+    C: 'konsensus praktisi & penyuluh',
+    D: 'pengalaman tunggal belum terverifikasi',
+  },
+  sumber: {
+    pestisida: dariKoleksi('product/pestisida.meta.json', {
+      label: 'Registri pestisida terdaftar',
+      tingkat: 'B',
+      alasan:
+        'Registri resmi kementerian, disalin apa adanya. Bukan A: yang dicatat izin edar, bukan hasil uji multi-lokasi — registri tidak menguji apa pun, ia mendaftarkan.',
+    }),
+    pupuk: dariKoleksi('product/pupuk.meta.json', {
+      label: 'Registri pupuk terdaftar',
+      tingkat: 'B',
+      alasan:
+        'Registri resmi kementerian, disalin apa adanya. Bukan A dengan alasan yang sama seperti pestisida: pendaftaran bukan pengujian.',
+    }),
+    varietas: dariKoleksi('variety/varietas.meta.json', {
+      label: 'Registri perizinan varietas',
+      tingkat: 'B',
+      alasan:
+        'Registri resmi kementerian. Tingkatnya berlaku untuk keberadaan suratnya, bukan untuk sifat varietasnya — sifat agronomi nol dari 11.227, jadi tidak ada klaim agronomi yang bisa dinaungi tingkat ini.',
+    }),
+    kurasiOpt: {
+      label: 'Kurasi OPT & gejala cabai',
+      penerbit: 'Open Protocols',
+      url: null,
+      tarikan: tanggalTerbaru(optTerkurasi),
+      tinjau: null,
+      status: statusKumpulan(optTerkurasi),
+      lisensi: 'CC-BY-SA-4.0',
+      cacah: optTerkurasi.length,
+      tingkat: null,
+      alasan:
+        'Belum ditetapkan, dan itu disengaja. Teksnya disusun dari agronomi mapan — bukan dari registri — dan belum ditinjau penyuluh atau BPTP; daftar tinjauannya sudah siap di docs/14-tinjauan-gejala.md. Menandainya C berarti mengklaim konsensus penyuluh yang belum pernah diminta kepada seorang penyuluh pun.',
+    },
+    sediaan: {
+      label: 'Resep sediaan buatan sendiri',
+      penerbit: 'Open Protocols',
+      url: null,
+      tarikan: tanggalTerbaru(sediaan),
+      tinjau: null,
+      status: statusKumpulan(sediaan),
+      lisensi: 'CC-BY-SA-4.0',
+      cacah: sediaan.length,
+      tingkat: null,
+      sebaran: sebaranTingkat,
+      alasan:
+        'Ditetapkan per resep, bukan per layar — tiap resep membawa evidence_tier-nya sendiri, dan layar menampilkannya di tiap kartu. Satu tingkat untuk seluruh halaman akan menaikkan yang D atau menurunkan yang B.',
+    },
+  },
+};
+
+// ---------------------------------------------------------------------------
 // meta.json — termasuk apa yang TIDAK ada, supaya penyaji tidak menjanjikannya
 // ---------------------------------------------------------------------------
 const meta = {
   versi: 1,
   sumber: 'spec/vocab',
+  batas,
   jumlah: {
     pestisida: pestisida.length,
     pupuk: pupuk.length,
@@ -976,6 +1115,8 @@ const meta = {
     bahanHara:
       'Indeks bahan hanya memuat bahan aktif pestisida. Unsur hara pupuk tidak diindeks sebagai bahan yang bisa dicari — Nitrogen sendiri ada di 2.582 pupuk, dan daftar sepanjang itu tidak menjawab apa pun. Pertanyaan haranya dijawab jalur 3.',
     beratJenis: 'Tidak ada, sehingga pupuk cair tidak sebanding dengan yang padat.',
+    haraSediaan:
+      'Kadar hara sediaan buatan sendiri tidak diketahui sebelum batchnya diuji: L18 menolak menghitung hara dari batch yang belum diuji, dan kadar kompos berbeda tiap tumpukan. Karena itu resep jalur 5 muncul di jalur 3 tanpa rupiah per kg hara — tanpa angka, bukan dengan angka taksiran.',
     namaDagang: 'Registri menyimpan nama produk terdaftar; nama di kemasan bisa berbeda dan belum terpetakan.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
   },

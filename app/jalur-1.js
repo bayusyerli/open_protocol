@@ -20,15 +20,19 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, teks, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(1);
 
 const el = {
   gejala: document.getElementById('gejala'),
   hasil: document.getElementById('hasil'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -221,13 +225,14 @@ function tabelMerek(merek) {
   return `
     <p class="catatan">
       Diurutkan menurut <strong>nomor pendaftaran menaik</strong> — tanpa peringkat,
-      tanpa slot berbayar. <strong>Dosisnya berbeda-beda walau isinya sama</strong>,
-      karena dosis milik pendaftaran tiap produk.
+      tanpa slot berbayar. Nomornya ada di kolom sebelah, jadi urutannya bisa diperiksa
+      sendiri. <strong>Dosisnya berbeda-beda walau isinya sama</strong>, karena dosis
+      milik pendaftaran tiap produk.
     </p>
     <div class="pembungkus-tabel">
       <table>
         <thead><tr><th>Merek</th><th>Nomor pendaftaran</th><th>Berlaku sampai</th><th>Dosis terdaftar</th></tr></thead>
-        <tbody>${merek.slice().sort((a, b) => String(a.daftar).localeCompare(String(b.daftar))).map((m) => `
+        <tbody>${merek.map((m) => `
           <tr><td>${teks(m.nama)}</td><td class="angka">${teks(m.daftar ?? '—')}</td>
               <td class="angka">${teks(m.berlaku ?? '—')}</td>
               <td class="angka">${teks(m.dosis ?? '—')}</td></tr>`).join('')}</tbody>
@@ -283,10 +288,7 @@ async function bukaOpt(id) {
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
     catatJawab(1, k.di.length ? UKUR.isi : UKUR.nol);
-    document.getElementById('kembali').addEventListener('click', () => {
-      el.hasil.innerHTML = '';
-      el.gejala.scrollIntoView({ block: 'start' });
-    });
+    pasangKembali(el.hasil, { gulirKe: el.gejala });
     // Kalau hanya satu komoditas, langsung buka — satu ketukan lebih sedikit.
     if (k.di.length === 1) await bukaKomoditas(k.di[0].berkas, k);
   } catch (e) {
@@ -333,10 +335,18 @@ el.hasil.addEventListener('click', async (ev) => {
     }
     daftarOpt = berpintu;
     gambarGejala();
-    el.sumber.innerHTML =
-      `Sumber: registri pestisida Kementan lewat <code>spec/indeks/</code>. ` +
-      `Gejala dan ciri pembanding dari <code>spec/vocab/pest.json</code> — ` +
-      `${berpintu.length} OPT cabai terkurasi, berstatus draft.`;
+    // Dua sumber dengan tingkat bukti yang berbeda jauh, dan justru layar ini yang
+    // paling perlu memisahkannya: sisi gejalanya belum ditinjau siapa pun, sisi bahan
+    // aktifnya registri resmi. Meratakan keduanya jadi satu kalimat "sumber: Kementan"
+    // meminjamkan wibawa registri kepada kurasi yang belum punya.
+    await muatMeta();
+    pasangBatas(el.batas, {
+      sumber: [
+        { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT cabai` },
+        { dari: 'pestisida', cakupan: 'bahan aktif, kadar, dan merek yang terdaftar untuk OPT itu' },
+      ],
+      takDijawab: ['gejalaOpt', 'phi', 'namaDagang'],
+    });
 
     // Datang dari beranda dengan satu gejala sudah terpilih. Daftarnya tetap
     // digambar lebih dulu: yang dibuka lewat pencarian teks belum tentu yang

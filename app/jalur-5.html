@@ -5,12 +5,26 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Meramu pupuk sendiri — Open Protocols</title>
 <meta name="description" content="Tujuh resep pupuk buatan sendiri beserta kedudukan hukumnya, titik kendali prosesnya, dan cara memeriksa kematangannya di kebun tanpa alat.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
 <link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
 <header class="atas">
-  <p class="jalur">Jalur 5 · sediaan pupuk sendiri</p>
+  <div class="baris-atas">
+    <p class="jalur">Jalur 5 · sediaan pupuk sendiri</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
   <h1>Meramu sendiri, dan tetap di dalam aturan</h1>
   <p class="lede">
     Untuk pupuk, kewajiban pendaftaran melekat pada <strong>peredaran</strong> — bukan
@@ -100,7 +114,10 @@
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
   </p>
 
-  <p class="sumber" id="sumber">Sumber: <code>spec/vocab/preparation.json</code>.</p>
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: resep sediaan di <code>spec/vocab/preparation.json</code>.</p>
+  </section>
 
 </main>
 

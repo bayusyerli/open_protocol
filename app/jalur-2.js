@@ -12,10 +12,14 @@
  * yang sama dengan jalur 4, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali } from './pustaka.js';
 import { layarVarietas } from './varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(2);
 
@@ -24,7 +28,7 @@ const el = {
   bantuan: document.getElementById('bantuan'),
   hasil: document.getElementById('hasil'),
   rincian: document.getElementById('rincian'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -158,10 +162,7 @@ async function blokSetara(p) {
 // ---------------------------------------------------------------------------
 function selesai() {
   catatJawab(2, UKUR.isi);
-  el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
-    el.rincian.innerHTML = '';
-    el.q.focus();
-  });
+  pasangKembali(el.rincian, { fokus: el.q });
 }
 
 async function buka(id, pecahan) {
@@ -279,13 +280,11 @@ async function jalankan() {
 
 (async function mulai() {
   try {
-    const m = await muatMeta();
-    const j = m.jumlah;
-    el.sumber.innerHTML =
-      `Sumber: registri Kementan lewat <code>spec/indeks/</code> — ` +
-      `${j.pestisida.toLocaleString('id-ID')} pestisida, ${j.pupuk.toLocaleString('id-ID')} pupuk, ` +
-      `${j.varietas.toLocaleString('id-ID')} varietas. ` +
-      `${j.produkSetara.toLocaleString('id-ID')} produk berada dalam ${j.kelompokSetara.toLocaleString('id-ID')} kelompok berisi sama.`;
+    await muatMeta();
+    pasangBatas(el.batas, {
+      sumber: ['pestisida', 'pupuk', 'varietas'],
+      takDijawab: ['namaDagang', 'phi'],
+    });
     el.q.disabled = false;
 
     // Datang dari beranda: kuerinya dipulihkan supaya tombol kembali peramban tidak

@@ -568,6 +568,11 @@
         "locator": {
           "type": "string",
           "description": "Halaman, bab, atau tabel."
+        },
+        "retrieved": {
+          "type": "string",
+          "format": "date",
+          "description": "Tanggal sumber ini ditarik. Wajib bagi sumber daring yang berubah tanpa menerbitkan versi: registri menghapus izin yang habis, jadi tanpa tanggal tarikan tidak ada cara menyatakan salinan ini seusia apa. Sebelum medan ini ada, tanggalnya hanya hidup sebagai prosa di dalam `locator` dan tidak bisa dibaca mesin — itu yang menghalangi layar menyebut tanggalnya."
         }
       },
       "required": [

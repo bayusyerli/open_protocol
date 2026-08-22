@@ -11,6 +11,9 @@
 
 import { ringkas, hapus } from './ukur.js';
 import { teks } from './pustaka.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 const NAMA = {
   1: 'Insiden — masuk dari gejala',

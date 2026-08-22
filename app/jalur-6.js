@@ -16,8 +16,12 @@
  * jalur insiden. Ia berdiri sendiri, dan pintunya membuka dengan pasalnya.
  */
 
-import { ambil, teks } from './pustaka.js';
+import { ambil, muatMeta, teks, pasangKembali } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(6);
 
@@ -25,7 +29,7 @@ const el = {
   fungsi: document.getElementById('fungsi'),
   daftar: document.getElementById('daftar'),
   resep: document.getElementById('resep'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -293,10 +297,7 @@ async function bukaResep(berkas) {
       ${bisaDibakukan ? blokKriteria(r) + blokPakai(r) : blokTakBisaDibakukan(r)}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
     catatJawab(6, bisaDibakukan ? UKUR.isi : UKUR.takSanggup);
-    document.getElementById('kembali').addEventListener('click', () => {
-      el.resep.innerHTML = '';
-      el.daftar.scrollIntoView({ block: 'start' });
-    });
+    pasangKembali(el.resep, { gulirKe: el.daftar });
   } catch (e) {
     catatJawab(6, UKUR.gagal);
     el.resep.innerHTML = `<div class="kartu peringatan"><h2>Resepnya gagal diambil</h2>
@@ -339,10 +340,7 @@ function bukaTerlarang(id) {
     </div>
     <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
   el.resep.focus();
-  document.getElementById('kembali').addEventListener('click', () => {
-    el.resep.innerHTML = '';
-    el.daftar.scrollIntoView({ block: 'start' });
-  });
+  pasangKembali(el.resep, { gulirKe: el.daftar });
 }
 
 // ---------------------------------------------------------------------------
@@ -380,10 +378,28 @@ for (const wadah of [el.daftar, el.resep]) {
         }).join('')}
       </ul>`;
     const jalur6 = daftarResep.filter((r) => r.jalur === 6).length;
-    el.sumber.innerHTML =
-      `Sumber: <code>spec/vocab/preparation.json</code> lewat <code>spec/indeks/</code> — ` +
-      `${jalur6} resep sisi pengendali dari ${daftarResep.length}. ` +
-      `Status hukum, bahan, titik kendali, kriteria pelepasan, PHI, dan APD diambil apa adanya.`;
+    await muatMeta();
+    // Satu-satunya jalur yang dibangun untuk tidak menganjurkan, jadi yang tidak
+    // diketahuinya bukan catatan kaki — ia isi utamanya. Keduanya di bawah adalah
+    // pertanyaan terbuka, bukan lubang data yang menunggu tarikan berikutnya.
+    pasangBatas(el.batas, {
+      sumber: [{
+        dari: 'sediaan',
+        cakupan: `${jalur6} resep sisi pengendali dari ${daftarResep.length} — status hukum, bahan, titik kendali, kriteria pelepasan, PHI, dan APD diambil apa adanya`,
+      }],
+      takDijawab: [
+        {
+          judul: 'Bacaan Pasal 77 ayat (1)',
+          teks:
+            'Rangkaian kata "mengedarkan dan/atau menggunakan" bisa dibaca kumulatif maupun alternatif, dan bacaan mana yang benar menentukan apakah memakai sediaan sendiri di kebun sendiri termasuk di dalamnya. Itu pertanyaan hukum, bukan agronomi, dan belum terjawab — layar menyatakan statusnya dan tidak menyimpulkan aman.',
+        },
+        {
+          judul: 'Tenggang panen sediaan buatan sendiri',
+          teks:
+            'Keempat angka PHI di jalur ini precautionary_default — bawaan yang sengaja berhati-hati, bukan hasil uji residu. Tidak ada uji residu untuk sediaan buatan sendiri, dan angkanya tidak boleh dibaca sebagai hasil pengukuran.',
+        },
+      ],
+    });
   } catch (e) {
     el.fungsi.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Dibangun ulang dengan <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>

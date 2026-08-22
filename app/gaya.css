@@ -20,7 +20,7 @@
 }
 
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
+  :root:not([data-tema="terang"]) {
     --latar: #16181a;
     --latar-kartu: #1e2124;
     --garis: #333a3f;
@@ -35,7 +35,7 @@
   }
 }
 
-:root[data-theme="dark"] {
+:root[data-tema="gelap"] {
   --latar: #16181a;
   --latar-kartu: #1e2124;
   --garis: #333a3f;
@@ -61,6 +61,33 @@ body {
 }
 
 header, main { max-width: var(--lebar); margin: 0 auto; }
+
+/* Tombol tema, sebaris dengan label jalur. Bukan di atas judul: urutan bacanya tetap
+   label lalu judul, dan tombolnya tidak menyisip di antara keduanya. */
+
+.baris-atas {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.tombol-tema {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  background: var(--latar-kartu);
+  color: var(--aksen);
+  cursor: pointer;
+}
+
+.tombol-tema:hover { border-color: var(--aksen); background: var(--aksen-lemah); }
+.tombol-tema svg { fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; }
 
 .jalur {
   margin: 0 0 .35rem;
@@ -220,8 +247,13 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .kartu ol { margin: .6rem 0 0; padding-left: 1.2rem; }
 .kartu ol li + li { margin-top: .4rem; }
 
+/* Warna tautan dipasang di `a`, bukan hanya di `.lain a`. Sebelumnya satu tautan di
+   luar pembungkus itu — jalur 6 ke jalur 5 — mewarisi biru bawaan peramban, dan di
+   tema gelap rasionya 1,72:1. Yang di luar daftar navigasi justru tautan di tengah
+   kalimat, yang paling perlu terbaca. */
+a { color: var(--aksen); }
+
 .lain { margin: 2rem 0 0; font-size: .92rem; }
-.lain a { color: var(--aksen); }
 
 /* ------------------------------------------------------- kalkulator jalur 3 */
 .masukan { margin-top: .9rem; }
@@ -358,7 +390,7 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
   font-variant-numeric: tabular-nums;
   color: var(--aksen);
 }
-:root[data-theme="dark"] .daftar .pembeda { color: var(--aksen); }
+:root[data-tema="gelap"] .daftar .pembeda { color: var(--aksen); }
 
 /* Nama merek di dalam tabel: tetap tombol, karena ia membuka layar — tetapi
    berpakaian tautan, karena itulah yang dilakukannya. */
