@@ -8,8 +8,8 @@ Dibangkitkan `progres.py`. Jangan disunting tangan — jalankan ulang.
 |---|---:|---:|---|
 | Terdaftar di registri | 10.978 | 10.978 | `████████████████████████` 100.0% |
 | Bisa berkemasan eceran | 10.356 | 10.978 | `███████████████████████·` 94.3% |
-| Situs principal sudah diperiksa | 8.960 | 10.978 | `████████████████████····` 81.6% |
-| Principal-nya bersitus layak | 4.720 | 10.978 | `██████████··············` 43.0% |
+| Situs principal sudah diperiksa | 9.729 | 10.978 | `█████████████████████···` 88.6% |
+| Principal-nya bersitus layak | 4.870 | 10.978 | `███████████·············` 44.4% |
 | Sudah dicoba dipanen | 534 | 10.978 | `█·······················` 4.9% |
 | **Bergambar** | 458 | 10.978 | `█·······················` 4.2% |
 
@@ -50,52 +50,52 @@ Peran gambar: **456** kemasan_depan · **38** panel_label · **6** lainnya · **
 | PT. SINAR GENERAL INDUSTRIES | 33 | 129 | `████··········` | https://pt-sgi.com |
 | PT. CENTA BRASINDO ABADI CHEMICAL INDUST | 31 | 194 | `██············` | katalogcba.com |
 | PT. UPL INDONESIA | 21 | 82 | `████··········` | https://www.uplcorp.com/id |
-| PT. SAPROTAN UTAMA NUSANTARA | 18 | 51 | `█████·········` | https://saprotan-utama.com |
-| PT. DELTA GIRI WACANA | 18 | 129 | `██············` | dharmagunawibawa.co.id |
-| CV. SAPROTAN UTAMA | 18 | 62 | `████··········` | https://saprotan-utama.com |
-| PT. RAINBOW AGROSCIENCES | 18 | 181 | `█·············` | rainbowagro.com/id |
 | PT. CATUR AGRODAYA MANDIRI | 18 | 48 | `█████·········` | https://www.uplcorp.com/id |
+| PT. SAPROTAN UTAMA NUSANTARA | 18 | 51 | `█████·········` | https://saprotan-utama.com |
+| PT. RAINBOW AGROSCIENCES | 18 | 181 | `█·············` | rainbowagro.com/id |
+| CV. SAPROTAN UTAMA | 18 | 62 | `████··········` | https://saprotan-utama.com |
+| PT. DELTA GIRI WACANA | 18 | 129 | `██············` | dharmagunawibawa.co.id |
 | PT. DA MING INDONESIA | 13 | 51 | `████··········` | https://www.asianachemical.co.id/i |
 | PT. KENSO INDONESIA | 13 | 67 | `███···········` | https://kenso.co.id |
-| PT. MITRA KREASIDHARMA | 13 | 38 | `█████·········` | https://www.mitrakreasidharma.com/ |
-| PT. YANNO AGRO SCIENCE INDONESIA | 13 | 44 | `████··········` | https://yanno.co.id |
 | PT. SANTANI AGRO PERKASA | 13 | 46 | `████··········` | https://santani.id |
+| PT. YANNO AGRO SCIENCE INDONESIA | 13 | 44 | `████··········` | https://yanno.co.id |
+| PT. MITRA KREASIDHARMA | 13 | 38 | `█████·········` | https://www.mitrakreasidharma.com/ |
 | PT. FORAGRO MITRA SEJATI | 12 | 38 | `████··········` | https://foragro.co.id/ |
-| PT. AGRO SEJAHTERA INDONESIA | 12 | 34 | `█████·········` | https://asterindo.co.id/ |
-| PT. ADIL MAKMUR FAJAR | 12 | 41 | `████··········` | https://adilmakmurfajar.com |
 | PT. PRIMA AGRO TECH | 12 | 37 | `█████·········` | https://primaagrotech.com/ |
+| PT. ADIL MAKMUR FAJAR | 12 | 41 | `████··········` | https://adilmakmurfajar.com |
 | PT. DANKEN INDONESIA | 12 | 45 | `████··········` | https://dankenindonesia.com |
-| PT.MEROKE TETAP JAYA | 11 | 46 | `███···········` | meroketetapjaya.com |
-| PT. TRIDA KIMIA SAKTI | 11 | 40 | `████··········` | tridakimiasakti.blogspot.com |
+| PT. AGRO SEJAHTERA INDONESIA | 12 | 34 | `█████·········` | https://asterindo.co.id/ |
 | PT. ETONG CHEMICAL INDONESIA | 11 | 55 | `███···········` | etongchem.id |
 | PT. ADVANSIA INDOTANI | 11 | 95 | `██············` | advansia.co.id |
+| PT.MEROKE TETAP JAYA | 11 | 46 | `███···········` | meroketetapjaya.com |
 | PT. MAXXI AGRI INDONESIA | 11 | 87 | `██············` | maxxiagri.com |
+| PT. TRIDA KIMIA SAKTI | 11 | 40 | `████··········` | tridakimiasakti.blogspot.com |
 | PT. NUFARM INDONESIA | 10 | 88 | `██············` | https://nufarm.com/id/ |
 | PT. PRIMA KARYA BERJAYA | 10 | 112 | `█·············` | prima-karya.co.id |
-| PT. DELTAGRO MULIA SEJATI | 8 | 81 | `█·············` | ptdeltagro.com |
 | PT. REJEKI INDO AGROTEC | 8 | 69 | `██············` | ptria.com |
+| PT. DELTAGRO MULIA SEJATI | 8 | 81 | `█·············` | ptdeltagro.com |
 | PT. Kristalindo Karunia Internasional | 5 | 39 | `██············` | https://kristalindo.co.id/ |
-| PT. ARTHA MAKMUR ABADI | 4 | 34 | `██············` | https://pt-ama.co.id/ |
 | CV. SARAREA PANEN RAYA | 4 | 37 | `██············` | https://www.panenrayaagro.com/ |
+| PT. ARTHA MAKMUR ABADI | 4 | 34 | `██············` | https://pt-ama.co.id/ |
 | PT Petrokimia Gresik | 2 | 26 | `█·············` | https://petrokimia-gresik.com |
-| PT. Multi Mas Chemindo | 1 | 2 | `███████·······` | multimaschemindo.com |
-| PT. MEST INDONESIY | 1 | 6 | `██············` | mestindo.com |
 | DGW PUPUK INDONESIA | 1 | 17 | `█·············` | dgwfertilizer.co.id |
+| PT. Multi Mas Chemindo | 1 | 2 | `███████·······` | multimaschemindo.com |
 | PT. BASF INDONESIA | 1 | 93 | `··············` | petani-sejahtera.basf.co.id |
+| PT. MEST INDONESIY | 1 | 6 | `██············` | mestindo.com |
 | PT. SANLEX MALINDO | 1 | 3 | `█████·········` | sanlexmalindo.com |
 
 ## Status situs principal
 
 | Status | Principal | Merek | Artinya |
 |---|---:|---:|---|
-| `belum-diperiksa` | 1.509 | 2.018 | belum disentuh sapuan |
-| `tidak-ada` | 191 | 2.148 | tidak pernah punya situs |
-| `ada` | 89 | 2.962 | galeri layak panen |
-| `tipis` | 78 | 1.758 | galeri kecil atau resolusi rendah |
-| `kosong` | 32 | 876 | situs sehat, gambar belum diunggah — **periksa ulang berkala** |
-| `rusak` | 31 | 762 | situs ada tapi tak berfungsi |
-| `surat-saja` | 11 | 144 | domain hidup tetapi hanya melayani surat — **domainnya sudah ketemu** |
-| `mati` | 9 | 310 | domain bukan milik principal lagi |
+| `belum-diperiksa` | 1.189 | 1.249 | belum disentuh sapuan |
+| `tidak-ada` | 394 | 2.634 | tidak pernah punya situs |
+| `tipis` | 116 | 1.849 | galeri kecil atau resolusi rendah |
+| `ada` | 114 | 3.021 | galeri layak panen |
+| `kosong` | 71 | 974 | situs sehat, gambar belum diunggah — **periksa ulang berkala** |
+| `rusak` | 35 | 770 | situs ada tapi tak berfungsi |
+| `mati` | 18 | 333 | domain bukan milik principal lagi |
+| `surat-saja` | 13 | 148 | domain hidup tetapi hanya melayani surat — **domainnya sudah ketemu** |
 
 **Sisa: 10.533 merek.** Prospek yang sudah dipetakan dan tinggal dipanen ada di [`PANDUAN-PANEN.md`](PANDUAN-PANEN.md) pasal 13.
 

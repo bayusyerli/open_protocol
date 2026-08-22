@@ -17,10 +17,52 @@ penggantinya, dan inilah alat itu: dua tanda yang bisa dijalankan atas SELURUH s
 antrean secara lokal, lalu hanya yang lolos diberi agen.
 
 Tanda 1 — ADA A RECORD pada domain tebakan dari nama PT.
-    Kuat, TETAPI TIDAK SEMPURNA, dan batasnya diukur: pada satu potongan aturan ini
-    melewatkan TIGA situs sungguhan — biotagroupinternasional.com, indoasiagroup.com,
-    pkt-group.com — sepertiga dari seluruh situs yang ditemukan agen itu. Sebabnya satu:
-    domainnya memakai NAMA GRUP yang tidak terbaca dari nama PT maupun dari mereknya.
+    LEMAH SEBAGAI GERBANG, dan angkanya sudah diukur bersih. Satu agen diberi 40 baris
+    `cari-nama` — yang menurut tanda ini "tidak punya domain" — dan menemukan **13 di
+    antaranya punya situs: 32,5% salah-negatif.**
+
+    Sebabnya seragam dan tidak bisa diperbaiki dengan tebakan yang lebih pintar: sembilan
+    dari tiga belas domain itu **tidak bisa dicapai dari nama PT lewat transformasi apa
+    pun**.
+
+        petrokayaku.com     katalog grup, perusahaan yang sama sekali lain
+        zamasta.co.id       akronim ZA-MA-STA
+        nutrisoil.co.id     dinamai menurut MEREKNYA
+        iopri.co.id         nama unit riset
+        dewagro.id          kontraksi
+        sea6energy.com      "Six" jadi "6"
+        agrosida.co.id      dipotong
+        ostindo.co.id       kata terakhir saja
+        toyotatsusho.co.id  "Indonesia" dibuang
+
+    Pencarian web menemukan ketiga belasnya; sapuan DNS nama-PT-penuh tidak akan menemukan
+    satu pun.
+
+    DAN DIUJI DUA ARAH, ALAT INI GAGAL SEBAGAI PEMBEDA DI EKOR. Satu agen mengukur
+    keduanya pada potongan yang sama:
+
+        beri-agen  : 5 dari 18 keliru (28%) — domainnya milik orang lain
+        cari-nama  : 6 dari 22 ternyata punya situs (27%)
+
+    Salah 28% di satu sisi dan 27% di sisi lain berarti ia nyaris tidak membawa informasi.
+    Sebabnya sudah jelas dari daftar di atas: di ekor, domain principal hampir tidak pernah
+    diturunkan dari nama PT-nya.
+
+    Yang tersisa dari alat ini hanya satu kegunaan jujur: ia MURAH, jadi ia boleh dipakai
+    mengurutkan giliran — bukan memutuskan siapa yang dilewati. Pencarian web tetap
+    pekerjaan yang sebenarnya, dan tidak ada tanda murah yang menggantikannya.
+
+    TETAPI agen lain mengukur hal berbeda pada potongan yang seluruhnya `beri-agen`, dan
+    hasilnya membantah sebagian: `ada` 22,5% di sana berbanding **13,3%** rata-rata
+    gelombang 1-3 (n=660), dan `tidak-ada` 35% berbanding 52,7%. Itu **daya angkat 1,7x**.
+
+    Jadi keduanya benar, dan bentuk yang jujur begini: alat ini punya DAYA ANGKAT nyata
+    tetapi KETEPATAN buruk. Ia layak dipakai mengurutkan giliran, tidak layak dipakai
+    memutuskan siapa dilewati — sebab 35% yang tetap terbuang itu sepertiganya kelas
+    berbahaya yang TERLIHAT seperti keberhasilan: domain hidup milik perusahaan lain.
+
+    Dicatat apa adanya alih-alih dihapus, sebab hasil negatif yang terukur lebih berguna
+    daripada alat yang diam-diam disingkirkan.
 
     Karena itu yang nol A record TIDAK ditulis `tidak-ada`, melainkan `cari-nama`:
     ia masih layak satu operasi, yaitu pencarian web atas nama perusahaannya. Itu satu-
@@ -67,10 +109,14 @@ def inti_nama(p: str) -> str:
 
 
 def dns(host: str) -> tuple[str, str]:
-    a = subprocess.run(["dig", "+short", "+time=3", "+tries=1", "A", host],
+    """A lebih dulu; NS hanya kalau A ada. Menghemat separuh panggilan pada ekor, tempat
+    sebagian besar kandidat memang tidak beralamat sama sekali."""
+    a = subprocess.run(["dig", "+short", "+time=2", "+tries=1", "A", host],
                        capture_output=True, text=True).stdout
     ip = next((l for l in a.splitlines() if l and l[0].isdigit()), "")
-    ns = subprocess.run(["dig", "+short", "+time=3", "+tries=1", "NS", host],
+    if not ip:
+        return "", ""
+    ns = subprocess.run(["dig", "+short", "+time=2", "+tries=1", "NS", host],
                         capture_output=True, text=True).stdout.lower()
     return ip, ns
 
