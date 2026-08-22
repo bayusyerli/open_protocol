@@ -103,6 +103,10 @@ Sebagian besar bukan kode, dan justru itu sebabnya mudah tertunda.
 - **Pendapat hukum Pasal 77 ayat (1).** Menentukan apakah jalur 6 boleh naik dari catatan
   status hukum jadi anjuran. Ancamannya 7 tahun dan Rp5 miliar; lihat
   [09-jalur-sediaan-pengendali.md](09-jalur-sediaan-pengendali.md).
+  **Memo pertanyaannya siap** di [13-memo-hukum-pasal-77.md](13-memo-hukum-pasal-77.md) —
+  yang tersisa menyerahkannya ke penasihat hukum. Pertanyaan ke-6 di memo itu yang paling
+  menentukan bagi produk dan paling mudah terlewat: sejauh mana **penerbit informasi** ikut
+  bertanggung jawab, bukan hanya pemakainya.
 - **Lisensi — SUDAH DIPUTUSKAN**, 20 Agustus 2026. Kode Apache-2.0, konten kurasi
   CC BY-SA 4.0. Rekomendasi di [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md)
   keputusan ke-5 kini diambil; batas dan pengecualiannya di [`LISENSI.md`](../LISENSI.md).
