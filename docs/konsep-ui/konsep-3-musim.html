@@ -1,0 +1,741 @@
+<meta charset="utf-8">
+<title>Petak dan Musim</title>
+<meta name="description" content="Konsep 3 — layar pertama adalah petak dan garis waktu musim; satu rekaman yang sama dibaca petani, penyuluh, offtaker, dan bank secara berbeda.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo:wght@400;600;700&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&display=swap">
+
+<style>
+/* ==========================================================================
+   KONSEP 3 · PETAK DAN MUSIM
+   Tesis: layar pertama adalah petak dan garis waktu musim. Pertanyaan
+   menempel pada momen dalam musim, bukan berdiri sendiri — dan satu rekaman
+   yang sama dibaca lima pihak dengan lima cara.
+
+   Rupa: kertas greenbar — kertas cetak komputer berselang hijau pucat yang
+   dipakai laporan dan buku besar selama puluhan tahun. Rujukan itu dipilih
+   karena persis itulah yang dilakukan konsep ini: satu cetakan, banyak
+   pembaca. Bukan krem hangat, bukan terakota.
+
+   Huruf: Chivo untuk seluruh permukaan kerja (grotesque berangka tabular
+   kuat); Newsreader — serif editorial — dipakai HANYA pada bacaan "bukti"
+   dan "laporan". Pergantian hurufnya bukan hiasan: ia menandai bahwa rekaman
+   yang sama sedang dibaca sebagai dokumen, bukan sebagai layar kerja.
+
+   Tiga keadaan yang menyusun seluruh palet: RENCANA, REALISASI, SIMPANGAN.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --tinta:    #182019;
+  --lemah:    #4c5b50;
+  --pudar:    #7c8c81;
+
+  --kertas:   #fcfdfa;
+  --baris:    #e6efe1;
+  --kanvas:   #eef0e9;
+  --garis:    #ccd6c9;
+  --garis-tua:#9aa89b;
+
+  --pena:     #0f5257;
+  --pena-isi: #dfeced;
+
+  --rencana:     #3d5c85;
+  --rencana-isi: #e2e9f3;
+  --nyata:       #2b6b4a;
+  --nyata-isi:   #e0efe5;
+  --simpang:     #83570a;
+  --simpang-isi: #fbeed3;
+  --tolak:       #8d382d;
+  --tolak-isi:   #f8e6e2;
+
+  --di-gelap: #ffffff;
+  --fokus:    #12787f;
+
+  --sudut: 5px;
+  --kolom: 44rem;
+
+  --kerja: "Chivo", "Helvetica Neue", Arial, sans-serif;
+  --dokumen: "Newsreader", Georgia, "Times New Roman", serif;
+  --mono: ui-monospace, "SFMono-Regular", "Menlo", "Consolas", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --tinta:    #e6ece6;
+    --lemah:    #a4b3a8;
+    --pudar:    #78877d;
+    --kertas:   #161d19;
+    --baris:    #1e2a22;
+    --kanvas:   #0d1211;
+    --garis:    #2f3d34;
+    --garis-tua:#4d5f53;
+    --pena:     #6fc9cf;
+    --pena-isi: #102b2e;
+    --rencana:     #8fb0dc;
+    --rencana-isi: #17222f;
+    --nyata:       #6ecb96;
+    --nyata-isi:   #14301f;
+    --simpang:     #eec06a;
+    --simpang-isi: #33280f;
+    --tolak:       #f09b8e;
+    --tolak-isi:   #38201c;
+    --di-gelap: #0d1211;
+    --fokus:    #5fd0d8;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --tinta:    #e6ece6;
+  --lemah:    #a4b3a8;
+  --pudar:    #78877d;
+  --kertas:   #161d19;
+  --baris:    #1e2a22;
+  --kanvas:   #0d1211;
+  --garis:    #2f3d34;
+  --garis-tua:#4d5f53;
+  --pena:     #6fc9cf;
+  --pena-isi: #102b2e;
+  --rencana:     #8fb0dc;
+  --rencana-isi: #17222f;
+  --nyata:       #6ecb96;
+  --nyata-isi:   #14301f;
+  --simpang:     #eec06a;
+  --simpang-isi: #33280f;
+  --tolak:       #f09b8e;
+  --tolak-isi:   #38201c;
+  --di-gelap: #0d1211;
+  --fokus:    #5fd0d8;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--kanvas);
+  color: var(--tinta);
+  font-family: var(--kerja);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-text-size-adjust: 100%;
+}
+
+:where(a, button, input, select, summary):focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+.mata { margin: 0; font-size: .66rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--pudar); }
+
+/* ------------------------------------------------------------ krom peninjau */
+.krom { position: sticky; top: 0; z-index: 30; background: var(--tinta); color: var(--kertas); }
+.krom-dalam { max-width: var(--kolom); margin: 0 auto; padding: .5rem .9rem .6rem; display: flex; flex-wrap: wrap; gap: .4rem .5rem; align-items: center; }
+.krom-tanda { width: 100%; font-size: .66rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; opacity: .6; }
+.krom button {
+  font-size: .78rem; font-weight: 600;
+  padding: .4rem .6rem; min-height: 34px;
+  color: var(--kertas); background: transparent;
+  border: 1px solid rgb(255 255 255 / 28%); border-radius: var(--sudut);
+  cursor: pointer;
+}
+.krom button:hover { background: rgb(255 255 255 / 12%); }
+.krom button[aria-pressed="true"] { background: var(--kertas); color: var(--tinta); border-color: var(--kertas); }
+
+/* -------------------------------------------------------------------- kepala */
+.kepala { background: var(--kanvas); border-bottom: 1px solid var(--garis); }
+.kepala-dalam { max-width: var(--kolom); margin: 0 auto; padding: .8rem .9rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.merek strong { display: block; font-size: .95rem; font-weight: 700; }
+.merek small { display: block; font-size: .6rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--pudar); }
+.tema { display: flex; border: 1px solid var(--garis); border-radius: var(--sudut); overflow: hidden; }
+.tema button { font-size: .72rem; font-weight: 600; padding: .38rem .5rem; min-height: 32px; border: 0; background: var(--kertas); color: var(--lemah); cursor: pointer; }
+.tema button + button { border-left: 1px solid var(--garis); }
+.tema button[aria-pressed="true"] { background: var(--pena); color: var(--di-gelap); }
+
+main { max-width: var(--kolom); margin: 0 auto; padding: 1.2rem .9rem 5rem; }
+
+h1 { margin: .2rem 0 .3rem; font-size: 1.6rem; line-height: 1.15; font-weight: 700; letter-spacing: -.015em; text-wrap: balance; }
+h2 { margin: 0 0 .4rem; font-size: 1.15rem; font-weight: 700; }
+h3 { margin: 1rem 0 .35rem; font-size: .92rem; font-weight: 700; }
+
+.panel { background: var(--kertas); border: 1px solid var(--garis); border-radius: var(--sudut); padding: .9rem 1rem; margin-bottom: 1rem; }
+.panel > :first-child { margin-top: 0; }
+.panel > :last-child { margin-bottom: 0; }
+.panel p { margin: .5rem 0; }
+
+/* ------------------------------------------------------------------- petak */
+.petak { display: grid; gap: .7rem; }
+.kartu-petak {
+  display: grid; gap: .5rem;
+  width: 100%; text-align: left;
+  padding: .85rem .95rem;
+  font: inherit; color: var(--tinta);
+  background: var(--kertas);
+  border: 1px solid var(--garis);
+  border-left: 6px solid var(--pena);
+  border-radius: var(--sudut);
+  cursor: pointer;
+}
+.kartu-petak:hover { border-color: var(--pena); border-left-color: var(--pena); }
+.kartu-petak .atas { display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem; }
+.kartu-petak .nama { font-size: 1.15rem; font-weight: 700; }
+.kartu-petak .siapa { font-size: .85rem; color: var(--lemah); }
+.kartu-petak dl { margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(6.5rem, 1fr)); gap: .5rem .8rem; }
+.kartu-petak dt { font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--pudar); }
+.kartu-petak dd { margin: 0; font-size: .92rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+
+.cip {
+  display: inline-flex; align-items: center; gap: .3rem;
+  padding: .15rem .5rem;
+  font-size: .7rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  border-radius: 999px; border: 1px solid currentColor;
+}
+.cip.rencana { color: var(--rencana); background: var(--rencana-isi); }
+.cip.nyata   { color: var(--nyata);   background: var(--nyata-isi); }
+.cip.simpang { color: var(--simpang); background: var(--simpang-isi); }
+.cip.tolak   { color: var(--tolak);   background: var(--tolak-isi); }
+
+/* --------------------------------------------------------------- rel musim
+   Sumbunya BUKAN tanggal. Itu seluruh maksudnya: dua dari empat langkah
+   memang punya tanggal (relatif ke tanam), satu menempel pada fase, dan satu
+   menunggu ambang pengamatan. Merentangkannya di sumbu kalender akan
+   mengarang tanggal untuk dua langkah yang memang tidak punya. */
+.rel-bungkus { overflow-x: auto; margin: .7rem 0 0; padding-bottom: .4rem; }
+.rel { display: grid; grid-auto-flow: column; gap: .5rem; min-width: 44rem; }
+.rel-sel {
+  display: grid; gap: .35rem; align-content: start;
+  padding: .65rem .7rem;
+  background: var(--baris);
+  border: 1px solid var(--garis);
+  border-top: 4px solid var(--garis-tua);
+  border-radius: var(--sudut);
+  min-width: 10rem;
+}
+.rel-sel.k-relative  { border-top-color: var(--rencana); }
+.rel-sel.k-stage     { border-top-color: var(--pena); }
+.rel-sel.k-condition { border-top-color: var(--simpang); }
+.rel-sel.selesai     { background: var(--nyata-isi); border-top-color: var(--nyata); }
+.rel-jenis { font-size: .6rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--lemah); }
+.rel-judul { font-size: .92rem; font-weight: 700; line-height: 1.25; }
+.rel-kapan { font-size: .8rem; color: var(--lemah); font-variant-numeric: tabular-nums; }
+.rel-kapan b { color: var(--tinta); }
+
+.kunci-rel { display: flex; flex-wrap: wrap; gap: .5rem 1rem; margin: .7rem 0 0; font-size: .78rem; color: var(--lemah); }
+.kunci-rel span { display: inline-flex; align-items: center; gap: .35rem; }
+.kunci-rel i { width: 1.1rem; height: .28rem; border-radius: 2px; display: inline-block; }
+
+/* ---------------------------------------------------- rencana vs realisasi */
+.banding { display: grid; gap: .6rem; margin: .7rem 0 0; }
+@media (min-width: 32rem) { .banding { grid-template-columns: 1fr 1fr; } }
+.sisi { padding: .75rem .85rem; border: 1px solid var(--garis); border-radius: var(--sudut); background: var(--kanvas); }
+.sisi.r { border-left: 5px solid var(--rencana); }
+.sisi.n { border-left: 5px solid var(--nyata); }
+.sisi h4 { margin: 0 0 .4rem; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--lemah); }
+.sisi .besar { font-size: 1.7rem; font-weight: 700; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.sisi .kecil { font-size: .84rem; color: var(--lemah); }
+
+.simpangan {
+  margin: .7rem 0 0;
+  padding: .8rem .9rem;
+  background: var(--simpang-isi);
+  border: 1px solid var(--simpang);
+  border-left: 6px solid var(--simpang);
+  border-radius: var(--sudut);
+}
+.simpangan h4 { margin: 0 0 .3rem; font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--simpang); }
+.simpangan p { margin: .3rem 0; font-size: .92rem; }
+
+/* --------------------------------------------------------- pemilih bacaan
+   Inti konsep ini. Rekaman yang dibaca lima cara adalah satu rekaman —
+   yang berubah cuma medan mana yang boleh tampil, dan itu ditentukan
+   data_classification, bukan preferensi tampilan. */
+.bacaan { display: flex; flex-wrap: wrap; gap: .4rem; margin: .6rem 0 0; }
+.bacaan button {
+  padding: .55rem .75rem; min-height: 46px;
+  font: inherit; font-size: .85rem; font-weight: 600;
+  color: var(--lemah); background: var(--kanvas);
+  border: 1px solid var(--garis-tua); border-radius: var(--sudut);
+  cursor: pointer;
+}
+.bacaan button[aria-pressed="true"] { color: var(--di-gelap); background: var(--pena); border-color: var(--pena); }
+
+.hasil-bacaan { margin: .8rem 0 0; padding: .9rem 1rem; background: var(--baris); border: 1px solid var(--garis); border-radius: var(--sudut); }
+.hasil-bacaan.dokumen { font-family: var(--dokumen); font-size: 1.06rem; line-height: 1.6; background: var(--kertas); }
+.hasil-bacaan.dokumen h4 { font-family: var(--dokumen); font-size: 1.15rem; font-weight: 600; margin: 0 0 .4rem; }
+.hasil-bacaan h4 { margin: 0 0 .4rem; font-size: 1rem; font-weight: 700; }
+.hasil-bacaan p { margin: .45rem 0; }
+.hasil-bacaan ul { margin: .4rem 0; padding-left: 1.2rem; }
+.hasil-bacaan li + li { margin-top: .25rem; }
+.tertahan {
+  margin: .8rem 0 0; padding: .65rem .8rem;
+  font-family: var(--kerja); font-size: .85rem;
+  color: var(--tolak);
+  background: var(--tolak-isi);
+  border: 1px dashed var(--tolak);
+  border-radius: var(--sudut);
+}
+.tertahan strong { color: var(--tolak); }
+
+/* --------------------------------------------------------------- buku kas */
+.pembungkus-tabel { overflow-x: auto; margin: .6rem 0 0; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { text-align: left; padding: .45rem .55rem; border-bottom: 1px solid var(--garis); vertical-align: top; }
+th { font-size: .66rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--lemah); white-space: nowrap; }
+td.ang { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tfoot td { font-weight: 700; border-bottom: 0; border-top: 2px solid var(--garis-tua); }
+
+/* --------------------------------------------------------- batas jawaban */
+.batas { border: 2px solid var(--garis-tua); border-radius: var(--sudut); background: var(--baris); margin-bottom: 1rem; }
+.batas > summary { padding: .7rem .85rem; min-height: 48px; display: flex; align-items: center; gap: .5rem; cursor: pointer; list-style: none; font-size: .9rem; font-weight: 700; }
+.batas > summary::-webkit-details-marker { display: none; }
+.batas > summary::after { content: "Buka"; margin-left: auto; font-weight: 600; font-size: .78rem; color: var(--lemah); }
+.batas[open] > summary::after { content: "Tutup"; }
+.batas .isi { padding: 0 .85rem .85rem; font-size: .88rem; }
+.batas ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+.batas li + li { margin-top: .3rem; }
+
+.tolakan { border: 3px solid var(--tolak); border-radius: var(--sudut); background: var(--tolak-isi); padding: .95rem 1rem; margin-bottom: 1rem; }
+.tolakan > :first-child { margin-top: 0; }
+.tolakan > :last-child { margin-bottom: 0; }
+.tolakan h2 { color: var(--tolak); }
+
+.besar-tolak { font-size: 2.6rem; font-weight: 700; line-height: 1; font-variant-numeric: tabular-nums; }
+
+.aksi { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; }
+.aksi button {
+  padding: .6rem .9rem; min-height: 48px;
+  font: inherit; font-size: .88rem; font-weight: 700;
+  color: var(--di-gelap); background: var(--pena);
+  border: 2px solid var(--pena); border-radius: var(--sudut);
+  cursor: pointer;
+}
+.aksi button.sekunder { color: var(--tinta); background: transparent; border-color: var(--garis-tua); }
+
+.kaki { max-width: var(--kolom); margin: 0 auto; padding: 1.2rem .9rem 3rem; font-size: .8rem; color: var(--lemah); border-top: 1px solid var(--garis); }
+.kaki p { margin: .3rem 0; }
+
+code { font-family: var(--mono); font-size: .86em; }
+</style>
+
+<div class="krom">
+  <div class="krom-dalam">
+    <span class="krom-tanda">Konsep 3 · Petak dan Musim — krom peninjau, bukan bagian produk</span>
+    <button type="button" data-layar="petak" aria-pressed="true">1 · Petak</button>
+    <button type="button" data-layar="musim" aria-pressed="false">2 · Satu musim</button>
+    <button type="button" data-layar="tolak" aria-pressed="false">3 · Menolak menjadwal</button>
+  </div>
+</div>
+
+<header class="kepala">
+  <div class="kepala-dalam">
+    <div class="merek">
+      <strong>Open Protocols</strong>
+      <small>Lapis eksekusi · musim berjalan</small>
+    </div>
+    <div class="tema" role="group" aria-label="Tampilan layar">
+      <button type="button" data-tema="sistem" aria-pressed="true">Sistem</button>
+      <button type="button" data-tema="light" aria-pressed="false">Terang</button>
+      <button type="button" data-tema="dark" aria-pressed="false">Gelap</button>
+    </div>
+  </div>
+</header>
+
+<main id="pentas"></main>
+
+<footer class="kaki">
+  <p><strong>Open Protocols</strong> — data usaha tani milik petani. Bisa diekspor dan dibaca tanpa platform ini.</p>
+  <p>Petak, siklus, dan langkah di layar ini disalin dari <code>spec/examples/</code>. Geometri petak tidak pernah terbit — aturan <code>L7</code> menolaknya.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  var el = document.getElementById("pentas");
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    });
+  }
+  function rp(n) { return "Rp " + n.toLocaleString("id-ID"); }
+
+  /* --------------------------------------------------------------- layar 1 */
+  function layarPetak() {
+    return '' +
+    '<p class="mata">Musim berjalan · 22 Agustus 2026</p>' +
+    '<h1>Petak yang kamu dampingi</h1>' +
+    '<p style="margin:.2rem 0 1.1rem;color:var(--lemah)">Tiga petak, satu komoditas, satu protokol. Yang menunggu tindakan muncul lebih dulu.</p>' +
+
+    '<div class="petak">' +
+      '<button type="button" class="kartu-petak" data-layar="musim">' +
+        '<span class="atas">' +
+          '<span class="nama">Tegal lor</span>' +
+          '<span class="siapa">Pak Slamet · Kabupaten Rembang</span>' +
+          '<span class="cip simpang" style="margin-left:auto">1 ambang terlampaui</span>' +
+        '</span>' +
+        '<dl>' +
+          '<div><dt>Komoditas</dt><dd>Cabai merah besar</dd></div>' +
+          '<div><dt>Luas</dt><dd>0,28 ha</dd></div>' +
+          '<div><dt>Fase</dt><dd>BBCH 51</dd></div>' +
+          '<div><dt>Tanam</dt><dd>1 Jul 2026</dd></div>' +
+          '<div><dt>Tercatat</dt><dd>3 dari 4</dd></div>' +
+        '</dl>' +
+      '</button>' +
+
+      '<button type="button" class="kartu-petak" style="border-left-color:var(--garis-tua)" data-layar="musim">' +
+        '<span class="atas">' +
+          '<span class="nama">Sawah kidul</span>' +
+          '<span class="siapa">Bu Warsini · Kabupaten Rembang</span>' +
+          '<span class="cip rencana" style="margin-left:auto">Menunggu fase</span>' +
+        '</span>' +
+        '<dl>' +
+          '<div><dt>Komoditas</dt><dd>Cabai merah besar</dd></div>' +
+          '<div><dt>Luas</dt><dd>0,41 ha</dd></div>' +
+          '<div><dt>Fase</dt><dd>BBCH 14</dd></div>' +
+          '<div><dt>Tanam</dt><dd>28 Jul 2026</dd></div>' +
+          '<div><dt>Tercatat</dt><dd>2 dari 4</dd></div>' +
+        '</dl>' +
+      '</button>' +
+
+      '<button type="button" class="kartu-petak" style="border-left-color:var(--nyata)" data-layar="musim">' +
+        '<span class="atas">' +
+          '<span class="nama">Tegal wetan</span>' +
+          '<span class="siapa">Pak Slamet · Kabupaten Rembang</span>' +
+          '<span class="cip nyata" style="margin-left:auto">Musim selesai</span>' +
+        '</span>' +
+        '<dl>' +
+          '<div><dt>Komoditas</dt><dd>Cabai merah besar</dd></div>' +
+          '<div><dt>Luas</dt><dd>0,19 ha</dd></div>' +
+          '<div><dt>Fase</dt><dd>BBCH 89</dd></div>' +
+          '<div><dt>Tanam</dt><dd>2 Mar 2026</dd></div>' +
+          '<div><dt>Tercatat</dt><dd>4 dari 4</dd></div>' +
+        '</dl>' +
+      '</button>' +
+    '</div>' +
+
+    '<div class="panel" style="margin-top:1.2rem">' +
+      '<p class="mata">Kenapa tidak ada peta di layar ini</p>' +
+      '<h2>Petak punya identitas, bukan bentuk</h2>' +
+      '<p>Tiap petak punya nomor tetap dan luas, tetapi <strong>geometrinya tidak pernah terbit</strong>. Yang tersimpan untuk Tegal lor cuma satu titik, dan mutunya ditandai apa adanya: <code>single_point</code>.</p>' +
+      '<p style="font-size:.9rem;color:var(--lemah)">Aturan <code>L7</code> menolak geometri publik. Menolak menampilkan peta petak orang adalah bagian dari yang dijual platform ini — bukan fitur yang belum sempat dibuat.</p>' +
+    '</div>' +
+
+    batas("Batas layar ini", [
+      "<strong>Petak dan pemiliknya adalah data pribadi</strong> menurut UU 27/2022. Tiap rekaman membawa <code>data_classification</code>, dan di sini nilainya <code>farm_private</code>.",
+      "<strong>Tiga petak ini contoh</strong>, disalin dari <code>spec/examples/</code>. Satu di antaranya lengkap; dua lainnya diberi bentuk yang sama untuk menunjukkan rupa daftar.",
+      "<strong>Fase BBCH tidak diukur otomatis.</strong> Ia diisi orang yang datang ke petak, dan kalau tidak ada yang datang, angkanya tetap yang terakhir."
+    ]);
+  }
+
+  /* --------------------------------------------------------------- layar 2 */
+  var LANGKAH = [
+    {
+      jenis: "relative", label: "Rencana · relatif tanam",
+      judul: "Produksi kompos",
+      kapan: "60 hari <b>sebelum</b> tanam · jendela 7 hari",
+      tanggal: "≈ 2 Mei 2026",
+      selesai: true
+    },
+    {
+      jenis: "relative", label: "Rencana · relatif tanam",
+      judul: "Pemberian kompos",
+      kapan: "14 hari <b>sebelum</b> tanam",
+      tanggal: "≈ 17 Jun 2026",
+      selesai: true
+    },
+    {
+      jenis: "stage", label: "Rencana · menempel fase",
+      judul: "Pemupukan N",
+      kapan: "Saat fase <b>Kuncup bunga pertama tampak</b>",
+      tanggal: "tidak punya tanggal",
+      selesai: true
+    },
+    {
+      jenis: "condition", label: "Rencana · menunggu ambang",
+      judul: "Pengendalian trips",
+      kapan: "Bila <b>populasi trips per daun muda ≥ 5</b>",
+      tanggal: "tidak punya tanggal",
+      selesai: false
+    }
+  ];
+
+  function relMusim() {
+    return '<div class="rel-bungkus"><div class="rel">' +
+      LANGKAH.map(function (s) {
+        return '<div class="rel-sel k-' + s.jenis + (s.selesai ? " selesai" : "") + '">' +
+          '<span class="rel-jenis">' + esc(s.label) + '</span>' +
+          '<span class="rel-judul">' + esc(s.judul) + '</span>' +
+          '<span class="rel-kapan">' + s.kapan + '</span>' +
+          '<span class="rel-kapan" style="color:var(--pudar)">' + s.tanggal + '</span>' +
+          (s.selesai ? '<span class="cip nyata">Tercatat</span>' : '<span class="cip simpang">Ambang terlampaui</span>') +
+        '</div>';
+      }).join("") +
+    '</div></div>' +
+    '<div class="kunci-rel">' +
+      '<span><i style="background:var(--rencana)"></i> relatif ke tanam — punya tanggal</span>' +
+      '<span><i style="background:var(--pena)"></i> menempel fase — tanpa tanggal</span>' +
+      '<span><i style="background:var(--simpang)"></i> menunggu ambang — tanpa tanggal</span>' +
+      '<span><i style="background:var(--nyata)"></i> sudah tercatat</span>' +
+    '</div>';
+  }
+
+  function layarMusim() {
+    return '' +
+    '<p class="mata">Tegal lor · Pak Slamet · Kabupaten Rembang</p>' +
+    '<h1>Cabai merah besar, musim Jul–Okt 2026</h1>' +
+    '<p style="margin:.2rem 0 1rem;color:var(--lemah)">Varietas menurut petani: <strong>Lado F1</strong> · protokol <em>Cabai merah besar — dataran rendah, lahan terbuka</em> v0.1.0 · 16.000 tanaman/ha · sasaran 12 t/ha.</p>' +
+
+    '<div class="panel">' +
+      '<p class="mata">Garis waktu musim</p>' +
+      '<h2>Empat langkah — dan hanya dua yang punya tanggal</h2>' +
+      '<p style="font-size:.92rem">Sumbu di bawah <strong>bukan kalender</strong>. Dua langkah bergantung pada tanggal tanam, satu menempel pada fase tanaman, satu menunggu ambang pengamatan. Merentangkan keempatnya di sumbu tanggal berarti mengarang tanggal untuk dua di antaranya.</p>' +
+      relMusim() +
+      '<p style="margin-top:.9rem;font-size:.9rem;color:var(--lemah)">Catatan langkah keempat, disalin apa adanya: <em>&ldquo;Aplikasi berbasis ambang, bukan berbasis kalender. Ini yang membedakan protokol dari jadwal semprot rutin.&rdquo;</em></p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="mata">Pengamatan 9 Agustus 2026</p>' +
+      '<h2>Ambang terlampaui</h2>' +
+      '<div class="banding">' +
+        '<div class="sisi r"><h4>Ambang di protokol</h4><div class="besar">5</div><div class="kecil">trips per daun muda</div></div>' +
+        '<div class="sisi n" style="border-left-color:var(--simpang)"><h4>Hasil pengamatan</h4><div class="besar">7</div><div class="kecil">contoh 20 daun · diamati 9 Agu 2026</div></div>' +
+      '</div>' +
+      '<p style="margin-top:.8rem">Pemicunya terpenuhi, jadi langkah pengendalian trips <strong>terbuka sekarang</strong> — bukan karena hari ini Selasa, melainkan karena angkanya lewat.</p>' +
+      '<p style="font-size:.9rem;color:var(--lemah)">Rencananya menyebut <strong>Abamektin 0,5 mL/L</strong> dengan pembawa 500 L/ha, disemprotkan ke daun. Itu <strong>hara dan bahan aktif</strong> — bukan merek. Merek dipilih di kios, dan dicatat belakangan sebagai realisasi.</p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="mata">Pemupukan N · rencana lawan realisasi</p>' +
+      '<h2>Yang direncanakan, dan yang benar-benar terjadi</h2>' +
+      '<div class="banding">' +
+        '<div class="sisi r"><h4>Rencana</h4><div class="besar">45 kg</div><div class="kecil">N per hektar (rentang 40–55) · saat kuncup bunga pertama tampak</div></div>' +
+        '<div class="sisi n"><h4>Realisasi 11 Agu 2026</h4><div class="besar">29,9 kg</div><div class="kecil">N per hektar · 65 kg Urea bersubsidi</div></div>' +
+      '</div>' +
+      '<div class="simpangan">' +
+        '<h4>Simpangan — Input tidak tersedia · terlambat</h4>' +
+        '<p><strong>&ldquo;Terlambat 6 hari; jatah Urea di kios habis. K₂O tidak diaplikasikan sama sekali karena KCl tidak ada.&rdquo;</strong></p>' +
+        '<p style="font-size:.88rem;color:var(--lemah)">Alasan simpangan bukan data kotor. &ldquo;Input tidak tersedia&rdquo; yang berulang di banyak petak adalah temuan rantai pasok — dan itulah yang mengubah alat kepatuhan jadi alat intelijen.</p>' +
+      '</div>' +
+      '<p style="margin-top:.8rem;font-size:.9rem;color:var(--lemah)">Catatan rencananya: <em>&ldquo;Dosis dinyatakan sebagai hara, bukan sebagai merek pupuk.&rdquo;</em> Aturan <code>L3</code> menolak langkah protokol yang menyebut produk komersial.</p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="mata">Catatan sekitar — lapis peer</p>' +
+      '<h2>Apa yang dicatat petak lain, bukan apa yang dianjurkan</h2>' +
+      '<p style="font-size:.92rem">Keputusan di lapangan datang dari sesama petani. Lapis ini menyalurkannya <strong>tanpa menjadi papan peringkat</strong>: yang tampil adalah pengamatan yang sudah tercatat di catatan musim petak lain — bukan pendapat, bukan bintang, bukan suara.</p>' +
+
+      '<div class="simpangan" style="background:var(--tolak-isi);border-color:var(--tolak)">' +
+        '<h4 style="color:var(--tolak)">Hari ini panel ini menolak menampilkan angka</h4>' +
+        '<p><strong>Penyebutnya 1.</strong> Baru satu petak di kecamatan ini punya catatan musim yang lengkap, dan agregat atas satu petak bukan pengalaman bersama — ia pengalaman satu orang yang menyamar jadi angka.</p>' +
+        '<p style="font-size:.88rem;color:var(--lemah)">Ambang minimum bukan kerapian, melainkan pertahanan: <strong>penyebut kecil justru tempat termurah untuk dibajak.</strong> Sepuluh catatan palsu tidak berarti apa-apa di antara 300, tetapi menguasai seluruh panel di antara 3.</p>' +
+      '</div>' +
+
+      '<p style="margin-top:.9rem;font-size:.92rem"><strong>Bentuk yang akan tampil</strong> setelah penyebutnya cukup — susunan kolomnya, bukan datanya. Angka di bawah <em>belum ada di repo</em> dan ditulis di sini semata-mata untuk menunjukkan rupa tabelnya.</p>' +
+      '<div class="pembungkus-tabel" style="opacity:.72"><table>' +
+        '<thead><tr><th>Bahan aktif dicatat untuk trips</th><th>Petak mencatat</th><th>Dari</th></tr></thead><tbody>' +
+          '<tr><td>Abamektin</td><td class="ang">—</td><td class="ang">n petak</td></tr>' +
+          '<tr><td>Spinetoram</td><td class="ang">—</td><td class="ang">n petak</td></tr>' +
+          '<tr><td>Tanpa aplikasi — ambang belum terlampaui</td><td class="ang">—</td><td class="ang">n petak</td></tr>' +
+        '</tbody></table></div>' +
+      '<p style="font-size:.86rem;color:var(--lemah);margin-top:.6rem">Urutan <strong>abjad</strong>, bukan frekuensi. Begitu ada urutan menurut popularitas, ada juara — dan juara bisa dibeli. Baris ketiga ikut tampil dengan sengaja: <strong>tidak menyemprot juga sebuah catatan</strong>, dan menghilangkannya membuat panel ini terbaca seolah semua orang menyemprot.</p>' +
+      '<div class="simpangan" style="background:var(--tolak-isi);border-color:var(--tolak)">' +
+        '<h4 style="color:var(--tolak)">Empat hal yang sengaja tidak dilakukan di sini</h4>' +
+        '<p><strong>Tidak ada merek.</strong> Agregasi berhenti di bahan aktif dan hara. Aturan <code>L3</code> — dan itu pula yang membuat lapis ini tidak bernilai bagi siapa pun yang ingin membeli penyebutan.</p>' +
+        '<p><strong>Tidak ada anjuran.</strong> &ldquo;Saya pakai X, hasilnya Y&rdquo; adalah <code>Observation</code>; &ldquo;pakai X&rdquo; adalah anjuran. Yang pertama boleh, yang kedua tidak.</p>' +
+        '<p><strong>Penyebutnya selalu ikut.</strong> 4 dari 11 tidak pernah tampil sebagai &ldquo;36%&rdquo; telanjang. Catatan dari 3 petak tidak boleh terbaca setara dengan 300.</p>' +
+        '<p><strong>Tidak ada peringkat.</strong> Tidak ada bintang, tidak ada suka, tidak ada urutan populer.</p>' +
+      '</div>' +
+      '<p style="margin-top:.8rem;font-size:.9rem;color:var(--lemah)"><strong>Kenapa lapis ini berdiri di sini dan bukan di lapisan gratis:</strong> penyumbangnya sudah punya petak, siklus, dan rekam jejak semusim. Tidak ada borang &ldquo;tulis pengalamanmu&rdquo; yang bisa diisi siapa saja — angka di atas adalah <em>efek samping</em> catatan yang memang sudah dibuat. Itu yang membuatnya paling mahal dipalsukan.</p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="mata">Satu rekaman, banyak bacaan</p>' +
+      '<h2>Siapa yang sedang membaca?</h2>' +
+      '<p style="font-size:.92rem">Rekaman di bawah <strong>satu dan sama</strong> untuk kelima pembaca. Yang berubah bukan datanya, melainkan medan mana yang boleh tampil — dan itu ditentukan <code>data_classification</code>, bukan pengaturan tampilan.</p>' +
+      '<div class="bacaan" role="group" aria-label="Pilih pembaca">' +
+        '<button type="button" data-baca="petani" aria-pressed="true">Petani</button>' +
+        '<button type="button" data-baca="penyuluh" aria-pressed="false">Penyuluh</button>' +
+        '<button type="button" data-baca="offtaker" aria-pressed="false">Offtaker</button>' +
+        '<button type="button" data-baca="bank" aria-pressed="false">Bank</button>' +
+        '<button type="button" data-baca="statistik" aria-pressed="false">Pemerintah</button>' +
+      '</div>' +
+      '<div id="bacaanIsi"></div>' +
+    '</div>' +
+
+    batas("Batas layar ini", [
+      "<strong>Protokol yang dipakai bertingkat bukti D</strong> — pengalaman tunggal yang belum terverifikasi. Alasannya ditulis sendiri di dalam protokolnya: isinya menunjukkan <em>bentuk</em> yang benar, bukan hasil uji lapangan, dan belum ditinjau agronom bernama. Aturan <code>L31</code> menahan tingkat D dari status <code>published</code>.",
+      "<strong>Seluruh isi repo masih berstatus <code>draft</code>.</strong> Tidak ada satu entitas pun yang sudah <code>published</code>.",
+      "<strong>Hara yang benar-benar masuk hanya bisa dihitung dari produk terdaftar berkomposisi.</strong> Untuk kompos, <code>L18</code> menolak menghitung hara dari batch yang belum diuji — kadar kompos berbeda tiap tumpukan.",
+      "<strong>Pengamatan bukan sensor.</strong> Angka 7 itu dihitung orang di petak atas 20 daun contoh. Kalau tidak ada yang datang menghitung, tidak ada angka — dan layar ini tidak menebakkannya."
+    ]);
+  }
+
+  /* ------------------------------------------------------------ lima bacaan */
+  var BACAAN = {
+    petani: {
+      dokumen: false,
+      judul: "Jadwal — apa yang menunggu dikerjakan",
+      isi:
+        "<p><strong>Sekarang:</strong> pengendalian trips terbuka. Ambang 5 per daun muda sudah terlampaui (hasil 7 pada 9 Agu).</p>" +
+        "<p><strong>Berikutnya:</strong> menunggu fase, bukan tanggal. Layar akan membukanya saat kamu mencatat fase berikutnya.</p>" +
+        "<h4 style=\"margin-top:.9rem\">Buku kas petak ini</h4>" +
+        "<div class=\"pembungkus-tabel\"><table>" +
+          "<thead><tr><th>Tanggal</th><th>Pos</th><th class=\"ang\">Biaya</th><th class=\"ang\">Jam kerja</th></tr></thead><tbody>" +
+          "<tr><td>11 Agu 2026</td><td>Urea bersubsidi 65 kg</td><td class=\"ang\">" + rp(41000) + "</td><td class=\"ang\">4</td></tr>" +
+          "<tr><td>9 Agu 2026</td><td>Pengamatan trips</td><td class=\"ang\">—</td><td class=\"ang\">1</td></tr>" +
+          "<tr><td>17 Jun 2026</td><td>Pemberian kompos (batch KOMPOS-A3)</td><td class=\"ang\">—</td><td class=\"ang\">6</td></tr>" +
+          "</tbody><tfoot><tr><td colspan=\"2\">Sampai hari ini</td><td class=\"ang\">" + rp(41000) + "</td><td class=\"ang\">11</td></tr></tfoot>" +
+        "</table></div>" +
+        "<p style=\"font-size:.88rem;color:var(--lemah);margin-top:.7rem\">Tenaga kerja 11 jam orang, 2 orang, sumber keluarga. Buku kas ini <strong>milikmu</strong> — bisa diekspor dan dibaca tanpa platform ini.</p>",
+      tertahan: "Buku kas inilah satu-satunya bagian yang petani mau isi <strong>untuk dirinya sendiri</strong>. Empat bacaan lain kebetulan terpenuhi dari catatan yang sama — bukan sebaliknya."
+    },
+    penyuluh: {
+      dokumen: true,
+      judul: "Laporan — apa yang menyimpang, dan kenapa",
+      isi:
+        "<p>Tegal lor, Kabupaten Rembang. Empat langkah terjadwal, <strong>tiga tercatat</strong> (75%), dan satu masih terbuka menunggu tindakan.</p>" +
+        "<p>Satu simpangan tercatat dengan alasan substantif: pemupukan N terlambat enam hari karena jatah Urea di kios habis, dan K₂O tidak diberikan sama sekali karena KCl tidak tersedia. Realisasi hara 29,9 kg N/ha terhadap rencana 45 kg N/ha.</p>" +
+        "<p>Ambang trips terlampaui pada 9 Agustus (7 terhadap ambang 5, contoh 20 daun). Tindakan pengendalian belum tercatat.</p>",
+      tertahan: "<strong>Yang tidak ikut ke bacaan ini:</strong> koordinat petak dan identitas pemilik di luar nama panggilan. Penyuluh butuh angkanya, bukan lokasinya."
+    },
+    offtaker: {
+      dokumen: true,
+      judul: "Bukti — berkas bertulang SNI 8969:2021",
+      isi:
+        "<p>Sasaran sertifikasi yang dinyatakan siklus ini: <strong>IndoGAP SNI 8969:2021</strong>. Berkas tersusun dari catatan musim, bukan dari borang terpisah.</p>" +
+        "<p>Masukan yang tercatat: kompos kotoran sapi proses termofilik (batch KOMPOS-A3), Urea bersubsidi 65 kg. Bahan aktif pengendalian yang direncanakan: Abamektin 0,5 mL/L, disemprotkan ke daun.</p>" +
+        "<p>Ketertelusuran masukan ke nomor pendaftaran resmi tersedia untuk produk terdaftar. Untuk sediaan buatan sendiri, yang tersedia nomor batch dan kriteria pelepasannya.</p>",
+      tertahan: "<strong>Yang ditahan, dan penolakannya adalah bagian dari yang dijual:</strong> geometri petak mentah tidak diserahkan tanpa persetujuan — termasuk kepada pembayar. <strong>Tenggang panen tidak dinyatakan</strong>: angka 7 hari di rencana berasal dari protokol bertingkat bukti D, bukan dari uji residu, dan bukan dari registri."
+    },
+    bank: {
+      dokumen: true,
+      judul: "Berkas — bahan penilaian, bukan penilaian",
+      isi:
+        "<p>Petak 0,28 ha, tenure milik sendiri, irigasi pompa. Satu musim cabai merah besar tercatat: biaya masukan " + rp(41000) + " tercatat sampai 22 Agustus 2026, tenaga kerja 11 jam orang dari keluarga.</p>" +
+        "<p>Riwayat kepatuhan protokol: tiga dari empat langkah terjadwal tercatat, satu simpangan beralasan substantif.</p>" +
+        "<p>Untuk AUTP, premi petani Rp36.000/ha/musim dengan subsidi Rp144.000. Berkas ini bisa mengisi sebagian besar borang pengajuannya — hambatan AUTP selama ini administrasi, bukan tarif.</p>",
+      tertahan: "<strong>Tidak ada skor kredit, dan tidak akan pernah ada.</strong> Menyediakan bahan penilaian sah; memberi skor menjadikan platform ini penjaga gerbang atas akses modal — peran yang membatalkan netralitasnya. Yang menilai tetap bank."
+    },
+    statistik: {
+      dokumen: false,
+      judul: "Statistik — agregat, tanpa petak",
+      isi:
+        "<p>Kabupaten Rembang, musim Jul–Okt 2026, cabai merah besar. Rekaman ini masuk sebagai <strong>satu petak anonim</strong> di dalam agregat kecamatan.</p>" +
+        "<ul>" +
+          "<li>Alasan simpangan terbanyak sejauh ini: <strong>input tidak tersedia</strong>.</li>" +
+          "<li>Ambang trips terlampaui pada satu petak, minggu kedua Agustus.</li>" +
+        "</ul>" +
+        "<p style=\"font-size:.9rem;color:var(--lemah)\">Angka pertama adalah temuan rantai pasok yang bisa ditindaklanjuti. Angka kedua adalah <strong>pengamatan</strong>.</p>",
+      tertahan: "<strong>Pengamatan bukan wabah.</strong> Peta titik laporan tanpa verifikasi bisa memicu penyemprotan massal yang tidak perlu — kerugiannya ditanggung petani, untungnya jatuh ke penjual pestisida. Verifikasi tetap milik POPT; layar ini cuma memberi lengan pada rantai yang sudah ada."
+    }
+  };
+
+  function gambarBacaan(kunci) {
+    var b = BACAAN[kunci];
+    var wadah = document.getElementById("bacaanIsi");
+    if (!wadah) return;
+    wadah.innerHTML =
+      '<div class="hasil-bacaan' + (b.dokumen ? " dokumen" : "") + '">' +
+        '<h4>' + esc(b.judul) + '</h4>' + b.isi +
+      '</div>' +
+      '<div class="tertahan">' + b.tertahan + '</div>';
+    document.querySelectorAll("[data-baca]").forEach(function (t) {
+      t.setAttribute("aria-pressed", String(t.dataset.baca === kunci));
+    });
+  }
+
+  /* --------------------------------------------------------------- layar 3
+     Menolak menjadwal. Dirancang sebagus dua layar lainnya, karena inilah
+     yang membedakan lapis eksekusi ini dari aplikasi pengingat. */
+  function layarTolak() {
+    return '' +
+    '<p class="mata">Tegal lor · permintaan yang ditolak</p>' +
+    '<h1>&ldquo;Kirimi saya pengingat tanggalnya&rdquo;</h1>' +
+
+    '<div class="tolakan">' +
+      '<h2>Dua dari empat langkah tidak punya tanggal — dan tidak akan pernah punya</h2>' +
+      '<p>Bukan karena belum diisi. <strong>Medannya memang tidak ada.</strong> Sebuah fase tanaman tidak menyimpan hari, dan sebuah ambang pengamatan tidak tahu kapan ia akan terlampaui.</p>' +
+      '<div class="pembungkus-tabel"><table>' +
+        '<thead><tr><th>Langkah</th><th>Ditentukan oleh</th><th>Bisa dijadwalkan?</th></tr></thead><tbody>' +
+          '<tr><td>Produksi kompos</td><td>60 hari sebelum tanam</td><td><span class="cip nyata">Ya</span></td></tr>' +
+          '<tr><td>Pemberian kompos</td><td>14 hari sebelum tanam</td><td><span class="cip nyata">Ya</span></td></tr>' +
+          '<tr><td>Pemupukan N</td><td>Fase &ldquo;kuncup bunga pertama tampak&rdquo;</td><td><span class="cip tolak">Tidak</span></td></tr>' +
+          '<tr><td>Pengendalian trips</td><td>Ambang ≥ 5 trips per daun muda</td><td><span class="cip tolak">Tidak</span></td></tr>' +
+        '</tbody></table></div>' +
+      '<p style="margin-top:.8rem">Pengingat bertanggal untuk dua baris terbawah adalah <strong>janji palsu</strong>. Ia akan berbunyi pada hari yang dikarang, dan yang menanggung akibatnya orang yang menyemprot terlalu cepat atau terlalu lambat.</p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="mata">Yang bisa dilakukan sebagai gantinya</p>' +
+      '<h2>Pengingat untuk melihat, bukan untuk mengerjakan</h2>' +
+      '<p>Yang bisa dijadwalkan bukan tindakannya, melainkan <strong>pengamatannya</strong>. &ldquo;Hitung trips di 20 daun muda&rdquo; bisa diulang tiap pekan; hasilnya yang menentukan apakah langkah berikutnya terbuka.</p>' +
+      '<div class="banding">' +
+        '<div class="sisi r"><h4>Bisa dijadwalkan</h4><div class="besar">Lihat</div><div class="kecil">hitung trips di 20 daun muda, tiap pekan</div></div>' +
+        '<div class="sisi n" style="border-left-color:var(--tolak)"><h4>Tidak bisa dijadwalkan</h4><div class="besar">Semprot</div><div class="kecil">terbuka hanya setelah angkanya lewat ambang</div></div>' +
+      '</div>' +
+      '<p style="margin-top:.8rem;font-size:.9rem;color:var(--lemah)">Pembalikan ini yang membedakan protokol dari jadwal semprot rutin — dan jadwal semprot rutin adalah persis kebiasaan yang paling mahal di lapangan.</p>' +
+    '</div>' +
+
+    '<div class="tolakan">' +
+      '<h2>&ldquo;Kapan aman panen?&rdquo; — juga tidak dijawab</h2>' +
+      '<div class="besar-tolak" style="color:var(--tolak)">0</div>' +
+      '<p style="margin-top:.2rem">dari <strong>23.058</strong> penggunaan berlabel di registri memuat tenggang panen. Nol. Tidak satu pun.</p>' +
+      '<p>Rencana pengendalian di petak ini memang mencantumkan <strong>7 hari</strong> — tetapi angka itu berasal dari protokol bertingkat bukti <strong>D</strong>, bukan dari registri dan bukan dari uji residu. Menampilkannya sebagai tanggal aman panen akan membuatnya terbaca seperti hasil uji, dan itu angka yang paling melukai kalau salah.</p>' +
+      '<p style="font-size:.92rem"><strong>Yang tertulis sebagai gantinya:</strong> tenggang panen tidak tercatat di registri, dan pertanyaannya dibawa ke penyuluh. Lebih baik mengaku tidak tahu daripada mengarang angka yang menyangkut keselamatan.</p>' +
+    '</div>' +
+
+    '<div class="aksi">' +
+      '<button type="button" data-layar="musim">Kembali ke musim →</button>' +
+      '<button type="button" class="sekunder" data-layar="petak">Daftar petak</button>' +
+    '</div>' +
+
+    batas("Batas layar ini", [
+      "<strong>Tingkat bukti protokol: D.</strong> Enum tingkat bukti di skema ini A–D, dan D berarti &ldquo;pengalaman tunggal belum terverifikasi&rdquo;. Menaikkannya menuntut agronom yang mau menempelkan namanya.",
+      "<strong>Ambang 5 trips per daun muda juga berasal dari protokol yang sama</strong>, jadi ia mewarisi tingkat bukti yang sama. Ambang yang salah menghasilkan penyemprotan yang salah.",
+      "<strong>Umpan balik lapangan bisa menaikkan tingkat bukti D ke A</strong> — tetapi belum, dan sampai itu terjadi layar ini menyebut tingkatnya di muka.",
+      "<strong>Layar ini tidak tahu cuaca.</strong> Prakiraan BMKG bisa disambungkan, tetapi belum — dan menebak hujan besok bukan sesuatu yang boleh dikarang."
+    ], true);
+  }
+
+  function batas(judul, poin, buka) {
+    return '<details class="batas"' + (buka ? " open" : "") + '><summary>' + judul + '</summary>' +
+      '<div class="isi"><ul>' + poin.map(function (p) { return "<li>" + p + "</li>"; }).join("") + '</ul></div></details>';
+  }
+
+  /* --------------------------------------------------------------- kendali */
+  function pilih(nama) {
+    document.querySelectorAll(".krom [data-layar]").forEach(function (t) {
+      t.setAttribute("aria-pressed", String(t.dataset.layar === nama));
+    });
+    if (nama === "petak") el.innerHTML = layarPetak();
+    else if (nama === "musim") { el.innerHTML = layarMusim(); gambarBacaan("petani"); }
+    else el.innerHTML = layarTolak();
+
+    el.querySelectorAll("[data-layar]").forEach(function (b) {
+      b.addEventListener("click", function () { pilih(b.dataset.layar); });
+    });
+    el.querySelectorAll("[data-baca]").forEach(function (b) {
+      b.addEventListener("click", function () { gambarBacaan(b.dataset.baca); });
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  document.querySelectorAll(".krom [data-layar]").forEach(function (t) {
+    t.addEventListener("click", function () { pilih(t.dataset.layar); });
+  });
+
+  var tombolTema = document.querySelectorAll(".tema [data-tema]");
+  tombolTema.forEach(function (t) {
+    t.addEventListener("click", function () {
+      var p = t.dataset.tema;
+      if (p === "sistem") delete document.documentElement.dataset.theme;
+      else document.documentElement.dataset.theme = p;
+      tombolTema.forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.tema === p)); });
+    });
+  });
+
+  pilih("petak");
+})();
+</script>

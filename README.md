@@ -18,6 +18,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/13-memo-hukum-pasal-77.md`](docs/13-memo-hukum-pasal-77.md) | Memo pertanyaan untuk penasihat hukum: kumulatif atau alternatif pada Pasal 77 ayat (1), dan apa yang berubah menurut jawabannya |
 | [`docs/14-tinjauan-gejala.md`](docs/14-tinjauan-gejala.md) | Daftar tinjauan sepuluh teks gejala OPT untuk agronom atau BPTP; dibangkitkan dari kosakata, dengan entri lemah ditandai sendiri |
 | [`docs/15-kapabilitas-lintas-pemangku.md`](docs/15-kapabilitas-lintas-pemangku.md) | Riset & benchmarking 21 sistem (9 luar negeri, 12 Indonesia), inventaris 16 keputusan hulu, dan 39 kapabilitas dengan putusan bangun/pinjam/sambung/tunda/jangan per kapabilitas |
+| [`docs/16-sumber-harga-komoditas.md`](docs/16-sumber-harga-komoditas.md) | Sumber harga komoditas dipilah menurut lisensi, putusan pinjam/bangun per lapis, dan kenapa "harga produsen" yang dicatat negara sebenarnya harga pengumpul |
 | [`docs/principal-terdaftar.md`](docs/principal-terdaftar.md) | 2.305 principal pemegang pendaftaran pupuk & pestisida, beserta keputusan cakupannya |
 | [`docs/01-sediaan-buatan-sendiri.md`](docs/01-sediaan-buatan-sendiri.md) | Riset & standar praktik meramu sendiri — kompos, MOL, bioaktivator, pestisida nabati — beserta tujuh syarat sebuah praktik boleh dianjurkan mesin |
 | [`docs/02-tiga-pasar.md`](docs/02-tiga-pasar.md) | Segmentasi, target, dan posisi — kenapa pengguna, pembayar, dan kontributor harus disegmentasi terpisah |
@@ -28,6 +29,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/07-jalur-keabsahan-benih-bibit.md`](docs/07-jalur-keabsahan-benih-bibit.md) | Jalur 4 — empat surat yang bunyinya mirip, dan kenapa sisi bibit lebih berbahaya |
 | [`docs/08-jalur-sediaan-pupuk.md`](docs/08-jalur-sediaan-pupuk.md) | Jalur 5 — sisi yang lapang: di luar rezim pendaftaran lewat Pasal 72, tidak menunggu apa pun |
 | [`docs/09-jalur-sediaan-pengendali.md`](docs/09-jalur-sediaan-pengendali.md) | Jalur 6 — sisi yang terikat: Pasal 77 melarang mengedarkan dan menggunakan, menunggu pendapat hukum |
+| [`docs/17-tiga-konsep-ui.md`](docs/17-tiga-konsep-ui.md) | Tiga konsep UI berbeda tesis beserta prototipe yang bisa diklik di [`docs/konsep-ui/`](docs/konsep-ui/): kotak tanya, meja periksa keaslian, dan petak-musim — apa yang tiap konsep taruhkan, dan mana yang direkomendasikan |
 
 Kosakata sudah terisi: **15 skala fase dengan 868 fase** — empat belas kunci BBCH dari
 monografnya (Solanaceae, padi, jagung, kedelai, kentang, kopi, cucurbit, brassica, buncis,

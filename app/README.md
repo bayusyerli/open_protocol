@@ -131,9 +131,13 @@ berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
 - **Nol hasil dibuka dengan alasannya.** Nama di kemasan sering berbeda dari nama
   terdaftarnya, dan pemetaannya belum ada; layar menyebut itu lebih dulu sebelum
   apa pun yang lain.
-- **Tema tiga keadaan, bukan dua.** "Ikut sistem" adalah bawaan dan harus bisa dipilih
-  kembali; tombol terang/gelap saja tidak memberi jalan pulang. Pilihannya dipasang
-  sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+- **Tema satu ikon, tiga keadaan.** Ketukannya berputar sistem → terang → gelap →
+  sistem, dan ikonnya menyatakan yang sedang berlaku. Tiga keadaan, bukan dua: "ikut
+  sistem" adalah bawaan dan harus bisa dipilih kembali — tombol yang cuma berpindah
+  terang/gelap tidak memberi jalan pulang. Labelnya menyebut keadaan sekarang **dan**
+  tujuan ketukan berikutnya, sebab ikon sendiri tidak bisa mengatakan keduanya dan
+  tombol berputar yang tidak menyebut tujuannya memaksa orang mencobanya untuk tahu.
+  Pilihannya dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
 - **Beranda tidak ikut terinstrumentasi.** `ukur.js` menghitung per jalur, dan pintu
   depan bukan jalur — memberinya nomor karangan akan mengubah tabel yang sudah
   didefinisikan di [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md).
