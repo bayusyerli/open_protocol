@@ -91,7 +91,7 @@ header, main { max-width: var(--lebar); margin: 0 auto; }
 
 .jalur {
   margin: 0 0 .35rem;
-  font-size: .78rem;
+  font-size: .84rem;
   letter-spacing: .06em;
   text-transform: uppercase;
   color: var(--teks-lemah);
@@ -230,6 +230,11 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 /* ------------------------------------------------------------------ batas */
 .batas { margin: 2.5rem 0 0; border-top: 1px solid var(--garis); padding-top: 1rem; }
 .batas summary { cursor: pointer; font-weight: 600; font-size: .92rem; }
+
+/* Label bagian ini judul sungguhan sejak 23 Agustus 2026, supaya h3 di dalamnya punya
+   induk dan tidak ada layar yang melompat h1 → h3. Gayanya sengaja tidak berubah:
+   yang diperbaiki strukturnya, bukan rupanya. */
+.batas summary h2 { display: inline; margin: 0; font: inherit; }
 .batas-isi { font-size: .9rem; color: var(--teks-lemah); }
 .batas-isi strong, .batas-isi em { color: var(--teks); }
 
@@ -253,7 +258,40 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
    kalimat, yang paling perlu terbaca. */
 a { color: var(--aksen); }
 
-.lain { margin: 2rem 0 0; font-size: .92rem; }
+/* Navigasi antarjalur dipakai di kebun, kerap dengan tangan basah. Tautannya tadinya
+   setinggi 17 px — tinggi baris teks belaka. `inline-block` beserta padding tegaknya
+   membawa kotak sentuh ke ~44 px tanpa mengubah rupa barisnya; `line-height` dinaikkan
+   supaya kotak yang membesar tidak saling menindih saat barisnya membungkus. */
+.lain { margin: 2rem 0 0; font-size: .92rem; line-height: 2.4; }
+.lain a { display: inline-block; padding: .55rem 0; }
+
+/* ------------------------------------------------------ tombol tindakan */
+/* `ukur.html` punya dua tombol dan sampai 23 Agustus 2026 tidak ada satu pun aturan
+   untuknya: keduanya memakai bawaan peramban, setinggi 22 px. Salah satunya menghapus
+   seluruh catatan dan tidak bisa dibatalkan — sasaran sentuh sebesar itu untuk aksi
+   yang tidak bisa ditarik kembali adalah kekeliruan yang mahal di layar sempit. */
+
+#tindakan .tombol-baris { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+#tindakan button {
+  min-height: 44px;
+  padding: .6rem 1rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar-kartu);
+  color: var(--teks);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#tindakan button:hover { border-color: var(--aksen); background: var(--aksen-lemah); }
+#tindakan button:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+/* Yang menghapus diberi rupa yang berbeda. Dua tombol berdampingan yang tampak sama
+   membuat yang merusak sama mudahnya diketuk dengan yang tidak. */
+#tindakan #hapus { border-color: var(--bahaya); color: var(--bahaya); }
+#tindakan #hapus:hover { background: var(--bahaya-lemah); border-color: var(--bahaya); }
 
 /* ------------------------------------------------------- kalkulator jalur 3 */
 .masukan { margin-top: .9rem; }

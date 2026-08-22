@@ -1,6 +1,7 @@
 # Audit Permukaan `app/` — sembilan temuan, dan apa yang ternyata bersih
 
-> Audit · 23 Agustus 2026 · status **selesai; temuan 1, 2, 3, 4, dan 6 sudah diperbaiki**
+> Audit · 23 Agustus 2026 · status **selesai; delapan dari sembilan temuan sudah diperbaiki**
+> — sisa satu: temuan 5.
 > Cakupan: kedelapan halaman di [`app/`](../app/) — beranda, jalur 1–6, dan `ukur.html`.
 > Metode: sapuan statis atas seluruh berkas, lalu **pemeriksaan berjalan di peramban**
 > pada tiap halaman — bukan pembacaan kode saja.
@@ -20,9 +21,9 @@
 | 4 | ~~`tombolKembali()` mati, dan enam salinan penangannya hidup~~ — **diperbaiki** | sedang | `pustaka.js`, enam jalur |
 | 5 | Setiap muat halaman membayar satu perjalanan pulang-pergi per berkas | sedang | `pustaka.js:24` |
 | 6 | ~~`batas.js` merender tingkat bukti yang sudah dinyatakannya cacat~~ — **diperbaiki** | kecil | `batas.js` |
-| 7 | Jalur 2 melompat `h1 → h3` begitu JavaScript menyala | kecil | `index.html` |
-| 8 | Dua halaman menaut ke dirinya sendiri | kecil | `index.html`, `jalur-4.html` |
-| 9 | Teks 12,5 px dan sasaran sentuh 17 px | kecil | `batas.css`, `gaya.css` |
+| 7 | ~~Jalur 2 melompat `h1 → h3`~~ — **diperbaiki** | kecil | enam HTML, `gaya.css` |
+| 8 | ~~Dua halaman menaut ke dirinya sendiri~~ — **diperbaiki** | kecil | `index.html`, `jalur-4.html` |
+| 9 | ~~Teks 12,5 px dan sasaran sentuh 17 px~~ — **diperbaiki** | kecil | `batas.css`, `gaya.css`, `beranda.css` |
 
 Bagian 2 mencatat apa yang **diperiksa dan ternyata bersih** — sama pentingnya, karena
 tanpa itu daftar di atas terbaca seolah seluruh permukaan bermasalah.
@@ -242,10 +243,29 @@ dalam `<details class="batas">`. Urutan terukurnya `1,3,3,3,3,2,3`.
 Ketujuh halaman lain lolos karena masing-masing punya `h2` lain yang bertahan. Hanya
 jalur 2 yang tidak.
 
+> **Diperbaiki 23 Agustus 2026.** Label `<details class="batas">` jadi judul sungguhan —
+> `<summary><h2>…</h2></summary>` — di keenam halaman yang punya blok itu, bukan hanya di
+> jalur 2. Menaikkan `h3` jadi `h2` pada jalur 2 saja hanya memindahkan salahnya: pada
+> **semua** halaman `h3` di dalam blok itu menggantung tanpa induk tingkat dua, dan enam
+> di antaranya kebetulan lolos karena ada kartu ber-`h2` mendahuluinya. Jalur 2 tidak
+> punya kartu itu begitu `#tanpaJs` dihapus JavaScript — jadi yang tampak sebagai cacat
+> satu halaman sebenarnya cacat struktur yang enam halaman sembunyikan.
+>
+> Rupanya sengaja tidak berubah: `.batas summary h2 { display: inline; font: inherit; }`.
+> Nol lompatan judul di kedelapan halaman.
+
 ### 8 · Dua halaman menaut ke dirinya sendiri — kecil
 
 `index.html` dan `jalur-4.html` memuat tautan ke dirinya sendiri di daftar `.lain`.
 Daftar itu ditulis tangan delapan kali; dua di antaranya sudah menyimpang.
+
+> **Diperbaiki 23 Agustus 2026.** Kedua tautan ke halaman sendiri dibuang; enam halaman
+> lain memang sudah menghilangkan dirinya dari daftar.
+>
+> **Daftarnya tetap ditulis tangan delapan kali, dan itu keputusan.** Membangkitkannya
+> dari JavaScript akan mematikan navigasi antarjalur pada halaman tanpa JavaScript —
+> satu-satunya bagian yang masih bekerja penuh di sana. Risiko menyimpangnya diterima;
+> gantinya, sapuan pemeriksa sekarang memuat uji tautan-ke-diri-sendiri.
 
 ### 9 · Teks 12,5 px dan sasaran sentuh 17 px — kecil
 
@@ -261,6 +281,34 @@ Bukan pelanggaran WCAG (tidak ada ambang ukuran huruf di sana), tetapi bergeseka
 dengan syarat lapangan yang dinyatakan proyek ini sendiri.
 
 ---
+
+> **Diperbaiki 23 Agustus 2026.** Ambang 13 px dan 44 px di bawah ini **pilihan proyek
+> ini, bukan ambang WCAG** — WCAG tidak mengatur ukuran huruf sama sekali, dan sasaran
+> sentuh minimumnya 24 px (AA). Yang dipakai di sini syarat lapangannya sendiri: HP
+> entry-level, di kebun, kerap dengan tangan basah.
+>
+> **Ukuran teks** — seluruh medan `bj-*` naik ke 13,4–14,4 px, dan `.jalur` ke 13,4 px.
+>
+> **Sasaran sentuh** — navigasi `.lain` 17 → **53 px**; nama sumber di blok batas
+> 17 → **44 px**; di beranda "Tentang data" 17 → 44, tombol tema 34 → 44 (40×44 di layar
+> sempit), tautan kaki dan blok merek → 44.
+>
+> **Yang ikut ketahuan saat memverifikasi, dan ikut diperbaiki:** `ukur.html` punya dua
+> tombol dan **tidak ada satu pun aturan gaya untuknya** — keduanya bawaan peramban,
+> setinggi 22 px. Salah satunya menghapus seluruh catatan dan tidak bisa dibatalkan.
+> Keduanya kini 44 px, dan yang menghapus diberi rupa berbeda: dua tombol berdampingan
+> yang tampak sama membuat yang merusak sama mudahnya diketuk dengan yang tidak.
+>
+> **Yang sengaja dibiarkan**, dan alasannya:
+> - Tautan `jalur-6.html:64` setinggi 19 px — ia **di dalam kalimat**, dan WCAG 2.5.8
+>   memang mengecualikan tautan sebaris di dalam kalimat. Membesarkannya merusak
+>   paragrafnya.
+> - Lencana `.lencana` 11,2 px, serta `dt` dan `.sumber` di `ukur.html` 12,8 px —
+>   di bawah ambang pilihan sendiri, tetapi menaikkannya mengubah irama daftar hasil,
+>   dan tidak satu pun disebut temuan ini.
+> - Skala kecil milik `beranda.css` (9–12 px pada label mata, `small`, dan cip jaringan)
+>   — itu sistem rupa tersendiri milik pintu depan. Mengubahnya perancangan ulang, bukan
+>   perbaikan, dan tidak diukur oleh temuan ini.
 
 ## 2. Yang diperiksa dan ternyata bersih
 
@@ -311,9 +359,10 @@ permukaan rapuh.
 3. **Sampel nomor pendaftaran 4.000 dari 7.724** pestisida; sebaran panjangnya bisa
    sedikit berbeda pada keseluruhan, tetapi keberadaan nomor tak seragam sudah cukup
    membuktikan temuan 2.
-4. **Lima dari sembilan sudah diperbaiki** — temuan 1, 2, 3, 4, dan 6, ditandai di
-   tempatnya masing-masing. Empat sisanya masih terbuka (5, 7, 8, 9), dan tidak satu pun
-   terhalang oleh yang lain.
+4. **Delapan dari sembilan sudah diperbaiki**, ditandai di tempatnya masing-masing.
+   Yang tersisa **temuan 5** — satu perjalanan pulang-pergi per berkas tiap muat halaman.
+   Ia satu-satunya yang menuntut perubahan cara indeks dinamai dan disajikan, bukan
+   perbaikan setempat, dan karena itu ditahan sebagai pekerjaan tersendiri.
 5. **Temuan 6 dan sebagian temuan 9 berasal dari kode yang ditulis hari ini juga**, dalam
    sesi yang sama dengan audit ini. Audit atas pekerjaan sendiri lebih lemah daripada
    audit orang lain, dan keduanya sengaja tidak diturunkan bobotnya karena itu.
