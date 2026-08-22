@@ -59,7 +59,7 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 
 | Modul | Fase | Isi | Bergantung pada |
 |---|---|---|---|
-| **M0 · Trust layer** | 1 | Kadensi penyegaran registri, pendapat hukum, lisensi, review agronom | — |
+| **M0 · Trust layer** | 1 | Lisensi **selesai**; kadensi registri, pendapat hukum, dan review agronom masih terbuka | — |
 | **MI · Instrumentasi** | 2 | **Selesai** — lihat [11-instrumentasi.md](11-instrumentasi.md) | — |
 | **M1 · Protokol** | 3 (prasyarat) | **Selesai** — skema Lapis 2, `L30`–`L33`, satu protokol cabai empat langkah | M0 selesai untuk jalur 6 |
 | **M2 · Rencana musim** | 3 | **Penyusun selesai** — `spec/tools/susun-rencana.mjs`; belum ada permukaan | M1 |
@@ -96,8 +96,16 @@ Sebagian besar bukan kode, dan justru itu sebabnya mudah tertunda.
 - **Pendapat hukum Pasal 77 ayat (1).** Menentukan apakah jalur 6 boleh naik dari catatan
   status hukum jadi anjuran. Ancamannya 7 tahun dan Rp5 miliar; lihat
   [09-jalur-sediaan-pengendali.md](09-jalur-sediaan-pengendali.md).
-- **Lisensi.** Kode Apache-2.0 dan konten CC BY-SA 4.0 baru berstatus rekomendasi di
-  [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md) bagian 0, belum keputusan.
+- **Lisensi — SUDAH DIPUTUSKAN**, 20 Agustus 2026. Kode Apache-2.0, konten kurasi
+  CC BY-SA 4.0. Rekomendasi di [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md)
+  keputusan ke-5 kini diambil; batas dan pengecualiannya di [`LISENSI.md`](../LISENSI.md).
+
+  > Batasnya bukan "kode versus dokumen". Sebagian besar `.json` di sini justru kurasi,
+  > dan sebagian `.md` justru dokumentasi kode — yang membedakan adalah apa yang
+  > dilindungi, bukan formatnya. Tiga hal sengaja **tidak** dilisensikan siapa pun:
+  > fakta di registri resmi (bukan milik kami untuk dilisensikan — yang kami lisensikan
+  > kurasi di atasnya), dokumen pihak ketiga seperti CORESTA Guide N° 7, dan **data usaha
+  > tani yang milik petani**.
 - **Review agronom** atas sepuluh teks gejala jalur 1, yang berstatus draft dan
   mengatakannya sendiri di layar.
 
