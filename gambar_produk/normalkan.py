@@ -237,10 +237,15 @@ def main() -> int:
 
     jadi = gagal = lewat = 0
     for rec in baris:
+        # _berkas_mentah adalah bidang serah-terima antara pemanen dan alat ini; skema
+        # menolaknya. Dibuang dari SETIAP baris, bukan hanya yang diproses — baris yang
+        # sudah ditolak pemanennya pun bisa membawanya, sebab berkasnya telanjur diunduh
+        # sebelum gambarnya dilihat dan dinilai tidak layak.
+        nama_mentah = rec.pop("_berkas_mentah", "")
         if rec.get("review", {}).get("status") != "mentah":
             lewat += 1
             continue
-        asal = mentah / rec.pop("_berkas_mentah", "")
+        asal = mentah / nama_mentah
         if not asal.exists():
             rec.setdefault("review", {}).update(
                 {"status": "ditolak", "reason": f"berkas mentah hilang: {asal.name}", "at": sekarang})

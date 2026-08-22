@@ -48,7 +48,19 @@ for p in pecahan:
                 n += 1
                 continue
             if st == "ditolak" and st_lama != "ditolak":
-                continue  # tolakan lama kalah dari panen yang sudah ada; diam saja
+                continue  # tolakan kalah dari panen yang sudah ada; diam saja
+            # Dua tolakan untuk kunci yang sama: yang BELAKANGAN menang. Ia pemeriksaan
+            # yang lebih baru, dan biasanya lebih rinci — tolakan PRIMA-BUAH putaran kedua
+            # menyebut tanggal, kode HTTP, dan ukuran badan halaman, sedangkan yang pertama
+            # hanya menyebut fotonya belum diunggah. Keadaan situs berubah; catatan yang
+            # lebih segar yang berlaku.
+            if st == "ditolak" and st_lama == "ditolak":
+                digantikan.append(
+                    f"{k[0]} | {k[1]} — tolakan {p.name} menggantikan tolakan lama "
+                    f"di {asal[k][0]} (pemeriksaan lebih baru)")
+                baris[lama_i] = rec
+                asal[k] = (p.name, lama_i)
+                continue
             tabrakan.append(f"{k[0]} | {k[1]} — {p.name} vs {asal[k][0]}")
             continue
         asal[k] = (p.name, len(baris))
