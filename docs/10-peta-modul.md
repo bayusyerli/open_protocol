@@ -59,7 +59,7 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 
 | Modul | Fase | Isi | Bergantung pada |
 |---|---|---|---|
-| **M0 · Trust layer** | 1 | Lisensi **selesai**; kadensi registri, pendapat hukum, dan review agronom masih terbuka | — |
+| **M0 · Trust layer** | 1 | Lisensi dan kadensi registri **selesai**; pendapat hukum dan review agronom masih terbuka | — |
 | **MI · Instrumentasi** | 2 | **Selesai** — lihat [11-instrumentasi.md](11-instrumentasi.md) | — |
 | **M1 · Protokol** | 3 (prasyarat) | **Selesai** — skema Lapis 2, `L30`–`L33`, satu protokol cabai empat langkah | M0 selesai untuk jalur 6 |
 | **M2 · Rencana musim** | 3 | **Penyusun selesai** — `spec/tools/susun-rencana.mjs`; belum ada permukaan | M1 |
@@ -71,10 +71,17 @@ keputusannya disalin ke sini supaya dokumen ini berdiri sendiri.
 
 Sebagian besar bukan kode, dan justru itu sebabnya mudah tertunda.
 
-- **Kadensi penyegaran registri.** `spec/tools/tarik-registri.mjs` sudah ada dan bisa
-  diulang, tetapi belum ada yang menetapkan seberapa sering ia dijalankan dan siapa yang
-  memeriksa hasilnya. Registri yang basi pada lapisan gratis bukan sekadar tidak akurat —
-  ia menyatakan produk terdaftar padahal izinnya sudah lewat.
+- **Kadensi penyegaran registri — SUDAH DIPUTUSKAN**, 20 Agustus 2026: **per musim**,
+  sebelum jendela tanam dibuka. Penyuluh yang menarik, pemilik repositori yang memeriksa.
+  Prosedurnya di [12-kadensi-registri.md](12-kadensi-registri.md).
+
+  > **Menulis prosedurnya membongkar rantai yang putus.** `tarik-registri.mjs` menulis ke
+  > `data-registri/`, sementara alat turunannya membaca `pukpes_data/raw/` — direktori dan
+  > nama berkasnya sama-sama berbeda, dan tidak ada yang menjembatani. Penarik akan
+  > berjalan mulus, berkasnya benar-benar muncul, tidak ada galat, dan **kosakata tidak
+  > berubah sama sekali.** Sampai jembatannya ditulis, langkah itu dilakukan tangan —
+  > dan menulisnya adalah cara paling langsung mengurangi kerja tak dibayar yang diminta
+  > dari penyuluh.
 
   > **Kegagalan yang sama bisa datang dari dua sumber, dan baru satu yang terjaga.**
   > Layar yang menyatakan sebuah produk terdaftar padahal tidak bisa lahir dari registri
