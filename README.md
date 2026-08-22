@@ -27,6 +27,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/07-jalur-keabsahan-benih-bibit.md`](docs/07-jalur-keabsahan-benih-bibit.md) | Jalur 4 — empat surat yang bunyinya mirip, dan kenapa sisi bibit lebih berbahaya |
 | [`docs/08-jalur-sediaan-pupuk.md`](docs/08-jalur-sediaan-pupuk.md) | Jalur 5 — sisi yang lapang: di luar rezim pendaftaran lewat Pasal 72, tidak menunggu apa pun |
 | [`docs/09-jalur-sediaan-pengendali.md`](docs/09-jalur-sediaan-pengendali.md) | Jalur 6 — sisi yang terikat: Pasal 77 melarang mengedarkan dan menggunakan, menunggu pendapat hukum |
+| [`docs/17-tiga-konsep-ui.md`](docs/17-tiga-konsep-ui.md) | Tiga konsep UI berbeda tesis beserta prototipe yang bisa diklik di [`docs/konsep-ui/`](docs/konsep-ui/): kotak tanya, meja periksa keaslian, dan petak-musim — apa yang tiap konsep taruhkan, dan mana yang direkomendasikan |
 
 Kosakata sudah terisi: **15 skala fase dengan 868 fase** — empat belas kunci BBCH dari
 monografnya (Solanaceae, padi, jagung, kedelai, kentang, kopi, cucurbit, brassica, buncis,

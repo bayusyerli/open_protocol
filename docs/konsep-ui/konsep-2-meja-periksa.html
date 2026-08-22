@@ -1,0 +1,775 @@
+<meta charset="utf-8">
+<title>Meja Periksa</title>
+<meta name="description" content="Konsep 2 — layar pertama adalah pemeriksaan keaslian input: cocokkan nomor pendaftaran di kemasan sebelum uang keluar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@400;600;700&display=swap">
+
+<style>
+/* ==========================================================================
+   KONSEP 2 · MEJA PERIKSA
+   Tesis: layar pertama bukan pertanyaan, melainkan pemeriksaan. Yang di
+   tanganmu ini terdaftar atau tidak — dan apa persisnya arti "terdaftar".
+
+   Rupa: sengaja BUKAN hijau rumah. Konsep ini memimpin dengan posisi
+   platform sebagai PEMERIKSA, bukan penganjur, jadi dunianya dunia loket:
+   kertas dokumen, tinta stempel biru tua, deret angka bermono. Warna hijau /
+   amber / merah dipakai HANYA sebagai putusan, tidak sebagai hiasan — kalau
+   aksennya juga hijau, putusan "terdaftar" kehilangan bunyinya.
+
+   Huruf: Barlow Condensed untuk kata putusan dan label borang (huruf papan
+   pengumuman); IBM Plex Sans untuk teks; IBM Plex Mono untuk nomor
+   pendaftaran — karena pekerjaan yang sebenarnya diminta dari pengguna adalah
+   membandingkan angka karakter demi karakter.
+   ========================================================================== */
+
+:root {
+  color-scheme: light;
+
+  --tinta:     #15191c;
+  --lemah:     #4f585e;
+  --pudar:     #828d94;
+
+  --kertas:    #ffffff;
+  --kanvas:    #eceee9;
+  --relung:    #e0e3dd;
+  --garis:     #c6ccc5;
+  --garis-tua: #9aa39c;
+
+  --stempel:     #16324f;
+  --stempel-isi: #e3eaf2;
+
+  --cocok:     #256b40;
+  --cocok-isi: #e2f0e6;
+  --syarat:     #7d5300;
+  --syarat-isi: #fbefd6;
+  --nihil:     #97281e;
+  --nihil-isi: #f8e5e2;
+
+  --di-gelap: #ffffff;
+  --fokus:    #1f6fb2;
+
+  --sudut: 3px;
+  --kolom: 36rem;
+
+  --papan: "Barlow Condensed", "Arial Narrow", "Helvetica Neue", sans-serif;
+  --baca:  "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, "Menlo", "Consolas", monospace;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --tinta:     #e7eaec;
+    --lemah:     #a3aeb4;
+    --pudar:     #7b868c;
+    --kertas:    #1a1f23;
+    --kanvas:    #0f1316;
+    --relung:    #232a2f;
+    --garis:     #363f45;
+    --garis-tua: #55606a;
+    --stempel:     #8bb8e2;
+    --stempel-isi: #16273a;
+    --cocok:     #6fcb92;
+    --cocok-isi: #14301f;
+    --syarat:     #eec06a;
+    --syarat-isi: #33280f;
+    --nihil:     #f0968a;
+    --nihil-isi: #3a1e1a;
+    --di-gelap: #0f1316;
+    --fokus:    #6fb8f0;
+  }
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --tinta:     #e7eaec;
+  --lemah:     #a3aeb4;
+  --pudar:     #7b868c;
+  --kertas:    #1a1f23;
+  --kanvas:    #0f1316;
+  --relung:    #232a2f;
+  --garis:     #363f45;
+  --garis-tua: #55606a;
+  --stempel:     #8bb8e2;
+  --stempel-isi: #16273a;
+  --cocok:     #6fcb92;
+  --cocok-isi: #14301f;
+  --syarat:     #eec06a;
+  --syarat-isi: #33280f;
+  --nihil:     #f0968a;
+  --nihil-isi: #3a1e1a;
+  --di-gelap: #0f1316;
+  --fokus:    #6fb8f0;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--kanvas);
+  color: var(--tinta);
+  font-family: var(--baca);
+  font-size: 16.5px;
+  line-height: 1.6;
+  -webkit-text-size-adjust: 100%;
+}
+
+:where(a, button, input, select, summary):focus-visible {
+  outline: 3px solid var(--fokus);
+  outline-offset: 2px;
+}
+
+.label {
+  font-family: var(--papan);
+  font-size: .82rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--lemah);
+  margin: 0;
+}
+
+/* ------------------------------------------------------------ krom peninjau */
+.krom { position: sticky; top: 0; z-index: 20; background: var(--stempel); color: #ffffff; }
+:root[data-theme="dark"] .krom { background: var(--stempel-isi); color: var(--tinta); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .krom { background: var(--stempel-isi); color: var(--tinta); }
+}
+.krom-dalam { max-width: var(--kolom); margin: 0 auto; padding: .5rem .9rem .6rem; display: flex; flex-wrap: wrap; gap: .4rem .5rem; align-items: center; }
+.krom-tanda { width: 100%; font-family: var(--papan); font-size: .78rem; font-weight: 600; letter-spacing: .11em; text-transform: uppercase; opacity: .72; }
+.krom button {
+  font-family: var(--papan);
+  font-size: .92rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+  padding: .35rem .6rem; min-height: 34px;
+  color: inherit; background: transparent;
+  border: 1px solid currentColor; border-radius: var(--sudut);
+  cursor: pointer; opacity: .8;
+}
+.krom button:hover { opacity: 1; }
+.krom button[aria-pressed="true"] { background: currentColor; opacity: 1; }
+.krom button[aria-pressed="true"] span { color: var(--stempel); }
+:root[data-theme="dark"] .krom button[aria-pressed="true"] span { color: var(--stempel-isi); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .krom button[aria-pressed="true"] span { color: var(--stempel-isi); }
+}
+
+/* -------------------------------------------------------------------- loket */
+.loket { background: var(--stempel); color: #ffffff; border-bottom: 4px solid var(--tinta); }
+:root[data-theme="dark"] .loket { background: var(--relung); color: var(--tinta); border-bottom-color: var(--garis-tua); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .loket { background: var(--relung); color: var(--tinta); border-bottom-color: var(--garis-tua); }
+}
+.loket-dalam { max-width: var(--kolom); margin: 0 auto; padding: 1.1rem .9rem 1.3rem; }
+.loket .label { color: inherit; opacity: .72; }
+.loket h1 {
+  font-family: var(--papan);
+  margin: .15rem 0 .5rem;
+  font-size: 2.2rem;
+  line-height: .98;
+  font-weight: 700;
+  letter-spacing: .005em;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+.loket p.sub { margin: 0 0 1rem; font-size: .93rem; opacity: .88; max-width: 30rem; }
+
+.borang { display: grid; gap: .55rem; }
+.borang label { font-family: var(--papan); font-size: .9rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; opacity: .8; }
+.borang input {
+  width: 100%;
+  padding: .75rem .8rem;
+  font-family: var(--mono);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--tinta);
+  background: var(--kertas);
+  border: 3px solid var(--tinta);
+  border-radius: var(--sudut);
+}
+.borang input::placeholder { color: var(--pudar); letter-spacing: .08em; }
+.borang .baris { display: grid; grid-template-columns: 1fr auto; gap: .5rem; }
+.borang button.utama {
+  padding: 0 1.3rem; min-height: 56px;
+  font-family: var(--papan); font-size: 1.15rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  color: var(--tinta); background: #ffffff;
+  border: 3px solid var(--tinta); border-radius: var(--sudut);
+  cursor: pointer;
+}
+:root[data-theme="dark"] .borang button.utama { background: var(--tinta); color: var(--kertas); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .borang button.utama { background: var(--tinta); color: var(--kertas); }
+}
+.tempel { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .2rem; }
+.tempel button {
+  font-family: var(--mono); font-size: .8rem;
+  padding: .45rem .6rem; min-height: 40px;
+  color: inherit; background: rgb(255 255 255 / 12%);
+  border: 1px solid rgb(255 255 255 / 35%); border-radius: var(--sudut);
+  cursor: pointer;
+}
+:root[data-theme="dark"] .tempel button { background: var(--kertas); border-color: var(--garis); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .tempel button { background: var(--kertas); border-color: var(--garis); }
+}
+.tempel button:hover { border-color: currentColor; }
+.tempel small { display: block; font-family: var(--baca); font-size: .68rem; opacity: .7; letter-spacing: .04em; text-transform: uppercase; }
+
+main { max-width: var(--kolom); margin: 0 auto; padding: 1.2rem .9rem 5rem; }
+
+/* --------------------------------------------------------------- putusan
+   Bentuknya berbeda per keadaan, bukan cuma warnanya: pita padat untuk
+   terdaftar, pita bergaris untuk bersyarat, pita berbingkai tebal untuk
+   tidak ditemukan. Layar yang cuma berbeda warna gagal dibaca di bawah
+   matahari, dan gagal total bagi yang buta warna. */
+.putusan { border-radius: var(--sudut); overflow: hidden; margin-bottom: 1rem; }
+.putusan .pita {
+  padding: .85rem 1rem;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .3rem .7rem;
+}
+.putusan .kata {
+  font-family: var(--papan);
+  font-size: 2rem; line-height: 1; font-weight: 700;
+  letter-spacing: .02em; text-transform: uppercase;
+}
+.putusan .apa { font-size: .88rem; }
+.putusan .isi { padding: .9rem 1rem 1rem; background: var(--kertas); border: 1px solid var(--garis); border-top: 0; }
+
+.putusan.ya .pita { background: var(--cocok); color: var(--di-gelap); }
+.putusan.ya .isi { border-color: var(--cocok); }
+
+.putusan.syarat .pita {
+  color: var(--tinta);
+  background: repeating-linear-gradient(135deg, var(--syarat-isi) 0 12px, var(--kanvas) 12px 24px);
+  border-bottom: 3px solid var(--syarat);
+}
+.putusan.syarat .isi { border-color: var(--syarat); }
+
+.putusan.tidak .pita {
+  color: var(--nihil);
+  background: var(--nihil-isi);
+  border: 4px solid var(--nihil);
+  border-bottom-width: 0;
+}
+.putusan.tidak .isi { border: 4px solid var(--nihil); border-top: 0; }
+
+/* ------------------------------------------------------------------ panel */
+.panel { background: var(--kertas); border: 1px solid var(--garis); border-radius: var(--sudut); padding: .9rem 1rem; margin-bottom: 1rem; }
+.panel > :first-child { margin-top: 0; }
+.panel > :last-child { margin-bottom: 0; }
+.panel h2 { font-family: var(--papan); font-size: 1.4rem; line-height: 1.1; font-weight: 700; letter-spacing: .02em; text-transform: uppercase; margin: .2rem 0 .5rem; }
+.panel h3 { font-family: var(--papan); font-size: 1.05rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; margin: 1.1rem 0 .35rem; }
+.panel p { margin: .5rem 0; }
+
+.panel.tegas { border-width: 3px; border-color: var(--tinta); }
+
+dl.borang-baca { margin: 0; display: grid; grid-template-columns: 10rem 1fr; gap: .35rem .9rem; font-size: .93rem; }
+dl.borang-baca dt { font-family: var(--papan); font-size: .82rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--lemah); padding-top: .15rem; }
+dl.borang-baca dd { margin: 0; }
+dl.borang-baca dd.no { font-family: var(--mono); font-size: .95rem; letter-spacing: .06em; }
+@media (max-width: 27rem) {
+  dl.borang-baca { grid-template-columns: 1fr; gap: 0; }
+  dl.borang-baca dt { margin-top: .55rem; }
+}
+
+.pembungkus-tabel { overflow-x: auto; margin: .6rem 0 0; }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { text-align: left; padding: .45rem .55rem; border-bottom: 1px solid var(--garis); vertical-align: top; }
+th { font-family: var(--papan); font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--lemah); white-space: nowrap; }
+td.mono { font-family: var(--mono); font-size: .84rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+
+/* ------------------------------------------------------ banding karakter */
+.banding { margin: .8rem 0 0; }
+.banding-baris { display: flex; flex-wrap: wrap; align-items: center; gap: .5rem .8rem; margin-bottom: .45rem; }
+.banding-baris .tag { font-family: var(--papan); font-size: .8rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--lemah); min-width: 8.5rem; }
+.deret { display: flex; gap: 2px; overflow-x: auto; padding-bottom: 2px; }
+.deret b {
+  font-family: var(--mono); font-size: 1rem; font-weight: 600;
+  width: 1.5rem; min-width: 1.5rem; height: 2rem;
+  display: grid; place-items: center;
+  background: var(--relung); border: 1px solid var(--garis); border-radius: 2px;
+}
+.deret b.beda { background: var(--nihil-isi); border-color: var(--nihil); color: var(--nihil); }
+
+/* ------------------------------------------------------------ dua bacaan */
+.dua { display: grid; gap: .7rem; margin: .7rem 0 0; }
+@media (min-width: 34rem) { .dua { grid-template-columns: 1fr 1fr; } }
+.dua > div { padding: .75rem .85rem; background: var(--kanvas); border: 1px solid var(--garis-tua); border-radius: var(--sudut); }
+.dua h4 { font-family: var(--papan); font-size: .95rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; margin: 0 0 .3rem; }
+.dua p { margin: 0; font-size: .88rem; }
+
+/* ------------------------------------------------------------- kalkulator */
+.hitung { display: grid; gap: .6rem; margin: .7rem 0 0; }
+.hitung .medan { display: grid; gap: .25rem; }
+.hitung label { font-family: var(--papan); font-size: .85rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--lemah); }
+.hitung input, .hitung select {
+  padding: .6rem .7rem; min-height: 48px;
+  font-family: var(--mono); font-size: 1rem;
+  color: var(--tinta); background: var(--kanvas);
+  border: 2px solid var(--garis-tua); border-radius: var(--sudut);
+}
+.hitung .sepasang { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
+.hasil { margin: .8rem 0 0; padding: .8rem .9rem; background: var(--stempel-isi); border-left: 5px solid var(--stempel); border-radius: 0 var(--sudut) var(--sudut) 0; }
+.hasil b { font-family: var(--papan); display: block; font-size: 2rem; line-height: 1; font-weight: 700; font-variant-numeric: tabular-nums; }
+.hasil span { font-size: .88rem; color: var(--lemah); }
+.hasil .kerja { margin: .5rem 0 0; font-family: var(--mono); font-size: .8rem; color: var(--lemah); }
+
+/* --------------------------------------------------------- batas jawaban */
+.batas { border: 3px solid var(--garis-tua); border-radius: var(--sudut); background: var(--relung); margin-bottom: 1rem; }
+.batas > summary {
+  padding: .7rem .9rem; min-height: 50px;
+  display: flex; align-items: center; gap: .5rem;
+  cursor: pointer; list-style: none;
+  font-family: var(--papan); font-size: 1.05rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+}
+.batas > summary::-webkit-details-marker { display: none; }
+.batas > summary::after { content: "Buka"; margin-left: auto; font-size: .8rem; letter-spacing: .06em; color: var(--lemah); }
+.batas[open] > summary::after { content: "Tutup"; }
+.batas .isi { padding: 0 .9rem .9rem; font-size: .9rem; }
+.batas ul { margin: .4rem 0 0; padding-left: 1.1rem; }
+.batas li + li { margin-top: .3rem; }
+
+.aksi { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: .8rem; }
+.aksi button {
+  padding: .6rem .9rem; min-height: 50px;
+  font-family: var(--papan); font-size: 1rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+  color: var(--di-gelap); background: var(--stempel);
+  border: 2px solid var(--stempel); border-radius: var(--sudut);
+  cursor: pointer;
+}
+.aksi button.sekunder { color: var(--tinta); background: transparent; border-color: var(--garis-tua); }
+
+.kaki { max-width: var(--kolom); margin: 0 auto; padding: 1.2rem .9rem 3rem; font-size: .82rem; color: var(--lemah); border-top: 1px solid var(--garis); }
+.kaki p { margin: .3rem 0; }
+
+.tema { display: flex; border: 1px solid currentColor; border-radius: var(--sudut); overflow: hidden; opacity: .85; }
+.tema button {
+  font-family: var(--papan); font-size: .82rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
+  padding: .3rem .5rem; min-height: 32px;
+  border: 0; background: transparent; color: inherit; cursor: pointer;
+}
+.tema button + button { border-left: 1px solid currentColor; }
+.tema button[aria-pressed="true"] { background: rgb(255 255 255 / 22%); }
+</style>
+
+<div class="krom">
+  <div class="krom-dalam">
+    <span class="krom-tanda">Konsep 2 · Meja Periksa — krom peninjau, bukan bagian produk</span>
+    <button type="button" data-layar="meja" aria-pressed="true"><span>1 · Meja</span></button>
+    <button type="button" data-layar="cocok" aria-pressed="false"><span>2 · Terdaftar</span></button>
+    <button type="button" data-layar="nihil" aria-pressed="false"><span>3 · Tidak ditemukan</span></button>
+    <span style="flex:1"></span>
+    <div class="tema" role="group" aria-label="Tampilan layar">
+      <button type="button" data-tema="sistem" aria-pressed="true">Sistem</button>
+      <button type="button" data-tema="light" aria-pressed="false">Terang</button>
+      <button type="button" data-tema="dark" aria-pressed="false">Gelap</button>
+    </div>
+  </div>
+</div>
+
+<div class="loket">
+  <div class="loket-dalam">
+    <p class="label">Open Protocols · pemeriksa, bukan penganjur</p>
+    <h1>Periksa dulu, sebelum bayar</h1>
+    <p class="sub">
+      Ketik nomor pendaftaran yang tercetak di karung atau botol. Gratis, tanpa akun,
+      dan nomornya tidak dikirim ke mana pun.
+    </p>
+
+    <form class="borang" id="formPeriksa">
+      <label for="no">Nomor pendaftaran di kemasan</label>
+      <div class="baris">
+        <input id="no" name="no" type="text" inputmode="numeric" autocomplete="off"
+               spellcheck="false" placeholder="0102 0120 2273 29">
+        <button class="utama" type="submit">Periksa</button>
+      </div>
+      <div class="tempel">
+        <button type="button" data-no="01020120227329"><small>Contoh — ada di registri</small>01020120227329</button>
+        <button type="button" data-no="31028128227329"><small>Contoh — bentuk sah, tidak ada</small>31028128227329</button>
+        <button type="button" data-no="01.01.2022.1248"><small>Contoh — pupuk</small>01.01.2022.1248</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<main id="hasil" aria-live="polite"></main>
+
+<footer class="kaki">
+  <p><strong>Open Protocols</strong> — 14.920 produk terdaftar disalin apa adanya dari registri Kementan.</p>
+  <p>Nomor yang kamu ketik tidak dikirim ke mana pun. Yang tersimpan hanya hitungan di peranti ini sendiri.</p>
+</footer>
+
+<script>
+(function () {
+  "use strict";
+
+  /* Rekaman di bawah disalin apa adanya dari spec/vocab/product/. Tidak ada
+     nomor pendaftaran yang dikarang — kecuali 31028128227329, yang memang
+     nomor karangan sungguhan yang tertangkap di jalur panen gambar repo ini,
+     dan dipakai justru sebagai contoh kasusnya. */
+  var REGISTRI = {
+    "01020120227329": {
+      nama: "MANTRA 80 WP",
+      kategori: "Pestisida — fungisida",
+      pemegang: "CV. SARAREA PANEN RAYA",
+      bentuk: "Fungisida yang bersifat protektif berbentuk tepung yang dapat disuspensikan",
+      isi: "Mankozeb 80%",
+      status: "Aktif",
+      berlaku: "27 Juni 2022 – 27 Juni 2027",
+      diperiksa: "19 Agustus 2026",
+      pakai: [
+        ["Cabai", "Penyakit Busuk Daun", "2 g/l"],
+        ["Tomat", "Penyakit Busuk Daun", "2 g/l"],
+        ["Bawang Merah", "Penyakit Bercak Daun", "2 g/l"]
+      ]
+    },
+    "010120221248": {
+      nama: "PHONSKA",
+      kategori: "Pupuk — NPK",
+      pemegang: "PETROKIMIA GRESIK",
+      bentuk: "Pupuk anorganik majemuk",
+      isi: "N 150 g/kg · P₂O₅ 80 g/kg · K₂O 100 g/kg  (grade 15-8-10)",
+      status: "Aktif",
+      berlaku: "—",
+      diperiksa: "19 Agustus 2026",
+      pakai: []
+    }
+  };
+
+  var el = document.getElementById("hasil");
+  var kotak = document.getElementById("no");
+
+  function esc(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c];
+    });
+  }
+  function angka(s) { return String(s).replace(/[^0-9]/g, ""); }
+  function rapi(n) { return n.replace(/(\d{4})(?=\d)/g, "$1 "); }
+
+  function batas(judul, poin, buka) {
+    return '<details class="batas"' + (buka ? " open" : "") + '><summary>' + judul + '</summary>' +
+      '<div class="isi"><ul>' + poin.map(function (p) { return "<li>" + p + "</li>"; }).join("") + '</ul></div></details>';
+  }
+
+  /* ------------------------------------------------------------- layar 1 */
+  function layarMeja() {
+    return '' +
+    '<div class="panel tegas">' +
+      '<p class="label">Yang bisa dijawab meja ini</p>' +
+      '<h2>Satu pertanyaan, dijawab jujur</h2>' +
+      '<p><strong>Apakah nomor ini ada di registri Kementan?</strong> Itu saja — dan itu sudah lebih dari yang bisa didapat dari penjual yang hidup dari margin.</p>' +
+      '<div class="dua">' +
+        '<div><h4>Yang dibuktikan</h4><p>Nomor itu <strong>terdaftar</strong>, atas nama siapa, untuk isi apa, dan sampai kapan berlakunya.</p></div>' +
+        '<div><h4>Yang tidak dibuktikan</h4><p>Bahwa <strong>isi karung yang kamu pegang</strong> memang barang itu. Nomor bisa disalin; isi bisa diganti.</p></div>' +
+      '</div>' +
+      '<p style="margin-top:.9rem;font-size:.9rem;color:var(--lemah)">Menyamakan keduanya akan membuat platform ini menjamin sesuatu yang tidak bisa dijaminnya — dan pemalsu yang menyalin nomor sah akan lolos justru dengan bantuan kami.</p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="label">Sambil menunggu</p>' +
+      '<h2>Tiga hal di kemasan yang bisa kamu cek sendiri</h2>' +
+      '<p>Semuanya tanpa alat, dan semuanya tentang <em>kemasan</em> — bukan tentang isinya.</p>' +
+      '<ol style="padding-left:1.2rem;margin:.6rem 0 0">' +
+        '<li style="margin-bottom:.5rem"><strong>Nomor pendaftaran tercetak, bukan ditempel stiker.</strong> Cocokkan angkanya dengan yang kamu ketik di atas — karakter demi karakter, bukan sekilas.</li>' +
+        '<li style="margin-bottom:.5rem"><strong>Nama pemegang pendaftaran ada di kemasan</strong>, dan sama dengan yang muncul di layar ini.</li>' +
+        '<li><strong>Jahitan, segel, dan berat.</strong> Karung yang pernah dibuka dan dijahit ulang biasanya masih terlihat jahitan lamanya.</li>' +
+      '</ol>' +
+      '<p style="margin-top:.8rem;font-size:.88rem;color:var(--lemah)">Daftar ini pendek dengan sengaja. Ciri kemasan yang lebih rinci berbeda-beda tiap principal, dan registri tidak memuatnya sama sekali.</p>' +
+    '</div>' +
+
+    batas("Batas meja ini", [
+      "<strong>Registri tidak memuat ciri fisik kemasan.</strong> Tiga hal di atas adalah akal sehat yang bisa diperiksa siapa pun, bukan data terkurasi.",
+      "<strong>Nama dagang belum terpetakan ke nama terdaftar.</strong> Kalau nomornya tidak terbaca, mencari lewat nama belum tentu menemukannya — dan itu bukan bukti produknya tidak terdaftar.",
+      "<strong>Meja ini tidak menerima laporan resmi.</strong> Jalur pelaporan kecurigaan belum ada; yang tersedia baru penunjuk ke siapa yang menanganinya."
+    ]);
+  }
+
+  /* ------------------------------------------------------------- layar 2 */
+  function layarCocok(no) {
+    var p = REGISTRI[angka(no)];
+    if (!p) return layarNihil(no);
+    return '' +
+    '<div class="putusan ya">' +
+      '<div class="pita"><span class="kata">Terdaftar</span><span class="apa">Nomor ini ada di registri Kementan</span></div>' +
+      '<div class="isi">' +
+        '<dl class="borang-baca">' +
+          '<dt>Nomor</dt><dd class="no">' + esc(rapi(angka(no))) + '</dd>' +
+          '<dt>Nama terdaftar</dt><dd><strong>' + esc(p.nama) + '</strong></dd>' +
+          '<dt>Kategori</dt><dd>' + esc(p.kategori) + '</dd>' +
+          '<dt>Pemegang</dt><dd>' + esc(p.pemegang) + '</dd>' +
+          '<dt>Isi terdaftar</dt><dd>' + esc(p.isi) + '</dd>' +
+          '<dt>Bentuk</dt><dd>' + esc(p.bentuk) + '</dd>' +
+          '<dt>Status</dt><dd>' + esc(p.status) + '</dd>' +
+          '<dt>Masa berlaku</dt><dd class="no">' + esc(p.berlaku) + '</dd>' +
+        '</dl>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="putusan syarat">' +
+      '<div class="pita"><span class="kata">Tapi —</span><span class="apa">yang barusan dibuktikan, dan yang tidak</span></div>' +
+      '<div class="isi">' +
+        '<p style="margin-top:0"><strong>Nomor yang cocok membuktikan nomornya terdaftar. Bukan isi karungnya benar.</strong></p>' +
+        '<p>Pemalsu yang menyalin nomor sah akan lolos pemeriksaan ini. Yang membuat pemeriksaan ini tetap bernilai: nomor yang <em>tidak</em> cocok hampir selalu berarti sesuatu, dan itu ketahuan sebelum uang keluar.</p>' +
+        '<p style="margin-bottom:0;font-size:.9rem;color:var(--lemah)">Kementan menaksir kerugian petani akibat pupuk palsu Rp3,3 triliun (2026). Taksiran itu taksiran kementerian, bukan studi independen — dipakai di sini sebagai penanda skala, bukan dasar hitungan.</p>' +
+      '</div>' +
+    '</div>' +
+
+    (p.pakai.length ?
+    '<div class="panel">' +
+      '<h3 style="margin-top:0">Terdaftar untuk</h3>' +
+      '<div class="pembungkus-tabel"><table>' +
+        '<thead><tr><th>Komoditas</th><th>OPT sasaran</th><th>Dosis terdaftar</th></tr></thead><tbody>' +
+        p.pakai.map(function (u) { return "<tr><td>" + esc(u[0]) + "</td><td>" + esc(u[1]) + "</td><td class=\"mono\">" + esc(u[2]) + "</td></tr>"; }).join("") +
+      '</tbody></table></div>' +
+      '<p style="font-size:.88rem;color:var(--lemah)">Dosis milik pendaftaran produk ini sendiri. Produk lain dengan isi yang sama bisa punya dosis terdaftar yang berbeda.</p>' +
+    '</div>' : "") +
+
+    '<div class="panel">' +
+      '<p class="label">Kalau jadi dipakai — D4</p>' +
+      '<h2>Berapa tangki, dan berapa isinya</h2>' +
+      '<p style="font-size:.92rem">Dosis &ldquo;2 g/l&rdquo; tidak berguna kalau tangkinya belum jelas berapa liter dan petaknya berapa. Aritmetikanya ditulis terbuka supaya bisa dibantah siapa pun.</p>' +
+      '<div class="hitung">' +
+        '<div class="sepasang">' +
+          '<div class="medan"><label for="luas">Luas petak (m²)</label><input id="luas" type="number" inputmode="numeric" value="1000" min="1"></div>' +
+          '<div class="medan"><label for="tangki">Isi tangki (liter)</label><input id="tangki" type="number" inputmode="numeric" value="15" min="1"></div>' +
+        '</div>' +
+        '<div class="sepasang">' +
+          '<div class="medan"><label for="volume">Volume semprot (L/ha)</label><input id="volume" type="number" inputmode="numeric" value="500" min="1"></div>' +
+          '<div class="medan"><label for="dosis">Dosis label</label><input id="dosis" type="number" inputmode="decimal" step="0.1" value="2" min="0"></div>' +
+        '</div>' +
+        '<div class="medan"><label for="satuan">Satuan dosis di label</label>' +
+          '<select id="satuan">' +
+            '<option value="g" selected>g/l — bahan berbentuk tepung atau butiran</option>' +
+            '<option value="ml">ml/l — bahan berbentuk cairan</option>' +
+          '</select></div>' +
+      '</div>' +
+      '<div class="hasil" id="hasilHitung"></div>' +
+      '<p style="font-size:.86rem;color:var(--lemah);margin-top:.8rem"><strong>Volume semprot bukan anjuran kami.</strong> Registri tidak memuatnya sama sekali — angka itu yang kamu pakai sekarang, dan kalkulator ini cuma membagi.</p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="label">Kalau menakar pakai alat rumah — D5</p>' +
+      '<h2>Ukur tutup botolmu sekali saja</h2>' +
+      '<p style="font-size:.92rem">Meja ini <strong>tidak</strong> menyediakan tabel &ldquo;satu tutup botol = sekian ml&rdquo;. Tutup botol tidak seragam, dan tabel yang salah pada dosis adalah tabel yang melukai orang.</p>' +
+      '<p style="font-size:.92rem">Yang benar sekali kerja: isi tutup botolmu dengan air, tuang ke gelas ukur atau alat suntik bekas tanpa jarum, catat angkanya, lalu pakai angka itu seterusnya.</p>' +
+      '<div class="hitung"><div class="medan"><label for="tutup">Isi satu tutup botolmu (ml)</label><input id="tutup" type="number" inputmode="decimal" step="0.5" value="5" min="0.5"></div></div>' +
+      '<div class="hasil" id="hasilTakar"></div>' +
+      '<p style="font-size:.86rem;color:var(--lemah);margin-top:.8rem">Tutup botol mengukur <strong>volume</strong>. Kalau dosis di label dinyatakan dalam <strong>berat</strong>, keduanya tidak bisa saling ditukar tanpa berat jenis — dan berat jenis tidak ada di registri.</p>' +
+    '</div>' +
+
+    '<div class="panel">' +
+      '<p class="label">Keselamatan — B2</p>' +
+      '<h2>Sebelum menyemprot</h2>' +
+      '<p>Pelindung minimum: penutup hidung dan mulut, sarung tangan, lengan panjang, celana panjang, dan sepatu tertutup. Jangan menyemprot melawan arah angin. Jangan makan, minum, atau merokok selama menyemprot.</p>' +
+      '<p style="font-size:.9rem;color:var(--lemah)">Kalau terkena kulit atau mata, bilas dengan air mengalir dan bawa <strong>kemasannya</strong> saat mencari pertolongan — isi kemasan itu yang menentukan penanganannya.</p>' +
+    '</div>' +
+
+    batas("Batas jawaban ini", [
+      "<strong>Tingkat bukti: fakta terdaftar.</strong> Disalin apa adanya dari registri Kementan, tanpa penilaian mutu dan tanpa peringkat.",
+      "<strong>Tanggal data:</strong> rekaman ini diperiksa terhadap registri pada " + esc(p.diperiksa) + ".",
+      "<strong>Tenggang panen (PHI) tidak ditampilkan</strong> — nol dari 23.058 penggunaan berlabel di registri memuatnya. Tanggal aman panen tidak bisa dijanjikan di layar mana pun, dan mengarang angkanya menyangkut keselamatan.",
+      "<strong>Isi karung tidak diperiksa.</strong> Yang cocok cuma nomornya.",
+      "<strong>Harga dan status subsidi tidak ada di registri</strong> — 0 dari 7.196 pupuk membawa penanda subsidi."
+    ], true);
+  }
+
+  /* ------------------------------------------------------------- layar 3
+     Tidak ditemukan. Dirancang sebagus layar "terdaftar", karena inilah
+     layar yang paling menentukan apakah orang percaya meja ini. */
+  function layarNihil(no) {
+    var diketik = angka(no) || "31028128227329";
+    var asli = "01020120227329";
+    var sepanjang = diketik.length === asli.length;
+
+    var deretKetik = diketik.split("").map(function (c, i) {
+      var beda = sepanjang && c !== asli[i];
+      return '<b class="' + (beda ? "beda" : "") + '">' + esc(c) + "</b>";
+    }).join("");
+    var deretAsli = asli.split("").map(function (c, i) {
+      var beda = sepanjang && c !== diketik[i];
+      return '<b class="' + (beda ? "beda" : "") + '">' + esc(c) + "</b>";
+    }).join("");
+    var jumlahBeda = sepanjang ? diketik.split("").filter(function (c, i) { return c !== asli[i]; }).length : null;
+
+    return '' +
+    '<div class="putusan tidak">' +
+      '<div class="pita"><span class="kata">Tidak ditemukan</span><span class="apa">Nomor ini tidak ada di registri</span></div>' +
+      '<div class="isi">' +
+        '<dl class="borang-baca">' +
+          '<dt>Nomor diketik</dt><dd class="no">' + esc(rapi(diketik)) + '</dd>' +
+          '<dt>Panjang</dt><dd class="no">' + diketik.length + ' digit — <strong>bentuknya sah</strong></dd>' +
+          '<dt>Di registri</dt><dd><strong>Tidak ada</strong> — dicari di seluruh 14.920 produk terdaftar</dd>' +
+        '</dl>' +
+        '<p style="margin-bottom:0"><strong>Bentuk yang sah justru yang perlu dijaga.</strong> Nomor yang bentuknya rusak jelas salah dan tidak menipu siapa pun. Nomor yang panjang dan polanya benar tetapi tidak ada di registri adalah yang paling menipu.</p>' +
+      '</div>' +
+    '</div>' +
+
+    '<div class="panel tegas">' +
+      '<p class="label">Yang meja ini TIDAK bisa putuskan</p>' +
+      '<h2>Ada dua penjelasan, dan keduanya masuk akal</h2>' +
+      '<p>Mesin tidak bisa memilih di antara keduanya, jadi meja ini tidak memilih. Yang bisa ditegakkan hanyalah memaksa penjelasannya ditulis; <strong>manusia yang memutuskan</strong>.</p>' +
+      '<div class="dua">' +
+        '<div><h4>Pendaftaran sungguhan yang dicabut</h4><p>Kemasan resmi bisa tertinggal di belakang registri. Barangnya asli, nomornya pernah sah, dan pendaftarannya sudah tidak berlaku. Ini pernah terjadi pada kemasan PHONSKA.</p></div>' +
+        '<div><h4>Nomor karangan yang meniru bentuknya</h4><p>Panjang dan polanya ditiru, digitnya diacak — sehingga lolos pemeriksaan panjang maupun pola. Ini yang tertangkap pada satu berkas gambar MANTRA di repo ini.</p></div>' +
+      '</div>' +
+      '<p style="margin-top:.9rem;font-size:.9rem;color:var(--lemah)">Aturan <code>G12</code> pada jalur panen gambar sudah menghadapi persis dilema ini, dan menyelesaikannya dengan cara yang sama: nomor berbentuk sah yang tidak ada di registri <strong>wajib dijelaskan</strong>, bukan ditebak.</p>' +
+    '</div>' +
+
+    (sepanjang ?
+    '<div class="panel">' +
+      '<p class="label">Kenapa ini penting dicek karakter demi karakter</p>' +
+      '<h2>Yang paling mirip di registri</h2>' +
+      '<p style="font-size:.92rem">Registri memuat satu nomor yang panjangnya sama dan hanya berbeda <strong>' + jumlahBeda + ' digit</strong>. Sekilas, keduanya terbaca sama.</p>' +
+      '<div class="banding">' +
+        '<div class="banding-baris"><span class="tag">Yang kamu ketik</span><div class="deret">' + deretKetik + '</div></div>' +
+        '<div class="banding-baris"><span class="tag">Ada di registri</span><div class="deret">' + deretAsli + '</div></div>' +
+      '</div>' +
+      '<p style="margin-top:.8rem;font-size:.92rem"><code style="font-family:var(--mono)">' + esc(asli) + '</code> — <strong>MANTRA 80 WP</strong>, CV. SARAREA PANEN RAYA, Mankozeb 80%, berlaku sampai 27 Juni 2027.</p>' +
+      '<p style="font-size:.9rem;color:var(--lemah)"><strong>Meja ini tidak menggantinya untukmu.</strong> Menganggap nomor yang tidak cocok sebagai salah baca lalu menukarnya dengan nomor registri justru menanam karangan sebagai fakta. Kalau nomor di kemasanmu memang yang di baris atas, yang di tanganmu bukan produk di baris bawah.</p>' +
+      '<div class="aksi"><button type="button" data-no="' + esc(asli) + '">Periksa nomor yang di registri →</button></div>' +
+    '</div>' : "") +
+
+    '<div class="panel">' +
+      '<p class="label">Yang bisa dilakukan sekarang</p>' +
+      '<h2>Tiga langkah, berurutan</h2>' +
+      '<ol style="padding-left:1.2rem;margin:.6rem 0 0">' +
+        '<li style="margin-bottom:.5rem"><strong>Ketik ulang, pelan.</strong> Angka 0 dan 8, 1 dan 7 paling sering tertukar saat menyalin dari karung yang berdebu.</li>' +
+        '<li style="margin-bottom:.5rem"><strong>Jangan bayar dulu.</strong> Ini satu-satunya saat pemeriksaan ini ada gunanya — sesudah uang keluar, hasilnya sama saja.</li>' +
+        '<li><strong>Bawa ke penyuluh atau POPT setempat.</strong> Merekalah yang punya wewenang menindaklanjuti, dan meja ini tidak punya.</li>' +
+      '</ol>' +
+      '<p style="margin-top:.9rem;font-size:.9rem;color:var(--lemah)"><strong>Jalur lapor belum ada.</strong> Meja ini belum bisa meneruskan laporanmu ke siapa pun, dan mengaku begitu lebih baik daripada tombol yang tidak menuju ke mana-mana.</p>' +
+    '</div>' +
+
+    batas("Batas jawaban ini", [
+      "<strong>&ldquo;Tidak ditemukan&rdquo; bukan &ldquo;palsu&rdquo;.</strong> Meja ini menyatakan fakta registri, lalu berhenti. Menyimpulkan pemalsuan bukan wewenang platform ini.",
+      "<strong>Registri bisa basi.</strong> Rekaman diperiksa terakhir pada 19 Agustus 2026. Pendaftaran baru yang belum tertarik ke indeks akan terbaca &ldquo;tidak ditemukan&rdquo; padahal sah.",
+      "<strong>Lonjakan &ldquo;tidak ditemukan&rdquo; punya dua bacaan</strong> — registri basi <em>atau</em> pemalsuan naik. Keduanya harus diperiksa, dan angka itu sendiri tidak memutuskan yang mana.",
+      "<strong>Nama dagang belum terpetakan.</strong> Kalau nomor di kemasan tidak terbaca sama sekali, mencari lewat nama belum tentu berhasil."
+    ], true);
+  }
+
+  /* ---------------------------------------------------------- kalkulator */
+  function hitungUlang() {
+    var out = document.getElementById("hasilHitung");
+    if (!out) return;
+    var luas = parseFloat(document.getElementById("luas").value) || 0;
+    var tangki = parseFloat(document.getElementById("tangki").value) || 0;
+    var volume = parseFloat(document.getElementById("volume").value) || 0;
+    var dosis = parseFloat(document.getElementById("dosis").value) || 0;
+
+    var sat = (document.getElementById("satuan") || {}).value || "g";
+    var literTotal = volume * (luas / 10000);
+    var jumlahTangki = tangki > 0 ? literTotal / tangki : 0;
+    var perTangki = dosis * tangki;
+
+    function n(x, d) { return x.toLocaleString("id-ID", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }); }
+
+    out.innerHTML =
+      '<b>' + n(perTangki, 1) + " " + sat + '</b>' +
+      '<span>bahan per tangki ' + n(tangki) + ' liter</span>' +
+      '<p class="kerja">' + n(dosis, 1) + " " + sat + '/l &times; ' + n(tangki) + ' l = ' + n(perTangki, 1) + " " + sat + '</p>' +
+      '<hr style="border:0;border-top:1px solid var(--garis);margin:.7rem 0">' +
+      '<b>' + n(jumlahTangki, 1) + ' tangki</b>' +
+      '<span>untuk menghabiskan petak ' + n(luas) + ' m²</span>' +
+      '<p class="kerja">' + n(volume) + ' l/ha &times; ' + n(luas) + '/10.000 = ' + n(literTotal, 1) + ' l &divide; ' + n(tangki) + ' l = ' + n(jumlahTangki, 1) + '</p>';
+  }
+
+  function takarUlang() {
+    var out = document.getElementById("hasilTakar");
+    if (!out) return;
+    var tutup = parseFloat(document.getElementById("tutup").value) || 0;
+    var tangkiEl = document.getElementById("tangki");
+    var dosisEl = document.getElementById("dosis");
+    var tangki = tangkiEl ? (parseFloat(tangkiEl.value) || 0) : 15;
+    var dosis = dosisEl ? (parseFloat(dosisEl.value) || 0) : 2;
+    var sat = (document.getElementById("satuan") || {}).value || "g";
+    var perTangki = dosis * tangki;
+
+    function n(x, d) { return x.toLocaleString("id-ID", { minimumFractionDigits: d || 0, maximumFractionDigits: d || 0 }); }
+
+    /* Dosis berbentuk berat tidak bisa ditakar dengan tutup botol. Mengubah
+       gram jadi mililiter menuntut berat jenis, dan berat jenis TIDAK ADA di
+       registri — nol dari 1.721 pupuk cair pun tidak memilikinya. Menghitungnya
+       tetap berarti mengarang angka yang menyangkut dosis. */
+    if (sat === "g") {
+      out.innerHTML =
+        '<b style="font-size:1.35rem;color:var(--nihil)">Tidak bisa dihitung</b>' +
+        '<span>dosis produk ini dinyatakan dalam <strong>berat</strong> (' + n(dosis, 1) + ' g/l), sedangkan tutup botol mengukur <strong>volume</strong>.</span>' +
+        '<p class="kerja">Mengubah gram jadi mililiter menuntut berat jenis. Berat jenis tidak ada di registri.</p>' +
+        '<p class="kerja" style="color:var(--syarat)">Yang benar: timbang ' + n(perTangki, 1) + ' g dengan timbangan dapur, atau minta kios menimbangkannya di depanmu.</p>';
+      return;
+    }
+
+    var berapa = tutup > 0 ? perTangki / tutup : 0;
+    out.innerHTML =
+      '<b>' + n(berapa, 1) + ' tutup</b>' +
+      '<span>untuk satu tangki ' + n(tangki) + ' liter</span>' +
+      '<p class="kerja">' + n(perTangki, 1) + ' ml &divide; ' + n(tutup, 1) + ' ml per tutup = ' + n(berapa, 1) + '</p>' +
+      '<p class="kerja" style="color:var(--syarat)">Angka ' + n(tutup, 1) + ' ml itu isian borang ini, bukan data registri. Ganti dengan hasil ukuranmu sendiri.</p>';
+  }
+
+  /* -------------------------------------------------------------- render */
+  function render(html) {
+    el.innerHTML = html;
+    ["luas", "tangki", "volume", "dosis"].forEach(function (id) {
+      var i = document.getElementById(id);
+      if (i) i.addEventListener("input", function () { hitungUlang(); takarUlang(); });
+    });
+    var s = document.getElementById("satuan");
+    if (s) s.addEventListener("change", function () { hitungUlang(); takarUlang(); });
+    var t = document.getElementById("tutup");
+    if (t) t.addEventListener("input", takarUlang);
+    hitungUlang();
+    takarUlang();
+    el.querySelectorAll("[data-no]").forEach(function (b) {
+      b.addEventListener("click", function () { periksa(b.dataset.no); });
+    });
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
+  function tandai(nama) {
+    document.querySelectorAll(".krom [data-layar]").forEach(function (t) {
+      t.setAttribute("aria-pressed", String(t.dataset.layar === nama));
+    });
+  }
+
+  function periksa(no) {
+    kotak.value = no;
+    var kunci = angka(no);
+    if (!kunci) { tandai("meja"); render(layarMeja()); return; }
+    if (REGISTRI[kunci]) { tandai("cocok"); render(layarCocok(no)); }
+    else { tandai("nihil"); render(layarNihil(no)); }
+  }
+
+  document.getElementById("formPeriksa").addEventListener("submit", function (e) {
+    e.preventDefault();
+    periksa(kotak.value);
+  });
+  document.querySelectorAll(".tempel [data-no]").forEach(function (b) {
+    b.addEventListener("click", function () { periksa(b.dataset.no); });
+  });
+  document.querySelectorAll(".krom [data-layar]").forEach(function (t) {
+    t.addEventListener("click", function () {
+      var n = t.dataset.layar;
+      tandai(n);
+      if (n === "meja") { kotak.value = ""; render(layarMeja()); kotak.focus(); }
+      else if (n === "cocok") { kotak.value = "01020120227329"; render(layarCocok("01020120227329")); }
+      else { kotak.value = "31028128227329"; render(layarNihil("31028128227329")); }
+    });
+  });
+
+  var tombolTema = document.querySelectorAll(".tema [data-tema]");
+  tombolTema.forEach(function (t) {
+    t.addEventListener("click", function () {
+      var pilih = t.dataset.tema;
+      if (pilih === "sistem") delete document.documentElement.dataset.theme;
+      else document.documentElement.dataset.theme = pilih;
+      tombolTema.forEach(function (x) { x.setAttribute("aria-pressed", String(x.dataset.tema === pilih)); });
+    });
+  });
+
+  render(layarMeja());
+})();
+</script>
