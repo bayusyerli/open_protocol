@@ -554,13 +554,35 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | F1 | Berkas bukti bertulang SNI 8969 | offtaker, sertifikator | #16 | penyusun **selesai** | **BANGUN** permukaannya (fase 3) |
 | F2 | Ekspor data petani yang bisa dibaca tanpa platform ini | petani, koperasi | kepemilikan data | **selesai** — `ekspor-petani.mjs` | **selesai** |
 | F3 | Ketertelusuran petak → lot | eksportir, offtaker | akses pasar | butuh geometri + persetujuan | **TUNDA** (T2) |
-| F4 | Berkas siap-ajukan kredit & asuransi | petani, poktan, bank, asuransi | #11, #12 | butuh E5 dulu | **BANGUN belakangan + SAMBUNG** (SIAP) |
+| F4 | Berkas siap-ajukan kredit & asuransi | petani, poktan, bank, asuransi | #11, #12 | **prasyaratnya selesai** 23 Agustus 2026 — buku kas kini berskala musim & luas, jadi **biaya per hektare** ada. Berkasnya sendiri **tidak dibangun**: repositori ini tidak tahu apa yang diminta formulir SIAP | prasyarat **selesai**; berkasnya **TUNDA** menunggu riset formulir |
 
 > **F4 menjawab kendala yang disebut sendiri oleh pelaksana AUTP:** hambatannya
 > administrasi, bukan tarif — premi petani Rp36.000/ha/musim sudah sangat rendah, tapi
 > berat diurus untuk lahan 0,2–0,3 ha. Berkas yang terisi sendiri dari catatan musim
 > memindahkan beban itu dari petani ke mesin. **Syaratnya E5 lebih dulu** — tanpa catatan,
 > tidak ada yang bisa diisikan.
+
+> **F4 diperiksa 23 Agustus 2026, dan yang menghalanginya bukan E5 melainkan riset.**
+> Baris ini semula berbunyi "butuh E5 dulu"; E5 kini ada. Tetapi memeriksa apa yang
+> sebenarnya dibutuhkan menemukan penghalang yang lebih mendasar: **repositori ini tidak
+> tahu apa yang diminta formulir SIAP.** Dua sumber yang dikutip dokumen ini artikel
+> tentang premi dan kendala administrasi — bukan daftar medan, bukan syarat kepesertaan,
+> bukan alur pengajuannya. Menyusun "berkas siap-ajukan" tanpa itu berarti mengarang format
+> yang tidak diterima penanggung mana pun, dan bank yang bertindak atas dokumen berformat
+> karangan mengambil keputusan pembiayaan di atasnya. Itu kelas kekeliruan yang berbeda
+> dari cacat antarmuka.
+>
+> **Yang dikerjakan sebagai gantinya: prasyaratnya, dan ia bisa diukur.** Tiap angka yang
+> dipakai AUTP per hektare — premi Rp36.000/ha, subsidi Rp144.000, ganti rugi ±Rp6 juta/ha
+> — sementara buku kas versi pertama tidak punya luas sama sekali, jadi ia tidak bisa
+> menghasilkan satu pun angka dalam satuan itu. Musim kini punya nama, komoditas, dan luas,
+> dan **biaya per hektare** muncul di layar dan di berkas yang dibawa keluar. Petani 0,25 ha
+> yang sebelumnya cuma punya angka total sekarang punya angka yang bisa dibandingkan dengan
+> apa pun yang diterbitkan.
+>
+> **Yang membuka F4 karena itu satu hal, dan ia bukan kode:** menemukan dan mencatat apa
+> yang benar-benar diminta SIAP dan KUR — daftar medannya, syarat kepesertaannya, dan
+> bentuk berkas yang mereka terima.
 
 ### G · JEJARING — yang tidak bisa dilakukan sendirian
 

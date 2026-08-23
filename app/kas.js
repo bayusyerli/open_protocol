@@ -42,7 +42,8 @@ document.getElementById('tanpaJs')?.remove();
 
 const el = {};
 for (const id of ['ringkas', 'tanggal', 'arah', 'kategori', 'jumlah', 'catatan', 'tambah',
-  'kabar', 'daftar', 'peringatanSimpan', 'kabarBawa', 'pratinjau', 'hapusSemua'])
+  'kabar', 'daftar', 'peringatanSimpan', 'kabarBawa', 'pratinjau', 'hapusSemua',
+  'pilihMusim', 'aturMusim', 'mNama', 'mKomoditas', 'mLuas', 'tambahMusim', 'kabarMusim'])
   el[id] = document.getElementById(id);
 el.batas = document.getElementById('batasJawaban');
 el.bawa = document.querySelector('.kartu-bawa');
@@ -63,6 +64,23 @@ const KATEGORI_KELUAR = [
 const KATEGORI_MASUK = ['Hasil jual', 'Hasil jual — sortiran', 'Bantuan atau subsidi', 'Lainnya'];
 
 let catatan = [];
+let musim = [];
+let musimAktif = null;
+
+/* MUSIM ADA DI KEPALA, BUKAN DI TIAP CATATAN — dan itu keputusan yang menjaga rancangan
+ * halaman ini tetap utuh. Menambahkan medan petak dan luas ke tiap catatan akan membuat
+ * satu catatan lima medan, dan tiap medan tambahan adalah alasan berhenti. Dinamai sekali
+ * di kepala, ia gratis bagi tiap catatan sesudahnya.
+ *
+ * KENAPA LUAS SAMA SEKALI. Tanpa luas, buku ini menjawab "berapa habis semusim" dan
+ * berhenti di situ. Dengan luas ia menjawab BIAYA PER HEKTARE — dan itu satuan yang
+ * dipakai hampir semua program yang meminta angka biaya usaha tani, termasuk asuransi
+ * usaha tani padi yang preminya, subsidinya, dan ganti ruginya seluruhnya per hektare.
+ * Petani dengan lahan 0,25 ha yang cuma punya angka total tidak bisa membandingkan
+ * dirinya dengan angka mana pun yang diterbitkan.
+ *
+ * Luas tetap BOLEH KOSONG. Yang tidak tahu luas petaknya — dan itu lazim — tetap bisa
+ * mencatat; yang hilang cuma satu baris, bukan seluruh halamannya. */
 
 // ---------------------------------------------------------------------------
 // Simpanan
@@ -72,16 +90,25 @@ let catatan = [];
 // halaman ini — lebih buruk daripada tidak menawarkan penyimpanan sama sekali.
 let simpananHidup = true;
 
+/* Bentuk simpanan berubah setelah musim masuk, dan yang sudah mencatat TIDAK BOLEH
+ * kehilangan apa pun karenanya. Larik datar versi pertama dibungkus jadi satu musim
+ * bernama, bukan dibuang — kehilangan catatan karena pembaruan aplikasi persis kegagalan
+ * yang paling merusak kepercayaan pada buku kas. */
 function baca() {
   try {
-    const m = JSON.parse(localStorage.getItem(KUNCI) ?? '[]');
-    return Array.isArray(m) ? m : [];
-  } catch { simpananHidup = false; return []; }
+    const m = JSON.parse(localStorage.getItem(KUNCI) ?? 'null');
+    if (Array.isArray(m)) {
+      const bawaan = { i: 'm0', nama: 'Musim pertama', komoditas: null, luas: null };
+      return { musim: [bawaan], catatan: m.map((c) => ({ ...c, m: 'm0' })), aktif: 'm0', dimigrasi: true };
+    }
+    if (m && Array.isArray(m.catatan)) return m;
+    return { musim: [], catatan: [], aktif: null };
+  } catch { simpananHidup = false; return { musim: [], catatan: [], aktif: null }; }
 }
 
 function tulis() {
   try {
-    localStorage.setItem(KUNCI, JSON.stringify(catatan));
+    localStorage.setItem(KUNCI, JSON.stringify({ musim, catatan, aktif: musimAktif }));
     return true;
   } catch {
     simpananHidup = false;
@@ -129,15 +156,20 @@ function isiKategori() {
   el.kategori.innerHTML = daftar.map((k) => `<option value="${teks(k)}">${teks(k)}</option>`).join('');
 }
 
+const catatanMusim = () => catatan.filter((c) => c.m === musimAktif);
+const musimKini = () => musim.find((m) => m.i === musimAktif) ?? null;
+
 function hitung() {
-  const keluar = catatan.filter((c) => c.a === 'keluar').reduce((a, c) => a + c.n, 0);
-  const masuk = catatan.filter((c) => c.a === 'masuk').reduce((a, c) => a + c.n, 0);
-  return { keluar, masuk, selisih: masuk - keluar };
+  const isi = catatanMusim();
+  const keluar = isi.filter((c) => c.a === 'keluar').reduce((a, c) => a + c.n, 0);
+  const masuk = isi.filter((c) => c.a === 'masuk').reduce((a, c) => a + c.n, 0);
+  return { keluar, masuk, selisih: masuk - keluar, cacah: isi.length };
 }
 
 function gambarRingkas() {
-  const { keluar, masuk, selisih } = hitung();
-  if (!catatan.length) {
+  const { keluar, masuk, selisih, cacah } = hitung();
+  const m = musimKini();
+  if (!cacah) {
     el.ringkas.innerHTML = `
       <h2>Belum ada catatan</h2>
       <p>Tambahkan satu di bawah. Angka di sini berubah seketika — itu seluruh gunanya.</p>`;
@@ -146,22 +178,30 @@ function gambarRingkas() {
   // "Untung" hanya disebut kalau memang ada uang masuk. Selisih dari nol pemasukan bukan
   // rugi; ia biaya yang belum berhasil — dan menyebutnya rugi di tengah musim keliru.
   const adaMasuk = masuk > 0;
+  const judulMusim = m?.nama ? ` — ${teks(m.nama)}` : '';
   el.ringkas.innerHTML = `
-    <h2>${adaMasuk ? (selisih >= 0 ? 'Untung sejauh ini' : 'Masih di bawah biaya') : 'Biaya sejauh ini'}</h2>
+    <h2>${adaMasuk ? (selisih >= 0 ? 'Untung sejauh ini' : 'Masih di bawah biaya') : 'Biaya sejauh ini'}${judulMusim}</h2>
     <p class="angka-besar">${adaMasuk ? rupiah(Math.abs(selisih)) : rupiah(keluar)}</p>
     <dl class="kunci">
       <dt>Uang keluar</dt><dd>${rupiah(keluar)}</dd>
       <dt>Uang masuk</dt><dd>${adaMasuk ? rupiah(masuk) : '<span class="kosong">belum ada</span>'}</dd>
-      <dt>Catatan</dt><dd>${n(catatan.length)}</dd>
+      ${m?.luas > 0 ? `
+        <dt>Biaya per hektare</dt>
+        <dd>${rupiah(keluar / m.luas)}<span class="sub">dari ${n(m.luas)} ha</span></dd>` : ''}
+      <dt>Catatan</dt><dd>${n(cacah)}</dd>
     </dl>
+    ${m && !(m.luas > 0) ? `<p class="catatan">Luas petak belum diisi, jadi <strong>biaya per
+      hektare</strong> tidak bisa dihitung — dan itu satuan yang dipakai hampir semua program
+      yang meminta angka biaya usaha tani. Isi di "ganti atau tambah musim" di atas.</p>` : ''}
     ${adaMasuk ? '' : `<p class="catatan">Selama belum ada uang masuk, angka ini <strong>biaya</strong>, bukan kerugian. Musim yang belum panen bukan musim yang rugi.</p>`}`;
 }
 
 function gambarDaftar() {
-  if (!catatan.length) { el.daftar.innerHTML = '<p class="kosong">Belum ada catatan.</p>'; return; }
-  const urut = [...catatan].sort((a, b) => String(b.t).localeCompare(String(a.t)) || b.i - a.i);
+  const isi = catatanMusim();
+  if (!isi.length) { el.daftar.innerHTML = '<p class="kosong">Belum ada catatan di musim ini.</p>'; return; }
+  const urut = [...isi].sort((a, b) => String(b.t).localeCompare(String(a.t)) || b.i - a.i);
   const perKat = new Map();
-  for (const c of catatan) {
+  for (const c of isi) {
     if (c.a !== 'keluar') continue;
     perKat.set(c.k, (perKat.get(c.k) ?? 0) + c.n);
   }
@@ -173,7 +213,7 @@ function gambarDaftar() {
         <dl class="kunci">${teratas.map(([k, v]) => `<dt>${teks(k)}</dt><dd>${rupiah(v)}</dd>`).join('')}</dl>
       </div>` : ''}
     <div class="kartu">
-      <h2>${n(catatan.length)} catatan</h2>
+      <h2>${n(isi.length)} catatan</h2>
       <div class="pembungkus-tabel">
         <table>
           <thead><tr><th>Tanggal</th><th>Untuk apa</th><th class="angka">Jumlah</th><th></th></tr></thead>
@@ -191,22 +231,71 @@ function gambarDaftar() {
     </div>`;
 }
 
-function gambar() { gambarRingkas(); gambarDaftar(); }
+function gambarMusim() {
+  if (!musim.length) {
+    el.pilihMusim.innerHTML = `<p class="kosong">Belum ada musim. Beri nama satu di bawah —
+      boleh sesederhana "Cabai petak belakang".</p>`;
+    el.aturMusim.open = true;
+    return;
+  }
+  const m = musimKini();
+  el.pilihMusim.innerHTML = `
+    <label for="musimAktif">Sedang dicatat</label>
+    <select id="musimAktif">
+      ${musim.map((x) => `<option value="${teks(x.i)}"${x.i === musimAktif ? ' selected' : ''}>
+        ${teks(x.nama)}${x.luas > 0 ? ` — ${n(x.luas)} ha` : ''}</option>`).join('')}
+    </select>
+    ${m ? `<p class="catatan">${[
+      m.komoditas && teks(m.komoditas),
+      m.luas > 0 ? `${n(m.luas)} hektare` : 'luas belum diisi',
+      `${n(catatanMusim().length)} catatan`,
+    ].filter(Boolean).join(' · ')}</p>` : ''}`;
+  el.pilihMusim.querySelector('#musimAktif')?.addEventListener('change', (ev) => {
+    musimAktif = ev.target.value;
+    tulis();
+    gambar();
+  });
+}
+
+function gambar() { gambarMusim(); gambarRingkas(); gambarDaftar(); }
+
+el.tambahMusim.addEventListener('click', () => {
+  const nama = el.mNama.value.trim();
+  if (!nama) { el.kabarMusim.textContent = 'Beri namanya dulu — cukup satu yang kamu kenali sendiri.'; el.mNama.focus(); return; }
+  const luas = Number(el.mLuas.value);
+  const baru = {
+    i: 'm' + Date.now(),
+    nama,
+    komoditas: el.mKomoditas.value.trim() || null,
+    luas: Number.isFinite(luas) && luas > 0 ? luas : null,
+  };
+  musim.push(baru);
+  musimAktif = baru.i;
+  tulis();
+  gambar();
+  el.mNama.value = ''; el.mKomoditas.value = ''; el.mLuas.value = '';
+  el.kabarMusim.textContent = `"${baru.nama}" jadi musim yang sedang dicatat.`;
+  el.aturMusim.open = false;
+});
 
 // ---------------------------------------------------------------------------
 // Bawa keluar — bukan fitur tambahan
 // ---------------------------------------------------------------------------
 function susunTeks() {
-  const { keluar, masuk, selisih } = hitung();
+  const { keluar, masuk, selisih, cacah } = hitung();
+  const m = musimKini();
   const baris = [
     '*Buku kas — Open Protocols*',
     '───────────────',
-    `Catatan: ${n(catatan.length)}`,
+    m ? `Musim: ${m.nama}${m.komoditas ? ` — ${m.komoditas}` : ''}` : null,
+    m?.luas > 0 ? `Luas: ${n(m.luas)} ha` : null,
+    `Catatan: ${n(cacah)}`,
     `Uang keluar: ${rupiah(keluar)}`,
     `Uang masuk: ${masuk > 0 ? rupiah(masuk) : 'belum ada'}`,
     masuk > 0 ? `Selisih: ${selisih >= 0 ? '+' : '−'} ${rupiah(Math.abs(selisih))}` : null,
+    m?.luas > 0 ? `Biaya per hektare: ${rupiah(keluar / m.luas)}` : null,
     '',
-    ...[...catatan].sort((a, b) => String(a.t).localeCompare(String(b.t)))
+    ...catatanMusim().sort((a, b) => String(a.t).localeCompare(String(b.t)))
       .map((c) => `${c.t}  ${c.a === 'masuk' ? '+' : '−'} ${rupiah(c.n)}  ${c.k}${c.c ? ` — ${c.c}` : ''}`),
     '───────────────',
     'Disusun di perangkat sendiri. Tidak ada yang dikirim ke mana pun.',
@@ -217,7 +306,7 @@ function susunTeks() {
 el.bawa.addEventListener('click', async (ev) => {
   const b = ev.target.closest('button[data-bawa]');
   if (!b) return;
-  if (!catatan.length) { el.kabarBawa.textContent = 'Belum ada catatan untuk dibawa.'; return; }
+  if (!catatanMusim().length) { el.kabarBawa.textContent = 'Belum ada catatan di musim ini untuk dibawa.'; return; }
   const isi = susunTeks();
   el.pratinjau.textContent = isi;
   el.pratinjau.hidden = false;
@@ -254,8 +343,15 @@ el.tambah.addEventListener('click', () => {
     el.jumlah.focus();
     return;
   }
+  if (!musimAktif) {
+    el.kabar.textContent = 'Beri nama musimnya dulu di atas — sekali saja, lalu tiap catatan ikut ke sana.';
+    el.aturMusim.open = true;
+    el.mNama.focus();
+    return;
+  }
   catatan.push({
     i: Date.now(),
+    m: musimAktif,
     t: el.tanggal.value || new Date().toISOString().slice(0, 10),
     a: el.arah.value,
     k: el.kategori.value,
@@ -271,8 +367,8 @@ el.tambah.addEventListener('click', () => {
   // Sepuluh dipilih karena di bawah itu mengetik ulang masih murah.
   el.kabar.textContent = !ok
     ? 'Catatan ditambahkan, tetapi TIDAK tersimpan — lihat peringatan di bawah.'
-    : catatan.length >= 10 && catatan.length % 10 === 0
-      ? `Tersimpan. Sudah ${n(catatan.length)} catatan — bawa keluar sekarang, selagi murah.`
+    : hitung().cacah >= 10 && hitung().cacah % 10 === 0
+      ? `Tersimpan. Sudah ${n(hitung().cacah)} catatan di musim ini — bawa keluar sekarang, selagi murah.`
       : 'Tersimpan di perangkat ini.';
 });
 
@@ -285,21 +381,30 @@ el.daftar.addEventListener('click', (ev) => {
 });
 
 el.hapusSemua.addEventListener('click', () => {
-  if (!catatan.length) return;
+  const isi = catatanMusim();
+  if (!isi.length) return;
   // Konfirmasi karena ini satu-satunya tombol di seluruh permukaan yang menghancurkan
   // kerja pemakainya, dan tidak ada cadangan di mana pun untuk memulihkannya.
-  if (!confirm(`Hapus seluruh ${catatan.length} catatan? Tidak ada cadangan, dan ini tidak bisa dibatalkan.`)) return;
-  catatan = [];
+  const m = musimKini();
+  if (!confirm(`Hapus ${isi.length} catatan di "${m?.nama ?? 'musim ini'}"? Musim lain tidak ikut terhapus, tetapi yang ini tidak ada cadangannya dan tidak bisa dibatalkan.`)) return;
+  catatan = catatan.filter((c) => c.m !== musimAktif);
   tulis();
   gambar();
-  el.kabarBawa.textContent = 'Seluruh catatan dihapus.';
+  el.kabarBawa.textContent = `Catatan di "${teks(m?.nama ?? 'musim ini')}" dihapus.`;
 });
 
 // ---------------------------------------------------------------------------
 // Mulai
 // ---------------------------------------------------------------------------
 (async function mulai() {
-  catatan = baca();
+  const simpan = baca();
+  musim = simpan.musim ?? [];
+  catatan = simpan.catatan ?? [];
+  musimAktif = simpan.aktif ?? musim[0]?.i ?? null;
+  // Migrasi dituliskan SEKALI, bukan diturunkan ulang tiap muat. Menurunkannya ulang
+  // memang idempoten, tetapi ia membuat bentuk tersimpan berbeda dari yang dibaca layar —
+  // dan bentuk yang berbeda dari yang terlihat adalah tempat kekeliruan berikutnya lahir.
+  if (simpan.dimigrasi) tulis();
   el.tanggal.value = new Date().toISOString().slice(0, 10);
   isiKategori();
   gambar();
@@ -327,11 +432,14 @@ el.hapusSemua.addEventListener('click', () => {
         + 'tanpa memberitahu, dan permintaan izin permanen ditolaknya pada kunjungan biasa. '
         + 'Karena itu "bawa keluar" bukan pelengkap di halaman ini.',
     }, {
-      judul: 'Arus kas bertanggal, banyak petak, dan berbagi dengan kelompok',
+      judul: 'Arus kas bertanggal, dan berbagi dengan kelompok',
       teks:
-        'Ketiganya belum ada, dan masing-masing menunggu hal yang berbeda: kalender fase '
-        + 'bertanggal, identitas petak yang dipakai lintas layar, dan tempat menyimpan yang '
-        + 'bukan peramban. Menambahkannya sekarang berarti menjanjikan ketiganya.',
+        'Beberapa musim dan petak sudah bisa dipisahkan di sini, tetapi dua hal lain belum: '
+        + 'arus kas bertanggal menuntut kalender fase yang punya medan hari — kosakata fase '
+        + 'sengaja tidak punya, dan hanya dua dari empat langkah protokol cabai bertanggal — '
+        + 'sedangkan berbagi dengan kelompok tani menuntut tempat menyimpan yang bukan '
+        + 'peramban. Petak di sini juga hanya nama yang kamu ketik, bukan identitas petak '
+        + 'yang dipakai lintas layar.',
     }],
   });
 })();
