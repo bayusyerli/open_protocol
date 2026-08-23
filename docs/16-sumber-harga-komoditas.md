@@ -312,9 +312,15 @@ penggolongannya tiga, bukan dua:
 
 | Golongan | Varian | Berangka | Di layar |
 |---|---:|---:|---|
-| `pangan` — keluaran tani, ternak, perikanan, dan olahan tahap pertamanya | 51 | 39 | ya |
+| `pangan` — yang dipanen, diternakkan, atau ditangkap | 46 | 34 | ya |
 | `input` — benih dan pupuk | 7 | 1 | ya |
-| `luar` — bahan bangunan, LPG, olahan lanjut berbahan impor | 30 | 3 | tidak |
+| `luar` — bahan bangunan, LPG, dan pangan olahan | 35 | 8 | tidak |
+
+Pemisah golongan `luar` sempat beralasan "bahan bakunya impor", dan alasan itu keliru: tebu
+dan sawit ditanam di Indonesia, tetapi harga gula pasir dan minyak goreng tetap **harga
+eceran barang olahan** — yang menghadapinya pembeli di toko, bukan petani tebu maupun petani
+sawit. Yang membedakan tingkat olahannya, bukan asal bahan bakunya. Beras tetap masuk meski
+digiling: satu langkah dari gabah, dan itu cara harga padi diucapkan di seluruh Indonesia.
 
 Yang `luar` **tetap tercatat di kosakata**, dan jumlahnya disebut di layar beserta daftarnya
 di balik satu ketukan. Menyaringnya diam-diam akan membuat cacah di layar tidak pernah cocok

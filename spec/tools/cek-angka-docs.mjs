@@ -211,10 +211,10 @@ if (HRG) {
   // bahwa tabel di docs/16 bagian 8a — dan kalimat "30 varian tidak ditampilkan" di layar —
   // sudah tidak cocok lagi dengan datanya.
   const gol = (g) => HRG.filter((h) => (h.sector ?? 'pangan') === g);
-  cek('16', 'varian golongan pangan', gol('pangan').length, 51);
+  cek('16', 'varian golongan pangan', gol('pangan').length, 46);
   cek('16', 'varian golongan input', gol('input').length, 7);
-  cek('16', 'varian golongan luar (tak tampil)', gol('luar').length, 30);
-  cek('16', 'berangka yang tampil di layar', HRG.filter((h) => (h.sector ?? 'pangan') !== 'luar' && h.series?.length).length, 40);
+  cek('16', 'varian golongan luar (tak tampil)', gol('luar').length, 35);
+  cek('16', 'berangka yang tampil di layar', HRG.filter((h) => (h.sector ?? 'pangan') !== 'luar' && h.series?.length).length, 35);
 }
 
 // Sapuan teks: angka yang PERNAH salah dan sudah dikoreksi tidak boleh muncul lagi

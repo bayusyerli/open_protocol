@@ -76,6 +76,48 @@ Urutkan begini, bukan sebaliknya:
    `direktori.py` menariknya dan menandai domain mana yang belum ada di antrean.
 2. **Direktori Alishter.** 27 anggota, sebagian tidak tumpang tindih dengan CropCare —
    satu-satunya yang mencantumkan Agro Bumi Timur.
+
+**Segmen pupuk: dua direktori pengganti, dan keduanya buntu — sudah ditelusuri sampai
+habis, jangan bayar ulang.**
+
+CropCare dan Alishter badan **pestisida**. Pemetaan gelombang 4 agen 3 mengukurnya: **nol
+dari 40 principal pupuk** jadi anggota keduanya. Dua badan pupuk diusulkan sebagai
+pengganti; keduanya ditelusuri lewat API dan arsip pada 22 Agustus 2026, dan hasilnya
+**nol domain baru**. Sebabnya berbeda sama sekali, dan sebab itulah yang perlu diingat,
+bukan angkanya.
+
+| Badan | Hasil |
+|---|---|
+| **APPI** — Asosiasi Produsen Pupuk Indonesia | Anggotanya cuma **6, seluruhnya BUMN**: `pusri.co.id`, `petrokimia-gresik.com`, `pupuk-kujang.co.id`, `pupukkaltim.com`, `pim.co.id`, plus holding `pupuk-indonesia.com`. Semuanya sudah di antrean sejak gelombang 1. APPI himpunan raksasa negara — **kebalikan** dari ekor tempat principal pupuk kita berada |
+| **AP2KMI** — Asosiasi Produsen Pupuk Kecil Menengah Indonesia | **AP2KMI dan APPKMI badan yang SAMA**, dua ejaan akronim untuk satu nama. Situsnya `asosiasiprodusenpupuk.org`; lewat API-nya: **2 halaman** (satu berjudul "Under Costruction"), **0 pos**, 1 pengguna admin, media seluruhnya foto stok Unsplash, **nol alamat surat**. Brosur satu halaman, bukan direktori |
+
+Buktinya dua arah, dan itu yang menutup dugaan "AP2KMI belum pernah dicoba": CV. Dewi Sri
+Rama menyebut dirinya anggota "Asosiasi Produsen Pupuk Kecil Menengah Indonesia
+**(AP2KMI)**", sementara `asosiasiprodusenpupuk.org` menyebut dirinya "Asosiasi Produsen
+Pupuk Kecil Menengah Indonesia **(APPKMI)**" — kalimat yang sama persis, akronim berbeda.
+Badannya memang menaungi produsen kecil-menengah, persis ekor yang kita cari; **situsnya
+yang tidak pernah memuat daftar anggota.** Dugaan itu masuk akal dan tetap salah, tetapi
+salahnya bukan "badannya tidak ada" — melainkan badannya ada di bawah nama lain yang
+sudah diperiksa.
+
+**Domain APPI sendiri sudah lepas, dan itu mengubah cara memeriksanya.** `appi.or.id` nol
+A record pada 8.8.8.8 maupun 1.1.1.1, berstatus `serverHold` di PANDI, dan tangkapan
+Wayback November 2024 atas `www.appi.or.id` adalah **situs judi slot** — domainnya lepas
+lalu diduduki pihak lain. Daftar anggota di atas datang dari arsip 26 Februari 2021, bukan
+dari situs hidup. Pelajaran §0 berlaku terbalik di sini: yang dicegah bukan `mati` palsu
+melainkan **hidup palsu** — domain yang masih menjawab 200 tetapi sudah bukan milik badan
+yang kau cari. Periksa siapa pemiliknya sekarang, bukan cuma apakah ia menjawab.
+
+`direktori-pupuk.py` menariknya dan menandai domain mana yang belum ada di antrean, sama
+seperti `direktori.py` di sisi pestisida. Jalankan ia lebih dulu sebelum menduga ada
+direktori pupuk yang terlewat — jawabannya sudah dikodekan di sana, berikut cara
+mengambilnya (arsip untuk APPI, proksi untuk AP2KMI).
+
+**Dan API tidak selalu membalik hasilnya.** Di CropCare, API memberi 46 domain yang tak ada
+di HTML; di AP2KMI, API **membenarkan** HTML yang kosong. Yang membuat kedua pemeriksaan
+sah adalah pemeriksaannya dilakukan, bukan hasilnya berbalik. Jangan pakai kisah CropCare
+sebagai janji bahwa setiap HTML kosong menyembunyikan API yang penuh.
+
 **Dan urutan itu punya batas segmen.** Pada satu potongan berisi 15 principal, **tidak
 satu pun anggota CropCare maupun Alishter**, dan CropLife Indonesia tidak menerbitkan
 direktori anggota sama sekali. Potongan itu berisi principal rumah tangga, biosida
@@ -116,6 +158,8 @@ menghabiskan pengambilan.
 | `tunasharapan.com` | halaman jual HugeDomains — yang benar **`tunasharapan-murni.com`** dengan tanda hubung, dan bentuk tanpa hubung itulah yang lebih dulu ditebak orang |
 | `east-chem.com` | EASTCHEM di Lomé, Togo — punya server surat sendiri, judulnya cocok persis |
 | `agrochemica.com` | EW Nutrition |
+| `appi.id` | **Asosiasi Perusahaan Pembiayaan Indonesia** — multifinance, bukan pupuk. Akronimnya sama persis dengan Asosiasi Produsen Pupuk **Indonesia**, situsnya hidup dan rapi (44 KB), dan ia punya halaman "Daftar Anggota" sungguhan — yang isinya perusahaan berizin OJK. Ketahuan dari `Application_For_Membership_Multifinance.pdf` dan tautan `lapssjk.id` |
+| `*.indonetwork.co.id` | **subdomain wildcard**: `appkmi.indonetwork.co.id` dan subdomain karangan `zzz-tidak-ada-sama-sekali-9f3k` sama-sama membalas **200 dengan 865.514 bita yang sama** — beranda marketplace, bukan profil badan. Setiap nama asosiasi tampak "punya halaman" di sana. Ukur panjang badannya, seperti pada "Just a moment..." di §0 |
 | **`agrofarm.co.id`** | **yang paling berbahaya**: hidup, 644 KB, nama perusahaan cocok persis pada TLD yang benar, isinya pertanian sungguhan, punya MX sendiri — tetapi ia **portal berita agribisnis**, bukan PT Agrofarm Nusa Raya. Lolos setiap heuristik kecuali dibaca |
 
 **Saudara yang menjebak ada di dalam registri sendiri**, bukan cuma di domain:
@@ -718,6 +762,22 @@ mengembalikan 768 objek. Katalognya menautkan `_productThumb/` pada 300×380 —
 membuatnya dinilai tipis — padahal **membuang segmen itu memberi 1134×1436**. Pola yang
 persis sama dengan ember DGW di §7g.
 
+**Tetapi `_productThumb/` di ember itu ada DUA, dan hanya satu yang punya master.** Turunan
+di bawah `images/product/_productThumb/` memang tinggal dibuang segmennya. Yang di **akar
+ember** — `_productThumb/pg_petro-ningrat.png` dan lima saudaranya — tidak punya berkas
+sepadan di mana pun; 300×380 itu satu-satunya yang ada. Ember hanya memuat 12 objek di
+prefix akar itu, jadi memeriksanya murah. Jangan mengarang aturan tunggal dari satu contoh
+yang berhasil.
+
+**Berkas besar dengan nama yang mirip belum tentu versi besar; bisa jadi desain karung
+LAMA.** Untuk PHONSKA PLUS, ember menyimpan `phonska-plus-zn-sulfur-transparant.png`
+800×1014 — hampir tiga kali lipat turunan 300×380 yang ditautkan katalog, dan menggoda
+diambil sebagai master. Ia karung generasi sebelumnya: mencetak `01.01.2014.234` dan
+`MASA EDAR DESEMBER 2019`, sedangkan yang ditayangkan katalog hari ini karya seni yang
+berbeda sama sekali. Hal yang sama pada PETRO NITRAT (`nitrat1-transparant.png`, 800×1081).
+Menukarnya demi piksel berarti menerbitkan kemasan yang sudah tidak beredar — kerugian yang
+lebih besar daripada resolusi yang didapat. **Bandingkan gambarnya, jangan namanya.**
+
 **Sufiks `-WxH` bisa jadi bagian dari nama unggahan, dan bisa BOHONG.**
 `AVIANI-1080x1080-2.png` sebenarnya 800×800, dan membuang sufiksnya justru 404. Jadi
 aturan "buang `-WxH` untuk dapat master" gagal ke dua arah di situs ini: sufiksnya bukan
@@ -767,6 +827,26 @@ Cabang non-pestisida terpisah: `/id/content/{pupuk,benih,produk-kimia,peternakan
 Total 68 halaman produk. **Sudah habis dipanen** — setiap halaman yang cocok ke registri
 sudah masuk; 47 merek registri sisanya tidak punya halaman sama sekali.
 
+**`petrokimia-gresik.com`** — seluruh kategori pupuk ada di `/product-category/pupuk`,
+29 halaman, **tanpa penomoran halaman**: satu tarikan memberi semuanya. Halaman produknya
+memakai **dua template**, dan pemanen yang hanya mengenal satu akan kehilangan sepertiga
+katalog tanpa galat apa pun — tujuh belas halaman menaruh packshot di
+`img.lazyload.slide-thumbnail[data-src]`, dua belas sisanya di dalam carousel
+`#thumbnail-sliders`. Arah kerugiannya berlawanan pula: yang carousel justru menautkan
+berkas master langsung, yang hero menautkan turunan `_productThumb/`.
+
+Brosur PDF-nya tersedia di hampir tiap halaman dan **tidak memuat satu pun nomor
+pendaftaran** — berbeda dari karya seni label UPL di §11. Ia tetap berguna untuk komposisi
+(dan sekali memperlihatkan selisih: brosur PHONSKA ALAM menyebut N 5% yang tidak tercetak di
+karung dan tidak ada di hasil analisa uji mana pun), tetapi nomornya harus dicari di
+karungnya, bukan di brosurnya.
+
+Tiga halaman di kategori ini bukan pupuk: PETRO BIOFEED, PETRO CHICK, dan PETROFISH adalah
+probiotik ternak dan perikanan, tidak ada di registri PUKPES, jadi tidak bisa punya baris
+manifes sama sekali — `G2` menuntut `brand_key` yang benar-benar ada. Dua lagi bukan
+packshot: `/product/bahan-kimia` memasang foto gelas laboratorium dan `/product/jasa` foto
+pabrik.
+
 **`pt-sgi.com`** — `zat_aktif` dari API kotor: beberapa nilai berspasi di depan, satu
 bertab (`Flurokspir meptil 520\tg/l`), satu bersatuan salah (`Imidacloprid 25 EC`). Cukup
 untuk membuktikan kecocokan, tidak cukup untuk dijadikan kunci.
@@ -792,3 +872,91 @@ memutuskan:
 gambar di umpan artikel · Prima Karya 44 merek cocok beresolusi 1080×1080 · SGI 58 merek ·
 Saprotan 18 merek tak-ambigu · MKD 13 · Prima Agro 15 · brosur label PT-AMA dan Kristalindo
 (`brocure/BROSUR-*.jpg.webp`, `brosur_*.jpg`) belum tersentuh sama sekali.
+
+
+## 14. Merek payung: ketika kolom merek registri lebih kasar daripada rak toko
+
+Panen katalog pupuk Petrokimia Gresik (23 Agustus 2026, 29 halaman) menabrak batas yang
+belum pernah muncul pada principal pestisida mana pun, dan sebabnya struktural — bukan
+kelalaian pemanen.
+
+Registri mendaftarkan formulasi di bawah **nama merek**. Untuk lini komoditas Petrokimia,
+nama itu bukan nama produk melainkan nama perusahaannya sendiri:
+
+| Merek registri | Pendaftaran | Isi sebenarnya |
+|---|---:|---|
+| `KEBOMAS` | 29 | NPK aneka grade, plus dua Kaptan |
+| `PETROKIMIA GRESIK` | 11 | Urea, SP-36, SP-26, ZA, ZK, DAP, fosfat alam, organik ×2, hayati ×2 |
+| `PETRO` | 9 | ZA, superfosfat tunggal 26%, tujuh baris legacy an-organik tanpa komposisi |
+
+Rak toko memisahkan semuanya. Karung `PUPUK SP-36` bersubsidi berlogo PUPUK INDONESIA dan
+karung `PUPUK SP-36 PETRO` nonsubsidi adalah dua kemasan dengan karya seni berlainan — dan
+**keduanya menunjuk pendaftaran yang sama**, `01.01.2024.203`. Pembelahan lininya bahkan
+tidak konsisten di registri: karung nonsubsidi mencetak wordmark `PETRO`, tetapi ZK dan
+SP-36-nya terdaftar di bawah merek `PETROKIMIA GRESIK` sedangkan ZA-nya di bawah `PETRO`.
+
+`G6` memberi satu `kemasan_depan` per merek. Sebelas packshot sah karena itu berebut tiga
+slot, dan delapan yang kalah tidak bisa ditulis sebagai baris `ditolak` pun — §4c berlaku
+untuk tolakan yang **menggantikan**, sedangkan di sini baris tolakan akan menabrak `G6`
+yang sama.
+Satu-satunya tempat yang tersisa untuk mencatatnya adalah dokumen ini.
+
+Yang menang slotnya, dan alasannya:
+
+| Merek | Yang diambil | Kenapa ia yang dipilih |
+|---|---|---|
+| `petrokimia-gresik-pt-petrokimia-gresik` | SP-36 bersubsidi | satu-satunya packshot di seluruh katalog ini yang nomor tercetaknya ADA di registri **dan** milik mereknya sendiri: `01.01.2024.203` |
+| `petro-pt-petrokimia-gresik` | ZA PETRO | N 21% + S 24% cocok persis ke `01.08.2022.988`, satu-satunya pendaftaran `PETRO` yang menyimpan komposisi sama sekali |
+| `kebomas-pt-petrokimia-gresik` | Kapur Pertanian | 1134×1436, dan jenis terdaftarnya memisahkan 2 Kaptan dari 27 NPK |
+
+**Yang terparkir.** Semuanya packshot bersih di ember principal sendiri, semuanya sudah
+dicocokkan ke pendaftarannya. Yang menghalangi hanya slot, bukan bukti:
+
+| Halaman | Karung | Pendaftaran yang dirujuk |
+|---|---|---|
+| `/product/pupuk-sp-36-2` | PUPUK SP-36 PETRO, 36/5 | `01.01.2024.203` |
+| `/product/pupuk-urea-subsidi` | UREA bersubsidi, N 46% | `01.05.2024.200` |
+| `/product/pupuk-urea-non-subsidi` | PUPUK UREA PETRO, N 46% | `01.05.2024.200` |
+| `/product/za-subsidi` | PUPUK ZA bersubsidi | `01.08.2023.2311` |
+| `/product/pupuk-zk` | PUPUK ZK PETRO, K₂O 50% S 17% | `01.03.2024.580` |
+| `/product/sp-26` | PUPUK SP-26 PETRO, 26/5 | `01.01.2025.774` |
+| `/product/petroganik-2` | PUPUK ORGANIK PETROGANIK bersubsidi | `02.01.2023.924` atau `02.08.2023.926` — komposisi tercetak tidak memisahkan |
+| `/product/pupuk-spesifikasi-komoditi` | PUPUK NPK KEBOMAS 15-15-15 | **tidak ada yang cocok** |
+
+Baris terakhir itu temuan tersendiri: **tidak satu pun dari 29 pendaftaran KEBOMAS
+berkomposisi 15-15-15.** Yang terdekat 15-15-18 (`01.01.2023.727`) dan 15-15-6
+(`01.01.2023.1448`). Karung itu memang halaman "Pupuk Spesifikasi Komoditi" — lini racikan
+pesanan — jadi kemungkinan besar ia karung contoh, bukan SKU terdaftar. Dicatat apa adanya;
+jangan dipaksakan cocok ke pendaftaran terdekat.
+
+**Satu lagi tertahan bukan oleh slot melainkan oleh namanya.** `/product/pupuk-za-plus`
+menayangkan karung `PETRO ZA PLUS` 50 kg — N 21%, S 24%, Zn 1.000 ppm — dan satu-satunya
+pendaftaran Petrokimia yang berkomposisi N 21% + S 24% berbentuk butiran adalah
+`01.01.2025.490`, yang di registri bernama **PETROKIMIA GRESIK ZA MAX**. MAX bukan varian
+ejaan PLUS; ia kata lain. Zn yang tercetak pun tidak tercatat di hasil analisa uji
+pendaftaran itu. Merek `…-za-max-…` masih kosong dan slotnya tersedia, jadi yang menahan di
+sini murni ketiadaan bukti bahwa keduanya barang yang sama — kalau kelak ada yang bisa
+memastikan, satu baris tinggal ditulis.
+
+**Kalau kelak batas ini mau dibuka,** yang perlu diputuskan bukan `G6` melainkan kunci
+gambarnya: `brand_key` + `narrowed_to` sudah unik pada seluruh sebelas packshot ini, sebab
+tiap karung menunjuk pendaftaran yang berbeda kecuali pasangan SP-36 dan pasangan Urea. Itu
+keputusan pemilik skema, bukan keputusan pemanen — dan sampai diputuskan, tabel di atas yang
+menahan informasinya.
+
+## 15. Seluruh katalog satu principal bisa memakai satu model karung
+
+Diukur pada 14 packshot Petrokimia Gresik yang berlatar benar-benar transparan (§4d
+mensyaratkan itu): **IoU siluet 0,995–1,000 pada setiap pasangan**, jauh di atas ambang
+0,92. Satu model karung 3D dipakai ulang untuk seluruh lini — yang berganti hanya warna dan
+tulisannya.
+
+Artinya `bentuk_kemasan_generik` di sini bukan dugaan melainkan angka, dan konsekuensinya
+tegas: gambar-gambar ini **tidak bisa** dipakai menyuruh petani mencari "karung berbentuk
+seperti ini". Yang membedakan PETRO NIPHOS dari PETRO NITRAT di toko adalah warna biru yang
+berbeda dan angka 20-20-13 lawan 16-16-16, bukan bentuk karungnya.
+
+Ini juga alasan seluruh 13 baris panen ini ditandai `tampak_sintetis`: keduanya render
+mockup resmi, bukan foto. `G11` karena itu menahan dua belas di antaranya dari
+`terverifikasi`; yang berhak naik hanya SP-36, sebab nomor tercetaknya terkoroborasi
+registri. Mekanismenya bekerja persis seperti yang dirancang di §4.

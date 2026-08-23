@@ -99,33 +99,56 @@ function sambungKomoditas(nama) {
 // pernah diterbitkan pemerintah secara terbuka.
 //
 // Maka tiga golongan, bukan dua:
-//   pangan   keluaran usaha tani, peternakan, dan perikanan — termasuk olahan tahap pertama
-//            yang harganya memang sinyal bagi petaninya (gula dari tebu, minyak goreng dari
-//            sawit, tahu dan tempe dari kedelai, garam dari tambak garam)
+//   pangan   yang dipanen, diternakkan, atau ditangkap — barang yang petani, peternak, dan
+//            nelayan hasilkan sendiri
 //   input    sarana produksi: benih dan pupuk. Tipe 2 di sumbernya, tetapi inti di sini.
-//   luar     selebihnya — bahan bangunan, LPG, dan pangan olahan lanjut yang bahan bakunya
-//            sebagian besar impor dan tidak menyentuh petani mana pun: susu bubuk, susu
-//            kental manis, mie instan, tepung terigu (Indonesia tidak menanam gandum).
+//   luar     bahan bangunan, LPG, dan PANGAN OLAHAN
 //
 // Yang `luar` TIDAK dibuang dari kosakata — ia tetap tercatat, karena SP2KP memang
 // menerbitkannya dan menghapusnya membuat cacah di dokumen tidak bisa direkonsiliasi dengan
 // sumbernya. Yang berubah hanya: layar tidak menampilkannya, dan mengatakan berapa banyak
 // yang tidak ditampilkan beserta sebabnya.
+//
+// ALASAN PEMISAHNYA DIPERBAIKI, DAN KEKELIRUANNYA LAYAK DICATAT
+// Versi pertama daftar ini beralasan "bahan bakunya sebagian besar impor" — susu bubuk, mie
+// instan, tepung terigu. Alasan itu KELIRU, dan kelirunya ketahuan begitu gula pasir dan
+// minyak goreng sawit ikut dikeluarkan: tebu dan sawit ditanam di Indonesia, jadi asal bahan
+// baku bukan yang membedakan.
+//
+// Yang membedakan TINGKAT OLAHANNYA, dan siapa yang menghadapi harganya. Harga gula pasir
+// adalah harga yang dibayar pembeli di toko; yang diterima petani tebu ada di ujung lain
+// rantai yang panjang, dan angka di sini tidak mengukurnya. Sama untuk minyak goreng
+// terhadap petani sawit. Permukaan ini melayani yang MENGHASILKAN barangnya, bukan yang
+// membelinya — dan menampilkan harga eceran barang olahan di sini menyiratkan sebuah
+// hubungan yang datanya tidak punya.
+//
+// Beras tetap masuk meski digiling: gabah dan beras satu rantai pendek dengan satu langkah,
+// dan beras adalah cara harga padi diucapkan di seluruh Indonesia. Daging potong juga —
+// potongan karkas masih keluaran peternakan, bukan produk pabrik.
 const INDUK_INPUT = new Set(['Benih', 'Pupuk Non Subsidi']);
 
 // Disebut satu per satu, bukan disaring dengan kata kunci. Daftar nama yang bisa dibaca
-// lebih mudah dibantah daripada regex yang diam-diam menangkap sesuatu yang lain.
-const OLAHAN_LANJUT = new Set([
+// lebih mudah dibantah daripada regex yang diam-diam menangkap sesuatu yang lain — dan
+// daftar ini memang pernah dibantah, dua kali.
+const PANGAN_OLAHAN = new Set([
+  // Berbahan baku sebagian besar impor
   'Susu Bubuk',
   'Susu Bubuk Balita',
   'Susu Kental Manis',
   'Mie Instan',
   'Tepung Terigu',
+  // Berbahan baku dalam negeri, tetapi tetap harga eceran barang olahan: yang menghadapinya
+  // pembeli di toko, bukan petani tebu maupun petani sawit.
+  'Gula Pasir Curah',
+  'Gula Pasir Kemasan',
+  'Minyak Goreng Sawit Curah',
+  'Minyak Goreng Sawit Kemasan Premium',
+  'Minyakita',
 ]);
 
 function golongan(v) {
   if (INDUK_INPUT.has(v.komoditas)) return 'input';
-  if (OLAHAN_LANJUT.has(v.nama)) return 'luar';
+  if (PANGAN_OLAHAN.has(v.nama)) return 'luar';
   return v.tipe === 1 ? 'pangan' : 'luar';
 }
 

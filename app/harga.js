@@ -101,9 +101,15 @@ function gambarDaftar(kueri = '') {
         <p class="catatan">
           Endpoint yang sama memuat <strong>bahan bangunan</strong> — baja ringan, besi beton,
           kayu balok, triplek, paku, semen — beserta <strong>LPG</strong> dan
-          <strong>pangan olahan lanjut yang bahan bakunya sebagian besar impor</strong>:
-          susu bubuk, susu kental manis, mie instan, tepung terigu. Tidak satu pun urusan
-          permukaan pertanian, jadi tidak satu pun ditampilkan.
+          <strong>pangan olahan</strong>: gula pasir, minyak goreng, tepung terigu, susu,
+          mie instan.
+        </p>
+        <p class="catatan">
+          Yang olahan dikeluarkan bukan karena bahan bakunya impor — tebu dan sawit ditanam di
+          sini — melainkan karena <strong>harganya harga eceran barang jadi</strong>. Yang
+          menghadapinya pembeli di toko, bukan petani tebu maupun petani sawit, dan jarak
+          antara keduanya tidak diukur data ini. Beras tetap ditampilkan meski digiling: satu
+          langkah dari gabah, dan itu cara harga padi diucapkan di seluruh Indonesia.
         </p>
         <p class="catatan">
           Keduanya tetap tercatat di <code>spec/vocab/harga/</code> apa adanya, supaya cacah
