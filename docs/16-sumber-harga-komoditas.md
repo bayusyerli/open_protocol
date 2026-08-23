@@ -312,6 +312,35 @@ diperdebatkan di atas. Ini argumen terkuat agar medan rendemen **bisa diubah pet
 bukan sekadar boleh diubah: petani yang tahu kilang tujuannya punya angka yang lebih benar
 daripada rata-rata nasional mana pun.
 
+### Satu-satunya rendemen Indonesia yang bisa diterbitkan — dan ia tayang
+
+Batas paling menyakitkan dari koreksi ini: angka yang paling meyakinkan (MPOB, terukur di 451
+kilang) justru yang **tidak boleh diterbitkan ulang**. Yang boleh terbit — FAOSTAT — adalah
+rasio produksi tahunan, bukan rendemen terukur.
+
+Kekosongan itu terisi belakangan, dari arah yang tidak diduga. **Kalimantan Timur menerbitkan
+tabel rendemennya sendiri di dalam surat keputusan harga TBS**, per pita umur tanaman, dan
+surat keputusan adalah dokumen resmi negara: bukan hak cipta, boleh diterbitkan ulang. Tabel
+itu kini **tayang di halaman harga TBS Kaltim** (`app/harga.js`, `kartuRendemen`) — lihat
+bagian 8b untuk cara menariknya.
+
+| Umur tanaman | Rendemen CPO | Rendemen inti |
+| ---: | ---: | ---: |
+| 3 tahun | 19,30% | 4,35% |
+| 10 tahun ke atas | 21,83% | 5,05% |
+
+**Rentang 19,30–21,83% itu mengapit 19,7%, dan sekaligus menjelaskan asal 21%.** Angka 21%
+bukan sekadar "terlalu tinggi" — ia rendemen **kebun tua** yang dipakai untuk semua umur.
+Selisih 2,53 poin menurut umur saja, di dalam satu provinsi, sudah lebih besar daripada
+seluruh koreksi 21% → 19,7% yang jadi pokok bagian ini. Ia menguatkan kesimpulan di bawah dari
+sisi lain: kalau umur tanaman saja menggeser rendemen sebanyak itu, satu konstanta nasional
+memang tidak pernah cukup.
+
+Yang tabel ini **bukan**: ia rendemen yang *ditetapkan untuk menghitung harga*, sama jenisnya
+dengan tabel peraturan yang bagian ini tolak sebagai "OER resmi". Ia dipakai karena
+menerangkan **bentuk** sebarannya — bahwa rendemen bergerak menurut umur, dan ke arah mana —
+bukan untuk menggantikan 19,7% sebagai angka bawaan.
+
 ### Yang tidak boleh dipakai sebagai OER
 
 **Jangan pakai FAOSTAT SCL** (*Supply Utilization Accounts*). Rasionya keluar **21,294%

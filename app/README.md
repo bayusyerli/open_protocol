@@ -13,7 +13,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
 | `jalur-6.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
 | `takaran.html` | — kalibrasi semprot & takaran alat rumah tangga: aritmetika, bukan anjuran | D4 + D5 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
-| `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, dan komentar per seri | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
+| `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, komentar per seri, dan — untuk TBS sawit — tabel harga & rendemen per umur tanaman | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
 | `principal.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `toko.html` | — direktori layanan: toko tani berkoordinat, dan penjual benih yang **tidak** bisa dituju | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `usaha.html` | — analisis usaha tani: RAB dan titik impas, dinyatakan sebagai **rasio** terhadap harga eceran | D3 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |

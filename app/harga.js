@@ -285,22 +285,99 @@ function kartuPitaUmur(h) {
 // terbuka dan bisa diperiksa, bukan tersembunyi di balik satu angka jadi.
 function kartuRumus(h) {
   const f = h.rumus;
-  if (!f?.terakhir) return '';
+  if (!f?.terakhir && !f?.rendemen) return '';
   const t = f.terakhir;
   return `
     <div class="kartu">
       <h2>Angka yang membentuknya</h2>
-      <p class="catatan">${teks(f.keterangan)}</p>
-      <dl class="kunci">
-        <dt>Indeks K</dt><dd>${angkaId(t.indeks_k, 2)}%</dd>
-        <dt>Harga CPO</dt><dd>${rp(t.cpo)} / kg</dd>
-        <dt>Harga PKO</dt><dd>${rp(t.pko)} / kg</dd>
-      </dl>
+      ${f.keterangan ? `<p class="catatan">${teks(f.keterangan)}</p>` : ''}
+      ${t ? `
+        <dl class="kunci">
+          ${t.indeks_k !== undefined ? `<dt>Indeks K</dt><dd>${angkaId(t.indeks_k, 2)}%</dd>` : ''}
+          ${t.cpo !== undefined ? `<dt>Harga CPO</dt><dd>${rp(t.cpo)} / kg</dd>` : ''}
+          ${t.pko !== undefined ? `<dt>Harga inti sawit</dt><dd>${rp(t.pko)} / kg</dd>` : ''}
+        </dl>
+        <p class="catatan">
+          <strong>Indeks K adalah proporsi nilai CPO yang mengalir ke pekebun.</strong> Ia yang
+          menjawab kenapa harga TBS jauh di bawah harga CPO: satu kilogram tandan bukan satu
+          kilogram minyak. Membandingkan keduanya tanpa melewati indeks ini membuat jurangnya
+          tampak berlipat-lipat padahal tidak.
+        </p>` : ''}
+    </div>
+    ${kartuRendemen(f.rendemen)}`;
+}
+
+// Rendemen per pita umur — kartu yang paling langsung menjawab aturan tayang docs/16 butir 3
+// dan koreksi bagian 7a sekaligus.
+//
+// KENAPA IA LAYAK KARTU SENDIRI, BUKAN SATU BARIS DI KARTU RUMUS
+// Rendemen adalah faktor yang mengubah "harga CPO dunia" jadi angka yang berarti bagi pekebun.
+// Tanpanya, TBS terhadap CPO tampak 7,26× dan petani menyimpulkan dirinya ditipu tujuh kali
+// lipat; dengannya, 1,43×. Selisih pembacaan sebesar itu tidak boleh bersembunyi di dalam
+// satu bilangan yang tidak pernah diperlihatkan.
+//
+// DAN KENAPA IA TIDAK BOLEH TAMPIL SEBAGAI SATU ANGKA
+// Rendemen berbeda menurut UMUR TANAMAN — 19,30% pada kebun tiga tahun sampai 21,83% pada
+// kebun sepuluh tahun ke atas. Satu angka nasional memperlakukan seluruh kebun seolah setua
+// satu sama lain, dan itu persis kekeliruan yang membuat docs/16 memakai 21% selama ini:
+// angka itu rendemen kebun TUA, dipakai untuk semua umur.
+function kartuRendemen(r) {
+  if (!r?.terakhir) return '';
+  const pita = Object.keys(r.terakhir);
+  const nilai = pita.map((u) => r.terakhir[u]).filter((x) => x > 0);
+  const lo = Math.min(...nilai), hi = Math.max(...nilai);
+  const pct = (x) => `${angkaId(x * 100, 2)}%`;
+
+  return `
+    <div class="kartu">
+      <h2>Rendemen menurut umur tanaman
+        <span class="lencana">Faktor konversi</span>
+      </h2>
       <p class="catatan">
-        <strong>Indeks K adalah proporsi nilai CPO yang mengalir ke pekebun.</strong> Ia yang
-        menjawab kenapa harga TBS jauh di bawah harga CPO: satu kilogram tandan bukan satu
-        kilogram minyak. Membandingkan keduanya tanpa melewati indeks ini membuat jurangnya
-        tampak berlipat-lipat padahal tidak.
+        Berapa kilogram minyak sawit yang keluar dari satu kilogram tandan. Angka ini
+        <strong>ditetapkan di surat keputusannya sendiri</strong>, bukan diasumsikan —
+        dan sejauh yang tercatat di platform ini, Kalimantan Timur satu-satunya provinsi
+        yang menerbitkannya.
+      </p>
+
+      <div class="pembungkus-tabel">
+        <table>
+          <thead><tr>
+            <th>Umur tanaman</th><th>Rendemen CPO</th><th>Rendemen inti</th>
+            <th>Letak dalam rentang ${pct(lo)}–${pct(hi)}</th>
+          </tr></thead>
+          <tbody>${pita.map((u) => {
+            const v = r.terakhir[u];
+            const i = r.inti_terakhir?.[u];
+            return `<tr>
+              <td>${teks(String(u).replace('>=', '≥'))} tahun</td>
+              <td class="angka">${v > 0 ? pct(v) : '—'}</td>
+              <td class="angka">${i > 0 ? pct(i) : '—'}</td>
+              <td><span class="bilah" style="--isi:${v > 0 ? Math.round(((v - lo) / (hi - lo)) * 100) : 0}%"></span></td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table>
+      </div>
+      <p class="catatan">
+        Bilah di kolom terakhir <strong>dimulai dari nilai terendah, bukan dari nol.</strong>
+        Diukur dari nol, kedelapan bilah akan tampak sama panjang — selisih 2,53 poin memang
+        kecil dibanding 21%. Yang ditunjukkan di sini urutannya, dan karena sumbunya dipotong,
+        itu dinyatakan alih-alih dibiarkan tertebak.
+      </p>
+
+      <p class="catatan catatan-tegas">
+        <strong>Rentangnya ${pct(lo)} sampai ${pct(hi)} — selisih
+        ${angkaId((hi - lo) * 100, 2)} poin menurut umur saja.</strong> Karena itu satu angka
+        rendemen nasional menyesatkan: ia memperlakukan kebun tiga tahun dan kebun dua puluh
+        tahun seolah menghasilkan minyak sama banyak. Kebun muda menghasilkan jauh lebih
+        sedikit, dan harga TBS-nya lebih rendah justru karena itu — bukan karena ia dihargai
+        tidak adil.
+      </p>
+      <p class="catatan">
+        Rendemen juga berbeda antar-<em>pabrik</em>, dan selisihnya lebih besar lagi. Angka di
+        sini rendemen yang <strong>ditetapkan untuk menghitung harga</strong>, bukan yang
+        terukur di pabrik tempat tandan itu benar-benar diolah.
+        ${r.median ? `Median seluruh penetapan yang terbaca: <strong>${pct(r.median)}</strong>.` : ''}
       </p>
     </div>`;
 }

@@ -233,6 +233,22 @@ if (HRG) {
   // dan dasar koreksi OER pada bagian 7a. Kalau ia hilang, kalimat itu kehilangan sandarannya.
   cek('16', 'penetapan Kaltim ber-rendemen', Object.keys(HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-timur')?.formula?.rendemen?.seri?.at(-1)?.cpo ?? {}).length, 8);
   cek('16', 'penetapan TBS Kaltim', HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-timur')?.series?.length ?? 0, 83);
+  // Batas rentang rendemen dikunci karena bagian 7a MENCETAKNYA sebagai tabel, dan halaman
+  // harga menghitungnya ulang dari indeks. Dua tempat menyebut angka yang sama dari sumber
+  // berbeda; kalau salah satunya bergeser tanpa yang lain, di sinilah ketahuan.
+  {
+    const r = HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-timur')?.formula?.rendemen?.seri?.at(-1) ?? {};
+    const cpo = Object.values(r.cpo ?? {}).filter((x) => x > 0);
+    const inti = Object.values(r.inti ?? {}).filter((x) => x > 0);
+    // Dibulatkan dua desimal karena rendemen disimpan sebagai pecahan: 0,0505 × 100 tidak
+    // menghasilkan 5,05 persis di titik-mengambang, dan selisih 10^-15 bukan pergeseran data.
+    const persen = (x) => Math.round(x * 10000) / 100;
+    cek('16', 'rendemen CPO Kaltim terendah (%)', persen(Math.min(...cpo)), 19.3);
+    cek('16', 'rendemen CPO Kaltim tertinggi (%)', persen(Math.max(...cpo)), 21.83);
+    cek('16', 'rentang rendemen CPO Kaltim (poin)', persen(Math.max(...cpo) - Math.min(...cpo)), 2.53);
+    cek('16', 'rendemen inti Kaltim terendah (%)', persen(Math.min(...inti)), 4.35);
+    cek('16', 'rendemen inti Kaltim tertinggi (%)', persen(Math.max(...inti)), 5.05);
+  }
   cek('16', 'penetapan TBS Babel', HRG.find((h) => h.key === 'tbs-kelapa-sawit-bangka-belitung')?.series?.length ?? 0, 4);
 }
 
