@@ -538,6 +538,42 @@ umur 9; Kalteng mengumumkan pita 10–20 tahun. Keduanya puncak kurva hasil di d
 masing-masing, tetapi keduanya pita yang berlainan — menyandingkan angkanya tanpa menyebut
 pitanya berarti membandingkan dua hal yang berbeda.
 
+### Kaltim dan Babel — lewat OCR, dan Kaltim membawa rendemen yang bagian 7a cari
+
+Keduanya terbit sebagai gambar, jadi keduanya menuntut OCR. Dipakai **Vision.framework bawaan
+macOS**, bukan tesseract: yang terakhir tidak terpasang dan memasangnya menambah dependensi
+sistem untuk alat yang dijalankan sebulan sekali, sementara Vision sudah ada di setiap macOS
+dan pada teks cetak yang bersih lebih akurat tanpa penyetelan. Konsekuensinya alatnya hanya
+berjalan di macOS, dan itu dinyatakan alih-alih ditemukan sendiri.
+
+**Kaltim — 83 penetapan, Januari 2021 → April 2025, dan satu kolom yang tidak dimiliki
+provinsi mana pun.** Surat keputusannya berkolom Indeks K, harga CPO, **rendemen CPO per pita
+umur**, harga inti sawit, rendemen inti, lalu harga TBS. Kolom rendemen itu menjawab langsung
+kekosongan yang bagian 7a nyatakan: satu-satunya sumber rendemen terukur yang bisa dikutip
+adalah MPOB Malaysia, dan MPOB benih privat. Kaltim menerbitkannya di dalam surat keputusan,
+yang menurut UU 28/2014 Pasal 41 huruf b bukan objek hak cipta.
+
+Nilainya **19,30%–21,83% menurut umur tanaman**, median 20,92% dari 82 penetapan. Itu
+mengapit angka bawaan 19,7% — dan sekaligus menajamkannya: **satu angka rendemen nasional
+memperlakukan seluruh kebun seolah setua satu sama lain**, padahal selisih antar-umur di satu
+provinsi saja lebih dari dua poin. Angka 21% yang dikoreksi bagian 7a ternyata bukan sekadar
+"terlalu tinggi" — ia rendemen kebun TUA yang dipakai untuk semua umur.
+
+**Babel — 4 penetapan saja, dan PDF-nya justru yang harus diabaikan.** Tiap pengumuman
+membawa dua lampiran: berita acara PDF dan selebaran PNG. PDF biasanya pilihan yang benar
+karena bisa berlapis teks — dan PDF ini memang berlapis teks. Tetapi lapisan itu hasil OCR
+pihak lain yang rusak: `Ju.'n`, `e219`, `'t5.7 t7,3f`, `2'1.23`. Selebaran PNG-nya terbaca
+Vision dengan keyakinan 1,00 pada hampir seluruh barisnya. Yang dipakai gambarnya.
+
+> **Lapisan teks tidak otomatis lebih baik daripada OCR ulang.** Alat OCR di repositori ini
+> karena itu mengeluarkan medan `asal` — `lapisTeks` atau `ocr` — supaya keputusan mana yang
+> dipercaya bisa diambil per berkas, bukan diasumsikan sekali untuk semua.
+
+Arsip Babel **tipis dan bergulir**: hanya empat pengumuman terjangkau, dan yang lama
+menghilang. Seperti Kalbar, arsipnya jadi milik kita hanya kalau ditarik rutin.
+
+**Crawl-delay 10 detik** pada host lampiran Babel dihormati apa adanya.
+
 ### Sulawesi Barat — datanya ada, arsipnya tidak, dan harganya tidak diterbitkan
 
 Diperiksa 23 Agustus 2026 dan **tidak bisa dipanen sebagai seri**, karena dua sebab yang

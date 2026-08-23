@@ -21,3 +21,7 @@ harga_data/privat/
 # keluaran ternormalkannya (harga_data/sp2kp-hnt.ndjson) memang naik ke repo; yang
 # mentah tidak, karena bisa ditarik ulang dengan `node harga_data/tarik-sp2kp.mjs`.
 harga_data/mentah/
+
+# Biner OCR hasil kompilasi — dibangun ulang dengan
+# `swiftc -O harga_data/ocr-vision.swift -o harga_data/bin/ocr-vision`.
+harga_data/bin/

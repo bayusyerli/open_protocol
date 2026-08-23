@@ -81,6 +81,10 @@ node harga_data/tarik-tbs-kalbar.mjs                # penetapan TBS Kalbar — j
 node harga_data/tarik-tbs-riau.mjs                  # penetapan TBS Riau — dua seri, termasuk
                                                     # satu-satunya harga pekebun SWADAYA di Indonesia
 node harga_data/tarik-tbs-kalteng.mjs               # penetapan TBS Kalteng — arsip terdalam, 2021→
+swiftc -O harga_data/ocr-vision.swift \
+  -o harga_data/bin/ocr-vision                      # OCR Vision.framework — hanya macOS
+node harga_data/tarik-tbs-kaltim.mjs                # SK Kaltim lewat OCR — membawa RENDEMEN per umur
+node harga_data/tarik-tbs-babel.mjs                 # selebaran Babel lewat OCR — arsip tipis, bergulir
 node spec/tools/bangun-harga.mjs --tulis            # 88 varian, 43 di antaranya berangka
 node spec/tools/bangun-komentar-harga.mjs --tulis   # komentar per seri; jalan tanpa kredensial
 node gambar_produk/terbitkan.mjs --tulis            # salin gambar kemasan ke app/gambar/

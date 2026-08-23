@@ -62,6 +62,10 @@ const TBS_RIAU = join(akar, 'harga_data', 'tbs-riau.ndjson');
 const tbsRiau = existsSync(TBS_RIAU) ? bacaNdjson(TBS_RIAU) : [];
 const TBS_KALTENG = join(akar, 'harga_data', 'tbs-kalteng.ndjson');
 const tbsKalteng = existsSync(TBS_KALTENG) ? bacaNdjson(TBS_KALTENG) : [];
+const TBS_KALTIM = join(akar, 'harga_data', 'tbs-kaltim.ndjson');
+const tbsKaltim = existsSync(TBS_KALTIM) ? bacaNdjson(TBS_KALTIM) : [];
+const TBS_BABEL = join(akar, 'harga_data', 'tbs-babel.ndjson');
+const tbsBabel = existsSync(TBS_BABEL) ? bacaNdjson(TBS_BABEL) : [];
 
 // ---------------------------------------------------------------------------
 // Sambungan ke kosakata komoditas sendiri
@@ -612,6 +616,129 @@ if (tbsKalteng.length) {
     lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
   });
 }
+
+
+// ---------------------------------------------------------------------------
+// Kaltim dan Babel — keduanya lewat OCR, dan keduanya berbentuk sama
+// ---------------------------------------------------------------------------
+// Dibangun lewat satu fungsi, bukan dua salinan. Kalbar dan Riau di atas masih blok
+// tersendiri karena bentuknya memang lain — Kalbar punya kolom rumusnya sendiri, Riau punya
+// dua seri terpisah. Kalau provinsi ketujuh masuk kelak, ketiga blok itu layak disatukan;
+// hari ini menyatukannya berarti menulis ulang kode yang sudah bekerja demi kerapian saja.
+function buatTbs({ baris, key, label, kode, wilayah, sistem, cakupanHukum, catatanPita, rendemen }) {
+  if (!baris.length) return null;
+  const urut = [...baris].filter((r) => r.tbs > 0).sort((a, b) => a.t.localeCompare(b.t));
+  if (!urut.length) return null;
+  const titik = urut.map((r) => ({ t: r.t, p: Math.round(r.tbs * 100) / 100 }));
+  const akhir = urut.at(-1);
+  const berIndeks = urut.filter((r) => r.indeks_k);
+  const nominal = urut.filter((r) => r.tanggal_nominal).length;
+  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+
+  return {
+    id: idLama.get(key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`,
+    key,
+    label: { id: label },
+    commodity_group: 'Kelapa Sawit',
+    ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
+    region: { code: kode, label: wilayah },
+    source_system: sistem,
+    basis: 'penetapan',
+    legal_scope: cakupanHukum,
+    price_level: 'farmgate',
+    sector: 'pangan',
+    unit: 'kg',
+    qty: 1,
+    ...(nominal ? { nominal_dates: true } : {}),
+    coverage: { from: titik[0].t, to: titik.at(-1).t, points: titik.length, gaps: 0 },
+    series: titik,
+    stats: statistik(titik),
+    age_bands: {
+      keterangan: catatanPita,
+      pita: Object.keys(akhir.tbs_umur),
+      terakhir: akhir.tbs_umur,
+      seri: urut.map((r) => ({ t: r.t, u: r.tbs_umur })),
+    },
+    ...(berIndeks.length || rendemen ? {
+      formula: {
+        keterangan: [
+          berIndeks.length
+            ? `Indeks K dan harga bahan pada tiap penetapan; tersedia pada ${berIndeks.length} dari ${urut.length}.`
+            : null,
+          rendemen ? rendemen.keterangan : null,
+        ].filter(Boolean).join(' '),
+        ...(berIndeks.length ? {
+          terakhir: {
+            indeks_k: berIndeks.at(-1).indeks_k,
+            ...(berIndeks.at(-1).cpo ? { cpo: berIndeks.at(-1).cpo } : {}),
+            ...(berIndeks.at(-1).inti_sawit ?? berIndeks.at(-1).kernel ? { pko: berIndeks.at(-1).inti_sawit ?? berIndeks.at(-1).kernel } : {}),
+          },
+          seri: berIndeks.map((r) => ({
+            t: r.t, k: r.indeks_k,
+            ...(r.cpo ? { cpo: r.cpo } : {}),
+            ...(r.inti_sawit ?? r.kernel ? { pko: r.inti_sawit ?? r.kernel } : {}),
+          })),
+        } : {}),
+        ...(rendemen ? { rendemen: rendemen.isi } : {}),
+      },
+    } : {}),
+    mappings: [{
+      scheme: 'KEMENTAN', id: 'Permentan 13/2024', relation: 'related',
+      note: `Penetapan harga TBS oleh tim provinsi ${wilayah}.`,
+    }],
+    lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
+  };
+}
+
+// Kaltim membawa yang tidak dibawa provinsi mana pun: RENDEMEN per pita umur, di dalam surat
+// keputusan yang bukan objek hak cipta. docs/16 bagian 7a menyimpulkan satu-satunya sumber
+// rendemen terukur yang bisa dikutip adalah MPOB Malaysia — dan MPOB benih privat. Ini
+// menggantinya dengan sumber Indonesia yang boleh terbit.
+const kaltimBerRendemen = tbsKaltim.filter((r) => Object.keys(r.rendemen_cpo ?? {}).length >= 6);
+const rendemenKaltim = kaltimBerRendemen.length ? (() => {
+  const akhir = kaltimBerRendemen.at(-1);
+  const semua = kaltimBerRendemen.flatMap((r) => Object.values(r.rendemen_cpo)).filter((x) => x > 0).sort((a, b) => a - b);
+  return {
+    keterangan:
+      `Rendemen CPO per pita umur, dari surat keputusan penetapan — bukan asumsi. Pada ${akhir.t} nilainya ${(Math.min(...Object.values(akhir.rendemen_cpo)) * 100).toFixed(2)}% sampai ${(Math.max(...Object.values(akhir.rendemen_cpo)) * 100).toFixed(2)}% menurut umur tanaman. Ini menjawab langsung docs/16 bagian 7a: satu angka rendemen nasional memperlakukan seluruh kebun seolah setua satu sama lain, padahal selisih antar-umur di sini saja lebih dari dua poin.`,
+    isi: {
+      terakhir: akhir.rendemen_cpo,
+      ...(akhir.rendemen_inti ? { inti_terakhir: akhir.rendemen_inti } : {}),
+      median: Math.round(semua[Math.floor(semua.length / 2)] * 10000) / 10000,
+      seri: kaltimBerRendemen.map((r) => ({ t: r.t, cpo: r.rendemen_cpo, ...(r.rendemen_inti ? { inti: r.rendemen_inti } : {}) })),
+    },
+  };
+})() : null;
+
+const tbsKaltimRec = buatTbs({
+  baris: tbsKaltim,
+  key: 'tbs-kelapa-sawit-kalimantan-timur',
+  label: 'TBS Kelapa Sawit — Kalimantan Timur',
+  kode: 'ID-KI',
+  wilayah: 'Kalimantan Timur',
+  sistem: 'SK Disbun Kaltim (OCR)',
+  cakupanHukum:
+    'Surat Keputusan Dinas Perkebunan Provinsi Kalimantan Timur tentang penetapan harga pembelian TBS "produksi pekebun yang BERMITRA". Pekebun swadaya berada di luar cakupannya, dan Kaltim tidak menerbitkan seri terpisah untuk mereka. Angkanya dibaca lewat OCR dari PDF pindaian — tiap tabel lolos uji bentuk kurva sebelum diterima, tetapi OCR tetap bisa menukar satu digit tanpa mengaku.',
+  catatanPita:
+    'Harga per pita umur tanaman, dibaca lewat OCR dari tabel surat keputusannya. Angka pada grafik memakai pita tertua (≥10 tahun), yang tertinggi di seluruh berkas yang diperiksa — bukan rata-rata.',
+  rendemen: rendemenKaltim,
+});
+if (tbsKaltimRec) itemsTbs.push(tbsKaltimRec);
+
+const tbsBabelRec = buatTbs({
+  baris: tbsBabel,
+  key: 'tbs-kelapa-sawit-bangka-belitung',
+  label: 'TBS Kelapa Sawit — Kepulauan Bangka Belitung',
+  kode: 'ID-BB',
+  wilayah: 'Kepulauan Bangka Belitung',
+  sistem: 'Selebaran DPKP Babel (OCR)',
+  cakupanHukum:
+    'Penetapan harga pembelian TBS kelapa sawit pekebun mitra plasma oleh Dinas Pertanian dan Ketahanan Pangan Provinsi Kepulauan Bangka Belitung. Pekebun swadaya berada di luar cakupannya. Arsipnya TIPIS dan bergulir — hanya empat pengumuman terjangkau saat ditarik, dan yang lama menghilang seiring pengumuman baru terbit.',
+  catatanPita:
+    'Harga per pita umur tanaman, dibaca lewat OCR dari selebaran PNG-nya — bukan dari berita acara PDF, yang lapisan teksnya hasil OCR pihak lain yang rusak. Kurvanya naik sampai pita 10–20 tahun lalu menurun sampai umur 25; angka pada grafik memakai pita puncaknya.',
+  rendemen: null,
+});
+if (tbsBabelRec) itemsTbs.push(tbsBabelRec);
 
 items.push(...itemsTbs);
 
