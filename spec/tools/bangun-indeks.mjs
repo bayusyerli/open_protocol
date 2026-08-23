@@ -1598,6 +1598,106 @@ for (const r of tokoAlamat) lisensiToko[r.lisensi ?? 'tidak dinyatakan'] = (lise
 // ---------------------------------------------------------------------------
 // batas — empat medan yang wajib disebut tiap layar
 // ---------------------------------------------------------------------------
+// Balai penyuluhan & laboratorium — C7, dan ujung yang dicari G3
+// ---------------------------------------------------------------------------
+// Keduanya sudah jadi entitas kosakata, dan sampai blok ini tidak satu pun terbaca
+// permukaan. G3 menahan layarnya justru karena itu: laporan gejala menuntut ujung yang
+// bisa disebutkan, dan ujung yang ada di kosakata tetapi tidak di indeks sama tidak
+// bisa disebutnya dengan ujung yang tidak ada.
+//
+// DUA POLA YANG BERBEDA, KARENA PERTANYAANNYA BERBEDA.
+//
+// Balai dicari menurut TEMPAT: yang bertanya sudah tahu kecamatannya sendiri, dan yang
+// ia perlukan nama balai yang membinanya. Diember per kabupaten seperti toko — 504 ember,
+// terbesar 2,8 KB.
+//
+// Laboratorium dicari menurut KEMAMPUAN lebih dulu, baru tempat: "siapa yang bisa
+// mengukur residu pestisida" menyaring 889 jadi 17, dan tanpa penyaring itu daftar
+// provinsi cuma memindahkan pekerjaan memilah ke pembacanya. Kemampuannya karena itu
+// ikut di kepala, bukan cuma di pecahan.
+const bppSemua = bacaNdjson('bpp/bpp.ndjson');
+const labSemua = bacaNdjson('lab/lab.ndjson');
+
+const perBpp = new Map();
+for (const b of bppSemua) {
+  const r = b.region ?? {};
+  const w = [r.regency, r.province].filter(Boolean).join(', ') || '(tanpa wilayah)';
+  const k = kunciWilayah(w);
+  if (!perBpp.has(k)) perBpp.set(k, { kunci: k, wilayah: w, isi: [] });
+  perBpp.get(k).isi.push({
+    n: b.label?.id ?? b.key,
+    // Kecamatan binaan ikut karena ia satu-satunya cara menemukan balai yang benar:
+    // rekaman ini TIDAK punya alamat, dan itu batas sumbernya — laporan tamu SIMLUHTAN
+    // hanya memberi nama dan kecamatan. Menggeokodenya massal ditolak dengan sadar,
+    // karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.
+    k: b.serves ?? [],
+    p: b.counts?.extension_workers?.total ?? null,
+    g: b.counts?.farmer_groups ?? null,
+  });
+}
+
+const berkasBpp = {};
+const bppWilayah = [...perBpp.values()]
+  .sort((a, b) => a.wilayah.localeCompare(b.wilayah))
+  .map((w) => {
+    berkasBpp[w.kunci] = w.isi.sort((a, b) => a.n.localeCompare(b.n));
+    return {
+      k: w.kunci,
+      w: w.wilayah,
+      n: w.isi.length,
+      kec: w.isi.reduce((a, x) => a + x.k.length, 0),
+    };
+  });
+
+// Kemampuan dipadatkan jadi huruf. Jawa Barat memuat 175 laboratorium, dan larik kata
+// ("water", "plant_tissue") membuat pecahannya 47,6 KB — di bawah anggaran 48 KB, tetapi
+// satu laboratorium berikutnya memecahkannya. Yang dipadatkan penulisannya, bukan isinya.
+const KODE_KEMAMPUAN = {
+  soil: 't', fertilizer: 'p', water: 'a', food: 'm', plant_tissue: 'j', pesticide_residue: 'r',
+};
+const ARTI_KEMAMPUAN = {
+  t: 'tanah', p: 'pupuk', a: 'air', m: 'pangan', j: 'jaringan tanaman', r: 'residu pestisida',
+};
+
+const perLab = new Map();
+const cacahKemampuan = {};
+for (const x of labSemua) {
+  const kode = Object.entries(x.capabilities ?? {})
+    .filter(([, v]) => v).map(([k]) => KODE_KEMAMPUAN[k]).filter(Boolean).sort().join('');
+  for (const c of kode) cacahKemampuan[c] = (cacahKemampuan[c] ?? 0) + 1;
+  const prov = x.address?.province ?? '(tanpa provinsi)';
+  const k = kunciWilayah(prov);
+  if (!perLab.has(k)) perLab.set(k, { kunci: k, wilayah: prov, isi: [] });
+  perLab.get(k).isi.push({
+    n: x.label?.id ?? x.key,
+    a: x.address?.text ?? null,
+    no: x.accreditation?.number ?? null,
+    // Masa berlaku ikut, dan bukan hiasan: akreditasi yang sudah lewat masa berlakunya
+    // adalah laboratorium yang hasil ujinya tidak lagi diakui, dan itu persis yang
+    // dicari orang yang datang ke sini.
+    sd: x.accreditation?.valid_until ?? null,
+    k: kode,
+    t: x.contact?.phone ?? null,
+    e: x.contact?.email ?? null,
+  });
+}
+
+const berkasLab = {};
+const labWilayah = [...perLab.values()]
+  .sort((a, b) => a.wilayah.localeCompare(b.wilayah))
+  .map((w) => {
+    berkasLab[w.kunci] = w.isi.sort((a, b) => a.n.localeCompare(b.n));
+    return {
+      k: w.kunci,
+      w: w.wilayah,
+      n: w.isi.length,
+      r: w.isi.filter((x) => x.k.includes('r')).length,
+    };
+  });
+
+const labKepala = { arti: ARTI_KEMAMPUAN, cacah: cacahKemampuan, wilayah: labWilayah };
+
+// ---------------------------------------------------------------------------
 // B1 pada docs/15: tiap layar menyebut TINGKAT BUKTI, TANGGAL, SUMBER, dan APA YANG
 // TIDAK DIKETAHUINYA. Tiga di antaranya sudah ada di berkas koleksi dan siklus hidup
 // kosakata; yang belum ada cuma jalan supaya sisi penyaji bisa membacanya tanpa
@@ -1758,6 +1858,32 @@ const batas = {
       alasan:
         'Yang 2.181 dari arsip Wayback halaman TTI Kementan yang sudah tidak ada lagi — tidak ada tanggal pada rekamannya, jadi tidak ada cara mengetahui seberapa basi, dan toko yang sudah tutup tidak bisa dibedakan dari yang masih buka. Yang 67 dari data terbuka Pemkab Batang berlisensi CC-BY, jauh lebih kuat, tetapi terlalu sedikit untuk menaikkan tingkat keseluruhannya.',
     },
+    bpp: {
+      label: 'Balai penyuluhan pertanian',
+      penerbit: 'Badan Penyuluhan dan Pengembangan SDM Pertanian, Kementerian Pertanian RI',
+      url: 'https://simluh.pertanian.go.id/guestreport',
+      tarikan: '2026-08-23',
+      tinjau: '2026-11-23',
+      status: 'draft',
+      lisensi: 'CC-BY-SA-4.0',
+      cacah: bppSemua.length,
+      tingkat: 'B',
+      alasan:
+        'Laporan tamu SIMLUHTAN, basis data resmi penyuluhan Kementan, disinkronkan harian — standar institusi, jadi tingkat B. Tiga hal yang membatasinya dan tidak boleh dibaca sebagai kelengkapan: rekamannya TIDAK punya alamat maupun koordinat, karena sumbernya memang hanya memberi nama balai dan kecamatan binaannya; provinsinya 34, bukan 38, karena pemekaran Papua belum masuk basis data sumbernya; dan pembaruan SIMLUHTAN sedang ditutup untuk pemeliharaan sampai 30 Agustus 2026, jadi angka ini potret sebelum itu.',
+    },
+    lab: {
+      label: 'Laboratorium penguji terakreditasi',
+      penerbit: 'Komite Akreditasi Nasional (BSN)',
+      url: 'https://kan.or.id/index.php/documents/terakreditasi/77-laboratorium',
+      tarikan: '2026-08-23',
+      tinjau: '2026-11-23',
+      status: 'draft',
+      lisensi: 'CC-BY-SA-4.0',
+      cacah: labSemua.length,
+      tingkat: 'B',
+      alasan:
+        'Papan lembaga terakreditasi KAN, otoritas akreditasi nasional — standar institusi, jadi tingkat B. Yang masuk 889 dari 1.671 laboratorium penguji aktif: hanya yang ruang lingkupnya menyentuh tanah, pupuk, air, pangan, jaringan tanaman, atau residu pestisida. Masa berlaku akreditasi ikut tiap rekaman karena akreditasi yang lewat masa berlakunya berarti hasil ujinya tidak lagi diakui — dan itu tidak terlihat dari nama laboratoriumnya.',
+    },
     sediaan: {
       label: 'Resep sediaan buatan sendiri',
       penerbit: 'Open Protocols',
@@ -1838,6 +1964,18 @@ const meta = {
     tokoBerwilayah: tokoAlamat.length,
     tokoLebihRinci: tokoAlamat.filter((r) => lebihRinci(r.alamat)).length,
     tokoWilayah: tokoWilayah.length,
+    bpp: bppSemua.length,
+    bppWilayah: bppWilayah.length,
+    // Kecamatan yang benar-benar tersebut di `serves`, dan itu BUKAN angka yang sama
+    // dengan "kecamatan yang menyebut nama BPP" di penyuluh_data/LAPIS.md. Yang di sana
+    // 6.883 dihitung dari baris kecamatan; yang di sini dari balai. Selisihnya balai yang
+    // kecamatannya kosong di sumbernya — dihitung terpisah supaya kedua angka tidak
+    // tertukar, karena keduanya benar untuk pertanyaan yang berbeda.
+    bppKecamatanTerbina: bppWilayah.reduce((a, w) => a + w.kec, 0),
+    bppTanpaKecamatan: bppSemua.filter((b) => !(b.serves ?? []).length).length,
+    lab: labSemua.length,
+    labWilayah: labWilayah.length,
+    labResidu: cacahKemampuan.r ?? 0,
     principal: principalRinci.length,
     principalPupuk: principalRinci.filter((b) => b.punya.fertilizer > 0).length,
     principalPestisida: principalRinci.filter((b) => b.punya.pesticide > 0).length,
@@ -1857,27 +1995,39 @@ const meta = {
     sidikKandungan: kandungan.size,
     produkBerkandungan: [...kandungan.values()].reduce((a, d) => a + d.length, 0),
   },
+  // ATURAN: daftar kunci hanya boleh ada di sini kalau ADA YANG MEMBACANYA. meta.json
+  // satu-satunya berkas yang diambil di TIAP muat halaman, termasuk halaman yang tidak
+  // menyentuh pecahan itu sama sekali, jadi tiap kunci yang tidak dibaca dibayar semua
+  // orang di tiap kunjungan.
+  //
+  // Aturan itu sudah ditulis di sini sejak principal — "daftar 3.136 kunci membengkakkan
+  // meta.json dari 19 KB jadi 114 KB" — lalu dilanggar lima kali berturut-turut oleh
+  // penambahan yang masing-masing tampak kecil: opt, kandungan, toko, optNama, dan
+  // akhirnya bpp. Terhitung 23 Agustus 2026 saat menyambungkan BPP: meta.json 60,1 KB,
+  // dan 30 KB di antaranya daftar yang TIDAK DIBACA SATU BARIS KODE PUN. Penyaji tidak
+  // pernah membutuhkannya: jalurnya `<jenis>/<kunci>`, dan kuncinya sudah dibawa berkas
+  // kepala yang memang diambil halaman itu — toko-wilayah.json, bpp-wilayah.json,
+  // lab-kemampuan.json.
+  //
+  // Yang tersisa tiga, dan ketiganya diperiksa dipakai: `cari` dan `cariDalam` dibaca
+  // pustaka.js saat mendalamkan ember pencarian, `sediaan` dibaca sw.js untuk menyimpan
+  // keduabelas resep luring — 36 KB, dan tanpanya jalur 5 dan 6 terbuka tetapi kosong
+  // justru saat paling mungkin dibuka jauh dari sinyal.
   pecahan: {
     cari: Object.keys(cari).sort(),
     cariDalam,
+    sediaan: Object.keys(berkasResep).sort(),
+
     setara: pecahanSetara.length,
     bahan: pecahanBahan.length,
     produk: pecahanProduk.length,
     varietas: pecahanVarietas.length,
-    opt: [...perKomoditas.keys()].map(kunciKomoditas).sort(),
-    kandungan: Object.keys(berkasKandungan).sort(),
-    // Didaftar supaya service worker bisa menyimpan keduabelasnya untuk luring tanpa
-    // menebak nama berkasnya — 36 KB seluruhnya, dan tanpanya jalur 5 dan 6 terbuka
-    // tetapi kosong justru saat paling mungkin dibuka jauh dari sinyal.
-    sediaan: Object.keys(berkasResep).sort(),
-    toko: tokoWilayah.map((w) => w.k),
-    optNama: Object.keys(berkasOptNama).sort(),
-    // Sengaja CACAH, bukan daftar. Daftar 3.136 kunci principal membengkakkan meta.json dari
-    // 19 KB jadi 114 KB — dan meta.json satu-satunya berkas yang diambil di TIAP muat halaman,
-    // termasuk halaman yang tidak menyentuh principal sama sekali. Penyaji tidak
-    // membutuhkannya: jalurnya `principal/<key>`, dan key-nya sudah dibawa tautan yang diklik.
-    // Hal yang sama berlaku untuk harga; daftarnya ada di harga.json, yang diambil hanya oleh
-    // halaman yang memang menampilkannya.
+    opt: perKomoditas.size,
+    kandungan: Object.keys(berkasKandungan).length,
+    toko: tokoWilayah.length,
+    bpp: bppWilayah.length,
+    lab: labWilayah.length,
+    optNama: Object.keys(berkasOptNama).length,
     principal: Object.keys(berkasPrincipal).length,
     harga: Object.keys(berkasHarga).length,
   },
@@ -1933,6 +2083,8 @@ const meta = {
       'Hanya 92 dari 2.248 rekaman berwilayah — 4,1% — menyebut sesuatu yang lebih rinci daripada kabupaten atau kota. Sisanya berhenti di nama kabupaten, tersebar di 93 wilayah. Nama tanpa alamat tidak bisa dituju: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi.',
     tokoTanpaKontak:
       'Tidak satu pun rekaman memuat nomor telepon, surel, jam buka, atau apakah tokonya masih ada. Medan itu sengaja dibiarkan kosong menunggu pemilik toko mengklaimnya sendiri — menambalnya dengan geokode massal atau penarikan pihak ketiga akan mengisi direktori dengan tebakan yang tidak bisa dibantah siapa pun.',
+    bppTanpaAlamat:
+      'Balai penyuluhan tidak punya alamat maupun koordinat di rekaman ini, dan itu batas sumbernya: laporan tamu SIMLUHTAN hanya memberi nama balai dan kecamatan binaannya. Yang menemukan balainya bukan peta melainkan kecamatan — dan bagi yang tinggal di sana itu memang cukup. Menggeokode 5.844 balai secara massal ditolak dengan sadar, karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.',
     gejalaOptRegistri:
       'Nol dari 738 OPT registri berproduk memuat teks gejala. Sepuluh OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 738 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
     hasilVarietas:
@@ -1973,6 +2125,10 @@ for (const [k, isi] of Object.entries(berkasOpt).sort()) simpan(`opt/${k}.json`,
 for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan/${e}.json`, isi);
 simpan('toko-titik.json', tokoTitikIndeks);
 simpan('toko-wilayah.json', tokoWilayah);
+simpan('bpp-wilayah.json', bppWilayah);
+for (const [k, isi] of Object.entries(berkasBpp).sort()) simpan(`bpp/${k}.json`, isi);
+simpan('lab-kemampuan.json', labKepala);
+for (const [k, isi] of Object.entries(berkasLab).sort()) simpan(`lab/${k}.json`, isi);
 for (const [k, isi] of Object.entries(berkasToko).sort()) simpan(`toko/${k}.json`, isi);
 for (const [k, isi] of Object.entries(berkasPrincipal).sort()) simpan(`principal/${k}.json`, isi);
 for (const [k, isi] of Object.entries(berkasHarga).sort()) simpan(`harga/${k}.json`, isi);
@@ -2035,6 +2191,8 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  bpp/              : ${bppSemua.length} balai di ${bppWilayah.length} kabupaten/kota, ${bppWilayah.reduce((a, w) => a + w.kec, 0)} kecamatan tersebut di serves (${bppSemua.filter((b) => !(b.serves ?? []).length).length} balai kecamatannya kosong di sumbernya) — tanpa alamat, dan itu juga batas sumbernya`);
+console.log(`  lab/              : ${labSemua.length} laboratorium di ${labWilayah.length} provinsi — ${cacahKemampuan.r ?? 0} di antaranya bisa mengukur residu pestisida`);
 console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => lebihRinci(r.alamat)).length} lebih rinci dari kabupaten`);
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
 console.log(`  opt-nama/         : ${optRegistriIndeks.length} OPT registri berproduk dapat dicari menurut nama — tidak satu pun punya teks gejala`);
