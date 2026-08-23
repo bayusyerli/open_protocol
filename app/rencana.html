@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Rencana musim dari protokol — Open Protocols</title>
+<meta name="description" content="Susun rencana satu musim dari protokol budidaya: langkah mana yang bisa ditanggalkan, mana yang menunggu fase, dan berapa banyak input yang dibutuhkan untuk luas petakmu.">
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Rencana musim</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Apa saja yang harus dikerjakan musim ini?</h1>
+  <p class="lede">
+    Protokol menyusun urutan tindakan; tanggal pindah tanam mengubahnya jadi rencana.
+    <strong>Yang keluar bukan kalender penuh</strong> — sebagian langkah memang tidak bisa
+    ditanggalkan, dan halaman ini mengatakan yang mana dan kenapa.
+  </p>
+</header>
+
+<main>
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Halaman ini butuh JavaScript</h2>
+    <p>Seluruh hitungan berjalan di perangkatmu. Tanpa JavaScript tidak ada yang bisa disusun.</p>
+  </div>
+
+  <section class="kartu kartu-catat">
+    <form id="formRencana" onsubmit="return false">
+      <label for="protokol">Protokol</label>
+      <select id="protokol"></select>
+      <p class="catatan" id="tentangProtokol"></p>
+      <div class="catat-baris">
+        <span>
+          <label for="tanam">Tanggal pindah tanam</label>
+          <input type="date" id="tanam">
+        </span>
+        <span>
+          <label for="luas">Luas petak (hektare)</label>
+          <input type="number" id="luas" inputmode="decimal" min="0" step="0.01" placeholder="misal 0.28">
+        </span>
+      </div>
+      <label for="semai">Tanggal semai — boleh kosong</label>
+      <input type="date" id="semai">
+      <p class="catat-aksi"><button type="button" id="susun">Susun rencananya</button></p>
+      <p class="catat-kabar" id="kabar" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section id="hasil" aria-live="polite"></section>
+
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="kosong">Memuat batas jawaban…</p>
+  </section>
+
+  <p class="lain">
+    <a href="beranda.html">← Beranda</a> ·
+    <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
+    <a href="usaha.html">Titik impas usaha tani →</a> ·
+    <a href="kas.html">Buku kas per petak →</a>
+  </p>
+</main>
+
+<script type="module" src="rencana.js"></script>
+</body>
+</html>

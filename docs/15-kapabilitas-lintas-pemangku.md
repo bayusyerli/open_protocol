@@ -512,7 +512,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| E1 | Rencana musim dari protokol | petugas lapang, penyuluh, petani | #1–#7 | penyusun **selesai**; permukaan belum | **BANGUN** (fase 3) |
+| E1 | Rencana musim dari protokol | petugas lapang, penyuluh, petani | #1–#7 | **selesai** 23 Agustus 2026 — protokol terbit ke indeks, `app/rencana.html` merendernya; keluarannya **identik** dengan `susun-rencana.mjs` untuk masukan yang sama. Protokol: **1**, draft, tingkat D | **selesai** |
 | E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | skema **selesai**; permukaan belum | **BANGUN** (fase 3) |
 | E3 | Simpangan rencana–realisasi | petugas lapang, offtaker | mutu data | pemeriksa **selesai** | **BANGUN** (fase 3) |
 | E4 | Pengingat berbasis **fase**, bukan tanggal | petani, petugas lapang | ketepatan waktu tindakan | `Stage` sengaja **tanpa medan hari** — hanya 2 dari 4 langkah cabai bertanggal | **BANGUN** (fase 3) dengan batasnya dinyatakan |
@@ -546,6 +546,30 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > **Yang tetap fase 3:** sinkron, banyak petak, dan berbagi dengan kelompok tani. Ketiganya
 > menuntut tempat menyimpan yang bukan peramban, dan itu tepatnya yang dibayar lapisan
 > berbayar. Pencatatannya sendiri tidak menuntutnya — jadi ia tidak ditahan menunggu.
+
+> **E1 selesai 23 Agustus 2026, dan urutannya sama seperti G3: indeks dulu, baru layar.**
+> Penyusunnya sudah ada sejak lama, tetapi permukaan tidak bisa dibangun di atas berkas yang
+> tidak pernah terbit — protokolnya karena itu diterbitkan ke indeks lebih dulu, pola yang
+> sama persis seperti BPP dan lab sebelum C7.
+>
+> **Yang paling menentukan bentuknya satu kalimat yang sudah ditulis penyusunnya:** rencana
+> ini BUKAN kalender penuh, dan tidak boleh disajikan sebagai kalender penuh. Dari empat
+> langkah, **dua** bisa ditanggalkan; satu menunggu fase dan satu dipicu ambang. Angka itu
+> jadi **judul kartunya**, dan "menunggu fase" berdiri di kolom tanggal alih-alih di catatan
+> kaki — daftar yang menyembunyikan ketiadaan tanggal di bawah tetap terbaca sebagai
+> kalender.
+>
+> **Risiko yang dinyatakan: ini salinan kedua aritmetika yang sama.** Penyusun berjalan di
+> Node atas `spec/vocab/`, permukaan di peramban atas `spec/indeks/`, jadi pemisahannya tidak
+> terhindarkan — dan dua salinan menyimpang begitu salah satunya diperbaiki, persis alasan
+> `serah.js` dan `batas.css` masing-masing tinggal di satu tempat. Yang menahannya di sini
+> uji: keluaran keduanya dibandingkan untuk masukan yang sama dan **identik** sampai ke
+> tanggal, cacah langkah, dan ketiga angka kebutuhan input.
+>
+> **Dan cacah protokolnya — satu — ikut disebut di layar.** Daftar pilihan berisi satu tanpa
+> keterangan terbaca sebagai "yang lain menyusul"; yang perlu dibaca justru bahwa menaruh
+> harapan pada jalur ini berarti menaruhnya pada satu protokol draft bertingkat bukti D.
+> Menyusun protokol berikutnya pekerjaan agronomi bernama, dan alurnya sudah dibuka G1.
 
 ### F · BUKTI & AKSES — hilir yang menarik hulu
 

@@ -142,6 +142,8 @@ const NIAT = [
   // Yang mengetiknya sebelum tanam memaksudkan rencana, yang mengetiknya di tengah musim
   // memaksudkan catatan — dan pintu masuk tidak bisa membedakannya. Yang diambil di sini
   // hanya kata yang berarti MENCATAT, bukan kata yang berarti ingin tahu hasilnya.
+  { ke: 'rencana.html', judul: 'Rencana musim dari protokol',
+    kata: ['rencana', 'jadwal', 'kapan tanam', 'urutan', 'protokol', 'musim'] },
   { ke: 'kas.html', judul: 'Buku kas per petak',
     kata: ['catat', 'mencatat', 'pembukuan', 'buku kas', 'pengeluaran', 'belanja', 'nota', 'kas'] },
   { ke: 'toko.html', judul: 'Cari toko tani & penjual benih',
