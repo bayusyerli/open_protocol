@@ -309,6 +309,42 @@ diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan ya
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
 
+### Pencatatan realisasi — E2, di layar rencana yang sama
+
+Barisnya berbunyi *"skema selesai; permukaan belum"*, dan yang membentuk permukaannya dua
+kalimat yang sudah ada di skema itu sendiri:
+
+- **`plan_ref`** — *"Kosong berarti tindakan di luar rencana — **itu juga temuan yang
+  berharga**."* Jadi tindakan di luar rencana punya pintunya sendiri, bukan diperlakukan
+  sebagai kesalahan pengisian. Daftarnya berbunyi: *tindakan yang berulang di luar rencana
+  adalah sinyal tentang protokolnya, bukan tentang yang mengerjakannya.*
+- **`recording_lag_note`** — *"Pencatatan mundur beberapa hari itu wajar di lapangan.
+  **Jangan disembunyikan** — mutu data ikut dinilai dari sini."* Jaraknya karena itu
+  dihitung sendiri dan dicetak: *"dicatat 34 hari sesudahnya"*.
+
+Dan satu dari pemeriksa: **`L8`** menolak realisasi yang berbeda dari rencana tanpa
+alasan — *"simpangan tanpa alasan tidak bisa dipakai memperbaiki protokol"*. Di layar itu
+berarti alasan diminta **hanya saat memang ada simpangan**: langkah yang dilewati, dan
+langkah yang bergeser di luar tenggangnya. Yang tepat waktu tidak diminta apa pun —
+memaksanya di sana cuma melatih orang memilih pilihan pertama sampai medannya kehilangan
+arti.
+
+- **Formulir sebaris, bukan `prompt()`.** Versi pertama meminta orang memilih satu dari
+  sebelas alasan dengan mengetik nomornya di kotak bawaan peramban. Itu interaksi yang
+  gagal di ponsel, dan halaman yang di tempat lain menuntut target sentuh 44 px tidak boleh
+  menawarkannya di sini.
+- **Sebab kenapa alasan diminta ditulis di sebelah medannya:** *"Bergeser 17 hari lebih
+  lambat dari rencana (tenggang 7 hari). Simpangan sebesar ini menuntut alasan."* Yang
+  diminta memilih alasan berhak tahu apa yang membuatnya diminta.
+- **Yang dilewati tidak diberi warna merah.** Melewati langkah dengan alasan bukan
+  kegagalan — sebagian alasan justru menunjukkan protokolnya yang salah, dan mewarnainya
+  merah menyalahkan yang mencatat.
+- **Sebelas alasan simpangan diterbitkan ke indeks** supaya bisa ditawarkan. Alasan yang
+  harus diketik bebas akan jadi sebelas ejaan untuk satu hal, yang menghancurkan justru
+  gunanya bagi `sinyal.mjs`.
+- **Belum tersambung ke buku kas maupun ke identitas petak**, dan itu disebut di blok batas
+  alih-alih dibiarkan tampak sudah tersambung.
+
 ### Buku kas per petak — E5
 
 `docs/15` semula menduga buku kas sudah ada dalam bentuk apa pun sehingga E5 tinggal

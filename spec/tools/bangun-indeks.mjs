@@ -1596,7 +1596,28 @@ const lisensiToko = {};
 for (const r of tokoAlamat) lisensiToko[r.lisensi ?? 'tidak dinyatakan'] = (lisensiToko[r.lisensi ?? 'tidak dinyatakan'] ?? 0) + 1;
 
 // ---------------------------------------------------------------------------
-// batas — empat medan yang wajib disebut tiap layar
+// Alasan simpangan — E2/E3, dan yang membuat simpangan berguna alih-alih sekadar tercatat
+// ---------------------------------------------------------------------------
+// Aturan L8 sudah menolak realisasi yang berbeda dari rencana tanpa objek `deviation`:
+// "simpangan tanpa alasan tidak bisa dipakai memperbaiki protokol". Tetapi alasannya
+// tinggal di kosakata yang tidak pernah terbit, jadi permukaan tidak punya cara
+// menawarkannya — dan alasan yang harus diketik bebas akan jadi sebelas ejaan untuk satu
+// hal, yang menghancurkan justru gunanya.
+//
+// Medan `signals` ikut karena ia yang membedakan simpangan yang menuntut protokol direvisi
+// dari simpangan yang tidak. `sinyal.mjs` sudah membacanya; sejak sekarang permukaan bisa
+// menyebutnya juga saat orang memilih alasannya.
+const alasanSimpangan = larik(bacaJson('deviation-reason.json'))
+  .map((a) => ({
+    id: a.id,
+    key: a.key,
+    nama: a.label?.id ?? a.key,
+    kategori: a.category ?? null,
+    sinyal: a.signals ?? null,
+    definisi: a.definition?.id ?? null,
+  }))
+  .sort((a, b) => a.nama.localeCompare(b.nama));
+
 // ---------------------------------------------------------------------------
 // Protokol Lapis 2 — E1, dan satu-satunya yang ada
 // ---------------------------------------------------------------------------
@@ -1794,6 +1815,9 @@ function dariKoleksi(berkas, { label, tingkat, alasan }) {
   };
 }
 
+// ---------------------------------------------------------------------------
+// batas — empat medan yang wajib disebut tiap layar
+// ---------------------------------------------------------------------------
 // Kosakata terkurasi tidak punya berkas koleksi; tanggalnya diambil dari siklus hidup
 // entitasnya, yang paling akhir. Kalau satu entri diperbarui, tanggal layar ikut maju.
 const tanggalTerbaru = (daftar) =>
@@ -2040,6 +2064,7 @@ const meta = {
     tokoLebihRinci: tokoAlamat.filter((r) => lebihRinci(r.alamat)).length,
     tokoWilayah: tokoWilayah.length,
     protokol: protokol.length,
+    alasanSimpangan: alasanSimpangan.length,
     protokolBertanggal: protokolIndeks.reduce((a, p) => a + p.bertanggal, 0),
     protokolLangkah: protokolIndeks.reduce((a, p) => a + p.langkah, 0),
     bpp: bppSemua.length,
@@ -2206,6 +2231,7 @@ for (const [k, isi] of Object.entries(berkasOpt).sort()) simpan(`opt/${k}.json`,
 for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan/${e}.json`, isi);
 simpan('toko-titik.json', tokoTitikIndeks);
 simpan('toko-wilayah.json', tokoWilayah);
+simpan('alasan-simpangan.json', alasanSimpangan);
 simpan('protokol.json', protokolIndeks);
 for (const [k, isi] of Object.entries(berkasProtokol).sort()) simpan(`protokol/${k}.json`, isi);
 simpan('bpp-wilayah.json', bppWilayah);
@@ -2274,6 +2300,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  alasan-simpangan  : ${alasanSimpangan.length} alasan, ${new Set(alasanSimpangan.map((a) => a.sinyal)).size} jenis sinyal`);
 console.log(`  protokol/         : ${protokolIndeks.length} protokol, ${protokolIndeks.reduce((a, p) => a + p.langkah, 0)} langkah — ${protokolIndeks.reduce((a, p) => a + p.bertanggal, 0)} bisa ditanggalkan, sisanya menunggu fase atau ambang`);
 console.log(`  bpp/              : ${bppSemua.length} balai di ${bppWilayah.length} kabupaten/kota, ${bppWilayah.reduce((a, w) => a + w.kec, 0)} kecamatan tersebut di serves (${bppSemua.filter((b) => !(b.serves ?? []).length).length} balai kecamatannya kosong di sumbernya) — tanpa alamat, dan itu juga batas sumbernya`);
 console.log(`  lab/              : ${labSemua.length} laboratorium di ${labWilayah.length} provinsi — ${cacahKemampuan.r ?? 0} di antaranya bisa mengukur residu pestisida`);
