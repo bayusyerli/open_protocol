@@ -6,6 +6,23 @@
   "allOf": [
     {
       "$ref": "common.schema.json#/$defs/CuratedEntity"
+    },
+    {
+      "if": {
+        "properties": {
+          "basis": {
+            "const": "penetapan"
+          }
+        },
+        "required": [
+          "basis"
+        ]
+      },
+      "then": {
+        "required": [
+          "legal_scope"
+        ]
+      }
     }
   ],
   "type": "object",
@@ -24,7 +41,7 @@
     },
     "price_level": {
       "type": "string",
-      "description": "Tingkat rantai tempat harga ini diukur. Hanya `retail` yang ada; `producer` dan `farmgate` sengaja tidak pernah bernilai di sini supaya layar tidak bisa menayangkan harga eceran seolah harga petani.",
+      "description": "Tingkat rantai tempat harga ini diukur. `retail` untuk SP2KP. `farmgate` untuk penetapan TBS — dan itu baru sah sejak ada sumber yang benar-benar mengukur sisi pekebun; sebelum itu medannya sengaja tidak pernah bernilai lain supaya layar tidak bisa menayangkan harga eceran seolah harga petani.",
       "enum": [
         "retail",
         "wholesale",
@@ -42,7 +59,7 @@
     },
     "weighting": {
       "type": "string",
-      "description": "Cara rata-rata nasional ditimbang. `penduduk` yang dipakai layar; tiga ukuran lain (SBH, geometrik penduduk, geometrik SBH) ada di harga_data/sp2kp-hnt.ndjson dan selisihnya tidak nol.",
+      "description": "Cara rata-rata ditimbang. Hanya berarti bila `basis` bernilai `survei`; harga yang DITETAPKAN tidak dirata-ratakan dari apa pun, jadi medannya kosong di sana.",
       "enum": [
         "penduduk",
         "sbh",
@@ -118,6 +135,57 @@
         "luar"
       ],
       "description": "Relevansi terhadap permukaan pertanian. pangan = keluaran usaha tani, ternak, dan perikanan, termasuk olahan tahap pertama yang harganya jadi sinyal bagi petaninya. input = sarana produksi (benih, pupuk) — bertipe \"barang penting\" di sumbernya, tetapi inti di sini. luar = bahan bangunan, LPG, dan pangan olahan lanjut berbahan baku impor. Yang  tetap tercatat supaya cacah bisa direkonsiliasi dengan sumbernya; yang berubah hanya apa yang layar tampilkan."
+    },
+    "region": {
+      "type": "object",
+      "description": "Wilayah yang dicakup harga ini. TIDAK ADA berarti nasional. Ada karena penetapan TBS ditetapkan per provinsi, dan menayangkan angka provinsi tanpa menyebut provinsinya adalah kekeliruan yang tidak bisa diperbaiki pembaca.\n\nMemakai kode ISO 3166-2:ID, BUKAN rujukan `op:rgn:`. Kosakata wilayah belum ada di repositori ini, dan mencetak satu entitas untuk satu provinsi berarti meninggalkan jenis entitas setengah jadi yang penulis berikutnya harus tebak aturannya. Kode standar yang sudah dipelihara pihak lain lebih baik daripada nomor yang kita karang sendiri. Begitu kosakata wilayah benar-benar dibangun, medan `id` bisa ditambahkan di sampingnya tanpa membatalkan yang ini.",
+      "properties": {
+        "code": {
+          "type": "string",
+          "pattern": "^ID-[A-Z]{2}$",
+          "description": "Kode ISO 3166-2:ID, mis. ID-KB untuk Kalimantan Barat."
+        },
+        "label": {
+          "type": "string",
+          "minLength": 2
+        }
+      },
+      "required": [
+        "code",
+        "label"
+      ],
+      "additionalProperties": false
+    },
+    "source_system": {
+      "type": "string",
+      "description": "Sistem asalnya, mis. SP2KP atau SIDIKH-TBS. Dua sistem berbeda mengukur hal berbeda dengan cara berbeda; menyamarkan asalnya membuat keduanya tampak sebanding."
+    },
+    "basis": {
+      "type": "string",
+      "enum": [
+        "survei",
+        "penetapan"
+      ],
+      "description": "Bagaimana angkanya lahir. `survei` = hasil pencacahan pasar lalu dirata-ratakan. `penetapan` = ditetapkan rapat resmi sebagai harga yang WAJIB dibayar. Keduanya bukan hal yang sama, dan rata-rata tertimbang hanya berarti pada yang pertama."
+    },
+    "legal_scope": {
+      "type": "string",
+      "minLength": 20,
+      "description": "SIAPA yang secara hukum dinaungi harga ini, dan siapa yang TIDAK. Wajib bila `basis` bernilai `penetapan`. Ada karena penetapan TBS menaungi pekebun mitra dan plasma sementara pekebun swadaya berada di luarnya — dan swadaya adalah mayoritas petani sawit Indonesia. Tanpa medan ini, layar akan menayangkan harga yang tidak diterima kebanyakan pembacanya seolah harga mereka."
+    },
+    "nominal_dates": {
+      "type": "boolean",
+      "description": "true bila tanggal harian pada `series` nominal, bukan tanggal penetapan sesungguhnya. Penetapan TBS berlaku per PERIODE (I–IV dalam sebulan), bukan per hari; tanggalnya diadakan supaya bisa digambar sebagai garis."
+    },
+    "age_bands": {
+      "type": "object",
+      "description": "Harga per pita umur tanaman, bila sumbernya memecahnya begitu. Sawit berbuah berbeda menurut umur, dan penetapan Kalbar memecahnya jadi 13 pita — meratakannya jadi satu angka membuang persis pembedaan yang menentukan berapa yang diterima satu kebun tertentu.",
+      "additionalProperties": true
+    },
+    "formula": {
+      "type": "object",
+      "description": "Angka pembentuk harga ini, bila ia hasil rumus resmi. Untuk TBS: Indeks K, harga CPO, dan harga PKO pada periode yang sama. Dibawa bersama alih-alih jadi seri terpisah, karena ketiganya bukan harga yang dihadapi siapa pun — ketiganya rumus di balik harga yang dihadapi pekebun.",
+      "additionalProperties": true
     }
   },
   "required": [
@@ -127,9 +195,9 @@
     "lifecycle",
     "price_level",
     "unit",
-    "weighting",
     "coverage",
-    "sector"
+    "sector",
+    "basis"
   ],
   "anyOf": [
     {

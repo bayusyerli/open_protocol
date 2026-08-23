@@ -795,3 +795,31 @@ a { color: var(--aksen); }
 }
 .luar-lingkup > summary { cursor: pointer; color: var(--teks-lemah); font-size: 0.9rem; }
 .luar-lingkup .catatan:last-child { color: var(--teks-lemah); font-size: 0.82rem; }
+
+/* Cakupan hukum sebuah harga yang DITETAPKAN: siapa yang dinaungi, dan siapa yang tidak.
+   Diberi rupa peringatan, bukan catatan kaki, karena pembaca yang berada di luar cakupannya
+   akan menyimpulkan angka itu miliknya kalau kalimatnya tidak menghentikannya. */
+.cakupan-hukum {
+  margin: 0.9rem 0;
+  padding: 0.7rem 0.85rem;
+  border: 1px solid var(--awas);
+  border-left-width: 4px;
+  border-radius: var(--sudut);
+  background: var(--awas-lemah);
+}
+.cakupan-hukum > strong { display: block; margin-bottom: 0.25rem; }
+.cakupan-hukum p { margin: 0; font-size: 0.9rem; }
+
+.lencana-pekebun { background: var(--aksen-lemah); color: var(--aksen); font-weight: 600; }
+
+/* Bilah perbandingan di tabel pita umur. Bukan grafik — hanya panjang relatif, supaya mata
+   menangkap bentuk sebaran umur tanpa harus membaca tiga belas angka berurutan. */
+.bilah {
+  display: block;
+  height: 0.55rem;
+  width: var(--isi, 0%);
+  min-width: 2px;
+  border-radius: 999px;
+  background: var(--aksen);
+  opacity: 0.75;
+}

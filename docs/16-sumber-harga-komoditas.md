@@ -352,6 +352,62 @@ pun harga dunia maupun komoditas perkebunan yang terserap.
 
 ---
 
+## 8b. Sisi sawit — harga pertama yang menyentuh pekebun, 23 Agustus 2026
+
+Riset terpisah atas sumber harga kelapa sawit menemukan satu sumber yang layak diserap
+segera, dan dua temuan yang mengubah bacaan seluruh sisi ini.
+
+**SIDIKH TBS Kalimantan Barat sudah diserap.** Aplikasi Disbunnak Kalbar menyajikan tabel
+HTML ter-render server: satu `GET`, tanpa autentikasi, tanpa AJAX, `robots.txt` berbunyi
+`Disallow:` kosong. Diperiksa sendiri 23 Agustus 2026 — **50 periode, nol sel kosong**,
+empat periode per bulan, Agustus 2025 II sampai Agustus 2026 III, tanpa satu pun medan orang.
+Ini satu-satunya penetapan TBS provinsi yang ditemukan terbit dalam bentuk terbaca mesin;
+Riau, Kalteng, Kaltim, dan Babel menerbitkannya sebagai PDF pindai, JPEG desain, atau
+tangkapan layar WhatsApp.
+
+**Ini harga pertama di repositori ini yang `price_level`-nya bukan `retail`.** Sampai
+sebelumnya seluruh harga eceran, dan skema sengaja tidak pernah memberi nilai lain supaya
+layar tidak bisa menayangkan harga eceran seolah harga petani. Penetapan TBS mengubah itu:
+ia harga yang WAJIB dibayar pabrik kepada pekebun, ditetapkan rapat provinsi.
+
+**Tetapi batasnya terpasang di dasar hukumnya, dan itu temuan yang paling penting di bagian
+ini.** Permentan 01/2018 sudah dicabut oleh **Permentan 13/2024**, yang berjudul *"Pembelian
+Tandan Buah Segar Kelapa Sawit Produksi **Pekebun Mitra**"*. Penetapan ini secara hukum
+menaungi pekebun plasma dan mitra; **pekebun swadaya berada di luar cakupannya** — dan
+merekalah mayoritas petani sawit Indonesia.
+
+> Ini pola yang sama persis dengan temuan bagian 4 untuk beras: yang dicatat negara sebagai
+> harga produsen ternyata harga beli pengumpul. Di sawit, yang ditetapkan negara sebagai
+> harga pekebun ternyata harga pekebun **mitra**. Dua komoditas, dua rezim, satu bentuk
+> kekeliruan — dan keduanya baru terlihat setelah dasar hukumnya dibaca, bukan datanya.
+
+Karena itu skema `harga` menambah medan **`legal_scope`**, wajib bila `basis` bernilai
+`penetapan`, dan layar menampilkannya sebagai blok peringatan di atas angkanya — bukan
+catatan kaki.
+
+### Yang masih kosong di sisi sawit
+
+| Kekosongan | Keterangan |
+|---|---|
+| **Harga pekebun swadaya** | Di luar cakupan Permentan 13/2024. Hanya Riau menerbitkannya sukarela, dan itu pun PDF pindai ±150 dpi |
+| **Sumatera Utara** | Produsen terbesar. `disbun.sumutprov.go.id` tanpa A record; tangkapan Wayback terakhir 4 Desember 2022. Penetapan mingguannya berjalan tetapi hanya lewat GAPKI Sumut (swasta) |
+| **Agregasi lintas provinsi pemerintah** | Tidak ada. Yang mengagregasi 22 provinsi justru swasta, dan tiga dari empat memblokir `ClaudeBot` di `robots.txt` — tidak dipanen |
+| **Harga sawit di portal pertanian nasional** | `bdsp2.pertanian.go.id` tidak punya indikator harga sawit di skemanya, hanya luas areal dan produksi |
+
+### Yang perlu dikerjakan manusia
+
+- **Unduh dan baca batang tubuh Permentan 13/2024.** Seluruh bacaan "swadaya di luar
+  cakupan" bersandar pada judul dan halaman peraturan, bukan pada pembacaan naskahnya.
+- **Surel ke Bappebti** sebelum memakai CSV harga CPO hariannya
+  (`POST bappebti.go.id/query_harga`, 182 baris terverifikasi, tanpa PII, 2005→kini). Tidak
+  ada pernyataan lisensi apa pun di situsnya, dan tabel harga harian bukan "peraturan"
+  sehingga UU 28/2014 Pasal 42 tidak otomatis menaunginya.
+- **Riau lewat `mediacenter.riau.go.id`, bukan OCR** — hasil penetapan mingguan terbit
+  sebagai teks HTML berangka di sana. Yang belum terpecahkan: indeksnya tidak bisa
+  dienumerasi, jadi kelengkapan serinya belum terbukti.
+
+---
+
 ## 9. Batas dokumen ini
 
 1. **Tingkat verifikasinya tidak rata, dan itu disengaja dinyatakan.** Yang dipanggil dan

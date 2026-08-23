@@ -125,7 +125,7 @@ function gambarDaftar(kueri = '') {
         return `
         <li>
           <a class="baris-tautan" href="harga.html?k=${encodeURIComponent(x.k)}">
-            <span class="nama">${teks(x.n)}${x.g && x.g !== x.n ? `<span class="lencana">${teks(x.g)}</span>` : ''}</span>
+            <span class="nama">${teks(x.n)}${x.l === 'farmgate' ? '<span class="lencana lencana-pekebun">Harga pekebun</span>' : ''}${x.g && x.g !== x.n ? `<span class="lencana">${teks(x.g)}</span>` : ''}</span>
             <span class="harga-kini">${rp(x.p)}<span class="satuan">/${teks(x.s)}</span></span>
             <span class="ubah ${a.kelas}">${a.tanda} ${angkaId(Math.abs(x.u30 ?? 0))}% <span class="ubah-jangka">30 hari</span></span>
           </a>
@@ -213,7 +213,17 @@ function kartuAngka(h) {
       <p class="harga-besar">
         ${rp(s.terakhir.p)}<span class="satuan">/${teks(h.qty && h.qty !== 1 ? h.qty + ' ' : '')}${teks(h.satuan)}</span>
       </p>
-      <p class="catatan">Per ${teks(tanggal(s.terakhir.t) ?? s.terakhir.t)} · eceran nasional tertimbang penduduk.</p>
+      <p class="catatan">
+        Per ${teks(tanggal(s.terakhir.t) ?? s.terakhir.t)} ·
+        ${h.tingkat === 'farmgate'
+          ? `harga pekebun, hasil penetapan ${teks(h.wilayah?.label ?? '')}`
+          : 'eceran nasional tertimbang penduduk'}${h.tanggalNominal ? ' · tanggal harian bersifat nominal — yang ditetapkan periode, bukan hari' : ''}.
+      </p>
+      ${h.cakupanHukum ? `
+        <div class="cakupan-hukum">
+          <strong>Siapa yang dinaungi harga ini</strong>
+          <p>${teks(h.cakupanHukum)}</p>
+        </div>` : ''}
 
       <div class="ubah-baris">
         ${baris.map(([k, v]) => {
@@ -233,6 +243,65 @@ function kartuAngka(h) {
       </dl>
       ${catatanLubang(h)}
       ${catatanAwalSeri(h)}
+    </div>
+    ${kartuPitaUmur(h)}${kartuRumus(h)}`;
+}
+
+// Harga per pita umur tanaman. Satu kebun hanya menghadapi PITANYA SENDIRI — angka rerata
+// yang tergambar di grafik atas tidak berlaku untuk kebun mana pun secara khusus, dan tabel
+// ini yang membuat pembacanya bisa menemukan barisnya.
+function kartuPitaUmur(h) {
+  const a = h.pitaUmur;
+  if (!a?.pita?.length) return '';
+  const nilai = a.pita.map((u) => a.terakhir[u]).filter((x) => x > 0);
+  const lo = Math.min(...nilai), hi = Math.max(...nilai);
+  return `
+    <div class="kartu">
+      <h2>Harga menurut umur tanaman</h2>
+      <p class="catatan">${teks(a.keterangan)}</p>
+      <div class="pembungkus-tabel">
+        <table>
+          <thead><tr><th>Umur tanaman</th><th>Harga per kg</th><th>Terhadap yang tertinggi</th></tr></thead>
+          <tbody>${a.pita.map((u) => {
+            const v = a.terakhir[u];
+            return `<tr>
+              <td>${teks(u)} tahun</td>
+              <td class="angka">${v > 0 ? rp(v) : '—'}</td>
+              <td><span class="bilah" style="--isi:${v > 0 ? Math.round((v / hi) * 100) : 0}%"></span></td>
+            </tr>`;
+          }).join('')}</tbody>
+        </table>
+      </div>
+      <p class="catatan">
+        Selisih antara pita terendah dan tertinggi <strong>${rp(hi - lo)} per kg</strong>
+        (${angkaId(((hi - lo) / lo) * 100)}%). Angka rerata pada grafik di atas
+        <strong>tidak berlaku untuk satu kebun pun secara khusus</strong> — ia rata-rata
+        seluruh pita, dan tiap kebun menghadapi pitanya sendiri.
+      </p>
+    </div>`;
+}
+
+// Rumus di balik harganya. docs/16 aturan tayang butir 3 menuntut faktor konversi tampil
+// terbuka dan bisa diperiksa, bukan tersembunyi di balik satu angka jadi.
+function kartuRumus(h) {
+  const f = h.rumus;
+  if (!f?.terakhir) return '';
+  const t = f.terakhir;
+  return `
+    <div class="kartu">
+      <h2>Angka yang membentuknya</h2>
+      <p class="catatan">${teks(f.keterangan)}</p>
+      <dl class="kunci">
+        <dt>Indeks K</dt><dd>${angkaId(t.indeks_k, 2)}%</dd>
+        <dt>Harga CPO</dt><dd>${rp(t.cpo)} / kg</dd>
+        <dt>Harga PKO</dt><dd>${rp(t.pko)} / kg</dd>
+      </dl>
+      <p class="catatan">
+        <strong>Indeks K adalah proporsi nilai CPO yang mengalir ke pekebun.</strong> Ia yang
+        menjawab kenapa harga TBS jauh di bawah harga CPO: satu kilogram tandan bukan satu
+        kilogram minyak. Membandingkan keduanya tanpa melewati indeks ini membuat jurangnya
+        tampak berlipat-lipat padahal tidak.
+      </p>
     </div>`;
 }
 
@@ -424,6 +493,16 @@ function kartuKosong(h) {
 // ---------------------------------------------------------------------------
 // Buka satu komoditas
 // ---------------------------------------------------------------------------
+// Kartu peringatan tingkat di kepala halaman berbicara untuk SELURUH daftar, dan itu berhenti
+// benar begitu satu seri di dalamnya bukan eceran. Ia disembunyikan saat seri pekebun dibuka;
+// yang menggantikannya blok `cakupan-hukum` di kartu serinya sendiri, yang lebih tepat karena
+// ia menyebut siapa persisnya yang dinaungi.
+function aturKartuTingkat(h) {
+  const k = document.getElementById('kartuTingkat');
+  if (!k) return;
+  k.hidden = h?.tingkat === 'farmgate';
+}
+
 async function buka(key) {
   el.rincian.innerHTML = '<p class="kosong">Mengambil riwayat harganya…</p>';
   el.rincian.focus();
@@ -432,12 +511,14 @@ async function buka(key) {
     document.title = `Harga ${h.nama} — Open Protocols`;
     el.judul.textContent = `Harga ${h.nama}`;
 
+    aturKartuTingkat(h);
     el.rincian.innerHTML = h.seri?.length
       ? kartuAngka(h) + grafik(h.seri, `${h.nama} per ${h.satuan}`) + kartuMusim(h) + kartuKomentar(h) + tombolKembali()
       : kartuKosong(h) + tombolKembali();
 
     el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
       el.rincian.innerHTML = '';
+      aturKartuTingkat(null);
       history.pushState({}, '', 'harga.html');
       el.judul.textContent = 'Harga komoditas';
       document.title = 'Harga komoditas — Open Protocols';
@@ -508,6 +589,10 @@ addEventListener('popstate', () => {
     if (atr) el.atribusi.textContent = atr;
 
     gambarDaftar('');
+    // Peringatan "ini harga eceran" benar untuk 43 dari 44 seri, dan SALAH untuk satu.
+    // Menyembunyikannya saat seri pekebun dibuka lebih baik daripada membiarkan kalimat
+    // yang keliru berdiri di atas angka yang benar.
+    aturKartuTingkat(null);
 
     const k = new URLSearchParams(location.search).get('k');
     if (k && BENTUK_KEY.test(k)) await buka(k);

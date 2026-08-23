@@ -853,6 +853,16 @@ for (const h of hargaSeri) {
     komoditas: h.commodity ?? null,
     tingkat: h.price_level,
     golongan: h.sector ?? 'pangan',
+    // Empat medan yang membuat layar berhenti mengira semua harga di sini sama jenisnya.
+    // Tanpa `cakupanHukum`, halaman TBS menayangkan harga yang TIDAK diterima mayoritas
+    // pembacanya seolah harga mereka — dan itu kekeliruan yang tidak bisa diperbaiki pembaca.
+    dasar: h.basis ?? 'survei',
+    ...(h.region ? { wilayah: h.region } : {}),
+    ...(h.legal_scope ? { cakupanHukum: h.legal_scope } : {}),
+    ...(h.nominal_dates ? { tanggalNominal: true } : {}),
+    ...(h.source_system ? { sistem: h.source_system } : {}),
+    ...(h.age_bands ? { pitaUmur: h.age_bands } : {}),
+    ...(h.formula ? { rumus: h.formula } : {}),
     satuan: h.unit,
     qty: h.qty ?? 1,
     timbangan: h.weighting,
@@ -899,6 +909,10 @@ const kepalaHarga = hargaSeri
     // saat daftar digambar, dan mengambil 88 berkas rinci hanya untuk tahu mana yang tani
     // adalah 88 perjalanan untuk satu keputusan yang muat dalam satu huruf.
     r: h.sector ?? 'pangan',
+    // Tingkat dan wilayah ikut ke kepala daftar: kartu di daftar harus bisa menandai mana
+    // yang harga pekebun dan mana yang eceran, tanpa mengambil berkas rincinya lebih dulu.
+    ...(h.price_level && h.price_level !== 'retail' ? { l: h.price_level } : {}),
+    ...(h.region ? { w: h.region.label } : {}),
     ...(h.stats?.terakhir ? { p: h.stats.terakhir.p, t: h.stats.terakhir.t, u30: h.stats.ubah30 } : {}),
     ...(h.series ? {} : { kosong: true }),
     ...(h.commodity ? { c: h.commodity.id } : {}),
@@ -1806,6 +1820,7 @@ const meta = {
     hargaVarian: hargaSeri.length,
     hargaBerangka: hargaSeri.filter((h) => h.series?.length).length,
     hargaTitik: hargaSeri.reduce((a, h) => a + (h.series?.length ?? 0), 0),
+    hargaFarmgate: hargaSeri.filter((h) => h.price_level === 'farmgate').length,
     hargaTani: hargaSeri.filter((h) => h.sector !== 'luar').length,
     hargaTaniBerangka: hargaSeri.filter((h) => h.sector !== 'luar' && h.series?.length).length,
     hargaLuar: hargaSeri.filter((h) => h.sector === 'luar').length,
@@ -1874,7 +1889,7 @@ const meta = {
     hargaPupuk:
       'SP2KP mendaftarkan Pupuk Urea, NPK 15-15-15, SP-36, dan ZA tetapi tidak mengisi harganya: 13-15 tanggal mingguan pada paruh pertama 2024, seluruhnya kosong pada keempat ukuran tertimbang. Jalur 3 karena itu tetap mengandalkan masukan pengguna untuk rupiah per kg hara.',
     gambarKemasan:
-      'Gambar kemasan ada pada 456 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
+      'Gambar kemasan ada pada 464 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',

@@ -55,6 +55,10 @@ const bacaJson = (p) => JSON.parse(readFileSync(join(akar, 'spec', 'vocab', p), 
 
 const varian = bacaNdjson(MASUK);
 
+// Sumber kedua: penetapan TBS Kalimantan Barat. Opsional — indeks tetap terbangun tanpanya.
+const TBS_KALBAR = join(akar, 'harga_data', 'tbs-kalbar.ndjson');
+const tbsKalbar = existsSync(TBS_KALBAR) ? bacaNdjson(TBS_KALBAR) : [];
+
 // ---------------------------------------------------------------------------
 // Sambungan ke kosakata komoditas sendiri
 // ---------------------------------------------------------------------------
@@ -310,6 +314,8 @@ const items = urut.map((v) => {
       ...(cocok ? { commodity: { id: cocok.id, label: cocok.nama } } : {}),
       price_level: 'retail',
       sector: golongan(v),
+      source_system: 'SP2KP',
+      basis: 'survei',
       unit: satuanTeks(v.satuan),
       ...(v.qty ? { qty: v.qty } : {}),
       weighting: 'penduduk',
@@ -340,6 +346,8 @@ const items = urut.map((v) => {
     // sebagai harga petani, karena medannya memang tidak pernah bernilai lain.
     price_level: 'retail',
     sector: golongan(v),
+    source_system: 'SP2KP',
+    basis: 'survei',
     unit: satuanTeks(v.satuan),
     ...(v.qty ? { qty: v.qty } : {}),
     weighting: 'penduduk',
@@ -361,6 +369,92 @@ const items = urut.map((v) => {
     lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
   };
 });
+
+// ---------------------------------------------------------------------------
+// TBS Kalimantan Barat — harga pertama di repositori ini yang menyentuh sisi pekebun
+// ---------------------------------------------------------------------------
+// SATU rekaman, bukan enam belas. Sumbernya memberi 13 pita umur ditambah CPO, PKO, dan
+// Indeks K pada tiap periode — enam belas seri kalau tiap kolom jadi rekaman sendiri. Tetapi
+// lima belas di antaranya BUKAN harga yang dihadapi siapa pun:
+//
+//   pita umur   satu kebun hanya menghadapi pitanya sendiri, bukan ketiga belasnya
+//   CPO & PKO   harga yang dihadapi pabrik, bukan pekebun
+//   Indeks K    bukan harga sama sekali — ia proporsi nilai CPO yang mengalir ke pekebun
+//
+// Ketiganya rumus DI BALIK harga yang dihadapi pekebun, jadi ia dibawa di dalam rekamannya
+// (`formula` dan `age_bands`) alih-alih berdiri sebagai baris tersendiri di daftar. Itu juga
+// yang membuat aturan tayang docs/16 butir 3 bisa ditegakkan: faktor konversinya terbuka dan
+// ada di layar yang sama, bukan di halaman lain.
+//
+// Yang jadi `series` kolom RERATA — satu angka per periode, bisa digambar dan dibandingkan.
+const itemsTbs = [];
+if (tbsKalbar.length) {
+  const titik = tbsKalbar
+    .filter((r) => r.tbs_rerata > 0)
+    .map((r) => ({ t: r.t, p: Math.round(r.tbs_rerata * 100) / 100 }));
+
+  if (titik.length) {
+    const key = 'tbs-kelapa-sawit-kalimantan-barat';
+    const id = idLama.get(key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`;
+    const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+
+    itemsTbs.push({
+      id,
+      key,
+      label: { id: 'TBS Kelapa Sawit — Kalimantan Barat' },
+      commodity_group: 'Kelapa Sawit',
+      ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
+      // Kode ISO 3166-2:ID, bukan rujukan op:rgn: — kosakata wilayah belum ada, dan mencetak
+      // satu entitas untuk satu provinsi meninggalkan jenis entitas setengah jadi.
+      region: { code: 'ID-KB', label: 'Kalimantan Barat' },
+      source_system: 'SIDIKH-TBS',
+      basis: 'penetapan',
+      // Medan yang paling menentukan di seluruh rekaman ini. Tanpa kalimat ini, layar
+      // menayangkan harga yang TIDAK diterima mayoritas pembacanya seolah harga mereka.
+      legal_scope:
+        'Menaungi pekebun mitra dan plasma menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra. PEKEBUN SWADAYA BERADA DI LUAR CAKUPANNYA — dan pekebun swadaya adalah mayoritas petani sawit Indonesia. Harga yang mereka terima tidak diterbitkan lembaga mana pun kecuali Riau, dan tidak ada di sini.',
+      price_level: 'farmgate',
+      sector: 'pangan',
+      unit: 'kg',
+      qty: 1,
+      // Tanggal harian nominal: yang ditetapkan periode, bukan hari.
+      nominal_dates: true,
+      coverage: {
+        from: titik[0].t,
+        to: titik.at(-1).t,
+        points: titik.length,
+        gaps: 0,
+      },
+      series: titik,
+      stats: statistik(titik),
+      age_bands: {
+        keterangan:
+          'Harga per pita umur tanaman, rupiah per kg, pada periode terakhir. Sawit berbuah berbeda menurut umur — meratakannya jadi satu angka membuang pembedaan yang menentukan berapa yang diterima satu kebun tertentu.',
+        pita: Object.keys(tbsKalbar.at(-1).tbs_umur),
+        terakhir: tbsKalbar.at(-1).tbs_umur,
+        seri: tbsKalbar.map((r) => ({ t: r.t, u: r.tbs_umur })),
+      },
+      formula: {
+        keterangan:
+          'Angka pembentuk harga TBS pada tiap periode. Indeks K adalah proporsi nilai CPO yang mengalir ke pekebun; CPO dan PKO harga yang dihadapi pabrik, bukan pekebun.',
+        terakhir: {
+          indeks_k: tbsKalbar.at(-1).indeks_k,
+          cpo: tbsKalbar.at(-1).cpo,
+          pko: tbsKalbar.at(-1).pko,
+        },
+        seri: tbsKalbar.map((r) => ({ t: r.t, k: r.indeks_k, cpo: r.cpo, pko: r.pko })),
+      },
+      mappings: [{
+        scheme: 'KEMENTAN',
+        id: 'Permentan 13/2024',
+        relation: 'related',
+        note: 'Penetapan harga TBS pekebun mitra oleh tim provinsi; dasar perhitungan Kepdirjenbun 144/Kpts./PP.320/E/12/2025.',
+      }],
+      lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
+    });
+  }
+}
+items.push(...itemsTbs);
 
 // ---------------------------------------------------------------------------
 // Laporan

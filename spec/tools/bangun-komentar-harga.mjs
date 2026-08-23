@@ -75,7 +75,14 @@ function fakta(x) {
     nama: x.label.id,
     kelompok: x.commodity_group ?? null,
     satuan: `${x.qty && x.qty !== 1 ? x.qty + ' ' : ''}${x.unit}`,
-    tingkat: 'eceran nasional tertimbang penduduk',
+    // Tingkatnya dibaca dari rekamannya, tidak lagi ditulis mati. Sejak penetapan TBS Kalbar
+    // masuk, tidak semua harga di sini eceran — dan kalimat yang menyebut "eceran nasional"
+    // untuk harga yang ditetapkan bagi pekebun adalah pernyataan yang keliru, bukan sekadar
+    // tidak tepat.
+    tingkat: x.price_level === 'farmgate'
+      ? `pekebun, hasil penetapan${x.region ? ` ${x.region.label}` : ''}`
+      : `eceran nasional tertimbang ${x.weighting ?? 'penduduk'}`,
+    ...(x.legal_scope ? { cakupanHukum: x.legal_scope } : {}),
     hargaTerakhir: s.terakhir.p,
     tanggalTerakhir: s.terakhir.t,
     ubah7hari: s.ubah7,
@@ -136,9 +143,16 @@ function terhitung(f) {
       `${f.cakupan.jumlahTitik} titik, belum tentu berulang.`);
   }
 
-  bagian.push(
-    `Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, ` +
-    `dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.`);
+  // Batas yang disebut kalimat terakhir BERBEDA menurut tingkatnya, dan perbedaannya bukan
+  // gaya. Untuk harga eceran, yang tidak diketahui adalah bagian petani. Untuk penetapan
+  // TBS, bagian pekebun MITRA justru itulah angkanya — yang tidak diketahui adalah pekebun
+  // swadaya, yang berada di luar cakupan hukumnya dan berjumlah lebih banyak.
+  bagian.push(f.cakupanHukum
+    ? `Yang angka ini TIDAK katakan: berapa yang diterima pekebun SWADAYA. Penetapan ini ` +
+      `menaungi pekebun mitra dan plasma; swadaya berada di luar cakupannya, dan harga yang ` +
+      `mereka terima tidak diterbitkan lembaga mana pun kecuali Riau.`
+    : `Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, ` +
+      `dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.`);
 
   return bagian.join(' ');
 }
@@ -286,7 +300,13 @@ for (const x of berangka) {
     nama: x.label.id,
     ...(isi
       ? { komentar: isi.komentar, batas: isi.batas, sumber: 'model', model: MODEL }
-      : { komentar: terhitung(f), batas: 'Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.', sumber: 'terhitung' }),
+      : {
+        komentar: terhitung(f),
+        batas: f.cakupanHukum
+          ? 'Menaungi pekebun mitra dan plasma; pekebun swadaya berada di luar cakupannya, dan merekalah mayoritas petani sawit Indonesia.'
+          : 'Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.',
+        sumber: 'terhitung',
+      }),
     // Angka yang dipakai ikut disimpan. Inilah yang membuat kalimat di atas bisa diperiksa
     // tanpa memercayai penulisnya — dan itu jawaban langsung atas keberatan B5.
     fakta: f,

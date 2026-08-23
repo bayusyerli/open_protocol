@@ -188,11 +188,11 @@ if (PCP) {
     b.sectors.includes('seed') && (b.sectors.includes('pesticide') || b.sectors.includes('fertilizer'))).length, 19);
 }
 if (HRG) {
-  cek('16', 'varian harga diterbitkan', HRG.length, 88);
-  cek('16', 'varian harga berangka', HRG.filter((h) => h.series?.length).length, 43);
+  cek('16', 'varian harga diterbitkan', HRG.length, 89);
+  cek('16', 'varian harga berangka', HRG.filter((h) => h.series?.length).length, 44);
   cek('16', 'varian harga TANPA angka', HRG.filter((h) => !h.series?.length).length, 45);
-  cek('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26475);
-  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 23);
+  cek('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26525);
+  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 24);
   // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
   // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
   cek('16', 'harga pupuk berangka', HRG.filter((h) => /^pupuk/i.test(h.label.id) && h.series?.length).length, 0);
@@ -211,10 +211,16 @@ if (HRG) {
   // bahwa tabel di docs/16 bagian 8a — dan kalimat "30 varian tidak ditampilkan" di layar —
   // sudah tidak cocok lagi dengan datanya.
   const gol = (g) => HRG.filter((h) => (h.sector ?? 'pangan') === g);
-  cek('16', 'varian golongan pangan', gol('pangan').length, 40);
+  cek('16', 'varian golongan pangan', gol('pangan').length, 41);
   cek('16', 'varian golongan input', gol('input').length, 7);
   cek('16', 'varian golongan luar (tak tampil)', gol('luar').length, 41);
-  cek('16', 'berangka yang tampil di layar', HRG.filter((h) => (h.sector ?? 'pangan') !== 'luar' && h.series?.length).length, 30);
+  cek('16', 'berangka yang tampil di layar', HRG.filter((h) => (h.sector ?? 'pangan') !== 'luar' && h.series?.length).length, 31);
+
+  // Harga tingkat pekebun. Selama angka ini 1, seluruh kalimat "ini harga eceran" di layar
+  // masih benar untuk sisanya — dan begitu provinsi kedua masuk, kalimat itu perlu ditinjau.
+  cek('16', 'seri tingkat pekebun (farmgate)', HRG.filter((h) => h.price_level === 'farmgate').length, 1);
+  cek('16', 'pita umur TBS Kalbar', Object.keys(HRG.find((h) => h.price_level === 'farmgate')?.age_bands?.terakhir ?? {}).length, 13);
+  cek('16', 'periode penetapan TBS Kalbar', HRG.find((h) => h.price_level === 'farmgate')?.series?.length ?? 0, 50);
 }
 
 // Sapuan teks: angka yang PERNAH salah dan sudah dikoreksi tidak boleh muncul lagi
