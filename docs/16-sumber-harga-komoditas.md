@@ -689,6 +689,64 @@ dokumentasi kegiatan, dan "Penetapan Harga…" yang membawa selebarannya. Hanya 
 memuat angka. Karena penetapan yang sama kadang terbit dua kali, rekaman **dikunci menurut
 periode berlaku, bukan menurut slug**; tanpa itu, seri sembilan titik terhitung sebelas.
 
+### Lampung — datanya ada, terbaca, dan tetap tidak diambil
+
+Diperiksa 23 Agustus 2026. **Tidak dipanen, dan sebabnya bukan teknis.**
+
+Yang sudah dipastikan ada di sana: Disbun Lampung menerbitkan hasil rapat penetapan sebagai
+**prosa HTML berangka** — bentuk termurah yang bisa diurai, lebih baik daripada Kaltim, Babel,
+maupun Aceh yang ketiganya menuntut OCR. Satu artikel diperiksa memuat `Rp 3.242,42` di badan
+teksnya, lengkap dengan rujukan Permentan 13/2024. Situsnya hidup, halamannya terlayani 200 di
+peramban, dan tantangan Cloudflare-nya lewat sendiri tanpa CAPTCHA.
+
+**Yang menghentikannya `robots.txt`:**
+
+```
+User-agent: ClaudeBot
+Disallow: /
+```
+
+Diperiksa pada keempat host provinsi — `disbun`, `ppid`, `diskominfotik`, dan portal
+`lampungprov.go.id` sendiri — dan **keempatnya menolak `ClaudeBot` untuk seluruh situs**. Tidak
+ada jalur lain di dalam domain provinsi itu.
+
+Berkas yang sama juga memasang `Content-Signal: search=yes, ai-train=no, use=reference` dan
+menyatakannya sebagai pencadangan hak eksplisit menurut Pasal 4 Direktif UE 2019/790.
+
+**Dua hal yang TIDAK mengubah keputusan ini, dan layak dinyatakan supaya tidak dicoba lagi:**
+
+1. **Angkanya memang bukan objek hak cipta.** UU 28/2014 Pasal 41 huruf b berlaku untuk hasil
+   penetapan Lampung sama seperti untuk lima provinsi lain. Tetapi `robots.txt` mengatur
+   **akses**, bukan hak cipta. Boleh menerbitkan ulang tidak berarti boleh mengambil.
+2. **Peramban memang bisa menembusnya.** Tab yang sudah terbuka di host itu bisa `fetch` satu
+   asal tanpa halangan — jalur yang dipakai memanen Syngenta. Tetapi jalur peramban hanya
+   mengubah **caranya**, bukan **izinnya**. Memakainya untuk melewati larangan yang menyebut
+   nama perayapnya sendiri adalah pengelakan, dan itu tidak dilakukan.
+
+**Satu catatan yang jujur tentang tafsirnya.** Blok itu bagian dari daftar terkelola Cloudflare
+(`# BEGIN Cloudflare Managed content`) — ia bawaan yang dinyalakan operator, bukan tentu
+keputusan yang ditimbang Disbun Lampung tentang repositori ini. Tetapi bawaan yang dibiarkan
+menyala tetap arahan yang tertulis, dan tidak ada cara membedakan "sengaja melarang" dari
+"membiarkan bawaannya" dari luar. Yang tertulis yang berlaku.
+
+> Bandingkan **Kalteng**, yang `robots.txt`-nya menjawab 403 sementara isinya terlayani 200.
+> Di sana RFC 9309 bagian 2.3.1.3 memperlakukan 4xx sebagai tanpa pembatasan, dan itu
+> **diperiksa** alih-alih diasumsikan. Perbedaannya bukan hasilnya — perbedaannya bahwa di
+> Kalteng memang tidak ada arahan yang bisa dibaca, sementara di Lampung ada dan ia menyebut
+> nama perayapnya.
+
+Ini juga konsisten dengan putusan yang sudah berdiri di tabel kekosongan: tiga dari empat
+agregator sawit swasta memblokir `ClaudeBot`, dan ketiganya tidak dipanen.
+
+**Yang bisa menutupnya, dan keduanya bukan kode:**
+
+- **Surel ke Disbun Lampung** (`dinasperkebunanlpg@gmail.com`, telp. 0721-487865) meminta izin
+  atau meminta datanya langsung. Ini jalur yang sama dengan surel Bappebti yang masih menunggu.
+- **Berkas yang diambil manusia.** Arahan `robots.txt` ditujukan kepada perayap otomatis
+  menurut nama agennya, bukan kepada orang yang membuka situsnya sendiri. Kalau berkasnya
+  disediakan, penguraiannya tinggal ditulis — prosa berangka Lampung bentuk yang paling mudah
+  dari keenam provinsi yang sudah diserap.
+
 ### Sulawesi Barat — datanya ada, arsipnya tidak, dan harganya tidak diterbitkan
 
 Diperiksa 23 Agustus 2026 dan **tidak bisa dipanen sebagai seri**, karena dua sebab yang
@@ -715,7 +773,7 @@ hal: DNS menjawab apa, HTTP menjawab apa, dan `robots.txt` berbunyi apa.
 | Provinsi | Host | Hasil |
 |---|---|---|
 | **Aceh** | `distanbun.acehprov.go.id` | **200, `Allow: /` — diserap**, lihat di atas |
-| **Lampung** | `disbun.lampungprov.go.id` | **Menerbitkan penetapannya sebagai PROSA berangka** ("Rp 3.242,42"), tetapi di balik Cloudflare — 403 baik dari mesin lokal maupun lewat proksi. Terjangkau lewat peramban. **Kandidat terkuat berikutnya** |
+| **Lampung** | `disbun.lampungprov.go.id` | Menerbitkan penetapannya sebagai prosa berangka — **tetapi `robots.txt`-nya menolak `ClaudeBot` untuk seluruh situs.** Tidak dipanen; lihat bagian di bawah |
 | **Kalimantan Selatan** | `disbunnak.kalselprov.go.id` | Cloudflare 403; isinya belum diperiksa |
 | **Sumatera Selatan** | `disbun.sumselprov.go.id` | DNS menjawab `103.239.165.40`, tetapi **port 80 dan 443 dua-duanya menolak sambungan** — dari mesin lokal maupun lewat proksi. Dua titik pandang sepakat, jadi ini host mati, bukan jalur tersaring |
 | **Sulawesi Tengah** | `disbunnak.sultengprov.go.id` | 200, hidup — tetapi berandanya **nol menyebut harga, TBS, maupun sawit** |
@@ -741,7 +799,8 @@ lintas provinsi di Indonesia dikerjakan swasta, bukan pemerintah.
 | Kekosongan | Keterangan |
 |---|---|
 | **Harga pekebun swadaya di luar Riau dan Aceh** | Di luar cakupan Permentan 13/2024. **Dikoreksi 23 Agustus 2026:** dokumen ini semula menyatakan hanya Riau yang menerbitkannya. Aceh juga — dan dengan sumbu yang berbeda. 32 provinsi lain tidak sama sekali |
-| **Lampung dan Kalimantan Selatan** | Keduanya di balik Cloudflare; Lampung terbukti menerbitkan harganya sebagai prosa. Menariknya menuntut jalur peramban, bukan `fetch` |
+| **Lampung** | Datanya ada dan terbaca, tetapi `robots.txt` seluruh domain provinsi menolak `ClaudeBot`. Terhalang **izin**, bukan teknik — dan itu jenis kekosongan yang tidak bisa ditutup dengan kode |
+| **Kalimantan Selatan** | Di balik Cloudflare; isinya belum diperiksa, `robots.txt`-nya belum dibaca |
 | **Sumatera Utara** | Produsen terbesar. `disbun.sumutprov.go.id` tanpa A record; tangkapan Wayback terakhir 4 Desember 2022. Penetapan mingguannya berjalan tetapi hanya lewat GAPKI Sumut (swasta) |
 | **Agregasi lintas provinsi pemerintah** | Tidak ada. Yang mengagregasi 22 provinsi justru swasta, dan tiga dari empat memblokir `ClaudeBot` di `robots.txt` — tidak dipanen |
 | **Harga sawit di portal pertanian nasional** | `bdsp2.pertanian.go.id` tidak punya indikator harga sawit di skemanya, hanya luas areal dan produksi |
@@ -750,6 +809,10 @@ lintas provinsi di Indonesia dikerjakan swasta, bukan pemerintah.
 
 - **Unduh dan baca batang tubuh Permentan 13/2024.** Seluruh bacaan "swadaya di luar
   cakupan" bersandar pada judul dan halaman peraturan, bukan pada pembacaan naskahnya.
+- **Surel ke Disbun Lampung** (`dinasperkebunanlpg@gmail.com`) meminta izin atau meminta
+  datanya. Provinsinya menerbitkan penetapan sebagai prosa berangka — bentuk termudah dari
+  seluruh yang sudah diserap — tetapi `robots.txt` keempat host provinsinya menolak
+  `ClaudeBot`. Ini satu-satunya kekosongan sawit yang terhalang izin, bukan teknik.
 - **Surel ke Bappebti** sebelum memakai CSV harga CPO hariannya
   (`POST bappebti.go.id/query_harga`, 182 baris terverifikasi, tanpa PII, 2005→kini). Tidak
   ada pernyataan lisensi apa pun di situsnya, dan tabel harga harian bukan "peraturan"
