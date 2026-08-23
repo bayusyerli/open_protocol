@@ -2,7 +2,8 @@
  * gambar yang lebih baru.
  *
  * DUA KEADAAN, DAN KEDUANYA HARUS BERBUNYI
- * 591 dari 14.920 produk punya gambar — 4,0%. Artinya keadaan yang LAZIM adalah tidak ada
+ * Hanya sebagian kecil produk punya gambar — angkanya dibaca dari meta, sebab ia naik tiap
+ * panen sedangkan komentar tidak. Artinya keadaan yang LAZIM adalah tidak ada
  * gambar, dan slot kosong yang diam akan terbaca sebagai "produk ini meragukan". Karena itu
  * placeholder di sini tidak berupa kotak abu-abu: ia mengatakan apa yang terjadi
  * ("belum dipanen dari situs principal"), dan menawarkan apa yang bisa dilakukan.
@@ -22,7 +23,7 @@
  * langsung ditinjau dengan alat yang sudah ada, bukan disalin ulang dengan tangan.
  */
 
-import { teks, tanggal } from './pustaka.js';
+import { teks, tanggal, bacaMeta } from './pustaka.js';
 import { bukaIsu, salin, REPO } from './serah.js';
 
 const PERAN = {
@@ -115,9 +116,26 @@ function gambarBelum(p) {
       kartu di atas. Yang belum ada gambarnya: situs pemegang pendaftaran belum dipanen, atau
       mereknya memang tidak dijual dalam kemasan eceran.
     </p>
+    ${sebaran()}`;
+}
+
+/* Sebaran gambar dibaca dari meta, tidak ditulis tangan. Kalimat ini pernah menyebut 517,
+ * lalu 519, 530, dan 591 — empat kali salah dalam tiga hari, karena panennya tumbuh sedangkan
+ * prosanya diam, dan dua sesi sempat menambalnya bergantian. Kalau metanya belum termuat,
+ * kalimatnya dihilangkan seluruhnya: pernyataan cakupan yang salah lebih buruk daripada tidak
+ * ada pernyataan cakupan. */
+function sebaran() {
+  const j = bacaMeta()?.jumlah;
+  const ada = j?.produkBergambar;
+  const semua = (j?.pestisida ?? 0) + (j?.pupuk ?? 0);
+  if (!ada || !semua) return '';
+  const angka = (x) => x.toLocaleString('id-ID');
+  const persen = (ada / semua * 100).toFixed(1).replace('.', ',');
+  return `
     <p class="catatan">
-      Gambar tersedia untuk <strong>591 dari 14.920 produk</strong> terdaftar. Kosong adalah
-      keadaan yang lazim di sini, dan dinyatakan begitu alih-alih ditutupi kotak abu-abu.
+      Gambar tersedia untuk <strong>${angka(ada)} dari ${angka(semua)} produk</strong> terdaftar
+      (${persen}%). Kosong adalah keadaan yang lazim di sini, dan dinyatakan begitu alih-alih
+      ditutupi kotak abu-abu.
     </p>`;
 }
 

@@ -19,20 +19,24 @@
 // slot gambar jatuh ke placeholder tanpa satu pun perubahan kode.
 //
 // YANG TIDAK IKUT, DAN KENAPA
-//   78 baris berstatus `ditolak` di tinjauan     — ditolak berarti ditolak
-//   42 baris tanpa `narrowed_to`                 — tidak diketahui pendaftaran mana yang dirujuk
-//   ukuran `besar` (43,5 MB)                     — halaman produk tidak memerlukannya; yang
-//                                                  dipakai `kecil` untuk daftar dan `sedang`
-//                                                  untuk layar rincian
+//   baris berstatus `ditolak` di tinjauan  — ditolak berarti ditolak
+//   baris tanpa `narrowed_to`              — tidak diketahui pendaftaran mana yang dirujuk;
+//                                            span 1 semestinya tidak pernah ada di sini
+//   ukuran `besar`                         — halaman produk tidak memerlukannya; yang dipakai
+//                                            `kecil` untuk daftar, `sedang` untuk layar rincian
 //
-// TIGA BELAS BARIS BERHAK PIHAK KETIGA
-// `source.rights` bernilai `pihak_ketiga` pada tiga belas baris — bukan pemegang pendaftaran,
-// dan bukan kita. Ketiga belasnya tetap disalin sesuai keputusan di atas, tetapi ditandai
-// `hak` di berkas sambungan dan dilaporkan terpisah, supaya pencabutan per baris tidak perlu
-// memeriksa ulang 569 baris untuk menemukan yang tiga belas itu.
+// BARIS BERHAK PIHAK KETIGA
+// `source.rights` bernilai `pihak_ketiga` pada sebagian baris — bukan pemegang pendaftaran, dan
+// bukan kita. Semuanya tetap disalin sesuai keputusan di atas, tetapi ditandai `hak` di berkas
+// sambungan dan dilaporkan terpisah beserta nama mereknya, supaya pencabutan per baris tidak
+// perlu memeriksa ulang seluruh manifes untuk menemukan yang mana.
 //
-// Angka-angka di kepala berkas ini menua bersama panen. Yang berwenang atas semuanya laporan
-// yang dicetak menjalankannya tanpa --tulis; kalau keduanya berselisih, laporannya yang benar.
+// KEPALA BERKAS INI SENGAJA TANPA JUMLAH
+// Empat angka pernah berdiri di sini: 76 ditolak, 35 tanpa narrowed_to, empat baris berhak
+// pihak ketiga, 42,2 MB ukuran besar. Keempatnya salah dalam hitungan minggu, dan sempat
+// menyesatkan pembacanya ke kesimpulan bahwa yang tak terbit cuma segelintir. Panen tumbuh,
+// komentar tidak. Jadi yang disebut di sini bentuk kategorinya saja — jumlahnya dicetak alat
+// ini sendiri, dan cara membacanya satu perintah: jalankan tanpa --tulis.
 
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync, rmSync, readdirSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';
