@@ -1170,13 +1170,27 @@ adalah **pagu** sisi terpanjang, bukan sasaran, dan aturan "tidak pernah diperbe
 berkasnya di 150 px. Ukuran sebenarnya tetap tertulis apa adanya di `file.width_px`, dan tiap
 baris menyebut keputusan ini di `notes` supaya penamaannya tidak terbaca sebagai kekeliruan.
 
-Yang berubah: produk bergambar **464 → 514**, dan "tanpa ukuran terpakai" turun dari 55 jadi
-5. Yang didapat kartu 150 px yang buram. Yang hilang, kalimat placeholder "belum dipanen dari
+Yang berubah: produk bergambar **464 → 515**, dan "tanpa ukuran terpakai" turun dari 55 jadi
+nol. Yang didapat kartu 150 px yang buram. Yang hilang, kalimat placeholder "belum dipanen dari
 situs principal" — kalimat yang untuk 70 merek ini memang sudah tidak benar.
 
-Lima baris sisa yang masih tanpa ukuran terpakai bukan Kayaku dan sengaja tidak ikut
-disetel: `cadre-240-sl` (BASF), `constel-105-420-sc` · `shenzi-400-sc` · `neoroot` (UPL), dan
-`uthane-blue-80-wp` (Catur Agrodaya). Keadaannya sama persis; keputusannya belum diambil.
+Lima baris sisa di principal lain ikut disetel setelahnya, dan **keadaannya ternyata tidak
+sama persis** — itu yang membuatnya layak dicatat. Hanya `cadre-240-sl` (BASF) yang benar-benar
+sekelas Kayaku: raster 147×300, dinamai `kecil`. Empat sisanya baris `panel_label` bersumber
+**PDF**, dan cabang PDF `rendition_terpakai` hanya membuat SATU rendition — rendition pertama
+yang diminta. Menamainya `kecil` di sana berarti benar-benar MENGECILKAN labelnya ke 320 px,
+kebalikan dari yang diinginkan, sebab panel label ada justru untuk dibaca. Keempatnya
+dinormalkan dengan `sedang` di depan: `constel` 511×201, `shenzi` 514×194, `neoroot` 680×795
+berhenti di ukuran aslinya, dan `uthane-blue-80-wp` turun dari 1600×1261 ke 800×630 — versi
+1600-nya bisa dibangun ulang kapan saja dari PDF di `mentah/`.
+
+**Pelajarannya bukan soal angka melainkan soal sasaran perintah.** Percobaan pertama menyetel
+kelimanya sekaligus berdasarkan `brand_key` saja, dan ikut menyeret empat baris `kemasan_depan`
+yang sudah sehat — merek yang sama, peran berbeda — sehingga berkas dasarnya berpindah dari
+`besar` 1600 px ke `kecil` 320 px tanpa ada yang memintanya. Ketahuan saat memeriksa hasilnya,
+dan dipulihkan dengan menormalkan ulang urutan aslinya. **Kunci baris di folder ini
+`brand_key` + `role`, bukan `brand_key`; menyetel massal tanpa `role` menyentuh baris yang
+tidak dimaksud.**
 
 **Dua penambal tertangkap, dan yang menangkapnya bukan mata.** `periksa.mjs` melaporkan dua
 merek berbagi satu phash; berkasnya ternyata `data/no_photo.jpg`, penambal 150×50 px
