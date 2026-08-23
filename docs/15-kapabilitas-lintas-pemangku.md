@@ -613,13 +613,27 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > sesungguhnya bagi laporan warga — bukan POPT langsung, melainkan BPP tempat penyuluhnya
 > berada, yang kemudian meneruskan ke POPT.
 >
-> Yang masih kurang dua hal, dan keduanya kecil dibanding yang sudah ada: barisnya
-> **bernama tanpa alamat, telepon, atau tautan**, dan **nol rujukan di pembangun indeks**
-> — jadi permukaan tidak bisa mencapainya. Layar yang menyusun laporan lalu menyuruh orang
-> mengirimkannya ke kantor yang tidak punya alamat masih kotak masuk yang tak seorang pun
-> di ujungnya. Permukaannya karena itu tetap **tidak dibangun**, tetapi penghalangnya
-> berpindah dari "datanya tidak ada" jadi "datanya belum diterbitkan" — dan itu pekerjaan
-> C7, bukan G3.
+> **Diperbarui beberapa jam kemudian, dan gambarnya berubah lagi.** Keduanya kini entitas
+> kosakata penuh, bukan lapis mentah: `bpp.ndjson` **5.844 balai** dan `lab.ndjson` **889
+> laboratorium**. Kendalanya ternyata berbeda untuk masing-masing, dan hanya satu yang
+> benar-benar kendala:
+>
+> | | Bisa dituju | Kendalanya |
+> |---|---|---|
+> | **Lab** (889) | **ya** — 889 dari 889 punya `address` **dan** `contact` | tidak ada; ia sudah bisa dituju |
+> | **BPP** (5.844) | tidak lewat alamat | **sumbernya tidak menerbitkannya.** Laporan tamu SIMLUHTAN hanya memberi nama dan kecamatan binaan. Skemanya karena itu **tidak punya medan kontak sama sekali** — bukan medan kosong |
+> | **Dinas** (548) | tidak | sama: nama, wilayah, dan cacahan |
+>
+> **Dan untuk BPP, "tanpa alamat" bukan berarti tak terjangkau.** 5.829 dari 5.844 menyebut
+> **kecamatan binaannya**, dan bagi petani "BPP Babahrot di Kecamatan Babahrot" memang
+> alamat — yang tidak tahu letaknya justru mesinnya, bukan orangnya. Menggeokode massal
+> untuk menambalnya **ditolak dengan sadar**, karena bertabrakan dengan rancangan "klaim"
+> yang sama seperti pada toko tani.
+>
+> **Yang tersisa satu, dan ia mekanis: belum satu pun terbit ke indeks.** Nol rujukan di
+> `bangun-indeks.mjs`, jadi permukaan tidak bisa membacanya. Itu pekerjaan C7, bukan G3 —
+> dan sesudahnya G3 punya dua ujung sungguhan: lab yang bisa ditelepon, dan BPP yang bisa
+> didatangi.
 
 > **C4 sisi petani dikerjakan 23 Agustus 2026, dan ia terbelah dua — satu separuh
 > dibangun, satu separuh ditolak.**
