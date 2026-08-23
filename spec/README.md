@@ -88,6 +88,33 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Observation` | `op:obs` | **Pengamatan yang berdiri sendiri** — laporan gejala warga, hitungan pengamatan, atau pengukuran. Selalu menyebut status verifikasinya |
 | `PreparationBatch` | `op:bat` | Satu kali pembuatan sediaan, beserta catatan suhu dan hasil ujinya |
 
+### Umpan balik lapangan menunjuk, tidak menaikkan — G2
+
+Tangga tingkat bukti **tangga metode, bukan tangga volume**:
+
+| | |
+|---|---|
+| **A** | uji multi-lokasi/multi-musim |
+| **B** | standar institusi resmi |
+| **C** | konsensus praktisi & penyuluh |
+| **D** | pengalaman tunggal belum terverifikasi |
+
+Umpan balik lapangan yang menumpuk **adalah** tingkat C menurut definisinya. Jadi ia
+memindahkan D ke C dan berhenti: mencapai B menuntut institusi mengadopsinya, mencapai A
+menuntut uji multi-lokasi. Seribu petani yang melaporkan hal yang sama tetap konsensus
+praktisi, bukan uji lapangan.
+
+`tools/sinyal.mjs` karena itu **menunjuk, tidak menaikkan**. Ia mengelompokkan simpangan
+menurut `DeviationReason.signals` lalu menyebut rekaman yang klaim tingkatnya sedang
+tertekan; yang menaikkannya tetap peninjau bernama lewat alur G1 — kenaikan tingkat adalah
+kesimpulan, dan kesimpulan tidak boleh jadi efek samping penjumlahan.
+
+**Penyebut minimum: 5 petak berbeda**, dan angkanya ditulis di satu tempat karena ia
+**keputusan yang belum diratifikasi**. Aturannya sudah ada di `docs/17` bagian 7.3 — di
+bawah ambang, tolak menampilkan angka sama sekali — tetapi angkanya tidak pernah disebut,
+dan aturan tanpa angka tidak bisa ditegakkan mesin. Yang dihitung **petak berbeda**, bukan
+baris: satu orang yang melapor lima kali dari satu petak bukan lima petak.
+
 ### Laporan gejala warga yang tidak menyamar jadi temuan — G3
 
 Bentuk pengamatan yang sudah ada tertanam di dalam `Step` dan menuntut `variable` +
@@ -287,7 +314,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `method.json` | 19 cara aplikasi dan pengamatan, dengan `compatible_bases` | 9 ke AgrO / ICASA |
 | `substance.json` | 17 bahan non-pestisida — hara makro & mikro, pembenah, pakan | ICASA |
 | `substance-pestisida.json` | **1.593 bahan aktif** — seluruh yang tercantum di registri | 1.593 ke KEMENTAN, 58 punya kode IRAC/FRAC/HRAC |
-| `padanan-bahan-aktif.json` | **1.593 tulisan bahan aktif** → identitas kimia, dengan hubungan bertipe: garam-dari, ester-dari, stereoisomer-dari, varian-ejaan. 934 bernama kanonik, 450 berinduk, 265 berfaktor kesetaraan garam→induk | Diturunkan dari deklarasi registri sendiri, kecuali daftar gugus counter-ion yang dikurasi tangan dan bertanda `gugus-dikurasi`; tanpa `op:` id |
+| `padanan-bahan-aktif.json` | **1.593 tulisan bahan aktif** → identitas kimia, dengan hubungan bertipe: garam-dari, ester-dari, stereoisomer-dari, varian-ejaan. 1.093 bernama kanonik, 450 berinduk, 265 berfaktor kesetaraan garam→induk | 934 dari deklarasi registri sendiri dan 159 dari Wikidata (CC0, Q-id terekam per baris); daftar gugus counter-ion dikurasi tangan dan bertanda `gugus-dikurasi`; tanpa `op:` id |
 | `product/pestisida.ndjson` | **7.724 produk pestisida** terdaftar, dengan 23.058 penggunaan berlabel | KEMENTAN |
 | `product/pupuk.ndjson` | **7.196 produk pupuk** terdaftar (SIMPEL + SIMPUK 2020) | KEMENTAN |
 | `variety/varietas.ndjson` | **11.227 varietas terdaftar** — pelepasan, pendaftaran, dan perlindungan varietas | KEMENTAN |

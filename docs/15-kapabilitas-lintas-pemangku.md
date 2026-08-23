@@ -589,7 +589,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | **selesai** 23 Agustus 2026 — `CONTRIBUTING.md`, `spec/tools/tinjau.mjs`, aturan L35, dan sematan `reviewed_hash`. Terukur saat dibuka: **0 dari 4.256** rekaman punya peninjau bernama, **0** berstatus published | **selesai** |
-| G2 | Umpan balik lapangan menaikkan tingkat bukti D→A | semua | apakah korpus hidup | `DeviationReason.signals` **ada** | **BANGUN** (fase 3) |
+| G2 | Umpan balik lapangan menaikkan tingkat bukti **D→C** (dikoreksi dari D→A) | semua | apakah korpus hidup | `DeviationReason.signals` ada dan benar; **`spec/tools/sinyal.mjs`** membacanya sejak 23 Agustus 2026. Simpangan tercatat: **1** | penunjuknya **selesai**; kenaikannya tetap tindakan peninjau bernama (G1) |
 | G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | **selesai** 23 Agustus 2026 — `observation.schema.json`, aturan `L37`, dan pintu serah-terima di jalur 1 yang menemukan balai penyuluhan menurut kecamatan. Tanpa kotak masuk, tanpa peta, dan tanpa identifikasi | **selesai** 23 Agustus 2026 — entitas, aturan `L37`, dan pintu serah-terima di jalur 1 |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
 | G5 | Identitas petak stabil tanpa memiliki geometrinya | semua | dasar semua rekaman | **selesai** 23 Agustus 2026 — `tools/sidik-petak.mjs` + aturan `L36`. Yang tetap `id` rekamannya, yang berubah sidiknya; sidik titik tunggal **ditolak** karena 2³⁰ ditebak habis dalam 0,08 detik | **selesai** |
@@ -724,6 +724,40 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > gabah di indeks, dan HPP Rp6.500/kg (Kepbadan 14/2025) hidup sebagai prosa di
 > [16](16-sumber-harga-komoditas.md), bukan sebagai data yang bisa dibandingkan. Selama itu
 > begitu, pembanding ini hanya berguna untuk petani sawit.
+
+> **G2 diperiksa 23 Agustus 2026, dan separuh judulnya ternyata tidak bisa dipenuhi
+> mekanisme yang disebutnya sendiri.** Tangga tingkat bukti bukan tangga volume melainkan
+> tangga **metode**: A uji multi-lokasi, B standar institusi, C **konsensus praktisi &
+> penyuluh**, D pengalaman tunggal. Umpan balik lapangan yang menumpuk *adalah* tingkat C
+> menurut definisinya — jadi ia memindahkan D ke C dan berhenti di situ. Mencapai B
+> menuntut institusi mengadopsinya; mencapai A menuntut uji multi-lokasi. **Seribu petani
+> yang melaporkan hal yang sama tetap konsensus praktisi, bukan uji lapangan.** Judul baris
+> ini karena itu dikoreksi jadi D→C.
+>
+> **Yang dibangun bukan penaik melainkan penunjuk.** `sinyal.mjs` mengelompokkan simpangan
+> menurut `DeviationReason.signals` — medan yang deskripsinya sendiri berbunyi *"apa yang
+> seharusnya ditindaklanjuti tim ketika alasan ini sering muncul"* — lalu menunjuk rekaman
+> yang klaim tingkat buktinya sedang tertekan. Yang menaikkannya tetap peninjau bernama
+> lewat alur G1, dan itu bukan keterbatasan: **kenaikan tingkat adalah kesimpulan, dan
+> kesimpulan tidak boleh jadi efek samping penjumlahan.**
+>
+> **Satu angka yang selama ini hanya berupa aturan akhirnya ditulis.** [17](17-tiga-konsep-ui.md)
+> bagian 7.3 menetapkan bahwa di bawah ambang penyebut minimum panel *"menolak menampilkan
+> angka sama sekali"*, tetapi tidak pernah menyebut angkanya — dan aturan tanpa angka tidak
+> bisa ditegakkan mesin. Alat ini memakai **5 petak berbeda**, ditulis di satu tempat dan
+> ditandai **keputusan yang belum diratifikasi** supaya bisa dibantah di satu tempat. Yang
+> dihitung petak berbeda, bukan baris: satu orang yang melapor lima kali dari satu petak
+> bukan lima petak.
+>
+> **Keadaan hari ini: 1 simpangan tercatat, seluruhnya contoh.** Alatnya melaporkannya apa
+> adanya dan menolak menarik kesimpulan — sama seperti `tinjau.mjs` melaporkan nol peninjau.
+>
+> **Cacat kembar dari G1 ikut ditutup.** `preparation.schema.json` mendeskripsikan
+> `evidence_note` sebagai wajib dan **tidak menuntutnya** — padahal berkas itulah sumber
+> aturan *"tingkat bukti tanpa alasan adalah klaim tanpa dasar"* yang diwarisi `batas.js`
+> dan `L31`. Ia satu-satunya dari empat skema bertingkat yang tidak menegakkannya pada
+> dirinya sendiri. Sekarang dituntut; keduabelas resep sudah memenuhinya, jadi nol yang
+> perlu diperbaiki.
 
 ### Rekapitulasi putusan — 40 kapabilitas
 
