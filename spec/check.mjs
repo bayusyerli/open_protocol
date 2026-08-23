@@ -8,6 +8,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import { join, basename } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { hitungHash } from './kanonik.mjs';
+import { sidikGeometri, GERBANG } from './tools/sidik-petak.mjs';
 import addFormats from 'ajv-formats';
 
 export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] } = {}) {
@@ -404,6 +405,54 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
         warn(file, 'L35-tinjauan-tersemat', 'Rekaman ini punya peninjau bernama dan content_hash, tetapi lifecycle.reviewed_hash kosong. Tanpa pin, tidak ada cara mengetahui apakah tinjauannya masih berlaku untuk isi yang sekarang.');
       } else if (doc.lifecycle.reviewed_hash !== doc.lifecycle.content_hash) {
         warn(file, 'L35-tinjauan-tersemat', `Tinjauan disematkan pada ${doc.lifecycle.reviewed_hash} tetapi isinya sekarang ${doc.lifecycle.content_hash}. Isinya berubah sesudah ditinjau, jadi tinjauan ini kedaluwarsa — nama peninjaunya tidak menanggung perubahan itu.`);
+      }
+    }
+
+    // L36 — identitas petak: yang tidak bisa diperiksa tidak boleh tampak seperti identitas.
+    //
+    // G5 menjanjikan dua pihak bisa memastikan mereka membicarakan petak yang sama tanpa
+    // seorang pun menerbitkan batasnya. Tiga cara janji itu bisa dilanggar tanpa satu baris
+    // pun tampak salah, dan ketiganya dijaga di sini.
+    const isPlot = typeof doc.id === 'string' && doc.id.startsWith('op:plt:');
+    if (isPlot) {
+      // (a) Menyatakan MUTU geometri yang tidak ada. `geometry_quality` menjawab
+      // "seberapa bisa dipercaya batas ini"; tanpa batasnya, ia menjawab pertanyaan
+      // tentang sesuatu yang tidak pernah ada — dan pembacanya menyangka ada.
+      if (doc.geometry_quality && !doc.geometry) {
+        fail(file, 'L36-identitas-petak', `geometry_quality "${doc.geometry_quality}" dinyatakan tetapi petak ini tidak punya geometry. Mutu batas yang tidak ada bukan mutu rendah, melainkan tidak ada batasnya sama sekali.`);
+      }
+
+      const mutu = doc.geometry_quality ?? 'unknown';
+      for (const [n, g] of (doc.geoids ?? []).entries()) {
+        // (b) Nilai yang menyamar jadi identitas. Yang tidak bisa dicocokkan dengan apa
+        // pun tidak boleh menempati medan yang seluruh gunanya untuk dicocokkan —
+        // kegagalan yang sama dengan content_hash sha256:0000...0000 sebelum L34.
+        if (/pending|todo|tbd|xxx+|dummy|placeholder|belum|nanti|\s/i.test(g.value)) {
+          fail(file, 'L36-identitas-petak', `geoids[${n}] bernilai "${g.value}" — itu catatan untuk diri sendiri, bukan identitas. Medan ini seluruh gunanya untuk dicocokkan pihak lain; nilai yang tidak bisa dicocokkan lebih buruk daripada medan kosong, karena ia tampak sudah terisi.`);
+        }
+
+        if (g.scheme !== 'OP_GEOM_SHA256') continue;
+
+        // (c) Sidik atas geometri berentropi rendah. Titik tunggal pada presisi 5 desimal
+        // di dalam satu kabupaten ~2^30 kandidat — satu GPU menebaknya habis dalam 0,08
+        // detik. Sidiknya bukan penjagaan; ia penunjuk lokasi yang bisa dibalik, dan
+        // repositori ini publik.
+        const gerbang = GERBANG[mutu] ?? GERBANG.unknown;
+        if (!gerbang.boleh) {
+          fail(file, 'L36-identitas-petak', `geoids[${n}] menyidik geometri bermutu "${mutu}". ${gerbang.sebab}`);
+        } else if (gerbang.peringatan) {
+          warn(file, 'L36-identitas-petak', `geoids[${n}] menyidik geometri bermutu "${mutu}". ${gerbang.peringatan}`);
+        }
+
+        // (d) Sidik yang tidak cocok dengan geometrinya. Sama seperti L34 untuk
+        // content_hash: L2 menuntut medannya ADA, aturan ini menuntut isinya BENAR.
+        if (doc.geometry) {
+          let seharusnya = null;
+          try { seharusnya = sidikGeometri(doc.geometry); } catch { /* bentuknya sudah ditolak skema */ }
+          if (seharusnya && g.value !== seharusnya) {
+            fail(file, 'L36-identitas-petak', `geoids[${n}] tertulis ${g.value} tetapi geometri petak ini menyidik ${seharusnya}. Entah batasnya berubah tanpa sidiknya ikut disegarkan, entah sidiknya tidak pernah dihitung. Segarkan: node spec/tools/sidik-petak.mjs --tulis`);
+          }
+        }
       }
     }
 

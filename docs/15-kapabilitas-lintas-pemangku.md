@@ -556,7 +556,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | G2 | Umpan balik lapangan menaikkan tingkat bukti D→A | semua | apakah korpus hidup | `DeviationReason.signals` **ada** | **BANGUN** (fase 3) |
 | G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | belum ada; rantai POPT sudah ada | **BANGUN hati-hati + SAMBUNG** |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
-| G5 | Identitas petak stabil tanpa memiliki geometrinya | semua | dasar semua rekaman | `L7` sudah menolak geometri publik; AgStack GeoID sebagai preseden | **BANGUN** |
+| G5 | Identitas petak stabil tanpa memiliki geometrinya | semua | dasar semua rekaman | **selesai** 23 Agustus 2026 — `tools/sidik-petak.mjs` + aturan `L36`. Yang tetap `id` rekamannya, yang berubah sidiknya; sidik titik tunggal **ditolak** karena 2³⁰ ditebak habis dalam 0,08 detik | **selesai** |
 | G6 | **Lapis pengalaman peer** — pengamatan lapangan diagregasi di tingkat bahan aktif, selalu berpenyebut | petani, poktan, penyuluh | #3, #4, #6, #9 — kanal keputusan yang sebenarnya | `Observation` ada; pengumpulan hanya mungkin di atas E1–E5 | **BANGUN** (fase 3) |
 
 > **G6 lahir dari jawaban yang sama yang membatalkan premis C2.** Kalimat lengkapnya
@@ -720,6 +720,27 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 > Gerbangnya ternyata sudah terpasang sejak sebelum repositori dibuka dan belum pernah
 > menyala: **L31** menahan tingkat D dari `published`, **L33** menuntut protokol terbit
 > punya penulis bernama dan tanggal tinjau ulang. Yang hilang cuma pintunya.
+
+> **G5 dibangun 23 Agustus 2026, dan yang menentukan bentuknya satu pengukuran.** Janji
+> "identitas tanpa memiliki geometrinya" mudah dipenuhi setengah: hitung sha256 atas
+> batasnya, terbitkan sidiknya, selesai. Tetapi sidik hanya merahasiakan kalau yang
+> disidik sulit ditebak — dan untuk **titik tunggal** pada presisi 5 desimal di dalam satu
+> kabupaten, kandidatnya 2³⁰, habis ditebak satu GPU dalam **0,08 detik**. Menerbitkannya
+> sama dengan menerbitkan titiknya, dan repositori ini publik. Gerbangnya karena itu
+> bukan "apakah ada geometri" melainkan **mutunya**; poligon berjalan kaki 2²³⁷, aman.
+>
+> **Dua contoh yang sudah ada ternyata cacat, dan keduanya cacat dengan cara yang tidak
+> terlihat.** `rec-plot-kopi-eudr` memuat GeoID bernilai `PENDING-DIHITUNG-DARI-GEOMETRI` —
+> string yang menyamar jadi identitas, persis `sha256:0000…` yang ditolak `L34`.
+> `rec-plot-tambak` menyatakan `geometry_quality: drawn_polygon` untuk geometri yang tidak
+> ada sama sekali. Keduanya lolos skema, keduanya akan mengalir ke berkas bukti EUDR
+> tampak seperti data.
+>
+> **Yang tidak dikerjakan, dan sebabnya dinyatakan:** GeoID AgStack yang sesungguhnya.
+> [00](00-fondasi-dan-tahapan.md) menyebutnya preseden identitas lahan, tetapi menghitung
+> nilai sendiri lalu melabelinya `AGSTACK` berarti menerbitkan identitas yang tidak cocok
+> dengan registri mana pun. Skemanya tetap ada dan nilainya hanya boleh **disalin** dari
+> Asset Registry.
 
 ### Gelombang 2 — eksekusi berbayar (fase 3)
 

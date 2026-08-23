@@ -1,0 +1,17 @@
+{
+  "$schema": "../schema/plot.schema.json",
+  "id": "op:plt:019e9000-0000-7000-8000-000000000001",
+  "kind": "field",
+  "label": "Fixture G5",
+  "holder": {
+    "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4",
+    "label": "Pemegang Contoh"
+  },
+  "area": {
+    "value": 5000,
+    "unit": "m2"
+  },
+  "data_classification": "farm_private",
+  "created_at": "2026-08-23T00:00:00Z",
+  "geometry_quality": "walked_polygon"
+}

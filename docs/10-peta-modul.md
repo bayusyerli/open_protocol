@@ -252,6 +252,14 @@ Geometri petak tidak pernah diekspor. `L7` sudah menolaknya diberi label publik,
 klasifikasi data siklus disebut apa adanya di kaki dokumen — mengeluarkannya menuntut
 persetujuan pemegang lahan, dan persetujuan itu bukan bagian dari berkas ini.
 
+> **Sejak G5, sidiknya ikut — dan justru itu yang membuat penahanan geometri tidak
+> melumpuhkan bundelnya.** `plot.geoids` memuat sha256 atas batas yang sudah dinormalkan:
+> nilai tanpa satu koordinat pun, tetapi cukup untuk membuat penerima bundel yang sudah
+> mengukur batas petak itu sendiri memastikan ia petak yang sama — tanpa seorang pun
+> mengirimkan poligonnya. Tanpa sidik, satu-satunya penanda yang berpindah tangan UUID
+> lokal yang tidak berarti di luar sistem ini. Amannya menurut konstruksi: `L36` menolak
+> sidik atas geometri berentropi rendah, jadi sidik yang sempat ada pasti atas poligon.
+
 ### M5 · API dan ekspor
 
 Fase 7 pada [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md). Objeksi versi 0.1 —

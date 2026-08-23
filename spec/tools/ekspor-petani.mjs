@@ -46,8 +46,21 @@ const petakAsli = dokumen.find((x) => x.id === siklus.plot?.id);
 
 // Geometri dicopot di sini, bukan disaring saat menulis — supaya tidak ada jalan ia lolos
 // lewat penulisan yang berbeda kemudian.
-const petak = petakAsli ? (({ geometry, geometry_quality, geoids, ...sisa }) => sisa)(petakAsli) : null;
+//
+// SIDIKNYA IKUT, DAN GEOMETRINYA TETAP TIDAK. Sebelum G5 `geoids` ikut dicopot, dan itu
+// benar selama medannya kosong. Sekarang ia berisi sidik sha256 atas batas yang sudah
+// dinormalkan — nilai yang tidak memuat satu koordinat pun, tetapi yang membuat penerima
+// bundel ini bisa memastikan petaknya sama dengan yang ia ukur sendiri, tanpa seorang pun
+// mengirimkan poligonnya. Tanpa sidik, satu-satunya penanda yang berpindah tangan adalah
+// UUID lokal yang tidak berarti apa-apa di luar sistem ini.
+//
+// Amannya menurut konstruksi, bukan menurut harapan: `L36` menolak sidik atas geometri
+// berentropi rendah, jadi sidik yang sempat ada pasti atas poligon. `geometry_quality`
+// ikut karena tanpanya penerima tidak bisa menilai apakah poligonnya layak EUDR — dan
+// mutu batas tidak menyatakan apa pun tentang letaknya.
+const petak = petakAsli ? (({ geometry, ...sisa }) => sisa)(petakAsli) : null;
 const geometriDicopot = Boolean(petakAsli?.geometry);
+const sidikIkut = (petakAsli?.geoids ?? []).filter((g) => g.scheme === 'OP_GEOM_SHA256');
 
 // --- kumpulkan rujukan -----------------------------------------------------
 const rujukan = (n, out = new Set()) => {
@@ -158,6 +171,14 @@ if (geometriDicopot) {
   M.push('  orang; aturan `L7` menolaknya diberi label publik. Yang ikut hanya label dan luas.');
   M.push('  Kalau kamu memang ingin membawa batas lahanmu sendiri, ambil dari catatan aslinya —');
   M.push('  ia milikmu, dan penahanan di sini hanya berlaku untuk bundel yang berpindah tangan.');
+  if (sidikIkut.length) {
+    M.push('');
+    M.push('  **Yang ikut sebagai gantinya: sidiknya.** `plot.geoids` memuat sha256 atas batas yang');
+    M.push('  sudah dinormalkan — nilai yang tidak memuat satu koordinat pun. Penerima bundel ini');
+    M.push('  yang sudah punya batas petakmu dari pengukurannya sendiri bisa menghitung sidik yang');
+    M.push('  sama dan memastikan ia petak yang sama, tanpa seorang pun mengirimkan poligonnya.');
+    M.push('  Caranya: `node spec/tools/sidik-petak.mjs <berkas>`.');
+  }
 } else {
   M.push('- Petak ini tidak punya geometri tercatat, jadi tidak ada yang perlu ditahan.');
 }
@@ -208,7 +229,7 @@ M.push('platform mana pun.');
 writeFileSync(join(d, 'BACA-DULU.md'), M.join('\n') + '\n');
 
 console.log(`\nBundel ekspor -> ${keluar}`);
-console.log(`  catatan.json    ${langkah.length} langkah, 1 siklus, 1 petak${geometriDicopot ? ' (geometri dicopot)' : ''}`);
+console.log(`  catatan.json    ${langkah.length} langkah, 1 siklus, 1 petak${geometriDicopot ? ` (geometri dicopot${sidikIkut.length ? ', sidiknya ikut' : ''})` : ''}`);
 console.log(`  kosakata.json   ${Object.keys(kosakata).length} entitas: ${Object.entries(jenis).sort().map(([t, n]) => `${t} ${n}`).join(', ')}`);
 if (protokol) console.log(`  protokol.json   ${protokol.id} v${protokol.lifecycle?.version}`);
 console.log(`  BACA-DULU.md    manifes beserta batasnya`);

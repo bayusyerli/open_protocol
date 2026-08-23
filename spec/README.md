@@ -80,6 +80,48 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Step` | `op:stp` | **Satu langkah — direncanakan atau dikerjakan** |
 | `PreparationBatch` | `op:bat` | Satu kali pembuatan sediaan, beserta catatan suhu dan hasil ujinya |
 
+### Identitas petak tanpa memiliki batasnya — G5
+
+Dua pihak perlu memastikan mereka membicarakan **petak yang sama** — petani dan
+pembelinya, penangkar dan sertifikatornya — sementara `L7` melarang batas lahan
+diterbitkan, karena ia bernilai komersial dan bisa dipakai mengidentifikasi orang.
+
+`plot.geoids[]` menyimpan **sidik** batasnya, bukan batasnya:
+`node spec/tools/sidik-petak.mjs --tulis <berkas>` menormalkan geometri lalu menghitung
+sha256 atasnya. Batas yang sama menghasilkan nilai yang sama di mesin siapa pun, dan
+nilainya tidak memuat satu koordinat pun. Terbukti: enam penulisan berbeda dari batas yang
+sama — tertutup dan tidak, dimulai dari simpul berbeda, arah putaran dibalik, presisi
+berlebih, dengan dan tanpa ketinggian — menghasilkan **satu** sidik; satu simpul digeser
+11 m menghasilkan sidik yang berbeda.
+
+**Yang tetap bukan sidiknya, melainkan `id` rekamannya.** Sidik berubah begitu batasnya
+direvisi — memang begitu gunanya — jadi `geoids[]` sebuah larik kronologis, dan riwayat
+revisi batas itu justru yang membuat satu petak bisa ditelusuri lintas musim.
+
+**Sidik tidak selalu merahasiakan, dan itu diukur bukan diduga.** Untuk titik tunggal pada
+presisi 5 desimal di dalam satu kabupaten seluas 1.014 km², kandidatnya 8,2×10⁸ — sekitar
+2³⁰, habis ditebak satu GPU dalam **0,08 detik**. Menerbitkan sidik titik tunggal sama
+dengan menerbitkan titiknya. Poligon berjalan kaki dengan delapan simpul bebas memberi
+~2²³⁷. Karena itu gerbangnya bukan "apakah ada geometri" melainkan **mutunya**:
+
+| `geometry_quality` | Sidik |
+|---|---|
+| `surveyed_polygon`, `walked_polygon` | boleh |
+| `drawn_polygon` | boleh, **dengan peringatan** — kotak yang digambar cuma dua sudut bebas (~2⁵⁹) |
+| `single_point`, `unknown` | **ditolak** — 2³⁰, atau entropi yang tidak diketahui |
+
+**Yang TIDAK dijanjikan: kecocokan dengan GeoID AgStack.** [00](../docs/00-fondasi-dan-tahapan.md)
+menyebut AgStack Asset Registry sebagai preseden identitas lahan dan skemanya tetap ada di
+`geoids[].scheme`. Tetapi menghitung nilai sendiri lalu melabelinya `AGSTACK` berarti
+menerbitkan identitas yang tidak akan cocok dengan registri mana pun — interoperabilitas
+yang cuma tampak seperti interoperabilitas. Nilai `AGSTACK` karena itu hanya boleh
+**disalin** dari registrinya; yang dihitung di sini hidup di bawah skemanya sendiri,
+`OP_GEOM_SHA256`, yang seluruh aturannya tertulis di `tools/sidik-petak.mjs`.
+
+`L36` menegakkan keempatnya: mutu batas yang batasnya tidak ada, nilai yang menyamar jadi
+identitas, sidik atas geometri berentropi rendah, dan sidik yang tidak cocok dengan
+geometrinya.
+
 ### Tipe bersama — `schema/common.schema.json`
 
 `Ref`, `LangText`, `Quantity`, `Rate`, `Timing`, `Condition`, `Geometry`,
@@ -520,7 +562,11 @@ Supaya cakupannya jujur:
 - **Cuaca, hasil uji tanah lengkap, dan model tanaman** — dirujuk lewat `Variable`,
   belum dimodelkan sendiri.
 - **Ketertelusuran rantai pasok (GS1 EPCIS)** — `Plot.geoids` sudah menyiapkan
-  kaitannya; sisanya menunggu jalur pendapatan EUDR di Fase 6.
+  kaitannya dan kini benar-benar terisi lewat `tools/sidik-petak.mjs`; sisanya menunggu
+  jalur pendapatan EUDR di Fase 6.
+- **GeoID AgStack yang sesungguhnya** — skemanya ada di `geoids[].scheme`, tetapi
+  nilainya harus disalin dari Asset Registry. Menghitungnya sendiri berarti mengarang
+  identitas yang tidak cocok dengan registri mana pun.
 - **Alsintan, stok gudang, dan keuangan usaha tani** — `Step.cost` sengaja
   dibuat tipis; model biaya penuh belum dibutuhkan sebelum ada data pilot.
 - **Kesetaraan dosis sediaan dengan pupuk pabrik** — berapa ton kompos setara berapa
