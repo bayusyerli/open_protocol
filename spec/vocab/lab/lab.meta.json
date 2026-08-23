@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "lab",
+    "label": {
+      "id": "Laboratorium penguji terakreditasi yang lingkupnya menyentuh usaha tani"
+    },
+    "scope": {
+      "id": "889 dari 1.671 laboratorium penguji berakreditasi aktif di papan lembaga terakreditasi KAN per 23 Agustus 2026 — yang ruang lingkupnya menyebut tanah, pupuk, air, pangan, jaringan tanaman, atau residu pestisida. Sisanya sengaja tidak dijadikan entitas: laboratorium yang seluruhnya menguji kelistrikan, bahan bakar, tekstil, atau konstruksi tidak menjawab pertanyaan siapa pun di registri ini. Penanda kemampuan dibaca dari teks ringkasan lingkup, bukan dari kode, dan `scope_summary` selalu ikut supaya pembacaannya bisa diperiksa ulang. Blok `scope_detail` hanya ada pada lembaga yang juga terdaftar di aplikasi direktori KAN — ketiadaannya bukan berarti lingkupnya sempit. Nama petugas penghubung tersedia di sumbernya dan sengaja tidak diambil."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-23T00:00:00Z",
+      "review_due": "2026-11-23"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Papan lembaga terakreditasi — Laboratorium Penguji (LP Active)",
+          "publisher": "Komite Akreditasi Nasional (BSN)",
+          "url": "https://kan.or.id/index.php/documents/terakreditasi/77-laboratorium",
+          "year": 2026,
+          "locator": "Papan Looker Studio yang ditaut dari halaman Terakreditasi; 1.671 baris beserta masa berlaku akreditasi. Ditarik dengan lpk_data/tarik-looker.mjs.",
+          "retrieved": "2026-08-23"
+        },
+        {
+          "title": "Direktori LPK — aplikasi layanan KAN",
+          "publisher": "Komite Akreditasi Nasional (BSN)",
+          "url": "https://layanan.kan.or.id/",
+          "year": 2026,
+          "locator": "Ruang lingkup terurai per parameter untuk lembaga yang sudah pindah ke aplikasi ini. Ditarik dengan lpk_data/tarik-kan.mjs dan lpk_data/tarik-lingkup.mjs.",
+          "retrieved": "2026-08-23"
+        }
+      ]
+    },
+    "storage": "ndjson",
+    "count": 889,
+    "id_blocks": [
+      {
+        "from": 1000,
+        "to": 9999
+      }
+    ]
+  }
+}

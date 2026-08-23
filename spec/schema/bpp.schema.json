@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/bpp.schema.json",
+  "title": "BPP — Balai Penyuluhan Pertanian",
+  "description": "Satu balai penyuluhan beserta kecamatan yang dibinanya. Entitasnya BALAI, bukan kecamatan: 519 balai membina lebih dari satu kecamatan, dan satu rekaman per kecamatan akan memecah balai yang sama jadi beberapa halaman yang masing-masing tampak berdiri sendiri. Inilah jalan keluar manusiawi ketika keempat bentuk jawaban aplikasi ini mentok — yang dicari pengguna bukan data melainkan orang yang bisa ditanya. Yang disimpan hanya kelembagaan dan CACAHAN penyuluhnya; nama, NIP, dan kontak penyuluh tidak ada di sumbernya dan memang tidak dicari — halaman bernama tentang orang adalah pemrosesan data pribadi yang tidak punya dasar di sini.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:bpp:[0-9]{8}$"
+    },
+    "region": {
+      "type": "object",
+      "description": "Wilayah sebagai teks, bukan rujukan ke entitas wilayah: kosakata `region` belum terisi, dan menerbitkan 7.276 entitas kecamatan sebagai efek samping panen ini akan mendahului keputusan yang belum diambil. Begitu kosakata wilayah berdiri, medan-medan ini yang jadi jalannya.",
+      "properties": {
+        "province": {
+          "type": "string",
+          "minLength": 2
+        },
+        "regency": {
+          "type": "string",
+          "minLength": 2
+        },
+        "regency_code": {
+          "type": "string",
+          "description": "Kode kabupaten/kota menurut SIMLUHTAN.",
+          "pattern": "^[0-9]{3,6}$"
+        }
+      },
+      "required": [
+        "province",
+        "regency"
+      ],
+      "additionalProperties": false
+    },
+    "serves": {
+      "type": "array",
+      "uniqueItems": true,
+      "description": "Kecamatan yang dibina balai ini, sebagaimana bernama di sumber. Satu balai bisa membina sampai sebelas kecamatan. Larik ini BOLEH kosong: 59 catatan di SIMLUHTAN punya nama balai dan cacah poktan tetapi medan kecamatannya dibiarkan kosong. Menamainya berarti menebak, jadi kecamatannya dihitung di `counts.districts_unnamed` dan tidak dikarang di sini.",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+    "name_variants": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Seluruh ejaan nama balai ini sebagaimana tertulis di sumber — berspasi ganda, berhuruf besar semua, kadang tanpa awalan \"BPP\". Nama asli tidak pernah ditimpa; `label` memuat bentuk yang sudah diseragamkan.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "counts": {
+      "type": "object",
+      "description": "Cacahan dari laporan tamu SIMLUHTAN, sinkronisasi hariannya sendiri. `extension_workers` nol pada balai yang ada gedungnya tetapi tidak ada orangnya — nilai nol di sini adalah temuan, bukan data yang hilang.",
+      "properties": {
+        "districts": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Seluruh kecamatan yang dibina, bernama maupun tidak."
+        },
+        "farmer_groups": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Kelompok tani (poktan) yang terbina."
+        },
+        "extension_workers": {
+          "type": "object",
+          "properties": {
+            "pns": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "p3k": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "thl": {
+              "type": "integer",
+              "minimum": 0,
+              "description": "Tenaga harian lepas, APBN maupun APBD."
+            },
+            "swadaya": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "swasta": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "total": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "required": [
+            "pns",
+            "p3k",
+            "thl",
+            "swadaya",
+            "swasta",
+            "total"
+          ],
+          "additionalProperties": false
+        },
+        "districts_unnamed": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Kecamatan binaan yang namanya kosong di sumber. Ada supaya `serves` yang lebih pendek daripada `districts` bisa dijelaskan, bukan terbaca sebagai data yang hilang saat dirakit."
+        }
+      },
+      "required": [
+        "districts",
+        "farmer_groups",
+        "extension_workers"
+      ],
+      "additionalProperties": false
+    },
+    "supervising_office": {
+      "type": "string",
+      "description": "Dinas kabupaten/kota yang menaungi, sebagaimana tertulis di sumber. Ini alamat yang dituju ketika balainya sendiri tidak menjawab."
+    }
+  },
+  "required": [
+    "id",
+    "key",
+    "label",
+    "lifecycle",
+    "region",
+    "serves",
+    "counts"
+  ]
+}

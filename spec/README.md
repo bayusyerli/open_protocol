@@ -19,7 +19,7 @@ spec/
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
-├── schema/                       30 berkas JSON Schema (draft 2020-12)
+├── schema/                       32 berkas JSON Schema (draft 2020-12)
 ├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
 │   ├── product/                  registri produk — 14.920 entitas (NDJSON)
 │   └── variety/                  registri varietas — 11.227 entitas (NDJSON)
@@ -71,6 +71,11 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Pest` | `op:pst` | OPT: hama, penyakit, gulma, nematoda |
 | `Region` | `op:rgn` | Wilayah administratif dan zona agroekologi |
 | `DeviationReason` | `op:dev` | Alasan realisasi menyimpang dari rencana |
+| `TargetSite` | `op:sit` | Tempat aplikasi pada tanaman atau lahan |
+| `Principal` | `op:pcp` | Badan pemegang pendaftaran pupuk, pestisida, atau varietas. Satu rekaman per badan, bukan per registri |
+| `Harga` | `op:hrg` | Seri harga komoditas beserta lisensi dan cakupan sumbernya |
+| `Lab` | `op:lab` | Laboratorium penguji terakreditasi KAN yang lingkupnya menyentuh usaha tani. Yang berguna bukan namanya melainkan `capabilities` — tanah, pupuk, air, pangan, jaringan tanaman, residu pestisida |
+| `BPP` | `op:bpp` | Balai Penyuluhan Pertanian beserta kecamatan binaannya. Entitasnya balai, bukan kecamatan; cacahan penyuluh, tanpa nama orang |
 
 ### Data usaha tani — milik petani, ID UUIDv7
 

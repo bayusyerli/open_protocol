@@ -35,4 +35,6 @@ ketika pertanyaannya tidak lagi bisa dijawab berkas.
 - **34 provinsi, bukan 38.** Pemekaran Papua belum masuk ke basis data sumbernya.
 - **Update SIMLUHTAN sedang ditutup** untuk pemeliharaan sistem sampai 30 Agustus 2026
   menurut pengumuman di halaman depannya; angka di sini adalah potret sebelum itu.
-- **Belum tersambung** ke `spec/vocab/`: masih berkas data, belum entitas.
+- **Sudah tersambung** ke `spec/vocab/bpp/` — satu entitas `op:bpp:` per balai, bukan per
+  kecamatan, dibangun ulang dengan `node spec/tools/bangun-bpp.mjs --tulis`. Yang belum: indeks
+  turunan dan halaman terbitnya.

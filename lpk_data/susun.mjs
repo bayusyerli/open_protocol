@@ -246,7 +246,9 @@ mereka tersedia lingkup terurai per parameter (\`kode_k01\`, \`baris_lingkup\`,
 - **Nama bahan aktif tidak seragam.** Lingkup laboratorium ditulis dengan nama ISO
   (\`glyphosate\`, \`mancozeb\`), registri Kementan dengan nama Indonesia (\`glifosat\`,
   \`mankozeb\`). Penyilangan ke kosakata bahan aktif baru akan rapat setelah no. 5 berdiri.
-- **Belum tersambung** ke \`spec/vocab/\`: ini masih berkas data, belum entitas.
+- **Sudah tersambung** ke \`spec/vocab/lab/\` — ${lab.length} entitas \`op:lab:\`, dibangun ulang
+  dengan \`node spec/tools/bangun-lab.mjs --tulis\`. Yang belum: indeks turunan dan halaman
+  terbitnya, karena keduanya masih perlu penyaji per jenis entitas.
 `);
 
 console.log(`LPK layanan ${semua.length} (dari ${barisMentah} baris) | lab tani ${lab.length}/${totalLP} | lingkup terurai ${cocok}`);

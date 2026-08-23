@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "bpp",
+    "label": {
+      "id": "Balai Penyuluhan Pertanian beserta kecamatan binaannya"
+    },
+    "scope": {
+      "id": "5844 balai penyuluhan di 34 provinsi dan 514 kabupaten/kota, membina 6.883 kecamatan, menurut laporan tamu SIMLUHTAN per 23 Agustus 2026. Entitasnya balai, bukan kecamatan: 519 balai membina lebih dari satu kecamatan. 393 kecamatan punya catatan penyuluh tetapi belum punya balai terdaftar dan karena itu tidak jadi entitas di sini. Nama, NIP, dan kontak penyuluh tidak ada di sumbernya dan tidak dicari; yang disimpan hanya kelembagaan dan cacahan orangnya. Update SIMLUHTAN sedang ditutup untuk pemeliharaan sampai 30 Agustus 2026 menurut pengumuman di halaman depannya — angka ini potret sebelum itu."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-23T00:00:00Z",
+      "review_due": "2026-11-23"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Laporan tamu SIMLUHTAN — Kelembagaan Penyuluhan dan Ketenaga Penyuluhan",
+          "publisher": "Badan Penyuluhan dan Pengembangan SDM Pertanian, Kementerian Pertanian RI",
+          "url": "https://simluh.pertanian.go.id/guestreport",
+          "year": 2026,
+          "locator": "Tiga tingkat tabel (nasional, provinsi, kabupaten); nama balai hanya muncul di tingkat kabupaten. Ditarik dengan penyuluh_data/tarik-simluhtan.mjs dan penyuluh_data/tarik-ketenagaan.mjs.",
+          "retrieved": "2026-08-23"
+        }
+      ]
+    },
+    "storage": "ndjson",
+    "count": 5844,
+    "id_blocks": [
+      {
+        "from": 1000,
+        "to": 19999
+      }
+    ]
+  }
+}
