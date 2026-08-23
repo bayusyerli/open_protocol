@@ -1693,3 +1693,28 @@ skala segini. Ukuran keseluruhan koleksi ikut bergeser: nomor tercetak yang terb
 
 Sisa 114 merek Centa Brasindo tidak punya pos produk di situsnya — bukan soal potongan lagi,
 melainkan soal halaman yang memang tidak ada.
+
+### Katalog grup menyembunyikan principal yang belum pernah disentuh
+
+Sapuan nomor atas 39 nama yang tak cocok di katalogcba.com memberi hasil yang tidak
+diperkirakan: **dari 25 merek yang terpetakan dan belum bergambar, hanya 6 milik Centa
+Brasindo.** Delapan belas milik **PT. AGROTECH PESTICIDE INDUSTRY** dan satu milik
+**CV. TANI ABADI** — dua principal yang tidak pernah disentuh sapuan mana pun, dan yang
+tidak akan ditemukan lewat antrean sebab keduanya tidak punya situs sendiri di sana.
+
+Footer brosurnya sudah menyebutkannya sejak awal ("Pemegang Nomor Pendaftaran: PT. AGROTECH
+PESTICIDE INDUSTRY"), tetapi footer tidak dibaca pemanen yang mencocokkan judul halaman.
+Yang membongkarnya nomor tercetak.
+
+Ketujuh belas baris Agrotech yang masuk karena itu bernilai `rights: pihak_ketiga`:
+penerbitnya katalogcba.com, pemegang pendaftarannya bukan. Menuliskan `pemegang_pendaftaran`
+akan mengkredit CBA dengan pendaftaran yang bukan miliknya — kekeliruan yang sama bentuknya
+dengan kasus BIGSON/RAZIO/PRESULOR/PRIMAFOS di pasal 17, hanya di sini terjadi 18 kali
+sekaligus.
+
+**Pelajaran untuk antrean:** ketika sebuah situs menayangkan lebih banyak produk daripada
+merek principal-nya di registri, selisihnya bukan galat pemetaan melainkan **principal lain
+yang menumpang**. Periksa pemegang pendaftaran tiap nomor, bukan cuma apakah nomornya ada.
+
+Angka akhir katalogcba.com: Centa Brasindo **31 → 85 dari 194**, dan PT. AGROTECH PESTICIDE
+INDUSTRY masuk daftar principal terpanen untuk pertama kalinya pada **17 dari 31 merek**.
