@@ -88,6 +88,20 @@ cek('04', 'OPT registri hidup', hidup(OPTR).length, 768);
 cek('04', 'OPT registri bergejala', OPTR.filter((e) => e.symptoms).length, 0);
 cek('04', 'OPT terkurasi bergejala', KUR.filter((e) => e.symptoms).length, 10);
 
+// ---- padanan bahan aktif: berapa yang bernama, dan dari mana namanya
+// Angka ini punya DUA sumber yang bergerak sendiri-sendiri — tarikan registri baru dan
+// panen Wikidata baru — dan dicetak di spec/README serta spec/02-crosswalk. Pemisahan
+// per `dasar` yang penting: pemakai yang hanya mau isi turunan-registri harus bisa tahu
+// berapa banyak yang akan hilang kalau ia membuang baris berdasar Wikidata.
+const PAD = J('spec/vocab/padanan-bahan-aktif.json').padanan_items;
+const dasar = (d) => PAD.filter((r) => r.kanonik?.nama && r.kanonik.dasar === d).length;
+cek('spec/README', 'kunci padanan bahan aktif', PAD.length, 1593);
+cek('spec/README', 'padanan bernama kanonik', PAD.filter((r) => r.kanonik?.nama).length, 1093);
+cek('02', 'padanan bernama dari deklarasi registri', PAD.length - PAD.filter((r) => r.kanonik?.dasar === 'wikidata').length - PAD.filter((r) => !r.kanonik?.nama).length, 934);
+cek('02', 'padanan bernama dari Wikidata', dasar('wikidata'), 159);
+cek('02', 'padanan belum terpetakan', PAD.filter((r) => r.hubungan === 'belum-terpetakan').length, 298);
+cek('02', 'padanan Wikidata tanpa Q-id', PAD.filter((r) => r.kanonik?.dasar === 'wikidata' && !r.wikidata?.qid).length, 0);
+
 // ---- irisan cabai x trips
 const CABAI = 'op:cmd:00001003', TRIPS = 'op:pst:00000001', KLOR = 'op:sub:00000105';
 const iris = (kom, pst) => {

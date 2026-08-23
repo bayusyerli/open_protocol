@@ -152,14 +152,20 @@ dengan relasi bertipe (`garam-dari`, `ester-dari`, `stereoisomer-dari`, `varian-
 **wajib** untuk ketiga bentuk turunan, dan faktor kesetaraan garam→induk. Ia menunjuk
 `substance-pestisida.json`, tidak menggantikannya.
 
-Dua hal yang perlu diketahui sebelum memakainya:
+Tiga hal yang perlu diketahui sebelum memakainya:
 
 - **Nama internasionalnya datang dari registri sendiri.** Kementan menuliskannya di dalam
   kurung — `Sipermetrin (cypermethrin)`, `Terbutryn (ISO)` — dan menyatakan kesetaraan
-  garamnya berikut angkanya. Tidak ada daftar nama umum milik pihak lain yang disalin,
-  sehingga berkasnya bebas dipakai ulang seperti sisa repositori. Konsekuensinya:
-  **457 dari 1.593 kunci tetap kosong** karena registri tidak pernah menuliskan nama
-  internasionalnya, dan itu dibiarkan kosong beralasan alih-alih ditebak.
+  garamnya berikut angkanya. Itu menutup **934 dari 1.593 kunci**, dan tidak ada daftar
+  nama umum berhak cipta yang disalin.
+- **Sisanya ditutup dari Wikidata, dan bisa disaring keluar.** Wikidata berlisensi CC0,
+  jadi namanya boleh direkam ulang — berkasnya tetap bebas dipakai ulang seperti sisa
+  repositori. **159 kunci** tertutup dari sana, tiap baris membawa Q-id, properti yang
+  dipakai, dan penguat mana yang menyala; nomor CAS ikut terekam. Setiap kecocokan wajib
+  dikuatkan bukti di luar kemiripan nama — peran kimiawi di Wikidata, jenis pestisida
+  menurut registri sendiri, atau aturan ejaan yang dinyatakan eksplisit (E1–E15 di
+  `tools/lipat-ejaan.mjs`). Tidak ada jarak edit di mana pun. Sesudahnya **298 kunci tetap
+  kosong beralasan**, dan itu dibiarkan kosong alih-alih ditebak.
 - **Satu lapis dikurasi tangan, dan ia menyebut dirinya sendiri.** Nama tetap hanya dari
   registri, tetapi tidak setiap counter-ion kebetulan berada pada tulisan yang membawa
   klausa "setara dengan" — `dibromida`, `hidroklorida`, `oksiklorida`, `natrium`, dan
