@@ -308,3 +308,68 @@
 }
 
 .bj-tinjau a { color: var(--bj-aksen); }
+
+/* ------------------------------------------------------------------ teruskan */
+/* Kartu yang bisa diteruskan (A2). Tinggal di berkas ini dan bukan di gaya.css karena
+   alasan yang sama dengan blok batas: yang ditulis di gaya.css tidak pernah sampai ke
+   beranda, dan kartu teruskan pada akhirnya harus ada di semua layar berjawaban.
+   Tokennya diulang di sini karena ia berdiri di luar .batas-jawaban. */
+
+.teruskan {
+  --bj-teks:  var(--teks,        var(--tinta));
+  --bj-lemah: var(--teks-lemah,  var(--lemah));
+  --bj-garis: var(--garis);
+  --bj-aksen: var(--aksen,       var(--hijau-2));
+  --bj-latar: var(--latar-kartu, var(--kertas));
+
+  margin: 1.2rem 0 0;
+  padding: .85rem .9rem;
+  border: 1px solid var(--bj-garis);
+  border-radius: 10px;
+  background: var(--bj-latar);
+  color: var(--bj-lemah);
+}
+
+.teruskan-ajak {
+  margin: 0 0 .1rem;
+  font-weight: 600;
+  font-size: .92rem;
+  color: var(--bj-teks);
+}
+
+.teruskan-aksi { display: flex; flex-wrap: wrap; gap: .5rem; margin: .7rem 0 0 !important; }
+
+.teruskan-aksi button {
+  font: inherit;
+  font-size: .88rem;
+  font-weight: 600;
+  padding: .65rem .9rem;
+  min-height: 44px;
+  color: var(--bj-teks);
+  background: transparent;
+  border: 1px solid var(--bj-aksen);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.teruskan-aksi button:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+
+.teruskan-kabar { margin: .6rem 0 0 !important; font-size: .87rem; color: var(--bj-teks); min-height: 1.2em; }
+
+/* Pratinjau digambar dengan lebar tetap supaya yang mengirim melihat kartunya persis
+   seperti yang akan dibaca penerimanya — termasuk bahwa batasnya memang ada di badan
+   teks, bukan cuma dijanjikan tautan. */
+.teruskan-pratinjau {
+  margin: .6rem 0 0;
+  max-height: 18rem;
+  overflow: auto;
+  padding: .7rem;
+  font-size: .78rem;
+  line-height: 1.5;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px dashed var(--bj-garis);
+  border-radius: 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

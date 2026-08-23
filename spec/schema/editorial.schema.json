@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/editorial.schema.json",
+  "title": "Editorial — tulisan yang menyatakan batas jawaban, bukan data yang diturunkan darinya",
+  "description": "Halaman batas jawaban pada permukaan baca-saja. Isinya ARGUMEN, dan argumen tidak bisa diturunkan dari indeks — jadi ia ditulis, dan karena ditulis ia harus bisa ditinjau seperti kosakata kurasi lainnya.\n\nKENAPA PROSANYA DI SINI DAN BUKAN DI ALAT PEMBANGUN. Selama prosa tinggal di dalam bangun-halaman.mjs, ia tidak punya rekaman, tidak punya content_hash, dan karena itu tidak bisa disematkan tinjauan. Memindahkannya ke sini membuat aturan L35 berlaku atasnya sama seperti atas rekaman lain: nama peninjau dan tanggalnya wajib bepergian bersama, dan reviewed_hash menyematkan tinjauan pada isi yang benar-benar dibaca peninjaunya.\n\nANGKANYA TIDAK ADA DI SINI, DAN ITU DISENGAJA. Medan `body` memuat penanda {{jalur.medan}} yang diisi ulang tiap kali halaman dibangun dari indeks. Prosa yang mengetik angkanya sendiri akan basi diam-diam, dan basi diam-diam persis yang dilawan seluruh permukaan ini. Akibat sampingnya penting: mengubah angka di registri TIDAK mengubah content_hash, jadi tinjauan tidak gugur karena harga cabai bergerak — ia gugur ketika argumennya yang berubah.\n\nBUKAN ENTITAS. Sama seperti nama-lokal, rekaman di sini memakai `key` alih-alih `op:` id: sebuah tulisan bukan hal yang ada di dunia, dan menambah blok prefiks ID untuk itu menukar kaidah yang mahal dengan kemudahan yang murah.",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*(--[a-z0-9]+(-[a-z0-9]+)*)*$",
+      "description": "Slug stabil. Ia ikut menyusun perbandingan tinjauan, jadi mengubahnya berarti memutus tinjauan yang sudah menempel."
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^/[a-z0-9/-]+/$",
+      "description": "Jalur terbit halaman ini. Ditulis di rekaman, bukan diturunkan dari `key`, supaya perpindahan URL terlihat sebagai perubahan isi rekaman — dan karena itu menggugurkan tinjauannya."
+    },
+    "label": {
+      "type": "object",
+      "properties": { "id": { "type": "string" } },
+      "required": ["id"],
+      "additionalProperties": false,
+      "description": "Judul yang dibaca manusia — dipakai sebagai h1 halaman."
+    },
+    "title": { "type": "string", "description": "Judul untuk mesin pencari. Boleh lebih panjang dari label." },
+    "description": { "type": "string", "description": "Ringkasan satu kalimat, dipakai sebagai meta description." },
+    "dek": { "type": "string", "description": "Kalimat pembuka di bawah judul. Boleh memuat penanda dan penekanan HTML." },
+    "basis": {
+      "type": "string",
+      "description": "Dokumen repositori yang jadi dasar argumennya. Tulisan tanpa dasar yang bisa ditelusuri adalah pendapat yang menyamar jadi rujukan."
+    },
+    "body": { "type": "string", "description": "Prosa utuh dalam HTML, dengan penanda {{jalur.medan}} untuk tiap angka." },
+    "questions": {
+      "type": "array",
+      "description": "Pertanyaan yang benar-benar tercetak di halaman. Hanya ini yang boleh ditandai FAQPage — pertanyaan yang tidak ada di layar tetapi dinyatakan kepada mesin adalah dua pernyataan berbeda tentang satu halaman.",
+      "items": {
+        "type": "object",
+        "properties": { "q": { "type": "string" }, "a": { "type": "string" } },
+        "required": ["q", "a"],
+        "additionalProperties": false
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Sumber untuk blok batas jawaban. Kunci `dari` menunjuk meta.batas.sumber pada indeks turunan.",
+      "items": {
+        "type": "object",
+        "properties": { "dari": { "type": "string" }, "cakupan": { "type": "string" } },
+        "required": ["dari"],
+        "additionalProperties": false
+      }
+    },
+    "unanswered": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" },
+      "description": "Kunci meta.tidakAda yang wajib disebut halaman ini. Layar yang tidak menyebut satu pun yang tidak diketahuinya gagal dengan berisik."
+    },
+    "evidence_tier": { "$ref": "common.schema.json#/$defs/EvidenceTier" },
+    "evidence_note": { "type": "string" },
+    "lifecycle": { "$ref": "common.schema.json#/$defs/Lifecycle" },
+    "provenance": { "$ref": "common.schema.json#/$defs/Provenance" }
+  },
+  "required": ["key", "path", "label", "title", "description", "body", "sources", "unanswered", "lifecycle"],
+  "additionalProperties": false
+}

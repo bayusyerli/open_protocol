@@ -1,0 +1,280 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/padanan-bahan-aktif.schema.json",
+  "title": "Padanan nama bahan aktif — tulisan registri ke identitas kimia",
+  "description": "Tabel penyambung, bukan ontologi kimia. Sisi kiri bentuk ternormalkan nama bahan aktif sebagaimana ditulis registri Kementan; sisi kanan identitas kimia yang bisa di-join, dengan jenis hubungan yang BERTIPE. Rekamannya sengaja tanpa `op:` id — yang disimpan pemetaan, bukan entitas — mengikuti pola kamus nama lokal. Kepemilikan entitas dan nomor ID tetap pada spec/vocab/substance-pestisida.json, yang ditunjuk berkas ini lewat `substance`. Aturan yang ditegakkan di sini lahir dari satu kegagalan yang harus dicegah: hubungan tulisan-ke-identitas TIDAK simetris. `parakuat diklorida` adalah GARAM DARI `paraquat`, bukan sinonimnya; meratakannya jadi sinonim akan membuat pemeriksaan larangan meleset ke dua arah sekaligus, dan itu tidak akan terlihat sebagai galat di mana pun.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "padanan": { "$ref": "#/$defs/Kepala" },
+    "padanan_items": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/Padanan" }
+    }
+  },
+  "required": ["padanan", "padanan_items"],
+  "additionalProperties": false,
+  "$defs": {
+    "Kepala": {
+      "type": "object",
+      "properties": {
+        "label": { "$ref": "common.schema.json#/$defs/LangText" },
+        "scope": { "$ref": "common.schema.json#/$defs/LangText" },
+        "lifecycle": { "$ref": "common.schema.json#/$defs/Lifecycle" },
+        "provenance": { "$ref": "common.schema.json#/$defs/Provenance" },
+        "kunci_normalisasi": {
+          "$ref": "common.schema.json#/$defs/LangText",
+          "description": "Aturan pembentukan `kunci`, ditulis supaya bisa direproduksi pemakai tanpa membaca kodenya. Wajib: tanpa ini, pemakai tidak bisa tahu bentuk apa yang harus dicarinya."
+        },
+        "potret": {
+          "type": "object",
+          "description": "Registri Kementan bergerak — dalam rentang 19–23 Agustus 2026 saja 83 formulasi berubah medan bahanAktif dan 16 menumbuhkan varian kapitalisasi baru. Cacah tulisan unik karena itu bukan himpunan tertutup, dan tabel ini wajib menyebut potret mana yang diturunkannya beserta hash-nya, supaya kebasiannya bisa dideteksi alih-alih ditebak.",
+          "properties": {
+            "berkas": { "type": "string" },
+            "tarikan": { "type": "string", "format": "date" },
+            "formulasi": { "type": "integer", "minimum": 1 },
+            "tulisan_mentah": { "type": "integer", "minimum": 1 },
+            "sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+            "catatan": { "$ref": "common.schema.json#/$defs/LangText" }
+          },
+          "required": ["berkas", "tarikan", "formulasi", "sha256"],
+          "additionalProperties": false
+        },
+        "hitungan": {
+          "type": "object",
+          "description": "Cacah yang dihitung ulang tiap kali tabelnya disusun. Ada supaya kegagalan bisa dibaca sebagai angka, bukan cuma dirasakan: berapa yang kosong, berapa yang perlu ditinjau.",
+          "properties": {
+            "kunci": { "type": "integer", "minimum": 1 },
+            "formulasi": { "type": "integer", "minimum": 1 },
+            "per_hubungan": { "type": "object", "additionalProperties": { "type": "integer", "minimum": 0 } },
+            "berkanonik": { "type": "integer", "minimum": 0 },
+            "berinduk": { "type": "integer", "minimum": 0 },
+            "berfaktor": { "type": "integer", "minimum": 0 },
+            "perlu_tinjau": { "type": "integer", "minimum": 0 }
+          },
+          "required": ["kunci", "per_hubungan", "berkanonik", "berinduk", "berfaktor", "perlu_tinjau"],
+          "additionalProperties": false
+        }
+      },
+      "required": ["label", "scope", "lifecycle", "provenance", "kunci_normalisasi", "potret", "hitungan"],
+      "additionalProperties": false
+    },
+
+    "Hubungan": {
+      "type": "string",
+      "description": "Jenis hubungan antara tulisan registri dan identitas kanoniknya. Sengaja BUKAN daftar sinonim datar: tiga di antaranya (garam-dari, ester-dari, stereoisomer-dari) menyatakan bahwa yang terdaftar BUKAN bahan induknya, hanya turunannya — dan justru itu yang menentukan benar-salahnya pemeriksaan larangan serta pembandingan terhadap MRL.",
+      "enum": [
+        "sama-dengan",
+        "varian-ejaan",
+        "garam-dari",
+        "ester-dari",
+        "stereoisomer-dari",
+        "organisme",
+        "bukan-bahan-aktif",
+        "nama-sistematis-belum-terpetakan",
+        "belum-terpetakan"
+      ]
+    },
+
+    "Dasar": {
+      "type": "object",
+      "description": "Bukti per baris. Tiap pemetaan wajib bisa ditunjuk asalnya pada tulisan registri yang mana.",
+      "properties": {
+        "jenis": {
+          "type": "string",
+          "enum": [
+            "deklarasi-registri",
+            "deklarasi-setara",
+            "deklarasi-setara-transitif",
+            "gugus-dipelajari",
+            "ejaan",
+            "ejaan-arah",
+            "stereodeskriptor",
+            "kosakata-zat"
+          ]
+        },
+        "kutipan": { "type": "string", "minLength": 3 }
+      },
+      "required": ["jenis", "kutipan"],
+      "additionalProperties": false
+    },
+
+    "Kanonik": {
+      "type": "object",
+      "description": "Identitas kimia yang bisa di-join. `nama` boleh null — dan itu keadaan yang sah dan disengaja: registri tidak selalu menuliskan nama internasionalnya, dan menebaknya dari kemiripan akan menghasilkan padanan yang terdengar yakin tanpa dasar. Yang tidak boleh adalah null tanpa alasan.",
+      "properties": {
+        "nama": { "type": ["string", "null"], "minLength": 1 },
+        "dasar": { "type": "string", "enum": ["deklarasi-registri", "ejaan", "ejaan-arah", "kosakata-zat"] },
+        "kutipan": { "type": "string", "minLength": 3 },
+        "alasan_kosong": { "type": "string", "minLength": 20 },
+        "perlu_tinjau": { "type": "boolean" },
+        "catatan_tinjau": { "type": "string", "minLength": 20 }
+      },
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "nama": { "type": "string" } }, "required": ["nama"] },
+          "then": { "required": ["dasar", "kutipan"] },
+          "else": { "required": ["alasan_kosong"] }
+        }
+      ]
+    },
+
+    "Induk": {
+      "type": "object",
+      "description": "Bahan induk dari mana bentuk terdaftar ini diturunkan. WAJIB pada garam-dari, ester-dari, dan stereoisomer-dari: di situlah larangan dan MRL sesungguhnya dinyatakan, dan baris tanpa induk akan lolos pemeriksaan larangan tanpa satu pun tanda.",
+      "properties": {
+        "nama_registri": { "type": "string", "minLength": 1, "description": "Nama induk persis sebagaimana registri menuliskannya pada klausa kesetaraannya." },
+        "nama": { "type": ["string", "null"], "minLength": 1, "description": "Nama internasional induknya, bila registri pernah menuliskannya." },
+        "alasan_nama_kosong": { "type": "string", "minLength": 20 },
+        "perlu_tinjau": { "type": "boolean" },
+        "substance": { "$ref": "common.schema.json#/$defs/Ref" }
+      },
+      "required": ["nama_registri", "nama"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "nama": { "const": null } }, "required": ["nama"] },
+          "then": { "required": ["alasan_nama_kosong"] }
+        }
+      ]
+    },
+
+    "Bentuk": {
+      "type": "object",
+      "description": "Apa yang membedakan bentuk terdaftar dari induknya: gugus garam/esternya, atau awalan isomernya.",
+      "properties": {
+        "jenis": { "type": "string", "enum": ["garam", "ester", "stereoisomer"] },
+        "gugus": { "type": "string", "minLength": 1 },
+        "stereodeskriptor": { "type": "string", "minLength": 1 }
+      },
+      "required": ["jenis"],
+      "additionalProperties": false
+    },
+
+    "Takaran": {
+      "type": "object",
+      "properties": {
+        "value": { "type": "number", "exclusiveMinimum": 0 },
+        "unit": { "$ref": "common.schema.json#/$defs/UcumCode" }
+      },
+      "required": ["value", "unit"],
+      "additionalProperties": false
+    },
+
+    "Kesetaraan": {
+      "type": "object",
+      "description": "Faktor konversi kadar bentuk terdaftar ke kadar induknya, dipulihkan dari pernyataan registri sendiri: '276 g/l parakuat diklorida setara dengan 200 g/l ion parakuat'. Untuk pencocokan nama ia gangguan; untuk membandingkan dosis antarproduk dan memeriksa terhadap MRL — yang dinyatakan dalam bentuk asam — ia justru angkanya.",
+      "properties": {
+        "faktor": { "type": "number", "exclusiveMinimum": 0, "maximum": 1 },
+        "arah": { "type": "string", "const": "bentuk-terdaftar-ke-induk" },
+        "n_deklarasi": { "type": "integer", "minimum": 1, "description": "Berapa deklarasi kesetaraan yang dipakai menghitungnya." },
+        "n_sesuai": { "type": "integer", "minimum": 0, "description": "Berapa di antaranya yang jatuh dalam 2% dari nilai tengahnya. n_sesuai < n_deklarasi berarti registri bertentangan dengan dirinya sendiri, dan barisnya wajib bertanda perlu_tinjau." },
+        "sebar": {
+          "type": "object",
+          "properties": { "min": { "type": "number" }, "max": { "type": "number" } },
+          "required": ["min", "max"],
+          "additionalProperties": false
+        },
+        "contoh": {
+          "type": "object",
+          "properties": {
+            "bentuk": { "$ref": "#/$defs/Takaran" },
+            "induk": { "$ref": "#/$defs/Takaran" },
+            "kutipan": { "type": "string", "minLength": 3 }
+          },
+          "required": ["bentuk", "induk", "kutipan"],
+          "additionalProperties": false
+        },
+        "perlu_tinjau": { "type": "boolean" },
+        "catatan_tinjau": { "type": "string", "minLength": 20 }
+      },
+      "required": ["faktor", "arah", "n_deklarasi", "n_sesuai", "contoh"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "perlu_tinjau": { "const": true } }, "required": ["perlu_tinjau"] },
+          "then": { "required": ["catatan_tinjau"] }
+        }
+      ]
+    },
+
+    "Padanan": {
+      "type": "object",
+      "properties": {
+        "kunci": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Bentuk ternormalkan nama bahan aktif. Bukan tulisan mentah: registri menumbuhkan varian kapitalisasi baru terus-menerus tanpa membuang yang lama, jadi kunci yang berupa tulisan mentah akan pecah tiap kali itu terjadi."
+        },
+        "tulisan_teramati": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 },
+          "description": "SELURUH tulisan mentah yang pernah terlihat untuk kunci ini, apa adanya. Jamak dan tidak pernah disusutkan jadi satu: tulisan lama tetap harus bisa dicocokkan sesudah registri menumbuhkan yang baru."
+        },
+        "formulasi": { "type": "integer", "minimum": 1 },
+        "substance": {
+          "$ref": "common.schema.json#/$defs/Ref",
+          "description": "Entitas zat untuk tulisan ini pada substance-pestisida.json, sesudah lifecycle.superseded_by diikuti sampai penggantinya."
+        },
+        "hubungan": { "$ref": "#/$defs/Hubungan" },
+        "bentuk": { "$ref": "#/$defs/Bentuk" },
+        "induk": { "$ref": "#/$defs/Induk" },
+        "kanonik": { "$ref": "#/$defs/Kanonik" },
+        "kesetaraan": { "$ref": "#/$defs/Kesetaraan" },
+        "dasar": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/Dasar" } },
+        "alasan": { "type": "string", "minLength": 20 },
+        "catatan": { "$ref": "common.schema.json#/$defs/LangText" }
+      },
+      "required": ["kunci", "tulisan_teramati", "formulasi", "hubungan"],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "title": "Garam, ester, dan stereoisomer WAJIB menyebut induknya",
+          "description": "Inilah aturan yang menahan kegagalan paling mahal di tabel ini. Baris garam tanpa induk akan lolos pemeriksaan larangan diam-diam: larangan atas paraquat tidak akan pernah bertemu 'parakuat diklorida' kalau tidak ada yang menghubungkannya. Bentuknya juga wajib, supaya perbedaan dengan induknya bisa dibaca.",
+          "if": {
+            "properties": { "hubungan": { "enum": ["garam-dari", "ester-dari", "stereoisomer-dari"] } },
+            "required": ["hubungan"]
+          },
+          "then": { "required": ["induk", "bentuk", "kanonik", "dasar"] }
+        },
+        {
+          "title": "Padanan yang menyatakan identitas WAJIB punya nama kanonik yang terisi",
+          "description": "sama-dengan, varian-ejaan, dan organisme adalah klaim bahwa tulisan ini MENUNJUK bahan itu. Klaim tanpa nama tidak bisa dipakai menyambung apa pun, dan tempatnya di belum-terpetakan.",
+          "if": {
+            "properties": { "hubungan": { "enum": ["sama-dengan", "varian-ejaan", "organisme"] } },
+            "required": ["hubungan"]
+          },
+          "then": {
+            "required": ["kanonik"],
+            "properties": { "kanonik": { "properties": { "nama": { "type": "string" } }, "required": ["nama"] } }
+          }
+        },
+        {
+          "title": "Kegagalan wajib berisik",
+          "description": "Yang tidak terpetakan tidak boleh lewat diam-diam. Alasannya wajib ditulis, dan wajib berupa alasan — bukan label.",
+          "if": {
+            "properties": { "hubungan": { "enum": ["bukan-bahan-aktif", "nama-sistematis-belum-terpetakan", "belum-terpetakan"] } },
+            "required": ["hubungan"]
+          },
+          "then": {
+            "required": ["alasan"],
+            "not": { "anyOf": [{ "required": ["kanonik"] }, { "required": ["induk"] }, { "required": ["kesetaraan"] }] }
+          }
+        },
+        {
+          "title": "Faktor kesetaraan hanya boleh menempel pada bentuk turunan",
+          "description": "Faktor garam→induk tidak punya arti pada baris yang bukan garam, ester, atau stereoisomer.",
+          "if": { "required": ["kesetaraan"] },
+          "then": {
+            "properties": { "hubungan": { "enum": ["garam-dari", "ester-dari", "stereoisomer-dari"] } },
+            "required": ["induk"]
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "../schema/golongan-resistensi.schema.json",
+  "key": "fixture-huruf-pada-irac",
+  "substance": { "id": "op:sub:00009998", "label": "Fixture uji" },
+  "codes": [
+    {
+      "scheme": "IRAC",
+      "code": "3A",
+      "listed_as": "Cypermethrin",
+      "basis": "ejaan",
+      "legacy": { "system": "HRAC-global-huruf", "code": "A" }
+    }
+  ],
+  "note": {
+    "id": "Fixture uji; sengaja dibuat cacat. Hanya HRAC yang pernah punya sistem huruf yang digantikan angka — membiarkan medan itu terisi pada kode IRAC berarti mengarang sejarah yang tidak pernah ada, dan huruf 'A' pada sistem HRAC menunjuk penghambat ACCase, sama sekali bukan piretroid."
+  },
+  "lifecycle": { "version": "0.1.0", "status": "draft" }
+}

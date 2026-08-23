@@ -19,17 +19,20 @@
 // slot gambar jatuh ke placeholder tanpa satu pun perubahan kode.
 //
 // YANG TIDAK IKUT, DAN KENAPA
-//   76 baris berstatus `ditolak` di tinjauan     — ditolak berarti ditolak
-//   35 baris tanpa `narrowed_to`                 — tidak diketahui pendaftaran mana yang dirujuk
-//   ukuran `besar` (42,2 MB)                     — halaman produk tidak memerlukannya; yang
+//   78 baris berstatus `ditolak` di tinjauan     — ditolak berarti ditolak
+//   42 baris tanpa `narrowed_to`                 — tidak diketahui pendaftaran mana yang dirujuk
+//   ukuran `besar` (43,5 MB)                     — halaman produk tidak memerlukannya; yang
 //                                                  dipakai `kecil` untuk daftar dan `sedang`
 //                                                  untuk layar rincian
 //
-// EMPAT BARIS BERHAK PIHAK KETIGA
-// `source.rights` bernilai `pihak_ketiga` pada empat baris — bukan pemegang pendaftaran, dan
-// bukan kita. Keempatnya tetap disalin sesuai keputusan di atas, tetapi ditandai `hak` di
-// berkas sambungan dan dilaporkan terpisah, supaya pencabutan per baris tidak perlu memeriksa
-// ulang 504 baris untuk menemukan yang empat itu.
+// TIGA BELAS BARIS BERHAK PIHAK KETIGA
+// `source.rights` bernilai `pihak_ketiga` pada tiga belas baris — bukan pemegang pendaftaran,
+// dan bukan kita. Ketiga belasnya tetap disalin sesuai keputusan di atas, tetapi ditandai
+// `hak` di berkas sambungan dan dilaporkan terpisah, supaya pencabutan per baris tidak perlu
+// memeriksa ulang 569 baris untuk menemukan yang tiga belas itu.
+//
+// Angka-angka di kepala berkas ini menua bersama panen. Yang berwenang atas semuanya laporan
+// yang dicetak menjalankannya tanpa --tulis; kalau keduanya berselisih, laporannya yang benar.
 
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync, rmSync, readdirSync } from 'node:fs';
 import { join, dirname, basename } from 'node:path';

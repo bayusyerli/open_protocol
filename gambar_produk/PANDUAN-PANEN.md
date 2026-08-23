@@ -1195,6 +1195,19 @@ memutuskan:
 | `purdan-plus-3-3-gr` | `01010120093242` | `/purdan-plus/` |
 | `new-lalang-up-481-sl` | `01030120237912` | `/stallone-481-sl/` |
 
+**Kelima baris katalogcba di atas DIBENARKAN mesin pada 23 Agustus 2026.** OCR brosurnya
+membaca nomor yang sama persis dengan yang dipetakan tangan dulu — `01030120113990` untuk
+GERXONE, `01030120113991` untuk PRIMAXONE PLUS, `01030120124437` untuk RONDA GOLD,
+`01010120093242` untuk PURDAN PLUS. Pemetaan tangan itu benar, dan kini ada cara memeriksanya
+tanpa membayar ulang perhatiannya.
+
+Sapuan yang sama menemukan dua puluh satu pasangan nama-beda lain di situs itu, termasuk dua
+yang pencocokan nama tidak akan pernah temukan sebab nama dagangnya berlainan sama sekali:
+**AGROTHANE 80 WP** di situs adalah **PRIMATHANE 80 WP** di registri (`01020120113937`), dan
+**AMOFOS 200 SL** adalah **FASTRON 200 SL** (`01030120217063`). Selebihnya beda kadar
+(`CENTATOP 288` lawan `276`), beda tanda hubung, atau beda spasi. Seluruhnya ada di
+[`prospek-katalogcba.csv`](prospek-katalogcba.csv).
+
 **Lainnya:** ~42 merek Delta Giri Wacana punya objek di ember GCS · ~9 merek Nufarm punya
 gambar di umpan artikel · Prima Karya 44 merek cocok beresolusi 1080×1080 · SGI 58 merek ·
 Saprotan 18 merek tak-ambigu · MKD 13 · Prima Agro 15 · brosur label PT-AMA dan Kristalindo
@@ -1624,3 +1637,59 @@ kuat, tetapi menuliskannya berarti menyatakan identitas yang belum terbukti — 
 justru dijaga pasal 4b. Yang menyelesaikannya satu hal saja: nomor tercetak yang terbaca, dari
 foto eceran, dari brosur yang kelak diunggah, atau dari tarikan registri berikutnya kalau
 ZIBAN ternyata didaftarkan sendiri.
+
+
+## 18. OCR yang disaring registri — dan kenapa itu bukan menebak
+
+Sampai gelombang ini, tiap nomor pendaftaran dibaca **mata**: potong labelnya, perbesar,
+baca. Itu batas yang menentukan berapa banyak baris bisa naik ke
+`nomor_pendaftaran_tercetak`, basis terkuat yang ada, dan ia mahal.
+
+`baca-nomor.swift` menghapus batas itu. Vision milik macOS sudah ada di tiap mesin dan tidak
+menuntut pemasangan apa pun — tesseract tidak terpasang di lingkungan ini dan tidak perlu:
+
+```
+swiftc -O baca-nomor.swift -o baca-nomor
+./baca-nomor brosur/*.jpg > teks.tsv
+```
+
+**Yang membuatnya sah bukan OCR-nya melainkan penyaringnya.** Nomor yang keluar tidak pernah
+jadi fakta sendirian: ia wajib dicocokkan ke registri lebih dulu, dan pencocokan itu yang
+memutuskan. Salah baca satu digit membuat nomornya **tidak ketemu sama sekali** — jadi
+kekeliruan OCR gagal dengan berisik, bukan diam-diam. Itu kebalikan dari yang dilarang pasal
+4b: yang berbahaya menanam tebakan sebagai fakta, sedangkan di sini tebakan justru tidak
+punya jalan masuk.
+
+Diukur pada 56 brosur katalogcba.com:
+
+| | |
+|---|---:|
+| brosur memuat nomor yang terbaca OCR | **56 / 56** |
+| nomor cocok ke registri **dan** ke mereknya sendiri | **52** |
+| nomor ada di registri tetapi menunjuk merek lain | 2 |
+| nomor tidak ada di registri (OCR kehilangan satu digit) | 2 |
+| **lolos salah** | **0** |
+
+Dua yang menunjuk merek lain justru temuan, bukan kegagalan: LAMBADA 18 EC membaca nomor
+milik HIPOMEC 63 WP (produsen yang sama), dan CENTAMIL 25 WP membaca nomor milik SANGKUR
+50 EC (PT. MAJU MAKMUR UTOMO). Keduanya wajib dilihat mata sebelum dipakai — persis
+pemeriksaan yang `G9` tegakkan.
+
+Dua yang tidak ketemu berbentuk 13 digit padahal registri memakai 14: `0101020175918` dan
+`0101012015520`. Kehilangan satu digit itu **terlihat dari panjangnya**, dan tidak ditambal
+dengan menebak digit yang hilang.
+
+**Kelima puluh enam itu kini habis dikerjakan.**
+[`prospek-katalogcba.csv`](prospek-katalogcba.csv) memuat seluruhnya berikut nomor tercetak,
+`brand_key`, `op:prd` yang dituju, dan statusnya: **49 dipanen**, 3 brosurnya ada tetapi
+potongan terbaiknya bukan kemasan (CENTALLY PLUS 40 WG, KURATERBANG 3,3 GR, PILLY 25 WP —
+brosurnya berorientasi mendatar atau menaruh packshot di antara blok teks), 2 nomornya
+menunjuk merek lain, 2 nomornya kehilangan satu digit.
+
+Centa Brasindo naik dari 31 ke **80 dari 194 merek**, dan seluruh 49 baris baru berbasis
+`nomor_pendaftaran_tercetak` — sesuatu yang sebelum pasal ini praktis tidak terjangkau pada
+skala segini. Ukuran keseluruhan koleksi ikut bergeser: nomor tercetak yang terbaca naik dari
+280 ke **342**, dan yang terkoroborasi ke mereknya sendiri jadi **321**.
+
+Sisa 114 merek Centa Brasindo tidak punya pos produk di situsnya — bukan soal potongan lagi,
+melainkan soal halaman yang memang tidak ada.

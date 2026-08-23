@@ -263,6 +263,52 @@ satu pun berstatus `published`.
 Sisi repositorinya ada di [CONTRIBUTING.md](../CONTRIBUTING.md): aturan **L35**, sematan
 `lifecycle.reviewed_hash`, dan `spec/tools/tinjau.mjs`.
 
+### Kartu yang bisa diteruskan — A2
+
+A2 tertulis "kanal WhatsApp untuk tanya-jawab yang sama", dan sempat saya tandai terhalang
+aturan *"lapisan gratis hanya menyebarkan, tidak pernah mengumpulkan"*. **Itu keliru.**
+Aturan itu bukan larangan atas A2, melainkan penentu bentuknya — nilai A2 adalah
+keterjangkauan, dan keterjangkauan seluruhnya ada di sisi menyebarkan. Yang benar-benar
+terhalang cuma kotak masuknya.
+
+Terukur sebelum mulai, dan ukurannya yang menentukan segalanya: di layar rincian produk
+jawabannya **884 aksara** dan blok batasnya **2.178** — batasnya dua setengah kali lebih
+panjang daripada jawabannya.
+
+- **"Kirim jawaban beserta batasnya" gagal ke dua arah.** Mengirim jawabannya saja mencopot
+  batasnya — persis *"PDF dengan tampilan lebih bagus"* yang ditolak `docs/00`. Mengirim
+  keduanya menghasilkan pesan 3.000 aksara yang tidak dibaca siapa pun. Yang dikirim karena
+  itu bukan salinan layar melainkan **kartu yang disusun**: 630 aksara untuk produk, 1.033
+  untuk resep pengendali.
+- **Batasnya melekat di badan teks, bukan cuma di tautan.** Yang membuka tautannya orang
+  pertama; yang kesepuluh cuma membaca teksnya. Sifat ini datang dari
+  [`docs/17`](../docs/17-tiga-konsep-ui.md) bagian 7.3, bersama dua lainnya: **tanggal dan
+  status dicetak di kartu** karena kartu yang sudah beredar tidak bisa ditarik, dan
+  **bentuknya khas** karena tidak ada yang bisa mencegah orang mengetik ulang kartu palsu.
+- **Kartu tanpa `wajib` tidak disusun sama sekali.** Tiap layar menyebut sendiri kalimat
+  yang tidak boleh hilang saat kartunya berpindah tangan — untuk resep pengendali itu
+  status hukum Pasal 77 dan dasar tenggang panennya, untuk produk terdaftar itu "cocokkan
+  nomornya dengan kemasan". Layar yang lupa mendapat blok galat, bukan kartu yang diam-diam
+  lebih pendek; aturan yang sama dengan `batas.js`.
+- **Tidak pernah dipotong diam-diam.** Pertanyaan ke-5 `docs/17` justru *"apakah kartu yang
+  diteruskan bertahan utuh, atau dipotong"*. Yang melewati batas panjang alamat menolak
+  jalur WhatsApp beserta sebabnya — karena yang terpotong lebih dulu justru batasnya,
+  letaknya di ekor.
+- **Sumbernya yang benar, bukan yang pertama disebut layar.** Versi pertama memakai sumber
+  pertama dari daftar layar, dan langsung berbohong: kartu PHONSKA — sebuah pupuk —
+  mengatributkannya ke "Registri pestisida terdaftar". Kartu kini menyebut sendiri
+  registrinya.
+- **Token mesin tidak ikut.** `precautionary_default` dan `gloves, long_sleeves`
+  menjelaskan sesuatu kepada pembaca skema, bukan kepada orang yang memegang tangki
+  semprot. Peta APD dan pemformat angka yang sudah dipakai layar dipakai ulang di kartu —
+  `10.000 kg/ha`, bukan `10000 kg/har`.
+- **Tidak ada yang terkirim dari halaman ini.** Dua jalan keluar dan keduanya baru berjalan
+  setelah orangnya menekan: `wa.me` di tab baru, atau salin. Tidak ada kotak masuk, dan itu
+  putusan — bukan kekurangan yang menunggu diperbaiki.
+
+Terpasang di jalur **2** (produk terdaftar), **5**, dan **6** (sediaan). Jalur 1, 3, dan 4
+belum — kartunya menuntut keputusan sendiri tentang apa yang wajib ikut di sana.
+
 ### Sanggahan terbuka — B3
 
 Repositori dibuka jadi publik 23 Agustus 2026, dan itu syaratnya: B3 menuntut jejak yang

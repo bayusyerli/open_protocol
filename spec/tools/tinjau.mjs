@@ -4,6 +4,7 @@
 //   node spec/tools/tinjau.mjs <berkas...>         # keadaan berkas tertentu
 //   node spec/tools/tinjau.mjs --tambah <berkas> --nama "..." --peran reviewer \
 //        --benturan "none" [--afiliasi "..."] [--orcid 0000-0000-0000-0000] [--tanggal 2026-08-23]
+//   node spec/tools/tinjau.mjs --tambah <koleksi> --rekaman <key> --nama "..." ...
 //
 // KENAPA ALAT INI ADA, PADAHAL MENYUNTING JSON DENGAN TANGAN JUGA BISA.
 // Dua medan wajib bepergian bersama dan keduanya tinggal di tempat berbeda: nama peninjau
@@ -108,11 +109,21 @@ function tambahKontributor(f) {
   const p = resolve(AKAR, f);
   const d = JSON.parse(readFileSync(p, 'utf8'));
   const rec = rekaman(d);
-  if (rec.length !== 1) {
-    console.error(`  ${f} memuat ${rec.length} rekaman. Alat ini hanya menulis ke dokumen tunggal — koleksi disunting per rekaman dengan tangan supaya jelas yang mana yang ditinjau.`);
+  // Koleksi tetap menuntut penunjukan rekaman yang mana — itu maksud aslinya, dan tetap
+  // dipegang. Yang berubah: menunjuknya tidak lagi berarti menyunting JSON dengan tangan,
+  // karena pasangan L35 dan sematan hash-nya justru paling mudah keliru di situ.
+  const kunciDiminta = bendera('rekaman');
+  let r;
+  if (rec.length === 1 && !kunciDiminta) {
+    r = rec[0];
+  } else if (!kunciDiminta) {
+    console.error(`  ${f} memuat ${rec.length} rekaman. Sebutkan yang mana dengan --rekaman <key>.`);
+    console.error(`  Tersedia: ${rec.slice(0, 8).map((x) => x.key ?? x.id).join(', ')}${rec.length > 8 ? `, dan ${rec.length - 8} lagi` : ''}`);
     process.exit(2);
+  } else {
+    r = rec.find((x) => x.key === kunciDiminta || x.id === kunciDiminta);
+    if (!r) { console.error(`  Tidak ada rekaman berkunci "${kunciDiminta}" di ${f}.`); process.exit(2); }
   }
-  const r = rec[0];
 
   const c = {
     name: bendera('nama'),

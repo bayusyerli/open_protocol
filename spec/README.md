@@ -19,13 +19,15 @@ spec/
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
-├── schema/                       22 berkas JSON Schema (draft 2020-12)
+├── schema/                       29 berkas JSON Schema (draft 2020-12)
 ├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
 │   ├── product/                  registri produk — 14.920 entitas (NDJSON)
 │   └── variety/                  registri varietas — 11.227 entitas (NDJSON)
 ├── examples/                     10 contoh nyata: cabai, kopi, udang vaname
 ├── fixtures-invalid/             contoh yang HARUS ditolak — bukti aturannya bekerja
 ├── tools/                        penarik registri Kementan & pengisi komposisi pupuk, bisa diulang
+│                                 plus susun-padanan-bahan-aktif.mjs — tulisan bahan aktif → identitas
+│                                 kimia, hubungannya bertipe; --periksa menyebut tulisan yang belum dipetakan
 │                                 plus susun-rencana.mjs — protokol + petak + tanggal → rencana musim
 │                                 dan periksa-musim.mjs — rencana lawan realisasi, diadu sinyal batal
 │                                 dan susun-bukti.mjs — siklus → berkas bukti siap audit
@@ -243,6 +245,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `method.json` | 19 cara aplikasi dan pengamatan, dengan `compatible_bases` | 9 ke AgrO / ICASA |
 | `substance.json` | 17 bahan non-pestisida — hara makro & mikro, pembenah, pakan | ICASA |
 | `substance-pestisida.json` | **1.593 bahan aktif** — seluruh yang tercantum di registri | 1.593 ke KEMENTAN, 58 punya kode IRAC/FRAC/HRAC |
+| `padanan-bahan-aktif.json` | **1.593 tulisan bahan aktif** → identitas kimia, dengan hubungan bertipe: garam-dari, ester-dari, stereoisomer-dari, varian-ejaan. 934 bernama kanonik, 387 berinduk, 265 berfaktor kesetaraan garam→induk | Diturunkan dari deklarasi registri sendiri; tanpa `op:` id |
 | `product/pestisida.ndjson` | **7.724 produk pestisida** terdaftar, dengan 23.058 penggunaan berlabel | KEMENTAN |
 | `product/pupuk.ndjson` | **7.196 produk pupuk** terdaftar (SIMPEL + SIMPUK 2020) | KEMENTAN |
 | `variety/varietas.ndjson` | **11.227 varietas terdaftar** — pelepasan, pendaftaran, dan perlindungan varietas | KEMENTAN |
@@ -256,6 +259,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `product.json` | 3 **contoh** produk, semua `unverified` — bukan registry | — (beralasan) |
 | `substance-organik.json` | **21 bahan baku sediaan** — kotoran ternak, sisa tanaman, bahan nabati. 2 dilarang, 5 dibatasi | — (beralasan) |
 | `preparation.json` | **12 resep sediaan buatan sendiri** — kompos, bokashi, kascing, MOL, POC, biakan hayati, ekstrak nabati, Biosaka | — (beralasan) |
+| `golongan-resistensi/golongan-resistensi.ndjson` | **1.399 pemetaan bahan aktif ke kode golongan resistensi** — satu rekaman per bahan, 930 berkode dan 469 kosong beralasan; kode HRAC membawa huruf lamanya | IRAC v11.5, FRAC 2026, HRAC 2026 |
 
 **Cakupan pemetaan: 16.586 dari 16.677 entitas (99%) punya kaitan ke standar luar.** Sisanya
 membawa `no_mapping_reason` tertulis. Yang belum terpetakan terpusat di `operation-type`

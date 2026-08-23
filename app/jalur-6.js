@@ -19,6 +19,7 @@
 import { ambil, muatMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
+import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangTombolTema } from './tema.js';
 
 pasangTombolTema();
@@ -285,6 +286,45 @@ function blokTakBisaDibakukan(r) {
  * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
  * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
 let terbukaKini = null;
+let resepKini = null;
+
+/* Kartu teruskan (A2). Layar ini kartu yang paling berbahaya kalau `wajib`-nya hilang:
+ * resep mimba yang diteruskan tanpa status hukumnya terbaca sebagai izin, dan tenggang
+ * panennya tanpa dasarnya terbaca sebagai hasil uji residu. Keduanya karena itu wajib —
+ * bukan diringkas ke tautan, melainkan dicetak di badan kartu supaya ikut terbaca di
+ * tangan kesepuluh. */
+function kartuResep(r) {
+  if (!r) return null;
+  const wajib = [];
+  if (r.hukum?.rezim?.includes('unclear')) {
+    wajib.push('Rezim hukumnya BELUM JELAS — kosakata menandainya unclear.');
+  }
+  if (r.hukum?.hanyaSendiri || r.hukum?.peredaran === 'own_use_only') {
+    wajib.push('HANYA untuk keperluan sendiri. Pasal 77 UU 22/2019 melarang mengedarkan '
+      + 'dan/atau menggunakan pestisida tidak terdaftar; bacaannya belum dijawab penasihat '
+      + 'hukum, dan halaman ini TIDAK menyimpulkan memakainya aman atau sah.');
+  }
+  const k = r.keselamatan ?? {};
+  if (k.phi != null) {
+    // Token mesin tidak ikut ke kartu. `precautionary_default` menjelaskan sesuatu
+    // kepada pembaca skema, bukan kepada orang yang memegang tangki semprot.
+    wajib.push(`Tenggang panen ${k.phi} hari itu bawaan yang sengaja berhati-hati, `
+      + 'BUKAN hasil uji residu. Tidak ada uji residu untuk sediaan buatan sendiri.');
+  }
+  const d = r.pemakaian?.dosis;
+  return {
+    sumber: 'sediaan',
+    judul: `${r.nama} — sediaan buatan sendiri`,
+    inti: [
+      r.definisi ?? null,
+      d?.nilai != null ? `Dosis: ${angkaId(d.nilai)} ${satuanTerbaca(d.satuan) || d.satuan}` : null,
+      r.pemakaian?.cara ? `Cara: ${r.pemakaian.cara}` : null,
+      k.apd?.length ? `APD: ${k.apd.map((x) => APD[x] ?? x).join(', ')}` : null,
+    ].filter(Boolean),
+    wajib,
+    tautan: terbukaKini?.tautan ?? location.href,
+  };
+}
 const tautanKe = (q) => new URL(q, location.href).href;
 
 
@@ -293,6 +333,7 @@ async function bukaResep(berkas) {
   el.resep.focus();
   try {
     const r = await ambil(berkas);
+    resepKini = r;
     terbukaKini = { id: r.id, nama: r.nama,
       tautan: tautanKe(`?resep=${encodeURIComponent(berkas.split('/').pop())}`) };
     const bisaDibakukan = r.kriteria.length > 0;
@@ -305,6 +346,7 @@ async function bukaResep(berkas) {
       </div>
       ${blokHukum(r)}${blokBahan(r)}${blokProses(r)}
       ${bisaDibakukan ? blokKriteria(r) + blokPakai(r) : blokTakBisaDibakukan(r)}
+      ${HTML_TERUSKAN}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
     catatJawab(6, bisaDibakukan ? UKUR.isi : UKUR.takSanggup);
     pasangKembali(el.resep, { gulirKe: el.daftar });
@@ -369,6 +411,8 @@ for (const wadah of [el.daftar, el.resep]) {
     if (b) return bukaResep(b.dataset.berkas);
   });
 }
+
+pasangTeruskan(el.resep, () => kartuResep(resepKini), 'sediaan');
 
 (async function mulai() {
   try {

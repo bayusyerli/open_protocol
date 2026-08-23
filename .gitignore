@@ -25,3 +25,7 @@ harga_data/mentah/
 # Biner OCR hasil kompilasi — dibangun ulang dengan
 # `swiftc -O harga_data/ocr-vision.swift -o harga_data/bin/ocr-vision`.
 harga_data/bin/
+
+# Halaman terbit — dibangun ulang dengan `node spec/tools/bangun-halaman.mjs --tulis`.
+# 4.350 berkas, 55 MB, deterministik dan sepenuhnya diturunkan dari spec/indeks/.
+terbit/

@@ -1,0 +1,610 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "editorial",
+    "label": {
+      "id": "Halaman batas jawaban"
+    },
+    "scope": {
+      "id": "Lima belas tulisan pada permukaan baca-saja yang menyatakan apa yang TIDAK bisa disimpulkan dari data di sini. Seluruhnya turunan dokumen yang sudah ada di repositori — tiap rekaman menyebut dasarnya di medan `basis`. Angkanya tidak ditulis di dalam prosa melainkan diisi ulang dari indeks tiap kali halaman dibangun, jadi tinjauan tidak gugur karena harga bergerak; ia gugur ketika argumennya yang berubah. Belum satu pun ditinjau orang, dan sampai itu terjadi halamannya terbit dengan noindex serta pemberitahuan di layar."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-23T00:00:00Z",
+      "review_due": "2026-11-23"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "docs/19-strategi-seo.md — strategi permukaan terbit, bagian 9",
+          "publisher": "Open Protocols",
+          "year": 2026,
+          "locator": "Daftar lima belas tulisan beserta alasan tiap penolakan; argumen tiap halaman diturunkan dari dokumen repositori yang disebut di medan basis.",
+          "retrieved": "2026-08-23"
+        }
+      ]
+    },
+    "count": 15
+  },
+  "items": [
+    {
+      "key": "batas--dosis-yang-beredar",
+      "path": "/batas/dosis-yang-beredar/",
+      "label": {
+        "id": "Empat sumber, empat dosis, satu produk"
+      },
+      "title": "Empat sumber, empat dosis, satu produk — dan kenapa registri pun tidak seragam",
+      "description": "Dosis yang beredar di hasil pencarian untuk satu herbisida saling bertentangan — dan registri mencatat puluhan dosis berbeda untuk satu formulasi yang sama persis. Apa artinya bagi yang memegang botolnya.",
+      "dek": "Dosis yang beredar di hasil pencarian saling bertentangan. Yang mengejutkan: <strong>registrinya sendiri juga tidak seragam</strong>.",
+      "basis": "docs/19-strategi-seo.md §3",
+      "body": "<p>\n    Ketik satu nama herbisida dan satuan takarannya ke Google. Empat hasil teratas akan\n    memberi empat angka yang berbeda: dua tutup botol per sepuluh liter, lima sampai\n    sepuluh mililiter per liter, sekitar satu mililiter per liter, dan satu setengah\n    sampai tiga liter per hektare. Tidak satu pun menyebut dosis <em>berlabel</em>-nya.\n  </p>\n  <p>\n    Mudah menyimpulkan bahwa registri akan merapikannya. Ia tidak. Kelompok produk dengan\n    isi identik terbesar di sini memuat <strong>{{klasterTerbesar.anggota}} merek</strong>\n    berkomposisi {{klasterTerbesar.komposisi}} — dan di antara mereka tercatat\n    <strong>{{klasterTerbesar.dosis}} dosis terdaftar yang berbeda</strong>.\n  </p>\n  <p>\n    Itu bukan kekeliruan pencatatan. <strong>Dosis melekat pada pendaftaran tiap produk,\n    bukan pada bahannya.</strong> Dua botol dengan bahan dan kadar yang sama persis bisa\n    mendaftarkan dosis berbeda, untuk tanaman yang berbeda, di tahun yang berbeda.\n  </p>\n  <p>\n    Yang bisa dilakukan halaman ini: menunjukkan dosis berlabel milik pendaftaran yang\n    Anda pegang, beserta nomor dan tanggalnya. Yang tidak: mengatakan berapa yang\n    sebaiknya dipakai. Dari {{penggunaan}} penggunaan berlabel yang tercatat,\n    <strong>{{dosisKosong}} tidak membawa dosis sama sekali</strong> — dan kekosongan\n    itu ada di sumbernya, bukan di sini.\n  </p>",
+      "questions": [
+        {
+          "q": "Kenapa dosis satu merek berbeda dari merek lain yang isinya sama?",
+          "a": "Karena dosis milik pendaftaran tiap produk, bukan milik bahannya. Pada satu kelompok berisi identik di sini tercatat {{klasterTerbesar.dosis}} dosis berbeda di antara {{klasterTerbesar.anggota}} merek."
+        },
+        {
+          "q": "Dosis mana yang benar?",
+          "a": "Yang berlaku untuk Anda adalah dosis berlabel pada pendaftaran produk yang Anda pegang. Halaman ini menampilkannya beserta nomor pendaftaran dan tanggalnya, dan tidak menganjurkan angka lain."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "dosis berlabel pada seluruh penggunaan terdaftar"
+        }
+      ],
+      "unanswered": [
+        "dosisKosong",
+        "takaranRumahTangga",
+        "phi"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:7254983b22a48a88017e8ee9de7bff82fdbb3b083a441586875cf5d2228b0eab"
+      }
+    },
+    {
+      "key": "batas--isi-yang-sama",
+      "path": "/batas/isi-yang-sama/",
+      "label": {
+        "id": "Merek berbeda, isi sama persis"
+      },
+      "title": "Merek berbeda, isi sama persis — dan yang tetap berbeda di antaranya",
+      "description": "Ribuan produk terdaftar membawa bahan dan kadar yang sama persis dengan produk lain. Apa yang sama, apa yang tidak, dan kenapa perbandingan harganya jadi mungkin.",
+      "dek": "{{setaraProduk}} produk terdaftar berbagi komposisi dengan produk lain. Yang sama isinya; belum tentu dosisnya, dan bukan mutunya.",
+      "basis": "docs/05-jalur-produk.md",
+      "body": "<p>\n    Dari {{produk}} produk terdaftar, <strong>{{setaraProduk}} di antaranya berbagi\n    komposisi</strong> dengan setidaknya satu produk lain — terkumpul dalam\n    {{setaraKelompok}} kelompok berisi identik. Kesetaraannya dihitung dari id bahan,\n    tidak pernah dari kemiripan nama: mengelompokkan menurut label akan memecah satu bahan\n    jadi beberapa kelompok dan menaksir kesetaraan terlalu rendah.\n  </p>\n  <p><strong>Yang sama:</strong> bahan aktifnya, dan kadarnya.</p>\n  <p>\n    <strong>Yang belum tentu sama:</strong> dosis terdaftarnya, tanaman yang boleh\n    disasarnya, dan masa berlakunya.\n  </p>\n  <p>\n    <strong>Yang tidak diketahui sama sekali:</strong> mutunya. Formulasi, bahan pembawa,\n    dan kendali mutu pabrik tidak masuk registri — jadi halaman ini tidak pernah\n    mengatakan dua produk berisi identik itu setara dalam pemakaian.\n  </p>\n  <p>\n    Kenapa ini diterbitkan: perbandingan harga baru mungkin setelah orang tahu apa yang\n    sebenarnya dibandingkan. Halaman ini tidak menyebut mana yang lebih murah — harga\n    tidak ada di registri — tapi ia menyebut mana saja yang isinya sama, dan itu bagian\n    yang selama ini paling sulit diketahui dari kios.\n  </p>",
+      "questions": [
+        {
+          "q": "Berapa banyak produk yang isinya sama dengan produk lain?",
+          "a": "{{setaraProduk}} dari {{produk}} produk terdaftar berbagi komposisi dengan setidaknya satu produk lain, dalam {{setaraKelompok}} kelompok."
+        },
+        {
+          "q": "Kalau isinya sama, apakah boleh saling menggantikan?",
+          "a": "Halaman ini tidak menyimpulkan itu. Yang sama adalah bahan dan kadarnya; dosis terdaftar, tanaman sasaran, dan mutu pabrik bisa berbeda dan sebagiannya tidak dicatat registri sama sekali."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "komposisi seluruh produk terdaftar dan pengelompokan isinya"
+        }
+      ],
+      "unanswered": [
+        "namaDagang",
+        "harga"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:fd661a1c11685dd110f28a24c0ad61502dfee386e55ae9bee45925526c577342"
+      }
+    },
+    {
+      "key": "batas--satu-label-banyak-spesies",
+      "path": "/batas/satu-label-banyak-spesies/",
+      "label": {
+        "id": "Satu label, ratusan spesies"
+      },
+      "title": "Satu label registri, ratusan spesies — kenapa \"Gulma Berdaun Lebar\" bukan satu gulma",
+      "description": "Label OPT di registri pestisida kerap dipakai bersama oleh puluhan hingga ratusan spesies berbeda. Akibatnya bagi yang membaca \"terdaftar untuk\" di label kemasan.",
+      "dek": "{{labelTumpuk}} label registri dipakai lebih dari satu takson — mencakup {{taksonTertumpuk}} takson. Yang terbesar menaungi {{labelTerbesar.takson}} spesies sekaligus.",
+      "basis": "spec/vocab/pest-registri.json",
+      "body": "<p>\n    Registri pestisida mencatat {{optRegistri}} OPT. Yang tidak kelihatan dari\n    daftarnya: <strong>{{labelTumpuk}} label di antaranya dipakai bersama oleh lebih\n    dari satu takson</strong>, dan label-label itu menaungi\n    <strong>{{taksonTertumpuk}} takson</strong> — sebagian besar isi registrinya.\n  </p>\n  <p>\n    Yang terbesar: <strong>\"{{labelTerbesar.nama}}\"</strong>, satu label untuk\n    <strong>{{labelTerbesar.takson}} spesies berbeda</strong>. Disusul\n    \"{{labelKedua.nama}}\" dengan {{labelKedua.takson}}.\n  </p>\n  <p>\n    Akibatnya langsung terasa di kemasan. Ketika label menyebut sebuah produk terdaftar\n    untuk \"{{labelTerbesar.nama}}\", ia tidak mengatakan gulma yang mana — dan\n    {{labelTerbesar.takson}} spesies tidak menanggapi bahan yang sama dengan cara yang\n    sama.\n  </p>\n  <p>\n    Karena itu halaman OPT di sini <strong>tidak disatukan menurut label</strong>. Yang\n    berbagi label dipisah menurut taksonnya, judulnya membawa nama ilmiah, dan tiap\n    halaman menyebut siapa saja yang berbagi label dengannya beserta tautannya.\n    Menyatukannya akan menyatukan pendaftaran yang memang terpisah; menerbitkannya apa\n    adanya akan memberi ratusan halaman berjudul sama persis.\n  </p>",
+      "questions": [
+        {
+          "q": "Berapa spesies yang memakai label \"{{labelTerbesar.nama}}\"?",
+          "a": "{{labelTerbesar.takson}} takson berbeda memakai label itu di registri."
+        },
+        {
+          "q": "Kenapa halaman OPT-nya dipisah menurut nama ilmiah?",
+          "a": "Karena {{labelTumpuk}} label registri dipakai lebih dari satu takson, mencakup {{taksonTertumpuk}} takson. Tanpa dipisah, halaman yang berbeda akan berjudul sama persis dan pendaftaran yang terpisah akan tampak menyatu."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "label OPT registri beserta taksonnya"
+        }
+      ],
+      "unanswered": [
+        "gejalaOptRegistri",
+        "namaDagang"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:3df7103d33ec2f9e73280e073d2f3b161124fbcd3a7c42725533eb6cfe017604"
+      }
+    },
+    {
+      "key": "batas--dosis-per-tangki",
+      "path": "/batas/dosis-per-tangki/",
+      "label": {
+        "id": "Dosis per hektare, dan tangki di punggung Anda"
+      },
+      "title": "Kenapa dosis per hektare tidak kami ubah jadi per tangki",
+      "description": "Registri mencatat dosis per hektare dan per liter. Yang pertama tidak bisa dikonversi jadi takaran per tangki tanpa volume semprot hasil kalibrasi sendiri — dan menebaknya berarti mengarang anjuran.",
+      "dek": "Yang per liter tinggal dikalikan. Yang per hektare menuntut satu angka yang cuma Anda yang punya.",
+      "basis": "app/takaran.html",
+      "body": "<p>\n    Dari {{penggunaan}} penggunaan berlabel yang tercatat,\n    <strong>{{dosisHa}} menyebut dosis per hektare</strong> dan\n    <strong>{{dosisLiter}} menyebut dosis per liter air</strong>. Yang diketik orang\n    di kotak pencarian hampir selalu bentuk ketiga: <em>per tangki</em>.\n  </p>\n  <p>\n    Yang per liter memang tinggal dikalikan isi tangki, dan halaman produk di sini\n    melakukannya — itu aritmetika, bukan agronomi.\n  </p>\n  <p>\n    Yang per hektare tidak. Mengubah liter-per-hektare jadi mililiter-per-tangki menuntut\n    <strong>volume semprot</strong>: berapa liter larutan yang benar-benar keluar untuk\n    satu hektare dengan nozel Anda, tekanan Anda, dan kecepatan jalan Anda. Angka itu\n    bukan milik produk, dan bukan milik kami — ia hasil kalibrasi yang cuma bisa diukur di\n    lahan yang bersangkutan.\n  </p>\n  <p>\n    Menebaknya akan menghasilkan angka yang terlihat pasti dan salah. Yang bisa dilakukan\n    halaman ini: menyediakan alat kalibrasinya, dan menyebutkan dosis berlabelnya apa\n    adanya.\n  </p>",
+      "questions": [
+        {
+          "q": "Berapa dosis per tangki 16 liter?",
+          "a": "Kalau dosis berlabelnya per liter, kalikan dengan 16 — halaman produk sudah menampilkannya. Kalau per hektare, angkanya bergantung volume semprot hasil kalibrasi alat Anda sendiri, dan halaman ini tidak menebaknya."
+        },
+        {
+          "q": "Kenapa tidak dipakai angka volume semprot rata-rata saja?",
+          "a": "Karena rata-rata yang dicetak di layar terbaca sebagai anjuran. Selisih antara 300 dan 600 liter per hektare menggandakan atau membagi dua takaran di tangki, dan keduanya angka yang lazim di lapangan."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "satuan dosis pada seluruh penggunaan berlabel"
+        }
+      ],
+      "unanswered": [
+        "takaranRumahTangga",
+        "dosisKosong"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:2eb30138261b6d19c7fd780157261cc053a3aeea6a5caec64a761dee953e46db"
+      }
+    },
+    {
+      "key": "batas--izin-berakhir",
+      "path": "/batas/izin-berakhir/",
+      "label": {
+        "id": "Izin yang sudah lewat tanggalnya"
+      },
+      "title": "Izin berakhir bukan berarti dilarang — dan kami tidak menyimpulkan mana pun",
+      "description": "Ribuan produk di registri sudah lewat masa berlaku pendaftarannya. Apa yang bisa dan tidak bisa disimpulkan dari tanggal itu.",
+      "dek": "{{kedaluwarsa}} dari {{produk}} pendaftaran sudah lewat masa berlakunya menurut tarikan terakhir. Yang ditampilkan tanggalnya, bukan kesimpulannya.",
+      "basis": "docs/12-kadensi-registri.md",
+      "body": "<p>\n    Registri mencatat {{aktif}} pendaftaran yang masih berlaku dan\n    <strong>{{kedaluwarsa}} yang tanggalnya sudah lewat</strong> menurut tarikan\n    terakhir. Halamannya tetap diterbitkan, dengan statusnya tercetak di judul.\n  </p>\n  <p>\n    Kenapa tidak dihapus saja: justru di situ pertanyaannya hidup. Orang yang memegang\n    botol lama, atau melihat merek yang sudah jarang, mencari tahu apakah ia masih boleh\n    dipakai. Menghapus halamannya membuat pertanyaan itu tidak terjawab di mana pun.\n  </p>\n  <p>\n    Yang halaman ini <strong>tidak</strong> lakukan: menyimpulkan boleh atau tidak boleh.\n    Masa berlaku pendaftaran, aturan peredaran, dan apa yang berlaku bagi stok yang\n    terlanjur ada adalah tiga hal berbeda, dan yang ketiga bukan wewenang platform ini.\n    Yang ditampilkan dua fakta: tanggalnya, dan bahwa tanggal itu sudah lewat.\n  </p>\n  <p>\n    Registri sendiri berubah tiap musim. Entitas yang benar-benar dicabut dijawab dengan\n    kode <code>410</code> — \"pernah ada, sekarang tidak\" — bukan 404 yang terbaca sebagai\n    \"tidak pernah ada\".\n  </p>",
+      "questions": [
+        {
+          "q": "Produk saya izinnya sudah berakhir, masih boleh dipakai?",
+          "a": "Halaman ini tidak menyimpulkannya. Yang ditampilkan tanggal berakhirnya apa adanya; pertanyaan tentang stok yang terlanjur ada adalah pertanyaan hukum, bukan pertanyaan data."
+        },
+        {
+          "q": "Berapa banyak pendaftaran yang sudah lewat tanggalnya?",
+          "a": "{{kedaluwarsa}} dari {{produk}} pendaftaran, menurut tarikan terakhir registri."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "status dan masa berlaku seluruh pendaftaran"
+        }
+      ],
+      "unanswered": [
+        "namaDagang",
+        "dosisKosong"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:38c86422050fd15e1e3d78986d4ff2525fdf4278a93c0ef4e27d64ff7ad2b74c"
+      }
+    },
+    {
+      "key": "batas--gejala-yang-tidak-ada",
+      "path": "/batas/gejala-yang-tidak-ada/",
+      "label": {
+        "id": "Daftar kekosongan: gejala yang tidak ada di registri"
+      },
+      "title": "Nol dari 1.360 OPT registri punya deskripsi gejala — dan itu ditulis di sini",
+      "description": "Registri pestisida mencatat ribuan OPT tanpa satu pun deskripsi gejala. Halaman ini menyebut kekosongan itu apa adanya, sebagai undangan bagi yang bisa mengisinya.",
+      "dek": "{{optRegistri}} OPT tercatat namanya. <strong>Nol</strong> membawa deskripsi gejala. Yang ada cuma {{optTerkurasi}} yang dikurasi sendiri.",
+      "basis": "docs/04-jalur-insiden.md",
+      "body": "<p>\n    Registri mencatat {{optRegistri}} OPT beserta produk yang terdaftar untuknya.\n    Yang tidak ada di dalamnya: <strong>satu pun kalimat tentang seperti apa serangannya\n    terlihat</strong>. Nol dari {{optRegistri}}.\n  </p>\n  <p>\n    Akibatnya jalur yang paling wajar justru yang paling sempit. Orang datang membawa daun\n    yang keriting, bukan membawa nama Latin — dan registri tidak bisa menjawab dari arah\n    itu. Yang bisa dijawab di sini cuma {{optTerkurasi}} OPT cabai yang teks gejalanya\n    ditulis sendiri, masing-masing dengan dua ciri pembanding yang bisa diperiksa di kebun.\n  </p>\n  <p>\n    Kenapa kekosongan ini dicetak alih-alih ditutupi: halaman yang tampak lengkap\n    mengundang orang menyimpulkan dari data yang tidak ada. Dan angka nol yang dinyatakan\n    terang-terangan adalah undangan yang paling jujur bagi penyuluh, agronom, dan BPTP —\n    ia menyebutkan persis apa yang belum ada, bukan meminta bantuan pada umumnya.\n  </p>\n  <p>\n    Sampai hari ini <strong>{{tinjauan.berpeninjau}} dari {{tinjauan.rekaman}}</strong>\n    rekaman kosakata kurasi punya peninjau bernama. Itu juga ditulis di tiap halaman, di\n    blok batas jawabannya.\n  </p>",
+      "questions": [
+        {
+          "q": "Kenapa saya tidak bisa mencari dari gejala untuk semua hama?",
+          "a": "Karena registri tidak memuat deskripsi gejala sama sekali — nol dari {{optRegistri}} OPT. Yang bisa dimasuki dari gejala baru {{optTerkurasi}} OPT cabai yang teksnya dikurasi sendiri."
+        },
+        {
+          "q": "Siapa yang sudah meninjau isi kurasinya?",
+          "a": "{{tinjauan.berpeninjau}} dari {{tinjauan.rekaman}} rekaman kosakata kurasi punya peninjau bernama."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "daftar OPT registri dan ketiadaan deskripsi gejalanya"
+        },
+        {
+          "dari": "kurasiOpt",
+          "cakupan": "teks gejala dan ciri pembanding yang ditulis sendiri"
+        }
+      ],
+      "unanswered": [
+        "gejalaOptRegistri",
+        "gejalaOpt"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:3936c20d3894feaa30dbe2a7ea96631d0ba4bacaba4dd03f2a26ec9e84a41e4a"
+      }
+    },
+    {
+      "key": "batas--pupuk-palsu",
+      "path": "/batas/pupuk-palsu/",
+      "label": {
+        "id": "Cek pupuk palsu, dan batas paling tajamnya"
+      },
+      "title": "Cek pupuk palsu: yang bisa dan yang tidak bisa dibuktikan dari kemasan",
+      "description": "Memeriksa kandungan yang tercetak di karung terhadap registri pupuk bisa dilakukan siapa saja. Apa yang dibuktikannya, dan apa yang justru tidak.",
+      "dek": "Kandungan yang cocok membuktikan <strong>labelnya</strong> sesuai registri. Ia tidak membuktikan isi karungnya — dan justru di situ bahayanya.",
+      "basis": "app/index.html · jalur 2",
+      "body": "<p>\n    Nomor pendaftaran bukan yang dibaca orang saat membeli. Yang dibaca angka di karung:\n    15-15-15, 16-16-16, kadar hara yang tercetak besar. Registri membenarkannya dari sisi\n    lain — <strong>{{pupukTanpaKomposisi}} dari {{pupuk}} pupuk terdaftar tidak\n    membawa komposisi sama sekali</strong> di catatannya.\n  </p>\n  <p>\n    Karena itu pintu pemeriksaan di sini berupa angka karung, bukan nomor izin. Masukkan\n    kandungannya, dan layar akan menyebut apakah ada pupuk terdaftar dengan kandungan itu.\n  </p>\n  <p>\n    Sekarang batasnya, dan ini bagian yang paling penting:\n    <strong>ini memeriksa label terhadap registri, bukan isi karung terhadap labelnya.</strong>\n    Kandungan yang cocok berarti labelnya sesuai dengan sesuatu yang memang terdaftar. Ia\n    tidak membuktikan apa yang ada di dalam karung — dan pemalsuan yang paling merugikan\n    justru berupa karung yang isinya berbeda dari labelnya sendiri.\n  </p>\n  <p>\n    Yang membuktikan isi cuma satu: uji laboratorium terakreditasi. Halaman ini tidak\n    menggantikannya, dan tidak berpura-pura bisa.\n  </p>\n  <p>\n    Satu keputusan yang perlu diketahui: <strong>tidak ada jalur lapor di sini.</strong>\n    Kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak ada kotak\n    masuk sama sekali, jadi pelaporan dicabut dari cakupan — bukan ditunda.\n  </p>",
+      "questions": [
+        {
+          "q": "Kalau kandungannya cocok, berarti pupuknya asli?",
+          "a": "Tidak. Cocok berarti labelnya sesuai dengan sesuatu yang terdaftar. Isi karung tidak diperiksa oleh pemeriksaan ini, dan hanya uji laboratorium yang bisa membuktikannya."
+        },
+        {
+          "q": "Kenapa tidak pakai nomor pendaftaran saja?",
+          "a": "Karena yang dibaca orang di kios adalah angka kandungan, dan karena {{pupukTanpaKomposisi}} dari {{pupuk}} pupuk terdaftar bahkan tidak membawa komposisi di catatan registrinya."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pupuk",
+          "cakupan": "komposisi label seluruh pupuk terdaftar"
+        }
+      ],
+      "unanswered": [
+        "isiKarung",
+        "kandunganTakTerdaftar",
+        "beratJenis"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:d7db493979116e34ce85eb02c3c1cfde98a4216c76bb0ed88012477ccf6444a4"
+      }
+    },
+    {
+      "key": "batas--rupiah-per-kg-hara",
+      "path": "/batas/rupiah-per-kg-hara/",
+      "label": {
+        "id": "Rupiah per kilogram hara"
+      },
+      "title": "Rupiah per kilogram hara: tiga hal yang tidak boleh dibandingkan",
+      "description": "Cara membandingkan harga pupuk yang benar adalah per kilogram hara, bukan per karung. Tiga perbandingan yang tetap tidak sah walau satuannya sudah disamakan.",
+      "dek": "Membandingkan harga karung dengan karung menyesatkan. Membandingkan rupiah per kilogram hara juga — kalau tiga hal ini diabaikan.",
+      "basis": "docs/06-jalur-hitungan-hara.md",
+      "body": "<p>\n    Dua karung berharga sama tidak berarti dua pupuk berharga sama. Yang dibeli hara, dan\n    kadarnya berbeda-beda. Satuan yang membuat perbandingan jadi masuk akal adalah\n    <strong>rupiah per kilogram hara</strong>.\n  </p>\n  <p>Tetapi tiga perbandingan tetap tidak sah, walau satuannya sudah disamakan:</p>\n  <h2>1. Padat dengan cair</h2>\n  <p>\n    Registri menyimpan kadar padat dalam gram per kilogram dan kadar cair dalam gram per\n    liter. Menjembatani keduanya menuntut berat jenis — dan berat jenis\n    <strong>tidak ada di registri</strong>. Jadi 150 g/kg dan 150 g/L bukan hal yang sama,\n    dan tidak pernah dicocokkan silang di sini.\n  </p>\n  <h2>2. Hara yang berbeda</h2>\n  <p>\n    Satu kilogram nitrogen bukan pengganti satu kilogram kalium. Perbandingan harga per\n    kilogram hara hanya berarti di dalam hara yang sama.\n  </p>\n  <h2>3. Subsidi dengan non-subsidi</h2>\n  <p>\n    Harga tebus subsidi ditetapkan aturan, bukan pasar. Menaruhnya sebaris dengan harga\n    non-subsidi membuat selisihnya terbaca sebagai keunggulan produk, padahal ia\n    keputusan kebijakan.\n  </p>\n  <p>\n    Halaman ini menyediakan hitungannya dan menolak ketiga perbandingan itu — bukan karena\n    rewel, tapi karena angka yang tampak pasti dan salah lebih berbahaya daripada tidak\n    ada angka.\n  </p>",
+      "questions": [
+        {
+          "q": "Kenapa pupuk cair tidak bisa dibandingkan dengan pupuk padat?",
+          "a": "Karena registri menyimpan kadar cair per liter dan kadar padat per kilogram, sementara berat jenis yang menjembatani keduanya tidak dicatat sama sekali."
+        },
+        {
+          "q": "Apa satuan yang benar untuk membandingkan harga pupuk?",
+          "a": "Rupiah per kilogram hara, di dalam hara yang sama, dan di dalam kelompok subsidi yang sama."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pupuk",
+          "cakupan": "kadar hara dan satuannya pada pupuk terdaftar"
+        }
+      ],
+      "unanswered": [
+        "beratJenis",
+        "hargaPupuk"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:8fa8cf035edcbabd48892c9455f64d458ea883204d76a91a7bd9d2a8446dbb7a"
+      }
+    },
+    {
+      "key": "batas--harga-eceran-bukan-harga-petani",
+      "path": "/batas/harga-eceran-bukan-harga-petani/",
+      "label": {
+        "id": "Harga eceran, dan jarak yang terpasang di definisinya"
+      },
+      "title": "\"Harga produsen\" yang dicatat negara sebenarnya harga pengumpul",
+      "description": "Seri harga pangan harian yang tersedia terbuka seluruhnya harga eceran. Jarak ke harga yang diterima petani ada di dalam definisi sumbernya, bukan di celah cakupannya.",
+      "dek": "{{hargaSeri}} seri harga harian diterbitkan di sini — seluruhnya <strong>harga eceran</strong>. Berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "basis": "docs/16-sumber-harga-komoditas.md",
+      "body": "<p>\n    Pertanyaan yang paling sering datang bukan \"berapa harga cabai di pasar\", melainkan\n    <strong>\"berapa harga cabai dari petani\"</strong>. Yang kedua tidak dijawab di halaman\n    mana pun, termasuk halaman ini — dan alasannya perlu ditulis terang-terangan.\n  </p>\n  <p>\n    {{hargaSeri}} seri harian yang diterbitkan di sini seluruhnya <strong>harga\n    eceran</strong>: harga di tingkat konsumen, yang sudah memuat marjin seluruh rantai\n    sesudah petani. Jaraknya bukan celah cakupan yang bisa ditambal dengan menarik lebih\n    banyak data — ia terpasang di dalam definisi sumbernya.\n  </p>\n  <p>\n    Bahkan yang secara resmi disebut \"harga produsen\" pun, di sebagian sistem pencatatan,\n    sebenarnya harga di tingkat pengumpul. Menayangkannya sebagai harga petani akan\n    membuat selisihnya terbaca sebagai keuntungan yang tidak pernah sampai.\n  </p>\n  <p>\n    Yang bisa dilakukan halaman harga di sini: menyebut angkanya, tanggalnya, tingkatnya,\n    dan menyatakan jaraknya di kalimat pertama. Yang tidak: menaksir berapa yang diterima\n    petani dengan potongan rata-rata. {{hargaLuar}} seri lain yang diterbitkan sumber\n    yang sama — baja ringan, besi beton, dan sebangsanya — tidak diterbitkan di sini sama\n    sekali.\n  </p>",
+      "questions": [
+        {
+          "q": "Apakah harga di halaman ini harga yang diterima petani?",
+          "a": "Bukan. Seluruhnya harga eceran di tingkat konsumen, yang sudah memuat marjin seluruh rantai sesudah petani."
+        },
+        {
+          "q": "Kenapa harga dari petani tidak diterbitkan?",
+          "a": "Karena tidak terukur di sumber mana pun yang boleh diterbitkan ulang. Menaksirnya dengan potongan rata-rata akan menghasilkan angka yang tampak pasti dan tidak berdasar."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "harga",
+          "cakupan": "seluruh seri harian yang diterbitkan beserta tingkat harganya"
+        }
+      ],
+      "unanswered": [
+        "hargaPetani",
+        "hargaWilayah",
+        "hargaKomoditasTani"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:8c1198b03c9ace645086b253303d65a6d3334178b2886db8fe118b1623cf54db"
+      }
+    },
+    {
+      "key": "batas--empat-surat-benih",
+      "path": "/batas/empat-surat-benih/",
+      "label": {
+        "id": "Empat surat benih yang bunyinya mirip"
+      },
+      "title": "Empat surat benih yang bunyinya mirip, dan apa yang sebenarnya dijamin masing-masing",
+      "description": "Registri varietas mencatat keberadaan surat, bukan sifat tanamannya. Apa yang dijamin tiap jenis surat, dan kenapa sisi bibit lebih berisiko daripada sisi benih.",
+      "dek": "{{varietas}} varietas tercatat suratnya. <strong>Nol</strong> membawa sifat agronominya — dan surat bukan jaminan hasil.",
+      "basis": "docs/07-jalur-keabsahan-benih-bibit.md",
+      "body": "<p>\n    Registri perizinan varietas mencatat {{varietas}} varietas. Yang dicatat\n    <strong>keberadaan suratnya</strong> — bukan tinggi tanamannya, umur panennya, atau\n    potensi hasilnya. Sifat agronomi: nol dari {{varietas}}.\n  </p>\n  <p>\n    Nama-nama suratnya berdekatan dan mudah tertukar: pendaftaran varietas, pelepasan\n    varietas, perlindungan varietas tanaman, dan persetujuan penamaan. Keempatnya\n    menjawab pertanyaan yang berbeda — siapa pemiliknya, boleh diedarkan atau tidak,\n    namanya sah atau tidak — dan tidak satu pun menjawab pertanyaan yang paling sering\n    ditanyakan: apakah ia akan berbuah baik di lahan saya.\n  </p>\n  <p>\n    Sisi bibit lebih berisiko daripada sisi benih. Bibit tanaman tahunan baru ketahuan\n    benar-salahnya setelah bertahun-tahun tumbuh, dan pada saat itu musim yang hilang\n    tidak bisa diulang.\n  </p>\n  <p>\n    Karena itu halaman varietas per varietas <strong>tidak diterbitkan di sini</strong>:\n    dengan nol sifat agronomi, halaman semacam itu pasti lebih miskin daripada deskripsi\n    yang sudah diterbitkan dinas pertanian daerah. Yang diterbitkan cuma daftarnya per\n    komoditas, dan pemeriksaan keabsahan suratnya.\n  </p>",
+      "questions": [
+        {
+          "q": "Apakah varietas terdaftar berarti hasilnya bagus?",
+          "a": "Tidak. Yang dicatat keberadaan suratnya. Sifat agronomi nol dari {{varietas}} varietas di registri, jadi tidak ada klaim hasil yang bisa dinaungi data ini."
+        },
+        {
+          "q": "Kenapa tidak ada halaman untuk tiap varietas?",
+          "a": "Karena tanpa sifat agronomi, halaman semacam itu pasti lebih miskin daripada deskripsi varietas yang sudah diterbitkan dinas pertanian daerah."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "varietas",
+          "cakupan": "keberadaan surat dan jenisnya, bukan sifat tanamannya"
+        }
+      ],
+      "unanswered": [
+        "hasilVarietas",
+        "sertifikasiLot"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:98fc0ee9e9c1066a8769e1b6d8756f7ca0b4b34559a19e9e0ab94ed38c411c94"
+      }
+    },
+    {
+      "key": "batas--pasal-72-dan-77",
+      "path": "/batas/pasal-72-dan-77/",
+      "label": {
+        "id": "Pasal 72 dan Pasal 77"
+      },
+      "title": "Kenapa meramu pupuk sendiri lapang dan meramu pengendali sendiri terikat",
+      "description": "Undang-undang memperlakukan pupuk buatan sendiri dan pengendali buatan sendiri dengan cara yang sangat berbeda. Apa bedanya, dan bagian mana yang masih menunggu pendapat hukum.",
+      "dek": "{{sediaanResep}} resep sediaan buatan sendiri, dua rezim hukum yang sangat berbeda — dan satu pertanyaan yang belum dijawab penasihat hukum.",
+      "basis": "docs/08-jalur-sediaan-pupuk.md · docs/09-jalur-sediaan-pengendali.md · docs/13-memo-hukum-pasal-77.md",
+      "body": "<p>\n    {{sediaanResep}} resep sediaan buatan sendiri diterbitkan di sini — kompos, MOL,\n    pupuk organik cair, perbanyakan agens hayati, pestisida nabati. Yang membelah keduanya\n    bukan bahan atau caranya, melainkan <strong>kegunaannya</strong>, dan undang-undang\n    memperlakukan keduanya sangat berbeda.\n  </p>\n  <h2>Sisi yang lapang</h2>\n  <p>\n    Membuat dan memakai pupuk untuk lahan sendiri berada <strong>di luar rezim\n    pendaftaran</strong>. Yang tidak lapang adalah mengedarkannya: mengedarkan pupuk yang\n    tidak terdaftar atau tidak berlabel dilarang, dengan sanksinya sendiri. Jadi batas\n    yang perlu dijaga bukan \"boleh membuat\", melainkan \"boleh memberikan kepada orang\n    lain\".\n  </p>\n  <h2>Sisi yang terikat</h2>\n  <p>\n    Definisi pestisida mencakup jasad renik dan zat perangsang tumbuh di luar pupuk —\n    ditentukan oleh kegunaannya, bukan oleh asal bahannya. Artinya perbanyakan agens\n    hayati dan pestisida nabati masuk ke dalamnya. Dan pasalnya melarang\n    <strong>mengedarkan dan/atau menggunakan</strong> pestisida yang tidak terdaftar.\n  </p>\n  <p>\n    Apakah kata \"dan/atau\" itu kumulatif atau alternatif menentukan apakah memakai\n    pestisida nabati untuk keperluan sendiri benar-benar terlarang. <strong>Pertanyaan itu\n    belum dijawab penasihat hukum.</strong>\n  </p>\n  <p>\n    Sikap yang diambil selama jawabannya belum ada: nyatakan statusnya apa adanya, tandai\n    \"hanya untuk keperluan sendiri\", dan <strong>jangan menyimpulkan aman</strong>. Karena\n    itu halaman sediaan pengendali di sini membuka dengan pasalnya, bukan dengan resepnya\n    — dan ia tidak pernah muncul sebagai cabang \"yang bisa kamu pakai\" dari jalur mana pun.\n  </p>",
+      "questions": [
+        {
+          "q": "Boleh tidak membuat pupuk organik sendiri?",
+          "a": "Membuat dan memakainya untuk lahan sendiri berada di luar rezim pendaftaran. Mengedarkannya tidak: mengedarkan pupuk yang tidak terdaftar atau tidak berlabel dilarang."
+        },
+        {
+          "q": "Boleh tidak membuat dan memakai pestisida nabati sendiri?",
+          "a": "Statusnya belum pasti. Pasal yang melarang mengedarkan dan/atau menggunakan pestisida tidak terdaftar belum dibaca oleh penasihat hukum untuk kasus pemakaian sendiri, dan halaman ini tidak menyimpulkan bahwa itu aman atau sah."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "sediaan",
+          "cakupan": "kedudukan hukum seluruh resep beserta dasar pasalnya"
+        }
+      ],
+      "unanswered": [
+        "haraSediaan",
+        "phi"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:128cb6adc4cbd53e97803d27fdfd208af1793690746656f54223f94b9475a2f4"
+      }
+    },
+    {
+      "key": "batas--tingkat-bukti",
+      "path": "/batas/tingkat-bukti/",
+      "label": {
+        "id": "Tingkat bukti, dan kenapa registri cuma B"
+      },
+      "title": "Cara membaca tingkat bukti A sampai D — dan kenapa registri resmi cuma B",
+      "description": "Setiap halaman di sini membawa tingkat bukti A sampai D beserta alasannya. Kenapa registri resmi tidak pernah A, dan apa artinya tingkat D.",
+      "dek": "Tiap layar menyebut tingkat bukti, tanggal, sumber, dan apa yang tidak diketahuinya. Registri resmi Kementan pun cuma <strong>B</strong> — dan alasannya penting.",
+      "basis": "docs/15-kapabilitas-lintas-pemangku.md",
+      "body": "<p>\n    Tiap halaman di sini menutup dengan blok yang menyebut empat hal: tingkat bukti,\n    tanggal tarikan, sumbernya, dan apa yang tidak diketahuinya. Bentuknya sama di semua\n    layar, dan layar yang melewatkan salah satunya gagal dengan berisik alih-alih diam.\n  </p>\n  <p><strong>A</strong> — uji multi-lokasi dan multi-musim.</p>\n  <p><strong>B</strong> — standar atau catatan institusi resmi.</p>\n  <p><strong>C</strong> — konsensus praktisi dan penyuluh.</p>\n  <p><strong>D</strong> — pengalaman tunggal yang belum diverifikasi.</p>\n  <p>\n    Registri pestisida, pupuk, dan varietas Kementan berada di <strong>B</strong>, bukan\n    A. Alasannya satu kalimat: <strong>yang dicatat izin edar, bukan hasil uji.</strong>\n    Registri tidak menguji apa pun — ia mendaftarkan. Menaikkannya ke A akan mengklaim\n    pengujian yang tidak pernah dilakukan.\n  </p>\n  <p>\n    Tingkat D muncul di tempat yang mungkin tidak diduga: keterangan grup induk, situs,\n    dan merek payung perusahaan yang datang dari riset web. Ia tampil dengan lencananya,\n    dan <strong>sengaja tidak ikut ke data terstruktur halaman</strong> — menyatakan\n    kepada mesin sebagai fakta terverifikasi apa yang dinyatakan kepada manusia sebagai\n    belum terverifikasi adalah bentuk paling halus dari berbohong.\n  </p>\n  <p>\n    Yang belum ada tingkatnya tetap harus menyebut alasannya. Tingkat bukti tanpa alasan\n    adalah klaim tanpa dasar, dan medan yang dikosongkan terbaca sebagai tidak ada masalah.\n    Sampai hari ini <strong>{{tinjauan.berpeninjau}} dari {{tinjauan.rekaman}}</strong>\n    rekaman kosakata kurasi punya peninjau bernama.\n  </p>",
+      "questions": [
+        {
+          "q": "Kenapa registri resmi cuma tingkat B?",
+          "a": "Karena yang dicatat registri adalah izin edar, bukan hasil pengujian. Registri mendaftarkan; ia tidak menguji. Tingkat A menuntut uji multi-lokasi dan multi-musim."
+        },
+        {
+          "q": "Apa arti tingkat D di halaman perusahaan?",
+          "a": "Keterangan yang datang dari riset web dan belum diverifikasi ke sumber aslinya. Ia ditampilkan dengan lencananya dan tidak ikut ke data terstruktur halaman."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "tingkat bukti dan alasannya untuk registri yang dipakai seluruh halaman"
+        }
+      ],
+      "unanswered": [
+        "gejalaOptRegistri",
+        "namaDagang"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:4f0d1f4a46cb7a60055a012c9a6ed63691fe45e1192b495056754999e031acf9"
+      }
+    },
+    {
+      "key": "batas--urutan-tidak-bisa-dibeli",
+      "path": "/batas/urutan-tidak-bisa-dibeli/",
+      "label": {
+        "id": "Urutan yang tidak bisa dibeli"
+      },
+      "title": "Kenapa urutan merek di sini nomor pendaftaran, dan kenapa itu tidak bisa dibeli",
+      "description": "Daftar merek di sini diurutkan menurut nomor pendaftaran menaik. Kenapa itu keputusan struktural, bukan janji, dan apa yang dijaganya.",
+      "dek": "Tanpa peringkat, tanpa bintang, tanpa slot berbayar. Urutannya ditentukan struktur data — dan nomornya ikut tercetak supaya bisa diperiksa sendiri.",
+      "basis": "docs/02-tiga-pasar.md",
+      "body": "<p>\n    Tiap daftar merek di sini diurutkan menurut <strong>nomor pendaftaran menaik</strong>,\n    dan nomornya dicetak di kolom sebelahnya. Itu bukan janji yang harus dipercaya —\n    urutannya bisa diperiksa sendiri baris demi baris.\n  </p>\n  <p>\n    Kenapa ini penting justru di sini: halaman yang memuat {{produk}} produk dari\n    {{badan}} badan pemegang pendaftaran adalah tempat yang paling menggoda untuk\n    menjual posisi. Kompetitor terdekat di hasil pencarian sudah melakukannya — daftar\n    \"paling ampuh\" yang disusun penjualnya sendiri.\n  </p>\n  <p>\n    Yang menjaga netralitas di sini bukan niat baik, melainkan <strong>bentuk datanya</strong>:\n    tidak ada medan peringkat, tidak ada skor, tidak ada slot yang bisa diisi. Menambahkan\n    urutan yang bisa dibeli menuntut mengubah struktur — dan perubahan struktur terlihat\n    di riwayat repositori.\n  </p>\n  <p>\n    Konsekuensinya diterima sejak awal: uang dari produsen input <strong>ditunda</strong>\n    sampai ada dewan redaksi bernama dan badan hukum yang terpisah. Membiayai satu musim\n    dengan uang principal akan membatalkan klaim netralitas selamanya, dan klaim itu satu\n    -satunya yang tidak bisa dibeli ulang.\n  </p>",
+      "questions": [
+        {
+          "q": "Apakah urutan merek di halaman ini bisa dibayar?",
+          "a": "Tidak. Urutannya nomor pendaftaran menaik, dan nomornya ikut tercetak sehingga bisa diperiksa sendiri. Tidak ada medan peringkat di dalam datanya."
+        },
+        {
+          "q": "Apakah ada produk yang disponsori di sini?",
+          "a": "Tidak ada, dan tidak ada slotnya. Pendanaan dari produsen input ditunda sampai ada dewan redaksi bernama dan badan hukum terpisah."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "urutan penyajian seluruh daftar merek"
+        }
+      ],
+      "unanswered": [
+        "harga",
+        "namaDagang"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:11edaf17e0d75b6a50bc525ff918ffb3ad33b5a60c0c667948619f44f94ead4c"
+      }
+    },
+    {
+      "key": "batas--yang-tidak-ada-di-sini",
+      "path": "/batas/yang-tidak-ada-di-sini/",
+      "label": {
+        "id": "Yang sengaja tidak ada di sini"
+      },
+      "title": "Yang sengaja tidak ada di sini, dan alasannya satu per satu",
+      "description": "Peringkat produk, harga produk, halaman orang, klaim kemanjuran, kesimpulan hukum, jalur lapor: yang sengaja tidak dibangun di sini beserta alasan masing-masing.",
+      "dek": "Daftar penolakan, bukan daftar fitur yang belum sempat. Tiap penolakan punya alasannya sendiri.",
+      "basis": "docs/03-enam-pintu.md · docs/15-kapabilitas-lintas-pemangku.md",
+      "body": "<p>\n    Yang tidak ada di sebuah platform biasanya berarti belum sempat. Di sini sebagian\n    besarnya berarti <strong>diputuskan tidak</strong>, dan alasannya ditulis supaya tidak\n    perlu ditemukan ulang.\n  </p>\n  <h2>Tidak ada peringkat dan tidak ada halaman \"terbaik\"</h2>\n  <p>Urutannya nomor pendaftaran, dan tidak ada medan skor di dalam datanya.</p>\n  <h2>Tidak ada klaim kemanjuran</h2>\n  <p>Registri mendaftarkan, ia tidak menguji. Yang ditayangkan: terdaftar untuk apa, dosis berlabel, dan tanggalnya.</p>\n  <h2>Tidak ada kesimpulan legal atau ilegal</h2>\n  <p>Larangan dan lingkupnya ditampilkan sebagai dua fakta. Menariknya jadi kesimpulan bukan wewenang platform ini.</p>\n  <h2>Tidak ada halaman untuk orang</h2>\n  <p>\n    {{varietas}} varietas mencantumkan pemuliannya, dan ratusan di antaranya atas nama\n    perorangan. Namanya tetap tampil di kartu varietasnya; yang tidak dibuat adalah halaman\n    profil bernama tentang orang — itu pemrosesan data pribadi yang tidak punya dasar di sini.\n  </p>\n  <h2>Tidak ada harga produk</h2>\n  <p>Registri tidak memuatnya, dan menaksirnya akan menjual sesuatu.</p>\n  <h2>Tidak ada jalur lapor pupuk palsu</h2>\n  <p>Kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak ada kotak masuk. Dicabut dari cakupan — bukan ditunda.</p>\n  <h2>Tidak ada pelacak</h2>\n  <p>\n    Tidak satu pun skrip analitik di seluruh permukaan ini, dan kata yang diketik di kotak\n    pencarian tidak pernah keluar dari peranti. Itu tetap berlaku setelah trafiknya menarik\n    untuk dianalisis.\n  </p>",
+      "questions": [
+        {
+          "q": "Kenapa tidak ada daftar produk terbaik?",
+          "a": "Karena registri tidak menguji kemanjuran, dan peringkat yang tidak berdasar data uji adalah penjualan yang menyamar jadi informasi."
+        },
+        {
+          "q": "Apakah pencarian saya direkam?",
+          "a": "Tidak. Tidak ada pelacak di halaman mana pun, dan kata yang diketik di kotak pencarian tidak dikirim ke mana pun."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "cakupan yang diputuskan untuk seluruh permukaan baca-saja"
+        }
+      ],
+      "unanswered": [
+        "harga",
+        "gambarKemasan"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:4cc04abbc5d073aa7881a80c05119e8eaa91066205b3ba94fdf218835707dde4"
+      }
+    },
+    {
+      "key": "sumber--cara-mengutip",
+      "path": "/sumber/cara-mengutip/",
+      "label": {
+        "id": "Sumber, lisensi, dan cara mengutip"
+      },
+      "title": "Sumber, lisensi, dan cara mengutip halaman ini",
+      "description": "Lisensi konten dan kode, sumber data yang dipakai, cara mengutip halaman, dan sikap terhadap perayap mesin jawaban.",
+      "dek": "Isinya boleh disalin, diolah, dan diterbitkan ulang — dengan atribusi, dan dengan lisensi yang sama. Termasuk oleh mesin.",
+      "basis": "LISENSI.md",
+      "body": "<h2>Lisensinya</h2>\n  <p>\n    Konten kurasi di sini <strong>CC BY-SA 4.0</strong>: boleh disalin dan diolah, dengan\n    atribusi, dan turunannya memakai lisensi yang sama. Kode yang menjalankannya\n    <strong>Apache-2.0</strong>. Data usaha tani milik yang mencatatnya, bukan milik kami.\n  </p>\n  <h2>Sumbernya</h2>\n  <p>\n    Registri pestisida, pupuk, dan varietas dari Kementerian Pertanian RI. Seri harga dari\n    sistem pencatatan harga Kementerian Perdagangan. Pemetaan takson ke GBIF dan EPPO, skala\n    fase ke BBCH. Tiap halaman menyebut sumbernya sendiri di blok batas jawaban, beserta\n    tanggal tarikan dan tingkat buktinya.\n  </p>\n  <h2>Cara mengutip</h2>\n  <p>\n    Sebut nama halaman, tanggal tarikan sumbernya yang tercetak di blok batas, dan\n    tautannya. Yang penting disebut bukan nama kami, melainkan\n    <strong>tanggal tarikannya</strong> — registri berubah tiap musim, dan kutipan tanpa\n    tanggal akan menua tanpa ada yang tahu.\n  </p>\n  <h2>Perayap mesin jawaban</h2>\n  <p>\n    Tidak diblokir. Mesin jawaban dianggap pembaca kelas satu, bukan pencuri: kalau\n    jawabannya benar dan sumbernya disebut, tujuan platform ini tercapai — bahkan ketika\n    kliknya tidak pernah sampai ke sini. Yang diminta cuma atribusi, dan itu memang syarat\n    lisensinya.\n  </p>\n  <p>\n    Indeks turunannya juga bisa diambil langsung sebagai JSON. Ia memang disusun untuk\n    dibaca mesin sejak awal.\n  </p>",
+      "questions": [
+        {
+          "q": "Boleh tidak saya salin isi halaman ini?",
+          "a": "Boleh, dengan atribusi dan dengan lisensi yang sama (CC BY-SA 4.0). Sebutkan juga tanggal tarikan sumber yang tercetak di blok batas jawaban."
+        },
+        {
+          "q": "Apakah perayap AI diblokir?",
+          "a": "Tidak. Yang diminta hanya atribusi, sesuai syarat lisensinya."
+        }
+      ],
+      "sources": [
+        {
+          "dari": "pestisida",
+          "cakupan": "asal, lisensi, dan tanggal tarikan seluruh data yang diterbitkan"
+        }
+      ],
+      "unanswered": [
+        "namaDagang",
+        "harga"
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-23T00:00:00Z",
+        "content_hash": "sha256:01c02f710f4739f27897396611943b24a8874daa8333caafad19d6a7f1e65369"
+      }
+    }
+  ]
+}

@@ -30,7 +30,9 @@
             "target-site",
             "nama-lokal",
             "principal",
-            "harga"
+            "harga",
+            "editorial",
+            "golongan-resistensi"
           ]
         },
         "label": {

@@ -1,0 +1,17 @@
+{
+  "$schema": "../schema/golongan-resistensi.schema.json",
+  "key": "fixture-huruf-hrac-hilang",
+  "substance": { "id": "op:sub:00009999", "label": "Fixture uji" },
+  "codes": [
+    {
+      "scheme": "HRAC",
+      "code": "9",
+      "listed_as": "Glyphosate",
+      "basis": "ejaan"
+    }
+  ],
+  "note": {
+    "id": "Fixture uji; sengaja dibuat cacat. Kode HRAC tanpa `legacy` maupun `legacy_absent_reason` harus ditolak, karena label produk di Indonesia masih mencetak huruf dan medan yang hilang begitu saja tidak bisa dibedakan dari kelalaian pencatatan."
+  },
+  "lifecycle": { "version": "0.1.0", "status": "draft" }
+}
