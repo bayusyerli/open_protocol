@@ -5,12 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Ada masalah di tanaman — Open Protocols</title>
 <meta name="description" content="Masuk dari apa yang terlihat di kebun, bukan dari nama hama. Pastikan dulu dengan dua ciri yang bisa diperiksa sendiri, lalu lihat bahan aktif apa yang terdaftar.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
 <header class="atas">
-  <p class="jalur">Jalur 1 · masuk dari gejala</p>
+  <div class="baris-atas">
+    <p class="jalur">Jalur 1 · masuk dari gejala</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
   <h1>Ada apa dengan tanaman ini?</h1>
   <p class="lede">
     Pilih <strong>apa yang kamu lihat</strong>, bukan nama hamanya. Yang keluar: dugaan
@@ -45,7 +60,7 @@
   <section id="hasil" tabindex="-1"></section>
 
   <details class="batas">
-    <summary>Apa yang halaman ini tidak tampilkan, dan kenapa</summary>
+    <summary><h2>Apa yang halaman ini tidak tampilkan, dan kenapa</h2></summary>
     <div class="batas-isi">
       <h3>Tanggal aman panen</h3>
       <p>
@@ -84,10 +99,18 @@
     <a href="jalur-4.html">Cek keabsahan benih &amp; bibit →</a> ·
     <a href="jalur-5.html">Meramu pupuk sendiri →</a> ·
     <a href="jalur-6.html">Sediaan pengendali sendiri — status hukumnya →</a> ·
+    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
+    <a href="harga.html">Harga komoditas &rarr;</a> ·
+    <a href="principal.html">Profil perusahaan &rarr;</a> ·
+    <a href="toko.html">Cari toko tani &amp; penjual benih →</a> ·
+    <a href="usaha.html">Hitung titik impas usaha tani →</a> ·
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
   </p>
 
-  <p class="sumber" id="sumber">Sumber: registri pestisida Kementan.</p>
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri pestisida Kementan, dan kurasi gejala OPT cabai berstatus draft.</p>
+  </section>
 
 </main>
 

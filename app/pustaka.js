@@ -6,21 +6,49 @@
  * varietas memang muncul di kedua jalur.
  */
 
-export const BASIS = '../spec/indeks';
+// Tidak diekspor: hanya `ambil()` di bawah yang memakainya.
+const BASIS = '../spec/indeks';
 
 const ingatan = new Map();
 
+// Cap bangunan, dibaca dari meta.json. Ia yang membedakan satu indeks dari indeks
+// berikutnya, dan karena itu ia yang membebaskan pecahan dari keharusan ditanyakan.
+let cap = null;
+
+/* Satu berkas ditanya, sisanya tidak.
+ *
+ * Sampai 23 Agustus 2026 setiap pengambilan memakai `cache: 'no-cache'` — "tanya dulu",
+ * bukan "jangan simpan". Bytenya memang hemat: yang belum berubah dijawab 304 tanpa isi,
+ * terukur 300 byte untuk berkas 13,5 KB. Yang tetap dibayar perjalanan pulang-perginya,
+ * satu per berkas per muat halaman. Pada satu penelusuran 3–5 berkas dan RTT 300–600 ms
+ * itu 1–3 detik sebelum apa pun tergambar, diulang tiap pindah halaman — pada permukaan
+ * yang syarat lapangan nomor satunya justru sinyal buruk.
+ *
+ * Alasan `no-cache` sendiri tidak keliru: tanpa bertanya, yang membangun ulang indeks
+ * akan melihat data lama tanpa satu pun tanda, dan diam-diam salah lebih buruk daripada
+ * lambat. Yang berubah sekarang sebabnya, bukan gejalanya. `bangun-indeks.mjs` menerbitkan
+ * `meta.cap`, hash atas seluruh pecahan, dan cap itu ditempelkan ke tiap URL. Isi berubah
+ * → cap berubah → URL berubah → salinan lama tidak akan pernah terpakai lagi. Basi jadi
+ * mustahil, jadi bertanya jadi tidak perlu.
+ *
+ * Yang tersisa satu pertanyaan per muat halaman, untuk meta.json sendiri: ia titik masuk
+ * yang menyebutkan capnya, jadi ia satu-satunya yang namanya tidak boleh ikut berubah.
+ *
+ * Berapa lama salinan bercap disimpan tetap urusan yang menyajikan. Tanpa header
+ * `Cache-Control` peramban memakai perkiraannya sendiri; dengan `immutable` ia berhenti
+ * bertanya sama sekali. Keduanya kini aman — sebelum ada cap, tidak satu pun aman.
+ */
 export async function ambil(jalan) {
+  // Pecahan tidak bisa diambil sebelum capnya diketahui. Ini tidak menambah perjalanan:
+  // tiap halaman memang sudah memuat meta.json, hanya urutannya yang dipastikan.
+  if (jalan !== 'meta' && cap === null) await muatMeta();
   if (ingatan.has(jalan)) return ingatan.get(jalan);
-  // `no-cache` berarti "tanya dulu", bukan "jangan simpan": peramban tetap menyimpan
-  // berkasnya dan mengirim permintaan bersyarat, jadi yang belum berubah dijawab 304
-  // tanpa isi. Ini dibayar satu perjalanan pulang-pergi per pecahan per muat halaman,
-  // dan itu memang mahal di sinyal buruk — tetapi indeksnya turunan dan dibangun ulang
-  // dengan `bangun-indeks.mjs`. Tanpa ini, yang membangun ulang akan melihat data lama
-  // tanpa satu pun tanda bahwa yang dilihatnya sudah basi, dan diam-diam salah lebih
-  // buruk daripada lambat. Anggaran byte di app/README.md tidak berubah karenanya:
-  // 304 tidak membawa isi.
-  const janji = fetch(`${BASIS}/${jalan}.json`, { cache: 'no-cache' }).then((r) => {
+
+  const alamat = jalan === 'meta'
+    ? `${BASIS}/meta.json`
+    : `${BASIS}/${jalan}.json?v=${encodeURIComponent(cap)}`;
+
+  const janji = fetch(alamat, jalan === 'meta' ? { cache: 'no-cache' } : undefined).then((r) => {
     if (!r.ok) throw new Error(`${jalan}: ${r.status}`);
     return r.json();
   });
@@ -31,7 +59,8 @@ export async function ambil(jalan) {
   return janji;
 }
 
-export const rapikan = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
+// Tidak diekspor: pemakaiannya seluruhnya di dalam berkas ini.
+const rapikan = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
 
 export const teks = (s) => String(s ?? '').replace(/[&<>"']/g, (c) =>
   ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
@@ -42,12 +71,36 @@ export const tanggal = (s) => {
   return Number.isNaN(+d) ? s : d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 };
 
-export const JENIS = { pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif', gejala: 'Gejala' };
+export const JENIS = {
+  pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif',
+  gejala: 'Gejala', principal: 'Perusahaan', harga: 'Harga',
+  sediaan: 'Sediaan sendiri', opt: 'Hama & penyakit',
+};
+
+/**
+ * Nama pemegang pendaftaran sebagai tautan ke profilnya — atau sebagai teks biasa.
+ *
+ * Dipakai di enam tempat: rincian produk, tabel setara, tabel merek per kadar, kartu
+ * varietas, kartu hasil pencarian, dan daftar di halaman profil itu sendiri. Ditaruh di sini
+ * karena aturannya satu dan mudah menyimpang: NAMANYA SELALU TAMPIL, tautannya hanya kalau
+ * badan itu memang ada di kosakata principal.
+ *
+ * 576 varietas dipegang pemulia perorangan, dan mereka SENGAJA tidak punya halaman profil —
+ * halaman bernama tentang orang adalah pemrosesan data pribadi tanpa dasar. Untuk mereka
+ * fungsi ini mengembalikan nama apa adanya, dan itu bukan kegagalan yang perlu ditutup.
+ */
+export function namaPemegang(nama, key) {
+  const t = teks(nama ?? '—');
+  if (!nama || !key) return t;
+  return `<a class="tautan-principal" href="principal.html?key=${encodeURIComponent(key)}">${t}</a>`;
+}
 
 let meta = null;
 export const bacaMeta = () => meta;
 export async function muatMeta() {
   meta = await ambil('meta');
+  // Dipasang sebelum pengambilan pecahan mana pun; `ambil()` menunggu ini.
+  cap = meta.cap ?? 'x';
   return meta;
 }
 
@@ -149,9 +202,33 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
     </ul>`;
 }
 
-export function tombolKembali(el, wadah, fokus) {
+/**
+ * Pasang perilaku tombol "kembali" yang sudah tergambar di dalam `wadah`.
+ *
+ * Versi sebelumnya, `tombolKembali()`, tidak pernah dipanggil satu berkas pun — dan
+ * sementara ia menganggur, keenam jalur menulis penangannya masing-masing: tujuh
+ * salinan dari perilaku yang sama. Sebabnya kelihatan begitu ketujuhnya disejajarkan:
+ * fungsi lamanya hanya melayani satu dari dua rupa yang benar-benar dipakai, jadi
+ * empat jalur memang tidak bisa memakainya. (Parameter pertamanya bahkan tidak
+ * terpakai di dalam badannya.)
+ *
+ * Dua rupa itu, dan keduanya bukan pilihan gaya:
+ *  - `fokus`    layar yang dibuka dari kotak cari. Kosongkan, lalu kembalikan fokus ke
+ *               kotaknya supaya yang mengetik bisa langsung mengetik lagi.
+ *  - `gulirKe`  layar yang dibuka dari daftar di halaman yang sama. Kosongkan, lalu
+ *               bawa mata kembali ke daftarnya. Fokus tidak dipindah karena yang
+ *               ditinggalkan daftar, bukan satu kontrol.
+ *  - `sesudah`  keadaan yang ikut direset; jalur 3 menyimpan pilihan produknya.
+ */
+export function pasangKembali(wadah, { fokus, gulirKe, sesudah } = {}) {
   const b = wadah.querySelector('#kembali');
-  if (b) b.addEventListener('click', () => { wadah.innerHTML = ''; fokus.focus(); });
+  if (!b) return;
+  b.addEventListener('click', () => {
+    wadah.innerHTML = '';
+    sesudah?.();
+    if (gulirKe) gulirKe.scrollIntoView({ block: 'start' });
+    fokus?.focus();
+  });
 }
 
 export const HTML_KEMBALI =
@@ -168,6 +245,31 @@ export const HTML_KEMBALI =
 const kata = (s) => (s ?? '')
   .normalize('NFKD').toLowerCase().replace(/[^a-z0-9\s]/g, ' ')
   .split(/\s+/).filter(Boolean);
+
+// ---------------------------------------------------------------------------
+// Kamus nama lokal — A3
+// ---------------------------------------------------------------------------
+// Yang mengetik "patek" tidak sedang mengetik awalan nama terdaftar, dan tidak sedang
+// menyebut gejala — ia menyebut nama penyakitnya dalam bahasanya sendiri. Kamusnya
+// kecil, jadi dibawa utuh sekali per sesi seperti kepala gejala.
+//
+// Yang belum terpetakan ikut dikembalikan, dan itu disengaja: "bercak daun" yang
+// dijawab nol terbaca sebagai "tidak ada penyakitnya", sedangkan yang dijawab
+// "namanya kami kenal, cakupannya yang belum ada" mengirim orang ke tempat yang benar.
+export async function cariNamaLokal(kueri) {
+  const r = rapikan(kueri);
+  if (r.length < 3) return [];
+  const daftar = await ambil('nama-lokal');
+  return daftar
+    .filter((x) => rapikan(x.n).includes(r))
+    // Yang persis lebih dulu, lalu yang terpetakan, lalu abjad. Nama yang belum
+    // terpetakan tetap tampil, cuma tidak mendahului yang bisa dibuka.
+    .sort((a, b) =>
+      (rapikan(b.n) === r) - (rapikan(a.n) === r) ||
+      (b.ke.length > 0) - (a.ke.length > 0) ||
+      a.n.localeCompare(b.n))
+    .slice(0, 6);
+}
 
 export async function cariGejala(kueri) {
   const kk = kata(kueri).filter((w) => w.length >= 3);
@@ -196,9 +298,9 @@ export async function cariGejala(kueri) {
 // ---------------------------------------------------------------------------
 // Tautan masuk dari beranda
 // ---------------------------------------------------------------------------
-// Beranda hanya mencari nama; yang membuka rinciannya tetap jalur yang memang
-// perendernya. Bentuk tautannya dibaca di satu tempat supaya kedua jalur membacanya
-// sama, dan supaya nanti tidak ada jalur ketiga yang mengarangnya sendiri.
+// Beranda mencari nama, bahan aktif, dan gejala; yang membuka rinciannya tetap jalur
+// yang memang perendernya. Bentuk tautannya dibaca di satu tempat supaya ketiga jalur
+// membacanya sama, dan supaya nanti tidak ada jalur keempat yang mengarangnya sendiri.
 //
 // Nilainya datang dari bilah alamat, jadi tidak dipercaya: `pecahan` ikut menyusun
 // jalur berkas yang diambil, jadi hanya bentuk `nama/berkas` yang diterima.
@@ -210,6 +312,8 @@ export function tautanMasuk() {
   const p = new URLSearchParams(location.search);
   const pecahan = p.get('pecahan');
   const opt = p.get('opt');
+  const resep = p.get('resep');
+  const hama = p.get('hama');
   return {
     q: p.get('q'),
     id: p.get('id'),
@@ -217,5 +321,9 @@ export function tautanMasuk() {
     // Jalur 1 tidak memakai pecahan: daftar gejalanya dibawa utuh, jadi yang perlu
     // disebut cuma OPT mana yang dibuka.
     opt: opt && BENTUK_ID.test(opt) ? opt : null,
+    // Kunci resep ikut menyusun jalur berkas, jadi bentuknya dibatasi sama ketatnya
+    // seperti `pecahan`: huruf dan angka saja, tanpa titik dan tanpa garis miring.
+    resep: resep && /^[a-z0-9]+$/i.test(resep) ? resep : null,
+    hama: hama && /^[a-z0-9]+$/i.test(hama) ? hama : null,
   };
 }

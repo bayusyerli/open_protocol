@@ -13,7 +13,9 @@
     if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
   } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
 </script>
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="beranda.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
@@ -101,6 +103,8 @@
       <a href="jalur-4.html"><span>04</span><strong>Cek nama varietas</strong><small>Surat apa yang dipegang varietasnya — bukan anjuran tanam</small></a>
       <a href="jalur-5.html"><span>05</span><strong>Buat pupuk sendiri</strong><small>Resep terbuka beserta syarat, batas mutu, dan pasalnya</small></a>
       <a href="jalur-6.html"><span>06</span><strong>Pengendali buatan sendiri</strong><small>Status hukumnya — bukan petunjuk pemakaian</small></a>
+      <a href="harga.html"><span>07</span><strong>Harga komoditas</strong><small>Eceran harian nasional dan riwayatnya — bukan harga yang diterima petani</small></a>
+      <a href="principal.html"><span>08</span><strong>Profil perusahaan</strong><small>Apa saja yang terdaftar atas nama satu badan — dan apa yang registri tidak catat</small></a>
     </div>
   </section>
 
@@ -111,6 +115,9 @@
   <p id="sumber">Sumber: registri Kementan lewat <code>spec/indeks/</code>.</p>
   <p>
     <button class="tombol-teks" type="button" data-buka-tentang>Tentang data</button> ·
+    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
+    <a href="toko.html">Cari toko tani &amp; penjual benih →</a> ·
+    <a href="usaha.html">Hitung titik impas usaha tani →</a> ·
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a> ·
     <a href="README.md">Tentang permukaan ini →</a>
   </p>
@@ -128,11 +135,16 @@
     <h3>Yang ada di indeks</h3>
     <dl id="cacahTentang"><dt>Memuat…</dt><dd>—</dd></dl>
 
-    <h3>Dari mana</h3>
-    <p>
-      Registri resmi Kementan, disalin apa adanya ke <code>spec/indeks/</code>. Indeksnya
-      turunan dan dibangun ulang dengan <code>bangun-indeks.mjs</code>; tidak ada server
-      dan tidak ada basis data di belakang halaman ini.
+    <!-- Diisi pasangBatas() di batas.js. -->
+    <section class="batas-jawaban" id="batasJawaban">
+      <p class="bj-keping">
+        Registri resmi Kementan, disalin apa adanya ke <code>spec/indeks/</code>.
+      </p>
+    </section>
+
+    <p class="bj-keping">
+      Indeksnya turunan dan dibangun ulang dengan <code>bangun-indeks.mjs</code>; tidak
+      ada server dan tidak ada basis data di belakang halaman ini.
     </p>
 
     <h3>Yang bisa dicari, dan sampai mana</h3>
@@ -155,19 +167,21 @@
       1.360 OPT registri membawa deskripsi gejala sama sekali.
     </p>
 
-    <h3>Yang tidak ada di dalamnya</h3>
+    <h3>Masuk lewat foto belum ada, dan itu keputusan</h3>
     <p>
-      <strong>Harga.</strong> Registri tidak memuat harga sama sekali — angka di jalur 3
-      adalah masukan pengguna sendiri.
+      Kotak ini menerima <strong>teks</strong> — nama, bahan aktif, gejala, nama lokal,
+      dan pertanyaan yang menyebut alatnya. <strong>Foto kemasan tidak.</strong> Pengenal
+      foto yang menebak persis yang ditolak jalur 1: “mesin tidak menebak”, dan tebakan di
+      pintu masuk mengirim orang ke layar yang salah tanpa ia tahu kenapa. Masuk lewat
+      gambar dan suara tercatat sebagai kapabilitas tersendiri yang <em>ditunda</em>, bukan
+      yang sedang dikerjakan.
     </p>
+
+    <h3>Yang sengaja tidak dilakukan</h3>
     <p>
       <strong>Anjuran.</strong> Urutan merek memakai nomor pendaftaran menaik: tanpa
       peringkat, tanpa slot berbayar. Halaman ini juga tidak menyimpulkan legal atau
       ilegal — larangan ditampilkan beserta lingkup dan pasalnya, lalu berhenti.
-    </p>
-    <p>
-      <strong>Sifat agronomi varietas.</strong> Nol dari 11.227 varietas menyebutnya, jadi
-      pertanyaan “varietas mana yang sebaiknya ditanam” memang tidak dijawab di sini.
     </p>
 
     <h3>Yang tercatat tentang kamu</h3>

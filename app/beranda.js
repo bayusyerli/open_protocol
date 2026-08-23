@@ -9,7 +9,10 @@
  * indeks yang sama, pemecahan ember yang sama, urutan yang sama.
  */
 
-import { muatMeta, cari, cariGejala, namaBerdekatan, teks, JENIS } from './pustaka.js';
+import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, teks, JENIS } from './pustaka.js';
+import { pasangTombolTema } from './tema.js';
+import { catatLubang, LUBANG } from './ukur.js';
+import { pasangBatas } from './batas.js';
 
 const el = {
   form: document.getElementById('formCari'),
@@ -19,6 +22,7 @@ const el = {
   saran: document.getElementById('saran'),
   hasil: document.getElementById('hasil'),
   sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
   cip: document.getElementById('cipJaringan'),
   lembar: document.getElementById('lembarTentang'),
   cacah: document.getElementById('cacahTentang'),
@@ -30,11 +34,33 @@ const el = {
 // di jalur 1, karena di sanalah blok "pastikan dulu" berada.
 const RUMAH = { varietas: 'jalur-4.html', pestisida: 'index.html', pupuk: 'index.html', bahan: 'index.html' };
 
+// Sediaan punya DUA rumah, dan yang menentukan rezimnya. Sisi pupuk dan sisi pengendali
+// bukan dua tab dari satu layar — janjinya berbeda: yang satu resep terbuka, yang satu
+// status hukum yang sengaja berhenti sebelum jadi anjuran.
+const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.includes('pengendali')
+  ? 'jalur-6.html' : 'jalur-5.html');
+
+// Dua jenis entri baru tidak dibuka lewat `id`+`pecahan` seperti empat yang lain: keduanya
+// punya berkasnya sendiri per entitas, jadi yang dibawa tautannya cukup satu kunci. Bentuk
+// tautannya karena itu berbeda, dan perbedaannya ditulis sekali di sini alih-alih diulang di
+// tiap pemanggil.
+const tautanKunci = {
+  // OPT registri dibuka jalur 1 lewat kuncinya sendiri, bukan lewat `opt=` yang dipakai
+  // sepuluh OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
+  // membuat jalur 1 mencari teks gejala yang memang tidak ada.
+  opt: (x) => `jalur-1.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
+  sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
+  principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
+  harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
+};
+
 // `q` ikut supaya jalur tujuan memulihkan daftar hasilnya sendiri di belakang layar
 // rincian — tombol "kembali ke hasil pencarian" di sana harus mendarat pada sesuatu.
 // Untuk saran ejaan, yang dikirim adalah nama yang benar, bukan kueri yang salah ketik:
 // mengirim salah ketiknya membuat jalur tujuan mencari sesuatu yang memang nol.
 const tautan = (x, kueri = el.q.value.trim()) => {
+  const khusus = tautanKunci[x.j];
+  if (khusus) return khusus(x);
   const p = new URLSearchParams({ id: x.i, pecahan: x.p, q: kueri });
   return `${RUMAH[x.j] ?? 'index.html'}?${p}`;
 };
@@ -63,14 +89,97 @@ const kartuNama = (x, kueri) => `
     </a>
   </li>`;
 
+// Satu nama lokal bisa menunjuk lebih dari satu OPT, dan itu bukan kekurangan yang
+// disembunyikan melainkan jawabannya sendiri: "layu" memang tidak membedakan fusarium
+// dari bakteri. Yang bertaksa jadi beberapa tautan berdampingan beserta kalimat yang
+// menyebut apa yang tidak dibedakannya; memilih satu diam-diam akan mendahului uji
+// pembanding yang justru dibangun jalur 1 untuk memutuskannya.
+const kartuNamaLokal = (x) => {
+  if (!x.ke.length) {
+    return `
+      <li class="hasil-belum">
+        <span>
+          <span class="nama-hasil">${teks(x.n)}</span>
+          <span class="sub-hasil">${teks(x.belum ?? 'Belum terpetakan.')}</span>
+        </span>
+        <span class="lencana">Belum terpetakan</span>
+      </li>`;
+  }
+  return x.ke.map((k, i) => `
+    <li>
+      <a href="jalur-1.html?${new URLSearchParams({ opt: k.i })}" data-jenis="nama-lokal">
+        <span>
+          <span class="nama-hasil">${teks(x.n)} <em>→ ${teks(k.l ?? k.i)}</em></span>
+          ${i === 0 && x.taksa ? `<span class="sub-hasil">${teks(x.taksa)}</span>` : ''}
+        </span>
+        <span class="lencana">Nama lokal</span>
+      </a>
+    </li>`).join('');
+};
+
+/* A1 — perutean niat. Empat layar bukan entitas dan tidak akan pernah muncul dari
+ * pencarian nama: kalkulator hara, kalibrasi semprot, direktori toko, dan titik impas.
+ * Yang mengetik "berapa tangki" tidak sedang menyebut nama apa pun — ia menyebut
+ * pertanyaannya.
+ *
+ * INI MERUTEKAN, BUKAN MENJAWAB. Salah rute berbiaya satu ketukan terbuang; salah jawab
+ * berbiaya semprotan yang keliru. Karena itu tautannya tampil sebagai PINTU di samping
+ * hasil pencarian biasa, tidak pernah menggantikannya.
+ *
+ * Daftarnya sengaja pendek dan ditulis tangan. Pencocokan yang pintar menebak lebih
+ * sering, dan tebakan yang lebih sering di pintu masuk berarti orang lebih sering
+ * mendarat di layar yang salah tanpa tahu kenapa. */
+const rapiNiat = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+const NIAT = [
+  { ke: 'jalur-3.html', judul: 'Hitung rupiah per kilogram hara',
+    kata: ['hara', 'per kg hara', 'bandingkan pupuk', 'pupuk mana', 'murah mana', 'mahal mana'] },
+  { ke: 'takaran.html', judul: 'Kalibrasi semprot & takaran',
+    kata: ['tangki', 'kalibrasi', 'takaran', 'menakar', 'tutup botol', 'sendok', 'semprot', 'berapa ml'] },
+  { ke: 'usaha.html', judul: 'Titik impas usaha tani',
+    kata: ['impas', 'balik modal', 'modal', 'biaya tanam', 'untung', 'rugi', 'rab', 'anggaran'] },
+  { ke: 'toko.html', judul: 'Cari toko tani & penjual benih',
+    kata: ['toko', 'kios', 'beli di mana', 'penjual', 'terdekat', 'dekat sini'] },
+  { ke: 'harga.html', judul: 'Harga eceran harian',
+    kata: ['harga', 'berapa harga'] },
+];
+
+const cariNiat = (kueri) => {
+  const r = ' ' + rapiNiat(kueri) + ' ';
+  return NIAT.filter((x) => x.kata.some((k) => r.includes(' ' + rapiNiat(k) + ' ')));
+};
+
+const kartuNiat = (x) => `
+  <li>
+    <a href="${teks(x.ke)}" data-jenis="niat">
+      <span><span class="nama-hasil">${teks(x.judul)}</span></span>
+      <span class="lencana">Pintu</span>
+    </a>
+  </li>`;
+
 const kelompok = (judul, catatan, isi) => `
   <div class="kelompok-hasil">
     <p class="ringkas-hasil"><strong>${judul}</strong>${catatan ? ` — ${catatan}` : ''}</p>
     <ul class="daftar-hasil">${isi}</ul>
   </div>`;
 
-function gambar(nama, bahan, gejala, kueri) {
+function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
   const bagian = [];
+  const niat = cariNiat(kueri);
+
+  // Nama lokal paling dulu. Yang mengetik "patek" sudah tahu apa yang dilihatnya dan
+  // sedang menyebut namanya; itu kueri paling spesifik yang bisa masuk ke kotak ini.
+  // Tingkat buktinya disebut di judul kelompoknya, bukan disembunyikan: kamusnya dari
+  // satu jawaban lapangan, dan layar tidak boleh terdengar lebih yakin daripada itu.
+  if (lokal.length) {
+    // B4: nama yang dikenal tetapi rujukannya belum ada adalah permintaan data yang
+    // paling langsung — seseorang benar-benar memakainya, dan kamusnya belum sampai.
+    for (const x of lokal) if (!x.ke.length) catatLubang('beranda', LUBANG.namaLokalTakTerpetakan);
+    bagian.push(kelompok(
+      `${lokal.length} nama lokal cocok`,
+      'dari satu jawaban lapangan, <strong>belum ditinjau</strong> — dan belum diketahui dipakai di daerah mana',
+      lokal.map(kartuNamaLokal).join('')));
+  }
 
   // Gejala lebih dulu. Kalau kueri memang cocok dengan apa yang terlihat di kebun,
   // itu hampir pasti yang dimaksud — dan itu pula cabang bertaruhan paling tinggi.
@@ -99,6 +208,23 @@ function gambar(nama, bahan, gejala, kueri) {
       bahan.map((x) => kartuNama(x, kueri)).join('')));
   }
 
+  // Harga sebelum nama terdaftar: yang mengetik "cabai" di beranda lebih sering menanyakan
+  // harganya daripada merek pestisida yang kebetulan bernama sama.
+  if (harga.length) {
+    bagian.push(kelompok(
+      `${harga.length} komoditas berharga`,
+      'harga <strong>eceran</strong> nasional — bukan harga yang diterima petani',
+      harga.map((x) => kartuNama(x, kueri)).join('')));
+  }
+
+  if (badan.length) {
+    const tampil = badan.slice(0, BATAS);
+    bagian.push(kelompok(
+      `${angkaId(badan.length)} perusahaan atau lembaga`,
+      `memegang pendaftaran atas namanya${badan.length > tampil.length ? `, ${tampil.length} teratas` : ''}`,
+      tampil.map((x) => kartuNama(x, kueri)).join('')));
+  }
+
   if (nama.length) {
     const tampil = nama.slice(0, BATAS);
     bagian.push(kelompok(
@@ -107,10 +233,51 @@ function gambar(nama, bahan, gejala, kueri) {
       tampil.map((x) => kartuNama(x, kueri)).join('')));
   }
 
+  // Pintu ditawarkan di BAWAH hasil nama, tidak pernah menggantikannya: kalau ada hasil
+  // nama, yang dicari hampir pasti namanya.
+  if (niat.length) {
+    bagian.push(kelompok(
+      bagian.length ? 'Atau mungkin yang dicari alatnya' : 'Sepertinya yang dicari alatnya',
+      'ini <strong>pintu</strong>, bukan jawaban — layar tujuannya yang menghitung',
+      niat.map(kartuNiat).join('')));
+  }
+
   el.hasil.innerHTML = bagian.join('');
 }
 
+const BLOK_NAMA_TAK_TERAMBIL = `
+  <div class="pesan">
+    <h2>Pencarian nama belum bisa dijalankan</h2>
+    <p>
+      Kepala pencarian nama tidak ada di peranti ini, dan sambungannya sedang tidak
+      terjangkau. Yang di atas tetap benar — gejala dan nama lokal memang tersimpan.
+    </p>
+    <p>
+      Supaya pencarian nama ikut bekerja tanpa sinyal, simpan sekali dari
+      <a href="ukur.html">apa yang tercatat di peranti ini</a>. Ukurannya disebutkan di sana.
+    </p>
+  </div>`;
+
+function gambarNamaTakTerambil() {
+  el.hasil.innerHTML = BLOK_NAMA_TAK_TERAMBIL;
+}
+
 async function gambarKosong(kueri) {
+  // Nol hasil adalah tempat perutean niat paling berguna: yang mengetik "berapa tangki"
+  // memang tidak akan pernah punya hasil nama, dan tanpa ini ia dijawab "tidak ada".
+  const niat = cariNiat(kueri);
+  if (niat.length) {
+    el.hasil.innerHTML = kelompok(
+      'Sepertinya yang dicari alatnya',
+      'ini <strong>pintu</strong>, bukan jawaban — layar tujuannya yang menghitung',
+      niat.map(kartuNiat).join(''));
+    return;
+  }
+  // B4: dua lubang sekaligus tertabrak — nama yang dicari tidak punya padanan
+  // terdaftar, dan gejalanya di luar sepuluh yang terkurasi. Yang dicatat cacahnya,
+  // bukan kuerinya; lihat docs/11 bagian 3.
+  catatLubang('beranda', LUBANG.namaDagang);
+  catatLubang('beranda', LUBANG.gejalaOpt);
   el.hasil.innerHTML = `
     <div class="pesan">
       <h2>Tidak ada yang cocok dengan “${teks(kueri)}”</h2>
@@ -142,13 +309,19 @@ async function jalankan() {
   try {
     // Keduanya sekaligus, bukan berurutan: yang satu mengambil satu ember nama, yang
     // lain satu kepala gejala 3,2 KB yang sesudahnya teringat sesi ini.
-    const [namaHasil, gejala] = await Promise.all([
-      cari(kueri),
+    // Ketiganya ditangkap sendiri-sendiri. Sebelum A5 hanya dua yang ditangkap, dan
+    // akibatnya baru kelihatan saat diuji tanpa jaringan: ember nama yang gagal diambil
+    // membunuh hasil gejala dan nama lokal yang sebenarnya SUDAH ada di peranti. Satu
+    // cabang yang tidak sanggup tidak boleh membungkam cabang yang sanggup — aturan yang
+    // sama dengan "nol dan tak-sanggup bukan kegagalan" di docs/11.
+    const [namaHasil, gejala, lokal] = await Promise.all([
+      cari(kueri).catch(() => ({ takTerambil: true })),
       cariGejala(kueri).catch(() => []),
+      cariNamaLokal(kueri).catch(() => []),
     ]);
-    const { hasil, kurang } = namaHasil;
+    const { hasil, kurang, takTerambil } = namaHasil;
 
-    if (kurang && !gejala.length) {
+    if (kurang && !gejala.length && !lokal.length) {
       el.hasil.innerHTML =
         `<p class="ringkas-hasil">Tambah ${kurang} huruf lagi supaya pecahan indeksnya cukup sempit.</p>`;
       return;
@@ -157,9 +330,19 @@ async function jalankan() {
 
     const daftar = hasil ?? [];
     const bahan = daftar.filter((x) => x.j === 'bahan');
-    const nama = daftar.filter((x) => x.j !== 'bahan');
-    if (!nama.length && !bahan.length && !gejala.length) return gambarKosong(kueri);
-    gambar(nama, bahan, gejala, kueri);
+    const harga = daftar.filter((x) => x.j === 'harga');
+    // Satu badan bisa muncul dua kali — sekali di bawah nama penuhnya, sekali di bawah nama
+    // tanpa awalan lembaga. Di indeks keduanya memang harus ada; di layar cukup satu.
+    const badan = [...new Map(daftar.filter((x) => x.j === 'principal').map((x) => [x.i, x])).values()];
+    const nama = daftar.filter((x) => !['bahan', 'harga', 'principal'].includes(x.j));
+    if (!nama.length && !bahan.length && !gejala.length && !lokal.length && !harga.length && !badan.length) {
+      if (takTerambil) return gambarNamaTakTerambil();
+      return gambarKosong(kueri);
+    }
+    gambar(nama, bahan, gejala, lokal, kueri, harga, badan);
+    // Yang sanggup sudah tergambar di atas; yang tidak sanggup dinyatakan di bawahnya,
+    // bukan dibiarkan terbaca sebagai "tidak ada namanya".
+    if (takTerambil) el.hasil.insertAdjacentHTML('beforeend', BLOK_NAMA_TAK_TERAMBIL);
   } catch (e) {
     el.hasil.innerHTML = `
       <div class="pesan galat">
@@ -197,44 +380,11 @@ el.saran.addEventListener('click', (ev) => {
 // ---------------------------------------------------------------------------
 // Tema — tiga keadaan, bukan dua
 // ---------------------------------------------------------------------------
-// "Ikut sistem" adalah bawaan dan harus bisa dipilih kembali; kalau tombolnya cuma
-// terang/gelap, yang sudah pernah memilih tidak punya jalan pulang.
+// Putaran, ikon, dan labelnya pindah ke tema.js supaya kedelapan halaman memakai yang
+// sama. Selama ia tinggal di sini, pilihannya berhenti di beranda.
 
-const IKON = {
-  sistem: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17Z" fill="currentColor" stroke="none"/>',
-  terang: '<circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M4.6 4.6l1.6 1.6M17.8 17.8l1.6 1.6M2.5 12h2.2M19.3 12h2.2M4.6 19.4l1.6-1.6M17.8 6.2l1.6-1.6"/>',
-  gelap: '<path d="M20.5 14.6A8.8 8.8 0 0 1 9.4 3.5a8.8 8.8 0 1 0 11.1 11.1Z"/>',
-};
-const SEBUTAN = { sistem: 'ikut sistem', terang: 'terang', gelap: 'gelap' };
-const PUTARAN = ['sistem', 'terang', 'gelap'];
+pasangTombolTema();
 
-const tombolTema = document.getElementById('tombolTema');
-
-function pasangTema(pilihan) {
-  if (pilihan === 'sistem') delete document.documentElement.dataset.tema;
-  else document.documentElement.dataset.tema = pilihan;
-
-  // Label menyebut yang sedang berlaku DAN yang akan terjadi kalau diketuk. Ikon
-  // sendiri tidak bisa mengatakan keduanya, dan tombol berputar yang tidak menyebut
-  // tujuannya memaksa orang mencobanya untuk tahu.
-  const lanjut = PUTARAN[(PUTARAN.indexOf(pilihan) + 1) % PUTARAN.length];
-  tombolTema.innerHTML =
-    `<svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" focusable="false">${IKON[pilihan]}</svg>`;
-  tombolTema.setAttribute('aria-label', `Tampilan layar: ${SEBUTAN[pilihan]}. Ketuk untuk ${SEBUTAN[lanjut]}.`);
-  tombolTema.dataset.tema = pilihan;
-
-  try {
-    if (pilihan === 'sistem') localStorage.removeItem('op:tema');
-    else localStorage.setItem('op:tema', pilihan);
-  } catch { /* mode privat menolak menulis; pilihannya tetap berlaku sampai halaman ditutup */ }
-}
-
-tombolTema.addEventListener('click', () => {
-  const kini = tombolTema.dataset.tema ?? 'sistem';
-  pasangTema(PUTARAN[(PUTARAN.indexOf(kini) + 1) % PUTARAN.length]);
-});
-
-pasangTema(document.documentElement.dataset.tema ?? 'sistem');
 
 // ---------------------------------------------------------------------------
 // Jaringan — dinyatakan, bukan disembunyikan
@@ -274,6 +424,14 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
       `Sumber: registri Kementan lewat <code>spec/indeks/</code> — ` +
       `${n(j.pestisida)} pestisida, ${n(j.pupuk)} pupuk, ${n(j.varietas)} varietas. ` +
       `${n(j.produkSetara)} produk berada dalam ${n(j.kelompokSetara)} kelompok berisi sama.`;
+
+    // Empat registri di balik satu kotak, dan tanggal masing-masing. Kotak yang
+    // menjawab tiga macam pertanyaan menyembunyikan bahwa jawabannya datang dari
+    // sumber yang berbeda usia — di sinilah perbedaan itu dinyatakan.
+    pasangBatas(el.batas, {
+      sumber: ['pestisida', 'pupuk', 'varietas', 'kurasiOpt', 'namaLokal'],
+      takDijawab: ['namaDagang', 'wilayahNamaLokal', 'bahanHara', 'harga'],
+    });
 
     el.cacah.innerHTML = [
       ['Pestisida terdaftar', j.pestisida],

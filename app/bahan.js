@@ -12,7 +12,7 @@
  * bahan + kadar, jadi kartunya memang dipecah di situ.
  */
 
-import { ambil, teks, HTML_KEMBALI } from './pustaka.js';
+import { ambil, teks, HTML_KEMBALI, namaPemegang} from './pustaka.js';
 
 const angkaId = (n) => Number(n).toLocaleString('id-ID');
 
@@ -38,8 +38,10 @@ export function tabelMerek(merek) {
   return `
     <p class="catatan">
       Diurutkan menurut <strong>nomor pendaftaran menaik</strong> — tanpa peringkat,
-      tanpa slot berbayar. Kolom terakhir menyebut bahan <em>lain</em> di dalamnya:
-      isi yang sama pada kadar ini belum tentu berarti produknya sama.
+      tanpa slot berbayar. Nomornya sendiri tidak muat di tabel ini; ia ada di layar
+      tiap merek, satu ketukan dari sini, jadi urutannya tetap bisa diperiksa.
+      Kolom terakhir menyebut bahan <em>lain</em> di dalamnya: isi yang sama pada kadar
+      ini belum tentu berarti produknya sama.
     </p>
     <div class="pembungkus-tabel">
       <table>
@@ -48,7 +50,7 @@ export function tabelMerek(merek) {
           ${merek.map((m) => `
             <tr>
               <td><button type="button" class="tautan" data-id="${teks(m.i)}" data-pecahan="${teks(m.p)}">${teks(m.n)}</button></td>
-              <td>${teks(m.k ?? '—')}</td>
+              <td>${namaPemegang(m.k, m.pk)}</td>
               <td>${m.f ? teks(m.f.replace(/^\+\s*/, '')) : '<span class="kosong">bahan tunggal</span>'}</td>
             </tr>`).join('')}
         </tbody>

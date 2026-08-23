@@ -54,14 +54,42 @@ export const JENIS = {
   gagal: 'gagal',              // pengambilan gagal — sinyal putus, bukan keputusan layar
 };
 
+/* B4 — antrean pertanyaan tak terjawab.
+ *
+ * Tiap "tidak sanggup" yang ditampilkan hari ini menghilang begitu layar ditutup.
+ * Dicatat, ia jadi peta permintaan data: lubang mana yang benar-benar ditabrak orang,
+ * bukan lubang mana yang menurut kami penting.
+ *
+ * YANG DICATAT CACAHNYA SAJA, TIDAK PERNAH KATANYA. docs/11 bagian 3 sudah menyatakan
+ * isi pencarian sengaja tidak diukur, dengan alasan yang tidak berubah karena B4 datang:
+ * jejak minat bisa mengenali orang di desa kecil. Yang dicatat di sini nomor lubang yang
+ * tertabrak — dan lubang-lubang itu sudah bernama dan sudah tercetak di layar lewat
+ * meta.tidakAda, jadi mencacahnya tidak menambah satu keterangan pun tentang orangnya.
+ *
+ * Pertanyaan yang dijawab: "registri mana yang layak ditarik berikutnya" — persis yang
+ * diminta docs/15. Itu pertanyaan kategori, dan kategori tidak butuh teks kueri.
+ */
+export const LUBANG = {
+  namaDagang: 'namaDagang',                     // nama dicari, tidak ada padanannya di registri
+  gejalaOpt: 'gejalaOpt',                       // gejala dicari, di luar sepuluh yang terkurasi
+  namaLokalTakTerpetakan: 'namaLokalTakTerpetakan', // nama lokal dikenal, rujukannya belum ada
+  kandunganTakTerdaftar: 'kandunganTakTerdaftar',   // kandungan diperiksa, tidak ada yang cocok
+  haraSediaan: 'haraSediaan',                   // pupuk tanpa komposisi, hara tak terhitung
+  takaranRumahTangga: 'takaranRumahTangga',     // menakar tanpa alat terukur
+};
+// Daftar ini WAJIB berisi tepat yang dipanggil di layar, tidak lebih dan tidak kurang.
+// Kunci yang tidak ada di sini ditolak diam-diam oleh catatLubang() — dan lubang yang
+// gagal dicatat tanpa suara adalah kebalikan dari gunanya B4.
+
+
 const hariIni = () => new Date().toLocaleDateString('sv-SE'); // YYYY-MM-DD waktu lokal
 
 function baca() {
   try {
     const m = JSON.parse(localStorage.getItem(KUNCI) ?? '{}');
-    return m && m.v === 1 ? m : { v: 1, hari: {}, ms: {} };
+    return m && m.v === 1 ? { lubang: {}, ...m } : { v: 1, hari: {}, ms: {}, lubang: {} };
   } catch {
-    return { v: 1, hari: {}, ms: {} };
+    return { v: 1, hari: {}, ms: {}, lubang: {} };
   }
 }
 
@@ -114,6 +142,24 @@ export function catatJawab(jalur, jenis = JENIS.isi) {
   tulis(m);
 }
 
+/**
+ * B4 — satu lubang data tertabrak. `kunci` wajib salah satu dari LUBANG; `sumber` nama
+ * layarnya, bukan nomor jalur, supaya beranda bisa ikut mencatat tanpa diberi nomor
+ * karangan — ia bukan jalur, dan tabel di docs/11 tidak berubah karenanya.
+ *
+ * Tidak menerima teks kueri, dan tidak boleh ditambahi belakangan tanpa mengubah
+ * docs/11 bagian 3 lebih dulu. Tanda tangannya sengaja tidak menyediakan tempatnya.
+ */
+export function catatLubang(sumber, kunci) {
+  if (!LUBANG[kunci]) return;
+  const m = baca();
+  const l = (m.lubang[kunci] ??= { n: 0, dari: {}, akhir: null });
+  l.n += 1;
+  l.dari[sumber] = (l.dari[sumber] ?? 0) + 1;
+  l.akhir = hariIni();
+  tulis(m);
+}
+
 // ---------------------------------------------------------------------------
 // Pembacaan — dipakai ukur.html
 // ---------------------------------------------------------------------------
@@ -159,7 +205,14 @@ export function ringkas() {
       (c) => (c[JENIS.isi] ?? 0) + (c[JENIS.nol] ?? 0) + (c[JENIS.takSanggup] ?? 0) > 0)),
   );
 
+  // Terurut menurut seberapa sering ditabrak, bukan menurut seberapa penting menurut
+  // kami. Itu seluruh gunanya: yang paling sering menabrak yang paling layak ditarik.
+  const antrean = Object.entries(m.lubang ?? {})
+    .map(([kunci, l]) => ({ kunci, n: l.n, akhir: l.akhir, dari: l.dari ?? {} }))
+    .sort((a, b) => b.n - a.n || a.kunci.localeCompare(b.kunci));
+
   return {
+    antrean,
     sejak: tanggal[0] ?? null,
     sampai: tanggal.at(-1) ?? null,
     hariTercatat: tanggal.length,

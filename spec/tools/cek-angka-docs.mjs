@@ -32,7 +32,7 @@
 // "Abamektin 18" wajib menyaring satuan g/L, karena ada produk berabamektin 18 PERSEN.
 // Membedakan "dokumennya salah" dari "sondaannya salah" tetap pekerjaan manusia.
 
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -172,6 +172,108 @@ cek('09', 'PHI precautionary_default', SED.filter((s) => s.safety?.phi_basis ===
 cek('08/09', 'bahan baku', L(J('spec/vocab/substance-organik.json')).length, 21);
 cek('08/09', 'bahan terlarang', L(J('spec/vocab/substance-organik.json')).filter((b) => b.on_farm?.status === 'prohibited').length, 2);
 
+// --- 15/16: principal dan harga, ditambahkan 23 Agustus 2026 ---------------
+// Keduanya kosakata turunan yang dibangun alat sendiri, jadi angkanya bergeser tiap kali
+// registri ditarik ulang atau SP2KP menerbitkan tanggal baru. Tanpa baris-baris ini, angka
+// di docs/15 dan docs/16 akan basi diam-diam — persis pola yang membuat alat ini ada.
+const PCP = existsSync(dari('spec/vocab/principal/principal.ndjson'))
+  ? nd('spec/vocab/principal/principal.ndjson') : null;
+const HRG = existsSync(dari('spec/vocab/harga/harga.ndjson'))
+  ? nd('spec/vocab/harga/harga.ndjson') : null;
+
+if (PCP) {
+  cek('15', 'badan pemegang pendaftaran', PCP.length, 3136);
+  cek('15', 'badan berpengaya riset (D)', PCP.filter((b) => b.profile).length, 151);
+  cek('15', 'badan di kedua registri', PCP.filter((b) =>
+    b.sectors.includes('seed') && (b.sectors.includes('pesticide') || b.sectors.includes('fertilizer'))).length, 19);
+}
+if (HRG) {
+  cek('16', 'varian harga diterbitkan', HRG.length, 96);
+  cek('16', 'varian harga berangka', HRG.filter((h) => h.series?.length).length, 51);
+  cek('16', 'varian harga TANPA angka', HRG.filter((h) => !h.series?.length).length, 45);
+  cek('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26752);
+  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 24);
+  // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
+  // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
+  cek('16', 'harga pupuk berangka', HRG.filter((h) => /^pupuk/i.test(h.label.id) && h.series?.length).length, 0);
+
+  // Sifat dataset yang dipakai docs/18 dan layar harga: kedua ekstrem menumpuk di empat
+  // bulan pertama karena serinya mulai di tengah lonjakan pangan. Kalau SP2KP suatu saat
+  // menerbitkan riwayat yang lebih panjang ke belakang, kedua baris ini yang memberi tahu —
+  // dan kalimat di layar harus ikut berubah.
+  // Disaring ke SP2KP saja, dan itu bukan kerapian: kalimat yang dikawal baris ini berbunyi
+  // "SP2KP mulai mencatat 1 Februari 2024, di tengah lonjakan pangan". Begitu seri penetapan
+  // TBS provinsi masuk — yang mulai pada tanggal lain dan bukan hasil survei — mengukur
+  // keduanya bersama membuat angkanya berhenti mengukur kalimatnya.
+  const berangka = HRG.filter((h) => h.series?.length && h.source_system === 'SP2KP');
+  const diJendelaAwal = (h, t) =>
+    (new Date(t) - new Date(h.coverage.from)) / 86400000 <= 120;
+  cek('16/18', 'puncak di 4 bulan pertama', berangka.filter((h) => diJendelaAwal(h, h.stats.maks.t)).length, 40);
+  cek('16/18', 'terendah di 4 bulan pertama', berangka.filter((h) => diJendelaAwal(h, h.stats.min.t)).length, 38);
+
+  // Golongan relevansi. Kalau SP2KP menambah varian, ketiga baris ini yang memberi tahu
+  // bahwa tabel di docs/16 bagian 8a — dan kalimat "30 varian tidak ditampilkan" di layar —
+  // sudah tidak cocok lagi dengan datanya.
+  const gol = (g) => HRG.filter((h) => (h.sector ?? 'pangan') === g);
+  cek('16', 'varian golongan pangan', gol('pangan').length, 48);
+  cek('16', 'varian golongan input', gol('input').length, 7);
+  cek('16', 'varian golongan luar (tak tampil)', gol('luar').length, 41);
+  cek('16', 'berangka yang tampil di layar', HRG.filter((h) => (h.sector ?? 'pangan') !== 'luar' && h.series?.length).length, 38);
+
+  // Harga tingkat pekebun. Selama angka ini 1, seluruh kalimat "ini harga eceran" di layar
+  // masih benar untuk sisanya — dan begitu provinsi kedua masuk, kalimat itu perlu ditinjau.
+  cek('16', 'seri tingkat pekebun (farmgate)', HRG.filter((h) => h.price_level === 'farmgate').length, 8);
+  cek('16', 'seri pekebun SWADAYA', HRG.filter((h) => /swadaya/i.test(h.key)).length, 2);
+  cek('16', 'pita umur TBS Kalbar', Object.keys(HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-barat')?.age_bands?.terakhir ?? {}).length, 13);
+  cek('16', 'periode penetapan TBS Kalbar', HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-barat')?.series?.length ?? 0, 50);
+  cek('16', 'penetapan swadaya Riau', HRG.find((h) => h.key === 'tbs-kelapa-sawit-riau-swadaya')?.series?.length ?? 0, 71);
+  cek('16', 'penetapan TBS Kalteng', HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-tengah')?.series?.length ?? 0, 41);
+  cek('16', 'provinsi ber-tabel umur', HRG.filter((h) => h.age_bands).length, 7);
+  // Rendemen per pita umur dari SK Kaltim — satu-satunya sumber rendemen terbuka Indonesia,
+  // dan dasar koreksi OER pada bagian 7a. Kalau ia hilang, kalimat itu kehilangan sandarannya.
+  cek('16', 'penetapan Kaltim ber-rendemen', Object.keys(HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-timur')?.formula?.rendemen?.seri?.at(-1)?.cpo ?? {}).length, 8);
+  cek('16', 'penetapan TBS Kaltim', HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-timur')?.series?.length ?? 0, 83);
+  // Batas rentang rendemen dikunci karena bagian 7a MENCETAKNYA sebagai tabel, dan halaman
+  // harga menghitungnya ulang dari indeks. Dua tempat menyebut angka yang sama dari sumber
+  // berbeda; kalau salah satunya bergeser tanpa yang lain, di sinilah ketahuan.
+  {
+    const r = HRG.find((h) => h.key === 'tbs-kelapa-sawit-kalimantan-timur')?.formula?.rendemen?.seri?.at(-1) ?? {};
+    const cpo = Object.values(r.cpo ?? {}).filter((x) => x > 0);
+    const inti = Object.values(r.inti ?? {}).filter((x) => x > 0);
+    // Dibulatkan dua desimal karena rendemen disimpan sebagai pecahan: 0,0505 × 100 tidak
+    // menghasilkan 5,05 persis di titik-mengambang, dan selisih 10^-15 bukan pergeseran data.
+    const persen = (x) => Math.round(x * 10000) / 100;
+    cek('16', 'rendemen CPO Kaltim terendah (%)', persen(Math.min(...cpo)), 19.3);
+    cek('16', 'rendemen CPO Kaltim tertinggi (%)', persen(Math.max(...cpo)), 21.83);
+    cek('16', 'rentang rendemen CPO Kaltim (poin)', persen(Math.max(...cpo) - Math.min(...cpo)), 2.53);
+    cek('16', 'rendemen inti Kaltim terendah (%)', persen(Math.min(...inti)), 4.35);
+    cek('16', 'rendemen inti Kaltim tertinggi (%)', persen(Math.max(...inti)), 5.05);
+  }
+  cek('16', 'penetapan TBS Babel', HRG.find((h) => h.key === 'tbs-kelapa-sawit-bangka-belitung')?.series?.length ?? 0, 4);
+
+  // Aceh — provinsi keenam, dan yang pertama membawa DUA kelas pekebun sekaligus. Kalau salah
+  // satunya hilang, kalimat "Aceh menerbitkan swadaya juga" di bagian 8b kehilangan dasarnya.
+  {
+    const pl = HRG.find((h) => h.key === 'tbs-kelapa-sawit-aceh-plasma');
+    const sw = HRG.find((h) => h.key === 'tbs-kelapa-sawit-aceh-swadaya');
+    cek('16', 'penetapan TBS Aceh plasma', pl?.series?.length ?? 0, 9);
+    cek('16', 'penetapan TBS Aceh swadaya', sw?.series?.length ?? 0, 3);
+    cek('16', 'pita umur Aceh', pl?.age_bands?.pita?.length ?? 0, 13);
+    cek('16', 'komposisi tenera Aceh', sw?.age_bands?.pita?.length ?? 0, 7);
+    // Rendemen Aceh naik LALU TURUN — satu-satunya tabel di repositori ini yang mengakui
+    // penurunan hasil kebun tua. Batasnya dikunci karena docs/16 mencetaknya.
+    const r = Object.values(pl?.formula?.rendemen?.terakhir ?? {}).filter((x) => x > 0);
+    const persen = (x) => Math.round(x * 10000) / 100;
+    cek('16', 'rendemen Aceh terendah (%)', r.length ? persen(Math.min(...r)) : 0, 15.82);
+    cek('16', 'rendemen Aceh tertinggi (%)', r.length ? persen(Math.max(...r)) : 0, 21.83);
+    cek('16', 'rentang rendemen Aceh (poin)', r.length ? persen(Math.max(...r) - Math.min(...r)) : 0, 6.01);
+    // Yang paling mudah rusak diam-diam: seri swadaya yang sumbunya bukan umur. Kalau
+    // sumbunya hilang, layar akan menayangkan "40 tahun" untuk kebun 40% tenera.
+    cek('16', 'sumbu swadaya Aceh bukan umur', sw?.age_bands?.sumbu?.sufiks === '% tenera' ? 1 : 0, 1);
+  }
+  cek('16', 'provinsi sawit terserap', new Set(HRG.filter((h) => h.commodity_group === 'Kelapa Sawit').map((h) => h.region?.code)).size, 6);
+}
+
 // Sapuan teks: angka yang PERNAH salah dan sudah dikoreksi tidak boleh muncul lagi
 // di mana pun — termasuk di app/, yang menampilkannya ke pengguna. Koreksi dokumen
 // sempat tidak ikut ke layar, dan itu ketahuan hanya karena disapu.
@@ -182,6 +284,14 @@ const BEKAS_SALAH = [
   [/15 kadar berbeda/, 'abamektin 15 kadar — sebenarnya 33'],
   [/Dari 25 produk berisi Abamektin/, 'abamektin 18 g/L 25 produk — sebenarnya 26'],
   [/778 OPT registri/, '778 OPT registri — sebenarnya 768 registri + 10 terkurasi'],
+  // Rendemen sawit. Dikoreksi 23 Agustus 2026 dari 21% ke 19,7% — lihat docs/16 bagian 7a.
+  // Angka 21% bukan salah hitung melainkan ASUMSI yang menyamar jadi pengukuran, dan itu
+  // jenis kekeliruan yang paling mudah kembali: ia terlihat wajar, dan ia masih tertulis di
+  // Permentan 01/2018 yang sudah dicabut. Ketiga pola di bawah menjaga agar ia tidak
+  // menyelinap balik ke dokumen maupun ke layar.
+  [/OER sawit\s*±?\s*21/, 'OER sawit 21% — asumsi, bukan pengukuran; yang terukur 19,7%'],
+  [/sebenarnya 1,52×/, 'rasio terkoreksi 1,52× — hasil OER 21%; dengan 19,7% ia 1,43×'],
+  [/66% setara-CPO/, '66% setara-CPO — hasil OER 21%; dengan 19,7% ia 70%'],
 ];
 const sapuDir = (d) => readdirSync(dari(d), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? sapuDir(`${d}/${e.name}`) : [`${d}/${e.name}`]);

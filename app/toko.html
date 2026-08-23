@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cari toko tani &amp; penjual benih — Open Protocols</title>
+<meta name="description" content="Direktori toko tani dan penjual benih dari data terbuka. Yang berkoordinat bisa dituju; yang hanya bernama kabupaten dinyatakan begitu, bukan disamarkan jadi alamat.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Direktori layanan</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Di mana bisa membelinya?</h1>
+  <p class="lede">
+    Dua kumpulan yang <strong>tidak sama nilainya</strong>, dan halaman ini tidak
+    menyatukannya: yang berkoordinat bisa dituju, yang hanya bernama kabupaten tidak.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Halaman ini butuh JavaScript</h2>
+    <p>Daftarnya dibaca dari berkas indeks langsung di peramban, dan jaraknya dihitung di peranti ini.</p>
+  </div>
+
+  <div class="kartu peringatan">
+    <h2>Yang tidak ada di sini, dan tidak akan ditambal</h2>
+    <p>
+      Tidak satu pun rekaman memuat <strong>nomor telepon, surel, jam buka, atau apakah
+      tokonya masih ada</strong>. Medan itu sengaja dibiarkan kosong menunggu pemilik toko
+      mengklaimnya sendiri.
+    </p>
+    <p class="catatan">
+      Menambalnya dengan geokode massal atau tarikan pihak ketiga akan mengisi direktori
+      dengan tebakan yang tidak bisa dibantah siapa pun — dan direktori yang salah lebih
+      buruk daripada direktori yang pendek.
+    </p>
+  </div>
+
+  <h2 class="judul-bagian">Terdekat dari posisimu</h2>
+
+  <div class="kartu">
+    <p id="ringkasTitik">Memuat…</p>
+    <p class="aksi-kandungan">
+      <button type="button" id="cariDekat">Cari yang terdekat</button>
+    </p>
+    <p class="catatan">
+      <strong>Posisimu tidak dikirim ke mana pun.</strong> Jaraknya dihitung di peranti ini
+      terhadap daftar yang sudah diambil — tidak ada server yang bisa menerimanya, dan
+      tidak ada permintaan jaringan yang dibuat saat menghitungnya.
+    </p>
+    <div id="hasilDekat" aria-live="polite"></div>
+  </div>
+
+  <h2 class="judul-bagian">Telusuri menurut wilayah</h2>
+
+  <div class="kartu">
+    <p id="ringkasWilayah">Memuat…</p>
+    <form class="cari" id="formWilayah" role="search" onsubmit="return false">
+      <label for="q">Nama kabupaten, kota, atau provinsi</label>
+      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="misal: Batang, Bogor, Jawa Timur" enterkeyhint="search">
+    </form>
+    <div id="hasilWilayah" aria-live="polite"></div>
+  </div>
+
+  <section id="rincian" tabindex="-1"></section>
+
+  <details class="batas">
+    <summary><h2>Kenapa dua kumpulan ini tidak disatukan</h2></summary>
+    <div class="batas-isi">
+      <h3>Satu punya koordinat, satu punya nama kabupaten</h3>
+      <p>
+        Menggabungkannya jadi satu daftar akan membuat 2.248 rekaman yang tidak bisa
+        dituju tampak setara dengan 234 yang bisa. Perbedaan itu justru satu-satunya hal
+        yang menentukan apakah halaman ini berguna.
+      </p>
+
+      <h3>Yang berkoordinat tidak punya wilayah, dan itu disengaja</h3>
+      <p>
+        234 titik OpenStreetMap tidak membawa nama kabupaten. Menurunkannya menuntut
+        <strong>geokode balik massal</strong> — dan itu sudah diputuskan tidak dilakukan.
+        Jadi pintunya jarak, bukan wilayah.
+      </p>
+
+      <h3>Yang berwilayah hampir seluruhnya berhenti di kabupaten</h3>
+      <p>
+        Hanya <strong id="pctRinci">—</strong> yang menyebut sesuatu lebih rinci daripada
+        kabupaten atau kota. Sisanya bukti bahwa penjual benih ada di sana, bukan petunjuk
+        ke mana pergi — dan halaman ini menyebutnya begitu, bukan menyamarkannya jadi
+        alamat.
+      </p>
+
+      <h3>Penyuluh, POPT, laboratorium, penangkar, dan jasa alsintan belum ada</h3>
+      <p>
+        Direktori layanan yang dimaksud mencakup keenamnya. Yang punya data baru dua —
+        toko tani dan penjual benih. Keempat sisanya <strong>nol rekaman</strong>, dan
+        halaman ini tidak berpura-pura sebaliknya.
+      </p>
+    </div>
+  </details>
+
+  <p class="lain">
+    <a href="beranda.html">← Beranda</a> ·
+    <a href="jalur-1.html">Ada masalah di tanaman →</a> ·
+    <a href="index.html">Cek isi produk →</a> ·
+    <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
+    <a href="jalur-4.html">Cek keabsahan benih &amp; bibit →</a> ·
+    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
+    <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
+  </p>
+
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: OpenStreetMap (ODbL) dan data terbuka penjual benih.</p>
+  </section>
+
+</main>
+
+<script type="module" src="toko.js"></script>
+</body>
+</html>

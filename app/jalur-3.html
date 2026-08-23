@@ -5,12 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Hitung rupiah per kg hara — Open Protocols</title>
 <meta name="description" content="Pilih pupuk terdaftar, masukkan harga yang kamu bayar, dan lihat rupiah per kilogram hara — bukan per karung.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
 <header class="atas">
-  <p class="jalur">Jalur 3 · pupuk</p>
+  <div class="baris-atas">
+    <p class="jalur">Jalur 3 · pupuk</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
   <h1>Berapa yang kamu bayar untuk haranya?</h1>
   <p class="lede">
     Orang membandingkan <strong>per karung</strong>. Yang menentukan
@@ -54,7 +69,7 @@
   <section id="rincian" tabindex="-1"></section>
 
   <details class="batas">
-    <summary>Tiga hal yang tidak boleh dibandingkan</summary>
+    <summary><h2>Tiga hal yang tidak boleh dibandingkan</h2></summary>
     <div class="batas-isi">
       <h3>1 · Hara tunggal lawan majemuk</h3>
       <p>
@@ -97,10 +112,18 @@
     <a href="jalur-4.html">Cek keabsahan benih &amp; bibit →</a> ·
     <a href="jalur-5.html">Meramu pupuk sendiri →</a> ·
     <a href="jalur-6.html">Sediaan pengendali sendiri — status hukumnya →</a> ·
+    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
+    <a href="harga.html">Harga komoditas &rarr;</a> ·
+    <a href="principal.html">Profil perusahaan &rarr;</a> ·
+    <a href="toko.html">Cari toko tani &amp; penjual benih →</a> ·
+    <a href="usaha.html">Hitung titik impas usaha tani →</a> ·
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
   </p>
 
-  <p class="sumber" id="sumber">Sumber: registri pupuk terdaftar Kementan.</p>
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri pupuk terdaftar Kementan, dan angka HET Perpres 6/2025 serta Permentan 15/2025.</p>
+  </section>
 
 </main>
 

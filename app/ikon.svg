@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="Open Protocols">
+  <!-- Maskable: seluruh isi ditahan di dalam lingkaran aman 80%, supaya sistem yang
+       memotongnya jadi bentuk lain tidak memotong daunnya. -->
+  <rect width="512" height="512" fill="#00442f"/>
+  <g fill="none" stroke="#79d20a" stroke-width="26" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M256 384V208"/>
+    <path d="M256 256c0-53 43-96 96-96 0 53-43 96-96 96Z"/>
+    <path d="M256 304c0-53-43-96-96-96 0 53 43 96 96 96Z"/>
+  </g>
+</svg>

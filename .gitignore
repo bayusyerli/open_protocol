@@ -11,3 +11,17 @@ spec/indeks/
 # koordinat/nama/alamat lebih dari ~30 hari dan melarang menerbitkan ulang.
 # Hanya place_id yang boleh naik ke repo, lewat toko_data/place-id.ndjson.
 toko_data/privat/
+
+# Harga pangan Bapanas: dataset tanpa medan lisensi dan bertanda "terbatas".
+# Benih privat — dipakai menghitung, tidak diterbitkan. Tarik ulang dengan
+# `node harga_data/tarik-bapanas.mjs`.
+harga_data/privat/
+
+# Tarikan mentah SP2KP — 56 MB dalam satu berkas. Sumbernya berlisensi terbuka dan
+# keluaran ternormalkannya (harga_data/sp2kp-hnt.ndjson) memang naik ke repo; yang
+# mentah tidak, karena bisa ditarik ulang dengan `node harga_data/tarik-sp2kp.mjs`.
+harga_data/mentah/
+
+# Biner OCR hasil kompilasi — dibangun ulang dengan
+# `swiftc -O harga_data/ocr-vision.swift -o harga_data/bin/ocr-vision`.
+harga_data/bin/

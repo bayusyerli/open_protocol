@@ -11,8 +11,12 @@
  * itu ranah yang lain.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks } from './pustaka.js';
-import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, pasangKembali } from './pustaka.js';
+import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(3);
 
@@ -21,7 +25,7 @@ const el = {
   bantuan: document.getElementById('bantuan'),
   hasil: document.getElementById('hasil'),
   rincian: document.getElementById('rincian'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -71,6 +75,12 @@ function hitungHara(p) {
 
 // ---------------------------------------------------------------------------
 let kini = null; // { p, h }
+
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+
 
 function blokKadar(p, h) {
   return `
@@ -273,6 +283,7 @@ async function buka(id, pecahan) {
         <button type="button" class="kembali" id="kembali">← Kembali ke hasil pencarian</button>`;
     } else {
       kini = { p, h };
+      terbukaKini = { id: p.id, nama: p.nama };
       el.rincian.innerHTML = `
         <div class="kartu">
           <h2>${teks(p.nama)}<span class="lencana">Pupuk</span></h2>
@@ -297,11 +308,9 @@ async function buka(id, pecahan) {
     }
 
     catatJawab(3, h ? UKUR.isi : UKUR.takSanggup);
-    el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
-      el.rincian.innerHTML = '';
-      kini = null;
-      el.q.focus();
-    });
+    // B4: komposisinya kosong di registri, jadi rupiah per kg hara memang tidak ada.
+    if (!h) catatLubang('3', LUBANG.haraSediaan);
+    pasangKembali(el.rincian, { fokus: el.q, sesudah: () => { kini = null; } });
   } catch (e) {
     catatJawab(3, UKUR.gagal);
     el.rincian.innerHTML = `<div class="kartu peringatan">
@@ -322,11 +331,11 @@ el.q.addEventListener('input', () => {
   jeda = setTimeout(jalankan, 180);
 });
 
-const kosongHtml = (kueri) => `
+const kosongHtml = (kueri) => (catatLubang('3', LUBANG.namaDagang), `
   <p class="kosong">
     Tidak ada pupuk terdaftar yang namanya memuat <strong>${teks(kueri)}</strong>.
     Nama di karung sering berbeda dari nama terdaftarnya, dan pemetaannya belum ada.
-  </p>`;
+  </p>`);
 
 async function jalankan() {
   const kueri = el.q.value.trim();
@@ -351,11 +360,27 @@ async function jalankan() {
 
 (async function mulai() {
   try {
-    const m = await muatMeta();
-    el.sumber.innerHTML =
-      `Sumber: registri pupuk Kementan lewat <code>spec/indeks/</code> — ` +
-      `${m.jumlah.pupuk.toLocaleString('id-ID')} pupuk terdaftar. ` +
-      `Harga bukan dari registri; ia masukanmu sendiri.`;
+    await muatMeta();
+    // Angka HET tidak tinggal di indeks, dan memang tidak boleh: ia datang dari
+    // peraturan, bukan dari registri — yang tidak menandai status subsidi pada satu pun
+    // dari 7.196 pupuknya. Menaruhnya di indeks berarti berpura-pura registri memuatnya.
+    pasangBatas(el.batas, {
+      sumber: [
+        { dari: 'pupuk', cakupan: 'komposisi hara dan satuannya; harga tidak ada di dalamnya' },
+        {
+          label: 'HET pupuk bersubsidi — Perpres 6/2025 dan Permentan 15/2025',
+          penerbit: 'Pemerintah Republik Indonesia',
+          tarikan: '2026-08-20',
+          status: 'disalin tangan ke layar ini',
+          lisensi: 'Bebas hak cipta — UU 28/2014 Pasal 42',
+          tingkat: 'B',
+          alasan:
+            'Bunyi peraturannya sendiri, dan peraturan tidak menjadi lebih benar dengan diuji. Yang belum dipastikan bukan angkanya melainkan salinannya: ketiga angka disalin tangan dan belum dicocokkan ke salinan resmi yang dihosting Kementan. Kecocokan skema subsidi pada tiap pupuk juga ditebak dari bentuk komposisinya, karena registri tidak menandai status subsidi sama sekali.',
+        },
+      ],
+      takDijawab: ['harga', 'beratJenis', 'haraSediaan'],
+      sanggah: () => terbukaKini,
+    });
     el.q.disabled = false;
   } catch (e) {
     el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>

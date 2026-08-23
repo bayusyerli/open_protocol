@@ -30,9 +30,14 @@
 //                        dipindahkan — dan bundel ekspor memang memindahkannya.
 //   id_blocks            klaim rentang nomor untuk kerja paralel. Pembukuan antar-sesi.
 //   lifecycle.content_hash  jelas: sebuah hash tidak bisa memuat dirinya sendiri.
+//   lifecycle.reviewed_hash sematan tinjauan (L35). Nilainya SALINAN content_hash pada
+//                        saat tinjauan dicatat, jadi mengikutkannya berarti hash yang
+//                        mengejar dirinya sendiri lewat satu lompatan.
 //
-// Sisanya ikut, termasuk seluruh lifecycle lainnya. Naik dari draft ke published MENGUBAH
-// hash-nya, dan itu memang benar: menerbitkan adalah perubahan.
+// Sisanya ikut, termasuk seluruh lifecycle lainnya dan seluruh provenance. Naik dari draft
+// ke published MENGUBAH hash-nya, dan itu memang benar: menerbitkan adalah perubahan.
+// Menambahkan peninjau juga mengubahnya, dan itu juga benar — sesudah itu, setiap
+// perubahan berikutnya membuat sematan tinjauannya tidak lagi cocok, yang persis gunanya.
 
 import { createHash } from 'node:crypto';
 
@@ -58,7 +63,7 @@ export function kanonik(v) {
 export function isiUntukHash(doc) {
   const { $schema, id_blocks, lifecycle, ...sisa } = doc;
   if (!lifecycle) return sisa;
-  const { content_hash, ...sisaLifecycle } = lifecycle;
+  const { content_hash, reviewed_hash, ...sisaLifecycle } = lifecycle;
   return { ...sisa, lifecycle: sisaLifecycle };
 }
 

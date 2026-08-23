@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "principal",
+    "label": {
+      "id": "Badan pemegang pendaftaran — pupuk, pestisida, dan varietas"
+    },
+    "scope": {
+      "id": "Seluruh 3136 badan yang namanya tercantum sebagai pemegang pendaftaran pupuk/pestisida di DB PUKPES atau sebagai pemohon varietas di registri perizinan Kementan, per 19 Agustus 2026. Satu rekaman per badan, bukan per registri: 19 badan memegang pendaftaran di kedua sisi. Pemulia perorangan SENGAJA TIDAK termasuk — 576 varietas dipegang orang atas nama sendiri, dan halaman profil untuk orang bernama adalah penyusunan data pribadi tanpa dasar pemrosesan. Cacah pendaftaran dan ejaan nama diturunkan dari registri; blok `profile` pada 151 rekaman datang dari riset web dan bertingkat D, terpisah dan tidak pernah dicampur ke angka registri."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-23T00:00:00Z",
+      "review_due": "2026-11-23"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Database Pupuk dan Pestisida Terdaftar (PVTPP)",
+          "publisher": "Kementerian Pertanian RI",
+          "url": "https://ap-simpel.pertanian.go.id/",
+          "year": 2026,
+          "locator": "Nama pemegang pendaftaran pada 14.920 baris produk; diseragamkan lewat pukpes_data/principal_alias.csv menurut spec/00-konvensi-kerja-paralel.md bagian 4.",
+          "retrieved": "2026-08-19"
+        },
+        {
+          "title": "Registri perizinan varietas tanaman (SIPERINTIS)",
+          "publisher": "Kementerian Pertanian RI",
+          "url": "https://perizinan.pertanian.go.id/",
+          "year": 2026,
+          "locator": "Nama pemohon pada 11.227 varietas; diseragamkan lewat proseed_data/pemohon_alias.csv.",
+          "retrieved": "2026-08-19"
+        },
+        {
+          "title": "Pengaya principal hasil riset web — grup induk, asal, merek payung, situs",
+          "publisher": "Open Protocols",
+          "year": 2026,
+          "locator": "data/pengaya-principal.csv dan data/principals-benih.csv. BUKAN sumber primer: sumber_jenis bernilai laporan-agen-riset, dan data/README.md mensyaratkan verifikasi ulang per baris. Masuk hanya ke blok `profile` bertingkat D.",
+          "retrieved": "2026-08-19"
+        }
+      ]
+    },
+    "storage": "ndjson",
+    "count": 3136,
+    "id_blocks": [
+      {
+        "from": 1000,
+        "to": 9999
+      }
+    ]
+  }
+}

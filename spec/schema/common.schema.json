@@ -7,7 +7,7 @@
     "CuratedId": {
       "description": "ID entitas vokabuler yang dikurasi dewan redaksi. Nomor 8 digit, diberikan sekali, tidak pernah didaur ulang.",
       "type": "string",
-      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev|proto):[0-9]{8}$"
+      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev|proto|pcp|hrg):[0-9]{8}$"
     },
     "RecordId": {
       "description": "ID data usaha tani. UUIDv7 supaya bisa dibuat offline tanpa server dan tetap terurut menurut waktu.",
@@ -508,6 +508,7 @@
             "GS1",
             "SNI",
             "KEMENTAN",
+            "KEMENDAG",
             "BPS",
             "AGSTACK",
             "OTHER"
@@ -568,6 +569,11 @@
         "locator": {
           "type": "string",
           "description": "Halaman, bab, atau tabel."
+        },
+        "retrieved": {
+          "type": "string",
+          "format": "date",
+          "description": "Tanggal sumber ini ditarik. Wajib bagi sumber daring yang berubah tanpa menerbitkan versi: registri menghapus izin yang habis, jadi tanpa tanggal tarikan tidak ada cara menyatakan salinan ini seusia apa. Sebelum medan ini ada, tanggalnya hanya hidup sebagai prosa di dalam `locator` dan tidak bisa dibaca mesin — itu yang menghalangi layar menyebut tanggalnya."
         }
       },
       "required": [
@@ -576,6 +582,7 @@
       "additionalProperties": false
     },
     "Contributor": {
+      "description": "Orang yang namanya menempel pada satu rekaman. Nama tanpa pernyataan benturan kepentingan adalah nama tanpa dasar untuk dipercaya, jadi conflict_of_interest wajib — 'none' satu kata dan cukup. Peninjau wajib menyertakan tanggal: tinjauan tanpa tanggal tidak bisa diperiksa ulang setelah isinya berubah.",
       "type": "object",
       "properties": {
         "name": {
@@ -598,14 +605,30 @@
           "type": "string",
           "pattern": "^[0-9]{4}-[0-9]{4}-[0-9]{4}-[0-9]{3}[0-9X]$"
         },
+        "date": {
+          "type": "string",
+          "format": "date",
+          "description": "Tanggal orang ini mengerjakan bagiannya. Wajib untuk role 'reviewer'."
+        },
         "conflict_of_interest": {
           "type": "string",
-          "description": "Wajib diisi bila kontributor punya kepentingan komersial pada produk terkait. 'none' bila tidak ada."
+          "minLength": 1,
+          "description": "Kepentingan komersial pada produk, principal, atau varietas yang disebut rekaman ini. 'none' bila tidak ada. Tidak boleh kosong: medan kosong terbaca sebagai tidak ada benturan, dan yang lalai jadi tampak sama dengan yang bersih."
         }
       },
       "required": [
         "name",
-        "role"
+        "role",
+        "conflict_of_interest"
+      ],
+      "allOf": [
+        {
+          "if": {
+            "properties": { "role": { "const": "reviewer" } },
+            "required": ["role"]
+          },
+          "then": { "required": ["date"] }
+        }
       ],
       "additionalProperties": false
     },
@@ -687,6 +710,11 @@
           "type": "string",
           "pattern": "^sha256:[0-9a-f]{64}$",
           "description": "Hash JSON terkanonikalisasi. Wajib untuk apa pun yang berstatus published."
+        },
+        "reviewed_hash": {
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "description": "content_hash pada saat rekaman ini ditinjau. Menyematkannya membuat nama peninjau menempel pada isi tertentu, bukan pada rekaman selamanya: begitu isinya berubah, hash berubah, dan tinjauannya terbaca kedaluwarsa alih-alih diam-diam ikut menanggung isi yang tidak pernah dibaca peninjaunya."
         }
       },
       "required": [

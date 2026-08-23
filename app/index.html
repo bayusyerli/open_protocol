@@ -5,12 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Cek isi produk — Open Protocols</title>
 <meta name="description" content="Cari produk pestisida, pupuk, atau varietas terdaftar; lihat isinya, dan merek lain yang isinya sama persis.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
 <header class="atas">
-  <p class="jalur">Jalur 2 · masuk dari kemasan</p>
+  <div class="baris-atas">
+    <p class="jalur">Jalur 2 · masuk dari kemasan</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
   <h1>Sebenarnya ini apa?</h1>
   <p class="lede">
     Ketik nama yang tertulis di botol, karung, atau sachet. Yang keluar: isinya,
@@ -41,8 +56,38 @@
   <section id="hasil" aria-live="polite"></section>
   <section id="rincian" tabindex="-1"></section>
 
+  <!-- C2 · pemeriksaan keaslian lewat KANDUNGAN, bukan nomor pendaftaran.
+       Premisnya diganti jawaban lapangan: "Tidak. Biasanya langsung lihat kemasan, cek
+       kandungan." Registri membenarkannya dari sisi lain — 667 dari 7.196 pupuk tidak
+       punya nomor sama sekali. -->
+  <div class="kartu" id="kartuKandungan">
+    <h2>Atau periksa dari angka di karungnya</h2>
+    <p>
+      Nama dan nomor pendaftaran sering tidak dipakai orang saat membeli — yang dibaca
+      <strong>kandungan yang tercetak di kemasan</strong>. Masukkan angkanya di sini, dan
+      layar akan mengatakan apakah ada pupuk terdaftar dengan kandungan itu.
+    </p>
+    <form id="formKandungan" onsubmit="return false">
+      <div class="baris-kandungan" id="barisKandungan"></div>
+      <p class="aksi-kandungan">
+        <button type="button" id="tambahHara">+ Tambah hara</button>
+        <button type="button" id="periksaKandungan">Periksa</button>
+      </p>
+      <p class="bantuan" id="bantuanKandungan">
+        Isi seperti yang tertulis di karung. Untuk NPK 15-15-15, isi tiga baris dengan 15%.
+      </p>
+    </form>
+    <p class="catatan">
+      <strong>Ini memeriksa label terhadap registri, bukan isi karung terhadap labelnya.</strong>
+      Kandungan yang cocok berarti labelnya sesuai dengan sesuatu yang memang terdaftar.
+      Ia tidak membuktikan isi di dalamnya — dan justru di situ bahayanya paling tajam.
+    </p>
+  </div>
+
+  <section id="hasilKandungan" aria-live="polite" tabindex="-1"></section>
+
   <details class="batas">
-    <summary>Batas yang perlu diketahui sebelum memakai halaman ini</summary>
+    <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>
     <div class="batas-isi">
       <h3>Nama di kemasan bisa berbeda dari nama terdaftar</h3>
       <p>
@@ -77,15 +122,22 @@
   <p class="lain">
     <a href="beranda.html">← Beranda</a> ·
     <a href="jalur-1.html">Ada masalah di tanaman →</a> ·
-    <a href="index.html">Cek isi produk →</a> ·
     <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
     <a href="jalur-4.html">Cek keabsahan benih &amp; bibit →</a> ·
     <a href="jalur-5.html">Meramu pupuk sendiri →</a> ·
     <a href="jalur-6.html">Sediaan pengendali sendiri — status hukumnya →</a> ·
+    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
+    <a href="harga.html">Harga komoditas &rarr;</a> ·
+    <a href="principal.html">Profil perusahaan &rarr;</a> ·
+    <a href="toko.html">Cari toko tani &amp; penjual benih →</a> ·
+    <a href="usaha.html">Hitung titik impas usaha tani →</a> ·
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
   </p>
 
-  <p class="sumber" id="sumber">Sumber: registri Kementan.</p>
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri pestisida, pupuk, dan varietas Kementan.</p>
+  </section>
 
 </main>
 

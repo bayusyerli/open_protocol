@@ -9,8 +9,12 @@
  * hukumnya — Pasal 75 menentukan pestisida dari kegunaan yang DIKLAIM.
  */
 
-import { ambil, teks } from './pustaka.js';
+import { ambil, muatMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(5);
 
@@ -18,7 +22,7 @@ const el = {
   fungsi: document.getElementById('fungsi'),
   daftar: document.getElementById('daftar'),
   resep: document.getElementById('resep'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -270,11 +274,21 @@ const BLOK_HARA = `
     </p>
   </div>`;
 
+
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
 async function bukaResep(berkas) {
   el.resep.innerHTML = '<p class="kosong">Mengambil resepnya…</p>';
   el.resep.focus();
   try {
     const r = await ambil(berkas);
+    terbukaKini = { id: r.id, nama: r.nama,
+      tautan: tautanKe(`?resep=${encodeURIComponent(berkas.split('/').pop())}`) };
     el.resep.innerHTML = `
       <div class="kartu">
         <h2>${teks(r.nama)}</h2>
@@ -287,10 +301,7 @@ async function bukaResep(berkas) {
       ${blokHukum(r)}${blokBahan(r)}${blokProses(r)}${blokKriteria(r)}${blokPakai(r)}${BLOK_HARA}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
     catatJawab(5, UKUR.isi);
-    document.getElementById('kembali').addEventListener('click', () => {
-      el.resep.innerHTML = '';
-      el.daftar.scrollIntoView({ block: 'start' });
-    });
+    pasangKembali(el.resep, { gulirKe: el.daftar });
   } catch (e) {
     catatJawab(5, UKUR.gagal);
     el.resep.innerHTML = `<div class="kartu peringatan"><h2>Resepnya gagal diambil</h2>
@@ -329,10 +340,28 @@ el.daftar.addEventListener('click', (ev) => {
         }).join('')}
       </ul>`;
     const jalur5 = daftarResep.filter((r) => r.jalur === 5).length;
-    el.sumber.innerHTML =
-      `Sumber: <code>spec/vocab/preparation.json</code> lewat <code>spec/indeks/</code> — ` +
-      `${jalur5} resep sisi pupuk dari ${daftarResep.length}, beserta ${bahanOlehId.size} bahan bakunya. ` +
-      `Bahan, takaran, titik kendali, kriteria pelepasan, dosis, dan APD diambil apa adanya.`;
+    await muatMeta();
+    // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Daftar fungsinya
+    // tetap digambar lebih dulu: tombol "kembali ke daftar" harus mendarat pada sesuatu.
+    pasangBatas(el.batas, {
+      sumber: [{
+        dari: 'sediaan',
+        cakupan: `${jalur5} resep sisi pupuk dari ${daftarResep.length}, beserta ${bahanOlehId.size} bahan baku — bahan, takaran, titik kendali, kriteria pelepasan, dosis, dan APD diambil apa adanya`,
+      }],
+      takDijawab: ['haraSediaan', {
+        judul: 'Padanan lapangan untuk sebagian kriteria pelepasan',
+        teks:
+          'Sebagian kriteria pelepasan hanya bisa diperiksa di laboratorium, dan kosakata ini belum memuat padanan kebunnya untuk bokashi dan vermikompos. Layar menyebutkan kekosongan itu alih-alih mengarang uji kebun yang belum pernah diputuskan siapa pun.',
+      }],
+      sanggah: () => terbukaKini,
+    });
+
+    // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Dipanggil PALING
+    // AKHIR, sesudah daftar fungsi dan blok batas selesai digambar: keduanya menyentuh
+    // panel yang sama, dan memanggilnya lebih dulu membuat resepnya tergambar lalu
+    // terhapus tanpa satu pun galat.
+    const { resep } = tautanMasuk();
+    if (resep) await bukaResep(`sediaan/${resep}`);
   } catch (e) {
     el.fungsi.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan

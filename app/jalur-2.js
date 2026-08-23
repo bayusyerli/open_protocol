@@ -12,10 +12,16 @@
  * yang sama dengan jalur 4, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali, namaPemegang } from './pustaka.js';
+import { blokGambar, pasangUsulGambar } from './gambar.js';
 import { layarVarietas } from './varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
-import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
+import { pasangKandungan } from './kandungan.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(2);
 
@@ -24,13 +30,24 @@ const el = {
   bantuan: document.getElementById('bantuan'),
   hasil: document.getElementById('hasil'),
   rincian: document.getElementById('rincian'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
 
 let larangan = null;
 let bahanKini = null;
+// Produk yang sedang terbuka. Dibaca formulir usul gambar saat tombolnya ditekan — bukan
+// disalin ke dalam markup, supaya tidak ada rekaman produk yang menganggur di DOM.
+let produkKini = null;
+
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
 
 // ---------------------------------------------------------------------------
 // Blok-blok layar rincian
@@ -145,7 +162,7 @@ async function blokSetara(p) {
         <table>
           <thead><tr><th>Merek</th><th>Pemegang</th><th>Nomor pendaftaran</th></tr></thead>
           <tbody>${lain.map((x) => `
-            <tr><td>${teks(x.n)}</td><td>${teks(x.k ?? '—')}</td><td class="angka">${teks(x.p ?? '—')}</td></tr>`).join('')}</tbody>
+            <tr><td>${teks(x.n)}</td><td>${namaPemegang(x.k, x.pk)}</td><td class="angka">${teks(x.p ?? '—')}</td></tr>`).join('')}</tbody>
         </table>
       </div>
       <p class="catatan">
@@ -158,10 +175,7 @@ async function blokSetara(p) {
 // ---------------------------------------------------------------------------
 function selesai() {
   catatJawab(2, UKUR.isi);
-  el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
-    el.rincian.innerHTML = '';
-    el.q.focus();
-  });
+  pasangKembali(el.rincian, { fokus: el.q });
 }
 
 async function buka(id, pecahan) {
@@ -176,12 +190,18 @@ async function buka(id, pecahan) {
       const b = (await ambil(pecahan))[id];
       if (!b) throw new Error('tidak ada di pecahannya');
       bahanKini = b;
+      terbukaKini = { id, nama: b.n ?? null,
+        tautan: tautanKe(`?id=${encodeURIComponent(id)}&pecahan=${encodeURIComponent(pecahan)}`) };
       el.rincian.innerHTML = layarBahan(id, b);
       return selesai();
     }
 
     const p = (await ambil(pecahan)).find((x) => x.id === id);
     if (!p) throw new Error('tidak ada di pecahannya');
+
+    produkKini = p.jenis === 'varietas' ? null : p;
+    terbukaKini = { id: p.id, nama: p.nama,
+      tautan: tautanKe(`?id=${encodeURIComponent(p.id)}&pecahan=${encodeURIComponent(pecahan)}`) };
 
     if (p.jenis === 'varietas') {
       el.rincian.innerHTML = await layarVarietas(p);
@@ -196,14 +216,14 @@ async function buka(id, pecahan) {
         <div class="kartu">
           <h2>${teks(p.nama)}<span class="lencana">${teks(JENIS[p.jenis] ?? p.jenis)}</span></h2>
           <dl class="kunci">
-            <dt>Pemegang pendaftaran</dt><dd>${teks(p.produsen ?? '—')}</dd>
+            <dt>Pemegang pendaftaran</dt><dd>${namaPemegang(p.produsen, p.pcp?.key)}</dd>
             <dt>Nomor pendaftaran</dt><dd>${teks(p.daftar ?? '—')}</dd>
             <dt>Berlaku sampai</dt><dd>${teks(tanggal(p.berlaku) ?? '—')}${p.status && p.status !== 'active' ? ` (${teks(p.status)})` : ''}</dd>
             <dt>Bentuk</dt><dd>${teks(p.bentuk ?? '—')}</dd>
           </dl>
           <p class="catatan">Cocokkan nomor pendaftaran itu dengan yang tertera di kemasan.</p>
         </div>
-        ${blokLarangan(p.isi)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_KEMBALI}`;
+        ${blokLarangan(p.isi)}${blokGambar(p)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_KEMBALI}`;
     }
 
     selesai();
@@ -216,6 +236,8 @@ async function buka(id, pecahan) {
       <p class="catatan">${teks(e.message)}</p></div>`;
   }
 }
+
+pasangUsulGambar(el.rincian, () => produkKini);
 
 for (const wadah of [el.hasil, el.rincian]) {
   wadah.addEventListener('click', async (ev) => {
@@ -250,12 +272,12 @@ el.q.addEventListener('input', () => {
   jeda = setTimeout(jalankan, 180);
 });
 
-const kosongHtml = (kueri) => `
+const kosongHtml = (kueri) => (catatLubang('2', LUBANG.namaDagang), `
   <p class="kosong">
     Tidak ada nama terdaftar yang memuat <strong>${teks(kueri)}</strong>.
     Itu <em>bukan</em> berarti produknya tidak terdaftar — nama di kemasan sering
     berbeda dari nama terdaftarnya, dan pemetaannya belum ada.
-  </p>`;
+  </p>`);
 
 async function jalankan() {
   const kueri = el.q.value.trim();
@@ -279,13 +301,14 @@ async function jalankan() {
 
 (async function mulai() {
   try {
-    const m = await muatMeta();
-    const j = m.jumlah;
-    el.sumber.innerHTML =
-      `Sumber: registri Kementan lewat <code>spec/indeks/</code> — ` +
-      `${j.pestisida.toLocaleString('id-ID')} pestisida, ${j.pupuk.toLocaleString('id-ID')} pupuk, ` +
-      `${j.varietas.toLocaleString('id-ID')} varietas. ` +
-      `${j.produkSetara.toLocaleString('id-ID')} produk berada dalam ${j.kelompokSetara.toLocaleString('id-ID')} kelompok berisi sama.`;
+    await muatMeta();
+    pasangBatas(el.batas, {
+      sumber: ['pestisida', 'pupuk', 'varietas'],
+      takDijawab: ['namaDagang', 'isiKarung', 'phi'],
+      sanggah: () => terbukaKini,
+    });
+    // C2 — pintu kedua ke layar yang sama: masuk dari angka di karung, bukan dari nama.
+    pasangKandungan(buka);
     el.q.disabled = false;
 
     // Datang dari beranda: kuerinya dipulihkan supaya tombol kembali peramban tidak

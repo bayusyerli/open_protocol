@@ -1,0 +1,84 @@
+name: Menawarkan tinjauan bernama
+description: Anda bersedia membaca satu rekaman dan menempelkan nama Anda padanya, tanpa harus menyentuh git.
+title: "Tinjauan · "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Kalau Anda nyaman dengan git, jalur yang lebih cepat ada di
+        [CONTRIBUTING.md](../blob/main/CONTRIBUTING.md)** — satu perintah menulis nama,
+        tanggal, dan sematan tinjauannya sekaligus.
+
+        Formulir ini untuk yang tidak ingin menyentuh git sama sekali. Isi di bawah, dan
+        perubahannya akan disiapkan sebagai PR atas nama Anda — dengan nama Anda, bukan
+        nama orang lain.
+
+        **Yang melindungi nama Anda.** Tinjauan disematkan pada isi yang benar-benar Anda
+        baca (`lifecycle.reviewed_hash`). Begitu rekaman itu disunting orang lain,
+        pemeriksa menyatakan tinjauan Anda **kedaluwarsa** — nama Anda berhenti berlaku
+        pada perubahan yang tidak Anda baca, tanpa Anda perlu mengawasinya.
+
+        **Yang tidak Anda dapat**, dan lebih baik dinyatakan sekarang: tidak ada bayaran,
+        tidak ada janji rekaman Anda akan dipakai orang, dan tidak ada jaminan waktu
+        tanggapan.
+
+  - type: input
+    id: rekaman
+    attributes:
+      label: Rekaman yang Anda tinjau
+      description: Id atau berkasnya. Jalankan `node spec/tools/tinjau.mjs` untuk melihat daftarnya, atau sebut saja namanya.
+      placeholder: "op:proto:00000001 — Cabai merah besar, dataran rendah"
+    validations:
+      required: true
+
+  - type: input
+    id: nama
+    attributes:
+      label: Nama Anda, sebagaimana Anda ingin ia tercatat
+      description: Ini yang akan menempel di korpus publik dan bisa dikutip orang.
+    validations:
+      required: true
+
+  - type: input
+    id: afiliasi
+    attributes:
+      label: Afiliasi
+      placeholder: "Fakultas Pertanian Universitas …, atau BSIP …, atau mandiri"
+
+  - type: input
+    id: orcid
+    attributes:
+      label: ORCID
+      description: Kalau punya. Bentuknya 0000-0000-0000-000X.
+
+  - type: textarea
+    id: benturan
+    attributes:
+      label: Benturan kepentingan
+      description: >-
+        Kepentingan komersial pada produk, pemegang pendaftaran, atau varietas yang disebut
+        rekaman ini. Tulis "none" bila tidak ada. Wajib — dan bukan karena kecurigaan:
+        agronom yang bekerja pada salah satu dari 3.136 pemegang pendaftaran justru orang
+        yang paling tahu produknya. Medan ini yang membuat tinjauannya bisa dibaca apa
+        adanya alih-alih dicurigai belakangan.
+      placeholder: "none"
+    validations:
+      required: true
+
+  - type: textarea
+    id: temuan
+    attributes:
+      label: Temuan Anda
+      description: >-
+        Apa yang benar, apa yang salah, apa yang kurang. Kalau menurut Anda tingkat
+        buktinya layak naik atau turun, sebutkan tingkat mana dan atas dasar apa —
+        tinjauan tidak menaikkan tingkat bukti sendiri, dan yang menaikkannya adalah isi
+        tinjauan ini.
+    validations:
+      required: true
+
+  - type: markdown
+    attributes:
+      value: |
+        Isu ini terbaca siapa saja dan tercatat atas nama akun GitHub Anda. Jangan
+        menuliskan nomor telepon atau alamat Anda di kolom mana pun.

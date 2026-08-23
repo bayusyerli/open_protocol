@@ -87,7 +87,7 @@ akan menyembunyikan persis bagian yang paling lambat.
 
 | Tidak diukur | Alasan |
 |---|---|
-| Isi pencarian, produk yang dibuka | Bukan cacah dan lama; ini jejak minat yang bisa mengenali orang di desa kecil |
+| Isi pencarian, produk yang dibuka | Bukan cacah dan lama; ini jejak minat yang bisa mengenali orang di desa kecil. **Tetap berlaku sesudah B4** — lihat bagian 4a |
 | Lokasi, peranti, peramban | Tidak satu pun keputusan produk berubah karenanya, dan semuanya bahan sidik |
 | Corong per ketukan | Mengukur bagian mana yang ditinggalkan menuntut penelusuran per sesi; belum ada pertanyaan yang membutuhkannya |
 | Jumlah pengunjung | Tidak bisa, dan memang tidak diminta gate-nya. Yang diminta repeat use dan waktu |
@@ -107,6 +107,74 @@ ketiganya jadi “berhasil” akan menyembunyikan sinyal, dan memasukkan *tak sa
 Justru **tak sanggup adalah pengukur lubang data yang paling langsung.** Tiga lubang di
 [10-peta-modul.md](10-peta-modul.md) bagian 4 — subsidi, PHI, sifat agronomi — akan
 muncul di kolom itu sebagai angka, bukan sebagai dugaan.
+
+---
+
+## 4a. Antrean pertanyaan tak terjawab — B4
+
+Tiap “tidak sanggup” yang ditampilkan hari ini menghilang begitu layar ditutup. Dicatat,
+ia menjadi **peta permintaan data**: lubang mana yang benar-benar ditabrak orang, bukan
+lubang mana yang menurut kami penting.
+
+### Yang dicatat, dan yang tidak
+
+**Cacahnya saja. Tidak pernah kata yang diketik.**
+
+Bagian 3 di atas menyatakan isi pencarian sengaja tidak diukur, dengan alasan yang tidak
+berubah karena B4 datang: jejak minat bisa mengenali orang di desa kecil. Dua dokumen
+proyek ini sempat tampak bertabrakan di sini —
+[15-kapabilitas-lintas-pemangku.md](15-kapabilitas-lintas-pemangku.md) meminta B4,
+dokumen ini melarang merekam isinya — dan tabrakannya ternyata semu. Yang diminta B4
+adalah *“registri **mana** yang layak ditarik berikutnya”*. Itu pertanyaan **kategori**,
+dan kategori tidak butuh teks kueri.
+
+Jadi yang dicatat **nomor lubang yang tertabrak**, dan lubang-lubangnya sudah bernama,
+sudah tercetak di layar lewat blok batas jawaban, dan sudah terdaftar di
+`meta.tidakAda`. Mencacahnya tidak menambah satu keterangan pun tentang orangnya.
+
+> Bentuk B4 yang lebih kaya — mencatat kuerinya sendiri — **tidak dibangun**, dan itu
+> bukan penundaan teknis. Ia menuntut baris di bagian 3 dicabut lebih dulu, dan
+> pencabutan itu keputusan pemilik repositori, bukan akibat sampingan dari membangun
+> sebuah fitur. Tanda tangan `catatLubang(sumber, kunci)` sengaja tidak menyediakan
+> tempat untuk teks, supaya penambahannya tidak bisa terjadi tanpa disadari.
+
+### Definisi tiap medan
+
+| Medan | Definisi |
+|---|---|
+| `kunci` | Nama lubang. Wajib salah satu dari `LUBANG` di `app/ukur.js`, dan daftar itu wajib berisi **tepat** yang dipanggil layar — kunci yang tidak terdaftar ditolak diam-diam, dan lubang yang gagal dicatat tanpa suara adalah kebalikan dari gunanya B4 |
+| `n` | Berapa kali lubang itu tertabrak di peranti ini |
+| `dari` | Layar mana, dan berapa kali masing-masing. **Nama layar, bukan nomor jalur** — beranda ikut mencatat tanpa diberi nomor karangan, jadi tabel di bagian 2 tidak berubah |
+| `akhir` | Tanggal terakhir ia tertabrak |
+
+### Enam lubang yang tercatat
+
+| Kunci | Tertabrak ketika | Yang menutupnya |
+|---|---|---|
+| `namaDagang` | Nama dicari, tidak ada padanan terdaftar | Pemetaan nama dagang ke nama terdaftar |
+| `gejalaOpt` | Gejala dicari, di luar sepuluh OPT terkurasi | Deskripsi gejala untuk OPT registri |
+| `namaLokalTakTerpetakan` | Nama lokal dikenal, rujukannya belum ada | Perluasan kamus nama lokal |
+| `kandunganTakTerdaftar` | Kandungan diperiksa, tidak ada yang cocok | Kelengkapan komposisi registri pupuk |
+| `haraSediaan` | Komposisi pupuk kosong, hara tak terhitung | Kelengkapan komposisi registri pupuk |
+| `takaranRumahTangga` | Menakar tanpa alat terukur | Panduan takaran — **bukan** tarikan data |
+
+Baris terakhir sengaja dibiarkan di daftar walau bukan permintaan data: registri tidak
+akan pernah memuat ukuran tutup botol siapa pun. Kalau ia sering tertabrak, yang perlu
+ditulis panduan — dan mengetahui itu sama berharganya dengan mengetahui registri mana
+yang perlu ditarik.
+
+### Urutannya menurut frekuensi, bukan menurut kepentingan
+
+Itu seluruh gunanya. Daftar lubang yang diurutkan menurut seberapa penting menurut tim
+sudah ada — ia `meta.tidakAda`, dan urutannya tebakan. B4 mengurutkannya menurut
+seberapa sering orang benar-benar menabraknya.
+
+### Tidak ada yang diberi tahu
+
+Antrean ini tinggal di peranti yang sama, di bawah kunci `localStorage` yang sama, dan
+ikut terhapus oleh tombol hapus yang sama. Empat batas di bagian 1 berlaku penuh —
+termasuk **tanpa jaringan**. Ia berguna kalau dan hanya kalau diserahkan atas permintaan,
+dan sampai itu terjadi tidak seorang pun di ujung sana membacanya.
 
 ---
 

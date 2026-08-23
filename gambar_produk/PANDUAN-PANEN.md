@@ -139,21 +139,48 @@ Urutkan begini, bukan sebaliknya:
    `direktori.py` menariknya dan menandai domain mana yang belum ada di antrean.
 2. **Direktori Alishter.** 27 anggota, sebagian tidak tumpang tindih dengan CropCare —
    satu-satunya yang mencantumkan Agro Bumi Timur.
-**Untuk pupuk, direktori asosiasinya tidak ada — dan ini sudah dituntaskan dua kali,
-jangan dicoba lagi.** Satu agen menarik kedua API asosiasi secara utuh (1,99 MB dan
-589 KB, diverifikasi asli) dan menemukan **nol dari 40 principal pupuknya** ada di sana. CropCare dan Alishter badan pestisida; nol dari 40 principal pupuk pada
-satu potongan jadi anggotanya. Sisi pupuknya diperiksa satu per satu:
+
+**Segmen pupuk: dua direktori pengganti, dan keduanya buntu — sudah ditelusuri sampai
+habis, jangan bayar ulang.**
+
+CropCare dan Alishter badan **pestisida**. Pemetaan gelombang 4 agen 3 mengukurnya: **nol
+dari 40 principal pupuk** jadi anggota keduanya. Dua badan pupuk diusulkan sebagai
+pengganti; keduanya ditelusuri lewat API dan arsip pada 22 Agustus 2026, dan hasilnya
+**nol domain baru**. Sebabnya berbeda sama sekali, dan sebab itulah yang perlu diingat,
+bukan angkanya.
 
 | Badan | Hasil |
 |---|---|
 | `apmi-online.org` | 200 — tetapi **minyak dan gas**; daftar anggotanya Baker Hughes dan Baroid. Ia sendiri jebakan nama |
-| `appi.or.id` | punya DNS, tetapi mati — proksi pun membalas 422 |
-| **AP2KMI** | **tidak punya situs sama sekali** — nol A record pada `.or.id` maupun `.id` |
-| APPKMI `asosiasiprodusenpupuk.org` | hidup (lewat proksi, 6,3 KB) tetapi **nol alamat surat**; satu halaman tanpa daftar anggota |
+| **APPI** — Asosiasi Produsen Pupuk Indonesia | Anggotanya cuma **6, seluruhnya BUMN**: `pusri.co.id`, `petrokimia-gresik.com`, `pupuk-kujang.co.id`, `pupukkaltim.com`, `pim.co.id`, plus holding `pupuk-indonesia.com`. Semuanya sudah di antrean sejak gelombang 1. APPI himpunan raksasa negara — **kebalikan** dari ekor tempat principal pupuk kita berada |
+| **AP2KMI** — Asosiasi Produsen Pupuk Kecil Menengah Indonesia | **AP2KMI dan APPKMI badan yang SAMA**, dua ejaan akronim untuk satu nama. Situsnya `asosiasiprodusenpupuk.org`; lewat API-nya: **2 halaman** (satu berjudul "Under Costruction"), **0 pos**, 1 pengguna admin, media seluruhnya foto stok Unsplash, **nol alamat surat**. Brosur satu halaman, bukan direktori |
 
-Jadi jalur §1.1 memang tidak punya padanan di segmen pupuk. Satu agen menduga AP2KMI
-adalah direktori yang tepat dan belum dicoba — dugaannya masuk akal, dan salah: badannya
-ada, situsnya tidak.
+Buktinya dua arah, dan itu yang menutup dugaan "AP2KMI belum pernah dicoba": CV. Dewi Sri
+Rama menyebut dirinya anggota "Asosiasi Produsen Pupuk Kecil Menengah Indonesia
+**(AP2KMI)**", sementara `asosiasiprodusenpupuk.org` menyebut dirinya "Asosiasi Produsen
+Pupuk Kecil Menengah Indonesia **(APPKMI)**" — kalimat yang sama persis, akronim berbeda.
+Badannya memang menaungi produsen kecil-menengah, persis ekor yang kita cari; **situsnya
+yang tidak pernah memuat daftar anggota.** Dugaan itu masuk akal dan tetap salah, tetapi
+salahnya bukan "badannya tidak ada" — melainkan badannya ada di bawah nama lain yang
+sudah diperiksa.
+
+**Domain APPI sendiri sudah lepas, dan itu mengubah cara memeriksanya.** `appi.or.id` nol
+A record pada 8.8.8.8 maupun 1.1.1.1, berstatus `serverHold` di PANDI, dan tangkapan
+Wayback November 2024 atas `www.appi.or.id` adalah **situs judi slot** — domainnya lepas
+lalu diduduki pihak lain. Daftar anggota di atas datang dari arsip 26 Februari 2021, bukan
+dari situs hidup. Pelajaran §0 berlaku terbalik di sini: yang dicegah bukan `mati` palsu
+melainkan **hidup palsu** — domain yang masih menjawab 200 tetapi sudah bukan milik badan
+yang kau cari. Periksa siapa pemiliknya sekarang, bukan cuma apakah ia menjawab.
+
+`direktori-pupuk.py` menariknya dan menandai domain mana yang belum ada di antrean, sama
+seperti `direktori.py` di sisi pestisida. Jalankan ia lebih dulu sebelum menduga ada
+direktori pupuk yang terlewat — jawabannya sudah dikodekan di sana, berikut cara
+mengambilnya (arsip untuk APPI, proksi untuk AP2KMI).
+
+**Dan API tidak selalu membalik hasilnya.** Di CropCare, API memberi 46 domain yang tak ada
+di HTML; di AP2KMI, API **membenarkan** HTML yang kosong. Yang membuat kedua pemeriksaan
+sah adalah pemeriksaannya dilakukan, bukan hasilnya berbalik. Jangan pakai kisah CropCare
+sebagai janji bahwa setiap HTML kosong menyembunyikan API yang penuh.
 
 **Dan urutan itu punya batas segmen.** Pada satu potongan berisi 15 principal, **tidak
 satu pun anggota CropCare maupun Alishter**, dan CropLife Indonesia tidak menerbitkan
@@ -195,6 +222,8 @@ menghabiskan pengambilan.
 | `tunasharapan.com` | halaman jual HugeDomains — yang benar **`tunasharapan-murni.com`** dengan tanda hubung, dan bentuk tanpa hubung itulah yang lebih dulu ditebak orang |
 | `east-chem.com` | EASTCHEM di Lomé, Togo — punya server surat sendiri, judulnya cocok persis |
 | `agrochemica.com` | EW Nutrition |
+| `appi.id` | **Asosiasi Perusahaan Pembiayaan Indonesia** — multifinance, bukan pupuk. Akronimnya sama persis dengan Asosiasi Produsen Pupuk **Indonesia**, situsnya hidup dan rapi (44 KB), dan ia punya halaman "Daftar Anggota" sungguhan — yang isinya perusahaan berizin OJK. Ketahuan dari `Application_For_Membership_Multifinance.pdf` dan tautan `lapssjk.id` |
+| `*.indonetwork.co.id` | **subdomain wildcard**: `appkmi.indonetwork.co.id` dan subdomain karangan `zzz-tidak-ada-sama-sekali-9f3k` sama-sama membalas **200 dengan 865.514 bita yang sama** — beranda marketplace, bukan profil badan. Setiap nama asosiasi tampak "punya halaman" di sana. Ukur panjang badannya, seperti pada "Just a moment..." di §0 |
 | `nasa.co.id` | **paling licin** — NASA adalah akronim dagang Natural Nusantara sendiri dan TLD-nya benar, tetapi isinya produsen alas kaki |
 | `cvabadijaya.com` | badan hukum cocok **persis** (CV. Abadi Jaya) — distributor makanan Medan |
 | `saranatani.id` | pertanian sungguhan, TLD benar — tetapi **UD** Sarana Tani, kios eceran, bukan **PT** Sarana Tani Indonesia Makmur |
@@ -422,7 +451,7 @@ menangkap:
 Pakai keduanya. Dan ingat syarat §4: IoU siluet hanya sah bila latarnya benar-benar
 transparan.
 
-## 4d. Periksa `robots.txt` sebelum memanen — dan patuhi
+## 4h. Periksa `robots.txt` sebelum memanen — dan patuhi
 
 Satu situs di sapuan ini menyatakan penolakannya secara eksplisit:
 
@@ -1057,6 +1086,22 @@ mengembalikan 768 objek. Katalognya menautkan `_productThumb/` pada 300×380 —
 membuatnya dinilai tipis — padahal **membuang segmen itu memberi 1134×1436**. Pola yang
 persis sama dengan ember DGW di §7g.
 
+**Tetapi `_productThumb/` di ember itu ada DUA, dan hanya satu yang punya master.** Turunan
+di bawah `images/product/_productThumb/` memang tinggal dibuang segmennya. Yang di **akar
+ember** — `_productThumb/pg_petro-ningrat.png` dan lima saudaranya — tidak punya berkas
+sepadan di mana pun; 300×380 itu satu-satunya yang ada. Ember hanya memuat 12 objek di
+prefix akar itu, jadi memeriksanya murah. Jangan mengarang aturan tunggal dari satu contoh
+yang berhasil.
+
+**Berkas besar dengan nama yang mirip belum tentu versi besar; bisa jadi desain karung
+LAMA.** Untuk PHONSKA PLUS, ember menyimpan `phonska-plus-zn-sulfur-transparant.png`
+800×1014 — hampir tiga kali lipat turunan 300×380 yang ditautkan katalog, dan menggoda
+diambil sebagai master. Ia karung generasi sebelumnya: mencetak `01.01.2014.234` dan
+`MASA EDAR DESEMBER 2019`, sedangkan yang ditayangkan katalog hari ini karya seni yang
+berbeda sama sekali. Hal yang sama pada PETRO NITRAT (`nitrat1-transparant.png`, 800×1081).
+Menukarnya demi piksel berarti menerbitkan kemasan yang sudah tidak beredar — kerugian yang
+lebih besar daripada resolusi yang didapat. **Bandingkan gambarnya, jangan namanya.**
+
 **Sufiks `-WxH` bisa jadi bagian dari nama unggahan, dan bisa BOHONG — atau JUJUR.**
 `AVIANI-1080x1080-2.png` sebenarnya 800×800, dan membuang sufiksnya justru 404. Sebaliknya
 `ARJUNA-300x300-1.png` di Belirang memang benar 300×300, dan membuangnya juga 404. Jadi
@@ -1109,6 +1154,26 @@ Cabang non-pestisida terpisah: `/id/content/{pupuk,benih,produk-kimia,peternakan
 Total 68 halaman produk. **Sudah habis dipanen** — setiap halaman yang cocok ke registri
 sudah masuk; 47 merek registri sisanya tidak punya halaman sama sekali.
 
+**`petrokimia-gresik.com`** — seluruh kategori pupuk ada di `/product-category/pupuk`,
+29 halaman, **tanpa penomoran halaman**: satu tarikan memberi semuanya. Halaman produknya
+memakai **dua template**, dan pemanen yang hanya mengenal satu akan kehilangan sepertiga
+katalog tanpa galat apa pun — tujuh belas halaman menaruh packshot di
+`img.lazyload.slide-thumbnail[data-src]`, dua belas sisanya di dalam carousel
+`#thumbnail-sliders`. Arah kerugiannya berlawanan pula: yang carousel justru menautkan
+berkas master langsung, yang hero menautkan turunan `_productThumb/`.
+
+Brosur PDF-nya tersedia di hampir tiap halaman dan **tidak memuat satu pun nomor
+pendaftaran** — berbeda dari karya seni label UPL di §11. Ia tetap berguna untuk komposisi
+(dan sekali memperlihatkan selisih: brosur PHONSKA ALAM menyebut N 5% yang tidak tercetak di
+karung dan tidak ada di hasil analisa uji mana pun), tetapi nomornya harus dicari di
+karungnya, bukan di brosurnya.
+
+Tiga halaman di kategori ini bukan pupuk: PETRO BIOFEED, PETRO CHICK, dan PETROFISH adalah
+probiotik ternak dan perikanan, tidak ada di registri PUKPES, jadi tidak bisa punya baris
+manifes sama sekali — `G2` menuntut `brand_key` yang benar-benar ada. Dua lagi bukan
+packshot: `/product/bahan-kimia` memasang foto gelas laboratorium dan `/product/jasa` foto
+pabrik.
+
 **`pt-sgi.com`** — `zat_aktif` dari API kotor: beberapa nilai berspasi di depan, satu
 bertab (`Flurokspir meptil 520\tg/l`), satu bersatuan salah (`Imidacloprid 25 EC`). Cukup
 untuk membuktikan kecocokan, tidak cukup untuk dijadikan kunci.
@@ -1134,3 +1199,428 @@ memutuskan:
 gambar di umpan artikel · Prima Karya 44 merek cocok beresolusi 1080×1080 · SGI 58 merek ·
 Saprotan 18 merek tak-ambigu · MKD 13 · Prima Agro 15 · brosur label PT-AMA dan Kristalindo
 (`brocure/BROSUR-*.jpg.webp`, `brosur_*.jpg`) belum tersentuh sama sekali.
+
+
+## 14. Merek payung: ketika kolom merek registri lebih kasar daripada rak toko
+
+Panen katalog pupuk Petrokimia Gresik (23 Agustus 2026, 29 halaman) menabrak batas yang
+belum pernah muncul pada principal pestisida mana pun, dan sebabnya struktural — bukan
+kelalaian pemanen.
+
+Registri mendaftarkan formulasi di bawah **nama merek**. Untuk lini komoditas Petrokimia,
+nama itu bukan nama produk melainkan nama perusahaannya sendiri:
+
+| Merek registri | Pendaftaran | Isi sebenarnya |
+|---|---:|---|
+| `KEBOMAS` | 29 | NPK aneka grade, plus dua Kaptan |
+| `PETROKIMIA GRESIK` | 11 | Urea, SP-36, SP-26, ZA, ZK, DAP, fosfat alam, organik ×2, hayati ×2 |
+| `PETRO` | 9 | ZA, superfosfat tunggal 26%, tujuh baris legacy an-organik tanpa komposisi |
+
+Rak toko memisahkan semuanya. Karung `PUPUK SP-36` bersubsidi berlogo PUPUK INDONESIA dan
+karung `PUPUK SP-36 PETRO` nonsubsidi adalah dua kemasan dengan karya seni berlainan — dan
+**keduanya menunjuk pendaftaran yang sama**, `01.01.2024.203`. Pembelahan lininya bahkan
+tidak konsisten di registri: karung nonsubsidi mencetak wordmark `PETRO`, tetapi ZK dan
+SP-36-nya terdaftar di bawah merek `PETROKIMIA GRESIK` sedangkan ZA-nya di bawah `PETRO`.
+
+`G6` memberi satu `kemasan_depan` per merek. Sebelas packshot sah karena itu berebut tiga
+slot, dan delapan yang kalah tidak bisa ditulis sebagai baris `ditolak` pun — §4c berlaku
+untuk tolakan yang **menggantikan**, sedangkan di sini baris tolakan akan menabrak `G6`
+yang sama.
+Satu-satunya tempat yang tersisa untuk mencatatnya adalah dokumen ini.
+
+Yang menang slotnya, dan alasannya:
+
+| Merek | Yang diambil | Kenapa ia yang dipilih |
+|---|---|---|
+| `petrokimia-gresik-pt-petrokimia-gresik` | SP-36 bersubsidi | satu-satunya packshot di seluruh katalog ini yang nomor tercetaknya ADA di registri **dan** milik mereknya sendiri: `01.01.2024.203` |
+| `petro-pt-petrokimia-gresik` | ZA PETRO | N 21% + S 24% cocok persis ke `01.08.2022.988`, satu-satunya pendaftaran `PETRO` yang menyimpan komposisi sama sekali |
+| `kebomas-pt-petrokimia-gresik` | Kapur Pertanian | 1134×1436, dan jenis terdaftarnya memisahkan 2 Kaptan dari 27 NPK |
+
+**Yang terparkir.** Semuanya packshot bersih di ember principal sendiri, semuanya sudah
+dicocokkan ke pendaftarannya. Yang menghalangi hanya slot, bukan bukti:
+
+| Halaman | Karung | Pendaftaran yang dirujuk |
+|---|---|---|
+| `/product/pupuk-sp-36-2` | PUPUK SP-36 PETRO, 36/5 | `01.01.2024.203` |
+| `/product/pupuk-urea-subsidi` | UREA bersubsidi, N 46% | `01.05.2024.200` |
+| `/product/pupuk-urea-non-subsidi` | PUPUK UREA PETRO, N 46% | `01.05.2024.200` |
+| `/product/za-subsidi` | PUPUK ZA bersubsidi | `01.08.2023.2311` |
+| `/product/pupuk-zk` | PUPUK ZK PETRO, K₂O 50% S 17% | `01.03.2024.580` |
+| `/product/sp-26` | PUPUK SP-26 PETRO, 26/5 | `01.01.2025.774` |
+| `/product/petroganik-2` | PUPUK ORGANIK PETROGANIK bersubsidi | `02.01.2023.924` atau `02.08.2023.926` — komposisi tercetak tidak memisahkan |
+| `/product/pupuk-spesifikasi-komoditi` | PUPUK NPK KEBOMAS 15-15-15 | **tidak ada yang cocok** |
+| *(tanpa halaman)* `kantong-DAP-PETRO-transparant.png` | PUPUK DAP PETRO, N 18% P₂O₅ 46% | `01.01.2024.579` |
+| *(tanpa halaman)* `021118_Rock-phosphate-PETRO_2018_3D-transparant.png` | PUPUK ROCK PHOSPHATE PETRO, P₂O₅ 28% | `01.03.2024.258` |
+
+Dua baris terakhir datang dari sapuan ember di pasal 16, bukan dari katalog: DAP dan Rock
+Phosphate tidak punya halaman produk sama sekali, tetapi packshot dan pendaftarannya
+dua-duanya ada — yang hilang cuma slot. Karung `PUPUK KCL PETRO` juga ada di ember dan
+tidak masuk tabel ini, sebab K₂O 60% yang tercetak tidak cocok ke satu pun pendaftaran
+Petrokimia; ia bukan terparkir melainkan tak berpendaftaran.
+
+Baris NPK KEBOMAS itu temuan tersendiri: **tidak satu pun dari 29 pendaftaran KEBOMAS
+berkomposisi 15-15-15.** Yang terdekat 15-15-18 (`01.01.2023.727`) dan 15-15-6
+(`01.01.2023.1448`). Karung itu memang halaman "Pupuk Spesifikasi Komoditi" — lini racikan
+pesanan — jadi kemungkinan besar ia karung contoh, bukan SKU terdaftar. Dicatat apa adanya;
+jangan dipaksakan cocok ke pendaftaran terdekat.
+
+**Satu lagi tertahan bukan oleh slot melainkan oleh namanya.** `/product/pupuk-za-plus`
+menayangkan karung `PETRO ZA PLUS` 50 kg — N 21%, S 24%, Zn 1.000 ppm — dan satu-satunya
+pendaftaran Petrokimia yang berkomposisi N 21% + S 24% berbentuk butiran adalah
+`01.01.2025.490`, yang di registri bernama **PETROKIMIA GRESIK ZA MAX**. MAX bukan varian
+ejaan PLUS; ia kata lain. Zn yang tercetak pun tidak tercatat di hasil analisa uji
+pendaftaran itu. Merek `…-za-max-…` masih kosong dan slotnya tersedia, jadi yang menahan di
+sini murni ketiadaan bukti bahwa keduanya barang yang sama — kalau kelak ada yang bisa
+memastikan, satu baris tinggal ditulis.
+
+**Kalau kelak batas ini mau dibuka,** yang perlu diputuskan bukan `G6` melainkan kunci
+gambarnya: `brand_key` + `narrowed_to` sudah unik pada seluruh sebelas packshot ini, sebab
+tiap karung menunjuk pendaftaran yang berbeda kecuali pasangan SP-36 dan pasangan Urea. Itu
+keputusan pemilik skema, bukan keputusan pemanen — dan sampai diputuskan, tabel di atas yang
+menahan informasinya.
+
+## 15. Seluruh katalog satu principal bisa memakai satu model karung
+
+Diukur pada 14 packshot Petrokimia Gresik yang berlatar benar-benar transparan (§4d
+mensyaratkan itu): **IoU siluet 0,995–1,000 pada setiap pasangan**, jauh di atas ambang
+0,92. Satu model karung 3D dipakai ulang untuk seluruh lini — yang berganti hanya warna dan
+tulisannya.
+
+Artinya `bentuk_kemasan_generik` di sini bukan dugaan melainkan angka, dan konsekuensinya
+tegas: gambar-gambar ini **tidak bisa** dipakai menyuruh petani mencari "karung berbentuk
+seperti ini". Yang membedakan PETRO NIPHOS dari PETRO NITRAT di toko adalah warna biru yang
+berbeda dan angka 20-20-13 lawan 16-16-16, bukan bentuk karungnya.
+
+Ini juga alasan seluruh 13 baris panen ini ditandai `tampak_sintetis`: keduanya render
+mockup resmi, bukan foto. `G11` karena itu menahan dua belas di antaranya dari
+`terverifikasi`; yang berhak naik hanya SP-36, sebab nomor tercetaknya terkoroborasi
+registri. Mekanismenya bekerja persis seperti yang dirancang di §4.
+
+
+## 16. Sapuan seluruh situs setelah katalognya habis
+
+Panen pasal 14 hanya menyentuh `/product-category/pupuk`. Sapuan lanjutan 23 Agustus 2026
+menyisir sisanya, dan hasilnya layak dicatat justru karena sebagian besarnya **temuan
+negatif** — daftar yang tidak perlu disapu lagi.
+
+**Situsnya sudah habis.** `sitemap-product-1.xml` memuat tepat 29 URL, sama persis dengan
+yang ditautkan halaman kategori. Tidak ada kategori produk kedua. Bagian sitemap lain —
+`page` (30 halaman korporat), `news`, `microsite`, `map` — tidak memuat satu pun halaman
+produk. `robots.txt` hanya menutup `/cpresources/`, `/vendor/`, `/.env`, dan `/cache/`.
+
+**Yang tersisa hidup di embernya, bukan di situsnya.** 94 objek gambar di akar
+`images/product/`; dua belas kini jadi baris manifes. Delapan puluh dua sisanya disortir
+dengan melihat semuanya sekaligus dalam satu lembar kontak:
+
+| Golongan | Jumlah | Contoh |
+|---|---:|---|
+| Ikon daftar di bawah 320 px | 14 | `Urea.jpg` 74×98, `ZK.jpg` 75×97, `Phonska.jpg` 124×169 |
+| Benih — di luar registri PUKPES | 7 | Petro Hi-Corn, Petro Hibrida HIPA-11 & 18, Petroseed, Fitrice, Petro Chili |
+| Probiotik ternak & perikanan — di luar registri | 3 | Petro Biofeed, PetroFish, Petro Chick |
+| Bukan kemasan | 3 | foto drone `DJI_0490.JPG`, cap ISO 27001, foto gelas laboratorium |
+| Packshot pupuk: karya seni versi lama, atau slot mereknya sudah terpakai | 55 | `SP36-PETRO-2018`, `PETROGANIK-UPDATE-2017`, `kantong-DAP-PETRO` |
+
+**Satu yang dipanen: `ponska-ocha.png`.** PHONSKA OCA — dua botol 1 liter pupuk organik
+cair — ada di ember tetapi **tidak di halaman mana pun dan tidak di sitemap**. Kelas yang
+sama dengan BOOSBLOOM di pasal 10, dan satu-satunya di seluruh sapuan ini. Mereknya
+menaungi tepat satu pendaftaran, jadi tidak ada tabrakan `G6`; `source.page_url`
+dikosongkan karena memang tidak ada halamannya. Perlu diperhatikan pendaftarannya sudah
+kedaluwarsa sejak 25 Desember 2025 dan penerusnya, PHONSKA OCA PLUS, merek yang berbeda.
+
+**Tiga produk beredar yang packshot-nya ada tetapi tidak bisa dipasang.** Karung `PUPUK KCL
+PETRO` mencetak K₂O 60%; tidak satu pun pendaftaran Petrokimia berkadar itu — yang terdekat
+PETRO K PLUS 59%, dan itu ber-B 0,5%. Dugaan yang paling masuk akal: KCl yang
+diperdagangkan, bukan diformulasi, sehingga tidak perlu didaftarkan. DAP (N 18%, P₂O₅ 46%)
+dan Rock Phosphate (P₂O₅ 28%) sebaliknya PUNYA pendaftaran — `01.01.2024.579` dan
+`01.03.2024.258` — tetapi keduanya bernaung di merek payung `PETROKIMIA GRESIK` yang
+slotnya sudah dipakai SP-36. Ketiganya masuk daftar terparkir pasal 14.
+
+**Berkas terbesar di ember bukan yang terbaik, dan di sini dua kali.** `Phonska-Plus.jpg`
+2347×3216 dan `Petro_Ningrat-2019.png` **3543×4491** — keduanya jauh melampaui packshot
+yang dipakai katalog, dan keduanya **desain kemasan generasi lalu**. Phonska Plus 2019
+mencetak `01.01.2014.234`; Petro Ningrat 2019 memakai tata letak cokelat berfoto sayuran
+yang sama sekali berbeda dari karung emas berombak yang ditayangkan hari ini. Penyaring
+resolusi murni akan memilih keduanya lebih dulu, dan keduanya salah.
+
+**Sepuluh merek Petrokimia tetap tanpa gambar, dan situs ini tidak akan menolongnya.**
+Dicari di seluruh **33.941 objek** ember, bukan hanya di `images/product/`:
+
+| Merek | Objek di ember |
+|---|---|
+| PETRO BIOPALM · PETRO KALIMAS · PETRO KALSIPALM · PETROGANIK REMAX · PETROKIMIA GRESIK ZA MAX · PETRONANO | nol |
+| PETRO K PLUS · PHONSKA CAIR | hanya foto berita, bukan packshot |
+| PETRO BIO | hanya ikon daftar 74×102 px |
+| PHONSKA OCA PLUS | belum pernah difoto — yang ada botol PHONSKA OCA, merek lain |
+
+Seratus delapan puluh tiga PNG di luar `images/product/` berukuran di atas 80 KB diperiksa
+juga: seluruhnya foto korporat, foto berita, potret direksi, atau sampul laporan tahunan.
+**Packshot Petrokimia semuanya hidup di satu direktori** — itu temuan yang menghemat
+sapuan berikutnya.
+
+
+## 17. Brosur PDF sebagai satu-satunya jalan: petrokayaku.com
+
+Situs dengan **cakupan merek sempurna dan resolusi yang tidak terpakai**. Sembilan puluh
+satu halaman produk untuk tepat 91 merek terdaftar — tidak ada principal lain sedekat ini —
+tetapi setiap packshot yang ditayangkannya **dibatasi 150 px lebar**. Diukur pada 90 dari 91
+berkas: lebar selalu 150, tinggi 110–384. Rendition `kecil` saja 320 px sisi terpanjang, jadi
+sapuan gelombang 2 menilainya `tipis` dan benar.
+
+Yang membalikkannya bukan varian URL. `data_big/`, awalan `big_`, dan pengubah ukuran
+semuanya 404 — sudah diuji dan tetap buntu. **Yang membalikkannya brosur PDF-nya.**
+
+Tiga puluh tiga dari 91 halaman menautkan `data/{stempel}.pdf`, dan di dalamnya packshot
+yang sama hidup sebagai **objek gambar tertanam** pada ukuran aslinya. Diekstrak dengan
+`pypdf` — bukan dirasterkan, sebab pasal 11 sudah membuktikan rasterisasi 72 dpi justru
+menurunkan ketajaman. Hasilnya 226 objek ≥200 px, dan di antaranya 19 packshot berdiri
+sendiri:
+
+| | |
+|---|---:|
+| Terbesar (KAMIKAZE 371 EC) | 847×1273 |
+| Cukup untuk rendition `sedang` 800 px | 12 |
+| Cukup untuk `kecil` saja | 7 |
+| Naik dari 150 px yang ditawarkan halamannya | **semuanya** |
+
+`source.url` pada baris-baris ini menunjuk **PDF-nya**, sebab itu alamat sesungguhnya —
+gambarnya tidak pernah punya URL sendiri. Itu bukan kasus `gambar_dari_dokumen`: brosurnya
+terbitan principal sendiri, bukan dokumen pihak lain, dan tidak ada keterangan gambar yang
+terbakar ke berkasnya.
+
+**Tiga belas brosur lain hanya memuat halaman A4 utuh sebagai satu raster** — sampai
+2480×3508, yaitu A4 pada 300 dpi. Packshot-nya ada di dalamnya dan tinggal dipotong; belum
+dikerjakan, dan tercatat di sini supaya tidak perlu dipetakan ulang: Applaud 10 WP · Better
+10 PA · Biorganik · Curxanil 8/64 WP · Gobest 250 SC · Kayabio Plus · Petroban 200 EC ·
+Petrofast · Petrokum 0,005 BB · Primafos 400 SL · Probiss · Seldene 250 EC · Sultricob 93 WP.
+Lima puluh delapan halaman sisanya tidak punya brosur sama sekali dan tidak punya jalan lain.
+
+### Situs principal bisa menjual merek yang terdaftar atas nama orang lain
+
+Perluasan pasal 6, dan di sini terbukti tiga kali dalam satu situs. Nomor yang tercetak di
+botolnya, bukan teks halamannya, yang membongkarnya — halaman produk petrokayaku.com tidak
+menyebut pemegang pendaftaran sama sekali:
+
+| Yang ditayangkan petrokayaku.com | Nomor tercetak | Pemegang pendaftaran sebenarnya |
+|---|---|---|
+| BIGSON 207 SL | `01030120124425` | **PT. RAGAM MANDIRI** |
+| RAZIO 400 SC | `01020120237803` | **PT. KIMIKA USAHA PRIMA** |
+| PRESULOR 20/280 OD | `01030120238047` | **PT. RAINBOW AGROSCIENCES** |
+
+Ketiganya dipanen di bawah `brand_key` **pemegang pendaftarannya**, dengan
+`source.rights: pihak_ketiga` dan `source.publisher: PT Petrokimia Kayaku`. Menuliskan
+`pemegang_pendaftaran` akan mengkredit Kayaku dengan pendaftaran yang bukan miliknya —
+kekeliruan yang persis sama bentuknya dengan mengkreditkan `arystalifescience.com` ke
+PT. Arysta LifeScience Tirta di pasal 1.
+
+Label RAZIO bahkan memasang logo PETROKIMIA KAYAKU di panel depannya. **Logo di kemasan
+bukan bukti kepemilikan pendaftaran.**
+
+### Satu nomor, dua baris registri
+
+Botol KAMIKAZE mencetak `RI. 01020120165622`. Nomor itu menunjuk **dua** baris sekaligus:
+`op:prd:00002917` bernama "KAMIKAZE 371 EC" dan `op:prd:00004514` bernama
+"KAMIKAZE 318/53 EC" — dua-duanya PT. PETROKIMIA KAYAKU, dua-duanya aktif. Satu pendaftaran
+tercatat dua kali dengan dua cara menulis nama, dan aritmetikanya yang membuktikan: 318 + 53
+= 371. Baris gambar dikunci ke ejaan yang tercetak di botol.
+
+Kaidah penjumlahan pasal 7 muncul dua kali lagi di situs yang sama, dan tanpa nomor tercetak
+kedua-duanya akan ditolak pencocokan nama:
+
+| Di kemasan | Di registri | Aritmetikanya |
+|---|---|---|
+| LEPTOKIL **140** SE | LEPTOKIL 100/40 SE | natrium bispiribak 40 + metamifop 100 |
+| FENITE **150** OD | FENITE 150 OD | lufenuron 75 + emamektin benzoat 75 |
+
+Dan sekali nama yang dipendekkan: botol bertulis "TOPSIN 500 SC", registri "TOPSIN-M 500 SC".
+Yang mengikat nomornya (`0102011988857`), bukan ejaannya.
+
+### Nomor berformat lama tidak bisa dicocokkan, dan tidak boleh dipaksakan
+
+GEMPUR 480 SL mencetak `RI.1971/12-2008/T` dan SATURN-D mencetak `RI 160/7-2006/T` — format
+sebelum penomoran 14 digit. Registri tidak menyimpan bentuk itu, jadi keduanya **tidak**
+ditulis sebagai `printed_registration`; GEMPUR dikunci lewat `merek_tunggal`. Menambal nomor
+lama dengan nomor baru yang "kelihatan cocok" berarti menanam tebakan sebagai fakta.
+
+### Judul halaman bisa menyebut produk yang berbeda dari packshot-nya
+
+Halaman `/content/produk/insektisida/…/Saturn-D-600-EC` menayangkan sachet yang mencetak
+tiobenkarb 4% + 2,4-D IBE 2% — komposisi SATURN-D **6 GR**, bukan 600 EC. Karena itu
+Saturn-D sengaja TIDAK ikut panen ini. Baca komposisi di kemasannya, jangan judul halamannya
+— pengulangan pelajaran FORSIL di pasal 10, kali ini pada nama produk, bukan pada angkanya.
+
+### Memotong packshot dari halaman brosur yang utuh
+
+Tiga belas brosur Kayaku menanam halamannya sebagai **satu raster A4** alih-alih memisahkan
+packshot jadi objek sendiri. Sembilan berhasil dipotong, dan potongannya justru termasuk
+yang terbesar dari seluruh panen ini — GOBEST 250 SC keluar **1290×1403** dari halaman
+2480×3508, sebab A4 pada 300 dpi menyisakan banyak piksel bahkan setelah dipotong.
+
+Yang perlu diterima sejak awal: **latarnya tidak akan pernah putih.** Potongan membawa serta
+rancangan halamannya — foto tanaman, blok warna, sisa teks di tepi. Kemasannya utuh, tetapi
+gambarnya bukan packshot berlatar bersih, dan itu ditulis apa adanya di `notes` tiap baris.
+Pada BETTER 10 PA bahkan tidak ada batas bersih yang bisa dipotong sama sekali: brosurnya
+menempelkan blok penjelasan langsung ke sisi botolnya.
+
+**Empat sisanya tidak bisa, dan sebabnya dua macam:**
+
+| | |
+|---|---|
+| Biorganik · Kayabio Plus | brosurnya tidak menayangkan kemasan sama sekali — hanya foto lapangan, tabel dosis, dan karya seni label yang dicetak datar |
+| CURXANIL 8/64 WP · PROBISS | packshot-nya jelas dan besar, tetapi **tidak ada di registri** sehingga tidak punya `brand_key`; `G2` menolak baris tanpa merek yang benar-benar tercatat |
+
+CURXANIL layak diperiksa ulang pada tarikan registri berikutnya — fungisida mankozeb 64% +
+simoksanil 8% yang dijual terbuka semestinya terdaftar, dan ketiadaannya lebih mirip lubang
+tarikan daripada produk tak berizin. PROBISS probiotik ternak, sekelas Petro Chick dan
+Petrofish di sisi Gresik: memang bukan urusan registri PUKPES.
+
+**Dan kasus penerbit-bukan-pemegang-pendaftaran bertambah satu lagi jadi empat.** PRIMAFOS
+400 SL terdaftar atas nama **PT. KIMIKA USAHA PRIMA**, sama seperti RAZIO. Yang ini ketahuan
+dari registri, bukan dari nomor tercetak — nomornya tidak terbaca pada potongan. Artinya
+pemeriksaan nama ke registri tetap perlu dijalankan bahkan ketika nomor tercetak tidak ada:
+kedua jalur menangkap kelas kekeliruan yang sama dari arah berlawanan.
+
+### Memanen yang 150 px, dan keputusan menamainya `kecil`
+
+Lima puluh delapan halaman Kayaku tidak punya brosur sama sekali. Dipanen juga: **53 baris
+masuk**, dua ditolak karena penambal.
+
+Panen pertamanya tidak terbit satu pun, dan sebabnya aritmetika normalisasi bukan keputusan.
+`rendition_terpakai` menolak rendition yang tidak benar-benar memperkecil, jadi sumber
+150×225 hanya menghasilkan satu berkas `besar` seukuran aslinya; `kecil` 320 px tidak pernah
+terbentuk karena 320 > 225. `terbitkan.mjs` memakai `kecil` + `sedang`, sehingga seluruhnya
+jatuh ke hitungan "tanpa ukuran terpakai".
+
+**Pemilik repositori memutuskan menayangkannya, dan cara menegakkannya penamaan rendition.**
+Dinormalkan ulang dengan urutan `kecil,sedang,besar`, sehingga berkas dasar — yang selalu
+dibuat — bernama `kecil` pada ukuran aslinya. Itu sah menurut definisinya sendiri: rendition
+adalah **pagu** sisi terpanjang, bukan sasaran, dan aturan "tidak pernah diperbesar" menahan
+berkasnya di 150 px. Ukuran sebenarnya tetap tertulis apa adanya di `file.width_px`, dan tiap
+baris menyebut keputusan ini di `notes` supaya penamaannya tidak terbaca sebagai kekeliruan.
+
+Yang berubah: produk bergambar **464 → 515**, dan "tanpa ukuran terpakai" turun dari 55 jadi
+nol. Yang didapat kartu 150 px yang buram. Yang hilang, kalimat placeholder "belum dipanen dari
+situs principal" — kalimat yang untuk 70 merek ini memang sudah tidak benar.
+
+Lima baris sisa di principal lain ikut disetel setelahnya, dan **keadaannya ternyata tidak
+sama persis** — itu yang membuatnya layak dicatat. Hanya `cadre-240-sl` (BASF) yang benar-benar
+sekelas Kayaku: raster 147×300, dinamai `kecil`. Empat sisanya baris `panel_label` bersumber
+**PDF**, dan cabang PDF `rendition_terpakai` hanya membuat SATU rendition — rendition pertama
+yang diminta. Menamainya `kecil` di sana berarti benar-benar MENGECILKAN labelnya ke 320 px,
+kebalikan dari yang diinginkan, sebab panel label ada justru untuk dibaca. Keempatnya
+dinormalkan dengan `sedang` di depan: `constel` 511×201, `shenzi` 514×194, `neoroot` 680×795
+berhenti di ukuran aslinya, dan `uthane-blue-80-wp` turun dari 1600×1261 ke 800×630 — versi
+1600-nya bisa dibangun ulang kapan saja dari PDF di `mentah/`.
+
+**Pelajarannya bukan soal angka melainkan soal sasaran perintah.** Percobaan pertama menyetel
+kelimanya sekaligus berdasarkan `brand_key` saja, dan ikut menyeret empat baris `kemasan_depan`
+yang sudah sehat — merek yang sama, peran berbeda — sehingga berkas dasarnya berpindah dari
+`besar` 1600 px ke `kecil` 320 px tanpa ada yang memintanya. Ketahuan saat memeriksa hasilnya,
+dan dipulihkan dengan menormalkan ulang urutan aslinya. **Kunci baris di folder ini
+`brand_key` + `role`, bukan `brand_key`; menyetel massal tanpa `role` menyentuh baris yang
+tidak dimaksud.**
+
+**Dua penambal tertangkap, dan yang menangkapnya bukan mata.** `periksa.mjs` melaporkan dua
+merek berbagi satu phash; berkasnya ternyata `data/no_photo.jpg`, penambal 150×50 px
+bertuliskan "NO PHOTO". Keduanya ditulis `ditolak` beralasan, bukan didiamkan — pasal 4c.
+
+**Tetapi phash yang sama juga memberi lapor palsu pada resolusi ini.** Pasangan kedua yang
+dilaporkan — TERMIBAN 405 EC dan INSTOP 311 EC — dua produk yang benar-benar berbeda dengan
+label berbeda, hanya berbagi cetakan botol yang sama. Pada 150 px, dhash lebih banyak
+melihat siluet botol daripada labelnya. **Di bawah ~300 px, lapor phash lintas merek wajib
+dilihat, jangan langsung dipercaya.**
+
+Dan bentuk kemasannya memang terbukti dipakai ulang: dari 53 baris, **45 terukur IoU siluet
+≥ 0,92** terhadap merek lain di katalog yang sama — beberapa persis 1,000. Latar packshot
+situs ini benar-benar transparan, jadi uji pasal 4d sah dipakai di sini, tidak seperti pada
+karung Petrokimia Gresik yang berlatar putih pejal.
+
+### `/data/` di AKAR situs — jalur ketiga yang hampir terlewat
+
+Panen pertama membaca dua jalur di petrokayaku.com: gambar halaman di
+`/content/produk/{kategori}/data/*.png` (150 px, buntu) dan brosur PDF di direktori yang
+sama (33 halaman, subur). Ada **jalur ketiga**, dan ia baru ketemu secara tidak sengaja —
+saat menelusuri arsip Wayback halaman TEBBAS yang sudah dihapus, tautan bertuliskan
+`Brosur 1` ternyata menunjuk `/data/09072018172652.jpg` di **akar situs**, bukan di bawah
+`/content/produk/`.
+
+Diperiksa di situs hidup: **87 berkas semacam itu, ditautkan 47 dari 91 halaman produk,
+seluruhnya 1280×1360–1810 px.** Pindaian brosur beresolusi penuh, di path yang tidak
+disebut satu pun tautan gambar di halaman itu sendiri.
+
+Tiga puluh sembilan packshot dipotong darinya dan **menggantikan** baris 150 px yang sudah
+masuk — sisi terpanjang naik dari 150 ke median 826 px (terkecil 435, terbesar 1104), dan 21
+di antaranya kini cukup untuk rendition `sedang`. Empat belas baris tetap 150 px sebab
+halamannya memang tidak menautkan brosur.
+
+Berlaku peringatan yang sama dengan pasal 17: latarnya rancangan brosur, bukan putih polos,
+dan beberapa potongan membawa lebih banyak teks halaman daripada kemasan — CEBA, DIAZINON
+10 GR, dan KIMIRU 45 WP yang paling tipis. Kisan 10 WP dicoret sama sekali: brosurnya tidak
+menampakkan kemasan pada halaman pertama, jadi barisnya dibiarkan di 150 px.
+
+**Pelajaran yang layak dibawa ke situs lain:** tautan bertuliskan "Brosur", "Katalog", atau
+"Lembar Data" pantas ditelusuri sebagai sumber gambar, bukan cuma sebagai dokumen. Dan
+ketika sebuah halaman hilang dari situs, arsipnya bukan hanya cara memulihkan halaman itu —
+ia juga peta jalur yang masih hidup tetapi tidak lagi ditautkan dari mana pun.
+
+### Dua jalan terakhir: registri yang mencatat dua kali, dan halaman yang sudah dihapus
+
+**KAMIKAZE 318/53 EC dipanen tanpa gambar baru.** Botol yang sama, berkas yang sama, dan itu
+disengaja: nomor tercetak `01020120165622` menunjuk **dua** baris registri — `op:prd:00002917`
+bernama "KAMIKAZE 371 EC" dan `op:prd:00004514` bernama "KAMIKAZE 318/53 EC", dua-duanya
+Petrokimia Kayaku, dua-duanya aktif. Satu pendaftaran tercatat dua kali dengan dua cara
+menulis nama, dan 318 + 53 = 371 yang membuktikannya. `G6` tidak dilanggar sebab brand_key-nya
+berbeda; pemeriksaan phash lintas merek **memang melaporkannya**, dan laporan itu benar —
+yang keliru bukan gambarnya melainkan registrinya.
+
+**TEBBAS 605 EC dipanen dari arsip, bukan dari situs.** Halamannya
+(`/content/produk/insektisida/82/Tebbas-605-EC`) hilang dari katalog maupun dari daftar 91
+produk, dan kedua berkasnya 404. CDX Wayback menyebut **tujuh** halaman produk yang pernah
+terarsip dan kini lenyap: Alphos 57 DT · Ametrone 252 SL · Bassazinon 750 EC · Mandazim 74/6 WP ·
+Metal 30 EC · Tebbas 605 EC · Ziban 630 EC. Hanya TEBBAS yang masih punya merek di registri;
+enam lainnya tidak.
+
+Diambil dari tangkapan **5 Juli 2022**, bukan yang terbaru: tangkapan 2024 merekam halaman
+blokir WAF, bukan halamannya — **arsip pun bisa menyimpan kegagalan, jadi periksa isinya
+sebelum memakai timestamp paling akhir.** `source.url` menunjuk snapshot arsip sebab alamat
+aslinya sudah mati; penerbitnya tetap principal dan haknya tidak berpindah ke arsip.
+
+Nomor tercetak terbaca utuh setelah potongan diperbesar — `RI. 01010120144960`, cocok ke
+registri — dan komposisinya menjumlahkan lagi: klorpirifos 550 + sipermetrin 55 = 605.
+
+**Sisa 19 merek Kayaku tidak punya jalan yang tersisa di sini.** Tidak berhalaman, tidak
+terarsip, dan dicari juga di 33.941 objek ember Petrokimia Gresik — nol, keempat "kecocokan"
+yang muncul cuma tabrakan substring (`GRAMA`→Ramadhan, `PETROKUS`→petro-ningrat,
+`TANGKAS`→tangki air). Sumber berikutnya harus dari luar: lokapasar — `rights: lokapasar`
+memang sudah ada di enum skema — atau katalog distributor.
+
+### ZIBAN 605 EC: enam kesamaan, dan tetap tidak cukup
+
+Prospek yang dipetakan lengkap dan **sengaja dibiarkan tidak dipanen**, supaya alasannya tidak
+perlu ditemukan ulang.
+
+`/content/produk/insektisida/136/Ziban-605-EC` ada di situs hari ini dan **tidak ada di
+registri** — dicari sebagai substring pada tarikan 19 Agustus 2026, nol. `G2` karena itu
+menolak barisnya: tanpa merek yang tercatat, tidak ada `brand_key`. Sementara TEBBAS 605 EC
+kebalikannya: terdaftar sah (`01010120144960`, aktif) tetapi halamannya sudah dihapus.
+
+Enam hal menyamakan keduanya:
+
+| | ZIBAN 605 EC (situs) | TEBBAS 605 EC (arsip) |
+|---|---|---|
+| bahan aktif | klorpirifos 550 g/l + sipermetrin 55 g/l | sama persis |
+| kekuatan | 605 EC | 605 EC |
+| sasaran | hama pada tanaman jagung, ulat grayak | sama |
+| cetakan botol | botol 1 L bertutup hijau | sama |
+| karya seni | dirancang ulang | generasi sebelumnya |
+| waktu | packshot diunggah 12 Agustus 2026 | halaman lenyap pada rentang yang sama |
+
+**Dan tetap tidak dipanen.** Nomor pendaftaran di botol ZIBAN melengkung di sisi botol dan
+tidak terbaca pada 150×309 px — satu-satunya bukti yang bisa memutuskan. Halaman ini juga
+tidak menyediakan brosur, tidak PDF maupun JPG di `/data/`, jadi jalur pasal 17 tidak berlaku
+dan tidak ada sumber lain di situsnya.
+
+ZIBAN sengaja **tidak** dimasukkan ke `brand.name_variants` TEBBAS. Enam kesamaan mengarah
+kuat, tetapi menuliskannya berarti menyatakan identitas yang belum terbukti — kekeliruan yang
+justru dijaga pasal 4b. Yang menyelesaikannya satu hal saja: nomor tercetak yang terbaca, dari
+foto eceran, dari brosur yang kelak diunggah, atau dari tarikan registri berikutnya kalau
+ZIBAN ternyata didaftarkan sendiri.

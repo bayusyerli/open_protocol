@@ -16,8 +16,12 @@
  * jalur insiden. Ia berdiri sendiri, dan pintunya membuka dengan pasalnya.
  */
 
-import { ambil, teks } from './pustaka.js';
+import { ambil, muatMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(6);
 
@@ -25,7 +29,7 @@ const el = {
   fungsi: document.getElementById('fungsi'),
   daftar: document.getElementById('daftar'),
   resep: document.getElementById('resep'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -276,11 +280,21 @@ function blokTakBisaDibakukan(r) {
     </div>`;
 }
 
+
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
 async function bukaResep(berkas) {
   el.resep.innerHTML = '<p class="kosong">Mengambil resepnya…</p>';
   el.resep.focus();
   try {
     const r = await ambil(berkas);
+    terbukaKini = { id: r.id, nama: r.nama,
+      tautan: tautanKe(`?resep=${encodeURIComponent(berkas.split('/').pop())}`) };
     const bisaDibakukan = r.kriteria.length > 0;
     el.resep.innerHTML = `
       <div class="kartu">
@@ -293,10 +307,7 @@ async function bukaResep(berkas) {
       ${bisaDibakukan ? blokKriteria(r) + blokPakai(r) : blokTakBisaDibakukan(r)}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
     catatJawab(6, bisaDibakukan ? UKUR.isi : UKUR.takSanggup);
-    document.getElementById('kembali').addEventListener('click', () => {
-      el.resep.innerHTML = '';
-      el.daftar.scrollIntoView({ block: 'start' });
-    });
+    pasangKembali(el.resep, { gulirKe: el.daftar });
   } catch (e) {
     catatJawab(6, UKUR.gagal);
     el.resep.innerHTML = `<div class="kartu peringatan"><h2>Resepnya gagal diambil</h2>
@@ -339,10 +350,7 @@ function bukaTerlarang(id) {
     </div>
     <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
   el.resep.focus();
-  document.getElementById('kembali').addEventListener('click', () => {
-    el.resep.innerHTML = '';
-    el.daftar.scrollIntoView({ block: 'start' });
-  });
+  pasangKembali(el.resep, { gulirKe: el.daftar });
 }
 
 // ---------------------------------------------------------------------------
@@ -380,10 +388,38 @@ for (const wadah of [el.daftar, el.resep]) {
         }).join('')}
       </ul>`;
     const jalur6 = daftarResep.filter((r) => r.jalur === 6).length;
-    el.sumber.innerHTML =
-      `Sumber: <code>spec/vocab/preparation.json</code> lewat <code>spec/indeks/</code> — ` +
-      `${jalur6} resep sisi pengendali dari ${daftarResep.length}. ` +
-      `Status hukum, bahan, titik kendali, kriteria pelepasan, PHI, dan APD diambil apa adanya.`;
+    await muatMeta();
+    // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Daftar fungsinya
+    // tetap digambar lebih dulu: tombol "kembali ke daftar" harus mendarat pada sesuatu.
+    // Satu-satunya jalur yang dibangun untuk tidak menganjurkan, jadi yang tidak
+    // diketahuinya bukan catatan kaki — ia isi utamanya. Keduanya di bawah adalah
+    // pertanyaan terbuka, bukan lubang data yang menunggu tarikan berikutnya.
+    pasangBatas(el.batas, {
+      sumber: [{
+        dari: 'sediaan',
+        cakupan: `${jalur6} resep sisi pengendali dari ${daftarResep.length} — status hukum, bahan, titik kendali, kriteria pelepasan, PHI, dan APD diambil apa adanya`,
+      }],
+      takDijawab: [
+        {
+          judul: 'Bacaan Pasal 77 ayat (1)',
+          teks:
+            'Rangkaian kata "mengedarkan dan/atau menggunakan" bisa dibaca kumulatif maupun alternatif, dan bacaan mana yang benar menentukan apakah memakai sediaan sendiri di kebun sendiri termasuk di dalamnya. Itu pertanyaan hukum, bukan agronomi, dan belum terjawab — layar menyatakan statusnya dan tidak menyimpulkan aman.',
+        },
+        {
+          judul: 'Tenggang panen sediaan buatan sendiri',
+          teks:
+            'Keempat angka PHI di jalur ini precautionary_default — bawaan yang sengaja berhati-hati, bukan hasil uji residu. Tidak ada uji residu untuk sediaan buatan sendiri, dan angkanya tidak boleh dibaca sebagai hasil pengukuran.',
+        },
+      ],
+      sanggah: () => terbukaKini,
+    });
+
+    // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Dipanggil PALING
+    // AKHIR, sesudah daftar fungsi dan blok batas selesai digambar: keduanya menyentuh
+    // panel yang sama, dan memanggilnya lebih dulu membuat resepnya tergambar lalu
+    // terhapus tanpa satu pun galat.
+    const { resep } = tautanMasuk();
+    if (resep) await bukaResep(`sediaan/${resep}`);
   } catch (e) {
     el.fungsi.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Dibangun ulang dengan <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>

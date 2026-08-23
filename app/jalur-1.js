@@ -20,19 +20,25 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, teks, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js';
+
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangBatas } from './batas.js';
+import { pasangTombolTema } from './tema.js';
+
+pasangTombolTema();
 
 catatBuka(1);
 
 const el = {
   gejala: document.getElementById('gejala'),
   hasil: document.getElementById('hasil'),
-  sumber: document.getElementById('sumber'),
+  batas: document.getElementById('batasJawaban'),
 };
 
 document.getElementById('tanpaJs')?.remove();
 
+let kamusLokal = [];
 let daftarOpt = null;
 let larangan = null;
 
@@ -61,6 +67,65 @@ function gambarGejala() {
     </ul>`;
 }
 
+/* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
+ *
+ * 738 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
+ *
+ * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
+ * yang masuk lewat gejala sedang menebak, dan dua ciri yang bisa diperiksa sendiri
+ * menahan tebakan itu. Untuk OPT ini cirinya memang tidak ada — mengarangnya persis yang
+ * ditolak jalur ini. Yang bisa dilakukan layar mengatakan apa yang TIDAK bisa
+ * dipastikannya, bukan diam-diam melepas penjagaannya.
+ */
+async function bukaHama(kunci) {
+  el.hasil.innerHTML = '<p class="kosong">Mengambil…</p>';
+  el.hasil.focus();
+  try {
+    const h = await ambil(`opt-nama/${kunci}`);
+    terbukaKini = { id: h.id, nama: h.nama, tautan: tautanKe(`?hama=${encodeURIComponent(kunci)}`) };
+    el.hasil.innerHTML = `
+      <div class="kartu peringatan">
+        <h2>Kamu masuk lewat nama, bukan gejala</h2>
+        <p>
+          <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
+          registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
+          deskripsi gejalanya</strong> — nol dari 738 OPT berproduk memuatnya.
+        </p>
+        <p class="catatan">
+          Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
+          yang ada di kebunmu. Tidak ada dua ciri pembanding untuk diperiksa sendiri, dan
+          mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
+          hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
+          pemastian. Kalau yang kamu punya baru gejalanya,
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — sepuluh OPT cabai
+          punya ciri pembandingnya.
+        </p>
+      </div>
+      <h2 class="judul-bagian">Di tanaman apa?</h2>
+      <p class="bantuan">
+        Terdaftar pada ${h.di.length} komoditas. Pilih satu untuk melihat bahan aktif yang
+        terdaftar untuknya di tanaman itu.
+      </p>
+      <ul class="daftar">
+        ${h.di.map((d) => `
+          <li>
+            <button type="button" data-berkas="${teks(d.b)}">
+              <span class="nama">${teks(d.k)}</span>
+              <span class="sub">${angkaId(d.p)} produk terdaftar</span>
+            </button>
+          </li>`).join('')}
+      </ul>
+      <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
+    catatJawab(1, UKUR.isi);
+    pasangKembali(el.hasil, { gulirKe: el.gejala });
+  } catch (e) {
+    catatJawab(1, UKUR.gagal);
+    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
+      <p class="catatan">${teks(e.message)}</p></div>`;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Blok "pastikan dulu" — sebelum apa pun yang bisa dibeli
 // ---------------------------------------------------------------------------
@@ -81,7 +146,31 @@ function blokPastikan(k) {
       </ol>
       ${k.keterangan ? `<p class="catatan">${teks(k.keterangan)}</p>` : ''}
       ${k.catatan ? `<p class="catatan">${teks(k.catatan)}</p>` : ''}
+      ${blokNamaLokal(k)}
     </div>`;
+}
+
+// Nama lokal ditempel di blok "pastikan dulu", bukan di judul layar. Alasannya sama
+// dengan alasan blok ini ada: nama lokal tingkat D, dan menaruhnya sebagai judul
+// membuatnya terbaca sebagai identifikasi. Di sini ia justru satu keterangan lagi yang
+// harus dicocokkan pembaca — "orang menyebutnya begini; apakah itu yang kamu lihat?"
+//
+// Yang bertaksa menyebut apa yang tidak dibedakannya. Wilayah selalu ikut disebut,
+// termasuk saat tidak diketahui: kamus yang diam soal wilayah menyodorkan nama satu
+// daerah kepada seluruh negeri.
+function blokNamaLokal(k) {
+  const cocok = kamusLokal.filter((x) => x.ke.some((r) => r.i === k.id));
+  if (!cocok.length) return '';
+  const taksa = cocok.filter((x) => x.ke.length > 1);
+  return `
+    <p class="catatan nama-lokal">
+      <strong>Sebagian orang menyebutnya
+      ${cocok.map((x) => `“${teks(x.n)}”`).join(', ')}.</strong>
+      Dari satu jawaban lapangan, belum ditinjau penyuluh, dan
+      <strong>belum diketahui dipakai di daerah mana</strong> — jadi nama ini bukan
+      penentu, melainkan satu petunjuk lagi untuk dicocokkan.
+      ${taksa.length ? teks(taksa[0].taksa) : ''}
+    </p>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -221,13 +310,14 @@ function tabelMerek(merek) {
   return `
     <p class="catatan">
       Diurutkan menurut <strong>nomor pendaftaran menaik</strong> — tanpa peringkat,
-      tanpa slot berbayar. <strong>Dosisnya berbeda-beda walau isinya sama</strong>,
-      karena dosis milik pendaftaran tiap produk.
+      tanpa slot berbayar. Nomornya ada di kolom sebelah, jadi urutannya bisa diperiksa
+      sendiri. <strong>Dosisnya berbeda-beda walau isinya sama</strong>, karena dosis
+      milik pendaftaran tiap produk.
     </p>
     <div class="pembungkus-tabel">
       <table>
         <thead><tr><th>Merek</th><th>Nomor pendaftaran</th><th>Berlaku sampai</th><th>Dosis terdaftar</th></tr></thead>
-        <tbody>${merek.slice().sort((a, b) => String(a.daftar).localeCompare(String(b.daftar))).map((m) => `
+        <tbody>${merek.map((m) => `
           <tr><td>${teks(m.nama)}</td><td class="angka">${teks(m.daftar ?? '—')}</td>
               <td class="angka">${teks(m.berlaku ?? '—')}</td>
               <td class="angka">${teks(m.dosis ?? '—')}</td></tr>`).join('')}</tbody>
@@ -237,6 +327,14 @@ function tabelMerek(merek) {
 
 // ---------------------------------------------------------------------------
 let kartuKini = null;
+
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
 
 async function bukaKomoditas(berkas, k) {
   el.hasil.querySelector('#daftarBahan')?.remove();
@@ -275,6 +373,7 @@ async function bukaKomoditas(berkas, k) {
 async function bukaOpt(id) {
   const k = daftarOpt.find((x) => x.id === id);
   if (!k) return;
+  terbukaKini = { id: k.id, nama: k.nama, tautan: tautanKe(`?opt=${encodeURIComponent(k.id)}`) };
   el.hasil.innerHTML = '<p class="kosong">Menyiapkan…</p>';
   el.hasil.focus();
   try {
@@ -283,10 +382,7 @@ async function bukaOpt(id) {
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
     catatJawab(1, k.di.length ? UKUR.isi : UKUR.nol);
-    document.getElementById('kembali').addEventListener('click', () => {
-      el.hasil.innerHTML = '';
-      el.gejala.scrollIntoView({ block: 'start' });
-    });
+    pasangKembali(el.hasil, { gulirKe: el.gejala });
     // Kalau hanya satu komoditas, langsung buka — satu ketukan lebih sedikit.
     if (k.di.length === 1) await bukaKomoditas(k.di[0].berkas, k);
   } catch (e) {
@@ -325,7 +421,14 @@ el.hasil.addEventListener('click', async (ev) => {
 
 (async function mulai() {
   try {
-    daftarOpt = await ambil('gejala');
+    // Dua pengambilan sekaligus, bukan berurutan: kamusnya kecil dan tidak
+    // menghalangi apa pun, tetapi kartu OPT butuh keduanya sudah ada.
+    const [gejalaAda, lokalAda] = await Promise.all([
+      ambil('gejala'),
+      ambil('nama-lokal').catch(() => []),
+    ]);
+    daftarOpt = gejalaAda;
+    kamusLokal = lokalAda;
     const berpintu = daftarOpt.filter((k) => k.adaPintu);
     if (berpintu.length < daftarOpt.length) {
       el.gejala.innerHTML = `<p class="catatan">${daftarOpt.length - berpintu.length} OPT
@@ -333,16 +436,27 @@ el.hasil.addEventListener('click', async (ev) => {
     }
     daftarOpt = berpintu;
     gambarGejala();
-    el.sumber.innerHTML =
-      `Sumber: registri pestisida Kementan lewat <code>spec/indeks/</code>. ` +
-      `Gejala dan ciri pembanding dari <code>spec/vocab/pest.json</code> — ` +
-      `${berpintu.length} OPT cabai terkurasi, berstatus draft.`;
+    // Dua sumber dengan tingkat bukti yang berbeda jauh, dan justru layar ini yang
+    // paling perlu memisahkannya: sisi gejalanya belum ditinjau siapa pun, sisi bahan
+    // aktifnya registri resmi. Meratakan keduanya jadi satu kalimat "sumber: Kementan"
+    // meminjamkan wibawa registri kepada kurasi yang belum punya.
+    await muatMeta();
+    pasangBatas(el.batas, {
+      sumber: [
+        { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT cabai` },
+        { dari: 'pestisida', cakupan: 'bahan aktif, kadar, dan merek yang terdaftar untuk OPT itu' },
+        { dari: 'namaLokal', cakupan: `${kamusLokal.filter((x) => x.ke.length).length} nama daerah dari ${kamusLokal.length} yang tercatat, sebagai petunjuk tambahan — bukan sebagai penentu` },
+      ],
+      takDijawab: ['gejalaOpt', 'wilayahNamaLokal', 'phi', 'namaDagang'],
+      sanggah: () => terbukaKini,
+    });
 
     // Datang dari beranda dengan satu gejala sudah terpilih. Daftarnya tetap
     // digambar lebih dulu: yang dibuka lewat pencarian teks belum tentu yang
     // dimaksud, dan tombol "pilih gejala lain" harus mendarat pada sesuatu.
-    const { opt } = tautanMasuk();
+    const { opt, hama } = tautanMasuk();
     if (opt) await bukaOpt(opt);
+    else if (hama) await bukaHama(hama);
   } catch (e) {
     el.gejala.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Dibangun ulang dengan <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>

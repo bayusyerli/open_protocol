@@ -22,7 +22,8 @@
           "publisher": "Kementerian Pertanian RI",
           "url": "https://perizinan.pertanian.go.id/",
           "year": 2026,
-          "locator": "GET /permohonan/v1/informasi/nama-varietas; ditarik 19 Agustus 2026. Endpoint mengembalikan seluruh registri dalam satu panggilan."
+          "locator": "GET /permohonan/v1/informasi/nama-varietas; ditarik 19 Agustus 2026. Endpoint mengembalikan seluruh registri dalam satu panggilan.",
+          "retrieved": "2026-08-19"
         }
       ]
     },

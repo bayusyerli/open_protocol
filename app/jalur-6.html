@@ -5,12 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Sediaan pengendali sendiri — status hukumnya — Open Protocols</title>
 <meta name="description" content="Lima resep pengendali buatan sendiri, ditampilkan beserta status hukumnya. Bukan anjuran: Pasal 77 ayat (1) melarang mengedarkan dan/atau menggunakan, dan bacaannya belum dijawab.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
 </head>
 <body>
 
 <header class="atas">
-  <p class="jalur">Jalur 6 · sediaan pengendali sendiri</p>
+  <div class="baris-atas">
+    <p class="jalur">Jalur 6 · sediaan pengendali sendiri</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
   <h1>Sisi yang terikat</h1>
   <p class="lede">
     Halaman ini <strong>mencatat status hukum</strong> lima resep pengendali buatan
@@ -69,7 +84,7 @@
   <section id="resep" tabindex="-1"></section>
 
   <details class="batas">
-    <summary>Kenapa satu klaim pengendalian memindahkan seluruh sediaan ke sini</summary>
+    <summary><h2>Kenapa satu klaim pengendalian memindahkan seluruh sediaan ke sini</h2></summary>
     <div class="batas-isi">
       <p>
         Yang menarik sebuah sediaan ke sisi ini <strong>bukan bahannya dan bukan cara
@@ -97,10 +112,18 @@
     <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
     <a href="jalur-4.html">Cek keabsahan benih &amp; bibit →</a> ·
     <a href="jalur-5.html">Meramu pupuk sendiri →</a> ·
+    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
+    <a href="harga.html">Harga komoditas &rarr;</a> ·
+    <a href="principal.html">Profil perusahaan &rarr;</a> ·
+    <a href="toko.html">Cari toko tani &amp; penjual benih →</a> ·
+    <a href="usaha.html">Hitung titik impas usaha tani →</a> ·
     <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
   </p>
 
-  <p class="sumber" id="sumber">Sumber: <code>spec/vocab/preparation.json</code>.</p>
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: resep sediaan di <code>spec/vocab/preparation.json</code>.</p>
+  </section>
 
 </main>
 

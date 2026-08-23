@@ -152,7 +152,10 @@ a { color: var(--hijau-2); }
   background: color-mix(in srgb, var(--kertas) 94%, transparent);
   backdrop-filter: blur(8px);
 }
-.merek { display: flex; text-decoration: none; color: inherit; line-height: 1.15; }
+/* `align-items` beserta `min-height` membawa kotak sentuhnya ke 44 px tanpa menambah
+   tinggi kepala: tombol tema di seberangnya sudah setinggi itu. */
+.merek { display: flex; align-items: center; min-height: 44px;
+         text-decoration: none; color: inherit; line-height: 1.15; }
 .merek strong { display: block; font-size: 18px; letter-spacing: -.03em; }
 .merek small {
   display: block; color: var(--lemah);
@@ -167,8 +170,8 @@ a { color: var(--hijau-2); }
 .tombol-tema {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 44px;
+  height: 44px;
   padding: 0;
   border: 1px solid var(--garis);
   border-radius: 999px;
@@ -188,7 +191,10 @@ a { color: var(--hijau-2); }
 }
 .cip-jaringan[data-luring="ya"] i { background: var(--amber); }
 
+/* "Tentang data" satu-satunya pintu ke lembar batas jawaban di beranda, dan sasaran
+   sentuhnya tadinya 17 px. Dinaikkan ke 44 px seperti tombol tema di sebelahnya. */
 .tombol-teks {
+  display: inline-flex; align-items: center; min-height: 44px;
   padding: 5px 2px; border: 0; background: transparent;
   color: var(--hijau-2); font-size: 12px; font-weight: 650;
   text-decoration: underline; text-underline-offset: 3px;
@@ -305,6 +311,22 @@ a { color: var(--hijau-2); }
 }
 .daftar-hasil a[data-jenis="pupuk"] { --tepi: var(--tosca); }
 .daftar-hasil a[data-jenis="varietas"] { --tepi: var(--jingga); }
+.daftar-hasil a[data-jenis="nama-lokal"] { --tepi: var(--amber); }
+/* Pintu bukan jawaban, dan warnanya menyatakan itu: tosca, bukan hijau seperti hasil
+   yang memang menjawab. */
+.daftar-hasil a[data-jenis="niat"] { --tepi: var(--tosca); }
+
+/* Nama lokal yang belum terpetakan: sengaja BUKAN tautan, karena tidak ada layar yang
+   bisa dibuka untuknya. Yang ditawarkan keterangannya, bukan harapan palsu bahwa ada
+   sesuatu di baliknya — dan tetap ditampilkan, karena hasil nol terbaca sebagai
+   "tidak ada penyakitnya". */
+.daftar-hasil .hasil-belum {
+  display: grid; grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center; gap: 10px;
+  padding: 13px 15px;
+  border: 1px dashed var(--garis); border-left: 4px solid var(--amber);
+  border-radius: 12px; background: transparent;
+}
 .nama-hasil { display: block; font-weight: 700; overflow-wrap: anywhere; }
 .sub-hasil { display: block; color: var(--lemah); font-size: 12.5px; overflow-wrap: anywhere; }
 .lencana {
@@ -373,6 +395,8 @@ a { color: var(--hijau-2); }
 }
 .kaki p { max-width: 1240px; margin: 0 auto 8px; }
 .kaki strong { color: var(--tinta); }
+/* Sasaran sentuh 44 px, sama seperti navigasi antarjalur di halaman lain. */
+.kaki a { display: inline-flex; align-items: center; min-height: 44px; }
 
 /* --- lembar "tentang data" ----------------------------------------------- */
 
@@ -423,7 +447,9 @@ a { color: var(--hijau-2); }
   .merek strong { font-size: 16px; }
   .merek small { font-size: 9px; letter-spacing: .12em; }
   .aksi-kepala { gap: 8px; }
-  .tombol-tema { width: 32px; height: 32px; }
+  /* Lebarnya boleh menyusut di layar sempit, tingginya tidak: justru di layar itu
+     tangan yang mengetuk paling sering meleset. */
+  .tombol-tema { width: 40px; height: 44px; border-radius: 999px; }
   .cip-jaringan span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
   .tombol-teks { font-size: 11px; }
 

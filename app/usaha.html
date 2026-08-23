@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Analisis usaha tani — Open Protocols</title>
+<meta name="description" content="Susun rencana anggaran biaya satu musim, lalu lihat berapa rupiah per kilogram harga jual yang membuatnya balik modal — dan seberapa jauh angka itu dari harga eceran.">
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Analisis usaha tani</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Berapa harga jual yang membuatnya balik modal?</h1>
+  <p class="lede">
+    Satu angka yang menentukan sebelum menanam: <strong>rupiah per kilogram</strong> yang
+    harus diterima supaya biaya semusim tertutup. Seluruh angkanya masukanmu sendiri —
+    tidak satu pun biaya di sini datang dari registri.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Hitungan ini butuh JavaScript</h2>
+    <p>Seluruh angkanya dihitung di peranti ini, dan tidak dikirim ke mana pun.</p>
+  </div>
+
+  <h2 class="judul-bagian">1 · Biaya semusim</h2>
+
+  <div class="kartu">
+    <p>
+      Isi yang kamu keluarkan, sebanyak yang kamu ingat. Baris yang dikosongkan tidak
+      dihitung — dan <strong>daftar yang tidak lengkap menghasilkan titik impas yang
+      terlalu rendah</strong>, bukan yang terlalu tinggi.
+    </p>
+    <div class="baris-kandungan" id="barisBiaya"></div>
+    <p class="aksi-kandungan">
+      <button type="button" id="tambahBiaya">+ Tambah baris</button>
+    </p>
+    <div id="hasilBiaya" aria-live="polite"></div>
+    <p class="catatan">
+      <strong>Tenaga kerja sendiri ikut dihitung kalau kamu mengisinya.</strong> Banyak
+      hitungan usaha tani menghilangkannya, dan hasilnya usaha yang tampak untung padahal
+      upahnya sendiri yang tidak terbayar. Layar ini tidak memutuskan untukmu — ia hanya
+      tidak menyembunyikan barisnya.
+    </p>
+  </div>
+
+  <h2 class="judul-bagian">2 · Titik impas</h2>
+
+  <div class="kartu">
+    <div class="kisi-isian">
+      <p class="isian">
+        <label for="luas">Luas tanam (m²)</label>
+        <input id="luas" type="number" inputmode="decimal" min="0" step="any" placeholder="misal: 2000">
+      </p>
+      <p class="isian">
+        <label for="hasil">Perkiraan hasil panen (kg)</label>
+        <input id="hasil" type="number" inputmode="decimal" min="0" step="any" placeholder="misal: 1500">
+      </p>
+      <p class="isian">
+        <label for="komoditas">Bandingkan dengan harga eceran</label>
+        <select id="komoditas"><option value="">— pilih komoditas —</option></select>
+      </p>
+    </div>
+    <p class="bantuan">
+      Perkiraan hasil panen <strong>milikmu</strong>, bukan angka acuan. Registri tidak
+      memuat potensi hasil satu pun varietas — nol dari 11.227.
+    </p>
+    <div id="hasilImpas" aria-live="polite"></div>
+  </div>
+
+  <details class="batas">
+    <summary><h2>Kenapa harga eceran bukan harga yang kamu terima</h2></summary>
+    <div class="batas-isi">
+      <h3>Yang dibandingkan rasio, bukan dua angka bersebelahan</h3>
+      <p>
+        Menaruh titik impasmu di sebelah harga eceran akan terbaca seolah selisihnya
+        keuntunganmu. Ia bukan. Harga eceran memuat marjin seluruh rantai — pengumpul,
+        pedagang besar, pengecer — dan tidak satu pun dari itu sampai ke petak.
+      </p>
+
+      <h3>Bahkan “harga produsen” resmi bukan harga petani</h3>
+      <p>
+        Pada tingkat produsen, responden yang dicatat negara adalah <strong>pengumpul,
+        penggilingan, dan pedagang</strong> — bukan petani. Di Kabupaten Karawang, salah
+        satu lumbung padi terbesar, respondennya <strong>satu orang</strong>. Jadi jarak
+        antara harga acuan dan harga yang diterima petani <em>terpasang di dalam
+        definisinya</em>, bukan celah cakupan yang bisa dirapatkan dengan menambah sampel.
+      </p>
+
+      <h3>Jadi angka mana yang benar untukmu</h3>
+      <p>
+        <strong>Yang kamu terima sendiri.</strong> Tidak ada sumber terbuka yang
+        mengukurnya, dan layar ini tidak berpura-pura punya. Rasio di atas hanya
+        menunjukkan seberapa jauh titik impasmu dari harga di ujung rantai.
+      </p>
+
+      <h3>Arus kas semusim belum dibangun</h3>
+      <p>
+        Kapan biaya keluar dan kapan uang masuk menuntut kalender musim yang bertanggal.
+        Kosakata fase <strong>sengaja tidak punya medan hari</strong>, dan hanya dua dari
+        empat langkah protokol cabai yang bertanggal. Membangun kalender di atas itu
+        berarti mengarang tanggal — jadi bagian ini ditahan, bukan ditampilkan setengah.
+      </p>
+    </div>
+  </details>
+
+  <p class="lain">
+    <a href="beranda.html">← Beranda</a> ·
+    <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
+    <a href="harga.html">Harga eceran harian →</a> ·
+    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
+    <a href="toko.html">Cari toko tani &amp; penjual benih →</a> ·
+    <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
+  </p>
+
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Seluruh biaya dan perkiraan hasil masukanmu sendiri; harga eceran dari indeks harga.</p>
+  </section>
+
+</main>
+
+<script type="module" src="usaha.js"></script>
+</body>
+</html>

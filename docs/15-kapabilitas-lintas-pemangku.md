@@ -285,11 +285,11 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | beranda satu kotak sudah ada; belum semua jalur tersambung | **BANGUN** |
+| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun** | **sebagian** |
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | belum ada | **BANGUN** (gel. 1) |
-| A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **enam nama pertama terkumpul**; termurah dari seluruh daftar | **BANGUN** (gel. 0) |
+| A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
-| A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | indeks sudah ≤48 KB per berkas — separuh jalan | **BANGUN** (gel. 0) |
+| A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | **sebagian** 23 Agustus 2026 — `sw.js` tiga tingkat: cangkang & kosakata kecil otomatis, kepala pencarian atas permintaan, rincian menyusul saat dibuka | **sebagian** |
 
 > **A3 lebih penting daripada tampaknya.** Petani tidak menyebut *Thrips parvispinus*; ia
 > menyebut nama lokalnya. Tanpa kamus itu, jalur 1 hanya bisa dipakai orang yang sudah
@@ -301,38 +301,113 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > berbeda.** Jadi kamusnya tidak boleh berbentuk satu daftar nasional — ia perlu tahu
 > nama itu dipakai di mana, dan berani mengatakan tidak tahu di luar wilayah itu.
 
+> **Sisi OPT dibangun 23 Agustus 2026** — `spec/schema/nama-lokal.schema.json` dan
+> `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di blok "pastikan dulu"
+> jalur 1. Tiga hal yang baru ketahuan saat membangunnya:
+>
+> 1. **Empat dari enam nama tidak menunjuk satu OPT.** "Layu" tidak membedakan fusarium
+>    dari bakteri; "bule" dan "keriting daun" tidak membedakan virus kuning dari trips.
+>    Skemanya karena itu mewajibkan `ambiguous_note` begitu rujukannya lebih dari satu —
+>    ketaksaan jadi isi jawaban, bukan cacat yang ditutup dengan memilih salah satu.
+> 2. **Dua dari enam tidak bisa dipetakan sama sekali**, dan salah satunya mengungkap
+>    kekosongan cakupan: "bercak daun" kemungkinan besar serkospora, yang bukan salah satu
+>    dari sepuluh OPT terkurasi. Keduanya tetap tercatat dan tetap tampil, karena hasil nol
+>    terbaca sebagai "tidak ada penyakitnya".
+> 3. **Peringatan wilayah bisa ditegakkan skema, bukan cuma diingat.** `regions` kosong
+>    wajib disertai `region_unknown_reason`. Keenam nama memakainya, karena "umumnya"
+>    bukan nama tempat.
+>
+> Pertanyaan terbuka **seberapa jauh nama lokal berbeda antarsentra** tidak ikut terjawab,
+> dan sekarang justru lebih tajam: kamusnya siap menampung wilayah, tetapi belum ada satu
+> pun wilayah untuk ditampung.
+
 ### B · JAWAB — mutu dan batas jawaban
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| B1 | **Komponen "batas jawaban"** — tiap layar menyebut tingkat bukti, tanggal, sumber, dan apa yang tidak diketahuinya | semua | apakah jawabannya dipercaya | budaya sudah ada, komponen belum | **BANGUN** |
+| B1 | **Komponen "batas jawaban"** — tiap layar menyebut tingkat bukti, tanggal, sumber, dan apa yang tidak diketahuinya | semua | apakah jawabannya dipercaya | **selesai** 23 Agustus 2026 — `app/batas.js`, dipakai ketujuh layar | **selesai** |
 | B2 | Kartu keselamatan aplikasi — APD, cara aman, gejala keracunan, kontak darurat | petani, buruh tani | keselamatan jiwa | sebagian ada; **PHI 0 dari 23.058** | **BANGUN** bagian non-PHI; PHI **TUNDA** |
 | B3 | **Sanggahan terbuka** — siapa pun boleh menantang satu fakta; jejaknya publik dan bernama | agronom, penyuluh, principal | mutu korpus | belum ada | **BANGUN** |
-| B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | belum ada; nyaris gratis | **BANGUN** |
-| B5 | Ringkasan berbasis model bahasa di atas registri | semua | kecepatan paham | terlalu dini — melanggar syarat ke-4 | **TUNDA** |
+| B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | **selesai** 23 Agustus 2026 — enam lubang tercacah di `app/ukur.js`, terbaca di `ukur.html` | **selesai** |
+| B5 | Ringkasan berbasis model bahasa di atas registri | semua | kecepatan paham | **sebagian 23 Agustus 2026** — komentar per seri harga, ditulis saat build ke `spec/vocab/harga/komentar.json` beserta angka yang dipakai menulisnya | **TUNDA** untuk registri; **BANGUN** untuk harga, dengan bentuk yang menjawab keberatannya |
 
 > **B4 mengubah biaya riset menjadi keluaran produk.** Setiap "tidak sanggup" yang
 > ditampilkan enam jalur hari ini menghilang begitu layar ditutup. Dicatat, ia menjadi
 > peta permintaan data yang tidak bisa dibeli dari mana pun — dan itulah yang menentukan
 > registri mana yang layak ditarik berikutnya.
+
+> **Dibangun 23 Agustus 2026**, dan bentuknya ditentukan satu tabrakan antar-dokumen.
+> [11-instrumentasi.md](11-instrumentasi.md) bagian 3 sudah menyatakan **isi pencarian
+> sengaja tidak diukur** — jejak minat bisa mengenali orang di desa kecil. B4 versi kaya,
+> yang mencatat kuerinya sendiri, akan mencabut baris itu.
+>
+> Tabrakannya ternyata semu: yang diminta dokumen ini *"registri **mana** yang layak
+> ditarik berikutnya"*, dan itu pertanyaan **kategori**. Jadi B4 dibangun sebagai
+> **pencacah lubang yang sudah dinyatakan** — enam kunci yang sama dengan `meta.tidakAda`,
+> yang sudah tercetak di tiap layar lewat blok batas jawaban **B1**. B1 menyatakan
+> lubangnya; B4 menghitung berapa kali ia benar-benar ditabrak, lalu mengurutkannya
+> menurut frekuensi alih-alih menurut tebakan tim.
+>
+> Versi yang mencatat kueri **tidak** dibangun, dan tanda tangan `catatLubang(sumber,
+> kunci)` sengaja tidak menyediakan tempat untuknya. Mencabut baris di dokumen 11 adalah
+> keputusan pemilik repositori, bukan akibat sampingan dari membangun sebuah fitur.
+>
+> Satu lubang sengaja masuk daftar walau bukan permintaan data: `takaranRumahTangga`.
+> Registri tidak akan pernah memuat ukuran tutup botol siapa pun — kalau ia sering
+> tertabrak, yang perlu ditulis **panduan**, dan mengetahui itu sama berharganya.
 >
 > **B5 ditunda karena syarat ke-4, bukan karena teknologi.** Asisten yang selalu menjawab
 > tidak punya cara salahnya ketahuan. Pesaing terdekat di pintu masuk justru berbentuk itu
 > — dan tepat di situ pembedanya.
+>
+> **Diperbarui 23 Agustus 2026 — keberatannya tidak dicabut, ia dipenuhi.** Komentar per seri
+> harga sekarang ada, dan bentuknya seluruhnya diturunkan dari kalimat di atas. Kalau
+> masalahnya "tidak punya cara salahnya ketahuan", maka yang harus dibangun adalah cara
+> salahnya ketahuan:
+>
+> 1. **Ditulis sekali saat build, bukan saat halaman dibuka.** Kalimat yang lahir dan mati di
+>    dalam satu sesi tidak bisa ditinjau siapa pun. Yang tertulis ke berkas bisa: ia
+>    bertanggal, masuk riwayat git, dan selisih antar-bangunan bisa dibaca.
+> 2. **Angka yang diberikan ke penulisnya ikut disimpan** di medan `fakta` pada rekaman yang
+>    sama. Peninjau tidak perlu memercayai kalimatnya — ia bisa memeriksanya.
+> 3. **Tingkatnya D, bukan B.** Angkanya bertingkat B; kalimatnya tafsir atas angka, dan
+>    tafsir tidak mewarisi tingkat sumbernya. Layar menyebutkannya di kepala kartu.
+> 4. **`ditinjau` masih null pada keempat puluh tiga rekaman**, dan layar mengatakannya.
+>    Tingkatnya naik saat seorang manusia membacanya, bukan saat modelnya diganti.
+> 5. **Tiap komentar wajib menyebut satu hal yang angkanya tidak katakan.** Layar yang hanya
+>    menyatakan temuan terbaca lebih yakin daripada datanya.
+>
+> Sisi registri **tetap ditunda**. Yang membedakan keduanya bukan teknologinya melainkan
+> ukurannya: 43 seri harga bisa ditinjau seorang manusia dalam satu sore, 14.920 produk tidak.
 
 ### C · RUJUKAN — registri
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas | **selesai** |
-| C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | 96,4% pestisida & 71,3% pupuk berkomposisi; **667 dari 7.196 pupuk (9,3%) tak bernomor sama sekali** | **BANGUN** |
-| C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri | **BANGUN bertahap** |
-| C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | 0 di registri; Bapanas **mati**; SP2KP terbuka tetapi eceran | **BANGUN** (+ pinjam sisi eceran) |
+| C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas, dan sejak 23 Agustus 2026 **3.136 badan pemegang** beserta halaman profilnya | **selesai** |
+| C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | **sisi pupuk selesai** 23 Agustus 2026 — indeks `kandungan/` memuat 12.564 produk, formulir di jalur 2; sisi pestisida terindeks tetapi belum berpermukaan | **sebagian** |
+| C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri. **Sisi pintu selesai** 23 Agustus 2026 — 738 OPT registri berproduk kini terjangkau dari kotak menurut nama, dengan pernyataan bahwa gejalanya tidak ada | teks gejala **BANGUN bertahap**; pintunya **selesai** |
+| C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, satu permintaan ke SP2KP. **Sisi harga petani tidak lagi nol** (dikoreksi 23 Agustus 2026): 8 seri tingkat pekebun dari **6 provinsi sawit**, dua di antaranya harga pekebun **swadaya**. Tetapi ia hanya SAWIT, dan pangan pokok tetap nol | sisi eceran **selesai**; sisi petani **sebagian** — sawit ada, pangan belum |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
-| C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | fondasi ada: 234 toko terbit (OSM), 2.181 benih TTI beralamat | **BANGUN** |
+| C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | **sebagian** 23 Agustus 2026 — `app/toko.html`: 234 berkoordinat (OSM) + 2.248 berwilayah. Penyuluh, POPT, lab, alsintan **nol** | **sebagian** |
 | C8 | Sifat agronomi varietas | petani, penyuluh, penangkar | #3 | **0 dari 11.227** | **TUNDA** |
-| C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** kini terbuka — bebas hak cipta lewat [16](16-sumber-harga-komoditas.md) | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** |
+| C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** bebas hak cipta, tetapi **harga pupuk eceran di SP2KP ternyata kosong** — Urea, NPK, SP-36, dan ZA terdaftar tanpa satu pun angka terisi | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** dari teks peraturan, bukan dari SP2KP |
+
+> **C7 dibangun 23 Agustus 2026, dan satu angka di tabel ini terkoreksi karenanya.**
+> Baris C7 semula berbunyi *"2.181 benih TTI beralamat"*. Terhitung dari berkasnya, hanya
+> **92 dari 2.248 — 4,1%** — menyebut sesuatu yang lebih rinci daripada kabupaten atau
+> kota; nol dari 2.181 rekaman TTI memuat alamat jalan. **Nama tanpa alamat tidak bisa
+> dituju**: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi.
+>
+> Akibatnya layarnya dua pintu, bukan satu daftar: 234 titik OSM dicari menurut **jarak
+> dari posisi pembaca** (dihitung di peranti; posisi tidak pernah dikirim ke mana pun),
+> dan 2.248 rekaman berwilayah ditelusuri menurut **wilayah**, dengan tiap baris menyebut
+> apakah ia punya alamat atau hanya nama kabupaten. Menggabungkan keduanya akan membuat
+> yang tidak bisa dituju tampak setara dengan yang bisa.
+>
+> Empat dari enam layanan yang dijanjikan baris ini masih **nol rekaman** — penyuluh,
+> POPT, laboratorium, jasa alsintan — dan layar mengatakannya.
 
 > **C2 tetap kapabilitas dengan rasio nilai-terhadap-biaya tertinggi — tetapi masukannya
 > diganti.** Versi pertama dokumen ini memakai **nomor pendaftaran** sebagai pintu.
@@ -361,21 +436,77 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > menampung. Jalur lapor karena itu dicabut dari cakupan C2; membangun kotak masuk yang
 > tak seorang pun di ujungnya lebih buruk daripada tidak membangunnya.
 
+> **Sisi pupuk dibangun 23 Agustus 2026** — indeks `kandungan/` (256 ember hash, 6.897
+> sidik, 12.564 produk) dan formulir kandungan di jalur 2. Pelaporan **tidak** dibangun,
+> sesuai putusan di atas. Tiga hal yang baru ketahuan saat membangunnya:
+>
+> 1. **`setara/` tidak bisa dipakai ulang walau tampak persis untuk ini.** Ia hanya
+>    menyimpan kelompok berisi ≥2 anggota — padahal C2 justru paling perlu menjawab
+>    produk tunggal — dan mengunci pupuk pada `formulation`, string registri yang tidak
+>    tercetak di karung dan tidak diketahui pembeli. Yang dipakai di indeks baru **basis**
+>    (per kilogram / per liter), karena itu yang bisa dibaca siapa pun dari kemasannya.
+> 2. **Nol dari 5.130 pupuk berkomposisi memakai persen**, padahal persen justru yang
+>    tercetak di karung. Kalau "%" diterima apa adanya, bentuk yang paling sering dibaca
+>    orang tidak akan pernah cocok. Formulirnya karena itu menuntut kemasannya disebut —
+>    kilogram atau liter — dan mengonversi 1% jadi 10 g per satuan itu.
+> 3. **3.028 pestisida memakai persen sebagai satuan registri**, dan itu tidak bisa
+>    dikonversi ke g/kg maupun g/L tanpa berat jenis. Persen jadi **basis ketiga** di
+>    indeks: menyimpan keduanya tanpa pernah mencocokkan silang. Membuangnya berarti 40,6%
+>    pestisida berkomposisi tidak bisa diperiksa sama sekali; mengonversinya berarti
+>    menebak.
+>
+> Sisi pestisida sudah terindeks tetapi belum berpermukaan: bahan aktifnya 1.706 dan
+> menuntut pencarian sendiri, bukan daftar pilihan seperti 17 hara. Itu pekerjaan UI, dan
+> tidak menuntut indeks dibangun ulang.
+
 ### D · HITUNG — kalkulator yang tidak menganjurkan
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | D1 | Rp per kg hara | petani, kios, poktan | #6 | **selesai** — jalur 3 | **selesai** |
 | D2 | Kebutuhan input per luas | petani, petugas lapang | #6 | **selesai** — `susun-rencana.mjs` | **selesai** |
-| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | harga dari pengguna, seperti jalur 3 | **BANGUN** |
-| D4 | **Kalibrasi semprot** — volume, kecepatan jalan, nozel, jumlah tangki | petani, buruh semprot | #9 + keselamatan | tidak butuh data baru | **BANGUN** |
-| D5 | Takaran alat rumah tangga — tutup botol, gelas, sendok | petani | #6, #9 | tidak butuh data baru | **BANGUN** |
+| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | **sebagian** 23 Agustus 2026 — `app/usaha.html`: RAB dan titik impas selesai; arus kas **ditahan**, fase tak bermedan hari | **sebagian** |
+| D4 | **Kalibrasi semprot** — volume, kecepatan jalan, nozel, jumlah tangki | petani, buruh semprot | #9 + keselamatan | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 1–2 | **selesai** |
+| D5 | Takaran alat rumah tangga — tutup botol, gelas, sendok | petani | #6, #9 | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 3 | **selesai** |
 | D6 | Kalkulator susut & kelas mutu pascapanen | petani, bandar, offtaker | #14 | belum ada | **TUNDA** |
+
+> **D3 dibangun 23 Agustus 2026 — sisi RAB dan titik impas.** Yang paling menentukan
+> bukan aritmetikanya melainkan cara membandingkannya. Titik impas di sebelah harga eceran
+> terbaca seolah selisihnya keuntungan; yang ditayangkan karena itu **rasio**, mengikuti
+> aturan tayang ke-5 di [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md).
+> Layar juga menyebutkan temuan yang mengunci dokumen itu: bahkan "harga produsen" resmi
+> bukan harga petani — respondennya pengumpul dan penggilingan, dan di Karawang satu orang.
+>
+> **Arus kas semusim ditahan.** Ia menuntut kalender bertanggal, dan kosakata fase sengaja
+> tidak punya medan hari — sama seperti alasan E4 dibangun "dengan batasnya dinyatakan".
+> Membangunnya sekarang berarti mengarang tanggal.
 
 > **D4 dan D5 adalah dua kapabilitas termurah yang paling langsung menyentuh keselamatan.**
 > Anjuran "2 ml per liter" tidak berguna bagi orang yang menakar dengan tutup botol, dan
 > dosis label yang benar menjadi salah begitu kalibrasi tangki keliru. Keduanya tidak
 > menuntut satu baris data baru — hanya aritmetika dan bentuk layar yang benar.
+
+> **Dibangun 23 Agustus 2026** sebagai `app/takaran.html` — layar utilitas, bukan jalur
+> ketujuh: `ukur.js` menghitung per jalur menurut tabel di
+> [11-instrumentasi.md](11-instrumentasi.md), dan menomorinya akan mengubah tabel itu.
+> Tiga hal yang baru ketahuan saat membangunnya:
+>
+> 1. **Dosis label ada dua keluarga yang aritmetikanya tidak berhubungan**, dan mengetahui
+>    yang mana yang dipegang menentukan apakah kalibrasi perlu sama sekali. Terhitung dari
+>    registri: **47,2%** per hektare, **27,3%** per liter air. Yang per liter sudah
+>    menyebut kepekatannya; yang per hektare tidak bisa dihitung sebelum luas jangkauan
+>    satu tangki diketahui.
+> 2. **22,8% penggunaan berlabel tidak memuat dosis sama sekali** — 5.268 dari 23.058,
+>    medannya kosong di registri. Untuk penggunaan itu tidak ada angka yang bisa
+>    diambilkan, dan layar mengatakannya alih-alih menampilkan nol.
+> 3. **Tiap pembagian harus bisa dihitung ulang pembaca, bukan sekadar ditampilkan.**
+>    Versi pertama menulis `45 × 6,7 = 300 ml` — dan 45 × 6,7 sebenarnya 301,5, karena
+>    jumlah tangkinya sudah dibulatkan saat ditampilkan. Pada permukaan yang menjanjikan
+>    hitungannya bisa dibantah, baris yang tidak bisa direproduksi membatalkan janjinya.
+>
+> **Keselamatan sengaja tidak disentuh:** APD, cara mencampur, gejala keracunan, dan nomor
+> darurat itu **B2**, dan menyisipkan sebagiannya di sini akan membuat layar terbaca seolah
+> sudah lengkap.
 
 ### E · RENCANA & CATAT — eksekusi
 
@@ -421,7 +552,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | `Contributor` + `conflict_of_interest` **ada di skema** | **BANGUN** |
+| G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | **selesai** 23 Agustus 2026 — `CONTRIBUTING.md`, `spec/tools/tinjau.mjs`, aturan L35, dan sematan `reviewed_hash`. Terukur saat dibuka: **0 dari 4.256** rekaman punya peninjau bernama, **0** berstatus published | **selesai** |
 | G2 | Umpan balik lapangan menaikkan tingkat bukti D→A | semua | apakah korpus hidup | `DeviationReason.signals` **ada** | **BANGUN** (fase 3) |
 | G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | belum ada; rantai POPT sudah ada | **BANGUN hati-hati + SAMBUNG** |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
@@ -459,8 +590,8 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | Putusan | Jumlah | Nomor |
 |---|---:|---|
-| **selesai** | 4 | C1, D1, D2, F2 |
-| **BANGUN** — gelombang 0–1 | 17 | A1, A2, A3, A5, B1, B2⁽ᵖ⁾, B3, B4, C2, C3⁽ᵇ⁾, **C4**⁽ʰ⁾, C7, D3, D4, D5, G1, G5 |
+| **selesai** | 5 | **B1**, C1, D1, D2, F2 |
+| **BANGUN** — gelombang 0–1 | 16 | A1, A2, A3, A5, B2⁽ᵖ⁾, B3, B4, C2, C3⁽ᵇ⁾, **C4**⁽ʰ⁾, C7, D3, D4, D5, G1, G5 |
 | **BANGUN** — gelombang 2 · fase 3 | 8 | E1, E2, E3, E4, E5, F1, G2, **G6** |
 | **BANGUN hati-hati** | 1 | G3 — juga **SAMBUNG** ke rantai POPT |
 | **PINJAM / SAMBUNG** | 3 | C5, C6, C9⁽ᵗ⁾ |
@@ -487,6 +618,43 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 ---
 
+> **Gelombang 1 diperiksa 23 Agustus 2026, dan lima dari tujuh butirnya terhalang hal
+> yang sama — bukan kode.** Empat di antaranya berbentuk **pengumpulan**: A2 kanal
+> WhatsApp, sisi setoran petani pada C4, G3 laporan warga, dan G6 lapis peer. Aturan yang
+> ditulis dokumen ini sendiri melarangnya di lapisan gratis — *"lapisan gratis hanya
+> menyebarkan, tidak pernah mengumpulkan"* — dan C2 sudah menetapkan preseden bahwa
+> *"kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak ada kotak
+> masuk"*.
+>
+> **B3 dan G1 sempat terhalang hal yang lebih sederhana: repositorinya masih privat.**
+> Keduanya menuntut jejak yang **publik dan bernama**; menyalurkannya ke repositori
+> tertutup menghasilkan jejak yang bernama tetapi tidak publik — persis setengah ukuran
+> yang dihindari dokumen ini. **Penghalang itu hilang 23 Agustus 2026: repositorinya
+> dibuka** di `github.com/bayusyerli/open_protocol`, Apache-2.0 untuk kode dan
+> LICENSE-KONTEN untuk isinya. Keduanya kini bisa dibangun sebagai **serah-terima**, bukan
+> pengumpulan: permukaan menyusun sanggahan atau sumbangan yang sudah terisi lalu
+> menyerahkannya ke tempat publik itu, tanpa pernah menerima apa pun sendiri.
+>
+> **B3 dibangun hari yang sama, dan satu ukuran mengubah bentuknya.** Hanya **28 dari
+> 31.837** rekaman yang bisa muncul di layar diterbitkan proyek ini sendiri — 0,088%;
+> sisanya salinan registri kementerian dan OpenStreetMap. Pintu sanggahan tunggal karena
+> itu akan menyiratkan kuasa membetulkan yang tidak dimiliki repositori ini atas 99,9%
+> faktanya. Yang ditanya lebih dulu **apa yang salah**, bukan apa yang benar, dan ketiga
+> jawabannya pergi ke tempat berbeda: salinan dan penyajian bisa dibetulkan di sini,
+> fakta di registri hanya bisa **dicatat**. **G1 menyusul di hari yang sama** — lihat catatannya di bagian G.
+>
+> **Yang dibuka adalah yang sudah didorong, bukan semua yang ada di cakram.** Panen
+> direktori pengecer principal — 1.605 toko berikut nomor telepon — hidup di cabang lokal
+> yang tidak pernah didorong, dan `toko_data/LAPIS.md` menggolongkannya **tidak terbit**.
+> Membuka repositori tidak menerbitkannya; **mendorong cabang itu akan menerbitkannya.**
+>
+> **C3 satu-satunya yang tidak terhalang**, dan sisinya yang tidak menuntut agronomi
+> dikerjakan lebih dulu — lihat barisnya di atas.
+>
+> **Yang perlu dikerjakan manusia sebelum gelombang 1 bisa lanjut:** tinggal satu —
+> menetapkan siapa yang berada di ujung kanal mana pun sebelum kanalnya dibangun. Keputusan
+> membuka repositori sudah diambil.
+
 ## 6. Urutan — ditempelkan ke tiga fase yang sudah ada
 
 Urutan di [10-peta-modul.md](10-peta-modul.md) tidak diubah. Yang dilakukan bagian ini
@@ -501,19 +669,36 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 
 | Urut | Kapabilitas | Alasan urutannya |
 |---|---|---|
-| 1 | **B1** komponen batas jawaban | Prasyarat semua layar berikutnya; tanpa ini tiap layar baru menambah utang kepercayaan |
-| 2 | **A3** kamus nama lokal | Menentukan apakah jalur 1 bisa dipakai orang yang belum tahu jawabannya |
-| 3 | **C2** keaslian & anti-palsu — lewat **kandungan**, bukan nomor | Nilai tertinggi per biaya, dan kini melacak perilaku yang sudah terjadi |
-| 4 | **D4 + D5** kalibrasi & takaran | Termurah; menyentuh keselamatan; tidak butuh data baru |
-| 5 | **B4** antrean pertanyaan tak terjawab | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
-| 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
-| 7 | **A5** luring penuh | Indeks sudah ≤48 KB — separuh jalan |
-| 8 | **C7** direktori layanan | Fondasi toko tani sudah ada |
-| 9 | **D3** analisis usaha tani | Pintu masuk ke E5 di gelombang berikutnya |
+| 1 | **B1** komponen batas jawaban — **selesai** | Prasyarat semua layar berikutnya; tanpa ini tiap layar baru menambah utang kepercayaan |
+| 2 | **A3** kamus nama lokal — **sisi OPT selesai** | Menentukan apakah jalur 1 bisa dipakai orang yang belum tahu jawabannya |
+| 3 | **C2** keaslian & anti-palsu — lewat **kandungan**, bukan nomor — **sisi pupuk selesai** | Nilai tertinggi per biaya, dan kini melacak perilaku yang sudah terjadi |
+| 4 | **D4 + D5** kalibrasi & takaran — **selesai** | Termurah; menyentuh keselamatan; tidak butuh data baru |
+| 5 | **B4** antrean pertanyaan tak terjawab — **selesai** | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
+| 6 | **A1** kotak tanya multimoda — **sebagian** | Setelah jalur-jalurnya layak dituju |
+| 7 | **A5** luring penuh — **sebagian** | Indeks sudah ≤48 KB — separuh jalan |
+| 8 | **C7** direktori layanan — **sebagian** | Fondasi toko tani sudah ada |
+| 9 | **D3** analisis usaha tani — **sebagian** | Pintu masuk ke E5 di gelombang berikutnya |
 
 > Butir 1–5 semuanya bisa selesai tanpa satu pun keputusan yang masih terbuka di
 > [10-peta-modul.md](10-peta-modul.md) bagian 7. Itu yang membuat gelombang ini bisa
 > dimulai hari ini.
+
+> **B1 selesai 23 Agustus 2026.** `app/batas.js` menggambar keempat medannya di ketujuh
+> layar data, dan menolak layar yang melewatkan salah satunya dengan blok merah, bukan
+> dengan diam. Dua hal ikut ketahuan saat membangunnya, dan keduanya lebih penting
+> daripada komponennya sendiri:
+>
+> 1. **Tanggal tarikan tidak terbaca mesin.** `SourceRef` di `common.schema.json` tidak
+>    punya medan untuk itu, sehingga *"ditarik 19 Agustus 2026"* hanya hidup sebagai prosa
+>    di dalam `locator`. Layar tidak bisa menyebut tanggal yang tidak bisa dibacanya —
+>    jadi yang menghalangi B1 bukan kelalaian penyaji melainkan lubang di skema. Medan
+>    `retrieved` kini ada, dan ketiga berkas koleksi mengisinya.
+> 2. **Satu sumber ternyata tidak boleh diberi tingkat sama sekali.** Kurasi gejala OPT
+>    tampil dengan tingkat **belum ditetapkan**, bukan C: C berarti konsensus praktisi &
+>    penyuluh, dan tinjauan itu belum pernah diminta kepada seorang penyuluh pun. Menaruh
+>    huruf di sana akan memakai komponen kepercayaan ini untuk melakukan persis kebalikan
+>    dari tugasnya. Yang membukanya tinjauan di [14-tinjauan-gejala.md](14-tinjauan-gejala.md),
+>    bukan baris kode.
 
 ### Gelombang 1 — jangkauan & kontribusi (fase 2)
 
@@ -524,6 +709,17 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 > **G1 tidak boleh menunggu fase 3.** Pertanyaan ke-5 di [02-tiga-pasar.md](02-tiga-pasar.md)
 > bagian 8 — apa yang membuat agronom mau menempelkan namanya — tidak akan terjawab lewat
 > wawancara. Ia terjawab dengan menyediakan alurnya, lalu melihat siapa yang datang.
+>
+> **Alurnya dibuka 23 Agustus 2026, dan yang membentuknya bukan pertanyaannya melainkan
+> keberatan di baliknya:** *"apakah nama saya akan menanggung isi yang tidak pernah saya
+> baca?"* Tanpa penjagaan jawabannya ya, dan itu alasan yang cukup untuk menolak. Karena
+> itu tinjauan **disematkan pada isi yang dibacanya** (`lifecycle.reviewed_hash`): begitu
+> rekaman disunting, pemeriksa menyatakan tinjauannya kedaluwarsa, dan nama peninjaunya
+> berhenti berlaku pada perubahan itu — otomatis, tanpa ia perlu mengawasi.
+>
+> Gerbangnya ternyata sudah terpasang sejak sebelum repositori dibuka dan belum pernah
+> menyala: **L31** menahan tingkat D dari `published`, **L33** menuntut protokol terbit
+> punya penulis bernama dan tanggal tinjau ulang. Yang hilang cuma pintunya.
 
 ### Gelombang 2 — eksekusi berbayar (fase 3)
 

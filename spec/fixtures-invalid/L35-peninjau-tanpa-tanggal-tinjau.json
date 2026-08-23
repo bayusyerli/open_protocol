@@ -1,0 +1,68 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00009972",
+  "key": "fixture-l35-peninjau-tanpa-tanggal-tinjau",
+  "label": {
+    "id": "Peninjau bernama tanpa tanggal tinjauan"
+  },
+  "definition": {
+    "id": "Fixture uji alur kontribusi bernama (G1). Dua fase saja; isinya tidak dipakai siapa pun."
+  },
+  "basis": "age",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ]
+  },
+  "stages": [
+    {
+      "id": "op:stg:00009002",
+      "code": "F1",
+      "label": {
+        "id": "Fase satu"
+      },
+      "order": 0
+    },
+    {
+      "id": "op:stg:00009003",
+      "code": "F2",
+      "label": {
+        "id": "Fase dua"
+      },
+      "order": 1
+    }
+  ],
+  "no_mapping_reason": "Fixture uji; tidak dipetakan ke kosakata luar mana pun.",
+  "notes": {
+    "id": "Fixture uji: ada kontributor ber-role reviewer tetapi lifecycle.reviewed_at kosong."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "title": "Fixture G1",
+        "publisher": "Open Protocols",
+        "year": 2026
+      }
+    ],
+    "contributors": [
+      {
+        "name": "Peninjau Contoh",
+        "role": "reviewer",
+        "date": "2026-08-23",
+        "conflict_of_interest": "none"
+      }
+    ],
+    "license": "CC-BY-SA-4.0"
+  },
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-23T00:00:00Z"
+  },
+  "id_blocks": [
+    {
+      "from": 9972,
+      "to": 9972
+    }
+  ]
+}

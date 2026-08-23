@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/nama-lokal.schema.json",
+  "title": "NamaLokal — nama daerah untuk hal yang sudah punya entitas",
+  "description": "Kapabilitas A3. Petani tidak menyebut Thrips parvispinus; ia menyebut nama lokalnya. Tanpa kamus ini, jalur 1 hanya bisa dipakai orang yang sudah tahu jawabannya.\n\nBUKAN ENTITAS, DAN ITU DISENGAJA. Tiap rekaman di sini sebuah PEMETAAN, bukan hal. \"Patek\" bukan sesuatu yang ada di dunia — ia nama untuk antraknosa. Karena itu rekaman ini tidak memakai `op:` id: blok prefiks ID adalah enum tertutup yang dinyatakan mengikat sejak v0.1 di docs/01, dan menambahnya untuk sesuatu yang bukan entitas akan menukar kaidah yang mahal dengan kemudahan yang murah. Yang dipakai `key`, slug stabil, sama seperti kunci entitas.\n\nTERPISAH DARI `synonyms`, DAN ITU JUGA DISENGAJA. Medan `synonyms` pada entitas terkurasi berisi varian ejaan registri — \"Thrips palrvispinus\", \"Spedoptera litura\", \"Penyakut Layu Fusarium\" — yaitu salah ketik mesin yang dikumpulkan untuk mencocokkan rekaman. Menaruh \"bule\" di sana membuat nama yang dipakai manusia tidak bisa dibedakan dari salah ketik, dan menghapus dua keterangan yang justru paling menentukan: dipakai DI MANA, dan diketahui DARI SIAPA.",
+  "type": "object",
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "Slug stabil untuk rekaman pemetaan ini, bukan untuk namanya. Dipakai saat sebuah pemetaan perlu dirujuk — misalnya ketika disanggah."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "description": "Nama sebagaimana diucapkan, apa adanya. Tidak dinormalkan, tidak dibakukan ejaannya."
+    },
+    "refers_to": {
+      "type": "array",
+      "description": "Entitas yang ditunjuk nama ini. BOLEH LEBIH DARI SATU, dan itu bukan cacat data melainkan fakta: \"layu\" memang tidak membedakan fusarium dari bakteri, dan justru itu keterangan yang berguna — ia memberi tahu pembaca bahwa namanya sendiri tidak cukup, lalu menyerahkannya ke ciri pembanding. BOLEH KOSONG: nama yang terdengar di lapangan tetapi belum bisa dipetakan wajib tetap tercatat, karena hasil pencarian nol membuat orang mencari di tempat lain yang tidak menjelaskan apa pun.",
+      "items": { "$ref": "common.schema.json#/$defs/Ref" }
+    },
+    "unmapped_reason": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Wajib bila `refers_to` kosong. Menyebut apa yang diduga ditunjuk dan kenapa belum bisa dipastikan. Nama tanpa rujukan yang juga tanpa alasan tidak bisa dibedakan dari kelalaian pencatatan."
+    },
+    "ambiguous_note": {
+      "$ref": "common.schema.json#/$defs/LangText",
+      "description": "Wajib bila `refers_to` lebih dari satu. Menyatakan apa yang TIDAK dibedakan nama ini, supaya layar bisa mengatakannya alih-alih memilih salah satu diam-diam."
+    },
+    "regions": {
+      "type": "array",
+      "description": "Di mana nama ini dipakai. Kosong TIDAK berarti nasional — lihat `region_unknown_reason`. Kamus nama lokal yang tidak tahu batas wilayahnya akan menyodorkan nama satu daerah kepada seluruh negeri, dan itu kekeliruan yang paling mudah dilakukan di sini.",
+      "items": { "$ref": "common.schema.json#/$defs/Ref" }
+    },
+    "region_unknown_reason": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Wajib bila `regions` kosong. \"Belum ditanyakan\" adalah alasan yang sah; \"dipakai di mana-mana\" adalah klaim yang butuh buktinya sendiri."
+    },
+    "evidence_tier": { "$ref": "common.schema.json#/$defs/EvidenceTier" },
+    "evidence_note": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Kenapa tingkat itu, bukan yang lain. Aturan yang sama seperti pada protokol dan sediaan: tingkat bukti tanpa alasan adalah klaim tanpa dasar."
+    },
+    "provenance": { "$ref": "common.schema.json#/$defs/Provenance" },
+    "notes": { "$ref": "common.schema.json#/$defs/LangText" },
+    "lifecycle": { "$ref": "common.schema.json#/$defs/Lifecycle" }
+  },
+  "required": ["key", "name", "refers_to", "regions", "evidence_tier", "evidence_note", "lifecycle"],
+  "allOf": [
+    {
+      "if": { "properties": { "refers_to": { "maxItems": 0 } } },
+      "then": { "required": ["unmapped_reason"] }
+    },
+    {
+      "if": { "properties": { "refers_to": { "minItems": 2 } } },
+      "then": { "required": ["ambiguous_note"] }
+    },
+    {
+      "if": { "properties": { "regions": { "maxItems": 0 } } },
+      "then": { "required": ["region_unknown_reason"] }
+    }
+  ],
+  "unevaluatedProperties": false
+}

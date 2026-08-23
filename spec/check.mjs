@@ -371,6 +371,42 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L35 — nama peninjau dan tanggal tinjauan wajib bepergian bersama, pada rekaman
+    // APA PUN. L33 sudah menuntutnya, tetapi hanya untuk protokol yang berstatus
+    // published — dan itu satu sudut dari korpus yang seluruhnya masih draft.
+    //
+    // Dua arah, karena keduanya bohong dengan cara yang berbeda. `reviewed_at` tanpa
+    // peninjau bernama menyatakan sebuah tinjauan terjadi tanpa seorang pun yang bisa
+    // ditagih atasnya — persis "Package of Practices" yang ditolak docs/00. Peninjau
+    // bernama tanpa `reviewed_at` menyatakan siapa tanpa menyatakan kapan, dan tinjauan
+    // yang tidak bertanggal tidak bisa diperiksa ulang setelah isinya berubah: pembacanya
+    // tidak tahu apakah yang ditinjau masih rekaman yang sama.
+    const peninjau = (doc.provenance?.contributors ?? []).filter((c) => c.role === 'reviewer');
+    if (doc.lifecycle?.reviewed_at && peninjau.length === 0) {
+      fail(file, 'L35-peninjau-bertanggal', `lifecycle.reviewed_at berisi ${doc.lifecycle.reviewed_at} tetapi tidak ada satu pun kontributor ber-role "reviewer". Tinjauan tanpa peninjau bernama tidak bisa ditagih siapa pun, dan tanggalnya justru membuatnya tampak sudah diperiksa.`);
+    }
+    if (peninjau.length > 0 && !doc.lifecycle?.reviewed_at) {
+      fail(file, 'L35-peninjau-bertanggal', `provenance.contributors memuat peninjau (${peninjau.map((c) => c.name).join(', ')}) tetapi lifecycle.reviewed_at kosong. Rekaman ini menyatakan siapa tanpa menyatakan kapan, jadi tidak ada cara mengetahui apakah yang ditinjau masih isi yang sekarang.`);
+    }
+
+    // L35 — tinjauan disematkan pada isi yang benar-benar dibaca peninjaunya.
+    //
+    // Ini yang menjawab keberatan paling wajar dari siapa pun yang diminta menempelkan
+    // namanya: "apakah nama saya akan menanggung isi yang tidak pernah saya baca?" Tanpa
+    // pin, jawabannya ya — rekaman disunting, nama peninjau tetap di tempatnya, dan
+    // pembaca mengira yang sekarang sudah diperiksa. Dengan pin, isinya boleh berubah dan
+    // tinjauannya cukup terbaca kedaluwarsa.
+    //
+    // Peringatan, bukan galat: tinjauan yang kedaluwarsa tidak salah, ia hanya tidak lagi
+    // berlaku untuk isi yang sekarang — dan yang perlu tahu itu pembacanya.
+    if (peninjau.length > 0 && doc.lifecycle?.content_hash) {
+      if (!doc.lifecycle.reviewed_hash) {
+        warn(file, 'L35-tinjauan-tersemat', 'Rekaman ini punya peninjau bernama dan content_hash, tetapi lifecycle.reviewed_hash kosong. Tanpa pin, tidak ada cara mengetahui apakah tinjauannya masih berlaku untuk isi yang sekarang.');
+      } else if (doc.lifecycle.reviewed_hash !== doc.lifecycle.content_hash) {
+        warn(file, 'L35-tinjauan-tersemat', `Tinjauan disematkan pada ${doc.lifecycle.reviewed_hash} tetapi isinya sekarang ${doc.lifecycle.content_hash}. Isinya berubah sesudah ditinjau, jadi tinjauan ini kedaluwarsa — nama peninjaunya tidak menanggung perubahan itu.`);
+      }
+    }
+
     // ---- Aturan sediaan buatan sendiri (L16-L21) ----
     const isPreparation = typeof doc.id === 'string' && doc.id.startsWith('op:sed:');
     const controlsPest = (doc.intended_functions ?? []).some((f) => f === 'pest_control' || f === 'disease_suppression');
