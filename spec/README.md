@@ -19,7 +19,7 @@ spec/
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
-├── schema/                       29 berkas JSON Schema (draft 2020-12)
+├── schema/                       30 berkas JSON Schema (draft 2020-12)
 ├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
 │   ├── product/                  registri produk — 14.920 entitas (NDJSON)
 │   └── variety/                  registri varietas — 11.227 entitas (NDJSON)
@@ -80,7 +80,43 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Plot` | `op:plt` | Unit produksi terkecil. `kind` mencakup sawah, rumah kaca, kebun, **tambak**, kandang |
 | `Cycle` | `op:cyc` | Satu siklus budidaya pada satu Plot |
 | `Step` | `op:stp` | **Satu langkah — direncanakan atau dikerjakan** |
+| `Observation` | `op:obs` | **Pengamatan yang berdiri sendiri** — laporan gejala warga, hitungan pengamatan, atau pengukuran. Selalu menyebut status verifikasinya |
 | `PreparationBatch` | `op:bat` | Satu kali pembuatan sediaan, beserta catatan suhu dan hasil ujinya |
+
+### Laporan gejala warga yang tidak menyamar jadi temuan — G3
+
+Bentuk pengamatan yang sudah ada tertanam di dalam `Step` dan menuntut `variable` +
+`value`: itu **pengukuran**, dan hanya bisa dibuat orang yang sedang menjalankan protokol
+dengan cara dan ukuran sampel. Petani yang melihat daun keriting tidak berkata
+"variable=X, value=5" — ia menyebut apa yang dilihatnya. `observation.schema.json`
+menampungnya sebagai entitas tersendiri (`op:obs:`), dan bahayanya dirancang keluar alih-
+alih ditambal di penyaji:
+
+- **`suspected`, bukan `identified`.** Nama medannya menanggung status epistemiknya.
+  Identifikasi OPT adalah kesimpulan, dan kesimpulan datang dari verifikasi — bukan dari
+  yang melapor. `suspected.basis` wajib: dugaan tanpa dasar adalah klaim tanpa dasar.
+- **`verification` wajib, dan `unverified` harus dinyatakan.** Medan kosong terbaca sebagai
+  tidak ada masalah, dan di sini tidak ada masalah berarti sudah diperiksa. Status selain
+  `unverified` menuntut pemverifikasi bernama beserta tanggalnya — disiplin yang sama
+  dengan `L35`.
+- **Tidak ada medan geometri sama sekali.** Batas lahan tinggal di `Plot`, tempat `L7`
+  sudah menjaganya; menyalinnya ke sini memberi penjagaan itu pintu kedua. Tempat
+  dinyatakan lewat `region`, dan itu wajib.
+- **Perkiraan tidak boleh memakai bentuk hitungan.** `report.extent` sengaja kasar —
+  `few_plants`, `patches`, `widespread` — karena warga memperkirakan, tidak menghitung, dan
+  skala halus mengarang ketelitian yang tidak ada.
+
+`L37` menegakkan empatnya, dan yang pertama langsung menjawab bahaya yang disebut
+[15](../docs/15-kapabilitas-lintas-pemangku.md): **laporan yang belum diverifikasi tidak
+boleh berkelas `public`.** Peta titik laporan tanpa verifikasi memicu penyemprotan massal
+yang kerugiannya ditanggung petani sementara yang untung penjual pestisida — jadi peta itu
+tidak bisa tersusun dari data yang sah menurut aturan ini.
+
+**Permukaannya belum dibangun, dan itu bukan kelalaian.** Menyerahkan laporan ke rantai
+POPT menuntut POPT yang bisa disebutkan namanya, dan direktori layanan masih **nol
+rekaman** untuk penyuluh, POPT, laboratorium, dan jasa alsintan. Layar yang menyusun
+laporan lalu menyuruh orang mengirimkannya entah ke mana adalah kotak masuk yang tak
+seorang pun di ujungnya.
 
 ### Identitas petak tanpa memiliki batasnya — G5
 

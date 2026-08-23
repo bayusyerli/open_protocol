@@ -1,0 +1,21 @@
+{
+  "$schema": "../schema/observation.schema.json",
+  "id": "op:obs:019e9200-0000-7000-8000-000000000005",
+  "kind": "symptom_report",
+  "observed_at": "2026-08-23T02:00:00Z",
+  "region": {
+    "id": "op:rgn:00003318",
+    "label": "Kabupaten Rembang"
+  },
+  "observer": {
+    "role": "farmer"
+  },
+  "report": {
+    "symptom_text": "Daun cabai mengeriting ke atas, tepinya menguning.",
+    "extent": "patches"
+  },
+  "verification": {
+    "status": "verified"
+  },
+  "data_classification": "farm_private"
+}

@@ -554,10 +554,10 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | **selesai** 23 Agustus 2026 — `CONTRIBUTING.md`, `spec/tools/tinjau.mjs`, aturan L35, dan sematan `reviewed_hash`. Terukur saat dibuka: **0 dari 4.256** rekaman punya peninjau bernama, **0** berstatus published | **selesai** |
 | G2 | Umpan balik lapangan menaikkan tingkat bukti D→A | semua | apakah korpus hidup | `DeviationReason.signals` **ada** | **BANGUN** (fase 3) |
-| G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | belum ada; rantai POPT sudah ada | **BANGUN hati-hati + SAMBUNG** |
+| G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | **entitasnya selesai** 23 Agustus 2026 — `observation.schema.json` + aturan `L37`. **Permukaannya ditahan**: 0 rekaman POPT, jadi tidak ada ujung untuk diserahi | entitas **selesai**; permukaan **TUNDA** sampai C7 punya POPT |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
 | G5 | Identitas petak stabil tanpa memiliki geometrinya | semua | dasar semua rekaman | **selesai** 23 Agustus 2026 — `tools/sidik-petak.mjs` + aturan `L36`. Yang tetap `id` rekamannya, yang berubah sidiknya; sidik titik tunggal **ditolak** karena 2³⁰ ditebak habis dalam 0,08 detik | **selesai** |
-| G6 | **Lapis pengalaman peer** — pengamatan lapangan diagregasi di tingkat bahan aktif, selalu berpenyebut | petani, poktan, penyuluh | #3, #4, #6, #9 — kanal keputusan yang sebenarnya | `Observation` ada; pengumpulan hanya mungkin di atas E1–E5 | **BANGUN** (fase 3) |
+| G6 | **Lapis pengalaman peer** — pengamatan lapangan diagregasi di tingkat bahan aktif, selalu berpenyebut | petani, poktan, penyuluh | #3, #4, #6, #9 — kanal keputusan yang sebenarnya | `Observation` **kini benar-benar ada** (23 Agustus 2026, lewat G3); pengumpulan hanya mungkin di atas E1–E5 | **BANGUN** (fase 3) |
 
 > **G6 lahir dari jawaban yang sama yang membatalkan premis C2.** Kalimat lengkapnya
 > berbunyi *"umumnya rekomendasi dari peers"* — artinya kanal keputusan yang sebenarnya
@@ -585,6 +585,32 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > tidak perlu — dan kerugiannya ditanggung petani, sementara yang untung penjual pestisida.
 > Karena itu perannya **memberi lengan pada rantai POPT yang sudah ada**, bukan
 > menggantikannya: laporan warga masuk sebagai pengamatan, verifikasi tetap milik POPT.
+
+> **G3 dikerjakan 23 Agustus 2026, dan yang ditemukan bukan penghalang yang diduga.**
+> Aturan pengumpulan memang tidak menghalanginya — putusan barisnya sendiri sudah berbunyi
+> **SAMBUNG**, dan menyerahkan laporan ke rantai POPT adalah serah-terima, bukan
+> pengumpulan. Yang menghalangi dua hal lain, dan keduanya baru terlihat setelah diukur.
+>
+> **Pertama: `Observation` yang dirujuk empat dokumen ternyata tidak ada sebagai entitas.**
+> [00](00-fondasi-dan-tahapan.md) mendaftarkannya, baris G6 di bawah menulis "`Observation`
+> ada", dan [17](17-tiga-konsep-ui.md) membangun Konsep 3 di atasnya. Yang benar-benar ada
+> sebuah `$defs` **di dalam** `step.schema.json`, dan bentuknya menuntut `variable` +
+> `value` — itu **pengukuran**, hanya bisa dibuat orang yang sedang menjalankan protokol.
+> Petani yang melihat daun keriting tidak berkata "variable=X, value=5"; ia menyebut apa
+> yang dilihatnya. Laporan warga karena itu **tidak punya tempat sama sekali** di kosakata,
+> dan `op:obs:` dipesan di pola id tanpa satu skema pun yang bisa memakainya. Entitasnya
+> dibangun sekarang, dengan bahayanya dirancang keluar alih-alih ditambal: medannya bernama
+> **`suspected`**, bukan `identified`, karena identifikasi adalah kesimpulan; `verification`
+> wajib dan `unverified` harus **dinyatakan**, bukan dikosongkan; dan tidak ada medan
+> geometri sama sekali, karena batas lahan sudah dijaga L7 di `Plot` dan pintu kedua akan
+> melemahkan penjagaan itu.
+>
+> **Kedua, dan ini yang menahan permukaannya: tidak ada ujung untuk diserahi.** Baris C7 di
+> atas sudah mencatatnya — penyuluh, **POPT**, laboratorium, dan jasa alsintan semuanya
+> **nol rekaman**. Membangun layar yang menyusun laporan lalu menyuruh orang mengirimkannya
+> ke POPT yang tidak bisa disebutkan namanya adalah persis kotak masuk yang tak seorang pun
+> di ujungnya. Permukaannya karena itu **tidak dibangun**, dan yang membukanya bukan kode
+> melainkan C7: isi dulu direktori POPT-nya.
 
 ### Rekapitulasi putusan — 40 kapabilitas
 

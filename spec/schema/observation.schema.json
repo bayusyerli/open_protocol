@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/observation.schema.json",
+  "title": "Observation",
+  "description": "Pengamatan lapangan yang BERDIRI SENDIRI — G3 pada docs/15. Bentuk pengamatan yang sudah ada tertanam di dalam Step (step.schema.json#/$defs/Observation) dan menuntut `variable` + `value`: itu PENGUKURAN, dan hanya bisa dibuat orang yang sedang menjalankan protokol. Laporan gejala dari warga tidak berbentuk begitu — ia menyebut apa yang dilihatnya, sering tanpa petak tercatat dan tanpa siklus. Entitas ini menampungnya, dan yang membedakannya dari pengukuran bukan cuma bentuknya melainkan STATUS EPISTEMIKNYA: laporan warga adalah data mentah, dan menyebutnya wabah adalah kesimpulan.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "id": {
+      "type": "string",
+      "pattern": "^op:obs:[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+    },
+    "kind": {
+      "description": "symptom_report datang dari warga dan tidak menuntut variabel. scouting_count dan measurement menuntutnya, karena keduanya hasil pengamatan berdisiplin.",
+      "type": "string",
+      "enum": ["symptom_report", "scouting_count", "measurement"]
+    },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "region": {
+      "description": "Wilayah administratif. WAJIB, dan ia satu-satunya penanda tempat di entitas ini — tidak ada medan geometri sama sekali. Batas lahan tinggal di Plot, tempat L7 sudah menjaganya; menyalinnya ke sini akan membuat penjagaan itu punya dua pintu.",
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "plot": { "$ref": "common.schema.json#/$defs/Ref" },
+    "cycle": { "$ref": "common.schema.json#/$defs/Ref" },
+    "commodity": { "$ref": "common.schema.json#/$defs/Ref" },
+    "observer": {
+      "description": "PERAN yang mengamati, bukan identitas orangnya. Nama hanya masuk lewat `actor` bila memang ada rekaman Actor beserta persetujuannya — L6 menjaga sisi itu.",
+      "type": "object",
+      "properties": {
+        "role": {
+          "type": "string",
+          "enum": ["farmer", "extension_officer", "popt", "researcher", "other"]
+        },
+        "actor": { "$ref": "common.schema.json#/$defs/Ref" }
+      },
+      "required": ["role"],
+      "additionalProperties": false
+    },
+    "report": {
+      "description": "Isi laporan warga. `symptom_text` bahasa orangnya sendiri — tidak dipaksa masuk kosakata, karena memaksanya berarti membuang laporan yang tidak cocok istilahnya.",
+      "type": "object",
+      "properties": {
+        "symptom_text": { "type": "string", "minLength": 1 },
+        "extent": {
+          "description": "Seberapa luas menurut yang melihat. Sengaja kasar: warga tidak menghitung, ia memperkirakan, dan skala halus akan mengarang ketelitian yang tidak ada.",
+          "type": "string",
+          "enum": ["few_plants", "patches", "widespread", "unknown"]
+        },
+        "plant_part": { "type": "string" }
+      },
+      "required": ["symptom_text"],
+      "additionalProperties": false
+    },
+    "variable": { "$ref": "common.schema.json#/$defs/Ref" },
+    "value": { "type": ["number", "string", "boolean"] },
+    "unit": { "$ref": "common.schema.json#/$defs/UcumCode" },
+    "method": { "$ref": "common.schema.json#/$defs/Ref" },
+    "sample": {
+      "type": "object",
+      "properties": {
+        "size": { "type": "integer", "minimum": 1 },
+        "scope": {
+          "type": "string",
+          "enum": ["per_plant", "per_hill", "per_trap", "per_m2", "per_leaf", "per_plot", "per_sample", "whole_cycle"]
+        }
+      },
+      "additionalProperties": false
+    },
+    "suspected": {
+      "description": "DUGAAN, dan nama medannya memang menanggung itu. Tidak ada medan `identified` di entitas ini: identifikasi OPT adalah kesimpulan, dan kesimpulan datang dari verifikasi, bukan dari yang melapor.",
+      "type": "object",
+      "properties": {
+        "pest": { "$ref": "common.schema.json#/$defs/Ref" },
+        "basis": {
+          "type": "string",
+          "minLength": 1,
+          "description": "Atas dasar apa diduga. Dugaan tanpa dasar adalah klaim tanpa dasar — aturan yang sama yang berlaku untuk tingkat bukti."
+        }
+      },
+      "required": ["pest", "basis"],
+      "additionalProperties": false
+    },
+    "verification": {
+      "description": "Yang memisahkan 'saya melihat' dari 'POPT membenarkan'. WAJIB, dan `unverified` harus DINYATAKAN — bukan dikosongkan. Medan kosong terbaca sebagai tidak ada masalah, dan di sini tidak ada masalah berarti sudah diperiksa.",
+      "type": "object",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["unverified", "verified", "disputed", "rejected"]
+        },
+        "by": { "$ref": "common.schema.json#/$defs/Contributor" },
+        "at": { "type": "string", "format": "date" },
+        "note": { "type": "string" }
+      },
+      "required": ["status"],
+      "allOf": [
+        {
+          "if": {
+            "properties": { "status": { "enum": ["verified", "disputed", "rejected"] } },
+            "required": ["status"]
+          },
+          "then": { "required": ["by", "at"] }
+        }
+      ],
+      "additionalProperties": false
+    },
+    "media": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "url": { "type": "string" },
+          "role": { "type": "string" },
+          "notes": { "type": "string" }
+        },
+        "required": ["url"],
+        "additionalProperties": false
+      }
+    },
+    "notes": { "$ref": "common.schema.json#/$defs/LangText" },
+    "data_classification": { "$ref": "common.schema.json#/$defs/DataClassification" },
+    "provenance": { "$ref": "common.schema.json#/$defs/Provenance" },
+    "lifecycle": { "$ref": "common.schema.json#/$defs/Lifecycle" }
+  },
+  "required": ["id", "kind", "observed_at", "region", "observer", "verification", "data_classification"],
+  "allOf": [
+    {
+      "if": {
+        "properties": { "kind": { "const": "symptom_report" } },
+        "required": ["kind"]
+      },
+      "then": { "required": ["report"] }
+    },
+    {
+      "if": {
+        "properties": { "kind": { "enum": ["scouting_count", "measurement"] } },
+        "required": ["kind"]
+      },
+      "then": { "required": ["variable", "value"] }
+    }
+  ],
+  "additionalProperties": false
+}

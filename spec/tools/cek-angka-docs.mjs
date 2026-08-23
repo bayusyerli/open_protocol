@@ -59,6 +59,13 @@ const hasil = [];
 const cek = (doc, klaim, nyata, harap) =>
   hasil.push({ doc, klaim, nyata, harap, ok: String(nyata) === String(harap) });
 
+// ---- hitungan berkas yang dicetak spec/README
+// Angka ini basi dua kali dalam sehari: sekali meleset tujuh, dan sekali lagi satu jam
+// sesudah dibetulkan karena skema baru masuk. Ia contoh paling murni dari yang dijaga alat
+// ini — angka yang benar saat ditulis dan tidak punya apa pun yang memberitahu saat ia
+// berhenti benar.
+cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 30);
+
 // ---- dasar
 cek('semua', 'pestisida terdaftar', P.length, 7724);
 cek('semua', 'pupuk terdaftar', PU.length, 7196);
