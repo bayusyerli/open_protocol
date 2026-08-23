@@ -16,6 +16,7 @@ import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI,
 import { layarVarietas } from './varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { pasangKandungan } from './kandungan.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -283,8 +284,10 @@ async function jalankan() {
     await muatMeta();
     pasangBatas(el.batas, {
       sumber: ['pestisida', 'pupuk', 'varietas'],
-      takDijawab: ['namaDagang', 'phi'],
+      takDijawab: ['namaDagang', 'isiKarung', 'phi'],
     });
+    // C2 — pintu kedua ke layar yang sama: masuk dari angka di karung, bukan dari nama.
+    pasangKandungan(buka);
     el.q.disabled = false;
 
     // Datang dari beranda: kuerinya dipulihkan supaya tombol kembali peramban tidak

@@ -55,6 +55,36 @@
   <section id="hasil" aria-live="polite"></section>
   <section id="rincian" tabindex="-1"></section>
 
+  <!-- C2 · pemeriksaan keaslian lewat KANDUNGAN, bukan nomor pendaftaran.
+       Premisnya diganti jawaban lapangan: "Tidak. Biasanya langsung lihat kemasan, cek
+       kandungan." Registri membenarkannya dari sisi lain — 667 dari 7.196 pupuk tidak
+       punya nomor sama sekali. -->
+  <div class="kartu" id="kartuKandungan">
+    <h2>Atau periksa dari angka di karungnya</h2>
+    <p>
+      Nama dan nomor pendaftaran sering tidak dipakai orang saat membeli — yang dibaca
+      <strong>kandungan yang tercetak di kemasan</strong>. Masukkan angkanya di sini, dan
+      layar akan mengatakan apakah ada pupuk terdaftar dengan kandungan itu.
+    </p>
+    <form id="formKandungan" onsubmit="return false">
+      <div class="baris-kandungan" id="barisKandungan"></div>
+      <p class="aksi-kandungan">
+        <button type="button" id="tambahHara">+ Tambah hara</button>
+        <button type="button" id="periksaKandungan">Periksa</button>
+      </p>
+      <p class="bantuan" id="bantuanKandungan">
+        Isi seperti yang tertulis di karung. Untuk NPK 15-15-15, isi tiga baris dengan 15%.
+      </p>
+    </form>
+    <p class="catatan">
+      <strong>Ini memeriksa label terhadap registri, bukan isi karung terhadap labelnya.</strong>
+      Kandungan yang cocok berarti labelnya sesuai dengan sesuatu yang memang terdaftar.
+      Ia tidak membuktikan isi di dalamnya — dan justru di situ bahayanya paling tajam.
+    </p>
+  </div>
+
+  <section id="hasilKandungan" aria-live="polite" tabindex="-1"></section>
+
   <details class="batas">
     <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>
     <div class="batas-isi">

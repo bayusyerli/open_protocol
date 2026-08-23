@@ -196,6 +196,56 @@ kenapa" memang berbeda di tiap jalur.
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
 
+### Pemeriksaan keaslian lewat kandungan — C2
+
+Pintu kedua ke jalur 2: masuk dari **angka yang tercetak di karung**, bukan dari nama
+atau nomor pendaftaran. Perendernya tetap satu — nama yang cocok dibuka layar rincian
+yang sama seperti hasil pencarian nama.
+
+- **Nomor pendaftaran bukan pintu, dan itu jawaban lapangan.** *"Tidak. Biasanya langsung
+  lihat kemasan, cek kandungan."* Registri membenarkannya dari sisi yang sama sekali
+  lain: **667 dari 7.196 pupuk — 9,3% — tidak punya nomor pendaftaran sama sekali**,
+  sementara 71,3% punya komposisi. Dua garis bukti yang tidak berhubungan.
+- **Batasnya tercetak di layar, bukan di catatan kaki.** Kandungan yang cocok
+  membuktikan **labelnya** sesuai dengan yang terdaftar. Ia **tidak** membuktikan isi
+  karungnya — dan justru di situ bahayanya paling tajam: kasus pupuk palsu Rp3,3 triliun
+  persis berupa karung yang berbeda dari labelnya sendiri, NPK di bawah 1% padahal
+  minimum 15%.
+- **Tidak ada jalur lapor, dan itu dicabut, bukan tertunda.** Ditanya apa yang terjadi
+  hari ini ketika seseorang mencurigai pupuk palsu, jawabannya *"berhenti di
+  pemeriksaan"*. Kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak
+  ada kotak masuk.
+- **Nol hasil dinyatakan sebagai tiga kemungkinan, bukan satu vonis.** Angkanya salah
+  baca, produknya terdaftar dengan kandungan sedikit berbeda, atau memang tidak
+  terdaftar. Pencocokannya **persis** — 15% bukan 15,5% — dan layar mengatakannya.
+- **Angka mustahil ditangkap tanpa registri sama sekali.** Kadar yang jumlahnya melebihi
+  1.000 g/kg tidak bisa benar, dan itu bisa diperiksa mesin dari angka yang diketik
+  bahkan kalau registrinya basi. Registri sendiri memuat 27 produk yang melewatinya —
+  `L27` di pemeriksa menandainya. Pemeriksaan tetap dijalankan di bawah peringatannya.
+- **Persen harus menyebut kemasannya, dan itu bukan kerewelan.** Karung NPK mencetak
+  "15-8-10"; registri menyimpan 150 g/kg; dan **nol dari 5.130 pupuk berkomposisi memakai
+  persen**. Kalau "%" dibiarkan berdiri sendiri, justru bentuk yang paling sering dibaca
+  orang dari karung yang tidak akan pernah cocok. Jadi 1% = 10 g per kilogram atau per
+  liter, dan yang memilih kemasannya orang yang memegangnya.
+- **Padat, cair, dan persen tidak pernah dicocokkan silang.** Berat jenis tidak ada di
+  registri. Baris bersatuan campur ditolak dengan alasannya, bukan dihitung diam-diam.
+- **Indeksnya berember hash, bukan berawalan.** Awalan sidik komposisi tidak berarti
+  apa-apa bagi yang mengetik dan sebarannya pincang; hash memberi 256 ember yang rata,
+  dan penyaji menghitung sendiri embernya tanpa satu pun berkas kepala. Satu pemeriksaan
+  mengambil satu ember — 1.451 KB seluruhnya, tetapi ~5,7 KB yang benar-benar diambil.
+  FNV-1a dipilih karena harus bisa ditulis persis sama di pembangun dan di peramban.
+- **`setara/` tidak bisa dipakai walau tampak mirip.** Ia hanya menyimpan kelompok
+  berisi ≥2 anggota, sedangkan C2 justru paling perlu menjawab produk tunggal; dan ia
+  mengunci pupuk pada `formulation`, string registri yang tidak tercetak di karung dan
+  tidak diketahui pembeli.
+- **Sisi pestisida belum berpermukaan, dan itu dinyatakan.** Indeksnya sudah memuatnya —
+  12.564 dari 12.579 produk berkomposisi, termasuk 3.028 pestisida bersatuan persen yang
+  jadi basis ketiga. Yang belum dibangun formulirnya: bahan aktif pestisida ada 1.706 dan
+  menuntut pencarian sendiri, bukan daftar pilihan seperti 17 hara. Sementara itu,
+  kadar bahan aktif tunggal tetap terjangkau lewat kartu bahan+kadar di jalur 2.
+  Lima belas produk bersatuan ganjil — `mL/L`, `mg/pcs`, `g/m2`, `mg/m2` — tidak ikut
+  terindeks sama sekali.
+
 ### Kamus nama lokal — A3
 
 Petani tidak menyebut *Thrips parvispinus*; ia menyebut nama lokalnya. Tanpa kamus ini,

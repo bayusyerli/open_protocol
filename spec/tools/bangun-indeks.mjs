@@ -436,6 +436,94 @@ pecahanProduk.forEach((s, i) => s.forEach((r) => petaPecahan.set(r.id, `produk/$
 pecahanVarietas.forEach((s, i) => s.forEach((r) => petaPecahan.set(r.id, `varietas/${String(i).padStart(3, '0')}`)));
 
 // ---------------------------------------------------------------------------
+// Sidik komposisi untuk pemeriksaan keaslian — C2
+// ---------------------------------------------------------------------------
+// Premis C2 diganti jawaban lapangan: "Tidak. Biasanya langsung lihat kemasan, cek
+// kandungan." Nomor pendaftaran bukan pintu — registri membenarkannya dari sisi lain,
+// 667 dari 7.196 pupuk (9,3%) tidak punya nomor sama sekali. Jadi yang diindeks di sini
+// KANDUNGAN, dan pintunya angka yang tercetak di karung.
+//
+// Beda dari `setara/` di atas, yang tampak mirip tetapi tidak bisa dipakai:
+//   - `setara/` hanya menyimpan kelompok berisi >= 2 anggota, karena tujuannya
+//     menunjukkan "merek lain yang isinya sama". Untuk C2 justru produk tunggal yang
+//     paling perlu terjawab: yang mencari ingin tahu apakah ADA yang cocok, sama sekali.
+//   - `setara/` mengunci pupuk pada `formulation`, string registri yang tidak tercetak
+//     di karung dan tidak diketahui pembeli. Di sini yang dipakai BASIS — per kilogram
+//     atau per liter — karena itu yang bisa dibaca siapa pun dari kemasannya.
+//
+// Ember memakai hash, bukan awalan. Awalan sidik komposisi tidak berarti apa-apa bagi
+// yang mengetik, dan sebarannya akan pincang; hash memberi ember yang rata dan penyaji
+// bisa menghitung sendiri embernya tanpa satu pun berkas kepala.
+
+// FNV-1a 32-bit. Dipilih karena pendek dan bisa ditulis ulang persis sama di peramban
+// tanpa pustaka apa pun — pembangun dan penyaji WAJIB menghasilkan angka yang sama,
+// dan hash kripto di peramban asinkron serta menuntut konteks aman.
+function emberSidik(sidikTeks) {
+  let h = 0x811c9dc5;
+  for (let i = 0; i < sidikTeks.length; i++) {
+    h ^= sidikTeks.charCodeAt(i);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return (h & 0xff).toString(16).padStart(2, '0');
+}
+
+// Satuan registri ada empat, dan tidak satu pun produk mencampur basis massa dengan
+// basis volume — jadi tiap produk punya satu basis yang jelas dan tidak ada konversi
+// yang perlu ditebak. Berat jenis tidak ada di registri, jadi padat dan cair memang
+// tidak bisa dijembatani (lihat meta.tidakAda.beratJenis).
+//
+// Persen jadi BASIS KETIGA, bukan dikonversi. 3.028 pestisida menuliskan kadarnya dalam
+// persen, dan tanpa tahu itu b/b atau b/v tidak ada cara mengubahnya jadi g/kg maupun
+// g/L — berat jenis tidak ada di registri. Membuangnya berarti 40,6% pestisida
+// berkomposisi tidak bisa diperiksa sama sekali; mengonversinya berarti menebak. Basis
+// ketiga menyimpan keduanya: yang membaca "2%" di kemasan tetap menemukan yang terdaftar
+// dalam persen, dan tidak pernah dicocokkan silang dengan yang terdaftar dalam g/L.
+const SATUAN_C2 = {
+  'g/kg': ['m', 1], 'mg/kg': ['m', 0.001],
+  'g/L': ['v', 1], 'mg/L': ['v', 0.001],
+  '%': ['p', 1],
+};
+
+const angkaSidik = (x) => String(Math.round(x * 10000) / 10000);
+
+/** Sidik yang bisa dihitung dari yang TERCETAK di kemasan: kode hara, kadar, basis. */
+export function sidikKandungan(bagian) {
+  const basis = new Set(bagian.map((c) => c.basis));
+  if (basis.size !== 1) return null;
+  return bagian
+    .map((c) => `${c.kode}@${angkaSidik(c.nilai)}`)
+    .sort()
+    .join('|') + `#${[...basis][0]}`;
+}
+
+const sidikProduk = (p) => {
+  const bagian = [];
+  for (const c of p.composition ?? []) {
+    const u = SATUAN_C2[c.unit];
+    if (!u) return null;
+    bagian.push({ kode: Number(c.substance.id.slice(-8)), nilai: c.value * u[1], basis: u[0] });
+  }
+  return bagian.length ? sidikKandungan(bagian) : null;
+};
+
+const kandungan = new Map(); // sidik -> [ringkas produk]
+let produkTanpaSidik = 0;
+for (const r of semuaProduk) {
+  if (r.jenis !== 'pupuk' && r.jenis !== 'pestisida') continue;
+  const asli = (r.jenis === 'pupuk' ? pupuk : pestisida).find((x) => x.id === r.id);
+  const sk = asli ? sidikProduk(asli) : null;
+  if (!sk) { if (asli?.composition?.length) produkTanpaSidik++; continue; }
+  if (!kandungan.has(sk)) kandungan.set(sk, []);
+  kandungan.get(sk).push({ i: r.id, n: r.nama, k: r.produsen ?? null, p: petaPecahan.get(r.id), j: r.jenis });
+}
+
+const berkasKandungan = {};
+for (const [sk, daftar] of [...kandungan.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+  const e = emberSidik(sk);
+  (berkasKandungan[e] ??= {})[sk] = daftar.sort((a, b) => a.n.localeCompare(b.n));
+}
+
+// ---------------------------------------------------------------------------
 // Bahan aktif → kadar → merek
 // ---------------------------------------------------------------------------
 // Dikelompokkan menurut bahan DAN kadar, tidak pernah menurut bahan saja. Satu
@@ -1137,6 +1225,8 @@ const meta = {
     namaLokalTaksa: namaLokalCari.filter((x) => x.ke.length > 1).length,
     bahanAktifTerpakai: bahanRinci.length,
     kartuBahanKadar: bahanRinci.reduce((a, b) => a + b.kadar.length, 0),
+    sidikKandungan: kandungan.size,
+    produkBerkandungan: [...kandungan.values()].reduce((a, d) => a + d.length, 0),
   },
   pecahan: {
     cari: Object.keys(cari).sort(),
@@ -1146,6 +1236,7 @@ const meta = {
     produk: pecahanProduk.length,
     varietas: pecahanVarietas.length,
     opt: [...perKomoditas.keys()].map(kunciKomoditas).sort(),
+    kandungan: Object.keys(berkasKandungan).sort(),
   },
   terbuang: {
     ...terbuang,
@@ -1176,6 +1267,8 @@ const meta = {
       'Kadar hara sediaan buatan sendiri tidak diketahui sebelum batchnya diuji: L18 menolak menghitung hara dari batch yang belum diuji, dan kadar kompos berbeda tiap tumpukan. Karena itu resep jalur 5 muncul di jalur 3 tanpa rupiah per kg hara — tanpa angka, bukan dengan angka taksiran.',
     namaDagang: 'Registri menyimpan nama produk terdaftar; nama di kemasan bisa berbeda dan belum terpetakan.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
+    isiKarung:
+      'Kandungan yang cocok membuktikan LABELNYA sesuai dengan yang terdaftar. Ia tidak membuktikan isi karungnya. Justru di situ bahayanya paling tajam: kasus pupuk palsu Rp3,3 triliun persis berupa karung yang berbeda dari labelnya sendiri — NPK di bawah 1% padahal minimum 15%. Yang bisa memastikan isi hanya uji laboratorium, dan itu di luar jangkauan permukaan ini.',
     wilayahNamaLokal:
       'Tidak satu pun dari enam nama lokal menyebutkan wilayah pemakaiannya. Sumbernya berbunyi "setiap daerah memiliki bahasa lokal yang berbeda, tapi umumnya", dan "umumnya" bukan nama tempat. Jadi kamus ini tidak bisa mengatakan sebuah nama dipakai di daerah pembacanya — ia hanya bisa mengatakan nama itu pernah didengar.',
   },
@@ -1202,6 +1295,7 @@ for (const [e, isi] of Object.entries(cari).sort()) simpan(`cari/${e}.json`, isi
 pecahanProduk.forEach((s, i) => simpan(`produk/${String(i).padStart(3, '0')}.json`, s));
 pecahanVarietas.forEach((s, i) => simpan(`varietas/${String(i).padStart(3, '0')}.json`, s));
 for (const [k, isi] of Object.entries(berkasOpt).sort()) simpan(`opt/${k}.json`, isi);
+for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan/${e}.json`, isi);
 
 // ---------------------------------------------------------------------------
 // Cap bangunan — supaya penyaji tidak perlu bertanya "sudah berubah belum?"
@@ -1240,7 +1334,7 @@ const terbesar = [...berkas.entries()]
 
 const kb = (n) => (n / 1024).toFixed(1) + ' KB';
 if (process.argv.includes('--sebaran')) {
-  for (const awalan of ['cari/', 'produk/', 'varietas/', 'setara/', 'bahan/', 'opt/']) {
+  for (const awalan of ['cari/', 'produk/', 'varietas/', 'setara/', 'bahan/', 'opt/', 'kandungan/']) {
     const u = [...berkas].filter(([p]) => p.startsWith(awalan)).map(([, s]) => Buffer.byteLength(s)).sort((a, b) => a - b);
     if (!u.length) continue;
     const q = (f) => kb(u[Math.min(u.length - 1, Math.floor(u.length * f))]);
@@ -1260,6 +1354,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
 console.log('Enam berkas terbesar:');

@@ -446,3 +446,65 @@ a { color: var(--aksen); }
 .tautan:hover { text-decoration-thickness: 2px; }
 .tautan:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
 .daftar .pembeda.kosong-pembeda { color: var(--teks-lemah); font-style: italic; }
+
+/* Label yang hanya untuk pembaca layar. Ada di beranda.css sejak awal tetapi tidak di
+   sini, dan itu baru ketahuan saat formulir kandungan memakainya: labelnya tampil utuh
+   di layar. Kelas yang dipakai bersama dua lembar gaya harus ada di keduanya. */
+.khusus-pembaca {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ------------------------------------------------- pemeriksaan kandungan (C2) */
+/* Masuk dari angka yang tercetak di karung, bukan dari nama atau nomor pendaftaran.
+   Barisnya kisi supaya nama hara yang panjang tidak mendorong kolom kadar keluar
+   layar; di layar sempit ia menumpuk jadi dua baris, bukan menyusut jadi tak terbaca. */
+
+.baris-kandungan { display: grid; gap: .6rem; margin-bottom: .8rem; }
+
+.baris-hara {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 5.5rem auto;
+  gap: .4rem;
+  align-items: center;
+}
+
+.baris-hara select,
+.baris-hara input {
+  min-height: 44px;
+  padding: .45rem .6rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar-kartu);
+  color: var(--teks);
+  font: inherit;
+}
+
+.baris-hara .k-satuan { grid-column: 1 / -2; }
+
+.baris-hara .k-buang {
+  grid-row: 1 / span 2;
+  grid-column: 3;
+  min-width: 44px; min-height: 44px;
+  border: 1px solid var(--garis); border-radius: var(--sudut);
+  background: transparent; color: var(--teks-lemah);
+  font-size: 1.1rem; cursor: pointer;
+}
+.baris-hara .k-buang:hover { border-color: var(--bahaya); color: var(--bahaya); }
+
+.aksi-kandungan { display: flex; flex-wrap: wrap; gap: .6rem; margin: 0 0 .5rem; }
+
+.aksi-kandungan button {
+  min-height: 44px; padding: .6rem 1rem;
+  border: 1px solid var(--garis); border-radius: var(--sudut);
+  background: var(--latar-kartu); color: var(--teks);
+  font: inherit; font-weight: 600; cursor: pointer;
+}
+.aksi-kandungan button:hover { border-color: var(--aksen); background: var(--aksen-lemah); }
+.aksi-kandungan #periksaKandungan { border-color: var(--aksen); color: var(--aksen); }
+
+@media (min-width: 34rem) {
+  .baris-hara { grid-template-columns: minmax(0, 1fr) 5.5rem 8.5rem auto; }
+  .baris-hara .k-satuan { grid-column: auto; }
+  .baris-hara .k-buang { grid-row: auto; grid-column: auto; }
+}
