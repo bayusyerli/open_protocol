@@ -1206,3 +1206,31 @@ Dan bentuk kemasannya memang terbukti dipakai ulang: dari 53 baris, **45 terukur
 ≥ 0,92** terhadap merek lain di katalog yang sama — beberapa persis 1,000. Latar packshot
 situs ini benar-benar transparan, jadi uji pasal 4d sah dipakai di sini, tidak seperti pada
 karung Petrokimia Gresik yang berlatar putih pejal.
+
+### `/data/` di AKAR situs — jalur ketiga yang hampir terlewat
+
+Panen pertama membaca dua jalur di petrokayaku.com: gambar halaman di
+`/content/produk/{kategori}/data/*.png` (150 px, buntu) dan brosur PDF di direktori yang
+sama (33 halaman, subur). Ada **jalur ketiga**, dan ia baru ketemu secara tidak sengaja —
+saat menelusuri arsip Wayback halaman TEBBAS yang sudah dihapus, tautan bertuliskan
+`Brosur 1` ternyata menunjuk `/data/09072018172652.jpg` di **akar situs**, bukan di bawah
+`/content/produk/`.
+
+Diperiksa di situs hidup: **87 berkas semacam itu, ditautkan 47 dari 91 halaman produk,
+seluruhnya 1280×1360–1810 px.** Pindaian brosur beresolusi penuh, di path yang tidak
+disebut satu pun tautan gambar di halaman itu sendiri.
+
+Tiga puluh sembilan packshot dipotong darinya dan **menggantikan** baris 150 px yang sudah
+masuk — sisi terpanjang naik dari 150 ke median 826 px (terkecil 435, terbesar 1104), dan 21
+di antaranya kini cukup untuk rendition `sedang`. Empat belas baris tetap 150 px sebab
+halamannya memang tidak menautkan brosur.
+
+Berlaku peringatan yang sama dengan pasal 17: latarnya rancangan brosur, bukan putih polos,
+dan beberapa potongan membawa lebih banyak teks halaman daripada kemasan — CEBA, DIAZINON
+10 GR, dan KIMIRU 45 WP yang paling tipis. Kisan 10 WP dicoret sama sekali: brosurnya tidak
+menampakkan kemasan pada halaman pertama, jadi barisnya dibiarkan di 150 px.
+
+**Pelajaran yang layak dibawa ke situs lain:** tautan bertuliskan "Brosur", "Katalog", atau
+"Lembar Data" pantas ditelusuri sebagai sumber gambar, bukan cuma sebagai dokumen. Dan
+ketika sebuah halaman hilang dari situs, arsipnya bukan hanya cara memulihkan halaman itu —
+ia juga peta jalur yang masih hidup tetapi tidak lagi ditautkan dari mana pun.
