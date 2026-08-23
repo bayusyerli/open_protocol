@@ -78,6 +78,8 @@ node spec/tools/bangun-principal.mjs --tulis        # 3.136 badan pemegang penda
 node harga_data/tarik-sp2kp.mjs                     # satu permintaan ke SP2KP, ±56 MB
 node harga_data/tarik-tbs-kalbar.mjs                # penetapan TBS Kalbar — jendela bergulir,
                                                     # jalankan tiap bulan supaya arsipnya menumpuk
+node harga_data/tarik-tbs-riau.mjs                  # penetapan TBS Riau — dua seri, termasuk
+                                                    # satu-satunya harga pekebun SWADAYA di Indonesia
 node spec/tools/bangun-harga.mjs --tulis            # 88 varian, 43 di antaranya berangka
 node spec/tools/bangun-komentar-harga.mjs --tulis   # komentar per seri; jalan tanpa kredensial
 node gambar_produk/terbitkan.mjs --tulis            # salin gambar kemasan ke app/gambar/

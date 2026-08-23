@@ -47,7 +47,10 @@
       },
       "sidikFakta": "{\"nama\":\"Bawang Merah\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":32216.18,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-2.05,\"ubah30hari\":-11.7,\"ubah90hari\":-25.06,\"ubah1tahun\":-28.49,\"terendah\":{\"t\":\"2024-08-27\",\"p\":23348.5},\"tertinggi\":{\"t\":\"2024-04-20\",\"p\":58067.75},\"rataRata\":37811.77,\"gejolakPersen\":17.78,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":39.24},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "bawang-putih-honan": {
       "id": "op:hrg:00001006",
@@ -90,7 +93,10 @@
       },
       "sidikFakta": "{\"nama\":\"Bawang Putih Honan\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":34487.69,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.57,\"ubah30hari\":-7.37,\"ubah90hari\":3.18,\"ubah1tahun\":-1.34,\"terendah\":{\"t\":\"2026-06-02\",\"p\":33164.92},\"tertinggi\":{\"t\":\"2024-04-27\",\"p\":47500},\"rataRata\":37499.3,\"gejolakPersen\":6.88,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":8.49},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "bawang-putih-kating": {
       "id": "op:hrg:00001007",
@@ -133,7 +139,10 @@
       },
       "sidikFakta": "{\"nama\":\"Bawang Putih Kating\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":37600.24,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.32,\"ubah30hari\":-5.24,\"ubah90hari\":4.71,\"ubah1tahun\":-2.54,\"terendah\":{\"t\":\"2024-04-21\",\"p\":35000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":50000},\"rataRata\":40188.06,\"gejolakPersen\":6.32,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":6.75},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":631,\"hariTanpaAngka\":302}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "benih-padi": {
       "id": "op:hrg:00001010",
@@ -172,7 +181,10 @@
       },
       "sidikFakta": "{\"nama\":\"Benih Padi\",\"kelompok\":\"Benih\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":14591.09,\"tanggalTerakhir\":\"2024-06-26\",\"ubah7hari\":3.76,\"ubah30hari\":1.44,\"ubah90hari\":-26.93,\"ubah1tahun\":null,\"terendah\":{\"t\":\"2024-02-07\",\"p\":12990.93},\"tertinggi\":{\"t\":\"2024-03-20\",\"p\":63375.26},\"rataRata\":20104.24,\"gejolakPersen\":60.27,\"musim\":null,\"cakupan\":{\"dari\":\"2024-01-03\",\"sampai\":\"2024-06-26\",\"jumlahTitik\":15,\"hariTanpaAngka\":161}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "beras-medium": {
       "id": "op:hrg:00001012",
@@ -215,7 +227,10 @@
       },
       "sidikFakta": "{\"nama\":\"Beras Medium\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13844.35,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.18,\"ubah30hari\":0.31,\"ubah90hari\":1,\"ubah1tahun\":-1.11,\"terendah\":{\"t\":\"2024-03-11\",\"p\":12300},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":17600},\"rataRata\":13695.56,\"gejolakPersen\":2.38,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":3.19},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":632,\"hariTanpaAngka\":301}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "beras-premium": {
       "id": "op:hrg:00001013",
@@ -258,7 +273,10 @@
       },
       "sidikFakta": "{\"nama\":\"Beras Premium\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15483.33,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.11,\"ubah30hari\":0.24,\"ubah90hari\":1.04,\"ubah1tahun\":-1.16,\"terendah\":{\"t\":\"2024-03-11\",\"p\":13383.33},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":17600},\"rataRata\":15345.69,\"gejolakPersen\":1.84,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":2.12},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "beras-sphp-bulog": {
       "id": "op:hrg:00001014",
@@ -301,7 +319,10 @@
       },
       "sidikFakta": "{\"nama\":\"Beras SPHP Bulog\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12349.91,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.02,\"ubah30hari\":-0.08,\"ubah90hari\":-0.02,\"ubah1tahun\":-0.97,\"terendah\":{\"t\":\"2024-02-03\",\"p\":10351.07},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":13000},\"rataRata\":12228.12,\"gejolakPersen\":3.03,\"musim\":{\"bulanTermahal\":\"September\",\"bulanTermurah\":\"April\",\"selisihMusimPersen\":5.55},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":562,\"hariTanpaAngka\":371}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "cabai-merah-besar": {
       "id": "op:hrg:00001020",
@@ -344,7 +365,10 @@
       },
       "sidikFakta": "{\"nama\":\"Cabai Merah Besar\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":41882.87,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-2.73,\"ubah30hari\":3.36,\"ubah90hari\":-15.59,\"ubah1tahun\":9.71,\"terendah\":{\"t\":\"2024-11-07\",\"p\":26392.28},\"tertinggi\":{\"t\":\"2024-05-01\",\"p\":83333.33},\"rataRata\":44569.64,\"gejolakPersen\":22.94,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":40.68},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":631,\"hariTanpaAngka\":302}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "cabai-merah-keriting": {
       "id": "op:hrg:00001021",
@@ -387,7 +411,10 @@
       },
       "sidikFakta": "{\"nama\":\"Cabai Merah Keriting\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":38540.02,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-2.28,\"ubah30hari\":3.23,\"ubah90hari\":-16.59,\"ubah1tahun\":8.19,\"terendah\":{\"t\":\"2024-04-27\",\"p\":10000},\"tertinggi\":{\"t\":\"2024-02-23\",\"p\":72078.36},\"rataRata\":43260.9,\"gejolakPersen\":22.34,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":32.42},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "cabai-rawit-hijau": {
       "id": "op:hrg:00001022",
@@ -430,7 +457,10 @@
       },
       "sidikFakta": "{\"nama\":\"Cabai Rawit Hijau\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":45315.74,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":2.43,\"ubah30hari\":2.46,\"ubah90hari\":0.69,\"ubah1tahun\":30.9,\"terendah\":{\"t\":\"2024-02-04\",\"p\":15971.5},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":100000},\"rataRata\":39765.69,\"gejolakPersen\":19.22,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":72.05},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":631,\"hariTanpaAngka\":302}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "cabai-rawit-merah": {
       "id": "op:hrg:00001023",
@@ -473,7 +503,10 @@
       },
       "sidikFakta": "{\"nama\":\"Cabai Rawit Merah\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":53626.03,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":6.26,\"ubah30hari\":17.96,\"ubah90hari\":-18.3,\"ubah1tahun\":43.54,\"terendah\":{\"t\":\"2024-05-09\",\"p\":26607.76},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":100000},\"rataRata\":51411.97,\"gejolakPersen\":26.23,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":92.25},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":632,\"hariTanpaAngka\":301}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "daging-ayam-kampung": {
       "id": "op:hrg:00001024",
@@ -516,7 +549,10 @@
       },
       "sidikFakta": "{\"nama\":\"Daging Ayam Kampung\",\"kelompok\":\"Daging Ayam\",\"satuan\":\"ekor\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":76796.29,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.02,\"ubah30hari\":0.02,\"ubah90hari\":-0.7,\"ubah1tahun\":2.78,\"terendah\":{\"t\":\"2024-03-12\",\"p\":50000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":180000},\"rataRata\":75467.8,\"gejolakPersen\":7.06,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":7.44},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "daging-ayam-ras": {
       "id": "op:hrg:00001025",
@@ -559,7 +595,10 @@
       },
       "sidikFakta": "{\"nama\":\"Daging Ayam Ras\",\"kelompok\":\"Daging Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":40283.49,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":2.76,\"ubah30hari\":10.45,\"ubah90hari\":10.33,\"ubah1tahun\":17.39,\"terendah\":{\"t\":\"2024-03-11\",\"p\":33000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":60000},\"rataRata\":36436.73,\"gejolakPersen\":6.44,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Juli\",\"selisihMusimPersen\":8.68},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "daging-sapi-impor-beku": {
       "id": "op:hrg:00001028",
@@ -602,7 +641,10 @@
       },
       "sidikFakta": "{\"nama\":\"Daging Sapi Impor Beku\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":113640.03,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.33,\"ubah30hari\":-1.57,\"ubah90hari\":-1.76,\"ubah1tahun\":-4.91,\"terendah\":{\"t\":\"2024-02-26\",\"p\":83466.87},\"tertinggi\":{\"t\":\"2024-04-11\",\"p\":120000},\"rataRata\":110042.12,\"gejolakPersen\":3.02,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":617,\"hariTanpaAngka\":316}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "daging-sapi-paha-belakang": {
       "id": "op:hrg:00001029",
@@ -645,7 +687,10 @@
       },
       "sidikFakta": "{\"nama\":\"Daging Sapi Paha Belakang\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":141746.47,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.26,\"ubah30hari\":0.63,\"ubah90hari\":2.27,\"ubah1tahun\":7.53,\"terendah\":{\"t\":\"2024-02-10\",\"p\":111641.53},\"tertinggi\":{\"t\":\"2024-03-11\",\"p\":160000},\"rataRata\":133534.84,\"gejolakPersen\":2.85,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.27},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "daging-sapi-paha-depan": {
       "id": "op:hrg:00001030",
@@ -688,7 +733,10 @@
       },
       "sidikFakta": "{\"nama\":\"Daging Sapi Paha Depan\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":139699.31,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.18,\"ubah30hari\":0.54,\"ubah90hari\":2.37,\"ubah1tahun\":7.01,\"terendah\":{\"t\":\"2024-02-10\",\"p\":111641.53},\"tertinggi\":{\"t\":\"2024-04-15\",\"p\":172585.67},\"rataRata\":131735.81,\"gejolakPersen\":3.08,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.43},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":632,\"hariTanpaAngka\":301}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "daging-sapi-sandung-lamur": {
       "id": "op:hrg:00001031",
@@ -731,7 +779,10 @@
       },
       "sidikFakta": "{\"nama\":\"Daging Sapi Sandung Lamur\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":100806.51,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.52,\"ubah30hari\":1.11,\"ubah90hari\":3.07,\"ubah1tahun\":6.43,\"terendah\":{\"t\":\"2024-04-14\",\"p\":65287.9},\"tertinggi\":{\"t\":\"2024-05-23\",\"p\":150000},\"rataRata\":96488.51,\"gejolakPersen\":3.75,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.08},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":628,\"hariTanpaAngka\":305}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "daging-sapi-tetelan": {
       "id": "op:hrg:00001032",
@@ -774,7 +825,10 @@
       },
       "sidikFakta": "{\"nama\":\"Daging Sapi Tetelan\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":78558.13,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.15,\"ubah30hari\":0.55,\"ubah90hari\":1.13,\"ubah1tahun\":4.72,\"terendah\":{\"t\":\"2024-02-08\",\"p\":62818.25},\"tertinggi\":{\"t\":\"2024-02-04\",\"p\":130000},\"rataRata\":76369.12,\"gejolakPersen\":4.69,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":3.54},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":631,\"hariTanpaAngka\":302}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "garam-halus": {
       "id": "op:hrg:00001033",
@@ -817,7 +871,10 @@
       },
       "sidikFakta": "{\"nama\":\"Garam Halus\",\"kelompok\":\"Garam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":10803.02,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.04,\"ubah30hari\":0.01,\"ubah90hari\":0.38,\"ubah1tahun\":-0.3,\"terendah\":{\"t\":\"2024-02-04\",\"p\":8235.09},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":18719.82},\"rataRata\":10854.7,\"gejolakPersen\":3.55,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":1.61},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "gula-pasir-curah": {
       "id": "op:hrg:00001034",
@@ -860,7 +917,10 @@
       },
       "sidikFakta": "{\"nama\":\"Gula Pasir Curah\",\"kelompok\":\"Gula\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":18067.6,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.01,\"ubah30hari\":-0.14,\"ubah90hari\":-0.26,\"ubah1tahun\":2.67,\"terendah\":{\"t\":\"2024-02-04\",\"p\":16113.25},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":19333.33},\"rataRata\":17646.61,\"gejolakPersen\":1.89,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":3.41},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "gula-pasir-kemasan": {
       "id": "op:hrg:00001035",
@@ -903,7 +963,10 @@
       },
       "sidikFakta": "{\"nama\":\"Gula Pasir Kemasan\",\"kelompok\":\"Gula\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19019,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.02,\"ubah30hari\":-0.12,\"ubah90hari\":0.09,\"ubah1tahun\":1.08,\"terendah\":{\"t\":\"2024-02-03\",\"p\":16750},\"tertinggi\":{\"t\":\"2024-05-11\",\"p\":23000},\"rataRata\":18706.87,\"gejolakPersen\":2.1,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":2.73},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":631,\"hariTanpaAngka\":302}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "ikan-kembung": {
       "id": "op:hrg:00001037",
@@ -946,7 +1009,10 @@
       },
       "sidikFakta": "{\"nama\":\"Ikan Kembung\",\"kelompok\":\"Ikan\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":43668.62,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.12,\"ubah30hari\":1.24,\"ubah90hari\":1.77,\"ubah1tahun\":11.15,\"terendah\":{\"t\":\"2024-04-27\",\"p\":25000},\"tertinggi\":{\"t\":\"2026-08-13\",\"p\":43785.71},\"rataRata\":39219.6,\"gejolakPersen\":7.06,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":4.82},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":623,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "jeruk-lokal": {
       "id": "op:hrg:00001041",
@@ -989,7 +1055,10 @@
       },
       "sidikFakta": "{\"nama\":\"Jeruk Lokal\",\"kelompok\":\"Jeruk\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":18806.02,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.48,\"ubah30hari\":-0.46,\"ubah90hari\":-3.43,\"ubah1tahun\":3.96,\"terendah\":{\"t\":\"2024-03-29\",\"p\":13000},\"tertinggi\":{\"t\":\"2024-02-11\",\"p\":24931.02},\"rataRata\":18879.49,\"gejolakPersen\":3.66,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":7.27},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":631,\"hariTanpaAngka\":302}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "kacang-panjang": {
       "id": "op:hrg:00001043",
@@ -1032,7 +1101,10 @@
       },
       "sidikFakta": "{\"nama\":\"Kacang Panjang\",\"kelompok\":\"Kacang Panjang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12561.03,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.41,\"ubah30hari\":6.78,\"ubah90hari\":13.34,\"ubah1tahun\":11.52,\"terendah\":{\"t\":\"2024-05-05\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":23000},\"rataRata\":10988.52,\"gejolakPersen\":7.47,\"musim\":{\"bulanTermahal\":\"Desember\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":6.65},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "kangkung": {
       "id": "op:hrg:00001045",
@@ -1075,7 +1147,10 @@
       },
       "sidikFakta": "{\"nama\":\"Kangkung\",\"kelompok\":\"Kangkung\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":8627.31,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-1.22,\"ubah30hari\":-1.3,\"ubah90hari\":-0.82,\"ubah1tahun\":7.66,\"terendah\":{\"t\":\"2024-05-01\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":17969.35},\"rataRata\":8273.82,\"gejolakPersen\":8.05,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":8.23},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "kedelai-impor": {
       "id": "op:hrg:00001051",
@@ -1118,7 +1193,10 @@
       },
       "sidikFakta": "{\"nama\":\"Kedelai Impor\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13637.45,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.04,\"ubah30hari\":-0.09,\"ubah90hari\":0.35,\"ubah1tahun\":-0.39,\"terendah\":{\"t\":\"2024-04-20\",\"p\":11500},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":19000},\"rataRata\":13900.48,\"gejolakPersen\":3.85,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":3.22},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":628,\"hariTanpaAngka\":305}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "kedelai-lokal": {
       "id": "op:hrg:00001052",
@@ -1161,7 +1239,10 @@
       },
       "sidikFakta": "{\"nama\":\"Kedelai Lokal\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":14105.82,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.16,\"ubah30hari\":0.31,\"ubah90hari\":0.46,\"ubah1tahun\":0.17,\"terendah\":{\"t\":\"2024-04-10\",\"p\":12000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":18000},\"rataRata\":14285.91,\"gejolakPersen\":2.69,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.51},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":623,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "kentang-sedang": {
       "id": "op:hrg:00001053",
@@ -1204,7 +1285,10 @@
       },
       "sidikFakta": "{\"nama\":\"Kentang Sedang\",\"kelompok\":\"Kentang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":17248.98,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.16,\"ubah30hari\":0.74,\"ubah90hari\":5.6,\"ubah1tahun\":-1.49,\"terendah\":{\"t\":\"2024-03-11\",\"p\":12000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":26755.21},\"rataRata\":17560.03,\"gejolakPersen\":7.13,\"musim\":{\"bulanTermahal\":\"September\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":11.86},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "ketimun-sedang": {
       "id": "op:hrg:00001055",
@@ -1247,7 +1331,10 @@
       },
       "sidikFakta": "{\"nama\":\"Ketimun Sedang\",\"kelompok\":\"Ketimun\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":11023.68,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-3.65,\"ubah30hari\":-5.03,\"ubah90hari\":17.51,\"ubah1tahun\":20.44,\"terendah\":{\"t\":\"2024-04-27\",\"p\":4000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":32522.85},\"rataRata\":8740.59,\"gejolakPersen\":14.86,\"musim\":{\"bulanTermahal\":\"Agustus\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":14.27},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "mie-instan": {
       "id": "op:hrg:00001058",
@@ -1290,7 +1377,10 @@
       },
       "sidikFakta": "{\"nama\":\"Mie Instan\",\"kelompok\":\"Mie Instan\",\"satuan\":\"bks\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":3215.4,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.03,\"ubah30hari\":0.01,\"ubah90hari\":0.14,\"ubah1tahun\":0.41,\"terendah\":{\"t\":\"2024-03-11\",\"p\":3000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":3628.15},\"rataRata\":3199.31,\"gejolakPersen\":1.39,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Maret\",\"selisihMusimPersen\":1.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "minyak-goreng-sawit-curah": {
       "id": "op:hrg:00001059",
@@ -1333,7 +1423,10 @@
       },
       "sidikFakta": "{\"nama\":\"Minyak Goreng Sawit Curah\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19304.58,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0,\"ubah30hari\":-0.08,\"ubah90hari\":-0.78,\"ubah1tahun\":9.78,\"terendah\":{\"t\":\"2024-02-10\",\"p\":14640.68},\"tertinggi\":{\"t\":\"2026-05-26\",\"p\":19496.07},\"rataRata\":17302.1,\"gejolakPersen\":7.41,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":6.13},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "minyak-goreng-sawit-kemasan-premium": {
       "id": "op:hrg:00001060",
@@ -1376,7 +1469,10 @@
       },
       "sidikFakta": "{\"nama\":\"Minyak Goreng Sawit Kemasan Premium\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":22530.16,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.06,\"ubah30hari\":0.01,\"ubah90hari\":1.22,\"ubah1tahun\":7.34,\"terendah\":{\"t\":\"2024-02-08\",\"p\":17262.42},\"tertinggi\":{\"t\":\"2026-08-14\",\"p\":22543.78},\"rataRata\":20597.86,\"gejolakPersen\":4.78,\"musim\":{\"bulanTermahal\":\"Juli\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.96},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "minyakita": {
       "id": "op:hrg:00001061",
@@ -1419,7 +1515,10 @@
       },
       "sidikFakta": "{\"nama\":\"Minyakita\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15884.37,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.02,\"ubah30hari\":-0.03,\"ubah90hari\":0.01,\"ubah1tahun\":-4.88,\"terendah\":{\"t\":\"2024-03-11\",\"p\":14000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":18000},\"rataRata\":16364.16,\"gejolakPersen\":3.56,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":5.51},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "pisang-lokal": {
       "id": "op:hrg:00001068",
@@ -1462,7 +1561,10 @@
       },
       "sidikFakta": "{\"nama\":\"Pisang Lokal\",\"kelompok\":\"Pisang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13053.24,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":0.36,\"ubah30hari\":0.5,\"ubah90hari\":0.99,\"ubah1tahun\":-0.93,\"terendah\":{\"t\":\"2024-04-27\",\"p\":8000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":23257.59},\"rataRata\":13480.48,\"gejolakPersen\":7.16,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":4.73},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":633,\"hariTanpaAngka\":300}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "sawi-hijau": {
       "id": "op:hrg:00001073",
@@ -1505,7 +1607,10 @@
       },
       "sidikFakta": "{\"nama\":\"Sawi Hijau\",\"kelompok\":\"Sawi Hijau\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":9789.81,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.7,\"ubah30hari\":0.05,\"ubah90hari\":-11.75,\"ubah1tahun\":5.71,\"terendah\":{\"t\":\"2024-05-01\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":26000},\"rataRata\":9842.79,\"gejolakPersen\":9.78,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":10.75},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":631,\"hariTanpaAngka\":302}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "susu-bubuk-balita": {
       "id": "op:hrg:00001076",
@@ -1548,7 +1653,10 @@
       },
       "sidikFakta": "{\"nama\":\"Susu Bubuk Balita\",\"kelompok\":\"Susu\",\"satuan\":\"400gr\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":44496.32,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.06,\"ubah30hari\":0.07,\"ubah90hari\":-0.01,\"ubah1tahun\":-0.59,\"terendah\":{\"t\":\"2024-02-10\",\"p\":38305.05},\"tertinggi\":{\"t\":\"2024-02-11\",\"p\":65000},\"rataRata\":44549.19,\"gejolakPersen\":2.92,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Maret\",\"selisihMusimPersen\":0.74},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":632,\"hariTanpaAngka\":301}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "tahu-putih": {
       "id": "op:hrg:00001078",
@@ -1591,7 +1699,10 @@
       },
       "sidikFakta": "{\"nama\":\"Tahu Putih\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":11711.44,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.08,\"ubah30hari\":-0.25,\"ubah90hari\":-0.24,\"ubah1tahun\":1.94,\"terendah\":{\"t\":\"2024-02-04\",\"p\":8000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":20000},\"rataRata\":11671.58,\"gejolakPersen\":4.78,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":3.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":632,\"hariTanpaAngka\":301}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "telur-ayam-kampung": {
       "id": "op:hrg:00001079",
@@ -1634,7 +1745,10 @@
       },
       "sidikFakta": "{\"nama\":\"Telur Ayam Kampung\",\"kelompok\":\"Telur Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":54947.79,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.04,\"ubah30hari\":-0.01,\"ubah90hari\":-0.04,\"ubah1tahun\":1.13,\"terendah\":{\"t\":\"2024-02-11\",\"p\":7817.52},\"tertinggi\":{\"t\":\"2024-04-27\",\"p\":70000},\"rataRata\":54760.67,\"gejolakPersen\":4.81,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":4.22},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":632,\"hariTanpaAngka\":301}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "telur-ayam-ras": {
       "id": "op:hrg:00001080",
@@ -1677,7 +1791,10 @@
       },
       "sidikFakta": "{\"nama\":\"Telur Ayam Ras\",\"kelompok\":\"Telur Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":26225.3,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.42,\"ubah30hari\":-3.31,\"ubah90hari\":-5.67,\"ubah1tahun\":-7.8,\"terendah\":{\"t\":\"2026-07-10\",\"p\":25928.94},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":40000},\"rataRata\":28761.32,\"gejolakPersen\":4.68,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Agustus\",\"selisihMusimPersen\":9.17},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "tempe-bungkus": {
       "id": "op:hrg:00001081",
@@ -1720,7 +1837,10 @@
       },
       "sidikFakta": "{\"nama\":\"Tempe Bungkus\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15047.5,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.09,\"ubah30hari\":-0.28,\"ubah90hari\":0.58,\"ubah1tahun\":0.3,\"terendah\":{\"t\":\"2024-03-11\",\"p\":10000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":30000},\"rataRata\":15209.95,\"gejolakPersen\":6.28,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.56},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "tepung-terigu": {
       "id": "op:hrg:00001082",
@@ -1763,7 +1883,10 @@
       },
       "sidikFakta": "{\"nama\":\"Tepung Terigu\",\"kelompok\":\"Tepung Terigu\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12489.68,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.08,\"ubah30hari\":-0.33,\"ubah90hari\":0.21,\"ubah1tahun\":-0.01,\"terendah\":{\"t\":\"2024-03-11\",\"p\":11000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":15000},\"rataRata\":12354.56,\"gejolakPersen\":1.83,\"musim\":{\"bulanTermahal\":\"Juli\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":1.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "tomat": {
       "id": "op:hrg:00001083",
@@ -1806,7 +1929,10 @@
       },
       "sidikFakta": "{\"nama\":\"Tomat\",\"kelompok\":\"Tomat\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":9685.26,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-3.08,\"ubah30hari\":-21.06,\"ubah90hari\":-31.67,\"ubah1tahun\":-19.22,\"terendah\":{\"t\":\"2024-09-17\",\"p\":6992.45},\"tertinggi\":{\"t\":\"2024-04-11\",\"p\":34705.06},\"rataRata\":13086.4,\"gejolakPersen\":30.57,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":98.18},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":634,\"hariTanpaAngka\":299}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "udang-basah": {
       "id": "op:hrg:00001087",
@@ -1849,7 +1975,10 @@
       },
       "sidikFakta": "{\"nama\":\"Udang Basah\",\"kelompok\":\"Udang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":76232.41,\"tanggalTerakhir\":\"2026-08-21\",\"ubah7hari\":-0.16,\"ubah30hari\":0.41,\"ubah90hari\":-0.22,\"ubah1tahun\":2.9,\"terendah\":{\"t\":\"2024-05-01\",\"p\":60000},\"tertinggi\":{\"t\":\"2024-04-10\",\"p\":95069.06},\"rataRata\":73947.8,\"gejolakPersen\":3.05,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":2.97},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-08-21\",\"jumlahTitik\":630,\"hariTanpaAngka\":303}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     },
     "tbs-kelapa-sawit-kalimantan-barat": {
       "id": "op:hrg:00001088",
@@ -1893,7 +2022,96 @@
       },
       "sidikFakta": "{\"nama\":\"TBS Kelapa Sawit — Kalimantan Barat\",\"kelompok\":\"Kelapa Sawit\",\"satuan\":\"kg\",\"tingkat\":\"pekebun, hasil penetapan Kalimantan Barat\",\"cakupanHukum\":\"Menaungi pekebun mitra dan plasma menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra. PEKEBUN SWADAYA BERADA DI LUAR CAKUPANNYA — dan pekebun swadaya adalah mayoritas petani sawit Indonesia. Harga yang mereka terima tidak diterbitkan lembaga mana pun kecuali Riau, dan tidak ada di sini.\",\"hargaTerakhir\":3459.85,\"tanggalTerakhir\":\"2026-08-15\",\"ubah7hari\":-1.5,\"ubah30hari\":0.51,\"ubah90hari\":-0.48,\"ubah1tahun\":6.13,\"terendah\":{\"t\":\"2026-06-01\",\"p\":3043.14},\"tertinggi\":{\"t\":\"2026-04-08\",\"p\":3659.76},\"rataRata\":3301.31,\"gejolakPersen\":5.13,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":16.56},\"cakupan\":{\"dari\":\"2025-08-08\",\"sampai\":\"2026-08-15\",\"jumlahTitik\":50,\"hariTanpaAngka\":0}}",
       "ditulis": "2026-08-23",
-      "ditinjau": null
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
+    },
+    "tbs-kelapa-sawit-riau-swadaya": {
+      "id": "op:hrg:00001089",
+      "nama": "TBS Kelapa Sawit — Riau (pekebun swadaya)",
+      "komentar": "Per 13 Mei 2026, TBS Kelapa Sawit — Riau (pekebun swadaya) tercatat Rp3.833 per kg pada tingkat pekebun, hasil penetapan Riau. Dalam 30 hari terakhir ia turun 4,4%, dan dibanding setahun lalu naik 6,9%. Sepanjang 2 Agustus 2023 sampai 13 Mei 2026 rentangnya Rp2.368 (20 September 2023) sampai Rp4.088 (15 April 2026), dengan koefisien variasi 13,5%. Yang angka ini TIDAK katakan: berapa yang diterima pekebun SWADAYA. Penetapan ini menaungi pekebun mitra dan plasma; swadaya berada di luar cakupannya, dan harga yang mereka terima tidak diterbitkan lembaga mana pun kecuali Riau.",
+      "batas": "Menaungi pekebun mitra dan plasma; pekebun swadaya berada di luar cakupannya, dan merekalah mayoritas petani sawit Indonesia.",
+      "sumber": "terhitung",
+      "fakta": {
+        "nama": "TBS Kelapa Sawit — Riau (pekebun swadaya)",
+        "kelompok": "Kelapa Sawit",
+        "satuan": "kg",
+        "tingkat": "pekebun, hasil penetapan Riau",
+        "cakupanHukum": "Diterbitkan Dinas Perkebunan Provinsi Riau sebagai seri terpisah untuk pekebun SWADAYA, di samping seri mitra plasma. Ini satu-satunya harga pekebun swadaya yang diterbitkan pemerintah daerah mana pun di Indonesia — Permentan 13/2024 hanya menaungi pekebun mitra, sehingga di provinsi lain kelompok ini tidak punya angka sama sekali. BELUM DIPASTIKAN apakah seri swadaya ini membawa daya ikat hukum yang sama dengan penetapan mitra, atau diterbitkan sebagai keterangan; yang pasti hanya bahwa ia diumumkan rapat penetapan yang sama.",
+        "hargaTerakhir": 3832.65,
+        "tanggalTerakhir": "2026-05-13",
+        "ubah7hari": -1.23,
+        "ubah30hari": -4.35,
+        "ubah90hari": 5.23,
+        "ubah1tahun": 6.88,
+        "terendah": {
+          "t": "2023-09-20",
+          "p": 2367.71
+        },
+        "tertinggi": {
+          "t": "2026-04-15",
+          "p": 4088.09
+        },
+        "rataRata": 3346.06,
+        "gejolakPersen": 13.54,
+        "musim": null,
+        "cakupan": {
+          "dari": "2023-08-02",
+          "sampai": "2026-05-13",
+          "jumlahTitik": 71,
+          "hariTanpaAngka": 0
+        }
+      },
+      "sidikFakta": "{\"nama\":\"TBS Kelapa Sawit — Riau (pekebun swadaya)\",\"kelompok\":\"Kelapa Sawit\",\"satuan\":\"kg\",\"tingkat\":\"pekebun, hasil penetapan Riau\",\"cakupanHukum\":\"Diterbitkan Dinas Perkebunan Provinsi Riau sebagai seri terpisah untuk pekebun SWADAYA, di samping seri mitra plasma. Ini satu-satunya harga pekebun swadaya yang diterbitkan pemerintah daerah mana pun di Indonesia — Permentan 13/2024 hanya menaungi pekebun mitra, sehingga di provinsi lain kelompok ini tidak punya angka sama sekali. BELUM DIPASTIKAN apakah seri swadaya ini membawa daya ikat hukum yang sama dengan penetapan mitra, atau diterbitkan sebagai keterangan; yang pasti hanya bahwa ia diumumkan rapat penetapan yang sama.\",\"hargaTerakhir\":3832.65,\"tanggalTerakhir\":\"2026-05-13\",\"ubah7hari\":-1.23,\"ubah30hari\":-4.35,\"ubah90hari\":5.23,\"ubah1tahun\":6.88,\"terendah\":{\"t\":\"2023-09-20\",\"p\":2367.71},\"tertinggi\":{\"t\":\"2026-04-15\",\"p\":4088.09},\"rataRata\":3346.06,\"gejolakPersen\":13.54,\"musim\":null,\"cakupan\":{\"dari\":\"2023-08-02\",\"sampai\":\"2026-05-13\",\"jumlahTitik\":71,\"hariTanpaAngka\":0}}",
+      "ditulis": "2026-08-23",
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
+    },
+    "tbs-kelapa-sawit-riau-plasma": {
+      "id": "op:hrg:00001090",
+      "nama": "TBS Kelapa Sawit — Riau (mitra plasma)",
+      "komentar": "Per 29 April 2026, TBS Kelapa Sawit — Riau (mitra plasma) tercatat Rp3.906 per kg pada tingkat pekebun, hasil penetapan Riau. Dalam 30 hari terakhir ia naik 8,1%, dan dibanding setahun lalu naik 12,7%. Sepanjang 25 September 2023 sampai 29 April 2026 rentangnya Rp2.483 (25 September 2023) sampai Rp3.906 (29 April 2026), dengan koefisien variasi 9,0%. Yang angka ini TIDAK katakan: berapa yang diterima pekebun SWADAYA. Penetapan ini menaungi pekebun mitra dan plasma; swadaya berada di luar cakupannya, dan harga yang mereka terima tidak diterbitkan lembaga mana pun kecuali Riau.",
+      "batas": "Menaungi pekebun mitra dan plasma; pekebun swadaya berada di luar cakupannya, dan merekalah mayoritas petani sawit Indonesia.",
+      "sumber": "terhitung",
+      "fakta": {
+        "nama": "TBS Kelapa Sawit — Riau (mitra plasma)",
+        "kelompok": "Kelapa Sawit",
+        "satuan": "kg",
+        "tingkat": "pekebun, hasil penetapan Riau",
+        "cakupanHukum": "Menaungi pekebun mitra dan plasma menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra, dengan dasar perhitungan Kepdirjenbun 144/Kpts./PP.320/E/12/2025. Pekebun swadaya berada di luar cakupannya — untuk mereka, Riau menerbitkan seri terpisah.",
+        "hargaTerakhir": 3906.24,
+        "tanggalTerakhir": "2026-04-29",
+        "ubah7hari": 8.09,
+        "ubah30hari": 8.09,
+        "ubah90hari": 10.93,
+        "ubah1tahun": 12.72,
+        "terendah": {
+          "t": "2023-09-25",
+          "p": 2482.82
+        },
+        "tertinggi": {
+          "t": "2026-04-29",
+          "p": 3906.24
+        },
+        "rataRata": 3482.94,
+        "gejolakPersen": 8.97,
+        "musim": null,
+        "cakupan": {
+          "dari": "2023-09-25",
+          "sampai": "2026-04-29",
+          "jumlahTitik": 16,
+          "hariTanpaAngka": 0
+        }
+      },
+      "sidikFakta": "{\"nama\":\"TBS Kelapa Sawit — Riau (mitra plasma)\",\"kelompok\":\"Kelapa Sawit\",\"satuan\":\"kg\",\"tingkat\":\"pekebun, hasil penetapan Riau\",\"cakupanHukum\":\"Menaungi pekebun mitra dan plasma menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra, dengan dasar perhitungan Kepdirjenbun 144/Kpts./PP.320/E/12/2025. Pekebun swadaya berada di luar cakupannya — untuk mereka, Riau menerbitkan seri terpisah.\",\"hargaTerakhir\":3906.24,\"tanggalTerakhir\":\"2026-04-29\",\"ubah7hari\":8.09,\"ubah30hari\":8.09,\"ubah90hari\":10.93,\"ubah1tahun\":12.72,\"terendah\":{\"t\":\"2023-09-25\",\"p\":2482.82},\"tertinggi\":{\"t\":\"2026-04-29\",\"p\":3906.24},\"rataRata\":3482.94,\"gejolakPersen\":8.97,\"musim\":null,\"cakupan\":{\"dari\":\"2023-09-25\",\"sampai\":\"2026-04-29\",\"jumlahTitik\":16,\"hariTanpaAngka\":0}}",
+      "ditulis": "2026-08-23",
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     }
   }
 }

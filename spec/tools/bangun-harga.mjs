@@ -58,6 +58,8 @@ const varian = bacaNdjson(MASUK);
 // Sumber kedua: penetapan TBS Kalimantan Barat. Opsional — indeks tetap terbangun tanpanya.
 const TBS_KALBAR = join(akar, 'harga_data', 'tbs-kalbar.ndjson');
 const tbsKalbar = existsSync(TBS_KALBAR) ? bacaNdjson(TBS_KALBAR) : [];
+const TBS_RIAU = join(akar, 'harga_data', 'tbs-riau.ndjson');
+const tbsRiau = existsSync(TBS_RIAU) ? bacaNdjson(TBS_RIAU) : [];
 
 // ---------------------------------------------------------------------------
 // Sambungan ke kosakata komoditas sendiri
@@ -454,6 +456,90 @@ if (tbsKalbar.length) {
     });
   }
 }
+
+// ---------------------------------------------------------------------------
+// TBS Riau — dua seri, dan salah satunya tidak ada di provinsi mana pun
+// ---------------------------------------------------------------------------
+// Riau menerbitkan penetapan mingguan untuk DUA kelompok pekebun secara terpisah: mitra
+// plasma, dan SWADAYA. Yang kedua itu yang menentukan: Permentan 13/2024 hanya menaungi
+// pekebun mitra, sehingga di provinsi lain pekebun swadaya tidak punya angka sama sekali.
+// Riau menerbitkannya, dan sejauh riset ini menjangkau, hanya Riau.
+//
+// Angkanya harga pada UMUR 9 TAHUN — puncak kurva hasil sawit, dan tertinggi di antara
+// seluruh pita umur. Sumbernya menyebutkannya sendiri: pada artikel yang memuat tabel penuh,
+// baris umur 9 diberi keterangan "(tertinggi)". Menayangkannya tanpa menyebut umurnya akan
+// menaksir terlalu tinggi apa yang diterima kebun muda maupun kebun tua.
+const RIAU_JENIS = {
+  swadaya: {
+    label: 'TBS Kelapa Sawit — Riau (pekebun swadaya)',
+    key: 'tbs-kelapa-sawit-riau-swadaya',
+    scope:
+      'Diterbitkan Dinas Perkebunan Provinsi Riau sebagai seri terpisah untuk pekebun SWADAYA, di samping seri mitra plasma. Ini satu-satunya harga pekebun swadaya yang diterbitkan pemerintah daerah mana pun di Indonesia — Permentan 13/2024 hanya menaungi pekebun mitra, sehingga di provinsi lain kelompok ini tidak punya angka sama sekali. BELUM DIPASTIKAN apakah seri swadaya ini membawa daya ikat hukum yang sama dengan penetapan mitra, atau diterbitkan sebagai keterangan; yang pasti hanya bahwa ia diumumkan rapat penetapan yang sama.',
+  },
+  plasma: {
+    label: 'TBS Kelapa Sawit — Riau (mitra plasma)',
+    key: 'tbs-kelapa-sawit-riau-plasma',
+    scope:
+      'Menaungi pekebun mitra dan plasma menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra, dengan dasar perhitungan Kepdirjenbun 144/Kpts./PP.320/E/12/2025. Pekebun swadaya berada di luar cakupannya — untuk mereka, Riau menerbitkan seri terpisah.',
+  },
+};
+
+for (const [jenis, sp] of Object.entries(RIAU_JENIS)) {
+  const baris = tbsRiau.filter((r) => r.jenis === jenis && r.tbs > 0)
+    .sort((a, b) => a.t.localeCompare(b.t));
+  if (!baris.length) continue;
+
+  const titik = baris.map((r) => ({ t: r.t, p: Math.round(r.tbs * 100) / 100 }));
+  const id = idLama.get(sp.key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`;
+  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+  const bertabel = baris.filter((r) => r.tbs_umur);
+  const terakhirBertabel = bertabel.at(-1);
+  const berIndeks = baris.filter((r) => r.indeks_k);
+
+  itemsTbs.push({
+    id,
+    key: sp.key,
+    label: { id: sp.label },
+    commodity_group: 'Kelapa Sawit',
+    ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
+    region: { code: 'ID-RI', label: 'Riau' },
+    source_system: 'Media Center Riau',
+    basis: 'penetapan',
+    legal_scope: sp.scope,
+    price_level: 'farmgate',
+    sector: 'pangan',
+    unit: 'kg',
+    qty: 1,
+    coverage: { from: titik[0].t, to: titik.at(-1).t, points: titik.length, gaps: 0 },
+    series: titik,
+    stats: statistik(titik),
+    ...(terakhirBertabel ? {
+      age_bands: {
+        keterangan:
+          `Harga per pita umur tanaman pada penetapan ${terakhirBertabel.t}, terurai dari prosa artikelnya. Umur 9 tahun adalah puncak kurva hasil — sumbernya sendiri menandainya "(tertinggi)" — dan angka pada grafik di atas memakai pita itu, bukan rata-rata. Tabel penuh hanya tersedia pada ${bertabel.length} dari ${baris.length} penetapan; sisanya hanya mengumumkan angka umur 9.`,
+        pita: Object.keys(terakhirBertabel.tbs_umur),
+        terakhir: terakhirBertabel.tbs_umur,
+        seri: bertabel.map((r) => ({ t: r.t, u: r.tbs_umur })),
+      },
+    } : {}),
+    ...(berIndeks.length ? {
+      formula: {
+        keterangan:
+          `Indeks K pada tiap penetapan — proporsi nilai CPO yang mengalir ke pekebun. Tersedia pada ${berIndeks.length} dari ${baris.length} penetapan; artikel yang tidak menyebutkannya dibiarkan kosong alih-alih diisi dari periode lain.`,
+        terakhir: { indeks_k: berIndeks.at(-1).indeks_k, ...(berIndeks.at(-1).cangkang ? { cangkang: berIndeks.at(-1).cangkang } : {}) },
+        seri: berIndeks.map((r) => ({ t: r.t, k: r.indeks_k, ...(r.cangkang ? { cangkang: r.cangkang } : {}) })),
+      },
+    } : {}),
+    mappings: [{
+      scheme: 'KEMENTAN',
+      id: 'Permentan 13/2024',
+      relation: 'related',
+      note: 'Penetapan harga TBS oleh tim provinsi Riau; diumumkan lewat Media Center Riau sebagai prosa berangka.',
+    }],
+    lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
+  });
+}
+
 items.push(...itemsTbs);
 
 // ---------------------------------------------------------------------------
@@ -482,6 +568,8 @@ console.log(`Golongan              : pangan ${n(perGolongan.pangan ?? 0)} · inp
 console.log(`  berangka per golongan: pangan ${n(berangkaGol.pangan ?? 0)} · input ${n(berangkaGol.input ?? 0)} · luar ${n(berangkaGol.luar ?? 0)}`);
 console.log(`  yang TAMPIL di layar : ${n((berangkaGol.pangan ?? 0) + (berangkaGol.input ?? 0))} berangka, dari ${n((perGolongan.pangan ?? 0) + (perGolongan.input ?? 0))} varian tani`);
 console.log(`  disembunyikan layar  : ${n(perGolongan.luar ?? 0)} — bahan bangunan, LPG, pangan olahan, dan barang impor`);
+console.log(`Tingkat pekebun       : ${n(items.filter((x) => x.price_level === 'farmgate').length)} seri — ${items.filter((x) => x.price_level === 'farmgate').map((x) => x.region?.label).join(', ')}`);
+console.log(`  ber-tabel umur      : ${n(items.filter((x) => x.age_bands).length)}`);
 console.log(`Bermusim (≥12 bulan)  : ${n(berangka.filter((x) => x.stats.musim).length)}`);
 console.log(`Seri berlubang        : ${n(berangka.filter((x) => x.coverage.gaps > 0).length)} varian punya hari tanpa angka`);
 console.log(`Sisi pupuk & benih    : ${items.filter((x) => /^(pupuk|benih)/i.test(x.label.id)).map((x) => `${x.label.id}${x.series ? '' : ' (kosong)'}`).join(' · ') || '—'}`);

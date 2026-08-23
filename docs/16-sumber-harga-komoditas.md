@@ -385,11 +385,45 @@ Karena itu skema `harga` menambah medan **`legal_scope`**, wajib bila `basis` be
 `penetapan`, dan layar menampilkannya sebagai blok peringatan di atas angkanya — bukan
 catatan kaki.
 
+**Riau menyusul, dan ia membawa yang tidak ada di mana pun: harga pekebun SWADAYA.**
+Disbun Riau menerbitkan penetapan mingguan untuk DUA kelompok secara terpisah — mitra plasma
+dan swadaya — sementara provinsi lain hanya menerbitkan yang pertama. Diserap lewat
+**Media Center Riau**, bukan lewat PDF pindai Disbun: hasil rapat yang sama terbit di sana
+sebagai prosa HTML berangka, dan arsipnya lebih dalam (Agustus 2023, bukan November 2024).
+
+| Seri | Penetapan terurai | Rentang |
+|---|---:|---|
+| Riau — pekebun **swadaya** | 71 | 2 Agu 2023 → 13 Mei 2026 |
+| Riau — mitra plasma | 16 | 25 Sep 2023 → 29 Apr 2026 |
+
+**Angkanya harga pada umur 9 tahun, bukan rata-rata.** Riau menetapkan untuk rentang umur
+3–30 tahun tetapi mengumumkan satu angka, dan sumbernya sendiri menandai baris itu
+`(tertinggi)` pada artikel yang memuat tabel penuh. Sembilan tahun adalah puncak kurva hasil
+sawit — menayangkannya sebagai "harga TBS Riau" tanpa menyebut umurnya akan menaksir terlalu
+tinggi apa yang diterima kebun muda maupun kebun tua. 36 dari 87 penetapan memuat tabel umur
+utuh dalam prosanya; sisanya hanya angka umur 9.
+
+**Prosa itu rapuh, jadi tiap angka diambil dua kali.** Satu artikel memuat sedikitnya empat
+bilangan berbentuk rupiah — tingkat harga, selisih mingguannya, harga CPO, dan harga kernel.
+Pengurai naif akan menerbitkan selisihnya sebagai harga, dan tak seorang pun akan tahu. Karena
+itu angkanya diambil dari badan artikel DAN dari judulnya lalu dibandingkan; yang tidak
+sepakat ditolak. Penjaga itu benar-benar berbunyi: satu artikel terurai Rp3,21 dari badannya
+sementara judulnya menyebut Rp3.351,72, dan ditolak. Untuk judul yang memang tidak berangka,
+pembandingnya berpindah ke uji julat terhadap serinya sendiri — yang justru lebih tajam untuk
+kekeliruan ini, karena selisih mingguan berukuran puluhan rupiah dan tingkat harga ribuan.
+
+**87 dari 101 artikel terurai (86%); 14 ditolak dan sebabnya dilaporkan tiap kali dijalankan.**
+
+> **Yang belum dipastikan tentang seri swadaya Riau:** apakah ia membawa daya ikat hukum yang
+> sama dengan penetapan mitra, atau diterbitkan sebagai keterangan. Yang pasti hanya bahwa ia
+> diumumkan rapat penetapan yang sama. Ini perlu dijawab sebelum angkanya dipakai sebagai
+> dasar apa pun selain penerangan.
+
 ### Yang masih kosong di sisi sawit
 
 | Kekosongan | Keterangan |
 |---|---|
-| **Harga pekebun swadaya** | Di luar cakupan Permentan 13/2024. Hanya Riau menerbitkannya sukarela, dan itu pun PDF pindai ±150 dpi |
+| **Harga pekebun swadaya di luar Riau** | Di luar cakupan Permentan 13/2024. Riau sudah diserap (lihat di atas); 33 provinsi lain tidak menerbitkannya sama sekali |
 | **Sumatera Utara** | Produsen terbesar. `disbun.sumutprov.go.id` tanpa A record; tangkapan Wayback terakhir 4 Desember 2022. Penetapan mingguannya berjalan tetapi hanya lewat GAPKI Sumut (swasta) |
 | **Agregasi lintas provinsi pemerintah** | Tidak ada. Yang mengagregasi 22 provinsi justru swasta, dan tiga dari empat memblokir `ClaudeBot` di `robots.txt` — tidak dipanen |
 | **Harga sawit di portal pertanian nasional** | `bdsp2.pertanian.go.id` tidak punya indikator harga sawit di skemanya, hanya luas areal dan produksi |

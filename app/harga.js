@@ -339,6 +339,11 @@ function catatanLubang(h) {
 // dan angka yang benar tetap bisa menyesatkan kalau asalnya tidak disebut.
 const AWAL_JENDELA = 120;
 function catatanAwalSeri(h) {
+  // Hanya berlaku untuk seri SP2KP. Kalimatnya menyebut "SP2KP mulai mencatat 1 Februari
+  // 2024" dan angka "40 dari 43" — keduanya tentang dataset itu, bukan tentang penetapan TBS
+  // provinsi yang mulai pada tanggal lain. Menyalakannya di sana akan menempelkan sebab yang
+  // salah pada pengamatan yang kebetulan berbentuk sama.
+  if (h.sistem && h.sistem !== 'SP2KP') return '';
   const s = h.statistik;
   const a = new Date(h.cakupan.from).getTime();
   const dalam = (t) => (new Date(t).getTime() - a) / 86400000 <= AWAL_JENDELA;

@@ -6,7 +6,7 @@
       "id": "Harga eceran nasional tertimbang — SP2KP"
     },
     "scope": {
-      "id": "89 varian komoditas dengan harga eceran harian nasional tertimbang penduduk, 2024-01-03 sampai 2026-08-21. SELURUHNYA TINGKAT ECERAN — bukan harga yang diterima petani, dan jaraknya terpasang di dalam definisi sumbernya, bukan celah cakupan yang bisa dirapatkan (docs/16 bagian 4). Cakupannya juga tidak menyeluruh: 57 dari 89 varian bukan komoditas tani sama sekali — besi beton, semen, triplek, LPG, paku — dan hanya 24 komoditas di kosakata sendiri yang punya harga. Empat ukuran tertimbang tersedia di sumbernya; yang disimpan di sini hanya tertimbang penduduk, sisanya di harga_data/sp2kp-hnt.ndjson."
+      "id": "91 varian komoditas dengan harga eceran harian nasional tertimbang penduduk, 2023-08-02 sampai 2026-08-21. SELURUHNYA TINGKAT ECERAN — bukan harga yang diterima petani, dan jaraknya terpasang di dalam definisi sumbernya, bukan celah cakupan yang bisa dirapatkan (docs/16 bagian 4). Cakupannya juga tidak menyeluruh: 57 dari 91 varian bukan komoditas tani sama sekali — besi beton, semen, triplek, LPG, paku — dan hanya 24 komoditas di kosakata sendiri yang punya harga. Empat ukuran tertimbang tersedia di sumbernya; yang disimpan di sini hanya tertimbang penduduk, sisanya di harga_data/sp2kp-hnt.ndjson."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -28,7 +28,7 @@
       ]
     },
     "storage": "ndjson",
-    "count": 89,
+    "count": 91,
     "id_blocks": [
       {
         "from": 1000,
