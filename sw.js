@@ -28,7 +28,7 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v2';
+const VERSI = 'v3';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 
@@ -41,12 +41,12 @@ const INDEKS = '/spec/indeks/';
 const BERKAS_CANGKANG = [
   'beranda.html', 'index.html', 'jalur-1.html', 'jalur-3.html', 'jalur-4.html',
   'jalur-5.html', 'jalur-6.html', 'ukur.html', 'takaran.html', 'harga.html',
-  'principal.html',
+  'principal.html', 'toko.html',
   'gaya.css', 'beranda.css', 'batas.css',
   'pustaka.js', 'batas.js', 'tema.js', 'luring.js', 'ukur.js', 'ukur-layar.js',
   'beranda.js', 'jalur-1.js', 'jalur-2.js', 'jalur-3.js', 'jalur-4.js', 'jalur-5.js',
   'jalur-6.js', 'bahan.js', 'varietas.js', 'kandungan.js', 'takaran.js',
-  'harga.js', 'principal.js', 'gambar.js',
+  'harga.js', 'principal.js', 'gambar.js', 'toko.js',
   'manifest.webmanifest', 'ikon.svg',
 ].map((f) => APP + f);
 

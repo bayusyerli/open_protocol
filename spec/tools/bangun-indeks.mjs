@@ -1430,11 +1430,21 @@ for (const [k, anggota] of [...rumpun.entries()].sort((a, b) => a[0].localeCompa
 // petunjuk ke mana pergi. Yang benar-benar beralamat 67 rekaman Batang, dan seluruhnya
 // menyebut kecamatan.
 const kunciWilayah = (w) => (w ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'tanpa-wilayah';
-const punyaJalan = (a) => /\bjl\b|\bjalan\b|\bgang\b|\bdusun\b|\brt\b/i.test(a ?? '');
+// Lebih rinci daripada kabupaten diukur dari STRUKTURNYA, bukan dari pola nama jalan.
+// Versi pertama mencari kata "Jl."/"Jalan" dan melewatkan "Jendsud 1" — menebak bentuk
+// nama jalan Indonesia adalah cara yang pasti kalah. Yang dihitung: apakah alamatnya
+// menyebut sesuatu SEBELUM kabupaten dan provinsi.
+const lebihRinci = (a) => (a ?? '').split(',').filter((x) => x.trim()).length > 2;
 
 // Wilayah diambil dari dua bagian terakhir alamat — kabupaten/kota dan provinsi — karena
 // itulah satu-satunya bagian yang ada pada SELURUH rekaman kedua sumber.
-const wilayahDari = (a) => (a ?? '').split(',').map((x) => x.trim()).filter(Boolean).slice(-2).join(', ');
+// Dua sumber mengeja kabupaten dengan cara berbeda — TTI menulis "Kab. Batang", data
+// terbuka Batang menulis "Kabupaten Batang" — dan tanpa penyeragaman satu tempat pecah
+// jadi dua wilayah, dengan yang beralamat lengkap terpisah dari yang tidak. Pola yang
+// sama seperti "Minyak Kita" lawan "Minyakita" di docs/16: normalkan saat penyerapan.
+// Terhitung: 77 memakai "Kab.", 1 memakai "Kabupaten", dan tepat satu tempat bentrok.
+const wilayahDari = (a) => (a ?? '').split(',').map((x) => x.trim()).filter(Boolean).slice(-2)
+  .join(', ').replace(/^Kab\.\s*/i, 'Kabupaten ');
 
 const perWilayah = new Map();
 for (const r of tokoAlamat) {
@@ -1444,7 +1454,7 @@ for (const r of tokoAlamat) {
   perWilayah.get(k).isi.push({
     n: r.nama,
     a: r.alamat ?? null,
-    j: punyaJalan(r.alamat) ? 1 : 0,
+    j: lebihRinci(r.alamat) ? 1 : 0,
     s: r.sumber,
   });
 }
@@ -1454,7 +1464,7 @@ const tokoWilayah = [...perWilayah.values()]
   .sort((a, b) => a.wilayah.localeCompare(b.wilayah))
   .map((w) => {
     berkasToko[w.kunci] = w.isi.sort((a, b) => a.n.localeCompare(b.n));
-    return { k: w.kunci, w: w.wilayah, n: w.isi.length, jalan: w.isi.filter((x) => x.j).length };
+    return { k: w.kunci, w: w.wilayah, n: w.isi.length, rinci: w.isi.filter((x) => x.j).length };
   });
 
 // Titik OSM dibawa utuh: 234 rekaman, dan yang mencari "terdekat" butuh semuanya
@@ -1678,7 +1688,7 @@ const meta = {
     dosisLain: bentukDosis.lain,
     tokoBertitik: tokoTitikIndeks.length,
     tokoBerwilayah: tokoAlamat.length,
-    tokoBeralamatJalan: tokoAlamat.filter((r) => punyaJalan(r.alamat)).length,
+    tokoLebihRinci: tokoAlamat.filter((r) => lebihRinci(r.alamat)).length,
     tokoWilayah: tokoWilayah.length,
     principal: principalRinci.length,
     principalPupuk: principalRinci.filter((b) => b.punya.fertilizer > 0).length,
@@ -1767,7 +1777,7 @@ const meta = {
     kandunganTakTerdaftar:
       'Kandungan yang tidak cocok dengan satu pun pendaftaran tidak membuktikan apa pun sendirian. Tiga hal menjelaskannya sekaligus: angkanya salah baca, produknya terdaftar dengan kandungan sedikit berbeda, atau memang tidak terdaftar. Registri juga tidak lengkap — 28,7% pupuk tidak berkomposisi sama sekali.',
     tokoTakBisaDituju:
-      'Nol dari 2.181 rekaman penjual benih memuat alamat jalan — seluruhnya berhenti di kabupaten atau kota, tersebar di 113 wilayah dengan sampai 173 rekaman pada satu kota. Nama tanpa jalan tidak bisa dituju: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi. Yang benar-benar beralamat hanya 67 rekaman Batang.',
+      'Hanya 92 dari 2.248 rekaman berwilayah — 4,1% — menyebut sesuatu yang lebih rinci daripada kabupaten atau kota. Sisanya berhenti di nama kabupaten, tersebar di 93 wilayah. Nama tanpa alamat tidak bisa dituju: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi.',
     tokoTanpaKontak:
       'Tidak satu pun rekaman memuat nomor telepon, surel, jam buka, atau apakah tokonya masih ada. Medan itu sengaja dibiarkan kosong menunggu pemilik toko mengklaimnya sendiri — menambalnya dengan geokode massal atau penarikan pihak ketiga akan mengisi direktori dengan tebakan yang tidak bisa dibantah siapa pun.',
     takaranRumahTangga:
@@ -1865,7 +1875,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
-console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => punyaJalan(r.alamat)).length} beralamat jalan`);
+console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => lebihRinci(r.alamat)).length} lebih rinci dari kabupaten`);
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);

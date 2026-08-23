@@ -131,6 +131,8 @@ const JUDUL_LUBANG = {
   isiKarung: 'Isi karung, bukan labelnya',
   dosisKosong: 'Dosis yang tidak tercatat di registri',
   takaranRumahTangga: 'Ukuran tutup botol, sendok, dan gelas',
+  tokoTakBisaDituju: 'Alamat yang bisa dituju',
+  tokoTanpaKontak: 'Telepon, jam buka, dan apakah tokonya masih ada',
   hargaPetani: 'Harga yang diterima petani',
   hargaWilayah: 'Harga per provinsi dan per pasar',
   hargaKomoditasTani: 'Harga untuk komoditas tani selebihnya',

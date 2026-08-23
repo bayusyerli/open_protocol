@@ -15,6 +15,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `takaran.html` | — kalibrasi semprot & takaran alat rumah tangga: aritmetika, bukan anjuran | D4 + D5 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, dan komentar per seri | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
 | `principal.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
+| `toko.html` | — direktori layanan: toko tani berkoordinat, dan penjual benih yang **tidak** bisa dituju | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
 
 `beranda.html` tidak punya perender rincian sama sekali. Ia mencari, lalu menautkan
@@ -227,6 +228,46 @@ kenapa" memang berbeda di tiap jalur.
   hitungan di peranti pembaca sendiri, dan keempat medannya akan kosong artinya. Memberinya
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
+
+### Direktori layanan — C7
+
+`toko.html`. **Dua pintu, karena datanya memang dua bentuk** — dan yang paling menentukan
+di halaman ini bukan pencariannya melainkan pemisahannya.
+
+| Kumpulan | Punya | Pintunya | Bisa dituju? |
+|---|---|---|---|
+| 234 · OpenStreetMap (ODbL) | koordinat, tanpa wilayah | jarak dari posisi pembaca | **ya** |
+| 2.248 · TTI Kementan + Pemkab Batang | nama + wilayah, tanpa koordinat | telusur menurut wilayah | **hampir tidak** |
+
+- **Satu angka di `docs/15` perlu dikoreksi.** Dokumen itu menyebut *"2.181 benih TTI
+  beralamat"*. Terhitung dari berkasnya: hanya **92 dari 2.248 — 4,1%** — menyebut sesuatu
+  yang lebih rinci daripada kabupaten atau kota. Sisanya berhenti di nama kabupaten,
+  tersebar di 92 wilayah. **Nama tanpa alamat tidak bisa dituju**: ia bukti bahwa penjual
+  benih ada di sana, bukan petunjuk ke mana pergi. Layar menyebutnya begitu di tiap baris.
+- **Menggabungkan keduanya akan menyamarkan justru itu.** 2.248 rekaman yang tidak bisa
+  dituju akan tampak setara dengan 234 yang bisa.
+- **Tidak ada geokode, dua arah.** Yang berkoordinat tidak diberi nama wilayah, dan yang
+  bernama wilayah tidak diberi koordinat. Keduanya menuntut geokode massal, dan itu sudah
+  diputuskan tidak dilakukan — medan kosong menunggu pemilik toko mengklaimnya.
+- **Posisi tidak pernah meninggalkan peranti.** Jarak dihitung di sini terhadap daftar
+  yang sudah diambil; tidak ada permintaan jaringan saat menghitungnya. Koordinat rumah
+  orang jauh lebih menentukan daripada kata yang dicarinya, dan beranda sudah menjanjikan
+  yang kedua tidak dikirim ke mana pun.
+- **Petanya OpenStreetMap, bukan Google.** Titiknya ODbL dan tautannya balik ke OSM;
+  koordinat Google tidak boleh disimpan sama sekali.
+- **Dua sumber, dua tingkat bukti, dan itu tampil berdampingan.** OSM tingkat **C** —
+  dipetakan sukarelawan yang datang ke tempatnya, bukan lembaga yang mendaftarkannya.
+  Penjual benih tingkat **D** — 2.181 di antaranya dari arsip Wayback halaman yang sudah
+  tidak ada, **tanpa tanggal pada rekamannya**, jadi toko yang sudah tutup tidak bisa
+  dibedakan dari yang masih buka.
+- **Ejaan kabupaten diseragamkan saat penyerapan.** TTI menulis `Kab. Batang`, data
+  terbuka Batang menulis `Kabupaten Batang` — dan tanpa penyeragaman satu tempat pecah
+  jadi dua wilayah, dengan 67 rekaman beralamat lengkap terpisah dari 5 yang tidak. Pola
+  yang sama seperti *Minyak Kita* lawan *Minyakita* di `docs/16`. Terhitung: 77 memakai
+  `Kab.`, 1 memakai `Kabupaten`, tepat satu tempat bentrok.
+- **Empat dari enam layanan yang dijanjikan C7 masih nol.** Penyuluh, POPT, laboratorium,
+  dan jasa alsintan tidak punya satu rekaman pun. Layar mengatakannya alih-alih
+  menampilkan tab kosong.
 
 ### Luring — A5
 

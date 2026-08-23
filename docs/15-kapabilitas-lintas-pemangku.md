@@ -390,9 +390,24 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, 26.475 titik, satu permintaan ke SP2KP. Sisi **harga petani tetap nol**, dan itu tidak berubah | sisi eceran **selesai**; sisi petani **BANGUN** — belum dimulai |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
-| C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | fondasi ada: 234 toko terbit (OSM), 2.181 benih TTI beralamat | **BANGUN** |
+| C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | **sebagian** 23 Agustus 2026 — `app/toko.html`: 234 berkoordinat (OSM) + 2.248 berwilayah. Penyuluh, POPT, lab, alsintan **nol** | **sebagian** |
 | C8 | Sifat agronomi varietas | petani, penyuluh, penangkar | #3 | **0 dari 11.227** | **TUNDA** |
 | C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** bebas hak cipta, tetapi **harga pupuk eceran di SP2KP ternyata kosong** — Urea, NPK, SP-36, dan ZA terdaftar tanpa satu pun angka terisi | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** dari teks peraturan, bukan dari SP2KP |
+
+> **C7 dibangun 23 Agustus 2026, dan satu angka di tabel ini terkoreksi karenanya.**
+> Baris C7 semula berbunyi *"2.181 benih TTI beralamat"*. Terhitung dari berkasnya, hanya
+> **92 dari 2.248 — 4,1%** — menyebut sesuatu yang lebih rinci daripada kabupaten atau
+> kota; nol dari 2.181 rekaman TTI memuat alamat jalan. **Nama tanpa alamat tidak bisa
+> dituju**: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi.
+>
+> Akibatnya layarnya dua pintu, bukan satu daftar: 234 titik OSM dicari menurut **jarak
+> dari posisi pembaca** (dihitung di peranti; posisi tidak pernah dikirim ke mana pun),
+> dan 2.248 rekaman berwilayah ditelusuri menurut **wilayah**, dengan tiap baris menyebut
+> apakah ia punya alamat atau hanya nama kabupaten. Menggabungkan keduanya akan membuat
+> yang tidak bisa dituju tampak setara dengan yang bisa.
+>
+> Empat dari enam layanan yang dijanjikan baris ini masih **nol rekaman** — penyuluh,
+> POPT, laboratorium, jasa alsintan — dan layar mengatakannya.
 
 > **C2 tetap kapabilitas dengan rasio nilai-terhadap-biaya tertinggi — tetapi masukannya
 > diganti.** Versi pertama dokumen ini memakai **nomor pendaftaran** sebagai pintu.
@@ -613,7 +628,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 | 5 | **B4** antrean pertanyaan tak terjawab — **selesai** | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
 | 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
 | 7 | **A5** luring penuh — **sebagian** | Indeks sudah ≤48 KB — separuh jalan |
-| 8 | **C7** direktori layanan | Fondasi toko tani sudah ada |
+| 8 | **C7** direktori layanan — **sebagian** | Fondasi toko tani sudah ada |
 | 9 | **D3** analisis usaha tani | Pintu masuk ke E5 di gelombang berikutnya |
 
 > Butir 1–5 semuanya bisa selesai tanpa satu pun keputusan yang masih terbuka di
