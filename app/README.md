@@ -401,6 +401,13 @@ di halaman ini bukan pencariannya melainkan pemisahannya.
   sampai `VERSI` di `sw.js` dinaikkan atau cache dibuang lewat tombol di `ukur.html`. Ini
   bukan cacat; ia justru buktinya bekerja, tetapi ia akan membuang waktu siapa pun yang
   lupa.
+- **Dan membuang cangkangnya saja belum cukup.** `python3 -m http.server` tidak mengirim
+  `Cache-Control` sama sekali, jadi peramban memakai caching heuristik dan tetap
+  menjalankan modul lama walau service worker sudah dicabut dan seluruh `caches` dihapus.
+  Gejalanya menyesatkan: berkas di cakram benar, `curl` melayani yang benar, `fetch()`
+  dengan query acak melayani yang benar — tetapi halaman menjalankan yang lama. Cara
+  tercepat memastikan: **ganti origin**, `127.0.0.1` menggantikan `localhost`, karena
+  cache-nya terpisah. Menaikkan `VERSI` saja tidak menyentuh lapis ini.
 - **`navigator.onLine` tidak tahu apakah situsnya terjangkau.** Ia melaporkan tautan
   peranti, bukan keterjangkauan — saat server dimatikan dalam pengujian, cip jaringan
   tetap berbunyi "Ada sinyal". Memeriksanya sungguhan menuntut satu permintaan tambahan

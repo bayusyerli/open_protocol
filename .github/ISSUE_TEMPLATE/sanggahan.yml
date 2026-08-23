@@ -1,7 +1,6 @@
 name: Sanggahan atas satu fakta
 description: Menantang satu fakta yang ditampilkan permukaan pembaca. Jejaknya publik dan bernama.
 title: "Sanggahan · "
-labels: []
 body:
   - type: markdown
     attributes:
