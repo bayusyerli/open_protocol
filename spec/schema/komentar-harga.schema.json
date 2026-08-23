@@ -83,7 +83,36 @@
               "string",
               "null"
             ],
-            "description": "Tanggal seorang manusia membacanya, atau null. null berarti belum — dan layar wajib mengatakannya."
+            "format": "date",
+            "description": "Tanggal seorang MANUSIA membacanya dan bertanggung jawab atasnya, atau null. Tidak pernah diisi mesin: spec/tools/periksa-komentar-harga.mjs hanya menerimanya lewat --oleh, dan menolak jalan tanpa nama. Medan yang boleh diisi mesin berhenti berarti apa-apa."
+          },
+          "ditinjauOleh": {
+            "type": "string",
+            "minLength": 2,
+            "description": "Nama dan institusi peninjau. Wajib bila `ditinjau` terisi — tinjauan yang tidak menempel pada siapa pun tidak menaikkan tingkat bukti apa pun."
+          },
+          "ditinjauSidik": {
+            "type": "string",
+            "description": "`sidikFakta` yang ditinjau. Tinjauan menempel pada satu kalimat atas satu susunan angka; begitu angkanya bergeser dan kalimatnya ditulis ulang, tinjauan lama gugur dan `ditinjau` kembali null."
+          },
+          "diperiksaMesin": {
+            "type": "object",
+            "description": "Hasil pemeriksaan yang BISA dikerjakan mesin: tiap angka di kalimat ada di `fakta`, medan `batas` terisi, dan tidak ada ramalan maupun anjuran. Ini bukan pengganti `ditinjau` — angka boleh seluruhnya cocok sementara kalimatnya tetap menyesatkan.",
+            "properties": {
+              "lolos": {
+                "type": "boolean"
+              },
+              "masalah": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "required": [
+              "lolos"
+            ],
+            "additionalProperties": false
           }
         },
         "required": [

@@ -3,6 +3,7 @@
 //   node spec/tools/bangun-komentar-harga.mjs            # periksa saja
 //   node spec/tools/bangun-komentar-harga.mjs --tulis    # tulis spec/vocab/harga/komentar.json
 //   node spec/tools/bangun-komentar-harga.mjs --tulis --paksa   # tulis ulang yang sudah ada
+//   node spec/tools/bangun-komentar-harga.mjs --tulis --terhitung  # paksa jalur aturan
 //
 // KENAPA SAAT BUILD, DAN KENAPA ITU BUKAN SEKADAR SOAL BIAYA
 // docs/15 menaruh B5 — ringkasan berbasis model bahasa — pada status TUNDA, dengan alasan
@@ -175,12 +176,45 @@ const SKEMA = {
 };
 
 async function buatKlien() {
-  // Impor dinamis: yang menjalankan tanpa kredensial tidak perlu memasang SDK sama sekali.
+  // Impor dinamis: yang menjalankan tanpa SDK terpasang tetap dapat jalur terhitung.
   try {
     const { default: Anthropic } = await import('@anthropic-ai/sdk');
     return new Anthropic();
   } catch (e) {
     return null;
+  }
+}
+
+/**
+ * Apakah ada kredensial — diputuskan dengan MENCOBA, bukan dengan menebak.
+ *
+ * Versi pertama berkas ini memeriksa tiga variabel lingkungan dan berhenti di situ. Itu
+ * keliru, dan kelirunya jenis yang paling mahal: `ant auth login` menyimpan profil di
+ * ~/.config/anthropic/ TANPA menyetel satu pun variabel lingkungan, sehingga yang sudah
+ * login dengan benar tetap dijawab "tanpa kredensial" dan diam-diam mendapat jalur
+ * terhitung — persis kebalikan dari yang ia minta, tanpa satu pun tanda.
+ *
+ * Jadi yang menentukan sekarang satu panggilan sungguhan yang sangat murah. Kalau ia lewat,
+ * kredensialnya ada — apa pun sumbernya: variabel lingkungan, profil `ant`, atau federasi
+ * identitas. Kalau ia ditolak karena autentikasi, jalur terhitung dipakai dan SEBABNYA
+ * disebut, bukan disamarkan jadi "tidak ada kredensial".
+ */
+async function adaKredensial(klien) {
+  if (!klien) return { ada: false, sebab: '@anthropic-ai/sdk belum terpasang — jalankan `npm install` di spec/' };
+  try {
+    await klien.models.retrieve(MODEL);
+    return { ada: true };
+  } catch (e) {
+    const status = e?.status;
+    // SDK menolak sebelum permintaan berangkat kalau tak satu pun sumber kredensial ada;
+    // itu keadaan yang sama dengan 401, dan pesannya sebaiknya juga sama.
+    if (/Could not resolve authentication/i.test(e?.message ?? '') || status === 401 || status === 403) {
+      return { ada: false, sebab: 'kredensial Anthropic tidak ditemukan atau ditolak — jalankan `ant auth login`, atau setel ANTHROPIC_API_KEY' };
+    }
+    if (status === 404) {
+      return { ada: false, sebab: `kredensialnya ada, tetapi model ${MODEL} tidak terjangkau akun ini` };
+    }
+    return { ada: false, sebab: `tidak bisa memastikan kredensial: ${e?.message ?? e}` };
   }
 }
 
@@ -204,18 +238,22 @@ async function lewatModel(klien, f) {
 const lama = existsSync(KELUAR) ? JSON.parse(readFileSync(KELUAR, 'utf8')) : { versi: 1, komentar: {} };
 const klien = await buatKlien();
 
-const kredensial = klien && (process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN || process.env.ANTHROPIC_PROFILE);
-const pakaiModel = Boolean(klien && kredensial);
+// `--terhitung` memaksa jalur aturan meski kredensialnya ada — dipakai saat ingin
+// membandingkan keduanya, atau saat sedang tidak ingin membelanjakan panggilan.
+const paksaTerhitung = process.argv.includes('--terhitung');
+const cek = paksaTerhitung ? { ada: false, sebab: 'diminta lewat --terhitung' } : await adaKredensial(klien);
+const pakaiModel = cek.ada;
 
 console.log(`Seri berangka        : ${berangka.length}`);
-console.log(`Jalur                : ${pakaiModel ? `model ${MODEL}` : 'TERHITUNG — tanpa kredensial Anthropic, narasi disusun dari aturan'}`);
+console.log(`Jalur                : ${pakaiModel ? `model ${MODEL}` : 'TERHITUNG — narasi disusun dari aturan'}`);
 if (!pakaiModel) {
-  console.log(`                       (pasang @anthropic-ai/sdk lalu \`ant auth login\` atau ANTHROPIC_API_KEY,`);
-  console.log(`                        jalankan ulang dengan --paksa untuk menulis ulang lewat model)`);
+  console.log(`                       sebab: ${cek.sebab}`);
+  console.log(`                       jalankan ulang dengan --paksa setelah itu beres, untuk menulis ulang lewat model`);
 }
 
 const hasil = { ...lama.komentar };
 let dibuat = 0, dilewati = 0, gagal = 0;
+const gugur = [];
 
 for (const x of berangka) {
   const f = fakta(x);
@@ -224,6 +262,14 @@ for (const x of berangka) {
   // Komentar tidak ditulis ulang selama faktanya belum berubah. Itu yang membuat berkas ini
   // bisa di-diff: selisihnya berarti angkanya bergeser, bukan modelnya sedang bervariasi.
   if (ada && ada.sidikFakta === sidik && !paksa) { dilewati++; continue; }
+
+  // Tinjauan manusia menempel pada SUSUNAN ANGKA yang ditinjau, bukan pada kuncinya. Kalau
+  // sampai sini, faktanya sudah bergeser (atau --paksa dipakai), jadi kalimatnya akan
+  // ditulis ulang — dan tinjauan atas kalimat lama tidak berlaku untuk kalimat baru.
+  // Membiarkannya berarti satu tinjauan bulan lalu menaungi kalimat yang ditulis hari ini,
+  // yang persis jenis kekeliruan diam-diam yang berkas ini dibangun untuk cegah.
+  const tinjauanGugur = ada?.ditinjau && ada.ditinjauSidik !== sidik;
+  if (tinjauanGugur) gugur.push({ kunci: x.key, oleh: ada.ditinjauOleh, pada: ada.ditinjau });
 
   let isi = null;
   if (pakaiModel) {
@@ -252,6 +298,10 @@ for (const x of berangka) {
 }
 
 console.log(`Dibuat/diperbarui    : ${dibuat}`);
+if (gugur.length) {
+  console.log(`Tinjauan GUGUR       : ${gugur.length} — faktanya bergeser, kalimatnya ditulis ulang`);
+  for (const g of gugur) console.log(`      ${g.kunci} — ditinjau ${g.oleh ?? 'tanpa nama'} pada ${g.pada}, perlu ditinjau ulang`);
+}
 console.log(`Dilewati (tak berubah): ${dilewati}`);
 if (gagal) console.log(`Gagal                : ${gagal}`);
 const lewatModelJumlah = Object.values(hasil).filter((x) => x.sumber === 'model').length;

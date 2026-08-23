@@ -19,6 +19,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/14-tinjauan-gejala.md`](docs/14-tinjauan-gejala.md) | Daftar tinjauan sepuluh teks gejala OPT untuk agronom atau BPTP; dibangkitkan dari kosakata, dengan entri lemah ditandai sendiri |
 | [`docs/15-kapabilitas-lintas-pemangku.md`](docs/15-kapabilitas-lintas-pemangku.md) | Riset & benchmarking 21 sistem (9 luar negeri, 12 Indonesia), inventaris 16 keputusan hulu, dan 39 kapabilitas dengan putusan bangun/pinjam/sambung/tunda/jangan per kapabilitas |
 | [`docs/16-sumber-harga-komoditas.md`](docs/16-sumber-harga-komoditas.md) | Sumber harga komoditas dipilah menurut lisensi, putusan pinjam/bangun per lapis, dan kenapa "harga produsen" yang dicatat negara sebenarnya harga pengumpul |
+| [`docs/18-tinjauan-komentar-harga.md`](docs/18-tinjauan-komentar-harga.md) | Daftar tinjauan 43 komentar harga untuk dibaca manusia; dibangkitkan dari data, dengan entri yang perlu didahulukan ditandai sendiri |
 | [`docs/principal-terdaftar.md`](docs/principal-terdaftar.md) | 2.305 principal pemegang pendaftaran pupuk & pestisida, beserta keputusan cakupannya |
 | [`docs/01-sediaan-buatan-sendiri.md`](docs/01-sediaan-buatan-sendiri.md) | Riset & standar praktik meramu sendiri — kompos, MOL, bioaktivator, pestisida nabati — beserta tujuh syarat sebuah praktik boleh dianjurkan mesin |
 | [`docs/02-tiga-pasar.md`](docs/02-tiga-pasar.md) | Segmentasi, target, dan posisi — kenapa pengguna, pembayar, dan kontributor harus disegmentasi terpisah |

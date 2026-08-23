@@ -193,13 +193,58 @@ function kartuAngka(h) {
         <dt>Rata-rata</dt><dd>${rp(s.rata)}</dd>
         <dt>Gejolak</dt><dd>${angkaId(s.gejolak)}% koefisien variasi</dd>
       </dl>
-      ${h.cakupan?.gaps > 0 ? `
-        <p class="catatan">
-          <strong>${n(h.cakupan.gaps)} hari kalender di dalam rentang ini tidak punya
-          angka.</strong> Garis grafiknya menyambung langsung antar titik yang ada — tidak
-          ada nilai yang diisikan diam-diam.
-        </p>` : ''}
+      ${catatanLubang(h)}
+      ${catatanAwalSeri(h)}
     </div>`;
+}
+
+// Dua catatan yang keduanya mencegah angka benar dibaca keliru.
+//
+// LUBANG. "299 hari kalender tanpa angka" terbaca sebagai data yang rusak, padahal
+// sebagian besarnya akhir pekan — SP2KP tidak mencacah Sabtu dan Minggu, yang saja 28,5%
+// hari kalender. Menyebut jumlahnya tanpa menyebut sebabnya menakut-nakuti tanpa memberi
+// tahu apa pun; menyembunyikannya menutupi seri yang memang benar-benar bolong. Jadi
+// keduanya disebut, dan akhir pekannya dihitung, bukan ditaksir.
+function catatanLubang(h) {
+  const bolong = h.cakupan?.gaps ?? 0;
+  if (!bolong) return '';
+  const a = new Date(h.cakupan.from), b = new Date(h.cakupan.to);
+  let akhirPekan = 0;
+  for (let t = a.getTime(); t <= b.getTime(); t += 86400000) {
+    const d = new Date(t).getUTCDay();
+    if (d === 0 || d === 6) akhirPekan++;
+  }
+  const sisa = Math.max(0, bolong - akhirPekan);
+  return `
+    <p class="catatan">
+      <strong>${n(bolong)} hari kalender di dalam rentang ini tidak punya angka</strong> —
+      ${n(Math.min(akhirPekan, bolong))} di antaranya akhir pekan, yang memang tidak dicacah.
+      ${sisa > 0 ? `Sisanya ${n(sisa)} hari: hari libur, dan pada sebagian seri juga hari yang benar-benar terlewat.` : ''}
+      Garis grafiknya menyambung langsung antar titik yang ada — tidak ada nilai yang
+      diisikan diam-diam.
+    </p>`;
+}
+
+// AWAL SERI. Seri SP2KP mulai 1 Februari 2024, di tengah lonjakan harga pangan: 40 dari 43
+// komoditas mencapai puncak tertingginya pada Februari–Mei 2024, dan 38 dari 43 mencapai
+// titik terendahnya di jendela yang sama. Maka "tertinggi" dan "terendah" di kartu ini
+// lebih banyak berkata tentang KAPAN SERINYA DIMULAI daripada tentang komoditasnya —
+// dan angka yang benar tetap bisa menyesatkan kalau asalnya tidak disebut.
+const AWAL_JENDELA = 120;
+function catatanAwalSeri(h) {
+  const s = h.statistik;
+  const a = new Date(h.cakupan.from).getTime();
+  const dalam = (t) => (new Date(t).getTime() - a) / 86400000 <= AWAL_JENDELA;
+  const kena = [dalam(s.min.t) && 'terendahnya', dalam(s.maks.t) && 'tertingginya'].filter(Boolean);
+  if (!kena.length) return '';
+  return `
+    <p class="catatan">
+      <strong>${kena.join(' dan ')} jatuh di empat bulan pertama seri ini.</strong> SP2KP mulai
+      mencatat 1 Februari 2024, di tengah lonjakan harga pangan — 40 dari 43 komoditas
+      mencapai puncaknya dan 38 dari 43 mencapai titik terendahnya pada jendela yang sama.
+      Angka itu benar, tetapi ia lebih banyak berkata tentang kapan pencatatannya dimulai
+      daripada tentang komoditas ini.
+    </p>`;
 }
 
 function kartuMusim(h) {

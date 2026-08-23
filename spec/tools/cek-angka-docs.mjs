@@ -196,6 +196,16 @@ if (HRG) {
   // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
   // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
   cek('16', 'harga pupuk berangka', HRG.filter((h) => /^pupuk/i.test(h.label.id) && h.series?.length).length, 0);
+
+  // Sifat dataset yang dipakai docs/18 dan layar harga: kedua ekstrem menumpuk di empat
+  // bulan pertama karena serinya mulai di tengah lonjakan pangan. Kalau SP2KP suatu saat
+  // menerbitkan riwayat yang lebih panjang ke belakang, kedua baris ini yang memberi tahu —
+  // dan kalimat di layar harus ikut berubah.
+  const berangka = HRG.filter((h) => h.series?.length);
+  const diJendelaAwal = (h, t) =>
+    (new Date(t) - new Date(h.coverage.from)) / 86400000 <= 120;
+  cek('16/18', 'puncak di 4 bulan pertama', berangka.filter((h) => diJendelaAwal(h, h.stats.maks.t)).length, 40);
+  cek('16/18', 'terendah di 4 bulan pertama', berangka.filter((h) => diJendelaAwal(h, h.stats.min.t)).length, 38);
 }
 
 // Sapuan teks: angka yang PERNAH salah dan sudah dikoreksi tidak boleh muncul lagi
