@@ -182,6 +182,17 @@ const bacaVocab = (f) => {
   const j = JSON.parse(readFileSync(join(VOCAB, f), 'utf8'));
   return Array.isArray(j) ? j : (Object.values(j).find(Array.isArray) ?? []);
 };
+// Kosakata besar disimpan per baris; dibaca langsung karena isinya — ringkasan lingkup
+// laboratorium, cacahan penyuluh per status — sengaja tidak ikut ke indeks. Indeks dipakai
+// untuk MENCARI, kosakata untuk MEMBACA, dan halaman entitas butuh keduanya.
+const bacaVocabNdjson = (f) => {
+  const jalur = join(VOCAB, f);
+  if (!existsSync(jalur)) return [];
+  return readFileSync(jalur, 'utf8').split('\n').filter((x) => x.trim()).map((x) => JSON.parse(x));
+};
+
+const tanggalPanjang = (s) => (s ? new Date(s).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : '');
+
 const kosakata = (berkas) => {
   const m = new Map();
   for (const f of berkas) {
@@ -289,6 +300,26 @@ const JUDUL_LUBANG = {
   bahanHara: 'Unsur hara sebagai bahan yang bisa dicari',
   gambarKemasan: 'Gambar kemasan',
   harga: 'Harga',
+  hargaPupuk: 'Harga pupuk dan sarana produksi',
+  hargaKomoditasTani: 'Harga yang diterima petani untuk komoditasnya',
+  sertifikasiLot: 'Sertifikasi lot benih yang di tangan',
+  tokoTakBisaDituju: 'Toko yang tidak bisa dituju',
+  tokoTanpaKontak: 'Telepon, jam buka, dan apakah tokonya masih ada',
+  haraSediaan: 'Kandungan hara sediaan buatan sendiri',
+  bppTanpaAlamat: 'Alamat dan koordinat balai penyuluhan',
+  penyuluhTanpaNama: 'Nama dan kontak penyuluh',
+  labTarif: 'Tarif dan waktu tunggu pengujian',
+  labLingkupRingkas: 'Lingkup terurai per parameter',
+};
+
+// Lubang yang hanya dipakai halaman-halaman di berkas ini. Ditaruh di sini, bukan
+// dititipkan ke meta.json, supaya penambahan template tidak menuntut suntingan di
+// pembangun indeks — dua berkas besar yang kerap digarap dua orang sekaligus.
+// meta.tidakAda tetap didahulukan bila kuncinya ada di sana.
+const LUBANG_LOKAL = {
+  labTarif: 'Tarif pengujian, waktu tunggu hasil, dan apakah laboratoriumnya menerima sampel dari luar tidak terbit di mana pun — KAN mengakreditasi kompetensi, ia tidak mengatur harga layanan. Ketiganya harus ditanyakan langsung ke laboratoriumnya, dan halaman ini hanya bisa memberi nomor teleponnya.',
+  labLingkupRingkas: 'Ruang lingkup yang terbaca di sini ringkasan satu paragraf dari papan KAN, bukan daftar parameter. Hanya sebagian laboratorium yang lingkupnya terurai per parameter, karena baru sebagian yang pindah ke aplikasi direktori KAN. Penanda kemampuan karena itu dibaca dari kata, bukan dari kode — dan bisa meleset pada lembaga yang menulis ringkasannya dengan cara lain.',
+  penyuluhTanpaNama: 'Nama, NIP, dan nomor telepon penyuluh tidak ada di sini. Laporan tamu SIMLUHTAN memang hanya memberi cacahan, dan hanya itu yang diambil: halaman bernama tentang orang adalah pemrosesan data pribadi yang tidak punya dasar pemrosesan di sini. Yang bisa dituju balainya, lewat dinas kabupaten yang menaunginya.',
 };
 
 const cacatBatas = [];
@@ -305,7 +336,7 @@ function blokBatas(spek, jalan) {
     return gabung;
   }).filter(Boolean);
   const lubang = (spek.takDijawab ?? []).map((k) => {
-    const t = meta?.tidakAda?.[k];
+    const t = meta?.tidakAda?.[k] ?? LUBANG_LOKAL[k];
     if (!t) { salah.push(`lubang "${k}" tidak ada di meta.tidakAda`); return null; }
     if (!JUDUL_LUBANG[k]) salah.push(`lubang "${k}" belum punya judul`);
     return { judul: JUDUL_LUBANG[k] ?? k, teks: t };
@@ -518,13 +549,15 @@ function kartuLarangan(zatDilarang) {
 // Kumpulan berkas keluaran
 // ---------------------------------------------------------------------------
 const berkas = new Map();
-const urlTemplate = { hama: [], bahan: [], kandungan: [], tanaman: [], setara: [], produk: [], badan: [], harga: [], toko: [], sediaan: [], editorial: [] };
+const urlTemplate = { hama: [], bahan: [], kandungan: [], tanaman: [], setara: [], produk: [], badan: [], harga: [], toko: [], lab: [], bpp: [], sediaan: [], editorial: [] };
 const dipangkas = [];
 const simpan = (jalan, isi) => berkas.set(jalan, isi);
 
 const TARIKAN = {
   pestisida: meta?.batas?.sumber?.pestisida?.tarikan ?? null,
   pupuk: meta?.batas?.sumber?.pupuk?.tarikan ?? null,
+  lab: meta?.batas?.sumber?.lab?.tarikan ?? null,
+  bpp: meta?.batas?.sumber?.bpp?.tarikan ?? null,
 };
 
 // ---------------------------------------------------------------------------
@@ -2467,6 +2500,560 @@ for (const e of EDITORIAL) {
   if (adaYangLolos) urlTemplate.editorial.push([jalan, TARIKAN.pestisida]);
 }
 
+// ---------------------------------------------------------------------------
+// Template 10 — laboratorium penguji: siapa yang bisa mengukur apa, dan di mana
+// ---------------------------------------------------------------------------
+// "Laboratorium terakreditasi" bukan jawaban. Yang dicari orang selalu kemampuan lebih
+// dulu, baru tempat: siapa yang bisa menguji tanah, siapa yang bisa mengukur residu
+// pestisida. Karena itu halamannya tiga lapis — satu pintu kemampuan, satu pintu
+// provinsi, dan satu halaman per laboratorium yang membawa ringkasan lingkupnya utuh.
+//
+// RINGKASAN LINGKUP IKUT UTUH, DAN ITU BUKAN HIASAN
+// Penanda kemampuan dibaca dari teks ringkasan, bukan dari kode. Menerbitkan enam
+// boolean tanpa teks yang mendasarinya berarti meminta pembaca memercayai pembacaan
+// yang tidak bisa ia periksa. Teksnya ikut, apa adanya, betapapun panjangnya.
+//
+// MASA BERLAKU DIBANDINGKAN DENGAN TANGGAL TARIKAN, BUKAN JAM MEMBANGUN
+// Akreditasi yang sudah lewat masa berlakunya adalah laboratorium yang hasil ujinya
+// tidak lagi diakui. Tetapi membandingkannya dengan `new Date()` akan membuat halaman
+// yang sama berbeda isi tiap kali dibangun. Acuannya tanggal tarikan sumber, dan
+// tanggal itu tercetak di halamannya.
+const labKepala = bacaBila('lab-kemampuan.json');
+if (labKepala) {
+  const ARTI = labKepala.arti ?? {};
+  const ACUAN = TARIKAN.lab ?? '2026-08-23';
+  const KEMAMPUAN_JALAN = { t: 'uji-tanah', p: 'uji-pupuk', a: 'uji-air', m: 'uji-pangan', j: 'uji-jaringan-tanaman', r: 'uji-residu-pestisida' };
+  const KEMAMPUAN_TANYA = {
+    t: 'Ke mana saya kirim sampel tanah?',
+    p: 'Ke mana saya kirim sampel pupuk?',
+    a: 'Ke mana saya kirim sampel air?',
+    m: 'Siapa yang bisa menguji hasil panen saya?',
+    j: 'Siapa yang bisa menguji jaringan tanaman atau benih?',
+    r: 'Siapa yang bisa mengukur residu pestisida?',
+  };
+
+  // Ringkasan lingkup dan lingkup terurai tidak ikut ke indeks — indeks memang dipakai
+  // untuk mencari, bukan untuk membaca. Keduanya dibaca dari kosakatanya sendiri.
+  const BATAS_BARIS_LAB = 250;
+  let labBarisDitahan = 0;
+  const labVocab = new Map();
+  for (const x of bacaVocabNdjson('lab/lab.ndjson')) labVocab.set(x.accreditation?.number ?? x.key, x);
+
+  const semuaLab = [];
+  for (const w of labKepala.wilayah ?? []) {
+    for (const x of bacaBila(`lab/${w.k}.json`) ?? []) semuaLab.push({ ...x, w });
+  }
+  const jalanLab = (x) => `lab/${slug(x.no)}/`;
+  // Kepala indeks memuat cacah residu per provinsi; bentuknya sempat `r`, lalu jadi
+  // `per` yang memuat seluruh kemampuan. Dibaca keduanya supaya halaman tidak ikut
+  // pecah setiap kali sisi indeks merapikan bentuknya.
+  const cacahWilayah = (w, huruf) => w?.per?.[huruf] ?? (huruf === 'r' ? (w?.r ?? 0) : 0);
+  const hurufDari = (x) => String(x.k ?? '').split('').filter((h) => ARTI[h]);
+  const bisaBaca = (x) => hurufDari(x).map((h) => ARTI[h]);
+  let labTanpaLingkup = 0; let labKedaluwarsa = 0;
+
+  // --- satu halaman per laboratorium ---------------------------------------------------
+  for (const x of semuaLab.sort((a, b) => String(a.no).localeCompare(String(b.no), 'en', { numeric: true }))) {
+    const jalan = jalanLab(x);
+    const v = labVocab.get(x.no);
+    if (!v?.scope_summary) labTanpaLingkup++;
+    const lewat = x.sd && x.sd < ACUAN;
+    if (lewat) labKedaluwarsa++;
+    const bisa = bisaBaca(x);
+    const rinci = v?.scope_detail;
+
+    const tanya = [
+      { t: `Apa saja yang bisa diuji ${x.n}?`,
+        j: bisa.length
+          ? `Ruang lingkup akreditasinya menyentuh ${bisa.join(', ')}. Daftar lengkapnya ada di halaman ini, apa adanya dari papan KAN.`
+          : 'Ruang lingkupnya tidak menyentuh satu pun bidang usaha tani yang dibaca halaman ini.' },
+      { t: `Sampai kapan akreditasi ${x.no} berlaku?`,
+        j: x.sd
+          ? `Sampai ${tanggalPanjang(x.sd)}${lewat ? ', dan per tanggal tarikan data ini masa berlakunya sudah lewat' : ''}.`
+          : 'Masa berlakunya tidak terbaca di sumber.' },
+      { t: `Berapa biaya pengujiannya?`,
+        j: meta?.tidakAda?.labTarif ?? LUBANG_LOKAL.labTarif },
+    ];
+    const { html: htmlTanya, ld: ldTanya } = blokTanya(tanya);
+
+    const isiHtml = `
+  ${lewat ? `<div class="kartu peringatan">
+    <h2>Masa berlaku akreditasi ini sudah lewat</h2>
+    <p class="catatan">Berakhir ${teks(tanggalPanjang(x.sd))}, sementara data ini ditarik ${teks(tanggalPanjang(ACUAN))}.
+    Akreditasi yang habis berarti hasil ujinya tidak lagi diakui sebagai hasil laboratorium terakreditasi —
+    tanyakan langsung apakah sudah diperpanjang sebelum mengirim sampel.</p>
+  </div>` : ''}
+  <div class="kartu">
+    <h2>Yang tercatat di KAN</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Nomor akreditasi</td><td class="angka">${teks(x.no)}</td></tr>
+          <tr><td>Skema</td><td>Laboratorium penguji (SNI ISO/IEC 17025)</td></tr>
+          <tr><td>Masa berlaku</td><td class="angka">${x.sd ? teks(tanggalPanjang(x.sd)) : '—'}</td></tr>
+          <tr><td>Alamat</td><td>${teks(x.a || '—')}</td></tr>
+          <tr><td>Provinsi</td><td>${teks(x.w.w)}</td></tr>
+          ${x.t ? `<tr><td>Telepon / faks</td><td>${teks(x.t)}</td></tr>` : ''}
+          ${x.e ? `<tr><td>Surel</td><td>${teks(x.e)}</td></tr>` : ''}
+        </tbody>
+      </table>
+    </div>
+    <p class="catatan">Kontak yang tercetak di sini kontak kelembagaan yang KAN sendiri terbitkan supaya
+    laboratoriumnya bisa dihubungi. Nama petugas penghubung ada di sumbernya dan sengaja tidak diambil.</p>
+  </div>
+  <h2 class="judul-bagian">Bidang yang disentuh ruang lingkupnya</h2>
+  ${bisa.length ? `<ul class="daftar-kemampuan">${hurufDari(x).map((h) => `
+    <li><a href="/lab/${teks(KEMAMPUAN_JALAN[h])}/">${teks(ARTI[h])}</a></li>`).join('')}
+  </ul>
+  <p class="bantuan">Keenam penanda ini dibaca dari <strong>teks</strong> ringkasan lingkupnya, bukan dari kode.
+  Teks yang mendasarinya tercetak di bawah supaya pembacaannya bisa diperiksa sendiri.</p>` : '<p class="bantuan">Tidak ada.</p>'}
+  ${v?.scope_summary ? `
+  <h2 class="judul-bagian">Ruang lingkup, apa adanya dari papan KAN</h2>
+  <p class="lingkup-mentah">${teks(v.scope_summary)}</p>` : ''}
+  ${rinci ? `
+  <div class="kartu">
+    <h2>Lingkup terurai per parameter</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          ${rinci.rows !== undefined ? `<tr><td>Baris lingkup</td><td class="angka">${n(rinci.rows)}</td></tr>` : ''}
+          ${rinci.amended_at ? `<tr><td>Amandemen terkini</td><td class="angka">${teks(tanggalPanjang(rinci.amended_at))}</td></tr>` : ''}
+          ${(rinci.k01_codes ?? []).length ? `<tr><td>Kode bidang KAN K-01</td><td>${teks((rinci.k01_codes ?? []).join(', '))}</td></tr>` : ''}
+        </tbody>
+      </table>
+    </div>
+    ${rinci.source ? `<p class="catatan"><a href="${teks(rinci.source)}" rel="nofollow noopener noreferrer external">Rincian lingkup di aplikasi direktori KAN</a></p>` : ''}
+  </div>` : `<p class="catatan">${teks(meta?.tidakAda?.labLingkupRingkas ?? LUBANG_LOKAL.labLingkupRingkas)}</p>`}
+  ${htmlTanya}
+  <p class="lain">
+    <a href="/lab/di-${teks(x.w.k)}/">Laboratorium lain di ${teks(x.w.w)} →</a> ·
+    <a href="/lab/">Semua kemampuan</a> ·
+    <a href="/beranda.html">Beranda</a>
+  </p>`;
+
+    simpan(`${jalan}index.html`, halaman({
+      jalan,
+      judul: `${x.n} — ${x.no}, laboratorium penguji terakreditasi KAN`,
+      deskripsi: `${x.n} di ${x.w.w}, akreditasi ${x.no}${x.sd ? ` berlaku sampai ${x.sd}` : ''}. ${bisa.length ? `Ruang lingkupnya menyentuh ${bisa.join(', ')}.` : ''}`,
+      jalur: `Laboratorium · ${x.w.w}`,
+      h1: x.n,
+      lede: `Laboratorium penguji terakreditasi <strong>${teks(x.no)}</strong>${bisa.length ? ` — ruang lingkupnya menyentuh ${teks(bisa.join(', '))}` : ''}.`,
+      isi: isiHtml,
+      ld: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          {
+            '@type': 'Organization', name: x.n, identifier: x.no,
+            ...(x.a ? { address: { '@type': 'PostalAddress', streetAddress: x.a, addressRegion: x.w.w, addressCountry: 'ID' } } : {}),
+            ...(x.t ? { telephone: x.t } : {}),
+            hasCredential: { '@type': 'EducationalOccupationalCredential', credentialCategory: 'Akreditasi SNI ISO/IEC 17025', recognizedBy: { '@type': 'Organization', name: 'Komite Akreditasi Nasional' }, identifier: x.no, ...(x.sd ? { validUntil: x.sd } : {}) },
+          },
+          remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Laboratorium', jalan: 'lab/' }, { nama: x.w.w, jalan: `lab/di-${x.w.k}/` }, { nama: x.n, jalan }]),
+          ...(ldTanya ? [ldTanya] : []),
+        ],
+      },
+      batas: blokBatas({
+        sumber: [{ dari: 'lab', cakupan: `satu laboratorium beserta ringkasan ruang lingkupnya` }],
+        takDijawab: ['labTarif', 'labLingkupRingkas'],
+      }, jalan),
+    }));
+    urlTemplate.lab.push([jalan, ACUAN]);
+  }
+
+  // --- pintu kemampuan ------------------------------------------------------------------
+  for (const [huruf, jalanKe] of Object.entries(KEMAMPUAN_JALAN)) {
+    const semua = semuaLab.filter((x) => String(x.k ?? '').includes(huruf))
+      .sort((a, b) => String(a.w.w).localeCompare(String(b.w.w)) || String(a.n).localeCompare(String(b.n)));
+    if (!semua.length) continue;
+    // Daftar air memuat 653 lembaga; satu tabel sepanjang itu tidak menolong siapa pun dan
+    // halamannya jadi 147 KB. Dipotong, jumlah yang dipotong disebutkan, dan pintu provinsi
+    // yang memuat sisanya ditunjuk — bukan dihilangkan diam-diam.
+    const isi = semua.slice(0, BATAS_BARIS_LAB);
+    const ditahan = semua.length - isi.length;
+    labBarisDitahan += ditahan;
+    const jalan = `lab/${jalanKe}/`;
+    const nama = ARTI[huruf];
+    const perProv = new Map();
+    for (const x of semua) perProv.set(x.w.w, (perProv.get(x.w.w) ?? 0) + 1);
+
+    const tanya = [
+      { t: KEMAMPUAN_TANYA[huruf] ?? `Siapa yang bisa menguji ${nama}?`,
+        j: `${semua.length} laboratorium terakreditasi KAN yang ruang lingkupnya menyebut ${nama}, tersebar di ${perProv.size} provinsi.${ditahan ? ` Halaman ini memuat ${isi.length} pertama; sisanya lewat pintu provinsi.` : ' Daftarnya di halaman ini, urut provinsi lalu nama.'}` },
+      { t: `Apakah daftar ini lengkap?`,
+        j: `Ini seluruh laboratorium penguji berakreditasi aktif di papan KAN yang ringkasan lingkupnya menyebut ${nama}. Laboratorium yang melakukan pengujian itu tanpa menyebutnya di ringkasan lingkupnya tidak akan tertangkap.` },
+    ];
+    const { html: htmlTanya, ld: ldTanya } = blokTanya(tanya);
+
+    simpan(`${jalan}index.html`, halaman({
+      jalan,
+      judul: `${semua.length} laboratorium yang bisa menguji ${nama} — terakreditasi KAN`,
+      deskripsi: `Daftar ${semua.length} laboratorium penguji terakreditasi KAN yang ruang lingkupnya menyebut ${nama}, di ${perProv.size} provinsi, beserta masa berlaku akreditasinya.`,
+      jalur: 'Laboratorium',
+      h1: `Laboratorium yang bisa menguji ${nama}`,
+      lede: `<strong>${n(semua.length)}</strong> laboratorium terakreditasi di ${n(perProv.size)} provinsi. Urut provinsi, lalu nama — <strong>tanpa peringkat</strong>.`,
+      isi: `
+  ${ditahan ? `<p class="bantuan">${n(semua.length)} laboratorium menyebut ${teks(nama)} di ringkasan lingkupnya. Halaman ini memuat ${n(isi.length)} pertama menurut provinsi lalu nama; <strong>${n(ditahan)} sisanya</strong> ada di pintu provinsinya masing-masing.</p>` : ''}
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Laboratorium</th><th>Provinsi</th><th>Nomor</th><th>Berlaku sampai</th></tr></thead>
+      <tbody>${isi.map((x) => `
+        <tr><td><a href="/${teks(jalanLab(x))}">${teks(x.n)}</a></td><td>${teks(x.w.w)}</td><td class="angka">${teks(x.no)}</td><td class="angka">${teks(x.sd ?? '—')}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>
+  ${htmlTanya}
+  <p class="lain"><a href="/lab/">Kemampuan lain →</a> · <a href="/beranda.html">Beranda</a></p>`,
+      ld: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          { '@type': 'ItemList', numberOfItems: isi.length, itemListElement: isi.slice(0, 100).map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.n, item: mutlak(jalanLab(x)) })) },
+          remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Laboratorium', jalan: 'lab/' }, { nama: nama, jalan }]),
+          ...(ldTanya ? [ldTanya] : []),
+        ],
+      },
+      batas: blokBatas({
+        sumber: [{ dari: 'lab', cakupan: `${semua.length} laboratorium yang ringkasan lingkupnya menyebut ${nama}` }],
+        takDijawab: ['labLingkupRingkas', 'labTarif'],
+      }, jalan),
+    }));
+    urlTemplate.lab.push([jalan, ACUAN]);
+  }
+
+  // --- pintu provinsi -------------------------------------------------------------------
+  for (const w of (labKepala.wilayah ?? []).filter((x) => x.n > 0)) {
+    const isi = (bacaBila(`lab/${w.k}.json`) ?? []).map((x) => ({ ...x, w }))
+      .sort((a, b) => String(a.n).localeCompare(String(b.n)));
+    if (!isi.length) continue;
+    const jalan = `lab/di-${w.k}/`;
+    const tanya = [
+      { t: `Ada berapa laboratorium penguji terakreditasi di ${w.w}?`,
+        j: `${isi.length} laboratorium yang ruang lingkupnya menyentuh usaha tani${cacahWilayah(w, 'r') ? `, ${cacahWilayah(w, 'r')} di antaranya bisa mengukur residu pestisida` : ', dan tidak satu pun bisa mengukur residu pestisida'}.` },
+    ];
+    const { html: htmlTanya, ld: ldTanya } = blokTanya(tanya);
+    simpan(`${jalan}index.html`, halaman({
+      jalan,
+      judul: `Laboratorium penguji terakreditasi di ${w.w} — ${isi.length} lembaga`,
+      deskripsi: `${isi.length} laboratorium penguji terakreditasi KAN di ${w.w} yang ruang lingkupnya menyentuh usaha tani, beserta kemampuan dan masa berlaku akreditasinya.`,
+      jalur: 'Laboratorium',
+      h1: `Laboratorium penguji di ${w.w}`,
+      lede: `<strong>${n(isi.length)}</strong> laboratorium terakreditasi yang lingkupnya menyentuh usaha tani${cacahWilayah(w, 'r') ? `, <strong>${n(cacahWilayah(w, 'r'))}</strong> di antaranya bisa mengukur residu pestisida` : ''}.`,
+      isi: `
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Laboratorium</th><th>Bisa menguji</th><th>Nomor</th><th>Berlaku sampai</th></tr></thead>
+      <tbody>${isi.map((x) => `
+        <tr><td><a href="/${teks(jalanLab(x))}">${teks(x.n)}</a></td><td>${teks(bisaBaca(x).join(', ') || '—')}</td><td class="angka">${teks(x.no)}</td><td class="angka">${teks(x.sd ?? '—')}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>
+  ${htmlTanya}
+  <p class="lain"><a href="/lab/">Cari menurut kemampuan →</a> · <a href="/beranda.html">Beranda</a></p>`,
+      ld: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          { '@type': 'ItemList', numberOfItems: isi.length, itemListElement: isi.slice(0, 100).map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.n, item: mutlak(jalanLab(x)) })) },
+          remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Laboratorium', jalan: 'lab/' }, { nama: w.w, jalan }]),
+          ...(ldTanya ? [ldTanya] : []),
+        ],
+      },
+      batas: blokBatas({
+        sumber: [{ dari: 'lab', cakupan: `${isi.length} laboratorium di ${w.w}` }],
+        takDijawab: ['labTarif', 'labLingkupRingkas'],
+      }, jalan),
+    }));
+    urlTemplate.lab.push([jalan, ACUAN]);
+  }
+
+  // --- pintu utama ----------------------------------------------------------------------
+  {
+    const jalan = 'lab/';
+    const urutKemampuan = Object.keys(KEMAMPUAN_JALAN).filter((h) => (labKepala.cacah ?? {})[h]);
+    simpan(`${jalan}index.html`, halaman({
+      jalan,
+      judul: `Ke mana sampel tanah dan uji residu dikirim — ${semuaLab.length} laboratorium terakreditasi`,
+      deskripsi: `${semuaLab.length} laboratorium penguji terakreditasi KAN yang ruang lingkupnya menyentuh usaha tani, dicari menurut kemampuan lalu provinsi. Termasuk ${(labKepala.cacah ?? {}).r ?? 0} yang bisa mengukur residu pestisida.`,
+      jalur: 'Laboratorium',
+      h1: 'Laboratorium penguji terakreditasi',
+      lede: `<strong>${n(semuaLab.length)}</strong> laboratorium yang lingkupnya menyentuh usaha tani. Dicari menurut <strong>kemampuan</strong> lebih dulu, baru tempat.`,
+      isi: `
+  <h2 class="judul-bagian">Menurut yang bisa diuji</h2>
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Bisa menguji</th><th>Laboratorium</th></tr></thead>
+      <tbody>${urutKemampuan.map((h) => `
+        <tr><td><a href="/lab/${teks(KEMAMPUAN_JALAN[h])}/">${teks(ARTI[h])}</a></td><td class="angka">${n((labKepala.cacah ?? {})[h] ?? 0)}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>
+  <p class="bantuan">Hanya <strong>${n((labKepala.cacah ?? {}).r ?? 0)}</strong> laboratorium di seluruh Indonesia yang ruang lingkupnya menyebut residu pestisida.
+  Itu bukan kekosongan data — itu keadaannya, dan ia yang membuat batas maksimum residu jadi aturan tanpa alat ukur.</p>
+  <h2 class="judul-bagian">Menurut provinsi</h2>
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Provinsi</th><th>Laboratorium</th><th>Bisa uji residu</th></tr></thead>
+      <tbody>${(labKepala.wilayah ?? []).filter((w) => w.n > 0).map((w) => `
+        <tr><td><a href="/lab/di-${teks(w.k)}/">${teks(w.w)}</a></td><td class="angka">${n(w.n)}</td><td class="angka">${n(cacahWilayah(w, 'r'))}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>
+  <p class="lain"><a href="/beranda.html">Beranda</a></p>`,
+      ld: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          { '@type': 'ItemList', numberOfItems: urutKemampuan.length, itemListElement: urutKemampuan.map((h, i) => ({ '@type': 'ListItem', position: i + 1, name: ARTI[h], item: mutlak(`lab/${KEMAMPUAN_JALAN[h]}/`) })) },
+          remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Laboratorium', jalan }]),
+        ],
+      },
+      batas: blokBatas({
+        sumber: [{ dari: 'lab', cakupan: `${semuaLab.length} laboratorium beserta kemampuan dan provinsinya` }],
+        takDijawab: ['labLingkupRingkas', 'labTarif'],
+      }, jalan),
+    }));
+    urlTemplate.lab.push([jalan, ACUAN]);
+  }
+  angka.labHalaman = urlTemplate.lab.length;
+  angka.labSemua = semuaLab.length;
+  angka.labBarisDitahan = labBarisDitahan;
+  angka.labResidu = (labKepala.cacah ?? {}).r ?? 0;
+  angka.labKedaluwarsa = labKedaluwarsa;
+  angka.labTanpaLingkup = labTanpaLingkup;
+}
+
+// ---------------------------------------------------------------------------
+// Template 11 — balai penyuluhan: jalan keluar ketika keempat bentuk jawaban mentok
+// ---------------------------------------------------------------------------
+// Halaman ini satu-satunya di seluruh terbitan yang ujungnya BUKAN data, melainkan orang
+// yang bisa ditanya. Karena itu ia tidak berpura-pura punya peta: balai penyuluhan tidak
+// punya alamat maupun koordinat di sumbernya, dan yang menemukannya memang kecamatan,
+// bukan titik. Bagi yang tinggal di sana, itu cukup.
+//
+// SATU HALAMAN PER BALAI, BUKAN PER KECAMATAN
+// 519 balai membina lebih dari satu kecamatan. Satu halaman per kecamatan akan memecah
+// balai yang sama jadi beberapa URL yang masing-masing tampak berdiri sendiri, dan
+// pertanyaan "balai ini membina mana saja" jadi tidak terjawab di mana pun.
+//
+// NOL PENYULUH DITULIS, BUKAN DISEMBUNYIKAN
+// Balai yang ada gedungnya tetapi tidak ada orangnya bukan rekaman yang gagal — ia
+// keadaan yang justru perlu terbaca. Angka nol dicetak apa adanya, dengan kalimat yang
+// mengatakan apa artinya.
+const bppWilayah = bacaBila('bpp-wilayah.json');
+if (bppWilayah) {
+  const ACUAN_BPP = TARIKAN.bpp ?? '2026-08-23';
+  const bppVocab = new Map();
+  for (const b of bacaVocabNdjson('bpp/bpp.ndjson')) {
+    bppVocab.set(`${b.region?.regency ?? ''}|${(b.label?.id ?? '').toLowerCase()}`, b);
+  }
+  const jalanBpp = (b) => `bpp/${b.key}/`;
+  let bppNolPenyuluh = 0; let bppTakBerpasangan = 0;
+
+  for (const w of [...bppWilayah].sort((a, b) => a.k.localeCompare(b.k))) {
+    const isi = (bacaBila(`bpp/${w.k}.json`) ?? []).sort((a, b) => String(a.n).localeCompare(String(b.n)));
+    if (!isi.length) continue;
+    const [namaKab] = String(w.w).split(',');
+
+    // --- satu halaman per balai --------------------------------------------------------
+    const berpasangan = [];
+    for (const x of isi) {
+      const v = bppVocab.get(`${namaKab.trim()}|${String(x.n).toLowerCase()}`);
+      if (!v) { bppTakBerpasangan++; continue; }
+      berpasangan.push({ x, v });
+      const jalan = jalanBpp(v);
+      const orang = v.counts?.extension_workers ?? {};
+      const kosong = (orang.total ?? 0) === 0;
+      if (kosong) bppNolPenyuluh++;
+      const kec = v.serves ?? [];
+      const takBernama = v.counts?.districts_unnamed ?? 0;
+
+      const tanya = [
+        { t: `${x.n} membina kecamatan apa saja?`,
+          j: kec.length
+            ? `${kec.length} kecamatan: ${kec.join(', ')}.${takBernama ? ` Ditambah ${takBernama} kecamatan yang namanya tidak tercatat di sumber.` : ''}`
+            : 'Kecamatan binaannya tidak tercatat namanya di sumber.' },
+        { t: `Ada berapa penyuluh di ${x.n}?`,
+          j: kosong
+            ? 'Nol. Balai ini tercatat membina kecamatan tetapi tidak ada penyuluh yang terdaftar di dalamnya — angka nol di sini keadaan, bukan data yang belum diisi.'
+            : `${orang.total} orang: ${[[orang.pns, 'PNS'], [orang.p3k, 'P3K'], [orang.thl, 'THL'], [orang.swadaya, 'swadaya'], [orang.swasta, 'swasta']].filter(([v2]) => v2).map(([v2, l]) => `${v2} ${l}`).join(', ')}.` },
+        { t: `Di mana alamat ${x.n}?`,
+          j: meta?.tidakAda?.bppTanpaAlamat ?? 'Alamat balai tidak tercatat di sumber.' },
+      ];
+      const { html: htmlTanya, ld: ldTanya } = blokTanya(tanya);
+
+      simpan(`${jalan}index.html`, halaman({
+        jalan,
+        judul: `${x.n} — ${namaKab.trim()}, ${kec.length || takBernama} kecamatan binaan`,
+        deskripsi: `${x.n} di ${w.w}: ${kec.length ? `membina ${kec.join(', ')}` : 'kecamatan binaannya tidak bernama di sumber'}, ${v.counts?.farmer_groups ?? 0} kelompok tani, ${orang.total ?? 0} penyuluh.`,
+        jalur: `Penyuluhan · ${w.w}`,
+        h1: x.n,
+        lede: `Balai penyuluhan di <strong>${teks(w.w)}</strong>${kec.length ? `, membina ${n(kec.length)} kecamatan` : ''}. ${kosong ? '<strong>Nol penyuluh terdaftar.</strong>' : `<strong>${n(orang.total)}</strong> penyuluh.`}`,
+        isi: `
+  ${kosong ? `<div class="kartu peringatan">
+    <h2>Balai ini tidak punya penyuluh terdaftar</h2>
+    <p class="catatan">Ada balainya, tercatat membina ${teks(String(kec.length || takBernama))} kecamatan dan ${teks(n(v.counts?.farmer_groups ?? 0))} kelompok tani,
+    tetapi nol orang terdaftar di dalamnya. Yang bisa dituju dinas kabupaten yang menaunginya.</p>
+  </div>` : ''}
+  <div class="kartu">
+    <h2>Yang tercatat di SIMLUHTAN</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Kabupaten / kota</td><td>${teks(namaKab.trim())}</td></tr>
+          <tr><td>Provinsi</td><td>${teks(v.region?.province ?? '—')}</td></tr>
+          <tr><td>Kecamatan binaan</td><td class="angka">${n(v.counts?.districts ?? kec.length)}</td></tr>
+          <tr><td>Kelompok tani terbina</td><td class="angka">${n(v.counts?.farmer_groups ?? 0)}</td></tr>
+          ${v.supervising_office ? `<tr><td>Dinas yang menaungi</td><td>${teks(v.supervising_office)}</td></tr>` : ''}
+        </tbody>
+      </table>
+    </div>
+    <p class="catatan">${teks(meta?.tidakAda?.bppTanpaAlamat ?? '')}</p>
+  </div>
+  ${kec.length ? `
+  <h2 class="judul-bagian">${n(kec.length)} kecamatan binaan</h2>
+  <p class="daftar-kecamatan">${kec.map((k) => teks(k)).join(' · ')}</p>
+  ${takBernama ? `<p class="bantuan">Ditambah ${n(takBernama)} kecamatan yang namanya kosong di sumber. Tidak dinamai di sini, karena menamainya berarti menebak.</p>` : ''}` : ''}
+  <h2 class="judul-bagian">Penyuluh yang terdaftar</h2>
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Status</th><th>Orang</th></tr></thead>
+      <tbody>
+        <tr><td>PNS aktif</td><td class="angka">${n(orang.pns ?? 0)}</td></tr>
+        <tr><td>P3K</td><td class="angka">${n(orang.p3k ?? 0)}</td></tr>
+        <tr><td>THL (APBN &amp; APBD)</td><td class="angka">${n(orang.thl ?? 0)}</td></tr>
+        <tr><td>Swadaya</td><td class="angka">${n(orang.swadaya ?? 0)}</td></tr>
+        <tr><td>Swasta</td><td class="angka">${n(orang.swasta ?? 0)}</td></tr>
+        <tr><td><strong>Seluruhnya</strong></td><td class="angka"><strong>${n(orang.total ?? 0)}</strong></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="catatan">${teks(meta?.tidakAda?.penyuluhTanpaNama ?? LUBANG_LOKAL.penyuluhTanpaNama)}</p>
+  ${(v.name_variants ?? []).length > 1 ? `<p class="catatan">Ejaan nama balai ini di sumber: ${teks((v.name_variants ?? []).join(' · '))}. Yang tercetak sebagai judul bentuk yang sudah diseragamkan; ejaan aslinya tidak ditimpa.</p>` : ''}
+  ${htmlTanya}
+  <p class="lain">
+    <a href="/penyuluhan/${teks(w.k)}/">Balai lain di ${teks(w.w)} →</a> ·
+    <a href="/penyuluhan/">Semua kabupaten</a> ·
+    <a href="/beranda.html">Beranda</a>
+  </p>`,
+        ld: {
+          '@context': 'https://schema.org',
+          '@graph': [
+            {
+              '@type': 'GovernmentOrganization', name: x.n,
+              areaServed: kec.map((k) => ({ '@type': 'AdministrativeArea', name: k })),
+              ...(v.supervising_office ? { parentOrganization: { '@type': 'GovernmentOrganization', name: v.supervising_office } } : {}),
+              address: { '@type': 'PostalAddress', addressRegion: v.region?.province, addressLocality: namaKab.trim(), addressCountry: 'ID' },
+            },
+            remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Penyuluhan', jalan: 'penyuluhan/' }, { nama: w.w, jalan: `penyuluhan/${w.k}/` }, { nama: x.n, jalan }]),
+            ...(ldTanya ? [ldTanya] : []),
+          ],
+        },
+        batas: blokBatas({
+          sumber: [{ dari: 'bpp', cakupan: 'satu balai beserta kecamatan binaan dan cacahan penyuluhnya' }],
+          takDijawab: ['bppTanpaAlamat', 'penyuluhTanpaNama'],
+        }, jalan),
+      }));
+      urlTemplate.bpp.push([jalan, ACUAN_BPP]);
+    }
+
+    // --- pintu kabupaten ---------------------------------------------------------------
+    const jalanKab = `penyuluhan/${w.k}/`;
+    const totalOrang = isi.reduce((a, x) => a + (x.p ?? 0), 0);
+    const totalPoktan = isi.reduce((a, x) => a + (x.g ?? 0), 0);
+    const tanyaKab = [
+      { t: `Ada berapa balai penyuluhan di ${w.w}?`,
+        j: `${isi.length} balai, membina ${w.kec} kecamatan, dengan ${totalOrang} penyuluh dan ${totalPoktan} kelompok tani terbina.` },
+      { t: `Kalau aplikasi ini tidak cukup, saya tanya siapa?`,
+        j: `Balai penyuluhan di kecamatan Anda. Daftarnya di halaman ini beserta kecamatan yang dibina masing-masing. ${meta?.tidakAda?.bppTanpaAlamat ?? ''}` },
+    ];
+    const { html: htmlTanyaKab, ld: ldTanyaKab } = blokTanya(tanyaKab);
+
+    simpan(`${jalanKab}index.html`, halaman({
+      jalan: jalanKab,
+      judul: `Balai penyuluhan pertanian di ${w.w} — ${isi.length} balai, ${w.kec} kecamatan`,
+      deskripsi: `${isi.length} balai penyuluhan pertanian (BPP) di ${w.w} beserta kecamatan yang dibina masing-masing, ${totalOrang} penyuluh dan ${totalPoktan} kelompok tani terbina.`,
+      jalur: 'Penyuluhan',
+      h1: `Balai penyuluhan di ${w.w}`,
+      lede: `<strong>${n(isi.length)}</strong> balai membina <strong>${n(w.kec)}</strong> kecamatan. Cari kecamatan Anda di kolom kedua.`,
+      isi: `
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Balai</th><th>Kecamatan binaan</th><th>Penyuluh</th><th>Poktan</th></tr></thead>
+      <tbody>${isi.map((x) => {
+        const v = bppVocab.get(`${namaKab.trim()}|${String(x.n).toLowerCase()}`);
+        const nama = v ? `<a href="/${teks(jalanBpp(v))}">${teks(x.n)}</a>` : teks(x.n);
+        return `
+        <tr><td>${nama}</td><td>${teks((x.k ?? []).join(', ') || '—')}</td><td class="angka">${n(x.p ?? 0)}</td><td class="angka">${n(x.g ?? 0)}</td></tr>`;
+      }).join('')}</tbody>
+    </table>
+  </div>
+  <p class="catatan">${teks(meta?.tidakAda?.bppTanpaAlamat ?? '')}</p>
+  ${htmlTanyaKab}
+  <p class="lain"><a href="/penyuluhan/">Kabupaten lain →</a> · <a href="/beranda.html">Beranda</a></p>`,
+      ld: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          { '@type': 'ItemList', numberOfItems: isi.length, itemListElement: isi.slice(0, 100).map((x, i) => ({ '@type': 'ListItem', position: i + 1, name: x.n })) },
+          remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Penyuluhan', jalan: 'penyuluhan/' }, { nama: w.w, jalan: jalanKab }]),
+          ...(ldTanyaKab ? [ldTanyaKab] : []),
+        ],
+      },
+      batas: blokBatas({
+        sumber: [{ dari: 'bpp', cakupan: `${isi.length} balai di ${w.w}` }],
+        takDijawab: ['bppTanpaAlamat', 'penyuluhTanpaNama'],
+      }, jalanKab),
+    }));
+    urlTemplate.bpp.push([jalanKab, ACUAN_BPP]);
+    void berpasangan;
+  }
+
+  // --- pintu utama penyuluhan -------------------------------------------------------------
+  {
+    const jalan = 'penyuluhan/';
+    const perProvinsi = new Map();
+    for (const w of bppWilayah) {
+      const prov = String(w.w).split(',').slice(1).join(',').trim() || '(tanpa provinsi)';
+      if (!perProvinsi.has(prov)) perProvinsi.set(prov, []);
+      perProvinsi.get(prov).push(w);
+    }
+    const totalBalai = bppWilayah.reduce((a, w) => a + w.n, 0);
+    const totalKec = bppWilayah.reduce((a, w) => a + w.kec, 0);
+    simpan(`${jalan}index.html`, halaman({
+      jalan,
+      judul: `Balai penyuluhan pertanian — ${totalBalai} balai di ${bppWilayah.length} kabupaten`,
+      deskripsi: `Daftar balai penyuluhan pertanian (BPP) se-Indonesia menurut kabupaten/kota: ${totalBalai} balai membina ${totalKec} kecamatan. Jalan keluar ketika data tidak lagi cukup — ada orangnya yang bisa ditanya.`,
+      jalur: 'Penyuluhan',
+      h1: 'Balai penyuluhan pertanian',
+      lede: `<strong>${n(totalBalai)}</strong> balai membina <strong>${n(totalKec)}</strong> kecamatan. Ini yang dituju ketika jawaban di layar tidak lagi cukup.`,
+      isi: `
+  <div class="kartu">
+    <h2>Kenapa halaman ini ada</h2>
+    <p class="catatan">Registri bisa mengatakan apa yang terdaftar dan apa yang tertulis di label. Yang tidak bisa
+    ia katakan: apakah anjuran itu cocok untuk lahan Anda, musim ini. Untuk itu ada orangnya — dan halaman ini
+    yang memberi tahu di mana.</p>
+  </div>
+  ${[...perProvinsi.entries()].sort((a, b) => a[0].localeCompare(b[0])).map(([prov, daftar]) => `
+  <h2 class="judul-bagian">${teks(prov)}</h2>
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Kabupaten / kota</th><th>Balai</th><th>Kecamatan</th></tr></thead>
+      <tbody>${daftar.sort((a, b) => String(a.w).localeCompare(String(b.w))).map((w) => `
+        <tr><td><a href="/penyuluhan/${teks(w.k)}/">${teks(String(w.w).split(',')[0])}</a></td><td class="angka">${n(w.n)}</td><td class="angka">${n(w.kec)}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>`).join('')}
+  <p class="lain"><a href="/beranda.html">Beranda</a></p>`,
+      ld: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          { '@type': 'ItemList', numberOfItems: bppWilayah.length, itemListElement: bppWilayah.slice(0, 100).map((w, i) => ({ '@type': 'ListItem', position: i + 1, name: w.w, item: mutlak(`penyuluhan/${w.k}/`) })) },
+          remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Penyuluhan', jalan }]),
+        ],
+      },
+      batas: blokBatas({
+        sumber: [{ dari: 'bpp', cakupan: `${totalBalai} balai di ${bppWilayah.length} kabupaten/kota` }],
+        takDijawab: ['bppTanpaAlamat', 'penyuluhTanpaNama'],
+      }, jalan),
+    }));
+    urlTemplate.bpp.push([jalan, ACUAN_BPP]);
+  }
+  angka.bppHalaman = urlTemplate.bpp.length;
+  angka.bppNolPenyuluh = bppNolPenyuluh;
+  angka.bppTakBerpasangan = bppTakBerpasangan;
+}
+
 // llms.txt — mesin jawaban dianggap pembaca kelas satu (docs/19 §8). Yang diminta cuma
 // atribusi, dan itu memang syarat lisensinya.
 simpan('llms.txt', `# Open Protocols
@@ -2570,6 +3157,8 @@ console.log(`  baris badan ditahan: ${n(barisBadanDitahan)} baris produk & varie
 console.log(`  harga di luar misi : ${n(hargaLuar)} seri tidak diterbitkan sama sekali — baja ringan, besi beton, dan sebangsanya`);
 console.log(`  komentar ditahan   : ${n(komentarDitahan)} komentar seri tidak diterbitkan karena ditulis model atau tidak lolos pemeriksa`);
 console.log(`  wilayah toko gugur : ${n(wilayahGugur)} dari ${n(wilayahSemua.length)} wilayah di bawah ${BATAS_TOKO_WILAYAH} entri beralamat — ${n(tokoTanpaAlamat)} titik tanpa alamat di luar nama kabupaten`);
+console.log(`  lab residu         : ${n(angka.labResidu ?? 0)} dari ${n(angka.labSemua ?? 0)} laboratorium bisa mengukur residu pestisida${angka.labKedaluwarsa ? `; ${n(angka.labKedaluwarsa)} akreditasinya sudah lewat masa berlaku per tanggal tarikan` : ''}${angka.labTanpaLingkup ? `; ${n(angka.labTanpaLingkup)} tanpa ringkasan lingkup` : ''}${angka.labBarisDitahan ? `; ${n(angka.labBarisDitahan)} baris di luar ${'250'} per pintu kemampuan, ditunjuk ke pintu provinsinya` : ''}`);
+console.log(`  bpp nol penyuluh   : ${n(angka.bppNolPenyuluh ?? 0)} balai punya kecamatan binaan tetapi nol penyuluh terdaftar${angka.bppTakBerpasangan ? `; ${n(angka.bppTakBerpasangan)} baris indeks tidak berpasangan dengan kosakatanya dan dilewati` : ''}`);
 console.log(`  bahan sediaan tipis: ${n(bahanSediaanTipis)} bahan boleh-tanpa-alasan-tanpa-resep, terbit tapi noindex`);
 const tinjauCacah = EDITORIAL.reduce((a, e) => ({ ...a, [e.tinjau.keadaan]: (a[e.tinjau.keadaan] ?? 0) + 1 }), {});
 console.log(`  editorial          : ${n(EDITORIAL.length)} tulisan + 1 induk — ${n(tinjauCacah.ditinjau ?? 0)} ditinjau, ${n(tinjauCacah.belum ?? 0)} belum, ${n(tinjauCacah.kedaluwarsa ?? 0)} tinjauannya gugur; yang belum lolos terbit tapi noindex`);
