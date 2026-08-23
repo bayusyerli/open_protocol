@@ -23,6 +23,7 @@
 import { muatMeta, bacaMeta, teks } from './pustaka.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
+import { catatLubang, LUBANG } from './ukur.js';
 
 pasangTombolTema();
 document.getElementById('tanpaJs')?.remove();
@@ -201,6 +202,10 @@ function hitungTakar() {
       ${kali < 1 ? `<p class="catatan"><strong>Kurang dari satu takaran penuh.</strong> Menakar sebagian isi tutup dengan mata adalah tebakan; kalau bisa, campur untuk beberapa tangki sekaligus supaya angkanya jadi takaran utuh, atau pakai alat yang lebih kecil.</p>` : ''}`;
     return;
   }
+  // B4: yang menakar tanpa alat terukur menabrak lubang yang sama berulang kali, dan
+  // registri memang tidak akan pernah memuatnya — yang bisa menutupnya panduan, bukan
+  // tarikan data. Dicatat supaya besarnya kelihatan.
+  catatLubang('takaran', LUBANG.takaranRumahTangga);
   el.hasilTakar.innerHTML = `
     <div class="kartu peringatan">
       <h2>Takaranmu belum diukur, jadi belum ada satu angka</h2>

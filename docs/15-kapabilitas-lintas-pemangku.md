@@ -328,13 +328,33 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | B1 | **Komponen "batas jawaban"** — tiap layar menyebut tingkat bukti, tanggal, sumber, dan apa yang tidak diketahuinya | semua | apakah jawabannya dipercaya | **selesai** 23 Agustus 2026 — `app/batas.js`, dipakai ketujuh layar | **selesai** |
 | B2 | Kartu keselamatan aplikasi — APD, cara aman, gejala keracunan, kontak darurat | petani, buruh tani | keselamatan jiwa | sebagian ada; **PHI 0 dari 23.058** | **BANGUN** bagian non-PHI; PHI **TUNDA** |
 | B3 | **Sanggahan terbuka** — siapa pun boleh menantang satu fakta; jejaknya publik dan bernama | agronom, penyuluh, principal | mutu korpus | belum ada | **BANGUN** |
-| B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | belum ada; nyaris gratis | **BANGUN** |
+| B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | **selesai** 23 Agustus 2026 — enam lubang tercacah di `app/ukur.js`, terbaca di `ukur.html` | **selesai** |
 | B5 | Ringkasan berbasis model bahasa di atas registri | semua | kecepatan paham | terlalu dini — melanggar syarat ke-4 | **TUNDA** |
 
 > **B4 mengubah biaya riset menjadi keluaran produk.** Setiap "tidak sanggup" yang
 > ditampilkan enam jalur hari ini menghilang begitu layar ditutup. Dicatat, ia menjadi
 > peta permintaan data yang tidak bisa dibeli dari mana pun — dan itulah yang menentukan
 > registri mana yang layak ditarik berikutnya.
+
+> **Dibangun 23 Agustus 2026**, dan bentuknya ditentukan satu tabrakan antar-dokumen.
+> [11-instrumentasi.md](11-instrumentasi.md) bagian 3 sudah menyatakan **isi pencarian
+> sengaja tidak diukur** — jejak minat bisa mengenali orang di desa kecil. B4 versi kaya,
+> yang mencatat kuerinya sendiri, akan mencabut baris itu.
+>
+> Tabrakannya ternyata semu: yang diminta dokumen ini *"registri **mana** yang layak
+> ditarik berikutnya"*, dan itu pertanyaan **kategori**. Jadi B4 dibangun sebagai
+> **pencacah lubang yang sudah dinyatakan** — enam kunci yang sama dengan `meta.tidakAda`,
+> yang sudah tercetak di tiap layar lewat blok batas jawaban **B1**. B1 menyatakan
+> lubangnya; B4 menghitung berapa kali ia benar-benar ditabrak, lalu mengurutkannya
+> menurut frekuensi alih-alih menurut tebakan tim.
+>
+> Versi yang mencatat kueri **tidak** dibangun, dan tanda tangan `catatLubang(sumber,
+> kunci)` sengaja tidak menyediakan tempat untuknya. Mencabut baris di dokumen 11 adalah
+> keputusan pemilik repositori, bukan akibat sampingan dari membangun sebuah fitur.
+>
+> Satu lubang sengaja masuk daftar walau bukan permintaan data: `takaranRumahTangga`.
+> Registri tidak akan pernah memuat ukuran tutup botol siapa pun — kalau ia sering
+> tertabrak, yang perlu ditulis **panduan**, dan mengetahui itu sama berharganya.
 >
 > **B5 ditunda karena syarat ke-4, bukan karena teknologi.** Asisten yang selalu menjawab
 > tidak punya cara salahnya ketahuan. Pesaing terdekat di pintu masuk justru berbentuk itu
@@ -570,7 +590,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 | 2 | **A3** kamus nama lokal — **sisi OPT selesai** | Menentukan apakah jalur 1 bisa dipakai orang yang belum tahu jawabannya |
 | 3 | **C2** keaslian & anti-palsu — lewat **kandungan**, bukan nomor — **sisi pupuk selesai** | Nilai tertinggi per biaya, dan kini melacak perilaku yang sudah terjadi |
 | 4 | **D4 + D5** kalibrasi & takaran — **selesai** | Termurah; menyentuh keselamatan; tidak butuh data baru |
-| 5 | **B4** antrean pertanyaan tak terjawab | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
+| 5 | **B4** antrean pertanyaan tak terjawab — **selesai** | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
 | 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
 | 7 | **A5** luring penuh | Indeks sudah ≤48 KB — separuh jalan |
 | 8 | **C7** direktori layanan | Fondasi toko tani sudah ada |

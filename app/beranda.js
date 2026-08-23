@@ -11,6 +11,7 @@
 
 import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, teks, JENIS } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
+import { catatLubang, LUBANG } from './ukur.js';
 import { pasangBatas } from './batas.js';
 
 const el = {
@@ -108,6 +109,9 @@ function gambar(nama, bahan, gejala, lokal, kueri) {
   // Tingkat buktinya disebut di judul kelompoknya, bukan disembunyikan: kamusnya dari
   // satu jawaban lapangan, dan layar tidak boleh terdengar lebih yakin daripada itu.
   if (lokal.length) {
+    // B4: nama yang dikenal tetapi rujukannya belum ada adalah permintaan data yang
+    // paling langsung — seseorang benar-benar memakainya, dan kamusnya belum sampai.
+    for (const x of lokal) if (!x.ke.length) catatLubang('beranda', LUBANG.namaLokalTakTerpetakan);
     bagian.push(kelompok(
       `${lokal.length} nama lokal cocok`,
       'dari satu jawaban lapangan, <strong>belum ditinjau</strong> — dan belum diketahui dipakai di daerah mana',
@@ -153,6 +157,11 @@ function gambar(nama, bahan, gejala, lokal, kueri) {
 }
 
 async function gambarKosong(kueri) {
+  // B4: dua lubang sekaligus tertabrak — nama yang dicari tidak punya padanan
+  // terdaftar, dan gejalanya di luar sepuluh yang terkurasi. Yang dicatat cacahnya,
+  // bukan kuerinya; lihat docs/11 bagian 3.
+  catatLubang('beranda', LUBANG.namaDagang);
+  catatLubang('beranda', LUBANG.gejalaOpt);
   el.hasil.innerHTML = `
     <div class="pesan">
       <h2>Tidak ada yang cocok dengan “${teks(kueri)}”</h2>

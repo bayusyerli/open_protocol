@@ -12,7 +12,7 @@
  */
 
 import { ambil, muatMeta, cari, gambarHasil, teks, pasangKembali } from './pustaka.js';
-import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -301,6 +301,8 @@ async function buka(id, pecahan) {
     }
 
     catatJawab(3, h ? UKUR.isi : UKUR.takSanggup);
+    // B4: komposisinya kosong di registri, jadi rupiah per kg hara memang tidak ada.
+    if (!h) catatLubang('3', LUBANG.haraSediaan);
     pasangKembali(el.rincian, { fokus: el.q, sesudah: () => { kini = null; } });
   } catch (e) {
     catatJawab(3, UKUR.gagal);
@@ -322,11 +324,11 @@ el.q.addEventListener('input', () => {
   jeda = setTimeout(jalankan, 180);
 });
 
-const kosongHtml = (kueri) => `
+const kosongHtml = (kueri) => (catatLubang('3', LUBANG.namaDagang), `
   <p class="kosong">
     Tidak ada pupuk terdaftar yang namanya memuat <strong>${teks(kueri)}</strong>.
     Nama di karung sering berbeda dari nama terdaftarnya, dan pemetaannya belum ada.
-  </p>`;
+  </p>`);
 
 async function jalankan() {
   const kueri = el.q.value.trim();

@@ -19,6 +19,7 @@
  */
 
 import { ambil, bacaMeta, teks } from './pustaka.js';
+import { catatLubang, LUBANG } from './ukur.js';
 
 // Ketujuh belas hara registri. Tertutup dan pendek, jadi bisa jadi daftar pilihan —
 // beda dari bahan aktif pestisida yang 1.706 dan menuntut pencarian sendiri.
@@ -111,6 +112,10 @@ function bacaFormulir() {
 const namaHara = (kode) => HARA.find(([k]) => k === kode)?.[1] ?? `Hara ${kode}`;
 
 function gambarKosong(bagian, basis) {
+  // B4: kandungan yang tidak cocok dengan satu pun pendaftaran. Ini permintaan data
+  // sekaligus sinyal lain — registri belum tentu lengkap, dan 28,7% pupuk tidak
+  // berkomposisi sama sekali. Yang dicatat cacahnya, bukan komposisinya.
+  catatLubang('2', LUBANG.kandunganTakTerdaftar);
   return `
     <div class="kartu peringatan">
       <h2>Tidak ada pupuk terdaftar dengan kandungan itu</h2>

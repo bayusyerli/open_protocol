@@ -1294,6 +1294,10 @@ const meta = {
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',
+    namaLokalTakTerpetakan:
+      'Sebagian nama lokal sudah terdengar tetapi belum bisa ditautkan ke OPT mana pun — entah calonnya bertabrakan, entah rujukannya memang di luar sepuluh OPT terkurasi. Namanya tetap tercatat supaya pencarian tidak menjawab nol, tetapi layar tidak bisa membukakan apa pun untuknya.',
+    kandunganTakTerdaftar:
+      'Kandungan yang tidak cocok dengan satu pun pendaftaran tidak membuktikan apa pun sendirian. Tiga hal menjelaskannya sekaligus: angkanya salah baca, produknya terdaftar dengan kandungan sedikit berbeda, atau memang tidak terdaftar. Registri juga tidak lengkap — 28,7% pupuk tidak berkomposisi sama sekali.',
     takaranRumahTangga:
       'Tidak ada satu pun ukuran baku untuk tutup botol, sendok, atau gelas, dan registri tidak memuatnya. Tutup botol yang berbeda berselisih dua sampai empat kali lipat, jadi menyebut "satu tutup" sebagai takaran berarti mengarang angka yang bisa melipatgandakan dosis. Yang bisa dilakukan layar hanya menghitung dari ukuran yang diukur sendiri pemakainya.',
     isiKarung:

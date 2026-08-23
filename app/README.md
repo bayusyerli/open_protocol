@@ -197,6 +197,34 @@ kenapa" memang berbeda di tiap jalur.
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
 
+### Antrean pertanyaan tak terjawab — B4
+
+Tiap "tidak sanggup" yang ditampilkan hari ini menghilang begitu layar ditutup. Dicatat,
+ia jadi peta permintaan data. Tercacah di `ukur.js`, terbaca di `ukur.html`.
+
+- **B1 menyatakan lubangnya; B4 menghitung berapa kali ia ditabrak.** Keenam kunci sama
+  persis dengan `meta.tidakAda`, yang sudah tercetak di tiap layar lewat blok batas
+  jawaban. Daftar lubang yang diurutkan menurut kepentingan sudah ada dan urutannya
+  tebakan; B4 mengurutkannya menurut **seberapa sering orang benar-benar menabraknya**.
+- **Cacahnya saja, tidak pernah kata yang diketik.**
+  [`docs/11`](../docs/11-instrumentasi.md) bagian 3 menyatakan isi pencarian sengaja
+  tidak diukur — jejak minat bisa mengenali orang di desa kecil — dan B4 tidak
+  mengubahnya. Tanda tangan `catatLubang(sumber, kunci)` sengaja tidak menyediakan tempat
+  untuk teks, supaya penambahannya tidak bisa terjadi tanpa disadari.
+- **Sumbernya nama layar, bukan nomor jalur.** Beranda ikut mencatat tanpa diberi nomor
+  karangan, jadi tabel per jalur di `docs/11` tidak berubah — batas yang sama yang
+  membuat beranda tidak ikut terinstrumentasi sejak awal.
+- **`LUBANG` wajib berisi tepat yang dipanggil layar.** Kunci yang tidak terdaftar
+  ditolak diam-diam oleh `catatLubang()`, dan lubang yang gagal dicatat tanpa suara
+  adalah kebalikan dari gunanya B4. Kecocokan keduanya diperiksa saat membangun.
+- **Satu lubang bukan permintaan data, dan tetap dicatat.** Registri tidak akan pernah
+  memuat ukuran tutup botol siapa pun; kalau `takaranRumahTangga` sering tertabrak, yang
+  perlu ditulis **panduan**. Mengetahui itu sama berharganya dengan mengetahui registri
+  mana yang perlu ditarik.
+- **Tidak ada yang diberi tahu.** Antrean tinggal di peranti yang sama, ikut terhapus
+  oleh tombol yang sama, dan tidak pernah menyentuh jaringan. Ia berguna kalau dan hanya
+  kalau diserahkan atas permintaan.
+
 ### Kalibrasi & takaran — D4 dan D5
 
 `takaran.html`. Dua kapabilitas termurah yang paling langsung menyentuh keselamatan, dan

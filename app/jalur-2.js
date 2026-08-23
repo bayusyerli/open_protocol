@@ -15,7 +15,7 @@
 import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali } from './pustaka.js';
 import { layarVarietas } from './varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
-import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
+import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
 import { pasangKandungan } from './kandungan.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
@@ -252,12 +252,12 @@ el.q.addEventListener('input', () => {
   jeda = setTimeout(jalankan, 180);
 });
 
-const kosongHtml = (kueri) => `
+const kosongHtml = (kueri) => (catatLubang('2', LUBANG.namaDagang), `
   <p class="kosong">
     Tidak ada nama terdaftar yang memuat <strong>${teks(kueri)}</strong>.
     Itu <em>bukan</em> berarti produknya tidak terdaftar — nama di kemasan sering
     berbeda dari nama terdaftarnya, dan pemetaannya belum ada.
-  </p>`;
+  </p>`);
 
 async function jalankan() {
   const kueri = el.q.value.trim();
