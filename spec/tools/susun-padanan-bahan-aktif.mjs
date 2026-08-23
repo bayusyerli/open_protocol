@@ -38,6 +38,11 @@
 //   deklarasi-setara       klausa "setara dengan X" pada tulisan itu sendiri
 //   deklarasi-setara-transitif  klausa itu ada pada tulisan lain yang nama kirinya sama
 //   gugus-dipelajari       gugus garam/ester yang diajarkan klausa setara di tempat lain
+//   gugus-dikurasi         counter-ion/gugus ester yang tidak pernah diajarkan satu pun
+//                          klausa setara, dikurasi tangan di GUGUS_TANGAN dengan alasan
+//                          per baris. Bukan padanan nama: ia hanya menyatakan rentang
+//                          token mana yang counter-ion, dan nama induknya tetap wajib
+//                          datang dari deklarasi registri
 //   ejaan                  pelipatan ortografis ke nama yang sudah dideklarasikan registri
 //   ejaan-arah             dua ejaan registri untuk bahan yang sama; yang internasional
 //                          dipilih karena memuat huruf sumber yang ejaan Indonesia ganti
@@ -516,6 +521,74 @@ for (const o of daftar) {
     if (gg) catatGugus(gg, induk, o.n, o.k);
   }
 }
+// Gugus yang TIDAK pernah diajarkan satu pun klausa setara, dan karena itu dikurasi
+// tangan. Sebagian counter-ion memang tidak pernah kebetulan berada pada tulisan yang
+// membawa klausa "setara dengan" — dan akibatnya terlihat pada kueri sungguhan yang
+// pertama dijalankan: dikuat muncul sebagai DUA identitas, "dikuat dibromida" di sebelah
+// "dikuat diklorida", karena hanya yang kedua punya klausa yang mengajarkan gugusnya.
+// Kalau daftar larangan menyebut "dikuat" saja, yang pertama lolos tanpa satu pun tanda.
+//
+// Yang TIDAK boleh dilakukan untuk menutupnya: melonggarkan pencocokan — menambah
+// pelipatan ortografis, ambang kemiripan, atau pemangkasan sufiks otomatis. Ketiganya
+// akan menyatukan hal yang seharusnya terpisah, dan diam-diam. Yang dilakukan di sini
+// tabel tangan, satu baris satu keputusan, tiap baris membawa alasannya sendiri supaya
+// bisa DIBANTAH SATU PER SATU — pola yang sama dengan GLOSA_DITOLAK di atas.
+//
+// Isi tabel ini bukan padanan nama dan bukan klaim tentang bahan induknya. Ia cuma satu
+// klaim sempit: rentang token ini menamai counter-ion atau alkohol esternya, bukan bagian
+// dari nama induknya. Nama internasional induknya tetap hanya boleh datang dari deklarasi
+// registri lewat `anchor`; kalau registri tak pernah menuliskannya, `induk.nama` tetap
+// null. Faktor kesetaraan pun tidak ikut lahir dari sini — ia tetap hanya dari deklarasi
+// registri, karena tabel ini tidak membawa satu pun angka.
+//
+// Yang SENGAJA TIDAK dimasukkan, beserta alasannya, ada di GUGUS_DITOLAK di bawahnya.
+const GUGUS_TANGAN = new Map([
+  ['hidroklorida', ['garam', 'Garam asam klorida. Kata ini menamai counter-ion seutuhnya (HCl) dan tidak pernah jadi bagian nama bahan mana pun di registri: seluruh kemunculannya "kartap hidroklorida" dan "propamokarb hidroklorida". Ejaan hydrochloride, hydrochlorida, dan hidrokloride melipat ke bentuk yang sama, jadi satu baris ini menutup keempatnya.']],
+  ['oksiklorida', ['garam', 'Garam tembaga basa, Cu2(OH)3Cl. Registri sudah mengajarkan sendiri "hidroksida" dan "oksida" sebagai gugus dari induk "tembaga" lewat klausa setaranya; oksiklorida menempati posisi yang sama dan hanya kebetulan tidak pernah ditulis bersama klausa itu.']],
+  ['dibromida', ['garam', 'Dua ion bromida sebagai counter-ion. Kembarannya "diklorida" sudah diajarkan registri untuk induk yang sama persis — parakuat dan dikuat — sehingga yang membedakan hanya halogennya. Hanya muncul pada "dikuat dibromida" dan "diquat dibromida".']],
+  ['natrium', ['garam', 'Counter-ion logam alkali. Registri sudah mengajarkan "kalium" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama.']],
+  ['sodium', ['garam', 'Ejaan internasional dari natrium; registri memakai keduanya. Dipisah barisnya karena pelipatan ortografis memang tidak — dan tidak boleh — menyamakan keduanya: keduanya kata yang berlainan, kebetulan menamai ion yang sama.']],
+  ['sodium salt', ['garam', 'Tulisan yang menyebut sendiri bahwa ia garam ("salt"), jadi tidak ada yang perlu ditebak. Diperlukan tersendiri karena token "salt" menghalangi baris "sodium" mengenali sisanya sebagai induk.']],
+  ['na salt', ['garam', 'Sama dengan di atas; "Na" lambang unsur natrium, dan kata "salt" di sebelahnya yang menghilangkan keraguan. Hanya muncul pada "2,4-D Na Salt".']],
+  ['ipa', ['garam', 'Singkatan isopropilamina. Registri menuliskan gugus yang sama lengkap ("isopropil amina glifosat", 221 formulasi) maupun disingkat ("IPA glifosat", 54) untuk bahan yang sama; yang lengkap sudah diajarkan klausa setara, yang disingkat tidak pernah. Token "ipa" tidak muncul di tempat lain mana pun pada registri.']],
+  ['diamonium', ['garam', 'Dua ion amonium. Registri sudah mengajarkan "amonium" dan "monoamonium" sebagai gugus dari glifosat; diamonium sama, berbeda stoikiometri — dan justru karena stoikiometrinya berbeda ia tetap entitas tersendiri dengan faktor kesetaraannya sendiri.']],
+  ['dimethyl amine', ['garam', 'Ejaan Inggris dari "dimetil amina", yang sudah diajarkan registri sebagai gugus dari glifosat dan MCPA. Perlu barisnya sendiri karena akhiran -amine dan -amina tidak melipat ke bentuk yang sama, dan memang tidak boleh dipaksa melipat. Menutup pula "dimethylamine" tanpa spasi.']],
+  ['dma', ['garam', 'Singkatan dimetil amina yang dipakai registri pada "MCPA DMA" dan "2,4-D DMA". Bentuk panjangnya sudah diajarkan klausa setara pada tulisan lain untuk induk yang sama.']],
+  ['triisopropanolamine', ['garam', 'Counter-ion amina, seperti dimetil amina, hanya aminanya berbeda. Muncul pada "2,4-D triisopropanolamine" dan "Picloram triisopropanolamine".']],
+  ['meptil', ['ester', 'Ester 1-metilheptil. Registri sendiri sudah mengajarkan "meptil heptil ester" sebagai gugus ester dari fluroksipir; "meptil" bentuk pendeknya, dan seluruh kemunculan token ini di registri menempel pada fluroksipir. Ejaan meptyl dan mepthyl melipat ke bentuk yang sama.']],
+  ['meptil ester', ['ester', 'Sama, dengan kata "ester" ikut tertulis. Perlu barisnya sendiri karena kata itu menghalangi baris "meptil" mengenali sisanya sebagai induk.']],
+  ['1 metil heptil ester', ['ester', 'Gugus yang sama dieja panjang — 1-metilheptil ester adalah meptil. Registri menulis keduanya untuk fluroksipir yang sama.']],
+  ['1 mhe', ['ester', 'Singkatan "1-methylheptyl ester", gugus yang sama lagi. Hanya muncul pada "fluroksipir 1- MHE".']],
+  ['benzil', ['ester', 'Alkohol ester benzil; ejaan benzyl melipat ke bentuk yang sama. Dari 10 tulisan registri yang memuat token ini, 4 menempel pada florpirauksifen; 6 sisanya ("6 benzil adenin" dan golongan benzalkonium) memang memuat benzil sebagai bagian nama, tetapi di situ sisa tokennya bukan bahan terdaftar sehingga tidak akan pernah lolos jadi induk.']],
+  ['butil ester', ['ester', 'Tulisan yang menyebut sendiri bahwa ia ester. Dipakai 2,4-D. Hanya rentang yang memuat kata "ester" yang dimasukkan — "butil" telanjang tidak, karena pada "butil sihalofop" justru kepalanya yang bagian nama induk.']],
+  ['isobutil ester', ['ester', 'Sama, isomer bercabangnya. Muncul pada "2,4-D isobutil ester".']],
+  ['ibe', ['ester', 'Singkatan "isobutil ester" pada "2,4-D IBE"; bentuk panjangnya ada di baris di atas dan pada tulisan registri lain untuk induk yang sama.']],
+  ['2 etilheksil ester', ['ester', 'Ester 2-etilheksil, dengan kata "ester" tertulis. Dipakai 2,4-D. Ejaan "2-ethylhexyl ester" melipat ke bentuk yang sama.']],
+  ['etilheksil ester', ['ester', 'Sama, tanpa locant "2" yang kadang dihilangkan registri.']],
+]);
+
+// Gugus yang DIPERTIMBANGKAN dan ditolak. Berdiri di sini alih-alih hilang tanpa jejak,
+// karena tiap baris keputusan yang bisa dibantah — dan karena yang berikutnya membaca
+// berkas ini akan mengusulkannya lagi kalau alasannya tidak tertulis.
+const GUGUS_DITOLAK = new Map([
+  ['metil / etil / butil telanjang', 'Token alkil sama seringnya jadi BAGIAN nama induk seperti jadi gugus ester: "metil bromida" dan "metil eugenol" bukan ester dari bromida dan eugenol, dan pada "butil sihalofop" kepalanya yang gugus. Hanya rentang yang memuat kata "ester" atau alkil yang tak pernah jadi bagian nama (meptil, benzil) yang diterima.'],
+  ['asetat / acetate', 'Bermakna dua: counter-ion pada "tembaga asetat" dan "fentin asetat", tetapi alkohol pada asetat feromon seperti "z-11 heksadesenil asetat". Nama gugusnya sendiri tidak bisa memutuskan yang mana, jadi ia tidak boleh diputuskan di sini.'],
+  ['fosfida / phosphide', 'Aluminium, seng, dan magnesium fosfida bukan garam dari logamnya: yang bekerja fosfinnya, dan logamnya bagian dari bahan aktif itu sendiri. Menautkannya ke "aluminium" akan menyambungkan larangan ke unsur, bukan ke bahan.'],
+  ['dikolrida', 'Salah ketik registri untuk "diklorida" pada "parakuat dikolrida" (4 formulasi). Ia bukan gugus melainkan huruf tertukar, dan menampungnya di tabel gugus akan menjadikan tabel ini tempat penampungan salah ketik — persis pencocokan longgar yang berkas ini tolak. Tempatnya perbaikan ejaan di sumbernya.'],
+  ['isooctyl', 'Alkil telanjang tanpa kata "ester" pada "MCPA-Isooctyl"; ditolak dengan alasan yang sama seperti metil/etil/butil telanjang.'],
+  ['etilheksil telanjang', 'Sama: "2,4-D etilheksil" menyingkat esternya tanpa mengatakannya. Yang memuat kata "ester" diterima, yang tidak dibiarkan kosong.'],
+]);
+
+for (const [g, [jenis, alasan]] of GUGUS_TANGAN) {
+  const k = skel(g);
+  // Klausa setara yang mengajarkannya selalu menang: bukti registri di atas kurasi tangan.
+  if (gugusCalon.has(k)) continue;
+  // `jenis` dibaca dari tabel, bukan diterka ulang dari kata-katanya: singkatan seperti
+  // "IBE" dan "1 MHE" tidak memuat satu pun kata yang menandainya ester, dan menyerahkannya
+  // ke penerkaan akan mencatatnya sebagai garam.
+  gugusCalon.set(k, { gugus: g, jenis, n: 0, tangan: true, bukti: `Gugus dikurasi tangan, bukan dipelajari dari klausa setara. ${alasan}`, induk: new Set() });
+}
+
 const gugusResmi = [...gugusCalon.values()].sort((a, b) => tokenisasi(b.gugus).length - tokenisasi(a.gugus).length || b.n - a.n);
 // Nama yang boleh jadi calon induk: yang muncul sebagai tulisan tersendiri di registri,
 // yang sudah teranker, atau yang jadi KATA di dalam nama internasional yang teranker —
@@ -523,7 +596,27 @@ const gugusResmi = [...gugusCalon.values()].sort((a, b) => tokenisasi(b.gugus).l
 // menuliskannya di dalam "copper hydroxide" dan "copper oxide".
 const tokenTeranker = new Set();
 for (const a of anchor.values()) for (const t of tokenisasi(a.nama)) if (t.length > 3) tokenTeranker.add(skel(t));
-const bolehJadiInduk = (nama) => skelHadir.has(skel(nama)) || anchor.has(skel(nama)) || tokenTeranker.has(skel(nama));
+// Sumber keempat, dan yang paling kuat: nama yang REGISTRI SENDIRI sudah nyatakan sebagai
+// induk pada salah satu klausa setaranya. "Tembaga" tidak pernah berdiri sendiri sebagai
+// bahan terdaftar, tidak pernah dituliskan di dalam kurung, dan tidak pernah jadi kata di
+// dalam nama internasional mana pun — ketiga sumber di atas melewatkannya. Tetapi registri
+// menyatakan "tembaga hidroksida setara dengan tembaga", dan itu pernyataan registri bahwa
+// tembaga induk. Tanpa baris ini "tembaga oksiklorida" tidak punya induk yang boleh dituju,
+// padahal tembaga hidroksida dan tembaga oksida sudah punya.
+const indukTerdeklarasi = new Set(setara.map((s) => skel(s.induk)));
+const bolehJadiInduk = (nama) => skelHadir.has(skel(nama)) || anchor.has(skel(nama)) || tokenTeranker.has(skel(nama)) || indukTerdeklarasi.has(skel(nama));
+
+// Tulisan yang BERDIRI SENDIRI di registri, dikunci lewat lipatannya. Registri kadang
+// menulis induk yang sama dalam dua ejaan dan hanya salah satunya yang pernah didaftarkan
+// sebagai bahan tersendiri: "Diquat dibromida" memuat induk "diquat", sedangkan yang
+// terdaftar sendiri "Dikuat". Keduanya melipat ke bentuk yang sama — jadi bahan yang sama,
+// bukan bahan yang mirip. Selama registri tidak pernah menuliskan nama internasionalnya,
+// yang direkam sebagai nama induk adalah tulisan yang berdiri sendiri itu, bukan potongan
+// dari nama garamnya, supaya barisnya bertemu entitas zatnya alih-alih melahirkan induk
+// kedua yang cuma beda ejaan. Jalur klausa setara sudah melakukan persis ini lewat kunci
+// lipatannya; ini menyamakan jalur gugus dengannya, bukan melonggarkan pencocokannya.
+const berdiri = new Map();
+for (const o of daftar) { const s = skel(namaKiriDari(o)); if (!berdiri.has(s)) berdiri.set(s, namaKiriDari(o)); }
 
 // ===========================================================================
 // 5. Faktor kesetaraan
@@ -604,7 +697,7 @@ for (const o of daftar) {
   const ks = skel(kiri);
 
   // --- induk lewat klausa setara ---
-  let indukNama = null; let gugus = null; let dasarInduk = null; let kutipanInduk = null;
+  let indukNama = null; let gugus = null; let dasarInduk = null; let kutipanInduk = null; let jenisTangan = null;
   const punyaSetara = setaraByAnak.get(ks);
   if (punyaSetara?.length) {
     const pilih = [...punyaSetara].sort((a, b) => b.n - a.n)[0];
@@ -631,7 +724,8 @@ for (const o of daftar) {
           if (!sisa.length) continue;
           const calon = sisa.join(' ');
           if (!bolehJadiInduk(calon)) continue;
-          indukNama = calon; gugus = g.gugus; dasarInduk = 'gugus-dipelajari'; kutipanInduk = g.bukti;
+          indukNama = calon; gugus = g.gugus; dasarInduk = g.tangan ? 'gugus-dikurasi' : 'gugus-dipelajari'; kutipanInduk = g.bukti;
+          if (g.tangan) jenisTangan = g.jenis;
           break cari;
         }
       }
@@ -678,8 +772,12 @@ for (const o of daftar) {
 
   const namaInduk = (n) => {
     const a = anchor.get(skel(n));
-    const e = entitasDari(n);
-    const out = { nama_registri: n, nama: a?.nama ?? null };
+    // Hanya ketika registri TIDAK pernah menyebut nama internasionalnya: pakai tulisan
+    // induk yang berdiri sendiri di registri. Kalau namanya sudah ada, identitasnya sudah
+    // bertemu lewat `nama` dan ejaan `nama_registri` tidak perlu diusik.
+    const nr = !a && berdiri.has(skel(n)) ? berdiri.get(skel(n)) : n;
+    const e = entitasDari(nr);
+    const out = { nama_registri: nr, nama: a?.nama ?? null };
     if (!a) out.alasan_nama_kosong = 'Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.';
     if (a?.perlu_tinjau) out.perlu_tinjau = true;
     if (e) out.substance = ref(e);
@@ -687,7 +785,7 @@ for (const o of daftar) {
   };
 
   if (indukNama) {
-    const jenis = gugus ? jenisGugus(gugus) : 'garam';
+    const jenis = jenisTangan ?? (gugus ? jenisGugus(gugus) : 'garam');
     r.hubungan = jenis === 'ester' ? 'ester-dari' : 'garam-dari';
     r.bentuk = { jenis, ...(gugus ? { gugus } : {}) };
     const sd = gugus && tokenisasi(gugus).find((t) => STEREO.has(t));
@@ -851,7 +949,11 @@ if (process.argv.includes('--laporan')) {
   console.log('\n--- glosa registri per jenis ---');
   for (const [k, v] of [...jg].sort((a, b) => b[1] - a[1])) console.log(String(v).padStart(5), k);
   console.log('\n--- gugus yang dipelajari ---');
-  for (const g of gugusResmi) console.log(String(g.n).padStart(5), g.jenis.padEnd(6), JSON.stringify(g.gugus), '| induk:', [...g.induk].join(' ; '));
+  for (const g of gugusResmi.filter((x) => !x.tangan)) console.log(String(g.n).padStart(5), g.jenis.padEnd(6), JSON.stringify(g.gugus), '| induk:', [...g.induk].join(' ; '));
+  console.log('\n--- gugus yang dikurasi tangan ---');
+  for (const g of gugusResmi.filter((x) => x.tangan)) console.log('     ', g.jenis.padEnd(6), JSON.stringify(g.gugus));
+  console.log('\n--- gugus yang ditolak ---');
+  for (const [g, alasan] of GUGUS_DITOLAK) console.log('     ', JSON.stringify(g), '|', alasan.slice(0, 100));
   console.log('\n--- perlu tinjau ---');
   for (const r of rekaman.filter((x) => x.kanonik?.perlu_tinjau)) console.log('  kanonik', JSON.stringify(r.kunci), '->', JSON.stringify(r.kanonik.nama), '|', r.kanonik.kutipan);
   for (const r of rekaman.filter((x) => x.kesetaraan?.perlu_tinjau)) console.log('  faktor ', JSON.stringify(r.kunci), r.kesetaraan.faktor, '|', r.kesetaraan.catatan_tinjau.slice(0, 90));

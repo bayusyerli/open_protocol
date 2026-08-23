@@ -158,8 +158,17 @@ Dua hal yang perlu diketahui sebelum memakainya:
   kurung — `Sipermetrin (cypermethrin)`, `Terbutryn (ISO)` — dan menyatakan kesetaraan
   garamnya berikut angkanya. Tidak ada daftar nama umum milik pihak lain yang disalin,
   sehingga berkasnya bebas dipakai ulang seperti sisa repositori. Konsekuensinya:
-  **476 dari 1.593 kunci tetap kosong** karena registri tidak pernah menuliskan nama
+  **457 dari 1.593 kunci tetap kosong** karena registri tidak pernah menuliskan nama
   internasionalnya, dan itu dibiarkan kosong beralasan alih-alih ditebak.
+- **Satu lapis dikurasi tangan, dan ia menyebut dirinya sendiri.** Nama tetap hanya dari
+  registri, tetapi tidak setiap counter-ion kebetulan berada pada tulisan yang membawa
+  klausa "setara dengan" — `dibromida`, `hidroklorida`, `oksiklorida`, `natrium`, dan
+  belasan lain tidak pernah diajarkan satu pun klausa. Gugus itu didaftar tangan di
+  `GUGUS_TANGAN` pada penyusunnya, satu baris satu alasan, dan barisnya bertanda
+  `dasar.jenis = gugus-dikurasi` supaya bisa disaring keluar oleh yang hanya mau bukti
+  registri. Yang dikurasi hanya **rentang token mana yang counter-ion**; nama induknya
+  tetap wajib datang dari deklarasi registri, dan faktor kesetaraan tidak pernah lahir
+  dari sini.
 - **`synonyms` bukan tempatnya.** Di repositori ini `synonyms` berisi varian ejaan yang
   dipanen dari registri — salah ketik mesin. Menaruh kesetaraan kimia di sana membuatnya
   tidak bisa dibedakan dari salah ketik, dan menghapus arah hubungannya.

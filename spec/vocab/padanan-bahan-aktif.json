@@ -48,18 +48,18 @@
       "kunci": 1593,
       "formulasi": 7724,
       "per_hubungan": {
-        "belum-terpetakan": 476,
-        "varian-ejaan": 357,
-        "garam-dari": 304,
-        "sama-dengan": 188,
-        "nama-sistematis-belum-terpetakan": 137,
+        "belum-terpetakan": 457,
+        "garam-dari": 346,
+        "varian-ejaan": 325,
+        "sama-dengan": 177,
+        "nama-sistematis-belum-terpetakan": 136,
         "stereoisomer-dari": 57,
+        "ester-dari": 47,
         "organisme": 39,
-        "ester-dari": 26,
         "bukan-bahan-aktif": 9
       },
       "berkanonik": 934,
-      "berinduk": 387,
+      "berinduk": 450,
       "berfaktor": 265,
       "perlu_tinjau": 31
     }
@@ -1125,12 +1125,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "bispiribak",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "deklarasi-registri",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "nikosulfuron",
@@ -1400,12 +1414,30 @@
         "id": "op:sub:00000150",
         "label": "IPA Glifosat"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "ipa"
+      },
+      "induk": {
+        "nama_registri": "glifosat",
+        "nama": "glyphosate",
+        "substance": {
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
+        }
+      },
       "kanonik": {
         "nama": "ipa glyphosate",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"ipa glifosat\", \"ipa glyphosate\" untuk bahan yang sama; \"ipa glyphosate\" dipilih karena memuat ph, y yang ejaan Indonesia gantikan, sedangkan \"ipa glifosat\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan isopropilamina. Registri menuliskan gugus yang sama lengkap (\"isopropil amina glifosat\", 221 formulasi) maupun disingkat (\"IPA glifosat\", 54) untuk bahan yang sama; yang lengkap sudah diajarkan klausa setara, yang disingkat tidak pernah. Token \"ipa\" tidak muncul di tempat lain mana pun pada registri."
+        }
+      ]
     },
     {
       "kunci": "bifentrin",
@@ -2778,12 +2810,27 @@
         "id": "op:sub:00000205",
         "label": "Propamokarb hidroklorida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "hidroklorida"
+      },
+      "induk": {
+        "nama_registri": "propamokarb",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+      },
       "kanonik": {
         "nama": "propamokarb hydrochlorida",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"propamokarb hidroklorida\", \"propamocarb hydrochloride\", \"propamokarb hydrochlorida\" untuk bahan yang sama; \"propamokarb hydrochlorida\" dipilih karena memuat ch, y, c yang ejaan Indonesia gantikan, sedangkan \"propamokarb hidroklorida\", \"propamocarb hydrochloride\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam asam klorida. Kata ini menamai counter-ion seutuhnya (HCl) dan tidak pernah jadi bagian nama bahan mana pun di registri: seluruh kemunculannya \"kartap hidroklorida\" dan \"propamokarb hidroklorida\". Ejaan hydrochloride, hydrochlorida, dan hidrokloride melipat ke bentuk yang sama, jadi satu baris ini menutup keempatnya."
+        }
+      ]
     },
     {
       "kunci": "spirotetramat",
@@ -3837,12 +3884,30 @@
         "id": "op:sub:00000150",
         "label": "IPA Glifosat"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "ipa"
+      },
+      "induk": {
+        "nama_registri": "glyphosate",
+        "nama": "glyphosate",
+        "substance": {
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
+        }
+      },
       "kanonik": {
         "nama": "ipa glyphosate",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"ipa glifosat\", \"ipa glyphosate\" untuk bahan yang sama; \"ipa glyphosate\" dipilih karena memuat ph, y yang ejaan Indonesia gantikan, sedangkan \"ipa glifosat\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan isopropilamina. Registri menuliskan gugus yang sama lengkap (\"isopropil amina glifosat\", 221 formulasi) maupun disingkat (\"IPA glifosat\", 54) untuk bahan yang sama; yang lengkap sudah diajarkan klausa setara, yang disingkat tidak pernah. Token \"ipa\" tidak muncul di tempat lain mana pun pada registri."
+        }
+      ]
     },
     {
       "kunci": "nicosulfuron",
@@ -3906,12 +3971,27 @@
         "id": "op:sub:00000250",
         "label": "Tembaga Oksiklorida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "oksiklorida"
+      },
+      "induk": {
+        "nama_registri": "tembaga",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+      },
       "kanonik": {
         "nama": "copper oxychloride",
         "dasar": "deklarasi-registri",
         "kutipan": "tembaga oksiklorida (copper oxychloride)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam tembaga basa, Cu2(OH)3Cl. Registri sudah mengajarkan sendiri \"hidroksida\" dan \"oksida\" sebagai gugus dari induk \"tembaga\" lewat klausa setaranya; oksiklorida menempati posisi yang sama dan hanya kebetulan tidak pernah ditulis bersama klausa itu."
+        }
+      ]
     },
     {
       "kunci": "2,4-d isopropil amina",
@@ -4159,12 +4239,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "bispiribak",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "deklarasi-registri",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "natrium para nitrofenol",
@@ -4954,12 +5048,26 @@
         "id": "op:sub:00000302",
         "label": "Fluroksipir meptil"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "meptil"
+      },
+      "induk": {
+        "nama_registri": "fluroksipir",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-mepthyl",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\", \"fluroxypyr-mepthyl\" untuk bahan yang sama; \"fluroxypyr-mepthyl\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ester 1-metilheptil. Registri sendiri sudah mengajarkan \"meptil heptil ester\" sebagai gugus ester dari fluroksipir; \"meptil\" bentuk pendeknya, dan seluruh kemunculan token ini di registri menempel pada fluroksipir. Ejaan meptyl dan mepthyl melipat ke bentuk yang sama."
+        }
+      ]
     },
     {
       "kunci": "haloksifop-p-metil",
@@ -5850,12 +5958,26 @@
         "id": "op:sub:00000344",
         "label": "Florpyrauxifen-benzyl"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "benzil"
+      },
+      "induk": {
+        "nama_registri": "florpyrauxifen",
+        "nama": "florpyrauxifen"
+      },
       "kanonik": {
         "nama": "florpyrauxifen-benzyl",
         "dasar": "ejaan",
         "kutipan": "benzil florpirauksifen (florpyrauxifen-benzyl)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Alkohol ester benzil; ejaan benzyl melipat ke bentuk yang sama. Dari 10 tulisan registri yang memuat token ini, 4 menempel pada florpirauksifen; 6 sisanya (\"6 benzil adenin\" dan golongan benzalkonium) memang memuat benzil sebagai bagian nama, tetapi di situ sisa tokennya bukan bahan terdaftar sehingga tidak akan pernah lolos jadi induk."
+        }
+      ]
     },
     {
       "kunci": "isoporpil amina glifosat (setara dengan glifosat : 363 g/l)",
@@ -6782,12 +6904,30 @@
         "id": "op:sub:00000381",
         "label": "Kartap Hidroklorida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "hidroklorida"
+      },
+      "induk": {
+        "nama_registri": "kartap",
+        "nama": "cartap",
+        "substance": {
+          "id": "op:sub:00001407",
+          "label": "Kartap"
+        }
+      },
       "kanonik": {
         "nama": "cartap hydrochloride",
         "dasar": "deklarasi-registri",
         "kutipan": "kartap hidroklorida (cartap hydrochloride)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam asam klorida. Kata ini menamai counter-ion seutuhnya (HCl) dan tidak pernah jadi bagian nama bahan mana pun di registri: seluruh kemunculannya \"kartap hidroklorida\" dan \"propamokarb hidroklorida\". Ejaan hydrochloride, hydrochlorida, dan hidrokloride melipat ke bentuk yang sama, jadi satu baris ini menutup keempatnya."
+        }
+      ]
     },
     {
       "kunci": "methyl thiophanate",
@@ -7071,8 +7211,29 @@
         "id": "op:sub:00000395",
         "label": "2,4-D isobutil ester"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "isobutil ester"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Sama, isomer bercabangnya. Muncul pada \"2,4-D isobutil ester\"."
+        }
+      ]
     },
     {
       "kunci": "alfametrin",
@@ -8140,8 +8301,25 @@
         "id": "op:sub:00000448",
         "label": "Fluroksipir meptil ester"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "meptil ester"
+      },
+      "induk": {
+        "nama_registri": "fluroksipir",
+        "nama": "fluroxypir"
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Sama, dengan kata \"ester\" ikut tertulis. Perlu barisnya sendiri karena kata itu menghalangi baris \"meptil\" mengenali sisanya sebagai induk."
+        }
+      ]
     },
     {
       "kunci": "fluroksipir meptil heptil ester",
@@ -8319,12 +8497,30 @@
         "id": "op:sub:00000381",
         "label": "Kartap Hidroklorida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "hidroklorida"
+      },
+      "induk": {
+        "nama_registri": "kartap",
+        "nama": "cartap",
+        "substance": {
+          "id": "op:sub:00001407",
+          "label": "Kartap"
+        }
+      },
       "kanonik": {
         "nama": "cartap hydrochloride",
         "dasar": "deklarasi-registri",
         "kutipan": "kartap hidroklorida (cartap hydrochloride)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam asam klorida. Kata ini menamai counter-ion seutuhnya (HCl) dan tidak pernah jadi bagian nama bahan mana pun di registri: seluruh kemunculannya \"kartap hidroklorida\" dan \"propamokarb hidroklorida\". Ejaan hydrochloride, hydrochlorida, dan hidrokloride melipat ke bentuk yang sama, jadi satu baris ini menutup keempatnya."
+        }
+      ]
     },
     {
       "kunci": "kresoxim methyl",
@@ -8454,8 +8650,30 @@
         "id": "op:sub:00000459",
         "label": "Natrium bentazon"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "bentazon",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000195",
+          "label": "Bentazon"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "oksadiargil",
@@ -8486,9 +8704,13 @@
         "gugus": "amonium"
       },
       "induk": {
-        "nama_registri": "p glufosinat",
+        "nama_registri": "p-glufosinat",
         "nama": null,
-        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000232",
+          "label": "p-glufosinat"
+        }
       },
       "kanonik": {
         "nama": null,
@@ -9028,12 +9250,30 @@
         "id": "op:sub:00000512",
         "label": "2,4-D Natrium"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d sodium",
         "dasar": "deklarasi-registri",
         "kutipan": "2,4-d natrium (2,4-d sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "2,4-d, dimetil amina (setara dengan 2,4-d : 720 g/l)",
@@ -9416,9 +9656,13 @@
         "stereodeskriptor": "d"
       },
       "induk": {
-        "nama_registri": "tetramethrin",
+        "nama_registri": "tetrametrin",
         "nama": null,
-        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00001645",
+          "label": "Tetrametrin"
+        }
       },
       "kanonik": {
         "nama": "d-tetramethrin",
@@ -9775,12 +10019,26 @@
         "id": "op:sub:00000302",
         "label": "Fluroksipir meptil"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "meptil"
+      },
+      "induk": {
+        "nama_registri": "fluroxypyr",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-mepthyl",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\", \"fluroxypyr-mepthyl\" untuk bahan yang sama; \"fluroxypyr-mepthyl\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ester 1-metilheptil. Registri sendiri sudah mengajarkan \"meptil heptil ester\" sebagai gugus ester dari fluroksipir; \"meptil\" bentuk pendeknya, dan seluruh kemunculan token ini di registri menempel pada fluroksipir. Ejaan meptyl dan mepthyl melipat ke bentuk yang sama."
+        }
+      ]
     },
     {
       "kunci": "flusulfamid",
@@ -10220,12 +10478,27 @@
         "id": "op:sub:00000205",
         "label": "Propamokarb hidroklorida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "hidroklorida"
+      },
+      "induk": {
+        "nama_registri": "propamocarb",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+      },
       "kanonik": {
         "nama": "propamokarb hydrochlorida",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"propamokarb hidroklorida\", \"propamocarb hydrochloride\", \"propamokarb hydrochlorida\" untuk bahan yang sama; \"propamokarb hydrochlorida\" dipilih karena memuat ch, y, c yang ejaan Indonesia gantikan, sedangkan \"propamokarb hidroklorida\", \"propamocarb hydrochloride\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam asam klorida. Kata ini menamai counter-ion seutuhnya (HCl) dan tidak pernah jadi bagian nama bahan mana pun di registri: seluruh kemunculannya \"kartap hidroklorida\" dan \"propamokarb hidroklorida\". Ejaan hydrochloride, hydrochlorida, dan hidrokloride melipat ke bentuk yang sama, jadi satu baris ini menutup keempatnya."
+        }
+      ]
     },
     {
       "kunci": "propikonazol (propiconazole)",
@@ -10295,9 +10568,13 @@
         "stereodeskriptor": "s"
       },
       "induk": {
-        "nama_registri": "metolachlor",
+        "nama_registri": "metolaklor",
         "nama": null,
-        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000844",
+          "label": "Metolaklor"
+        }
       },
       "kanonik": {
         "nama": "s-metolachlor",
@@ -11036,12 +11313,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "sodium"
+      },
+      "induk": {
+        "nama_registri": "bispiribak",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "ejaan",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan internasional dari natrium; registri memakai keduanya. Dipisah barisnya karena pelipatan ortografis memang tidak — dan tidak boleh — menyamakan keduanya: keduanya kata yang berlainan, kebetulan menamai ion yang sama."
+        }
+      ]
     },
     {
       "kunci": "bispyribac sodium",
@@ -11054,12 +11345,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "sodium"
+      },
+      "induk": {
+        "nama_registri": "bispyribac",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "ejaan",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan internasional dari natrium; registri memakai keduanya. Dipisah barisnya karena pelipatan ortografis memang tidak — dan tidak boleh — menyamakan keduanya: keduanya kata yang berlainan, kebetulan menamai ion yang sama."
+        }
+      ]
     },
     {
       "kunci": "carbaryl",
@@ -11502,12 +11807,26 @@
         "id": "op:sub:00000302",
         "label": "Fluroksipir meptil"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "meptil"
+      },
+      "induk": {
+        "nama_registri": "fluroksipir",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-mepthyl",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\", \"fluroxypyr-mepthyl\" untuk bahan yang sama; \"fluroxypyr-mepthyl\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ester 1-metilheptil. Registri sendiri sudah mengajarkan \"meptil heptil ester\" sebagai gugus ester dari fluroksipir; \"meptil\" bentuk pendeknya, dan seluruh kemunculan token ini di registri menempel pada fluroksipir. Ejaan meptyl dan mepthyl melipat ke bentuk yang sama."
+        }
+      ]
     },
     {
       "kunci": "glufosinat amonium",
@@ -12615,8 +12934,30 @@
         "id": "op:sub:00000664",
         "label": "MCPA DMA"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dma"
+      },
+      "induk": {
+        "nama_registri": "mcpa",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000186",
+          "label": "MCPA"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan dimetil amina yang dipakai registri pada \"MCPA DMA\" dan \"2,4-D DMA\". Bentuk panjangnya sudah diajarkan klausa setara pada tulisan lain untuk induk yang sama."
+        }
+      ]
     },
     {
       "kunci": "mefenacet",
@@ -13645,12 +13986,30 @@
         "id": "op:sub:00000708",
         "label": "2,4-D butil ester"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "butil ester"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d butyl ester",
         "dasar": "deklarasi-registri",
         "kutipan": "2,4-d butil ester (2,4-d butyl ester):45% setara dengan 2,4-d (2,4-d equivalent):36%"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Tulisan yang menyebut sendiri bahwa ia ester. Dipakai 2,4-D. Hanya rentang yang memuat kata \"ester\" yang dimasukkan — \"butil\" telanjang tidak, karena pada \"butil sihalofop\" justru kepalanya yang bagian nama induk."
+        }
+      ]
     },
     {
       "kunci": "2,4-d butil ester (2,4-d butyl ester):45% setara dengan 2,4-d (2,4-d equivalent):36%",
@@ -13662,12 +14021,30 @@
         "id": "op:sub:00000708",
         "label": "2,4-D butil ester"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "butil ester"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d butyl ester",
         "dasar": "deklarasi-registri",
         "kutipan": "2,4-d butil ester (2,4-d butyl ester):45% setara dengan 2,4-d (2,4-d equivalent):36%"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Tulisan yang menyebut sendiri bahwa ia ester. Dipakai 2,4-D. Hanya rentang yang memuat kata \"ester\" yang dimasukkan — \"butil\" telanjang tidak, karena pada \"butil sihalofop\" justru kepalanya yang bagian nama induk."
+        }
+      ]
     },
     {
       "kunci": "2,4-d dimethyl amine",
@@ -13679,12 +14056,30 @@
         "id": "op:sub:00000590",
         "label": "2,4 dimetil amina"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dimethyl amine"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d dimethyl amine",
         "dasar": "ejaan",
         "kutipan": "2,4-d dimetil amina (2,4-d dimethyl amine): 865 g/l setara dengan 2,4-d (2,4-d active equivalent): 720 g/l"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan Inggris dari \"dimetil amina\", yang sudah diajarkan registri sebagai gugus dari glifosat dan MCPA. Perlu barisnya sendiri karena akhiran -amine dan -amina tidak melipat ke bentuk yang sama, dan memang tidak boleh dipaksa melipat. Menutup pula \"dimethylamine\" tanpa spasi."
+        }
+      ]
     },
     {
       "kunci": "2,4-d dimethyl ammonium",
@@ -13871,8 +14266,29 @@
         "id": "op:sub:00000716",
         "label": "2,4-D DMA"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dma"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan dimetil amina yang dipakai registri pada \"MCPA DMA\" dan \"2,4-D DMA\". Bentuk panjangnya sudah diajarkan klausa setara pada tulisan lain untuk induk yang sama."
+        }
+      ]
     },
     {
       "kunci": "2,4-d sodium",
@@ -13884,12 +14300,30 @@
         "id": "op:sub:00000512",
         "label": "2,4-D Natrium"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "sodium"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d sodium",
         "dasar": "ejaan",
         "kutipan": "2,4-d natrium (2,4-d sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan internasional dari natrium; registri memakai keduanya. Dipisah barisnya karena pelipatan ortografis memang tidak — dan tidak boleh — menyamakan keduanya: keduanya kata yang berlainan, kebetulan menamai ion yang sama."
+        }
+      ]
     },
     {
       "kunci": "2,4-d sodium salt",
@@ -13901,8 +14335,29 @@
         "id": "op:sub:00000718",
         "label": "2,4-D Sodium Salt"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "sodium salt"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Tulisan yang menyebut sendiri bahwa ia garam (\"salt\"), jadi tidak ada yang perlu ditebak. Diperlukan tersendiri karena token \"salt\" menghalangi baris \"sodium\" mengenali sisanya sebagai induk."
+        }
+      ]
     },
     {
       "kunci": "2.4-d dimetil amina",
@@ -14500,12 +14955,26 @@
         "id": "op:sub:00000344",
         "label": "Florpyrauxifen-benzyl"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "benzil"
+      },
+      "induk": {
+        "nama_registri": "florpirauksifen",
+        "nama": "florpyrauxifen"
+      },
       "kanonik": {
         "nama": "florpyrauxifen-benzyl",
         "dasar": "deklarasi-registri",
         "kutipan": "benzil florpirauksifen (florpyrauxifen-benzyl)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Alkohol ester benzil; ejaan benzyl melipat ke bentuk yang sama. Dari 10 tulisan registri yang memuat token ini, 4 menempel pada florpirauksifen; 6 sisanya (\"6 benzil adenin\" dan golongan benzalkonium) memang memuat benzil sebagai bagian nama, tetapi di situ sisa tokennya bukan bahan terdaftar sehingga tidak akan pernah lolos jadi induk."
+        }
+      ]
     },
     {
       "kunci": "beta-siflutrin",
@@ -15338,12 +15807,26 @@
         "id": "op:sub:00000794",
         "label": "fluroksipir-1-metil heptyl ester"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "1 metil heptil ester"
+      },
+      "induk": {
+        "nama_registri": "fluroksipir",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-1-methyl heptyl-ester",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir-1-metil heptyl ester\", \"fluroksipir-1-metil heptil ester\", \"fluroxypyr-1-methyl heptyl-ester\" untuk bahan yang sama; \"fluroxypyr-1-methyl heptyl-ester\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir-1-metil heptyl ester\", \"fluroksipir-1-metil heptil ester\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Gugus yang sama dieja panjang — 1-metilheptil ester adalah meptil. Registri menulis keduanya untuk fluroksipir yang sama."
+        }
+      ]
     },
     {
       "kunci": "fluroxypyr meptyl",
@@ -15356,12 +15839,26 @@
         "id": "op:sub:00000302",
         "label": "Fluroksipir meptil"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "meptil"
+      },
+      "induk": {
+        "nama_registri": "fluroxypyr",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-mepthyl",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\", \"fluroxypyr-mepthyl\" untuk bahan yang sama; \"fluroxypyr-mepthyl\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ester 1-metilheptil. Registri sendiri sudah mengajarkan \"meptil heptil ester\" sebagai gugus ester dari fluroksipir; \"meptil\" bentuk pendeknya, dan seluruh kemunculan token ini di registri menempel pada fluroksipir. Ejaan meptyl dan mepthyl melipat ke bentuk yang sama."
+        }
+      ]
     },
     {
       "kunci": "flusilazol",
@@ -16520,12 +17017,30 @@
         "id": "op:sub:00000381",
         "label": "Kartap Hidroklorida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "hidroklorida"
+      },
+      "induk": {
+        "nama_registri": "kartap",
+        "nama": "cartap",
+        "substance": {
+          "id": "op:sub:00001407",
+          "label": "Kartap"
+        }
+      },
       "kanonik": {
         "nama": "cartap hydrochloride",
         "dasar": "deklarasi-registri",
         "kutipan": "kartap hidroklorida (cartap hydrochloride)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam asam klorida. Kata ini menamai counter-ion seutuhnya (HCl) dan tidak pernah jadi bagian nama bahan mana pun di registri: seluruh kemunculannya \"kartap hidroklorida\" dan \"propamokarb hidroklorida\". Ejaan hydrochloride, hydrochlorida, dan hidrokloride melipat ke bentuk yang sama, jadi satu baris ini menutup keempatnya."
+        }
+      ]
     },
     {
       "kunci": "klorfenvinfos",
@@ -16745,8 +17260,30 @@
         "id": "op:sub:00000833",
         "label": "MCPA-Natrium"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "mcpa",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000186",
+          "label": "MCPA"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "mefenoxam",
@@ -17042,12 +17579,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "bispyribac",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "deklarasi-registri",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "natrium glyphosate",
@@ -17059,8 +17610,29 @@
         "id": "op:sub:00000850",
         "label": "Natrium Glyphosate"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "glyphosate",
+        "nama": "glyphosate",
+        "substance": {
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "niclosamida",
@@ -18802,12 +19374,30 @@
         "id": "op:sub:00000590",
         "label": "2,4 dimetil amina"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dimethyl amine"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d dimethyl amine",
         "dasar": "ejaan",
         "kutipan": "2,4-d dimetil amina (2,4-d dimethyl amine): 865 g/l setara dengan 2,4-d (2,4-d active equivalent): 720 g/l"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan Inggris dari \"dimetil amina\", yang sudah diajarkan registri sebagai gugus dari glifosat dan MCPA. Perlu barisnya sendiri karena akhiran -amine dan -amina tidak melipat ke bentuk yang sama, dan memang tidak boleh dipaksa melipat. Menutup pula \"dimethylamine\" tanpa spasi."
+        }
+      ]
     },
     {
       "kunci": "2,4 d dimetil amina : 865 g/l(setara dengan 2,4d: 720 g/l)",
@@ -18993,12 +19583,30 @@
         "id": "op:sub:00000946",
         "label": "2,4-D 2-etilheksil ester"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "2 etilheksil ester"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d 2-ethylhexyl ester",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"2,4-d 2-ethylhexyl ester\", \"2,4-d 2-etilheksil ester\" untuk bahan yang sama; \"2,4-d 2-ethylhexyl ester\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"2,4-d 2-etilheksil ester\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ester 2-etilheksil, dengan kata \"ester\" tertulis. Dipakai 2,4-D. Ejaan \"2-ethylhexyl ester\" melipat ke bentuk yang sama."
+        }
+      ]
     },
     {
       "kunci": "2,4-d 2-etilheksil ester",
@@ -19010,12 +19618,30 @@
         "id": "op:sub:00000946",
         "label": "2,4-D 2-etilheksil ester"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "2 etilheksil ester"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d 2-ethylhexyl ester",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"2,4-d 2-ethylhexyl ester\", \"2,4-d 2-etilheksil ester\" untuk bahan yang sama; \"2,4-d 2-ethylhexyl ester\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"2,4-d 2-etilheksil ester\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ester 2-etilheksil, dengan kata \"ester\" tertulis. Dipakai 2,4-D. Ejaan \"2-ethylhexyl ester\" melipat ke bentuk yang sama."
+        }
+      ]
     },
     {
       "kunci": "2,4-d dimethylamine (setara dengan 2,4-d : 600 g/l)",
@@ -19027,12 +19653,30 @@
         "id": "op:sub:00000590",
         "label": "2,4 dimetil amina"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dimethyl amine"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d dimethyl amine",
         "dasar": "ejaan",
         "kutipan": "2,4-d dimetil amina (2,4-d dimethyl amine): 865 g/l setara dengan 2,4-d (2,4-d active equivalent): 720 g/l"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan Inggris dari \"dimetil amina\", yang sudah diajarkan registri sebagai gugus dari glifosat dan MCPA. Perlu barisnya sendiri karena akhiran -amine dan -amina tidak melipat ke bentuk yang sama, dan memang tidak boleh dipaksa melipat. Menutup pula \"dimethylamine\" tanpa spasi."
+        }
+      ]
     },
     {
       "kunci": "2,4-d dimethylammonium (2,4-d active equivalent: 686 g/l)",
@@ -19722,8 +20366,29 @@
         "id": "op:sub:00000968",
         "label": "2,4-D  etilheksil ester"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "etilheksil ester"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Sama, tanpa locant \"2\" yang kadang dihilangkan registri."
+        }
+      ]
     },
     {
       "kunci": "2,4-d ibe",
@@ -19735,8 +20400,29 @@
         "id": "op:sub:00000969",
         "label": "2,4-D IBE"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "ibe"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan \"isobutil ester\" pada \"2,4-D IBE\"; bentuk panjangnya ada di baris di atas dan pada tulisan registri lain untuk induk yang sama."
+        }
+      ]
     },
     {
       "kunci": "2,4-d ipa",
@@ -19748,8 +20434,29 @@
         "id": "op:sub:00000970",
         "label": "2,4-D IPA"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "ipa"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan isopropilamina. Registri menuliskan gugus yang sama lengkap (\"isopropil amina glifosat\", 221 formulasi) maupun disingkat (\"IPA glifosat\", 54) untuk bahan yang sama; yang lengkap sudah diajarkan klausa setara, yang disingkat tidak pernah. Token \"ipa\" tidak muncul di tempat lain mana pun pada registri."
+        }
+      ]
     },
     {
       "kunci": "2,4-d isopropil amina (setara dengan 2,4-d : 110,42 g/l)",
@@ -19863,8 +20570,29 @@
         "id": "op:sub:00000974",
         "label": "2,4-D Na Salt"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "na salt"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Sama dengan di atas; \"Na\" lambang unsur natrium, dan kata \"salt\" di sebelahnya yang menghilangkan keraguan. Hanya muncul pada \"2,4-D Na Salt\"."
+        }
+      ]
     },
     {
       "kunci": "2,4-d natrium (2,4-d sodium)",
@@ -19876,12 +20604,30 @@
         "id": "op:sub:00000512",
         "label": "2,4-D Natrium"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
       "kanonik": {
         "nama": "2,4-d sodium",
         "dasar": "deklarasi-registri",
         "kutipan": "2,4-d natrium (2,4-d sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "2,4-d triisopropanolamine",
@@ -19893,8 +20639,29 @@
         "id": "op:sub:00000976",
         "label": "2,4-D triisopropanolamine"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "triisopropanolamine"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion amina, seperti dimetil amina, hanya aminanya berbeda. Muncul pada \"2,4-D triisopropanolamine\" dan \"Picloram triisopropanolamine\"."
+        }
+      ]
     },
     {
       "kunci": "2,4-d, dimethylamine",
@@ -19906,8 +20673,29 @@
         "id": "op:sub:00000590",
         "label": "2,4 dimetil amina"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dimethyl amine"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan Inggris dari \"dimetil amina\", yang sudah diajarkan registri sebagai gugus dari glifosat dan MCPA. Perlu barisnya sendiri karena akhiran -amine dan -amina tidak melipat ke bentuk yang sama, dan memang tidak boleh dipaksa melipat. Menutup pula \"dimethylamine\" tanpa spasi."
+        }
+      ]
     },
     {
       "kunci": "2,4-d, dimethylamine (setara dengan 2,4-d 720 g/l)",
@@ -19919,8 +20707,29 @@
         "id": "op:sub:00000978",
         "label": "2,4-D, dimethylamine (setara dengan 2,4-D 720 g/l)"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dimethyl amine"
+      },
+      "induk": {
+        "nama_registri": "2,4-d",
+        "nama": "2,4-d",
+        "substance": {
+          "id": "op:sub:00000188",
+          "label": "2,4-D"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan Inggris dari \"dimetil amina\", yang sudah diajarkan registri sebagai gugus dari glifosat dan MCPA. Perlu barisnya sendiri karena akhiran -amine dan -amina tidak melipat ke bentuk yang sama, dan memang tidak boleh dipaksa melipat. Menutup pula \"dimethylamine\" tanpa spasi."
+        }
+      ]
     },
     {
       "kunci": "2,4d-dma",
@@ -19932,8 +20741,25 @@
         "id": "op:sub:00000716",
         "label": "2,4-D DMA"
       },
-      "hubungan": "nama-sistematis-belum-terpetakan",
-      "alasan": "Registri menuliskan nama kimia sistematis. Tidak ada nama umum yang dideklarasikan registri untuk tulisan ini, dan menurunkannya dari struktur akan menghasilkan padanan yang terdengar yakin tanpa dasar."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dma"
+      },
+      "induk": {
+        "nama_registri": "2,4d",
+        "nama": "2,4-d"
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan dimetil amina yang dipakai registri pada \"MCPA DMA\" dan \"2,4-D DMA\". Bentuk panjangnya sudah diajarkan klausa setara pada tulisan lain untuk induk yang sama."
+        }
+      ]
     },
     {
       "kunci": "2.4-d dimetil amina (setara dengan 2.4-d dimetil amina 720 g/l)",
@@ -21569,9 +22395,13 @@
         "gugus": "amonium"
       },
       "induk": {
-        "nama_registri": "p glufosinat",
+        "nama_registri": "p-glufosinat",
         "nama": null,
-        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000232",
+          "label": "p-glufosinat"
+        }
       },
       "kanonik": {
         "nama": null,
@@ -21839,8 +22669,30 @@
         "id": "op:sub:00001081",
         "label": "Asam natrium naftalen asetik"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "asam naftalen asetik",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00001080",
+          "label": "Asam naftalen asetik"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "asam pteroil glutamat",
@@ -22215,12 +23067,26 @@
         "id": "op:sub:00000344",
         "label": "Florpyrauxifen-benzyl"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "benzil"
+      },
+      "induk": {
+        "nama_registri": "florpirauksifen",
+        "nama": "florpyrauxifen"
+      },
       "kanonik": {
         "nama": "florpyrauxifen-benzyl",
         "dasar": "deklarasi-registri",
         "kutipan": "benzil florpirauksifen (florpyrauxifen-benzyl)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Alkohol ester benzil; ejaan benzyl melipat ke bentuk yang sama. Dari 10 tulisan registri yang memuat token ini, 4 menempel pada florpirauksifen; 6 sisanya (\"6 benzil adenin\" dan golongan benzalkonium) memang memuat benzil sebagai bagian nama, tetapi di situ sisa tokennya bukan bahan terdaftar sehingga tidak akan pernah lolos jadi induk."
+        }
+      ]
     },
     {
       "kunci": "benzoic acid",
@@ -22462,12 +23328,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "sodium"
+      },
+      "induk": {
+        "nama_registri": "bispiribak",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "ejaan",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan internasional dari natrium; registri memakai keduanya. Dipisah barisnya karena pelipatan ortografis memang tidak — dan tidak boleh — menyamakan keduanya: keduanya kata yang berlainan, kebetulan menamai ion yang sama."
+        }
+      ]
     },
     {
       "kunci": "bispribak sodium",
@@ -23582,12 +24462,30 @@
         "id": "op:sub:00001189",
         "label": "Diamonium glifosat (diammonium glyphosate)"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "diamonium"
+      },
+      "induk": {
+        "nama_registri": "glifosat",
+        "nama": "glyphosate",
+        "substance": {
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
+        }
+      },
       "kanonik": {
         "nama": "diammonium glyphosate",
         "dasar": "deklarasi-registri",
         "kutipan": "diamonium glifosat (diammonium glyphosate)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Dua ion amonium. Registri sudah mengajarkan \"amonium\" dan \"monoamonium\" sebagai gugus dari glifosat; diamonium sama, berbeda stoikiometri — dan justru karena stoikiometrinya berbeda ia tetap entitas tersendiri dengan faktor kesetaraannya sendiri."
+        }
+      ]
     },
     {
       "kunci": "dichloropenoxy dimethyl amin",
@@ -23694,12 +24592,31 @@
         "id": "op:sub:00001197",
         "label": "Dikuat dibromida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dibromida"
+      },
+      "induk": {
+        "nama_registri": "dikuat",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00001196",
+          "label": "Dikuat"
+        }
+      },
       "kanonik": {
         "nama": "diquat dibromida",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"dikuat dibromida\", \"diquat dibromida\" untuk bahan yang sama; \"diquat dibromida\" dipilih karena memuat qu yang ejaan Indonesia gantikan, sedangkan \"dikuat dibromida\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Dua ion bromida sebagai counter-ion. Kembarannya \"diklorida\" sudah diajarkan registri untuk induk yang sama persis — parakuat dan dikuat — sehingga yang membedakan hanya halogennya. Hanya muncul pada \"dikuat dibromida\" dan \"diquat dibromida\"."
+        }
+      ]
     },
     {
       "kunci": "dikuat diklorida (setara dengan ion dikuat : 144,42 g/l)",
@@ -23958,12 +24875,31 @@
         "id": "op:sub:00001197",
         "label": "Dikuat dibromida"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "dibromida"
+      },
+      "induk": {
+        "nama_registri": "dikuat",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00001196",
+          "label": "Dikuat"
+        }
+      },
       "kanonik": {
         "nama": "diquat dibromida",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"dikuat dibromida\", \"diquat dibromida\" untuk bahan yang sama; \"diquat dibromida\" dipilih karena memuat qu yang ejaan Indonesia gantikan, sedangkan \"dikuat dibromida\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Dua ion bromida sebagai counter-ion. Kembarannya \"diklorida\" sudah diajarkan registri untuk induk yang sama persis — parakuat dan dikuat — sehingga yang membedakan hanya halogennya. Hanya muncul pada \"dikuat dibromida\" dan \"diquat dibromida\"."
+        }
+      ]
     },
     {
       "kunci": "diquat diklorida",
@@ -24929,12 +25865,26 @@
         "id": "op:sub:00000344",
         "label": "Florpyrauxifen-benzyl"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "benzil"
+      },
+      "induk": {
+        "nama_registri": "florpyrauxifen",
+        "nama": "florpyrauxifen"
+      },
       "kanonik": {
         "nama": "florpyrauxifen-benzyl",
         "dasar": "ejaan",
         "kutipan": "benzil florpirauksifen (florpyrauxifen-benzyl)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Alkohol ester benzil; ejaan benzyl melipat ke bentuk yang sama. Dari 10 tulisan registri yang memuat token ini, 4 menempel pada florpirauksifen; 6 sisanya (\"6 benzil adenin\" dan golongan benzalkonium) memang memuat benzil sebagai bagian nama, tetapi di situ sisa tokennya bukan bahan terdaftar sehingga tidak akan pernah lolos jadi induk."
+        }
+      ]
     },
     {
       "kunci": "fluazaindolizin (fluazaindolizine)",
@@ -25180,8 +26130,25 @@
         "id": "op:sub:00001271",
         "label": "fluroksipir 1- MHE"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "1 mhe"
+      },
+      "induk": {
+        "nama_registri": "fluroksipir",
+        "nama": "fluroxypir"
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Singkatan \"1-methylheptyl ester\", gugus yang sama lagi. Hanya muncul pada \"fluroksipir 1- MHE\"."
+        }
+      ]
     },
     {
       "kunci": "fluroksipir meptil heptil ester (fluroxypir-meptyl heptyl ester)",
@@ -25385,12 +26352,26 @@
         "id": "op:sub:00000794",
         "label": "fluroksipir-1-metil heptyl ester"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "1 metil heptil ester"
+      },
+      "induk": {
+        "nama_registri": "fluroksipir",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-1-methyl heptyl-ester",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir-1-metil heptyl ester\", \"fluroksipir-1-metil heptil ester\", \"fluroxypyr-1-methyl heptyl-ester\" untuk bahan yang sama; \"fluroxypyr-1-methyl heptyl-ester\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir-1-metil heptyl ester\", \"fluroksipir-1-metil heptil ester\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Gugus yang sama dieja panjang — 1-metilheptil ester adalah meptil. Registri menulis keduanya untuk fluroksipir yang sama."
+        }
+      ]
     },
     {
       "kunci": "fluroxypyr-1-methyl heptyl-ester",
@@ -25402,12 +26383,26 @@
         "id": "op:sub:00000794",
         "label": "fluroksipir-1-metil heptyl ester"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "1 metil heptil ester"
+      },
+      "induk": {
+        "nama_registri": "fluroxypyr",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-1-methyl heptyl-ester",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir-1-metil heptyl ester\", \"fluroksipir-1-metil heptil ester\", \"fluroxypyr-1-methyl heptyl-ester\" untuk bahan yang sama; \"fluroxypyr-1-methyl heptyl-ester\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir-1-metil heptyl ester\", \"fluroksipir-1-metil heptil ester\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Gugus yang sama dieja panjang — 1-metilheptil ester adalah meptil. Registri menulis keduanya untuk fluroksipir yang sama."
+        }
+      ]
     },
     {
       "kunci": "fluroxypyr-mepthyl",
@@ -25419,12 +26414,26 @@
         "id": "op:sub:00000302",
         "label": "Fluroksipir meptil"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "ester-dari",
+      "bentuk": {
+        "jenis": "ester",
+        "gugus": "meptil"
+      },
+      "induk": {
+        "nama_registri": "fluroxypyr",
+        "nama": "fluroxypir"
+      },
       "kanonik": {
         "nama": "fluroxypyr-mepthyl",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\", \"fluroxypyr-mepthyl\" untuk bahan yang sama; \"fluroxypyr-mepthyl\" dipilih karena memuat th, x, y yang ejaan Indonesia gantikan, sedangkan \"fluroksipir meptil\", \"fluroxypyr-meptyl\", \"fluroksipir-meptil\", \"fluroxypyr meptyl\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ester 1-metilheptil. Registri sendiri sudah mengajarkan \"meptil heptil ester\" sebagai gugus ester dari fluroksipir; \"meptil\" bentuk pendeknya, dan seluruh kemunculan token ini di registri menempel pada fluroksipir. Ejaan meptyl dan mepthyl melipat ke bentuk yang sama."
+        }
+      ]
     },
     {
       "kunci": "flusilazole",
@@ -25627,9 +26636,13 @@
         "gugus": "amonium"
       },
       "induk": {
-        "nama_registri": "glufosinate p",
+        "nama_registri": "glufosinate-p",
         "nama": null,
-        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000801",
+          "label": "Glufosinate-P"
+        }
       },
       "kanonik": {
         "nama": null,
@@ -25658,9 +26671,13 @@
         "gugus": "amonium"
       },
       "induk": {
-        "nama_registri": "glufosinate p",
+        "nama_registri": "glufosinate-p",
         "nama": null,
-        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000801",
+          "label": "Glufosinate-P"
+        }
       },
       "kanonik": {
         "nama": null,
@@ -30965,8 +31982,30 @@
         "id": "op:sub:00001436",
         "label": "MCPA sodium"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "sodium"
+      },
+      "induk": {
+        "nama_registri": "mcpa",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000186",
+          "label": "MCPA"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Ejaan internasional dari natrium; registri memakai keduanya. Dipisah barisnya karena pelipatan ortografis memang tidak — dan tidak boleh — menyamakan keduanya: keduanya kata yang berlainan, kebetulan menamai ion yang sama."
+        }
+      ]
     },
     {
       "kunci": "mcpa-isooctyl",
@@ -31719,12 +32758,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "bispiribak",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "deklarasi-registri",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "natrium bispiribak (byspiribac sodium)",
@@ -31736,12 +32789,26 @@
         "id": "op:sub:00000141",
         "label": "NATRIUM BISPIRIBAK"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "bispiribak",
+        "nama": "bispyribac"
+      },
       "kanonik": {
         "nama": "bispyribac sodium",
         "dasar": "deklarasi-registri",
         "kutipan": "natrium bispiribak (bispyribac sodium)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "natrium glufosinat p",
@@ -31753,8 +32820,30 @@
         "id": "op:sub:00001481",
         "label": "Natrium Glufosinat P"
       },
-      "hubungan": "belum-terpetakan",
-      "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "natrium"
+      },
+      "induk": {
+        "nama_registri": "glufosinat-p",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak.",
+        "substance": {
+          "id": "op:sub:00000636",
+          "label": "Glufosinat-P"
+        }
+      },
+      "kanonik": {
+        "nama": null,
+        "alasan_kosong": "Bentuk garam/esternya sendiri tidak pernah dituliskan registri dengan nama internasional. Sambungan dilakukan lewat induknya; bentuknya dibiarkan kosong."
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Counter-ion logam alkali. Registri sudah mengajarkan \"kalium\" sebagai gugus dari glifosat lewat klausa setaranya; natrium menempati posisi yang sama pada golongan yang sama."
+        }
+      ]
     },
     {
       "kunci": "natrium metam",
@@ -34652,12 +35741,27 @@
         "id": "op:sub:00000205",
         "label": "Propamokarb hidroklorida"
       },
-      "hubungan": "sama-dengan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "hidroklorida"
+      },
+      "induk": {
+        "nama_registri": "propamokarb",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+      },
       "kanonik": {
         "nama": "propamokarb hydrochlorida",
         "dasar": "ejaan-arah",
         "kutipan": "Registri memuat \"propamokarb hidroklorida\", \"propamocarb hydrochloride\", \"propamokarb hydrochlorida\" untuk bahan yang sama; \"propamokarb hydrochlorida\" dipilih karena memuat ch, y, c yang ejaan Indonesia gantikan, sedangkan \"propamokarb hidroklorida\", \"propamocarb hydrochloride\" tidak."
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam asam klorida. Kata ini menamai counter-ion seutuhnya (HCl) dan tidak pernah jadi bagian nama bahan mana pun di registri: seluruh kemunculannya \"kartap hidroklorida\" dan \"propamokarb hidroklorida\". Ejaan hydrochloride, hydrochlorida, dan hidrokloride melipat ke bentuk yang sama, jadi satu baris ini menutup keempatnya."
+        }
+      ]
     },
     {
       "kunci": "propiconazol",
@@ -35605,12 +36709,27 @@
         "id": "op:sub:00000250",
         "label": "Tembaga Oksiklorida"
       },
-      "hubungan": "varian-ejaan",
+      "hubungan": "garam-dari",
+      "bentuk": {
+        "jenis": "garam",
+        "gugus": "oksiklorida"
+      },
+      "induk": {
+        "nama_registri": "tembaga",
+        "nama": null,
+        "alasan_nama_kosong": "Registri hanya menuliskan induknya dalam ejaan Indonesia; tidak ada deklarasi kurung yang menyebutkan nama internasionalnya. Dibiarkan kosong, jangan ditebak."
+      },
       "kanonik": {
         "nama": "copper oxychloride",
         "dasar": "deklarasi-registri",
         "kutipan": "tembaga oksiklorida (copper oxychloride)"
-      }
+      },
+      "dasar": [
+        {
+          "jenis": "gugus-dikurasi",
+          "kutipan": "Gugus dikurasi tangan, bukan dipelajari dari klausa setara. Garam tembaga basa, Cu2(OH)3Cl. Registri sudah mengajarkan sendiri \"hidroksida\" dan \"oksida\" sebagai gugus dari induk \"tembaga\" lewat klausa setaranya; oksiklorida menempati posisi yang sama dan hanya kebetulan tidak pernah ditulis bersama klausa itu."
+        }
+      ]
     },
     {
       "kunci": "tembaga suksinat",

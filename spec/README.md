@@ -287,7 +287,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `method.json` | 19 cara aplikasi dan pengamatan, dengan `compatible_bases` | 9 ke AgrO / ICASA |
 | `substance.json` | 17 bahan non-pestisida — hara makro & mikro, pembenah, pakan | ICASA |
 | `substance-pestisida.json` | **1.593 bahan aktif** — seluruh yang tercantum di registri | 1.593 ke KEMENTAN, 58 punya kode IRAC/FRAC/HRAC |
-| `padanan-bahan-aktif.json` | **1.593 tulisan bahan aktif** → identitas kimia, dengan hubungan bertipe: garam-dari, ester-dari, stereoisomer-dari, varian-ejaan. 934 bernama kanonik, 387 berinduk, 265 berfaktor kesetaraan garam→induk | Diturunkan dari deklarasi registri sendiri; tanpa `op:` id |
+| `padanan-bahan-aktif.json` | **1.593 tulisan bahan aktif** → identitas kimia, dengan hubungan bertipe: garam-dari, ester-dari, stereoisomer-dari, varian-ejaan. 934 bernama kanonik, 450 berinduk, 265 berfaktor kesetaraan garam→induk | Diturunkan dari deklarasi registri sendiri, kecuali daftar gugus counter-ion yang dikurasi tangan dan bertanda `gugus-dikurasi`; tanpa `op:` id |
 | `product/pestisida.ndjson` | **7.724 produk pestisida** terdaftar, dengan 23.058 penggunaan berlabel | KEMENTAN |
 | `product/pupuk.ndjson` | **7.196 produk pupuk** terdaftar (SIMPEL + SIMPUK 2020) | KEMENTAN |
 | `variety/varietas.ndjson` | **11.227 varietas terdaftar** — pelepasan, pendaftaran, dan perlindungan varietas | KEMENTAN |
