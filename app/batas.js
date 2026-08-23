@@ -164,6 +164,7 @@ const JUDUL_LUBANG = {
   tokoTakBisaDituju: 'Alamat yang bisa dituju',
   tokoTanpaKontak: 'Telepon, jam buka, dan apakah tokonya masih ada',
   bppTanpaAlamat: 'Alamat balai penyuluhan',
+  rencanaBukanKalender: 'Tanggal untuk langkah yang menunggu fase atau ambang',
   hasilVarietas: 'Potensi hasil varietas',
   arusKasMusim: 'Arus kas semusim',
   hargaPetani: 'Harga yang diterima petani',

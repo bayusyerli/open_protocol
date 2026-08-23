@@ -1598,6 +1598,64 @@ for (const r of tokoAlamat) lisensiToko[r.lisensi ?? 'tidak dinyatakan'] = (lise
 // ---------------------------------------------------------------------------
 // batas — empat medan yang wajib disebut tiap layar
 // ---------------------------------------------------------------------------
+// Protokol Lapis 2 — E1, dan satu-satunya yang ada
+// ---------------------------------------------------------------------------
+// `susun-rencana.mjs` sudah menyusun rencana musim dari protokol sejak lama, dan sampai
+// blok ini keluarannya hanya bisa dilihat orang yang menjalankan Node di terminal. Barisnya
+// di docs/15 berbunyi "penyusun selesai; permukaan belum" — dan permukaan tidak bisa
+// dibangun di atas berkas yang tidak pernah terbit ke indeks.
+//
+// SATU PROTOKOL, DAN ITU IKUT DITERBITKAN. Cabai dataran rendah, tingkat bukti D, status
+// draft. Menerbitkan satu bukan kekurangan yang perlu ditutupi: yang menutupinya akan
+// membuat layar tampak punya pilihan yang tidak ada, dan cacah 1 justru angka yang paling
+// perlu dibaca sebelum orang menaruh harapan pada jalur ini.
+const protokolBerkas = readdirSync(VOCAB).filter((f) => f.startsWith('protocol-') && f.endsWith('.json'));
+const protokol = protokolBerkas.map((f) => bacaJson(f)).filter((p) => p?.id);
+
+// Langkah dibawa UTUH, termasuk timing-nya. Penyaji tidak boleh menyimpulkan sendiri
+// tanggal dari fase — itu keputusan yang sudah diambil susun-rencana.mjs dan alasannya
+// panjang: entitas Stage tidak memuat hari, durasi, maupun akumulasi suhu, jadi menebak
+// "BBCH 51 kira-kira hari ke-45" berarti mengarang fenologi. Bentuk timing-nya karena itu
+// ikut apa adanya, dan yang membedakan dapat-ditanggalkan dari tidak tinggal di sana.
+const berkasProtokol = {};
+const protokolIndeks = protokol.map((p) => {
+  const kunci = p.key;
+  berkasProtokol[kunci] = {
+    id: p.id,
+    key: kunci,
+    nama: p.label?.id ?? kunci,
+    definisi: p.definition?.id ?? null,
+    tingkat: p.evidence_tier ?? null,
+    alasanTingkat: p.evidence_note?.id ?? p.evidence_note ?? null,
+    status: p.lifecycle?.status ?? null,
+    versi: p.lifecycle?.version ?? null,
+    berlaku: p.applicability ?? null,
+    skala: p.stage_scale ?? null,
+    langkah: (p.steps ?? []).map((l) => ({
+      kunci: l.key,
+      nama: l.label?.id ?? l.key,
+      tindakan: l.operation_type ?? null,
+      waktu: l.timing ?? null,
+      pakai: l.applications ?? null,
+      catatan: l.notes?.id ?? null,
+    })),
+  };
+  const w = (p.steps ?? []).map((l) => l.timing?.kind);
+  return {
+    key: kunci,
+    nama: p.label?.id ?? kunci,
+    komoditas: p.applicability?.commodity?.label ?? null,
+    tingkat: p.evidence_tier ?? null,
+    status: p.lifecycle?.status ?? null,
+    langkah: w.length,
+    // Cacah yang paling menentukan cara layar boleh menyajikannya: berapa langkah yang
+    // benar-benar bisa jadi tanggal. Kalau ia lebih kecil daripada jumlah langkah,
+    // menyebut hasilnya "kalender" sudah salah.
+    bertanggal: w.filter((k) => k === 'relative').length,
+  };
+}).sort((a, b) => a.nama.localeCompare(b.nama));
+
+// ---------------------------------------------------------------------------
 // Balai penyuluhan & laboratorium — C7, dan ujung yang dicari G3
 // ---------------------------------------------------------------------------
 // Keduanya sudah jadi entitas kosakata, dan sampai blok ini tidak satu pun terbaca
@@ -1862,6 +1920,19 @@ const batas = {
       alasan:
         'Yang 2.181 dari arsip Wayback halaman TTI Kementan yang sudah tidak ada lagi — tidak ada tanggal pada rekamannya, jadi tidak ada cara mengetahui seberapa basi, dan toko yang sudah tutup tidak bisa dibedakan dari yang masih buka. Yang 67 dari data terbuka Pemkab Batang berlisensi CC-BY, jauh lebih kuat, tetapi terlalu sedikit untuk menaikkan tingkat keseluruhannya.',
     },
+    protokol: {
+      label: 'Protokol budidaya Lapis 2',
+      penerbit: 'Open Protocols',
+      url: null,
+      tarikan: '2026-08-20',
+      tinjau: null,
+      status: protokol[0]?.lifecycle?.status ?? 'draft',
+      lisensi: 'CC-BY-SA-4.0',
+      cacah: protokol.length,
+      tingkat: protokol[0]?.evidence_tier ?? null,
+      alasan:
+        'Satu protokol, tingkat bukti D, status draft — dan ketiganya angka yang perlu dibaca sebelum menaruh harapan pada jalur ini. Langkahnya disalin dari contoh langkah rencana yang menunjukkan BENTUK yang benar, bukan dari uji lapangan maupun standar institusi, dan belum ditinjau agronom bernama. Menaikkannya ke C atau B menuntut orang yang mau menempelkan namanya — pertanyaan kelima docs/02 yang alurnya baru dibuka lewat G1.',
+    },
     bpp: {
       label: 'Balai penyuluhan pertanian',
       penerbit: 'Badan Penyuluhan dan Pengembangan SDM Pertanian, Kementerian Pertanian RI',
@@ -1968,6 +2039,9 @@ const meta = {
     tokoBerwilayah: tokoAlamat.length,
     tokoLebihRinci: tokoAlamat.filter((r) => lebihRinci(r.alamat)).length,
     tokoWilayah: tokoWilayah.length,
+    protokol: protokol.length,
+    protokolBertanggal: protokolIndeks.reduce((a, p) => a + p.bertanggal, 0),
+    protokolLangkah: protokolIndeks.reduce((a, p) => a + p.langkah, 0),
     bpp: bppSemua.length,
     bppWilayah: bppWilayah.length,
     // Kecamatan yang benar-benar tersebut di `serves`, dan itu BUKAN angka yang sama
@@ -2031,6 +2105,7 @@ const meta = {
     toko: tokoWilayah.length,
     bpp: bppWilayah.length,
     lab: labWilayah.length,
+    protokol: protokolIndeks.length,
     optNama: Object.keys(berkasOptNama).length,
     principal: Object.keys(berkasPrincipal).length,
     harga: Object.keys(berkasHarga).length,
@@ -2087,6 +2162,8 @@ const meta = {
       'Hanya 92 dari 2.248 rekaman berwilayah — 4,1% — menyebut sesuatu yang lebih rinci daripada kabupaten atau kota. Sisanya berhenti di nama kabupaten, tersebar di 93 wilayah. Nama tanpa alamat tidak bisa dituju: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi.',
     tokoTanpaKontak:
       'Tidak satu pun rekaman memuat nomor telepon, surel, jam buka, atau apakah tokonya masih ada. Medan itu sengaja dibiarkan kosong menunggu pemilik toko mengklaimnya sendiri — menambalnya dengan geokode massal atau penarikan pihak ketiga akan mengisi direktori dengan tebakan yang tidak bisa dibantah siapa pun.',
+    rencanaBukanKalender:
+      'Rencana musim BUKAN kalender penuh, dan itu bukan kekurangan yang akan ditambal. Dari empat langkah protokol yang ada, dua bisa ditanggalkan karena waktunya relatif terhadap pindah tanam; satu menunggu fase pertumbuhan dan satu dipicu ambang pengamatan. Entitas fase tidak memuat hari, durasi, maupun akumulasi suhu — jadi tanggalnya TIDAK ditebak. Justru itu alasan penjadwalan berbasis fase dipilih: hari setelah tanam sering meleset ketika musimnya mundur atau varietasnya lebih genjah.',
     bppTanpaAlamat:
       'Balai penyuluhan tidak punya alamat maupun koordinat di rekaman ini, dan itu batas sumbernya: laporan tamu SIMLUHTAN hanya memberi nama balai dan kecamatan binaannya. Yang menemukan balainya bukan peta melainkan kecamatan — dan bagi yang tinggal di sana itu memang cukup. Menggeokode 5.844 balai secara massal ditolak dengan sadar, karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.',
     gejalaOptRegistri:
@@ -2129,6 +2206,8 @@ for (const [k, isi] of Object.entries(berkasOpt).sort()) simpan(`opt/${k}.json`,
 for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan/${e}.json`, isi);
 simpan('toko-titik.json', tokoTitikIndeks);
 simpan('toko-wilayah.json', tokoWilayah);
+simpan('protokol.json', protokolIndeks);
+for (const [k, isi] of Object.entries(berkasProtokol).sort()) simpan(`protokol/${k}.json`, isi);
 simpan('bpp-wilayah.json', bppWilayah);
 for (const [k, isi] of Object.entries(berkasBpp).sort()) simpan(`bpp/${k}.json`, isi);
 simpan('lab-kemampuan.json', labKepala);
@@ -2195,6 +2274,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  protokol/         : ${protokolIndeks.length} protokol, ${protokolIndeks.reduce((a, p) => a + p.langkah, 0)} langkah — ${protokolIndeks.reduce((a, p) => a + p.bertanggal, 0)} bisa ditanggalkan, sisanya menunggu fase atau ambang`);
 console.log(`  bpp/              : ${bppSemua.length} balai di ${bppWilayah.length} kabupaten/kota, ${bppWilayah.reduce((a, w) => a + w.kec, 0)} kecamatan tersebut di serves (${bppSemua.filter((b) => !(b.serves ?? []).length).length} balai kecamatannya kosong di sumbernya) — tanpa alamat, dan itu juga batas sumbernya`);
 console.log(`  lab/              : ${labSemua.length} laboratorium di ${labWilayah.length} provinsi — ${cacahKemampuan.r ?? 0} di antaranya bisa mengukur residu pestisida`);
 console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => lebihRinci(r.alamat)).length} lebih rinci dari kabupaten`);

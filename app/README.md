@@ -263,6 +263,52 @@ satu pun berstatus `published`.
 Sisi repositorinya ada di [CONTRIBUTING.md](../CONTRIBUTING.md): aturan **L35**, sematan
 `lifecycle.reviewed_hash`, dan `spec/tools/tinjau.mjs`.
 
+### Rencana musim dari protokol — E1
+
+Baris E1 berbunyi *"penyusun selesai; permukaan belum"*, dan itu tepat: `susun-rencana.mjs`
+sudah menyusun rencana sejak lama, tetapi keluarannya hanya bisa dilihat orang yang
+menjalankan Node di terminal. Permukaan juga tidak bisa dibangun di atas berkas yang tidak
+pernah terbit ke indeks — jadi protokolnya diterbitkan lebih dulu, pola yang sama seperti
+BPP dan lab sebelum C7.
+
+**Yang paling mudah dirusak layar: menyebutnya kalender.** Timing punya lima bentuk dan
+hanya `relative` yang bisa jadi tanggal. Dari empat langkah protokol yang ada, **dua** bisa
+ditanggalkan — dan angka itu jadi **judul kartunya**, bukan catatan kaki:
+
+```
+Jadwal — 2 dari 4 langkah bisa ditanggalkan
+  3 Juli 2026       Mulai mengomposkan, 60 hari sebelum pindah tanam   (tenggang 7 hari)
+  18 Agustus 2026   Pemupukan dasar organik sebelum tanam
+  menunggu fase     Pemupukan susulan saat kuncup bunga pertama
+  bila ambang       Pengendalian trips setelah ambang terlampaui
+```
+
+- **"Menunggu fase" berdiri di kolom tanggal**, bukan di bawahnya. Daftar yang
+  menyembunyikan ketiadaan tanggal di catatan kaki tetap terbaca sebagai kalender. Yang
+  bertanggal diberi warna aksen dan yang tidak, tidak — bedanya terlihat sebelum dibaca,
+  karena itu satu-satunya perbedaan yang menentukan apakah baris itu bisa dimasukkan ke
+  kalender orang.
+- **Tanggal fase tidak ditebak.** Entitas fase tidak memuat hari, durasi, maupun akumulasi
+  suhu; "BBCH 51 kira-kira hari ke-45" adalah fenologi yang dikarang. Justru penjadwalan
+  berbasis fase dipilih **karena** hari setelah tanam sering meleset saat musim mundur atau
+  varietas lebih genjah — menanggalkannya membatalkan alasan ia dipakai.
+- **Langkah berambang boleh tidak pernah berjalan**, dan barisnya mengatakannya: *"itu hasil
+  yang benar, bukan kepatuhan yang gagal"*.
+- **Yang tidak bisa dijumlahkan disebut beserta sebabnya.** Abamektin berbasis
+  `per_volume_water`, dan menjumlahkannya butuh tahu berapa kali disemprot semusim —
+  protokol tidak menyebutnya, dan menebaknya berarti mengarang jumlah yang akan dibeli
+  orang.
+- **Cacah 1 disebut.** Daftar pilihan berisi satu protokol tanpa keterangan terbaca sebagai
+  "yang lain menyusul"; yang perlu dibaca justru bahwa memang baru ada satu, berstatus
+  draft dan tingkat bukti D.
+
+**Risiko yang dinyatakan, bukan disembunyikan: ini salinan kedua aritmetika yang sama.**
+Penyusun berjalan di Node atas `spec/vocab/`, permukaan di peramban atas `spec/indeks/`,
+jadi pemisahannya tidak terhindarkan — dan dua salinan akan menyimpang begitu salah satunya
+diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan yang sama
+(pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
+ketiga angka kebutuhan input.
+
 ### Buku kas per petak — E5
 
 `docs/15` semula menduga buku kas sudah ada dalam bentuk apa pun sehingga E5 tinggal
@@ -806,9 +852,74 @@ dijawab **nol**. Itu bukan kekurangan data; itu pintu yang belum dibuka.
   gejala) **tidak beririsan sama sekali** — tidak satu pun dari 738 ada di `pest.json`.
   Versi pertama menandai mana yang bergejala dan penandanya selalu `false`; menandainya
   berarti memeriksa kecocokan yang tidak pernah dibuat siapa pun. Pintunya karena itu
-  juga berbeda: `?opt=` untuk yang terkurasi, `?hama=` untuk yang registri.
+  juga berbeda: `?hama=` khusus yang registri, dipakai beranda — yang memang tahu
+  jenisnya, karena entri yang dibukanya datang dari kepala pencarian. `?opt=` menerima
+  **id apa pun** dan menjatuhkannya sendiri ke ruang yang benar; itu yang dipakai
+  pemanggil yang tidak tahu, dan alasannya di bagian berikut.
 - **Nama ilmiah ikut sebagai alias.** Yang mengetik `Spodoptera` tidak sedang mengetik
   awalan nama Indonesianya.
+
+### Dua jalur yang saling menutup
+
+Jalur 1 dan jalur 2 menjawab pertanyaan yang berlawanan arah — "apa yang terdaftar untuk
+masalah ini" dan "apa isi barang yang saya pegang" — dan sampai sekarang masing-masing
+berhenti di tepinya sendiri. Yang membaca tabel *terdaftar untuk* di layar produk tidak
+punya jalan ke merek lain untuk OPT yang sama; yang membaca tabel merek di jalur 1 tidak
+punya jalan ke isi merek yang baru saja dibacanya. Keduanya sudah memegang kunci yang
+dibutuhkan sisi seberang; yang belum ada cuma tautannya.
+
+- **Yang dituju pasangan tanaman + OPT, bukan nama OPT saja.** Satu baris di tabel
+  *terdaftar untuk* memang menyebut keduanya, dan yang terdaftar berbeda-beda menurut
+  tanamannya: dua baris "Penyakit Hawar Daun" pada satu produk mendarat di dua layar yang
+  berlainan, kentang dan tomat. Komoditasnya ikut sebagai `&kom=`.
+- **Kunci komoditasnya tidak pernah jadi jalur berkas.** Ia dicocokkan dengan daftar
+  komoditas yang memang dibawa rekaman OPT-nya, dan yang dibuka berkas dari daftar itu.
+  Kunci yang tidak ada di daftar tidak membuka apa pun, dan layarnya berhenti di daftar
+  komoditas — persis seperti masuk tanpa penunjuk.
+- **Penjagaan jalur 1 tidak dilompati.** Layar tujuan tetap membuka dengan kartunya —
+  *"pastikan dulu"* untuk yang terkurasi, *"kamu masuk lewat nama"* untuk yang registri —
+  dan penggulirannya dimatikan justru untuk itu. Menggulir langsung ke daftar bahan
+  melewatinya tanpa suara; yang mengetuk dari daftar di halaman yang sama sudah
+  membacanya, yang mendarat dari halaman lain belum.
+- **Yang tidak bisa dituju tidak bertaut, dan jumlahnya disebut.** 2.438 dari 23.058
+  penggunaan berlabel mengosongkan tautan OPT atau komoditasnya di registri — pemakaian
+  bukan-tanaman seperti *kayu gergajian* dan *di dalam ruangan*, yang tidak pernah
+  menghasilkan layar di jalur 1. Nama yang tertulis tetap ditampilkan apa adanya, dan
+  kaki tabelnya menyebut berapa baris yang buntu di produk itu.
+- **Ruang id-nya diputuskan jalur 1, bukan jalur 2.** Rekaman penggunaan berlabel cuma
+  menyebut `op:pst:...`, dan registri tidak menandai mana yang kebetulan ikut terkurasi.
+  Memaksa jalur 2 menebak berarti menyuruhnya mengarang. Daftar terkurasi sudah ada di
+  ingatan jalur 1 sejak halaman muat, jadi keputusannya tidak menambah satu perjalanan
+  pun — dan yang bukan anggotanya tidak pernah dicari sebagai teks gejala.
+
+Arah sebaliknya, dari tabel merek ke rincian produk:
+
+- **Nama merek jadi tautan, dan gambar kemasannya mendahuluinya.** Nomor pendaftaran
+  sudah ada di layar; yang kurang cuma alamat rinciannya. Pecahannya dibawa rekaman merek
+  itu sendiri (`p`) — dihitung dari peta pecahan, bukan ditebak dari nomor urut, sebab
+  pecahan dipotong menurut ukuran dan tidak ada rumus dari id ke nomornya.
+- **Petak kemasan berukuran tetap, bergambar maupun belum.** Gambar `kecil` dibatasi
+  320 px pada sisi terpanjangnya dan nisbahnya berselisih — 320x320 sampai 320x213 — jadi
+  tinggi baris yang mengikuti gambarnya akan bergoyang saat satu per satu mendarat.
+  `object-fit: contain` di kotak 40 px menahan seluruh kemasan tetap terlihat;
+  memangkasnya jadi persegi memotong justru bagian yang dicocokkan mata.
+- **Yang belum bergambar tidak dibiarkan kosong melompong.** Hanya 15% baris merek punya
+  gambar, jadi keadaan yang lazim justru yang tanpa — dan sederet sel kosong di antara
+  yang bergambar terbaca sebagai *"yang ini yang meragukan"*, padahal artinya cuma situs
+  pemegangnya belum dipanen. Petak bergaris putus-putus menempati ruang yang sama, dan
+  kaki tabelnya mengatakannya dengan kata-kata.
+- **Peringatan gambarnya ikut, dipendekkan.** Layar rincian sudah lama berkata gambar
+  kemasan bukan bukti apa pun tentang barang di tangan — desain berubah, dan pemalsu
+  menyalin desain. Menaruh gambarnya di tabel tanpa membawa kalimat itu memindahkan
+  gambarnya saja dan meninggalkan syaratnya.
+- **Dua tabel merek, satu rupa.** Yang di jalur 1 (per OPT + komoditas) dan yang di layar
+  bahan aktif jalur 2 (per bahan + kadar) menyatakan hal yang sama; memberinya dua rupa
+  membuat orang mengira keduanya dua hal yang berbeda. Keduanya membaca `gambarKecil()`
+  yang sama di pembangun indeks, dan memakai kelas yang sama di layar.
+- **Ongkosnya 916 KB pada `opt/` dan `bahan/`** — 569 KB untuk 34.293 penunjuk pecahan,
+  346 KB untuk 4.790 nama berkas gambar, naik 11,9% pada dua cabang itu dan 2,7% pada
+  seluruh indeks. Tidak satu berkas pun melewati anggaran 48 KB sesudahnya; yang gemuk
+  dipecah lebih banyak oleh pemecah yang sudah ada.
 
 ### Kotak tanya multimoda — A1
 
