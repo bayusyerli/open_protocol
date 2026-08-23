@@ -312,15 +312,21 @@ penggolongannya tiga, bukan dua:
 
 | Golongan | Varian | Berangka | Di layar |
 |---|---:|---:|---|
-| `pangan` — yang dipanen, diternakkan, atau ditangkap | 46 | 34 | ya |
+| `pangan` — yang dipanen, diternakkan, atau ditangkap | 43 | 31 | ya |
 | `input` — benih dan pupuk | 7 | 1 | ya |
-| `luar` — bahan bangunan, LPG, dan pangan olahan | 35 | 8 | tidak |
+| `luar` — bahan bangunan, LPG, dan pangan olahan | 38 | 11 | tidak |
 
 Pemisah golongan `luar` sempat beralasan "bahan bakunya impor", dan alasan itu keliru: tebu
 dan sawit ditanam di Indonesia, tetapi harga gula pasir dan minyak goreng tetap **harga
 eceran barang olahan** — yang menghadapinya pembeli di toko, bukan petani tebu maupun petani
 sawit. Yang membedakan tingkat olahannya, bukan asal bahan bakunya. Beras tetap masuk meski
 digiling: satu langkah dari gabah, dan itu cara harga padi diucapkan di seluruh Indonesia.
+
+Garam menempuh jalan berbeda ke kesimpulan yang sama, dan layak dicatat karena ia bukan
+soal "hasil tani atau bukan": petani garam memang memanennya sendiri. Yang SP2KP terbitkan
+`Garam Halus` — sudah digiling dan beryodium — sementara **garam krosok yang benar-benar
+keluar dari tambak tidak diterbitkan sama sekali.** Jadi angka yang ada bukan angka yang
+dihadapi petani garam, dan itu alasan yang sama persis seperti gula terhadap petani tebu.
 
 Yang `luar` **tetap tercatat di kosakata**, dan jumlahnya disebut di layar beserta daftarnya
 di balik satu ketukan. Menyaringnya diam-diam akan membuat cacah di layar tidak pernah cocok

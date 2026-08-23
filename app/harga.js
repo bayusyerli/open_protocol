@@ -102,7 +102,7 @@ function gambarDaftar(kueri = '') {
           Endpoint yang sama memuat <strong>bahan bangunan</strong> — baja ringan, besi beton,
           kayu balok, triplek, paku, semen — beserta <strong>LPG</strong> dan
           <strong>pangan olahan</strong>: gula pasir, minyak goreng, tepung terigu, susu,
-          mie instan.
+          mie instan, tahu, tempe, garam halus.
         </p>
         <p class="catatan">
           Yang olahan dikeluarkan bukan karena bahan bakunya impor — tebu dan sawit ditanam di

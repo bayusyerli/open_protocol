@@ -102,7 +102,8 @@ function sambungKomoditas(nama) {
 //   pangan   yang dipanen, diternakkan, atau ditangkap — barang yang petani, peternak, dan
 //            nelayan hasilkan sendiri
 //   input    sarana produksi: benih dan pupuk. Tipe 2 di sumbernya, tetapi inti di sini.
-//   luar     bahan bangunan, LPG, dan PANGAN OLAHAN
+//   luar     bahan bangunan, LPG, dan PANGAN OLAHAN — termasuk yang bahan bakunya tumbuh
+//            di sini, karena yang menghadapi harganya tetap pembeli di toko
 //
 // Yang `luar` TIDAK dibuang dari kosakata — ia tetap tercatat, karena SP2KP memang
 // menerbitkannya dan menghapusnya membuat cacah di dokumen tidak bisa direkonsiliasi dengan
@@ -144,6 +145,16 @@ const PANGAN_OLAHAN = new Set([
   'Minyak Goreng Sawit Curah',
   'Minyak Goreng Sawit Kemasan Premium',
   'Minyakita',
+  // Olahan kedelai. Aturan yang sama dengan gula terhadap tebu — dan sinyal harga bahannya
+  // tidak hilang, karena Kedelai Lokal dan Kedelai Impor tetap ditampilkan.
+  'Tahu Putih',
+  'Tempe Bungkus',
+  // Garam menempuh jalan yang sedikit berbeda ke kesimpulan yang sama. Petani garam memang
+  // memanennya sendiri, jadi bukan "bukan hasil tani" yang mengeluarkannya. Yang SP2KP
+  // terbitkan `Garam Halus` — sudah digiling dan beryodium — sementara garam krosok yang
+  // benar-benar keluar dari tambak tidak diterbitkan sama sekali. Jadi angka yang ada bukan
+  // angka yang dihadapi petani garam, dan itu alasan yang sama persis seperti gula.
+  'Garam Halus',
 ]);
 
 function golongan(v) {
@@ -358,7 +369,7 @@ for (const x of berangka) berangkaGol[x.sector] = (berangkaGol[x.sector] ?? 0) +
 console.log(`Golongan              : pangan ${n(perGolongan.pangan ?? 0)} · input ${n(perGolongan.input ?? 0)} · luar ${n(perGolongan.luar ?? 0)}`);
 console.log(`  berangka per golongan: pangan ${n(berangkaGol.pangan ?? 0)} · input ${n(berangkaGol.input ?? 0)} · luar ${n(berangkaGol.luar ?? 0)}`);
 console.log(`  yang TAMPIL di layar : ${n((berangkaGol.pangan ?? 0) + (berangkaGol.input ?? 0))} berangka, dari ${n((perGolongan.pangan ?? 0) + (perGolongan.input ?? 0))} varian tani`);
-console.log(`  disembunyikan layar  : ${n(perGolongan.luar ?? 0)} — bahan bangunan, LPG, dan olahan lanjut berbahan impor`);
+console.log(`  disembunyikan layar  : ${n(perGolongan.luar ?? 0)} — bahan bangunan, LPG, dan pangan olahan`);
 console.log(`Bermusim (≥12 bulan)  : ${n(berangka.filter((x) => x.stats.musim).length)}`);
 console.log(`Seri berlubang        : ${n(berangka.filter((x) => x.coverage.gaps > 0).length)} varian punya hari tanpa angka`);
 console.log(`Sisi pupuk & benih    : ${items.filter((x) => /^(pupuk|benih)/i.test(x.label.id)).map((x) => `${x.label.id}${x.series ? '' : ' (kosong)'}`).join(' · ') || '—'}`);
