@@ -411,14 +411,36 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | D1 | Rp per kg hara | petani, kios, poktan | #6 | **selesai** — jalur 3 | **selesai** |
 | D2 | Kebutuhan input per luas | petani, petugas lapang | #6 | **selesai** — `susun-rencana.mjs` | **selesai** |
 | D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | harga dari pengguna, seperti jalur 3 | **BANGUN** |
-| D4 | **Kalibrasi semprot** — volume, kecepatan jalan, nozel, jumlah tangki | petani, buruh semprot | #9 + keselamatan | tidak butuh data baru | **BANGUN** |
-| D5 | Takaran alat rumah tangga — tutup botol, gelas, sendok | petani | #6, #9 | tidak butuh data baru | **BANGUN** |
+| D4 | **Kalibrasi semprot** — volume, kecepatan jalan, nozel, jumlah tangki | petani, buruh semprot | #9 + keselamatan | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 1–2 | **selesai** |
+| D5 | Takaran alat rumah tangga — tutup botol, gelas, sendok | petani | #6, #9 | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 3 | **selesai** |
 | D6 | Kalkulator susut & kelas mutu pascapanen | petani, bandar, offtaker | #14 | belum ada | **TUNDA** |
 
 > **D4 dan D5 adalah dua kapabilitas termurah yang paling langsung menyentuh keselamatan.**
 > Anjuran "2 ml per liter" tidak berguna bagi orang yang menakar dengan tutup botol, dan
 > dosis label yang benar menjadi salah begitu kalibrasi tangki keliru. Keduanya tidak
 > menuntut satu baris data baru — hanya aritmetika dan bentuk layar yang benar.
+
+> **Dibangun 23 Agustus 2026** sebagai `app/takaran.html` — layar utilitas, bukan jalur
+> ketujuh: `ukur.js` menghitung per jalur menurut tabel di
+> [11-instrumentasi.md](11-instrumentasi.md), dan menomorinya akan mengubah tabel itu.
+> Tiga hal yang baru ketahuan saat membangunnya:
+>
+> 1. **Dosis label ada dua keluarga yang aritmetikanya tidak berhubungan**, dan mengetahui
+>    yang mana yang dipegang menentukan apakah kalibrasi perlu sama sekali. Terhitung dari
+>    registri: **47,2%** per hektare, **27,3%** per liter air. Yang per liter sudah
+>    menyebut kepekatannya; yang per hektare tidak bisa dihitung sebelum luas jangkauan
+>    satu tangki diketahui.
+> 2. **22,8% penggunaan berlabel tidak memuat dosis sama sekali** — 5.268 dari 23.058,
+>    medannya kosong di registri. Untuk penggunaan itu tidak ada angka yang bisa
+>    diambilkan, dan layar mengatakannya alih-alih menampilkan nol.
+> 3. **Tiap pembagian harus bisa dihitung ulang pembaca, bukan sekadar ditampilkan.**
+>    Versi pertama menulis `45 × 6,7 = 300 ml` — dan 45 × 6,7 sebenarnya 301,5, karena
+>    jumlah tangkinya sudah dibulatkan saat ditampilkan. Pada permukaan yang menjanjikan
+>    hitungannya bisa dibantah, baris yang tidak bisa direproduksi membatalkan janjinya.
+>
+> **Keselamatan sengaja tidak disentuh:** APD, cara mencampur, gejala keracunan, dan nomor
+> darurat itu **B2**, dan menyisipkan sebagiannya di sini akan membuat layar terbaca seolah
+> sudah lengkap.
 
 ### E · RENCANA & CATAT — eksekusi
 
@@ -547,7 +569,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 | 1 | **B1** komponen batas jawaban — **selesai** | Prasyarat semua layar berikutnya; tanpa ini tiap layar baru menambah utang kepercayaan |
 | 2 | **A3** kamus nama lokal — **sisi OPT selesai** | Menentukan apakah jalur 1 bisa dipakai orang yang belum tahu jawabannya |
 | 3 | **C2** keaslian & anti-palsu — lewat **kandungan**, bukan nomor — **sisi pupuk selesai** | Nilai tertinggi per biaya, dan kini melacak perilaku yang sudah terjadi |
-| 4 | **D4 + D5** kalibrasi & takaran | Termurah; menyentuh keselamatan; tidak butuh data baru |
+| 4 | **D4 + D5** kalibrasi & takaran — **selesai** | Termurah; menyentuh keselamatan; tidak butuh data baru |
 | 5 | **B4** antrean pertanyaan tak terjawab | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
 | 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
 | 7 | **A5** luring penuh | Indeks sudah ≤48 KB — separuh jalan |

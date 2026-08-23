@@ -12,6 +12,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `jalur-4.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
 | `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
 | `jalur-6.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
+| `takaran.html` | — kalibrasi semprot & takaran alat rumah tangga: aritmetika, bukan anjuran | D4 + D5 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
 
 `beranda.html` tidak punya perender rincian sama sekali. Ia mencari, lalu menautkan
@@ -195,6 +196,45 @@ kenapa" memang berbeda di tiap jalur.
   hitungan di peranti pembaca sendiri, dan keempat medannya akan kosong artinya. Memberinya
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
+
+### Kalibrasi & takaran — D4 dan D5
+
+`takaran.html`. Dua kapabilitas termurah yang paling langsung menyentuh keselamatan, dan
+keduanya tidak menuntut satu baris data baru — hanya aritmetika dan bentuk layar yang
+benar. Anjuran "2 ml per liter" tidak berguna bagi yang menakar dengan tutup botol, dan
+dosis label yang benar jadi salah begitu kalibrasi tangki keliru.
+
+- **Bukan jalur ketujuh, dan itu keputusan.** Enam pintu ditetapkan
+  [`docs/03-enam-pintu.md`](../docs/03-enam-pintu.md), dan `ukur.js` menghitung **per
+  jalur** menurut tabel di [`docs/11`](../docs/11-instrumentasi.md). Menomorinya jadi
+  jalur 7 mengubah tabel itu; ia berdiri sebagai layar utilitas seperti `ukur.html`,
+  ditautkan dari kesembilan halaman.
+- **Ditulis untuk orang yang tidak memilih dosisnya.** Ditanya siapa yang menakar di
+  lahan, jawabannya *"keduanya"* — petani **dan** buruh semprot, dan yang kedua menerima
+  dosis, tidak memutuskannya. Jadi layar tidak pernah bertanya "mau pakai berapa"; ia
+  bertanya "berapa yang tertulis", lalu menghitung.
+- **Dua bentuk dosis, dan bedanya menentukan apakah kalibrasi perlu sama sekali.**
+  Terhitung dari registri: **47,2%** penggunaan berlabel memakai per hektare, **27,3%**
+  per liter air, dan **22,8% tidak memuat dosis sama sekali**. Yang per liter sudah
+  menyebut kepekatannya; yang per hektare tidak bisa dihitung sebelum diketahui berapa
+  luas yang dijangkau satu tangki. Angka sebarannya dihitung `bangun-indeks.mjs`, bukan
+  diketik di layar, supaya tidak bisa basi.
+- **Tidak ada ukuran bawaan untuk tutup botol, sendok, atau gelas.** Tutup yang berbeda
+  berselisih dua sampai empat kali lipat; menyebut "satu tutup" sebagai takaran berarti
+  mengarang angka yang bisa melipatgandakan dosis — pada layar yang justru dibangun untuk
+  keselamatan. Kalau takarannya belum diukur, yang ditampilkan **sebaran akibatnya**
+  (5 → 30 ml, berselisih 6 kali lipat) beserta cara mengukurnya sekali seumur alat.
+- **Tiap pembagian harus bisa direproduksi pembaca, bukan sekadar ditampilkan.** Versi
+  pertama menulis `45 × 6,7 = 300 ml` untuk total petak — dan 45 × 6,7 sebenarnya 301,5,
+  karena jumlah tangkinya ditampilkan sudah dibulatkan. Pada layar yang menjanjikan
+  pembagiannya bisa dibantah, baris yang tidak bisa dihitung ulang membatalkan janjinya.
+  Total petak kini diturunkan langsung dari luas, bukan dari angka yang sudah dibulatkan.
+- **ml dan gram tidak pernah disatukan.** Berat jenis tidak ada di registri, jadi hasil
+  bersatuan gram tidak diteruskan ke bagian takaran — menakar gram dengan tutup botol
+  menuntut konversi yang tidak dimiliki siapa pun di sini.
+- **Keselamatan sengaja tidak disentuh.** APD, cara mencampur, gejala keracunan, dan
+  nomor darurat itu **B2**, dan belum dibangun. Menyisipkan sebagiannya di sini akan
+  membuat halaman ini terbaca seolah sudah lengkap.
 
 ### Pemeriksaan keaslian lewat kandungan — C2
 

@@ -127,12 +127,20 @@ const JUDUL_LUBANG = {
   haraSediaan: 'Kadar hara sediaan buatan sendiri',
   namaDagang: 'Nama dagang di kemasan',
   sertifikasiLot: 'Sertifikasi lot benih & bibit',
+  wilayahNamaLokal: 'Wilayah pemakaian nama lokal',
+  isiKarung: 'Isi karung, bukan labelnya',
+  dosisKosong: 'Dosis yang tidak tercatat di registri',
+  takaranRumahTangga: 'Ukuran tutup botol, sendok, dan gelas',
 };
 
 function bacaLubang(acuan, meta, salah) {
   if (typeof acuan === 'string') {
     const t = meta?.tidakAda?.[acuan];
     if (!t) { salah.push(`lubang "${acuan}" tidak ada di meta.tidakAda`); return null; }
+    // Kunci tanpa judul pernah lolos dua kali dan tampil apa adanya di layar —
+    // "takaranRumahTangga" bukan kalimat, dan pembaca tidak berutang membacanya sebagai
+    // kalimat. Sejak 23 Agustus 2026 itu cacat, bukan cadangan yang diam-diam dipakai.
+    if (!JUDUL_LUBANG[acuan]) salah.push(`lubang "${acuan}" belum punya judul di JUDUL_LUBANG`);
     return { judul: JUDUL_LUBANG[acuan] ?? acuan, teks: t };
   }
   if (!acuan?.judul || !acuan?.teks) { salah.push('lubang sebaris tanpa judul atau teks'); return null; }

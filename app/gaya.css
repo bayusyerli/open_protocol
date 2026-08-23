@@ -508,3 +508,41 @@ a { color: var(--aksen); }
   .baris-hara .k-satuan { grid-column: auto; }
   .baris-hara .k-buang { grid-row: auto; grid-column: auto; }
 }
+
+/* ------------------------------------------------ kalibrasi & takaran (D4/D5) */
+
+.kisi-isian { display: grid; gap: .8rem; margin: .9rem 0 0; }
+@media (min-width: 34rem) { .kisi-isian { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+.isian { margin: 0; }
+.isian label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .3rem; }
+
+.isian input,
+.isian select {
+  width: 100%;
+  min-height: 44px;
+  padding: .5rem .7rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar-kartu);
+  color: var(--teks);
+  font: inherit;
+}
+
+.isian input:focus-visible,
+.isian select:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+/* Satu angka besar sebagai jawaban, lalu pembagiannya di bawahnya. Bentuk yang sama
+   dipakai jalur 3: yang dibaca lebih dulu hasilnya, yang dibantah pembagiannya. */
+.hasil-besar {
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .5rem;
+  margin: 1rem 0 0; padding: .8rem .9rem;
+  border: 1px solid var(--aksen); border-radius: var(--sudut);
+  background: var(--aksen-lemah);
+}
+.hasil-besar strong { font-size: 1.5rem; line-height: 1.1; color: var(--teks); }
+.hasil-besar span { color: var(--teks-lemah); font-size: .88rem; }
+
+#hasilKalibrasi table th,
+#hasilDosis table th,
+#hasilTakar table th { white-space: normal; width: 11rem; }

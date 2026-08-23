@@ -301,6 +301,27 @@ const perKomoditas = new Map();
 // terkurasi jadi 246.) Semuanya tetap terbaca dari
 // sisi produk (`guna` pada rincian produk membawa null apa adanya); yang dicatat di
 // sini adalah berapa banyak yang tidak bisa dijangkau dari jalur 1.
+// ---------------------------------------------------------------------------
+// Bentuk dosis pada label — D4/D5
+// ---------------------------------------------------------------------------
+// Dosis label datang dalam dua keluarga yang aritmetikanya sama sekali berbeda, dan
+// mengetahui yang mana yang dipegang menentukan apakah kalibrasi tangki perlu sama
+// sekali. Per liter air: kadarnya tetap, kalibrasi hanya menentukan berapa tangki.
+// Per hektare: berapa yang masuk ke satu tangki BERGANTUNG pada luas yang dijangkau
+// tangki itu, jadi tanpa kalibrasi angkanya tidak bisa dihitung sama sekali.
+//
+// Dihitung di sini, bukan diketik di layar, supaya tidak bisa basi.
+const bentukDosis = { perHektare: 0, perLiter: 0, kosong: 0, lain: 0 };
+for (const p of pestisida) {
+  for (const u of p.label_uses ?? []) {
+    const t = (u.rate_unit_text ?? '').trim().toLowerCase();
+    if (!u.rate_text || !t) bentukDosis.kosong++;
+    else if (/\/\s*ha$|^liter\/ha$/.test(t)) bentukDosis.perHektare++;
+    else if (/^(ml|g|gr|cc)\s*\/\s*l$/.test(t)) bentukDosis.perLiter++;
+    else bentukDosis.lain++;
+  }
+}
+
 const terbuang = { tanpaOpt: 0, tanpaKomoditas: 0, tanpaKeduanya: 0, penggunaan: 0 };
 for (const p of pestisida) {
   for (const u of p.label_uses ?? []) {
@@ -1225,6 +1246,10 @@ const meta = {
     namaLokalTaksa: namaLokalCari.filter((x) => x.ke.length > 1).length,
     bahanAktifTerpakai: bahanRinci.length,
     kartuBahanKadar: bahanRinci.reduce((a, b) => a + b.kadar.length, 0),
+    dosisPerHektare: bentukDosis.perHektare,
+    dosisPerLiter: bentukDosis.perLiter,
+    dosisKosong: bentukDosis.kosong,
+    dosisLain: bentukDosis.lain,
     sidikKandungan: kandungan.size,
     produkBerkandungan: [...kandungan.values()].reduce((a, d) => a + d.length, 0),
   },
@@ -1267,6 +1292,10 @@ const meta = {
       'Kadar hara sediaan buatan sendiri tidak diketahui sebelum batchnya diuji: L18 menolak menghitung hara dari batch yang belum diuji, dan kadar kompos berbeda tiap tumpukan. Karena itu resep jalur 5 muncul di jalur 3 tanpa rupiah per kg hara — tanpa angka, bukan dengan angka taksiran.',
     namaDagang: 'Registri menyimpan nama produk terdaftar; nama di kemasan bisa berbeda dan belum terpetakan.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
+    dosisKosong:
+      'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',
+    takaranRumahTangga:
+      'Tidak ada satu pun ukuran baku untuk tutup botol, sendok, atau gelas, dan registri tidak memuatnya. Tutup botol yang berbeda berselisih dua sampai empat kali lipat, jadi menyebut "satu tutup" sebagai takaran berarti mengarang angka yang bisa melipatgandakan dosis. Yang bisa dilakukan layar hanya menghitung dari ukuran yang diukur sendiri pemakainya.',
     isiKarung:
       'Kandungan yang cocok membuktikan LABELNYA sesuai dengan yang terdaftar. Ia tidak membuktikan isi karungnya. Justru di situ bahayanya paling tajam: kasus pupuk palsu Rp3,3 triliun persis berupa karung yang berbeda dari labelnya sendiri — NPK di bawah 1% padahal minimum 15%. Yang bisa memastikan isi hanya uji laboratorium, dan itu di luar jangkauan permukaan ini.',
     wilayahNamaLokal:

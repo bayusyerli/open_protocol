@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kalibrasi &amp; takaran — Open Protocols</title>
+<meta name="description" content="Ubah dosis di label jadi angka yang bisa dijalankan di lahan: berapa yang masuk ke tangki, berapa tangki untuk petaknya, dan berapa banyak kalau menakarnya bukan dengan gelas ukur.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Kalibrasi &amp; takaran</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Dosisnya sudah ada. Berapa yang masuk ke tangki?</h1>
+  <p class="lede">
+    Halaman ini <strong>tidak memilihkan dosis</strong> dan tidak menganjurkan apa pun.
+    Dosisnya datang dari labelmu sendiri — atau dari orang yang menyuruhmu menyemprot.
+    Yang dikerjakan di sini cuma aritmetikanya, dan aritmetika itu ditulis terbuka
+    supaya bisa diperiksa.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Hitungan ini butuh JavaScript</h2>
+    <p>Seluruh angkanya dihitung di peranti ini. Tanpa JavaScript, kotak isian di bawah tidak akan menanggapi apa pun.</p>
+  </div>
+
+  <div class="kartu">
+    <h2>Dosis label ada dua bentuk, dan bedanya menentukan segalanya</h2>
+    <p>
+      Yang tertulis <strong>per liter air</strong> — <code>2 ml/l</code> — sudah menyebut
+      kepekatannya. Kalibrasi tangki tidak mengubah kepekatan itu; ia hanya menentukan
+      <em>berapa tangki</em> yang dihabiskan.
+    </p>
+    <p>
+      Yang tertulis <strong>per hektare</strong> — <code>1,5 l/ha</code> — belum menyebut
+      apa pun tentang tangki. Berapa yang masuk ke satu tangki bergantung pada
+      <strong>berapa luas yang dijangkau tangki itu</strong>, dan itu berbeda di tiap
+      penyemprot. Tanpa kalibrasi, angkanya memang tidak bisa dihitung.
+    </p>
+    <p class="catatan" id="sebaranDosis">Memuat sebaran bentuk dosis dari registri…</p>
+  </div>
+
+  <h2 class="judul-bagian">1 · Kalibrasi — satu tangki menjangkau berapa luas</h2>
+
+  <div class="kartu">
+    <p>
+      Sekali diukur, berlaku untuk penyemprot dan cara jalan yang sama. Ulangi kalau
+      nozelnya diganti, tekanannya berubah, atau orang yang menyemprot berganti.
+    </p>
+    <ol class="periksa">
+      <li>Isi tangki dengan <strong>air biasa saja</strong>, tanpa campuran apa pun.</li>
+      <li>Semprot sepetak percobaan seperti biasa — kecepatan jalan dan ayunan yang sama.</li>
+      <li>Ukur <strong>luas yang tersemprot</strong> dan <strong>berapa liter air terpakai</strong>.</li>
+    </ol>
+    <form id="formKalibrasi" onsubmit="return false">
+      <div class="kisi-isian">
+        <p class="isian">
+          <label for="airTerpakai">Air terpakai (liter)</label>
+          <input id="airTerpakai" type="number" inputmode="decimal" min="0" step="any" placeholder="misal: 5">
+        </p>
+        <p class="isian">
+          <label for="luasSemprot">Luas tersemprot (m²)</label>
+          <input id="luasSemprot" type="number" inputmode="decimal" min="0" step="any" placeholder="misal: 100">
+        </p>
+        <p class="isian">
+          <label for="volTangki">Volume tangki penuh (liter)</label>
+          <input id="volTangki" type="number" inputmode="decimal" min="0" step="any" placeholder="misal: 15">
+        </p>
+      </div>
+    </form>
+    <div id="hasilKalibrasi" aria-live="polite"></div>
+  </div>
+
+  <h2 class="judul-bagian">2 · Berapa produk yang masuk ke satu tangki</h2>
+
+  <div class="kartu">
+    <form id="formDosis" onsubmit="return false">
+      <p class="isian">
+        <label for="bentukDosis">Bentuk dosis di labelmu</label>
+        <select id="bentukDosis">
+          <option value="perLiter">per liter air — ml/l atau g/l</option>
+          <option value="perHektare">per hektare — l/ha, kg/ha, ml/ha, g/ha</option>
+        </select>
+      </p>
+      <div class="kisi-isian">
+        <p class="isian">
+          <label for="nilaiDosis">Angka dosisnya</label>
+          <input id="nilaiDosis" type="number" inputmode="decimal" min="0" step="any" placeholder="misal: 2">
+        </p>
+        <p class="isian">
+          <label for="satuanDosis">Satuannya</label>
+          <select id="satuanDosis"></select>
+        </p>
+        <p class="isian" id="bungkusLuasPetak">
+          <label for="luasPetak">Luas petak yang mau disemprot (m²)</label>
+          <input id="luasPetak" type="number" inputmode="decimal" min="0" step="any" placeholder="misal: 2000">
+        </p>
+      </div>
+      <p class="bantuan">
+        Kalau dosis di label berupa rentang — <code>0,75 – 1,5 l/ha</code> — isi salah
+        satu ujungnya dulu, lalu ulangi dengan ujung yang lain. Layar ini tidak memilihkan
+        yang mana.
+      </p>
+    </form>
+    <div id="hasilDosis" aria-live="polite"></div>
+  </div>
+
+  <h2 class="judul-bagian">3 · Menakar tanpa gelas ukur</h2>
+
+  <div class="kartu">
+    <p>
+      Angka <code>2 ml</code> tidak berguna bagi yang menakar dengan tutup botol. Tetapi
+      <strong>tidak ada ukuran baku</strong> untuk tutup botol, sendok, atau gelas —
+      tutup yang berbeda berselisih dua sampai empat kali lipat. Karena itu layar ini
+      tidak akan menyebut “sekian tutup” sebelum tutupmu sendiri diukur.
+    </p>
+    <p class="catatan">
+      <strong>Mengukurnya sekali saja, dan selesai selamanya.</strong> Isi tutupmu sampai
+      penuh, tuang ke botol air mineral bervolume tercetak, ulangi sambil dihitung sampai
+      botolnya penuh. Volume botol dibagi jumlah tuangan = isi satu tutup.
+    </p>
+    <form id="formTakar" onsubmit="return false">
+      <div class="kisi-isian">
+        <p class="isian">
+          <label for="perluMl">Yang perlu ditakar (ml)</label>
+          <input id="perluMl" type="number" inputmode="decimal" min="0" step="any" placeholder="terisi dari bagian 2">
+        </p>
+        <p class="isian">
+          <label for="isiTakaran">Isi satu takaranmu (ml)</label>
+          <input id="isiTakaran" type="number" inputmode="decimal" min="0" step="any" placeholder="kosongkan kalau belum diukur">
+        </p>
+      </div>
+    </form>
+    <div id="hasilTakar" aria-live="polite"></div>
+  </div>
+
+  <details class="batas">
+    <summary><h2>Apa yang halaman ini tidak kerjakan</h2></summary>
+    <div class="batas-isi">
+      <h3>Tidak memilihkan dosis</h3>
+      <p>
+        Angka dosis datang dari label produkmu, dan rentang pada label tetap rentang —
+        layar ini tidak menyempitkannya. Yang memilih tetap yang memegang labelnya, atau
+        penyuluh.
+      </p>
+
+      <h3>Tidak menghitung keselamatan</h3>
+      <p>
+        Alat pelindung diri, cara mencampur yang aman, gejala keracunan, dan nomor
+        darurat <strong>tidak ada di halaman ini</strong>. Itu kapabilitas tersendiri yang
+        belum dibangun, dan menyisipkan sebagiannya di sini akan membuat halaman ini
+        terbaca seolah sudah lengkap.
+      </p>
+
+      <h3>Tidak tahu ukuran takaran rumah tangga</h3>
+      <p>
+        Tidak ada satu pun ukuran baku untuk tutup botol, sendok, atau gelas, dan registri
+        tidak memuatnya. Layar hanya bisa menghitung dari ukuran yang <em>kamu</em> ukur
+        sendiri; kalau belum diukur, yang ditampilkan sebaran akibatnya — bukan satu angka.
+      </p>
+
+      <h3>Tidak memeriksa apakah kalibrasimu benar</h3>
+      <p>
+        Aritmetikanya jujur terhadap angka yang dimasukkan. Kalau luas percobaan salah
+        ukur, seluruh hasil di bawahnya ikut salah dengan besar yang sama — dan tidak ada
+        cara halaman ini mengetahuinya.
+      </p>
+    </div>
+  </details>
+
+  <p class="lain">
+    <a href="beranda.html">← Beranda</a> ·
+    <a href="jalur-1.html">Ada masalah di tanaman →</a> ·
+    <a href="index.html">Cek isi produk →</a> ·
+    <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
+    <a href="jalur-4.html">Cek keabsahan benih &amp; bibit →</a> ·
+    <a href="jalur-5.html">Meramu pupuk sendiri →</a> ·
+    <a href="jalur-6.html">Sediaan pengendali sendiri — status hukumnya →</a> ·
+    <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
+  </p>
+
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Angka dosis dari labelmu sendiri; sebaran bentuk dosis dari registri pestisida Kementan.</p>
+  </section>
+
+</main>
+
+<script type="module" src="takaran.js"></script>
+</body>
+</html>
