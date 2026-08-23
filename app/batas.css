@@ -429,3 +429,49 @@
   font-size: .92rem;
   min-height: 1.2em;
 }
+
+/* ------------------------------------------------------------- saring lab */
+/* Penyaring kemampuan di layar C7. Ia radio, bukan kotak centang: "tanah DAN residu"
+   menghasilkan irisan yang hampir selalu kosong, dan daftar kosong yang benar lebih
+   membingungkan daripada satu penyaring yang jelas. */
+.saring {
+  --bj-teks:  var(--teks,        var(--tinta));
+  --bj-garis: var(--garis);
+  --bj-aksen: var(--aksen,       var(--hijau-2));
+  --bj-latar: var(--latar-kartu, var(--kertas));
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: .9rem 0 0;
+  padding: .7rem .8rem;
+  border: 1px solid var(--bj-garis);
+  border-radius: 10px;
+}
+
+.saring legend { padding: 0 .3rem; font-weight: 600; font-size: .88rem; color: var(--bj-teks); }
+
+.saring-pilih {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  min-height: 44px;
+  padding: .3rem .6rem;
+  border: 1px solid var(--bj-garis);
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: .87rem;
+  color: var(--bj-teks);
+}
+
+.saring-pilih input { accent-color: var(--bj-aksen); }
+.saring-pilih:focus-within { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+.saring-pilih:has(input:checked) { border-color: var(--bj-aksen); background: var(--bj-latar); }
+
+/* Akreditasi yang sudah lewat masa berlakunya. Ini SATU-SATUNYA tempat di seluruh
+   permukaan yang memakai warna peringatan untuk keadaan data, dan sebabnya sempit:
+   laboratorium yang akreditasinya lewat bukan laboratorium yang "kurang baik", ia
+   laboratorium yang hasil ujinya TIDAK DIAKUI — dan itu tidak terbaca dari namanya.
+   Satu dari 17 laboratorium residu berada dalam keadaan itu. */
+tr.lewat-masa { opacity: .72; }
+tr.lewat-masa td:first-child { border-left: 3px solid var(--awas, var(--amber, #b26a00)); padding-left: .5rem; }

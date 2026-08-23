@@ -1687,12 +1687,16 @@ const labWilayah = [...perLab.values()]
   .sort((a, b) => a.wilayah.localeCompare(b.wilayah))
   .map((w) => {
     berkasLab[w.kunci] = w.isi.sort((a, b) => a.n.localeCompare(b.n));
-    return {
-      k: w.kunci,
-      w: w.wilayah,
-      n: w.isi.length,
-      r: w.isi.filter((x) => x.k.includes('r')).length,
-    };
+    // Cacah PER KEMAMPUAN, bukan cuma total dan residu. Tanpa ini penyaring "siapa yang
+    // bisa menguji tanah" memaksa orang membuka provinsi satu per satu untuk menemukan
+    // nol — memindahkan pekerjaan memilah ke pembacanya, persis yang dihindari dengan
+    // menaruh kemampuan di kepala sejak awal.
+    const per = {};
+    for (const kode of Object.keys(ARTI_KEMAMPUAN)) {
+      const c = w.isi.filter((x) => x.k.includes(kode)).length;
+      if (c) per[kode] = c;
+    }
+    return { k: w.kunci, w: w.wilayah, n: w.isi.length, per };
   });
 
 const labKepala = { arti: ARTI_KEMAMPUAN, cacah: cacahKemampuan, wilayah: labWilayah };

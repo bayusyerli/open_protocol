@@ -263,6 +263,44 @@ satu pun berstatus `published`.
 Sisi repositorinya ada di [CONTRIBUTING.md](../CONTRIBUTING.md): aturan **L35**, sematan
 `lifecycle.reviewed_hash`, dan `spec/tools/tinjau.mjs`.
 
+### Balai penyuluhan dan laboratorium — C7, dua pintu lagi
+
+Empat dari enam layanan yang dijanjikan C7 kini punya data, dan dua yang baru tidak
+memakai pintu yang sama seperti toko — **karena pertanyaannya berbeda**.
+
+**Balai ditelusuri menurut tempat.** Yang bertanya sudah tahu kecamatannya; yang ia
+perlukan nama balai yang membinanya. 5.844 balai di 504 kabupaten/kota, diember seperti
+toko.
+
+- **"Tanpa alamat" di sini tidak sama artinya dengan pada penjual benih.** Nama penjual
+  benih tanpa alamat tidak bisa dituju siapa pun. Nama balai beserta kecamatan binaannya
+  bisa dituju oleh orang yang tinggal di kecamatan itu — dan dialah yang mencarinya. Yang
+  tidak tahu letaknya mesinnya, bukan orangnya. Kecamatan karena itu jadi penanda utama di
+  tabel, bukan catatan kaki.
+- **Balai yang kecamatannya kosong disebut apa adanya.** 15 dari 5.844, dan barisnya
+  berbunyi *"kosong di sumbernya"* — bukan berarti ia tidak membina satu pun.
+
+**Laboratorium disaring menurut kemampuan lebih dulu, baru tempat.** *"Siapa yang bisa
+mengukur residu pestisida"* menyaring 889 jadi **17**, dan daftar provinsi tanpa penyaring
+itu cuma memindahkan pekerjaan memilah ke pembacanya. Penyaringnya **radio, bukan kotak
+centang**: "tanah DAN residu" menghasilkan irisan yang hampir selalu kosong, dan daftar
+kosong yang benar lebih membingungkan daripada satu penyaring yang jelas.
+
+- **Masa akreditasi ditandai, dan itu satu-satunya tempat di seluruh permukaan yang
+  memakai warna peringatan untuk keadaan data.** Sebabnya sempit: laboratorium yang
+  akreditasinya lewat bukan yang "kurang baik", ia yang hasil ujinya **tidak diakui** — dan
+  itu tidak terbaca dari namanya. Terukur: **11 dari 889** sudah lewat, dan **satu di
+  antaranya termasuk 17 yang bisa mengukur residu**. Artinya penyaring paling sempit di
+  halaman ini mengembalikan satu jawaban yang tidak sah, dan tiap ringkasan karena itu
+  menyebut berapa yang lewat.
+- **Yang tidak ada dan tidak akan ditambal:** tarif, waktu tunggu, dan apakah lab menerima
+  sampel dari luar. Tidak satu pun terbit di papan KAN. Yang dijamin akreditasi bukan
+  harganya melainkan bahwa metodenya diperiksa.
+
+Blok batas layar ini kini menyebut **empat** sumber dengan tingkatnya masing-masing — dan
+menangkap kelalaian saya sendiri saat dibangun: `bppTanpaAlamat` sempat tampil sebagai slug
+mentah karena belum punya judul, persis cacat yang dijaga sejak audit.
+
 ### Harga yang benar-benar diterima — C4 sisi petani
 
 C4 berbunyi *"eceran dipinjam, harga petani **dibangun**"*, dan sisi petaninya tertulis
