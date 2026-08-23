@@ -516,7 +516,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | skema **selesai**; permukaan belum | **BANGUN** (fase 3) |
 | E3 | Simpangan rencana–realisasi | petugas lapang, offtaker | mutu data | pemeriksa **selesai** | **BANGUN** (fase 3) |
 | E4 | Pengingat berbasis **fase**, bukan tanggal | petani, petugas lapang | ketepatan waktu tindakan | `Stage` sengaja **tanpa medan hari** — hanya 2 dari 4 langkah cabai bertanggal | **BANGUN** (fase 3) dengan batasnya dinyatakan |
-| E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | belum ada — dan **petani kecil umumnya mengandalkan ingatan**, bukan buku | **BANGUN** (fase 3) |
+| E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | **inti selesai** 23 Agustus 2026 — `app/kas.html`, seluruhnya di perangkat, tanpa akun. Petani kecil memang mengandalkan ingatan, jadi jaraknya yang dirancang: jawaban di atas, tiga medan, satu yang wajib | inti **selesai**; sinkron & banyak petak **fase 3** |
 
 > **E5 adalah satu-satunya kapabilitas dalam kelompok ini yang petani mau isi untuk
 > dirinya sendiri.** E1–E3 dibayar oleh pembeli hilir, dan itu sah — tapi ia menempatkan
@@ -533,6 +533,20 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > dengan *mau mencatat*, dan jarak antara keduanya yang harus dirancang, bukan diasumsikan
 > hilang.
 
+> **Inti E5 dibangun 23 Agustus 2026, dan satu pengukuran yang menentukan bentuknya bukan
+> tentang petani melainkan tentang peramban.** Kuota penyimpanan 4.180 MB sementara satu
+> musim penuh cuma **14,5 KB** — ruang tidak pernah jadi soal. Yang jadi soal
+> `navigator.storage.persist()` menjawab **false** pada kunjungan biasa: peramban **menolak
+> menjanjikan catatan itu tidak dihapusnya**. Petani yang mencatat semusim lalu
+> kehilangannya lebih buruk keadaannya daripada yang memakai kertas, dan halaman yang tidak
+> mengatakannya sedang menjual janji yang bukan miliknya untuk dijanjikan. Karena itu
+> "bawa keluar" bukan pelengkap di sana, dan pengingatnya muncul sendiri tiap sepuluh
+> catatan — selagi mengetik ulang masih murah.
+>
+> **Yang tetap fase 3:** sinkron, banyak petak, dan berbagi dengan kelompok tani. Ketiganya
+> menuntut tempat menyimpan yang bukan peramban, dan itu tepatnya yang dibayar lapisan
+> berbayar. Pencatatannya sendiri tidak menuntutnya — jadi ia tidak ditahan menunggu.
+
 ### F · BUKTI & AKSES — hilir yang menarik hulu
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
@@ -540,7 +554,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | F1 | Berkas bukti bertulang SNI 8969 | offtaker, sertifikator | #16 | penyusun **selesai** | **BANGUN** permukaannya (fase 3) |
 | F2 | Ekspor data petani yang bisa dibaca tanpa platform ini | petani, koperasi | kepemilikan data | **selesai** — `ekspor-petani.mjs` | **selesai** |
 | F3 | Ketertelusuran petak → lot | eksportir, offtaker | akses pasar | butuh geometri + persetujuan | **TUNDA** (T2) |
-| F4 | Berkas siap-ajukan kredit & asuransi | petani, poktan, bank, asuransi | #11, #12 | butuh E5 dulu | **BANGUN belakangan + SAMBUNG** (SIAP) |
+| F4 | Berkas siap-ajukan kredit & asuransi | petani, poktan, bank, asuransi | #11, #12 | **prasyaratnya selesai** 23 Agustus 2026 — buku kas kini berskala musim & luas, jadi **biaya per hektare** ada. Berkasnya sendiri **tidak dibangun**: repositori ini tidak tahu apa yang diminta formulir SIAP | prasyarat **selesai**; berkasnya **TUNDA** menunggu riset formulir |
 
 > **F4 menjawab kendala yang disebut sendiri oleh pelaksana AUTP:** hambatannya
 > administrasi, bukan tarif — premi petani Rp36.000/ha/musim sudah sangat rendah, tapi
@@ -548,12 +562,34 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > memindahkan beban itu dari petani ke mesin. **Syaratnya E5 lebih dulu** — tanpa catatan,
 > tidak ada yang bisa diisikan.
 
+> **F4 diperiksa 23 Agustus 2026, dan yang menghalanginya bukan E5 melainkan riset.**
+> Baris ini semula berbunyi "butuh E5 dulu"; E5 kini ada. Tetapi memeriksa apa yang
+> sebenarnya dibutuhkan menemukan penghalang yang lebih mendasar: **repositori ini tidak
+> tahu apa yang diminta formulir SIAP.** Dua sumber yang dikutip dokumen ini artikel
+> tentang premi dan kendala administrasi — bukan daftar medan, bukan syarat kepesertaan,
+> bukan alur pengajuannya. Menyusun "berkas siap-ajukan" tanpa itu berarti mengarang format
+> yang tidak diterima penanggung mana pun, dan bank yang bertindak atas dokumen berformat
+> karangan mengambil keputusan pembiayaan di atasnya. Itu kelas kekeliruan yang berbeda
+> dari cacat antarmuka.
+>
+> **Yang dikerjakan sebagai gantinya: prasyaratnya, dan ia bisa diukur.** Tiap angka yang
+> dipakai AUTP per hektare — premi Rp36.000/ha, subsidi Rp144.000, ganti rugi ±Rp6 juta/ha
+> — sementara buku kas versi pertama tidak punya luas sama sekali, jadi ia tidak bisa
+> menghasilkan satu pun angka dalam satuan itu. Musim kini punya nama, komoditas, dan luas,
+> dan **biaya per hektare** muncul di layar dan di berkas yang dibawa keluar. Petani 0,25 ha
+> yang sebelumnya cuma punya angka total sekarang punya angka yang bisa dibandingkan dengan
+> apa pun yang diterbitkan.
+>
+> **Yang membuka F4 karena itu satu hal, dan ia bukan kode:** menemukan dan mencatat apa
+> yang benar-benar diminta SIAP dan KUR — daftar medannya, syarat kepesertaannya, dan
+> bentuk berkas yang mereka terima.
+
 ### G · JEJARING — yang tidak bisa dilakukan sendirian
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | **selesai** 23 Agustus 2026 — `CONTRIBUTING.md`, `spec/tools/tinjau.mjs`, aturan L35, dan sematan `reviewed_hash`. Terukur saat dibuka: **0 dari 4.256** rekaman punya peninjau bernama, **0** berstatus published | **selesai** |
-| G2 | Umpan balik lapangan menaikkan tingkat bukti D→A | semua | apakah korpus hidup | `DeviationReason.signals` **ada** | **BANGUN** (fase 3) |
+| G2 | Umpan balik lapangan menaikkan tingkat bukti **D→C** (dikoreksi dari D→A) | semua | apakah korpus hidup | `DeviationReason.signals` ada dan benar; **`spec/tools/sinyal.mjs`** membacanya sejak 23 Agustus 2026. Simpangan tercatat: **1** | penunjuknya **selesai**; kenaikannya tetap tindakan peninjau bernama (G1) |
 | G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | **selesai** 23 Agustus 2026 — `observation.schema.json`, aturan `L37`, dan pintu serah-terima di jalur 1 yang menemukan balai penyuluhan menurut kecamatan. Tanpa kotak masuk, tanpa peta, dan tanpa identifikasi | **selesai** 23 Agustus 2026 — entitas, aturan `L37`, dan pintu serah-terima di jalur 1 |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
 | G5 | Identitas petak stabil tanpa memiliki geometrinya | semua | dasar semua rekaman | **selesai** 23 Agustus 2026 — `tools/sidik-petak.mjs` + aturan `L36`. Yang tetap `id` rekamannya, yang berubah sidiknya; sidik titik tunggal **ditolak** karena 2³⁰ ditebak habis dalam 0,08 detik | **selesai** |
@@ -688,6 +724,40 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > gabah di indeks, dan HPP Rp6.500/kg (Kepbadan 14/2025) hidup sebagai prosa di
 > [16](16-sumber-harga-komoditas.md), bukan sebagai data yang bisa dibandingkan. Selama itu
 > begitu, pembanding ini hanya berguna untuk petani sawit.
+
+> **G2 diperiksa 23 Agustus 2026, dan separuh judulnya ternyata tidak bisa dipenuhi
+> mekanisme yang disebutnya sendiri.** Tangga tingkat bukti bukan tangga volume melainkan
+> tangga **metode**: A uji multi-lokasi, B standar institusi, C **konsensus praktisi &
+> penyuluh**, D pengalaman tunggal. Umpan balik lapangan yang menumpuk *adalah* tingkat C
+> menurut definisinya — jadi ia memindahkan D ke C dan berhenti di situ. Mencapai B
+> menuntut institusi mengadopsinya; mencapai A menuntut uji multi-lokasi. **Seribu petani
+> yang melaporkan hal yang sama tetap konsensus praktisi, bukan uji lapangan.** Judul baris
+> ini karena itu dikoreksi jadi D→C.
+>
+> **Yang dibangun bukan penaik melainkan penunjuk.** `sinyal.mjs` mengelompokkan simpangan
+> menurut `DeviationReason.signals` — medan yang deskripsinya sendiri berbunyi *"apa yang
+> seharusnya ditindaklanjuti tim ketika alasan ini sering muncul"* — lalu menunjuk rekaman
+> yang klaim tingkat buktinya sedang tertekan. Yang menaikkannya tetap peninjau bernama
+> lewat alur G1, dan itu bukan keterbatasan: **kenaikan tingkat adalah kesimpulan, dan
+> kesimpulan tidak boleh jadi efek samping penjumlahan.**
+>
+> **Satu angka yang selama ini hanya berupa aturan akhirnya ditulis.** [17](17-tiga-konsep-ui.md)
+> bagian 7.3 menetapkan bahwa di bawah ambang penyebut minimum panel *"menolak menampilkan
+> angka sama sekali"*, tetapi tidak pernah menyebut angkanya — dan aturan tanpa angka tidak
+> bisa ditegakkan mesin. Alat ini memakai **5 petak berbeda**, ditulis di satu tempat dan
+> ditandai **keputusan yang belum diratifikasi** supaya bisa dibantah di satu tempat. Yang
+> dihitung petak berbeda, bukan baris: satu orang yang melapor lima kali dari satu petak
+> bukan lima petak.
+>
+> **Keadaan hari ini: 1 simpangan tercatat, seluruhnya contoh.** Alatnya melaporkannya apa
+> adanya dan menolak menarik kesimpulan — sama seperti `tinjau.mjs` melaporkan nol peninjau.
+>
+> **Cacat kembar dari G1 ikut ditutup.** `preparation.schema.json` mendeskripsikan
+> `evidence_note` sebagai wajib dan **tidak menuntutnya** — padahal berkas itulah sumber
+> aturan *"tingkat bukti tanpa alasan adalah klaim tanpa dasar"* yang diwarisi `batas.js`
+> dan `L31`. Ia satu-satunya dari empat skema bertingkat yang tidak menegakkannya pada
+> dirinya sendiri. Sekarang dituntut; keduabelas resep sudah memenuhinya, jadi nol yang
+> perlu diperbaiki.
 
 ### Rekapitulasi putusan — 40 kapabilitas
 

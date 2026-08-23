@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buku kas per petak — Open Protocols</title>
+<meta name="description" content="Catat uang yang keluar dan masuk selama semusim, dan lihat untungnya berjalan di tiap catatan. Seluruhnya tersimpan di perangkatmu sendiri; tidak ada akun dan tidak ada yang dikirim.">
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Buku kas per petak</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Semusim ini untungnya berapa?</h1>
+  <p class="lede">
+    Satu catatan butuh tiga ketukan: tanggal, jenis, jumlah. Jawabannya muncul di atas
+    dan berubah tiap kali kamu menambah — <strong>bukan menunggu musim selesai</strong>,
+    karena yang membuat orang mencatat adalah melihat jawabannya sekarang.
+  </p>
+</header>
+
+<main>
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Halaman ini butuh JavaScript</h2>
+    <p>Seluruh hitungan berjalan di perangkatmu. Tanpa JavaScript tidak ada yang bisa dihitung.</p>
+  </div>
+
+  <section class="kartu kartu-musim">
+    <h2>Musim yang sedang dicatat</h2>
+    <div id="pilihMusim"></div>
+    <details id="aturMusim">
+      <summary>Ganti atau tambah musim</summary>
+      <div class="musim-isi">
+        <label for="mNama">Nama musim atau petak</label>
+        <input type="text" id="mNama" autocomplete="off" placeholder="misal: Cabai petak belakang, MT1 2026">
+        <div class="catat-baris">
+          <span>
+            <label for="mKomoditas">Komoditas</label>
+            <input type="text" id="mKomoditas" autocomplete="off" placeholder="misal: Cabai merah">
+          </span>
+          <span>
+            <label for="mLuas">Luas (hektare)</label>
+            <input type="number" id="mLuas" inputmode="decimal" min="0" step="0.01" placeholder="misal 0.25">
+          </span>
+        </div>
+        <p class="catat-aksi"><button type="button" id="tambahMusim">Simpan musim ini</button></p>
+        <p class="catat-kabar" id="kabarMusim" role="status" aria-live="polite"></p>
+        <p class="catatan">
+          Luas boleh dikosongkan — catatannya tetap jalan. Yang hilang cuma
+          <strong>biaya per hektare</strong>, dan itulah satuan yang dipakai hampir semua
+          program yang meminta angka biaya usaha tani.
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <section id="ringkas" class="kartu kartu-ringkas" aria-live="polite"></section>
+
+  <h2 class="judul-bagian">Tambah catatan</h2>
+  <section class="kartu kartu-catat">
+    <form id="formCatat" onsubmit="return false">
+      <div class="catat-baris">
+        <span>
+          <label for="tanggal">Tanggal</label>
+          <input type="date" id="tanggal" name="tanggal">
+        </span>
+        <span>
+          <label for="arah">Uang</label>
+          <select id="arah" name="arah">
+            <option value="keluar">keluar — biaya</option>
+            <option value="masuk">masuk — hasil jual</option>
+          </select>
+        </span>
+      </div>
+      <label for="kategori">Untuk apa</label>
+      <select id="kategori" name="kategori"></select>
+      <label for="jumlah">Berapa rupiah</label>
+      <input type="number" id="jumlah" name="jumlah" inputmode="numeric" min="0" step="1000"
+             placeholder="misal 450000">
+      <label for="catatan">Catatan — boleh kosong</label>
+      <input type="text" id="catatan" name="catatan" autocomplete="off"
+             placeholder="misal: Urea 2 karung dari kios Pak Slamet">
+      <p class="catat-aksi"><button type="button" id="tambah">Tambah catatan</button></p>
+      <p class="catat-kabar" id="kabar" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <h2 class="judul-bagian">Catatan musim ini</h2>
+  <section id="daftar" aria-live="polite"></section>
+
+  <h2 class="judul-bagian">Bawa keluar</h2>
+  <section class="kartu kartu-bawa">
+    <p id="peringatanSimpan" class="catat-awas"></p>
+    <p class="catat-aksi">
+      <button type="button" data-bawa="salin">Salin seluruh catatan</button>
+      <button type="button" data-bawa="wa">Kirim ke WhatsApp</button>
+    </p>
+    <p class="catat-kabar" id="kabarBawa" role="status" aria-live="polite"></p>
+    <p class="catat-aksi">
+      <button type="button" id="hapusSemua" class="hapus">Hapus seluruh catatan</button>
+    </p>
+    <pre class="catat-pratinjau" id="pratinjau" hidden></pre>
+  </section>
+
+  <details class="batas">
+    <summary><h2>Kenapa halaman ini sekecil ini</h2></summary>
+    <div>
+      <p>
+        Riset lapangan proyek ini menemukan satu hal yang mengubah rancangan halaman ini:
+        <strong>petani kecil umumnya mengandalkan ingatan</strong>, bukan buku — bahkan buku
+        kertas pun jarang. Jadi ini <strong>kebiasaan baru</strong>, bukan pemindahan bentuk,
+        dan kebiasaan baru jauh lebih mahal diterima.
+      </p>
+      <p>
+        <em>Ingin tahu untungnya berapa</em> tidak sama dengan <em>mau mencatat</em>. Jarak
+        antara keduanya yang dirancang di sini: satu catatan tiga medan, jawabannya di atas
+        dan berubah seketika, tanpa akun, tanpa masuk, tanpa satu pun kolom wajib selain
+        jumlahnya.
+      </p>
+      <h3>Yang tidak ada, dan tidak sedang disembunyikan</h3>
+      <p>
+        Beberapa musim dan petak sudah bisa dipisahkan. Yang belum: arus kas bertanggal,
+        berbagi dengan kelompok tani, dan cadangan di luar perangkat ini. Ketiganya
+        menuntut hal yang belum ada — kalender fase bertanggal, dan tempat menyimpan yang
+        bukan peramban. Petak di sini juga <strong>hanya nama yang kamu ketik</strong>,
+        bukan identitas petak yang dipakai lintas layar.
+      </p>
+    </div>
+  </details>
+
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="kosong">Memuat batas jawaban…</p>
+  </section>
+
+  <p class="lain">
+    <a href="beranda.html">← Beranda</a> ·
+    <a href="usaha.html">Rencana anggaran &amp; titik impas →</a>
+  </p>
+</main>
+
+<script type="module" src="kas.js"></script>
+</body>
+</html>

@@ -616,3 +616,147 @@ tr.lewat-masa td:first-child { border-left: 3px solid var(--awas, var(--amber, #
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+/* ----------------------------------------------------------------------- kas */
+/* Buku kas (E5). Ia tinggal di sini bersama komponen lintas-layar yang lain karena
+   halaman kas memuat batas.css, dan token --bj-* perlu tersedia di luar blok batas. */
+.kartu-ringkas, .kartu-catat, .kartu-bawa {
+  --bj-teks:  var(--teks,        var(--tinta));
+  --bj-lemah: var(--teks-lemah,  var(--lemah));
+  --bj-garis: var(--garis);
+  --bj-aksen: var(--aksen,       var(--hijau-2));
+  --bj-latar: var(--latar-kartu, var(--kertas));
+  --bj-awas:  var(--awas,        var(--amber));
+}
+
+/* Jawabannya besar dan di atas, dan itu seluruh rancangan halaman ini: yang membuat
+   orang menulis catatan kedua adalah melihat hasil catatan pertama. */
+.angka-besar {
+  margin: .2rem 0 .8rem !important;
+  font-size: clamp(1.9rem, 8vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--bj-teks);
+  font-variant-numeric: tabular-nums;
+}
+
+.catat-baris { display: flex; flex-wrap: wrap; gap: .8rem; }
+.catat-baris > span { flex: 1 1 9rem; display: block; }
+
+.kartu-catat label { display: block; margin-top: .7rem; font-weight: 600; font-size: .88rem; }
+.catat-baris label { margin-top: 0; }
+
+.kartu-catat input,
+.kartu-catat select {
+  width: 100%;
+  margin-top: .25rem;
+  padding: .6rem .7rem;
+  min-height: 44px;
+  font: inherit;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+}
+
+.kartu-catat input:focus-visible,
+.kartu-catat select:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 1px; }
+
+.catat-aksi { display: flex; flex-wrap: wrap; gap: .5rem; margin: .9rem 0 0 !important; }
+
+.catat-aksi button {
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .7rem 1rem;
+  min-height: 44px;
+  color: var(--bj-teks);
+  background: transparent;
+  border: 1px solid var(--bj-aksen);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.catat-aksi button:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+
+/* Satu-satunya tombol di seluruh permukaan yang menghancurkan kerja pemakainya, dan
+   satu-satunya yang diberi warna bahaya. Ia juga diletakkan di barisnya sendiri, jauh
+   dari tombol bawa keluar, supaya tidak terketuk saat yang dimaksud menyimpan. */
+.catat-aksi button.hapus { border-color: var(--bahaya, var(--merah, #b3261e)); }
+
+.catat-kabar { margin: .6rem 0 0 !important; font-size: .88rem; color: var(--bj-teks); min-height: 1.2em; }
+
+.catat-awas {
+  margin: 0 0 .3rem !important;
+  padding: .7rem .8rem;
+  border-left: 3px solid var(--bj-awas);
+  background: var(--bj-latar);
+  color: var(--bj-teks);
+  font-size: .88rem;
+}
+
+/* 44 px sekalipun ia tindakan sekunder di dalam baris tabel yang padat. Ia MENGHAPUS,
+   dan target sentuh yang meleset pada tombol perusak merugikan dua arah: yang tidak
+   sengaja mengetuknya kehilangan catatan, dan yang meleset saat memang ingin menghapus
+   mengetuk baris lain. */
+.hapus-satu {
+  font: inherit;
+  font-size: .8rem;
+  padding: .4rem .55rem;
+  min-height: 44px;
+  color: var(--bj-lemah);
+  background: transparent;
+  border: 1px solid var(--bj-garis);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.hapus-satu:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+
+.catat-pratinjau {
+  margin: .8rem 0 0;
+  max-height: 20rem;
+  overflow: auto;
+  padding: .7rem;
+  font-size: .78rem;
+  line-height: 1.5;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px dashed var(--bj-garis);
+  border-radius: 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+/* --------------------------------------------------------------- musim kas */
+.kartu-musim {
+  --bj-teks:  var(--teks,        var(--tinta));
+  --bj-lemah: var(--teks-lemah,  var(--lemah));
+  --bj-garis: var(--garis);
+  --bj-aksen: var(--aksen,       var(--hijau-2));
+  --bj-latar: var(--latar-kartu, var(--kertas));
+}
+
+.kartu-musim label { display: block; margin-top: .6rem; font-weight: 600; font-size: .88rem; }
+.kartu-musim .catat-baris label { margin-top: 0; }
+
+.kartu-musim select,
+.kartu-musim input {
+  width: 100%;
+  margin-top: .25rem;
+  padding: .6rem .7rem;
+  min-height: 44px;
+  font: inherit;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+}
+
+.kartu-musim select:focus-visible,
+.kartu-musim input:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 1px; }
+
+#aturMusim { margin-top: .9rem; }
+#aturMusim > summary { cursor: pointer; font-weight: 600; font-size: .88rem; color: var(--bj-aksen); padding: .5rem 0; }
+#aturMusim > summary:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+.musim-isi { margin-top: .4rem; }

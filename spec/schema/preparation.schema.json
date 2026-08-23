@@ -441,7 +441,7 @@
     },
     "evidence_note": {
       "$ref": "common.schema.json#/$defs/LangText",
-      "description": "Apa yang benar-benar diketahui dan apa yang belum. Wajib jujur: sebagian besar sediaan buatan sendiri berada di tingkat C atau D, dan menaikkannya tanpa bukti adalah cara tercepat merusak kepercayaan agronom."
+      "description": "Apa yang benar-benar diketahui dan apa yang belum. WAJIB — dan sejak 23 Agustus 2026 benar-benar dituntut, bukan cuma dideskripsikan begitu. Berkas inilah sumber aturan \"tingkat bukti tanpa alasan adalah klaim tanpa dasar\" yang diwarisi batas.js dan L31, dan sampai hari itu ia satu-satunya dari empat skema bertingkat yang tidak menegakkannya pada dirinya sendiri. Sebagian besar sediaan buatan sendiri berada di tingkat C atau D, dan menaikkannya tanpa bukti adalah cara tercepat merusak kepercayaan pada seluruh jalur."
     }
   },
   "required": [
@@ -451,7 +451,8 @@
     "feedstocks",
     "process",
     "composition_basis",
-    "evidence_tier"
+    "evidence_tier",
+    "evidence_note"
   ],
   "unevaluatedProperties": false
 }

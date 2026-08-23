@@ -1,0 +1,32 @@
+{
+  "$schema": "../schema/padanan-bahan-aktif.schema.json",
+  "padanan": {
+    "label": { "id": "Fixture uji padanan bahan aktif — nama dari Wikidata tanpa Q-id" },
+    "scope": {
+      "id": "Sengaja dibuat cacat. `kanonik.dasar` menyatakan namanya datang dari Wikidata, tetapi blok `wikidata` yang memuat Q-id, properti, dan penguatnya tidak ada. Tanpa itu kecocokannya tidak bisa ditelusuri ulang oleh siapa pun — dan kecocokan yang tak bisa diperiksa tidak bisa dibedakan dari tebakan yang terdengar yakin. CC0 tidak mewajibkan atribusi; yang mewajibkan di sini keterlacakan."
+    },
+    "lifecycle": { "version": "0.1.0", "status": "draft" },
+    "provenance": { "license": "CC-BY-SA-4.0" },
+    "kunci_normalisasi": { "id": "kunci = tulisan mentah, huruf kecil, spasi diseragamkan, ujungnya dipangkas." },
+    "potret": {
+      "berkas": "pukpes_data/raw/pestisida_terdaftar.json",
+      "tarikan": "2026-08-19",
+      "formulasi": 7724,
+      "sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "hitungan": { "kunci": 1, "per_hubungan": { "varian-ejaan": 1 }, "berkanonik": 1, "berinduk": 0, "berfaktor": 0, "perlu_tinjau": 0 }
+  },
+  "padanan_items": [
+    {
+      "kunci": "bahan uji ejaan",
+      "tulisan_teramati": ["Bahan uji ejaan"],
+      "formulasi": 1,
+      "hubungan": "varian-ejaan",
+      "kanonik": {
+        "nama": "test substance",
+        "dasar": "wikidata",
+        "kutipan": "Wikidata Q0000000 rdfs:label \"test substance\"@en"
+      }
+    }
+  ]
+}

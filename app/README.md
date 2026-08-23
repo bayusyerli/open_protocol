@@ -263,6 +263,66 @@ satu pun berstatus `published`.
 Sisi repositorinya ada di [CONTRIBUTING.md](../CONTRIBUTING.md): aturan **L35**, sematan
 `lifecycle.reviewed_hash`, dan `spec/tools/tinjau.mjs`.
 
+### Buku kas per petak — E5
+
+`docs/15` semula menduga buku kas sudah ada dalam bentuk apa pun sehingga E5 tinggal
+memindahkan bentuknya. Jawaban lapangan membatalkannya: *"kalaupun ada dalam bentuk buku
+kertas. Umumnya petani kecil mengandalkan ingatan saja."* Jadi ini **kebiasaan baru**, dan
+dokumen itu menutupnya dengan kalimat yang jadi brief halaman ini:
+
+> *Ingin tahu untungnya berapa* tidak sama dengan *mau mencatat*, dan **jarak antara
+> keduanya yang harus dirancang**, bukan diasumsikan hilang.
+
+Tiga hal mempersempit jarak itu, dan ketiganya membatasi apa yang boleh dibangun:
+
+- **Jawabannya di atas, bukan di akhir musim.** Yang membuat orang menulis catatan kedua
+  adalah melihat hasil catatan pertama, jadi ringkasan diperbarui tiap penambahan — tidak
+  ada tombol "hitung".
+- **Satu catatan tiga medan.** Tanggal terisi sendiri hari ini, kategori punya bawaan, dan
+  hanya **jumlah** yang wajib. Tiap medan wajib tambahan adalah alasan berhenti.
+- **Tanpa akun, tanpa masuk, tanpa kirim.** Pendaftaran di depan catatan pertama membunuh
+  kebiasaan sebelum ia lahir.
+
+Kategorinya **sama persis dengan D3**, dan itu disengaja: yang sudah menyusun rencana
+anggaran di sana tidak memulai dari buku kosong di sini.
+
+**Musim ada di kepala, bukan di tiap catatan** — dan itu yang menjaga "tiga medan" tetap
+utuh sambil menjawab pertanyaan yang tidak bisa dijawab tanpanya. Nama musim, komoditas,
+dan **luas** diisi sekali; tiap catatan sesudahnya ikut ke sana gratis. Yang dibuka luas:
+**biaya per hektare** — dan itu satuan yang dipakai hampir semua program yang meminta
+angka biaya usaha tani, termasuk asuransi usaha tani padi yang premi, subsidi, dan ganti
+ruginya seluruhnya per hektare. Petani 0,25 ha yang cuma punya angka total tidak bisa
+membandingkan dirinya dengan angka mana pun yang diterbitkan. Luas tetap boleh kosong;
+yang hilang satu baris, bukan seluruh halamannya.
+
+**Bentuk simpanan berubah, dan yang sudah mencatat tidak kehilangan apa pun.** Larik datar
+versi pertama dibungkus jadi satu musim bernama saat dibaca, lalu dituliskan sekali —
+diuji dengan data bentuk lama: tiga catatan utuh, aritmetika benar, dan bentuk tersimpannya
+ikut berpindah. Kehilangan catatan karena pembaruan aplikasi persis kegagalan yang paling
+merusak kepercayaan pada buku kas.
+
+**Bahayanya bukan ruang melainkan ketahanan, dan itu diukur.** Kuota penyimpanan
+**4.180 MB** sementara satu musim penuh (200 catatan) cuma **14,5 KB** — ruang tidak pernah
+jadi soal. Yang jadi soal: `navigator.storage.persist()` menjawab **`false`** pada kunjungan
+biasa. **Peramban menolak menjanjikan catatan ini tidak dihapusnya.**
+
+Petani yang mencatat semusim lalu kehilangannya lebih buruk keadaannya daripada yang
+memakai kertas, jadi tiga hal menyusul dari pengukuran itu: keadaan penyimpanan dinyatakan
+apa adanya di layar, izin permanen tetap diminta (peluangnya naik kalau aplikasinya dipasang
+lewat A5), dan **"bawa keluar" bukan pelengkap** — pengingatnya muncul sendiri tiap sepuluh
+catatan, selagi mengetik ulang masih murah.
+
+- **Gagal menyimpan tidak boleh diam.** Mode privat menolak `localStorage`, dan pemakai yang
+  mengira catatannya tersimpan padahal tidak adalah keadaan terburuk yang bisa dihasilkan
+  halaman ini — lebih buruk daripada tidak menawarkan penyimpanan sama sekali.
+- **"Untung" hanya disebut kalau memang ada uang masuk.** Selisih dari nol pemasukan bukan
+  rugi; ia biaya yang belum berhasil, dan musim yang belum panen bukan musim yang rugi.
+- **Satu tombol perusak, dan ia satu-satunya yang diberi warna bahaya** — di barisnya
+  sendiri, jauh dari tombol bawa keluar, dengan konfirmasi yang menyebut tidak ada cadangan.
+- **A1 tidak mengambil "untung" dan "rugi" dari D3.** Yang mengetiknya sebelum tanam
+  memaksudkan rencana; yang mengetiknya di tengah musim memaksudkan catatan, dan pintu masuk
+  tidak bisa membedakannya. Yang diambil hanya kata yang berarti **mencatat**.
+
 ### Pintu serah-terima laporan gejala — G3
 
 `docs/15` menulis bahayanya sebelum ada kode, dan bahaya itu yang merancang pintunya:
