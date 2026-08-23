@@ -312,9 +312,9 @@ penggolongannya tiga, bukan dua:
 
 | Golongan | Varian | Berangka | Di layar |
 |---|---:|---:|---|
-| `pangan` — yang dipanen, diternakkan, atau ditangkap | 43 | 31 | ya |
+| `pangan` — yang dipanen, diternakkan, atau ditangkap di sini | 40 | 29 | ya |
 | `input` — benih dan pupuk | 7 | 1 | ya |
-| `luar` — bahan bangunan, LPG, dan pangan olahan | 38 | 11 | tidak |
+| `luar` — bahan bangunan, LPG, pangan olahan, barang impor | 41 | 13 | tidak |
 
 Pemisah golongan `luar` sempat beralasan "bahan bakunya impor", dan alasan itu keliru: tebu
 dan sawit ditanam di Indonesia, tetapi harga gula pasir dan minyak goreng tetap **harga
@@ -327,6 +327,17 @@ soal "hasil tani atau bukan": petani garam memang memanennya sendiri. Yang SP2KP
 `Garam Halus` — sudah digiling dan beryodium — sementara **garam krosok yang benar-benar
 keluar dari tambak tidak diterbitkan sama sekali.** Jadi angka yang ada bukan angka yang
 dihadapi petani garam, dan itu alasan yang sama persis seperti gula terhadap petani tebu.
+
+**Barang impor keluar lewat pertanyaan yang sama.** Tidak ada petani Indonesia yang
+menghadapi harga daging sapi impor beku atau kedelai impor. Penyaringnya satu-satunya yang
+berupa pola, bukan daftar nama, karena SP2KP menyatakan asal impor di dalam nama variannya
+sendiri — sehingga varian impor baru ikut tersaring tanpa ada yang perlu ingat menambahkannya.
+
+> **Batas yang tersisa, dan ia nyata.** Yang tersaring hanya yang MENGAKU impor di namanya.
+> `Bawang Putih Honan` dan `Bawang Putih Kating` hampir seluruhnya impor dari Tiongkok —
+> Indonesia memenuhi sekitar 5% kebutuhan bawang putihnya sendiri — tetapi namanya tidak
+> menyebutkannya, jadi keduanya tetap tampil. Mengeluarkannya menuntut pengetahuan yang
+> tidak ada di data ini; menuliskannya sebagai daftar nama berarti mengaku begitu.
 
 Yang `luar` **tetap tercatat di kosakata**, dan jumlahnya disebut di layar beserta daftarnya
 di balik satu ketukan. Menyaringnya diam-diam akan membuat cacah di layar tidak pernah cocok

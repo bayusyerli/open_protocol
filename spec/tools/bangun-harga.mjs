@@ -102,8 +102,8 @@ function sambungKomoditas(nama) {
 //   pangan   yang dipanen, diternakkan, atau ditangkap — barang yang petani, peternak, dan
 //            nelayan hasilkan sendiri
 //   input    sarana produksi: benih dan pupuk. Tipe 2 di sumbernya, tetapi inti di sini.
-//   luar     bahan bangunan, LPG, dan PANGAN OLAHAN — termasuk yang bahan bakunya tumbuh
-//            di sini, karena yang menghadapi harganya tetap pembeli di toko
+//   luar     bahan bangunan, LPG, PANGAN OLAHAN, dan BARANG IMPOR — ketiganya keluar lewat
+//            satu pertanyaan yang sama: apakah harga ini dihadapi yang menghasilkan barangnya?
 //
 // Yang `luar` TIDAK dibuang dari kosakata — ia tetap tercatat, karena SP2KP memang
 // menerbitkannya dan menghapusnya membuat cacah di dokumen tidak bisa direkonsiliasi dengan
@@ -157,9 +157,27 @@ const PANGAN_OLAHAN = new Set([
   'Garam Halus',
 ]);
 
+// Barang impor keluar lewat aturan yang SAMA, bukan aturan tambahan: tidak ada petani
+// Indonesia yang menghadapi harga daging sapi impor beku atau kedelai impor, jadi
+// menayangkannya di sini menyiratkan hubungan yang tidak ada — persis seperti gula terhadap
+// petani tebu.
+//
+// Ini POLA, bukan daftar nama, dan itu satu-satunya tempat di berkas ini yang memakai pola.
+// Alasannya: asal impor dinyatakan SP2KP di dalam nama variannya sendiri — "Daging Sapi
+// Impor Beku", "Kedelai Impor", "Daging Kerbau Impor Beku". Selama penamaan itu bertahan,
+// varian impor baru ikut tersaring tanpa ada yang perlu ingat menambahkannya.
+//
+// BATASNYA, dan ia nyata: yang tersaring hanya yang MENGAKU impor di namanya. Bawang Putih
+// Honan dan Bawang Putih Kating hampir seluruhnya impor dari Tiongkok — Indonesia memenuhi
+// sekitar 5% kebutuhan bawang putihnya sendiri — tetapi namanya tidak menyebutkannya, jadi
+// keduanya lolos. Mengeluarkannya menuntut pengetahuan yang tidak ada di data ini, dan
+// menuliskannya sebagai daftar nama berarti mengaku begitu. Dibiarkan, dan dicatat di sini.
+const BERNAMA_IMPOR = /\bimpor\b/i;
+
 function golongan(v) {
   if (INDUK_INPUT.has(v.komoditas)) return 'input';
   if (PANGAN_OLAHAN.has(v.nama)) return 'luar';
+  if (BERNAMA_IMPOR.test(v.nama)) return 'luar';
   return v.tipe === 1 ? 'pangan' : 'luar';
 }
 
@@ -369,7 +387,7 @@ for (const x of berangka) berangkaGol[x.sector] = (berangkaGol[x.sector] ?? 0) +
 console.log(`Golongan              : pangan ${n(perGolongan.pangan ?? 0)} · input ${n(perGolongan.input ?? 0)} · luar ${n(perGolongan.luar ?? 0)}`);
 console.log(`  berangka per golongan: pangan ${n(berangkaGol.pangan ?? 0)} · input ${n(berangkaGol.input ?? 0)} · luar ${n(berangkaGol.luar ?? 0)}`);
 console.log(`  yang TAMPIL di layar : ${n((berangkaGol.pangan ?? 0) + (berangkaGol.input ?? 0))} berangka, dari ${n((perGolongan.pangan ?? 0) + (perGolongan.input ?? 0))} varian tani`);
-console.log(`  disembunyikan layar  : ${n(perGolongan.luar ?? 0)} — bahan bangunan, LPG, dan pangan olahan`);
+console.log(`  disembunyikan layar  : ${n(perGolongan.luar ?? 0)} — bahan bangunan, LPG, pangan olahan, dan barang impor`);
 console.log(`Bermusim (≥12 bulan)  : ${n(berangka.filter((x) => x.stats.musim).length)}`);
 console.log(`Seri berlubang        : ${n(berangka.filter((x) => x.coverage.gaps > 0).length)} varian punya hari tanpa angka`);
 console.log(`Sisi pupuk & benih    : ${items.filter((x) => /^(pupuk|benih)/i.test(x.label.id)).map((x) => `${x.label.id}${x.series ? '' : ' (kosong)'}`).join(' · ') || '—'}`);
