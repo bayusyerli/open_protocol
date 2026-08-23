@@ -55,6 +55,20 @@ Selisih itu bukan kesalahan registri. Tanda itu memang tidak dimaksudkan sebagai
 produk, dan membacanya begitu yang keliru. Kolom `tanda_registri` tetap disimpan apa
 adanya supaya bisa dibandingkan, dan tidak pernah dipakai sebagai putusan.
 
+## Masa berlaku, paruh kedua dari pertanyaan yang sama
+
+"Boleh saya pakai ini?" selalu ditanyakan bersama "apakah izinnya masih hidup". Diadu
+dengan potret **2026-08-23**:
+
+- lebih dari 12 bulan: **7.140**
+- habis dalam 12 bulan: **584**
+
+Tidak satu pun sudah lewat, dan itu bukan kebetulan: registri **membuang** rekaman yang
+kedaluwarsa, jadi yang sudah habis tidak akan pernah muncul di potret mana pun sesudahnya.
+Potret berkala di `pukpes_data/potret/` satu-satunya bukti bahwa produk yang hilang itu
+pernah terdaftar — dan 584 pendaftaran di bawah ini akan menempuh jalan itu dalam
+dua belas bulan ke depan.
+
 ## Larangan berlingkup, bukan larangan menyeluruh
 
 Permentan 43/2019 melarang sebagian bahan hanya pada lingkup tertentu. Meratakannya jadi

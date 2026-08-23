@@ -46,6 +46,16 @@
 // Artinya registri konsisten dengan daftar larangan pada tingkat yang paling kasar;
 // yang bergesekan justru lingkup, dan lingkup tidak kelihatan kalau diratakan.
 //
+// MASA BERLAKU IKUT, KARENA PERTANYAANNYA SATU
+// "Boleh saya pakai ini?" punya dua paruh yang selalu ditanyakan bersamaan: apakah
+// bahannya berstatus, dan apakah izinnya masih hidup. Registri MEMBUANG rekaman yang
+// kedaluwarsa — begitu izin lewat tanggalnya, ia lenyap dari sumbernya — jadi paruh kedua
+// hanya bisa dijawab selama produknya masih ada di potret. 584 dari 7.724 habis dalam dua
+// belas bulan sejak potret ini, dan tidak satu pun yang sudah lewat.
+//
+// Acuannya TANGGAL POTRET, bukan tanggal menjalankan skrip: kalau tidak, berkas yang sama
+// akan berubah isi tiap hari tanpa satu pun datanya berubah.
+//
 // Keluaran:
 //   status-pendaftaran.ndjson / .csv   satu baris per pendaftaran pestisida
 //   LAPIS.md                           hitungannya, dan yang tidak bisa dijawabnya
@@ -82,6 +92,17 @@ function hidup (id) {
   return kini;
 }
 
+// Tanggal potret dibaca dari manifes arsip, bukan diketik: potret terbaru yang jadi acuan
+// masa berlaku, dan ia bergeser tiap kali potret baru diambil.
+const POTRET = (() => {
+  try {
+    const baris = readFileSync(join(AKAR, 'pukpes_data/potret/manifes.ndjson'), 'utf8')
+      .split('\n').filter((x) => x.trim()).map((x) => JSON.parse(x))
+      .filter((x) => x.sumber === 'pestisida');
+    return baris.map((x) => x.tanggal).sort().pop() ?? null;
+  } catch { return null; }
+})();
+
 const STATUS_DIPAKAI = new Set(['prohibited', 'restricted']);
 const larangan = new Map();
 for (const x of zat) {
@@ -112,6 +133,7 @@ const bahanDari = (r) => {
 const produk = bacaNdjson('spec/vocab/product/pestisida.ndjson');
 const baris = [];
 const hitung = { dilarang: 0, berlingkup: 0, terbatas: 0, bersih: 0, takTerperiksa: 0 };
+const hitungWaktu = {};
 let lewatPadanan = 0; let tandaRegistri = 0; let tandaTanpaPutusan = 0; let putusanTanpaTanda = 0;
 
 for (const p of produk) {
@@ -174,8 +196,19 @@ for (const p of produk) {
   if (bertanda && !berstatus) tandaTanpaPutusan++;
   if (!bertanda && berstatus) putusanTanpaTanda++;
 
+  // Paruh kedua pertanyaannya: izinnya masih hidup atau tidak, diadu dengan tanggal potret.
+  const sampai = rapi(p.registration?.valid_until).slice(0, 10);
+  let kedaluwarsa = 'tak terbaca';
+  if (/^\d{4}-\d{2}-\d{2}$/.test(sampai) && POTRET) {
+    const setahun = new Date(POTRET); setahun.setFullYear(setahun.getFullYear() + 1);
+    const batas = setahun.toISOString().slice(0, 10);
+    kedaluwarsa = sampai < POTRET ? 'sudah lewat' : (sampai <= batas ? 'habis dalam 12 bulan' : 'lebih dari 12 bulan');
+  }
+  hitungWaktu[kedaluwarsa] = (hitungWaktu[kedaluwarsa] ?? 0) + 1;
+
   baris.push({
     nomor_pendaftaran: nomor,
+    kedaluwarsa,
     merek: rapi(p.label?.id),
     status_izin: p.registration?.status ?? '',
     berlaku_sampai: p.registration?.valid_until ?? '',
@@ -195,7 +228,7 @@ baris.sort((a, b) => a.nomor_pendaftaran.localeCompare(b.nomor_pendaftaran));
 // --- tulis ---------------------------------------------------------------------------
 mkdirSync(DIR, { recursive: true });
 writeFileSync(join(DIR, 'status-pendaftaran.ndjson'), baris.map((r) => JSON.stringify(r)).join('\n') + '\n');
-const KOLOM = ['nomor_pendaftaran', 'merek', 'status_izin', 'berlaku_sampai', 'putusan', 'menyeluruh', 'lingkup', 'zat_terlarang', 'lewat', 'bahan_tak_terpetakan', 'tanda_registri'];
+const KOLOM = ['nomor_pendaftaran', 'merek', 'status_izin', 'berlaku_sampai', 'kedaluwarsa', 'putusan', 'menyeluruh', 'lingkup', 'zat_terlarang', 'lewat', 'bahan_tak_terpetakan', 'tanda_registri'];
 writeFileSync(join(DIR, 'status-pendaftaran.csv'),
   KOLOM.join(',') + '\n' + baris.map((r) => KOLOM.map((k) => kutip(r[k])).join(',')).join('\n') + '\n');
 
@@ -248,6 +281,19 @@ Selisih itu bukan kesalahan registri. Tanda itu memang tidak dimaksudkan sebagai
 produk, dan membacanya begitu yang keliru. Kolom \`tanda_registri\` tetap disimpan apa
 adanya supaya bisa dibandingkan, dan tidak pernah dipakai sebagai putusan.
 
+## Masa berlaku, paruh kedua dari pertanyaan yang sama
+
+"Boleh saya pakai ini?" selalu ditanyakan bersama "apakah izinnya masih hidup". Diadu
+dengan potret **${POTRET ?? '—'}**:
+
+${Object.entries(hitungWaktu).sort((a, b) => b[1] - a[1]).map(([k, v]) => `- ${k}: **${n(v)}**`).join('\n')}
+
+Tidak satu pun sudah lewat, dan itu bukan kebetulan: registri **membuang** rekaman yang
+kedaluwarsa, jadi yang sudah habis tidak akan pernah muncul di potret mana pun sesudahnya.
+Potret berkala di \`pukpes_data/potret/\` satu-satunya bukti bahwa produk yang hilang itu
+pernah terdaftar — dan ${n(hitungWaktu['habis dalam 12 bulan'] ?? 0)} pendaftaran di bawah ini akan menempuh jalan itu dalam
+dua belas bulan ke depan.
+
 ## Larangan berlingkup, bukan larangan menyeluruh
 
 Permentan 43/2019 melarang sebagian bahan hanya pada lingkup tertentu. Meratakannya jadi
@@ -272,5 +318,6 @@ ${Object.entries(perLingkup).sort((a, b) => b[1] - a[1]).slice(0, 8).map(([k, v]
 `);
 
 console.log(`${n(baris.length)} pendaftaran — dilarang menyeluruh ${n(hitung.dilarang)} · dilarang berlingkup ${n(hitung.berlingkup)} · terbatas ${n(hitung.terbatas)} · bersih ${n(hitung.bersih)} · tidak bisa diperiksa ${n(hitung.takTerperiksa)} (${pct(hitung.takTerperiksa / baris.length)}%)`);
+console.log(`  masa berlaku (potret ${POTRET}) : ${Object.entries(hitungWaktu).map(([k, v]) => `${k} ${n(v)}`).join(' · ')}`);
 console.log(`  lewat padanan, tak terlihat lewat komposisi : ${n(tersembunyi.length)}`);
 console.log(`  bertanda "Kimia Terbatas" di registri       : ${n(tandaRegistri)} — ${n(tandaTanpaPutusan)} tanpa status bahan, ${n(putusanTanpaTanda)} berstatus tanpa tanda`);
