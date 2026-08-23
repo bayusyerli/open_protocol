@@ -444,6 +444,95 @@ function kartuRendemen(h) {
 // hari kalender. Menyebut jumlahnya tanpa menyebut sebabnya menakut-nakuti tanpa memberi
 // tahu apa pun; menyembunyikannya menutupi seri yang memang benar-benar bolong. Jadi
 // keduanya disebut, dan akhir pekannya dihitung, bukan ditaksir.
+// ---------------------------------------------------------------------------
+// Harga yang BENAR-BENAR diterima — C4 sisi petani, separuh yang tidak mengumpulkan
+// ---------------------------------------------------------------------------
+// C4 berbunyi "eceran dipinjam, harga petani DIBANGUN", dan sisi petaninya tertulis
+// sebagai setoran: berapa yang benar-benar diterima, dan maukah petani menyetorkannya.
+// Setoran itu pengumpulan, dan lapisan gratis tidak mengumpulkan — ia juga cara termurah
+// memalsukan harga, persis alasan G6 menuntut sumbangan datang sebagai efek samping
+// catatan musim, bukan dari formulir terbuka.
+//
+// Tetapi pertanyaan yang mau dijawab setoran itu punya separuh yang tidak menuntut satu
+// byte pun berpindah: PETANI SUDAH TAHU HARGANYA SENDIRI. Yang tidak ia punya acuannya.
+// Blok ini memberi acuan itu dan menghitung di perangkat; angkanya tidak dikirim ke mana
+// pun, dan memang tidak ada tempat mengirimkannya.
+//
+// HANYA PADA SERI FARMGATE, dan itu penjagaan bukan keterbatasan. Membandingkan harga
+// yang diterima petani dengan seri ECERAN menghasilkan jurang yang benar angkanya dan
+// salah artinya — ia margin pemasaran sepanjang rantai, bukan selisih yang ditanggung
+// satu pembeli. docs/16 mengukur bentuk kekeliruan yang sama pada sawit: TBS terhadap CPO
+// dunia tampak 7,26x padahal 1,52x, "dan petani akan menyimpulkan dirinya ditipu tujuh
+// kali lipat".
+//
+// CAKUPAN HUKUM IKUT, DAN BUKAN SEBAGAI CATATAN KAKI. Penetapan TBS menaungi pekebun
+// mitra dan plasma; pekebun SWADAYA berada di luarnya, dan merekalah mayoritas petani
+// sawit Indonesia. Petani swadaya yang membandingkan harganya ke penetapan plasma lalu
+// menyimpulkan dirinya dirugikan sedang membandingkan diri ke harga yang secara hukum
+// bukan haknya. Itu keterangan yang mengubah kesimpulan, jadi ia dicetak bersama hasilnya.
+function kartuHargaSaya(h) {
+  const akhir = h.seri?.at(-1);
+  if (!akhir) return '';
+  if (h.tingkat !== 'farmgate') {
+    return `
+      <div class="kartu">
+        <h2>Kenapa layar ini tidak membandingkan harga Anda</h2>
+        <p>Seri ini <strong>harga eceran</strong> — yang dibayar pembeli di pasar, bukan yang
+        diterima petani di kebun. Selisih keduanya margin pemasaran sepanjang rantai, dan
+        menampilkannya sebagai perbandingan membuat angka yang benar terbaca sebagai
+        kerugian yang ditanggung satu pembeli.</p>
+        <p class="catatan">Pembandingan hanya ditawarkan pada seri tingkat pekebun. Dari
+        ${n(96)} seri yang ada, ${n(8)} di antaranya tingkat pekebun — dan seluruhnya sawit.
+        Untuk pangan pokok belum ada satu pun acuan tingkat petani di indeks ini.</p>
+      </div>`;
+  }
+  const id = teks(h.key);
+  return `
+    <div class="kartu kartu-harga-saya">
+      <h2>Berapa yang benar-benar Anda terima?</h2>
+      <p>Penetapan di atas angka acuan. Yang menentukan apakah Anda dirugikan bukan angka
+      itu sendiri, melainkan jaraknya ke yang benar-benar masuk ke tangan Anda.</p>
+      <label for="hs-${id}">Harga yang Anda terima (Rp per ${teks(h.satuan)})</label>
+      <input type="number" id="hs-${id}" class="hs-nilai" inputmode="decimal" min="0" step="1"
+             placeholder="misal ${Math.round(akhir.p)}">
+      <p class="aksi-hs"><button type="button" class="hs-hitung">Bandingkan</button></p>
+      <p class="hs-hasil" role="status" aria-live="polite"></p>
+      <p class="catatan catatan-tegas">
+        <strong>Angka ini tidak dikirim ke mana pun.</strong> Ia dihitung di perangkat Anda dan
+        hilang begitu halaman ditutup. Tidak ada tempat mengirimkannya, dan itu disengaja:
+        harga yang diketik ke formulir terbuka adalah harga yang paling murah dipalsukan.
+      </p>
+      ${h.cakupanHukum ? `<p class="catatan">${teks(h.cakupanHukum)}</p>` : ''}
+    </div>`;
+}
+
+function pasangHargaSaya(wadah, h) {
+  const kotak = wadah.querySelector('.kartu-harga-saya');
+  if (!kotak) return;
+  const akhir = h.seri.at(-1);
+  kotak.querySelector('.hs-hitung').addEventListener('click', () => {
+    const hasil = kotak.querySelector('.hs-hasil');
+    const p = Number(kotak.querySelector('.hs-nilai').value);
+    if (!Number.isFinite(p) || p <= 0) {
+      hasil.textContent = 'Isi harga yang Anda terima lebih dulu.';
+      return;
+    }
+    const r = akhir.p;
+    const rasio = (p / r) * 100;
+    const selisih = p - r;
+    // Umur acuan ikut, karena penetapan tidak terbit tiap hari — alasan yang sama yang
+    // membuat kartu angka menuliskan jarak sebenarnya, bukan nama jendelanya.
+    const umur = Math.round((Date.now() - Date.parse(akhir.t)) / 86400000);
+    const arah = selisih === 0 ? 'sama dengan' : selisih > 0 ? 'di atas' : 'di bawah';
+    hasil.innerHTML = `
+      Rp ${angkaId(p, 0)} per ${teks(h.satuan)} itu <strong>${angkaId(rasio, 1)}%</strong>
+      dari penetapan terakhir — ${arah}nya sebesar
+      <strong>Rp ${angkaId(Math.abs(selisih), 0)}</strong> per ${teks(h.satuan)}.
+      Acuannya Rp ${angkaId(r, 0)} pada ${teks(tanggal(akhir.t) ?? akhir.t)}${
+        Number.isFinite(umur) ? `, ${angkaId(umur, 0)} hari lalu` : ''}.`;
+  });
+}
+
 function catatanLubang(h) {
   const bolong = h.cakupan?.gaps ?? 0;
   if (!bolong) return '';
@@ -650,8 +739,9 @@ async function buka(key) {
 
     aturKartuTingkat(h);
     el.rincian.innerHTML = h.seri?.length
-      ? kartuAngka(h) + grafik(h.seri, `${h.nama} per ${h.satuan}`) + kartuMusim(h) + kartuKomentar(h) + tombolKembali()
+      ? kartuAngka(h) + grafik(h.seri, `${h.nama} per ${h.satuan}`) + kartuHargaSaya(h) + kartuMusim(h) + kartuKomentar(h) + tombolKembali()
       : kartuKosong(h) + tombolKembali();
+    pasangHargaSaya(el.rincian, h);
 
     el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
       el.rincian.innerHTML = '';
