@@ -471,6 +471,29 @@ yang sama seperti hasil pencarian nama.
   Lima belas produk bersatuan ganjil — `mL/L`, `mg/pcs`, `g/m2`, `mg/m2` — tidak ikut
   terindeks sama sekali.
 
+### Masuk lewat nama hama — C3, sisi yang tidak menuntut agronomi
+
+Terukur sebelum mulai: **nol** entri OPT di kepala pencarian. 738 OPT registri punya
+produk terdaftar dan bahan aktifnya sudah ada di indeks — tetapi yang tahu nama hamanya
+dijawab **nol**. Itu bukan kekurangan data; itu pintu yang belum dibuka.
+
+- **Yang dibuka hanya pintunya.** Menulis teks gejala untuk 738 OPT adalah pekerjaan
+  agronomi, bukan pekerjaan indeks — dan mengarangnya persis yang ditolak jalur 1.
+- **Tidak ada blok "pastikan dulu" untuk pintu ini, dan itu bukan kelalaian.** Blok itu
+  ada karena yang masuk lewat gejala sedang *menebak*, dan dua ciri yang bisa diperiksa
+  sendiri menahan tebakan itu. Untuk OPT registri cirinya memang tidak ada. Yang bisa
+  dilakukan layar adalah **mengatakan apa yang tidak bisa dipastikannya** — bukan
+  diam-diam melepas penjagaannya. Kartunya berbunyi *"Kamu masuk lewat nama, bukan
+  gejala"*, dan menawarkan jalan balik ke pintu gejala.
+- **Dua ruang id yang berbeda, dan keduanya dipertahankan.** OPT terkurasi
+  (`op:pst:0000000x`, sepuluh, bergejala) dan OPT registri (`op:pst:00001xxx`, 738, tanpa
+  gejala) **tidak beririsan sama sekali** — tidak satu pun dari 738 ada di `pest.json`.
+  Versi pertama menandai mana yang bergejala dan penandanya selalu `false`; menandainya
+  berarti memeriksa kecocokan yang tidak pernah dibuat siapa pun. Pintunya karena itu
+  juga berbeda: `?opt=` untuk yang terkurasi, `?hama=` untuk yang registri.
+- **Nama ilmiah ikut sebagai alias.** Yang mengetik `Spodoptera` tidak sedang mengetik
+  awalan nama Indonesianya.
+
 ### Kotak tanya multimoda — A1
 
 Kotaknya sudah ada sejak beranda dibangun; yang belum, semua jalur tersambung ke sana.

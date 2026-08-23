@@ -386,7 +386,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas, dan sejak 23 Agustus 2026 **3.136 badan pemegang** beserta halaman profilnya | **selesai** |
 | C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | **sisi pupuk selesai** 23 Agustus 2026 — indeks `kandungan/` memuat 12.564 produk, formulir di jalur 2; sisi pestisida terindeks tetapi belum berpermukaan | **sebagian** |
-| C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri | **BANGUN bertahap** |
+| C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri. **Sisi pintu selesai** 23 Agustus 2026 — 738 OPT registri berproduk kini terjangkau dari kotak menurut nama, dengan pernyataan bahwa gejalanya tidak ada | teks gejala **BANGUN bertahap**; pintunya **selesai** |
 | C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, 26.475 titik, satu permintaan ke SP2KP. Sisi **harga petani tetap nol**, dan itu tidak berubah | sisi eceran **selesai**; sisi petani **BANGUN** — belum dimulai |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
@@ -617,6 +617,29 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > pakai, bukan ditemukan saat layarnya kosong di depan petani.
 
 ---
+
+> **Gelombang 1 diperiksa 23 Agustus 2026, dan lima dari tujuh butirnya terhalang hal
+> yang sama — bukan kode.** Empat di antaranya berbentuk **pengumpulan**: A2 kanal
+> WhatsApp, sisi setoran petani pada C4, G3 laporan warga, dan G6 lapis peer. Aturan yang
+> ditulis dokumen ini sendiri melarangnya di lapisan gratis — *"lapisan gratis hanya
+> menyebarkan, tidak pernah mengumpulkan"* — dan C2 sudah menetapkan preseden bahwa
+> *"kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak ada kotak
+> masuk"*.
+>
+> **B3 dan G1 terhalang hal yang lebih sederhana: repositorinya masih privat.** Keduanya
+> menuntut jejak yang **publik dan bernama**; menyalurkannya ke repositori tertutup
+> menghasilkan jejak yang bernama tetapi tidak publik — persis setengah ukuran yang
+> dihindari dokumen ini. Begitu repositorinya dibuka, keduanya bisa dibangun sebagai
+> **serah-terima**, bukan pengumpulan: permukaan menyusun sanggahan atau sumbangan yang
+> sudah terisi lalu menyerahkannya ke tempat publik itu, tanpa pernah menerima apa pun
+> sendiri.
+>
+> **C3 satu-satunya yang tidak terhalang**, dan sisinya yang tidak menuntut agronomi
+> dikerjakan lebih dulu — lihat barisnya di atas.
+>
+> **Yang perlu dikerjakan manusia sebelum gelombang 1 bisa lanjut:** memutuskan apakah
+> repositori dibuka, dan menetapkan siapa yang berada di ujung kanal mana pun sebelum
+> kanalnya dibangun.
 
 ## 6. Urutan — ditempelkan ke tiga fase yang sudah ada
 

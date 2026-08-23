@@ -67,6 +67,64 @@ function gambarGejala() {
     </ul>`;
 }
 
+/* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
+ *
+ * 738 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
+ *
+ * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
+ * yang masuk lewat gejala sedang menebak, dan dua ciri yang bisa diperiksa sendiri
+ * menahan tebakan itu. Untuk OPT ini cirinya memang tidak ada — mengarangnya persis yang
+ * ditolak jalur ini. Yang bisa dilakukan layar mengatakan apa yang TIDAK bisa
+ * dipastikannya, bukan diam-diam melepas penjagaannya.
+ */
+async function bukaHama(kunci) {
+  el.hasil.innerHTML = '<p class="kosong">Mengambil…</p>';
+  el.hasil.focus();
+  try {
+    const h = await ambil(`opt-nama/${kunci}`);
+    el.hasil.innerHTML = `
+      <div class="kartu peringatan">
+        <h2>Kamu masuk lewat nama, bukan gejala</h2>
+        <p>
+          <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
+          registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
+          deskripsi gejalanya</strong> — nol dari 738 OPT berproduk memuatnya.
+        </p>
+        <p class="catatan">
+          Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
+          yang ada di kebunmu. Tidak ada dua ciri pembanding untuk diperiksa sendiri, dan
+          mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
+          hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
+          pemastian. Kalau yang kamu punya baru gejalanya,
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — sepuluh OPT cabai
+          punya ciri pembandingnya.
+        </p>
+      </div>
+      <h2 class="judul-bagian">Di tanaman apa?</h2>
+      <p class="bantuan">
+        Terdaftar pada ${h.di.length} komoditas. Pilih satu untuk melihat bahan aktif yang
+        terdaftar untuknya di tanaman itu.
+      </p>
+      <ul class="daftar">
+        ${h.di.map((d) => `
+          <li>
+            <button type="button" data-berkas="${teks(d.b)}">
+              <span class="nama">${teks(d.k)}</span>
+              <span class="sub">${angkaId(d.p)} produk terdaftar</span>
+            </button>
+          </li>`).join('')}
+      </ul>
+      <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
+    catatJawab(1, UKUR.isi);
+    pasangKembali(el.hasil, { gulirKe: el.gejala });
+  } catch (e) {
+    catatJawab(1, UKUR.gagal);
+    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
+      <p class="catatan">${teks(e.message)}</p></div>`;
+  }
+}
+
 // ---------------------------------------------------------------------------
 // Blok "pastikan dulu" — sebelum apa pun yang bisa dibeli
 // ---------------------------------------------------------------------------
@@ -385,8 +443,9 @@ el.hasil.addEventListener('click', async (ev) => {
     // Datang dari beranda dengan satu gejala sudah terpilih. Daftarnya tetap
     // digambar lebih dulu: yang dibuka lewat pencarian teks belum tentu yang
     // dimaksud, dan tombol "pilih gejala lain" harus mendarat pada sesuatu.
-    const { opt } = tautanMasuk();
+    const { opt, hama } = tautanMasuk();
     if (opt) await bukaOpt(opt);
+    else if (hama) await bukaHama(hama);
   } catch (e) {
     el.gejala.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Dibangun ulang dengan <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>

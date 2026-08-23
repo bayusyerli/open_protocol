@@ -1048,6 +1048,60 @@ for (const r of sediaanCari) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// OPT registri yang bisa dicari menurut NAMA — C3, sisi yang tidak menuntut agronomi
+// ---------------------------------------------------------------------------
+// 749 OPT registri punya produk terdaftar; sepuluh di antaranya punya teks gejala. Yang
+// 739 sisanya sampai hari ini TIDAK BISA DICAPAI SAMA SEKALI dari kotak beranda — nol
+// entri OPT di kepala pencarian — walau bahan aktif yang terdaftar untuknya sudah ada
+// di indeks. Yang tahu nama hamanya dijawab nol, dan itu bukan kekurangan data melainkan
+// pintu yang belum dibuka.
+//
+// Yang dibuka DI SINI hanya pintunya. Menulis teks gejala untuk 739 OPT adalah pekerjaan
+// agronomi, bukan pekerjaan indeks, dan mengarangnya persis yang ditolak jalur 1.
+// `kunciKomoditas` baru ada di bawah, sesudah pendalaman ember. Bentuknya sepele, jadi
+// disalin sebaris di sini alih-alih memindahkan definisi yang dipakai di tempat lain.
+const kunciId = (id) => id.replace(/[^a-z0-9]/gi, '');
+
+const optRegistriIndeks = [];
+const berkasOptNama = {};
+for (const k of optRegistri) {
+  const di = [];
+  for (const [kc, v] of perKomoditas) {
+    const o = v.opt.get(k.id);
+    if (!o) continue;
+    di.push({ k: v.nama, b: `opt/${kunciId(kc)}/${kunciId(k.id)}`, p: o.produk.size });
+  }
+  if (!di.length) continue;
+  const kunci = kunciId(k.id);
+  // TIDAK ADA penanda "punya gejala" di sini, dan itu bukan kelalaian: OPT terkurasi
+  // (op:pst:0000000x) dan OPT registri (op:pst:00001xxx) adalah DUA RUANG ID YANG
+  // BERBEDA — tidak satu pun dari 738 ini ada di pest.json. Menandainya berarti
+  // memeriksa kecocokan yang tidak pernah dibuat siapa pun.
+  optRegistriIndeks.push({
+    i: k.id, n: k.label?.id ?? '', l: k.scientific_name ?? null,
+    komoditas: di.length, produk: di.reduce((a, x) => a + x.p, 0), kunci,
+  });
+  berkasOptNama[kunci] = {
+    id: k.id, nama: k.label?.id ?? '', ilmiah: k.scientific_name ?? null,
+    di: di.sort((a, b) => b.p - a.p || a.k.localeCompare(b.k)),
+  };
+}
+optRegistriIndeks.sort((a, b) => a.n.localeCompare(b.n));
+
+// C3 — nama OPT masuk kepala pencarian. Nama ilmiahnya ikut sebagai alias: yang
+// mengetik "Spodoptera" tidak sedang mengetik awalan nama Indonesianya.
+for (const o of optRegistriIndeks) {
+  const entri = {
+    n: o.n, i: o.i, j: 'opt',
+    k: `${o.produk.toLocaleString('id-ID')} produk terdaftar di ${o.komoditas} komoditas · tanpa teks gejala`,
+    ...(o.l ? { f: o.l } : {}),
+    p: `opt-nama/${o.kunci}`,
+  };
+  tambah(o.n, entri);
+  if (o.l && ember(o.l) !== ember(o.n)) tambah(o.l, { ...entri, n: o.n });
+}
+
 const cariDalam = [];
 const muat = (isi) => Buffer.byteLength(JSON.stringify(isi), 'utf8') <= ANGGARAN;
 // Batasnya dulu 8 dan itu diam-diam gagal begitu principal masuk: 676 badan bernama
@@ -1379,6 +1433,7 @@ const gejala = optTerkurasi
 // begitu satu gejala dibuka, jalur 1 yang merendernya, dan di sanalah blok "pastikan
 // dulu" berada. Gejala tanpa blok itu adalah tebakan yang dipoles, jadi pintu ini
 // tidak boleh bisa dibuka tanpa melewatinya.
+
 const gejalaCari = gejala
   .filter((g) => g.adaPintu)
   .map((g) => ({
@@ -1725,6 +1780,8 @@ const meta = {
     komoditasBervarian: Object.keys(varian).length,
     optTerkurasi: gejala.length,
     optBerpintu: gejala.filter((g) => g.adaPintu).length,
+    optRegistriBerproduk: optRegistriIndeks.length,
+
     namaLokal: namaLokalCari.length,
     namaLokalTerpetakan: namaLokalCari.filter((x) => x.ke.length).length,
     namaLokalTaksa: namaLokalCari.filter((x) => x.ke.length > 1).length,
@@ -1770,6 +1827,7 @@ const meta = {
     // tetapi kosong justru saat paling mungkin dibuka jauh dari sinyal.
     sediaan: Object.keys(berkasResep).sort(),
     toko: tokoWilayah.map((w) => w.k),
+    optNama: Object.keys(berkasOptNama).sort(),
     // Sengaja CACAH, bukan daftar. Daftar 3.136 kunci principal membengkakkan meta.json dari
     // 19 KB jadi 114 KB — dan meta.json satu-satunya berkas yang diambil di TIAP muat halaman,
     // termasuk halaman yang tidak menyentuh principal sama sekali. Penyaji tidak
@@ -1816,7 +1874,7 @@ const meta = {
     hargaPupuk:
       'SP2KP mendaftarkan Pupuk Urea, NPK 15-15-15, SP-36, dan ZA tetapi tidak mengisi harganya: 13-15 tanggal mingguan pada paruh pertama 2024, seluruhnya kosong pada keempat ukuran tertimbang. Jalur 3 karena itu tetap mengandalkan masukan pengguna untuk rupiah per kg hara.',
     gambarKemasan:
-      'Gambar kemasan ada pada 440 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
+      'Gambar kemasan ada pada 456 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',
@@ -1828,6 +1886,8 @@ const meta = {
       'Hanya 92 dari 2.248 rekaman berwilayah — 4,1% — menyebut sesuatu yang lebih rinci daripada kabupaten atau kota. Sisanya berhenti di nama kabupaten, tersebar di 93 wilayah. Nama tanpa alamat tidak bisa dituju: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi.',
     tokoTanpaKontak:
       'Tidak satu pun rekaman memuat nomor telepon, surel, jam buka, atau apakah tokonya masih ada. Medan itu sengaja dibiarkan kosong menunggu pemilik toko mengklaimnya sendiri — menambalnya dengan geokode massal atau penarikan pihak ketiga akan mengisi direktori dengan tebakan yang tidak bisa dibantah siapa pun.',
+    gejalaOptRegistri:
+      'Nol dari 738 OPT registri berproduk memuat teks gejala. Sepuluh OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 738 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
     hasilVarietas:
       'Registri tidak memuat potensi hasil satu pun varietas — nol dari 11.227. Perkiraan panen pada analisis usaha tani karena itu masukan pemakainya sendiri, dan tidak ada angka acuan yang bisa disodorkan menggantikannya.',
     arusKasMusim:
@@ -1856,6 +1916,7 @@ for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.
 simpan('gejala.json', gejala);
 simpan('gejala-cari.json', gejalaCari);
 simpan('nama-lokal.json', namaLokalCari);
+for (const [k, isi] of Object.entries(berkasOptNama).sort()) simpan(`opt-nama/${k}.json`, isi);
 simpan('varian.json', varian);
 simpan('larangan.json', Object.fromEntries([...laranganZat].sort()));
 for (const [e, isi] of Object.entries(cari).sort()) simpan(`cari/${e}.json`, isi);
@@ -1929,6 +1990,7 @@ console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
 console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => lebihRinci(r.alamat)).length} lebih rinci dari kabupaten`);
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
+console.log(`  opt-nama/         : ${optRegistriIndeks.length} OPT registri berproduk dapat dicari menurut nama — tidak satu pun punya teks gejala`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
 console.log(`  principal/        : ${kb([...berkas].filter(([p]) => p.startsWith('principal/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasPrincipal).length} berkas — ${meta.jumlah.principal} badan, ${meta.jumlah.produkBerprincipal} dari ${semuaProduk.length} produk tertaut`);

@@ -45,6 +45,10 @@ const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.incl
 // tautannya karena itu berbeda, dan perbedaannya ditulis sekali di sini alih-alih diulang di
 // tiap pemanggil.
 const tautanKunci = {
+  // OPT registri dibuka jalur 1 lewat kuncinya sendiri, bukan lewat `opt=` yang dipakai
+  // sepuluh OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
+  // membuat jalur 1 mencari teks gejala yang memang tidak ada.
+  opt: (x) => `jalur-1.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
   sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
   principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
   harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,

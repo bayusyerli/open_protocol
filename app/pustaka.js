@@ -74,7 +74,7 @@ export const tanggal = (s) => {
 export const JENIS = {
   pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif',
   gejala: 'Gejala', principal: 'Perusahaan', harga: 'Harga',
-  sediaan: 'Sediaan sendiri',
+  sediaan: 'Sediaan sendiri', opt: 'Hama & penyakit',
 };
 
 /**
@@ -313,6 +313,7 @@ export function tautanMasuk() {
   const pecahan = p.get('pecahan');
   const opt = p.get('opt');
   const resep = p.get('resep');
+  const hama = p.get('hama');
   return {
     q: p.get('q'),
     id: p.get('id'),
@@ -323,5 +324,6 @@ export function tautanMasuk() {
     // Kunci resep ikut menyusun jalur berkas, jadi bentuknya dibatasi sama ketatnya
     // seperti `pecahan`: huruf dan angka saja, tanpa titik dan tanpa garis miring.
     resep: resep && /^[a-z0-9]+$/i.test(resep) ? resep : null,
+    hama: hama && /^[a-z0-9]+$/i.test(hama) ? hama : null,
   };
 }
