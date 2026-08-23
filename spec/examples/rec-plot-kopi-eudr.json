@@ -3,26 +3,56 @@
   "id": "op:plt:019e811f-b780-749d-96bc-405b88c70046",
   "kind": "orchard_block",
   "label": "Kebun kopi blok atas",
-  "holder": { "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4", "label": "Pak Slamet" },
-  "region": { "id": "op:rgn:00001108", "label": "Kabupaten Aceh Tengah" },
+  "holder": {
+    "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4",
+    "label": "Pak Slamet"
+  },
+  "region": {
+    "id": "op:rgn:00001108",
+    "label": "Kabupaten Aceh Tengah"
+  },
   "geometry_quality": "walked_polygon",
   "geometry": {
     "type": "Polygon",
-    "coordinates": [[
-      [96.85041, 4.51122],
-      [96.85198, 4.51119],
-      [96.85201, 4.50988],
-      [96.85044, 4.50991],
-      [96.85041, 4.51122]
-    ]]
+    "coordinates": [
+      [
+        [
+          96.85041,
+          4.51122
+        ],
+        [
+          96.85198,
+          4.51119
+        ],
+        [
+          96.85201,
+          4.50988
+        ],
+        [
+          96.85044,
+          4.50991
+        ],
+        [
+          96.85041,
+          4.51122
+        ]
+      ]
+    ]
   },
-  "area": { "value": 1.92, "unit": "har" },
-  "geoids": [
-    { "scheme": "AGSTACK", "value": "PENDING-DIHITUNG-DARI-GEOMETRI", "computed_at": "2026-08-19T00:00:00Z" }
-  ],
+  "area": {
+    "value": 1.92,
+    "unit": "har"
+  },
   "tenure": "owned",
   "elevation_m": 1240,
   "irrigation_type": "rainfed",
   "data_classification": "commercially_sensitive",
-  "created_at": "2026-06-02T00:00:00Z"
+  "created_at": "2026-06-02T00:00:00Z",
+  "geoids": [
+    {
+      "scheme": "OP_GEOM_SHA256",
+      "value": "sha256:6a6b0d23ebf1ac3733be8e686dafe21a560f3f15d4b837f6b7caa61b1e4e0fde",
+      "computed_at": "2026-08-23T07:42:42.593Z"
+    }
+  ]
 }

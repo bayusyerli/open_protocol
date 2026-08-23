@@ -54,19 +54,26 @@
     },
     "geoids": {
       "type": "array",
-      "description": "Identitas geospasial deterministik dari pihak luar, mis. GeoID AgStack. Bisa lebih dari satu karena berubah bila batas lahan direvisi.",
+      "description": "Identitas geospasial deterministik. Bisa lebih dari satu karena ia berubah bila batas lahan direvisi — yang tetap adalah `id` rekaman ini, bukan sidiknya. Urutannya kronologis: yang terakhir berlaku untuk batas yang sekarang.",
       "items": {
         "type": "object",
         "properties": {
           "scheme": {
             "type": "string",
+            "description": "OP_GEOM_SHA256 dihitung sendiri oleh repositori ini dan bisa diperiksa ulang siapa pun dari geometrinya. AGSTACK datang dari Asset Registry AgStack dan TIDAK bisa diperiksa ulang di sini — nilainya hanya boleh disalin dari registri itu, tidak pernah dikarang.",
             "enum": [
+              "OP_GEOM_SHA256",
               "AGSTACK",
               "OTHER"
             ]
           },
+          "scheme_name": {
+            "type": "string",
+            "description": "Nama skemanya. Wajib bila scheme \"OTHER\" — identitas yang tidak menyebut skemanya tidak bisa dicocokkan dengan apa pun."
+          },
           "value": {
-            "type": "string"
+            "type": "string",
+            "minLength": 1
           },
           "computed_at": {
             "type": "string",
@@ -76,6 +83,25 @@
         "required": [
           "scheme",
           "value"
+        ],
+        "allOf": [
+          {
+            "if": {
+              "properties": { "scheme": { "const": "OP_GEOM_SHA256" } },
+              "required": ["scheme"]
+            },
+            "then": {
+              "properties": { "value": { "pattern": "^sha256:[0-9a-f]{64}$" } },
+              "required": ["computed_at"]
+            }
+          },
+          {
+            "if": {
+              "properties": { "scheme": { "const": "OTHER" } },
+              "required": ["scheme"]
+            },
+            "then": { "required": ["scheme_name"] }
+          }
         ],
         "additionalProperties": false
       }
