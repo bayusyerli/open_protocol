@@ -19,6 +19,13 @@ Tanaman dan Perizinan Pertanian (PVTPP).
 
 Respons JSON mentah disimpan apa adanya di `raw/`.
 
+> **`raw/*.json` jangan pernah ditulisi.** Berkas itu potret 19 Agustus 2026, dan registri
+> pestisida membuang rekaman yang kedaluwarsa — 584 produk di dalamnya berakhir dalam dua
+> belas bulan ke depan dan akan lenyap dari sumbernya. Menimpanya dengan hasil pengambilan
+> baru menghancurkan satu-satunya bukti bahwa mereka pernah terdaftar. Potret berkala punya
+> tempatnya sendiri di **[`potret/`](potret/README.md)**, dan potret 19 Agustus sudah
+> diserap ke sana sebagai potret pertama.
+
 ## Metode akses
 Endpoint data bersifat publik namun butuh cookie sesi (`ci_session`) yang
 terbentuk saat mengunjungi portal; halaman HTML `/pupuk` & `/pestisida`
