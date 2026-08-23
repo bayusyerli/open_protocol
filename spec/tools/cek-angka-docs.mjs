@@ -51,6 +51,8 @@ const ZAT = L(J('spec/vocab/substance-pestisida.json'));
 const KUR = L(J('spec/vocab/pest.json'));
 const OPTR = L(J('spec/vocab/pest-registri.json'));
 const SED = L(J('spec/vocab/preparation.json'));
+const BPP = nd('spec/vocab/bpp/bpp.ndjson');
+const LAB = nd('spec/vocab/lab/lab.ndjson');
 const meta = J('spec/indeks/meta.json');
 const larangan = J('spec/indeks/larangan.json');
 
@@ -64,6 +66,14 @@ const cek = (doc, klaim, nyata, harap) =>
 // sesudah dibetulkan karena skema baru masuk. Ia contoh paling murni dari yang dijaga alat
 // ini — angka yang benar saat ditulis dan tidak punya apa pun yang memberitahu saat ia
 // berhenti benar.
+// Balai penyuluhan & laboratorium. Angka keduanya dicetak di docs/15 dan app/toko.html,
+// dan keduanya persis jenis angka yang basi diam-diam: sapuan berikutnya menambah balai,
+// dan tidak ada yang memberitahu halaman yang mencetaknya.
+cek('15', 'balai penyuluhan', BPP.length, 5844);
+cek('15', 'kabupaten/kota ber-BPP', new Set(BPP.map((b) => `${b.region?.province}|${b.region?.regency}`)).size, 504);
+cek('15', 'laboratorium terakreditasi', LAB.length, 889);
+cek('15', 'lab bisa ukur residu pestisida', LAB.filter((x) => x.capabilities?.pesticide_residue).length, 17);
+
 cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 32);
 
 // ---- dasar
