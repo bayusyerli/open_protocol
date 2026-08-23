@@ -31,7 +31,8 @@
             "nama-lokal",
             "principal",
             "harga",
-            "editorial"
+            "editorial",
+            "golongan-resistensi"
           ]
         },
         "label": {

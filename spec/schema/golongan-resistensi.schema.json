@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/golongan-resistensi.schema.json",
+  "title": "GolonganResistensi — bahan aktif ke kode golongan IRAC, FRAC, atau HRAC",
+  "description": "Data lama, kemampuan baru. Registri bahan aktif sudah ada; yang belum ada adalah dasar untuk berkata \"tiga musim terakhir memakai golongan yang sama\". Rekaman di sini menyediakan dasar itu.\n\nBUKAN ENTITAS, DAN ITU DISENGAJA. Tiap rekaman sebuah PEMETAAN, bukan hal. \"IRAC 3A\" bukan sesuatu yang ada di dunia — ia keterangan tentang sipermetrin. Karena itu rekaman ini tidak memakai `op:` id, mengikuti kaidah yang sudah dipakai `nama-lokal`: blok prefiks ID adalah enum tertutup yang mengikat sejak v0.1, dan menambahnya untuk sesuatu yang bukan entitas menukar kaidah mahal dengan kemudahan murah. Yang dipakai `key`, disalin dari kunci entitas substansi yang dipetakan, sehingga satu rekaman selalu punya satu pasangan.\n\nKODE YANG SALAH LEBIH BURUK DARIPADA TIDAK ADA KODE. Kode golongan yang keliru menghasilkan anjuran rotasi yang salah tapi terdengar yakin — dan yang menanggungnya petani yang mengira sudah berotasi. Karena itu `codes` boleh kosong, dan bila kosong `unmapped_reason` wajib: nama yang tidak bisa dicocokkan dengan yakin ke entri terbitan tetap dicatat beserta alasannya, bukan dihilangkan. Berkas ini memuat satu rekaman untuk SETIAP bahan aktif di registri, termasuk yang kosong.\n\nSETIAP KODE HARUS PUNYA ENTRI TERBITAN. `listed_as` menyimpan nama persis sebagaimana tercantum pada daftar IRAC, FRAC, atau HRAC, dan `basis` menyimpan bagaimana nama registri sampai ke sana. Tanpa keduanya, sebuah kode tidak bisa dibedakan dari ingatan yang kebetulan benar.",
+  "type": "object",
+  "properties": {
+    "key": {
+      "$ref": "common.schema.json#/$defs/Key",
+      "description": "Sama dengan `key` entitas substansi yang dipetakan. Bukan kunci baru — pemetaan ini tidak punya identitas sendiri di luar bahan yang dipetakannya."
+    },
+    "substance": {
+      "$ref": "common.schema.json#/$defs/Ref",
+      "description": "Bahan aktif yang dipetakan. Label ikut disalin supaya berkas terbaca tanpa membuka substance-pestisida.json; label BUKAN sumber kebenaran."
+    },
+    "codes": {
+      "type": "array",
+      "description": "Kode golongan dari daftar terbitan. BOLEH KOSONG — lihat `unmapped_reason`. BOLEH LEBIH DARI SATU, dan itu bukan cacat data: mankozeb punya FRAC M 03 sebagai fungisida sekaligus IRAC UN sebagai akarisida, dan belerang punya FRAC M 02 sekaligus IRAC UN. Satu skema tidak pernah muncul dua kali di sini; kode ganda DI DALAM satu skema ditulis sebagaimana skemanya menuliskannya (HRAC memakai '4/29' untuk kuinklorak dan '6/24' untuk bromoksinil).",
+      "items": {
+        "type": "object",
+        "properties": {
+          "scheme": {
+            "type": "string",
+            "enum": ["IRAC", "FRAC", "HRAC"]
+          },
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Kode sebagaimana ditulis skemanya, apa adanya — termasuk spasi ('M 03', 'U 19', 'P 07'), titik ('16.1'), dan garis miring untuk golongan ganda ('4/29'). Tidak dinormalkan, karena bentuk kode itulah yang tercetak pada label produk."
+          },
+          "listed_as": {
+            "type": "string",
+            "minLength": 2,
+            "description": "Nama persis sebagaimana tercantum pada daftar terbitan. Inilah yang membuat sebuah kode bisa ditelusuri ulang: pembaca bisa membuka daftarnya dan menemukan barisnya."
+          },
+          "basis": {
+            "type": "string",
+            "description": "Bagaimana nama registri sampai ke entri terbitan. 'ejaan' — hanya perbedaan alih aksara (sipermetrin/cypermethrin, mankozeb/mancozeb). 'stereo' — penanda isomer dilepas (fenoksaprop-P-etil ke Fenoxaprop-ethyl). 'garam' — bentuk garam dilepas (IPA glifosat ke Glyphosate). 'ester' — bentuk ester dilepas (triklopir butoksi etil ester ke Triclopyr). 'organisme' — dicocokkan lewat nama ilmiah, bukan label. 'alias' — lewat tabel alias yang ditinjau tangan; alasannya wajib ada di `note`.",
+            "enum": ["ejaan", "stereo", "garam", "ester", "organisme", "alias"]
+          },
+          "legacy": {
+            "type": "object",
+            "description": "Kode huruf lama, direkam berdampingan dengan angkanya karena label produk di Indonesia masih banyak mencetak huruf. HANYA UNTUK HRAC: IRAC dan FRAC tidak pernah punya sistem huruf yang digantikan angka, dan kemasan Indonesia memang mencetak angka untuk keduanya.\n\nSISTEMNYA WAJIB DISEBUT, DAN ITU BUKAN FORMALITAS. Beredar lebih dari satu sistem huruf herbisida, dan keduanya memakai huruf yang sama untuk golongan yang berbeda — memakai yang keliru akan membuat pengguna mencocokkan huruf di kemasannya dengan golongan yang salah, lalu menerima lampu hijau untuk pengulangan yang seharusnya dilarang. Karena itu `system` adalah enum tertutup berisi satu nilai, dan bukan huruf telanjang.",
+            "properties": {
+              "system": {
+                "type": "string",
+                "enum": ["HRAC-global-huruf"],
+                "description": "Enum tertutup, saat ini beranggota satu. Sengaja enum dan bukan huruf telanjang: kalau kelak ditemukan kemasan Indonesia yang memakai sistem huruf lain, nilainya ditambahkan di sini dan rekaman lama tetap terbaca — sedangkan huruf tanpa nama sistem akan terlanjur tercampur tanpa bisa dipisahkan lagi.\n\nSatu-satunya nilai sekarang: sistem huruf HRAC global yang berlaku SEBELUM penomoran angka 2020: A, B, C1, C2, C3, D, E, F1–F4, G, H, I, K1–K3, L, M, N, O, P, Q, R, S, T, Z. BUKAN sistem huruf CropLife Australia, yang memberi huruf berlainan untuk golongan yang sama — di sistem Australia glifosat bergolongan M dan triazin bergolongan C tanpa angka, sedangkan di sini glifosat G dan triazin C1."
+              },
+              "code": {
+                "type": "string",
+                "minLength": 1,
+                "description": "Huruf sebagaimana ditulis alat pencarian HRAC, apa adanya. Sebagian majemuk dan bertitik ('O.L' untuk kuinklorak, 'C3.M' untuk bromoksinil, 'K3.N' untuk tiobenkarb, 'Z.K3' untuk napropamid) — bentuk itu dipertahankan karena ia menyatakan bahwa penempatan lamanya memang lebih dari satu kelas, sama seperti kode angka gandanya."
+              }
+            },
+            "required": ["system", "code"],
+            "additionalProperties": false
+          },
+          "legacy_absent_reason": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Dipakai pada kode HRAC yang tidak punya padanan huruf — biasanya bahan yang masuk daftar setelah penomoran 2020, sehingga tidak pernah bergolongan huruf. Sama seperti `unmapped_reason`: kekosongan yang beralasan bisa dibaca sebagai kekosongan, sedangkan medan yang hilang begitu saja tidak bisa dibedakan dari kelalaian."
+          },
+          "not_a_rotation_group": {
+            "type": "boolean",
+            "description": "Benar bila anggota golongan itu TIDAK diketahui bekerja pada tempat sasaran yang sama, sehingga kesamaan kode bukan alasan menghindari rotasi — dan perbedaannya bukan alasan menganggapnya aman. Bukan tafsiran sendiri: IRAC menyatakannya di bagian 5 klasifikasinya, mengecualikan Golongan 8 (penghambat banyak tempat), Golongan 13 (pengurai gradien proton), dan seluruh golongan UN dari larangan berotasi di dalam golongan. Ditandai juga: HRAC 0 (cara kerja belum diketahui), FRAC NC (tidak diklasifikasikan), dan FRAC BM (biologi dengan banyak cara kerja sekaligus). CATATAN: nomor yang sama bisa berarti hal berbeda antar-skema — HRAC 13 (klomazon) dan FRAC 13 (kuinoksifen) golongan cara kerja betulan dan TIDAK ditandai. Penyaji wajib membaca medan ini sebelum menyimpulkan 'golongannya sama'."
+          }
+        },
+        "required": ["scheme", "code", "listed_as", "basis"],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": { "properties": { "scheme": { "const": "HRAC" } }, "required": ["scheme"] },
+            "then": {
+              "oneOf": [{ "required": ["legacy"] }, { "required": ["legacy_absent_reason"] }],
+              "description": "Setiap kode HRAC wajib menyatakan huruf lamanya ATAU alasan kenapa tidak ada. Diam bukan pilihan: label produk masih mencetak huruf, dan medan yang hilang begitu saja tidak bisa dibedakan dari kelalaian pencatatan."
+            },
+            "else": {
+              "not": { "anyOf": [{ "required": ["legacy"] }, { "required": ["legacy_absent_reason"] }] },
+              "description": "IRAC dan FRAC tidak punya sistem huruf yang digantikan angka; membiarkan medannya terisi di sana akan mengarang sejarah yang tidak pernah ada."
+            }
+          }
+        ]
+      }
+    },
+    "unmapped_reason": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Wajib bila `codes` kosong. Menyebut kenapa kosong: tidak tercantum pada daftar terbitan, di luar cakupan ketiga skema, label bukan nama bahan, atau galur agens hayatinya berbeda. Kekosongan tanpa alasan tidak bisa dibedakan dari kelalaian pencatatan — dan justru kekosongan yang beralasan itulah yang mencegah orang mengarang kode sendiri."
+    },
+    "note": { "$ref": "common.schema.json#/$defs/LangText" },
+    "provenance": { "$ref": "common.schema.json#/$defs/Provenance" },
+    "lifecycle": { "$ref": "common.schema.json#/$defs/Lifecycle" }
+  },
+  "required": ["key", "substance", "codes", "lifecycle"],
+  "allOf": [
+    {
+      "if": { "properties": { "codes": { "maxItems": 0 } } },
+      "then": { "required": ["unmapped_reason"] }
+    },
+    {
+      "if": { "required": ["unmapped_reason"] },
+      "then": { "properties": { "codes": { "maxItems": 0 } } }
+    }
+  ],
+  "unevaluatedProperties": false
+}

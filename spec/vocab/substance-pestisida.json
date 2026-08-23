@@ -412,7 +412,7 @@
       "mode_of_action": [
         {
           "scheme": "FRAC",
-          "code": "M3"
+          "code": "M 03"
         }
       ],
       "synonyms": [
@@ -886,7 +886,7 @@
       "mode_of_action": [
         {
           "scheme": "FRAC",
-          "code": "M5"
+          "code": "M 05"
         }
       ],
       "synonyms": [
@@ -1642,7 +1642,7 @@
       "mode_of_action": [
         {
           "scheme": "FRAC",
-          "code": "M3"
+          "code": "M 03"
         }
       ],
       "synonyms": [
