@@ -5,6 +5,9 @@
 > Angka **dari registri pascapenggabungan ejaan zat** (`1a0f077`, `04b91c6`)
 > **dan penyatuan komoditas serumpun serta OPT kembar** — 488 komoditas jadi 274,
 > 1.370 OPT jadi 778
+> **Dimutakhirkan lagi sesudah penyatuan keluarga ejaan zat** (23 Agustus 2026):
+> 477 entitas bahan aktif yang sebenarnya 184 bahan jadi 184, sehingga bahan aktif
+> hidup turun 1.399 → 1.106
 >
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
@@ -48,8 +51,8 @@ masuk lewat kosakata petani sendiri juga belum ada.
   mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
   dekat ke tanggung jawab hukum.
 - **Runtuhkan merek jadi bahan aktif dan kadarnya.** 246 produk terdaftar untuk
-  trips di cabai, tetapi isinya hanya 72 bahan aktif — yang, karena satu bahan
-  dipakai pada banyak kadar, jatuh jadi 164 kartu bahan+kadar. Menampilkan 246 nama
+  trips di cabai, tetapi isinya hanya 60 bahan aktif — yang, karena satu bahan
+  dipakai pada banyak kadar, jatuh jadi 159 kartu bahan+kadar. Menampilkan 246 nama
   dagang adalah menyalin kebingungan kios ke dalam layar.
 - **Informasi negatif didahulukan.** Apa yang dilarang, dan apa yang tidak akan
   menolong. Ini yang paling bernilai bagi petani, dan justru paling kecil risiko
@@ -113,7 +116,7 @@ bukti apa-apa** — dan karena itu layarnya berhenti pada fakta, bukan pada kesi
 ## 5. Peringatan bahan dilarang — dan lingkupnya
 
 Dari 246 produk terdaftar untuk trips di cabai, **14 mengandung klorpirifos** dan
-**34 memuat bahan yang namanya tercantum di Lampiran I.A Permentan 43/2019**.
+**39 memuat bahan yang namanya tercantum di Lampiran I.A Permentan 43/2019**.
 Peringatan itu bisa diberikan hari ini tanpa data tambahan — asalkan lingkupnya ikut
 disebut.
 
@@ -130,8 +133,13 @@ Penelusuran seluruh registri menunjukkan ini bukan kekhususan cabai:
 |---|---|
 | Zat dilarang **menyeluruh** — lingkup "semua bidang penggunaan pestisida" | 91 |
 | Di antaranya yang masih muncul pada produk terdaftar | **0** |
-| Zat dilarang **khusus komoditas** — seluruhnya tanaman padi | 31 |
+| Zat dilarang **khusus komoditas** — seluruhnya tanaman padi | 30 |
 | Produk yang justru terdaftar untuk komoditas yang melarang isinya | **0** |
+
+Kedua angka zat dihitung atas **entitas yang hidup saja**. Penyatuan ejaan menyalin blok
+`hazard` ke entitas yang menang supaya larangannya tetap terjangkau, sedangkan yang kalah
+tetap memegangnya agar rekamannya setia pada registri; menghitung keduanya berarti
+menghitung satu bahan dua kali.
 
 Artinya seluruh bahan dilarang yang masih beredar dilarang untuk padi atau rumah
 tangga, bukan untuk komoditas tempat ia terdaftar. Registrinya konsisten; yang keliru
@@ -142,6 +150,14 @@ memegang blok `hazard` lengkap, sementara `"CHLORPYRIFOS"` dan `"Klorpirifos
 (chlorpyrifos)"` tidak memegang satu pun. Selama ketiganya terbelah, **20 produk**
 yang registrinya menuliskan ejaan Inggris tak terlihat oleh pemeriksaan larangan mana
 pun — termasuk pemeriksaan padi, yang justru tempat larangan itu berlaku.
+
+**Penyatuan keluarga ejaan menutupnya lagi, dan angkanya bergerak.** Sapuan pertama
+bekerja per pasang tulisan; keluarga yang pecah jadi tiga atau empat ejaan lolos darinya.
+Sesudah 477 entitas menyusut jadi 184, angka di atas naik dari **34 ke 39 produk** —
+lima pendaftaran untuk trips di cabai yang selama ini menuliskan `"Dimethoate"` (2),
+`"Dimetoat (Dimethoate)"` (1), `"Profenofos (Profenofos)"` (1), dan `"Kartap hidroklorida
+(Cartap hydrochloride)"` (1) baru sekarang terlihat oleh pemeriksaan larangan. Kenaikan itu
+bukan data yang berubah, melainkan lubang yang tertutup.
 
 ---
 
@@ -213,7 +229,7 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
    bawahnya tertulis bahwa gejala dikurasi tangan dan mesin tidak menebak dari foto.
 2. **Hasil.** Dugaan OPT dengan nama ilmiahnya, lalu blok **"pastikan dulu"** berisi
    dua ciri pembanding yang bisa diperiksa sendiri. Menyusul angka besar — *246 produk
-   terdaftar untuk ini di cabai, tetapi isinya hanya 72 bahan aktif berbeda* — lalu
+   terdaftar untuk ini di cabai, tetapi isinya hanya 60 bahan aktif berbeda* — lalu
    kartu peringatan bahan dilarang **beserta lingkup larangannya**.
 3. **Kartu bahan + kadar.** Lima kelompok, diurutkan menurut jumlah produk. Tiap kartu
    bisa dibuka jadi daftar merek dengan nomor pendaftaran, masa berlaku, dan **dosis
