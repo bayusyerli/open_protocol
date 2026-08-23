@@ -1,0 +1,124 @@
+{
+  "id": "op:sed:00009901",
+  "key": "fixture-sediaan-tanpa-alasan",
+  "label": {
+    "id": "Arang sekam"
+  },
+  "definition": {
+    "id": "Sekam padi dibakar tidak sempurna sampai menghitam tetapi belum jadi abu, dipakai sebagai pembenah tanah dan campuran media semai."
+  },
+  "preparation_class": "biochar",
+  "intended_functions": [
+    "soil_conditioning"
+  ],
+  "regulatory": {
+    "regime": [
+      "soil_amendment_like"
+    ],
+    "own_use_only": false,
+    "circulation": "limited_kabupaten_kota",
+    "legal_basis": [
+      {
+        "instrument": "UU 22/2019",
+        "article": "Pasal 71 ayat (2)",
+        "effect": "Pupuk yang diedarkan wajib terdaftar."
+      },
+      {
+        "instrument": "UU 22/2019",
+        "article": "Pasal 72",
+        "effect": "Pupuk yang diproduksi petani kecil dikecualikan dari pendaftaran, dan hanya boleh diedarkan terbatas dalam satu kabupaten/kota."
+      }
+    ]
+  },
+  "feedstocks": [
+    {
+      "substance": {
+        "id": "op:sub:00001705",
+        "label": "Sekam padi"
+      },
+      "role": "carbon_source",
+      "proportion": {
+        "value": 1,
+        "unit": "parts_by_volume"
+      }
+    }
+  ],
+  "process": {
+    "kind": "pyrolysis",
+    "duration": {
+      "value": 6,
+      "unit": "h"
+    },
+    "vessel": "kiln",
+    "sanitation": {
+      "regime": "none"
+    },
+    "critical_control_points": [
+      {
+        "name": {
+          "id": "Berhenti sebelum jadi abu"
+        },
+        "check_method": {
+          "id": "Pembakaran dihentikan dan disiram saat sekam sudah hitam merata, sebelum memutih."
+        },
+        "failure_action": {
+          "id": "Sekam yang jadi abu putih kehilangan struktur berporinya, dan yang tersisa hanya garam kalium yang bisa menaikkan pH terlalu jauh."
+        }
+      }
+    ]
+  },
+  "release_criteria": [
+    {
+      "compare": {
+        "variable": {
+          "id": "op:var:00000050",
+          "label": "pH sediaan"
+        },
+        "operator": "<=",
+        "value": 9,
+        "unit": "1"
+      },
+      "kind": "safety",
+      "field_proxy": {
+        "id": "Arang sekam hitam merata, bukan abu putih."
+      },
+      "rationale": {
+        "id": "Abu bersifat sangat basa dan bisa mengangkat pH tanah lebih jauh daripada yang dikehendaki."
+      }
+    }
+  ],
+  "composition_basis": "reference",
+  "application": {
+    "default_rate": {
+      "value": 2000,
+      "unit": "kg/har",
+      "basis": "per_area"
+    },
+    "default_method": {
+      "id": "op:met:00000003",
+      "label": "Tabur merata"
+    }
+  },
+  "safety": {
+    "hazards": [
+      {
+        "id": "Asap pembakaran terbuka dan risiko kebakaran."
+      }
+    ],
+    "ppe": [
+      "mask",
+      "gloves"
+    ]
+  },
+  "evidence_tier": "C",
+  "no_mapping_reason": "Tidak ditemukan padanan di AGROVOC, AgrO, maupun ICASA: sediaan buatan sendiri tidak dimodelkan kosakata agronomi yang dibangun untuk pertanian bermasukan pabrik. Itu temuan yang layak dilaporkan, bukan disamarkan. Ditinjau ulang tiap rilis.",
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-19T00:00:00Z"
+  },
+  "$schema": "../schema/preparation.schema.json",
+  "notes": {
+    "id": "Fixture uji: tingkat bukti dinyatakan tanpa alasan — ditolak skema sejak evidence_note dituntut."
+  }
+}

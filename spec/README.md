@@ -88,6 +88,33 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Observation` | `op:obs` | **Pengamatan yang berdiri sendiri** — laporan gejala warga, hitungan pengamatan, atau pengukuran. Selalu menyebut status verifikasinya |
 | `PreparationBatch` | `op:bat` | Satu kali pembuatan sediaan, beserta catatan suhu dan hasil ujinya |
 
+### Umpan balik lapangan menunjuk, tidak menaikkan — G2
+
+Tangga tingkat bukti **tangga metode, bukan tangga volume**:
+
+| | |
+|---|---|
+| **A** | uji multi-lokasi/multi-musim |
+| **B** | standar institusi resmi |
+| **C** | konsensus praktisi & penyuluh |
+| **D** | pengalaman tunggal belum terverifikasi |
+
+Umpan balik lapangan yang menumpuk **adalah** tingkat C menurut definisinya. Jadi ia
+memindahkan D ke C dan berhenti: mencapai B menuntut institusi mengadopsinya, mencapai A
+menuntut uji multi-lokasi. Seribu petani yang melaporkan hal yang sama tetap konsensus
+praktisi, bukan uji lapangan.
+
+`tools/sinyal.mjs` karena itu **menunjuk, tidak menaikkan**. Ia mengelompokkan simpangan
+menurut `DeviationReason.signals` lalu menyebut rekaman yang klaim tingkatnya sedang
+tertekan; yang menaikkannya tetap peninjau bernama lewat alur G1 — kenaikan tingkat adalah
+kesimpulan, dan kesimpulan tidak boleh jadi efek samping penjumlahan.
+
+**Penyebut minimum: 5 petak berbeda**, dan angkanya ditulis di satu tempat karena ia
+**keputusan yang belum diratifikasi**. Aturannya sudah ada di `docs/17` bagian 7.3 — di
+bawah ambang, tolak menampilkan angka sama sekali — tetapi angkanya tidak pernah disebut,
+dan aturan tanpa angka tidak bisa ditegakkan mesin. Yang dihitung **petak berbeda**, bukan
+baris: satu orang yang melapor lima kali dari satu petak bukan lima petak.
+
 ### Laporan gejala warga yang tidak menyamar jadi temuan — G3
 
 Bentuk pengamatan yang sudah ada tertanam di dalam `Step` dan menuntut `variable` +
