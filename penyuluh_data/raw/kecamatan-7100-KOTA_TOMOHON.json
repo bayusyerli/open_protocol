@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "7173",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA TOMOHON",
+  "kecamatan": "TOMOHON SELATAN",
+  "bpp": "BPP Tomohon Selatan",
+  "poktan": 114
+ },
+ {
+  "kd_kab": "7173",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA TOMOHON",
+  "kecamatan": "TOMOHON TENGAH",
+  "bpp": "Tomohon Tengah",
+  "poktan": 105
+ },
+ {
+  "kd_kab": "7173",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA TOMOHON",
+  "kecamatan": "TOMOHON TIMUR",
+  "bpp": "Tomohon Timur",
+  "poktan": 101
+ },
+ {
+  "kd_kab": "7173",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA TOMOHON",
+  "kecamatan": "TOMOHON BARAT",
+  "bpp": "Tomohon Barat",
+  "poktan": 152
+ },
+ {
+  "kd_kab": "7173",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA TOMOHON",
+  "kecamatan": "TOMOHON UTARA",
+  "bpp": "Tomohon Utara",
+  "poktan": 181
+ }
+]

@@ -1,0 +1,50 @@
+[
+ {
+  "nama": "LSBU Sertifikasi Kontraktor Terintegrasi Indonesia (LSBU Sertindo)",
+  "id": 5506,
+  "alamat": "Jl. Rutte EE / Jl.. Dr. KRT. Radjiman Widyodoningrat No.49, Kel. Jatinegara, Kec. Cakung, Kota Jakarta Timur - DKI Jakarta 13930",
+  "no_telp_fax": "021 21057967",
+  "detail_organisasi": null,
+  "skema": "Lembaga Sertifikasi Badan Usaha (LSBU) Sektor Jasa Konstruksi",
+  "skema_kode": "LSBU",
+  "pic_name": "Ahmad Bahrul Anam",
+  "pic_id": "6443",
+  "no_akreditasi": "LSBU-010-IDN"
+ },
+ {
+  "nama": "PT. SERTIFIKASI BADAN USAHA JASA KONSULTANSI",
+  "id": 5639,
+  "alamat": "RUKO PERKANTORAN GRAND PASAR MINGGU JL.RAWA BAMBU RAYA NO 88X",
+  "no_telp_fax": "02127806899",
+  "detail_organisasi": null,
+  "skema": "Lembaga Sertifikasi Badan Usaha (LSBU) Sektor Jasa Konstruksi",
+  "skema_kode": "LSBU",
+  "pic_name": "Ahmad Bahrul Anam",
+  "pic_id": "6443",
+  "no_akreditasi": "LSBU-011-IDN"
+ },
+ {
+  "nama": "PT. KRIDA HANDAL JABAR",
+  "id": 12275,
+  "alamat": "JL. TERUSAN GALUNGGUNG NO 7 TALAGABODAS",
+  "no_telp_fax": "082261287453",
+  "detail_organisasi": null,
+  "skema": "Lembaga Sertifikasi Badan Usaha (LSBU) Sektor Jasa Konstruksi",
+  "skema_kode": "LSBU",
+  "pic_name": "Ahmad Bahrul Anam",
+  "pic_id": "6443",
+  "no_akreditasi": "LSBU-018-IDN"
+ },
+ {
+  "nama": "PT GAMANA NUSANTARA PERSADA",
+  "id": 12277,
+  "alamat": "Jl. Raden Saleh Raya No. 45 & 45D, Kelurahan Cikini, Kecamatan Menteng, Kota Jakarta Pusat, Provinsi DKI Jakarta",
+  "no_telp_fax": "0213101765",
+  "detail_organisasi": "LSBU PT Gamana Nusantara Persada merupakan bagian dari Asosiasi GAPENSI",
+  "skema": "Lembaga Sertifikasi Badan Usaha (LSBU) Sektor Jasa Konstruksi",
+  "skema_kode": "LSBU",
+  "pic_name": "Ahmad Bahrul Anam",
+  "pic_id": "6443",
+  "no_akreditasi": "LSBU-017-IDN"
+ }
+]

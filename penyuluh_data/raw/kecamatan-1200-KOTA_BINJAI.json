@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "1276",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA BINJAI",
+  "kecamatan": "BINJAI SELATAN",
+  "bpp": "BPP Mulia",
+  "poktan": 90
+ },
+ {
+  "kd_kab": "1276",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA BINJAI",
+  "kecamatan": "BINJAI KOTA",
+  "bpp": "BPP Kota",
+  "poktan": 15
+ },
+ {
+  "kd_kab": "1276",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA BINJAI",
+  "kecamatan": "BINJAI TIMUR",
+  "bpp": "BPP Tunas",
+  "poktan": 57
+ },
+ {
+  "kd_kab": "1276",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA BINJAI",
+  "kecamatan": "BINJAI UTARA",
+  "bpp": "BPP Nangka",
+  "poktan": 70
+ },
+ {
+  "kd_kab": "1276",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA BINJAI",
+  "kecamatan": "BINJAI BARAT",
+  "bpp": "BPP Mekar",
+  "poktan": 37
+ }
+]

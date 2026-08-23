@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "3376",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA TEGAL",
+  "kecamatan": "TEGAL SELATAN",
+  "bpp": "BPK Tegal Selatan",
+  "poktan": 29
+ },
+ {
+  "kd_kab": "3376",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA TEGAL",
+  "kecamatan": "TEGAL TIMUR",
+  "bpp": "BPK  Tegal Timur",
+  "poktan": 18
+ },
+ {
+  "kd_kab": "3376",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA TEGAL",
+  "kecamatan": "TEGAL BARAT",
+  "bpp": "BPK  Tegal Barat",
+  "poktan": 23
+ },
+ {
+  "kd_kab": "3376",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA TEGAL",
+  "kecamatan": "MARGADANA",
+  "bpp": "BP Sumurpanggang Margadana",
+  "poktan": 47
+ }
+]

@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "5105",
+  "provinsi": "BALI",
+  "kabupaten": "KLUNGKUNG",
+  "kecamatan": "NUSAPENIDA",
+  "bpp": "BPP Kecamatan Nusa Penida",
+  "poktan": 261
+ },
+ {
+  "kd_kab": "5105",
+  "provinsi": "BALI",
+  "kabupaten": "KLUNGKUNG",
+  "kecamatan": "BANJARANGKAN",
+  "bpp": "BPP Kecamatan Banjarangkan",
+  "poktan": 219
+ },
+ {
+  "kd_kab": "5105",
+  "provinsi": "BALI",
+  "kabupaten": "KLUNGKUNG",
+  "kecamatan": "KLUNGKUNG",
+  "bpp": "BPP Kecamatan Klungkung",
+  "poktan": 135
+ },
+ {
+  "kd_kab": "5105",
+  "provinsi": "BALI",
+  "kabupaten": "KLUNGKUNG",
+  "kecamatan": "DAWAN",
+  "bpp": "BPP Kecamatan Dawan",
+  "poktan": 97
+ }
+]

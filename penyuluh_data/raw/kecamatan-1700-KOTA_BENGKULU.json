@@ -1,0 +1,74 @@
+[
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "SELEBAR",
+  "bpp": "BPP  Selebar",
+  "poktan": 60
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "KAMPUNG MELAYU",
+  "bpp": "BPP Kampung Melayu",
+  "poktan": 66
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "GADING CEMPAKA",
+  "bpp": "BPP GADING CEMPAKA SINGARAN PATI",
+  "poktan": 19
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "RATU AGUNG",
+  "bpp": "BPP Ratu Agung Ratu Samban",
+  "poktan": 50
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "RATU SAMBAN",
+  "bpp": "BPP Ratu Agung Ratu Samban",
+  "poktan": 24
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "SINGARAN PATI",
+  "bpp": "BPP GADING CEMPAKA SINGARAN PATI",
+  "poktan": 40
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "TELUK SEGARA",
+  "bpp": "BPP Teluk Segara Sungai Serut",
+  "poktan": 42
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "SUNGAI SERUT",
+  "bpp": "BPP Teluk Segara Sungai Serut",
+  "poktan": 36
+ },
+ {
+  "kd_kab": "1771",
+  "provinsi": "BENGKULU",
+  "kabupaten": "KOTA BENGKULU",
+  "kecamatan": "MUARA BANGKA HULU",
+  "bpp": "BPP Muara Bangkahulu",
+  "poktan": 67
+ }
+]

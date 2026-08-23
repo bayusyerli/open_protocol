@@ -1,0 +1,66 @@
+[
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "TIDORE SELATAN",
+  "bpp": "Tidore Selatan",
+  "poktan": 27
+ },
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "TIDORE UTARA",
+  "bpp": "BPP Tidore Utara",
+  "poktan": 91
+ },
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "TIDORE",
+  "bpp": "BPP TIDORE",
+  "poktan": 48
+ },
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "TIDORE TIMUR",
+  "bpp": "Tidore Timur",
+  "poktan": 61
+ },
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "OBA",
+  "bpp": "BPP Kec. Oba",
+  "poktan": 58
+ },
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "OBA SELATAN",
+  "bpp": "BPP Oba Selatan",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "OBA UTARA",
+  "bpp": "Oba Utara",
+  "poktan": 55
+ },
+ {
+  "kd_kab": "8272",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "KOTA TIDORE KEPULAUAN",
+  "kecamatan": "OBA TENGAH",
+  "bpp": "BPP Oba Tengah",
+  "poktan": 54
+ }
+]

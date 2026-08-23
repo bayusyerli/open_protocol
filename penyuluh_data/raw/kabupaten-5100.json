@@ -1,0 +1,74 @@
+[
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "JEMBRANA",
+  "bpp": 5,
+  "dinas": "Dinas Pertanian dan Pangan Kabupaten Jembrana",
+  "tanda": "eyJpdiI6Imh6Y1Q5MU1jRERtdldmZld2bjdvRWc9PSIsInZhbHVlIjoiWnplWDdGNmp6b0Q2QVc4bzgyT2RyZz09IiwibWFjIjoiMjg3NTFlOTQ0ZGI2YTViODgzYmUwNDM3YzUzZWZlZDBjMTRhZWVmMGVmMWE2MzFmYzNkOGFkNTkxYzg2NTY0YSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "TABANAN",
+  "bpp": 10,
+  "dinas": "Dinas Pertanian Kabupaten Tabanan",
+  "tanda": "eyJpdiI6Inl6TlMrK3o5VjlmZUdvUHVBWjlEblE9PSIsInZhbHVlIjoiUHRGa2xOWkxERHNhQXVINXhjS2lQdz09IiwibWFjIjoiOWQzOWVlMTQ0ZGEwMTI0MzZjNDUzODZhYzNkNTc4NmExYmExNzFhNjA1YjM5MjlhY2M4ZThlZmZiNDQzZTE3NSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "BADUNG",
+  "bpp": 5,
+  "dinas": "Dinas Pertanian Dan Pangan Kabupaten Badung",
+  "tanda": "eyJpdiI6IlBxYTcxZXNSN2NXZXhhcGZaaUxDK2c9PSIsInZhbHVlIjoiM1BGNm44a09HVVFMZE85Nkx1aldYQT09IiwibWFjIjoiMGJlOGRlNjc0ZmFkNjgxNjllMWYxMTYyY2I4ZDg4NDBiMjM1ODFlODJjMzM2YzljNWM0MzI3OTI2ZTI1NzAxNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "GIANYAR",
+  "bpp": 7,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6Iklqc2dSRCtjM1pZcHg4Q3praWZiOEE9PSIsInZhbHVlIjoiQ2dZMU1jTnYvTWM0N253QUZSYVRGQT09IiwibWFjIjoiNjIwZTJjMTAyM2JhODkzNGMwOTJlN2M2YTcwZTEzNzMyOWI5NmZlMmM3YjA4YzIzZjJjMjU5OWYxZjQ2Mjc1MSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "KLUNGKUNG",
+  "bpp": 4,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IkdONmFTd0h4Y2dqcWRZL29wZ2xXUUE9PSIsInZhbHVlIjoiemY3NlRmMVpIdXZ6OWdqMFZqOTN1dz09IiwibWFjIjoiZTkwMGFhYzlkMTBmMzFjZWJiNzczZjMwNDBjMzg5MDhlYzFjZTRiYzQ1OGE1NWExOTJlYTYzN2Y3MjliZTc0ZSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "BANGLI",
+  "bpp": 5,
+  "dinas": "Dinas Pertanian, Ketahanan Pangan dan Perikanan Kabupaten Bangli",
+  "tanda": "eyJpdiI6IlBxUTN0YVhXYlF2bUNUOERQWG1Kenc9PSIsInZhbHVlIjoiZnlsQmpzMncyQ3oyWDYrLzA4T2lBdz09IiwibWFjIjoiZmQ0ZTdhMjBiMTA4NzM4ZWQ5YTg2MDM0ZjEwNDM2YTBkN2UyNzI1MmFlNTQwNTcyNDc3NjgwNzlhMGI3MDA4ZSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "KARANG ASEM",
+  "bpp": 8,
+  "dinas": "Dinas Pertanian, Pangan dan Perikanan",
+  "tanda": "eyJpdiI6IkZCdkVZMVBweXdRTCtsTDF1a3BVc3c9PSIsInZhbHVlIjoiOVJzTG96MVk0NllKczJhMWQwUktDdz09IiwibWFjIjoiZTIwZmM0MDBmZmIxMTc3Y2VmZDMzN2VkNTY4NDQ5ZTRjMTc5MWM3MTY3YzdkZGI2MjMyYjhlYzQ1ZDMyNjQyNiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "BULELENG",
+  "bpp": 9,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6Indndm9oVTFVSnM5WDhTc2FHU09ZWUE9PSIsInZhbHVlIjoiRmVTRm0yeEV2ZEdSdG1sQ3RyUXFHUT09IiwibWFjIjoiYTJhODNjMDdjZWE0NGJlNmI1NmZlOTAzNjA4Mjg3ZjBiZTE2ZjFkM2NhYmExNjQ3ODhlNzZjYTdhYzFlZGIxNSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "5100",
+  "provinsi": "BALI",
+  "nama": "KOTA DENPASAR",
+  "bpp": 4,
+  "dinas": "Dinas Pertanian Kota Denpasar",
+  "tanda": "eyJpdiI6ImxqU3FTOXBMOVB4VE55UDVBY285cUE9PSIsInZhbHVlIjoiV0QwcWx4eEx1dTdscFE5K2NEdWMvZz09IiwibWFjIjoiOGUxNDBkMjZkNGI3MGNiZTFlYjNkNWYyMWUyMmNhNTBiNjA0Y2I4MzdmNzg2NWQ3M2Y5MjI2YjU5NDUwMTM0YiIsInRhZyI6IiJ9"
+ }
+]

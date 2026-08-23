@@ -1,0 +1,53 @@
+[
+ {
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA KEDIRI",
+  "kecamatan": "MOJOROTO",
+  "pnsaktif": 2,
+  "pnspensiun": 1,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 0,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 6,
+  "thl": 0,
+  "thlapbn": 0,
+  "thlapbd": 0,
+  "swadaya": 7,
+  "swasta": 0
+ },
+ {
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA KEDIRI",
+  "kecamatan": "KOTA KEDIRI",
+  "pnsaktif": 3,
+  "pnspensiun": 0,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 0,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 3,
+  "thl": 0,
+  "thlapbn": 0,
+  "thlapbd": 0,
+  "swadaya": 6,
+  "swasta": 0
+ },
+ {
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA KEDIRI",
+  "kecamatan": "PESANTREN",
+  "pnsaktif": 2,
+  "pnspensiun": 1,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 0,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 5,
+  "thl": 0,
+  "thlapbn": 0,
+  "thlapbd": 0,
+  "swadaya": 6,
+  "swasta": 0
+ }
+]

@@ -1,0 +1,50 @@
+[
+ {
+  "nama": "PT. SAI GLOBAL INDONESIA",
+  "id": 2514,
+  "alamat": "GRAHA ISKANDARSYAH  LT4\r\nJL ISKANDARSYAH RAYA NO 66C  JAKARTA\r\nJAKARTA SELATAN\r\nDKI  JAKARTA",
+  "no_telp_fax": "021-7206186",
+  "detail_organisasi": "Saat ini SAI GLobal Sudah menjadi bagian dari Intertek SAI Global",
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Anti Penyuapan",
+  "skema_kode": "LSSMAP",
+  "pic_name": "Hanum Nayomi",
+  "pic_id": "6436",
+  "no_akreditasi": "12160"
+ },
+ {
+  "nama": "PT LRQA BUSINESS ASSURANCE AND INSPECTION SERVICES INDONESIA",
+  "id": 4259,
+  "alamat": "WeWork, Noble House 30th Floor, Jalan Dr. Ide Anak Agung Gde Agung Kav. E.4.2, Mega Kuningan, Rukun Tetangga 005, Rukun Warga 002, Kelurahan Kuningan Timur, Kecamatan Setiabudi",
+  "no_telp_fax": "08118041728",
+  "detail_organisasi": "PT. Lloyd’s Register Indonesia (nama perusahaan sebelumnya), sedang mengajukan aplikasi akreditasi Sistem Manajemen Mutu",
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Anti Penyuapan",
+  "skema_kode": "LSSMAP",
+  "pic_name": "Rudiansyah",
+  "pic_id": "6435",
+  "no_akreditasi": ""
+ },
+ {
+  "nama": "PT GLOBAL CERTIFICATION INDONESIA",
+  "id": 5696,
+  "alamat": "Pakuwon Center - Superblok Tunjungan City Lantai 15 (Lt. 15-12), Jalan Embong Malang No. 1, 3, 5, Kel. Kedungdoro, Kec. Tegalsari",
+  "no_telp_fax": "031-5953508",
+  "detail_organisasi": null,
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Anti Penyuapan",
+  "skema_kode": "LSSMAP",
+  "pic_name": "Tri Astuti Ramandhani",
+  "pic_id": "6437",
+  "no_akreditasi": "old_LSSML-032-IDN"
+ },
+ {
+  "nama": "PT BSC Mutu Internasional",
+  "id": 6950,
+  "alamat": "PSW Tower Lantai 2, Suite D-204, Jalan Pangeran Antasari No.75,\r\nDesa/Kelurahan Cilandak Barat, Kec. Cilandak, Kota Adm. Jakarta Selatan,\r\nProvinsi DKI Jakarta, 12430",
+  "no_telp_fax": "021-3970 2149 (Ext.1235)",
+  "detail_organisasi": null,
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Anti Penyuapan",
+  "skema_kode": "LSSMAP",
+  "pic_name": "Tri Astuti Ramandhani",
+  "pic_id": "6437",
+  "no_akreditasi": "old_LSSMAP-027-IDN"
+ }
+]

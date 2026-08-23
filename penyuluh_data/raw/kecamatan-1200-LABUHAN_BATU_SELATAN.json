@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "1222",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "LABUHAN BATU SELATAN",
+  "kecamatan": "SUNGAI KANAN",
+  "bpp": "BPP Kec. Sungai Kanan",
+  "poktan": 138
+ },
+ {
+  "kd_kab": "1222",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "LABUHAN BATU SELATAN",
+  "kecamatan": "TORGAMBA",
+  "bpp": "BPP Kec.Torgamba",
+  "poktan": 221
+ },
+ {
+  "kd_kab": "1222",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "LABUHAN BATU SELATAN",
+  "kecamatan": "KOTA PINANG",
+  "bpp": "BPP Kec.Kotapinang",
+  "poktan": 99
+ },
+ {
+  "kd_kab": "1222",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "LABUHAN BATU SELATAN",
+  "kecamatan": "SILANGKITANG",
+  "bpp": "BPP Kec. Silangkitang",
+  "poktan": 110
+ },
+ {
+  "kd_kab": "1222",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "LABUHAN BATU SELATAN",
+  "kecamatan": "KAMPUNG RAKYAT",
+  "bpp": "BPP Kec. Kampung Rakyat",
+  "poktan": 185
+ }
+]

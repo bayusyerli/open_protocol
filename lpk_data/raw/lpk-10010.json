@@ -1,0 +1,50 @@
+[
+ {
+  "nama": "PT. TUV Rheinland Indonesia",
+  "id": 517,
+  "alamat": "Gedung Menara Karya Lt.10\r\nJl. HR. Rasuna Said Blok X-5 Kav. 1-2",
+  "no_telp_fax": "021-39704579",
+  "detail_organisasi": null,
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Lingkungan",
+  "skema_kode": "LSSML",
+  "pic_name": "Tri Astuti Ramandhani",
+  "pic_id": "6437",
+  "no_akreditasi": "old_LSSML-010-IDN  "
+ },
+ {
+  "nama": "PT. MSA Certification",
+  "id": 2058,
+  "alamat": "Perkantoran Tanjung Mas Raya Blok B1 No. 42 Lt. 2,\r\nJl. Tanjung Barat Raya No.2, Tanjung Barat, Jakarta 12530",
+  "no_telp_fax": "021-27874714",
+  "detail_organisasi": null,
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Lingkungan",
+  "skema_kode": "LSSML",
+  "pic_name": "Zola Mukhda",
+  "pic_id": "6438",
+  "no_akreditasi": "old_LSSML-025-IDN  "
+ },
+ {
+  "nama": "PT TUV SUD Indonesia",
+  "id": 2236,
+  "alamat": "Indonesia Stock Exchange Building, Tower I, 8th Floor Suite 806, Jl. Jenderal Sudirman, Kav 52-53, Lot 2",
+  "no_telp_fax": "(021) 2903 5015",
+  "detail_organisasi": "Lembaga Sistem Manajemen Mutu, K3, Energi, Keamanan Informasi, Mutu Alat Kesehatan, Anti Penyuapan; Lembaga Verifikasi/Validasi Informasi Lingkungan Gas Rumah Kaca",
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Lingkungan",
+  "skema_kode": "LSSML",
+  "pic_name": "Tri Astuti Ramandhani",
+  "pic_id": "6437",
+  "no_akreditasi": "old_ LSSML-026-IDN  "
+ },
+ {
+  "nama": "PT GLOBAL CERTIFICATION INDONESIA",
+  "id": 5698,
+  "alamat": "Pakuwon Center - Superblok Tunjungan City Lantai 15 (Lt. 15-12), Jalan Embong Malang No. 1, 3, 5, Kel. Kedungdoro, Kec. Tegalsari",
+  "no_telp_fax": "031-5953508",
+  "detail_organisasi": null,
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Lingkungan",
+  "skema_kode": "LSSML",
+  "pic_name": "Tri Astuti Ramandhani",
+  "pic_id": "6437",
+  "no_akreditasi": "old_LSSMAP-025-IDN"
+ }
+]

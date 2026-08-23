@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "5101",
+  "provinsi": "BALI",
+  "kabupaten": "JEMBRANA",
+  "kecamatan": "MELAYA",
+  "bpp": "Balai Penyuluhan Pertanian Kec. Melaya",
+  "poktan": 359
+ },
+ {
+  "kd_kab": "5101",
+  "provinsi": "BALI",
+  "kabupaten": "JEMBRANA",
+  "kecamatan": "NEGARA",
+  "bpp": "Balai Penyuluhan Pertanian Kec. Negara",
+  "poktan": 346
+ },
+ {
+  "kd_kab": "5101",
+  "provinsi": "BALI",
+  "kabupaten": "JEMBRANA",
+  "kecamatan": "JEMBRANA",
+  "bpp": "Balai Penyuluhan Pertanian Kec.Jembrana",
+  "poktan": 175
+ },
+ {
+  "kd_kab": "5101",
+  "provinsi": "BALI",
+  "kabupaten": "JEMBRANA",
+  "kecamatan": "MENDOYO",
+  "bpp": "Balai Penyuluhan Pertanian Kec. Mendoyo",
+  "poktan": 259
+ },
+ {
+  "kd_kab": "5101",
+  "provinsi": "BALI",
+  "kabupaten": "JEMBRANA",
+  "kecamatan": "PEKUTATAN",
+  "bpp": "Balai Penyuluhan Pertanian Kec.Pekutatan",
+  "poktan": 131
+ }
+]

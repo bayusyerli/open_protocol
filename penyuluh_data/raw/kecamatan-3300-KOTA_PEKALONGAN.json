@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "3375",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA PEKALONGAN",
+  "kecamatan": "PEKALONGAN BARAT",
+  "bpp": "BPP  Kertoharjo",
+  "poktan": 15
+ },
+ {
+  "kd_kab": "3375",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA PEKALONGAN",
+  "kecamatan": "PEKALONGAN TIMUR",
+  "bpp": "BPP  Kertoharjo",
+  "poktan": 23
+ },
+ {
+  "kd_kab": "3375",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA PEKALONGAN",
+  "kecamatan": "PEKALONGAN SELATAN",
+  "bpp": "BPP  Kertoharjo",
+  "poktan": 30
+ },
+ {
+  "kd_kab": "3375",
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA PEKALONGAN",
+  "kecamatan": "PEKALONGAN UTARA",
+  "bpp": "BPP  Kertoharjo",
+  "poktan": 20
+ }
+]

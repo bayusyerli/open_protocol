@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "7174",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA KOTAMOBAGU",
+  "kecamatan": "KOTAMOBAGU SELATAN",
+  "bpp": "BPP Kotamobagu Selatan",
+  "poktan": 220
+ },
+ {
+  "kd_kab": "7174",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA KOTAMOBAGU",
+  "kecamatan": "KOTAMOBAGU TIMUR",
+  "bpp": "BPP Kotamobagu Timur",
+  "poktan": 166
+ },
+ {
+  "kd_kab": "7174",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA KOTAMOBAGU",
+  "kecamatan": "KOTAMOBAGU BARAT",
+  "bpp": "BPP Kotamobagu Barat",
+  "poktan": 64
+ },
+ {
+  "kd_kab": "7174",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA KOTAMOBAGU",
+  "kecamatan": "KOTAMOBAGU UTARA",
+  "bpp": "BPP Kotamobagu Utara",
+  "poktan": 94
+ }
+]

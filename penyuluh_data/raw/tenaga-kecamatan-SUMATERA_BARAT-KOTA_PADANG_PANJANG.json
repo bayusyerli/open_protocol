@@ -1,0 +1,36 @@
+[
+ {
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PADANG PANJANG",
+  "kecamatan": "PADANG PANJANG BARAT",
+  "pnsaktif": 4,
+  "pnspensiun": 1,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 2,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 3,
+  "thl": 0,
+  "thlapbn": 0,
+  "thlapbd": 0,
+  "swadaya": 4,
+  "swasta": 0
+ },
+ {
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PADANG PANJANG",
+  "kecamatan": "PADANG PANJANG TIMUR",
+  "pnsaktif": 6,
+  "pnspensiun": 3,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 0,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 3,
+  "thl": 0,
+  "thlapbn": 0,
+  "thlapbd": 0,
+  "swadaya": 12,
+  "swasta": 0
+ }
+]

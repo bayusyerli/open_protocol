@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "1376",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PAYAKUMBUH",
+  "kecamatan": "PAYAKUMBUH BARAT",
+  "bpp": "BPP Payakumbuh Barat",
+  "poktan": 48
+ },
+ {
+  "kd_kab": "1376",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PAYAKUMBUH",
+  "kecamatan": "PAYAKUMBUH SELATAN",
+  "bpp": "BPP  Payakumbuh Selatan",
+  "poktan": 54
+ },
+ {
+  "kd_kab": "1376",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PAYAKUMBUH",
+  "kecamatan": "PAYAKUMBUH TIMUR",
+  "bpp": "BPP  Payakumbuh Timur",
+  "poktan": 63
+ },
+ {
+  "kd_kab": "1376",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PAYAKUMBUH",
+  "kecamatan": "PAYAKUMBUH UTARA",
+  "bpp": "BPP Payakumbuh Utara",
+  "poktan": 55
+ },
+ {
+  "kd_kab": "1376",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PAYAKUMBUH",
+  "kecamatan": "LAMPOSI TIGO NAGORI",
+  "bpp": "BPP  Lamposi Tigo Nagori",
+  "poktan": 40
+ }
+]

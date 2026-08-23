@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "1673",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PAGAR ALAM",
+  "kecamatan": "DEMPO SELATAN",
+  "bpp": "ATUNG BUNGSU",
+  "poktan": 223
+ },
+ {
+  "kd_kab": "1673",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PAGAR ALAM",
+  "kecamatan": "DEMPO TENGAH",
+  "bpp": "BPP Lembah Dempo",
+  "poktan": 158
+ },
+ {
+  "kd_kab": "1673",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PAGAR ALAM",
+  "kecamatan": "DEMPO UTARA",
+  "bpp": "Mitra Tani",
+  "poktan": 263
+ },
+ {
+  "kd_kab": "1673",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PAGAR ALAM",
+  "kecamatan": "PAGAR ALAM SELATAN",
+  "bpp": "Tani Sejahtera",
+  "poktan": 102
+ },
+ {
+  "kd_kab": "1673",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PAGAR ALAM",
+  "kecamatan": "PAGAR ALAM UTARA",
+  "bpp": "Tani Makmur",
+  "poktan": 154
+ }
+]

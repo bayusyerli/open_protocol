@@ -1,0 +1,50 @@
+[
+ {
+  "kd_kab": "9102",
+  "provinsi": "PAPUA BARAT",
+  "kabupaten": "KAIMANA",
+  "kecamatan": "BURUWAY",
+  "bpp": "BPP Kambala",
+  "poktan": 20
+ },
+ {
+  "kd_kab": "9102",
+  "provinsi": "PAPUA BARAT",
+  "kabupaten": "KAIMANA",
+  "kecamatan": "TELUK ARGUNI ATAS",
+  "bpp": "BPP Funiara",
+  "poktan": 24
+ },
+ {
+  "kd_kab": "9102",
+  "provinsi": "PAPUA BARAT",
+  "kabupaten": "KAIMANA",
+  "kecamatan": "TELUK ARGUNI BAWAH",
+  "bpp": "BPP Tanusan",
+  "poktan": 33
+ },
+ {
+  "kd_kab": "9102",
+  "provinsi": "PAPUA BARAT",
+  "kabupaten": "KAIMANA",
+  "kecamatan": "KAIMANA",
+  "bpp": "BPP Krooy",
+  "poktan": 70
+ },
+ {
+  "kd_kab": "9102",
+  "provinsi": "PAPUA BARAT",
+  "kabupaten": "KAIMANA",
+  "kecamatan": "YAMOR",
+  "bpp": "BPP Urubika",
+  "poktan": 6
+ },
+ {
+  "kd_kab": "9102",
+  "provinsi": "PAPUA BARAT",
+  "kabupaten": "KAIMANA",
+  "kecamatan": "",
+  "bpp": "Kambrauw",
+  "poktan": 0
+ }
+]

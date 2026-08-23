@@ -1,0 +1,26 @@
+[
+ {
+  "kd_kab": "3277",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "KOTA CIMAHI",
+  "kecamatan": "CIMAHI SELATAN",
+  "bpp": "Kota Cimahi",
+  "poktan": 40
+ },
+ {
+  "kd_kab": "3277",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "KOTA CIMAHI",
+  "kecamatan": "CIMAHI TENGAH",
+  "bpp": "Kota Cimahi",
+  "poktan": 20
+ },
+ {
+  "kd_kab": "3277",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "KOTA CIMAHI",
+  "kecamatan": "CIMAHI UTARA",
+  "bpp": "Kota Cimahi",
+  "poktan": 42
+ }
+]

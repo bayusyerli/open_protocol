@@ -1,0 +1,66 @@
+[
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "PALU BARAT",
+  "bpp": "BPP DUYU",
+  "poktan": 33
+ },
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "TATANGA",
+  "bpp": "BPP DUYU",
+  "poktan": 106
+ },
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "ULUJADI",
+  "bpp": "BPP DUYU",
+  "poktan": 70
+ },
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "PALU SELATAN",
+  "bpp": "BPP Petobo",
+  "poktan": 92
+ },
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "PALU TIMUR",
+  "bpp": "BPP Petobo",
+  "poktan": 31
+ },
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "MANTIKULORE",
+  "bpp": "BPP Layana Indah",
+  "poktan": 119
+ },
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "PALU UTARA",
+  "bpp": "BPP Kayumalue",
+  "poktan": 54
+ },
+ {
+  "kd_kab": "7271",
+  "provinsi": "SULAWESI TENGAH",
+  "kabupaten": "KOTA PALU",
+  "kecamatan": "TAWAELI",
+  "bpp": "BPP BAIYA",
+  "poktan": 73
+ }
+]

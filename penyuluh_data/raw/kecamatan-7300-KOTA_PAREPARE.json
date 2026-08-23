@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "7372",
+  "provinsi": "SULAWESI SELATAN",
+  "kabupaten": "KOTA PAREPARE",
+  "kecamatan": "BACUKIKI",
+  "bpp": "BPP Bacukiki",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "7372",
+  "provinsi": "SULAWESI SELATAN",
+  "kabupaten": "KOTA PAREPARE",
+  "kecamatan": "BACUKIKI BARAT",
+  "bpp": "BPP Bacukiki Barat",
+  "poktan": 28
+ },
+ {
+  "kd_kab": "7372",
+  "provinsi": "SULAWESI SELATAN",
+  "kabupaten": "KOTA PAREPARE",
+  "kecamatan": "UJUNG",
+  "bpp": "BPP Ujung",
+  "poktan": 27
+ },
+ {
+  "kd_kab": "7372",
+  "provinsi": "SULAWESI SELATAN",
+  "kabupaten": "KOTA PAREPARE",
+  "kecamatan": "SOREANG",
+  "bpp": "BPP Soreang",
+  "poktan": 18
+ }
+]

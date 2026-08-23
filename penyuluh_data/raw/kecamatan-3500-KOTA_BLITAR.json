@@ -1,0 +1,26 @@
+[
+ {
+  "kd_kab": "3572",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA BLITAR",
+  "kecamatan": "SUKOREJO",
+  "bpp": "BPP Sukorejo",
+  "poktan": 52
+ },
+ {
+  "kd_kab": "3572",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA BLITAR",
+  "kecamatan": "KEPANJENKIDUL",
+  "bpp": "BPP Kepanjen Kidul",
+  "poktan": 66
+ },
+ {
+  "kd_kab": "3572",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA BLITAR",
+  "kecamatan": "SANANWETAN",
+  "bpp": "BPP Sananwetan",
+  "poktan": 72
+ }
+]

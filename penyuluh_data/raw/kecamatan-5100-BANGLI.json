@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "5106",
+  "provinsi": "BALI",
+  "kabupaten": "BANGLI",
+  "kecamatan": "SUSUT",
+  "bpp": "Susut",
+  "poktan": 297
+ },
+ {
+  "kd_kab": "5106",
+  "provinsi": "BALI",
+  "kabupaten": "BANGLI",
+  "kecamatan": "BANGLI",
+  "bpp": "BPP Kecamatan Bangli",
+  "poktan": 313
+ },
+ {
+  "kd_kab": "5106",
+  "provinsi": "BALI",
+  "kabupaten": "BANGLI",
+  "kecamatan": "TEMBUKU",
+  "bpp": "Tembuku",
+  "poktan": 180
+ },
+ {
+  "kd_kab": "5106",
+  "provinsi": "BALI",
+  "kabupaten": "BANGLI",
+  "kecamatan": "KINTAMANI",
+  "bpp": "Kintamani Timur",
+  "poktan": 1080
+ },
+ {
+  "kd_kab": "5106",
+  "provinsi": "BALI",
+  "kabupaten": "BANGLI",
+  "kecamatan": "KINTAMANI",
+  "bpp": "BPP Kintamani Barat",
+  "poktan": 1080
+ }
+]

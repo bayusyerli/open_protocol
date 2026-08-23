@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "5171",
+  "provinsi": "BALI",
+  "kabupaten": "KOTA DENPASAR",
+  "kecamatan": "DENPASAR SELATAN",
+  "bpp": "BPP Denpasar Selatan",
+  "poktan": 45
+ },
+ {
+  "kd_kab": "5171",
+  "provinsi": "BALI",
+  "kabupaten": "KOTA DENPASAR",
+  "kecamatan": "DENPASAR TIMUR",
+  "bpp": "BPP Denpasar Timur",
+  "poktan": 57
+ },
+ {
+  "kd_kab": "5171",
+  "provinsi": "BALI",
+  "kabupaten": "KOTA DENPASAR",
+  "kecamatan": "DENPASAR BARAT",
+  "bpp": "BPP Denpasar Barat",
+  "poktan": 26
+ },
+ {
+  "kd_kab": "5171",
+  "provinsi": "BALI",
+  "kabupaten": "KOTA DENPASAR",
+  "kecamatan": "DENPASAR UTARA",
+  "bpp": "BPP Denpasar Utara",
+  "poktan": 41
+ }
+]

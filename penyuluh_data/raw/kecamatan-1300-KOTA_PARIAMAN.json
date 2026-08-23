@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "1377",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PARIAMAN",
+  "kecamatan": "PARIAMAN SELATAN",
+  "bpp": "BPP  Pariaman Selatan",
+  "poktan": 60
+ },
+ {
+  "kd_kab": "1377",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PARIAMAN",
+  "kecamatan": "PARIAMAN TENGAH",
+  "bpp": "BPP  Pariaman Tengah",
+  "poktan": 72
+ },
+ {
+  "kd_kab": "1377",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PARIAMAN",
+  "kecamatan": "PARIAMAN TIMUR",
+  "bpp": "BPP Pariaman Timur",
+  "poktan": 60
+ },
+ {
+  "kd_kab": "1377",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA PARIAMAN",
+  "kecamatan": "PARIAMAN UTARA",
+  "bpp": "BPP Pariaman Utara",
+  "poktan": 73
+ }
+]

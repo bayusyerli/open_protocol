@@ -1,0 +1,50 @@
+[
+ {
+  "nama": "PT Mutuagung Lestari",
+  "id": 2276,
+  "alamat": "Jl. Raya Bogor K. 33.5 No. 19 Cimanggis Kota Depok",
+  "no_telp_fax": "021-8740202",
+  "detail_organisasi": null,
+  "skema": "Lembaga Sertifikasi Penyelenggara Umrah dan Haji Khusus",
+  "skema_kode": "LSUHK",
+  "pic_name": "Abdurrachman Wahid",
+  "pic_id": "17952",
+  "no_akreditasi": " LSUHK-007-IDN  "
+ },
+ {
+  "nama": "PT Superintending Company of Indonesia (PT SUCOFINDO) - SBU Sertifikasi dan Eco Framework (Sucofindo International Certification Services)",
+  "id": 2290,
+  "alamat": "Graha Sucofindo, SBU SERCO Lt. B1\r\nJl. Raya Pasar Minggu  Kav. 34",
+  "no_telp_fax": "(021) 7983666",
+  "detail_organisasi": null,
+  "skema": "Lembaga Sertifikasi Penyelenggara Umrah dan Haji Khusus",
+  "skema_kode": "LSUHK",
+  "pic_name": "Abdurrachman Wahid",
+  "pic_id": "17952",
+  "no_akreditasi": "LSUHK-004-IDN  "
+ },
+ {
+  "nama": "LSUHK PT. MUTU INDONESIA STRATEGIS BERKELANJUTAN",
+  "id": 2593,
+  "alamat": "JALAN CIPUTAT RAYA NO. 7 PONDOK PINANG JAKARTA SELATAN",
+  "no_telp_fax": "021 75916651-3",
+  "detail_organisasi": null,
+  "skema": "Lembaga Sertifikasi Penyelenggara Umrah dan Haji Khusus",
+  "skema_kode": "LSUHK",
+  "pic_name": "Abdurrachman Wahid",
+  "pic_id": "17952",
+  "no_akreditasi": "LSUHK-017-IDN  "
+ },
+ {
+  "nama": "PT. IRQA Indonesia",
+  "id": 2706,
+  "alamat": "Rukan Pesona Madani Blok A 21, Jalan Keadilan Raya , Kel. Rangkapan Jaya Baru, Kec. Pancoran Mas",
+  "no_telp_fax": "081293139128",
+  "detail_organisasi": null,
+  "skema": "Lembaga Sertifikasi Penyelenggara Umrah dan Haji Khusus",
+  "skema_kode": "LSUHK",
+  "pic_name": "Abdurrachman Wahid",
+  "pic_id": "17952",
+  "no_akreditasi": "LSUHK-015-IDN"
+ }
+]

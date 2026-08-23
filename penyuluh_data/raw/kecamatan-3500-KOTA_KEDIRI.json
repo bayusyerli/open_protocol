@@ -1,0 +1,26 @@
+[
+ {
+  "kd_kab": "3571",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA KEDIRI",
+  "kecamatan": "MOJOROTO",
+  "bpp": "BPP MOJOROTO",
+  "poktan": 33
+ },
+ {
+  "kd_kab": "3571",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA KEDIRI",
+  "kecamatan": "KOTA KEDIRI",
+  "bpp": "BPP KOTA",
+  "poktan": 18
+ },
+ {
+  "kd_kab": "3571",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA KEDIRI",
+  "kecamatan": "PESANTREN",
+  "bpp": "BPP PESANTREN",
+  "poktan": 35
+ }
+]

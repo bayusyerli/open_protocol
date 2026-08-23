@@ -29,3 +29,8 @@ harga_data/bin/
 # Halaman terbit — dibangun ulang dengan `node spec/tools/bangun-halaman.mjs --tulis`.
 # 4.350 berkas, 55 MB, deterministik dan sepenuhnya diturunkan dari spec/indeks/.
 terbit/
+
+# Ruang lingkup akreditasi mentah dari KAN — 174 berkas, 14 MB, memuat salinan HTML
+# halaman rinciannya. Turunannya (lpk_data/lab-uji-tani.*) naik ke repo; yang mentah
+# ditarik ulang dengan `node lpk_data/tarik-lingkup.mjs`.
+lpk_data/raw/lingkup/

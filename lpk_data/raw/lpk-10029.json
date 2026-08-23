@@ -1,0 +1,26 @@
+[
+ {
+  "nama": "Laboratorium PT. Gelora Djaja",
+  "id": 5601,
+  "alamat": "Jalan Buntaran No. 9 Tandes, Surabaya",
+  "no_telp_fax": "031-7493556",
+  "detail_organisasi": "LP-327-IDN laboratorium pengujian, LK-108-IDN labortorium kalibrasi, PUP-008-IDN laboratorium penyelenggara uji profisiensi, NO. 00283/LPJ/LABLING-1/LRK/KLHK, nomer izin LAB ALKES 81201099114040003",
+  "skema": "Produsen Bahan Acuan",
+  "skema_kode": "PBA",
+  "pic_name": "Alfian Rizky Hakim",
+  "pic_id": "11171",
+  "no_akreditasi": "PBA-006-IDN"
+ },
+ {
+  "nama": "PT SUCOFINDO SBU MINERAL",
+  "id": 12021,
+  "alamat": "Jl. Arteri Tol Cibitung No. 1, Cikarang\r\nBarat, Kab. Bekasi, Jawa Barat",
+  "no_telp_fax": "(021) 7983666",
+  "detail_organisasi": null,
+  "skema": "Produsen Bahan Acuan",
+  "skema_kode": "PBA",
+  "pic_name": "Alfian Rizky Hakim",
+  "pic_id": "11171",
+  "no_akreditasi": "PBA-012-IDN"
+ }
+]

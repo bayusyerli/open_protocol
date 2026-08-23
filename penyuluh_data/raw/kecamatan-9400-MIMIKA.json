@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "9412",
+  "provinsi": "PAPUA",
+  "kabupaten": "MIMIKA",
+  "kecamatan": "MIMIKA TIMUR",
+  "bpp": "BPP Mimika Timur",
+  "poktan": 56
+ },
+ {
+  "kd_kab": "9412",
+  "provinsi": "PAPUA",
+  "kabupaten": "MIMIKA",
+  "kecamatan": "MIMIKA BARU",
+  "bpp": "BPP MIMIKA BARU",
+  "poktan": 95
+ },
+ {
+  "kd_kab": "9412",
+  "provinsi": "PAPUA",
+  "kabupaten": "MIMIKA",
+  "kecamatan": "KUALA KENCANA",
+  "bpp": "BPP KUALA KENCANA",
+  "poktan": 60
+ },
+ {
+  "kd_kab": "9412",
+  "provinsi": "PAPUA",
+  "kabupaten": "MIMIKA",
+  "kecamatan": "WANIA",
+  "bpp": "BPP WANIA",
+  "poktan": 106
+ },
+ {
+  "kd_kab": "9412",
+  "provinsi": "PAPUA",
+  "kabupaten": "MIMIKA",
+  "kecamatan": "IWAKA",
+  "bpp": "BPP KUALA KENCANA",
+  "poktan": 114
+ }
+]

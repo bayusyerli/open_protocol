@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "9471",
+  "provinsi": "PAPUA",
+  "kabupaten": "KOTA JAYAPURA",
+  "kecamatan": "MUARA TAMI",
+  "bpp": "BPP Muara Tami",
+  "poktan": 92
+ },
+ {
+  "kd_kab": "9471",
+  "provinsi": "PAPUA",
+  "kabupaten": "KOTA JAYAPURA",
+  "kecamatan": "ABEPURA",
+  "bpp": "BPP Abepura",
+  "poktan": 58
+ },
+ {
+  "kd_kab": "9471",
+  "provinsi": "PAPUA",
+  "kabupaten": "KOTA JAYAPURA",
+  "kecamatan": "HERAM",
+  "bpp": "BPP Abepura",
+  "poktan": 26
+ },
+ {
+  "kd_kab": "9471",
+  "provinsi": "PAPUA",
+  "kabupaten": "KOTA JAYAPURA",
+  "kecamatan": "JAYAPURA SELATAN",
+  "bpp": "BPP Abepura",
+  "poktan": 6
+ },
+ {
+  "kd_kab": "9471",
+  "provinsi": "PAPUA",
+  "kabupaten": "KOTA JAYAPURA",
+  "kecamatan": "JAYAPURA UTARA",
+  "bpp": "BPP Abepura",
+  "poktan": 11
+ }
+]

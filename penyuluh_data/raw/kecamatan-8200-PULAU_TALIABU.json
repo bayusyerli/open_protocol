@@ -1,0 +1,50 @@
+[
+ {
+  "kd_kab": "8208",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "PULAU TALIABU",
+  "kecamatan": "TALIABU BARAT",
+  "bpp": "BPP Kecamatan Taliabu Barat",
+  "poktan": 137
+ },
+ {
+  "kd_kab": "8208",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "PULAU TALIABU",
+  "kecamatan": "TALIABU TIMUR SELATAN",
+  "bpp": "BPP Kecamatan Taliabu Timur Selatan",
+  "poktan": 29
+ },
+ {
+  "kd_kab": "8208",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "PULAU TALIABU",
+  "kecamatan": "TALIABU TIMUR",
+  "bpp": "BPP Kecamatan Taliabu Selatan",
+  "poktan": 5
+ },
+ {
+  "kd_kab": "8208",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "PULAU TALIABU",
+  "kecamatan": "TALIABU UTARA",
+  "bpp": "BPP Kecamatan Taliabu Utara",
+  "poktan": 101
+ },
+ {
+  "kd_kab": "8208",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "PULAU TALIABU",
+  "kecamatan": "LEDE",
+  "bpp": "BPP Kecamatan Tabona",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "8208",
+  "provinsi": "MALUKU UTARA",
+  "kabupaten": "PULAU TALIABU",
+  "kecamatan": "TALIABU BARAT LAUT",
+  "bpp": "BPP Kecamatan Lede",
+  "poktan": 79
+ }
+]
