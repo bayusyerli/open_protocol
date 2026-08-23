@@ -1,0 +1,82 @@
+[
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "BENGKULU SELATAN",
+  "bpp": 10,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IldBdmd5ckwwWFJlbkRDODdUYzdJQXc9PSIsInZhbHVlIjoiNUpGTHRsT0xwcG92N010b1pnN1BUQT09IiwibWFjIjoiMThmZGE0ZjA0MzkxNzUyODg5NjlhMjg1ZWIxNzMwMTY5YWJjOWUyYWEyYTg1MGQ2YWZkYjJjMjMwYzQyN2MwYyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "REJANG LEBONG",
+  "bpp": 10,
+  "dinas": "DINAS PERTANIAN DAN PERIKANAN KABUPATEN REJANG LEBONG",
+  "tanda": "eyJpdiI6ImtZMmt6NWlBTWwyY0VCajB5cmoxRkE9PSIsInZhbHVlIjoiOU5uSDNpRVovOXdNZWRGbFZMSWdZZz09IiwibWFjIjoiMzRmOGZhNjBlYTRiZDc5NjQwOTYwMGM0ZTEzZmUxNjQwYjg4NGJkMjZlYjllOWJjNzVmZDQxMWRjOTFiMzUzZCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "BENGKULU UTARA",
+  "bpp": 19,
+  "dinas": "Dinas Tanaman Pangan, Hortikultura dan Peternakan",
+  "tanda": "eyJpdiI6IjVSVGFjNWpqenhIa0M5SHdOaDlFQUE9PSIsInZhbHVlIjoiUkhKNVArcjN5YXo2MTlVVkt6NnJnUT09IiwibWFjIjoiNmRiMWU2YjBhNjg0MTMyMjVkZDQ3ZjBjZDViZjFhNzA5OWI2NjE5MzlmYTNmY2E2ZjE1Y2RiM2MwMjVmNjBlOCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "KAUR",
+  "bpp": 9,
+  "dinas": "Dinas Pertanian Kabupaten Kaur",
+  "tanda": "eyJpdiI6IlhpYWhrdURUcVM2Q3hiM2dDVnVoaUE9PSIsInZhbHVlIjoiSW9OUlVMdlZZemRVL09TalgzZzQzUT09IiwibWFjIjoiNTQ1YjRjYjllYjhiYzc1MWNkOGU3OTkxYWNiNTJjODIzZmQ4Y2NmMzI2YWVlMzZiMDRmMGNlYWQ3ZDM3OWIyYyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "SELUMA",
+  "bpp": 9,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6Iko2MHIyVW1waHR0T3FLZkZlZFkxdUE9PSIsInZhbHVlIjoibjlkbVlFZmJudWU0QnFCaVlzVWJWZz09IiwibWFjIjoiZjhjYTJlN2MyZjMwZjM5NzZlNmJiNzY5NzEzYWZjZTMxMzM3ODE2MDMzYzQ0NTM0ZWY4NzZlODE3ZTY5M2JlNCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "MUKOMUKO",
+  "bpp": 15,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6InFNV0lXRjBEQlRSNXFUS3dmRWQvZkE9PSIsInZhbHVlIjoiNFJ6SXZlSG9reGlXSTlsaW1JYkRYUT09IiwibWFjIjoiNWM2NGEwZmQzMjJjMzZkNTRmZDBlMTBlYzQzNDNhNTQzYjc3OTViN2QzZjc4YWE4NjMxMmVmYTFiMmM5ZTcxNSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "LEBONG",
+  "bpp": 11,
+  "dinas": "DINAS PERTANIAN DAN PERIKANAN",
+  "tanda": "eyJpdiI6IlJKY2IzQ2s2L3U1NU9mMGM4bkVlOEE9PSIsInZhbHVlIjoiWFBCRzY3WG9JRnppVWFNd1JENEsyQT09IiwibWFjIjoiNTQ0OTI0ZTNkYzc5NjI5ZjlhOTI1YzJjODE4OTYwODBjZjM5OTg0ZDllNDgyNTNiMWU2NjBjMGY3NzkxNDM5ZCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "KEPAHIANG",
+  "bpp": 8,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IkZ0Vk5EYk0ycmJUZzJsRWxsVVZSOFE9PSIsInZhbHVlIjoidXBoOTE4cnJhWTRyVHFzeUV5cjdMUT09IiwibWFjIjoiZjc0OWUwZGE2OGI1MTg1MGZkNjhkYzY1NWQzNTBiMDYyNzE2MmVkZDY2NDgyOTMwY2Y1MGQ5YjFhZTZlYTRkNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "BENGKULU TENGAH",
+  "bpp": 11,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IklHMHVLZlo1ZjJYc3VFRWhKUXhLcWc9PSIsInZhbHVlIjoiZnBCRmRncG9WOThDN1NYTkg3RURSdz09IiwibWFjIjoiMTlhNTNlZWI1OTY2MDFkNzVmNDI3OWJiZWM3YzRmYjkwNDcxM2M0MGNkMDNiOTlhM2RiNzY1ZjM2MTRmODg3NyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1700",
+  "provinsi": "BENGKULU",
+  "nama": "KOTA BENGKULU",
+  "bpp": 6,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian Kota Bengkulu",
+  "tanda": "eyJpdiI6IkdmcGFuMFA5by9kMXFaTHRhU3dJTkE9PSIsInZhbHVlIjoiZDNmQzN6Q2JpdXdjSWc5TVA3ei9HZz09IiwibWFjIjoiMTQxODlkZjk5MzM1NzdjYzA0ODA0MjZhYTRhOTVkMjJlYmNjN2JiMThjM2IyZjI2ODZlYWY0ZWU1MjdjNWYxZCIsInRhZyI6IiJ9"
+ }
+]

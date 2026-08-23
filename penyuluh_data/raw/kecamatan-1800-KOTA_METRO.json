@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "1872",
+  "provinsi": "LAMPUNG",
+  "kabupaten": "KOTA METRO",
+  "kecamatan": "METRO SELATAN",
+  "bpp": "BPP Kecamatan Metro Selatan",
+  "poktan": 65
+ },
+ {
+  "kd_kab": "1872",
+  "provinsi": "LAMPUNG",
+  "kabupaten": "KOTA METRO",
+  "kecamatan": "METRO BARAT",
+  "bpp": "BPP Kecamatan Metro Barat",
+  "poktan": 53
+ },
+ {
+  "kd_kab": "1872",
+  "provinsi": "LAMPUNG",
+  "kabupaten": "KOTA METRO",
+  "kecamatan": "METRO TIMUR",
+  "bpp": "BPP Kecamatan Metro Timur",
+  "poktan": 84
+ },
+ {
+  "kd_kab": "1872",
+  "provinsi": "LAMPUNG",
+  "kabupaten": "KOTA METRO",
+  "kecamatan": "METRO PUSAT",
+  "bpp": "BPP  Kecamatan Metro Pusat",
+  "poktan": 53
+ },
+ {
+  "kd_kab": "1872",
+  "provinsi": "LAMPUNG",
+  "kabupaten": "KOTA METRO",
+  "kecamatan": "METRO UTARA",
+  "bpp": "BPP Kecamatan Metro Utara",
+  "poktan": 97
+ }
+]

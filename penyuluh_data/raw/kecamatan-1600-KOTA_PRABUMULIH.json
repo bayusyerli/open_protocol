@@ -1,0 +1,50 @@
+[
+ {
+  "kd_kab": "1672",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PRABUMULIH",
+  "kecamatan": "RAMBANG KAPAK TENGAH",
+  "bpp": "BPP Rambang Kapak Tengah",
+  "poktan": 104
+ },
+ {
+  "kd_kab": "1672",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PRABUMULIH",
+  "kecamatan": "PRABUMULIH TIMUR",
+  "bpp": "BPP Prabumulih Timur",
+  "poktan": 113
+ },
+ {
+  "kd_kab": "1672",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PRABUMULIH",
+  "kecamatan": "PRABUMULIH SELATAN",
+  "bpp": "BPP Prabumulih Selatan",
+  "poktan": 62
+ },
+ {
+  "kd_kab": "1672",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PRABUMULIH",
+  "kecamatan": "PRABUMULIH BARAT",
+  "bpp": "BPP PRABUMULIH BARAT",
+  "poktan": 119
+ },
+ {
+  "kd_kab": "1672",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PRABUMULIH",
+  "kecamatan": "PRABUMULIH UTARA",
+  "bpp": "BPP Prabumulih Utara",
+  "poktan": 46
+ },
+ {
+  "kd_kab": "1672",
+  "provinsi": "SUMATERA SELATAN",
+  "kabupaten": "KOTA PRABUMULIH",
+  "kecamatan": "CAMBAI",
+  "bpp": "BPP CAMBAI",
+  "poktan": 64
+ }
+]

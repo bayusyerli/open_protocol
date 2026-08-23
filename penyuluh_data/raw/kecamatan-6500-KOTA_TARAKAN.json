@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "6571",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "KOTA TARAKAN",
+  "kecamatan": "TARAKAN TIMUR",
+  "bpp": "BPP Kota Tarakan",
+  "poktan": 44
+ },
+ {
+  "kd_kab": "6571",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "KOTA TARAKAN",
+  "kecamatan": "TARAKAN TENGAH",
+  "bpp": "BPP Kota Tarakan",
+  "poktan": 24
+ },
+ {
+  "kd_kab": "6571",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "KOTA TARAKAN",
+  "kecamatan": "TARAKAN BARAT",
+  "bpp": "BPP Kota Tarakan",
+  "poktan": 36
+ },
+ {
+  "kd_kab": "6571",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "KOTA TARAKAN",
+  "kecamatan": "TARAKAN UTARA",
+  "bpp": "BPP Kota Tarakan",
+  "poktan": 51
+ }
+]

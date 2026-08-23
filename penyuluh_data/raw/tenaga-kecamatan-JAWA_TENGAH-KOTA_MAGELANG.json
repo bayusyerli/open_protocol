@@ -1,0 +1,53 @@
+[
+ {
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA MAGELANG",
+  "kecamatan": "MAGELANG SELATAN",
+  "pnsaktif": 0,
+  "pnspensiun": 0,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 0,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 0,
+  "thl": 1,
+  "thlapbn": 0,
+  "thlapbd": 1,
+  "swadaya": 0,
+  "swasta": 0
+ },
+ {
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA MAGELANG",
+  "kecamatan": "MAGELANG TENGAH",
+  "pnsaktif": 1,
+  "pnspensiun": 3,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 0,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 4,
+  "thl": 2,
+  "thlapbn": 0,
+  "thlapbd": 2,
+  "swadaya": 23,
+  "swasta": 0
+ },
+ {
+  "provinsi": "JAWA TENGAH",
+  "kabupaten": "KOTA MAGELANG",
+  "kecamatan": "MAGELANG UTARA",
+  "pnsaktif": 0,
+  "pnspensiun": 0,
+  "pnsmeninggaldunia": 0,
+  "pnspindahstruktural": 0,
+  "pnstugasbelajar": 0,
+  "pnscpns": 0,
+  "p3k": 0,
+  "thl": 0,
+  "thlapbn": 0,
+  "thlapbd": 0,
+  "swadaya": 0,
+  "swasta": 0
+ }
+]

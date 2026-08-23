@@ -1,0 +1,338 @@
+[
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CISEWU",
+  "bpp": "BPP Cisewu",
+  "poktan": 198
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CARINGIN",
+  "bpp": "BPP Caringin",
+  "poktan": 165
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "TALEGONG",
+  "bpp": "BPP Talegong",
+  "poktan": 100
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "BUNGBULANG",
+  "bpp": "BPP Bungbulang",
+  "poktan": 204
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "MEKARMUKTI",
+  "bpp": "BPP Mekarmukti",
+  "poktan": 85
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "PAMULIHAN",
+  "bpp": "BPP Pamulihan",
+  "poktan": 80
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "PAKENJENG",
+  "bpp": "BPP Pakenjeng",
+  "poktan": 334
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CIKELET",
+  "bpp": "BPP Cikelet",
+  "poktan": 247
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "PAMEUNGPEUK",
+  "bpp": "BPP Pameungpeuk",
+  "poktan": 120
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CIBALONG",
+  "bpp": "BPP Cibalong",
+  "poktan": 301
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CISOMPET",
+  "bpp": "BPP Cisompet",
+  "poktan": 155
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "PEUNDEUY",
+  "bpp": "BPP Peundeuy",
+  "poktan": 112
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "SINGAJAYA",
+  "bpp": "BPP Singajaya",
+  "poktan": 200
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CIHURIP",
+  "bpp": "BPP Cihurip",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CIKAJANG",
+  "bpp": "BPP Cikajang",
+  "poktan": 242
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "BANJARWANGI",
+  "bpp": "BPP Banjarwangi",
+  "poktan": 245
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CILAWU",
+  "bpp": "BPP Cilawu",
+  "poktan": 252
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "BAYONGBONG",
+  "bpp": "BPP Bayongbong",
+  "poktan": 225
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CIGEDUG",
+  "bpp": "BPP Cigedug",
+  "poktan": 114
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CISURUPAN",
+  "bpp": "BPP Cisurupan",
+  "poktan": 299
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "SUKARESMI",
+  "bpp": "BPP Sukaresmi",
+  "poktan": 143
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "SAMARANG",
+  "bpp": "BPP Samarang",
+  "poktan": 156
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "PASIRWANGI",
+  "bpp": "BPP Pasirwangi",
+  "poktan": 170
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "TAROGONG KIDUL",
+  "bpp": "BPP Tarogong Kidul",
+  "poktan": 48
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "TAROGONG KALER",
+  "bpp": "BPP Tarogong Kaler",
+  "poktan": 106
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "GARUT KOTA",
+  "bpp": "BPP Garut Kota",
+  "poktan": 78
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "KARANGPAWITAN",
+  "bpp": "BPP Karangpawitan",
+  "poktan": 188
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "WANARAJA",
+  "bpp": "BPP Wanaraja",
+  "poktan": 90
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "SUCINARAJA",
+  "bpp": "BPP SUCINARAJA",
+  "poktan": 84
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "PANGATIKAN",
+  "bpp": "BPP Pangatikan",
+  "poktan": 104
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "SUKAWENING",
+  "bpp": "BPP Sukawening",
+  "poktan": 124
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "KARANGTENGAH",
+  "bpp": "BPP Karangtengah",
+  "poktan": 73
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "BANYURESMI",
+  "bpp": "BPP Banyuresmi",
+  "poktan": 154
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "LELES",
+  "bpp": "BPP Leles",
+  "poktan": 184
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "LEUWIGOONG",
+  "bpp": "BPP LEUWIGOONG",
+  "poktan": 91
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CIBATU",
+  "bpp": "BPP Cibatu",
+  "poktan": 95
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "KERSAMANAH",
+  "bpp": "BPP Kersamanah",
+  "poktan": 50
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "CIBIUK",
+  "bpp": "BPP Cibiuk",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "KADUNGORA",
+  "bpp": "BPP Kadungora",
+  "poktan": 186
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "BLUBUR LIMBANGAN",
+  "bpp": "BPP Limbangan",
+  "poktan": 238
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "SELAAWI",
+  "bpp": "BPP Selaawi",
+  "poktan": 140
+ },
+ {
+  "kd_kab": "3205",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "GARUT",
+  "kecamatan": "MALANGBONG",
+  "bpp": "BPP Malangbong",
+  "poktan": 144
+ }
+]

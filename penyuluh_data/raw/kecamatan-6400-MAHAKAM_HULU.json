@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "6411",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "MAHAKAM HULU",
+  "kecamatan": "LAHAM",
+  "bpp": "BPP Kec Laham",
+  "poktan": 30
+ },
+ {
+  "kd_kab": "6411",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "MAHAKAM HULU",
+  "kecamatan": "LONG HUBUNG",
+  "bpp": "BPP Kec. Long Hubung",
+  "poktan": 111
+ },
+ {
+  "kd_kab": "6411",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "MAHAKAM HULU",
+  "kecamatan": "LONG BAGUN",
+  "bpp": "BPP Long Bagun",
+  "poktan": 112
+ },
+ {
+  "kd_kab": "6411",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "MAHAKAM HULU",
+  "kecamatan": "LONG PAHANGAI",
+  "bpp": "BPP Long Pahangai",
+  "poktan": 63
+ },
+ {
+  "kd_kab": "6411",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "MAHAKAM HULU",
+  "kecamatan": "LONG APARI",
+  "bpp": "BPP Kecamatan Long Apari",
+  "poktan": 55
+ }
+]

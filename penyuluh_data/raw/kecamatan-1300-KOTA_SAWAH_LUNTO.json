@@ -1,0 +1,34 @@
+[
+ {
+  "kd_kab": "1373",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA SAWAH LUNTO",
+  "kecamatan": "SILUNGKANG",
+  "bpp": "BPP Silungkang",
+  "poktan": 56
+ },
+ {
+  "kd_kab": "1373",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA SAWAH LUNTO",
+  "kecamatan": "LEMBAH SEGAR",
+  "bpp": "BPP Lembah Segar",
+  "poktan": 55
+ },
+ {
+  "kd_kab": "1373",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA SAWAH LUNTO",
+  "kecamatan": "BARANGIN",
+  "bpp": "BPP Kecamatan Barangin",
+  "poktan": 94
+ },
+ {
+  "kd_kab": "1373",
+  "provinsi": "SUMATERA BARAT",
+  "kabupaten": "KOTA SAWAH LUNTO",
+  "kecamatan": "TALAWI",
+  "bpp": "BPP Talawi",
+  "poktan": 129
+ }
+]

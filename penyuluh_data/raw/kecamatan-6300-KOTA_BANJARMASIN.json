@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "6371",
+  "provinsi": "KALIMANTAN SELATAN",
+  "kabupaten": "KOTA BANJARMASIN",
+  "kecamatan": "BANJARMASIN SELATAN",
+  "bpp": "BPP Banjarmasin Selatan",
+  "poktan": 94
+ },
+ {
+  "kd_kab": "6371",
+  "provinsi": "KALIMANTAN SELATAN",
+  "kabupaten": "KOTA BANJARMASIN",
+  "kecamatan": "BANJARMASIN TIMUR",
+  "bpp": "BPP Banjarmasin Timur",
+  "poktan": 54
+ },
+ {
+  "kd_kab": "6371",
+  "provinsi": "KALIMANTAN SELATAN",
+  "kabupaten": "KOTA BANJARMASIN",
+  "kecamatan": "BANJARMASIN BARAT",
+  "bpp": "BPP Banjarmasin Barat",
+  "poktan": 30
+ },
+ {
+  "kd_kab": "6371",
+  "provinsi": "KALIMANTAN SELATAN",
+  "kabupaten": "KOTA BANJARMASIN",
+  "kecamatan": "BANJARMASIN TENGAH",
+  "bpp": "Banjarmasin Tengah",
+  "poktan": 24
+ },
+ {
+  "kd_kab": "6371",
+  "provinsi": "KALIMANTAN SELATAN",
+  "kabupaten": "KOTA BANJARMASIN",
+  "kecamatan": "BANJARMASIN UTARA",
+  "bpp": "Banjarmasin Utara",
+  "poktan": 45
+ }
+]

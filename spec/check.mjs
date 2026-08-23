@@ -456,6 +456,49 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L37 — laporan gejala warga tidak boleh tampil sebagai temuan terverifikasi.
+    //
+    // docs/15 menyebut bahayanya sebelum satu baris kode pun ada: "laporan gejala dari
+    // warga adalah data mentah; MENYEBUTNYA WABAH ADALAH KESIMPULAN. Peta yang menampilkan
+    // titik-titik laporan tanpa verifikasi bisa memicu penyemprotan massal yang tidak
+    // perlu — dan kerugiannya ditanggung petani, sementara yang untung penjual pestisida."
+    //
+    // Bahaya itu dirancang keluar di sini, bukan ditambal di penyaji. Peta yang salah
+    // dibangun di atas data yang benar masih bisa diperbaiki; peta yang benar dibangun di
+    // atas data yang tidak membedakan dugaan dari temuan tidak bisa.
+    const isObservation = typeof doc.id === 'string' && doc.id.startsWith('op:obs:');
+    if (isObservation) {
+      const v = doc.verification ?? {};
+
+      // (a) Yang belum diverifikasi tidak boleh berkelas publik. Inilah peta titik tanpa
+      // verifikasi, dinyatakan sebagai aturan alih-alih sebagai peringatan di dokumen.
+      if (v.status !== 'verified' && doc.data_classification === 'public') {
+        fail(file, 'L37-pengamatan-warga', `Pengamatan berstatus verifikasi "${v.status ?? 'tidak dinyatakan'}" diberi klasifikasi "public". Laporan yang belum diverifikasi adalah data mentah; menerbitkannya sebagai data publik membuat dugaan terbaca sebagai temuan, dan peta yang tersusun darinya memicu penyemprotan yang kerugiannya ditanggung petani.`);
+      }
+
+      // (b) Pemverifikasi tercatat sementara statusnya tetap "unverified". Skema sudah
+      // menuntut `by` dan `at` untuk ketiga status lainnya, jadi yang tersisa justru
+      // kebalikannya: seseorang tercatat memeriksa, dan hasilnya tidak pernah dinyatakan.
+      // Yang membaca melihat nama pemverifikasi dan menyimpulkan sudah diperiksa.
+      if (v.status === 'unverified' && (v.by || v.at)) {
+        fail(file, 'L37-pengamatan-warga', `verification.status "unverified" tetapi ${v.by ? 'verification.by' : 'verification.at'} terisi. Nama pemverifikasi yang menempel pada laporan berstatus belum-diverifikasi terbaca sebagai sudah diperiksa; nyatakan hasilnya, atau cabut namanya.`);
+      }
+
+      // (c) Dugaan OPT yang dibawa laporan warga wajib menyebut dasarnya, dan tidak boleh
+      // menempel pada laporan yang sudah DITOLAK verifikasinya — di sana dugaannya sudah
+      // dijawab, dan membiarkannya berdiri terbaca sebagai jawaban yang lain.
+      if (doc.suspected?.pest && v.status === 'rejected') {
+        fail(file, 'L37-pengamatan-warga', `Laporan ini ditolak verifikasinya tetapi masih membawa dugaan OPT "${doc.suspected.pest.label ?? doc.suspected.pest.id}". Dugaan yang sudah dijawab tidak boleh tetap berdiri; catat hasilnya di verification.note dan cabut dugaannya.`);
+      }
+
+      // (d) Laporan warga yang bergaya pengukuran. `variable` + `value` menyatakan angka
+      // hasil pengamatan berdisiplin dengan cara dan ukuran sampel; laporan gejala tidak
+      // punya keduanya, dan meminjam bentuknya membuat perkiraan terbaca sebagai hitungan.
+      if (doc.kind === 'symptom_report' && doc.variable) {
+        fail(file, 'L37-pengamatan-warga', 'Laporan gejala membawa `variable` — bentuk pengukuran. Yang melapor memperkirakan, tidak menghitung; memakai bentuk pengukuran membuat perkiraan terbaca sebagai angka hasil pengamatan bersampel.');
+      }
+    }
+
     // ---- Aturan sediaan buatan sendiri (L16-L21) ----
     const isPreparation = typeof doc.id === 'string' && doc.id.startsWith('op:sed:');
     const controlsPest = (doc.intended_functions ?? []).some((f) => f === 'pest_control' || f === 'disease_suppression');

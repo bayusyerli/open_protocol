@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "9427",
+  "provinsi": "PAPUA",
+  "kabupaten": "SUPIORI",
+  "kecamatan": "SUPIORI SELATAN",
+  "bpp": "BPP. Kunef Supiori Selatan",
+  "poktan": 23
+ },
+ {
+  "kd_kab": "9427",
+  "provinsi": "PAPUA",
+  "kabupaten": "SUPIORI",
+  "kecamatan": "KEPULAUAN ARURI",
+  "bpp": "BPP Mbrurwandi",
+  "poktan": 19
+ },
+ {
+  "kd_kab": "9427",
+  "provinsi": "PAPUA",
+  "kabupaten": "SUPIORI",
+  "kecamatan": "SUPIORI UTARA",
+  "bpp": "BPK. Nyeundi",
+  "poktan": 22
+ },
+ {
+  "kd_kab": "9427",
+  "provinsi": "PAPUA",
+  "kabupaten": "SUPIORI",
+  "kecamatan": "SUPIORI BARAT",
+  "bpp": "BPK. Rusweri Supiori Barat",
+  "poktan": 36
+ },
+ {
+  "kd_kab": "9427",
+  "provinsi": "PAPUA",
+  "kabupaten": "SUPIORI",
+  "kecamatan": "SUPIORI TIMUR",
+  "bpp": "BPP Wakre Supiori Timur",
+  "poktan": 52
+ }
+]

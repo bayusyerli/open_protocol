@@ -1,0 +1,38 @@
+[
+ {
+  "nama": "PT. TUV Nord Indonesia",
+  "id": 519,
+  "alamat": "Perkantoran Hijau Arkadia\r\nJl. Letjen TB. Simatupang Kav 88\r\nTower F, Lantai 6",
+  "no_telp_fax": "021-78837338",
+  "detail_organisasi": null,
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Keamanan Pangan",
+  "skema_kode": "LSSMKP",
+  "pic_name": "Riska Rozida Bastomi",
+  "pic_id": "6470",
+  "no_akreditasi": "old_LSSMKP-004-IDN  "
+ },
+ {
+  "nama": "Balai Standardisasi dan Pelayanan Jasa (BSPJI) Palembang",
+  "id": 4431,
+  "alamat": "Jl.Perindustrian II No.12 km.9 Kecamatan Sukarame",
+  "no_telp_fax": "(0711) 412482",
+  "detail_organisasi": null,
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Keamanan Pangan",
+  "skema_kode": "LSSMKP",
+  "pic_name": "Riska Rozida Bastomi",
+  "pic_id": "6470",
+  "no_akreditasi": "old_LSSMKP-011-IDN"
+ },
+ {
+  "nama": "Balai Standardisasi dan Pelayanan Jasa Industri Jakarta",
+  "id": 5787,
+  "alamat": "Jl. Cikini IV No.15",
+  "no_telp_fax": "021-3150221",
+  "detail_organisasi": "Balai Standardisasi dan Pelayanan Jasa Industri Jakarta (LSPro-004) (LSSM-060)",
+  "skema": "old_Lembaga Sertifikasi Sistem Manajemen Keamanan Pangan",
+  "skema_kode": "LSSMKP",
+  "pic_name": "Riska Rozida Bastomi",
+  "pic_id": "6470",
+  "no_akreditasi": "old_LSSMKP-012-IDN"
+ }
+]

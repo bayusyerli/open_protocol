@@ -1,0 +1,74 @@
+[
+ {
+  "nama": "PT CBQA GLOBAL INDONESIA",
+  "id": 5500,
+  "alamat": "South Quarter Tower A, 17th Floor Unit B2-C1\r\nJl. R.A Kartini Kav 8, Cilandak Barat, Jakarta 12430",
+  "no_telp_fax": "021-2781 4200",
+  "detail_organisasi": "-",
+  "skema": "Lembaga Validasi dan Verifikasi",
+  "skema_kode": "LVV",
+  "pic_name": "Utomo Danarjati",
+  "pic_id": "11076",
+  "no_akreditasi": "LVV-011-IDN"
+ },
+ {
+  "nama": "PT Carsurin",
+  "id": 5511,
+  "alamat": "Gedung Soho Capital Lantai 28, Jalan Letjen S. Parman Kaveling 28, Desa/Kelurahan Tanjung Duren Selatan, Kec. Grogol Petamburan",
+  "no_telp_fax": "02150226868",
+  "detail_organisasi": "SNI ISO 17065 : LSPro PT Carsurin\r\nSNI ISO 17025 : Laboratorium Pengujian PT Carsurin",
+  "skema": "Lembaga Validasi dan Verifikasi",
+  "skema_kode": "LVV",
+  "pic_name": "Eko Agus Purnomo",
+  "pic_id": "6220",
+  "no_akreditasi": "LVV-012-IDN"
+ },
+ {
+  "nama": "PT BUREAU VERITAS INDONESIA",
+  "id": 5573,
+  "alamat": "Wisma 76 Building 21st Floor\r\nJl. Let. Jend. S. Parman Kav 76, Slipi, Palmerah, Jakarta Barat 11410, Indonesia",
+  "no_telp_fax": "+62 21 5366 6861",
+  "detail_organisasi": "lingkup LSSM, LSSML, LSUP, LSSMKI, LSSMK3",
+  "skema": "Lembaga Validasi dan Verifikasi",
+  "skema_kode": "LVV",
+  "pic_name": "Utomo Danarjati",
+  "pic_id": "11076",
+  "no_akreditasi": "LVV-008-IDN"
+ },
+ {
+  "nama": "PT SUCOFINDO (Persero)- SBU Perdagangan, Industri dan Kelautan",
+  "id": 5711,
+  "alamat": "Jl. Raya Pasar Minggu Kav.34 Jakarta 12780",
+  "no_telp_fax": "0217983666",
+  "detail_organisasi": "ID Survey, lingkup ISO 17020",
+  "skema": "Lembaga Validasi dan Verifikasi",
+  "skema_kode": "LVV",
+  "pic_name": "M Ari Bachtiar Al Machi",
+  "pic_id": "6530",
+  "no_akreditasi": "LVV-010-IDN"
+ },
+ {
+  "nama": "Abhipraya Bumi Lestari",
+  "id": 6948,
+  "alamat": "The Mansion Bougenville, Tower Fontana, lantai 27, ruang BF27-E2, Jl. Trembesi Blok D, Pademangan Timur, Kec. Pademangan, Jakarta Utara, Daerah Khusus Ibukota Jakarta. 14410.",
+  "no_telp_fax": "0819 9026 9999",
+  "detail_organisasi": null,
+  "skema": "Lembaga Validasi dan Verifikasi",
+  "skema_kode": "LVV",
+  "pic_name": "Thundra Akbar Sudarsono",
+  "pic_id": "11074",
+  "no_akreditasi": "LVV-007-IDN"
+ },
+ {
+  "nama": "PT Qualitas Sertifikasi Indonesia",
+  "id": 11917,
+  "alamat": "The CEO Building Level 12th,\r\n\r\nJl. TB Simatupang No. 18C,\r\n\r\nCilandak Barat, Cilandak, \r\n\r\nJakarta Selatan, DKI Jakarta, 12430\r\n\r\nIndonesia",
+  "no_telp_fax": "+62 21 2949 1946",
+  "detail_organisasi": "LPVI PT Qualitas Sertifikasi Indonesia - program SVLK - scope VLK industri",
+  "skema": "Lembaga Validasi dan Verifikasi",
+  "skema_kode": "LVV",
+  "pic_name": "Thundra Akbar Sudarsono",
+  "pic_id": "11074",
+  "no_akreditasi": "LVV-028-IDN"
+ }
+]

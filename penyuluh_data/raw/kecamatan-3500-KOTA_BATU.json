@@ -1,0 +1,26 @@
+[
+ {
+  "kd_kab": "3579",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA BATU",
+  "kecamatan": "BATU",
+  "bpp": "BP3K  Batu",
+  "poktan": 66
+ },
+ {
+  "kd_kab": "3579",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA BATU",
+  "kecamatan": "JUNREJO",
+  "bpp": "BP3K  Junrejo",
+  "poktan": 72
+ },
+ {
+  "kd_kab": "3579",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA BATU",
+  "kecamatan": "BUMIAJI",
+  "bpp": "BPP Kecamatan Bumiaji",
+  "poktan": 146
+ }
+]

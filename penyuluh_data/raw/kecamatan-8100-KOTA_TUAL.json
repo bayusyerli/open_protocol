@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "8172",
+  "provinsi": "MALUKU",
+  "kabupaten": "KOTA TUAL",
+  "kecamatan": "PP. KUR",
+  "bpp": "BPP. Kanara",
+  "poktan": 10
+ },
+ {
+  "kd_kab": "8172",
+  "provinsi": "MALUKU",
+  "kabupaten": "KOTA TUAL",
+  "kecamatan": "KUR SELATAN",
+  "bpp": "BPP. Kanara",
+  "poktan": 27
+ },
+ {
+  "kd_kab": "8172",
+  "provinsi": "MALUKU",
+  "kabupaten": "KOTA TUAL",
+  "kecamatan": "TAYANDO TAM",
+  "bpp": "BPP Tayando",
+  "poktan": 28
+ },
+ {
+  "kd_kab": "8172",
+  "provinsi": "MALUKU",
+  "kabupaten": "KOTA TUAL",
+  "kecamatan": "PULAU DULLAH UTARA",
+  "bpp": "BPP Ohoitel",
+  "poktan": 119
+ },
+ {
+  "kd_kab": "8172",
+  "provinsi": "MALUKU",
+  "kabupaten": "KOTA TUAL",
+  "kecamatan": "PULAU DULLAH SELATAN",
+  "bpp": "BPP Ohoitel",
+  "poktan": 40
+ }
+]

@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "3573",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA MALANG",
+  "kecamatan": "KEDUNGKANDANG",
+  "bpp": "BPP  Kecamatan Kedungkandang",
+  "poktan": 51
+ },
+ {
+  "kd_kab": "3573",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA MALANG",
+  "kecamatan": "SUKUN",
+  "bpp": "BPP  Kecamatan Sukun",
+  "poktan": 36
+ },
+ {
+  "kd_kab": "3573",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA MALANG",
+  "kecamatan": "KLOJEN",
+  "bpp": "BPP  Kecamatan Klojen",
+  "poktan": 31
+ },
+ {
+  "kd_kab": "3573",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA MALANG",
+  "kecamatan": "BLIMBING",
+  "bpp": "BPP Kecamatan Blimbing",
+  "poktan": 33
+ },
+ {
+  "kd_kab": "3573",
+  "provinsi": "JAWA TIMUR",
+  "kabupaten": "KOTA MALANG",
+  "kecamatan": "LOWOKWARU",
+  "bpp": "BPP  Kecamatan Lowokwaru",
+  "poktan": 36
+ }
+]

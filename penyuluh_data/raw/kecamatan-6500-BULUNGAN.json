@@ -1,0 +1,82 @@
+[
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "PESO",
+  "bpp": "BPP Tanjung Palas Barat",
+  "poktan": 32
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "PESO HILIR",
+  "bpp": "BPP Tanjung Palas Barat",
+  "poktan": 30
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "TANJUNG PALAS BARAT",
+  "bpp": "BPP Tanjung Palas Barat",
+  "poktan": 47
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "TANJUNG PALAS",
+  "bpp": "BPP Tanjung Palas",
+  "poktan": 114
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "TANJUNG SELOR",
+  "bpp": "Tanjung Selor",
+  "poktan": 165
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "TANJUNG PALAS TIMUR",
+  "bpp": "BPP Tanjung Palas Timur",
+  "poktan": 177
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "TANJUNG PALAS TENGAH",
+  "bpp": "Tanjung Palas Tengah",
+  "poktan": 148
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "TANJUNG PALAS UTARA",
+  "bpp": "BPP Tanjung Palas Utara",
+  "poktan": 75
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "SEKATAK",
+  "bpp": "Sekatak",
+  "poktan": 70
+ },
+ {
+  "kd_kab": "6502",
+  "provinsi": "KALIMANTAN UTARA",
+  "kabupaten": "BULUNGAN",
+  "kecamatan": "BUNYU",
+  "bpp": "Tanjung Palas Tengah",
+  "poktan": 18
+ }
+]

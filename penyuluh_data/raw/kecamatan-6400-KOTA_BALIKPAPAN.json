@@ -1,0 +1,50 @@
+[
+ {
+  "kd_kab": "6471",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "KOTA BALIKPAPAN",
+  "kecamatan": "BALIKPAPAN SELATAN",
+  "bpp": "BPP Teritip",
+  "poktan": 21
+ },
+ {
+  "kd_kab": "6471",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "KOTA BALIKPAPAN",
+  "kecamatan": "BALIKPAPAN KOTA",
+  "bpp": "BPP Teritip",
+  "poktan": 3
+ },
+ {
+  "kd_kab": "6471",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "KOTA BALIKPAPAN",
+  "kecamatan": "BALIKPAPAN TIMUR",
+  "bpp": "BPP Teritip",
+  "poktan": 112
+ },
+ {
+  "kd_kab": "6471",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "KOTA BALIKPAPAN",
+  "kecamatan": "BALIKPAPAN UTARA",
+  "bpp": "BPP Karang Joang",
+  "poktan": 54
+ },
+ {
+  "kd_kab": "6471",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "KOTA BALIKPAPAN",
+  "kecamatan": "BALIKPAPAN TENGAH",
+  "bpp": "BPP Karang Joang",
+  "poktan": 10
+ },
+ {
+  "kd_kab": "6471",
+  "provinsi": "KALIMANTAN TIMUR",
+  "kabupaten": "KOTA BALIKPAPAN",
+  "kecamatan": "BALIKPAPAN BARAT",
+  "bpp": "BPP Karang Joang",
+  "poktan": 18
+ }
+]

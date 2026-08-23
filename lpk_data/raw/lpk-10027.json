@@ -1,0 +1,26 @@
+[
+ {
+  "nama": "PT. Trustindo Primakarya",
+  "id": 922,
+  "alamat": "Gedung APHI Kalimantan Timur Lt.1\r\nJl. Kesuma Bangsa No.80",
+  "no_telp_fax": "0541747798",
+  "detail_organisasi": null,
+  "skema": "Lembaga Penilai dan Verifikasi Independen",
+  "skema_kode": "LPVI",
+  "pic_name": "Adi Husada",
+  "pic_id": "6210",
+  "no_akreditasi": "LPVI-017-IDN"
+ },
+ {
+  "nama": "PT JENGGALA HIJAU SERTIFIKASI",
+  "id": 2342,
+  "alamat": "Jl. Bambu Apus VI No. 2 Taman Yasmin Sektor VII Kota Bogor, Kode Pos: 16112,  Telp./Fax. 0251-756866",
+  "no_telp_fax": "0251-7568663",
+  "detail_organisasi": null,
+  "skema": "Lembaga Penilai dan Verifikasi Independen",
+  "skema_kode": "LPVI",
+  "pic_name": "Adi Husada",
+  "pic_id": "6210",
+  "no_akreditasi": "LPVI-005-IDN"
+ }
+]

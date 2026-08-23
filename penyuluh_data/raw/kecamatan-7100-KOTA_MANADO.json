@@ -1,0 +1,82 @@
+[
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "MALALAYANG",
+  "bpp": "BPP  Malalayang",
+  "poktan": 38
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "SARIO",
+  "bpp": "BPP Kecamatan Sario-Wanea",
+  "poktan": 8
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "WANEA",
+  "bpp": "BPP Kecamatan Sario-Wanea",
+  "poktan": 19
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "WENANG",
+  "bpp": "BPP Kecamatan Tikala, Wenang, Paal-Dua",
+  "poktan": 8
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "TIKALA",
+  "bpp": "BPP Kecamatan Tikala, Wenang, Paal-Dua",
+  "poktan": 10
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "PAAL DUA",
+  "bpp": "BPP Kecamatan Tikala, Wenang, Paal-Dua",
+  "poktan": 20
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "MAPANGET",
+  "bpp": "BPP Kec Mapanget",
+  "poktan": 115
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "BUNAKEN",
+  "bpp": "BPP Bunaken",
+  "poktan": 53
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "BUNAKEN KEPULAUAN",
+  "bpp": "BPP Bunaken",
+  "poktan": 9
+ },
+ {
+  "kd_kab": "7171",
+  "provinsi": "SULAWESI UTARA",
+  "kabupaten": "KOTA MANADO",
+  "kecamatan": "",
+  "bpp": "BPP Singkil-Tuminting",
+  "poktan": 0
+ }
+]

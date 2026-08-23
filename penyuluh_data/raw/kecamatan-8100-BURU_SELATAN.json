@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "8109",
+  "provinsi": "MALUKU",
+  "kabupaten": "BURU SELATAN",
+  "kecamatan": "LEKSULA",
+  "bpp": "Balai Penyuluhan Pertanian Leksula",
+  "poktan": 102
+ },
+ {
+  "kd_kab": "8109",
+  "provinsi": "MALUKU",
+  "kabupaten": "BURU SELATAN",
+  "kecamatan": "FENA FAFAN",
+  "bpp": "Balai Penyuluhan Pertanian Fenafafan",
+  "poktan": 37
+ },
+ {
+  "kd_kab": "8109",
+  "provinsi": "MALUKU",
+  "kabupaten": "BURU SELATAN",
+  "kecamatan": "NAMROLE",
+  "bpp": "Balai Penyuluhan Pertanian Namrole",
+  "poktan": 136
+ },
+ {
+  "kd_kab": "8109",
+  "provinsi": "MALUKU",
+  "kabupaten": "BURU SELATAN",
+  "kecamatan": "WAISAMA",
+  "bpp": "Balai Penyuluhan Pertanian Waisama",
+  "poktan": 149
+ },
+ {
+  "kd_kab": "8109",
+  "provinsi": "MALUKU",
+  "kabupaten": "BURU SELATAN",
+  "kecamatan": "",
+  "bpp": "Balai Penyuluhan Pertanian Kecamatan Kep",
+  "poktan": 0
+ }
+]

@@ -1,0 +1,50 @@
+[
+ {
+  "kd_kab": "1278",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA GUNUNGSITOLI",
+  "kecamatan": "GUNUNGSITOLI IDANOI",
+  "bpp": "BPPK GN SITOLI IDANOI & GN SITOLI SLATAN",
+  "poktan": 228
+ },
+ {
+  "kd_kab": "1278",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA GUNUNGSITOLI",
+  "kecamatan": "GUNUNGSITOLI SELATAN",
+  "bpp": "BPPK GN SITOLI IDANOI & GN SITOLI SLATAN",
+  "poktan": 133
+ },
+ {
+  "kd_kab": "1278",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA GUNUNGSITOLI",
+  "kecamatan": "GUNUNGSITOLI BARAT",
+  "bpp": "BPP KEC. GUNUNGSITOLI BARAT",
+  "poktan": 67
+ },
+ {
+  "kd_kab": "1278",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA GUNUNGSITOLI",
+  "kecamatan": "GUNUNG SITOLI",
+  "bpp": "BPPK GUNUNGSITOLI",
+  "poktan": 167
+ },
+ {
+  "kd_kab": "1278",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA GUNUNGSITOLI",
+  "kecamatan": "GUNUNGSITOLI ALO OA",
+  "bpp": "BPP KECAMATAN GUNUNGSITOLI ALOOA",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "1278",
+  "provinsi": "SUMATERA UTARA",
+  "kabupaten": "KOTA GUNUNGSITOLI",
+  "kecamatan": "GUNUNGSITOLI UTARA",
+  "bpp": "BPPK GUNUNGSITOLI UTARA",
+  "poktan": 139
+ }
+]

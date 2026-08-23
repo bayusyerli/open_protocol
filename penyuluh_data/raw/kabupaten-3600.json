@@ -1,0 +1,66 @@
+[
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "PANDEGLANG",
+  "bpp": 35,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6Ik81RmxuWnAyeXExa2RyNlJvK1ZSTEE9PSIsInZhbHVlIjoiN2RUaGJUQ1dWRm1uNVk1UmpkU0Qxdz09IiwibWFjIjoiOTMzMGE3MTlkMWViMGIwYTM5MTMzY2E1MTZmYjk3Nzc2OGRiYzc1YTY1ZjgyYjI3ZTQwZjA5ZTljNjc5M2Q4ZiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "LEBAK",
+  "bpp": 28,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6Ik1hYXFzSHh5blpMYVZWWWExU3BESlE9PSIsInZhbHVlIjoibUlkbVpseVVIaHkxVzRrTWpKbE94Zz09IiwibWFjIjoiNTM1NzI5NWU2Mjg2NGQ0MTUyM2E0NmFlMzNlNzAxMTAzNmQ0ZjljNzNhNWE1NzYxYzA4NzQyNzc0NjVlYzgzYyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "TANGERANG",
+  "bpp": 8,
+  "dinas": "DINAS PERTANIAN DAN KETAHANAN PANGAN KAB. TANGERANG",
+  "tanda": "eyJpdiI6IjA2Y2g4ZWt2QXRoWWU2QldWREJkS0E9PSIsInZhbHVlIjoidjI5d0ZXd3hKNXhrRHJWdHpsaWd1QT09IiwibWFjIjoiZmI2NzUwMTI0M2U2MjAzMDZmY2NkZDBkN2I3MTcyYmMyMDI2M2E2ODQ4OWUyNzQ3YTE5ZDg3OWFhZmM1ZjhmNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "SERANG",
+  "bpp": 29,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian Kab. Serang",
+  "tanda": "eyJpdiI6IlFmL0lENHBxM0U2OFpsTVZvbTV1Ymc9PSIsInZhbHVlIjoicFZFNGhZRk8zYjIwcWJueUdEdkViZz09IiwibWFjIjoiNmEzY2U3OTM1NjY2ZjMzZDhlMGNmNDdlMmM1NjMzNjE5ZGIzYjFmNTA5MmVjM2YxMzdiYzFkNjdhYzBmYjNjMCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "KOTA TANGERANG",
+  "bpp": 0,
+  "dinas": "Dinas Ketahanan Pangan",
+  "tanda": "eyJpdiI6IkpxWFV0b1ZPT2RqYTBRejh5ekNxalE9PSIsInZhbHVlIjoiTTB3bG8zNE52eWdoYmZGbTZkOHk1dz09IiwibWFjIjoiMjIxOWE2NDgyZGQ0MzMxMDBhNmZiODZmM2IyODI5YWIyMjBjNTVlOGJhOWNjZDNiOThkOTljNDgwNGE1NTRlMyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "KOTA CILEGON",
+  "bpp": 1,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian",
+  "tanda": "eyJpdiI6IkptVXlLYVhBL0dZOFJBZWFVeXV0T3c9PSIsInZhbHVlIjoiOTVSWlNQUUpNbG1vM0lsTTFUa0lMUT09IiwibWFjIjoiZmM0NGJmOTZlMzRiMjgxNTU5N2M2ZmQ4NTVjYTVlYmE4NzA0NDEyYTQyNWI1MmI2NDNmYTk5MmY5ODcxOWVkYyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "KOTA SERANG",
+  "bpp": 6,
+  "dinas": "DINAS KETAHANAN PANGAN PERTANIAN DAN PERIKANAN KOTA SERANG",
+  "tanda": "eyJpdiI6InJqd3FOTTFYZ3VMSy85ZFZINXIvWWc9PSIsInZhbHVlIjoiVTRpbGE4bW9yK2prVEpGOWJjRFdjQT09IiwibWFjIjoiYzU0ODUxMDE3ZTBiZDhlMWMzYzhiMTgyNTZiZTI0MzYxMGYzNjM4YzFjZDVjYTE0ZjlhNjVkMGE1NTEwODRlMSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "3600",
+  "provinsi": "BANTEN",
+  "nama": "KOTA TANGERANG SELATAN",
+  "bpp": 1,
+  "dinas": "Dinas Ketahanan Pangan Petanian dan Perikanan",
+  "tanda": "eyJpdiI6IlBIVERiekgrWnFEK2FUZ2tRZGFQYkE9PSIsInZhbHVlIjoiQ0tsRjV3YXR2SW5LTXRmUG9lMndKUT09IiwibWFjIjoiZDdhZTcwOGE1N2I4ODg4MTM0M2QxZmYwYzA3MTdiZDMwNDQxZTI3NmMyYzY0OTgxOTQ3NGViYzBlOTU4NDkyZSIsInRhZyI6IiJ9"
+ }
+]

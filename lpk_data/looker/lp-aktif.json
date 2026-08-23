@@ -1,0 +1,184 @@
+{
+ "label": "Laboratorium Penguji (LP) — akreditasi aktif",
+ "kode": "LP",
+ "papan": "https://lookerstudio.google.com/embed/reporting/085a1e0c-4d68-46ca-9f56-79f85b1dd167/page/q5vVF",
+ "kolom": [
+  "no_akreditasi",
+  "nama",
+  "alamat",
+  "telepon",
+  "surel",
+  "lingkup",
+  "masa_berlaku",
+  "tautan"
+ ],
+ "permintaan": {
+  "dataRequest": [
+   {
+    "requestContext": {
+     "reportContext": {
+      "reportId": "085a1e0c-4d68-46ca-9f56-79f85b1dd167",
+      "pageId": "79070812",
+      "mode": 1,
+      "componentId": "cd-nVMhLdgV2OU",
+      "displayType": "simple-table"
+     },
+     "requestMode": 0
+    },
+    "datasetSpec": {
+     "dataset": [
+      {
+       "datasourceId": "25021bfb-fedc-47b1-a4d0-b925d0ca135e",
+       "revisionNumber": 0,
+       "parameterOverrides": []
+      }
+     ],
+     "queryFields": [
+      {
+       "name": "qt_a4idl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_n509968104_"
+       }
+      },
+      {
+       "name": "qt_b4idl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_n1676047826_"
+       }
+      },
+      {
+       "name": "qt_4vjdl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_1933094922_"
+       }
+      },
+      {
+       "name": "qt_5vjdl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_483842545_"
+       }
+      },
+      {
+       "name": "qt_d38qp82hyd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_66081660_"
+       }
+      },
+      {
+       "name": "qt_6vjdl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_894955632_"
+       }
+      },
+      {
+       "name": "qt_7vjdl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_1067986945_"
+       }
+      },
+      {
+       "name": "qt_8vjdl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "calc_z2qpckgxvd"
+       }
+      }
+     ],
+     "sortData": [
+      {
+       "sortColumn": {
+        "name": "qt_y2ws82pfxd",
+        "datasetNs": "d0",
+        "tableNs": "t0",
+        "dataTransformation": {
+         "sourceFieldName": "_2497_",
+         "aggregation": 6
+        }
+       },
+       "sortDir": 0
+      }
+     ],
+     "includeRowsCount": true,
+     "relatedDimensionMask": {
+      "addDisplay": false,
+      "addUniqueId": false,
+      "addLatLong": false
+     },
+     "paginateInfo": {
+      "startRow": 1,
+      "rowsCount": 5000
+     },
+     "dsFilterOverrides": [],
+     "filters": [
+      {
+       "filterDefinition": {
+        "filterExpression": {
+         "include": true,
+         "conceptType": 0,
+         "concept": {
+          "ns": "t0",
+          "name": "qt_zsmdoogxvd"
+         },
+         "filterConditionType": "T",
+         "stringValues": [],
+         "numberValues": [],
+         "queryTimeTransformation": {
+          "dataTransformation": {
+           "sourceFieldName": "calc_ehgi8hgxvd"
+          }
+         }
+        }
+       },
+       "dataSubsetNs": {
+        "datasetNs": "d0",
+        "tableNs": "t0",
+        "contextNs": "c0"
+       },
+       "version": 3
+      }
+     ],
+     "features": [],
+     "dateRanges": [],
+     "contextNsCount": 1,
+     "dateRangeDimensions": [
+      {
+       "name": "qt_vdsdl2pfxd",
+       "datasetNs": "d0",
+       "tableNs": "t0",
+       "dataTransformation": {
+        "sourceFieldName": "_1067986945_"
+       }
+      }
+     ],
+     "calculatedField": [],
+     "needGeocoding": false,
+     "geoFieldMask": [],
+     "multipleGeocodeFields": [],
+     "timezone": "Asia/Jakarta"
+    },
+    "role": "main",
+    "retryHints": {
+     "useClientControlledRetry": true,
+     "isLastRetry": false,
+     "retryCount": 0,
+     "originalRequestId": "cd-nVMhLdgV2OU_0_0"
+    }
+   }
+  ]
+ }
+}

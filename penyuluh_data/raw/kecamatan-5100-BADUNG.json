@@ -1,0 +1,50 @@
+[
+ {
+  "kd_kab": "5103",
+  "provinsi": "BALI",
+  "kabupaten": "BADUNG",
+  "kecamatan": "KUTA SELATAN",
+  "bpp": "Kuta Selatan",
+  "poktan": 44
+ },
+ {
+  "kd_kab": "5103",
+  "provinsi": "BALI",
+  "kabupaten": "BADUNG",
+  "kecamatan": "KUTA",
+  "bpp": "Kuta Utara",
+  "poktan": 3
+ },
+ {
+  "kd_kab": "5103",
+  "provinsi": "BALI",
+  "kabupaten": "BADUNG",
+  "kecamatan": "KUTA UTARA",
+  "bpp": "Kuta Utara",
+  "poktan": 31
+ },
+ {
+  "kd_kab": "5103",
+  "provinsi": "BALI",
+  "kabupaten": "BADUNG",
+  "kecamatan": "MENGWI",
+  "bpp": "BPP Mengwi",
+  "poktan": 452
+ },
+ {
+  "kd_kab": "5103",
+  "provinsi": "BALI",
+  "kabupaten": "BADUNG",
+  "kecamatan": "ABIANSEMAL",
+  "bpp": "Abiansemal",
+  "poktan": 301
+ },
+ {
+  "kd_kab": "5103",
+  "provinsi": "BALI",
+  "kabupaten": "BADUNG",
+  "kecamatan": "PETANG",
+  "bpp": "Petang",
+  "poktan": 252
+ }
+]

@@ -1,0 +1,266 @@
+[
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "NIAS",
+  "bpp": 10,
+  "dinas": "Dinas Ketahanan Pangan, Pertanian dan Perikanan Kabupaten Nias",
+  "tanda": "eyJpdiI6IjlyTkZ5ZVdPRkUzKzljbm5Ddmxra0E9PSIsInZhbHVlIjoieFBaTlArQ29DKzZHZFhrbXZ5QVdWQT09IiwibWFjIjoiMDc4NzM2NzVhZjIyZTQwN2UyNjExZTA1Njg1ZjU2ZDQ1YWQ5ZmU4MDI0YmU1NzIzZDVkOTAwMmY3MWNmMWM1ZiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "MANDAILING NATAL",
+  "bpp": 23,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6InVCN3VKMER0L1M3a1h2QWFqaDc0M0E9PSIsInZhbHVlIjoidDE1WW1UL05lenZEamhxa2dJYkJKUT09IiwibWFjIjoiOTU4ZTg5NGUxZDA4MjZkZGI5ODdhMTMwYmU4YmY4NDRjZjQ3NTlmN2NjY2QzNDcxMDAwMDk4ZTEwYjIxZTIwOCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "TAPANULI SELATAN",
+  "bpp": 15,
+  "dinas": "Dinas Pertanian Daerah",
+  "tanda": "eyJpdiI6Inh0YzRDQUU0bWZFL0luODVPTSt6ZEE9PSIsInZhbHVlIjoiTmdzNHN6U0lQZmJVclhNYW5ndHNxdz09IiwibWFjIjoiMDE2OTMzMDBlNWUxZDJlYWY4ZDIxNTk4MDI2YTI3MGJmODc2ZmM1MjQ4Mzg0ZjI2OGM3NmM2MzUyMzE5YjJjMCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "TAPANULI TENGAH",
+  "bpp": 9,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6InpQa3luSHM0b29vWVF3YjdGMVZSeGc9PSIsInZhbHVlIjoiMjdGb1kyZndrd2IyZnFpWG5Sbk5YQT09IiwibWFjIjoiYTYzMzUwMWVjMTc5M2MwNDFiMmUxOTQ4MTJlODc5ZmQxZGU4NWMzMGI1MmU1NTJhMzhlNDE3YzhiYTQ0YTIzYiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "TAPANULI UTARA",
+  "bpp": 15,
+  "dinas": "Dinas Pertanian Kabupaten Tapanuli Utara",
+  "tanda": "eyJpdiI6Impsa004bEUybUJRUU5ISnora0owelE9PSIsInZhbHVlIjoiQWFXTGIxMmVBS3drNllPektNY2NSZz09IiwibWFjIjoiNWNlNmFmODY0MWQ5MTMwNDU2NzllYzRkZWE1OGQ3MDVhNmE4ZDNmYTNlNjY4YjAwZjE4NGU3ZTVkOWJhY2RmNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "TOBA",
+  "bpp": 16,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6InpKb25kQm9ZQ0lVK2k1S3lCT2NiUHc9PSIsInZhbHVlIjoiak5YQnhXMkdqSXNtQ3ZnVkpVb3kvdz09IiwibWFjIjoiODIxNjliMTZmM2NjZGUwNzIyNWU2ZmY5MzczZmYxZGU1MGRjNzJjMzI1M2ZhMjhhZjJiY2JmYjljYzYwNzFkNCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "LABUHAN BATU",
+  "bpp": 9,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IjV4TGx3RXh4S3JYYkgyTFhCWEN5TUE9PSIsInZhbHVlIjoieGdHNGZhV2JaaUxRL3Y1eDY4czlIQT09IiwibWFjIjoiYzljZGZhNDRkYmYxNzMxZjcxZDg0OTZjNjYzZDRkMjVkMGI1ZmI4MWI4YTBhMzk4NThiNzlmNDNiMTdhNjhjOCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "ASAHAN",
+  "bpp": 19,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6ImxmYWh3TXEyNlN6Q3hIR2xUalJ4RGc9PSIsInZhbHVlIjoicWhQckFFZk5hSjNnWXJ2SUY2MXl1UT09IiwibWFjIjoiZjQ1M2M1NWMyMTBkMzNjY2YwZDM4YWNlOGY2MjE0NGQ4ZThmOGFmYmRiMjE2OTJmYTU4MzBjYTQyNzA0ZmYzOSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "SIMALUNGUN",
+  "bpp": 32,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6IlFHTlBIMG1leVVvU29IbXBKN3kwOHc9PSIsInZhbHVlIjoibWZBU3FCMXNBQThEdi9TU1hYdVYxUT09IiwibWFjIjoiNTczOGY2MjgzNjZhZWZiNjZhYTcyMzViOWNjYmFjNWM2MzVlNzUzODAxNDNjMTY3MmJkYjFlMTgxYTJjYjUwMCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "DAIRI",
+  "bpp": 9,
+  "dinas": "Dinas Pertanian, Ketahanan Pangan dan Perikanan",
+  "tanda": "eyJpdiI6IjRyS0tUYlVBUDV4Wms3QW1QQ0s1R2c9PSIsInZhbHVlIjoiOUExc3hBSTJqZ3dKbGJlVmYwRlRVUT09IiwibWFjIjoiYTBmNDA3YjY5MmFiYzU4NzdjNzI3OTAwMzEwZmU2YzAxYzA1ZDEzYjhkYmRlZDg3MDQwMGQyY2VlZTk0N2UyNSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KARO",
+  "bpp": 17,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6ImdiLzRXcG5veW45NlNTbGcxRFEvTGc9PSIsInZhbHVlIjoibFlPU3V4RVlmbWd1TUxuUkFUK21IUT09IiwibWFjIjoiMjRlYjNkZWYyZjc3ZWM5NzVmOTdjMWU2N2UzMjljY2I4MzI5MTA0NzVmMWE5NmI2Y2ZkYjU1YzIzOTdhNWIzYiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "DELI SERDANG",
+  "bpp": 14,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6ImljQmx0T1h4QmtwNjNpeUk3azBBQ2c9PSIsInZhbHVlIjoiNXlzZFdVVUhaWCtlT1dycTJjWDlnQT09IiwibWFjIjoiM2M0Njk5YzFiNDhkNmJlZjBlNjc4Y2MyNTFiMjdmZTcwODNhYjJkYzRkNTVmZTMyMDljOTNiOWUyYjRhNjg5MiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "LANGKAT",
+  "bpp": 23,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6InNMSlZESzY2dFUrTVFzR3ZNckFzSWc9PSIsInZhbHVlIjoiQ0hNcGxIRHRFZ3VwWUVhQ2NTNTFWZz09IiwibWFjIjoiZDY2MWVkYTQ4MDdmZWU5YjZlOTViN2MzNTcyYTc2NjQ0MDEwYzQwNjNmYjFhNjAwYTc4MzA4NDI3Njc1YTMyNSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "NIAS SELATAN",
+  "bpp": 20,
+  "dinas": "Dinas Ketahanan Pangan Kabupaten Nias Selatan",
+  "tanda": "eyJpdiI6IlB4MndXbmkrajY0Q1dOQWZueDVLSHc9PSIsInZhbHVlIjoiMXdiUUNrNnhONUxyZ1ZyTEs2QWkvdz09IiwibWFjIjoiYjJjOGQ0NTlkNDQxMzBmYjJmMThmOWY5ZGQwMTU1Y2EzMmQzZTg1Mzk1ZTUyNGUyZGE4ZjAzNWQ2NmUwZWQzNCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "HUMBANG HASUNDUTAN",
+  "bpp": 10,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IldIVk9TSDZSZ1ZRMGVhYmFkVFBhUEE9PSIsInZhbHVlIjoic0pBUi9xRTlBcVh6SCtra01UK1l1Zz09IiwibWFjIjoiMmZlMDFkMDM0NTZhOGFjMTVmOGI1YmI1NWI3Njk5MTUzZWI3MmQ0MmE1YzYxMjI4NzMzMzk4NzQ5YzQyYWVmMiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "PAKPAK BHARAT",
+  "bpp": 8,
+  "dinas": "Dinas  Ketahanan Pangan dan Pertanian",
+  "tanda": "eyJpdiI6ImJEMTBVWU92dThpSWdoNDZ6RTE4MHc9PSIsInZhbHVlIjoidEVBdlBYT3VyVjRCWURSRmlEc1ViZz09IiwibWFjIjoiYzI4Y2U5M2U5ZmE2NjIzODgwNzIzOGRlZDcwYzE0YWFlMzQ0Y2UxNzQzZjhiOGM0Nzk3YjcwMmEzMjEyMzdiMyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "SAMOSIR",
+  "bpp": 9,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian",
+  "tanda": "eyJpdiI6ImNteVJRbDJ3ZnFxdVYxR1Fqdk9EdXc9PSIsInZhbHVlIjoibVRMbTVRRVcrL25hdmhQRHVzcUhDQT09IiwibWFjIjoiYjVlODEwNWQxZDU5OGI5Nzc5YTQwNTg1NDQzYTZmOGViOGFlMDNkZmY4MTFhYWYxNjlhZTVkNjNhNGVhMTBmNCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "SERDANG BEDAGAI",
+  "bpp": 6,
+  "dinas": "Dinas Pertanian Kabupaten Serdang Bedagai",
+  "tanda": "eyJpdiI6IndOcy9VNEJDa21sVHV3Zk1lZzhPY0E9PSIsInZhbHVlIjoiNWlPVW9vUVdRcDB1Si94MUVBNHZFUT09IiwibWFjIjoiODgzMWUzNjQ1NGNkMWIyYjA3OTg3Y2NmOWIyMzdmNDI3ZmRiMjcyMzkyNDMxY2RmNGUxNDBhNjI2YTk2MjdlMiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "BATU BARA",
+  "bpp": 7,
+  "dinas": "Dinas Pertanian dan Perkebunan",
+  "tanda": "eyJpdiI6IlozWHpYWVZKOFk0OS93T0ZIdG5adEE9PSIsInZhbHVlIjoiMFdZZ2pDeU9pQi9YTm8zcmJzelVUUT09IiwibWFjIjoiN2VjNTUwZmRmYjdhNjU3ZTFhMDAyZWVlNjdlM2FiYjJkN2JjNGVmMzcwNzJkNGNlZWRlOTIyNGQzNjc3YTQ1ZCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "PADANG LAWAS UTARA",
+  "bpp": 12,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IjZoYU9wbzRjWDlPU2FpUW5tYjFXYWc9PSIsInZhbHVlIjoiRFlnUDNMY002aFB5MktMcVJYOHRJZz09IiwibWFjIjoiMTZlMjNkY2ZmZGExMThiNmM3ZjAyNjc1Y2MwNDBlNGUxMjM5OTc1OTc2NTE0MmE4YjU4ZmU3ZjdmNmFkYjIyYSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "PADANG LAWAS",
+  "bpp": 17,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6ImdLYnVlZFJtbHNJdTROd211bWJPbnc9PSIsInZhbHVlIjoiUHBRWUZqS1g5V3hnQktZbm9kZDVjZz09IiwibWFjIjoiMWI4YTljNTc1NTYwODU2Njg3YTQ2ZjFhYzMzOGQ1ZTgyNTcwNWM0NGEwM2NhNzVhMDIxZWVjY2UxMWU3YmNhMyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "LABUHAN BATU SELATAN",
+  "bpp": 5,
+  "dinas": "DINAS KETAHANAN PANGAN DAN PERTANIAN KABUPATEN LABUHANBATU SELATAN",
+  "tanda": "eyJpdiI6Ikloc08xS2RIQU9qV3NKUUFEWjkwRnc9PSIsInZhbHVlIjoiNlJlRmdmUkRXaGo0Ynh0NWV1TzJvQT09IiwibWFjIjoiZWQ4MjlmZGY1OWU2OGRlZTIxZDU3Yjc4OWRkMjkxZTg0NzdhNGNkY2Y1YWMyYzhiZjUzMjdhM2E3ZDhhMDdjYSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "LABUHAN BATU UTARA",
+  "bpp": 8,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IjdlblpZdHIzS1c2TnFuZlRIYk1BNXc9PSIsInZhbHVlIjoiQXZlL0ExQ1VaVCtLbUdaMEovZEFJQT09IiwibWFjIjoiMGViMjJhMWE3ZGZmODgzYzZhYmU4YWNjMzc5ZTBmMjc2Zjk5NmQ5MTZjYmFlNjhjYzRmMjk2ZDMxZWQ5MTg0YSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "NIAS UTARA",
+  "bpp": 11,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian Kabupaten Nias Utara",
+  "tanda": "eyJpdiI6IkVWSEkxYjlGK05qa2pFbmVGeThXQ1E9PSIsInZhbHVlIjoiVVZXOFZuU2FoOGEzSDZ2dnJ0ZUVmUT09IiwibWFjIjoiZjc3OTAxOTljMmQ1Zjg0ZDYyZTYwMDAyZTczNGNmNjVlM2E0MzFkZmFkZjg4MTY3ZTg0ZDM5Yzk2Y2Q5MjllNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "NIAS BARAT",
+  "bpp": 8,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IkNoZVlobEhFQU10aml6cThoOGJ6NVE9PSIsInZhbHVlIjoiWjFtanZjck8rSy81cDYvTTEwSFdxZz09IiwibWFjIjoiMWE2MjhkMDRjMzExNTg1NDAwMTZhM2RjZjBkMWEzYWJjYjc2ZTU3M2Y1MWY5YjhhODJlMDdhZDk1NTg5NTVkNCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA SIBOLGA",
+  "bpp": 0,
+  "dinas": "Dinas Perikanan Ketahanan Pangan dan Pertanian",
+  "tanda": "eyJpdiI6Ik53MktyY2o2UFJxVUdPbXVFZzBtenc9PSIsInZhbHVlIjoiQ2w1UmxFQzB6d3dHWFovOWZ1RXZKdz09IiwibWFjIjoiZTcwZTRlNzk0NGUyYTE5MGQyN2FjODkwODg1NWIzYTE5YWZkNGI4NzA3NDc4MGE2MDkxNjE0MWQwNDI4ZTZjNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA TANJUNG BALAI",
+  "bpp": 1,
+  "dinas": "Dinas Pangan dan Pertanian",
+  "tanda": "eyJpdiI6IjljMCtmM1NweFlNb0oyTUhFTkdwdnc9PSIsInZhbHVlIjoibE5kNitXRDJJUk8wV3pYamJHN1hBQT09IiwibWFjIjoiNjczMGI4YjRiYTkxZWIwZGFlZTNkNjk1ZDM1NDU5YmE0N2YxZDJiNDZiZGE3YTRkYWU2NTQ1MThjYjY0OTY0MiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA PEMATANG SIANTAR",
+  "bpp": 4,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian",
+  "tanda": "eyJpdiI6IldXeFhqUXNLSHdkOWxMRFZLRkhXNmc9PSIsInZhbHVlIjoiUUV5bW5nRVZXUlJ0RjRYSDhycS81UT09IiwibWFjIjoiMTZhYTNiMDlhMGRkNjM5MWNjM2I3MTU5ZDQyNjhiMzcyNjM3ZjUwYzcyNDQ1MTQ0MDMzZmJhMWM2OTIzMDUzMCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA TEBING TINGGI",
+  "bpp": 1,
+  "dinas": "DINAS KETAHANAN PANGAN DAN PERTANIAN",
+  "tanda": "eyJpdiI6Iit0N0JrRnNzYzlqeUJNa0FNbmgyeUE9PSIsInZhbHVlIjoiQXhKVHJSanJlRW9ZaXh4bTJTZEUzQT09IiwibWFjIjoiYjU4YWVlZmE5MDEyNGUxNmUzMzU5NjVhZDQzYjE3OTYzZDRkYWZkMmYwOGRhNzFlYTQyYTQxOTJjOTRjNDgwMyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA MEDAN",
+  "bpp": 2,
+  "dinas": "Dinas Ketahanan Pangan, Pertanian dan Perikanan",
+  "tanda": "eyJpdiI6Ik8yQllZUDdqZ3JnM1ZhUTBjSldCT2c9PSIsInZhbHVlIjoiaEJvck84U294SllUcE8xKzlvWTRPUT09IiwibWFjIjoiY2ZmMWU3MzM3NjMzY2E5N2UwNGFjMTU5MGEwZDBkYWEyZjZhN2VmMGJjMmRmNjA4MTg3NjNiYTRiYTg3MDNkYyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA BINJAI",
+  "bpp": 5,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian",
+  "tanda": "eyJpdiI6Ik1IN3haaGxwYVVLWXlYZEVEREFYekE9PSIsInZhbHVlIjoiTkdzRDdRWmo5YVdpODcxMmdIeUFJUT09IiwibWFjIjoiODBlZjM3ZDQ0MTUyMTI3OTYyOWM5NmJhMGQ2N2Q0NGJhMjYwYThkNGZjNTZjNWRiZmVkMzIwN2U5MDY3NzQxMyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA PADANGSIDIMPUAN",
+  "bpp": 6,
+  "dinas": "Dinas Pertanian Kota Padang Sidempuan",
+  "tanda": "eyJpdiI6Ijh5R3VsZHN1T0VvSFYwaHFPMTBuN2c9PSIsInZhbHVlIjoiNzhTR1o5MXhQVWw4eVB5L0I0Q3NpUT09IiwibWFjIjoiM2NkMGFjOGJhMzk1MGU3ZDc3Mzk0NjJjMjEzMTMyMzRhYmM5OTY5ODQ4ZDA4NGZlMWRjNTZjOGU0MGZjMzJjZiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "1200",
+  "provinsi": "SUMATERA UTARA",
+  "nama": "KOTA GUNUNGSITOLI",
+  "bpp": 5,
+  "dinas": "DINAS KETAHANAN PANGAN DAN PERTANIAN",
+  "tanda": "eyJpdiI6IisyVC94ekRnazl2OEpvbWxMYktKdmc9PSIsInZhbHVlIjoiVkdQQUd3b2dUOFRPNnlGd3FVS21NUT09IiwibWFjIjoiMTY2MzIyNWQwMzU0NmYzMTRhNmRlYWFiN2E4NDA4NjNiMzE0OTI0NmFkYzk4ZTFlOTdkMTc2OGYyNTQzYzIxMSIsInRhZyI6IiJ9"
+ }
+]

@@ -1,0 +1,90 @@
+[
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "MESTONG",
+  "bpp": "Mestong",
+  "poktan": 158
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "SUNGAI BAHAR",
+  "bpp": "BPP SUNGAI BAHAR",
+  "poktan": 242
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "BAHAR SELATAN",
+  "bpp": "BPP SUNGAI BAHAR",
+  "poktan": 194
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "BAHAR UTARA",
+  "bpp": "BPP SUNGAI BAHAR",
+  "poktan": 151
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "KUMPEH ULU",
+  "bpp": "BPP Kecamatan Kumpeh Ulu",
+  "poktan": 166
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "SUNGAI GELAM",
+  "bpp": "BPP Sungai Gelam",
+  "poktan": 251
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "KUMPEH",
+  "bpp": "BPP Kecamatan Kumpeh",
+  "poktan": 186
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "MARO SEBO",
+  "bpp": "BPP Maro Sebo",
+  "poktan": 109
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "TAMAN RAJO",
+  "bpp": "BPP Tanggo Rajo",
+  "poktan": 61
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "JAMBI LUAR KOTA",
+  "bpp": "BPP Jambi Luar Kota",
+  "poktan": 195
+ },
+ {
+  "kd_kab": "1505",
+  "provinsi": "JAMBI",
+  "kabupaten": "MUARO JAMBI",
+  "kecamatan": "SEKERNAN",
+  "bpp": "BPP Kec. Sekernan",
+  "poktan": 315
+ }
+]

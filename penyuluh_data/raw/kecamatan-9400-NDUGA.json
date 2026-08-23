@@ -1,0 +1,26 @@
+[
+ {
+  "kd_kab": "9429",
+  "provinsi": "PAPUA",
+  "kabupaten": "NDUGA",
+  "kecamatan": "KENYAM",
+  "bpp": "BPP KENYAM",
+  "poktan": 24
+ },
+ {
+  "kd_kab": "9429",
+  "provinsi": "PAPUA",
+  "kabupaten": "NDUGA",
+  "kecamatan": "WOSAK",
+  "bpp": "BPP GEAREK",
+  "poktan": 0
+ },
+ {
+  "kd_kab": "9429",
+  "provinsi": "PAPUA",
+  "kabupaten": "NDUGA",
+  "kecamatan": "GEAREK",
+  "bpp": "BPP GEAREK",
+  "poktan": 0
+ }
+]

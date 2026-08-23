@@ -1,0 +1,66 @@
+[
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "BANGGAE",
+  "bpp": "Banggae",
+  "poktan": 86
+ },
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "BANGGAE TIMUR",
+  "bpp": "Banggae Timur",
+  "poktan": 106
+ },
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "PAMBOANG",
+  "bpp": "BPP Pamboang",
+  "poktan": 157
+ },
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "SENDANA",
+  "bpp": "Sendana",
+  "poktan": 200
+ },
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "TAMMERODO",
+  "bpp": "BPP Kecamatan Tammerodo Sendana",
+  "poktan": 183
+ },
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "TUBO SENDANA",
+  "bpp": "Tubo Sendana",
+  "poktan": 79
+ },
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "MALUNDA",
+  "bpp": "Malunda",
+  "poktan": 154
+ },
+ {
+  "kd_kab": "7601",
+  "provinsi": "SULAWESI BARAT",
+  "kabupaten": "MAJENE",
+  "kecamatan": "ULUMANDA",
+  "bpp": "Ulumanda",
+  "poktan": 180
+ }
+]

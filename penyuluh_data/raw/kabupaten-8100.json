@@ -1,0 +1,90 @@
+[
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "KEPULAUAN TANIMBAR",
+  "bpp": 7,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6IkNNbWdtVHEyT1UyVGZvOHlHWHpWY1E9PSIsInZhbHVlIjoiVXo0T1prdURqb3JGc1hHK25iVXBmZz09IiwibWFjIjoiZDNmZjIzYTdjZGViYWNjZTVmN2Y0NjI1YzI5MzNjZmQ0ODk4NjljZmQ2NjFlZThlYzE1NTJiNzQ5ZmRkMmY3ZSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "MALUKU TENGGARA",
+  "bpp": 11,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6IjcwU0RESFZaNHFZMUU1OW1ReC9XMnc9PSIsInZhbHVlIjoiaUFhOU5CR3g0R3l4SmgyNHcyeGZyZz09IiwibWFjIjoiMGFjMDhlYWJmNjU3MzVjOWNlOTdhMzE1YjJlYTg2MGU5OTMzYmNiNGUwMmFmNDc1YWMwMjZhMWRmZjQwYmZmMyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "MALUKU TENGAH",
+  "bpp": 18,
+  "dinas": "DINAS TANAMAN PANGAN DAN HORTIKULTURA & DINAS PERKEBUNAN DAN PETERNAKAN",
+  "tanda": "eyJpdiI6InMrcFpFVkh0NzZZMithaXV6OUZkd0E9PSIsInZhbHVlIjoiWEx0MGRzYUxVeVVUUnZZd2hBUUdhZz09IiwibWFjIjoiZTFlMDdhNGFkYzRlODExOWQxZjMxNGI3ZDA2YTZmMTMzMjAxZjdlMDEyMDQ0OWQ2NDI4MzY5NDEwZTJjYjdlNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "BURU",
+  "bpp": 8,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6ImhUWS94aE03aGdrN1RWV2QwdFdMSWc9PSIsInZhbHVlIjoiWTNsbWRnMFRndzBNdi9QcmlYS1RuQT09IiwibWFjIjoiMzljYzk5MWU1ZmNhZjRjZTcwOTEzODkzYTViMDk1NzMyNzlmOTljYzBjOGU3NDVlMjk0MmMwMzNjNzA0OTI3YSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "KEPULAUAN ARU",
+  "bpp": 10,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IjMwWCtkSXpaaDArZGNDSlhyQkRsZHc9PSIsInZhbHVlIjoiRXBpaU81aTQ2aXBlVWJ5RUhPQ0d4dz09IiwibWFjIjoiY2IwZjllOWRjYTA5YTUyMjY2MzI0YWIyOGU0YTEwMjYwZGI0NTMzYzQ4MTliYzMwMzM5OGVlMjBkOTg4YTkwZCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "SERAM BAGIAN BARAT",
+  "bpp": 11,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6Ik9KU3VnZkhySDZ4OVZIUXNESWMvK1E9PSIsInZhbHVlIjoiMXdiMldpZkJROERpcE9mM1JzOHlTZz09IiwibWFjIjoiMDMwOTY5ZWQ3MjEwMmU5Y2RlNGM5OTMyYjQyNzI5YTkzYWQyM2JjYzU2NDE1OTljMzcyYjZiMmZjOWY3ZjgxNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "SERAM BAGIAN TIMUR",
+  "bpp": 15,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IktCM0JkUitES0JXeXNQZk1rSlhFUmc9PSIsInZhbHVlIjoicUZIUjJKcGhsQjNTM2lnQVhoMDBEZz09IiwibWFjIjoiOGI4NTQ4OWExZWRiOWU4NmE0MDk5NGM2MDY3MjFlNjhmM2EwNDZiODhlOGI3YWU5OTEzYjUyZmFhOGIzYjBkYSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "MALUKU BARAT DAYA",
+  "bpp": 17,
+  "dinas": "Dinas Pertanian dan Pangan",
+  "tanda": "eyJpdiI6IkRzWmxsWmRaV3g2U0hoRVNMWWg1eXc9PSIsInZhbHVlIjoic0x6anRrcjVxS0kzZ0srUlM2SEoxQT09IiwibWFjIjoiN2YwMGI2ODFjYzA2ZDA1MTA3MjU4M2ZkOWRjZGZlNDQ1MDM0NTkzZDc3OTBmOTRhYTc4OWMzNGRlYWU3MjUyZSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "BURU SELATAN",
+  "bpp": 5,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6ImFZSWJlL3Z2N0lTZHl3QU96aEkrWXc9PSIsInZhbHVlIjoiVnIxaU9uQjdSVEVqVWt1MGhLcWVKUT09IiwibWFjIjoiMzM2YzVjYjExOTgwMmEzMWUyN2U1YjY5N2M5ZWQ4ODMyYWE4ZDYxZDczYjI0MWQzNDg4NWU5ZTlhNTFiODlhNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "KOTA AMBON",
+  "bpp": 2,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan Kota Ambon",
+  "tanda": "eyJpdiI6InlaY2ZETFV6cGRFcmZBeGVmZ0dUOFE9PSIsInZhbHVlIjoiODVSdXNCMWRzanZIOEdsRys3L1hwQT09IiwibWFjIjoiMzk0YWE5MGJlZDU4MWQ0YmM1YTAwZjhlNmUzZjAxNWMwZWQzNGRlZWU1ODM0MDJhNGQ5YzAzNzgzYTQ0YTdjZCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "8100",
+  "provinsi": "MALUKU",
+  "nama": "KOTA TUAL",
+  "bpp": 3,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IklUYTFVWGhHbStiaFcyZXVUYlZLb2c9PSIsInZhbHVlIjoiaStGeFo0MjB4dFh4NWRmcVFVdWtxQT09IiwibWFjIjoiNTQ4NTk0MDQ4MzUwNTIxMmNjOWMwZmRkNjU5MzlmYmRhZGJkOGM4MTJjNjk4YjU1M2E0MzllNjVmZGQ1NTIxMiIsInRhZyI6IiJ9"
+ }
+]

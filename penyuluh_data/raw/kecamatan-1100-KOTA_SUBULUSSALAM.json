@@ -1,0 +1,42 @@
+[
+ {
+  "kd_kab": "1175",
+  "provinsi": "ACEH",
+  "kabupaten": "KOTA SUBULUSSALAM",
+  "kecamatan": "SIMPANG KIRI",
+  "bpp": "BPP SIMPANG KIRI",
+  "poktan": 175
+ },
+ {
+  "kd_kab": "1175",
+  "provinsi": "ACEH",
+  "kabupaten": "KOTA SUBULUSSALAM",
+  "kecamatan": "PENANGGALAN",
+  "bpp": "BPP PENANGGALAN",
+  "poktan": 119
+ },
+ {
+  "kd_kab": "1175",
+  "provinsi": "ACEH",
+  "kabupaten": "KOTA SUBULUSSALAM",
+  "kecamatan": "RUNDENG",
+  "bpp": "BPP RUNDENG",
+  "poktan": 132
+ },
+ {
+  "kd_kab": "1175",
+  "provinsi": "ACEH",
+  "kabupaten": "KOTA SUBULUSSALAM",
+  "kecamatan": "SULTAN DAULAT",
+  "bpp": "BPP SULTAN DAULAT",
+  "poktan": 115
+ },
+ {
+  "kd_kab": "1175",
+  "provinsi": "ACEH",
+  "kabupaten": "KOTA SUBULUSSALAM",
+  "kecamatan": "LONGKIB",
+  "bpp": "BPP LONGKIB",
+  "poktan": 92
+ }
+]

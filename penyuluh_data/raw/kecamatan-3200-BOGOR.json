@@ -1,0 +1,338 @@
+[
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "NANGGUNG",
+  "bpp": "BPP Wilayah III",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "NANGGUNG",
+  "bpp": "BPP Wilayah III",
+  "poktan": 77
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "LEUWILIANG",
+  "bpp": "BPP Wilayah IV",
+  "poktan": 73
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "LEUWISADENG",
+  "bpp": "BPP Wilayah IV",
+  "poktan": 51
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "PAMIJAHAN",
+  "bpp": "BPP Wilayah V",
+  "poktan": 161
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIBUNGBULANG",
+  "bpp": "BPP Wilayah V",
+  "poktan": 95
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIAMPEA",
+  "bpp": "BPP Wilayah V",
+  "poktan": 79
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "TENJOLAYA",
+  "bpp": "BPP Wilayah V",
+  "poktan": 73
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "DRAMAGA",
+  "bpp": "BPP Wilayah VI",
+  "poktan": 54
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIOMAS",
+  "bpp": "BPP Wilayah VI",
+  "poktan": 41
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "TAMANSARI",
+  "bpp": "BPP Wilayah VI",
+  "poktan": 64
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIJERUK",
+  "bpp": "BPP Wilayah VII",
+  "poktan": 73
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIGOMBONG",
+  "bpp": "BPP Wilayah VII",
+  "poktan": 59
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CARINGIN",
+  "bpp": "BPP Wilayah VII",
+  "poktan": 100
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIAWI",
+  "bpp": "BPP Wilayah VIII",
+  "poktan": 67
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CISARUA",
+  "bpp": "BPP Wilayah VIII",
+  "poktan": 56
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "MEGAMENDUNG",
+  "bpp": "BPP Wilayah VIII",
+  "poktan": 68
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "SUKARAJA",
+  "bpp": "BPP Wilayah X",
+  "poktan": 30
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "BABAKAN MADANG",
+  "bpp": "BPP Wilayah X",
+  "poktan": 40
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "SUKAMAKMUR",
+  "bpp": "BPP Wilayah XII",
+  "poktan": 100
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CARIU",
+  "bpp": "BPP Wilayah XIII",
+  "poktan": 106
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "TANJUNGSARI",
+  "bpp": "BPP Wilayah XIII",
+  "poktan": 120
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "JONGGOL",
+  "bpp": "BPP Wilayah XII",
+  "poktan": 111
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CILEUNGSI",
+  "bpp": "BPP Wilayah XI",
+  "poktan": 34
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "KELAPA NUNGGAL",
+  "bpp": "BPP Wilayah XI",
+  "poktan": 42
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "GUNUNG PUTRI",
+  "bpp": "BPP Wilayah XI",
+  "poktan": 16
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CITEUREUP",
+  "bpp": "BPP Wilayah XI",
+  "poktan": 29
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIBINONG",
+  "bpp": "BPP Wilayah X",
+  "poktan": 31
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "BOJONG GEDE",
+  "bpp": "BPP Wilayah X",
+  "poktan": 25
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "TAJUR HALANG",
+  "bpp": "BPP Wilayah X",
+  "poktan": 36
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "KEMANG",
+  "bpp": "BPP Wilayah IX",
+  "poktan": 52
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "RANCA BUNGUR",
+  "bpp": "BPP Wilayah IX",
+  "poktan": 52
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "PARUNG",
+  "bpp": "BPP Wilayah IX",
+  "poktan": 25
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CISEENG",
+  "bpp": "BPP Wilayah IX",
+  "poktan": 59
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "GUNUNG SINDUR",
+  "bpp": "BPP Wilayah IX",
+  "poktan": 44
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "RUMPIN",
+  "bpp": "BPP Wilayah IV",
+  "poktan": 80
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "CIGUDEG",
+  "bpp": "BPP Wilayah II",
+  "poktan": 81
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "SUKAJAYA",
+  "bpp": "BPP Wilayah III",
+  "poktan": 97
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "SUKAJAYA",
+  "bpp": "BPP Wilayah III",
+  "poktan": 97
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "JASINGA",
+  "bpp": "BPP Wilayah II",
+  "poktan": 96
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "TENJO",
+  "bpp": "BPP Wilayah I",
+  "poktan": 78
+ },
+ {
+  "kd_kab": "3201",
+  "provinsi": "JAWA BARAT",
+  "kabupaten": "BOGOR",
+  "kecamatan": "PARUNG PANJANG",
+  "bpp": "BPP Wilayah I",
+  "poktan": 94
+ }
+]

@@ -1,0 +1,240 @@
+[
+ {
+  "nama": "ACEH",
+  "bpp": 277,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Perkebunan Aceh",
+  "tanda": "eyJpdiI6Im5sWHZzbDgzMjlvOHg4R1U5U2pqN1E9PSIsInZhbHVlIjoiTGJDam52cTlTZVZkZGt4MXI2aHRpUT09IiwibWFjIjoiNzc2OTAzNDBmYzM3OTBmMzhiZTI0NmU1YjY4NGZhYmZjMWNmNWE3ZDkwNGY3YTdlNjVjZDRkNmViODI2NmFlZiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SUMATERA UTARA",
+  "bpp": 356,
+  "dinas_kab": 0,
+  "dinas": "Dinas Ketahanan Pangan, Tanaman Pangan dan Hortikultura Sumatera Utara",
+  "tanda": "eyJpdiI6IkxyZGM5S3kzbW43RVJLbS9neWM2UEE9PSIsInZhbHVlIjoiY0RBeWVIMmNsQktWR1RUSGNtOTVMQT09IiwibWFjIjoiYzg4ZGZkYTJjNDY1YzZjMWFlYjkzNzhkZDk2NmVhMjI1YzlhZWJkZWNhYWVhMmIyYTEzZThkYTI3ZTM4YWFlMCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SUMATERA BARAT",
+  "bpp": 165,
+  "dinas_kab": 0,
+  "dinas": "Dinas Perkebunan, Tanaman Pangan dan Hortikultura Provinsi Sumatera Barat",
+  "tanda": "eyJpdiI6ImRUenJWTGNMQXQ4bkZmMUMyTzZqMHc9PSIsInZhbHVlIjoiNVRiUHVPdXlybm5LdERCb2RITWRWQT09IiwibWFjIjoiYWEyYmEyMGI1ZjFiMTVlYmE5YzFmMGYxNTJhNTE5NGMyOTBjNjdmZmQyOWIyYzhkNDczM2ZhYTk3NTJkNTc4YiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "RIAU",
+  "bpp": 129,
+  "dinas_kab": 0,
+  "dinas": "Dinas  Pangan, Tanaman Pangan dan  Hortikultura Riau",
+  "tanda": "eyJpdiI6IkdQU0VqR3FKbTN4K0JPTTJzVFNOc3c9PSIsInZhbHVlIjoiQXNCcHdoRDdCWUJtdEJha2lmZnRGQT09IiwibWFjIjoiMGNjOWM4ZDg3ZDYxOTNjNzY3OGVlNDVjM2I4NTQ5NjhkZWZlMWFkZjA4YjQwYTM3OGM0OTNhZjg3ZjA3ODY5MiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "JAMBI",
+  "bpp": 132,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan Hortikultura dan Peternakan Jambi",
+  "tanda": "eyJpdiI6IlVMcnI1VHVyMWUwaGJqRjRUY3RGdEE9PSIsInZhbHVlIjoiaGhySnp4SVp3V2pEZXBDZ3NoTGFZUT09IiwibWFjIjoiYzlmM2NhM2JmZGM1OWFlYWIxNTNmOGNhZjAzODk5ODlmZjFkOWIyMWNjY2M2OWZhNDcwOGYxZTI4Mzk4NjY4ZCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SUMATERA SELATAN",
+  "bpp": 196,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian Tanaman Pangan dan Hortikultura",
+  "tanda": "eyJpdiI6Ii9oRDVXdXMrQ3hHdk81VGJ3RUxLZXc9PSIsInZhbHVlIjoidXR0Q056QXVBSVR4TUVFbnYybDl6UT09IiwibWFjIjoiOWFiZjQzZTE1ZjNjYmMzM2ZhMzM1MGRlZjM2YmJkMjMzYjdkZmRmNTNhNDI5NGUxMjQzYjM3NWViMzdkYzNiNSIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "BENGKULU",
+  "bpp": 108,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan Hortikultura dan Perkebunan Provinsi Bengkulu",
+  "tanda": "eyJpdiI6IkEvRG9mcUt4cStwdVpiUm9tWWVMUVE9PSIsInZhbHVlIjoiS2JoM2daRXhXeUE4T3p3Nkp4NzFVUT09IiwibWFjIjoiOGMxZWYyNjU1NzA4MmU1MTRkNDQ4MjZjZGQzMzVhZmY5MzJkNjg5OTc2ZTNmZTYwNWRkODZmMmFjODIwZGJiMyIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "LAMPUNG",
+  "bpp": 211,
+  "dinas_kab": 0,
+  "dinas": "Dinas Ketahanan Pangan, Tanaman Pangan dan Hortikultura",
+  "tanda": "eyJpdiI6IlR6TWlrcENNSGVvNFkzV0Ewak9OQlE9PSIsInZhbHVlIjoiNFkrVEppcFlJSkFrZnBmd3ZBK1BVdz09IiwibWFjIjoiZmEzOWM3YjcyMjA4NWYyNDYzNWIxOThkZDVlZTlkZjZkYzdlMTAwZTZlNTgyYzY5ZjMxMTBkNjgzZjVjMGQ2MiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "KEPULAUAN BANGKA BELITUNG",
+  "bpp": 37,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IlIrYnJWR1FBQ25pajJFTGcxbWdpdUE9PSIsInZhbHVlIjoia3E3Rll4enBTZkpkcjYrUzBBODlFQT09IiwibWFjIjoiZTRmYjliYmU2NWIzM2I2Zjk3ZWMwNmJmZDMyYThjZWE5OTA1ZDFkODZmNTg1YzdlMjY2YmQwYTEyYzRkYWQ1NiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "KEPULAUAN RIAU",
+  "bpp": 21,
+  "dinas_kab": 0,
+  "dinas": "Dinas Ketahanan Pangan, Pertanian dan Kesehatan Hewan",
+  "tanda": "eyJpdiI6InlLWTZKZkxpS2lMQ0ZjdzNmUENGN0E9PSIsInZhbHVlIjoiOHIwRW1hYXRnWWJEVWxWdlhrSFdGUT09IiwibWFjIjoiYzNmYThiOWM5YTQwNDg2ODdmNWUwN2Y4ZjMzNTNkNWY4YWQ3NzZmYTJiYTE4MDY4NWUzYmZmYWNlY2JkNDZhZCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "DKI JAKARTA",
+  "bpp": 6,
+  "dinas_kab": 0,
+  "dinas": "Dinas Ketahanan Pangan, Kelautan dan Pertanian",
+  "tanda": "eyJpdiI6Im1ZZ0tuejRDVTR1VGtVclVYa3pRRnc9PSIsInZhbHVlIjoiM0kxVkh6MFNEeFhOYTJTNGNNcGZBUT09IiwibWFjIjoiOWIxMGQzNzVkNWI3ZWM4NTEzNzdlM2U5M2IxZDJkNTc0MDljMmU1OTg1ODMyYzY0MzkxNzc0NTQzMDYyM2UxOCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "JAWA BARAT",
+  "bpp": 518,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan dan Hortikultura",
+  "tanda": "eyJpdiI6ImxiR0c5L2pCMVV2Q2JMK0VIeisrTlE9PSIsInZhbHVlIjoiK2lUY053MjU4aWllajVrZ1RjcExYdz09IiwibWFjIjoiMWU5MzNhODBmMDEyNDRlM2ZmMmU1NjhjODcxOWZiZTJiYmFmZTk4NjEzZWZmODRmMmUxNWRlOWNiYmM2MzJkMyIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "JAWA TENGAH",
+  "bpp": 551,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Perkebunan",
+  "tanda": "eyJpdiI6Ii9uZmJIZXhqWDhoRSt2SGtWZmpOZlE9PSIsInZhbHVlIjoiZjIrSG1ZTU5KbU10WHhWRmpscmNNZz09IiwibWFjIjoiNTJiNTNiMzE1ZjMzZTAzOWE4ZTk2ZjQ1ZjgxODI0NjljY2UzNjliOWIzNTg1NTUyOTIyZmY1MTJjYWRlZTI1ZCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "DI YOGYAKARTA",
+  "bpp": 56,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IkpVYUtTV1J0K1Jjckc5Rk43RytvcFE9PSIsInZhbHVlIjoiQzF0RlFrNmhwNmVJYlR2b2cvOWNkdz09IiwibWFjIjoiOWM4OWE4Y2RmNzE1YTBjNzMxNTM2NjZlMzEyNTZiNjlkYjhkNTJmNTJkNGY3MDRjMzYzOTI1ZTRlNjU0NzM3ZSIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "JAWA TIMUR",
+  "bpp": 589,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IlRoZWtKbkl6UmUvUGIzYlgzaGw0SUE9PSIsInZhbHVlIjoia2lLcTR6bTFpQlQxeVBUNEREckxjdz09IiwibWFjIjoiNTEwZTYwNDI5NjY0ZDM1MGM0NTQ0MjJmMDg4NjUzYjVhYjViNDgwZmM3MmY5MDBjMWFiYzEzZjRjMDYwYzQ2ZiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "BANTEN",
+  "bpp": 108,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian Provinsi Banten",
+  "tanda": "eyJpdiI6Im1FZ2NnenRvSFNKT0hUTEgvUnk1YVE9PSIsInZhbHVlIjoiOVZXUnl1T0VKYXZFbTM1WjBIZ1A5dz09IiwibWFjIjoiNzAwNzI0ZmRhMzUzMTE3MWY2MDU3ZWU5NjdhMmQ1YjczM2YzZDNhMjZhYTMwZjUxMmMyNGEwN2MzMzY4ZjljYiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "BALI",
+  "bpp": 57,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan Provinsi Bali",
+  "tanda": "eyJpdiI6IlFqSnh5c1hJMFJ0ZmVFVE9rSDEyRlE9PSIsInZhbHVlIjoiaVVXMEdwa0s2a2xhU1RQZUtGOWs4dz09IiwibWFjIjoiOWU1YWRlNDcyNmViNDkzOTcyMzI4MGQ0YjVmYjFjMDVhMTllY2FmMmE1NWI5YzZjMzg5NDQ4YzVmMjRiYTg4MCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "NUSA TENGGARA BARAT",
+  "bpp": 116,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Perkebunan",
+  "tanda": "eyJpdiI6ImI0dnFzSkRHVFJlK3g2bWZqNzRLZmc9PSIsInZhbHVlIjoicmVuWDVSZ0JDK2VMbGtqeXkvWm9Gdz09IiwibWFjIjoiZjhlMGMxZDdkNzhiZWMyMWM2OTQ4MzFkNjgyZjRkYmU1Y2M1OGUxOWJhYTY3MDM0ZDk4OTcwODI4Y2RlMDJiMyIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "NUSA TENGGARA TIMUR",
+  "bpp": 317,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian Dan Ketahanan Pangan Provinsi Nusa Tenggara Timur",
+  "tanda": "eyJpdiI6ImYwNnFuMjF0RGJxOUdKMHZPcGhJV1E9PSIsInZhbHVlIjoiUWV5THAxUjZ0UjZlYytLWUpNalNOQT09IiwibWFjIjoiZWI2ODExODllY2M2OTRmM2ZjYzU5OTczNjFjYmE1ZTYyYzViMDdhOGM5ZWNhZTRmZjljYjc4MGY3YWYyOTY0MCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "KALIMANTAN BARAT",
+  "bpp": 154,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan dan Hortikultura",
+  "tanda": "eyJpdiI6ImU0UFBOTEtaeGdpUVgxZVBERm9HN3c9PSIsInZhbHVlIjoianZweENFbkpxTHhZVjRVSmhjcUl4Zz09IiwibWFjIjoiNjgxMGIzYWUxZmFmY2Y1OGE1YTRmZTg1MmEwYTQxZTE5OTkxMDg5MDYyMmJhMDZjNmFjMmExMzY5OWFhOGY2NCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "KALIMANTAN TENGAH",
+  "bpp": 116,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan, Hortikuktura dan Peternakan",
+  "tanda": "eyJpdiI6IjdhdGNWenF4N3F3NWlnRk9aL3h3bnc9PSIsInZhbHVlIjoiWlhOS1htSUxpYnVZeVRON25zUzk5UT09IiwibWFjIjoiMjVlNThlMWY3NTAwNzhiMDFjY2FmN2U2OGVhOTAzMzhiNzM5ZjExYmNlNGVmNmRjNDZlYmUwMzYyY2U5YzljMyIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "KALIMANTAN SELATAN",
+  "bpp": 133,
+  "dinas_kab": 0,
+  "dinas": "DINAS PERTANIAN DAN KETAHANAN PANGAN",
+  "tanda": "eyJpdiI6IkhXQ1hYSGhLVlEyWUc3YXlwelJSU3c9PSIsInZhbHVlIjoiVWV6R2Z4MmtDRXhsWmxIUGc4ZWF1dz09IiwibWFjIjoiZDkxODdmMDc4ZTcwMTdjY2ZiYWQzYzljM2VmZjZiMjllZGM3NTEwNzUxZDU3ZGRiNTg4ODk0OGZjNWNkYzcxMCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "KALIMANTAN TIMUR",
+  "bpp": 85,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pangan, Tanaman Pangan dan Hortikultura",
+  "tanda": "eyJpdiI6IktMdk1BSVRzOUNFakpiVVZHb3FVYWc9PSIsInZhbHVlIjoibk5DRVN2cFI1aUtMZUZqNFBmSTBPdz09IiwibWFjIjoiOGE3NjRlNzFhNDFlMTE2M2NkZmFjNDNmMTAxMmY3YmI0YjY1MTNmYTU1NDI4NmZkYTYxY2Q3YzA4YjMyNGZhOSIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "KALIMANTAN UTARA",
+  "bpp": 24,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IlJGL2JXa3pTK2FXTlhzVmlIVWRqNEE9PSIsInZhbHVlIjoiS3ErblJQN1hma0JtZE1IbTRZZWo1QT09IiwibWFjIjoiNzU1NDkwMzA2ZDgxY2NhYzA4OTM4NmVhMDRiOGUzMzFkYjEzMThkNTA5ZTA0NjdkNTA0OGEzZjBiZDRkYTQ1ZiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SULAWESI UTARA",
+  "bpp": 170,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Peternakan Provinsi Sulawesi Utara",
+  "tanda": "eyJpdiI6InVoeDZYQ1N6aDVjRDdEWmplTkQ4TlE9PSIsInZhbHVlIjoiejlDSVo1aTFQQzdIenJTdjZDZDVHZz09IiwibWFjIjoiMTdjOTBmM2U4MTllMDFhZjkyODNlOTY5NWUzNjZjOTg0NmRlODBmYjRiYTA2NDc4NGNlYTMwNzhhZjk5MTAxOSIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SULAWESI TENGAH",
+  "bpp": 169,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan dan Hortikultura",
+  "tanda": "eyJpdiI6ImQwNXk2ZEZudU9renFxcm9BSTFyMEE9PSIsInZhbHVlIjoiczZnUUgyVUxhdGR6YmQvSFYwbkhmdz09IiwibWFjIjoiYzdlNjA1MDI4MjZjYWI1ZDRkMDE5NjE0ZTViZWViODNmMzQ4NmEwNTdlMTg1NTBmYmVhODRlYWI4MzgzMjM1MyIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SULAWESI SELATAN",
+  "bpp": 292,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan, Hortikultura dan Perkebunan Prov. Sulsel",
+  "tanda": "eyJpdiI6ImJBSGt3L3ZqN1JYM3ZiNU9wV0VqbEE9PSIsInZhbHVlIjoiZFV4TzlrMDYrcXNqOVM1aS9GVGVKUT09IiwibWFjIjoiOGE0ZTViMzFiZmFjNTMwMzA2YjVhMTU5YTk2ODU2NjY4NTFkMTM2YmVlNjI5OTlkNWIxZTJmZGY2MDFhMDVkMCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SULAWESI TENGGARA",
+  "bpp": 210,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan dan Peternakan Provinsi Sulawesi Tenggara",
+  "tanda": "eyJpdiI6InVBdkVqZWcxYTQ0RFZ5MkFlUGJmc3c9PSIsInZhbHVlIjoicHhHRDhJRFJONko3dnN5NXk1QnNUdz09IiwibWFjIjoiYzVkNTk2NmM5NTk2YjEzNjE4N2E1Y2M5N2M4OWJmOTU2NjFiMmQ2ZjljODlhMDNjYmRiNjZlYzRjOGNiZmViMyIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "GORONTALO",
+  "bpp": 76,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian Provinsi Gorontalo",
+  "tanda": "eyJpdiI6IjVvQTNYN0s4czRQQW9iNkdVTUVsd2c9PSIsInZhbHVlIjoiNnB5QnZ2Zmc2WlcxdUNHZXk1ZkJFdz09IiwibWFjIjoiNjc5Y2EwNGFmNjNlMDU0ZTNjYmM4NDc1MWJlOWY5MDNhNmQxNWI4MDAyZDljNmI0ZTdjZTc3ZGNmZjc3MTIzNCIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "SULAWESI BARAT",
+  "bpp": 61,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan, Hortikultura dan Peternakan",
+  "tanda": "eyJpdiI6ImxxUmFyL3pHWTlJdUJqSiszZmcvcmc9PSIsInZhbHVlIjoieENaNlBXU0dpb0pJeXhPRWE3dFRXQT09IiwibWFjIjoiZTRjMjE1ZDk4M2U4YzQzMTM1ZTA3NGVjZjZjMzcyNjk2NjIxNGExN2FkYzQwNjgxZTE3MWM0NGY5Mjk5ZjU1ZiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "MALUKU",
+  "bpp": 107,
+  "dinas_kab": 0,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6IjZqekZ3Qmc4S294ZnBrdWM3VHJOa0E9PSIsInZhbHVlIjoiSTc1cDh3UHdzSTdUaDh0NmVDNzJPZz09IiwibWFjIjoiMGFhYjEwMTBmNTc3NTc2OGViZDc4NTUyMTQzNTY2ZDI0YWUzZWE1ZTljODdmMzc3Njc3MzI3NmM3NWYwMDY5YiIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "MALUKU UTARA",
+  "bpp": 100,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian Maluku Utara",
+  "tanda": "eyJpdiI6ImlPWlZ1WEdmdmtzdTdJMk1YRGxXM2c9PSIsInZhbHVlIjoiRENHbHVTVVpselNVZC9BbWJLb0tLQT09IiwibWFjIjoiMjIxMmNlNDhmZDRmMmUwYTNkMTA1MWQyZDMwZDZmZTBlNjg5NTM0MjMxNmU0MGE0ZDYxNzExOGViYzUxNGU1YSIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "PAPUA BARAT",
+  "bpp": 66,
+  "dinas_kab": 0,
+  "dinas": "Dinas Tanaman Pangan Hortikultura dan Perkebunan",
+  "tanda": "eyJpdiI6IkRhWXhQamFKVU5DVVNBZ3NDTklXdHc9PSIsInZhbHVlIjoiQlJoZk1NMld2dENxNXdtRU9BZ09QZz09IiwibWFjIjoiNjAyM2I2OTM0NzljZTk0ZjljNzgyZTFjYjRhODBkODc1YmY2Yjk4NzRmMWRjYThjNzc5YjUwY2IxMjY5YzcyOSIsInRhZyI6IiJ9"
+ },
+ {
+  "nama": "PAPUA",
+  "bpp": 148,
+  "dinas_kab": 0,
+  "dinas": "Dinas Pertanian dan Pangan Provinsi Papua",
+  "tanda": "eyJpdiI6Imw5NmpxbXlQVzZpRUNmZFNxWUxja1E9PSIsInZhbHVlIjoiRUFLZXJJbnI0S3kwemloWHgrMXRNQT09IiwibWFjIjoiOTA2NmU0ZThiMWQxZWMxMTNhMDQ2ZTM1ODQ5YjA4ZDFmZmZmMGI0NGNjMDgzZmY3MzVjNjdjZmViNTdkZDQ5ZCIsInRhZyI6IiJ9"
+ }
+]

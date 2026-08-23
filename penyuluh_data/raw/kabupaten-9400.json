@@ -1,0 +1,234 @@
+[
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "MERAUKE",
+  "bpp": 9,
+  "dinas": "Dinas Tanaman Pangan, Hortikultura dan Perkebunan",
+  "tanda": "eyJpdiI6ImxZcWl1TnhlZFZnVEVuRzF0cnp5S2c9PSIsInZhbHVlIjoiQlFFcWlUb3U2a0lBWllMa0xDUG55dz09IiwibWFjIjoiYTU2MTFhMDBlZmQ5N2NhMmVhYzRjOTIyZjEyNDMzNWI0ODVhMDI4ZTdhN2Y2YTY4NzRmYjFiNjcwYzRhZDM4MSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "JAYAWIJAYA",
+  "bpp": 12,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6ImZhMG5ERDhwVWx0M25qcTZKcitjVXc9PSIsInZhbHVlIjoidTdDQk1YekVyZkd4cmhRZU5CSUJmUT09IiwibWFjIjoiMmI3YzhkMWJhNDk2OGQ3YjI0YzkwMjkxZWZiOTY4ODcxNmY5NmRiZWE5OGNlNjAyYTQ5ZmZkYTQ4NTE2ODQyZCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "JAYAPURA",
+  "bpp": 7,
+  "dinas": "Dinas Tanaman Pangan dan Hortikultura Kabupaten Jayapura",
+  "tanda": "eyJpdiI6Im1Ud1BHdjR5WG4zd1dkTm5HWlNqN3c9PSIsInZhbHVlIjoiMUhIUVRTVGVCVVpucGhXQWFtYXRWdz09IiwibWFjIjoiYjQ1MTIxN2E5Yzg0Njg3M2M3Njc5NzRlNWU4ODkwMGE2NmEyYWU5YTgxOTMyM2U1ODc5ZWM5NmQ5NDdiOTA0OCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "NABIRE",
+  "bpp": 7,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IjdhRzRsUWFSdWpYdTVTYlJTQkl5a3c9PSIsInZhbHVlIjoiTEZZbndKR3ZoRXBmQ0l4RjNDdXJ5UT09IiwibWFjIjoiODJkNjBmNDUzZTM1NTg5YTY4YzJjZGJhMzcxZWJlMzgwOWNiYmQ0MzQ3OWMzNmFjNzQzYjg5YTQ1MjZmZGIzYyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "KEPULAUAN YAPEN",
+  "bpp": 7,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IlRNQUZCUnRnNUxBbkExQ0pkY1VVZ2c9PSIsInZhbHVlIjoiMWpPYjBhczV2U0xhNmsveForTVV3dz09IiwibWFjIjoiMzUzMmJmYWJlMjBkN2Q3MGM2NjllOGZjNWE5MzIwNWU2MjY0NzMxYzdkZmMyOWNmMjVhMTg3NDkwOTZlNWFiMSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "BIAK NUMFOR",
+  "bpp": 10,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IlREWFZrczNoRU42eTRMMVVTVS9ndGc9PSIsInZhbHVlIjoibFZOY1BCcHczdmk1TVpzMDM5YjVWdz09IiwibWFjIjoiODEwMjcxOTJmNjhjYjdkNTZhYzMxOTA5M2E2ZTNjMmE1YTQ4NTAzMWViYzE3OGNmNzgyZjQyMWFkZDI4NzM1ZiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "PANIAI",
+  "bpp": 2,
+  "dinas": "DINAS PERTANIAN, PERKEBUNAN DAN PETERNAKAN",
+  "tanda": "eyJpdiI6InBsaFRva3JuTkJnQ2dGc0hPbEQrdlE9PSIsInZhbHVlIjoiLzdRN0dZVFRSZDExamE0ZVBJVHU5Zz09IiwibWFjIjoiN2UyMzU4ZWQ4MTNmMTI1NTY3M2NkYjI2MWY3MWIxNmE3MTYzZmVkOTdlOWRhYzU3YTBjNjg2MDVkMzMyOTIyNiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "PUNCAK JAYA",
+  "bpp": 2,
+  "dinas": "Dinas Pertanian dan Perikanan",
+  "tanda": "eyJpdiI6IjREOUdhSFBVaDlQa2NjRldKOWNKNVE9PSIsInZhbHVlIjoiU3lEMEJzT1RRbWIxbjRTWFBhRmIvdz09IiwibWFjIjoiNTk5OGEwZTViNTMzNmRlZTU4Mjg4MzM2NGRkZjI3OTMxODFhYTRmYzEyYTc4MjdlZmE4ZWEyZjM5YzE4YmM5ZSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "MIMIKA",
+  "bpp": 4,
+  "dinas": "DINAS PERTANIAN TANAMAN PANGAN HOLTIKULTURA DAN PERKEBUNAN",
+  "tanda": "eyJpdiI6IkZSQTZQQVJROEhTeUNTbC9LVEFFcHc9PSIsInZhbHVlIjoieUVBakZiQ2hMdHJCa1ZHbUZkOHZhUT09IiwibWFjIjoiZjI2ZTUyYmRiMjZhYzE5ZWI5ZGFlODE3MDQzYjAwNmU4MGEzMTQ0N2Q2ZWY0YTQzOThmODhkOTA4Njc1YmFiMCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "BOVEN DIGOEL",
+  "bpp": 7,
+  "dinas": "Dinas Tanaman Pangan Hortikultura, Peternakan Dan Perikanan",
+  "tanda": "eyJpdiI6IkhwMXNtajBYOGEwenZKaWlEYjFGeVE9PSIsInZhbHVlIjoiYW5oS3dPU1pvQUZFMWpER21qc1BDUT09IiwibWFjIjoiMzA5YmU4NjJiN2FhOTI0NTUwNWJkNTVkYmVjYWQyMTc4MTEyMGNlMjc5OTA5MTg3ZGExNjgwOTY3ZmI2MWZiOSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "MAPPI",
+  "bpp": 4,
+  "dinas": "Dinas Pertanian Kabupaten Mappi",
+  "tanda": "eyJpdiI6IjladzVUUnY3Njd1cUVMNytCMGp6d1E9PSIsInZhbHVlIjoiRm92bVN6a2hmTzhBNmdTU1BTc1ZrQT09IiwibWFjIjoiNWFiYmYwYTA4OTY1OGNlM2FhMzhkMzQwNTc5MDI4MzQ0NmM4MWFiMzc5Zjc4NjRmNzhlMDYwNjYxMjk3NzhhOSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "ASMAT",
+  "bpp": 7,
+  "dinas": "Dinas Tanaman Pangan dan Pertanian",
+  "tanda": "eyJpdiI6Im1qa1JFVDJ3Z1h6Rk1mVTZ0d09FeFE9PSIsInZhbHVlIjoiTjRwelhOYWxHdFdiTE9SNW1Md2p5QT09IiwibWFjIjoiMzRhODFjNTFjOGRhOTU2MzBjN2JhOGMwZTI2ZGYzMWM2MWNiNDliODhlNzhkNjBhNTY4YTQ0NDUyZDRkMTc2NiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "YAHUKIMO",
+  "bpp": 6,
+  "dinas": "Dinas Pertanian dan Perikanan",
+  "tanda": "eyJpdiI6IjhLZ0xWcVNSMWNrMmMzQnh2bC9XbXc9PSIsInZhbHVlIjoiUTBGTDlkM09WYk0yUDJKeFlBdkdldz09IiwibWFjIjoiY2E0OWY3NTM0NTljNjRhMjIzZmM3ZTcwZmZjYzRkNzRjZmM0MjEwMmZmYWM2ZGZlOWZhNzY2NTUxYzQyZTFhYiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "PEGUNUNGAN BINTANG",
+  "bpp": 11,
+  "dinas": "Dinas Pertanian Dan Perikanan",
+  "tanda": "eyJpdiI6ImN1dFNrZGdOL3Q5NjFyQk9QWEttdFE9PSIsInZhbHVlIjoiNVgyMTExNCtlZXRsVUFXaEI0My9ydz09IiwibWFjIjoiN2M3ODA2MGUwNjg4MDE0ZWMwMjVhYWYwZjRkZWViZjBlYzk2ZWIyZjE3MDk4NGVhMmJmZjVhMzMyM2Q2ZDNmYSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "TOLIKARA",
+  "bpp": 0,
+  "dinas": "Dinas Pertanian dan Perikanan",
+  "tanda": "eyJpdiI6IjNwazRiSFFvSDdZMmNsUDdiSkRjT1E9PSIsInZhbHVlIjoiZGRQMWltK2NZc3NUMXNncDBmbjBuQT09IiwibWFjIjoiYWZhYTVhZmY3MGFlMjYwYmY0NjFiYjgxY2IwZjI5OWU3NjQ0MmVkN2NkODE0YTE3NzY4ZjAzMTg1M2ZlZTU2YyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "SARMI",
+  "bpp": 6,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6ImZWVEE3TlZ6MlNsNkRCa09SKzEwa3c9PSIsInZhbHVlIjoiVWwrRUdGTXRJcW1yVzNRZkp3M3NtUT09IiwibWFjIjoiNDZmOWU1M2FmODg3NTA0NWQxNWQxMjc4Mzc5YjJiYjcxMmRlNzEyMWFkNjhlYjQ4MTBiNTgxMTU5ZDIwNzc5OSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "KEEROM",
+  "bpp": 7,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6IlpUOE5vTTAxZjJUK0VxVjM2d01KdVE9PSIsInZhbHVlIjoiT0c4OXF4d05WZlBQTnp4a0JEcTI5UT09IiwibWFjIjoiYTlmNWI1ZTMyYjUxY2Y2MjM5YTU4MTI5ZTkwNTI0YjA3ZDk0MzVmZmVmNTQ0MDM5MjA2MjE1ZDAyNWZmYzcyZiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "WAROPEN",
+  "bpp": 10,
+  "dinas": "Dinas Pertanian, Perkebunan dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6Ikd4TVJ6MnFNd2wyVGQ5TWlBMUdIVGc9PSIsInZhbHVlIjoiWUhsc2wraHlrM3k5V2pTVE1IOFBUQT09IiwibWFjIjoiNTZjOGQ5NGY2N2JlZDNjYmRhZGFiODUxM2UwZWEzNmMxYzM5ZTE2MGMxOWMxODAwYzdjZTNmNGI3YmUyN2JjNiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "SUPIORI",
+  "bpp": 5,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6IkVDN2FaUTRGQWpVWE1SWTQ3bXJjT0E9PSIsInZhbHVlIjoieGVMclJHTzZTK2xnankzejF0bkpBQT09IiwibWFjIjoiZWQ3ZmNkODhlMjdkYjk3MTUyYjJhYzA4NDg5NzgwOTg2ZGRhMjk1MzJiMDc2NGY2ODNhNTVkYzg5ZmQ3YTNjMyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "MAMBERAMO RAYA",
+  "bpp": 2,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6ImF2OTBFUFB0SUdZUnZ3cE5ZaklBMVE9PSIsInZhbHVlIjoiaDFGalUrZ0RyWmdyUkZrRmMvN1NFUT09IiwibWFjIjoiNWNiNDQ3ZjY3NzdiYjYxZWFmNzgxM2JjYjI1MTAzMTUwZTZmNzgwMzAzM2NhYWJjNTRkODAyYjYzOTQ0ZTQwNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "NDUGA",
+  "bpp": 2,
+  "dinas": "Dinas Pertanian dan Ketahanan Pangan",
+  "tanda": "eyJpdiI6ImdQR2lZTk5xQ0lnSFd6SjMyM29CbHc9PSIsInZhbHVlIjoiTXVCZW9tdzBxSzVuS2l0cTRWeDQ0Zz09IiwibWFjIjoiZjQ2ZDI0MGUwZDgyMWE4NjAzZWQ3ZmQ0NzE1ZjE3ODc0NWUzYzVkZWFhNGRhMGNjM2RhYTRhMDNhYjllZTkzMSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "LANNY JAYA",
+  "bpp": 8,
+  "dinas": "Dinas Pertanian dan Perikanan",
+  "tanda": "eyJpdiI6InhPRXFMZ3NXMU03eUFHM2N1eVhxU2c9PSIsInZhbHVlIjoiWG5TdVorR1YzSUxXREdGc1hCNC8yZz09IiwibWFjIjoiMzdkNTNjY2ZmYWUyN2FiOTIwZmM1ZTk3YTY1ZmRlOGMzYTUxMGM0MWNkMzhiNTgxYzExM2VlOGYyY2YzNWU1NCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "MAMBERAMO TENGAH",
+  "bpp": 0,
+  "dinas": "Dinas Pertanian",
+  "tanda": "eyJpdiI6InJJWUlXTm5MVHoxUHFrczF1bXE0QkE9PSIsInZhbHVlIjoiUWtTRk9WT2ZwV2oxczhpMS9QTUR1Zz09IiwibWFjIjoiZDlhNzY3MTljMzQ3MzM5NTNmMWY3NjNmZWNmNDQyNjcwMzYxNTVhN2Q1YWNjNmUyOTY5YzE1OTRkMTNhYWFjYyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "YALIMO",
+  "bpp": 4,
+  "dinas": "Dinas Pertanian dan Pangan",
+  "tanda": "eyJpdiI6IjQ1SnVHWm14R25VOWg4cjc2K2IzSkE9PSIsInZhbHVlIjoiTmZTTDBJRVRWVGVqejkrQllCQ3ZoUT09IiwibWFjIjoiYzk1ZjIxNDJlM2QwMTY5ZmNlMThhZGExMWI2NTdiMGNlMzczZWJlYWQ5ZWYxNGY3YzU2MmJkNDgwY2IzOTViNyIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "PUNCAK",
+  "bpp": 0,
+  "dinas": "Dinas Pertanian Dan Perkebunan",
+  "tanda": "eyJpdiI6IllSNmMzZHluTDVmc0ZObU9Lb3JWWkE9PSIsInZhbHVlIjoiczVWSnk5WjNyNHVaV3RDYmpUVFdjdz09IiwibWFjIjoiNzgyODc1NjFjZjBhZWQ2YjMwYWRjMTkwNDA3N2UzNmY4NjUzZGI0YjA5YTM5OGI5OWEwNjI4MmE3NTJlMWY3ZCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "DOGIYAI",
+  "bpp": 4,
+  "dinas": "Dinas Pertanian dan Perkebunan",
+  "tanda": "eyJpdiI6IkpSM2xUSFU2UkUybCtjdG1NSnk4UEE9PSIsInZhbHVlIjoiRUtLWVZRSDR4WDd2Z1h5dU1IY2loZz09IiwibWFjIjoiNjhmZGM0MjI5Njk1NWRlZGUxNDUxNzZlZDYwNDA1OTA3MTU5OTBlOGIzODc2NDQxZTFkNGZhNGFlZjhhMTk0OCIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "INTAN JAYA",
+  "bpp": 1,
+  "dinas": "Pertanian dan Perkebunan",
+  "tanda": "eyJpdiI6IkFRM2R5eUs2dktiUGdMUy9ManpjTkE9PSIsInZhbHVlIjoiUHQ1bFBrVVpZU25hUlVzeHVMWnEvdz09IiwibWFjIjoiZGUxOWE4MWQ2YzgxZDNlYzU1NDUxNGYwNDNiOTdjYjljMGZiZjYwMzI4OGRmOTE2MWE5YjUyN2U1NGI1ZTVlMSIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "DEIYAI",
+  "bpp": 2,
+  "dinas": "DINAS PERTANIAN",
+  "tanda": "eyJpdiI6InU3SGZ4Ykt3YTh4eHhVQXJFZXFMekE9PSIsInZhbHVlIjoiRm50REhHV3dhWW1yZ1pwdFh0Z0xiZz09IiwibWFjIjoiNmZiNDFiZjdkNTk5N2Q5MmJhN2ExNmVlZjBjNmRmMTM1YzJlYTIxZjU1MWU4Zjg2OWViNjkyOTM4YmQ2ZmYyYiIsInRhZyI6IiJ9"
+ },
+ {
+  "kd_prov": "9400",
+  "provinsi": "PAPUA",
+  "nama": "KOTA JAYAPURA",
+  "bpp": 2,
+  "dinas": "Dinas Ketahanan Pangan dan Pertanian Kota Jayapura",
+  "tanda": "eyJpdiI6IldxQllOUU1UVGVhbkNlZlNGditVeFE9PSIsInZhbHVlIjoiQm05MVBnR1RCREo3cnJGbm5qbWMxUT09IiwibWFjIjoiMDkxMTg2MzZiMmRkNTc4NDBmYWY0MWVkMjQxYTEwMmQxZjQ2MmU5ZDQ3N2JhMjM3YzdkMTM4OTc4OWQ4ODNiYiIsInRhZyI6IiJ9"
+ }
+]
