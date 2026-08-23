@@ -1,0 +1,180 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/principal.schema.json",
+  "title": "Principal — badan yang memegang pendaftaran",
+  "description": "Satu badan hukum atau lembaga yang namanya tercantum sebagai pemegang pendaftaran pupuk/pestisida atau pemohon varietas. Entitasnya SATU per badan, bukan satu per registri: 19 perusahaan memegang pendaftaran di kedua sisi, dan memecahnya jadi dua profil akan membelah daftar produknya. Perorangan sengaja TIDAK masuk — pemulia yang mendaftarkan varietas atas nama sendiri adalah orang, bukan badan, dan halaman profil untuk orang bernama adalah pengumpulan data pribadi yang tidak punya dasar pemrosesan di sini.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:pcp:[0-9]{8}$"
+    },
+    "entity_form": {
+      "type": "string",
+      "description": "Bentuk badan sebagaimana terbaca dari namanya sendiri, bukan dari akta. 'tidak_diketahui' adalah nilai yang jujur untuk nama yang tidak berprefiks.",
+      "enum": [
+        "PT",
+        "CV",
+        "UD",
+        "Koperasi",
+        "Pemerintah",
+        "Perguruan tinggi",
+        "Lembaga riset",
+        "Asing",
+        "tidak_diketahui"
+      ]
+    },
+    "sectors": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "description": "Registri tempat badan ini benar-benar memegang sesuatu. Diturunkan dari data, tidak pernah diketik.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "pesticide",
+          "fertilizer",
+          "seed"
+        ]
+      }
+    },
+    "registry_names": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Seluruh ejaan nama ini sebagaimana tertulis di registri. Nama asli tidak pernah ditimpa — lihat spec/00-konvensi-kerja-paralel.md bagian 4. Inilah yang menyambungkan entitas ke baris produk dan varietas.",
+      "items": {
+        "type": "string",
+        "minLength": 2
+      }
+    },
+    "holdings": {
+      "type": "object",
+      "description": "Cacah pendaftaran yang dipegang, dihitung dari registri. Ini satu-satunya angka di rekaman ini yang bertingkat bukti B.",
+      "properties": {
+        "pesticide": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fertilizer": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "seed": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "required": [
+        "pesticide",
+        "fertilizer",
+        "seed"
+      ],
+      "additionalProperties": false
+    },
+    "seed_profile": {
+      "type": "object",
+      "description": "Ringkasan sisi benih yang datang dari registri varietas itu sendiri — bukan dari riset web. Tingkat buktinya sama dengan holdings.",
+      "properties": {
+        "first_year": {
+          "type": "integer"
+        },
+        "last_year": {
+          "type": "integer"
+        },
+        "main_commodity": {
+          "type": "string"
+        },
+        "commodities": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "top_permit_kind": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "description": "Pengaya dari riset web, BUKAN dari registri. Blok ini sengaja terpisah dan membawa tingkat buktinya sendiri: registri memberi tingkat B, riset agen memberi D. Menggabungkannya ke satu kartu akan menaikkan yang D ke tingkat yang tidak dimilikinya. Setiap baris di sini perlu diverifikasi ulang ke sumber aslinya sebelum dipakai mengambil keputusan.",
+      "properties": {
+        "evidence_tier": {
+          "type": "string",
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "tier_reason": {
+          "type": "string",
+          "minLength": 10
+        },
+        "confidence": {
+          "type": "string",
+          "enum": [
+            "tinggi",
+            "sedang",
+            "rendah",
+            "belum-diverifikasi"
+          ]
+        },
+        "confidence_note": {
+          "type": "string",
+          "description": "Kalimat keyakinan sebagaimana ditulis periset, utuh. Sering bertingkat per medan — \"tinggi (merek) / sedang (badan hukum)\" — dan justru pembedaan itu yang hilang kalau hanya enum kasarnya yang disimpan."
+        },
+        "parent_group": {
+          "type": "string"
+        },
+        "origin": {
+          "type": "string"
+        },
+        "activity_status": {
+          "type": "string"
+        },
+        "website": {
+          "type": "string"
+        },
+        "umbrella_brands": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "source": {
+          "type": "string"
+        },
+        "source_kind": {
+          "type": "string"
+        },
+        "updated": {
+          "type": "string",
+          "format": "date"
+        }
+      },
+      "required": [
+        "evidence_tier",
+        "tier_reason",
+        "source_kind"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "id",
+    "key",
+    "label",
+    "lifecycle",
+    "sectors",
+    "registry_names",
+    "holdings"
+  ]
+}

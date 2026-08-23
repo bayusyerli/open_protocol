@@ -71,7 +71,28 @@ export const tanggal = (s) => {
   return Number.isNaN(+d) ? s : d.toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' });
 };
 
-export const JENIS = { pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif', gejala: 'Gejala' };
+export const JENIS = {
+  pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif',
+  gejala: 'Gejala', principal: 'Perusahaan', harga: 'Harga',
+};
+
+/**
+ * Nama pemegang pendaftaran sebagai tautan ke profilnya — atau sebagai teks biasa.
+ *
+ * Dipakai di enam tempat: rincian produk, tabel setara, tabel merek per kadar, kartu
+ * varietas, kartu hasil pencarian, dan daftar di halaman profil itu sendiri. Ditaruh di sini
+ * karena aturannya satu dan mudah menyimpang: NAMANYA SELALU TAMPIL, tautannya hanya kalau
+ * badan itu memang ada di kosakata principal.
+ *
+ * 576 varietas dipegang pemulia perorangan, dan mereka SENGAJA tidak punya halaman profil —
+ * halaman bernama tentang orang adalah pemrosesan data pribadi tanpa dasar. Untuk mereka
+ * fungsi ini mengembalikan nama apa adanya, dan itu bukan kegagalan yang perlu ditutup.
+ */
+export function namaPemegang(nama, key) {
+  const t = teks(nama ?? '—');
+  if (!nama || !key) return t;
+  return `<a class="tautan-principal" href="principal.html?key=${encodeURIComponent(key)}">${t}</a>`;
+}
 
 let meta = null;
 export const bacaMeta = () => meta;

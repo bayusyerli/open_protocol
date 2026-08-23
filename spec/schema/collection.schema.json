@@ -28,7 +28,9 @@
             "deviation-reason",
             "preparation",
             "target-site",
-            "nama-lokal"
+            "nama-lokal",
+            "principal",
+            "harga"
           ]
         },
         "label": {

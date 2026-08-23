@@ -329,7 +329,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | B2 | Kartu keselamatan aplikasi — APD, cara aman, gejala keracunan, kontak darurat | petani, buruh tani | keselamatan jiwa | sebagian ada; **PHI 0 dari 23.058** | **BANGUN** bagian non-PHI; PHI **TUNDA** |
 | B3 | **Sanggahan terbuka** — siapa pun boleh menantang satu fakta; jejaknya publik dan bernama | agronom, penyuluh, principal | mutu korpus | belum ada | **BANGUN** |
 | B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | **selesai** 23 Agustus 2026 — enam lubang tercacah di `app/ukur.js`, terbaca di `ukur.html` | **selesai** |
-| B5 | Ringkasan berbasis model bahasa di atas registri | semua | kecepatan paham | terlalu dini — melanggar syarat ke-4 | **TUNDA** |
+| B5 | Ringkasan berbasis model bahasa di atas registri | semua | kecepatan paham | **sebagian 23 Agustus 2026** — komentar per seri harga, ditulis saat build ke `spec/vocab/harga/komentar.json` beserta angka yang dipakai menulisnya | **TUNDA** untuk registri; **BANGUN** untuk harga, dengan bentuk yang menjawab keberatannya |
 
 > **B4 mengubah biaya riset menjadi keluaran produk.** Setiap "tidak sanggup" yang
 > ditampilkan enam jalur hari ini menghilang begitu layar ditutup. Dicatat, ia menjadi
@@ -359,20 +359,40 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > **B5 ditunda karena syarat ke-4, bukan karena teknologi.** Asisten yang selalu menjawab
 > tidak punya cara salahnya ketahuan. Pesaing terdekat di pintu masuk justru berbentuk itu
 > — dan tepat di situ pembedanya.
+>
+> **Diperbarui 23 Agustus 2026 — keberatannya tidak dicabut, ia dipenuhi.** Komentar per seri
+> harga sekarang ada, dan bentuknya seluruhnya diturunkan dari kalimat di atas. Kalau
+> masalahnya "tidak punya cara salahnya ketahuan", maka yang harus dibangun adalah cara
+> salahnya ketahuan:
+>
+> 1. **Ditulis sekali saat build, bukan saat halaman dibuka.** Kalimat yang lahir dan mati di
+>    dalam satu sesi tidak bisa ditinjau siapa pun. Yang tertulis ke berkas bisa: ia
+>    bertanggal, masuk riwayat git, dan selisih antar-bangunan bisa dibaca.
+> 2. **Angka yang diberikan ke penulisnya ikut disimpan** di medan `fakta` pada rekaman yang
+>    sama. Peninjau tidak perlu memercayai kalimatnya — ia bisa memeriksanya.
+> 3. **Tingkatnya D, bukan B.** Angkanya bertingkat B; kalimatnya tafsir atas angka, dan
+>    tafsir tidak mewarisi tingkat sumbernya. Layar menyebutkannya di kepala kartu.
+> 4. **`ditinjau` masih null pada keempat puluh tiga rekaman**, dan layar mengatakannya.
+>    Tingkatnya naik saat seorang manusia membacanya, bukan saat modelnya diganti.
+> 5. **Tiap komentar wajib menyebut satu hal yang angkanya tidak katakan.** Layar yang hanya
+>    menyatakan temuan terbaca lebih yakin daripada datanya.
+>
+> Sisi registri **tetap ditunda**. Yang membedakan keduanya bukan teknologinya melainkan
+> ukurannya: 43 seri harga bisa ditinjau seorang manusia dalam satu sore, 14.920 produk tidak.
 
 ### C · RUJUKAN — registri
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas | **selesai** |
+| C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas, dan sejak 23 Agustus 2026 **3.136 badan pemegang** beserta halaman profilnya | **selesai** |
 | C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | **sisi pupuk selesai** 23 Agustus 2026 — indeks `kandungan/` memuat 12.564 produk, formulir di jalur 2; sisi pestisida terindeks tetapi belum berpermukaan | **sebagian** |
 | C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri | **BANGUN bertahap** |
-| C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | 0 di registri; Bapanas **mati**; SP2KP terbuka tetapi eceran | **BANGUN** (+ pinjam sisi eceran) |
+| C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, 26.475 titik, satu permintaan ke SP2KP. Sisi **harga petani tetap nol**, dan itu tidak berubah | sisi eceran **selesai**; sisi petani **BANGUN** — belum dimulai |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
 | C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | fondasi ada: 234 toko terbit (OSM), 2.181 benih TTI beralamat | **BANGUN** |
 | C8 | Sifat agronomi varietas | petani, penyuluh, penangkar | #3 | **0 dari 11.227** | **TUNDA** |
-| C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** kini terbuka — bebas hak cipta lewat [16](16-sumber-harga-komoditas.md) | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** |
+| C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** bebas hak cipta, tetapi **harga pupuk eceran di SP2KP ternyata kosong** — Urea, NPK, SP-36, dan ZA terdaftar tanpa satu pun angka terisi | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** dari teks peraturan, bukan dari SP2KP |
 
 > **C2 tetap kapabilitas dengan rasio nilai-terhadap-biaya tertinggi — tetapi masukannya
 > diganti.** Versi pertama dokumen ini memakai **nomor pendaftaran** sebagai pintu.

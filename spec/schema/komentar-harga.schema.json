@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/komentar-harga.schema.json",
+  "title": "Komentar harga — kalimat mesin beserta angka yang dipakai menulisnya",
+  "description": "Berkas ini ada karena satu keberatan yang tercatat di docs/15 terhadap kapabilitas B5: asisten yang selalu menjawab tidak punya cara salahnya ketahuan. Bentuk di sini adalah jawabannya. Tiap komentar disimpan BERSAMA `fakta` — angka persis yang diberikan kepada penulisnya — sehingga peninjau bisa memeriksa kalimatnya terhadap angkanya tanpa memercayai penulisnya, dan `sidikFakta` membuat komentar hanya ditulis ulang saat angkanya benar-benar bergeser. `sumber` menyebut siapa yang menulis, dan `ditinjau` menyebut apakah seorang manusia sudah membacanya.",
+  "type": "object",
+  "properties": {
+    "versi": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "tentang": {
+      "type": "string",
+      "minLength": 20
+    },
+    "tingkatBukti": {
+      "type": "string",
+      "enum": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "description": "Berlaku untuk KALIMATNYA, bukan untuk angkanya. Angkanya bertingkat B lewat kosakata harga; tafsir atas angka tidak mewarisi tingkat sumbernya."
+    },
+    "alasanTingkat": {
+      "type": "string",
+      "minLength": 20
+    },
+    "ditulis": {
+      "type": "string",
+      "format": "date"
+    },
+    "komentar": {
+      "type": "object",
+      "description": "Berkunci `key` seri harga.",
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^op:hrg:[0-9]{8}$"
+          },
+          "nama": {
+            "type": "string",
+            "minLength": 1
+          },
+          "komentar": {
+            "type": "string",
+            "minLength": 20
+          },
+          "batas": {
+            "type": "string",
+            "minLength": 10,
+            "description": "Satu hal yang angka ini TIDAK katakan. Wajib: layar yang hanya menyatakan temuan terbaca lebih yakin daripada datanya."
+          },
+          "sumber": {
+            "type": "string",
+            "enum": [
+              "model",
+              "terhitung"
+            ],
+            "description": "`model` bila ditulis model bahasa saat build; `terhitung` bila disusun dari aturan atas angkanya sendiri karena tidak ada kredensial. Keduanya tidak pernah tertukar."
+          },
+          "model": {
+            "type": "string"
+          },
+          "fakta": {
+            "type": "object",
+            "description": "Angka persis yang diberikan ke penulisnya. Inilah yang membuat kalimat di atas bisa diperiksa.",
+            "additionalProperties": true
+          },
+          "sidikFakta": {
+            "type": "string",
+            "minLength": 2
+          },
+          "ditulis": {
+            "type": "string",
+            "format": "date"
+          },
+          "ditinjau": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "description": "Tanggal seorang manusia membacanya, atau null. null berarti belum — dan layar wajib mengatakannya."
+          }
+        },
+        "required": [
+          "id",
+          "nama",
+          "komentar",
+          "batas",
+          "sumber",
+          "fakta",
+          "sidikFakta",
+          "ditinjau"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "$schema": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "versi",
+    "tentang",
+    "tingkatBukti",
+    "alasanTingkat",
+    "komentar"
+  ],
+  "additionalProperties": false
+}

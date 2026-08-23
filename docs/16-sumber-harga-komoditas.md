@@ -261,6 +261,54 @@ nol dari 7.196 pupuk. SISKAPERBAPO melengkapinya dari sisi lain: ia menerbitkan 
 
 ---
 
+## 8a. Yang berubah setelah penyerapan pertama — 23 Agustus 2026
+
+Dokumen ini ditulis sebelum satu byte pun ditarik. Penyerapan pertamanya sudah dijalankan,
+dan tiga hal berubah — dua di antaranya membatalkan rencana yang tertulis di atas.
+
+**Jalur endpoint di bagian 5 butir 2 keliru.** `kld/api/list-harga-harian/{yyyy}/{m}` di
+`satudata.kemendag.go.id` menjawab 404 lunak, dan katalog portalnya menolak POST dari luar
+peramban lewat WAF. Yang benar ada di host lain: `api-sp2kp.kemendag.go.id`. Tiga endpoint
+publiknya, dan hanya satu yang boleh dipakai:
+
+| Endpoint | Putusan |
+|---|---|
+| `report/api/average-price-public` | **JANGAN.** Kesembilan medan `creator` — nik, nip, no_telp, alamat, email, first_name, last_name, jabatan — **masih ada, diperiksa ulang 23 Agustus 2026**. Peringatan bagian 5 butir 1 terverifikasi, bukan sekadar diwarisi. |
+| `report/api/average-price-komoditas-public` | Bersih dari PII, tetapi **5.099.865 baris pada 10 baris per halaman** = 509.987 permintaan. Melanggar ketentuan portalnya sendiri. |
+| `report/api/hnt` | **Yang dipakai.** Satu permintaan, 56 MB, seluruh riwayat, bersih dari PII — diperiksa atas seluruh isi, bukan atas cuplikan. |
+
+**Cakupannya jauh lebih sempit daripada yang diperkirakan, dan ini temuan terpenting di
+bagian ini.** SP2KP menerbitkan 88 varian dan **mengisi angkanya hanya untuk 43**. Yang 45
+lagi kosong pada **keempat** ukuran tertimbang, bukan hanya pada yang dipakai layar, dan
+`is_nasional` tidak menjelaskannya — 43 dari 45 justru bertanda nasional.
+
+Ini varian keempat dari pelajaran "situs mati versus jalur tersaring" di bagian 5 butir 5:
+situs hidup, endpoint sehat, respons 200, isinya sebagian besar kosong — dan kekosongannya
+tidak berkorelasi dengan penanda apa pun yang dibawa rekamannya sendiri.
+
+**Dugaan bagian 3 tentang benih dan pupuk benar, dan cakupannya lebih luas.** Dokumen ini
+menyebut "benih dan pupuk non-subsidi di SP2KP adalah arsip mati". Terbukti — dan bukan cuma
+arsip mati melainkan **arsip kosong**: Pupuk Urea, NPK 15-15-15, SP-36, ZA, Benih Jagung
+Sebar, dan Benih Kedelai punya 13–15 tanggal terdaftar dengan **nol angka terisi**. Hanya
+Benih Padi yang membawa angka, itu pun 15 titik.
+
+Akibatnya untuk C9: sisi HET pupuk **tidak bisa diambil dari SP2KP**. Ia harus datang dari
+teks peraturannya sendiri, yang bebas hak cipta — jalur yang bagian 6 sudah sebut, dan yang
+sekarang jadi satu-satunya.
+
+**Yang berhasil diserap:** 43 seri harian nasional tertimbang, 3 Januari 2024 – 21 Agustus
+2026, 635 tanggal, 26.475 titik. Tersambung ke **23 dari 906** komoditas di kosakata sendiri;
+57 varian sisanya bukan komoditas tani sama sekali — besi beton, semen, triplek, LPG, paku.
+Nol komoditas perkebunan.
+
+**Aturan tayang bagian 7 yang sudah ditegakkan di layar:** butir 1 (tiga jenis angka
+dipisah — yang ada hanya eceran, dan layar mengatakannya di atas angkanya, bukan di catatan
+kaki), butir 6 (tidak ada penduga farmgate sama sekali). Butir 2, 3, 4, dan 5 belum berlaku
+karena datanya belum ada: jumlah responden tidak dibawa endpoint `hnt`, dan tidak ada satu
+pun harga dunia maupun komoditas perkebunan yang terserap.
+
+---
+
 ## 9. Batas dokumen ini
 
 1. **Tingkat verifikasinya tidak rata, dan itu disengaja dinyatakan.** Yang dipanggil dan

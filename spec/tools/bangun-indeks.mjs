@@ -91,6 +91,30 @@ const komoditas = [
 ];
 const optRegistri = larik(bacaJson('pest-registri.json'));
 
+// Tiga sumber yang datang dari luar spec/vocab, dan masing-masing punya alasannya.
+//   principal   kosakata sendiri, dibangun spec/tools/bangun-principal.mjs
+//   harga       kosakata sendiri, dibangun spec/tools/bangun-harga.mjs
+//   komentar    kalimat per seri harga, dibangun spec/tools/bangun-komentar-harga.mjs
+//   gambar      sambungan gambar kemasan, dibangun gambar_produk/terbitkan.mjs — TIDAK di
+//               spec/vocab karena ia lampiran pada produk, bukan entitas tersendiri; membuatnya
+//               entitas berarti mengarang ruang ID ketiga untuk sesuatu yang sudah punya
+//               skemanya sendiri di spec/schema/product-image.schema.json.
+// Keempatnya OPSIONAL. Repositori yang belum menjalankan alatnya tetap bisa membangun indeks;
+// yang hilang cuma bagian yang memang belum ada datanya, dan meta.json menyebutkannya.
+const bacaLuar = (jalan, ndjson) => {
+  const penuh = join(akar, jalan);
+  if (!existsSync(penuh)) return null;
+  const teks = readFileSync(penuh, 'utf8');
+  return ndjson
+    ? teks.split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
+    : JSON.parse(teks);
+};
+
+const principal = bacaLuar('spec/vocab/principal/principal.ndjson', true) ?? [];
+const hargaSeri = bacaLuar('spec/vocab/harga/harga.ndjson', true) ?? [];
+const hargaKomentar = bacaLuar('spec/vocab/harga/komentar.json', false);
+const gambarTerbit = bacaLuar('gambar_produk/terbit.ndjson', true) ?? [];
+
 const zatById = new Map([...zat, ...hara].map((s) => [s.id, s]));
 // LARANGAN ITU BERLINGKUP, DAN LINGKUPNYA MENENTUKAN
 // Versi pertama pembangun ini menandai zat dengan satu boolean `dilarang` begitu kata
@@ -186,6 +210,31 @@ for (const [k, anggota] of [...kelompokSetara.entries()].sort((a, b) => a[0].loc
 }
 
 // ---------------------------------------------------------------------------
+// Peta nama pemegang -> principal, dan produk -> gambar
+// ---------------------------------------------------------------------------
+// Nama pemegang di baris produk ditulis registri dengan ejaan yang tidak konsisten; yang
+// menyeragamkannya `registry_names` pada tiap principal. Pemetaan dibangun dari sana, bukan
+// dari nama kanoniknya, supaya baris produk mana pun ketemu tanpa penyamaan tambahan di sini.
+const samakanNama = (s) => (s ?? '').replace(/\s+/g, ' ').trim();
+const kunciNama = (s) =>
+  samakanNama(s).toUpperCase().replace(/\bPT\.?\b/g, 'PT').replace(/\bCV\.?\b/g, 'CV')
+    .replace(/\bUD\.?\b/g, 'UD').replace(/[^A-Z0-9 ]/g, ' ').replace(/\s+/g, ' ').trim();
+
+const principalPerNama = new Map();
+for (const b of principal)
+  for (const nama of b.registry_names ?? []) principalPerNama.set(kunciNama(nama), b);
+
+// Hanya id dan nama yang ikut ke rincian produk — halaman profilnya diambil terpisah saat
+// tautannya diklik. Menyalin seluruh rekaman principal ke tiap produk berarti membayar
+// daftar merek payungnya 14.920 kali.
+const principalRingkas = (nama) => {
+  const b = principalPerNama.get(kunciNama(nama));
+  return b ? { id: b.id, nama: b.label?.id ?? nama, key: b.key } : null;
+};
+
+const gambarPerProduk = new Map(gambarTerbit.map((r) => [r.produk, r.gambar]));
+
+// ---------------------------------------------------------------------------
 // Rincian produk — dipangkas ke yang benar-benar dipakai layar
 // ---------------------------------------------------------------------------
 function rinciProduk(p, jenis) {
@@ -210,6 +259,31 @@ function rinciProduk(p, jenis) {
   };
   const g = grupProduk.get(p.id);
   if (g) r.setara = g;
+
+  // Tautan ke halaman profil pemegang pendaftaran. Ditulis hanya kalau ketemu; nama
+  // pemegangnya sendiri tetap ada di `produsen` apa pun yang terjadi, sehingga layar tidak
+  // pernah kehilangan namanya hanya karena tautannya belum ada.
+  const pcp = principalRingkas(p.manufacturer);
+  if (pcp) r.pcp = pcp;
+
+  // Gambar kemasan. Yang dibawa cuma nama berkas dan ukurannya; halaman menyusun jalurnya
+  // sendiri. Produk tanpa gambar TIDAK diberi medan kosong — layar sudah tahu artinya, dan
+  // 14.493 medan null memakan pecahan tanpa memberi tahu apa pun.
+  const gb = gambarPerProduk.get(p.id);
+  if (gb?.length) {
+    r.gambar = gb.map((x) => ({
+      f: x.berkas.sedang?.n ?? x.berkas.kecil?.n,
+      k: x.berkas.kecil?.n ?? null,
+      w: x.berkas.sedang?.w ?? x.berkas.kecil?.w ?? null,
+      h: x.berkas.sedang?.h ?? x.berkas.kecil?.h ?? null,
+      peran: x.peran,
+      hak: x.hak,
+      penerbit: x.penerbit,
+      halaman: x.halaman,
+      diambil: x.diambil ? String(x.diambil).slice(0, 10) : null,
+      ...(x.nomorTerbaca ? { nomor: x.nomorTerbaca, nomorCocok: x.nomorCocok } : {}),
+    }));
+  }
 
   if (jenis === 'pestisida') {
     r.guna = (p.label_uses ?? [])
@@ -275,6 +349,12 @@ function rinciVarietas(v) {
       : { tahunan: komoditasById.get(v.commodity?.id).perennial }),
     asal: v.origin ?? null,
     pemelihara: v.maintainer ?? null,
+    // Tautan ke profil pemeliharanya, kalau ia badan. 576 varietas dipegang pemulia
+    // perorangan dan mereka sengaja tidak punya profil; untuk itu medannya tidak ditulis,
+    // dan namanya tetap tampil apa adanya di `pemelihara`.
+    ...(principalPerNama.get(kunciNama(v.maintainer))
+      ? { pk: principalPerNama.get(kunciNama(v.maintainer)).key }
+      : {}),
     // kind_label dibawa apa adanya: "Pendaftaran" saja mencakup empat instrumen
     // berbeda, dan meratakannya membuang persis informasi yang membedakan.
     surat: (v.permits ?? [])
@@ -432,7 +512,12 @@ const setaraRinci = Object.entries(setara).map(([kunci, anggota]) => ({
   kunci,
   anggota: anggota.map((id) => {
     const r = namaProduk.get(id);
-    return { i: id, n: r?.nama ?? '', k: r?.produsen ?? null, p: r?.daftar ?? null };
+    // `pk` = key principal. Cukup satu kata untuk membuat nama pemegang di tabel setara jadi
+    // tautan ke profilnya; tanpa itu, satu-satunya jalan adalah mengunduh peta 3.136 baris.
+    return {
+      i: id, n: r?.nama ?? '', k: r?.produsen ?? null, p: r?.daftar ?? null,
+      ...(r?.pcp ? { pk: r.pcp.key } : {}),
+    };
   }),
 }));
 const pecahanSetara = pecah(setaraRinci);
@@ -610,7 +695,10 @@ const anggotaBahan = (r, zatIni) => {
     ? `+ ${lain.slice(0, 2).map((c) => `${c.nama} ${angka(c.nilai)} ${c.satuan}`).join(' · ')}` +
       (lain.length > 2 ? ` · +${lain.length - 2}` : '')
     : null;
-  return { i: r.id, n: r.nama, k: r.produsen ?? null, p: petaPecahan.get(r.id), ...(f ? { f } : {}) };
+  return {
+    i: r.id, n: r.nama, k: r.produsen ?? null, p: petaPecahan.get(r.id),
+    ...(r.pcp ? { pk: r.pcp.key } : {}), ...(f ? { f } : {}),
+  };
 };
 const bahanRinci = [...perZat.entries()]
   .sort((a, b) => a[0].localeCompare(b[0]))
@@ -667,22 +755,148 @@ pecahanBahan.forEach((kelompok, i) => {
   berkasBahan.push([nomor, isi]);
 });
 
+// ---------------------------------------------------------------------------
+// Principal — profil badan pemegang pendaftaran
+// ---------------------------------------------------------------------------
+// Satu berkas memuat beberapa profil sekaligus, dipecah menurut anggaran yang sama dengan
+// produk. Daftar produknya ikut DI DALAM profil, bukan di berkas kedua: profil terbesar —
+// PT East West Seed Indonesia, 347 pendaftaran — berukuran sekitar 34 KB, masih di bawah
+// anggaran, dan memecahnya dua tingkat berarti dua perjalanan untuk halaman yang justru
+// pertanyaannya "perusahaan ini punya apa saja".
+//
+// Yang TIDAK ikut ke sini: `registry_names` selengkapnya. Ejaan mentah registri berguna saat
+// membangun, tidak saat membaca — dan pada beberapa badan jumlahnya belasan.
+const perPrincipal = new Map();
+for (const b of principal) perPrincipal.set(b.id, []);
+
+for (const r of semuaProduk) {
+  if (!r.pcp) continue;
+  perPrincipal.get(r.pcp.id)?.push({
+    i: r.id, n: r.nama, j: r.jenis, d: r.daftar ?? null, p: petaPecahan.get(r.id),
+    ...(r.gambar?.length ? { g: 1 } : {}),
+  });
+}
+for (const r of semuaVarietas) {
+  const b = principalPerNama.get(kunciNama(r.pemelihara));
+  if (!b) continue;
+  perPrincipal.get(b.id)?.push({
+    i: r.id, n: r.nama, j: 'varietas', k: r.komoditasNama ?? null, p: petaPecahan.get(r.id),
+  });
+}
+
+const principalRinci = principal.map((b) => {
+  const punya = (perPrincipal.get(b.id) ?? []).sort((a, x) =>
+    a.j.localeCompare(x.j) || String(a.d ?? '').localeCompare(String(x.d ?? '')) || a.n.localeCompare(x.n));
+  return {
+    id: b.id,
+    key: b.key,
+    nama: b.label?.id ?? '',
+    bentuk: b.entity_form ?? null,
+    sektor: b.sectors ?? [],
+    punya: b.holdings,
+    ...(b.seed_profile ? { benih: b.seed_profile } : {}),
+    // Blok pengaya dibawa UTUH beserta tingkat bukti dan alasannya. Layar wajib
+    // menampilkannya terpisah dari angka registri; memisahkannya di sini, bukan di penyaji,
+    // membuat pemisahan itu tidak bisa lupa dilakukan.
+    ...(b.profile ? { pengaya: b.profile } : {}),
+    daftar: punya,
+  };
+});
+
+// Satu berkas per badan, bukan pecahan menurut anggaran seperti produk. Sebabnya bukan
+// ukuran — profil terbesar 34 KB, masih muat — melainkan TAUTAN. Setiap nama pemegang yang
+// muncul di layar mana pun harus bisa menunjuk ke profilnya, dan itu berarti tiap tautan
+// perlu tahu berkas mana yang memuatnya. Dengan pecahan menurut anggaran, nomor berkas itu
+// tidak bisa diturunkan dari apa pun: ia harus dibawa serta di TIAP entri — di daftar setara,
+// di tabel merek per kadar, di kartu hasil pencarian — atau peta 3.136 baris harus diunduh
+// tiap halaman. Satu berkas per `key` menghapus keduanya: jalurnya `principal/<key>`, dan
+// yang perlu dibawa satu kata yang memang sudah ada.
+const kunciPrincipal = (k) => k.replace(/[^a-z0-9-]/gi, '');
+const berkasPrincipal = {};
+const petaPrincipal = new Map();
+for (const b of principalRinci) {
+  const k = kunciPrincipal(b.key);
+  berkasPrincipal[k] = b;
+  petaPrincipal.set(b.id, `principal/${k}`);
+}
+
+// ---------------------------------------------------------------------------
+// Harga komoditas — satu berkas per varian, dan satu kepala untuk daftarnya
+// ---------------------------------------------------------------------------
+// Berbeda dari produk: yang membuka halaman harga membutuhkan SELURUH serinya sekaligus,
+// karena grafiknya memang seluruh seri. Jadi pemecahannya per varian, bukan per anggaran.
+// Seri terpanjang 634 titik ≈ 14 KB — di bawah anggaran tanpa perlu dipecah.
+const kunciHarga = (k) => k.replace(/[^a-z0-9-]/gi, '');
+const komentarPer = hargaKomentar?.komentar ?? {};
+
+const berkasHarga = {};
+for (const h of hargaSeri) {
+  const k = kunciHarga(h.key);
+  const kom = komentarPer[h.key];
+  berkasHarga[k] = {
+    id: h.id,
+    key: h.key,
+    nama: h.label?.id ?? '',
+    kelompok: h.commodity_group ?? null,
+    komoditas: h.commodity ?? null,
+    tingkat: h.price_level,
+    satuan: h.unit,
+    qty: h.qty ?? 1,
+    timbangan: h.weighting,
+    cakupan: h.coverage,
+    ...(h.series ? { seri: h.series } : {}),
+    ...(h.stats ? { statistik: h.stats } : {}),
+    ...(h.empty_reason ? { kosong: h.empty_reason } : {}),
+    // Komentar dibawa bersama `fakta` yang dipakai menulisnya, dan bersama `sumber` yang
+    // menyebut siapa penulisnya. Tanpa keduanya kalimat itu tidak bisa diperiksa siapa pun —
+    // dan itu persis keberatan B5 yang membuat kapabilitas ini ditunda.
+    ...(kom
+      ? { komentar: { teks: kom.komentar, batas: kom.batas, sumber: kom.sumber, ditinjau: kom.ditinjau ?? null } }
+      : {}),
+  };
+}
+
+// Kepala daftar harga: cukup untuk menggambar halaman indeks tanpa mengambil 88 berkas seri.
+const kepalaHarga = hargaSeri
+  .map((h) => ({
+    k: kunciHarga(h.key),
+    n: h.label?.id ?? '',
+    g: h.commodity_group ?? null,
+    s: h.unit,
+    ...(h.stats?.terakhir ? { p: h.stats.terakhir.p, t: h.stats.terakhir.t, u30: h.stats.ubah30 } : {}),
+    ...(h.series ? {} : { kosong: true }),
+    ...(h.commodity ? { c: h.commodity.id } : {}),
+  }))
+  .sort((a, b) => (Number(Boolean(a.kosong)) - Number(Boolean(b.kosong))) || a.n.localeCompare(b.n, 'id'));
+
 const cari = {};
+// `_k` medan SEMENTARA: nama yang dipakai memfilekan entri ini, yang tidak selalu sama
+// dengan nama yang ditampilkan. Pendalaman ember harus memakai kunci itu, bukan `n` —
+// kalau tidak, alias "Probolinggo" untuk "Pemerintah Daerah Kabupaten Probolinggo" akan
+// dipindahkan ke ember "pe" begitu embernya didalamkan, dan alias itu jadi tak terjangkau
+// dari kata yang justru dibuatkan untuknya. Dibuang sebelum ditulis.
 const tambah = (nama, entri) => {
   const e = ember(nama);
-  (cari[e] ??= []).push(entri);
+  (cari[e] ??= []).push(nama === entri.n ? entri : { ...entri, _k: nama });
 };
 
 for (const r of [...semuaProduk, ...semuaVarietas]) {
   // `f` cuma ditulis kalau ada isinya — medan bernilai null pada 26 ribu entri
   // memakan pecahan tanpa memberi tahu apa pun.
   const f = r.jenis === 'varietas' ? null : pembeda(r);
+  // Varietas menautkan pemeliharanya lewat `principalPerNama`; produk lewat `pcp` yang sudah
+  // terpasang di rinciannya. Keduanya menghasilkan `pk` yang sama bentuknya, sehingga kartu
+  // hasil pencarian tidak perlu tahu ia sedang melihat produk atau varietas.
+  const pk = r.jenis === 'varietas'
+    ? principalPerNama.get(kunciNama(r.pemelihara))?.key
+    : r.pcp?.key;
   tambah(r.nama, {
     n: r.nama,
     i: r.id,
     j: r.jenis,
     k: r.jenis === 'varietas' ? r.komoditasNama : r.produsen,
     ...(f ? { f } : {}),
+    ...(pk ? { pk } : {}),
     p: petaPecahan.get(r.id),
   });
 }
@@ -699,6 +913,57 @@ for (const b of bahanRinci) {
     p: petaBahan.get(b.id),
   });
 }
+
+// Principal masuk ke ember yang sama juga. Yang mengetik "Petrokimia" sedang menyebut sebuah
+// perusahaan, bukan sebuah merek — dan hari ini kotak itu menjawabnya nol.
+const SEKTOR = { pesticide: 'pestisida', fertilizer: 'pupuk', seed: 'benih' };
+// Awalan yang dipakai ratusan badan bersamaan, sehingga ia tidak membedakan apa pun. Dibuang
+// hanya untuk membentuk kunci pencarian KEDUA; nama yang ditampilkan tetap utuh.
+// Bentuk badan ikut dikupas, dan itu bukan sekadar kerapian: hampir seluruh perusahaan di
+// registri bernama "PT ...", sehingga ketiganya menumpuk di satu ember. Yang mencari
+// "East West" tidak mengetik "PT" lebih dulu — ia mengetik nama yang diingatnya.
+const AWALAN_LEMBAGA =
+  /^(pt|cv|ud|koperasi|kud|perum|perusahaan\s+perseroan(\s+\(persero\))?)\.?\s+|^(pemerintah\s+(daerah\s+)?(kabupaten|kota|provinsi)?|pemerintah|dinas\s+[\w\s]*?(kabupaten|kota|provinsi)|dinas|balai\s+(besar\s+)?(penelitian|pengkajian|pengembangan)?(\s+tanaman)?|universitas|fakultas\s+[\w\s]*?,?|institut|politeknik)\s+/i;
+for (const b of principalRinci) {
+  const isi = ['pesticide', 'fertilizer', 'seed']
+    .filter((x) => b.punya[x] > 0)
+    .map((x) => `${b.punya[x]} ${SEKTOR[x]}`)
+    .join(' · ');
+  const entri = {
+    n: b.nama,
+    i: b.id,
+    j: 'principal',
+    k: isi || 'tanpa pendaftaran tercatat',
+    ...(b.bentuk && b.bentuk !== 'tidak_diketahui' ? { f: b.bentuk } : {}),
+    p: petaPrincipal.get(b.id),
+  };
+  tambah(b.nama, entri);
+
+  // Kunci kedua tanpa awalan lembaga. "Pemerintah Kabupaten Probolinggo" juga terdaftar di
+  // bawah "Probolinggo", karena kata itulah yang diingat orang — dan karena tanpa itu, satu-
+  // satunya jalan menemukannya adalah mengeja sembilan belas huruf yang sama untuk 676 badan.
+  const tanpaAwalan = samakanNama(b.nama).replace(AWALAN_LEMBAGA, '');
+  if (tanpaAwalan && rapikan(tanpaAwalan) !== rapikan(b.nama) && rapikan(tanpaAwalan).length >= 3) {
+    tambah(tanpaAwalan, { ...entri, n: b.nama });
+  }
+}
+
+// Harga ikut ke kotak yang sama. "cabai" sekarang bisa berarti tiga hal — OPT, produk, dan
+// harga — dan kartunya yang membedakan, bukan pintu masuk yang berbeda.
+for (const h of hargaSeri) {
+  const k = kunciHarga(h.key);
+  const b = berkasHarga[k];
+  tambah(h.label?.id ?? '', {
+    n: h.label?.id ?? '',
+    i: h.id,
+    j: 'harga',
+    k: b.seri
+      ? `${b.statistik.terakhir.p.toLocaleString('id-ID', { maximumFractionDigits: 0 })}/${h.unit} · ${b.statistik.terakhir.t}`
+      : 'diterbitkan SP2KP tanpa satu pun angka',
+    ...(h.commodity_group ? { f: h.commodity_group } : {}),
+    p: `harga/${k}`,
+  });
+}
 for (const e of Object.keys(cari)) cari[e].sort((a, b) => a.n.localeCompare(b.n) || a.i.localeCompare(b.i));
 
 // Beberapa awalan jauh lebih padat dari yang lain — "ma" sendiri 80 KB. Yang
@@ -707,12 +972,21 @@ for (const e of Object.keys(cari)) cari[e].sort((a, b) => a.n.localeCompare(b.n)
 // alih-alih dua tanpa perlu satu perjalanan gagal lebih dulu.
 const cariDalam = [];
 const muat = (isi) => Buffer.byteLength(JSON.stringify(isi), 'utf8') <= ANGGARAN;
-for (let panjang = 2; panjang < 8; panjang++) {
+// Batasnya dulu 8 dan itu diam-diam gagal begitu principal masuk: 676 badan bernama
+// "Pemerintah Kabupaten X" berbagi sembilan belas huruf pertama, sehingga `cari/pemerint.json`
+// berhenti didalamkan pada 64 KB — sepertiga di atas anggaran, pada permukaan yang syarat
+// lapangannya sinyal buruk. Batasnya dinaikkan sampai pendalaman benar-benar selesai.
+//
+// Konsekuensinya nyata dan sengaja diterima: mengetik "pemerintah" saja akan dijawab "tambah
+// huruf lagi", karena embernya memang belum cukup sempit. Yang menutupi itu bukan pengecualian
+// di sini melainkan kunci tambahan di bawah — badan berawalan lembaga juga terdaftar di bawah
+// nama tempatnya, sehingga "bandung" menemukannya tanpa mengeja awalannya.
+for (let panjang = 2; panjang < 32; panjang++) {
   const gemuk = Object.keys(cari).filter((e) => e.length === panjang && !muat(cari[e]));
   if (!gemuk.length) break;
   for (const e of gemuk) {
     for (const r of cari[e]) {
-      const dalam = (rapikan(r.n) + '_______').slice(0, panjang + 1);
+      const dalam = (rapikan(r._k ?? r.n) + '_______').slice(0, panjang + 1);
       (cari[dalam] ??= []).push(r);
     }
     delete cari[e];
@@ -720,6 +994,10 @@ for (let panjang = 2; panjang < 8; panjang++) {
   }
 }
 cariDalam.sort();
+
+// Medan sementara dibuang di sini, sesudah pendalaman selesai dan sebelum apa pun ditulis.
+// Yang dibutuhkan penyaji hanya nama tampilnya; kunci filenya urusan pembangun.
+for (const e of Object.keys(cari)) for (const r of cari[e]) delete r._k;
 
 // Indeks OPT dipecah dua tingkat, karena satu berkas per komoditas bisa mencapai
 // 960 KB — kelapa sawit sendiri punya 622 produk untuk satu gulma. Tingkat pertama
@@ -1192,6 +1470,34 @@ const batas = {
       alasan:
         'Belum ditetapkan, dan itu disengaja. Teksnya disusun dari agronomi mapan — bukan dari registri — dan belum ditinjau penyuluh atau BPTP; daftar tinjauannya sudah siap di docs/14-tinjauan-gejala.md. Menandainya C berarti mengklaim konsensus penyuluh yang belum pernah diminta kepada seorang penyuluh pun.',
     },
+    harga: {
+      label: 'Harga eceran nasional tertimbang — SP2KP',
+      penerbit: 'Kementerian Perdagangan RI',
+      url: 'https://sp2kp.kemendag.go.id/',
+      tarikan: hargaSeri.length ? '2026-08-23' : null,
+      tinjau: '2026-09-23',
+      status: 'draft',
+      lisensi: 'Data Terbuka (Portal Satu Data Kemendag) — atribusi wajib',
+      cacah: hargaSeri.filter((h) => h.series?.length).length,
+      tingkat: 'B',
+      alasan:
+        'Survei harga resmi kementerian, disalin apa adanya. Bukan A: yang dicatat hasil pencacahan pasar, bukan uji multi-lokasi. Tingkat ini berlaku untuk ANGKANYA saja — kalimat komentar di halaman yang sama bertingkat D dan menyebutkannya sendiri, karena tafsir tidak mewarisi tingkat sumbernya.',
+      atribusi:
+        'Sumber: Portal Satu Data Kementerian Perdagangan (satudata.kemendag.go.id) – 2026, diolah kembali oleh Open Protocols.',
+    },
+    principal: {
+      label: 'Badan pemegang pendaftaran',
+      penerbit: 'Kementerian Pertanian RI',
+      url: 'https://ap-simpel.pertanian.go.id/',
+      tarikan: '2026-08-19',
+      tinjau: '2026-11-19',
+      status: 'draft',
+      lisensi: 'CC-BY-SA-4.0',
+      cacah: principalRinci.length,
+      tingkat: 'B',
+      alasan:
+        'Diturunkan dari nama pemegang pendaftaran di kedua registri Kementan, diseragamkan lewat berkas alias yang mencatat tiap penggabungan beserta alasannya. Tingkat ini berlaku untuk CACAH PENDAFTARAN dan ejaan namanya. Blok pengaya pada 151 badan — grup induk, negara asal, merek payung, situs — datang dari riset web dan bertingkat D; layar menampilkannya terpisah, dan tidak pernah dicampur ke angka registri.',
+    },
     namaLokal: {
       label: 'Kamus nama lokal',
       penerbit: 'Open Protocols',
@@ -1250,6 +1556,18 @@ const meta = {
     dosisPerLiter: bentukDosis.perLiter,
     dosisKosong: bentukDosis.kosong,
     dosisLain: bentukDosis.lain,
+    principal: principalRinci.length,
+    principalPupuk: principalRinci.filter((b) => b.punya.fertilizer > 0).length,
+    principalPestisida: principalRinci.filter((b) => b.punya.pesticide > 0).length,
+    principalBenih: principalRinci.filter((b) => b.punya.seed > 0).length,
+    principalBerpengaya: principalRinci.filter((b) => b.pengaya).length,
+    produkBerprincipal: semuaProduk.filter((r) => r.pcp).length,
+    produkBergambar: semuaProduk.filter((r) => r.gambar?.length).length,
+    gambarKemasan: semuaProduk.reduce((a, r) => a + (r.gambar?.length ?? 0), 0),
+    hargaVarian: hargaSeri.length,
+    hargaBerangka: hargaSeri.filter((h) => h.series?.length).length,
+    hargaTitik: hargaSeri.reduce((a, h) => a + (h.series?.length ?? 0), 0),
+    hargaKomoditasTersambung: new Set(hargaSeri.filter((h) => h.commodity).map((h) => h.commodity.id)).size,
     sidikKandungan: kandungan.size,
     produkBerkandungan: [...kandungan.values()].reduce((a, d) => a + d.length, 0),
   },
@@ -1262,6 +1580,14 @@ const meta = {
     varietas: pecahanVarietas.length,
     opt: [...perKomoditas.keys()].map(kunciKomoditas).sort(),
     kandungan: Object.keys(berkasKandungan).sort(),
+    // Sengaja CACAH, bukan daftar. Daftar 3.136 kunci principal membengkakkan meta.json dari
+    // 19 KB jadi 114 KB — dan meta.json satu-satunya berkas yang diambil di TIAP muat halaman,
+    // termasuk halaman yang tidak menyentuh principal sama sekali. Penyaji tidak
+    // membutuhkannya: jalurnya `principal/<key>`, dan key-nya sudah dibawa tautan yang diklik.
+    // Hal yang sama berlaku untuk harga; daftarnya ada di harga.json, yang diambil hanya oleh
+    // halaman yang memang menampilkannya.
+    principal: Object.keys(berkasPrincipal).length,
+    harga: Object.keys(berkasHarga).length,
   },
   terbuang: {
     ...terbuang,
@@ -1291,6 +1617,16 @@ const meta = {
     haraSediaan:
       'Kadar hara sediaan buatan sendiri tidak diketahui sebelum batchnya diuji: L18 menolak menghitung hara dari batch yang belum diuji, dan kadar kompos berbeda tiap tumpukan. Karena itu resep jalur 5 muncul di jalur 3 tanpa rupiah per kg hara — tanpa angka, bukan dengan angka taksiran.',
     namaDagang: 'Registri menyimpan nama produk terdaftar; nama di kemasan bisa berbeda dan belum terpetakan.',
+    hargaPetani:
+      'Seluruh harga di indeks ini ECERAN NASIONAL. Berapa yang diterima petani tidak ada, dan jaraknya bukan celah cakupan yang bisa dirapatkan dengan menambah sampel: "harga produsen" yang dicatat negara pun sebenarnya harga beli pengumpul, karena respondennya memang pengumpul — di Kabupaten Karawang satu orang. Lihat docs/16 bagian 4.',
+    hargaWilayah:
+      'Harga per provinsi dan per pasar tidak diindeks. Endpoint yang memuatnya membawa NIK, NIP, nomor telepon, dan alamat pencacah pada tiap rekaman; penggantinya yang bersih berukuran 5.099.865 baris pada 10 baris per halaman, dan mengiterasinya melanggar ketentuan portal. Yang diindeks agregat nasionalnya, satu permintaan.',
+    hargaKomoditasTani:
+      'Dari 88 varian yang diterbitkan SP2KP hanya 43 berangka, dan hanya 23 komoditas di kosakata ini yang tersentuh. Keempat harga pupuk dan dua dari tiga harga benih diterbitkan TANPA satu pun angka. Komoditas tani lain — termasuk seluruh perkebunan — tidak punya harga di sini sama sekali.',
+    hargaPupuk:
+      'SP2KP mendaftarkan Pupuk Urea, NPK 15-15-15, SP-36, dan ZA tetapi tidak mengisi harganya: 13-15 tanggal mingguan pada paruh pertama 2024, seluruhnya kosong pada keempat ukuran tertimbang. Jalur 3 karena itu tetap mengandalkan masukan pengguna untuk rupiah per kg hara.',
+    gambarKemasan:
+      'Gambar kemasan ada pada 427 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',
@@ -1329,6 +1665,9 @@ pecahanProduk.forEach((s, i) => simpan(`produk/${String(i).padStart(3, '0')}.jso
 pecahanVarietas.forEach((s, i) => simpan(`varietas/${String(i).padStart(3, '0')}.json`, s));
 for (const [k, isi] of Object.entries(berkasOpt).sort()) simpan(`opt/${k}.json`, isi);
 for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan/${e}.json`, isi);
+for (const [k, isi] of Object.entries(berkasPrincipal).sort()) simpan(`principal/${k}.json`, isi);
+for (const [k, isi] of Object.entries(berkasHarga).sort()) simpan(`harga/${k}.json`, isi);
+if (kepalaHarga.length) simpan('harga.json', kepalaHarga);
 
 // ---------------------------------------------------------------------------
 // Cap bangunan — supaya penyaji tidak perlu bertanya "sudah berubah belum?"
@@ -1390,6 +1729,10 @@ console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
+console.log(`  principal/        : ${kb([...berkas].filter(([p]) => p.startsWith('principal/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasPrincipal).length} berkas — ${meta.jumlah.principal} badan, ${meta.jumlah.produkBerprincipal} dari ${semuaProduk.length} produk tertaut`);
+console.log(`  harga/            : ${kb([...berkas].filter(([p]) => p.startsWith('harga/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasHarga).length} varian — ${meta.jumlah.hargaBerangka} berangka, ${meta.jumlah.hargaVarian - meta.jumlah.hargaBerangka} diterbitkan tanpa angka, ${meta.jumlah.hargaTitik} titik`);
+console.log(`  gambar kemasan    : ${meta.jumlah.produkBergambar} dari ${semuaProduk.length} produk (${(meta.jumlah.produkBergambar / semuaProduk.length * 100).toFixed(1)}%), ${meta.jumlah.gambarKemasan} gambar`);
+console.log(`  komentar harga    : ${hargaKomentar ? `${Object.values(hargaKomentar.komentar ?? {}).filter((x) => x.sumber === 'model').length} model, ${Object.values(hargaKomentar.komentar ?? {}).filter((x) => x.sumber === 'terhitung').length} terhitung, ${Object.values(hargaKomentar.komentar ?? {}).filter((x) => !x.ditinjau).length} belum ditinjau orang` : 'TIDAK ADA — jalankan spec/tools/bangun-komentar-harga.mjs'}`);
 console.log('Enam berkas terbesar:');
 for (const [p, n] of terbesar) console.log(`  ${kb(n).padStart(10)}  ${p}`);
 

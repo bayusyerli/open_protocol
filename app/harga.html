@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harga komoditas — Open Protocols</title>
+<meta name="description" content="Harga eceran harian nasional untuk komoditas pangan, beserta riwayat dan pola bulanannya — dan pernyataan tegas soal apa yang angka ini tidak katakan.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Harga · eceran nasional</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1 id="judul">Harga komoditas</h1>
+  <p class="lede" id="lede">
+    Harga <strong>eceran</strong> harian nasional beserta riwayatnya. Bukan harga yang
+    diterima petani — dan jarak antara keduanya dijelaskan di bawah, bukan disembunyikan.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Halaman ini butuh JavaScript</h2>
+    <p>
+      Seri harga dibaca langsung dari berkas indeks di peramban — tidak ada server yang
+      menyusunnya. Tanpa JavaScript, tidak ada yang bisa ditampilkan.
+    </p>
+  </div>
+
+  <!-- Peringatan tingkat harga. Sengaja di ATAS angka, bukan di catatan kaki: yang membaca
+       "Rp32.216" lalu menyimpulkan itu harga jual di kebunnya akan salah sebesar seluruh
+       marjin rantai, dan kesalahan itu terjadi sebelum ia sempat menggulir. -->
+  <div class="kartu tabrakan" id="kartuTingkat">
+    <h2>Ini harga eceran, bukan harga petani</h2>
+    <p>
+      Seluruh angka di halaman ini <strong>harga eceran di pasar konsumen</strong>. Berapa
+      yang benar-benar diterima petani <strong>tidak ada di sini</strong>, dan tidak ada di
+      sumber terbuka mana pun.
+    </p>
+    <p class="catatan">
+      Bahkan yang dicatat negara sebagai "harga produsen" pun sebenarnya
+      <strong>harga beli pengumpul</strong> — respondennya pengumpul, penggilingan, dan
+      pedagang. Di Kabupaten Karawang, salah satu lumbung padi terbesar Indonesia,
+      respondennya <strong>satu orang</strong>. Jaraknya terpasang di dalam definisi, bukan
+      celah cakupan yang bisa dirapatkan dengan menambah sampel.
+    </p>
+  </div>
+
+  <form class="cari" id="formCari" role="search" onsubmit="return false">
+    <label for="q">Cari komoditas</label>
+    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="misal: beras, cabai, bawang merah" enterkeyhint="search">
+    <p class="bantuan" id="bantuan">Kosongkan untuk melihat seluruh daftar.</p>
+  </form>
+
+  <section id="daftar" aria-live="polite"></section>
+  <section id="rincian" tabindex="-1"></section>
+
+  <details class="batas">
+    <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>
+    <div class="batas-isi">
+      <h3>Cakupannya jauh dari seluruh komoditas</h3>
+      <p>
+        SP2KP menerbitkan 88 varian, dan <strong>hanya 43 di antaranya berangka</strong>.
+        Yang tersambung ke komoditas di platform ini <strong>23 dari 906</strong>. Seluruh
+        komoditas perkebunan — sawit, karet, kakao, kopi — <strong>tidak punya harga di
+        sini sama sekali</strong>.
+      </p>
+
+      <h3>Keempat harga pupuk diterbitkan tanpa angka</h3>
+      <p>
+        Pupuk Urea, NPK 15-15-15, SP-36, dan ZA ada di daftar SP2KP tetapi
+        <strong>tidak satu pun harganya terisi</strong> — 13 sampai 15 tanggal mingguan pada
+        paruh pertama 2024, seluruhnya kosong. Halaman ini menampilkannya apa adanya alih-alih
+        menghilangkannya, karena hasil nol terbaca sebagai "tidak ada harganya di mana pun",
+        padahal yang benar adalah "sumber ini tidak memuatnya".
+      </p>
+
+      <h3>Nasional, bukan daerah</h3>
+      <p>
+        Yang ditampilkan <strong>rata-rata nasional tertimbang penduduk</strong>. Harga per
+        provinsi dan per pasar tidak diambil: endpoint yang memuatnya membawa NIK, NIP, nomor
+        telepon, dan alamat pencacah pada tiap rekaman, dan penggantinya yang bersih menuntut
+        setengah juta permintaan — yang dilarang ketentuan portalnya sendiri.
+      </p>
+
+      <h3>Komentar di tiap halaman ditulis mesin dan belum ditinjau</h3>
+      <p>
+        Kalimat komentar bertingkat <strong>D</strong>, bukan B seperti angkanya. Ia tafsir
+        atas angka, bukan angka — dan belum dibaca seorang pun. Angka yang dipakai menulisnya
+        ikut disimpan bersamanya, jadi kalimatnya <strong>bisa diperiksa tanpa memercayai
+        penulisnya</strong>.
+      </p>
+    </div>
+  </details>
+
+  <p class="lain">
+    <a href="beranda.html">← Beranda</a> ·
+    <a href="index.html">Cek isi produk →</a> ·
+    <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
+    <a href="principal.html">Profil perusahaan →</a>
+  </p>
+
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: SP2KP Kementerian Perdagangan.</p>
+  </section>
+
+  <p class="atribusi" id="atribusi"></p>
+
+</main>
+
+<script type="module" src="harga.js"></script>
+</body>
+</html>

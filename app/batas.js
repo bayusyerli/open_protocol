@@ -131,6 +131,11 @@ const JUDUL_LUBANG = {
   isiKarung: 'Isi karung, bukan labelnya',
   dosisKosong: 'Dosis yang tidak tercatat di registri',
   takaranRumahTangga: 'Ukuran tutup botol, sendok, dan gelas',
+  hargaPetani: 'Harga yang diterima petani',
+  hargaWilayah: 'Harga per provinsi dan per pasar',
+  hargaKomoditasTani: 'Harga untuk komoditas tani selebihnya',
+  hargaPupuk: 'Harga pupuk dan benih',
+  gambarKemasan: 'Gambar kemasan',
 };
 
 function bacaLubang(acuan, meta, salah) {

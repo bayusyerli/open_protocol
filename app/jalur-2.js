@@ -12,7 +12,8 @@
  * yang sama dengan jalur 4, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali, namaPemegang } from './pustaka.js';
+import { blokGambar, pasangUsulGambar } from './gambar.js';
 import { layarVarietas } from './varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
 import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
@@ -36,6 +37,9 @@ document.getElementById('tanpaJs')?.remove();
 
 let larangan = null;
 let bahanKini = null;
+// Produk yang sedang terbuka. Dibaca formulir usul gambar saat tombolnya ditekan — bukan
+// disalin ke dalam markup, supaya tidak ada rekaman produk yang menganggur di DOM.
+let produkKini = null;
 
 // ---------------------------------------------------------------------------
 // Blok-blok layar rincian
@@ -150,7 +154,7 @@ async function blokSetara(p) {
         <table>
           <thead><tr><th>Merek</th><th>Pemegang</th><th>Nomor pendaftaran</th></tr></thead>
           <tbody>${lain.map((x) => `
-            <tr><td>${teks(x.n)}</td><td>${teks(x.k ?? '—')}</td><td class="angka">${teks(x.p ?? '—')}</td></tr>`).join('')}</tbody>
+            <tr><td>${teks(x.n)}</td><td>${namaPemegang(x.k, x.pk)}</td><td class="angka">${teks(x.p ?? '—')}</td></tr>`).join('')}</tbody>
         </table>
       </div>
       <p class="catatan">
@@ -185,6 +189,8 @@ async function buka(id, pecahan) {
     const p = (await ambil(pecahan)).find((x) => x.id === id);
     if (!p) throw new Error('tidak ada di pecahannya');
 
+    produkKini = p.jenis === 'varietas' ? null : p;
+
     if (p.jenis === 'varietas') {
       el.rincian.innerHTML = await layarVarietas(p);
     } else {
@@ -198,14 +204,14 @@ async function buka(id, pecahan) {
         <div class="kartu">
           <h2>${teks(p.nama)}<span class="lencana">${teks(JENIS[p.jenis] ?? p.jenis)}</span></h2>
           <dl class="kunci">
-            <dt>Pemegang pendaftaran</dt><dd>${teks(p.produsen ?? '—')}</dd>
+            <dt>Pemegang pendaftaran</dt><dd>${namaPemegang(p.produsen, p.pcp?.key)}</dd>
             <dt>Nomor pendaftaran</dt><dd>${teks(p.daftar ?? '—')}</dd>
             <dt>Berlaku sampai</dt><dd>${teks(tanggal(p.berlaku) ?? '—')}${p.status && p.status !== 'active' ? ` (${teks(p.status)})` : ''}</dd>
             <dt>Bentuk</dt><dd>${teks(p.bentuk ?? '—')}</dd>
           </dl>
           <p class="catatan">Cocokkan nomor pendaftaran itu dengan yang tertera di kemasan.</p>
         </div>
-        ${blokLarangan(p.isi)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_KEMBALI}`;
+        ${blokLarangan(p.isi)}${blokGambar(p)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_KEMBALI}`;
     }
 
     selesai();
@@ -218,6 +224,8 @@ async function buka(id, pecahan) {
       <p class="catatan">${teks(e.message)}</p></div>`;
   }
 }
+
+pasangUsulGambar(el.rincian, () => produkKini);
 
 for (const wadah of [el.hasil, el.rincian]) {
   wadah.addEventListener('click', async (ev) => {

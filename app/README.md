@@ -13,6 +13,8 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
 | `jalur-6.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
 | `takaran.html` | — kalibrasi semprot & takaran alat rumah tangga: aritmetika, bukan anjuran | D4 + D5 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
+| `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, dan komentar per seri | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
+| `principal.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
 
 `beranda.html` tidak punya perender rincian sama sekali. Ia mencari, lalu menautkan
@@ -33,7 +35,20 @@ dan apa yang tidak diketahui. Aturannya di bawah, pada bagiannya sendiri. Gayany
 tinggal di `batas.css` terpisah karena `gaya.css` dan `beranda.css` memakai nama token
 yang berbeda; satu berkas memetakan keduanya, alih-alih dua salinan aturan yang sama.
 
-`tema.js` dipakai kedelapan halaman juga — putaran tema, ikon, dan labelnya.
+`tema.js` dipakai seluruh halaman juga — putaran tema, ikon, dan labelnya.
+
+`gambar.js` perender bersama yang ketiga: blok gambar kemasan di layar rincian produk,
+beserta formulir usul gambar. Dua keadaan yang keduanya harus berbunyi — 427 dari 14.920
+produk punya gambar, jadi yang **lazim** adalah tidak ada, dan slot kosong yang diam
+terbaca sebagai "produk ini meragukan". Placeholder-nya karena itu bertulisan, bukan
+kotak abu-abu.
+
+`namaPemegang()` di `pustaka.js` menautkan nama badan ke profilnya, dan ia dipakai di
+enam tempat: rincian produk, tabel setara, tabel merek per kadar, kartu varietas, kartu
+hasil pencarian, dan daftar di halaman profil sendiri. Aturannya satu dan mudah menyimpang
+kalau disalin: **namanya selalu tampil, tautannya hanya kalau badan itu ada di kosakata.**
+576 varietas dipegang pemulia perorangan dan mereka sengaja tidak punya halaman profil —
+halaman bernama tentang orang adalah pemrosesan data pribadi tanpa dasar.
 
 `bahan.js` dan `varietas.js` sama-sama perender bersama, bukan halaman. Kartu
 bahan+kadar di jalur 2 memakai kelas dan perilaku buka-tutup yang persis sama dengan
@@ -51,6 +66,22 @@ Indeksnya turunan dan sengaja tidak disimpan di repositori, jadi bangun dulu:
 ```bash
 node spec/tools/bangun-indeks.mjs --tulis
 ```
+
+Tiga lapis yang dibaca pembangun indeks datang dari alatnya sendiri, dan **semuanya
+opsional** — indeks tetap terbangun tanpa mereka, hanya bagian yang datanya belum ada
+yang hilang, dan `meta.json` menyebutkannya. Urutannya:
+
+```bash
+node spec/tools/bangun-principal.mjs --tulis        # 3.136 badan pemegang pendaftaran
+node harga_data/tarik-sp2kp.mjs                     # satu permintaan ke SP2KP, ±56 MB
+node spec/tools/bangun-harga.mjs --tulis            # 88 varian, 43 di antaranya berangka
+node spec/tools/bangun-komentar-harga.mjs --tulis   # komentar per seri; jalan tanpa kredensial
+node gambar_produk/terbitkan.mjs --tulis            # salin gambar kemasan ke app/gambar/
+```
+
+`bangun-komentar-harga.mjs` memanggil model bahasa bila ada kredensial Anthropic, dan
+menyusun narasi dari aturan bila tidak. Keduanya ditandai berbeda di keluarannya
+(`sumber: "model"` atau `"terhitung"`) dan tidak pernah tertukar.
 
 Lalu sajikan **dari akar repositori** — halaman ini membaca `../spec/indeks/`, jadi
 menyajikan `app/` saja tidak cukup:

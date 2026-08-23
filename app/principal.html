@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Profil perusahaan — Open Protocols</title>
+<meta name="description" content="Profil badan pemegang pendaftaran pupuk, pestisida, dan varietas: apa saja yang terdaftar atas namanya, dan apa yang registri tidak catat.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Profil · pemegang pendaftaran</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1 id="judul">Perusahaan</h1>
+  <p class="lede" id="lede">
+    Apa saja yang terdaftar atas nama badan ini — dan apa yang registri tidak catat
+    tentangnya.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Halaman ini butuh JavaScript</h2>
+    <p>
+      Profil dibaca langsung dari berkas indeks di peramban — tidak ada server yang
+      menyusunnya. Tanpa JavaScript, tidak ada yang bisa ditampilkan.
+    </p>
+  </div>
+
+  <section id="isi" tabindex="-1"></section>
+
+  <!-- Pencarian badan lain, supaya halaman ini bukan jalan buntu. -->
+  <form class="cari" id="formCari" role="search" onsubmit="return false">
+    <label for="q">Cari perusahaan atau lembaga lain</label>
+    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="misal: Petrokimia, East West, Kabupaten Bandung" enterkeyhint="search">
+    <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
+  </form>
+  <section id="hasil" aria-live="polite"></section>
+
+  <details class="batas">
+    <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>
+    <div class="batas-isi">
+      <h3>Ini daftar pendaftaran, bukan katalog jualan</h3>
+      <p>
+        Yang tercantum adalah <strong>izin edar yang dipegang</strong>, bukan produk yang
+        sedang dijual. Sebuah merek bisa terdaftar bertahun-tahun tanpa pernah diproduksi,
+        dan produk yang izinnya sudah habis hilang dari registri asalnya — sehingga ia juga
+        hilang dari sini.
+      </p>
+
+      <h3>Nama yang sama belum tentu badan yang sama</h3>
+      <p>
+        Ejaan nama pemegang di registri tidak seragam, dan penyeragamannya dilakukan menurut
+        aturan yang tercatat — bukan menurut akta perusahaan. Badan dengan bentuk berbeda
+        (CV lawan PT) <strong>tidak pernah digabung diam-diam</strong>, dan singkatan tidak
+        pernah ditebak: "PT BCA" bisa Benih Citra Asia atau bukan, jadi ia dibiarkan berdiri
+        sendiri.
+      </p>
+
+      <h3>Keterangan perusahaan bukan dari registri</h3>
+      <p>
+        Grup induk, negara asal, merek payung, dan situs resmi <strong>tidak ada di registri
+        mana pun</strong>. Yang ada di halaman ini berasal dari riset web dan
+        <strong>belum diverifikasi ke sumber aslinya</strong>. Ia ditampilkan di kotak
+        terpisah dengan tingkat buktinya sendiri, dan tidak pernah dicampur ke angka
+        pendaftaran.
+      </p>
+
+      <h3>Pemulia perorangan tidak punya halaman di sini</h3>
+      <p>
+        576 varietas terdaftar atas nama orang, bukan badan. Namanya tetap tampil di kartu
+        varietasnya apa adanya, tetapi <strong>tidak dibuatkan halaman profil</strong> —
+        menyusun berkas tentang orang bernama dari sumber publik adalah pemrosesan data
+        pribadi yang tidak punya dasar di sini.
+      </p>
+    </div>
+  </details>
+
+  <p class="lain">
+    <a href="beranda.html">← Beranda</a> ·
+    <a href="index.html">Cek isi produk →</a> ·
+    <a href="harga.html">Harga komoditas →</a> ·
+    <a href="jalur-4.html">Cek keabsahan benih &amp; bibit →</a>
+  </p>
+
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri pupuk, pestisida, dan varietas Kementan.</p>
+  </section>
+
+</main>
+
+<script type="module" src="principal.js"></script>
+</body>
+</html>

@@ -546,3 +546,202 @@ a { color: var(--aksen); }
 #hasilKalibrasi table th,
 #hasilDosis table th,
 #hasilTakar table th { white-space: normal; width: 11rem; }
+
+/* ===========================================================================
+   Profil principal, harga komoditas, dan gambar kemasan
+   ===========================================================================
+   Ditambahkan 23 Agustus 2026. Tidak ada token warna baru di sini: ketiganya
+   memakai palet yang sudah ada, sehingga sakelar tema tidak perlu tahu bahwa
+   halaman-halaman ini ada. */
+
+/* Nama pemegang pendaftaran sebagai tautan.
+   Digarisbawahi, bukan sekadar berwarna: nama perusahaan muncul di dalam tabel
+   dan daftar definisi, tempat warna sendirian tidak cukup membedakan yang bisa
+   diketuk dari yang tidak. */
+.tautan-principal {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--aksen);
+  text-underline-offset: 2px;
+}
+.tautan-principal:hover,
+.tautan-principal:focus-visible { color: var(--aksen); }
+
+/* Baris daftar yang seluruhnya jadi tautan — dipakai daftar harga dan hasil
+   pencarian principal. Sasaran ketuknya sebaris penuh, bukan sepotong teks. */
+.baris-tautan {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.75rem;
+  align-items: baseline;
+  padding: 0.7rem 0.85rem;
+  color: inherit;
+  text-decoration: none;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar-kartu);
+}
+.baris-tautan:hover,
+.baris-tautan:focus-visible { border-color: var(--aksen); }
+.baris-tautan .nama { flex: 1 1 12rem; font-weight: 600; }
+.baris-tautan .sub { color: var(--teks-lemah); font-size: 0.9rem; }
+
+/* --- Kotak pengaya principal: tingkat bukti D di dalam halaman bertingkat B ---
+   Latar dan garisnya sengaja berbeda dari kartu biasa. Ini satu-satunya cara
+   visual menyatakan bahwa isinya TIDAK berasal dari registri, dan pemisahan itu
+   yang menahan tebakan riset agar tidak terbaca sesetara cacah pendaftaran. */
+.kartu.pengaya {
+  background: var(--awas-lemah);
+  border-color: var(--awas);
+}
+.lencana-d {
+  background: var(--awas);
+  color: var(--latar-kartu);
+  font-weight: 600;
+}
+.catatan-tegas { color: var(--teks); }
+.merek-payung {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  padding: 0;
+  margin: 0.5rem 0;
+  list-style: none;
+}
+.merek-payung li {
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+  font-size: 0.88rem;
+  background: var(--latar-kartu);
+}
+.situs { overflow-wrap: anywhere; }
+.ada-gambar { color: var(--aksen); font-weight: 600; }
+
+/* --- Harga --- */
+.daftar-harga { display: grid; gap: 0.5rem; padding: 0; margin: 1rem 0; list-style: none; }
+.daftar-harga .harga-kini { font-variant-numeric: tabular-nums; font-weight: 700; }
+.daftar-harga .satuan { color: var(--teks-lemah); font-weight: 400; font-size: 0.85em; }
+
+.harga-besar {
+  margin: 0.35rem 0 0.2rem;
+  font-size: clamp(1.9rem, 7vw, 2.6rem);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+.harga-besar .satuan { font-size: 0.42em; font-weight: 400; color: var(--teks-lemah); }
+
+/* Arah perubahan: kata dan tanda segitiga ikut, warna hanya menguatkan.
+   Warna sendirian tidak terbaca oleh yang buta warna, dan naik-turun harga
+   dibaca berlawanan oleh pembeli dan penjual — jadi tidak ada "hijau berarti
+   bagus" yang bisa diandalkan di sini. */
+.ubah, .ubah-keping { font-variant-numeric: tabular-nums; }
+.ubah-jangka { color: var(--teks-lemah); font-size: 0.82em; font-weight: 400; }
+.naik { color: var(--bahaya); }
+.turun { color: var(--aksen); }
+.datar { color: var(--teks-lemah); }
+
+.ubah-baris { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.9rem 0; }
+.ubah-keping {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  min-width: 5.5rem;
+}
+
+/* --- Grafik SVG --- */
+.grafik { margin: 1.1rem 0; }
+.grafik svg {
+  width: 100%;
+  height: auto;
+  max-height: 16rem;
+  overflow: visible;
+}
+.g-sumbu { stroke: var(--garis); stroke-width: 1; }
+.g-tahun { stroke: var(--garis); stroke-width: 1; stroke-dasharray: 3 4; }
+.g-garis { fill: none; stroke: var(--aksen); stroke-width: 1.8; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
+.g-titik { fill: var(--aksen); }
+.g-label { fill: var(--teks-lemah); font-size: 12px; font-variant-numeric: tabular-nums; }
+.grafik figcaption { color: var(--teks-lemah); font-size: 0.85rem; margin-top: 0.4rem; }
+
+.kartu.komentar .komentar-teks { margin: 0.4rem 0 0.9rem; }
+.atribusi { color: var(--teks-lemah); font-size: 0.82rem; margin-top: 1.5rem; }
+
+/* --- Gambar kemasan --- */
+.kemasan { margin: 0.6rem 0; }
+.kemasan img {
+  display: block;
+  width: 100%;
+  max-width: 22rem;
+  height: auto;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar);
+}
+.kemasan figcaption { color: var(--teks-lemah); font-size: 0.85rem; margin-top: 0.4rem; }
+
+.kemasan-lain { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0.7rem 0; }
+.kemasan-lain img {
+  width: 5.5rem;
+  height: auto;
+  border: 1px solid var(--garis);
+  border-radius: 6px;
+  background: var(--latar);
+}
+.kemasan-lain figcaption { color: var(--teks-lemah); font-size: 0.75rem; text-align: center; }
+
+/* Placeholder. Sengaja BERTULISAN, bukan kotak abu-abu: 14.493 dari 14.920
+   produk mendarat di sini, jadi keadaan yang lazim adalah keadaan ini — dan
+   kotak kosong yang diam terbaca sebagai "produk ini meragukan". */
+.kemasan-kosong {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1.6rem 1rem;
+  max-width: 22rem;
+  border: 1px dashed var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar);
+  text-align: center;
+}
+.kemasan-ikon svg { fill: none; stroke: var(--teks-lemah); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; opacity: 0.65; }
+.kemasan-kosong-judul { margin: 0; color: var(--teks-lemah); font-weight: 600; }
+
+/* --- Formulir usul gambar --- */
+.usul-gambar { margin-top: 1rem; border-top: 1px solid var(--garis); padding-top: 0.8rem; }
+.usul-gambar > summary { cursor: pointer; font-weight: 600; color: var(--aksen); }
+.usul-isi { margin-top: 0.8rem; display: grid; gap: 0.35rem; }
+.usul-isi label { font-weight: 600; font-size: 0.9rem; margin-top: 0.5rem; }
+.usul-isi input,
+.usul-isi select,
+.usul-isi textarea {
+  width: 100%;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+  color: var(--teks);
+  background: var(--latar);
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+}
+.usul-isi input:focus-visible,
+.usul-isi select:focus-visible,
+.usul-isi textarea:focus-visible { outline: 2px solid var(--aksen); outline-offset: 1px; }
+.aksi-usul { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.8rem; }
+.usul-kabar { color: var(--aksen); font-size: 0.88rem; min-height: 1.2em; }
+.usul-pratinjau {
+  max-height: 14rem;
+  overflow: auto;
+  padding: 0.7rem;
+  font-size: 0.78rem;
+  background: var(--latar);
+  border: 1px solid var(--garis);
+  border-radius: 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

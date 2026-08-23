@@ -7,7 +7,7 @@
  * atasnya berarti mengarang. Dan taruhan benih adalah taruhan seluruh musim.
  */
 
-import { teks, tanggal, namaBerdekatan, HTML_KEMBALI } from './pustaka.js';
+import { teks, tanggal, namaBerdekatan, HTML_KEMBALI, namaPemegang} from './pustaka.js';
 import { catatLubang, LUBANG } from './ukur.js';
 
 // Keempatnya sama-sama terdengar "resmi" dan paling mudah tertukar justru di situ.
@@ -146,7 +146,7 @@ export async function layarVarietas(v) {
         <dt>Jenis tanaman</dt><dd>${teks(v.komoditasNama ?? '—')}</dd>
         <dt>Asal</dt><dd>${teks(v.asal ?? '—')}</dd>
         <dt>Tipe</dt><dd>${teks(v.tipe ?? 'tidak tercatat')}</dd>
-        <dt>Pemelihara</dt><dd>${teks(v.pemelihara ?? '—')}</dd>
+        <dt>Pemelihara</dt><dd>${namaPemegang(v.pemelihara, v.pk)}</dd>
       </dl>
       <p class="catatan">
         Pemelihara adalah pihak yang memelihara varietasnya — <strong>belum tentu</strong>

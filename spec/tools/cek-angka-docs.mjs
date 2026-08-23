@@ -32,7 +32,7 @@
 // "Abamektin 18" wajib menyaring satuan g/L, karena ada produk berabamektin 18 PERSEN.
 // Membedakan "dokumennya salah" dari "sondaannya salah" tetap pekerjaan manusia.
 
-import { readFileSync, readdirSync } from 'node:fs';
+import { readFileSync, readdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -171,6 +171,32 @@ cek('09', 'resep sisi pengendali', SED.filter((s) => sisi(s) === 6).length, 5);
 cek('09', 'PHI precautionary_default', SED.filter((s) => s.safety?.phi_basis === 'precautionary_default').length, 4);
 cek('08/09', 'bahan baku', L(J('spec/vocab/substance-organik.json')).length, 21);
 cek('08/09', 'bahan terlarang', L(J('spec/vocab/substance-organik.json')).filter((b) => b.on_farm?.status === 'prohibited').length, 2);
+
+// --- 15/16: principal dan harga, ditambahkan 23 Agustus 2026 ---------------
+// Keduanya kosakata turunan yang dibangun alat sendiri, jadi angkanya bergeser tiap kali
+// registri ditarik ulang atau SP2KP menerbitkan tanggal baru. Tanpa baris-baris ini, angka
+// di docs/15 dan docs/16 akan basi diam-diam — persis pola yang membuat alat ini ada.
+const PCP = existsSync(dari('spec/vocab/principal/principal.ndjson'))
+  ? nd('spec/vocab/principal/principal.ndjson') : null;
+const HRG = existsSync(dari('spec/vocab/harga/harga.ndjson'))
+  ? nd('spec/vocab/harga/harga.ndjson') : null;
+
+if (PCP) {
+  cek('15', 'badan pemegang pendaftaran', PCP.length, 3136);
+  cek('15', 'badan berpengaya riset (D)', PCP.filter((b) => b.profile).length, 151);
+  cek('15', 'badan di kedua registri', PCP.filter((b) =>
+    b.sectors.includes('seed') && (b.sectors.includes('pesticide') || b.sectors.includes('fertilizer'))).length, 19);
+}
+if (HRG) {
+  cek('16', 'varian harga diterbitkan', HRG.length, 88);
+  cek('16', 'varian harga berangka', HRG.filter((h) => h.series?.length).length, 43);
+  cek('16', 'varian harga TANPA angka', HRG.filter((h) => !h.series?.length).length, 45);
+  cek('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26475);
+  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 23);
+  // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
+  // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
+  cek('16', 'harga pupuk berangka', HRG.filter((h) => /^pupuk/i.test(h.label.id) && h.series?.length).length, 0);
+}
 
 // Sapuan teks: angka yang PERNAH salah dan sudah dikoreksi tidak boleh muncul lagi
 // di mana pun — termasuk di app/, yang menampilkannya ke pengguna. Koreksi dokumen

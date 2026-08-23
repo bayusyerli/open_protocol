@@ -11,7 +11,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 |---|---|
 | [`docs/00-fondasi-dan-tahapan.md`](docs/00-fondasi-dan-tahapan.md) | Dokumen fondasi: diagnosis, arsitektur tiga lapis, delapan fase beserta gate-nya, konteks regulasi Indonesia, metrik, dan risiko |
 | [`spec/`](spec/) | Spesifikasi Lapis 1 (ontologi) dan **Lapis 2 (protokol)** v0.1 — skema, kosakata, contoh, pemeriksa, dan uji negatif |
-| [`app/`](app/) | **Permukaan baca-saja yang sudah berjalan** — keenam jalur sebagai berkas statis, tanpa kerangka kerja dan tanpa server aplikasi |
+| [`app/`](app/) | **Permukaan baca-saja yang sudah berjalan** — keenam jalur ditambah halaman harga komoditas dan profil perusahaan, sebagai berkas statis, tanpa kerangka kerja dan tanpa server aplikasi |
 | [`docs/10-peta-modul.md`](docs/10-peta-modul.md) | Peta modul & urutan bangun menurut tiga fase model bisnis: trust layer dan instrumentasi lebih dulu, Lapis 2 sebagai prasyarat fase ketiga, dan tiga fitur yang terhalang lubang data |
 | [`docs/11-instrumentasi.md`](docs/11-instrumentasi.md) | Instrumentasi enam jalur: definisi tiap angka, empat batas rancangannya, dan kenapa nol serta tak-sanggup bukan kegagalan |
 | [`docs/12-kadensi-registri.md`](docs/12-kadensi-registri.md) | Kadensi penyegaran registri: per musim, siapa menarik dan siapa memeriksa, apa yang dibaca dalam diff, dan rantai yang masih putus |
@@ -44,6 +44,26 @@ substansi pestisida** (1.706 termasuk yang digantikan penggabungan ejaan), **778
 komoditas** (906 termasuk yang digantikan penyatuan serumpun). Registri varietas
 menyusul dengan **11.227 varietas**, 52,4% di antaranya mewarisi skala fase lewat
 komoditasnya.
+
+Di sisi yang sama, **3.136 badan pemegang pendaftaran** kini punya entitasnya sendiri —
+perusahaan, balai penelitian, dinas, perguruan tinggi, dan pemerintah daerah — hasil
+penyeragaman nama pemegang di **kedua** registri sekaligus. Satu rekaman per badan, bukan
+per registri: 19 di antaranya memegang pendaftaran di kedua sisi, dan memecahnya akan
+membelah daftar produknya jadi dua halaman yang masing-masing tampak setengah benar. 14.920
+dari 14.920 produk tertaut ke pemegangnya.
+
+Pemulia perorangan **sengaja tidak dijadikan entitas**: 576 varietas terdaftar atas nama
+orang, dan halaman profil bernama tentang orang adalah pemrosesan data pribadi yang tidak
+punya dasar di sini. Namanya tetap tampil di kartu varietasnya; yang tidak dibuat hanyalah
+halaman dan tautannya.
+
+Harga komoditas masuk lewat satu-satunya sumber harian yang berlisensi terbuka: **43 seri
+harian nasional dari SP2KP Kemendag**, 3 Januari 2024 – 21 Agustus 2026, 26.475 titik,
+ditarik dalam **satu permintaan**. Seluruhnya **harga eceran** — bukan harga yang diterima
+petani, dan jaraknya terpasang di dalam definisi sumbernya, bukan celah cakupan. Dari 88
+varian yang SP2KP terbitkan, 45 **tidak diisi angkanya sama sekali** — termasuk keempat
+harga pupuk; keduanya tetap tampil, karena hasil nol terbaca sebagai "tidak ada harganya di
+mana pun" padahal yang benar "sumber ini tidak memuatnya".
 
 `npm run all` memeriksa 30.422 dokumen; 99,5% membawa pemetaan ke KEMENTAN, AgrO, ICASA,
 EPPO, GBIF, atau BBCH.

@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/harga.schema.json",
+  "title": "Harga — satu seri harga untuk satu varian komoditas",
+  "description": "Satu rekaman per VARIAN, bukan per komoditas: SP2KP memberi harga untuk 'Beras Premium' dan 'Beras Medium' secara terpisah, dan meratakannya jadi satu 'Beras' menghapus persis selisih yang menentukan. Yang disimpan hanya harga eceran nasional tertimbang penduduk; tingkat produsen dan tingkat petani TIDAK ada di sini karena tidak ada di sumber mana pun yang boleh diterbitkan — lihat docs/16-sumber-harga-komoditas.md bagian 4.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:hrg:[0-9]{8}$"
+    },
+    "commodity_group": {
+      "type": "string",
+      "description": "Kelompok induk menurut SP2KP, mis. 'Beras' untuk 'Beras Premium'. Milik sumbernya, bukan taksonomi kita."
+    },
+    "commodity": {
+      "$ref": "common.schema.json#/$defs/Ref",
+      "description": "Tautan ke komoditas di kosakata sendiri, bila ada padanannya. 51 dari 88 varian TIDAK punya padanan karena memang bukan komoditas tani — besi beton, semen, triplek, LPG. Medannya dikosongkan, bukan dipaksakan."
+    },
+    "price_level": {
+      "type": "string",
+      "description": "Tingkat rantai tempat harga ini diukur. Hanya `retail` yang ada; `producer` dan `farmgate` sengaja tidak pernah bernilai di sini supaya layar tidak bisa menayangkan harga eceran seolah harga petani.",
+      "enum": [
+        "retail",
+        "wholesale",
+        "producer",
+        "farmgate"
+      ]
+    },
+    "unit": {
+      "type": "string",
+      "description": "Satuan sebagaimana dipakai sumbernya — kg, lt, ekor, bks, dan seterusnya. Wajib tampil di layar bersama angkanya."
+    },
+    "qty": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "weighting": {
+      "type": "string",
+      "description": "Cara rata-rata nasional ditimbang. `penduduk` yang dipakai layar; tiga ukuran lain (SBH, geometrik penduduk, geometrik SBH) ada di harga_data/sp2kp-hnt.ndjson dan selisihnya tidak nol.",
+      "enum": [
+        "penduduk",
+        "sbh",
+        "geom_penduduk",
+        "geom_sbh"
+      ]
+    },
+    "coverage": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string",
+          "format": "date",
+          "description": "Tidak ada bila tak satu pun titik berangka."
+        },
+        "to": {
+          "type": "string",
+          "format": "date"
+        },
+        "points": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "gaps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Jumlah hari kalender di dalam rentang yang tidak punya angka. Ditampilkan, bukan diinterpolasi diam-diam."
+        }
+      },
+      "required": [
+        "points"
+      ],
+      "additionalProperties": false
+    },
+    "series": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Titik harga harian, urut menaik menurut tanggal. Nilainya rupiah per `qty` `unit`. TIDAK ADA pada varian yang diterbitkan SP2KP tanpa satu pun angka terisi — 45 dari 88 pada tarikan 23 Agustus 2026, termasuk keempat harga pupuk. Varian seperti itu tetap jadi entitas dan wajib membawa `empty_reason`, karena menghapusnya membuat layar diam untuk nama yang benar-benar dicari orang.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "t": {
+            "type": "string",
+            "format": "date"
+          },
+          "p": {
+            "type": "number",
+            "minimum": 0
+          }
+        },
+        "required": [
+          "t",
+          "p"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "stats": {
+      "type": "object",
+      "description": "Turunan yang dihitung ulang tiap bangun. Disimpan karena layar dan pembangkit komentar sama-sama membacanya — bukan supaya ada dua sumber kebenaran.",
+      "additionalProperties": true
+    },
+    "empty_reason": {
+      "type": "string",
+      "minLength": 10,
+      "description": "Wajib bila `series` tidak ada. Menyebut apa yang diterbitkan sumbernya dan apa yang tidak — bukan menyimpulkan komoditasnya tidak berharga."
+    }
+  },
+  "required": [
+    "id",
+    "key",
+    "label",
+    "lifecycle",
+    "price_level",
+    "unit",
+    "weighting",
+    "coverage"
+  ],
+  "anyOf": [
+    {
+      "required": [
+        "series"
+      ]
+    },
+    {
+      "required": [
+        "empty_reason"
+      ]
+    }
+  ]
+}

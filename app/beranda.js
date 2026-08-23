@@ -34,11 +34,22 @@ const el = {
 // di jalur 1, karena di sanalah blok "pastikan dulu" berada.
 const RUMAH = { varietas: 'jalur-4.html', pestisida: 'index.html', pupuk: 'index.html', bahan: 'index.html' };
 
+// Dua jenis entri baru tidak dibuka lewat `id`+`pecahan` seperti empat yang lain: keduanya
+// punya berkasnya sendiri per entitas, jadi yang dibawa tautannya cukup satu kunci. Bentuk
+// tautannya karena itu berbeda, dan perbedaannya ditulis sekali di sini alih-alih diulang di
+// tiap pemanggil.
+const tautanKunci = {
+  principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
+  harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
+};
+
 // `q` ikut supaya jalur tujuan memulihkan daftar hasilnya sendiri di belakang layar
 // rincian — tombol "kembali ke hasil pencarian" di sana harus mendarat pada sesuatu.
 // Untuk saran ejaan, yang dikirim adalah nama yang benar, bukan kueri yang salah ketik:
 // mengirim salah ketiknya membuat jalur tujuan mencari sesuatu yang memang nol.
 const tautan = (x, kueri = el.q.value.trim()) => {
+  const khusus = tautanKunci[x.j];
+  if (khusus) return khusus(x);
   const p = new URLSearchParams({ id: x.i, pecahan: x.p, q: kueri });
   return `${RUMAH[x.j] ?? 'index.html'}?${p}`;
 };
@@ -101,7 +112,7 @@ const kelompok = (judul, catatan, isi) => `
     <ul class="daftar-hasil">${isi}</ul>
   </div>`;
 
-function gambar(nama, bahan, gejala, lokal, kueri) {
+function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
   const bagian = [];
 
   // Nama lokal paling dulu. Yang mengetik "patek" sudah tahu apa yang dilihatnya dan
@@ -143,6 +154,23 @@ function gambar(nama, bahan, gejala, lokal, kueri) {
       `${bahan.length} bahan aktif cocok`,
       'daftarnya dipecah per kadar — setara hanya kalau bahan <em>dan</em> kadarnya sama',
       bahan.map((x) => kartuNama(x, kueri)).join('')));
+  }
+
+  // Harga sebelum nama terdaftar: yang mengetik "cabai" di beranda lebih sering menanyakan
+  // harganya daripada merek pestisida yang kebetulan bernama sama.
+  if (harga.length) {
+    bagian.push(kelompok(
+      `${harga.length} komoditas berharga`,
+      'harga <strong>eceran</strong> nasional — bukan harga yang diterima petani',
+      harga.map((x) => kartuNama(x, kueri)).join('')));
+  }
+
+  if (badan.length) {
+    const tampil = badan.slice(0, BATAS);
+    bagian.push(kelompok(
+      `${angkaId(badan.length)} perusahaan atau lembaga`,
+      `memegang pendaftaran atas namanya${badan.length > tampil.length ? `, ${tampil.length} teratas` : ''}`,
+      tampil.map((x) => kartuNama(x, kueri)).join('')));
   }
 
   if (nama.length) {
@@ -209,9 +237,14 @@ async function jalankan() {
 
     const daftar = hasil ?? [];
     const bahan = daftar.filter((x) => x.j === 'bahan');
-    const nama = daftar.filter((x) => x.j !== 'bahan');
-    if (!nama.length && !bahan.length && !gejala.length && !lokal.length) return gambarKosong(kueri);
-    gambar(nama, bahan, gejala, lokal, kueri);
+    const harga = daftar.filter((x) => x.j === 'harga');
+    // Satu badan bisa muncul dua kali — sekali di bawah nama penuhnya, sekali di bawah nama
+    // tanpa awalan lembaga. Di indeks keduanya memang harus ada; di layar cukup satu.
+    const badan = [...new Map(daftar.filter((x) => x.j === 'principal').map((x) => [x.i, x])).values()];
+    const nama = daftar.filter((x) => !['bahan', 'harga', 'principal'].includes(x.j));
+    if (!nama.length && !bahan.length && !gejala.length && !lokal.length && !harga.length && !badan.length)
+      return gambarKosong(kueri);
+    gambar(nama, bahan, gejala, lokal, kueri, harga, badan);
   } catch (e) {
     el.hasil.innerHTML = `
       <div class="pesan galat">
