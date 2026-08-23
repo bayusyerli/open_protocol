@@ -1,0 +1,70 @@
+{
+  "$schema": "../schema/stage-scale.schema.json",
+  "id": "op:sca:00009975",
+  "key": "fixture-ok-l35-tinjauan-lengkap",
+  "label": {
+    "id": "Tinjauan lengkap: nama, tanggal, dan benturan dinyatakan"
+  },
+  "definition": {
+    "id": "Fixture uji alur kontribusi bernama (G1). Dua fase saja; isinya tidak dipakai siapa pun."
+  },
+  "basis": "age",
+  "applies_to": {
+    "commodity_kinds": [
+      "crop"
+    ]
+  },
+  "stages": [
+    {
+      "id": "op:stg:00009008",
+      "code": "F1",
+      "label": {
+        "id": "Fase satu"
+      },
+      "order": 0
+    },
+    {
+      "id": "op:stg:00009009",
+      "code": "F2",
+      "label": {
+        "id": "Fase dua"
+      },
+      "order": 1
+    }
+  ],
+  "no_mapping_reason": "Fixture uji; tidak dipetakan ke kosakata luar mana pun.",
+  "notes": {
+    "id": "Fixture pelengkap: peninjau bernama, bertanggal, menyatakan benturannya — tak satu aturan pun boleh menyala."
+  },
+  "provenance": {
+    "sources": [
+      {
+        "title": "Fixture G1",
+        "publisher": "Open Protocols",
+        "year": 2026
+      }
+    ],
+    "contributors": [
+      {
+        "name": "Peninjau Contoh",
+        "affiliation": "Contoh Institusi",
+        "role": "reviewer",
+        "date": "2026-08-23",
+        "conflict_of_interest": "none"
+      }
+    ],
+    "license": "CC-BY-SA-4.0"
+  },
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-23T00:00:00Z",
+    "reviewed_at": "2026-08-23"
+  },
+  "id_blocks": [
+    {
+      "from": 9975,
+      "to": 9975
+    }
+  ]
+}

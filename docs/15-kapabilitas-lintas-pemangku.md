@@ -552,7 +552,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | `Contributor` + `conflict_of_interest` **ada di skema** | **BANGUN** |
+| G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | **selesai** 23 Agustus 2026 — `CONTRIBUTING.md`, `spec/tools/tinjau.mjs`, aturan L35, dan sematan `reviewed_hash`. Terukur saat dibuka: **0 dari 4.256** rekaman punya peninjau bernama, **0** berstatus published | **selesai** |
 | G2 | Umpan balik lapangan menaikkan tingkat bukti D→A | semua | apakah korpus hidup | `DeviationReason.signals` **ada** | **BANGUN** (fase 3) |
 | G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | belum ada; rantai POPT sudah ada | **BANGUN hati-hati + SAMBUNG** |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
@@ -641,7 +641,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > itu akan menyiratkan kuasa membetulkan yang tidak dimiliki repositori ini atas 99,9%
 > faktanya. Yang ditanya lebih dulu **apa yang salah**, bukan apa yang benar, dan ketiga
 > jawabannya pergi ke tempat berbeda: salinan dan penyajian bisa dibetulkan di sini,
-> fakta di registri hanya bisa **dicatat**. **G1 masih terbuka.**
+> fakta di registri hanya bisa **dicatat**. **G1 menyusul di hari yang sama** — lihat catatannya di bagian G.
 >
 > **Yang dibuka adalah yang sudah didorong, bukan semua yang ada di cakram.** Panen
 > direktori pengecer principal — 1.605 toko berikut nomor telepon — hidup di cabang lokal
@@ -709,6 +709,17 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 > **G1 tidak boleh menunggu fase 3.** Pertanyaan ke-5 di [02-tiga-pasar.md](02-tiga-pasar.md)
 > bagian 8 — apa yang membuat agronom mau menempelkan namanya — tidak akan terjawab lewat
 > wawancara. Ia terjawab dengan menyediakan alurnya, lalu melihat siapa yang datang.
+>
+> **Alurnya dibuka 23 Agustus 2026, dan yang membentuknya bukan pertanyaannya melainkan
+> keberatan di baliknya:** *"apakah nama saya akan menanggung isi yang tidak pernah saya
+> baca?"* Tanpa penjagaan jawabannya ya, dan itu alasan yang cukup untuk menolak. Karena
+> itu tinjauan **disematkan pada isi yang dibacanya** (`lifecycle.reviewed_hash`): begitu
+> rekaman disunting, pemeriksa menyatakan tinjauannya kedaluwarsa, dan nama peninjaunya
+> berhenti berlaku pada perubahan itu — otomatis, tanpa ia perlu mengawasi.
+>
+> Gerbangnya ternyata sudah terpasang sejak sebelum repositori dibuka dan belum pernah
+> menyala: **L31** menahan tingkat D dari `published`, **L33** menuntut protokol terbit
+> punya penulis bernama dan tanggal tinjau ulang. Yang hilang cuma pintunya.
 
 ### Gelombang 2 — eksekusi berbayar (fase 3)
 

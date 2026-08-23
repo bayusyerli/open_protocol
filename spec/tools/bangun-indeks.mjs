@@ -1778,10 +1778,39 @@ const batas = {
 // ---------------------------------------------------------------------------
 // meta.json — termasuk apa yang TIDAK ada, supaya penyaji tidak menjanjikannya
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// Keadaan tinjauan bernama — G1
+// ---------------------------------------------------------------------------
+// Angkanya nol hari ini, dan justru itu sebabnya ia dihitung dan dikirim ke layar. Nol
+// yang tidak pernah ditampilkan terbaca sebagai nol yang tidak pernah diukur — dan
+// pembaca yang tidak tahu bahwa belum seorang pun memeriksa isinya akan mengira sudah
+// ada yang memeriksanya. Begitu angkanya berhenti nol, baris yang sama menyebutkan
+// siapa.
+const tinjauan = (() => {
+  let rekaman = 0;
+  let berpeninjau = 0;
+  const orang = new Map();
+  for (const f of readdirSync(VOCAB)) {
+    if (!f.endsWith('.json') || f.endsWith('.meta.json')) continue;
+    let d;
+    try { d = bacaJson(f); } catch { continue; }
+    const daftar = Array.isArray(d?.items) ? d.items : (d && d.id ? [d] : []);
+    for (const r of daftar) {
+      rekaman++;
+      const peninjau = (r.provenance?.contributors ?? []).filter((c) => c.role === 'reviewer');
+      if (!peninjau.length) continue;
+      berpeninjau++;
+      for (const c of peninjau) orang.set(c.name, (orang.get(c.name) ?? 0) + 1);
+    }
+  }
+  return { rekaman, berpeninjau, peninjau: [...orang.keys()].sort() };
+})();
+
 const meta = {
   versi: 1,
   sumber: 'spec/vocab',
   batas,
+  tinjauan,
   jumlah: {
     pestisida: pestisida.length,
     pupuk: pupuk.length,

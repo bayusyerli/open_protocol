@@ -292,3 +292,19 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+/* ------------------------------------------------------------------- tinjauan */
+/* Keadaan tinjauan bernama (G1). Tidak diberi warna peringatan: "belum ditinjau"
+   keterangan jujur tentang umur korpus, bukan cacat — dan mewarnainya merah akan
+   membuat kejujuran tampak seperti kegagalan, keputusan yang sama dengan huruf
+   tingkat bukti di atasnya. */
+.bj-tinjau {
+  margin: .9rem 0 0 !important;
+  padding: .6rem .7rem;
+  border-left: 3px solid var(--bj-garis);
+  background: var(--bj-latar);
+  color: var(--bj-teks);
+  font-size: .85rem;
+}
+
+.bj-tinjau a { color: var(--bj-aksen); }

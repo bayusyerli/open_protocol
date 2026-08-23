@@ -20,6 +20,7 @@
 
 import { bacaMeta, teks, tanggal } from './pustaka.js';
 import { blokSanggah, pasangSanggah } from './sanggah.js';
+import { REPO } from './serah.js';
 
 const n = (x) => (x ?? 0).toLocaleString('id-ID');
 
@@ -115,6 +116,34 @@ function gambarSumber(s, arti) {
     </li>`;
 }
 
+/* Keadaan tinjauan bernama — G1.
+ *
+ * Baris ini ada di blok batas dan bukan di halaman tersendiri karena ia memang salah satu
+ * batas jawaban: siapa yang sudah memeriksa isinya, dan kalau belum ada, itu bagian dari
+ * apa yang tidak diketahui layar ini. Angkanya nol hari ini, dan justru itu sebabnya ia
+ * ditulis sebagai kalimat alih-alih "0" di sebuah tabel — nol yang hanya ditampilkan
+ * sebagai angka terbaca sebagai kolom yang belum diisi, bukan sebagai keadaan.
+ *
+ * Ia TIDAK berpura-pura mengukur rekaman yang tampil di layar ini saja. Yang dihitung
+ * seluruh kosakata kurasi, dan kalimatnya menyebutkannya begitu — pengukuran per layar
+ * menuntut memetakan tiap pecahan indeks kembali ke rekaman asalnya, dan angka yang
+ * dikarang lebih buruk daripada angka yang cakupannya dinyatakan. */
+function gambarTinjauan(meta) {
+  const t = meta?.tinjauan;
+  if (!t) return '';
+  const pintu = `<a href="${REPO}/blob/main/CONTRIBUTING.md" rel="noopener noreferrer">alurnya terbuka di CONTRIBUTING.md</a>`;
+  if (!t.berpeninjau) {
+    return `<p class="bj-tinjau">
+      <strong>Belum seorang pun menempelkan namanya pada isi ini.</strong>
+      Nol dari ${n(t.rekaman)} rekaman kosakata kurasi punya peninjau bernama — ${pintu}.
+    </p>`;
+  }
+  return `<p class="bj-tinjau">
+    Ditinjau orang bernama: <strong>${n(t.berpeninjau)} dari ${n(t.rekaman)}</strong>
+    rekaman kosakata kurasi${t.peninjau.length ? ` — ${t.peninjau.map(teks).join(', ')}` : ''}. ${pintu}.
+  </p>`;
+}
+
 /* `takDijawab` menerima kunci meta.tidakAda atau objek {judul, teks} untuk yang khas
  * satu layar. Yang dari meta dipakai bersama justru supaya kalimatnya sama di semua
  * layar: dua layar yang menyebut lubang yang sama dengan kalimat berbeda membuat
@@ -198,6 +227,7 @@ export function pasangBatas(wadah, spek) {
     ${cacat}
     <h2 class="bj-judul">Batas jawaban di layar ini</h2>
     <ul class="bj-sumber">${sumber.map((s) => gambarSumber(s, arti)).join('')}</ul>
+    ${gambarTinjauan(meta)}
     ${lubang.length ? `
       <h3 class="bj-judul-lubang">Yang tidak diketahui, dan karena itu tidak ditebak</h3>
       <dl class="bj-lubang">

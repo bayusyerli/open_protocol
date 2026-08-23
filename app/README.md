@@ -235,6 +235,28 @@ kenapa" memang berbeda di tiap jalur.
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
 
+### Keadaan tinjauan di blok batas — G1
+
+Satu baris, dan hari ini isinya nol: **belum seorang pun menempelkan namanya pada satu
+rekaman pun** — 0 dari 4.256 rekaman kosakata kurasi punya peninjau bernama, dan tidak
+satu pun berstatus `published`.
+
+- **Nol ditulis sebagai kalimat, bukan sebagai angka di tabel.** "0" terbaca sebagai kolom
+  yang belum diisi; yang perlu dibaca pembacanya adalah bahwa belum ada yang memeriksa
+  isinya. Begitu angkanya berhenti nol, baris yang sama menyebut siapa.
+- **Tidak diberi warna peringatan.** "Belum ditinjau" keterangan jujur tentang umur korpus,
+  bukan cacat — keputusan yang sama dengan huruf tingkat bukti di atasnya, yang juga tidak
+  diberi merah.
+- **Cakupannya dinyatakan, tidak dikarang.** Yang dihitung seluruh kosakata kurasi, bukan
+  rekaman yang kebetulan tampil di layar itu; mengukur per layar menuntut memetakan tiap
+  pecahan indeks kembali ke rekaman asalnya, dan angka yang dikarang lebih buruk daripada
+  angka yang cakupannya disebutkan.
+- **Ia ada di blok batas karena memang salah satu batasnya.** Siapa yang sudah memeriksa
+  isi ini, dan kalau belum ada — itu bagian dari apa yang tidak diketahui layar.
+
+Sisi repositorinya ada di [CONTRIBUTING.md](../CONTRIBUTING.md): aturan **L35**, sematan
+`lifecycle.reviewed_hash`, dan `spec/tools/tinjau.mjs`.
+
 ### Sanggahan terbuka — B3
 
 Repositori dibuka jadi publik 23 Agustus 2026, dan itu syaratnya: B3 menuntut jejak yang

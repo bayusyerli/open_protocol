@@ -84,6 +84,21 @@ terlarang. Enam aturan pemeriksa baru (`L16`–`L21`) menegakkannya.
 cd spec && npm install && npm run all
 ```
 
+## Menyumbang
+
+Repositori ini publik sejak 23 Agustus 2026, dan pintunya
+[CONTRIBUTING.md](CONTRIBUTING.md). Keadaan yang perlu diketahui sebelum masuk: **belum
+seorang pun menempelkan namanya pada satu rekaman pun** — nol dari 4.256 rekaman kosakata
+kurasi punya peninjau bernama, dan tidak satu pun berstatus `published`.
+
+```bash
+node spec/tools/tinjau.mjs        # keadaan tinjauan seluruh korpus
+```
+
+Yang melindungi nama peninjau dijelaskan di sana: tinjauan disematkan pada isi yang
+benar-benar dibacanya, jadi begitu rekaman itu disunting orang lain, tinjauannya terbaca
+kedaluwarsa alih-alih diam-diam menanggung perubahan yang tidak pernah ia baca.
+
 ## Catatan tentang `pukpes_data/`
 
 Direktori itu berisi snapshot mentah registri Kementan — CSV dan JSON apa adanya, beserta

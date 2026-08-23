@@ -374,10 +374,12 @@ pertama — sengaja.
 
    > **Kenapa standar terbitan, bukan aturan sendiri.** JCS punya vektor uji dan bisa
    > diulang di bahasa mana pun; aturan buatan sendiri harus dijelaskan tiap kali ada
-   > yang bertanya, dan tidak bisa diperiksa pihak lain. Tiga medan dikecualikan karena
+   > yang bertanya, dan tidak bisa diperiksa pihak lain. Empat medan dikecualikan karena
    > ia pembukuan **berkas**, bukan isi **entitas**: `$schema` (lintasan relatif, berubah
    > begitu berkasnya dipindahkan — dan bundel ekspor memang memindahkannya), `id_blocks`
-   > (klaim rentang antar-sesi), dan `lifecycle.content_hash` sendiri.
+   > (klaim rentang antar-sesi), `lifecycle.content_hash` sendiri, dan sejak G1
+   > `lifecycle.reviewed_hash` — nilainya salinan `content_hash`, jadi mengikutkannya
+   > berarti hash yang mengejar dirinya sendiri lewat satu lompatan.
    >
    > `L34` menegakkannya dua sisi: hash entitas harus cocok dengan isinya, dan
    > `protocol_ref.content_hash` harus cocok dengan protokol yang ditunjuk. `L2` menuntut
@@ -388,7 +390,17 @@ pertama — sengaja.
    berlapis — dan tingkat bukti tidak boleh diwarisi diam-diam.
 3. **Siapa dewan redaksinya, dan apa yang membuat agronom mau menempelkan namanya** pada
    protokol yang bisa direvisi orang lain. Pertanyaan kelima pada
-   [02-tiga-pasar.md](02-tiga-pasar.md) bagian 8, masih belum terjawab.
+   [02-tiga-pasar.md](02-tiga-pasar.md) bagian 8.
+
+   > **Setengahnya terjawab 23 Agustus 2026, dan setengahnya tidak.** Yang terjawab
+   > keberatan di balik pertanyaannya — *"apakah nama saya akan menanggung isi yang tidak
+   > pernah saya baca?"* — lewat sematan `lifecycle.reviewed_hash` dan aturan `L35`:
+   > begitu rekaman disunting, tinjauannya terbaca kedaluwarsa alih-alih diam-diam ikut
+   > menanggung. Alurnya ada di [CONTRIBUTING.md](../CONTRIBUTING.md).
+   >
+   > Yang **tidak** terjawab: siapa dewan redaksinya, dan apakah alur itu benar-benar
+   > menarik siapa pun. Yang kedua tidak bisa dijawab dengan merancang — hanya dengan
+   > menunggu dan menghitung, dan `node spec/tools/tinjau.mjs` yang menghitungnya.
 4. **Di mana rencana musim disimpan, dan milik siapa.** `data_classification` sudah ada di
    ketiga skema Lapis 3, kebijakan penyimpanannya belum ditulis.
 5. **Bentuk permukaan M3.** Distribusi mengandalkan WhatsApp; pencatatan lewat kanal itu
