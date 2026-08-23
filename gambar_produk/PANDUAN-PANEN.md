@@ -1234,3 +1234,34 @@ menampakkan kemasan pada halaman pertama, jadi barisnya dibiarkan di 150 px.
 "Lembar Data" pantas ditelusuri sebagai sumber gambar, bukan cuma sebagai dokumen. Dan
 ketika sebuah halaman hilang dari situs, arsipnya bukan hanya cara memulihkan halaman itu —
 ia juga peta jalur yang masih hidup tetapi tidak lagi ditautkan dari mana pun.
+
+### Dua jalan terakhir: registri yang mencatat dua kali, dan halaman yang sudah dihapus
+
+**KAMIKAZE 318/53 EC dipanen tanpa gambar baru.** Botol yang sama, berkas yang sama, dan itu
+disengaja: nomor tercetak `01020120165622` menunjuk **dua** baris registri — `op:prd:00002917`
+bernama "KAMIKAZE 371 EC" dan `op:prd:00004514` bernama "KAMIKAZE 318/53 EC", dua-duanya
+Petrokimia Kayaku, dua-duanya aktif. Satu pendaftaran tercatat dua kali dengan dua cara
+menulis nama, dan 318 + 53 = 371 yang membuktikannya. `G6` tidak dilanggar sebab brand_key-nya
+berbeda; pemeriksaan phash lintas merek **memang melaporkannya**, dan laporan itu benar —
+yang keliru bukan gambarnya melainkan registrinya.
+
+**TEBBAS 605 EC dipanen dari arsip, bukan dari situs.** Halamannya
+(`/content/produk/insektisida/82/Tebbas-605-EC`) hilang dari katalog maupun dari daftar 91
+produk, dan kedua berkasnya 404. CDX Wayback menyebut **tujuh** halaman produk yang pernah
+terarsip dan kini lenyap: Alphos 57 DT · Ametrone 252 SL · Bassazinon 750 EC · Mandazim 74/6 WP ·
+Metal 30 EC · Tebbas 605 EC · Ziban 630 EC. Hanya TEBBAS yang masih punya merek di registri;
+enam lainnya tidak.
+
+Diambil dari tangkapan **5 Juli 2022**, bukan yang terbaru: tangkapan 2024 merekam halaman
+blokir WAF, bukan halamannya — **arsip pun bisa menyimpan kegagalan, jadi periksa isinya
+sebelum memakai timestamp paling akhir.** `source.url` menunjuk snapshot arsip sebab alamat
+aslinya sudah mati; penerbitnya tetap principal dan haknya tidak berpindah ke arsip.
+
+Nomor tercetak terbaca utuh setelah potongan diperbesar — `RI. 01010120144960`, cocok ke
+registri — dan komposisinya menjumlahkan lagi: klorpirifos 550 + sipermetrin 55 = 605.
+
+**Sisa 19 merek Kayaku tidak punya jalan yang tersisa di sini.** Tidak berhalaman, tidak
+terarsip, dan dicari juga di 33.941 objek ember Petrokimia Gresik — nol, keempat "kecocokan"
+yang muncul cuma tabrakan substring (`GRAMA`→Ramadhan, `PETROKUS`→petro-ningrat,
+`TANGKAS`→tangki air). Sumber berikutnya harus dari luar: lokapasar — `rights: lokapasar`
+memang sudah ada di enum skema — atau katalog distributor.

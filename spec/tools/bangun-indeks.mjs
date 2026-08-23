@@ -1918,7 +1918,7 @@ const meta = {
     hargaPupuk:
       'SP2KP mendaftarkan Pupuk Urea, NPK 15-15-15, SP-36, dan ZA tetapi tidak mengisi harganya: 13-15 tanggal mingguan pada paruh pertama 2024, seluruhnya kosong pada keempat ukuran tertimbang. Jalur 3 karena itu tetap mengandalkan masukan pengguna untuk rupiah per kg hara.',
     gambarKemasan:
-      'Gambar kemasan ada pada 515 dari 14.920 produk — 3,5%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
+      'Gambar kemasan ada pada 517 dari 14.920 produk — 3,5%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',
