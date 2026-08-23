@@ -1195,6 +1195,19 @@ memutuskan:
 | `purdan-plus-3-3-gr` | `01010120093242` | `/purdan-plus/` |
 | `new-lalang-up-481-sl` | `01030120237912` | `/stallone-481-sl/` |
 
+**Kelima baris katalogcba di atas DIBENARKAN mesin pada 23 Agustus 2026.** OCR brosurnya
+membaca nomor yang sama persis dengan yang dipetakan tangan dulu — `01030120113990` untuk
+GERXONE, `01030120113991` untuk PRIMAXONE PLUS, `01030120124437` untuk RONDA GOLD,
+`01010120093242` untuk PURDAN PLUS. Pemetaan tangan itu benar, dan kini ada cara memeriksanya
+tanpa membayar ulang perhatiannya.
+
+Sapuan yang sama menemukan dua puluh satu pasangan nama-beda lain di situs itu, termasuk dua
+yang pencocokan nama tidak akan pernah temukan sebab nama dagangnya berlainan sama sekali:
+**AGROTHANE 80 WP** di situs adalah **PRIMATHANE 80 WP** di registri (`01020120113937`), dan
+**AMOFOS 200 SL** adalah **FASTRON 200 SL** (`01030120217063`). Selebihnya beda kadar
+(`CENTATOP 288` lawan `276`), beda tanda hubung, atau beda spasi. Seluruhnya ada di
+[`prospek-katalogcba.csv`](prospek-katalogcba.csv).
+
 **Lainnya:** ~42 merek Delta Giri Wacana punya objek di ember GCS · ~9 merek Nufarm punya
 gambar di umpan artikel · Prima Karya 44 merek cocok beresolusi 1080×1080 · SGI 58 merek ·
 Saprotan 18 merek tak-ambigu · MKD 13 · Prima Agro 15 · brosur label PT-AMA dan Kristalindo
