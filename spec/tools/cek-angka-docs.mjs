@@ -94,10 +94,10 @@ const iris = (kom, pst) => {
 };
 const t = iris(CABAI, TRIPS);
 cek('04', 'trips@cabai produk', t.produk, 246);
-cek('04', 'trips@cabai bahan aktif', t.zat, 72);
-cek('04', 'trips@cabai kartu', t.kartu, 164);
+cek('04', 'trips@cabai bahan aktif', t.zat, 60);
+cek('04', 'trips@cabai kartu', t.kartu, 159);
 cek('04', 'trips@cabai klorpirifos', t.klor, 14);
-cek('04', 'trips@cabai berdaftar-larangan', t.larangan, 34);
+cek('04', 'trips@cabai berdaftar-larangan', t.larangan, 39);
 const kk = iris(CABAI, 'op:pst:00000003'), ug = iris(CABAI, 'op:pst:00000005');
 cek('04', 'kutu kebul@cabai', kk.produk, 32);
 cek('04', 'ulat grayak@cabai', ug.produk, 184);
@@ -105,12 +105,16 @@ cek('04', 'virus kuning@cabai', iris(CABAI, 'op:pst:00000010').produk, 0);
 
 // ---- larangan menyeluruh
 const MEN = 'semua bidang penggunaan pestisida';
-const menyeluruh = ZAT.filter((s) => (s.hazard?.regulatory_status ?? []).some((r) => r.jurisdiction === 'ID' && r.status === 'prohibited' && (r.scope ?? []).includes(MEN)));
+const menyeluruh = hidup(ZAT).filter((s) => (s.hazard?.regulatory_status ?? []).some((r) => r.jurisdiction === 'ID' && r.status === 'prohibited' && (r.scope ?? []).includes(MEN)));
 const dipakai = new Set(P.flatMap((p) => (p.composition ?? []).map((c) => c.substance.id)));
 cek('04', 'zat dilarang menyeluruh', menyeluruh.length, 91);
 cek('04', 'di antaranya muncul di produk', menyeluruh.filter((s) => dipakai.has(s.id)).length, 0);
-const perKom = ZAT.filter((s) => (s.hazard?.regulatory_status ?? []).some((r) => r.jurisdiction === 'ID' && r.status === 'prohibited' && r.commodities?.length));
-cek('04', 'zat dilarang khusus komoditas', perKom.length, 31);
+// Disaring `hidup` sejak penyatuan keluarga ejaan: blok `hazard` disalin ke entitas yang
+// menang supaya larangannya tetap terjangkau, sedangkan yang kalah tetap memegangnya agar
+// rekamannya setia. Menghitung keduanya berarti menghitung satu bahan dua kali — larangan
+// fenitrotion dan ometoat sempat tercatat ganda karena itu.
+const perKom = hidup(ZAT).filter((s) => (s.hazard?.regulatory_status ?? []).some((r) => r.jurisdiction === 'ID' && r.status === 'prohibited' && r.commodities?.length));
+cek('04', 'zat dilarang khusus komoditas', perKom.length, 30);
 
 // ---- abamektin
 const AB = 'op:sub:00000007';
@@ -135,14 +139,14 @@ const grup = (arr, j) => {
   return [...m.values()].filter((v) => v.length > 1);
 };
 const gp = grup(P, 'pestisida'), gu = grup(PU, 'pupuk');
-cek('05', 'kelompok setara pestisida', gp.length, 890);
-cek('05', 'produk setara pestisida', gp.reduce((a, v) => a + v.length, 0), 4905);
-cek('05', 'kesetaraan pestisida %', ((gp.reduce((a, v) => a + v.length, 0) / P.length) * 100).toFixed(1), '63.5');
+cek('05', 'kelompok setara pestisida', gp.length, 897);
+cek('05', 'produk setara pestisida', gp.reduce((a, v) => a + v.length, 0), 5268);
+cek('05', 'kesetaraan pestisida %', ((gp.reduce((a, v) => a + v.length, 0) / P.length) * 100).toFixed(1), '68.2');
 cek('05/06', 'kelompok setara pupuk', gu.length, 386);
 cek('05/06', 'produk setara pupuk', gu.reduce((a, v) => a + v.length, 0), 1904);
 cek('05/06', 'pupuk berkomposisi', PU.filter((p) => p.composition?.length).length, 5130);
 const besar = [...gp, ...gu].sort((a, b) => b.length - a.length).slice(0, 5).map((v) => v.length);
-cek('05/06', 'tiga kelompok terbesar', besar.slice(0, 3).join('/'), '184/144/126');
+cek('05/06', 'tiga kelompok terbesar', besar.slice(0, 3).join('/'), '184/144/131');
 cek('05', 'komposisi pestisida %', ((P.filter((p) => p.composition?.length).length / P.length) * 100).toFixed(1), '96.4');
 cek('05', 'komposisi pupuk %', ((PU.filter((p) => p.composition?.length).length / PU.length) * 100).toFixed(1), '71.3');
 

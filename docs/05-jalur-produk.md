@@ -5,6 +5,9 @@
 > Angka **dari registri pascapenggabungan ejaan zat** (`1a0f077`, `04b91c6`)
 > **dan penyatuan komoditas serumpun serta OPT kembar** — 488 komoditas jadi 274,
 > 1.370 OPT jadi 778
+> **Dimutakhirkan lagi sesudah penyatuan keluarga ejaan zat** (23 Agustus 2026):
+> 477 entitas bahan aktif yang sebenarnya 184 bahan jadi 184, sehingga bahan aktif
+> hidup turun 1.399 → 1.106
 >
 > Diekstrak dari dokumen konsep HTML, 20 Agustus 2026. Isi, angka, dan tabelnya
 > utuh; simulasi yang bisa diklik tidak ikut — alurnya ditulis ulang sebagai teks.
@@ -25,7 +28,7 @@ semula.
   pestisida dan 71,3% pada pupuk.
 - **Momennya lebih sering dan lebih menentukan.** Gejala muncul beberapa kali semusim;
   transaksi di kios terjadi setiap kali beli. Dan di situlah uang berpindah.
-- **Ia yang membuat temuan kesetaraan bisa dipakai.** "4.905 produk identik dengan
+- **Ia yang membuat temuan kesetaraan bisa dipakai.** "5.268 produk identik dengan
   produk lain" adalah abstraksi sampai seseorang bisa melihat *merek mana* yang
   identik dengan yang di tangannya.
 - **Dua arah sekaligus.** Dari kemasan ke isi, dan dari isi kembali ke semua kemasan
@@ -38,14 +41,14 @@ dan benih atau bibit — dengan bentuk pertanyaan yang persis sama.
 
 ## 2. Temuan yang menopang seluruh jalur ini
 
-**63,5% pestisida terdaftar identik secara kimia dengan produk lain.** Bukan mirip —
-identik: bahan aktif sama, kadar sama, satuan sama. 4.905 dari 7.724 produk berada
-dalam 890 kelompok setara.
+**68,2% pestisida terdaftar identik secara kimia dengan produk lain.** Bukan mirip —
+identik: bahan aktif sama, kadar sama, satuan sama. 5.268 dari 7.724 produk berada
+dalam 897 kelompok setara.
 
 ```
+131 merek  =  Mankozeb 80%
 126 merek  =  Isopropil Amina Glifosat 480 g/L
 121 merek  =  Parakuat diklorida 276 g/L
-113 merek  =  Mankozeb 80%
 ```
 
 Pada pupuk polanya bahkan lebih pekat. Dikelompokkan menurut komposisi *dan* bentuk
@@ -62,6 +65,13 @@ tidak punya cara tahu isinya sama.
 > cuma beda kapitalisasi, spasi, atau tanda baca membuat **56 produk yang dulu tak
 > terdeteksi kembar kini terlihat**. Pembersihan kosakata terbayar langsung di angka
 > yang disajikan ke pengguna.
+>
+> Putaran kedua mengulanginya lebih besar. Sapuan pertama bekerja per pasang tulisan,
+> sehingga keluarga yang pecah jadi tiga atau empat ejaan — "Etil Pirazosulfuron",
+> "Pirazosulfuron etil", "Pyrazosulfuron-ethyl" — lolos darinya. Menyatukan 477 entitas
+> jadi 184 menaikkan kesetaraan **63,5% → 68,2%**: **363 produk lagi** yang dulu tak
+> terdeteksi kembar kini terlihat, dan kelompok terbesar berpindah — mankozeb 80% naik
+> dari 113 ke **131 merek**, melampaui isopropil amina glifosat 480 g/L.
 
 ---
 

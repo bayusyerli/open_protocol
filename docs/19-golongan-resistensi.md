@@ -14,7 +14,7 @@ benar-benar tercantum pada daftar terbitan, biarkan kosong.**
 |---|---|
 | Berkas data | [`spec/vocab/golongan-resistensi/golongan-resistensi.meta.json`](../spec/vocab/golongan-resistensi/golongan-resistensi.meta.json) + `.ndjson` |
 | Skema | [`spec/schema/golongan-resistensi.schema.json`](../spec/schema/golongan-resistensi.schema.json) |
-| Sisi kiri join | `spec/vocab/substance-pestisida.json` — 1.399 bahan aktif hidup (1.706 termasuk yang digantikan penggabungan ejaan) |
+| Sisi kiri join | `spec/vocab/substance-pestisida.json` — 1.106 bahan aktif hidup (1.706 termasuk yang digantikan penggabungan ejaan) |
 | Bentuk rekaman | pemetaan, bukan entitas — tanpa `op:` id, mengikuti kaidah `nama-lokal` |
 
 ---
@@ -103,6 +103,25 @@ supaya bisa ditelusuri ulang. Perlakuan yang sama diterapkan pada IRAC (dokumenn
 ---
 
 ## 2. Cakupan
+
+> **Berkasnya menyusut 23 Agustus 2026 — angka di bawah masih potret sebelumnya**
+>
+> `spec/tools/satukan-keluarga-zat-terpecah.mjs` menyatukan 477 entitas bahan aktif yang
+> sebenarnya 184 bahan, sehingga bahan aktif hidup turun 1.399 → 1.106. Karena berkas ini
+> menjanjikan satu rekaman per bahan **hidup**, 293 rekaman yang bahannya kini digantikan
+> ikut dibuang — kodenya lebih dulu dibandingkan dengan kode pemenangnya, dan tidak satu
+> pun kode hilang karenanya.
+>
+> Yang berlaku sekarang: **1.106 rekaman**, **669 membawa kode** (60,5%), **437 kosong
+> dengan alasan** (39,5%). Total 676 kode: IRAC 238, HRAC 289, FRAC 149 — 7 rekaman
+> berkode pada dua skema sekaligus. Cakupannya *terlihat* turun dari 66,5% ke 60,5% hanya
+> karena ejaan kembar yang dulu dihitung berkali-kali sekarang dihitung sekali; tidak ada
+> bahan yang kehilangan kodenya.
+>
+> **Seluruh angka turunan di §2–§5 di bawah ini belum dihitung ulang** — cakupan per skema,
+> tabel `basis`, tabel alias, dan rincian yang tidak terpetakan semuanya masih potret
+> 1.399 rekaman. Sebagiannya (angka penyebutan pada label) butuh sondaan yang tidak
+> tersimpan di repositori ini, jadi pemutakhirannya dikerjakan bersama pemilik berkasnya.
 
 **1.399 rekaman, satu untuk setiap bahan aktif** — termasuk yang tidak terpetakan, karena
 kekosongan yang beralasan bisa dibaca sebagai kekosongan, sedangkan kekosongan yang
