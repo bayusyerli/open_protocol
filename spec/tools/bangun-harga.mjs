@@ -86,6 +86,50 @@ function sambungKomoditas(nama) {
 }
 
 // ---------------------------------------------------------------------------
+// Relevansi — apa yang layak tampil di permukaan pertanian
+// ---------------------------------------------------------------------------
+// SP2KP mencampur dua keranjang dalam satu endpoint, dan penggolongannya sendiri yang
+// memisahkan: `tipe_komoditas_id` 1 = barang kebutuhan pokok, 2 = barang penting. Keranjang
+// kedua memuat baja ringan, besi beton, kayu balok, triplek, paku, semen, dan LPG — tidak
+// satu pun urusan platform ini.
+//
+// Tetapi garis "tipe 1 saja" KELIRU, dan kelirunya ke arah yang paling merugikan: keranjang
+// kedua juga memuat **Benih** dan **Pupuk Non Subsidi**, yang justru subjek inti repositori
+// ini. Membuang tipe 2 seluruhnya berarti membuang satu-satunya harga sarana produksi yang
+// pernah diterbitkan pemerintah secara terbuka.
+//
+// Maka tiga golongan, bukan dua:
+//   pangan   keluaran usaha tani, peternakan, dan perikanan — termasuk olahan tahap pertama
+//            yang harganya memang sinyal bagi petaninya (gula dari tebu, minyak goreng dari
+//            sawit, tahu dan tempe dari kedelai, garam dari tambak garam)
+//   input    sarana produksi: benih dan pupuk. Tipe 2 di sumbernya, tetapi inti di sini.
+//   luar     selebihnya — bahan bangunan, LPG, dan pangan olahan lanjut yang bahan bakunya
+//            sebagian besar impor dan tidak menyentuh petani mana pun: susu bubuk, susu
+//            kental manis, mie instan, tepung terigu (Indonesia tidak menanam gandum).
+//
+// Yang `luar` TIDAK dibuang dari kosakata — ia tetap tercatat, karena SP2KP memang
+// menerbitkannya dan menghapusnya membuat cacah di dokumen tidak bisa direkonsiliasi dengan
+// sumbernya. Yang berubah hanya: layar tidak menampilkannya, dan mengatakan berapa banyak
+// yang tidak ditampilkan beserta sebabnya.
+const INDUK_INPUT = new Set(['Benih', 'Pupuk Non Subsidi']);
+
+// Disebut satu per satu, bukan disaring dengan kata kunci. Daftar nama yang bisa dibaca
+// lebih mudah dibantah daripada regex yang diam-diam menangkap sesuatu yang lain.
+const OLAHAN_LANJUT = new Set([
+  'Susu Bubuk',
+  'Susu Bubuk Balita',
+  'Susu Kental Manis',
+  'Mie Instan',
+  'Tepung Terigu',
+]);
+
+function golongan(v) {
+  if (INDUK_INPUT.has(v.komoditas)) return 'input';
+  if (OLAHAN_LANJUT.has(v.nama)) return 'luar';
+  return v.tipe === 1 ? 'pangan' : 'luar';
+}
+
+// ---------------------------------------------------------------------------
 // Statistik — dihitung sekali, dibaca layar dan pembangkit komentar
 // ---------------------------------------------------------------------------
 const HARI = 86400000;
@@ -213,6 +257,7 @@ const items = urut.map((v) => {
       ...(v.komoditas ? { commodity_group: v.komoditas } : {}),
       ...(cocok ? { commodity: { id: cocok.id, label: cocok.nama } } : {}),
       price_level: 'retail',
+      sector: golongan(v),
       unit: satuanTeks(v.satuan),
       ...(v.qty ? { qty: v.qty } : {}),
       weighting: 'penduduk',
@@ -242,6 +287,7 @@ const items = urut.map((v) => {
     // Selalu retail. Lihat kepala berkas: tidak ada jalan bagi layar menayangkannya
     // sebagai harga petani, karena medannya memang tidak pernah bernilai lain.
     price_level: 'retail',
+    sector: golongan(v),
     unit: satuanTeks(v.satuan),
     ...(v.qty ? { qty: v.qty } : {}),
     weighting: 'penduduk',
@@ -282,7 +328,14 @@ console.log(`Rentang               : ${semuaTanggal[0]} s.d. ${semuaTanggal.at(-
 console.log(`Titik harga           : ${n(berangka.reduce((a, x) => a + x.series.length, 0))}`);
 console.log(`Tersambung ke komoditas: ${n(bersambung)} dari ${n(items.length)} varian`);
 console.log(`  komoditas terjangkau : ${n(komoditasBerharga.size)} dari ${n(komoditasKosakata.size)} di kosakata`);
-console.log(`  varian bukan tani    : ${n(items.length - bersambung)} — besi, semen, triplek, LPG, paku, olahan`);
+const perGolongan = {};
+for (const x of items) perGolongan[x.sector] = (perGolongan[x.sector] ?? 0) + 1;
+const berangkaGol = {};
+for (const x of berangka) berangkaGol[x.sector] = (berangkaGol[x.sector] ?? 0) + 1;
+console.log(`Golongan              : pangan ${n(perGolongan.pangan ?? 0)} · input ${n(perGolongan.input ?? 0)} · luar ${n(perGolongan.luar ?? 0)}`);
+console.log(`  berangka per golongan: pangan ${n(berangkaGol.pangan ?? 0)} · input ${n(berangkaGol.input ?? 0)} · luar ${n(berangkaGol.luar ?? 0)}`);
+console.log(`  yang TAMPIL di layar : ${n((berangkaGol.pangan ?? 0) + (berangkaGol.input ?? 0))} berangka, dari ${n((perGolongan.pangan ?? 0) + (perGolongan.input ?? 0))} varian tani`);
+console.log(`  disembunyikan layar  : ${n(perGolongan.luar ?? 0)} — bahan bangunan, LPG, dan olahan lanjut berbahan impor`);
 console.log(`Bermusim (≥12 bulan)  : ${n(berangka.filter((x) => x.stats.musim).length)}`);
 console.log(`Seri berlubang        : ${n(berangka.filter((x) => x.coverage.gaps > 0).length)} varian punya hari tanpa angka`);
 console.log(`Sisi pupuk & benih    : ${items.filter((x) => /^(pupuk|benih)/i.test(x.label.id)).map((x) => `${x.label.id}${x.series ? '' : ' (kosong)'}`).join(' · ') || '—'}`);

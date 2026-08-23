@@ -745,3 +745,53 @@ a { color: var(--aksen); }
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+/* Dua pemeriksaan berdampingan di kartu komentar harga.
+   Yang BELUM terpenuhi digambar sama besar dan sama tegas dengan yang sudah — bukan
+   dipucatkan. Kartu yang menampilkan satu centang hijau lalu membisikkan sisanya akan
+   berbohong tanpa satu kata pun yang salah. */
+.periksa-daftar {
+  display: grid;
+  gap: 0.5rem;
+  padding: 0;
+  margin: 0.9rem 0;
+  list-style: none;
+}
+.periksa-daftar li {
+  display: flex;
+  gap: 0.6rem;
+  align-items: start;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar);
+}
+.periksa-tanda {
+  flex: 0 0 1.35rem;
+  height: 1.35rem;
+  display: grid;
+  place-items: center;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+}
+.periksa-lolos { border-color: var(--aksen); }
+.periksa-lolos .periksa-tanda { background: var(--aksen-lemah); color: var(--aksen); }
+.periksa-gagal { border-color: var(--bahaya); background: var(--bahaya-lemah); }
+.periksa-gagal .periksa-tanda { background: var(--bahaya); color: var(--latar-kartu); }
+.periksa-belum { border-color: var(--awas); }
+.periksa-belum .periksa-tanda { background: var(--awas-lemah); color: var(--awas); }
+.periksa-isi { display: block; margin-top: 0.15rem; color: var(--teks-lemah); font-size: 0.88rem; }
+
+/* Yang di luar lingkup pertanian: disembunyikan dari daftar, TIDAK disembunyikan dari
+   pembaca. Cacah dan daftarnya ada di balik satu ketukan, supaya angka di layar tetap
+   bisa direkonsiliasi dengan angka di dokumen. */
+.luar-lingkup {
+  margin: 0.6rem 0 1rem;
+  padding: 0.6rem 0.85rem;
+  border: 1px dashed var(--garis);
+  border-radius: var(--sudut);
+}
+.luar-lingkup > summary { cursor: pointer; color: var(--teks-lemah); font-size: 0.9rem; }
+.luar-lingkup .catatan:last-child { color: var(--teks-lemah); font-size: 0.82rem; }

@@ -58,18 +58,31 @@ let kepala = [];
 // ---------------------------------------------------------------------------
 // Daftar
 // ---------------------------------------------------------------------------
+// Yang tampil di daftar: keluaran usaha tani, dan sarana produksinya. Yang tidak: baja
+// ringan, besi beton, kayu balok, triplek, paku, semen, LPG, dan pangan olahan lanjut
+// berbahan baku impor — SP2KP menerbitkannya dalam endpoint yang sama, tetapi tidak satu pun
+// urusan permukaan ini.
+//
+// Yang disembunyikan TIDAK dihapus dari data dan TIDAK didiamkan: jumlahnya disebut, dan
+// daftarnya bisa dibuka. Menyaring diam-diam membuat cacah di layar tidak pernah cocok
+// dengan cacah di dokumen, dan selisih yang tak terjelaskan itu justru yang membuat orang
+// berhenti memercayai keduanya.
+const TANI = (x) => x.r !== 'luar';
+
 function gambarDaftar(kueri = '') {
   const r = kueri.trim().toLowerCase();
+  const dalamLingkup = kepala.filter(TANI);
   const cocok = r
-    ? kepala.filter((x) => `${x.n} ${x.g ?? ''}`.toLowerCase().includes(r))
-    : kepala;
+    ? dalamLingkup.filter((x) => `${x.n} ${x.g ?? ''}`.toLowerCase().includes(r))
+    : dalamLingkup;
 
   if (!cocok.length) {
     el.daftar.innerHTML = `
       <p class="kosong">
-        Tidak ada komoditas yang namanya memuat <strong>${teks(kueri)}</strong>.
-        Cakupannya memang sempit: 43 varian berangka dari 88 yang diterbitkan, dan tidak satu
-        pun komoditas perkebunan.
+        Tidak ada komoditas tani yang namanya memuat <strong>${teks(kueri)}</strong>.
+        Cakupannya memang sempit — dan bahan bangunan serta pangan olahan lanjut yang ikut
+        diterbitkan SP2KP sengaja tidak dicari di sini. Tidak ada satu pun komoditas
+        perkebunan.
       </p>`;
     return;
   }
@@ -77,10 +90,28 @@ function gambarDaftar(kueri = '') {
   const berangka = cocok.filter((x) => !x.kosong);
   const kosong = cocok.filter((x) => x.kosong);
 
+  const luar = kepala.filter((x) => !TANI(x));
   el.daftar.innerHTML = `
     <p class="bantuan">
       ${n(berangka.length)} komoditas berangka${kosong.length ? `, ${n(kosong.length)} diterbitkan tanpa angka` : ''}.
     </p>
+    ${luar.length ? `
+      <details class="luar-lingkup">
+        <summary>${n(luar.length)} varian lain yang SP2KP terbitkan tidak ditampilkan di sini</summary>
+        <p class="catatan">
+          Endpoint yang sama memuat <strong>bahan bangunan</strong> — baja ringan, besi beton,
+          kayu balok, triplek, paku, semen — beserta <strong>LPG</strong> dan
+          <strong>pangan olahan lanjut yang bahan bakunya sebagian besar impor</strong>:
+          susu bubuk, susu kental manis, mie instan, tepung terigu. Tidak satu pun urusan
+          permukaan pertanian, jadi tidak satu pun ditampilkan.
+        </p>
+        <p class="catatan">
+          Keduanya tetap tercatat di <code>spec/vocab/harga/</code> apa adanya, supaya cacah
+          di layar ini bisa direkonsiliasi dengan cacah di sumbernya. Yang berubah hanya apa
+          yang layar ini pilih untuk tampilkan.
+        </p>
+        <p class="catatan">${luar.map((x) => teks(x.n)).join(' · ')}</p>
+      </details>` : ''}
     <ul class="daftar-harga">
       ${berangka.map((x) => {
         const a = arah(x.u30);
@@ -276,23 +307,95 @@ function kartuMusim(h) {
     </div>`;
 }
 
+// Dua pemeriksaan berdampingan, dan bentuknya sengaja menahan yang satu agar tidak
+// meminjam wibawa yang lain.
+//
+// Yang paling mudah keliru di sini adalah membuat "lolos periksa mesin" terbaca sebagai
+// "sudah diperiksa". Ia bukan itu. Ia menyatakan tiga hal yang sempit dan bisa dihitung:
+// tiap angka di kalimat memang ada di data, medan batasnya terisi, dan tidak ada ramalan
+// maupun anjuran. Ia sama sekali tidak menyentuh pertanyaan apakah kalimatnya membaca
+// angkanya dengan jujur — dan justru itu yang menentukan apakah pembacanya tersesat.
+//
+// Karena itu keduanya digambar sebagai dua baris setara, masing-masing dengan keadaannya
+// sendiri, dan yang belum terpenuhi TIDAK ditulis lebih kecil atau lebih pucat daripada
+// yang sudah. Satu centang hijau sendirian di kartu ini akan berbohong tanpa satu kata pun
+// yang salah.
 function kartuKomentar(h) {
   const k = h.komentar;
   if (!k) return '';
-  const mesin = k.sumber === 'model' ? 'model bahasa' : 'aturan atas angkanya sendiri';
+  const penulis = k.sumber === 'model' ? 'model bahasa' : 'aturan atas angkanya sendiri';
+  const p = k.periksa;
+
+  const barisMesin = !p
+    ? {
+      kelas: 'belum',
+      tanda: '–',
+      judul: 'Periksa mesin — belum dijalankan',
+      isi: 'Jalankan <code>node spec/tools/periksa-komentar-harga.mjs --tulis</code>.',
+    }
+    : p.lolos
+      ? {
+        kelas: 'lolos',
+        tanda: '✓',
+        judul: 'Lolos periksa mesin',
+        isi: 'Tiap angka di kalimat ini ada di data yang dipakai menulisnya, batasnya disebut, '
+          + 'dan tidak ada ramalan maupun anjuran. <strong>Itu saja yang diperiksa</strong> — '
+          + 'aritmetikanya bisa ditelusuri, bacaannya belum tentu jujur.',
+      }
+      : {
+        kelas: 'gagal',
+        tanda: '✕',
+        judul: 'TIDAK lolos periksa mesin',
+        isi: `<strong>${teks((p.masalah ?? []).join(' · '))}</strong> Kalimat ini tetap ditampilkan `
+          + 'apa adanya, karena menyembunyikannya menghapus satu-satunya tanda bahwa ada yang keliru.',
+      };
+
+  const barisOrang = k.ditinjau
+    ? {
+      kelas: 'lolos',
+      tanda: '✓',
+      judul: `Ditinjau ${teks(k.oleh ?? 'tanpa nama')} pada ${teks(tanggal(k.ditinjau) ?? k.ditinjau)}`,
+      isi: 'Seorang manusia membaca kalimat ini dan bertanggung jawab atas bacaannya. '
+        + 'Tinjauan itu menempel pada susunan angka yang ia baca — begitu serinya bertambah '
+        + 'dan kalimatnya ditulis ulang, ia gugur sendiri.',
+    }
+    : {
+      kelas: 'belum',
+      tanda: '–',
+      judul: 'Belum ditinjau manusia',
+      isi: 'Belum ada seorang pun yang membaca kalimat ini dan menempelkan namanya. '
+        + 'Inilah yang menahan tingkatnya di D, dan bukan sesuatu yang bisa diselesaikan mesin.',
+    };
+
+  const baris = (b) => `
+    <li class="periksa-${b.kelas}">
+      <span class="periksa-tanda" aria-hidden="true">${b.tanda}</span>
+      <span>
+        <strong>${b.judul}</strong>
+        <span class="periksa-isi">${b.isi}</span>
+      </span>
+    </li>`;
+
   return `
     <div class="kartu komentar">
       <h2>Bacaan angka ini
-        <span class="lencana lencana-d">Tingkat D · belum ditinjau</span>
+        <span class="lencana lencana-d">Tingkat ${k.ditinjau ? 'C' : 'D'} · ${k.ditinjau ? 'sudah ditinjau' : 'belum ditinjau'}</span>
       </h2>
       <p class="komentar-teks">${teks(k.teks)}</p>
+
+      <ul class="periksa-daftar">
+        ${baris(barisMesin)}
+        ${baris(barisOrang)}
+      </ul>
+
       <p class="catatan catatan-tegas">
-        <strong>Kalimat di atas ditulis ${teks(mesin)}, bukan orang, dan belum dibaca
-        seorang pun.</strong> Angkanya bertingkat B — survei resmi Kemendag, disalin apa
-        adanya — tetapi kalimat ini <em>tafsir</em> atas angka itu, dan tafsir tidak mewarisi
-        tingkat sumbernya. Angka yang dipakai menulisnya disimpan bersamanya di
+        <strong>Kalimat di atas ditulis ${teks(penulis)}, bukan orang.</strong> Angkanya
+        bertingkat B — survei resmi Kemendag, disalin apa adanya — tetapi kalimat ini
+        <em>tafsir</em> atas angka itu, dan tafsir tidak mewarisi tingkat sumbernya. Angka
+        yang dipakai menulisnya disimpan bersamanya di
         <code>spec/vocab/harga/komentar.json</code>, jadi ia bisa diperiksa tanpa memercayai
-        penulisnya.
+        penulisnya — dan daftar tinjauannya sudah siap di
+        <code>docs/18-tinjauan-komentar-harga.md</code>.
       </p>
     </div>`;
 }

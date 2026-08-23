@@ -109,6 +109,15 @@
       "type": "string",
       "minLength": 10,
       "description": "Wajib bila `series` tidak ada. Menyebut apa yang diterbitkan sumbernya dan apa yang tidak — bukan menyimpulkan komoditasnya tidak berharga."
+    },
+    "sector": {
+      "type": "string",
+      "enum": [
+        "pangan",
+        "input",
+        "luar"
+      ],
+      "description": "Relevansi terhadap permukaan pertanian. pangan = keluaran usaha tani, ternak, dan perikanan, termasuk olahan tahap pertama yang harganya jadi sinyal bagi petaninya. input = sarana produksi (benih, pupuk) — bertipe \"barang penting\" di sumbernya, tetapi inti di sini. luar = bahan bangunan, LPG, dan pangan olahan lanjut berbahan baku impor. Yang  tetap tercatat supaya cacah bisa direkonsiliasi dengan sumbernya; yang berubah hanya apa yang layar tampilkan."
     }
   },
   "required": [
@@ -119,7 +128,8 @@
     "price_level",
     "unit",
     "weighting",
-    "coverage"
+    "coverage",
+    "sector"
   ],
   "anyOf": [
     {

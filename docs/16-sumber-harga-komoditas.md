@@ -301,6 +301,26 @@ sekarang jadi satu-satunya.
 57 varian sisanya bukan komoditas tani sama sekali — besi beton, semen, triplek, LPG, paku.
 Nol komoditas perkebunan.
 
+**Apa yang layar tampilkan dari 88 itu, dan kenapa bukan seluruhnya.** SP2KP mencampur dua
+keranjang dalam satu endpoint, dan penggolongannya sendiri yang memisahkan —
+`tipe_komoditas_id` 1 untuk barang kebutuhan pokok, 2 untuk barang penting. Keranjang kedua
+memuat baja ringan, besi beton, kayu balok, triplek, paku, semen, dan LPG.
+
+Tetapi garis "tipe 1 saja" keliru ke arah yang paling merugikan: keranjang kedua **juga**
+memuat Benih dan Pupuk Non Subsidi, yang justru subjek inti repositori ini. Maka
+penggolongannya tiga, bukan dua:
+
+| Golongan | Varian | Berangka | Di layar |
+|---|---:|---:|---|
+| `pangan` — keluaran tani, ternak, perikanan, dan olahan tahap pertamanya | 51 | 39 | ya |
+| `input` — benih dan pupuk | 7 | 1 | ya |
+| `luar` — bahan bangunan, LPG, olahan lanjut berbahan impor | 30 | 3 | tidak |
+
+Yang `luar` **tetap tercatat di kosakata**, dan jumlahnya disebut di layar beserta daftarnya
+di balik satu ketukan. Menyaringnya diam-diam akan membuat cacah di layar tidak pernah cocok
+dengan cacah di dokumen ini, dan selisih yang tak terjelaskan itu justru yang membuat orang
+berhenti memercayai keduanya.
+
 **Aturan tayang bagian 7 yang sudah ditegakkan di layar:** butir 1 (tiga jenis angka
 dipisah — yang ada hanya eceran, dan layar mengatakannya di atas angkanya, bukan di catatan
 kaki), butir 6 (tidak ada penduga farmgate sama sekali). Butir 2, 3, 4, dan 5 belum berlaku

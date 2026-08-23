@@ -81,6 +81,18 @@ const sediaan = larik(bacaJson('preparation.json'));
 const bahanOrganik = larik(bacaJson('substance-organik.json'));
 const optTerkurasi = larik(bacaJson('pest.json'));
 const namaLokal = larik(bacaJson('nama-lokal.json'));
+
+// Direktori toko tinggal di toko_data/, bukan di vocab/ — ia hasil sapuan lapangan
+// dengan pembagian lisensinya sendiri di toko_data/LAPIS.md, bukan kosakata terkurasi.
+// Dibaca apa adanya; lisensinya diturunkan DARI rekamannya, tidak diketik ulang di sini.
+const bacaToko = (p) => {
+  try {
+    return readFileSync(join(akar, 'toko_data', p), 'utf8')
+      .split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l));
+  } catch { return []; }
+};
+const tokoTitik = bacaToko('toko-tani-jawa.ndjson');
+const tokoAlamat = bacaToko('benih-alamat.ndjson');
 // Ketiga berkas, bukan dua. Varietas banyak menunjuk blok op:cmd:00002xxx di
 // commodity-varietas.json; tanpanya nama komoditasnya jatuh balik ke salinan basi
 // pada rekaman varietas, dan penanda tahunan-nya hilang untuk 1.139 varietas.
@@ -840,6 +852,7 @@ for (const h of hargaSeri) {
     kelompok: h.commodity_group ?? null,
     komoditas: h.commodity ?? null,
     tingkat: h.price_level,
+    golongan: h.sector ?? 'pangan',
     satuan: h.unit,
     qty: h.qty ?? 1,
     timbangan: h.weighting,
@@ -882,6 +895,10 @@ const kepalaHarga = hargaSeri
     n: h.label?.id ?? '',
     g: h.commodity_group ?? null,
     s: h.unit,
+    // Golongan ikut ke kepala daftar, bukan cuma ke berkas rincinya: penyaringan terjadi
+    // saat daftar digambar, dan mengambil 88 berkas rinci hanya untuk tahu mana yang tani
+    // adalah 88 perjalanan untuk satu keputusan yang muat dalam satu huruf.
+    r: h.sector ?? 'pangan',
     ...(h.stats?.terakhir ? { p: h.stats.terakhir.p, t: h.stats.terakhir.t, u30: h.stats.ubah30 } : {}),
     ...(h.series ? {} : { kosong: true }),
     ...(h.commodity ? { c: h.commodity.id } : {}),
@@ -1394,6 +1411,64 @@ for (const [k, anggota] of [...rumpun.entries()].sort((a, b) => a[0].localeCompa
 }
 
 // ---------------------------------------------------------------------------
+// Direktori layanan — C7
+// ---------------------------------------------------------------------------
+// DUA PINTU, KARENA DATANYA MEMANG DUA BENTUK, dan menyatukannya akan menyamarkan
+// perbedaan yang paling menentukan: bisa dituju atau tidak.
+//
+//   Bertitik   234 dari OSM (ODbL). Punya koordinat, tidak punya alamat maupun wilayah.
+//              Menurunkan wilayahnya menuntut geokode balik massal — dan itu justru yang
+//              sudah diputuskan TIDAK dilakukan. Jadi pintunya jarak dari posisi pembaca,
+//              dihitung di peranti, tanpa satu pun koordinat meninggalkan peranti.
+//   Berwilayah 2.248 dari dua sumber. Punya nama dan wilayah, tidak punya koordinat.
+//              Pintunya penelusuran menurut wilayah.
+//
+// SATU ANGKA YANG PERLU DIKOREKSI. docs/15 menyebut "2.181 benih TTI beralamat".
+// Terhitung dari berkasnya: NOL dari 2.181 memuat alamat jalan — seluruhnya berhenti di
+// kabupaten/kota, tersebar di 113 wilayah, terpadat 173 rekaman pada satu kota. Nama
+// tanpa jalan tidak bisa dituju; ia bukti bahwa penjual benih ada di sana, bukan
+// petunjuk ke mana pergi. Yang benar-benar beralamat 67 rekaman Batang, dan seluruhnya
+// menyebut kecamatan.
+const kunciWilayah = (w) => (w ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'tanpa-wilayah';
+const punyaJalan = (a) => /\bjl\b|\bjalan\b|\bgang\b|\bdusun\b|\brt\b/i.test(a ?? '');
+
+// Wilayah diambil dari dua bagian terakhir alamat — kabupaten/kota dan provinsi — karena
+// itulah satu-satunya bagian yang ada pada SELURUH rekaman kedua sumber.
+const wilayahDari = (a) => (a ?? '').split(',').map((x) => x.trim()).filter(Boolean).slice(-2).join(', ');
+
+const perWilayah = new Map();
+for (const r of tokoAlamat) {
+  const w = wilayahDari(r.alamat);
+  const k = kunciWilayah(w);
+  if (!perWilayah.has(k)) perWilayah.set(k, { kunci: k, wilayah: w, isi: [] });
+  perWilayah.get(k).isi.push({
+    n: r.nama,
+    a: r.alamat ?? null,
+    j: punyaJalan(r.alamat) ? 1 : 0,
+    s: r.sumber,
+  });
+}
+
+const berkasToko = {};
+const tokoWilayah = [...perWilayah.values()]
+  .sort((a, b) => a.wilayah.localeCompare(b.wilayah))
+  .map((w) => {
+    berkasToko[w.kunci] = w.isi.sort((a, b) => a.n.localeCompare(b.n));
+    return { k: w.kunci, w: w.wilayah, n: w.isi.length, jalan: w.isi.filter((x) => x.j).length };
+  });
+
+// Titik OSM dibawa utuh: 234 rekaman, dan yang mencari "terdekat" butuh semuanya
+// sekaligus untuk bisa mengurutkannya.
+const tokoTitikIndeks = tokoTitik
+  .map((r) => ({ n: r.nama, y: Math.round(r.lat * 1e5) / 1e5, x: Math.round(r.lon * 1e5) / 1e5 }))
+  .sort((a, b) => a.n.localeCompare(b.n));
+
+// Lisensi diturunkan dari rekamannya, bukan diketik ulang — kalau sapuan berikutnya
+// membawa sumber berlisensi lain, angkanya ikut berubah tanpa ada yang perlu ingat.
+const lisensiToko = {};
+for (const r of tokoAlamat) lisensiToko[r.lisensi ?? 'tidak dinyatakan'] = (lisensiToko[r.lisensi ?? 'tidak dinyatakan'] ?? 0) + 1;
+
+// ---------------------------------------------------------------------------
 // batas — empat medan yang wajib disebut tiap layar
 // ---------------------------------------------------------------------------
 // B1 pada docs/15: tiap layar menyebut TINGKAT BUKTI, TANGGAL, SUMBER, dan APA YANG
@@ -1530,6 +1605,32 @@ const batas = {
       alasan:
         'Pengalaman tunggal belum terverifikasi, dan itu memang bunyinya: keenam nama datang dari satu jawaban lapangan pada 22 Agustus 2026, belum diperiksa penyuluh atau BPTP. Bukan C, karena C berarti konsensus praktisi — satu penjawab bukan konsensus. Tingkat ini justru yang membuat kamusnya boleh tampil: nama yang salah petakan tertangkap blok "pastikan dulu" di jalur 1, asalkan layar tidak berpura-pura yakin.',
     },
+    tokoTitik: {
+      label: 'Toko tani berkoordinat (OpenStreetMap)',
+      penerbit: 'Kontributor OpenStreetMap',
+      url: 'https://www.openstreetmap.org/copyright',
+      tarikan: '2026-08-22',
+      tinjau: null,
+      status: 'draft',
+      lisensi: 'ODbL-1.0',
+      cacah: tokoTitikIndeks.length,
+      tingkat: 'C',
+      alasan:
+        'Konsensus praktisi: OSM dipetakan sukarelawan yang datang ke tempatnya, bukan lembaga yang mendaftarkannya. Bukan B — tidak ada institusi yang menjaminnya, dan tidak ada yang memeriksa apakah tokonya masih buka. Bukan D — tiap titik bisa ditelusuri ke penyuntingnya dan diperbaiki siapa pun.',
+    },
+    tokoWilayah: {
+      label: 'Penjual benih beralamat',
+      penerbit: 'Kementerian Pertanian RI · Pemkab Batang',
+      url: null,
+      tarikan: '2026-08-22',
+      tinjau: null,
+      status: 'draft',
+      lisensi: Object.keys(lisensiToko).sort().join(' · '),
+      cacah: tokoAlamat.length,
+      tingkat: 'D',
+      alasan:
+        'Yang 2.181 dari arsip Wayback halaman TTI Kementan yang sudah tidak ada lagi — tidak ada tanggal pada rekamannya, jadi tidak ada cara mengetahui seberapa basi, dan toko yang sudah tutup tidak bisa dibedakan dari yang masih buka. Yang 67 dari data terbuka Pemkab Batang berlisensi CC-BY, jauh lebih kuat, tetapi terlalu sedikit untuk menaikkan tingkat keseluruhannya.',
+    },
     sediaan: {
       label: 'Resep sediaan buatan sendiri',
       penerbit: 'Open Protocols',
@@ -1575,6 +1676,10 @@ const meta = {
     dosisPerLiter: bentukDosis.perLiter,
     dosisKosong: bentukDosis.kosong,
     dosisLain: bentukDosis.lain,
+    tokoBertitik: tokoTitikIndeks.length,
+    tokoBerwilayah: tokoAlamat.length,
+    tokoBeralamatJalan: tokoAlamat.filter((r) => punyaJalan(r.alamat)).length,
+    tokoWilayah: tokoWilayah.length,
     principal: principalRinci.length,
     principalPupuk: principalRinci.filter((b) => b.punya.fertilizer > 0).length,
     principalPestisida: principalRinci.filter((b) => b.punya.pesticide > 0).length,
@@ -1586,6 +1691,9 @@ const meta = {
     hargaVarian: hargaSeri.length,
     hargaBerangka: hargaSeri.filter((h) => h.series?.length).length,
     hargaTitik: hargaSeri.reduce((a, h) => a + (h.series?.length ?? 0), 0),
+    hargaTani: hargaSeri.filter((h) => h.sector !== 'luar').length,
+    hargaTaniBerangka: hargaSeri.filter((h) => h.sector !== 'luar' && h.series?.length).length,
+    hargaLuar: hargaSeri.filter((h) => h.sector === 'luar').length,
     hargaKomoditasTersambung: new Set(hargaSeri.filter((h) => h.commodity).map((h) => h.commodity.id)).size,
     sidikKandungan: kandungan.size,
     produkBerkandungan: [...kandungan.values()].reduce((a, d) => a + d.length, 0),
@@ -1603,6 +1711,7 @@ const meta = {
     // menebak nama berkasnya — 36 KB seluruhnya, dan tanpanya jalur 5 dan 6 terbuka
     // tetapi kosong justru saat paling mungkin dibuka jauh dari sinyal.
     sediaan: Object.keys(berkasResep).sort(),
+    toko: tokoWilayah.map((w) => w.k),
     // Sengaja CACAH, bukan daftar. Daftar 3.136 kunci principal membengkakkan meta.json dari
     // 19 KB jadi 114 KB — dan meta.json satu-satunya berkas yang diambil di TIAP muat halaman,
     // termasuk halaman yang tidak menyentuh principal sama sekali. Penyaji tidak
@@ -1657,6 +1766,10 @@ const meta = {
       'Sebagian nama lokal sudah terdengar tetapi belum bisa ditautkan ke OPT mana pun — entah calonnya bertabrakan, entah rujukannya memang di luar sepuluh OPT terkurasi. Namanya tetap tercatat supaya pencarian tidak menjawab nol, tetapi layar tidak bisa membukakan apa pun untuknya.',
     kandunganTakTerdaftar:
       'Kandungan yang tidak cocok dengan satu pun pendaftaran tidak membuktikan apa pun sendirian. Tiga hal menjelaskannya sekaligus: angkanya salah baca, produknya terdaftar dengan kandungan sedikit berbeda, atau memang tidak terdaftar. Registri juga tidak lengkap — 28,7% pupuk tidak berkomposisi sama sekali.',
+    tokoTakBisaDituju:
+      'Nol dari 2.181 rekaman penjual benih memuat alamat jalan — seluruhnya berhenti di kabupaten atau kota, tersebar di 113 wilayah dengan sampai 173 rekaman pada satu kota. Nama tanpa jalan tidak bisa dituju: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi. Yang benar-benar beralamat hanya 67 rekaman Batang.',
+    tokoTanpaKontak:
+      'Tidak satu pun rekaman memuat nomor telepon, surel, jam buka, atau apakah tokonya masih ada. Medan itu sengaja dibiarkan kosong menunggu pemilik toko mengklaimnya sendiri — menambalnya dengan geokode massal atau penarikan pihak ketiga akan mengisi direktori dengan tebakan yang tidak bisa dibantah siapa pun.',
     takaranRumahTangga:
       'Tidak ada satu pun ukuran baku untuk tutup botol, sendok, atau gelas, dan registri tidak memuatnya. Tutup botol yang berbeda berselisih dua sampai empat kali lipat, jadi menyebut "satu tutup" sebagai takaran berarti mengarang angka yang bisa melipatgandakan dosis. Yang bisa dilakukan layar hanya menghitung dari ukuran yang diukur sendiri pemakainya.',
     isiKarung:
@@ -1688,6 +1801,9 @@ pecahanProduk.forEach((s, i) => simpan(`produk/${String(i).padStart(3, '0')}.jso
 pecahanVarietas.forEach((s, i) => simpan(`varietas/${String(i).padStart(3, '0')}.json`, s));
 for (const [k, isi] of Object.entries(berkasOpt).sort()) simpan(`opt/${k}.json`, isi);
 for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan/${e}.json`, isi);
+simpan('toko-titik.json', tokoTitikIndeks);
+simpan('toko-wilayah.json', tokoWilayah);
+for (const [k, isi] of Object.entries(berkasToko).sort()) simpan(`toko/${k}.json`, isi);
 for (const [k, isi] of Object.entries(berkasPrincipal).sort()) simpan(`principal/${k}.json`, isi);
 for (const [k, isi] of Object.entries(berkasHarga).sort()) simpan(`harga/${k}.json`, isi);
 if (kepalaHarga.length) simpan('harga.json', kepalaHarga);
@@ -1749,6 +1865,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => punyaJalan(r.alamat)).length} beralamat jalan`);
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);

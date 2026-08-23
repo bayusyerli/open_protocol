@@ -101,6 +101,10 @@ for (const b of baris) {
       komoditas: (b.komoditas?.nama ?? '').trim(),
       satuan: (v.satuan?.nama ?? v.satuan ?? null),
       qty: v.qty ?? null,
+      // Penggolongan milik SUMBERNYA, dibawa apa adanya: 1 = barang kebutuhan pokok,
+      // 2 = barang penting. Ia yang nanti memisahkan pangan dari besi beton, tanpa kita
+      // perlu menyusun daftar kata sendiri yang akan basi diam-diam.
+      tipe: v.tipe_komoditas_id ?? b.komoditas?.tipe_komoditas_id ?? null,
       kode_kbki: v.kode_kbki || null,
       nama_kbki_bps: v.nama_kbki_bps || null,
       nasional: v.is_nasional ?? null,
