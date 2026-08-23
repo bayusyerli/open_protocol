@@ -1,0 +1,27 @@
+{
+  "$schema": "../schema/padanan-bahan-aktif.schema.json",
+  "padanan": {
+    "label": { "id": "Fixture uji padanan bahan aktif — belum terpetakan tanpa alasan" },
+    "scope": {
+      "id": "Sengaja dibuat cacat. Baris `belum-terpetakan` tanpa `alasan`. Kegagalan pada tabel ini harus berisik: tulisan yang tidak terpetakan wajib menyebutkan kenapa, karena lampu hijau palsu lebih buruk daripada tidak menjawab."
+    },
+    "lifecycle": { "version": "0.1.0", "status": "draft" },
+    "provenance": { "license": "CC-BY-SA-4.0" },
+    "kunci_normalisasi": { "id": "kunci = tulisan mentah, huruf kecil, spasi diseragamkan, ujungnya dipangkas." },
+    "potret": {
+      "berkas": "pukpes_data/raw/pestisida_terdaftar.json",
+      "tarikan": "2026-08-19",
+      "formulasi": 7724,
+      "sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "hitungan": { "kunci": 1, "per_hubungan": { "belum-terpetakan": 1 }, "berkanonik": 0, "berinduk": 0, "berfaktor": 0, "perlu_tinjau": 0 }
+  },
+  "padanan_items": [
+    {
+      "kunci": "bahan yang tidak dikenali",
+      "tulisan_teramati": ["Bahan yang tidak dikenali"],
+      "formulasi": 1,
+      "hubungan": "belum-terpetakan"
+    }
+  ]
+}
