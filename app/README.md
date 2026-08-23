@@ -263,6 +263,51 @@ satu pun berstatus `published`.
 Sisi repositorinya ada di [CONTRIBUTING.md](../CONTRIBUTING.md): aturan **L35**, sematan
 `lifecycle.reviewed_hash`, dan `spec/tools/tinjau.mjs`.
 
+### Pintu serah-terima laporan gejala — G3
+
+`docs/15` menulis bahayanya sebelum ada kode, dan bahaya itu yang merancang pintunya:
+*"laporan gejala dari warga adalah data mentah; **menyebutnya wabah adalah kesimpulan**.
+Peta yang menampilkan titik-titik laporan tanpa verifikasi bisa memicu penyemprotan massal
+yang tidak perlu — dan kerugiannya ditanggung petani, sementara yang untung penjual
+pestisida."*
+
+Tiga hal karena itu **tidak** dibangun, dan ketiganya keputusan:
+
+- **Tidak ada kotak masuk.** Permukaan tidak menerima laporan — ia menyusun lalu
+  menyerahkannya kembali.
+- **Tidak ada peta.** Aturan `L37` sudah menolak laporan belum-terverifikasi berkelas
+  publik di lapis data, jadi peta itu tidak bisa tersusun bahkan kalau ada yang mencoba
+  membuatnya di lapis penyaji.
+- **Tidak ada identifikasi.** Yang keluar "dugaan beserta dasarnya", sama seperti medan
+  `suspected` di skema — yang memang tidak punya saudara bernama `identified`.
+
+**Dasarnya datang dari blok "pastikan dulu", dan itu yang membedakannya dari tebakan.**
+Tiap OPT terkurasi membawa dua ciri pembanding yang bisa diperiksa sendiri. Pintu ini
+menanyakan mana yang sudah dicek, dan **yang belum diperiksa ikut tertulis sebagai kalimat
+tersendiri** — justru itu yang paling berguna bagi penyuluh yang datang, karena ia tahu apa
+yang harus dilihat lebih dulu. Contoh keluarannya:
+
+```
+Ciri yang saya periksa sendiri:
+· [ciri pertama] — cocok
+· [ciri kedua] — belum diperiksa
+(1 dari 2 ciri belum saya periksa.)
+```
+
+- **Pintunya tidak muncul di jalur `?hama=`**, dan itu penjagaan bukan kelalaian. OPT
+  registri tidak punya ciri pembanding sama sekali; laporan yang dugaannya datang dari
+  mengetik nama, tanpa satu ciri pun yang bisa dicek, persis tebakan tanpa dasar yang
+  ditolak seluruh rancangan ini.
+- **Ujungnya nyata sekarang.** Ketik kabupaten → daftar balai penyuluhan di sana → pilih
+  yang membina kecamatanmu, dan namanya masuk ke badan laporan. Yang ditawarkan bukan peta
+  melainkan pilihan menurut kecamatan, karena balai memang tidak punya alamat — dan yang
+  melapor tahu kecamatannya sendiri.
+- **Laporan menyatakan apa yang bukan dirinya.** *"Ini pengamatan, bukan kesimpulan, dan
+  bukan permintaan penyemprotan"* dicetak di badan laporan, bukan di layar yang ditinggalkan
+  saat pesannya dikirim — karena yang membacanya penyuluh, bukan yang menyusunnya.
+- **Dua jalan keluar**, keduanya baru berjalan setelah orangnya menekan: WhatsApp, atau
+  salin. Terukur 990 aksara, alamat 1.618 — muat.
+
 ### Balai penyuluhan dan laboratorium — C7, dua pintu lagi
 
 Empat dari enam layanan yang dijanjikan C7 kini punya data, dan dua yang baru tidak

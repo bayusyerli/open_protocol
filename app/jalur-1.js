@@ -24,6 +24,7 @@ import { ambil, muatMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js'
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
+import { blokLapor, pasangLapor } from './lapor.js';
 import { pasangTombolTema } from './tema.js';
 
 pasangTombolTema();
@@ -39,6 +40,8 @@ const el = {
 document.getElementById('tanpaJs')?.remove();
 
 let kamusLokal = [];
+let bppWilayah = [];
+let optKini = null;
 let daftarOpt = null;
 let larangan = null;
 
@@ -374,11 +377,12 @@ async function bukaOpt(id) {
   const k = daftarOpt.find((x) => x.id === id);
   if (!k) return;
   terbukaKini = { id: k.id, nama: k.nama, tautan: tautanKe(`?opt=${encodeURIComponent(k.id)}`) };
+  optKini = k;
   el.hasil.innerHTML = '<p class="kosong">Menyiapkan…</p>';
   el.hasil.focus();
   try {
     if (!larangan) larangan = await ambil('larangan');
-    el.hasil.innerHTML = blokPastikan(k) +
+    el.hasil.innerHTML = blokPastikan(k) + blokLapor(k) +
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
     catatJawab(1, k.di.length ? UKUR.isi : UKUR.nol);
@@ -419,16 +423,23 @@ el.hasil.addEventListener('click', async (ev) => {
   isi.innerHTML = tabelMerek(merek);
 });
 
+pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`));
+
 (async function mulai() {
   try {
     // Dua pengambilan sekaligus, bukan berurutan: kamusnya kecil dan tidak
     // menghalangi apa pun, tetapi kartu OPT butuh keduanya sudah ada.
-    const [gejalaAda, lokalAda] = await Promise.all([
+    const [gejalaAda, lokalAda, bppAda] = await Promise.all([
       ambil('gejala'),
       ambil('nama-lokal').catch(() => []),
+      // Daftar wilayah balai — 39 KB, dan hanya dipakai kalau pintu laporan dibuka.
+      // Gagalnya tidak boleh menjatuhkan jalur ini: yang datang ke sini datang untuk
+      // gejala, dan pintu laporan pelengkap.
+      ambil('bpp-wilayah').catch(() => []),
     ]);
     daftarOpt = gejalaAda;
     kamusLokal = lokalAda;
+    bppWilayah = bppAda;
     const berpintu = daftarOpt.filter((k) => k.adaPintu);
     if (berpintu.length < daftarOpt.length) {
       el.gejala.innerHTML = `<p class="catatan">${daftarOpt.length - berpintu.length} OPT

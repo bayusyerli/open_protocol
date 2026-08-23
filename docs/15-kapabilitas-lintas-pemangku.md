@@ -554,7 +554,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | G1 | Alur kontribusi & tinjauan protokol dengan reviewer **bernama** | agronom, dosen, BSIP, penyuluh | mutu & legitimasi korpus | **selesai** 23 Agustus 2026 — `CONTRIBUTING.md`, `spec/tools/tinjau.mjs`, aturan L35, dan sematan `reviewed_hash`. Terukur saat dibuka: **0 dari 4.256** rekaman punya peninjau bernama, **0** berstatus published | **selesai** |
 | G2 | Umpan balik lapangan menaikkan tingkat bukti D→A | semua | apakah korpus hidup | `DeviationReason.signals` **ada** | **BANGUN** (fase 3) |
-| G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | **entitasnya selesai** 23 Agustus 2026 — `observation.schema.json` + aturan `L37`. **Permukaannya ditahan**: 0 rekaman POPT, jadi tidak ada ujung untuk diserahi | entitas **selesai**; permukaan **TUNDA** sampai C7 punya POPT |
+| G3 | Pelaporan gejala oleh warga → peta gejala wilayah | petani, POPT, pemda | #8, peringatan dini | **selesai** 23 Agustus 2026 — `observation.schema.json`, aturan `L37`, dan pintu serah-terima di jalur 1 yang menemukan balai penyuluhan menurut kecamatan. Tanpa kotak masuk, tanpa peta, dan tanpa identifikasi | **selesai** 23 Agustus 2026 — entitas, aturan `L37`, dan pintu serah-terima di jalur 1 |
 | G4 | API publik | integrator, pemerintah, peneliti | interoperabilitas | terhalang **3 keputusan**, bukan kode | **TUNDA** |
 | G5 | Identitas petak stabil tanpa memiliki geometrinya | semua | dasar semua rekaman | **selesai** 23 Agustus 2026 — `tools/sidik-petak.mjs` + aturan `L36`. Yang tetap `id` rekamannya, yang berubah sidiknya; sidik titik tunggal **ditolak** karena 2³⁰ ditebak habis dalam 0,08 detik | **selesai** |
 | G6 | **Lapis pengalaman peer** — pengamatan lapangan diagregasi di tingkat bahan aktif, selalu berpenyebut | petani, poktan, penyuluh | #3, #4, #6, #9 — kanal keputusan yang sebenarnya | `Observation` **kini benar-benar ada** (23 Agustus 2026, lewat G3); pengumpulan hanya mungkin di atas E1–E5 | **BANGUN** (fase 3) |
@@ -642,10 +642,17 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > disebut baris pemetaan lanskap di atas. Verifikasi yang dituntut `L37` karena itu bukan
 > lagi pihak yang tidak bisa disebutkan namanya.
 >
-> **Yang belum: permukaannya membaca indeks itu.** Layar C7 sudah dikoreksi supaya tidak
-> lagi menyatakan keempat layanan nol rekaman, tetapi ia belum menampilkan balai maupun
-> laboratorium. Itu pekerjaan berikutnya, dan sekarang ia pekerjaan penyaji — bukan
-> pekerjaan data.
+> **Ditutup 23 Agustus 2026, dan urutannya penting.** Layar C7 kini menampilkan keduanya —
+> balai ditelusuri menurut kecamatan, laboratorium disaring menurut kemampuan — lalu pintu
+> serah-terima G3 dibangun di atasnya, di jalur 1 tempat orang memang sedang melihat
+> gejala. Pintunya menyusun laporan berdasar (ciri mana yang sudah dicek, dan **yang belum
+> ikut tertulis**), menemukan balai yang membina kecamatannya, lalu menyerahkan keduanya
+> kembali. Tanpa kotak masuk, tanpa peta, tanpa identifikasi.
+>
+> **Satu penjagaan yang mudah terlewat:** pintunya **tidak muncul di jalur `?hama=`**. OPT
+> registri tidak punya ciri pembanding sama sekali, jadi laporan dari sana akan berdugaan
+> tanpa satu hal pun yang bisa dicek — persis tebakan tanpa dasar yang ditolak seluruh
+> rancangan ini.
 
 > **C4 sisi petani dikerjakan 23 Agustus 2026, dan ia terbelah dua — satu separuh
 > dibangun, satu separuh ditolak.**
