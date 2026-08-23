@@ -1666,7 +1666,17 @@ Dua yang tidak ketemu berbentuk 13 digit padahal registri memakai 14: `010102017
 `0101012015520`. Kehilangan satu digit itu **terlihat dari panjangnya**, dan tidak ditambal
 dengan menebak digit yang hilang.
 
-**Sisa katalogcba.com tercatat mesin, bukan di kepala.**
-[`prospek-katalogcba.csv`](prospek-katalogcba.csv) memuat kelima puluh enam baris berikut
-nomor tercetak, `brand_key`, `op:prd` yang dituju, dan statusnya. Yang tersisa hanya memotong
-packshot dari brosur yang sudah terunduh — pemetaannya tidak perlu diturunkan ulang.
+**Kelima puluh enam itu kini habis dikerjakan.**
+[`prospek-katalogcba.csv`](prospek-katalogcba.csv) memuat seluruhnya berikut nomor tercetak,
+`brand_key`, `op:prd` yang dituju, dan statusnya: **49 dipanen**, 3 brosurnya ada tetapi
+potongan terbaiknya bukan kemasan (CENTALLY PLUS 40 WG, KURATERBANG 3,3 GR, PILLY 25 WP —
+brosurnya berorientasi mendatar atau menaruh packshot di antara blok teks), 2 nomornya
+menunjuk merek lain, 2 nomornya kehilangan satu digit.
+
+Centa Brasindo naik dari 31 ke **80 dari 194 merek**, dan seluruh 49 baris baru berbasis
+`nomor_pendaftaran_tercetak` — sesuatu yang sebelum pasal ini praktis tidak terjangkau pada
+skala segini. Ukuran keseluruhan koleksi ikut bergeser: nomor tercetak yang terbaca naik dari
+280 ke **342**, dan yang terkoroborasi ke mereknya sendiri jadi **321**.
+
+Sisa 114 merek Centa Brasindo tidak punya pos produk di situsnya — bukan soal potongan lagi,
+melainkan soal halaman yang memang tidak ada.
