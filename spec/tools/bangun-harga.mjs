@@ -60,6 +60,8 @@ const TBS_KALBAR = join(akar, 'harga_data', 'tbs-kalbar.ndjson');
 const tbsKalbar = existsSync(TBS_KALBAR) ? bacaNdjson(TBS_KALBAR) : [];
 const TBS_RIAU = join(akar, 'harga_data', 'tbs-riau.ndjson');
 const tbsRiau = existsSync(TBS_RIAU) ? bacaNdjson(TBS_RIAU) : [];
+const TBS_KALTENG = join(akar, 'harga_data', 'tbs-kalteng.ndjson');
+const tbsKalteng = existsSync(TBS_KALTENG) ? bacaNdjson(TBS_KALTENG) : [];
 
 // ---------------------------------------------------------------------------
 // Sambungan ke kosakata komoditas sendiri
@@ -535,6 +537,77 @@ for (const [jenis, sp] of Object.entries(RIAU_JENIS)) {
       id: 'Permentan 13/2024',
       relation: 'related',
       note: 'Penetapan harga TBS oleh tim provinsi Riau; diumumkan lewat Media Center Riau sebagai prosa berangka.',
+    }],
+    lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
+  });
+}
+
+
+// ---------------------------------------------------------------------------
+// TBS Kalimantan Tengah
+// ---------------------------------------------------------------------------
+// Arsip terdalam dari ketiga provinsi — mundur sampai Januari 2021. Bentuknya sama dengan
+// Riau: prosa, tabel umur di dalam kalimat, dan angka utama pada pita puncak.
+//
+// Pita puncaknya BERBEDA dari Riau, dan itu perlu dinyatakan alih-alih diratakan. Riau
+// mengumumkan umur 9; Kalteng mengumumkan pita 10–20 tahun. Keduanya puncak kurva hasil di
+// daerahnya, tetapi keduanya pita yang berlainan — menyandingkan angkanya tanpa menyebut
+// pitanya berarti membandingkan dua hal yang berbeda.
+if (tbsKalteng.length) {
+  const baris = tbsKalteng.filter((r) => r.tbs > 0).sort((a, b) => a.t.localeCompare(b.t));
+  const titik = baris.map((r) => ({ t: r.t, p: Math.round(r.tbs * 100) / 100 }));
+  const key = 'tbs-kelapa-sawit-kalimantan-tengah';
+  const id = idLama.get(key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`;
+  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+  const akhir = baris.at(-1);
+  const berIndeks = baris.filter((r) => r.indeks_k);
+  const nominal = baris.filter((r) => r.tanggal_nominal).length;
+  const pitaCacah = {};
+  for (const r of baris) pitaCacah[r.pita_puncak] = (pitaCacah[r.pita_puncak] ?? 0) + 1;
+
+  itemsTbs.push({
+    id,
+    key,
+    label: { id: 'TBS Kelapa Sawit — Kalimantan Tengah' },
+    commodity_group: 'Kelapa Sawit',
+    ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
+    region: { code: 'ID-KT', label: 'Kalimantan Tengah' },
+    source_system: 'Media Center Kalteng',
+    basis: 'penetapan',
+    legal_scope:
+      'Menaungi pekebun mitra menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra. Artikel penetapannya menyebutkan sendiri bahwa hasil perhitungan "dibayarkan kepada semua pekebun mitra". PEKEBUN SWADAYA BERADA DI LUAR CAKUPANNYA, dan Kalteng tidak menerbitkan seri terpisah untuk mereka — hanya Riau yang melakukannya.',
+    price_level: 'farmgate',
+    sector: 'pangan',
+    unit: 'kg',
+    qty: 1,
+    ...(nominal ? { nominal_dates: true } : {}),
+    coverage: { from: titik[0].t, to: titik.at(-1).t, points: titik.length, gaps: 0 },
+    series: titik,
+    stats: statistik(titik),
+    age_bands: {
+      keterangan:
+        `Harga per pita umur tanaman pada penetapan ${akhir.t}, terurai dari prosa artikelnya. Angka pada grafik memakai PITA PUNCAK tiap periode — ${Object.entries(pitaCacah).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} tahun pada ${v} penetapan`).join(', ')} — bukan rata-rata seluruh pita. Satu kebun hanya menghadapi pitanya sendiri.`,
+      pita: Object.keys(akhir.tbs_umur),
+      terakhir: akhir.tbs_umur,
+      seri: baris.map((r) => ({ t: r.t, u: r.tbs_umur })),
+    },
+    ...(berIndeks.length ? {
+      formula: {
+        keterangan:
+          `Indeks K dan harga CPO/PK pada tiap penetapan. Tersedia pada ${berIndeks.length} dari ${baris.length} penetapan; yang tidak menyebutkannya dibiarkan kosong alih-alih diisi dari periode lain.`,
+        terakhir: {
+          indeks_k: berIndeks.at(-1).indeks_k,
+          ...(berIndeks.at(-1).cpo ? { cpo: berIndeks.at(-1).cpo } : {}),
+          ...(berIndeks.at(-1).pk ? { pko: berIndeks.at(-1).pk } : {}),
+        },
+        seri: berIndeks.map((r) => ({ t: r.t, k: r.indeks_k, ...(r.cpo ? { cpo: r.cpo } : {}), ...(r.pk ? { pko: r.pk } : {}) })),
+      },
+    } : {}),
+    mappings: [{
+      scheme: 'KEMENTAN',
+      id: 'Permentan 13/2024',
+      relation: 'related',
+      note: 'Penetapan harga TBS oleh tim Pokja provinsi Kalteng; diumumkan lewat Media Center Kalteng sebagai prosa berangka.',
     }],
     lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
   });

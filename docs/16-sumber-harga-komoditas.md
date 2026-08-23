@@ -514,6 +514,48 @@ kekeliruan ini, karena selisih mingguan berukuran puluhan rupiah dan tingkat har
 > diumumkan rapat penetapan yang sama. Ini perlu dijawab sebelum angkanya dipakai sebagai
 > dasar apa pun selain penerangan.
 
+**Kalimantan Tengah menyusul — arsip terdalam dari ketiganya.** `POST /berita` dengan
+`cari=Harga TBS` mengembalikan keseluruhan 58 artikel dalam satu respons, tanpa paginasi.
+**41 terurai (71%)**, mundur sampai **Januari 2021**. `robots.txt`-nya menjawab 403 sementara
+seluruh isinya terlayani 200 — salah konfigurasi Apache, bukan penolakan; RFC 9309 bagian
+2.3.1.3 memperlakukan 4xx selain 429 sebagai tanpa pembatasan, dan itu **diperiksa** dengan
+memastikan isinya sendiri terlayani.
+
+**Uji bentuk kurva menangkap satu rekaman yang lolos semua pemeriksaan lain sambil rusak.**
+Pada satu artikel, umur 3 terurai Rp2.901 — lebih tinggi daripada pita 10–20 — dengan umur 6
+dan 8 hilang, akibat pola yang menyeberangi batas kalimat. Uji julat meloloskannya karena
+nilainya masuk akal *sebagai harga*. Yang menangkapnya bentuk, bukan besaran: harga TBS naik
+menurut umur sampai puncaknya, jadi **pita termuda wajib yang terendah**. Aturan itu sekarang
+mengikat, dan ia agronomi — bukan kebetulan penulisan.
+
+Satu pelajaran kecil ikut: artikel sebelum 2024 **mengeja umurnya dengan kata** ("umur tanaman
+tiga tahun Rp1.723,70"), yang lebih baru memakai angka, dan keduanya dipakai bergantian di
+dalam satu artikel yang sama. Tanpa menanganinya, 33 dari 58 artikel tertolak — seluruhnya
+yang lebih tua.
+
+**Pita puncaknya berbeda antar-provinsi, dan itu tidak boleh diratakan.** Riau mengumumkan
+umur 9; Kalteng mengumumkan pita 10–20 tahun. Keduanya puncak kurva hasil di daerahnya
+masing-masing, tetapi keduanya pita yang berlainan — menyandingkan angkanya tanpa menyebut
+pitanya berarti membandingkan dua hal yang berbeda.
+
+### Sulawesi Barat — datanya ada, arsipnya tidak, dan harganya tidak diterbitkan
+
+Diperiksa 23 Agustus 2026 dan **tidak bisa dipanen sebagai seri**, karena dua sebab yang
+masing-masing sudah cukup:
+
+1. **Arsipnya tidak bisa dienumerasi.** `?page=N` diabaikan — halaman 2 mengembalikan enam
+   slug yang sama persis dengan halaman 1. Tidak ada `sitemap.xml`, `wp-json`, maupun `feed`;
+   keempatnya 404. Yang terjangkau hanya pos yang kebetulan masih di beranda, dan itu
+   berguguran seiring pos baru terbit.
+2. **Artikelnya tidak menerbitkan harga TBS-nya.** Yang ada Indeks K (88,24%), harga CPO
+   (Rp14.949,77), dan harga inti — lalu kalimatnya berbunyi harga TBS *"selanjutnya
+   disesuaikan berdasarkan tahun tanam dan tingkat rendemen masing-masing kelompok umur
+   tanaman"*. Angkanya sendiri tidak pernah disebut.
+
+`robots.txt` Sulbar terbuka penuh, jadi ini bukan soal izin. Ia contoh keempat dari pelajaran
+"endpoint sehat bukan berarti data ada": situs hidup, halaman terlayani 200, rapat penetapan
+benar-benar berlangsung — dan angka yang dicari tidak ada di sana.
+
 ### Yang masih kosong di sisi sawit
 
 | Kekosongan | Keterangan |

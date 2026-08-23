@@ -2112,6 +2112,53 @@
       "diperiksaMesin": {
         "lolos": true
       }
+    },
+    "tbs-kelapa-sawit-kalimantan-tengah": {
+      "id": "op:hrg:00001091",
+      "nama": "TBS Kelapa Sawit — Kalimantan Tengah",
+      "komentar": "Per 16 Agustus 2025, TBS Kelapa Sawit — Kalimantan Tengah tercatat Rp3.475 per kg pada tingkat pekebun, hasil penetapan Kalimantan Tengah. Dalam 30 hari terakhir ia naik 5,4%, dan dibanding setahun lalu naik 19,3%. Sepanjang 1 Januari 2021 sampai 16 Agustus 2025 rentangnya Rp1.947 (1 Februari 2021) sampai Rp3.617 (1 Desember 2024), dengan koefisien variasi 19,6%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Juni, berselisih 73,9% — pola dari 41 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima pekebun SWADAYA. Penetapan ini menaungi pekebun mitra dan plasma; swadaya berada di luar cakupannya, dan harga yang mereka terima tidak diterbitkan lembaga mana pun kecuali Riau.",
+      "batas": "Menaungi pekebun mitra dan plasma; pekebun swadaya berada di luar cakupannya, dan merekalah mayoritas petani sawit Indonesia.",
+      "sumber": "terhitung",
+      "fakta": {
+        "nama": "TBS Kelapa Sawit — Kalimantan Tengah",
+        "kelompok": "Kelapa Sawit",
+        "satuan": "kg",
+        "tingkat": "pekebun, hasil penetapan Kalimantan Tengah",
+        "cakupanHukum": "Menaungi pekebun mitra menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra. Artikel penetapannya menyebutkan sendiri bahwa hasil perhitungan \"dibayarkan kepada semua pekebun mitra\". PEKEBUN SWADAYA BERADA DI LUAR CAKUPANNYA, dan Kalteng tidak menerbitkan seri terpisah untuk mereka — hanya Riau yang melakukannya.",
+        "hargaTerakhir": 3474.6,
+        "tanggalTerakhir": "2025-08-16",
+        "ubah7hari": 5.43,
+        "ubah30hari": 5.43,
+        "ubah90hari": 6.15,
+        "ubah1tahun": 19.32,
+        "terendah": {
+          "t": "2021-02-01",
+          "p": 1946.67
+        },
+        "tertinggi": {
+          "t": "2024-12-01",
+          "p": 3616.64
+        },
+        "rataRata": 2774.46,
+        "gejolakPersen": 19.61,
+        "musim": {
+          "bulanTermahal": "Maret",
+          "bulanTermurah": "Juni",
+          "selisihMusimPersen": 73.85
+        },
+        "cakupan": {
+          "dari": "2021-01-01",
+          "sampai": "2025-08-16",
+          "jumlahTitik": 41,
+          "hariTanpaAngka": 0
+        }
+      },
+      "sidikFakta": "{\"nama\":\"TBS Kelapa Sawit — Kalimantan Tengah\",\"kelompok\":\"Kelapa Sawit\",\"satuan\":\"kg\",\"tingkat\":\"pekebun, hasil penetapan Kalimantan Tengah\",\"cakupanHukum\":\"Menaungi pekebun mitra menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra. Artikel penetapannya menyebutkan sendiri bahwa hasil perhitungan \\\"dibayarkan kepada semua pekebun mitra\\\". PEKEBUN SWADAYA BERADA DI LUAR CAKUPANNYA, dan Kalteng tidak menerbitkan seri terpisah untuk mereka — hanya Riau yang melakukannya.\",\"hargaTerakhir\":3474.6,\"tanggalTerakhir\":\"2025-08-16\",\"ubah7hari\":5.43,\"ubah30hari\":5.43,\"ubah90hari\":6.15,\"ubah1tahun\":19.32,\"terendah\":{\"t\":\"2021-02-01\",\"p\":1946.67},\"tertinggi\":{\"t\":\"2024-12-01\",\"p\":3616.64},\"rataRata\":2774.46,\"gejolakPersen\":19.61,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Juni\",\"selisihMusimPersen\":73.85},\"cakupan\":{\"dari\":\"2021-01-01\",\"sampai\":\"2025-08-16\",\"jumlahTitik\":41,\"hariTanpaAngka\":0}}",
+      "ditulis": "2026-08-23",
+      "ditinjau": null,
+      "diperiksaMesin": {
+        "lolos": true
+      }
     }
   }
 }
