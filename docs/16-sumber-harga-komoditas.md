@@ -603,6 +603,92 @@ menghilang. Seperti Kalbar, arsipnya jadi milik kita hanya kalau ditarik rutin.
 
 **Crawl-delay 10 detik** pada host lampiran Babel dihormati apa adanya.
 
+### Aceh — arsip yang bisa dibuktikan lengkap, dan koreksi atas klaim dokumen ini sendiri
+
+Diserap 23 Agustus 2026. **9 penetapan, Juli 2024 → Juli 2026**, dibaca OCR dari selebaran
+resmi Distanbun Aceh.
+
+**Arsipnya bisa dienumerasi seluruhnya, dan itu yang pertama.** Halaman `/berita` dirender di
+peramban, jadi sekilas ia menuntut penjelajahan. Ia tidak: skrip halamannya sendiri menyusun
+`'/json' + pathname + '.json'`, dan endpoint itu mengembalikan **seluruh 1.765 artikel dalam
+satu respons** — tanpa paginasi, tanpa kunci. Kelengkapan serinya karena itu bisa
+*dibuktikan*, bukan diharapkan. Bandingkan Riau, yang indeksnya sampai kini tidak bisa
+dienumerasi, dan Sulbar di bawah, yang gugur justru karena itu.
+
+> Ini pelajaran SP2KP yang berulang untuk ketiga kalinya: halaman yang tampak dirender
+> peramban kerap punya endpoint bersih di belakangnya. Yang menemukannya membaca skrip
+> halaman, bukan menebak alamat.
+
+**Aceh menerbitkan harga pekebun SWADAYA — dan dokumen ini semula menyatakan hanya Riau yang
+melakukannya.** Klaim itu keliru dan sudah dikoreksi di tabel kekosongan di bawah. Tetapi
+koreksinya tidak berhenti pada hitungan:
+
+| | Riau | Aceh |
+|---|---|---|
+| Sumbu harga swadaya | **umur tanaman** | **komposisi bahan tanam** (% tenera : % dura) |
+| Jumlah pita | 13 pita umur | 7 komposisi, 100% sampai 40% tenera |
+| Sebanding? | — | **tidak** |
+
+**Sumbunya berlainan, jadi angkanya tidak boleh disandingkan.** Dan perbedaan sumbu itu
+sendiri menerangkan sesuatu: pekebun plasma kebunnya tercatat, jadi umurnya diketahui dan
+dipakai. Pekebun swadaya kebunnya tidak tercatat, jadi yang dipakai bahan tanamnya — dura
+menghasilkan minyak jauh lebih sedikit daripada tenera. Sumbu itu mengukur **apa yang bisa
+diketahui tentang kebun yang tidak tercatat**, bukan apa yang paling menentukan harganya.
+
+**Satu provinsi, dua harga, dua Indeks K.** Aceh membelah wilayahnya jadi timur dan barat,
+masing-masing dengan Indeks K sendiri (89,86% dan 89,15% pada 29 Juli 2026). Yang barat selalu
+lebih rendah. Keduanya dibawa utuh; garis grafik memakai timur, dan itu dinyatakan di layar.
+
+**Rendemennya TETAP, dan bentuknya melengkapi Kaltim.** Tigabelas nilainya identik di seluruh
+penetapan yang terbaca — ia tabel patokan untuk menghitung harga, jenis yang sama dengan yang
+bagian 7a tolak sebagai "OER resmi". Yang membuatnya tetap layak tayang **bentuknya**:
+
+| | Kaltim | Aceh |
+|---|---|---|
+| Rentang | 19,30%–21,83% | **15,82%–21,83%** |
+| Selisih | 2,53 poin | **6,01 poin** |
+| Pita tertua | ≥10 tahun | 25 tahun |
+| Bentuk | naik sampai ujung tabel | naik sampai 10–20, **lalu turun** |
+
+Kaltim berhenti di "≥10 tahun", jadi tabelnya hanya memperlihatkan kebun muda menghasilkan
+lebih sedikit. Aceh meneruskannya sampai 25 tahun dan memperlihatkan sisi yang lain: **hasil
+kebun tua menurun juga.** Ia satu-satunya tabel di repositori ini yang mengakui itu — dan
+puncaknya, 21,83%, persis sama dengan puncak Kaltim.
+
+**Selebarannya berganti tata letak dua kali, dan itu yang mula-mula mematahkan penarikannya.**
+Percobaan pertama mengenali selebaran dari kata kunci ("INFO HARGA", "MITRA PLASMA") dan gagal
+pada 38 dari 42 artikel — kata kuncinya ikut berubah ketika tata letaknya berubah. Yang dipakai
+sekarang tanda yang tidak berubah: sebuah gambar adalah selebaran harga bila **≥10 barisnya
+berjangkar ke tabel rendemen tetap**. Karena rendemennya konstan, ia sekaligus jangkar baris
+(kolom umur kerap tak terbaca) dan uji silang.
+
+**Satu bug yang lolos semua uji sampai jangkarnya diperketat.** Pita 22 tahun (20,22%) dan 23
+tahun (20,20%) hanya berjarak 0,0002. Toleransi pencocokan 0,0005 — yang tampak ketat —
+menyerap keduanya ke pita yang sama, dan **pita 23 hilang dari seluruh rekaman tanpa satu pun
+uji berbunyi**. Kecocokannya sekarang persis sampai empat desimal.
+
+**Yang tidak terserap, dan ia justru yang paling berharga.** Dua artikel Januari–Maret 2023
+melampirkan pindaian **berita acara**, bukan selebaran: lembar kerja lengkap berkolom R-CPO,
+R-IS, harga inti sawit, dan rumusnya. Rendemennya di sana **berbeda-beda per umur dan per
+periode** — 14,49% sampai 21,30% pada satu lembar — yaitu rendemen yang benar-benar dihitung,
+bukan tabel tetap. Itu persis jenis angka yang bagian 7a cari. Ia tidak terserap karena
+barisnya terlalu rapat: Vision menggabungkan tigabelas baris tabel jadi satu, dan susunannya
+tidak bisa dipulihkan dari koordinat. Lembar itu juga memuat nama pejabat dan NIP.
+
+**33 dari 42 artikel ditolak, dan 29 di antaranya sifat sumbernya sendiri:**
+
+| Sebab | Jumlah |
+|---|---:|
+| Artikel melampirkan tangkapan layar Zoom / foto rapat, tanpa selebaran harga | 23 |
+| Artikel tanpa lampiran sama sekali | 5 |
+| Selebaran ada tetapi hanya sebagian terbaca (pindaian berita acara 2023) | 2 |
+| Lampiran hilang dari server (404) | 1 |
+
+Aceh menerbitkan **dua jenis artikel** untuk satu rapat — "Rapat Penetapan…" yang berisi
+dokumentasi kegiatan, dan "Penetapan Harga…" yang membawa selebarannya. Hanya yang kedua
+memuat angka. Karena penetapan yang sama kadang terbit dua kali, rekaman **dikunci menurut
+periode berlaku, bukan menurut slug**; tanpa itu, seri sembilan titik terhitung sebelas.
+
 ### Sulawesi Barat — datanya ada, arsipnya tidak, dan harganya tidak diterbitkan
 
 Diperiksa 23 Agustus 2026 dan **tidak bisa dipanen sebagai seri**, karena dua sebab yang
@@ -621,11 +707,41 @@ masing-masing sudah cukup:
 "endpoint sehat bukan berarti data ada": situs hidup, halaman terlayani 200, rapat penetapan
 benar-benar berlangsung — dan angka yang dicari tidak ada di sana.
 
+### Sebelas provinsi sawit lain — diperiksa 23 Agustus 2026, dan hasilnya sebagian besar mati
+
+Pengintaian atas dinas perkebunan provinsi sawit yang belum diserap. Yang diperiksa hanya tiga
+hal: DNS menjawab apa, HTTP menjawab apa, dan `robots.txt` berbunyi apa.
+
+| Provinsi | Host | Hasil |
+|---|---|---|
+| **Aceh** | `distanbun.acehprov.go.id` | **200, `Allow: /` — diserap**, lihat di atas |
+| **Lampung** | `disbun.lampungprov.go.id` | **Menerbitkan penetapannya sebagai PROSA berangka** ("Rp 3.242,42"), tetapi di balik Cloudflare — 403 baik dari mesin lokal maupun lewat proksi. Terjangkau lewat peramban. **Kandidat terkuat berikutnya** |
+| **Kalimantan Selatan** | `disbunnak.kalselprov.go.id` | Cloudflare 403; isinya belum diperiksa |
+| **Sumatera Selatan** | `disbun.sumselprov.go.id` | DNS menjawab `103.239.165.40`, tetapi **port 80 dan 443 dua-duanya menolak sambungan** — dari mesin lokal maupun lewat proksi. Dua titik pandang sepakat, jadi ini host mati, bukan jalur tersaring |
+| **Sulawesi Tengah** | `disbunnak.sultengprov.go.id` | 200, hidup — tetapi berandanya **nol menyebut harga, TBS, maupun sawit** |
+| **Sumatera Utara** | `disbun.sumutprov.go.id` | Tanpa A record (diuji ulang, masih mati) |
+| **Sumatera Barat** | `perkebunan.sumbarprov.go.id` | Tanpa A record |
+| **Bengkulu** | `disbun.bengkuluprov.go.id` | Tanpa A record |
+| **Sulawesi Selatan** | `disbun.sulselprov.go.id` | Tanpa A record |
+| **Jambi** | `disbun.jambiprov.go.id` | 200, hidup — tetapi situsnya cangkang: satu tautan isi (`/artikel/`), nol menyebut harga |
+| **Sulawesi Barat** | `disbun.sulbarprov.go.id` | 200 — gugur karena dua sebab lain, lihat bagian di bawah |
+
+**Pelajaran host mati kembali berlaku, dan kali ini dijalankan.** Percobaan lokal ke Sumsel
+gagal dengan `ENETUNREACH`, yang **tidak bisa membedakan host mati dari jalur tersaring**. Satu
+panggilan lewat proksi memutuskannya: `ECONNREFUSED` pada port 443 — host terjangkau dan
+menolak. Dua titik pandang yang sepakat baru boleh disebut kesimpulan.
+
+**Yang mengagregasi Sumsel justru swasta.** InfoSAWIT, agricom, dan sawitsetara ketiganya
+menerbitkan penetapan Sumsel lengkap dengan daftar plasma dan swadaya — persis yang dinasnya
+sendiri tidak lagi layani. Ini menguatkan temuan yang sudah ada di tabel kekosongan: agregasi
+lintas provinsi di Indonesia dikerjakan swasta, bukan pemerintah.
+
 ### Yang masih kosong di sisi sawit
 
 | Kekosongan | Keterangan |
 |---|---|
-| **Harga pekebun swadaya di luar Riau** | Di luar cakupan Permentan 13/2024. Riau sudah diserap (lihat di atas); 33 provinsi lain tidak menerbitkannya sama sekali |
+| **Harga pekebun swadaya di luar Riau dan Aceh** | Di luar cakupan Permentan 13/2024. **Dikoreksi 23 Agustus 2026:** dokumen ini semula menyatakan hanya Riau yang menerbitkannya. Aceh juga — dan dengan sumbu yang berbeda. 32 provinsi lain tidak sama sekali |
+| **Lampung dan Kalimantan Selatan** | Keduanya di balik Cloudflare; Lampung terbukti menerbitkan harganya sebagai prosa. Menariknya menuntut jalur peramban, bukan `fetch` |
 | **Sumatera Utara** | Produsen terbesar. `disbun.sumutprov.go.id` tanpa A record; tangkapan Wayback terakhir 4 Desember 2022. Penetapan mingguannya berjalan tetapi hanya lewat GAPKI Sumut (swasta) |
 | **Agregasi lintas provinsi pemerintah** | Tidak ada. Yang mengagregasi 22 provinsi justru swasta, dan tiga dari empat memblokir `ClaudeBot` di `robots.txt` — tidak dipanen |
 | **Harga sawit di portal pertanian nasional** | `bdsp2.pertanian.go.id` tidak punya indikator harga sawit di skemanya, hanya luas areal dan produksi |
@@ -641,6 +757,34 @@ benar-benar berlangsung — dan angka yang dicari tidak ada di sana.
 - **Riau lewat `mediacenter.riau.go.id`, bukan OCR** — hasil penetapan mingguan terbit
   sebagai teks HTML berangka di sana. Yang belum terpecahkan: indeksnya tidak bisa
   dienumerasi, jadi kelengkapan serinya belum terbukti.
+
+---
+
+### Label jangka perubahan diperbaiki — dan ia keliru di enam dari delapan seri TBS
+
+Ditemukan saat Aceh masuk, tetapi bukan cacat Aceh. Layar menghitung perubahan berjangka
+dengan mengambil titik terakhir **pada atau sebelum** n hari lalu. Untuk seri harian itu tepat
+n hari. Untuk seri penetapan yang terbit dua pekan sekali — atau, seperti Aceh, beberapa kali
+setahun — titik itu bisa jauh lebih tua:
+
+| Seri | Label | Jarak sebenarnya |
+|---|---|---:|
+| Riau mitra plasma | "7 hari" | **56 hari** |
+| Aceh (kedua kelas) | "30 hari" | **112 hari** |
+| Kalteng | "7 hari" | 31 hari |
+| Kaltim, Babel | "7 hari" | 15 hari |
+
+Angkanya sendiri benar; yang salah **labelnya**. "Turun 2,3% dalam 30 hari" untuk perubahan
+yang memakan 112 hari bukan pembulatan — ia pernyataan keliru tentang seberapa cepat harga
+bergerak, dan ia melebih-lebihkan gejolak sampai hampir empat kali lipat. Jarak sesungguhnya
+sekarang ikut keluar dari pembangun, dan layar menuliskannya alih-alih nama jendelanya.
+Nama jendela hanya dipakai bila titik pembandingnya memang sedekat itu (toleransi seperempat
+lebar jendela). Jendela yang jatuh ke titik yang sama tidak lagi tampil dua kali.
+
+Satu koreksi kecil ikut: kartu pita umur menutup dirinya dengan kalimat "ia rata-rata seluruh
+pita", padahal **tidak satu pun dari delapan seri memakai rata-rata** — semuanya memakai pita
+puncak atau pita tertentu, dan tiap keterangannya sudah menyebutkan itu. Layar membantah
+keterangannya sendiri di kartu yang sama. Arti garis grafik sekarang ikut data.
 
 ---
 

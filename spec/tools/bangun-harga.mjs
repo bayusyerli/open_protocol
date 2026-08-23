@@ -66,6 +66,8 @@ const TBS_KALTIM = join(akar, 'harga_data', 'tbs-kaltim.ndjson');
 const tbsKaltim = existsSync(TBS_KALTIM) ? bacaNdjson(TBS_KALTIM) : [];
 const TBS_BABEL = join(akar, 'harga_data', 'tbs-babel.ndjson');
 const tbsBabel = existsSync(TBS_BABEL) ? bacaNdjson(TBS_BABEL) : [];
+const TBS_ACEH = join('harga_data', 'tbs-aceh.ndjson');
+const tbsAceh = existsSync(TBS_ACEH) ? bacaNdjson(TBS_ACEH) : [];
 
 // ---------------------------------------------------------------------------
 // Sambungan ke kosakata komoditas sendiri
@@ -213,10 +215,24 @@ const bulat2 = (x) => (x === null || x === undefined || Number.isNaN(x) ? null :
 
 function statistik(titik) {
   const akhir = titik.at(-1);
+  // Titik acuan untuk perubahan berjangka: yang terakhir PADA ATAU SEBELUM n hari lalu.
+  // Untuk seri harian itu tepat n hari; untuk seri penetapan yang terbit dua pekan sekali —
+  // atau, seperti Aceh, beberapa kali setahun — ia bisa jauh lebih tua. Riau mitra plasma
+  // memakai titik 56 hari lalu untuk jendela "7 hari", dan Aceh 112 hari untuk "30 hari".
+  //
+  // Angkanya sendiri benar; yang salah LABELNYA. "turun 2,3% dalam 30 hari" untuk perubahan
+  // yang sebenarnya memakan 112 hari bukan pembulatan, ia pernyataan yang keliru tentang
+  // seberapa cepat harga bergerak. Karena itu jarak sesungguhnya ikut dikeluarkan, dan yang
+  // menuliskan jangkanya di layar memakai angka ini alih-alih nama jendelanya.
   const mundur = (n) => {
     const d = new Date(akhir.t);
     d.setUTCDate(d.getUTCDate() - n);
     return padaAtauSebelum(titik, d.toISOString().slice(0, 10));
+  };
+  const jarakHari = (n) => {
+    const r = mundur(n);
+    if (!r) return null;
+    return Math.round((new Date(akhir.t) - new Date(r.t)) / 86400000);
   };
 
   const nilai = titik.map((p) => p.p);
@@ -256,6 +272,8 @@ function statistik(titik) {
     ubah30: bulat2(persen(akhir.p, mundur(30)?.p ?? 0)),
     ubah90: bulat2(persen(akhir.p, mundur(90)?.p ?? 0)),
     ubah365: bulat2(persen(akhir.p, mundur(365)?.p ?? 0)),
+    // Jarak sebenarnya tiap jendela, dalam hari. Lihat catatan di `mundur` di atas.
+    ubahHari: { 7: jarakHari(7), 30: jarakHari(30), 90: jarakHari(90), 365: jarakHari(365) },
     min: { t: min.t, p: bulat2(min.p) },
     maks: { t: maks.t, p: bulat2(maks.p) },
     rata: bulat2(rata),
@@ -396,6 +414,19 @@ const items = urut.map((v) => {
 //
 // Yang jadi `series` kolom RERATA — satu angka per periode, bisa digambar dan dibandingkan.
 const itemsTbs = [];
+// Sumbu tabel pita dan arti garis grafiknya ikut DATA, bukan diasumsikan perender.
+//
+// Sebabnya ketahuan saat Aceh masuk: pita swadayanya persentase tenera, bukan tahun, dan
+// perender yang menempelkan "tahun" pada tiap pita akan menayangkan "40 tahun" untuk kebun
+// yang komposisinya 40% tenera. Satuan yang salah bukan salah tulis — ia angka yang berbeda.
+//
+// Sekalian memperbaiki yang lebih lama: perender menutup tabelnya dengan kalimat "ia
+// rata-rata seluruh pita", padahal TIDAK SATU PUN dari enam provinsi memakai rata-rata —
+// semuanya memakai pita puncak atau pita tertentu, dan tiap keterangannya sudah menyebutkan
+// itu. Layar karena itu membantah keterangannya sendiri di kartu yang sama. `grafik`
+// menutupnya: yang tahu arti garisnya pembangun, bukan penyaji.
+const SUMBU_UMUR = { judul: 'Umur tanaman', sufiks: ' tahun' };
+
 if (tbsKalbar.length) {
   const titik = tbsKalbar
     .filter((r) => r.tbs_rerata > 0)
@@ -438,6 +469,8 @@ if (tbsKalbar.length) {
       age_bands: {
         keterangan:
           'Harga per pita umur tanaman, rupiah per kg, pada periode terakhir. Sawit berbuah berbeda menurut umur — meratakannya jadi satu angka membuang pembedaan yang menentukan berapa yang diterima satu kebun tertentu.',
+        sumbu: SUMBU_UMUR,
+        grafik: 'Garis grafik memakai pita tertinggi periode itu.',
         pita: Object.keys(tbsKalbar.at(-1).tbs_umur),
         terakhir: tbsKalbar.at(-1).tbs_umur,
         seri: tbsKalbar.map((r) => ({ t: r.t, u: r.tbs_umur })),
@@ -523,6 +556,8 @@ for (const [jenis, sp] of Object.entries(RIAU_JENIS)) {
       age_bands: {
         keterangan:
           `Harga per pita umur tanaman pada penetapan ${terakhirBertabel.t}, terurai dari prosa artikelnya. Umur 9 tahun adalah puncak kurva hasil — sumbernya sendiri menandainya "(tertinggi)" — dan angka pada grafik di atas memakai pita itu, bukan rata-rata. Tabel penuh hanya tersedia pada ${bertabel.length} dari ${baris.length} penetapan; sisanya hanya mengumumkan angka umur 9.`,
+        sumbu: SUMBU_UMUR,
+        grafik: 'Garis grafik memakai pita umur 9 tahun — puncak kurva hasil, dan satu-satunya pita yang diumumkan tiap pekan.',
         pita: Object.keys(terakhirBertabel.tbs_umur),
         terakhir: terakhirBertabel.tbs_umur,
         seri: bertabel.map((r) => ({ t: r.t, u: r.tbs_umur })),
@@ -591,6 +626,8 @@ if (tbsKalteng.length) {
     age_bands: {
       keterangan:
         `Harga per pita umur tanaman pada penetapan ${akhir.t}, terurai dari prosa artikelnya. Angka pada grafik memakai PITA PUNCAK tiap periode — ${Object.entries(pitaCacah).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} tahun pada ${v} penetapan`).join(', ')} — bukan rata-rata seluruh pita. Satu kebun hanya menghadapi pitanya sendiri.`,
+      sumbu: SUMBU_UMUR,
+      grafik: 'Garis grafik memakai pita puncak tiap periode.',
       pita: Object.keys(akhir.tbs_umur),
       terakhir: akhir.tbs_umur,
       seri: baris.map((r) => ({ t: r.t, u: r.tbs_umur })),
@@ -655,6 +692,8 @@ function buatTbs({ baris, key, label, kode, wilayah, sistem, cakupanHukum, catat
     stats: statistik(titik),
     age_bands: {
       keterangan: catatanPita,
+      sumbu: SUMBU_UMUR,
+      grafik: 'Garis grafik memakai pita tertinggi periode itu.',
       pita: Object.keys(akhir.tbs_umur),
       terakhir: akhir.tbs_umur,
       seri: urut.map((r) => ({ t: r.t, u: r.tbs_umur })),
@@ -709,6 +748,130 @@ const rendemenKaltim = kaltimBerRendemen.length ? (() => {
     },
   };
 })() : null;
+
+// ---------------------------------------------------------------------------
+// Aceh — dua kelas pekebun, dua wilayah, dan sumbu yang berbeda di antara keduanya
+// ---------------------------------------------------------------------------
+// Aceh jadi provinsi KEDUA yang menerbitkan harga pekebun swadaya, sesudah Riau. Sampai
+// sebelum ini dokumen ini menyatakan hanya Riau yang melakukannya; pernyataan itu keliru
+// dan sudah dikoreksi di docs/16 bagian 8b.
+//
+// TETAPI SWADAYA-NYA TIDAK SEBANDING DENGAN SWADAYA RIAU, DAN ITU BUKAN RINCIAN
+// Riau menetapkan harga swadaya menurut UMUR TANAMAN, sama seperti harga mitranya. Aceh
+// menetapkannya menurut KOMPOSISI BAHAN TANAM — berapa persen tenera berbanding dura —
+// dan tidak menyebut umur sama sekali. Sumbunya berlainan, jadi keduanya tidak boleh
+// disandingkan sebagai "harga swadaya" begitu saja.
+//
+// Perbedaan sumbunya sendiri menerangkan sesuatu. Pekebun plasma kebunnya tercatat, jadi
+// umurnya diketahui dan dipakai. Pekebun swadaya kebunnya tidak tercatat, jadi umurnya tidak
+// diketahui — dan yang dipakai sebagai gantinya bahan tanamnya, karena dura menghasilkan
+// minyak jauh lebih sedikit daripada tenera. Sumbu itu mengukur apa yang bisa diketahui
+// tentang kebun yang tidak tercatat, bukan apa yang paling menentukan harganya.
+//
+// DUA WILAYAH, DAN YANG BARAT SELALU LEBIH RENDAH
+// Aceh membelah provinsinya jadi wilayah timur dan barat, masing-masing dengan Indeks K
+// sendiri. Yang tampil sebagai harga seri wilayah TIMUR; angka wilayah barat ikut dibawa
+// utuh di `age_bands.barat` supaya selisihnya bisa dibaca, bukan hanya disebut. Memilih
+// salah satu diam-diam akan membuat separuh Aceh membaca harga yang bukan miliknya.
+if (tbsAceh.length) {
+  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+  const urut = [...tbsAceh].sort((a, b) => a.t.localeCompare(b.t));
+  const CAKUPAN =
+    'Menaungi pekebun mitra menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra. Aceh menerbitkan DUA kelas sekaligus — mitra plasma dan mitra swadaya — sehingga sebagian pekebun swadaya ikut tercakup, berbeda dari lima provinsi lain di repositori ini. Yang tetap tidak tercakup pekebun swadaya yang bukan mitra pabrik mana pun.';
+
+  // Kunci pita diurutkan menurut nilai awalnya. Berlaku untuk kedua kelas: umur (3…25, dengan
+  // '10-20' di tempatnya) maupun komposisi tenera (40…100).
+  const urutPita = (k) => [...k].sort((a, b) => parseInt(a, 10) - parseInt(b, 10));
+
+  const buat = (kelas) => {
+    const punya = urut.filter((r) => Object.keys(r[kelas] ?? {}).length);
+    if (!punya.length) return;
+    const akhir = punya.at(-1);
+    // Harga seri diambil dari pita tertinggi periode itu — pita puncak, bukan rata-rata.
+    // Satu kebun hanya menghadapi pitanya sendiri; merata-ratakan tigabelas pita
+    // menghasilkan angka yang tidak pernah dibayarkan kepada siapa pun.
+    const tinggi = (r) => Math.max(...Object.values(r[kelas]).map((v) => v.timur));
+    const titik = punya.map((r) => ({ t: r.t, p: tinggi(r) }));
+    const pitaOf = (r) => Object.fromEntries(Object.entries(r[kelas]).map(([k, v]) => [k, v.timur]));
+    const baratOf = (r) => Object.fromEntries(
+      Object.entries(r[kelas]).filter(([, v]) => v.barat).map(([k, v]) => [k, v.barat]));
+    const berIndeks = punya.filter((r) => r.indeks_k?.timur);
+    const key = `tbs-kelapa-sawit-aceh-${kelas}`;
+
+    itemsTbs.push({
+      id: idLama.get(key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`,
+      key,
+      label: { id: `TBS Kelapa Sawit — Aceh (mitra ${kelas})` },
+      commodity_group: 'Kelapa Sawit',
+      ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
+      region: { code: 'ID-AC', label: 'Aceh' },
+      source_system: 'Distanbun Aceh',
+      basis: 'penetapan',
+      legal_scope: CAKUPAN,
+      price_level: 'farmgate',
+      sector: 'pangan',
+      unit: 'kg',
+      qty: 1,
+      coverage: { from: titik[0].t, to: titik.at(-1).t, points: titik.length, gaps: 0 },
+      series: titik,
+      stats: statistik(titik),
+      age_bands: {
+        keterangan: kelas === 'plasma'
+          ? `Harga per pita umur tanaman pada penetapan ${akhir.t}, dibaca OCR dari selebaran resminya. Angka pada grafik memakai pita puncak (10–20 tahun), bukan rata-rata seluruh pita — satu kebun hanya menghadapi pitanya sendiri. Kolom "barat" harga untuk wilayah barat Aceh pada penetapan yang sama; ia selalu lebih rendah, dan selisihnya bagian dari penetapan, bukan pembulatan.`
+          : `Harga pekebun SWADAYA pada penetapan ${akhir.t}, disusun bukan menurut umur tanaman melainkan menurut KOMPOSISI BAHAN TANAM — angka pitanya persentase tenera, sisanya dura. Aceh tidak menetapkan umur untuk kelas ini karena kebun swadaya umumnya tidak tercatat umurnya. Karena sumbunya berlainan, angka ini TIDAK sebanding dengan seri swadaya Riau yang disusun menurut umur.`,
+        sumbu: kelas === 'plasma'
+          ? SUMBU_UMUR
+          : { judul: 'Komposisi bahan tanam', sufiks: '% tenera' },
+        grafik: kelas === 'plasma'
+          ? 'Garis grafik memakai pita puncak (10–20 tahun).'
+          : 'Garis grafik memakai komposisi 100% tenera — yang tertinggi.',
+        // Pita diurutkan menurut umur, bukan menurut abjad kunci: Object.keys mengembalikan
+        // '10-20' di belakang '25' karena ia satu-satunya kunci berhuruf. Tabel yang
+        // melompat 9 → 21 → … → 10-20 membuat kurvanya tampak patah padahal tidak.
+        pita: urutPita(Object.keys(akhir[kelas])),
+        terakhir: pitaOf(akhir),
+        ...(Object.keys(baratOf(akhir)).length ? { barat: baratOf(akhir) } : {}),
+        seri: punya.map((r) => ({ t: r.t, u: pitaOf(r) })),
+      },
+      ...(berIndeks.length ? {
+        formula: {
+          keterangan:
+            `Indeks K, harga CPO, dan harga inti sawit pada tiap penetapan; tersedia pada ${berIndeks.length} dari ${punya.length}. Aceh menetapkan DUA Indeks K — satu untuk wilayah timur, satu untuk barat — dan keduanya dibawa apa adanya.`
+            + (kelas === 'plasma'
+              ? ' Rendemen di bawah TABEL TETAP: tigabelas nilainya identik di seluruh periode yang terbaca, jadi ia patokan administratif untuk menghitung harga, bukan rendemen terukur di pabrik. Bentuknya tetap menerangkan sesuatu yang tidak dimiliki tabel Kaltim: ia naik sampai pita 10–20 lalu TURUN sampai 25 tahun — kebun tua menghasilkan lebih sedikit, dan tabelnya mengakui itu.'
+              : ''),
+          terakhir: {
+            indeks_k: Math.round(berIndeks.at(-1).indeks_k.timur * 10000) / 100,
+            ...(berIndeks.at(-1).indeks_k.barat ? { indeks_k_barat: Math.round(berIndeks.at(-1).indeks_k.barat * 10000) / 100 } : {}),
+            ...(berIndeks.at(-1).cpo ? { cpo: berIndeks.at(-1).cpo } : {}),
+            ...(berIndeks.at(-1).kernel ? { pko: berIndeks.at(-1).kernel } : {}),
+          },
+          seri: berIndeks.map((r) => ({
+            t: r.t, k: Math.round(r.indeks_k.timur * 10000) / 100,
+            ...(r.cpo ? { cpo: r.cpo } : {}), ...(r.kernel ? { pko: r.kernel } : {}),
+          })),
+          ...(kelas === 'plasma' && Object.keys(akhir.rendemen ?? {}).length >= 10 ? {
+            rendemen: {
+              keterangan:
+                'Tabel rendemen tetap Aceh — tigabelas nilai yang identik di seluruh penetapan yang terbaca. Ia patokan untuk MENGHITUNG harga, bukan rendemen yang terukur di pabrik; lihat docs/16 bagian 7a. Yang membuatnya tetap layak tayang: bentuknya naik sampai umur 10–20 lalu turun, jadi ia satu-satunya tabel di repositori ini yang memperlihatkan penurunan hasil kebun tua.',
+              tetap: true,
+              terakhir: Object.fromEntries(
+                Object.entries(akhir.rendemen).map(([k, v]) => [k, Math.round(v * 1e4) / 1e4])),
+            },
+          } : {}),
+        },
+      } : {}),
+      mappings: [{
+        scheme: 'KEMENTAN', id: 'Permentan 13/2024', relation: 'related',
+        note: `Penetapan harga TBS oleh Tim Penetapan Harga provinsi Aceh, kelas mitra ${kelas}; dibaca OCR dari selebaran resmi Distanbun Aceh.`,
+      }],
+      lifecycle: { version: '0.1.0', status: 'draft', created_at: '2026-08-23T00:00:00Z' },
+    });
+  };
+
+  buat('plasma');
+  buat('swadaya');
+}
 
 const tbsKaltimRec = buatTbs({
   baris: tbsKaltim,

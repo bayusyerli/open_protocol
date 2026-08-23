@@ -127,7 +127,7 @@ function gambarDaftar(kueri = '') {
           <a class="baris-tautan" href="harga.html?k=${encodeURIComponent(x.k)}">
             <span class="nama">${teks(x.n)}${x.l === 'farmgate' ? '<span class="lencana lencana-pekebun">Harga pekebun</span>' : ''}${x.g && x.g !== x.n ? `<span class="lencana">${teks(x.g)}</span>` : ''}</span>
             <span class="harga-kini">${rp(x.p)}<span class="satuan">/${teks(x.s)}</span></span>
-            <span class="ubah ${a.kelas}">${a.tanda} ${angkaId(Math.abs(x.u30 ?? 0))}% <span class="ubah-jangka">30 hari</span></span>
+            <span class="ubah ${a.kelas}">${a.tanda} ${angkaId(Math.abs(x.u30 ?? 0))}% <span class="ubah-jangka">${jangka(x.u30h, 30)}</span></span>
           </a>
         </li>`;
       }).join('')}
@@ -197,16 +197,37 @@ function grafik(seri, satuan) {
 }
 
 // ---------------------------------------------------------------------------
+// Nama jendela hanya dipakai kalau titik pembandingnya memang sedekat itu. Toleransinya
+// seperempat lebar jendela — cukup untuk seri harian yang bolong akhir pekan, tidak cukup
+// untuk seri penetapan yang terbit dua pekan sekali.
+function jangka(hari, jendela) {
+  if (hari === null || hari === undefined) return jendela >= 365 ? '1 tahun' : `${jendela} hari`;
+  if (Math.abs(hari - jendela) <= jendela / 4)
+    return jendela >= 365 ? '1 tahun' : `${jendela} hari`;
+  if (hari >= 365) return `${angkaId(hari / 365, 1)} tahun`;
+  return `${hari} hari`;
+}
+
 // Kartu-kartu rincian
 // ---------------------------------------------------------------------------
 function kartuAngka(h) {
   const s = h.statistik;
+  // Label jangkanya JARAK SEBENARNYA ke titik pembanding, bukan nama jendelanya. Seri
+  // penetapan tidak terbit tiap hari: pembanding "7 hari" Riau mitra plasma berumur 56 hari,
+  // dan pembanding "30 hari" Aceh berumur 112. Menuliskan nama jendelanya membuat layar
+  // menyatakan harga bergerak delapan kali lebih cepat daripada yang sebenarnya terjadi.
   const baris = [
-    ['7 hari', s.ubah7],
-    ['30 hari', s.ubah30],
-    ['90 hari', s.ubah90],
-    ['1 tahun', s.ubah365],
-  ];
+    [jangka(s.ubahHari?.[7], 7), s.ubah7],
+    [jangka(s.ubahHari?.[30], 30), s.ubah30],
+    [jangka(s.ubahHari?.[90], 90), s.ubah90],
+    [jangka(s.ubahHari?.[365], 365), s.ubah365],
+  ]
+    .filter(([l]) => l)
+    // Jendela yang jatuh ke titik pembanding yang SAMA menghasilkan baris yang sama persis.
+    // Riau mitra plasma menerbitkan tiap dua pekan, jadi jendela 7 hari dan 30 hari keduanya
+    // mendarat di titik 56 hari lalu — dan tabelnya menampilkan "56 hari ▲ 8,1%" dua kali.
+    // Yang berulang dibuang, bukan dibiarkan sebagai dua pengukuran yang seolah berbeda.
+    .filter(([l], i, a) => a.findIndex(([m]) => m === l) === i);
   return `
     <div class="kartu">
       <h2>${teks(h.nama)}<span class="lencana">${teks(h.kelompok ?? 'Komoditas')}</span></h2>
@@ -255,18 +276,30 @@ function kartuPitaUmur(h) {
   if (!a?.pita?.length) return '';
   const nilai = a.pita.map((u) => a.terakhir[u]).filter((x) => x > 0);
   const lo = Math.min(...nilai), hi = Math.max(...nilai);
+  // Sumbu tabel datang dari DATA, bukan dari perender ini. Aceh menetapkan harga pekebun
+  // swadayanya menurut komposisi tenera/dura, bukan menurut umur; menempelkan "tahun" pada
+  // tiap pita akan menayangkan "40 tahun" untuk kebun yang 40% teneranya. Bawaan tetap umur
+  // supaya seri lama tak berubah, tapi bawaan itu boleh dibantah datanya.
+  const sumbu = a.sumbu ?? { judul: 'Umur tanaman', sufiks: ' tahun' };
+  const adaBarat = a.barat && Object.keys(a.barat).length > 0;
   return `
     <div class="kartu">
-      <h2>Harga menurut umur tanaman</h2>
+      <h2>Harga menurut ${teks(sumbu.judul.toLowerCase())}</h2>
       <p class="catatan">${teks(a.keterangan)}</p>
       <div class="pembungkus-tabel">
         <table>
-          <thead><tr><th>Umur tanaman</th><th>Harga per kg</th><th>Terhadap yang tertinggi</th></tr></thead>
+          <thead><tr>
+            <th>${teks(sumbu.judul)}</th>
+            <th>${adaBarat ? 'Wilayah timur' : 'Harga per kg'}</th>
+            ${adaBarat ? '<th>Wilayah barat</th>' : ''}
+            <th>Terhadap yang tertinggi</th>
+          </tr></thead>
           <tbody>${a.pita.map((u) => {
-            const v = a.terakhir[u];
+            const v = a.terakhir[u], b = a.barat?.[u];
             return `<tr>
-              <td>${teks(u)} tahun</td>
+              <td>${teks(u)}${teks(sumbu.sufiks)}</td>
               <td class="angka">${v > 0 ? rp(v) : '—'}</td>
+              ${adaBarat ? `<td class="angka">${b > 0 ? rp(b) : '—'}</td>` : ''}
               <td><span class="bilah" style="--isi:${v > 0 ? Math.round((v / hi) * 100) : 0}%"></span></td>
             </tr>`;
           }).join('')}</tbody>
@@ -274,10 +307,16 @@ function kartuPitaUmur(h) {
       </div>
       <p class="catatan">
         Selisih antara pita terendah dan tertinggi <strong>${rp(hi - lo)} per kg</strong>
-        (${angkaId(((hi - lo) / lo) * 100)}%). Angka rerata pada grafik di atas
-        <strong>tidak berlaku untuk satu kebun pun secara khusus</strong> — ia rata-rata
-        seluruh pita, dan tiap kebun menghadapi pitanya sendiri.
+        (${angkaId(((hi - lo) / lo) * 100)}%).
+        ${a.grafik ? `${teks(a.grafik)} ` : ''}Angka pada grafik di atas karena itu
+        <strong>tidak berlaku untuk satu kebun pun secara umum</strong> — tiap kebun
+        menghadapi pitanya sendiri, dan pitanya jarang yang dipakai garis itu.
       </p>
+      ${adaBarat ? `<p class="catatan">
+        Provinsi ini menetapkan <strong>dua harga untuk satu periode</strong>, terbelah menurut
+        wilayah. Selisihnya kecil tapi konsisten — wilayah barat selalu di bawah — dan ia
+        bagian dari penetapannya, bukan pembulatan. Garis grafik memakai wilayah timur.
+      </p>` : ''}
     </div>`;
 }
 
@@ -304,7 +343,7 @@ function kartuRumus(h) {
           tampak berlipat-lipat padahal tidak.
         </p>` : ''}
     </div>
-    ${kartuRendemen(f.rendemen)}`;
+    ${kartuRendemen(h)}`;
 }
 
 // Rendemen per pita umur — kartu yang paling langsung menjawab aturan tayang docs/16 butir 3
@@ -317,16 +356,29 @@ function kartuRumus(h) {
 // satu bilangan yang tidak pernah diperlihatkan.
 //
 // DAN KENAPA IA TIDAK BOLEH TAMPIL SEBAGAI SATU ANGKA
-// Rendemen berbeda menurut UMUR TANAMAN — 19,30% pada kebun tiga tahun sampai 21,83% pada
-// kebun sepuluh tahun ke atas. Satu angka nasional memperlakukan seluruh kebun seolah setua
-// satu sama lain, dan itu persis kekeliruan yang membuat docs/16 memakai 21% selama ini:
-// angka itu rendemen kebun TUA, dipakai untuk semua umur.
-function kartuRendemen(r) {
+// Rendemen berbeda menurut UMUR TANAMAN. Satu angka nasional memperlakukan seluruh kebun
+// seolah setua satu sama lain, dan itu persis kekeliruan yang membuat docs/16 memakai 21%
+// selama ini: angka itu rendemen kebun TUA, dipakai untuk semua umur.
+//
+// SELURUH ANGKA DI KARTU INI DITURUNKAN, TIDAK SATU PUN DITULIS
+// Versi pertamanya menulis "selisih 2,53 poin", "kedelapan bilah", dan "Kalimantan Timur
+// satu-satunya provinsi yang menerbitkannya" — ketiganya benar ketika Kaltim memang satu-
+// satunya. Aceh masuk, dan ketiganya jadi salah di layar yang sama: 6,01 poin, tigabelas
+// bilah, dan dua provinsi. Kalimat yang menghitung sendiri tidak bisa basi seperti itu.
+function kartuRendemen(h) {
+  const r = h.rumus?.rendemen;
   if (!r?.terakhir) return '';
-  const pita = Object.keys(r.terakhir);
+  // Urutan pita diambil dari tabel harga di kartu atas supaya '10-20' jatuh di antara 9 dan
+  // 21, bukan di belakang 25. Pita yang hanya ada di salah satunya tetap ikut, di belakang.
+  const acuan = h.pitaUmur?.pita ?? [];
+  const pita = Object.keys(r.terakhir)
+    .sort((a, b) => (acuan.indexOf(a) + 1 || 99) - (acuan.indexOf(b) + 1 || 99));
   const nilai = pita.map((u) => r.terakhir[u]).filter((x) => x > 0);
+  if (nilai.length < 2) return '';
   const lo = Math.min(...nilai), hi = Math.max(...nilai);
+  const adaInti = r.inti_terakhir && Object.keys(r.inti_terakhir).length > 0;
   const pct = (x) => `${angkaId(x * 100, 2)}%`;
+  const wilayah = h.wilayah?.label ?? h.wilayah ?? 'provinsi ini';
 
   return `
     <div class="kartu">
@@ -334,16 +386,19 @@ function kartuRendemen(r) {
         <span class="lencana">Faktor konversi</span>
       </h2>
       <p class="catatan">
-        Berapa kilogram minyak sawit yang keluar dari satu kilogram tandan. Angka ini
-        <strong>ditetapkan di surat keputusannya sendiri</strong>, bukan diasumsikan —
-        dan sejauh yang tercatat di platform ini, Kalimantan Timur satu-satunya provinsi
-        yang menerbitkannya.
+        Berapa kilogram minyak sawit yang keluar dari satu kilogram tandan. ${r.tetap
+          ? `Nilainya <strong>identik di seluruh penetapan yang terbaca</strong> — ia tabel
+             patokan yang dipakai ${teks(wilayah)} untuk MENGHITUNG harga, bukan rendemen yang
+             terukur di pabrik.`
+          : `Angka ini <strong>ditetapkan di surat keputusannya sendiri</strong>, bukan
+             diasumsikan, dan berubah dari penetapan ke penetapan.`}
       </p>
 
       <div class="pembungkus-tabel">
         <table>
           <thead><tr>
-            <th>Umur tanaman</th><th>Rendemen CPO</th><th>Rendemen inti</th>
+            <th>Umur tanaman</th><th>Rendemen CPO</th>
+            ${adaInti ? '<th>Rendemen inti</th>' : ''}
             <th>Letak dalam rentang ${pct(lo)}–${pct(hi)}</th>
           </tr></thead>
           <tbody>${pita.map((u) => {
@@ -352,26 +407,26 @@ function kartuRendemen(r) {
             return `<tr>
               <td>${teks(String(u).replace('>=', '≥'))} tahun</td>
               <td class="angka">${v > 0 ? pct(v) : '—'}</td>
-              <td class="angka">${i > 0 ? pct(i) : '—'}</td>
+              ${adaInti ? `<td class="angka">${i > 0 ? pct(i) : '—'}</td>` : ''}
               <td><span class="bilah" style="--isi:${v > 0 ? Math.round(((v - lo) / (hi - lo)) * 100) : 0}%"></span></td>
             </tr>`;
           }).join('')}</tbody>
         </table>
       </div>
+
       <p class="catatan">
         Bilah di kolom terakhir <strong>dimulai dari nilai terendah, bukan dari nol.</strong>
-        Diukur dari nol, kedelapan bilah akan tampak sama panjang — selisih 2,53 poin memang
-        kecil dibanding 21%. Yang ditunjukkan di sini urutannya, dan karena sumbunya dipotong,
-        itu dinyatakan alih-alih dibiarkan tertebak.
+        Diukur dari nol, ${nilai.length} bilahnya akan tampak nyaris sama panjang — selisih
+        ${angkaId((hi - lo) * 100, 2)} poin kecil dibanding ${pct(hi)}. Yang ditunjukkan di
+        sini urutannya, dan karena sumbunya dipotong, itu dinyatakan alih-alih dibiarkan
+        tertebak.
       </p>
-
       <p class="catatan catatan-tegas">
         <strong>Rentangnya ${pct(lo)} sampai ${pct(hi)} — selisih
         ${angkaId((hi - lo) * 100, 2)} poin menurut umur saja.</strong> Karena itu satu angka
-        rendemen nasional menyesatkan: ia memperlakukan kebun tiga tahun dan kebun dua puluh
-        tahun seolah menghasilkan minyak sama banyak. Kebun muda menghasilkan jauh lebih
-        sedikit, dan harga TBS-nya lebih rendah justru karena itu — bukan karena ia dihargai
-        tidak adil.
+        rendemen nasional menyesatkan: ia memperlakukan kebun muda dan kebun tua seolah
+        menghasilkan minyak sama banyak. Kebun muda menghasilkan jauh lebih sedikit, dan harga
+        TBS-nya lebih rendah justru karena itu — bukan karena ia dihargai tidak adil.
       </p>
       <p class="catatan">
         Rendemen juga berbeda antar-<em>pabrik</em>, dan selisihnya lebih besar lagi. Angka di

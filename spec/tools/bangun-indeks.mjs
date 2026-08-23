@@ -913,7 +913,7 @@ const kepalaHarga = hargaSeri
     // yang harga pekebun dan mana yang eceran, tanpa mengambil berkas rincinya lebih dulu.
     ...(h.price_level && h.price_level !== 'retail' ? { l: h.price_level } : {}),
     ...(h.region ? { w: h.region.label } : {}),
-    ...(h.stats?.terakhir ? { p: h.stats.terakhir.p, t: h.stats.terakhir.t, u30: h.stats.ubah30 } : {}),
+    ...(h.stats?.terakhir ? { p: h.stats.terakhir.p, t: h.stats.terakhir.t, u30: h.stats.ubah30, u30h: h.stats.ubahHari?.[30] ?? null } : {}),
     ...(h.series ? {} : { kosong: true }),
     ...(h.commodity ? { c: h.commodity.id } : {}),
   }))

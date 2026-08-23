@@ -81,6 +81,8 @@ node harga_data/tarik-tbs-kalbar.mjs                # penetapan TBS Kalbar — j
 node harga_data/tarik-tbs-riau.mjs                  # penetapan TBS Riau — dua seri, termasuk
                                                     # satu-satunya harga pekebun SWADAYA di Indonesia
 node harga_data/tarik-tbs-kalteng.mjs               # penetapan TBS Kalteng — arsip terdalam, 2021→
+node harga_data/tarik-tbs-aceh.mjs                  # penetapan TBS Aceh — dua kelas pekebun, dua
+                                                    # wilayah; arsipnya utuh dalam satu permintaan
 swiftc -O harga_data/ocr-vision.swift \
   -o harga_data/bin/ocr-vision                      # OCR Vision.framework — hanya macOS
 node harga_data/tarik-tbs-kaltim.mjs                # SK Kaltim lewat OCR — membawa RENDEMEN per umur

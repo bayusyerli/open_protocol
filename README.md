@@ -66,6 +66,13 @@ varian yang SP2KP terbitkan, 45 **tidak diisi angkanya sama sekali** — termasu
 harga pupuk; keduanya tetap tampil, karena hasil nol terbaca sebagai "tidak ada harganya di
 mana pun" padahal yang benar "sumber ini tidak memuatnya".
 
+Di sampingnya berdiri **8 seri harga tingkat pekebun** dari enam provinsi sawit — Aceh, Riau,
+Kalbar, Kalteng, Kaltim, dan Babel — hasil penetapan resmi, bukan survei pasar. Dua di
+antaranya harga pekebun **swadaya**, yang berada di luar cakupan Permentan 13/2024 dan karena
+itu jarang diterbitkan siapa pun. Tak satu pun dari keenam provinsi menerbitkannya sebagai
+data terbaca mesin selain Kalbar: sisanya prosa berita atau gambar, dan tiga di antaranya
+dibaca lewat OCR.
+
 `npm run all` memeriksa 30.422 dokumen; 99,5% membawa pemetaan ke KEMENTAN, AgrO, ICASA,
 EPPO, GBIF, atau BBCH.
 
