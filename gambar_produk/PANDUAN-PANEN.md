@@ -1029,3 +1029,94 @@ Seratus delapan puluh tiga PNG di luar `images/product/` berukuran di atas 80 KB
 juga: seluruhnya foto korporat, foto berita, potret direksi, atau sampul laporan tahunan.
 **Packshot Petrokimia semuanya hidup di satu direktori** — itu temuan yang menghemat
 sapuan berikutnya.
+
+
+## 17. Brosur PDF sebagai satu-satunya jalan: petrokayaku.com
+
+Situs dengan **cakupan merek sempurna dan resolusi yang tidak terpakai**. Sembilan puluh
+satu halaman produk untuk tepat 91 merek terdaftar — tidak ada principal lain sedekat ini —
+tetapi setiap packshot yang ditayangkannya **dibatasi 150 px lebar**. Diukur pada 90 dari 91
+berkas: lebar selalu 150, tinggi 110–384. Rendition `kecil` saja 320 px sisi terpanjang, jadi
+sapuan gelombang 2 menilainya `tipis` dan benar.
+
+Yang membalikkannya bukan varian URL. `data_big/`, awalan `big_`, dan pengubah ukuran
+semuanya 404 — sudah diuji dan tetap buntu. **Yang membalikkannya brosur PDF-nya.**
+
+Tiga puluh tiga dari 91 halaman menautkan `data/{stempel}.pdf`, dan di dalamnya packshot
+yang sama hidup sebagai **objek gambar tertanam** pada ukuran aslinya. Diekstrak dengan
+`pypdf` — bukan dirasterkan, sebab pasal 11 sudah membuktikan rasterisasi 72 dpi justru
+menurunkan ketajaman. Hasilnya 226 objek ≥200 px, dan di antaranya 19 packshot berdiri
+sendiri:
+
+| | |
+|---|---:|
+| Terbesar (KAMIKAZE 371 EC) | 847×1273 |
+| Cukup untuk rendition `sedang` 800 px | 12 |
+| Cukup untuk `kecil` saja | 7 |
+| Naik dari 150 px yang ditawarkan halamannya | **semuanya** |
+
+`source.url` pada baris-baris ini menunjuk **PDF-nya**, sebab itu alamat sesungguhnya —
+gambarnya tidak pernah punya URL sendiri. Itu bukan kasus `gambar_dari_dokumen`: brosurnya
+terbitan principal sendiri, bukan dokumen pihak lain, dan tidak ada keterangan gambar yang
+terbakar ke berkasnya.
+
+**Tiga belas brosur lain hanya memuat halaman A4 utuh sebagai satu raster** — sampai
+2480×3508, yaitu A4 pada 300 dpi. Packshot-nya ada di dalamnya dan tinggal dipotong; belum
+dikerjakan, dan tercatat di sini supaya tidak perlu dipetakan ulang: Applaud 10 WP · Better
+10 PA · Biorganik · Curxanil 8/64 WP · Gobest 250 SC · Kayabio Plus · Petroban 200 EC ·
+Petrofast · Petrokum 0,005 BB · Primafos 400 SL · Probiss · Seldene 250 EC · Sultricob 93 WP.
+Lima puluh delapan halaman sisanya tidak punya brosur sama sekali dan tidak punya jalan lain.
+
+### Situs principal bisa menjual merek yang terdaftar atas nama orang lain
+
+Perluasan pasal 6, dan di sini terbukti tiga kali dalam satu situs. Nomor yang tercetak di
+botolnya, bukan teks halamannya, yang membongkarnya — halaman produk petrokayaku.com tidak
+menyebut pemegang pendaftaran sama sekali:
+
+| Yang ditayangkan petrokayaku.com | Nomor tercetak | Pemegang pendaftaran sebenarnya |
+|---|---|---|
+| BIGSON 207 SL | `01030120124425` | **PT. RAGAM MANDIRI** |
+| RAZIO 400 SC | `01020120237803` | **PT. KIMIKA USAHA PRIMA** |
+| PRESULOR 20/280 OD | `01030120238047` | **PT. RAINBOW AGROSCIENCES** |
+
+Ketiganya dipanen di bawah `brand_key` **pemegang pendaftarannya**, dengan
+`source.rights: pihak_ketiga` dan `source.publisher: PT Petrokimia Kayaku`. Menuliskan
+`pemegang_pendaftaran` akan mengkredit Kayaku dengan pendaftaran yang bukan miliknya —
+kekeliruan yang persis sama bentuknya dengan mengkreditkan `arystalifescience.com` ke
+PT. Arysta LifeScience Tirta di pasal 1.
+
+Label RAZIO bahkan memasang logo PETROKIMIA KAYAKU di panel depannya. **Logo di kemasan
+bukan bukti kepemilikan pendaftaran.**
+
+### Satu nomor, dua baris registri
+
+Botol KAMIKAZE mencetak `RI. 01020120165622`. Nomor itu menunjuk **dua** baris sekaligus:
+`op:prd:00002917` bernama "KAMIKAZE 371 EC" dan `op:prd:00004514` bernama
+"KAMIKAZE 318/53 EC" — dua-duanya PT. PETROKIMIA KAYAKU, dua-duanya aktif. Satu pendaftaran
+tercatat dua kali dengan dua cara menulis nama, dan aritmetikanya yang membuktikan: 318 + 53
+= 371. Baris gambar dikunci ke ejaan yang tercetak di botol.
+
+Kaidah penjumlahan pasal 7 muncul dua kali lagi di situs yang sama, dan tanpa nomor tercetak
+kedua-duanya akan ditolak pencocokan nama:
+
+| Di kemasan | Di registri | Aritmetikanya |
+|---|---|---|
+| LEPTOKIL **140** SE | LEPTOKIL 100/40 SE | natrium bispiribak 40 + metamifop 100 |
+| FENITE **150** OD | FENITE 150 OD | lufenuron 75 + emamektin benzoat 75 |
+
+Dan sekali nama yang dipendekkan: botol bertulis "TOPSIN 500 SC", registri "TOPSIN-M 500 SC".
+Yang mengikat nomornya (`0102011988857`), bukan ejaannya.
+
+### Nomor berformat lama tidak bisa dicocokkan, dan tidak boleh dipaksakan
+
+GEMPUR 480 SL mencetak `RI.1971/12-2008/T` dan SATURN-D mencetak `RI 160/7-2006/T` — format
+sebelum penomoran 14 digit. Registri tidak menyimpan bentuk itu, jadi keduanya **tidak**
+ditulis sebagai `printed_registration`; GEMPUR dikunci lewat `merek_tunggal`. Menambal nomor
+lama dengan nomor baru yang "kelihatan cocok" berarti menanam tebakan sebagai fakta.
+
+### Judul halaman bisa menyebut produk yang berbeda dari packshot-nya
+
+Halaman `/content/produk/insektisida/…/Saturn-D-600-EC` menayangkan sachet yang mencetak
+tiobenkarb 4% + 2,4-D IBE 2% — komposisi SATURN-D **6 GR**, bukan 600 EC. Karena itu
+Saturn-D sengaja TIDAK ikut panen ini. Baca komposisi di kemasannya, jangan judul halamannya
+— pengulangan pelajaran FORSIL di pasal 10, kali ini pada nama produk, bukan pada angkanya.
