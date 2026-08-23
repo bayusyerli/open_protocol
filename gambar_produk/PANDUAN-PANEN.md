@@ -1751,3 +1751,35 @@ baris lain, dan penyempitan keduanya bersandar pada nomor yang sama.
 141 + 106 = 247, kaidah penjumlahan pasal 7 sekali lagi. Gelombang sebelumnya sudah memanen
 hero-nya lewat nama ALMIX, jadi yang ditambahkan hanya panel labelnya; `G6` menangkap
 percobaan menulis hero-nya dua kali, dan tangkapan itu benar.
+
+### Ember berfolder ukuran: yang terbesar sering bukan packshot
+
+`dgw-event-bucket-1` menyimpan tiap gambar di **lima folder ukuran** —
+`xsmall/ small/ medium/ large/ xlarge/` — dan pemanen yang mengambil objek terbesar akan
+salah pada belasan merek. Sebabnya folder itu tidak berisi lima ukuran dari gambar yang sama:
+`xlarge/` sering memuat **spanduk wordmark mendatar** (FOLTUS 6470×3533, NEBULA 18343×6067),
+sedangkan packshot sesungguhnya duduk di `small/` atau bahkan `xsmall/` pada 355×355.
+
+Pasal 7g mengatakan katalog tidak menunjuk berkas terbaik di embernya sendiri. Di sini
+kebalikannya yang berlaku: **ember menawarkan berkas yang lebih besar tetapi lebih buruk.**
+
+Penyaringnya murah dan terukur: **nisbah sisi 0,30–1,7**. Packshot botol paling ramping yang
+ditemukan 544×1332 (nisbah 0,41) dan yang paling lebar 1441×2560; spanduk wordmark mulai dari
+1,8 ke atas. Ambang itu memindahkan belasan merek dari spanduk ke packshot, dan menyisakan
+tiga yang memang tidak punya foto kemasan dalam ukuran apa pun — AMETOX 500 SC, INTEAM 150 SL,
+NEBULA 100/100 SC — yang lalu ditulis `ditolak` beralasan.
+
+**Satu gambar untuk dua merek, dan itu keadaan sumbernya.** Ember menyimpan satu berkas per
+**nama dagang**, sedangkan registri mencatat dua pendaftaran pada tiga nama:
+
+| Berkas | Dipakai oleh | Sebabnya |
+|---|---|---|
+| `small/Dense Pro.png` | DENSE PRO 520 SC + DENSE PRO 70 WP | dua formulasi, satu nama dagang |
+| `xsmall/KLENSECT EXTRA.jpg` | KLENSECT EXTRA 200 EC ×2 | nama dan kekuatan sama persis di dua perusahaan bersaudara |
+| `small/Xilaw.png` | XILAW 0,005 BB + XILAW 007 0,005 BB | dua pendaftaran bersaudara |
+
+Keenam baris itu ditulis apa adanya dengan catatan bahwa gambarnya **tidak bisa membedakan
+keduanya**. Pemeriksaan phash lintas merek melaporkannya, dan laporan itu benar — yang
+dilaporkannya bukan kekeliruan panen melainkan bentuk sumbernya.
+
+Delta Giri Wacana **18 → 50 dari 129**, Dharma Guna Wibawa **10 → 17 dari 64**.

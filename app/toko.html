@@ -81,6 +81,28 @@
 
   <section id="rincian" tabindex="-1"></section>
 
+  <h2 class="judul-bagian">Balai penyuluhan di kecamatanmu</h2>
+  <section class="pintu">
+    <p id="ringkasBpp">Memuat…</p>
+    <form class="cari" id="formBpp" role="search" onsubmit="return false">
+      <label for="qBpp">Kabupaten atau kota</label>
+      <input id="qBpp" name="qBpp" type="search" autocomplete="off" spellcheck="false"
+             placeholder="misal: Sukabumi">
+    </form>
+    <div id="hasilBpp" aria-live="polite"></div>
+    <section id="rincianBpp" tabindex="-1"></section>
+  </section>
+
+  <h2 class="judul-bagian">Laboratorium yang bisa mengujinya</h2>
+  <section class="pintu">
+    <p id="ringkasLab">Memuat…</p>
+    <fieldset id="saringLab" class="saring">
+      <legend>Yang perlu diuji</legend>
+    </fieldset>
+    <div id="hasilLab" aria-live="polite"></div>
+    <section id="rincianLab" tabindex="-1"></section>
+  </section>
+
   <details class="batas">
     <summary><h2>Kenapa dua kumpulan ini tidak disatukan</h2></summary>
     <div class="batas-isi">

@@ -30,7 +30,7 @@ Pembalikan itu menyelesaikan dua masalah sekaligus. Ia melayani perilaku reaktif
 
 **Registri Kementan + kosakata terkurasi**
 
-**7.724** pestisida · **7.196** pupuk · **11.227** varietas · **1.399** bahan aktif · **23.058** penggunaan berlabel · **7+5** sediaan sendiri
+**7.724** pestisida · **7.196** pupuk · **11.227** varietas · **1.106** bahan aktif · **23.058** penggunaan berlabel · **7+5** sediaan sendiri
 
 Jalur 1 · insiden · **Masuk dari gejala**
 
@@ -162,7 +162,7 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 | **PHI** — **nol** dari 23.058 penggunaan | Tanggal aman panen tidak bisa dijanjikan di jalur mana pun | Sumber lain · foto label atau terbitan BSIP |
 | **Harga** — nol | Jalur 3 butuh satu masukan pengguna | Sumber lain · diketik sekali di kios |
 | **Penanda subsidi** — 0 dari 7.196 pupuk | Perbandingan harga tidak sadar-subsidi, padahal dokumen fondasi mensyaratkannya | Sumber lain · daftar produk bersubsidi Kementan |
-| **Golongan IRAC/FRAC** — 58 dari 1.399 bahan aktif | Nasihat rotasi hanya bisa setingkat bahan aktif, belum setingkat golongan | Kurasi · 200 bahan teratas |
+| **Golongan IRAC/FRAC** — 58 dari 1.106 bahan aktif | Nasihat rotasi hanya bisa setingkat bahan aktif, belum setingkat golongan | Kurasi · 200 bahan teratas |
 | **Sifat agronomi varietas** — **nol** dari 11.227 | Rekomendasi varietas mustahil dan tidak boleh dijanjikan | Besar · kurasi berskala, bukan tarikan registri |
 | **Sertifikasi lot benih & bibit** — **nol**; 44 penyebutan BPSB seluruhnya nama pemelihara | Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau polybag yang di tangan | Sumber lain · label & sertifikat BPSB |
 | **Kadar hara sediaan sendiri** — tidak ada sampai satu batch diuji | Jalur 5 tidak bisa masuk kalkulator jalur 3 dengan angka — `L18` menolaknya | Sumber lain · uji batch, atau tampilkan tanpa angka |

@@ -916,8 +916,8 @@
       ],
       "formulasi": 87,
       "substance": {
-        "id": "op:sub:00000167",
-        "label": "CYPERMETHRIN"
+        "id": "op:sub:00000101",
+        "label": "SIPERMETRIN"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -971,8 +971,8 @@
       ],
       "formulasi": 81,
       "substance": {
-        "id": "op:sub:00000403",
-        "label": "Dimeflutrin"
+        "id": "op:sub:00000301",
+        "label": "Dimefluthrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -1269,8 +1269,8 @@
       ],
       "formulasi": 60,
       "substance": {
-        "id": "op:sub:00000146",
-        "label": "MANCOZEB"
+        "id": "op:sub:00000106",
+        "label": "Mankozeb"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -1470,8 +1470,8 @@
       ],
       "formulasi": 49,
       "substance": {
-        "id": "op:sub:00000481",
-        "label": "Prallethrin"
+        "id": "op:sub:00000480",
+        "label": "Praletrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -1743,8 +1743,8 @@
       ],
       "formulasi": 40,
       "substance": {
-        "id": "op:sub:00000403",
-        "label": "Dimeflutrin"
+        "id": "op:sub:00000301",
+        "label": "Dimefluthrin"
       },
       "hubungan": "belum-terpetakan",
       "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
@@ -1807,8 +1807,8 @@
         "nama_registri": "siflutrin",
         "nama": "cyfluthrin",
         "substance": {
-          "id": "op:sub:00000498",
-          "label": "Siflutrin"
+          "id": "op:sub:00000489",
+          "label": "CYFLUTHRIN"
         }
       },
       "kanonik": {
@@ -1830,8 +1830,8 @@
       ],
       "formulasi": 37,
       "substance": {
-        "id": "op:sub:00000485",
-        "label": "Meperflutrin"
+        "id": "op:sub:00000483",
+        "label": "MEPERFLUTHRIN"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -1879,8 +1879,8 @@
       ],
       "formulasi": 36,
       "substance": {
-        "id": "op:sub:00000486",
-        "label": "Imiprothrin"
+        "id": "op:sub:00000482",
+        "label": "Imiprotrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -1897,8 +1897,8 @@
       ],
       "formulasi": 36,
       "substance": {
-        "id": "op:sub:00000414",
-        "label": "Metoflutrin"
+        "id": "op:sub:00000291",
+        "label": "Metofluthrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -2003,8 +2003,8 @@
       ],
       "formulasi": 33,
       "substance": {
-        "id": "op:sub:00000173",
-        "label": "Tebuconazole"
+        "id": "op:sub:00000158",
+        "label": "Tebukonazol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2021,8 +2021,8 @@
       ],
       "formulasi": 32,
       "substance": {
-        "id": "op:sub:00000174",
-        "label": "Atrazine"
+        "id": "op:sub:00000116",
+        "label": "Atrazin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2162,8 +2162,8 @@
       ],
       "formulasi": 30,
       "substance": {
-        "id": "op:sub:00000190",
-        "label": "IMIDACLOPRID"
+        "id": "op:sub:00000107",
+        "label": "Imidakloprid"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2376,8 +2376,8 @@
       ],
       "formulasi": 27,
       "substance": {
-        "id": "op:sub:00000310",
-        "label": "PERMETHRIN"
+        "id": "op:sub:00000154",
+        "label": "Permetrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2431,8 +2431,8 @@
       ],
       "formulasi": 26,
       "substance": {
-        "id": "op:sub:00000488",
-        "label": "Transflutrin"
+        "id": "op:sub:00000335",
+        "label": "Transfluthrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -2738,8 +2738,8 @@
       ],
       "formulasi": 22,
       "substance": {
-        "id": "op:sub:00000203",
-        "label": "Mesotrione"
+        "id": "op:sub:00000119",
+        "label": "Mesotrion"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2847,8 +2847,8 @@
       ],
       "formulasi": 21,
       "substance": {
-        "id": "op:sub:00000214",
-        "label": "Chlorantraniliprole"
+        "id": "op:sub:00000121",
+        "label": "Klorantraniliprol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2866,8 +2866,8 @@
       ],
       "formulasi": 21,
       "substance": {
-        "id": "op:sub:00000209",
-        "label": "DIFENOCONAZOLE"
+        "id": "op:sub:00000108",
+        "label": "Difenokonazol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2885,8 +2885,8 @@
       ],
       "formulasi": 21,
       "substance": {
-        "id": "op:sub:00000210",
-        "label": "GLYPHOSATE"
+        "id": "op:sub:00000144",
+        "label": "Glifosat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2971,8 +2971,8 @@
       ],
       "formulasi": 20,
       "substance": {
-        "id": "op:sub:00000213",
-        "label": "CARBENDAZIM"
+        "id": "op:sub:00000149",
+        "label": "Karbendazim"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -2990,8 +2990,8 @@
       ],
       "formulasi": 20,
       "substance": {
-        "id": "op:sub:00000215",
-        "label": "ETHEPHON"
+        "id": "op:sub:00000125",
+        "label": "Etefon"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3008,8 +3008,8 @@
       ],
       "formulasi": 20,
       "substance": {
-        "id": "op:sub:00000216",
-        "label": "Indosakarb"
+        "id": "op:sub:00000134",
+        "label": "INDOKSAKARB"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -3028,8 +3028,8 @@
       ],
       "formulasi": 20,
       "substance": {
-        "id": "op:sub:00000217",
-        "label": "Penoxsulam"
+        "id": "op:sub:00000179",
+        "label": "Penoksulam"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3096,8 +3096,8 @@
       ],
       "formulasi": 19,
       "substance": {
-        "id": "op:sub:00000229",
-        "label": "Thiamethoxam"
+        "id": "op:sub:00000131",
+        "label": "Tiametoksam"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3167,8 +3167,8 @@
       ],
       "formulasi": 18,
       "substance": {
-        "id": "op:sub:00000222",
-        "label": "Acetamiprid"
+        "id": "op:sub:00000185",
+        "label": "Asetamiprid"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3267,8 +3267,8 @@
       ],
       "formulasi": 17,
       "substance": {
-        "id": "op:sub:00000228",
-        "label": "Sihalofop butil"
+        "id": "op:sub:00000145",
+        "label": "Butil Sihalofop"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -3436,8 +3436,8 @@
       ],
       "formulasi": 16,
       "substance": {
-        "id": "op:sub:00000235",
-        "label": "Tricyclazole"
+        "id": "op:sub:00000137",
+        "label": "Trisiklazol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3767,8 +3767,8 @@
       ],
       "formulasi": 14,
       "substance": {
-        "id": "op:sub:00000254",
-        "label": "Chlorfenapyr"
+        "id": "op:sub:00000110",
+        "label": "Klorfenapir"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3785,8 +3785,8 @@
       ],
       "formulasi": 14,
       "substance": {
-        "id": "op:sub:00000245",
-        "label": "Flumioksazin"
+        "id": "op:sub:00000225",
+        "label": "Flumioxazin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -3834,8 +3834,8 @@
       ],
       "formulasi": 14,
       "substance": {
-        "id": "op:sub:00000248",
-        "label": "IPA Glyphosate"
+        "id": "op:sub:00000150",
+        "label": "IPA Glifosat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3852,8 +3852,8 @@
       ],
       "formulasi": 14,
       "substance": {
-        "id": "op:sub:00000249",
-        "label": "Nicosulfuron"
+        "id": "op:sub:00000142",
+        "label": "Nikosulfuron"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -3954,8 +3954,8 @@
       ],
       "formulasi": 13,
       "substance": {
-        "id": "op:sub:00000252",
-        "label": "Azoxystrobin"
+        "id": "op:sub:00000112",
+        "label": "Azoksistrobin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -4156,8 +4156,8 @@
       ],
       "formulasi": 13,
       "substance": {
-        "id": "op:sub:00000261",
-        "label": "Natrium bispiribak (bispyribac sodium)"
+        "id": "op:sub:00000141",
+        "label": "NATRIUM BISPIRIBAK"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -4333,8 +4333,8 @@
       ],
       "formulasi": 12,
       "substance": {
-        "id": "op:sub:00000270",
-        "label": "Cymoxanil"
+        "id": "op:sub:00000118",
+        "label": "SIMOKSANIL"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -4368,8 +4368,8 @@
       ],
       "formulasi": 12,
       "substance": {
-        "id": "op:sub:00000320",
-        "label": "Deltamethrin"
+        "id": "op:sub:00000136",
+        "label": "Deltametrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -4426,8 +4426,8 @@
       ],
       "formulasi": 12,
       "substance": {
-        "id": "op:sub:00000275",
-        "label": "Nitenpyram"
+        "id": "op:sub:00000127",
+        "label": "Nitenpiram"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -4460,8 +4460,8 @@
       ],
       "formulasi": 12,
       "substance": {
-        "id": "op:sub:00000277",
-        "label": "Propiconazole"
+        "id": "op:sub:00000155",
+        "label": "Propikonazol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -4920,8 +4920,8 @@
       ],
       "formulasi": 10,
       "substance": {
-        "id": "op:sub:00000299",
-        "label": "Chlorothalonil"
+        "id": "op:sub:00000117",
+        "label": "Klorotalonil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5101,8 +5101,8 @@
       ],
       "formulasi": 10,
       "substance": {
-        "id": "op:sub:00000307",
-        "label": "metil bensulfuron (bensulfuronn-methyl)"
+        "id": "op:sub:00000204",
+        "label": "Metil Bensulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -5186,8 +5186,8 @@
       ],
       "formulasi": 10,
       "substance": {
-        "id": "op:sub:00000311",
-        "label": "Pymetrozine"
+        "id": "op:sub:00000123",
+        "label": "Pimetrozin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5240,8 +5240,8 @@
       ],
       "formulasi": 10,
       "substance": {
-        "id": "op:sub:00000314",
-        "label": "SULFUR"
+        "id": "op:sub:00000006",
+        "label": "Belerang (S)"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5359,8 +5359,8 @@
       ],
       "formulasi": 9,
       "substance": {
-        "id": "op:sub:00000319",
-        "label": "Cyhalofop-butyl"
+        "id": "op:sub:00000145",
+        "label": "Butil Sihalofop"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5377,8 +5377,8 @@
       ],
       "formulasi": 9,
       "substance": {
-        "id": "op:sub:00000321",
-        "label": "Dimehypo"
+        "id": "op:sub:00000113",
+        "label": "DIMEHIPO"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5533,8 +5533,8 @@
       ],
       "formulasi": 9,
       "substance": {
-        "id": "op:sub:00000377",
-        "label": "Indoxacarb"
+        "id": "op:sub:00000134",
+        "label": "INDOKSAKARB"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5595,8 +5595,8 @@
       ],
       "formulasi": 9,
       "substance": {
-        "id": "op:sub:00000331",
-        "label": "Paclobutrazol"
+        "id": "op:sub:00000143",
+        "label": "Paklobutrazol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5612,8 +5612,8 @@
       ],
       "formulasi": 9,
       "substance": {
-        "id": "op:sub:00000332",
-        "label": "Pyraclostrobin"
+        "id": "op:sub:00000124",
+        "label": "Piraklostrobin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5697,8 +5697,8 @@
       ],
       "formulasi": 8,
       "substance": {
-        "id": "op:sub:00000337",
-        "label": "AMETRYN"
+        "id": "op:sub:00000140",
+        "label": "Ametrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5745,8 +5745,8 @@
       ],
       "formulasi": 8,
       "substance": {
-        "id": "op:sub:00000340",
-        "label": "Carbofuran"
+        "id": "op:sub:00000148",
+        "label": "Karbofuran"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -5793,8 +5793,8 @@
       ],
       "formulasi": 8,
       "substance": {
-        "id": "op:sub:00000341",
-        "label": "Diuron (diuron)"
+        "id": "op:sub:00000129",
+        "label": "DIURON"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6082,8 +6082,8 @@
       ],
       "formulasi": 8,
       "substance": {
-        "id": "op:sub:00000351",
-        "label": "Metsulfuron-methyl"
+        "id": "op:sub:00000111",
+        "label": "Metil Metsulfuron"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6200,8 +6200,8 @@
       ],
       "formulasi": 8,
       "substance": {
-        "id": "op:sub:00000498",
-        "label": "Siflutrin"
+        "id": "op:sub:00000489",
+        "label": "CYFLUTHRIN"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -6219,8 +6219,8 @@
       ],
       "formulasi": 8,
       "substance": {
-        "id": "op:sub:00000357",
-        "label": "SULFURIL FLUORIDA"
+        "id": "op:sub:00000192",
+        "label": "Sulfuryl Fluoride"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -6249,8 +6249,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000359",
-        "label": "Acephate"
+        "id": "op:sub:00000120",
+        "label": "Asefat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6334,8 +6334,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000365",
-        "label": "Belerang (sulfur)"
+        "id": "op:sub:00000006",
+        "label": "Belerang (S)"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -6353,8 +6353,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000366",
-        "label": "BPMC/Fenobucarb"
+        "id": "op:sub:00000163",
+        "label": "BPMC"
       },
       "hubungan": "belum-terpetakan",
       "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
@@ -6379,8 +6379,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000368",
-        "label": "Butachlor"
+        "id": "op:sub:00000208",
+        "label": "Butaklor"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6396,8 +6396,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000499",
-        "label": "Cypermetrin"
+        "id": "op:sub:00000101",
+        "label": "SIPERMETRIN"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -6414,8 +6414,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000369",
-        "label": "DIMETHOATE"
+        "id": "op:sub:00000139",
+        "label": "Dimetoat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6528,8 +6528,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000372",
-        "label": "Ethion"
+        "id": "op:sub:00000282",
+        "label": "Etion"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6547,8 +6547,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000373",
-        "label": "Fentin Acetate"
+        "id": "op:sub:00000130",
+        "label": "Fentin Asetat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6582,8 +6582,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000375",
-        "label": "Hexaconazole"
+        "id": "op:sub:00000164",
+        "label": "HEKSAKONAZOL"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6600,8 +6600,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000500",
-        "label": "Ikaridin"
+        "id": "op:sub:00000496",
+        "label": "Icaridin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -6796,8 +6796,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000383",
-        "label": "Methyl Thiophanate"
+        "id": "op:sub:00000165",
+        "label": "Metil Tiofanat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -6936,8 +6936,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000388",
-        "label": "Thiophanate-methyl"
+        "id": "op:sub:00000165",
+        "label": "Metil Tiofanat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -6989,8 +6989,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000391",
-        "label": "Topramezone"
+        "id": "op:sub:00000161",
+        "label": "Topramezon"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -7007,8 +7007,8 @@
       ],
       "formulasi": 7,
       "substance": {
-        "id": "op:sub:00000392",
-        "label": "Triazophos"
+        "id": "op:sub:00000182",
+        "label": "Triazofos"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -7097,8 +7097,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000397",
-        "label": "ALUMINIUM PHOSPHIDE"
+        "id": "op:sub:00000170",
+        "label": "Aluminium Fosfida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -7132,8 +7132,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000399",
-        "label": "Boscalid"
+        "id": "op:sub:00000339",
+        "label": "Boskalid"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -7268,8 +7268,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000406",
-        "label": "Fenobukarb"
+        "id": "op:sub:00000163",
+        "label": "BPMC"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -7285,8 +7285,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000407",
-        "label": "Fenobukarb (BPMC)"
+        "id": "op:sub:00000163",
+        "label": "BPMC"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -7302,8 +7302,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000408",
-        "label": "Fenvalerate"
+        "id": "op:sub:00000176",
+        "label": "Fenvalerat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -7347,8 +7347,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000503",
-        "label": "Heptafluthrin"
+        "id": "op:sub:00000494",
+        "label": "Heptaflutrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -7635,8 +7635,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000420",
-        "label": "Pendimethalin"
+        "id": "op:sub:00000200",
+        "label": "Pendimetalin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -7671,8 +7671,8 @@
       ],
       "formulasi": 6,
       "substance": {
-        "id": "op:sub:00000422",
-        "label": "Pretilachlor"
+        "id": "op:sub:00000187",
+        "label": "Pretilaklor"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -8014,8 +8014,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000441",
-        "label": "Dimetomorph"
+        "id": "op:sub:00000132",
+        "label": "Dimetomorf"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -8275,8 +8275,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -8316,8 +8316,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000454",
-        "label": "Kartap hidrokloride"
+        "id": "op:sub:00000381",
+        "label": "Kartap Hidroklorida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -8397,8 +8397,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000456",
-        "label": "Metalaxyl"
+        "id": "op:sub:00000194",
+        "label": "Metalaksil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -8414,8 +8414,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000457",
-        "label": "Metalaxyl-M"
+        "id": "op:sub:00000350",
+        "label": "Metalaksil-M"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -8433,8 +8433,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000458",
-        "label": "Metil Metsulfuron (Metsulfuron-methyl)"
+        "id": "op:sub:00000111",
+        "label": "Metil Metsulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -8720,8 +8720,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000469",
-        "label": "Propineb (Propineb)"
+        "id": "op:sub:00000135",
+        "label": "Propineb"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -8815,8 +8815,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000473",
-        "label": "Thiram"
+        "id": "op:sub:00000390",
+        "label": "Tiram"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -8892,8 +8892,8 @@
       ],
       "formulasi": 5,
       "substance": {
-        "id": "op:sub:00000478",
-        "label": "TRICLOPYR"
+        "id": "op:sub:00000230",
+        "label": "Triklopir"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -8971,8 +8971,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000514",
-        "label": "2-bromo-2-nitro-1,3-propanediol  (Bronopol)"
+        "id": "op:sub:00000400",
+        "label": "BRONOPOL"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -9143,8 +9143,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000520",
-        "label": "Alpha Cypermethrin"
+        "id": "op:sub:00000152",
+        "label": "Alfa Sipermetrin"
       },
       "hubungan": "stereoisomer-dari",
       "bentuk": {
@@ -9155,8 +9155,8 @@
         "nama_registri": "cypermethrin",
         "nama": "cypermethrin",
         "substance": {
-          "id": "op:sub:00000167",
-          "label": "CYPERMETHRIN"
+          "id": "op:sub:00000101",
+          "label": "SIPERMETRIN"
         }
       },
       "kanonik": {
@@ -9358,8 +9358,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000530",
-        "label": "Bensulfuron metil"
+        "id": "op:sub:00000204",
+        "label": "Metil Bensulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -9389,8 +9389,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000532",
-        "label": "Butil sihalofop (Cyhalofop-butyl)"
+        "id": "op:sub:00000145",
+        "label": "Butil Sihalofop"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -9620,8 +9620,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000539",
-        "label": "Etephon"
+        "id": "op:sub:00000125",
+        "label": "Etefon"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -9668,8 +9668,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000542",
-        "label": "Fenoxanil"
+        "id": "op:sub:00000343",
+        "label": "Fenoksanil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -9685,8 +9685,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000543",
-        "label": "Flonikamid"
+        "id": "op:sub:00000223",
+        "label": "Flonicamid"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -9754,8 +9754,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000547",
-        "label": "flupyradifurone"
+        "id": "op:sub:00000374",
+        "label": "flupiradifuron (flupyradifurone)"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -9772,8 +9772,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000548",
-        "label": "FLUROXYPYR-MEPTYL"
+        "id": "op:sub:00000302",
+        "label": "Fluroksipir meptil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -9828,8 +9828,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -9990,8 +9990,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000558",
-        "label": "METHOMYL"
+        "id": "op:sub:00000114",
+        "label": "Metomil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -10026,8 +10026,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000351",
-        "label": "Metsulfuron-methyl"
+        "id": "op:sub:00000111",
+        "label": "Metil Metsulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -10119,8 +10119,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000565",
-        "label": "Niklosamida (Niclosamide)"
+        "id": "op:sub:00000177",
+        "label": "Niklosamida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -10150,8 +10150,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000567",
-        "label": "Penoksulam (Penoxsulam)"
+        "id": "op:sub:00000179",
+        "label": "Penoksulam"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -10199,8 +10199,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000570",
-        "label": "Prochloraz"
+        "id": "op:sub:00000233",
+        "label": "Prokloraz"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -10217,8 +10217,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000571",
-        "label": "Propamocarb hydrochloride"
+        "id": "op:sub:00000205",
+        "label": "Propamokarb hidroklorida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -10234,8 +10234,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000572",
-        "label": "Propikonazol (Propiconazole)"
+        "id": "op:sub:00000155",
+        "label": "Propikonazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -10251,8 +10251,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000573",
-        "label": "Pyrazosulfuron-ethyl"
+        "id": "op:sub:00000156",
+        "label": "Etil Pirazosulfuron"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -10269,8 +10269,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000574",
-        "label": "Pyriproxyfen"
+        "id": "op:sub:00000355",
+        "label": "Piriproksifen"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -10318,8 +10318,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000576",
-        "label": "Seng Phosfida"
+        "id": "op:sub:00000295",
+        "label": "Seng Fosfida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -10353,8 +10353,8 @@
       ],
       "formulasi": 4,
       "substance": {
-        "id": "op:sub:00000578",
-        "label": "Temefos"
+        "id": "op:sub:00000504",
+        "label": "Temephos"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -10710,8 +10710,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000599",
-        "label": "Ametrin (Ametryn)"
+        "id": "op:sub:00000140",
+        "label": "Ametrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11033,8 +11033,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000609",
-        "label": "Bispiribak sodium"
+        "id": "op:sub:00000141",
+        "label": "NATRIUM BISPIRIBAK"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11051,8 +11051,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000610",
-        "label": "Bispyribac sodium"
+        "id": "op:sub:00000141",
+        "label": "NATRIUM BISPIRIBAK"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -11068,8 +11068,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000611",
-        "label": "CARBARYL"
+        "id": "op:sub:00000286",
+        "label": "Karbaril"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -11098,8 +11098,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000613",
-        "label": "Clorotalonil"
+        "id": "op:sub:00000117",
+        "label": "Klorotalonil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11115,8 +11115,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000614",
-        "label": "Cyantraniliprole"
+        "id": "op:sub:00000240",
+        "label": "Siantraniliprol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -11132,8 +11132,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000615",
-        "label": "Cyromazine"
+        "id": "op:sub:00000264",
+        "label": "Siromazin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -11261,8 +11261,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000620",
-        "label": "Dikamba"
+        "id": "op:sub:00000401",
+        "label": "Dicamba"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11309,8 +11309,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000623",
-        "label": "esbiotrin"
+        "id": "op:sub:00000538",
+        "label": "Esbiothrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11357,8 +11357,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000626",
-        "label": "Famoksadon (Famoxadone)"
+        "id": "op:sub:00000625",
+        "label": "Famoksadon"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11432,8 +11432,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000630",
-        "label": "Fludioxonil"
+        "id": "op:sub:00000544",
+        "label": "Fludioksonil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11464,8 +11464,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000632",
-        "label": "Fluopicolide"
+        "id": "op:sub:00000545",
+        "label": "Fluopikolid"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -11481,8 +11481,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000633",
-        "label": "fluopiram (fluopyram)"
+        "id": "op:sub:00000546",
+        "label": "Fluopiram"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -11619,8 +11619,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000640",
-        "label": "Imazapyr"
+        "id": "op:sub:00000376",
+        "label": "Imazapir"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -11654,8 +11654,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000642",
-        "label": "isoprokarb"
+        "id": "op:sub:00000292",
+        "label": "MIPC"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -12516,8 +12516,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000658",
-        "label": "Isoxaflutole"
+        "id": "op:sub:00000453",
+        "label": "Isoksaflutol"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -12534,8 +12534,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000659",
-        "label": "Karbendazim (Carbendazim)"
+        "id": "op:sub:00000149",
+        "label": "Karbendazim"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -12552,8 +12552,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000660",
-        "label": "Karfentrazon etil"
+        "id": "op:sub:00000443",
+        "label": "Etil Karfentrazon"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -12640,8 +12640,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000666",
-        "label": "Metaldehyde"
+        "id": "op:sub:00000191",
+        "label": "Metaldehida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -12697,8 +12697,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000670",
-        "label": "Mixture of 5-chloro-2-methyl-2H-isothiazol-3-one and 2-methyl-2H-isothiazol-3-one (3:1) (CMIT/MIT mixture)"
+        "id": "op:sub:00000352",
+        "label": "Mixture of: 5-chloro-2-methyl-2H-isothiazol-3-one (CMIT) and 2-methyl-2H-isothiazol-3-one (MIT) (3:1)"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -12758,8 +12758,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000674",
-        "label": "Oxyfluorfen"
+        "id": "op:sub:00000166",
+        "label": "Oksifluorfen"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -13063,8 +13063,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000682",
-        "label": "Prokloraz (Prochloraz)"
+        "id": "op:sub:00000233",
+        "label": "Prokloraz"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -13094,8 +13094,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000684",
-        "label": "Pyridaben"
+        "id": "op:sub:00000218",
+        "label": "Piridaben"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -13223,8 +13223,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000693",
-        "label": "Tembotrion (Tembotrione)"
+        "id": "op:sub:00000472",
+        "label": "Tembotrion"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -13241,8 +13241,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000694",
-        "label": "Terbuthylazine"
+        "id": "op:sub:00000428",
+        "label": "Terbutilazin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -13258,8 +13258,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000695",
-        "label": "tetraniliprol (tetraniliprole)"
+        "id": "op:sub:00000579",
+        "label": "tetraniliprol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -13342,8 +13342,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000698",
-        "label": "Trifloxystrobin"
+        "id": "op:sub:00000220",
+        "label": "Trifloksistrobin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -13359,8 +13359,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000699",
-        "label": "Triflumezopirim (Triflumezopyrim)"
+        "id": "op:sub:00000297",
+        "label": "Triflumezopyrim"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -13480,8 +13480,8 @@
       ],
       "formulasi": 3,
       "substance": {
-        "id": "op:sub:00000702",
-        "label": "Trisiklazol (Tricyclazole)"
+        "id": "op:sub:00000137",
+        "label": "Trisiklazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -13659,8 +13659,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000709",
-        "label": "2,4-D butil ester (2,4-D butyl ester):45% setara dengan 2,4-D (2,4-D equivalent):36%"
+        "id": "op:sub:00000708",
+        "label": "2,4-D butil ester"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -13676,8 +13676,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000710",
-        "label": "2,4-D Dimethyl amine"
+        "id": "op:sub:00000590",
+        "label": "2,4 dimetil amina"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -13881,8 +13881,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000717",
-        "label": "2,4-D Sodium"
+        "id": "op:sub:00000512",
+        "label": "2,4-D Natrium"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -13924,8 +13924,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000726",
-        "label": "3 -(3,4 diclorophenyl)-1,1 dimethylurea"
+        "id": "op:sub:00000129",
+        "label": "DIURON"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -13994,8 +13994,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000731",
-        "label": "6-Benzilaminopurin"
+        "id": "op:sub:00000732",
+        "label": "6-Benzylaminopurine"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -14427,8 +14427,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000746",
-        "label": "Atrazin (Atrazine)"
+        "id": "op:sub:00000116",
+        "label": "Atrazin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -14445,8 +14445,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000747",
-        "label": "Azadirachtin"
+        "id": "op:sub:00000525",
+        "label": "Azadiraktin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14497,8 +14497,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000750",
-        "label": "Benzil florpirauksifen (Florpyrauxifen-benzyl)"
+        "id": "op:sub:00000344",
+        "label": "Florpyrauxifen-benzyl"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -14527,8 +14527,8 @@
         "nama_registri": "siflutrin",
         "nama": "cyfluthrin",
         "substance": {
-          "id": "op:sub:00000498",
-          "label": "Siflutrin"
+          "id": "op:sub:00000489",
+          "label": "CYFLUTHRIN"
         }
       },
       "kanonik": {
@@ -14597,8 +14597,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000755",
-        "label": "Carbosulfan"
+        "id": "op:sub:00000181",
+        "label": "Karbosulfan"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14614,8 +14614,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000756",
-        "label": "Carfentrazone-ethyl"
+        "id": "op:sub:00000443",
+        "label": "Etil Karfentrazon"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14632,8 +14632,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000757",
-        "label": "Chlorfluazuron"
+        "id": "op:sub:00000382",
+        "label": "KLORFLUAZURON"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14650,8 +14650,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000758",
-        "label": "Chlorimuron Ethyl"
+        "id": "op:sub:00000322",
+        "label": "Etil Klorimuron"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14721,8 +14721,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000763",
-        "label": "Clothianidin"
+        "id": "op:sub:00000184",
+        "label": "Klotianidin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14797,8 +14797,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000767",
-        "label": "Cyazofamid"
+        "id": "op:sub:00000312",
+        "label": "Siazofamid"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14814,8 +14814,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000768",
-        "label": "deltametrin (deltamethrin)"
+        "id": "op:sub:00000136",
+        "label": "Deltametrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -14831,8 +14831,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000769",
-        "label": "Dietiltoluamida"
+        "id": "op:sub:00000492",
+        "label": "Diethyltoluamide"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -14967,8 +14967,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000773",
-        "label": "Dimethomorph"
+        "id": "op:sub:00000132",
+        "label": "Dimetomorf"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -14984,8 +14984,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000774",
-        "label": "Dimetoat (Dimethoate)"
+        "id": "op:sub:00000139",
+        "label": "Dimetoat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -15050,8 +15050,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000776",
-        "label": "Epoksikonazol (epoxiconazole)"
+        "id": "op:sub:00000202",
+        "label": "Epoksikonazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -15111,8 +15111,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000780",
-        "label": "ethaboksam"
+        "id": "op:sub:00000778",
+        "label": "etaboksam"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -15247,8 +15247,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000788",
-        "label": "Florylpicoxamid"
+        "id": "op:sub:00000787",
+        "label": "Florilpikoksamid (Florylpicoxamid)"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -15305,8 +15305,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000792",
-        "label": "Fluopyram"
+        "id": "op:sub:00000546",
+        "label": "Fluopiram"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -15353,8 +15353,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000548",
-        "label": "FLUROXYPYR-MEPTYL"
+        "id": "op:sub:00000302",
+        "label": "Fluroksipir meptil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -15411,8 +15411,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000799",
-        "label": "Glifosat (Glyphosate)"
+        "id": "op:sub:00000144",
+        "label": "Glifosat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -15488,8 +15488,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -15542,8 +15542,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000804",
-        "label": "Hexaflumuron"
+        "id": "op:sub:00000271",
+        "label": "Heksaflumuron"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -16494,8 +16494,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -16517,8 +16517,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000824",
-        "label": "Kartap hidroklorida (Cartap hydrochloride)"
+        "id": "op:sub:00000381",
+        "label": "Kartap Hidroklorida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -16724,8 +16724,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000832",
-        "label": "Malathion"
+        "id": "op:sub:00000506",
+        "label": "Malation"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -16756,8 +16756,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000834",
-        "label": "Mefenoxam"
+        "id": "op:sub:00000350",
+        "label": "Metalaksil-M"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -16775,8 +16775,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000835",
-        "label": "Mefenoxam (Metalaxyl-M)"
+        "id": "op:sub:00000350",
+        "label": "Metalaksil-M"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -16795,8 +16795,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000836",
-        "label": "Mesotrion (Mesotrione)"
+        "id": "op:sub:00000119",
+        "label": "Mesotrion"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -16864,8 +16864,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000840",
-        "label": "Methyl Metsulfuron"
+        "id": "op:sub:00000111",
+        "label": "Metil Metsulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -16881,8 +16881,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000841",
-        "label": "Methyl N-(1H-benzimidazol-2-yl) carbamate (carbendazim)"
+        "id": "op:sub:00000149",
+        "label": "Karbendazim"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17039,8 +17039,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000849",
-        "label": "Natrium bispyribac"
+        "id": "op:sub:00000141",
+        "label": "NATRIUM BISPIRIBAK"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17070,8 +17070,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000851",
-        "label": "Niclosamida"
+        "id": "op:sub:00000177",
+        "label": "Niklosamida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17087,8 +17087,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000852",
-        "label": "Oksatiapiprolin (Oxathiapiprolin)"
+        "id": "op:sub:00000385",
+        "label": "Oxathiapiprolin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17398,8 +17398,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000860",
-        "label": "Pikoksistrobin (Picoxystrobin)"
+        "id": "op:sub:00000421",
+        "label": "Picoxystrobin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17446,8 +17446,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000863",
-        "label": "Pirazosulfuron etil"
+        "id": "op:sub:00000156",
+        "label": "Etil Pirazosulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17476,8 +17476,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000865",
-        "label": "Profenofos (Profenofos)"
+        "id": "op:sub:00000133",
+        "label": "PROFENOFOS"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -17506,8 +17506,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000867",
-        "label": "Propoxur"
+        "id": "op:sub:00000278",
+        "label": "propoksur"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -17623,8 +17623,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000875",
-        "label": "Sifluthrin"
+        "id": "op:sub:00000489",
+        "label": "CYFLUTHRIN"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17641,8 +17641,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000876",
-        "label": "Simoksanil (Cymoxanil)"
+        "id": "op:sub:00000118",
+        "label": "SIMOKSANIL"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17675,8 +17675,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000878",
-        "label": "Siprokonazol (Cyproconazole)"
+        "id": "op:sub:00000313",
+        "label": "Siprokonazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17706,8 +17706,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000880",
-        "label": "Spinetoram (Spinetoram)"
+        "id": "op:sub:00000175",
+        "label": "Spinetoram"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -17753,8 +17753,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000883",
-        "label": "Sulphur"
+        "id": "op:sub:00000006",
+        "label": "Belerang (S)"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17771,8 +17771,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000884",
-        "label": "tebukonazol (tebuconazole)"
+        "id": "op:sub:00000158",
+        "label": "Tebukonazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17865,8 +17865,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000388",
-        "label": "Thiophanate-methyl"
+        "id": "op:sub:00000165",
+        "label": "Metil Tiofanat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -17968,8 +17968,8 @@
       ],
       "formulasi": 2,
       "substance": {
-        "id": "op:sub:00000895",
-        "label": "Trifludimoxazin"
+        "id": "op:sub:00000479",
+        "label": "Trifludimoksazin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -18691,8 +18691,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000992",
-        "label": "2-N-tert-butyl-6-chloro-4-N-ethyl-1,3,5-triazine-2,4-diamine (terbuthylazine)"
+        "id": "op:sub:00000428",
+        "label": "Terbutilazin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -18799,8 +18799,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000710",
-        "label": "2,4-D Dimethyl amine"
+        "id": "op:sub:00000590",
+        "label": "2,4 dimetil amina"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -18990,8 +18990,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000945",
-        "label": "2,4-D 2-ethylhexyl ester: 96 %"
+        "id": "op:sub:00000946",
+        "label": "2,4-D 2-etilheksil ester"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -19024,8 +19024,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000947",
-        "label": "2,4-D Dimethylamine (setara dengan 2,4-D : 600 g/l)"
+        "id": "op:sub:00000590",
+        "label": "2,4 dimetil amina"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -19873,8 +19873,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000975",
-        "label": "2,4-D Natrium (2,4-D Sodium)"
+        "id": "op:sub:00000512",
+        "label": "2,4-D Natrium"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -19903,8 +19903,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000710",
-        "label": "2,4-D Dimethyl amine"
+        "id": "op:sub:00000590",
+        "label": "2,4 dimetil amina"
       },
       "hubungan": "belum-terpetakan",
       "alasan": "Registri tidak pernah menuliskan nama internasional untuk tulisan ini, dan pelipatan ortografisnya tidak bertemu satu pun nama yang dideklarasikan registri. Dibiarkan kosong; jangan dicocokkan dengan kemiripan atau jarak edit."
@@ -20007,8 +20007,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001001",
-        "label": "3-(3,4-Dichlorophenyl)-1,1-dimethylurea (diuron)"
+        "id": "op:sub:00000129",
+        "label": "DIURON"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -20089,8 +20089,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001009",
-        "label": "4-(2,2-Difluoro-1,3-benzodioxol-4-yl)-1H-pyrrole-3-carbonitrile (Fludioxonyl)"
+        "id": "op:sub:00000544",
+        "label": "Fludioksonil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -20396,8 +20396,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001030",
-        "label": "Abamectine"
+        "id": "op:sub:00000007",
+        "label": "Abamektin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -20569,8 +20569,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000520",
-        "label": "Alpha Cypermethrin"
+        "id": "op:sub:00000152",
+        "label": "Alfa Sipermetrin"
       },
       "hubungan": "stereoisomer-dari",
       "bentuk": {
@@ -20581,8 +20581,8 @@
         "nama_registri": "cypermethrin",
         "nama": "cypermethrin",
         "substance": {
-          "id": "op:sub:00000167",
-          "label": "CYPERMETHRIN"
+          "id": "op:sub:00000101",
+          "label": "SIPERMETRIN"
         }
       },
       "kanonik": {
@@ -20604,8 +20604,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000520",
-        "label": "Alpha Cypermethrin"
+        "id": "op:sub:00000152",
+        "label": "Alfa Sipermetrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -20634,8 +20634,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001044",
-        "label": "aluminium fosfida (aluminium phosphide)"
+        "id": "op:sub:00000170",
+        "label": "Aluminium Fosfida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -21682,8 +21682,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001071",
-        "label": "Asam giberelat ( gibberellic acid)"
+        "id": "op:sub:00000128",
+        "label": "Asam Giberelat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -21714,8 +21714,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001073",
-        "label": "Asam giberelat (gibberelic acid)"
+        "id": "op:sub:00000128",
+        "label": "Asam Giberelat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -21862,8 +21862,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000746",
-        "label": "Atrazin (Atrazine)"
+        "id": "op:sub:00000116",
+        "label": "Atrazin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -21905,8 +21905,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001086",
-        "label": "Azadiraktin (azadirachtin)"
+        "id": "op:sub:00000525",
+        "label": "Azadiraktin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -21935,8 +21935,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001088",
-        "label": "azoxystrobin (ISO)"
+        "id": "op:sub:00000112",
+        "label": "Azoksistrobin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -22131,8 +22131,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001100",
-        "label": "Benomyl"
+        "id": "op:sub:00000279",
+        "label": "Benomil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -22148,8 +22148,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001102",
-        "label": "Bensulfuron methyl"
+        "id": "op:sub:00000204",
+        "label": "Metil Bensulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22165,8 +22165,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001102",
-        "label": "Bensulfuron methyl"
+        "id": "op:sub:00000204",
+        "label": "Metil Bensulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22182,8 +22182,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000530",
-        "label": "Bensulfuron metil"
+        "id": "op:sub:00000204",
+        "label": "Metil Bensulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22212,8 +22212,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000750",
-        "label": "Benzil florpirauksifen (Florpyrauxifen-benzyl)"
+        "id": "op:sub:00000344",
+        "label": "Florpyrauxifen-benzyl"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22306,8 +22306,8 @@
         "nama_registri": "cypermethrin",
         "nama": "cypermethrin",
         "substance": {
-          "id": "op:sub:00000167",
-          "label": "CYPERMETHRIN"
+          "id": "op:sub:00000101",
+          "label": "SIPERMETRIN"
         }
       },
       "kanonik": {
@@ -22341,8 +22341,8 @@
         "nama_registri": "siflutrin",
         "nama": "cyfluthrin",
         "substance": {
-          "id": "op:sub:00000498",
-          "label": "Siflutrin"
+          "id": "op:sub:00000489",
+          "label": "CYFLUTHRIN"
         }
       },
       "kanonik": {
@@ -22376,8 +22376,8 @@
         "nama_registri": "cypermethrin",
         "nama": "cypermethrin",
         "substance": {
-          "id": "op:sub:00000167",
-          "label": "CYPERMETHRIN"
+          "id": "op:sub:00000101",
+          "label": "SIPERMETRIN"
         }
       },
       "kanonik": {
@@ -22429,8 +22429,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001116",
-        "label": "Bifenthrin"
+        "id": "op:sub:00000160",
+        "label": "Bifentrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -22459,8 +22459,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000609",
-        "label": "Bispiribak sodium"
+        "id": "op:sub:00000141",
+        "label": "NATRIUM BISPIRIBAK"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22554,8 +22554,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000366",
-        "label": "BPMC/Fenobucarb"
+        "id": "op:sub:00000163",
+        "label": "BPMC"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22599,8 +22599,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001128",
-        "label": "brodifacum"
+        "id": "op:sub:00000147",
+        "label": "BRODIFAKUM"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -22681,8 +22681,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001134",
-        "label": "Buprofezin (Buprofezin)"
+        "id": "op:sub:00000162",
+        "label": "Buprofezin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -22698,8 +22698,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001135",
-        "label": "Butaklor (Butachlor)"
+        "id": "op:sub:00000208",
+        "label": "Butaklor"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22728,8 +22728,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000532",
-        "label": "Butil sihalofop (Cyhalofop-butyl)"
+        "id": "op:sub:00000145",
+        "label": "Butil Sihalofop"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22745,8 +22745,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001138",
-        "label": "Butil Silahofop"
+        "id": "op:sub:00000754",
+        "label": "butyl cylahofop"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22840,8 +22840,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001145",
-        "label": "Carbendazim (ISO)"
+        "id": "op:sub:00000149",
+        "label": "Karbendazim"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -22883,8 +22883,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000758",
-        "label": "Chlorimuron Ethyl"
+        "id": "op:sub:00000322",
+        "label": "Etil Klorimuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22926,8 +22926,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001151",
-        "label": "Chlorpirifos"
+        "id": "op:sub:00000105",
+        "label": "Klorpirifos"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -22956,8 +22956,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001153",
-        "label": "cinmethylin"
+        "id": "op:sub:00000334",
+        "label": "Sinmetilin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -23051,8 +23051,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001160",
-        "label": "Clethodim"
+        "id": "op:sub:00000348",
+        "label": "Kletodim"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -23081,8 +23081,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001162",
-        "label": "Clorfenapyr"
+        "id": "op:sub:00000110",
+        "label": "Klorfenapir"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -23098,8 +23098,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001163",
-        "label": "clotianidine"
+        "id": "op:sub:00000184",
+        "label": "Klotianidin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -23233,8 +23233,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001171",
-        "label": "Cyhalofop-butyl (butil sihalofop)"
+        "id": "op:sub:00000145",
+        "label": "Butil Sihalofop"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -23307,8 +23307,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001175",
-        "label": "Cypenothrin"
+        "id": "op:sub:00000877",
+        "label": "Sipenotrin"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -23324,8 +23324,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001176",
-        "label": "Cyprodinil"
+        "id": "op:sub:00000689",
+        "label": "Siprodinil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -23661,8 +23661,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001195",
-        "label": "Difenokonazole"
+        "id": "op:sub:00000108",
+        "label": "Difenokonazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -23761,8 +23761,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001199",
-        "label": "dimehipo (bisultap)"
+        "id": "op:sub:00000113",
+        "label": "DIMEHIPO"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -23925,8 +23925,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001205",
-        "label": "Dinotefuran (Dinotefuran)"
+        "id": "op:sub:00000153",
+        "label": "Dinotefuran"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -23955,8 +23955,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001207",
-        "label": "Diquat dibromida"
+        "id": "op:sub:00001197",
+        "label": "Dikuat dibromida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -24382,8 +24382,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001220",
-        "label": "etefon (ethephon)"
+        "id": "op:sub:00000125",
+        "label": "Etefon"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24399,8 +24399,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001221",
-        "label": "Ethaboxam"
+        "id": "op:sub:00000778",
+        "label": "etaboksam"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -24481,8 +24481,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001227",
-        "label": "etil 4-metiloktanoate"
+        "id": "op:sub:00000782",
+        "label": "ethyl 4-methyloctanoate"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24498,8 +24498,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001228",
-        "label": "Etil Klorimuron (Chlorimuron Ethyl)"
+        "id": "op:sub:00000322",
+        "label": "Etil Klorimuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24545,8 +24545,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001231",
-        "label": "etil-4-metiloktanoat"
+        "id": "op:sub:00000782",
+        "label": "ethyl 4-methyloctanoate"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24562,8 +24562,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001232",
-        "label": "etofenproks (etofenprox)"
+        "id": "op:sub:00000342",
+        "label": "Etofenproks"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24579,8 +24579,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001233",
-        "label": "etoksisulfuron (ethoxysulfuron)"
+        "id": "op:sub:00000405",
+        "label": "ETOKSISULFURON"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24609,8 +24609,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001235",
-        "label": "Famoxadone"
+        "id": "op:sub:00000625",
+        "label": "Famoksadon"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -24708,8 +24708,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001242",
-        "label": "fenitrotion"
+        "id": "op:sub:00001241",
+        "label": "fenitrothion"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24725,8 +24725,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001243",
-        "label": "fenobukarb (fenobucarb)"
+        "id": "op:sub:00000163",
+        "label": "BPMC"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24768,8 +24768,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001246",
-        "label": "Fentin asetat (fentin acetate)"
+        "id": "op:sub:00000130",
+        "label": "Fentin Asetat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24785,8 +24785,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001247",
-        "label": "Fentoat (phenthoate)"
+        "id": "op:sub:00000283",
+        "label": "Fentoat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24802,8 +24802,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001248",
-        "label": "Fenvalerat (Fenvalerate)"
+        "id": "op:sub:00000176",
+        "label": "Fenvalerat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -24836,8 +24836,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001250",
-        "label": "feproxydim"
+        "id": "op:sub:00001249",
+        "label": "Feproksidim"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -24926,8 +24926,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001256",
-        "label": "Florpyrauxifen-benzyl (benzil florpirauksifen)"
+        "id": "op:sub:00000344",
+        "label": "Florpyrauxifen-benzyl"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -25100,8 +25100,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001266",
-        "label": "Flumioksazin (Flumioxazin)"
+        "id": "op:sub:00000225",
+        "label": "Flumioxazin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -25134,8 +25134,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001268",
-        "label": "fluopikolid (fluopicolide)"
+        "id": "op:sub:00000545",
+        "label": "Fluopikolid"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -25382,8 +25382,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001276",
-        "label": "Fluroksipir-1-metil heptil ester"
+        "id": "op:sub:00000794",
+        "label": "fluroksipir-1-metil heptyl ester"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -25399,8 +25399,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001277",
-        "label": "fluroxypyr-1-methyl heptyl-ester"
+        "id": "op:sub:00000794",
+        "label": "fluroksipir-1-metil heptyl ester"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -25416,8 +25416,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001278",
-        "label": "Fluroxypyr-mepthyl"
+        "id": "op:sub:00000302",
+        "label": "Fluroksipir meptil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -25502,8 +25502,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001284",
-        "label": "Fostiazat"
+        "id": "op:sub:00001283",
+        "label": "Fosthiazate"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -25680,8 +25680,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001291",
-        "label": "Glyphosat"
+        "id": "op:sub:00000144",
+        "label": "Glifosat"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -25709,8 +25709,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -25744,8 +25744,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -25792,8 +25792,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -25826,8 +25826,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -25861,8 +25861,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -25896,8 +25896,8 @@
         "nama_registri": "glyphosate",
         "nama": "glyphosate",
         "substance": {
-          "id": "op:sub:00000210",
-          "label": "GLYPHOSATE"
+          "id": "op:sub:00000144",
+          "label": "Glifosat"
         }
       },
       "kanonik": {
@@ -26109,8 +26109,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001304",
-        "label": "Hexazinon"
+        "id": "op:sub:00000552",
+        "label": "Heksazinon"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -26165,8 +26165,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001308",
-        "label": "Imazapic"
+        "id": "op:sub:00000246",
+        "label": "Imazapik"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -26182,8 +26182,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001309",
-        "label": "imidacloprid (ISO)"
+        "id": "op:sub:00000107",
+        "label": "Imidakloprid"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -26251,8 +26251,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001314",
-        "label": "imiprothrine"
+        "id": "op:sub:00000482",
+        "label": "Imiprotrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -26281,8 +26281,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001316",
-        "label": "Indosakarb (indoxacarb)"
+        "id": "op:sub:00000134",
+        "label": "INDOKSAKARB"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -26404,8 +26404,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001325",
-        "label": "Isoprocarb"
+        "id": "op:sub:00000292",
+        "label": "MIPC"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -29878,8 +29878,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001392",
-        "label": "Isosikloseram"
+        "id": "op:sub:00000411",
+        "label": "Isocycloseram"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -29895,8 +29895,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001393",
-        "label": "isotianil (isotianil)"
+        "id": "op:sub:00000554",
+        "label": "isotianil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -30301,8 +30301,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001406",
-        "label": "Karbofuran (Carbofuran)"
+        "id": "op:sub:00000148",
+        "label": "Karbofuran"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -30374,8 +30374,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001411",
-        "label": "Klorantraniliprol (chlorantraniliprole)"
+        "id": "op:sub:00000121",
+        "label": "Klorantraniliprol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -30391,8 +30391,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001412",
-        "label": "Klorantraniliprole (Chlorantraniliprole)"
+        "id": "op:sub:00000121",
+        "label": "Klorantraniliprol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -30408,8 +30408,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001413",
-        "label": "Klorimuron-etil"
+        "id": "op:sub:00000322",
+        "label": "Etil Klorimuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -30425,8 +30425,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001414",
-        "label": "Klorotalonil (chlorotalonil)"
+        "id": "op:sub:00000117",
+        "label": "Klorotalonil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -30442,8 +30442,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001415",
-        "label": "klotianidin (clothianidin)"
+        "id": "op:sub:00000184",
+        "label": "Klotianidin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -30781,8 +30781,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001429",
-        "label": "Lufenuron (lufenuron)"
+        "id": "op:sub:00000151",
+        "label": "Lufenuron"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -30811,8 +30811,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001431",
-        "label": "Magnesium Phosphide"
+        "id": "op:sub:00000662",
+        "label": "Magnesium fosfida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -31014,8 +31014,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000836",
-        "label": "Mesotrion (Mesotrione)"
+        "id": "op:sub:00000119",
+        "label": "Mesotrion"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31044,8 +31044,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001442",
-        "label": "metaldehid"
+        "id": "op:sub:00000191",
+        "label": "Metaldehida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31061,8 +31061,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001443",
-        "label": "Metaldehida (Metaldehyde)"
+        "id": "op:sub:00000191",
+        "label": "Metaldehida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31125,8 +31125,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001447",
-        "label": "Methyl (E)-2-((6-(2-cyanophenoxy)-4-pyrimidinyl)oxy)-alpha-(methoxymethylene)benzeneacetate (Azoxystrobin)"
+        "id": "op:sub:00000112",
+        "label": "Azoksistrobin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31170,8 +31170,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001450",
-        "label": "Methyl Bensulfuron"
+        "id": "op:sub:00000204",
+        "label": "Metil Bensulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31200,8 +31200,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001452",
-        "label": "Metil bensulfuron (Bensulfuron-methyl)"
+        "id": "op:sub:00000204",
+        "label": "Metil Bensulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31217,8 +31217,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001453",
-        "label": "metil bromida"
+        "id": "op:sub:00000559",
+        "label": "Methyl Bromide"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31260,8 +31260,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001456",
-        "label": "metil tinkarbazon (thiencarbazone-methyl)"
+        "id": "op:sub:00001649",
+        "label": "thiencarbazone-methyl"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31290,8 +31290,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001458",
-        "label": "Metoksifenozida"
+        "id": "op:sub:00000839",
+        "label": "Methoxyfenozide"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31346,8 +31346,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001462",
-        "label": "miklobutanil"
+        "id": "op:sub:00000848",
+        "label": "myclobutanil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31363,8 +31363,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001463",
-        "label": "MIPC (Isoprocarb)"
+        "id": "op:sub:00000292",
+        "label": "MIPC"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31395,8 +31395,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001465",
-        "label": "Mixture of 5-chloro-2- methyl-2H-isothiazol-3-one and 2-methyl-2H-isothiazol-3-one (3:1)"
+        "id": "op:sub:00000352",
+        "label": "Mixture of: 5-chloro-2-methyl-2H-isothiazol-3-one (CMIT) and 2-methyl-2H-isothiazol-3-one (MIT) (3:1)"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31716,8 +31716,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000261",
-        "label": "Natrium bispiribak (bispyribac sodium)"
+        "id": "op:sub:00000141",
+        "label": "NATRIUM BISPIRIBAK"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31733,8 +31733,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001480",
-        "label": "Natrium bispiribak (byspiribac sodium)"
+        "id": "op:sub:00000141",
+        "label": "NATRIUM BISPIRIBAK"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -31954,8 +31954,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001495",
-        "label": "Niclosamide"
+        "id": "op:sub:00000177",
+        "label": "Niklosamida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -31984,8 +31984,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001497",
-        "label": "Niklosamida (niclosamida)"
+        "id": "op:sub:00000177",
+        "label": "Niklosamida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -32001,8 +32001,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001499",
-        "label": "Nikosulfuron (Nicosulfuron)"
+        "id": "op:sub:00000142",
+        "label": "Nikosulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -32018,8 +32018,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001499",
-        "label": "Nikosulfuron (Nicosulfuron)"
+        "id": "op:sub:00000142",
+        "label": "Nikosulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -32100,8 +32100,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001505",
-        "label": "oksamil (oxamyl)"
+        "id": "op:sub:00000212",
+        "label": "Oksamil"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -32143,8 +32143,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001508",
-        "label": "Oksifluorfen (Oxyfluorfen)"
+        "id": "op:sub:00000166",
+        "label": "Oksifluorfen"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -32190,8 +32190,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001511",
-        "label": "Ometoat"
+        "id": "op:sub:00001510",
+        "label": "Omethoate"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -32207,8 +32207,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001512",
-        "label": "Oxadiazon"
+        "id": "op:sub:00000224",
+        "label": "Oksadiazon"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -32280,8 +32280,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001516",
-        "label": "PACLOBUTRAZOLE"
+        "id": "op:sub:00000143",
+        "label": "Paklobutrazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34468,8 +34468,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001564",
-        "label": "Pidiflumetofen (Pydiflumetofen)"
+        "id": "op:sub:00000859",
+        "label": "Pidiflumetofen"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34511,8 +34511,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000863",
-        "label": "Pirazosulfuron etil"
+        "id": "op:sub:00000156",
+        "label": "Etil Pirazosulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34580,8 +34580,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001572",
-        "label": "Pretilaklor (Pretilachlor)"
+        "id": "op:sub:00000187",
+        "label": "Pretilaklor"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34649,8 +34649,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001577",
-        "label": "propamokarb hydrochlorida"
+        "id": "op:sub:00000205",
+        "label": "Propamokarb hidroklorida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -34666,8 +34666,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001578",
-        "label": "propiconazol"
+        "id": "op:sub:00000155",
+        "label": "Propikonazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34726,8 +34726,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001582",
-        "label": "Prosulfokarb"
+        "id": "op:sub:00001581",
+        "label": "prosulfocarb"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34756,8 +34756,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000573",
-        "label": "Pyrazosulfuron-ethyl"
+        "id": "op:sub:00000156",
+        "label": "Etil Pirazosulfuron"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34786,8 +34786,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001586",
-        "label": "pyribenzoxim"
+        "id": "op:sub:00000276",
+        "label": "Piribenzoksim"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -34842,8 +34842,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001590",
-        "label": "Quinclorac"
+        "id": "op:sub:00000198",
+        "label": "Kuinklorak"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -34859,8 +34859,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001591",
-        "label": "Quinclorak"
+        "id": "op:sub:00000198",
+        "label": "Kuinklorak"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34902,8 +34902,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001594",
-        "label": "saflufenacil"
+        "id": "op:sub:00000234",
+        "label": "Saflufenasil"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -34949,8 +34949,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001597",
-        "label": "sifenotrin"
+        "id": "op:sub:00000493",
+        "label": "Cyphenothrin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34966,8 +34966,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001598",
-        "label": "siflumetofen"
+        "id": "op:sub:00001170",
+        "label": "cyflumetofen"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -34983,8 +34983,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00000228",
-        "label": "Sihalofop butil"
+        "id": "op:sub:00000145",
+        "label": "Butil Sihalofop"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35161,8 +35161,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001611",
-        "label": "Spinosad (spinosad)"
+        "id": "op:sub:00000201",
+        "label": "SPINOSAD"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -35204,8 +35204,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001614",
-        "label": "spirotetramat (spirotetramat)"
+        "id": "op:sub:00000206",
+        "label": "Spirotetramat"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -35234,8 +35234,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001616",
-        "label": "Sulfoksaflor (Sulfoxaflor)"
+        "id": "op:sub:00000882",
+        "label": "Sulfoxaflor"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35316,8 +35316,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001622",
-        "label": "tebukonazol (tebuconaloze)"
+        "id": "op:sub:00000158",
+        "label": "Tebukonazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35346,8 +35346,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001624",
-        "label": "Tefuriltrion"
+        "id": "op:sub:00000426",
+        "label": "tefuriltrion (tefuryltrione)"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35363,8 +35363,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001625",
-        "label": "Tefuryltrione"
+        "id": "op:sub:00000426",
+        "label": "tefuriltrion (tefuryltrione)"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -35602,8 +35602,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001632",
-        "label": "Tembaga oksiklorida (Copper oxychloride)"
+        "id": "op:sub:00000250",
+        "label": "Tembaga Oksiklorida"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35671,8 +35671,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001637",
-        "label": "Tembotrione"
+        "id": "op:sub:00000472",
+        "label": "Tembotrion"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -35688,8 +35688,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001638",
-        "label": "Terbutilazine"
+        "id": "op:sub:00000428",
+        "label": "Terbutilazin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35722,8 +35722,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001640",
-        "label": "Terbutryn ( Iso )"
+        "id": "op:sub:00001639",
+        "label": "Terbutryn"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -35830,8 +35830,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001648",
-        "label": "thiametoxam"
+        "id": "op:sub:00000131",
+        "label": "Tiametoksam"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35864,8 +35864,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001650",
-        "label": "Thiencarbazone-metil"
+        "id": "op:sub:00001649",
+        "label": "thiencarbazone-methyl"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35881,8 +35881,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001651",
-        "label": "Thifluzamide"
+        "id": "op:sub:00000267",
+        "label": "Tifluzamida"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -35898,8 +35898,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001652",
-        "label": "thiobenkarb"
+        "id": "op:sub:00000429",
+        "label": "tiobenkarb"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -35915,8 +35915,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001653",
-        "label": "tiakloprid (thiacloprid)"
+        "id": "op:sub:00000389",
+        "label": "Tiakloprid"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35945,8 +35945,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001655",
-        "label": "Tienkarbazon metil"
+        "id": "op:sub:00001649",
+        "label": "thiencarbazone-methyl"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -35979,8 +35979,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001657",
-        "label": "Topramezon (topramezone)"
+        "id": "op:sub:00000161",
+        "label": "Topramezon"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -36035,8 +36035,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001661",
-        "label": "triafamone"
+        "id": "op:sub:00000432",
+        "label": "triafamon (triafamone)"
       },
       "hubungan": "sama-dengan",
       "kanonik": {
@@ -36181,8 +36181,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001668",
-        "label": "trifloksistrobin (trifloxystrobin )"
+        "id": "op:sub:00000220",
+        "label": "Trifloksistrobin"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {
@@ -36631,8 +36631,8 @@
       ],
       "formulasi": 1,
       "substance": {
-        "id": "op:sub:00001681",
-        "label": "Trycyclazole"
+        "id": "op:sub:00000137",
+        "label": "Trisiklazol"
       },
       "hubungan": "varian-ejaan",
       "kanonik": {

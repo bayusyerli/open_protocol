@@ -6,7 +6,7 @@
       "id": "Pemetaan bahan aktif ke kode golongan manajemen resistensi"
     },
     "scope": {
-      "id": "Satu rekaman untuk SETIAP dari 1.399 bahan aktif pestisida yang hidup di spec/vocab/substance-pestisida.json, termasuk yang tidak terpetakan — karena kode yang salah menghasilkan nasihat rotasi yang keliru tapi terdengar yakin, sedangkan kekosongan yang beralasan bisa dibaca sebagai kekosongan. Ruang lingkupnya dibatasi pada bahan yang benar-benar ada di registri Kementan; daftar IRAC/FRAC/HRAC tidak disalin utuh. Pencocokan hanya diterima bila nama bahan bertemu satu entri yang BENAR-BENAR TERCANTUM pada daftar terbitan; ejaan Indonesia dilipat secara ortografis (sipermetrin=cypermethrin, mankozeb=mancozeb), bentuk garam dan ester dikupas bertingkat, dan sisanya lewat tabel alias yang tiap barisnya membawa alasannya sendiri. Kode keranjang — IRAC UN*, HRAC 0, FRAC NC dan BM — direkam tetapi ditandai not_a_rotation_group. Kode HRAC membawa huruf lamanya berdampingan dengan angka, memakai SISTEM HURUF HRAC GLOBAL PRA-2020 dan bukan sistem huruf CropLife Australia; pilihan itu berdasar bukti label Indonesia, bukan kelaziman — lihat sumber \"Bacaan huruf golongan pada kemasan\" di bawah dan docs/19-golongan-resistensi.md."
+      "id": "Satu rekaman untuk SETIAP dari 1.106 bahan aktif pestisida yang hidup di spec/vocab/substance-pestisida.json, termasuk yang tidak terpetakan — karena kode yang salah menghasilkan nasihat rotasi yang keliru tapi terdengar yakin, sedangkan kekosongan yang beralasan bisa dibaca sebagai kekosongan. Ruang lingkupnya dibatasi pada bahan yang benar-benar ada di registri Kementan; daftar IRAC/FRAC/HRAC tidak disalin utuh. Pencocokan hanya diterima bila nama bahan bertemu satu entri yang BENAR-BENAR TERCANTUM pada daftar terbitan; ejaan Indonesia dilipat secara ortografis (sipermetrin=cypermethrin, mankozeb=mancozeb), bentuk garam dan ester dikupas bertingkat, dan sisanya lewat tabel alias yang tiap barisnya membawa alasannya sendiri. Kode keranjang — IRAC UN*, HRAC 0, FRAC NC dan BM — direkam tetapi ditandai not_a_rotation_group. Kode HRAC membawa huruf lamanya berdampingan dengan angka, memakai SISTEM HURUF HRAC GLOBAL PRA-2020 dan bukan sistem huruf CropLife Australia; pilihan itu berdasar bukti label Indonesia, bukan kelaziman — lihat sumber \"Bacaan huruf golongan pada kemasan\" di bawah dan docs/19-golongan-resistensi.md."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -49,7 +49,7 @@
           "publisher": "Kementerian Pertanian RI",
           "year": 2026,
           "url": "https://ap-simpel.pertanian.go.id/",
-          "locator": "Sisi kiri join: 1.399 bahan aktif turunan 7.724 formulasi terdaftar, lewat spec/vocab/substance-pestisida.json."
+          "locator": "Sisi kiri join: 1.106 bahan aktif turunan 7.724 formulasi terdaftar, lewat spec/vocab/substance-pestisida.json."
         },
         {
           "title": "Pesticide Properties DataBase (PPDB)",
@@ -61,6 +61,6 @@
       ]
     },
     "storage": "ndjson",
-    "count": 1399
+    "count": 1106
   }
 }
