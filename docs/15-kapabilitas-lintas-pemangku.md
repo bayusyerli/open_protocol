@@ -516,7 +516,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | skema **selesai**; permukaan belum | **BANGUN** (fase 3) |
 | E3 | Simpangan rencana–realisasi | petugas lapang, offtaker | mutu data | pemeriksa **selesai** | **BANGUN** (fase 3) |
 | E4 | Pengingat berbasis **fase**, bukan tanggal | petani, petugas lapang | ketepatan waktu tindakan | `Stage` sengaja **tanpa medan hari** — hanya 2 dari 4 langkah cabai bertanggal | **BANGUN** (fase 3) dengan batasnya dinyatakan |
-| E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | belum ada — dan **petani kecil umumnya mengandalkan ingatan**, bukan buku | **BANGUN** (fase 3) |
+| E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | **inti selesai** 23 Agustus 2026 — `app/kas.html`, seluruhnya di perangkat, tanpa akun. Petani kecil memang mengandalkan ingatan, jadi jaraknya yang dirancang: jawaban di atas, tiga medan, satu yang wajib | inti **selesai**; sinkron & banyak petak **fase 3** |
 
 > **E5 adalah satu-satunya kapabilitas dalam kelompok ini yang petani mau isi untuk
 > dirinya sendiri.** E1–E3 dibayar oleh pembeli hilir, dan itu sah — tapi ia menempatkan
@@ -532,6 +532,20 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > kebiasaan baru jauh lebih mahal diterima. *Ingin tahu untungnya berapa* tidak sama
 > dengan *mau mencatat*, dan jarak antara keduanya yang harus dirancang, bukan diasumsikan
 > hilang.
+
+> **Inti E5 dibangun 23 Agustus 2026, dan satu pengukuran yang menentukan bentuknya bukan
+> tentang petani melainkan tentang peramban.** Kuota penyimpanan 4.180 MB sementara satu
+> musim penuh cuma **14,5 KB** — ruang tidak pernah jadi soal. Yang jadi soal
+> `navigator.storage.persist()` menjawab **false** pada kunjungan biasa: peramban **menolak
+> menjanjikan catatan itu tidak dihapusnya**. Petani yang mencatat semusim lalu
+> kehilangannya lebih buruk keadaannya daripada yang memakai kertas, dan halaman yang tidak
+> mengatakannya sedang menjual janji yang bukan miliknya untuk dijanjikan. Karena itu
+> "bawa keluar" bukan pelengkap di sana, dan pengingatnya muncul sendiri tiap sepuluh
+> catatan — selagi mengetik ulang masih murah.
+>
+> **Yang tetap fase 3:** sinkron, banyak petak, dan berbagi dengan kelompok tani. Ketiganya
+> menuntut tempat menyimpan yang bukan peramban, dan itu tepatnya yang dibayar lapisan
+> berbayar. Pencatatannya sendiri tidak menuntutnya — jadi ia tidak ditahan menunggu.
 
 ### F · BUKTI & AKSES — hilir yang menarik hulu
 

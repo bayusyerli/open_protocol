@@ -138,6 +138,12 @@ const NIAT = [
     kata: ['tangki', 'kalibrasi', 'takaran', 'menakar', 'tutup botol', 'sendok', 'semprot', 'berapa ml'] },
   { ke: 'usaha.html', judul: 'Titik impas usaha tani',
     kata: ['impas', 'balik modal', 'modal', 'biaya tanam', 'untung', 'rugi', 'rab', 'anggaran'] },
+  // Sengaja TIDAK mengambil "untung" dan "rugi" dari usaha.html, walau keduanya cocok.
+  // Yang mengetiknya sebelum tanam memaksudkan rencana, yang mengetiknya di tengah musim
+  // memaksudkan catatan — dan pintu masuk tidak bisa membedakannya. Yang diambil di sini
+  // hanya kata yang berarti MENCATAT, bukan kata yang berarti ingin tahu hasilnya.
+  { ke: 'kas.html', judul: 'Buku kas per petak',
+    kata: ['catat', 'mencatat', 'pembukuan', 'buku kas', 'pengeluaran', 'belanja', 'nota', 'kas'] },
   { ke: 'toko.html', judul: 'Cari toko tani & penjual benih',
     kata: ['toko', 'kios', 'beli di mana', 'penjual', 'terdekat', 'dekat sini'] },
   { ke: 'harga.html', judul: 'Harga eceran harian',
