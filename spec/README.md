@@ -112,11 +112,12 @@ boleh berkelas `public`.** Peta titik laporan tanpa verifikasi memicu penyemprot
 yang kerugiannya ditanggung petani sementara yang untung penjual pestisida — jadi peta itu
 tidak bisa tersusun dari data yang sah menurut aturan ini.
 
-**Permukaannya belum dibangun, dan itu bukan kelalaian.** Menyerahkan laporan ke rantai
-POPT menuntut POPT yang bisa disebutkan namanya, dan direktori layanan masih **nol
-rekaman** untuk penyuluh, POPT, laboratorium, dan jasa alsintan. Layar yang menyusun
-laporan lalu menyuruh orang mengirimkannya entah ke mana adalah kotak masuk yang tak
-seorang pun di ujungnya.
+**Permukaannya belum dibangun, dan itu bukan kelalaian.** Menyerahkan laporan menuntut
+ujung yang bisa dituju. Lapis mentah `penyuluh_data/` kini menamainya — 548 dinas dan
+6.883 kecamatan ber-BPP — tetapi barisnya **bernama tanpa alamat, telepon, atau tautan**,
+dan **belum satu pun masuk indeks**. Layar yang menyusun laporan lalu menyuruh orang
+mengirimkannya ke kantor yang tidak punya alamat adalah kotak masuk yang tak seorang pun
+di ujungnya. Yang membukanya C7, bukan G3.
 
 ### Identitas petak tanpa memiliki batasnya — G5
 

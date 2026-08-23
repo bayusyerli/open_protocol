@@ -605,12 +605,21 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > geometri sama sekali, karena batas lahan sudah dijaga L7 di `Plot` dan pintu kedua akan
 > melemahkan penjagaan itu.
 >
-> **Kedua, dan ini yang menahan permukaannya: tidak ada ujung untuk diserahi.** Baris C7 di
-> atas sudah mencatatnya — penyuluh, **POPT**, laboratorium, dan jasa alsintan semuanya
-> **nol rekaman**. Membangun layar yang menyusun laporan lalu menyuruh orang mengirimkannya
-> ke POPT yang tidak bisa disebutkan namanya adalah persis kotak masuk yang tak seorang pun
-> di ujungnya. Permukaannya karena itu **tidak dibangun**, dan yang membukanya bukan kode
-> melainkan C7: isi dulu direktori POPT-nya.
+> **Kedua, dan ini yang menahan permukaannya: ujungnya bisa dinamai, belum bisa dituju.**
+> Baris C7 mencatat penyuluh, POPT, laboratorium, dan jasa alsintan **nol rekaman di
+> indeks**, dan itu masih benar. Tetapi lapis mentahnya bergerak pada hari yang sama:
+> `penyuluh_data/` kini memuat **548 dinas** (34 provinsi, 514 kabupaten/kota) dan **7.276
+> kecamatan** yang 6.883 di antaranya menyebut nama BPP pembinanya. Itu ujung yang
+> sesungguhnya bagi laporan warga — bukan POPT langsung, melainkan BPP tempat penyuluhnya
+> berada, yang kemudian meneruskan ke POPT.
+>
+> Yang masih kurang dua hal, dan keduanya kecil dibanding yang sudah ada: barisnya
+> **bernama tanpa alamat, telepon, atau tautan**, dan **nol rujukan di pembangun indeks**
+> — jadi permukaan tidak bisa mencapainya. Layar yang menyusun laporan lalu menyuruh orang
+> mengirimkannya ke kantor yang tidak punya alamat masih kotak masuk yang tak seorang pun
+> di ujungnya. Permukaannya karena itu tetap **tidak dibangun**, tetapi penghalangnya
+> berpindah dari "datanya tidak ada" jadi "datanya belum diterbitkan" — dan itu pekerjaan
+> C7, bukan G3.
 
 ### Rekapitulasi putusan — 40 kapabilitas
 
