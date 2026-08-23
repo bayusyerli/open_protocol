@@ -263,6 +263,44 @@ satu pun berstatus `published`.
 Sisi repositorinya ada di [CONTRIBUTING.md](../CONTRIBUTING.md): aturan **L35**, sematan
 `lifecycle.reviewed_hash`, dan `spec/tools/tinjau.mjs`.
 
+### Harga yang benar-benar diterima — C4 sisi petani
+
+C4 berbunyi *"eceran dipinjam, harga petani **dibangun**"*, dan sisi petaninya tertulis
+sebagai **setoran**. Ia terbelah dua di sini, dan satu separuhnya ditolak.
+
+**Yang ditolak: setorannya.** Bukan cuma karena lapisan gratis tidak mengumpulkan — harga
+yang diketik ke formulir terbuka adalah harga yang **paling murah dipalsukan**, dan harga
+persis yang paling menguntungkan untuk dipalsukan. Penalaran yang sama membuat G6 menuntut
+sumbangan datang sebagai efek samping catatan musim; setoran harga ikut ke sana, di atas
+E1–E5, bukan ke lapisan gratis.
+
+**Yang dibangun: separuh yang tidak menuntut satu byte pun berpindah.** Petani sudah tahu
+harganya sendiri; yang tidak ia punya **acuannya**. Layar harga menerima angka itu di
+perangkat, menghitung jaraknya ke penetapan terakhir, lalu melupakannya.
+
+- **Hanya pada seri tingkat pekebun — 8 dari 96, seluruhnya sawit.** Membandingkan harga
+  terima petani dengan seri eceran menghasilkan jurang yang **benar angkanya dan salah
+  artinya**: ia margin pemasaran sepanjang rantai, bukan selisih yang ditanggung satu
+  pembeli. Bentuk kekeliruan yang sama sudah diukur `docs/16` pada sawit — TBS terhadap CPO
+  dunia tampak 7,26× padahal 1,52×, *"dan petani akan menyimpulkan dirinya ditipu tujuh kali
+  lipat"*. Seri eceran karena itu menampilkan **penolakan beserta sebabnya**, bukan diam.
+- **Cakupan hukum dicetak bersama hasilnya.** Penetapan TBS menaungi pekebun mitra dan
+  plasma; pekebun **swadaya berada di luarnya**, dan merekalah mayoritas petani sawit
+  Indonesia. Yang swadaya lalu menyimpulkan dirinya dirugikan sedang membandingkan diri ke
+  harga yang secara hukum bukan haknya — keterangan yang mengubah kesimpulan, jadi ia tidak
+  dipisahkan dari angkanya.
+- **Umur acuan ikut.** Penetapan tidak terbit tiap hari; hasilnya menyebut tanggalnya dan
+  berapa hari lalu, alasan yang sama yang membuat kartu angka menuliskan jarak sebenarnya
+  alih-alih nama jendelanya.
+- **Hasilnya tidak diberi warna hijau atau merah.** "Di bawah penetapan" bukan kabar buruk
+  yang butuh warna alarm — cakupan hukumnya bisa saja memang tidak menaungi yang membaca,
+  dan mewarnainya merah menyimpulkan sesuatu yang datanya tidak menyimpulkan.
+- **Angkanya tidak dikirim ke mana pun**, dan layar mengatakannya di badan kartu.
+
+Untuk pangan pokok pembanding ini belum berguna: tidak ada satu pun seri gabah di indeks,
+dan HPP Rp6.500/kg hidup sebagai prosa di `docs/16`, bukan sebagai data yang bisa
+dibandingkan.
+
 ### Kartu yang bisa diteruskan — A2
 
 A2 tertulis "kanal WhatsApp untuk tanya-jawab yang sama", dan sempat saya tandai terhalang

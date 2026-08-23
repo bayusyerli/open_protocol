@@ -89,11 +89,14 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `sit` | `vocab/target-site.json` | 1–999 | tempat aplikasi |
 | `pcp` | `vocab/principal/principal.meta.json` | 1000–9999 | badan pemegang pendaftaran, turunan kedua registri; 1–999 disisakan untuk kurasi tangan |
 | `hrg` | `vocab/harga/harga.meta.json` | 1000–1999 | seri harga komoditas SP2KP; 1–999 disisakan untuk patokan regulasi yang dikurasi tangan |
+| `lab` | `vocab/lab/lab.meta.json` | 1000–9999 | laboratorium penguji terakreditasi KAN; 1–999 disisakan untuk kurasi tangan |
+| `bpp` | `vocab/bpp/bpp.meta.json` | 1000–19999 | balai penyuluhan, turunan laporan tamu SIMLUHTAN; 1–999 disisakan untuk kurasi tangan |
 | `dev` `met` `opt` `sed` `var` | masing-masing satu berkas | 1–999 | belum dipakai bersama |
 
 **Belum dialokasikan** pada jenis `sub`: 100, 1691–1700, 2000–4999, 10000 ke atas; pada `cmd`: 3000 ke atas;
 pada `vty`: 1–999 dan 20000 ke atas; pada `sca`: 22 ke atas; pada `stg`: 2200 ke atas; pada `pcp`: 1–999 dan
-10000 ke atas; pada `hrg`: 1–999 dan 2000 ke atas.
+10000 ke atas; pada `hrg`: 1–999 dan 2000 ke atas; pada `lab`: 1–999 dan 10000 ke atas; pada `bpp`:
+1–999 dan 20000 ke atas.
 
 Fase (`stg`) hidup di dalam berkas skalanya, bukan sebagai dokumen tersendiri, sehingga
 aturan `L1` dan `L23` tidak menyentuhnya. Bloknya tetap dicatat di sini dan dijaga tangan —

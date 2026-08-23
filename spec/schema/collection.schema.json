@@ -32,7 +32,9 @@
             "principal",
             "harga",
             "editorial",
-            "golongan-resistensi"
+            "golongan-resistensi",
+            "lab",
+            "bpp"
           ]
         },
         "label": {

@@ -373,3 +373,59 @@
   white-space: pre-wrap;
   overflow-wrap: anywhere;
 }
+
+/* --------------------------------------------------------------- harga saya */
+/* C4 sisi petani. Tokennya diulang karena kartu ini berdiri di luar .batas-jawaban. */
+.kartu-harga-saya {
+  --bj-teks:  var(--teks,        var(--tinta));
+  --bj-lemah: var(--teks-lemah,  var(--lemah));
+  --bj-garis: var(--garis);
+  --bj-aksen: var(--aksen,       var(--hijau-2));
+  --bj-latar: var(--latar-kartu, var(--kertas));
+}
+
+.kartu-harga-saya label { display: block; margin-top: .8rem; font-weight: 600; font-size: .9rem; }
+
+.kartu-harga-saya input {
+  width: 100%;
+  max-width: 16rem;
+  margin-top: .3rem;
+  padding: .6rem .7rem;
+  font: inherit;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+}
+
+.kartu-harga-saya input:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 1px; }
+
+.aksi-hs { margin: .8rem 0 0 !important; }
+
+.aksi-hs button {
+  font: inherit;
+  font-size: .9rem;
+  font-weight: 600;
+  padding: .65rem 1rem;
+  min-height: 44px;
+  color: var(--bj-teks);
+  background: transparent;
+  border: 1px solid var(--bj-aksen);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.aksi-hs button:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+
+/* Hasilnya tidak diberi warna hijau atau merah. "Di bawah penetapan" bukan kabar buruk
+   yang butuh warna alarm — cakupan hukumnya bisa saja memang tidak menaungi yang membaca,
+   dan mewarnainya merah menyimpulkan sesuatu yang datanya tidak menyimpulkan. */
+.hs-hasil {
+  margin: .9rem 0 0 !important;
+  padding: .7rem .8rem;
+  border-left: 3px solid var(--bj-aksen);
+  background: var(--bj-latar);
+  color: var(--bj-teks);
+  font-size: .92rem;
+  min-height: 1.2em;
+}

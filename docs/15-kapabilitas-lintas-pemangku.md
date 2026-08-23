@@ -387,7 +387,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas, dan sejak 23 Agustus 2026 **3.136 badan pemegang** beserta halaman profilnya | **selesai** |
 | C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | **sisi pupuk selesai** 23 Agustus 2026 — indeks `kandungan/` memuat 12.564 produk, formulir di jalur 2; sisi pestisida terindeks tetapi belum berpermukaan | **sebagian** |
 | C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri. **Sisi pintu selesai** 23 Agustus 2026 — 738 OPT registri berproduk kini terjangkau dari kotak menurut nama, dengan pernyataan bahwa gejalanya tidak ada | teks gejala **BANGUN bertahap**; pintunya **selesai** |
-| C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, satu permintaan ke SP2KP. **Sisi harga petani tidak lagi nol** (dikoreksi 23 Agustus 2026): 8 seri tingkat pekebun dari **6 provinsi sawit**, dua di antaranya harga pekebun **swadaya**. Tetapi ia hanya SAWIT, dan pangan pokok tetap nol | sisi eceran **selesai**; sisi petani **sebagian** — sawit ada, pangan belum |
+| C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, satu permintaan ke SP2KP. **Sisi harga petani tidak lagi nol** (dikoreksi 23 Agustus 2026): 8 seri tingkat pekebun dari **6 provinsi sawit**, dua di antaranya harga pekebun **swadaya**. Tetapi ia hanya SAWIT, dan pangan pokok tetap nol | sisi eceran **selesai**; sisi petani **sebagian** — sawit ada, pangan belum; **pembanding di perangkat selesai** 23 Agustus 2026, **setoran tidak dibangun** dan itu putusan |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
 | C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | **sebagian** 23 Agustus 2026 — `app/toko.html`: 234 berkoordinat (OSM) + 2.248 berwilayah. Penyuluh, POPT, lab, alsintan **nol** | **sebagian** |
@@ -613,13 +613,62 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > sesungguhnya bagi laporan warga — bukan POPT langsung, melainkan BPP tempat penyuluhnya
 > berada, yang kemudian meneruskan ke POPT.
 >
-> Yang masih kurang dua hal, dan keduanya kecil dibanding yang sudah ada: barisnya
-> **bernama tanpa alamat, telepon, atau tautan**, dan **nol rujukan di pembangun indeks**
-> — jadi permukaan tidak bisa mencapainya. Layar yang menyusun laporan lalu menyuruh orang
-> mengirimkannya ke kantor yang tidak punya alamat masih kotak masuk yang tak seorang pun
-> di ujungnya. Permukaannya karena itu tetap **tidak dibangun**, tetapi penghalangnya
-> berpindah dari "datanya tidak ada" jadi "datanya belum diterbitkan" — dan itu pekerjaan
-> C7, bukan G3.
+> **Diperbarui beberapa jam kemudian, dan gambarnya berubah lagi.** Keduanya kini entitas
+> kosakata penuh, bukan lapis mentah: `bpp.ndjson` **5.844 balai** dan `lab.ndjson` **889
+> laboratorium**. Kendalanya ternyata berbeda untuk masing-masing, dan hanya satu yang
+> benar-benar kendala:
+>
+> | | Bisa dituju | Kendalanya |
+> |---|---|---|
+> | **Lab** (889) | **ya** — 889 dari 889 punya `address` **dan** `contact` | tidak ada; ia sudah bisa dituju |
+> | **BPP** (5.844) | tidak lewat alamat | **sumbernya tidak menerbitkannya.** Laporan tamu SIMLUHTAN hanya memberi nama dan kecamatan binaan. Skemanya karena itu **tidak punya medan kontak sama sekali** — bukan medan kosong |
+> | **Dinas** (548) | tidak | sama: nama, wilayah, dan cacahan |
+>
+> **Dan untuk BPP, "tanpa alamat" bukan berarti tak terjangkau.** 5.829 dari 5.844 menyebut
+> **kecamatan binaannya**, dan bagi petani "BPP Babahrot di Kecamatan Babahrot" memang
+> alamat — yang tidak tahu letaknya justru mesinnya, bukan orangnya. Menggeokode massal
+> untuk menambalnya **ditolak dengan sadar**, karena bertabrakan dengan rancangan "klaim"
+> yang sama seperti pada toko tani.
+>
+> **Yang tersisa satu, dan ia mekanis: belum satu pun terbit ke indeks.** Nol rujukan di
+> `bangun-indeks.mjs`, jadi permukaan tidak bisa membacanya. Itu pekerjaan C7, bukan G3 —
+> dan sesudahnya G3 punya dua ujung sungguhan: lab yang bisa ditelepon, dan BPP yang bisa
+> didatangi.
+
+> **C4 sisi petani dikerjakan 23 Agustus 2026, dan ia terbelah dua — satu separuh
+> dibangun, satu separuh ditolak.**
+>
+> **Yang ditolak: setorannya.** Pertanyaan yang ditulis dokumen ini berbunyi *"maukah ia
+> menyetorkannya"*, dan setoran adalah pengumpulan. Alasannya bukan cuma aturan lapisan
+> gratis: **harga yang diketik ke formulir terbuka adalah harga yang paling murah
+> dipalsukan**, dan harga persis yang paling menguntungkan untuk dipalsukan. Itu penalaran
+> yang sama yang membuat G6 menuntut sumbangan datang sebagai efek samping catatan musim.
+> Setoran harga karena itu ikut G6 ke atas E1–E5, bukan ke lapisan gratis.
+>
+> **Yang dibangun: separuh yang tidak menuntut satu byte pun berpindah.** Petani SUDAH
+> TAHU harganya sendiri; yang tidak ia punya acuannya. Layar harga kini menerima angka itu
+> di perangkat, menghitung jaraknya ke penetapan terakhir, lalu melupakannya — tidak ada
+> yang dikirim, dan tidak ada tempat mengirimkannya.
+>
+> **Hanya pada seri tingkat pekebun, dan itu penjagaan bukan keterbatasan.** Dari 96 seri,
+> **8** bertingkat pekebun dan seluruhnya sawit. Membandingkan harga terima petani dengan
+> seri **eceran** menghasilkan jurang yang benar angkanya dan salah artinya — ia margin
+> pemasaran sepanjang rantai, bukan selisih yang ditanggung satu pembeli. Bentuk kekeliruan
+> yang sama sudah diukur [16](16-sumber-harga-komoditas.md) pada sawit: TBS terhadap CPO
+> dunia tampak 7,26× padahal 1,52×, *"dan petani akan menyimpulkan dirinya ditipu tujuh kali
+> lipat"*. Seri eceran karena itu menampilkan **penolakan beserta sebabnya**, bukan diam.
+>
+> **Cakupan hukum dicetak bersama hasilnya, bukan sebagai catatan kaki.** Penetapan TBS
+> menaungi pekebun mitra dan plasma; pekebun **swadaya berada di luarnya**, dan merekalah
+> mayoritas petani sawit Indonesia. Petani swadaya yang membandingkan harganya ke penetapan
+> plasma lalu menyimpulkan dirinya dirugikan sedang membandingkan diri ke harga yang secara
+> hukum bukan haknya — keterangan yang mengubah kesimpulan, jadi ia tidak boleh dipisahkan
+> dari angkanya.
+>
+> **Yang masih nol: acuan tingkat petani untuk pangan pokok.** Tidak ada satu pun seri
+> gabah di indeks, dan HPP Rp6.500/kg (Kepbadan 14/2025) hidup sebagai prosa di
+> [16](16-sumber-harga-komoditas.md), bukan sebagai data yang bisa dibandingkan. Selama itu
+> begitu, pembanding ini hanya berguna untuk petani sawit.
 
 ### Rekapitulasi putusan — 40 kapabilitas
 

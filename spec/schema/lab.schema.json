@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/lab.schema.json",
+  "title": "Lab — laboratorium penguji terakreditasi",
+  "description": "Satu laboratorium penguji yang akreditasinya masih berlaku di KAN dan ruang lingkupnya menyentuh usaha tani. Yang membuat entitas ini berguna bukan namanya melainkan `capabilities`: \"laboratorium terakreditasi\" tidak menjawab apa pun sampai diketahui ia bisa menguji tanah, pupuk, air, jaringan tanaman, atau residu pestisida. Laboratorium yang lingkupnya seluruhnya di luar pertanian — kelistrikan, bahan bakar, tekstil, konstruksi — sengaja tidak dijadikan entitas: registri ini menjanjikan jawaban atas pertanyaan usaha tani, bukan direktori laboratorium nasional. Kontak yang disimpan adalah kontak kelembagaan yang KAN sendiri terbitkan supaya lembaganya bisa dihubungi; nama petugas penghubung TIDAK disimpan meski tersedia di sumbernya.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:lab:[0-9]{8}$"
+    },
+    "accreditation": {
+      "type": "object",
+      "description": "Nomor akreditasi adalah identitas laboratorium yang sebenarnya — ia yang dikutip di laporan hasil uji, bukan nama badannya, dan ia yang tetap sama ketika nama perusahaannya berubah.",
+      "properties": {
+        "number": {
+          "type": "string",
+          "pattern": "^[A-Z]{2,4}-[0-9]{1,5}-IDN$"
+        },
+        "scheme_code": {
+          "type": "string",
+          "description": "Kode skema akreditasi KAN. LP untuk laboratorium penguji.",
+          "enum": [
+            "LP",
+            "LK",
+            "LM"
+          ]
+        },
+        "valid_until": {
+          "type": "string",
+          "format": "date",
+          "description": "Masa berlaku akreditasi. Medan ini hanya terbit di papan resmi KAN, tidak di aplikasi direktorinya — dan tanpa medan ini sebuah laboratorium yang akreditasinya sudah habis terbaca sama sahnya dengan yang masih berlaku."
+        },
+        "valid_until_raw": {
+          "type": "string",
+          "description": "Nilai tanggal sebagaimana tertulis di sumber, disimpan hanya bila tidak terbaca sebagai tanggal. Ada satu baris bersalah ketik di papan KAN; menebaknya akan memalsukan medan yang justru dipakai orang untuk memutuskan."
+        }
+      },
+      "required": [
+        "number"
+      ],
+      "additionalProperties": false
+    },
+    "address": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string",
+          "minLength": 4,
+          "description": "Alamat sebagaimana tertulis di sumber, tidak diurai jadi medan-medan. Menguraikannya berarti menebak."
+        },
+        "province": {
+          "type": "string",
+          "description": "Provinsi hasil pembacaan teks alamat — lebih dulu nama provinsinya, lalu nama kabupaten/kota. Kosong bila tidak terbaca; tidak pernah ditebak."
+        }
+      },
+      "required": [
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "contact": {
+      "type": "object",
+      "description": "Kontak kelembagaan yang diterbitkan KAN supaya laboratoriumnya bisa dihubungi. Nama orang tidak termasuk.",
+      "properties": {
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "capabilities": {
+      "type": "object",
+      "description": "Dibaca dari teks ruang lingkupnya, bukan dari kode — ringkasan lingkup di papan KAN memang tidak berkode. Karena itu tiap penanda bisa meleset pada lembaga yang menulis ringkasannya dengan cara lain, dan `scope_summary` selalu ikut supaya pembacaannya bisa diperiksa ulang.",
+      "properties": {
+        "soil": {
+          "type": "boolean"
+        },
+        "fertilizer": {
+          "type": "boolean"
+        },
+        "water": {
+          "type": "boolean"
+        },
+        "food": {
+          "type": "boolean"
+        },
+        "plant_tissue": {
+          "type": "boolean"
+        },
+        "pesticide_residue": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "soil",
+        "fertilizer",
+        "water",
+        "food",
+        "plant_tissue",
+        "pesticide_residue"
+      ],
+      "additionalProperties": false
+    },
+    "scope_summary": {
+      "type": "string",
+      "minLength": 4,
+      "description": "Ringkasan ruang lingkup apa adanya dari papan KAN. Disimpan utuh karena inilah bukti di balik `capabilities`; membuangnya akan menyisakan enam boolean yang tidak bisa dibantah siapa pun."
+    },
+    "scope_detail": {
+      "type": "object",
+      "description": "Ruang lingkup terurai per parameter dari aplikasi direktori KAN. Hanya sebagian laboratorium yang punya — aplikasinya baru memuat sekitar seperlima lembaga, dan ketiadaan blok ini bukan berarti lingkupnya sempit.",
+      "properties": {
+        "k01_codes": {
+          "type": "array",
+          "description": "Kode bidang lingkup menurut KAN K-01, dua digit.",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9]{2}$"
+          }
+        },
+        "rows": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "amended_at": {
+          "type": "string",
+          "format": "date",
+          "description": "Tanggal amandemen lingkup terkini. Ruang lingkup berubah tanpa nomor akreditasinya berubah, jadi tanpa tanggal ini tidak ada cara menyatakan salinan ini seusia apa."
+        },
+        "source": {
+          "type": "string",
+          "format": "uri"
+        }
+      },
+      "additionalProperties": false
+    },
+    "scope_document": {
+      "type": "string",
+      "description": "Tautan berkas lingkup resmi yang diterbitkan KAN, bila ada."
+    }
+  },
+  "required": [
+    "id",
+    "key",
+    "label",
+    "lifecycle",
+    "accreditation",
+    "capabilities",
+    "scope_summary"
+  ]
+}

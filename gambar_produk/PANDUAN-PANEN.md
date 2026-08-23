@@ -1718,3 +1718,36 @@ yang menumpang**. Periksa pemegang pendaftaran tiap nomor, bukan cuma apakah nom
 
 Angka akhir katalogcba.com: Centa Brasindo **31 → 85 dari 194**, dan PT. AGROTECH PESTICIDE
 INDUSTRY masuk daftar principal terpanen untuk pertama kalinya pada **17 dari 31 merek**.
+
+### Pagu situs, bukan pagu pemanen — rainbowagro.com
+
+Antrean mencatat 181 merek Rainbow, dan itu membuat principal ini tampak seperti sasaran
+terbesar kedua. Ia bukan. **Katalog Indonesia situsnya memuat 36 produk**, titik — dan
+ke-36-nya kini bergambar. Sisa 145 merek tidak punya halaman di sana sama sekali.
+
+Membedakan keduanya penting untuk membaca antrean: `merek_belum_dipanen` mengukur jarak ke
+registri, bukan jarak ke situsnya. Sebuah principal bisa "habis dipanen" sementara angkanya
+tetap besar.
+
+**API-nya menuntut satu header, dan tanpa itu ia berbohong pendek.**
+`https://d1tfidhn22cvdm.cloudfront.net/api/localProduct` menjawab `400 Bad request` polos;
+pesan yang menjelaskannya baru muncul di endpoint lain (`/families`): *"isocountry header is
+required"*. Dengan `isocountry: ID` ia memberi 36 produk lengkap dengan gambar dan berkas.
+
+**Dan tiap produk membawa `label.pdf` ber-lapisan teks.** Ini kasus ideal pasal 11: nomor
+pendaftaran diambil **apa adanya dari teks PDF**, tanpa OCR dan tanpa rasterisasi. Tiga puluh
+dua dari 36 cocok ke registri; empat tidak (CONTROL 400 SL, KEYROLE 50WG, dan MESOZINE 88 WG
+labelnya tidak memuat nomor sama sekali, POPZOLE 525 SE memuat `01020120155382` yang tidak ada
+di registri).
+
+Principal ini juga merender sendiri halaman labelnya jadi JPG 1595×768 di
+`documents/pages/*.jpg`. Itu dipanen sebagai `panel_label` — dan di situlah nomor serta
+komposisinya terbaca, sedangkan hero 650×650 yang jadi `kemasan_depan` tidak memuat keduanya.
+Enam belas pasang baris seperti itu masuk sekaligus: gambarnya di satu baris, buktinya di
+baris lain, dan penyempitan keduanya bersandar pada nomor yang sama.
+
+**COLAM = ALMIX.** Situs menamai satu produknya `COLAM 141/106 ZC`; registri menamainya
+`ALMIX 247 ZC`, dan nomor pada labelnya (`01010120175680`) membuktikan keduanya satu barang —
+141 + 106 = 247, kaidah penjumlahan pasal 7 sekali lagi. Gelombang sebelumnya sudah memanen
+hero-nya lewat nama ALMIX, jadi yang ditambahkan hanya panel labelnya; `G6` menangkap
+percobaan menulis hero-nya dua kali, dan tangkapan itu benar.

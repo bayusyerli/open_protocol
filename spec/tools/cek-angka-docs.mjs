@@ -64,7 +64,7 @@ const cek = (doc, klaim, nyata, harap) =>
 // sesudah dibetulkan karena skema baru masuk. Ia contoh paling murni dari yang dijaga alat
 // ini — angka yang benar saat ditulis dan tidak punya apa pun yang memberitahu saat ia
 // berhenti benar.
-cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 30);
+cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 32);
 
 // ---- dasar
 cek('semua', 'pestisida terdaftar', P.length, 7724);

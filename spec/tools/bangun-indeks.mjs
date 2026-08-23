@@ -1917,8 +1917,11 @@ const meta = {
       'Dari 88 varian yang diterbitkan SP2KP hanya 43 berangka, dan hanya 23 komoditas di kosakata ini yang tersentuh. Keempat harga pupuk dan dua dari tiga harga benih diterbitkan TANPA satu pun angka. Komoditas tani lain — termasuk seluruh perkebunan — tidak punya harga di sini sama sekali.',
     hargaPupuk:
       'SP2KP mendaftarkan Pupuk Urea, NPK 15-15-15, SP-36, dan ZA tetapi tidak mengisi harganya: 13-15 tanggal mingguan pada paruh pertama 2024, seluruhnya kosong pada keempat ukuran tertimbang. Jalur 3 karena itu tetap mengandalkan masukan pengguna untuk rupiah per kg hara.',
+    // Angkanya DIHITUNG, tidak ditulis tangan. Kalimat ini pernah memuat 517, lalu 519, 530,
+    // dan 591 — empat kali salah dalam tiga hari, karena panennya tumbuh sedangkan prosanya
+    // tidak. Cakupan gambar adalah satu-satunya angka di blok ini yang bergerak tiap panen.
     gambarKemasan:
-      'Gambar kemasan ada pada 591 dari 14.920 produk — 4,0%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
+      `Gambar kemasan ada pada ${semuaProduk.filter((r) => r.gambar?.length).length.toLocaleString('id-ID')} dari ${semuaProduk.length.toLocaleString('id-ID')} produk — ${(semuaProduk.filter((r) => r.gambar?.length).length / semuaProduk.length * 100).toFixed(1).replace('.', ',')}%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.`,
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',
