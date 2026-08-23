@@ -131,6 +131,39 @@ Taxonomy: 1.168 tercocok (451 persis, 500 fuzzy, 217 sampai tingkat genus) dan m
 `usageKey` yang bisa dirujuk global. 202 sisanya tidak tercocok dan tetap memakai klasifikasi
 simpulan, ditandai `needs_review` pada `taxon_verification`.
 
+## Ketika SKOS tidak cukup: padanan nama bahan aktif
+
+Lima relasi SKOS di atas cukup untuk mengaitkan konsep ke konsep. Ia **tidak** cukup untuk
+satu hal yang justru menentukan keselamatan: hubungan antara nama yang tertulis di label
+dan bahan yang sesungguhnya dibatasi peraturan.
+
+`parakuat diklorida` bukan `exact` terhadap `paraquat`, dan bukan `close` — ia **garam
+dari** paraquat. Perbedaannya bukan kehalusan tata bahasa:
+
+- Larangan dan batas residu dinyatakan atas **ion/asamnya**, bukan garamnya. Kalau
+  hubungannya diratakan jadi sinonim, pemeriksaan larangan bisa gagal mencocok — atau
+  mencocok terlalu luas, dan dua-duanya tidak akan terlihat sebagai galat.
+- Kadar di label adalah kadar **garam**. 276 g/l parakuat diklorida = 200 g/l ion parakuat.
+  Membandingkan 276 dengan MRL yang dinyatakan sebagai ion memberi angka yang salah 38%.
+
+Karena itu pemetaannya tinggal di berkas tersendiri, `vocab/padanan-bahan-aktif.json`,
+dengan relasi bertipe (`garam-dari`, `ester-dari`, `stereoisomer-dari`, `varian-ejaan`,
+`sama-dengan`, `organisme`, dan dua bentuk kekosongan yang beralasan), medan `induk` yang
+**wajib** untuk ketiga bentuk turunan, dan faktor kesetaraan garam→induk. Ia menunjuk
+`substance-pestisida.json`, tidak menggantikannya.
+
+Dua hal yang perlu diketahui sebelum memakainya:
+
+- **Nama internasionalnya datang dari registri sendiri.** Kementan menuliskannya di dalam
+  kurung — `Sipermetrin (cypermethrin)`, `Terbutryn (ISO)` — dan menyatakan kesetaraan
+  garamnya berikut angkanya. Tidak ada daftar nama umum milik pihak lain yang disalin,
+  sehingga berkasnya bebas dipakai ulang seperti sisa repositori. Konsekuensinya:
+  **476 dari 1.593 kunci tetap kosong** karena registri tidak pernah menuliskan nama
+  internasionalnya, dan itu dibiarkan kosong beralasan alih-alih ditebak.
+- **`synonyms` bukan tempatnya.** Di repositori ini `synonyms` berisi varian ejaan yang
+  dipanen dari registri — salah ketik mesin. Menaruh kesetaraan kimia di sana membuatnya
+  tidak bisa dibedakan dari salah ketik, dan menghapus arah hubungannya.
+
 ## Cara menambah pemetaan
 
 1. Cari dulu di AGROVOC, AgrO, Crop Ontology, ICASA, dan EPPO — dengan sungguh-sungguh.

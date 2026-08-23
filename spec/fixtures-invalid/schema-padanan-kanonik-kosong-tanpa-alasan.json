@@ -1,0 +1,31 @@
+{
+  "$schema": "../schema/padanan-bahan-aktif.schema.json",
+  "padanan": {
+    "label": { "id": "Fixture uji padanan bahan aktif — kanonik kosong tanpa alasan" },
+    "scope": {
+      "id": "Sengaja dibuat cacat. `kanonik.nama` dibiarkan null tanpa `alasan_kosong`. Kekosongan itu sendiri sah dan justru diminta — menebak nama internasional dari kemiripan dilarang — tetapi kekosongan tanpa alasan tidak bisa dibedakan dari kelalaian, dan itu membuat cacahnya tidak berarti apa-apa."
+    },
+    "lifecycle": { "version": "0.1.0", "status": "draft" },
+    "provenance": { "license": "CC-BY-SA-4.0" },
+    "kunci_normalisasi": { "id": "kunci = tulisan mentah, huruf kecil, spasi diseragamkan, ujungnya dipangkas." },
+    "potret": {
+      "berkas": "pukpes_data/raw/pestisida_terdaftar.json",
+      "tarikan": "2026-08-19",
+      "formulasi": 7724,
+      "sha256": "sha256:0000000000000000000000000000000000000000000000000000000000000000"
+    },
+    "hitungan": { "kunci": 1, "per_hubungan": { "garam-dari": 1 }, "berkanonik": 0, "berinduk": 1, "berfaktor": 0, "perlu_tinjau": 0 }
+  },
+  "padanan_items": [
+    {
+      "kunci": "bahan uji diklorida",
+      "tulisan_teramati": ["Bahan uji diklorida"],
+      "formulasi": 1,
+      "hubungan": "garam-dari",
+      "bentuk": { "jenis": "garam", "gugus": "diklorida" },
+      "induk": { "nama_registri": "bahan uji", "nama": "test substance" },
+      "kanonik": { "nama": null },
+      "dasar": [{ "jenis": "deklarasi-setara", "kutipan": "bahan uji diklorida (setara dengan bahan uji : 100 g/l)" }]
+    }
+  ]
+}
