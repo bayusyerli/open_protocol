@@ -2,7 +2,7 @@
  * gambar yang lebih baru.
  *
  * DUA KEADAAN, DAN KEDUANYA HARUS BERBUNYI
- * 464 dari 14.920 produk punya gambar — 2,9%. Artinya keadaan yang LAZIM adalah tidak ada
+ * 514 dari 14.920 produk punya gambar — 3,4%. Artinya keadaan yang LAZIM adalah tidak ada
  * gambar, dan slot kosong yang diam akan terbaca sebagai "produk ini meragukan". Karena itu
  * placeholder di sini tidak berupa kotak abu-abu: ia mengatakan apa yang terjadi
  * ("belum dipanen dari situs principal"), dan menawarkan apa yang bisa dilakukan.
@@ -117,7 +117,7 @@ function gambarBelum(p) {
       mereknya memang tidak dijual dalam kemasan eceran.
     </p>
     <p class="catatan">
-      Gambar tersedia untuk <strong>464 dari 14.920 produk</strong> terdaftar. Kosong adalah
+      Gambar tersedia untuk <strong>514 dari 14.920 produk</strong> terdaftar. Kosong adalah
       keadaan yang lazim di sini, dan dinyatakan begitu alih-alih ditutupi kotak abu-abu.
     </p>`;
 }

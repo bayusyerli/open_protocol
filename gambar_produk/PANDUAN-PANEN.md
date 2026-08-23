@@ -1152,29 +1152,31 @@ dari registri, bukan dari nomor tercetak — nomornya tidak terbaca pada potonga
 pemeriksaan nama ke registri tetap perlu dijalankan bahkan ketika nomor tercetak tidak ada:
 kedua jalur menangkap kelas kekeliruan yang sama dari arah berlawanan.
 
-### Memanen yang 150 px: tercatat, tetapi tidak terbit
+### Memanen yang 150 px, dan keputusan menamainya `kecil`
 
-Lima puluh delapan halaman Kayaku tidak punya brosur sama sekali. Dipanen juga, dan
-hasilnya perlu dibaca apa adanya: **53 baris masuk, dan tidak satu pun terbit.**
+Lima puluh delapan halaman Kayaku tidak punya brosur sama sekali. Dipanen juga: **53 baris
+masuk**, dua ditolak karena penambal.
 
-Sebabnya aritmetika normalisasi, bukan keputusan. `rendition_terpakai` menolak rendition
-yang tidak benar-benar memperkecil, jadi sumber 150×225 hanya menghasilkan **satu** berkas
-`besar` seukuran aslinya; `kecil` 320 px tidak pernah terbentuk karena 320 > 225.
-`terbitkan.mjs` memakai `kecil` + `sedang`, sehingga kelima puluh lima baris itu jatuh ke
-hitungan "tanpa ukuran terpakai" dan tidak pernah sampai ke `app/gambar/`.
+Panen pertamanya tidak terbit satu pun, dan sebabnya aritmetika normalisasi bukan keputusan.
+`rendition_terpakai` menolak rendition yang tidak benar-benar memperkecil, jadi sumber
+150×225 hanya menghasilkan satu berkas `besar` seukuran aslinya; `kecil` 320 px tidak pernah
+terbentuk karena 320 > 225. `terbitkan.mjs` memakai `kecil` + `sedang`, sehingga seluruhnya
+jatuh ke hitungan "tanpa ukuran terpakai".
 
-Cakupan merek Kayaku karena itu naik ke **70 dari 91** di manifes sementara "produk
-bergambar" di app tidak bergerak sama sekali dari 464. Kedua angka itu benar, dan bedanya
-justru yang perlu dilihat: koleksi tahu merek-merek ini punya kemasan seperti apa; layar
-belum bisa menunjukkannya.
+**Pemilik repositori memutuskan menayangkannya, dan cara menegakkannya penamaan rendition.**
+Dinormalkan ulang dengan urutan `kecil,sedang,besar`, sehingga berkas dasar — yang selalu
+dibuat — bernama `kecil` pada ukuran aslinya. Itu sah menurut definisinya sendiri: rendition
+adalah **pagu** sisi terpanjang, bukan sasaran, dan aturan "tidak pernah diperbesar" menahan
+berkasnya di 150 px. Ukuran sebenarnya tetap tertulis apa adanya di `file.width_px`, dan tiap
+baris menyebut keputusan ini di `notes` supaya penamaannya tidak terbaca sebagai kekeliruan.
 
-**Kalau kelak ingin ditayangkan juga,** yang perlu diputuskan bukan panennya melainkan
-kebijakan terbit: menormalkan ulang dengan urutan `kecil,sedang,besar` akan menamai berkas
-dasarnya `kecil` pada ukuran aslinya — sah menurut definisi (rendition itu pagu, bukan
-sasaran) dan cukup untuk lolos `terbitkan.mjs`. Yang didapat kartu 150 px yang buram; yang
-hilang, kalimat placeholder yang hari ini berbunyi "belum dipanen dari situs principal" —
-kalimat yang untuk 70 merek ini sudah tidak benar. Itu pilihan pemilik repositori, bukan
-pilihan pemanen.
+Yang berubah: produk bergambar **464 → 514**, dan "tanpa ukuran terpakai" turun dari 55 jadi
+5. Yang didapat kartu 150 px yang buram. Yang hilang, kalimat placeholder "belum dipanen dari
+situs principal" — kalimat yang untuk 70 merek ini memang sudah tidak benar.
+
+Lima baris sisa yang masih tanpa ukuran terpakai bukan Kayaku dan sengaja tidak ikut
+disetel: `cadre-240-sl` (BASF), `constel-105-420-sc` · `shenzi-400-sc` · `neoroot` (UPL), dan
+`uthane-blue-80-wp` (Catur Agrodaya). Keadaannya sama persis; keputusannya belum diambil.
 
 **Dua penambal tertangkap, dan yang menangkapnya bukan mata.** `periksa.mjs` melaporkan dua
 merek berbagi satu phash; berkasnya ternyata `data/no_photo.jpg`, penambal 150×50 px
