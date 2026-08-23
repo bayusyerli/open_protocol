@@ -1120,3 +1120,34 @@ Halaman `/content/produk/insektisida/…/Saturn-D-600-EC` menayangkan sachet yan
 tiobenkarb 4% + 2,4-D IBE 2% — komposisi SATURN-D **6 GR**, bukan 600 EC. Karena itu
 Saturn-D sengaja TIDAK ikut panen ini. Baca komposisi di kemasannya, jangan judul halamannya
 — pengulangan pelajaran FORSIL di pasal 10, kali ini pada nama produk, bukan pada angkanya.
+
+### Memotong packshot dari halaman brosur yang utuh
+
+Tiga belas brosur Kayaku menanam halamannya sebagai **satu raster A4** alih-alih memisahkan
+packshot jadi objek sendiri. Sembilan berhasil dipotong, dan potongannya justru termasuk
+yang terbesar dari seluruh panen ini — GOBEST 250 SC keluar **1290×1403** dari halaman
+2480×3508, sebab A4 pada 300 dpi menyisakan banyak piksel bahkan setelah dipotong.
+
+Yang perlu diterima sejak awal: **latarnya tidak akan pernah putih.** Potongan membawa serta
+rancangan halamannya — foto tanaman, blok warna, sisa teks di tepi. Kemasannya utuh, tetapi
+gambarnya bukan packshot berlatar bersih, dan itu ditulis apa adanya di `notes` tiap baris.
+Pada BETTER 10 PA bahkan tidak ada batas bersih yang bisa dipotong sama sekali: brosurnya
+menempelkan blok penjelasan langsung ke sisi botolnya.
+
+**Empat sisanya tidak bisa, dan sebabnya dua macam:**
+
+| | |
+|---|---|
+| Biorganik · Kayabio Plus | brosurnya tidak menayangkan kemasan sama sekali — hanya foto lapangan, tabel dosis, dan karya seni label yang dicetak datar |
+| CURXANIL 8/64 WP · PROBISS | packshot-nya jelas dan besar, tetapi **tidak ada di registri** sehingga tidak punya `brand_key`; `G2` menolak baris tanpa merek yang benar-benar tercatat |
+
+CURXANIL layak diperiksa ulang pada tarikan registri berikutnya — fungisida mankozeb 64% +
+simoksanil 8% yang dijual terbuka semestinya terdaftar, dan ketiadaannya lebih mirip lubang
+tarikan daripada produk tak berizin. PROBISS probiotik ternak, sekelas Petro Chick dan
+Petrofish di sisi Gresik: memang bukan urusan registri PUKPES.
+
+**Dan kasus penerbit-bukan-pemegang-pendaftaran bertambah satu lagi jadi empat.** PRIMAFOS
+400 SL terdaftar atas nama **PT. KIMIKA USAHA PRIMA**, sama seperti RAZIO. Yang ini ketahuan
+dari registri, bukan dari nomor tercetak — nomornya tidak terbaca pada potongan. Artinya
+pemeriksaan nama ke registri tetap perlu dijalankan bahkan ketika nomor tercetak tidak ada:
+kedua jalur menangkap kelas kekeliruan yang sama dari arah berlawanan.
