@@ -12,6 +12,7 @@
 import { ambil, muatMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
+import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangTombolTema } from './tema.js';
 
 pasangTombolTema();
@@ -279,6 +280,36 @@ const BLOK_HARA = `
  * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
  * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
 let terbukaKini = null;
+let resepKini = null;
+
+/* Kartu teruskan (A2). Sisi pupuk lebih lapang daripada jalur 6 — Pasal 72 mengecualikan
+ * petani kecil dari kewajiban pendaftaran — tetapi `wajib`-nya tetap ada, dan justru yang
+ * paling mudah dilupakan saat resep berpindah tangan: kadar haranya TIDAK diketahui, jadi
+ * resep ini tidak boleh dipakai menghitung neraca hara seperti pupuk pabrik. */
+function kartuResep(r) {
+  if (!r) return null;
+  const k = r.keselamatan ?? {};
+  const d = r.pemakaian?.dosis;
+  const wajib = [
+    'Kadar haranya TIDAK terukur. Jangan dipakai menghitung neraca hara seperti pupuk '
+    + 'berlabel — angka N-P-K sediaan buatan sendiri tidak ada di mana pun.',
+  ];
+  if (r.hukum?.hanyaSendiri || r.hukum?.peredaran === 'own_use_only') {
+    wajib.push('Hanya untuk keperluan sendiri.');
+  }
+  return {
+    sumber: 'sediaan',
+    judul: `${r.nama} — sediaan buatan sendiri`,
+    inti: [
+      r.definisi ?? null,
+      d?.nilai != null ? `Dosis: ${angkaId(d.nilai)} ${satuanTerbaca(d.satuan) || d.satuan}` : null,
+      r.pemakaian?.cara ? `Cara: ${r.pemakaian.cara}` : null,
+      k.apd?.length ? `APD: ${k.apd.map((x) => APD[x] ?? x).join(', ')}` : null,
+    ].filter(Boolean),
+    wajib,
+    tautan: terbukaKini?.tautan ?? location.href,
+  };
+}
 const tautanKe = (q) => new URL(q, location.href).href;
 
 
@@ -287,6 +318,7 @@ async function bukaResep(berkas) {
   el.resep.focus();
   try {
     const r = await ambil(berkas);
+    resepKini = r;
     terbukaKini = { id: r.id, nama: r.nama,
       tautan: tautanKe(`?resep=${encodeURIComponent(berkas.split('/').pop())}`) };
     el.resep.innerHTML = `
@@ -299,6 +331,7 @@ async function bukaResep(berkas) {
         ${r.buktiCatatan ? `<p class="catatan">${teks(r.buktiCatatan)}</p>` : ''}
       </div>
       ${blokHukum(r)}${blokBahan(r)}${blokProses(r)}${blokKriteria(r)}${blokPakai(r)}${BLOK_HARA}
+      ${HTML_TERUSKAN}
       <button type="button" class="kembali" id="kembali">← Kembali ke daftar</button>`;
     catatJawab(5, UKUR.isi);
     pasangKembali(el.resep, { gulirKe: el.daftar });
@@ -321,6 +354,8 @@ el.daftar.addEventListener('click', (ev) => {
   const t = ev.target.closest('button[data-berkas]');
   if (t) bukaResep(t.dataset.berkas);
 });
+
+pasangTeruskan(el.resep, () => kartuResep(resepKini), 'sediaan');
 
 (async function mulai() {
   try {

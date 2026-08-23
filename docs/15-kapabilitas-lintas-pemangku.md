@@ -286,7 +286,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun** | **sebagian** |
-| A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | belum ada | **BANGUN** (gel. 1) |
+| A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | **sebagian** 23 Agustus 2026 — `app/teruskan.js`, kartu teruskan di jalur 2, 5, dan 6. Sisi **menyebarkan** dibangun; sisi **kotak masuk** tetap tidak, dan itu putusan | **sebagian** |
 | A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
 | A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | **sebagian** 23 Agustus 2026 — `sw.js` tiga tingkat: cangkang & kosakata kecil otomatis, kepala pencarian atas permintaan, rincian menyusul saat dibuka | **sebagian** |
@@ -620,7 +620,13 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 > **Gelombang 1 diperiksa 23 Agustus 2026, dan lima dari tujuh butirnya terhalang hal
 > yang sama — bukan kode.** Empat di antaranya berbentuk **pengumpulan**: A2 kanal
-> WhatsApp, sisi setoran petani pada C4, G3 laporan warga, dan G6 lapis peer. Aturan yang
+> WhatsApp, sisi setoran petani pada C4, G3 laporan warga, dan G6 lapis peer.
+>
+> **Satu dari keempatnya keliru dinilai, dan dikoreksi hari yang sama: A2.** Aturannya
+> berbunyi "hanya **menyebarkan**, tidak pernah **mengumpulkan**" — dan itu bukan larangan
+> atas A2, melainkan penentu bentuknya. Nilai A2 adalah keterjangkauan, dan keterjangkauan
+> seluruhnya ada di sisi menyebarkan. Yang benar-benar terhalang cuma satu implementasinya:
+> kotak masuk. Kartu teruskan dibangun, kotak masuknya tidak — lihat barisnya di atas. Aturan yang
 > ditulis dokumen ini sendiri melarangnya di lapisan gratis — *"lapisan gratis hanya
 > menyebarkan, tidak pernah mengumpulkan"* — dan C2 sudah menetapkan preseden bahwa
 > *"kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak ada kotak
@@ -741,6 +747,29 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 > nilai sendiri lalu melabelinya `AGSTACK` berarti menerbitkan identitas yang tidak cocok
 > dengan registri mana pun. Skemanya tetap ada dan nilainya hanya boleh **disalin** dari
 > Asset Registry.
+
+> **A2 dibangun 23 Agustus 2026, dan satu pengukuran menentukan bentuknya.** Di layar
+> rincian produk jawabannya 884 aksara dan blok batasnya **2.178** — batasnya dua setengah
+> kali lebih panjang daripada jawabannya. Jadi "kirim jawaban beserta batasnya" gagal ke
+> dua arah sekaligus: mengirim jawabannya saja mencopot batasnya, dan mengirim keduanya
+> menghasilkan pesan 3.000 aksara yang tidak dibaca siapa pun. Yang dikirim karena itu
+> bukan salinan layar melainkan **kartu yang disusun** — 630 aksara untuk produk, 1.033
+> untuk resep pengendali.
+>
+> **Bentuknya sudah ditetapkan riset UI proyek ini sendiri**, dari arah yang lain:
+> [17](17-tiga-konsep-ui.md) bagian 7.1 menyimpulkan percakapan peer sudah terjadi tiap
+> hari di grup WhatsApp, jadi *"yang kurang bukan tempatnya, melainkan mutu bahan yang
+> beredar di sana"*. Tiga sifat wajibnya datang dari sana: batasnya **melekat di badan
+> teks** supaya ikut terbaca di tangan kesepuluh, **tanggal dan status dicetak di kartu**
+> karena kartu yang sudah beredar tidak bisa ditarik, dan bentuknya khas karena tidak ada
+> yang bisa mencegah orang mengetik ulang kartu palsu.
+>
+> **Kartu tanpa batas tidak disusun sama sekali.** Layar wajib menyebut `wajib` — kalimat
+> yang tidak boleh hilang saat kartunya berpindah tangan. Untuk resep pengendali itu status
+> hukum Pasal 77 dan dasar tenggang panennya; untuk produk terdaftar itu "cocokkan nomornya
+> dengan kemasan". Dan kartu **tidak pernah dipotong diam-diam**: yang melewati batas
+> panjang alamat menolak jalur WhatsApp beserta sebabnya, karena yang terpotong lebih dulu
+> justru batasnya — letaknya di ekor.
 
 ### Gelombang 2 — eksekusi berbayar (fase 3)
 

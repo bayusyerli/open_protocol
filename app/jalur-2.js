@@ -18,6 +18,7 @@ import { layarVarietas } from './varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
 import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
 import { pasangKandungan } from './kandungan.js';
+import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -46,6 +47,36 @@ let produkKini = null;
  * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
 let terbukaKini = null;
 const tautanKe = (q) => new URL(q, location.href).href;
+
+/* Kartu teruskan (A2). Disusun dari rekaman yang sedang terbuka, dan `wajib`-nya satu
+ * kalimat yang tidak boleh hilang: nomor pendaftaran hanya berguna kalau dicocokkan ke
+ * kemasan yang ada di tangan — kartu yang menyebut nomor tanpa menyuruh mencocokkannya
+ * justru memberi rasa aman yang tidak dibelinya. */
+function kartuProduk(p) {
+  if (!p) return null;
+  const bahan = (p.isi ?? []).slice(0, 4)
+    .map((c) => `· ${c.nama} ${c.nilai} ${c.satuan}`.trim());
+  const sisa = (p.isi?.length ?? 0) - bahan.length;
+  // Registri yang BENAR-BENAR memuat rekaman ini, bukan yang pertama disebut layar.
+  const sumber = p.jenis === 'pestisida' ? 'pestisida' : p.jenis === 'varietas' ? 'varietas' : 'pupuk';
+  return {
+    sumber,
+    judul: `${p.nama} — ${JENIS[p.jenis] ?? p.jenis}`,
+    inti: [
+      [p.produsen, p.daftar && `No. ${p.daftar}`].filter(Boolean).join(' · '),
+      p.berlaku ? `Berlaku sampai ${tanggal(p.berlaku) ?? p.berlaku}` : null,
+      bahan.length ? '' : null,
+      ...bahan,
+      sisa > 0 ? `· dan ${sisa} bahan lain` : null,
+    ].filter((x) => x !== null),
+    wajib: [
+      'Cocokkan nomor pendaftaran ini dengan yang tertera di kemasan sebelum membeli.',
+      ...((p.isi ?? []).some((c) => c.larangan)
+        ? ['Ada bahan berlarangan di dalamnya — baca larangannya di tautan.'] : []),
+    ],
+    tautan: terbukaKini?.tautan ?? location.href,
+  };
+}
 
 
 
@@ -223,7 +254,7 @@ async function buka(id, pecahan) {
           </dl>
           <p class="catatan">Cocokkan nomor pendaftaran itu dengan yang tertera di kemasan.</p>
         </div>
-        ${blokLarangan(p.isi)}${blokGambar(p)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_KEMBALI}`;
+        ${blokLarangan(p.isi)}${blokGambar(p)}${blokIsi(p)}${blokGuna(p)}${await blokSetara(p)}${HTML_TERUSKAN}${HTML_KEMBALI}`;
     }
 
     selesai();
@@ -238,6 +269,7 @@ async function buka(id, pecahan) {
 }
 
 pasangUsulGambar(el.rincian, () => produkKini);
+pasangTeruskan(el.rincian, () => kartuProduk(produkKini), ['pestisida', 'pupuk', 'varietas']);
 
 for (const wadah of [el.hasil, el.rincian]) {
   wadah.addEventListener('click', async (ev) => {
