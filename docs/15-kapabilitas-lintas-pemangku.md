@@ -635,6 +635,14 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > pengumpulan: permukaan menyusun sanggahan atau sumbangan yang sudah terisi lalu
 > menyerahkannya ke tempat publik itu, tanpa pernah menerima apa pun sendiri.
 >
+> **B3 dibangun hari yang sama, dan satu ukuran mengubah bentuknya.** Hanya **28 dari
+> 31.837** rekaman yang bisa muncul di layar diterbitkan proyek ini sendiri — 0,088%;
+> sisanya salinan registri kementerian dan OpenStreetMap. Pintu sanggahan tunggal karena
+> itu akan menyiratkan kuasa membetulkan yang tidak dimiliki repositori ini atas 99,9%
+> faktanya. Yang ditanya lebih dulu **apa yang salah**, bukan apa yang benar, dan ketiga
+> jawabannya pergi ke tempat berbeda: salinan dan penyajian bisa dibetulkan di sini,
+> fakta di registri hanya bisa **dicatat**. **G1 masih terbuka.**
+>
 > **Yang dibuka adalah yang sudah didorong, bukan semua yang ada di cakram.** Panen
 > direktori pengecer principal — 1.605 toko berikut nomor telepon — hidup di cabang lokal
 > yang tidak pernah didorong, dan `toko_data/LAPIS.md` menggolongkannya **tidak terbit**.

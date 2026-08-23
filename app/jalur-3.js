@@ -76,6 +76,12 @@ function hitungHara(p) {
 // ---------------------------------------------------------------------------
 let kini = null; // { p, h }
 
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+
+
 function blokKadar(p, h) {
   return `
     <div class="kartu">
@@ -277,6 +283,7 @@ async function buka(id, pecahan) {
         <button type="button" class="kembali" id="kembali">← Kembali ke hasil pencarian</button>`;
     } else {
       kini = { p, h };
+      terbukaKini = { id: p.id, nama: p.nama };
       el.rincian.innerHTML = `
         <div class="kartu">
           <h2>${teks(p.nama)}<span class="lencana">Pupuk</span></h2>
@@ -372,6 +379,7 @@ async function jalankan() {
         },
       ],
       takDijawab: ['harga', 'beratJenis', 'haraSediaan'],
+      sanggah: () => terbukaKini,
     });
     el.q.disabled = false;
   } catch (e) {

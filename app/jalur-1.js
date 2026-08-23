@@ -83,6 +83,7 @@ async function bukaHama(kunci) {
   el.hasil.focus();
   try {
     const h = await ambil(`opt-nama/${kunci}`);
+    terbukaKini = { id: h.id, nama: h.nama, tautan: tautanKe(`?hama=${encodeURIComponent(kunci)}`) };
     el.hasil.innerHTML = `
       <div class="kartu peringatan">
         <h2>Kamu masuk lewat nama, bukan gejala</h2>
@@ -327,6 +328,14 @@ function tabelMerek(merek) {
 // ---------------------------------------------------------------------------
 let kartuKini = null;
 
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
+
 async function bukaKomoditas(berkas, k) {
   el.hasil.querySelector('#daftarBahan')?.remove();
   const r = await ambil(berkas);
@@ -364,6 +373,7 @@ async function bukaKomoditas(berkas, k) {
 async function bukaOpt(id) {
   const k = daftarOpt.find((x) => x.id === id);
   if (!k) return;
+  terbukaKini = { id: k.id, nama: k.nama, tautan: tautanKe(`?opt=${encodeURIComponent(k.id)}`) };
   el.hasil.innerHTML = '<p class="kosong">Menyiapkan…</p>';
   el.hasil.focus();
   try {
@@ -438,6 +448,7 @@ el.hasil.addEventListener('click', async (ev) => {
         { dari: 'namaLokal', cakupan: `${kamusLokal.filter((x) => x.ke.length).length} nama daerah dari ${kamusLokal.length} yang tercatat, sebagai petunjuk tambahan — bukan sebagai penentu` },
       ],
       takDijawab: ['gejalaOpt', 'wilayahNamaLokal', 'phi', 'namaDagang'],
+      sanggah: () => terbukaKini,
     });
 
     // Datang dari beranda dengan satu gejala sudah terpilih. Daftarnya tetap

@@ -41,6 +41,14 @@ let bahanKini = null;
 // disalin ke dalam markup, supaya tidak ada rekaman produk yang menganggur di DOM.
 let produkKini = null;
 
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
+
 // ---------------------------------------------------------------------------
 // Blok-blok layar rincian
 // ---------------------------------------------------------------------------
@@ -182,6 +190,8 @@ async function buka(id, pecahan) {
       const b = (await ambil(pecahan))[id];
       if (!b) throw new Error('tidak ada di pecahannya');
       bahanKini = b;
+      terbukaKini = { id, nama: b.n ?? null,
+        tautan: tautanKe(`?id=${encodeURIComponent(id)}&pecahan=${encodeURIComponent(pecahan)}`) };
       el.rincian.innerHTML = layarBahan(id, b);
       return selesai();
     }
@@ -190,6 +200,8 @@ async function buka(id, pecahan) {
     if (!p) throw new Error('tidak ada di pecahannya');
 
     produkKini = p.jenis === 'varietas' ? null : p;
+    terbukaKini = { id: p.id, nama: p.nama,
+      tautan: tautanKe(`?id=${encodeURIComponent(p.id)}&pecahan=${encodeURIComponent(pecahan)}`) };
 
     if (p.jenis === 'varietas') {
       el.rincian.innerHTML = await layarVarietas(p);
@@ -293,6 +305,7 @@ async function jalankan() {
     pasangBatas(el.batas, {
       sumber: ['pestisida', 'pupuk', 'varietas'],
       takDijawab: ['namaDagang', 'isiKarung', 'phi'],
+      sanggah: () => terbukaKini,
     });
     // C2 — pintu kedua ke layar yang sama: masuk dari angka di karung, bukan dari nama.
     pasangKandungan(buka);

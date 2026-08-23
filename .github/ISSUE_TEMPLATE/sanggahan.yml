@@ -1,0 +1,81 @@
+name: Sanggahan atas satu fakta
+description: Menantang satu fakta yang ditampilkan permukaan pembaca. Jejaknya publik dan bernama.
+title: "Sanggahan · "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        **Cara termudah bukan formulir ini.** Blok *"Batas jawaban di layar ini"* di dasar
+        tiap layar punya pintu sanggahan yang mengisi sendiri rekaman mana yang disanggah,
+        dari sumber apa, dan pada versi indeks berapa — tiga hal yang membuat sanggahan
+        bisa ditimbang ulang nanti. Formulir ini untuk yang datang langsung ke sini.
+
+        **Yang perlu diketahui sebelum menulis.** Dari 31.837 rekaman yang bisa muncul di
+        layar, yang diterbitkan proyek ini sendiri hanya **28**. Sisanya salinan: 31.575
+        dari registri kementerian, 234 dari OpenStreetMap. Artinya untuk hampir semua
+        fakta, kalau yang salah **faktanya sendiri**, repositori ini tidak bisa
+        membetulkannya — yang bisa dilakukannya mencatat sanggahan itu secara terbuka.
+        Mencatat bukan membetulkan, dan itu dikatakan di muka supaya tidak ada yang
+        menunggu perbaikan yang tidak akan datang.
+
+        **Titik toko dari OpenStreetMap perbaiki di OSM**, bukan di sini — di sana siapa
+        pun boleh menyunting, dan koreksi yang ditampung repositori ini jadi salinan
+        ketiga yang basi begitu OSM diperbarui.
+
+  - type: dropdown
+    id: jenis
+    attributes:
+      label: Apa yang salah?
+      options:
+        - Salinannya — layar menampilkan lain dari yang disebut sumbernya
+        - Faktanya sendiri — sumbernya memang menyebut begitu, dan itu salah di lapangan
+        - Penyajiannya — datanya benar, cara layar menyajikannya menyesatkan
+    validations:
+      required: true
+
+  - type: input
+    id: fakta
+    attributes:
+      label: Fakta yang mana
+      description: Sebutkan rekamannya kalau tahu id-nya, misalnya `op:prd:00010212`.
+      placeholder: "PHONSKA (op:prd:00010212) — dosis pada cabai tertulis 300 kg/ha"
+    validations:
+      required: true
+
+  - type: input
+    id: tautan
+    attributes:
+      label: Tautan ke layarnya
+      placeholder: "https://…/app/index.html?id=op:prd:00010212&pecahan=produk/ph"
+
+  - type: textarea
+    id: seharusnya
+    attributes:
+      label: Yang seharusnya tertulis
+
+  - type: textarea
+    id: dasar
+    attributes:
+      label: Dasarnya
+      description: >-
+        Permukaan pembaca menuntut dirinya sendiri menyebut alasan tiap tingkat bukti,
+        karena tingkat bukti tanpa alasan adalah klaim tanpa dasar. Tuntutan yang sama
+        berlaku di sini.
+      placeholder: "Label kemasan terbitan 2025 dengan nomor pendaftaran yang sama; atau SK Mentan nomor …; atau pengamatan lapangan di … pada …"
+    validations:
+      required: true
+
+  - type: input
+    id: cap
+    attributes:
+      label: Versi indeks saat disanggah (meta.cap)
+      description: Terbaca di `spec/indeks/meta.json`. Kosongkan kalau tidak tahu — tanpa ini sanggahan terhadap angka yang sejak itu berubah lebih sulit ditafsirkan.
+      placeholder: "11abea7511a4"
+
+  - type: markdown
+    attributes:
+      value: |
+        Jangan menuliskan nomor telepon atau alamat Anda di kolom mana pun. Isu ini
+        terbaca siapa saja dan tercatat atas nama akun GitHub Anda — memang itu gunanya:
+        sanggahan yang tidak bisa ditelusuri tidak bisa ditimbang. Tidak ada janji dibalas.

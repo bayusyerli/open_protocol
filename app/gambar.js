@@ -23,8 +23,7 @@
  */
 
 import { teks, tanggal } from './pustaka.js';
-
-const REPO = 'https://github.com/bayusyerli/open_protocol';
+import { bukaIsu, salin, REPO } from './serah.js';
 
 const PERAN = {
   kemasan_depan: 'kemasan depan',
@@ -232,14 +231,11 @@ export function pasangUsulGambar(wadah, bacaProduk) {
     pratinjau.hidden = false;
 
     if (tombol.dataset.aksi === 'salin') {
-      try {
-        await navigator.clipboard.writeText(ndjson);
-        kabar.textContent = 'Tersalin. Tempelkan ke isu, surel, atau berkas manifes — terserah Anda.';
-      } catch {
-        // Papan klip ditolak peramban (mode privat, atau tanpa HTTPS). Pratinjau di bawah
-        // tetap ada, jadi masih bisa disalin tangan — itu sebabnya ia digambar lebih dulu.
-        kabar.textContent = 'Peramban menolak papan klip. Salin dari kotak di bawah.';
-      }
+      // Papan klip bisa ditolak peramban (mode privat, atau tanpa HTTPS). Pratinjau di
+      // bawah tetap ada, jadi masih bisa disalin tangan — itu sebabnya ia digambar dulu.
+      kabar.textContent = (await salin(ndjson))
+        ? 'Tersalin. Tempelkan ke isu, surel, atau berkas manifes — terserah Anda.'
+        : 'Peramban menolak papan klip. Salin dari kotak di bawah.';
       return;
     }
 
@@ -259,8 +255,16 @@ export function pasangUsulGambar(wadah, bacaProduk) {
       '',
       '_Disusun dari halaman produk. Belum diperiksa; `review.status` sengaja `usulan`._',
     ].join('\n');
-    const alamat = `${REPO}/issues/new?${new URLSearchParams({ title: judul, body: badan, labels: 'gambar-kemasan' })}`;
-    window.open(alamat, '_blank', 'noopener,noreferrer');
-    kabar.textContent = 'Tab baru dibuka dengan isu yang sudah terisi. Belum terkirim — Anda yang menekan kirim di sana.';
+    const hasil = bukaIsu({ judul, badan, label: 'gambar-kemasan' });
+    if (hasil.dibuka) {
+      kabar.textContent = 'Tab baru dibuka dengan isu yang sudah terisi. Belum terkirim — Anda yang menekan kirim di sana.';
+      return;
+    }
+    // Alamat kepanjangan atau tab baru diblokir. Yang sudah diketik tidak boleh hilang
+    // bersamanya — pratinjau di bawah sudah digambar, dan papan klip dicoba sekali lagi.
+    await salin(ndjson);
+    kabar.textContent = hasil.sebab === 'panjang'
+      ? `Rekamannya terlalu panjang untuk dimuat alamat formulir isu. Sudah dicoba disalin — buka ${REPO}/issues/new lalu tempelkan.`
+      : `Peramban memblokir tab baru. Salin dari kotak di bawah, lalu tempelkan di ${REPO}/issues/new`;
   });
 }

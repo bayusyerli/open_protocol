@@ -274,11 +274,21 @@ const BLOK_HARA = `
     </p>
   </div>`;
 
+
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
 async function bukaResep(berkas) {
   el.resep.innerHTML = '<p class="kosong">Mengambil resepnya…</p>';
   el.resep.focus();
   try {
     const r = await ambil(berkas);
+    terbukaKini = { id: r.id, nama: r.nama,
+      tautan: tautanKe(`?resep=${encodeURIComponent(berkas.split('/').pop())}`) };
     el.resep.innerHTML = `
       <div class="kartu">
         <h2>${teks(r.nama)}</h2>
@@ -343,6 +353,7 @@ el.daftar.addEventListener('click', (ev) => {
         teks:
           'Sebagian kriteria pelepasan hanya bisa diperiksa di laboratorium, dan kosakata ini belum memuat padanan kebunnya untuk bokashi dan vermikompos. Layar menyebutkan kekosongan itu alih-alih mengarang uji kebun yang belum pernah diputuskan siapa pun.',
       }],
+      sanggah: () => terbukaKini,
     });
 
     // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Dipanggil PALING

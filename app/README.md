@@ -234,6 +234,55 @@ kenapa" memang berbeda di tiap jalur.
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
 
+### Sanggahan terbuka — B3
+
+Repositori dibuka jadi publik 23 Agustus 2026, dan itu syaratnya: B3 menuntut jejak yang
+**publik dan bernama**, sementara isu di repositori tertutup menghasilkan jejak yang
+bernama tetapi tidak publik — persis setengah ukuran yang dihindari proyek ini.
+
+Terukur sebelum mulai, dan ukurannya yang menentukan bentuknya: dari **31.837** rekaman
+yang bisa muncul di layar, yang diterbitkan proyek ini sendiri ada **28** — 0,088%.
+Sisanya salinan: 31.575 dari registri kementerian, 234 dari OpenStreetMap.
+
+- **Tombol tunggal "sanggah fakta ini" akan berbohong pada 99,9% layar.** Ia menyiratkan
+  repositori ini bisa membetulkan apa yang ia salin; kebenarannya tinggal di registri
+  orang lain, dan isu di sini tidak menyentuhnya. Jadi yang ditanya lebih dulu bukan *apa
+  yang benar* melainkan **apa yang salah** — karena jawabannya menentukan ke mana
+  perbaikannya pergi. *Salinannya* dan *penyajiannya* bisa dibetulkan di sini;
+  *faktanya sendiri* tidak bisa, dan layar mengatakannya **sebelum** tombolnya ditekan,
+  bukan sesudah orang menghabiskan waktu menulis.
+- **Mencatat bukan membetulkan, dan itu tetap bernilai.** Catatan publik dan bernama
+  tentang entri registri yang disanggah praktisi tidak ada di mana pun, dan ia artefak
+  tersendiri — bukan hadiah hiburan untuk sanggahan yang gagal.
+- **Aturan bukti mengarah balik ke pembaca.** `batas.js` menuntut tiap layar menyebut
+  alasan tingkat buktinya, mewarisi `preparation.schema.json`: *"tingkat bukti tanpa
+  alasan adalah klaim tanpa dasar"*. Di sini tuntutan yang sama dikenakan kepada yang
+  menyanggah — tanpa **dasar**, sanggahannya tidak disusun sama sekali. Layar yang
+  menuntut dasar dari dirinya sendiri lalu menerima sanggahan tanpa dasar sedang memakai
+  dua timbangan.
+- **Muatannya membawa tiga hal yang usul gambar tidak perlu bawa.** Usul *menambah*,
+  sanggahan *menantang*, dan yang menantang harus bisa ditunjukkan menantang apa: id
+  rekaman, **tautan-dalam yang benar-benar membukanya kembali** (`?opt=`, `?id=&pecahan=`,
+  `?resep=`), dan **`meta.cap`** — versi indeks saat itu. Tanpa cap, sanggahan terhadap
+  angka yang sejak itu berubah tidak bisa ditafsirkan lagi: pembacanya tidak tahu apakah
+  angkanya sudah dibetulkan atau penyanggahnya keliru sejak awal.
+- **Satu jalan sengaja tidak dibuat.** 234 titik toko datang dari OpenStreetMap, tempat
+  siapa pun boleh menyunting langsung. Koreksi yang ditampung di sini justru jadi salinan
+  ketiga yang basi begitu OSM diperbarui — jadi yang ditawarkan tautan ke penyuntingnya.
+- **Menempel di blok batas, bukan di tiap layar.** "Satu fakta" baru punya arti setelah
+  sumbernya disebut, dan blok batas satu-satunya tempat yang sudah tahu keduanya. Semua
+  duabelas layar karena itu mendapat pintunya tanpa perkabelan; layar yang punya rekaman
+  tunggal menajamkannya dengan `sanggah: () => terbukaKini`, dibaca **saat diketuk** —
+  blok batas digambar sekali saat muat, rekamannya dibuka jauh sesudahnya.
+- **Tidak ada yang terkirim dari halaman ini.** Dua jalan keluar, keduanya baru berjalan
+  setelah orangnya menekan: salin, atau buka isu yang sudah terisi di tab baru. Alamat
+  formulir isu punya batas panjang — yang melewatinya dialihkan ke papan klip beserta
+  sebabnya, karena isu yang terbuka dengan isi terpotong separuh lebih buruk daripada
+  yang tidak terbuka.
+- **Yang datang langsung ke Issues tidak dibiarkan dengan kotak kosong.**
+  `.github/ISSUE_TEMPLATE/sanggahan.yml` menuntut medan yang sama, dan menyebutkan angka
+  0,088% itu di muka.
+
 ### Analisis usaha tani — D3
 
 `usaha.html`. Satu angka yang menentukan sebelum menanam: **rupiah per kilogram** yang

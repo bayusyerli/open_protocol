@@ -280,11 +280,21 @@ function blokTakBisaDibakukan(r) {
     </div>`;
 }
 
+
+/* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
+ * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
+ * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
+let terbukaKini = null;
+const tautanKe = (q) => new URL(q, location.href).href;
+
+
 async function bukaResep(berkas) {
   el.resep.innerHTML = '<p class="kosong">Mengambil resepnya…</p>';
   el.resep.focus();
   try {
     const r = await ambil(berkas);
+    terbukaKini = { id: r.id, nama: r.nama,
+      tautan: tautanKe(`?resep=${encodeURIComponent(berkas.split('/').pop())}`) };
     const bisaDibakukan = r.kriteria.length > 0;
     el.resep.innerHTML = `
       <div class="kartu">
@@ -401,6 +411,7 @@ for (const wadah of [el.daftar, el.resep]) {
             'Keempat angka PHI di jalur ini precautionary_default — bawaan yang sengaja berhati-hati, bukan hasil uji residu. Tidak ada uji residu untuk sediaan buatan sendiri, dan angkanya tidak boleh dibaca sebagai hasil pengukuran.',
         },
       ],
+      sanggah: () => terbukaKini,
     });
 
     // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Dipanggil PALING

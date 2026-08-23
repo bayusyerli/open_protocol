@@ -133,3 +133,162 @@
 
 /* Cakupan: bagian mana dari sumber itu yang benar-benar dibaca layar ini. */
 .bj-cakupan { margin-top: .3rem !important; font-size: .85rem; }
+
+/* ------------------------------------------------------------------ sanggahan */
+/* B3. Blok ini muncul di keduabelas layar, termasuk beranda — dan beranda memakai
+   lembar gaya yang berbeda dari selebihnya. Karena itu ia tinggal di sini bersama
+   pemetaan tokennya, bukan di gaya.css tempat formulir usul gambar tinggal: yang
+   ditulis di sana tidak akan pernah sampai ke beranda. */
+
+.bj-sanggah {
+  margin-top: 1.6rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--bj-garis);
+}
+
+.bj-sanggah > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .88rem;
+  color: var(--bj-aksen);
+  padding: .5rem 0;
+}
+
+.bj-sanggah > summary:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+
+.bj-sanggah-isi { display: grid; gap: .35rem; margin-top: .5rem; }
+
+/* Kalimat asal: dari registri siapa fakta di layar ini datang, dan karena itu siapa yang
+   sebenarnya bisa membetulkannya. Digambar pertama karena ia yang menentukan arti
+   ketiga pilihan di bawahnya. */
+.bj-asal {
+  margin: 0 0 .5rem;
+  padding: .6rem .7rem;
+  border-radius: 8px;
+  background: var(--bj-latar);
+  border: 1px solid var(--bj-garis);
+  color: var(--bj-teks);
+  font-size: .86rem;
+}
+
+.bj-osm {
+  margin: 0 0 .5rem;
+  padding: .6rem .7rem;
+  border-left: 3px solid var(--bj-aksen);
+  background: var(--bj-latar);
+  color: var(--bj-teks);
+  font-size: .85rem;
+}
+
+.bj-osm a { color: var(--bj-aksen); }
+
+.bj-medan {
+  margin: .3rem 0 0;
+  padding: .7rem .8rem;
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+  background: var(--bj-latar);
+}
+
+.bj-medan legend {
+  padding: 0 .3rem;
+  font-weight: 600;
+  font-size: .87rem;
+  color: var(--bj-teks);
+}
+
+/* Kotak sentuhnya seluruh baris, bukan lingkaran radionya saja: teks pilihannya panjang,
+   dan yang membacanya di ponsel akan mengetuk katanya, bukan titiknya. */
+.bj-pilih {
+  display: flex;
+  gap: .55rem;
+  align-items: flex-start;
+  padding: .62rem .2rem;   /* 44 px tinggi baris — target sentuh, bukan estetika */
+  cursor: pointer;
+  font-size: .86rem;
+  color: var(--bj-teks);
+  font-weight: 400;
+}
+
+.bj-pilih input { margin-top: .18rem; flex: none; width: 1.05rem; height: 1.05rem; accent-color: var(--bj-aksen); }
+.bj-pilih:focus-within { outline: 2px solid var(--bj-aksen); outline-offset: 2px; border-radius: 6px; }
+
+/* Akibat pilihan. TIDAK diwarnai merah, dan itu keputusan yang sama dengan huruf tingkat
+   bukti: "repositori ini tidak bisa membetulkannya" adalah keterangan jujur, bukan
+   bahaya, dan mewarnainya seperti larangan membuat kejujuran tampak seperti kegagalan. */
+.bj-akibat {
+  margin: .55rem 0 0 !important;
+  padding-left: .65rem;
+  border-left: 3px solid var(--bj-aksen);
+  color: var(--bj-teks);
+  font-size: .85rem;
+  font-weight: 600;
+  min-height: 1.2em;
+}
+
+.bj-sanggah-isi > label {
+  margin-top: .6rem;
+  font-weight: 600;
+  font-size: .87rem;
+  color: var(--bj-teks);
+}
+
+.bj-sanggah-isi input[type="text"],
+.bj-sanggah-isi textarea {
+  width: 100%;
+  padding: .55rem .65rem;
+  font: inherit;
+  font-size: .88rem;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+}
+
+.bj-sanggah-isi input[type="text"]:focus-visible,
+.bj-sanggah-isi textarea:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 1px; }
+
+.bj-catat { margin: .4rem 0 0 !important; font-size: .82rem; color: var(--bj-lemah); }
+
+.bj-catat-tegas {
+  margin-top: .8rem !important;
+  padding: .6rem .7rem;
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+  background: var(--bj-latar);
+}
+
+.bj-catat-tegas strong { color: var(--bj-teks); }
+
+.bj-aksi { display: flex; flex-wrap: wrap; gap: .5rem; margin: .9rem 0 0 !important; }
+
+.bj-aksi button {
+  font: inherit;
+  font-size: .87rem;
+  font-weight: 600;
+  padding: .65rem .9rem;
+  min-height: 44px;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px solid var(--bj-aksen);
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.bj-aksi button:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+
+.bj-kabar { margin: .6rem 0 0 !important; color: var(--bj-teks); font-size: .86rem; min-height: 1.2em; }
+
+.bj-pratinjau {
+  margin: .6rem 0 0;
+  max-height: 16rem;
+  overflow: auto;
+  padding: .7rem;
+  font-size: .76rem;
+  color: var(--bj-teks);
+  background: var(--bj-latar);
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}

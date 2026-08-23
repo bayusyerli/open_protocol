@@ -1,0 +1,8 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Titik toko salah letak, nama, atau sudah tutup
+    url: https://www.openstreetmap.org/edit
+    about: >-
+      234 titik toko datang dari OpenStreetMap. Perbaikannya milik OSM — di sana siapa pun
+      boleh menyunting, dan koreksi yang ditampung repositori ini jadi salinan ketiga yang
+      basi begitu OSM diperbarui.

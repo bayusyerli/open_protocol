@@ -19,6 +19,7 @@
  */
 
 import { bacaMeta, teks, tanggal } from './pustaka.js';
+import { blokSanggah, pasangSanggah } from './sanggah.js';
 
 const n = (x) => (x ?? 0).toLocaleString('id-ID');
 
@@ -158,7 +159,10 @@ function bacaLubang(acuan, meta, salah) {
 
 /**
  * @param {HTMLElement} wadah  tempat blok digambar — biasanya <section id="batasJawaban">
- * @param {{sumber: Array, takDijawab: Array}} spek
+ * @param {{sumber: Array, takDijawab: Array, sanggah?: (() => object|null)}} spek
+ *   `sanggah` opsional: pembaca rekaman yang sedang terbuka, dipanggil saat blok
+ *   sanggahan diketuk. Layar tanpa rekaman tunggal boleh menghilangkannya — pintunya
+ *   tetap ada, hanya saja ia menyanggah layarnya alih-alih satu rekaman.
  */
 export function pasangBatas(wadah, spek) {
   if (!wadah) return;
@@ -186,6 +190,10 @@ export function pasangBatas(wadah, spek) {
 
   const arti = meta?.batas?.arti ?? {};
 
+  // B3 menempel di sini dan bukan di tiap layar sendiri-sendiri, karena "satu fakta"
+  // baru punya arti setelah sumbernya disebut: sanggahan yang tidak tahu fakta itu
+  // salinan atau terbitan sendiri tidak tahu ke mana perbaikannya pergi. Blok batas
+  // satu-satunya tempat di layar yang sudah tahu keduanya.
   wadah.innerHTML = `
     ${cacat}
     <h2 class="bj-judul">Batas jawaban di layar ini</h2>
@@ -194,7 +202,10 @@ export function pasangBatas(wadah, spek) {
       <h3 class="bj-judul-lubang">Yang tidak diketahui, dan karena itu tidak ditebak</h3>
       <dl class="bj-lubang">
         ${lubang.map((l) => `<dt>${teks(l.judul)}</dt><dd>${teks(l.teks)}</dd>`).join('')}
-      </dl>` : ''}`;
+      </dl>` : ''}
+    ${blokSanggah(sumber)}`;
+
+  pasangSanggah(wadah, sumber, spek?.sanggah);
 
   return salah;
 }
