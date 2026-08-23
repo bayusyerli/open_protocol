@@ -689,7 +689,7 @@ dokumentasi kegiatan, dan "Penetapan Harga…" yang membawa selebarannya. Hanya 
 memuat angka. Karena penetapan yang sama kadang terbit dua kali, rekaman **dikunci menurut
 periode berlaku, bukan menurut slug**; tanpa itu, seri sembilan titik terhitung sebelas.
 
-### Lampung — datanya ada, terbaca, dan tetap tidak diambil
+### Lampung dan Kalimantan Selatan — terhalang izin, bukan teknik
 
 Diperiksa 23 Agustus 2026. **Tidak dipanen, dan sebabnya bukan teknis.**
 
@@ -738,6 +738,34 @@ menyala tetap arahan yang tertulis, dan tidak ada cara membedakan "sengaja melar
 Ini juga konsisten dengan putusan yang sudah berdiri di tabel kekosongan: tiga dari empat
 agregator sawit swasta memblokir `ClaudeBot`, dan ketiganya tidak dipanen.
 
+**Kalimantan Selatan sama, dan pemeriksaannya berhenti lebih awal.** Diperiksa 23 Agustus
+2026 atas permintaan yang menyebutkan `robots.txt` lebih dulu — dan itu urutan yang benar.
+`disbunnak.kalselprov.go.id` dan portal `kalselprov.go.id` menyajikan berkas yang **identik,
+1.836 bita keduanya**, dan keduanya memuat `User-agent: ClaudeBot` → `Disallow: /`.
+
+Karena itu **isi situsnya tidak pernah diperiksa**. Tidak diketahui apakah Kalsel menerbitkan
+penetapan TBS-nya sama sekali, apalagi dalam bentuk apa. Itu bukan kelalaian: memeriksanya
+berarti mengambil halaman dari situs yang melarangnya, dan pertanyaan "apakah ada datanya"
+tidak mendahului pertanyaan "boleh tidak diambil". Kekosongan ini karena itu tercatat sebagai
+**tidak diketahui**, bukan sebagai nol.
+
+**Polanya lebih besar daripada dua provinsi ini, dan itu mengubah cara memilih sasaran.**
+Keduanya memakai daftar terkelola Cloudflare yang sama persis, dengan sepuluh agen yang sama
+ditolak. Bedanya justru menerangkan: Lampung **menambahkan stanza sendiri** di bawahnya
+(`User-agent: *` → `Disallow:`, yakni izinkan semua), sementara Kalsel tidak menulis apa pun —
+berkasnya murni bawaan Cloudflare.
+
+Jadi di Lampung, arahan yang ditulis operatornya sendiri **permisif**, dan larangannya
+seluruhnya datang dari lapisan Cloudflare di atasnya. Menurut aturan pencocokan `robots.txt`,
+grup yang menyebut nama agen persis mengalahkan grup `*`, jadi hasilnya tidak berubah. Tetapi
+ia menegaskan pembacaan yang sudah dinyatakan di atas: ini bawaan yang menyala, bukan
+kebijakan yang ditimbang tentang repositori ini.
+
+Akibat praktisnya: **"di balik Cloudflare" sekarang penanda yang bisa dipercaya untuk
+"terlarang", bukan sekadar "lebih sulit".** Provinsi berikutnya yang ditemukan di balik
+Cloudflare layak diperiksa `robots.txt`-nya lebih dulu — sebelum satu pun halaman isinya
+diambil, dan sebelum waktu dipakai membangun penariknya.
+
 **Yang bisa menutupnya, dan keduanya bukan kode:**
 
 - **Surel ke Disbun Lampung** (`dinasperkebunanlpg@gmail.com`, telp. 0721-487865) meminta izin
@@ -774,7 +802,7 @@ hal: DNS menjawab apa, HTTP menjawab apa, dan `robots.txt` berbunyi apa.
 |---|---|---|
 | **Aceh** | `distanbun.acehprov.go.id` | **200, `Allow: /` — diserap**, lihat di atas |
 | **Lampung** | `disbun.lampungprov.go.id` | Menerbitkan penetapannya sebagai prosa berangka — **tetapi `robots.txt`-nya menolak `ClaudeBot` untuk seluruh situs.** Tidak dipanen; lihat bagian di bawah |
-| **Kalimantan Selatan** | `disbunnak.kalselprov.go.id` | Cloudflare 403; isinya belum diperiksa |
+| **Kalimantan Selatan** | `disbunnak.kalselprov.go.id` | **`robots.txt` menolak `ClaudeBot`** — isinya tidak diperiksa, jadi tidak diketahui apakah ia menerbitkan harga sama sekali |
 | **Sumatera Selatan** | `disbun.sumselprov.go.id` | DNS menjawab `103.239.165.40`, tetapi **port 80 dan 443 dua-duanya menolak sambungan** — dari mesin lokal maupun lewat proksi. Dua titik pandang sepakat, jadi ini host mati, bukan jalur tersaring |
 | **Sulawesi Tengah** | `disbunnak.sultengprov.go.id` | 200, hidup — tetapi berandanya **nol menyebut harga, TBS, maupun sawit** |
 | **Sumatera Utara** | `disbun.sumutprov.go.id` | Tanpa A record (diuji ulang, masih mati) |
@@ -800,7 +828,7 @@ lintas provinsi di Indonesia dikerjakan swasta, bukan pemerintah.
 |---|---|
 | **Harga pekebun swadaya di luar Riau dan Aceh** | Di luar cakupan Permentan 13/2024. **Dikoreksi 23 Agustus 2026:** dokumen ini semula menyatakan hanya Riau yang menerbitkannya. Aceh juga — dan dengan sumbu yang berbeda. 32 provinsi lain tidak sama sekali |
 | **Lampung** | Datanya ada dan terbaca, tetapi `robots.txt` seluruh domain provinsi menolak `ClaudeBot`. Terhalang **izin**, bukan teknik — dan itu jenis kekosongan yang tidak bisa ditutup dengan kode |
-| **Kalimantan Selatan** | Di balik Cloudflare; isinya belum diperiksa, `robots.txt`-nya belum dibaca |
+| **Kalimantan Selatan** | `robots.txt` menolak `ClaudeBot` pada kedua host provinsinya. Isinya **tidak diketahui** — tidak diperiksa, karena memeriksanya berarti mengambil dari situs yang melarangnya |
 | **Sumatera Utara** | Produsen terbesar. `disbun.sumutprov.go.id` tanpa A record; tangkapan Wayback terakhir 4 Desember 2022. Penetapan mingguannya berjalan tetapi hanya lewat GAPKI Sumut (swasta) |
 | **Agregasi lintas provinsi pemerintah** | Tidak ada. Yang mengagregasi 22 provinsi justru swasta, dan tiga dari empat memblokir `ClaudeBot` di `robots.txt` — tidak dipanen |
 | **Harga sawit di portal pertanian nasional** | `bdsp2.pertanian.go.id` tidak punya indikator harga sawit di skemanya, hanya luas areal dan produksi |
@@ -809,7 +837,7 @@ lintas provinsi di Indonesia dikerjakan swasta, bukan pemerintah.
 
 - **Unduh dan baca batang tubuh Permentan 13/2024.** Seluruh bacaan "swadaya di luar
   cakupan" bersandar pada judul dan halaman peraturan, bukan pada pembacaan naskahnya.
-- **Surel ke Disbun Lampung** (`dinasperkebunanlpg@gmail.com`) meminta izin atau meminta
+- **Surel ke Disbun Lampung** (`dinasperkebunanlpg@gmail.com`) dan **Disbunnak Kalsel** meminta izin atau meminta
   datanya. Provinsinya menerbitkan penetapan sebagai prosa berangka — bentuk termudah dari
   seluruh yang sudah diserap — tetapi `robots.txt` keempat host provinsinya menolak
   `ClaudeBot`. Ini satu-satunya kekosongan sawit yang terhalang izin, bukan teknik.
