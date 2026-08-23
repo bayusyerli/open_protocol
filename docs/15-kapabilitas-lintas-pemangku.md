@@ -465,10 +465,21 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | D1 | Rp per kg hara | petani, kios, poktan | #6 | **selesai** — jalur 3 | **selesai** |
 | D2 | Kebutuhan input per luas | petani, petugas lapang | #6 | **selesai** — `susun-rencana.mjs` | **selesai** |
-| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | harga dari pengguna, seperti jalur 3 | **BANGUN** |
+| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | **sebagian** 23 Agustus 2026 — `app/usaha.html`: RAB dan titik impas selesai; arus kas **ditahan**, fase tak bermedan hari | **sebagian** |
 | D4 | **Kalibrasi semprot** — volume, kecepatan jalan, nozel, jumlah tangki | petani, buruh semprot | #9 + keselamatan | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 1–2 | **selesai** |
 | D5 | Takaran alat rumah tangga — tutup botol, gelas, sendok | petani | #6, #9 | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 3 | **selesai** |
 | D6 | Kalkulator susut & kelas mutu pascapanen | petani, bandar, offtaker | #14 | belum ada | **TUNDA** |
+
+> **D3 dibangun 23 Agustus 2026 — sisi RAB dan titik impas.** Yang paling menentukan
+> bukan aritmetikanya melainkan cara membandingkannya. Titik impas di sebelah harga eceran
+> terbaca seolah selisihnya keuntungan; yang ditayangkan karena itu **rasio**, mengikuti
+> aturan tayang ke-5 di [16-sumber-harga-komoditas.md](16-sumber-harga-komoditas.md).
+> Layar juga menyebutkan temuan yang mengunci dokumen itu: bahkan "harga produsen" resmi
+> bukan harga petani — respondennya pengumpul dan penggilingan, dan di Karawang satu orang.
+>
+> **Arus kas semusim ditahan.** Ia menuntut kalender bertanggal, dan kosakata fase sengaja
+> tidak punya medan hari — sama seperti alasan E4 dibangun "dengan batasnya dinyatakan".
+> Membangunnya sekarang berarti mengarang tanggal.
 
 > **D4 dan D5 adalah dua kapabilitas termurah yang paling langsung menyentuh keselamatan.**
 > Anjuran "2 ml per liter" tidak berguna bagi orang yang menakar dengan tutup botol, dan
@@ -629,7 +640,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 | 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
 | 7 | **A5** luring penuh — **sebagian** | Indeks sudah ≤48 KB — separuh jalan |
 | 8 | **C7** direktori layanan — **sebagian** | Fondasi toko tani sudah ada |
-| 9 | **D3** analisis usaha tani | Pintu masuk ke E5 di gelombang berikutnya |
+| 9 | **D3** analisis usaha tani — **sebagian** | Pintu masuk ke E5 di gelombang berikutnya |
 
 > Butir 1–5 semuanya bisa selesai tanpa satu pun keputusan yang masih terbuka di
 > [10-peta-modul.md](10-peta-modul.md) bagian 7. Itu yang membuat gelombang ini bisa

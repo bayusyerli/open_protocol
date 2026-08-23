@@ -1768,7 +1768,7 @@ const meta = {
     hargaPupuk:
       'SP2KP mendaftarkan Pupuk Urea, NPK 15-15-15, SP-36, dan ZA tetapi tidak mengisi harganya: 13-15 tanggal mingguan pada paruh pertama 2024, seluruhnya kosong pada keempat ukuran tertimbang. Jalur 3 karena itu tetap mengandalkan masukan pengguna untuk rupiah per kg hara.',
     gambarKemasan:
-      'Gambar kemasan ada pada 439 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
+      'Gambar kemasan ada pada 440 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',
@@ -1780,6 +1780,10 @@ const meta = {
       'Hanya 92 dari 2.248 rekaman berwilayah — 4,1% — menyebut sesuatu yang lebih rinci daripada kabupaten atau kota. Sisanya berhenti di nama kabupaten, tersebar di 93 wilayah. Nama tanpa alamat tidak bisa dituju: ia bukti bahwa penjual benih ada di sana, bukan petunjuk ke mana pergi.',
     tokoTanpaKontak:
       'Tidak satu pun rekaman memuat nomor telepon, surel, jam buka, atau apakah tokonya masih ada. Medan itu sengaja dibiarkan kosong menunggu pemilik toko mengklaimnya sendiri — menambalnya dengan geokode massal atau penarikan pihak ketiga akan mengisi direktori dengan tebakan yang tidak bisa dibantah siapa pun.',
+    hasilVarietas:
+      'Registri tidak memuat potensi hasil satu pun varietas — nol dari 11.227. Perkiraan panen pada analisis usaha tani karena itu masukan pemakainya sendiri, dan tidak ada angka acuan yang bisa disodorkan menggantikannya.',
+    arusKasMusim:
+      'Kapan biaya keluar dan kapan uang masuk menuntut kalender musim yang bertanggal. Kosakata fase sengaja tidak punya medan hari, dan hanya dua dari empat langkah protokol cabai yang bertanggal — membangun kalender di atas itu berarti mengarang tanggal.',
     takaranRumahTangga:
       'Tidak ada satu pun ukuran baku untuk tutup botol, sendok, atau gelas, dan registri tidak memuatnya. Tutup botol yang berbeda berselisih dua sampai empat kali lipat, jadi menyebut "satu tutup" sebagai takaran berarti mengarang angka yang bisa melipatgandakan dosis. Yang bisa dilakukan layar hanya menghitung dari ukuran yang diukur sendiri pemakainya.',
     isiKarung:

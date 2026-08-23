@@ -16,6 +16,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, dan komentar per seri | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
 | `principal.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `toko.html` | — direktori layanan: toko tani berkoordinat, dan penjual benih yang **tidak** bisa dituju | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
+| `usaha.html` | — analisis usaha tani: RAB dan titik impas, dinyatakan sebagai **rasio** terhadap harga eceran | D3 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
 
 `beranda.html` tidak punya perender rincian sama sekali. Ia mencari, lalu menautkan
@@ -228,6 +229,38 @@ kenapa" memang berbeda di tiap jalur.
   hitungan di peranti pembaca sendiri, dan keempat medannya akan kosong artinya. Memberinya
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
+
+### Analisis usaha tani — D3
+
+`usaha.html`. Satu angka yang menentukan sebelum menanam: **rupiah per kilogram** yang
+harus diterima supaya biaya semusim tertutup.
+
+- **Seluruh masukannya milik pemakainya**, aturan yang sama seperti jalur 3. Registri
+  tidak memuat biaya usaha tani sama sekali, dan tidak memuat potensi hasil satu pun dari
+  11.227 varietas — jadi tidak ada angka acuan yang bisa disodorkan, dan menyodorkannya
+  berarti mengarang. Sumbernya karena itu **tanpa tingkat bukti**: ia bukan klaim siapa
+  pun kecuali yang mengetiknya.
+- **Yang ditayangkan rasio, bukan dua angka bersebelahan** — aturan tayang ke-5 di
+  [`docs/16`](../docs/16-sumber-harga-komoditas.md). *"Titik impasmu 21% dari harga eceran
+  Bawang Merah"* jauh lebih sulit disalahpahami daripada dua angka berdampingan, yang akan
+  terbaca seolah selisihnya keuntungan. Ia bukan: harga eceran memuat marjin seluruh
+  rantai.
+- **Bahkan "harga produsen" resmi bukan harga petani, dan layar mengatakannya.** Pada
+  tingkat produsen, responden yang dicatat negara adalah pengumpul, penggilingan, dan
+  pedagang; di Kabupaten Karawang tercatat **satu orang**. Jaraknya terpasang di dalam
+  *definisinya*, bukan celah cakupan yang bisa dirapatkan dengan menambah sampel.
+- **Titik impas di atas harga eceran diberi kartu merah**, dengan kalimatnya sendiri:
+  pada harga sebesar itu usaha ini rugi bahkan sebelum rantai mengambil bagiannya.
+- **Kategori biaya disediakan, angkanya tidak.** Daftar barisnya menolong orang mengingat
+  apa yang belum dihitung; menyediakan angkanya berarti mengarang biaya yang tidak pernah
+  diukur siapa pun, dan tiap daerah berbeda.
+- **Tenaga kerja sendiri tidak disembunyikan.** Banyak hitungan usaha tani
+  menghilangkannya, dan hasilnya usaha yang tampak untung padahal upahnya sendiri yang
+  tidak terbayar. Layar tidak memutuskan untuk pemakainya — ia hanya tidak menghapus
+  barisnya.
+- **Arus kas semusim ditahan, bukan ditampilkan setengah.** Kapan biaya keluar dan kapan
+  uang masuk menuntut kalender bertanggal; kosakata fase **sengaja tidak punya medan
+  hari**, dan hanya dua dari empat langkah protokol cabai bertanggal.
 
 ### Direktori layanan — C7
 

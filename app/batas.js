@@ -133,6 +133,8 @@ const JUDUL_LUBANG = {
   takaranRumahTangga: 'Ukuran tutup botol, sendok, dan gelas',
   tokoTakBisaDituju: 'Alamat yang bisa dituju',
   tokoTanpaKontak: 'Telepon, jam buka, dan apakah tokonya masih ada',
+  hasilVarietas: 'Potensi hasil varietas',
+  arusKasMusim: 'Arus kas semusim',
   hargaPetani: 'Harga yang diterima petani',
   hargaWilayah: 'Harga per provinsi dan per pasar',
   hargaKomoditasTani: 'Harga untuk komoditas tani selebihnya',
