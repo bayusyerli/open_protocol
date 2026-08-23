@@ -1,0 +1,17 @@
+{
+  "tanggal": "2026-08-19",
+  "sumber": {
+    "pestisida": {
+      "kunci_unik": 7715,
+      "duplikat_dibuang": 9
+    },
+    "pupuk-simpel": {
+      "kunci_unik": 5875,
+      "duplikat_dibuang": 0
+    },
+    "pupuk-legacy": {
+      "kunci_unik": 1321,
+      "duplikat_dibuang": 0
+    }
+  }
+}
