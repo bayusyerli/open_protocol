@@ -239,6 +239,14 @@ const BEKAS_SALAH = [
   [/15 kadar berbeda/, 'abamektin 15 kadar — sebenarnya 33'],
   [/Dari 25 produk berisi Abamektin/, 'abamektin 18 g/L 25 produk — sebenarnya 26'],
   [/778 OPT registri/, '778 OPT registri — sebenarnya 768 registri + 10 terkurasi'],
+  // Rendemen sawit. Dikoreksi 23 Agustus 2026 dari 21% ke 19,7% — lihat docs/16 bagian 7a.
+  // Angka 21% bukan salah hitung melainkan ASUMSI yang menyamar jadi pengukuran, dan itu
+  // jenis kekeliruan yang paling mudah kembali: ia terlihat wajar, dan ia masih tertulis di
+  // Permentan 01/2018 yang sudah dicabut. Ketiga pola di bawah menjaga agar ia tidak
+  // menyelinap balik ke dokumen maupun ke layar.
+  [/OER sawit\s*±?\s*21/, 'OER sawit 21% — asumsi, bukan pengukuran; yang terukur 19,7%'],
+  [/sebenarnya 1,52×/, 'rasio terkoreksi 1,52× — hasil OER 21%; dengan 19,7% ia 1,43×'],
+  [/66% setara-CPO/, '66% setara-CPO — hasil OER 21%; dengan 19,7% ia 70%'],
 ];
 const sapuDir = (d) => readdirSync(dari(d), { withFileTypes: true }).flatMap((e) =>
   e.isDirectory() ? sapuDir(`${d}/${e.name}`) : [`${d}/${e.name}`]);

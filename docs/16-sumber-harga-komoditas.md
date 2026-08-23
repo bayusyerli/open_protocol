@@ -37,6 +37,10 @@ Lima temuan, diurutkan menurut seberapa besar ia mengubah keputusan bangun:
 5. **Harga dunia menyesatkan ke dua arah yang berlawanan**, tergantung komoditasnya — semu
    pada sawit dan karet, nyata tapi tersembunyi pada kakao dan kopi. Itu melahirkan satu
    aturan tayang yang sebaiknya mengikat sejak awal (bagian 7).
+6. **Konstanta rendemen yang dipakai butir 5 ternyata asumsi, bukan pengukuran** — dikoreksi
+   23 Agustus 2026 dari 21% ke **19,7%**, dan itu menggeser angka utama yang dibaca petani
+   dari 66% ke 70%. Bagian 7a menerangkannya beserta dua temuan yang mengubah bentuk
+   modulnya.
 
 ---
 
@@ -235,14 +239,105 @@ nol dari 7.196 pupuk. SISKAPERBAPO melengkapinya dari sisi lain: ia menerbitkan 
 3. **Harga dunia tidak pernah ditayangkan sendirian** — wajib berpasangan dengan harga lokal,
    faktor konversi yang terbuka dan bisa diubah petani, serta cap waktu per angka.
 4. **Bedakan komoditas setara dan tidak setara.** Sawit dan karet **wajib** melewati koreksi
-   rendemen (OER sawit ±21%, kadar karet kering bokar ±55%); kakao dan kopi boleh
-   dibandingkan langsung. Tanpa koreksi itu, TBS terhadap CPO dunia tampak 7,26× padahal
-   sebenarnya 1,52× — dan petani akan menyimpulkan dirinya ditipu tujuh kali lipat.
-   Sebaliknya pada kakao dan kopi jurangnya nyata dan tidak terkoreksi: petani menerima 41%
-   dan 55%. Di sanalah harga dunia justru satu-satunya alat tawar yang dimilikinya.
-5. **Tayangkan rasio, bukan dua angka bersebelahan.** "Harga Anda = 66% setara-CPO dari harga
-   dunia" jauh lebih sulit disalahpahami.
+   rendemen (**OER sawit 19,7%** — lihat bagian 7a, angka ini dikoreksi dari 21%; kadar karet
+   kering bokar ±55%); kakao dan kopi boleh dibandingkan langsung. Tanpa koreksi itu, TBS
+   terhadap CPO dunia tampak **7,26×** padahal sebenarnya **1,43×** — dan petani akan
+   menyimpulkan dirinya ditipu tujuh kali lipat. Sebaliknya pada kakao dan kopi jurangnya
+   nyata dan tidak terkoreksi: petani menerima 41% dan 55%. Di sanalah harga dunia justru
+   satu-satunya alat tawar yang dimilikinya.
+5. **Tayangkan rasio, bukan dua angka bersebelahan.** "Harga Anda = **70%** setara-CPO dari
+   harga dunia" jauh lebih sulit disalahpahami. **Dan garis penuhnya bukan 100%** — lihat
+   bagian 7a.
 6. **Penduga farmgate dinyatakan terbuka sebagai perkiraan**, bukan sebagai harga terukur.
+
+## 7a. Rendemen — koreksi 23 Agustus 2026
+
+Butir 4 dan 5 di atas semula memakai **OER 21%**. Angka itu keliru, dan cara kelirunya layak
+dicatat karena ia jenis kekeliruan yang paling sulit terlihat: ia bukan salah hitung, ia
+**asumsi yang menyamar jadi hasil pengukuran.**
+
+### Bagaimana ketahuannya
+
+Angka 7,26× dan 1,52× dokumen ini berhasil direproduksi persis dari dua sumber berlisensi
+terbuka:
+
+- FAOSTAT *Producer Prices*, `Oil palm fruit`, Indonesia, 2024 = **US$132,70/ton** (CC BY 4.0)
+- World Bank Pink Sheet, kolom `Palm oil`, rata-rata 12 bulan 2024 = **US$964/ton** (CC BY 4.0)
+
+`964 ÷ 132,70 = 7,26×` ✓. Tetapi **1,52× hanya keluar bila OER = 21%** — dan tidak ada sumber
+yang mengukur 21%. Yang benar-benar diukur:
+
+| Sumber | OER | Cakupan | Lisensi |
+|---|---:|---|---|
+| MPOB, API `/api/oer` | **19,67%** (2024) · 19,74% (2025) | Malaysia, bulanan 2000-01→2026-07 | © MPOB — benih privat |
+| FAOSTAT QCL, dihitung sendiri | **19,62–19,73%** (2018–2023) | **Indonesia**, tahunan | CC BY 4.0 |
+| Permentan 01/2018 Lampiran II | 21,30–22,34% | provinsi × umur | tanpa hak cipta — **tetapi sudah dicabut** |
+
+Dua metode yang sama sekali independen — pengukuran kilang Malaysia dan rasio produksi
+Indonesia — bertemu di **~19,7%**. Angka 21–22% berasal dari **tabel rendemen peraturan**,
+yaitu patokan administratif untuk menghitung harga, bukan rendemen yang terjadi di kilang.
+Keduanya berselisih ±2 poin, dan 2 poin itu ≈ **12% pada harga TBS**.
+
+**Angka bawaan yang dipakai sejak sekarang: OER 19,7%**, dan ia wajib bisa diubah pengguna.
+
+### Apa yang berubah pada angka yang dibaca petani
+
+| OER | TBS setara-CPO 2024 | Rasio | Yang tampil di layar |
+|---|---:|---:|---|
+| 21,00% (asumsi lama) | US$631,90 | 1,53× | **66%** |
+| **19,70% (dipakai sekarang)** | **US$673,42** | **1,43×** | **70%** |
+| 19,67% (MPOB terukur) | US$674,63 | 1,43× | 70% |
+
+Diuji silang lewat rute yang sama sekali lain: acuan TBS pintu-kilang Malaysia 2024
+(RM44,98 per 1% OER × 19,67% = RM884,76 ÷ 4,576428 MYR/USD = US$193,33) dibanding harga petani
+Indonesia US$132,70 = **68,6%**. Dua jalan berbeda bertemu di ~69–70%.
+
+### Dua temuan yang mengubah bentuk modulnya, bukan cuma angkanya
+
+**Pertama: garis penuhnya bukan 100%, melainkan ~108–110%.** MPOB mengutip harga TBS **per
+1% OER**, dan angka itu diturunkan dari **CPO + PK + CPKO** — bukan CPO saja:
+
+> *"MPOB FFB Reference Price at 1% OER is based on the current market price of CPO, PK and
+> CPKO according to region, derived from contract registration by licensees to MPOB."*
+
+Sehingga harga TBS pintu-kilang yang sehat duduk di **107,6% (2024)** dan **110,4% (2025)**
+dari setara-CPO murni, karena nilai inti sawit ikut di dalamnya. Menampilkan 100% sebagai
+garis penuh akan membuat pasar yang berfungsi pun terlihat merugikan petani. Membandingkan
+TBS hanya terhadap `CPO × OER` **merendahkan nilainya secara sistematis sekitar 8–10%**.
+
+**Kedua: rendemen adalah properti KILANG, bukan konstanta nasional.** Juni 2026, dari 451
+kilang yang dilaporkan MPOB: OER terendah **12,44%**, tertinggi **24,20%** — hampir dua kali
+lipat. Sebaran antar-kilang itu lebih besar daripada seluruh selisih yang sedang
+diperdebatkan di atas. Ini argumen terkuat agar medan rendemen **bisa diubah petani**, dan
+bukan sekadar boleh diubah: petani yang tahu kilang tujuannya punya angka yang lebih benar
+daripada rata-rata nasional mana pun.
+
+### Yang tidak boleh dipakai sebagai OER
+
+**Jangan pakai FAOSTAT SCL** (*Supply Utilization Accounts*). Rasionya keluar **21,294%
+persis, identik tiga tahun berturut-turut**, dan sepanjang 2010–2023 hanya melompat diskret
+lalu datar. Itu koefisien teknis asumsi FAO yang dimainkan balik, bukan kinerja kilang. Rasio
+QCL bervariasi tahun ke tahun sehingga lebih mendekati kenyataan — tetapi ia tetap **rasio
+produksi tahunan, bukan OER terukur**; pakai sebagai uji kewajaran, jangan diberi label
+"OER resmi". Lompatan 21,71% pada 2019 adalah kejanggalan data, bukan lonjakan rendemen.
+
+### Batas koreksi ini
+
+- Angka MPOB **benih privat** (© MPOB, tanpa lisensi terbuka): boleh dipakai mengkalibrasi
+  dan membandingkan, **tidak boleh diterbitkan ulang**. Yang boleh terbit angka FAOSTAT.
+- Lisensi CC BY 4.0 Pink Sheet dikutip dari halaman kebijakan umum World Bank; entri
+  katalognya sendiri konsisten membalas **HTTP 429** saat diperiksa, dan halaman kebijakan itu
+  menyebut pengecualian *"Externally-Sourced Data"*. **Satu langkah verifikasi ini masih
+  terbuka sebelum menerbitkan.**
+- Kolom `Palm oil` Pink Sheet **bukan satu seri**: ia sambungan lima spesifikasi berbeda
+  (Crude DAP sejak Feb 2025; 5% Bulk CIF NW Europe; RBD FOB Malaysia; RBD CIF Rotterdam; dan
+  Malaysia 5% cif). Memplot 1960→2026 sebagai satu garis berarti memplot empat produk pada
+  tiga dasar penyerahan.
+- Tabel rendemen pengganti Permentan 01/2018 **pindah ke Keputusan Dirjen Perkebunan dan
+  belum ditemukan.** Permentan 13/2024 Pasal 7(2) hanya memberi faktor koreksi swadaya:
+  rendemen tabel CPO tenera terkoreksi 90%, CPO dura 81%, PK tenera dan dura 110%.
+
+---
 
 ## 8. Yang perlu dikerjakan manusia
 
@@ -455,7 +550,9 @@ kekeliruan ini, karena selisih mingguan berukuran puluhan rupiah dan tingkat har
    salinan resmi.
 3. **Hitungan bagian 80,7% dan jurang harga dunia** memakai FAOSTAT 2024 terhadap Pink Sheet
    2024. Keduanya tertinggal, dan rendemen kebun berbeda-beda — angka rasionya penanda
-   skala, bukan dasar perhitungan.
+   skala, bukan dasar perhitungan. Sejak koreksi bagian 7a, hitungan sawitnya memakai OER
+   19,7% dan sudah diuji silang lewat acuan TBS Malaysia; sebaran antar-kilang 12,44–24,20%
+   tetap jauh lebih besar daripada ketepatan yang bisa dijanjikan angka nasional mana pun.
 4. **Tidak ada satu pun wawancara lapangan.** Kesimpulan bahwa responden "produsen" adalah
    pengumpul ditarik dari nama responden dan ketiadaan metodologi, bukan dari menanyai
    mereka. Kesimpulan itu kuat, tetapi jenis buktinya tetap tidak langsung.

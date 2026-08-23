@@ -9,7 +9,7 @@
  * Dan bahkan "harga produsen" resmi bukan harga petani — respondennya pengumpul,
  * penggilingan, dan pedagang; di Karawang satu orang. Jaraknya terpasang di dalam
  * DEFINISINYA, bukan celah cakupan. Jadi yang ditayangkan RASIO, mengikuti aturan tayang
- * ke-5 di docs/16: "Harga Anda = 66% setara-CPO dari harga dunia" jauh lebih sulit
+ * ke-5 di docs/16: "Harga Anda = 70% setara-CPO dari harga dunia" jauh lebih sulit
  * disalahpahami daripada dua angka berdampingan.
  *
  * ARUS KAS SEMUSIM DITAHAN, BUKAN DITAMPILKAN SETENGAH. Kapan biaya keluar dan kapan uang
