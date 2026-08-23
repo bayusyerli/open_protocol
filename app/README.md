@@ -679,7 +679,7 @@ mencobanya untuk tahu.
   atribut yang berbeda — `data-theme="dark"` sementara tombolnya menulis `data-tema="gelap"`.
   Orang yang memilih gelap lalu mengetuk satu jalur mendapat layar terang, **tanpa satu pun
   galat yang menandainya**. Diperbaiki 23 Agustus 2026; lihat temuan 1 di
-  [`docs/17-audit-frontend.md`](../docs/17-audit-frontend.md).
+  [`docs/20-audit-frontend.md`](../docs/20-audit-frontend.md).
 - **Satu nama atribut: `data-tema="terang"|"gelap"`.** Selama dua nama itu masih berbeda,
   tidak ada perbaikan sebagian yang bisa benar — memasang skrip pembacanya saja di jalur
   1–6 tetap tidak akan berpengaruh.

@@ -59,6 +59,13 @@ def bangun() -> dict:
             total += 1
             nama = (r["label"]["id"] or "").strip()
             prod = (r.get("manufacturer") or "").strip()
+            # Registri Kementan memuat baris uji cobanya sendiri: tujuh pendaftaran atas
+            # "PT. Pemohon (DUMMY)" bernama test, test1, testssl, testcobasistem,
+            # testanorganikSK, testmenungsa. Mereka menggelembungkan cacah principal dan
+            # penyebut merek, dan tidak akan pernah punya kemasan. Dibuang di sini supaya
+            # tidak pernah masuk indeks; nilai aslinya tetap utuh di vocab/product/.
+            if "DUMMY" in prod.upper() or nama.lower().startswith("test"):
+                continue
             kanon = alias.get(prod.upper(), prod)
             if not nama or not kanon:
                 continue
