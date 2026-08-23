@@ -1624,3 +1624,49 @@ kuat, tetapi menuliskannya berarti menyatakan identitas yang belum terbukti — 
 justru dijaga pasal 4b. Yang menyelesaikannya satu hal saja: nomor tercetak yang terbaca, dari
 foto eceran, dari brosur yang kelak diunggah, atau dari tarikan registri berikutnya kalau
 ZIBAN ternyata didaftarkan sendiri.
+
+
+## 18. OCR yang disaring registri — dan kenapa itu bukan menebak
+
+Sampai gelombang ini, tiap nomor pendaftaran dibaca **mata**: potong labelnya, perbesar,
+baca. Itu batas yang menentukan berapa banyak baris bisa naik ke
+`nomor_pendaftaran_tercetak`, basis terkuat yang ada, dan ia mahal.
+
+`baca-nomor.swift` menghapus batas itu. Vision milik macOS sudah ada di tiap mesin dan tidak
+menuntut pemasangan apa pun — tesseract tidak terpasang di lingkungan ini dan tidak perlu:
+
+```
+swiftc -O baca-nomor.swift -o baca-nomor
+./baca-nomor brosur/*.jpg > teks.tsv
+```
+
+**Yang membuatnya sah bukan OCR-nya melainkan penyaringnya.** Nomor yang keluar tidak pernah
+jadi fakta sendirian: ia wajib dicocokkan ke registri lebih dulu, dan pencocokan itu yang
+memutuskan. Salah baca satu digit membuat nomornya **tidak ketemu sama sekali** — jadi
+kekeliruan OCR gagal dengan berisik, bukan diam-diam. Itu kebalikan dari yang dilarang pasal
+4b: yang berbahaya menanam tebakan sebagai fakta, sedangkan di sini tebakan justru tidak
+punya jalan masuk.
+
+Diukur pada 56 brosur katalogcba.com:
+
+| | |
+|---|---:|
+| brosur memuat nomor yang terbaca OCR | **56 / 56** |
+| nomor cocok ke registri **dan** ke mereknya sendiri | **52** |
+| nomor ada di registri tetapi menunjuk merek lain | 2 |
+| nomor tidak ada di registri (OCR kehilangan satu digit) | 2 |
+| **lolos salah** | **0** |
+
+Dua yang menunjuk merek lain justru temuan, bukan kegagalan: LAMBADA 18 EC membaca nomor
+milik HIPOMEC 63 WP (produsen yang sama), dan CENTAMIL 25 WP membaca nomor milik SANGKUR
+50 EC (PT. MAJU MAKMUR UTOMO). Keduanya wajib dilihat mata sebelum dipakai — persis
+pemeriksaan yang `G9` tegakkan.
+
+Dua yang tidak ketemu berbentuk 13 digit padahal registri memakai 14: `0101020175918` dan
+`0101012015520`. Kehilangan satu digit itu **terlihat dari panjangnya**, dan tidak ditambal
+dengan menebak digit yang hilang.
+
+**Sisa katalogcba.com tercatat mesin, bukan di kepala.**
+[`prospek-katalogcba.csv`](prospek-katalogcba.csv) memuat kelima puluh enam baris berikut
+nomor tercetak, `brand_key`, `op:prd` yang dituju, dan statusnya. Yang tersisa hanya memotong
+packshot dari brosur yang sudah terunduh — pemetaannya tidak perlu diturunkan ulang.

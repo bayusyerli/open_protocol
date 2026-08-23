@@ -10,8 +10,8 @@ Dibangkitkan `progres.py`. Jangan disunting tangan — jalankan ulang.
 | Bisa berkemasan eceran | 10.356 | 10.978 | `███████████████████████·` 94.3% |
 | Situs principal sudah diperiksa | 9.729 | 10.978 | `█████████████████████···` 88.6% |
 | Principal-nya bersitus layak | 4.870 | 10.978 | `███████████·············` 44.4% |
-| Sudah dicoba dipanen | 632 | 10.978 | `█·······················` 5.8% |
-| **Bergambar** | 554 | 10.978 | `█·······················` 5.0% |
+| Sudah dicoba dipanen | 643 | 10.978 | `█·······················` 5.9% |
+| **Bergambar** | 565 | 10.978 | `█·······················` 5.1% |
 
 Yang dicoret di depan: **622 merek bahan teknis** berakhiran `TC`/`TK` — dijual per drum, tidak pernah berkemasan eceran.
 
@@ -19,23 +19,23 @@ Yang dicoret di depan: **622 merek bahan teknis** berakhiran `TC`/`TK` — dijua
 
 | | |
 |---|---:|
-| Baris manifes | 678 |
-| Merek bergambar | 554 |
+| Baris manifes | 689 |
+| Merek bergambar | 565 |
 | Merek ditolak beralasan | 78 |
-| Berkas ternormalkan | 1.625 |
-| Ukuran total | 74.7 MB |
-| Dipersempit ke satu pendaftaran | 574 baris |
+| Berkas ternormalkan | 1.656 |
+| Ukuran total | 75.7 MB |
+| Dipersempit ke satu pendaftaran | 586 baris |
 
-Peran gambar: **552** kemasan_depan · **38** panel_label · **6** lainnya · **3** logo · **1** bidikan_produk
+Peran gambar: **563** kemasan_depan · **38** panel_label · **6** lainnya · **3** logo · **1** bidikan_produk
 
 ## Kekuatan bukti
 
 | Ukuran | Jumlah | Catatan |
 |---|---:|---|
-| Nomor pendaftaran terbaca dari gambar | 293 | |
-| …ada di registri | 277 | selisih 16 tidak ada |
-| …**dan** milik mereknya sendiri | 272 | selisih 5 milik merek lain |
-| `komposisi_terbaca` | 426 | |
+| Nomor pendaftaran terbaca dari gambar | 304 | |
+| …ada di registri | 288 | selisih 16 tidak ada |
+| …**dan** milik mereknya sendiri | 283 | selisih 5 milik merek lain |
+| `komposisi_terbaca` | 437 | |
 | `tampak_sintetis` | 134 | |
 | `bentuk_kemasan_generik` | 127 | |
 | `watermark` | 14 | |
@@ -48,43 +48,43 @@ Peran gambar: **552** kemasan_depan · **38** panel_label · **6** lainnya · **
 |---|---:|---:|---|---|
 | PT Petrokimia Kayaku | 72 | 91 | `███████████···` | https://petrokayaku.com |
 | PT. Petrosida Gresik | 47 | 96 | `███████·······` | https://petrosida-gresik.com |
+| PT. CENTA BRASINDO ABADI CHEMICAL INDUST | 42 | 194 | `███···········` | katalogcba.com |
 | PT. SINAR GENERAL INDUSTRIES | 33 | 129 | `████··········` | https://pt-sgi.com |
-| PT. CENTA BRASINDO ABADI CHEMICAL INDUST | 31 | 194 | `██············` | katalogcba.com |
 | PT. UPL INDONESIA | 21 | 82 | `████··········` | https://www.uplcorp.com/id |
 | PT. RAINBOW AGROSCIENCES | 19 | 181 | `█·············` | rainbowagro.com/id |
 | CV. SAPROTAN UTAMA | 18 | 62 | `████··········` | https://saprotan-utama.com |
+| PT. DELTA GIRI WACANA | 18 | 129 | `██············` | dharmagunawibawa.co.id |
 | PT. CATUR AGRODAYA MANDIRI | 18 | 48 | `█████·········` | https://www.uplcorp.com/id |
 | PT. SAPROTAN UTAMA NUSANTARA | 18 | 51 | `█████·········` | https://saprotan-utama.com |
-| PT. DELTA GIRI WACANA | 18 | 129 | `██············` | dharmagunawibawa.co.id |
 | PT Petrokimia Gresik | 17 | 26 | `█████████·····` | https://petrokimia-gresik.com |
 | PT. MITRA KREASIDHARMA | 13 | 38 | `█████·········` | https://www.mitrakreasidharma.com/ |
 | PT. DA MING INDONESIA | 13 | 51 | `████··········` | https://www.asianachemical.co.id/i |
 | PT. SANTANI AGRO PERKASA | 13 | 46 | `████··········` | https://santani.id |
 | PT. KENSO INDONESIA | 13 | 67 | `███···········` | https://kenso.co.id |
 | PT. YANNO AGRO SCIENCE INDONESIA | 13 | 44 | `████··········` | https://yanno.co.id |
+| PT. FORAGRO MITRA SEJATI | 12 | 38 | `████··········` | https://foragro.co.id/ |
 | PT. ADIL MAKMUR FAJAR | 12 | 41 | `████··········` | https://adilmakmurfajar.com |
 | PT. DANKEN INDONESIA | 12 | 45 | `████··········` | https://dankenindonesia.com |
 | PT. PRIMA AGRO TECH | 12 | 37 | `█████·········` | https://primaagrotech.com/ |
 | PT. AGRO SEJAHTERA INDONESIA | 12 | 34 | `█████·········` | https://asterindo.co.id/ |
-| PT. FORAGRO MITRA SEJATI | 12 | 38 | `████··········` | https://foragro.co.id/ |
 | PT. ADVANSIA INDOTANI | 11 | 95 | `██············` | advansia.co.id |
 | PT.MEROKE TETAP JAYA | 11 | 46 | `███···········` | meroketetapjaya.com |
-| PT. TRIDA KIMIA SAKTI | 11 | 40 | `████··········` | tridakimiasakti.blogspot.com |
-| PT. ETONG CHEMICAL INDONESIA | 11 | 55 | `███···········` | etongchem.id |
 | PT. MAXXI AGRI INDONESIA | 11 | 87 | `██············` | maxxiagri.com |
+| PT. ETONG CHEMICAL INDONESIA | 11 | 55 | `███···········` | etongchem.id |
+| PT. TRIDA KIMIA SAKTI | 11 | 40 | `████··········` | tridakimiasakti.blogspot.com |
 | PT. NUFARM INDONESIA | 10 | 88 | `██············` | https://nufarm.com/id/ |
 | PT. PRIMA KARYA BERJAYA | 10 | 112 | `█·············` | prima-karya.co.id |
 | PT. REJEKI INDO AGROTEC | 8 | 69 | `██············` | ptria.com |
 | PT. DELTAGRO MULIA SEJATI | 8 | 81 | `█·············` | ptdeltagro.com |
 | PT. Kristalindo Karunia Internasional | 5 | 39 | `██············` | https://kristalindo.co.id/ |
 | PT. KIMIKA USAHA PRIMA | 5 | 5 | `██████████████` | https://kupgresik.com |
-| CV. SARAREA PANEN RAYA | 4 | 37 | `██············` | https://www.panenrayaagro.com/ |
 | PT. ARTHA MAKMUR ABADI | 4 | 34 | `██············` | https://pt-ama.co.id/ |
+| CV. SARAREA PANEN RAYA | 4 | 37 | `██············` | https://www.panenrayaagro.com/ |
 | PT. RAGAM MANDIRI | 3 | 3 | `██████████████` | petrokayaku.com |
-| PT. MEST INDONESIY | 1 | 6 | `██············` | mestindo.com |
 | DGW PUPUK INDONESIA | 1 | 17 | `█·············` | dgwfertilizer.co.id |
-| PT. Multi Mas Chemindo | 1 | 2 | `███████·······` | multimaschemindo.com |
 | PT. SANLEX MALINDO | 1 | 3 | `█████·········` | sanlexmalindo.com |
+| PT. MEST INDONESIY | 1 | 6 | `██············` | mestindo.com |
+| PT. Multi Mas Chemindo | 1 | 2 | `███████·······` | multimaschemindo.com |
 | PT. BASF INDONESIA | 1 | 93 | `··············` | petani-sejahtera.basf.co.id |
 
 ## Status situs principal
