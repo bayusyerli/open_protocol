@@ -922,8 +922,16 @@ dicocokkan ke pendaftarannya. Yang menghalangi hanya slot, bukan bukti:
 | `/product/sp-26` | PUPUK SP-26 PETRO, 26/5 | `01.01.2025.774` |
 | `/product/petroganik-2` | PUPUK ORGANIK PETROGANIK bersubsidi | `02.01.2023.924` atau `02.08.2023.926` — komposisi tercetak tidak memisahkan |
 | `/product/pupuk-spesifikasi-komoditi` | PUPUK NPK KEBOMAS 15-15-15 | **tidak ada yang cocok** |
+| *(tanpa halaman)* `kantong-DAP-PETRO-transparant.png` | PUPUK DAP PETRO, N 18% P₂O₅ 46% | `01.01.2024.579` |
+| *(tanpa halaman)* `021118_Rock-phosphate-PETRO_2018_3D-transparant.png` | PUPUK ROCK PHOSPHATE PETRO, P₂O₅ 28% | `01.03.2024.258` |
 
-Baris terakhir itu temuan tersendiri: **tidak satu pun dari 29 pendaftaran KEBOMAS
+Dua baris terakhir datang dari sapuan ember di pasal 16, bukan dari katalog: DAP dan Rock
+Phosphate tidak punya halaman produk sama sekali, tetapi packshot dan pendaftarannya
+dua-duanya ada — yang hilang cuma slot. Karung `PUPUK KCL PETRO` juga ada di ember dan
+tidak masuk tabel ini, sebab K₂O 60% yang tercetak tidak cocok ke satu pun pendaftaran
+Petrokimia; ia bukan terparkir melainkan tak berpendaftaran.
+
+Baris NPK KEBOMAS itu temuan tersendiri: **tidak satu pun dari 29 pendaftaran KEBOMAS
 berkomposisi 15-15-15.** Yang terdekat 15-15-18 (`01.01.2023.727`) dan 15-15-6
 (`01.01.2023.1448`). Karung itu memang halaman "Pupuk Spesifikasi Komoditi" — lini racikan
 pesanan — jadi kemungkinan besar ia karung contoh, bukan SKU terdaftar. Dicatat apa adanya;
@@ -960,3 +968,64 @@ Ini juga alasan seluruh 13 baris panen ini ditandai `tampak_sintetis`: keduanya 
 mockup resmi, bukan foto. `G11` karena itu menahan dua belas di antaranya dari
 `terverifikasi`; yang berhak naik hanya SP-36, sebab nomor tercetaknya terkoroborasi
 registri. Mekanismenya bekerja persis seperti yang dirancang di §4.
+
+
+## 16. Sapuan seluruh situs setelah katalognya habis
+
+Panen pasal 14 hanya menyentuh `/product-category/pupuk`. Sapuan lanjutan 23 Agustus 2026
+menyisir sisanya, dan hasilnya layak dicatat justru karena sebagian besarnya **temuan
+negatif** — daftar yang tidak perlu disapu lagi.
+
+**Situsnya sudah habis.** `sitemap-product-1.xml` memuat tepat 29 URL, sama persis dengan
+yang ditautkan halaman kategori. Tidak ada kategori produk kedua. Bagian sitemap lain —
+`page` (30 halaman korporat), `news`, `microsite`, `map` — tidak memuat satu pun halaman
+produk. `robots.txt` hanya menutup `/cpresources/`, `/vendor/`, `/.env`, dan `/cache/`.
+
+**Yang tersisa hidup di embernya, bukan di situsnya.** 94 objek gambar di akar
+`images/product/`; dua belas kini jadi baris manifes. Delapan puluh dua sisanya disortir
+dengan melihat semuanya sekaligus dalam satu lembar kontak:
+
+| Golongan | Jumlah | Contoh |
+|---|---:|---|
+| Ikon daftar di bawah 320 px | 14 | `Urea.jpg` 74×98, `ZK.jpg` 75×97, `Phonska.jpg` 124×169 |
+| Benih — di luar registri PUKPES | 7 | Petro Hi-Corn, Petro Hibrida HIPA-11 & 18, Petroseed, Fitrice, Petro Chili |
+| Probiotik ternak & perikanan — di luar registri | 3 | Petro Biofeed, PetroFish, Petro Chick |
+| Bukan kemasan | 3 | foto drone `DJI_0490.JPG`, cap ISO 27001, foto gelas laboratorium |
+| Packshot pupuk: karya seni versi lama, atau slot mereknya sudah terpakai | 55 | `SP36-PETRO-2018`, `PETROGANIK-UPDATE-2017`, `kantong-DAP-PETRO` |
+
+**Satu yang dipanen: `ponska-ocha.png`.** PHONSKA OCA — dua botol 1 liter pupuk organik
+cair — ada di ember tetapi **tidak di halaman mana pun dan tidak di sitemap**. Kelas yang
+sama dengan BOOSBLOOM di pasal 10, dan satu-satunya di seluruh sapuan ini. Mereknya
+menaungi tepat satu pendaftaran, jadi tidak ada tabrakan `G6`; `source.page_url`
+dikosongkan karena memang tidak ada halamannya. Perlu diperhatikan pendaftarannya sudah
+kedaluwarsa sejak 25 Desember 2025 dan penerusnya, PHONSKA OCA PLUS, merek yang berbeda.
+
+**Tiga produk beredar yang packshot-nya ada tetapi tidak bisa dipasang.** Karung `PUPUK KCL
+PETRO` mencetak K₂O 60%; tidak satu pun pendaftaran Petrokimia berkadar itu — yang terdekat
+PETRO K PLUS 59%, dan itu ber-B 0,5%. Dugaan yang paling masuk akal: KCl yang
+diperdagangkan, bukan diformulasi, sehingga tidak perlu didaftarkan. DAP (N 18%, P₂O₅ 46%)
+dan Rock Phosphate (P₂O₅ 28%) sebaliknya PUNYA pendaftaran — `01.01.2024.579` dan
+`01.03.2024.258` — tetapi keduanya bernaung di merek payung `PETROKIMIA GRESIK` yang
+slotnya sudah dipakai SP-36. Ketiganya masuk daftar terparkir pasal 14.
+
+**Berkas terbesar di ember bukan yang terbaik, dan di sini dua kali.** `Phonska-Plus.jpg`
+2347×3216 dan `Petro_Ningrat-2019.png` **3543×4491** — keduanya jauh melampaui packshot
+yang dipakai katalog, dan keduanya **desain kemasan generasi lalu**. Phonska Plus 2019
+mencetak `01.01.2014.234`; Petro Ningrat 2019 memakai tata letak cokelat berfoto sayuran
+yang sama sekali berbeda dari karung emas berombak yang ditayangkan hari ini. Penyaring
+resolusi murni akan memilih keduanya lebih dulu, dan keduanya salah.
+
+**Sepuluh merek Petrokimia tetap tanpa gambar, dan situs ini tidak akan menolongnya.**
+Dicari di seluruh **33.941 objek** ember, bukan hanya di `images/product/`:
+
+| Merek | Objek di ember |
+|---|---|
+| PETRO BIOPALM · PETRO KALIMAS · PETRO KALSIPALM · PETROGANIK REMAX · PETROKIMIA GRESIK ZA MAX · PETRONANO | nol |
+| PETRO K PLUS · PHONSKA CAIR | hanya foto berita, bukan packshot |
+| PETRO BIO | hanya ikon daftar 74×102 px |
+| PHONSKA OCA PLUS | belum pernah difoto — yang ada botol PHONSKA OCA, merek lain |
+
+Seratus delapan puluh tiga PNG di luar `images/product/` berukuran di atas 80 KB diperiksa
+juga: seluruhnya foto korporat, foto berita, potret direksi, atau sampul laporan tahunan.
+**Packshot Petrokimia semuanya hidup di satu direktori** — itu temuan yang menghemat
+sapuan berikutnya.

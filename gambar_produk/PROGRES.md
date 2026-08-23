@@ -10,8 +10,8 @@ Dibangkitkan `progres.py`. Jangan disunting tangan — jalankan ulang.
 | Bisa berkemasan eceran | 10.356 | 10.978 | `███████████████████████·` 94.3% |
 | Situs principal sudah diperiksa | 7.551 | 10.978 | `█████████████████·······` 68.8% |
 | Principal-nya bersitus layak | 4.239 | 10.978 | `█████████···············` 38.6% |
-| Sudah dicoba dipanen | 547 | 10.978 | `█·······················` 5.0% |
-| **Bergambar** | 471 | 10.978 | `█·······················` 4.3% |
+| Sudah dicoba dipanen | 548 | 10.978 | `█·······················` 5.0% |
+| **Bergambar** | 472 | 10.978 | `█·······················` 4.3% |
 
 Yang dicoret di depan: **622 merek bahan teknis** berakhiran `TC`/`TK` — dijual per drum, tidak pernah berkemasan eceran.
 
@@ -19,14 +19,14 @@ Yang dicoret di depan: **622 merek bahan teknis** berakhiran `TC`/`TK` — dijua
 
 | | |
 |---|---:|
-| Baris manifes | 593 |
-| Merek bergambar | 471 |
+| Baris manifes | 594 |
+| Merek bergambar | 472 |
 | Merek ditolak beralasan | 76 |
-| Berkas ternormalkan | 1.431 |
-| Ukuran total | 66.9 MB |
-| Dipersempit ke satu pendaftaran | 497 baris |
+| Berkas ternormalkan | 1.434 |
+| Ukuran total | 67.0 MB |
+| Dipersempit ke satu pendaftaran | 498 baris |
 
-Peran gambar: **469** kemasan_depan · **38** panel_label · **6** lainnya · **3** logo · **1** bidikan_produk
+Peran gambar: **470** kemasan_depan · **38** panel_label · **6** lainnya · **3** logo · **1** bidikan_produk
 
 ## Kekuatan bukti
 
@@ -36,7 +36,7 @@ Peran gambar: **469** kemasan_depan · **38** panel_label · **6** lainnya · **
 | …ada di registri | 265 | selisih 15 tidak ada |
 | …**dan** milik mereknya sendiri | 260 | selisih 5 milik merek lain |
 | `komposisi_terbaca` | 358 | |
-| `tampak_sintetis` | 133 | |
+| `tampak_sintetis` | 134 | |
 | `bentuk_kemasan_generik` | 71 | |
 | `watermark` | 14 | |
 | `overlay_promosi` | 13 | |
@@ -50,27 +50,27 @@ Peran gambar: **469** kemasan_depan · **38** panel_label · **6** lainnya · **
 | PT. SINAR GENERAL INDUSTRIES | 33 | 129 | `████··········` | https://pt-sgi.com |
 | PT. CENTA BRASINDO ABADI CHEMICAL INDUST | 31 | 194 | `██············` | katalogcba.com |
 | PT. UPL INDONESIA | 21 | 82 | `████··········` | https://www.uplcorp.com/id |
-| CV. SAPROTAN UTAMA | 18 | 62 | `████··········` | https://saprotan-utama.com |
-| PT. CATUR AGRODAYA MANDIRI | 18 | 48 | `█████·········` | https://www.uplcorp.com/id |
-| PT. DELTA GIRI WACANA | 18 | 129 | `██············` | dharmagunawibawa.co.id |
 | PT. SAPROTAN UTAMA NUSANTARA | 18 | 51 | `█████·········` | https://saprotan-utama.com |
 | PT. RAINBOW AGROSCIENCES | 18 | 181 | `█·············` | rainbowagro.com/id |
-| PT Petrokimia Gresik | 15 | 26 | `████████······` | https://petrokimia-gresik.com |
+| PT. DELTA GIRI WACANA | 18 | 129 | `██············` | dharmagunawibawa.co.id |
+| PT. CATUR AGRODAYA MANDIRI | 18 | 48 | `█████·········` | https://www.uplcorp.com/id |
+| CV. SAPROTAN UTAMA | 18 | 62 | `████··········` | https://saprotan-utama.com |
+| PT Petrokimia Gresik | 16 | 26 | `█████████·····` | https://petrokimia-gresik.com |
 | PT. DA MING INDONESIA | 13 | 51 | `████··········` | https://www.asianachemical.co.id/i |
-| PT. SANTANI AGRO PERKASA | 13 | 46 | `████··········` | https://santani.id |
 | PT. KENSO INDONESIA | 13 | 67 | `███···········` | https://kenso.co.id |
-| PT. MITRA KREASIDHARMA | 13 | 38 | `█████·········` | https://www.mitrakreasidharma.com/ |
 | PT. YANNO AGRO SCIENCE INDONESIA | 13 | 44 | `████··········` | https://yanno.co.id |
+| PT. MITRA KREASIDHARMA | 13 | 38 | `█████·········` | https://www.mitrakreasidharma.com/ |
+| PT. SANTANI AGRO PERKASA | 13 | 46 | `████··········` | https://santani.id |
 | PT. DANKEN INDONESIA | 12 | 45 | `████··········` | https://dankenindonesia.com |
-| PT. FORAGRO MITRA SEJATI | 12 | 38 | `████··········` | https://foragro.co.id/ |
-| PT. AGRO SEJAHTERA INDONESIA | 12 | 34 | `█████·········` | https://asterindo.co.id/ |
-| PT. PRIMA AGRO TECH | 12 | 37 | `█████·········` | https://primaagrotech.com/ |
 | PT. ADIL MAKMUR FAJAR | 12 | 41 | `████··········` | https://adilmakmurfajar.com |
-| PT. ADVANSIA INDOTANI | 11 | 95 | `██············` | advansia.co.id |
+| PT. AGRO SEJAHTERA INDONESIA | 12 | 34 | `█████·········` | https://asterindo.co.id/ |
+| PT. FORAGRO MITRA SEJATI | 12 | 38 | `████··········` | https://foragro.co.id/ |
+| PT. PRIMA AGRO TECH | 12 | 37 | `█████·········` | https://primaagrotech.com/ |
 | PT. TRIDA KIMIA SAKTI | 11 | 40 | `████··········` | tridakimiasakti.blogspot.com |
+| PT. ETONG CHEMICAL INDONESIA | 11 | 55 | `███···········` | etongchem.id |
+| PT. ADVANSIA INDOTANI | 11 | 95 | `██············` | advansia.co.id |
 | PT.MEROKE TETAP JAYA | 11 | 46 | `███···········` | meroketetapjaya.com |
 | PT. MAXXI AGRI INDONESIA | 11 | 87 | `██············` | maxxiagri.com |
-| PT. ETONG CHEMICAL INDONESIA | 11 | 55 | `███···········` | etongchem.id |
 | PT. NUFARM INDONESIA | 10 | 88 | `██············` | https://nufarm.com/id/ |
 | PT. PRIMA KARYA BERJAYA | 10 | 112 | `█·············` | prima-karya.co.id |
 | PT. DELTAGRO MULIA SEJATI | 8 | 81 | `█·············` | ptdeltagro.com |
