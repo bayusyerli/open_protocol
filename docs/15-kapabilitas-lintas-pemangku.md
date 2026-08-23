@@ -626,20 +626,26 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 > *"kotak masuk yang tak seorang pun di ujungnya lebih buruk daripada tidak ada kotak
 > masuk"*.
 >
-> **B3 dan G1 terhalang hal yang lebih sederhana: repositorinya masih privat.** Keduanya
-> menuntut jejak yang **publik dan bernama**; menyalurkannya ke repositori tertutup
-> menghasilkan jejak yang bernama tetapi tidak publik — persis setengah ukuran yang
-> dihindari dokumen ini. Begitu repositorinya dibuka, keduanya bisa dibangun sebagai
-> **serah-terima**, bukan pengumpulan: permukaan menyusun sanggahan atau sumbangan yang
-> sudah terisi lalu menyerahkannya ke tempat publik itu, tanpa pernah menerima apa pun
-> sendiri.
+> **B3 dan G1 sempat terhalang hal yang lebih sederhana: repositorinya masih privat.**
+> Keduanya menuntut jejak yang **publik dan bernama**; menyalurkannya ke repositori
+> tertutup menghasilkan jejak yang bernama tetapi tidak publik — persis setengah ukuran
+> yang dihindari dokumen ini. **Penghalang itu hilang 23 Agustus 2026: repositorinya
+> dibuka** di `github.com/bayusyerli/open_protocol`, Apache-2.0 untuk kode dan
+> LICENSE-KONTEN untuk isinya. Keduanya kini bisa dibangun sebagai **serah-terima**, bukan
+> pengumpulan: permukaan menyusun sanggahan atau sumbangan yang sudah terisi lalu
+> menyerahkannya ke tempat publik itu, tanpa pernah menerima apa pun sendiri.
+>
+> **Yang dibuka adalah yang sudah didorong, bukan semua yang ada di cakram.** Panen
+> direktori pengecer principal — 1.605 toko berikut nomor telepon — hidup di cabang lokal
+> yang tidak pernah didorong, dan `toko_data/LAPIS.md` menggolongkannya **tidak terbit**.
+> Membuka repositori tidak menerbitkannya; **mendorong cabang itu akan menerbitkannya.**
 >
 > **C3 satu-satunya yang tidak terhalang**, dan sisinya yang tidak menuntut agronomi
 > dikerjakan lebih dulu — lihat barisnya di atas.
 >
-> **Yang perlu dikerjakan manusia sebelum gelombang 1 bisa lanjut:** memutuskan apakah
-> repositori dibuka, dan menetapkan siapa yang berada di ujung kanal mana pun sebelum
-> kanalnya dibangun.
+> **Yang perlu dikerjakan manusia sebelum gelombang 1 bisa lanjut:** tinggal satu —
+> menetapkan siapa yang berada di ujung kanal mana pun sebelum kanalnya dibangun. Keputusan
+> membuka repositori sudah diambil.
 
 ## 6. Urutan — ditempelkan ke tiga fase yang sudah ada
 
