@@ -193,6 +193,12 @@ for (const r of semua) perSkema[`${r.skema_kode} ${r.skema}`] = (perSkema[`${r.s
 const tanpaProv = semua.filter((r) => !r.provinsi).length;
 const cocok = lab.filter((r) => r.baris_lingkup !== '').length;
 const tanpaTanggal = lab.filter((r) => !r.masa_berlaku).length;
+// Kedaluwarsa dibandingkan dengan TANGGAL TARIKAN, bukan tanggal menjalankan skrip:
+// yang ditanyakan "sudah lewat pada saat data ini diambil?", dan jawabannya harus sama
+// setiap kali berkas ini dibangun ulang dari tarikan yang sama.
+const TARIKAN = '2026-08-23';
+const lewat = lab.filter((r) => r.masa_berlaku && r.masa_berlaku < TARIKAN);
+const lewatResidu = lewat.filter((r) => r.uji_residu_pestisida);
 const barisRinci = [...rinci.values()].reduce((a, r) => a + r.baris_lingkup, 0);
 
 writeFileSync(join(DIR, 'LAPIS.md'), `# Lapis direktori LPK terakreditasi KAN
@@ -226,6 +232,9 @@ Sisanya — kelistrikan, bahan bakar, konstruksi, tekstil — tidak menyentuh pe
 | **Residu pestisida** | **${hitung((r) => r.uji_residu_pestisida)}** |
 
 Masa berlaku akreditasi ikut di tiap baris — medan yang tidak ada di aplikasi layanan.
+Diadu dengan tanggal tarikan (${TARIKAN}), **${lewat.length} akreditasi sudah lewat masa berlakunya**,
+${lewatResidu.length === 0 ? 'dan tidak satu pun ada di daftar residu pestisida' : `**${lewatResidu.length} di antaranya** ada di daftar ${hitung((r) => r.uji_residu_pestisida)} yang bisa mengukur residu pestisida — ${lewatResidu.map((r) => `${r.no_akreditasi} (berakhir ${r.masa_berlaku})`).join(', ')}`}.
+Akreditasi yang habis berarti hasil ujinya tidak lagi diakui sebagai hasil laboratorium terakreditasi.
 ${tanpaTanggal ? `${tanpaTanggal} baris tanggalnya tidak terbaca dan dibiarkan kosong; nilai aslinya tetap disimpan di \`masa_berlaku_asli\`.` : 'Seluruh baris tanggalnya terbaca.'}
 
 ${cocok} dari ${lab.length} laboratorium juga ada di aplikasi layanan, dan hanya untuk
@@ -252,4 +261,5 @@ mereka tersedia lingkup terurai per parameter (\`kode_k01\`, \`baris_lingkup\`,
 `);
 
 console.log(`LPK layanan ${semua.length} (dari ${barisMentah} baris) | lab tani ${lab.length}/${totalLP} | lingkup terurai ${cocok}`);
+console.log(`  kedaluwarsa ${lewat.length} (residu ${lewatResidu.length}) per tarikan ${TARIKAN}`);
 console.log(`  air ${hitung((r) => r.uji_air)} | tanah ${hitung((r) => r.uji_tanah)} | pangan ${hitung((r) => r.uji_pangan)} | pupuk ${hitung((r) => r.uji_pupuk)} | residu pestisida ${hitung((r) => r.uji_residu_pestisida)}`)

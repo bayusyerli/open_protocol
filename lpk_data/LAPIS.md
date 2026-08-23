@@ -49,6 +49,9 @@ Sisanya — kelistrikan, bahan bakar, konstruksi, tekstil — tidak menyentuh pe
 | **Residu pestisida** | **17** |
 
 Masa berlaku akreditasi ikut di tiap baris — medan yang tidak ada di aplikasi layanan.
+Diadu dengan tanggal tarikan (2026-08-23), **11 akreditasi sudah lewat masa berlakunya**,
+**1 di antaranya** ada di daftar 17 yang bisa mengukur residu pestisida — LP-349-IDN (berakhir 2026-07-25).
+Akreditasi yang habis berarti hasil ujinya tidak lagi diakui sebagai hasil laboratorium terakreditasi.
 Seluruh baris tanggalnya terbaca.
 
 101 dari 889 laboratorium juga ada di aplikasi layanan, dan hanya untuk
