@@ -9,7 +9,7 @@
  * hukumnya — Pasal 75 menentukan pestisida dari kegunaan yang DIKLAIM.
  */
 
-import { ambil, muatMeta, teks, pasangKembali } from './pustaka.js';
+import { ambil, muatMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
@@ -331,6 +331,8 @@ el.daftar.addEventListener('click', (ev) => {
       </ul>`;
     const jalur5 = daftarResep.filter((r) => r.jalur === 5).length;
     await muatMeta();
+    // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Daftar fungsinya
+    // tetap digambar lebih dulu: tombol "kembali ke daftar" harus mendarat pada sesuatu.
     pasangBatas(el.batas, {
       sumber: [{
         dari: 'sediaan',
@@ -342,6 +344,13 @@ el.daftar.addEventListener('click', (ev) => {
           'Sebagian kriteria pelepasan hanya bisa diperiksa di laboratorium, dan kosakata ini belum memuat padanan kebunnya untuk bokashi dan vermikompos. Layar menyebutkan kekosongan itu alih-alih mengarang uji kebun yang belum pernah diputuskan siapa pun.',
       }],
     });
+
+    // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Dipanggil PALING
+    // AKHIR, sesudah daftar fungsi dan blok batas selesai digambar: keduanya menyentuh
+    // panel yang sama, dan memanggilnya lebih dulu membuat resepnya tergambar lalu
+    // terhapus tanpa satu pun galat.
+    const { resep } = tautanMasuk();
+    if (resep) await bukaResep(`sediaan/${resep}`);
   } catch (e) {
     el.fungsi.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan

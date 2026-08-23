@@ -285,7 +285,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | beranda satu kotak sudah ada; belum semua jalur tersambung | **BANGUN** |
+| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun** | **sebagian** |
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | belum ada | **BANGUN** (gel. 1) |
 | A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
@@ -637,7 +637,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 | 3 | **C2** keaslian & anti-palsu — lewat **kandungan**, bukan nomor — **sisi pupuk selesai** | Nilai tertinggi per biaya, dan kini melacak perilaku yang sudah terjadi |
 | 4 | **D4 + D5** kalibrasi & takaran — **selesai** | Termurah; menyentuh keselamatan; tidak butuh data baru |
 | 5 | **B4** antrean pertanyaan tak terjawab — **selesai** | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
-| 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
+| 6 | **A1** kotak tanya multimoda — **sebagian** | Setelah jalur-jalurnya layak dituju |
 | 7 | **A5** luring penuh — **sebagian** | Indeks sudah ≤48 KB — separuh jalan |
 | 8 | **C7** direktori layanan — **sebagian** | Fondasi toko tani sudah ada |
 | 9 | **D3** analisis usaha tani — **sebagian** | Pintu masuk ke E5 di gelombang berikutnya |

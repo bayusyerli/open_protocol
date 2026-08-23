@@ -312,6 +312,9 @@ a { color: var(--hijau-2); }
 .daftar-hasil a[data-jenis="pupuk"] { --tepi: var(--tosca); }
 .daftar-hasil a[data-jenis="varietas"] { --tepi: var(--jingga); }
 .daftar-hasil a[data-jenis="nama-lokal"] { --tepi: var(--amber); }
+/* Pintu bukan jawaban, dan warnanya menyatakan itu: tosca, bukan hijau seperti hasil
+   yang memang menjawab. */
+.daftar-hasil a[data-jenis="niat"] { --tepi: var(--tosca); }
 
 /* Nama lokal yang belum terpetakan: sengaja BUKAN tautan, karena tidak ada layar yang
    bisa dibuka untuknya. Yang ditawarkan keterangannya, bukan harapan palsu bahwa ada

@@ -74,6 +74,7 @@ export const tanggal = (s) => {
 export const JENIS = {
   pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif',
   gejala: 'Gejala', principal: 'Perusahaan', harga: 'Harga',
+  sediaan: 'Sediaan sendiri',
 };
 
 /**
@@ -311,6 +312,7 @@ export function tautanMasuk() {
   const p = new URLSearchParams(location.search);
   const pecahan = p.get('pecahan');
   const opt = p.get('opt');
+  const resep = p.get('resep');
   return {
     q: p.get('q'),
     id: p.get('id'),
@@ -318,5 +320,8 @@ export function tautanMasuk() {
     // Jalur 1 tidak memakai pecahan: daftar gejalanya dibawa utuh, jadi yang perlu
     // disebut cuma OPT mana yang dibuka.
     opt: opt && BENTUK_ID.test(opt) ? opt : null,
+    // Kunci resep ikut menyusun jalur berkas, jadi bentuknya dibatasi sama ketatnya
+    // seperti `pecahan`: huruf dan angka saja, tanpa titik dan tanpa garis miring.
+    resep: resep && /^[a-z0-9]+$/i.test(resep) ? resep : null,
   };
 }

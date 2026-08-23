@@ -1006,6 +1006,48 @@ for (const e of Object.keys(cari)) cari[e].sort((a, b) => a.n.localeCompare(b.n)
 // melewati anggaran didalamkan satu huruf lagi, berulang sampai muat. Awalan yang
 // didalamkan dicatat di meta.json, jadi penyaji tahu harus meminta tiga huruf
 // alih-alih dua tanpa perlu satu perjalanan gagal lebih dulu.
+// Kata yang menandai — "trichoderma", "biosaka", "PGPR", "kompos" — jarang ada di awal
+// namanya. "Perbanyakan Trichoderma pada media serealia" masuk ember "pe", jadi yang
+// mengetik nama jasad reniknya dijawab nol. Tiap kata penting karena itu difilekan
+// sebagai alias, memakai mekanisme `_k` yang sudah dipakai alias principal.
+// Diturunkan langsung dari kosakata, bukan dari berkasSediaan — berkas itu baru disusun
+// jauh di bawah, sementara entri pencarian harus sudah masuk SEBELUM ember didalamkan.
+// Entri yang masuk sesudahnya tertinggal di ember dangkal sementara penyaji mencarinya
+// di ember dalam, dan hasilnya nol tanpa satu pun galat.
+const sediaanCari = sediaan.map((x) => ({
+  id: x.id,
+  nama: x.label?.id ?? '',
+  jalur: /pesticide|unclear/.test((x.regulatory?.regime ?? []).join('+')) ? 6 : 5,
+  bukti: x.evidence_tier,
+  berkas: `sediaan/${x.id.replace(/[^a-z0-9]/gi, '')}`,
+}));
+
+const REMEH = new Set(['pada', 'media', 'proses', 'dari', 'dan', 'atau', 'untuk', 'yang',
+  'tanpa', 'buatan', 'sendiri', 'cair', 'padat', 'kotoran', 'bahan']);
+
+for (const r of sediaanCari) {
+  const entri = {
+    n: r.nama,
+    i: r.id,
+    j: 'sediaan',
+    k: r.jalur === 5 ? 'sediaan pupuk buatan sendiri' : 'sediaan pengendali — status hukum, bukan anjuran',
+    f: `tingkat bukti ${r.bukti}`,
+    p: r.berkas,
+  };
+  tambah(r.nama, entri);
+  // Alias yang jatuh di ember yang sama dengan nama utuhnya menghasilkan entri ganda
+  // di layar — "Kompos" dan "Kompos kotoran sapi" sama-sama masuk ember "ko".
+  const sudah = new Set([rapikan(r.nama)]);
+  const emberUtama = ember(r.nama);
+  for (const kata of r.nama.split(/[^A-Za-z0-9]+/)) {
+    if (kata.length < 4 || REMEH.has(kata.toLowerCase())) continue;
+    const k = rapikan(kata);
+    if (sudah.has(k) || ember(kata) === emberUtama) continue;
+    sudah.add(k);
+    tambah(kata, { ...entri, n: r.nama });
+  }
+}
+
 const cariDalam = [];
 const muat = (isi) => Buffer.byteLength(JSON.stringify(isi), 'utf8') <= ANGGARAN;
 // Batasnya dulu 8 dan itu diam-diam gagal begitu principal masuk: 676 badan bernama
@@ -1274,6 +1316,12 @@ for (const s of sediaan) {
     dasarKomposisi: s.composition_basis ?? null,
   };
 }
+
+// A1 — sediaan ikut kepala pencarian. Sebelum ini jalur 5 dan 6 TIDAK BISA DICAPAI dari
+// kotak beranda sama sekali: keduanya hanya punya pintu sendiri, dan yang mengetik
+// "trichoderma" atau "biosaka" dijawab nol. Dua belas resep, dan pintunya berbeda menurut
+// rezimnya — sisi pupuk ke jalur 5, sisi pengendali ke jalur 6 — karena keduanya memang
+// dua layar yang berbeda janjinya, bukan satu layar dengan dua tab.
 
 // ---------------------------------------------------------------------------
 // Pintu masuk jalur 1: OPT terkurasi beserta teks gejalanya

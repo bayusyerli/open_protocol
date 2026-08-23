@@ -34,11 +34,18 @@ const el = {
 // di jalur 1, karena di sanalah blok "pastikan dulu" berada.
 const RUMAH = { varietas: 'jalur-4.html', pestisida: 'index.html', pupuk: 'index.html', bahan: 'index.html' };
 
+// Sediaan punya DUA rumah, dan yang menentukan rezimnya. Sisi pupuk dan sisi pengendali
+// bukan dua tab dari satu layar — janjinya berbeda: yang satu resep terbuka, yang satu
+// status hukum yang sengaja berhenti sebelum jadi anjuran.
+const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.includes('pengendali')
+  ? 'jalur-6.html' : 'jalur-5.html');
+
 // Dua jenis entri baru tidak dibuka lewat `id`+`pecahan` seperti empat yang lain: keduanya
 // punya berkasnya sendiri per entitas, jadi yang dibawa tautannya cukup satu kunci. Bentuk
 // tautannya karena itu berbeda, dan perbedaannya ditulis sekali di sini alih-alih diulang di
 // tiap pemanggil.
 const tautanKunci = {
+  sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
   principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
   harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
 };
@@ -106,6 +113,46 @@ const kartuNamaLokal = (x) => {
     </li>`).join('');
 };
 
+/* A1 — perutean niat. Empat layar bukan entitas dan tidak akan pernah muncul dari
+ * pencarian nama: kalkulator hara, kalibrasi semprot, direktori toko, dan titik impas.
+ * Yang mengetik "berapa tangki" tidak sedang menyebut nama apa pun — ia menyebut
+ * pertanyaannya.
+ *
+ * INI MERUTEKAN, BUKAN MENJAWAB. Salah rute berbiaya satu ketukan terbuang; salah jawab
+ * berbiaya semprotan yang keliru. Karena itu tautannya tampil sebagai PINTU di samping
+ * hasil pencarian biasa, tidak pernah menggantikannya.
+ *
+ * Daftarnya sengaja pendek dan ditulis tangan. Pencocokan yang pintar menebak lebih
+ * sering, dan tebakan yang lebih sering di pintu masuk berarti orang lebih sering
+ * mendarat di layar yang salah tanpa tahu kenapa. */
+const rapiNiat = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+
+const NIAT = [
+  { ke: 'jalur-3.html', judul: 'Hitung rupiah per kilogram hara',
+    kata: ['hara', 'per kg hara', 'bandingkan pupuk', 'pupuk mana', 'murah mana', 'mahal mana'] },
+  { ke: 'takaran.html', judul: 'Kalibrasi semprot & takaran',
+    kata: ['tangki', 'kalibrasi', 'takaran', 'menakar', 'tutup botol', 'sendok', 'semprot', 'berapa ml'] },
+  { ke: 'usaha.html', judul: 'Titik impas usaha tani',
+    kata: ['impas', 'balik modal', 'modal', 'biaya tanam', 'untung', 'rugi', 'rab', 'anggaran'] },
+  { ke: 'toko.html', judul: 'Cari toko tani & penjual benih',
+    kata: ['toko', 'kios', 'beli di mana', 'penjual', 'terdekat', 'dekat sini'] },
+  { ke: 'harga.html', judul: 'Harga eceran harian',
+    kata: ['harga', 'berapa harga'] },
+];
+
+const cariNiat = (kueri) => {
+  const r = ' ' + rapiNiat(kueri) + ' ';
+  return NIAT.filter((x) => x.kata.some((k) => r.includes(' ' + rapiNiat(k) + ' ')));
+};
+
+const kartuNiat = (x) => `
+  <li>
+    <a href="${teks(x.ke)}" data-jenis="niat">
+      <span><span class="nama-hasil">${teks(x.judul)}</span></span>
+      <span class="lencana">Pintu</span>
+    </a>
+  </li>`;
+
 const kelompok = (judul, catatan, isi) => `
   <div class="kelompok-hasil">
     <p class="ringkas-hasil"><strong>${judul}</strong>${catatan ? ` — ${catatan}` : ''}</p>
@@ -114,6 +161,7 @@ const kelompok = (judul, catatan, isi) => `
 
 function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
   const bagian = [];
+  const niat = cariNiat(kueri);
 
   // Nama lokal paling dulu. Yang mengetik "patek" sudah tahu apa yang dilihatnya dan
   // sedang menyebut namanya; itu kueri paling spesifik yang bisa masuk ke kotak ini.
@@ -181,6 +229,15 @@ function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
       tampil.map((x) => kartuNama(x, kueri)).join('')));
   }
 
+  // Pintu ditawarkan di BAWAH hasil nama, tidak pernah menggantikannya: kalau ada hasil
+  // nama, yang dicari hampir pasti namanya.
+  if (niat.length) {
+    bagian.push(kelompok(
+      bagian.length ? 'Atau mungkin yang dicari alatnya' : 'Sepertinya yang dicari alatnya',
+      'ini <strong>pintu</strong>, bukan jawaban — layar tujuannya yang menghitung',
+      niat.map(kartuNiat).join('')));
+  }
+
   el.hasil.innerHTML = bagian.join('');
 }
 
@@ -202,6 +259,16 @@ function gambarNamaTakTerambil() {
 }
 
 async function gambarKosong(kueri) {
+  // Nol hasil adalah tempat perutean niat paling berguna: yang mengetik "berapa tangki"
+  // memang tidak akan pernah punya hasil nama, dan tanpa ini ia dijawab "tidak ada".
+  const niat = cariNiat(kueri);
+  if (niat.length) {
+    el.hasil.innerHTML = kelompok(
+      'Sepertinya yang dicari alatnya',
+      'ini <strong>pintu</strong>, bukan jawaban — layar tujuannya yang menghitung',
+      niat.map(kartuNiat).join(''));
+    return;
+  }
   // B4: dua lubang sekaligus tertabrak — nama yang dicari tidak punya padanan
   // terdaftar, dan gejalanya di luar sepuluh yang terkurasi. Yang dicatat cacahnya,
   // bukan kuerinya; lihat docs/11 bagian 3.

@@ -343,6 +343,11 @@ di halaman ini bukan pencariannya melainkan pemisahannya.
   pada `cari()` — jadi ember nama yang gagal diambil ikut membunuh hasil gejala dan nama
   lokal yang **sudah ada di peranti**. Ketiganya kini ditangkap sendiri-sendiri, dan
   ketidaksanggupan pencarian nama dinyatakan di bawah hasil yang berhasil.
+- **Saat mengembangkan, cangkangnya harus dibuang dulu.** Sesudah A5 hidup, `sw.js`
+  menyajikan HTML, CSS, dan modul dari cache — jadi perubahan berkas **tidak terlihat**
+  sampai `VERSI` di `sw.js` dinaikkan atau cache dibuang lewat tombol di `ukur.html`. Ini
+  bukan cacat; ia justru buktinya bekerja, tetapi ia akan membuang waktu siapa pun yang
+  lupa.
 - **`navigator.onLine` tidak tahu apakah situsnya terjangkau.** Ia melaporkan tautan
   peranti, bukan keterjangkauan — saat server dimatikan dalam pengujian, cip jaringan
   tetap berbunyi "Ada sinyal". Memeriksanya sungguhan menuntut satu permintaan tambahan
@@ -465,6 +470,42 @@ yang sama seperti hasil pencarian nama.
   kadar bahan aktif tunggal tetap terjangkau lewat kartu bahan+kadar di jalur 2.
   Lima belas produk bersatuan ganjil — `mL/L`, `mg/pcs`, `g/m2`, `mg/m2` — tidak ikut
   terindeks sama sekali.
+
+### Kotak tanya multimoda — A1
+
+Kotaknya sudah ada sejak beranda dibangun; yang belum, semua jalur tersambung ke sana.
+Terukur sebelum mulai: kotak itu menjangkau **enam jenis** entri, dan **dua jalur penuh
+tidak bisa dicapai darinya sama sekali**.
+
+- **Sediaan masuk kepala pencarian.** Sebelum ini yang mengetik `trichoderma`, `biosaka`,
+  atau `kompos` dijawab **nol**, padahal jalur 5 dan 6 memuat keduabelas resepnya. Kini
+  tiap resep menautkan langsung ke layarnya — `?resep=…` — dan pintunya berbeda menurut
+  rezimnya: sisi pupuk ke jalur 5, sisi pengendali ke jalur 6, karena keduanya memang dua
+  janji yang berbeda.
+- **Kata di tengah nama difilekan sebagai alias.** Kepala pencarian berember menurut
+  **awalan**, dan "Perbanyakan Trichoderma pada media serealia" masuk ember `pe` — jadi
+  nama jasad reniknya tidak terjangkau. Tiap kata penting kini difilekan terpisah lewat
+  mekanisme `_k` yang sudah dipakai alias principal. Alias yang jatuh di ember yang sama
+  dengan nama utuhnya dilewati, kalau tidak "Kompos" muncul dua kali.
+- **Entri harus masuk SEBELUM ember didalamkan.** Yang ditambahkan sesudahnya tertinggal
+  di ember dangkal sementara penyaji mencarinya di ember dalam — `Biosaka` ada di `bi.json`
+  sementara penyaji membuka `bio.json` yang tidak pernah ada, dan hasilnya nol **tanpa satu
+  pun galat**. Entri sediaan karena itu diturunkan langsung dari kosakata, bukan dari
+  `berkasSediaan` yang baru disusun jauh di bawah.
+- **Perutean niat untuk yang bukan entitas.** Empat layar tidak akan pernah muncul dari
+  pencarian nama — kalkulator hara, kalibrasi semprot, direktori toko, titik impas. Yang
+  mengetik "berapa tangki" tidak sedang menyebut nama; ia menyebut pertanyaannya. Daftar
+  katanya **pendek dan ditulis tangan**: pencocokan yang pintar menebak lebih sering, dan
+  tebakan yang lebih sering di pintu masuk berarti orang lebih sering mendarat di layar
+  yang salah tanpa tahu kenapa.
+- **Pintu ditawarkan di bawah hasil nama, tidak pernah menggantikannya.** Kalau ada hasil
+  nama, yang dicari hampir pasti namanya. Kartunya berlabel **Pintu** dan berwarna beda —
+  ini merutekan, bukan menjawab. Salah rute berbiaya satu ketukan; salah jawab berbiaya
+  semprotan yang keliru.
+- **Masuk lewat foto tidak dibangun, dan itu keputusan.** Pengenal foto yang menebak
+  persis yang ditolak jalur 1 — *"mesin tidak menebak"*. Masuk lewat gambar dan suara
+  adalah kapabilitas tersendiri yang **ditunda**, dan layar mengatakannya di lembar
+  "Tentang data" alih-alih membiarkan orang mencari tombol kamera yang tidak ada.
 
 ### Kamus nama lokal — A3
 
