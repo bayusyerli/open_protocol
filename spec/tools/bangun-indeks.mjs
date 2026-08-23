@@ -851,7 +851,26 @@ for (const h of hargaSeri) {
     // menyebut siapa penulisnya. Tanpa keduanya kalimat itu tidak bisa diperiksa siapa pun —
     // dan itu persis keberatan B5 yang membuat kapabilitas ini ditunda.
     ...(kom
-      ? { komentar: { teks: kom.komentar, batas: kom.batas, sumber: kom.sumber, ditinjau: kom.ditinjau ?? null } }
+      ? {
+        komentar: {
+          teks: kom.komentar,
+          batas: kom.batas,
+          sumber: kom.sumber,
+          // DUA keadaan yang berbeda, dan keduanya ikut ke layar terpisah. `periksa` hanya
+          // menyatakan bahwa aritmetikanya bisa ditelusuri; `ditinjau` menyatakan seorang
+          // manusia bertanggung jawab atas bacaannya. Membawa yang pertama tanpa yang kedua
+          // membuat layar terdengar sudah diperiksa padahal yang diperiksa baru angkanya.
+          ditinjau: kom.ditinjau ?? null,
+          ...(kom.ditinjauOleh ? { oleh: kom.ditinjauOleh } : {}),
+          ...(kom.diperiksaMesin
+            ? {
+              periksa: kom.diperiksaMesin.lolos
+                ? { lolos: true }
+                : { lolos: false, masalah: kom.diperiksaMesin.masalah ?? [] },
+            }
+            : {}),
+        },
+      }
       : {}),
   };
 }
@@ -1580,6 +1599,10 @@ const meta = {
     varietas: pecahanVarietas.length,
     opt: [...perKomoditas.keys()].map(kunciKomoditas).sort(),
     kandungan: Object.keys(berkasKandungan).sort(),
+    // Didaftar supaya service worker bisa menyimpan keduabelasnya untuk luring tanpa
+    // menebak nama berkasnya — 36 KB seluruhnya, dan tanpanya jalur 5 dan 6 terbuka
+    // tetapi kosong justru saat paling mungkin dibuka jauh dari sinyal.
+    sediaan: Object.keys(berkasResep).sort(),
     // Sengaja CACAH, bukan daftar. Daftar 3.136 kunci principal membengkakkan meta.json dari
     // 19 KB jadi 114 KB — dan meta.json satu-satunya berkas yang diambil di TIAP muat halaman,
     // termasuk halaman yang tidak menyentuh principal sama sekali. Penyaji tidak
@@ -1626,7 +1649,7 @@ const meta = {
     hargaPupuk:
       'SP2KP mendaftarkan Pupuk Urea, NPK 15-15-15, SP-36, dan ZA tetapi tidak mengisi harganya: 13-15 tanggal mingguan pada paruh pertama 2024, seluruhnya kosong pada keempat ukuran tertimbang. Jalur 3 karena itu tetap mengandalkan masukan pengguna untuk rupiah per kg hara.',
     gambarKemasan:
-      'Gambar kemasan ada pada 427 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
+      'Gambar kemasan ada pada 439 dari 14.920 produk — 2,9%. Ketiadaannya BUKAN tanda produk tidak terdaftar; ia tanda situs principal-nya belum dipanen, atau merek itu tidak berkemasan eceran. Manifesnya sendiri menyatakan redistributable: false dengan izin belum diminta; penerbitannya keputusan pemilik repositori, tercatat di gambar_produk/terbitkan.mjs.',
     sertifikasiLot: 'Jalur 4 hanya bisa memastikan varietasnya, bukan bungkus atau bibit yang di tangan.',
     dosisKosong:
       'Sebagian penggunaan berlabel tidak memuat dosis sama sekali di registri — bukan dosisnya nol, melainkan medannya kosong. Layar kalibrasi tidak bisa mengambilkan angkanya untuk penggunaan itu, dan dosis harus dibaca sendiri dari kemasannya.',

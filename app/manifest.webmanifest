@@ -1,0 +1,15 @@
+{
+  "name": "Open Protocols — data pertanian terbuka",
+  "short_name": "Open Protocols",
+  "description": "Registri pupuk, pestisida, dan varietas terdaftar. Gratis, tanpa akun, dan kata yang dicari tidak dikirim ke mana pun.",
+  "lang": "id",
+  "start_url": "beranda.html",
+  "scope": "../",
+  "display": "standalone",
+  "background_color": "#f5f6ee",
+  "theme_color": "#00442f",
+  "icons": [
+    { "src": "ikon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "ikon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" }
+  ]
+}

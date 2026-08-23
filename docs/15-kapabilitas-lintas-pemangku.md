@@ -289,7 +289,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | belum ada | **BANGUN** (gel. 1) |
 | A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
-| A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | indeks sudah ≤48 KB per berkas — separuh jalan | **BANGUN** (gel. 0) |
+| A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | **sebagian** 23 Agustus 2026 — `sw.js` tiga tingkat: cangkang & kosakata kecil otomatis, kepala pencarian atas permintaan, rincian menyusul saat dibuka | **sebagian** |
 
 > **A3 lebih penting daripada tampaknya.** Petani tidak menyebut *Thrips parvispinus*; ia
 > menyebut nama lokalnya. Tanpa kamus itu, jalur 1 hanya bisa dipakai orang yang sudah
@@ -612,7 +612,7 @@ atau sumber data baru. **Ini gelombang yang paling murah dan paling langsung men
 | 4 | **D4 + D5** kalibrasi & takaran — **selesai** | Termurah; menyentuh keselamatan; tidak butuh data baru |
 | 5 | **B4** antrean pertanyaan tak terjawab — **selesai** | Mengubah biaya riset jadi keluaran; mengarahkan gelombang berikutnya |
 | 6 | **A1** kotak tanya multimoda | Setelah jalur-jalurnya layak dituju |
-| 7 | **A5** luring penuh | Indeks sudah ≤48 KB — separuh jalan |
+| 7 | **A5** luring penuh — **sebagian** | Indeks sudah ≤48 KB — separuh jalan |
 | 8 | **C7** direktori layanan | Fondasi toko tani sudah ada |
 | 9 | **D3** analisis usaha tani | Pintu masuk ke E5 di gelombang berikutnya |
 

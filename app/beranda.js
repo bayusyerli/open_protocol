@@ -184,6 +184,23 @@ function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
   el.hasil.innerHTML = bagian.join('');
 }
 
+const BLOK_NAMA_TAK_TERAMBIL = `
+  <div class="pesan">
+    <h2>Pencarian nama belum bisa dijalankan</h2>
+    <p>
+      Kepala pencarian nama tidak ada di peranti ini, dan sambungannya sedang tidak
+      terjangkau. Yang di atas tetap benar — gejala dan nama lokal memang tersimpan.
+    </p>
+    <p>
+      Supaya pencarian nama ikut bekerja tanpa sinyal, simpan sekali dari
+      <a href="ukur.html">apa yang tercatat di peranti ini</a>. Ukurannya disebutkan di sana.
+    </p>
+  </div>`;
+
+function gambarNamaTakTerambil() {
+  el.hasil.innerHTML = BLOK_NAMA_TAK_TERAMBIL;
+}
+
 async function gambarKosong(kueri) {
   // B4: dua lubang sekaligus tertabrak — nama yang dicari tidak punya padanan
   // terdaftar, dan gejalanya di luar sepuluh yang terkurasi. Yang dicatat cacahnya,
@@ -221,12 +238,17 @@ async function jalankan() {
   try {
     // Keduanya sekaligus, bukan berurutan: yang satu mengambil satu ember nama, yang
     // lain satu kepala gejala 3,2 KB yang sesudahnya teringat sesi ini.
+    // Ketiganya ditangkap sendiri-sendiri. Sebelum A5 hanya dua yang ditangkap, dan
+    // akibatnya baru kelihatan saat diuji tanpa jaringan: ember nama yang gagal diambil
+    // membunuh hasil gejala dan nama lokal yang sebenarnya SUDAH ada di peranti. Satu
+    // cabang yang tidak sanggup tidak boleh membungkam cabang yang sanggup — aturan yang
+    // sama dengan "nol dan tak-sanggup bukan kegagalan" di docs/11.
     const [namaHasil, gejala, lokal] = await Promise.all([
-      cari(kueri),
+      cari(kueri).catch(() => ({ takTerambil: true })),
       cariGejala(kueri).catch(() => []),
       cariNamaLokal(kueri).catch(() => []),
     ]);
-    const { hasil, kurang } = namaHasil;
+    const { hasil, kurang, takTerambil } = namaHasil;
 
     if (kurang && !gejala.length && !lokal.length) {
       el.hasil.innerHTML =
@@ -242,9 +264,14 @@ async function jalankan() {
     // tanpa awalan lembaga. Di indeks keduanya memang harus ada; di layar cukup satu.
     const badan = [...new Map(daftar.filter((x) => x.j === 'principal').map((x) => [x.i, x])).values()];
     const nama = daftar.filter((x) => !['bahan', 'harga', 'principal'].includes(x.j));
-    if (!nama.length && !bahan.length && !gejala.length && !lokal.length && !harga.length && !badan.length)
+    if (!nama.length && !bahan.length && !gejala.length && !lokal.length && !harga.length && !badan.length) {
+      if (takTerambil) return gambarNamaTakTerambil();
       return gambarKosong(kueri);
+    }
     gambar(nama, bahan, gejala, lokal, kueri, harga, badan);
+    // Yang sanggup sudah tergambar di atas; yang tidak sanggup dinyatakan di bawahnya,
+    // bukan dibiarkan terbaca sebagai "tidak ada namanya".
+    if (takTerambil) el.hasil.insertAdjacentHTML('beforeend', BLOK_NAMA_TAK_TERAMBIL);
   } catch (e) {
     el.hasil.innerHTML = `
       <div class="pesan galat">

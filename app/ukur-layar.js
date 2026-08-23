@@ -12,6 +12,7 @@
 import { ringkas, hapus } from './ukur.js';
 import { teks } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
+import { perintah, luringAktif } from './luring.js';
 
 pasangTombolTema();
 
@@ -42,6 +43,8 @@ const LUBANG_NAMA = {
 const el = {
   ringkas: document.getElementById('ringkas'),
   antrean: document.getElementById('antrean'),
+  luringKeadaan: document.getElementById('luringKeadaan'),
+  luringKabar: document.getElementById('luringKabar'),
   perJalur: document.getElementById('perJalur'),
   tindakan: document.getElementById('tindakan'),
   mentah: document.getElementById('mentah'),
@@ -198,3 +201,60 @@ document.getElementById('hapus').addEventListener('click', () => {
 });
 
 gambar();
+
+// ---------------------------------------------------------------------------
+// A5 — kendali simpanan luring
+// ---------------------------------------------------------------------------
+
+const kb = (b) => (b == null ? null : b >= 1048576 ? `${(b / 1048576).toFixed(1)} MB` : `${Math.round(b / 1024)} KB`);
+
+async function keadaanLuring() {
+  if (!('serviceWorker' in navigator)) {
+    el.luringKeadaan.textContent =
+      'Peramban ini tidak mendukung penyimpan luring, jadi permukaan hanya bekerja saat ada sinyal.';
+    return;
+  }
+  if (!luringAktif()) {
+    el.luringKeadaan.textContent =
+      'Penyimpan luring belum aktif. Ia menyala sesudah halaman dimuat sekali lagi — atau tidak sama sekali kalau situs disajikan tanpa TLS di luar localhost.';
+    return;
+  }
+  try {
+    const u = await perintah('ukuran');
+    el.luringKeadaan.innerHTML =
+      `Aktif. <strong>${u.berkas}</strong> berkas tersimpan di peranti ini` +
+      (u.byte ? `, dan seluruh penyimpanan situs ini memakai <strong>${kb(u.byte)}</strong> — angka itu mencakup lebih dari cache, jadi ia batas atas, bukan ukuran cachenya sendiri.` : '.');
+  } catch (e) {
+    el.luringKeadaan.textContent = `Penyimpan luring tidak menjawab: ${e.message}`;
+  }
+}
+
+document.getElementById('simpanCari')?.addEventListener('click', async (ev) => {
+  const b = ev.currentTarget;
+  b.disabled = true;
+  el.luringKabar.textContent = 'Mengambil kepala pencarian…';
+  try {
+    await perintah('simpanCari', (d) => {
+      if (d.jenis === 'maju') el.luringKabar.textContent = `Menyimpan ${d.n} dari ${d.dari} ember…`;
+    });
+    el.luringKabar.textContent = 'Selesai. Pencarian nama kini bekerja tanpa sinyal.';
+    keadaanLuring();
+  } catch (e) {
+    el.luringKabar.textContent = `Gagal: ${e.message}. Yang sudah tersimpan tetap tersimpan.`;
+  } finally {
+    b.disabled = false;
+  }
+});
+
+document.getElementById('buangLuring')?.addEventListener('click', async () => {
+  el.luringKabar.textContent = 'Membuang…';
+  try {
+    await perintah('buangSemua');
+    el.luringKabar.textContent = 'Simpanan luring dibuang. Cangkangnya akan tersimpan lagi saat halaman dibuka dengan sinyal.';
+    keadaanLuring();
+  } catch (e) {
+    el.luringKabar.textContent = `Gagal: ${e.message}`;
+  }
+});
+
+keadaanLuring();

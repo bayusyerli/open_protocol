@@ -228,6 +228,53 @@ kenapa" memang berbeda di tiap jalur.
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
 
+### Luring — A5
+
+`sw.js` di **akar repositori**, `app/luring.js`, `app/manifest.webmanifest`, `app/ikon.svg`.
+
+- **Berkas pekerjanya di akar, dan itu dipaksa aturan.** Cakupan service worker ditentukan
+  letak berkasnya. Permukaan ada di `/app/` tetapi indeksnya di `/spec/indeks/` — dua
+  cabang yang tidak saling membawahi. Dari `/app/sw.js`, seluruh indeks di luar jangkauan
+  dan tidak satu pun pecahan bisa disimpan. Header `Service-Worker-Allowed` bisa
+  melonggarkannya, tetapi ia header server dan repositori ini belum punya host.
+- **Tiga tingkat, dan "penuh" tidak berarti semuanya.** Indeksnya 29 MB pada 4.283 berkas.
+  Mengunduh semuanya diam-diam pada sambungan berbayar adalah kekerasan terhadap orang
+  yang justru jadi alasan permukaan ini seringan ini.
+
+  | Tingkat | Ukuran | Yang bekerja tanpa sinyal |
+  |---|---|---|
+  | Otomatis | ±230 KB, 56 berkas | Aplikasi terbuka; jalur 5 dan 6 utuh; daftar gejala jalur 1; pencarian gejala dan nama lokal |
+  | Atas permintaan | ±4,6 MB, 1.175 ember | Pencarian nama — produk, pupuk, varietas |
+  | Menyusul saat dibuka | — | Rincian yang pernah dibuka bertahan; yang belum pernah dibuka tidak ada |
+
+- **Ukurannya disebut sebelum diketuk, bukan sesudah.** Tombolnya di `ukur.html` — halaman
+  yang memang tentang apa yang tersimpan di peranti — bukan di beranda: 4,6 MB adalah
+  keputusan yang diambil sadar, bukan disodorkan di jalan orang mencari sesuatu.
+- **Aman karena URL-nya bercap.** Cache-first hanya boleh dipasang setelah pecahan diambil
+  dengan `?v=<cap>`; isi berubah berarti URL berubah, jadi salinan basi mustahil
+  tersajikan. Sebelum cap ada, strategi ini tidak akan aman sama sekali. `meta.json`
+  sendiri **tidak** bercap — ia yang menyebutkan capnya — jadi ia satu-satunya yang
+  diambil jaringan-dulu.
+- **Berkas indeks akar disimpan BESERTA capnya.** Versi pertama menyimpannya telanjang,
+  dan akibatnya baru kelihatan saat diuji tanpa jaringan: `ambil()` memintanya sebagai
+  `…json?v=<cap>`, jadi salinan telanjang tidak pernah cocok dan jalur 1, 5, 6 kosong.
+  Mencocokkannya dengan `ignoreSearch` akan menghidupkan kembali persis risiko basi yang
+  dicabut cap, jadi yang benar membaca cap sekali saat pemasangan.
+- **Dipasang lewat `tema.js`,** satu-satunya modul yang diimpor kesebelas halaman.
+  Menyalin satu baris pendaftaran ke sebelas berkas akan mengulang dua kekeliruan yang
+  sudah ditemukan di permukaan ini: tema yang berhenti di beranda, dan enam salinan
+  penangan tombol kembali.
+- **Satu cabang yang tidak sanggup tidak boleh membungkam yang sanggup.** Uji luring
+  menemukan `Promise.all` di beranda yang menangkap galat pada dua cabang tetapi tidak
+  pada `cari()` — jadi ember nama yang gagal diambil ikut membunuh hasil gejala dan nama
+  lokal yang **sudah ada di peranti**. Ketiganya kini ditangkap sendiri-sendiri, dan
+  ketidaksanggupan pencarian nama dinyatakan di bawah hasil yang berhasil.
+- **`navigator.onLine` tidak tahu apakah situsnya terjangkau.** Ia melaporkan tautan
+  peranti, bukan keterjangkauan — saat server dimatikan dalam pengujian, cip jaringan
+  tetap berbunyi "Ada sinyal". Memeriksanya sungguhan menuntut satu permintaan tambahan
+  per muat halaman, dan itu biaya yang justru dikeluhkan temuan 5 audit. Batasnya
+  dinyatakan, bukan ditutup.
+
 ### Antrean pertanyaan tak terjawab — B4
 
 Tiap "tidak sanggup" yang ditampilkan hari ini menghilang begitu layar ditutup. Dicatat,
