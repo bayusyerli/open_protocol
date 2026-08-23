@@ -1,0 +1,86 @@
+﻿nomor_pendaftaran,merk_dagang,jenis_anomali,teks,keterangan
+01.05.2023.2004,TESTING BUGS GENERATE SK 17 NOV,nilai-tak-terurai,malam = okmalamss,Tidak diawali angka maupun kata kualitatif.
+02.01.2021.529,aGricare Premium,titik-ambigu,Fe-total = 14.945 ppm,"""14.945"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+03.01.2023.483,KURIZA,nilai-tak-terurai,E.Coli = Negatit,Tidak diawali angka maupun kata kualitatif.
+04.02.2025.469,TERAHUMIC,parameter-kosong,,Nama dan nilai sama-sama kosong setelah HTML dilepas.
+02.03.2021.532,PATEN,titik-ambigu,Fe-total = 6.546 ppm,"""6.546"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.03.2021.396,BIOHEALTH,titik-ambigu,Fe-total = 9.531 ppm,"""9.531"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.03.2022.556,ZETAGRO,titik-ambigu,Fe-total = 11.915 ppm,"""11.915"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+03.01.2024.61,Bio Soltamax,pengali-tanpa-pangkat,"Azospirillum sp = 1,68 x 109 CFU/g","Sumbernya menulis ""x 10n"" tanpa tag <sup>; pangkatnya tidak bisa dipastikan, jadi tidak diisi."
+02.08.2021.491,MARAJA,titik-ambigu,Fe-total = 1.391 ppm,"""1.391"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+03.01.2022.694,COBA 22,satuan-tak-lazim,azesperium = 10^6,"Satuan terbaca ""^6""; angkanya kemungkinan tidak utuh."
+04.07.2022.1158,testcobasistem,nilai-tak-terurai,testcobasistem = testcobasistem,Tidak diawali angka maupun kata kualitatif.
+04.07.2022.1158,testcobasistem,nilai-tak-terurai,testcobasistem = testcobasistem,Tidak diawali angka maupun kata kualitatif.
+02.03.2021.625,ECAGANIK,titik-ambigu,Fe-total = 8.354 ppm,"""8.354"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+03.03.2021.577,PUPUK 10 FEB,nilai-tak-terurai,bagus = Sekali,Tidak diawali angka maupun kata kualitatif.
+02.03.2022.325,DSC,titik-ambigu,Fe-total = 4.429 ppm,"""4.429"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+01.01.2024.687,LAO YING,satuan-tak-lazim,P2O5 = 14 5,"Satuan terbaca ""5""; angkanya kemungkinan tidak utuh."
+02.02.2021.349,POWER BUMI,satuan-tak-lazim,C-Organik = 18.21 [%],"Satuan terbaca ""[%]""; angkanya kemungkinan tidak utuh."
+02.02.2021.349,POWER BUMI,satuan-tak-lazim,N-Organik = 0.87 [%],"Satuan terbaca ""[%]""; angkanya kemungkinan tidak utuh."
+02.02.2021.349,POWER BUMI,satuan-tak-lazim,"N + P2O5 + K2O = 3,9 [%]","Satuan terbaca ""[%]""; angkanya kemungkinan tidak utuh."
+03.02.2026.58,DECO-9,pengali-tanpa-pangkat,"Pseudomonas sp = 6,00 x 106 CFU/ml","Sumbernya menulis ""x 10n"" tanpa tag <sup>; pangkatnya tidak bisa dipastikan, jadi tidak diisi."
+02.01.2021.572,Thorganik,titik-ambigu,Fe-total = 11.071 ppm,"""11.071"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+04.01.2024.458,PHONSKAVIT 15 15 15,nilai-kosong,"Kalsium (CaO)45,05 %","Parameter ada, nilainya kosong."
+01.01.2025.640,BUANA SINAR LESTARI,nilai-tak-terurai,"Kadar air = O,4%",Tidak diawali angka maupun kata kualitatif.
+02.07.2022.363,PUKOR TESTING 22 NOV,nilai-tak-terurai,HASIL = UJI MUTU,Tidak diawali angka maupun kata kualitatif.
+01.07.2022.1639,testanorganikSK,nilai-tak-terurai,test = test,Tidak diawali angka maupun kata kualitatif.
+01.07.2022.1639,testanorganikSK,nilai-tak-terurai,test12334 = test123,Tidak diawali angka maupun kata kualitatif.
+01.01.2025.476,KEPALA GUDEL,sel-majemuk-tak-sepadan,"key=[P2O5 total | P2O5 larut dalam asam sitrat 2% | Kehalusan lolos 80 | Mesh | Kehalusan lolos 25 Mesh | Kadar Air] value=[22% | 10% | 62% | 92% | 3,65%]",6 blok nama lawan 5 blok nilai; blok disatukan jadi satu parameter.
+02.03.2021.620,S'PER KOMPO'S,titik-ambigu,Fe-total = 13.810 ppm,"""13.810"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.03.2022.959,PuTri SatPadhi,titik-ambigu,Fe-total = 7.002 ppm,"""7.002"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.01.2022.801,GOHAN 37,titik-ambigu,Fe-total = 2.201 ppm,"""2.201"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+01.03.2025.944,MENTARI,satuan-tak-lazim,K2O = 60 5,"Satuan terbaca ""5""; angkanya kemungkinan tidak utuh."
+04.02.2023.339,test1,nilai-tak-terurai,test1 = test1,Tidak diawali angka maupun kata kualitatif.
+01.03.2025.865,LAO YING,satuan-tak-lazim,CaO = 20 5,"Satuan terbaca ""5""; angkanya kemungkinan tidak utuh."
+04.03.2025.439,ANTIRON,nilai-kosong,Al2O3 + Fe2O3,"Parameter ada, nilainya kosong."
+01.05.2025.932,AMONG TANI,sel-majemuk-tak-sepadan,"key=[Ukuran: | - 1,00 mm - 3,35 mm] value=[99,95%]",2 blok nama lawan 1 blok nilai; blok disatukan jadi satu parameter.
+01.01.2023.2403,BIOSPATE,sel-majemuk-tak-sepadan,"key=[Kehalusan | lolos 80 Mesh tyler] value=[99,83%]",2 blok nama lawan 1 blok nilai; blok disatukan jadi satu parameter.
+01.01.2023.2403,BIOSPATE,sel-majemuk-tak-sepadan,"key=[Kehalusan | lolos 20 Mesh tyler] value=[99,99%]",2 blok nama lawan 1 blok nilai; blok disatukan jadi satu parameter.
+01.01.2021.909,OKURA EMAS,nilai-kosong,TE,"Parameter ada, nilainya kosong."
+01.02.2025.374,GARDEN MIKRO,satuan-tak-lazim,"N = 10, 2 %","Satuan terbaca "", 2 %""; angkanya kemungkinan tidak utuh."
+01.02.2024.1106,MIXCRO,satuan-tak-lazim,"N = 2,$ %","Satuan terbaca "",$ %""; angkanya kemungkinan tidak utuh."
+02.07.2025.255,LaGuanoPlus,titik-ambigu,Fe-total = 6.702 ppm,"""6.702"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+04.07.2023.1196,testmenungsa,nilai-tak-terurai,15 = KG/M,Tidak diawali angka maupun kata kualitatif.
+01.01.2023.2231,PALMIC,satuan-tak-lazim,Zn = 10 5,"Satuan terbaca ""5""; angkanya kemungkinan tidak utuh."
+01.02.2020.637,andaEXTRA-K,satuan-tak-lazim,"P2O5 = 2,%","Satuan terbaca "",%""; angkanya kemungkinan tidak utuh."
+02.03.2021.450,Agrodyke,titik-ambigu,Fe-total = 1.001 ppm,"""1.001"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.01.2021.437,BIO TAKEMI 100,titik-ambigu,Fe-total = 4.995 ppm,"""4.995"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.01.2022.868,SUPERGANIK,nilai-kosong,N-total,"Parameter ada, nilainya kosong."
+02.01.2022.868,SUPERGANIK,titik-ambigu,Fe-total = 5.708 ppm,"""5.708"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.03.2022.639,CELLTILIZER,titik-ambigu,Fe-total = 2.294 ppm,"""2.294"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.08.2025.107,taspu,nilai-tak-terurai,500 = ppm,Tidak diawali angka maupun kata kualitatif.
+02.08.2025.107,taspu,nilai-kosong,124 ppm,"Parameter ada, nilainya kosong."
+03.03.2022.376,TANIKA,pengali-tanpa-pangkat,"Bradyrhizobium sp = 3,00 x 106 CFU/g","Sumbernya menulis ""x 10n"" tanpa tag <sup>; pangkatnya tidak bisa dipastikan, jadi tidak diisi."
+02.03.2021.562,MABAR,titik-ambigu,Fe-total = 12.612 ppm,"""12.612"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.02.2026.96,Rani Bioslurry,satuan-tak-lazim,"Fe-total = 135, 41 ppm","Satuan terbaca "", 41 ppm""; angkanya kemungkinan tidak utuh."
+04.02.2023.1033,HANOMAN 31070S,satuan-tak-lazim,"Fe-total = 1436, 79 ppm","Satuan terbaca "", 79 ppm""; angkanya kemungkinan tidak utuh."
+02.08.2021.499,HYDROFARM,titik-ambigu,Fe-total = 8.401 ppm,"""8.401"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.03.2022.348,Logo T,titik-ambigu,Fe-total = 12.621 ppm,"""12.621"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+04.01.2021.371,BOMA SAKTI PRIMA - 27,satuan-tak-lazim,Kehalusan 25 Mesh = 100 &,"Satuan terbaca ""&""; angkanya kemungkinan tidak utuh."
+02.03.2022.385,Fajarmas,titik-ambigu,Fe-total = 9.937 ppm,"""9.937"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+01.01.2021.911,OKURA EMAS,nilai-kosong,TE,"Parameter ada, nilainya kosong."
+03.07.2024.431,test,parameter-kosong,,Nama dan nilai sama-sama kosong setelah HTML dilepas.
+01.02.2025.943,SiBOSSQUE,titik-ambigu,Zn = 1.524 ppm,"""1.524"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.07.2021.507,Terraphos,titik-ambigu,Fe-total = 1.811 ppm,"""1.811"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+04.03.2022.1152,DECOHUMAT,pengali-tanpa-pangkat,"Bacillus subtilis = 1,0 x 107 CFU/g","Sumbernya menulis ""x 10n"" tanpa tag <sup>; pangkatnya tidak bisa dipastikan, jadi tidak diisi."
+04.03.2026.50,QIUVITA,satuan-tak-lazim,"Kadar Air = 9, 25 %","Satuan terbaca "", 25 %""; angkanya kemungkinan tidak utuh."
+01.01.2024.839,JADI MAS,parameter-kosong,,Nama dan nilai sama-sama kosong setelah HTML dilepas.
+02.03.2021.554,No - Sam - Ta,titik-ambigu,Fe-total = 6.933 ppm,"""6.933"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.03.2024.313,STI,titik-ambigu,Fe-total = 4.320 ppm,"""4.320"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+02.01.2021.606,LODRIN,titik-ambigu,Fe-total = 14.884 ppm,"""14.884"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+01.02.2024.39,AgroGain,satuan-tak-lazim,CaO = 5. %,"Satuan terbaca "". %""; angkanya kemungkinan tidak utuh."
+01.03.2024.446,BUMI ANDALAN,nilai-tak-terurai,"Kadar Air Bebas = o,01 %",Tidak diawali angka maupun kata kualitatif.
+01.01.2022.1321,YaraLiva TROPICOTE,satuan-tak-lazim,N = 15 5,"Satuan terbaca ""5""; angkanya kemungkinan tidak utuh."
+03.02.2024.21,GRAND TOMIKs,pengali-tanpa-pangkat,"Azospirillum sp = 6,00 x 106 CFU/ml","Sumbernya menulis ""x 10n"" tanpa tag <sup>; pangkatnya tidak bisa dipastikan, jadi tidak diisi."
+01.01.2023.2264,BoNitro 89,nilai-tak-terurai,SO4^- = ttd,Tidak diawali angka maupun kata kualitatif.
+02.02.2021.471,JAGAD TANI,parameter-kosong,,Nama dan nilai sama-sama kosong setelah HTML dilepas.
+03.02.2023.328,SIMBIOS,pengali-tanpa-pangkat,"Rhizobium sp = 4,45 x 106 CFU/ml","Sumbernya menulis ""x 10n"" tanpa tag <sup>; pangkatnya tidak bisa dipastikan, jadi tidak diisi."
+02.05.2021.490,GREAT GIANT BIOCOMPOST,titik-ambigu,Fe-total = 14.965 ppm,"""14.965"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+01.01.2024.1137,BUSUR,parameter-kosong,,Nama dan nilai sama-sama kosong setelah HTML dilepas.
+02.08.2021.410,REKATANI,titik-ambigu,Fe-total = 6.208 ppm,"""6.208"" dibaca sebagai desimal; tanpa koma di mana pun, titik yang diikuti tepat tiga angka bisa juga pemisah ribuan."
+03.02.2026.189,Bio Desah,sel-majemuk-tak-sepadan,"key=[Pseudomonas fluorescens] value=[2,00 x 10^6 CFU. | /ml]",1 blok nama lawan 2 blok nilai; blok disatukan jadi satu parameter.
+01.06.2021.853,COBAPUKANOR,parameter-kosong,,Nama dan nilai sama-sama kosong setelah HTML dilepas.
+01.01.2021.557,Bintang tani,nilai-tak-terurai,P2O5 = ;8%,Tidak diawali angka maupun kata kualitatif.
+01.05.2023.2003,08oktest123,nilai-tak-terurai,08okt123 = siapsooo99,Tidak diawali angka maupun kata kualitatif.
+01.03.2023.548,RabanaSol,satuan-tak-lazim,P2O5 = 10 5,"Satuan terbaca ""5""; angkanya kemungkinan tidak utuh."
+01.01.2020.648,Daun Sawit,parameter-kosong,,Nama dan nilai sama-sama kosong setelah HTML dilepas.
