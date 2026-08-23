@@ -37,6 +37,35 @@
     <p>Seluruh hitungan berjalan di perangkatmu. Tanpa JavaScript tidak ada yang bisa dihitung.</p>
   </div>
 
+  <section class="kartu kartu-musim">
+    <h2>Musim yang sedang dicatat</h2>
+    <div id="pilihMusim"></div>
+    <details id="aturMusim">
+      <summary>Ganti atau tambah musim</summary>
+      <div class="musim-isi">
+        <label for="mNama">Nama musim atau petak</label>
+        <input type="text" id="mNama" autocomplete="off" placeholder="misal: Cabai petak belakang, MT1 2026">
+        <div class="catat-baris">
+          <span>
+            <label for="mKomoditas">Komoditas</label>
+            <input type="text" id="mKomoditas" autocomplete="off" placeholder="misal: Cabai merah">
+          </span>
+          <span>
+            <label for="mLuas">Luas (hektare)</label>
+            <input type="number" id="mLuas" inputmode="decimal" min="0" step="0.01" placeholder="misal 0.25">
+          </span>
+        </div>
+        <p class="catat-aksi"><button type="button" id="tambahMusim">Simpan musim ini</button></p>
+        <p class="catat-kabar" id="kabarMusim" role="status" aria-live="polite"></p>
+        <p class="catatan">
+          Luas boleh dikosongkan — catatannya tetap jalan. Yang hilang cuma
+          <strong>biaya per hektare</strong>, dan itulah satuan yang dipakai hampir semua
+          program yang meminta angka biaya usaha tani.
+        </p>
+      </div>
+    </details>
+  </section>
+
   <section id="ringkas" class="kartu kartu-ringkas" aria-live="polite"></section>
 
   <h2 class="judul-bagian">Tambah catatan</h2>
@@ -102,10 +131,11 @@
       </p>
       <h3>Yang tidak ada, dan tidak sedang disembunyikan</h3>
       <p>
-        Tidak ada arus kas bertanggal, tidak ada banyak petak, tidak ada berbagi dengan
-        kelompok tani, dan tidak ada cadangan di luar perangkat ini. Keempatnya menuntut
-        hal yang belum ada — kalender fase bertanggal, identitas petak, dan tempat
-        menyimpan yang bukan peramban.
+        Beberapa musim dan petak sudah bisa dipisahkan. Yang belum: arus kas bertanggal,
+        berbagi dengan kelompok tani, dan cadangan di luar perangkat ini. Ketiganya
+        menuntut hal yang belum ada — kalender fase bertanggal, dan tempat menyimpan yang
+        bukan peramban. Petak di sini juga <strong>hanya nama yang kamu ketik</strong>,
+        bukan identitas petak yang dipakai lintas layar.
       </p>
     </div>
   </details>
