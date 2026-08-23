@@ -256,6 +256,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `product.json` | 3 **contoh** produk, semua `unverified` — bukan registry | — (beralasan) |
 | `substance-organik.json` | **21 bahan baku sediaan** — kotoran ternak, sisa tanaman, bahan nabati. 2 dilarang, 5 dibatasi | — (beralasan) |
 | `preparation.json` | **12 resep sediaan buatan sendiri** — kompos, bokashi, kascing, MOL, POC, biakan hayati, ekstrak nabati, Biosaka | — (beralasan) |
+| `golongan-resistensi/golongan-resistensi.ndjson` | **1.399 pemetaan bahan aktif ke kode golongan resistensi** — satu rekaman per bahan, 930 berkode dan 469 kosong beralasan; kode HRAC membawa huruf lamanya | IRAC v11.5, FRAC 2026, HRAC 2026 |
 
 **Cakupan pemetaan: 16.586 dari 16.677 entitas (99%) punya kaitan ke standar luar.** Sisanya
 membawa `no_mapping_reason` tertulis. Yang belum terpetakan terpusat di `operation-type`
