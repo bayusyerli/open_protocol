@@ -1151,3 +1151,42 @@ Petrofish di sisi Gresik: memang bukan urusan registri PUKPES.
 dari registri, bukan dari nomor tercetak — nomornya tidak terbaca pada potongan. Artinya
 pemeriksaan nama ke registri tetap perlu dijalankan bahkan ketika nomor tercetak tidak ada:
 kedua jalur menangkap kelas kekeliruan yang sama dari arah berlawanan.
+
+### Memanen yang 150 px: tercatat, tetapi tidak terbit
+
+Lima puluh delapan halaman Kayaku tidak punya brosur sama sekali. Dipanen juga, dan
+hasilnya perlu dibaca apa adanya: **53 baris masuk, dan tidak satu pun terbit.**
+
+Sebabnya aritmetika normalisasi, bukan keputusan. `rendition_terpakai` menolak rendition
+yang tidak benar-benar memperkecil, jadi sumber 150×225 hanya menghasilkan **satu** berkas
+`besar` seukuran aslinya; `kecil` 320 px tidak pernah terbentuk karena 320 > 225.
+`terbitkan.mjs` memakai `kecil` + `sedang`, sehingga kelima puluh lima baris itu jatuh ke
+hitungan "tanpa ukuran terpakai" dan tidak pernah sampai ke `app/gambar/`.
+
+Cakupan merek Kayaku karena itu naik ke **70 dari 91** di manifes sementara "produk
+bergambar" di app tidak bergerak sama sekali dari 464. Kedua angka itu benar, dan bedanya
+justru yang perlu dilihat: koleksi tahu merek-merek ini punya kemasan seperti apa; layar
+belum bisa menunjukkannya.
+
+**Kalau kelak ingin ditayangkan juga,** yang perlu diputuskan bukan panennya melainkan
+kebijakan terbit: menormalkan ulang dengan urutan `kecil,sedang,besar` akan menamai berkas
+dasarnya `kecil` pada ukuran aslinya — sah menurut definisi (rendition itu pagu, bukan
+sasaran) dan cukup untuk lolos `terbitkan.mjs`. Yang didapat kartu 150 px yang buram; yang
+hilang, kalimat placeholder yang hari ini berbunyi "belum dipanen dari situs principal" —
+kalimat yang untuk 70 merek ini sudah tidak benar. Itu pilihan pemilik repositori, bukan
+pilihan pemanen.
+
+**Dua penambal tertangkap, dan yang menangkapnya bukan mata.** `periksa.mjs` melaporkan dua
+merek berbagi satu phash; berkasnya ternyata `data/no_photo.jpg`, penambal 150×50 px
+bertuliskan "NO PHOTO". Keduanya ditulis `ditolak` beralasan, bukan didiamkan — pasal 4c.
+
+**Tetapi phash yang sama juga memberi lapor palsu pada resolusi ini.** Pasangan kedua yang
+dilaporkan — TERMIBAN 405 EC dan INSTOP 311 EC — dua produk yang benar-benar berbeda dengan
+label berbeda, hanya berbagi cetakan botol yang sama. Pada 150 px, dhash lebih banyak
+melihat siluet botol daripada labelnya. **Di bawah ~300 px, lapor phash lintas merek wajib
+dilihat, jangan langsung dipercaya.**
+
+Dan bentuk kemasannya memang terbukti dipakai ulang: dari 53 baris, **45 terukur IoU siluet
+≥ 0,92** terhadap merek lain di katalog yang sama — beberapa persis 1,000. Latar packshot
+situs ini benar-benar transparan, jadi uji pasal 4d sah dipakai di sini, tidak seperti pada
+karung Petrokimia Gresik yang berlatar putih pejal.
