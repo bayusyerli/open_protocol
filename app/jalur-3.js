@@ -11,7 +11,7 @@
  * itu ranah yang lain.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, pasangKembali } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
@@ -414,9 +414,7 @@ async function jalankan() {
     });
     el.q.disabled = false;
   } catch (e) {
-    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
-      <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan
-      <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>
-      <p class="catatan">${teks(e.message)}</p></div>`;
+    el.hasil.innerHTML = pesanGagalMuat(e);
+    pasangCobaLagi(el.hasil);
   }
 })();

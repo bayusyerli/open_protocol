@@ -9,7 +9,7 @@
  * indeks yang sama, pemecahan ember yang sama, urutan yang sama.
  */
 
-import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, tautanHasil, teks, JENIS } from './pustaka.js';
+import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, tautanHasil, teks, JENIS, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { catatLubang, LUBANG } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -468,16 +468,7 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
     const q = new URLSearchParams(location.search).get('q');
     if (q) { el.q.value = q; await jalankan(); }
   } catch (e) {
-    el.hasil.innerHTML = `
-      <div class="pesan galat">
-        <h2>Indeks tidak ditemukan</h2>
-        <p>
-          Halaman ini membaca <code>spec/indeks/</code>, yang turunan dan sengaja tidak
-          ikut disimpan di repositori. Bangun dulu dari akar repositori:
-          <code>node spec/tools/bangun-indeks.mjs --tulis</code>, lalu sajikan akarnya —
-          menyajikan <code>app/</code> saja tidak cukup.
-        </p>
-        <p class="catatan">${teks(e.message)}</p>
-      </div>`;
+    el.hasil.innerHTML = pesanGagalMuat(e);
+    pasangCobaLagi(el.hasil);
   }
 })();

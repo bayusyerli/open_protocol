@@ -13,7 +13,7 @@
  * Keduanya dirender terpisah, dengan tingkat yang disebut di masing-masing kotak.
  */
 
-import { ambil, muatMeta, cari, teks, tanggal, JENIS, bacaMeta } from './pustaka.js';
+import { ambil, muatMeta, cari, teks, tanggal, JENIS, bacaMeta, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { pasangBatas } from './batas.js';
 
@@ -394,17 +394,7 @@ document.getElementById('formCari').addEventListener('submit', (ev) => {
       el.q.focus();
     }
   } catch (e) {
-    el.isi.innerHTML = `
-      <div class="kartu peringatan">
-        <h2>Indeks tidak ditemukan</h2>
-        <p>
-          Halaman ini membaca <code>spec/indeks/</code>, yang turunan dan sengaja tidak ikut
-          disimpan di repositori. Bangun dulu dari akar repositori:
-          <code>node spec/tools/bangun-principal.mjs --tulis</code> lalu
-          <code>node spec/tools/bangun-indeks.mjs --tulis</code>, dan sajikan akarnya —
-          menyajikan <code>app/</code> saja tidak cukup.
-        </p>
-        <p class="catatan">${teks(e.message)}</p>
-      </div>`;
+    el.isi.innerHTML = pesanGagalMuat(e);
+    pasangCobaLagi(el.isi);
   }
 })();

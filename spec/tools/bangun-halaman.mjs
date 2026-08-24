@@ -702,7 +702,12 @@ for (const f of berkasDi('opt')) {
   // saat label registrinya diperbaiki ejaannya.
   const kunciVocab = vocabKomoditas.get(k.komoditas)?.key;
   petaKomoditas.set(k.komoditas, {
-    slug: slugKomoditas.ambil(kunciVocab ?? k.nama, k.komoditas),
+    // Slug DIBACA dari indeks, tidak dihitung ulang. Sejak kotak cari ikut menaut
+    // /tanaman/<slug>/, dua tempat menurunkan slug yang sama dari sumber yang sama — dan
+    // dua turunan yang wajib sama persis adalah tautan menggantung yang menunggu giliran.
+    // Yang menghitungnya bangun-indeks.mjs, karena di sanalah kepala pencarian dibuat.
+    // Hitungan di sini tinggal sebagai cadangan untuk indeks lama yang belum membawanya.
+    slug: k.slug ?? slugKomoditas.ambil(kunciVocab ?? k.nama, k.komoditas),
     nama: k.nama, kunci: f.replace(/\.json$/, ''), opt: k.opt ?? [],
   });
   komoditasNama.set(k.komoditas, k.nama);

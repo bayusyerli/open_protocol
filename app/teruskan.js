@@ -42,7 +42,7 @@
  */
 
 import { bacaMeta, teks, tanggal } from './pustaka.js';
-import { salin } from './serah.js';
+import { salin, bukaTab } from './serah.js';
 
 /* 1.200 aksara. Bukan batas WhatsApp — batasnya alamat wa.me, dan yang menegakkannya
  * peramban, bukan WhatsApp. Angka ini dipilih jauh di bawahnya karena kartu yang perlu
@@ -170,10 +170,9 @@ export function pasangTeruskan(wadah, bacaKartu, kunciSumber) {
         + 'disalin; tempelkan langsung di WhatsApp.';
       return;
     }
-    const tab = window.open(alamat, '_blank', 'noopener,noreferrer');
-    kabar.textContent = tab
+    kabar.textContent = bukaTab(alamat)
       ? 'WhatsApp dibuka dengan kartunya. Belum terkirim — Anda yang memilih penerimanya.'
-      : 'Peramban memblokir tab baru. Salin dari kotak di bawah.';
+      : 'Peramban menolak membuka tab baru. Salin dari kotak di bawah.';
     if (!tab) await salin(isi);
   });
 }

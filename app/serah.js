@@ -47,16 +47,47 @@ export async function salin(isi) {
   }
 }
 
-/**
- * Buka formulir isu yang sudah terisi di tab baru.
- * @returns {{dibuka: boolean, sebab?: string}} `dibuka:false` kalau alamatnya
- *   kepanjangan atau tab barunya diblokir — pemanggil wajib menyebutkan yang mana.
- */
+/* `window.open` DENGAN FITUR `noopener` SELALU MENGEMBALIKAN null — bahkan ketika tabnya
+ * benar-benar terbuka. Itu bukan kelakuan aneh satu peramban melainkan bunyi
+ * spesifikasinya: memutus `opener` berarti tidak ada jendela yang bisa dikembalikan.
+ *
+ * Versi sebelumnya membaca null itu sebagai "diblokir", sehingga SETIAP sanggahan data,
+ * usul gambar, dan kartu WhatsApp membuka tabnya dengan benar lalu memberi tahu orangnya
+ * bahwa peramban memblokirnya, dan menjatuhkannya ke fallback salin-tempel. Seluruh jalur
+ * kontribusi tampak rusak padahal jalan — dan kontribusi adalah cara registri ini tetap
+ * benar.
+ *
+ * Anchor sintetis memberi dua-duanya: `rel` menutup `opener` seperti semula, dan karena
+ * `noopener` TIDAK lewat argumen fitur, tidak ada nilai balik yang perlu ditafsirkan.
+ * Klik terprogram atas anchor bertarget `_blank` diperlakukan peramban sama seperti klik
+ * orang selama ia masih di dalam gestur yang sama — dan pemanggilnya memang selalu dari
+ * penangan klik. Yang tersisa hanya kegagalan yang benar-benar bisa dideteksi: alamat
+ * yang kepanjangan. */
 export function bukaIsu({ judul, badan, label }) {
   const alamat = alamatIsu({ judul, badan, label });
   if (alamat.length > BATAS_ALAMAT) {
     return { dibuka: false, sebab: 'panjang' };
   }
-  const tab = window.open(alamat, '_blank', 'noopener,noreferrer');
-  return tab ? { dibuka: true } : { dibuka: false, sebab: 'diblokir' };
+  return { dibuka: bukaTab(alamat) };
+}
+
+/**
+ * Buka satu alamat di tab baru tanpa membocorkan `opener`.
+ * @returns {boolean} false hanya kalau peramban melempar — bukan kalau ia "mengembalikan
+ *   null", yang memang selalu terjadi dan bukan tanda kegagalan.
+ */
+export function bukaTab(alamat) {
+  try {
+    const a = document.createElement('a');
+    a.href = alamat;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.style.display = 'none';
+    document.body.appendChild(a);
+    a.click();
+    a.remove();
+    return true;
+  } catch {
+    return false;
+  }
 }

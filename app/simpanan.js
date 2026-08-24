@@ -90,6 +90,38 @@ export function daftarSimpanan() {
   return out.sort((a, b) => b.bita - a.bita || a.kunci.localeCompare(b.kunci));
 }
 
+/* Berapa banyak isi di dalam kunci, bukan berapa kunci. "7 hal dihapus" tidak memberi tahu
+ * apa pun kepada orang yang sedang memutuskan; "3 musim dan 47 catatan kas" memberi tahu
+ * persis apa yang akan hilang. Hanya dua kunci yang isinya bisa dicacah dengan aman —
+ * keduanya larik — dan sisanya cukup disebut namanya. Yang tidak terurai dilewati diam-diam:
+ * dialog konfirmasi bukan tempat melaporkan simpanan yang rusak. */
+const CACAH = {
+  'op:musim': { medan: 'daftar', satuan: (n) => `${n} musim` },
+  'op:kas': { medan: 'catatan', satuan: (n) => `${n} catatan kas` },
+};
+
+/**
+ * Kalimat yang menyebut apa yang akan hilang — untuk dialog konfirmasi sebelum menghapus.
+ * Mengembalikan null bila memang tidak ada apa-apa untuk dihapus.
+ */
+export function ringkasSimpanan() {
+  const d = daftarSimpanan();
+  if (!d || !d.length) return null;
+  const bagian = [];
+  for (const x of d) {
+    const c = CACAH[x.kunci];
+    if (!c) continue;
+    try {
+      const isi = JSON.parse(localStorage.getItem(x.kunci) ?? 'null');
+      const n = Array.isArray(isi?.[c.medan]) ? isi[c.medan].length : 0;
+      if (n) bagian.push(c.satuan(n));
+    } catch { /* rusak atau bentuk lain — dilewati, bukan dilaporkan di sini */ }
+  }
+  // Sisanya disebut sebagai namanya, supaya kalimatnya tetap lengkap tanpa mengarang cacah.
+  const lain = d.filter((x) => !CACAH[x.kunci] || !bagian.length).length;
+  return { bagian, kunci: d.length, lain };
+}
+
 /**
  * Hapus SELURUH simpanan app di peranti ini, termasuk kunci yang belum terdaftar di `ISI`.
  * Dipindai dan bukan didaftar justru supaya kunci yang lupa didaftarkan tetap ikut

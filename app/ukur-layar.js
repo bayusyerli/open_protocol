@@ -10,7 +10,7 @@
  */
 
 import { ringkas, hapus } from './ukur.js';
-import { daftarSimpanan, hapusSemua } from './simpanan.js';
+import { daftarSimpanan, hapusSemua, ringkasSimpanan } from './simpanan.js';
 import { teks } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { perintah, luringAktif } from './luring.js';
@@ -229,7 +229,25 @@ function gambarSimpanan() {
   document.getElementById('hapusSemua').hidden = false;
 }
 
+/* SATU KETUKAN TIDAK BOLEH MENGHAPUS SEMUSIM KERJA.
+ *
+ * Sampai 24 Agustus 2026 tombol ini langsung menghapus musim, buku kas, anggaran,
+ * realisasi, dan kalibrasi — tanpa satu pun pertanyaan. Halaman ini sendiri menyebut
+ * penghapusannya tidak bisa dibatalkan, tidak ada cadangan di luar peranti, dan target
+ * sentuhnya sengaja 44 px sehingga justru mudah kena. Sementara itu `kas.js` sudah
+ * memakai `confirm()` untuk penghapusan yang jauh lebih kecil — disiplinnya ada, dan
+ * kebetulan tidak dipasang di tombol yang paling merusak.
+ *
+ * Yang ditanyakan menyebut ISINYA, bukan cacah kuncinya: "3 musim dan 47 catatan kas"
+ * memberi tahu apa yang akan hilang, sedangkan "7 hal" tidak memberi tahu apa pun kepada
+ * orang yang sedang memutuskan. */
 document.getElementById('hapusSemua').addEventListener('click', () => {
+  const r = ringkasSimpanan();
+  if (!r) { el.kabar.textContent = 'Tidak ada apa pun yang tersimpan di peranti ini.'; return; }
+  const isi = r.bagian.length
+    ? r.bagian.join(' dan ')
+    : `${r.kunci} hal yang tersimpan`;
+  if (!confirm(`Hapus ${isi}?\n\nSeluruh simpanan lain di peranti ini ikut terhapus — kalibrasi, anggaran, dan pilihan tampilan. Tidak ada cadangannya di mana pun, dan ini tidak bisa dibatalkan.`)) return;
   const n = hapusSemua();
   el.kabar.textContent = `${n} hal dihapus dari peranti ini — termasuk musim, buku kas, dan anggaran kalau ada.`;
   gambar();

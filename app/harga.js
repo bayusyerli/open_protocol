@@ -300,7 +300,7 @@ function kartuPitaUmur(h) {
               <td>${teks(u)}${teks(sumbu.sufiks)}</td>
               <td class="angka">${v > 0 ? rp(v) : '—'}</td>
               ${adaBarat ? `<td class="angka">${b > 0 ? rp(b) : '—'}</td>` : ''}
-              <td><span class="bilah" style="--isi:${v > 0 ? Math.round((v / hi) * 100) : 0}%"></span></td>
+              <td><span class="bilah-isi" style="--isi:${v > 0 ? Math.round((v / hi) * 100) : 0}%"></span></td>
             </tr>`;
           }).join('')}</tbody>
         </table>
@@ -408,7 +408,7 @@ function kartuRendemen(h) {
               <td>${teks(String(u).replace('>=', '≥'))} tahun</td>
               <td class="angka">${v > 0 ? pct(v) : '—'}</td>
               ${adaInti ? `<td class="angka">${i > 0 ? pct(i) : '—'}</td>` : ''}
-              <td><span class="bilah" style="--isi:${v > 0 ? Math.round(((v - lo) / (hi - lo)) * 100) : 0}%"></span></td>
+              <td><span class="bilah-isi" style="--isi:${v > 0 ? Math.round(((v - lo) / (hi - lo)) * 100) : 0}%"></span></td>
             </tr>`;
           }).join('')}</tbody>
         </table>

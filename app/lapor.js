@@ -39,7 +39,7 @@
  */
 
 import { teks } from './pustaka.js';
-import { salin } from './serah.js';
+import { salin, bukaTab } from './serah.js';
 
 const n = (x) => Number(x ?? 0).toLocaleString('id-ID');
 
@@ -254,10 +254,9 @@ export function pasangLapor(wadah, bacaOpt, bacaWilayah, ambilBalai) {
         + 'akan membuang bagian yang menyebut apa yang belum diperiksa. Sudah disalin; tempelkan langsung.';
       return;
     }
-    const tab = window.open(alamat, '_blank', 'noopener,noreferrer');
-    kabar.textContent = tab
+    kabar.textContent = bukaTab(alamat)
       ? 'WhatsApp dibuka dengan laporannya. Belum terkirim — kamu yang memilih penerimanya.'
-      : 'Peramban memblokir tab baru. Salin dari kotak di bawah.';
+      : 'Peramban menolak membuka tab baru. Salin dari kotak di bawah.';
     if (!tab) await salin(isi);
   });
 }

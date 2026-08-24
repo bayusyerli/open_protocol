@@ -8,7 +8,7 @@
  * dua pintu, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, tautanMasuk, pasangKembali } from './pustaka.js';
+import { ambil, muatMeta, cari, gambarHasil, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { layarVarietas, layarTakDitemukan } from './varietas.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -110,10 +110,7 @@ async function jalankan() {
     if (masuk.q) { el.q.value = masuk.q; await jalankan(); }
     if (masuk.id && masuk.pecahan) await buka(masuk.id, masuk.pecahan);
   } catch (e) {
-    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
-      <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan
-      <code>node spec/tools/bangun-indeks.mjs --tulis</code> dan sengaja tidak ikut
-      disimpan di repositori.</p>
-      <p class="catatan">${teks(e.message)}</p></div>`;
+    el.hasil.innerHTML = pesanGagalMuat(e);
+    pasangCobaLagi(el.hasil);
   }
 })();

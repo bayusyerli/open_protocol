@@ -1297,8 +1297,17 @@ button.merek-tautan { cursor: pointer; }
 .lencana-pekebun { background: var(--aksen-lemah); color: var(--aksen); font-weight: 600; }
 
 /* Bilah perbandingan di tabel pita umur. Bukan grafik — hanya panjang relatif, supaya mata
-   menangkap bentuk sebaran umur tanpa harus membaca tiga belas angka berurutan. */
-.bilah {
+   menangkap bentuk sebaran umur tanpa harus membaca tiga belas angka berurutan.
+
+   NAMANYA `.bilah-isi`, BUKAN `.bilah`, dan itu memperbaiki tabrakan yang sempat mematikan
+   satu visual. `.bilah` sudah dipakai jalur 3 sebagai KONTAINER berisi `<span>` yang
+   panjangnya disetel `width`; aturan ini menyetel `width: var(--isi)` pada elemennya
+   sendiri. Karena ia datang belakangan di berkas yang sama, ia menang kaskade — dan div
+   jalur 3 yang tidak pernah menyetel `--isi` runtuh jadi sepihan 2 px, sehingga bilah
+   pembanding "yang kamu bayar vs HET bersubsidi" — inti jalur 3 — tidak terlihat sama
+   sekali. Komentar di cangkang.js sudah memperingatkan nama itu terpakai; peringatannya
+   yang terlewat, bukan tidak ada. */
+.bilah-isi {
   display: block;
   height: 0.55rem;
   width: var(--isi, 0%);

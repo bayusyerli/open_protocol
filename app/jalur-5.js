@@ -9,7 +9,7 @@
  * hukumnya — Pasal 75 menentukan pestisida dari kegunaan yang DIKLAIM.
  */
 
-import { ambil, muatMeta, bacaMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, bacaMeta, teks, pasangKembali, tautanMasuk, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
 import { pasangKeselamatan } from './keselamatan.js';
@@ -400,9 +400,7 @@ pasangTeruskan(el.resep, () => kartuResep(resepKini), 'sediaan');
     const { resep } = tautanMasuk();
     if (resep) await bukaResep(`sediaan/${resep}`);
   } catch (e) {
-    el.fungsi.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
-      <p>Halaman ini membaca <code>spec/indeks/</code>, yang dibangun ulang dengan
-      <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>
-      <p class="catatan">${teks(e.message)}</p></div>`;
+    el.fungsi.innerHTML = pesanGagalMuat(e);
+    pasangCobaLagi(el.fungsi);
   }
 })();

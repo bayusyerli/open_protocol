@@ -1249,6 +1249,77 @@ for (const o of optRegistriIndeks) {
   if (o.l && ember(o.l) !== ember(o.n)) tambah(o.l, { ...entri, n: o.n });
 }
 
+// ---------------------------------------------------------------------------
+// Komoditas sebagai PINTU di kepala pencarian
+// ---------------------------------------------------------------------------
+// "alpukat" termasuk kueri yang paling wajar diketik dan paling buruk dijawab. Kepala
+// pencarian mencocokkan NAMA ENTRI, jadi ia menjawab 20 varietas yang kebetulan bernama
+// "Alpukat …" dan mendiamkan 125 sisanya — nama komoditasnya tinggal di medan `k`, yang
+// tidak pernah ikut dicocokkan. Angka 145 sudah lama terhitung dan sudah lama tercetak di
+// /tanaman/alpukat/; yang tidak pernah ada cuma jalan dari kotak cari ke sana.
+//
+// YANG DITAMBAHKAN SATU BARIS PER KOMODITAS, BUKAN ALIAS PER VARIETAS. Bedanya bukan
+// penghematan bita melainkan bentuk jawabannya: memfilekan 11.227 varietas sekali lagi di
+// bawah nama komoditasnya akan menjawab "alpukat" dengan 145 kartu yang tidak bisa
+// dibedakan satu sama lain — registri tidak memuat satu pun sifat agronomi yang membuat
+// salah satunya lebih pantas dipilih, dan daftar panjang tanpa pembeda terbaca sebagai
+// peringkat. Satu pintu yang menyebutkan cacahnya menjawab pertanyaan yang sebenarnya
+// diajukan ("ada berapa, dan di mana daftarnya") tanpa berpura-pura bisa memeringkatnya.
+//
+// SLUG DITETAPKAN DI SINI, BUKAN DI PEMBANGUN HALAMAN. Selama ini slug komoditas lahir di
+// bangun-halaman.mjs, satu-satunya pemakainya. Begitu kotak cari ikut menautnya, dua
+// tempat menghitung slug yang sama dari sumber yang sama — dan dua hitungan yang wajib
+// sama persis adalah tautan menggantung yang menunggu giliran. Jadi slug ikut ke
+// `opt/<kunci>.json`, dan pembangun halaman membacanya dari sana.
+const slugDasar = (s) => String(s ?? '')
+  .normalize('NFD').replace(/[̀-ͯ]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, '-')
+  .replace(/^-+|-+$/g, '')
+  .slice(0, 72) || 'tanpa-nama';
+const ekorIdSlug = (id) => String(id).split(':').pop().replace(/^0+/, '') || '0';
+
+// Varietas per komoditas dihitung dari rekaman varietas, bukan dari daftar OPT. Keduanya
+// memang tidak beririsan: satu komoditas bisa punya 145 varietas dan satu OPT berproduk,
+// yang lain 622 pendaftaran produk dan nol varietas.
+const varietasPerKomoditas = new Map();
+for (const v of semuaVarietas) {
+  if (!v.komoditas) continue;
+  varietasPerKomoditas.set(v.komoditas, (varietasPerKomoditas.get(v.komoditas) ?? 0) + 1);
+}
+
+const slugKomoditas = new Map();
+const slugTerpakai = new Map();
+for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
+  // Kunci kosakata dipakai kalau ada — sudah dikurasi, pendek, dan tidak ikut berubah saat
+  // ejaan label registrinya diperbaiki.
+  const dasar = slugDasar(komoditasById.get(kc)?.key ?? v.nama);
+  const punya = slugTerpakai.get(dasar);
+  // Yang bertabrakan diberi ekor id — bukan "yang pertama datang menang", karena "yang
+  // pertama" bergantung urutan baca. Aturan yang sama persis dipakai slug OPT.
+  slugKomoditas.set(kc, punya === undefined || punya === kc ? dasar : `${dasar}-${ekorIdSlug(kc)}`);
+  if (punya === undefined) slugTerpakai.set(dasar, kc);
+
+  const nVar = varietasPerKomoditas.get(kc) ?? 0;
+  const nOpt = v.opt.size;
+  let nProduk = 0;
+  for (const o of v.opt.values()) nProduk += o.produk.size;
+  tambah(v.nama, {
+    n: v.nama,
+    i: kc,
+    j: 'komoditas',
+    // Cacahnya ADALAH jawabannya, jadi ia dibawa kartunya sendiri alih-alih ditunda sampai
+    // halamannya dibuka. Yang bertanya "ada berapa varietas alpukat" selesai di baris ini;
+    // tautannya untuk yang mau daftarnya.
+    k: [
+      nVar ? `${nVar.toLocaleString('id-ID')} varietas terdaftar` : null,
+      nOpt ? `${nOpt.toLocaleString('id-ID')} OPT punya produk terdaftar` : null,
+      nProduk ? `${nProduk.toLocaleString('id-ID')} pendaftaran produk` : null,
+    ].filter(Boolean).join(' · ') || 'tidak ada pendaftaran tercatat',
+    p: `tanaman/${slugKomoditas.get(kc)}`,
+  });
+}
+
 const cariDalam = [];
 const muat = (isi) => Buffer.byteLength(JSON.stringify(isi), 'utf8') <= ANGGARAN;
 // Batasnya dulu 8 dan itu diam-diam gagal begitu principal masuk: 676 badan bernama
@@ -1403,7 +1474,7 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
     }
     berkasOpt[`${kk}/${ko}`] = utuh;
   }
-  berkasOpt[kk] = { komoditas: kc, nama: v.nama, opt: daftarOpt };
+  berkasOpt[kk] = { komoditas: kc, nama: v.nama, slug: slugKomoditas.get(kc), opt: daftarOpt };
 }
 
 // ---------------------------------------------------------------------------
@@ -2277,6 +2348,67 @@ const tinjauan = (() => {
   return { rekaman, berpeninjau, peninjau: [...orang.keys()].sort() };
 })();
 
+// ---------------------------------------------------------------------------
+// Agroklimat: ambang yang membuat sebuah angka jadi kelas bernama
+// ---------------------------------------------------------------------------
+// Kotak cari menerima "500 mdpl" karena orang memang mengetiknya. Sampai sekarang angka
+// itu tidak pernah berarti apa pun di permukaan mana pun: kelima skema agroklimat hanya
+// dibaca check.mjs (L40–L43) dan CLI, jadi ambangnya ada tetapi tidak pernah sampai ke
+// layar. Yang diterbitkan di sini AMBANGNYA, bukan iklimnya — docs/21 bagian 1 sudah
+// menyatakan repositori ini tidak menyimpan satu pun deret hujan dan tidak berencana.
+//
+// KENAPA INI TIDAK MENJADIKAN KOTAK CARI PENJAWAB. Yang bisa dijawab dari berkas ini cuma
+// "500 m dpl termasuk kelas apa, menurut skema siapa, dengan ambang berapa" — putusan
+// yang bisa dihitung ulang siapa pun dari angka yang sama. Yang TIDAK bisa dijawab
+// darinya, dan justru itu yang ditanyakan orang: varietas mana yang cocok di ketinggian
+// itu. Registri varietas tidak memuat satu pun sifat agronomi, jadi tidak ada yang bisa
+// disaring dengan kelas ini. Berkas ini karena itu dipakai untuk MENYEBUTKAN batas, bukan
+// untuk menyempitkan daftar — dan kalau suatu hari sifat agronomi ada, ambangnya sudah
+// terbit lebih dulu daripada penyaringnya.
+//
+// Diambil apa adanya dari kosakata, dipangkas ke medan yang dipakai layar. `criteria`
+// ikut utuh: kelas tanpa ambangnya adalah label yang tidak bisa dibantah.
+const agroklimatIndeks = [];
+const agroklimatBerkas = [
+  'agroklimat-dataran-hortikultura.json',
+  'agroklimat-junghuhn.json',
+  'agroklimat-oldeman.json',
+  'agroklimat-schmidt-ferguson.json',
+  'agroklimat-pola-hujan.json',
+];
+for (const nama of agroklimatBerkas) {
+  const s = bacaJson(nama);
+  agroklimatIndeks.push({
+    id: s.id,
+    key: s.key,
+    n: s.label?.id ?? s.key,
+    arti: s.definition?.id ?? null,
+    sumbu: s.axis ?? null,
+    // "threshold" berarti sebuah angka menentukan kelasnya; "qualitative" berarti tidak,
+    // dan layar wajib membedakannya. Skema kualitatif yang dipakai seolah berambang akan
+    // mengarang ketegasan yang sumbernya sendiri tidak punya.
+    putus: s.decidable ?? null,
+    ...(s.qualitative_reason ? { alasanKualitatif: s.qualitative_reason } : {}),
+    masukan: (s.inputs ?? []).map((i) => ({
+      key: i.key, n: i.label?.id ?? i.key, satuan: i.unit ?? null,
+    })),
+    kelas: (s.classes ?? []).slice().sort((a, b) => (a.order ?? 0) - (b.order ?? 0)).map((k) => ({
+      id: k.id, kode: k.code, n: k.label?.id ?? k.code,
+      arti: k.definition?.id ?? null,
+      ...(Array.isArray(k.criteria) && k.criteria.length ? { syarat: k.criteria } : {}),
+      ...(k.agronomy?.id ? { agronomi: k.agronomy.id } : {}),
+    })),
+    status: s.lifecycle?.status ?? null,
+    lisensi: s.provenance?.license ?? null,
+    // Sumbernya disebut judul + tahun, bukan diringkas jadi satu nama lembaga: batas zona
+    // panas Junghuhn ditulis 600 m di sebagian kepustakaan dan 700 m di sebagian lain,
+    // dan yang membuat pilihan itu bisa dibantah adalah terbitan yang ditunjuknya.
+    sumber: (s.provenance?.sources ?? []).map((x) => ({
+      judul: x.title ?? null, penerbit: x.publisher ?? null, tahun: x.year ?? null,
+    })),
+  });
+}
+
 const meta = {
   versi: 1,
   sumber: 'spec/vocab',
@@ -2290,6 +2422,12 @@ const meta = {
     kelompokSetara: Object.keys(setara).length,
     produkSetara: Object.values(setara).reduce((a, g) => a + g.length, 0),
     komoditasBerOpt: perKomoditas.size,
+    // Sama dengan komoditasBerOpt dan itu memang disengaja: pintu komoditas dibangun dari
+    // daftar yang sama, jadi angka yang berbeda di antara keduanya berarti ada pintu yang
+    // menggantung. Dihitung terpisah supaya selisihnya bisa terlihat, bukan diasumsikan.
+    komoditasBerpintu: [...perKomoditas.keys()].filter((k) => slugKomoditas.has(k)).length,
+    agroklimatSkema: agroklimatIndeks.length,
+    agroklimatBerambang: agroklimatIndeks.filter((x) => x.putus === 'threshold').length,
     resepSediaan: berkasSediaan.resep.length,
     komoditasBervarian: Object.keys(varian).length,
     optTerkurasi: gejala.length,
@@ -2448,6 +2586,10 @@ const meta = {
       'Nol dari 738 OPT registri berproduk memuat teks gejala. Sepuluh OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 738 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
     hasilVarietas:
       'Registri tidak memuat potensi hasil satu pun varietas — nol dari 11.227. Perkiraan panen pada analisis usaha tani karena itu masukan pemakainya sendiri, dan tidak ada angka acuan yang bisa disodorkan menggantikannya.',
+    ketinggianVarietas:
+      'Registri tidak memuat ketinggian yang cocok untuk satu pun varietas — nol dari 11.227, sama seperti seluruh sifat agronomi lainnya. Kelas dataran dan zona Junghuhn yang diterbitkan di agroklimat.json karena itu bisa menyebutkan sebuah angka termasuk kelas apa, tetapi TIDAK bisa dipakai menyaring daftar varietas. "Varietas dataran tinggi" yang tercetak di kemasan adalah klaim pemulianya, dan klaim itu tidak masuk ke registri.',
+    agroklimatLokasi:
+      'Tidak ada satu pun penetapan agroklimat untuk sebuah lokasi di indeks ini. Yang diterbitkan skemanya — ambang yang mengubah angka jadi kelas bernama — bukan peta yang, diberi nama desa, mengembalikan kelasnya. Ketinggian sebuah titik harus dibawa sendiri oleh yang bertanya, dan pola hujan sebuah wilayah tidak bisa dihitung dari ketinggian mana pun.',
     arusKasMusim:
       'Kapan biaya keluar dan kapan uang masuk menuntut kalender musim yang bertanggal. Kosakata fase sengaja tidak punya medan hari, dan hanya dua dari empat langkah protokol cabai yang bertanggal — membangun kalender di atas itu berarti mengarang tanggal.',
     takaranRumahTangga:
@@ -2466,6 +2608,7 @@ const berkas = new Map();
 const simpan = (p, data) => berkas.set(p, JSON.stringify(data) + '\n');
 
 simpan('meta.json', meta);
+
 for (const [nomor, isi] of berkasSetara) simpan(`setara/${nomor}.json`, isi);
 for (const [nomor, isi] of berkasBahan) simpan(`bahan/${nomor}.json`, isi);
 for (const [k, isi] of Object.entries(berkasBahanMerek).sort()) simpan(`bahan/${k}.json`, isi);
@@ -2477,6 +2620,7 @@ simpan('nama-lokal.json', namaLokalCari);
 for (const [k, isi] of Object.entries(berkasOptNama).sort()) simpan(`opt-nama/${k}.json`, isi);
 simpan('varian.json', varian);
 simpan('larangan.json', Object.fromEntries([...laranganZat].sort()));
+simpan('agroklimat.json', agroklimatIndeks);
 for (const [e, isi] of Object.entries(cari).sort()) simpan(`cari/${e}.json`, isi);
 pecahanProduk.forEach((s, i) => simpan(`produk/${String(i).padStart(3, '0')}.json`, s));
 pecahanVarietas.forEach((s, i) => simpan(`varietas/${String(i).padStart(3, '0')}.json`, s));
@@ -2562,6 +2706,8 @@ console.log(`  lab/              : ${labSemua.length} laboratorium di ${labWilay
 console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => lebihRinci(r.alamat)).length} lebih rinci dari kabupaten`);
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
 console.log(`  opt-nama/         : ${optRegistriIndeks.length} OPT registri berproduk dapat dicari menurut nama — tidak satu pun punya teks gejala`);
+console.log(`  pintu komoditas   : ${slugKomoditas.size} komoditas masuk kepala pencarian — sebelumnya nol, dan 125 dari 145 varietas alpukat tak terjangkau dari kotak cari`);
+console.log(`  agroklimat.json   : ${agroklimatIndeks.length} skema, ${agroklimatIndeks.filter((x) => x.putus === 'threshold').length} berambang — ambangnya terbit, penetapan untuk sebuah lokasi tetap nol`);
 console.log(`  rekaman uji       : ${cariUji} produk + ${bahanUji} bahan aktif — artefak QA registri ditandai di ember cari, berlencana dan diturunkan, tidak dihapus`);
 console.log(`  surel lab         : ${surelTerbit} terbit sebagai kontak lembaga; ${surelDitahan} ditahan karena berpola nama orang — UU PDP 27/2022`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);

@@ -15,6 +15,10 @@
  * ia menunjuk ke atas akar dan setiap pengambilan gagal. Jalur mutlak benar di keduanya,
  * dan ia juga yang sudah dipakai sw.js (`INDEKS = '/spec/indeks/'`) sejak awal — jadi ini
  * membuat ketiganya sepakat, bukan menambah satu asumsi baru. */
+// Penguraian kalimat tinggal di berkasnya sendiri karena ia tidak menyentuh jaringan maupun
+// DOM — seluruhnya fungsi murni, dan itu yang membuatnya bisa diuji di luar peramban.
+import { uraikan } from './tanya.js';
+
 const BASIS = '/spec/indeks';
 
 const ingatan = new Map();
@@ -67,6 +71,59 @@ export async function ambil(jalan) {
   return janji;
 }
 
+/* DUA KEGAGALAN YANG BERBEDA, DAN SELAMA INI KEDUANYA BERBUNYI SAMA.
+ *
+ * Sampai 24 Agustus 2026 kedelapan layar menjawab kegagalan muat pertama dengan kalimat
+ * yang sama: "Indeks tidak ditemukan — bangun dulu dengan `node spec/tools/bangun-indeks.mjs
+ * --tulis`". Itu benar untuk satu pembaca — orang yang menjalankan repositori di
+ * laptopnya — dan salah untuk semua pembaca lain. Petani bersinyal buruk, yang justru
+ * syarat lapangan nomor satu permukaan ini, dibalas instruksi terminal untuk masalah yang
+ * sebenarnya cuma sambungan putus.
+ *
+ * Yang membedakan: `ambil()` melempar `Error` bertuliskan status HTTP hanya ketika peladen
+ * MENJAWAB tetapi berkasnya tidak ada; kegagalan jaringan melempar TypeError dari fetch,
+ * tanpa status. Ditambah `navigator.onLine` yang menyatakan peranti memang sedang lepas.
+ * Petunjuk membangun tetap ada — ia turun ke console, tempat pembacanya memang menengok. */
+const GAGAL_STATUS = /: (\d{3})$/;
+
+export function pesanGagalMuat(e) {
+  const status = Number(GAGAL_STATUS.exec(e?.message ?? '')?.[1]) || null;
+  const luring = navigator.onLine === false || !status;
+
+  if (luring) {
+    return `
+      <div class="kartu peringatan">
+        <h2>Datanya belum bisa diambil</h2>
+        <p>Sambungan ke jaringan sedang tidak jalan, atau terputus di tengah pengambilan.
+        Yang di halaman ini tidak hilang — begitu sinyalnya kembali, muat ulang saja.</p>
+        <p><button type="button" class="kembali" id="cobaLagi">Coba lagi</button></p>
+        <p class="catatan">Kalau permukaan ini pernah dibuka sebelumnya dan luring sudah
+        disimpan, sebagian layar tetap bisa dipakai tanpa sinyal.</p>
+      </div>`;
+  }
+
+  // 404 dan sebangsanya: peladen menjawab, berkasnya yang tidak ada. Itu keadaan
+  // pemasangan, bukan keadaan lapangan — dan orang yang bisa memperbaikinya bukan
+  // pembaca halaman ini.
+  console.error(
+    `Indeks tidak terambil (${status}). Bangun dulu dari akar repositori:\n`
+    + '  node spec/tools/bangun-indeks.mjs --tulis\n'
+    + 'lalu sajikan AKARNYA — menyajikan app/ saja tidak cukup.', e,
+  );
+  return `
+    <div class="kartu peringatan">
+      <h2>Datanya belum tersedia di peladen ini</h2>
+      <p>Halaman ini ada, tetapi berkas datanya tidak terkirim. Ini bukan sesuatu yang bisa
+      diperbaiki dari sisi kamu — silakan coba lagi nanti.</p>
+      <p class="catatan">Rinciannya ada di konsol peramban, untuk yang memasang permukaan ini.</p>
+    </div>`;
+}
+
+/** Pasang tombol "Coba lagi" yang digambar `pesanGagalMuat`, kalau ada. */
+export function pasangCobaLagi(wadah, aksi) {
+  wadah.querySelector('#cobaLagi')?.addEventListener('click', aksi ?? (() => location.reload()));
+}
+
 // Tidak diekspor: pemakaiannya seluruhnya di dalam berkas ini.
 const rapikan = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
 
@@ -82,7 +139,7 @@ export const tanggal = (s) => {
 export const JENIS = {
   pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif',
   gejala: 'Gejala', principal: 'Perusahaan', harga: 'Harga',
-  sediaan: 'Sediaan sendiri', opt: 'Hama & penyakit',
+  sediaan: 'Sediaan sendiri', opt: 'Hama & penyakit', komoditas: 'Tanaman',
 };
 
 /**
@@ -130,6 +187,17 @@ const tautanKunci = {
   sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
   principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
   harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
+  // Satu-satunya rute yang keluar dari app/ dan masuk ke halaman terbitan. Pintu komoditas
+  // memang sudah ada di sana — /tanaman/alpukat/ menyebut 145 varietas dan seluruh OPT
+  // berproduknya sejak halaman pertama diterbitkan — dan yang tidak pernah ada cuma jalan
+  // dari kotak cari ke sana. Membuat salinannya di app/ berarti dua layar yang sama akan
+  // menyimpang; menautnya tidak.
+  //
+  // Mutlak, dengan alasan yang sama seperti `BASIS`: rakit-situs.mjs menaruh app/ di AKAR
+  // bersama terbit/, jadi `/tanaman/…` benar di situs terbitan. Selama pengembangan app/
+  // disajikan di `/app/` dan tautan ini menggantung — sama seperti seluruh 30 ribu halaman
+  // terbitan lainnya, yang memang tidak ada sampai dirakit.
+  komoditas: (x) => `/${String(x.p ?? '').replace(/^\/+|\/+$/g, '')}/`,
 };
 
 /**
@@ -178,22 +246,120 @@ function emberUntuk(kueri) {
   return cocok.length > 4 ? { kurang: 1 } : { ember: cocok };
 }
 
-/** `saring` membatasi jenis entri, mis. hanya varietas untuk jalur 4. */
-export async function cari(kueri, saring) {
+/* Medan yang ikut dicocokkan selain nama, dan kenapa cuma dua.
+ *
+ * `k` baris di bawah nama — komoditas untuk varietas, pemegang pendaftaran untuk produk,
+ * cacah untuk bahan dan pintu komoditas. `f` pembedanya — komposisi untuk produk, nama
+ * ilmiah untuk OPT, bentuk badan untuk principal. Keduanya sudah ada di kepala pencarian dan
+ * sudah tercetak di tiap kartu, jadi mencocokkannya tidak menambah satu pengambilan pun.
+ *
+ * Sebelum ini keduanya TIDAK PERNAH dicocokkan, dan akibatnya paling terlihat pada kueri
+ * berkata dua: "phonska petrokimia" dijawab nol walaupun kedua katanya tercetak berdampingan
+ * di kartu yang sama. */
+const medanCocok = (x) => [x.n, x.k, x.f].map((s) => rapikan(s));
+
+/**
+ * Mencari di kepala pencarian.
+ *
+ * TIGA HAL YANG BERBEDA DARI VERSI SATU-UNTAIAN, dan ketiganya hanya berlaku pada kueri
+ * berkata lebih dari satu — kueri satu kata melewati jalan yang sama persis seperti dulu:
+ *
+ *   1. Kalimat dipecah jadi kata lewat `uraikan()`, dan kata yang bukan nama apa pun
+ *      ("apa", "yang", "cocok", "kapan") tidak ikut dicari. Sebelum ini seluruh kalimat
+ *      jadi satu untaian tanpa spasi, dan untaian seperti itu tidak pernah ada di nama
+ *      mana pun — jadi tiap pertanyaan berkalimat dijawab nol tanpa satu pun galat.
+ *   2. Tiap kata mengambil embernya sendiri, lalu hasilnya disatukan. Ini yang membuat
+ *      "phonska petrokimia" bisa ketemu: PHONSKA tinggal di ember "ph" dan tidak akan
+ *      pernah terambil dari ember "pe".
+ *   3. DAN KALAU BISA, ATAU KALAU TIDAK. Kalau ada entri yang mencocoki SELURUH kata, hanya
+ *      entri itu yang ditampilkan — itu jawaban yang jauh lebih tepat. Kalau tidak ada satu
+ *      pun, saringannya dilonggarkan jadi "cocok salah satu" dan hasilnya diurutkan menurut
+ *      berapa kata yang cocok. Nol hasil hampir selalu lebih buruk daripada hasil yang
+ *      perlu dipilih sendiri.
+ *
+ * `saring` membatasi jenis entri, mis. hanya varietas untuk jalur 4 — tidak berubah.
+ * `pintu` memasukkan entri yang bukan entitas melainkan tautan ke layar lain (hari ini:
+ * komoditas). Dimatikan secara bawaan karena jalur 2, 3, dan 4 membuka hasilnya sebagai
+ * rincian dari pecahan indeks, dan pintu tidak punya pecahan untuk dibuka.
+ */
+export async function cari(kueri, saring, { pintu = false } = {}) {
   const r = rapikan(kueri);
-  const { ember, kurang } = emberUntuk(kueri);
-  if (kurang) return { kurang };
-  const isi = await Promise.all(ember.map((e) => ambil(`cari/${e}`)));
-  const semua = isi.flat()
-    .filter((x) => (saring ? saring(x) : true))
-    .filter((x) => rapikan(x.n).includes(r));
-  // Yang diawali kueri didahulukan; sisanya tetap ditampilkan karena nama di kemasan
-  // kerap cuma sepotong dari nama terdaftarnya.
-  semua.sort((a, b) => {
-    const pa = rapikan(a.n).startsWith(r), pb = rapikan(b.n).startsWith(r);
-    return pb - pa || a.n.localeCompare(b.n);
-  });
-  return { hasil: semua };
+  const u = uraikan(kueri);
+
+  // Kueri satu kata, atau kalimat yang seluruh katanya kata perekat: yang dicari untaiannya
+  // sendiri. Ini juga yang menjaga "tambah N huruf lagi" tetap berbunyi seperti dulu.
+  const istilah = u.istilah.length ? u.istilah : (r ? [r] : []);
+  if (!istilah.length) return { hasil: [] };
+
+  // Ember diambil untuk untaian penuh DAN untuk tiap istilah. Yang penuh dipertahankan
+  // karena ia masih yang paling tepat untuk nama beruang seperti "abamektin 18": untaian
+  // "abamektin18" mencocoki satu merek, sementara kata "abamektin" saja mencocoki ratusan.
+  // Tiga istilah terpanjang saja yang diambil embernya — kalimat yang lebih panjang dari itu
+  // tidak menyempit lebih jauh, dan tiap ember tambahan satu perjalanan lagi di sinyal buruk.
+  const kunciEmber = [
+    ...(u.istilah.length > 1 ? [r] : []),
+    ...[...istilah].sort((a, b) => b.length - a.length).slice(0, 3),
+  ];
+
+  const emberDipakai = new Set();
+  let kurangTerkecil = null;
+  for (const k of kunciEmber) {
+    const { ember, kurang } = emberUntuk(k);
+    if (kurang) {
+      // "Tambah huruf lagi" hanya berlaku kalau TIDAK ADA satu pun kata yang cukup panjang.
+      // Satu kata pendek di dalam kalimat yang punya kata panjang bukan alasan menahan
+      // seluruh jawabannya.
+      kurangTerkecil = kurangTerkecil === null ? kurang : Math.min(kurangTerkecil, kurang);
+      continue;
+    }
+    for (const e of ember) emberDipakai.add(e);
+  }
+  if (!emberDipakai.size) return { kurang: kurangTerkecil ?? 1, urai: u };
+
+  const isi = await Promise.all([...emberDipakai].map((e) => ambil(`cari/${e}`)));
+
+  // Satu entri bisa terambil dua kali — sekali dari ember namanya, sekali dari ember alias
+  // yang dibuatkan untuknya (nama tanpa awalan lembaga, nama ilmiah OPT, kata penanda
+  // sediaan). Di indeks keduanya memang harus ada; di layar cukup satu.
+  const unik = new Map();
+  for (const x of isi.flat()) {
+    if (saring && !saring(x)) continue;
+    if (!pintu && x.j === 'komoditas') continue;
+    if (!unik.has(x.i)) unik.set(x.i, x);
+  }
+
+  const dinilai = [];
+  for (const x of unik.values()) {
+    const [n, k, f] = medanCocok(x);
+    const cocok = istilah.filter((t) => n.includes(t) || k.includes(t) || f.includes(t)).length;
+    const diNama = istilah.filter((t) => n.includes(t)).length;
+    const utuh = r.length >= 2 && n.includes(r);
+    if (!cocok && !utuh) continue;
+    dinilai.push({
+      x,
+      cocok,
+      diNama,
+      utuh,
+      awalan: istilah.some((t) => n.startsWith(t)) || (utuh && n.startsWith(r)),
+    });
+  }
+
+  // DAN kalau bisa: kalau ada yang mencocoki seluruh kata, yang mencocoki sebagian dibuang.
+  const penuh = dinilai.filter((d) => d.cocok === istilah.length);
+  const dipakai = penuh.length ? penuh : dinilai;
+
+  dipakai.sort((a, b) => (
+    // Untaian penuh lebih dulu — "abamektin 18" tetap menjawab merek itu, bukan seluruh
+    // merek berabamektin. Lalu berapa kata yang cocok, lalu di mana cocoknya: nama yang
+    // memuat kata yang diketik lebih tepat daripada baris keterangan yang memuatnya.
+    Number(b.utuh) - Number(a.utuh)
+    || b.cocok - a.cocok
+    || b.diNama - a.diNama
+    || Number(b.awalan) - Number(a.awalan)
+    || a.x.n.localeCompare(b.x.n)
+  ));
+
+  return { hasil: dipakai.map((d) => d.x), urai: u, sebagian: !penuh.length && istilah.length > 1 };
 }
 
 /**
@@ -341,14 +507,54 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
  *               ditinggalkan daftar, bukan satu kontrol.
  *  - `sesudah`  keadaan yang ikut direset; jalur 3 menyimpan pilihan produknya.
  */
-export function pasangKembali(wadah, { fokus, gulirKe, sesudah } = {}) {
+/* TOMBOL KEMBALI PERANGKAT IKUT MENUTUP LAYAR RINCIAN — bukan melempar keluar halaman.
+ *
+ * Di HP Android, kebiasaan navigasi nomor satu adalah tombol back perangkat, dan sampai
+ * 24 Agustus 2026 menekannya dari layar rincian jalur 1–6 membuang seluruh hasil pencarian
+ * dan keluar dari halaman. Tombol "← Kembali ke hasil pencarian" memang ada, tetapi bukan
+ * itu yang ditekan orang secara refleks. Hanya `harga.js` yang sudah memakai riwayat.
+ *
+ * Perbaikannya di sini, bukan di enam berkas: fungsi ini sudah dipanggil tepat pada saat
+ * layar rincian selesai digambar, jadi ia tahu kapan sebuah "layar" dibuka. Ia menambah
+ * satu entri riwayat, dan menutup layar ketika entri itu dilepas — dari tombol perangkat
+ * maupun dari tombol di halaman, yang kini menempuh jalan yang sama supaya keduanya tidak
+ * bisa menyimpang.
+ *
+ * URL-nya sengaja TIDAK diubah kecuali pemanggil menyediakan `alamat`. Menyusun URL yang
+ * benar per jalur menuntut id dan pecahannya, dan menebaknya akan menghasilkan alamat yang
+ * gagal saat dimuat ulang — lebih buruk daripada alamat yang tidak berubah. Jalur yang
+ * memang punya alamatnya tinggal mengoperkannya. */
+let tutupKini = null;
+
+addEventListener('popstate', () => {
+  const t = tutupKini;
+  tutupKini = null;
+  t?.();
+});
+
+export function pasangKembali(wadah, { fokus, gulirKe, sesudah, alamat } = {}) {
   const b = wadah.querySelector('#kembali');
   if (!b) return;
-  b.addEventListener('click', () => {
+
+  const tutup = () => {
     wadah.innerHTML = '';
     sesudah?.();
     if (gulirKe) gulirKe.scrollIntoView({ block: 'start' });
     fokus?.focus();
+  };
+
+  // Satu entri per layar rincian. Membukanya berturut-turut tidak menumpuk entri:
+  // yang sebelumnya sudah dilepas penutupnya sendiri, atau digantikan di sini.
+  tutupKini = tutup;
+  try {
+    history.pushState({ rincian: true }, '', alamat ?? location.href);
+  } catch { /* peramban menolak menulis riwayat — tombol di halaman tetap bekerja */ }
+
+  b.addEventListener('click', () => {
+    // Lewat riwayat, supaya entri yang tadi didorong ikut terlepas. Tanpa ini, tombol
+    // perangkat sesudahnya akan menutup layar yang sudah tertutup.
+    if (history.state?.rincian) history.back();
+    else { tutupKini = null; tutup(); }
   });
 }
 

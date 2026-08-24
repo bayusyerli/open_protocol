@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js';
+import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -699,8 +699,7 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // di tanaman itu. Bersama `opt` atau `hama` ia penunjuk; sendirian ia pintunya.
     else if (kom) await bukaTanaman(kom, { gulir: false });
   } catch (e) {
-    el.gejala.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
-      <p>Dibangun ulang dengan <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>
-      <p class="catatan">${teks(e.message)}</p></div>`;
+    el.gejala.innerHTML = pesanGagalMuat(e);
+    pasangCobaLagi(el.gejala);
   }
 })();
