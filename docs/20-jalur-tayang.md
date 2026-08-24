@@ -109,7 +109,7 @@ bertanya sama sekali. `meta.json` sendiri **tidak** boleh ikut: ia yang menyebut
   entitas adalah sitemap. Halaman sitemap-only diindeks lebih lambat dan menerima nol
   ekuitas tautan dari beranda.
 - **`/toko/` masih yatim** — tiga halaman tanpa tautan masuk. `/badan/` dan `/harga/` sudah
-  dirajut: 3.136 halaman badan kini dirujuk 17.048 berkas, naik dari nol.
+  dirajut: 3.135 halaman badan kini dirujuk 17.048 berkas, naik dari nol.
 - **`/spec/indeks/` tidak di-Disallow di robots.txt**, sehingga perayap boleh menghabiskan
   anggaran rayapnya pada 9.301 berkas JSON yang bukan halaman.
 - **410 untuk entitas yang hilang tiap musim** belum ada; ia butuh konfigurasi host.

@@ -622,7 +622,7 @@ const TARIKAN = {
  *
  * Sampai 24 Agustus 2026, 14.920 halaman produk menyebut pemegang pendaftarannya lewat
  * `/principal.html?key=…`, sementara halaman `/badan/<kunci>/` yang isinya persis itu
- * berdiri tanpa satu pun tautan masuk: 3.136 halaman dibangun dengan benar, dirujuk nol
+ * berdiri tanpa satu pun tautan masuk: 3.135 halaman dibangun dengan benar, dirujuk nol
  * kali. Akibatnya dua-duanya rugi — halaman statisnya nyaris tak terlihat perayap, dan
  * layar berparameter yang menggantikannya menduplikasi isinya tanpa canonical.
  *

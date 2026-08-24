@@ -184,9 +184,20 @@ Aturannya:
   yang sama di kedua sisi: `kanonik`, `ejaan/kapitalisasi/spasi`, `tanda-baca`,
   `beda-bentuk-badan`.
 - **Pemilihan bentuk kanonik**, berurutan: ada prefiks badan hukum → bukan ALL CAPS → tanpa
-  spasi ganda atau spasi ekor → paling sering muncul.
-- **`perlu_tinjau=ya`** untuk nama yang sama tetapi bentuk badannya berbeda (CV vs PT vs UD).
-  Digabung karena hampir pasti salah entri, ditandai supaya bisa dipisah lagi.
+  spasi ganda atau spasi ekor → paling sering muncul. Urutan ini selalu berakhir pada salah
+  satu ejaan yang benar-benar ada di registri — ia memilih, ia tidak mengarang.
+- **Bentuk kanonik yang bukan ejaan registri hanya boleh datang dari pemilik repositori,**
+  dan wajib ditandai `perlu_tinjau=ya`. Aturan di atas tidak bisa menghasilkannya, jadi tanpa
+  tanda itu tidak ada apa pun di berkas yang membedakan penetapan dari turunan aturan. Cirinya
+  terbaca sendiri: kelompoknya tidak punya baris ber-`dasar` `kanonik`, sebab tidak ada ejaan
+  registri yang sama dengan bentuk kanoniknya. Sudah dipakai sekali — `PT Pupuk Indonesia`,
+  24 Agustus 2026, menggabung `Perusahaan Perseroan (Persero) PT. Pupuk Indonesia` (20
+  pendaftaran) dengan `PT Pupuk Indonesia (Persero)` (4); aturan "paling sering muncul" akan
+  memilih yang pertama. Alasannya di `docs/principal-terdaftar.md`.
+- **`perlu_tinjau=ya`** juga untuk nama yang sama tetapi bentuk badannya berbeda (CV vs PT vs
+  UD). Digabung karena hampir pasti salah entri, ditandai supaya bisa dipisah lagi. Kedua
+  sebab memakai tanda yang sama dan itu disengaja: yang ditanyakan tanda itu selalu "apakah
+  kelompok ini masih benar", bukan "kenapa ia dibentuk" — yang terakhir dijawab `dasar`.
 - **Singkatan tidak pernah digabung.** `PT BCA` mungkin PT Benih Citra Asia, `PT BISI` bisa
   PT BISI International atau PT Benih Inti Subur Intani — dua-duanya masuk akal. Tandai,
   jangan tebak.

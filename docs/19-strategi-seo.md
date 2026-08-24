@@ -242,7 +242,7 @@ Tiga aturan yang menentukan bentuk halaman:
 | `/bahan/<slug>/` | `indeks/bahan/` | 1.125 | **1.125** | `<Bahan aktif> — <n> produk terdaftar, dan untuk apa saja terdaftarnya` |
 | `/hama/<komoditas>/<opt>/` | `indeks/opt/` | 2.580 | 2.580 | `<OPT> pada <komoditas> — bahan aktif dan merek yang terdaftar` |
 | `/tanaman/<komoditas>/` | `indeks/opt/` | 692 | **234** | `<Komoditas> — OPT terdaftar, varietas, dan harga` |
-| `/badan/<key>/` | `indeks/principal/` | 3.136 | 3.136 | `<Nama badan> — <n> pendaftaran pupuk, pestisida, benih` |
+| `/badan/<key>/` | `indeks/principal/` | 3.135 | 3.135 | `<Nama badan> — <n> pendaftaran pupuk, pestisida, benih` |
 | `/harga/<seri>/` | `indeks/harga/` | 96 | **55** | `Harga <komoditas> — eceran nasional, <tanggal>, dan jaraknya dari harga petani` |
 | `/toko/<wilayah>/` | `indeks/toko/` | 92 | **3** | `Toko tani di <wilayah> — <n> titik` |
 | `/sediaan/<id>/` | `indeks/sediaan/` | 34 | **31** | `<Resep> — kedudukan hukum, bahan, titik kendali` |
@@ -362,7 +362,7 @@ tetap ditampilkan — menghilangkannya akan membuat daftar penggunaan produk tam
 pendek daripada labelnya), 22 baris penggunaan di luar batas 120 per halaman, dan 247
 halaman hama yang daftar kartunya diringkas.
 
-**Badan menutup S2.** 3.136 halaman, tanpa satu pun yang gugur: tiap badan memegang
+**Badan menutup S2.** 3.135 halaman, tanpa satu pun yang gugur: tiap badan memegang
 setidaknya satu pendaftaran, dan tiap kunci lolos pemeriksaan bentuk. Satu rekaman per
 **badan**, bukan per registri — 19 badan memegang pendaftaran di kedua sisi, dan
 memecahnya akan membelah daftarnya jadi dua halaman yang masing-masing tampak setengah
@@ -391,7 +391,7 @@ dan varietas yang ditahan di luar batas 150 per tabel, dan disebutkan di halaman
 **Indeksnya berubah di tengah pekerjaan.** Sesi lain membangun ulang `spec/indeks/`
 (cap `6f32c743b2d2` → `3c17c4de9fca`) dan seri harga bertambah dari 92 jadi 96. Angka di
 bawah diukur ulang atas cap yang baru; cacah registri intinya tidak berubah sama sekali —
-7.724 pestisida, 7.196 pupuk, 11.227 varietas, 3.136 badan.
+7.724 pestisida, 7.196 pupuk, 11.227 varietas, 3.135 badan.
 
 | Template | Terbit | Terindeks | Yang menentukan |
 |---|---|---|---|
@@ -631,7 +631,7 @@ Nol tetap bukan kegagalan — konsisten dengan `docs/11` §4.
 |---|---|---|
 | **S0 · bisa dirayapi** | Domain, host, sajikan dari akar, `robots.txt`, sitemap 12 halaman, kanonik + `og:` di seluruh `app/*.html`, GSC terpasang | 12 halaman terindeks dalam 14 hari |
 | **S1 · halaman jawaban** | 2.580 hama×komoditas + 1.192 bahan + 337 kandungan + 234 komoditas — **4.343 halaman, sudah dibangun**, seluruhnya berstruktur pertanyaan. Nilai per halaman tertinggi, jumlah terkecil, risiko tipis paling rendah | ≥60% terindeks; ≥100 kueri entitas/minggu |
-| **S2 · skala penuh** | 11.840 produk + 1.276 setara + 3.136 badan — **seluruhnya sudah dibangun** | Rasio terindeks **tidak turun** di bawah S1. Kalau turun, berhenti menambah — itu tanda tipis |
+| **S2 · skala penuh** | 11.840 produk + 1.276 setara + 3.135 badan — **seluruhnya sudah dibangun** | Rasio terindeks **tidak turun** di bawah S1. Kalau turun, berhenti menambah — itu tanda tipis |
 | **S3 · yang butuh kadensi atau putusan** | 55 seri harga + 3 wilayah toko + 31 sediaan + 16 editorial — **seluruhnya sudah dibangun**; editorial menunggu tinjauan sebelum diindeks | Halaman harga tidak pernah menayangkan tanggal yang lebih tua dari tarikan terakhir |
 
 **PR pertama** — sebagiannya sudah jadi: `spec/tools/bangun-halaman.mjs` menerbitkan

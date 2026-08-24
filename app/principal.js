@@ -93,7 +93,7 @@ function kartuLogo(b) {
 }
 
 /* Ketiadaan logo dinyatakan, bukan didiamkan — alasannya sama dengan slot gambar kemasan di
- * jalur 2: 39 dari 3.136 badan punya logo, jadi keadaan yang LAZIM adalah tanpa, dan kepala
+ * jalur 2: 39 dari 3.135 badan punya logo, jadi keadaan yang LAZIM adalah tanpa, dan kepala
  * kartu yang diam-diam kosong terbaca sebagai "badan ini kurang resmi". Angkanya dibaca dari
  * meta, tidak diketik, sebab panen tumbuh sedangkan prosa diam. */
 function kalimatTanpaLogo() {

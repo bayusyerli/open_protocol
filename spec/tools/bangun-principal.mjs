@@ -11,7 +11,7 @@
 // pertanyaan "perusahaan ini menjual apa saja" jadi tidak bisa dijawab dari mana pun.
 //
 // TIGA SUMBER, DAN HANYA DUA DI ANTARANYA BERTINGKAT B
-//   pukpes_data/principal_kanonik.csv    2.304 ejaan -> 1.949 badan. Turunan registri.
+//   pukpes_data/principal_kanonik.csv    2.304 ejaan -> 1.948 badan. Turunan registri.
 //   proseed_data/pemohon_varietas.csv    1.259 pemohon varietas. Turunan registri.
 //   data/pengaya-principal.csv           101 baris. RISET AGEN, bukan sumber primer.
 //   data/principals-benih.csv            102 baris. RISET AGEN, bukan sumber primer.

@@ -568,7 +568,7 @@ const setaraRinci = Object.entries(setara).map(([kunci, anggota]) => ({
   anggota: anggota.map((id) => {
     const r = namaProduk.get(id);
     // `pk` = key principal. Cukup satu kata untuk membuat nama pemegang di tabel setara jadi
-    // tautan ke profilnya; tanpa itu, satu-satunya jalan adalah mengunduh peta 3.136 baris.
+    // tautan ke profilnya; tanpa itu, satu-satunya jalan adalah mengunduh peta 3.135 baris.
     return {
       i: id, n: r?.nama ?? '', k: r?.produsen ?? null, p: r?.daftar ?? null,
       ...(r?.pcp ? { pk: r.pcp.key } : {}),
@@ -950,7 +950,7 @@ const principalRinci = principal.map((b) => {
 // muncul di layar mana pun harus bisa menunjuk ke profilnya, dan itu berarti tiap tautan
 // perlu tahu berkas mana yang memuatnya. Dengan pecahan menurut anggaran, nomor berkas itu
 // tidak bisa diturunkan dari apa pun: ia harus dibawa serta di TIAP entri — di daftar setara,
-// di tabel merek per kadar, di kartu hasil pencarian — atau peta 3.136 baris harus diunduh
+// di tabel merek per kadar, di kartu hasil pencarian — atau peta 3.135 baris harus diunduh
 // tiap halaman. Satu berkas per `key` menghapus keduanya: jalurnya `principal/<key>`, dan
 // yang perlu dibawa satu kata yang memang sudah ada.
 const kunciPrincipal = (k) => k.replace(/[^a-z0-9-]/gi, '');
@@ -959,7 +959,7 @@ const berkasPrincipal = {};
 const petaPrincipal = new Map();
 for (const b of principalRinci) {
   const k = kunciPrincipal(b.key);
-  // Badan tanpa logo TIDAK diberi medan kosong. 39 dari 3.136 punya, jadi keadaan yang
+  // Badan tanpa logo TIDAK diberi medan kosong. 39 dari 3.135 punya, jadi keadaan yang
   // lazim adalah tanpa — dan 3.097 medan null memakan pecahan tanpa memberi tahu apa pun.
   const logo = logoPerPrincipal.get(b.key);
   berkasPrincipal[k] = logo ? { ...b, logo } : b;
@@ -2525,7 +2525,7 @@ const meta = {
   // menyentuh pecahan itu sama sekali, jadi tiap kunci yang tidak dibaca dibayar semua
   // orang di tiap kunjungan.
   //
-  // Aturan itu sudah ditulis di sini sejak principal — "daftar 3.136 kunci membengkakkan
+  // Aturan itu sudah ditulis di sini sejak principal — "daftar 3.135 kunci membengkakkan
   // meta.json dari 19 KB jadi 114 KB" — lalu dilanggar lima kali berturut-turut oleh
   // penambahan yang masing-masing tampak kecil: opt, kandungan, toko, optNama, dan
   // akhirnya bpp. Terhitung 23 Agustus 2026 saat menyambungkan BPP: meta.json 60,1 KB,

@@ -70,11 +70,18 @@ lengkap termasuk hama sasaran & dosis).
 | Berkas | Isi |
 |---|---|
 | `principal_kanonik.csv` | 2.304 nama sebagaimana tertulis di registri + kolom `nama_kanonik` |
-| `principal_alias.csv` | 681 baris pemetaan beserta alasannya (`dasar`, `perlu_tinjau`) |
+| `principal_alias.csv` | 683 baris pemetaan beserta alasannya (`dasar`, `perlu_tinjau`) |
 
-2.304 nama mentah menjadi 1.949 principal; 355 varian digabung, 7 ditandai perlu ditinjau
-karena bentuk badan hukumnya berbeda. Konvensinya sama dengan sisi benih di
-`proseed_data/pemohon_alias.csv` dan dijelaskan di `spec/00-konvensi-kerja-paralel.md`.
+2.304 nama mentah menjadi 1.948 principal; 356 varian digabung, 9 ditandai perlu ditinjau.
+Konvensinya sama dengan sisi benih di `proseed_data/pemohon_alias.csv` dan dijelaskan di
+`spec/00-konvensi-kerja-paralel.md`.
+
+Tujuh dari sembilan tanda itu berarti bentuk badan hukumnya berbeda (`CV` lawan `PT`).
+Dua sisanya — kedua ejaan **PT Pupuk Indonesia**, digabung 24 Agustus 2026 — berarti sesuatu
+yang lain: bentuk kanoniknya **ditetapkan pemilik repositori** dan tidak pernah ditulis begitu
+di registri, sehingga aturan pemilihan bentuk kanonik tidak bisa menghasilkannya sendiri.
+Kelompok itu satu-satunya yang tidak punya baris ber-`dasar` `kanonik`. Alasan lengkapnya di
+[`docs/principal-terdaftar.md`](../docs/principal-terdaftar.md).
 
 `produsen_master.csv` dibuat lebih dulu dengan cara lain — nama asli tidak disimpan dan
 alasan penggabungan tidak dicatat. Dibiarkan sebagai jejak; yang mengikat `principal_alias.csv`.

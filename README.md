@@ -53,7 +53,7 @@ komoditas** (906 termasuk yang digantikan penyatuan serumpun). Registri varietas
 menyusul dengan **11.227 varietas**, 52,4% di antaranya mewarisi skala fase lewat
 komoditasnya.
 
-Di sisi yang sama, **3.136 badan pemegang pendaftaran** kini punya entitasnya sendiri —
+Di sisi yang sama, **3.135 badan pemegang pendaftaran** kini punya entitasnya sendiri —
 perusahaan, balai penelitian, dinas, perguruan tinggi, dan pemerintah daerah — hasil
 penyeragaman nama pemegang di **kedua** registri sekaligus. Satu rekaman per badan, bukan
 per registri: 19 di antaranya memegang pendaftaran di kedua sisi, dan memecahnya akan

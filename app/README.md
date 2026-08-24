@@ -74,7 +74,7 @@ opsional** — indeks tetap terbangun tanpa mereka, hanya bagian yang datanya be
 yang hilang, dan `meta.json` menyebutkannya. Urutannya:
 
 ```bash
-node spec/tools/bangun-principal.mjs --tulis        # 3.136 badan pemegang pendaftaran
+node spec/tools/bangun-principal.mjs --tulis        # 3.135 badan pemegang pendaftaran
 node harga_data/tarik-sp2kp.mjs                     # satu permintaan ke SP2KP, ±56 MB
 node harga_data/tarik-tbs-kalbar.mjs                # penetapan TBS Kalbar — jendela bergulir,
                                                     # jalankan tiap bulan supaya arsipnya menumpuk
@@ -1286,7 +1286,7 @@ lambang satu lini produk sebagai lambang badan yang memegangnya.
   dipasang badan itu di situsnya sendiri; ia bukan lencana mitra dan bukan tanda hubungan
   dengan platform ini; dan sambungannya bertingkat bukti D, dengan jumlah kata yang cocok
   ikut disebut.
-- **Ketiadaannya berbunyi.** 39 dari 3.136, jadi keadaan yang lazim adalah tanpa — dan kepala
+- **Ketiadaannya berbunyi.** 39 dari 3.135, jadi keadaan yang lazim adalah tanpa — dan kepala
   kartu yang diam-diam kosong terbaca sebagai "badan ini kurang resmi". Angkanya dibaca dari
   meta, tidak diketik: panen tumbuh sedangkan prosa diam.
 - **Keputusan penerbitannya perluasan, dan dicatat seperti yang pertama.** Keputusan 23
