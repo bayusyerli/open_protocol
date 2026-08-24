@@ -605,18 +605,45 @@ tr.lewat-masa td:first-child { border-left: 3px solid var(--awas, var(--amber, #
 .lapor-ciri + .lapor-ciri { margin-top: .9rem; padding-top: .9rem; border-top: 1px solid var(--bj-garis); }
 .lapor-tanya { margin: 0 0 .4rem; font-size: .87rem; color: var(--bj-teks); }
 
-.lapor-pilih { display: flex; flex-wrap: wrap; gap: .35rem; }
+/* Pilihan jawaban: SEL BERLEBAR SAMA, bukan pil selebar isinya.
+   Sampai 25 Agustus 2026 ini `flex-wrap` dengan pil selebar teksnya masing-masing, dan di
+   ponsel 390 px hasilnya selalu compang-camping. Terukur pada wadah 330 px:
+
+     tiga ciri   86 / 129 / 147 px   membungkus 2 + 1, yang ketiga yatim di baris kedua
+     empat luas  198 / 239 / 193 / 197 px   empat baris, tiap baris beda lebar
+
+   Yang dibaca mata bukan "tiga pilihan setara" melainkan tiga kotak berlainan ukuran —
+   padahal ketiganya jawaban yang sederajat untuk satu pertanyaan. Lebar yang sama
+   menyatakan kesederajatan itu; lebar mengikuti panjang teks menyatakan kepentingan yang
+   tidak pernah dimaksudkan. */
+.lapor-pilih {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: .4rem;
+}
+
+/* Di lebar ponsel kolomnya dipatok dua, jadi butir ganjil terakhir pasti sendirian di
+   barisnya — dilebarkan penuh, bukan dibiarkan menggantung dengan ruang kosong di
+   kanannya. Dengan `auto-fit` cacah kolomnya berubah-ubah dan aturan ganjil-genap ini
+   tidak lagi benar, jadi ia memang hanya berlaku di sini. */
+@media (max-width: 34rem) {
+  .lapor-pilih { grid-template-columns: 1fr 1fr; }
+  .lapor-pilih > label:last-child:nth-child(odd) { grid-column: 1 / -1; }
+}
 
 .lapor-pilih label {
-  display: inline-flex;
+  display: flex;
   align-items: center;
+  justify-content: center;
   gap: .35rem;
   min-height: 44px;
-  padding: .3rem .6rem;
+  padding: .35rem .6rem;
   border: 1px solid var(--bj-garis);
   border-radius: 999px;
   cursor: pointer;
   font-size: .85rem;
+  line-height: 1.3;
+  text-align: center;
   color: var(--bj-teks);
 }
 
