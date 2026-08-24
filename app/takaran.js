@@ -20,7 +20,7 @@
  * sebaran akibatnya, bukan satu angka.
  */
 
-import { muatMeta, bacaMeta, bacaMeta, teks } from './pustaka.js';
+import { muatMeta, bacaMeta, teks } from './pustaka.js';
 import { pasangBatas } from './batas.js';
 import { pasangKeselamatan } from './keselamatan.js';
 import { pasangTombolTema } from './tema.js';
@@ -242,12 +242,56 @@ for (const id of ['airTerpakai', 'luasSemprot', 'volTangki', 'nilaiDosis', 'satu
 isiSatuan();
 
 const perbarui = () => { hitungDosis(hitungKalibrasi()); };
+/* Kalibrasi bertahan di peranti — T7 pada audit alur & rasa pakai.
+ *
+ * Halaman ini SUDAH menjanjikannya dua kali dalam kalimatnya sendiri: "Sekali diukur,
+ * berlaku untuk penyemprot dan cara jalan yang sama", dan "Mengukurnya sekali saja, dan
+ * selesai selamanya." Sampai sekarang janji itu tidak ditepati satu kali pun — menyegarkan
+ * halaman mengosongkan ketiganya, dan orang yang kembali besok mengukur ulang ember dan
+ * petak percobaannya.
+ *
+ * YANG DISIMPAN HANYA YANG MEMANG BERLAKU SELAMANYA: kalibrasi penyemprot dan isi takaran
+ * rumah tangga. Angka dosis TIDAK ikut — ia milik label produk yang sedang dipegang, dan
+ * dosis kemarin yang muncul kembali untuk produk hari ini persis kekeliruan yang paling
+ * mahal di halaman ini. Luas petak juga tidak: ia berganti tiap petak.
+ *
+ * Kuncinya terdaftar di simpanan.js supaya ukur.html menyebutnya dan bisa menghapusnya. */
+const KUNCI_TAKAR = 'op:takar';
+const MEDAN_TERSIMPAN = ['airTerpakai', 'luasSemprot', 'volTangki', 'isiTakaran'];
+
+function simpanKalibrasi() {
+  try {
+    const isi = {};
+    for (const id of MEDAN_TERSIMPAN) if (el[id].value !== '') isi[id] = el[id].value;
+    if (Object.keys(isi).length) localStorage.setItem(KUNCI_TAKAR, JSON.stringify(isi));
+    else localStorage.removeItem(KUNCI_TAKAR);
+  } catch { /* mode privat menolak menulis; hitungannya tetap jalan sesi ini */ }
+}
+
+function muatKalibrasi() {
+  try {
+    const isi = JSON.parse(localStorage.getItem(KUNCI_TAKAR) ?? '{}');
+    let ada = false;
+    for (const id of MEDAN_TERSIMPAN) {
+      if (isi[id] == null) continue;
+      el[id].value = isi[id];
+      ada = true;
+    }
+    return ada;
+  } catch { return false; }
+}
+
 for (const id of ['airTerpakai', 'luasSemprot', 'volTangki', 'nilaiDosis', 'luasPetak']) {
   el[id].addEventListener('input', perbarui);
 }
+for (const id of MEDAN_TERSIMPAN) el[id].addEventListener('change', simpanKalibrasi);
 for (const id of ['satuanDosis']) el[id].addEventListener('change', perbarui);
 el.bentukDosis.addEventListener('change', () => { isiSatuan(); perbarui(); });
 for (const id of ['perluMl', 'isiTakaran']) el[id].addEventListener('input', hitungTakar);
+
+// Dimuat sesudah seluruh penangan terpasang, lalu dihitung sekali supaya yang kembali
+// besok langsung melihat hasilnya — bukan tiga kotak terisi yang belum berarti apa-apa.
+if (muatKalibrasi()) { perbarui(); hitungTakar(); }
 
 hitungKalibrasi();
 hitungTakar();

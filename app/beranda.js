@@ -9,7 +9,7 @@
  * indeks yang sama, pemecahan ember yang sama, urutan yang sama.
  */
 
-import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, teks, JENIS } from './pustaka.js';
+import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, tautanHasil, teks, JENIS } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { catatLubang, LUBANG } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -31,40 +31,10 @@ const el = {
 
 // Jalur mana yang memiliki perender untuk satu jenis entri.
 // Jalur mana yang memiliki perender untuk satu jenis entri. Bahan aktif tinggal di
-// jalur 2 bersama merek — pertanyaannya sama-sama "sebenarnya ini apa", dan gejala
-// di jalur 1, karena di sanalah blok "pastikan dulu" berada.
-const RUMAH = { varietas: 'jalur-4.html', pestisida: 'index.html', pupuk: 'index.html', bahan: 'index.html' };
-
-// Sediaan punya DUA rumah, dan yang menentukan rezimnya. Sisi pupuk dan sisi pengendali
-// bukan dua tab dari satu layar — janjinya berbeda: yang satu resep terbuka, yang satu
-// status hukum yang sengaja berhenti sebelum jadi anjuran.
-const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.includes('pengendali')
-  ? 'jalur-6.html' : 'jalur-5.html');
-
-// Dua jenis entri baru tidak dibuka lewat `id`+`pecahan` seperti empat yang lain: keduanya
-// punya berkasnya sendiri per entitas, jadi yang dibawa tautannya cukup satu kunci. Bentuk
-// tautannya karena itu berbeda, dan perbedaannya ditulis sekali di sini alih-alih diulang di
-// tiap pemanggil.
-const tautanKunci = {
-  // OPT registri dibuka jalur 1 lewat kuncinya sendiri, bukan lewat `opt=` yang dipakai
-  // sepuluh OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
-  // membuat jalur 1 mencari teks gejala yang memang tidak ada.
-  opt: (x) => `jalur-1.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
-  sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
-  principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
-  harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
-};
-
-// `q` ikut supaya jalur tujuan memulihkan daftar hasilnya sendiri di belakang layar
-// rincian — tombol "kembali ke hasil pencarian" di sana harus mendarat pada sesuatu.
-// Untuk saran ejaan, yang dikirim adalah nama yang benar, bukan kueri yang salah ketik:
-// mengirim salah ketiknya membuat jalur tujuan mencari sesuatu yang memang nol.
-const tautan = (x, kueri = el.q.value.trim()) => {
-  const khusus = tautanKunci[x.j];
-  if (khusus) return khusus(x);
-  const p = new URLSearchParams({ id: x.i, pecahan: x.p, q: kueri });
-  return `${RUMAH[x.j] ?? 'index.html'}?${p}`;
-};
+// Rute hasil pencarian pindah ke pustaka.js: cangkang.js memakai rute yang sama untuk
+// kotak cari yang tetap, dan dua salinan aturan "jenis mana dibuka halaman mana" akan
+// menyimpang persis seperti <p class="lain"> dulu menyimpang.
+const tautan = (x, kueri = el.q.value.trim()) => tautanHasil(x, kueri);
 
 const tautanGejala = (g) => `jalur-1.html?${new URLSearchParams({ opt: g.i })}`;
 

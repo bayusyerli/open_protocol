@@ -89,8 +89,28 @@
     </p>
   </div>
 
+  <h2 class="judul-bagian">Yang tersimpan, bukan cuma yang dihitung</h2>
+
+  <div class="kartu">
+    <p>
+      Tabel di atas meringkas <strong>hitungan penggunaan</strong>. Sejak angka mengalir
+      antar layar, peranti ini juga memegang musim, buku kas, anggaran, dan realisasi —
+      dan halaman berjudul “apa yang tercatat di peranti ini” berutang menyebut semuanya.
+      Daftar di bawah <strong>dipindai dari penyimpanan</strong>, bukan disalin dari
+      daftar tetap, jadi ia tidak bisa ketinggalan diam-diam.
+    </p>
+    <div id="simpanan"></div>
+    <p class="tombol-baris">
+      <button type="button" id="hapusSemua" hidden>Hapus SEMUA yang tersimpan di peranti ini</button>
+    </p>
+    <p class="catatan">
+      Tidak satu pun dari ini pernah dikirim ke mana pun — tidak ada server aplikasi yang
+      bisa menerimanya. Menghapusnya tidak bisa dibatalkan.
+    </p>
+  </div>
+
   <div class="kartu" id="tindakan" hidden>
-    <h2>Menyalin dan menghapus</h2>
+    <h2>Menyalin dan menghapus hitungan penggunaan</h2>
     <p>
       Salinannya berupa JSON — persis catatan mentahnya, tanpa tambahan apa pun. Tiap
       angka pada tabel di atas bisa ditelusuri balik ke sana.

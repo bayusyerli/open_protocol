@@ -10,6 +10,7 @@
  */
 
 import { ringkas, hapus } from './ukur.js';
+import { daftarSimpanan, hapusSemua } from './simpanan.js';
 import { teks } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { perintah, luringAktif } from './luring.js';
@@ -185,6 +186,56 @@ function gambar() {
   el.tindakan.hidden = false;
 }
 
+/* Daftar apa yang benar-benar tersimpan — bukan cuma yang diukur berkas ini.
+ *
+ * Tabel di atas meringkas `op.ukur.v1` saja. Sejak angka mengalir antar layar, peranti
+ * ini juga memegang musim, buku kas, anggaran, dan realisasi — dan halaman yang berjudul
+ * "apa yang tercatat di peranti ini" yang tidak menyebutnya sedang mengingkari judulnya
+ * sendiri. */
+function gambarSimpanan() {
+  const d = daftarSimpanan();
+  const wadah = document.getElementById('simpanan');
+  if (!wadah) return;
+
+  if (d === null) {
+    wadah.innerHTML = `
+      <p class="catatan">Peramban ini menolak membaca penyimpanan lokal — mode privat, atau
+      kebijakan peranti. Artinya tidak ada yang tersimpan, dan tidak ada yang bisa dihapus.</p>`;
+    return;
+  }
+  if (!d.length) {
+    wadah.innerHTML = '<p class="catatan">Belum ada apa pun yang tersimpan di peranti ini.</p>';
+    document.getElementById('hapusSemua').hidden = true;
+    return;
+  }
+
+  const total = d.reduce((a, x) => a + x.bita, 0);
+  const asing = d.filter((x) => !x.dikenal);
+
+  wadah.innerHTML = `
+    <p class="bantuan">${d.length} hal tersimpan, ${(total / 1024).toFixed(1)} KB seluruhnya.</p>
+    ${asing.length ? `
+      <div class="simpanan-asing" role="alert">
+        <strong>${asing.length} kunci belum dijelaskan di halaman ini.</strong>
+        Ia tetap terhapus oleh tombol di bawah — penghapusannya memindai, bukan memakai
+        daftar. Yang perlu diperbaiki keterangannya di <code>simpanan.js</code>.
+      </div>` : ''}
+    <dl class="simpanan">
+      ${d.map((x) => `
+        <dt>${teks(x.nama)}${x.dikenal ? '' : ' <em>— belum dijelaskan</em>'}
+          <span class="simpanan-ukur">${(x.bita / 1024).toFixed(1)} KB</span></dt>
+        <dd>${x.apa ? teks(x.apa) : `Kunci <code>${teks(x.kunci)}</code>.`}</dd>`).join('')}
+    </dl>`;
+  document.getElementById('hapusSemua').hidden = false;
+}
+
+document.getElementById('hapusSemua').addEventListener('click', () => {
+  const n = hapusSemua();
+  el.kabar.textContent = `${n} hal dihapus dari peranti ini — termasuk musim, buku kas, dan anggaran kalau ada.`;
+  gambar();
+  gambarSimpanan();
+});
+
 document.getElementById('salin').addEventListener('click', async () => {
   try {
     await navigator.clipboard.writeText(el.mentah.textContent);
@@ -196,11 +247,13 @@ document.getElementById('salin').addEventListener('click', async () => {
 
 document.getElementById('hapus').addEventListener('click', () => {
   hapus();
-  el.kabar.textContent = 'Catatan peranti ini dihapus.';
+  el.kabar.textContent = 'Hitungan penggunaan dihapus. Musim, buku kas, dan anggaran TIDAK ikut — itu tombol di bawah.';
   gambar();
+  gambarSimpanan();
 });
 
 gambar();
+gambarSimpanan();
 
 // ---------------------------------------------------------------------------
 // A5 — kendali simpanan luring

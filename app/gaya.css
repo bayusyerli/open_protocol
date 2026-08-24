@@ -181,6 +181,128 @@
 /* Tombol tema pindah ke bilah; jarak lamanya di .baris-atas tidak berlaku lagi. */
 .bilah-cangkang .tombol-tema { margin: 0; }
 
+/* ------------------------------------------------------- kotak cari tetap (K2) */
+
+/* Bilah harus muat merek + kotak + tombol tema di 375 px. Yang mengalah subjudul
+   mereknya: ia hiasan, dan kotak cari yang tidak muat bukan kotak cari. */
+.cari-cangkang { flex: 1 1 auto; min-width: 0; margin: 0; }
+.cari-cangkang input {
+  width: 100%;
+  min-height: 44px;
+  padding: .45rem .7rem;
+  font: inherit;
+  font-size: .9rem;
+  color: var(--teks);
+  background: var(--latar-kartu);
+  border: 1px solid var(--garis);
+  border-radius: 999px;
+}
+.cari-cangkang input:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+@media (max-width: 460px) {
+  .merek-cangkang { flex: none; }
+  .merek-cangkang small { display: none; }
+  .merek-cangkang strong { font-size: .82rem; white-space: nowrap; }
+}
+
+/* ------------------------------------------------------------ lembar cangkang */
+.lembar-cangkang {
+  width: min(560px, calc(100vw - 24px));
+  padding: 0;
+  border: 1px solid var(--garis);
+  border-radius: 16px;
+  background: var(--latar-kartu);
+  color: var(--teks);
+}
+.lembar-cangkang::backdrop { background: rgb(9 24 18 / 55%); }
+.lembar-cangkang[open] { display: flex; flex-direction: column; max-height: min(80vh, 720px); }
+.lembar-cangkang-isi { overflow-y: auto; overscroll-behavior: contain; padding: .9rem 1rem 1.1rem; }
+.lembar-cangkang-kepala {
+  display: flex; align-items: center; justify-content: space-between; gap: 14px;
+  margin: 0; padding: .9rem 1rem .7rem;
+  border-bottom: 1px solid var(--garis);
+}
+.lembar-cangkang-kepala h2 { margin: 0; font-size: 1rem; }
+.lembar-cangkang-kepala button {
+  width: 34px; height: 34px; flex: none;
+  border: 1px solid var(--garis); border-radius: 8px;
+  background: transparent; color: var(--teks);
+  font-size: 1.1rem; line-height: 1; cursor: pointer;
+}
+.lembar-cangkang-kepala button:focus-visible { outline: 2px solid var(--aksen); outline-offset: 2px; }
+
+.daftar-cangkang { list-style: none; margin: .6rem 0 0; padding: 0; }
+.daftar-cangkang li + li { margin-top: .4rem; }
+.daftar-cangkang a {
+  display: block;
+  padding: .6rem .7rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  color: var(--teks);
+  text-decoration: none;
+}
+.daftar-cangkang a:hover { border-color: var(--aksen); }
+.daftar-cangkang a:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+.daftar-cangkang .nama { display: block; font-weight: 600; }
+.daftar-cangkang .sub { display: block; font-size: .82rem; color: var(--teks-lemah); }
+.daftar-cangkang .pembeda {
+  display: block;
+  margin-top: .25rem;
+  font-size: .86rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: var(--aksen);
+}
+.daftar-cangkang .pembeda.kosong-pembeda { font-weight: 400; font-style: italic; color: var(--teks-lemah); }
+
+/* ------------------------------------------------------------ tab bawah (K2) */
+
+/* Dalam jangkauan jempol, dan karena itu MENUTUPI isi — <body> diberi ruang di bawahnya
+   supaya baris terakhir tiap halaman tidak berakhir di balik bilah ini. */
+.tab-cangkang {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 12;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  background: var(--latar);
+  border-top: 1px solid var(--garis);
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
+.tab-cangkang > * {
+  display: grid;
+  place-items: center;
+  min-height: 52px;
+  padding: .4rem .2rem;
+  font: inherit;
+  font-size: .72rem;
+  text-align: center;
+  color: var(--teks-lemah);
+  background: none;
+  border: 0;
+  text-decoration: none;
+  cursor: pointer;
+}
+.tab-cangkang a:hover { color: var(--aksen); }
+.tab-cangkang > *:focus-visible { outline: 3px solid var(--aksen); outline-offset: -3px; }
+
+/* Halaman yang sedang dibuka tidak menautkan dirinya sendiri — aturan yang sama dengan
+   kaki halaman, dan alasan yang sama. */
+.tab-cangkang [aria-current="page"] {
+  color: var(--teks);
+  font-weight: 700;
+  box-shadow: inset 0 2px 0 var(--aksen);
+}
+
+body.bertab { padding-bottom: 5.5rem; }
+
+/* Di layar lebar tab bawah tidak berguna: kaki halaman sudah terlihat tanpa menggulir
+   jauh, dan bilah tetap di bawah layar besar cuma memakan tempat. */
+@media (min-width: 720px) {
+  .tab-cangkang { display: none; }
+  body.bertab { padding-bottom: 4rem; }
+}
+
 .kaki {
   max-width: var(--lebar);
   margin: 2.5rem auto 0;
@@ -239,6 +361,48 @@
   color: var(--teks-lemah);
 }
 .kaki-catatan a { color: var(--aksen); }
+
+/* ------------------------------------------------- daftar simpanan (ukur.html) */
+/* Peringatan kunci tak terdaftar. TIDAK memakai .bj-cacat: kelas itu membaca token
+   --bj-* yang hanya didefinisikan di dalam .batas-jawaban, jadi di luar sana ia tergambar
+   tanpa warna sama sekali — peringatan yang tidak terlihat seperti peringatan. */
+.simpanan-asing {
+  margin: .8rem 0 0;
+  padding: .7rem .8rem;
+  border: 1px solid var(--bahaya);
+  border-radius: 8px;
+  background: var(--bahaya-lemah);
+  color: var(--bahaya);
+  font-size: .87rem;
+}
+.simpanan-asing strong { display: block; }
+
+.simpanan { margin: .8rem 0 0; }
+.simpanan dt {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: .8rem;
+  margin-top: .9rem;
+  font-weight: 600;
+  font-size: .92rem;
+}
+.simpanan dt:first-child { margin-top: 0; }
+.simpanan dt em { font-weight: 400; color: var(--awas); font-style: normal; }
+.simpanan-ukur {
+  flex: none;
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--teks-lemah);
+  font-variant-numeric: tabular-nums;
+}
+.simpanan dd { margin: .15rem 0 0; font-size: .86rem; color: var(--teks-lemah); }
+
+/* Tombol yang menghapus segalanya berpakaian seperti akibatnya. */
+#hapusSemua {
+  border-color: var(--bahaya);
+  color: var(--bahaya);
+}
 
 body {
   margin: 0;

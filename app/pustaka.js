@@ -95,6 +95,48 @@ export function namaPemegang(nama, key) {
   return `<a class="tautan-principal" href="principal.html?key=${encodeURIComponent(key)}">${t}</a>`;
 }
 
+/* Rute hasil pencarian — jenis mana dibuka halaman mana.
+ *
+ * Dulu tinggal di beranda.js, satu-satunya layar yang punya kotak cari universal. Sejak
+ * cangkang.js membawa kotak yang sama ke keempat belas halaman lain, aturannya dipakai
+ * dua tempat — dan dua salinan akan menyimpang persis seperti <p class="lain"> menyimpang
+ * sebelum dipusatkan. Jadi ia tinggal di sini, dipakai keduanya.
+ *
+ * Pestisida, pupuk, dan bahan aktif serumah di jalur 2 karena pertanyaannya sama:
+ * "sebenarnya ini apa". */
+const RUMAH = { varietas: 'jalur-4.html', pestisida: 'index.html', pupuk: 'index.html', bahan: 'index.html' };
+
+// Sediaan punya DUA rumah, dan yang menentukan rezimnya. Sisi pupuk dan sisi pengendali
+// bukan dua tab dari satu layar — janjinya berbeda: yang satu resep terbuka, yang satu
+// status hukum yang sengaja berhenti sebelum jadi anjuran.
+const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.includes('pengendali')
+  ? 'jalur-6.html' : 'jalur-5.html');
+
+// Dua jenis entri tidak dibuka lewat `id`+`pecahan` seperti empat yang lain: keduanya punya
+// berkasnya sendiri per entitas, jadi yang dibawa tautannya cukup satu kunci.
+const tautanKunci = {
+  // OPT registri dibuka jalur 1 lewat kuncinya sendiri, bukan lewat `opt=` yang dipakai
+  // sepuluh OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
+  // membuat jalur 1 mencari teks gejala yang memang tidak ada.
+  opt: (x) => `jalur-1.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
+  sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
+  principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
+  harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
+};
+
+/**
+ * Alamat yang membuka satu hasil pencarian.
+ *
+ * `kueri` ikut supaya jalur tujuan memulihkan daftar hasilnya sendiri di belakang layar
+ * rincian — tombol "kembali ke hasil pencarian" di sana harus mendarat pada sesuatu.
+ */
+export function tautanHasil(x, kueri = '') {
+  const khusus = tautanKunci[x.j];
+  if (khusus) return khusus(x);
+  const p = new URLSearchParams({ id: x.i, pecahan: x.p, q: kueri });
+  return `${RUMAH[x.j] ?? 'index.html'}?${p}`;
+}
+
 let meta = null;
 export const bacaMeta = () => meta;
 export async function muatMeta() {
