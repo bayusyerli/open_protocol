@@ -18,12 +18,34 @@
  * ditambal tebakan.
  */
 
-import { ambil, muatMeta, teks } from './pustaka.js';
+import { ambil, muatMeta, teks, pasangKembali } from './pustaka.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
 
 pasangTombolTema();
 document.getElementById('tanpaJs')?.remove();
+
+/* Empat pintu berdiri sendiri, dan penutupannya dulu ditulis dua kali dengan tangan:
+ * satu penangan untuk pintu wilayah, satu gelung untuk BPP dan lab. Keduanya sekadar
+ * mengosongkan wadah — tanpa entri riwayat, jadi tombol Back perangkat MENINGGALKAN
+ * halaman alih-alih menutup layar rincian. Kesembilan permukaan lain sudah memakai
+ * pasangKembali(); halaman ini satu-satunya yang belum.
+ *
+ * Daftar dan rinciannya juga tidak pernah tampil bersamaan lagi — alasan yang sama dengan
+ * harga dan jalur 1. Di sini ia berlaku PER PINTU: yang disembunyikan hanya daftar milik
+ * pintu yang sedang dibuka, karena keempat pintu memang menjawab pertanyaan berbeda dan
+ * yang membuka satu balai penyuluhan tidak sedang menutup pencarian tokonya. */
+function bukaPintu(daftar, rincian, fokus) {
+  daftar.hidden = true;
+  pasangKembali(rincian, {
+    fokus,
+    sesudah: () => {
+      daftar.hidden = false;
+      // Paksa tata letak dihitung ulang sebelum fokus menggulir ke kotak carinya.
+      void document.documentElement.scrollHeight;
+    },
+  });
+}
 
 const el = {};
 for (const id of ['ringkasTitik', 'cariDekat', 'hasilDekat', 'ringkasWilayah', 'q',
@@ -59,15 +81,15 @@ const petaOsm = (y, x) =>
 el.cariDekat.addEventListener('click', () => {
   if (!navigator.geolocation) {
     el.hasilDekat.innerHTML =
-      '<p class="kosong">Peramban ini tidak bisa menyebutkan posisi, jadi urutan terdekat tidak bisa dihitung. Telusuri menurut wilayah di bawah.</p>';
+      '<p class="kosong" role="status">Peramban ini tidak bisa menyebutkan posisi, jadi urutan terdekat tidak bisa dihitung. Telusuri menurut wilayah di bawah.</p>';
     return;
   }
-  el.hasilDekat.innerHTML = '<p class="kosong">Menunggu izin lokasi…</p>';
+  el.hasilDekat.innerHTML = '<p class="kosong" role="status">Menunggu izin lokasi…</p>';
   navigator.geolocation.getCurrentPosition(
     (pos) => gambarDekat(pos.coords.latitude, pos.coords.longitude, pos.coords.accuracy),
     (err) => {
       el.hasilDekat.innerHTML = `
-        <p class="kosong">
+        <p class="kosong" role="status">
           Posisi tidak diberikan${err.code === 1 ? ' — izinnya ditolak' : ''}. Itu pilihan yang sah;
           telusuri menurut wilayah di bawah, walau daftar itu memang tidak bisa dituju.
         </p>`;
@@ -83,7 +105,7 @@ function gambarDekat(lat, lon, akurasi) {
     .slice(0, 15);
 
   el.hasilDekat.innerHTML = `
-    <p class="bantuan">
+    <p class="bantuan" role="status">
       Lima belas terdekat dari ${n(titik.length)} titik. Posisimu terbaca dengan ketelitian
       sekitar ${n(akurasi)} m — jarak di bawah itu tidak berarti apa-apa.
     </p>
@@ -129,12 +151,12 @@ function gambarWilayah() {
   const cocok = r ? wilayah.filter((w) => rapi(w.w).includes(r)) : wilayah;
   if (!cocok.length) {
     el.hasilWilayah.innerHTML =
-      `<p class="kosong">Tidak ada wilayah yang cocok. Cakupannya baru ${n(wilayah.length)} kabupaten dan kota — jauh dari seluruh Indonesia.</p>`;
+      `<p class="kosong" role="status">Tidak ada wilayah yang cocok. Cakupannya baru ${n(wilayah.length)} kabupaten dan kota — jauh dari seluruh Indonesia.</p>`;
     return;
   }
   const tampil = cocok.slice(0, r ? AMBIL : PRATAMPIL);
   el.hasilWilayah.innerHTML = `
-    <p class="bantuan">${n(cocok.length)} wilayah${cocok.length > tampil.length
+    <p class="bantuan" role="status">${n(cocok.length)} wilayah${cocok.length > tampil.length
       ? (r ? `, ditampilkan ${tampil.length} teratas` : ` — ${tampil.length} pertama di bawah, ketik untuk menyaring`)
       : ''}.</p>
     <ul class="daftar">
@@ -186,10 +208,7 @@ el.hasilWilayah.addEventListener('click', async (ev) => {
         <button type="button" class="kembali" id="kembali">← Kembali ke daftar wilayah</button>
       </div>`;
     el.rincian.focus();
-    el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
-      el.rincian.innerHTML = '';
-      el.q.focus();
-    });
+    bukaPintu(el.hasilWilayah, el.rincian, el.q);
   } catch (e) {
     el.rincian.innerHTML = `<div class="kartu peringatan"><h2>Gagal diambil</h2>
       <p class="catatan">${teks(e.message)}</p></div>`;
@@ -215,12 +234,12 @@ function gambarBpp() {
   const r = rapi(el.qBpp.value);
   const cocok = r ? bppWilayah.filter((w) => rapi(w.w).includes(r)) : bppWilayah;
   if (!cocok.length) {
-    el.hasilBpp.innerHTML = `<p class="kosong">Tidak ada kabupaten atau kota yang cocok. Cakupannya ${n(bppWilayah.length)} dari 514 — 34 provinsi, karena pemekaran Papua belum masuk basis data sumbernya.</p>`;
+    el.hasilBpp.innerHTML = `<p class="kosong" role="status">Tidak ada kabupaten atau kota yang cocok. Cakupannya ${n(bppWilayah.length)} dari 514 — 34 provinsi, karena pemekaran Papua belum masuk basis data sumbernya.</p>`;
     return;
   }
   const tampil = cocok.slice(0, r ? AMBIL : PRATAMPIL);
   el.hasilBpp.innerHTML = `
-    <p class="bantuan">${n(cocok.length)} wilayah${cocok.length > tampil.length
+    <p class="bantuan" role="status">${n(cocok.length)} wilayah${cocok.length > tampil.length
       ? (r ? `, ditampilkan ${tampil.length} teratas` : ` — ${tampil.length} pertama di bawah, ketik untuk menyaring`)
       : ''}.</p>
     <ul class="daftar">
@@ -266,9 +285,10 @@ el.hasilBpp.addEventListener('click', async (ev) => {
           ditambal. Laporan tamu SIMLUHTAN memang hanya memberi nama balai, kecamatan
           binaannya, dan cacahan orangnya. Yang menemukan balainya kecamatan, bukan peta.
         </p>
-        <button type="button" class="kembali" data-tutup="bpp">← Kembali ke daftar wilayah</button>
+        <button type="button" class="kembali" id="kembali">← Kembali ke daftar wilayah</button>
       </div>`;
     el.rincianBpp.focus();
+    bukaPintu(el.hasilBpp, el.rincianBpp, el.qBpp);
   } catch (e) {
     el.rincianBpp.innerHTML = `<div class="kartu peringatan"><h2>Gagal diambil</h2><p class="catatan">${teks(e.message)}</p></div>`;
   }
@@ -310,11 +330,11 @@ function gambarLab() {
     .sort((a, b) => b.cocok - a.cocok || a.w.localeCompare(b.w));
   const nama = saringan ? labKepala.arti[saringan] : null;
   if (!w.length) {
-    el.hasilLab.innerHTML = `<p class="kosong">Tidak ada provinsi yang punya laboratorium untuk ${teks(nama ?? 'itu')}.</p>`;
+    el.hasilLab.innerHTML = `<p class="kosong" role="status">Tidak ada provinsi yang punya laboratorium untuk ${teks(nama ?? 'itu')}.</p>`;
     return;
   }
   el.hasilLab.innerHTML = `
-    <p class="bantuan">${n(w.reduce((a, x) => a + x.cocok, 0))} laboratorium${nama ? ` yang lingkupnya menyentuh ${teks(nama)}` : ''} di ${n(w.length)} provinsi.</p>
+    <p class="bantuan" role="status">${n(w.reduce((a, x) => a + x.cocok, 0))} laboratorium${nama ? ` yang lingkupnya menyentuh ${teks(nama)}` : ''} di ${n(w.length)} provinsi.</p>
     <ul class="daftar">
       ${w.map((x) => `
         <li>
@@ -371,21 +391,14 @@ el.hasilLab.addEventListener('click', async (ev) => {
           di sini</strong> — tidak satu pun terbit di papan KAN. Yang dijamin akreditasi
           bukan harganya melainkan bahwa metodenya diperiksa.
         </p>
-        <button type="button" class="kembali" data-tutup="lab">← Kembali ke daftar provinsi</button>
+        <button type="button" class="kembali" id="kembali">← Kembali ke daftar provinsi</button>
       </div>`;
     el.rincianLab.focus();
+    bukaPintu(el.hasilLab, el.rincianLab, el.saringLab);
   } catch (e) {
     el.rincianLab.innerHTML = `<div class="kartu peringatan"><h2>Gagal diambil</h2><p class="catatan">${teks(e.message)}</p></div>`;
   }
 });
-
-for (const [wadah, fokus] of [[el.rincianBpp, el.qBpp], [el.rincianLab, el.saringLab]]) {
-  wadah.addEventListener('click', (ev) => {
-    if (!ev.target.closest('button[data-tutup]')) return;
-    wadah.innerHTML = '';
-    fokus?.focus?.();
-  });
-}
 
 el.qBpp.addEventListener('input', gambarBpp);
 

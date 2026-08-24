@@ -258,12 +258,24 @@ async function blokSetara(p) {
 }
 
 // ---------------------------------------------------------------------------
+/* Hasil pencarian dan rinciannya tidak pernah tampil bersamaan — alasan yang sama dengan
+ * harga dan jalur 1. Yang disembunyikan HANYA daftar hasilnya: kartu "cek isi produk"
+ * di bawah rincian adalah pintu kedua yang menjawab pertanyaan berbeda, dan menutupnya
+ * saat satu produk dibuka berarti menghilangkan alat yang tidak sedang dipakai. */
 function selesai() {
   catatJawab(2, UKUR.isi);
-  pasangKembali(el.rincian, { fokus: el.q });
+  pasangKembali(el.rincian, {
+    fokus: el.q,
+    sesudah: () => {
+      el.hasil.hidden = false;
+      // Paksa tata letak dihitung ulang sebelum fokus menggulir ke kotak carinya.
+      void document.documentElement.scrollHeight;
+    },
+  });
 }
 
 async function buka(id, pecahan) {
+  el.hasil.hidden = true;
   el.rincian.innerHTML = '<p class="kosong">Mengambil rincian…</p>';
   el.rincian.focus();
   try {
@@ -368,6 +380,10 @@ const kosongHtml = (kueri) => (catatLubang('2', LUBANG.namaDagang), `
 async function jalankan() {
   const kueri = el.q.value.trim();
   el.rincian.innerHTML = '';
+  // Mengetik menutup layar rincian, jadi daftarnya harus ikut kembali. Tanpa baris ini
+  // yang mengetik saat satu produk terbuka mendapat layar kosong: rinciannya hilang dan
+  // daftarnya masih tersembunyi.
+  el.hasil.hidden = false;
   if (!kueri) { el.hasil.innerHTML = ''; el.bantuan.textContent = 'Ketik minimal dua huruf.'; return; }
   try {
     const { hasil, kurang } = await cari(kueri);

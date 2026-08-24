@@ -308,7 +308,7 @@ async function buka(key) {
 function gambarHasilPrincipal(daftar, kueri) {
   if (!daftar.length) {
     el.hasil.innerHTML = `
-      <p class="kosong">
+      <p class="kosong" role="status">
         Tidak ada badan yang namanya memuat <strong>${teks(kueri)}</strong>. Badan pemerintah
         dan lembaga juga bisa dicari lewat nama tempatnya saja — "Probolinggo", bukan
         "Pemerintah Daerah Kabupaten Probolinggo".
@@ -317,7 +317,7 @@ function gambarHasilPrincipal(daftar, kueri) {
   }
   const tampil = daftar.slice(0, 40);
   el.hasil.innerHTML = `
-    <p class="bantuan">${n(daftar.length)} badan${daftar.length > tampil.length ? `, ditampilkan ${tampil.length} teratas` : ''}.</p>
+    <p class="bantuan" role="status">${n(daftar.length)} badan${daftar.length > tampil.length ? `, ditampilkan ${tampil.length} teratas` : ''}.</p>
     <ul class="daftar">
       ${tampil.map((x) => `
         <li>
