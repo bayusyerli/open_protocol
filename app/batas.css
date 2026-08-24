@@ -845,6 +845,63 @@ tr.lewat-masa td:first-child { border-left: 3px solid var(--awas, var(--amber, #
 .kartu-musim select:focus-visible,
 .kartu-musim input:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 1px; }
 
+/* --------------------------------------------- rencana di sebelah realisasinya (D3) */
+.kartu.banding {
+  --bj-teks:  var(--teks,        var(--tinta));
+  --bj-lemah: var(--teks-lemah,  var(--lemah));
+  --bj-aksen: var(--aksen,       var(--hijau-2));
+  --bj-awas:  var(--awas,        var(--amber));
+}
+
+/* Melampaui rencana diberi warna awas, BUKAN merah gagal: melampaui rencana di satu
+   kategori kerap berarti rencananya yang meleset, dan sebagian besar musim melampaui
+   sesuatu. Yang di luar rencana sama sekali diberi tanda yang berbeda lagi — ia temuan
+   tentang daftar rencananya, bukan tentang yang membelanjakannya. */
+.kartu.banding td.lewat { color: var(--bj-awas); font-weight: 600; }
+.kartu.banding td.luar-rencana { color: var(--bj-lemah); font-style: italic; }
+.kartu.banding tfoot th,
+.kartu.banding tfoot td { border-top: 2px solid var(--bj-garis, var(--garis)); font-weight: 700; }
+
+/* Di bawah 560 px empat lajur rupiah tidak muat, dan yang jatuh ke luar layar justru
+   "sudah keluar" dan "sisa" — dua lajur yang jadi seluruh alasan kartu ini ada. Jadi
+   tabelnya dilipat jadi blok per kategori alih-alih digulir ke samping: yang harus
+   ditemukan dengan menggulir sama saja dengan yang tidak ada. */
+@media (max-width: 560px) {
+  .kartu.banding table,
+  .kartu.banding tbody,
+  .kartu.banding tfoot,
+  .kartu.banding tr,
+  .kartu.banding th,
+  .kartu.banding td { display: block; width: auto; }
+  .kartu.banding thead { display: none; }
+  .kartu.banding tr {
+    padding: .55rem 0;
+    border-bottom: 1px solid var(--bj-garis, var(--garis));
+  }
+  .kartu.banding tbody tr:last-child { border-bottom: 0; }
+  .kartu.banding th[scope="row"] { font-weight: 700; margin-bottom: .2rem; }
+  .kartu.banding td {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    text-align: right;
+    padding: .12rem 0;
+    font-size: .92rem;
+    border-bottom: 0;   /* garis per sel jadi garis per baris begitu selnya jadi blok */
+  }
+  /* `.kosong` blok di tempat lain, dan di dalam sel yang jadi flex ia mengambil barisnya
+     sendiri — tanda hubung yang melayang di bawah labelnya terbaca seperti nilai yang
+     hilang, bukan nilai yang nol. */
+  .kartu.banding td .kosong { display: inline; margin: 0; }
+  .kartu.banding td::before {
+    content: attr(data-l);
+    color: var(--bj-lemah);
+    font-weight: 400;
+    text-align: left;
+  }
+  .kartu.banding tfoot tr { border-top: 2px solid var(--bj-garis, var(--garis)); border-bottom: 0; }
+}
+
 /* Kelas, bukan id: kartunya digambar `musim.js` dan dipasang di dua halaman. */
 .atur-musim { margin-top: .9rem; }
 /* 44 px, bukan 39: ia satu-satunya jalan ke formulir musim, dan disiplin target sentuh

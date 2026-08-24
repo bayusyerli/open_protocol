@@ -1783,3 +1783,31 @@ keduanya**. Pemeriksaan phash lintas merek melaporkannya, dan laporan itu benar 
 dilaporkannya bukan kekeliruan panen melainkan bentuk sumbernya.
 
 Delta Giri Wacana **18 → 50 dari 129**, Dharma Guna Wibawa **10 → 17 dari 64**.
+
+### Situs yang menolak agen dengan menyebut namanya
+
+`meroketetapjaya.com` menjadi yang pertama di antrean ini yang menutup pintu bukan lewat WAF
+melainkan lewat pernyataan. `robots.txt`-nya memuat grup `User-agent` khusus untuk
+**`ClaudeBot` dengan `Disallow: /`**, bersama GPTBot, CCBot, Google-Extended,
+Applebot-Extended, Bytespider, meta-externalagent, Amazonbot, dan
+CloudflareBrowserRenderingCrawler. Grup umumnya menambahkan
+`Content-Signal: search=yes,ai-train=no`.
+
+Grup umum memang berbunyi `Allow: /`. Tetapi grup yang menyebut agen tertentu lebih spesifik,
+dan itulah yang berlaku bagi agen tersebut — **menyamar sebagai peramban untuk melewati
+aturan yang menyebut namamu sendiri adalah pengelakan, bukan kepatuhan.** Bedanya dengan
+Nufarm tegas: di sana WAF menutup pintu tanpa menyatakan apa-apa, dan jalan lain (arsip, CDN)
+tidak melanggar pernyataan siapa pun. Di sini ada pernyataan, dan pernyataan itu menyebut
+nama.
+
+Yang sempat terambil sebelum `robots.txt` dibaca: berkas robots itu sendiri, beranda, dan
+`/product`. Tidak ada gambar yang diunduh dan tidak ada baris manifes yang ditulis.
+
+**Jalan yang masih sah** dan dicatat supaya tidak perlu dicari ulang: pemilik repositori
+memanennya sendiri lalu menyerahkan berkasnya, atau izin tertulis diminta ke principal —
+yang lalu ditulis `source.permission: izin_tertulis` dan membuka `redistributable`. Jangan
+dijadwalkan ulang untuk agen.
+
+Catatan cara kerja: **baca `robots.txt` sebelum menyentuh katalognya, bukan setelah.** Pada
+principal-principal sebelumnya robots dibaca lebih dulu dan hanya berisi `Disallow: /wp-admin/`;
+di sini urutannya nyaris terbalik.

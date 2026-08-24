@@ -309,6 +309,53 @@ diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan ya
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
 
+### D3 ikut ke rekaman musim — dan rencana berdiri di sebelah realisasinya
+
+Layar analisis usaha tani pemakai **ketiga** kata "musim", dan satu-satunya yang belum
+ikut. Sampai sekarang ia meminta luas dari nol setiap kali dibuka, dan rencana anggaran
+yang disusun di sana lenyap begitu tabnya ditutup.
+
+**Menyimpannya justru yang membuat sambungannya berguna.** Rencana anggaran disusun
+*sebelum* menanam; buku kas terisi *selama* musim berjalan. Yang menarik terjadi di antara
+keduanya — "sudah keluar berapa dari yang direncanakan, di kategori mana" — dan itu hanya
+bisa ditanyakan kalau rencananya masih ada waktu realisasinya mulai masuk. Rencana yang
+hilang tiap kali tab ditutup membuat perbandingan itu menuntut mengetik ulang seluruh RAB,
+yang berarti ia tidak akan pernah dilakukan.
+
+| | dari mana |
+|---|---|
+| luas | **rekaman musim**, dan ia yang menang atas salinan lokal — kalau layar lain mengubahnya, yang benar yang di rekaman bersama |
+| baris biaya, perkiraan hasil | RAB tersimpan per musim (`op:rab`) |
+| komoditas | RAB; kalau kosong, dicocokkan longgar dari nama komoditas di rekaman musim |
+| kolom "sudah keluar" | buku kas musim itu, per kategori |
+
+- **Titik impas TIDAK dihitung ulang dari biaya yang sudah keluar**, dan itu penahan yang
+  sengaja. Di tengah musim biaya yang sudah keluar selalu lebih kecil daripada rencananya,
+  jadi titik impas dari angka itu selalu tampak lebih baik — kabar bagus yang seluruhnya
+  berasal dari musim yang belum selesai. Yang ditayangkan selisih per kategori, bukan
+  kesimpulan baru.
+- **Kategori yang tidak ada di RAB sama sekali diberi tanda tersendiri**, bukan angka nol.
+  Itu temuan tentang rencananya — dan halaman ini sudah menyatakan sejak awal bahwa daftar
+  yang tidak lengkap menghasilkan titik impas yang terlalu rendah.
+- **Melampaui rencana diberi warna awas, bukan merah gagal.** Sebagian besar musim
+  melampaui sesuatu, dan yang dilampaui kerap rencananya yang meleset.
+- **Luas disimpan hektare, diminta meter persegi, konversinya tercetak.** Rekaman musim
+  memakai hektare karena itu satuan tiap program yang meminta angka biaya usaha tani; layar
+  ini meminta m² karena itu satuan yang dipakai orang menyebut petaknya sendiri ("dua ribu
+  meter"). Yang diseragamkan penyimpanannya, bukan pertanyaannya.
+- **Daftar kategorinya berhenti disalin.** Ia memang sudah sama persis dengan buku kas
+  sejak awal — disengaja — tetapi dua salinan yang kebetulan sama tidak bertahan sama, dan
+  begitu berselisih rencana per kategori tidak bisa lagi disandingkan dengan realisasinya.
+- **Tabel perbandingannya melipat jadi blok di bawah 560 px.** Empat lajur rupiah tidak
+  muat di 375 px, dan yang jatuh ke luar layar justru "sudah keluar" dan "sisa" — dua lajur
+  yang jadi seluruh alasan kartu itu ada. Yang harus ditemukan dengan menggulir ke samping
+  sama saja dengan yang tidak ada.
+
+Dua lubang baru disebut di blok batasnya: **kapan rencana boleh dianggap tertutup** (butuh
+penanda panen yang belum ada di permukaan mana pun), dan **hasil panen sebenarnya
+dibandingkan perkiraannya** — perkiraan di sini kilogram, buku kas mencatat rupiah, dan
+menjembatani keduanya dengan harga eceran menghasilkan angka yang tampak tepat dan salah.
+
 ### Musim dan petak bersama — E2 disambungkan ke buku kas dan ke petak
 
 Tiga layar memakai kata "musim", dan sebelum ini **tidak satu pun di antaranya bertemu**.

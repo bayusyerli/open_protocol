@@ -465,7 +465,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | D1 | Rp per kg hara | petani, kios, poktan | #6 | **selesai** — jalur 3 | **selesai** |
 | D2 | Kebutuhan input per luas | petani, petugas lapang | #6 | **selesai** — `susun-rencana.mjs` | **selesai** |
-| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | **sebagian** 23 Agustus 2026 — `app/usaha.html`: RAB dan titik impas selesai; arus kas **ditahan**, fase tak bermedan hari | **sebagian** |
+| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | **sebagian** 23 Agustus 2026 — `app/usaha.html`: RAB dan titik impas selesai; arus kas **ditahan**, fase tak bermedan hari **Disambungkan ke rekaman musim bersama** 24 Agustus 2026: luas datang dari musim (hektare, diminta m², konversinya tercetak), RAB tersimpan per musim, dan rencana berdiri di sebelah realisasinya per kategori dari buku kas. Titik impas sengaja TIDAK dihitung ulang dari biaya yang sudah keluar. | **sebagian** |
 | D4 | **Kalibrasi semprot** — volume, kecepatan jalan, nozel, jumlah tangki | petani, buruh semprot | #9 + keselamatan | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 1–2 | **selesai** |
 | D5 | Takaran alat rumah tangga — tutup botol, gelas, sendok | petani | #6, #9 | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 3 | **selesai** |
 | D6 | Kalkulator susut & kelas mutu pascapanen | petani, bandar, offtaker | #14 | belum ada | **TUNDA** |
