@@ -19,7 +19,7 @@ spec/
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
-├── schema/                       33 berkas JSON Schema (draft 2020-12)
+├── schema/                       34 berkas JSON Schema (draft 2020-12)
 ├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
 │   ├── product/                  registri produk — 14.920 entitas (NDJSON)
 │   └── variety/                  registri varietas — 11.227 entitas (NDJSON)

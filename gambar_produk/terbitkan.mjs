@@ -18,6 +18,11 @@
 // Membalikkannya murah dan itu disengaja: hapus app/gambar/, bangun ulang indeks, dan tiap
 // slot gambar jatuh ke placeholder tanpa satu pun perubahan kode.
 //
+// Keputusan itu menyebut GAMBAR KEMASAN. Pada 24 Agustus 2026 pemilik repositori
+// memperluasnya ke logo badan, dan perluasan itu dicatat di kepala `terbitkan-logo.mjs` —
+// berkas terpisah karena sambungannya berkunci principal, bukan produk. Logo membawa dua
+// kewajiban tambahan yang tidak dibawa foto kemasan; keduanya ditulis di sana.
+//
 // YANG TIDAK IKUT, DAN KENAPA
 //   baris berstatus `ditolak` di tinjauan  — ditolak berarti ditolak
 //   baris tanpa `narrowed_to`              — tidak diketahui pendaftaran mana yang dirujuk;

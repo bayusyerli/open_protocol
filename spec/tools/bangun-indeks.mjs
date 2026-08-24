@@ -126,6 +126,9 @@ const principal = bacaLuar('spec/vocab/principal/principal.ndjson', true) ?? [];
 const hargaSeri = bacaLuar('spec/vocab/harga/harga.ndjson', true) ?? [];
 const hargaKomentar = bacaLuar('spec/vocab/harga/komentar.json', false);
 const gambarTerbit = bacaLuar('gambar_produk/terbit.ndjson', true) ?? [];
+// Logo badan datang lewat sambungannya sendiri, berkunci principal dan bukan produk.
+// Alasannya di kepala gambar_produk/terbitkan-logo.mjs.
+const logoTerbit = bacaLuar('gambar_produk/terbit-logo.ndjson', true) ?? [];
 
 const zatById = new Map([...zat, ...hara].map((s) => [s.id, s]));
 // LARANGAN ITU BERLINGKUP, DAN LINGKUPNYA MENENTUKAN
@@ -868,11 +871,15 @@ const principalRinci = principal.map((b) => {
 // tiap halaman. Satu berkas per `key` menghapus keduanya: jalurnya `principal/<key>`, dan
 // yang perlu dibawa satu kata yang memang sudah ada.
 const kunciPrincipal = (k) => k.replace(/[^a-z0-9-]/gi, '');
+const logoPerPrincipal = new Map(logoTerbit.map((r) => [r.principal, r.logo]));
 const berkasPrincipal = {};
 const petaPrincipal = new Map();
 for (const b of principalRinci) {
   const k = kunciPrincipal(b.key);
-  berkasPrincipal[k] = b;
+  // Badan tanpa logo TIDAK diberi medan kosong. 39 dari 3.136 punya, jadi keadaan yang
+  // lazim adalah tanpa — dan 3.097 medan null memakan pecahan tanpa memberi tahu apa pun.
+  const logo = logoPerPrincipal.get(b.key);
+  berkasPrincipal[k] = logo ? { ...b, logo } : b;
   petaPrincipal.set(b.id, `principal/${k}`);
 }
 
@@ -2194,6 +2201,7 @@ const meta = {
     principalBerpengaya: principalRinci.filter((b) => b.pengaya).length,
     produkBerprincipal: semuaProduk.filter((r) => r.pcp).length,
     produkBergambar: semuaProduk.filter((r) => r.gambar?.length).length,
+    principalBerlogo: logoTerbit.length,
     gambarKemasan: semuaProduk.reduce((a, r) => a + (r.gambar?.length ?? 0), 0),
     hargaVarian: hargaSeri.length,
     hargaBerangka: hargaSeri.filter((h) => h.series?.length).length,

@@ -1243,6 +1243,59 @@ Arah sebaliknya, dari tabel merek ke rincian produk:
   seluruh indeks. Tidak satu berkas pun melewati anggaran 48 KB sesudahnya; yang gemuk
   dipecah lebih banyak oleh pemecah yang sudah ada.
 
+### Logo badan di halaman profil — dan sembilan yang tidak jadi
+
+Slot logonya kosong sebelum ini, dan yang mengisinya bukan sekadar penyaji: repositori tidak
+punya satu pun logo BADAN. Yang ada tiga logo MEREK di manifes gambar produk — DAUN SAWIT,
+LAO YING, KANCIL EMAS — dan catatannya sendiri menyebut lingkupnya: *"berlaku untuk seluruh
+merek, bukan untuk satu pendaftaran"*. Memakainya sebagai logo perusahaan berarti menuliskan
+lambang satu lini produk sebagai lambang badan yang memegangnya.
+
+- **Skema sendiri, dan pemisahannya bukan kerapian.** `product-image.schema.json` mewajibkan
+  `brand_key` dan `brand.name` — nama dagang persis seperti tertulis di registri. Badan bukan
+  merek: PT Petrokimia Gresik memegang PHONSKA, PETROGANIK, dan puluhan lainnya. Menuliskan
+  nama badan di medan yang skemanya sendiri sebut nama dagang menghapus perbedaan itu untuk
+  selamanya. Jadi `principal-logo.schema.json`, berkunci `principal_key`.
+- **`robots.txt` diperiksa sebelum satu berkas pun diunduh** (panduan panen pasal 4h). Dari 94
+  badan bersitus: 68 mengizinkan, 15 tanpa `robots.txt`, **7 melarang** — enam menyebut perayap
+  AI dengan `Disallow: /` atau `Content-Signal` yang menolak `ai-train`, satu melarang semua
+  perayap. Ketujuhnya dilewati, dan yang melarang tetap tercatat namanya supaya tidak
+  diperiksa ulang setiap gelombang.
+- **Kendali jangkauan dijalankan lebih dulu.** Ketujuh situs kendali menjawab 200, termasuk
+  tiga yang blok /24-nya pernah buta pada 22 Agustus. Tanpa itu, 19 situs yang tak terjangkau
+  hari ini akan tercatat sebagai sifat situsnya, bukan sifat titik pandang kita.
+- **Nama registrinya dicari di dalam halamannya sendiri.** Sambungan badan→situs berasal dari
+  `profile.website`, tingkat bukti D — laporan agen riset, belum diverifikasi. Logo yang benar
+  dari situs yang salah menempelkan lambang perusahaan lain ke halaman profil, dan itu jauh
+  lebih buruk daripada slot kosong. Kata lazim (PT, Indonesia, Jaya, Makmur) tidak dihitung
+  sebagai kecocokan; ia ada di hampir tiap nama badan.
+- **Peringkat otomatis memilih dengan percaya diri, dan sering keliru.** Dari 49 calon
+  teratas, mata menolak sepuluh: logo ASEAN Indonesia 2023 untuk Pupuk Indonesia, ikon centang
+  antarmuka untuk Corteva, foto ruang rapat untuk Masco, ikon bendera pemilih bahasa untuk
+  East West Seed, logo ID FOOD untuk PG Rajawali II, logo AMERICAN TAKII untuk Takii
+  Indonesia. Ronde kedua atas calon ke-2 sampai ke-6 memulihkan tujuh. **Tidak ada peringkat
+  yang bisa menggantikan melihatnya**, dan itu sebabnya angkanya 39, bukan 49.
+- **Sembilan tetap tanpa logo, dan sebabnya ditulis satu per satu** di `pilihan.json` — mulai
+  dari "situsnya hanya memuat foto lahan" sampai "yang ada logo induknya, bukan badan ini".
+- **Diuji di latar GELAP, bukan hanya terang.** Sepuluh dari 39 logo bertulisan gelap di latar
+  transparan; di tema gelap tanpa perlakuan, namanya hilang sama sekali. Yang menyesuaikan
+  **latarnya, bukan logonya**: piring putih yang warnanya sama di kedua tema. Logo merek dagang
+  tidak diwarnai ulang, tidak dibalik, dan tidak dipotong tandanya — dipakai apa adanya atau
+  tidak dipakai sama sekali.
+- **Tiga hal dinyatakan di bawah logonya**, dan ketiganya menahan salah baca: ia logo yang
+  dipasang badan itu di situsnya sendiri; ia bukan lencana mitra dan bukan tanda hubungan
+  dengan platform ini; dan sambungannya bertingkat bukti D, dengan jumlah kata yang cocok
+  ikut disebut.
+- **Ketiadaannya berbunyi.** 39 dari 3.136, jadi keadaan yang lazim adalah tanpa — dan kepala
+  kartu yang diam-diam kosong terbaca sebagai "badan ini kurang resmi". Angkanya dibaca dari
+  meta, tidak diketik: panen tumbuh sedangkan prosa diam.
+- **Keputusan penerbitannya perluasan, dan dicatat seperti yang pertama.** Keputusan 23
+  Agustus 2026 di kepala `terbitkan.mjs` menyebut gambar kemasan; logo bukan gambar kemasan.
+  Perluasannya ditulis di kepala `terbitkan-logo.mjs` beserta dua kewajiban tambahan yang
+  memang hanya dibawa merek dagang. Membalikkannya semurah yang pertama: hapus berkas
+  `*__logo__*` dari `app/gambar/`, bangun ulang indeks, dan tiap slot jatuh ke placeholder
+  tanpa satu pun perubahan kode.
+
 ### Kotak tanya multimoda — A1
 
 Kotaknya sudah ada sejak beranda dibangun; yang belum, semua jalur tersambung ke sana.

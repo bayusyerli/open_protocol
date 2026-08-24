@@ -13,7 +13,7 @@
  * Keduanya dirender terpisah, dengan tingkat yang disebut di masing-masing kotak.
  */
 
-import { ambil, muatMeta, cari, teks, tanggal, JENIS } from './pustaka.js';
+import { ambil, muatMeta, cari, teks, tanggal, JENIS, bacaMeta } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { pasangBatas } from './batas.js';
 
@@ -50,11 +50,73 @@ const tautanEntri = (x) =>
 // ---------------------------------------------------------------------------
 // Kartu-kartu
 // ---------------------------------------------------------------------------
+/* Logo badan di kepala kartu profil.
+ *
+ * TIGA HAL YANG DINYATAKAN, DAN KETIGANYA MENAHAN SALAH BACA
+ *  1. Ia logo yang dipasang badan itu DI SITUSNYA SENDIRI — bukan lencana mitra, dan bukan
+ *     tanda bahwa platform ini punya hubungan apa pun dengannya.
+ *  2. Sambungan badan->situs bertingkat bukti D: alamat situsnya datang dari laporan agen
+ *     riset web, belum diverifikasi ke sumber aslinya. Yang diperiksa cuma bahwa halaman itu
+ *     menyebut nama registrinya sendiri, dan berapa kata yang cocok ikut disebut.
+ *  3. Logo tidak menyatakan apa pun tentang produk yang dipegangnya, dan tidak berubah kalau
+ *     izinnya habis.
+ *
+ * Yang TIDAK dilakukan: mewarnai ulang, membalik, atau memotong tandanya supaya cocok dengan
+ * tema. Logo merek dagang dipakai apa adanya atau tidak dipakai sama sekali — jadi ia berdiri
+ * di atas piring netral yang warnanya SAMA di tema terang dan gelap. Diuji dan itu bukan
+ * kehati-hatian teoretis: sepuluh dari 39 logo bertulisan gelap di latar transparan, dan di
+ * tema gelap tanpa piring itu namanya hilang sama sekali.
+ */
+function kartuLogo(b) {
+  const g = b.logo;
+  if (!g) return '';
+  const f = g.berkas?.sedang ?? g.berkas?.kecil;
+  if (!f) return '';
+  return `
+    <figure class="logo-badan">
+      <span class="logo-piring">
+        <!-- Bukan `lazy`: ia elemen paling atas di layar ini, dan menunda satu-satunya
+             gambar yang ada di atas lipatan menukar apa pun dengan tidak apa-apa. -->
+        <img src="gambar/${teks(f.n)}" alt="Logo ${teks(b.nama)}."
+             width="${teks(f.w)}" height="${teks(f.h)}" decoding="async">
+      </span>
+      <figcaption>
+        Logo yang dipasang badan ini di situsnya sendiri${g.diambil ? `, diambil ${teks(tanggal(g.diambil) ?? g.diambil)}` : ''}.
+        ${g.halaman ? `<a href="${teks(g.halaman)}" rel="nofollow noopener noreferrer external" target="_blank">Halaman sumbernya</a>.` : ''}
+        <span class="sub">
+          Bukan lencana mitra dan bukan tanda hubungan dengan platform ini. Alamat situsnya
+          sendiri bertingkat bukti ${teks(g.tingkat ?? 'D')} — dari laporan agen riset, belum
+          diverifikasi ke sumber aslinya${g.cocok ? `; yang diperiksa hanya bahwa halamannya menyebut nama registrinya (${teks(g.cocok)})` : ''}.
+        </span>
+      </figcaption>
+    </figure>`;
+}
+
+/* Ketiadaan logo dinyatakan, bukan didiamkan — alasannya sama dengan slot gambar kemasan di
+ * jalur 2: 39 dari 3.136 badan punya logo, jadi keadaan yang LAZIM adalah tanpa, dan kepala
+ * kartu yang diam-diam kosong terbaca sebagai "badan ini kurang resmi". Angkanya dibaca dari
+ * meta, tidak diketik, sebab panen tumbuh sedangkan prosa diam. */
+function kalimatTanpaLogo() {
+  const j = bacaMeta()?.jumlah;
+  const ada = j?.principalBerlogo;
+  const semua = j?.principal;
+  if (!ada || !semua) return '';
+  const angka = (x) => x.toLocaleString('id-ID');
+  return `
+    <p class="catatan">
+      Logo badan ini belum ada di platform. Itu <strong>bukan tanda pendaftarannya kurang
+      sah</strong> — nomornya ada di tiap produk di bawah. Logo baru dipanen dari situs resmi
+      badan yang memang punya situs dan tidak melarangnya lewat <code>robots.txt</code>:
+      ${angka(ada)} dari ${angka(semua)} badan sejauh ini.
+    </p>`;
+}
+
 function kartuPokok(b) {
   const sektor = (b.sektor ?? []).map((s) => SEKTOR[s] ?? s);
   const total = (b.punya?.pesticide ?? 0) + (b.punya?.fertilizer ?? 0) + (b.punya?.seed ?? 0);
   return `
     <div class="kartu">
+      ${kartuLogo(b)}
       <h2>${teks(b.nama)}${b.bentuk && b.bentuk !== 'tidak_diketahui' ? `<span class="lencana">${teks(b.bentuk)}</span>` : ''}</h2>
       <dl class="kunci">
         <dt>Terdaftar di</dt><dd>${sektor.length ? teks(sektor.join(' · ')) : '—'}</dd>
@@ -62,6 +124,7 @@ function kartuPokok(b) {
         <dt>Pupuk</dt><dd>${n(b.punya?.fertilizer)}</dd>
         <dt>Varietas</dt><dd>${n(b.punya?.seed)}</dd>
       </dl>
+      ${b.logo ? '' : kalimatTanpaLogo()}
       <p class="catatan">
         ${n(total)} pendaftaran atas nama ini di registri Kementan. Angka ini
         <strong>izin edar yang dipegang, bukan produk yang sedang dijual</strong> — dan

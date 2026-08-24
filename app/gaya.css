@@ -887,6 +887,39 @@ a { color: var(--aksen); }
 .kartu.komentar .komentar-teks { margin: 0.4rem 0 0.9rem; }
 .atribusi { color: var(--teks-lemah); font-size: 0.82rem; margin-top: 1.5rem; }
 
+/* --- Logo badan di halaman profil --- */
+/* Piring netral, dan warnanya SAMA di kedua tema. Logo merek dagang tidak boleh diwarnai
+   ulang atau dibalik supaya kontras, jadi yang menyesuaikan latarnya, bukan logonya.
+   Diuji pada ketiga puluh sembilan: sepuluh di antaranya bertulisan gelap di latar
+   transparan dan namanya hilang sama sekali di tema gelap tanpa piring ini. */
+.logo-badan { margin: 0 0 0.9rem; }
+.logo-piring {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.8rem;
+  border-radius: var(--sudut);
+  background: #ffffff;
+  border: 1px solid var(--garis);
+}
+.logo-piring img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(15rem, 100%);
+  max-height: 4.5rem;
+}
+.logo-badan figcaption {
+  margin-top: 0.45rem;
+  color: var(--teks-lemah);
+  font-size: 0.83rem;
+}
+.logo-badan figcaption .sub {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+}
+
 /* --- Gambar kemasan --- */
 .kemasan { margin: 0.6rem 0; }
 .kemasan img {
