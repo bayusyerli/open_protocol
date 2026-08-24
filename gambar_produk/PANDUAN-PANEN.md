@@ -2015,3 +2015,146 @@ fotonya, bukan mutu situsnya: Adil Makmur 17 dari 22 baris (botol tunggal 1200x1
 9 dari 31 (master kamera tetapi kerap foto kelompok), Da Ming 5 dari 27 (foto kelompok 900 px),
 Kenso 0 dari 28. **Label kecil di foto kelompok adalah batas OCR yang sesungguhnya**, bukan
 resolusi berkasnya.
+
+---
+
+## 20. Dimensi yang diiklankan API bukan bukti berkasnya ada
+
+indoingroup.com memberi 101 baris dalam satu putaran — 63 merek sendiri dan **38 milik tiga
+principal lain** — dan sepanjang jalan menyodorkan tiga jebakan yang semuanya berbentuk
+“ada tapi tidak ada”.
+
+### 20a. `wp/v2/media` mengiklankan 78 berkas besar yang seluruhnya 404
+
+Katalog situs ini melayani packshot 600x600, dan itu terasa seperti plafon yang sayang.
+`/wp-json/wp/v2/media` (1.345 item) tampak membuka jalan keluar: untuk **78 dari 101** merek ia
+memuat entri jauh lebih besar — kebanyakan 1707x2560, berakhiran `-scaled`, lengkap dengan
+`media_details.width`, `media_details.height`, dan bahkan `original_image` yang menyebut nama
+berkas sebelum WordPress menyusutkannya.
+
+Tidak satu pun dari 78 itu bisa diambil. Semuanya **404**.
+
+| jalur | contoh | hasil |
+|---|---|---|
+| `/uploads/2026/05/…-scaled.png` | `tokindo-250ml-packshot-scaled.png` | **200**, 2560x2560 |
+| `/uploads/indonesia/…-scaled.png` | `yusha-1000ml-scaled.png` | 404 |
+| `/uploads/indonesia/…` tanpa `-scaled` | `yusha-1000ml.png` | 404 |
+| turunan `…-1365x2048.png`, `…-1024x1536.png` | | 404 |
+| nama huruf besar | `YUSHA-1000ML.png` | 404 |
+
+Metadatanya hidup, berkasnya tidak: entri media selamat sedangkan berkas di bawah
+`/uploads/indonesia/` hilang atau tak pernah ikut pindah. Hanya dua berkas — yang jalurnya
+`/uploads/2026/05/` — benar-benar ada, dan keduanya dipakai.
+
+**Aturan yang keluar dari sini: `media_details` menjawab “seberapa besar berkas ini dulu”,
+bukan “berkas ini bisa saya ambil”.** Sebelum menyusun rencana panen di atas dimensi yang
+dilaporkan API, ambil satu berkasnya. Ini melengkapi pasal 6 tentang “endpoint terbuka bukan
+endpoint gambar” (Maxxi Agri, Deltagro, UPL memberi data produk kaya dengan medan gambar
+null): di sana medannya kosong dan jujur; di sini medannya terisi dan menyesatkan.
+
+Biayanya nyata dan patut disebut supaya tidak diulang: percobaan mengunduh 80 berkas “besar”
+menghabiskan sepuluh menit dan menghasilkan dua berkas plus delapan berkas berukuran 0 bita.
+Satu `curl` ke satu URL akan menjawabnya dalam setengah detik.
+
+### 20b. Delapan koneksi paralel membuat host menolak koneksi, bukan membalas 429
+
+Unduhan pertama dijalankan delapan utas paralel. Seluruh 101 permintaan gagal — bukan dengan
+`429 Too Many Requests`, bukan dengan `403`, melainkan dengan **`ECONNREFUSED` di lapis TCP**.
+Beberapa menit kemudian host melayani lagi seperti tidak terjadi apa-apa.
+
+Bedanya penting bagi pemanen: kode HTTP bisa dibaca dan ditanggapi, sedangkan penolakan
+koneksi terlihat persis seperti situs mati. Kalau sapuan tiba-tiba nol setelah beberapa
+permintaan cepat, **curigai diri sendiri sebelum menyimpulkan situsnya rusak** — dan pastikan
+dengan satu permintaan tunggal setelah jeda. Seluruh 101 berkas akhirnya turun tanpa satu pun
+gagal, serial, berjeda 0,8 detik.
+
+### 20c. Katalog grup kesebelas: 35 merek untuk principal yang situsnya kosong
+
+Dari 82 nama yang tidak cocok ke registri Indoin, **38 ternyata merek terdaftar milik tiga
+perusahaan lain**:
+
+| principal | merek di sini | status situsnya sendiri |
+|---|---:|---|
+| PT. MASCO AGRI GENETICS | **35** | `kosong` — satu halaman statis, daftar bahan aktif tanpa nama merek, nol foto kemasan |
+| PT. CHINA JIANGSU INTERNATIONAL INDONESIA | 2 | `tidak-ada` — induknya di Nanjing hanya menjual bahan teknis menurut nomor CAS |
+| PT. BINA GUNA KIMIA | 1 | `kosong` — situs FMC penerusnya cuma wordmark SVG dan foto komoditas stok |
+
+Masco melonjak dari **0 ke 35 dari 36 merek** tanpa situsnya sendiri berubah sedikit pun.
+Ini kejadian terbesar dari pola pasal 6, dan menegaskan yang mulai terlihat di 19d: untuk
+principal berstatus `kosong` atau `tidak-ada`, katalog grup bukan jalan pintas melainkan
+**satu-satunya pintu**. Yang layak diubah dalam cara kerja: begitu sebuah katalog memberi
+banyak nama tak cocok, jangan buang daftarnya — **cocokkan ke SELURUH registri, bukan cuma ke
+merek principal yang sedang dipanen.** Di sini langkah itu bernilai 38 baris dari 101.
+
+Pemetaan lintas perusahaan ini tidak bersandar pada nama saja: tiga di antaranya —
+BIFEN 50 WG, RAKSAMAX 80 WP, RAKSAONE 60 WP — dikoroborasi nomor pendaftaran tercetak.
+
+### 20d. Nama pendek membuat pencocokan nama berkas mencuri tetangga
+
+Sebelum jalur media terbukti 404, berkas besar dicocokkan ke merek lewat **awalan** nama
+berkas. Hasilnya salah dengan cara yang tidak berisik:
+
+| merek | berkas yang terambil | milik siapa sebenarnya |
+|---|---|---|
+| INDO STRONG 670 EC | `indoboom-30kg-barrel.png` | INDOBOOM |
+| VISTA ONE | `vista-TOP-500ml-HDPE-persp-1.png` | VISTA TOP |
+| RAKSAMAX 80 WP | `raksamax-600-os.png` | RAKSAMAX 600 OS |
+
+Sebabnya satu: **awalan bukan token.** `INDO` adalah awalan `INDOBOOM` dan `INDO550`; `VISTA`
+dan `RAKSAMAX` dipakai dua merek sekaligus. Perbaikannya tiga lapis, dan ketiganya perlu:
+
+1. cocokkan **token**, bukan awalan — `INDO` ≠ `INDOBOOM`;
+2. buang kode formulasi (`EC`, `SC`, `WP`, `WG`, …) dari token kunci, sebab nama berkas tidak
+   pernah menyebutnya;
+3. kalau satu berkas cocok ke lebih dari satu merek, coba pisahkan lewat token angka
+   (`600` vs `80`); kalau masih ambigu, **buang berkasnya** dan pakai gambar kartu.
+
+Setelah itu 80 merek dapat pasangan tanpa satu pun tetangga tercuri, dan RAKSAMAX 80 WP
+dengan benar tidak dapat apa-apa. Percobaan lain — memungut semua gambar dari halaman produk
+lalu ambil yang terbesar — justru lebih buruk: halaman detail memuat seksi “produk terkait”,
+sehingga yang terambil packshot tetangga. **`og:image` satu-satunya rujukan yang mengikat
+halaman ke produknya**, dan di situs ini `og:image` selalu sama dengan gambar kartu.
+
+### 20e. Satu katalog, lima cetakan wadah — dan kenapa itu tetap dipanen
+
+Uji siluet pasal 4d dijalankan atas seluruh 101 berkas (alfa asli, ambang IoU 0,92):
+
+| | |
+|---|---:|
+| pasangan ber-IoU ≥ 0,92 | **520** |
+| klaster siluet | 33 + 28 + 19 + 13 + 2 |
+| berkas di luar klaster mana pun | **6** |
+
+95 dari 101 memakai salah satu dari lima cetakan wadah. Ditambah pemeriksaan mata pada ukuran
+penuh — permukaan mulus tanpa cacat, pantulan seragam, bayangan identik, karya seni dibungkus
+rata — kesimpulannya jelas: ini render, dan seluruh barisnya `tampak_sintetis: true` berikut
+`bentuk_kemasan_generik: true` untuk yang berklaster.
+
+Tetap dipanen, dengan alasan yang sudah berdiri di pasal 11 dan di keterangan skema: render
+tidak bisa menjawab “seperti apa rupa kemasannya”, tetapi label di atasnya **karya seni resmi
+principal** dan justru lebih terbaca daripada foto. `G11` yang menegakkan bedanya — render
+tertahan dari `terverifikasi` kecuali nomor tercetaknya sudah terkoroborasi registri.
+
+Di sinilah 600x600 menagih ongkosnya. OCR hanya memulihkan **19 nomor dari 101**, dan
+sebarannya bukan acak: yang berhasil hampir seluruhnya kemasan **pouch** berlabel besar
+(ACEFLO, BENCURE, ZIOFY, STARDIOR, PRONITE, TRIBUNE, ZADE), sedangkan botol — yang labelnya
+kecil dan melengkung — hampir seluruhnya gagal. Perbesaran 5x tidak menolong: memperbesar
+tidak menambah keterangan yang tidak ada di berkasnya.
+
+Satu percobaan terakhir patut dicatat karena hasilnya negatif dan itu berguna: dua berkas
+2560 px yang benar-benar ada pun tidak memberi nomor utuh. RAKSAMAX 600 OS terbaca sampai
+`RI. 0102012020` lalu putus. Angka yang putus **terlihat putus**, dan tidak ditambal dengan
+menebak sisanya — aturan yang sama seperti dua nomor 13 digit di pasal 18.
+
+### 20f. Hasil
+
+| principal | baru | jadi |
+|---|---:|---:|
+| PT. INDOIN BUSINESS GROUP | 63 | 63/71 |
+| PT. MASCO AGRI GENETICS | 35 | **35/36** |
+| PT. CHINA JIANGSU INTERNATIONAL INDONESIA | 2 | 2/18 |
+| PT. BINA GUNA KIMIA | 1 | 1/64 |
+
+Merek bergambar **1.075 → 1.176**; produk bergambar **1.036 → 1.138**. Baris berhak
+`pihak_ketiga` naik dari 46 ke **84**, dan 38 di antaranya dari satu katalog ini — angka yang
+perlu diingat kalau kelak ada pencabutan per baris.
