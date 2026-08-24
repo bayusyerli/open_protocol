@@ -28,7 +28,7 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v35';
+const VERSI = 'v36';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 

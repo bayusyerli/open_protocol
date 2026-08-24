@@ -639,6 +639,83 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 .judul-bagian { margin: 1.75rem 0 .25rem; font-size: 1.05rem; }
 
+/* ------------------------------------------------- pemilih direktori (C7) */
+/* Empat kumpulan yang menjawab empat pertanyaan berbeda, dan sampai 25 Agustus 2026
+   keempatnya berdiri berurutan ke bawah di `toko.html`: 7.269 px pada layar 812 px,
+   dengan laboratorium mulai di layar keempat dan balai penyuluhan di layar ketiga.
+   Yang mendarat di halaman itu melihat satu dari empat, dan satu-satunya tempat
+   keempatnya disebut adalah paragraf pembuka tujuh baris — bentuk paling sulit
+   dipindai untuk sesuatu yang sebenarnya sebuah daftar pilihan.
+
+   KARTUNYA MEMBAWA KETERJANGKAUAN, BUKAN CUMA NAMA. Perbedaan yang menentukan di
+   halaman itu bukan berapa isinya melainkan seberapa jauh masing-masing bisa
+   mengantarkan orang: yang berkoordinat bisa dituju, yang bernama kabupaten tidak.
+   Kalimat kedua tiap kartu menyebut itu — jadi pemisahan yang selama ini cuma
+   diterangkan prosa kini justru jadi hal pertama yang terbaca.
+
+   TIDAK ADA WARNA PERINGATAN DI SINI, dan itu disengaja. "Tidak bisa dituju" bukan
+   keadaan bahaya, dan `batas.css` sudah menetapkan satu-satunya pemakaian warna awas
+   untuk keadaan data adalah akreditasi yang lewat masa. Yang membedakan keempat kartu
+   ini kalimatnya, bukan rona tepinya. */
+.pemilih { display: grid; gap: .35rem; margin: 0; }
+
+.pemilih button {
+  display: grid;
+  gap: .14rem;
+  width: 100%;
+  padding: .6rem .8rem;
+  text-align: left;
+  font: inherit;
+  color: var(--teks);
+  background: var(--latar-kartu);
+  border: 1px solid var(--garis);
+  border-left: 3px solid var(--aksen);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.pemilih button:hover { border-color: var(--aksen); }
+.pemilih button:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+.pemilih button[aria-expanded="true"] { background: var(--aksen-lemah); border-color: var(--aksen); }
+
+.pm-mata {
+  font-size: .66rem; font-weight: 700; letter-spacing: .09em; line-height: 1.3;
+  text-transform: uppercase; color: var(--teks-lemah);
+}
+.pm-nama { display: flex; align-items: center; font-weight: 600; }
+.pm-nama .lencana { margin-left: auto; }
+.pm-sub { font-size: .81rem; line-height: 1.38; color: var(--teks-lemah); }
+
+/* SESUDAH SATU PINTU DIBUKA KEEMPATNYA TETAP TERLIHAT — tetapi tinggal namanya.
+   Kartu penuh yang bertahan di atas tiap panel akan membebankan ~360 px gulir pada
+   tiap ketukan, di layar yang justru jadi sasaran seluruh berkas ini. Yang sudah
+   dibaca sekali tidak perlu dibaca lagi; yang masih perlu adalah bahwa ketiga pintu
+   lain ada dan tinggal disentuh. Dua lajur, ~44 px tiap kartu. */
+.pemilih[data-terpilih] { gap: .3rem; }
+.pemilih[data-terpilih] .pm-mata,
+.pemilih[data-terpilih] .pm-sub { display: none; }
+.pemilih[data-terpilih] button { padding: .4rem .7rem; min-height: 44px; align-content: center; }
+/* Satu lajur, satu baris per kartu. Dua lajur pada 375 px memaksa "Balai penyuluhan"
+   dan "Penjual benih" membungkus jadi dua baris dengan cacah menggantung di sampingnya
+   — lebih tinggi DAN lebih berantakan daripada empat baris tunggal. */
+.pemilih[data-terpilih] .pm-nama { font-size: .9rem; }
+
+.pemilih-bantu { margin: .7rem 0 0; font-size: .83rem; color: var(--teks-lemah); }
+.pemilih-bantu[hidden] { display: none; }
+
+/* Panel yang dibuka. Judulnya sasaran fokus sesudah kartunya diketuk — pola yang sama
+   dengan layar rincian di seluruh permukaan lain, jadi pembaca layar mendarat di nama
+   bagian yang baru saja dipilihnya alih-alih tertinggal di kartu. */
+.pintu { margin: 1.5rem 0 0; }
+.pintu > .judul-bagian { margin-top: 0; }
+.pintu > .judul-bagian:focus { outline: none; }
+.pintu > .judul-bagian:focus-visible { outline: 3px solid var(--aksen); outline-offset: 3px; }
+
+@media (min-width: 34rem) {
+  .pemilih,
+  .pemilih[data-terpilih] { grid-template-columns: 1fr 1fr; }
+}
+
 .kartu ol { margin: .6rem 0 0; padding-left: 1.2rem; }
 .kartu ol li + li { margin-top: .4rem; }
 

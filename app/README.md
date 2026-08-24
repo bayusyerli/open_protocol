@@ -15,7 +15,7 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | `takaran.html` | — kalibrasi semprot & takaran alat rumah tangga: aritmetika, bukan anjuran | D4 + D5 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, komentar per seri, dan — untuk TBS sawit — tabel harga & rendemen per umur tanaman | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
 | `principal.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
-| `toko.html` | — direktori layanan: toko tani berkoordinat, dan penjual benih yang **tidak** bisa dituju | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
+| `toko.html` | — direktori layanan: empat pintu — toko tani berkoordinat, penjual benih yang **tidak** bisa dituju, balai penyuluhan, dan laboratorium | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `usaha.html` | — analisis usaha tani: RAB dan titik impas, dinyatakan sebagai **rasio** terhadap harga eceran | D3 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
 
@@ -902,13 +902,36 @@ harus diterima supaya biaya semusim tertutup.
 
 ### Direktori layanan — C7
 
-`toko.html`. **Dua pintu, karena datanya memang dua bentuk** — dan yang paling menentukan
-di halaman ini bukan pencariannya melainkan pemisahannya.
+`toko.html`. **Empat pintu, karena datanya memang empat bentuk** — dan yang paling
+menentukan di halaman ini bukan pencariannya melainkan pemisahannya.
 
 | Kumpulan | Punya | Pintunya | Bisa dituju? |
 |---|---|---|---|
 | 234 · OpenStreetMap (ODbL) | koordinat, tanpa wilayah | jarak dari posisi pembaca | **ya** |
 | 2.248 · TTI Kementan + Pemkab Batang | nama + wilayah, tanpa koordinat | telusur menurut wilayah | **hampir tidak** |
+| 5.844 · SIMLUHTAN | nama + kecamatan binaan, tanpa alamat | nama kecamatan | **oleh yang tinggal di kecamatan itu** |
+| 889 · papan KAN | alamat, telepon, ruang lingkup | kemampuan yang perlu diuji | **ya** |
+
+**Keempatnya disebut sekaligus di kepala halaman, dan itu perubahan 25 Agustus 2026.**
+Sampai hari itu keempat pintu berdiri berurutan ke bawah: 7.269 px pada layar 812 px,
+laboratorium mulai di layar keempat dan balai penyuluhan di layar ketiga, dengan 115
+kendali sebelum satu huruf pun diketik — dan di antara pintu dua dan tiga berdiri kartu
+peringatan setinggi layar penuh yang terbaca seperti akhir halaman. Yang mendarat di sana
+praktis cuma tahu satu dari empat.
+
+Yang menggantikannya empat kartu pemilih yang muat satu layar, dan tiap kartu menyebut
+**keterjangkauan**-nya, bukan cuma namanya — kolom keempat tabel di atas, dijadikan hal
+pertama yang terbaca. Satu pintu terbuka pada satu waktu; keempat kartunya menyusut jadi
+baris tunggal dan tetap terlihat, jadi berpindah tidak menuntut menggulir kembali ke atas.
+Mendarat kini 1.966 px dan 61 kendali. Pintu yang terbuka ikut ditulis ke alamat
+(`?ada=toko|benih|bpp|lab`) lewat `replaceState` — bisa dibagikan dan bertahan saat dimuat
+ulang, tanpa merebut arti tombol Back, yang di halaman ini sudah dipakai menutup layar
+rincian.
+
+**Indeks tiap pintu baru diambil saat pintunya dibuka.** Keempatnya dulu ditarik sekaligus
+saat halaman dibuka — 12,7 + 8,4 + 40,2 + 3,1 KB di atas meta 27 KB — dan dibayar penuh
+juga oleh yang datang untuk satu pintu saja. Mendarat kini menarik meta saja. Cacah di
+kartu pemilih tidak ikut menunggu: angkanya memang sudah ada di meta.
 
 - **Satu angka di `docs/15` perlu dikoreksi.** Dokumen itu menyebut *"2.181 benih TTI
   beralamat"*. Terhitung dari berkasnya: hanya **92 dari 2.248 — 4,1%** — menyebut sesuatu

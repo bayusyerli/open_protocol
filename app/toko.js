@@ -1,4 +1,17 @@
-/* C7 — direktori layanan. Dua pintu, karena datanya memang dua bentuk.
+/* C7 — direktori layanan. Empat pintu, karena datanya memang empat bentuk.
+ *
+ * KEEMPATNYA DISEBUT SEKALIGUS DI KEPALA HALAMAN, DAN ITU PERUBAHAN 25 AGUSTUS 2026.
+ * Sampai hari itu keempat pintu berdiri berurutan ke bawah: 7.269 px pada layar 812 px,
+ * laboratorium mulai di layar keempat, balai penyuluhan di layar ketiga, dan di antara
+ * pintu dua dan tiga berdiri satu kartu peringatan setinggi layar penuh yang terbaca
+ * seperti akhir halaman. Yang mendarat di sini melihat satu dari empat, dan satu-satunya
+ * tempat keempatnya disebut adalah paragraf pembuka tujuh baris — bentuk paling sulit
+ * dipindai untuk sesuatu yang sebenarnya sebuah daftar pilihan.
+ *
+ * Yang menggantikannya bukan tab. Kartu pemilihnya membawa KETERJANGKAUAN masing-masing,
+ * bukan sekadar namanya, karena itulah satu-satunya perbedaan yang menentukan di halaman
+ * ini — dan menyebutnya di kartu membuat pemisahan yang selama ini cuma diterangkan prosa
+ * jadi hal pertama yang terbaca.
  *
  * YANG PALING MENENTUKAN DI HALAMAN INI BUKAN PENCARIANNYA, MELAINKAN PEMISAHANNYA.
  * 234 rekaman punya koordinat dan bisa dituju; 2.248 hanya punya nama kabupaten dan
@@ -35,7 +48,7 @@ document.getElementById('tanpaJs')?.remove();
  * harga dan jalur 1. Di sini ia berlaku PER PINTU: yang disembunyikan hanya daftar milik
  * pintu yang sedang dibuka, karena keempat pintu memang menjawab pertanyaan berbeda dan
  * yang membuka satu balai penyuluhan tidak sedang menutup pencarian tokonya. */
-function bukaPintu(daftar, rincian, fokus) {
+function bukaRincian(daftar, rincian, fokus) {
   daftar.hidden = true;
   pasangKembali(rincian, {
     fokus,
@@ -50,18 +63,139 @@ function bukaPintu(daftar, rincian, fokus) {
 const el = {};
 for (const id of ['ringkasTitik', 'cariDekat', 'hasilDekat', 'ringkasWilayah', 'q',
   'hasilWilayah', 'rincian', 'pctRinci',
-  'ringkasBpp', 'qBpp', 'hasilBpp', 'rincianBpp',
-  'ringkasLab', 'saringLab', 'hasilLab', 'rincianLab']) el[id] = document.getElementById(id);
+  'ringkasBpp', 'qBpp', 'qKec', 'bantuKec', 'hasilBpp', 'rincianBpp',
+  'ringkasLab', 'saringLab', 'hasilLab', 'rincianLab',
+  'pemilih', 'pemilihBantu']) el[id] = document.getElementById(id);
 el.batas = document.getElementById('batasJawaban');
 
 const n = (x, d = 0) => Number(x ?? 0).toLocaleString('id-ID', { maximumFractionDigits: d });
 const rapi = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
-let titik = [];
-let wilayah = [];
-let bppWilayah = [];
+/* `null` berarti BELUM DIAMBIL, dan itu bukan sama dengan kosong. Sejak indeks tiap
+ * pintu baru diambil saat pintunya dibuka, penyajinya bisa terpanggil sebelum berkasnya
+ * sampai — dan daftar kosong yang menjawab "tidak ada wilayah yang cocok" berbohong
+ * tentang cakupan. Bedanya dijaga di sini, bukan di tiap penyaji. */
+let titik = null;
+let wilayah = null;
+let bppWilayah = null;
+let bppKecamatan = null;   // dimuat malas — lihat muatKecamatan()
 let labKepala = null;
 let saringan = null;
+
+// ---------------------------------------------------------------------------
+// Pemilih — keempat pintu, dan hanya satu yang terbuka
+// ---------------------------------------------------------------------------
+/* TIAP INDEKS DIAMBIL SAAT PINTUNYA DIBUKA, BUKAN SAAT HALAMAN DIMUAT.
+ *
+ * Keempatnya dulu diambil sekaligus di `mulai()`: 12,7 + 8,4 + 40,2 + 3,1 KB, jadi 64 KB
+ * di atas meta 27 KB — dibayar penuh oleh tiap orang yang membuka layar ini, termasuk
+ * yang datang hanya untuk satu pintu dan tidak pernah menyentuh tiga sisanya. Alasannya
+ * persis alasan yang sudah dipakai daftar kecamatan 99 KB di bawah; yang berubah cuma
+ * bahwa kini ia berlaku konsisten untuk keempatnya.
+ *
+ * CACAH DI KARTU PEMILIH TIDAK IKUT MENUNGGU. Angkanya datang dari meta yang memang
+ * sudah dimuat tiap halaman, jadi keempat kartu sudah lengkap — nama, cacah, dan apa
+ * yang benar-benar didapat — sebelum satu berkas indeks pun diambil. */
+const PINTU = {
+  toko: {
+    panel: 'pintuToko', judul: 'judulToko', ringkas: 'ringkasTitik',
+    muat: async () => { titik = await ambil('toko-titik'); },
+  },
+  benih: {
+    panel: 'pintuBenih', judul: 'judulBenih', ringkas: 'ringkasWilayah',
+    muat: async () => { wilayah = await ambil('toko-wilayah'); gambarWilayah(); },
+  },
+  bpp: {
+    panel: 'pintuBpp', judul: 'judulBpp', ringkas: 'ringkasBpp',
+    muat: async () => { bppWilayah = await ambil('bpp-wilayah'); gambarBpp(); },
+  },
+  lab: {
+    panel: 'pintuLab', judul: 'judulLab', ringkas: 'ringkasLab',
+    muat: async () => { labKepala = await ambil('lab-kemampuan'); gambarSaringLab(); gambarLab(); },
+  },
+};
+for (const [k, p] of Object.entries(PINTU)) {
+  p.kunci = k;
+  p.elPanel = document.getElementById(p.panel);
+  p.elJudul = document.getElementById(p.judul);
+  p.elKartu = el.pemilih.querySelector(`button[data-ada="${k}"]`);
+}
+
+/* `ambil()` sudah mengingat janjinya sendiri, jadi pemanggilan kedua tidak menambah
+ * perjalanan. Yang disimpan di sini janji SESUDAH penyajinya jalan — supaya tombol
+ * "cari yang terdekat" bisa menunggunya, dan supaya kegagalan berbunyi di ringkasan
+ * pintu yang bersangkutan alih-alih diam. */
+function muatPintu(kunci) {
+  const p = PINTU[kunci];
+  if (!p.janji) {
+    p.janji = p.muat().catch((e) => {
+      p.janji = null;
+      el[p.ringkas].innerHTML =
+        `<span class="kosong">Daftarnya tidak terambil: ${teks(e.message)}. Coba buka lagi pintu ini.</span>`;
+      throw e;
+    });
+  }
+  return p.janji;
+}
+
+let adaKini = null;
+
+/* Yang dibuka ditulis ke alamat supaya bisa dibagikan dan bertahan saat dimuat ulang —
+ * tetapi lewat `replaceState`, bukan `pushState`. Tombol Back di halaman ini sudah punya
+ * arti: menutup layar rincian yang sedang terbuka. Menumpuk entri untuk tiap perpindahan
+ * pintu akan membuat orang menekan Back empat kali hanya untuk keluar dari halaman,
+ * padahal keempat kartunya memang tidak pernah hilang dari layar. */
+function bukaAda(kunci, { gulir = true } = {}) {
+  adaKini = PINTU[kunci] ? kunci : null;
+
+  for (const p of Object.values(PINTU)) {
+    const buka = p.kunci === adaKini;
+    p.elPanel.hidden = !buka;
+    p.elKartu.setAttribute('aria-expanded', String(buka));
+  }
+  if (adaKini) el.pemilih.dataset.terpilih = adaKini;
+  else delete el.pemilih.dataset.terpilih;
+  el.pemilihBantu.hidden = Boolean(adaKini);
+
+  const u = new URL(location.href);
+  if (adaKini) u.searchParams.set('ada', adaKini);
+  else u.searchParams.delete('ada');
+  try { history.replaceState(history.state, '', u); } catch { /* peramban menolak menulis riwayat */ }
+
+  if (!adaKini) return;
+  muatPintu(adaKini).catch(() => { /* sudah dilaporkan di ringkasan pintunya */ });
+  // Judulnya yang menerima fokus, bukan kartunya — pola yang sama dengan layar rincian
+  // di seluruh permukaan lain, jadi pembaca layar mendarat di nama bagian yang baru
+  // dipilihnya alih-alih tertinggal di daftar kartu.
+  if (gulir) PINTU[adaKini].elJudul.focus();
+}
+
+/* Berpindah pintu SEMENTARA LAYAR RINCIAN TERBUKA harus melepas entri riwayatnya dulu.
+ * Tanpa ini, rincian pintu lama tetap terpasang di panel yang baru disembunyikan dan
+ * penutupnya masih terpasang di riwayat — sehingga tekanan Back berikutnya terpakai
+ * untuk menutup sesuatu yang sudah tidak terlihat. `popstate` milik pustaka.js terpasang
+ * lebih dulu, jadi ia menutup rinciannya sebelum penangan sekali-pakai di bawah membuka
+ * pintu barunya. */
+function pindahAda(kunci) {
+  if (history.state?.rincian) {
+    addEventListener('popstate', () => bukaAda(kunci), { once: true });
+    history.back();
+    return;
+  }
+  bukaAda(kunci);
+}
+
+/* Dipasang di dokumen, bukan di `el.pemilih`, karena kartu pemilih bukan satu-satunya
+ * tempat yang menawarkan pindah pintu: kalimat jalan keluar di hasil "terdekat" —
+ * dipakai justru oleh yang peramban atau izinnya tidak menyebutkan posisi — menunjuk
+ * pintu penjual benih, dan ia tidak berada di dalam kartu mana pun. */
+document.addEventListener('click', (ev) => {
+  const b = ev.target.closest('button[data-ada]');
+  if (!b) return;
+  // Mengetuk kartu yang sedang terbuka menutupnya kembali ke daftar pilihan — kartu
+  // penuhnya kembali, beserta kalimat yang menerangkan keempatnya.
+  pindahAda(b.dataset.ada === adaKini ? null : b.dataset.ada);
+});
 
 // Haversine. Bumi bukan bola sempurna, dan pada jarak sekian kilometer selisihnya di
 // bawah satu persen — jauh lebih kecil daripada ketidakpastian titik OSM itu sendiri.
@@ -78,10 +212,17 @@ const petaOsm = (y, x) =>
 // ---------------------------------------------------------------------------
 // Pintu 1 — terdekat
 // ---------------------------------------------------------------------------
-el.cariDekat.addEventListener('click', () => {
+el.cariDekat.addEventListener('click', async () => {
+  // 12 KB titiknya baru diminta saat pintu ini dibuka. Yang mengetuk sebelum berkasnya
+  // sampai tetap harus dilayani — ditunggu di sini, bukan dibiarkan menghitung jarak
+  // terhadap daftar yang belum ada.
+  el.hasilDekat.innerHTML = '<p class="kosong" role="status">Menyiapkan daftar titik…</p>';
+  try { await muatPintu('toko'); } catch { el.hasilDekat.innerHTML = ''; return; }
+
   if (!navigator.geolocation) {
     el.hasilDekat.innerHTML =
-      '<p class="kosong" role="status">Peramban ini tidak bisa menyebutkan posisi, jadi urutan terdekat tidak bisa dihitung. Telusuri menurut wilayah di bawah.</p>';
+      '<p class="kosong" role="status">Peramban ini tidak bisa menyebutkan posisi, jadi urutan terdekat tidak bisa dihitung. ' +
+      '<button type="button" class="tautan" data-ada="benih">Telusuri penjual benih menurut wilayah</button> — walau daftar itu memang tidak bisa dituju.</p>';
     return;
   }
   el.hasilDekat.innerHTML = '<p class="kosong" role="status">Menunggu izin lokasi…</p>';
@@ -91,7 +232,8 @@ el.cariDekat.addEventListener('click', () => {
       el.hasilDekat.innerHTML = `
         <p class="kosong" role="status">
           Posisi tidak diberikan${err.code === 1 ? ' — izinnya ditolak' : ''}. Itu pilihan yang sah;
-          telusuri menurut wilayah di bawah, walau daftar itu memang tidak bisa dituju.
+          <button type="button" class="tautan" data-ada="benih">telusuri penjual benih menurut wilayah</button>,
+          walau daftar itu memang tidak bisa dituju.
         </p>`;
     },
     { enableHighAccuracy: false, timeout: 15000, maximumAge: 300000 },
@@ -147,6 +289,10 @@ function gambarDekat(lat, lon, akurasi) {
 const PRATAMPIL = 8;
 const AMBIL = 40;
 function gambarWilayah() {
+  if (!wilayah) {
+    el.hasilWilayah.innerHTML = '<p class="kosong" role="status">Memuat daftar wilayah…</p>';
+    return;
+  }
   const r = rapi(el.q.value);
   const cocok = r ? wilayah.filter((w) => rapi(w.w).includes(r)) : wilayah;
   if (!cocok.length) {
@@ -208,7 +354,7 @@ el.hasilWilayah.addEventListener('click', async (ev) => {
         <button type="button" class="kembali" id="kembali">← Kembali ke daftar wilayah</button>
       </div>`;
     el.rincian.focus();
-    bukaPintu(el.hasilWilayah, el.rincian, el.q);
+    bukaRincian(el.hasilWilayah, el.rincian, el.q);
   } catch (e) {
     el.rincian.innerHTML = `<div class="kartu peringatan"><h2>Gagal diambil</h2>
       <p class="catatan">${teks(e.message)}</p></div>`;
@@ -230,26 +376,89 @@ el.q.addEventListener('input', gambarWilayah);
 // binaannya bisa dituju oleh orang yang tinggal di kecamatan itu — dan dialah yang
 // mencarinya. Yang tidak tahu letaknya mesinnya, bukan orangnya. Karena itu kecamatan
 // ditampilkan sebagai penanda utama, bukan sebagai catatan kaki.
+/* DIAMBIL SAAT DISENTUH, BUKAN SAAT HALAMAN DIBUKA.
+ *
+ * 99 KB pada permukaan yang seluruh cangkangnya 230 KB bukan angka yang boleh dibebankan
+ * kepada tiap orang yang membuka layar ini — termasuk yang datang hanya untuk penjual
+ * benih di bagian atas dan tidak pernah menggulir sampai ke sini. Jadi ukurannya disebut
+ * di bawah kotaknya, dan berkasnya menyusul saat kotak itu benar-benar dipakai.
+ *
+ * `ambil()` sudah mengingat janjinya sendiri, jadi pemanggilan kedua tidak menambah
+ * perjalanan; penjaga di sini hanya untuk kalimat statusnya. */
+let janjiKecamatan = null;
+async function muatKecamatan() {
+  if (bppKecamatan) return bppKecamatan;
+  if (!janjiKecamatan) {
+    el.bantuKec.textContent = 'Mengambil daftar kecamatan (99 KB)…';
+    janjiKecamatan = ambil('bpp-kecamatan').then((d) => {
+      bppKecamatan = d;
+      el.bantuKec.textContent = `${n(Object.values(d).reduce((a, x) => a + x.length, 0))} kecamatan siap disaring.`;
+      return d;
+    }).catch((e) => {
+      janjiKecamatan = null;
+      el.bantuKec.textContent = `Daftar kecamatan gagal diambil: ${e.message}. Saringan kabupaten di atas tetap jalan.`;
+      throw e;
+    });
+  }
+  return janjiKecamatan;
+}
+
+// Tetapi "tanpa alamat" di sini TIDAK sama artinya dengan pada penjual benih. Nama
+// penjual benih tanpa alamat tidak bisa dituju siapa pun; nama balai beserta kecamatan
+// binaannya bisa dituju oleh orang yang tinggal di kecamatan itu — dan dialah yang
+// mencarinya. Yang tidak tahu letaknya mesinnya, bukan orangnya. Karena itu kecamatan
+// ditampilkan sebagai penanda utama, bukan sebagai catatan kaki.
+//
+// KECAMATAN MENYARING WILAYAH, dan itu arah yang benar. Yang mengetik "Cicurug" tidak
+// sedang mempersempit daftar kabupaten yang sudah dipilihnya — ia sedang bertanya
+// kabupaten mana yang memuat Cicurug. Karena itu nama kecamatan yang cocok ikut tercetak
+// di kartunya: kalau jawabannya sudah terlihat di daftar, kartunya tidak perlu dibuka.
+function kecCocok(kunci, r) {
+  if (!r || !bppKecamatan) return null;
+  return (bppKecamatan[kunci] ?? []).filter((x) => rapi(x).includes(r));
+}
+
 function gambarBpp() {
-  const r = rapi(el.qBpp.value);
-  const cocok = r ? bppWilayah.filter((w) => rapi(w.w).includes(r)) : bppWilayah;
-  if (!cocok.length) {
-    el.hasilBpp.innerHTML = `<p class="kosong" role="status">Tidak ada kabupaten atau kota yang cocok. Cakupannya ${n(bppWilayah.length)} dari 514 — 34 provinsi, karena pemekaran Papua belum masuk basis data sumbernya.</p>`;
+  if (!bppWilayah) {
+    el.hasilBpp.innerHTML = '<p class="kosong" role="status">Memuat daftar kabupaten…</p>';
     return;
   }
-  const tampil = cocok.slice(0, r ? AMBIL : PRATAMPIL);
+  const r = rapi(el.qBpp.value);
+  const rk = rapi(el.qKec.value);
+  // Kecamatan diketik tetapi daftarnya belum sampai: yang salah bukan kuerinya, dan
+  // menjawab "tidak ada yang cocok" di sini berbohong tentang cakupan.
+  if (rk && !bppKecamatan) {
+    el.hasilBpp.innerHTML = '<p class="kosong" role="status">Menunggu daftar kecamatan…</p>';
+    return;
+  }
+
+  let cocok = r ? bppWilayah.filter((w) => rapi(w.w).includes(r)) : bppWilayah;
+  if (rk) cocok = cocok.filter((w) => kecCocok(w.k, rk)?.length);
+
+  if (!cocok.length) {
+    el.hasilBpp.innerHTML = rk
+      ? `<p class="kosong" role="status">Tidak ada kecamatan bernama itu${r ? ' di kabupaten yang cocok' : ''}. Yang terdaftar 6.824 kecamatan binaan dari ${n(bppWilayah.length)} kabupaten dan kota — kecamatan yang tidak punya balai binaan memang tidak ada di sini.</p>`
+      : `<p class="kosong" role="status">Tidak ada kabupaten atau kota yang cocok. Cakupannya ${n(bppWilayah.length)} dari 514 — 34 provinsi, karena pemekaran Papua belum masuk basis data sumbernya.</p>`;
+    return;
+  }
+  const tampil = cocok.slice(0, (r || rk) ? AMBIL : PRATAMPIL);
   el.hasilBpp.innerHTML = `
     <p class="bantuan" role="status">${n(cocok.length)} wilayah${cocok.length > tampil.length
-      ? (r ? `, ditampilkan ${tampil.length} teratas` : ` — ${tampil.length} pertama di bawah, ketik untuk menyaring`)
+      ? ((r || rk) ? `, ditampilkan ${tampil.length} teratas` : ` — ${tampil.length} pertama di bawah, ketik untuk menyaring`)
       : ''}.</p>
     <ul class="daftar">
-      ${tampil.map((w) => `
+      ${tampil.map((w) => {
+        const kec = kecCocok(w.k, rk);
+        return `
         <li>
           <button type="button" data-bpp="${teks(w.k)}">
             <span class="nama">${teks(w.w)}<span class="lencana">${n(w.n)}</span></span>
-            <span class="sub">membina ${n(w.kec)} kecamatan</span>
+            <span class="sub">${kec?.length
+              ? `${teks(kec.slice(0, 4).join(', '))}${kec.length > 4 ? ` dan ${n(kec.length - 4)} kecamatan lain` : ''}`
+              : `membina ${n(w.kec)} kecamatan`}</span>
           </button>
-        </li>`).join('')}
+        </li>`;
+      }).join('')}
     </ul>`;
 }
 
@@ -261,15 +470,25 @@ el.hasilBpp.addEventListener('click', async (ev) => {
   try {
     const isi = await ambil(`bpp/${b.dataset.bpp}`);
     const kosong = isi.filter((x) => !x.k.length).length;
+    // Kuerinya dibawa masuk ke rincian. Yang mengetik "Cicurug" lalu membuka Sukabumi
+    // mencari satu baris di antara 47 balai, dan menyuruhnya memindai tabel sendiri
+    // membuang saringan yang baru saja dipakainya.
+    const rk = rapi(el.qKec.value);
+    const semua = isi;
+    const cocokKec = rk ? isi.filter((x) => x.k.some((y) => rapi(y).includes(rk))) : isi;
+    const disaring = rk && cocokKec.length && cocokKec.length < semua.length;
+    const tampil = rk && cocokKec.length ? cocokKec : semua;
     el.rincianBpp.innerHTML = `
       <div class="kartu">
         <h2>${teks(w?.w ?? '')}</h2>
-        <p>${n(isi.length)} balai penyuluhan, membina ${n(w?.kec ?? 0)} kecamatan.</p>
+        <p>${n(semua.length)} balai penyuluhan, membina ${n(w?.kec ?? 0)} kecamatan.</p>
+        ${disaring ? `<p class="bantuan" role="status">Ditampilkan ${n(tampil.length)} balai yang kecamatan binaannya cocok dengan &ldquo;${teks(el.qKec.value.trim())}&rdquo;. <button type="button" class="tautan" id="bppSemua">Tampilkan ${n(semua.length)} balai di wilayah ini</button></p>` : ''}
+        ${rk && !cocokKec.length ? `<p class="bantuan" role="status">Tidak ada balai di sini yang kecamatan binaannya cocok dengan &ldquo;${teks(el.qKec.value.trim())}&rdquo;; seluruh ${n(semua.length)} balai ditampilkan.</p>` : ''}
         <div class="pembungkus-tabel">
           <table>
             <thead><tr><th>Balai</th><th>Kecamatan binaan</th><th class="angka">Penyuluh</th><th class="angka">Poktan</th></tr></thead>
             <tbody>
-              ${isi.map((x) => `
+              ${tampil.map((x) => `
                 <tr>
                   <td>${teks(x.n)}</td>
                   <td>${x.k.length ? teks(x.k.join(', ')) : '<span class="kosong">kosong di sumbernya</span>'}</td>
@@ -287,8 +506,21 @@ el.hasilBpp.addEventListener('click', async (ev) => {
         </p>
         <button type="button" class="kembali" id="kembali">← Kembali ke daftar wilayah</button>
       </div>`;
+    // Saringan yang tidak bisa dilepas adalah saringan yang menyembunyikan. Tombolnya
+    // menggambar ulang kartunya tanpa kueri kecamatan, bukan mengosongkan kotaknya —
+    // kotaknya masih dipakai daftar wilayah di belakang.
+    el.rincianBpp.querySelector('#bppSemua')?.addEventListener('click', () => {
+      el.rincianBpp.querySelectorAll('tbody tr').forEach((x) => x.remove());
+      const tb = el.rincianBpp.querySelector('tbody');
+      for (const x of semua) {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td>${teks(x.n)}</td><td>${x.k.length ? teks(x.k.join(', ')) : '<span class="kosong">kosong di sumbernya</span>'}</td><td class="angka">${x.p == null ? '—' : n(x.p)}</td><td class="angka">${x.g == null ? '—' : n(x.g)}</td>`;
+        tb.appendChild(tr);
+      }
+      el.rincianBpp.querySelector('#bppSemua').closest('p').remove();
+    });
     el.rincianBpp.focus();
-    bukaPintu(el.hasilBpp, el.rincianBpp, el.qBpp);
+    bukaRincian(el.hasilBpp, el.rincianBpp, el.qBpp);
   } catch (e) {
     el.rincianBpp.innerHTML = `<div class="kartu peringatan"><h2>Gagal diambil</h2><p class="catatan">${teks(e.message)}</p></div>`;
   }
@@ -324,6 +556,10 @@ function gambarSaringLab() {
 }
 
 function gambarLab() {
+  if (!labKepala) {
+    el.hasilLab.innerHTML = '<p class="kosong" role="status">Memuat daftar laboratorium…</p>';
+    return;
+  }
   const w = labKepala.wilayah
     .map((x) => ({ ...x, cocok: saringan ? (x.per?.[saringan] ?? 0) : x.n }))
     .filter((x) => x.cocok > 0)
@@ -394,13 +630,17 @@ el.hasilLab.addEventListener('click', async (ev) => {
         <button type="button" class="kembali" id="kembali">← Kembali ke daftar provinsi</button>
       </div>`;
     el.rincianLab.focus();
-    bukaPintu(el.hasilLab, el.rincianLab, el.saringLab);
+    bukaRincian(el.hasilLab, el.rincianLab, el.saringLab);
   } catch (e) {
     el.rincianLab.innerHTML = `<div class="kartu peringatan"><h2>Gagal diambil</h2><p class="catatan">${teks(e.message)}</p></div>`;
   }
 });
 
 el.qBpp.addEventListener('input', gambarBpp);
+el.qKec.addEventListener('input', () => {
+  if (!el.qKec.value.trim()) { gambarBpp(); return; }
+  muatKecamatan().then(gambarBpp, () => gambarBpp());
+});
 
 // ---------------------------------------------------------------------------
 // Mulai
@@ -409,9 +649,14 @@ el.qBpp.addEventListener('input', gambarBpp);
   try {
     const m = await muatMeta();
     const j = m.jumlah;
-    [titik, wilayah, bppWilayah, labKepala] = await Promise.all([
-      ambil('toko-titik'), ambil('toko-wilayah'), ambil('bpp-wilayah'), ambil('lab-kemampuan'),
-    ]);
+
+    // Cacah di kartu pemilih datang dari meta, jadi keempat kartu sudah lengkap sebelum
+    // satu berkas indeks pun diambil — lihat catatan di PINTU.
+    const cacah = { toko: j.tokoBertitik, benih: j.tokoBerwilayah, bpp: j.bpp, lab: j.lab };
+    for (const [k, v] of Object.entries(cacah)) {
+      const c = el.pemilih.querySelector(`[data-cacah="${k}"]`);
+      if (c) c.textContent = n(v);
+    }
 
     el.ringkasTitik.innerHTML =
       `<strong>${n(j.tokoBertitik)} toko tani berkoordinat</strong> dari OpenStreetMap. ` +
@@ -438,16 +683,19 @@ el.qBpp.addEventListener('input', gambarBpp);
       `yang ruang lingkupnya menyentuh usaha tani. Hanya <strong>${n(j.labResidu)}</strong> ` +
       `di antaranya bisa mengukur residu pestisida.`;
 
-    gambarWilayah();
-    gambarBpp();
-    gambarSaringLab();
-    gambarLab();
-
     pasangBatas(el.batas, {
       sumber: ['tokoTitik', 'tokoWilayah', 'bpp', 'lab'],
       takDijawab: ['tokoTakBisaDituju', 'tokoTanpaKontak', 'bppTanpaAlamat'],
     });
+
+    /* Pintu yang diminta alamat dibuka tanpa memindahkan fokus: yang datang lewat tautan
+     * `?ada=lab` belum menyentuh apa pun, dan merebut fokus ke tengah halaman sebelum ia
+     * sempat membaca kepalanya justru membalik urutan yang dijanjikan halaman ini. */
+    const minta = new URLSearchParams(location.search).get('ada');
+    if (PINTU[minta]) bukaAda(minta, { gulir: false });
   } catch (e) {
-    el.ringkasTitik.innerHTML = `<span class="kosong">Indeks tidak terambil: ${teks(e.message)}</span>`;
+    el.pemilihBantu.innerHTML =
+      `<span class="kosong">Indeks tidak terambil: ${teks(e.message)}</span>`;
+    el.pemilihBantu.hidden = false;
   }
 })();
