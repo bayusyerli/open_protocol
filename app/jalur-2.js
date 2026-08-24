@@ -145,12 +145,55 @@ function blokIsi(p) {
     </div>`;
 }
 
+/* Nama OPT sebagai tautan ke jalur 1 — pintu balik dari "apa yang ada di tangan" ke
+ * "apa lagi yang terdaftar untuk masalah ini".
+ *
+ * Yang dituju BUKAN nama OPT-nya saja melainkan pasangan tanaman + OPT, karena itulah
+ * satu baris di tabel ini, dan karena yang terdaftar memang berbeda-beda menurut
+ * tanamannya. Jalur 1 mendarat di daftar bahan aktif untuk pasangan itu — dengan kartu
+ * penjagaannya tetap di atas, tidak dilompati.
+ *
+ * `opt=` dipakai untuk keduanya, terkurasi maupun registri: rekaman di sini cuma
+ * menyebut `op:pst:…` dan registri tidak menandai mana yang kebetulan ikut terkurasi,
+ * jadi yang memutuskan ruang id-nya jalur 1 — yang memang sudah memegang daftarnya.
+ *
+ * Yang tidak bertaut tidak bertaut karena memang tidak ada yang bisa dituju: 2.438 dari
+ * 23.058 penggunaan berlabel kosong tautan OPT atau komoditasnya di registri, dan
+ * pasangan yang salah satunya kosong tidak pernah menghasilkan layar di jalur 1. Nama
+ * yang tertulis tetap ditampilkan apa adanya.
+ */
+const kunciId = (id) => String(id).replace(/[^a-z0-9]/gi, '');
+
+function selOpt(u) {
+  const nama = teks(u.optNama ?? '—');
+  if (!u.opt || !u.komoditas) return nama;
+  const alamat = `jalur-1.html?${new URLSearchParams({ opt: u.opt, kom: kunciId(u.komoditas) })}`;
+  return `<a class="tautan-opt" href="${teks(alamat)}">${nama}</a>`;
+}
+
+/* Nama tanaman menuju tempat yang BERBEDA dari nama OPT di sebelahnya, dan syaratnya
+ * juga berbeda. Yang di kolom OPT menuju satu pasangan tanaman + OPT, jadi ia perlu
+ * keduanya. Yang di sini menuju daftar seluruh sasaran pendaftaran pada tanaman itu,
+ * jadi ia cukup dengan komoditasnya — dan baris yang OPT-nya kosong pun tetap bertaut
+ * selama tanamannya tercatat.
+ */
+function selKomoditas(u) {
+  const nama = teks(u.komoditasNama ?? '—');
+  if (!u.komoditas) return nama;
+  const alamat = `jalur-1.html?${new URLSearchParams({ kom: kunciId(u.komoditas) })}`;
+  return `<a class="tautan-opt" href="${teks(alamat)}">${nama}</a>`;
+}
+
 function blokGuna(p) {
   if (p.jenis !== 'pestisida') return '';
   if (!p.guna?.length) {
     return `<div class="kartu"><h2>Terdaftar untuk</h2>
       <p class="kosong">Registri tidak mencatat penggunaan berlabel untuk produk ini.</p></div>`;
   }
+  // Dua hitungan, karena syarat kedua kolomnya memang berbeda. Yang tanpa tautan OPT
+  // SELALU mencakup yang tanpa tautan tanaman: tautan OPT butuh keduanya.
+  const tanpaTanaman = p.guna.filter((u) => !u.komoditas).length;
+  const tanpaOpt = p.guna.filter((u) => !u.opt || !u.komoditas).length;
   return `
     <div class="kartu">
       <h2>Terdaftar untuk</h2>
@@ -159,12 +202,22 @@ function blokGuna(p) {
           <thead><tr><th>Tanaman</th><th>OPT</th><th>Dosis terdaftar</th></tr></thead>
           <tbody>${p.guna.map((u) => `
             <tr>
-              <td>${teks(u.komoditasNama ?? '—')}</td>
-              <td>${teks(u.optNama ?? '—')}</td>
+              <td>${selKomoditas(u)}</td>
+              <td>${selOpt(u)}</td>
               <td class="angka">${teks(u.dosis ?? '—')}</td>
             </tr>`).join('')}</tbody>
         </table>
       </div>
+      <p class="catatan">
+        Dua kolom pertama menuju dua tempat yang berbeda. <strong>Nama tanaman</strong>
+        membuka seluruh sasaran yang terdaftar pada tanaman itu — bukan hanya yang dijawab
+        produk ini. <strong>Nama OPT</strong> membuka bahan aktif apa saja yang terdaftar
+        untuk sasaran itu <em>di tanaman itu</em>: merek lain, dan yang isinya berbeda sama
+        sekali.
+        ${tanpaOpt ? `Dari ${p.guna.length} baris, ${tanpaTanaman} tidak bertaut di kolom
+        tanaman dan ${tanpaOpt} tidak bertaut di kolom OPT — registri mengosongkan id-nya,
+        jadi tidak ada layar yang bisa dituju.` : ''}
+      </p>
       <p class="catatan">
         Di luar daftar ini, produk tersebut <strong>tidak terdaftar</strong> untuk dipakai.
         Tenggang panen tidak ditampilkan karena <strong>registri tidak memuatnya sama

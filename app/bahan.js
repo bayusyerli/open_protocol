@@ -33,6 +33,19 @@ function kartuKadar(k, i) {
     </div>`;
 }
 
+/* Petak kemasan di depan nama merek — bentuk yang sama persis dengan tabel merek di
+ * jalur 1, karena isinya memang hal yang sama: daftar merek untuk satu pasangan bahan +
+ * kadar. Yang belum bergambar tetap memakai ruang yang sama, sebab 15% saja yang punya
+ * dan sederet sel kosong di antara yang bergambar terbaca sebagai "yang ini yang
+ * meragukan" — padahal artinya cuma situs pemegangnya belum dipanen.
+ *
+ * `alt` kosong: namanya persis di sebelahnya, di dalam kontrol yang sama.
+ */
+const petakKemasan = (m) => (m.g
+  ? `<img class="merek-kemasan" src="gambar/${teks(m.g)}" alt="" width="40" height="40"
+          loading="lazy" decoding="async">`
+  : '<span class="merek-kemasan merek-kemasan-kosong" aria-hidden="true"></span>');
+
 export function tabelMerek(merek) {
   if (!merek?.length) return '<p class="kosong">Tidak ada merek pada kadar ini.</p>';
   return `
@@ -49,13 +62,24 @@ export function tabelMerek(merek) {
         <tbody>
           ${merek.map((m) => `
             <tr>
-              <td><button type="button" class="tautan" data-id="${teks(m.i)}" data-pecahan="${teks(m.p)}">${teks(m.n)}</button></td>
+              <td>
+                <button type="button" class="tautan merek-tautan" data-id="${teks(m.i)}" data-pecahan="${teks(m.p)}">
+                  ${petakKemasan(m)}<span class="merek-nama">${teks(m.n)}</span>
+                </button>
+              </td>
               <td>${namaPemegang(m.k, m.pk)}</td>
               <td>${m.f ? teks(m.f.replace(/^\+\s*/, '')) : '<span class="kosong">bahan tunggal</span>'}</td>
             </tr>`).join('')}
         </tbody>
       </table>
-    </div>`;
+    </div>
+    <p class="catatan">
+      <strong>Gambar kemasan bukan bukti apa pun tentang barang di tangan</strong> —
+      desainnya berubah, dan pemalsu menyalin desain; yang dibandingkan sebaiknya
+      kandungan yang tercetak. Petak bergaris putus-putus berarti gambarnya belum
+      dipanen dari situs pemegang pendaftarannya, <em>bukan</em> berarti produknya
+      meragukan.
+    </p>`;
 }
 
 export function layarBahan(id, b) {

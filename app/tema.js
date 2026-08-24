@@ -24,12 +24,19 @@
  */
 
 import { pasangLuring } from './luring.js';
+import { pasangCangkang } from './cangkang.js';
 
 // Dipasang di sini karena tema.js satu-satunya modul yang diimpor kesebelas halaman.
 // Menyalin pendaftarannya ke sebelas berkas akan mengulang persis dua kekeliruan yang
 // sudah ditemukan di permukaan ini: tema yang berhenti di beranda, dan enam salinan
 // penangan tombol kembali.
 pasangLuring();
+
+// Alasan yang sama, dan taruhannya lebih besar: cangkang yang disalin ke tiap berkas
+// akan menyimpang persis seperti <p class="lain"> yang digantikannya. Dipanggil SEBELUM
+// tiap halaman memanggil pasangTombolTema() — berkas ini diimpor lebih dulu daripada
+// badan modul halaman — dan itu penting, karena cangkang memindahkan tombol temanya.
+pasangCangkang();
 
 const IKON = {
   sistem: '<circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17a8.5 8.5 0 0 0 0-17Z" fill="currentColor" stroke="none"/>',

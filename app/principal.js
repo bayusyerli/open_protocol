@@ -316,20 +316,18 @@ document.getElementById('formCari').addEventListener('submit', (ev) => {
     if (key && BENTUK_KEY.test(key)) {
       await buka(key);
     } else {
+      // Keadaan kosong sengaja sependek ini. Ia duduk DI ATAS kotak cari — kalau ia
+      // sepanjang kartu, kotak yang jadi maksud halaman ini terdorong ke luar layar
+      // pertama, dan yang terbaca lebih dulu justru kalimat "cari di kotak di bawah".
+      // Cacah dan cakupannya tetap disebut; yang dibuang cuma pengulangan labelnya.
       el.isi.innerHTML = `
-        <div class="kartu">
-          <h2>Pilih satu badan lebih dulu</h2>
-          <p>
-            Halaman ini menampilkan satu badan pemegang pendaftaran sekaligus. Cari namanya
-            di kotak di bawah — ${n(cacahPrincipal)} badan terindeks, mencakup perusahaan,
-            balai penelitian, dinas, perguruan tinggi, dan pemerintah daerah.
-          </p>
-          <p class="catatan">
-            Lembaga dan pemerintah daerah bisa dicari lewat <strong>nama tempatnya
-            saja</strong>: "Bandung" menemukan Pemerintah Kabupaten Bandung dan Dinas
-            Pertanian Kabupaten Bandung tanpa mengeja awalannya.
-          </p>
-        </div>`;
+        <p class="catatan">
+          ${n(cacahPrincipal)} badan terindeks — perusahaan, balai penelitian, dinas,
+          perguruan tinggi, dan pemerintah daerah. Lembaga dan pemerintah daerah bisa
+          dicari lewat <strong>nama tempatnya saja</strong>: "Bandung" menemukan
+          Pemerintah Kabupaten Bandung dan Dinas Pertanian Kabupaten Bandung tanpa
+          mengeja awalannya.
+        </p>`;
       el.q.focus();
     }
   } catch (e) {

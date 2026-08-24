@@ -81,7 +81,7 @@ function gambarGejala() {
  * ditolak jalur ini. Yang bisa dilakukan layar mengatakan apa yang TIDAK bisa
  * dipastikannya, bukan diam-diam melepas penjagaannya.
  */
-async function bukaHama(kunci) {
+async function bukaHama(kunci, opsi = {}) {
   el.hasil.innerHTML = '<p class="kosong">Mengambil…</p>';
   el.hasil.focus();
   try {
@@ -122,6 +122,161 @@ async function bukaHama(kunci) {
       <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
     catatJawab(1, UKUR.isi);
     pasangKembali(el.hasil, { gulirKe: el.gejala });
+    await bukaTertunjuk(h.di.map((d) => d.b), opsi);
+  } catch (e) {
+    catatJawab(1, UKUR.gagal);
+    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
+      <p class="catatan">${teks(e.message)}</p></div>`;
+  }
+}
+
+/* Komoditas yang ikut disebut penunjuk — dipakai tautan OPT di jalur 2, yang memang
+ * datang dari satu baris "tanaman + OPT" dan bukan dari nama OPT saja.
+ *
+ * Yang dibuka BUKAN berkas dari bilah alamat. Kuncinya dicocokkan dengan daftar
+ * komoditas yang dibawa rekaman OPT-nya, dan berkas yang dipakai berkas dari daftar
+ * itu; kunci yang tidak ada di daftar tidak membuka apa pun dan layarnya berhenti di
+ * daftar komoditas — persis seperti masuk tanpa penunjuk.
+ *
+ * `gulir` mati saat datang dari tautan luar, dan itu bukan kesopanan. Layar ini
+ * membuka dengan kartu penjagaannya — "pastikan dulu", atau "kamu masuk lewat nama" —
+ * dan menggulir langsung ke daftar bahan melompatinya tanpa suara. Yang mengetuk dari
+ * daftar di halaman yang sama sudah membacanya; yang mendarat dari halaman lain belum.
+ */
+async function bukaTertunjuk(berkasAda, { kom, gulir = true } = {}) {
+  if (!kom) return;
+  const berkas = berkasAda.find((b) => b.split('/')[1] === kom);
+  if (!berkas) return;
+  await bukaKomoditas(berkas, { gulir });
+}
+
+/* C8 — masuk dari TANAMAN, dan yang keluar direktori, bukan dugaan.
+ *
+ * Pintu ketiga jalur ini, dan janjinya paling sempit dari ketiganya. Yang masuk lewat
+ * gejala sedang menebak dan ditahan blok "pastikan dulu"; yang masuk lewat nama hama
+ * sudah punya dugaan dan ditahan kartu "kamu masuk lewat nama". Yang masuk lewat nama
+ * tanaman belum menyebut masalah apa pun — ia cuma bertanya apa saja yang terdaftar
+ * untuk tanamannya. Layar ini menjawab persis itu dan berhenti di situ.
+ *
+ * URUTANNYA MENURUT BANYAKNYA PRODUK TERDAFTAR, DAN ITU BUKAN URUTAN ANCAMAN. Banyaknya
+ * produk mengukur ramainya pendaftaran, bukan seringnya hama itu datang ke kebun. Yang
+ * teratas belum tentu yang akan menyerang, dan yang paling bawah bukan yang paling
+ * jarang. Dinyatakan di layar, sebab daftar terurut selalu terbaca sebagai peringkat.
+ *
+ * NAMA INDONESIA DI SINI NAMA KELOMPOK, REKAMANNYA SPESIES. Jagung punya 146 entri OPT
+ * dengan 29 nama berbeda: enam puluh dua di antaranya sama-sama berlabel "Gulma Berdaun
+ * Lebar", dan yang membedakannya nama ilmiahnya. Menyajikannya apa adanya mengulang satu
+ * baris 62 kali dan terbaca sebagai data rusak; menyatukannya jadi satu baris menyembunyikan
+ * bahwa dosis dan mereknya memang terdaftar per spesies. Jadi dikelompokkan menurut namanya,
+ * dan yang beranggota lebih dari satu dibuka untuk melihat spesiesnya.
+ */
+function kelompokOpt(daftar) {
+  const peta = new Map();
+  for (const o of daftar) {
+    if (!peta.has(o.nama)) peta.set(o.nama, []);
+    peta.get(o.nama).push(o);
+  }
+  return [...peta.entries()]
+    .map(([nama, anggota]) => ({
+      nama,
+      anggota: anggota.slice().sort((a, b) => b.produk - a.produk || (a.ilmiah ?? '').localeCompare(b.ilmiah ?? '')),
+      produk: anggota.reduce((a, b) => a + b.produk, 0),
+    }))
+    .sort((a, b) => b.produk - a.produk || a.nama.localeCompare(b.nama));
+}
+
+/* Yang ditulis besar berbeda menurut letaknya, dan itu bukan gaya.
+ *
+ * Berdiri sendiri, yang dikenali pembaca nama Indonesianya: "Ulat Grayak", bukan
+ * "Spodoptera frugiperda". Nama ilmiahnya menyusul sebagai keterangan — berguna, tetapi
+ * bukan yang dicari mata.
+ *
+ * Di dalam kelompok, kebalikannya: nama Indonesianya sudah jadi kepala kartunya, dan
+ * mengulangnya 62 kali di dalam kartu yang sudah menyebutnya tidak memberi tahu apa pun.
+ * Di situ yang membedakan justru spesiesnya, jadi spesiesnya yang naik.
+ *
+ * Sebagian rekaman memakai nama ilmiah sebagai nama Indonesianya sekalian — "Locusta
+ * migratoria" pada keduanya. Keterangannya dihilangkan saat itu terjadi, sebab baris yang
+ * menyebut satu nama dua kali terbaca sebagai kekeliruan.
+ */
+function barisOpt(o, { utama = 'nama' } = {}) {
+  const beda = o.ilmiah && o.ilmiah !== o.nama;
+  const kepala = utama === 'ilmiah' && o.ilmiah ? `<em>${teks(o.ilmiah)}</em>` : teks(o.nama);
+  const sub = [
+    `${angkaId(o.produk)} produk terdaftar`,
+    utama === 'nama' && beda ? `<em>${teks(o.ilmiah)}</em>` : null,
+  ].filter(Boolean).join(' · ');
+  return `
+    <button type="button" data-berkas="${teks(o.berkas)}">
+      <span class="nama">${kepala}</span>
+      <span class="sub">${sub}</span>
+    </button>`;
+}
+
+function kartuKelompok(k, i) {
+  if (k.anggota.length === 1) return `<li>${barisOpt({ ...k.anggota[0], nama: k.nama })}</li>`;
+  // Bentuknya sengaja sama dengan kartu bahan di bawah: kepala yang bisa diketuk, isi
+  // yang menyusul. Keduanya menyatakan hal yang sama — sekian rekaman di balik satu
+  // nama — dan memberinya dua rupa membuat orang mengira keduanya berbeda.
+  return `
+    <li>
+      <div class="kartu bahan">
+        <button type="button" class="bahan-kepala" data-kelompok="${i}" aria-expanded="false"
+                aria-controls="kelompok-${i}">
+          <span class="bahan-nama">${teks(k.nama)}</span>
+          <span class="bahan-jumlah">${angkaId(k.anggota.length)} spesies · ${angkaId(k.produk)} produk</span>
+        </button>
+        <div class="bahan-isi" id="kelompok-${i}" hidden>
+          <p class="catatan">
+            Registri mencatatnya sebagai <strong>${angkaId(k.anggota.length)} rekaman terpisah</strong>
+            yang semuanya berlabel “${teks(k.nama)}”. Yang membedakannya spesiesnya, dan
+            dosis serta mereknya terdaftar per spesies — bukan per nama kelompok.
+          </p>
+          <ul class="daftar">${k.anggota.map((o) => `<li>${barisOpt(o, { utama: 'ilmiah' })}</li>`).join('')}</ul>
+        </div>
+      </div>
+    </li>`;
+}
+
+async function bukaTanaman(kunci, { gulir = true } = {}) {
+  el.hasil.innerHTML = '<p class="kosong">Mengambil…</p>';
+  el.hasil.focus();
+  try {
+    const t = await ambil(`opt/${kunci}`);
+    terbukaKini = { id: t.komoditas, nama: t.nama, tautan: tautanKe(`?kom=${encodeURIComponent(kunci)}`) };
+    kelompokKini = kelompokOpt(t.opt);
+    const produk = t.opt.reduce((a, o) => a + o.produk, 0);
+    const berkelompok = kelompokKini.filter((k) => k.anggota.length > 1);
+    el.hasil.innerHTML = `
+      <div class="kartu peringatan">
+        <h2>Ini daftar pendaftaran, bukan dugaan</h2>
+        <p>
+          Registri mencatat <strong>${angkaId(t.opt.length)} sasaran pendaftaran</strong> pada
+          <strong>${teks(t.nama)}</strong>, di bawah ${angkaId(kelompokKini.length)} nama, dengan
+          ${angkaId(produk)} produk terdaftar seluruhnya.
+        </p>
+        <p class="catatan">
+          Yang di bawah <strong>apa yang boleh didaftarkan untuk tanaman ini</strong> — bukan apa
+          yang sedang menyerangnya, dan bukan apa yang perlu dibeli. Urutannya menurut banyaknya
+          produk terdaftar, dan itu <strong>mengukur ramainya pendaftaran, bukan seringnya hama
+          itu datang</strong>. Kalau yang kamu punya sudah berupa gejala,
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — di situ ada dua ciri
+          pembanding yang bisa diperiksa sendiri, dan layar ini memang tidak punya.
+        </p>
+      </div>
+      ${berkelompok.length ? `
+        <p class="bantuan">
+          ${angkaId(berkelompok.length)} nama di antaranya dipegang lebih dari satu rekaman —
+          nama Indonesianya nama kelompok, rekamannya spesies. Ketuk untuk melihat spesiesnya.
+          Pengelompokannya menurut <strong>ejaan persis di registri</strong>, jadi dua nama
+          yang nyaris sama tetap jadi dua baris; halaman ini tidak menyatukan apa yang
+          registri pisahkan.
+        </p>` : ''}
+      <ul class="daftar">${kelompokKini.map(kartuKelompok).join('')}</ul>
+      <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
+    catatJawab(1, t.opt.length ? UKUR.isi : UKUR.nol);
+    pasangKembali(el.hasil, { gulirKe: el.gejala });
+    if (gulir) el.hasil.scrollIntoView({ block: 'start' });
   } catch (e) {
     catatJawab(1, UKUR.gagal);
     el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
@@ -309,6 +464,41 @@ function kartuBahan(g, i) {
     </div>`;
 }
 
+/* Petak kemasan di depan nama merek.
+ *
+ * Yang tidak punya gambar TIDAK dibiarkan kosong melompong. 15% dari baris merek punya
+ * gambar, jadi keadaan yang lazim justru yang tanpa — dan sederet sel kosong di antara
+ * yang bergambar terbaca sebagai "yang ini yang meragukan", padahal artinya cuma situs
+ * pemegangnya belum dipanen. Petak bergaris putus-putus menempati ruang yang sama,
+ * sehingga barisnya sejajar dan tidak ada yang tampak tersisih.
+ *
+ * `alt` sengaja kosong: namanya persis di sebelahnya, di dalam tautan yang sama.
+ * Membacakan "Kemasan MATROS 18 EC" lalu "MATROS 18 EC" menggandakan tiap baris tabel
+ * bagi yang memakai pembaca layar.
+ */
+const petakKemasan = (m) => (m.g
+  ? `<img class="merek-kemasan" src="gambar/${teks(m.g)}" alt="" width="40" height="40"
+          loading="lazy" decoding="async">`
+  : '<span class="merek-kemasan merek-kemasan-kosong" aria-hidden="true"></span>');
+
+/* Nama merek jadi tautan ke rincian produknya di jalur 2.
+ *
+ * Sampai sekarang tabel ini buntu: ia menyebut nama, nomor, dan dosis, lalu berhenti.
+ * Yang mau tahu isinya — bahan lain di dalamnya, pemegang pendaftarannya, merek lain
+ * berisi sama — harus menyalin namanya ke kotak cari di halaman lain, dan nama terdaftar
+ * jarang persis sama dengan yang diingat orang.
+ *
+ * Pecahannya dibawa rekamannya sendiri (`m.p`). Kalau tidak ada, namanya tetap tampil
+ * sebagai teks biasa: tautan yang mendarat di layar gagal lebih buruk daripada nama yang
+ * memang cuma nama.
+ */
+const namaMerek = (m) => {
+  const isi = `${petakKemasan(m)}<span class="merek-nama">${teks(m.nama)}</span>`;
+  if (!m.p) return `<span class="merek-tautan">${isi}</span>`;
+  const alamat = `index.html?${new URLSearchParams({ id: m.id, pecahan: m.p })}`;
+  return `<a class="merek-tautan" href="${teks(alamat)}">${isi}</a>`;
+};
+
 function tabelMerek(merek) {
   return `
     <p class="catatan">
@@ -321,15 +511,24 @@ function tabelMerek(merek) {
       <table>
         <thead><tr><th>Merek</th><th>Nomor pendaftaran</th><th>Berlaku sampai</th><th>Dosis terdaftar</th></tr></thead>
         <tbody>${merek.map((m) => `
-          <tr><td>${teks(m.nama)}</td><td class="angka">${teks(m.daftar ?? '—')}</td>
+          <tr><td>${namaMerek(m)}</td><td class="angka">${teks(m.daftar ?? '—')}</td>
               <td class="angka">${teks(m.berlaku ?? '—')}</td>
               <td class="angka">${teks(m.dosis ?? '—')}</td></tr>`).join('')}</tbody>
       </table>
-    </div>`;
+    </div>
+    <p class="catatan">
+      Nama merek membuka rinciannya: bahan lain di dalamnya, pemegang pendaftarannya, dan
+      merek lain yang isinya sama persis. <strong>Gambar kemasan bukan bukti apa pun
+      tentang barang di tangan</strong> — desainnya berubah, dan pemalsu menyalin desain;
+      yang dibandingkan sebaiknya kandungan yang tercetak. Petak bergaris putus-putus
+      berarti gambarnya belum dipanen dari situs pemegang pendaftarannya,
+      <em>bukan</em> berarti produknya meragukan.
+    </p>`;
 }
 
 // ---------------------------------------------------------------------------
 let kartuKini = null;
+let kelompokKini = null;
 
 /* Rekaman yang sedang terbuka, dibaca blok sanggahan (B3) SAAT DIKETUK. Blok batas
  * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
@@ -339,7 +538,7 @@ const tautanKe = (q) => new URL(q, location.href).href;
 
 
 
-async function bukaKomoditas(berkas, k) {
+async function bukaKomoditas(berkas, { gulir = true } = {}) {
   el.hasil.querySelector('#daftarBahan')?.remove();
   const r = await ambil(berkas);
   const semuaGrup = [r.grup, ...(await Promise.all((r.kartuDi ?? []).map((x) => ambil(x))))].flat();
@@ -370,12 +569,26 @@ async function bukaKomoditas(berkas, k) {
     ${semuaGrup.slice(0, 12).map(kartuBahan).join('')}
     ${semuaGrup.length > 12 ? `<p class="catatan">Ditampilkan 12 kartu teratas dari ${angkaId(semuaGrup.length)}.</p>` : ''}`;
   el.hasil.appendChild(bagian);
-  bagian.scrollIntoView({ block: 'start' });
+  if (gulir) bagian.scrollIntoView({ block: 'start' });
 }
 
-async function bukaOpt(id) {
+/* Satu id OPT, dua ruang id — dan yang MEMUTUSKAN ruangnya di sini, bukan pemanggilnya.
+ *
+ * Beranda memang tahu ruangnya: entri yang dibukanya datang dari kepala pencarian, yang
+ * sudah menyebut jenisnya, jadi ia memakai `opt=` untuk yang terkurasi dan `hama=` untuk
+ * yang registri. Jalur 2 tidak tahu: yang dipegangnya satu baris penggunaan berlabel yang
+ * hanya menyebut `op:pst:…`, dan registri tidak menandai mana yang kebetulan ikut
+ * terkurasi. Memaksa jalur 2 menebak berarti menyuruhnya mengarang — persis yang ditolak
+ * kedua jalur.
+ *
+ * Jadi `opt=` menerima id apa pun dan menjatuhkannya ke pintu yang benar. Daftar
+ * terkurasinya sudah ada di ingatan sejak halaman muat, jadi keputusannya tidak
+ * menambah satu perjalanan pun, dan yang bukan anggotanya tidak pernah dicari sebagai
+ * teks gejala.
+ */
+async function bukaOpt(id, opsi = {}) {
   const k = daftarOpt.find((x) => x.id === id);
-  if (!k) return;
+  if (!k) return bukaHama(id.replace(/[^a-z0-9]/gi, ''), opsi);
   terbukaKini = { id: k.id, nama: k.nama, tautan: tautanKe(`?opt=${encodeURIComponent(k.id)}`) };
   optKini = k;
   el.hasil.innerHTML = '<p class="kosong">Menyiapkan…</p>';
@@ -387,8 +600,9 @@ async function bukaOpt(id) {
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
     catatJawab(1, k.di.length ? UKUR.isi : UKUR.nol);
     pasangKembali(el.hasil, { gulirKe: el.gejala });
+    if (opsi.kom) await bukaTertunjuk(k.di.map((d) => d.berkas), opsi);
     // Kalau hanya satu komoditas, langsung buka — satu ketukan lebih sedikit.
-    if (k.di.length === 1) await bukaKomoditas(k.di[0].berkas, k);
+    else if (k.di.length === 1) await bukaKomoditas(k.di[0].berkas, { gulir: opsi.gulir ?? true });
   } catch (e) {
     catatJawab(1, UKUR.gagal);
     el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
@@ -407,6 +621,16 @@ el.hasil.addEventListener('click', async (ev) => {
 
   const kom = ev.target.closest('button[data-berkas]');
   if (kom) return bukaKomoditas(kom.dataset.berkas);
+
+  // Kelompok nama di layar tanaman. Isinya sudah tergambar — yang dibawa berkas
+  // komoditas memang seluruh daftarnya — jadi ini murni buka-tutup, tanpa pengambilan.
+  const kel = ev.target.closest('button[data-kelompok]');
+  if (kel) {
+    const isi = document.getElementById(`kelompok-${kel.dataset.kelompok}`);
+    isi.hidden = !isi.hidden;
+    kel.setAttribute('aria-expanded', String(!isi.hidden));
+    return;
+  }
 
   const buka = ev.target.closest('button[data-buka]');
   if (!buka) return;
@@ -465,9 +689,13 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // Datang dari beranda dengan satu gejala sudah terpilih. Daftarnya tetap
     // digambar lebih dulu: yang dibuka lewat pencarian teks belum tentu yang
     // dimaksud, dan tombol "pilih gejala lain" harus mendarat pada sesuatu.
-    const { opt, hama } = tautanMasuk();
-    if (opt) await bukaOpt(opt);
-    else if (hama) await bukaHama(hama);
+    const { opt, hama, kom } = tautanMasuk();
+    const dariLuar = { kom, gulir: false };
+    if (opt) await bukaOpt(opt, dariLuar);
+    else if (hama) await bukaHama(hama, dariLuar);
+    // `kom` sendirian berarti pertanyaannya tentang tanamannya, bukan tentang satu OPT
+    // di tanaman itu. Bersama `opt` atau `hama` ia penunjuk; sendirian ia pintunya.
+    else if (kom) await bukaTanaman(kom, { gulir: false });
   } catch (e) {
     el.gejala.innerHTML = `<div class="kartu peringatan"><h2>Indeks tidak ditemukan</h2>
       <p>Dibangun ulang dengan <code>node spec/tools/bangun-indeks.mjs --tulis</code>.</p>

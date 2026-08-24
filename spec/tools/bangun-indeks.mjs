@@ -183,6 +183,16 @@ const optById = new Map([...optRegistri, ...optTerkurasi].map((o) => [o.id, o]))
 const namaKomoditas = (id, cadangan) => komoditasById.get(id)?.label?.id ?? cadangan ?? id;
 const namaOpt = (id, cadangan) => optById.get(id)?.label?.id ?? cadangan ?? id;
 
+/* Nama ilmiah OPT — dan di indeks komoditas ia BUKAN hiasan.
+ *
+ * Nama Indonesia di registri kerap nama KELOMPOK, sedangkan rekamannya satu SPESIES:
+ * jagung punya 62 entri OPT yang seluruhnya berlabel "Gulma Berdaun Lebar", dan yang
+ * membedakan keenam puluh duanya hanya nama ilmiahnya — Ageratum conyzoides, Borreria
+ * alata, Cleome rutidosperma, dan seterusnya. Daftar yang menampilkan nama Indonesianya
+ * saja mengulang satu baris 62 kali dan terbaca sebagai data rusak.
+ */
+const ilmiahOpt = (id) => optById.get(id)?.scientific_name ?? null;
+
 // ---------------------------------------------------------------------------
 // Kesetaraan: sidik jari komposisi, dihitung dari id
 // ---------------------------------------------------------------------------
@@ -245,6 +255,21 @@ const principalRingkas = (nama) => {
 };
 
 const gambarPerProduk = new Map(gambarTerbit.map((r) => [r.produk, r.gambar]));
+
+/* Berkas gambar kemasan ukuran kecil untuk satu produk, atau null.
+ *
+ * Dipakai dua daftar merek yang berbeda letak tetapi sama isinya — tabel merek per
+ * kadar di jalur 1, dan yang di layar bahan aktif jalur 2. Ditaruh di sini, di samping
+ * sumbernya, supaya keduanya membaca aturan yang sama alih-alih menyalinnya.
+ */
+const gambarKecil = (id) => {
+  const daftar = gambarPerProduk.get(id);
+  if (!daftar?.length) return null;
+  // Kemasan depan didahulukan: panel label terpotong jadi petak 40 px tidak
+  // menunjukkan apa pun, sedangkan kemasan depan justru itu yang dicocokkan mata.
+  const pilih = daftar.find((x) => x.peran === 'kemasan_depan') ?? daftar[0];
+  return pilih.berkas.kecil?.n ?? pilih.berkas.sedang?.n ?? null;
+};
 
 // ---------------------------------------------------------------------------
 // Rincian produk — dipangkas ke yang benar-benar dipakai layar
@@ -707,9 +732,13 @@ const anggotaBahan = (r, zatIni) => {
     ? `+ ${lain.slice(0, 2).map((c) => `${c.nama} ${angka(c.nilai)} ${c.satuan}`).join(' · ')}` +
       (lain.length > 2 ? ` · +${lain.length - 2}` : '')
     : null;
+  // Bentuk medan `g` sengaja sama dengan yang di tabel merek jalur 1: keduanya daftar
+  // merek untuk satu pasangan bahan + kadar, dan dua rupa untuk satu hal yang sama
+  // membuat orang mengira keduanya berbeda.
+  const g = gambarKecil(r.id);
   return {
     i: r.id, n: r.nama, k: r.produsen ?? null, p: petaPecahan.get(r.id),
-    ...(r.pcp ? { pk: r.pcp.key } : {}), ...(f ? { f } : {}),
+    ...(r.pcp ? { pk: r.pcp.key } : {}), ...(f ? { f } : {}), ...(g ? { g } : {}),
   };
 };
 const bahanRinci = [...perZat.entries()]
@@ -1145,6 +1174,29 @@ cariDalam.sort();
 // Yang dibutuhkan penyaji hanya nama tampilnya; kunci filenya urusan pembangun.
 for (const e of Object.keys(cari)) for (const r of cari[e]) delete r._k;
 
+/* Dua medan yang membuat baris merek bisa DIBUKA, bukan cuma dibaca.
+ *
+ * Sampai sekarang tabel merek di jalur 1 buntu: ia menyebut nama, nomor, dan dosis,
+ * lalu berhenti — yang mau tahu isinya harus menyalin namanya ke kotak cari jalur 2.
+ * Nomor pendaftarannya sudah ada di layar, jadi yang kurang cuma alamat rinciannya.
+ *
+ *   `p` pecahan rincian produknya, supaya jalur 2 bisa dibuka langsung. Dihitung dari
+ *       `petaPecahan`, TIDAK ditebak dari nomor urut: pecahan dipotong menurut ukuran,
+ *       jadi tidak ada rumus dari id ke nomor pecahan.
+ *   `g` berkas gambar kemasan ukuran kecil, dan hanya kalau produknya memang punya —
+ *       694 dari 14.920. Yang tidak punya tidak diberi medan kosong, sama seperti di
+ *       rincian produk: 14 ribu medan null memakan pecahan tanpa memberi tahu apa pun.
+ *
+ * Ukuran gambarnya tidak ikut. Yang `kecil` dibatasi 320 px pada sisi terpanjangnya
+ * dan nisbahnya berselisih; layar memasangnya di kotak berukuran tetap, jadi tingginya
+ * tidak pernah bergantung pada gambarnya dan tidak ada yang bergeser saat ia mendarat.
+ */
+const hiasMerek = (m) => {
+  const p = petaPecahan.get(m.id);
+  const g = gambarKecil(m.id);
+  return { ...m, ...(p ? { p } : {}), ...(g ? { g } : {}) };
+};
+
 // Indeks OPT dipecah dua tingkat, karena satu berkas per komoditas bisa mencapai
 // 960 KB — kelapa sawit sendiri punya 622 produk untuk satu gulma. Tingkat pertama
 // hanya daftar OPT beserta jumlahnya, yang memang itulah isi layar sesudah
@@ -1156,7 +1208,7 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
   const daftarOpt = [];
   for (const [oid, o] of [...v.opt.entries()].sort((a, b) => a[1].nama.localeCompare(b[1].nama))) {
     const grup = [...o.grup.values()]
-      .map((g) => ({ ...g, merek: g.merek.slice().sort(urutDaftar) }))
+      .map((g) => ({ ...g, merek: g.merek.slice().sort(urutDaftar).map(hiasMerek) }))
       .sort((a, b) => b.merek.length - a.merek.length || a.zat.localeCompare(b.zat));
     const berkartu = new Set();
     for (const g of grup) for (const m of g.merek) berkartu.add(m.id);
@@ -1164,6 +1216,9 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
     daftarOpt.push({
       id: oid,
       nama: o.nama,
+      // Ditulis hanya kalau ada: 69 dari 2.580 entri tidak punya, dan medan null pada
+      // keduanya sama tidak berartinya dengan medan yang tidak ada.
+      ...(ilmiahOpt(oid) ? { ilmiah: ilmiahOpt(oid) } : {}),
       produk: o.produk.size,
       // Selisihnya dinyatakan, bukan didiamkan: sekian produk terdaftar untuk OPT ini
       // tetapi komposisinya kosong di registri, jadi tidak bisa muncul sebagai kartu.
@@ -1615,6 +1670,31 @@ const alasanSimpangan = larik(bacaJson('deviation-reason.json'))
     kategori: a.category ?? null,
     sinyal: a.signals ?? null,
     definisi: a.definition?.id ?? null,
+  }))
+  .sort((a, b) => a.nama.localeCompare(b.nama));
+
+// ---------------------------------------------------------------------------
+// Sebab siklus berakhir tanpa hasil — penanda panen, sisi yang tidak bisa dikarang
+// ---------------------------------------------------------------------------
+// Cycle.failure_reason sudah ada di skema sejak lama dan menunjuk Ref yang tidak punya
+// tujuan: kosakatanya tidak pernah dibuat. Sekarang ada, dan diterbitkan supaya permukaan
+// bisa MENAWARKANNYA — sebab yang harus diketik bebas akan jadi sepuluh ejaan untuk satu
+// hal, dan gunanya justru menghitung.
+//
+// Medan `autp` ikut, dan itu bukan hiasan. Hanya tiga dari lima belas sebab yang dijamin
+// polis Asuransi Usahatani Padi, hanya pada padi. Layar yang menampilkan sebab tanpa
+// menyebut itu membiarkan orang mengira musim gagalnya akan diganti; layar yang
+// menyebutnya membuat jarak antara "musimmu gagal" dan "ada yang mengganti" terlihat.
+const sebabGagal = larik(bacaJson('cycle-failure-reason.json'))
+  .map((x) => ({
+    id: x.id,
+    key: x.key,
+    nama: x.label?.id ?? x.key,
+    kategori: x.category ?? null,
+    sinyal: x.signals ?? null,
+    autp: x.autp ?? null,
+    berlaku: x.berlaku_pada ?? null,
+    definisi: x.definition?.id ?? null,
   }))
   .sort((a, b) => a.nama.localeCompare(b.nama));
 
@@ -2072,6 +2152,8 @@ const meta = {
     tokoWilayah: tokoWilayah.length,
     protokol: protokol.length,
     alasanSimpangan: alasanSimpangan.length,
+    sebabGagal: sebabGagal.length,
+    sebabGagalDijaminAutp: sebabGagal.filter((x) => x.autp === 'dijamin').length,
     protokolBertanggal: protokolIndeks.reduce((a, p) => a + p.bertanggal, 0),
     protokolLangkah: protokolIndeks.reduce((a, p) => a + p.langkah, 0),
     bpp: bppSemua.length,
@@ -2239,6 +2321,7 @@ for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan
 simpan('toko-titik.json', tokoTitikIndeks);
 simpan('toko-wilayah.json', tokoWilayah);
 simpan('alasan-simpangan.json', alasanSimpangan);
+simpan('sebab-gagal.json', sebabGagal);
 simpan('protokol.json', protokolIndeks);
 for (const [k, isi] of Object.entries(berkasProtokol).sort()) simpan(`protokol/${k}.json`, isi);
 simpan('bpp-wilayah.json', bppWilayah);
@@ -2307,6 +2390,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  sebab-gagal       : ${sebabGagal.length} sebab siklus berakhir tanpa hasil — ${sebabGagal.filter((x) => x.autp === 'dijamin').length} dijamin polis AUTP, sisanya tidak dijamin siapa pun`);
 console.log(`  alasan-simpangan  : ${alasanSimpangan.length} alasan, ${new Set(alasanSimpangan.map((a) => a.sinyal)).size} jenis sinyal`);
 console.log(`  protokol/         : ${protokolIndeks.length} protokol, ${protokolIndeks.reduce((a, p) => a + p.langkah, 0)} langkah — ${protokolIndeks.reduce((a, p) => a + p.bertanggal, 0)} bisa ditanggalkan, sisanya menunggu fase atau ambang`);
 console.log(`  bpp/              : ${bppSemua.length} balai di ${bppWilayah.length} kabupaten/kota, ${bppWilayah.reduce((a, w) => a + w.kec, 0)} kecamatan tersebut di serves (${bppSemua.filter((b) => !(b.serves ?? []).length).length} balai kecamatannya kosong di sumbernya) — tanpa alamat, dan itu juga batas sumbernya`);

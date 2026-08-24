@@ -1,0 +1,59 @@
+{
+  "$schema": "../schema/cycle.schema.json",
+  "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610fb05",
+  "plot": {
+    "id": "op:plt:019e80e8-c900-79c9-ac35-7cced06151d9",
+    "label": "Tegal lor"
+  },
+  "commodity": {
+    "id": "op:cmd:00000001",
+    "label": "Cabai merah besar"
+  },
+  "variety_local_name": "Lado F1 (registri varietas memuat 'Lado' dari PT East West Seed Indonesia pada cabai keriting; belum dipastikan varietas yang sama, dan siklus ini cabai merah besar)",
+  "stage_scale": {
+    "id": "op:sca:00000001",
+    "label": "BBCH — Solanaceae"
+  },
+  "system": {
+    "cropping": "monoculture",
+    "production": "open_field",
+    "certification_target": [
+      "IndoGAP SNI 8969:2021"
+    ]
+  },
+  "anchors": [
+    {
+      "event": "sowing",
+      "date": "2026-06-05"
+    },
+    {
+      "event": "transplanting",
+      "date": "2026-07-01"
+    }
+  ],
+  "planned_start": "2026-06-05",
+  "planned_end": "2026-10-20",
+  "population": {
+    "value": 16000,
+    "unit": "1/har",
+    "basis": "per_area"
+  },
+  "targets": [
+    {
+      "variable": {
+        "id": "op:var:00000037",
+        "label": "Hasil buah segar"
+      },
+      "value": 12,
+      "unit": "t/har"
+    }
+  ],
+  "status": "failed",
+  "data_classification": "farm_private",
+  "created_at": "2026-06-04T00:00:00Z",
+  "actual_end": "2026-08-11",
+  "failure_reason": {
+    "id": "op:pst:00000003",
+    "label": "Trips"
+  }
+}

@@ -229,9 +229,14 @@ export function perbarui(id, tambalan) {
  * cepat lalu menemukan satu catatan yang belum masuk tidak boleh terjebak. Tanggalnya ikut
  * dicabut, karena arah sebaliknya — tanggal yang tertinggal pada musim yang berjalan —
  * persis yang ditolak L38. */
-export function tutup(id, status, tanggal) {
+export const PERLU_SEBAB = ['failed', 'abandoned'];
+
+export function tutup(id, status, tanggal, sebab = null) {
   if (!BERAKHIR.includes(status)) return { ok: false, sebab: 'status bukan keadaan berakhir' };
   if (!tanggal) return { ok: false, sebab: 'tanggal berakhir wajib' };
+  // Aturan yang sama dengan L38 di pemeriksa, sejak kosakata sebabnya ada: musim yang
+  // gagal tanpa sebab tercatat tidak bisa dijumlahkan dengan musim gagal mana pun.
+  if (PERLU_SEBAB.includes(status) && !sebab) return { ok: false, sebab: 'sebabnya wajib dipilih' };
   const m = daftarMusim.find((x) => x.i === id);
   if (!m) return { ok: false, sebab: 'musim tidak ada' };
   if (m.tanam && tanggal < m.tanam) {
@@ -239,6 +244,7 @@ export function tutup(id, status, tanggal) {
   }
   m.status = status;
   m.ditutup = tanggal;
+  m.sebab = PERLU_SEBAB.includes(status) ? sebab : null;
   tulis();
   return { ok: true, musim: m };
 }
@@ -248,6 +254,7 @@ export function bukaLagi(id) {
   if (!m) return null;
   m.status = 'active';
   m.ditutup = null;
+  m.sebab = null;
   tulis();
   return m;
 }

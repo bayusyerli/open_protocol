@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/cycle-failure-reason.schema.json",
+  "title": "CycleFailureReason — sebab satu siklus budidaya berakhir tanpa hasil",
+  "description": "Cycle.failure_reason menunjuk kosakata ini. Sebelumnya ia menunjuk Ref yang tidak punya tujuan sama sekali: medannya ada di skema sejak lama, kosakatanya tidak pernah dibuat, sehingga sepuluh musim yang gagal karena sepuluh sebab berbeda tersimpan sama. Dibuat terkurasi, bukan teks bebas, karena gunanya justru menghitung — dan sepuluh ejaan untuk satu sebab menghancurkan hitungannya.",
+  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "type": "object",
+  "properties": {
+    "id": { "type": "string", "pattern": "^op:cfr:[0-9]{8}$" },
+    "category": {
+      "type": "string",
+      "enum": [
+        "flood", "drought", "pest_disease", "storm", "fire", "volcanic_ash",
+        "animal_disease", "water_quality", "seed_failure", "irrigation_denied",
+        "no_funds", "labor_unavailable", "price_collapse", "land_lost", "other"
+      ]
+    },
+    "signals": {
+      "type": "string",
+      "enum": ["external_shock", "water_governance", "crop_protection", "access_problem", "market_problem", "input_quality", "tenure_problem", "other"],
+      "description": "Apa yang bisa ditindaklanjuti kalau sebab ini sering muncul di satu wilayah. Bukan siapa yang salah — sebagian besar sebab di kosakata ini tidak punya pihak yang bisa disalahkan, dan yang punya justru bukan petaninya."
+    },
+    "autp": {
+      "type": "string",
+      "enum": ["dijamin", "tidak_dijamin"],
+      "description": "Apakah sebab ini termasuk risiko yang dijamin polis Asuransi Usahatani Padi. HANYA TIGA yang dijamin — banjir, kekeringan, dan serangan OPT — dan hanya pada padi; AUTP tidak menanggung komoditas lain sama sekali. Medan ini ada supaya jarak antara \"musimmu gagal\" dan \"ada yang mengganti\" terlihat, bukan supaya kosakata ini dibentuk mengikuti selera risiko penanggung. Sebab yang tidak dijamin tetap dicatat setara, karena yang paling sering menghabiskan musim petani kecil justru ada di kelompok itu."
+    },
+    "berlaku_pada": {
+      "type": "array",
+      "description": "Jenis budidaya tempat sebab ini masuk akal. Kosong berarti berlaku di mana saja. Dipakai permukaan untuk tidak menawarkan \"mutu air kolam\" kepada yang menanam cabai di lahan kering.",
+      "items": { "type": "string", "enum": ["tanaman", "perairan", "ternak"] },
+      "minItems": 1
+    }
+  },
+  "required": ["category", "signals", "autp"],
+  "unevaluatedProperties": false
+}

@@ -186,19 +186,76 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
     return;
   }
   const tampil = daftar.slice(0, 40);
+
+  // Lencana jenis hanya berarti kalau hasilnya memang bercampur. Di jalur 3 seluruh
+  // hasilnya pupuk dan di jalur 4 seluruhnya varietas: mencetak "PUPUK" tujuh belas kali
+  // di halaman yang memang cuma tentang pupuk memakai tempat yang seharusnya milik
+  // pembedanya, dan tidak memberi tahu apa pun.
+  const banyakJenis = new Set(tampil.map((x) => x.j)).size > 1;
+
+  // Nama yang muncul lebih dari sekali. Di situlah baris di bawah nama berhenti jadi
+  // keterangan tambahan dan jadi SATU-SATUNYA cara memilih — PHONSKA ada empat grade
+  // NPK, dan keempatnya rekaman yang sah, bukan rekaman ganda.
+  const grup = new Map();
+  for (const x of tampil) {
+    const k = String(x.n ?? '').toLowerCase();
+    if (!grup.has(k)) grup.set(k, []);
+    grup.get(k).push(x);
+  }
+  const berulang = [...grup.values()].filter((g) => g.length > 1);
+  const bernamaSama = berulang.reduce((a, g) => a + g.length, 0);
+  const senama = (x) => (grup.get(String(x.n ?? '').toLowerCase())?.length ?? 0) > 1;
+
+  // Yang diperiksa bukan "apakah medannya sama persis", melainkan APAKAH MEDAN ITU
+  // MEMISAHKAN kelompoknya. Dua ABAMEKTIN 95 TC berkomposisi identik dan berbeda
+  // pemegang: komposisinya ada, tetapi bukan komposisi yang membedakan keduanya.
+  // Kalimat yang menyuruh membaca komposisi di layar itu mengirim orang ke baris yang
+  // justru sama. Varietas lebih tajam lagi — ia tidak punya komposisi sama sekali.
+  const beda = (g, ambilKunci) => new Set(g.map(ambilKunci)).size === g.length;
+  const kunciPenuh = (x) => [x.f ?? '', x.k ?? ''].join('\u0000').toLowerCase();
+  const olehKomposisi = berulang.every((g) => beda(g, (x) => String(x.f ?? '')));
+  const grupKembar = berulang.filter((g) => !beda(g, kunciPenuh));
+
+  // Rekaman yang tidak terpisahkan medan mana pun di indeks cari. Ia tetap bukan rekaman
+  // ganda — yang membedakannya nomor pendaftaran, dan indeks cari tidak membawanya.
+  // Menampilkan dua kartu kembar tanpa keterangan terbaca sebagai data rusak; yang benar
+  // mengatakan bahwa layar inilah yang tidak bisa membedakannya.
+  const kembarSet = new Set();
+  for (const g of grupKembar) {
+    const hitung = new Map();
+    for (const x of g) hitung.set(kunciPenuh(x), (hitung.get(kunciPenuh(x)) ?? 0) + 1);
+    for (const x of g) if (hitung.get(kunciPenuh(x)) > 1) kembarSet.add(x);
+  }
+
+  const catatan = bernamaSama < 2 ? ''
+    : olehKomposisi
+      ? ` <strong>${bernamaSama} di antaranya bernama sama</strong> — yang membedakan komposisinya.`
+      : grupKembar.length === 0
+        ? ` <strong>${bernamaSama} di antaranya bernama sama</strong> — yang membedakan ada di baris di bawah namanya.`
+        : grupKembar.length === berulang.length
+          ? ` <strong>${bernamaSama} di antaranya bernama sama</strong>, dan indeks pencarian tidak membawa yang membedakannya — buka untuk melihat.`
+          : ` <strong>${bernamaSama} di antaranya bernama sama</strong> — sebagian terbedakan di baris di bawahnya, sisanya baru setelah dibuka.`;
+
   wadah.innerHTML = `
-    <p class="bantuan">${daftar.length} hasil${daftar.length > tampil.length ? `, ditampilkan ${tampil.length} teratas` : ''}.</p>
+    <p class="bantuan">${daftar.length} hasil${daftar.length > tampil.length ? `, ditampilkan ${tampil.length} teratas` : ''}.${catatan}</p>
     <ul class="daftar">
-      ${tampil.map((x) => `
+      ${tampil.map((x) => {
+        const serupa = senama(x);
+        const kembar = kembarSet.has(x);
+        const pembeda = x.f
+          ? `<span class="pembeda${serupa ? ' pembeda-utama' : ''}">${teks(x.f)}</span>`
+          : (x.j === 'pupuk' || x.j === 'pestisida')
+            ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : '';
+        return `
         <li>
           <button type="button" data-id="${teks(x.i)}" data-pecahan="${teks(x.p)}">
-            <span class="nama">${teks(x.n)}<span class="lencana">${teks(JENIS[x.j] ?? x.j)}</span></span>
+            <span class="nama">${teks(x.n)}${banyakJenis ? `<span class="lencana">${teks(JENIS[x.j] ?? x.j)}</span>` : ''}</span>
+            ${pembeda}
             <span class="sub">${teks(x.k ?? '—')}</span>
-            ${x.f ? `<span class="pembeda">${teks(x.f)}</span>`
-              : (x.j === 'pupuk' || x.j === 'pestisida')
-                ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : ''}
+            ${kembar ? '<span class="sub kembar">Pendaftaran terpisah — yang membedakannya tidak dibawa indeks pencarian.</span>' : ''}
           </button>
-        </li>`).join('')}
+        </li>`;
+      }).join('')}
     </ul>`;
 }
 
@@ -314,6 +371,7 @@ export function tautanMasuk() {
   const opt = p.get('opt');
   const resep = p.get('resep');
   const hama = p.get('hama');
+  const kom = p.get('kom');
   return {
     q: p.get('q'),
     id: p.get('id'),
@@ -325,5 +383,10 @@ export function tautanMasuk() {
     // seperti `pecahan`: huruf dan angka saja, tanpa titik dan tanpa garis miring.
     resep: resep && /^[a-z0-9]+$/i.test(resep) ? resep : null,
     hama: hama && /^[a-z0-9]+$/i.test(hama) ? hama : null,
+    // Komoditas yang ikut disebut penunjuk. Nilainya TIDAK dipakai menyusun jalur
+    // berkas — jalur 1 mencocokkannya dengan daftar komoditas yang memang dibawa
+    // rekaman OPT-nya, lalu memakai berkas dari daftar itu. Bentuknya tetap dibatasi
+    // supaya yang tidak cocok gugur sebelum sempat dibandingkan.
+    kom: kom && /^[a-z0-9]+$/i.test(kom) ? kom : null,
   };
 }

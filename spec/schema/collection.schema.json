@@ -26,6 +26,7 @@
             "pest",
             "region",
             "deviation-reason",
+            "cycle-failure-reason",
             "preparation",
             "target-site",
             "nama-lokal",

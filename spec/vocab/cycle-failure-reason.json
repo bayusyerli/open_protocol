@@ -1,0 +1,395 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "cycle-failure-reason",
+    "label": {
+      "id": "Sebab siklus budidaya berakhir tanpa hasil"
+    },
+    "scope": {
+      "id": "Cycle.failure_reason sudah ada di skema sejak lama dan menunjuk Ref yang tidak punya tujuan: kosakatanya tidak pernah dibuat, sehingga sepuluh musim yang gagal karena sepuluh sebab berbeda tersimpan sama. Berkas ini mengisinya. TIGA dari lima belas entri berpadanan tepat dengan risiko yang dijamin polis Asuransi Usahatani Padi — banjir, kekeringan, dan serangan OPT — dan hanya ketiganya, hanya pada padi, hanya bila intensitas kerusakan mencapai >=75% dan/atau luas kerusakan >=75% pada tiap petak alami. Dua belas sisanya tidak dijamin siapa pun. Daftar ini SENGAJA tidak dibentuk mengikuti daftar risiko penanggung: yang paling sering menghabiskan musim petani kecil — modal habis, giliran air tidak datang, harga jatuh di bawah ongkos panen — justru ada di dua belas itu, dan kosakata yang menghilangkannya akan membuat kegagalan yang tidak diasuransikan tampak tidak pernah terjadi."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-24T00:00:00Z",
+      "review_due": "2027-02-24"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Pedoman Bantuan Premi Asuransi Usahatani Padi (AUTP) Tahun Anggaran 2022",
+          "publisher": "Direktorat Jenderal Prasarana dan Sarana Pertanian, Kementerian Pertanian",
+          "year": 2022,
+          "url": "https://psp.pertanian.go.id/storage/1277/PEDUM-AUTP-2022.pdf",
+          "locator": "Butir 3.1.4 Risiko yang Dijamin; definisi 'Kerusakan dijamin polis'. Dipakai untuk tiga entri yang berpadanan dengan risiko yang dijamin polis, beserta ambang kerusakan >=75%. TIDAK dipakai membentuk dua belas entri lainnya — daftar ini sengaja tidak mengikuti selera risiko penanggung."
+        }
+      ]
+    },
+    "id_blocks": [
+      {
+        "from": 1,
+        "to": 999
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "op:cfr:00000001",
+      "key": "banjir",
+      "label": {
+        "id": "Banjir"
+      },
+      "category": "flood",
+      "signals": "external_shock",
+      "autp": "dijamin",
+      "definition": {
+        "id": "Lahan atau tanaman tergenang pada periode pertumbuhan sehingga rusak dan produksinya turun. Termasuk genangan dari curah hujan tinggi maupun dari air pasang (rob) — keduanya satu risiko menurut polis, meskipun yang bisa mencegahnya berbeda sama sekali."
+      },
+      "berlaku_pada": [
+        "tanaman"
+      ],
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "AUTP/risiko-dijamin/banjir",
+          "uri": "https://psp.pertanian.go.id/storage/1277/PEDUM-AUTP-2022.pdf",
+          "relation": "exact",
+          "note": "Risiko pertama dari tiga yang dijamin polis AUTP. Polis menuntut intensitas kerusakan ≥75% dan/atau luas kerusakan ≥75% pada tiap petak alami."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000002",
+      "key": "kekeringan",
+      "label": {
+        "id": "Kekeringan"
+      },
+      "category": "drought",
+      "signals": "external_shock",
+      "autp": "dijamin",
+      "definition": {
+        "id": "Kebutuhan air tanaman tidak terpenuhi selama periode pertumbuhan sehingga pertumbuhannya tidak optimal, rusak, dan produksinya turun. Bedakan dari giliran air yang tidak datang: yang ini airnya memang tidak ada."
+      },
+      "berlaku_pada": [
+        "tanaman"
+      ],
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "AUTP/risiko-dijamin/kekeringan",
+          "uri": "https://psp.pertanian.go.id/storage/1277/PEDUM-AUTP-2022.pdf",
+          "relation": "exact",
+          "note": "Risiko kedua dari tiga yang dijamin polis AUTP, dengan ambang kerusakan ≥75% yang sama."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000003",
+      "key": "serangan-opt",
+      "label": {
+        "id": "Serangan OPT"
+      },
+      "category": "pest_disease",
+      "signals": "crop_protection",
+      "autp": "dijamin",
+      "definition": {
+        "id": "Organisme pengganggu tumbuhan merusak tanaman sampai siklusnya tidak bisa diselesaikan. OPT yang mana dicatat di tempatnya sendiri lewat kosakata OPT — di sini yang dinyatakan kelas sebabnya, supaya musim yang gagal tetap bisa dijumlahkan meskipun OPT-nya belum dipastikan siapa."
+      },
+      "berlaku_pada": [
+        "tanaman"
+      ],
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "AUTP/risiko-dijamin/opt",
+          "uri": "https://psp.pertanian.go.id/storage/1277/PEDUM-AUTP-2022.pdf",
+          "relation": "exact",
+          "note": "Risiko ketiga dari tiga yang dijamin polis AUTP. Polis menyebut enam hama dan tujuh penyakit padi secara tertutup — di luar daftar itu serangan OPT tidak dijamin meskipun kelasnya sama."
+        }
+      ],
+      "notes": {
+        "id": "Daftar tertutup di polis AUTP: hama penggerek batang, wereng batang coklat, walang sangit, tikus, ulat grayak, keong mas; penyakit blas, bercak coklat, tungro, busuk batang, kerdil hampa, kerdil rumput/kerdil kuning, kresek. Kosakata ini TIDAK menyalin daftar itu jadi entri terpisah: yang dijawabnya sebab berakhirnya siklus, bukan identitas OPT."
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000004",
+      "key": "angin-kencang",
+      "label": {
+        "id": "Angin kencang atau puting beliung"
+      },
+      "category": "storm",
+      "signals": "external_shock",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Tanaman rebah, patah, atau tercabut oleh angin. Kerap datang bersama hujan deras, dan kalau lahannya ikut tergenang yang tercatat biasanya banjir — padahal rebah karena angin bisa menghabiskan panen tanpa satu pun genangan."
+      },
+      "berlaku_pada": [
+        "tanaman"
+      ],
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000005",
+      "key": "kebakaran",
+      "label": {
+        "id": "Kebakaran"
+      },
+      "category": "fire",
+      "signals": "external_shock",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Tanaman, lahan, atau sarana terbakar. Termasuk api yang merambat dari lahan sebelah — sebab yang paling sering tidak punya siapa pun untuk dimintai tanggung jawab."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000006",
+      "key": "abu-vulkanik",
+      "label": {
+        "id": "Abu vulkanik"
+      },
+      "category": "volcanic_ash",
+      "signals": "external_shock",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Timbunan abu erupsi menutup tajuk atau merusak jaringan tanaman sampai siklusnya berakhir."
+      },
+      "berlaku_pada": [
+        "tanaman"
+      ],
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000007",
+      "key": "wabah-penyakit-hewan",
+      "label": {
+        "id": "Wabah penyakit ikan, udang, atau ternak"
+      },
+      "category": "animal_disease",
+      "signals": "crop_protection",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Penyakit menular menghabiskan populasi yang dipelihara. Dipisahkan dari serangan OPT karena penanganannya, penyuluhnya, dan aturannya berbeda sama sekali — dan menggabungkannya membuat keduanya tidak bisa dihitung."
+      },
+      "berlaku_pada": [
+        "perairan",
+        "ternak"
+      ],
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000008",
+      "key": "mutu-air-buruk",
+      "label": {
+        "id": "Mutu air kolam atau tambak memburuk"
+      },
+      "category": "water_quality",
+      "signals": "water_governance",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Oksigen terlarut, salinitas, pH, atau amonia keluar dari rentang yang bisa ditanggung sampai populasinya tidak bisa dipertahankan. Termasuk yang datang dari luar petak — buangan, pasang, atau tetangga sepetakan."
+      },
+      "berlaku_pada": [
+        "perairan"
+      ],
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000009",
+      "key": "benih-gagal-tumbuh",
+      "label": {
+        "id": "Benih atau bibit gagal tumbuh"
+      },
+      "category": "seed_failure",
+      "signals": "input_quality",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Siklus berakhir sebelum tanaman berdiri: benih tidak berkecambah, atau bibit mati setelah semai. Pelaporan resmi menyebut keadaan ini gagal tanam setelah semai dan memisahkannya dari puso — perbedaan yang perlu dipertahankan, karena yang satu soal mutu sarana dan yang lain soal musim."
+      },
+      "berlaku_pada": [
+        "tanaman",
+        "perairan"
+      ],
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000010",
+      "key": "giliran-air-tidak-datang",
+      "label": {
+        "id": "Giliran air irigasi tidak datang"
+      },
+      "category": "irrigation_denied",
+      "signals": "water_governance",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Airnya ada di jaringan tetapi tidak sampai ke petak ini — giliran tidak turun, saluran tersumbat, pintu ditutup, atau pembagian di hulu berubah. BUKAN kekeringan: kekeringan adalah air yang memang tidak ada, dan yang ini keputusan atau kelalaian yang punya alamatnya. Menggabungkan keduanya membuat kegagalan tata kelola air terbaca sebagai cuaca."
+      },
+      "berlaku_pada": [
+        "tanaman",
+        "perairan"
+      ],
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000011",
+      "key": "modal-habis",
+      "label": {
+        "id": "Modal habis di tengah musim"
+      },
+      "category": "no_funds",
+      "signals": "access_problem",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Siklus ditinggalkan karena biaya lanjutannya tidak ada — pupuk susulan tidak terbeli, upah panen tidak tertutup. Sebab yang paling jarang tercatat dan paling sering terjadi, karena ia tidak terlihat seperti bencana."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000012",
+      "key": "tenaga-kerja-tidak-ada",
+      "label": {
+        "id": "Tenaga kerja tidak ada"
+      },
+      "category": "labor_unavailable",
+      "signals": "access_problem",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Tidak ada orang yang mengerjakan pada saat yang menentukan — tanam, penyiangan, atau panen. Termasuk sakit atau pergi pada rumah tangga yang tenaganya satu-dua orang."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000013",
+      "key": "harga-jatuh",
+      "label": {
+        "id": "Harga jatuh di bawah ongkos panen"
+      },
+      "category": "price_collapse",
+      "signals": "market_problem",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Tanamannya berhasil tetapi tidak dipanen, karena harga yang ditawarkan tidak menutup ongkos memetik dan mengangkutnya. Siklus berakhir tanpa hasil meskipun tidak ada satu pun tanaman yang rusak — dan tidak ada program mana pun yang menggantinya."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000014",
+      "key": "lahan-hilang",
+      "label": {
+        "id": "Lahan tidak lagi bisa digarap"
+      },
+      "category": "land_lost",
+      "signals": "tenure_problem",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Petak diambil alih, disewakan ke pihak lain, dialihfungsikan, atau aksesnya hilang di tengah siklus. Sebab yang menyentuh penggarap dan penyewa jauh lebih sering daripada pemilik."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    },
+    {
+      "id": "op:cfr:00000015",
+      "key": "lainnya",
+      "label": {
+        "id": "Sebab lain"
+      },
+      "category": "other",
+      "signals": "other",
+      "autp": "tidak_dijamin",
+      "definition": {
+        "id": "Sebab yang tidak ada di daftar ini. Kalau sering dipilih, yang perlu ditinjau daftarnya — bukan yang memilihnya."
+      },
+      "no_mapping_reason": "Kosakata khusus Open Protocols. Klasifikasi resmi yang ada — risiko yang dijamin AUTP dan pelaporan luas puso — hanya mengenal banjir, kekeringan, dan serangan OPT; sebab ini tidak ada di dalamnya, dan itu bukan alasan ia tidak terjadi. Ditinjau ulang bila muncul klasifikasi resmi yang lebih luas.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-24T00:00:00Z",
+        "review_due": "2027-02-24"
+      }
+    }
+  ]
+}
