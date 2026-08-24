@@ -570,13 +570,27 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
         fail(file, 'L38-siklus-berakhir', `actual_end ${doc.actual_end} mendahului planned_start ${doc.planned_start}. Siklus tidak bisa berakhir sebelum ia dimulai.`);
       }
 
-      // Kegagalan tanpa sebab. Dibuat PERINGATAN, bukan kegagalan, dan alasannya tidak
-      // ada di rekamannya melainkan di kosakatanya: `Cycle.failure_reason` menunjuk Ref,
-      // dan kosakata alasan kegagalan siklus BELUM PERNAH DIBUAT — tidak ada satu pun
-      // berkas di spec/vocab/ untuknya. Menjadikannya kegagalan berarti menuntut rujukan
-      // ke sesuatu yang tidak bisa dirujuk siapa pun.
+      // Kegagalan tanpa sebab. Ini SEMULA peringatan, dengan alasan yang tidak ada di
+      // rekamannya melainkan di kosakatanya: `Cycle.failure_reason` menunjuk Ref, dan
+      // kosakata alasan kegagalan siklus belum pernah dibuat — menuntut rujukan ke sesuatu
+      // yang tidak bisa dirujuk siapa pun bukan tuntutan yang adil. Sejak
+      // vocab/cycle-failure-reason.json ada, tuntutannya adil, jadi ia jadi kegagalan.
+      //
+      // Yang dijaga bukan kelengkapan borang. Musim yang gagal tanpa sebab tercatat tidak
+      // bisa dijumlahkan dengan musim gagal mana pun — dan justru penjumlahan itu yang
+      // membedakan "petani ini sial" dari "giliran air di daerah ini tidak pernah turun".
       if (doc.status === 'failed' && !doc.failure_reason) {
-        warn(file, 'L38-siklus-berakhir', 'Siklus berstatus "failed" tanpa failure_reason. Belum jadi kegagalan pemeriksaan karena kosakata alasan kegagalan siklus memang belum ada di spec/vocab/ — medan ini menunjuk Ref yang tidak punya tujuan. Sampai kosakatanya dibuat, kegagalan musim tercatat tanpa sebab yang bisa diagregasi.');
+        fail(file, 'L38-siklus-berakhir', 'Siklus berstatus "failed" tanpa failure_reason. Sebabnya kini punya kosakata sendiri (vocab/cycle-failure-reason.json, 15 entri) — musim yang gagal tanpa sebab tercatat tidak bisa dijumlahkan dengan musim gagal mana pun, dan penjumlahan itulah yang membedakan kesialan satu orang dari kegagalan yang berulang di satu wilayah.');
+      }
+
+      // Sebab yang menunjuk ke luar kosakatanya. Ref bebas isi menurut skema, jadi tanpa
+      // pemeriksaan ini `failure_reason` bisa menunjuk OPT, langkah, atau apa pun — dan
+      // yang menjumlahkannya kemudian akan menjumlahkan hal yang berlainan.
+      if (doc.failure_reason?.id && !doc.failure_reason.id.startsWith('op:cfr:')) {
+        fail(file, 'L38-siklus-berakhir', `failure_reason menunjuk ${doc.failure_reason.id}, yang bukan entri kosakata sebab kegagalan siklus (op:cfr:). Sebab kegagalan wajib datang dari kosakatanya sendiri supaya bisa dihitung.`);
+      }
+      if (doc.failure_reason?.id?.startsWith('op:cfr:') && entityById.size && !entityById.has(doc.failure_reason.id)) {
+        fail(file, 'L38-siklus-berakhir', `failure_reason menunjuk ${doc.failure_reason.id} yang tidak ada di kumpulan berkas ini.`);
       }
     }
 

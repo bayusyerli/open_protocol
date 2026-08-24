@@ -1661,6 +1661,31 @@ const alasanSimpangan = larik(bacaJson('deviation-reason.json'))
   .sort((a, b) => a.nama.localeCompare(b.nama));
 
 // ---------------------------------------------------------------------------
+// Sebab siklus berakhir tanpa hasil — penanda panen, sisi yang tidak bisa dikarang
+// ---------------------------------------------------------------------------
+// Cycle.failure_reason sudah ada di skema sejak lama dan menunjuk Ref yang tidak punya
+// tujuan: kosakatanya tidak pernah dibuat. Sekarang ada, dan diterbitkan supaya permukaan
+// bisa MENAWARKANNYA — sebab yang harus diketik bebas akan jadi sepuluh ejaan untuk satu
+// hal, dan gunanya justru menghitung.
+//
+// Medan `autp` ikut, dan itu bukan hiasan. Hanya tiga dari lima belas sebab yang dijamin
+// polis Asuransi Usahatani Padi, hanya pada padi. Layar yang menampilkan sebab tanpa
+// menyebut itu membiarkan orang mengira musim gagalnya akan diganti; layar yang
+// menyebutnya membuat jarak antara "musimmu gagal" dan "ada yang mengganti" terlihat.
+const sebabGagal = larik(bacaJson('cycle-failure-reason.json'))
+  .map((x) => ({
+    id: x.id,
+    key: x.key,
+    nama: x.label?.id ?? x.key,
+    kategori: x.category ?? null,
+    sinyal: x.signals ?? null,
+    autp: x.autp ?? null,
+    berlaku: x.berlaku_pada ?? null,
+    definisi: x.definition?.id ?? null,
+  }))
+  .sort((a, b) => a.nama.localeCompare(b.nama));
+
+// ---------------------------------------------------------------------------
 // Protokol Lapis 2 — E1, dan satu-satunya yang ada
 // ---------------------------------------------------------------------------
 // `susun-rencana.mjs` sudah menyusun rencana musim dari protokol sejak lama, dan sampai
@@ -2114,6 +2139,8 @@ const meta = {
     tokoWilayah: tokoWilayah.length,
     protokol: protokol.length,
     alasanSimpangan: alasanSimpangan.length,
+    sebabGagal: sebabGagal.length,
+    sebabGagalDijaminAutp: sebabGagal.filter((x) => x.autp === 'dijamin').length,
     protokolBertanggal: protokolIndeks.reduce((a, p) => a + p.bertanggal, 0),
     protokolLangkah: protokolIndeks.reduce((a, p) => a + p.langkah, 0),
     bpp: bppSemua.length,
@@ -2281,6 +2308,7 @@ for (const [e, isi] of Object.entries(berkasKandungan).sort()) simpan(`kandungan
 simpan('toko-titik.json', tokoTitikIndeks);
 simpan('toko-wilayah.json', tokoWilayah);
 simpan('alasan-simpangan.json', alasanSimpangan);
+simpan('sebab-gagal.json', sebabGagal);
 simpan('protokol.json', protokolIndeks);
 for (const [k, isi] of Object.entries(berkasProtokol).sort()) simpan(`protokol/${k}.json`, isi);
 simpan('bpp-wilayah.json', bppWilayah);
@@ -2349,6 +2377,7 @@ const lewat = [...berkas].filter(([, s]) => Buffer.byteLength(s) > ANGGARAN);
 console.log(`  lewat anggaran    : ${lewat.length} dari ${berkas.size} berkas di atas ${kb(ANGGARAN)}`);
 console.log(`  tak terjangkau    : ${terbuang.tanpaOpt + terbuang.tanpaKomoditas + terbuang.tanpaKeduanya} dari ${terbuang.penggunaan} penggunaan berlabel tak punya pintu OPT`);
 console.log(`  komoditas bervarian: ${Object.keys(varian).length} tanaman dengan lebih dari satu fase atau sistem budidaya`);
+console.log(`  sebab-gagal       : ${sebabGagal.length} sebab siklus berakhir tanpa hasil — ${sebabGagal.filter((x) => x.autp === 'dijamin').length} dijamin polis AUTP, sisanya tidak dijamin siapa pun`);
 console.log(`  alasan-simpangan  : ${alasanSimpangan.length} alasan, ${new Set(alasanSimpangan.map((a) => a.sinyal)).size} jenis sinyal`);
 console.log(`  protokol/         : ${protokolIndeks.length} protokol, ${protokolIndeks.reduce((a, p) => a + p.langkah, 0)} langkah — ${protokolIndeks.reduce((a, p) => a + p.bertanggal, 0)} bisa ditanggalkan, sisanya menunggu fase atau ambang`);
 console.log(`  bpp/              : ${bppSemua.length} balai di ${bppWilayah.length} kabupaten/kota, ${bppWilayah.reduce((a, w) => a + w.kec, 0)} kecamatan tersebut di serves (${bppSemua.filter((b) => !(b.serves ?? []).length).length} balai kecamatannya kosong di sumbernya) — tanpa alamat, dan itu juga batas sumbernya`);

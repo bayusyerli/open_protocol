@@ -19,7 +19,7 @@ spec/
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
-├── schema/                       32 berkas JSON Schema (draft 2020-12)
+├── schema/                       33 berkas JSON Schema (draft 2020-12)
 ├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
 │   ├── product/                  registri produk — 14.920 entitas (NDJSON)
 │   └── variety/                  registri varietas — 11.227 entitas (NDJSON)
@@ -76,6 +76,7 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Harga` | `op:hrg` | Seri harga komoditas beserta lisensi dan cakupan sumbernya |
 | `Lab` | `op:lab` | Laboratorium penguji terakreditasi KAN yang lingkupnya menyentuh usaha tani. Yang berguna bukan namanya melainkan `capabilities` — tanah, pupuk, air, pangan, jaringan tanaman, residu pestisida |
 | `BPP` | `op:bpp` | Balai Penyuluhan Pertanian beserta kecamatan binaannya. Entitasnya balai, bukan kecamatan; cacahan penyuluh, tanpa nama orang |
+| `CycleFailureReason` | `op:cfr` | **Sebab satu siklus berakhir tanpa hasil.** Tiga dari 15 entri berpadanan tepat dengan risiko yang dijamin polis AUTP — banjir, kekeringan, serangan OPT; dua belas sisanya tidak dijamin siapa pun, dan justru di sana modal habis, giliran air tidak datang, dan harga jatuh di bawah ongkos panen |
 
 ### Data usaha tani — milik petani, ID UUIDv7
 
@@ -159,12 +160,16 @@ biasanya mesin.** Aturan ketiga menangkap `actual_end` yang mendahului `planned_
 kekeliruan ketik yang paling mudah dibuat dan paling sulit dilihat sesudahnya, karena
 keduanya tanggal yang masuk akal sendiri-sendiri.
 
-Satu hal sengaja **peringatan, bukan kegagalan**: siklus berstatus `failed` tanpa
-`failure_reason`. Alasannya bukan di rekamannya melainkan di kosakatanya — medan itu
-menunjuk `Ref`, dan **kosakata alasan kegagalan siklus belum pernah dibuat**: tidak ada
-satu pun berkas di `vocab/` untuknya. Menuntut rujukan ke sesuatu yang tidak bisa dirujuk
-siapa pun bukan tuntutan yang adil, jadi yang dilakukan menyebutkan kekosongannya sampai
-kosakatanya dibuat.
+Satu tuntutan sengaja **ditahan lebih dulu**: siklus berstatus `failed` tanpa
+`failure_reason` semula hanya peringatan, karena medan itu menunjuk `Ref` dan kosakata
+alasan kegagalan siklus belum pernah dibuat — menuntut rujukan ke sesuatu yang tidak bisa
+dirujuk siapa pun bukan tuntutan yang adil. Sejak `vocab/cycle-failure-reason.json` ada,
+tuntutannya adil dan ia jadi kegagalan, ditambah dua pemeriksaan: sebab yang menunjuk ke
+luar ruang `op:cfr:`, dan sebab yang menunjuk entri yang tidak ada.
+
+Yang dijaga bukan kelengkapan borang. **Musim yang gagal tanpa sebab tercatat tidak bisa
+dijumlahkan dengan musim gagal mana pun** — dan justru penjumlahan itu yang membedakan
+"petani ini sial" dari "giliran air di daerah ini tidak pernah turun".
 
 **Permukaannya belum dibangun, dan itu bukan kelalaian.** Menyerahkan laporan menuntut
 ujung yang bisa dituju. Lapis mentah `penyuluh_data/` kini menamainya — 548 dinas dan

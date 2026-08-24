@@ -47,6 +47,7 @@ const n = (x, d = 2) => Number(x ?? 0).toLocaleString('id-ID', { maximumFraction
 let daftar = [];
 let rinci = null;
 let alasan = [];
+let sebabGagal = [];
 let gambarKartuMusim = () => {};
 
 /* ---------------------------------------------------------------------------
@@ -329,6 +330,7 @@ function gambarTutup(m, totalKg) {
     el.tutupMusim.innerHTML = `
       <div class="kartu">
         <h2>Musim ini ${teks(musim.namaStatus(musim.statusMusim(m)).toLowerCase())}</h2>
+        ${m.sebab ? `<p class="sebab-gagal">Sebabnya: <strong>${teks(sebabGagal.find((x) => x.key === m.sebab)?.nama ?? m.sebab)}</strong>${sebabGagal.find((x) => x.key === m.sebab)?.autp === 'dijamin' ? ' — termasuk risiko yang dijamin polis AUTP, pada padi' : ' — tidak dijamin polis AUTP'}</p>` : ''}
         <p>Berakhir <strong>${teks(tanggal(m.ditutup) ?? m.ditutup ?? '—')}</strong>${totalKg ? `, dengan ${n(totalKg)} kg tercatat` : ', tanpa panen tercatat'}.
           <a href="usaha.html">Analisis usaha tani</a> sekarang bisa membandingkan hasilnya dengan perkiraan yang kamu susun.</p>
         <p class="catat-aksi"><button type="button" id="bukaLagi">Buka lagi</button></p>
@@ -362,14 +364,15 @@ function gambarTutup(m, totalKg) {
           <input type="date" id="tmTanggal" value="${teks(hariIni())}">
         </span>
       </div>
+      <div id="tmSebabMedan" hidden>
+        <label for="tmSebab">Sebabnya</label>
+        <select id="tmSebab">
+          ${sebabGagal.map((x) => `<option value="${teks(x.key)}" data-autp="${teks(x.autp ?? '')}">${teks(x.nama)}</option>`).join('')}
+        </select>
+        <p class="catatan" id="tmSebabKet"></p>
+      </div>
       <p class="catat-aksi"><button type="button" id="tmTutup">Tutup musim ini</button></p>
       <p class="catat-kabar" id="tmKabar" role="status" aria-live="polite"></p>
-      <p class="catatan">
-        <strong>Gagal tercatat tanpa sebab yang bisa dijumlahkan.</strong> Skema siklus
-        menyediakan medan alasan kegagalan, tetapi kosakata alasannya belum pernah dibuat —
-        tidak ada satu pun berkas untuknya. Sampai ada, "gagal" di sini hanya menandai
-        bahwa musimnya gagal, bukan kenapa.
-      </p>
     </div>`;
 }
 
@@ -698,6 +701,33 @@ el.daftarPanen.addEventListener('click', (ev) => {
   ulangGambar();
 });
 
+/* Sebab hanya diminta saat musimnya memang gagal — disiplin yang sama dengan alasan
+ * simpangan: memintanya di setiap penutupan cuma melatih orang memilih pilihan pertama
+ * sampai medannya kehilangan arti. "Ditutup" dan "sudah panen" tidak menuntut sebab,
+ * karena keduanya bukan kegagalan. "Ditinggalkan" menuntutnya juga: musim yang
+ * ditinggalkan ditinggalkan karena sesuatu, dan sesuatu itu yang berharga. */
+function perbaruiSebab() {
+  const st = el.tutupMusim.querySelector('#tmStatus');
+  const medan = el.tutupMusim.querySelector('#tmSebabMedan');
+  if (!st || !medan) return;
+  const perlu = st.value === 'failed' || st.value === 'abandoned';
+  medan.hidden = !perlu;
+  if (!perlu) return;
+  const pilih = el.tutupMusim.querySelector('#tmSebab');
+  const dijamin = pilih.selectedOptions[0]?.dataset.autp === 'dijamin';
+  // Jarak antara "musimmu gagal" dan "ada yang mengganti" disebut di sini, bukan
+  // dibiarkan orang menyimpulkannya sendiri dari diamnya layar.
+  el.tutupMusim.querySelector('#tmSebabKet').innerHTML = dijamin
+    ? 'Sebab ini <strong>termasuk risiko yang dijamin polis Asuransi Usahatani Padi</strong> — '
+      + 'tetapi hanya pada padi, dan hanya bila intensitas kerusakan mencapai 75% atau lebih. '
+      + 'Klaimnya tetap lewat kelompok tani dan penyuluh; halaman ini tidak mengajukan apa pun.'
+    : 'Sebab ini <strong>tidak dijamin polis Asuransi Usahatani Padi</strong>. Dari lima belas '
+      + 'sebab di daftar ini hanya tiga yang dijamin — banjir, kekeringan, dan serangan OPT — '
+      + 'sedangkan yang paling sering menghabiskan musim ada di dua belas sisanya.';
+}
+
+el.tutupMusim.addEventListener('change', perbaruiSebab);
+
 el.tutupMusim.addEventListener('click', (ev) => {
   if (ev.target.id === 'bukaLagi') {
     musim.bukaLagi(kunciMusim());
@@ -706,7 +736,10 @@ el.tutupMusim.addEventListener('click', (ev) => {
     return;
   }
   if (ev.target.id !== 'tmTutup') return;
-  const hasil = musim.tutup(kunciMusim(), el.tutupMusim.querySelector('#tmStatus').value, el.tutupMusim.querySelector('#tmTanggal').value);
+  const st = el.tutupMusim.querySelector('#tmStatus').value;
+  const perluSebab = st === 'failed' || st === 'abandoned';
+  const sebab = perluSebab ? el.tutupMusim.querySelector('#tmSebab').value : null;
+  const hasil = musim.tutup(kunciMusim(), st, el.tutupMusim.querySelector('#tmTanggal').value, sebab);
   const kabar = el.tutupMusim.querySelector('#tmKabar');
   if (!hasil.ok) { kabar.textContent = `Belum bisa ditutup: ${hasil.sebab}.`; return; }
   // Kartu musim ikut digambar ulang: keadaan berakhir muncul di baris ringkasnya, dan
@@ -771,6 +804,7 @@ el.susun.addEventListener('click', async () => {
       ambil('protokol'),
       ambil('alasan-simpangan').catch(() => []),
     ]);
+    sebabGagal = await ambil('sebab-gagal').catch(() => []);
     realisasi = bacaRealisasi();
     const dipindah = pindahkanKunciLama();
     el.lrTanggal.value = hariIni();

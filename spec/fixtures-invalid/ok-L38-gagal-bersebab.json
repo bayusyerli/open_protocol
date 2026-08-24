@@ -1,6 +1,6 @@
 {
   "$schema": "../schema/cycle.schema.json",
-  "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610fb01",
+  "id": "op:cyc:019e818d-9480-7315-b47a-ddb1c610fa12",
   "plot": {
     "id": "op:plt:019e80e8-c900-79c9-ac35-7cced06151d9",
     "label": "Tegal lor"
@@ -48,7 +48,12 @@
       "unit": "t/har"
     }
   ],
-  "status": "closed",
+  "status": "failed",
   "data_classification": "farm_private",
-  "created_at": "2026-06-04T00:00:00Z"
+  "created_at": "2026-06-04T00:00:00Z",
+  "actual_end": "2026-08-11",
+  "failure_reason": {
+    "id": "op:cfr:00000010",
+    "label": "Giliran air irigasi tidak datang"
+  }
 }

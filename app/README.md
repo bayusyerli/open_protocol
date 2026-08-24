@@ -309,6 +309,57 @@ diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan ya
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
 
+### Kosakata sebab kegagalan siklus — 15 sebab, 3 di antaranya dijamin
+
+`Cycle.failure_reason` ada di skema sejak lama dan menunjuk `Ref` yang **tidak punya
+tujuan**: kosakatanya tidak pernah dibuat, sehingga sepuluh musim yang gagal karena
+sepuluh sebab berbeda tersimpan sama. `L38` karena itu menyebutnya peringatan, bukan
+kegagalan — menuntut rujukan ke sesuatu yang tidak bisa dirujuk siapa pun bukan tuntutan
+yang adil.
+
+**Tiga dari lima belas entri berpadanan tepat dengan risiko yang dijamin polis AUTP**, dan
+itu diambil dari sumber primernya — Pedoman Bantuan Premi AUTP TA 2022, Ditjen PSP
+Kementan. Polis mengenal **tiga** risiko dan hanya tiga: banjir (termasuk rob), kekeringan,
+dan serangan OPT; hanya pada padi; hanya bila intensitas kerusakan mencapai **≥75%
+dan/atau luas kerusakan ≥75%** pada tiap petak alami. Daftar OPT-nya bahkan tertutup — enam
+hama dan tujuh penyakit disebut satu per satu.
+
+**Daftarnya sengaja tidak dibentuk mengikuti daftar risiko penanggung.** Yang paling sering
+menghabiskan musim petani kecil justru ada di dua belas sisanya:
+
+| sebab | dijamin AUTP? | sinyalnya |
+|---|---|---|
+| banjir, kekeringan, serangan OPT | **ya** | guncangan luar / perlindungan tanaman |
+| giliran air irigasi tidak datang | tidak | **tata kelola air** |
+| modal habis di tengah musim | tidak | akses |
+| harga jatuh di bawah ongkos panen | tidak | pasar |
+| benih gagal tumbuh | tidak | mutu sarana |
+| lahan tidak lagi bisa digarap | tidak | penguasaan lahan |
+| angin, kebakaran, abu vulkanik | tidak | guncangan luar |
+| wabah penyakit ikan/ternak, mutu air kolam | tidak | perlindungan / tata kelola air |
+| tenaga kerja tidak ada | tidak | akses |
+
+- **`giliran-air-tidak-datang` dipisahkan dari `kekeringan`, dan itu keputusan yang paling
+  menentukan di seluruh berkas ini.** Kekeringan adalah air yang memang tidak ada; giliran
+  yang tidak datang adalah keputusan atau kelalaian yang punya alamatnya. Menggabungkan
+  keduanya membuat kegagalan tata kelola air terbaca sebagai cuaca — dan cuaca tidak bisa
+  ditagih siapa pun.
+- **Medan `autp` ada supaya jaraknya terlihat**, bukan supaya kosakatanya dibentuk
+  mengikuti selera risiko penanggung. Layar menyebutnya saat sebabnya dipilih: *"Sebab ini
+  tidak dijamin polis Asuransi Usahatani Padi."*
+- **Daftar OPT tidak disalin jadi entri terpisah.** Yang dijawab kosakata ini sebab
+  berakhirnya siklus, bukan identitas OPT — dan identitas OPT sudah punya kosakatanya
+  sendiri.
+- **`L38` diperketat** sejak kosakatanya ada: `failed` tanpa `failure_reason` kini
+  kegagalan, ditambah dua pemeriksaan — sebab yang menunjuk ke luar ruang `op:cfr:`, dan
+  sebab yang menunjuk entri yang tidak ada. Yang dijaga bukan kelengkapan borang: **musim
+  yang gagal tanpa sebab tercatat tidak bisa dijumlahkan dengan musim gagal mana pun**, dan
+  penjumlahan itulah yang membedakan "petani ini sial" dari "giliran air di daerah ini
+  tidak pernah turun".
+- **Di layar, sebab hanya diminta saat musimnya memang gagal atau ditinggalkan** — disiplin
+  yang sama dengan alasan simpangan. Meminta sebab pada tiap penutupan cuma melatih orang
+  memilih pilihan pertama sampai medannya kehilangan arti.
+
 ### Penanda panen — dan angka yang tidak diukur sumber terbuka mana pun
 
 Lubang ini disebut namanya di blok batas D3: *"kapan rencana boleh dianggap tertutup"*
