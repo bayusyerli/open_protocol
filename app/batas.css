@@ -1072,58 +1072,6 @@ tr.lewat-masa td:first-child { border-left: 3px solid var(--awas, var(--amber, #
   color: var(--bj-lemah, var(--teks-lemah, var(--lemah)));
 }
 
-/* ------------------------------------------------------------ B2 keselamatan */
-/* Diberi warna awas, bukan merah gawat. Kartunya muncul di lima layar dan hampir selalu
-   dibaca orang yang TIDAK sedang keracunan; warna gawat yang menyala tiap kali akan
-   berhenti berarti gawat justru pada hari ia dibutuhkan. */
-.kartu.keselamatan {
-  --bj-teks:  var(--teks,       var(--tinta));
-  --bj-lemah: var(--teks-lemah, var(--lemah));
-  --bj-garis: var(--garis);
-  --bj-awas:  var(--awas,       var(--amber));
-  border-left: 4px solid var(--bj-awas);
-}
-
-.kartu.keselamatan h2 { color: var(--bj-teks); }
-
-.kontak-darurat { margin: .6rem 0 .2rem !important; }
-
-/* Nomornya satu-satunya hal yang harus terbaca dalam satu pandang, dan ia tautan tel:
-   supaya di ponsel cukup disentuh sekali — bukan diingat, disalin, lalu diketik ulang
-   oleh orang yang tangannya sedang bergetar. */
-.nomor-darurat {
-  display: inline-block;
-  font-size: clamp(1.9rem, 8vw, 2.6rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: .02em;
-  font-variant-numeric: tabular-nums;
-  color: var(--bj-teks);
-  text-decoration: none;
-  border-bottom: 3px solid var(--bj-awas);
-  padding-bottom: .1rem;
-  min-height: 44px;
-}
-
-.nomor-darurat:focus-visible { outline: 2px solid var(--bj-awas); outline-offset: 3px; }
-
-.kontak-darurat .sub {
-  display: block;
-  margin-top: .35rem;
-  font-size: .82rem;
-  color: var(--bj-lemah);
-}
-
-.tak-diketahui { margin-top: .9rem; }
-.tak-diketahui > summary {
-  cursor: pointer;
-  font-weight: 600;
-  font-size: .88rem;
-  color: var(--bj-awas);
-  padding: .7rem 0;
-  min-height: 44px;
-  box-sizing: border-box;
-}
-.tak-diketahui > summary:focus-visible { outline: 2px solid var(--bj-awas); outline-offset: 2px; }
-.tak-diketahui ul { margin: .3rem 0 .6rem; padding-left: 1.1rem; }
-.tak-diketahui li { margin: .35rem 0; font-size: .92rem; }
+/* Gaya B2 keselamatan pindah ke gaya.css: halaman terbitan statis hanya memuat gaya.css,
+   dan kartu darurat harus ikut ke sana. Menyalinnya ke dua berkas akan mengulang persis
+   tabrakan .bilah yang sudah pernah mematikan satu visual — jadi ia tinggal di satu tempat. */

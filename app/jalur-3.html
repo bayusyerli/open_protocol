@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Hitung rupiah per kg hara — Open Protocols</title>
+<title>Hitung rupiah per kg hara — Pranatani</title>
 <meta name="description" content="Pilih pupuk terdaftar, masukkan harga yang kamu bayar, dan lihat rupiah per kilogram hara — bukan per karung.">
 <!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
      Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
@@ -14,6 +14,7 @@
     if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
   } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
 </script>
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="gaya.css">
 <link rel="stylesheet" href="batas.css">
@@ -109,7 +110,7 @@
   <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
        daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
   <p class="lain">
-    <a href="beranda.html">← Beranda</a>
+    <a href="index.html">← Beranda</a>
   </p>
 
   <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->

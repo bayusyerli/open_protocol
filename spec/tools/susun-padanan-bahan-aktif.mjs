@@ -903,7 +903,7 @@ const doc = {
         },
         {
           title: 'Bahan aktif pestisida terdaftar — lapis generik',
-          publisher: 'Open Protocols',
+          publisher: 'Pranatani',
           year: 2026,
           locator: 'spec/vocab/substance-pestisida.json. Sisi kiri disambungkan ke entitasnya lewat label, key, synonyms, dan mappings KEMENTAN; entitas berstatus superseded diikuti sampai penggantinya.',
         },

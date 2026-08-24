@@ -1,4 +1,4 @@
-# Open Protocols — Spesifikasi Lapis 1 (Ontologi) v0.1
+# Pranatani — Spesifikasi Lapis 1 (Ontologi) v0.1
 
 Primitif yang dipakai bersama oleh **protokol** (Lapis 2) dan **eksekusi di lapangan**
 (Lapis 3). Kalau lapis ini benar, komoditas kedua dan ketiga bisa masuk tanpa

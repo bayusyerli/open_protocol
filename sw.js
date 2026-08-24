@@ -28,18 +28,26 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v23';
+const VERSI = 'v26';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 
-const APP = '/app/';
+/* DITERIMA DARI HALAMAN, BUKAN DITEBAK. Berkas permukaan tinggal di `/app/` selama
+ * pengembangan dan di akar pada situs terbitan — dan pekerja ini berada di akar pada
+ * keduanya, jadi letaknya sendiri tidak bisa membedakannya. `luring.js` menyematkan
+ * direktori halaman pemanggil sebagai query saat mendaftar; yang dipakai di bawah itu.
+ * Nilai bawaan `/app/` cuma untuk pekerja yang terdaftar sebelum baris ini ada — ia
+ * digantikan pada pendaftaran berikutnya.
+ *
+ * INDEKS tidak butuh perlakuan yang sama: ia mutlak dan sama di kedua bentuk. */
+const APP = new URL(self.location.href).searchParams.get('app') || '/app/';
 const INDEKS = '/spec/indeks/';
 
 // Cangkang: seluruh halaman, gaya, dan modul. Didaftar tangan, bukan dipindai — berkas
 // yang lupa didaftar akan gagal senyap saat luring, dan daftar yang terlihat lebih mudah
 // diperiksa daripada pemindai yang benar diam-diam.
 const BERKAS_CANGKANG = [
-  'beranda.html', 'index.html', 'jalur-1.html', 'jalur-3.html', 'jalur-4.html',
+  'index.html', 'produk.html', 'jalur-1.html', 'jalur-3.html', 'jalur-4.html',
   'jalur-5.html', 'jalur-6.html', 'ukur.html', 'takaran.html', 'harga.html',
   'principal.html', 'toko.html', 'usaha.html', 'kas.html', 'rencana.html',
   'gaya.css', 'beranda.css', 'batas.css',
@@ -51,7 +59,12 @@ const BERKAS_CANGKANG = [
   'beranda.js', 'jalur-1.js', 'jalur-2.js', 'jalur-3.js', 'jalur-4.js', 'jalur-5.js',
   'jalur-6.js', 'bahan.js', 'varietas.js', 'kandungan.js', 'takaran.js',
   'harga.js', 'principal.js', 'gambar.js', 'toko.js', 'usaha.js', 'kas.js', 'rencana.js',
-  'manifest.webmanifest', 'ikon.svg',
+  'manifest.webmanifest', 'ikon.svg', 'ikon-maskable.svg',
+  // Tanda merek. Versi gelapnya ikut walaupun cuma dipakai satu tema: yang berpindah
+  // tema saat luring tidak punya jaringan untuk mengambil yang belum tersimpan, dan
+  // kepala tanpa tanda lebih terasa rusak daripada kepala bertanda salah warna.
+  // Yang mendatar tidak dipakai satu layar pun; ia disimpan sebagai aset merek.
+  'logo-pranatani.svg', 'logo-pranatani-gelap.svg', 'logo-pranatani-horizontal.svg',
 ].map((f) => APP + f);
 
 // Berkas indeks yang kecil dan hampir selalu dipakai. `sediaan/` ikut karena keduabelas

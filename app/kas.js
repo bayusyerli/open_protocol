@@ -215,7 +215,7 @@ function susunTeks() {
   const { keluar, masuk, selisih, cacah } = hitung();
   const m = musimKini();
   const baris = [
-    '*Buku kas — Open Protocols*',
+    '*Buku kas — Pranatani*',
     '───────────────',
     m ? `Musim: ${m.nama}${m.komoditas ? ` — ${m.komoditas}` : ''}` : null,
     m?.luas > 0 ? `Luas: ${n(m.luas)} ha` : null,

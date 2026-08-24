@@ -1,9 +1,12 @@
-# Open Protocols
+# Pranatani
 
 Platform penyusun protokol budidaya bagi petani Indonesia — agnostik komoditas,
 netral terhadap vendor, dari perencanaan sampai pascapanen.
 
-> Nama masih sementara. Uji merek adalah salah satu keluaran Fase 0.
+> Nama dan domain ditetapkan 24 Agustus 2026: **Pranatani**, di `pranatani.com`.
+> Seluruh terbitan di `terbit/` dibangun dengan asal itu — canonical, `og:url`, dan dua
+> belas sitemap. Penelusuran merek resmi ke DJKI tetap pekerjaan manusia dan belum
+> ditutup; sampai ia selesai, nama ini dipakai tanpa klaim perlindungan.
 
 ## Isi repositori
 

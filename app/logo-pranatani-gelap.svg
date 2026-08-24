@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256" role="img" aria-labelledby="title desc">
+  <title id="title">Simbol Pranatani untuk layar gelap</title>
+  <desc id="desc">Monogram P berupa jalur protokol, larik lahan, dan tunas — geometri sama dengan simbol terang, warnanya saja yang dibalik supaya terbaca di atas latar gelap.</desc>
+  <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Jalur tunggal: pranata yang dapat ditelusuri dari pangkal sampai keluaran. -->
+    <path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94"
+          stroke="#fffef8" stroke-width="26"/>
+    <!-- Larik data/petak: tiga lapis yang tertata, tidak dimaknai sebagai sertifikasi. -->
+    <path d="M94 77h45" stroke="#54c7a6" stroke-width="15"/>
+    <path d="M94 109h64" stroke="#54c7a6" stroke-width="15"/>
+    <path d="M94 141h45" stroke="#54c7a6" stroke-width="15"/>
+    <!-- Tunas: pertumbuhan dan pengetahuan lapangan yang tetap hidup. -->
+    <path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z"
+          fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+    <path d="M165 111 196 80" stroke="#00442f" stroke-width="8"/>
+  </g>
+</svg>

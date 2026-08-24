@@ -41,7 +41,7 @@ import { cari, cariGejala, cariNamaLokal, tautanHasil, teks, JENIS } from './pus
 /** Satu-satunya daftar halaman. Urutannya urutan tampilnya. */
 const HALAMAN = [
   { u: 'jalur-1.html',   t: 'Tanaman bermasalah',        g: 'Enam jalur' },
-  { u: 'index.html',     t: 'Cek isi produk',            g: 'Enam jalur' },
+  { u: 'produk.html',     t: 'Cek isi produk',            g: 'Enam jalur' },
   { u: 'jalur-3.html',   t: 'Bandingkan harga pupuk',    g: 'Enam jalur' },
   { u: 'jalur-4.html',   t: 'Cek nama varietas',         g: 'Enam jalur' },
   { u: 'jalur-5.html',   t: 'Buat pupuk sendiri',        g: 'Enam jalur' },
@@ -70,16 +70,16 @@ const HALAMAN = [
  * `HALAMAN` juga. Dua daftar navigasi yang ditulis terpisah akan menyimpang, dan itu
  * persis penyakit yang dibereskan berkas ini. */
 const TAB = [
-  { u: 'beranda.html', t: 'Beranda' },
+  { u: 'index.html', t: 'Beranda' },
   { u: 'jalur-1.html', t: 'Gejala' },
-  { u: 'index.html',   t: 'Produk' },
+  { u: 'produk.html',   t: 'Produk' },
   { u: 'harga.html',   t: 'Harga' },
   { u: null,           t: 'Semua' },
 ];
 
 const berkasKini = () => {
   const b = location.pathname.split('/').pop();
-  return b && b.endsWith('.html') ? b : 'index.html';
+  return b && b.endsWith('.html') ? b : 'produk.html';
 };
 
 export function pasangCangkang() {
@@ -97,9 +97,15 @@ export function pasangCangkang() {
   // kemajuan di jalur 3 dan halaman harga. Memakai nama yang sama membuat kedua bilah
   // itu ikut jadi lengket dan setinggi kepala halaman.
   bilah.className = 'bilah-cangkang';
+  // Simbolnya dekoratif — alt kosong: namanya sudah jadi teks di sebelahnya, dan
+  // mengisi alt="Pranatani" membuat pembaca layar menyebutnya dua kali dalam satu
+  // tautan. Teksnya dibungkus <span> karena barisnya kini mendatar: tanpa pembungkus,
+  // <strong> dan <small> jadi dua kolom di sebelah tanda, bukan dua baris.
   bilah.innerHTML =
-    `<a class="merek-cangkang" href="beranda.html">` +
-    `<strong>Open Protocols</strong><small>DATA PERTANIAN TERBUKA</small></a>`;
+    `<a class="merek-cangkang" href="index.html">` +
+    `<img class="tanda-merek" src="logo-pranatani.svg" alt="" width="30" height="30">` +
+    `<span class="teks-merek"><strong>Pranatani</strong>` +
+    `<small>DATA PERTANIAN TERBUKA</small></span></a>`;
 
   // Tombol tema DIPINDAH, bukan dibuat ulang: `tema.js` mencarinya lewat id dan tiap
   // halaman memanggil pasangTombolTema() sendiri, jadi memindahkannya tidak memutus
@@ -134,8 +140,8 @@ export function pasangCangkang() {
         </div>`).join('')}
     </nav>
     <p class="kaki-catatan">
-      <a href="beranda.html">← Beranda</a> ·
-      <strong>Open Protocols</strong> — gratis, tanpa akun, dan kata yang dicari tidak
+      <a href="index.html">← Beranda</a> ·
+      <strong>Pranatani</strong> — gratis, tanpa akun, dan kata yang dicari tidak
       dikirim ke mana pun.
     </p>`;
 

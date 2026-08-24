@@ -1,7 +1,7 @@
-# Tiga Pasar Open Protocols
+# Tiga Pasar Pranatani
 
 > Dokumen kerja · Fase 0 → Fase 1 · Versi **0.1** · 19 Agu 2026 · Status **usulan**
-> **Tiga pasar, bukan satu** — Segmentasi, target, dan posisi Open Protocols — dan kenapa pengguna, pembayar, serta kontributor harus dipisah sejak awal.
+> **Tiga pasar, bukan satu** — Segmentasi, target, dan posisi Pranatani — dan kenapa pengguna, pembayar, serta kontributor harus dipisah sejak awal.
 >
 > Diekstrak dari artifact HTML dengan judul sama, 19 Agustus 2026. Isi, angka, dan
 > tautan sumbernya utuh; yang berubah hanya bentuknya.
@@ -218,7 +218,7 @@ Kopi atau kakao lewat koperasi eksportir. Di sini kata “agnostik” baru ditag
 
 Kategori yang diklaim bukan “aplikasi pertanian”, melainkan infrastruktur data budidaya yang netral dan bisa diaudit. Pesaing terdekat bukan aplikasi lain, melainkan status quo: SOP berbentuk PDF, buku saku penyuluh, dan grup WhatsApp yang isinya hilang tiap musim.
 
-Untuk **offtaker, eksportir, dan koperasi yang harus membuktikan bagaimana komoditasnya dibudidayakan**, Open Protocols mengubah protokol jadi rencana musim yang bisa dijalankan, dicatat, dan diaudit sampai tingkat petak — karena **netralitasnya ditegakkan pemeriksa mesin yang bisa diperiksa siapa saja, dan data usaha taninya tetap milik petani.**
+Untuk **offtaker, eksportir, dan koperasi yang harus membuktikan bagaimana komoditasnya dibudidayakan**, Pranatani mengubah protokol jadi rencana musim yang bisa dijalankan, dicatat, dan diaudit sampai tingkat petak — karena **netralitasnya ditegakkan pemeriksa mesin yang bisa diperiksa siapa saja, dan data usaha taninya tetap milik petani.**
 
 ### Netralitas yang ditegakkan mesin
 

@@ -734,7 +734,7 @@ async function buka(key) {
   el.rincian.focus();
   try {
     const h = await ambil(`harga/${key}`);
-    document.title = `Harga ${h.nama} — Open Protocols`;
+    document.title = `Harga ${h.nama} — Pranatani`;
     el.judul.textContent = `Harga ${h.nama}`;
 
     aturKartuTingkat(h);
@@ -748,7 +748,7 @@ async function buka(key) {
       aturKartuTingkat(null);
       history.pushState({}, '', 'harga.html');
       el.judul.textContent = 'Harga komoditas';
-      document.title = 'Harga komoditas — Open Protocols';
+      document.title = 'Harga komoditas — Pranatani';
       el.daftar.scrollIntoView({ block: 'start' });
     });
   } catch (e) {

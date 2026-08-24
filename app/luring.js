@@ -12,12 +12,28 @@
 
 const AKAR = new URL('../', location.href);
 
+/* Di mana berkas permukaan tinggal — dan itu BERBEDA antara pengembangan dan produksi.
+ * Selama pengembangan halaman ini disajikan dari `/app/`; di situs terbitan ia disajikan
+ * dari akar, karena 30 ribu halaman entitas menaut `/gaya.css`, bukan `/app/gaya.css`.
+ *
+ * sw.js tidak bisa menyimpulkan itu sendiri: ia selalu berada di akar pada kedua bentuk,
+ * jadi letaknya sendiri tidak memberi tahu apa pun tentang letak berkas yang harus
+ * di-cache-nya. Dulu ia menebak `/app/` dan tebakan itu benar hanya di satu bentuk — di
+ * situs terbitan seluruh 51 berkas cangkang akan gagal diunduh, diam-diam, karena
+ * kegagalan precache memang tidak berisik.
+ *
+ * Halaman ini tahu jawabannya tanpa menebak: direktorinya sendiri. Jadi ia yang
+ * memberitahukannya, lewat query pada URL pekerja. */
+const BASIS_APP = new URL('./', location.href).pathname;
+
 export function pasangLuring() {
   if (!('serviceWorker' in navigator)) return;
   // Pendaftaran ditunda sampai muat selesai: ia tidak mendesak, dan mendahului
   // pengambilan indeks di sinyal buruk akan memperlambat justru yang paling dinanti.
   addEventListener('load', () => {
-    navigator.serviceWorker.register(new URL('sw.js', AKAR), { scope: AKAR.pathname })
+    const pekerja = new URL('sw.js', AKAR);
+    pekerja.searchParams.set('app', BASIS_APP);
+    navigator.serviceWorker.register(pekerja, { scope: AKAR.pathname })
       .catch(() => { /* http tanpa TLS di luar localhost, mode privat, atau ditolak
                         kebijakan. Permukaan tetap jalan penuh tanpa luring. */ });
   });

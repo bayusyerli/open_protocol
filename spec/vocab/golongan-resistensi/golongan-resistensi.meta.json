@@ -40,7 +40,7 @@
         },
         {
           "title": "Bacaan huruf golongan pada kemasan produk terdaftar Indonesia",
-          "publisher": "Open Protocols",
+          "publisher": "Pranatani",
           "year": 2026,
           "locator": "Empat packshot yang blok golongannya terbaca, dari panen gambar produk (gambar_produk/manifes.ndjson). MERAH PUTIH 241 SL (PT. Centa Brasindo Abadi Chemical Industry, isopropil amina glifosat) mencetak \"Golongan HRAC G\"; KENMETRIN 500 SC (PT. Kenso Indonesia, ametrin) mencetak \"Golongan : Triazine, HRAC (C1)\"; KEN-MIDA 12/50 EC (PT. Kenso Indonesia) mencetak \"Golongan : Avermectin, IRAC (6); Neonicotinoid, IRAC (4A)\"; ASTERPIRAM 120 EC (PT. Agro Sejahtera Indonesia, nitenpiram) mencetak \"GRUP 4A INSEKTISIDA\". Dua yang pertama menentukan sistem huruf mana yang dipakai: G untuk glifosat dan C1 untuk triazin adalah penomoran HRAC global pra-2020, sedangkan CropLife Australia menempatkan glifosat pada M dan triazin pada C tanpa angka. Dua yang terakhir menunjukkan sisi insektisida sudah memakai ANGKA IRAC, sehingga tidak butuh medan huruf."
         },

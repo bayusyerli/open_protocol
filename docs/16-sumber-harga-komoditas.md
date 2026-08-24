@@ -62,7 +62,7 @@ Atribusi yang harus dipasang bila menayangkan ulang SP2KP:
 
 ```
 Sumber: Portal Satu Data Kementerian Perdagangan (satudata.kemendag.go.id) – 2026,
-diolah kembali oleh Open Protocols.
+diolah kembali oleh Pranatani.
 ```
 
 ## 2. Lapis BENIH PRIVAT — ditarik, tidak diterbitkan

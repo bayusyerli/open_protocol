@@ -64,13 +64,29 @@ const SATUAN = {
   'mg/L': { basis: 'volume', kali: 0.001 },
 };
 
+/* SATU KILOGRAM TIDAK BISA BERISI LEBIH DARI SATU KILOGRAM, dan sembilan pendaftaran di
+ * registri mengatakan sebaliknya — biasanya karena angkanya ditulis dalam satuan yang salah
+ * di sumbernya (Zn ditulis 79,42% padahal ppm). Pemeriksa spec sudah menyalakan
+ * L27-komposisi-mustahil untuk mereka, dengan kalimat yang menyuruh meninjau sumbernya
+ * "sebelum produk ini dipakai menghitung neraca hara". Layar inilah neraca hara itu.
+ *
+ * Kalau dibiarkan, hitungannya tidak gagal — ia BERHASIL dengan angka yang menyesatkan.
+ * Fraksi hara di atas 1,0 membuat rupiah per kilogram hara keluar lebih murah daripada
+ * harga produknya sendiri, dan layar yang seluruh gunanya membandingkan kemurahan akan
+ * menobatkan justru pendaftaran yang datanya rusak sebagai yang paling murah.
+ *
+ * Jadi kadarnya tetap ditampilkan apa adanya — itu isi registri, dan menyembunyikannya
+ * berarti memalsukan sumber — tetapi PERKALIANNYA ditahan, karena perkalian itu klaim
+ * layar ini sendiri. Sikap yang sama dipakai kolom per-tangki di halaman terbitan. */
+const BATAS_HARA = 1000;   // gram hara per kilogram atau liter produk
+
 function hitungHara(p) {
   const basis = new Set(p.isi.map((c) => SATUAN[c.satuan]?.basis));
   if (basis.size !== 1 || basis.has(undefined)) return null;
   const b = [...basis][0];
   const rinci = p.isi.map((c) => ({ ...c, gram: c.nilai * (SATUAN[c.satuan].kali ?? 1) }));
   const total = rinci.reduce((a, c) => a + c.gram, 0);
-  return { basis: b, satuan: b === 'massa' ? 'kg' : 'L', rinci, total };
+  return { basis: b, satuan: b === 'massa' ? 'kg' : 'L', rinci, total, mustahil: total > BATAS_HARA };
 }
 
 // ---------------------------------------------------------------------------
@@ -131,6 +147,19 @@ function blokMasukan(h) {
 }
 
 function blokHasil(p, h, harga, isi) {
+  if (h.mustahil) {
+    return `
+    <div class="kartu peringatan">
+      <h2>Hitungan ditahan: komposisi pendaftaran ini mustahil secara fisik</h2>
+      <p>Kadar yang tercatat berjumlah <strong>${angka(h.total, 1)} g per ${h.satuan}</strong> —
+      lebih dari isi wadahnya sendiri. Satu kilogram tidak bisa berisi lebih dari satu
+      kilogram, jadi rupiah per kilogram hara tidak dihitung di sini: angkanya akan keluar
+      lebih murah daripada harga produknya, dan itu perbandingan yang salah.</p>
+      <p class="catatan">Kadarnya tetap ditampilkan di atas apa adanya — begitulah registri
+      mencatatnya, dan yang keliru ada di sumbernya, biasanya satuan yang tertukar. Yang
+      ditahan cuma perkaliannya, karena perkalian itu klaim layar ini, bukan isi registri.</p>
+    </div>`;
+  }
   if (!(harga > 0) || !(isi > 0)) {
     return `<div class="kartu"><p class="kosong">Masukkan harga dan isi kemasan untuk melihat rupiah per kg hara.</p></div>`;
   }
@@ -294,13 +323,15 @@ async function buka(id, pecahan) {
           </dl>
         </div>
         ${blokKadar(p, h)}
-        ${blokMasukan(h)}
+        ${h.mustahil ? '' : blokMasukan(h)}
         <div id="keluaran">${blokHasil(p, h, NaN, NaN)}</div>
         ${await blokSetara(p)}
         ${await blokDiLuarJangkauan()}
         <button type="button" class="kembali" id="kembali">← Kembali ke hasil pencarian</button>`;
 
-      for (const n of ['harga', 'isi']) document.getElementById(n).addEventListener('input', gambarUlang);
+      // Kotak masukan tidak digambar untuk komposisi mustahil, jadi pendengarnya pun tidak
+      // dipasang — mencarinya akan melempar dan mematikan sisa layar.
+      if (!h.mustahil) for (const n of ['harga', 'isi']) document.getElementById(n).addEventListener('input', gambarUlang);
       el.rincian.querySelectorAll('.preset button').forEach((b) => b.addEventListener('click', () => {
         document.getElementById('isi').value = b.dataset.isi;
         gambarUlang();

@@ -315,7 +315,7 @@ hitungTakar();
       sumber: [
         {
           label: 'Aritmetika di peranti ini',
-          penerbit: 'Open Protocols',
+          penerbit: 'Pranatani',
           tarikan: '2026-08-23',
           status: 'berlaku',
           tingkat: 'A',

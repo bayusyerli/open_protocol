@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://spec.openprotocols.id/v0.1/common.schema.json",
-  "title": "Open Protocols — tipe bersama (Lapis 1)",
+  "title": "Pranatani — tipe bersama (Lapis 1)",
   "description": "Tipe dasar yang dipakai ulang oleh seluruh entitas. Base URI masih sementara sampai keputusan nama di Fase 0 selesai.",
   "$defs": {
     "CuratedId": {
@@ -15,7 +15,7 @@
       "pattern": "^op:(act|plt|cyc|stp|obs|bat):[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
     },
     "Id": {
-      "description": "ID apa pun yang sah di Open Protocols.",
+      "description": "ID apa pun yang sah di Pranatani.",
       "oneOf": [
         {
           "$ref": "#/$defs/CuratedId"

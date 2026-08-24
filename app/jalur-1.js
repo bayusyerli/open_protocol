@@ -102,7 +102,7 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — sepuluh OPT cabai
+          <a href="index.html">mulai dari apa yang terlihat</a> — sepuluh OPT cabai
           punya ciri pembandingnya.
         </p>
       </div>
@@ -261,7 +261,7 @@ async function bukaTanaman(kunci, { gulir = true } = {}) {
           yang sedang menyerangnya, dan bukan apa yang perlu dibeli. Urutannya menurut banyaknya
           produk terdaftar, dan itu <strong>mengukur ramainya pendaftaran, bukan seringnya hama
           itu datang</strong>. Kalau yang kamu punya sudah berupa gejala,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — di situ ada dua ciri
+          <a href="index.html">mulai dari apa yang terlihat</a> — di situ ada dua ciri
           pembanding yang bisa diperiksa sendiri, dan layar ini memang tidak punya.
         </p>
       </div>
@@ -496,7 +496,7 @@ const petakKemasan = (m) => (m.g
 const namaMerek = (m) => {
   const isi = `${petakKemasan(m)}<span class="merek-nama">${teks(m.nama)}</span>`;
   if (!m.p) return `<span class="merek-tautan">${isi}</span>`;
-  const alamat = `index.html?${new URLSearchParams({ id: m.id, pecahan: m.p })}`;
+  const alamat = `produk.html?${new URLSearchParams({ id: m.id, pecahan: m.p })}`;
   return `<a class="merek-tautan" href="${teks(alamat)}">${isi}</a>`;
 };
 

@@ -93,7 +93,7 @@ const kartuNamaLokal = (x) => {
  * kas, direktori toko, dan harga eceran. Yang mengetik "berapa tangki" tidak sedang
  * menyebut nama apa pun — ia menyebut pertanyaannya.
  *
- * Invarian dengan papan di beranda.html: TIAP KARTU DI PAPAN HARUS BISA DICAPAI DARI
+ * Invarian dengan papan di index.html: TIAP KARTU DI PAPAN HARUS BISA DICAPAI DARI
  * KOTAK INI. Keenam jalur dan profil perusahaan dicapai lewat namanya — produk, varietas,
  * dan badan memang entitas yang punya nama. Kelima sisanya tidak punya nama untuk
  * disebut, jadi merekalah yang wajib ada di daftar bawah ini. Kartu yang tidak memenuhi
@@ -429,7 +429,7 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
       `${n(j.pestisida)} pestisida, ${n(j.pupuk)} pupuk, ${n(j.varietas)} varietas, ` +
       `${n(j.principal)} badan pemegang pendaftaran; ${n(j.produkSetara)} produk berada ` +
       `dalam ${n(j.kelompokSetara)} kelompok berisi sama. Harga eceran dari SP2KP Kemendag. ` +
-      `Kurasi gejala, kamus nama lokal, dan resep sediaan terbitan Open Protocols sendiri.`;
+      `Kurasi gejala, kamus nama lokal, dan resep sediaan terbitan Pranatani sendiri.`;
 
     const atribusi = m.batas?.sumber?.harga?.atribusi;
     if (atribusi) el.atribusiHarga.textContent = atribusi;

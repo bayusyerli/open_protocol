@@ -76,7 +76,7 @@ const META = join(KELUAR, 'harga.meta.json');
 const BLOK = { from: 1000, to: 1999 };
 
 const ATRIBUSI =
-  'Sumber: Portal Satu Data Kementerian Perdagangan (satudata.kemendag.go.id) – 2026, diolah kembali oleh Open Protocols.';
+  'Sumber: Portal Satu Data Kementerian Perdagangan (satudata.kemendag.go.id) – 2026, diolah kembali oleh Pranatani.';
 
 if (!existsSync(MASUK)) {
   console.error(`${MASUK} tidak ada. Jalankan dulu: node harga_data/tarik-sp2kp.mjs`);

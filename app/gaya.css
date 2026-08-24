@@ -162,13 +162,33 @@
 }
 
 .merek-cangkang {
-  display: grid;
-  gap: 0;
+  display: flex;
+  align-items: center;
+  gap: .5rem;
   color: var(--teks);
   text-decoration: none;
   min-height: 44px;
+}
+/* Yang dulu grid-nya `.merek-cangkang` sendiri; sejak ada tanda merek di sebelahnya,
+   barisnya mendatar dan susunan dua barisnya pindah ke pembungkus teks ini. */
+.merek-cangkang .teks-merek {
+  display: grid;
+  gap: 0;
   align-content: center;
 }
+/* `flex: none` supaya tandanya tidak ikut menyusut saat kotak cari menuntut tempat —
+   yang mengalah di bilah ini subjudulnya (lihat @media 460px di bawah), bukan tandanya. */
+.merek-cangkang .tanda-merek { flex: none; display: block; width: 30px; height: 30px; }
+
+/* Versi gelap, dua aturan dengan alasan yang sama seperti blok token di atas: "ikut
+   sistem" dan "gelap eksplisit" dua keadaan berbeda, dan `prefers-color-scheme` saja
+   hanya menjawab yang pertama. Geometri kedua berkasnya sama persis — yang berpindah
+   cuma warnanya, jadi tidak ada pergeseran tata letak. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) .tanda-merek { content: url("logo-pranatani-gelap.svg"); }
+}
+:root[data-tema="gelap"] .tanda-merek { content: url("logo-pranatani-gelap.svg"); }
+
 .merek-cangkang strong { font-size: .95rem; letter-spacing: -.01em; }
 .merek-cangkang small {
   font-size: .58rem;
@@ -200,7 +220,12 @@
 .cari-cangkang input:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
 
 @media (max-width: 460px) {
-  .merek-cangkang { flex: none; }
+  /* Bilahnya harus memuat tanda + wordmark + kotak cari + tombol tema. Jaraknya
+     dirapatkan dan tandanya diturunkan ke 26 px supaya yang dikembalikan itu jatuh ke
+     kotak cari — bagian yang paling dirugikan kalau ruangnya habis. */
+  .bilah-cangkang { gap: .6rem; }
+  .merek-cangkang { flex: none; gap: .4rem; }
+  .merek-cangkang .tanda-merek { width: 26px; height: 26px; }
   .merek-cangkang small { display: none; }
   .merek-cangkang strong { font-size: .82rem; white-space: nowrap; }
 }
@@ -1282,3 +1307,59 @@ button.merek-tautan { cursor: pointer; }
   background: var(--aksen);
   opacity: 0.75;
 }
+
+/* ------------------------------------------------------------ B2 keselamatan */
+/* Diberi warna awas, bukan merah gawat. Kartunya muncul di lima layar dan hampir selalu
+   dibaca orang yang TIDAK sedang keracunan; warna gawat yang menyala tiap kali akan
+   berhenti berarti gawat justru pada hari ia dibutuhkan. */
+.kartu.keselamatan {
+  --bj-teks:  var(--teks,       var(--tinta));
+  --bj-lemah: var(--teks-lemah, var(--lemah));
+  --bj-garis: var(--garis);
+  --bj-awas:  var(--awas,       var(--amber));
+  border-left: 4px solid var(--bj-awas);
+}
+
+.kartu.keselamatan h2 { color: var(--bj-teks); }
+
+.kontak-darurat { margin: .6rem 0 .2rem !important; }
+
+/* Nomornya satu-satunya hal yang harus terbaca dalam satu pandang, dan ia tautan tel:
+   supaya di ponsel cukup disentuh sekali — bukan diingat, disalin, lalu diketik ulang
+   oleh orang yang tangannya sedang bergetar. */
+.nomor-darurat {
+  display: inline-block;
+  font-size: clamp(1.9rem, 8vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: .02em;
+  font-variant-numeric: tabular-nums;
+  color: var(--bj-teks);
+  text-decoration: none;
+  border-bottom: 3px solid var(--bj-awas);
+  padding-bottom: .1rem;
+  min-height: 44px;
+}
+
+.nomor-darurat:focus-visible { outline: 2px solid var(--bj-awas); outline-offset: 3px; }
+
+.kontak-darurat .sub {
+  display: block;
+  margin-top: .35rem;
+  font-size: .82rem;
+  color: var(--bj-lemah);
+}
+
+.tak-diketahui { margin-top: .9rem; }
+.tak-diketahui > summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .88rem;
+  color: var(--bj-awas);
+  padding: .7rem 0;
+  min-height: 44px;
+  box-sizing: border-box;
+}
+.tak-diketahui > summary:focus-visible { outline: 2px solid var(--bj-awas); outline-offset: 2px; }
+.tak-diketahui ul { margin: .3rem 0 .6rem; padding-left: 1.1rem; }
+.tak-diketahui li { margin: .35rem 0; font-size: .92rem; }

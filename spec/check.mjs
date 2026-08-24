@@ -1,4 +1,4 @@
-// Logika pemeriksa spesifikasi Open Protocols Lapis 1.
+// Logika pemeriksa spesifikasi Pranatani Lapis 1.
 // Dua lapis pemeriksaan:
 //   1. Skema  — bentuk data, ditegakkan JSON Schema.
 //   2. Aturan — kebijakan yang tidak bisa dinyatakan skema (netralitas vendor, PDP, keselamatan).

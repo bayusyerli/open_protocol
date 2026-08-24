@@ -37,7 +37,7 @@
       "definition": {
         "id": "Pelaksana menilai langkah ini tidak perlu pada kondisi lapangan saat itu."
       },
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -55,7 +55,7 @@
       "definition": {
         "id": "Bahan tidak ada di kios, atau jatah subsidi habis."
       },
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -70,7 +70,7 @@
       },
       "category": "no_funds",
       "signals": "access_problem",
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -85,7 +85,7 @@
       },
       "category": "weather",
       "signals": "external_shock",
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -100,7 +100,7 @@
       },
       "category": "labor_unavailable",
       "signals": "access_problem",
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -118,7 +118,7 @@
       "definition": {
         "id": "Penyuluh atau protokol memberi arahan berbeda setelah rencana disusun."
       },
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -136,7 +136,7 @@
       "definition": {
         "id": "Sering muncul berarti jadwal kalender dipakai di tempat yang seharusnya berbasis ambang."
       },
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -151,7 +151,7 @@
       },
       "category": "pest_worse",
       "signals": "protocol_problem",
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -166,7 +166,7 @@
       },
       "category": "price_change",
       "signals": "external_shock",
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -181,7 +181,7 @@
       },
       "category": "mistake",
       "signals": "recording_problem",
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
@@ -199,7 +199,7 @@
       "definition": {
         "id": "Sering muncul berarti kosakata ini perlu ditambah."
       },
-      "no_mapping_reason": "Kosakata khusus Open Protocols; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
+      "no_mapping_reason": "Kosakata khusus Pranatani; tidak ada standar luar yang mengklasifikasi alasan simpangan pelaksanaan usaha tani. Ditinjau ulang bila muncul standar sejenis.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",

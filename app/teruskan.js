@@ -101,7 +101,7 @@ export function susunKartu(kartu, kunciSumber) {
   if (salah.length) return { salah };
 
   const baris = [
-    '*Open Protocols* · cek mandiri',
+    '*Pranatani* · cek mandiri',
     GARIS,
     `*${kartu.judul}*`,
   ];

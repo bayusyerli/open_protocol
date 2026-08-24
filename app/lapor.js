@@ -162,7 +162,7 @@ function susunLaporan(kotak, k, balai) {
     '',
     '⚠ Ini *pengamatan*, bukan kesimpulan, dan *bukan permintaan penyemprotan*.',
     'Yang memastikan hamanya petugas yang datang melihat. Dugaan di atas datang dari',
-    'mencocokkan gejala di halaman Open Protocols, bukan dari pemeriksaan lapangan.',
+    'mencocokkan gejala di halaman Pranatani, bukan dari pemeriksaan lapangan.',
     '───────────────',
   );
   return { teks: baris.join('\n') };

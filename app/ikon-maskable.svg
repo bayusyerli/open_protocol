@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">Ikon aplikasi Pranatani (maskable)</title>
+  <desc id="desc">Monogram P Pranatani pada bidang hijau tua penuh 512 × 512, tanpa sudut tembus pandang, supaya sistem bebas memotongnya jadi lingkaran, kotak membulat, atau tetes.</desc>
+  <!-- Bedanya dengan ikon.svg cuma bidangnya: di sini TANPA `rx`, jadi keempat sudutnya
+       terisi. Sudut tembus pandang pada ikon maskable menghasilkan bidang gelap
+       bersudut putih di peluncur yang tidak memotongnya sedalam itu.
+       Geometri monogramnya sama persis — transform yang sama, jalur yang sama.
+       Zona aman maskable adalah lingkaran berjari-jari 40% (204,8 px dari pusat);
+       sudut terjauh kotak pembatas monogram ini ada di ±185 px, jadi ia tetap utuh
+       pada pemotongan sedalam apa pun yang dijanjikan spesifikasinya. -->
+  <rect width="512" height="512" fill="#00442f"/>
+  <g transform="translate(84 84) scale(1.34)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94"
+          stroke="#fffef8" stroke-width="26"/>
+    <path d="M94 77h45" stroke="#54c7a6" stroke-width="15"/>
+    <path d="M94 109h64" stroke="#54c7a6" stroke-width="15"/>
+    <path d="M94 141h45" stroke="#54c7a6" stroke-width="15"/>
+    <path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z"
+          fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+    <path d="M165 111 196 80" stroke="#00442f" stroke-width="8"/>
+  </g>
+</svg>

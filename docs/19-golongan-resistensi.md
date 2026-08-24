@@ -98,7 +98,7 @@ supaya bisa ditelusuri ulang. Perlakuan yang sama diterapkan pada IRAC (dokumenn
 *"IRAC document protected by © Copyright 2026"*) dan HRAC (halamannya bertanda *"©2026 HRAC"*).
 
 **Ini keputusan yang sebaiknya ditinjau ulang oleh pemilik repositori sebelum status naik dari
-`draft`**, terutama bila Open Protocols kelak dipakai dalam layanan berbayar.
+`draft`**, terutama bila Pranatani kelak dipakai dalam layanan berbayar.
 
 ---
 

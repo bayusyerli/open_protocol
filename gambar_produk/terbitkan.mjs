@@ -75,8 +75,25 @@ const KUAT = { kuat: 3, sedang: 2, lemah: 1 };
 const perProduk = new Map();
 let tanpaId = 0;
 let tanpaBerkas = 0;
+const tanpaDasar = {};
 
 for (const x of diterima) {
+  /* HAK PIHAK KETIGA DAN HAK TAK DIKETAHUI TIDAK IKUT TERBIT — sejak 24 Agustus 2026.
+   *
+   * Keputusan penerbitan di kepala berkas ini berdiri di atas satu alasan: gambarnya sudah
+   * tersedia publik DI KANAL TERBIT PRINCIPAL MASING-MASING. Alasan itu hanya berlaku untuk
+   * baris yang memang datang dari sana. Baris `pihak_ketiga` datang dari blog, katalog
+   * pedagang, dan situs yang bukan pemegang pendaftaran; baris `tidak_diketahui` tidak bisa
+   * menyebutkan datang dari mana sama sekali. Untuk keduanya, alasan yang menopang seluruh
+   * keputusan itu tidak ada — dan sebelumnya keduanya tetap disalin, hanya ditandai.
+   *
+   * Menandai berguna untuk pencabutan; ia bukan pengganti dasar. Jadi keduanya sekarang
+   * dijatuhkan di sini, bukan dilaporkan sesudah tersalin. Yang tersisa adalah baris yang
+   * argumennya bisa dinyatakan dalam satu kalimat tanpa mengandaikan izin yang belum
+   * pernah diminta. */
+  const dasar = x.source?.rights ?? 'tidak_diketahui';
+  if (dasar !== 'pemegang_pendaftaran') { tanpaDasar[dasar] = (tanpaDasar[dasar] ?? 0) + 1; continue; }
+
   const tujuan = x.narrowed_to ?? [];
   if (!tujuan.length) { tanpaId++; continue; }
 
@@ -136,10 +153,11 @@ if (tanpaBerkas) console.log(`  tanpa ukuran terpakai: ${n(tanpaBerkas)}`);
 console.log(`Produk bergambar      : ${n(perProduk.size)}`);
 console.log(`Berkas disalin        : ${n(semuaBerkas.size)} (${(byte / 1024 / 1024).toFixed(1)} MB) — ukuran ${UKURAN.join(' + ')}`);
 console.log(`Dasar hak             : ${Object.entries(hak).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${v}`).join(' · ')}`);
-const pihakKetiga = [...perProduk.values()].flat().filter((g) => g.hak === 'pihak_ketiga');
-if (pihakKetiga.length) {
-  console.log(`  ⚠ berhak PIHAK KETIGA: ${n(pihakKetiga.length)} — bukan pemegang pendaftaran, bukan kita.`);
-  for (const g of pihakKetiga) console.log(`      ${g.merek} — ${g.halaman ?? 'tanpa halaman sumber'}`);
+const dijatuhkan = Object.entries(tanpaDasar).sort((a, b) => b[1] - a[1]);
+if (dijatuhkan.length) {
+  console.log(`  dijatuhkan tanpa dasar: ${n(dijatuhkan.reduce((a, [, v]) => a + v, 0))} — ${dijatuhkan.map(([k, v]) => `${k} ${n(v)}`).join(' · ')}`);
+  console.log('      Keputusan penerbitan berdiri di atas "sudah publik di kanal principal";');
+  console.log('      baris ini tidak datang dari sana, jadi alasan itu tidak menopangnya.');
 }
 console.log(`Izin tertulis         : belum diminta pada seluruh baris; manifes tetap menyatakan redistributable: false`);
 

@@ -1,13 +1,14 @@
 {
-  "name": "open-protocols-spec",
+  "name": "pranatani-spec",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "Spesifikasi Lapis 1 (ontologi) Open Protocols — skema, contoh, dan pemeriksa.",
+  "description": "Spesifikasi Lapis 1 (ontologi) Pranatani — skema, contoh, dan pemeriksa.",
   "scripts": {
     "check": "node validate.mjs",
-    "test": "node test-rules.mjs",
-    "all": "npm run check && npm test && npm run angka",
+    "test": "node test-rules.mjs && node tools/uji-dosis.mjs",
+    "all": "npm run check && npm test && npm run angka && npm run urai",
+    "urai": "node tools/cek-urai-app.mjs",
     "angka": "node tools/cek-angka-docs.mjs"
   },
   "devDependencies": {

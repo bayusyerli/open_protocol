@@ -103,7 +103,7 @@ menyajikan `app/` saja tidak cukup:
 python3 -m http.server 8742
 ```
 
-Buka `http://localhost:8742/app/beranda.html`. Konfigurasi `open-protocols` di
+Buka `http://localhost:8742/app/beranda.html`. Konfigurasi `pranatani` di
 `.claude/launch.json` sudah melakukan persis itu, dengan `autoPort` supaya tidak
 bertabrakan dengan sesi lain yang memakai repositori sama.
 

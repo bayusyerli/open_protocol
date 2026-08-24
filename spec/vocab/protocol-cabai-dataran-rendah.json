@@ -254,19 +254,19 @@
     "version": "0.2.0",
     "status": "draft",
     "created_at": "2026-08-20T00:00:00Z",
-    "content_hash": "sha256:0129656389c9d73e7f3309adc5f28699e00da6ca5fc1c436e0c7979f526bf1db"
+    "content_hash": "sha256:fc57793d683951f029bc874040645950e16a1f34e3ebed62ead559cff62cc5d4"
   },
   "provenance": {
     "sources": [
       {
-        "title": "Open Protocols — Fondasi & Tahapan, bagian 2 (Lapis 2)",
-        "publisher": "Open Protocols",
+        "title": "Pranatani — Fondasi & Tahapan, bagian 2 (Lapis 2)",
+        "publisher": "Pranatani",
         "year": 2026,
         "locator": "docs/00-fondasi-dan-tahapan.md"
       },
       {
         "title": "Contoh langkah rencana cabai",
-        "publisher": "Open Protocols",
+        "publisher": "Pranatani",
         "year": 2026,
         "locator": "spec/examples/step-cabai-planned-*.json"
       }

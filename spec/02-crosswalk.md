@@ -1,6 +1,6 @@
 # Crosswalk — pemetaan ke standar yang sudah ada
 
-Open Protocols tidak membuat kosakata baru kalau sudah ada yang bisa dipakai.
+Pranatani tidak membuat kosakata baru kalau sudah ada yang bisa dipakai.
 Aturan `L9` menegakkan ini: setiap entitas terkurasi wajib punya minimal satu
 pemetaan luar, atau `no_mapping_reason` tertulis yang menjelaskan mengapa tidak ada.
 
@@ -25,7 +25,7 @@ karena ia diam-diam merusak agregasi data lintas sumber.
 
 ## Peta per entitas
 
-| Entitas Open Protocols | Standar tujuan | Bentuk pengenal | Catatan |
+| Entitas Pranatani | Standar tujuan | Bentuk pengenal | Catatan |
 |---|---|---|---|
 | `Commodity` | **AGROVOC** | `c_12332` → `http://aims.fao.org/aos/agrovoc/c_12332` | Konsep SKOS, tersedia sampai 39 bahasa. Format URI terverifikasi |
 | `Commodity` | **NCBITaxon** | `4072` | Untuk kepastian spesies |
@@ -74,7 +74,7 @@ mesin pertanian dan tidak ada gunanya berbeda:
 
 ## Yang sengaja berbeda dari ADAPT
 
-| Hal | ADAPT | Open Protocols | Alasan |
+| Hal | ADAPT | Pranatani | Alasan |
 |---|---|---|---|
 | Hierarki | Grower → Farm → Field → CropZone | Actor → Plot → Cycle | Empat tingkat kepemilikan tidak cocok untuk petani gurem 0,28 ha. Struktur lahan Indonesia jarang punya "Farm" sebagai lapis nyata |
 | Cakupan sektor | Tanaman, berorientasi mesin | Tanaman, ternak, perikanan budidaya | Beachhead hortikultura, tetapi tambak dan kandang harus muat sejak awal |

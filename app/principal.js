@@ -43,9 +43,9 @@ const JENIS_PUNYA = { pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varieta
 // Ke mana satu baris daftar membuka rinciannya. Sama seperti beranda: halaman ini tidak
 // punya perender produk sendiri, dan menyalinnya ke sini berarti dua layar yang akan
 // menyimpang diam-diam.
-const RUMAH = { varietas: 'jalur-4.html', pestisida: 'index.html', pupuk: 'index.html' };
+const RUMAH = { varietas: 'jalur-4.html', pestisida: 'produk.html', pupuk: 'produk.html' };
 const tautanEntri = (x) =>
-  `${RUMAH[x.j] ?? 'index.html'}?${new URLSearchParams({ id: x.i, pecahan: x.p })}`;
+  `${RUMAH[x.j] ?? 'produk.html'}?${new URLSearchParams({ id: x.i, pecahan: x.p })}`;
 
 // ---------------------------------------------------------------------------
 // Kartu-kartu
@@ -75,7 +75,7 @@ function kartuLogo(b) {
   return `
     <figure class="logo-badan">
       <span class="logo-piring">
-        <!-- Bukan `lazy`: ia elemen paling atas di layar ini, dan menunda satu-satunya
+        <!-- Bukan "lazy": ia elemen paling atas di layar ini, dan menunda satu-satunya
              gambar yang ada di atas lipatan menukar apa pun dengan tidak apa-apa. -->
         <img src="gambar/${teks(f.n)}" alt="Logo ${teks(b.nama)}."
              width="${teks(f.w)}" height="${teks(f.h)}" decoding="async">
@@ -280,7 +280,7 @@ async function buka(key) {
   el.isi.innerHTML = '<p class="kosong">Mengambil profil…</p>';
   try {
     const b = await ambil(`principal/${key}`);
-    document.title = `${b.nama} — Open Protocols`;
+    document.title = `${b.nama} — Pranatani`;
     el.judul.textContent = b.nama;
     el.lede.innerHTML =
       `Apa saja yang terdaftar atas nama badan ini di registri Kementan — dan apa yang ` +

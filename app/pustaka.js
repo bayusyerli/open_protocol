@@ -6,8 +6,16 @@
  * varietas memang muncul di kedua jalur.
  */
 
-// Tidak diekspor: hanya `ambil()` di bawah yang memakainya.
-const BASIS = '../spec/indeks';
+/* Tidak diekspor: hanya `ambil()` di bawah yang memakainya.
+ *
+ * MUTLAK, BUKAN RELATIF, dan itu yang membuat permukaan ini bisa tinggal di dua kedalaman
+ * sekaligus. Selama pengembangan app/ disajikan di `/app/`, tetapi situs terbitan menaruhnya
+ * di akar — halaman produk di `terbit/` menaut `/gaya.css` dan `/produk.html`, bukan
+ * `/app/gaya.css`. Dengan `../spec/indeks`, satu di antara keduanya pasti salah: dari akar
+ * ia menunjuk ke atas akar dan setiap pengambilan gagal. Jalur mutlak benar di keduanya,
+ * dan ia juga yang sudah dipakai sw.js (`INDEKS = '/spec/indeks/'`) sejak awal — jadi ini
+ * membuat ketiganya sepakat, bukan menambah satu asumsi baru. */
+const BASIS = '/spec/indeks';
 
 const ingatan = new Map();
 
@@ -104,7 +112,7 @@ export function namaPemegang(nama, key) {
  *
  * Pestisida, pupuk, dan bahan aktif serumah di jalur 2 karena pertanyaannya sama:
  * "sebenarnya ini apa". */
-const RUMAH = { varietas: 'jalur-4.html', pestisida: 'index.html', pupuk: 'index.html', bahan: 'index.html' };
+const RUMAH = { varietas: 'jalur-4.html', pestisida: 'produk.html', pupuk: 'produk.html', bahan: 'produk.html' };
 
 // Sediaan punya DUA rumah, dan yang menentukan rezimnya. Sisi pupuk dan sisi pengendali
 // bukan dua tab dari satu layar — janjinya berbeda: yang satu resep terbuka, yang satu
@@ -134,7 +142,7 @@ export function tautanHasil(x, kueri = '') {
   const khusus = tautanKunci[x.j];
   if (khusus) return khusus(x);
   const p = new URLSearchParams({ id: x.i, pecahan: x.p, q: kueri });
-  return `${RUMAH[x.j] ?? 'index.html'}?${p}`;
+  return `${RUMAH[x.j] ?? 'produk.html'}?${p}`;
 }
 
 let meta = null;
@@ -227,7 +235,15 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
     wadah.innerHTML = kosongHtml(kueri);
     return;
   }
-  const tampil = daftar.slice(0, 40);
+  // Rekaman uji registri (`u`) diturunkan ke belakang, bukan dibuang. Registri Kementan
+  // memuat artefak QA-nya sendiri — "testssl", "08oktest123", "Intel (Test)" — dan yang
+  // mengetik "tes" mendapati belasan di antaranya di atas produk sungguhan. Menyaringnya
+  // habis ditolak: permukaan ini menyalin registri apa adanya, dan yang hilang diam-diam
+  // tidak bisa diperiksa siapa pun. Jadi ia turun, lalu menyebut dirinya di kartunya.
+  const daftarUrut = daftar.some((x) => x.u)
+    ? [...daftar].sort((a, b) => Number(Boolean(a.u)) - Number(Boolean(b.u)))
+    : daftar;
+  const tampil = daftarUrut.slice(0, 40);
 
   // Lencana jenis hanya berarti kalau hasilnya memang bercampur. Di jalur 3 seluruh
   // hasilnya pupuk dan di jalur 4 seluruhnya varietas: mencetak "PUPUK" tujuh belas kali
@@ -284,10 +300,16 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
       ${tampil.map((x) => {
         const serupa = senama(x);
         const kembar = kembarSet.has(x);
-        const pembeda = x.f
-          ? `<span class="pembeda${serupa ? ' pembeda-utama' : ''}">${teks(x.f)}</span>`
-          : (x.j === 'pupuk' || x.j === 'pestisida')
-            ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : '';
+        // Kalimatnya ikut jenisnya. "Bukan produk yang beredar" pada entri BAHAN AKTIF
+        // menyangkal yang tidak pernah diakuinya — entri itu tidak pernah mengaku produk —
+        // dan menyisakan pertanyaan yang justru penting: kalau bukan produk, apa ia bahan
+        // sungguhan? Yang perlu dibantah di sana kebahanannya, bukan keberedarannya.
+        const pembeda = x.u
+          ? `<span class="pembeda kosong-pembeda">Rekaman uji registri — bukan ${x.j === 'bahan' ? 'bahan aktif sungguhan' : 'produk yang beredar'}.</span>`
+          : x.f
+            ? `<span class="pembeda${serupa ? ' pembeda-utama' : ''}">${teks(x.f)}</span>`
+            : (x.j === 'pupuk' || x.j === 'pestisida')
+              ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : '';
         return `
         <li>
           <button type="button" data-id="${teks(x.i)}" data-pecahan="${teks(x.p)}">

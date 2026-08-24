@@ -1,4 +1,4 @@
-# Menyumbang ke Open Protocols
+# Menyumbang ke Pranatani
 
 Repositori ini dibuka 23 Agustus 2026. Dokumen ini pintunya.
 

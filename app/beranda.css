@@ -154,8 +154,22 @@ a { color: var(--hijau-2); }
 }
 /* `align-items` beserta `min-height` membawa kotak sentuhnya ke 44 px tanpa menambah
    tinggi kepala: tombol tema di seberangnya sudah setinggi itu. */
-.merek { display: flex; align-items: center; min-height: 44px;
+.merek { display: flex; align-items: center; gap: 10px; min-height: 44px;
          text-decoration: none; color: inherit; line-height: 1.15; }
+/* Simbolnya `flex: none` supaya ia tidak ikut menyusut saat kepala kehabisan tempat:
+   yang boleh mengalah di baris ini subjudulnya, bukan tandanya. */
+.tanda-merek { flex: none; display: block; width: 36px; height: 36px; }
+
+/* Simbol versi gelap. Ditulis dua kali dengan alasan yang sama seperti blok token di
+   atas: yang belum memilih apa pun (ikut sistem) dan yang memilih gelap eksplisit adalah
+   dua keadaan berbeda, dan `prefers-color-scheme` saja hanya menjawab yang pertama —
+   orang yang memilih gelap di layar terang akan tetap mendapat tanda tinta gelap di atas
+   kepala gelap. Geometri kedua berkasnya sama persis, jadi tidak ada pergeseran tata
+   letak saat berpindah; yang berubah cuma warnanya. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) .tanda-merek { content: url("logo-pranatani-gelap.svg"); }
+}
+:root[data-tema="gelap"] .tanda-merek { content: url("logo-pranatani-gelap.svg"); }
 .merek strong { display: block; font-size: 18px; letter-spacing: -.03em; }
 .merek small {
   display: block; color: var(--lemah);
@@ -475,6 +489,8 @@ a { color: var(--hijau-2); }
      titik saja — warnanya sudah membawa keterangannya, dan kalimat penuhnya tetap
      terbaca pembaca layar. */
   .kepala { gap: 8px; padding: 9px 14px; flex-wrap: nowrap; }
+  .tanda-merek { width: 30px; height: 30px; }
+  .merek { gap: 8px; }
   .merek strong { font-size: 16px; }
   .merek small { font-size: 9px; letter-spacing: .12em; }
   .aksi-kepala { gap: 8px; }

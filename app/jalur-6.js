@@ -232,33 +232,56 @@ function blokKriteria(r) {
     </div>`;
 }
 
-// PHI di sini BUKAN hasil uji. Keempat sediaan yang membawanya menandainya
-// precautionary_default — angka bawaan yang sengaja berhati-hati. Menampilkannya
-// tanpa keterangan itu akan membuatnya terbaca seperti hasil uji residu.
+/* TAKARAN DAN CARA PAKAI DITAHAN UNTUK SELURUH SISI PENGENDALI — bukan cuma untuk yang
+ * tidak bisa dibakukan.
+ *
+ * Sampai 24 Agustus 2026 layar ini mencetak Takaran, Cara, tenggang panen, dan alat
+ * pelindung untuk empat resep berkriteria, dan hanya Biosaka yang ditahan. Audit hukum
+ * menemukan bahwa itu sudah mempraktikkan Bacaan B sebelum jawabannya ada:
+ * `docs/13-memo-hukum-pasal-77.md` §6 menyatakan Bacaan A berarti "tidak ada takaran,
+ * tidak ada cara pakai", dan menempatkan tenggang panen serta alat pelindung di dalam
+ * paket Bacaan B — bukan di luarnya. Memo §7 sendiri mendeskripsikan layar ini lebih
+ * sempit daripada kenyataannya, dan selisih itu yang ditutup di sini.
+ *
+ * Yang ditahan cuma yang membentuk CARA MEMAKAI. Yang tetap tampil: kedudukan hukumnya,
+ * bahan dan prosesnya, kriteria pelepasannya, dan peringatan bahayanya — peringatan bukan
+ * anjuran, dan menghapusnya justru merugikan orang yang tetap meramu sendiri.
+ *
+ * Ini bisa dicabut dalam satu suntingan begitu pendapat hukum turun. Kalau jawabannya
+ * Bacaan B, blok lama ada utuh di riwayat git; kalau Bacaan A, layar ini memang sudah
+ * berada di tempat yang benar sejak sekarang. */
 function blokPakai(r) {
-  const d = r.pemakaian?.dosis;
   const a = r.keselamatan;
+  const punyaTakaran = r.pemakaian?.dosis?.nilai != null || r.pemakaian?.cara;
   return `
-    <div class="kartu">
-      <h2>Pemakaian dan keselamatan</h2>
-      <dl class="kunci">
-        ${d ? `<dt>Takaran</dt><dd>${angkaId(d.nilai)} ${teks(satuanTerbaca(d.satuan) || d.satuan)}${d.min && d.maks ? ` (kisaran ${angkaId(d.min)}–${angkaId(d.maks)})` : ''}</dd>` : ''}
-        ${r.pemakaian?.cara ? `<dt>Cara</dt><dd>${teks(r.pemakaian.cara)}</dd>` : ''}
-        ${r.simpan?.lama ? `<dt>Tahan simpan</dt><dd>${angkaId(r.simpan.lama.value)} ${teks(LAMA[r.simpan.lama.unit] ?? r.simpan.lama.unit)}</dd>` : ''}
-        ${a.apd.length ? `<dt>Pelindung diri</dt><dd>${a.apd.map((x) => teks(APD[x] ?? x)).join(', ')}</dd>` : ''}
-      </dl>
-      ${a.bahaya.length ? `<p class="catatan"><strong>Bahaya:</strong> ${a.bahaya.map(teks).join(' ')}</p>` : ''}
+    <div class="kartu peringatan">
+      <h2>Takaran dan cara pakai ditahan — menunggu pendapat hukum</h2>
+      <p>
+        Pasal 77 ayat (1) UU 22/2019 melarang <strong>mengedarkan</strong> dan
+        <strong>menggunakan</strong> pestisida yang tidak terdaftar. Apakah kedua larangan
+        itu berlaku bersamaan atau sendiri-sendiri belum dijawab penasihat hukum, dan
+        selama belum, halaman ini tidak menerbitkan takaran maupun cara pakai untuk
+        sediaan pengendali — termasuk untuk resep yang kriteria pelepasannya lengkap.
+      </p>
+      ${punyaTakaran ? `<p class="catatan">
+        Kosakata memuat angkanya, dan layar ini <strong>sengaja tidak
+        menampilkannya</strong>. Penahanan itu keputusan, bukan data yang hilang.
+      </p>` : ''}
+      ${a.phi != null ? `<p class="catatan">
+        Tenggang panennya pun ditahan. Angka yang ada bertanda
+        <code>${teks(a.phiDasar ?? '—')}</code> — bawaan yang sengaja berhati-hati, bukan
+        hasil uji residu; tidak ada uji residu untuk sediaan buatan sendiri.
+      </p>` : ''}
     </div>
-    ${a.phi != null ? `
-      <div class="kartu peringatan">
-        <h2>Tenggang panen ${angkaId(a.phi)} hari — <em>bukan hasil uji</em></h2>
-        <p>
-          Angka ini <code>${teks(a.phiDasar ?? '—')}</code>: <strong>bawaan yang sengaja
-          berhati-hati</strong>, bukan hasil uji residu. Tidak ada uji residu untuk
-          sediaan buatan sendiri.
-        </p>
-        ${a.catatan ? `<p class="catatan">${teks(a.catatan)}</p>` : ''}
-      </div>` : ''}`;
+    ${a.bahaya.length || a.apd.length ? `
+    <div class="kartu">
+      <h2>Yang berbahaya pada bahannya</h2>
+      <p class="catatan">
+        Ini peringatan tentang bahannya, <strong>bukan petunjuk memakainya</strong>.
+      </p>
+      ${a.bahaya.length ? `<p><strong>Bahaya:</strong> ${a.bahaya.map(teks).join(' ')}</p>` : ''}
+      ${a.apd.length ? `<p class="catatan">Bahan ini menuntut ${a.apd.map((x) => teks(APD[x] ?? x)).join(', ')} bahkan untuk sekadar menanganinya.</p>` : ''}
+    </div>` : ''}`;
 }
 
 // Tanpa kriteria pelepasan, sebuah sediaan tidak bisa dibakukan — dan yang tidak bisa
@@ -306,21 +329,18 @@ function kartuResep(r) {
       + 'hukum, dan halaman ini TIDAK menyimpulkan memakainya aman atau sah.');
   }
   const k = r.keselamatan ?? {};
-  if (k.phi != null) {
-    // Token mesin tidak ikut ke kartu. `precautionary_default` menjelaskan sesuatu
-    // kepada pembaca skema, bukan kepada orang yang memegang tangki semprot.
-    wajib.push(`Tenggang panen ${k.phi} hari itu bawaan yang sengaja berhati-hati, `
-      + 'BUKAN hasil uji residu. Tidak ada uji residu untuk sediaan buatan sendiri.');
-  }
-  const d = r.pemakaian?.dosis;
+  /* KARTU IKUT DITAHAN, dan justru kartulah yang paling penting ditahan: ia berpindah
+   * lewat WhatsApp tanpa membawa layar tempat batasnya dicetak. Dosis yang lepas dari
+   * konteksnya berhenti jadi catatan kedudukan hukum dan jadi anjuran — persis yang
+   * `docs/13` §6 sebut baru boleh bila tafsir Pasal 77-nya ternyata Bacaan B. */
   return {
     sumber: 'sediaan',
     judul: `${r.nama} — sediaan buatan sendiri`,
     inti: [
       r.definisi ?? null,
-      d?.nilai != null ? `Dosis: ${angkaId(d.nilai)} ${satuanTerbaca(d.satuan) || d.satuan}` : null,
-      r.pemakaian?.cara ? `Cara: ${r.pemakaian.cara}` : null,
-      k.apd?.length ? `APD: ${k.apd.map((x) => APD[x] ?? x).join(', ')}` : null,
+      'Takaran dan cara pakai TIDAK disertakan: keduanya ditahan sampai bacaan Pasal 77 '
+        + 'ayat (1) dijawab penasihat hukum.',
+      k.bahaya?.length ? `Bahaya pada bahannya: ${k.bahaya.join(' ')}` : null,
     ].filter(Boolean),
     wajib,
     tautan: terbukaKini?.tautan ?? location.href,

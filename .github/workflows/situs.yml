@@ -1,0 +1,98 @@
+# Jalur tayang Pranatani — dari kosakata ke satu direktori yang bisa diunggah.
+#
+# Sampai 24 Agustus 2026 tidak ada berkas ini, dan akibatnya dua hal. Pertama, suite
+# validasi yang seluruhnya hijau hanya berjalan kalau ada manusia yang ingat
+# menjalankannya. Kedua, situsnya tidak pernah dirakit di tempat lain selain satu laptop —
+# sehingga 425 MB dari 478 MB artefaknya hanya ada di sana, dan tidak ada yang tahu apakah
+# ia masih bisa dibangun dari isi repositori saja.
+#
+# Yang kedua itulah yang diperiksa tiap kali workflow ini jalan: runner mulai dari klon
+# bersih, jadi kalau sebuah sumber lupa di-commit, build di sini gagal — bukan enam bulan
+# kemudian saat mesinnya diganti.
+
+name: situs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      asal:
+        description: Domain untuk canonical dan sitemap
+        default: https://pranatani.com
+
+concurrency:
+  group: situs-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Satu tempat. Kalau domainnya berpindah, ia berpindah di sini — bukan di 27 ribu berkas,
+  # yang memang tidak pernah menyimpan domainnya sendiri.
+  ASAL: ${{ inputs.asal || 'https://pranatani.com' }}
+
+jobs:
+  bangun:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: spec/package-lock.json
+
+      - name: Pasang dependensi
+        working-directory: spec
+        run: npm ci
+
+      # Gerbang mutu lebih dulu, sebelum satu halaman pun dibangun: skema, aturan
+      # kebijakan, 89 uji negatif, 37 uji dosis, dan pencocokan angka dokumen ke datanya.
+      # Membangun 30 ribu halaman di atas data yang tidak lolos hanya menyebarkan galatnya.
+      - name: Periksa kosakata, aturan, dan angka
+        working-directory: spec
+        run: npm run all
+
+      - name: Bangun indeks
+        run: node spec/tools/bangun-indeks.mjs --tulis
+
+      - name: Bangun halaman
+        run: node spec/tools/bangun-halaman.mjs --tulis --asal="$ASAL"
+
+      # Merakit app/, spec/indeks/, terbit/, dan sw.js jadi satu akar — lalu memeriksa
+      # bahwa tiap tautan mutlak di 30 ribu halaman mendarat di berkas yang benar-benar
+      # ikut terangkut. Langkah inilah yang gagal kalau sebuah sumber lupa di-commit.
+      - name: Rakit situs dan periksa tautannya
+        run: node spec/tools/rakit-situs.mjs
+
+      - name: Ringkas hasil
+        run: |
+          {
+            echo "### Situs terakit"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Asal | \`$ASAL\` |"
+            echo "| Berkas | $(find _situs -type f | wc -l | tr -d ' ') |"
+            echo "| Halaman HTML | $(find _situs -name '*.html' | wc -l | tr -d ' ') |"
+            echo "| Ukuran | $(du -sh _situs | cut -f1) |"
+            echo "| Sitemap | $(ls _situs/sitemap-*.xml | wc -l | tr -d ' ') berkas, $(grep -ho '<loc>' _situs/sitemap-*.xml | wc -l | tr -d ' ') URL |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Artefak, bukan deploy. Host belum dipilih — dan 42 ribu berkas mencoret sebagian
+      # pilihan sebelum dibandingkan (Cloudflare Pages membatasi 20.000 berkas per deploy).
+      # Begitu host diputuskan, langkah unggahnya menggantikan langkah ini; yang di atas
+      # tidak perlu berubah sama sekali.
+      #
+      # Tidak dijalankan pada pull request: rakitannya ±480 MB, dan yang perlu diketahui
+      # sebuah PR adalah apakah ia membangun dan tautannya utuh — bukan salinan situsnya.
+      - name: Unggah artefak situs
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: situs-${{ github.sha }}
+          path: _situs
+          retention-days: 7
+          if-no-files-found: error

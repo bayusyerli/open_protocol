@@ -684,6 +684,70 @@ for (const [sk, daftar] of [...kandungan.entries()].sort((a, b) => a[0].localeCo
   (berkasKandungan[e] ??= {})[sk] = daftar.sort((a, b) => a.n.localeCompare(b.n));
 }
 
+/* REKAMAN UJI REGISTRI: DITANDAI, TIDAK DIHAPUS.
+ *
+ * Registri Kementan memuat artefak QA-nya sendiri — "TESTING BUGS GENERATE SK 17 NOV",
+ * "testcobasistem", "08oktest123", "Intel (Test)" yang bahkan nomor pendaftarannya berbunyi
+ * `01/Test/2018`. Mengetik "tes" di kotak cari menyodorkan belasan di antaranya sebagai
+ * produk terdaftar, dan itu merusak kepercayaan pada data yang sisanya justru disiplin.
+ *
+ * Menghapusnya ditolak: permukaan ini menyalin registri apa adanya, dan yang dihapus
+ * diam-diam membuat cacah di sini berbeda dari cacah di sumbernya tanpa ada yang bisa
+ * memeriksa kenapa. Yang dilakukan sama seperti perlakuan `kosong` di seri harga —
+ * ditandai, diturunkan ke belakang, dan dinyatakan apa adanya di kartunya.
+ *
+ * SYARATNYA GABUNGAN, dan itu bukan kehati-hatian yang berlebihan: `TESTAGRO` cocok dengan
+ * pola namanya, tetapi membawa komposisi enam bahan dan nomor pendaftaran berbentuk sah —
+ * ia kemungkinan merek sungguhan, dan menandainya sebagai artefak QA akan menyembunyikan
+ * produk nyata. Jadi yang ditandai hanya yang berpola nama uji DAN tidak punya komposisi
+ * DAN tidak punya satu pun penggunaan berlabel: 17 rekaman dari 14.920.
+ *
+ * POLANYA LONGGAR DI SATU SISI, KETAT DI SISI LAIN, dan keduanya disengaja. "test" di awal
+ * nama cukup jadi sinyal (`testssl`, `testmenungsa`, `testanorganikSK` tidak berpura-pura
+ * jadi merek), tetapi "coba" harus berdiri sebagai kata utuh — kalau tidak, `MACOBAN BLUE
+ * 80 WP`, `TRICOBA`, dan `COBAPUKANOR` ikut tersapu, dan ketiganya produk sungguhan. */
+const BENTUK_UJI = /^test|test\d|(^|[^a-z])(testing|test|coba|dummy)([^a-z]|$)/i;
+const rekamanUji = (r) => BENTUK_UJI.test(r.nama ?? '')
+  && !(r.isi ?? []).length
+  && !(r.guna ?? []).length;
+
+/* SISI BAHAN AKTIF, DAN KENAPA SYARATNYA TERPAKSA LAIN.
+ *
+ * Kosakata bahan aktif punya artefak QA-nya sendiri, dan mengetik "test" di kotak cari
+ * menyodorkannya sebagai entri teratas: "test — BAHAN AKTIF, 1 produk terdaftar · 1 kadar".
+ * Dari 845 bahan yang benar-benar terpakai di komposisi produk, pola nama uji mengenai
+ * TEPAT SATU: `op:sub:00001643` bernama "test", satu baris komposisi pada FERO LANAS —
+ * perangkap feromon terdaftar sungguhan — di samping BUTENOATE. Keduanya tercatat 100 %,
+ * jumlah yang tidak mungkin, dan itulah yang menunjukkan barisnya isian, bukan bahan.
+ * Produknya sendiri TIDAK ikut ditandai: yang artefak barisnya, bukan pendaftarannya.
+ *
+ * SYARATNYA TIDAK BISA MENIRU SISI PRODUK, karena rekaman bahannya tidak menyediakan
+ * bahan pembeda. Rekaman "test" berbentuk persis sama dengan rekaman bahan sungguhan yang
+ * langka: `substance_classes: [active_ingredient]`, satu pemetaan KEMENTAN, tanpa sinonim,
+ * tanpa kode IRAC — sama seperti "OIT" dan "(+)-abscisic acid", yang keduanya kimia betul
+ * dan sama-sama cuma dipakai satu produk. Tidak ada satu pun medan di kosakata yang
+ * memisahkan keduanya, jadi syarat keduanya diambil dari SEBERAPA TEBAL ia dipakai.
+ *
+ * Ambangnya satu produk, dan itu memang lemah sendirian — ratusan bahan sungguhan juga
+ * cuma dipakai satu produk. Tugasnya bukan menyaring hari ini (polanya sudah menyempitkan
+ * 845 jadi 1), melainkan menahan kasus TESTAGRO versi bahan pada penarikan registri
+ * berikutnya: nama yang kebetulan berpola uji tetapi dipakai puluhan produk hampir pasti
+ * bahan betulan, dan syarat ini melepaskannya. Arah salahnya sengaja dipilih — gagal
+ * menandai artefak baru jauh lebih murah daripada melabeli bahan sungguhan sebagai palsu.
+ *
+ * `^test` PADA POLA ITU LEBIH TAJAM DI SINI daripada di sisi produk, dan patut diingat
+ * kalau ambangnya nanti dilonggarkan: kamus kimia memuat testosteron, dan registri yang
+ * sama sudah memuat *Maruca testulalis* — nama spesies OPT yang muncul 27 kali. Tidak satu
+ * pun jadi nama bahan hari ini, tetapi keduanya akan cocok dengan `^test`.
+ *
+ * YANG SENGAJA TIDAK DISAPU: "(setara dengan emamektin)" dan "(setara dengan glufosinat)"
+ * (op:sub:00000508 dan 00000509) memang bukan bahan — keduanya potongan anotasi label yang
+ * terurai jadi baris komposisi sendiri. Tapi keduanya BUKAN rekaman uji, dan melabelinya
+ * "rekaman uji registri" akan menyebut yang salah tentang asalnya. Keduanya sekerabat
+ * dengan puluhan nama "…(setara dengan 2,4-D : 720 g/l)" yang bahannya justru sungguhan;
+ * memisahkan keluarga itu perlu penanganannya sendiri, bukan lencana ini. */
+const rekamanUjiBahan = (b) => BENTUK_UJI.test(b.nama ?? '') && b.produk <= 1;
+
 // ---------------------------------------------------------------------------
 // Bahan aktif → kadar → merek
 // ---------------------------------------------------------------------------
@@ -776,6 +840,18 @@ const bahanRinci = [...perZat.entries()]
       })),
   }));
 
+// Ditandai setelah rinciannya lengkap: syaratnya butuh `nama` DAN `produk`, dan keduanya
+// baru ada setelah perulangan di atas selesai. Medannya cuma ditulis kalau benar — `uji:
+// false` pada 844 entri sisanya ikut ditimbang saat pemecahan berkas tanpa memberi tahu
+// apa pun. Penghitungannya di sini, sekali, lalu dibaca dua tempat: entri ember cari dan
+// pecahan bahan yang diterbitkan (yang dipakai bangun-halaman.mjs untuk noindex).
+let bahanUji = 0;
+for (const b of bahanRinci) {
+  if (!rekamanUjiBahan(b)) continue;
+  b.uji = true;
+  bahanUji++;
+}
+
 // Satu bahan bisa sendirian melewati anggaran: Sipermetrin dipakai 183 produk pada
 // 37 kadar, dan nama pemegang pendaftaran tidak pendek. Yang dikeluarkan daftar
 // mereknya per kadar — pola yang sama dengan `merekDi` pada berkas OPT — jadi daftar
@@ -808,7 +884,7 @@ pecahanBahan.forEach((kelompok, i) => {
   const nomor = String(i).padStart(3, '0');
   const isi = {};
   for (const b of kelompok) {
-    isi[b.id] = { n: b.nama, larangan: b.larangan, produk: b.produk, kadar: b.kadar };
+    isi[b.id] = { n: b.nama, larangan: b.larangan, produk: b.produk, ...(b.uji ? { u: 1 } : {}), kadar: b.kadar };
     petaBahan.set(b.id, `bahan/${nomor}`);
   }
   berkasBahan.push([nomor, isi]);
@@ -981,10 +1057,14 @@ const tambah = (nama, entri) => {
   (cari[e] ??= []).push(nama === entri.n ? entri : { ...entri, _k: nama });
 };
 
+let cariUji = 0;
+
 for (const r of [...semuaProduk, ...semuaVarietas]) {
   // `f` cuma ditulis kalau ada isinya — medan bernilai null pada 26 ribu entri
   // memakan pecahan tanpa memberi tahu apa pun.
   const f = r.jenis === 'varietas' ? null : pembeda(r);
+  const uji = r.jenis !== 'varietas' && rekamanUji(r);
+  if (uji) cariUji++;
   // Varietas menautkan pemeliharanya lewat `principalPerNama`; produk lewat `pcp` yang sudah
   // terpasang di rinciannya. Keduanya menghasilkan `pk` yang sama bentuknya, sehingga kartu
   // hasil pencarian tidak perlu tahu ia sedang melihat produk atau varietas.
@@ -998,6 +1078,7 @@ for (const r of [...semuaProduk, ...semuaVarietas]) {
     k: r.jenis === 'varietas' ? r.komoditasNama : r.produsen,
     ...(f ? { f } : {}),
     ...(pk ? { pk } : {}),
+    ...(uji ? { u: 1 } : {}),
     p: petaPecahan.get(r.id),
   });
 }
@@ -1011,6 +1092,7 @@ for (const b of bahanRinci) {
     i: b.id,
     j: 'bahan',
     k: `${b.produk} produk terdaftar · ${b.kadar.length} kadar`,
+    ...(b.uji ? { u: 1 } : {}),
     p: petaBahan.get(b.id),
   });
 }
@@ -1850,6 +1932,58 @@ const ARTI_KEMAMPUAN = {
   t: 'tanah', p: 'pupuk', a: 'air', m: 'pangan', j: 'jaringan tanaman', r: 'residu pestisida',
 };
 
+/* SUREL BERNAMA ORANG TIDAK IKUT TERBIT.
+ *
+ * Papan akreditasi KAN mencantumkan kontak apa adanya, dan di antara 987 surel unik yang
+ * pernah ikut ke halaman laboratorium ada ratusan yang jelas milik seseorang —
+ * `yeni.heryani@…`, `Nurrina.riska@…`, `Adi.Nuryaman@…`. Menerbitkannya ulang, terindeks
+ * mesin pencari dan dapat dipanen, adalah pemrosesan data pribadi tanpa dasar; UU 27/2022
+ * menjangkaunya walau sumbernya papan publik. Ia juga bertentangan dengan garis repositori
+ * sendiri: CONTRIBUTING menolak surel perorangan, dan 576 varietas atas nama pemulia
+ * perorangan sengaja tidak dijadikan entitas dengan alasan yang persis sama.
+ *
+ * Yang dicari POLA ORANG, bukan daftar putih lembaga — daftar putih menahan
+ * `bbkkp_jogja@kemenperin.go.id` hanya karena ejaannya tidak terduga. Tiga aturan, dan
+ * urutannya menentukan:
+ *
+ *   1. memuat kata peran atau unit di mana pun  → lembaga, terbit
+ *   2. bagian lokalnya sama dengan label domain → lembaga, terbit (bbpk@bbpk.go.id)
+ *   3. berbentuk `depan.belakang` atau satu kata huruf murni → orang, DITAHAN
+ *
+ * Sisanya — yang bercampur angka atau tanda — terbit. Heuristik ini tidak sempurna dan
+ * memang dicondongkan: menahan surel lembaga cuma mengurangi kegunaan, sedangkan
+ * menerbitkan surel orang tidak bisa ditarik kembali. Cacahnya dilaporkan di ringkasan
+ * supaya condongnya terlihat, bukan diam-diam.
+ *
+ * Nomor telepon TIDAK disaring: yang tercantum nomor kantor, dan tidak satu pun berbentuk
+ * nomor pribadi pada tarikan ini. */
+const PERAN_LEMBAGA = /(lab|balai|dinas|upt|bbia|bbkk|bbpk|bpsm|bpmb|bps|bpom|bptk|psmb|ppk|info|admin|sekret|humas|mutu|uji|analis|kimia|riset|litbang|teknik|layanan|pusat|puslit|klinik|farmasi|env|ehs|qa|qc|hse|cs|customer|care|contact|kontak|office|sales|marketing|support|helpdesk|order|finance|hrd|umum|general|corp|prov|kab|kota|pemda|rsud|cabang|sucofindo|intertek|certification|global|indonesia)/i;
+const BENTUK_ORANG = /^([a-z]{2,}[._][a-z]{2,}|[a-z]{3,})$/i;
+let surelDitahan = 0; let surelTerbit = 0;
+
+const satuSurelLembaga = (s) => {
+  const [lokal, domain] = s.split('@');
+  const label = String(domain ?? '').split('.')[0] ?? '';
+  return PERAN_LEMBAGA.test(lokal)
+    || (lokal.toLowerCase() === label.toLowerCase() && label.length > 2)
+    || !BENTUK_ORANG.test(lokal);
+};
+
+/* SATU MEDAN BISA MEMUAT LEBIH DARI SATU ALAMAT. Papan KAN menuliskannya berderet dipisah
+ * spasi — `customercare@pln-litbang.co.id yeni.heryani@pln.co.id` — dan menguji derat itu
+ * sebagai satu alamat meloloskan surel orang di sebelahnya hanya karena tetangganya
+ * bernama peran. Jadi medannya dipecah dulu, disaring satu per satu, lalu yang lolos
+ * dirangkai kembali. */
+function surelLembaga(surel) {
+  const semua = String(surel ?? '').split(/[\s,;]+/).filter((x) => x.includes('@'));
+  if (!semua.length) return null;
+  const lolos = [];
+  for (const s of semua) {
+    if (satuSurelLembaga(s)) { lolos.push(s); surelTerbit++; } else surelDitahan++;
+  }
+  return lolos.length ? lolos.join(' ') : null;
+}
+
 const perLab = new Map();
 const cacahKemampuan = {};
 for (const x of labSemua) {
@@ -1869,7 +2003,7 @@ for (const x of labSemua) {
     sd: x.accreditation?.valid_until ?? null,
     k: kode,
     t: x.contact?.phone ?? null,
-    e: x.contact?.email ?? null,
+    e: surelLembaga(x.contact?.email),
   });
 }
 
@@ -1978,7 +2112,7 @@ const batas = {
     }),
     kurasiOpt: {
       label: 'Kurasi OPT & gejala cabai',
-      penerbit: 'Open Protocols',
+      penerbit: 'Pranatani',
       url: null,
       tarikan: tanggalTerbaru(optTerkurasi),
       tinjau: null,
@@ -2002,7 +2136,7 @@ const batas = {
       alasan:
         'Survei harga resmi kementerian, disalin apa adanya. Bukan A: yang dicatat hasil pencacahan pasar, bukan uji multi-lokasi. Tingkat ini berlaku untuk ANGKANYA saja — kalimat komentar di halaman yang sama bertingkat D dan menyebutkannya sendiri, karena tafsir tidak mewarisi tingkat sumbernya.',
       atribusi:
-        'Sumber: Portal Satu Data Kementerian Perdagangan (satudata.kemendag.go.id) – 2026, diolah kembali oleh Open Protocols.',
+        'Sumber: Portal Satu Data Kementerian Perdagangan (satudata.kemendag.go.id) – 2026, diolah kembali oleh Pranatani.',
     },
     principal: {
       label: 'Badan pemegang pendaftaran',
@@ -2019,7 +2153,7 @@ const batas = {
     },
     namaLokal: {
       label: 'Kamus nama lokal',
-      penerbit: 'Open Protocols',
+      penerbit: 'Pranatani',
       url: null,
       tarikan: tanggalTerbaru(namaLokal),
       tinjau: koleksi('nama-lokal.json').lifecycle?.review_due ?? null,
@@ -2058,7 +2192,7 @@ const batas = {
     },
     protokol: {
       label: 'Protokol budidaya Lapis 2',
-      penerbit: 'Open Protocols',
+      penerbit: 'Pranatani',
       url: null,
       tarikan: '2026-08-20',
       tinjau: null,
@@ -2097,7 +2231,7 @@ const batas = {
     },
     sediaan: {
       label: 'Resep sediaan buatan sendiri',
-      penerbit: 'Open Protocols',
+      penerbit: 'Pranatani',
       url: null,
       tarikan: tanggalTerbaru(sediaan),
       tinjau: null,
@@ -2428,6 +2562,8 @@ console.log(`  lab/              : ${labSemua.length} laboratorium di ${labWilay
 console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => lebihRinci(r.alamat)).length} lebih rinci dari kabupaten`);
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);
 console.log(`  opt-nama/         : ${optRegistriIndeks.length} OPT registri berproduk dapat dicari menurut nama — tidak satu pun punya teks gejala`);
+console.log(`  rekaman uji       : ${cariUji} produk + ${bahanUji} bahan aktif — artefak QA registri ditandai di ember cari, berlencana dan diturunkan, tidak dihapus`);
+console.log(`  surel lab         : ${surelTerbit} terbit sebagai kontak lembaga; ${surelDitahan} ditahan karena berpola nama orang — UU PDP 27/2022`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
 console.log(`  principal/        : ${kb([...berkas].filter(([p]) => p.startsWith('principal/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasPrincipal).length} berkas — ${meta.jumlah.principal} badan, ${meta.jumlah.produkBerprincipal} dari ${semuaProduk.length} produk tertaut`);
