@@ -144,6 +144,28 @@ boleh berkelas `public`.** Peta titik laporan tanpa verifikasi memicu penyemprot
 yang kerugiannya ditanggung petani sementara yang untung penjual pestisida — jadi peta itu
 tidak bisa tersusun dari data yang sah menurut aturan ini.
 
+### `L38` — siklus yang berakhir wajib menyebut kapan
+
+Penanda panen dilihat dari sisi pemeriksa. Skema memuat seluruh bahannya sejak lama —
+`Cycle.status` berenum enam sampai `closed`, `Cycle.actual_end` bertanggal, `Step.outputs`
+membawa kuantitas beserta kelas mutunya — tetapi **tidak satu pun mengikat yang satu ke
+yang lain**. Siklus berstatus `closed` tanpa `actual_end` lolos validasi skema, dan siklus
+semacam itu tidak bisa ditaruh di musim mana pun: ia selesai entah kapan.
+
+Arah sebaliknya sama merusaknya dan lebih halus. `actual_end` terisi sementara status
+masih `active` terbaca sebagai musim yang masih berjalan oleh yang membaca status, dan
+sebagai musim yang sudah berakhir oleh yang membaca tanggal — **dan yang membaca tanggal
+biasanya mesin.** Aturan ketiga menangkap `actual_end` yang mendahului `planned_start`:
+kekeliruan ketik yang paling mudah dibuat dan paling sulit dilihat sesudahnya, karena
+keduanya tanggal yang masuk akal sendiri-sendiri.
+
+Satu hal sengaja **peringatan, bukan kegagalan**: siklus berstatus `failed` tanpa
+`failure_reason`. Alasannya bukan di rekamannya melainkan di kosakatanya — medan itu
+menunjuk `Ref`, dan **kosakata alasan kegagalan siklus belum pernah dibuat**: tidak ada
+satu pun berkas di `vocab/` untuknya. Menuntut rujukan ke sesuatu yang tidak bisa dirujuk
+siapa pun bukan tuntutan yang adil, jadi yang dilakukan menyebutkan kekosongannya sampai
+kosakatanya dibuat.
+
 **Permukaannya belum dibangun, dan itu bukan kelalaian.** Menyerahkan laporan menuntut
 ujung yang bisa dituju. Lapis mentah `penyuluh_data/` kini menamainya — 548 dinas dan
 6.883 kecamatan ber-BPP — tetapi barisnya **bernama tanpa alamat, telepon, atau tautan**,

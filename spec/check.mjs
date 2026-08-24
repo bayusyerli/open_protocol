@@ -541,6 +541,45 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L38 — siklus yang berakhir wajib menyebut kapan, dan yang belum berakhir tidak
+    // boleh menyebutnya.
+    //
+    // Ini penanda panen dilihat dari sisi pemeriksa. Skema sudah memuat seluruh bahannya
+    // sejak lama — `status` berenum enam, `actual_end` bertanggal, `Step.outputs` membawa
+    // kuantitas panen — tetapi tidak satu pun MENGIKAT yang satu ke yang lain. Siklus
+    // berstatus "closed" tanpa `actual_end` lolos validasi skema, dan siklus semacam itu
+    // tidak bisa ditaruh di musim mana pun: ia selesai entah kapan.
+    //
+    // Arah sebaliknya sama merusaknya dan lebih halus. `actual_end` terisi sementara
+    // status masih "active" terbaca sebagai musim yang masih berjalan oleh yang membaca
+    // status, dan sebagai musim yang sudah berakhir oleh yang membaca tanggal — dan yang
+    // membaca tanggal biasanya mesin.
+    const isCycle = typeof doc.id === 'string' && doc.id.startsWith('op:cyc:');
+    if (isCycle) {
+      const BERAKHIR = ['harvested', 'closed', 'failed', 'abandoned'];
+      if (BERAKHIR.includes(doc.status) && !doc.actual_end) {
+        fail(file, 'L38-siklus-berakhir', `Siklus berstatus "${doc.status}" tanpa actual_end. Siklus yang berakhir tanpa tanggal tidak bisa ditaruh di musim mana pun, dan biaya maupun hasil yang menempel padanya tidak bisa dibandingkan dengan siklus lain.`);
+      }
+      if (doc.actual_end && !BERAKHIR.includes(doc.status)) {
+        fail(file, 'L38-siklus-berakhir', `actual_end berisi ${doc.actual_end} sementara status masih "${doc.status}". Yang membaca status melihat siklus yang masih berjalan; yang membaca tanggal melihat siklus yang sudah berakhir — dan yang membaca tanggal biasanya mesin.`);
+      }
+
+      // Berakhir sebelum dimulai. Kekeliruan ketik yang paling mudah dibuat dan paling
+      // sulit dilihat sesudahnya, karena keduanya tanggal yang masuk akal sendiri-sendiri.
+      if (doc.actual_end && doc.planned_start && doc.actual_end < doc.planned_start) {
+        fail(file, 'L38-siklus-berakhir', `actual_end ${doc.actual_end} mendahului planned_start ${doc.planned_start}. Siklus tidak bisa berakhir sebelum ia dimulai.`);
+      }
+
+      // Kegagalan tanpa sebab. Dibuat PERINGATAN, bukan kegagalan, dan alasannya tidak
+      // ada di rekamannya melainkan di kosakatanya: `Cycle.failure_reason` menunjuk Ref,
+      // dan kosakata alasan kegagalan siklus BELUM PERNAH DIBUAT — tidak ada satu pun
+      // berkas di spec/vocab/ untuknya. Menjadikannya kegagalan berarti menuntut rujukan
+      // ke sesuatu yang tidak bisa dirujuk siapa pun.
+      if (doc.status === 'failed' && !doc.failure_reason) {
+        warn(file, 'L38-siklus-berakhir', 'Siklus berstatus "failed" tanpa failure_reason. Belum jadi kegagalan pemeriksaan karena kosakata alasan kegagalan siklus memang belum ada di spec/vocab/ — medan ini menunjuk Ref yang tidak punya tujuan. Sampai kosakatanya dibuat, kegagalan musim tercatat tanpa sebab yang bisa diagregasi.');
+      }
+    }
+
     // L20 — sediaan mikroba tanpa uji cemaran adalah biakan yang tidak diketahui isinya.
     if (isPreparation && (doc.preparation_class === 'microbial_culture' || doc.preparation_class === 'bioactivator')) {
       if (!(doc.release_criteria ?? []).some((c) => c.kind === 'contamination')) {

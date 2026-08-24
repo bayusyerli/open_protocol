@@ -309,6 +309,59 @@ diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan ya
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
 
+### Penanda panen — dan angka yang tidak diukur sumber terbuka mana pun
+
+Lubang ini disebut namanya di blok batas D3: *"kapan rencana boleh dianggap tertutup"*
+tidak punya jawaban, dan karena itu tidak ada layar yang boleh membandingkan hasil dengan
+perkiraannya. **Yang menahan ternyata bukan skema.** `Cycle.status` sudah berenum enam
+sampai `closed`, `Cycle.actual_end` sudah bertanggal, dan `Step.outputs` sudah membawa
+kuantitas beserta kelas mutunya. Ketiganya ada sejak lama dan tidak satu pun pernah sampai
+ke permukaan.
+
+- **Panen itu daftar, bukan tanggal.** Kosakata operasi sudah memisahkan `panen` dari
+  `panen-bertahap`, dan yang kedua itulah keadaan biasa pada cabai, tomat, dan cabai
+  rawit: dipetik berulang selama berminggu-minggu. Satu medan "tanggal panen" akan memaksa
+  orang memilih petikan mana yang dianggap panen, dan menjumlahkan sisanya dalam ingatan.
+- **Uangnya lewat buku kas, bukan medan kedua.** Kalau panen menyimpan rupiahnya sendiri,
+  ia jadi gagasan pemasukan yang kedua — dan dua gagasan pemasukan yang menjumlahkan hal
+  yang sama adalah cara termudah membuat total yang tidak pernah cocok.
+- **Menutup musim adalah peristiwa, bukan medan yang diisi**, dan letaknya di bawah daftar
+  panen — bukan di kartu musim di kepala halaman, yang dibuka orang untuk *mengganti*
+  musim, bukan untuk mengakhirinya. Membuka lagi tetap disediakan, dan tanggalnya ikut
+  dicabut.
+
+**Angka yang jadi seluruh alasan ini dibangun.** Halaman analisis usaha tani dibangun di
+sekitar satu penolakan: harga eceran bukan harga yang diterima petani, dan bahkan "harga
+produsen" resmi bukan — respondennya pengumpul dan penggilingan, di Karawang satu orang.
+Tetapi **ada satu orang yang memegang angkanya, dan ia yang sedang membuka layar itu**:
+
+> harga yang benar-benar diterima = uang yang benar-benar masuk ÷ kilogram yang
+> benar-benar dipanen
+
+Keduanya catatannya sendiri — yang satu di buku kas, yang satu di penanda panen. Tidak ada
+sumber terbuka yang perlu diminta dan tidak ada yang dikarang. Dua penahan tetap
+dinyatakan di layar: sebelum musim ditutup ia disebut *"sejauh ini"* karena panen yang
+belum terjual menariknya ke bawah, dan ia **tidak** ditaruh bersebelahan dengan harga
+eceran, karena selisih keduanya bukan kerugian siapa pun.
+
+**Pemeriksa ikut, sebagai `L38`.** Skema memuat seluruh bahannya tetapi tidak mengikat yang
+satu ke yang lain: siklus berstatus `closed` tanpa `actual_end` lolos validasi, dan siklus
+semacam itu tidak bisa ditaruh di musim mana pun. Arah sebaliknya lebih halus — `actual_end`
+terisi sementara status masih `active` terbaca sebagai musim berjalan oleh yang membaca
+status dan musim berakhir oleh yang membaca tanggal, **dan yang membaca tanggal biasanya
+mesin**. Aturan ketiga menangkap tanggal berakhir yang mendahului tanggal mulai.
+
+Satu hal sengaja dibuat **peringatan, bukan kegagalan**: siklus berstatus `failed` tanpa
+`failure_reason`. Alasannya bukan di rekamannya melainkan di kosakatanya — medan itu
+menunjuk `Ref`, dan **kosakata alasan kegagalan siklus belum pernah dibuat**, tidak ada
+satu pun berkas untuknya. Menuntut rujukan ke sesuatu yang tidak bisa dirujuk siapa pun
+bukan tuntutan yang adil, jadi yang dilakukan menyebutkan kekosongannya.
+
+Cacat lama yang ikut terangkat karena muncul untuk ketiga kalinya: keterangan `.sub` di
+dalam `dd` tidak pernah punya barisnya sendiri, jadi ia menempel ke angkanya
+(*"1.420 kg/hadari 0,25 ha"*). Kedelapan pemakaiannya di seluruh app memaksudkan hal yang
+sama, jadi aturannya kini **tanpa skop kartu**.
+
 ### D3 ikut ke rekaman musim — dan rencana berdiri di sebelah realisasinya
 
 Layar analisis usaha tani pemakai **ketiga** kata "musim", dan satu-satunya yang belum

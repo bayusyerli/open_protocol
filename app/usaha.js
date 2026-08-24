@@ -28,7 +28,7 @@ document.getElementById('tanpaJs')?.remove();
 
 const el = {};
 for (const id of ['barisBiaya', 'tambahBiaya', 'hasilBiaya', 'luas', 'hasil',
-  'komoditas', 'hasilImpas', 'kartuMusim', 'bandingKas']) el[id] = document.getElementById(id);
+  'komoditas', 'hasilImpas', 'kartuMusim', 'bandingKas', 'hasilPanen']) el[id] = document.getElementById(id);
 el.batas = document.getElementById('batasJawaban');
 
 const rupiah = (x) => 'Rp ' + Math.round(x).toLocaleString('id-ID');
@@ -66,6 +66,18 @@ const KATEGORI = buku.KATEGORI_KELUAR;
  * satuan yang bukan miliknya — jadi yang diseragamkan penyimpanannya, bukan pertanyaannya,
  * dan hasil konversinya tampak supaya tidak ada yang berubah diam-diam.
  */
+/* Panen tinggal di simpanan layar rencana dan DIBACA saja dari sini. Menyalinnya ke
+ * simpanan layar ini akan melahirkan salinan kedua yang lambat laun berselisih — cacat
+ * yang sudah sekali terjadi di repositori ini, waktu pemindahan bentuk lama ditaruh di dua
+ * berkas dan yang satu menimpa yang dibaca yang lain. Satu penulis, banyak pembaca. */
+const KUNCI_REALISASI = 'op:realisasi';
+const panenMusim = (id) => {
+  try {
+    const m = JSON.parse(localStorage.getItem(KUNCI_REALISASI) ?? '{}');
+    return m?.[id]?.panen ?? [];
+  } catch { return []; }
+};
+
 const KUNCI_RAB = 'op:rab';
 const M2_PER_HA = 10000;
 
@@ -125,6 +137,85 @@ function bacaBiaya() {
  * jadi titik impas dari angka itu selalu tampak lebih baik — kabar bagus yang seluruhnya
  * berasal dari musim yang belum selesai. Yang ditayangkan karena itu selisih per kategori,
  * bukan kesimpulan baru. */
+/* ---------------------------------------------------------------------------
+ * Harga yang benar-benar diterima — dan kenapa layar ini akhirnya boleh menghitungnya
+ * ---------------------------------------------------------------------------
+ * Seluruh halaman ini dibangun di sekitar satu penolakan: harga eceran BUKAN harga yang
+ * diterima petani, dan bahkan "harga produsen" resmi bukan — respondennya pengumpul dan
+ * penggilingan, di Karawang satu orang. Jaraknya terpasang di dalam definisinya, bukan
+ * celah cakupan. Karena itu yang ditayangkan selama ini rasio, bukan dua angka
+ * berdampingan.
+ *
+ * TETAPI ADA SATU ORANG YANG MEMEGANG ANGKANYA, dan ia yang sedang membuka layar ini.
+ * Harga yang benar-benar diterima = uang yang benar-benar masuk ÷ kilogram yang
+ * benar-benar dipanen. Keduanya miliknya sendiri: yang satu di buku kas, yang satu di
+ * penanda panen. Tidak ada sumber terbuka yang perlu diminta, dan tidak ada yang
+ * dikarang. Ini satu-satunya tempat di seluruh permukaan yang bisa menyebut angka itu.
+ *
+ * DUA PENAHAN, DAN KEDUANYA DINYATAKAN DI LAYAR.
+ *
+ *   1. Selama musim belum ditutup, angkanya BELUM angka musim. Panen yang belum terjual
+ *      menariknya ke bawah, dan penjualan yang mendahului panen berikutnya menariknya ke
+ *      atas. Jadi sebelum ditutup ia disebut "sejauh ini", dan sesudah ditutup barulah ia
+ *      disebut harga musim ini.
+ *   2. Ia tidak dibandingkan dengan harga eceran di kartu yang sama. Selisih keduanya
+ *      bukan kerugian siapa pun — eceran memuat marjin seluruh rantai — dan menaruh
+ *      keduanya berdampingan persis yang ditolak aturan tayang ke-5.
+ */
+function gambarPanen() {
+  const m = musim.aktif();
+  const id = musim.idMusimAktif();
+  if (!id) { el.hasilPanen.innerHTML = ''; return; }
+  const c = panenMusim(id);
+  const totalKg = c.reduce((a, x) => a + Number(x.kg || 0), 0);
+  const masuk = buku.perMusim(id).filter((x) => x.a === 'masuk').reduce((a, x) => a + Number(x.n || 0), 0);
+  const ditutup = musim.sudahBerakhir(m);
+  const perkiraan = angka(el.hasil.value);
+  const biaya = bacaBiaya().reduce((a, x) => a + x.jml, 0);
+
+  if (!totalKg) {
+    el.hasilPanen.innerHTML = `<p class="catatan">Belum ada panen tercatat di
+      <a href="rencana.html">layar rencana</a>. Begitu ada, perkiraan hasil di atas berdiri
+      di sebelah hasil yang sebenarnya — dan <strong>harga yang benar-benar kamu terima</strong>
+      bisa dihitung dari angkamu sendiri, tanpa satu pun sumber luar.</p>`;
+    return;
+  }
+
+  const diterima = masuk > 0 ? masuk / totalKg : null;
+  const impasNyata = biaya ? biaya / totalKg : null;
+  const selisihHasil = perkiraan ? (totalKg - perkiraan) / perkiraan * 100 : null;
+
+  el.hasilPanen.innerHTML = `
+    <div class="kartu banding">
+      <h2>Hasil sebenarnya${ditutup ? '' : ' sejauh ini'}</h2>
+      <dl class="kunci">
+        <dt>Sudah dipanen</dt><dd>${n(totalKg)} kg<span class="sub">dari ${n(c.length)} kali panen</span></dd>
+        ${perkiraan ? `<dt>Perkiraan tadi</dt>
+          <dd class="${selisihHasil < 0 ? 'lewat' : ''}">${n(perkiraan)} kg<span class="sub">${selisihHasil >= 0 ? '+' : '−'}${n(Math.abs(selisihHasil), 0)}% dari perkiraan</span></dd>` : ''}
+        ${impasNyata ? `<dt>Titik impas atas hasil ini</dt>
+          <dd>${rupiah(impasNyata)}/kg<span class="sub">${rupiah(biaya)} ÷ ${n(totalKg)} kg</span></dd>` : ''}
+      </dl>
+      ${diterima ? `
+        <div class="hasil-besar">
+          <strong>${rupiah(diterima)}</strong>
+          <span>per kilogram — harga yang benar-benar kamu terima${ditutup ? '' : ', sejauh ini'}</span>
+        </div>
+        <p class="catatan">
+          ${rupiah(masuk)} yang masuk ÷ ${n(totalKg)} kg yang dipanen. <strong>Tidak ada
+          sumber luar dalam angka ini</strong> — keduanya catatanmu sendiri, dan justru
+          inilah angka yang tidak diukur sumber terbuka mana pun di Indonesia.
+          ${ditutup ? '' : 'Musim ini belum ditutup, jadi ia belum angka musim: panen yang belum terjual menariknya ke bawah, dan penjualan yang mendahului panen berikutnya menariknya ke atas.'}
+        </p>
+        ${impasNyata ? `<p class="catatan">${diterima >= impasNyata
+          ? `Di atas titik impas atas hasil ini (${rupiah(impasNyata)}/kg).`
+          : `<strong>Di bawah titik impas atas hasil ini</strong> (${rupiah(impasNyata)}/kg) — pada harga ini, biaya yang sudah kamu rencanakan belum tertutup.`}</p>` : ''}
+      ` : `<p class="catatan">Belum ada uang masuk tercatat, jadi <strong>harga yang
+        benar-benar kamu terima</strong> belum bisa dihitung. Ia satu-satunya angka di
+        halaman ini yang tidak butuh sumber luar sama sekali — cukup uang masuk di buku kas
+        dan kilogram di penanda panen, keduanya milikmu.</p>`}
+    </div>`;
+}
+
 function gambarBanding() {
   const id = musim.idMusimAktif();
   const nyata = id ? buku.perMusim(id).filter((c) => c.a === 'keluar') : [];
@@ -236,6 +327,7 @@ function hitung() {
 function hitungLalu() {
   hitung();
   gambarBanding();
+  gambarPanen();
   simpanRab();
 }
 
@@ -267,6 +359,7 @@ function bukaMusim(m) {
   }
   hitung();
   gambarBanding();
+  gambarPanen();
 }
 
 /* Rasio, bukan dua angka bersebelahan — aturan tayang ke-5 di docs/16. */
@@ -342,13 +435,14 @@ hitung();
           + 'selesai. Yang belum bisa dijawab layar ini: kapan rencana boleh dianggap tertutup, '
           + 'dan itu menuntut penanda panen yang belum ada di permukaan mana pun.',
       }, {
-        judul: 'Hasil panen yang sebenarnya, dibandingkan dengan perkiraannya',
+        judul: 'Harga yang kamu terima tidak bisa dibandingkan dengan harga petani lain',
         teks:
-          'Perkiraan hasil panen di sini dalam kilogram; buku kas mencatat hasil jual dalam '
-          + 'rupiah. Keduanya tidak bisa disandingkan tanpa harga per kilogram yang benar-benar '
-          + 'diterima — dan justru itu yang tidak diukur sumber terbuka mana pun. Menyandingkan '
-          + 'keduanya dengan harga eceran sebagai jembatan akan menghasilkan angka yang tampak '
-          + 'tepat dan salah.',
+          'Sejak penanda panen ada, halaman ini bisa menghitung harga yang BENAR-BENAR kamu '
+          + 'terima — uang masuk dibagi kilogram yang dipanen, keduanya catatanmu sendiri, '
+          + 'tanpa satu pun sumber luar. Yang tidak bisa dilakukan: menaruhnya di sebelah angka '
+          + 'petani lain di kecamatan yang sama. Itu menuntut pengumpulan, dan lapisan ini '
+          + 'hanya menyebarkan. Yang tersedia sebagai pembanding cuma harga eceran nasional, '
+          + 'dan selisihnya bukan kerugian siapa pun: eceran memuat marjin seluruh rantai.',
       }],
     });
   } catch (e) {
