@@ -217,7 +217,7 @@ const HRG = existsSync(dari('spec/vocab/harga/harga.ndjson'))
   ? nd('spec/vocab/harga/harga.ndjson') : null;
 
 if (PCP) {
-  cek('15', 'badan pemegang pendaftaran', PCP.length, 3136);
+  cek('15', 'badan pemegang pendaftaran', PCP.length, 3135);
   cek('15', 'badan berpengaya riset (D)', PCP.filter((b) => b.profile).length, 151);
   cek('15', 'badan di kedua registri', PCP.filter((b) =>
     b.sectors.includes('seed') && (b.sectors.includes('pesticide') || b.sectors.includes('fertilizer'))).length, 19);

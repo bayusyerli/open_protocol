@@ -163,7 +163,20 @@ Aturannya:
 - **Nama asli tidak pernah ditimpa.** Hasil penyeragaman selalu masuk kolom terpisah.
 - **Setiap penggabungan dicatat beserta alasannya** di berkas alias, memakai kosakata `dasar`
   yang sama di kedua sisi: `kanonik`, `ejaan/kapitalisasi/spasi`, `tanda-baca`,
-  `beda-bentuk-badan`.
+  `beda-bentuk-badan`, `id-registri-sama`.
+- **`id-registri-sama` bukan penilaian atas ejaan, melainkan kutipan dari registri.** Empat
+  nilai `dasar` lainnya menjawab pertanyaan "apakah dua ejaan ini menyebut badan yang sama?"
+  dengan menimbang ejaannya. Nilai ini dipakai ketika registri sudah menjawabnya sendiri:
+  `pupuk_terdaftar.csv` dan `pupuk_terdaftar_legacy.csv` masing-masing membawa UUID badan
+  (`perusahaan_id` / `id_perusahaan`), dan dua ejaan yang berbagi satu UUID adalah satu
+  badan menurut pihak yang mendaftarkannya. Karena itu ia mengalahkan kemiripan ejaan ke
+  dua arah: ia menggabung nama yang tidak mirip, dan ia TIDAK menggabung nama yang mirip
+  tetapi ber-UUID beda. Pemakaiannya sekarang satu — `Perusahaan Perseroan (Persero) PT.
+  Pupuk Indonesia` (20 pendaftaran, basis SIMPEL) dan `PT Pupuk Indonesia (Persero)`
+  (4 pendaftaran, basis SIMPUK 2020) sama-sama ber-UUID
+  `4a4f695d-430d-417f-83d1-4895100ae731`, dan tidak ada nama ketiga yang memakainya.
+  Justru karena UUID-lah `PUPUK INDONESIA NIAGA` (`2ec851a5…`) dan `PT. Persada Pupuk
+  Indonesia` (`22ddd2c0…`) tetap berdiri sendiri meski namanya jauh lebih mirip.
 - **Pemilihan bentuk kanonik**, berurutan: ada prefiks badan hukum → bukan ALL CAPS → tanpa
   spasi ganda atau spasi ekor → paling sering muncul.
 - **`perlu_tinjau=ya`** untuk nama yang sama tetapi bentuk badannya berbeda (CV vs PT vs UD).
@@ -172,7 +185,9 @@ Aturannya:
   PT BISI International atau PT Benih Inti Subur Intani — dua-duanya masuk akal. Tandai,
   jangan tebak.
 - **Membalik penggabungan** = sunting berkas alias, bangkitkan ulang kolom kanoniknya. Tidak
-  ada data asli yang hilang.
+  ada data asli yang hilang. Kolom `nama_kanonik` di berkas data adalah proyeksi murni dari
+  berkas alias — `alias[nama_asli] ?? nama_asli`, tanpa kekecualian — jadi berkas alias
+  selalu bisa dijadikan satu-satunya yang disunting tangan.
 
 Catatan: `pukpes_data/produsen_master.csv` dibuat sebelum konvensi ini disepakati dan memakai
 cara lama — nama asli tidak disimpan, alasan penggabungan tidak dicatat, dan bentuk
