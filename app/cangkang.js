@@ -181,7 +181,29 @@ function ukurBilah(bilah) {
  * hasilnya dibuka di lembar — BUKAN dengan berpindah halaman, supaya yang sedang dikerjakan
  * di layar itu tidak hilang hanya karena satu nama ingin dicek.
  *
- * Rutenya `tautanHasil()` di pustaka.js, sama persis dengan yang dipakai beranda. */
+ * Rutenya `tautanHasil()` di pustaka.js, sama persis dengan yang dipakai beranda.
+ *
+ * KAPAN LEMBARNYA BOLEH TERBIT. Versi pertama membukanya 220 ms sesudah huruf KEDUA,
+ * sebelum jawabannya ada. Yang terjadi di layar: mengetik "pu" menutup seluruh halaman
+ * dengan lembar yang isinya cuma "Tambah 1 huruf lagi." — indeksnya memang belum sanggup
+ * menjawab dua huruf — dan `showModal()` memindahkan sorotan ke tombol tutup, sehingga
+ * "puk" yang diketik berikutnya hilang tanpa suara. Lembar itu bukan menjawab lebih
+ * cepat; ia memotong pertanyaannya di tengah.
+ *
+ * Tiga aturan yang berlaku sekarang, ketiganya soal SIAPA yang memutuskan lembar terbit:
+ *   1. Mengetik hanya membuka lembar kalau ada HASIL. "Kurang huruf", "tidak ada yang
+ *      bernama itu", dan "indeks tidak terambil" adalah jawaban untuk pertanyaan yang
+ *      sudah selesai ditanya — jadi ketiganya menunggu Enter, atau lembar yang memang
+ *      sudah terbuka. Selama masih mengetik, kotaknya diam.
+ *   2. Jeda 600 ms dan minimal tiga huruf sebelum ketikan menjawab sendiri. Tiga karena
+ *      di bawah itu `cari()` hampir selalu memulangkan `kurang`, bukan hasil.
+ *   3. Enter (atau tombol cari di papan ketik ponsel — `enterkeyhint="search"`) membuka
+ *      lembarnya SEKARANG, apa pun jawabannya. Sebelum ini tombol itu tidak melakukan
+ *      apa-apa: submit-nya cuma `preventDefault()`.
+ *
+ * Sisanya ditangani `keydown` di bawah: di ponsel jarak antar huruf memang sering lebih
+ * panjang dari jeda mana pun yang masuk akal, jadi lembar tetap bisa terbit di tengah
+ * orang mengetik — dan huruf berikutnya harus kembali ke kotaknya, bukan ke tombol tutup. */
 function pasangCari(bilah) {
   const borang = document.createElement('form');
   borang.className = 'cari-cangkang';
@@ -190,20 +212,35 @@ function pasangCari(bilah) {
     <label class="khusus-pembaca" for="qCangkang">Cari nama produk, bahan aktif, atau gejala</label>
     <input id="qCangkang" type="search" autocomplete="off" spellcheck="false"
            enterkeyhint="search" placeholder="Cari nama, bahan, gejala">`;
-  borang.addEventListener('submit', (e) => e.preventDefault());
   bilah.querySelector('.merek-cangkang').after(borang);
 
   const lembar = lembarKosong('cariLembar', 'Hasil pencarian');
   const isi = lembar.querySelector('.lembar-cangkang-isi');
   const q = borang.querySelector('input');
 
+  const MIN = 3;     // huruf minimum sebelum ketikan menjawab sendiri
+  const JEDA = 600;  // ms sunyi sesudah huruf terakhir
+
+  // Sorotan berhenti di lembar itu sendiri, bukan di tombol tutup — pembaca layar tetap
+  // mendengar judulnya, dan `keydown` di bawah jadi punya tanda yang jelas untuk
+  // membedakan "lembar terbit di bawah tangan yang masih mengetik" dari "orangnya sudah
+  // masuk ke daftar hasil".
+  const buka = () => { if (!lembar.open) { lembar.showModal(); lembar.focus(); } };
+
   let jalan = 0;
-  const cariSekarang = async () => {
+  /** @param {boolean} diminta Enter/tombol cari — jawaban wajib terbit, apa pun isinya. */
+  const cariSekarang = async (diminta = false) => {
     const kueri = q.value.trim();
-    if (kueri.length < 2) { lembar.open && lembar.close(); return; }
+    if (kueri.length < 2) {                       // di bawah dua huruf indeksnya tak bisa dipanggil
+      if (diminta) { buka(); isi.innerHTML = '<p class="bantuan">Ketik dua huruf atau lebih.</p>'; }
+      else if (lembar.open) lembar.close();
+      return;
+    }
+    if (!diminta && !lembar.open && kueri.length < MIN) return;   // masih mengetik
     const giliran = ++jalan;
-    if (!lembar.open) lembar.showModal();
-    isi.innerHTML = '<p class="bantuan">Mencari…</p>';
+    // "Mencari…" cuma pantas di lembar yang sudah kelihatan. Membuka lembar untuk
+    // memperlihatkannya berarti menutupi halaman demi kabar bahwa belum ada kabar.
+    if (lembar.open || diminta) { buka(); isi.innerHTML = '<p class="bantuan">Mencari…</p>'; }
     try {
       // KETIGANYA, bukan cuma nama. Versi pertama kotak ini hanya memanggil cari(), dan
       // akibatnya kotak yang RUPANYA sama dengan kotak beranda menjawab lebih sedikit:
@@ -224,6 +261,8 @@ function pasangCari(bilah) {
       if (giliran !== jalan) return;                 // ketikan yang lebih baru menang
       const { hasil = [], kurang } = namaHasil;
       if (kurang && !gejala.length && !lokal.length) {
+        if (!lembar.open && !diminta) return;     // aturan 1 — jangan potong yang masih mengetik
+        buka();
         isi.innerHTML = `<p class="bantuan">Tambah ${kurang} huruf lagi.</p>`; return;
       }
       const lain = [
@@ -233,6 +272,11 @@ function pasangCari(bilah) {
           u: `jalur-1.html?${new URLSearchParams({ opt: l.i })}` })),
       ];
       if (!hasil.length && !lain.length) {
+        // Nol hasil di tengah ketikan hampir selalu berarti namanya belum selesai
+        // diketik, bukan barangnya tidak ada. Kalimat di bawah ini berat — ia menyangkal
+        // "berarti tidak terdaftar" — dan tidak boleh diucapkan atas pertanyaan separuh.
+        if (!lembar.open && !diminta) return;
+        buka();
         isi.innerHTML = `<p class="bantuan">Tidak ada yang bernama <strong>${teks(kueri)}</strong>.
           Nama di kemasan sering berbeda dari nama terdaftarnya, jadi ini
           <strong>bukan bukti produknya tidak terdaftar</strong>.</p>`;
@@ -252,6 +296,7 @@ function pasangCari(bilah) {
       // ini akan memberi lima kartu "PHONSKA" yang tampak seragam, yaitu persis keadaan
       // yang sudah diperbaiki di daftar hasil halaman.
       const banyakJenis = new Set(tampil.map((x) => x.j)).size > 1;
+      buka();
       isi.innerHTML = `
         <p class="bantuan">${hasil.length + lain.length} hasil${hasil.length > tampil.length
           ? `, ditampilkan ${tampil.length + lain.length} teratas` : ''}.</p>
@@ -269,12 +314,37 @@ function pasangCari(bilah) {
         ${blokLain}`;
     } catch {
       if (giliran !== jalan) return;
+      if (!lembar.open && !diminta) return;
+      buka();
       isi.innerHTML = '<p class="bantuan">Indeksnya tidak terambil. Periksa sambungan, lalu ketik ulang.</p>';
     }
   };
 
   let tunda;
-  q.addEventListener('input', () => { clearTimeout(tunda); tunda = setTimeout(cariSekarang, 220); });
+  const jadwalkan = () => { clearTimeout(tunda); tunda = setTimeout(() => cariSekarang(), JEDA); };
+  q.addEventListener('input', jadwalkan);
+  borang.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearTimeout(tunda);
+    cariSekarang(true);
+  });
+
+  // Huruf yang terlanjur diketik sesudah lembarnya terbit tidak boleh hilang. Selama
+  // sorotannya masih di lembar itu sendiri — artinya orangnya belum menyentuh satu pun
+  // hasil — huruf berikutnya menutup lembar, mengembalikan sorotan ke kotak, dan ikut
+  // terketik di sana. Begitu ia sudah masuk ke daftar hasil (Tab, sentuh, klik), aturan
+  // ini berhenti berlaku dan papan ketik kembali milik lembar.
+  lembar.addEventListener('keydown', (e) => {
+    if (document.activeElement !== lembar) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const huruf = e.key.length === 1;
+    if (!huruf && e.key !== 'Backspace') return;
+    e.preventDefault();
+    lembar.close();
+    q.focus();
+    q.value = huruf ? q.value + e.key : q.value.slice(0, -1);
+    jadwalkan();
+  });
 }
 
 /** Lembar kosong bergaya sama, dipakai hasil pencarian dan daftar "Semua". */
@@ -282,6 +352,7 @@ function lembarKosong(id, judul) {
   const l = document.createElement('dialog');
   l.id = id;
   l.className = 'lembar-cangkang';
+  l.tabIndex = -1;                    // supaya sorotan bisa berhenti di lembarnya sendiri
   l.innerHTML = `
     <form method="dialog" class="lembar-cangkang-kepala">
       <h2>${judul}</h2><button aria-label="Tutup">×</button>
