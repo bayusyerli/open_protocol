@@ -554,18 +554,22 @@ a { color: var(--aksen); }
    memakai palet yang sudah ada, sehingga sakelar tema tidak perlu tahu bahwa
    halaman-halaman ini ada. */
 
-/* Nama pemegang pendaftaran sebagai tautan.
-   Digarisbawahi, bukan sekadar berwarna: nama perusahaan muncul di dalam tabel
-   dan daftar definisi, tempat warna sendirian tidak cukup membedakan yang bisa
-   diketuk dari yang tidak. */
-.tautan-principal {
+/* Nama yang jadi tautan DI DALAM tabel — pemegang pendaftaran, dan nama OPT di
+   tabel "terdaftar untuk".
+   Digarisbawahi, bukan sekadar berwarna: keduanya muncul di dalam tabel dan daftar
+   definisi, tempat warna sendirian tidak cukup membedakan yang bisa diketuk dari
+   yang tidak. */
+.tautan-principal,
+.tautan-opt {
   color: inherit;
   text-decoration: underline;
   text-decoration-color: var(--aksen);
   text-underline-offset: 2px;
 }
 .tautan-principal:hover,
-.tautan-principal:focus-visible { color: var(--aksen); }
+.tautan-principal:focus-visible,
+.tautan-opt:hover,
+.tautan-opt:focus-visible { color: var(--aksen); }
 
 /* Baris daftar yang seluruhnya jadi tautan — dipakai daftar harga dan hasil
    pencarian principal. Sasaran ketuknya sebaris penuh, bukan sepotong teks. */
@@ -693,6 +697,52 @@ a { color: var(--aksen); }
   background: var(--latar);
 }
 .kemasan-lain figcaption { color: var(--teks-lemah); font-size: 0.75rem; text-align: center; }
+
+/* Petak kemasan di dalam tabel merek — dipakai kedua tabel merek yang ada, yang per
+   OPT + komoditas di jalur 1 dan yang per bahan + kadar di jalur 2. Keduanya
+   menyatakan hal yang sama, jadi keduanya berupa sama.
+   Ukurannya TETAP dan sama untuk yang bergambar maupun yang belum: nisbah gambar
+   `kecil` berselisih (320x320 sampai 320x213), jadi tinggi baris yang mengikuti
+   gambarnya akan bergoyang saat satu per satu mendarat. `contain` menahan seluruh
+   kemasan tetap terlihat — memangkasnya jadi persegi memotong justru bagian yang
+   dicocokkan mata. */
+.merek-tautan {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: inherit;
+  text-decoration: none;
+}
+/* Dipakai <a> di tabel merek jalur 1 dan <button class="tautan"> di layar bahan
+   jalur 2. Yang kedua datang membawa warna aksen dan garis bawah dari `.tautan`;
+   keduanya dinetralkan di sini supaya garis bawahnya jatuh pada namanya saja —
+   petak kemasan yang ikut tergaris bawah terbaca sebagai gambar yang rusak. */
+button.merek-tautan { cursor: pointer; }
+.merek-tautan .merek-nama {
+  text-decoration: underline;
+  text-decoration-color: var(--aksen);
+  text-underline-offset: 2px;
+}
+.merek-tautan:hover .merek-nama,
+.merek-tautan:focus-visible .merek-nama { color: var(--aksen); }
+.merek-tautan:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
+
+.merek-kemasan {
+  flex: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 6px;
+  background: var(--latar);
+  object-fit: contain;
+  border: 1px solid var(--garis);
+}
+/* Yang belum bergambar tetap menempati ruang yang sama. Garis putus-putus dan tanpa
+   isi supaya ia terbaca sebagai "belum ada", bukan sebagai kotak yang gagal muat. */
+.merek-kemasan-kosong {
+  display: inline-block;
+  border-style: dashed;
+  background: none;
+}
 
 /* Placeholder. Sengaja BERTULISAN, bukan kotak abu-abu: 14.493 dari 14.920
    produk mendarat di sini, jadi keadaan yang lazim adalah keadaan ini — dan

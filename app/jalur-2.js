@@ -145,12 +145,39 @@ function blokIsi(p) {
     </div>`;
 }
 
+/* Nama OPT sebagai tautan ke jalur 1 — pintu balik dari "apa yang ada di tangan" ke
+ * "apa lagi yang terdaftar untuk masalah ini".
+ *
+ * Yang dituju BUKAN nama OPT-nya saja melainkan pasangan tanaman + OPT, karena itulah
+ * satu baris di tabel ini, dan karena yang terdaftar memang berbeda-beda menurut
+ * tanamannya. Jalur 1 mendarat di daftar bahan aktif untuk pasangan itu — dengan kartu
+ * penjagaannya tetap di atas, tidak dilompati.
+ *
+ * `opt=` dipakai untuk keduanya, terkurasi maupun registri: rekaman di sini cuma
+ * menyebut `op:pst:…` dan registri tidak menandai mana yang kebetulan ikut terkurasi,
+ * jadi yang memutuskan ruang id-nya jalur 1 — yang memang sudah memegang daftarnya.
+ *
+ * Yang tidak bertaut tidak bertaut karena memang tidak ada yang bisa dituju: 2.438 dari
+ * 23.058 penggunaan berlabel kosong tautan OPT atau komoditasnya di registri, dan
+ * pasangan yang salah satunya kosong tidak pernah menghasilkan layar di jalur 1. Nama
+ * yang tertulis tetap ditampilkan apa adanya.
+ */
+const kunciId = (id) => String(id).replace(/[^a-z0-9]/gi, '');
+
+function selOpt(u) {
+  const nama = teks(u.optNama ?? '—');
+  if (!u.opt || !u.komoditas) return nama;
+  const alamat = `jalur-1.html?${new URLSearchParams({ opt: u.opt, kom: kunciId(u.komoditas) })}`;
+  return `<a class="tautan-opt" href="${teks(alamat)}">${nama}</a>`;
+}
+
 function blokGuna(p) {
   if (p.jenis !== 'pestisida') return '';
   if (!p.guna?.length) {
     return `<div class="kartu"><h2>Terdaftar untuk</h2>
       <p class="kosong">Registri tidak mencatat penggunaan berlabel untuk produk ini.</p></div>`;
   }
+  const buntu = p.guna.filter((u) => !u.opt || !u.komoditas).length;
   return `
     <div class="kartu">
       <h2>Terdaftar untuk</h2>
@@ -160,11 +187,17 @@ function blokGuna(p) {
           <tbody>${p.guna.map((u) => `
             <tr>
               <td>${teks(u.komoditasNama ?? '—')}</td>
-              <td>${teks(u.optNama ?? '—')}</td>
+              <td>${selOpt(u)}</td>
               <td class="angka">${teks(u.dosis ?? '—')}</td>
             </tr>`).join('')}</tbody>
         </table>
       </div>
+      <p class="catatan">
+        Nama OPT yang bertaut membuka <strong>bahan aktif apa saja yang terdaftar untuknya
+        di tanaman itu</strong> — merek lain, dan yang isinya berbeda sama sekali.
+        ${buntu ? `${buntu} baris di antaranya tidak bertaut: registri mengosongkan tautan
+        OPT atau komoditasnya, jadi tidak ada layar yang bisa dituju.` : ''}
+      </p>
       <p class="catatan">
         Di luar daftar ini, produk tersebut <strong>tidak terdaftar</strong> untuk dipakai.
         Tenggang panen tidak ditampilkan karena <strong>registri tidak memuatnya sama

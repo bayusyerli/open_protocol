@@ -246,6 +246,21 @@ const principalRingkas = (nama) => {
 
 const gambarPerProduk = new Map(gambarTerbit.map((r) => [r.produk, r.gambar]));
 
+/* Berkas gambar kemasan ukuran kecil untuk satu produk, atau null.
+ *
+ * Dipakai dua daftar merek yang berbeda letak tetapi sama isinya — tabel merek per
+ * kadar di jalur 1, dan yang di layar bahan aktif jalur 2. Ditaruh di sini, di samping
+ * sumbernya, supaya keduanya membaca aturan yang sama alih-alih menyalinnya.
+ */
+const gambarKecil = (id) => {
+  const daftar = gambarPerProduk.get(id);
+  if (!daftar?.length) return null;
+  // Kemasan depan didahulukan: panel label terpotong jadi petak 40 px tidak
+  // menunjukkan apa pun, sedangkan kemasan depan justru itu yang dicocokkan mata.
+  const pilih = daftar.find((x) => x.peran === 'kemasan_depan') ?? daftar[0];
+  return pilih.berkas.kecil?.n ?? pilih.berkas.sedang?.n ?? null;
+};
+
 // ---------------------------------------------------------------------------
 // Rincian produk — dipangkas ke yang benar-benar dipakai layar
 // ---------------------------------------------------------------------------
@@ -707,9 +722,13 @@ const anggotaBahan = (r, zatIni) => {
     ? `+ ${lain.slice(0, 2).map((c) => `${c.nama} ${angka(c.nilai)} ${c.satuan}`).join(' · ')}` +
       (lain.length > 2 ? ` · +${lain.length - 2}` : '')
     : null;
+  // Bentuk medan `g` sengaja sama dengan yang di tabel merek jalur 1: keduanya daftar
+  // merek untuk satu pasangan bahan + kadar, dan dua rupa untuk satu hal yang sama
+  // membuat orang mengira keduanya berbeda.
+  const g = gambarKecil(r.id);
   return {
     i: r.id, n: r.nama, k: r.produsen ?? null, p: petaPecahan.get(r.id),
-    ...(r.pcp ? { pk: r.pcp.key } : {}), ...(f ? { f } : {}),
+    ...(r.pcp ? { pk: r.pcp.key } : {}), ...(f ? { f } : {}), ...(g ? { g } : {}),
   };
 };
 const bahanRinci = [...perZat.entries()]
@@ -1145,6 +1164,29 @@ cariDalam.sort();
 // Yang dibutuhkan penyaji hanya nama tampilnya; kunci filenya urusan pembangun.
 for (const e of Object.keys(cari)) for (const r of cari[e]) delete r._k;
 
+/* Dua medan yang membuat baris merek bisa DIBUKA, bukan cuma dibaca.
+ *
+ * Sampai sekarang tabel merek di jalur 1 buntu: ia menyebut nama, nomor, dan dosis,
+ * lalu berhenti — yang mau tahu isinya harus menyalin namanya ke kotak cari jalur 2.
+ * Nomor pendaftarannya sudah ada di layar, jadi yang kurang cuma alamat rinciannya.
+ *
+ *   `p` pecahan rincian produknya, supaya jalur 2 bisa dibuka langsung. Dihitung dari
+ *       `petaPecahan`, TIDAK ditebak dari nomor urut: pecahan dipotong menurut ukuran,
+ *       jadi tidak ada rumus dari id ke nomor pecahan.
+ *   `g` berkas gambar kemasan ukuran kecil, dan hanya kalau produknya memang punya —
+ *       694 dari 14.920. Yang tidak punya tidak diberi medan kosong, sama seperti di
+ *       rincian produk: 14 ribu medan null memakan pecahan tanpa memberi tahu apa pun.
+ *
+ * Ukuran gambarnya tidak ikut. Yang `kecil` dibatasi 320 px pada sisi terpanjangnya
+ * dan nisbahnya berselisih; layar memasangnya di kotak berukuran tetap, jadi tingginya
+ * tidak pernah bergantung pada gambarnya dan tidak ada yang bergeser saat ia mendarat.
+ */
+const hiasMerek = (m) => {
+  const p = petaPecahan.get(m.id);
+  const g = gambarKecil(m.id);
+  return { ...m, ...(p ? { p } : {}), ...(g ? { g } : {}) };
+};
+
 // Indeks OPT dipecah dua tingkat, karena satu berkas per komoditas bisa mencapai
 // 960 KB — kelapa sawit sendiri punya 622 produk untuk satu gulma. Tingkat pertama
 // hanya daftar OPT beserta jumlahnya, yang memang itulah isi layar sesudah
@@ -1156,7 +1198,7 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
   const daftarOpt = [];
   for (const [oid, o] of [...v.opt.entries()].sort((a, b) => a[1].nama.localeCompare(b[1].nama))) {
     const grup = [...o.grup.values()]
-      .map((g) => ({ ...g, merek: g.merek.slice().sort(urutDaftar) }))
+      .map((g) => ({ ...g, merek: g.merek.slice().sort(urutDaftar).map(hiasMerek) }))
       .sort((a, b) => b.merek.length - a.merek.length || a.zat.localeCompare(b.zat));
     const berkartu = new Set();
     for (const g of grup) for (const m of g.merek) berkartu.add(m.id);

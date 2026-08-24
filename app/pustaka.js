@@ -314,6 +314,7 @@ export function tautanMasuk() {
   const opt = p.get('opt');
   const resep = p.get('resep');
   const hama = p.get('hama');
+  const kom = p.get('kom');
   return {
     q: p.get('q'),
     id: p.get('id'),
@@ -325,5 +326,10 @@ export function tautanMasuk() {
     // seperti `pecahan`: huruf dan angka saja, tanpa titik dan tanpa garis miring.
     resep: resep && /^[a-z0-9]+$/i.test(resep) ? resep : null,
     hama: hama && /^[a-z0-9]+$/i.test(hama) ? hama : null,
+    // Komoditas yang ikut disebut penunjuk. Nilainya TIDAK dipakai menyusun jalur
+    // berkas — jalur 1 mencocokkannya dengan daftar komoditas yang memang dibawa
+    // rekaman OPT-nya, lalu memakai berkas dari daftar itu. Bentuknya tetap dibatasi
+    // supaya yang tidak cocok gugur sebelum sempat dibandingkan.
+    kom: kom && /^[a-z0-9]+$/i.test(kom) ? kom : null,
   };
 }
