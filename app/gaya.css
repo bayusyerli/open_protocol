@@ -1034,6 +1034,49 @@ a { color: var(--aksen); }
 }
 .situs { overflow-wrap: anywhere; }
 
+/* --- Strip darurat keracunan ---
+   Dipasang di empat layar yang mengantar orang ke pestisida. Alasan letaknya panjang di
+   kepala keselamatan.js; ringkasnya: kartu lengkapnya adalah anak kedua-dari-terakhir
+   <main>, dan di jalur-1 itu 4.977 px — 6,4 layar ponsel — dari nomor yang menurut modul
+   itu sendiri harus bisa ditelepon "sekarang".
+
+   Satu baris, dan sengaja tidak merah menyala: yang muncul di lima layar dan berteriak
+   berhenti dilihat pada layar kedua. */
+.strip-darurat {
+  position: sticky;
+  top: var(--atas-bilah, 61px);
+  z-index: 9;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 48px;
+  margin: 0 0 1.1rem;
+  padding: 0.45rem 0.8rem;
+  border: 1px solid var(--bahaya);
+  border-radius: var(--sudut);
+  background: var(--bahaya-lemah);
+  color: var(--bahaya);
+  text-decoration: none;
+}
+.strip-darurat:hover { border-color: var(--teks); }
+.strip-darurat:focus-visible { outline: 3px solid var(--bahaya); outline-offset: 2px; }
+/* Gagang telepon digambar CSS: yang diketik sebagai emoji ikut dibaca pembaca layar
+   sebagai kata, dan tautannya sudah mengumumkan dirinya lewat href tel:. */
+.sd-tanda {
+  flex: none;
+  width: 17px;
+  height: 17px;
+  border: 2.5px solid currentColor;
+  border-radius: 50% 50% 46% 46% / 40% 40% 56% 56%;
+  border-top-color: transparent;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  transform: rotate(-24deg);
+}
+.sd-teks { flex: 1; min-width: 0; }
+.sd-judul { display: block; font-size: 0.86rem; font-weight: 650; line-height: 1.35; }
+.sd-sub { display: block; font-size: 0.86rem; font-weight: 700; font-variant-numeric: tabular-nums; }
+
 /* --- Harga --- */
 
 /* Strip tingkat. Menempel di bawah bilah cangkang, jadi peringatannya ikut terbaca pada

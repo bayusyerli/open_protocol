@@ -603,9 +603,34 @@ export function pasangKembali(wadah, { fokus, gulirKe, sesudah, alamat } = {}) {
   // Satu entri per layar rincian. Membukanya berturut-turut tidak menumpuk entri:
   // yang sebelumnya sudah dilepas penutupnya sendiri, atau digantikan di sini.
   tutupKini = tutup;
+
+  /* PEMULIHAN GULIR BAWAAN PERAMBAN DIMATIKAN, dan itu syarat supaya `gulirKe` bekerja.
+   *
+   * Penutupan di sini berjalan lewat popstate, dan peramban memulihkan gulir entri tujuan
+   * SESUDAH pendengar popstate selesai — jadi ia menimpa apa pun yang baru saja digulir
+   * `gulirKe` atau `sesudah`. Yang dipulihkannya pun bukan posisi yang benar: layar daftar
+   * kerap disembunyikan sebelum entri rinciannya didorong, sehingga yang terekam adalah
+   * tinggi dokumen yang sudah runtuh.
+   *
+   * Terukur di dua jalur: harga melompat ke 0 alih-alih 4.361, jalur 1 mendarat di tengah
+   * daftar gejala alih-alih di kepalanya. Dipasang DI SINI, bukan di tiap halaman, karena
+   * penyebabnya milik mekanisme ini — dan hanya halaman yang benar-benar membuka layar
+   * rincian yang ikut mematikannya.
+   *
+   * DUA KALI, DAN ITU BUKAN SALIN-TEMPEL. `scrollRestoration` adalah milik ENTRI RIWAYAT
+   * yang sedang aktif, bukan milik dokumen: `pushState` membuat entri baru yang lahir
+   * dengan nilai bawaan 'auto'. Yang disetel sebelum push mengurus entri daftar — entri
+   * yang nanti dituju tombol Back, dan justru entri itulah yang memulihkan gulirnya. Yang
+   * sesudah push mengurus entri rincian yang sekarang aktif. Menyetel salah satunya saja
+   * membuat pemulihan bawaan tetap menang; diuji, dan yang pertama saja tidak cukup. */
+  const manual = () => {
+    try { history.scrollRestoration = 'manual'; } catch { /* peramban lawas: biarkan bawaan */ }
+  };
+  manual();
   try {
     history.pushState({ rincian: true }, '', alamat ?? location.href);
   } catch { /* peramban menolak menulis riwayat — tombol di halaman tetap bekerja */ }
+  manual();
 
   b.addEventListener('click', () => {
     // Lewat riwayat, supaya entri yang tadi didorong ikut terlepas. Tanpa ini, tombol

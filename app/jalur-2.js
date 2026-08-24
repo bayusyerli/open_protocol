@@ -20,7 +20,7 @@ import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './uku
 import { pasangKandungan } from './kandungan.js';
 import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangBatas } from './batas.js';
-import { pasangKeselamatan } from './keselamatan.js';
+import { pasangKeselamatan, pasangStripDarurat } from './keselamatan.js';
 import { pasangTombolTema } from './tema.js';
 
 pasangTombolTema();
@@ -389,6 +389,7 @@ async function jalankan() {
   try {
     await muatMeta();
     pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta());
+    pasangStripDarurat(document.getElementById('stripDarurat'));
     pasangBatas(el.batas, {
       sumber: ['pestisida', 'pupuk', 'varietas'],
       takDijawab: ['namaDagang', 'isiKarung', 'phi'],

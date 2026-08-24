@@ -152,6 +152,26 @@ export function pasangCangkang() {
 
   pasangCari(bilah);
   pasangTab(kini, grup);
+  ukurBilah(bilah);
+}
+
+/* Tinggi bilah, diterbitkan sebagai `--atas-bilah` supaya apa pun yang menempel DI BAWAHNYA
+ * tahu harus berhenti di mana. Sudah dipakai strip tingkat di harga dan strip darurat di
+ * empat layar pestisida.
+ *
+ * DIUKUR, bukan ditulis di lembar gaya. Bilah ini memuat tanda, wordmark, kotak cari, dan
+ * tombol tema; di bawah 460 px isinya merapat dan pada layar tersempit ia membungkus, jadi
+ * tingginya bukan satu angka. Menebaknya membuat yang menempel di bawahnya menyelip di
+ * balik bilah persis pada lebar yang paling banyak dipakai.
+ *
+ * Di sini, bukan di tiap halaman: bilahnya milik cangkang, dan tingginya ikut. */
+function ukurBilah(bilah) {
+  const pasang = () => document.documentElement.style
+    .setProperty('--atas-bilah', `${Math.round(bilah.offsetHeight)}px`);
+  pasang();
+  addEventListener('resize', pasang);
+  // Kotak cari memakai huruf sistem; bilahnya bisa meninggi setelah huruf itu siap.
+  document.fonts?.ready?.then(pasang);
 }
 
 /* Kotak cari yang tidak pernah pergi.

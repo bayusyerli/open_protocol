@@ -43,9 +43,20 @@
     <p>Daftar gejalanya dibaca dari berkas indeks langsung di peramban.</p>
   </div>
 
+  <!-- Nomor darurat keracunan, di atas isi dan menempel saat digulir. Kartu lengkapnya
+       tetap di #keselamatan dekat kaki halaman; yang naik ke sini cuma nomornya. Alasan
+       lengkapnya di kepala keselamatan.js — ringkasnya, kartu itu anak kedua-dari-terakhir
+       <main>, dan modul yang sama menyebut taruhannya keselamatan jiwa. -->
+  <div id="stripDarurat"></div>
+
+
   <h2 class="judul-bagian">Apa yang kamu lihat?</h2>
 
-  <section id="gejala" aria-live="polite"></section>
+  <!-- aria-live TIDAK dipasang: daftar ini digambar SEKALI saat muat dan tidak berubah
+       lagi, jadi satu-satunya yang dilakukannya adalah membacakan 1.729 px tombol gejala
+       sebagai satu pengumuman begitu halaman dibuka. Ia isi biasa; pembaca layar sudah
+       punya cara menelusurinya. -->
+  <section id="gejala"></section>
 
   <section id="hasil" tabindex="-1"></section>
 

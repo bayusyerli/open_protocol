@@ -12,7 +12,7 @@
 import { ambil, muatMeta, bacaMeta, teks, pasangKembali, tautanMasuk, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
-import { pasangKeselamatan } from './keselamatan.js';
+import { pasangKeselamatan, pasangStripDarurat } from './keselamatan.js';
 import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -380,6 +380,7 @@ pasangTeruskan(el.resep, () => kartuResep(resepKini), 'sediaan');
     // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Daftar fungsinya
     // tetap digambar lebih dulu: tombol "kembali ke daftar" harus mendarat pada sesuatu.
     pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta(), { ringkas: true });
+    pasangStripDarurat(document.getElementById('stripDarurat'));
     pasangBatas(el.batas, {
       sumber: [{
         dari: 'sediaan',

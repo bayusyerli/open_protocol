@@ -37,16 +37,14 @@ const el = {
   atribusi: document.getElementById('atribusi'),
 };
 
-// Dua offset menempel bertingkat: bilah cangkang, lalu strip tingkat di bawahnya, lalu
-// kepala kelompok di bawah keduanya. Ketiganya meninggi sendiri saat isinya membungkus di
-// layar sempit, jadi angkanya DIUKUR, bukan ditulis di lembar gaya. Menebaknya membuat
-// kepala kelompok menyelip di balik strip persis pada lebar yang paling banyak dipakai.
+// Tiga lapis menempel bertingkat: bilah cangkang, strip tingkat di bawahnya, lalu kepala
+// kelompok di bawah keduanya. `--atas-bilah` diterbitkan cangkang.js — bilahnya miliknya,
+// dan tingginya ikut. Yang tersisa di sini tinggi strip, yang juga meninggi sendiri saat
+// judulnya membungkus. Menebaknya membuat kepala kelompok menyelip di balik strip persis
+// pada lebar yang paling banyak dipakai.
 function ukurTempelan() {
-  const bilah = document.querySelector('.bilah-cangkang');
-  const akar = document.documentElement.style;
-  if (bilah) akar.setProperty('--atas-bilah', `${Math.round(bilah.offsetHeight)}px`);
   const s = el.strip?.querySelector('summary');
-  if (s) akar.setProperty('--tinggi-strip', `${Math.round(s.offsetHeight)}px`);
+  if (s) document.documentElement.style.setProperty('--tinggi-strip', `${Math.round(s.offsetHeight)}px`);
 }
 addEventListener('resize', ukurTempelan);
 
@@ -834,16 +832,11 @@ function tampilkanDaftar(ya) {
   if (el.lede) el.lede.hidden = !ya;
 }
 
-// Posisi gulir daftar saat satu komoditas dibuka.
+// Posisi gulir daftar saat satu komoditas dibuka. Daftar disembunyikan sebelum
+// pasangKembali() mendorong entri riwayatnya, jadi yang terekam peramban di entri daftar
+// adalah tinggi dokumen yang sudah runtuh — halaman ini yang harus mengingatnya sendiri.
+// Pemulihan bawaan peramban dimatikan di pasangKembali(); alasannya panjang di sana.
 //
-// Pemulihan bawaan peramban TIDAK bisa dipakai, dan juga tidak boleh dibiarkan menyala.
-// Daftar disembunyikan sebelum pasangKembali() mendorong entri riwayatnya, jadi yang
-// terekam di entri daftar adalah tinggi dokumen yang sudah runtuh — gulir 0. Lebih buruk:
-// pemulihan itu berjalan SESUDAH popstate, jadi ia menimpa gulir yang baru saja dipasang
-// tutupRincian(). Terukur: 4.361 px dipasang, lalu dikembalikan ke 0 sebelum bingkai
-// pertama. `manual` mematikannya; sejak itu halaman ini yang bertanggung jawab penuh.
-try { history.scrollRestoration = 'manual'; } catch { /* peramban lawas: biarkan bawaan */ }
-
 // null berarti layar ini tidak dibuka dari daftar (tautan langsung, atau tombol Forward).
 let gulirDaftar = null;
 

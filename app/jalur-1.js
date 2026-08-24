@@ -24,7 +24,7 @@ import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali, pesanGagal
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
-import { pasangKeselamatan } from './keselamatan.js';
+import { pasangKeselamatan, pasangStripDarurat } from './keselamatan.js';
 import { blokLapor, pasangLapor } from './lapor.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -37,6 +37,9 @@ const el = {
   hasil: document.getElementById('hasil'),
   batas: document.getElementById('batasJawaban'),
 };
+
+// Judul "Apa yang kamu lihat?" milik pemilih gejala, dan ikut disembunyikan bersamanya.
+const judulGejala = document.querySelector('.judul-bagian');
 
 document.getElementById('tanpaJs')?.remove();
 
@@ -51,6 +54,24 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
 // ---------------------------------------------------------------------------
 // Layar 1 — daftar gejala
 // ---------------------------------------------------------------------------
+/* Pemilih gejala dan jawabannya tidak pernah tampil bersamaan.
+ *
+ * Daftar gejalanya 1.729 px di ponsel 390 px, dan sampai 24 Agustus 2026 ia tetap penuh
+ * di atas jawaban. Yang membuka tautan langsung ke satu OPT mendarat di gulir 1.731
+ * dengan 377 px teratas berisi gejala yang tidak ia pilih — untuk OPT yang justru ia
+ * sebut sendiri di URL. Ketiga pintu masuk (gejala, nama hama, tautan langsung) memanggil
+ * ini, supaya ketiganya tidak berbeda diam-diam.
+ *
+ * Judul bagiannya ikut: "Apa yang kamu lihat?" bertanya tentang pemilih yang sedang
+ * tidak ada, dan pertanyaan tanpa jawabannya lebih membingungkan daripada tidak ada. */
+function tampilkanGejala(ya) {
+  el.gejala.hidden = !ya;
+  judulGejala.hidden = !ya;
+  // Membaca scrollHeight memaksa tata letak dihitung ulang sebelum pemanggil menggulir;
+  // tanpa itu penggulirnya dijepit ke tinggi dokumen yang masih runtuh.
+  if (ya) void document.documentElement.scrollHeight;
+}
+
 function gambarGejala() {
   // Diurutkan menurut banyaknya produk terdaftar, bukan abjad: yang paling sering jadi
   // masalah paling sering dicari. Yang nol produk tetap ikut — justru layar itu yang
@@ -85,6 +106,7 @@ function gambarGejala() {
 async function bukaHama(kunci, opsi = {}) {
   el.hasil.innerHTML = '<p class="kosong">Mengambil…</p>';
   el.hasil.focus();
+  tampilkanGejala(false);
   try {
     const h = await ambil(`opt-nama/${kunci}`);
     terbukaKini = { id: h.id, nama: h.nama, tautan: tautanKe(`?hama=${encodeURIComponent(kunci)}`) };
@@ -122,7 +144,7 @@ async function bukaHama(kunci, opsi = {}) {
       </ul>
       <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
     catatJawab(1, UKUR.isi);
-    pasangKembali(el.hasil, { gulirKe: el.gejala });
+    pasangKembali(el.hasil, { gulirKe: el.gejala, sesudah: () => tampilkanGejala(true) });
     await bukaTertunjuk(h.di.map((d) => d.b), opsi);
   } catch (e) {
     catatJawab(1, UKUR.gagal);
@@ -242,6 +264,7 @@ function kartuKelompok(k, i) {
 async function bukaTanaman(kunci, { gulir = true } = {}) {
   el.hasil.innerHTML = '<p class="kosong">Mengambil…</p>';
   el.hasil.focus();
+  tampilkanGejala(false);
   try {
     const t = await ambil(`opt/${kunci}`);
     terbukaKini = { id: t.komoditas, nama: t.nama, tautan: tautanKe(`?kom=${encodeURIComponent(kunci)}`) };
@@ -276,7 +299,7 @@ async function bukaTanaman(kunci, { gulir = true } = {}) {
       <ul class="daftar">${kelompokKini.map(kartuKelompok).join('')}</ul>
       <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
     catatJawab(1, t.opt.length ? UKUR.isi : UKUR.nol);
-    pasangKembali(el.hasil, { gulirKe: el.gejala });
+    pasangKembali(el.hasil, { gulirKe: el.gejala, sesudah: () => tampilkanGejala(true) });
     if (gulir) el.hasil.scrollIntoView({ block: 'start' });
   } catch (e) {
     catatJawab(1, UKUR.gagal);
@@ -577,13 +600,14 @@ async function bukaOpt(id, opsi = {}) {
   optKini = k;
   el.hasil.innerHTML = '<p class="kosong">Menyiapkan…</p>';
   el.hasil.focus();
+  tampilkanGejala(false);
   try {
     if (!larangan) larangan = await ambil('larangan');
     el.hasil.innerHTML = blokPastikan(k) + blokLapor(k) +
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
     catatJawab(1, k.di.length ? UKUR.isi : UKUR.nol);
-    pasangKembali(el.hasil, { gulirKe: el.gejala });
+    pasangKembali(el.hasil, { gulirKe: el.gejala, sesudah: () => tampilkanGejala(true) });
     if (opsi.kom) await bukaTertunjuk(k.di.map((d) => d.berkas), opsi);
     // Kalau hanya satu komoditas, langsung buka — satu ketukan lebih sedikit.
     else if (k.di.length === 1) await bukaKomoditas(k.di[0].berkas, { gulir: opsi.gulir ?? true });
@@ -661,6 +685,7 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // meminjamkan wibawa registri kepada kurasi yang belum punya.
     await muatMeta();
     pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta());
+    pasangStripDarurat(document.getElementById('stripDarurat'));
     pasangBatas(el.batas, {
       sumber: [
         { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT cabai` },

@@ -59,6 +59,48 @@ function barisTidakDiketahui(meta) {
   return baris.join('');
 }
 
+/* STRIP DARURAT — nomornya, dan cuma nomornya, di tempat yang bisa dijangkau dari mana pun.
+ *
+ * Kartu di bawah sudah benar isinya; yang salah letaknya. `#keselamatan` adalah anak
+ * KEDUA-DARI-TERAKHIR <main> di keempat halaman yang memasangnya, dan pada ponsel 390x780
+ * itu berarti:
+ *
+ *   jalur-1 (tautan langsung ke satu OPT)   4.977 px  — 6,4 layar
+ *   jalur-6 setelah resep dibuat            1.793 px  — dan terus turun tiap resep tumbuh
+ *   jalur-5 setelah resep dibuat            1.280 px
+ *   produk                                  1.327 px
+ *
+ * Kepala berkas ini menyebut taruhannya KESELAMATAN JIWA dan tujuannya "nomor yang bisa
+ * ditelepon SEKARANG". Enam layar gulir bukan "sekarang". Yang menelepon nomor ini sedang
+ * memegang orang yang keracunan; ia tidak sedang membaca halaman dari atas ke bawah.
+ *
+ * Stripnya SATU BARIS dan sengaja tidak merah menyala. Alasannya sama dengan alasan kartu
+ * di bawah dibuat ringkas: yang muncul di lima layar dan berteriak akan berhenti dilihat
+ * pada layar kedua, dan yang berhenti dilihat sama saja dengan yang tidak ada. Ia memakai
+ * kosakata `.kartu.tabrakan` yang sudah dipakai permukaan ini untuk hal berbahaya.
+ *
+ * Nomornya dibaca dari KONTAK, tidak diketik ulang di HTML keempat halaman — yang diketik
+ * empat kali akan basi di tiga di antaranya.
+ *
+ * Penampungnya DIGANTIKAN, bukan diisi. Elemen `position: sticky` hanya bisa berjalan di
+ * dalam kotak induknya, dan induk yang cuma membungkus strip setinggi 57 px memberinya
+ * ruang jalan 57 px — ia terbit sebagai sticky yang tidak pernah menempel. Yang harus jadi
+ * anak langsung <main> adalah stripnya sendiri, supaya kotak yang ditelusurinya seluruh
+ * halaman. Diuji: sebagai anak div pembungkus ia hilang di -1.504 px. */
+export function pasangStripDarurat(wadah) {
+  if (!wadah || document.querySelector('.strip-darurat')) return;
+  const a = document.createElement('a');
+  a.className = 'strip-darurat';
+  a.href = `tel:${KONTAK.telepon}`;
+  a.innerHTML = `
+    <span class="sd-tanda" aria-hidden="true"></span>
+    <span class="sd-teks">
+      <span class="sd-judul">Keracunan pestisida? Telepon sekarang.</span>
+      <span class="sd-sub">${KONTAK.telepon} · ${KONTAK.nama}</span>
+    </span>`;
+  wadah.replaceWith(a);
+}
+
 /* Dipasang di tiap layar yang mengantar orang ke pestisida. Dibuat ringkas dengan sengaja:
  * kartu sepanjang halaman yang muncul di lima layar akan berhenti dibaca pada layar kedua,
  * dan yang berhenti dibaca sama saja dengan yang tidak ada. Yang harus terbaca dalam satu
