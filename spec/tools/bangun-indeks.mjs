@@ -183,6 +183,16 @@ const optById = new Map([...optRegistri, ...optTerkurasi].map((o) => [o.id, o]))
 const namaKomoditas = (id, cadangan) => komoditasById.get(id)?.label?.id ?? cadangan ?? id;
 const namaOpt = (id, cadangan) => optById.get(id)?.label?.id ?? cadangan ?? id;
 
+/* Nama ilmiah OPT — dan di indeks komoditas ia BUKAN hiasan.
+ *
+ * Nama Indonesia di registri kerap nama KELOMPOK, sedangkan rekamannya satu SPESIES:
+ * jagung punya 62 entri OPT yang seluruhnya berlabel "Gulma Berdaun Lebar", dan yang
+ * membedakan keenam puluh duanya hanya nama ilmiahnya — Ageratum conyzoides, Borreria
+ * alata, Cleome rutidosperma, dan seterusnya. Daftar yang menampilkan nama Indonesianya
+ * saja mengulang satu baris 62 kali dan terbaca sebagai data rusak.
+ */
+const ilmiahOpt = (id) => optById.get(id)?.scientific_name ?? null;
+
 // ---------------------------------------------------------------------------
 // Kesetaraan: sidik jari komposisi, dihitung dari id
 // ---------------------------------------------------------------------------
@@ -1206,6 +1216,9 @@ for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeComp
     daftarOpt.push({
       id: oid,
       nama: o.nama,
+      // Ditulis hanya kalau ada: 69 dari 2.580 entri tidak punya, dan medan null pada
+      // keduanya sama tidak berartinya dengan medan yang tidak ada.
+      ...(ilmiahOpt(oid) ? { ilmiah: ilmiahOpt(oid) } : {}),
       produk: o.produk.size,
       // Selisihnya dinyatakan, bukan didiamkan: sekian produk terdaftar untuk OPT ini
       // tetapi komposisinya kosong di registri, jadi tidak bisa muncul sebagai kartu.

@@ -1129,6 +1129,45 @@ dibutuhkan sisi seberang; yang belum ada cuma tautannya.
   ingatan jalur 1 sejak halaman muat, jadi keputusannya tidak menambah satu perjalanan
   pun — dan yang bukan anggotanya tidak pernah dicari sebagai teks gejala.
 
+Kolom tanaman menuju tempat lain, dan syaratnya juga lain — C8, pintu ketiga jalur 1:
+
+- **Janjinya paling sempit dari ketiga pintu.** Yang masuk lewat gejala sedang menebak dan
+  ditahan blok "pastikan dulu"; yang masuk lewat nama hama sudah punya dugaan dan ditahan
+  kartu "kamu masuk lewat nama". Yang masuk lewat nama tanaman belum menyebut masalah apa
+  pun — ia bertanya apa saja yang terdaftar untuk tanamannya, dan layar menjawab persis itu.
+  Kartunya berbunyi *"ini daftar pendaftaran, bukan dugaan"*.
+- **Urutannya bukan urutan ancaman, dan itu dinyatakan.** Banyaknya produk terdaftar
+  mengukur ramainya pendaftaran, bukan seringnya hama itu datang ke kebun. Daftar terurut
+  selalu terbaca sebagai peringkat, jadi kalimat itu ada di kartunya.
+- **Nama Indonesia di registri kerap nama KELOMPOK, rekamannya SPESIES.** Jagung punya 146
+  sasaran pendaftaran di bawah 29 nama: enam puluh dua di antaranya sama-sama berlabel
+  "Gulma Berdaun Lebar", dan yang membedakan keenam puluh duanya nama ilmiahnya —
+  *Ageratum conyzoides*, *Borreria alata*, *Cleome rutidosperma*, dan seterusnya. Cabai 74
+  di bawah 38 nama. Menyajikannya apa adanya mengulang satu baris 62 kali dan terbaca
+  sebagai data rusak; menyatukannya jadi satu baris menyembunyikan bahwa dosis dan mereknya
+  memang terdaftar per spesies. Jadi dikelompokkan menurut namanya, dan yang beranggota
+  lebih dari satu dibuka untuk melihat spesiesnya — bentuknya sama dengan kartu bahan.
+- **Yang besar berbeda menurut letaknya.** Berdiri sendiri, nama Indonesianya yang naik:
+  "Ulat Grayak", bukan *Spodoptera frugiperda*, sebab itu yang dikenali pembaca. Di dalam
+  kelompok kebalikannya — nama Indonesianya sudah jadi kepala kartu, dan yang membedakan
+  anggotanya justru spesiesnya. Sebagian rekaman memakai nama ilmiah sebagai nama
+  Indonesianya sekalian (*Locusta migratoria* pada keduanya); keterangannya dihilangkan saat
+  itu terjadi.
+- **Pengelompokannya menurut ejaan persis, dan halaman tidak menyatukan apa yang registri
+  pisahkan.** Dua nama yang nyaris sama tetap jadi dua baris — "Trips" dan "Hama Trips" pada
+  cabai. Layar mengatakannya, sebab pembaca yang tidak diberi tahu akan menyimpulkan
+  daftarnya keliru. Di dalam satu kelompok hal yang sama terlihat lebih tajam: delapan
+  rekaman antraknosa cabai memuat *Colletotrichum capsici* (102 produk) di sebelah
+  *Coletrotichum capsici* (1) dan *Colletothricum sp.* (1). Menyatukannya keputusan data,
+  bukan keputusan penyaji.
+- **`ilmiah` naik ke indeks komoditas, 61 KB.** Ia satu-satunya yang membuat daftarnya
+  terbaca; 2.511 dari 2.580 entri punya, dan yang tidak punya tidak diberi medan kosong.
+  Berkas terbesar 28,6 -> 33,4 KB, masih di bawah anggaran 48 KB.
+- **Syarat tautnya berbeda dari kolom OPT, dan kaki tabel menyebut keduanya.** Kolom OPT
+  menuju satu pasangan, jadi ia perlu id OPT *dan* id komoditas. Kolom tanaman menuju
+  direktori tanamannya, jadi id komoditas saja cukup — baris yang OPT-nya kosong pun tetap
+  bertaut selama tanamannya tercatat.
+
 Arah sebaliknya, dari tabel merek ke rincian produk:
 
 - **Nama merek jadi tautan, dan gambar kemasannya mendahuluinya.** Nomor pendaftaran

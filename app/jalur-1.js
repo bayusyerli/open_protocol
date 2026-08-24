@@ -268,6 +268,9 @@ async function bukaTanaman(kunci, { gulir = true } = {}) {
         <p class="bantuan">
           ${angkaId(berkelompok.length)} nama di antaranya dipegang lebih dari satu rekaman —
           nama Indonesianya nama kelompok, rekamannya spesies. Ketuk untuk melihat spesiesnya.
+          Pengelompokannya menurut <strong>ejaan persis di registri</strong>, jadi dua nama
+          yang nyaris sama tetap jadi dua baris; halaman ini tidak menyatukan apa yang
+          registri pisahkan.
         </p>` : ''}
       <ul class="daftar">${kelompokKini.map(kartuKelompok).join('')}</ul>
       <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
