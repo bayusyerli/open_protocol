@@ -87,6 +87,20 @@ const BENTUK = {
 
 const dasarkan = (k) => BENTUK[k] ?? penggalNya(k);
 
+/**
+ * Seluruh kata kueri dalam bentuk dasarnya — TERMASUK kata perekat.
+ *
+ * Dipakai perutean niat di beranda, yang mencocokkan frasa seperti "beli di mana" dan
+ * "berapa tangki": perekatnya bagian dari frasa itu, jadi daftar ini tidak boleh disaring
+ * seperti `istilah`. Yang diberikannya cuma satu hal yang tidak dimiliki kalimat mentah —
+ * "menanam" dan "penanaman" jadi "tanam", sehingga frasa "kapan tanam" cocok pada kalimat
+ * yang menuliskannya "kapan waktu yang cocok untuk menanam".
+ */
+export const kataDasar = (kueri) => {
+  const b = rapiKata(kueri);
+  return b ? b.split(' ').map(dasarkan) : [];
+};
+
 // ---------------------------------------------------------------------------
 // 2. Golongan kata
 // ---------------------------------------------------------------------------
@@ -114,19 +128,23 @@ export const KATA_HENTI = new Set([
  * badan bernama Phonska; yang benar bukan menjawab nol melainkan menjawab produknya lalu
  * menyebutkan perusahaannya. */
 export const KATA_JENIS = {
-  pupuk: 'pupuk', npk: 'pupuk', urea: null, kompos: null,
-  pestisida: 'pestisida', insektisida: 'pestisida', fungisida: 'pestisida',
-  herbisida: 'pestisida', bakterisida: 'pestisida', akarisida: 'pestisida',
-  nematisida: 'pestisida', rodentisida: 'pestisida', moluskisida: 'pestisida',
-  racun: 'pestisida', pembasmi: 'pestisida',
-  varietas: 'varietas', benih: 'varietas', bibit: 'varietas', kultivar: 'varietas',
-  hama: 'opt', penyakit: 'opt', opt: 'opt', gulma: 'opt',
-  harga: 'harga',
-  sediaan: 'sediaan', resep: 'sediaan', ramuan: 'sediaan',
-  perusahaan: 'principal', produsen: 'principal', pabrik: 'principal',
-  pabrikan: 'principal', principal: 'principal',
-  tanaman: 'komoditas', komoditas: 'komoditas',
-  bahan: 'bahan', zat: 'bahan',
+  pupuk: ['pupuk'], npk: ['pupuk'], urea: null, kompos: null,
+  pestisida: ['pestisida'], insektisida: ['pestisida'], fungisida: ['pestisida'],
+  herbisida: ['pestisida'], bakterisida: ['pestisida'], akarisida: ['pestisida'],
+  nematisida: ['pestisida'], rodentisida: ['pestisida'], moluskisida: ['pestisida'],
+  racun: ['pestisida'], pembasmi: ['pestisida'],
+  varietas: ['varietas'], benih: ['varietas'], bibit: ['varietas'], kultivar: ['varietas'],
+  hama: ['opt'], penyakit: ['opt'], opt: ['opt'], gulma: ['opt'],
+  harga: ['harga'],
+  sediaan: ['sediaan'], resep: ['sediaan'], ramuan: ['sediaan'],
+  perusahaan: ['principal'], produsen: ['principal'], pabrik: ['principal'],
+  pabrikan: ['principal'], principal: ['principal'],
+  tanaman: ['komoditas'], komoditas: ['komoditas'],
+  bahan: ['bahan'], zat: ['bahan'],
+  // "produk" dan "merek" menyebut dua jenis sekaligus, dan itu bukan ketidaktegasan yang
+  // perlu dipilihkan: registri pupuk dan registri pestisida memang dua registri, dan yang
+  // memegang botol di tangannya tidak sedang menyatakan yang mana.
+  produk: ['pupuk', 'pestisida'], merek: ['pupuk', 'pestisida'], barang: ['pupuk', 'pestisida'],
 };
 // `null` berarti kata itu sengaja TIDAK menyempitkan walau kelihatannya jenis: "urea" dan
 // "kompos" nama barang yang benar-benar ada di indeks, dan menyaringnya jadi "pupuk" akan
@@ -139,7 +157,7 @@ export const KATA_ATRIBUT = {
   siapa: 'pemegang', perusahaan: 'pemegang', produsen: 'pemegang', pabrik: 'pemegang',
   pabrikan: 'pemegang', pembuat: 'pemegang', pemilik: 'pemegang', pemegang: 'pemegang',
   pendaftar: 'pemegang', pemulia: 'pemegang', pemelihara: 'pemegang', buatan: 'pemegang',
-  produksi: 'pemegang', merek: 'pemegang',
+  produksi: 'pemegang',
   bahan: 'isi', zat: 'isi', kandungan: 'isi', komposisi: 'isi', isi: 'isi', aktif: 'isi',
   kadar: 'isi',
 };
@@ -181,6 +199,13 @@ export const KATA_TINDAKAN = new Set([
  * sedang menjawab pertanyaan — bukan sedang melengkapi nama yang setengah diketik. */
 export const KATA_TANYA = new Set(['apa', 'apakah', 'siapa', 'kapan', 'berapa', 'mana',
   'kenapa', 'mengapa', 'bagaimana', 'gimana', 'adakah', 'dimana']);
+
+/* Kata yang menandai sebuah UKURAN, dan yang angkanya sudah dibaca dari kalimat aslinya oleh
+ * `uraiKetinggian()`/`uraiDataran()` di bawah. Dikeluarkan dari istilah karena mencarinya di
+ * kepala pencarian cuma menarik merek yang kebetulan memuat katanya — dan angkanya sendiri
+ * sudah jadi sesuatu yang lebih berguna daripada sebuah kata. */
+export const KATA_UKURAN = new Set(['ketinggian', 'elevasi', 'altitude', 'dataran', 'dpl',
+  'mdpl', 'dpal']);
 
 // ---------------------------------------------------------------------------
 // 3. Ketinggian — satu-satunya angka bersatuan yang diurai berkas ini
@@ -269,11 +294,15 @@ export function uraikan(kueri) {
     let dipakai = false;
     if (KATA_ATRIBUT[k]) { atribut.push(KATA_ATRIBUT[k]); dipakai = true; }
     if (k in KATA_JENIS) {
-      if (KATA_JENIS[k]) jenis.push(KATA_JENIS[k]);
+      if (KATA_JENIS[k]) jenis.push(...KATA_JENIS[k]);
       dipakai = true;
     }
     if (dipakai) continue;
 
+    if (KATA_UKURAN.has(k)) continue;
+    // Kata tanya dibuang SESUDAH atribut, bukan sebelum: "siapa" keduanya sekaligus — ia
+    // menandai pertanyaan dan sekaligus menyebut medan yang ditanyakan.
+    if (KATA_TANYA.has(k)) continue;
     if (KATA_HENTI.has(k)) continue;
     // Angka telanjang tidak dicari: nomor pendaftaran tidak ada di kepala pencarian, dan
     // "500" akan mencocoki puluhan nama merek yang kebetulan memuatnya.
@@ -310,7 +339,64 @@ export function uraikan(kueri) {
 }
 
 // ---------------------------------------------------------------------------
-// 5. Kelas agroklimat dari sebuah angka
+// 5. Menjawab atribut dari hasil yang sudah terambil
+// ---------------------------------------------------------------------------
+/* "Phonska produk perusahaan apa?" adalah pertanyaan yang jawabannya SUDAH ADA di kartu
+ * hasilnya — nama pemegang pendaftaran tercetak di baris bawah tiap kartu. Yang kurang cuma
+ * kalimatnya. Fungsi di bawah menyusun kalimat itu dari entri yang sama, tanpa satu pun
+ * pengambilan tambahan dan tanpa satu pun klaim di luar registri.
+ *
+ * YANG MEMBUATNYA TIDAK SESEDERHANA "AMBIL PEMEGANG HASIL PERTAMA": nama dagang tidak
+ * eksklusif di registri. "Phonska" mengembalikan 17 pendaftaran atas nama EMPAT badan — lima
+ * bernama persis PHONSKA milik Petrokimia Gresik, tiga bernama "PHONSKA PUPUK INDONESIA
+ * HOLDING COMPANY" milik dua badan lain, dan dua bernama PHONSKAMAX/PHONSKAVIT milik badan
+ * keempat. Menjawab "Petrokimia Gresik" begitu saja benar untuk yang pertama dan salah untuk
+ * sisanya, dan yang bertanya tidak akan pernah tahu bahwa ada sisanya.
+ *
+ * Jadi aturannya dua tingkat, dan tingkat keduanya yang penting:
+ *   1. Kalau ada entri yang namanya PERSIS kata yang diketik, hanya entri itu yang menjawab.
+ *      Itu yang dimaksud orang yang mengetik "phonska", bukan seluruh nama berawalan phonska.
+ *   2. Berapa badan yang tersisa sesudah itu tetap dihitung dan tetap disebutkan. Satu badan
+ *      jadi kalimat pendek; lebih dari satu jadi daftar — karena "terdaftar atas nama dua
+ *      badan" memang jawaban yang benar, dan memilih salah satunya adalah karangan.
+ */
+const rapiRapat = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
+
+export function jawabPemegang(hasil, istilah) {
+  const punyaPemegang = (hasil ?? []).filter((x) => x.k && (x.pk || x.j !== 'principal'));
+  if (!punyaPemegang.length) return null;
+
+  const kata = new Set((istilah ?? []).map(rapiRapat));
+  const persis = punyaPemegang.filter((x) => kata.has(rapiRapat(x.n)));
+  const dipakai = persis.length ? persis : punyaPemegang;
+
+  // Dikelompokkan menurut KUNCI, bukan menurut label. Registri mengeja badan yang sama dengan
+  // dua cara pada rekaman yang berbeda — "PETROKIMIA GRESIK" dan "PT Petrokimia Gresik" — dan
+  // mengelompokkan menurut ejaan akan memecah satu badan jadi dua jawaban. Kuncinya justru
+  // yang sudah menyatukan keduanya lewat berkas alias di kosakata principal.
+  const grup = new Map();
+  for (const x of dipakai) {
+    const kunci = x.pk ?? `label:${rapiRapat(x.k)}`;
+    const g = grup.get(kunci) ?? { pk: x.pk ?? null, label: x.k, cacah: 0 };
+    // Label terpanjang dipilih karena ia yang paling lengkap: "PT Petrokimia Gresik" menyebut
+    // bentuk badannya, "PETROKIMIA GRESIK" tidak.
+    if (String(x.k).length > String(g.label).length) g.label = x.k;
+    g.cacah++;
+    grup.set(kunci, g);
+  }
+
+  const badan = [...grup.values()].sort((a, b) => b.cacah - a.cacah || a.label.localeCompare(b.label));
+  return {
+    badan,
+    // Berapa pendaftaran yang IKUT namanya tetapi tidak bernama persis itu. Angka ini yang
+    // menahan jawaban tingkat pertama dari terbaca sebagai "cuma ini yang ada".
+    persisDipakai: persis.length > 0,
+    lain: punyaPemegang.length - dipakai.length,
+  };
+}
+
+// ---------------------------------------------------------------------------
+// 6. Kelas agroklimat dari sebuah angka
 // ---------------------------------------------------------------------------
 /* Pemeriksa ambang yang sama persis dengan spec/tools/agroklimat.mjs — batas terbuka dan
  * tertutup dibedakan sungguh-sungguh, karena 700 m tepat harus jatuh ke satu kelas saja.

@@ -13,7 +13,7 @@
  * Keduanya dirender terpisah, dengan tingkat yang disebut di masing-masing kotak.
  */
 
-import { ambil, muatMeta, cari, teks, tanggal, JENIS, bacaMeta, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
+import { ambil, muatMeta, cari, teks, tanggal, JENIS, bacaMeta, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { pasangBatas } from './batas.js';
 
@@ -249,7 +249,7 @@ function kartuDaftar(b) {
             <tr>
               <td><a href="${teks(tautanEntri(x))}">${teks(x.n)}</a></td>
               <td class="${j === 'varietas' ? '' : 'angka'}">${teks((j === 'varietas' ? x.k : x.d) ?? '—')}</td>
-              ${j === 'varietas' ? '' : `<td>${x.g ? '<span class="ada-gambar">ada</span>' : '<span class="kosong">belum</span>'}</td>`}
+              ${j === 'varietas' ? '' : `<td class="sel-kemasan">${petakKemasan(x.g)}</td>`}
             </tr>`).join('')}</tbody>
         </table>
       </div>`).join('');
@@ -266,9 +266,10 @@ function kartuDaftar(b) {
       ${bagian}
       <p class="catatan">
         Gambar kemasan ada pada ${n(bergambar)} dari ${n(daftar.filter((x) => x.j !== 'varietas').length)}
-        pendaftaran non-benih di daftar ini. Yang kosong <strong>bukan tanda produknya tidak
-        ada</strong> — situs principal-nya belum dipanen, atau mereknya memang tidak
-        berkemasan eceran.
+        pendaftaran non-benih di daftar ini. Petak bergaris putus-putus <strong>bukan tanda
+        produknya tidak ada</strong> — situs principal-nya belum dipanen, atau mereknya
+        memang tidak berkemasan eceran. Gambarnya juga bukan bukti pendaftaran: yang
+        mengikat nomor di kolom sebelahnya, bukan kemasan yang dipanen dari situs.
       </p>
     </div>`;
 }

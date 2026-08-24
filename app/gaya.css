@@ -1021,7 +1021,6 @@ a { color: var(--aksen); }
   background: var(--latar-kartu);
 }
 .situs { overflow-wrap: anywhere; }
-.ada-gambar { color: var(--aksen); font-weight: 600; }
 
 /* --- Harga --- */
 .daftar-harga { display: grid; gap: 0.5rem; padding: 0; margin: 1rem 0; list-style: none; }
@@ -1177,6 +1176,16 @@ button.merek-tautan { cursor: pointer; }
   border-style: dashed;
   background: none;
 }
+
+/* Petak yang sama, tetapi di dalam sel tabel — daftar pendaftaran di halaman profil badan,
+   bukan baris flex seperti di jalur 1.
+
+   Dua hal yang berbeda karena wadahnya tabel. `width: 1%` membuat kolomnya menciut ke lebar
+   isinya, sehingga kolom nama dan nomor tetap mendapat ruang; dan `line-height: 0` mencabut
+   garis dasar teks, sebab petak setinggi 2,5rem yang duduk di garis dasar menyisakan jarak
+   kosong di bawah tiap baris dan membuat tabelnya renggang tanpa sebab yang terlihat. */
+.sel-kemasan { width: 1%; line-height: 0; }
+.sel-kemasan .merek-kemasan { display: block; }
 
 /* Placeholder. Sengaja BERTULISAN, bukan kotak abu-abu: 14.493 dari 14.920
    produk mendarat di sini, jadi keadaan yang lazim adalah keadaan ini — dan

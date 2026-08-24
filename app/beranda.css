@@ -548,3 +548,70 @@ a { color: var(--hijau-2); }
 /* Tombol di tengah kalimat tidak boleh membawa bantalannya sendiri — titik di
    belakangnya jadi terlihat menggantung. */
 .bantuan-cari .tombol-teks { padding: 0; }
+
+/* ---------------------------------------------------------------------------
+   Kepala jawaban — apa yang dibaca dari pertanyaan, dan apa yang ditolak dijawab
+   ---------------------------------------------------------------------------
+   Dua blok dengan berat yang sengaja berbeda. `.bacaan-tanya` keterangan: ia
+   menerangkan penguraian, jadi ia tenang dan kecil. `.jawab-tanya` JAWABAN:
+   satu kalimat yang berdiri sendiri, dan di bawahnya batasnya. Menyamakan
+   keduanya akan membuat jawaban terbaca sebagai catatan kaki. */
+.bacaan-tanya { margin: 0 0 18px; }
+.bacaan { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.bacaan li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--lemah);
+}
+.bacaan-label {
+  flex: 0 0 auto;
+  min-width: 92px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--pudar);
+}
+.bacaan li > span:last-child { flex: 1 1 200px; }
+.keping-kata {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--limau-lembut);
+  color: var(--hijau);
+  font-weight: 600;
+  font-size: 12.5px;
+}
+/* Kata yang ditolak dijawab memakai warna peringatan, bukan warna kata yang dicari —
+   perbedaan itu satu-satunya yang membedakan "dibuang karena tidak berguna" dari
+   "dibuang karena tidak akan pernah dijawab". */
+.bacaan-tolak .keping-kata { background: var(--amber-lembut); color: var(--amber); }
+.bacaan-tolak > span:last-child { color: var(--lemah); }
+.bacaan-tolak strong { color: var(--tinta); }
+
+.jawab-tanya {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--hijau);
+  border-radius: 0 8px 8px 0;
+  background: var(--limau-lembut);
+}
+.jawab-utama { margin: 0; font-size: 15px; line-height: 1.45; color: var(--tinta); }
+.jawab-utama strong { font-weight: 700; }
+.jawab-utama a { color: var(--hijau-2); }
+.jawab-batas { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--lemah); }
+/* Ambang kelas dicetak lebih kecil dan bertabular: ia angka yang dipakai membantah
+   kelasnya, jadi ia harus terbaca sebagai angka, bukan sebagai bagian kalimat. */
+.ambang { font-size: 12.5px; color: var(--lemah); font-variant-numeric: tabular-nums; }
+.cacah-badan {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--kertas);
+  color: var(--lemah);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+}
+.daftar-hasil a[data-jenis="komoditas"] { --tepi: var(--hijau-2); }

@@ -12,6 +12,7 @@
  */
 
 import { ambil, muatMeta, cari, gambarHasil, teks, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
+import { rupiahPerKgHara, haraMustahil } from './hitung.js';
 import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
@@ -78,7 +79,9 @@ const SATUAN = {
  * Jadi kadarnya tetap ditampilkan apa adanya — itu isi registri, dan menyembunyikannya
  * berarti memalsukan sumber — tetapi PERKALIANNYA ditahan, karena perkalian itu klaim
  * layar ini sendiri. Sikap yang sama dipakai kolom per-tangki di halaman terbitan. */
-const BATAS_HARA = 1000;   // gram hara per kilogram atau liter produk
+// Ambangnya tinggal di app/hitung.js bersama fungsi yang memakainya — dua salinan angka
+// yang wajib sama akan menyimpang, dan yang menyimpang di sini menghidupkan kembali persis
+// hitungan menyesatkan yang ditahannya.
 
 function hitungHara(p) {
   const basis = new Set(p.isi.map((c) => SATUAN[c.satuan]?.basis));
@@ -86,7 +89,7 @@ function hitungHara(p) {
   const b = [...basis][0];
   const rinci = p.isi.map((c) => ({ ...c, gram: c.nilai * (SATUAN[c.satuan].kali ?? 1) }));
   const total = rinci.reduce((a, c) => a + c.gram, 0);
-  return { basis: b, satuan: b === 'massa' ? 'kg' : 'L', rinci, total, mustahil: total > BATAS_HARA };
+  return { basis: b, satuan: b === 'massa' ? 'kg' : 'L', rinci, total, mustahil: haraMustahil(total) };
 }
 
 // ---------------------------------------------------------------------------
@@ -164,8 +167,8 @@ function blokHasil(p, h, harga, isi) {
     return `<div class="kartu"><p class="kosong">Masukkan harga dan isi kemasan untuk melihat rupiah per kg hara.</p></div>`;
   }
   const perSatuan = harga / isi;
-  const fraksi = h.total / 1000;
-  const perKgHara = perSatuan / fraksi;
+  const perKgHara = rupiahPerKgHara(harga, isi, h.total);
+  if (perKgHara == null) return `<div class="kartu"><p class="kosong">Masukkan harga dan isi kemasan untuk melihat rupiah per kg hara.</p></div>`;
   const skema = skemaSubsidi(p, h.basis);
 
   return `

@@ -76,6 +76,9 @@ export const LUBANG = {
   kandunganTakTerdaftar: 'kandunganTakTerdaftar',   // kandungan diperiksa, tidak ada yang cocok
   haraSediaan: 'haraSediaan',                   // pupuk tanpa komposisi, hara tak terhitung
   takaranRumahTangga: 'takaranRumahTangga',     // menakar tanpa alat terukur
+  peringkatDiminta: 'peringkatDiminta',         // "terbaik", "paling ampuh", "cocok" — tak dijawab
+  ketinggianVarietas: 'ketinggianVarietas',     // ketinggian disebut, registri varietas bisu
+  kalenderTanam: 'kalenderTanam',               // "kapan tanam" — fase tak bertanggal
 };
 // Daftar ini WAJIB berisi tepat yang dipanggil di layar, tidak lebih dan tidak kurang.
 // Kunci yang tidak ada di sini ditolak diam-diam oleh catatLubang() — dan lubang yang

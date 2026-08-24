@@ -9,7 +9,8 @@
  * indeks yang sama, pemecahan ember yang sama, urutan yang sama.
  */
 
-import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, tautanHasil, teks, JENIS, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
+import { muatMeta, bacaMeta, ambil, cari, cariGejala, cariNamaLokal, namaBerdekatan, tautanHasil, teks, JENIS, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
+import { jawabPemegang, kelasKetinggian, kataDasar } from './tanya.js';
 import { pasangTombolTema } from './tema.js';
 import { catatLubang, LUBANG } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -137,9 +138,23 @@ const NIAT = [
     kata: ['harga', 'berapa harga'] },
 ];
 
+/* Frasa dicocokkan sebagai KUMPULAN KATA, bukan sebagai untaian berurutan.
+ *
+ * Versi pertama mencari "kapan tanam" apa adanya di dalam kalimat, dan itu benar hanya untuk
+ * orang yang mengetiknya persis begitu. "Kapan waktu yang cocok untuk menanam cabai" memuat
+ * kedua katanya, terpisah lima kata dan berimbuhan — dan dijawab tanpa satu pun pintu, di
+ * bawah kalimat yang justru menyebut "pintunya di bawah". Kalimat yang menunjuk ke pintu
+ * yang tidak digambar lebih buruk daripada tidak menyebut pintunya sama sekali.
+ *
+ * Yang dipakai bentuk dasar seluruh katanya, perekat sekalipun: frasa "beli di mana" dan
+ * "berapa tangki" memang memakai perekatnya sebagai bagian frasa. Longgarnya disengaja dan
+ * berbiaya rendah — ini merutekan, bukan menjawab, dan dua pintu yang ditawarkan bersamaan
+ * masih lebih baik daripada nol pintu. */
 const cariNiat = (kueri) => {
-  const r = ' ' + rapiNiat(kueri) + ' ';
-  return NIAT.filter((x) => x.kata.some((k) => r.includes(' ' + rapiNiat(k) + ' ')));
+  const punya = new Set(kataDasar(kueri));
+  return NIAT.filter((x) => x.kata.some(
+    (k) => rapiNiat(k).split(' ').every((w) => punya.has(w)),
+  ));
 };
 
 const kartuNiat = (x) => `
@@ -156,9 +171,235 @@ const kelompok = (judul, catatan, isi) => `
     <ul class="daftar-hasil">${isi}</ul>
   </div>`;
 
-function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
+// ---------------------------------------------------------------------------
+// Membaca pertanyaan — dan menyatakan apa yang dibacanya
+// ---------------------------------------------------------------------------
+/* KENAPA PENGURAIANNYA DITAMPILKAN, BUKAN DIKERJAKAN DIAM-DIAM.
+ *
+ * Kotak ini sekarang membuang sebagian kata yang diketik: "apa", "yang", dan "untuk"
+ * dibuang karena tidak menyempitkan apa pun, tetapi "cocok" dan "terbaik" dibuang karena
+ * permukaan ini MENOLAK menjawabnya. Kedua pembuangan itu tidak bisa dibedakan dari luar,
+ * dan yang kedua berbahaya kalau tidak terlihat: daftar yang muncul sesudah kata "terbaik"
+ * akan dibaca sebagai peringkat, dan tidak ada satu pun peringkat di registri mana pun.
+ *
+ * Jadi tiap pertanyaan berkalimat menerangkan dirinya sendiri di atas hasilnya: kata mana
+ * yang dicari, penyempitan apa yang dipakai, dan kata mana yang sengaja tidak dijawab
+ * beserta alasannya. Kueri satu kata tidak menampilkannya — menerangkan penguraian atas
+ * satu kata cuma kebisingan.
+ *
+ * INI TETAP BUKAN PERENDER RINCIAN. Yang digambar di sini kalimat tentang PERTANYAANNYA,
+ * bukan kartu tentang entitas — pintu depan tetap menyerahkan rinciannya ke jalur yang
+ * memang perendernya. Satu-satunya angka yang muncul di sini hasil hitungan atas ambang
+ * yang diterbitkan (kelas dataran), dan hitungan itu tidak dimiliki layar mana pun. */
+
+const daftarKata = (xs) => xs.map((x) => `<span class="keping-kata">${teks(x)}</span>`).join(' ');
+
+const NAMA_JENIS_TANYA = {
+  pupuk: 'pupuk', pestisida: 'pestisida', varietas: 'varietas', bahan: 'bahan aktif',
+  opt: 'hama & penyakit', harga: 'harga', sediaan: 'sediaan sendiri',
+  principal: 'perusahaan', komoditas: 'tanaman',
+};
+
+function blokBacaan(urai, jenisDijatuhkan) {
+  const baris = [];
+  if (urai.istilah.length) {
+    baris.push(`<li><span class="bacaan-label">Dicari</span> ${daftarKata(urai.istilah)}</li>`);
+  }
+  if (urai.jenis.length) {
+    const nama = urai.jenis.map((j) => NAMA_JENIS_TANYA[j] ?? j).join(', ');
+    baris.push(`<li><span class="bacaan-label">Disempitkan ke</span> <span>${teks(nama)}${
+      jenisDijatuhkan ? ' — <em>tidak dipakai, tidak ada yang cocok dengan jenis itu</em>' : ''}</span></li>`);
+  }
+  if (urai.nilai.length) {
+    // B4: permintaan peringkat adalah permintaan yang paling sering datang dan paling
+    // pasti ditolak. Mencacahnya memberi tahu seberapa besar jarak antara yang ditanyakan
+    // orang dan yang sanggup dijawab data ini — dan itu angka yang belum pernah ada.
+    catatLubang('beranda', LUBANG.peringkatDiminta);
+    baris.push(`<li class="bacaan-tolak"><span class="bacaan-label">Tidak dijawab</span>
+      <span>${daftarKata(urai.nilai)} — permukaan ini tidak memeringkat apa pun. Registri
+      mencatat <strong>izin edar</strong>, bukan mutu, kemanjuran, atau kecocokan: ia tidak
+      menguji apa pun, ia mendaftarkan. Yang di bawah daftar pendaftaran, bukan urutan
+      terbaik.</span></li>`);
+  }
+  if (!baris.length) return '';
+  return `
+    <div class="bacaan-tanya">
+      <p class="ringkas-hasil"><strong>Yang dibaca dari pertanyaan ini</strong></p>
+      <ul class="bacaan">${baris.join('')}</ul>
+    </div>`;
+}
+
+/* Jawaban "perusahaan apa" disusun dari medan yang SUDAH ada di kartu hasilnya — jadi ia
+ * tidak menambah satu pengambilan pun, dan tidak menambah satu klaim pun di luar registri.
+ * Aturan dua tingkatnya (nama persis dulu, sisanya tetap disebutkan) ada di tanya.js. */
+function blokPemegang(hasil, urai) {
+  const j = jawabPemegang(hasil, urai.istilah);
+  if (!j || !j.badan.length) return '';
+  const sebut = (b) => (b.pk
+    ? `<a href="principal.html?key=${encodeURIComponent(b.pk)}">${teks(b.label)}</a>`
+    : `<strong>${teks(b.label)}</strong>`);
+
+  const utama = j.badan.length === 1
+    ? `Terdaftar atas nama ${sebut(j.badan[0])}.`
+    : `Terdaftar atas nama <strong>${j.badan.length} badan</strong>: ${
+      j.badan.slice(0, 4).map((b) => `${sebut(b)} <span class="cacah-badan">${b.cacah}</span>`).join(', ')
+    }${j.badan.length > 4 ? ', dan lainnya' : ''}.`;
+
+  // Nama dagang tidak eksklusif di registri, dan diam soal itu membuat jawaban tingkat
+  // pertama terbaca sebagai "cuma ini yang ada".
+  const catatan = j.persisDipakai && j.lain
+    ? `Dihitung dari pendaftaran yang bernama <em>persis</em> itu. ${angkaId(j.lain)} pendaftaran
+       lain namanya berawalan sama tetapi tidak sama — sebagiannya dipegang badan yang berbeda,
+       dan semuanya ada di daftar di bawah.`
+    : 'Yang dicatat registri pemegang pendaftarannya — belum tentu pabrik yang membuatnya, dan belum tentu yang menjualnya.';
+
+  return `
+    <div class="jawab-tanya">
+      <p class="jawab-utama">${utama}</p>
+      <p class="jawab-batas">${catatan}</p>
+    </div>`;
+}
+
+/* Isi produk juga sudah ada di kepala pencarian — `f` memuat bahan aktif beserta kadarnya,
+ * dan itu justru medan yang membedakan empat PHONSKA satu sama lain. Yang tidak punya `f`
+ * bukan produk tanpa isi melainkan produk yang komposisinya kosong di registri, dan bedanya
+ * disebutkan. */
+function blokIsi(hasil, urai) {
+  const kata = new Set(urai.istilah);
+  const persis = hasil.filter((x) => kata.has(x.n.toLowerCase().replace(/[^a-z0-9]/g, '')));
+  const dipakai = (persis.length ? persis : hasil).filter((x) => x.j === 'pupuk' || x.j === 'pestisida');
+  if (!dipakai.length) return '';
+  const isi = [...new Set(dipakai.filter((x) => x.f).map((x) => x.f))];
+  const kosong = dipakai.filter((x) => !x.f).length;
+  if (!isi.length) {
+    return `
+      <div class="jawab-tanya">
+        <p class="jawab-utama">Komposisinya <strong>tidak tercatat di registri</strong> untuk
+        ${angkaId(kosong)} pendaftaran yang cocok.</p>
+        <p class="jawab-batas">Itu keadaan datanya, bukan berarti produknya tanpa isi —
+        28,7% pupuk terdaftar tidak berkomposisi sama sekali di sumbernya.</p>
+      </div>`;
+  }
+  return `
+    <div class="jawab-tanya">
+      <p class="jawab-utama">${isi.length === 1
+        ? `Isinya <strong>${teks(isi[0])}</strong>.`
+        : `Ada <strong>${isi.length} komposisi berbeda</strong> di bawah nama itu: ${
+          isi.slice(0, 6).map((s) => `<strong>${teks(s)}</strong>`).join(', ')}${isi.length > 6 ? ', dan lainnya' : ''}.`}</p>
+      <p class="jawab-batas">${isi.length > 1
+        ? 'Nama yang sama dengan komposisi berbeda bukan rekaman ganda — keempat grade PHONSKA rekaman yang sah, dan komposisinya yang membedakan. Pilih yang tertulis di kemasan.'
+        : 'Yang dibaca komposisi terdaftar, bukan isi karung. Yang bisa memastikan isi hanya uji laboratorium.'}${
+  kosong ? ` ${angkaId(kosong)} pendaftaran lain yang cocok tidak berkomposisi di registri.` : ''}</p>
+    </div>`;
+}
+
+/* Ketinggian: satu-satunya angka di kotak ini yang punya ambang terbit untuk diadu — dan
+ * jawaban atasnya HAMPIR SELURUHNYA berupa batas.
+ *
+ * Yang bisa dihitung: 500 m termasuk kelas apa, menurut skema siapa, dengan ambang berapa.
+ * Dua skema dijawab sekaligus dan sengaja tidak dipilihkan salah satunya — "dataran
+ * menengah" menurut konvensi hortikultura dan "zona panas" menurut Junghuhn keduanya benar
+ * untuk angka yang sama, dan istilah yang dipakai orang setiap hari memang punya dua arti.
+ *
+ * Yang TIDAK bisa dihitung, dan justru itu yang ditanyakan: varietas mana yang cocok di
+ * sana. Nol dari 11.227 varietas membawa sifat agronomi apa pun. Menyaring daftar dengan
+ * kelas ini berarti mengarang penyaringan yang datanya tidak punya dasar. */
+function blokKetinggian(urai, agro) {
+  if (!urai.ketinggian && !urai.dataran) return '';
+  const meta = bacaMeta();
+  catatLubang('beranda', LUBANG.ketinggianVarietas);
+
+  let utama;
+  if (urai.ketinggian) {
+    const kelas = kelasKetinggian(agro, urai.ketinggian.meter);
+    // Kalimat PERTAMA definisi kelas saja — kalimat itu selalu ambangnya, dan sisanya
+    // keterangan yang panjangnya berbeda-beda per skema. Junghuhn menutup definisinya
+    // dengan daftar tumbuhan contoh, dan daftar itu di dalam kurung akan terbaca seperti
+    // anjuran tanam, yang justru bukan isi skemanya.
+    const ambang = (s) => String(s ?? '').split(/(?<=\.)\s/)[0].replace(/\.$/, '');
+    const sebut = kelas
+      .map(({ skema, kelas: k }) => (k.length === 1
+        ? `<strong>${teks(k[0].n)}</strong> menurut ${teks(skema.n)} <span class="ambang">(${teks(ambang(k[0].arti))})</span>`
+        : null))
+      .filter(Boolean);
+    if (!sebut.length) return '';
+    utama = `${angkaId(urai.ketinggian.meter)} m dpl — ${sebut.join('; ')}.`;
+  } else {
+    utama = `“Dataran ${teks(urai.dataran)}” adalah kelas pada skema dataran hortikultura,
+      bukan sebuah angka. Sebutkan meternya kalau ingin kelasnya dihitung.`;
+  }
+
+  return `
+    <div class="jawab-tanya">
+      <p class="jawab-utama">${utama}</p>
+      <p class="jawab-batas">${teks(meta?.tidakAda?.ketinggianVarietas
+        ?? 'Registri tidak mencatat ketinggian yang cocok untuk satu pun varietas.')}</p>
+    </div>`;
+}
+
+/* Waktu tanam: dirutekan, tidak dijawab — dan perutean tanpa kalimat batasnya akan terbaca
+ * sebagai janji bahwa tanggalnya ada di layar tujuan. Kosakata fase memang sengaja tidak
+ * punya medan hari; alasannya di meta.tidakAda, ditulis oleh yang membangun indeksnya. */
+function blokWaktu(urai) {
+  if (!urai.waktu.length && !urai.tindakan.includes('tanam')) return '';
+  if (!urai.waktu.length) return '';
+  const meta = bacaMeta();
+  catatLubang('beranda', LUBANG.kalenderTanam);
+  return `
+    <div class="jawab-tanya">
+      <p class="jawab-utama">Kapannya <strong>tidak dijawab dari sini</strong>, dan itu bukan
+      data yang kebetulan belum ditarik.</p>
+      <p class="jawab-batas">${teks(meta?.tidakAda?.rencanaBukanKalender
+        ?? 'Rencana musim bukan kalender: fase tidak memuat hari, jadi tanggalnya tidak ditebak.')}
+      Yang bisa dipakai rencana musim berbasis fase — pintunya di bawah.</p>
+    </div>`;
+}
+
+/** Seluruh kepala jawaban, disusun sekali. `agro` boleh null — blok ketinggian tidak digambar. */
+function kepalaTanya(urai, hasil, jenisDijatuhkan, agro) {
+  if (!urai?.pertanyaan) return '';
+  const blok = [
+    blokBacaan(urai, jenisDijatuhkan),
+    urai.atribut.includes('pemegang') ? blokPemegang(hasil, urai) : '',
+    urai.atribut.includes('isi') ? blokIsi(hasil, urai) : '',
+    blokKetinggian(urai, agro),
+    blokWaktu(urai),
+  ].filter(Boolean);
+  return blok.join('');
+}
+
+/* Kosakata agroklimat diambil HANYA kalau pertanyaannya menyebut ketinggian. 16 KB pada
+ * permukaan yang syarat lapangannya sinyal buruk terlalu mahal untuk dibawa tiap muat
+ * halaman demi satu bentuk pertanyaan; `ambil()` mengingatnya sesudah pengambilan pertama,
+ * jadi pertanyaan berikutnya tidak membayar lagi. */
+async function agroBila(urai) {
+  if (!urai?.ketinggian) return null;
+  return ambil('agroklimat').catch(() => null);
+}
+
+// Sisa argumennya jadi objek bernama sejak yang keenam. Enam argumen berposisi sudah di
+// batas terbaca; sepuluh berarti tiap penambahan berikutnya menuntut pemanggilnya menghitung
+// koma, dan `gambar(a, b, c, d, e, [], [], x)` tidak memberi tahu apa pun tentang `x`.
+function gambar(nama, bahan, gejala, lokal, kueri,
+  { harga = [], badan = [], komoditas = [], kepala = '', urai = null } = {}) {
   const bagian = [];
   const niat = cariNiat(kueri);
+
+  // Kepala jawaban di atas segalanya: yang bertanya "perusahaan apa" mendapat kalimatnya
+  // lebih dulu, lalu daftar yang menjadi dasarnya. Urutan sebaliknya membuat jawabannya
+  // tenggelam di bawah tujuh belas kartu.
+  if (kepala) bagian.push(kepala);
+
+  // Pintu komoditas mendahului seluruh daftar entri, dan itu disengaja: satu barisnya
+  // menjawab "ada berapa" untuk seluruh varietas dan OPT tanaman itu, sementara kartu
+  // entri di bawahnya cuma yang kebetulan namanya memuat kata yang diketik. Untuk
+  // "alpukat" bedanya 145 lawan 20.
+  if (komoditas.length) {
+    bagian.push(kelompok(
+      komoditas.length === 1 ? 'Pintu tanaman' : `${komoditas.length} pintu tanaman`,
+      'daftar <strong>pendaftaran</strong> — OPT yang punya produk terdaftar, varietas yang punya surat, dan harganya kalau ada',
+      komoditas.map((x) => kartuNama(x, kueri)).join('')));
+  }
 
   // Nama lokal paling dulu. Yang mengetik "patek" sudah tahu apa yang dilihatnya dan
   // sedang menyebut namanya; itu kueri paling spesifik yang bisa masuk ke kotak ini.
@@ -228,9 +469,14 @@ function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
     // disebutkan, bukan diratakan jadi satu kata yang menaikkan sebagian isinya.
     const macam = [...new Set(tampil.map((x) => JENIS[x.j] ?? x.j))]
       .map((t) => t.toLowerCase()).join(', ');
+    // Yang disebut di sini KATA YANG DICARI, bukan kalimat yang diketik. Sejak kotak ini
+    // menerima pertanyaan, keduanya berbeda — dan menulis "memuat Kapan waktu yang cocok
+    // untuk menanam cabai" pada daftar yang sebenarnya dicocokkan dengan "cabai" adalah
+    // keterangan yang salah, bukan keterangan yang panjang.
+    const dicari = urai?.pertanyaan && urai.istilah.length ? urai.istilah : [kueri];
     bagian.push(kelompok(
       `${angkaId(nama.length)} nama cocok`,
-      `${macam} — memuat <strong>${teks(kueri)}</strong>${nama.length > tampil.length ? `, ${tampil.length} teratas` : ''} · yang diawali kueri didahulukan`,
+      `${macam} — memuat ${dicari.map((s) => `<strong>${teks(s)}</strong>`).join(' dan ')}${nama.length > tampil.length ? `, ${tampil.length} teratas` : ''} · yang diawali kata itu didahulukan`,
       tampil.map((x) => kartuNama(x, kueri)).join('')));
   }
 
@@ -263,17 +509,23 @@ function gambarNamaTakTerambil() {
   el.hasil.innerHTML = BLOK_NAMA_TAK_TERAMBIL;
 }
 
-async function gambarKosong(kueri) {
+async function gambarKosong(kueri, kepala = '') {
   // Nol hasil adalah tempat perutean niat paling berguna: yang mengetik "berapa tangki"
   // memang tidak akan pernah punya hasil nama, dan tanpa ini ia dijawab "tidak ada".
+  //
+  // Nol hasil juga tempat kepala jawaban paling perlu: pertanyaan yang tidak mengandung satu
+  // pun nama terdaftar — "kapan waktu tanam", "yang paling ampuh apa" — memang akan selalu
+  // nol, dan "tidak ada yang cocok" adalah jawaban yang keliru untuknya. Yang benar
+  // menyebutkan apa yang dibaca dari pertanyaannya dan kenapa bagian itu tidak dijawab.
   const niat = cariNiat(kueri);
   if (niat.length) {
-    el.hasil.innerHTML = kelompok(
+    el.hasil.innerHTML = kepala + kelompok(
       'Sepertinya yang dicari alatnya',
       'ini <strong>pintu</strong>, bukan jawaban — layar tujuannya yang menghitung',
       niat.map(kartuNiat).join(''));
     return;
   }
+  if (kepala) el.hasil.innerHTML = kepala;
   // B4: dua lubang sekaligus tertabrak — nama yang dicari tidak punya padanan
   // terdaftar, dan gejalanya di luar sepuluh yang terkurasi. Yang dicatat cacahnya,
   // bukan kuerinya; lihat docs/11 bagian 3.
@@ -316,11 +568,14 @@ async function jalankan() {
     // cabang yang tidak sanggup tidak boleh membungkam cabang yang sanggup — aturan yang
     // sama dengan "nol dan tak-sanggup bukan kegagalan" di docs/11.
     const [namaHasil, gejala, lokal] = await Promise.all([
-      cari(kueri).catch(() => ({ takTerambil: true })),
+      // `pintu: true` hanya di sini dan di kotak cangkang: pintu komoditas menaut ke halaman
+      // terbitan, bukan ke pecahan indeks, jadi jalur yang membuka hasilnya sebagai rincian
+      // (2, 3, 4) tidak boleh menerimanya.
+      cari(kueri, null, { pintu: true }).catch(() => ({ takTerambil: true })),
       cariGejala(kueri).catch(() => []),
       cariNamaLokal(kueri).catch(() => []),
     ]);
-    const { hasil, kurang, takTerambil } = namaHasil;
+    const { hasil, kurang, takTerambil, urai, jenisDijatuhkan } = namaHasil;
 
     if (kurang && !gejala.length && !lokal.length) {
       el.hasil.innerHTML =
@@ -332,15 +587,24 @@ async function jalankan() {
     const daftar = hasil ?? [];
     const bahan = daftar.filter((x) => x.j === 'bahan');
     const harga = daftar.filter((x) => x.j === 'harga');
+    const komoditas = daftar.filter((x) => x.j === 'komoditas');
     // Satu badan bisa muncul dua kali — sekali di bawah nama penuhnya, sekali di bawah nama
     // tanpa awalan lembaga. Di indeks keduanya memang harus ada; di layar cukup satu.
     const badan = [...new Map(daftar.filter((x) => x.j === 'principal').map((x) => [x.i, x])).values()];
-    const nama = daftar.filter((x) => !['bahan', 'harga', 'principal'].includes(x.j));
-    if (!nama.length && !bahan.length && !gejala.length && !lokal.length && !harga.length && !badan.length) {
+    const nama = daftar.filter((x) => !['bahan', 'harga', 'principal', 'komoditas'].includes(x.j));
+
+    // Kosakata agroklimat diambil sesudah hasilnya ada, bukan bersamaan: ia cuma perlu untuk
+    // satu bentuk pertanyaan, dan menunggunya bersama pengambilan yang selalu terjadi akan
+    // menahan seluruh layar demi pertanyaan yang jarang.
+    const agro = await agroBila(urai);
+    const kepala = kepalaTanya(urai, daftar, jenisDijatuhkan, agro);
+
+    if (!nama.length && !bahan.length && !gejala.length && !lokal.length && !harga.length
+        && !badan.length && !komoditas.length) {
       if (takTerambil) return gambarNamaTakTerambil();
-      return gambarKosong(kueri);
+      return gambarKosong(kueri, kepala);
     }
-    gambar(nama, bahan, gejala, lokal, kueri, harga, badan);
+    gambar(nama, bahan, gejala, lokal, kueri, { harga, badan, komoditas, kepala, urai });
     // Yang sanggup sudah tergambar di atas; yang tidak sanggup dinyatakan di bawahnya,
     // bukan dibiarkan terbaca sebagai "tidak ada namanya".
     if (takTerambil) el.hasil.insertAdjacentHTML('beforeend', BLOK_NAMA_TAK_TERAMBIL);

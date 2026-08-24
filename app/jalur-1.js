@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
+import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -465,23 +465,6 @@ function kartuBahan(g, i) {
     </div>`;
 }
 
-/* Petak kemasan di depan nama merek.
- *
- * Yang tidak punya gambar TIDAK dibiarkan kosong melompong. 15% dari baris merek punya
- * gambar, jadi keadaan yang lazim justru yang tanpa — dan sederet sel kosong di antara
- * yang bergambar terbaca sebagai "yang ini yang meragukan", padahal artinya cuma situs
- * pemegangnya belum dipanen. Petak bergaris putus-putus menempati ruang yang sama,
- * sehingga barisnya sejajar dan tidak ada yang tampak tersisih.
- *
- * `alt` sengaja kosong: namanya persis di sebelahnya, di dalam tautan yang sama.
- * Membacakan "Kemasan MATROS 18 EC" lalu "MATROS 18 EC" menggandakan tiap baris tabel
- * bagi yang memakai pembaca layar.
- */
-const petakKemasan = (m) => (m.g
-  ? `<img class="merek-kemasan" src="gambar/${teks(m.g)}" alt="" width="40" height="40"
-          loading="lazy" decoding="async">`
-  : '<span class="merek-kemasan merek-kemasan-kosong" aria-hidden="true"></span>');
-
 /* Nama merek jadi tautan ke rincian produknya di jalur 2.
  *
  * Sampai sekarang tabel ini buntu: ia menyebut nama, nomor, dan dosis, lalu berhenti.
@@ -494,7 +477,7 @@ const petakKemasan = (m) => (m.g
  * memang cuma nama.
  */
 const namaMerek = (m) => {
-  const isi = `${petakKemasan(m)}<span class="merek-nama">${teks(m.nama)}</span>`;
+  const isi = `${petakKemasan(m.g)}<span class="merek-nama">${teks(m.nama)}</span>`;
   if (!m.p) return `<span class="merek-tautan">${isi}</span>`;
   const alamat = `produk.html?${new URLSearchParams({ id: m.id, pecahan: m.p })}`;
   return `<a class="merek-tautan" href="${teks(alamat)}">${isi}</a>`;

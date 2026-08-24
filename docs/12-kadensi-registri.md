@@ -33,27 +33,32 @@ Ini bagian yang paling penting dibaca sebelum menjalankan apa pun.
 | Langkah | Alat | Menulis ke | Dibaca oleh |
 |---|---|---|---|
 | 1 · tarik | `spec/tools/tarik-registri.mjs` | `data-registri/` | **— tidak ada** |
-| 2 · **jembatan** | **belum ada** | `pukpes_data/raw/` | langkah 3 |
+| 2 · jembatan | `spec/tools/jembatan-registri.mjs` | `pukpes_data/raw/` | langkah 3 |
 | 3 · turunkan | `isi-komposisi-pupuk.mjs`, `dedup-komposisi-pestisida.mjs` | `spec/vocab/product/*.ndjson` | pemeriksa |
 | 4 · periksa | `npm run all` | — | manusia |
 
-> **Rantainya putus di langkah 2, dan putusnya tidak terlihat.** Penarik menulis
-> `data-registri/pestisida.json` dan `data-registri/pupuk.json`. Alat turunannya membaca
-> `pukpes_data/raw/pestisida_terdaftar.json` dan `pukpes_data/raw/pupuk_terdaftar.json`.
-> **Direktorinya berbeda dan nama berkasnya juga berbeda,** dan tidak ada satu pun alat
-> yang menjembatani keduanya.
+> **Rantai ini pernah putus di langkah 2, dan putusnya tidak terlihat.** Penarik menulis
+> `data-registri/pestisida.json`; alat turunannya membaca
+> `pukpes_data/raw/pestisida_terdaftar.json` — direktori berbeda, nama berkas berbeda, dan
+> sampai 24 Agustus 2026 tidak ada satu pun alat yang menjembatani keduanya.
 >
-> Akibatnya persis jenis kegagalan yang paling sulit ditangkap: penarik berjalan mulus,
-> berkas baru benar-benar muncul, tidak ada galat — dan **kosakata tidak berubah sama
-> sekali.** Yang menjalankannya akan yakin registrinya sudah segar.
+> Mode gagalnya persis jenis yang paling sulit ditangkap: penarik berjalan mulus, berkas
+> baru benar-benar muncul, tidak ada galat — dan **kosakata tidak berubah sama sekali.**
+> Yang menjalankannya akan yakin registrinya sudah segar padahal ia menurunkan tarikan
+> musim lalu.
 >
-> Sampai jembatannya ditulis, langkah 2 dilakukan tangan dan **wajib diperiksa**:
+> Sekarang langkah itu dijalankan `jembatan-registri.mjs`, yang memindahkan ketiganya
+> sekaligus **memeriksa tarikannya sebelum dipakai** — dan menolak seluruhnya kalau salah
+> satu tidak lolos:
 >
-> ```
-> data-registri/pestisida.json     ->  pukpes_data/raw/pestisida_terdaftar.json
-> data-registri/pupuk.json         ->  pukpes_data/raw/pupuk_terdaftar.json
-> data-registri/pupuk-legacy.json  ->  pukpes_data/raw/pupuk_terdaftar_legacy.json
-> ```
+> - berkas yang tidak bisa diurai sebagai JSON,
+> - berkas yang terurai tetapi kosong (ia akan mengosongkan kosakata tanpa satu pun galat),
+> - dan tarikan yang **menyusut lebih dari seperempat** dari yang sedang dipakai. Registri
+>   memang bisa menyusut secara sah ketika pendaftaran kedaluwarsa dicabut, tetapi susut
+>   sebesar itu dalam satu tarikan jauh lebih mungkin berarti tarikannya terpotong.
+>
+> Jalankan tanpa `--tulis` lebih dulu: ia mencetak berapa rekaman yang akan berpindah dan
+> dari berapa, jadi selisihnya terbaca sebelum apa pun berubah.
 >
 > `data-registri/` ada di `.gitignore`, jadi tarikan mentahnya memang tidak masuk
 > repositori — hanya turunannya yang dilacak.

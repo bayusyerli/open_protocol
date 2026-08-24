@@ -906,9 +906,16 @@ for (const b of principal) perPrincipal.set(b.id, []);
 
 for (const r of semuaProduk) {
   if (!r.pcp) continue;
+  // `g` memuat NAMA BERKAS gambar kecilnya, bukan penanda ada/tidak. Sampai sekarang ia
+  // cuma `1`, dan layar profil karena itu hanya sanggup menulis "ada" — satu kata yang
+  // tidak menolong siapa pun yang sedang mencocokkan kemasan di tangannya dengan baris di
+  // layar. Bentuknya sengaja sama persis dengan `g` di tabel merek jalur 1 dan di layar
+  // bahan aktif jalur 2, sehingga ketiganya dipasang penyaji yang sama alih-alih tiga rupa
+  // untuk satu hal. Yang tidak punya tetap tidak diberi medan kosong.
+  const g = gambarKecil(r.id);
   perPrincipal.get(r.pcp.id)?.push({
     i: r.id, n: r.nama, j: r.jenis, d: r.daftar ?? null, p: petaPecahan.get(r.id),
-    ...(r.gambar?.length ? { g: 1 } : {}),
+    ...(g ? { g } : {}),
   });
 }
 for (const r of semuaVarietas) {

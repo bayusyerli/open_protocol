@@ -28,7 +28,7 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v27';
+const VERSI = 'v28';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 
@@ -51,6 +51,7 @@ const BERKAS_CANGKANG = [
   'jalur-5.html', 'jalur-6.html', 'ukur.html', 'takaran.html', 'harga.html',
   'principal.html', 'toko.html', 'usaha.html', 'kas.html', 'rencana.html',
   'gaya.css', 'beranda.css', 'batas.css',
+  'hitung.js', 'tanya.js',
   'pustaka.js', 'batas.js', 'sanggah.js', 'serah.js', 'teruskan.js', 'lapor.js',
   'simpanan.js',
   'musim.js', 'buku.js', 'keselamatan.js',

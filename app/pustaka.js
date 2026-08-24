@@ -6,6 +6,10 @@
  * varietas memang muncul di kedua jalur.
  */
 
+// Penguraian kalimat tinggal di berkasnya sendiri karena ia tidak menyentuh jaringan maupun
+// DOM — seluruhnya fungsi murni, dan itu yang membuatnya bisa diuji di luar peramban.
+import { uraikan } from './tanya.js';
+
 /* Tidak diekspor: hanya `ambil()` di bawah yang memakainya.
  *
  * MUTLAK, BUKAN RELATIF, dan itu yang membuat permukaan ini bisa tinggal di dua kedalaman
@@ -15,10 +19,6 @@
  * ia menunjuk ke atas akar dan setiap pengambilan gagal. Jalur mutlak benar di keduanya,
  * dan ia juga yang sudah dipakai sw.js (`INDEKS = '/spec/indeks/'`) sejak awal — jadi ini
  * membuat ketiganya sepakat, bukan menambah satu asumsi baru. */
-// Penguraian kalimat tinggal di berkasnya sendiri karena ia tidak menyentuh jaringan maupun
-// DOM — seluruhnya fungsi murni, dan itu yang membuatnya bisa diuji di luar peramban.
-import { uraikan } from './tanya.js';
-
 const BASIS = '/spec/indeks';
 
 const ingatan = new Map();
@@ -159,6 +159,34 @@ export function namaPemegang(nama, key) {
   if (!nama || !key) return t;
   return `<a class="tautan-principal" href="principal.html?key=${encodeURIComponent(key)}">${t}</a>`;
 }
+
+/* Petak kemasan berukuran tetap, dipasang di depan atau di samping nama merek.
+ *
+ * Sudah ada DUA salinannya sebelum ini — di tabel merek jalur 1 dan di layar bahan aktif
+ * jalur 2 — dan halaman profil badan menjadi yang ketiga. Tiga salinan dari satu aturan akan
+ * menyimpang begitu salah satunya diperbaiki, persis sebab `namaPemegang` di atas tinggal
+ * di sini. Yang diterima namanya BERKAS, bukan rekamannya, karena ketiga pemanggilnya
+ * menamai medannya berbeda-beda dan petak ini tidak perlu tahu bentuk rekaman siapa pun.
+ *
+ * Yang tidak punya gambar TIDAK dibiarkan kosong melompong. Hanya 15% baris merek punya
+ * gambar, jadi keadaan yang lazim justru yang tanpa — dan sederet sel kosong di antara yang
+ * bergambar terbaca sebagai "yang ini yang meragukan", padahal artinya cuma situs
+ * pemegangnya belum dipanen. Petak bergaris putus-putus menempati ruang yang sama, sehingga
+ * barisnya sejajar dan tidak ada yang tampak tersisih.
+ *
+ * `alt` sengaja kosong: namanya selalu ada di sebelahnya, di baris yang sama. Membacakan
+ * "Kemasan MATROS 18 EC" lalu "MATROS 18 EC" menggandakan tiap baris tabel bagi yang
+ * memakai pembaca layar.
+ *
+ * `w`/`h` ditulis tetap 40 dan BUKAN ukuran gambar aslinya: yang `kecil` dibatasi 320 px
+ * pada sisi terpanjangnya dan nisbahnya berselisih, sedangkan petaknya berukuran tetap
+ * dengan `object-fit: contain`. Menuliskan 40×40 memesan ruang yang persis akan dipakai,
+ * jadi tidak ada yang bergeser saat gambarnya mendarat.
+ */
+export const petakKemasan = (berkas) => (berkas
+  ? `<img class="merek-kemasan" src="gambar/${teks(berkas)}" alt="" width="40" height="40"
+          loading="lazy" decoding="async">`
+  : '<span class="merek-kemasan merek-kemasan-kosong" aria-hidden="true"></span>');
 
 /* Rute hasil pencarian — jenis mana dibuka halaman mana.
  *
@@ -346,7 +374,26 @@ export async function cari(kueri, saring, { pintu = false } = {}) {
 
   // DAN kalau bisa: kalau ada yang mencocoki seluruh kata, yang mencocoki sebagian dibuang.
   const penuh = dinilai.filter((d) => d.cocok === istilah.length);
-  const dipakai = penuh.length ? penuh : dinilai;
+  let dipakai = penuh.length ? penuh : dinilai;
+
+  /* Saringan jenis, dan ia LUNAK — kalau menyaring menghabiskan hasilnya, saringannya
+   * dijatuhkan dan penjatuhannya dilaporkan.
+   *
+   * Contohnya "Phonska produk perusahaan apa": kata "perusahaan" memang menyebut jenis
+   * `principal`, tetapi tidak ada badan bernama Phonska. Menyaring dengan keras di sini akan
+   * menjawab nol untuk pertanyaan yang jawabannya justru ada dan lengkap — yang benar
+   * menjawab produknya, lalu menyebutkan siapa pemegangnya dari medan yang sudah terambil.
+   *
+   * Pintu komoditas dikecualikan karena ia bukan entri sejenis melainkan tautan ke daftar:
+   * yang mengetik "varietas alpukat" justru paling terbantu oleh pintu yang menyebut seluruh
+   * 145 varietasnya, dan pintu itu ber-`j` "komoditas", bukan "varietas". */
+  let jenisDijatuhkan = false;
+  if (u.jenis.length) {
+    const diminta = new Set(u.jenis);
+    const disaring = dipakai.filter((d) => diminta.has(d.x.j) || d.x.j === 'komoditas');
+    if (disaring.length) dipakai = disaring;
+    else jenisDijatuhkan = true;
+  }
 
   dipakai.sort((a, b) => (
     // Untaian penuh lebih dulu — "abamektin 18" tetap menjawab merek itu, bukan seluruh
@@ -359,7 +406,14 @@ export async function cari(kueri, saring, { pintu = false } = {}) {
     || a.x.n.localeCompare(b.x.n)
   ));
 
-  return { hasil: dipakai.map((d) => d.x), urai: u, sebagian: !penuh.length && istilah.length > 1 };
+  return {
+    hasil: dipakai.map((d) => d.x),
+    urai: u,
+    // Dua hal yang layar perlu bisa katakan, dan yang tidak bisa disimpulkan dari daftarnya:
+    // bahwa hasilnya cuma cocok sebagian, dan bahwa penyempitan yang diminta tidak terpakai.
+    sebagian: !penuh.length && istilah.length > 1,
+    jenisDijatuhkan,
+  };
 }
 
 /**

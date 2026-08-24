@@ -193,8 +193,11 @@ function pasangCari(bilah) {
       //
       // Ditangkap sendiri-sendiri, sama seperti beranda: satu cabang yang tidak sanggup
       // tidak boleh membungkam cabang yang sanggup.
+      // `pintu: true` boleh di sini karena lembar ini menggambar hasilnya sebagai TAUTAN,
+      // bukan tombol yang membuka pecahan indeks — jadi pintu komoditas, yang menaut ke
+      // halaman terbitan, mendarat di tempat yang benar tanpa perlakuan khusus.
       const [namaHasil, gejala, lokal] = await Promise.all([
-        cari(kueri).catch(() => ({ takTerambil: true })),
+        cari(kueri, null, { pintu: true }).catch(() => ({ takTerambil: true })),
         cariGejala(kueri).catch(() => []),
         cariNamaLokal(kueri).catch(() => []),
       ]);

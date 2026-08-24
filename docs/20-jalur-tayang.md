@@ -87,6 +87,21 @@ Rakitannya **42.085 berkas, ±480 MB**. Angka pertama yang menentukan, bukan yan
 Begitu host diputuskan, langkah unggah menggantikan langkah artefak di workflow; empat
 langkah di atasnya tidak berubah sama sekali.
 
+## Header yang harus dipasang host
+
+Dua hal tidak bisa dikirim lewat `<meta>` dan karena itu tidak ada di halaman — keduanya
+menunggu host dipilih:
+
+| Header | Nilai | Kenapa |
+|---|---|---|
+| `Content-Security-Policy` | `frame-ancestors 'none'` | Diabaikan bila lewat `<meta>`; peramban mencetak peringatan lalu melewatinya. Sisa kebijakannya sudah terpasang di halaman dan dijaga `spec/tools/cek-csp.mjs`. |
+| `X-Content-Type-Options` | `nosniff` | Menahan peramban menebak tipe berkas dari isinya — relevan karena situs ini menyajikan 9.301 berkas JSON di samping HTML-nya. |
+
+Satu lagi yang layak dipasang begitu URL bercap dipakai: `Cache-Control: immutable` untuk
+`/spec/indeks/*.json?v=…`. Pecahan indeks sudah bercap hash, jadi isinya berubah berarti
+URL-nya berubah — salinan lama tidak akan pernah terpakai lagi, dan peramban boleh berhenti
+bertanya sama sekali. `meta.json` sendiri **tidak** boleh ikut: ia yang menyebutkan capnya.
+
 ## Yang masih terbuka
 
 - **Halaman hub per klaster belum ada.** Tidak ada `/produk/`, `/bahan/`, `/tanaman/`, atau

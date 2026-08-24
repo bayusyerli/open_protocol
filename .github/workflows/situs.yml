@@ -48,10 +48,17 @@ jobs:
         working-directory: spec
         run: npm ci
 
-      # Gerbang mutu lebih dulu, sebelum satu halaman pun dibangun: skema, aturan
-      # kebijakan, 89 uji negatif, 37 uji dosis, dan pencocokan angka dokumen ke datanya.
-      # Membangun 30 ribu halaman di atas data yang tidak lolos hanya menyebarkan galatnya.
-      - name: Periksa kosakata, aturan, dan angka
+      # Gerbang mutu lebih dulu, sebelum satu halaman pun dibangun. `npm run all` menjalankan
+      # sembilan pemeriksaan: skema, aturan kebijakan, uji negatif, uji dosis, uji hitungan,
+      # uji penguraian kalimat, pencocokan angka dokumen ke datanya, penguraian modul app,
+      # lalu dua pagar rilis — CSP beserta hash skrip temanya, dan `VERSI` service worker
+      # terhadap sidik isi cangkang.
+      #
+      # Dua yang terakhir menjaga mode gagal yang SUNYI, dan itu yang membuatnya layak ada di
+      # sini: cangkang yang berubah tanpa bump VERSI mengunci pengguna lama di versi basi
+      # tanpa satu pun tanda, dan hash CSP yang menyimpang mematikan penyetel tema tanpa
+      # galat yang terbaca. Membangun 30 ribu halaman di atas keduanya hanya menyebarkannya.
+      - name: Periksa kosakata, aturan, angka, dan pagar rilis
         working-directory: spec
         run: npm run all
 
