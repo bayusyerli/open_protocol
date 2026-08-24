@@ -492,12 +492,18 @@ a { color: var(--hijau-2); }
 .isi-lembar h3 { margin: 16px 0 4px; font-size: 14px; }
 .isi-lembar h3:first-child { margin-top: 0; }
 .isi-lembar p { margin: 0 0 8px; font-size: 13.5px; }
-.isi-lembar dl {
+/* Kisi label→angka ini milik daftar cacah, bukan tiap <dl> yang kebetulan ada di
+   dalam lembar. Ditulis sebagai `.isi-lembar dl`, ia ikut menangkap daftar lubang
+   yang disuntik batas.js ke lembar yang sama — judul lubangnya frasa, bukan label,
+   jadi lajur pertama menyusut sampai 0 px dan judulnya melimpah menimpa keterangan
+   di sebelahnya, yang ikut terbalik rata kanan. Lubang memakai aturan bloknya
+   sendiri di batas.css; yang di sini cuma pasangan label dan angka. */
+.cacah-lembar {
   display: grid; grid-template-columns: minmax(0, 1fr) auto;
   gap: 4px 12px; margin: 0 0 4px; font-size: 13.5px;
 }
-.isi-lembar dt { color: var(--lemah); }
-.isi-lembar dd { margin: 0; font-variant-numeric: tabular-nums; text-align: right; }
+.cacah-lembar dt { color: var(--lemah); }
+.cacah-lembar dd { margin: 0; font-variant-numeric: tabular-nums; text-align: right; }
 
 /* --- layar sempit --------------------------------------------------------- */
 
