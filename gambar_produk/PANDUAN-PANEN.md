@@ -1824,3 +1824,194 @@ menangkapnya.
 Catatan cara kerja: **baca `robots.txt` sebelum menyentuh katalognya, bukan setelah.** Pada
 principal-principal sebelumnya robots dibaca lebih dulu dan hanya berisi `Disallow: /wp-admin/`;
 di sini urutannya nyaris terbalik.
+
+---
+
+## 19. Nama yang tidak cocok, dan saringan mana yang sebenarnya menahan salah baca
+
+Empat principal dipanen dalam satu gelombang — Da Ming, Foragro, Adil Makmur Fajar, dan
+pemeriksaan ulang Kristalindo — dan ketiganya yang berhasil memberi pelajaran yang sama dari
+sisi berbeda: **daftar nama yang “tidak cocok” bukan daftar yang habis, melainkan daftar yang
+belum ditanya nomornya.**
+
+### 19a. Koreksi atas pasal 18: nomor salah baca tidak selalu gagal berisik
+
+Pasal 18 menyatakan salah baca satu digit membuat nomornya **tidak ketemu sama sekali**,
+sehingga kekeliruan OCR gagal dengan berisik. Diukur pada 56 brosur, itu memang yang terjadi.
+Gelombang ini menemukan pengecualiannya.
+
+TASMIN 865 SL milik PT. DA MING INDONESIA terbaca `01030120206901`. Nomor yang benar
+`01030120206991` — satu digit, 9 jadi 0. Yang membuatnya berbahaya: `01030120206901` **bukan
+nomor karangan.** Ia nomor sah milik BIRENSA 250 SL, PT. Zenith Cropsciences Indonesia. Jadi
+saringan pertama — “ada di registri?” — **lolos**, diam-diam, persis seperti nomor yang benar.
+
+Yang menahannya saringan kedua: nomor itu harus milik **mereknya sendiri**. Tanpa saringan
+itu, baris TASMIN akan membawa nomor perusahaan lain sebagai bukti, dan `printed_registration`
+akan menyatakannya `in_registry: true` dengan wajah tenang.
+
+| saringan | apa yang ditanya | menahan TASMIN? |
+|---|---|---|
+| 1 | nomornya ada di registri? | **tidak** — 01030120206901 memang ada |
+| 2 | nomornya milik merek ini? | **ya** — pemiliknya BIRENSA 250 SL |
+
+Ruang nomor pendaftaran padat: 14 digit dengan awalan golongan dan tahun yang seragam
+membuat tetangga satu digit sering kali **juga terpakai**. Karena itu saringan pertama
+sendirian tidak pernah cukup, dan `matches_brand` bukan hiasan laporan melainkan penahannya.
+Nomor TASMIN tidak dicatat sebagai `printed_registration`; barisnya turun ke `merek_tunggal`.
+
+### 19b. Sebelas nama “tidak cocok” yang ternyata merek yang sama
+
+Foragro dan Adil Makmur bersama memberi 15 nama yang tidak cocok ke registri lewat pencocokan
+slug. Ditanya nomor tercetaknya, **12 di antaranya merek yang sudah terdaftar** — 11 diputus
+nomor, satu (FORAPHON) diputus nama dan jenis sebab gambarnya tak mencetak nomor. Penyebab
+ketidakcocokannya enam macam, semuanya sepele di mata dan semuanya mematikan bagi mesin:
+
+| nama di situs | nama di registri | sebabnya |
+|---|---|---|
+| EMAFORA 55 EC | FORMECTIN 55 EC | nama dagang lain di atas satu pendaftaran |
+| FORAPOWER 15 WG | FORMECTIN 15 WG | nama dagang lain di atas satu pendaftaran |
+| ZHAVION 550 SC | ZHAVION 500/50 SC | situs **menjumlahkan** dua bahan aktif jadi satu angka |
+| AMCOTOP 280SL | AMCOTOP 276 SL | kadar **dibulatkan** di kemasan |
+| FORAT0P 276 SL | TITANTOP 276 SL | huruf O jadi angka 0 — **dan** pangkal nama berbeda |
+| MUSUKEONG 25OEC | MUSUKEONG 250 EC | angka 0 jadi huruf O, arah sebaliknya |
+| FORADIAZONE 250 EC | FORADIAZON 250 EC | satu huruf E di ujung |
+| FORAPHONE 12,5 PA | FORAPHON 12.5 PA | satu huruf E, plus koma/titik desimal |
+| DRY UP 480SL | DRY UP 480 SL | principal lain (lihat 19d) |
+| PUMA 160 SL | PUMA 160 SL | principal lain |
+| Glifa 480SL, Glufa 200SL | idem | principal lain |
+
+Tiga sisanya memang tidak ada di registri: Brangas 490 SL, JUTSUMIN 865 SL, dan TUMPAS PLUS
+135 SL — tak satu pun mencetak nomor yang terbaca, jadi ketiganya tetap tidak dipanen.
+Kristalindo menyumbang tiga nama buntu lagi, tetapi sebabnya lain dan dibahas di 19e.
+
+Pola penjumlahan kadar sudah tercatat sebelumnya (LEPTOKIL 140 = 100/40, FENITE 150 = 75+75,
+CONTESS 80EC = 30 + 50). Yang baru di sini **pembulatan** — AMCOTOP 280 untuk 276 — dan itu
+lebih jahat, sebab 280 bukan jumlah apa pun; ia sekadar angka bulat yang enak dicetak. Tidak
+ada aritmetika yang bisa memulihkannya. Hanya nomor.
+
+### 19c. Baris `ditolak` dan penggolongan “bahan teknis” juga bisa keliru
+
+FORMECTIN 55 EC dan FORMECTIN 15 WG sudah punya baris manifes: berstatus `ditolak`, bersumber
+`https://tidak-ditemukan.invalid`, dan antrean panen menggolongkan yang 15 WG sebagai bahan
+teknis yang tidak pernah berkemasan eceran. Keduanya keliru. Barangnya ada di rak — di
+foragro.co.id, difoto 3426x3028 — hanya dijual dengan nama dagang lain.
+
+Pelajarannya bukan “jangan menolak”, melainkan: **penolakan adalah catatan tentang pencarian,
+bukan tentang barangnya.** “Tidak ditemukan” berarti tidak ditemukan **dengan nama itu**.
+Baris lama diganti, dan penggantinya menyebut di `notes` apa yang dulu dikatakan dan kenapa
+itu salah — sebab `G6` hanya mengizinkan satu gambar per merek+peran, jadi menambah tanpa
+mencabut akan gagal, dan mencabut tanpa mencatat akan menghapus jejak keliru itu diam-diam.
+
+Kalau sebuah merek dicap TC/TK di antrean, ceknya masih nama. Yang dicoret di corong PROGRES
+memang berakhiran `TC`/`TK`; FORMECTIN 15 WG **tidak** — ia lolos ke daftar “tidak tertayang”
+lewat catatan tangan, dan catatan tangan itulah yang salah.
+
+### 19d. Katalog grup kesembilan dan kesepuluh — dan principal tanpa situs
+
+adilmakmurfajar.com menjual empat merek yang bukan miliknya: DRY UP 480 SL dan PUMA 160 SL
+milik **PT. WIHADIL**, Glifa 480 SL dan Glufa 200 SL milik **CV. Multi Agro Jaya Utama**.
+Keempatnya ditemukan lewat nomor tercetak, bukan lewat nama.
+
+CV. Multi Agro Jaya Utama menarik sebab statusnya di antrean **`tidak-ada`** — principal ini
+tidak punya situs sama sekali. Tanpa katalog grup, kedua mereknya tidak akan pernah terpanen
+lewat jalur mana pun. Ini menaikkan taruhan pasal 6: katalog grup bukan cuma jalan pintas ke
+principal yang antreannya panjang, melainkan **satu-satunya jalan** ke principal yang tidak
+punya pintu sendiri.
+
+Barisnya berhak `pihak_ketiga`: yang menerbitkan halamannya bukan pemegang pendaftaran.
+
+### 19e. Situs bisa habis meski antreannya masih panjang — dan brosur bukan jalan keluar
+
+kristalindo.co.id diperiksa ulang dan hasilnya **nol baris baru**, padahal antreannya masih
+menyebut 34 merek belum dipanen. Katalognya delapan produk di `/produk/produk_detail?id=1..9`
+(id 7 kosong; id di atas 9 membalas halaman nav tanpa produk — **bukan** 404, jadi penjelajah
+yang berhenti pada status 404 akan mengira katalognya tak berujung). Lima yang cocok registri
+sudah dipanen dari URL botol yang persis sama pada gelombang sebelumnya.
+
+Yang baru: tiap halaman produk juga membawa **brosur A4** `brosur_*.jpg` di samping botolnya.
+Godaannya jelas — 2480x3508, mencetak komposisi, hama sasaran, dan dosis. Brosur itu **tidak
+dipanen**, dua alasan:
+
+1. **L3.** Ia lembar pemasaran, isinya klaim jualan. Permukaan ini tidak boleh membawa
+   dorongan jualan, dan `G3` hanya menahannya di ambang `terverifikasi` — `ternormalisasi`
+   tetap terbit. Jadi yang menahan di sini keputusan, bukan validator.
+2. **Nilai buktinya kecil di sini.** Dari delapan brosur, **hanya satu** (XTRADIM 500 SL)
+   mencetak nomor pendaftaran. Tujuh sisanya tidak. Brosur yang tidak menyebut nomor tidak
+   bisa memetakan nama yang belum terpetakan — dan memetakan nama justru satu-satunya alasan
+   membuka brosur di situs yang botolnya sudah dipanen.
+
+Tiga nama sisanya tetap buntu, dan sebabnya berbeda-beda — patut dicatat sebab ketiganya
+tampak seperti kegagalan yang sama:
+
+| nama | bahan aktif tercetak | kenapa buntu |
+|---|---|---|
+| Axer | Alkifenol Etoksilat 400 + Natrium Susinik Ester Sulfonik 400 | **ajuvan**, bukan pestisida — wajar tak ada di registri pestisida |
+| Xycort | Klorpirifos 550 + Sipermetrin 60 | 550/60 EC tidak ada di potongan registri ini |
+| Paraplus | Parakuat Diklorida 135 g/l | registri punya PARAPLUS 135 SL — **atas nama PT. BERSAMA SATU TEGUH** |
+
+Paraplus yang paling menggoda dan paling wajib ditahan: nama sama persis, kadar sama persis.
+Tetapi parakuat 135 SL adalah formulasi generik yang dipegang banyak pendaftar, dan
+brosurnya tidak mencetak nomor. Kemiripan nama **lintas perusahaan** tanpa nomor tidak cukup
+— itu justru bentuk kesalahan yang pasal 7 dan 19a sama-sama larang.
+
+### 19f. Katalog latar-CSS: pungut kartunya, bukan jendela teksnya
+
+asianachemical.co.id (Da Ming) menaruh ke-51 packshot-nya di **satu** halaman `/id/product`,
+tetapi bukan sebagai `<img>` — sebagai latar CSS:
+
+```html
+<a href="/id/product/basundep®-500-sl">
+  <div class="prodimg" style="background:url(/images/product/2025..._resized.png) …"></div>
+  <div class="pagetitle7b padbot10">BASUNDEP® 500 SL</div>
+```
+
+Percobaan pertama memasangkan nama dengan gambar lewat **jendela ±900 karakter** di sekitar
+tiap rujukan gambar, dan mengembalikan **0 nama**. Sebabnya sederhana begitu markup-nya
+dilihat: nama dan gambar duduk di dalam satu `<a>`, terpisah kurang dari 200 karakter — yang
+gagal bukan jaraknya melainkan regex namanya, yang menuntut pola “NAMA angka KODE” sedangkan
+teksnya membawa `®`.
+
+Aturannya: **kalau pasangan nama–gambar bisa diambil dari satu blok markup, ambil dari situ.**
+Jendela teks adalah alat untuk halaman yang strukturnya sudah menyerah, bukan alat pertama.
+Dua percobaan yang sama menghemat waktu di dua situs lain gelombang ini: Foragro menaruh nama
+produk di atribut `alt` gambar yang sama, dan Adil Makmur juga.
+
+Catatan sisi mesin: `®` pada slug membuat `page_url` gagal `format: "uri"` di `G1`. Persen-kan
+jalurnya sebelum menulis manifes — sama seperti spasi pada slug Rainbow (pasal 12).
+
+### 19g. Hotlink protection: 403 yang bukan penolakan perayap
+
+adilmakmurfajar.com membalas **403** untuk permintaan gambar polos, dan **200** untuk
+permintaan yang sama begitu dikirimi:
+
+```
+Referer: https://adilmakmurfajar.com/
+User-Agent: <peramban>
+```
+
+Itu bukan pelarangan perayap — `robots.txt`-nya `Disallow:` kosong, artinya seluruhnya boleh.
+Itu penghematan bandwidth terhadap situs lain yang menyematkan gambarnya langsung. Bedanya
+penting: **403 dari hotlink protection tidak berarti “jangan ambil”**, sedangkan
+`Disallow: /` di `robots.txt` berarti persis itu (pasal 17, Meroke). Yang pertama diselesaikan
+dengan header yang jujur; yang kedua tidak diselesaikan sama sekali oleh agen.
+
+### 19h. Hasil gelombang ini
+
+| principal | bergambar | dari | catatan |
+|---|---:|---:|---|
+| PT. FORAGRO MAJU SEJAHTERA | **9** | 9 | **lengkap** — seluruhnya lewat katalog principal lain |
+| PT. WIHADIL | **2** | 2 | **lengkap** — lewat katalog adilmakmurfajar.com |
+| PT. FORAGRO MITRA SEJATI | 34 | 38 | 4 sisanya tak mencetak nomor |
+| PT. KENSO INDONESIA | 41 | 67 | |
+| PT. DA MING INDONESIA | 40 | 51 | |
+| PT. ADIL MAKMUR FAJAR | 30 | 41 | |
+| CV. Multi Agro Jaya Utama | 2 | 46 | tanpa situs sendiri; 2 ini hanya dari katalog grup |
+| PT. Kristalindo Karunia Internasional | 5 | 39 | diperiksa ulang, **nol baru** |
+
+Merek bergambar naik dari **967** ke **1.075**; produk bergambar dari **929** ke **1.036**.
+Dari 108 baris baru, **31 berbasis `nomor_pendaftaran_tercetak`** — dan 11 di antaranya
+merek yang pencocokan nama sudah menyerah padanya. Sebarannya per situs mengikuti besar
+fotonya, bukan mutu situsnya: Adil Makmur 17 dari 22 baris (botol tunggal 1200x1600), Foragro
+9 dari 31 (master kamera tetapi kerap foto kelompok), Da Ming 5 dari 27 (foto kelompok 900 px),
+Kenso 0 dari 28. **Label kecil di foto kelompok adalah batas OCR yang sesungguhnya**, bukan
+resolusi berkasnya.
