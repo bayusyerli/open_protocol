@@ -147,7 +147,7 @@ sudah tercetak di layar lewat blok batas jawaban, dan sudah terdaftar di
 | `dari` | Layar mana, dan berapa kali masing-masing. **Nama layar, bukan nomor jalur** — beranda ikut mencatat tanpa diberi nomor karangan, jadi tabel di bagian 2 tidak berubah |
 | `akhir` | Tanggal terakhir ia tertabrak |
 
-### Enam lubang yang tercatat
+### Sembilan lubang yang tercatat
 
 | Kunci | Tertabrak ketika | Yang menutupnya |
 |---|---|---|
@@ -157,11 +157,22 @@ sudah tercetak di layar lewat blok batas jawaban, dan sudah terdaftar di
 | `kandunganTakTerdaftar` | Kandungan diperiksa, tidak ada yang cocok | Kelengkapan komposisi registri pupuk |
 | `haraSediaan` | Komposisi pupuk kosong, hara tak terhitung | Kelengkapan komposisi registri pupuk |
 | `takaranRumahTangga` | Menakar tanpa alat terukur | Panduan takaran — **bukan** tarikan data |
+| `peringkatDiminta` | Pertanyaan memuat "terbaik", "paling ampuh", "cocok" | **Tidak ada** — permukaan ini tidak akan memeringkat |
+| `ketinggianVarietas` | Ketinggian disebut, registri varietas tidak memuatnya | Sifat agronomi varietas — nol dari 11.227 |
+| `kalenderTanam` | "Kapan tanam" ditanyakan | Kalender bertanggal — kosakata fase sengaja tanpa hari |
 
-Baris terakhir sengaja dibiarkan di daftar walau bukan permintaan data: registri tidak
-akan pernah memuat ukuran tutup botol siapa pun. Kalau ia sering tertabrak, yang perlu
-ditulis panduan — dan mengetahui itu sama berharganya dengan mengetahui registri mana
+Empat baris terakhir bukan permintaan tarikan registri, dan itu bukan alasan
+mengeluarkannya. Registri tidak akan pernah memuat ukuran tutup botol siapa pun, tidak
+akan pernah memeringkat produk, dan kosakata fase memang sengaja tidak bertanggal. Kalau
+salah satunya sering tertabrak, yang perlu ditulis panduan atau yang perlu dijelaskan
+lebih keras batasnya — dan mengetahui itu sama berharganya dengan mengetahui registri mana
 yang perlu ditarik.
+
+`peringkatDiminta` yang paling berbeda dari lainnya: ia mengukur **jarak antara yang
+ditanyakan orang dan bentuk jawaban yang sanggup diberikan data ini**. Tiga dari empat
+bentuk jawaban di [`15-kapabilitas-lintas-pemangku.md`](15-kapabilitas-lintas-pemangku.md)
+bukan anjuran, dan pertanyaan bermuatan penilaian meminta yang keempat. Cacahnya
+memberi tahu seberapa sering itu terjadi — angka yang selama ini tidak pernah ada.
 
 ### Urutannya menurut frekuensi, bukan menurut kepentingan
 

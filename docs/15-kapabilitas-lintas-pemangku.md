@@ -285,7 +285,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun**. **Papan pencarian disamakan dengan kotaknya** 24 Agustus 2026: kesebelas macam masukan yang benar-benar dijawab kini punya kepingnya di beranda (semula empat), dan ketujuh alat punya kartunya (semula dua, dan keduanya salah dinomori sebagai jalur 07–08) | **sebagian** |
+| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun**. **Papan pencarian disamakan dengan kotaknya** 24 Agustus 2026: kesebelas macam masukan yang benar-benar dijawab kini punya kepingnya di beranda (semula empat), dan ketujuh alat punya kartunya (semula dua, dan keduanya salah dinomori sebagai jalur 07–08). **Kalimat diterima sebagai kalimat** 24 Agustus 2026 — `app/tanya.js`, 234 pintu komoditas, dan alias kata OPT; bagian di bawah tabel ini | **sebagian** |
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | **sebagian** 23 Agustus 2026 — `app/teruskan.js`, kartu teruskan di jalur 2, 5, dan 6. Sisi **menyebarkan** dibangun; sisi **kotak masuk** tetap tidak, dan itu putusan | **sebagian** |
 | A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
@@ -322,6 +322,40 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 >   direktori, titik impas, rencana musim, buku kas).
 >
 > Kesebelas keping diuji balik terhadap indeks saat dipasang: tidak satu pun berakhir nol.
+
+> **Kotak menerima kalimat, tapi menguraikannya seperti satu untaian — 24 Agustus 2026.**
+> Kepala pencarian mencocokkan kueri sebagai satu untaian huruf tanpa spasi terhadap NAMA
+> entri. Untuk satu kata itu tepat. Untuk satu kalimat itu **selalu nol, dan nol tanpa satu
+> pun galat** — "Phonska produk perusahaan apa?" jadi `phonskaprodukperusahaanapa`, dan
+> untaian seperti itu tidak ada di nama mana pun. Tiga contoh yang diminta pemilik hari itu
+> ketiganya dijawab nol; ketiganya sekarang mendarat.
+>
+> Yang diperbaiki empat hal, dan hanya yang pertama soal penguraian kalimat:
+>
+> 1. **`app/tanya.js` menggolongkan tiap kata**, bukan sekadar membuang yang tidak berguna.
+>    Golongan `nilai` yang paling menentukan: "cocok", "terbaik", "paling ampuh", "aman"
+>    adalah permintaan **peringkat**, dan permukaan ini tidak memeringkat apa pun. Kata itu
+>    dikeluarkan dari pencarian **lalu disebutkan di layar sebagai yang tidak dijawab** —
+>    karena daftar yang muncul sesudah kata "terbaik" akan dibaca sebagai peringkat, dan itu
+>    kekeliruan yang jauh lebih mahal daripada nol hasil. Cacahnya masuk B4 sebagai
+>    `peringkatDiminta`.
+> 2. **234 pintu komoditas masuk kepala pencarian.** Halaman `/tanaman/<slug>/` sudah
+>    menjawab "ada berapa varietas alpukat" sejak halaman pertama diterbitkan; yang tidak
+>    pernah ada cuma jalan dari kotak cari ke sana. Mengetik "alpukat" dulu menjawab 20
+>    varietas yang kebetulan bernama "Alpukat …" dan mendiamkan 125 sisanya.
+> 3. **Kata pembeda nama OPT difilekan sebagai alias.** 113 dari 198 nama OPT berproduk
+>    diawali kata golongan — "Penyakit" 53 kali, "Hama" 21 kali — sehingga embernya
+>    ditentukan kata yang tidak membedakan apa pun. "trips" tidak menemukan "Hama Trips".
+> 4. **Ambang agroklimat terbit sebagai `agroklimat.json`.** Kelima skema sebelumnya hanya
+>    dibaca `check.mjs` dan CLI. Kini "500 mdpl" dijawab kelasnya berikut ambang dan
+>    terbitan asalnya — dan **jawaban itu hampir seluruhnya berupa batas**: nol dari 11.227
+>    varietas membawa sifat agronomi, jadi kelas itu tidak bisa dipakai menyaring daftar.
+>
+> Bentuk jawabannya tetap keempat bentuk yang sama. Yang ditambahkan bukan bentuk kelima
+> melainkan **satu kalimat fakta terdaftar** ("terdaftar atas nama PT Petrokimia Gresik"),
+> disusun dari medan yang sudah tercetak di kartu hasilnya — tanpa satu pun pengambilan
+> tambahan, dan tanpa satu pun klaim di luar registri. Pintu depan tetap tidak punya
+> perender rincian sendiri.
 
 > **A3 lebih penting daripada tampaknya.** Petani tidak menyebut *Thrips parvispinus*; ia
 > menyebut nama lokalnya. Tanpa kamus itu, jalur 1 hanya bisa dipakai orang yang sudah

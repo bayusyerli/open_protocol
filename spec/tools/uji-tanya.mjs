@@ -17,6 +17,17 @@
 // APA YANG TIDAK DIUJI DI SINI
 // Tampilannya. Bahwa hasilnya sampai ke layar sebagai kartu yang benar tetap urusan membuka
 // halamannya — alat ini berhenti di daftar yang dikembalikan `cari()`.
+//
+// IA `npm run uji-terbit`, BUKAN `npm test` — DAN ITU BUKAN SOAL SELERA.
+// Karena ia menjalankan pencarian di atas indeks yang benar-benar terbit, ia menuntut
+// `spec/indeks/` sudah dibangun. `npm test` berjalan SEBELUM langkah bangun, sebagai gerbang
+// mutu: membangun 30 ribu halaman di atas data yang tidak lolos hanya menyebarkan galatnya.
+// Menaruh uji ini di sana membuatnya lolos di laptop yang kebetulan punya indeks lama, dan
+// gagal di klon bersih — persis yang terjadi pada CI run pertama, 24 Agustus 2026.
+//
+// Jadi urutannya: `npm run all` (gerbang, tanpa indeks) → bangun indeks → `npm run
+// uji-terbit` (uji ini) → bangun halaman. `npm run semua` menjalankan keduanya untuk yang
+// bekerja lokal dan indeksnya memang sudah ada.
 
 import { readFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
@@ -213,6 +224,31 @@ const pintu = { pintu: true };
   uji('cari/cabai ada hasil', hasil.length > 0, `dapat ${hasil.length}`);
   uji('cari/cabai ada pintu komoditas', hasil.some((x) => x.j === 'komoditas'),
     hasil.slice(0, 5).map((x) => `${x.j}:${x.n}`).join(' | '));
+}
+
+{
+  // 113 dari 198 nama OPT berproduk diawali kata golongan, jadi embernya ditentukan kata
+  // yang tidak membedakan apa pun. Sebelum aliasnya ada, ketiga kueri di bawah dijawab nol.
+  for (const [kueri, harap] of [['trips', 'Hama Trips'], ['ganjur', 'Hama Ganjur'],
+    ['apa obat untuk ulat grayak pada padi', 'Ulat Grayak']]) {
+    const { hasil } = await cari(kueri, null, pintu);
+    uji(`opt/alias ${kueri}`, hasil.some((x) => x.j === 'opt' && x.n === harap),
+      hasil.slice(0, 3).map((x) => `${x.j}:${x.n}`).join(' | '));
+  }
+}
+{
+  // Saringan jenis yang tidak menyisakan apa pun DIJATUHKAN, dan penjatuhannya dilaporkan —
+  // "pestisida" pada kueri yang hasilnya OPT tidak boleh menihilkan jawabannya.
+  const r = await cari('pestisida paling ampuh untuk trips', null, pintu);
+  uji('jenis/lunak menyisakan hasil', r.hasil.length > 0, `dapat ${r.hasil.length}`);
+  uji('jenis/penjatuhan dilaporkan', r.jenisDijatuhkan === true);
+}
+{
+  // Nol hasil TIDAK boleh dilaporkan sebagai "penyempitannya tidak dipakai": tidak ada apa
+  // pun untuk disempitkan, dan kalimat itu menyalahkan kata yang tidak bersalah.
+  const r = await cari('pupuk apa yang paling bagus?', null, pintu);
+  uji('jenis/nol bukan penjatuhan', r.jenisDijatuhkan === false,
+    `hasil=${r.hasil?.length}, jatuh=${r.jenisDijatuhkan}`);
 }
 
 // Yang tidak boleh berubah: kueri satu kata, ember yang belum cukup sempit, dan saringan jalur.

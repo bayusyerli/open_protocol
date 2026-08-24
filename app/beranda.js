@@ -287,7 +287,7 @@ function blokIsi(hasil, urai) {
         : `Ada <strong>${isi.length} komposisi berbeda</strong> di bawah nama itu: ${
           isi.slice(0, 6).map((s) => `<strong>${teks(s)}</strong>`).join(', ')}${isi.length > 6 ? ', dan lainnya' : ''}.`}</p>
       <p class="jawab-batas">${isi.length > 1
-        ? 'Nama yang sama dengan komposisi berbeda bukan rekaman ganda — keempat grade PHONSKA rekaman yang sah, dan komposisinya yang membedakan. Pilih yang tertulis di kemasan.'
+        ? 'Nama yang sama dengan komposisi berbeda bukan rekaman ganda melainkan pendaftaran yang memang terpisah — dan komposisinya yang membedakan. Pilih yang tertulis di kemasan.'
         : 'Yang dibaca komposisi terdaftar, bukan isi karung. Yang bisa memastikan isi hanya uji laboratorium.'}${
   kosong ? ` ${angkaId(kosong)} pendaftaran lain yang cocok tidak berkomposisi di registri.` : ''}</p>
     </div>`;
@@ -509,7 +509,7 @@ function gambarNamaTakTerambil() {
   el.hasil.innerHTML = BLOK_NAMA_TAK_TERAMBIL;
 }
 
-async function gambarKosong(kueri, kepala = '') {
+async function gambarKosong(kueri, kepala = '', urai = null) {
   // Nol hasil adalah tempat perutean niat paling berguna: yang mengetik "berapa tangki"
   // memang tidak akan pernah punya hasil nama, dan tanpa ini ia dijawab "tidak ada".
   //
@@ -525,13 +525,32 @@ async function gambarKosong(kueri, kepala = '') {
       niat.map(kartuNiat).join(''));
     return;
   }
-  if (kepala) el.hasil.innerHTML = kepala;
   // B4: dua lubang sekaligus tertabrak — nama yang dicari tidak punya padanan
   // terdaftar, dan gejalanya di luar sepuluh yang terkurasi. Yang dicatat cacahnya,
   // bukan kuerinya; lihat docs/11 bagian 3.
   catatLubang('beranda', LUBANG.namaDagang);
   catatLubang('beranda', LUBANG.gejalaOpt);
-  el.hasil.innerHTML = `
+
+  /* DUA NOL YANG BERBEDA, dan sebelum kotak ini menerima kalimat hanya ada satu.
+   *
+   * Yang pertama: sebuah nama dicari dan tidak ada padanannya — itu keadaan data, dan
+   * kalimat panjang di bawah memang untuk itu. Yang kedua: pertanyaannya tidak memuat satu
+   * pun nama untuk dicari ("pupuk apa yang paling bagus"), dan nol di situ bukan soal
+   * kelengkapan registri sama sekali. Menjawab keduanya dengan kalimat yang sama membuat
+   * yang kedua terbaca sebagai "produknya tidak terdaftar", padahal tidak ada produk yang
+   * ditanyakan. */
+  const tanpaNama = urai?.pertanyaan && !urai.istilah.length;
+  const blok = tanpaNama
+    ? `
+    <div class="pesan">
+      <h2>Tidak ada nama yang bisa dicari di pertanyaan itu</h2>
+      <p>
+        Kotak ini menemukan sesuatu lewat <em>namanya</em> — nama merek di kemasan, bahan
+        aktif, hama, tanaman, atau perusahaan. Pertanyaan tadi tidak menyebut satu pun.
+        Sebutkan namanya, atau pakai salah satu alat di bawah kalau yang dicari hitungan.
+      </p>
+    </div>`
+    : `
     <div class="pesan">
       <h2>Tidak ada yang cocok dengan “${teks(kueri)}”</h2>
       <p>
@@ -541,10 +560,17 @@ async function gambarKosong(kueri, kepala = '') {
         dan pemetaan antara keduanya belum ada.
       </p>
     </div>`;
+  // Kepala jawaban DITAMBAHKAN di depan, bukan ditimpa. Versi pertama menulisnya lebih dulu
+  // lalu menimpanya dengan blok di bawah, dan akibatnya persis kebalikan dari gunanya:
+  // pertanyaan yang paling perlu dijelaskan justru yang penjelasannya hilang.
+  el.hasil.innerHTML = kepala + blok;
 
   // Kalau kosongnya cuma karena satu-dua huruf keliru, ejaan terdekat lebih berguna
-  // daripada penjelasan panjang. Kueri aslinya tidak diganti diam-diam.
-  const dekat = await namaBerdekatan(kueri).catch(() => []);
+  // daripada penjelasan panjang. Kueri aslinya tidak diganti diam-diam — dan yang diadu
+  // ejaannya ISTILAHNYA, bukan kalimatnya: "trips" bisa berjarak satu huruf dari "Thrips",
+  // sedangkan "pestisida paling ampuh untuk trips" tidak berjarak dari apa pun.
+  const untukEjaan = urai?.istilah?.length ? urai.istilah[0] : kueri;
+  const dekat = await namaBerdekatan(untukEjaan).catch(() => []);
   if (!dekat.length) return;
   el.hasil.insertAdjacentHTML('beforeend', kelompok('Apakah maksudnya…', '',
     dekat.map((x) => kartuNama(x, x.n)).join('')));
@@ -602,7 +628,7 @@ async function jalankan() {
     if (!nama.length && !bahan.length && !gejala.length && !lokal.length && !harga.length
         && !badan.length && !komoditas.length) {
       if (takTerambil) return gambarNamaTakTerambil();
-      return gambarKosong(kueri, kepala);
+      return gambarKosong(kueri, kepala, urai);
     }
     gambar(nama, bahan, gejala, lokal, kueri, { harga, badan, komoditas, kepala, urai });
     // Yang sanggup sudah tergambar di atas; yang tidak sanggup dinyatakan di bawahnya,

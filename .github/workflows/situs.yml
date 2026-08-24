@@ -48,22 +48,32 @@ jobs:
         working-directory: spec
         run: npm ci
 
-      # Gerbang mutu lebih dulu, sebelum satu halaman pun dibangun. `npm run all` menjalankan
-      # sembilan pemeriksaan: skema, aturan kebijakan, uji negatif, uji dosis, uji hitungan,
-      # uji penguraian kalimat, pencocokan angka dokumen ke datanya, penguraian modul app,
-      # lalu dua pagar rilis — CSP beserta hash skrip temanya, dan `VERSI` service worker
-      # terhadap sidik isi cangkang.
+      # Gerbang mutu lebih dulu, sebelum satu halaman pun dibangun: skema, aturan kebijakan,
+      # 89 uji negatif, 37 uji dosis, 29 uji hitungan, penguraian modul app, lalu dua pagar
+      # rilis — CSP beserta hash skrip temanya, dan `VERSI` service worker terhadap sidik isi
+      # cangkang. Dua yang terakhir menjaga mode gagal yang SUNYI: cangkang yang berubah tanpa
+      # bump VERSI mengunci pengguna lama di versi basi tanpa satu pun tanda, dan hash CSP
+      # yang menyimpang mematikan penyetel tema tanpa galat yang terbaca.
       #
-      # Dua yang terakhir menjaga mode gagal yang SUNYI, dan itu yang membuatnya layak ada di
-      # sini: cangkang yang berubah tanpa bump VERSI mengunci pengguna lama di versi basi
-      # tanpa satu pun tanda, dan hash CSP yang menyimpang mematikan penyetel tema tanpa
-      # galat yang terbaca. Membangun 30 ribu halaman di atas keduanya hanya menyebarkannya.
-      - name: Periksa kosakata, aturan, angka, dan pagar rilis
+      # SELURUHNYA BERJALAN TANPA `spec/indeks/`, dan itu syarat, bukan kebetulan. Pemeriksaan
+      # yang menuntut indeks — pencocokan angka dokumen dan uji pencarian — pindah ke langkah
+      # sesudah indeks dibangun. Menaruhnya di sini membuatnya lolos di laptop yang kebetulan
+      # punya indeks lama dan gagal di klon bersih; itu persis kegagalan CI run pertama,
+      # 24 Agustus 2026, dan runner inilah yang menemukannya.
+      - name: Gerbang mutu — tanpa indeks
         working-directory: spec
         run: npm run all
 
       - name: Bangun indeks
         run: node spec/tools/bangun-indeks.mjs --tulis
+
+      # Pemeriksaan yang menuntut indeks: pencocokan 125 angka dokumen ke datanya, dan uji
+      # pencarian yang menjalankan `cari()` sungguhan di atas indeks yang benar-benar terbit.
+      # Keduanya tidak bisa ikut gerbang di atas, dan tempatnya memang di sini — sesudah
+      # indeks ada, sebelum 30 ribu halaman dibangun di atasnya.
+      - name: Angka dokumen dan pencarian, di atas indeks terbit
+        working-directory: spec
+        run: npm run uji-terbit
 
       - name: Bangun halaman
         run: node spec/tools/bangun-halaman.mjs --tulis --asal="$ASAL"

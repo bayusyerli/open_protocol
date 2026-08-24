@@ -388,7 +388,10 @@ export async function cari(kueri, saring, { pintu = false } = {}) {
    * yang mengetik "varietas alpukat" justru paling terbantu oleh pintu yang menyebut seluruh
    * 145 varietasnya, dan pintu itu ber-`j` "komoditas", bukan "varietas". */
   let jenisDijatuhkan = false;
-  if (u.jenis.length) {
+  // Syarat `dipakai.length` bukan kehati-hatian berlebih: tanpa itu, kueri yang memang nol
+  // hasilnya dilaporkan sebagai "penyempitannya tidak dipakai" — padahal tidak ada apa pun
+  // untuk disempitkan. Layar akan menyalahkan kata yang tidak bersalah.
+  if (u.jenis.length && dipakai.length) {
     const diminta = new Set(u.jenis);
     const disaring = dipakai.filter((d) => diminta.has(d.x.j) || d.x.j === 'komoditas');
     if (disaring.length) dipakai = disaring;

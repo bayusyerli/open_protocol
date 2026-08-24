@@ -1245,6 +1245,10 @@ optRegistriIndeks.sort((a, b) => a.n.localeCompare(b.n));
 
 // C3 — nama OPT masuk kepala pencarian. Nama ilmiahnya ikut sebagai alias: yang
 // mengetik "Spodoptera" tidak sedang mengetik awalan nama Indonesianya.
+// Kata golongan yang dipakai puluhan nama bersamaan, sehingga ia tidak membedakan apa pun.
+// Dibuang hanya untuk membentuk kunci pencarian TAMBAHAN; nama tampilnya tetap utuh.
+const GOLONGAN_OPT = new Set(['hama', 'penyakit', 'gulma', 'virus', 'bakteri', 'jamur',
+  'golongan', 'berdaun', 'daun', 'lain', 'lainnya', 'pada', 'dan', 'atau', 'serangga']);
 for (const o of optRegistriIndeks) {
   const entri = {
     n: o.n, i: o.i, j: 'opt',
@@ -1254,6 +1258,26 @@ for (const o of optRegistriIndeks) {
   };
   tambah(o.n, entri);
   if (o.l && ember(o.l) !== ember(o.n)) tambah(o.l, { ...entri, n: o.n });
+
+  /* KATA PEMBEDANYA JARANG DI DEPAN, dan itu bukan kekhasan beberapa nama melainkan bentuk
+   * penamaan registri: 113 dari 198 nama OPT berproduk diawali kata golongan — "Penyakit"
+   * 53 kali, "Hama" 21 kali, lalu "Kutu", "Ulat", "Penggerek", "Gulma". Embernya karena itu
+   * ditentukan kata yang TIDAK membedakan apa pun, dan yang mengetik kata yang membedakan
+   * dijawab nol: "trips" tidak menemukan "Hama Trips", "ganjur" tidak menemukan "Hama
+   * Ganjur", dan tidak ada satu pun galat yang menandainya.
+   *
+   * Tiap kata pembeda karena itu difilekan sebagai alias, memakai mekanisme `_k` yang sama
+   * dengan alias principal dan alias sediaan. Kata golongannya sendiri sengaja TIDAK dibuang
+   * dari nama tampilnya — "Trips" saja bukan nama yang dipakai registri. */
+  const sudahOpt = new Set([rapikan(o.n)]);
+  const emberOpt = ember(o.n);
+  for (const kata of String(o.n).split(/[^A-Za-z0-9]+/)) {
+    if (kata.length < 4 || GOLONGAN_OPT.has(kata.toLowerCase())) continue;
+    const k = rapikan(kata);
+    if (sudahOpt.has(k) || ember(kata) === emberOpt) continue;
+    sudahOpt.add(k);
+    tambah(kata, { ...entri, n: o.n });
+  }
 }
 
 // ---------------------------------------------------------------------------
