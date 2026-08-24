@@ -513,8 +513,8 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | E1 | Rencana musim dari protokol | petugas lapang, penyuluh, petani | #1–#7 | **selesai** 23 Agustus 2026 — protokol terbit ke indeks, `app/rencana.html` merendernya; keluarannya **identik** dengan `susun-rencana.mjs` untuk masukan yang sama. Protokol: **1**, draft, tingkat D | **selesai** |
-| E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | skema **selesai**; permukaan belum | **BANGUN** (fase 3) |
-| E3 | Simpangan rencana–realisasi | petugas lapang, offtaker | mutu data | pemeriksa **selesai** | **BANGUN** (fase 3) |
+| E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | **selesai** 24 Agustus 2026 — di layar rencana yang sama; 11 alasan simpangan terbit ke indeks, jeda pencatatan dihitung sendiri, tindakan di luar rencana punya pintunya sendiri | **selesai** |
+| E3 | Simpangan rencana–realisasi | petugas lapang, offtaker | mutu data | pemeriksa **selesai**; **sisi pencatatannya ikut selesai** 24 Agustus 2026 bersama E2 — `L8` diterjemahkan ke layar, alasan diminta hanya saat memang ada simpangan | **sebagian** — tercatat; agregasinya di `sinyal.mjs` (G2) |
 | E4 | Pengingat berbasis **fase**, bukan tanggal | petani, petugas lapang | ketepatan waktu tindakan | `Stage` sengaja **tanpa medan hari** — hanya 2 dari 4 langkah cabai bertanggal | **BANGUN** (fase 3) dengan batasnya dinyatakan |
 | E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | **inti selesai** 23 Agustus 2026 — `app/kas.html`, seluruhnya di perangkat, tanpa akun. Petani kecil memang mengandalkan ingatan, jadi jaraknya yang dirancang: jawaban di atas, tiga medan, satu yang wajib | inti **selesai**; sinkron & banyak petak **fase 3** |
 

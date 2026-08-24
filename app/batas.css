@@ -803,3 +803,77 @@ tr.lewat-masa td:first-child { border-left: 3px solid var(--awas, var(--amber, #
 .jadwal .kapan.tgl { color: var(--bj-aksen); }
 .jadwal .apa { flex: 1 1 12rem; color: var(--bj-teks); font-size: .92rem; }
 .jadwal .apa .sub { display: block; font-size: .82rem; color: var(--bj-lemah); margin-top: .15rem; }
+
+/* ------------------------------------------------------------ realisasi E2 */
+.aksi-langkah { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: .45rem; }
+
+.aksi-langkah button,
+.sudah button {
+  font: inherit;
+  font-size: .82rem;
+  padding: .4rem .65rem;
+  min-height: 44px;
+  color: var(--bj-teks, var(--teks, var(--tinta)));
+  background: transparent;
+  border: 1px solid var(--bj-garis, var(--garis));
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.aksi-langkah button:focus-visible,
+.sudah button:focus-visible { outline: 2px solid var(--bj-aksen, var(--aksen)); outline-offset: 2px; }
+
+/* Yang sudah dikerjakan diberi garis aksen; yang dilewati diberi garis netral, BUKAN
+   merah. Melewati langkah dengan alasan bukan kegagalan — sebagian alasan justru
+   menunjukkan protokolnya yang salah, dan mewarnainya merah menyalahkan yang mencatat. */
+.sudah {
+  display: block;
+  margin-top: .45rem;
+  padding: .45rem .6rem;
+  border-left: 3px solid var(--bj-aksen, var(--aksen));
+  background: var(--bj-latar, var(--latar-kartu, var(--kertas)));
+  font-size: .85rem;
+  color: var(--bj-teks, var(--teks, var(--tinta)));
+}
+
+.sudah.dilewati { border-left-color: var(--bj-garis, var(--garis)); }
+.sudah .sub { display: block; font-size: .8rem; color: var(--bj-lemah, var(--teks-lemah, var(--lemah))); margin-top: .1rem; }
+.sudah button { margin-top: .4rem; }
+
+.form-realisasi {
+  display: grid;
+  gap: .4rem;
+  margin-top: .5rem;
+  padding: .6rem .7rem;
+  border: 1px solid var(--bj-garis, var(--garis));
+  border-radius: 8px;
+  background: var(--bj-latar, var(--latar-kartu, var(--kertas)));
+}
+
+.form-realisasi label { font-size: .84rem; font-weight: 600; color: var(--bj-teks, var(--teks, var(--tinta))); }
+
+.form-realisasi input,
+.form-realisasi select {
+  display: block;
+  width: 100%;
+  margin-top: .2rem;
+  padding: .5rem .6rem;
+  min-height: 44px;
+  font: inherit;
+  font-size: .87rem;
+  color: var(--bj-teks, var(--teks, var(--tinta)));
+  background: var(--bj-latar, var(--latar-kartu, var(--kertas)));
+  border: 1px solid var(--bj-garis, var(--garis));
+  border-radius: 8px;
+}
+
+.form-realisasi input:focus-visible,
+.form-realisasi select:focus-visible { outline: 2px solid var(--bj-aksen, var(--aksen)); outline-offset: 1px; }
+
+/* Sebab kenapa alasan diminta ditulis di sebelah medannya, bukan disembunyikan. Yang
+   diminta memilih alasan berhak tahu apa yang membuatnya diminta. */
+.alasan-sebab {
+  margin: .1rem 0 0 !important;
+  font-size: .82rem;
+  color: var(--bj-lemah, var(--teks-lemah, var(--lemah)));
+}

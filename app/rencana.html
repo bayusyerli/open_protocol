@@ -61,6 +61,30 @@
 
   <section id="hasil" aria-live="polite"></section>
 
+  <section id="luarRencana" hidden>
+    <h2 class="judul-bagian">Tindakan di luar rencana</h2>
+    <div class="kartu kartu-catat">
+      <p>
+        Yang dikerjakan tetapi tidak ada di rencana <strong>juga temuan</strong>, bukan
+        kesalahan pencatatan. Kalau ia berulang, yang perlu ditinjau protokolnya.
+      </p>
+      <div class="catat-baris">
+        <span>
+          <label for="lrTanggal">Tanggal</label>
+          <input type="date" id="lrTanggal">
+        </span>
+        <span>
+          <label for="lrAlasan">Kenapa dikerjakan</label>
+          <select id="lrAlasan"></select>
+        </span>
+      </div>
+      <label for="lrApa">Apa yang dikerjakan</label>
+      <input type="text" id="lrApa" autocomplete="off" placeholder="misal: semprot ulang karena hujan dua jam setelah aplikasi">
+      <p class="catat-aksi"><button type="button" id="lrTambah">Catat</button></p>
+      <p class="catat-kabar" id="lrKabar" role="status" aria-live="polite"></p>
+    </div>
+  </section>
+
   <section class="batas-jawaban" id="batasJawaban">
     <p class="kosong">Memuat batas jawaban…</p>
   </section>
