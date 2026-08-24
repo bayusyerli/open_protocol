@@ -309,6 +309,56 @@ diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan ya
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
 
+### Musim dan petak bersama — E2 disambungkan ke buku kas dan ke petak
+
+Tiga layar memakai kata "musim", dan sebelum ini **tidak satu pun di antaranya bertemu**.
+Buku kas menyimpan musim bernama dengan luas di kepalanya, layar rencana memakai kunci
+`protokol|tanggal-tanam` yang tidak pernah dilihat siapa pun, dan analisis usaha tani
+meminta luas lagi dari nol. Yang paling merugikan bukan pengetikan ulangnya: tanpa
+identitas bersama, biaya yang dicatat di buku kas **tidak bisa ditaruh di sebelah langkah
+yang menimbulkannya**, dan skema sudah menyatakan itu keliru sejak lama — `Step.cycle`
+**wajib**, dan `Cycle.plot` menunjuk petak. Realisasi tanpa siklus bukan Step yang kurang
+lengkap; ia bukan Step.
+
+Sekarang satu rekaman, di `musim.js`, dipakai kedua layar: nama musim, **nama petak**,
+jenis petak (`Plot.kind`), komoditas, luas, tanggal tanam, protokol. Petak dinamai
+terpisah dari musim karena petak hidup lebih lama — petak yang sama ditanami dua kali
+setahun, dan yang mau tahu apakah musim ini lebih mahal daripada musim lalu **di petak
+yang sama** perlu keduanya bisa dibedakan.
+
+- **Biaya mengalir dari langkah ke buku.** Mencatat "pemupukan susulan sudah dikerjakan"
+  bisa sekalian mencatat biayanya, dan catatannya masuk ke buku kas musim itu — bertanda
+  *"dari layar rencana"*, supaya tidak terbaca seolah ada yang mengetiknya dua kali.
+  Kategorinya **diusulkan** dari kunci jenis operasinya (`pemupukan-dasar` → Pupuk,
+  `aplikasi-pestisida` → Pestisida) dan tetap bisa diganti: satu langkah bisa berbiaya
+  bahan pada satu petani dan berbiaya upah borongan pada petani lain.
+- **Satu langkah, paling banyak satu catatan biaya.** Mencatat ulang mencabut yang lama
+  lebih dulu, dan membatalkan langkah mencabut biayanya. Penggandaan senyap di buku kas
+  lebih buruk daripada angka yang hilang — ia tidak terlihat sampai totalnya dipakai.
+- **Tindakan di luar rencana juga boleh berbiaya**, dengan tautan yang sama.
+
+**Cacat yang ditemukan sendiri saat menguji, dan bentuknya perlu dicatat.** Pemindahan
+bentuk simpanan lama semula ditaruh di dua berkas — musim di satu, catatan di lain — dan
+itu **menghilangkan data** pada bentuk paling lama. Urutannya yang menentukan: modul
+dievaluasi menurut urutan impornya, jadi di satu layar penyimpan catatan jalan lebih dulu,
+menulis ulang `op:kas` tanpa medan `musim`, dan penyimpan musim kemudian membaca musim
+yang sudah tidak ada di sana. Layar yang satunya kebetulan mengimpor dengan urutan
+terbalik dan lolos — **cacat yang tergantung urutan baris impor**. Seluruh pemindahan
+sekarang dikerjakan satu berkas, dan yang lain mengimpornya supaya dijamin jalan lebih
+dulu. Tiga bentuk lama diterima, termasuk bentuk yatim yang cuma bisa lahir dari cacat itu
+sendiri.
+
+**Yang tidak dijanjikan, dan disebut di blok batas kedua layar.** Ini **bukan** entitas
+`Plot`. Skema mewajibkan empat hal dan dua di antaranya sengaja tidak diminta: `holder`
+menunjuk aktor — artinya menyebut nama orang — dan geometri yang cukup baik untuk
+disidik. `sidik-petak.mjs` menolak `single_point` karena titik tunggal presisi lima
+desimal di dalam satu kabupaten habis ditebak GPU dalam 0,08 detik, jadi sidiknya bukan
+penjagaan melainkan penunjuk lokasi yang bisa dibalik. Yang tersisa cukup untuk
+**menyambungkan layar satu sama lain**, dan tidak cukup untuk **menyambungkan petani satu
+sama lain**. Bedanya besar. `Step.labor` dan `Step.area_covered` juga belum diminta: satu
+angka biaya tidak bisa dipecah jadi upah dan bahan sesudahnya, tetapi tiap medan wajib
+tambahan adalah alasan berhenti mencatat.
+
 ### Pencatatan realisasi — E2, di layar rencana yang sama
 
 Barisnya berbunyi *"skema selesai; permukaan belum"*, dan yang membentuk permukaannya dua

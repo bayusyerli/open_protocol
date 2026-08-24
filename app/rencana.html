@@ -37,6 +37,10 @@
     <p>Seluruh hitungan berjalan di perangkatmu. Tanpa JavaScript tidak ada yang bisa disusun.</p>
   </div>
 
+  <section class="kartu kartu-musim" id="kartuMusim"></section>
+
+  <section class="kartu kartu-ringkas" id="ringkasMusim" aria-live="polite" hidden></section>
+
   <section class="kartu kartu-catat">
     <form id="formRencana" onsubmit="return false">
       <label for="protokol">Protokol</label>
@@ -80,6 +84,16 @@
       </div>
       <label for="lrApa">Apa yang dikerjakan</label>
       <input type="text" id="lrApa" autocomplete="off" placeholder="misal: semprot ulang karena hujan dua jam setelah aplikasi">
+      <div class="catat-baris">
+        <span>
+          <label for="lrBiaya">Biaya (boleh kosong)</label>
+          <input type="number" id="lrBiaya" inputmode="numeric" min="0" step="1000" placeholder="misal 250000">
+        </span>
+        <span>
+          <label for="lrKategori">Masuk kategori</label>
+          <select id="lrKategori"></select>
+        </span>
+      </div>
       <p class="catat-aksi"><button type="button" id="lrTambah">Catat</button></p>
       <p class="catat-kabar" id="lrKabar" role="status" aria-live="polite"></p>
     </div>

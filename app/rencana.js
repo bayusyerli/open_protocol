@@ -28,13 +28,16 @@
 import { ambil, muatMeta, teks, tanggal } from './pustaka.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
+import * as musim from './musim.js';
+import * as buku from './buku.js';
 
 pasangTombolTema();
 document.getElementById('tanpaJs')?.remove();
 
 const el = {};
 for (const id of ['protokol', 'tentangProtokol', 'tanam', 'semai', 'luas', 'susun', 'kabar', 'hasil',
-  'luarRencana', 'lrTanggal', 'lrAlasan', 'lrApa', 'lrTambah', 'lrKabar'])
+  'luarRencana', 'lrTanggal', 'lrAlasan', 'lrApa', 'lrBiaya', 'lrKategori', 'lrTambah', 'lrKabar',
+  'kartuMusim', 'ringkasMusim'])
   el[id] = document.getElementById(id);
 el.batas = document.getElementById('batasJawaban');
 
@@ -43,7 +46,6 @@ const n = (x, d = 2) => Number(x ?? 0).toLocaleString('id-ID', { maximumFraction
 let daftar = [];
 let rinci = null;
 let alasan = [];
-let kunciMusim = null;
 
 /* ---------------------------------------------------------------------------
  * E2 — pencatatan realisasi
@@ -64,10 +66,11 @@ let kunciMusim = null;
  * dua keadaan yang WAJIB beralasan: langkah yang dilewati, dan langkah yang dikerjakan
  * pada tanggal yang berbeda jauh dari rencananya.
  *
- * Realisasi tersimpan di peranti, dengan peringatan yang sama seperti buku kas: peramban
- * boleh menghapusnya. Ia BELUM tersambung ke musim di buku kas — musim di sana hanya nama
- * yang diketik, dan menyambungkannya menuntut identitas petak yang belum ada di permukaan.
- * Itu disebutkan di layar alih-alih dibiarkan tampak sudah tersambung. */
+ * REALISASI DIKUNCI KE MUSIM BERSAMA, bukan ke `protokol|tanggal-tanam`. Kunci lama itu
+ * tidak pernah terlihat siapa pun dan tidak pernah bertemu musim di buku kas, jadi biaya
+ * yang dicatat di sana tidak bisa ditaruh di sebelah langkah yang menimbulkannya di sini.
+ * Skema sudah menyatakannya sejak lama: `Step.cycle` WAJIB, dan `Cycle.plot` menunjuk
+ * petak — realisasi tanpa siklus bukan Step yang kurang lengkap, ia bukan Step. */
 const KUNCI = 'op:realisasi';
 let realisasi = {};
 
@@ -84,7 +87,38 @@ function tulisRealisasi() {
 
 const hariIni = () => new Date().toISOString().slice(0, 10);
 const selisihHari = (a, b) => Math.round((Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / 86400000);
-const catatanMusim = () => (realisasi[kunciMusim] ??= { langkah: {}, luar: [] });
+const kunciMusim = () => musim.idMusimAktif();
+const catatanMusim = () => (realisasi[kunciMusim()] ??= { langkah: {}, luar: [] });
+
+/* Catatan yang sudah terlanjur tersimpan di bawah kunci `protokol|tanggal` TIDAK BOLEH
+ * hilang karena pembaruan ini. Tiap kunci lama dijadikan satu musim bernama — nama
+ * protokolnya dan tanggal tanamnya, yang memang dua hal yang membedakannya — lalu
+ * catatannya dipindahkan apa adanya. Aturan yang sama dipakai buku kas saat bentuk
+ * simpanannya berubah: dibungkus, bukan dibuang. */
+function pindahkanKunciLama() {
+  const lama = Object.keys(realisasi).filter((k) => /\|\d{4}-\d{2}-\d{2}$/.test(k));
+  if (!lama.length) return 0;
+  // Musim yang sedang aktif di buku kas TIDAK boleh bergeser diam-diam karena pemindahan
+  // ini. Menambah musim membuatnya aktif, dan buku kas yang tiba-tiba menampilkan musim
+  // lain tanpa ada yang menyentuhnya adalah cara tercepat membuat orang mengira catatannya
+  // hilang. Yang aktif sebelumnya dikembalikan; kalau memang belum ada, yang baru berlaku.
+  const sebelumnya = musim.idMusimAktif();
+  for (const k of lama) {
+    const [kunciProtokol, tanam] = k.split('|');
+    const p = daftar.find((x) => x.key === kunciProtokol);
+    const baru = musim.tambah({
+      nama: `${p?.nama ?? kunciProtokol} — tanam ${tanam}`,
+      komoditas: p?.komoditas ?? null,
+      tanam,
+      protokol: kunciProtokol,
+    });
+    realisasi[baru.i] = realisasi[k];
+    delete realisasi[k];
+  }
+  if (sebelumnya) musim.setAktif(sebelumnya);
+  tulisRealisasi();
+  return lama.length;
+}
 
 /* Disalin apa adanya dari susun-rencana.mjs. Offset boleh berjam, berminggu, atau
  * berbulan; hanya yang bisa jadi hari yang dipakai menanggalkan, dan "mo" sengaja kasar
@@ -163,6 +197,38 @@ function blokPeringatan(p) {
     </div>`;
 }
 
+/* Usulan kategori buku kas dari jenis operasinya.
+ *
+ * Dicocokkan lewat KUNCI jenis operasi, bukan labelnya: label boleh diubah editor kapan
+ * saja, kunci dijanjikan tetap. Yang tidak terdaftar jatuh ke "Lainnya" — dan jatuh ke
+ * "Lainnya" jauh lebih baik daripada ditebak: kategori yang salah di buku kas tidak
+ * kelihatan salah, ia cuma membuat "biaya terbesar" menunjuk ke tempat yang keliru.
+ *
+ * Ini USULAN. Medannya tetap bisa diganti sebelum disimpan, karena satu langkah bisa
+ * berbiaya bahan pada satu petani dan berbiaya upah borongan pada petani lain. */
+const KATEGORI_OPERASI = new Map(Object.entries({
+  'Pupuk': ['pemupukan', 'pemupukan-dasar', 'pemupukan-susulan', 'pemupukan-lewat-daun',
+    'fertigasi', 'pengapuran', 'pengomposan'],
+  'Pestisida': ['perlindungan-tanaman', 'aplikasi-pestisida', 'penyiangan-kimiawi',
+    'pengendalian-hayati', 'perlakuan-benih'],
+  'Benih atau bibit': ['pembibitan', 'penyemaian', 'penyapihan', 'pengerasan-bibit',
+    'penebaran-benih-ikan'],
+  'Tenaga kerja — olah tanah': ['persiapan-lahan', 'olah-tanah', 'perataan-lahan',
+    'pembuatan-bedengan', 'pengelolaan-sisa-tanaman', 'sanitasi-lahan', 'sterilisasi-media'],
+  'Tenaga kerja — tanam': ['penanaman', 'penanaman-langsung', 'pindah-tanam', 'penyulaman'],
+  'Tenaga kerja — pemeliharaan': ['perawatan-tanaman', 'penyiangan-gulma', 'penyiangan-manual',
+    'pemangkasan', 'perempelan-tunas', 'penjarangan-buah', 'pengikatan-tanaman', 'pembumbunan',
+    'pengendalian-mekanis', 'pemasangan-perangkap'],
+  'Tenaga kerja — panen': ['panen', 'panen-bertahap'],
+  'Mulsa & ajir': ['pemasangan-mulsa', 'pengajiran'],
+  'Pengairan': ['pengairan', 'penyiraman', 'pengaturan-drainase', 'pengelolaan-kualitas-air'],
+  'Angkut & kemas': ['pascapanen', 'sortasi', 'pengkelasan', 'pencucian', 'pengeringan',
+    'pengemasan', 'penyimpanan', 'pengangkutan'],
+}).flatMap(([kat, kunci]) => kunci.map((k) => [k, kat])));
+
+const usulKategori = (langkah) => KATEGORI_OPERASI.get(langkah?.tindakan?.k) ?? 'Lainnya';
+const rupiah = (x) => 'Rp ' + Math.round(x).toLocaleString('id-ID');
+
 /* Keadaan satu langkah, dan hanya tiga: belum, dikerjakan, dilewati. Skala yang lebih
  * halus ("sebagian", "tertunda") menggoda dan menyesatkan — yang menentukan bagi protokol
  * cuma apakah ia terjadi, dan kalau tidak, kenapa. */
@@ -170,10 +236,12 @@ function blokAksi(j, r) {
   if (r?.keadaan === 'dikerjakan') {
     const lag = r.dicatat && r.tanggal ? selisihHari(r.tanggal, r.dicatat) : 0;
     const geser = j.jenis === 'bertanggal' && j.tgl ? selisihHari(j.tgl, r.tanggal) : null;
+    const taut = buku.cariTaut(kunciMusim(), j.s.kunci);
     return `<span class="sudah">
       dikerjakan ${teks(tanggal(r.tanggal) ?? r.tanggal)}
       ${geser ? `<span class="sub">${Math.abs(geser)} hari ${geser > 0 ? 'lebih lambat' : 'lebih cepat'} dari rencana${r.alasan ? ` — ${teks(r.alasan)}` : ''}</span>` : ''}
       ${lag > 0 ? `<span class="sub">dicatat ${n(lag, 0)} hari sesudahnya</span>` : ''}
+      ${taut ? `<span class="sub biaya">${rupiah(taut.n)} — ${teks(taut.k)}, masuk buku kas</span>` : ''}
       <button type="button" data-batal="${teks(j.s.kunci)}">batalkan</button>
     </span>`;
   }
@@ -204,6 +272,7 @@ function gambarLuar() {
         <span class="apa">${teks(x.apa)}
           ${x.alasan ? `<span class="sub">${teks(x.alasan)}</span>` : ''}
           ${selisihHari(x.tanggal, x.dicatat) > 0 ? `<span class="sub">dicatat ${n(selisihHari(x.tanggal, x.dicatat), 0)} hari sesudahnya</span>` : ''}
+          ${x.kunci && buku.cariTaut(kunciMusim(), x.kunci) ? `<span class="sub biaya">${rupiah(buku.cariTaut(kunciMusim(), x.kunci).n)} — ${teks(buku.cariTaut(kunciMusim(), x.kunci).k)}, masuk buku kas</span>` : ''}
         </span></li>`).join('')}
     </ul>
     <p class="catatan">
@@ -211,6 +280,25 @@ function gambarLuar() {
       bukan tentang yang mengerjakannya. Yang menimbangnya peninjau bernama, bukan halaman ini.
     </p>`;
   el.luarRencana.appendChild(d);
+}
+
+/* Satu baris yang membuat sambungannya TERLIHAT. Tanpa ini, biaya yang dikirim dari sini
+ * menghilang ke halaman lain dan yang mengirimnya tidak punya cara memastikan ia sampai —
+ * dan yang tidak bisa dipastikan sampai tidak akan diisi lagi lain kali. */
+function gambarRingkasMusim() {
+  const m = musim.aktif();
+  if (!m) { el.ringkasMusim.innerHTML = ''; el.ringkasMusim.hidden = true; return; }
+  const { keluar, cacah } = buku.hitung(m.i);
+  const dariSini = buku.perMusim(m.i).filter((c) => c.s === 'rencana');
+  el.ringkasMusim.hidden = false;
+  el.ringkasMusim.innerHTML = `
+    <h2>Biaya musim ini</h2>
+    <dl class="kunci">
+      <dt>Uang keluar</dt><dd>${rupiah(keluar)}<span class="sub">${n(cacah, 0)} catatan, ${n(dariSini.length, 0)} dari layar ini</span></dd>
+      ${m.luas > 0 ? `<dt>Biaya per hektare</dt><dd>${rupiah(keluar / m.luas)}<span class="sub">dari ${n(m.luas)} ha</span></dd>` : ''}
+    </dl>
+    ${m.luas > 0 ? '' : '<p class="catatan">Luas belum diisi, jadi <strong>biaya per hektare</strong> tidak bisa dihitung — dan itu satuan yang dipakai hampir semua program yang meminta angka biaya usaha tani.</p>'}
+    <p class="catatan"><a href="kas.html">Buka buku kas</a> untuk melihat seluruh catatannya, termasuk uang masuk.</p>`;
 }
 
 function gambarHasil(p, { jadwal, kebutuhan, takTerjumlah }, luas) {
@@ -285,13 +373,35 @@ function gambarHasil(p, { jadwal, kebutuhan, takTerjumlah }, luas) {
  * nomornya di kotak bawaan peramban adalah interaksi yang gagal di ponsel — dan halaman
  * yang di tempat lain menuntut target sentuh 44 px tidak boleh menawarkan itu di sini.
  * Ia juga tidak bisa diberi keterangan: pilihan alasan butuh definisinya terlihat. */
-function formRealisasi(kunci, jenis, rencanaTgl) {
+function formRealisasi(kunci, jenis, rencanaTgl, langkah) {
+  const taut = buku.cariTaut(kunciMusim(), kunci);
   return `
     <form class="form-realisasi" data-untuk="${teks(kunci)}" onsubmit="return false">
       ${jenis === 'kerja' ? `
         <label>Tanggal dikerjakan
           <input type="date" name="tgl" value="${teks(hariIni())}">
-        </label>` : ''}
+        </label>
+        <div class="catat-baris">
+          <span>
+            <label for="bi-${teks(kunci)}">Biaya (boleh kosong)</label>
+            <input type="number" id="bi-${teks(kunci)}" name="biaya" inputmode="numeric" min="0" step="1000"
+                   value="${taut ? teks(String(taut.n)) : ''}" placeholder="misal 250000">
+          </span>
+          <span>
+            <label for="bk-${teks(kunci)}">Masuk kategori</label>
+            <select id="bk-${teks(kunci)}" name="kategori">
+              ${buku.KATEGORI_KELUAR.map((k) => {
+                const pilih = taut?.k ?? usulKategori(langkah);
+                return `<option value="${teks(k)}"${k === pilih ? ' selected' : ''}>${teks(k)}</option>`;
+              }).join('')}
+            </select>
+          </span>
+        </div>
+        <p class="catatan">
+          Diisi berarti satu catatan masuk ke <a href="kas.html">buku kas</a> musim ini —
+          tidak perlu diketik dua kali. Dikosongkan berarti langkahnya tetap tercatat
+          dikerjakan, tanpa biaya.
+        </p>` : ''}
       <label class="alasan-medan" hidden>Alasannya
         <select name="alasan">
           ${alasan.map((a) => `<option value="${teks(a.nama)}">${teks(a.nama)}</option>`).join('')}
@@ -352,7 +462,16 @@ el.hasil.addEventListener('click', (ev) => {
   const c = catatanMusim();
 
   if (tutup) { tutup.closest('.form-realisasi').remove(); return; }
-  if (batal) { delete c.langkah[batal.dataset.batal]; tulisRealisasi(); ulangGambar(); return; }
+  if (batal) {
+    // Biayanya ikut dicabut. Membiarkannya berarti buku kas memuat biaya untuk langkah
+    // yang menurut layar ini tidak pernah dikerjakan — dan selisih senyap di buku kas
+    // tidak terlihat sampai totalnya dipakai.
+    delete c.langkah[batal.dataset.batal];
+    buku.hapusTaut(kunciMusim(), batal.dataset.batal);
+    tulisRealisasi();
+    ulangGambar();
+    return;
+  }
 
   if (kerja || lewat) {
     const b = kerja ?? lewat;
@@ -361,7 +480,7 @@ el.hasil.addEventListener('click', (ev) => {
     const j = jadwal.find((x) => x.s.kunci === kunci);
     const wadah = b.closest('.apa');
     wadah.querySelector('.form-realisasi')?.remove();
-    wadah.insertAdjacentHTML('beforeend', formRealisasi(kunci, kerja ? 'kerja' : 'lewat', j?.tgl ?? null));
+    wadah.insertAdjacentHTML('beforeend', formRealisasi(kunci, kerja ? 'kerja' : 'lewat', j?.tgl ?? null, j?.s));
     const f = wadah.querySelector('.form-realisasi');
     f.dataset.jendela = String(j?.jendela ?? 0);
     perbaruiAlasan(f);
@@ -372,6 +491,7 @@ el.hasil.addEventListener('click', (ev) => {
   if (!simpan) return;
   const f = simpan.closest('.form-realisasi');
   const kunci = simpan.dataset.simpan;
+  const j = (rinci?.langkah ?? []).find((x) => x.kunci === kunci);
   const perlu = perbaruiAlasan(f);
   const alasanNilai = perlu ? f.querySelector('[name="alasan"]').value : null;
   if (simpan.dataset.jenis === 'lewat') {
@@ -380,6 +500,22 @@ el.hasil.addEventListener('click', (ev) => {
     const tgl = f.querySelector('[name="tgl"]').value;
     if (!tgl) return;
     c.langkah[kunci] = { keadaan: 'dikerjakan', tanggal: tgl, alasan: alasanNilai, dicatat: hariIni() };
+    // Satu langkah menimbulkan PALING BANYAK satu catatan biaya: yang lama dicabut lebih
+    // dulu, supaya mengoreksi tanggal tidak menggandakan biayanya di buku.
+    buku.hapusTaut(kunciMusim(), kunci);
+    const biaya = Number(f.querySelector('[name="biaya"]')?.value);
+    if (Number.isFinite(biaya) && biaya > 0) {
+      buku.tambah({
+        m: kunciMusim(),
+        t: tgl,
+        a: 'keluar',
+        k: f.querySelector('[name="kategori"]').value,
+        n: biaya,
+        c: j?.nama ?? kunci,
+        s: 'rencana',
+        l: kunci,
+      });
+    }
   }
   tulisRealisasi();
   ulangGambar();
@@ -389,14 +525,22 @@ el.lrTambah.addEventListener('click', () => {
   const apa = el.lrApa.value.trim();
   if (!apa) { el.lrKabar.textContent = 'Tulis dulu apa yang dikerjakan.'; el.lrApa.focus(); return; }
   const c = catatanMusim();
+  const tgl = el.lrTanggal.value || hariIni();
+  const kunciLuar = `luar:${Date.now()}`;
   c.luar.push({
     apa,
-    tanggal: el.lrTanggal.value || hariIni(),
+    tanggal: tgl,
     alasan: el.lrAlasan.value || null,
     dicatat: hariIni(),
+    kunci: kunciLuar,
   });
+  const biayaLuar = Number(el.lrBiaya.value);
+  if (Number.isFinite(biayaLuar) && biayaLuar > 0) {
+    buku.tambah({ m: kunciMusim(), t: tgl, a: 'keluar', k: el.lrKategori.value, n: biayaLuar, c: apa, s: 'rencana', l: kunciLuar });
+  }
   const ok = tulisRealisasi();
   el.lrApa.value = '';
+  el.lrBiaya.value = '';
   el.lrKabar.textContent = ok
     ? 'Tercatat. Tindakan di luar rencana adalah temuan — kalau ia berulang, protokolnya yang perlu ditinjau.'
     : 'Tercatat, tetapi TIDAK tersimpan — peramban menolak menyimpan.';
@@ -418,13 +562,26 @@ el.susun.addEventListener('click', async () => {
   const k = el.protokol.value;
   if (!k) { el.kabar.textContent = 'Pilih protokolnya dulu.'; return; }
   if (!el.tanam.value) { el.kabar.textContent = 'Isi tanggal pindah tanam — tanpa itu tidak ada yang bisa ditanggalkan.'; el.tanam.focus(); return; }
+  // Musim wajib ADA sebelum ada yang dicatat, dengan alasan yang sama seperti di buku kas:
+  // catatan tanpa musim tidak bisa dijumlahkan, dan tidak bisa dipindahkan ke musim mana
+  // pun sesudahnya tanpa menebak. Yang tidak wajib: mengisinya lengkap.
+  if (!kunciMusim()) {
+    el.kabar.textContent = 'Beri nama musimnya dulu di atas — sekali saja, lalu rencana dan biayanya ikut ke sana.';
+    const d = el.kartuMusim.querySelector('.atur-musim');
+    if (d) d.open = true;
+    el.kartuMusim.querySelector('#mNama')?.focus();
+    return;
+  }
   el.kabar.textContent = 'Menyusun…';
   try {
     if (!rinci || rinci.key !== k) rinci = await ambil(`protokol/${k}`);
     const luasNum = Number(el.luas.value);
     const luas = Number.isFinite(luasNum) && luasNum > 0 ? luasNum : null;
-    kunciMusim = `${k}|${el.tanam.value}`;
+    // Ditambal, bukan ditimpa: layar ini tahu protokol dan tanggal tanam, buku kas tahu
+    // komoditas dan luas. Yang satu tidak boleh menghapus isian yang lain.
+    musim.perbarui(kunciMusim(), { protokol: k, tanam: el.tanam.value, ...(luas ? { luas } : {}) });
     gambarHasil(rinci, susunRencana(rinci, { tanam: el.tanam.value, semai: el.semai.value || null, luas }), luas);
+    gambarRingkasMusim();
     gambarLuar();
     el.luarRencana.hidden = false;
     el.kabar.textContent = '';
@@ -443,7 +600,10 @@ el.susun.addEventListener('click', async () => {
       ambil('alasan-simpangan').catch(() => []),
     ]);
     realisasi = bacaRealisasi();
+    const dipindah = pindahkanKunciLama();
     el.lrTanggal.value = hariIni();
+    el.lrKategori.innerHTML = buku.KATEGORI_KELUAR.map((x) =>
+      `<option value="${teks(x)}">${teks(x)}</option>`).join('');
     el.lrAlasan.innerHTML = alasan.map((a) =>
       `<option value="${teks(a.nama)}">${teks(a.nama)}</option>`).join('');
     el.protokol.innerHTML = daftar.map((p) =>
@@ -459,16 +619,51 @@ el.susun.addEventListener('click', async () => {
     }
     el.tanam.value = new Date().toISOString().slice(0, 10);
 
+    /* Memilih musim mengisi ulang layar dari apa yang musim itu sudah tahu. Yang membuka
+     * halaman ini di tengah musim tidak sedang menyusun rencana baru — ia mau melihat
+     * rencana yang sudah disusunnya, dan mengetik ulang protokol serta tanggal tanam tiap
+     * kali adalah cara tercepat membuat orang berhenti memakainya. */
+    const isiDariMusim = (m) => {
+      if (!m) return;
+      if (m.protokol && daftar.some((x) => x.key === m.protokol)) {
+        el.protokol.value = m.protokol;
+        el.protokol.dispatchEvent(new Event('change'));
+      }
+      if (m.tanam) el.tanam.value = m.tanam;
+      if (m.luas > 0) el.luas.value = m.luas;
+      el.hasil.innerHTML = '';
+      el.luarRencana.hidden = true;
+      gambarRingkasMusim();
+    };
+    musim.pasangMusim(el.kartuMusim, { onGanti: isiDariMusim });
+    isiDariMusim(musim.aktif());
+    if (dipindah) {
+      el.kabar.textContent = `${n(dipindah, 0)} catatan realisasi lama dipindahkan ke musim `
+        + 'bernama, dan sekarang satu musim dengan buku kas. Tidak ada yang hilang.';
+    }
+
     pasangBatas(el.batas, {
       sumber: ['protokol'],
       takDijawab: ['rencanaBukanKalender', 'arusKasMusim', 'harga', {
-        judul: 'Sambungan ke buku kas dan ke petak',
+        judul: 'Petak ini belum bisa disandingkan dengan petak siapa pun',
         teks:
-          'Realisasi yang dicatat di sini tersimpan di peranti dan BELUM tersambung ke musim di '
-          + 'buku kas maupun ke identitas petak. Musim di buku kas hanya nama yang diketik, dan '
-          + 'identitas petak belum ada di permukaan sama sekali — menyambungkannya sekarang berarti '
-          + 'menjanjikan kaitan yang tidak bisa ditelusuri. Dan seperti buku kas, peramban boleh '
-          + 'menghapus catatan ini tanpa memberitahu.',
+          'Realisasi dan biaya di sini sekarang satu musim dengan buku kas, dan musim itu menyebut '
+          + 'petaknya. Yang masih tidak bisa dilakukan: menyandingkan petak ini dengan petak petani '
+          + 'lain. Skema petak mewajibkan pemegang — artinya menyebut nama orang — dan sidik petak '
+          + 'menolak apa pun yang lebih kasar daripada poligon, karena satu titik presisi lima '
+          + 'desimal di dalam satu kabupaten habis ditebak dalam 0,08 detik dan sidiknya jadi '
+          + 'penunjuk lokasi, bukan penjagaan. Lapisan ini tidak meminta keduanya. Cukup untuk '
+          + 'menyambungkan layar satu sama lain, tidak cukup untuk menyambungkan petani satu sama '
+          + 'lain. Dan seperti buku kas, peramban boleh menghapus catatan ini tanpa memberitahu.',
+      }, {
+        judul: 'Upah, jam kerja, dan luas yang benar-benar dikerjakan',
+        teks:
+          'Skema langkah punya medan `labor` (jam-orang, jumlah orang, sumber tenaga) dan '
+          + '`area_covered` — luas yang benar-benar dikerjakan, yang kerap berbeda dari luas petak. '
+          + 'Keduanya tidak diminta di sini. Yang diminta baru satu angka biaya, dan satu angka '
+          + 'biaya tidak bisa dipecah jadi upah dan bahan sesudahnya. Menambahkan medannya murah; '
+          + 'yang mahal memintanya pada tiap langkah, dan tiap medan wajib tambahan adalah alasan '
+          + 'berhenti mencatat.',
       }],
     });
   } catch (e) {
