@@ -1,0 +1,28 @@
+{
+  "$schema": "../schema/toko.schema.json",
+  "id": "op:tko:00009999",
+  "key": "kios-uji-foto-pinjaman",
+  "label": { "id": "Kios Uji Foto Pinjaman" },
+  "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-24T00:00:00Z" },
+  "mappings": [
+    {
+      "scheme": "GOOGLE_PLACE_ID",
+      "id": "ChIJh7xRJ1zdaC4R544URdgMTSg",
+      "relation": "exact",
+      "note": "Place ID sah dan boleh disimpan permanen (§A.3). Yang membuat rekaman ini tidak sah adalah fotonya, bukan pemetaan ini."
+    }
+  ],
+  "sourcing": "osm",
+  "license": "ODbL-1.0",
+  "attribution": "© Kontributor OpenStreetMap, ODbL 1.0",
+  "location": { "lat": -6.9055535, "lon": 107.6763869, "precision": "bangunan", "source": "osm" },
+  "photos": [
+    {
+      "path": "gambar/toko/kios-uji.jpg",
+      "credit": "CakrabuaNa F16 via Google Maps",
+      "license": "CC-BY-SA-4.0",
+      "taken": "2026-08-24"
+    }
+  ],
+  "claim": { "status": "belum-diklaim" }
+}

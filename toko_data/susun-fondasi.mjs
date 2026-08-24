@@ -104,6 +104,51 @@ writeFileSync(join(DIR, 'benih-alamat.ndjson'),
 // --- laporan --------------------------------------------------------------------
 const prov = (arr) => { const o = {}; for (const r of arr) o[r.provinsi ?? '?'] = (o[r.provinsi ?? '?'] ?? 0) + 1; return Object.entries(o).sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${v}`).join(', ') }
 
+// Lapis 4 tidak disusun di sini — ia ditarik `tarik-toko-sync.mjs` dan sudah berbentuk
+// sidecar saat sampai. Yang dikerjakan di sini hanya membacanya supaya LAPIS.md tetap
+// jadi satu-satunya peta semua lapis, bukan tiga dari empat.
+// Sengaja TIDAK memecah per kabupaten. Wilayah tiap place_id hanya hidup di singgahan
+// 30 hari (lihat tarik-toko-sync.mjs); membekukan sebarannya ke LAPIS.md yang ikut
+// commit sama saja memindahkan turunan itu jadi permanen lewat pintu belakang.
+// Yang dilaporkan cuma cacah dan tanggal — keduanya milik kita, bukan konten Google.
+function bacaPlaceId () {
+  const jalur = join(DIR, 'place-id.ndjson')
+  if (!existsSync(jalur)) return null
+  const baris = readFileSync(jalur, 'utf8').split('\n').filter((l) => l.trim()).map((l) => JSON.parse(l))
+  const singgah = existsSync(PRIVAT)
+    ? readdirSync(PRIVAT).filter((f) => /^toko-sync-.*\.ndjson$/.test(f)).length : 0
+  return {
+    jumlah: baris.length,
+    pertama: [...new Set(baris.map((r) => r.pertama_terlihat).filter(Boolean))].sort()[0] ?? '—',
+    singgah,
+  }
+}
+const pid = bacaPlaceId()
+const bagianPlaceId = !pid ? `## 4. PETA-ID GOOGLE — \`place-id.ndjson\`
+Belum ada. Tarik dengan \`node toko_data/tarik-toko-sync.mjs\`.
+` : `## 4. PETA-ID GOOGLE — \`place-id.ndjson\`
+**${pid.jumlah}** place_id, terlama tercatat ${pid.pertama}. ${pid.singgah} singgahan aktif.
+
+Lapis ini bukan sumber isi direktori, dan tidak boleh dijadikan begitu. Pembagian
+medannya mengikuti izin per pasal, bukan selera:
+
+| medan | tempat | pasal |
+|---|---|---|
+| \`place_id\` | repo, permanen | Service Specific Terms §A.3 |
+| \`lat\`/\`lng\` | \`privat/\`, hapus di hari ke-30 | §14.3 |
+| nama, alamat, foto | **tidak disimpan di mana pun** | §3.2.3(a), §3.2.3(b) |
+
+Nama toko tetap sampai ke pengguna — dirender live dari \`place_id\` lewat Places UI Kit
+atau Embed API saat halaman dibuka, tidak pernah singgah di disk kita. Jarak "toko
+terdekat" dihitung dari lat/lng singgahan yang masih di dalam 30 hari.
+
+Batas tampilan yang mengikat: §14.2 dan §3.2.3(e) melarang konten Places digambar di
+atas peta non-Google. Basemap Leaflet/OSM di produk ini karena itu hanya boleh memuat
+titik dari lapis 1 dan setoran pemilik. Toko dari lapis 4 disajikan sebagai **daftar**
+(§14.1 mengizinkan Places tanpa peta Google) atau lewat Places UI Kit, yang §15.1
+izinkan berdampingan dengan peta non-Google.
+`
+
 writeFileSync(join(DIR, 'LAPIS.md'), `# Lapis data toko tani
 
 Disusun ulang oleh \`susun-fondasi.mjs\`. Pembagian menurut **lisensi sumber**, bukan isi:
@@ -128,6 +173,7 @@ Nama + alamat tanpa koordinat, lisензi terbuka/pemerintah. Benih untuk klaim 
 - Batang (CC-BY): ${ember['benih-terbuka'].length}
 - TTI Kementan (arsip Wayback, karya pemerintah): ${ember['benih-gov'].length}
 
+${bagianPlaceId}
 ## Dibuang
 Luar Pulau Jawa: ${buang.luarJawa}. Berkas sesi paralel (\`semua.ndjson\`, \`peta-pairs\`, dll) sengaja dilewati.
 `)

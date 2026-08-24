@@ -7,7 +7,7 @@
     "CuratedId": {
       "description": "ID entitas vokabuler yang dikurasi dewan redaksi. Nomor 8 digit, diberikan sekali, tidak pernah didaur ulang.",
       "type": "string",
-      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev|proto|pcp|hrg|lab|bpp|cfr|akl|akz):[0-9]{8}$"
+      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev|proto|pcp|hrg|lab|bpp|cfr|akl|akz|tko):[0-9]{8}$"
     },
     "RecordId": {
       "description": "ID data usaha tani. UUIDv7 supaya bisa dibuat offline tanpa server dan tetap terurut menurut waktu.",
@@ -513,6 +513,7 @@
             "KAN",
             "BPS",
             "AGSTACK",
+            "GOOGLE_PLACE_ID",
             "OTHER"
           ]
         },

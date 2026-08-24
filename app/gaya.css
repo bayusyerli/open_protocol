@@ -538,6 +538,20 @@ h3 { font-size: .95rem; margin: 1.2rem 0 .3rem; }
 .daftar .nama { display: block; font-weight: 600; }
 .daftar .sub { display: block; font-size: .82rem; color: var(--teks-lemah); }
 
+/* Kalimat pembeda di bawah judul gejala jalur 1. BUKAN `.sub`: yang di sana keterangan
+   cacah yang boleh diabaikan, sedangkan kalimat ini justru yang memutuskan pilihan —
+   dua judul bisa sama-sama berbunyi "daun mengeriting" dan yang membedakannya arah
+   keritingnya, ada di sini. Jadi ia seukuran teks biasa dan tidak diredupkan sejauh
+   `.sub`; yang membedakannya dari judul cuma tebalnya. */
+.daftar .gejala-ringkas {
+  display: block;
+  margin: .25rem 0 .3rem;
+  font-size: .92rem;
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--teks);
+}
+
 .lencana {
   display: inline-block;
   padding: .05rem .45rem;
@@ -915,7 +929,6 @@ a { color: var(--aksen); }
   background: var(--aksen-lemah);
 }
 
-
 /* Nama, komposisi, dan pemegang sama persis — yang tersisa nomor pendaftaran, dan
    indeks cari tidak membawanya. */
 .daftar .kembar { margin-top: .2rem; font-style: italic; }
@@ -1110,49 +1123,6 @@ a { color: var(--aksen); }
   background: var(--latar-kartu);
 }
 .situs { overflow-wrap: anywhere; }
-
-/* --- Strip darurat keracunan ---
-   Dipasang di empat layar yang mengantar orang ke pestisida. Alasan letaknya panjang di
-   kepala keselamatan.js; ringkasnya: kartu lengkapnya adalah anak kedua-dari-terakhir
-   <main>, dan di jalur-1 itu 4.977 px — 6,4 layar ponsel — dari nomor yang menurut modul
-   itu sendiri harus bisa ditelepon "sekarang".
-
-   Satu baris, dan sengaja tidak merah menyala: yang muncul di lima layar dan berteriak
-   berhenti dilihat pada layar kedua. */
-.strip-darurat {
-  position: sticky;
-  top: var(--atas-bilah, 61px);
-  z-index: 9;
-  display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  min-height: 48px;
-  margin: 0 0 1.1rem;
-  padding: 0.45rem 0.8rem;
-  border: 1px solid var(--bahaya);
-  border-radius: var(--sudut);
-  background: var(--bahaya-lemah);
-  color: var(--bahaya);
-  text-decoration: none;
-}
-.strip-darurat:hover { border-color: var(--teks); }
-.strip-darurat:focus-visible { outline: 3px solid var(--bahaya); outline-offset: 2px; }
-/* Gagang telepon digambar CSS: yang diketik sebagai emoji ikut dibaca pembaca layar
-   sebagai kata, dan tautannya sudah mengumumkan dirinya lewat href tel:. */
-.sd-tanda {
-  flex: none;
-  width: 17px;
-  height: 17px;
-  border: 2.5px solid currentColor;
-  border-radius: 50% 50% 46% 46% / 40% 40% 56% 56%;
-  border-top-color: transparent;
-  border-left-width: 3px;
-  border-right-width: 3px;
-  transform: rotate(-24deg);
-}
-.sd-teks { flex: 1; min-width: 0; }
-.sd-judul { display: block; font-size: 0.86rem; font-weight: 650; line-height: 1.35; }
-.sd-sub { display: block; font-size: 0.86rem; font-weight: 700; font-variant-numeric: tabular-nums; }
 
 /* --- Harga --- */
 
@@ -1613,57 +1583,3 @@ button.merek-tautan { cursor: pointer; }
 }
 
 /* ------------------------------------------------------------ B2 keselamatan */
-/* Diberi warna awas, bukan merah gawat. Kartunya muncul di lima layar dan hampir selalu
-   dibaca orang yang TIDAK sedang keracunan; warna gawat yang menyala tiap kali akan
-   berhenti berarti gawat justru pada hari ia dibutuhkan. */
-.kartu.keselamatan {
-  --bj-teks:  var(--teks,       var(--tinta));
-  --bj-lemah: var(--teks-lemah, var(--lemah));
-  --bj-garis: var(--garis);
-  --bj-awas:  var(--awas,       var(--amber));
-  border-left: 4px solid var(--bj-awas);
-}
-
-.kartu.keselamatan h2 { color: var(--bj-teks); }
-
-.kontak-darurat { margin: .6rem 0 .2rem !important; }
-
-/* Nomornya satu-satunya hal yang harus terbaca dalam satu pandang, dan ia tautan tel:
-   supaya di ponsel cukup disentuh sekali — bukan diingat, disalin, lalu diketik ulang
-   oleh orang yang tangannya sedang bergetar. */
-.nomor-darurat {
-  display: inline-block;
-  font-size: clamp(1.9rem, 8vw, 2.6rem);
-  font-weight: 700;
-  line-height: 1.1;
-  letter-spacing: .02em;
-  font-variant-numeric: tabular-nums;
-  color: var(--bj-teks);
-  text-decoration: none;
-  border-bottom: 3px solid var(--bj-awas);
-  padding-bottom: .1rem;
-  min-height: 44px;
-}
-
-.nomor-darurat:focus-visible { outline: 2px solid var(--bj-awas); outline-offset: 3px; }
-
-.kontak-darurat .sub {
-  display: block;
-  margin-top: .35rem;
-  font-size: .82rem;
-  color: var(--bj-lemah);
-}
-
-.tak-diketahui { margin-top: .9rem; }
-.tak-diketahui > summary {
-  cursor: pointer;
-  font-weight: 600;
-  font-size: .88rem;
-  color: var(--bj-awas);
-  padding: .7rem 0;
-  min-height: 44px;
-  box-sizing: border-box;
-}
-.tak-diketahui > summary:focus-visible { outline: 2px solid var(--bj-awas); outline-offset: 2px; }
-.tak-diketahui ul { margin: .3rem 0 .6rem; padding-left: 1.1rem; }
-.tak-diketahui li { margin: .35rem 0; font-size: .92rem; }

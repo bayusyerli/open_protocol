@@ -22,7 +22,6 @@
 
 import { muatMeta, bacaMeta, teks } from './pustaka.js';
 import { pasangBatas } from './batas.js';
-import { pasangKeselamatan } from './keselamatan.js';
 import { pasangTombolTema } from './tema.js';
 import { catatLubang, LUBANG } from './ukur.js';
 
@@ -309,8 +308,6 @@ hitungTakar();
       `<strong>${teks(pct(j.dosisKosong))}%</strong> tidak memuat dosis sama sekali — ` +
       `medannya kosong di registri, jadi untuk penggunaan itu dosis hanya bisa dibaca dari kemasannya.`;
 
-    pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta());
-
     pasangBatas(el.batas, {
       sumber: [
         {
@@ -324,7 +321,7 @@ hitungTakar();
         },
         { dari: 'pestisida', cakupan: 'hanya sebaran bentuk dosis pada label — tidak satu pun angka dosis diambil dari sini' },
       ],
-      takDijawab: ['dosisKosong', 'takaranRumahTangga', 'phi'],
+      takDijawab: ['dosisKosong', 'takaranRumahTangga', 'phi', 'kelasBahayaWho', 'apdProduk'],
     });
   } catch (e) {
     el.sebaranDosis.textContent = 'Sebaran bentuk dosis tidak terambil; hitungan di bawah tetap jalan.';

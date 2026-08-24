@@ -309,51 +309,31 @@ diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan ya
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
 
-### Kartu keselamatan — B2, dan asimetri yang membuatnya mendesak
+### Kontak darurat keracunan — dicabut, dan yang tersisa darinya
 
-Permukaan ini mengantar orang ke pestisida di **lima layar** — jalur 1 dari gejala, jalur 2
-dari nama bahan, takaran saat mencampur, jalur 5 dan 6 untuk sediaan buatan sendiri — dan
-sampai berkas ini tidak satu pun mengatakan apa yang harus dilakukan kalau orangnya
-keracunan. Kolom "keputusan yang diubah" pada baris B2 berbunyi **keselamatan jiwa**, dan
-itu satu-satunya baris dari empat puluh yang taruhannya nyawa.
+Permukaan ini pernah memasang kartu kontak darurat BPOM di lima layar, ditambah strip
+lengket di empat di antaranya. Keduanya **dicabut**: menyalurkan orang ke pertolongan
+medis bukan bentuk jawaban yang dijanjikan permukaan ini, dan nomor yang perlu dipelihara
+sendiri — jam layanan, pengalihan di luar jam, nomor SMS — adalah utang perawatan atas
+janji yang tidak pernah dibuat. Label kemasan tetap tempat petunjuk pertolongan pertama
+berada, dan secara hukum memang wajib memuatnya.
 
-**Yang dibangun hanya separuh, dan separuhnya bukan karena malas.** Diukur dari datanya
-sendiri, lewat cacah baru di `meta.jumlah` supaya ia tidak bisa basi:
+**Yang TIDAK ikut dicabut: pernyataan kekosongan datanya.** Dua di antaranya dulu tinggal
+di dalam kartu itu, dan keduanya kekosongan *data* — bukan anjuran medis — jadi tempatnya
+blok batas jawaban (B1), sama seperti lubang-lubang lain. Angkanya tetap **dihitung** dari
+`meta.jumlah`, tidak diketik, supaya klaimnya tidak basi diam-diam pada hari registri mulai
+memuatnya:
 
-| | ada |
-|---|---|
-| tenggang panen (PHI) | **0 dari 23.058** penggunaan berlabel |
-| kelas bahaya WHO | **1 dari 1.706** bahan aktif |
-| alat pelindung diri | **tidak ada medannya sama sekali** di registri produk terdaftar |
+| lubang | kunci `meta.tidakAda` | ada |
+|---|---|---|
+| tenggang panen (PHI) | `phi` | **0 dari 23.058** penggunaan berlabel |
+| kelas bahaya WHO | `kelasBahayaWho` | **1 dari 1.706** bahan aktif |
+| alat pelindung diri | `apdProduk` | **tidak ada medannya sama sekali** di registri produk terdaftar |
 
-Menyusun "kartu keselamatan" dari registri yang tidak memuat satu pun angka keselamatan
-berarti mengarangnya — dan yang dikarang di halaman keselamatan melukai orang. Jadi yang
-disusun: nomor yang bisa ditelepon sekarang, dan pernyataan tentang apa yang tidak
-diketahuinya.
-
-- **Petunjuk pertolongan pertama tidak ditulis di sini, dan itu keputusan.** Tindakan
-  pertama berbeda menurut bahan — ada yang harus dimuntahkan, ada yang justru tidak boleh —
-  dan halaman yang menulis satu petunjuk untuk semua bahan sedang memberi anjuran medis
-  yang tidak dimilikinya. Dua tempat yang memang memuatnya **disebut alih-alih disalin**:
-  label kemasan, yang secara hukum wajib memuatnya, dan sentra informasi keracunan yang
-  bertugas menjawabnya lewat telepon.
-- **Nomornya tautan `tel:`, dan sebesar angka jawaban di layar lain.** Di ponsel cukup
-  disentuh sekali — bukan diingat, disalin, lalu diketik ulang oleh orang yang tangannya
-  sedang bergetar.
-- **Warna awas, bukan merah gawat.** Kartunya muncul di lima layar dan hampir selalu dibaca
-  orang yang *tidak* sedang keracunan; warna gawat yang menyala tiap kali akan berhenti
-  berarti gawat justru pada hari ia dibutuhkan.
-- **Di jalur 5 dan 6 kartunya ringkas.** Keduanya sudah menampilkan APD per sediaan, dan
-  daftar "yang tidak diketahui" berbicara tentang produk *terdaftar* — menempelkannya di
-  layar sediaan buatan sendiri menjawab pertanyaan yang tidak ditanyakan siapa pun di sana.
-
-**Satu temuan yang membentuk bentuknya.** Kontak diperiksa 24 Agustus 2026 dari laman resmi
-BPOM: HALO BPOM **1500533**, Senin–Jumat 08.00–18.00, di luar jam itu dialihkan ke layanan
-ponsel 24 jam; SMS 081219999533. Tetapi situs Sentra Informasi Keracunan Nasional sendiri,
-`ik.pom.go.id`, **tidak bisa dijangkau** pada tanggal itu — DNS-nya tidak terselesaikan,
-sedangkan `pom.go.id` dan `ulpk.pom.go.id` menjawab. Katalog bahan berisiko keracunan yang
-ada di sana karena itu **tidak bisa ditautkan per bahan aktif**, dan yang ditawarkan
-nomornya, bukan tautannya.
+Ketiganya dideklarasikan pada jalur 1, jalur 2, dan takaran — tiga layar yang dulu memuat
+blok `<details>` itu — dan pada halaman produk pestisida terbitan. Jalur 5 dan 6 tidak:
+keduanya sediaan buatan sendiri, sudah menampilkan APD per resep, dan lubang-lubang ini
+berbicara tentang produk *terdaftar*.
 
 ### Kosakata sebab kegagalan siklus — 15 sebab, 3 di antaranya dijamin
 
@@ -1354,6 +1334,72 @@ tidak bisa dicapai darinya sama sekali**.
   persis yang ditolak jalur 1 — *"mesin tidak menebak"*. Masuk lewat gambar dan suara
   adalah kapabilitas tersendiri yang **ditunda**, dan layar mengatakannya di lembar
   "Tentang data" alih-alih membiarkan orang mencari tombol kamera yang tidak ada.
+
+### Kalimat diterima sebagai kalimat — A1, lanjutannya
+
+Kotak itu menerima kalimat sejak hari pertama; yang tidak pernah ada cara membacanya.
+`rapikan()` membuang seluruh spasi lalu mencari untaian hasilnya di dalam **nama** entri —
+tepat untuk satu kata, dan **selalu nol untuk satu kalimat**. Ketiga contoh yang diminta
+pemilik pada 24 Agustus 2026 ketiganya dijawab nol, tanpa satu pun galat:
+
+| Yang diketik | Yang dicari kepala pencarian | Hasil |
+|---|---|---|
+| `Phonska produk perusahaan apa?` | `phonskaprodukperusahaanapa` | 0 |
+| `Apa saja varietas alpukat untuk 500 mdpl?` | `apasajavarietasalpukatuntuk500mdpl` | 0 |
+| `Kapan waktu yang cocok untuk menanam cabai?` | `kapanwaktuyangcocokuntukmenanamcabai` | 0 |
+
+- **`app/tanya.js` menggolongkan kata, bukan membuangnya.** Tujuh golongan: istilah yang
+  dicari, jenis yang menyempitkan, atribut yang ditanyakan, **nilai yang ditolak dijawab**,
+  waktu, tindakan, dan ukuran. Kueri satu kata melewati jalan yang sama persis seperti
+  dulu — satu istilah, satu ember, urutan yang sama.
+- **Golongan `nilai` yang paling menentukan, dan ia bukan urusan tata bahasa.** "cocok",
+  "terbaik", "paling ampuh", "aman" adalah permintaan **peringkat**, dan registri mencatat
+  izin edar — bukan mutu, bukan kemanjuran, bukan kecocokan. Kata itu dikeluarkan dari
+  pencarian **lalu disebutkan di layar**: daftar yang muncul sesudah kata "terbaik" akan
+  dibaca sebagai peringkat, dan itu kekeliruan yang jauh lebih mahal daripada nol hasil.
+- **Tiap kata mengambil embernya sendiri.** PHONSKA tinggal di ember `ph` dan tidak akan
+  pernah terambil dari `pe`, jadi "phonska petrokimia" tidak bisa dijawab dengan satu
+  pengambilan. Tiga istilah terpanjang saja yang diambil — kalimat yang lebih panjang tidak
+  menyempit lebih jauh, dan tiap ember tambahan satu perjalanan lagi di sinyal buruk.
+- **DAN kalau bisa, ATAU kalau tidak.** Kalau ada entri yang mencocoki seluruh kata, hanya
+  itu yang tampil. Kalau tidak ada satu pun, saringannya dilonggarkan jadi "cocok salah
+  satu" dan hasilnya diurutkan menurut berapa kata yang cocok. Untaian penuh tetap menang
+  di urutan teratas.
+- **Saringan jenis LUNAK, dan penjatuhannya dilaporkan.** "perusahaan" pada *Phonska produk
+  perusahaan apa* menyebut jenis `principal`, tetapi tidak ada badan bernama Phonska.
+  Menyaring dengan keras akan menjawab nol untuk pertanyaan yang jawabannya justru lengkap.
+- **Satu kalimat fakta terdaftar, bukan bentuk jawaban kelima.** "Terdaftar atas nama PT
+  Petrokimia Gresik" disusun dari medan yang **sudah** tercetak di kartu hasilnya. Aturannya
+  dua tingkat, dan tingkat kedua yang penting: nama dagang tidak eksklusif di registri —
+  17 pendaftaran berawalan "Phonska" dipegang **empat badan**. Yang menjawab entri yang
+  bernama *persis* itu; sisanya tetap dihitung dan tetap disebutkan.
+- **234 pintu komoditas.** `/tanaman/alpukat/` sudah menyebut 145 varietas sejak halaman
+  pertama diterbitkan; yang tidak pernah ada cuma jalan dari kotak cari ke sana. Satu baris
+  per komoditas, bukan alias per varietas — 145 kartu varietas yang tidak bisa dibedakan
+  satu sama lain akan terbaca sebagai peringkat, dan registri tidak memuat satu pun sifat
+  yang membuat salah satunya lebih pantas dipilih.
+- **Kata pembeda nama OPT jadi alias.** 113 dari 198 nama OPT berproduk diawali kata
+  golongan — "Penyakit" 53 kali, "Hama" 21 kali — jadi embernya ditentukan kata yang tidak
+  membedakan apa pun. "trips" tidak menemukan "Hama Trips"; sekarang menemukannya.
+- **Ambang agroklimat terbit.** `agroklimat.json` — kelima skema, ambangnya utuh, beserta
+  terbitan asalnya. "500 mdpl" dijawab **Dataran menengah** (400–700 m) *dan* **Zona panas**
+  Junghuhn (0–700 m); keduanya benar untuk angka yang sama, dan memilih salah satunya
+  diam-diam menyembunyikan bahwa istilah harian itu punya dua arti yang sah. Jawabannya
+  hampir seluruhnya berupa **batas**: nol dari 11.227 varietas membawa sifat agronomi, jadi
+  kelas itu **tidak bisa** dipakai menyaring daftar varietas.
+- **Perutean niat mencocokkan kumpulan kata, bukan untaian berurutan.** "kapan tanam" kini
+  cocok pada "Kapan waktu yang cocok untuk menanam cabai" — kedua katanya ada, terpisah
+  lima kata dan berimbuhan. Sebelumnya kalimat itu menyebut "pintunya di bawah" sementara
+  tidak ada satu pun pintu yang digambar.
+- **Nol punya dua bentuk sekarang.** "Tidak ada yang cocok dengan X" untuk nama yang dicari
+  dan tidak ada padanannya; "tidak ada nama yang bisa dicari di pertanyaan itu" untuk
+  pertanyaan yang memang tidak menyebut satu pun nama. Menjawab keduanya dengan kalimat
+  yang sama membuat yang kedua terbaca sebagai "produknya tidak terdaftar", padahal tidak
+  ada produk yang ditanyakan.
+
+Diuji `spec/tools/uji-tanya.mjs` — 100 uji, dijalankan `npm run uji-terbit` **sesudah**
+indeks dibangun karena ia menjalankan `cari()` yang sungguhan di atas indeks yang
+benar-benar terbit, dengan `fetch` disulih pembaca berkas.
 
 ### Kamus nama lokal — A3
 

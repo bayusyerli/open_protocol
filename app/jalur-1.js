@@ -24,7 +24,6 @@ import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali, pesanGagal
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
-import { pasangKeselamatan, pasangStripDarurat } from './keselamatan.js';
 import { blokLapor, pasangLapor } from './lapor.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -72,6 +71,21 @@ function tampilkanGejala(ya) {
   if (ya) void document.documentElement.scrollHeight;
 }
 
+/* JUDUL DULU, BARU KALIMAT PEMBEDANYA — dan judulnya tetap GEJALA.
+ *
+ * Kartunya dulu memuat seluruh teks gejala sebagai nama: tiga kalimat tebal, empat sampai
+ * enam baris di ponsel, dikali sepuluh kartu. Memilih dari daftar berarti membandingkan,
+ * dan yang dibandingkan di sana sepuluh paragraf — persis bentuk yang paling sulit dipindai
+ * orang yang sedang berdiri di depan tanamannya.
+ *
+ * Judulnya BUKAN nama hamanya, dan itu keputusan rancangan pertama jalur ini: yang panik
+ * tahu daunnya mengeriting ke atas, ia tidak tahu kata "trips". Nama hama sebagai judul
+ * akan lebih pendek dan lebih rapi — dan akan membuat orang memilih menurut nama yang tidak
+ * dikenalnya, bukan menurut apa yang dilihatnya. Keduanya terkurasi di `pest.json`
+ * (`symptom_title`, `symptom_brief`), tidak dipotong dari teks penuhnya di sini.
+ *
+ * Teks gejala yang UTUH tidak hilang: ia tetap dirender layar rincian sesudah kartunya
+ * dibuka, beserta blok "pastikan dulu". Yang berubah cuma apa yang dipakai MEMILIH. */
 function gambarGejala() {
   // Diurutkan menurut banyaknya produk terdaftar, bukan abjad: yang paling sering jadi
   // masalah paling sering dicari. Yang nol produk tetap ikut — justru layar itu yang
@@ -83,7 +97,8 @@ function gambarGejala() {
       ${urut.map((k) => `
         <li>
           <button type="button" data-opt="${teks(k.id)}">
-            <span class="nama">${teks(k.gejala)}</span>
+            <span class="nama">${teks(k.judul ?? k.gejala)}</span>
+            ${k.judul && k.ringkas ? `<span class="gejala-ringkas">${teks(k.ringkas)}</span>` : ''}
             <span class="sub">${k.di.length
               ? `${angkaId(k.di.reduce((a, b) => a + b.produk, 0))} produk terdaftar di ${k.di.length} komoditas`
               : 'tidak ada produk terdaftar sama sekali'}</span>
@@ -684,15 +699,13 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // aktifnya registri resmi. Meratakan keduanya jadi satu kalimat "sumber: Kementan"
     // meminjamkan wibawa registri kepada kurasi yang belum punya.
     await muatMeta();
-    pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta());
-    pasangStripDarurat(document.getElementById('stripDarurat'));
     pasangBatas(el.batas, {
       sumber: [
         { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT cabai` },
         { dari: 'pestisida', cakupan: 'bahan aktif, kadar, dan merek yang terdaftar untuk OPT itu' },
         { dari: 'namaLokal', cakupan: `${kamusLokal.filter((x) => x.ke.length).length} nama daerah dari ${kamusLokal.length} yang tercatat, sebagai petunjuk tambahan — bukan sebagai penentu` },
       ],
-      takDijawab: ['gejalaOpt', 'wilayahNamaLokal', 'phi', 'namaDagang'],
+      takDijawab: ['gejalaOpt', 'wilayahNamaLokal', 'phi', 'kelasBahayaWho', 'apdProduk', 'namaDagang'],
       sanggah: () => terbukaKini,
     });
 

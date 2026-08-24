@@ -152,6 +152,8 @@ const JUDUL_LUBANG = {
   gejalaOpt: 'Gejala OPT di luar sepuluh yang terkurasi',
   gejalaOptRegistri: 'Teks gejala pada OPT registri',
   phi: 'Tenggang panen (PHI)',
+  kelasBahayaWho: 'Kelas bahaya WHO bahan aktif',
+  apdProduk: 'Alat pelindung diri produk terdaftar',
   harga: 'Harga',
   bahanHara: 'Unsur hara sebagai bahan yang bisa dicari',
   beratJenis: 'Berat jenis pupuk cair',

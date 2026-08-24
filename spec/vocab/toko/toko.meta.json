@@ -1,0 +1,47 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "toko",
+    "label": {
+      "id": "Toko, kios, dan depo penjual sarana produksi pertanian"
+    },
+    "scope": {
+      "id": "301 toko yang lisensinya memungkinkan kita menerbitkannya sendiri: 234 dari OpenStreetMap (ODbL, bernama dan berkoordinat) dan 67 dari data terbuka Kabupaten Batang (CC-BY, beralamat jalan tanpa koordinat). Semuanya masih berstatus belum-diklaim; lajur ini dirancang tumbuh lewat setoran pemilik, bukan lewat panen ulang. 2.181 baris TTI Kementan sengaja TIDAK ditarik ke sini — programnya menjual pangan ke konsumen alih-alih sarana produksi, dan 717 di antaranya bernama perorangan, bukan usaha. Google Places tidak pernah jadi asal sebuah rekaman; place ID hanya boleh menempel sebagai pemetaan luar."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-24T00:00:00Z",
+      "review_due": "2027-02-24"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "OpenStreetMap — sapuan toko sarana pertanian se-Jawa",
+          "publisher": "Kontributor OpenStreetMap",
+          "url": "https://www.openstreetmap.org/copyright",
+          "year": 2026,
+          "locator": "Overpass API, disaring toko_data/saring.jq, disusun toko_data/susun-fondasi.mjs. ODbL 1.0 — atribusi disimpan per rekaman di medan attribution.",
+          "retrieved": "2026-08-22"
+        },
+        {
+          "title": "Data toko sarana pertanian Kabupaten Batang",
+          "publisher": "Pemerintah Kabupaten Batang",
+          "url": "https://data.batangkab.go.id",
+          "year": 2026,
+          "locator": "CC-BY. Masuk lewat toko_data/benih-alamat.ndjson.",
+          "retrieved": "2026-08-22"
+        }
+      ]
+    },
+    "storage": "ndjson",
+    "count": 301,
+    "id_blocks": [
+      {
+        "from": 1000,
+        "to": 19999
+      }
+    ]
+  }
+}

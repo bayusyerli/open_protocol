@@ -97,6 +97,14 @@
       ],
       "additionalProperties": false
     },
+    "symptom_title": {
+      "$ref": "common.schema.json#/$defs/LangText",
+      "description": "Penanda paling menonjol dari `symptoms`, tiga sampai tujuh kata, untuk dipakai sebagai JUDUL kartu pada daftar pilihan. Tetap gejala, BUKAN nama hamanya — aturan yang sama seperti `symptoms`, dan justru di sini paling mudah dilanggar karena nama hama selalu lebih pendek. Judul yang tidak bisa dibedakan dari judul OPT lain adalah cacat: yang memilih dari daftar memilih dengan membandingkan judulnya."
+    },
+    "symptom_brief": {
+      "$ref": "common.schema.json#/$defs/LangText",
+      "description": "Satu kalimat pendukung di bawah `symptom_title`, memuat ciri yang MEMBEDAKAN — bukan ringkasan `symptoms` yang mengulang judulnya. Kartu daftar memakai ini; teks `symptoms` yang utuh tetap dipakai layar rincian dan halaman terbitan."
+    },
     "symptoms": {
       "$ref": "common.schema.json#/$defs/LangText",
       "description": "Apa yang TERLIHAT di kebun, dalam kata-kata orang yang melihatnya — bukan nama hamanya. Jalur insiden masuk lewat sini: yang panik tahu daunnya mengeriting ke atas, ia tidak tahu kata 'trips'. Dipisahkan dari `definition`, yang memuat catatan epidemiologi dan bukan gejala."

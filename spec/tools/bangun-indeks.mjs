@@ -32,6 +32,8 @@
 //   larangan.json          id zat -> catatan larangan beserta lingkupnya
 //   varian.json            satu tanaman dalam beberapa fase atau sistem budidaya —
 //                          TBM lawan TM, tapin lawan tabela; sengaja tidak disatukan
+//   agroklimat.json        ambang yang mengubah sebuah angka jadi kelas bernama —
+//                          AMBANGNYA, bukan iklimnya; tidak ada satu pun deret hujan di sini
 //
 // KESETARAAN DIHITUNG DARI id, TIDAK PERNAH DARI LABEL
 // Salinan label pada composition[].substance.label adalah snapshot sesaat yang
@@ -1679,6 +1681,12 @@ const gejala = optTerkurasi
       ilmiah: k.scientific_name ?? null,
       jenis: k.pest_kind ?? null,
       gejala: k.symptoms?.id ?? null,
+      // Judul dan kalimat pendukungnya TERKURASI, bukan dipotong dari teks gejala di
+      // peramban. Memotong kalimat pertama sebagai judul akan menghasilkan judul yang
+      // panjangnya ditentukan letak titik — dan pada "1–2 mm" titiknya bahkan bukan
+      // akhir kalimat. Keduanya boleh kosong; penyaji jatuh ke teks penuhnya.
+      judul: k.symptom_title?.id ?? null,
+      ringkas: k.symptom_brief?.id ?? null,
       keterangan: k.definition?.id ?? null,
       // Ciri pembanding ikut, dan `membantah` menunjuk OPT yang paling mudah tertukar
       // dengannya. Mesin tidak menebak — ini yang membuat orang bisa memastikan
@@ -1717,7 +1725,7 @@ const gejalaCari = gejala
     l: g.ilmiah ?? null,
     // Satu medan teks, bukan tiga: penyaji cukup mencocokkan sekali, dan bobot antar
     // medan yang tidak pernah diputuskan siapa pun tidak perlu dikarang di sini.
-    t: [g.nama, g.ilmiah, g.gejala, g.keterangan].filter(Boolean).join(' '),
+    t: [g.nama, g.ilmiah, g.judul, g.ringkas, g.gejala, g.keterangan].filter(Boolean).join(' '),
     produk: g.di.reduce((a, b) => a + b.produk, 0),
     komoditas: g.di.length,
   }));
@@ -2023,6 +2031,27 @@ const bppWilayah = [...perBpp.values()]
       kec: w.isi.reduce((a, x) => a + x.k.length, 0),
     };
   });
+
+/* Kecamatan sebagai PINTU, bukan sebagai isi rincian.
+ *
+ * Judul layarnya berbunyi "Balai penyuluhan di kecamatanmu", tetapi satu-satunya kotak
+ * yang ada menerima nama KABUPATEN — dan orang yang mencari balai tahu nama kecamatannya,
+ * belum tentu tahu kabupatennya tertulis apa di basis data SIMLUHTAN. Nama kecamatan
+ * sendiri sudah ada, tetapi terkubur di dalam 504 pecahan `bpp/<wilayah>.json`, jadi ia
+ * hanya bisa dibaca sesudah kabupatennya betul-betul ditebak lebih dulu.
+ *
+ * DIKELOMPOKKAN PER WILAYAH, bukan didaftar sebagai pasangan. Larik
+ * `[{n,k},…]` untuk 6.824 kecamatan berukuran 323 KB; dikelompokkan jadi 98 KB — isi yang
+ * sama, kunci wilayahnya tidak diulang 6.824 kali. Selisih 225 KB itu bukan angka kecil
+ * pada permukaan yang seluruh cangkangnya 230 KB.
+ *
+ * Berkasnya TIDAK ikut dimuat saat halaman dibuka; layar mengambilnya saat kotak
+ * kecamatan pertama kali disentuh, dan menyebutkan ukurannya sebelum itu terjadi. */
+const bppKecamatan = {};
+for (const [kunci, isi] of Object.entries(berkasBpp)) {
+  const nama = [...new Set(isi.flatMap((b) => b.k))].sort();
+  if (nama.length) bppKecamatan[kunci] = nama;
+}
 
 // Kemampuan dipadatkan jadi huruf. Jawa Barat memuat 175 laboratorium, dan larik kata
 // ("water", "plant_tissue") membuat pecahannya 47,6 KB — di bawah anggaran 48 KB, tetapi
@@ -2579,6 +2608,15 @@ const meta = {
       'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 10 OPT cabai terkurasi di pest.json, 5 di antaranya bertekst gejala (lihat gejala.json). Di luar sepuluh itu jalur 1 tidak punya pintu masuk.',
     phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. Jalur 3 mengandalkan satu masukan pengguna.',
+    // Dua lubang di bawah dulu tinggal di dalam kartu keselamatan aplikasi. Kartunya
+    // dicabut; pernyataan kekosongannya tidak, karena keduanya kekosongan DATA — bukan
+    // anjuran medis — dan blok batas jawaban memang tempatnya. Angkanya tetap DIHITUNG,
+    // bukan diketik: klaim "nyaris tidak ada" yang basi diam-diam pada hari registri
+    // mulai memuatnya lebih buruk daripada tidak ada klaim sama sekali.
+    kelasBahayaWho:
+      `Hanya ${keselamatan.bahanBerkelasBahaya.toLocaleString('id-ID')} dari ${keselamatan.bahanAktif.toLocaleString('id-ID')} bahan aktif memuat kelas bahaya WHO. Akibatnya seberapa beracun satu bahan dibanding bahan lain TIDAK bisa dibandingkan di sini, dan urutan mana pun yang disusun layar ini bukan urutan bahaya. Kelasnya ada di label kemasan.`,
+    apdProduk:
+      'Registri produk terdaftar tidak punya medan alat pelindung diri sama sekali — bukan kosong pada sebagian produk, melainkan tidak ada medannya. Pelindung yang diwajibkan sebuah produk hanya ada di label kemasannya, yang secara hukum memuatnya. Sediaan buatan sendiri di jalur 5 dan 6 punya medan itu di kosakatanya sendiri, dan di sana memang ditampilkan.',
     bahanHara:
       'Indeks bahan hanya memuat bahan aktif pestisida. Unsur hara pupuk tidak diindeks sebagai bahan yang bisa dicari — Nitrogen sendiri ada di 2.582 pupuk, dan daftar sepanjang itu tidak menjawab apa pun. Pertanyaan haranya dijawab jalur 3.',
     beratJenis: 'Tidak ada, sehingga pupuk cair tidak sebanding dengan yang padat.',
@@ -2664,6 +2702,7 @@ simpan('sebab-gagal.json', sebabGagal);
 simpan('protokol.json', protokolIndeks);
 for (const [k, isi] of Object.entries(berkasProtokol).sort()) simpan(`protokol/${k}.json`, isi);
 simpan('bpp-wilayah.json', bppWilayah);
+simpan('bpp-kecamatan.json', bppKecamatan);
 for (const [k, isi] of Object.entries(berkasBpp).sort()) simpan(`bpp/${k}.json`, isi);
 simpan('lab-kemampuan.json', labKepala);
 for (const [k, isi] of Object.entries(berkasLab).sort()) simpan(`lab/${k}.json`, isi);
@@ -2733,6 +2772,7 @@ console.log(`  sebab-gagal       : ${sebabGagal.length} sebab siklus berakhir ta
 console.log(`  alasan-simpangan  : ${alasanSimpangan.length} alasan, ${new Set(alasanSimpangan.map((a) => a.sinyal)).size} jenis sinyal`);
 console.log(`  protokol/         : ${protokolIndeks.length} protokol, ${protokolIndeks.reduce((a, p) => a + p.langkah, 0)} langkah — ${protokolIndeks.reduce((a, p) => a + p.bertanggal, 0)} bisa ditanggalkan, sisanya menunggu fase atau ambang`);
 console.log(`  bpp/              : ${bppSemua.length} balai di ${bppWilayah.length} kabupaten/kota, ${bppWilayah.reduce((a, w) => a + w.kec, 0)} kecamatan tersebut di serves (${bppSemua.filter((b) => !(b.serves ?? []).length).length} balai kecamatannya kosong di sumbernya) — tanpa alamat, dan itu juga batas sumbernya`);
+console.log(`  bpp-kecamatan     : ${Object.values(bppKecamatan).reduce((a, x) => a + x.length, 0)} nama kecamatan jadi pintu cari, dikelompokkan di ${Object.keys(bppKecamatan).length} wilayah — diambil saat kotaknya disentuh, bukan saat halaman dibuka`);
 console.log(`  lab/              : ${labSemua.length} laboratorium di ${labWilayah.length} provinsi — ${cacahKemampuan.r ?? 0} di antaranya bisa mengukur residu pestisida`);
 console.log(`  toko/             : ${tokoTitikIndeks.length} bertitik (OSM), ${tokoAlamat.length} berwilayah di ${tokoWilayah.length} wilayah — ${tokoAlamat.filter((r) => lebihRinci(r.alamat)).length} lebih rinci dari kabupaten`);
 console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith('kandungan/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasKandungan).length} ember — ${kandungan.size} sidik, ${[...kandungan.values()].reduce((a, d) => a + d.length, 0)} produk${produkTanpaSidik ? `, ${produkTanpaSidik} berkomposisi tak bersidik` : ''}`);

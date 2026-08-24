@@ -60,12 +60,6 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, readdirSync
 import { gzipSync } from 'node:zlib';
 import { hitungHash } from '../kanonik.mjs';
 import { TANGKI, BATAS_TANGKI, angkaId, perTangki as perTangkiDasar } from './dosis.mjs';
-// Nomornya DIIMPOR, bukan diketik ulang. Kartu darurat yang menyimpang antara app dan
-// halaman terbitan adalah mode gagal yang mahal: yang satu benar, yang satu lagi mengirim
-// orang ke nomor yang sudah tidak menjawab, dan tidak ada yang tahu yang mana.
-// app/keselamatan.js aman di-import di Node — bagian atasnya data, DOM baru disentuh
-// di dalam pasangKeselamatan() yang tidak dipanggil di sini.
-import { KONTAK } from '../../app/keselamatan.js';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -299,44 +293,6 @@ const LAPOR_DOSIS = { ambang: () => { dosisDitahanAmbang++; } };
 const perTangki = (dosis) => perTangkiDasar(dosis, LAPOR_DOSIS);
 
 // ---------------------------------------------------------------------------
-// B2 keselamatan pada halaman terbitan
-// ---------------------------------------------------------------------------
-/* ASIMETRI YANG SAMA SEPERTI DI app/, TAPI LEBIH TAJAM DI SINI. Permukaan app memasang
- * kartu ini di lima layar; halaman terbitan tidak memasangnya sama sekali — padahal
- * halaman produk pestisidalah yang dimasuki orang dari mesin pencari, dan justru di sini
- * tabel takarannya dicetak. Orang yang mendarat dari Google membaca berapa mililiter yang
- * harus dituang tanpa pernah melihat nomor yang ditelepon kalau ada yang tertelan.
- *
- * Bentuknya sengaja ringkas — yang panjang di halaman yang muncul 7.724 kali berhenti
- * dibaca, dan yang berhenti dibaca sama saja dengan yang tidak ada. Daftar "yang tidak
- * diketahui" tidak diulang di sini karena blok batas jawaban di kaki halaman sudah
- * memuatnya, termasuk PHI yang nol dari 23.058 penggunaan berlabel.
- *
- * Petunjuk pertolongan pertama tetap TIDAK ditulis, dengan alasan yang sama seperti di
- * app/keselamatan.js: tindakan pertama berbeda menurut bahan — ada yang harus dimuntahkan,
- * ada yang justru tidak boleh — dan satu petunjuk untuk semua bahan adalah anjuran medis
- * yang halaman ini tidak punya dasarnya. */
-const kartuKeselamatan = () => `
-  <div class="kartu keselamatan">
-    <h2>Keracunan pestisida? Telepon sekarang, jangan tunggu gejalanya berat.</h2>
-    <p class="kontak-darurat">
-      <a class="nomor-darurat" href="tel:${teks(KONTAK.telepon)}">${teks(KONTAK.telepon)}</a>
-      <span class="sub">${teks(KONTAK.nama)} · ${teks(KONTAK.penyelenggara)}</span>
-      <span class="sub">${teks(KONTAK.jam)}</span>
-    </p>
-    <p class="catatan">
-      Bisa juga SMS ke <a href="sms:${teks(KONTAK.sms)}">${teks(KONTAK.sms)}</a>. Nomor
-      diperiksa ${teks(KONTAK.diperiksa)} dari laman resmi BPOM.
-    </p>
-    <p><strong>Bawa kemasannya, atau fotonya.</strong> Yang menjawab telepon perlu tahu
-    bahan aktifnya, dan tindakan pertama berbeda menurut bahan — ada yang harus
-    dimuntahkan, ada yang justru tidak boleh. <strong>Label di kemasan lebih lengkap
-    daripada halaman ini</strong>: petunjuk pertolongan pertama, tenggang panen, dan alat
-    pelindung yang diwajibkan ada di sana secara hukum, dan tidak satu pun masuk registri
-    yang disalin halaman ini.</p>
-  </div>`;
-
-// ---------------------------------------------------------------------------
 // Blok batas jawaban (B1) — bentuk yang sama seperti app/batas.js, dirakit di sini
 // karena batas.js hidup di peramban. Aturannya juga sama: sumber tanpa alasan ditolak,
 // dan layar yang tidak menyebut satu pun yang tidak diketahuinya gagal dengan berisik.
@@ -345,6 +301,8 @@ const JUDUL_LUBANG = {
   gejalaOpt: 'Gejala OPT di luar sepuluh yang terkurasi',
   gejalaOptRegistri: 'Deskripsi gejala OPT registri',
   phi: 'Tenggang panen (PHI)',
+  kelasBahayaWho: 'Kelas bahaya WHO bahan aktif',
+  apdProduk: 'Alat pelindung diri produk terdaftar',
   namaDagang: 'Nama dagang di kemasan',
   dosisKosong: 'Dosis yang tidak tercatat di registri',
   takaranRumahTangga: 'Ukuran tutup botol, sendok, dan gelas',
@@ -1472,7 +1430,6 @@ for (const kel of kelompokSetara) {
 // ---------------------------------------------------------------------------
 const BATAS_GUNA = 120;
 let produkNoindex = 0; let produkBergambar = 0; let gunaDitahan = 0; let gunaTanpaPintu = 0;
-let produkKeselamatan = 0;
 for (const [id, pr] of [...produkPenuh.entries()].sort()) {
   const jalan = `produk/${slugProduk.get(id)}/`;
   const guna = [...(pr.guna ?? [])].sort((a, b) =>
@@ -1610,7 +1567,6 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
     <h2>Tidak ada penggunaan berlabel yang tercatat</h2>
     <p class="catatan">Registri memuat pendaftarannya, tetapi tidak memuat satu pun tanaman dan OPT yang disasarnya. Halaman ini tidak menebak sasarannya.</p>
   </div>` : '')}
-  ${pr.jenis === 'pestisida' ? (produkKeselamatan++, kartuKeselamatan()) : ''}
   ${htmlTanya}
   <details class="batas">
     <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>
@@ -1655,7 +1611,7 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
       sumber: [{ dari: pr.jenis === 'pupuk' ? 'pupuk' : 'pestisida', cakupan: `satu pendaftaran: komposisi, pemegang, masa berlaku${guna.length ? ', dan penggunaan berlabelnya' : ''}` }],
       takDijawab: pr.jenis === 'pupuk'
         ? ['isiKarung', 'beratJenis', ...(gambar.length ? [] : ['gambarKemasan'])]
-        : ['phi', 'namaDagang', 'dosisKosong', ...(gambar.length ? [] : ['gambarKemasan'])],
+        : ['phi', 'kelasBahayaWho', 'apdProduk', 'namaDagang', 'dosisKosong', ...(gambar.length ? [] : ['gambarKemasan'])],
     }, jalan),
   }));
   if (!tipis) urlTemplate.produk.push([jalan, pr.jenis === 'pupuk' ? TARIKAN.pupuk : TARIKAN.pestisida]);
@@ -3311,7 +3267,6 @@ console.log(`Berkas seluruhnya    : ${berkas.size} — ${(ukuran / 1024 / 1024).
 console.log(`  ukuran halaman     : mentah p50 ${kb(Buffer.byteLength(halamanHtml[Math.floor(halamanHtml.length / 2)][1]))} · ter-gzip p50 ${kb(kuartil(0.5))}, p90 ${kb(kuartil(0.9))}, maks ${kb(gz[gz.length - 1])}`);
 console.log(`  lewat anggaran     : ${lewat.length} mentah, ${lewatGz} ter-gzip, dari ${halamanHtml.length} halaman di atas ${kb(ANGGARAN)}`);
 console.log(`  dosis dikonversi   : ${n(dosisTerkonversi)} sel dosis per liter dikalikan jadi per tangki ${TANGKI} L${dosisDitahanAmbang ? `; ${n(dosisDitahanAmbang)} tidak dikalikan karena hasilnya melewati ${n(BATAS_TANGKI)} per tangki — dosis terdaftarnya tetap tampil apa adanya` : ''}`);
-console.log(`  kartu keselamatan  : ${n(produkKeselamatan)} halaman pestisida memuat nomor darurat ${KONTAK.telepon}`);
 console.log(`  tautan ke badan    : ${n(tautBadanStatis)} menunjuk halaman /badan/ sendiri${tautBadanDinamis ? `; ${n(tautBadanDinamis)} jatuh ke layar aplikasi karena badannya tak berhalaman` : ''}`);
 console.log(`  kandungan dilewati : ${n(kandunganTunggal)} sidik hanya dipakai satu produk — halamannya akan menduplikasi halaman produknya`);
 console.log(`  produk noindex     : ${n(produkNoindex)} halaman terbit tapi tidak diindeks — gerbang tipis docs/19 §6`);

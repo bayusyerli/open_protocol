@@ -392,7 +392,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | B1 | **Komponen "batas jawaban"** — tiap layar menyebut tingkat bukti, tanggal, sumber, dan apa yang tidak diketahuinya | semua | apakah jawabannya dipercaya | **selesai** 23 Agustus 2026 — `app/batas.js`, dipakai ketujuh layar | **selesai** |
-| B2 | Kartu keselamatan aplikasi — APD, cara aman, gejala keracunan, kontak darurat | petani, buruh tani | keselamatan jiwa | **bagian non-PHI selesai** 24 Agustus 2026 — `app/keselamatan.js` di lima layar yang mengantar ke pestisida; kontak darurat HALO BPOM 1500533 sebagai tautan `tel:`, dan tiga kekosongan dinyatakan dari cacah indeks: PHI **0 dari 23.058** penggunaan berlabel, kelas bahaya WHO **1 dari 1.706** bahan, APD **tidak ada medannya** di registri produk terdaftar. Petunjuk pertolongan pertama sengaja **tidak ditulis**: tindakan pertama berbeda menurut bahan | non-PHI **selesai**; PHI & APD per produk **TUNDA** — registrinya tidak memuatnya |
+| B2 | Kartu keselamatan aplikasi — APD, cara aman, gejala keracunan, kontak darurat | petani, buruh tani | keselamatan jiwa | **DICABUT** 25 Agustus 2026 — `app/keselamatan.js` beserta strip daruratnya dihapus dari lima layar aplikasi dan dari halaman produk pestisida terbitan. Menyalurkan orang ke pertolongan medis di luar bentuk jawaban yang dijanjikan permukaan ini, dan nomor berjam-layanan menuntut perawatan atas janji yang tidak dibuat. Yang **tetap** ketiga kekosongan datanya, pindah ke blok batas jawaban (B1) sebagai lubang bernama dan tetap dihitung dari indeks: `phi` **0 dari 23.058** penggunaan berlabel, `kelasBahayaWho` **1 dari 1.706** bahan, `apdProduk` **tidak ada medannya** di registri produk terdaftar | **di luar cakupan** — kekosongan datanya diserap B1 |
 | B3 | **Sanggahan terbuka** — siapa pun boleh menantang satu fakta; jejaknya publik dan bernama | agronom, penyuluh, principal | mutu korpus | **selesai** 23 Agustus 2026 — `app/sanggah.js` dipakai enam layar; tiga rute karena hanya **28 dari 31.837** rekaman diterbitkan proyek ini sendiri, jadi yang ditanya lebih dulu *apa yang salah*, bukan apa yang benar | **selesai** |
 | B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | **selesai** 23 Agustus 2026 — enam lubang tercacah di `app/ukur.js`, terbaca di `ukur.html` | **selesai** |
 | B5 | Ringkasan berbasis model bahasa di atas registri | semua | kecepatan paham | **sebagian 23 Agustus 2026** — komentar per seri harga, ditulis saat build ke `spec/vocab/harga/komentar.json` beserta angka yang dipakai menulisnya | **TUNDA** untuk registri; **BANGUN** untuk harga, dengan bentuk yang menjawab keberatannya |
@@ -595,9 +595,10 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 >    jumlah tangkinya sudah dibulatkan saat ditampilkan. Pada permukaan yang menjanjikan
 >    hitungannya bisa dibantah, baris yang tidak bisa direproduksi membatalkan janjinya.
 >
-> **Keselamatan sengaja tidak disentuh:** APD, cara mencampur, gejala keracunan, dan nomor
-> darurat itu **B2**, dan menyisipkan sebagiannya di sini akan membuat layar terbaca seolah
-> sudah lengkap.
+> **Keselamatan sengaja tidak disentuh:** APD, cara mencampur, dan gejala keracunan tidak
+> ada di layar ini, dan menyisipkan sebagiannya akan membuat layar terbaca seolah sudah
+> lengkap. Yang tercatat di blok batas jawaban hanya *kekosongan datanya* — `phi`,
+> `kelasBahayaWho`, dan `apdProduk` — bukan anjuran penggantinya.
 
 ### E · RENCANA & CATAT — eksekusi
 

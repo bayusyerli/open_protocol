@@ -972,6 +972,48 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // Batas lisensi lajur toko, ditegakkan mesin.
+    //
+    // Kenapa ini perlu jadi uji dan bukan cukup jadi komentar: seluruh lajur toko berdiri
+    // di atas satu keputusan yang mudah luntur — nama, foto, dan alamat toko TIDAK boleh
+    // datang dari Google Places, sementara place ID justru boleh disimpan selamanya.
+    // Bedanya halus, dan sekali seseorang menempelkan nama dari Places ke rekaman yang
+    // sudah punya place_id, tidak ada yang akan menyadarinya dari rupa berkasnya. Batas
+    // itu ada di Service Specific Terms §A.3 (ID boleh permanen), §14.3 (lintang-bujur
+    // 30 hari), dan §3.2.3(a) (nama serta alamat usaha disebut sebagai contoh larangan).
+    if (typeof doc.id === 'string' && doc.id.startsWith('op:tko:')) {
+      const asalBersih = ['setoran-pemilik', 'survei'];
+
+      if (doc.license === 'ODbL-1.0' && !doc.attribution) {
+        fail(file, 'L50-toko-lisensi', `${doc.id} berlisensi ODbL tanpa \`attribution\`. ODbL menuntut atribusi ikut ketika rekamannya dipakai ulang; menaruhnya sekali di tingkat koleksi tidak cukup, karena satu rekaman bisa berpindah keluar dari koleksinya.`);
+      }
+
+      // Foto hanya boleh ada bila kita sendiri yang memotretnya atau pemiliknya yang
+      // menyetorkan. Foto Places bukan milik Google untuk dilisensikan ulang — pemiliknya
+      // perorangan yang disebut namanya di authorAttributions.
+      if ((doc.photos?.length ?? 0) > 0 && !asalBersih.includes(doc.sourcing)) {
+        fail(file, 'L50-toko-lisensi', `${doc.id} membawa foto tetapi \`sourcing\`-nya "${doc.sourcing}". Foto hanya boleh dari setoran pemilik atau survei sendiri. Foto Places milik perorangan yang disebut namanya di authorAttributions, bukan milik Google, dan tidak pernah jadi milik kita untuk diterbitkan ulang.`);
+      }
+
+      // Kontak usaha hanya dari pemiliknya sendiri. Nomor yang dipanen dari mana pun
+      // adalah pemrosesan data pribadi tanpa dasar — keputusan yang sama sudah diambil
+      // untuk penyuluh di skema BPP dan untuk narahubung di penarik LeSOS.
+      if (doc.contact && doc.sourcing !== 'setoran-pemilik') {
+        fail(file, 'L50-toko-lisensi', `${doc.id} membawa \`contact\` tetapi \`sourcing\`-nya "${doc.sourcing}". Kontak hanya sah bila pemiliknya sendiri yang menyetorkannya.`);
+      }
+
+      // Rekaman yang sudah bertaut place ID tetap wajib punya asal yang sah untuk isinya.
+      // Ini penjaga yang sebenarnya: place ID yang menempel TIDAK menjadikan Places
+      // sebagai sumber nama rekaman ini.
+      const punyaPlaceId = (doc.mappings ?? []).some((m) => m.scheme === 'GOOGLE_PLACE_ID');
+      if (punyaPlaceId && !doc.sourcing) {
+        fail(file, 'L50-toko-lisensi', `${doc.id} bertaut place ID tetapi tidak menyatakan \`sourcing\`. Place ID adalah pengenal, bukan asal-usul: nama dan alamat rekaman ini tetap harus datang dari lajur yang lisensinya jelas.`);
+      }
+      if (punyaPlaceId && doc.location && doc.location.source && !['setoran-pemilik', 'survei', 'osm', 'opendata'].includes(doc.location.source)) {
+        fail(file, 'L50-toko-lisensi', `${doc.id} menyimpan koordinat berasal "${doc.location.source}". Lintang-bujur Places hanya boleh disinggahkan 30 hari di toko_data/privat/ (§14.3) dan tidak pernah naik jadi koordinat tetap sebuah entitas.`);
+      }
+    }
+
     // Label pada rujukan ke wilayah harus cocok dengan wilayah yang ditunjuk.
     //
     // Aturan ini SENGAJA hanya berlaku untuk wilayah, bukan untuk seluruh rujukan.

@@ -91,6 +91,7 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `hrg` | `vocab/harga/harga.meta.json` | 1000–1999 | seri harga komoditas SP2KP; 1–999 disisakan untuk patokan regulasi yang dikurasi tangan |
 | `lab` | `vocab/lab/lab.meta.json` | 1000–9999 | laboratorium penguji terakreditasi KAN; 1–999 disisakan untuk kurasi tangan |
 | `bpp` | `vocab/bpp/bpp.meta.json` | 1000–19999 | balai penyuluhan, turunan laporan tamu SIMLUHTAN; 1–999 disisakan untuk kurasi tangan |
+| `tko` | `vocab/toko/toko.meta.json` | 1000–19999 | toko sarana produksi pertanian yang lisensinya bersih; 1–999 disisakan untuk kurasi tangan. Tumbuh lewat setoran pemilik, jadi blok ini akan terisi jauh lebih lambat daripada yang lain |
 | `rgn` | `vocab/region/wilayah.meta.json` | 1–19999 | wilayah administratif; internalnya: 1–9 negara, 10–99 provinsi, 100–1999 kabupaten/kota, 2000–19999 kecamatan |
 | `akl` | `vocab/agroklimat-oldeman.json` | 1 | berkas entitas tunggal, seperti skala fase |
 | `akl` | `vocab/agroklimat-schmidt-ferguson.json` | 2 | berkas entitas tunggal |
@@ -141,7 +142,8 @@ Nomor aturan sama langkanya dengan nomor ID, dan sama mudahnya bertabrakan.
 | `L22`–`L29` | Kepatuhan regulasi dan integritas kosakata | seluruhnya |
 | `L30`–`L39` | Protokol Lapis 2 dan keutuhan isi | `L30`–`L38` |
 | `L40`–`L49` | Agroklimat & wilayah — skema, kelas, asal-usul penetapan, dan jenjang wilayah | `L40`–`L44` |
-| `L50`+ | **Belum diklaim** | — |
+| `L50`–`L59` | Lajur toko — batas lisensi, asal-usul, dan data pribadi | `L50` |
+| `L60`+ | **Belum diklaim** | — |
 
 Sebelum menambah aturan, jalankan:
 

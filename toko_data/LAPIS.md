@@ -22,5 +22,27 @@ Nama + alamat tanpa koordinat, lisензi terbuka/pemerintah. Benih untuk klaim 
 - Batang (CC-BY): 67
 - TTI Kementan (arsip Wayback, karya pemerintah): 2181
 
+## 4. PETA-ID GOOGLE — `place-id.ndjson`
+**195** place_id, terlama tercatat 2026-08-24. 1 singgahan aktif.
+
+Lapis ini bukan sumber isi direktori, dan tidak boleh dijadikan begitu. Pembagian
+medannya mengikuti izin per pasal, bukan selera:
+
+| medan | tempat | pasal |
+|---|---|---|
+| `place_id` | repo, permanen | Service Specific Terms §A.3 |
+| `lat`/`lng` | `privat/`, hapus di hari ke-30 | §14.3 |
+| nama, alamat, foto | **tidak disimpan di mana pun** | §3.2.3(a), §3.2.3(b) |
+
+Nama toko tetap sampai ke pengguna — dirender live dari `place_id` lewat Places UI Kit
+atau Embed API saat halaman dibuka, tidak pernah singgah di disk kita. Jarak "toko
+terdekat" dihitung dari lat/lng singgahan yang masih di dalam 30 hari.
+
+Batas tampilan yang mengikat: §14.2 dan §3.2.3(e) melarang konten Places digambar di
+atas peta non-Google. Basemap Leaflet/OSM di produk ini karena itu hanya boleh memuat
+titik dari lapis 1 dan setoran pemilik. Toko dari lapis 4 disajikan sebagai **daftar**
+(§14.1 mengizinkan Places tanpa peta Google) atau lewat Places UI Kit, yang §15.1
+izinkan berdampingan dengan peta non-Google.
+
 ## Dibuang
 Luar Pulau Jawa: 0. Berkas sesi paralel (`semua.ndjson`, `peta-pairs`, dll) sengaja dilewati.

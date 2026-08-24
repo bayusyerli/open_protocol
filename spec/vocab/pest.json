@@ -160,6 +160,12 @@
         "confidence": 99,
         "kingdom": "Animalia"
       },
+      "symptom_title": {
+        "id": "Daun muda mengeriting ke ATAS seperti mangkuk"
+      },
+      "symptom_brief": {
+        "id": "Permukaan bawah daun keperakan atau kecoklatan seperti tergores halus, dan bunga serta tunas rontok sebelum jadi buah."
+      },
       "symptoms": {
         "id": "Daun muda mengeriting ke ATAS seperti mangkuk, dan permukaan bawahnya keperakan atau kecoklatan seperti tergores halus. Bunga dan tunas rontok sebelum jadi buah; tanaman kerdil dan pucuknya mengumpul."
       },
@@ -265,6 +271,12 @@
         "confidence": 99,
         "kingdom": "Animalia"
       },
+      "symptom_title": {
+        "id": "Daun muda mengeriting ke BAWAH dan mengerut"
+      },
+      "symptom_brief": {
+        "id": "Permukaan daun lengket, sering berjelaga hitam, dan semut naik-turun di batang."
+      },
       "symptoms": {
         "id": "Daun muda mengeriting ke BAWAH dan mengerut. Permukaan daun lengket, sering ditumbuhi jelaga hitam, dan semut naik-turun di batang."
       },
@@ -363,6 +375,12 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
+      },
+      "symptom_title": {
+        "id": "Serangga putih berhamburan saat tanaman disentuh"
+      },
+      "symptom_brief": {
+        "id": "Ukurannya sangat kecil dan langsung hinggap lagi; daun lengket, berjelaga hitam, lalu menguning."
       },
       "symptoms": {
         "id": "Serangga putih sangat kecil beterbangan berhamburan saat tanaman disentuh, lalu hinggap lagi. Daun lengket dan berjelaga hitam, dan lama-lama menguning."
@@ -499,6 +517,12 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
+      },
+      "symptom_title": {
+        "id": "Buah berlubang tusukan jarum lalu gugur"
+      },
+      "symptom_brief": {
+        "id": "Di sekitar lubang melunak dan basah, dan di dalam buah yang gugur ada belatung putih."
       },
       "symptoms": {
         "id": "Buah berlubang tusukan sebesar ujung jarum, di sekitarnya melunak dan basah, lalu gugur sebelum tua. Di dalam buah yang gugur ada belatung putih."
@@ -682,6 +706,12 @@
         "confidence": 99,
         "kingdom": "Animalia"
       },
+      "symptom_title": {
+        "id": "Daun berlubang sampai tinggal tulang daunnya"
+      },
+      "symptom_brief": {
+        "id": "Kerusakannya bertambah cepat dalam semalam, dan butiran kotoran hitam menumpuk di ketiak daun."
+      },
       "symptoms": {
         "id": "Daun berlubang tidak beraturan sampai tinggal tulang daunnya, dan kerusakannya bertambah cepat dalam semalam. Ada butiran kotoran hitam menumpuk di ketiak daun."
       },
@@ -792,6 +822,12 @@
         "confidence": 98,
         "kingdom": "Animalia"
       },
+      "symptom_title": {
+        "id": "Daun berbintik kuning halus rapat seperti tertusuk jarum"
+      },
+      "symptom_brief": {
+        "id": "Lalu menguning menyeluruh dan kering; serangan berat meninggalkan anyaman benang halus di pucuk."
+      },
       "symptoms": {
         "id": "Daun berbintik kuning halus rapat seperti tertusuk jarum, lalu menguning menyeluruh, kecoklatan, dan kering. Serangan berat meninggalkan anyaman benang halus di pucuk dan bawah daun."
       },
@@ -894,6 +930,12 @@
         "confidence": 94,
         "kingdom": "Fungi"
       },
+      "symptom_title": {
+        "id": "Bercak melingkar cekung dan menghitam pada buah"
+      },
+      "symptom_brief": {
+        "id": "Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar, dan buahnya mengering keriput."
+      },
       "symptoms": {
         "id": "Bercak melingkar cekung pada buah, mula-mula berair lalu meluas dan menghitam. Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar. Buah akhirnya mengering dan keriput."
       },
@@ -973,6 +1015,12 @@
         "confidence": 99,
         "kingdom": "Fungi"
       },
+      "symptom_title": {
+        "id": "Tanaman layu perlahan selama beberapa hari"
+      },
+      "symptom_brief": {
+        "id": "Daun bawah menguning lebih dulu, sering hanya pada satu sisi, dan layunya menetap walau tanah lembap."
+      },
       "symptoms": {
         "id": "Tanaman layu perlahan selama beberapa hari. Daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap."
       },
@@ -1048,6 +1096,12 @@
         "confidence": 99,
         "kingdom": "Bacteria"
       },
+      "symptom_title": {
+        "id": "Tanaman layu mendadak, daunnya MASIH HIJAU"
+      },
+      "symptom_brief": {
+        "id": "Sering hanya dalam satu sampai dua hari, dan pangkal batangnya kecoklatan dan basah."
+      },
       "symptoms": {
         "id": "Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah."
       },
@@ -1120,6 +1174,12 @@
         "checked_at": "2026-08-19",
         "confidence": 100,
         "kingdom": "Viruses"
+      },
+      "symptom_title": {
+        "id": "Daun muda menguning terang dan mengecil"
+      },
+      "symptom_brief": {
+        "id": "Mengeriting ke atas dengan tulang daun menebal; tanaman kerdil dan tidak pulih walau disemprot apa pun."
       },
       "symptoms": {
         "id": "Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun."

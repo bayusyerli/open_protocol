@@ -17,6 +17,12 @@ toko_data/privat/
 # `node harga_data/tarik-bapanas.mjs`.
 harga_data/privat/
 
+# Registri klien LeSOS: situsnya tanpa medan lisensi, hanya tanda hak cipta. Fakta
+# sertifikatnya boleh dihitung, kompilasinya tidak diterbitkan ulang. Benih privat —
+# tarik ulang dengan `node lesos_data/tarik-lesos.mjs`. Singgahannya sudah bersih dari
+# data pribadi; narahubung dibuang sebelum menyentuh disk.
+lesos_data/privat/
+
 # Tarikan mentah SP2KP — 56 MB dalam satu berkas. Sumbernya berlisensi terbuka dan
 # keluaran ternormalkannya (harga_data/sp2kp-hnt.ndjson) memang naik ke repo; yang
 # mentah tidak, karena bisa ditarik ulang dengan `node harga_data/tarik-sp2kp.mjs`.
