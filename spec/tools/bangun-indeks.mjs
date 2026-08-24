@@ -1630,6 +1630,8 @@ const alasanSimpangan = larik(bacaJson('deviation-reason.json'))
 // draft. Menerbitkan satu bukan kekurangan yang perlu ditutupi: yang menutupinya akan
 // membuat layar tampak punya pilihan yang tidak ada, dan cacah 1 justru angka yang paling
 // perlu dibaca sebelum orang menaruh harapan pada jalur ini.
+const kunciOperasi = new Map(larik(bacaJson('operation-type.json')).map((o) => [o.id, o.key]));
+
 const protokolBerkas = readdirSync(VOCAB).filter((f) => f.startsWith('protocol-') && f.endsWith('.json'));
 const protokol = protokolBerkas.map((f) => bacaJson(f)).filter((p) => p?.id);
 
@@ -1655,7 +1657,12 @@ const protokolIndeks = protokol.map((p) => {
     langkah: (p.steps ?? []).map((l) => ({
       kunci: l.key,
       nama: l.label?.id ?? l.key,
-      tindakan: l.operation_type ?? null,
+      // Kunci jenis operasinya ikut, bukan cuma label. Layar rencana memakainya untuk
+      // MENGUSULKAN kategori biaya di buku kas — mencocokkan lewat teks label akan pecah
+      // pada label pertama yang diubah editornya, sedangkan kunci memang dijanjikan tetap.
+      tindakan: l.operation_type
+        ? { ...l.operation_type, k: kunciOperasi.get(l.operation_type.id) ?? null }
+        : null,
       waktu: l.timing ?? null,
       pakai: l.applications ?? null,
       catatan: l.notes?.id ?? null,

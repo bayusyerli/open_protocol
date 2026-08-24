@@ -36,37 +36,32 @@ import { teks } from './pustaka.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
 import { salin } from './serah.js';
+import * as buku from './buku.js';
+import * as musim from './musim.js';
 
 pasangTombolTema();
 document.getElementById('tanpaJs')?.remove();
 
 const el = {};
 for (const id of ['ringkas', 'tanggal', 'arah', 'kategori', 'jumlah', 'catatan', 'tambah',
-  'kabar', 'daftar', 'peringatanSimpan', 'kabarBawa', 'pratinjau', 'hapusSemua',
-  'pilihMusim', 'aturMusim', 'mNama', 'mKomoditas', 'mLuas', 'tambahMusim', 'kabarMusim'])
+  'kabar', 'daftar', 'peringatanSimpan', 'kabarBawa', 'pratinjau', 'hapusSemua', 'kartuMusim'])
   el[id] = document.getElementById(id);
 el.batas = document.getElementById('batasJawaban');
 el.bawa = document.querySelector('.kartu-bawa');
 
-const KUNCI = 'op:kas';
 const rupiah = (x) => 'Rp ' + Math.round(x).toLocaleString('id-ID');
 const n = (x) => Number(x ?? 0).toLocaleString('id-ID');
 
-/* Kategori yang sama dengan D3, dan itu disengaja. Yang sudah menyusun rencana anggaran
- * di sana tidak memulai dari buku kosong di sini — ia mengisi kategori yang sudah ia
- * pikirkan. Jarak antara "ingin tahu" dan "mau mencatat" sebagian dipersempit dengan
- * tidak menyuruh orang memikirkan ulang hal yang sudah dipikirkannya. */
-const KATEGORI_KELUAR = [
-  'Benih atau bibit', 'Pupuk', 'Pestisida', 'Tenaga kerja — olah tanah',
-  'Tenaga kerja — tanam', 'Tenaga kerja — pemeliharaan', 'Tenaga kerja — panen',
-  'Sewa lahan', 'Sewa alat', 'Mulsa & ajir', 'Pengairan', 'Angkut & kemas', 'Lainnya',
-];
-const KATEGORI_MASUK = ['Hasil jual', 'Hasil jual — sortiran', 'Bantuan atau subsidi', 'Lainnya'];
-
-let catatan = [];
-let musim = [];
-let musimAktif = null;
-
+/* Kategori, catatan, dan musim tidak lagi tinggal di berkas ini.
+ *
+ * Kategorinya pindah ke `buku.js` bersama simpanannya karena LAYAR RENCANA IKUT MENULIS
+ * ke buku ini: yang mencatat "pemupukan susulan sudah dikerjakan" di sana tidak perlu
+ * mengetik "Pupuk, Rp 250.000" lagi di sini. Musimnya pindah ke `musim.js` karena tiga
+ * layar memerlukannya, bukan satu — dan tiga gagasan "musim" yang tidak pernah bertemu
+ * persis yang membuat biaya tidak bisa ditaruh di sebelah langkah yang menimbulkannya.
+ *
+ * Yang TIDAK berubah: rancangan halaman ini. Musim tetap ada di kepala dan bukan di tiap
+ * catatan, tetap satu catatan tiga medan, tetap tanpa akun. */
 /* MUSIM ADA DI KEPALA, BUKAN DI TIAP CATATAN — dan itu keputusan yang menjaga rancangan
  * halaman ini tetap utuh. Menambahkan medan petak dan luas ke tiap catatan akan membuat
  * satu catatan lima medan, dan tiap medan tambahan adalah alasan berhenti. Dinamai sekali
@@ -88,34 +83,13 @@ let musimAktif = null;
 // Gagal menulis TIDAK boleh diam. Mode privat menolak localStorage, dan pemakai yang
 // mengira catatannya tersimpan padahal tidak adalah keadaan terburuk yang bisa dihasilkan
 // halaman ini — lebih buruk daripada tidak menawarkan penyimpanan sama sekali.
-let simpananHidup = true;
+const simpananHidup = () => buku.simpananHidup() && musim.simpananHidup();
 
-/* Bentuk simpanan berubah setelah musim masuk, dan yang sudah mencatat TIDAK BOLEH
- * kehilangan apa pun karenanya. Larik datar versi pertama dibungkus jadi satu musim
- * bernama, bukan dibuang — kehilangan catatan karena pembaruan aplikasi persis kegagalan
- * yang paling merusak kepercayaan pada buku kas. */
-function baca() {
-  try {
-    const m = JSON.parse(localStorage.getItem(KUNCI) ?? 'null');
-    if (Array.isArray(m)) {
-      const bawaan = { i: 'm0', nama: 'Musim pertama', komoditas: null, luas: null };
-      return { musim: [bawaan], catatan: m.map((c) => ({ ...c, m: 'm0' })), aktif: 'm0', dimigrasi: true };
-    }
-    if (m && Array.isArray(m.catatan)) return m;
-    return { musim: [], catatan: [], aktif: null };
-  } catch { simpananHidup = false; return { musim: [], catatan: [], aktif: null }; }
-}
-
-function tulis() {
-  try {
-    localStorage.setItem(KUNCI, JSON.stringify({ musim, catatan, aktif: musimAktif }));
-    return true;
-  } catch {
-    simpananHidup = false;
-    gambarPeringatan();
-    return false;
-  }
-}
+const tulis = () => {
+  const ok = buku.tulis();
+  if (!ok) gambarPeringatan();
+  return ok;
+};
 
 async function gambarPeringatan() {
   let permanen = null;
@@ -126,7 +100,7 @@ async function gambarPeringatan() {
     }
   } catch { /* peramban lama; keadaannya tetap "tidak dijanjikan" */ }
 
-  if (!simpananHidup) {
+  if (!simpananHidup()) {
     el.peringatanSimpan.innerHTML = `<strong>Catatanmu TIDAK tersimpan.</strong> Peramban ini
       menolak menyimpan apa pun — biasanya karena mode privat. Yang kamu ketik hilang begitu
       halaman ditutup, jadi bawa keluar sekarang juga kalau ingin menyimpannya.`;
@@ -152,18 +126,19 @@ async function gambarPeringatan() {
 // Gambar
 // ---------------------------------------------------------------------------
 function isiKategori() {
-  const daftar = el.arah.value === 'masuk' ? KATEGORI_MASUK : KATEGORI_KELUAR;
+  const daftar = el.arah.value === 'masuk' ? buku.KATEGORI_MASUK : buku.KATEGORI_KELUAR;
   el.kategori.innerHTML = daftar.map((k) => `<option value="${teks(k)}">${teks(k)}</option>`).join('');
 }
 
-const catatanMusim = () => catatan.filter((c) => c.m === musimAktif);
-const musimKini = () => musim.find((m) => m.i === musimAktif) ?? null;
+const catatanMusim = () => buku.perMusim(musim.idMusimAktif());
+const musimKini = () => musim.aktif();
+const hitung = () => buku.hitung(musim.idMusimAktif());
 
-function hitung() {
-  const isi = catatanMusim();
-  const keluar = isi.filter((c) => c.a === 'keluar').reduce((a, c) => a + c.n, 0);
-  const masuk = isi.filter((c) => c.a === 'masuk').reduce((a, c) => a + c.n, 0);
-  return { keluar, masuk, selisih: masuk - keluar, cacah: isi.length };
+// Formulir musim tinggal di `musim.js`, jadi yang mau membukanya harus melewati DOM-nya.
+function bukaFormulirMusim() {
+  const d = el.kartuMusim.querySelector('.atur-musim');
+  if (d) d.open = true;
+  el.kartuMusim.querySelector('#mNama')?.focus();
 }
 
 function gambarRingkas() {
@@ -221,7 +196,7 @@ function gambarDaftar() {
             ${urut.map((c) => `
               <tr>
                 <td>${teks(c.t)}</td>
-                <td>${teks(c.k)}${c.c ? `<span class="sub">${teks(c.c)}</span>` : ''}</td>
+                <td>${teks(c.k)}${c.c ? `<span class="sub">${teks(c.c)}</span>` : ''}${c.s === 'rencana' ? '<span class="sub asal">dari layar rencana</span>' : ''}</td>
                 <td class="angka">${c.a === 'masuk' ? '+' : '−'} ${rupiah(c.n)}</td>
                 <td><button type="button" class="hapus-satu" data-hapus="${c.i}" aria-label="Hapus catatan ${teks(c.t)} ${teks(c.k)}">hapus</button></td>
               </tr>`).join('')}
@@ -231,52 +206,7 @@ function gambarDaftar() {
     </div>`;
 }
 
-function gambarMusim() {
-  if (!musim.length) {
-    el.pilihMusim.innerHTML = `<p class="kosong">Belum ada musim. Beri nama satu di bawah —
-      boleh sesederhana "Cabai petak belakang".</p>`;
-    el.aturMusim.open = true;
-    return;
-  }
-  const m = musimKini();
-  el.pilihMusim.innerHTML = `
-    <label for="musimAktif">Sedang dicatat</label>
-    <select id="musimAktif">
-      ${musim.map((x) => `<option value="${teks(x.i)}"${x.i === musimAktif ? ' selected' : ''}>
-        ${teks(x.nama)}${x.luas > 0 ? ` — ${n(x.luas)} ha` : ''}</option>`).join('')}
-    </select>
-    ${m ? `<p class="catatan">${[
-      m.komoditas && teks(m.komoditas),
-      m.luas > 0 ? `${n(m.luas)} hektare` : 'luas belum diisi',
-      `${n(catatanMusim().length)} catatan`,
-    ].filter(Boolean).join(' · ')}</p>` : ''}`;
-  el.pilihMusim.querySelector('#musimAktif')?.addEventListener('change', (ev) => {
-    musimAktif = ev.target.value;
-    tulis();
-    gambar();
-  });
-}
-
-function gambar() { gambarMusim(); gambarRingkas(); gambarDaftar(); }
-
-el.tambahMusim.addEventListener('click', () => {
-  const nama = el.mNama.value.trim();
-  if (!nama) { el.kabarMusim.textContent = 'Beri namanya dulu — cukup satu yang kamu kenali sendiri.'; el.mNama.focus(); return; }
-  const luas = Number(el.mLuas.value);
-  const baru = {
-    i: 'm' + Date.now(),
-    nama,
-    komoditas: el.mKomoditas.value.trim() || null,
-    luas: Number.isFinite(luas) && luas > 0 ? luas : null,
-  };
-  musim.push(baru);
-  musimAktif = baru.i;
-  tulis();
-  gambar();
-  el.mNama.value = ''; el.mKomoditas.value = ''; el.mLuas.value = '';
-  el.kabarMusim.textContent = `"${baru.nama}" jadi musim yang sedang dicatat.`;
-  el.aturMusim.open = false;
-});
+function gambar() { gambarRingkas(); gambarDaftar(); }
 
 // ---------------------------------------------------------------------------
 // Bawa keluar — bukan fitur tambahan
@@ -296,7 +226,7 @@ function susunTeks() {
     m?.luas > 0 ? `Biaya per hektare: ${rupiah(keluar / m.luas)}` : null,
     '',
     ...catatanMusim().sort((a, b) => String(a.t).localeCompare(String(b.t)))
-      .map((c) => `${c.t}  ${c.a === 'masuk' ? '+' : '−'} ${rupiah(c.n)}  ${c.k}${c.c ? ` — ${c.c}` : ''}`),
+      .map((c) => `${c.t}  ${c.a === 'masuk' ? '+' : '−'} ${rupiah(c.n)}  ${c.k}${c.c ? ` — ${c.c}` : ''}${c.s === 'rencana' ? ' [rencana]' : ''}`),
     '───────────────',
     'Disusun di perangkat sendiri. Tidak ada yang dikirim ke mana pun.',
   ].filter((x) => x !== null);
@@ -319,7 +249,7 @@ el.bawa.addEventListener('click', async (ev) => {
   const alamat = `https://wa.me/?text=${encodeURIComponent(isi)}`;
   if (alamat.length > 2000) {
     await salin(isi);
-    el.kabarBawa.textContent = `Catatanmu ${n(catatan.length)} baris — terlalu panjang untuk `
+    el.kabarBawa.textContent = `Catatanmu ${n(catatanMusim().length)} baris — terlalu panjang untuk `
       + 'dimuat alamat WhatsApp, dan memotongnya akan membuang sebagian catatan tanpa terlihat. '
       + 'Sudah disalin; tempelkan langsung di WhatsApp.';
     return;
@@ -343,22 +273,20 @@ el.tambah.addEventListener('click', () => {
     el.jumlah.focus();
     return;
   }
-  if (!musimAktif) {
+  if (!musim.idMusimAktif()) {
     el.kabar.textContent = 'Beri nama musimnya dulu di atas — sekali saja, lalu tiap catatan ikut ke sana.';
-    el.aturMusim.open = true;
-    el.mNama.focus();
+    bukaFormulirMusim();
     return;
   }
-  catatan.push({
-    i: Date.now(),
-    m: musimAktif,
+  const { tersimpan: ok } = buku.tambah({
+    m: musim.idMusimAktif(),
     t: el.tanggal.value || new Date().toISOString().slice(0, 10),
     a: el.arah.value,
     k: el.kategori.value,
     n: j,
     c: el.catatan.value.trim() || undefined,
   });
-  const ok = tulis();
+  if (!ok) gambarPeringatan();
   gambar();
   el.jumlah.value = '';
   el.catatan.value = '';
@@ -375,8 +303,7 @@ el.tambah.addEventListener('click', () => {
 el.daftar.addEventListener('click', (ev) => {
   const b = ev.target.closest('button[data-hapus]');
   if (!b) return;
-  catatan = catatan.filter((c) => String(c.i) !== b.dataset.hapus);
-  tulis();
+  buku.hapus(b.dataset.hapus);
   gambar();
 });
 
@@ -387,8 +314,7 @@ el.hapusSemua.addEventListener('click', () => {
   // kerja pemakainya, dan tidak ada cadangan di mana pun untuk memulihkannya.
   const m = musimKini();
   if (!confirm(`Hapus ${isi.length} catatan di "${m?.nama ?? 'musim ini'}"? Musim lain tidak ikut terhapus, tetapi yang ini tidak ada cadangannya dan tidak bisa dibatalkan.`)) return;
-  catatan = catatan.filter((c) => c.m !== musimAktif);
-  tulis();
+  for (const c of isi) buku.hapus(c.i);
   gambar();
   el.kabarBawa.textContent = `Catatan di "${teks(m?.nama ?? 'musim ini')}" dihapus.`;
 });
@@ -397,14 +323,11 @@ el.hapusSemua.addEventListener('click', () => {
 // Mulai
 // ---------------------------------------------------------------------------
 (async function mulai() {
-  const simpan = baca();
-  musim = simpan.musim ?? [];
-  catatan = simpan.catatan ?? [];
-  musimAktif = simpan.aktif ?? musim[0]?.i ?? null;
-  // Migrasi dituliskan SEKALI, bukan diturunkan ulang tiap muat. Menurunkannya ulang
-  // memang idempoten, tetapi ia membuat bentuk tersimpan berbeda dari yang dibaca layar —
-  // dan bentuk yang berbeda dari yang terlihat adalah tempat kekeliruan berikutnya lahir.
-  if (simpan.dimigrasi) tulis();
+  // Migrasi dituliskan SEKALI di dalam kedua modul simpanan, bukan diturunkan ulang tiap
+  // muat. Menurunkannya ulang memang idempoten, tetapi ia membuat bentuk tersimpan berbeda
+  // dari yang dibaca layar — dan bentuk yang berbeda dari yang terlihat adalah tempat
+  // kekeliruan berikutnya lahir.
+  musim.pasangMusim(el.kartuMusim, { onGanti: gambar });
   el.tanggal.value = new Date().toISOString().slice(0, 10);
   isiKategori();
   gambar();
@@ -434,12 +357,22 @@ el.hapusSemua.addEventListener('click', () => {
     }, {
       judul: 'Arus kas bertanggal, dan berbagi dengan kelompok',
       teks:
-        'Beberapa musim dan petak sudah bisa dipisahkan di sini, tetapi dua hal lain belum: '
-        + 'arus kas bertanggal menuntut kalender fase yang punya medan hari — kosakata fase '
-        + 'sengaja tidak punya, dan hanya dua dari empat langkah protokol cabai bertanggal — '
+        'Musim dan petak sudah bisa dipisahkan di sini, tetapi dua hal lain belum: arus kas '
+        + 'bertanggal menuntut kalender fase yang punya medan hari — kosakata fase sengaja '
+        + 'tidak punya, dan hanya dua dari empat langkah protokol cabai bertanggal — '
         + 'sedangkan berbagi dengan kelompok tani menuntut tempat menyimpan yang bukan '
-        + 'peramban. Petak di sini juga hanya nama yang kamu ketik, bukan identitas petak '
-        + 'yang dipakai lintas layar.',
+        + 'peramban.',
+    }, {
+      judul: 'Petak ini belum bisa disandingkan dengan petak siapa pun',
+      teks:
+        'Musim dan petak yang kamu namai di atas sekarang dipakai bersama layar rencana, jadi '
+        + 'biaya dan langkah yang dicatat di sana masuk ke buku yang sama. Yang masih tidak '
+        + 'bisa dilakukan: menyandingkan petak ini dengan petak petani lain. Skema petak '
+        + 'mewajibkan pemegang — artinya menyebut nama orang — dan sidik petak menolak apa pun '
+        + 'yang lebih kasar daripada poligon, karena satu titik presisi lima desimal di dalam '
+        + 'satu kabupaten habis ditebak dalam 0,08 detik dan sidiknya jadi penunjuk lokasi, '
+        + 'bukan penjagaan. Lapisan ini tidak meminta keduanya. Cukup untuk menyambungkan '
+        + 'layar satu sama lain, tidak cukup untuk menyambungkan petani satu sama lain.',
     }],
   });
 })();

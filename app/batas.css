@@ -10,7 +10,8 @@
  * Tema gelap tidak perlu ditulis di sini sama sekali — kedua lembar gaya sudah
  * mendefinisikan ulang tokennya sendiri, dan blok ini ikut karena membacanya. */
 
-.batas-jawaban {
+.batas-jawaban,
+.bj-lembar {
   --bj-teks:  var(--teks,        var(--tinta));
   --bj-lemah: var(--teks-lemah,  var(--lemah));
   --bj-garis: var(--garis);
@@ -20,7 +21,9 @@
   --bj-awas-lemah: var(--awas-lemah, var(--amber-lembut));
   --bj-bahaya: var(--bahaya,     var(--merah));
   --bj-bahaya-lemah: var(--bahaya-lemah, var(--merah-lembut));
+}
 
+.batas-jawaban {
   margin: 2.5rem 0 0;
   padding-top: 1.1rem;
   border-top: 1px solid var(--bj-garis);
@@ -28,6 +31,92 @@
   font-size: .9rem;
   line-height: 1.55;
 }
+
+/* ------------------------------------------------- ringkasan & lembar (T2)
+
+   Blok batas dulu terbuka penuh di kaki tiap halaman: di principal.html ia 1.789 px
+   dari 2.777 px tinggi halaman, dan 367 dari 479 katanya. Isinya tidak dikurangi
+   sedikit pun — ia pindah ke lembar. Yang tetap tercetak di layar keempat medan yang
+   diwajibkan batas.js: tingkat, sumber, tanggal, dan cacah yang tidak diketahui. */
+
+.bj-cip-baris {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .4rem;
+  margin: 0 0 .5rem;
+}
+
+.bj-cip {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .25rem .55rem .25rem .3rem;
+  border: 1px solid var(--bj-garis);
+  border-radius: 100px;
+  background: var(--bj-latar);
+  color: var(--bj-teks);
+  font-size: .82rem;
+  line-height: 1.3;
+}
+
+.bj-ringkas-baris { margin: 0 0 .7rem; font-size: .84rem; }
+
+.bj-buka {
+  display: inline-block;
+  min-height: 44px;
+  padding: .55rem .9rem;
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+  background: var(--bj-latar);
+  color: var(--bj-aksen);
+  font: inherit;
+  font-size: .86rem;
+  font-weight: 600;
+  text-align: left;
+  cursor: pointer;
+}
+.bj-buka:hover { border-color: var(--bj-aksen); }
+.bj-buka:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+
+.bj-lembar {
+  width: min(560px, calc(100vw - 28px));
+  padding: 0;
+  border: 1px solid var(--bj-garis);
+  border-radius: 16px;
+  background: var(--bj-latar);
+  color: var(--bj-lemah);
+  font-size: .9rem;
+  line-height: 1.55;
+}
+.bj-lembar::backdrop { background: rgb(9 24 18 / 55%); }
+/* `display` hanya saat terbuka — <dialog> memakai display:none untuk menyembunyikan
+   dirinya, dan menyetelnya tanpa [open] membuat lembar ini selalu tampil. */
+.bj-lembar[open] { display: flex; flex-direction: column; max-height: min(86vh, 760px); }
+.bj-lembar-isi { overflow-y: auto; overscroll-behavior: contain; padding: 1rem 1.1rem 1.2rem; }
+
+.bj-lembar-kepala {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0;
+  padding: 1rem 1.1rem .8rem;
+  border-bottom: 1px solid var(--bj-garis);
+}
+.bj-lembar-kepala h2 { margin: 0; font-size: 1rem; color: var(--bj-teks); }
+.bj-lembar-kepala button {
+  width: 34px; height: 34px; flex: none;
+  border: 1px solid var(--bj-garis);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--bj-teks);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.bj-lembar-kepala button:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+.bj-lembar .bj-judul-lubang:first-child,
+.bj-lembar .bj-sumber:first-child { margin-top: 0; }
 
 .bj-judul,
 .bj-judul-lubang {
@@ -756,10 +845,52 @@ tr.lewat-masa td:first-child { border-left: 3px solid var(--awas, var(--amber, #
 .kartu-musim select:focus-visible,
 .kartu-musim input:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 1px; }
 
-#aturMusim { margin-top: .9rem; }
-#aturMusim > summary { cursor: pointer; font-weight: 600; font-size: .88rem; color: var(--bj-aksen); padding: .5rem 0; }
-#aturMusim > summary:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
+/* Kelas, bukan id: kartunya digambar `musim.js` dan dipasang di dua halaman. */
+.atur-musim { margin-top: .9rem; }
+/* 44 px, bukan 39: ia satu-satunya jalan ke formulir musim, dan disiplin target sentuh
+   di halaman ini tidak boleh berhenti tepat di pintu masuknya. */
+.atur-musim > summary { cursor: pointer; font-weight: 600; font-size: .88rem; color: var(--bj-aksen); padding: .7rem 0; min-height: 44px; box-sizing: border-box; }
+.atur-musim > summary:focus-visible { outline: 2px solid var(--bj-aksen); outline-offset: 2px; }
 .musim-isi { margin-top: .4rem; }
+
+/* Biaya yang berangkat ke buku kas diberi warna aksen — bukan hiasan: ia satu-satunya
+   tanda di layar ini bahwa angka itu sampai ke halaman lain. Yang tidak bisa dipastikan
+   sampai tidak akan diisi lagi lain kali. */
+.sub.biaya { color: var(--bj-aksen, var(--aksen)); font-weight: 600; }
+
+/* Keterangan di bawah angka ringkasan tidak pernah diberi barisnya sendiri, jadi ia
+   menempel: "Rp 1.540.000dari 0,25 ha". Cacat lama buku kas yang baru terlihat setelah
+   kartu yang sama dipasang di layar rencana — dan angka yang menempel ke keterangannya
+   terbaca sebagai satu angka yang lebih besar. */
+.kartu-ringkas .kunci dd .sub {
+  display: block;
+  margin-top: .1rem;
+  font-size: .8rem;
+  font-weight: 400;
+  color: var(--bj-lemah, var(--teks-lemah, var(--lemah)));
+}
+
+/* Kebalikannya di buku kas: catatan yang datang dari layar rencana ditandai supaya tidak
+   terbaca seolah ada yang mengetiknya dua kali. */
+.sub.asal { font-style: italic; }
+
+/* Formulir realisasi memakai .catat-baris untuk medan biaya, dan di dalam formulir itu
+   labelnya sudah rapat. */
+.form-realisasi .catat-baris { margin-top: .5rem; }
+.form-realisasi .catat-baris label { display: block; font-weight: 600; font-size: .82rem; }
+.form-realisasi .catat-baris input,
+.form-realisasi .catat-baris select {
+  width: 100%;
+  margin-top: .25rem;
+  padding: .5rem .6rem;
+  min-height: 44px;
+  font: inherit;
+  font-size: .88rem;
+  color: var(--bj-teks, var(--teks, var(--tinta)));
+  background: var(--bj-latar, var(--latar-kartu, var(--kertas)));
+  border: 1px solid var(--bj-garis, var(--garis));
+  border-radius: 8px;
+}
 
 /* ------------------------------------------------------------------ jadwal */
 /* Rencana musim (E1). Kolom "kapan" sengaja selebar tanggal, dan yang tidak bertanggal
