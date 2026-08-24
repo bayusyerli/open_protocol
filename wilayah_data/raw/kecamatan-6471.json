@@ -1,0 +1,38 @@
+[
+ {
+  "kode_bps": "6471010",
+  "nama_bps": "BALIKPAPAN SELATAN",
+  "kode_dagri": "64.71.05",
+  "nama_dagri": "BALIKPAPAN SELATAN"
+ },
+ {
+  "kode_bps": "6471011",
+  "nama_bps": "BALIKPAPAN KOTA",
+  "kode_dagri": "64.71.06",
+  "nama_dagri": "BALIKPAPAN KOTA"
+ },
+ {
+  "kode_bps": "6471020",
+  "nama_bps": "BALIKPAPAN TIMUR",
+  "kode_dagri": "64.71.01",
+  "nama_dagri": "BALIKPAPAN TIMUR"
+ },
+ {
+  "kode_bps": "6471030",
+  "nama_bps": "BALIKPAPAN UTARA",
+  "kode_dagri": "64.71.03",
+  "nama_dagri": "BALIKPAPAN UTARA"
+ },
+ {
+  "kode_bps": "6471040",
+  "nama_bps": "BALIKPAPAN TENGAH",
+  "kode_dagri": "64.71.04",
+  "nama_dagri": "BALIKPAPAN TENGAH"
+ },
+ {
+  "kode_bps": "6471050",
+  "nama_bps": "BALIKPAPAN BARAT",
+  "kode_dagri": "64.71.02",
+  "nama_dagri": "BALIKPAPAN BARAT"
+ }
+]

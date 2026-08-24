@@ -25,7 +25,11 @@ const fixtures = [
 ].sort();
 
 for (const file of fixtures) {
-  const rules = [...byFile.entries()].filter(([f]) => f.endsWith(file)).flatMap(([, r]) => r);
+  // Galat pada item di dalam koleksi dilaporkan dengan label berimbuhan —
+  // "fixtures-invalid/x.json [0] kunci" — sehingga endsWith saja tidak pernah cocok, dan
+  // fixture berbentuk koleksi diam-diam tidak teruji. Imbuhannya dipotong lebih dulu.
+  const jalur = (f) => f.replace(/[\s[].*$/, '');
+  const rules = [...byFile.entries()].filter(([f]) => jalur(f).endsWith(file)).flatMap(([, r]) => r);
   if (file.split('/').pop().startsWith('ok-')) {
     if (rules.length === 0) { console.log(`  OK    ${file} — lolos, sesuai harapan`); pass++; }
     else { console.log(`  GAGAL ${file} — seharusnya lolos, tapi menyala: ${rules.join(', ')}`); fail++; }

@@ -1,0 +1,42 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "region",
+    "label": {
+      "id": "Fixture L44 — kode wilayah tanpa nama skemanya"
+    },
+    "scope": {
+      "id": "Fixture uji negatif. Kode 1401 sah menurut BPS (Kuantan Singingi) dan menurut Kemendagri (Kabupaten Kampar); tanpa code_scheme ia menunjuk dua kabupaten sekaligus."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft"
+    },
+    "id_blocks": [
+      {
+        "from": 91000,
+        "to": 91999
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "op:rgn:00091001",
+      "key": "fixture-l44-kode-telanjang",
+      "label": {
+        "id": "Wilayah Berkode Telanjang"
+      },
+      "level": "province",
+      "code": "1401",
+      "parent": {
+        "id": "op:rgn:00000001",
+        "label": "Indonesia"
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft"
+      },
+      "no_mapping_reason": "Fixture uji; kodenya sengaja dibiarkan tanpa skema untuk membuktikan aturannya menolak."
+    }
+  ]
+}

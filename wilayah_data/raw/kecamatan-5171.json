@@ -1,0 +1,26 @@
+[
+ {
+  "kode_bps": "5171010",
+  "nama_bps": "DENPASAR SELATAN",
+  "kode_dagri": "51.71.01",
+  "nama_dagri": "DENPASAR SELATAN"
+ },
+ {
+  "kode_bps": "5171020",
+  "nama_bps": "DENPASAR TIMUR",
+  "kode_dagri": "51.71.02",
+  "nama_dagri": "DENPASAR TIMUR"
+ },
+ {
+  "kode_bps": "5171030",
+  "nama_bps": "DENPASAR BARAT",
+  "kode_dagri": "51.71.03",
+  "nama_dagri": "DENPASAR BARAT"
+ },
+ {
+  "kode_bps": "5171031",
+  "nama_bps": "DENPASAR UTARA",
+  "kode_dagri": "51.71.04",
+  "nama_dagri": "DENPASAR UTARA"
+ }
+]

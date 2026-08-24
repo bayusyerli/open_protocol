@@ -1,0 +1,62 @@
+[
+ {
+  "kode_bps": "7108010",
+  "nama_bps": "BIARO",
+  "kode_dagri": "71.09.07",
+  "nama_dagri": "BIARO"
+ },
+ {
+  "kode_bps": "7108020",
+  "nama_bps": "TAGULANDANG SELATAN",
+  "kode_dagri": "71.09.10",
+  "nama_dagri": "TAGULANDANG SELATAN"
+ },
+ {
+  "kode_bps": "7108030",
+  "nama_bps": "TAGULANDANG",
+  "kode_dagri": "71.09.03",
+  "nama_dagri": "TAGULANDANG"
+ },
+ {
+  "kode_bps": "7108040",
+  "nama_bps": "TAGULANDANG UTARA",
+  "kode_dagri": "71.09.06",
+  "nama_dagri": "TAGULANDANG UTARA"
+ },
+ {
+  "kode_bps": "7108050",
+  "nama_bps": "SIAU BARAT SELATAN",
+  "kode_dagri": "71.09.05",
+  "nama_dagri": "SIAU BARAT SELATAN"
+ },
+ {
+  "kode_bps": "7108060",
+  "nama_bps": "SIAU TIMUR SELATAN",
+  "kode_dagri": "71.09.04",
+  "nama_dagri": "SIAU TIMUR SELATAN"
+ },
+ {
+  "kode_bps": "7108070",
+  "nama_bps": "SIAU BARAT",
+  "kode_dagri": "71.09.02",
+  "nama_dagri": "SIAU BARAT"
+ },
+ {
+  "kode_bps": "7108080",
+  "nama_bps": "SIAU TENGAH",
+  "kode_dagri": "71.09.09",
+  "nama_dagri": "SIAU TENGAH"
+ },
+ {
+  "kode_bps": "7108090",
+  "nama_bps": "SIAU TIMUR",
+  "kode_dagri": "71.09.01",
+  "nama_dagri": "SIAU TIMUR"
+ },
+ {
+  "kode_bps": "7108100",
+  "nama_bps": "SIAU BARAT UTARA",
+  "kode_dagri": "71.09.08",
+  "nama_dagri": "SIAU BARAT UTARA"
+ }
+]

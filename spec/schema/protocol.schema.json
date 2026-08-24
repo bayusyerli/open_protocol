@@ -100,6 +100,11 @@
           },
           "additionalProperties": false
         },
+        "agroclimate": {
+          "type": "array",
+          "description": "Kelas agroklimat tempat protokol ini berlaku, satu entri per skema. Ini yang membedakan cakupan yang bisa diperiksa mesin dari cakupan yang hanya bisa dibaca orang: sebelum medan ini ada, satu-satunya penyempit iklim adalah `altitude_m` dan `season` bebas teks, dan tidak ada cara memastikan sebuah petak memenuhi keduanya. Menyebut skemanya juga memaksa memilih: \"dataran rendah\" berarti di bawah 700 m menurut Junghuhn dan di bawah 400 m menurut kelas hortikultura, dan protokol tidak boleh diam soal mana yang dimaksudnya.",
+          "items": { "$ref": "common.schema.json#/$defs/AgroclimateScope" }
+        },
         "altitude_m": {
           "type": "object",
           "properties": {

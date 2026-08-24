@@ -74,7 +74,60 @@ cek('15', 'kabupaten/kota ber-BPP', new Set(BPP.map((b) => `${b.region?.province
 cek('15', 'laboratorium terakreditasi', LAB.length, 889);
 cek('15', 'lab bisa ukur residu pestisida', LAB.filter((x) => x.capabilities?.pesticide_residue).length, 17);
 
-cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 34);
+cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 35);
+
+// ---- wilayah
+// Yang dijaga di sini bukan cuma cacahnya melainkan klaim yang bersandar padanya:
+// 34 provinsi (bukan 38), 514 kabupaten/kota, dan 167 kode taksa antara BPS & Kemendagri.
+const RGN = nd('spec/vocab/region/wilayah.ndjson');
+const tingkat = (t) => RGN.filter((x) => x.level === t).length;
+cek('22', 'wilayah seluruhnya', RGN.length, 7768);
+cek('22', 'provinsi', tingkat('province'), 34);
+cek('22', 'kabupaten', tingkat('regency'), 416);
+cek('22', 'kota', tingkat('city'), 98);
+cek('22', 'kabupaten/kota', tingkat('regency') + tingkat('city'), 514);
+cek('22', 'kecamatan', tingkat('district'), 7219);
+cek('22', 'nama dirapikan ejaannya', RGN.filter((x) => x.synonyms?.length).length, 10);
+{
+  // Kode yang sah di kedua sistem sambil menunjuk wilayah berlainan.
+  const dagri = new Map();
+  for (const x of RGN) {
+    const d = x.mappings?.find((m) => m.scheme === 'KEMENDAGRI')?.id;
+    if (d) dagri.set(d.replace(/\D/g, ''), x.id);
+  }
+  const taksa = RGN.filter((x) => x.code_scheme === 'BPS' && dagri.has(x.code) && dagri.get(x.code) !== x.id);
+  cek('22', 'kode taksa BPS vs Kemendagri', taksa.length, 167);
+}
+// Sambungan BPP → wilayah. Mutu tautan kecamatan dijaga per kelas, bukan sebagai satu
+// angka: "6.737 tertaut" tanpa memisah persis dari longgar menyembunyikan yang ditebak.
+{
+  const B = nd('spec/vocab/bpp/bpp.ndjson');
+  const kec = B.flatMap((x) => x.serves ?? []);
+  cek('22', 'balai tertaut kabupaten/kota', B.filter((x) => x.region?.id).length, 5844);
+  cek('22', 'balai tertaut lewat kode BPS', B.filter((x) => x.region?.regency_code_scheme === 'BPS' && x.region?.id && x.region.regency_code && x.region.id).length, 5844);
+  cek('22', 'sebutan kecamatan', kec.length, 6824);
+  cek('22', 'kecamatan cocok persis', kec.filter((x) => x.match === 'exact').length, 6704);
+  cek('22', 'kecamatan cocok longgar', kec.filter((x) => x.match === 'approx').length, 33);
+  cek('22', 'kecamatan tidak tertaut', kec.filter((x) => x.match === 'none').length, 87);
+}
+cek('22', 'seri harga bertaut wilayah', nd('spec/vocab/harga/harga.ndjson').filter((x) => x.region?.id).length, 8);
+
+// ---- agroklimat
+// Cacahan kelas per skema disalin ke docs/21. Yang dijaga di sini bukan sekadar
+// jumlahnya melainkan klaim yang bersandar padanya: 18 zona Oldeman, bukan 17 seperti
+// yang beredar di tabel yang memotong barisnya, dan 8 tipe Schmidt-Ferguson.
+const AKL = readdirSync(dari('spec/vocab'))
+  .filter((f) => f.startsWith('agroklimat-') && f.endsWith('.json'))
+  .map((f) => JSON.parse(readFileSync(join(dari('spec/vocab'), f), 'utf8')));
+const skema = (key) => AKL.find((x) => x.key === key);
+cek('21', 'skema agroklimat', AKL.length, 5);
+cek('21', 'zona Oldeman', skema('oldeman').classes.length, 18);
+cek('21', 'tipe Schmidt-Ferguson', skema('schmidt-ferguson').classes.length, 8);
+cek('21', 'zona Junghuhn', skema('junghuhn').classes.length, 4);
+cek('21', 'kelas dataran hortikultura', skema('dataran-hortikultura').classes.length, 3);
+cek('21', 'pola hujan BMKG', skema('pola-hujan').classes.length, 3);
+cek('21', 'kelas agroklimat seluruhnya', AKL.reduce((a, x) => a + x.classes.length, 0), 36);
+cek('21', 'skema berambang', AKL.filter((x) => x.decidable === 'threshold').length, 4);
 
 // ---- dasar
 cek('semua', 'pestisida terdaftar', P.length, 7724);

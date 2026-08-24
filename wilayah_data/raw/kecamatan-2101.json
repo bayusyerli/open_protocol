@@ -1,0 +1,74 @@
+[
+ {
+  "kode_bps": "2101010",
+  "nama_bps": "MORO",
+  "kode_dagri": "21.02.01",
+  "nama_dagri": "MORO"
+ },
+ {
+  "kode_bps": "2101011",
+  "nama_bps": "DURAI",
+  "kode_dagri": "21.02.09",
+  "nama_dagri": "DURAI"
+ },
+ {
+  "kode_bps": "2101020",
+  "nama_bps": "KUNDUR",
+  "kode_dagri": "21.02.02",
+  "nama_dagri": "KUNDUR"
+ },
+ {
+  "kode_bps": "2101021",
+  "nama_bps": "KUNDUR UTARA",
+  "kode_dagri": "21.02.07",
+  "nama_dagri": "KUNDUR UTARA"
+ },
+ {
+  "kode_bps": "2101022",
+  "nama_bps": "KUNDUR BARAT",
+  "kode_dagri": "21.02.08",
+  "nama_dagri": "KUNDUR BARAT"
+ },
+ {
+  "kode_bps": "2101023",
+  "nama_bps": "UNGAR",
+  "kode_dagri": "21.02.11",
+  "nama_dagri": "UNGAR"
+ },
+ {
+  "kode_bps": "2101024",
+  "nama_bps": "BELAT",
+  "kode_dagri": "21.02.12",
+  "nama_dagri": "BELAT"
+ },
+ {
+  "kode_bps": "2101030",
+  "nama_bps": "KARIMUN",
+  "kode_dagri": "21.02.03",
+  "nama_dagri": "KARIMUN"
+ },
+ {
+  "kode_bps": "2101031",
+  "nama_bps": "BURU",
+  "kode_dagri": "21.02.06",
+  "nama_dagri": "BURU"
+ },
+ {
+  "kode_bps": "2101032",
+  "nama_bps": "MERAL",
+  "kode_dagri": "21.02.04",
+  "nama_dagri": "MERAL"
+ },
+ {
+  "kode_bps": "2101033",
+  "nama_bps": "TEBING",
+  "kode_dagri": "21.02.05",
+  "nama_dagri": "TEBING"
+ },
+ {
+  "kode_bps": "2101034",
+  "nama_bps": "MERAL BARAT",
+  "kode_dagri": "21.02.10",
+  "nama_dagri": "MERAL BARAT"
+ }
+]

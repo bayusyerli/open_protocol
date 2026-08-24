@@ -16,7 +16,7 @@
     },
     "region": {
       "type": "object",
-      "description": "Wilayah sebagai teks, bukan rujukan ke entitas wilayah: kosakata `region` belum terisi, dan menerbitkan 7.276 entitas kecamatan sebagai efek samping panen ini akan mendahului keputusan yang belum diambil. Begitu kosakata wilayah berdiri, medan-medan ini yang jadi jalannya.",
+      "description": "Wilayah sebagai teks DAN sebagai rujukan. Medan ini semula hanya teks, dengan catatannya sendiri: \"kosakata region belum terisi. Begitu kosakata wilayah berdiri, medan-medan ini yang jadi jalannya.\" Kosakatanya berdiri 24 Agustus 2026, dan `id` ditambahkan — tanpa membuang satu pun teks aslinya.\n\nKeduanya bertahan karena menjawab hal yang berbeda: teksnya menyatakan apa yang tertulis di SIMLUHTAN, `id` menyatakan wilayah mana yang dimaksud. Pada satu rekaman keduanya memang tidak sepakat, dan justru ketidaksepakatan itu yang perlu terlihat.",
       "properties": {
         "province": {
           "type": "string",
@@ -28,8 +28,18 @@
         },
         "regency_code": {
           "type": "string",
-          "description": "Kode kabupaten/kota menurut SIMLUHTAN.",
+          "description": "Kode kabupaten/kota sebagaimana tertulis di SIMLUHTAN, apa adanya — termasuk yang keliru. 9191 untuk Manokwari Selatan bukan kode BPS mana pun; yang benar 9111. Nilainya TIDAK dibetulkan di sini, karena inilah yang benar-benar dikirim sumbernya; `id` yang menyatakan wilayah mana yang dimaksud.",
           "pattern": "^[0-9]{3,6}$"
+        },
+        "regency_code_scheme": {
+          "type": "string",
+          "description": "Skema penomoran `regency_code`. SIMLUHTAN memakai kode BPS — dipastikan dengan menghitungnya, bukan dengan menduga: 5.842 dari 5.844 rekaman cocok sebagai kode BPS, hanya 5.649 sebagai kode Kemendagri. Kode wilayah tanpa nama skemanya tidak bisa dipastikan artinya; 167 kode sah di kedua sistem sambil menunjuk wilayah yang berlainan.",
+          "enum": ["BPS", "KEMENDAGRI"]
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^op:rgn:[0-9]{8}$",
+          "description": "Kabupaten/kota ini di kosakata wilayah. Dicocokkan lewat KODE lebih dulu; nama hanya jadi cadangan ketika kodenya tidak dikenal, dan cadangan itu dibatasi kabupaten/kota di provinsi yang sama. Batas tingkat itu bukan kehati-hatian berlebihan: ada juga KECAMATAN bernama \"Manokwari Selatan\", di dalam Kabupaten Manokwari, dan pencocokan nama tanpa batas tingkat akan menyambungkan balai ke kecamatan alih-alih ke kabupatennya."
         }
       },
       "required": [
@@ -43,8 +53,25 @@
       "uniqueItems": true,
       "description": "Kecamatan yang dibina balai ini, sebagaimana bernama di sumber. Satu balai bisa membina sampai sebelas kecamatan. Larik ini BOLEH kosong: 59 catatan di SIMLUHTAN punya nama balai dan cacah poktan tetapi medan kecamatannya dibiarkan kosong. Menamainya berarti menebak, jadi kecamatannya dihitung di `counts.districts_unnamed` dan tidak dikarang di sini.",
       "items": {
-        "type": "string",
-        "minLength": 2
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 2,
+            "description": "Nama kecamatan SEBAGAIMANA TERTULIS di SIMLUHTAN. Tidak pernah ditimpa nama BPS, dan tidak pernah dibuang ketika tautannya gagal — daftar binaan yang kehilangan barisnya terbaca sebagai kecamatan yang tidak dibina."
+          },
+          "id": {
+            "type": "string",
+            "pattern": "^op:rgn:[0-9]{8}$"
+          },
+          "match": {
+            "type": "string",
+            "enum": ["exact", "approx", "none"],
+            "description": "Mutu tautannya, dan ia wajib terlihat. `exact` — namanya sama persis sesudah dinormalkan. `approx` — jarak suntingnya di dalam ambang yang SEBANDING panjang nama, dan tepat satu calon memenuhinya; ambang tetap ditolak karena pada nama pendek dua sunting bukan salah ketik melainkan tempat lain. `none` — tidak tertaut, dan sebagian besarnya bukan kegagalan pencocokan melainkan kecamatan yang memang belum ada di potret sumber wilayah."
+          }
+        },
+        "required": ["name", "match"],
+        "additionalProperties": false
       }
     },
     "name_variants": {

@@ -9,6 +9,7 @@ import { join, basename } from 'node:path';
 import Ajv2020 from 'ajv/dist/2020.js';
 import { hitungHash } from './kanonik.mjs';
 import { sidikGeometri, GERBANG } from './tools/sidik-petak.mjs';
+import { kelasCocok, kendalaDilanggar } from './tools/agroklimat.mjs';
 import addFormats from 'ajv-formats';
 
 export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] } = {}) {
@@ -130,6 +131,19 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
     // LangText juga berbentuk { id: "..." }, jadi bentuk saja tidak cukup — polanya harus ikut cocok.
     if (typeof node.id === 'string' && /^op:[a-z]{3}:/.test(node.id) && keys.every((k) => k === 'id' || k === 'label')) out.push(node.id);
     for (const k of keys) collectRefs(node[k], out);
+    return out;
+  };
+
+  // Seperti collectRefs, tetapi menyimpan JALUR-nya juga: pesan galat yang tidak
+  // menyebut medan mana yang keliru memaksa pembacanya mencari sendiri.
+  const refWilayah = (node, jalur = '', out = []) => {
+    if (Array.isArray(node)) { node.forEach((n, i) => refWilayah(n, `${jalur}[${i}]`, out)); return out; }
+    if (!node || typeof node !== 'object') return out;
+    const keys = Object.keys(node);
+    if (typeof node.id === 'string' && node.id.startsWith('op:rgn:') && keys.every((k) => k === 'id' || k === 'label')) {
+      out.push([jalur || 'rujukan', node]);
+    }
+    for (const k of keys) refWilayah(node[k], jalur ? `${jalur}.${k}` : k, out);
     return out;
   };
 
@@ -712,6 +726,269 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
         if (rule === 'required' && !has) {
           fail(file, 'L13-bentuk-langkah', `Jenis tindakan "${opType.key}" wajib membawa ${human}, tetapi langkah ini tidak membawanya.`);
         }
+      }
+    }
+  }
+
+  // ---------- 2b. Agroklimat ----------
+  // Sebuah kelas agroklimat adalah label yang sangat mudah disalin dan sangat sulit
+  // ditelusuri: "C3" terbaca sama persis entah ia dihitung dari 30 tahun deret hujan,
+  // dibaca dari peta provinsi, atau diucapkan seseorang di rapat. Keempat aturan di
+  // bawah ini yang membuat perbedaan itu bertahan di dalam data, bukan cuma di ingatan
+  // orang yang memasukkannya.
+  const skemaAgro = new Map();
+  const kelasAgro = new Map();
+  const kelasAsal = new Map();
+  for (const { file, doc } of docs) {
+    if (typeof doc.id !== 'string' || !doc.id.startsWith('op:akl:') || !Array.isArray(doc.classes)) continue;
+    skemaAgro.set(doc.id, doc);
+    for (const k of doc.classes) {
+      // Kelas hidup DI DALAM berkas skemanya, jadi L1 — yang hanya melihat id tingkat
+      // atas — tidak menyentuhnya. Kekembaran nomornya diperiksa di sini.
+      if (kelasAgro.has(k.id)) {
+        fail(file, 'L40-agroklimat-kelas', `Nomor kelas ${k.id} ("${k.code}") sudah dipakai di ${kelasAsal.get(k.id)}. Nomor kelas tidak boleh kembar antar-skema: sebuah penetapan menunjuk kelas lewat id, dan id yang menunjuk dua kelas membuat penetapan itu berarti dua hal.`);
+        continue;
+      }
+      kelasAgro.set(k.id, { kelas: k, skema: doc });
+      kelasAsal.set(k.id, file);
+    }
+  }
+
+  // L40 — kelas harus berada di dalam blok yang diklaim berkas skemanya, dan blok
+  // antar-skema tidak boleh bertindih. Ini L23 dan L25 untuk entitas bersarang.
+  // Preseden StageScale meninggalkan lubang di sini — blok fase dijaga tangan di
+  // konvensi kerja paralel dan tidak ada aturan yang menegakkannya. Bentuk bersarang
+  // itu ditiru; lubangnya tidak.
+  const klaimKelas = [];
+  for (const [id, skema] of skemaAgro) {
+    const blok = skema.class_id_blocks;
+    const file = kelasAsal.get(skema.classes[0]?.id) ?? id;
+    if (!blok) {
+      fail(file, 'L40-agroklimat-kelas', `Skema ${skema.key} tidak menyatakan class_id_blocks. Tanpa itu, dua skema yang ditambahkan bersamaan akan memberi nomor yang sama ke kelas yang berbeda — persis kekeliruan yang membuat konvensi kerja paralel ditulis.`);
+      continue;
+    }
+    klaimKelas.push({ file, key: skema.key, blok });
+    const luar = skema.classes
+      .map((k) => Number(k.id.split(':')[2]))
+      .filter((n) => !blok.some((b) => n >= b.from && n <= b.to));
+    if (luar.length) {
+      fail(file, 'L40-agroklimat-kelas', `${luar.length} kelas di luar blok yang diklaim (${blok.map((b) => `${b.from}-${b.to}`).join(', ')}): ${luar.slice(0, 5).join(', ')}.`);
+    }
+  }
+  for (let i = 0; i < klaimKelas.length; i++) {
+    for (let j = i + 1; j < klaimKelas.length; j++) {
+      for (const a of klaimKelas[i].blok) {
+        for (const b of klaimKelas[j].blok) {
+          if (a.from <= b.to && b.from <= a.to) {
+            fail(klaimKelas[i].file, 'L40-agroklimat-kelas', `Blok kelas ${a.from}-${a.to} bertindih dengan ${b.from}-${b.to} milik skema "${klaimKelas[j].key}".`);
+          }
+        }
+      }
+    }
+  }
+
+  // Satu penetapan diperiksa sama saja dari mana pun ia datang — petak, wilayah,
+  // atau contoh. Cakupan protokol memakai bentuk yang berbeda tetapi menunjuk kelas
+  // dengan cara yang sama, jadi pemeriksaan kelasnya dipakai ulang.
+  const periksaTunjukKelas = (file, di, skemaRef, kelasRef) => {
+    const skema = skemaAgro.get(skemaRef?.id);
+    if (!skema) {
+      fail(file, 'L40-agroklimat-kelas', `${di} menunjuk skema ${skemaRef?.id ?? 'tanpa id'} yang tidak ada di kosakata.`);
+      return null;
+    }
+    const entri = kelasAgro.get(kelasRef.id);
+    if (!entri) {
+      fail(file, 'L40-agroklimat-kelas', `${di} menunjuk kelas ${kelasRef.id} yang tidak ada di skema mana pun.`);
+      return null;
+    }
+    if (entri.skema.id !== skema.id) {
+      fail(file, 'L40-agroklimat-kelas', `${di} menyebut skema "${skema.key}" tetapi kelas ${kelasRef.id} ("${entri.kelas.code}") milik skema "${entri.skema.key}". Kode kelas tidak berarti apa-apa di luar skemanya: "C3" pada Oldeman dan "C" pada Schmidt-Ferguson tidak berhubungan.`);
+      return null;
+    }
+    if (kelasRef.code !== entri.kelas.code) {
+      fail(file, 'L40-agroklimat-kelas', `${di} menuliskan kode "${kelasRef.code}" tetapi ${kelasRef.id} berkode "${entri.kelas.code}". Kode ikut disalin justru supaya salah tunjuk seperti ini terlihat; yang mengikat id-nya.`);
+      return null;
+    }
+    return { skema, kelas: entri.kelas };
+  };
+
+  const WAJIB_BASIS = {
+    gridded: [['series', 'nama deret beserta versinya'], ['period', 'rentang tahun'], ['resolution_km', 'ukuran petak raster']],
+    station: [['period', 'rentang tahun'], ['station_distance_km', 'jarak ke stasiun']],
+    measured: [['series', 'alat atau data yang mengukurnya']],
+    map_lookup: [['series', 'nama peta beserta terbitannya'], ['map_scale', 'skala peta']],
+    declared: [['declared_by', 'siapa yang menyatakannya']],
+  };
+
+  for (const { file, doc } of docs) {
+    for (const [n, p] of (doc.agroclimate ?? []).entries()) {
+      const di = `agroclimate[${n}]`;
+      const cocok = periksaTunjukKelas(file, di, p.scheme, p.class);
+      if (!cocok) continue;
+      const { skema, kelas } = cocok;
+      const basis = p.basis ?? {};
+
+      // L41 — sebuah kelas tanpa asal-usul yang lengkap adalah kelas yang tidak bisa
+      // ditarik ulang siapa pun. Medan yang wajib berbeda menurut cara memperolehnya,
+      // dan justru perbedaan itu yang harus terlihat.
+      for (const [medan, sebut] of WAJIB_BASIS[basis.source_kind] ?? []) {
+        if (basis[medan] === undefined || basis[medan] === null) {
+          fail(file, 'L41-agroklimat-bersumber', `${di}.basis bersumber "${basis.source_kind}" tetapi tidak menyebut ${sebut} (basis.${medan}). Tanpa itu kelas ini tidak bisa dihitung ulang maupun dibantah, dan label zona yang tidak bisa dibantah akan dibaca sebagai fakta.`);
+        }
+      }
+      if (basis.source_kind === 'declared' && p.inputs) {
+        fail(file, 'L41-agroklimat-bersumber', `${di} bersumber "declared" tetapi membawa inputs. Angka masukan berarti kelas ini DIHITUNG dari sebuah deret — kalau begitu deretnya harus disebut, dan sumbernya bukan "declared". Pernyataan dan perhitungan tidak boleh memakai bentuk yang sama.`);
+      }
+      const minTahun = skema.period_requirement?.min_years;
+      if (minTahun && basis.period) {
+        const tahun = basis.period.to - basis.period.from + 1;
+        if (tahun < minTahun) {
+          fail(file, 'L41-agroklimat-bersumber', `${di} memakai deret ${tahun} tahun (${basis.period.from}–${basis.period.to}) sementara skema "${skema.key}" menuntut minimal ${minTahun}. Skema ini merata-ratakan cacahan bulan lintas tahun; pada deret sependek itu yang tersalin ke label zona adalah keacakan satu-dua musim, bukan iklimnya.`);
+        }
+      }
+
+      // L42 — hitung ulang. Inilah yang membuat sebuah label zona bisa dibantah dari
+      // rekamannya sendiri, sebagaimana L34 membantah content_hash dan L36 membantah
+      // sidik geometri.
+      if (skema.decidable !== 'threshold') {
+        if (p.inputs) {
+          fail(file, 'L42-agroklimat-hitung-ulang', `${di} membawa inputs padahal skema "${skema.key}" berjenis qualitative — kelasnya tidak ditentukan ambang angka, jadi tidak ada yang bisa dihitung darinya. ${skema.qualitative_reason}`);
+        }
+        continue;
+      }
+      if (!p.inputs) {
+        fail(file, 'L42-agroklimat-hitung-ulang', `${di} memakai skema berambang "${skema.key}" tanpa inputs. Kelas yang tidak menyertakan angka asalnya tidak bisa diperiksa ulang, dan bentuk berambang justru dipilih supaya bisa.`);
+        continue;
+      }
+      const diminta = new Set(skema.inputs.map((x) => x.key));
+      const diberi = new Set(Object.keys(p.inputs));
+      const kurang = [...diminta].filter((k) => !diberi.has(k));
+      const lebih = [...diberi].filter((k) => !diminta.has(k));
+      if (kurang.length || lebih.length) {
+        fail(file, 'L42-agroklimat-hitung-ulang', `${di}.inputs tidak cocok dengan masukan yang dideklarasikan skema "${skema.key}"${kurang.length ? `; kurang: ${kurang.join(', ')}` : ''}${lebih.length ? `; berlebih: ${lebih.join(', ')}` : ''}. Kunci masukan terikat pada skemanya karena ambang bulannya berbeda-beda — cacahan bulan kering Oldeman (<100 mm) bukan cacahan bulan kering Schmidt-Ferguson (<60 mm), dan memasangkannya ke skema yang salah menghasilkan kelas yang tampak sah.`);
+        continue;
+      }
+      for (const k of kendalaDilanggar(skema, p.inputs)) {
+        fail(file, 'L42-agroklimat-hitung-ulang', `${di}.inputs melanggar kendala skema (${k.sum_of.join(' + ')} = ${k.nilai}). ${k.message}`);
+      }
+      const cocokKelas = kelasCocok(skema, p.inputs);
+      if (cocokKelas.length === 0) {
+        fail(file, 'L42-agroklimat-hitung-ulang', `${di} menyatakan kelas "${kelas.code}" tetapi tidak ada satu pun kelas skema "${skema.key}" yang cocok dengan inputs-nya (${JSON.stringify(p.inputs)}).`);
+      } else if (cocokKelas.length > 1) {
+        fail(file, 'L42-agroklimat-hitung-ulang', `${di}.inputs cocok dengan ${cocokKelas.length} kelas sekaligus (${cocokKelas.map((x) => x.code).join(', ')}). Yang salah bukan penetapannya melainkan skemanya: ambang antar-kelas bertindih di perbatasan itu.`);
+      } else if (cocokKelas[0].id !== kelas.id) {
+        fail(file, 'L42-agroklimat-hitung-ulang', `${di} menyatakan kelas "${kelas.code}" tetapi inputs-nya (${JSON.stringify(p.inputs)}) menghasilkan "${cocokKelas[0].code}". Entah kelasnya disalin dari tempat lain, entah angkanya yang berubah tanpa kelasnya ikut dihitung ulang.`);
+      }
+    }
+
+    // L43 — cakupan protokol. Ketinggian yang dinyatakan sebagai angka tanpa kelas
+    // adalah cakupan yang tidak bisa dicocokkan dengan petak mana pun secara mesin,
+    // dan "dataran rendah" tanpa skema berarti dua hal sekaligus.
+    const cakupan = doc.applicability?.agroclimate;
+    if (cakupan) {
+      const pitaTinggi = [];
+      for (const [n, s] of cakupan.entries()) {
+        for (const [m, kr] of s.classes.entries()) {
+          const cocok = periksaTunjukKelas(file, `applicability.agroclimate[${n}].classes[${m}]`, s.scheme, kr);
+          if (cocok && cocok.skema.axis === 'elevation') {
+            for (const c of cocok.kelas.criteria ?? []) {
+              pitaTinggi.push({ kode: cocok.kelas.code, skema: cocok.skema.key, bawah: c.ge ?? c.gt ?? 0, atas: c.lt ?? c.le ?? Infinity });
+            }
+          }
+        }
+      }
+      const alt = doc.applicability?.altitude_m;
+      if (alt && pitaTinggi.length) {
+        const bawah = Math.min(...pitaTinggi.map((p) => p.bawah));
+        const atas = Math.max(...pitaTinggi.map((p) => p.atas));
+        const sebut = pitaTinggi.map((p) => `${p.skema}/${p.kode} ${p.bawah}–${p.atas === Infinity ? '∞' : p.atas} m`).join(', ');
+        if ((alt.min ?? 0) < bawah || (alt.max ?? Infinity) > atas) {
+          fail(file, 'L43-agroklimat-cakupan', `applicability.altitude_m ${alt.min ?? 0}–${alt.max ?? '∞'} m keluar dari pita kelas yang dicakupnya (${sebut}). Dua pernyataan cakupan yang tidak sepakat lebih buruk daripada satu: yang membaca angka dan yang membaca kelas akan menyaring petak yang berbeda.`);
+        }
+      }
+    } else if (doc.applicability?.altitude_m) {
+      warn(file, 'L43-agroklimat-cakupan', 'applicability.altitude_m dinyatakan tanpa applicability.agroclimate. Angka ketinggian tanpa kelas tidak bisa dicocokkan dengan petak secara mesin, dan istilah yang dipakai menamainya — "dataran rendah", "dataran tinggi" — berarti hal berbeda menurut skema yang berbeda.');
+    }
+  }
+
+  // ---------- 2c. Wilayah ----------
+  // Kosakata wilayah punya bahaya yang tidak dimiliki kosakata lain: nomornya SANGAT
+  // mirip kode wilayah, dan kode wilayah tidak unik antar-sistem. 167 kode di berkas ini
+  // sah menurut BPS DAN menurut Kemendagri sambil menunjuk kabupaten yang berlainan.
+  // Sebelum aturan ini ada, tiga berkas contoh di repositori ini menunjuk
+  // `op:rgn:00003318` berlabel "Kabupaten Rembang" — nomor yang disusun agar menyerupai
+  // kode BPS Rembang, padahal 3318 kode Pati. Kosakata wilayah dibangun, dan nomor itu
+  // ternyata menunjuk Babat Toman, sebuah kecamatan di Musi Banyuasin, 700 km dari sana.
+  // L10 meloloskannya karena tujuannya memang ada. Yang keliru bukan keberadaannya
+  // melainkan kecocokannya.
+  const TINGKAT_INDUK = {
+    province: ['country'],
+    regency: ['province'],
+    city: ['province'],
+    district: ['regency', 'city'],
+    village: ['district'],
+  };
+
+  for (const { file, doc } of docs) {
+    const wilayah = typeof doc.id === 'string' && doc.id.startsWith('op:rgn:');
+    if (wilayah) {
+      // Kode wilayah tanpa nama skemanya tidak bisa dipastikan artinya.
+      if (doc.code && !doc.code_scheme) {
+        fail(file, 'L44-wilayah', `Wilayah ini membawa code "${doc.code}" tanpa code_scheme. Kode wilayah Indonesia dipelihara dua lembaga dengan penomoran yang berbeda, dan 167 kode di kosakata ini sah di keduanya sambil menunjuk wilayah yang berlainan — 1401 adalah Kuantan Singingi menurut BPS dan Kabupaten Kampar menurut Kemendagri. Kode tanpa skemanya bukan kabur melainkan bisa salah.`);
+      }
+      const bolehInduk = TINGKAT_INDUK[doc.level];
+      if (!bolehInduk) {
+        // country dan agroecological_zone tidak punya induk yang ditentukan tingkatnya.
+        if (doc.level === 'country' && doc.parent) {
+          fail(file, 'L44-wilayah', 'Negara tidak boleh punya induk.');
+        }
+      } else if (!doc.parent) {
+        fail(file, 'L44-wilayah', `Wilayah bertingkat "${doc.level}" tanpa parent. Jenjang yang putus membuat penjumlahan ke atas — kecamatan ke kabupaten, kabupaten ke provinsi — diam-diam kehilangan anggotanya.`);
+      } else {
+        const induk = entityById.get(doc.parent.id);
+        if (induk && !bolehInduk.includes(induk.level)) {
+          fail(file, 'L44-wilayah', `Wilayah bertingkat "${doc.level}" berinduk pada "${induk.level}" (${doc.parent.id}). Induknya harus tepat satu tingkat di atas: ${bolehInduk.join(' atau ')}. Jenjang yang melompat membuat agregasi menghitung wilayah yang sama dua kali.`);
+        }
+      }
+    }
+
+    // Kecamatan binaan sebuah balai harus benar-benar berada DI DALAM kabupatennya.
+    //
+    // Ini satu-satunya pemeriksaan mesin atas sambungan yang dibuat pencocokan nama, dan
+    // ia menjaga kekeliruan yang paling mungkin terjadi di sana: nama kecamatan berulang
+    // di seluruh Indonesia — ada "Manokwari Selatan" yang kabupaten dan "Manokwari
+    // Selatan" yang kecamatan — sehingga tautan yang meleset tidak akan tampak salah dari
+    // namanya sendiri. Yang membuatnya ketahuan cuma induknya.
+    if (typeof doc.id === 'string' && doc.id.startsWith('op:bpp:') && doc.region?.id) {
+      for (const [i, k] of (doc.serves ?? []).entries()) {
+        if (!k.id) continue;
+        const kec = entityById.get(k.id);
+        if (!kec) continue;
+        if (kec.level !== 'district') {
+          fail(file, 'L44-wilayah', `serves[${i}] "${k.name}" menunjuk ${k.id} yang bertingkat "${kec.level}", bukan kecamatan. Nama kabupaten dan nama kecamatan kerap sama persis, jadi tautan yang naik satu tingkat tidak akan tampak keliru dari namanya.`);
+        } else if (kec.parent?.id !== doc.region.id) {
+          fail(file, 'L44-wilayah', `serves[${i}] "${k.name}" menunjuk kecamatan ${k.id} yang berinduk ${kec.parent?.id ?? 'entah'}, sementara balai ini berada di ${doc.region.id}. Balai tidak membina kecamatan di kabupaten lain.`);
+        }
+      }
+    }
+
+    // Label pada rujukan ke wilayah harus cocok dengan wilayah yang ditunjuk.
+    //
+    // Aturan ini SENGAJA hanya berlaku untuk wilayah, bukan untuk seluruh rujukan.
+    // Diuji dulu ke seluruh korpus: 2.166 dari 47.627 rujukan berlabel punya label yang
+    // berbeda dari entitasnya, dan hampir seluruhnya BENAR — registri produk menuliskan
+    // nama bahan sebagaimana tercetak di kemasan ("Mancozeb", "Propiconazole") sementara
+    // entitasnya memakai ejaan Indonesia yang dibakukan ("Mankozeb", "Propikonazol"),
+    // dan justru ejaan kemasan itu yang perlu dipertahankan. Nama wilayah tidak punya
+    // varian semacam itu: tidak ada "ejaan kemasan" untuk Kabupaten Rembang.
+    for (const [jalur, ref] of refWilayah(doc)) {
+      if (!ref.label) continue;
+      const tujuan = entityById.get(ref.id);
+      if (!tujuan) continue; // L10 yang mengurus rujukan menggantung
+      const namaAsli = typeof tujuan.label === 'string' ? tujuan.label : tujuan.label?.id;
+      if (!namaAsli) continue;
+      if (namaAsli.trim().toLowerCase() !== String(ref.label).trim().toLowerCase()) {
+        fail(file, 'L44-wilayah', `${jalur} menunjuk ${ref.id} dengan label "${ref.label}", tetapi wilayah itu bernama "${namaAsli}". Label pada rujukan bukan sumber kebenaran — tetapi label yang tidak sepakat dengan tujuannya adalah rujukan yang menunjuk tempat lain, dan tempat lain adalah satu-satunya kekeliruan yang tidak bisa diperbaiki pembacanya.`);
       }
     }
   }

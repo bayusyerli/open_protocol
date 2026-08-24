@@ -1,0 +1,26 @@
+[
+ {
+  "kode_bps": "1271010",
+  "nama_bps": "SIBOLGA UTARA",
+  "kode_dagri": "12.73.01",
+  "nama_dagri": "SIBOLGA UTARA"
+ },
+ {
+  "kode_bps": "1271020",
+  "nama_bps": "SIBOLGA KOTA",
+  "kode_dagri": "12.73.02",
+  "nama_dagri": "SIBOLGA KOTA"
+ },
+ {
+  "kode_bps": "1271030",
+  "nama_bps": "SIBOLGA SELATAN",
+  "kode_dagri": "12.73.03",
+  "nama_dagri": "SIBOLGA SELATAN"
+ },
+ {
+  "kode_bps": "1271031",
+  "nama_bps": "SIBOLGA SAMBAS",
+  "kode_dagri": "12.73.04",
+  "nama_dagri": "SIBOLGA SAMBAS"
+ }
+]

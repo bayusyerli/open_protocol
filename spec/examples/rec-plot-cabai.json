@@ -3,15 +3,77 @@
   "id": "op:plt:019e80e8-c900-79c9-ac35-7cced06151d9",
   "kind": "field",
   "label": "Tegal lor",
-  "holder": { "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4", "label": "Pak Slamet" },
-  "region": { "id": "op:rgn:00003318", "label": "Kabupaten Rembang" },
+  "holder": {
+    "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4",
+    "label": "Pak Slamet"
+  },
+  "region": {
+    "id": "op:rgn:00000303",
+    "label": "Kabupaten Rembang"
+  },
   "geometry_quality": "single_point",
-  "geometry": { "type": "Point", "coordinates": [111.3412, -6.7089] },
-  "area": { "value": 0.28, "unit": "har" },
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      111.3412,
+      -6.7089
+    ]
+  },
+  "area": {
+    "value": 0.28,
+    "unit": "har"
+  },
   "tenure": "owned",
   "elevation_m": 42,
   "irrigation_type": "pump",
-  "soil": { "texture": "lempung berpasir", "ph": 6.1, "tested_at": "2026-04-11" },
+  "soil": {
+    "texture": "lempung berpasir",
+    "ph": 6.1,
+    "tested_at": "2026-04-11"
+  },
+  "agroclimate": [
+    {
+      "scheme": {
+        "id": "op:akl:00000004",
+        "label": "Kelas dataran — pemakaian hortikultura"
+      },
+      "class": {
+        "id": "op:akz:00000301",
+        "code": "rendah",
+        "label": "Dataran rendah"
+      },
+      "basis": {
+        "source_kind": "measured",
+        "series": "Altimeter barometrik ponsel, dibaca di titik petak 2026-04-11"
+      },
+      "inputs": {
+        "ketinggian_m": 42
+      },
+      "computed_at": "2026-06-01T01:00:00Z"
+    },
+    {
+      "scheme": {
+        "id": "op:akl:00000003",
+        "label": "Zona ketinggian Junghuhn"
+      },
+      "class": {
+        "id": "op:akz:00000201",
+        "code": "panas",
+        "label": "Zona panas"
+      },
+      "basis": {
+        "source_kind": "measured",
+        "series": "Altimeter barometrik ponsel, dibaca di titik petak 2026-04-11"
+      },
+      "inputs": {
+        "ketinggian_m": 42
+      },
+      "computed_at": "2026-06-01T01:00:00Z",
+      "note": {
+        "id": "Kelas yang sama diberikan dua skema ketinggian yang berbeda, dan itu memang gunanya keduanya disimpan: 42 m jatuh jauh di dalam kelas terendah keduanya, jadi di sini mereka sepakat. Pada 500 m mereka tidak akan sepakat, dan petak yang hanya menyimpan salah satunya tidak akan bisa mengatakan yang mana."
+      }
+    }
+  ],
   "data_classification": "farm_private",
   "created_at": "2026-06-01T01:00:00Z"
 }

@@ -1818,7 +1818,10 @@ for (const b of bppSemua) {
     // rekaman ini TIDAK punya alamat, dan itu batas sumbernya — laporan tamu SIMLUHTAN
     // hanya memberi nama dan kecamatan. Menggeokodenya massal ditolak dengan sadar,
     // karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.
-    k: b.serves ?? [],
+    // `serves` kini berbentuk objek {name, id, match}; indeks tetap memancarkan NAMA saja
+    // supaya layar yang sudah berjalan tidak berubah. Rujukan wilayahnya ada di kosakata,
+    // dan layar yang membutuhkannya belum dibangun.
+    k: (b.serves ?? []).map((x) => (typeof x === 'string' ? x : x.name)),
     p: b.counts?.extension_workers?.total ?? null,
     g: b.counts?.farmer_groups ?? null,
   });

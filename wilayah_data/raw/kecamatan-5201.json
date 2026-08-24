@@ -1,0 +1,62 @@
+[
+ {
+  "kode_bps": "5201010",
+  "nama_bps": "SEKOTONG",
+  "kode_dagri": "52.01.07",
+  "nama_dagri": "SEKOTONG"
+ },
+ {
+  "kode_bps": "5201011",
+  "nama_bps": "LEMBAR",
+  "kode_dagri": "52.01.13",
+  "nama_dagri": "LEMBAR"
+ },
+ {
+  "kode_bps": "5201020",
+  "nama_bps": "GERUNG",
+  "kode_dagri": "52.01.01",
+  "nama_dagri": "GERUNG"
+ },
+ {
+  "kode_bps": "5201030",
+  "nama_bps": "LABU API",
+  "kode_dagri": "52.01.08",
+  "nama_dagri": "LABUAPI"
+ },
+ {
+  "kode_bps": "5201040",
+  "nama_bps": "KEDIRI",
+  "kode_dagri": "52.01.02",
+  "nama_dagri": "KEDIRI"
+ },
+ {
+  "kode_bps": "5201041",
+  "nama_bps": "KURIPAN",
+  "kode_dagri": "52.01.15",
+  "nama_dagri": "KURIPAN"
+ },
+ {
+  "kode_bps": "5201050",
+  "nama_bps": "NARMADA",
+  "kode_dagri": "52.01.03",
+  "nama_dagri": "NARMADA"
+ },
+ {
+  "kode_bps": "5201051",
+  "nama_bps": "LINGSAR",
+  "kode_dagri": "52.01.12",
+  "nama_dagri": "LINGSAR"
+ },
+ {
+  "kode_bps": "5201060",
+  "nama_bps": "GUNUNG SARI",
+  "kode_dagri": "52.01.09",
+  "nama_dagri": "GUNUNGSARI"
+ },
+ {
+  "kode_bps": "5201061",
+  "nama_bps": "BATU LAYAR",
+  "kode_dagri": "52.01.14",
+  "nama_dagri": "BATU LAYAR"
+ }
+]

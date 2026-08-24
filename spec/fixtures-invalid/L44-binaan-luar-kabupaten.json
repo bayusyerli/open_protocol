@@ -1,0 +1,62 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "bpp",
+    "label": {
+      "id": "Fixture L44 — balai membina kecamatan di kabupaten lain"
+    },
+    "scope": {
+      "id": "Fixture uji negatif. Balai berada di Kabupaten Rembang tetapi salah satu kecamatan binaannya milik Kabupaten Pati — persis kekeliruan yang bisa dihasilkan pencocokan nama, dan yang tidak akan tampak keliru dari namanya sendiri."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft"
+    },
+    "id_blocks": [
+      {
+        "from": 90000,
+        "to": 90999
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "op:bpp:00090001",
+      "key": "fixture-l44-binaan-luar-kabupaten",
+      "label": {
+        "id": "BPP Fixture Luar Kabupaten"
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft"
+      },
+      "no_mapping_reason": "Fixture uji; tidak menunjuk balai nyata mana pun dan karena itu tidak punya pengenal luar.",
+      "region": {
+        "province": "JAWA TENGAH",
+        "regency": "REMBANG",
+        "regency_code": "3317",
+        "regency_code_scheme": "BPS",
+        "id": "op:rgn:00000303"
+      },
+      "serves": [
+        {
+          "name": "SUKOLILO",
+          "id": "op:rgn:00004955",
+          "match": "approx"
+        }
+      ],
+      "counts": {
+        "districts": 1,
+        "farmer_groups": 0,
+        "extension_workers": {
+          "pns": 0,
+          "p3k": 0,
+          "thl": 0,
+          "swadaya": 0,
+          "swasta": 0,
+          "total": 0
+        }
+      }
+    }
+  ]
+}

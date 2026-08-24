@@ -1,0 +1,44 @@
+[
+ {
+  "kode_bps": "3674010",
+  "nama_bps": "SETU",
+  "kode_dagri": "36.74.07",
+  "nama_dagri": "SETU"
+ },
+ {
+  "kode_bps": "3674020",
+  "nama_bps": "SERPONG",
+  "kode_dagri": "36.74.01",
+  "nama_dagri": "SERPONG"
+ },
+ {
+  "kode_bps": "3674030",
+  "nama_bps": "PAMULANG",
+  "kode_dagri": "36.74.06",
+  "nama_dagri": "PAMULANG"
+ },
+ {
+  "kode_bps": "3674040",
+  "nama_bps": "CIPUTAT",
+  "kode_dagri": "36.74.04",
+  "nama_dagri": "CIPUTAT"
+ },
+ {
+  "kode_bps": "3674050",
+  "nama_bps": "CIPUTAT TIMUR",
+  "kode_dagri": "36.74.05",
+  "nama_dagri": "CIPUTAT TIMUR"
+ },
+ {
+  "kode_bps": "3674060",
+  "nama_bps": "PONDOK AREN",
+  "kode_dagri": "36.74.03",
+  "nama_dagri": "PONDOK AREN"
+ },
+ {
+  "kode_bps": "3674070",
+  "nama_bps": "SERPONG UTARA",
+  "kode_dagri": "36.74.02",
+  "nama_dagri": "SERPONG UTARA"
+ }
+]

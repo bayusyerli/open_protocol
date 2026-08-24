@@ -7,7 +7,7 @@
     "CuratedId": {
       "description": "ID entitas vokabuler yang dikurasi dewan redaksi. Nomor 8 digit, diberikan sekali, tidak pernah didaur ulang.",
       "type": "string",
-      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev|proto|pcp|hrg|lab|bpp|cfr):[0-9]{8}$"
+      "pattern": "^op:(cmd|vty|var|sca|stg|sub|prd|sed|opt|met|pst|rgn|sit|dev|proto|pcp|hrg|lab|bpp|cfr|akl|akz):[0-9]{8}$"
     },
     "RecordId": {
       "description": "ID data usaha tani. UUIDv7 supaya bisa dibuat offline tanpa server dan tetap terurut menurut waktu.",
@@ -509,6 +509,7 @@
             "SNI",
             "KEMENTAN",
             "KEMENDAG",
+            "KEMENDAGRI",
             "KAN",
             "BPS",
             "AGSTACK",
@@ -556,8 +557,9 @@
         },
         "year": {
           "type": "integer",
-          "minimum": 1900,
-          "maximum": 2100
+          "minimum": 1800,
+          "maximum": 2100,
+          "description": "Batas bawahnya semula 1900 dan diturunkan ke 1800 saat skema agroklimat masuk: pembagian zona ketinggian Junghuhn terbit 1857 dan masih dipakai kata demi kata sampai sekarang. Sumber yang tidak bisa dicatat tahunnya akan dicatat tanpa tahun, dan itu lebih buruk daripada melonggarkan batas yang memang dipilih sembarang."
         },
         "url": {
           "type": "string",
@@ -625,10 +627,20 @@
       "allOf": [
         {
           "if": {
-            "properties": { "role": { "const": "reviewer" } },
-            "required": ["role"]
+            "properties": {
+              "role": {
+                "const": "reviewer"
+              }
+            },
+            "required": [
+              "role"
+            ]
           },
-          "then": { "required": ["date"] }
+          "then": {
+            "required": [
+              "date"
+            ]
+          }
         }
       ],
       "additionalProperties": false
@@ -733,6 +745,185 @@
         "personal_data",
         "commercially_sensitive"
       ]
+    },
+    "AgroclimateBasis": {
+      "description": "Dari mana kelas agroklimat itu diperoleh. Ada karena label zona adalah bagian yang paling mudah disalin dan paling sulit ditelusuri: \"C3\" terbaca sama persis entah ia dihitung dari 30 tahun data hujan berjarak 4 km, dibaca dari peta provinsi berskala 1:250.000, atau diucapkan seseorang. Ketiganya sah; yang tidak sah adalah menampilkannya tanpa membedakannya. Bentuknya sengaja meniru `geometry_quality` pada Plot — titik tunggal harus terlihat sebagai titik tunggal.",
+      "type": "object",
+      "properties": {
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "gridded",
+            "station",
+            "measured",
+            "map_lookup",
+            "declared"
+          ],
+          "description": "gridded — dihitung dari petak raster (mis. CHIRPS). station — dihitung dari deret satu stasiun hujan yang berjarak dari lokasi. measured — diukur DI lokasi itu sendiri, mis. ketinggian dari altimeter; dipakai skema bersumbu ketinggian, yang masukannya sebuah pengukuran dan bukan deret iklim. map_lookup — dibaca dari peta zona yang sudah diterbitkan orang lain. declared — dinyatakan seseorang tanpa angka di belakangnya sama sekali."
+        },
+        "series": {
+          "type": "string",
+          "minLength": 3,
+          "description": "Nama deret atau peta beserta versinya, mis. \"CHIRPS v2.0 monthly\". Nama tanpa versi tidak bisa ditarik ulang."
+        },
+        "publisher": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string",
+          "description": "Pengenal SPDX lisensi sumbernya. Kelas agroklimat yang dihitung dari deret berlisensi tertutup tidak boleh diterbitkan ulang begitu saja, dan medan ini yang membuat batas itu terlihat sebelum ia dilanggar."
+        },
+        "uri": {
+          "type": "string",
+          "format": "uri"
+        },
+        "period": {
+          "type": "object",
+          "description": "Rentang tahun deret yang dipakai. Oldeman maupun Schmidt-Ferguson keduanya merata-ratakan CACAHAN bulan lintas tahun, bukan mengklasifikasi satu tahun — jadi rentangnya bagian dari hasilnya, bukan keterangan tambahan.",
+          "properties": {
+            "from": {
+              "type": "integer",
+              "minimum": 1900,
+              "maximum": 2100
+            },
+            "to": {
+              "type": "integer",
+              "minimum": 1900,
+              "maximum": 2100
+            }
+          },
+          "required": [
+            "from",
+            "to"
+          ],
+          "additionalProperties": false
+        },
+        "resolution_km": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "description": "Sisi petak raster dalam kilometer. Wajib bila source_kind \"gridded\": petak 5,5 km yang disebut \"iklim lahan ini\" menyembunyikan bahwa lereng atas dan lereng bawah satu gunung mendapat angka yang sama."
+        },
+        "station_name": {
+          "type": "string"
+        },
+        "station_distance_km": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Jarak dari lokasi ke stasiun. Wajib bila source_kind \"station\". Nol berarti lokasinya memang stasiun itu."
+        },
+        "map_scale": {
+          "type": "string",
+          "description": "Skala peta sumbernya, mis. \"1:250.000\". Wajib bila source_kind \"map_lookup\" — satu milimeter pada peta itu 250 meter di lapangan, dan batas zona tidak pernah setajam garisnya."
+        },
+        "map_edition": {
+          "type": "string"
+        },
+        "declared_by": {
+          "$ref": "#/$defs/Ref",
+          "description": "Siapa yang menyatakannya. Wajib bila source_kind \"declared\"."
+        }
+      },
+      "required": [
+        "source_kind"
+      ],
+      "additionalProperties": false
+    },
+    "AgroclimateDetermination": {
+      "description": "Satu penetapan kelas agroklimat untuk satu lokasi menurut SATU skema. Berbentuk larik karena skema-skema itu tidak bersaing melainkan menjawab pertanyaan berlainan, dan karena kata yang sama berarti hal berbeda di antaranya: \"bulan kering\" adalah <100 mm pada Oldeman dan <60 mm pada Schmidt-Ferguson. Menyimpannya sebagai satu medan tunggal akan memaksa memilih salah satu, lalu melupakan bahwa pilihan itu pernah dibuat.",
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "$ref": "#/$defs/Ref"
+        },
+        "class": {
+          "type": "object",
+          "description": "Kelas yang ditetapkan. `code` ikut disalin — bukan sebagai sumber kebenaran melainkan supaya salah tunjuk terlihat: pemeriksa mencocokkannya dengan kode kelas yang ditunjuk `id`.",
+          "properties": {
+            "id": {
+              "type": "string",
+              "pattern": "^op:akz:[0-9]{8}$"
+            },
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "id",
+            "code"
+          ],
+          "additionalProperties": false
+        },
+        "basis": {
+          "$ref": "#/$defs/AgroclimateBasis"
+        },
+        "inputs": {
+          "type": "object",
+          "description": "Angka yang kelas ini dihitung DARINYA, memakai kunci masukan yang dideklarasikan skemanya. Inilah yang membuat sebuah label zona bisa dibantah dari rekamannya sendiri: pemeriksa menghitung ulang kelasnya dari angka-angka ini dan menolak bila hasilnya lain.",
+          "additionalProperties": {
+            "type": "number"
+          },
+          "minProperties": 1
+        },
+        "computed_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "note": {
+          "$ref": "#/$defs/LangText"
+        }
+      },
+      "required": [
+        "scheme",
+        "class",
+        "basis"
+      ],
+      "additionalProperties": false
+    },
+    "AgroclimateScope": {
+      "description": "Cakupan berlaku menurut agroklimat — dipakai protokol, bukan lokasi. Bedanya dengan AgroclimateDetermination: yang ini menyebut HIMPUNAN kelas tempat sesuatu berlaku, bukan satu kelas tempat sesuatu berada.",
+      "type": "object",
+      "properties": {
+        "scheme": {
+          "$ref": "#/$defs/Ref"
+        },
+        "classes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^op:akz:[0-9]{8}$"
+              },
+              "code": {
+                "type": "string",
+                "minLength": 1
+              },
+              "label": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "id",
+              "code"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "note": {
+          "$ref": "#/$defs/LangText"
+        }
+      },
+      "required": [
+        "scheme",
+        "classes"
+      ],
+      "additionalProperties": false
     },
     "CuratedEntity": {
       "description": "Bentuk dasar setiap entitas vokabuler. Aturan pemetaan wajib ditegakkan di sini.",

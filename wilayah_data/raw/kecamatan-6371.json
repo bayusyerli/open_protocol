@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "6371010",
+  "nama_bps": "BANJARMASIN SELATAN",
+  "kode_dagri": "63.71.01",
+  "nama_dagri": "BANJARMASIN SELATAN"
+ },
+ {
+  "kode_bps": "6371020",
+  "nama_bps": "BANJARMASIN TIMUR",
+  "kode_dagri": "63.71.02",
+  "nama_dagri": "BANJARMASIN TIMUR"
+ },
+ {
+  "kode_bps": "6371030",
+  "nama_bps": "BANJARMASIN BARAT",
+  "kode_dagri": "63.71.03",
+  "nama_dagri": "BANJARMASIN BARAT"
+ },
+ {
+  "kode_bps": "6371031",
+  "nama_bps": "BANJARMASIN TENGAH",
+  "kode_dagri": "63.71.05",
+  "nama_dagri": "BANJARMASIN TENGAH"
+ },
+ {
+  "kode_bps": "6371040",
+  "nama_bps": "BANJARMASIN UTARA",
+  "kode_dagri": "63.71.04",
+  "nama_dagri": "BANJARMASIN UTARA"
+ }
+]

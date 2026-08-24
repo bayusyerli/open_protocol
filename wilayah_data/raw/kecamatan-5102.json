@@ -1,0 +1,62 @@
+[
+ {
+  "kode_bps": "5102010",
+  "nama_bps": "SELEMADEG",
+  "kode_dagri": "51.02.01",
+  "nama_dagri": "SELEMADEG"
+ },
+ {
+  "kode_bps": "5102011",
+  "nama_bps": "SELEMADEG TIMUR",
+  "kode_dagri": "51.02.02",
+  "nama_dagri": "SALAMADEG TIMUR"
+ },
+ {
+  "kode_bps": "5102012",
+  "nama_bps": "SELEMADEG BARAT",
+  "kode_dagri": "51.02.03",
+  "nama_dagri": "SALEMADEG BARAT"
+ },
+ {
+  "kode_bps": "5102020",
+  "nama_bps": "KERAMBITAN",
+  "kode_dagri": "51.02.04",
+  "nama_dagri": "KERAMBITAN"
+ },
+ {
+  "kode_bps": "5102030",
+  "nama_bps": "TABANAN",
+  "kode_dagri": "51.02.05",
+  "nama_dagri": "TABANAN"
+ },
+ {
+  "kode_bps": "5102040",
+  "nama_bps": "KEDIRI",
+  "kode_dagri": "51.02.06",
+  "nama_dagri": "KEDIRI"
+ },
+ {
+  "kode_bps": "5102050",
+  "nama_bps": "MARGA",
+  "kode_dagri": "51.02.07",
+  "nama_dagri": "MARGA"
+ },
+ {
+  "kode_bps": "5102060",
+  "nama_bps": "BATURITI",
+  "kode_dagri": "51.02.09",
+  "nama_dagri": "BATURITI"
+ },
+ {
+  "kode_bps": "5102070",
+  "nama_bps": "PENEBEL",
+  "kode_dagri": "51.02.08",
+  "nama_dagri": "PENEBEL"
+ },
+ {
+  "kode_bps": "5102080",
+  "nama_bps": "PUPUAN",
+  "kode_dagri": "51.02.10",
+  "nama_dagri": "PUPUAN"
+ }
+]

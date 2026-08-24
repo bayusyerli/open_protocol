@@ -420,11 +420,36 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | **sisi pupuk selesai** 23 Agustus 2026 — indeks `kandungan/` memuat 12.564 produk, formulir di jalur 2; sisi pestisida terindeks tetapi belum berpermukaan | **sebagian** |
 | C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **10 dari 778**; 0 dari 768 di registri. **Sisi pintu selesai** 23 Agustus 2026 — 738 OPT registri berproduk kini terjangkau dari kotak menurut nama, dengan pernyataan bahwa gejalanya tidak ada | teks gejala **BANGUN bertahap**; pintunya **selesai** |
 | C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, satu permintaan ke SP2KP. **Sisi harga petani tidak lagi nol** (dikoreksi 23 Agustus 2026): 8 seri tingkat pekebun dari **6 provinsi sawit**, dua di antaranya harga pekebun **swadaya**. Tetapi ia hanya SAWIT, dan pangan pokok tetap nol | sisi eceran **selesai**; sisi petani **sebagian** — sawit ada, pangan belum; **pembanding di perangkat selesai** 23 Agustus 2026, **setoran tidak dibangun** dan itu putusan |
-| C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
+| C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | **dibelah dua** 24 Agustus 2026. Sisi **cuaca** tetap 0 dan tetap dipinjam. Sisi **agroklimat** — kelas sebuah lokasi menurut skema bernama — **selesai**: 5 skema, 36 kelas, ambangnya terbaca mesin, dengan `L40`–`L43` menegakkan asal-usul dan hitung-ulangnya | sisi cuaca **PINJAM** (BMKG); sisi agroklimat **BANGUN** — **selesai**⁽ᵃ⁾ |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
 | C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | **empat dari enam** 23 Agustus 2026 — toko tani & penjual benih tampil; **5.844 balai penyuluhan** dan **889 laboratorium** (17 beresidu) **kini tampil** — balai ditelusuri menurut kecamatan, laboratorium disaring menurut kemampuan; penangkar & alsintan nol. Semula: **sebagian** 23 Agustus 2026 — `app/toko.html`: 234 berkoordinat (OSM) + 2.248 berwilayah. Penyuluh, POPT, lab, alsintan **nol** | **sebagian** |
 | C8 | Sifat agronomi varietas | petani, penyuluh, penangkar | #3 | **0 dari 11.227** | **TUNDA** |
 | C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** bebas hak cipta, tetapi **harga pupuk eceran di SP2KP ternyata kosong** — Urea, NPK, SP-36, dan ZA terdaftar tanpa satu pun angka terisi | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** dari teks peraturan, bukan dari SP2KP |
+
+> ⁽ᵃ⁾ **C5 ternyata dua kapabilitas, dan penggabungannya menyembunyikan yang kedua.**
+> Barisnya semula berbunyi *"Cuaca & iklim per lokasi · 0 · PINJAM (BMKG)"*, dan putusan
+> pinjam itu benar — untuk cuaca. BMKG menerbitkan prakiraan sampai tingkat kelurahan lewat
+> API terbuka, dan membangunnya ulang pemborosan.
+>
+> Yang tidak diterbitkan siapa pun adalah separuh yang lain. **Tidak ada satu sumber pun
+> yang, diberi koordinat, mengembalikan zona agroklimat sebuah lokasi dalam bentuk terbaca
+> mesin.** Yang ada peta kertas 1975–1980, raster berlisensi terbatas, dan jurnal per
+> provinsi. Pinjamannya hidup dan tetap dipakai; ia cuma tidak pernah mencakup separuh ini.
+>
+> Bedanya bukan halus. Cuaca berubah tiap jam dan menjawab "apa yang terjadi minggu ini";
+> agroklimat berubah tiap beberapa dasawarsa dan menjawab "tempat macam apa ini" — dan
+> pertanyaan kedualah yang menentukan **protokol mana yang berlaku di sebuah lahan.**
+> Selama ia kosong, satu-satunya penyempit iklim pada protokol adalah angka ketinggian dan
+> teks musim bebas, dan tidak ada cara mesin memastikan sebuah petak memenuhi keduanya.
+>
+> **Pelajaran C4 berlaku di sini, terbalik.** C4 turun dari pinjam ke bangun karena
+> pinjamannya **mati**. C5 dibelah karena pinjamannya **hidup tetapi hanya menutup
+> separuh** — dan separuh yang tertutup itu yang paling sering diminta, sehingga separuh
+> yang menganga tidak pernah terlihat. Bagi empat pinjaman yang tersisa, pertanyaan
+> pemeriksaannya karena itu dua, bukan satu: *sumbernya masih hidup?* dan *sumbernya
+> memang mencakup seluruh yang tertulis di barisnya?*
+>
+> Rinciannya di [21-agroklimat.md](21-agroklimat.md).
 
 > **C7 dibangun 23 Agustus 2026, dan satu angka di tabel ini terkoreksi karenanya.**
 > Baris C7 semula berbunyi *"2.181 benih TTI beralamat"*. Terhitung dari berkasnya, hanya
@@ -823,7 +848,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | **BANGUN** — gelombang 0–1 | 16 | A1, A2, A3, A5, B2⁽ᵖ⁾, B3, B4, C2, C3⁽ᵇ⁾, **C4**⁽ʰ⁾, C7, D3, D4, D5, G1, G5 |
 | **BANGUN** — gelombang 2 · fase 3 | 8 | E1, E2, E3, E4, E5, F1, G2, **G6** |
 | **BANGUN hati-hati** | 1 | G3 — juga **SAMBUNG** ke rantai POPT |
-| **PINJAM / SAMBUNG** | 3 | C5, C6, C9⁽ᵗ⁾ |
+| **PINJAM / SAMBUNG** | 3 | C5⁽ᵃ⁾, C6, C9⁽ᵗ⁾ |
 | **TUNDA** | 7 | A4, B5, C8, D6, F3, F4⁽ᵈ⁾, G4 |
 
 - ⁽ᵖ⁾ **sebagian** — B2 tanpa PHI.
@@ -831,6 +856,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 - ⁽ᵇ⁾ **bertahap** — 10 dari 778 OPT hari ini.
 - ⁽ᵗ⁾ **tertunda** sampai status subsidi punya jalur data; sambungannya ke e-RDKK bisa lebih dulu.
 - ⁽ᵈ⁾ **dibangun belakangan**, setelah E5 berjalan.
+- ⁽ᵃ⁾ **hanya separuhnya** — sisi cuaca dipinjam, sisi agroklimat dibangun dan selesai 24 Agustus 2026.
 
 > **Angka yang paling menentukan bukan 17, melainkan 5.** Lima kapabilitas — C5, C6, C9,
 > dan sisi sambungan G3 serta F4 — dijawab dengan meminjam atau menyambung, bukan

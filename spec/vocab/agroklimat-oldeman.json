@@ -1,0 +1,581 @@
+{
+  "$schema": "../schema/agroclimate-scheme.schema.json",
+  "id": "op:akl:00000001",
+  "key": "oldeman",
+  "label": {
+    "id": "Zona agroklimat Oldeman",
+    "en": "Oldeman agroclimatic zones"
+  },
+  "definition": {
+    "id": "Klasifikasi agroklimat yang dirancang di Bogor untuk padi dan palawija, bukan untuk iklim pada umumnya. Ambangnya diturunkan dari kebutuhan tanamannya: 200 mm sebulan dipandang cukup untuk padi sawah, 100 mm cukup untuk sebagian besar palawija. Huruf utamanya menghitung runtun bulan basah — panjang jendela tanam padi; angkanya menghitung runtun bulan kering — panjang paceklik yang harus dilewati."
+  },
+  "axis": "rainfall_regime",
+  "decidable": "threshold",
+  "inputs": [
+    {
+      "key": "runtun_bulan_basah",
+      "label": {
+        "id": "Runtun bulan basah terpanjang"
+      },
+      "definition": {
+        "id": "Jumlah bulan basah BERTURUT-TURUT terbanyak dalam setahun, dirata-ratakan lintas tahun deret. Bukan total bulan basah setahun: dua belas bulan basah yang terpencar tidak memberi jendela tanam yang sama dengan lima bulan yang berderet."
+      },
+      "unit": "mo",
+      "integer": true,
+      "min": 0,
+      "max": 12
+    },
+    {
+      "key": "runtun_bulan_kering",
+      "label": {
+        "id": "Runtun bulan kering terpanjang"
+      },
+      "definition": {
+        "id": "Jumlah bulan kering BERTURUT-TURUT terbanyak dalam setahun, dirata-ratakan lintas tahun deret."
+      },
+      "unit": "mo",
+      "integer": true,
+      "min": 0,
+      "max": 12
+    }
+  ],
+  "month_definitions": {
+    "wet_month_min_mm": 200,
+    "dry_month_max_mm": 100,
+    "note": {
+      "id": "Bulan lembab (100–200 mm) tidak dihitung sebagai keduanya, dan itu disengaja: ia memutus runtun basah tanpa menambah runtun kering. Ambang ini BUKAN ambang Schmidt-Ferguson (>100 mm dan <60 mm) — cacahan bulan yang dihitung dengan salah satunya tidak sah dipakai yang lain."
+    }
+  },
+  "period_requirement": {
+    "min_years": 10,
+    "note": {
+      "id": "Oldeman merata-ratakan cacahan bulan lintas tahun, jadi deret pendek hanya memindahkan keacakan satu-dua tahun ke dalam label zona. Sepuluh tahun adalah batas terendah yang lazim dipakai; kepustakaan pemetaan mutakhir memakai 30 tahun."
+    }
+  },
+  "input_constraints": [
+    {
+      "sum_of": [
+        "runtun_bulan_basah",
+        "runtun_bulan_kering"
+      ],
+      "le": 12,
+      "message": "Runtun bulan basah ditambah runtun bulan kering tidak bisa melewati 12 — keduanya diukur di dalam tahun yang sama, dan setahun hanya punya dua belas bulan. Inilah sebabnya A3, A4, B4, C5, dan D5 tidak ada: bukan karena Oldeman lupa mendefinisikannya, melainkan karena kombinasinya mustahil."
+    }
+  ],
+  "classes": [
+    {
+      "id": "op:akz:00000001",
+      "code": "A1",
+      "label": {
+        "id": "Oldeman A1",
+        "en": "Oldeman A1"
+      },
+      "definition": {
+        "id": "Lebih dari 9 bulan basah berturut-turut dan kurang dari 2 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 1,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 10
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "le": 1
+        }
+      ],
+      "agronomy": {
+        "id": "Jendela tanam basahnya praktis sepanjang tahun; yang jadi kendala di sini bukan air melainkan penjemuran gabah dan penyakit yang menyukai kelembapan tinggi."
+      }
+    },
+    {
+      "id": "op:akz:00000002",
+      "code": "A2",
+      "label": {
+        "id": "Oldeman A2",
+        "en": "Oldeman A2"
+      },
+      "definition": {
+        "id": "Lebih dari 9 bulan basah berturut-turut dan 2–3 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 2,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 10
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 2,
+          "le": 3
+        }
+      ],
+      "agronomy": {
+        "id": "Jendela tanam basahnya praktis sepanjang tahun; yang jadi kendala di sini bukan air melainkan penjemuran gabah dan penyakit yang menyukai kelembapan tinggi."
+      }
+    },
+    {
+      "id": "op:akz:00000003",
+      "code": "B1",
+      "label": {
+        "id": "Oldeman B1",
+        "en": "Oldeman B1"
+      },
+      "definition": {
+        "id": "7–9 bulan basah berturut-turut dan kurang dari 2 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 3,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 7,
+          "le": 9
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "le": 1
+        }
+      ],
+      "agronomy": {
+        "id": "Cukup untuk dua kali padi sawah bila jadwal tanamnya rapat, dengan palawija menyusul di ekor musim."
+      }
+    },
+    {
+      "id": "op:akz:00000004",
+      "code": "B2",
+      "label": {
+        "id": "Oldeman B2",
+        "en": "Oldeman B2"
+      },
+      "definition": {
+        "id": "7–9 bulan basah berturut-turut dan 2–3 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 4,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 7,
+          "le": 9
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 2,
+          "le": 3
+        }
+      ],
+      "agronomy": {
+        "id": "Cukup untuk dua kali padi sawah bila jadwal tanamnya rapat, dengan palawija menyusul di ekor musim."
+      }
+    },
+    {
+      "id": "op:akz:00000005",
+      "code": "B3",
+      "label": {
+        "id": "Oldeman B3",
+        "en": "Oldeman B3"
+      },
+      "definition": {
+        "id": "7–9 bulan basah berturut-turut dan 4–6 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 5,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 7,
+          "le": 9
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 4,
+          "le": 6
+        }
+      ],
+      "agronomy": {
+        "id": "Cukup untuk dua kali padi sawah bila jadwal tanamnya rapat, dengan palawija menyusul di ekor musim."
+      }
+    },
+    {
+      "id": "op:akz:00000006",
+      "code": "C1",
+      "label": {
+        "id": "Oldeman C1",
+        "en": "Oldeman C1"
+      },
+      "definition": {
+        "id": "5–6 bulan basah berturut-turut dan kurang dari 2 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 6,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 5,
+          "le": 6
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "le": 1
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi sawah aman; kedua kalinya bergantung irigasi, bukan hujan."
+      }
+    },
+    {
+      "id": "op:akz:00000007",
+      "code": "C2",
+      "label": {
+        "id": "Oldeman C2",
+        "en": "Oldeman C2"
+      },
+      "definition": {
+        "id": "5–6 bulan basah berturut-turut dan 2–3 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 7,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 5,
+          "le": 6
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 2,
+          "le": 3
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi sawah aman; kedua kalinya bergantung irigasi, bukan hujan."
+      }
+    },
+    {
+      "id": "op:akz:00000008",
+      "code": "C3",
+      "label": {
+        "id": "Oldeman C3",
+        "en": "Oldeman C3"
+      },
+      "definition": {
+        "id": "5–6 bulan basah berturut-turut dan 4–6 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 8,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 5,
+          "le": 6
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 4,
+          "le": 6
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi sawah aman; kedua kalinya bergantung irigasi, bukan hujan."
+      }
+    },
+    {
+      "id": "op:akz:00000009",
+      "code": "C4",
+      "label": {
+        "id": "Oldeman C4",
+        "en": "Oldeman C4"
+      },
+      "definition": {
+        "id": "5–6 bulan basah berturut-turut dan 7–9 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 9,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 5,
+          "le": 6
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 7,
+          "le": 9
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi sawah aman; kedua kalinya bergantung irigasi, bukan hujan."
+      }
+    },
+    {
+      "id": "op:akz:00000010",
+      "code": "D1",
+      "label": {
+        "id": "Oldeman D1",
+        "en": "Oldeman D1"
+      },
+      "definition": {
+        "id": "3–4 bulan basah berturut-turut dan kurang dari 2 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 10,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 3,
+          "le": 4
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "le": 1
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi berumur pendek, lalu palawija — dan jarak antara keduanya lebih ditentukan awal musim daripada oleh kalender."
+      }
+    },
+    {
+      "id": "op:akz:00000011",
+      "code": "D2",
+      "label": {
+        "id": "Oldeman D2",
+        "en": "Oldeman D2"
+      },
+      "definition": {
+        "id": "3–4 bulan basah berturut-turut dan 2–3 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 11,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 3,
+          "le": 4
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 2,
+          "le": 3
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi berumur pendek, lalu palawija — dan jarak antara keduanya lebih ditentukan awal musim daripada oleh kalender."
+      }
+    },
+    {
+      "id": "op:akz:00000012",
+      "code": "D3",
+      "label": {
+        "id": "Oldeman D3",
+        "en": "Oldeman D3"
+      },
+      "definition": {
+        "id": "3–4 bulan basah berturut-turut dan 4–6 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 12,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 3,
+          "le": 4
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 4,
+          "le": 6
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi berumur pendek, lalu palawija — dan jarak antara keduanya lebih ditentukan awal musim daripada oleh kalender."
+      }
+    },
+    {
+      "id": "op:akz:00000013",
+      "code": "D4",
+      "label": {
+        "id": "Oldeman D4",
+        "en": "Oldeman D4"
+      },
+      "definition": {
+        "id": "3–4 bulan basah berturut-turut dan 7–9 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 13,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "ge": 3,
+          "le": 4
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 7,
+          "le": 9
+        }
+      ],
+      "agronomy": {
+        "id": "Satu kali padi berumur pendek, lalu palawija — dan jarak antara keduanya lebih ditentukan awal musim daripada oleh kalender."
+      }
+    },
+    {
+      "id": "op:akz:00000014",
+      "code": "E1",
+      "label": {
+        "id": "Oldeman E1",
+        "en": "Oldeman E1"
+      },
+      "definition": {
+        "id": "Kurang dari 3 bulan basah berturut-turut dan kurang dari 2 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 14,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "le": 2
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "le": 1
+        }
+      ],
+      "agronomy": {
+        "id": "Terlalu pendek untuk padi sawah tadah hujan. Yang tumbuh di sini palawija berumur pendek, tanaman tahunan berakar dalam, atau padi dengan irigasi penuh."
+      }
+    },
+    {
+      "id": "op:akz:00000015",
+      "code": "E2",
+      "label": {
+        "id": "Oldeman E2",
+        "en": "Oldeman E2"
+      },
+      "definition": {
+        "id": "Kurang dari 3 bulan basah berturut-turut dan 2–3 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 15,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "le": 2
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 2,
+          "le": 3
+        }
+      ],
+      "agronomy": {
+        "id": "Terlalu pendek untuk padi sawah tadah hujan. Yang tumbuh di sini palawija berumur pendek, tanaman tahunan berakar dalam, atau padi dengan irigasi penuh."
+      }
+    },
+    {
+      "id": "op:akz:00000016",
+      "code": "E3",
+      "label": {
+        "id": "Oldeman E3",
+        "en": "Oldeman E3"
+      },
+      "definition": {
+        "id": "Kurang dari 3 bulan basah berturut-turut dan 4–6 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 16,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "le": 2
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 4,
+          "le": 6
+        }
+      ],
+      "agronomy": {
+        "id": "Terlalu pendek untuk padi sawah tadah hujan. Yang tumbuh di sini palawija berumur pendek, tanaman tahunan berakar dalam, atau padi dengan irigasi penuh."
+      }
+    },
+    {
+      "id": "op:akz:00000017",
+      "code": "E4",
+      "label": {
+        "id": "Oldeman E4",
+        "en": "Oldeman E4"
+      },
+      "definition": {
+        "id": "Kurang dari 3 bulan basah berturut-turut dan 7–9 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 17,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "le": 2
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 7,
+          "le": 9
+        }
+      ],
+      "agronomy": {
+        "id": "Terlalu pendek untuk padi sawah tadah hujan. Yang tumbuh di sini palawija berumur pendek, tanaman tahunan berakar dalam, atau padi dengan irigasi penuh."
+      }
+    },
+    {
+      "id": "op:akz:00000018",
+      "code": "E5",
+      "label": {
+        "id": "Oldeman E5",
+        "en": "Oldeman E5"
+      },
+      "definition": {
+        "id": "Kurang dari 3 bulan basah berturut-turut dan 10–12 bulan kering berturut-turut. Bulan basah >200 mm, bulan kering <100 mm."
+      },
+      "order": 18,
+      "criteria": [
+        {
+          "input": "runtun_bulan_basah",
+          "le": 2
+        },
+        {
+          "input": "runtun_bulan_kering",
+          "ge": 10,
+          "le": 12
+        }
+      ],
+      "agronomy": {
+        "id": "Terlalu pendek untuk padi sawah tadah hujan. Yang tumbuh di sini palawija berumur pendek, tanaman tahunan berakar dalam, atau padi dengan irigasi penuh."
+      }
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-24T00:00:00Z",
+    "review_due": "2027-08-24"
+  },
+  "no_mapping_reason": "Tidak ada kosakata luar yang dipetakan di repositori ini memuat zona agroklimat Oldeman. AGROVOC punya istilah agroklimatologi tetapi bukan kelas-kelasnya; BBCH, EPPO, dan GBIF menyangkut hal lain sama sekali. Kodenya sendiri — huruf plus angka — sudah jadi pengenal yang dipakai seragam sejak 1975 dan tidak punya pesaing.",
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "An agro-climatic map of Java",
+        "publisher": "Contributions of the Central Research Institute for Agriculture, Bogor, No. 17",
+        "year": 1975,
+        "locator": "Oldeman, L.R. Terbitan pertama yang memuat ambang dan tabel zonanya."
+      },
+      {
+        "title": "Pemetaan Zona Agroklimat Oldeman di Provinsi Jawa Tengah Menggunakan Data CHIRPS",
+        "publisher": "Jurnal Geosains dan Remote Sensing 3(2):95-102",
+        "year": 2022,
+        "locator": "Madani, I. & Wahid, K.A. Dipakai sebagai bukti bahwa deret hujan gridded berlisensi terbuka cukup untuk menurunkan zona ini: tujuh zona ditemukan di Jawa Tengah dari 30 tahun CHIRPS (1992–2021).",
+        "url": "https://doi.org/10.23960/jgrs.2022.v3i2.99"
+      }
+    ]
+  },
+  "notes": {
+    "id": "E5 memang ada dan bukan salah ketik: zona itu ditemukan di Nusa Tenggara Timur, meskipun luasnya di bawah satu persen provinsi. Skema ini punya 18 kelas, bukan 17 seperti yang sering dikutip dari tabel yang memotong baris terakhirnya."
+  },
+  "id_blocks": [
+    {
+      "from": 1,
+      "to": 1
+    }
+  ],
+  "class_id_blocks": [
+    {
+      "from": 1,
+      "to": 99
+    }
+  ]
+}

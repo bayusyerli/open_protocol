@@ -1,0 +1,26 @@
+[
+ {
+  "kode_bps": "6571010",
+  "nama_bps": "TARAKAN TIMUR",
+  "kode_dagri": "65.71.03",
+  "nama_dagri": "TARAKAN TIMUR"
+ },
+ {
+  "kode_bps": "6571020",
+  "nama_bps": "TARAKAN TENGAH",
+  "kode_dagri": "65.71.02",
+  "nama_dagri": "TARAKAN TENGAH"
+ },
+ {
+  "kode_bps": "6571030",
+  "nama_bps": "TARAKAN BARAT",
+  "kode_dagri": "65.71.01",
+  "nama_dagri": "TARAKAN BARAT"
+ },
+ {
+  "kode_bps": "6571040",
+  "nama_bps": "TARAKAN UTARA",
+  "kode_dagri": "65.71.04",
+  "nama_dagri": "TARAKAN UTARA"
+ }
+]

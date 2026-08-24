@@ -19,7 +19,7 @@ spec/
 ├── 01-identitas-dan-versi.md     aturan ID stabil, versi, dan status
 ├── 02-crosswalk.md               pemetaan ke AGROVOC, AgrO, ICASA, ADAPT, dll.
 ├── 03-keputusan-desain.md        keputusan yang diambil dan alasannya
-├── schema/                       34 berkas JSON Schema (draft 2020-12)
+├── schema/                       35 berkas JSON Schema (draft 2020-12)
 ├── vocab/                        kosakata terkurasi — 4.228 entitas + 67 fase
 │   ├── product/                  registri produk — 14.920 entitas (NDJSON)
 │   └── variety/                  registri varietas — 11.227 entitas (NDJSON)
@@ -69,13 +69,14 @@ Tiga kelompok entitas. Yang membuat semuanya menyatu adalah **`Step`**.
 | `Variable` | `op:var` | Apa pun yang bisa diamati atau diukur |
 | `Method` | `op:met` | Cara aplikasi atau cara pengamatan |
 | `Pest` | `op:pst` | OPT: hama, penyakit, gulma, nematoda |
-| `Region` | `op:rgn` | Wilayah administratif dan zona agroekologi |
+| `Region` | `op:rgn` | **7.768 wilayah administratif** sampai kecamatan — negara, provinsi, kabupaten, kota, kecamatan. Membawa kode BPS **dan** Kemendagri, karena keduanya tidak sepakat. Zona agroekologi memakai entitas yang sama tetapi bloknya terpisah |
 | `DeviationReason` | `op:dev` | Alasan realisasi menyimpang dari rencana |
 | `TargetSite` | `op:sit` | Tempat aplikasi pada tanaman atau lahan |
 | `Principal` | `op:pcp` | Badan pemegang pendaftaran pupuk, pestisida, atau varietas. Satu rekaman per badan, bukan per registri |
 | `Harga` | `op:hrg` | Seri harga komoditas beserta lisensi dan cakupan sumbernya |
 | `Lab` | `op:lab` | Laboratorium penguji terakreditasi KAN yang lingkupnya menyentuh usaha tani. Yang berguna bukan namanya melainkan `capabilities` — tanah, pupuk, air, pangan, jaringan tanaman, residu pestisida |
-| `BPP` | `op:bpp` | Balai Penyuluhan Pertanian beserta kecamatan binaannya. Entitasnya balai, bukan kecamatan; cacahan penyuluh, tanpa nama orang |
+| `BPP` | `op:bpp` | Balai Penyuluhan Pertanian beserta kecamatan binaannya. Entitasnya balai, bukan kecamatan; cacahan penyuluh, tanpa nama orang. **Tertaut ke `Region`** — 5.844/5.844 ke kabupaten/kota lewat kode, 6.737/6.824 kecamatan lewat nama, dan tiap tautan kecamatan membawa mutunya sendiri |
+| `AgroclimateScheme` / kelasnya | `op:akl` / `op:akz` | **Skema klasifikasi agroklimat** beserta kelas-kelasnya, dengan ambang yang terbaca mesin. Kelas hidup di dalam skemanya — "C3" tidak berarti apa-apa tanpa menyebut Oldeman |
 | `CycleFailureReason` | `op:cfr` | **Sebab satu siklus berakhir tanpa hasil.** Tiga dari 15 entri berpadanan tepat dengan risiko yang dijamin polis AUTP — banjir, kekeringan, serangan OPT; dua belas sisanya tidak dijamin siapa pun, dan justru di sana modal habis, giliran air tidak datang, dan harga jatuh di bawah ongkos panen |
 
 ### Data usaha tani — milik petani, ID UUIDv7
@@ -177,6 +178,97 @@ ujung yang bisa dituju. Lapis mentah `penyuluh_data/` kini menamainya — 548 di
 dan **belum satu pun masuk indeks**. Layar yang menyusun laporan lalu menyuruh orang
 mengirimkannya ke kantor yang tidak punya alamat adalah kotak masuk yang tak seorang pun
 di ujungnya. Yang membukanya C7, bukan G3.
+
+### `L40`–`L43` — agroklimat: kelas yang bisa dibantah dari rekamannya sendiri
+
+Sebelum keempatnya ada, satu-satunya cara menyempitkan protokol menurut iklim adalah
+`altitude_m` berupa angka dan `season` berupa teks bebas. Keduanya terbaca manusia dan
+tidak satu pun bisa dicocokkan dengan sebuah petak oleh mesin — dan protokol yang tidak
+bisa disaring akan tersaji kepada orang yang lahannya tidak dicakupnya.
+
+Yang dibangun bukan data iklim melainkan **putusan atas data iklim**: skema (Oldeman,
+Schmidt-Ferguson, Junghuhn, kelas dataran hortikultura, pola hujan BMKG) menyimpan
+ambangnya sendiri dalam bentuk yang terbaca mesin, dan sebuah lokasi menyimpan kelas
+beserta **angka yang kelas itu dihitung darinya**.
+
+| Aturan | Isi |
+|---|---|
+| `L40` | Kelas harus milik skema yang disebut bersamanya, kodenya harus cocok dengan id-nya, nomornya tidak boleh kembar, dan bloknya tidak boleh bertindih antar-skema |
+| `L41` | Penetapan wajib menyebut asal-usulnya, dan medan yang wajib berbeda menurut caranya: petak raster wajib menyebut resolusinya, stasiun wajib menyebut jaraknya, peta wajib menyebut skalanya, pernyataan wajib menyebut siapa. Deret yang lebih pendek daripada tuntutan skemanya ditolak |
+| `L42` | **Kelasnya dihitung ulang dari angkanya** dan ditolak bila hasilnya lain — termasuk bila masukannya milik skema lain, atau melanggar kendala skemanya |
+| `L43` | Cakupan ketinggian sebuah protokol tidak boleh keluar dari pita kelas yang dicakupnya; ketinggian tanpa kelas diperingatkan |
+
+`L42` adalah aturan yang sama bentuknya dengan `L34` (hash yang harus cocok dengan isinya)
+dan `L36` (sidik yang harus cocok dengan geometrinya): **ia membuat sebuah klaim bisa
+dibantah dari rekamannya sendiri.** Kelas "C3" yang tersimpan bersama BB=5 dan BK=4 bisa
+diperiksa siapa pun; kelas "C3" yang tersimpan sendirian tidak bisa diperiksa siapa pun,
+dan yang tidak bisa dibantah akan dibaca sebagai fakta.
+
+**Aturannya langsung menemukan satu kekeliruan yang sudah ada di repositori ini.** Protokol
+`cabai-dataran-rendah` menamai dirinya "dataran rendah" dan mencakupkan diri pada 0–400 m.
+Kedua pernyataan itu tidak saling menegakkan: pada zona ketinggian Junghuhn — yang juga
+dipakai luas di Indonesia — dataran rendah membentang sampai **700 m**. Lahan 500 m dpl
+memenuhi judulnya dan gagal cakupannya. `L43` menyalakannya sebagai peringatan, dan
+protokolnya dinaikkan ke 0.2.0 dengan skemanya disebut namanya.
+
+Kelas hidup di dalam berkas skemanya, meniru bentuk `Stage` di dalam `StageScale` —
+**tetapi tidak meniru lubangnya.** Blok nomor fase dijaga tangan di konvensi kerja paralel
+dan tidak ada aturan yang menegakkannya; blok nomor kelas diklaim lewat `class_id_blocks`
+dan ditegakkan `L40` persis seperti `L23` dan `L25` menegakkan blok entitas tingkat atas.
+
+Rinciannya — termasuk apa yang sengaja **tidak** dibangun, dan kenapa Köppen ditolak —
+di [`docs/21-agroklimat.md`](../docs/21-agroklimat.md).
+
+### `L44` — wilayah: nomor yang bukan kode, dan label yang harus sepakat
+
+Kosakata wilayah punya bahaya yang tidak dimiliki kosakata lain: **nomornya sangat mirip
+kode wilayah, dan kode wilayah tidak unik antar-sistem.**
+
+Sebelum kosakata ini dibangun, tiga berkas contoh di repositori ini menunjuk
+`op:rgn:00003318` berlabel *"Kabupaten Rembang"* — nomor yang disusun agar menyerupai kode
+BPS. Kode BPS Rembang **3317**; 3318 adalah Pati. Ketika kosakatanya dibangun, nomor itu
+ternyata menunjuk **Babat Toman, sebuah kecamatan di Musi Banyuasin** — 700 km dari petak
+yang dimaksud. `L10` meloloskannya tanpa suara, karena tujuannya memang ada. **Yang keliru
+bukan keberadaannya melainkan kecocokannya**, dan itu jenis galat yang butuh aturannya
+sendiri.
+
+| Ditolak | Kenapa |
+|---|---|
+| `code` tanpa `code_scheme` | **167 kode sah di dua sistem sambil menunjuk wilayah berlainan** — 1401 adalah Kuantan Singingi menurut BPS dan Kabupaten Kampar menurut Kemendagri; 91 adalah Papua Barat menurut BPS dan Papua menurut Kemendagri |
+| Jenjang wilayah yang melompat atau putus | kecamatan yang berinduk langsung ke provinsi membuat penjumlahan ke atas menghitung wilayah yang sama dua kali |
+| Rujukan wilayah yang labelnya tidak sepakat dengan tujuannya | menangkap kasus Babat Toman pada detik pertama |
+
+Yang ketiga **sengaja hanya berlaku untuk wilayah**, dan itu diputuskan dengan mengukurnya
+lebih dulu: **2.166 dari 47.627 rujukan berlabel di seluruh korpus punya label yang berbeda
+dari entitasnya, dan hampir seluruhnya benar.** Registri produk menulis nama bahan
+sebagaimana tercetak di kemasan — *Mancozeb*, *Propiconazole* — sementara entitasnya
+memakai ejaan Indonesia yang dibakukan — *Mankozeb*, *Propikonazol*. Ejaan kemasan itu
+justru yang perlu dipertahankan, karena itulah yang dibaca petani di toko. Nama wilayah
+tidak punya varian semacam itu.
+
+Aturan yang benar di satu jenis entitas dan salah di jenis lain disempitkan ke jenis itu,
+bukan dilonggarkan jadi peringatan sampai tidak ada yang membacanya.
+
+**Diperluas 24 Agustus 2026 ketika 5.844 balai penyuluhan disambungkan ke wilayah.**
+Sambungannya dua dengan mutu berbeda: kabupaten lewat **kode** (keras), kecamatan lewat
+**nama** (lunak). Yang lunak dijaga `L44`: tiap kecamatan binaan yang punya `id` harus
+benar-benar berada **di dalam kabupaten balainya**, dan harus bertingkat `district`.
+
+Itu satu-satunya pemeriksaan mesin atas sambungan yang dibuat pencocokan nama, dan yang
+dijaganya persis kekeliruan yang **tidak akan tampak dari namanya sendiri**: nama tempat
+berulang di seluruh Indonesia, dan ada "Manokwari Selatan" yang kabupaten sekaligus
+"Manokwari Selatan" yang kecamatan.
+
+Pencocokan namanya sendiri diperketat setelah **ketiga puluh enam hasilnya diperiksa satu
+per satu**. Tiga di antaranya salah, dan ketiganya salah dengan cara yang sama —
+`NAMBO`→Kambu, `YARO`→Yaur, `BARUMUN BARU`→Barumun Barat, masing-masing **dua kecamatan
+yang berbeda**. Pada nama pendek, dua sunting bukan salah ketik melainkan tempat lain.
+Ambangnya kini sebanding panjang nama, dan 87 sebutan yang tidak tertaut **tetap tersimpan
+dengan namanya** — sebagian besarnya bukan kegagalan pencocokan melainkan kecamatan yang
+memang belum ada di potret wilayah BPS.
+
+Rinciannya — termasuk kenapa berhenti di kecamatan dan kenapa empat provinsi Papua tidak
+ada — di [`docs/22-wilayah.md`](../docs/22-wilayah.md).
 
 ### Identitas petak tanpa memiliki batasnya — G5
 

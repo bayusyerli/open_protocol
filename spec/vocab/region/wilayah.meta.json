@@ -1,0 +1,39 @@
+{
+  "$schema": "../../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "region",
+    "label": {
+      "id": "Wilayah administratif Indonesia sampai tingkat kecamatan"
+    },
+    "scope": {
+      "id": "7.768 wilayah: 1 negara, 34 provinsi, 416 kabupaten, 98 kota, dan 7.219 kecamatan, menurut layanan bridging BPS per 24 Agustus 2026.\n\nTiap rekaman membawa DUA kode: BPS pada `code`, Kemendagri pada `mappings`. Di bawah tingkat provinsi keduanya hampir tidak pernah sama — dua sistem penomoran, bukan satu — tetapi yang berbahaya jauh lebih sempit dan bisa dihitung: **167 kode sah di kedua sistem sekaligus dan menunjuk wilayah yang BERLAINAN**. Kode 1401 adalah Kuantan Singingi menurut BPS dan Kabupaten Kampar menurut Kemendagri; satu di antaranya provinsi — 91 adalah Papua Barat menurut BPS dan Papua menurut Kemendagri. Angka yang tidak menyebut skemanya di situ bukan kabur melainkan salah, dan itulah sebabnya ID di berkas ini bukan kode.\n\nBerhenti di kecamatan, tidak sampai desa: ~83.000 desa akan melipatgandakan berkas ini sepuluh kali untuk tingkat yang belum dipakai satu pun rekaman di repositori ini, sementara kecamatan sudah dipakai — balai penyuluhan dibina per kecamatan, dan Katam berskala kecamatan.\n\nSumbernya memuat 34 provinsi, bukan 38. Empat provinsi Papua hasil pemekaran 2022 — Papua Selatan, Papua Tengah, Papua Pegunungan, dan Papua Barat Daya — TIDAK ADA di layanan bridging BPS pada tanggal tarikan, dan tidak dikarang di sini. Kekosongan itu konsisten dengan seluruh data lain di repositori ini: SIMLUHTAN juga 34 provinsi dan 514 kabupaten/kota. Menambahkan empat provinsi dari ingatan akan membuat wilayah yang tidak bisa dijoin dengan satu pun berkas lain."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-24T00:00:00Z",
+      "review_due": "2027-02-24"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Layanan bridging kode wilayah — rest-bridging/getwilayah",
+          "publisher": "Badan Pusat Statistik",
+          "year": 2026,
+          "url": "https://sig.bps.go.id/rest-bridging/getwilayah",
+          "retrieved": "2026-08-24",
+          "locator": "Ditarik bertingkat: provinsi, lalu kabupaten per provinsi, lalu kecamatan per kabupaten. robots.txt situsnya berbunyi \"Disallow:\" kosong."
+        }
+      ]
+    },
+    "storage": "ndjson",
+    "count": 7768,
+    "id_blocks": [
+      {
+        "from": 1,
+        "to": 19999
+      }
+    ]
+  }
+}

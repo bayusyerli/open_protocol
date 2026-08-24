@@ -32,6 +32,40 @@ import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
+// ---------- Rujukan wilayah ----------
+// Kosakata wilayah (op:rgn) sekarang ADA, jadi janji yang tertulis di harga.schema.json
+// ditagih di sini: "Begitu kosakata wilayah benar-benar dibangun, medan `id` bisa
+// ditambahkan di sampingnya tanpa membatalkan yang ini."
+//
+// Dicocokkan menurut NAMA, bukan menurut tabel kode ISO yang ditulis tangan. Tabel
+// tulis-tangan adalah tempat kekeliruan diam bersembunyi — dan repositori ini sudah
+// punya satu contohnya: `op:rgn:00003318` berlabel "Kabupaten Rembang" ternyata kode
+// Pati. Pencocokan nama gagal berisik, tabel tulis-tangan gagal diam-diam.
+const KAMUS_WILAYAH = (() => {
+  const f = new URL('../vocab/region/wilayah.ndjson', import.meta.url);
+  const m = new Map();
+  for (const baris of readFileSync(f, 'utf8').split('\n')) {
+    if (!baris.trim()) continue;
+    const e = JSON.parse(baris);
+    if (e.level !== 'province') continue;
+    m.set(rapikanNama(e.label.id), { id: e.id, label: e.label.id });
+  }
+  return m;
+})();
+
+// "Kep. Bangka Belitung" (BPS) dan "Kepulauan Bangka Belitung" (ISO) tempat yang sama.
+function rapikanNama(s) {
+  return String(s).toLowerCase().replace(/\bkep\.?\b/g, 'kepulauan').replace(/[^a-z]+/g, '');
+}
+
+function wilayahRef(kode, label) {
+  const w = KAMUS_WILAYAH.get(rapikanNama(label));
+  if (!w) throw new Error(`Provinsi "${label}" tidak ada di kosakata wilayah. Jalankan node spec/tools/bangun-wilayah.mjs --tulis lebih dulu.`);
+  // Label ASLI dipertahankan, bukan ditimpa nama BPS: "Kepulauan Bangka Belitung" itulah
+  // yang tertulis di sumber harganya, dan konvensi repositori ini melarang menimpa nama asli.
+  return { id: w.id, code: kode, label };
+}
+
 const akar = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const tulis = process.argv.includes('--tulis');
 const MASUK = join(akar, 'harga_data', 'sp2kp-hnt.ndjson');
@@ -445,7 +479,7 @@ if (tbsKalbar.length) {
       ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
       // Kode ISO 3166-2:ID, bukan rujukan op:rgn: — kosakata wilayah belum ada, dan mencetak
       // satu entitas untuk satu provinsi meninggalkan jenis entitas setengah jadi.
-      region: { code: 'ID-KB', label: 'Kalimantan Barat' },
+      region: wilayahRef('ID-KB', 'Kalimantan Barat'),
       source_system: 'SIDIKH-TBS',
       basis: 'penetapan',
       // Medan yang paling menentukan di seluruh rekaman ini. Tanpa kalimat ini, layar
@@ -541,7 +575,7 @@ for (const [jenis, sp] of Object.entries(RIAU_JENIS)) {
     label: { id: sp.label },
     commodity_group: 'Kelapa Sawit',
     ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
-    region: { code: 'ID-RI', label: 'Riau' },
+    region: wilayahRef('ID-RI', 'Riau'),
     source_system: 'Media Center Riau',
     basis: 'penetapan',
     legal_scope: sp.scope,
@@ -610,7 +644,7 @@ if (tbsKalteng.length) {
     label: { id: 'TBS Kelapa Sawit — Kalimantan Tengah' },
     commodity_group: 'Kelapa Sawit',
     ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
-    region: { code: 'ID-KT', label: 'Kalimantan Tengah' },
+    region: wilayahRef('ID-KT', 'Kalimantan Tengah'),
     source_system: 'Media Center Kalteng',
     basis: 'penetapan',
     legal_scope:
@@ -678,7 +712,7 @@ function buatTbs({ baris, key, label, kode, wilayah, sistem, cakupanHukum, catat
     label: { id: label },
     commodity_group: 'Kelapa Sawit',
     ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
-    region: { code: kode, label: wilayah },
+    region: wilayahRef(kode, wilayah),
     source_system: sistem,
     basis: 'penetapan',
     legal_scope: cakupanHukum,
@@ -804,7 +838,7 @@ if (tbsAceh.length) {
       label: { id: `TBS Kelapa Sawit — Aceh (mitra ${kelas})` },
       commodity_group: 'Kelapa Sawit',
       ...(sawit ? { commodity: { id: sawit.id, label: sawit.nama } } : {}),
-      region: { code: 'ID-AC', label: 'Aceh' },
+      region: wilayahRef('ID-AC', 'Aceh'),
       source_system: 'Distanbun Aceh',
       basis: 'penetapan',
       legal_scope: CAKUPAN,

@@ -1,0 +1,38 @@
+[
+ {
+  "kode_bps": "3271010",
+  "nama_bps": "BOGOR SELATAN",
+  "kode_dagri": "32.71.01",
+  "nama_dagri": "BOGOR SELATAN"
+ },
+ {
+  "kode_bps": "3271020",
+  "nama_bps": "BOGOR TIMUR",
+  "kode_dagri": "32.71.02",
+  "nama_dagri": "BOGOR TIMUR"
+ },
+ {
+  "kode_bps": "3271030",
+  "nama_bps": "BOGOR UTARA",
+  "kode_dagri": "32.71.05",
+  "nama_dagri": "BOGOR UTARA"
+ },
+ {
+  "kode_bps": "3271040",
+  "nama_bps": "BOGOR TENGAH",
+  "kode_dagri": "32.71.03",
+  "nama_dagri": "BOGOR TENGAH"
+ },
+ {
+  "kode_bps": "3271050",
+  "nama_bps": "BOGOR BARAT",
+  "kode_dagri": "32.71.04",
+  "nama_dagri": "BOGOR BARAT"
+ },
+ {
+  "kode_bps": "3271060",
+  "nama_bps": "TANAH SAREAL",
+  "kode_dagri": "32.71.06",
+  "nama_dagri": "TANAH SAREAL"
+ }
+]
