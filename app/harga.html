@@ -43,6 +43,17 @@
     </p>
   </div>
 
+  <form class="cari" id="formCari" role="search" onsubmit="return false">
+    <label for="q">Cari komoditas</label>
+    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="misal: beras, cabai, bawang merah" enterkeyhint="search">
+    <p class="bantuan" id="bantuan">Kosongkan untuk melihat seluruh daftar.</p>
+  </form>
+
+  <section id="daftar" aria-live="polite"></section>
+
+  <section id="rincian" tabindex="-1"></section>
+
   <!-- Peringatan tingkat harga. Sengaja di ATAS angka, bukan di catatan kaki: yang membaca
        "Rp32.216" lalu menyimpulkan itu harga jual di kebunnya akan salah sebesar seluruh
        marjin rantai, dan kesalahan itu terjadi sebelum ia sempat menggulir. -->
@@ -61,16 +72,6 @@
       celah cakupan yang bisa dirapatkan dengan menambah sampel.
     </p>
   </div>
-
-  <form class="cari" id="formCari" role="search" onsubmit="return false">
-    <label for="q">Cari komoditas</label>
-    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
-           placeholder="misal: beras, cabai, bawang merah" enterkeyhint="search">
-    <p class="bantuan" id="bantuan">Kosongkan untuk melihat seluruh daftar.</p>
-  </form>
-
-  <section id="daftar" aria-live="polite"></section>
-  <section id="rincian" tabindex="-1"></section>
 
   <details class="batas">
     <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>
@@ -121,11 +122,10 @@
     </div>
   </details>
 
+  <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
+       daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
   <p class="lain">
-    <a href="beranda.html">← Beranda</a> ·
-    <a href="index.html">Cek isi produk →</a> ·
-    <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
-    <a href="principal.html">Profil perusahaan →</a>
+    <a href="beranda.html">← Beranda</a>
   </p>
 
   <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->

@@ -1,55 +1,244 @@
-/* Jalur 2 — permukaan baca-saja.
+/* Permukaan baca-saja di luar beranda.
    Dirancang untuk HP entry-level bersinyal buruk: tanpa font luar, tanpa gambar,
-   tanpa kerangka kerja. Seluruh warna lewat token supaya tema terang, gelap, dan
-   "ikut sistem" tergarap ketiganya. */
+   tanpa kerangka kerja.
+
+   PALETNYA SATU, DIPEGANG BERSAMA beranda.css. Sampai 23 Agustus 2026 berkas ini
+   punya paletnya sendiri — netral kelabu-hangat — dan beranda.css punya paletnya
+   sendiri yang bias hijau. Keduanya cuma berbagi dua nama token dari tiga puluh
+   empat, jadi tiap komponen harus dibangun dua kali atau (yang terjadi) cuma di
+   salah satu. Nilai di bawah ini disalin apa adanya dari beranda.css; kalau salah
+   satu berubah, keduanya wajib berubah bersama.
+
+   NAMA LAMA DIPERTAHANKAN SEBAGAI ALIAS di bagian bawah blok :root. Alias itu
+   lapis pindahan, bukan lapis tetap: seluruh komponen di berkas ini masih menyebut
+   --aksen, --teks, --latar-kartu, dan seterusnya. Mengganti 155 penyebutan itu
+   sekaligus akan bertabrakan dengan pekerjaan yang sedang berjalan di berkas yang
+   sama, jadi penggantiannya dikerjakan belakangan dan aliasnya dihapus saat itu.
+   Alias cukup ditulis sekali di sini: nilainya `var(--token)` diselesaikan saat
+   dipakai, jadi ia ikut berubah sendiri di tema gelap.
+
+   Tema terang, gelap, dan "ikut sistem" tergarap ketiganya — bukan dua dari tiga. */
 
 :root {
-  --latar: #fbfaf7;
-  --latar-kartu: #ffffff;
-  --garis: #e2ddd3;
-  --teks: #1c1a17;
-  --teks-lemah: #5f5850;
-  --aksen: #2f6d4f;
-  --aksen-lemah: #eaf2ed;
-  --awas: #8a4b12;
-  --awas-lemah: #fdf1e3;
-  --bahaya: #9b2226;
-  --bahaya-lemah: #fbeceb;
-  --sudut: 10px;
+  color-scheme: light;
+
+  --tinta: #123126;
+  --lemah: #5f6e66;
+  --pudar: #87948d;
+
+  --kertas: #fffef8;
+  --kanvas: #f5f6ee;
+  --permukaan: #e9eee5;
+  --garis: #cfdbd2;
+
+  --hijau: #00442f;
+  --hijau-2: #00745d;
+  --hijau-lembut: #e7f1e9;
+  --hijau-sorot: #006149;
+  --limau: #79d20a;
+  --limau-lembut: #edf8d9;
+  --tosca: #087a73;
+  --jingga: #ec6a2c;
+  --amber: #976000;
+  --amber-lembut: #fff1d2;
+  --merah: #993d36;
+  --merah-lembut: #fae8e5;
+
+  --di-aksen: #ffffff;
+  --isian: #ffffff;
+  --bayang: 0 18px 48px rgb(0 68 47 / 10%);
+  --sudut: 16px;
+
   --lebar: 44rem;
+
+  /* Alias pindahan — lihat catatan kepala. Dihapus setelah penyebutannya diganti. */
+  --latar: var(--kanvas);
+  --latar-kartu: var(--kertas);
+  --teks: var(--tinta);
+  --teks-lemah: var(--lemah);
+  --aksen: var(--hijau-2);
+  --aksen-lemah: var(--hijau-lembut);
+  --awas: var(--amber);
+  --awas-lemah: var(--amber-lembut);
+  --bahaya: var(--merah);
+  --bahaya-lemah: var(--merah-lembut);
 }
 
+/* Gelap ditulis dua kali dengan sengaja: sekali untuk yang belum memilih apa pun
+   (ikut sistem), sekali untuk yang memilih gelap secara eksplisit. Menaruhnya hanya
+   di media query membuat tombol tema tidak bisa melawan sistem.
+
+   Yang didefinisikan ulang cuma palet dasarnya; aliasnya tidak perlu ikut ditulis
+   karena ia menunjuk token, bukan menyalin nilainya. */
 @media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) { color-scheme: dark; }
   :root:not([data-tema="terang"]) {
-    --latar: #16181a;
-    --latar-kartu: #1e2124;
-    --garis: #333a3f;
-    --teks: #e9e6e1;
-    --teks-lemah: #a49d94;
-    --aksen: #7fc0a0;
-    --aksen-lemah: #1d2f27;
-    --awas: #e0a56a;
-    --awas-lemah: #2e2419;
-    --bahaya: #f08a86;
-    --bahaya-lemah: #33201f;
+    --tinta: #edf5ef;
+    --lemah: #b4c2b9;
+    --pudar: #899a90;
+    --kertas: #17261f;
+    --kanvas: #0d1712;
+    --permukaan: #203229;
+    --garis: #385044;
+    --hijau: #91e0c2;
+    --hijau-2: #54c7a6;
+    --hijau-lembut: #1d382c;
+    --hijau-sorot: #b4f0d7;
+    --limau: #8ddd24;
+    --limau-lembut: #293b1b;
+    --tosca: #67d0c8;
+    --jingga: #ff9a64;
+    --amber: #f4c45e;
+    --amber-lembut: #3c3018;
+    --merah: #ffaaa3;
+    --merah-lembut: #452724;
+    --di-aksen: #0d1712;
+    --isian: #101e17;
+    --bayang: 0 18px 48px rgb(0 0 0 / 30%);
   }
 }
 
+:root[data-tema="gelap"] { color-scheme: dark; }
 :root[data-tema="gelap"] {
-  --latar: #16181a;
-  --latar-kartu: #1e2124;
-  --garis: #333a3f;
-  --teks: #e9e6e1;
-  --teks-lemah: #a49d94;
-  --aksen: #7fc0a0;
-  --aksen-lemah: #1d2f27;
-  --awas: #e0a56a;
-  --awas-lemah: #2e2419;
-  --bahaya: #f08a86;
-  --bahaya-lemah: #33201f;
+  --tinta: #edf5ef;
+  --lemah: #b4c2b9;
+  --pudar: #899a90;
+  --kertas: #17261f;
+  --kanvas: #0d1712;
+  --permukaan: #203229;
+  --garis: #385044;
+  --hijau: #91e0c2;
+  --hijau-2: #54c7a6;
+  --hijau-lembut: #1d382c;
+  --hijau-sorot: #b4f0d7;
+  --limau: #8ddd24;
+  --limau-lembut: #293b1b;
+  --tosca: #67d0c8;
+  --jingga: #ff9a64;
+  --amber: #f4c45e;
+  --amber-lembut: #3c3018;
+  --merah: #ffaaa3;
+  --merah-lembut: #452724;
+  --di-aksen: #0d1712;
+  --isian: #101e17;
+  --bayang: 0 18px 48px rgb(0 0 0 / 30%);
 }
 
 * { box-sizing: border-box; }
+
+/* ------------------------------------------------------------------ cangkang
+   Disuntik cangkang.js; alasannya lengkap di kepala berkas itu. Aturannya di sini
+   karena gaya.css lembar gaya keempat belas halaman yang menerimanya — beranda punya
+   cangkangnya sendiri dan tidak memuat berkas ini. */
+
+.lewati {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 20;
+  padding: .7rem 1rem;
+  background: var(--latar-kartu);
+  color: var(--aksen);
+  border: 1px solid var(--aksen);
+  border-radius: 0 0 var(--sudut) 0;
+  font-weight: 600;
+}
+.lewati:focus { left: 0; }
+
+.bilah-cangkang {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  /* Ditarik keluar dari padding <body> supaya ia selebar layar, lalu isinya dikembalikan
+     ke lebar yang sama dengan header dan main. */
+  margin: -1.25rem -1rem 1.25rem;
+  padding: .5rem 1rem;
+  background: var(--latar);
+  border-bottom: 1px solid var(--garis);
+}
+
+.merek-cangkang {
+  display: grid;
+  gap: 0;
+  color: var(--teks);
+  text-decoration: none;
+  min-height: 44px;
+  align-content: center;
+}
+.merek-cangkang strong { font-size: .95rem; letter-spacing: -.01em; }
+.merek-cangkang small {
+  font-size: .58rem;
+  letter-spacing: .12em;
+  color: var(--teks-lemah);
+}
+.merek-cangkang:hover strong { color: var(--aksen); }
+.merek-cangkang:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
+
+/* Tombol tema pindah ke bilah; jarak lamanya di .baris-atas tidak berlaku lagi. */
+.bilah-cangkang .tombol-tema { margin: 0; }
+
+.kaki {
+  max-width: var(--lebar);
+  margin: 2.5rem auto 0;
+  padding-top: 1.4rem;
+  border-top: 1px solid var(--garis);
+}
+
+/* Dua kolom sudah muat di 375 px — 9rem × 2 + celah = 312 px dari 343 px yang tersedia.
+   Dengan 11rem ia jatuh ke satu kolom dan kakinya jadi 898 px: navigasi yang bekerja,
+   tetapi lebih tinggi daripada paragraf tautan yang digantikannya. */
+.kaki nav {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  gap: 1.1rem 1.2rem;
+}
+
+.kaki-grup h2 {
+  margin: 0 0 .45rem;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--teks-lemah);
+}
+.kaki-grup ul { list-style: none; margin: 0; padding: 0; }
+.kaki-grup li + li { margin-top: .1rem; }
+
+/* Sasaran sentuh penuh, dan tiap butir berdiri sendiri — bukan deret titik-tengah yang
+   membungkus dan menyisakan pemisah menggantung di ujung baris. */
+.kaki-grup a,
+.kaki-kini {
+  display: block;
+  padding: .5rem 0;
+  min-height: 44px;
+  font-size: .88rem;
+  line-height: 1.5;
+}
+.kaki-grup a { color: var(--aksen); }
+
+/* Halaman yang sedang dibuka tidak menautkan dirinya sendiri. Inilah yang tidak pernah
+   bisa dilakukan paragraf tautan lama: isinya sama di tiap halaman, jadi ia tak pernah
+   memberi tahu orang ia sedang di mana. */
+.kaki-kini {
+  color: var(--teks);
+  font-weight: 700;
+  border-left: 3px solid var(--aksen);
+  padding-left: .55rem;
+  margin-left: -.55rem;
+}
+
+.kaki-catatan {
+  margin: 1.6rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--garis);
+  font-size: .82rem;
+  color: var(--teks-lemah);
+}
+.kaki-catatan a { color: var(--aksen); }
 
 body {
   margin: 0;
@@ -421,14 +610,37 @@ a { color: var(--aksen); }
    Nama saja tidak membedakan: "PHONSKA" milik Petrokimia Gresik ada empat kali
    dengan grade NPK yang berlainan. Yang membedakannya komposisi, jadi komposisi
    ikut ke barisnya — bukan cuma ke layar rinciannya. */
+/* Pembeda naik ke atas nama pemegang, dan naik ukurannya.
+   Sebelumnya ia baris ketiga berukuran .8rem di bawah produsen, dan mencari PHONSKA
+   memberi lima kartu yang seluruh baris pertamanya sama — yang membedakan keempatnya
+   nisbah NPK, tercetak paling kecil dan paling redup di kartu. Urutan bacanya sekarang
+   nama, lalu apa yang membedakannya, baru siapa yang mendaftarkannya.
+
+   `tabular-nums` bukan hiasan: memilih di antara 15-8-10, 15-15-10, dan 15-10-15 adalah
+   membandingkan angka kolom demi kolom, dan itu hanya bekerja kalau angkanya selebar. */
 .daftar .pembeda {
   display: block;
-  margin-top: .25rem;
-  font-size: .8rem;
+  margin-top: .3rem;
+  font-size: .88rem;
+  font-weight: 600;
   font-variant-numeric: tabular-nums;
   color: var(--aksen);
 }
-:root[data-tema="gelap"] .daftar .pembeda { color: var(--aksen); }
+
+/* Dipakai hanya saat namanya memang berulang di hasil yang sama — di situ komposisi
+   berhenti jadi keterangan dan jadi satu-satunya cara memilih. */
+.daftar .pembeda-utama {
+  display: inline-block;
+  padding: .12rem .45rem;
+  margin-top: .35rem;
+  border-radius: 6px;
+  background: var(--aksen-lemah);
+}
+
+
+/* Nama, komposisi, dan pemegang sama persis — yang tersisa nomor pendaftaran, dan
+   indeks cari tidak membawanya. */
+.daftar .kembar { margin-top: .2rem; font-style: italic; }
 
 /* Nama merek di dalam tabel: tetap tombol, karena ia membuka layar — tetapi
    berpakaian tautan, karena itulah yang dilakukannya. */
@@ -445,7 +657,7 @@ a { color: var(--aksen); }
 }
 .tautan:hover { text-decoration-thickness: 2px; }
 .tautan:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
-.daftar .pembeda.kosong-pembeda { color: var(--teks-lemah); font-style: italic; }
+.daftar .pembeda.kosong-pembeda { color: var(--teks-lemah); font-weight: 400; font-style: italic; }
 
 /* Label yang hanya untuk pembaca layar. Ada di beranda.css sejak awal tetapi tidak di
    sini, dan itu baru ketahuan saat formulir kandungan memakainya: labelnya tampil utuh

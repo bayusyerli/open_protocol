@@ -189,6 +189,71 @@ function bacaLubang(acuan, meta, salah) {
   return acuan;
 }
 
+/* Ringkasan yang tetap terlihat — dan kenapa ia berisi persis empat medan.
+ *
+ * Aturan di kepala berkas ini berbunyi: TIAP LAYAR MENYEBUT TINGKAT BUKTI, TANGGAL,
+ * SUMBER, DAN APA YANG TIDAK DIKETAHUINYA. Memindahkan blok batas ke dalam lembar akan
+ * melanggar aturan itu kalau yang tertinggal di layar cuma sebuah tombol. Karena itu
+ * keempat medan tetap tercetak di layar: lencana tingkat dan nama sumber di keping,
+ * tarikan terlama dan cacah lubang di barisnya. Yang pindah ke lembar bukan medannya,
+ * melainkan URAIANNYA — arti tingkat, cakupan, lisensi, alasan, dan daftar lubangnya.
+ *
+ * Tarikan yang dipakai yang TERLAMA, bukan yang terbaru. Layar dengan enam sumber
+ * seusia berbeda hanya sekuat salinan tertuanya, dan menyebut yang terbaru membuat blok
+ * ini memuji dirinya sendiri. */
+function gambarRingkas(sumber, lubang) {
+  const keping = sumber.map((s) => {
+    const t = tingkatSah(s.tingkat);
+    const lencana = t
+      ? `<span class="bj-tingkat bj-tingkat-${teks(t.toLowerCase())}">${teks(t)}</span>`
+      : '<span class="bj-tingkat bj-tingkat-kosong" aria-hidden="true">–</span>';
+    return `<span class="bj-cip">${lencana}<span>${teks(s.label)}</span></span>`;
+  }).join('');
+
+  const tarikan = sumber.map((s) => s.tarikan).filter(Boolean).sort();
+  const tertua = tarikan[0];
+  const beragam = tarikan.length > 1 && tarikan[tarikan.length - 1] !== tertua;
+  const status = [...new Set(sumber.map((s) => s.status).filter(Boolean))];
+
+  const baris = [
+    tertua && `Tarikan ${teks(tanggal(tertua) ?? tertua)}${beragam ? ' (yang terlama)' : ''}`,
+    lubang.length && `${n(lubang.length)} hal tidak diketahui`,
+    status.length && `status ${status.map(teks).join(', ')}`,
+  ].filter(Boolean).join(' · ');
+
+  return `
+    <h2 class="bj-judul">Batas jawaban di layar ini</h2>
+    <p class="bj-cip-baris">${keping}</p>
+    ${baris ? `<p class="bj-ringkas-baris">${baris}</p>` : ''}
+    <button type="button" class="bj-buka">Batas selengkapnya, dan cara menyanggahnya</button>`;
+}
+
+/* Satu lembar per halaman, dipakai ulang kalau blok digambar dua kali. */
+function siapkanLembar() {
+  let l = document.getElementById('bjLembar');
+  if (l) return l;
+  l = document.createElement('dialog');
+  l.id = 'bjLembar';
+  l.className = 'bj-lembar batas-jawaban';
+  l.setAttribute('aria-labelledby', 'bjLembarJudul');
+  l.innerHTML = `
+    <form method="dialog" class="bj-lembar-kepala">
+      <h2 id="bjLembarJudul">Batas jawaban di layar ini</h2>
+      <button aria-label="Tutup">×</button>
+    </form>
+    <div class="bj-lembar-isi"></div>`;
+  // Ketukan di luar kotak menutup lembar — <dialog> menganggap latarnya bagian dirinya,
+  // jadi yang dibedakan letak ketukannya terhadap kotak, bukan targetnya.
+  l.addEventListener('click', (e) => {
+    const k = l.getBoundingClientRect();
+    const luar = e.clientX < k.left || e.clientX > k.right
+              || e.clientY < k.top  || e.clientY > k.bottom;
+    if (luar) l.close();
+  });
+  document.body.append(l);
+  return l;
+}
+
 /**
  * @param {HTMLElement} wadah  tempat blok digambar — biasanya <section id="batasJawaban">
  * @param {{sumber: Array, takDijawab: Array, sanggah?: (() => object|null)}} spek
@@ -226,9 +291,7 @@ export function pasangBatas(wadah, spek) {
   // baru punya arti setelah sumbernya disebut: sanggahan yang tidak tahu fakta itu
   // salinan atau terbitan sendiri tidak tahu ke mana perbaikannya pergi. Blok batas
   // satu-satunya tempat di layar yang sudah tahu keduanya.
-  wadah.innerHTML = `
-    ${cacat}
-    <h2 class="bj-judul">Batas jawaban di layar ini</h2>
+  const isi = `
     <ul class="bj-sumber">${sumber.map((s) => gambarSumber(s, arti)).join('')}</ul>
     ${gambarTinjauan(meta)}
     ${lubang.length ? `
@@ -238,7 +301,21 @@ export function pasangBatas(wadah, spek) {
       </dl>` : ''}
     ${blokSanggah(sumber)}`;
 
-  pasangSanggah(wadah, sumber, spek?.sanggah);
+  // Layar yang blok batasnya SUDAH tinggal di dalam lembar — beranda — digambar utuh di
+  // tempat. Membuka lembar dari dalam lembar tidak punya arti, dan di sana blok ini
+  // memang bukan yang mendahului alat.
+  if (wadah.closest('dialog')) {
+    wadah.innerHTML = `${cacat}<h2 class="bj-judul">Batas jawaban di layar ini</h2>${isi}`;
+    pasangSanggah(wadah, sumber, spek?.sanggah);
+    return salah;
+  }
+
+  wadah.innerHTML = `${cacat}${gambarRingkas(sumber, lubang)}`;
+
+  const lembar = siapkanLembar();
+  lembar.querySelector('.bj-lembar-isi').innerHTML = isi;
+  wadah.querySelector('.bj-buka')?.addEventListener('click', () => lembar.showModal());
+  pasangSanggah(lembar, sumber, spek?.sanggah);
 
   return salah;
 }

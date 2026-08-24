@@ -171,13 +171,29 @@ function selOpt(u) {
   return `<a class="tautan-opt" href="${teks(alamat)}">${nama}</a>`;
 }
 
+/* Nama tanaman menuju tempat yang BERBEDA dari nama OPT di sebelahnya, dan syaratnya
+ * juga berbeda. Yang di kolom OPT menuju satu pasangan tanaman + OPT, jadi ia perlu
+ * keduanya. Yang di sini menuju daftar seluruh sasaran pendaftaran pada tanaman itu,
+ * jadi ia cukup dengan komoditasnya — dan baris yang OPT-nya kosong pun tetap bertaut
+ * selama tanamannya tercatat.
+ */
+function selKomoditas(u) {
+  const nama = teks(u.komoditasNama ?? '—');
+  if (!u.komoditas) return nama;
+  const alamat = `jalur-1.html?${new URLSearchParams({ kom: kunciId(u.komoditas) })}`;
+  return `<a class="tautan-opt" href="${teks(alamat)}">${nama}</a>`;
+}
+
 function blokGuna(p) {
   if (p.jenis !== 'pestisida') return '';
   if (!p.guna?.length) {
     return `<div class="kartu"><h2>Terdaftar untuk</h2>
       <p class="kosong">Registri tidak mencatat penggunaan berlabel untuk produk ini.</p></div>`;
   }
-  const buntu = p.guna.filter((u) => !u.opt || !u.komoditas).length;
+  // Dua hitungan, karena syarat kedua kolomnya memang berbeda. Yang tanpa tautan OPT
+  // SELALU mencakup yang tanpa tautan tanaman: tautan OPT butuh keduanya.
+  const tanpaTanaman = p.guna.filter((u) => !u.komoditas).length;
+  const tanpaOpt = p.guna.filter((u) => !u.opt || !u.komoditas).length;
   return `
     <div class="kartu">
       <h2>Terdaftar untuk</h2>
@@ -186,17 +202,21 @@ function blokGuna(p) {
           <thead><tr><th>Tanaman</th><th>OPT</th><th>Dosis terdaftar</th></tr></thead>
           <tbody>${p.guna.map((u) => `
             <tr>
-              <td>${teks(u.komoditasNama ?? '—')}</td>
+              <td>${selKomoditas(u)}</td>
               <td>${selOpt(u)}</td>
               <td class="angka">${teks(u.dosis ?? '—')}</td>
             </tr>`).join('')}</tbody>
         </table>
       </div>
       <p class="catatan">
-        Nama OPT yang bertaut membuka <strong>bahan aktif apa saja yang terdaftar untuknya
-        di tanaman itu</strong> — merek lain, dan yang isinya berbeda sama sekali.
-        ${buntu ? `${buntu} baris di antaranya tidak bertaut: registri mengosongkan tautan
-        OPT atau komoditasnya, jadi tidak ada layar yang bisa dituju.` : ''}
+        Dua kolom pertama menuju dua tempat yang berbeda. <strong>Nama tanaman</strong>
+        membuka seluruh sasaran yang terdaftar pada tanaman itu — bukan hanya yang dijawab
+        produk ini. <strong>Nama OPT</strong> membuka bahan aktif apa saja yang terdaftar
+        untuk sasaran itu <em>di tanaman itu</em>: merek lain, dan yang isinya berbeda sama
+        sekali.
+        ${tanpaOpt ? `Dari ${p.guna.length} baris, ${tanpaTanaman} tidak bertaut di kolom
+        tanaman dan ${tanpaOpt} tidak bertaut di kolom OPT — registri mengosongkan id-nya,
+        jadi tidak ada layar yang bisa dituju.` : ''}
       </p>
       <p class="catatan">
         Di luar daftar ini, produk tersebut <strong>tidak terdaftar</strong> untuk dipakai.

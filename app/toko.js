@@ -110,6 +110,20 @@ function gambarDekat(lat, lon, akurasi) {
 // ---------------------------------------------------------------------------
 // Pintu 2 — wilayah
 // ---------------------------------------------------------------------------
+
+/* Berapa banyak yang ditampilkan SEBELUM dan SESUDAH diketik — T5 pada audit alur.
+ *
+ * Empat puluh kabupaten urut abjad bukan jawaban, ia gulir. Dua daftar seperti itu di
+ * satu halaman, ditambah daftar laboratorium, membuat toko.html sepanjang 13.111 px
+ * dengan 130 kendali sebelum orang mengetik satu huruf pun — dan kalimat kaveat yang
+ * sama tercetak tiga puluh delapan kali di antaranya.
+ *
+ * Yang ditampilkan sebelum ada ketikan cukup untuk menunjukkan BENTUK daftarnya —
+ * bahwa isinya kabupaten, bahwa tiap baris membawa cacah, bahwa sebagian tidak
+ * beralamat rinci. Delapan sudah mengatakan keempatnya. Sesudah diketik, empat puluh,
+ * karena di situ daftarnya memang sedang dibaca. */
+const PRATAMPIL = 8;
+const AMBIL = 40;
 function gambarWilayah() {
   const r = rapi(el.q.value);
   const cocok = r ? wilayah.filter((w) => rapi(w.w).includes(r)) : wilayah;
@@ -118,9 +132,11 @@ function gambarWilayah() {
       `<p class="kosong">Tidak ada wilayah yang cocok. Cakupannya baru ${n(wilayah.length)} kabupaten dan kota — jauh dari seluruh Indonesia.</p>`;
     return;
   }
-  const tampil = cocok.slice(0, 40);
+  const tampil = cocok.slice(0, r ? AMBIL : PRATAMPIL);
   el.hasilWilayah.innerHTML = `
-    <p class="bantuan">${n(cocok.length)} wilayah${cocok.length > tampil.length ? `, ditampilkan ${tampil.length} teratas` : ''}.</p>
+    <p class="bantuan">${n(cocok.length)} wilayah${cocok.length > tampil.length
+      ? (r ? `, ditampilkan ${tampil.length} teratas` : ` — ${tampil.length} pertama di bawah, ketik untuk menyaring`)
+      : ''}.</p>
     <ul class="daftar">
       ${tampil.map((w) => `
         <li>
@@ -202,9 +218,11 @@ function gambarBpp() {
     el.hasilBpp.innerHTML = `<p class="kosong">Tidak ada kabupaten atau kota yang cocok. Cakupannya ${n(bppWilayah.length)} dari 514 — 34 provinsi, karena pemekaran Papua belum masuk basis data sumbernya.</p>`;
     return;
   }
-  const tampil = cocok.slice(0, 40);
+  const tampil = cocok.slice(0, r ? AMBIL : PRATAMPIL);
   el.hasilBpp.innerHTML = `
-    <p class="bantuan">${n(cocok.length)} wilayah${cocok.length > tampil.length ? `, ditampilkan ${tampil.length} teratas` : ''}.</p>
+    <p class="bantuan">${n(cocok.length)} wilayah${cocok.length > tampil.length
+      ? (r ? `, ditampilkan ${tampil.length} teratas` : ` — ${tampil.length} pertama di bawah, ketik untuk menyaring`)
+      : ''}.</p>
     <ul class="daftar">
       ${tampil.map((w) => `
         <li>

@@ -153,8 +153,16 @@ const NIAT = [
     kata: ['rencana', 'jadwal', 'kapan tanam', 'urutan', 'protokol', 'musim'] },
   { ke: 'kas.html', judul: 'Buku kas per petak',
     kata: ['catat', 'mencatat', 'pembukuan', 'buku kas', 'pengeluaran', 'belanja', 'nota', 'kas'] },
-  { ke: 'toko.html', judul: 'Cari toko tani & penjual benih',
-    kata: ['toko', 'kios', 'beli di mana', 'penjual', 'terdekat', 'dekat sini'] },
+  // Direktori ini menampung empat kumpulan yang menjawab tiga niat berbeda — membeli,
+  // bertanya, dan menguji — jadi kata masuknya harus menutupi ketiganya. Yang berdiri
+  // sendiri hanya kata yang tidak bisa berarti lain: "residu" saja bisa berarti
+  // pertanyaan batas maksimum, sementara "tanah", "pupuk", dan "air" saja sudah jadi
+  // milik jalur lain. Ketiganya baru diambil setelah dirangkai dengan "uji", yang tidak
+  // bisa berarti apa pun selain minta diperiksakan ke laboratorium.
+  { ke: 'toko.html', judul: 'Cari toko tani, benih, penyuluhan & lab',
+    kata: ['toko', 'kios', 'beli di mana', 'penjual', 'terdekat', 'dekat sini',
+           'penyuluh', 'penyuluhan', 'bpp',
+           'lab', 'laboratorium', 'uji residu', 'uji tanah', 'uji pupuk', 'uji air'] },
   { ke: 'harga.html', judul: 'Harga eceran harian',
     kata: ['harga', 'berapa harga'] },
 ];

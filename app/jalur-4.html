@@ -45,6 +45,17 @@
     </p>
   </div>
 
+  <form class="cari" id="formCari" role="search" onsubmit="return false">
+    <label for="q">Nama varietas pada kemasan atau label</label>
+    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="misal: Brahma F1, Inpari, Electra" enterkeyhint="search" disabled>
+    <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
+  </form>
+
+  <section id="hasil" aria-live="polite"></section>
+
+  <section id="rincian" tabindex="-1"></section>
+
   <div class="kartu">
     <h2>Yang tidak dijawab halaman ini</h2>
     <p>
@@ -58,16 +69,6 @@
       datanya — dan taruhan benih adalah taruhan seluruh musim.
     </p>
   </div>
-
-  <form class="cari" id="formCari" role="search" onsubmit="return false">
-    <label for="q">Nama varietas pada kemasan atau label</label>
-    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
-           placeholder="misal: Brahma F1, Inpari, Electra" enterkeyhint="search" disabled>
-    <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
-  </form>
-
-  <section id="hasil" aria-live="polite"></section>
-  <section id="rincian" tabindex="-1"></section>
 
   <details class="batas">
     <summary><h2>Kenapa benih dan bibit dijawab jalur yang sama</h2></summary>
@@ -107,19 +108,10 @@
     </div>
   </details>
 
+  <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
+       daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
   <p class="lain">
-    <a href="beranda.html">← Beranda</a> ·
-    <a href="jalur-1.html">Ada masalah di tanaman →</a> ·
-    <a href="index.html">Cek isi produk →</a> ·
-    <a href="jalur-3.html">Hitung rupiah per kg hara →</a> ·
-    <a href="jalur-5.html">Meramu pupuk sendiri →</a> ·
-    <a href="jalur-6.html">Sediaan pengendali sendiri — status hukumnya →</a> ·
-    <a href="takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
-    <a href="harga.html">Harga komoditas &rarr;</a> ·
-    <a href="principal.html">Profil perusahaan &rarr;</a> ·
-    <a href="toko.html">Cari toko tani &amp; penjual benih →</a> ·
-    <a href="usaha.html">Hitung titik impas usaha tani →</a> ·
-    <a href="ukur.html">Apa yang tercatat di peranti ini →</a>
+    <a href="beranda.html">← Beranda</a>
   </p>
 
   <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
