@@ -20,8 +20,9 @@
  * sebaran akibatnya, bukan satu angka.
  */
 
-import { muatMeta, bacaMeta, teks } from './pustaka.js';
+import { muatMeta, bacaMeta, bacaMeta, teks } from './pustaka.js';
 import { pasangBatas } from './batas.js';
+import { pasangKeselamatan } from './keselamatan.js';
 import { pasangTombolTema } from './tema.js';
 import { catatLubang, LUBANG } from './ukur.js';
 
@@ -263,6 +264,8 @@ hitungTakar();
       `<strong>${teks(pct(j.dosisPerLiter))}%</strong> per liter air, dan ` +
       `<strong>${teks(pct(j.dosisKosong))}%</strong> tidak memuat dosis sama sekali — ` +
       `medannya kosong di registri, jadi untuk penggunaan itu dosis hanya bisa dibaca dari kemasannya.`;
+
+    pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta());
 
     pasangBatas(el.batas, {
       sumber: [

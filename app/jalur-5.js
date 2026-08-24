@@ -9,9 +9,10 @@
  * hukumnya — Pasal 75 menentukan pestisida dari kegunaan yang DIKLAIM.
  */
 
-import { ambil, muatMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, bacaMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
+import { pasangKeselamatan } from './keselamatan.js';
 import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -378,6 +379,7 @@ pasangTeruskan(el.resep, () => kartuResep(resepKini), 'sediaan');
     await muatMeta();
     // A1 — datang dari kotak beranda dengan satu resep sudah dipilih. Daftar fungsinya
     // tetap digambar lebih dulu: tombol "kembali ke daftar" harus mendarat pada sesuatu.
+    pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta(), { ringkas: true });
     pasangBatas(el.batas, {
       sumber: [{
         dari: 'sediaan',

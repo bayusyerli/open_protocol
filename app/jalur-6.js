@@ -16,9 +16,10 @@
  * jalur insiden. Ia berdiri sendiri, dan pintunya membuka dengan pasalnya.
  */
 
-import { ambil, muatMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
+import { ambil, muatMeta, bacaMeta, teks, pasangKembali, tautanMasuk } from './pustaka.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
+import { pasangKeselamatan } from './keselamatan.js';
 import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -438,6 +439,7 @@ pasangTeruskan(el.resep, () => kartuResep(resepKini), 'sediaan');
     // Satu-satunya jalur yang dibangun untuk tidak menganjurkan, jadi yang tidak
     // diketahuinya bukan catatan kaki — ia isi utamanya. Keduanya di bawah adalah
     // pertanyaan terbuka, bukan lubang data yang menunggu tarikan berikutnya.
+    pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta(), { ringkas: true });
     pasangBatas(el.batas, {
       sumber: [{
         dari: 'sediaan',

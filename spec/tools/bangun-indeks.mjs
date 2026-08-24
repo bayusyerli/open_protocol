@@ -439,6 +439,21 @@ for (const p of pestisida) {
   }
 }
 
+/* Cacah keselamatan — B2, dan angka yang membuat separuhnya TIDAK dibangun.
+ *
+ * Dihitung, bukan diketik. Kartu keselamatan menyatakan apa yang tidak diketahuinya, dan
+ * pernyataan semacam itu paling berbahaya justru saat ia basi: hari registri mulai memuat
+ * tenggang panen, layar yang masih berkata "nol" akan menyuruh orang membaca label untuk
+ * angka yang sebenarnya sudah ada padanya. */
+const keselamatan = { penggunaanBerlabel: 0, penggunaanBerPhi: 0, bahanAktif: zat.length, bahanBerkelasBahaya: 0 };
+for (const p of pestisida) {
+  for (const u of p.label_uses ?? []) {
+    keselamatan.penggunaanBerlabel++;
+    if (Object.keys(u).some((k) => /phi|preharvest|tenggang/i.test(k))) keselamatan.penggunaanBerPhi++;
+  }
+}
+for (const z of zat) if (z.hazard?.who_class) keselamatan.bahanBerkelasBahaya++;
+
 const terbuang = { tanpaOpt: 0, tanpaKomoditas: 0, tanpaKeduanya: 0, penggunaan: 0 };
 for (const p of pestisida) {
   for (const u of p.label_uses ?? []) {
@@ -2141,6 +2156,10 @@ const meta = {
     namaLokalTerpetakan: namaLokalCari.filter((x) => x.ke.length).length,
     namaLokalTaksa: namaLokalCari.filter((x) => x.ke.length > 1).length,
     bahanAktifTerpakai: bahanRinci.length,
+    penggunaanBerlabel: keselamatan.penggunaanBerlabel,
+    penggunaanBerPhi: keselamatan.penggunaanBerPhi,
+    bahanAktif: keselamatan.bahanAktif,
+    bahanBerkelasBahaya: keselamatan.bahanBerkelasBahaya,
     kartuBahanKadar: bahanRinci.reduce((a, b) => a + b.kadar.length, 0),
     dosisPerHektare: bentukDosis.perHektare,
     dosisPerLiter: bentukDosis.perLiter,

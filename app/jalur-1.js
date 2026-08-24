@@ -20,10 +20,11 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, muatMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js';
+import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
+import { pasangKeselamatan } from './keselamatan.js';
 import { blokLapor, pasangLapor } from './lapor.js';
 import { pasangTombolTema } from './tema.js';
 
@@ -676,6 +677,7 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // aktifnya registri resmi. Meratakan keduanya jadi satu kalimat "sumber: Kementan"
     // meminjamkan wibawa registri kepada kurasi yang belum punya.
     await muatMeta();
+    pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta());
     pasangBatas(el.batas, {
       sumber: [
         { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT cabai` },

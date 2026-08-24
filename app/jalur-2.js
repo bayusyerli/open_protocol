@@ -12,7 +12,7 @@
  * yang sama dengan jalur 4, supaya keduanya tidak menyimpang diam-diam.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali, namaPemegang } from './pustaka.js';
+import { ambil, muatMeta, bacaMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali, namaPemegang } from './pustaka.js';
 import { blokGambar, pasangUsulGambar } from './gambar.js';
 import { layarVarietas } from './varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
@@ -20,6 +20,7 @@ import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './uku
 import { pasangKandungan } from './kandungan.js';
 import { HTML_TERUSKAN, pasangTeruskan } from './teruskan.js';
 import { pasangBatas } from './batas.js';
+import { pasangKeselamatan } from './keselamatan.js';
 import { pasangTombolTema } from './tema.js';
 
 pasangTombolTema();
@@ -387,6 +388,7 @@ async function jalankan() {
 (async function mulai() {
   try {
     await muatMeta();
+    pasangKeselamatan(document.getElementById('keselamatan'), bacaMeta());
     pasangBatas(el.batas, {
       sumber: ['pestisida', 'pupuk', 'varietas'],
       takDijawab: ['namaDagang', 'isiKarung', 'phi'],

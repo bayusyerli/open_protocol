@@ -309,6 +309,52 @@ diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan ya
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
 
+### Kartu keselamatan — B2, dan asimetri yang membuatnya mendesak
+
+Permukaan ini mengantar orang ke pestisida di **lima layar** — jalur 1 dari gejala, jalur 2
+dari nama bahan, takaran saat mencampur, jalur 5 dan 6 untuk sediaan buatan sendiri — dan
+sampai berkas ini tidak satu pun mengatakan apa yang harus dilakukan kalau orangnya
+keracunan. Kolom "keputusan yang diubah" pada baris B2 berbunyi **keselamatan jiwa**, dan
+itu satu-satunya baris dari empat puluh yang taruhannya nyawa.
+
+**Yang dibangun hanya separuh, dan separuhnya bukan karena malas.** Diukur dari datanya
+sendiri, lewat cacah baru di `meta.jumlah` supaya ia tidak bisa basi:
+
+| | ada |
+|---|---|
+| tenggang panen (PHI) | **0 dari 23.058** penggunaan berlabel |
+| kelas bahaya WHO | **1 dari 1.706** bahan aktif |
+| alat pelindung diri | **tidak ada medannya sama sekali** di registri produk terdaftar |
+
+Menyusun "kartu keselamatan" dari registri yang tidak memuat satu pun angka keselamatan
+berarti mengarangnya — dan yang dikarang di halaman keselamatan melukai orang. Jadi yang
+disusun: nomor yang bisa ditelepon sekarang, dan pernyataan tentang apa yang tidak
+diketahuinya.
+
+- **Petunjuk pertolongan pertama tidak ditulis di sini, dan itu keputusan.** Tindakan
+  pertama berbeda menurut bahan — ada yang harus dimuntahkan, ada yang justru tidak boleh —
+  dan halaman yang menulis satu petunjuk untuk semua bahan sedang memberi anjuran medis
+  yang tidak dimilikinya. Dua tempat yang memang memuatnya **disebut alih-alih disalin**:
+  label kemasan, yang secara hukum wajib memuatnya, dan sentra informasi keracunan yang
+  bertugas menjawabnya lewat telepon.
+- **Nomornya tautan `tel:`, dan sebesar angka jawaban di layar lain.** Di ponsel cukup
+  disentuh sekali — bukan diingat, disalin, lalu diketik ulang oleh orang yang tangannya
+  sedang bergetar.
+- **Warna awas, bukan merah gawat.** Kartunya muncul di lima layar dan hampir selalu dibaca
+  orang yang *tidak* sedang keracunan; warna gawat yang menyala tiap kali akan berhenti
+  berarti gawat justru pada hari ia dibutuhkan.
+- **Di jalur 5 dan 6 kartunya ringkas.** Keduanya sudah menampilkan APD per sediaan, dan
+  daftar "yang tidak diketahui" berbicara tentang produk *terdaftar* — menempelkannya di
+  layar sediaan buatan sendiri menjawab pertanyaan yang tidak ditanyakan siapa pun di sana.
+
+**Satu temuan yang membentuk bentuknya.** Kontak diperiksa 24 Agustus 2026 dari laman resmi
+BPOM: HALO BPOM **1500533**, Senin–Jumat 08.00–18.00, di luar jam itu dialihkan ke layanan
+ponsel 24 jam; SMS 081219999533. Tetapi situs Sentra Informasi Keracunan Nasional sendiri,
+`ik.pom.go.id`, **tidak bisa dijangkau** pada tanggal itu — DNS-nya tidak terselesaikan,
+sedangkan `pom.go.id` dan `ulpk.pom.go.id` menjawab. Katalog bahan berisiko keracunan yang
+ada di sana karena itu **tidak bisa ditautkan per bahan aktif**, dan yang ditawarkan
+nomornya, bukan tautannya.
+
 ### Kosakata sebab kegagalan siklus — 15 sebab, 3 di antaranya dijamin
 
 `Cycle.failure_reason` ada di skema sejak lama dan menunjuk `Ref` yang **tidak punya
