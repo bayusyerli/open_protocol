@@ -58,6 +58,28 @@ export const JENIS_PETAK = [
   ['other', 'Lainnya'],
 ];
 
+/* Diambil apa adanya dari `Cycle.status`. Enamnya dibawa utuh, bukan diringkas jadi
+ * "berjalan/selesai": bedanya `harvested` dan `closed` justru yang paling sering ditanya —
+ * panen sudah lewat tetapi penjualannya belum tuntas adalah keadaan yang berbulan-bulan
+ * bisa bertahan, dan buku kas masih terisi selama itu. Menggabungkannya berarti musim
+ * dinyatakan tutup sementara uangnya masih masuk. */
+export const STATUS_MUSIM = [
+  ['planned', 'Belum mulai'],
+  ['active', 'Berjalan'],
+  ['harvested', 'Sudah panen, belum ditutup'],
+  ['closed', 'Ditutup'],
+  ['failed', 'Gagal'],
+  ['abandoned', 'Ditinggalkan'],
+];
+
+// Musim tanpa status adalah musim yang sudah ada sebelum medan ini lahir. Ia berjalan —
+// menganggapnya "belum mulai" akan membuat catatan yang sudah ada tampak mendahului
+// musimnya sendiri.
+export const statusMusim = (m) => m?.status ?? 'active';
+export const namaStatus = (k) => STATUS_MUSIM.find(([x]) => x === k)?.[1] ?? k;
+export const BERAKHIR = ['harvested', 'closed', 'failed', 'abandoned'];
+export const sudahBerakhir = (m) => BERAKHIR.includes(statusMusim(m));
+
 const namaJenis = (k) => JENIS_PETAK.find(([x]) => x === k)?.[1] ?? null;
 const n = (x) => Number(x ?? 0).toLocaleString('id-ID');
 
@@ -178,6 +200,8 @@ export function tambah(isi) {
     luas: Number.isFinite(isi.luas) && isi.luas > 0 ? isi.luas : null,
     tanam: isi.tanam || null,
     protokol: isi.protokol || null,
+    status: 'active',
+    ditutup: null,
   };
   daftarMusim.push(baru);
   idAktif = baru.i;
@@ -196,6 +220,38 @@ export function perbarui(id, tambalan) {
   return m;
 }
 
+/* Menutup musim, dan tanggalnya WAJIB — aturan yang sama dengan L38 di pemeriksa:
+ * "siklus yang berakhir tanpa tanggal tidak bisa ditaruh di musim mana pun". Dibuat di
+ * sini alih-alih di layarnya supaya ketiga layar tidak bisa menutup musim dengan cara
+ * yang berbeda-beda.
+ *
+ * Membuka kembali juga disediakan, dan itu bukan kelonggaran: yang menutup musim terlalu
+ * cepat lalu menemukan satu catatan yang belum masuk tidak boleh terjebak. Tanggalnya ikut
+ * dicabut, karena arah sebaliknya — tanggal yang tertinggal pada musim yang berjalan —
+ * persis yang ditolak L38. */
+export function tutup(id, status, tanggal) {
+  if (!BERAKHIR.includes(status)) return { ok: false, sebab: 'status bukan keadaan berakhir' };
+  if (!tanggal) return { ok: false, sebab: 'tanggal berakhir wajib' };
+  const m = daftarMusim.find((x) => x.i === id);
+  if (!m) return { ok: false, sebab: 'musim tidak ada' };
+  if (m.tanam && tanggal < m.tanam) {
+    return { ok: false, sebab: `tanggal berakhir ${tanggal} mendahului tanggal tanam ${m.tanam}` };
+  }
+  m.status = status;
+  m.ditutup = tanggal;
+  tulis();
+  return { ok: true, musim: m };
+}
+
+export function bukaLagi(id) {
+  const m = daftarMusim.find((x) => x.i === id);
+  if (!m) return null;
+  m.status = 'active';
+  m.ditutup = null;
+  tulis();
+  return m;
+}
+
 /* Ringkasan satu baris yang sama di tiap layar. Dipakai di kepala pemilih, jadi ia harus
  * tetap terbaca saat separuh medannya kosong — dan separuh medannya memang kerap kosong. */
 export function ringkas(m) {
@@ -205,6 +261,7 @@ export function ringkas(m) {
     m.jenis && namaJenis(m.jenis),
     m.komoditas,
     m.luas > 0 ? `${n(m.luas)} hektare` : 'luas belum diisi',
+    sudahBerakhir(m) ? `${namaStatus(statusMusim(m))}${m.ditutup ? ` ${m.ditutup}` : ''}` : null,
   ].filter(Boolean).join(' · ');
 }
 

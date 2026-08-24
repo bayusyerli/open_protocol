@@ -99,6 +99,47 @@
     </div>
   </section>
 
+  <section id="bagianPanen" hidden>
+    <h2 class="judul-bagian">Panen</h2>
+    <div class="kartu kartu-catat">
+      <p>
+        Panen dicatat <strong>tiap kali</strong>, bukan sekali di akhir. Cabai, tomat, dan
+        cabai rawit dipetik berulang selama berminggu-minggu — kosakata operasi menyebutnya
+        <em>panen bertahap</em> — dan satu angka di akhir musim menuntut orang mengingat
+        seluruh petikan sebelumnya.
+      </p>
+      <div class="catat-baris">
+        <span>
+          <label for="pnTanggal">Tanggal</label>
+          <input type="date" id="pnTanggal">
+        </span>
+        <span>
+          <label for="pnJumlah">Berapa kilogram</label>
+          <input type="number" id="pnJumlah" inputmode="decimal" min="0" step="any" placeholder="misal 120">
+        </span>
+      </div>
+      <div class="catat-baris">
+        <span>
+          <label for="pnMutu">Kelas mutu — boleh kosong</label>
+          <input type="text" id="pnMutu" autocomplete="off" placeholder="misal: super, atau sortiran">
+        </span>
+        <span>
+          <label for="pnUang">Uang masuk — boleh kosong</label>
+          <input type="number" id="pnUang" inputmode="numeric" min="0" step="1000" placeholder="misal 1800000">
+        </span>
+      </div>
+      <p class="catat-aksi"><button type="button" id="pnTambah">Catat panen</button></p>
+      <p class="catat-kabar" id="pnKabar" role="status" aria-live="polite"></p>
+      <p class="catatan">
+        Uang masuk yang diisi di sini masuk ke <a href="kas.html">buku kas</a> sebagai
+        <strong>hasil jual</strong> — tidak perlu diketik dua kali. Dikosongkan berarti
+        panennya tetap tercatat, dan uangnya bisa dicatat sendiri saat benar-benar diterima.
+      </p>
+    </div>
+    <div id="daftarPanen"></div>
+    <div id="tutupMusim"></div>
+  </section>
+
   <section class="batas-jawaban" id="batasJawaban">
     <p class="kosong">Memuat batas jawaban…</p>
   </section>

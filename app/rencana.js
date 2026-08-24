@@ -37,7 +37,8 @@ document.getElementById('tanpaJs')?.remove();
 const el = {};
 for (const id of ['protokol', 'tentangProtokol', 'tanam', 'semai', 'luas', 'susun', 'kabar', 'hasil',
   'luarRencana', 'lrTanggal', 'lrAlasan', 'lrApa', 'lrBiaya', 'lrKategori', 'lrTambah', 'lrKabar',
-  'kartuMusim', 'ringkasMusim'])
+  'kartuMusim', 'ringkasMusim', 'bagianPanen', 'pnTanggal', 'pnJumlah', 'pnMutu', 'pnUang',
+  'pnTambah', 'pnKabar', 'daftarPanen', 'tutupMusim'])
   el[id] = document.getElementById(id);
 el.batas = document.getElementById('batasJawaban');
 
@@ -46,6 +47,7 @@ const n = (x, d = 2) => Number(x ?? 0).toLocaleString('id-ID', { maximumFraction
 let daftar = [];
 let rinci = null;
 let alasan = [];
+let gambarKartuMusim = () => {};
 
 /* ---------------------------------------------------------------------------
  * E2 — pencatatan realisasi
@@ -88,7 +90,11 @@ function tulisRealisasi() {
 const hariIni = () => new Date().toISOString().slice(0, 10);
 const selisihHari = (a, b) => Math.round((Date.parse(`${b}T00:00:00Z`) - Date.parse(`${a}T00:00:00Z`)) / 86400000);
 const kunciMusim = () => musim.idMusimAktif();
-const catatanMusim = () => (realisasi[kunciMusim()] ??= { langkah: {}, luar: [] });
+const catatanMusim = () => {
+  const c = (realisasi[kunciMusim()] ??= { langkah: {}, luar: [], panen: [] });
+  c.panen ??= [];   // musim yang sudah ada sebelum panen dicatat di sini
+  return c;
+};
 
 /* Catatan yang sudah terlanjur tersimpan di bawah kunci `protokol|tanggal` TIDAK BOLEH
  * hilang karena pembaruan ini. Tiap kunci lama dijadikan satu musim bernama — nama
@@ -255,6 +261,116 @@ function blokAksi(j, r) {
     <button type="button" data-kerja="${teks(j.s.kunci)}">sudah dikerjakan</button>
     <button type="button" data-lewat="${teks(j.s.kunci)}">dilewati</button>
   </span>`;
+}
+
+/* ---------------------------------------------------------------------------
+ * Penanda panen
+ * ---------------------------------------------------------------------------
+ * Lubang ini disebut namanya di blok batas D3: "kapan rencana boleh dianggap tertutup"
+ * tidak punya jawaban, dan karena itu tidak ada layar yang boleh membandingkan hasil
+ * dengan perkiraannya. Yang menahan ternyata BUKAN skema — `Cycle.status` sudah berenum
+ * enam sampai `closed`, `Cycle.actual_end` sudah bertanggal, dan `Step.outputs` sudah
+ * membawa kuantitas beserta kelas mutunya. Ketiganya ada sejak lama dan tidak satu pun
+ * pernah sampai ke permukaan.
+ *
+ * PANEN ITU DAFTAR, BUKAN TANGGAL. Kosakata operasi sudah memisahkan `panen` dari
+ * `panen-bertahap`, dan yang kedua itulah keadaan biasa pada cabai, tomat, dan cabai
+ * rawit: dipetik berulang selama berminggu-minggu. Satu medan "tanggal panen" akan
+ * memaksa orang memilih petikan mana yang dianggap panen, dan menjumlahkan sisanya dalam
+ * ingatan.
+ *
+ * UANGNYA LEWAT BUKU KAS, BUKAN MEDAN KEDUA. Kalau panen menyimpan rupiahnya sendiri, ia
+ * jadi gagasan pemasukan yang kedua — dan dua gagasan pemasukan yang menjumlahkan hal
+ * yang sama adalah cara termudah membuat total yang tidak pernah cocok. Jadi uang masuk
+ * yang diisi di sini ditulis ke buku kas sebagai "Hasil jual", tertaut ke panennya
+ * dengan mekanisme yang sama seperti biaya langkah.
+ */
+function gambarPanen() {
+  const c = catatanMusim();
+  const m = musim.aktif();
+  const totalKg = c.panen.reduce((a, x) => a + Number(x.kg || 0), 0);
+  const uang = c.panen.reduce((a, x) => {
+    const t = buku.cariTaut(kunciMusim(), x.kunci);
+    return a + (t ? Number(t.n || 0) : 0);
+  }, 0);
+
+  el.daftarPanen.innerHTML = !c.panen.length
+    ? '<p class="kosong">Belum ada panen tercatat.</p>'
+    : `<div class="kartu">
+        <h2>${n(totalKg)} kg dari ${n(c.panen.length, 0)} kali panen</h2>
+        <dl class="kunci">
+          ${m?.luas > 0 ? `<dt>Hasil per hektare</dt><dd>${n(totalKg / m.luas)} kg/ha<span class="sub">dari ${n(m.luas)} ha</span></dd>` : ''}
+          ${uang ? `<dt>Sudah terjual</dt><dd>${rupiah(uang)}<span class="sub">${rupiah(uang / totalKg)} per kg yang sudah dipanen</span></dd>` : ''}
+        </dl>
+        <ul class="jadwal">
+          ${c.panen.slice().sort((a, b) => String(b.tanggal).localeCompare(String(a.tanggal))).map((x) => {
+            const t = buku.cariTaut(kunciMusim(), x.kunci);
+            const lag = selisihHari(x.tanggal, x.dicatat);
+            return `<li>
+              <span class="kapan tgl">${teks(tanggal(x.tanggal) ?? x.tanggal)}</span>
+              <span class="apa">${n(x.kg)} kg${x.mutu ? ` — ${teks(x.mutu)}` : ''}
+                ${lag > 0 ? `<span class="sub">dicatat ${n(lag, 0)} hari sesudahnya</span>` : ''}
+                ${t ? `<span class="sub biaya">${rupiah(t.n)} masuk buku kas${x.kg ? ` — ${rupiah(t.n / x.kg)}/kg` : ''}</span>` : '<span class="sub">belum ada uang masuk yang dicatat untuk petikan ini</span>'}
+                <span class="aksi-langkah"><button type="button" data-hapus-panen="${teks(x.kunci)}">hapus</button></span>
+              </span></li>`;
+          }).join('')}
+        </ul>
+        ${m?.luas > 0 ? '' : '<p class="catatan">Luas belum diisi, jadi <strong>hasil per hektare</strong> tidak bisa dihitung — dan itu satu-satunya bentuk yang bisa dibandingkan dengan angka siapa pun di luar petak ini.</p>'}
+      </div>`;
+  gambarTutup(m, totalKg);
+}
+
+/* Menutup musim adalah PERISTIWA, bukan medan yang diisi. Ia dipasang di sini, di bawah
+ * daftar panen, karena di situlah orang berada saat memutuskannya — bukan di kartu musim
+ * di kepala halaman, yang dibuka orang untuk mengganti musim, bukan untuk mengakhirinya. */
+function gambarTutup(m, totalKg) {
+  if (!m) { el.tutupMusim.innerHTML = ''; return; }
+  if (musim.sudahBerakhir(m)) {
+    el.tutupMusim.innerHTML = `
+      <div class="kartu">
+        <h2>Musim ini ${teks(musim.namaStatus(musim.statusMusim(m)).toLowerCase())}</h2>
+        <p>Berakhir <strong>${teks(tanggal(m.ditutup) ?? m.ditutup ?? '—')}</strong>${totalKg ? `, dengan ${n(totalKg)} kg tercatat` : ', tanpa panen tercatat'}.
+          <a href="usaha.html">Analisis usaha tani</a> sekarang bisa membandingkan hasilnya dengan perkiraan yang kamu susun.</p>
+        <p class="catat-aksi"><button type="button" id="bukaLagi">Buka lagi</button></p>
+        <p class="catatan">
+          Membuka lagi mencabut tanggal berakhirnya juga. Tanggal yang tertinggal pada musim
+          yang berjalan membuat yang membaca status melihat musim yang belum selesai dan yang
+          membaca tanggal melihat musim yang sudah — dan yang membaca tanggal biasanya mesin.
+        </p>
+      </div>`;
+    return;
+  }
+  el.tutupMusim.innerHTML = `
+    <div class="kartu kartu-catat">
+      <h2>Menutup musim ini</h2>
+      <p>
+        Selama musim belum ditutup, biaya yang sudah keluar selalu lebih kecil daripada
+        rencananya — jadi tidak ada layar yang boleh menyimpulkan apa pun dari selisihnya.
+        Menutupnya <strong>keputusanmu</strong>, bukan kesimpulan yang ditarik halaman ini
+        dari tanggal atau dari jumlah panen.
+      </p>
+      <div class="catat-baris">
+        <span>
+          <label for="tmStatus">Berakhir sebagai</label>
+          <select id="tmStatus">
+            ${musim.STATUS_MUSIM.filter(([k]) => musim.BERAKHIR.includes(k))
+              .map(([k, l]) => `<option value="${k}">${teks(l)}</option>`).join('')}
+          </select>
+        </span>
+        <span>
+          <label for="tmTanggal">Tanggal berakhir</label>
+          <input type="date" id="tmTanggal" value="${teks(hariIni())}">
+        </span>
+      </div>
+      <p class="catat-aksi"><button type="button" id="tmTutup">Tutup musim ini</button></p>
+      <p class="catat-kabar" id="tmKabar" role="status" aria-live="polite"></p>
+      <p class="catatan">
+        <strong>Gagal tercatat tanpa sebab yang bisa dijumlahkan.</strong> Skema siklus
+        menyediakan medan alasan kegagalan, tetapi kosakata alasannya belum pernah dibuat —
+        tidak ada satu pun berkas untuknya. Sampai ada, "gagal" di sini hanya menandai
+        bahwa musimnya gagal, bukan kenapa.
+      </p>
+    </div>`;
 }
 
 function gambarLuar() {
@@ -547,6 +663,59 @@ el.lrTambah.addEventListener('click', () => {
   ulangGambar();
 });
 
+el.pnTambah.addEventListener('click', () => {
+  const kg = Number(el.pnJumlah.value);
+  if (!Number.isFinite(kg) || kg <= 0) {
+    el.pnKabar.textContent = 'Isi berapa kilogramnya — itu satu-satunya yang wajib.';
+    el.pnJumlah.focus();
+    return;
+  }
+  const c = catatanMusim();
+  const tgl = el.pnTanggal.value || hariIni();
+  const kunci = `panen:${Date.now()}`;
+  c.panen.push({ kg, tanggal: tgl, mutu: el.pnMutu.value.trim() || null, dicatat: hariIni(), kunci });
+  const uang = Number(el.pnUang.value);
+  if (Number.isFinite(uang) && uang > 0) {
+    buku.tambah({ m: kunciMusim(), t: tgl, a: 'masuk', k: 'Hasil jual', n: uang, c: `Panen ${n(kg)} kg`, s: 'rencana', l: kunci });
+  }
+  const ok = tulisRealisasi();
+  el.pnJumlah.value = ''; el.pnMutu.value = ''; el.pnUang.value = '';
+  el.pnKabar.textContent = ok
+    ? 'Tercatat. Panen berikutnya dicatat sebagai baris sendiri — bukan menimpa yang ini.'
+    : 'Tercatat, tetapi TIDAK tersimpan — peramban menolak menyimpan.';
+  ulangGambar();
+});
+
+el.daftarPanen.addEventListener('click', (ev) => {
+  const b = ev.target.closest('button[data-hapus-panen]');
+  if (!b) return;
+  const c = catatanMusim();
+  c.panen = c.panen.filter((x) => x.kunci !== b.dataset.hapusPanen);
+  // Uang masuknya ikut dicabut, alasan yang sama seperti biaya langkah: pemasukan yang
+  // tertinggal untuk panen yang tidak ada membuat harga per kilogram naik tanpa sebab.
+  buku.hapusTaut(kunciMusim(), b.dataset.hapusPanen);
+  tulisRealisasi();
+  ulangGambar();
+});
+
+el.tutupMusim.addEventListener('click', (ev) => {
+  if (ev.target.id === 'bukaLagi') {
+    musim.bukaLagi(kunciMusim());
+    gambarKartuMusim();
+    ulangGambar();
+    return;
+  }
+  if (ev.target.id !== 'tmTutup') return;
+  const hasil = musim.tutup(kunciMusim(), el.tutupMusim.querySelector('#tmStatus').value, el.tutupMusim.querySelector('#tmTanggal').value);
+  const kabar = el.tutupMusim.querySelector('#tmKabar');
+  if (!hasil.ok) { kabar.textContent = `Belum bisa ditutup: ${hasil.sebab}.`; return; }
+  // Kartu musim ikut digambar ulang: keadaan berakhir muncul di baris ringkasnya, dan
+  // kartu yang masih menyebut musim berjalan sesudah orang menutupnya adalah kartu yang
+  // membuat orang menekan tombolnya dua kali.
+  gambarKartuMusim();
+  ulangGambar();
+});
+
 el.protokol.addEventListener('change', async () => {
   rinci = null;
   el.hasil.innerHTML = '';
@@ -583,7 +752,10 @@ el.susun.addEventListener('click', async () => {
     gambarHasil(rinci, susunRencana(rinci, { tanam: el.tanam.value, semai: el.semai.value || null, luas }), luas);
     gambarRingkasMusim();
     gambarLuar();
+    gambarPanen();
     el.luarRencana.hidden = false;
+    el.bagianPanen.hidden = false;
+    el.pnTanggal.value = el.pnTanggal.value || hariIni();
     el.kabar.textContent = '';
   } catch (e) {
     el.kabar.textContent = '';
@@ -633,9 +805,10 @@ el.susun.addEventListener('click', async () => {
       if (m.luas > 0) el.luas.value = m.luas;
       el.hasil.innerHTML = '';
       el.luarRencana.hidden = true;
+      el.bagianPanen.hidden = true;
       gambarRingkasMusim();
     };
-    musim.pasangMusim(el.kartuMusim, { onGanti: isiDariMusim });
+    gambarKartuMusim = musim.pasangMusim(el.kartuMusim, { onGanti: isiDariMusim });
     isiDariMusim(musim.aktif());
     if (dipindah) {
       el.kabar.textContent = `${n(dipindah, 0)} catatan realisasi lama dipindahkan ke musim `
@@ -655,6 +828,24 @@ el.susun.addEventListener('click', async () => {
           + 'penunjuk lokasi, bukan penjagaan. Lapisan ini tidak meminta keduanya. Cukup untuk '
           + 'menyambungkan layar satu sama lain, tidak cukup untuk menyambungkan petani satu sama '
           + 'lain. Dan seperti buku kas, peramban boleh menghapus catatan ini tanpa memberitahu.',
+      }, {
+        judul: 'Kegagalan musim tercatat tanpa sebab yang bisa dijumlahkan',
+        teks:
+          'Skema siklus menyediakan medan alasan kegagalan, dan medan itu menunjuk kosakata — '
+          + 'tetapi kosakata alasan kegagalan siklus BELUM PERNAH DIBUAT: tidak ada satu pun '
+          + 'berkas untuknya. Jadi "gagal" di layar ini menandai bahwa musimnya gagal, bukan '
+          + 'kenapa, dan sepuluh musim gagal karena sepuluh sebab berbeda terbaca sama. '
+          + 'Pemeriksa menyebutnya peringatan, bukan kegagalan, justru karena menuntut rujukan '
+          + 'ke sesuatu yang tidak bisa dirujuk siapa pun bukan tuntutan yang adil.',
+      }, {
+        judul: 'Catatan di sini tidak bisa keluar sebagai dokumen spesifikasi',
+        teks:
+          'Panen yang kamu catat memetakan lurus ke `Step.outputs` — kuantitas dan kelas mutu — '
+          + 'dan musimnya ke `Cycle` beserta statusnya. Tetapi tidak ada satu pun jalan keluar '
+          + 'yang menghasilkan dokumen berbentuk itu: yang tersimpan bentuk layar ini sendiri, '
+          + 'di peramban ini saja. Yang mau menyerahkan catatannya ke lembaga, koperasi, atau '
+          + 'pembeli tidak bisa melakukannya dari sini, dan membuat jalan keluarnya menuntut '
+          + 'keputusan yang belum diambil: siapa penerimanya, dan atas nama siapa ia ditandatangani.',
       }, {
         judul: 'Upah, jam kerja, dan luas yang benar-benar dikerjakan',
         teks:

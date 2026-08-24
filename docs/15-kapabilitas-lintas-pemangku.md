@@ -285,11 +285,43 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun** | **sebagian** |
+| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun**. **Papan pencarian disamakan dengan kotaknya** 24 Agustus 2026: kesebelas macam masukan yang benar-benar dijawab kini punya kepingnya di beranda (semula empat), dan ketujuh alat punya kartunya (semula dua, dan keduanya salah dinomori sebagai jalur 07–08) | **sebagian** |
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | **sebagian** 23 Agustus 2026 — `app/teruskan.js`, kartu teruskan di jalur 2, 5, dan 6. Sisi **menyebarkan** dibangun; sisi **kotak masuk** tetap tidak, dan itu putusan | **sebagian** |
 | A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
 | A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | **sebagian** 23 Agustus 2026 — `sw.js` tiga tingkat: cangkang & kosakata kecil otomatis, kepala pencarian atas permintaan, rincian menyusul saat dibuka | **sebagian** |
+
+> **Papan pencarian tertinggal dari kotaknya, dan jaraknya melebar diam-diam
+> — diperbaiki 24 Agustus 2026.** Kapabilitas A1 diukur dari apa yang dijawab kotaknya;
+> yang tidak ikut diukur adalah apa yang **diakui** permukaannya. Keduanya berpisah tanpa
+> satu pun galat:
+>
+> 1. **Kotak menjawab sebelas macam masukan; papan menyebut empat.** Nama pestisida, nama
+>    lokal hama, nama OPT registri, resep sediaan, perusahaan, harga komoditas, dan
+>    pertanyaan tentang alatnya sudah tercari — dan tidak satu pun disebut sebelum ada yang
+>    diketik. Yang mengetik nama pestisidanya lalu dijawab kosong menyimpulkan barangnya
+>    tidak terdaftar; yang meleset sebenarnya dugaannya tentang apa yang boleh diketik.
+> 2. **Lima alat yang sudah selesai hanya hidup sebagai tautan kaki.** D3, D4/D5, C7, E1,
+>    dan E5 sudah jadi tujuan perutean niat — kotaknya tahu jalan ke sana — tetapi papannya
+>    tidak menampilkan satu pun. Kapabilitas yang dibangun dan tidak diakui permukaannya
+>    terhitung setengah dibangun.
+> 3. **Dua layar yang bukan jalur diberi nomor jalur.** Papan menomori harga `07` dan
+>    profil perusahaan `08`, padahal keduanya tidak memanggil `catatBuka()` dan karena itu
+>    tidak ada di tabel [11-instrumentasi.md](11-instrumentasi.md). Ini persis yang
+>    dihindari saat `takaran.html` diputuskan **bukan** "jalur ketujuh" — aturannya benar,
+>    penerapannya yang bocor satu papan kemudian.
+>
+> Yang membuat ketiganya bisa melebar diam-diam: tidak ada satu pun tempat yang memaksa
+> kotak dan papan disebut bersama. Dua aturan yang dipasang sekarang bisa diperiksa, bukan
+> diingat:
+>
+> - **Satu keping per kelompok hasil.** Keping tanpa kelompok menjanjikan yang tidak ada;
+>   kelompok tanpa keping menyembunyikan yang ada.
+> - **Tiap kartu di papan bisa dicapai dari kotak** — lewat namanya kalau layarnya punya
+>   entitas (keenam jalur, profil perusahaan), lewat `NIAT` kalau tidak (kalibrasi,
+>   direktori, titik impas, rencana musim, buku kas).
+>
+> Kesebelas keping diuji balik terhadap indeks saat dipasang: tidak satu pun berakhir nol.
 
 > **A3 lebih penting daripada tampaknya.** Petani tidak menyebut *Thrips parvispinus*; ia
 > menyebut nama lokalnya. Tanpa kamus itu, jalur 1 hanya bisa dipakai orang yang sudah
@@ -465,7 +497,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | D1 | Rp per kg hara | petani, kios, poktan | #6 | **selesai** — jalur 3 | **selesai** |
 | D2 | Kebutuhan input per luas | petani, petugas lapang | #6 | **selesai** — `susun-rencana.mjs` | **selesai** |
-| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | **sebagian** 23 Agustus 2026 — `app/usaha.html`: RAB dan titik impas selesai; arus kas **ditahan**, fase tak bermedan hari **Disambungkan ke rekaman musim bersama** 24 Agustus 2026: luas datang dari musim (hektare, diminta m², konversinya tercetak), RAB tersimpan per musim, dan rencana berdiri di sebelah realisasinya per kategori dari buku kas. Titik impas sengaja TIDAK dihitung ulang dari biaya yang sudah keluar. | **sebagian** |
+| D3 | **Analisis usaha tani** — RAB, titik impas terhadap harga, arus kas musim | petani, poktan, koperasi, bank | #1, #11, #13, #15 | **sebagian** 23 Agustus 2026 — `app/usaha.html`: RAB dan titik impas selesai; arus kas **ditahan**, fase tak bermedan hari **Disambungkan ke rekaman musim bersama** 24 Agustus 2026: luas datang dari musim (hektare, diminta m², konversinya tercetak), RAB tersimpan per musim, dan rencana berdiri di sebelah realisasinya per kategori dari buku kas. Titik impas sengaja TIDAK dihitung ulang dari biaya yang sudah keluar. **Penanda panen menutup lubangnya** 24 Agustus 2026: hasil sebenarnya berdiri di sebelah perkiraannya, dan **harga yang benar-benar diterima** dihitung dari uang masuk ÷ kilogram dipanen — keduanya catatan pemakainya sendiri, tanpa satu pun sumber luar. | **sebagian** |
 | D4 | **Kalibrasi semprot** — volume, kecepatan jalan, nozel, jumlah tangki | petani, buruh semprot | #9 + keselamatan | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 1–2 | **selesai** |
 | D5 | Takaran alat rumah tangga — tutup botol, gelas, sendok | petani | #6, #9 | **selesai** 23 Agustus 2026 — `app/takaran.html` bagian 3 | **selesai** |
 | D6 | Kalkulator susut & kelas mutu pascapanen | petani, bandar, offtaker | #14 | belum ada | **TUNDA** |
@@ -513,7 +545,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | E1 | Rencana musim dari protokol | petugas lapang, penyuluh, petani | #1–#7 | **selesai** 23 Agustus 2026 — protokol terbit ke indeks, `app/rencana.html` merendernya; keluarannya **identik** dengan `susun-rencana.mjs` untuk masukan yang sama. Protokol: **1**, draft, tingkat D | **selesai** |
-| E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | **selesai** 24 Agustus 2026 — di layar rencana yang sama; 11 alasan simpangan terbit ke indeks, jeda pencatatan dihitung sendiri, tindakan di luar rencana punya pintunya sendiri **Disambungkan ke buku kas dan ke petak** 24 Agustus 2026: satu rekaman musim+petak dipakai bersama (`app/musim.js`), biaya satu langkah masuk ke buku kas musim itu dengan kategori yang diusulkan dari kunci jenis operasinya. | **selesai** |
+| E2 | Pencatatan realisasi | petugas lapang, petani | seluruhnya | **selesai** 24 Agustus 2026 — di layar rencana yang sama; 11 alasan simpangan terbit ke indeks, jeda pencatatan dihitung sendiri, tindakan di luar rencana punya pintunya sendiri **Disambungkan ke buku kas dan ke petak** 24 Agustus 2026: satu rekaman musim+petak dipakai bersama (`app/musim.js`), biaya satu langkah masuk ke buku kas musim itu dengan kategori yang diusulkan dari kunci jenis operasinya. **Penanda panen** 24 Agustus 2026: panen dicatat bertahap (daftar, bukan tanggal), musim bisa ditutup dengan status `Cycle.status` dan tanggal wajib, dan `L38` menegakkannya di sisi pemeriksa. | **selesai** |
 | E3 | Simpangan rencana–realisasi | petugas lapang, offtaker | mutu data | pemeriksa **selesai**; **sisi pencatatannya ikut selesai** 24 Agustus 2026 bersama E2 — `L8` diterjemahkan ke layar, alasan diminta hanya saat memang ada simpangan | **sebagian** — tercatat; agregasinya di `sinyal.mjs` (G2) |
 | E4 | Pengingat berbasis **fase**, bukan tanggal | petani, petugas lapang | ketepatan waktu tindakan | `Stage` sengaja **tanpa medan hari** — hanya 2 dari 4 langkah cabai bertanggal | **BANGUN** (fase 3) dengan batasnya dinyatakan |
 | E5 | **Buku kas & tenaga kerja per petak** | petani, poktan | #10, #11, #15 | **inti selesai** 23 Agustus 2026 — `app/kas.html`, seluruhnya di perangkat, tanpa akun. Petani kecil memang mengandalkan ingatan, jadi jaraknya yang dirancang: jawaban di atas, tiga medan, satu yang wajib **Musimnya jadi milik bersama** 24 Agustus 2026 — pindah ke `app/musim.js`, dan catatannya ke `app/buku.js` supaya layar rencana bisa menulis ke buku yang sama. | inti **selesai**; sinkron & banyak petak **fase 3** |

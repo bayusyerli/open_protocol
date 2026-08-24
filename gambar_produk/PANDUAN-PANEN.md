@@ -1808,6 +1808,19 @@ memanennya sendiri lalu menyerahkan berkasnya, atau izin tertulis diminta ke pri
 yang lalu ditulis `source.permission: izin_tertulis` dan membuka `redistributable`. Jangan
 dijadwalkan ulang untuk agen.
 
+**Jalur pertama itu ditempuh hari yang sama.** Pemilik repositori memanennya sendiri dan
+menyerahkan 36 berkas berikut `manifest.csv` yang mencatat kategori, judul, slug, nama
+berkas, bita, `source_url`, dan `page_url` tiap gambar — sehingga asal-usulnya tetap bisa
+diperiksa siapa pun meskipun agen tidak pernah menyentuh situsnya. Dua puluh satu merek
+masuk, dan tiap barisnya menyebut di `notes` bahwa ia dipanen orang, bukan agen, berikut
+alasannya. Larangan `robots.txt` mengikat perayap otomatis; ia tidak mengikat orang yang
+membuka situsnya sendiri.
+
+Yang dibuang enam: lima varian `merokemikro` (cu, fe-6, fe-13, mn-13, zn-15) dan satu
+`MerokeSOP` ganda. Registri mencatat **MEROKEMIKRO sebagai satu merek** sedangkan situs
+menayangkannya lima kali — kelas yang sama dengan DENSE PRO di ember DGW, dan `G6` yang
+menangkapnya.
+
 Catatan cara kerja: **baca `robots.txt` sebelum menyentuh katalognya, bukan setelah.** Pada
 principal-principal sebelumnya robots dibaca lebih dulu dan hanya berisi `Disallow: /wp-admin/`;
 di sini urutannya nyaris terbalik.
