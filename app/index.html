@@ -70,42 +70,80 @@
         <button class="tombol-cari" type="submit" disabled>Cari</button>
       </form>
 
-      <!-- Urutan kepingnya mengikuti urutan kelompok hasil di `gambar()`, bukan
-           urutan besarnya indeks: yang paling spesifik lebih dulu. Tiap keping
-           satu JENIS masukan yang benar-benar punya kelompok hasil sendiri —
-           kalau ada keping tanpa kelompok, atau kelompok tanpa keping, salah
-           satunya berbohong. -->
+      <!-- Tiga baris, bukan sebelas keping — dan yang berubah BENTUK penyebutannya,
+           bukan cakupannya. Kesebelas macam tetap disebut sebelum ada yang diketik,
+           sekarang di baris kecil tiap golongan; kesebelas contohnya tetap bisa
+           disentuh. Aturan lamanya masih bisa diperiksa dengan cara yang sama —
+           satu contoh per kelompok hasil, tidak ada contoh tanpa kelompok dan tidak
+           ada kelompok tanpa contoh — dan tiap contoh tetap membawa nama golongannya
+           di nama terbacanya, jadi pembaca layar tidak kehilangan apa pun yang dulu
+           ada di `<small>`.
+
+           Ongkos labelnya yang dipangkas: dulu sebelas kali, sekarang tiga. Sebelas
+           label seukuran contohnya membuat kartu ini 1.005 px pada layar 812 px —
+           baris keping terakhir dan seluruh keterangan di bawahnya tidak pernah
+           terlihat sebelum digulir.
+
+           DUA URUTAN, DAN KEDUANYA PUNYA ALASAN. Urutan barisnya mengikuti papan
+           jalur di bawah, yang dibuka jalur 1: yang terlihat di kebun lebih dulu,
+           karena yang panik tahu daunnya mengeriting sebelum ia tahu nama apa pun.
+           Urutan contoh DI DALAM tiap baris tetap urutan kelompok hasil di
+           `gambar()` — lokal, gejala, bahan, harga, badan, nama, niat.
+
+           Ketiga nama golongannya klaim editorial, bukan turunan kode: `beranda.js`
+           mengelompokkan hasil menurut kelompoknya, bukan menurut "di tangan" atau
+           "di kebun". Ujinya ada dan belum dijalankan — bacakan ketiga label ini ke
+           orang yang benar-benar memakainya, lalu minta ia menaruh "Biosaka" dan
+           "Cabai merah keriting". Kalau ia ragu, embernya yang salah. -->
       <section class="saran" id="saran" aria-label="Contoh yang bisa dicari">
-        <div class="kepala-saran">
-          <strong>Yang bisa dicari</strong>
-          <small>Sebelas macam. Sentuh salah satu, atau ketik sendiri.</small>
+        <div class="golongan-saran">
+          <p class="judul-golongan" id="golKebun">Yang terlihat di kebun
+            <small>nama lokal hama, gejala, nama hama &amp; penyakit</small></p>
+          <div class="pil-saran" role="group" aria-labelledby="golKebun">
+            <button type="button" data-kueri="patek"><span class="khusus-pembaca">Nama lokal hama: </span>Patek</button>
+            <button type="button" data-kueri="daun mengeriting ke atas"><span class="khusus-pembaca">Gejala di kebun: </span>Daun mengeriting ke atas</button>
+            <button type="button" data-kueri="Lalat buah"><span class="khusus-pembaca">Nama hama &amp; penyakit: </span>Lalat buah</button>
+          </div>
         </div>
-        <div class="kisi-saran">
-          <button type="button" data-kueri="patek"><small>Nama lokal hama</small><strong>Patek</strong></button>
-          <button type="button" data-kueri="daun mengeriting ke atas"><small>Gejala di kebun</small><strong>Daun mengeriting ke atas</strong></button>
-          <button type="button" data-kueri="Abamektin"><small>Bahan aktif</small><strong>Abamektin</strong></button>
-          <button type="button" data-kueri="Lalat buah"><small>Nama hama &amp; penyakit</small><strong>Lalat buah</strong></button>
-          <button type="button" data-kueri="Phonska"><small>Nama pupuk</small><strong>Phonska</strong></button>
-          <button type="button" data-kueri="Prevathon"><small>Nama pestisida</small><strong>Prevathon</strong></button>
-          <button type="button" data-kueri="Ciherang"><small>Nama varietas</small><strong>Ciherang</strong></button>
-          <button type="button" data-kueri="Biosaka"><small>Resep buatan sendiri</small><strong>Biosaka</strong></button>
-          <button type="button" data-kueri="Petrokimia Gresik"><small>Perusahaan</small><strong>Petrokimia Gresik</strong></button>
-          <button type="button" data-kueri="Cabai merah keriting"><small>Harga komoditas</small><strong>Cabai merah keriting</strong></button>
-          <button type="button" data-kueri="berapa tangki"><small>Pertanyaan tentang alatnya</small><strong>Berapa tangki</strong></button>
+
+        <div class="golongan-saran">
+          <p class="judul-golongan" id="golTangan">Yang ada di tangan
+            <small>bahan aktif, perusahaan, nama pupuk, pestisida, varietas</small></p>
+          <div class="pil-saran" role="group" aria-labelledby="golTangan">
+            <button type="button" data-kueri="Abamektin"><span class="khusus-pembaca">Bahan aktif: </span>Abamektin</button>
+            <button type="button" data-kueri="Petrokimia Gresik"><span class="khusus-pembaca">Perusahaan: </span>Petrokimia Gresik</button>
+            <button type="button" data-kueri="Phonska"><span class="khusus-pembaca">Nama pupuk: </span>Phonska</button>
+            <button type="button" data-kueri="Prevathon"><span class="khusus-pembaca">Nama pestisida: </span>Prevathon</button>
+            <button type="button" data-kueri="Ciherang"><span class="khusus-pembaca">Nama varietas: </span>Ciherang</button>
+          </div>
+        </div>
+
+        <div class="golongan-saran">
+          <!-- "pertanyaan alat", bukan "pertanyaan tentang alatnya": nama panjangnya
+               membungkus baris kecil ini jadi dua dan mendorong kalimat penutup kartu
+               ke bawah batas layar. Nama panjangnya tidak hilang — ia tetap utuh di
+               nama terbaca pilnya, dan di lembar "Tentang data". -->
+          <p class="judul-golongan" id="golHitung">Yang mau dihitung atau dibuat sendiri
+            <small>harga komoditas, resep buatan sendiri, pertanyaan alat</small></p>
+          <div class="pil-saran" role="group" aria-labelledby="golHitung">
+            <button type="button" data-kueri="Cabai merah keriting"><span class="khusus-pembaca">Harga komoditas: </span>Cabai merah keriting</button>
+            <button type="button" data-kueri="Biosaka"><span class="khusus-pembaca">Resep buatan sendiri: </span>Biosaka</button>
+            <button type="button" data-kueri="berapa tangki"><span class="khusus-pembaca">Pertanyaan tentang alatnya: </span>Berapa tangki</button>
+          </div>
         </div>
       </section>
 
+      <!-- Yang tersisa di sini cuma kalimat yang TIDAK ada di tempat lain. Sisanya —
+           kesebelas golongan beserta batas masing-masing, dan aturan "yang keluar
+           pintu, bukan jawaban" — sudah ditulis lebih lengkap di lembar "Tentang
+           data", di bawah judul "Yang bisa dicari, dan sampai mana". Paragraf 71
+           kata di sini mengulanginya kata demi kata, 232 px, seluruhnya di bawah
+           batas layar: keterangan yang ditulis supaya dibaca sebelum mengetik,
+           diletakkan di tempat yang membuat itu mustahil. -->
       <p class="bantuan-cari" id="bantuanCari">
-        Satu kotak untuk semuanya: <strong>nama terdaftar</strong> (pupuk, pestisida,
-        varietas), <strong>bahan aktif</strong>, <strong>nama hama</strong> beserta
-        <strong>nama lokalnya</strong>, <strong>gejala</strong> yang terlihat di tanaman,
-        <strong>resep buatan sendiri</strong>, <strong>perusahaan</strong> pemegang
-        pendaftaran, dan <strong>harga komoditas</strong>. Menyebut pertanyaannya juga
-        boleh — “berapa tangki”, “balik modal” — dan yang keluar <em>pintu</em> ke
-        alatnya, bukan jawabannya. Nama di kemasan sering berbeda dari nama terdaftarnya,
-        jadi nama yang tidak ketemu <strong>bukan bukti produknya tidak terdaftar</strong>.
-        Batas selengkapnya di
-        <button class="tombol-teks" type="button" data-buka-tentang>Tentang data</button>.
+        Nama di kemasan sering berbeda dari nama terdaftarnya, jadi nama yang tidak ketemu
+        <strong>bukan bukti produknya tidak terdaftar</strong>.
+        <button class="tombol-teks" type="button" data-buka-tentang>Tentang data</button>
       </p>
     </div>
   </div>

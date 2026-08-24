@@ -279,34 +279,55 @@ a { color: var(--hijau-2); }
 .tombol-cari:hover:not(:disabled) { background: var(--hijau-sorot); }
 .tombol-cari:disabled { opacity: .5; cursor: not-allowed; }
 
-.saran { margin-top: 12px; }
-.kepala-saran {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 10px; margin-bottom: 9px;
+/* Tiga baris berlabel menggantikan kisi sebelas keping. Yang dipangkas ongkos
+   labelnya — dibayar tiga kali, bukan sebelas — dan itu yang memulangkan kartunya
+   ke dalam satu layar HP.
+
+   Pilnya sengaja TIDAK berkisi. Panjang namanya berbeda jauh ("Patek" lawan
+   "Petrokimia Gresik"), dan kolom selebar sama memaksa keduanya ke lebar yang
+   sama: yang pendek menyisakan lubang, yang panjang membungkus tiga baris. Persis
+   itu yang membuat tinggi kepingnya dulu bergerigi 61–81 px di layar yang sama.
+   Flex-wrap memberi tiap pil lebar namanya sendiri. */
+.saran { margin: 0; }
+.golongan-saran { margin-top: 8px; }
+.judul-golongan { margin: 0; font-size: 12.5px; font-weight: 750; }
+.judul-golongan small {
+  display: block; margin-top: 1px;
+  color: var(--lemah); font-size: 11px; font-weight: 400;
 }
-.kepala-saran strong { font-size: 13px; }
-.kepala-saran small { color: var(--lemah); font-size: 11px; }
-/* Sebelas keping, bukan empat lagi — jadi kolomnya mengalir alih-alih dipatok dua.
-   Pada panel 780 px ini jadi empat kolom (tiga baris). Ambangnya 136 px dan angka itu
-   dipilih, bukan ditebak: pada layar 375 px isi panel selebar 299,5 px, jadi 148 px
-   meleset dua kolom sejauh 3,5 px dan kesebelas kepingnya menumpuk jadi satu lajur
-   setinggi 737 px — cukup untuk mendorong papan jalur keluar layar sama sekali. */
-.kisi-saran {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); gap: 7px;
+.pil-saran { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.pil-saran > button {
+  position: relative;
+  display: inline-flex; align-items: center; min-height: 34px;
+  padding: 0 14px; border: 1px solid var(--garis); border-radius: 999px;
+  background: var(--kanvas); color: inherit;
+  font: inherit; font-size: 13px; line-height: 1.2; text-align: left;
 }
-.kisi-saran > * {
-  display: block; min-width: 0; padding: 10px 11px;
-  border: 1px solid var(--garis); border-radius: 10px;
-  background: var(--kanvas); color: inherit; text-align: left; text-decoration: none;
+/* Daerah ketuknya lebih tinggi daripada pilnya, dan angkanya ditentukan jaraknya —
+   bukan dipilih dari pedoman lalu diharap muat.
+
+   Menaikkan TINGGI pilnya sampai 44 px menambah 69 px ke kartu dan mendorong kalimat
+   "bukan bukti produknya tidak terdaftar" ke bawah batas layar lagi, jadi yang
+   ditinggikan daerah ketuknya. Tetapi perluasan itu punya langit-langit: dua baris pil
+   yang membungkus berjarak 6 px, jadi perluasan lebih dari 3 px ke atas dan 3 px ke
+   bawah membuat daerah ketuk baris atas dan baris bawah BERTINDIHAN — dan ketukan di
+   pita tindihan itu mendarat di pil yang salah, persis kegagalan yang aturan 44 px
+   ada untuk mencegah. Percobaan pertama memakai 44 px (5 px + 5 px dari 6 px) dan
+   `elementFromPoint` 4 px di bawah "Patek" mengembalikan pil di bawahnya, bukan
+   "Patek".
+
+   Jadi 34 + 3 + 3 = 40 px: setinggi yang bisa dicapai tanpa satu piksel pun
+   bertindihan, jauh di atas 24 px yang diminta WCAG 2.5.8, dan tidak berbohong
+   tentang mana yang akan tersentuh. */
+.pil-saran > button::after {
+  content: ""; position: absolute; left: 0; right: 0; top: 50%;
+  height: 40px; transform: translateY(-50%);
 }
-.kisi-saran > :hover, .kisi-saran > :focus-visible {
+.pil-saran > button:hover, .pil-saran > button:focus-visible {
   border-color: var(--hijau-2); background: var(--hijau-lembut);
 }
-.kisi-saran small, .kisi-saran strong { display: block; overflow-wrap: anywhere; }
-.kisi-saran small { margin-bottom: 3px; color: var(--lemah); font-size: 10px; }
-.kisi-saran strong { font-size: 13px; }
 
-.bantuan-cari { margin: 12px 2px 0; color: var(--lemah); font-size: 12.5px; line-height: 1.5; }
+.bantuan-cari { margin: 10px 2px 0; color: var(--lemah); font-size: 12.5px; line-height: 1.5; }
 .bantuan-cari code {
   padding: 1px 5px; border-radius: 5px;
   background: var(--permukaan); font-size: .92em;
@@ -505,7 +526,8 @@ a { color: var(--hijau-2); }
     padding: 6px 6px 6px 12px;
   }
   .tombol-cari { grid-column: 1 / -1; width: 100%; }
-  /* `.kisi-saran` sengaja TIDAK diturunkan ke satu kolom — lihat catatannya di atas. */
+  /* `.pil-saran` tidak perlu diturunkan: flex-wrap sudah mengurus layar sempit
+     sendiri, dan itu setengah alasan ia menggantikan kisi. */
   .kisi-jalur { grid-template-columns: 1fr; }
   .kisi-jalur a { min-height: 0; }
   .kisi-alat { grid-template-columns: 1fr; }

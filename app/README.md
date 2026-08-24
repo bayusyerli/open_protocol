@@ -1452,9 +1452,60 @@ mencobanya untuk tahu.
   gejala, nama varietas. Tujuh yang lain sudah bisa dicari berbulan-bulan — nama
   pestisida, nama lokal hama, nama OPT registri, resep sediaan, perusahaan, harga
   komoditas, dan pertanyaan tentang alatnya — dan tidak satu pun disebut. Aturannya
-  sekarang bisa diperiksa, bukan diingat: **satu keping per kelompok hasil.** Keping
-  tanpa kelompok menjanjikan yang tidak ada; kelompok tanpa keping menyembunyikan yang
+  sekarang bisa diperiksa, bukan diingat: **satu contoh per kelompok hasil.** Contoh
+  tanpa kelompok menjanjikan yang tidak ada; kelompok tanpa contoh menyembunyikan yang
   ada. Kesebelasnya diuji balik terhadap indeks — tidak satu pun berakhir nol.
+- **Menyebut kesebelasnya dengan sebelas keping berlabel memakan satu layar penuh.**
+  Bentuk pertamanya kisi sebelas keping, tiap keping dua tingkat teks — label golongan
+  di atas, contoh di bawah. Ia benar dan ia tidak terbaca: pada 375 × 812 px kartunya
+  **1.005 px**, sementara yang tersisa dari puncak kartu sampai batas layar cuma 715 px.
+  Yang jatuh di bawah batas persis dua hal yang paling perlu dibaca sebelum mengetik —
+  baris keping terakhir, dan seluruh paragraf 71 kata yang menerangkan apa yang diterima
+  kotaknya. Keterangan yang ditulis supaya dibaca lebih dulu, diletakkan di tempat yang
+  membuat itu mustahil. Tinggi kepingnya juga bergerigi 61–81 px, karena kolom selebar
+  sama memaksa "Patek" dan "Petrokimia Gresik" ke lebar yang sama.
+- **Yang dipangkas ongkos labelnya, bukan cakupannya — tiga kali, bukan sebelas.**
+  Kesebelas contoh dibagi tiga baris berlabel, dan tiap label membawa baris kecil yang
+  menyebut golongan di dalamnya. Kesebelas macamnya masih tertulis sebelum ada yang
+  diketik: baca ketiga baris kecil itu berturut-turut dan kesebelasnya tersebut. Uji
+  lamanya tetap jalan pada markup baru — satu contoh per kelompok hasil, kesebelasnya
+  diuji balik terhadap indeks, tidak satu pun nol. Kartunya turun ke **714 px**, muat
+  utuh di satu layar, dan papan enam jalur naik dari 1.158 px ke 867 px.
+- **Nama golongan tidak hilang dari pembaca layar meski hilang dari layar.** Dulu tiap
+  keping membawa label golongannya sebagai `<small>`, jadi nama terbacanya "Nama lokal
+  hama Patek". Pil hanya membawa contohnya, jadi labelnya pindah ke `.khusus-pembaca`
+  di dalam tombol yang sama: nama terbacanya tetap "Nama lokal hama: Patek", nol piksel.
+  Tiap baris juga `role="group"` ber-`aria-labelledby` ke judulnya sendiri.
+- **Ketiga nama golongannya klaim editorial, dan itu risiko yang disadari.**
+  `beranda.js` mengelompokkan hasil menurut kelompok hasilnya, bukan menurut "yang ada
+  di tangan" atau "yang terlihat di kebun" — jadi ketiga ember itu tafsiran, bukan
+  turunan kode. Ujinya ada dan **belum dijalankan**: bacakan ketiga label ke orang yang
+  benar-benar memakainya, lalu minta ia menaruh "Biosaka" dan "Cabai merah keriting".
+  Kalau ia ragu, embernya yang salah, dan bentuk penggantinya sudah diketahui — satu
+  baris pil tanpa golongan sama sekali, 584 px, dengan kesebelas nama golongan disebut
+  dalam satu baris di atasnya.
+- **Dua urutan, dan keduanya punya alasan.** Urutan *barisnya* mengikuti papan jalur di
+  bawahnya, yang dibuka jalur 1: yang terlihat di kebun lebih dulu, karena yang panik
+  tahu daunnya mengeriting sebelum ia tahu nama apa pun. Urutan contoh *di dalam* tiap
+  baris tetap urutan kelompok hasil di `gambar()` — lokal, gejala, bahan, harga, badan,
+  nama, niat.
+- **Sasaran ketuk pilnya 40 px, dan angka itu ditentukan jaraknya — bukan dipilih dari
+  pedoman lalu diharap muat.** Meninggikan pilnya sendiri sampai 44 px menambah 69 px ke
+  kartu dan mendorong kalimat penutup ke bawah batas layar lagi, jadi yang ditinggikan
+  daerah ketuknya lewat `::after`. Tetapi perluasan itu punya langit-langit yang keras:
+  dua baris pil yang membungkus berjarak 6 px, jadi 44 px (5 px + 5 px) membuat daerah
+  ketuk baris atas dan bawah **bertindihan 4 px** — dan `elementFromPoint` 4 px di bawah
+  "Patek" memang mengembalikan pil di bawahnya. Ketukan yang mendarat di pil yang salah
+  persis kegagalan yang aturan 44 px ada untuk mencegah, jadi 34 + 3 + 3 = **40 px**:
+  setinggi yang bisa dicapai tanpa satu piksel pun bertindihan, jauh di atas 24 px yang
+  diminta WCAG 2.5.8. Kesebelas pil diuji balik — tidak satu pun tindihan tersisa.
+- **Paragraf 71 kata dipotong jadi satu kalimat, dan tidak ada isi yang hilang.** Yang
+  tinggal cuma kalimat yang tidak ada di tempat lain: nama di kemasan sering berbeda
+  dari nama terdaftarnya. Sisanya — kesebelas golongan beserta batas masing-masing, dan
+  aturan "yang keluar pintu, bukan jawaban" — sudah ditulis **lebih lengkap** di lembar
+  "Tentang data" di bawah judul "Yang bisa dicari, dan sampai mana", dan tombolnya ada
+  di ujung kalimat itu. Paragraf lamanya mengulangi lembar itu kata demi kata, 232 px,
+  seluruhnya di bawah batas layar.
 - **Menunggu sampai hasilnya nol adalah cara termahal memberi tahu.** Yang mengetik
   nama pestisidanya lalu dijawab kosong menyimpulkan barangnya tidak terdaftar; yang
   meleset sebenarnya cuma dugaannya tentang apa yang boleh diketik.
