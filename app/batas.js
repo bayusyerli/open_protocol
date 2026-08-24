@@ -150,6 +150,7 @@ function gambarTinjauan(meta) {
  * pembacanya mengira keduanya dua lubang. */
 const JUDUL_LUBANG = {
   gejalaOpt: 'Gejala OPT di luar sepuluh yang terkurasi',
+  gejalaOptRegistri: 'Teks gejala pada OPT registri',
   phi: 'Tenggang panen (PHI)',
   harga: 'Harga',
   bahanHara: 'Unsur hara sebagai bahan yang bisa dicari',

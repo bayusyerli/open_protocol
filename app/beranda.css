@@ -272,7 +272,14 @@ a { color: var(--hijau-2); }
 }
 .kepala-saran strong { font-size: 13px; }
 .kepala-saran small { color: var(--lemah); font-size: 11px; }
-.kisi-saran { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 7px; }
+/* Sebelas keping, bukan empat lagi — jadi kolomnya mengalir alih-alih dipatok dua.
+   Pada panel 780 px ini jadi empat kolom (tiga baris). Ambangnya 136 px dan angka itu
+   dipilih, bukan ditebak: pada layar 375 px isi panel selebar 299,5 px, jadi 148 px
+   meleset dua kolom sejauh 3,5 px dan kesebelas kepingnya menumpuk jadi satu lajur
+   setinggi 737 px — cukup untuk mendorong papan jalur keluar layar sama sekali. */
+.kisi-saran {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); gap: 7px;
+}
 .kisi-saran > * {
   display: block; min-width: 0; padding: 10px 11px;
   border: 1px solid var(--garis); border-radius: 10px;
@@ -386,6 +393,30 @@ a { color: var(--hijau-2); }
 .kisi-jalur strong { font-size: 16px; letter-spacing: -.02em; }
 .kisi-jalur small { color: var(--lemah); font-size: 12.5px; line-height: 1.45; }
 
+/* --- alat & direktori ----------------------------------------------------- */
+/* Kartunya sengaja berbeda dari kartu jalur, dan bukan demi variasi: tepi atas tebal
+   berwarna dan nomor dua digit adalah penanda "ini jalur". Ketujuh layar ini bukan
+   jalur — tidak satu pun memanggil `catatBuka()` — jadi keduanya tidak dipakai, dan
+   yang membedakannya tinggal tepi kiri tipis. */
+.bagian-alat { margin-top: clamp(40px, 5vw, 60px); }
+.kisi-alat {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+  gap: 10px; margin-top: 26px;
+}
+.kisi-alat a {
+  display: flex; flex-direction: column; gap: 5px;
+  padding: 15px 17px 16px;
+  border: 1px solid var(--garis); border-left: 3px solid var(--hijau-2);
+  border-radius: 12px; background: var(--kertas);
+  color: inherit; text-decoration: none;
+  transition: transform .15s ease, border-color .15s ease;
+}
+.kisi-alat a:hover, .kisi-alat a:focus-visible {
+  border-color: var(--hijau-2); transform: translateY(-2px);
+}
+.kisi-alat strong { font-size: 14.5px; letter-spacing: -.02em; }
+.kisi-alat small { color: var(--lemah); font-size: 12px; line-height: 1.45; }
+
 /* --- kaki ---------------------------------------------------------------- */
 
 .kaki {
@@ -458,9 +489,10 @@ a { color: var(--hijau-2); }
     padding: 6px 6px 6px 12px;
   }
   .tombol-cari { grid-column: 1 / -1; width: 100%; }
-  .kisi-saran { grid-template-columns: 1fr; }
+  /* `.kisi-saran` sengaja TIDAK diturunkan ke satu kolom — lihat catatannya di atas. */
   .kisi-jalur { grid-template-columns: 1fr; }
   .kisi-jalur a { min-height: 0; }
+  .kisi-alat { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 400px) {

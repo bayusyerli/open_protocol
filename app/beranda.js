@@ -1,4 +1,4 @@
-/* Beranda — pintu depan keenam jalur.
+/* Beranda — pintu depan keenam jalur dan ketujuh alat.
  *
  * Halaman ini tidak menampilkan rincian apa pun. Ia hanya mencari nama, lalu
  * menyerahkan yang ditemukan ke jalur yang memang perendernya: produk ke jalur 2,
@@ -26,6 +26,7 @@ const el = {
   cip: document.getElementById('cipJaringan'),
   lembar: document.getElementById('lembarTentang'),
   cacah: document.getElementById('cacahTentang'),
+  atribusiHarga: document.getElementById('atribusiHarga'),
 };
 
 // Jalur mana yang memiliki perender untuk satu jenis entri.
@@ -117,10 +118,16 @@ const kartuNamaLokal = (x) => {
     </li>`).join('');
 };
 
-/* A1 — perutean niat. Empat layar bukan entitas dan tidak akan pernah muncul dari
- * pencarian nama: kalkulator hara, kalibrasi semprot, direktori toko, dan titik impas.
- * Yang mengetik "berapa tangki" tidak sedang menyebut nama apa pun — ia menyebut
- * pertanyaannya.
+/* A1 — perutean niat. Tujuh layar bukan entitas dan tidak akan pernah muncul dari
+ * pencarian nama: kalkulator hara, kalibrasi semprot, titik impas, rencana musim, buku
+ * kas, direktori toko, dan harga eceran. Yang mengetik "berapa tangki" tidak sedang
+ * menyebut nama apa pun — ia menyebut pertanyaannya.
+ *
+ * Invarian dengan papan di beranda.html: TIAP KARTU DI PAPAN HARUS BISA DICAPAI DARI
+ * KOTAK INI. Keenam jalur dan profil perusahaan dicapai lewat namanya — produk, varietas,
+ * dan badan memang entitas yang punya nama. Kelima sisanya tidak punya nama untuk
+ * disebut, jadi merekalah yang wajib ada di daftar bawah ini. Kartu yang tidak memenuhi
+ * salah satu dari keduanya cuma bisa ditemukan yang sudah tahu ia ada.
  *
  * INI MERUTEKAN, BUKAN MENJAWAB. Salah rute berbiaya satu ketukan terbuang; salah jawab
  * berbiaya semprotan yang keliru. Karena itu tautannya tampil sebagai PINTU di samping
@@ -235,9 +242,17 @@ function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
 
   if (nama.length) {
     const tampil = nama.slice(0, BATAS);
+    // "Nama terdaftar" berhenti benar begitu sediaan dan OPT ikut masuk kepala
+    // pencarian: resep sediaan diterbitkan proyek ini sendiri, dan nama OPT adalah
+    // sasaran yang disebut pendaftaran orang lain — bukan sesuatu yang didaftarkan.
+    // Yang membedakan tiap barisnya sudah dibawa lencananya masing-masing, jadi yang
+    // perlu diperbaiki cuma judulnya: macam apa saja yang benar-benar ada di dalamnya
+    // disebutkan, bukan diratakan jadi satu kata yang menaikkan sebagian isinya.
+    const macam = [...new Set(tampil.map((x) => JENIS[x.j] ?? x.j))]
+      .map((t) => t.toLowerCase()).join(', ');
     bagian.push(kelompok(
-      `${angkaId(nama.length)} nama terdaftar`,
-      `memuat <strong>${teks(kueri)}</strong>${nama.length > tampil.length ? `, ${tampil.length} teratas` : ''} · yang diawali kueri didahulukan`,
+      `${angkaId(nama.length)} nama cocok`,
+      `${macam} — memuat <strong>${teks(kueri)}</strong>${nama.length > tampil.length ? `, ${tampil.length} teratas` : ''} · yang diawali kueri didahulukan`,
       tampil.map((x) => kartuNama(x, kueri)).join('')));
   }
 
@@ -428,26 +443,43 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
     const j = m.jumlah;
     const n = (x) => (x ?? 0).toLocaleString('id-ID');
 
+    // Satu kementerian tidak lagi cukup disebut: kotak yang sama menjawab harga eceran
+    // dari Kemendag dan tiga kumpulan yang diterbitkan proyek ini sendiri. Menyebut
+    // Kementan saja membuat yang bukan salinan registri terbaca seolah salinan registri.
     el.sumber.innerHTML =
-      `Sumber: registri Kementan lewat <code>spec/indeks/</code> — ` +
-      `${n(j.pestisida)} pestisida, ${n(j.pupuk)} pupuk, ${n(j.varietas)} varietas. ` +
-      `${n(j.produkSetara)} produk berada dalam ${n(j.kelompokSetara)} kelompok berisi sama.`;
+      `Sumber lewat <code>spec/indeks/</code> — registri Kementan: ` +
+      `${n(j.pestisida)} pestisida, ${n(j.pupuk)} pupuk, ${n(j.varietas)} varietas, ` +
+      `${n(j.principal)} badan pemegang pendaftaran; ${n(j.produkSetara)} produk berada ` +
+      `dalam ${n(j.kelompokSetara)} kelompok berisi sama. Harga eceran dari SP2KP Kemendag. ` +
+      `Kurasi gejala, kamus nama lokal, dan resep sediaan terbitan Open Protocols sendiri.`;
+
+    const atribusi = m.batas?.sumber?.harga?.atribusi;
+    if (atribusi) el.atribusiHarga.textContent = atribusi;
 
     // Empat registri di balik satu kotak, dan tanggal masing-masing. Kotak yang
     // menjawab tiga macam pertanyaan menyembunyikan bahwa jawabannya datang dari
     // sumber yang berbeda usia — di sinilah perbedaan itu dinyatakan.
     pasangBatas(el.batas, {
-      sumber: ['pestisida', 'pupuk', 'varietas', 'kurasiOpt', 'namaLokal'],
-      takDijawab: ['namaDagang', 'wilayahNamaLokal', 'bahanHara', 'harga'],
+      sumber: ['pestisida', 'pupuk', 'varietas', 'kurasiOpt', 'namaLokal', 'sediaan',
+        'principal', 'harga'],
+      takDijawab: ['namaDagang', 'wilayahNamaLokal', 'gejalaOptRegistri', 'bahanHara',
+        'harga', 'hargaPetani'],
     });
 
+    // Satu baris per macam yang benar-benar bisa dicari dari kotak di atas, plus dua
+    // yang menerangkan isinya. Keping yang tampil di papan tanpa cacahnya di sini —
+    // atau sebaliknya — berarti salah satu dari keduanya sudah menyimpang.
     el.cacah.innerHTML = [
       ['Pestisida terdaftar', j.pestisida],
       ['Pupuk terdaftar', j.pupuk],
       ['Varietas terdaftar', j.varietas],
+      ['Perusahaan pemegang pendaftaran', j.principal],
+      ['Hama & penyakit registri berproduk', j.optRegistriBerproduk],
+      ['Komoditas berharga', j.hargaVarian],
       ['Substansi pestisida', j.zatHidup],
       ['Kelompok berisi sama', j.kelompokSetara],
       ['OPT cabai terkurasi', j.optTerkurasi],
+      ['Nama lokal terkumpul', j.namaLokal],
       ['Resep sediaan sendiri', j.resepSediaan],
     ].map(([k, v]) => `<dt>${teks(k)}</dt><dd>${n(v)}</dd>`).join('');
 

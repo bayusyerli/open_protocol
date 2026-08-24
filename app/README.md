@@ -1075,12 +1075,12 @@ tidak bisa dicapai darinya sama sekali**.
   sementara penyaji membuka `bio.json` yang tidak pernah ada, dan hasilnya nol **tanpa satu
   pun galat**. Entri sediaan karena itu diturunkan langsung dari kosakata, bukan dari
   `berkasSediaan` yang baru disusun jauh di bawah.
-- **Perutean niat untuk yang bukan entitas.** Empat layar tidak akan pernah muncul dari
-  pencarian nama — kalkulator hara, kalibrasi semprot, direktori toko, titik impas. Yang
-  mengetik "berapa tangki" tidak sedang menyebut nama; ia menyebut pertanyaannya. Daftar
-  katanya **pendek dan ditulis tangan**: pencocokan yang pintar menebak lebih sering, dan
-  tebakan yang lebih sering di pintu masuk berarti orang lebih sering mendarat di layar
-  yang salah tanpa tahu kenapa.
+- **Perutean niat untuk yang bukan entitas.** Tujuh layar tidak akan pernah muncul dari
+  pencarian nama — kalkulator hara, kalibrasi semprot, titik impas, rencana musim, buku
+  kas, direktori toko, harga eceran. Yang mengetik "berapa tangki" tidak sedang menyebut
+  nama; ia menyebut pertanyaannya. Daftar katanya **pendek dan ditulis tangan**:
+  pencocokan yang pintar menebak lebih sering, dan tebakan yang lebih sering di pintu
+  masuk berarti orang lebih sering mendarat di layar yang salah tanpa tahu kenapa.
 - **Pintu ditawarkan di bawah hasil nama, tidak pernah menggantikannya.** Kalau ada hasil
   nama, yang dicari hampir pasti namanya. Kartunya berlabel **Pintu** dan berwarna beda —
   ini merutekan, bukan menjawab. Salah rute berbiaya satu ketukan; salah jawab berbiaya
@@ -1165,12 +1165,19 @@ mencobanya untuk tahu.
 
 ### Khusus beranda
 
-- **Satu kotak, tiga macam jawaban.** Nama terdaftar, bahan aktif, dan gejala datang
-  dalam tiga kelompok terpisah dengan judulnya masing-masing — bukan satu daftar datar.
-  Ketiganya menjawab pertanyaan yang berbeda, dan mencampurnya dalam satu urutan
-  memaksa pembaca menebak kenapa sebuah baris ada di situ. Urutannya gejala, bahan,
-  lalu nama: kalau kueri memang cocok dengan apa yang terlihat di kebun, itu hampir
-  pasti yang dimaksud — dan itu pula cabang bertaruhan paling tinggi.
+- **Satu kotak, tujuh macam jawaban.** Nama lokal, gejala, bahan aktif, harga
+  komoditas, perusahaan, nama cocok, dan pintu ke alat datang dalam kelompok terpisah
+  dengan judulnya masing-masing — bukan satu daftar datar. Ketujuhnya menjawab
+  pertanyaan yang berbeda, dan mencampurnya dalam satu urutan memaksa pembaca menebak
+  kenapa sebuah baris ada di situ. Urutannya dari yang paling spesifik: yang mengetik
+  "patek" sudah tahu apa yang dilihatnya dan sedang menyebut namanya; yang mengetik
+  sepotong nama merek belum tentu.
+- **Judul kelompok berhenti berbunyi "nama terdaftar".** Sejak sediaan dan OPT ikut
+  masuk kepala pencarian, kelompok itu memuat dua hal yang tidak terdaftar di mana pun:
+  resep sediaan diterbitkan proyek ini sendiri, dan nama OPT adalah sasaran yang disebut
+  pendaftaran orang lain. Judulnya kini `N nama cocok` diikuti macam yang benar-benar
+  ada di dalamnya, dan lencana tiap baris tetap menyebut jenisnya sendiri. Satu kata
+  yang menaikkan sebagian isinya lebih mahal daripada judul yang sedikit lebih panjang.
 - **Komposisi ikut ke daftar hasil.** "PHONSKA" milik Petrokimia Gresik ada empat kali
   dengan grade berbeda — 15-8-10, 15-15-10, 15-10-15, 10-10-10 — dan "Pupuk Indonesia
   Holding Company Phonska Plus" delapan kali. Semuanya SKU yang berlainan, bukan rekaman
@@ -1190,17 +1197,25 @@ mencobanya untuk tahu.
   atas. Tanpa ambang itu satu kata lazim seperti "daun" memanggil kesepuluh gejalanya,
   dan daftar yang selalu penuh sama tidak berartinya dengan daftar yang selalu kosong.
   Statusnya draft disebut di judul kelompoknya, bukan disembunyikan di kaki halaman.
-- **Pintu depan tidak punya perender.** Tidak satu pun dari ketiga kelompok hasilnya
-  dibuka di sini: produk dan bahan aktif diserahkan ke jalur 2 — pertanyaannya
-  sama-sama "sebenarnya ini apa" — varietas ke jalur 4, dan gejala ke jalur 1, karena
-  di sanalah blok "pastikan dulu" berada. Satu layar rincian, satu tempat — kalau
-  disalin ke sini, keduanya akan menyimpang begitu salah satunya diperbaiki.
-- **Yang bisa dicari disebut sebelum ada yang diketik.** Kotak kosong tidak mengatakan
-  apa yang diterimanya, jadi layar menyebutnya lebih dulu: empat contoh yang tinggal
-  disentuh — nama pupuk, bahan aktif, gejala di kebun, nama varietas — dan satu kalimat
-  di bawah kotak yang menyebut ketiga macamnya sekaligus. Menunggu sampai hasilnya nol
-  membuat orang menyimpulkan barangnya tidak terdaftar, padahal yang meleset cuma
-  dugaannya tentang apa yang boleh diketik.
+- **Pintu depan tidak punya perender.** Tidak satu pun kelompok hasilnya dibuka di
+  sini: produk dan bahan aktif diserahkan ke jalur 2 — pertanyaannya sama-sama
+  "sebenarnya ini apa" — varietas ke jalur 4, gejala dan nama lokal ke jalur 1 karena
+  di sanalah blok "pastikan dulu" berada, sediaan ke jalur 5 atau 6 menurut rezimnya,
+  perusahaan ke `principal.html`, dan komoditas ke `harga.html`. Satu layar rincian,
+  satu tempat — kalau disalin ke sini, keduanya akan menyimpang begitu salah satunya
+  diperbaiki.
+- **Yang bisa dicari disebut sebelum ada yang diketik — kesebelasnya.** Kotak kosong
+  tidak mengatakan apa yang diterimanya, jadi layar menyebutnya lebih dulu. Sampai
+  24 Agustus 2026 yang disebut cuma **empat dari sebelas**: nama pupuk, bahan aktif,
+  gejala, nama varietas. Tujuh yang lain sudah bisa dicari berbulan-bulan — nama
+  pestisida, nama lokal hama, nama OPT registri, resep sediaan, perusahaan, harga
+  komoditas, dan pertanyaan tentang alatnya — dan tidak satu pun disebut. Aturannya
+  sekarang bisa diperiksa, bukan diingat: **satu keping per kelompok hasil.** Keping
+  tanpa kelompok menjanjikan yang tidak ada; kelompok tanpa keping menyembunyikan yang
+  ada. Kesebelasnya diuji balik terhadap indeks — tidak satu pun berakhir nol.
+- **Menunggu sampai hasilnya nol adalah cara termahal memberi tahu.** Yang mengetik
+  nama pestisidanya lalu dijawab kosong menyimpulkan barangnya tidak terdaftar; yang
+  meleset sebenarnya cuma dugaannya tentang apa yang boleh diketik.
 - **Saran ejaan tidak mengganti kueri.** Kalau nol hasil karena satu-dua huruf keliru,
   layar bertanya "apakah maksudnya…" dan kueri aslinya tetap di kotak. Yang dikirim ke
   jalur tujuan adalah nama yang benar, bukan salah ketiknya — mengirim salah ketiknya
@@ -1211,6 +1226,25 @@ mencobanya untuk tahu.
 - **Beranda tidak ikut terinstrumentasi.** `ukur.js` menghitung per jalur, dan pintu
   depan bukan jalur — memberinya nomor karangan akan mengubah tabel yang sudah
   didefinisikan di [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md).
+- **Papan di bawah kotak dipisah dua, dan pemisahnya aturan yang sama.** Yang bernomor
+  01–06 adalah keenam jalur, dan hanya keenamnya yang memanggil `catatBuka()`. Ketujuh
+  layar sisanya — harga, profil perusahaan, kalibrasi, direktori, titik impas, rencana
+  musim, buku kas — sengaja **tidak dinomori**, persis alasan `takaran.html` dulu tidak
+  jadi "jalur ketujuh". Papan lama menomori harga `07` dan principal `08` padahal
+  keduanya tidak terinstrumentasi sama sekali: nomor yang tidak ada di tabel mana pun.
+- **Lima alat yang sudah dibangun cuma hidup di kaki halaman.** Kalibrasi, direktori
+  toko, titik impas, rencana musim, dan buku kas sudah jadi tujuan perutean niat di
+  `beranda.js` — kotaknya tahu jalan ke sana — tetapi papannya tidak menampilkan satu
+  pun. Yang tidak menebak kata kuncinya hanya bisa menemukannya sebagai teks kecil di
+  antara tautan kaki. Kelimanya kini punya kartunya sendiri, dan kaki halaman menyusut
+  jadi tiga tautan yang memang bukan kapabilitas.
+- **Tiap kartu di papan harus bisa dicapai dari kotak, dan itu invarian.** Ada dua cara
+  memenuhinya, dan yang mana tergantung apakah layarnya punya nama untuk disebut. Keenam
+  jalur dan profil perusahaan dicapai **lewat nama** — produk, varietas, dan badan memang
+  entitas. Kalibrasi, direktori, titik impas, rencana musim, dan buku kas tidak punya nama
+  untuk disebut, jadi merekalah yang wajib ada di `NIAT`. Kartu yang tidak memenuhi salah
+  satu dari keduanya hanya bisa ditemukan yang sudah tahu ia ada — dan itu bukan pintu
+  masuk, itu pintu belakang.
 
 ### Khusus jalur 1
 

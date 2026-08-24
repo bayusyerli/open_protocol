@@ -285,11 +285,43 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun** | **sebagian** |
+| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun**. **Papan pencarian disamakan dengan kotaknya** 24 Agustus 2026: kesebelas macam masukan yang benar-benar dijawab kini punya kepingnya di beranda (semula empat), dan ketujuh alat punya kartunya (semula dua, dan keduanya salah dinomori sebagai jalur 07–08) | **sebagian** |
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | **sebagian** 23 Agustus 2026 — `app/teruskan.js`, kartu teruskan di jalur 2, 5, dan 6. Sisi **menyebarkan** dibangun; sisi **kotak masuk** tetap tidak, dan itu putusan | **sebagian** |
 | A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
 | A5 | Mode luring penuh (PWA yang menyimpan indeks) | petani, petugas lapang | dipakai di lahan atau tidak | **sebagian** 23 Agustus 2026 — `sw.js` tiga tingkat: cangkang & kosakata kecil otomatis, kepala pencarian atas permintaan, rincian menyusul saat dibuka | **sebagian** |
+
+> **Papan pencarian tertinggal dari kotaknya, dan jaraknya melebar diam-diam
+> — diperbaiki 24 Agustus 2026.** Kapabilitas A1 diukur dari apa yang dijawab kotaknya;
+> yang tidak ikut diukur adalah apa yang **diakui** permukaannya. Keduanya berpisah tanpa
+> satu pun galat:
+>
+> 1. **Kotak menjawab sebelas macam masukan; papan menyebut empat.** Nama pestisida, nama
+>    lokal hama, nama OPT registri, resep sediaan, perusahaan, harga komoditas, dan
+>    pertanyaan tentang alatnya sudah tercari — dan tidak satu pun disebut sebelum ada yang
+>    diketik. Yang mengetik nama pestisidanya lalu dijawab kosong menyimpulkan barangnya
+>    tidak terdaftar; yang meleset sebenarnya dugaannya tentang apa yang boleh diketik.
+> 2. **Lima alat yang sudah selesai hanya hidup sebagai tautan kaki.** D3, D4/D5, C7, E1,
+>    dan E5 sudah jadi tujuan perutean niat — kotaknya tahu jalan ke sana — tetapi papannya
+>    tidak menampilkan satu pun. Kapabilitas yang dibangun dan tidak diakui permukaannya
+>    terhitung setengah dibangun.
+> 3. **Dua layar yang bukan jalur diberi nomor jalur.** Papan menomori harga `07` dan
+>    profil perusahaan `08`, padahal keduanya tidak memanggil `catatBuka()` dan karena itu
+>    tidak ada di tabel [11-instrumentasi.md](11-instrumentasi.md). Ini persis yang
+>    dihindari saat `takaran.html` diputuskan **bukan** "jalur ketujuh" — aturannya benar,
+>    penerapannya yang bocor satu papan kemudian.
+>
+> Yang membuat ketiganya bisa melebar diam-diam: tidak ada satu pun tempat yang memaksa
+> kotak dan papan disebut bersama. Dua aturan yang dipasang sekarang bisa diperiksa, bukan
+> diingat:
+>
+> - **Satu keping per kelompok hasil.** Keping tanpa kelompok menjanjikan yang tidak ada;
+>   kelompok tanpa keping menyembunyikan yang ada.
+> - **Tiap kartu di papan bisa dicapai dari kotak** — lewat namanya kalau layarnya punya
+>   entitas (keenam jalur, profil perusahaan), lewat `NIAT` kalau tidak (kalibrasi,
+>   direktori, titik impas, rencana musim, buku kas).
+>
+> Kesebelas keping diuji balik terhadap indeks saat dipasang: tidak satu pun berakhir nol.
 
 > **A3 lebih penting daripada tampaknya.** Petani tidak menyebut *Thrips parvispinus*; ia
 > menyebut nama lokalnya. Tanpa kamus itu, jalur 1 hanya bisa dipakai orang yang sudah
