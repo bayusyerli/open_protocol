@@ -45,35 +45,56 @@
     </p>
   </div>
 
+  <!-- Peringatan tingkat harga, DI ATAS angka dan menempel saat digulir.
+       Sampai 24 Agustus 2026 ia kartu biasa yang berdiri SESUDAH daftar dan rincian —
+       artinya ~6.100 px di bawah harga pertama, dan tidak pernah terbaca lebih dulu.
+       Yang membaca "Rp32.216" lalu menyimpulkan itu harga jual di kebunnya salah sebesar
+       seluruh marjin rantai, dan kesalahan itu terjadi sebelum ia sempat menggulir.
+
+       Isinya DITUKAR, bukan disembunyikan, saat seri pekebun dibuka. Bentuk lamanya punya
+       keadaan "hilang" (hidden), dan keadaan itu bocor: menutup seri sawit lewat tombol
+       Back mengembalikan daftar 38 harga eceran tanpa satu pun peringatan di atasnya.
+       Strip yang selalu ada dan hanya berganti isi tidak punya keadaan itu.
+
+       <details> dipakai supaya buka-tutupnya jalan tanpa JavaScript sama sekali; kalimat
+       panjang di dalamnya tetap terbaca pada halaman yang skripnya gagal dimuat. -->
+  <details class="strip-tingkat" id="stripTingkat" data-tingkat="retail">
+    <summary>
+      <span class="st-teks">
+        <span class="st-judul">Harga eceran — bukan harga petani</span>
+        <span class="st-sub">Yang dibayar pembeli di pasar konsumen.</span>
+      </span>
+      <span class="st-tanda" aria-hidden="true"></span>
+    </summary>
+    <div class="st-isi" id="stripIsi">
+      <p>
+        Berapa yang benar-benar diterima petani <strong>tidak ada di sini</strong>, dan
+        tidak ada di sumber terbuka mana pun.
+      </p>
+      <p>
+        Bahkan yang dicatat negara sebagai "harga produsen" pun sebenarnya
+        <strong>harga beli pengumpul</strong> — respondennya pengumpul, penggilingan, dan
+        pedagang. Di Kabupaten Karawang, salah satu lumbung padi terbesar Indonesia,
+        respondennya <strong>satu orang</strong>. Jaraknya terpasang di dalam definisi,
+        bukan celah cakupan yang bisa dirapatkan dengan menambah sampel.
+      </p>
+    </div>
+  </details>
+
   <form class="cari" id="formCari" role="search" onsubmit="return false">
     <label for="q">Cari komoditas</label>
     <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
-           placeholder="misal: beras, cabai, bawang merah" enterkeyhint="search">
+           placeholder="misal: beras, cabai, bawang merah" enterkeyhint="search"
+           aria-controls="daftar">
     <p class="bantuan" id="bantuan">Kosongkan untuk melihat seluruh daftar.</p>
   </form>
 
-  <section id="daftar" aria-live="polite"></section>
+  <!-- aria-live TIDAK dipasang di sini. Bungkusan ini memuat 55 baris, dan menggantinya
+       tiap ketikan membuat pembaca layar mengantrekan seluruh daftar sebagai satu
+       pengumuman. Yang diumumkan cuma baris cacahnya, yang disuntik gambarDaftar(). -->
+  <section id="daftar"></section>
 
   <section id="rincian" tabindex="-1"></section>
-
-  <!-- Peringatan tingkat harga. Sengaja di ATAS angka, bukan di catatan kaki: yang membaca
-       "Rp32.216" lalu menyimpulkan itu harga jual di kebunnya akan salah sebesar seluruh
-       marjin rantai, dan kesalahan itu terjadi sebelum ia sempat menggulir. -->
-  <div class="kartu tabrakan" id="kartuTingkat">
-    <h2>Ini harga eceran, bukan harga petani</h2>
-    <p>
-      Seluruh angka di halaman ini <strong>harga eceran di pasar konsumen</strong>. Berapa
-      yang benar-benar diterima petani <strong>tidak ada di sini</strong>, dan tidak ada di
-      sumber terbuka mana pun.
-    </p>
-    <p class="catatan">
-      Bahkan yang dicatat negara sebagai "harga produsen" pun sebenarnya
-      <strong>harga beli pengumpul</strong> — respondennya pengumpul, penggilingan, dan
-      pedagang. Di Kabupaten Karawang, salah satu lumbung padi terbesar Indonesia,
-      respondennya <strong>satu orang</strong>. Jaraknya terpasang di dalam definisi, bukan
-      celah cakupan yang bisa dirapatkan dengan menambah sampel.
-    </p>
-  </div>
 
   <details class="batas">
     <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>

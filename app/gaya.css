@@ -126,6 +126,18 @@
 
 * { box-sizing: border-box; }
 
+/* Wadah yang difokuskan PROGRAM, bukan oleh jempol atau Tab.
+   Sepuluh layar rincian di delapan halaman memakai `tabindex="-1"` lalu `.focus()` supaya
+   pembaca layar mengumumkan layar barunya — itu satu-satunya gunanya, dan wadahnya tidak
+   pernah bisa dicapai dengan Tab. Chromium tidak melukis cincin fokus untuk fokus yang
+   datang dari skrip; Safari melukisnya, dan hasilnya garis biru setinggi seluruh kartu di
+   tepi kiri tiap layar rincian.
+
+   Menghapusnya di sini TIDAK menghilangkan penanda fokus dari apa pun yang benar-benar
+   bisa difokuskan orang: pemilihnya menuntut `tabindex="-1"`, dan seluruh tombol, tautan,
+   serta isian tetap memakai :focus-visible masing-masing. */
+[tabindex="-1"]:focus { outline: none; }
+
 /* ------------------------------------------------------------------ cangkang
    Disuntik cangkang.js; alasannya lengkap di kepala berkas itu. Aturannya di sini
    karena gaya.css lembar gaya keempat belas halaman yang menerimanya — beranda punya
@@ -1023,6 +1035,110 @@ a { color: var(--aksen); }
 .situs { overflow-wrap: anywhere; }
 
 /* --- Harga --- */
+
+/* Strip tingkat. Menempel di bawah bilah cangkang, jadi peringatannya ikut terbaca pada
+   baris ke-40 seperti pada baris pertama. Offsetnya diukur di harga.js, bukan ditebak:
+   bilahnya membungkus dan meninggi sendiri di layar sempit. */
+.strip-tingkat {
+  position: sticky;
+  top: var(--atas-bilah, 61px);
+  z-index: 9;
+  margin: 0 0 1.1rem;
+  border: 1px solid var(--awas);
+  border-radius: var(--sudut);
+  background: var(--awas-lemah);
+  color: var(--awas);
+}
+.strip-tingkat[data-tingkat="farmgate"] {
+  border-color: var(--aksen);
+  background: var(--aksen-lemah);
+  color: var(--aksen);
+}
+.strip-tingkat > summary {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  min-height: 44px;
+  padding: 0.45rem 0.8rem;
+  cursor: pointer;
+  list-style: none;
+}
+.strip-tingkat > summary::-webkit-details-marker { display: none; }
+.strip-tingkat > summary:focus-visible { outline: 3px solid currentColor; outline-offset: -3px; border-radius: var(--sudut); }
+.st-teks { flex: 1; min-width: 0; }
+.st-judul { display: block; font-size: 0.88rem; font-weight: 650; line-height: 1.35; }
+.st-sub { display: block; font-size: 0.8rem; opacity: 0.85; }
+/* Tanda buka-tutup digambar CSS, bukan diketik: segitiga teks ikut terbaca pembaca layar
+   sebagai kata, dan <summary> sudah mengumumkan keadaannya sendiri. */
+.st-tanda {
+  flex: none;
+  width: 9px; height: 9px;
+  border-right: 2px solid currentColor;
+  border-bottom: 2px solid currentColor;
+  transform: rotate(45deg) translate(-2px, -2px);
+}
+.strip-tingkat[open] .st-tanda { transform: rotate(-135deg) translate(-2px, -2px); }
+.st-isi {
+  padding: 0 0.8rem 0.7rem;
+  color: var(--teks);
+  max-height: 55vh;
+  overflow-y: auto;
+}
+.st-isi p { margin: 0 0 0.5rem; font-size: 0.85rem; line-height: 1.6; }
+.st-isi p:last-child { margin-bottom: 0; }
+
+/* Kepala kelompok daftar. Daftarnya menjalankan alfabet dua kali — 38 yang berangka, lalu
+   17 yang terdaftar tanpa angka — dan sampai 24 Agustus 2026 pergantiannya tidak ditandai
+   apa pun. Yang menggulir mencari "Kacang Tanah" berhenti di "Udang Basah" dan menyimpulkan
+   daftarnya habis.
+
+   Tiap kelompok dibungkus <section> sendiri. Tanpa itu kedua kepala berbagi satu blok
+   penampung, keduanya menempel di offset yang sama, dan yang pertama menutupi yang kedua. */
+.kelompok-harga { margin: 1.4rem 0 0; }
+.kelompok-harga > h2 {
+  position: sticky;
+  top: calc(var(--atas-bilah, 61px) + var(--tinggi-strip, 54px));
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  margin: 0;
+  padding: 0.35rem 0;
+  background: var(--latar);
+  border-bottom: 1px solid var(--garis);
+  font-size: 0.74rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--teks-lemah);
+}
+.kelompok-harga .cacah {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0;
+  font-size: 0.95em;
+  padding: 0.05rem 0.45rem;
+  border-radius: 999px;
+  background: var(--permukaan);
+}
+
+/* Baris tanpa angka yang punya lanjutan di jalur lain. Keempat pupuk buntu di layar ini,
+   tetapi TIDAK buntu di platform ini — jalur 3 membandingkannya dengan HET bersubsidi. */
+.baris-lanjut {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  min-height: 44px;
+  padding: 0.2rem 0.85rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--aksen);
+  text-decoration: none;
+}
+.baris-lanjut:hover { text-decoration: underline; }
+.baris-lanjut:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; border-radius: 8px; }
+.tanggal-daftar { font-variant-numeric: tabular-nums; margin-bottom: 0.2rem; }
+
 .daftar-harga { display: grid; gap: 0.5rem; padding: 0; margin: 1rem 0; list-style: none; }
 .daftar-harga .harga-kini { font-variant-numeric: tabular-nums; font-weight: 700; }
 .daftar-harga .satuan { color: var(--teks-lemah); font-weight: 400; font-size: 0.85em; }
@@ -1057,19 +1173,69 @@ a { color: var(--aksen); }
   min-width: 5.5rem;
 }
 
-/* --- Grafik SVG --- */
+/* --- Grafik SVG ---
+   LABELNYA DI LUAR viewBox, DAN ITU BUKAN SELERA. Sampai 24 Agustus 2026 keempat label
+   (dua tahun, dua ujung sumbu harga) adalah <text> di dalam viewBox 720x260 yang diperkecil
+   ke lebar layar. Pada ponsel 375 px faktornya 0,476 — `font-size: 12` terbit jadi 6,5 px
+   di layar, dan "Rp60.845" muat dalam kotak selebar 26,9 px. Keempatnya satu-satunya angka
+   di grafik ini, jadi yang tidak terbaca justru rentang harganya sendiri.
+
+   Penulisnya sudah tahu soal penskalaan — `vector-effect: non-scaling-stroke` di .g-garis
+   memang dipasang supaya garisnya tidak ikut menipis. Yang terlewat cuma teksnya.
+
+   Sekarang: yang di dalam viewBox tinggal garis, dan seluruh teks jadi elemen HTML yang
+   diletakkan di sekeliling plot lewat padding .grafik-plot. 12 px tetap 12 px di lebar
+   mana pun. Posisi mendatarnya dioper JS lewat `--f` (pecahan 0..1 sepanjang sumbu). */
 .grafik { margin: 1.1rem 0; }
-.grafik svg {
+.grafik-plot {
+  --pl: 62px; --pr: 10px; --pt: 12px; --pb: 22px;
+  position: relative;
+  padding: var(--pt) var(--pr) var(--pb) var(--pl);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar-kartu);
+}
+.grafik-plot svg {
+  display: block;
   width: 100%;
-  height: auto;
-  max-height: 16rem;
+  height: clamp(110px, 26vw, 190px);
   overflow: visible;
 }
-.g-sumbu { stroke: var(--garis); stroke-width: 1; }
-.g-tahun { stroke: var(--garis); stroke-width: 1; stroke-dasharray: 3 4; }
+.g-sumbu { stroke: var(--garis); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.g-tahun { stroke: var(--garis); stroke-width: 1; stroke-dasharray: 3 4; vector-effect: non-scaling-stroke; }
+.g-isi { fill: var(--aksen); opacity: 0.09; }
 .g-garis { fill: none; stroke: var(--aksen); stroke-width: 1.8; stroke-linejoin: round; vector-effect: non-scaling-stroke; }
-.g-titik { fill: var(--aksen); }
-.g-label { fill: var(--teks-lemah); font-size: 12px; font-variant-numeric: tabular-nums; }
+/* Penanda titik terakhir juga elemen HTML, bukan <circle>. Dengan preserveAspectRatio
+   "none" viewBox 720x200 diregangkan ke kotak yang rasionya lain, dan lingkaran di
+   dalamnya terbit jadi elips. Di luar viewBox ia bundar di lebar mana pun. */
+.g-titik {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  margin: -4.5px 0 0 -4.5px;
+  border-radius: 50%;
+  background: var(--aksen);
+  box-shadow: 0 0 0 2px var(--latar-kartu);
+  left: calc(100% - var(--pr));
+  top: calc(var(--pt) + (100% - var(--pt) - var(--pb)) * var(--fy));
+}
+
+.g-label {
+  position: absolute;
+  font-size: 12px;
+  line-height: 1;
+  color: var(--teks-lemah);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.g-y { left: 0; width: calc(var(--pl) - 8px); text-align: right; transform: translateY(-50%); }
+.g-y-atas { top: var(--pt); }
+.g-y-bawah { top: calc(100% - var(--pb)); }
+.g-x {
+  bottom: 4px;
+  left: calc(var(--pl) + (100% - var(--pl) - var(--pr)) * var(--f));
+  transform: translateX(-50%);
+}
 .grafik figcaption { color: var(--teks-lemah); font-size: 0.85rem; margin-top: 0.4rem; }
 
 .kartu.komentar .komentar-teks { margin: 0.4rem 0 0.9rem; }
