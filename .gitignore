@@ -34,3 +34,13 @@ terbit/
 # halaman rinciannya. Turunannya (lpk_data/lab-uji-tani.*) naik ke repo; yang mentah
 # ditarik ulang dengan `node lpk_data/tarik-lingkup.mjs`.
 lpk_data/raw/lingkup/
+
+# MRL Codex — tarikan mentah dan tabel turunannya. Sumbernya FAO/WHO Codex Alimentarius,
+# terbuka dan bisa dikutip, tetapi menerbitkan ulang tabelnya keputusan tersendiri.
+# Yang naik ke repo cuma skrip dan laporannya; angkanya ditarik ulang dengan
+# `node mrl_data/tarik-codex.mjs && node mrl_data/susun.mjs`.
+mrl_data/raw/
+mrl_data/mrl-codex.ndjson
+mrl_data/mrl-codex.csv
+mrl_data/mrl-bahan.ndjson
+mrl_data/mrl-bahan.csv
