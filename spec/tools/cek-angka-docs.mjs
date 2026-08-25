@@ -61,6 +61,20 @@ const hasil = [];
 const cek = (doc, klaim, nyata, harap) =>
   hasil.push({ doc, klaim, nyata, harap, ok: String(nyata) === String(harap) });
 
+// Sebagian angka BERTAMBAH tiap hari karena memang begitu bentuknya, dan menuntutnya sama
+// persis mengubah alat ini jadi alarm yang berbunyi tiap pagi tanpa ada yang salah. Alarm
+// yang berbunyi tiap pagi dimatikan orang — dan yang ikut mati bersamanya 125 baris lain
+// yang justru berarti. Sejak harga ditarik terjadwal (.github/workflows/harga.yml, 25
+// Agustus 2026), seri harian tumbuh sendiri tanpa satu pun tangan menyentuh repositori.
+//
+// Untuk angka jenis itu yang ditagih BATAS BAWAH, bukan kesamaan: ia boleh naik, tidak
+// boleh turun. Menyusut berarti sumbernya menghapus riwayat atau penariknya kehilangan
+// baris — dan itu tetap alarm yang harus berbunyi. Angka yang tersalin di sini karena itu
+// dibaca "sekurang-kurangnya sebanyak ini pada tanggal tercatat", dan menaikkannya adalah
+// pekerjaan tangan, sama seperti sebelumnya.
+const cekMinimal = (doc, klaim, nyata, lantai) =>
+  hasil.push({ doc, klaim, nyata, harap: `≥ ${lantai}`, ok: Number(nyata) >= Number(lantai) });
+
 // ---- hitungan berkas yang dicetak spec/README
 // Angka ini basi dua kali dalam sehari: sekali meleset tujuh, dan sekali lagi satu jam
 // sesudah dibetulkan karena skema baru masuk. Ia contoh paling murni dari yang dijaga alat
@@ -279,7 +293,18 @@ if (HRG) {
   cek('16', 'varian harga diterbitkan', HRG.length, 96);
   cek('16', 'varian harga berangka', HRG.filter((h) => h.series?.length).length, 51);
   cek('16', 'varian harga TANPA angka', HRG.filter((h) => !h.series?.length).length, 45);
-  cek('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26752);
+  // Tumbuh tiap hari kerja: 42 titik baru per tanggal terbit SP2KP. Lantainya 26.752 —
+  // jumlah pada tarikan 23 Agustus 2026, angka yang tertulis di docs/16 dan docs/18.
+  cekMinimal('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26752);
+  // Yang TIDAK boleh bergeser meski serinya tumbuh: pangkalnya. "Seri SP2KP mulai 1 Februari
+  // 2024, di tengah lonjakan harga pangan" tertulis di docs/18 DAN dicetak app/harga.js ke
+  // layar. Seri bisa memanjang ke depan tiap hari tanpa mengubah kalimat itu; kalau ia
+  // memanjang ke BELAKANG, yang berubah bukan panjangnya melainkan artinya — dan kalimat
+  // "di tengah lonjakan" berhenti benar. Yang dihitung seri yang berpangkal di sana, bukan
+  // yang paling awal: Benih Padi mulai 3 Januari 2024 dan memang selalu jadi yang tunggal.
+  cek('16/18', 'seri berpangkal 1 Feb 2024',
+    HRG.filter((h) => h.source_system === 'SP2KP' && h.series?.length
+      && h.coverage.from === '2024-02-01').length, 42);
   cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 24);
   // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
   // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.

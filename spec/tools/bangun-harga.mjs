@@ -69,6 +69,14 @@ function wilayahRef(kode, label) {
 const akar = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const tulis = process.argv.includes('--tulis');
 const MASUK = join(akar, 'harga_data', 'sp2kp-hnt.ndjson');
+// Sidik tarikan, ditulis harga_data/tarik-sp2kp.mjs tiap kali ia berjalan. Dari sinilah
+// `retrieved` di meta mengambil tanggalnya. Sebelum 25 Agustus 2026 tanggal itu ditulis
+// tangan — dan angka tulis-tangan yang menyebut kapan data ditarik adalah angka yang PASTI
+// salah begitu penariknya jalan lagi, tanpa satu pun tanda. Kalau sidiknya tidak ada
+// (tarikan lama, atau klon yang belum pernah menarik), tanggal terakhir yang tercatat di
+// dokumen dipakai apa adanya.
+const SIDIK_TARIKAN = join(akar, 'harga_data', 'sp2kp-tarikan.json');
+const tarikan = existsSync(SIDIK_TARIKAN) ? JSON.parse(readFileSync(SIDIK_TARIKAN, 'utf8')) : null;
 const KELUAR = join(akar, 'spec', 'vocab', 'harga');
 const NDJSON = join(KELUAR, 'harga.ndjson');
 const META = join(KELUAR, 'harga.meta.json');
@@ -998,8 +1006,8 @@ const meta = {
           publisher: 'Kementerian Perdagangan RI',
           url: 'https://sp2kp.kemendag.go.id/',
           year: 2026,
-          locator: `Endpoint GET api-sp2kp.kemendag.go.id/report/api/hnt; satu permintaan untuk seluruh riwayat. Endpoint average-price-public SENGAJA TIDAK dipakai karena membawa NIK, NIP, nomor telepon, dan alamat pencacah pada tiap rekaman. Atribusi wajib: "${ATRIBUSI}"`,
-          retrieved: '2026-08-23',
+          locator: `Endpoint GET api-sp2kp.kemendag.go.id/report/api/hnt. Riwayat penuh diambil sekali lewat satu permintaan tanpa parameter; penyegaran hariannya lewat ?tanggal=YYYY-MM-DD, satu permintaan per tanggal, jadi kesegaran tidak dibeli dengan menarik ulang 56 MB tiap hari. Endpoint average-price-public SENGAJA TIDAK dipakai karena membawa NIK, NIP, nomor telepon, dan alamat pencacah pada tiap rekaman. Atribusi wajib: "${ATRIBUSI}"`,
+          retrieved: tarikan?.ditarik ?? '2026-08-23',
         },
       ],
     },
