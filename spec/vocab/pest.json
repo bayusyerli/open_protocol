@@ -281,7 +281,7 @@
           "confidence": "tinggi",
           "prep": {
             "crop_from": "Gambar 5",
-            "warning": "Panel B penting sebagai peringatan tandingan: penulisnya sendiri menulis luka ini MIRIP kerusakan tungau kuning (broad mite) — jadi kalau panel ini dipakai, teks pendampingnya harus menyebut tungau juga, bukan cuma virus."
+            "warning": "Silverchair menjawab 403 untuk semua permintaan non-peramban, jadi berkasnya tidak bisa dijemput. Lisensinya juga belum tuntas: halaman artikel menyatakan CC BY, tetapi PDF-nya dialihkan ke CDN bertoken sehingga kalimat lisensinya tidak terbaca verbatim — dan Gambar 6 mengkredit fotografer di luar penulis, yang lazim dikecualikan dari lisensi CC artikel. Catatan isi bila kelak dipakai: penulisnya sendiri menyebut luka ini MIRIP kerusakan tungau kuning, jadi teks pendampingnya harus menyebut tungau juga, bukan cuma virus."
           },
           "source": {
             "url": "https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/jipm/17/1/10.1093_jipm_pmag011/5/m_pmag011f5.jpeg",
@@ -2285,7 +2285,7 @@
           "confidence": "sedang",
           "prep": {
             "crop_from": "panel yang dimaksud",
-            "warning": "BAHAYA PEMOTONGAN: gambar ini memuat lima panel dan HANYA panel berlabel '3' yang F."
+            "warning": "Pelatnya memuat lima tanaman berjajar (C, 1, 2, 3, 4) dan HANYA yang berlabel 3 yang F. oxysporum — empat lainnya spesies Fusarium lain. Sudah dicoba dipotong 25 Agu 2026 dan dilepas: tanamannya semaian pot yang terbaca sebagai ranting mati, dan potongan yang membuang labelnya justru kemasukan tanaman 4. Peran gejala_khas sudah terisi sumber lain yang lebih kuat."
           },
           "source": {
             "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/7526/7878897/ba31635d87fe/41598_2021_82854_Fig7_HTML.jpg",
