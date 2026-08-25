@@ -309,7 +309,8 @@
           "confidence": "tinggi",
           "prep": {
             "crop_from": "Gambar 1",
-            "from_pdf": true
+            "from_pdf": true,
+            "warning": "DITAHAN 25 Agu 2026: halaman OJS pada page_url (article/view/82) menyajikan galley milik ARTIKEL LAIN (nomor 810). PDF yang turun berisi dua ngengat berskala 14 mm, bukan preparat trips. Cari galley yang benar sebelum dipanen ulang."
           },
           "source": {
             "page_url": "https://jurnal.pei-pusat.org/index.php/jei/article/view/82",
@@ -1017,7 +1018,7 @@
           "role": "gejala_khas",
           "matches": "symptom_title",
           "shows": {
-            "id": "Buah cabai keriting dengan bekas tusukan ovipositor lalat buah — bintik hitam kecil di permukaan kulit tempat telur diletakkan."
+            "id": "Tiga buah cabai keriting dari Lombok Timur — dua hijau dan satu merah — dengan panah menunjuk bekas tusukan ovipositor lalat buah: titik gelap kecil di kulit tempat telur diletakkan."
           },
           "identification": {
             "id": "Lalat buah yang tertangkap di kebun cabai itu dideterminasi dengan kunci The Australian Handbook for the Identification of Fruit Flies (Plant Health Australia, 2018); B. dorsalis spesies terbanyak (503 ekor dari 6 spesies). Namun foto tusukannya sendiri hanya diberi label tingkat genus, \"Bactrocera spp.\"."
@@ -1037,6 +1038,14 @@
             "license": "CC-BY-4.0",
             "credit": "Holis, Haryanto, Isnaini (2023) Populasi dan Intensitas Serangan Lalat Buah (Bactrocera spp.) pada Pertanaman Cabai Keriting di Desa Darmasari, Lombok Timur. J. Ilm. Mhs. Agrokomplek 2(1):161–170, Gambar 8. CC BY 4.0.",
             "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/lalat-buah-gejala-1.webp",
+            "width_px": 323,
+            "height_px": 172,
+            "bytes": 6626,
+            "sha256": "sha256:1a3cb1fc17ff5f29a9d84f63dcd71b0ded16496306e43d6fa66fd4b597f52678",
+            "exif_stripped": true
           }
         },
         {
@@ -1053,7 +1062,7 @@
           "prep": {
             "crop_from": "Gambar 1",
             "from_pdf": true,
-            "warning": "Kalau dipakai, ambil hanya panel (1)."
+            "warning": "DITAHAN 25 Agu 2026: PDF-nya memuat LIMA pelat morfologi Bactrocera yang nyaris seragam (kepala, abdomen, toraks, tungkai, sayap + imago utuh), dan tidak ada penanda di dalam gambar yang menunjukkan mana yang B. dorsalis. Memilih salah satu berarti menebak spesies. Peran organisme sudah terisi dua sumber lain."
           },
           "source": {
             "page_url": "https://journal.unram.ac.id/index.php/jima/article/view/2332",
@@ -1983,14 +1992,14 @@
           "role": "gejala_khas",
           "matches": "symptom_title",
           "shows": {
-            "id": "Dua panel gejala antraknosa cabai di lapangan Yogyakarta: (A) luka pada buah, (B) luka pada daun — dari survei yang isolatnya kemudian disekuens."
+            "id": "Sebuah buah cabai di lapangan Yogyakarta dengan satu luka antraknosa besar yang cekung dan menghitam di tengah, kulit di sekitarnya menguning dan mengering."
           },
           "identification": {
             "id": "14 isolat dari cabai di DIY; morfologi koloni dan konidia ditambah filogeni tiga gen (ITS1-4, gapdh, tub2) menghasilkan C. scovillei, C. truncatum, C. siamense, dan C. makassarii; disertai uji patogenisitas pada buah cabai (Gambar 8)."
           },
           "confidence": "tinggi",
           "prep": {
-            "crop_from": "Gambar 2",
+            "crop_from": "panel A",
             "from_pdf": true,
             "warning": "Keterangan aslinya berbunyi \"(A) Colletotrichum frutescens on fruit\" — hampir pasti salah ketik untuk Capsicum frutescens (inangnya), karena tidak ada spesies bernama Colletotrichum frutescens dalam artikel itu; jangan salin nama itu apa adanya."
           },
@@ -2002,8 +2011,16 @@
             "doi": "10.22146/jpti.58955",
             "retrieved_at": "2026-08-25T00:00:00Z",
             "license": "CC-BY-SA-4.0",
-            "credit": "Anggrahini DS, Wibowo A, Subandiyah S (2020) Morphological and Molecular Identification of Colletotrichum spp. Associated with Chili Anthracnose Disease in Yogyakarta Region. J. Perlindungan Tanaman Indonesia 24(2), Gambar 2. CC BY-SA 4.0.",
+            "credit": "Anggrahini DS, Wibowo A, Subandiyah S (2020) Morphological and Molecular Identification of Colletotrichum spp. Associated with Chili Anthracnose Disease in Yogyakarta Region. J. Perlindungan Tanaman Indonesia 24(2), Gambar 2. CC BY-SA 4.0. — dipotong ke panel A",
             "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/antraknosa-gejala-3.webp",
+            "width_px": 546,
+            "height_px": 319,
+            "bytes": 26430,
+            "sha256": "sha256:b85eaf291e2002fd4de3256f6f0a7b7f35132f34c4461c14f3ae67c3397c34dc",
+            "exif_stripped": true
           }
         },
         {
@@ -2208,7 +2225,8 @@
           },
           "confidence": "sedang",
           "prep": {
-            "from_pdf": true
+            "from_pdf": true,
+            "warning": "DITAHAN 25 Agu 2026: page_url ojs3.unpatti.ac.id menjawab 404. Perlu alamat artikel yang benar."
           },
           "source": {
             "page_url": "https://ojs3.unpatti.ac.id/index.php/agrosilvopasture-tech/article/view/15977",
@@ -2688,14 +2706,14 @@
           "role": "ciri_pembanding",
           "matches": "distinguishing.0",
           "shows": {
-            "id": "Empat panel daun cabai rawit dari empat kecamatan di Tuban: (A) mosaik hijau dan melengkung, (B) menguning-mengeriting-melengkung, (C) menguning, mengeriting, melengkung, dan UKURAN DAUN MENGECIL, (D) menguning dengan daun mencekung ke atas dan ke bawah."
+            "id": "Pucuk cabai rawit di Tuban yang daunnya menguning terang, mengecil, dan mengeriting — yang berubah hanya warna dan bentuknya: tidak ada lubang, bercak bertepi, goresan keperakan, anyaman benang, maupun serangga di permukaannya."
           },
           "identification": {
             "id": "PCR gen AV1 (protein selubung) dengan primer universal Begomovirus Krusty & Homer, fragmen target 580 pb, lalu Sanger sequencing dua arah, BLAST, dan pohon filogeni. Nomor aksesi GenBank PQ187395–PQ187398. Judul gambarnya sendiri berbunyi \"...infected by PepYLCIV verified by a PCR detection\"."
           },
           "confidence": "tinggi",
           "prep": {
-            "crop_from": "Gambar 1",
+            "crop_from": "panel D",
             "from_pdf": true,
             "warning": "PERINGATAN ISI: artikel ini melaporkan daun mencekung KE ATAS DAN KE BAWAH pada isolat yang sama (panel D). Klaim aplikasi \"mengeriting ke atas\" karena itu hanya separuh gambaran; kalau panel D dipakai, teksnya jangan menjanjikan arah keriting sebagai pembeda mutlak."
           },
@@ -2707,8 +2725,16 @@
             "doi": "10.22146/jpti.99401",
             "retrieved_at": "2026-08-25T00:00:00Z",
             "license": "CC-BY-SA-4.0",
-            "credit": "Nurenik N. & Rastono A. (2025), J. Perlindungan Tanaman Indonesia 29(1):55–61, Gambar 1 — CC BY-SA 4.0",
+            "credit": "Nurenik N. & Rastono A. (2025), J. Perlindungan Tanaman Indonesia 29(1):55–61, Gambar 1 — CC BY-SA 4.0 — dipotong ke panel D",
             "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/virus-kuning-pembanding-1.webp",
+            "width_px": 332,
+            "height_px": 230,
+            "bytes": 26108,
+            "sha256": "sha256:a49bc6d125849ed93590d87b7bb3c64ba50405678714ee703eaeed19dfecccca",
+            "exif_stripped": true
           }
         },
         {
@@ -2716,14 +2742,14 @@
           "role": "ciri_pembanding",
           "matches": "symptom_brief",
           "shows": {
-            "id": "Tujuh panel gejala penyakit daun keriting kuning cabai di Bali, diberi label satu per satu: A mosaik kuning, B belang, C daun keriting, D mosaik hijau, E tanaman kerdil, F daun mencekung KE ATAS, G daun mencekung ke bawah."
+            "id": "Pucuk cabai di Bali yang daunnya belang kuning-hijau, mengecil, dan tepinya melengkung ke atas sampai mengumpul di ujung ranting."
           },
           "identification": {
             "id": "PCR dengan primer universal Begomovirus SPG1/SPG2, fragmen spesifik 912 pb teramplifikasi dari 12 sampel lapangan, dilanjutkan analisis sikuen DNA dan filogeni; homologi tertinggi ke PepYLCIV. Nomor aksesi GenBank LC381258–LC381280. Tabel 2 artikel menegaskan: \"Infection of Begomovirus was confirmed by PCR for all field samples showing symptom.\""
           },
           "confidence": "tinggi",
           "prep": {
-            "crop_from": "Gambar 1",
+            "crop_from": "panel F",
             "from_pdf": true
           },
           "source": {
@@ -2734,8 +2760,16 @@
             "doi": "10.14692/jfi.17.6.217-224",
             "retrieved_at": "2026-08-25T00:00:00Z",
             "license": "CC-BY-SA-4.0",
-            "credit": "Selangga D.G.W., Wiyono S., Susila A.D., Hidayat S.H. (2021), J. Fitopatologi Indonesia 17(6):217–224, Gambar 1 — CC BY-SA 4.0",
+            "credit": "Selangga D.G.W., Wiyono S., Susila A.D., Hidayat S.H. (2021), J. Fitopatologi Indonesia 17(6):217–224, Gambar 1 — CC BY-SA 4.0 — dipotong ke panel F",
             "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/virus-kuning-pembanding-2.webp",
+            "width_px": 232,
+            "height_px": 163,
+            "bytes": 7490,
+            "sha256": "sha256:d804c74088c484641f2981e62e93e231cbece76add6bf92da56f3a6db2ed1ca8",
+            "exif_stripped": true
           }
         },
         {
