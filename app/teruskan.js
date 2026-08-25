@@ -42,7 +42,7 @@
  */
 
 import { bacaMeta, teks, tanggal } from './pustaka.js';
-import { salin, bukaTab } from './serah.js';
+import { salin, bukaTab, IKON_WA } from './serah.js';
 
 /* 1.200 aksara. Bukan batas WhatsApp — batasnya alamat wa.me, dan yang menegakkannya
  * peramban, bukan WhatsApp. Angka ini dipilih jauh di bawahnya karena kartu yang perlu
@@ -54,7 +54,7 @@ export const HTML_TERUSKAN = `
   <div class="teruskan">
     <p class="teruskan-ajak">Ada yang perlu tahu ini?</p>
     <p class="teruskan-aksi">
-      <button type="button" data-teruskan="wa">Kirim lewat WhatsApp</button>
+      <button type="button" data-teruskan="wa">${IKON_WA}Kirim lewat WhatsApp</button>
       <button type="button" data-teruskan="salin">Salin kartunya</button>
     </p>
     <p class="teruskan-kabar" role="status" aria-live="polite"></p>

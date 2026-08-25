@@ -39,7 +39,7 @@
  */
 
 import { teks } from './pustaka.js';
-import { salin, bukaTab } from './serah.js';
+import { salin, bukaTab, IKON_WA } from './serah.js';
 
 const n = (x) => Number(x ?? 0).toLocaleString('id-ID');
 
@@ -118,7 +118,7 @@ export function blokLapor(k) {
         </p>
 
         <p class="lapor-aksi">
-          <button type="button" data-lapor="wa">Kirim lewat WhatsApp</button>
+          <button type="button" data-lapor="wa">${IKON_WA}Kirim lewat WhatsApp</button>
           <button type="button" data-lapor="salin">Salin laporannya</button>
         </p>
         <p class="lapor-kabar" role="status" aria-live="polite"></p>
