@@ -74,7 +74,7 @@ cek('15', 'kabupaten/kota ber-BPP', new Set(BPP.map((b) => `${b.region?.province
 cek('15', 'laboratorium terakreditasi', LAB.length, 889);
 cek('15', 'lab bisa ukur residu pestisida', LAB.filter((x) => x.capabilities?.pesticide_residue).length, 17);
 
-cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 35);
+cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 36);
 
 // ---- wilayah
 // Yang dijaga di sini bukan cuma cacahnya melainkan klaim yang bersandar padanya:
