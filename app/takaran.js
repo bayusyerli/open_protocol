@@ -254,7 +254,7 @@ const perbarui = () => { hitungDosis(hitungKalibrasi()); };
  * dosis kemarin yang muncul kembali untuk produk hari ini persis kekeliruan yang paling
  * mahal di halaman ini. Luas petak juga tidak: ia berganti tiap petak.
  *
- * Kuncinya terdaftar di simpanan.js supaya ukur.html menyebutnya dan bisa menghapusnya. */
+ * Kuncinya terdaftar di simpanan.js supaya peranti.html menyebutnya dan bisa menghapusnya. */
 const KUNCI_TAKAR = 'op:takar';
 const MEDAN_TERSIMPAN = ['airTerpakai', 'luasSemprot', 'volTangki', 'isiTakaran'];
 

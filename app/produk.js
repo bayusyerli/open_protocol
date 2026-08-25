@@ -8,13 +8,13 @@
  * layar berikutnya: kepala pencarian dulu, rincian menyusul saat satu produk dibuka,
  * daftar setara menyusul lagi.
  *
- * Kalau yang dibuka ternyata varietas, layarnya datang dari varietas.js — perender
+ * Kalau yang dibuka ternyata varietas, layarnya datang dari layar-varietas.js — perender
  * yang sama dengan jalur 4, supaya keduanya tidak menyimpang diam-diam.
  */
 
 import { ambil, muatMeta, bacaMeta, cari, gambarHasil, teks, tanggal, JENIS, HTML_KEMBALI, tautanMasuk, pasangKembali, namaPemegang, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { blokGambar, pasangUsulGambar } from './gambar.js';
-import { layarVarietas } from './varietas.js';
+import { layarVarietas } from './layar-varietas.js';
 import { layarBahan, tabelMerek, merekKadar } from './bahan.js';
 import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
 import { pasangKandungan } from './kandungan.js';
@@ -167,7 +167,7 @@ const kunciId = (id) => String(id).replace(/[^a-z0-9]/gi, '');
 function selOpt(u) {
   const nama = teks(u.optNama ?? '—');
   if (!u.opt || !u.komoditas) return nama;
-  const alamat = `jalur-1.html?${new URLSearchParams({ opt: u.opt, kom: kunciId(u.komoditas) })}`;
+  const alamat = `tanaman.html?${new URLSearchParams({ opt: u.opt, kom: kunciId(u.komoditas) })}`;
   return `<a class="tautan-opt" href="${teks(alamat)}">${nama}</a>`;
 }
 
@@ -180,7 +180,7 @@ function selOpt(u) {
 function selKomoditas(u) {
   const nama = teks(u.komoditasNama ?? '—');
   if (!u.komoditas) return nama;
-  const alamat = `jalur-1.html?${new URLSearchParams({ kom: kunciId(u.komoditas) })}`;
+  const alamat = `tanaman.html?${new URLSearchParams({ kom: kunciId(u.komoditas) })}`;
   return `<a class="tautan-opt" href="${teks(alamat)}">${nama}</a>`;
 }
 

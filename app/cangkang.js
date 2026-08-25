@@ -40,12 +40,12 @@ import { cari, cariGejala, cariNamaLokal, tautanHasil, teks, JENIS } from './pus
 
 /** Satu-satunya daftar halaman. Urutannya urutan tampilnya. */
 const HALAMAN = [
-  { u: 'jalur-1.html',   t: 'Tanaman bermasalah',        g: 'Enam pintu masuk' },
+  { u: 'tanaman.html',   t: 'Tanaman bermasalah',        g: 'Enam pintu masuk' },
   { u: 'produk.html',     t: 'Cek isi produk',            g: 'Enam pintu masuk' },
-  { u: 'jalur-3.html',   t: 'Bandingkan harga pupuk',    g: 'Enam pintu masuk' },
-  { u: 'jalur-4.html',   t: 'Cek nama varietas',         g: 'Enam pintu masuk' },
-  { u: 'jalur-5.html',   t: 'Buat pupuk sendiri',        g: 'Enam pintu masuk' },
-  { u: 'jalur-6.html',   t: 'Pengendali buatan sendiri', g: 'Enam pintu masuk' },
+  { u: 'harga-pupuk.html',   t: 'Bandingkan harga pupuk',    g: 'Enam pintu masuk' },
+  { u: 'varietas.html',   t: 'Cek nama varietas',         g: 'Enam pintu masuk' },
+  { u: 'pupuk-sendiri.html',   t: 'Buat pupuk sendiri',        g: 'Enam pintu masuk' },
+  { u: 'pengendali-sendiri.html',   t: 'Pengendali buatan sendiri', g: 'Enam pintu masuk' },
 
   { u: 'takaran.html',   t: 'Kalibrasi & takaran',       g: 'Hitungan di lahan' },
   { u: 'usaha.html',     t: 'Titik impas usaha tani',    g: 'Hitungan di lahan' },
@@ -53,10 +53,10 @@ const HALAMAN = [
   { u: 'kas.html',       t: 'Buku kas per petak',        g: 'Hitungan di lahan' },
 
   { u: 'harga.html',     t: 'Harga komoditas',           g: 'Cari & rujukan' },
-  { u: 'principal.html', t: 'Profil perusahaan',         g: 'Cari & rujukan' },
+  { u: 'perusahaan.html', t: 'Profil perusahaan',         g: 'Cari & rujukan' },
   { u: 'toko.html',      t: 'Toko tani, benih, penyuluhan & lab', g: 'Cari & rujukan' },
 
-  { u: 'ukur.html',      t: 'Yang tercatat di peranti ini', g: 'Peranti ini' },
+  { u: 'peranti.html',      t: 'Yang tercatat di peranti ini', g: 'Peranti ini' },
 ];
 
 /* Tab bawah — K2 pada docs/17, bagian "cangkang".
@@ -71,7 +71,7 @@ const HALAMAN = [
  * persis penyakit yang dibereskan berkas ini. */
 const TAB = [
   { u: 'index.html', t: 'Beranda' },
-  { u: 'jalur-1.html', t: 'Tanaman' },
+  { u: 'tanaman.html', t: 'Tanaman' },
   { u: 'produk.html',   t: 'Produk' },
   { u: 'harga.html',   t: 'Harga' },
   { u: null,           t: 'Semua' },
@@ -267,9 +267,9 @@ function pasangCari(bilah) {
       }
       const lain = [
         ...gejala.map((g) => ({ t: g.n ?? g.nama ?? 'Gejala', k: 'Gejala di kebun',
-          u: `jalur-1.html?${new URLSearchParams({ opt: g.i })}` })),
+          u: `tanaman.html?${new URLSearchParams({ opt: g.i })}` })),
         ...lokal.map((l) => ({ t: l.n ?? l.nama ?? 'Nama lokal', k: 'Nama lokal',
-          u: `jalur-1.html?${new URLSearchParams({ opt: l.i })}` })),
+          u: `tanaman.html?${new URLSearchParams({ opt: l.i })}` })),
       ];
       if (!hasil.length && !lain.length) {
         // Nol hasil di tengah ketikan hampir selalu berarti namanya belum selesai

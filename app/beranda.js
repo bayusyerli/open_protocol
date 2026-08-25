@@ -37,7 +37,7 @@ const el = {
 // menyimpang persis seperti <p class="lain"> dulu menyimpang.
 const tautan = (x, kueri = el.q.value.trim()) => tautanHasil(x, kueri);
 
-const tautanGejala = (g) => `jalur-1.html?${new URLSearchParams({ opt: g.i })}`;
+const tautanGejala = (g) => `tanaman.html?${new URLSearchParams({ opt: g.i })}`;
 
 const angkaId = (n) => Number(n ?? 0).toLocaleString('id-ID');
 
@@ -79,7 +79,7 @@ const kartuNamaLokal = (x) => {
   }
   return x.ke.map((k, i) => `
     <li>
-      <a href="jalur-1.html?${new URLSearchParams({ opt: k.i })}" data-jenis="nama-lokal">
+      <a href="tanaman.html?${new URLSearchParams({ opt: k.i })}" data-jenis="nama-lokal">
         <span>
           <span class="nama-hasil">${teks(x.n)} <em>→ ${teks(k.l ?? k.i)}</em></span>
           ${i === 0 && x.taksa ? `<span class="sub-hasil">${teks(x.taksa)}</span>` : ''}
@@ -110,7 +110,7 @@ const kartuNamaLokal = (x) => {
 const rapiNiat = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
 
 const NIAT = [
-  { ke: 'jalur-3.html', judul: 'Hitung rupiah per kilogram hara',
+  { ke: 'harga-pupuk.html', judul: 'Hitung rupiah per kilogram hara',
     kata: ['hara', 'per kg hara', 'bandingkan pupuk', 'pupuk mana', 'murah mana', 'mahal mana'] },
   { ke: 'takaran.html', judul: 'Kalibrasi semprot & takaran',
     kata: ['tangki', 'kalibrasi', 'takaran', 'menakar', 'tutup botol', 'sendok', 'semprot', 'berapa ml'] },
@@ -236,7 +236,7 @@ function blokPemegang(hasil, urai) {
   const j = jawabPemegang(hasil, urai.istilah);
   if (!j || !j.badan.length) return '';
   const sebut = (b) => (b.pk
-    ? `<a href="principal.html?key=${encodeURIComponent(b.pk)}">${teks(b.label)}</a>`
+    ? `<a href="perusahaan.html?key=${encodeURIComponent(b.pk)}">${teks(b.label)}</a>`
     : `<strong>${teks(b.label)}</strong>`);
 
   const utama = j.badan.length === 1
@@ -501,7 +501,7 @@ const BLOK_NAMA_TAK_TERAMBIL = `
     </p>
     <p>
       Supaya pencarian nama ikut bekerja tanpa sinyal, simpan sekali dari
-      <a href="ukur.html">apa yang tercatat di peranti ini</a>. Ukurannya disebutkan di sana.
+      <a href="peranti.html">apa yang tercatat di peranti ini</a>. Ukurannya disebutkan di sana.
     </p>
   </div>`;
 

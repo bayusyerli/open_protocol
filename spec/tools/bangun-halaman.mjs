@@ -579,7 +579,7 @@ const TARIKAN = {
  * badannya — dan bukan ke layar aplikasi berparameter.
  *
  * Sampai 24 Agustus 2026, 14.920 halaman produk menyebut pemegang pendaftarannya lewat
- * `/principal.html?key=…`, sementara halaman `/badan/<kunci>/` yang isinya persis itu
+ * `/perusahaan.html?key=…`, sementara halaman `/badan/<kunci>/` yang isinya persis itu
  * berdiri tanpa satu pun tautan masuk: 3.136 halaman dibangun dengan benar, dirujuk nol
  * kali. Akibatnya dua-duanya rugi — halaman statisnya nyaris tak terlihat perayap, dan
  * layar berparameter yang menggantikannya menduplikasi isinya tanpa canonical.
@@ -645,7 +645,7 @@ function tautBadan(key, nama) {
   // Sisanya badan yang kuncinya ditolak saringan di atas — tidak punya halaman sendiri,
   // jadi layar aplikasi yang menampungnya. Jumlahnya kecil dan dilaporkan di ringkasan.
   tautBadanDinamis++;
-  return `<a href="/principal.html?key=${encodeURIComponent(key)}">${t}</a>`;
+  return `<a href="/perusahaan.html?key=${encodeURIComponent(key)}">${t}</a>`;
 }
 
 // ---------------------------------------------------------------------------
@@ -800,7 +800,7 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
     Jumlah mereknya tetap disebut, dan tiap bahan punya halamannya sendiri.
   </p>
   <ul class="daftar">${kartuRingkas.join('\n    ')}</ul>
-  ${kartuTakTerdaftar ? `<p class="catatan">${n(kartuTakTerdaftar)} kombinasi lain bahkan tidak didaftar di halaman ini, dengan alasan yang sama. Seluruhnya bisa ditelusuri di <a href="/jalur-1.html?opt=${encodeURIComponent(o.id)}">versi yang bisa ditelusuri</a>.</p>` : ''}` : '');
+  ${kartuTakTerdaftar ? `<p class="catatan">${n(kartuTakTerdaftar)} kombinasi lain bahkan tidak didaftar di halaman ini, dengan alasan yang sama. Seluruhnya bisa ditelusuri di <a href="/tanaman.html?opt=${encodeURIComponent(o.id)}">versi yang bisa ditelusuri</a>.</p>` : ''}` : '');
 
     const contohDosis = merekUnik.map((m) => m.dosis).filter(Boolean).slice(0, 3);
     const tangkiAda = merekUnik.filter((m) => perTangki(m.dosis));
@@ -851,7 +851,7 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
   </details>
   <p class="lain">
     <a href="/tanaman/${teks(kom.slug)}/">Semua OPT pada ${teks(kom.nama)} →</a> ·
-    <a href="/jalur-1.html?opt=${encodeURIComponent(o.id)}">Buka versi yang bisa ditelusuri →</a> ·
+    <a href="/tanaman.html?opt=${encodeURIComponent(o.id)}">Buka versi yang bisa ditelusuri →</a> ·
     <a href="/takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
@@ -860,7 +860,7 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
       jalan,
       judul: `${sebutan} pada ${kom.nama} — bahan aktif dan merek yang terdaftar`,
       deskripsi: `${merekUnik.length} merek terdaftar dari ${grup.length} kombinasi bahan dan kadar untuk ${sebutan} pada ${kom.nama}, beserta nomor pendaftaran dan dosis berlabelnya. Urut nomor pendaftaran, tanpa peringkat.`,
-      jalur: 'Jalur 1 · masuk dari gejala',
+      jalur: 'Tanaman bermasalah',
       h1: `${sebutan} pada ${kom.nama}`,
       lede: `${n(merekUnik.length)} merek terdaftar, ${n(grup.length)} kombinasi bahan dan kadar.${saudaraLabel.length ? ` Label ini dipakai ${n(saudaraLabel.length + 1)} takson berbeda pada ${teks(kom.nama)} — halaman ini yang <em>${teks(ilmiah ?? o.nama)}</em>.` : ''} Yang ditampilkan <strong>apa yang terdaftar</strong> — bukan mana yang paling ampuh.`,
       isi,
@@ -920,7 +920,7 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
       return `
   <div class="kartu bahan">
     <h3>${teks(b.n)} ${teks(k.k)}</h3>
-    <p class="catatan">${n(merek.length)} merek terdaftar dengan kadar ini — tidak ditabelkan di halaman ini supaya tetap ringan. Namanya bisa dicari di <a href="/produk.html">jalur 2</a>.</p>
+    <p class="catatan">${n(merek.length)} merek terdaftar dengan kadar ini — tidak ditabelkan di halaman ini supaya tetap ringan. Namanya bisa dicari di <a href="/produk.html">Cek isi produk</a>.</p>
   </div>`;
     }
     return `
@@ -987,7 +987,7 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
   ${pakai.length ? `<ul class="daftar">
       ${daftarPakai}
     </ul>` : ''}
-  ${pakai.length > pakaiTampil.length ? `<p class="catatan">${n(pakai.length - pakaiTampil.length)} pasangan lain tidak ditampilkan di sini supaya halaman tetap ringan. Seluruhnya bisa ditelusuri di <a href="/jalur-1.html">jalur 1</a>.</p>` : ''}
+  ${pakai.length > pakaiTampil.length ? `<p class="catatan">${n(pakai.length - pakaiTampil.length)} pasangan lain tidak ditampilkan di sini supaya halaman tetap ringan. Seluruhnya bisa ditelusuri di <a href="/tanaman.html">Tanaman bermasalah</a>.</p>` : ''}
   <h2 class="judul-bagian">Kadar dan merek yang terdaftar</h2>
   ${kartuKadar}
   ${htmlTanya}
@@ -1004,7 +1004,7 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
   </details>
   <p class="lain">
     <a href="/produk.html">Cari nama di kemasan →</a> ·
-    <a href="/jalur-1.html">Masuk dari gejala →</a> ·
+    <a href="/tanaman.html">Masuk dari gejala →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
 
@@ -1013,7 +1013,7 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
     robots: b.u ? 'noindex,follow' : null,
     judul: `${b.n} — ${b.produk} produk terdaftar, dan untuk apa saja terdaftarnya`,
     deskripsi: `${b.produk} produk terdaftar memuat ${b.n}, dalam ${kadar.length} kadar${pakai.length ? `, terdaftar untuk ${pakai.length} pasangan tanaman dan OPT` : ''}. Daftar lengkap dari registri Kementan, tanpa peringkat.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: b.n,
     lede: `${n(b.produk)} produk terdaftar memuatnya, dalam ${n(kadar.length)} kadar. Yang ditampilkan <strong>apa yang terdaftar</strong> — bukan mana yang paling ampuh.`,
     isi,
@@ -1141,7 +1141,7 @@ for (const k of semuaKandungan) {
   </details>
   <p class="lain">
     <a href="/produk.html">Periksa kandungan dari karung →</a> ·
-    <a href="/jalur-3.html">Hitung rupiah per kg hara →</a> ·
+    <a href="/harga-pupuk.html">Hitung rupiah per kg hara →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
 
@@ -1149,7 +1149,7 @@ for (const k of semuaKandungan) {
     jalan,
     judul: `Pupuk ${nama} — ${produk.length} produk terdaftar dengan kandungan itu`,
     deskripsi: `${produk.length} pupuk terdaftar membawa kandungan ${nama} (${NAMA_BASIS[k.basis]}) pada labelnya, beserta pemegang pendaftarannya. Dari registri pupuk Kementan, urut abjad, tanpa peringkat.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: `Pupuk ${nama}`,
     lede: `${n(produk.length)} produk terdaftar membawa kandungan ini di labelnya. Yang cocok adalah <strong>labelnya</strong>, bukan isi karungnya.`,
     isi,
@@ -1229,7 +1229,7 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
   ${varietas ? `<div class="kartu">
     <h2>Varietasnya</h2>
     <p>${n(varietas)} varietas ${teks(kom.nama)} tercatat di registri perizinan.
-    <a href="/jalur-4.html">Cek keabsahan benih &amp; bibit →</a></p>
+    <a href="/varietas.html">Cek keabsahan benih &amp; bibit →</a></p>
     <p class="catatan">${teks(meta?.tidakAda?.hasilVarietas ?? '')}</p>
   </div>` : ''}
   ${htmlTanya}
@@ -1245,7 +1245,7 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
     </div>
   </details>
   <p class="lain">
-    <a href="/jalur-1.html">Masuk dari gejala →</a> ·
+    <a href="/tanaman.html">Masuk dari gejala →</a> ·
     <a href="/produk.html">Cari nama di kemasan →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
@@ -1397,7 +1397,7 @@ for (const kel of kelompokSetara) {
   </details>
   <p class="lain">
     <a href="/produk.html">Cari nama di kemasan →</a> ·
-    ${jenis === 'pupuk' ? '<a href="/jalur-3.html">Hitung rupiah per kg hara →</a> ·' : ''}
+    ${jenis === 'pupuk' ? '<a href="/harga-pupuk.html">Hitung rupiah per kg hara →</a> ·' : ''}
     <a href="/index.html">Beranda</a>
   </p>`;
 
@@ -1405,7 +1405,7 @@ for (const kel of kelompokSetara) {
     jalan,
     judul: `${nama} — ${anggota.length} merek terdaftar dengan isi identik`,
     deskripsi: `${anggota.length} merek ${jenis} terdaftar membawa ${nama} — bahan dan kadar yang sama persis, beserta nomor pendaftaran, pemegang, dan dosis berlabel masing-masing.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: nama,
     lede: `${n(anggota.length)} merek terdaftar isinya <strong>sama persis</strong>. Yang belum tentu sama: dosis terdaftarnya, dan tanaman yang boleh disasarnya.`,
     isi: isiHtml,
@@ -1582,7 +1582,7 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
   <p class="lain">
     <a href="/produk.html">Cari nama lain di kemasan →</a> ·
     <a href="/takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
-    ${pr.pcp?.key ? `<a href="${KUNCI_BADAN.has(pr.pcp.key) ? `/badan/${teks(pr.pcp.key)}/` : `/principal.html?key=${encodeURIComponent(pr.pcp.key)}`}">Profil pemegang pendaftaran →</a> ·` : ''}
+    ${pr.pcp?.key ? `<a href="${KUNCI_BADAN.has(pr.pcp.key) ? `/badan/${teks(pr.pcp.key)}/` : `/perusahaan.html?key=${encodeURIComponent(pr.pcp.key)}`}">Profil pemegang pendaftaran →</a> ·` : ''}
     <a href="/index.html">Beranda</a>
   </p>`;
 
@@ -1591,7 +1591,7 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
     robots: arahan,
     judul: `${pr.nama} — isi, nomor pendaftaran, dan dosis berlabelnya${kadaluwarsa ? ' (izin berakhir)' : ''}`,
     deskripsi: `${pr.nama}: ${isi.length ? sebutanIsi(isi) : 'komposisi tidak tercatat di registri'}. Nomor pendaftaran ${pr.daftar ?? '—'}${guna.length ? `, ${guna.length} penggunaan berlabel beserta dosisnya` : ''}${setara ? `, ${setara.jumlah - 1} merek lain berisi identik` : ''}.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: pr.nama,
     lede: `${teks(pr.jenis === 'pupuk' ? 'Pupuk' : 'Pestisida')} terdaftar atas nama ${teks(pr.pcp?.nama ?? pr.produsen ?? '—')}${kadaluwarsa ? ', <strong>masa berlakunya sudah lewat</strong>' : ''}. Yang ditampilkan isi pendaftarannya — bukan penilaian atasnya.`,
     isi: isiHtml,
@@ -1628,7 +1628,7 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
 // Pengaya riset web TIDAK ikut ke JSON-LD. Ia tingkat D — datang dari laporan agen riset,
 // bukan dari registri — dan menuliskannya sebagai `url` atau `sameAs` pada Organization
 // berarti menyatakannya kepada mesin sebagai fakta terverifikasi. Di layar ia tampil
-// dengan lencana tingkatnya, seperti di app/principal.js; di data terstruktur ia absen.
+// dengan lencana tingkatnya, seperti di app/perusahaan.js; di data terstruktur ia absen.
 const BATAS_BARIS_BADAN = 150;
 const BENTUK_LABEL = { tidak_diketahui: 'tidak tercatat' };
 const SEKTOR_LABEL = { pesticide: 'pestisida', fertilizer: 'pupuk', seed: 'benih' };
@@ -1727,7 +1727,7 @@ for (const f of berkasDi('principal')) {
         <tr><td>${tautHalamanProduk(x.i, x.n)}</td><td>${teks(x.j)}</td><td class="angka">${teks(x.d ?? '—')}</td></tr>`).join('')}</tbody>
     </table>
   </div>
-  ${produk.length > produkTampil.length ? `<p class="catatan">${n(produk.length - produkTampil.length)} merek lain tidak ditabelkan di halaman ini supaya tetap ringan. Seluruhnya bisa ditelusuri di <a href="/principal.html?key=${encodeURIComponent(b.key)}">profil yang bisa ditelusuri</a>.</p>` : ''}` : ''}
+  ${produk.length > produkTampil.length ? `<p class="catatan">${n(produk.length - produkTampil.length)} merek lain tidak ditabelkan di halaman ini supaya tetap ringan. Seluruhnya bisa ditelusuri di <a href="/perusahaan.html?key=${encodeURIComponent(b.key)}">profil yang bisa ditelusuri</a>.</p>` : ''}` : ''}
   ${varietas.length ? `
   <h2 class="judul-bagian">${n(varietas.length)} varietas terdaftar</h2>
   <p class="bantuan">
@@ -1740,7 +1740,7 @@ for (const f of berkasDi('principal')) {
       <tbody>${varietasTampil.map((x) => {
         const kom = x.k ? namaKeKomoditas.get(String(x.k).toLowerCase()) : null;
         return `
-        <tr><td><a href="/jalur-4.html?id=${encodeURIComponent(x.i)}&amp;pecahan=${encodeURIComponent(x.p)}">${teks(x.n)}</a></td>
+        <tr><td><a href="/varietas.html?id=${encodeURIComponent(x.i)}&amp;pecahan=${encodeURIComponent(x.p)}">${teks(x.n)}</a></td>
             <td>${kom ? `<a href="/tanaman/${teks(kom.slug)}/">${teks(x.k)}</a>` : teks(x.k ?? '—')}</td></tr>`;
       }).join('')}</tbody>
     </table>
@@ -1763,7 +1763,7 @@ for (const f of berkasDi('principal')) {
     </div>
   </details>
   <p class="lain">
-    <a href="/principal.html?key=${encodeURIComponent(b.key)}">Profil yang bisa ditelusuri →</a> ·
+    <a href="/perusahaan.html?key=${encodeURIComponent(b.key)}">Profil yang bisa ditelusuri →</a> ·
     <a href="/produk.html">Cari nama di kemasan →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
@@ -1772,7 +1772,7 @@ for (const f of berkasDi('principal')) {
     jalan,
     judul: `${b.nama} — ${pegang || 'pendaftaran'} terdaftar`,
     deskripsi: `${b.nama}${b.bentuk && b.bentuk !== 'tidak_diketahui' ? ` (${b.bentuk})` : ''} memegang ${pegang || 'pendaftaran'} di registri Kementan. Daftar mereknya, nomor pendaftarannya, dan varietas yang didaftarkannya.`,
-    jalur: 'Profil pemegang pendaftaran',
+    jalur: 'Profil perusahaan',
     h1: b.nama,
     lede: `${teks(pegang || 'Tidak ada pendaftaran tercatat')}. Yang ditampilkan <strong>isi registri</strong> — bukan penilaian atas badannya.`,
     isi: isiHtml,
@@ -2054,7 +2054,7 @@ for (const w of [...wilayahSemua].sort((a, b) => a.k.localeCompare(b.k))) {
 // Template 10 — sediaan buatan sendiri, dan bahan bakunya
 // ---------------------------------------------------------------------------
 // Jalur 5 lapang, jalur 6 terikat — dan halaman jalur 6 membuka dengan pasalnya, bukan
-// dengan resepnya. Sikap yang diwarisi dari app/jalur-6.js: NYATAKAN STATUSNYA APA ADANYA,
+// dengan resepnya. Sikap yang diwarisi dari app/pengendali-sendiri.js: NYATAKAN STATUSNYA APA ADANYA,
 // TANDAI own_use_only, JANGAN MENYIMPULKAN AMAN.
 const PERAN = {
   nitrogen_source: 'sumber nitrogen', carbon_source: 'sumber karbon', water: 'air',
@@ -2233,7 +2233,7 @@ for (const r of resepSemua.sort((a, b) => a.id.localeCompare(b.id))) {
     </div>
   </details>
   <p class="lain">
-    <a href="/jalur-${enam ? '6' : '5'}.html">Buka versi yang bisa ditelusuri →</a> ·
+    <a href="/${enam ? 'pengendali-sendiri' : 'pupuk-sendiri'}.html">Buka versi yang bisa ditelusuri →</a> ·
     <a href="/sediaan/bahan/">Bahan baku dan statusnya →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
@@ -2242,7 +2242,7 @@ for (const r of resepSemua.sort((a, b) => a.id.localeCompare(b.id))) {
     jalan,
     judul: `${r.nama} — kedudukan hukum, bahan, dan titik kendalinya`,
     deskripsi: `${r.definisi ? String(r.definisi).slice(0, 150) : r.nama}. Kedudukan hukum, bahan beserta takaran, proses, kriteria pelepasan yang bisa diperiksa di kebun, dan tingkat buktinya.`,
-    jalur: `Jalur ${r.jalur} · ${enam ? 'sediaan pengendali — status hukum' : 'sediaan pupuk'}`,
+    jalur: enam ? 'Pengendali buatan sendiri' : 'Buat pupuk sendiri',
     h1: r.nama,
     lede: enam
       ? `<strong>Statusnya hanya untuk keperluan sendiri</strong>, dan bacaan Pasal 77 ayat (1) belum dijawab penasihat hukum. Yang ditampilkan status apa adanya — bukan kesimpulan bahwa ia aman atau sah.`
@@ -2318,8 +2318,8 @@ for (const [id, b] of [...petaBahanSediaan.entries()].sort()) {
     </div>
   </details>
   <p class="lain">
-    <a href="/jalur-5.html">Meramu pupuk sendiri →</a> ·
-    <a href="/jalur-6.html">Sediaan pengendali — status hukumnya →</a> ·
+    <a href="/pupuk-sendiri.html">Meramu pupuk sendiri →</a> ·
+    <a href="/pengendali-sendiri.html">Sediaan pengendali — status hukumnya →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
 
@@ -2377,8 +2377,8 @@ for (const [id, b] of [...petaBahanSediaan.entries()].sort()) {
   </ul>`).join('\n')}
   ${htmlTanya}
   <p class="lain">
-    <a href="/jalur-5.html">Meramu pupuk sendiri →</a> ·
-    <a href="/jalur-6.html">Sediaan pengendali — status hukumnya →</a> ·
+    <a href="/pupuk-sendiri.html">Meramu pupuk sendiri →</a> ·
+    <a href="/pengendali-sendiri.html">Sediaan pengendali — status hukumnya →</a> ·
     <a href="/index.html">Beranda</a>
   </p>`;
   simpan(`${jalan}index.html`, halaman({

@@ -43,7 +43,7 @@ const JENIS_PUNYA = { pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varieta
 // Ke mana satu baris daftar membuka rinciannya. Sama seperti beranda: halaman ini tidak
 // punya perender produk sendiri, dan menyalinnya ke sini berarti dua layar yang akan
 // menyimpang diam-diam.
-const RUMAH = { varietas: 'jalur-4.html', pestisida: 'produk.html', pupuk: 'produk.html' };
+const RUMAH = { varietas: 'varietas.html', pestisida: 'produk.html', pupuk: 'produk.html' };
 const tautanEntri = (x) =>
   `${RUMAH[x.j] ?? 'produk.html'}?${new URLSearchParams({ id: x.i, pecahan: x.p })}`;
 
@@ -321,7 +321,7 @@ function gambarHasilPrincipal(daftar, kueri) {
     <ul class="daftar">
       ${tampil.map((x) => `
         <li>
-          <a class="baris-tautan" href="principal.html?key=${encodeURIComponent(kunciDari(x))}">
+          <a class="baris-tautan" href="perusahaan.html?key=${encodeURIComponent(kunciDari(x))}">
             <span class="nama">${teks(x.n)}${x.f ? `<span class="lencana">${teks(x.f)}</span>` : ''}</span>
             <span class="sub">${teks(x.k ?? '—')}</span>
           </a>

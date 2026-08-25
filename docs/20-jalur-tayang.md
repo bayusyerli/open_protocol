@@ -8,7 +8,7 @@
 
 Halaman entitas di `terbit/` menaut `/gaya.css`, `/produk.html`, dan `/manifest.webmanifest`
 — artinya ia mengasumsikan permukaan `app/` disajikan **di akar**. Sampai 24 Agustus 2026
-tidak ada langkah yang melakukan itu, dan akibatnya `test -f terbit/principal.html` gagal
+tidak ada langkah yang melakukan itu, dan akibatnya `test -f terbit/perusahaan.html` gagal
 sementara 14.920 halaman produk menautnya. Diunggah apa adanya, seluruh navigasi, gaya, dan
 skrip di 30 ribu halaman akan 404, dan situsnya terindeks sebagai halaman rusak.
 

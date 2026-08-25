@@ -6,7 +6,7 @@
 > jelek, melainkan **karena tidak ada angkanya**.  
 > Tanpa akun · tanpa jaringan · **hanya di peranti** · bergulir 60 hari
 >
-> Pencatatnya [`app/ukur.js`](../app/ukur.js), layar bacanya [`app/ukur.html`](../app/ukur.html).
+> Pencatatnya [`app/ukur.js`](../app/ukur.js), layar bacanya [`app/peranti.html`](../app/peranti.html).
 > Modul **MI** pada [10-peta-modul.md](10-peta-modul.md).
 
 [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md) bagian 5 mewajibkan dokumen ini:

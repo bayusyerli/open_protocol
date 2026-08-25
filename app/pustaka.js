@@ -157,7 +157,7 @@ export const JENIS = {
 export function namaPemegang(nama, key) {
   const t = teks(nama ?? '—');
   if (!nama || !key) return t;
-  return `<a class="tautan-principal" href="principal.html?key=${encodeURIComponent(key)}">${t}</a>`;
+  return `<a class="tautan-principal" href="perusahaan.html?key=${encodeURIComponent(key)}">${t}</a>`;
 }
 
 /* Petak kemasan berukuran tetap, dipasang di depan atau di samping nama merek.
@@ -197,13 +197,13 @@ export const petakKemasan = (berkas) => (berkas
  *
  * Pestisida, pupuk, dan bahan aktif serumah di jalur 2 karena pertanyaannya sama:
  * "sebenarnya ini apa". */
-const RUMAH = { varietas: 'jalur-4.html', pestisida: 'produk.html', pupuk: 'produk.html', bahan: 'produk.html' };
+const RUMAH = { varietas: 'varietas.html', pestisida: 'produk.html', pupuk: 'produk.html', bahan: 'produk.html' };
 
 // Sediaan punya DUA rumah, dan yang menentukan rezimnya. Sisi pupuk dan sisi pengendali
 // bukan dua tab dari satu layar — janjinya berbeda: yang satu resep terbuka, yang satu
 // status hukum yang sengaja berhenti sebelum jadi anjuran.
 const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.includes('pengendali')
-  ? 'jalur-6.html' : 'jalur-5.html');
+  ? 'pengendali-sendiri.html' : 'pupuk-sendiri.html');
 
 // Dua jenis entri tidak dibuka lewat `id`+`pecahan` seperti empat yang lain: keduanya punya
 // berkasnya sendiri per entitas, jadi yang dibawa tautannya cukup satu kunci.
@@ -211,9 +211,9 @@ const tautanKunci = {
   // OPT registri dibuka jalur 1 lewat kuncinya sendiri, bukan lewat `opt=` yang dipakai
   // sepuluh OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
   // membuat jalur 1 mencari teks gejala yang memang tidak ada.
-  opt: (x) => `jalur-1.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
+  opt: (x) => `tanaman.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
   sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
-  principal: (x) => `principal.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
+  principal: (x) => `perusahaan.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
   harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
   // Satu-satunya rute yang keluar dari app/ dan masuk ke halaman terbitan. Pintu komoditas
   // memang sudah ada di sana — /tanaman/alpukat/ menyebut 145 varietas dan seluruh OPT

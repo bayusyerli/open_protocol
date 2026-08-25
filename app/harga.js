@@ -183,7 +183,7 @@ function gambarDaftar(kueri = '') {
 // — dan kartu "tanpa angka" sendiri berjanji "mengarahkan pencarian ke tempat lain".
 // Sampai 24 Agustus 2026 tempat lain itu tidak pernah ditautkan.
 function lanjutKosong(k) {
-  if (/^pupuk-/.test(k)) return { u: 'jalur-3.html', t: 'Bandingkan dengan HET bersubsidi' };
+  if (/^pupuk-/.test(k)) return { u: 'harga-pupuk.html', t: 'Bandingkan dengan HET bersubsidi' };
   return null;
 }
 

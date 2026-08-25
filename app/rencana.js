@@ -481,7 +481,7 @@ function gambarHasil(p, { jadwal, kebutuhan, takTerjumlah }, luas) {
         </p>` : ''}
       <p class="catatan">
         <strong>Rupiahnya tidak dihitung di sini.</strong> Harga tidak ada di registri sama
-        sekali. <a href="jalur-3.html">Bandingkan harga pupuk</a> menghitung rupiah per kilogram hara dari
+        sekali. <a href="harga-pupuk.html">Bandingkan harga pupuk</a> menghitung rupiah per kilogram hara dari
         harga yang kamu masukkan sendiri, dan <a href="usaha.html">titik impas</a> memakainya
         untuk seluruh anggaran musim.
       </p>

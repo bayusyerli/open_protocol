@@ -28,7 +28,7 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v40';
+const VERSI = 'v41';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 
@@ -47,19 +47,19 @@ const INDEKS = '/spec/indeks/';
 // yang lupa didaftar akan gagal senyap saat luring, dan daftar yang terlihat lebih mudah
 // diperiksa daripada pemindai yang benar diam-diam.
 const BERKAS_CANGKANG = [
-  'index.html', 'produk.html', 'jalur-1.html', 'jalur-3.html', 'jalur-4.html',
-  'jalur-5.html', 'jalur-6.html', 'ukur.html', 'takaran.html', 'harga.html',
-  'principal.html', 'toko.html', 'usaha.html', 'kas.html', 'rencana.html',
+  'index.html', 'produk.html', 'tanaman.html', 'harga-pupuk.html', 'varietas.html',
+  'pupuk-sendiri.html', 'pengendali-sendiri.html', 'peranti.html', 'takaran.html', 'harga.html',
+  'perusahaan.html', 'toko.html', 'usaha.html', 'kas.html', 'rencana.html',
   'gaya.css', 'beranda.css', 'batas.css',
   'hitung.js', 'tanya.js',
   'pustaka.js', 'batas.js', 'sanggah.js', 'serah.js', 'teruskan.js', 'lapor.js',
   'simpanan.js',
   'musim.js', 'buku.js',
   'tema.js', 'luring.js', 'cangkang.js',
-  'ukur.js', 'ukur-layar.js',
-  'beranda.js', 'jalur-1.js', 'jalur-2.js', 'jalur-3.js', 'jalur-4.js', 'jalur-5.js',
-  'jalur-6.js', 'bahan.js', 'varietas.js', 'kandungan.js', 'takaran.js',
-  'harga.js', 'principal.js', 'gambar.js', 'toko.js', 'usaha.js', 'kas.js', 'rencana.js',
+  'ukur.js', 'peranti.js',
+  'beranda.js', 'tanaman.js', 'produk.js', 'harga-pupuk.js', 'cek-varietas.js', 'pupuk-sendiri.js',
+  'pengendali-sendiri.js', 'bahan.js', 'layar-varietas.js', 'kandungan.js', 'takaran.js',
+  'harga.js', 'perusahaan.js', 'gambar.js', 'toko.js', 'usaha.js', 'kas.js', 'rencana.js',
   'manifest.webmanifest', 'ikon.svg', 'ikon-maskable.svg',
   // Tanda merek. Versi gelapnya ikut walaupun cuma dipakai satu tema: yang berpindah
   // tema saat luring tidak punya jaringan untuk mengambil yang belum tersimpan, dan

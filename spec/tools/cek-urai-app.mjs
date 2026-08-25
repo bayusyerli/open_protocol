@@ -3,16 +3,16 @@
 //   node spec/tools/cek-urai-app.mjs
 //
 // KENAPA ALAT INI ADA
-// principal.js pernah terkirim dengan template literal yang tertutup di tengah
+// perusahaan.js pernah terkirim dengan template literal yang tertutup di tengah
 // komentar: sepasang backtick mengelilingi kata `lazy` di dalam komentar HTML, dan
 // backtick pembukanya menutup literal yang dibuka empat baris di atasnya. Seluruh
-// modul gagal diurai, principal.html tidak menjalankan JavaScript sama sekali —
+// modul gagal diurai, perusahaan.html tidak menjalankan JavaScript sama sekali —
 // cangkang bersama tidak tersuntik, kartu perusahaan tidak pernah dirender — dan
 // yang menangkapnya cuma membuka halamannya di peramban.
 //
 // KENAPA `node --check` TIDAK CUKUP
 // Berkas .js tanpa "type": "module" di package.json terdekat diurai Node sebagai
-// CommonJS. `node --check app/principal.js` LOLOS untuk galat di atas; app/ memang
+// CommonJS. `node --check app/perusahaan.js` LOLOS untuk galat di atas; app/ memang
 // tidak punya package.json sendiri. Sementara halaman memuat berkas-berkas ini
 // sebagai <script type="module">, yang aturan uraiannya lain. Jadi pemeriksaan wajib
 // memaksa modus modul lewat --input-type=module, dan sumbernya wajib masuk lewat

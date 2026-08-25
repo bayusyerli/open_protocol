@@ -249,7 +249,7 @@ export function pasangKandungan(buka) {
   document.getElementById('periksaKandungan').addEventListener('click', periksa);
 
   // Nama produk yang cocok tetap dibuka perender jalur 2 — satu layar rincian, satu
-  // tempat, seperti varietas.js dipakai jalur 2 dan 4.
+  // tempat, seperti layar-varietas.js dipakai jalur 2 dan 4.
   el.hasil.addEventListener('click', (ev) => {
     const t = ev.target.closest('button[data-id]');
     if (t) buka(t.dataset.id, t.dataset.pecahan);

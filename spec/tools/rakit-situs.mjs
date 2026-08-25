@@ -16,7 +16,7 @@
 // Halaman di terbit/ menaut `/gaya.css`, `/index.html`, dan `/manifest.webmanifest` —
 // artinya ia mengasumsikan app/ disajikan DI AKAR. Tanpa langkah perakitan, seluruh
 // navigasi, gaya, dan skrip di 30 ribu halaman itu 404, dan situsnya terindeks sebagai
-// halaman rusak. Itu bukan dugaan: audit 24 Agustus menemukan `test -f terbit/principal.html`
+// halaman rusak. Itu bukan dugaan: audit 24 Agustus menemukan `test -f terbit/perusahaan.html`
 // gagal, dan 14.920 halaman produk menaut berkas itu.
 //
 // Jadi yang dikerjakan berkas ini dua hal, dan yang kedua yang membuatnya layak jadi alat:
@@ -121,7 +121,7 @@ if (tabrakan.length) {
 /* Yang diperiksa hanya jalur MUTLAK. Tautan relatif sudah dijaga oleh strukturnya sendiri —
  * ia berpindah bersama berkasnya — sedangkan jalur mutlak menyatakan asumsi tentang bentuk
  * situs, dan asumsi itulah yang pernah salah. Query dan fragmen dibuang sebelum dicocokkan:
- * `/principal.html?key=x` adalah berkas `principal.html`. */
+ * `/perusahaan.html?key=x` adalah berkas `perusahaan.html`. */
 const punya = (jalan) => {
   const bersih = jalan.split('#')[0].split('?')[0];
   if (!bersih || bersih === '/') return asal.has('index.html');

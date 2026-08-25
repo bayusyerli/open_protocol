@@ -4,12 +4,12 @@
  * benih atau label bibit, dan mencampur 14.920 produk pestisida dan pupuk ke dalam
  * hasilnya cuma menambah kebisingan.
  *
- * Layar hasilnya sendiri ada di varietas.js, dipakai bersama jalur 2 — satu perender,
+ * Layar hasilnya sendiri ada di layar-varietas.js, dipakai bersama jalur 2 — satu perender,
  * dua pintu, supaya keduanya tidak menyimpang diam-diam.
  */
 
 import { ambil, muatMeta, cari, gambarHasil, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
-import { layarVarietas, layarTakDitemukan } from './varietas.js';
+import { layarVarietas, layarTakDitemukan } from './layar-varietas.js';
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';

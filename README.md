@@ -174,12 +174,12 @@ disusun mengikuti pertanyaan yang akan diajukan tiap layar.
 
 | Halaman | Jalur | Masuk dari |
 |---|---|---|
-| `app/jalur-1.html` | 1 · insiden | gejala yang terlihat, bukan nama hama |
+| `app/tanaman.html` | 1 · insiden | gejala yang terlihat, bukan nama hama |
 | `app/index.html` | 2 · produk | nama di kemasan |
-| `app/jalur-3.html` | 3 · hitungan | harga yang dibayar |
-| `app/jalur-4.html` | 4 · keabsahan | nama varietas |
-| `app/jalur-5.html` | 5 · sediaan pupuk | niat menyuburkan |
-| `app/jalur-6.html` | 6 · sediaan pengendali | niat mengendalikan — **status hukum, bukan anjuran** |
+| `app/harga-pupuk.html` | 3 · hitungan | harga yang dibayar |
+| `app/varietas.html` | 4 · keabsahan | nama varietas |
+| `app/pupuk-sendiri.html` | 5 · sediaan pupuk | niat menyuburkan |
+| `app/pengendali-sendiri.html` | 6 · sediaan pengendali | niat mengendalikan — **status hukum, bukan anjuran** |
 
 Syarat lapangannya HP entry-level bersinyal buruk, dan itu yang menentukan bentuk
 indeksnya: satu penelusuran utuh mengambil **2 sampai 4 berkas**, 11–151 KB sebelum

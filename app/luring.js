@@ -40,7 +40,7 @@ export function pasangLuring() {
 }
 
 // ---------------------------------------------------------------------------
-// Kendali — dipakai ukur.html
+// Kendali — dipakai peranti.html
 // ---------------------------------------------------------------------------
 
 const siap = () => navigator.serviceWorker?.ready;

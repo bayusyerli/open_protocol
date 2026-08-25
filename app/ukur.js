@@ -15,7 +15,7 @@
  * 2. Tanpa jaringan. Berkas ini tidak pernah fetch, tidak pernah sendBeacon. Tidak
  *    ada server aplikasi di arsitektur ini, dan menambahkannya diam-diam demi
  *    telemetri akan mengubah sifat produknya. Pengumpulan saat pilot dilakukan
- *    lewat layar baca ukur.html, atas sepengetahuan yang memegang peranti.
+ *    lewat layar baca peranti.html, atas sepengetahuan yang memegang peranti.
  *
  * 3. Tidak boleh merusak jalurnya. Seluruh isi berkas ini dibungkus penjagaan:
  *    localStorage bisa mati di mode privat, bisa penuh, bisa ditolak kebijakan.
@@ -164,7 +164,7 @@ export function catatLubang(sumber, kunci) {
 }
 
 // ---------------------------------------------------------------------------
-// Pembacaan — dipakai ukur.html
+// Pembacaan — dipakai peranti.html
 // ---------------------------------------------------------------------------
 
 const p50 = (a) => (a.length ? [...a].sort((x, y) => x - y)[Math.floor(a.length / 2)] : null);

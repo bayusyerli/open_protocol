@@ -6,18 +6,18 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | Halaman | Jalur | Rancangan |
 |---|---|---|
 | `beranda.html` | — pintu depan: satu kotak pencarian, lalu diserahkan ke jalur yang punya perendernya | — |
-| `jalur-1.html` | 1 — masuk dari gejala: dugaan penyebab, dua cara memastikan, bahan aktif yang terdaftar | [`docs/04-jalur-insiden.md`](../docs/04-jalur-insiden.md) |
+| `tanaman.html` | 1 — masuk dari gejala: dugaan penyebab, dua cara memastikan, bahan aktif yang terdaftar | [`docs/04-jalur-insiden.md`](../docs/04-jalur-insiden.md) |
 | `index.html` | 2 — masuk dari kemasan: isi produk dan merek lain yang isinya sama | [`docs/05-jalur-produk.md`](../docs/05-jalur-produk.md) |
-| `jalur-3.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
-| `jalur-4.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
-| `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
-| `jalur-6.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
+| `harga-pupuk.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
+| `varietas.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
+| `pupuk-sendiri.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
+| `pengendali-sendiri.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
 | `takaran.html` | — kalibrasi semprot & takaran alat rumah tangga: aritmetika, bukan anjuran | D4 + D5 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, komentar per seri, dan — untuk TBS sawit — tabel harga & rendemen per umur tanaman | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
-| `principal.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
+| `perusahaan.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `toko.html` | — direktori layanan: empat pintu — toko tani berkoordinat, penjual benih yang **tidak** bisa dituju, balai penyuluhan, dan laboratorium | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `usaha.html` | — analisis usaha tani: RAB dan titik impas, dinyatakan sebagai **rasio** terhadap harga eceran | D3 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
-| `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
+| `peranti.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
 
 `beranda.html` tidak punya perender rincian sama sekali. Ia mencari, lalu menautkan
 ke jalur yang memang perendernya — produk dan **bahan aktif** ke jalur 2, varietas ke
@@ -52,12 +52,12 @@ kalau disalin: **namanya selalu tampil, tautannya hanya kalau badan itu ada di k
 576 varietas dipegang pemulia perorangan dan mereka sengaja tidak punya halaman profil —
 halaman bernama tentang orang adalah pemrosesan data pribadi tanpa dasar.
 
-`bahan.js` dan `varietas.js` sama-sama perender bersama, bukan halaman. Kartu
+`bahan.js` dan `layar-varietas.js` sama-sama perender bersama, bukan halaman. Kartu
 bahan+kadar di jalur 2 memakai kelas dan perilaku buka-tutup yang persis sama dengan
 kartu bahan jalur 1: keduanya menyatakan hal yang sama, dan memberinya dua rupa
 membuat orang mengira keduanya dua hal yang berbeda.
 
-`varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
+`layar-varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
 sendiri, dan di jalur 2 kalau yang dicari ternyata varietas — satu perender, dua
 pintu, supaya keduanya tidak menyimpang diam-diam.
 
@@ -236,7 +236,7 @@ kenapa" memang berbeda di tiap jalur.
   semuanya menggambar blok merah di layar dan menulis ke konsol. Halaman yang tampak beres
   sambil diam-diam menjanjikan lebih dari yang bisa ditanggung datanya adalah persis
   kegagalan yang komponen ini dibangun untuk mencegah.
-- **`ukur.html` sengaja tidak ikut.** Ia tidak menjawab dari data mana pun — subjeknya
+- **`peranti.html` sengaja tidak ikut.** Ia tidak menjawab dari data mana pun — subjeknya
   hitungan di peranti pembaca sendiri, dan keempat medannya akan kosong artinya. Memberinya
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
@@ -962,7 +962,7 @@ kartu pemilih tidak ikut menunggu: angkanya memang sudah ada di meta.
   | Atas permintaan | ±4,6 MB, 1.175 ember | Pencarian nama — produk, pupuk, varietas |
   | Menyusul saat dibuka | — | Rincian yang pernah dibuka bertahan; yang belum pernah dibuka tidak ada |
 
-- **Ukurannya disebut sebelum diketuk, bukan sesudah.** Tombolnya di `ukur.html` — halaman
+- **Ukurannya disebut sebelum diketuk, bukan sesudah.** Tombolnya di `peranti.html` — halaman
   yang memang tentang apa yang tersimpan di peranti — bukan di beranda: 4,6 MB adalah
   keputusan yang diambil sadar, bukan disodorkan di jalan orang mencari sesuatu.
 - **Aman karena URL-nya bercap.** Cache-first hanya boleh dipasang setelah pecahan diambil
@@ -986,7 +986,7 @@ kartu pemilih tidak ikut menunggu: angkanya memang sudah ada di meta.
   ketidaksanggupan pencarian nama dinyatakan di bawah hasil yang berhasil.
 - **Saat mengembangkan, cangkangnya harus dibuang dulu.** Sesudah A5 hidup, `sw.js`
   menyajikan HTML, CSS, dan modul dari cache — jadi perubahan berkas **tidak terlihat**
-  sampai `VERSI` di `sw.js` dinaikkan atau cache dibuang lewat tombol di `ukur.html`. Ini
+  sampai `VERSI` di `sw.js` dinaikkan atau cache dibuang lewat tombol di `peranti.html`. Ini
   bukan cacat; ia justru buktinya bekerja, tetapi ia akan membuang waktu siapa pun yang
   lupa.
 - **Dan membuang cangkangnya saja belum cukup.** `python3 -m http.server` tidak mengirim
@@ -1005,7 +1005,7 @@ kartu pemilih tidak ikut menunggu: angkanya memang sudah ada di meta.
 ### Antrean pertanyaan tak terjawab — B4
 
 Tiap "tidak sanggup" yang ditampilkan hari ini menghilang begitu layar ditutup. Dicatat,
-ia jadi peta permintaan data. Tercacah di `ukur.js`, terbaca di `ukur.html`.
+ia jadi peta permintaan data. Tercacah di `ukur.js`, terbaca di `peranti.html`.
 
 - **B1 menyatakan lubangnya; B4 menghitung berapa kali ia ditabrak.** Keenam kunci sama
   persis dengan `meta.tidakAda`, yang sudah tercetak di tiap layar lewat blok batas
@@ -1040,7 +1040,7 @@ dosis label yang benar jadi salah begitu kalibrasi tangki keliru.
 - **Bukan jalur ketujuh, dan itu keputusan.** Enam pintu ditetapkan
   [`docs/03-enam-pintu.md`](../docs/03-enam-pintu.md), dan `ukur.js` menghitung **per
   jalur** menurut tabel di [`docs/11`](../docs/11-instrumentasi.md). Menomorinya jadi
-  jalur 7 mengubah tabel itu; ia berdiri sebagai layar utilitas seperti `ukur.html`,
+  jalur 7 mengubah tabel itu; ia berdiri sebagai layar utilitas seperti `peranti.html`,
   ditautkan dari kesembilan halaman.
 - **Ditulis untuk orang yang tidak memilih dosisnya.** Ditanya siapa yang menakar di
   lahan, jawabannya *"keduanya"* — petani **dan** buruh semprot, dan yang kedua menerima
@@ -1512,7 +1512,7 @@ mencobanya untuk tahu.
   sini: produk dan bahan aktif diserahkan ke jalur 2 — pertanyaannya sama-sama
   "sebenarnya ini apa" — varietas ke jalur 4, gejala dan nama lokal ke jalur 1 karena
   di sanalah blok "pastikan dulu" berada, sediaan ke jalur 5 atau 6 menurut rezimnya,
-  perusahaan ke `principal.html`, dan komoditas ke `harga.html`. Satu layar rincian,
+  perusahaan ke `perusahaan.html`, dan komoditas ke `harga.html`. Satu layar rincian,
   satu tempat — kalau disalin ke sini, keduanya akan menyimpang begitu salah satunya
   diperbaiki.
 - **Yang bisa dicari disebut sebelum ada yang diketik — kesebelasnya.** Kotak kosong

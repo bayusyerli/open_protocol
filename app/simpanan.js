@@ -9,7 +9,7 @@
  * `op:musim`, `op:kas`, `op:rab`, dan `op:realisasi` — nama musim, luas petak, tanggal
  * tanam, tiap baris uang masuk dan keluar, tiap langkah yang sudah dikerjakan beserta
  * simpangannya. Itu bukan "hitungan", dan tidak satu pun tampil atau terhapus di
- * ukur.html: `hapus()` di ukur.js hanya membuang `op.ukur.v1`.
+ * peranti.html: `hapus()` di ukur.js hanya membuang `op.ukur.v1`.
  *
  * Jadi yang rusak bukan penyimpanannya melainkan PERTANGGUNGANNYA. Layar yang seluruh
  * nilainya bersandar pada mengatakan apa yang disimpannya tidak boleh menyimpan sesuatu
