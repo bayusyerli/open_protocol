@@ -369,9 +369,89 @@ async function bukaTanaman(kunci, { gulir = true } = {}) {
 }
 
 // ---------------------------------------------------------------------------
+// Gambar — dipasang pada kalimat yang diperlihatkannya
+// ---------------------------------------------------------------------------
+/* SEBAGIAN CIRI PEMBANDING PRAKTIS TIDAK BISA DISAMPAIKAN KALIMAT.
+ *
+ * "Cari anyaman benang halus di bawah daun, paling jelas kena sinar miring" benar dan
+ * tetap tidak cukup: yang belum pernah melihatnya tidak tahu sehalus apa, dan akan
+ * menyimpulkan tidak ada. Begitu juga untaian lendir pada uji gelas, dan titik hitam
+ * yang tersusun melingkar sepusat di tengah bercak antraknosa. Gambar di sini bukan
+ * hiasan — ia bagian dari ujinya.
+ *
+ * KARENA ITU LETAKNYA MENEMPEL PADA KALIMATNYA, BUKAN DIKUMPULKAN DI BAWAH. Galeri di
+ * kaki halaman memaksa pembaca mencocokkan sendiri gambar mana untuk butir mana, dan
+ * itu persis pekerjaan yang sedang dibantu. `cocok` dibawa dari data supaya penyaji
+ * tidak menebaknya dari urutan — tebakan yang akan meleset begitu satu butir disisipkan.
+ *
+ * YANG SAMPAI KE SINI HANYA YANG BERKASNYA SUDAH ADA. bangun-indeks.mjs menyaring yang
+ * `file.path`-nya kosong, jadi selama panen belum dijalankan `k.gambar` kosong dan
+ * seluruh fungsi di bawah mengembalikan string kosong. Layar tanpa gambar jauh lebih
+ * baik daripada layar dengan kotak rusak.
+ */
+function gambarnya(k, cocok) {
+  return (k.gambar ?? []).filter((g) => g.cocok === cocok);
+}
+
+/* Kredit ikut terpasang bersama gambarnya, dan itu bukan kesopanan melainkan syarat.
+ *
+ * Kecuali CC0, seluruh lisensi yang lolos ke sini menuntut atribusi, dan atribusi yang
+ * hilang MEMBATALKAN izin pakainya — gambar tanpa kreditnya adalah pelanggaran hak
+ * cipta, bukan gambar yang kurang rapi. Menyimpannya di berkas terpisah membuatnya
+ * hilang pada salinan pertama, jadi ia dirender di takarir yang sama.
+ *
+ * Tautan ke halaman sumbernya ikut, karena satu-satunya cara pembaca memeriksa apakah
+ * gambar ini benar-benar memperlihatkan apa yang diklaimnya adalah membuka asalnya.
+ */
+// Tinggi terpakai dibatasi dengan MENYEMPITKAN gambarnya, bukan dengan memotongnya:
+// foto tegak 900×1200 pada lebar penuh menjadi 512 px dan mendorong butir pemeriksaan
+// berikutnya keluar layar telepon. Lebar yang menghasilkan tinggi TINGGI_MAKS dihitung
+// dari rasionya sendiri, lalu diserahkan ke CSS sebagai `--lebar-gambar` — yang
+// menyempit cuma gambarnya, sementara takarir di sebelahnya tetap memakai sisa ruang.
+//
+// Namanya `--lebar-gambar` dan bukan `--lebar` karena `--lebar` sudah dipakai :root
+// untuk lebar halaman (44rem). Nilai fallback pada var() tidak akan pernah terpakai
+// bila namanya bertabrakan — yang terwarisi nilai globalnya, diam-diam.
+const TINGGI_MAKS = 20; // rem
+
+function figurOpt(g) {
+  const sempit = g.w && g.h && g.h > g.w
+    ? ` style="--lebar-gambar:${(TINGGI_MAKS * g.w / g.h).toFixed(1)}rem"`
+    : '';
+  return `
+    <figure class="gambar-opt${g.yakin === 'rendah' ? ' ragu' : ''}"${sempit}>
+      <img src="${teks(g.f)}" alt="${teks(g.alt ?? '')}"
+           ${g.w ? `width="${teks(g.w)}"` : ''} ${g.h ? `height="${teks(g.h)}"` : ''}
+           loading="lazy" decoding="async">
+      <figcaption>
+        ${g.alt ? `<span class="tunjuk">${teks(g.alt)}</span>` : ''}
+        ${g.yakin === 'rendah' ? `
+          <span class="ragu-nota">Spesiesnya tidak dipastikan di sumbernya — pakai gambar
+          ini untuk mengenali kelompoknya, bukan untuk memastikan spesiesnya.</span>` : ''}
+        <span class="kredit">${teks(g.kredit ?? '')}</span>
+      </figcaption>
+    </figure>`;
+}
+
+// Peran yang tidak berpasangan dengan satu kalimat tertentu — organisme, kekeliruan,
+// serangan lanjut — tetap berguna, tetapi tidak boleh menyela urutan pemeriksaan.
+// Ia menyusul sesudah kedua butirnya selesai dibaca.
+function stripGambar(k) {
+  const dipakai = new Set(['symptom_title', 'distinguishing.0', 'distinguishing.1']);
+  const sisa = (k.gambar ?? []).filter((g) => !dipakai.has(g.cocok));
+  if (!sisa.length) return '';
+  return `
+    <div class="gambar-strip">
+      <p class="strip-l">Gambar lain untuk dicocokkan</p>
+      <div class="strip-isi">${sisa.map(figurOpt).join('')}</div>
+    </div>`;
+}
+
+// ---------------------------------------------------------------------------
 // Blok "pastikan dulu" — sebelum apa pun yang bisa dibeli
 // ---------------------------------------------------------------------------
 function blokPastikan(k) {
+  const utama = gambarnya(k, 'symptom_title');
   return `
     <div class="kartu pelepasan">
       <h2>Pastikan dulu</h2>
@@ -379,13 +459,16 @@ function blokPastikan(k) {
         Dugaannya <strong>${teks(k.nama)}</strong>${k.ilmiah ? ` (<em>${teks(k.ilmiah)}</em>)` : ''}.
         Sebelum membeli apa pun, periksa dua hal ini sendiri:
       </p>
+      ${utama.map(figurOpt).join('')}
       <ol class="periksa">
-        ${k.pembanding.map((p) => `
+        ${k.pembanding.map((p, i) => `
           <li>
             ${teks(p.cek)}
             ${p.membantah ? `<span class="sub">Kalau tidak cocok, kemungkinannya ${teks(p.membantah.label)}.</span>` : ''}
+            ${gambarnya(k, `distinguishing.${i}`).map(figurOpt).join('')}
           </li>`).join('')}
       </ol>
+      ${stripGambar(k)}
       ${k.keterangan ? `<p class="catatan">${teks(k.keterangan)}</p>` : ''}
       ${k.catatan ? `<p class="catatan">${teks(k.catatan)}</p>` : ''}
       ${blokNamaLokal(k)}

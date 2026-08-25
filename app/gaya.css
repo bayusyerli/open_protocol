@@ -1609,3 +1609,96 @@ button.merek-tautan { cursor: pointer; }
 }
 
 /* ------------------------------------------------------------ B2 keselamatan */
+
+/* ---------------------------------------------------------------------------
+   Gambar OPT — menempel pada kalimat yang diperlihatkannya
+   ---------------------------------------------------------------------------
+   Lebarnya ditahan di 24rem dan TIDAK dibuat selebar kartunya. Gambar gejala yang
+   memenuhi layar terbaca sebagai jawaban; yang dimaksud di sini pembanding — sesuatu
+   untuk ditaruh di sebelah daun yang sedang dipegang, lalu dicocokkan. Ukuran yang
+   sederajat dengan paragrafnya menjaga bacaannya tetap begitu.
+
+   `aspect-ratio` sengaja tidak dipatok. Gambar ilmiah datang dengan bentuk apa saja —
+   pelat berpanel yang lebar, mikrograf yang nyaris bujur sangkar — dan memaksanya ke
+   satu rasio berarti memotong justru bagian yang jadi alasan gambar itu dipilih. */
+
+/* GAMBAR DAN TAKARIRNYA BERSEBELAHAN, BUKAN BERTUMPUK.
+   Foto tegak yang lebarnya ditahan 15rem meninggalkan lahan kosong selebar dua pertiga
+   kartu di sebelahnya, dan takarirnya — yang justru panjang, karena memuat apa yang
+   terlihat DITAMBAH baris kredit yang wajib ikut — dipaksa mengalir di lajur 15rem itu
+   sampai patah tiap tiga kata. Menaruhnya di samping menyelesaikan keduanya sekaligus.
+   `flex-wrap` membuatnya menumpuk sendiri di layar telepon, tanpa titik putus yang
+   perlu ditebak. */
+.gambar-opt {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: .45rem .95rem;
+  margin: .8rem 0;
+  max-width: 42rem;
+}
+
+/* TINGGINYA DIBATASI LEWAT LEBAR FIGURNYA, BUKAN LEWAT `max-height` PADA GAMBARNYA.
+   Foto lapangan 900×1200 pada lebar 24rem menjadi 512 px tinggi dan mendorong butir
+   pemeriksaan berikutnya keluar layar telepon — padahal yang dibaca justru URUTAN
+   pemeriksaannya. Godaannya memasang `max-height` dan `width: auto`, dan itu memasang
+   jebakan: gambar yang BELUM termuat tidak punya lebar intrinsik, `width: auto`
+   menciutkannya ke nol, dan gambar setinggi nol tidak pernah dianggap masuk viewport
+   sehingga `loading="lazy"` tidak pernah memicunya. Nol tetap nol, selamanya.
+
+   Jadi rasionya dihitung saat merender — penyaji menyempitkan `max-width` figur tegak
+   sampai tinggi hasilnya jatuh di bawah batas — dan gambarnya cukup `width: 100%`.
+   Ruangnya dipesan sebelum bit pertamanya datang, tata letak tidak melompat, dan
+   pemuatan malas tetap bekerja. */
+.gambar-opt img {
+  flex: 0 0 auto;
+  display: block;
+  width: min(100%, var(--lebar-gambar, 21rem));
+  height: auto;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar);
+}
+
+/* `flex: 1 1 15rem` — ikut melebar mengisi sisa ruang, tetapi turun ke bawah gambar
+   begitu sisanya kurang dari 15rem. Itu titik di mana takarir bersebelahan mulai
+   patah-patah, dan lebih baik turun daripada menyempit. */
+.gambar-opt figcaption {
+  flex: 1 1 15rem;
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  font-size: .82rem;
+  color: var(--teks-lemah);
+}
+.gambar-opt .tunjuk { color: var(--teks); }
+
+/* Kredit dikecilkan tetapi TIDAK dipudarkan sampai hilang: ia syarat lisensi, bukan
+   keterangan tambahan. Yang tidak terbaca sama saja dengan yang tidak ada. */
+.gambar-opt .kredit { font-size: .76rem; color: var(--teks-lemah); }
+
+/* Yang identifikasinya cuma klaim pengunggah diberi tanda yang terlihat, bukan catatan
+   kaki. Gambar semacam ini sah untuk "kenali kelompoknya" dan menyesatkan untuk "ini
+   spesiesnya" — dan pembaca tidak bisa membedakan keduanya dari rupa fotonya. */
+.gambar-opt.ragu img { border-style: dashed; }
+.gambar-opt .ragu-nota { color: var(--teks); font-style: italic; }
+
+.gambar-strip { margin: .9rem 0 0; padding-top: .8rem; border-top: 1px solid var(--garis); }
+.gambar-strip .strip-l {
+  margin: 0 0 .5rem;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: var(--teks-lemah);
+}
+.gambar-strip .strip-isi { display: flex; flex-wrap: wrap; gap: .9rem; }
+/* Di strip, figurnya kembali menumpuk: yang dijajarkan justru gambar-gambarnya satu
+   sama lain, jadi takarir di samping akan memutus jajaran itu. */
+.gambar-strip .gambar-opt { margin: 0; max-width: 13rem; flex-direction: column; }
+.gambar-strip .gambar-opt img { width: 100%; }
+.gambar-strip .gambar-opt figcaption { flex: 0 1 auto; }
+.gambar-strip .gambar-opt .tunjuk { font-size: .78rem; }
+
+/* Di dalam butir pemeriksaan, gambarnya menjorok sedikit supaya terbaca sebagai milik
+   butir itu — bukan sebagai gambar berikutnya yang kebetulan menyusul. */
+.periksa .gambar-opt { margin: .55rem 0 .2rem; max-width: 38rem; }

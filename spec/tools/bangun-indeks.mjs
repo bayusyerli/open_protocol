@@ -1696,6 +1696,40 @@ const gejala = optTerkurasi
         membantah: d.rules_out ?? null,
       })),
       catatan: k.notes?.id ?? null,
+      // Gambar yang BERKASNYA SUDAH ADA — bukan yang sudah didata. Keduanya berbeda:
+      // pest.json mencatat 48 gambar beserta asal-usulnya, tetapi selama panen belum
+      // dijalankan tidak satu pun punya `file.path`. Menyaring di sini, bukan di
+      // peramban, membuat penyaji tidak pernah menerima baris yang akan gagal muat —
+      // dan layar tanpa gambar jauh lebih baik daripada layar dengan kotak rusak.
+      //
+      // `redistributable` diperiksa lagi walau panen sudah memeriksanya. Bukan
+      // kelebihan: berkas bisa saja sudah telanjur turun sebelum lisensinya diralat,
+      // dan gerbang terakhir sebelum sesuatu sampai ke pembaca harus berdiri sendiri.
+      gambar: (k.images ?? [])
+        .filter((g) => g.file?.path && g.source?.redistributable)
+        .map((g) => ({
+          k: g.key,
+          f: g.file.path,
+          // Ukuran aslinya ikut supaya penyaji bisa menuliskannya sebagai atribut
+          // `width`/`height`. Tanpa itu gambar yang belum termuat tidak punya ukuran
+          // sama sekali — `width: auto` menciutkannya ke nol — sehingga ruangnya tidak
+          // pernah dipesan, tata letak melompat saat gambarnya datang, dan pemuatan
+          // malas tidak pernah terpicu karena semuanya menumpuk di satu titik.
+          w: g.file.width_px ?? null,
+          h: g.file.height_px ?? null,
+          peran: g.role,
+          // Cocoknya ke kalimat mana ikut dibawa: penyaji menaruh gambar pembanding
+          // tepat di bawah butir `distinguishing` yang diperlihatkannya, dan tanpa
+          // medan ini ia harus menebak dari urutan — yang akan meleset begitu satu
+          // butir disisipkan di tengah.
+          cocok: g.matches,
+          alt: g.shows?.id ?? null,
+          kredit: g.source?.credit ?? null,
+          // Tingkat keyakinan identifikasi ikut sampai ke layar, karena yang "rendah"
+          // hanya boleh menyertai klaim setingkat kelompok. Penyaji yang tidak tahu
+          // ini akan memasang foto kutu kebul tak terverifikasi di bawah nama spesies.
+          yakin: g.confidence,
+        })),
       // Dinyatakan, bukan disembunyikan: tanpa teks gejala OPT ini tidak punya pintu
       // masuk sama sekali, sebanyak apa pun produk terdaftarnya.
       adaPintu: Boolean(k.symptoms?.id),
@@ -2783,6 +2817,44 @@ console.log(`  rekaman uji       : ${cariUji} produk + ${bahanUji} bahan aktif �
 console.log(`  surel lab         : ${surelTerbit} terbit sebagai kontak lembaga; ${surelDitahan} ditahan karena berpola nama orang — UU PDP 27/2022`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
+// Dua angka, bukan satu, dan jaraknya yang jadi kabarnya: yang TERCATAT sudah lengkap
+// asal-usul dan lisensinya, yang TERPASANG berkasnya benar-benar sudah turun. Selisihnya
+// pekerjaan mata yang tersisa — panel yang harus dipotong dan gambar yang harus diambil
+// dari dalam PDF. Melaporkan yang terpasang saja membuat 25 gambar tertahan hilang diam-diam.
+{
+  const dicatat = optTerkurasi.reduce((a, k) => a + (k.images?.length ?? 0), 0);
+  const terpasang = gejala.reduce((a, g) => a + g.gambar.length, 0);
+  const berpembanding = gejala.filter((g) => g.gambar.some((x) => x.cocok.startsWith('distinguishing'))).length;
+  console.log(`  gambar OPT        : ${terpasang} terpasang dari ${dicatat} tercatat — ${berpembanding} dari ${gejala.length} OPT punya gambar pada ciri pembandingnya`);
+
+  // DUA CARA GAMBAR GAGAL DIAM-DIAM, DAN KEDUANYA DITANGKAP DI SINI.
+  //
+  // Berkasnya hilang: `file.path` tertulis di pest.json tetapi webp-nya tidak ada di
+  // app/gambar/opt/ — misalnya karena panen gagal separuh jalan, atau karena berkasnya
+  // dibuang saat tinjauan tanpa medannya ikut dicabut. Penyaji akan menuliskan <img>
+  // yang tidak pernah termuat, dan di layar telepon itu jadi kotak kosong tanpa kabar.
+  //
+  // Kalimatnya hilang: `matches` menunjuk `distinguishing.2` sementara OPT itu cuma
+  // punya dua butir. Gambarnya tidak akan dirender di butir mana pun — ia lenyap tanpa
+  // suara, dan tak ada yang tahu sampai seseorang membandingkan cacah.
+  const cacat = [];
+  for (const k of optTerkurasi) {
+    for (const g of k.images ?? []) {
+      if (g.file?.path && !existsSync(join(akar, 'app', g.file.path))) {
+        cacat.push(`${g.key}: file.path menunjuk ${g.file.path} yang tidak ada`);
+      }
+      const m = /^distinguishing\.(\d+)$/.exec(g.matches ?? '');
+      if (m && Number(m[1]) >= (k.distinguishing?.length ?? 0)) {
+        cacat.push(`${g.key}: matches ${g.matches} di luar jangkauan (${k.key} punya ${k.distinguishing?.length ?? 0} butir)`);
+      }
+    }
+  }
+  if (cacat.length) {
+    console.log(`  ${'!'.repeat(3)} gambar cacat  : ${cacat.length}`);
+    for (const c of cacat) console.log(`      ${c}`);
+    throw new Error(`${cacat.length} gambar OPT cacat — lihat daftar di atas`);
+  }
+}
 console.log(`  principal/        : ${kb([...berkas].filter(([p]) => p.startsWith('principal/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasPrincipal).length} berkas — ${meta.jumlah.principal} badan, ${meta.jumlah.produkBerprincipal} dari ${semuaProduk.length} produk tertaut`);
 console.log(`  harga/            : ${kb([...berkas].filter(([p]) => p.startsWith('harga/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasHarga).length} varian — ${meta.jumlah.hargaBerangka} berangka, ${meta.jumlah.hargaVarian - meta.jumlah.hargaBerangka} diterbitkan tanpa angka, ${meta.jumlah.hargaTitik} titik`);
 console.log(`  gambar kemasan    : ${meta.jumlah.produkBergambar} dari ${semuaProduk.length} produk (${(meta.jumlah.produkBergambar / semuaProduk.length * 100).toFixed(1)}%), ${meta.jumlah.gambarKemasan} gambar`);
