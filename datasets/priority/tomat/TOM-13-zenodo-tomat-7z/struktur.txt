@@ -1,0 +1,31 @@
+# Struktur train.7z
+
+## file(1)
+raw/train.7z: 7-zip archive data, version 0.4
+
+## bsdtar -tf : 2.389 entri (1 direktori 'train/' + 2.388 berkas)
+train/
+train/1-12_thumb.png
+train/1-6.png
+train/2-12_thumb.png
+train/3042.jpg
+train/3049.jpg
+train/3050.jpg
+train/603-116-1.jpg
+train/80111300.jpg
+train/anthracnose-tomato-1583845437.jpg
+train/Anthracnose1229.jpg
+train/anthracnose2.jpg
+train/Anthracnose_1.jpg
+train/Anthracnose_2 (1).jpg
+train/Anthracnose_2.jpg
+
+## Ekstensi
+   1 jpeg
+2384 jpg
+   3 png
+
+## Subdirektori di dalam train/ : TIDAK ADA (struktur datar)
+## Berkas label/anotasi/CSV     : TIDAK ADA
+## 2 berkas bernama *_thumb.png (thumbnail, bukan citra penuh)
+## KESIMPULAN: 2.388 gambar TANPA label kelas apa pun.

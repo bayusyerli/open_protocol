@@ -1,0 +1,3 @@
+ec311a5b7acda4e384adaa710a074e0e6fdfab58baa248953a624d0189f9f21f  raw/cropped.rar
+4a1b23b4734804f5057de514fc141f50a7ba7368b6161e3b4e5f3dbdd0de841a  raw/cropped_resized.rar
+d3219be0eeb7f91e120a257cf344de1ecf44d90011e54b91b65be7d62d43c513  raw/resized_raw images.rar

@@ -1,0 +1,27 @@
+# Struktur TOM-11 (Tomato Leaf Dataset, Mendeley bpfd9cns5g v2)
+
+## Berkas di raw/ (datar, sesuai daftar berkas yang diekspos public API Mendeley)
+   1.420 .jpg + 689 .txt = 2.109 berkas, 48.539.589 byte
+
+## Sumber sebenarnya memakai 7 FOLDER. public API TIDAK mengekspos nama foldernya,
+## hanya folder_id. Pengelompokan aslinya dipertahankan di manifes-folder.csv:
+   e205d0ab-a9e6-4e7b-a734-d50b0351249c -> {'jpg': 731}
+   65412cf2-544d-4f4d-b5c6-a541df6f1e20 -> {'jpg': 597}
+   02f5e6e9-464e-4c35-beb2-a6ba526142e6 -> {'txt': 597}
+   684bcd28-6563-4b87-ab9e-e824cebd0dc9 -> {'jpg': 61}
+   d2169457-9226-4c9c-91d3-b101d206d214 -> {'txt': 61}
+   07a83ac5-5608-410e-afe4-8b71b033456e -> {'jpg': 31}
+   8c84bab5-b6e4-4545-a546-a2fb7f0652af -> {'txt': 31}
+
+## Pasangan gambar/label
+   689 .jpg punya .txt pasangan (nama dasar sama)
+   731 .jpg TIDAK punya .txt sama sekali  <-- lebih dari separuh gambar tak berlabel
+   0 .txt tanpa .jpg
+
+## Anotasi
+   2.278 baris, SEMUA 5 kolom (format YOLO: class cx cy w h)
+   cacah anotasi per class-id: 84 x0, 1.177 x1, 179 x2, 303 x3, 93 x4, 47 x5, 395 x6  (7 kelas, id 0-6)
+   TIDAK ADA data.yaml / classes.txt / obj.names -> pemetaan id -> nama kelas tidak tersedia
+
+## Verifikasi integritas
+   2.109/2.109 berkas SHA-256-nya cocok dengan sha256_hash yang dipublikasikan API Mendeley (0 tidak cocok)

@@ -1,0 +1,75 @@
+# Struktur TOM-16 (Tomato Disease Dataset, Sichuan)
+
+## Berkas di raw/ (datar, sesuai daftar yang diekspos public API Mendeley)
+   1026 .jpg + 1026 .xml = 2052 berkas
+   total byte: 2989253828
+
+## Cacah per awalan nama berkas (= kelas penyakit)
+   Gray   gambar=  82  anotasi=  82
+   Viral  gambar= 417  anotasi= 417
+   Wilt   gambar= 527  anotasi= 527
+   Klaim sumber: 527 bacterial wilt + 417 viral disease + 82 gray mold = 1026 -> COCOK
+
+## Pasangan gambar<->anotasi
+   gambar tanpa anotasi: 0
+   anotasi tanpa gambar: 0
+   -> cakupan anotasi 100.0%
+
+## Anotasi PASCAL VOC (XML)
+   XML gagal diurai: 0 
+   TOTAL kotak pembatas: 3167
+   kotak per gambar: {1: 241, 2: 303, 3: 137, 4: 123, 5: 71, 6: 63, 7: 42, 8: 27, 9: 16, 10: 3}
+
+   nama kelas <object><name>       kotak   gambar
+   Viral_Leaf                       1522      325
+   Wilt_Leaf                         405      147
+   Wilt_Middle                       345      303
+   Wilt_Top                          298      267
+   Wilt_Base                         173      141
+   Viral_Top                         139      128
+   Wilt_Stem                         135      106
+   GrayMold_Leaf                      76       43
+   GrayMold_Fruit                     52       46
+   Virus_Middle                       22       20
+
+   nilai <folder>: {'GrayMold': 82, 'Viral': 417, 'Wilt': 527}
+   resolusi gambar (width,height) -> cacah: {('3024', '4032'): 739, ('4032', '3024'): 287}
+
+## Struktur folder di sumber (folder_id public API Mendeley, nama tidak diekspos)
+   d9ae87ea-8a7e-45bd-b83a-7c9eec713feb -> 527 jpg (Wilt)
+   210724ad-0f16-4ebe-82ee-5ef13367fc1c -> 527 xml (Wilt)
+   693ea53f-3075-4ad0-9690-d9fded58664a -> 417 jpg (Viral)
+   b58dfc52-ce45-4de0-894d-09c837434c87 -> 417 xml (Viral)
+   30f4a641-9343-4f35-b325-a95ea2177e6f ->  82 jpg (Gray)
+   6284fd16-a30e-4a5b-8bb0-66b746031448 ->  82 xml (Gray)
+   Pengelompokan per berkas dipertahankan di manifes-folder.csv
+## Sesi pengambilan yang tersandi di nama berkas (<kelas>_MMDD_NNN)
+ 303 Wilt_1112
+ 175 Wilt_1021
+ 173 Viral_1112
+ 115 Viral_0919
+ 112 Viral_1021
+  69 Gray_0509
+  49 Wilt_0919
+  17 Viral_0617
+  13 Gray_0617
+   -> 5 tanggal berbeda: 05-09, 06-17, 09-19, 10-21, 11-12 (2024).
+   -> Bisa dipakai untuk membuat split BEBAS KEBOCORAN berbasis sesi (train di satu tanggal, uji di tanggal lain).
+
+## Verifikasi integritas
+   2.052/2.052 berkas SHA-256-nya cocok dengan sha256_hash yang dipublikasikan API Mendeley (0 tidak cocok)
+   0 dari 1.026 XML gagal diurai dengan xml.etree.ElementTree
+
+## Silang kelas x sesi tanggal (gambar saja)
+   kelas  tanggal  gambar
+   Gray   0509        69
+   Gray   0617        13
+   Viral  0617        17
+   Viral  0919       115
+   Viral  1021       112
+   Viral  1112       173
+   Wilt   0919        49
+   Wilt   1021       175
+   Wilt   1112       303
+   -> GrayMold HANYA di 05-09 dan 06-17; Wilt 478/527 (91%) di 10-21 dan 11-12; Viral tersebar 06-17..11-12.
+   -> jejak musiman nyata, tapi hanya 5 titik waktu di satu rumah kaca.

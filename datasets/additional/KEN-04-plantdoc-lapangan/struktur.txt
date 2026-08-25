@@ -1,0 +1,64 @@
+== KEN-04 PlantDoc (Cropped-PlantDoc, klasifikasi) — verifikasi 2026-08-25
+Perintah 1: file -b raw/*.zip
+  Zip archive data, at least v1.0 to extract, compression method=store
+Perintah 2: unzip -tqq raw/*.zip
+  OK — tidak ada CRC error
+Perintah 3: cacah gambar
+  2579 gambar (klaim makalah: 2.598 → status sebagian, selisih 19)
+  Kelas berbeda: 28 nama direktori kelas
+
+-- CACAH PER KELAS (train + test) --
+   192  Corn leaf blight
+   151  Tomato Septoria leaf spot
+   130  Squash Powdery mildew leaf
+   119  Raspberry leaf
+   117  Potato leaf early blight
+   117  Blueberry leaf
+   116  Corn rust leaf
+   112  Peach leaf
+   111  Tomato leaf late blight
+   110  Tomato leaf bacterial spot
+   105  Potato leaf late blight
+    96  Strawberry leaf
+    93  Apple Scab Leaf
+    91  Tomato mold leaf
+    91  Apple leaf
+    89  Apple rust leaf
+    88  Tomato Early blight leaf
+    76  Tomato leaf yellow virus
+    71  Bell_pepper leaf spot
+    69  grape leaf
+    68  Corn Gray leaf spot
+    65  Soyabean leaf
+    64  grape leaf black rot
+    63  Tomato leaf
+    61  Bell_pepper leaf
+    57  Cherry leaf
+    54  Tomato leaf mosaic virus
+     2  Tomato two spotted spider mites leaf
+
+-- KELAS KENTANG (fokus agen ini) --
+     8  test / Potato leaf early blight
+     8  test / Potato leaf late blight
+   109  train / Potato leaf early blight
+    97  train / Potato leaf late blight
+  TOTAL kentang: 222 gambar dalam 2 kelas
+  CATATAN: tidak ada kelas 'Potato leaf' sehat di varian klasifikasi ini —
+           hanya early blight dan late blight.
+
+-- KELAS TOMAT (untuk rujukan agen tomat) --
+    88  Tomato Early blight leaf
+   151  Tomato Septoria leaf spot
+    63  Tomato leaf
+   110  Tomato leaf bacterial spot
+   111  Tomato leaf late blight
+    54  Tomato leaf mosaic virus
+    76  Tomato leaf yellow virus
+    91  Tomato mold leaf
+     2  Tomato two spotted spider mites leaf
+  TOTAL tomat: 746 gambar dalam 9 kelas
+
+-- Lisensi di dalam arsip (LICENSE.txt, 3 baris pertama) --
+  Attribution 4.0 International
+  
+  =======================================================================

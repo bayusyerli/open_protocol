@@ -1,0 +1,56 @@
+=== BWM-09 struktur & bukti verifikasi (Wikidata SPARQL) ===
+Endpoint: https://query.wikidata.org/sparql  (terbuka, tanpa akun)
+Properti: P2975 = 'host' (inang); P225 = 'taxon name'
+Tanggal: 2026-08-25
+
+KUERI PERSIS:
+  SELECT ?pathogen ?pathogenLabel ?host ?hostLabel ?hostName WHERE {
+    ?pathogen wdt:P2975 ?host .
+    ?host wdt:P225 ?hostName .
+    FILTER(?hostName IN ("Capsicum annuum","Capsicum frutescens","Solanum lycopersicum",
+                         "Solanum tuberosum","Allium cepa","Allium ascalonicum",
+                         "Allium cepa var. aggregatum"))
+    SERVICE wikibase:label { bd:serviceParam wikibase:language "en,id". }
+  } ORDER BY ?hostName ?pathogenLabel
+
+berkas CSV : raw/patogen_inang_4komoditas.csv (37167 B)
+berkas JSON: raw/patogen_inang_4komoditas.json (166753 B) — respons SPARQL asli
+kolom      : ['pathogen', 'pathogenLabel', 'host', 'hostLabel', 'hostName']
+baris data : 291
+cek silang : JSON berisi 291 binding — COCOK dengan CSV
+
+=== cacah patogen/hama per inang ===
+  Solanum lycopersicum             136
+  Solanum tuberosum                133
+  Capsicum frutescens              10
+  Allium ascalonicum               8
+  Capsicum annuum                  3
+  Allium cepa                      1
+  TOTAL                            291
+  patogen unik: 271
+
+=== inang yang TIDAK mengembalikan satu pun baris ===
+  ['Allium cepa var. aggregatum']
+
+=== seluruh 'patogen' terdaftar untuk Allium ascalonicum (bawang merah) ===
+  Blastobasis                                  http://www.wikidata.org/entity/Q4925447
+  Blastobasis ochromorpha                      http://www.wikidata.org/entity/Q9658849
+  Cadra cautella                               http://www.wikidata.org/entity/Q2893450
+  Dasyses rugosella                            http://www.wikidata.org/entity/Q13484231
+  Leek moth                                    http://www.wikidata.org/entity/Q1032508
+  Spodoptera litura                            http://www.wikidata.org/entity/Q27294
+  Utetheisa pulchella                          http://www.wikidata.org/entity/Q218449
+  beet armyworm                                http://www.wikidata.org/entity/Q310344
+
+=== apakah patogen jamur/bakteri sasaran kita ada? ===
+  Alternaria         2 -> ['Alternaria solani', 'Alternaria tomato']
+  Fusarium           4 -> ['Fusarium incarnatum', 'Fusarium oxysporum', 'Fusarium oxysporum f.sp. lycopersici', 'Fusarium proliferatum']
+  Peronospora        0 -> []
+  Stemphylium        2 -> ['Stemphylium lycopersici', 'Stemphylium solani']
+  Colletotrichum     2 -> ['Colletotrichum coccodes', 'Colletotrichum gloeosporioides']
+  Botrytis           0 -> []
+  Ralstonia          2 -> ['Ralstonia pickettii', 'Ralstonia solanacearum']
+  Phytophthora       2 -> ['Phytophthora capsici', 'Phytophthora cryptogea']
+  Spodoptera         7 -> ['Spodoptera dolichos', 'Spodoptera eridania', 'Spodoptera frugiperda', 'Spodoptera littoralis', 'Spodoptera litura']
+  Liriomyza          4 -> ['Liriomyza bryoniae', 'Liriomyza huidobrensis', 'Liriomyza sativae', 'Liriomyza trifolii']
+  Bemisia            0 -> []

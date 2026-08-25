@@ -1,0 +1,2 @@
+daade44101bff5f3f079d65985bb40076cc2fe04d54cff7927f5688839eae7ab  raw/patogen_inang_4komoditas.csv
+985bf670d195aa1ad955781681625b66579d09dbbdb5e38125baa9ad8338cf69  raw/patogen_inang_4komoditas.json

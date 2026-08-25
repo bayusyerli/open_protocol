@@ -1,0 +1,33 @@
+# Dataset of Tomato Leaves (Taiwan Tomato Leaves Dataset)
+
+- **dataset_id**: TOM-03-taiwan-daun-tomat
+- **Tanaman**: Tomat (*Solanum lycopersicum*)
+- **Penyakit/kelas tercakup**: 6 kelas apa adanya dari dataset — `Bacterial spot`, `Black mold`, `Gray spot`, `Late blight`, `powdery mildew`, `health` (sehat)
+- **Jenis data**: gambar
+- **Format**: JPG dalam arsip 7-Zip (`taiwan.7z`), dua subset: `Preprocessed data/` (asli) dan `data augmentation/` (turunan)
+- **Jumlah**: diklaim 622 gambar asli, terhitung 622 gambar di `Preprocessed data/` (495 train + 127 test) — **cocok**. Ditambah 4.976 gambar augmentasi di `data augmentation/`, total 5.598 berkas gambar.
+- **Sumber**: Mendeley Data
+- **URL sumber**: https://data.mendeley.com/datasets/ngdgg79rzb/1
+- **DOI**: 10.17632/ngdgg79rzb.1
+- **Pembuat**: Mei-Ling Huang, Ya-Han Chang (National Chin-Yi University of Technology, Taiwan)
+- **Tahun terbit / pembaruan**: 2020 (versi 1)
+- **Lisensi**: CC BY 4.0
+- **Ketentuan atribusi**: Wajib mencantumkan pembuat, tautan lisensi, dan menandai bila ada perubahan. Sitasi dataset: Huang, Mei-Ling; Chang, Ya-Han (2020), "Dataset of Tomato Leaves", Mendeley Data, V1, doi: 10.17632/ngdgg79rzb.1
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 48.008.752 byte (45,8 MiB)
+- **SHA-256**: `f623d13a7f0388dada08ca5b5f22716557defce3832f50ff6af7153e0eab676d`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - `file raw/taiwan.7z` → `7-zip archive data, version 0.4` (tipe cocok dengan namanya)
+  - `shasum -a 256 raw/taiwan.7z` → cocok persis dengan `sha256_hash` yang dipublikasikan API Mendeley (`f623d13a7f0388da…`), jadi integritas terbukti dari dua sisi
+  - `bsdtar -tf raw/taiwan.7z` → 5.629 entri, 5.598 berkas gambar
+  - Cacah per kelas: `bsdtar -tf raw/taiwan.7z | grep -iE '\.(jpg|jpeg|png|bmp)$' | awk -F/ '{print $2"/"$3"/"$4}' | sort | uniq -c` → hasil lengkap di `struktur.txt`
+  - Jumlah gambar asli = 88+53+67+78+84+125 (train) + 22+14+17+20+22+32 (test) = **622**, sama dengan angka yang diklaim sumber
+- **Keterbatasan / masalah kualitas**:
+  - **Sangat kecil**: hanya 622 gambar asli untuk 6 kelas. Kelas terkecil (`Black mold` test) cuma 14 gambar — terlalu tipis untuk evaluasi yang stabil.
+  - **Augmentasi tercampur di dalam arsip yang sama.** Folder `data augmentation/` berisi 4.976 turunan dari 622 gambar yang sama. Kalau seluruh arsip diperlakukan sebagai satu himpunan, gambar asli dan turunannya akan bocor lintas train/test dan akurasinya jadi palsu. **Pakai hanya `Preprocessed data/` untuk evaluasi.**
+  - "Preprocessed" berarti gambar asli pun sudah diproses (dipotong/diseragamkan), bukan foto mentah kamera.
+  - Daun tunggal, latar relatif bersih — bukan foto kanopi lapangan.
+  - **Bukan tanaman Indonesia**: dikumpulkan di Taiwan (iklim subtropis). `powdery mildew` dan `Black mold` bukan penyakit dominan tomat dataran rendah Indonesia; layu bakteri (*Ralstonia*) yang justru paling merugikan di Indonesia **tidak ada** di sini.
+  - Kelas tidak seimbang: `powdery mildew` (125 train) hampir 2,4× `Black mold` (53 train).

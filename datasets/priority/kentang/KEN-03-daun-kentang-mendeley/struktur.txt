@@ -1,0 +1,29 @@
+== KEN-03 Potato Leaf Disease Dataset (BARI, Bangladesh) — verifikasi 2026-08-25
+Perintah 1: file -b raw/*.zip
+  Zip archive data, at least v2.0 to extract, compression method=deflate
+Perintah 2: unzip -tqq raw/*.zip
+  OK — tidak ada CRC error
+Perintah 3: cacah gambar
+  2351 gambar (semua .jpg)
+
+-- cacah gambar per kelas --
+   397  Bacterial Soft Rot
+   394  Viral Leaf Roll
+   392  Healthy
+   392  Fungal Late Blight
+   389  Viral PVY
+   387  Viral PVX
+
+-- PERINGATAN AUGMENTASI --
+  Seluruh 2.351 berkas berawalan 'aug_' — tidak ada satu pun citra asli di arsip.
+  Penerbit menyatakan 804 citra asli diaugmentasi menjadi 2.400 (400/kelas).
+  Terhitung 2.351 (387-397 per kelas), jadi kurang 49 dari klaim dan tidak persis seimbang.
+  Konsekuensi: pemisahan latih/uji WAJIB memakai gambar induk, bukan acak per berkas,
+  karena turunan augmentasi dari satu induk akan bocor lintas split.
+
+-- 5 nama berkas contoh --
+  Potato Leaf Disease Dataset/Healthy/aug_0_5497.jpg
+  Potato Leaf Disease Dataset/Viral PVY/aug_0_4749.jpg
+  Potato Leaf Disease Dataset/Healthy/aug_0_7502.jpg
+  Potato Leaf Disease Dataset/Healthy/aug_0_213.jpg
+  Potato Leaf Disease Dataset/Bacterial Soft Rot/aug_0_7475.jpg

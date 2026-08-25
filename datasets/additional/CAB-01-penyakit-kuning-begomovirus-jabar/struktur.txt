@@ -1,0 +1,61 @@
+# Bukti verifikasi CAB-01
+Tanggal: 2026-08-25
+
+## 1. Kelengkapan & integritas
+  Berkas diumumkan Mendeley public-api : 10190
+  Berkas ada di raw/                    : 10190
+  Ukuran byte tidak cocok               : 0
+  SHA-256 tidak cocok (SEMUA 10190 diperiksa satu per satu): 0
+  -> Setiap berkas dicocokkan dengan content_details.sha256_hash dari public-api.
+     Daftar lengkap ada di SHA256SUMS.txt.
+
+  Catatan proses: unduhan ronde pertama menghasilkan 1780 berkas rusak karena
+  Mendeley membalas galat JSON (bukan gambar) saat dibatasi laju. Berkas itu
+  diunduh ulang dua ronde sampai seluruh 10190 checksum cocok.
+
+## 2. Struktur direktori (nama folder = folder_id dari Mendeley;
+   nama folder aslinya TIDAK diekspos oleh public-api)
+  raw/91fad39f-490e-41f4-82c5-91bc6c4bd226/  -> 5095 berkas .jpg  (citra)
+  raw/46d0747e-327a-494a-86ce-5834dccc1d07/  -> 5095 berkas .txt  (anotasi YOLO)
+
+## 3. Dimensi citra
+  Sampel acak 300 citra, header JPEG SOF dibaca langsung: 300/300 berukuran 640 x 640.
+
+## 4. Anotasi
+  Format: YOLO -> '<kelas> <x_pusat> <y_pusat> <lebar> <tinggi>' (ternormalisasi)
+  Berkas anotasi kosong: 0
+  Total kotak pembatas : 5861
+  Kotak per kelas      : kelas 0 = 3169 | kelas 1 = 2692
+  Sebaran kotak/berkas : 1 kotak: 4785 berkas, 2 kotak: 166 berkas, 3 kotak: 54 berkas, 4 kotak: 21 berkas, 5 kotak: 28 berkas, 6 kotak: 12 berkas, 7 kotak: 6 berkas, 8 kotak: 9 berkas, 9 kotak: 4 berkas, 10 kotak: 4 berkas, 12 kotak: 3 berkas, 20 kotak: 3 berkas
+
+## 5. Redundansi sumber (risiko kebocoran data)
+  Berkas citra           : 5095
+  Nama dasar unik        : 1959  (sebelum sufiks Roboflow '.rf.<hash>')
+  Rata-rata varian/asal  : 2.60
+  Sebaran varian per asal: [(1, 391), (3, 1568)]
+
+## 6. Pola nama berkas
+  Berawalan 'Screenshot-YYYY-MM-DD-HHMMSS' : 4961 (97%)
+  Berpola stempel kamera 'YYYYMMDD_HHMMSS' : 134
+  Tanggal pada nama screenshot: {'2023-10-12': 1560, '2023-10-20': 2047, '2023-10-23': 256, '2023-10-24': 804, '2023-10-25': 294}
+  Tanggal pada nama berpola kamera: ['20230115', '20230821', '20230827', '20230830', '20230917', '20230919', '20231010']
+
+## 7. Uji duplikat byte-identik (SHA-256 isi gambar, seluruh 5095 JPG)
+
+  Berkas .jpg      : 5095
+  SHA-256 unik     : 1959
+  Salinan berlebih : 3136  (61,6%)
+
+  Angka 1959 ini SAMA PERSIS dengan jumlah nama dasar unik di bagian 5.
+  Artinya ketiga "varian" dari tiap nama dasar bukan hasil pemotongan yang berbeda,
+  melainkan SALINAN BIT-DEMI-BIT dari berkas yang sama, hanya diberi sufiks
+  Roboflow '.rf.<hash>' yang berbeda.
+
+  Ini membantah metode yang ditulis sumber ("citra asli diperbanyak dengan teknik
+  cropping"): tidak ada pemotongan yang terjadi pada 3136 berkas tersebut.
+
+  KOREKSI ANGKA: dataset ini efektif berisi 1959 citra berbeda, bukan 5095.
+
+## 8. Uji irisan dengan dataset cabai lain dalam panen ini
+  Dibandingkan dengan CAB-04, CAB-05, CAB-09, CAB-12: tidak ada satu pun gambar
+  byte-identik yang sama. CAB-01 berdiri sendiri.

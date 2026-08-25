@@ -1,0 +1,78 @@
+# Bukti verifikasi CAB-11
+Tanggal: 2026-08-25
+
+## 1. Integritas
+$ shasum -a 256 raw/*   (dibandingkan dengan content_details.sha256_hash dari Mendeley public-api)
+  cropped.rar             ec311a5b...9f21f  COCOK   (366.859.636 byte)
+  cropped_resized.rar     4a1b23b4...e841a  COCOK   (113.539.294 byte)
+  resized_raw images.rar  d3219be0...c513   COCOK   ( 63.626.181 byte)
+$ file raw/*
+  cropped.rar            : RAR archive data, v5
+  cropped_resized.rar    : RAR archive data, v5
+  resized_raw images.rar : RAR archive data, v4, os: Win32
+
+## 2. Cara membaca isi tanpa unrar
+  Lingkungan ini tidak punya unrar/unar/7z. Daftar isi dibaca dengan mengurai HEADER
+  arsip RAR4/RAR5 langsung dari byte memakai skrip python3 buatan sendiri
+  (baca nama + ukuran asli saja; TIDAK mendekompresi dan tidak menjalankan apa pun).
+  Konsekuensi: isi byte tiap gambar belum pernah didekompresi, jadi status verifikasi
+  ditulis 'sebagian' - daftar & cacah terbukti, integritas piksel per gambar belum.
+
+## 3. Cacah isi per arsip
+
+### raw/cropped.rar
+  raw/cropped.rar  (RAR5, 538 entri berkas)
+  berkas: 538  | ekstensi: [('.jpg', 532), ('', 6)]
+       152  cropped/cercospora
+        69  cropped/healthy
+       107  cropped/murda complex(mites,trips)
+       102  cropped/nutritional
+       102  cropped/powdery mildew
+
+### raw/cropped_resized.rar
+  raw/cropped_resized.rar  (RAR5, 11546 entri berkas)
+  berkas: 11546  | ekstensi: [('.jpg', 11519), ('', 27)]
+     10999  cropped_resized/augment
+       544  cropped_resized/resized_cropped_chilly
+      5359  cropped_resized/augment/test
+      5638  cropped_resized/augment/train
+       232  cropped_resized/resized_cropped_chilly/test
+       310  cropped_resized/resized_cropped_chilly/train
+      1164  cropped_resized/augment/test/cercospora
+      1010  cropped_resized/augment/test/healthy
+      1291  cropped_resized/augment/test/mites_and_trips
+       945  cropped_resized/augment/test/nutritional
+       944  cropped_resized/augment/test/powdery mildew
+      1055  cropped_resized/augment/train/cercospora
+      1188  cropped_resized/augment/train/healthy
+      1216  cropped_resized/augment/train/mites_and_trips
+      1087  cropped_resized/augment/train/nutritional
+      1087  cropped_resized/augment/train/powdery mildew
+       100  cropped_resized/resized_cropped_chilly/test/cercospora
+        25  cropped_resized/resized_cropped_chilly/test/healthy
+        32  cropped_resized/resized_cropped_chilly/test/mites_and_trips
+        35  cropped_resized/resized_cropped_chilly/test/nutritional
+        35  cropped_resized/resized_cropped_chilly/test/powdery mildew
+        52  cropped_resized/resized_cropped_chilly/train/cercospora
+        44  cropped_resized/resized_cropped_chilly/train/healthy
+        75  cropped_resized/resized_cropped_chilly/train/mites_and_trips
+        67  cropped_resized/resized_cropped_chilly/train/nutritional
+        67  cropped_resized/resized_cropped_chilly/train/powdery mildew
+
+### raw/resized_raw images.rar
+  raw/resized_raw images.rar  (RAR4, 1938 entri berkas)
+  berkas: 1938  | ekstensi: [('.jpg', 1932), ('', 6)]
+       899  resized_raw images/cerocospora
+       329  resized_raw images/healthy
+       275  resized_raw images/murda complex
+       267  resized_raw images/nutritional deficiency
+       162  resized_raw images/powdery mildew
+
+## 4. Bukti kebocoran latih/uji pada cropped_resized.rar
+  Nama berkas augmentasi berpola '<kelas>_<indeks_sumber>_<indeks_augmentasi>.jpg'.
+  Sumber unik di augment/train : 305
+  Sumber unik di augment/test  : 227
+  Sumber yang MUNCUL DI KEDUANYA: 179  (78,9% dari sumber uji)
+  -> Varian augmentasi dari citra asal yang sama tersebar ke sisi latih DAN uji.
+     Akurasi apa pun yang dilaporkan atas pembagian bawaan ini menggelembung.
+  Selain itu, 6 nama berkas identik muncul di resized_cropped_chilly/train dan /test.

@@ -1,0 +1,50 @@
+== KEN-02 Potato Viral Disease Dataset (daun + umbi) — verifikasi 2026-08-25
+Perintah: file -b / unzip -tqq / unzip -l + awk atas ketiga arsip
+
+--- raw/PSTVD.zip
+  tipe      : Zip archive data, at least v1.0 to extract, compression method=store
+  integritas: OK
+  gambar    : 85
+  rerata/brk: 6768.3 KB
+  kelas     :
+                  85  PSTVD  (berkas langsung di dalam folder PSTVD/, tanpa subdirektori kelas)
+
+--- raw/Potato Leaf.zip
+  tipe      : Zip archive data, at least v1.0 to extract, compression method=store
+  integritas: OK
+  gambar    : 3240
+  rerata/brk: 3.9 KB
+  kelas     :
+                1080  PLRV_leaf
+                1080  Mosaic_leaf
+                1080  Healthy Leaf Images
+
+--- raw/Potato Tuber.zip
+  tipe      : Zip archive data, at least v1.0 to extract, compression method=store
+  integritas: OK
+  gambar    : 3240
+  rerata/brk: 5.0 KB
+  kelas     :
+                1080  PVY tuber cracking
+                1080  PSTVD
+                1080  Crackingtype
+
+-- APA YANG DIUNDUH DAN APA YANG TIDAK --
+  Dataset penuh di Mendeley berisi 7 berkas, total ~8,9 GB — melampaui batas 3 GB/dataset.
+  Sumbernya menyediakan berkas terpisah per kelas, jadi diambil 3 yang paling relevan:
+    DIUNDUH  Potato Tuber.zip  (17 MB) 3.240 gambar UMBI, 3 kelas, sudah diaugmentasi+diperkecil
+    DIUNDUH  Potato Leaf.zip   (13 MB) 3.240 gambar DAUN, 3 kelas, sudah diaugmentasi+diperkecil
+    DIUNDUH  PSTVD.zip        (248 MB)    85 gambar UMBI ASLI resolusi penuh (Nikon D90)
+    dilewati Crackingtype.zip       3.399 MB  (>3 GB, melampaui batas per dataset)
+    dilewati Mosaic_leaf.zip        2.552 MB
+    dilewati PLRV_leaf.zip          2.024 MB
+    dilewati Healthy leaf images.zip  284 MB  (kelas kontrol, prioritas rendah)
+
+-- BUKTI BAHWA ZIP KECIL ADALAH TURUNAN, BUKAN ASLI --
+  1. Tepat 1.080 gambar per kelas di keenam kelas — mustahil untuk cacah asli
+     yang dinyatakan penerbit: Mosaic 666, PLRV 527, Healthy 135, PSTVD 85, PVY cracking 559.
+  2. Rerata ~4-5 KB/berkas, padahal penerbit menyatakan resolusi asli 4288x2848.
+  3. Pola nama 'Crackingtype_0_578104.jpg' dan 'Crackingtype_100_1389017.jpg' khas
+     keluaran ImageDataGenerator (prefiks_batch_hash).
+  4. Bandingkan PSTVD.zip: nama 'DSC_0140.JPG' (nama asli kamera Nikon), rerata 6,61 MB,
+     dan cacahnya 85 — persis sama dengan klaim penerbit untuk kelas PSTVD.

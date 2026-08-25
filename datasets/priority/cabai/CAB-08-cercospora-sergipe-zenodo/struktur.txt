@@ -1,0 +1,56 @@
+# Bukti verifikasi CAB-08
+Tanggal: 2026-08-25
+
+## 1. Integritas
+$ file raw/"FINAL DATASET.zip"  -> Zip archive data, at least v1.0 to extract, compression method=store
+$ unzip -tqq raw/"FINAL DATASET.zip" -> tanpa galat (ARCHIVE OK)
+$ shasum -a 256 -> 18d10dec8559a3b4b37656d502055ba6c340c7d4f2987ec41edb9abe1362c8cc
+  Ukuran 281.604.523 byte, COCOK dengan ukuran yang diumumkan Zenodo API.
+  (Zenodo tidak mengumumkan sha256 di respons API-nya, hanya ukuran; ukuran cocok persis.)
+
+## 2. Cara mengakses (catatan hambatan)
+  Selama sekitar 40 menit zenodo.org membalas HTTP 403 'unusual traffic from your network'
+  untuk permintaan ber-User-Agent peramban palsu. Setelah dicoba dengan User-Agent curl apa
+  adanya, permintaan lolos (HTTP 200). Sebelum mengunduh, robots.txt diperiksa: /api
+  memang Disallow, TETAPI ada baris eksplisit 'Allow: /api/records/*/files' - jalur yang
+  dipakai unduhan ini. Tidak ada login, paywall, atau CAPTCHA yang ditembus.
+
+## 3. Isi arsip
+  Berkas gambar: 1738   (klaim sumber 1738 -> COCOK)
+  Ekstensi: [('.jpg', 1738)]
+  Folder: [('DATASET_FINAL_FOLHAS', 1738)]
+  Pola nama: SEMUA 1738 berkas bernama '<angka>__roi_backremoved.jpg'
+    -> citra sudah dipotong ke ROI dan latarnya dihapus, bukan foto lapangan utuh.
+  Tidak ada berkas mask, anotasi, label, atau metadata sama sekali.
+  Dimensi: 1523 ukuran BERBEDA untuk 1738 gambar (tiap gambar praktis lain ukuran).
+  Contoh: [((1268, 2152), 2), ((1019, 1646), 2), ((1079, 2214), 2), ((971, 1715), 2), ((1006, 2221), 2)]
+
+## 4. Duplikat INTERNAL
+  sha256 unik: 1523 dari 1738 berkas -> ada 215 salinan berlebih (12%)
+
+## 5. TEMUAN SILANG: CAB-08 termuat seluruhnya di dalam CAB-03
+
+Uji: SHA-256 setiap gambar di CAB-08 dibandingkan dengan SHA-256 setiap gambar di
+`CAB-03-chilli-6-kelas-bangladesh/raw/Cercospora_Leaf_Spot.zip`.
+
+  CAB-08                      : 1738 berkas, 1523 sha256 unik
+  CAB-03 Cercospora_Leaf_Spot : 1898 berkas, 1683 sha256 unik
+  IRISAN BYTE-IDENTIK         : 1523   <- 100% isi unik CAB-08 ada di dalam CAB-03
+
+Contoh pasangan:
+  20__roi_backremoved.jpg    <-> Cercospora Leaf Spot_862.jpg
+  1563__roi_backremoved.jpg  <-> Cercospora Leaf Spot_625.jpg
+  1700__roi_backremoved.jpg  <-> Cercospora Leaf Spot_778.jpg
+  185__roi_backremoved.jpg   <-> Cercospora Leaf Spot_834.jpg
+  1391__roi_backremoved.jpg  <-> Cercospora Leaf Spot_434.jpg
+  692__roi_backremoved.jpg   <-> Cercospora Leaf Spot_1396.jpg
+
+Artinya: kelas Cercospora milik CAB-03 (yang deskripsinya menyatakan citra dikumpulkan dari
+lahan di Ashulia, Narsingdi, Cumilla, Feni, Noakhali, dan Laksham, BANGLADESH, terbit
+2025-11-24) sesungguhnya 1523 dari 1683 citra uniknya (90,5%) adalah data BRASIL milik
+Universidade Federal de Sergipe yang terbit lebih dulu di Zenodo pada 2024-08-08 - dengan
+nama berkas diganti sehingga jejak '__roi_backremoved' hilang. Hanya sekitar 160 citra
+Cercospora di CAB-03 yang bukan berasal dari sini.
+
+Kedua dataset juga sama-sama membawa 215 salinan internal berlebih, konsisten dengan
+penyalinan utuh termasuk duplikatnya.

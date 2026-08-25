@@ -1,0 +1,36 @@
+# PhytoScope: A Public Benchmark Dataset for Multi-Crop Disease Detection and Localization
+
+- **dataset_id**: TOM-12-phytoscope-lapangan
+- **Tanaman**: **25 spesies** — Apple, Bean, Bitter Gourd, Bottle-gourd, Cauliflower, **Chilli**, Corn, Cotton, Cucumber, Dragon Fruit, Eggplant, Ginger, Grape, Jackfruit, Jute, Lychee, Mango, Orange, Papaya, **Potato**, Rice, Strawberry, Tea, **Tomato**, Watermelon. Karena ≥3 tanaman, ditaruh di `datasets/additional/`.
+- **Penyakit/kelas tercakup**: **105 kelas** total. Empat kelas tomat (nama apa adanya dari `Tomato Disease/data.yaml`): `Tomato Bacterial spot`, `Tomato Fresh leaf`, `Tomato leaf curl virus`, **`Tomato spotted wilt`**. Daftar 105 kelas lengkap per tanaman ada di `struktur.txt`.
+  - Untuk agen lain: **`Chilli Disease`** 1.012 gambar / 5 kelas (`Chilli cercospora`, `Chilli healthy`, `Chilli mites_and_trips`, `Chilli nutritional`, `Chilli powdery mildew`); **`Potato Disease`** 610 gambar / 3 kelas (`Potato_early_blight`, `Potato_healthy`, `Potato_late_blight`); **`Eggplant Disease`** 600 gambar / 3 kelas. **Tidak ada bawang merah.**
+- **Jenis data**: gambar + anotasi kotak pembatas (deteksi objek)
+- **Format**: JPG + label YOLO (`.txt`) dalam ZIP, satu `data.yaml` per tanaman, split `train`/`valid`/`test` sudah dibuat
+- **Jumlah**: diklaim "more than 20.000 images, 25 crop species, 105 categories"; terhitung **20.723 gambar**, **20.773 berkas label**, **105 kelas** (jumlah `nc` dari 25 `data.yaml`), **25 tanaman** — **cocok**. Bagian tomat: **801 gambar** (train 561, valid 160, test 80).
+- **Sumber**: Zenodo
+- **URL sumber**: https://zenodo.org/records/21383493
+- **DOI**: 10.5281/zenodo.21383492 (concept) / 10.5281/zenodo.21383493 (versi)
+- **Pembuat**: Rafsan Hasan Pronay
+- **Tahun terbit / pembaruan**: 2026-07-15
+- **Lisensi**: CC BY 4.0 (rekaman Zenodo). Selain itu, **ke-25 blok `roboflow:` di dalam `data.yaml` masing-masing juga menyatakan `license: CC BY 4.0`** — jadi lisensi hulunya konsisten.
+- **Ketentuan atribusi**: Atribusi ke Pronay, Rafsan Hasan + tautan lisensi + penandaan perubahan. Karena isinya agregasi, atribusi yang benar-benar bersih sebaiknya juga menyebut proyek Roboflow Universe hulu (workspace/proyek/versi tercatat di tiap `data.yaml`).
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 1.149.897.055 byte (1,07 GiB)
+- **SHA-256**: `bd76757640538b0d889bcbb8ee5834e0d8e0082e47372438d15ae4178c308d3c`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - Ukuran diperiksa lewat API Zenodo sebelum unduh → `1149.9 MB` (di bawah batas 3 GB)
+  - `file raw/'PhytoScope Dataset.zip'` → `Zip archive data, at least v2.0 to extract, compression method=store`
+  - `unzip -t` → `No errors detected in compressed data`
+  - `unzip -Z1 | wc -l` → 41.773 entri; ekstensi: 20.723 `jpg`, 20.773 `txt`, 25 `yaml`
+  - Ke-25 `data.yaml` dibaca langsung dari arsip dengan `zipfile.ZipFile(...).read()` → jumlah `nc` dijumlahkan = **105**, sama dengan klaim sumber
+  - Cacah gambar per tanaman & per split dihitung dari daftar isi arsip → hasil lengkap di `struktur.txt`
+- **Keterbatasan / masalah kualitas**:
+  - **Bagian tomatnya kecil dan dangkal: 801 gambar, hanya 4 kelas.** Tidak ada early blight, late blight, Septoria, leaf mold, target spot, maupun layu apa pun. Nilai utamanya untuk tomat adalah **`Tomato spotted wilt` (TSWV)** — kelas yang nyaris tidak ada di dataset tomat lain, dan **anotasi kotak pembatas di kondisi lapangan**, bukan sekadar label seluruh gambar.
+  - **Ini agregasi, bukan koleksi primer.** Setiap sub-dataset berasal dari proyek Roboflow Universe yang berbeda, dikumpulkan oleh orang berbeda, dengan protokol, kamera, dan mutu anotasi yang berbeda. Konsistensi label **antar** tanaman tidak dijamin, dan gaya penamaan kelasnya sendiri sudah tidak seragam (`watermelon___anthracnose` bergaris bawah tiga vs `Mango-Anthracnose` bertanda hubung vs `Tomato Bacterial spot` berspasi).
+  - **Klaim "field images" perlu disikapi hati-hati.** Sebagian sub-dataset memang foto lapangan, tapi nama berkas seperti `aug5_IMG_2500_jpg.rf.<hash>.txt` menunjukkan **augmentasi sudah tercampur** ke dalam split (awalan `aug`). Karena split sudah ditetapkan pembuat dan nama induknya ter-hash, **kebocoran train↔test lewat gambar teraugmentasi tidak bisa dikesampingkan**. Untuk evaluasi jujur, saring dulu berkas berawalan `aug`.
+  - Jumlah label (20.773) sedikit lebih banyak daripada jumlah gambar (20.723) — 50 berkas `.txt` berlebih (kemungkinan `classes.txt`/`labels.cache` sisa atau label yatim). Perlu dibersihkan sebelum dipakai.
+  - Kelas "sehat" dinamai berbeda-beda per tanaman (`Tomato Fresh leaf` vs `Potato_healthy` vs `CauliFlower Healthy`), jadi tidak bisa digabung otomatis.
+  - Tidak ada metadata lokasi, tanggal, atau kultivar untuk gambar mana pun.
+  - Rilis 2026, belum banyak dipakai/diaudit komunitas — berbeda dari PlantVillage atau PlantDoc yang sudah lama diuji silang.

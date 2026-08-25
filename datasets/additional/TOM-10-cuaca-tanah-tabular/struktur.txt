@@ -1,0 +1,82 @@
+# Struktur "Soil-Weather Multivariate Crop Disease Dataset.csv"
+
+## Baris data: 250000 (250.001 baris fisik termasuk header)
+## Kolom (23): ['Crop', 'Nitrogen', 'Phosphorus', 'Potassium', 'pH_Value', 'Soil_Temperature', 'Humidity', 'Rainfall', 'Weather_Temp_F', 'Weather_Humidity', 'Cloud_Cover_pct', 'Wind_Speed_kmh', 'Rolling_Rainfall_mm', 'Temp_Variance', 'Weather_Favorability_Score', 'Low_Temp_Warning', 'High_Temp_Warning', 'High_Humidity_Warning', 'High_Wind_Warning', 'Cloudy_Warning', 'Wet_Spell_Warning', 'Disease', 'Disease_Severity']
+
+## Cacah per tanaman
+   Rice          122115
+   Maize          33039
+   Sugarcane      32606
+   Wheat          20824
+   Tomato         20720
+   Potato         20696
+
+## Cacah per tanaman x penyakit
+   Maize        Common Rust                             1252
+   Maize        Fall Armyworm Infestation               2256
+   Maize        Healthy                                 2052
+   Maize        Maize Lethal Necrosis                  13048
+   Maize        Northern Leaf Blight                    1544
+   Maize        Stalk Rot                              12887
+   Potato       Aphid Infestation                        705
+   Potato       Bacterial Wilt                          2227
+   Potato       Early Blight                            1087
+   Potato       Healthy                                 2393
+   Potato       Late Blight                              921
+   Potato       Mosaic Virus                           13363
+   Rice         BPH (Brown Planthopper)                13976
+   Rice         Bacterial Leaf Blight                  13392
+   Rice         Blast                                  13923
+   Rice         Brown Spot                             12792
+   Rice         Healthy                                 1471
+   Rice         Leaf Roller Infestation                12738
+   Rice         Rice Bug Infestation                   12785
+   Rice         Sheath Blight                          13288
+   Rice         Sheath Rot                             13943
+   Rice         Stem Borer Infestation                 13807
+   Sugarcane    Grassy Shoot Disease                   12927
+   Sugarcane    Healthy                                 1944
+   Sugarcane    Red Rot                                 1555
+   Sugarcane    Smut                                   12706
+   Sugarcane    Top Borer Infestation                   1797
+   Sugarcane    Wilt Disease                            1677
+   Tomato       Bacterial Wilt                           802
+   Tomato       Early Blight                            1857
+   Tomato       Fruit Borer Infestation                13279
+   Tomato       Healthy                                 1648
+   Tomato       Late Blight                             1359
+   Tomato       Leaf Curl Virus                         1775
+   Wheat        Aphid Infestation                       1760
+   Wheat        Healthy                                 2183
+   Wheat        Leaf Rust                               1219
+   Wheat        Powdery Mildew                         12872
+   Wheat        Stem Rust                               1402
+   Wheat        Wheat Blast                             1388
+
+## Disease_Severity: {'3': 29643, '2': 81749, '1': 95736, '0': 42872}
+
+## Rentang kolom numerik (BUKTI SINTETIS - batasnya terlalu rapi)
+   Nitrogen                    min=     5.006 max=   149.999 mean=    78.478 nilai_unik=248971
+   Phosphorus                  min=     5.000 max=    89.999 mean=    49.253 nilai_unik=248853
+   Potassium                   min=    10.001 max=    99.996 mean=    56.282 nilai_unik=248816
+   pH_Value                    min=     4.500 max=     8.500 mean=     6.523 nilai_unik=243202
+   Soil_Temperature            min=    10.004 max=    44.997 mean=    27.580 nilai_unik=247119
+   Humidity                    min=    30.002 max=    99.992 mean=    65.652 nilai_unik=248469
+   Rainfall                    min=    20.019 max=   399.975 mean=   212.878 nilai_unik=249353
+   Weather_Temp_F              min=    55.300 max=    93.100 mean=    79.702 nilai_unik=228934
+   Weather_Humidity            min=    26.200 max=    97.100 mean=    80.153 nilai_unik=229795
+   Cloud_Cover_pct             min=     0.000 max=   100.000 mean=    58.048 nilai_unik=227870
+   Wind_Speed_kmh              min=     2.700 max=    71.400 mean=     7.399 nilai_unik=227110
+   Rolling_Rainfall_mm         min=    48.957 max=    94.114 mean=    80.395 nilai_unik=231959
+   Temp_Variance               min=     7.075 max=     9.596 mean=     8.534 nilai_unik=226832
+   Weather_Favorability_Score  min=     0.072 max=     0.579 mean=     0.359 nilai_unik=192540
+
+## Kolom bendera (0/1)
+   Low_Temp_Warning         {'1': 24278, '0': 225722}
+   High_Temp_Warning        {'1': 250000}
+   High_Humidity_Warning    {'1': 176778, '0': 73222}
+   High_Wind_Warning        RUSAK: 66572 nilai berbeda (seharusnya 0/1). "0.0" muncul 183427 kali, sisanya pecahan.
+   Cloudy_Warning           {'1': 116234, '0': 133766}
+   Wet_Spell_Warning        {'1': 156115, '0': 93885}
+
+## Baris duplikat persis: 0 (250.000 baris unik)

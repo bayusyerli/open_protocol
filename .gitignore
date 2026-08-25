@@ -59,3 +59,9 @@ hist.json
 kld.json
 konsep-perencanaan/
 simpanan-sesi-20260824/
+
+# Muatan mentah dataset penyakit tanaman — arsip ZIP/gambar dari Mendeley, Zenodo,
+# Figshare, dan GitHub. Bisa ditarik ulang dari `source_url` di
+# datasets/metadata/dataset-catalog.csv, dan checksumnya tersimpan di SHA256SUMS.txt
+# tiap dataset. Yang naik ke repo cuma metadatanya: README, katalog, laporan.
+datasets/**/raw/

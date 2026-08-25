@@ -1,0 +1,60 @@
+=== BWM-02 struktur & bukti verifikasi ===
+Perintah: python3 zipfile (namelist/testzip/infolist) + unzip -l — arsip TIDAK diekstrak ke datasets/
+Tanggal: 2026-08-25
+
+berkas ZIP     : Onion Leaves and Bulb Dataset.zip  (1608618402 byte)
+tipe (file)    : Zip archive data, at least v2.0 to extract, compression method=store
+entri total    : 16323  (berkas: 16300, direktori: 23)
+ekstensi       : {'jpg': 16300}
+uji integritas : testzip() -> OK, tidak ada CRC rusak
+berpassword    : False
+kompresi       : method=store (0) — tidak dimampatkan, jadi ukuran zip ~ jumlah ukuran gambar
+
+=== cacah per kelas daun (folder terdalam) ===
+    1010  New Onion - Copy/1. Leaves/1. Healthy/1. Single
+    1010  New Onion - Copy/1. Leaves/1. Healthy/2. Multiple
+    1010  New Onion - Copy/1. Leaves/2. Unhealthy/1. Single
+    1010  New Onion - Copy/1. Leaves/2. Unhealthy/2. Multiple
+    3000  New Onion - Copy/2. Bulb/1. Healthy/1. Red Onion/1. Single
+    1110  New Onion - Copy/2. Bulb/1. Healthy/1. Red Onion/2. Multiple
+    3000  New Onion - Copy/2. Bulb/1. Healthy/2. White Onion/1. Single
+    1110  New Onion - Copy/2. Bulb/1. Healthy/2. White Onion/2. Multiple
+    1010  New Onion - Copy/2. Bulb/2. Unhealthy/1. Red Onion/1. Single
+    1010  New Onion - Copy/2. Bulb/2. Unhealthy/1. Red Onion/2. Multiple
+    1010  New Onion - Copy/2. Bulb/2. Unhealthy/2. White Onion/1. Single
+    1010  New Onion - Copy/2. Bulb/2. Unhealthy/2. White Onion/2. Multiple
+   16300  TOTAL
+
+=== agregasi menaik ===
+  -- tingkat 2 (bagian tanaman):
+         4040  New Onion - Copy/1. Leaves
+        12260  New Onion - Copy/2. Bulb
+  -- tingkat 3 (sehat / tidak sehat):
+         2020  New Onion - Copy/1. Leaves/1. Healthy
+         2020  New Onion - Copy/1. Leaves/2. Unhealthy
+         8220  New Onion - Copy/2. Bulb/1. Healthy
+         4040  New Onion - Copy/2. Bulb/2. Unhealthy
+  -- tingkat 4 (warna umbi (umbi saja) atau tunggal/ganda (daun)):
+         1010  New Onion - Copy/1. Leaves/1. Healthy/1. Single
+         1010  New Onion - Copy/1. Leaves/1. Healthy/2. Multiple
+         1010  New Onion - Copy/1. Leaves/2. Unhealthy/1. Single
+         1010  New Onion - Copy/1. Leaves/2. Unhealthy/2. Multiple
+         4110  New Onion - Copy/2. Bulb/1. Healthy/1. Red Onion
+         4110  New Onion - Copy/2. Bulb/1. Healthy/2. White Onion
+         2020  New Onion - Copy/2. Bulb/2. Unhealthy/1. Red Onion
+         2020  New Onion - Copy/2. Bulb/2. Unhealthy/2. White Onion
+
+=== contoh 4 nama berkas ===
+  New Onion - Copy/1. Leaves/1. Healthy/1. Single/Onion00001.jpg
+  New Onion - Copy/1. Leaves/1. Healthy/1. Single/Onion00002.jpg
+  New Onion - Copy/2. Bulb/2. Unhealthy/2. White Onion/2. Multiple/Onion16299.jpg
+  New Onion - Copy/2. Bulb/2. Unhealthy/2. White Onion/2. Multiple/Onion16300.jpg
+
+=== contoh metadata entri ===
+  nama          = New Onion - Copy/1. Leaves/1. Healthy/1. Single/Onion00001.jpg
+  ukuran_asli   = 59815 byte ; terkompresi = 58163 ; metode = 8 (0=store)
+  tanggal       = (2026, 2, 5, 21, 6, 40)
+
+=== ukuran gambar ===
+  total tak-terkompresi = 1635717054 byte
+  min=18515 maks=403060 rata-rata=100350 byte

@@ -1,0 +1,58 @@
+== KEN-15 Stage-wise late blight (supporting data) — verifikasi 2026-08-25
+Perintah 1: file -b raw/*.zip
+  Zip archive data, at least v2.0 to extract, compression method=deflate
+Perintah 2: unzip -tqq raw/*.zip
+  OK — tidak ada CRC error
+Perintah 3: cacah
+  1561 gambar .jpg — SAMA PERSIS dengan klaim 1.561
+  16 .csv · 2 .md · 1 .txt · 1 .cff
+
+-- STRUKTUR --
+    1561  Stage-wise_Late_Blight_Supporting_Data_Repository/data/Images/
+      12  Stage-wise_Late_Blight_Supporting_Data_Repository/data/processed_analysis/
+       5  Stage-wise_Late_Blight_Supporting_Data_Repository/
+       3  Stage-wise_Late_Blight_Supporting_Data_Repository/data/manuscript_reported_values/
+       1  Archive: raw/
+
+-- CITRA: ASLI LAPANGAN, TAPI TANPA LABEL --
+  1.561 citra RGB daun kentang hasil pengambilan LAPANGAN, 640x640 JPEG,
+  bernama image_1.jpg .. image_1561.jpg, tanpa metadata EXIF.
+  Berkas DATA_PROVENANCE.md di dalam arsip menyatakan secara eksplisit bahwa
+  YANG TIDAK DISERTAKAN adalah:
+    - label kelas per gambar (Healthy / ILB / ALB)
+    - berkas anotasi kotak-batas
+    - manifes pemisahan train/valid/test
+    - berkas prediksi model mentah, log latih, dan checkpoint
+  Alasan yang dinyatakan: berkas-berkas itu tidak tersimpan di arsip proyek
+  saat repositori ini disusun, dan penulis MEMILIH TIDAK merekonstruksinya.
+
+-- 16 CSV BUKAN LABEL GAMBAR --
+  Seluruh CSV adalah keluaran EVALUASI MODEL dan angka yang disalin dari naskah:
+  kurva loss, mAP per epoch, kurva presisi-recall, matriks kekeliruan, metrik per kelas,
+  sebaran confidence dan IoU, tolok ukur kecepatan, studi ablasi, statistik partisi.
+  Tidak satu pun memetakan image_N.jpg ke sebuah kelas.
+
+-- KELAS MENURUT NASKAH (tidak terwujud sebagai label) --
+  Healthy · ILB (Initial Late Blight) · ALB (Advanced Late Blight)
+  Inilah nilai khasnya: pembedaan hawar TAHAP AWAL vs TAHAP LANJUT.
+
+-- Lisensi di dalam arsip --
+  Creative Commons Attribution 4.0 International (CC BY 4.0)
+  
+
+-- TEMUAN TAMBAHAN (pemeriksaan lanjutan 2026-08-25): 17 DUPLIKAT INTERNAL --
+  Metode: 1.561 gambar diekstrak ke direktori scratchpad, tiap berkas di-SHA-256,
+          lalu hash dihitung frekuensinya.
+  Hasil : 1.561 berkas -> hanya 1.544 hash UNIK.
+          17 pasang berkas berisi bita yang identik persis (tiap hash muncul 2x).
+  Artinya citra unik sebenarnya 1.544, bukan 1.561.
+  Dampak: kalau 1.561 dipakai apa adanya sebagai cacah citra asli, angkanya kelebihan 17.
+          Karena label pun tidak ada, duplikat ini tidak dapat ditelusuri ke kelas mana pun.
+
+-- UJI TUMPANG TINDIH DENGAN PLANTVILLAGE --
+  Metode: 2.152 gambar kentang PlantVillage (raw/color: 1.000 Early_blight,
+          1.000 Late_blight, 152 healthy) diekstrak dari arsip milik agen tomat
+          (TOM-01, dibaca saja, tidak diunduh ulang) lalu di-SHA-256 dan diiriskan.
+  Hasil : 0 hash bersama. Tidak ada tumpang tindih bita dengan PlantVillage.
+  Batas uji: perbandingan hash hanya menangkap duplikat yang identik BITA per bita.
+          Gambar yang sama tetapi sudah diubah ukuran/kontras TIDAK akan terdeteksi.

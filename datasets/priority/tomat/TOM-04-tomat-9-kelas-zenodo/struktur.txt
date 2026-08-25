@@ -1,0 +1,37 @@
+# Struktur Tomato-Disease.zip
+
+## file(1)
+raw/Tomato-Disease.zip: Zip archive data, at least v1.0 to extract, compression method=store
+
+## unzip -t (2 baris terakhir)
+    testing: Tomato-Disease/valid/labels/Worm-6_jpg.rf.9d843d203473eac8ab4df3b769a25a1a.txt   OK
+No errors detected in compressed data of raw/Tomato-Disease.zip.
+
+## Direktori
+Tomato-Disease/
+Tomato-Disease/test/
+Tomato-Disease/test/images/
+Tomato-Disease/test/labels/
+Tomato-Disease/train/
+Tomato-Disease/train/images/
+Tomato-Disease/train/labels/
+Tomato-Disease/valid/
+Tomato-Disease/valid/images/
+Tomato-Disease/valid/labels/
+
+## Cacah berkas per direktori
+1769 Tomato-Disease/train/labels/
+1769 Tomato-Disease/train/images/
+ 222 Tomato-Disease/test/labels/
+ 222 Tomato-Disease/test/images/
+ 221 Tomato-Disease/valid/labels/
+ 221 Tomato-Disease/valid/images/
+
+## Ekstensi
+2212 jpg
+2212 txt
+
+## Format anotasi: YOLO (class cx cy w h), 2.212 berkas .txt, 6.581 baris anotasi, SEMUA baris 5 kolom
+## Cacah anotasi per class-id (bukan per gambar):
+   782 x id 0 | 736 x id 1 | 473 x id 2 | 836 x id 3 | 791 x id 4 | 654 x id 5 | 598 x id 6 | 498 x id 7 | 1213 x id 8
+## CATATAN: tidak ada data.yaml / classes.txt di dalam arsip -> pemetaan id -> nama kelas TIDAK tersedia di berkas.

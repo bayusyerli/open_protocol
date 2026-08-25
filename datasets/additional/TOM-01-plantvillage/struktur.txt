@@ -1,0 +1,112 @@
+# Struktur PlantVillage-Dataset-master.zip
+
+## file(1)
+raw/PlantVillage-Dataset-master.zip: Zip archive data, at least v1.0 to extract, compression method=store
+
+## unzip -t (2 baris terakhir)
+    testing: PlantVillage-Dataset-master/utils/image_processor.pyc   OK
+No errors detected in compressed data of raw/PlantVillage-Dataset-master.zip.
+
+## Total entri arsip:   182609
+
+## Isi tingkat atas
+.gitignore
+CITATION.cff
+README.md
+README_HF.md
+data_distribution_for_SVM
+generate_data_for_SVM.py
+generate_lmdb.sh
+generate_mapstring.py
+generated_for_paper
+leaf-map.json
+leaf_grouping
+logs
+plant_village.py
+raw
+scripts
+utils
+
+## Cacah gambar per varian di raw/
+   color : 54303 gambar, 38 kelas
+   grayscale : 54303 gambar, 38 kelas
+   segmented : 54306 gambar, 38 kelas
+
+## 38 kelas varian color + cacah gambar
+ 630 Apple___Apple_scab
+ 621 Apple___Black_rot
+ 275 Apple___Cedar_apple_rust
+1645 Apple___healthy
+1502 Blueberry___healthy
+1052 Cherry_(including_sour)___Powdery_mildew
+ 854 Cherry_(including_sour)___healthy
+ 513 Corn_(maize)___Cercospora_leaf_spot Gray_leaf_spot
+1192 Corn_(maize)___Common_rust_
+ 985 Corn_(maize)___Northern_Leaf_Blight
+1162 Corn_(maize)___healthy
+1180 Grape___Black_rot
+1383 Grape___Esca_(Black_Measles)
+1076 Grape___Leaf_blight_(Isariopsis_Leaf_Spot)
+ 423 Grape___healthy
+5507 Orange___Haunglongbing_(Citrus_greening)
+2297 Peach___Bacterial_spot
+ 360 Peach___healthy
+ 997 Pepper,_bell___Bacterial_spot
+1477 Pepper,_bell___healthy
+1000 Potato___Early_blight
+1000 Potato___Late_blight
+ 152 Potato___healthy
+ 371 Raspberry___healthy
+5090 Soybean___healthy
+1835 Squash___Powdery_mildew
+1109 Strawberry___Leaf_scorch
+ 456 Strawberry___healthy
+2127 Tomato___Bacterial_spot
+1000 Tomato___Early_blight
+1908 Tomato___Late_blight
+ 952 Tomato___Leaf_Mold
+1771 Tomato___Septoria_leaf_spot
+1676 Tomato___Spider_mites Two-spotted_spider_mite
+1404 Tomato___Target_Spot
+5357 Tomato___Tomato_Yellow_Leaf_Curl_Virus
+ 373 Tomato___Tomato_mosaic_virus
+1591 Tomato___healthy
+
+## Ringkasan per tanaman (varian color)
+18159 Tomato
+5507 Orange
+5090 Soybean
+4062 Grape
+3852 Corn_(maize)
+3171 Apple
+2657 Peach
+2474 Pepper,_bell
+2152 Potato
+1906 Cherry_(including_sour)
+1835 Squash
+1565 Strawberry
+1502 Blueberry
+ 371 Raspberry
+
+## Ekstensi seluruh arsip
+124904 JPG
+57307 jpg
+  64 csv
+  60 eps
+  18 sh
+  15 out
+  12 xlsx
+   9 py
+   2 txt
+   2 pyc
+   2 png
+   2 md
+   2 json
+   2 jpeg
+   1 zip
+   1 gitignore
+   1 cff
+
+## Gambar di LUAR raw/ (turunan, jangan dicampur)
+19298 data_distribution_for_SVM
+   1 generated_for_paper

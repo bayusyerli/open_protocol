@@ -1,0 +1,14 @@
+KEN-01-potatocare-umbi-mendeley	10.17632/7vm7xskfg4.2	PotatoCare: Deep learning based potato disease dataset	datasets/priority/kentang/KEN-01-potatocare-umbi-mendeley
+KEN-02-virus-daun-umbi-mendeley	10.17632/rgfhzd5mzw.1	Potato Viral Disease Dataset on both Foliar and Tuber	datasets/priority/kentang/KEN-02-virus-daun-umbi-mendeley
+KEN-03-daun-kentang-mendeley	10.17632/d5b3fzpw3g.1	Potato Leaf Disease Dataset	datasets/priority/kentang/KEN-03-daun-kentang-mendeley
+KEN-04-plantdoc-lapangan	https://github.com/pratikkayal/PlantDoc-Dataset	PlantDoc: A Dataset for Visual Plant Disease Detection (classification)	datasets/additional/KEN-04-plantdoc-lapangan
+KEN-05-plantdoc-deteksi-objek	https://github.com/pratikkayal/PlantDoc-Object-Detection-Dataset	PlantDoc Object Detection Dataset	datasets/additional/KEN-05-plantdoc-deteksi-objek
+KEN-06-cip-hawar-genebank	10.21223/P3/HJLUJZ	Replication Data for: Late blight severity in potato accessions from the CIP genebank core collection	datasets/priority/kentang/KEN-06-cip-hawar-genebank
+KEN-07-cip-hawar-lbhtc2	10.21223/P3/PN2RGR	Replication Data for: Late blight severity in breeding clones from CIP's LBHTC2 breeding population	datasets/priority/kentang/KEN-07-cip-hawar-lbhtc2
+KEN-08-umbi-augmentasi-mendeley	10.17632/2rsrxwck2r.1	Potato Crop Disease Augmentation Dataset	datasets/priority/kentang/KEN-08-umbi-augmentasi-mendeley
+KEN-09-cip-pengelolaan-terpadu	10.21223/6RV436	Dataset for: Integrated management of late blight on potato	datasets/priority/kentang/KEN-09-cip-pengelolaan-terpadu
+KEN-10-hybrid-tuber-zenodo	10.5281/zenodo.20616990	Hybrid Potato Tuber Dataset (Solanum tuberosum, Solanum phureja)	datasets/priority/kentang/KEN-10-hybrid-tuber-zenodo
+KEN-11-foliar-yolov8-zenodo	10.5281/zenodo.20247345	Annotated Dataset for Potato Foliar Disease and Healthy Leaf Detection (Septoria, Early Blight, Late Blight, Healthy)	datasets/priority/kentang/KEN-11-foliar-yolov8-zenodo
+KEN-14-fenotip-multitahun-zenodo	10.5281/zenodo.21774103	Multi-year phenotypic dataset of potato genotypes evaluated for agronomic, biotic stress, and tuber quality traits	datasets/priority/kentang/KEN-14-fenotip-multitahun-zenodo
+KEN-15-stagewise-hawar-zenodo	10.5281/zenodo.22059910	Supporting data for: Stage-wise detection of late blight in field-grown potato	datasets/priority/kentang/KEN-15-stagewise-hawar-zenodo
+KEN-16-pldd-up-lb-mendeley	10.17632/3j4nfkvp2n.1	PLDD-UP: Potato Leaf Disease Dataset from Uttar Pradesh, India (hanya LB.zip)	datasets/priority/kentang/KEN-16-pldd-up-lb-mendeley

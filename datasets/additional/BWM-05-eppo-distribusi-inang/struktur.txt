@@ -1,0 +1,209 @@
+=== BWM-05 struktur & bukti verifikasi (EPPO Global Database) ===
+Perintah: curl -sL https://gd.eppo.int/taxon/<KODE>/download/<distribution|hosts>_csv
+Verifikasi: python3 modul csv — baca header + cacah baris + saring baris Indonesia
+Tanggal: 2026-08-25
+
+--------------------------------------------------------------------------
+BERKAS  : distribution_BEMITA.csv   (18734 byte)
+organism: BEMITA = Bemisia tabaci - kutu kebul, vektor virus
+jenis   : distribusi geografis
+kolom   : ['continent', 'country', 'state', 'country code', 'state code', 'Status']
+baris   : 307 (tanpa header)
+  sebaran nilai Status: {'Present, no details': 228, 'Present, restricted distribution': 28, 'Present, widespread': 26, 'Present, few occurrences': 7, 'Absent, confirmed by survey': 6, 'Absent, unreliable record': 4}
+  BARIS INDONESIA (4):
+    ['Asia', 'Indonesia', '', 'ID', '', 'Present, restricted distribution']
+    ['Asia', 'Indonesia', 'Java', 'ID', 'jv', 'Present, no details']
+    ['Asia', 'Indonesia', 'Sulawesi', 'ID', 'sl', 'Present, restricted distribution']
+    ['Asia', 'Indonesia', 'Sumatra', 'ID', 'sm', 'Present, no details']
+  contoh 2 baris data: [['Africa', 'Algeria', '', 'DZ', '', 'Present, no details'], ['Africa', 'Angola', '', 'AO', '', 'Present, no details']]
+
+--------------------------------------------------------------------------
+BERKAS  : distribution_LIRIHU.csv   (8747 byte)
+organism: LIRIHU = Liriomyza huidobrensis - lalat pengorok daun
+jenis   : distribusi geografis
+kolom   : ['continent', 'country', 'state', 'country code', 'state code', 'Status']
+baris   : 143 (tanpa header)
+  sebaran nilai Status: {'Present, no details': 76, 'Present, restricted distribution': 29, 'Present, few occurrences': 9, 'Absent, pest eradicated': 9, 'Absent, unreliable record': 7, 'Present, widespread': 7}
+  BARIS INDONESIA (4):
+    ['Asia', 'Indonesia', '', 'ID', '', 'Present, restricted distribution']
+    ['Asia', 'Indonesia', 'Java', 'ID', 'jv', 'Present, no details']
+    ['Asia', 'Indonesia', 'Sulawesi', 'ID', 'sl', 'Present, no details']
+    ['Asia', 'Indonesia', 'Sumatra', 'ID', 'sm', 'Present, no details']
+  contoh 2 baris data: [['Africa', 'Comoros', '', 'KM', '', 'Present, no details'], ['Africa', 'Ethiopia', '', 'ET', '', 'Absent, unreliable record']]
+
+--------------------------------------------------------------------------
+BERKAS  : distribution_LIRISA.csv   (10533 byte)
+organism: LIRISA = Liriomyza sativae - lalat pengorok daun
+jenis   : distribusi geografis
+kolom   : ['continent', 'country', 'state', 'country code', 'state code', 'Status']
+baris   : 167 (tanpa header)
+  sebaran nilai Status: {'Present, no details': 111, 'Present, restricted distribution': 25, 'Absent, unreliable record': 9, 'Present, widespread': 9, 'Absent, confirmed by survey': 4, 'Present, few occurrences': 3}
+  BARIS INDONESIA (3):
+    ['Asia', 'Indonesia', '', 'ID', '', 'Present, no details']
+    ['Asia', 'Indonesia', 'Java', 'ID', 'jv', 'Present, no details']
+    ['Asia', 'Indonesia', 'Nusa Tenggara', 'ID', 'nt', 'Present, no details']
+  contoh 2 baris data: [['Africa', 'Cameroon', '', 'CM', '', 'Present, no details'], ['Africa', 'Congo', '', 'CG', '', 'Absent, unreliable record']]
+
+--------------------------------------------------------------------------
+BERKAS  : distribution_LIRITR.csv   (12590 byte)
+organism: LIRITR = Liriomyza trifolii - lalat pengorok daun
+jenis   : distribusi geografis
+kolom   : ['continent', 'country', 'state', 'country code', 'state code', 'Status']
+baris   : 201 (tanpa header)
+  sebaran nilai Status: {'Present, no details': 142, 'Present, restricted distribution': 21, 'Absent, pest eradicated': 10, 'Present, few occurrences': 9, 'Present, widespread': 8, 'Absent, unreliable record': 4}
+  BARIS INDONESIA (1):
+    ['Asia', 'Indonesia', '', 'ID', '', 'Present, restricted distribution']
+  contoh 2 baris data: [['Africa', 'Benin', '', 'BJ', '', 'Present, no details'], ['Africa', "Cote d'Ivoire", '', 'CI', '', 'Present, no details']]
+
+--------------------------------------------------------------------------
+BERKAS  : distribution_OYDV00.csv   (4842 byte)
+organism: OYDV00 = Onion yellow dwarf virus (Potyvirus cepae) - OYDV
+jenis   : distribusi geografis
+kolom   : ['continent', 'country', 'state', 'country code', 'state code', 'Status']
+baris   : 77 (tanpa header)
+  sebaran nilai Status: {'Present, no details': 63, 'Present, restricted distribution': 9, 'Present, widespread': 5}
+  BARIS INDONESIA (4):
+    ['Asia', 'Indonesia', '', 'ID', '', 'Present, no details']
+    ['Asia', 'Indonesia', 'Irian Jaya', 'ID', 'ij', 'Present, no details']
+    ['Asia', 'Indonesia', 'Java', 'ID', 'jv', 'Present, no details']
+    ['Asia', 'Indonesia', 'Nusa Tenggara', 'ID', 'nt', 'Present, no details']
+  contoh 2 baris data: [['Africa', 'Morocco', '', 'MA', '', 'Present, no details'], ['Africa', 'Nigeria', '', 'NG', '', 'Present, no details']]
+
+--------------------------------------------------------------------------
+BERKAS  : distribution_PLEOAL.csv   (6795 byte)
+organism: PLEOAL = Stemphylium vesicarium (teleomorf Pleospora allii) - hawar daun
+jenis   : distribusi geografis
+kolom   : ['continent', 'country', 'state', 'country code', 'state code', 'Status']
+baris   : 114 (tanpa header)
+  sebaran nilai Status: {'Present, no details': 108, 'Absent, unreliable record': 3, 'Present, restricted distribution': 3}
+  BARIS INDONESIA (2):
+    ['Asia', 'Indonesia', '', 'ID', '', 'Present, restricted distribution']
+    ['Asia', 'Indonesia', 'Java', 'ID', 'jv', 'Present, no details']
+  contoh 2 baris data: [['Africa', 'Algeria', '', 'DZ', '', 'Present, no details'], ['Africa', 'Egypt', '', 'EG', '', 'Present, no details']]
+
+--------------------------------------------------------------------------
+BERKAS  : distribution_RALSSL.csv   (10394 byte)
+organism: RALSSL = Ralstonia solanacearum - layu bakteri
+jenis   : distribusi geografis
+kolom   : ['continent', 'country', 'state', 'country code', 'state code', 'Status']
+baris   : 172 (tanpa header)
+  sebaran nilai Status: {'Present, no details': 105, 'Present, few occurrences': 18, 'Present, widespread': 13, 'Absent, confirmed by survey': 12, 'Present, restricted distribution': 7, 'Absent, pest no longer present': 6}
+  BARIS INDONESIA (1):
+    ['Asia', 'Indonesia', '', 'ID', '', 'Absent, unreliable record']
+  contoh 2 baris data: [['Africa', 'Burkina Faso', '', 'BF', '', 'Present, no details'], ['Africa', 'Burundi', '', 'BI', '', 'Present, no details']]
+
+--------------------------------------------------------------------------
+BERKAS  : hosts_BEMITA.csv   (7826 byte)
+organism: BEMITA = Bemisia tabaci - kutu kebul, vektor virus
+jenis   : daftar tanaman inang
+kolom   : ['type', 'EPPOCode', 'Pref_name', 'References']
+baris   : 61 (tanpa header)
+  sebaran nilai type: {'Host': 41, 'Wild/Weed': 13, 'Major host': 7}
+  INANG YANG COCOK 4 KOMODITAS PRIORITAS (2):
+    Major host   | LYPES      | Solanum lycopersicum
+    Host         | CPSAN      | Capsicum annuum
+  contoh 2 baris data: [['Major host', 'EPHPU', 'Euphorbia pulcherrima', '* Łabanowski GS (2017) The threat of greenhouse horticultural crops by pests. Zeszyty Naukowe Instytutu Ogrodnictwa, 25, 39-56. (in Polish with English abstract).\n\n* McKenzie CL, Sparks Jr AN, Roberts P, Oetting RD, Osborne LS (2020) Survey of Bemisia tabaci (Hemiptera: Aleyrodidae) in agricultural ecosystems in Georgia. Journal of Entomological Science 55(2), 163-170.'], ['Major host', 'GEBJA', 'Gerbera jamesonii', '']]
+
+--------------------------------------------------------------------------
+BERKAS  : hosts_LIRIHU.csv   (191545 byte)
+organism: LIRIHU = Liriomyza huidobrensis - lalat pengorok daun
+jenis   : daftar tanaman inang
+kolom   : ['type', 'EPPOCode', 'Pref_name', 'References']
+baris   : 290 (tanpa header)
+  sebaran nilai type: {'Host': 289, 'Wild/Weed': 1}
+  INANG YANG COCOK 4 KOMODITAS PRIORITAS (28):
+    Host         | ALLAM      | Allium ampeloprasum
+    Host         | ALLAS      | Allium ascalonicum
+    Host         | ALLCE      | Allium cepa
+    Host         | ALLCH      | Allium chinense
+    Host         | ALLFI      | Allium fistulosum
+    Host         | ALLPO      | Allium porrum
+    Host         | ALLSA      | Allium sativum
+    Host         | ALLSC      | Allium schoenoprasum
+    Host         | AMARE      | Amaranthus retroflexus
+    Host         | BRSOL      | Brassica oleracea var. capitata
+    Host         | CPSAN      | Capsicum annuum
+    Host         | CPSBA      | Capsicum baccatum
+  contoh 2 baris data: [['Wild/Weed', 'AGECO', 'Ageratum conyzoides', '* Rauf A, Shepard BM, Johnson MW (2000) Leafminers in vegetables, ornamental plants and weeds in Indonesia: Surveys of host crops, species composition and parasitoids. International Journal of Pest Management 46, 257-266.\n------- Confirmed host. Reared from infested leaves collected in the field.'], ['Host', 'ABMES', 'Abelmoschus esculentus', '* Foba CN, Salifu D, Lagat ZP, Gitonga LM, Akutse KS, Fiaboe KKM (2015) Species composition, distribution and seasonal abundance of Liriomyza leafminers (Diptera: Agromyzidae) under different vegetable production systems and agroecological zones in Kenya. Environmental Entomology 44, 223-232.\n------- Confirmed host. Reared from infested leaves collected in the field.\n\n* Scheffer SJ, Lewis ML, Joshi RC (2006) DNA barcoding applied to invasive leafminers (Diptera: Agromyzidae) in the Philippines. Annals of the Entomological Society of America 99, 204-210.']]
+
+--------------------------------------------------------------------------
+BERKAS  : hosts_LIRISA.csv   (33031 byte)
+organism: LIRISA = Liriomyza sativae - lalat pengorok daun
+jenis   : daftar tanaman inang
+kolom   : ['type', 'EPPOCode', 'Pref_name', 'References']
+baris   : 75 (tanpa header)
+  sebaran nilai type: {'Host': 60, 'Wild/Weed': 12, 'Major host': 3}
+  INANG YANG COCOK 4 KOMODITAS PRIORITAS (3):
+    Major host   | LYPES      | Solanum lycopersicum
+    Major host   | SOLTU      | Solanum tuberosum
+    Host         | CPSAN      | Capsicum annuum
+  contoh 2 baris data: [['Major host', 'CUUPE', 'Cucurbita pepo', '* Foba CN, Salifu D, Lagat ZO, Gitonga LM, Akutse KS, Fiaboe KKM (2015) Species composition, distribution, and seasonal abundance of Liriomyza leafminers (Ciptera: Agromyzidae) under different vegetable production systems and agroecological zones in Kenya. Environmental Entomology 44(2), 223-232.\n------- confirmed host. Reared from infested leaves collected in the field\n\n* Spencer KA (1973) Agromyzidae (Diptera) of economic importance. Series Entomologica Volume 9. Dr. W. Junk B.V. The Hague, The Netherlands. 418 pp.\n\n* Stegmaier CE (1966) Host plants and parasites of Liriomyza munda in Florida (Diptera: Agromyzidae). Florida Entomologist 49(2), 81-86.\n------- confirmed host. Rearing record'], ['Major host', 'LYPES', 'Solanum lycopersicum', '* Blacket MJ, Rice AD, Semeraro L, Malipatil MB (2015) DNA-based identifications reveal multiple introductions of the vegetable leafminer Liriomyza sativae (Diptera: Agromyzidae) into the Torres Strait islands and Papua New Guinea. Bulletin of Entomological Research 105, 533–544. https://doi.org/10.1017/S0007485315000383\n\n* Foba CN, Salifu D, Lagat ZO, Gitonga LM, Akutse KS, Fiaboe KKM (2015) Species composition, distribution, and seasonal abundance of Liriomyza leafminers (Ciptera: Agromyzidae) under different vegetable production systems and agroecological zones in Kenya. Environmental Entomology 44(2), 223-232.\n------- confirmed host. Reared from infested leaves collected in the field\n\n* Mazumdar S, Bhuiya BA (2017) True flies: biology and plant hosts of vegetable leafminer Liriomyza sativae Blanchard (Diptera: Agromyzidae) from Bangladesh. Bugs R All no 159. In: Zoo’s Print 32(8), 12-21.\n\n* Rauf A, Shepard BM, Johnson MW (2000) Leafminers in vegetables, ornamental plants and weeds in Indonesia: Surveys of host crops, species composition and parasitoids. International Journal of Pest Management 46, 257-266.\n------- confirmed host. Reared from infested leaves collected in the field\n\n* Stegmaier CE (1966) Host plants and parasites of Liriomyza munda in Florida (Diptera: Agromyzidae). Florida Entomologist 49(2), 81-86.\n------- confirmed host. Rearing record\n\n* Tran DH (2009) Agromyzid leaf miners and their parasitoids on vegetables in Central Vietnam. Journal of the International Society for Southeast Asian Agricultural Sciences 15(2), 21-33.\n------- confirmed host. Reared from infested leaves collected in commercial vegetable fields']]
+
+--------------------------------------------------------------------------
+BERKAS  : hosts_LIRITR.csv   (25254 byte)
+organism: LIRITR = Liriomyza trifolii - lalat pengorok daun
+jenis   : daftar tanaman inang
+kolom   : ['type', 'EPPOCode', 'Pref_name', 'References']
+baris   : 102 (tanpa header)
+  sebaran nilai type: {'Host': 71, 'Wild/Weed': 29, 'Major host': 2}
+  INANG YANG COCOK 4 KOMODITAS PRIORITAS (9):
+    Host         | ALLCE      | Allium cepa
+    Host         | ALLFI      | Allium fistulosum
+    Host         | ALLPO      | Allium porrum
+    Host         | ALLSA      | Allium sativum
+    Host         | ALLSC      | Allium schoenoprasum
+    Host         | CPSAN      | Capsicum annuum
+    Host         | CPSCH      | Capsicum chinense
+    Host         | LYPES      | Solanum lycopersicum
+    Host         | SOLTU      | Solanum tuberosum
+  contoh 2 baris data: [['Major host', 'APUGV', 'Apium graveolens', '* Reitz SR, Kund GS, Carson WG, Phillips PA, Trumble JT (1999) Economics of reducing insecticide use on celery through low-input pest management strategies. Agriculture, ecosystems and environment 73, 185-197.\n\n* Zehnder GW, Trumble JT (1984) Host selection of Liriomyza trifolii (Diptera: Agromyzidae) and associated parasites in adjacent plantings of tomato and celery. Environmental Entomolgy 13, 492-496. '], ['Major host', 'CHYHO', 'Chrysanthemum x morifolium', '* De Jong J, Rademaker W (1991) Life history studies of the leafminer Liriomyza trifolii on susceptible and resistant cultivars of Dendranthema grandiflora. Euphytica 56, 47-53.\n\n* Dreistadt SH (2001) Integrated Pest Management for Floriculture and Nurseries. Publication 3402. University of California, Division of Agriculture and Natural Resources, USA. 422 pp.']]
+
+--------------------------------------------------------------------------
+BERKAS  : hosts_OYDV00.csv   (5276 byte)
+organism: OYDV00 = Onion yellow dwarf virus (Potyvirus cepae) - OYDV
+jenis   : daftar tanaman inang
+kolom   : ['type', 'EPPOCode', 'Pref_name', 'References']
+baris   : 17 (tanpa header)
+  sebaran nilai type: {'Host': 17}
+  INANG YANG COCOK 4 KOMODITAS PRIORITAS (17):
+    Host         | 1ALLG      | Allium
+    Host         | ALLAM      | Allium ampeloprasum
+    Host         | ALLAN      | Allium angulosum
+    Host         | ALLCK      | Allium caeruleum
+    Host         | ALLCE      | Allium cepa
+    Host         | ALLCR      | Allium cernuum
+    Host         | ALLCP      | Allium cristophii
+    Host         | ALLFL      | Allium flavum
+    Host         | ALLGI      | Allium giganteum
+    Host         | ALLKA      | Allium karataviense
+    Host         | ALLGR      | Allium macrostemon
+    Host         | ALLMO      | Allium moly
+  contoh 2 baris data: [['Host', '1ALLG', 'Allium', '* Mansouri F, Krahulec F, Duchoslav M, Ryšánek P. Newly identified host range of viruses infecting species of the genus Allium and their distribution in six habitats in the Czech Republic. Plant Pathology 70(6), 1496-1507.\n'], ['Host', 'ALLAM', 'Allium ampeloprasum', '* Santos AN, Nascimento SC, Albuquerque MR, Gorayeb ES, Pilatti MF, Marcuzzo LL, Bogo A, Nascimento da Silva F (2023) First Report of Leek Yellow Stripe Virus, Onion Yellow Dwarf Virus, and the Putative Allium Polerovirus A in Elephant Garlic (Allium ampeloprasum) in Brazil. Plant Disease 107(4), 1249. ttps://doi.org/10.1094/PDIS-05-22-1219-PDN']]
+
+--------------------------------------------------------------------------
+BERKAS  : hosts_PHYTIN.csv   (765 byte)
+organism: PHYTIN = Phytophthora infestans - busuk daun kentang/tomat
+jenis   : daftar tanaman inang
+kolom   : ['type', 'EPPOCode', 'Pref_name', 'References']
+baris   : 1 (tanpa header)
+  sebaran nilai type: {'Major host': 1}
+  INANG YANG COCOK 4 KOMODITAS PRIORITAS (1):
+    Major host   | SOLTU      | Solanum tuberosum
+  contoh 2 baris data: [['Major host', 'SOLTU', 'Solanum tuberosum', '* Coca Morante M (2016) Disease note: first records of potato late blight caused by Phytophthora infestans in Bolivia.  Journal of Plant Pathology and Microbiology 7(8), 374. http://www.omicsonline.org/open-access/disease-note-first-records-of-potato-late-blight-caused-by-phytophthora-infestans-in-bolivia-2157-7471-1000374.pdf\n\n* Cox AE, Large EC (1960) Potato late blight epidemics throughout the world. Washington DC, USA: US Government Printing Office.\n\n* Day JP, Wattier RAM, Shaw DS, Shattock RC (2004) Phenotypic and genotypic diversity in Phytophthora infestans on potato in Great Britain, 1995-98. Plant Pathology 53(3), 303-315. http://www.blackwellpublishing.com/ppa']]
+
+--------------------------------------------------------------------------
+BERKAS  : hosts_RALSSL.csv   (32637 byte)
+organism: RALSSL = Ralstonia solanacearum - layu bakteri
+jenis   : daftar tanaman inang
+kolom   : ['type', 'EPPOCode', 'Pref_name', 'References']
+baris   : 76 (tanpa header)
+  sebaran nilai type: {'Wild/Weed': 37, 'Host': 31, 'Major host': 8}
+  INANG YANG COCOK 4 KOMODITAS PRIORITAS (4):
+    Major host   | CPSAN      | Capsicum annuum
+    Major host   | LYPES      | Solanum lycopersicum
+    Major host   | SOLTU      | Solanum tuberosum
+    Host         | CPSPU      | Capsicum pubescens
+  contoh 2 baris data: [['Major host', 'ARHHY', 'Arachis hypogaea', '* Cellier G, Prior P (2010) Deciphering phenotypic diversity of Ralstonia solanacearum strains pathogenic to potato. Phytopathology 100:1250-1261.'], ['Major host', 'CPSAN', 'Capsicum annuum', "* Abdurahman A, Parker ML, Kreuze J, Elphinstone JG, Struik PC, Kigundu A, Arengo E, Sharma K (2019) Molecular epidemiology of Ralstonia solanacearum Species Complex strains causing bacterial wilt of potato in Uganda. Phytopathology 109, 1922-1931 \n\n* N'Guessan CA, Brisse S, Le Roux-Nio A-C, Poussier S, Koné D, Wicker E (2013) Development of variable number of tandem repeats typing schemes for Ralstonia solanacearum, the agent of bacterial wilt, banana Moko disease and potato brown rot. Journal of Microbiological Methods 92, 366-374\n\n* Ravelomanantsoa S, Robène I, Chiroleu F, Guérin F, Poussier S, Pruvost O, Prior P (2016). A novel multilocus variable number tandem repeat analysis typing scheme for African phylotype III strains of the Ralstonia solanacearum species complex. PeerJ. 4:e1949. doi: 10.7717/peerj.1949.\n\n* Santiago TR, Lopes CA, Caetano-Anollés G and Mizubutia ESG (2017) Phylotype and sequevar variability of Ralstonia solanacearum in Brazil, an ancient centre of diversity of the pathogen. Plant Pathology 66,383–392\n\n* Thano P, Akarapisan A (2018) Phylotype and sequevar of Ralstonia solanacearum which causes bacterial wilt in Curcuma alismatifolia Gagnep. Letters in Applied Microbiolology 66: 384-393. https://doi.org/10.1111/lam.12857\n"]]
+
+==========================================================================
+TOTAL BARIS DATA SELURUH BERKAS: 1803  dalam 14 berkas CSV

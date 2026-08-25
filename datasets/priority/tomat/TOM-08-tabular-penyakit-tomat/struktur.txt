@@ -1,0 +1,26 @@
+# Struktur Data.csv
+
+## file(1)
+raw/Data.csv: cannot open `raw/Data.csv' (No such file or directory)
+
+## Header + 5 baris pertama
+Disease,Features,Description
+Early Blight,symptoms,"In the base of the affected plant, with roughly round brown spots on the leaves and stems
+As the lesions expand, the spots appear yellow halos
+lower leaves to be wholly deleaved and even lead to the death of infected plants.
+The color of the spots is usually brown to black. It’s sunken and has a distinct concentric ring.
+the stem and fruit may also be infected, showing dark and sunken spots.
+
+## Cacah record (baris data, bukan baris fisik): 54
+## Kolom: ['Disease', 'Features', 'Description']
+## Nilai unik kolom Disease: 10
+   - Early Blight | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical_biological', 'preventive_measures']
+   - (KOSONG - baris cacat) | n= 8 | Features: ['', '', '', '', '', '', '', '']
+   - Late Blight | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical_biological', 'preventive_measures']
+   - Leaf Miner | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'Biological management', 'preventive_measures']
+   - leaf mold | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical_biological', 'preventive_measures']
+   - Mosaic Virus | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical_biological', 'preventive_measures']
+   - Septoria | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical_biological', 'preventive_measures']
+   - Spider Mites | n= 6 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical control', 'Biological control', 'preventive_measures']
+   - Target Spot | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical_biological', 'preventive_measures']
+   - Yellow Leaf Curl Virus | n= 5 | Features: ['symptoms', 'favourable_condition', 'pesticides', 'physical_biological', 'preventive_measures']

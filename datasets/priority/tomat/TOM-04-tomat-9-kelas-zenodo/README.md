@@ -1,0 +1,34 @@
+# A dataset for tomato disease detection
+
+- **dataset_id**: TOM-04-tomat-9-kelas-zenodo
+- **Tanaman**: Tomat (*Solanum lycopersicum*)
+- **Penyakit/kelas tercakup**: 9 kelas menurut deskripsi sumber — `Early Blight`, `Healthy`, `Late Blight`, `Leaf Miner`, `Leaf Mold`, `Mosaic Virus`, `Septoria`, `Spider Mites`, `Yellow Leaf Curl Virus`. Di dalam arsip kelas hanya berupa **id angka 0–8**; berkas pemetaan id→nama **tidak ada**.
+- **Jenis data**: gambar + anotasi kotak pembatas
+- **Format**: JPG + label YOLO (`.txt`, format `class cx cy w h`) dalam ZIP, sudah terbagi `train`/`valid`/`test`
+- **Jumlah**: diklaim 2.212 gambar, terhitung **2.212 gambar** dan **2.212 berkas label** (train 1.769, test 222, valid 221) — **cocok**. Total 6.581 baris anotasi.
+- **Sumber**: Zenodo
+- **URL sumber**: https://zenodo.org/records/15868289
+- **DOI**: 10.5281/zenodo.15868288 (concept) / 10.5281/zenodo.15868289 (versi)
+- **Pembuat**: Chen, ZiJian
+- **Tahun terbit / pembaruan**: 2025-07-12
+- **Lisensi**: CC BY 4.0
+- **Ketentuan atribusi**: Atribusi ke Chen, ZiJian + tautan lisensi + penandaan perubahan.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 544.524.808 byte (519 MiB)
+- **SHA-256**: `c99e2ee29f5663e5325ebad4698cdefc19fc01b0879a52e3688fba3723585ba9`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - `file raw/Tomato-Disease.zip` → `Zip archive data, at least v1.0 to extract, compression method=store`
+  - `unzip -t raw/Tomato-Disease.zip` → `No errors detected in compressed data`
+  - `unzip -Z1 raw/Tomato-Disease.zip | wc -l` → 4.434 entri (10 direktori + 2.212 `.jpg` + 2.212 `.txt`)
+  - Cacah per direktori: `unzip -Z1 … | grep -viE '/$' | awk -F/ '{$NF="";print}' OFS=/ | sort | uniq -c`
+  - Label diekstrak ke direktori scratchpad lalu `awk '{print $1}' *.txt | sort -n | uniq -c` → 9 id kelas berbeda (0–8), dan `awk '{print NF}' *.txt | sort | uniq -c` → **6.581 baris, semuanya 5 kolom** (format YOLO bbox valid, tanpa baris cacat)
+  - Jumlah gambar 2.212 = angka yang diklaim sumber
+- **Keterbatasan / masalah kualitas**:
+  - **Nama kelas hilang dari arsip.** Tidak ada `data.yaml`, `classes.txt`, atau `obj.names`. Sembilan nama kelas hanya ada di deskripsi Zenodo dan urutannya di sana alfabetis, jadi pemetaan `0=Early Blight … 8=Yellow Leaf Curl Virus` adalah **dugaan**, bukan fakta yang terverifikasi. Harus dikonfirmasi visual sebelum dipakai.
+  - **Sangat tidak seimbang**: id 8 punya 1.213 anotasi, id 2 hanya 473 — selisih 2,6×.
+  - Nama berkas berpola `…_jpg.rf.<hash32>.jpg` → ini **ekspor Roboflow**. Artinya gambar sudah lewat pipeline pra-proses pihak ketiga (kemungkinan resize/auto-orient), dan sumber gambar aslinya tidak tertelusur dari arsip ini. Sebagian nama berkas (`1024_x_576_-_alternaria_early_infection_symptoms_spreading.jpg`) berbau unduhan dari web, jadi provenans gambar per-berkas **tidak jelas** meski lisensi rekamannya CC BY 4.0.
+  - Deskripsi sumber sangat singkat: tidak ada keterangan lokasi, tanggal, alat, atau siapa yang melabeli.
+  - Split `train`/`valid`/`test` sudah ditentukan pembuat; kalau gambar berasal dari satu sesi pemotretan yang sama, bisa ada kebocoran antar-split yang tak terdeteksi dari nama berkas ter-hash.
+  - Tidak ada kelas layu bakteri (*Ralstonia solanacearum*) maupun layu fusarium — dua penyakit tomat terpenting di dataran rendah Indonesia.

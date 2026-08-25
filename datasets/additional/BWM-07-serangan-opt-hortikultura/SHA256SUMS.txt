@@ -1,0 +1,5 @@
+4533bc486a5010cf51e4486d8e5b64a5156f774f4a4e5db8c605ea421d5080b5  raw/batukota-luas-serangan-opt-hortikultura.xlsx
+039f6fe909bae19716c30f62ed7a49583196d758903617c271a0865eb6449c08  raw/kotabaru-luas-serangan-opt-2025.xlsx
+8d9248c5782f4524ee308b214c88db96e8a1ec56e1fcd54b411623d028ff03e1  raw/malangkab-luas-serangan-opt-hortikultura.xlsx
+9b00dcf45db7ea4ac86431fea9a1d3508c2d03750189dc01dd3fb2e9d46870df  raw/sumut-835-rasio-opt-horti-provinsi-2024.csv
+2b96dc1aa4f48c012271d5f6ade0a6ecc95880fe0b75faae1a6bc90ba6a2f54a  raw/sumut-836-rasio-opt-horti-kabkota-2024.csv

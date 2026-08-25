@@ -1,0 +1,47 @@
+== KEN-11 Annotated Potato Foliar Disease (YOLOv8) — verifikasi 2026-08-25
+Perintah 1: file -b raw/*.zip
+  Zip archive data, at least v2.0 to extract, compression method=store
+Perintah 2: unzip -tqq raw/*.zip
+  OK — tidak ada CRC error
+Perintah 3: ukuran
+  678792664 byte — sama persis dengan yang dinyatakan Zenodo (678.792.664)
+Perintah 4: cacah
+  3.060 .jpg · 3.061 .txt · 3 .yaml — cacah gambar SAMA PERSIS dengan klaim 3.060
+
+-- STRUKTUR (format YOLOv8 baku) --
+    train/images 2.448  +  train/labels 2.448
+    valid/images   306  +  valid/labels   306
+    test/images    306  +  test/labels    306
+    = 3.060 (pembagian 80/10/10)
+
+-- KELAS (dari data.yaml, nc: 4) --
+    ['Alternaria', 'Lancha', 'Sana', 'Septoria']
+    Alternaria = early blight (Alternaria solani)
+    Lancha     = late blight (Phytophthora infestans) — istilah Andes untuk hawar
+    Sana       = sehat
+    Septoria   = bercak Septoria
+
+-- CACAH KOTAK-BATAS (diurai dari 3.060 berkas label) --
+     1057  Alternaria
+     1072  Lancha
+      548  Septoria
+      383  Sana
+     TOTAL 3.060 kotak · 0 berkas label kosong
+    per split:
+      train : Alternaria 845 · Lancha 858 · Sana 306 · Septoria 439
+      valid : Alternaria 106 · Lancha 107 · Sana  39 · Septoria  54
+      test  : Alternaria 106 · Lancha 107 · Sana  38 · Septoria  55
+    Proporsi kelas konsisten lintas split — pemisahan terstratifikasi.
+
+-- TEPAT SATU KOTAK PER GAMBAR --
+    3.060 kotak untuk 3.060 gambar. Jadi ini sebenarnya tugas KLASIFIKASI yang
+    dibungkus format deteksi, bukan deteksi banyak objek pada satu bidang.
+    Konsisten dengan penerbit yang menyatakan 2.152 dari 3.060 citranya berasal
+    dari PlantVillage (citra daun tunggal berlatar studio).
+
+-- PERCANGGAHAN LISENSI YANG PERLU DICATAT --
+    Metadata Zenodo  : cc-by-nc-4.0
+    data.yaml bawaan : 'license: Private' (setelan proyek Roboflow
+                       agronorteai/deteccion-de-enfermedades-en-hoj-s1dkz v7)
+    Yang mengikat untuk deposit ini adalah pernyataan Zenodo: CC BY-NC 4.0.
+    Tetap dicatat karena string 'Private' di dalam arsip bisa menyesatkan.

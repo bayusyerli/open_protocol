@@ -1,0 +1,33 @@
+== KEN-01 PotatoCare — verifikasi 2026-08-25
+Perintah 1: file -b raw/*.zip
+  Zip archive data, at least v2.0 to extract, compression method=deflate
+Perintah 2: unzip -tqq raw/*.zip  (uji integritas)
+  OK — tidak ada CRC error
+Perintah 3: unzip -l raw/*.zip | grep -icE '\.(jpg|jpeg|png)$'
+  3905 gambar
+
+-- cacah gambar per kelas (dari daftar isi arsip) --
+  1355  Dry Rot
+   815  Healthy Potatoes
+   770  Blackspot Bruising
+   560  Soft Rot
+   105  Brown Rot
+    74  Miscellaneous
+    60  Common Scab
+    60  Blackleg
+    57  Pink Rot
+    49  Black Scurf
+
+-- perbandingan dengan klaim penerbit --
+  Penerbit menyebut 10.117 gambar; klaim per kelas di deskripsi Mendeley:
+  Black Scurf 49 | Blackleg 47 | Blackspot Bruising 770 | Brown Rot 105 | Common Scab 60
+  Dry Rot 1.355 | Healthy 815 | Miscellaneous 73 | Pink Rot 57 | Soft Rot 560  (jumlah = 3.891)
+  Terhitung di arsip: 3.905 gambar. Cacah per kelas cocok (selisih kecil: Blackleg 60 vs 47, Misc 74 vs 73).
+  Angka 10.117 tidak terwujud di berkas — kemungkinan besar hitungan pascaaugmentasi.
+
+-- 5 nama berkas contoh --
+  Potato Disease Dataset/Black Scurf/58.jpg
+  Potato Disease Dataset/Black Scurf/33.jpg
+  Potato Disease Dataset/Black Scurf/12.jpg
+  Potato Disease Dataset/Black Scurf/24.jpg
+  Potato Disease Dataset/Black Scurf/55.jpg

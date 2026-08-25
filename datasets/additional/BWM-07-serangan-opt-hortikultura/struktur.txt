@@ -1,0 +1,101 @@
+=== BWM-07 struktur & bukti verifikasi ===
+Perintah unduh: curl -sL --fail -A 'Mozilla/5.0' -o <nama> <url>
+Verifikasi    : python3 + openpyxl (XLSX) / modul csv (CSV) — dibaca, tidak diubah
+Tanggal: 2026-08-25
+
+----------------------------------------------------------------------------
+BERKAS : batukota-luas-serangan-opt-hortikultura.xlsx  (5258 byte)
+tipe   : XLSX, sheet = ['Sheet1']
+  -- sheet 'Sheet1': 6 baris x 6 kolom
+     ['Kode DSSD', 'Uraian DSSD', 'Satuan', 'Definisi Operasional', 'Tahun', 'Nilai']
+     ['3.27.000433', 'Jumlah Luas Serangan OPT Hortikultura', 'Ha', 'luas area kawasan hortikultura yang terserang OPT (organisme pengganggu hama, penyakit, dan gulma)', '2020', '11.2']
+     ['3.27.000433', 'Jumlah Luas Serangan OPT Hortikultura', 'Ha', 'luas area kawasan hortikultura yang terserang OPT (organisme pengganggu hama, penyakit, dan gulma)', '2021', '24.83']
+     ['3.27.000433', 'Jumlah Luas Serangan OPT Hortikultura', 'Ha', 'luas area kawasan hortikultura yang terserang OPT (organisme pengganggu hama, penyakit, dan gulma)', '2022', '32.15']
+     ['3.27.000433', 'Jumlah Luas Serangan OPT Hortikultura', 'Ha', 'luas area kawasan hortikultura yang terserang OPT (organisme pengganggu hama, penyakit, dan gulma)', '2023', '14.08']
+     ['3.27.000433', 'Jumlah Luas Serangan OPT Hortikultura', 'Ha', 'luas area kawasan hortikultura yang terserang OPT (organisme pengganggu hama, penyakit, dan gulma)', '2024', '12.38']
+  CEK DATA PRIBADI: NIP-like=0 | HP-like=0 | email=0 | gelar-nama=0
+  tahun yang muncul: ['2020', '2021', '2022', '2023', '2024']
+    kata 'hortikultura': 10
+
+----------------------------------------------------------------------------
+BERKAS : kotabaru-luas-serangan-opt-2025.xlsx  (10732 byte)
+tipe   : XLSX, sheet = ['Sheet1', 'Sheet2', 'Sheet3']
+  -- sheet 'Sheet1': 3 baris x 6 kolom
+     ['luas serangan OPT yg dikendalikan', '2021', '2022', '2023', '2024', '2025']
+     ['Kotabaru', '0', '0', '164.7', '2.89', '18.35']
+  -- sheet 'Sheet2': 1 baris x 1 kolom
+  -- sheet 'Sheet3': 1 baris x 1 kolom
+  CEK DATA PRIBADI: NIP-like=0 | HP-like=0 | email=0 | gelar-nama=0
+  tahun yang muncul: ['2021', '2022', '2023', '2024', '2025']
+
+----------------------------------------------------------------------------
+BERKAS : malangkab-luas-serangan-opt-hortikultura.xlsx  (6331 byte)
+tipe   : XLSX, sheet = ['Sheet1']
+  -- sheet 'Sheet1': 66 baris x 4 kolom
+     ['Dinas Tanaman Pangan, Holtikulturan dan Perkebunan', '', '', '']
+     ['Jl.Sumedang No. 28 Kepanjen', '', '', '']
+     ['No Telepon : 0341396893', '', '', '']
+     ['Email : dinas.tanaman.pangan@malangkab.go.id', '', '', '']
+     ['Jumlah Luas Serangan OPT Hortikultura di Kabupaten Malang', '', '', '']
+     ['2024', '', '', '']
+     ['Jenis Data : PERTANIAN, PETERNAKAN DAN PANGAN', '', '', '']
+     ['Sumber Data : Dinas Tanaman Pangan, Holtikulturan dan Perkebunan', '', '', '']
+     ['No', 'Jumlah Luas Serangan OPT Hortikultura', 'Jumlah (Ha)', 'Keterangan']
+     ['1', 'Jumlah Luas Serangan OPT Hortikultura', '518.52', 'Hortikultura Semusim (196.89 Ha) Hortikultura Tahunan (321.63)']
+     ['Total', '', '518.52', '']
+     ['', '', 'Malang, Selasa 25 Agustus 2026', '']
+     ['', '', 'Kepala Dinas Tanaman pangan, Hortikultura dan Perkebunan', '']
+     ['', '', '[NAMA PEJABAT — DIREDAKSI]', '']
+     ['', '', 'Pembina Utama Muda', '']
+     ['', '', '[NIP — DIREDAKSI]', '']
+     ['Metadata Kegiatan Statistik', '', '', '']
+     ['1. Nama Kegiatan Statistik', '', '', ' : -']
+     ['2. Identifikati Penyelenggara', '', '', ' : -']
+     ['3. Tujuan Pelaksanaan', '', '', ' : -']
+     ['4. Periode Pelaksanaan', '', '', ' : -']
+     ['5. Cakupan Wilayah', '', '', ' : -']
+     ... (44 baris lagi)
+  CEK DATA PRIBADI: NIP-like=1 | HP-like=0 | email=1 | gelar-nama=2
+     !! BERKAS INI MEMUAT BLOK TANDA TANGAN PETUGAS — jangan sebarkan medan tsb.
+     !! DIREDAKSI KOORDINATOR 2026-08-25: nama pejabat dan NIP di atas SEMULA tercetak
+        verbatim dalam cuplikan baris. Pemindai memang menandainya, tetapi cuplikan
+        barisnya sudah dicetak lebih dulu — penjaganya berdiri di belakang kebocoran.
+        Nilai aslinya tetap ada di raw/ (dipagari .gitignore) dan tidak naik ke repo.
+        NIP Indonesia memuat tanggal lahir pada 8 digit pertamanya.
+     (surel dinas dibiarkan: alamat kantor pada portal publik, bukan data pribadi)
+  tahun yang muncul: ['2024', '2026']
+    kata 'hortikultura': 6
+    kata 'semusim': 1
+    kata 'tahunan': 1
+
+----------------------------------------------------------------------------
+BERKAS : sumut-835-rasio-opt-horti-provinsi-2024.csv  (89 byte)
+tipe   : CSV, 2 baris total
+header : ['nomor', 'kode_wilayah_dagri', 'nama_wilayah', 'Rasio_2024']
+baris data: 1
+   ['nomor', 'kode_wilayah_dagri', 'nama_wilayah', 'Rasio_2024']
+   ['1', '12', 'Sumatera Utara', '100']
+  CEK DATA PRIBADI: NIP-like=0 | HP-like=0 | email=0 | gelar-nama=0
+  tahun yang muncul: []
+
+----------------------------------------------------------------------------
+BERKAS : sumut-836-rasio-opt-horti-kabkota-2024.csv  (1288 byte)
+tipe   : CSV, 34 baris total
+header : ['nomor', 'kode_wilayah_dagri', 'nama_wilayah', 'Rasio_2024']
+baris data: 33
+   ['nomor', 'kode_wilayah_dagri', 'nama_wilayah', 'Rasio_2024']
+   ['1', '12.01', 'Kab. Tapanuli Tengah', '0']
+   ['2', '12.02', 'Kab. Tapanuli Utara', '100']
+   ['3', '12.03', 'Kab. Tapanuli Selatan', '100']
+   ['4', '12.04', 'Kab. Nias', '100']
+   ['5', '12.05', 'Kab. Langkat', '100']
+   ['6', '12.06', 'Kab. Karo', '100']
+   ['7', '12.07', 'Kab. Deli Serdang', '100']
+   ['8', '12.08', 'Kab. Simalungun', '100']
+   ['9', '12.09', 'Kab. Asahan', '100']
+   ['10', '12.1', 'Kab. Labuhanbatu', '0']
+   ['11', '12.11', 'Kab. Dairi', '100']
+   ... (22 baris lagi)
+  CEK DATA PRIBADI: NIP-like=0 | HP-like=0 | email=0 | gelar-nama=0
+  tahun yang muncul: []
+

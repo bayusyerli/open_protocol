@@ -1,0 +1,51 @@
+# Bukti verifikasi CAB-12
+Tanggal: 2026-08-25
+
+$ shasum -a 256 raw/*
+  07135e5acd1948b5c8c0d80401eb7fe4a13ef3e12717ca6ea16cc758bcc5fe49
+  COCOK PERSIS dengan content_details.sha256_hash dari Mendeley public-api
+  (ukuran 199.396.470 byte, juga cocok).
+$ file raw/*.zip  -> Zip archive data, at least v2.0 to extract, compression method=store
+$ unzip -tqq raw/*.zip -> tanpa galat (ARCHIVE OK)
+
+## Cacah per kelas (python3 zipfile)
+Total berkas gambar: 9541
+Ekstensi: [('.jpg', 8344), ('.jpeg', 1189), ('.png', 8)]
+
+CABAI  (total 2818 gambar)
+       256  Chili Bacterial Spot
+       718  Chili Healthy Leaf
+       180  Chilli Cercospora Leaf Spot
+       633  Chilli Curl Virus
+       444  Chilli Nutrition Deficiency
+       195  Chilli White spot
+       174  Disease Chilli
+       218  Health chilli
+
+TOMAT  (total 4202 gambar)
+       209  Disease Tomato
+       325  Healthy Tomato
+      1378  Tomato healthy leaf
+      1617  Tomato septoria leaf spot
+       673  Tomato verticulium wilt
+
+PEPAYA  (total 2521 gambar)
+       360  Papaya Anthracnose
+       456  Papaya BacterialSpot
+       420  Papaya Curl
+       127  Papaya Fruit Disease
+       143  Papaya Fruit Healthy
+       298  Papaya Healthy leaf
+       717  Papaya RingSpot
+
+Catatan: folder 'Disease Chilli' (berkas DC (n).jpeg) dan 'Health chilli'
+(berkas HC (n).jpeg/.jpg/.png) berisi citra BUAH cabai, bukan daun -
+sesuai deskripsi sumber 'Healthy Chilli Fruit, Disease Chilli Fruit'.
+
+## Uji duplikat byte-identik (SHA-256 isi gambar)
+  Berkas gambar    : 9541
+  SHA-256 unik     : 9364
+  Salinan berlebih :  177  (1,9%)  -> relatif bersih
+
+## Uji irisan dengan dataset cabai lain dalam panen ini
+  Dibandingkan dengan CAB-01, CAB-04, CAB-05, CAB-09: tidak ada gambar byte-identik yang sama.

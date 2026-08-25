@@ -1,0 +1,60 @@
+== KEN-16 PLDD-UP (hanya LB.zip) — verifikasi 2026-08-25
+Perintah 1: file -b raw/LB.zip
+  Zip archive data, at least v2.0 to extract, compression method=store
+Perintah 2: unzip -tqq raw/LB.zip
+  OK — tidak ada CRC error
+Perintah 3: stat -f%z
+  2.323.338.293 byte — sama persis dengan yang dinyatakan Mendeley
+Perintah 4: shasum -a 256 (dicocokkan dengan hash terbitan Mendeley)
+  terhitung : f4d31182b5d2f147c256e1c73838eac9b17592b89ed2b1ae394f58863e74a447
+  Mendeley  : f4d31182b5d2f147c256e1c73838eac9b17592b89ed2b1ae394f58863e74a447
+  COCOK — berkas identik dengan yang dideposit.
+Perintah 5: cacah gambar
+  6.116 gambar (6.008 .jpg + 108 .jpeg) — SAMA PERSIS dengan klaim penerbit untuk kelas LB
+  Struktur: seluruhnya datar di dalam satu folder LB/, tanpa subdirektori.
+
+-- HANYA SATU BERKAS DARI TIGA YANG DIAMBIL --
+  Dataset PLDD-UP penuh = 8,77 GB (EB.zip 2.766 MB + Healthy.zip 3.683 MB + LB.zip 2.323 MB).
+  Hanya LB.zip (2,32 GB) yang diunduh — muat di bawah batas 3 GB per dataset.
+  EB.zip dan Healthy.zip TIDAK diambil.
+
+-- ASLI ATAU AUGMENTASI? -> ASLI (foto nyata), bukan augmentasi --
+  Bukti bahwa ini BUKAN augmentasi:
+    1. Tidak ada awalan 'aug_' maupun direktori jenis augmentasi.
+    2. Nama berkas bergaya kamera berurut: 'late-blight (1).jpg' .. 'late-blight (6475).jpg'.
+    3. Rerata 0,39 MB per berkas — bukan 4-5 KB seperti thumbnail augmentasi di KEN-02/KEN-08.
+    4. 32 DIMENSI BERBEDA. Augmentasi berkelompok hampir selalu menyeragamkan ukuran.
+    5. Cacah per kelas tidak bulat/seimbang (6.116), berbeda dari pola 23.000x6 di KEN-08.
+
+-- TAPI: KLAIM 'ORIGINAL RESOLUTIONS' TIDAK SEPENUHNYA BENAR --
+  Penerbit menyatakan 'all images have been preserved in their original resolutions'.
+  Pengukuran dimensi seluruh 6.116 berkas (baca penanda SOF pada header JPEG):
+     2528  719x1600        <- 41,3%
+     1001  1600x719        <- 16,4%
+      975  224x224         <- 15,9%  ** ukuran masukan CNN baku, MUSTAHIL resolusi kamera **
+      696  3468x4624       <- foto ponsel resolusi penuh
+      625  8160x3672       <- foto panorama resolusi penuh
+      235  4624x3468
+       29  4496x3000
+      27 dimensi lain, masing-masing 1-2 berkas
+  Hanya 25,9% (1.585 berkas) yang benar-benar berdimensi kamera resolusi penuh.
+  Yang 224x224 menempati blok indeks BERSAMBUNG 13..1029 — pola khas kumpulan
+  yang digabungkan dari sumber lain yang sudah dipraproses, bukan hasil pemotretan sendiri.
+
+-- DUPLIKAT DAN TUMPANG TINDIH (SHA-256 per gambar) --
+  Internal   : 6.116 berkas -> 6.069 hash unik. 40 hash muncul lebih dari sekali,
+               total 47 berkas berlebih. Contoh: 'late-blight (652).jpg' identik
+               dengan 'late-blight (170).jpg'.
+  vs KEN-15  : 0 hash bersama.
+  vs PlantVillage (2.152 gambar kentang, dibaca dari arsip agen tomat TOM-01): 0 hash bersama.
+  Batas uji  : hash hanya menangkap duplikat identik BITA. 92 indeks berkas punya
+               sekaligus versi 224x224 dan versi berdimensi lain (mis. .jpg 224x224
+               berdampingan dengan .jpeg beresolusi lebih besar) — pasangan semacam itu
+               bisa jadi foto YANG SAMA pada dua ukuran, dan hash TIDAK akan mendeteksinya.
+  Cacah asli konservatif: 6.069 unik; bila 92 pasangan itu juga dipotong, 5.977.
+
+-- UJI TABRAKAN NAMA (huruf besar/kecil) --
+  Arsip memuat 'late-blight (1).jpeg' dan 'late-blight (1).JPG' sekaligus, jadi risiko
+  tabrakan di berkas-sistem case-insensitive (macOS) diperiksa:
+  6.116 nama -> 6.116 unik case-sensitive DAN 6.116 unik case-insensitive; 0 tabrakan.
+  Ekstraksi menghasilkan tepat 6.116 berkas, jadi tidak ada yang tertimpa diam-diam.

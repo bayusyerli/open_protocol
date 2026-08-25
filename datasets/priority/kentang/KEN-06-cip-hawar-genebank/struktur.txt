@@ -1,0 +1,62 @@
+== KEN-06 CIP genebank core collection — verifikasi 2026-08-25
+Perintah: file / head / wc -l / awk pada raw/*.tab
+
+--- KEN-06-cip-hawar-genebank/raw/01_data_CIP_genebank.tab
+tipe   : ASCII text
+baris  :     1518 (termasuk 1 baris header)
+kolom  : 14
+header : plot	rep	row	col	genotype	specie	group	type	lb1	lb2	lb3	lb4	lb5	audpc
+
+--- KEN-06-cip-hawar-genebank/raw/02_Material_list_CIP_genebank.tab
+tipe   : ASCII text
+baris  :      483 (termasuk 1 baris header)
+kolom  : 5
+header : ord	genotype	specie	group	type
+
+--- KEN-06-cip-hawar-genebank/raw/03_Data_dictionary_CIP_genebank.tab
+tipe   : ASCII text
+baris  :       13 (termasuk 1 baris header)
+kolom  : 2
+header : Variablename	Description
+
+--- cacah per spesies (01_data, kolom 'specie')
+ 651 andigena
+ 219 sp
+ 165 phureja
+ 141 stenotomum
+ 114 tuberosum
+  54 goniocalyx
+  48 Differentials
+  41 empty
+  27 ajanhuiri
+  21 juzepczukii
+  21 curtilobum
+  15 chaucha
+
+--- cacah per group
+1176 native
+ 126 ImpVariety
+  66 Pre-BreedLine
+  51 LandRace
+  41 empty
+  39 AdvBred
+  15 Native
+   3 BredLine
+
+--- baris dengan AUDPC terisi (bukan na)
+1428 dari 1517 baris
+
+--- kamus data (03)
+Variablename	Description
+"Plot"	"Sequential numerical identifier assigned to each plot or experimental unit in the trial."
+"Rep"	"Replication number to which each experimental unit belongs."
+"Col"	"Column number indicating the spatial position of the plot within the trial."
+"Row"	"Row number indicating the spatial position of the plot within the trial."
+"Genotype"	"Identification code of the evaluated genotype."
+"Species"	"Species or taxonomic classification of the genotype."
+"Group"	"Group to which the plant material belongs, defined according to shared characteristics or origin."
+"Type"	"Role of the genotype within the trial: material under evaluation (test) or reference genotype (check/control)."
+"na"	"no data"
+"-"	"empty"
+"audpc"	"Area Under the Disease Progress Curve) is a quantitative index that summarizes the intensity and progression of a disease in a plant or crop over time"
+"lb1 to lb5"	"Late blight severity evaluations one to five representing the disease progress on the plot surface area, from the first to the fifth evaluation."

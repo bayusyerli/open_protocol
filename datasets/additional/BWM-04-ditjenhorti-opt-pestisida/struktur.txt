@@ -1,0 +1,66 @@
+=== BWM-04 struktur & bukti verifikasi ===
+Perintah: python3 + pypdf 6.16.1 (PdfReader) — hanya membaca, tidak menjalankan kode dari sumber
+Tanggal: 2026-08-25
+
+------------------------------------------------------------------------
+BERKAS      : 14bookcabe_watermark.pdf
+tipe (file) : PDF document, version 1.5
+halaman     : 26
+terenkripsi : False  (tidak berpassword)
+meta        : title=None author='FUJITSU'
+              producer='4-Heights™ PDF Library 3.4.0.6904 (http://www.pdf-tools.com)' created='D:20140822033336'
+teks terekstrak: 23553 karakter untuk 26 halaman  (~905 char/hal)
+  cacah sebutan komoditas & patogen:
+    bawang merah           1
+    cabai                  35
+    kentang                5
+    kubis                  2
+    tomat                  4
+    fusarium               6
+    antraknosa             4
+  cek data pribadi: nomor-HP-like=0 [] | email=2 ['bptp-jambi@litbang.deptan.go.id', 'bptp_jambi@yahoo.com']
+  kutipan 300 char pertama:
+    HAMA DAN PENYAKIT PADA TANAMAN CABAI SERTA PENGENDALIANNYA BALAI PENGKAJIAN TEKNOLOGI PERTANIAN (BPTP) JAMBI BALAI BESAR PENGKAJIAN DAN PENGEMBANGAN TEKNOLOGI PERTANIAN BADAN PENELITIAN DAN PENGEMBANGAN PERTANIAN KEMENTERIAN PERTANIAN 2 0 1 4 HAMA DAN PENYAKIT PADA TANAMAN CABAI SERTA PENGENDALIANNY
+
+------------------------------------------------------------------------
+BERKAS      : M-61-Daftar-Pestisida-yang-Terdaftar-dan-Diijinkan-pada-Tanaman-Bawa_watermark.pdf
+tipe (file) : PDF document, version 1.5
+halaman     : 58
+terenkripsi : False  (tidak berpassword)
+meta        : title='Slide 1' author='Tony'
+              producer='4-Heights™ PDF Library 3.4.0.6904 (http://www.pdf-tools.com)' created="D:20121102152432-08'00'"
+teks terekstrak: 39143 karakter untuk 58 halaman  (~674 char/hal)
+  cacah sebutan komoditas & patogen:
+    bawang merah           6
+    cabai                  5
+    tomat                  2
+    alternaria             2
+    fusarium               4
+    spodoptera             4
+    liriomyza              2
+    peronospora            2
+    colletotrichum         4
+    trotol                 2
+    bercak ungu            2
+  cek data pribadi: nomor-HP-like=0 [] | email=0 []
+  kutipan 300 char pertama:
+    ii KATA PENGANTAR Penyusun, Tonny K. Moekasan Bawang merah dan cabai merah merupakan komoditas hortikultura yang bernilai ekonomi tinggi. Dalam budidaya kedua komoditas tersebut, banyak kendala yang dihadapi dan salah satu di antaranya ialah serangan Organisme Pengganggu Tumbuhan (OPT), yang mengaki
+
+------------------------------------------------------------------------
+BERKAS      : M-62-Daftar-Pestisida-yang-Terdaftar-dan-Diijinkan-pada-Tanaman-Kubis-dan-Kenta_watermark.pdf
+tipe (file) : PDF document, version 1.5
+halaman     : 49
+terenkripsi : False  (tidak berpassword)
+meta        : title='Slide 1' author='Tony'
+              producer='4-Heights™ PDF Library 3.4.0.6904 (http://www.pdf-tools.com)' created="D:20121102152851-08'00'"
+teks terekstrak: 26492 karakter untuk 49 halaman  (~540 char/hal)
+  cacah sebutan komoditas & patogen:
+    kentang                6
+    kubis                  11
+    alternaria             8
+    fusarium               4
+    liriomyza              2
+  cek data pribadi: nomor-HP-like=0 [] | email=0 []
+  kutipan 300 char pertama:
+    Penyusun, Tonny K. Moekasan Buku ini menyajikan daftar pestisida yang terdaftar dan diijinkan oleh Komisi Pestisida, Kementerian Pertanian untuk mengendalikan OPT pada budidaya kubis dan kentang disertai dengan nama bahan aktif dan kode cara kerjanya. Tujuannya ialah untuk membantu petani atau prakt
+
