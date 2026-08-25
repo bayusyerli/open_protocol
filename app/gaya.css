@@ -157,6 +157,14 @@
 }
 .lewati:focus { left: 0; }
 
+/* Bilah lengket menutupi apa pun yang digulir ke posisi 0, dan seluruh permukaan ini
+   menggulir dengan `scrollIntoView({ block: 'start' })` — tombol kembali, pembuka daftar
+   bahan, dan pemulih pilihan tanaman semuanya begitu. Tanpa ini, judul bagian yang
+   dituju berhenti PERSIS di bawah bilah dan yang terbaca baris kedua kartunya. Nilainya
+   tinggi bilah (61 px terukur) ditambah sedikit napas; dipasang di sini, bukan di tiap
+   pemanggil, karena penyebabnya milik bilah ini. */
+:where(h2, h3, .kartu, ul.daftar, section, #daftarBahan) { scroll-margin-top: 4.5rem; }
+
 .bilah-cangkang {
   position: sticky;
   top: 0;
@@ -738,6 +746,24 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
    tema gelap rasionya 1,72:1. Yang di luar daftar navigasi justru tautan di tengah
    kalimat, yang paling perlu terbaca. */
 a { color: var(--aksen); }
+
+/* Tombol yang berupa tautan, untuk tujuan yang ADA DI HALAMAN INI.
+   Sampai 25 Agustus 2026 dua kalimat di jalur 1 mengajak "mulai dari apa yang terlihat"
+   lewat <a href="index.html"> — meninggalkan dokumen demi pemilih gejala yang sebenarnya
+   ada di dokumen yang sama, cuma sedang disembunyikan. Yang berpindah halaman memang
+   tautan; yang membuka sesuatu di halaman ini tombol, dan rupanya tetap tautan supaya
+   ajakannya terbaca sebagai ajakan. */
+.tautan-dalam {
+  padding: 0;
+  font: inherit;
+  color: var(--aksen);
+  background: none;
+  border: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.tautan-dalam:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
 
 /* Navigasi antarjalur dipakai di kebun, kerap dengan tangan basah. Tautannya tadinya
    setinggi 17 px — tinggi baris teks belaka. `inline-block` beserta padding tegaknya

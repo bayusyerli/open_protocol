@@ -40,12 +40,12 @@ import { cari, cariGejala, cariNamaLokal, tautanHasil, teks, JENIS } from './pus
 
 /** Satu-satunya daftar halaman. Urutannya urutan tampilnya. */
 const HALAMAN = [
-  { u: 'jalur-1.html',   t: 'Tanaman bermasalah',        g: 'Enam jalur' },
-  { u: 'produk.html',     t: 'Cek isi produk',            g: 'Enam jalur' },
-  { u: 'jalur-3.html',   t: 'Bandingkan harga pupuk',    g: 'Enam jalur' },
-  { u: 'jalur-4.html',   t: 'Cek nama varietas',         g: 'Enam jalur' },
-  { u: 'jalur-5.html',   t: 'Buat pupuk sendiri',        g: 'Enam jalur' },
-  { u: 'jalur-6.html',   t: 'Pengendali buatan sendiri', g: 'Enam jalur' },
+  { u: 'jalur-1.html',   t: 'Tanaman bermasalah',        g: 'Enam pintu masuk' },
+  { u: 'produk.html',     t: 'Cek isi produk',            g: 'Enam pintu masuk' },
+  { u: 'jalur-3.html',   t: 'Bandingkan harga pupuk',    g: 'Enam pintu masuk' },
+  { u: 'jalur-4.html',   t: 'Cek nama varietas',         g: 'Enam pintu masuk' },
+  { u: 'jalur-5.html',   t: 'Buat pupuk sendiri',        g: 'Enam pintu masuk' },
+  { u: 'jalur-6.html',   t: 'Pengendali buatan sendiri', g: 'Enam pintu masuk' },
 
   { u: 'takaran.html',   t: 'Kalibrasi & takaran',       g: 'Hitungan di lahan' },
   { u: 'usaha.html',     t: 'Titik impas usaha tani',    g: 'Hitungan di lahan' },
@@ -71,7 +71,7 @@ const HALAMAN = [
  * persis penyakit yang dibereskan berkas ini. */
 const TAB = [
   { u: 'index.html', t: 'Beranda' },
-  { u: 'jalur-1.html', t: 'Gejala' },
+  { u: 'jalur-1.html', t: 'Tanaman' },
   { u: 'produk.html',   t: 'Produk' },
   { u: 'harga.html',   t: 'Harga' },
   { u: null,           t: 'Semua' },

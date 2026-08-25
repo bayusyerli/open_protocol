@@ -40,6 +40,18 @@ const el = {
 // Judul "Apa yang kamu lihat?" milik pemilih gejala, dan ikut disembunyikan bersamanya.
 const judulGejala = document.querySelector('.judul-bagian');
 
+/* Lede ikut, dan alasannya sama dengan judul bagian: kalimatnya PERINTAH — "Pilih apa
+ * yang kamu lihat, bukan nama hamanya" — untuk pemilih yang sedang tidak ada di layar.
+ * Sampai 25 Agustus 2026 ia tetap tercetak di ketiga layar jawaban, termasuk yang masuk
+ * lewat nama hama dan lewat tanaman, yang memang tidak pernah punya pemilih gejala. */
+const lede = document.querySelector('.lede');
+
+/* Judul dokumen ikut apa yang sedang terbuka — polanya sama dengan `harga.js`.
+ * Tanpa ini, tab, riwayat, dan tautan yang dibagikan menyebut nama halaman untuk
+ * kesepuluh gejala, ketujuh ratus OPT registri, dan kedua ratus tanaman sama saja. */
+const JUDUL_HALAMAN = 'Tanaman bermasalah — Pranatani';
+const judulJadi = (nama) => { document.title = nama ? `${nama} — Pranatani` : JUDUL_HALAMAN; };
+
 document.getElementById('tanpaJs')?.remove();
 
 let kamusLokal = [];
@@ -62,13 +74,38 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
  * ini, supaya ketiganya tidak berbeda diam-diam.
  *
  * Judul bagiannya ikut: "Apa yang kamu lihat?" bertanya tentang pemilih yang sedang
- * tidak ada, dan pertanyaan tanpa jawabannya lebih membingungkan daripada tidak ada. */
+ * tidak ada, dan pertanyaan tanpa jawabannya lebih membingungkan daripada tidak ada.
+ * Lede ikut karena alasan yang sama, dan lebih keras: ia memerintah, bukan bertanya. */
 function tampilkanGejala(ya) {
   el.gejala.hidden = !ya;
   judulGejala.hidden = !ya;
+  lede.hidden = !ya;
   // Membaca scrollHeight memaksa tata letak dihitung ulang sebelum pemanggil menggulir;
   // tanpa itu penggulirnya dijepit ke tinggi dokumen yang masih runtuh.
   if (ya) void document.documentElement.scrollHeight;
+}
+
+/* GAGAL AMBIL DATA TIDAK BOLEH JADI JALAN BUNTU — dan sampai 25 Agustus 2026 ia begitu.
+ *
+ * Ketiga pembuka memanggil `tampilkanGejala(false)` SEBELUM mengambil apa pun, supaya
+ * jawaban tidak muncul di bawah 1.729 px daftar gejala. Kalau pengambilannya gagal,
+ * blok tangkapnya dulu menulis kartu galat buatan sendiri dan berhenti di situ: pemilih
+ * gejala tetap tersembunyi, tombol kembali tidak pernah terpasang, dan yang tersisa di
+ * layar NOL tombol. Terukur langsung di peramban dengan `?kom=` yang tidak dikenal —
+ * satu-satunya jalan keluar memuat ulang halaman, dan tidak ada di layar yang
+ * mengatakannya.
+ *
+ * Yang dipakai sekarang `pesanGagalMuat()`, sama dengan pintu masuk halaman ini. Ia
+ * membedakan luring dari 404 — cabang luring membawa tombol "Coba lagi", cabang 404
+ * menurunkan petunjuk pemasangan ke konsol dan tidak menjanjikan apa pun kepada
+ * pembaca. Pemilih gejalanya dikembalikan pada kedua cabang: pada 404 justru dialah
+ * satu-satunya jalan keluar yang tersisa. */
+function gagal(e) {
+  catatJawab(1, UKUR.gagal);
+  judulJadi(null);
+  el.hasil.innerHTML = pesanGagalMuat(e);
+  pasangCobaLagi(el.hasil);
+  tampilkanGejala(true);
 }
 
 /* JUDUL DULU, BARU KALIMAT PEMBEDANYA — dan judulnya tetap GEJALA.
@@ -125,6 +162,8 @@ async function bukaHama(kunci, opsi = {}) {
   try {
     const h = await ambil(`opt-nama/${kunci}`);
     terbukaKini = { id: h.id, nama: h.nama, tautan: tautanKe(`?hama=${encodeURIComponent(kunci)}`) };
+    judulJadi(h.nama);
+    pilihanKedua = { apa: 'tanaman lain', banyak: h.di.length };
     el.hasil.innerHTML = `
       <div class="kartu peringatan">
         <h2>Kamu masuk lewat nama, bukan gejala</h2>
@@ -139,11 +178,11 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="index.html">mulai dari apa yang terlihat</a> — sepuluh OPT cabai
-          punya ciri pembandingnya.
+          <button type="button" class="tautan-dalam" data-mulai-gejala>mulai dari apa
+          yang terlihat</button> — sepuluh OPT cabai punya ciri pembandingnya.
         </p>
       </div>
-      <h2 class="judul-bagian">Di tanaman apa?</h2>
+      <h2 class="judul-bagian" id="pilihKedua">Di tanaman apa?</h2>
       <p class="bantuan">
         Terdaftar pada ${h.di.length} komoditas. Pilih satu untuk melihat bahan aktif yang
         terdaftar untuknya di tanaman itu.
@@ -157,14 +196,16 @@ async function bukaHama(kunci, opsi = {}) {
             </button>
           </li>`).join('')}
       </ul>
+      <p class="catatan">${EJAAN_TERPISAH}</p>
       <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
     catatJawab(1, UKUR.isi);
-    pasangKembali(el.hasil, { gulirKe: el.gejala, sesudah: () => tampilkanGejala(true) });
+    pasangKembali(el.hasil, {
+      gulirKe: el.gejala,
+      sesudah: () => { tampilkanGejala(true); judulJadi(null); },
+    });
     await bukaTertunjuk(h.di.map((d) => d.b), opsi);
   } catch (e) {
-    catatJawab(1, UKUR.gagal);
-    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
-      <p class="catatan">${teks(e.message)}</p></div>`;
+    gagal(e);
   }
 }
 
@@ -283,7 +324,9 @@ async function bukaTanaman(kunci, { gulir = true } = {}) {
   try {
     const t = await ambil(`opt/${kunci}`);
     terbukaKini = { id: t.komoditas, nama: t.nama, tautan: tautanKe(`?kom=${encodeURIComponent(kunci)}`) };
+    judulJadi(t.nama);
     kelompokKini = kelompokOpt(t.opt);
+    pilihanKedua = { apa: 'hama lain', banyak: kelompokKini.length };
     const produk = t.opt.reduce((a, o) => a + o.produk, 0);
     const berkelompok = kelompokKini.filter((k) => k.anggota.length > 1);
     el.hasil.innerHTML = `
@@ -299,8 +342,9 @@ async function bukaTanaman(kunci, { gulir = true } = {}) {
           yang sedang menyerangnya, dan bukan apa yang perlu dibeli. Urutannya menurut banyaknya
           produk terdaftar, dan itu <strong>mengukur ramainya pendaftaran, bukan seringnya hama
           itu datang</strong>. Kalau yang kamu punya sudah berupa gejala,
-          <a href="index.html">mulai dari apa yang terlihat</a> — di situ ada dua ciri
-          pembanding yang bisa diperiksa sendiri, dan layar ini memang tidak punya.
+          <button type="button" class="tautan-dalam" data-mulai-gejala>mulai dari apa
+          yang terlihat</button> — di situ ada dua ciri pembanding yang bisa diperiksa
+          sendiri, dan layar ini memang tidak punya.
         </p>
       </div>
       ${berkelompok.length ? `
@@ -311,15 +355,16 @@ async function bukaTanaman(kunci, { gulir = true } = {}) {
           yang nyaris sama tetap jadi dua baris; halaman ini tidak menyatukan apa yang
           registri pisahkan.
         </p>` : ''}
-      <ul class="daftar">${kelompokKini.map(kartuKelompok).join('')}</ul>
+      <ul class="daftar" id="pilihKedua">${kelompokKini.map(kartuKelompok).join('')}</ul>
       <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
     catatJawab(1, t.opt.length ? UKUR.isi : UKUR.nol);
-    pasangKembali(el.hasil, { gulirKe: el.gejala, sesudah: () => tampilkanGejala(true) });
+    pasangKembali(el.hasil, {
+      gulirKe: el.gejala,
+      sesudah: () => { tampilkanGejala(true); judulJadi(null); },
+    });
     if (gulir) el.hasil.scrollIntoView({ block: 'start' });
   } catch (e) {
-    catatJawab(1, UKUR.gagal);
-    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
-      <p class="catatan">${teks(e.message)}</p></div>`;
+    gagal(e);
   }
 }
 
@@ -413,10 +458,38 @@ function blokNolProduk(k) {
 // ---------------------------------------------------------------------------
 // Pilih komoditas
 // ---------------------------------------------------------------------------
+/* EJAAN REGISTRI DIBIARKAN APA ADANYA, DAN PEMBACA DIBERI TAHU — bukan ditebakkan.
+ *
+ * Untuk trips, pemilih tanamannya menawarkan "Cabai" (246 produk), "Cabai merah" (5),
+ * dan "Pembibitan Cabai" (1) sebagai tiga baris sederajat. Ketiganya entitas registri
+ * yang berbeda dengan `key` sendiri — `cabai`, `cabai-merah`, `pembibitan-cabai` — dan
+ * `satukan-komoditas-serumpun.mjs` tidak menyatukannya karena alat itu hanya melepas
+ * keterangan yang bocor ke dalam KURUNG ("Cabai (1,5 ml/l)"), bukan nama yang memang
+ * berbeda bunyinya. Bahayanya bukan kerapian: yang menanam cabai lalu mengetuk "Cabai
+ * merah" melihat lima produk, dan pulang mengira itu semua yang ada.
+ *
+ * MENYARANGKANNYA DI PENYAJI SUDAH DICOBA, 25 AGUSTUS 2026, DAN DICABUT DI HARI YANG
+ * SAMA. Uji yang dipakai sempit: sebuah nama jadi "kepala" hanya kalau ia sendiri ada
+ * sebagai baris utuh DAN muncul utuh sebagai rangkaian kata di baris lain. Itu benar
+ * untuk cabai — dan pada layar "Gulma Berdaun Lebar", yang daftar tanamannya panjang, ia
+ * menghasilkan satu paragraf berisi enam puluh nama DAN satu rumpun yang salah:
+ * "Kelapa" menelan "Kelapa sawit", dua tanaman yang pestisidanya tidak bisa dipertukarkan.
+ * Tidak ada aturan tali-temali yang bisa membedakan "Cabai merah itu cabai" dari "Kelapa
+ * sawit itu bukan kelapa"; yang bisa cuma tabel putusan satu per satu, dan tempatnya di
+ * kosakata bersama tabel KURUNG — bukan di layar, dan bukan hari ini.
+ *
+ * Yang tersisa di sini satu kalimat yang benar untuk SEMUA daftar: barisnya tidak
+ * digabung, dan angkanya tidak dijumlahkan antarbaris. Ia tidak menyebut baris mana pun
+ * sebagai kerabat baris lain, jadi ia tidak pernah bisa mengirim orang ke tanaman yang
+ * salah — dan ia tetap menahan pembaca dari berhenti di baris pertama yang cocok. */
+const EJAAN_TERPISAH = 'Barisnya ejaan registri apa adanya dan <strong>tidak digabung</strong> \u2014 '
+  + 'satu tanaman kadang punya lebih dari satu baris, dan produk pada satu baris tidak '
+  + 'ikut terhitung di baris lain. Pilih yang bunyinya sama dengan yang tercetak di label.';
+
 function blokKomoditas(k) {
   const urut = k.di.slice().sort((a, b) => b.produk - a.produk);
   return `
-    <div class="kartu">
+    <div class="kartu" id="pilihKedua">
       <h2>Di tanaman apa?</h2>
       <p class="catatan">
         Yang terdaftar berbeda-beda menurut tanamannya. Di luar daftar ini,
@@ -431,6 +504,7 @@ function blokKomoditas(k) {
             </button>
           </li>`).join('')}
       </ul>
+      <p class="catatan">${EJAAN_TERPISAH}</p>
     </div>`;
 }
 
@@ -539,6 +613,12 @@ function tabelMerek(merek) {
       </table>
     </div>
     <p class="catatan">
+      <strong>Dosis di kolom terakhir dosis LABEL</strong> — per liter air atau per
+      hektar, bukan jumlah yang masuk ke tangkimu.
+      <a href="takaran.html">Kalibrasi &amp; takaran</a> mengubahnya jadi isi satu tangki
+      dan berapa tangki untuk petakmu, termasuk kalau menakarnya dengan tutup botol.
+    </p>
+    <p class="catatan">
       Nama merek membuka rinciannya: bahan lain di dalamnya, pemegang pendaftarannya, dan
       merek lain yang isinya sama persis. <strong>Gambar kemasan bukan bukti apa pun
       tentang barang di tangan</strong> — desainnya berubah, dan pemalsu menyalin desain;
@@ -559,6 +639,53 @@ let terbukaKini = null;
 const tautanKe = (q) => new URL(q, location.href).href;
 
 
+
+/* Apa yang dipilih pada tingkat KEDUA, dan karena itu apa yang tombol tingkat ketiga
+ * tawarkan untuk diulang.
+ *
+ * Pintu gejala dan pintu nama hama menaruh DAFTAR TANAMAN di atas; pintu tanaman
+ * menaruh DAFTAR HAMA. Satu tombol dengan satu nama untuk keduanya akan berbohong pada
+ * salah satunya — dan `[data-berkas]` dipakai kedua daftar itu, jadi membedakannya
+ * dengan menghitung tombol di DOM tidak bisa. Yang menyetelnya pembukanya sendiri,
+ * karena hanya dia yang tahu ia sedang membuka pintu yang mana. */
+let pilihanKedua = null;   // { apa: 'tanaman lain' | 'hama lain', banyak: number }
+
+/* Berapa kartu bahan digambar sebelum sisanya diminta. Bukan batas keras: yang di luar
+ * dua belas TETAP bisa dibuka — lihat `gambarSisaKartu()`. */
+const KARTU_AWAL = 12;
+
+/* Menutup tingkat ketiga tanpa membuang tingkat kedua.
+ *
+ * Alurnya tiga tingkat — gejala → tanaman → bahan — tetapi sampai 25 Agustus 2026
+ * satu-satunya kendali kembali me-reset ke tingkat SATU ("← Pilih gejala lain"). Yang
+ * salah memilih tanaman harus membuang seluruh layar OPT-nya dan memilih gejalanya lagi
+ * dari awal, untuk kesalahan yang terjadi satu ketukan sebelumnya. */
+function tutupDaftarBahan() {
+  const daftar = el.hasil.querySelector('#daftarBahan');
+  if (!daftar) return;
+  daftar.remove();
+  kartuKini = null;
+  // Pemilih tingkat keduanya tepat di atas — dialah yang barusan diketuk, jadi ke
+  // sanalah layar dikembalikan, bukan ke kepala jawaban.
+  el.hasil.querySelector('#pilihKedua')?.scrollIntoView({ block: 'start' });
+}
+
+/* Sisa kartu bahan, digambar di tempat.
+ *
+ * Dua belas dari 159 dulu diakhiri satu kalimat — "Ditampilkan 12 kartu teratas dari
+ * 159" — dan tidak ada apa pun di layar yang membuka sisanya. Kalimat yang menyebut
+ * jumlah yang tidak bisa dicapai lebih buruk daripada tidak menyebutnya: ia memberi
+ * tahu pembaca bahwa jawabannya dipotong, lalu berhenti di situ.
+ *
+ * Indeks kartunya diteruskan apa adanya (`j + KARTU_AWAL`) karena penangan ketukan
+ * membaca `kartuKini.grup[i]` — kartu yang digambar dengan indeks barunya sendiri akan
+ * membuka daftar merek milik bahan yang lain. */
+function gambarSisaKartu() {
+  const wadah = el.hasil.querySelector('#sisaKartu');
+  if (!wadah || !kartuKini) return;
+  wadah.outerHTML = kartuKini.grup.slice(KARTU_AWAL)
+    .map((g, j) => kartuBahan(g, j + KARTU_AWAL)).join('');
+}
 
 async function bukaKomoditas(berkas, { gulir = true } = {}) {
   el.hasil.querySelector('#daftarBahan')?.remove();
@@ -588,9 +715,26 @@ async function bukaKomoditas(berkas, { gulir = true } = {}) {
       <strong>bahan + kadar</strong>: satu bahan bisa dipakai pada belasan kadar yang
       berbeda, dan kadarnya menentukan.
     </p>
-    ${semuaGrup.slice(0, 12).map(kartuBahan).join('')}
-    ${semuaGrup.length > 12 ? `<p class="catatan">Ditampilkan 12 kartu teratas dari ${angkaId(semuaGrup.length)}.</p>` : ''}`;
-  el.hasil.appendChild(bagian);
+    ${semuaGrup.slice(0, KARTU_AWAL).map(kartuBahan).join('')}
+    ${semuaGrup.length > KARTU_AWAL ? `
+      <p class="catatan" id="sisaKartu">
+        <button type="button" class="kembali" data-semua-kartu>Tampilkan
+        ${angkaId(semuaGrup.length - KARTU_AWAL)} kartu lainnya</button>
+      </p>` : ''}
+    ${pilihanKedua && pilihanKedua.banyak > 1 ? `
+      <button type="button" class="kembali" data-tutup-bahan>← Pilih ${teks(pilihanKedua.apa)}</button>` : ''}`;
+
+  /* DISISIPKAN SEBELUM TOMBOL KEMBALI, BUKAN DITEMPELKAN DI BELAKANGNYA.
+   *
+   * `bukaOpt` dan `bukaHama` mengakhiri layarnya dengan "← Pilih gejala lain", lalu
+   * memanggil fungsi ini. Sampai 25 Agustus 2026 ia `appendChild` — sehingga kendali
+   * KELUAR duduk di atas MUATAN utamanya: terukur di ponsel 375 px, tombolnya di gulir
+   * 2.762 sementara daftar bahannya baru mulai 2.827 dan halamannya 6.527. Yang membaca
+   * berurutan menemukan tombol kembali di layar ketiga dan wajar membacanya sebagai
+   * akhir halaman — persis pola yang dibereskan `bb67d0b` di direktori layanan. */
+  const kembali = el.hasil.querySelector('#kembali');
+  if (kembali) el.hasil.insertBefore(bagian, kembali);
+  else el.hasil.appendChild(bagian);
   if (gulir) bagian.scrollIntoView({ block: 'start' });
 }
 
@@ -613,6 +757,8 @@ async function bukaOpt(id, opsi = {}) {
   if (!k) return bukaHama(id.replace(/[^a-z0-9]/gi, ''), opsi);
   terbukaKini = { id: k.id, nama: k.nama, tautan: tautanKe(`?opt=${encodeURIComponent(k.id)}`) };
   optKini = k;
+  pilihanKedua = { apa: 'tanaman lain', banyak: k.di.length };
+  judulJadi(k.nama);
   el.hasil.innerHTML = '<p class="kosong">Menyiapkan…</p>';
   el.hasil.focus();
   tampilkanGejala(false);
@@ -622,14 +768,15 @@ async function bukaOpt(id, opsi = {}) {
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
     catatJawab(1, k.di.length ? UKUR.isi : UKUR.nol);
-    pasangKembali(el.hasil, { gulirKe: el.gejala, sesudah: () => tampilkanGejala(true) });
+    pasangKembali(el.hasil, {
+      gulirKe: el.gejala,
+      sesudah: () => { tampilkanGejala(true); judulJadi(null); },
+    });
     if (opsi.kom) await bukaTertunjuk(k.di.map((d) => d.berkas), opsi);
     // Kalau hanya satu komoditas, langsung buka — satu ketukan lebih sedikit.
     else if (k.di.length === 1) await bukaKomoditas(k.di[0].berkas, { gulir: opsi.gulir ?? true });
   } catch (e) {
-    catatJawab(1, UKUR.gagal);
-    el.hasil.innerHTML = `<div class="kartu peringatan"><h2>Gagal mengambil datanya</h2>
-      <p class="catatan">${teks(e.message)}</p></div>`;
+    gagal(e);
   }
 }
 
@@ -642,8 +789,25 @@ el.hasil.addEventListener('click', async (ev) => {
   const opt = ev.target.closest('button[data-opt]');
   if (opt) return bukaOpt(opt.dataset.opt);
 
+  /* "mulai dari apa yang terlihat" pada layar nama hama dan layar tanaman. Ia MENEKAN
+   * tombol kembali, bukan mengulang isinya: penutupan jalur ini berjalan lewat popstate
+   * (lihat `pasangKembali`), dan menyalin langkahnya di sini akan membuat dua jalan
+   * keluar yang riwayatnya berbeda — tombol Back peramban lalu membawa kembali layar
+   * yang baru saja ditutup. */
+  if (ev.target.closest('button[data-mulai-gejala]')) {
+    el.hasil.querySelector('#kembali')?.click();
+    return;
+  }
+
   const kom = ev.target.closest('button[data-berkas]');
   if (kom) return bukaKomoditas(kom.dataset.berkas);
+
+  // "← Pilih tanaman lain": tingkat ketiga menutup dirinya sendiri dan mengembalikan
+  // pemilih tanaman, tanpa membuang layar OPT yang di atasnya.
+  if (ev.target.closest('button[data-tutup-bahan]')) return tutupDaftarBahan();
+
+  // "Tampilkan N kartu lainnya" — sisa kartu bahan digambar di tempat.
+  if (ev.target.closest('button[data-semua-kartu]')) return gambarSisaKartu();
 
   // Kelompok nama di layar tanaman. Isinya sudah tergambar — yang dibawa berkas
   // komoditas memang seluruh daftarnya — jadi ini murni buka-tutup, tanpa pengambilan.

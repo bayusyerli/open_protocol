@@ -6,7 +6,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-DNPNcLjUG4zlmdaYgGYD9nMFoEvRKSs1IHGJXWCYX+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'">
 <meta name="theme-color" content="#00442f">
 <title>Mau cek apa hari ini? — Pranatani</title>
-<meta name="description" content="Pintu masuk ke registri pertanian terbuka: satu kotak untuk nama terdaftar, bahan aktif, nama lokal hama, gejala di kebun, perusahaan pemegang pendaftaran, dan harga komoditas — ditambah enam jalur dan tujuh alat yang menghitung tanpa menganjurkan.">
+<meta name="description" content="Pintu masuk ke registri pertanian terbuka: satu kotak untuk nama terdaftar, bahan aktif, nama lokal hama, gejala di kebun, perusahaan pemegang pendaftaran, dan harga komoditas — ditambah enam pintu masuk dan tujuh alat yang menghitung tanpa menganjurkan.">
 <!-- Tema dipasang sebelum gaya supaya tidak berkedip putih dulu di layar gelap. -->
 <script>
   try {
@@ -55,8 +55,8 @@
       <noscript>
         <p class="bantuan-cari">
           <strong>Pencarian butuh JavaScript.</strong> Halaman ini membaca berkas indeks
-          langsung dari peramban — tidak ada server yang bisa mencarikan. Keenam jalur di
-          bawah tetap bisa dibuka, tetapi kotak pencarian tidak akan menanggapi apa pun.
+          langsung dari peramban — tidak ada server yang bisa mencarikan. Keenam pintu masuk
+          di bawah tetap bisa dibuka, tetapi kotak pencarian tidak akan menanggapi apa pun.
         </p>
       </noscript>
 
@@ -151,16 +151,28 @@
   <section class="hasil" id="hasil" aria-live="polite" aria-label="Hasil pencarian"></section>
 
   <!-- Papan ini dua bagian, dan pemisahnya bukan gaya.
-       Yang bernomor adalah keenam JALUR: `ukur.js` menghitung pemakaian per jalur
+       Yang bernomor adalah keenam jalur: `ukur.js` menghitung pemakaian per jalur
        menurut tabel di docs/11-instrumentasi.md, dan hanya keenamnya yang memanggil
        `catatBuka()`. Layar di bagian kedua sengaja TIDAK dinomori — menomorinya
        akan mengubah tabel itu, dan itu persis alasan `takaran.html` dulu tidak jadi
        "jalur ketujuh". Sampai 24 Agustus 2026 papan ini menomori harga 07 dan
-       principal 08 padahal keduanya tidak terinstrumentasi sama sekali. -->
+       principal 08 padahal keduanya tidak terinstrumentasi sama sekali.
+
+       KATA "JALUR" TIDAK LAGI DIPAKAI DI LAYAR, DAN ITU 25 AGUSTUS 2026. Nomor jalur
+       lahir dari tabel instrumentasi, bukan dari apa pun yang dikenali pembaca — dan
+       sampai hari itu ia tercetak sebagai nama halaman di enam eyebrow, sebagai label
+       grup navigasi, dan sebagai judul bagian kedua ini ("Bukan jalur, dan tidak
+       dinomori"), yang menerangkan taksonomi internal kepada orang yang tidak pernah
+       melihatnya. Nomornya tetap hidup di tiga tempat yang memang miliknya: docs/,
+       `catatBuka(n)`, dan nama berkas. Yang di layar sekarang nama.
+
+       Angka 01–06 pada kartu di bawah TETAP. Ia ordinal daftar — enam hal berurutan —
+       bukan pengenal yang dirujuk teks lain mana pun; sesudah kata "jalur" hilang,
+       tidak ada satu kalimat pun di layar yang berkata "jalur 3". -->
   <section class="bagian-jalur" aria-labelledby="judulJalur">
     <div class="kepala-bagian">
       <div>
-        <p class="mata">Enam jalur</p>
+        <p class="mata">Enam pintu masuk</p>
         <h2 id="judulJalur">Mulai dari hal yang ingin dicek</h2>
       </div>
       <p>Pilih cara yang paling sesuai dengan masalah di lapangan. Keenamnya menjawab
@@ -180,7 +192,7 @@
     <div class="kepala-bagian">
       <div>
         <p class="mata">Tujuh alat &amp; direktori</p>
-        <h2 id="judulAlat">Bukan jalur, dan tidak dinomori</h2>
+        <h2 id="judulAlat">Hitung sendiri, atau cari tempatnya</h2>
       </div>
       <p>Sebagian menghitung dari angka yang kamu masukkan sendiri, sebagian menunjukkan
         tempat atau riwayat. Ketujuhnya juga bisa dicapai dari kotak di atas — sebut saja
@@ -259,7 +271,8 @@
       per kadar karena kesetaraan cuma berlaku pada pasangan bahan <em>dan</em> kadar.
       Unsur hara pupuk sengaja tidak ikut: Nitrogen sendiri ada di 2.582 pupuk, hampir
       seluruh registrinya, dan daftar sepanjang itu tidak menjawab apa pun. Pertanyaan
-      haranya dijawab <a href="jalur-3.html">jalur 3</a>, dalam rupiah per kilogram hara.
+      haranya dijawab <a href="jalur-3.html">Bandingkan harga pupuk</a>, dalam rupiah per
+      kilogram hara.
     </p>
     <p>
       <strong>Nama hama &amp; penyakit</strong> — OPT registri yang punya produk
@@ -275,8 +288,9 @@
       keduanya belum ada.
     </p>
     <p>
-      <strong>Resep buatan sendiri</strong> — dua belas sediaan <a href="jalur-5.html">jalur
-      5</a> dan <a href="jalur-6.html">jalur 6</a>. Ini satu-satunya golongan yang
+      <strong>Resep buatan sendiri</strong> — dua belas sediaan
+      <a href="jalur-5.html">Buat pupuk sendiri</a> dan
+      <a href="jalur-6.html">Pengendali buatan sendiri</a>. Ini satu-satunya golongan yang
       <strong>diterbitkan proyek ini sendiri</strong>, bukan salinan registri — dan
       pintunya berbeda menurut rezimnya, karena sisi pupuk menjanjikan resep terbuka
       sementara sisi pengendali berhenti pada status hukum.
@@ -309,7 +323,7 @@
     <p>
       Kotak ini menerima <strong>teks</strong> — nama, bahan aktif, gejala, nama lokal,
       dan pertanyaan yang menyebut alatnya. <strong>Foto kemasan tidak.</strong> Pengenal
-      foto yang menebak persis yang ditolak jalur 1: “mesin tidak menebak”, dan tebakan di
+      foto yang menebak persis yang ditolak halaman “Tanaman bermasalah”: “mesin tidak menebak”, dan tebakan di
       pintu masuk mengirim orang ke layar yang salah tanpa ia tahu kenapa. Masuk lewat
       gambar dan suara tercatat sebagai kapabilitas tersendiri yang <em>ditunda</em>, bukan
       yang sedang dikerjakan.

@@ -100,7 +100,7 @@ let bahanOlehId = null;
 function kartuSilang(f) {
   return `
     <div class="kartu peringatan">
-      <h2>Sebagian sediaan berfungsi ini ada di jalur lain</h2>
+      <h2>Sebagian sediaan berfungsi ini ada di halaman lain</h2>
       <p>
         “${teks(f.nama)}” <strong>merentang kedua sisi</strong>. Sediaan yang selain itu
         juga mengklaim <strong>menekan penyakit atau membasmi hama</strong> pindah ke
@@ -134,9 +134,10 @@ function gambarDaftar(f) {
         </li>`).join('')}
     </ul>` : '<p class="kosong">Tidak ada sediaan sisi pupuk untuk fungsi ini.</p>'}
     ${sana.length ? `<p class="catatan">
-      ${sana.length} sediaan berfungsi sama ada di <strong>jalur 6</strong> karena juga
-      mengklaim mengendalikan OPT: ${sana.map((r) => teks(r.nama)).join(', ')}.
-      Jalur itu masih tertutup sampai bacaan Pasal 77 ayat (1) dijawab.
+      ${sana.length} sediaan berfungsi sama ada di <strong>Pengendali buatan
+      sendiri</strong> karena juga mengklaim mengendalikan OPT:
+      ${sana.map((r) => teks(r.nama)).join(', ')}. Halaman itu masih tertutup sampai
+      bacaan Pasal 77 ayat (1) dijawab.
     </p>` : ''}`;
 }
 
@@ -268,8 +269,8 @@ const BLOK_HARA = `
       dari batch yang belum terukur.
     </p>
     <p class="catatan">
-      Karena itu sediaan ini <strong>tidak muncul di kalkulator jalur 3 dengan rupiah
-      per kg hara</strong>: memberinya angka rujukan akan membuat seluruh perbandingan
+      Karena itu sediaan ini <strong>tidak muncul di kalkulator “Bandingkan harga
+      pupuk” dengan rupiah per kg hara</strong>: memberinya angka rujukan akan membuat seluruh perbandingan
       di sana bohong. Yang bisa dihitung biaya bahan dan tenaganya. Kadar haranya baru
       bisa dinyatakan sesudah satu batch diuji.
     </p>
