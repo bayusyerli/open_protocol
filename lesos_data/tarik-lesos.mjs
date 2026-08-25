@@ -221,6 +221,10 @@ async function main() {
 
   writeFileSync(join(out, 'klien.json'), JSON.stringify(baris, null, 1));
   writeFileSync(join(out, 'klien.ndjson'), baris.map((b) => JSON.stringify(b)).join('\n') + '\n');
+  // Tanggal acuan ikut turun sebagai berkas sendiri. Seluruh medan keberlakuan dihitung
+  // terhadapnya, dan kalimat jawaban di halaman nanti wajib menyebutnya — tanpa berkas ini
+  // rantai provenansinya putus di tengah.
+  writeFileSync(join(out, 'tarikan.json'), JSON.stringify({ tanggal: hariIni, operator: baris.length }, null, 1));
   const total = baris.reduce((a, b) => a + b.sertifikat.length, 0);
   const nomor = new Set(baris.flatMap((b) => b.sertifikat.map((s) => s.nomor)));
   const aktif = baris.flatMap((b) => b.sertifikat).filter((s) => s.berlaku_pada_tarikan).length;

@@ -585,6 +585,10 @@ h3 { font-size: .95rem; margin: 1.2rem 0 .3rem; }
 
 .kartu.peringatan { border-color: var(--awas); background: var(--awas-lemah); }
 .kartu.tabrakan { border-color: var(--bahaya); background: var(--bahaya-lemah); }
+/* Pencabutan sertifikat bukan kedaluwarsa. Kedaluwarsa memakai amber `.peringatan` karena
+   masih bisa diperpanjang; pencabutan memakai merah karena tidak ada yang bisa ditanyakan
+   lagi — keputusannya sudah diambil lembaga penerbitnya. */
+.kartu.cabut { border-color: var(--bahaya); background: var(--bahaya-lemah); }
 .kartu > :first-child { margin-top: 0; }
 .kartu > :last-child { margin-bottom: 0; }
 
@@ -1129,6 +1133,14 @@ a { color: var(--aksen); }
 }
 .lencana-d {
   background: var(--awas);
+  color: var(--latar-kartu);
+  font-weight: 600;
+}
+/* Lencana menilai MUTU BUKTINYA, bukan mutu badannya — aturan yang lahir bersama lencana
+   tingkat D dan berlaku sama untuk B. Warna aksen di sini menandai register pihak ketiga
+   yang bertanggal, bukan badan yang bagus. */
+.lencana-b {
+  background: var(--aksen);
   color: var(--latar-kartu);
   font-weight: 600;
 }

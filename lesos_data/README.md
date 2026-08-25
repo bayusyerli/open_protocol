@@ -67,6 +67,34 @@ pribadi tanpa dasar pemrosesan di sini. Maka `bersihkanPII()` membuang blok itu 
 HTML disinggahkan, bukan menyaringnya di hilir. Singgahan di `privat/singgahan/` tidak pernah
 memuat satu pun nama atau nomor. Skrip melaporkan cacah blok yang dibuang di akhir jalan.
 
+## Dari tarikan ke halaman
+
+```
+privat/klien.json  ->  susun-sertifikasi.mjs  ->  spec/vocab/sertifikasi/sertifikasi-organik.ndjson
+                                              \->  privat/sertifikasi-calon.ndjson  (antrean tinjauan)
+```
+
+`susun-sertifikasi.mjs` menjodohkan operator LeSOS dengan badan di
+`spec/vocab/principal/`, lalu memecah hasilnya jadi dua. Yang **kuat** naik ke kosakata dan
+dibaca `spec/tools/bangun-halaman.mjs`; yang meragukan ditahan di berkas calon sampai ada
+yang memutuskannya.
+
+Gerbang itu bukan kehati-hatian berlebih. `terbit/badan/` memuat `bumi-subur-khatulistiwa`,
+`bumi-subur-rizquna`, `bumi-subur-utama`, dan `trans-bumi-subur-sejahtera` — empat badan
+berlainan yang namanya beririsan dengan PT. Bumi Subur Sentosa, dan `pt-polowijo-graha-niaga`
+berdiri di samping `pt-polowijo-gosari`. Pencocokan nama yang jalan saat build akan, cepat
+atau lambat, menempelkan sertifikat organik ke badan yang salah. Itu bukan medan kosong; itu
+tuduhan.
+
+Syarat "kuat": nama ternormalkan sama persis dengan salah satu `registry_names`, hanya satu
+badan yang cocok, dan namanya bukan sekadar dua kata pasaran. Daftar kata pasaran
+**diturunkan dari data** — token yang muncul di lebih dari 1% nama badan di registri — bukan
+didaftar tangan, supaya isinya mencerminkan registrinya dan bukan tebakan penulisnya.
+
+Per 25 Agustus 2026: **46 naik** (31 berlaku, 12 kedaluwarsa, 3 dicabut), **28 ditahan** —
+25 karena badannya memang tidak ada di registri Kementan, 2 karena namanya dua kata pasaran,
+1 karena dua badan berbagi nama yang sama.
+
 ## Lisensi
 
 Situsnya tidak menyatakan lisensi apa pun, hanya "© Lembaga Sertifikasi Organik Seloliman".

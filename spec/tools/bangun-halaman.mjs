@@ -1639,7 +1639,17 @@ const alamatAman = (x) => {
   if (/^[a-z0-9.-]+\.[a-z]{2,}(\/|$)/i.test(t)) return `https://${t}`;
   return null;
 };
+// Sumber KETIGA di halaman badan, sesudah registri Kementan (tingkat B) dan riset web
+// (tingkat D). Berkasnya hasil tinjauan tangan, bukan pencocokan saat build: `terbit/badan/`
+// memuat empat badan ber-"Bumi Subur" yang berlainan, dan menempelkan sertifikat ke yang
+// salah bukan medan kosong melainkan tuduhan. Lihat lesos_data/susun-sertifikasi.mjs.
+// Tanpa berkasnya, halaman badan terbangun persis seperti sebelumnya.
+const SERTIFIKASI = new Map(
+  bacaVocabNdjson('sertifikasi/sertifikasi-organik.ndjson').map((x) => [x.key, x]),
+);
+
 let badanBerpengaya = 0; let barisBadanDitahan = 0; let kunciBadanAneh = 0;
+let badanBersertifikat = 0; let badanSertifikatLewat = 0;
 
 for (const f of berkasDi('principal')) {
   const b = baca(`principal/${f}`);
@@ -1682,6 +1692,80 @@ for (const f of berkasDi('principal')) {
     ${g.source ? `<p class="catatan">Sumber yang dicatat riset: ${teks(g.source)}</p>` : ''}
   </div>` : '';
 
+  // --- sertifikasi organik ---------------------------------------------------------
+  const sk = SERTIFIKASI.get(b.key);
+  if (sk) badanBersertifikat++;
+  if (sk && sk.keadaan !== 'berlaku') badanSertifikatLewat++;
+
+  // Lingkup sertifikatnya golongan, bukan SKU. Kalimat ini yang menahan pembaca — dan
+  // perayap — dari menyimpulkan sendiri produk mana yang dicakup dari daftar di bawahnya.
+  const skPupuk = punya.fertilizer ?? 0;
+  const skCakupan = /pupuk/i.test(sk?.lingkup ?? '') && skPupuk
+    ? `${n(skPupuk)} pupuk terdaftar atas nama badan ini`
+    : `produk yang terdaftar atas nama badan ini`;
+
+  const kartuSertifikasi = !sk ? '' : sk.keadaan === 'berlaku' ? `
+  <div class="kartu">
+    <h2>Yang tercatat di lembaga sertifikasi organik</h2>
+    <p><span class="lencana lencana-b">Tingkat B · register pihak ketiga, per ${teks(tanggalPanjang(sk.tarikan))}</span></p>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Lembaga</td><td>${teks(sk.lembaga)}, akreditasi ${teks(sk.akreditasi)}</td></tr>
+          <tr><td>Nomor sertifikat</td><td class="angka">${teks(sk.nomor)}</td></tr>
+          <tr><td>Ruang lingkup</td><td>${teks(sk.lingkup)}</td></tr>
+          ${sk.standar ? `<tr><td>Standar</td><td>${teks(sk.standar)}</td></tr>` : ''}
+          <tr><td>Berlaku sampai</td><td class="angka">${teks(tanggalPanjang(sk.berakhir))}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="catatan">
+      Lingkupnya golongan <strong>&ldquo;${teks(sk.lingkup)}&rdquo;</strong>, bukan nama produk. Sertifikat ini
+      tidak menyebut satu pun dari ${teks(skCakupan)}, jadi ia tidak bisa dibaca sebagai
+      keterangan tentang salah satu di antaranya.
+    </p>
+  </div>` : sk.keadaan === 'dicabut' ? `
+  <div class="kartu cabut">
+    <h2>Sertifikat organik ini dicabut</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Nomor sertifikat</td><td class="angka">${teks(sk.nomor)}</td></tr>
+          <tr><td>Ruang lingkup</td><td>${teks(sk.lingkup)}</td></tr>
+          <tr><td>Tanggal berakhir tertulis</td><td class="angka">${teks(tanggalPanjang(sk.berakhir))}</td></tr>
+          <tr><td>Status di lembaga penerbit</td><td>dicabut</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="catatan">
+      Pencabutan bukan kedaluwarsa: ${teks(sk.lembaga.split(' —')[0])} menarik sertifikat ini sebelum
+      masanya habis. Karena itu pertanyaan &ldquo;sudah diperpanjang atau belum&rdquo; tidak berlaku di sini —
+      yang berlaku, klaim organik untuk lingkup ini <strong>tidak lagi berdasar</strong>.
+    </p>
+  </div>` : `
+  <div class="kartu peringatan">
+    <h2>Masa berlaku sertifikat organik ini sudah lewat</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Nomor sertifikat</td><td class="angka">${teks(sk.nomor)}</td></tr>
+          <tr><td>Ruang lingkup</td><td>${teks(sk.lingkup)}</td></tr>
+          <tr><td>Berakhir</td><td class="angka">${teks(tanggalPanjang(sk.berakhir))}</td></tr>
+          <tr><td>Data ditarik</td><td class="angka">${teks(tanggalPanjang(sk.tarikan))}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    ${/^aktif$/i.test(sk.status_situs ?? '') ? `<p class="catatan">
+      Lembaga penerbitnya masih menuliskan status sertifikat ini <strong>&ldquo;Aktif&rdquo;</strong>. Medan itu beku
+      pada keputusan pengawasan terakhir dan tidak dihitung ulang terhadap tanggal berakhir; yang
+      ditampilkan di sini hasil hitung ulang, bukan medan statusnya.
+    </p>` : ''}
+    <p class="catatan">
+      Tanyakan langsung ke produsennya apakah sertifikatnya sudah diperpanjang sebelum memakai
+      klaim organiknya.
+    </p>
+  </div>`;
+
   const tanya = [
     { t: `Produk apa saja yang terdaftar atas nama ${b.nama}?`,
       j: `${n(jumlah)} pendaftaran tercatat atas namanya: ${pegang || 'tidak ada'}. Daftarnya ada di halaman ini, urut nomor pendaftaran.` },
@@ -1694,6 +1778,31 @@ for (const f of berkasDi('principal')) {
     tanya.push({ t: `Sejak kapan ${b.nama} mendaftarkan varietas?`,
       j: `Pendaftaran varietas tercatat dari ${b.benih.first_year} sampai ${b.benih.last_year ?? b.benih.first_year}${b.benih.main_commodity ? `, terbanyak pada ${b.benih.main_commodity}` : ''}${b.benih.top_permit_kind ? `, dengan surat terbanyak berupa ${b.benih.top_permit_kind}` : ''}.` });
   }
+  // Jawaban sertifikasi menanam tanggal tarikan DI DALAM kalimatnya. `blokTanya` mengirim
+  // string yang sama ke HTML dan ke acceptedAnswer.text, jadi cuplikan yang terlanjur
+  // diindeks menua sebagai keterangan bertanggal, bukan sebagai klaim yang diam-diam
+  // berubah jadi salah.
+  if (sk) {
+    const t = `Apakah ${b.nama} bersertifikat organik?`;
+    if (sk.keadaan === 'berlaku') {
+      tanya.push({ t, j: `Ya, untuk ruang lingkup ${sk.lingkup}. Sertifikat ${sk.nomor} diterbitkan ${sk.lembaga} (akreditasi ${sk.akreditasi}) dan berlaku sampai ${tanggalPanjang(sk.berakhir)}; keterangan ini menurut data yang ditarik ${tanggalPanjang(sk.tarikan)}. Lingkupnya golongan "${sk.lingkup}", bukan nama produk — sertifikat ini tidak menyebut satu pun dari ${skCakupan}.` });
+    } else if (sk.keadaan === 'dicabut') {
+      tanya.push({ t, j: `Tidak. Sertifikat organiknya untuk ruang lingkup ${sk.lingkup} (${sk.nomor}) dicabut lembaga penerbitnya. Pencabutan bukan kedaluwarsa: tanggal berakhir yang tertulis, ${tanggalPanjang(sk.berakhir)}, bahkan belum lewat per data yang ditarik ${tanggalPanjang(sk.tarikan)}. Klaim organik untuk lingkup ini tidak lagi berdasar.` });
+    } else {
+      tanya.push({ t, j: `Sertifikat organiknya untuk ruang lingkup ${sk.lingkup} (${sk.nomor}) berakhir ${tanggalPanjang(sk.berakhir)}, sementara data ini ditarik ${tanggalPanjang(sk.tarikan)} — jadi per tanggal itu masa berlakunya sudah lewat.${/^aktif$/i.test(sk.status_situs ?? '') ? ' Lembaga penerbitnya masih menuliskan statusnya "Aktif", medan yang tidak dihitung ulang terhadap tanggal berakhir.' : ''} Tanyakan langsung ke produsennya apakah sudah diperpanjang.` });
+    }
+
+    // Menolak menjawab adalah jawaban. Pertanyaan ini pasti diketik orang begitu melihat
+    // kartu di atas, dan kalau halaman ini diam, perayap akan menyusun jawabannya sendiri
+    // dari daftar merek yang kebetulan ada di halaman yang sama.
+    if (/pupuk/i.test(sk.lingkup) && skPupuk) {
+      tanya.push({
+        t: `Pupuk mana saja yang dicakup sertifikat organik ${b.nama}?`,
+        j: `Tidak ada yang disebut namanya. Ruang lingkup sertifikatnya tertulis sebagai golongan "${sk.lingkup}", bukan daftar produk, sementara ${n(skPupuk)} pupuk terdaftar atas nama badan ini di registri Kementan. Sertifikat maupun registrinya tidak memuat pemetaan antara keduanya, dan halaman ini tidak menebaknya. Keterangan per data yang ditarik ${tanggalPanjang(sk.tarikan)}.`,
+      });
+    }
+  }
+
   const { html: htmlTanya, ld: ldTanya } = blokTanya(tanya);
 
   const isiHtml = `
@@ -1717,6 +1826,7 @@ for (const f of berkasDi('principal')) {
     </p>
   </div>
   ${kartuPengaya}
+  ${kartuSertifikasi}
   ${produk.length ? `
   <h2 class="judul-bagian">${n(produk.length)} merek pupuk &amp; pestisida terdaftar</h2>
   ${CATATAN_URUTAN}
@@ -3276,6 +3386,7 @@ console.log(`  setara dilewati    : ${n(setaraTanpaKomposisi)} kelompok tanpa ko
 console.log(`  penggunaan ditahan : ${n(gunaDitahan)} baris penggunaan berlabel di luar ${BATAS_GUNA} per halaman`);
 console.log(`  penggunaan tanpa pintu: ${n(gunaTanpaPintu)} baris tampil tanpa tautan OPT — OPT-nya tidak punya berkas di indeks`);
 console.log(`  badan berpengaya   : ${n(badanBerpengaya)} badan membawa riset web tingkat D — tampil berlencana, tidak ikut ke JSON-LD${kunciBadanAneh ? `; ${kunciBadanAneh} kunci ditolak karena bentuknya` : ''}`);
+console.log(`  badan bersertifikat: ${n(badanBersertifikat)} badan membawa sertifikasi organik terkurasi${badanSertifikatLewat ? `; ${n(badanSertifikatLewat)} di antaranya kedaluwarsa atau dicabut dan tampil sebagai kartu peringatan` : ''}${SERTIFIKASI.size ? '' : ' (kosakata sertifikasi tidak ada — halaman badan terbangun tanpa kartu ini)'}`);
 console.log(`  baris badan ditahan: ${n(barisBadanDitahan)} baris produk & varietas di luar ${BATAS_BARIS_BADAN} per tabel`);
 console.log(`  harga di luar misi : ${n(hargaLuar)} seri tidak diterbitkan sama sekali — baja ringan, besi beton, dan sebangsanya`);
 console.log(`  komentar ditahan   : ${n(komentarDitahan)} komentar seri tidak diterbitkan karena ditulis model atau tidak lolos pemeriksa`);
