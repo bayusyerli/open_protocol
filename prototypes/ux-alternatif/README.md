@@ -1,14 +1,22 @@
-# Tiga alternatif UX beranda Pranatani
+# Empat alternatif UX beranda Pranatani
 
 > Prototipe tinjauan rancangan · 27 Agustus 2026 · status **usulan**
 >
 > Galeri & pembanding: [`index.html`](index.html) ·
 > [Konsep 01](01-kanvas-keputusan.html) · [Konsep 02](02-atlas-pengetahuan.html) ·
-> [Konsep 03](03-meja-banding.html)
+> [Konsep 03](03-meja-banding.html) · [Konsep 04](04-satu-pintu-dua-kata-kerja.html)
 >
-> Tiga berkas HTML mandiri. Tanpa kerangka kerja, tanpa langkah bangun, tanpa
+> Empat berkas HTML mandiri. Tanpa kerangka kerja, tanpa langkah bangun, tanpa
 > permintaan ke internet, tanpa dependency baru, dan tanpa satu pun tulisan ke
 > penyimpanan peramban.
+>
+> **Konsep 04 ditambahkan 28 Agustus 2026** sebagai *usulan tandingan* — ia menolak
+> premis yang dipegang ketiganya, bukan bersaing di dalamnya. Asal-usulnya di bagian 11.
+>
+> Foldernya ikut berganti nama, `ux-3-alternatif` → `ux-alternatif`: angka di nama folder
+> berhenti benar begitu isinya bertambah, dan akan salah lagi pada konsep berikutnya.
+> **Pesan komit pertama (`be260bf`) masih menyebut jalur yang lama** — itu memang begitu
+> apa adanya, karena pesan komit tidak ditulis ulang.
 
 ---
 
@@ -102,6 +110,7 @@ dikatakan bahwa ia memang tidak bisa dijawab.
 | **01 · Kanvas Lapangan** | Orang tidak datang untuk menjelajahi registri; mereka datang membawa **satu perkara nyata** yang harus diputuskan sekarang — jadi layar pertama menanyakan keadaannya, bukan kata kuncinya. |
 | **02 · Atlas Tani** | Nilai Pranatani ada pada **hubungan antar-benda**, bukan pada daftar halaman fungsi — jadi layar pertama adalah lema, dan tiap lema memperlihatkan seluruh arah keluarnya, **termasuk yang buntu**. |
 | **03 · Meja Banding** | Pengguna profesional jarang butuh *satu* rekaman; mereka butuh **meja untuk menyandingkan beberapa** dan memeriksa dasar tiap angkanya — jadi layar pertama adalah baki kosong, dan satu rekaman sendirian **ditolak** ditampilkan. |
+| **04 · Satu Pintu, Dua Kata Kerja** | Pintu depan **tidak diganti sama sekali**; kedua kapabilitas datang ke tempat pertanyaannya sudah muncul — *bandingkan* tumbuh dari daftar hasil, *hubungan* tumbuh dari satu rekaman — dan **tidak ada layar yang menanyakan siapa penggunanya**. |
 
 ---
 
@@ -152,6 +161,27 @@ dikatakan bahwa ia memang tidak bisa dijawab.
   - **Abamektin 18 g/L** — enam merek berlabel Trips pada Cabai. Bahan dan kadar
     identik; **dosis terdaftarnya berselisih tiga kali lipat**, dan satu di antaranya
     memakai satuan yang sama sekali tidak sebanding.
+
+### Konsep 04 · Satu Pintu, Dua Kata Kerja
+
+- **Pengguna** — tidak dipilih lebih dulu, dan itu justru tesisnya. Tidak ada layar yang
+  meminta siapa pun mengaku sebagai petani, penyuluh, atau kios.
+- **Keputusan yang didahulukan** — bukan *"pintu depannya harus apa"*, melainkan
+  *"bagaimana membeli bukti untuk menjawabnya?"*
+- **Skenario interaktif utama** — ketik `phonska` → **17 kartu datar yang persis sama
+  dengan yang keluar hari ini** → kotak pilih di kiri tiap baris → pilih 2–4 →
+  **panel banding tumbuh di tempat**, tanpa berpindah halaman. Lalu ketuk nama rekaman
+  mana pun → **panel hubungan tumbuh**, dengan jari-jari buntu digambar apa adanya.
+- **Interaksi tanda tangan** — tombol **"Tunjukkan yang berubah"**: menyorot persis tiga
+  perubahan terhadap aplikasi yang berjalan. Tidak ada konsep lain yang bisa melakukan
+  ini, karena ketiganya mengganti pintu depan sehingga deltanya adalah seluruh layar.
+- **Temuan yang hanya muncul saat disandingkan** — **PHONSKAMAX 15 15 15** dan
+  **PHONSKAVIT 15 15 15** bernama "15 15 15", tetapi komposisi terdaftarnya **tidak
+  memuat nitrogen, fosfor, maupun kalium sama sekali** — yang tercatat kalsium,
+  magnesium, dan silikat, dan nomornya berawalan `04.01`, bukan `01.01`. Dari daftar 17
+  kartu, perbedaan itu tidak kelihatan. Layar tetap **tidak menyimpulkan** bahwa
+  produknya menyesatkan; ia cuma menyatakan bahwa nama dan komposisi terdaftar tidak
+  berbunyi sama.
 
 ---
 
@@ -430,7 +460,7 @@ IRAC bertingkat D di baris yang kolom lainnya bertingkat B), dan **tidak bisa di
   baru strukturnya — tingkat judul, `aria-pressed`, `aria-expanded`, `aria-current`,
   `aria-live`, dan teks khusus pembaca — bukan bagaimana bunyinya.
 - **Belum diuji di perangkat sungguhan pada jaringan sungguhan.** Ukuran berkasnya
-  sendiri sudah bisa disebut: 68 KB / 55 KB / 49 KB / 53 KB sebelum gzip, satu berkas per
+  sendiri sudah bisa disebut: 67 KB / 54 KB / 49 KB / 45 KB sebelum gzip, satu berkas per
   prototipe, tanpa permintaan lanjutan — di bawah anggaran satu penelusuran penuh
   aplikasi yang berjalan sekarang (30–135 KB dalam 2–5 berkas), tetapi itu **perbandingan
   ukuran, bukan pengukuran waktu muat**.
@@ -440,41 +470,63 @@ IRAC bertingkat D di baris yang kolom lainnya bertingkat B), dan **tidak bisa di
 
 ## 9. Rekomendasi arah eksperimen berikutnya
 
-**Uji Konsep 03 · Meja Banding lebih dahulu.** Alasannya bukan bahwa ia paling menarik,
-melainkan bahwa ia satu-satunya yang bisa dibangun penuh dengan data yang **sudah ada
-hari ini**, sehingga hasil ujinya akan bersih — sukses atau gagal, sebabnya akan jelas.
+**Kerjakan Konsep 04 lebih dulu — bukan karena ia terbaik, melainkan karena ia yang
+membeli buktinya.**
 
-Papan skor delapan sumbu di [`index.html`](index.html) memberi **24 / 25 / 31 dari 40**.
-Yang memutuskan:
+Rekomendasi sebelumnya adalah Konsep 03, dan **alasannya masih berlaku utuh**: dari
+ketiganya, hanya ia yang bisa dibangun penuh dengan data yang sudah ada. Yang berubah
+bukan penilaian atas ketiganya, melainkan munculnya pilihan yang jauh lebih murah untuk
+*mendahuluinya*. Papan skor: **24 / 25 / 31 / 35** dari 40.
 
-- **Kebutuhan data.** Konsep 01 berdiri di atas 10 OPT cabai terkurasi *berstatus draft
-  dengan tingkat bukti belum ditetapkan*. Mengujinya sekarang berarti menguji rancangan
-  dan kurasi sekaligus — dan kalau hasilnya buruk, keduanya tidak akan bisa dibedakan.
-- **Kedekatan ke segmen beachhead.** P1 (petugas lapang offtaker, skor 19) adalah
-  satu-satunya segmen yang pekerjaannya *sudah* berupa pencatatan dan pembandingan.
-- **Kejelasan keputusan yang ditutup.** Konsep 03 menghasilkan sesuatu yang bisa dibawa
-  keluar layar. Konsep 02 membuat orang lebih tahu tanpa menutup keputusan apa pun.
-- **Risiko salah tafsir yang bisa ditanggung.** Risiko Konsep 03 (dibaca sebagai
-  peringkat) bisa dilawan rancangan; risiko Konsep 01 (dibaca sebagai diagnosis) tidak.
-- **Ongkos bangun.** Konsep 03 tidak menuntut kurasi baru, sumber baru, atau akun.
+### Yang memutuskan
+
+- **04 satu-satunya yang bisa mengukur dirinya sendiri.** Ini keunggulan struktural,
+  bukan gaya. `catatBuka()` hari ini dipanggil tepat enam kali, seluruhnya dari halaman
+  jalur; beranda tidak menghitung apa pun yang dibuka, dan `docs/11` batas ke-2 melarang
+  `fetch` maupun `sendBeacon`. Karena kedua kata kerja 04 hidup di halaman yang **sudah**
+  terinstrumentasi, pemakaiannya terhitung tanpa mengubah satu pun batas itu.
+- **04 menjawab pertanyaan terbuka yang menghalangi ketiganya.** Pertanyaan nomor 4 di
+  `docs/17` bagian 10 — *apakah orang yang membaca kandungan benar-benar
+  membandingkannya dengan sesuatu* — adalah taruhan utama Konsep 03, dan dokumen itu
+  sendiri menyatakan ia **tidak bisa dijawab lewat wawancara**. Kata kerja "bandingkan"
+  menjawabnya dengan pemakaian nyata, seharga satu komponen alih-alih satu permukaan.
+- **04 tidak menutup satu pun pintu.** Kalau orang membandingkan → Konsep 03 layak jadi
+  permukaan penuh. Kalau orang menelusuri hubungan → Konsep 02 layak. Kalau tidak
+  keduanya, yang hilang cuma dua tombol.
+- **Ongkos baliknya paling kecil.** Membatalkannya berarti mencopot dua komponen, bukan
+  mengembalikan sebuah beranda.
+
+### Yang harus dikatakan terus terang tentang Konsep 04
+
+**Ia yang paling tidak ambisius dari keempatnya, dan itu bukan kebetulan.** Ia menutup
+dua keputusan sempit dan **tidak memiliki satu pun perjalanan utuh** — sumbu "kejelasan
+keputusan" adalah satu-satunya tempat ia kalah dari Konsep 01. Ia juga mewarisi seluruh
+persoalan beranda yang berjalan: 25 pintu setara, dan penomoran 01–06 yang sejak commit
+`4f7d9ca` tidak lagi menunjuk nama berkas apa pun. **Kalau masalah sebenarnya memang
+pintu depan, 04 menundanya — bukan menjawabnya.**
+
+Jumlah tertinggi di papan skor karena itu harus dibaca sebagai *"paling layak dikerjakan
+lebih dulu"*, bukan *"paling benar"*. Ia unggul pada sumbu yang mengukur seberapa murah
+dan cepat sesuatu bisa diuji.
 
 ### Urutan yang diusulkan
 
-1. **Uji Konsep 03 ke 5–8 petugas lapang dan kios.** Pertanyaan tunggalnya: apakah mereka
-   benar-benar membandingkan, atau memeriksa satu barang lalu selesai. Ini pertanyaan
-   terbuka nomor 4 di `docs/17` bagian 10, dan ia **hanya bisa dijawab lewat pengamatan
-   langsung di kios**, bukan lewat wawancara.
-2. **Pinjam mekanika Konsep 02 ke dalam layar rincian yang sudah ada.** Panel "hubungan
-   dari lema ini" beserta jari-jari buntunya bisa dipasang sebagai satu komponen di layar
-   produk dan OPT yang sudah berjalan, tanpa merombak beranda. Ia menguji gagasan paling
-   berharga Konsep 02 — *lubang data yang punya bentuk* — dengan ongkos satu komponen.
-3. **Tahan Konsep 01 sampai kurasi gejala punya peninjau bernama.** Konsep ini yang paling
-   berpotensi mengubah keputusan lapangan, dan justru karena itu paling berbahaya diuji di
-   atas data draft. Yang menghalanginya bukan rancangan, melainkan **nol dari 4.256
-   rekaman kosakata kurasi yang punya peninjau bernama**.
-4. **Jangan gabungkan ketiganya jadi satu beranda.** Ketiganya mendahulukan keputusan yang
-   berbeda, dan beranda yang mendahulukan tiga hal sekaligus tidak mendahulukan apa pun.
-   Kalau harus berdampingan, biarkan berdampingan sebagai **permukaan yang berbeda**.
+1. **Kerjakan Konsep 04, lalu sebarkan lewat kanal yang memang ada.** Tiga perubahan
+   kecil. Lalu ukur dua hal yang selama ini tidak terukur: berapa sering "bandingkan"
+   dipakai, dan berapa sering "hubungan" dibuka. Jangan mengujinya lewat lalu lintas
+   beranda — `app/teruskan.js` menunjukkan jalur masuk yang sebenarnya adalah kartu yang
+   diteruskan di grup WhatsApp.
+2. **Baca hasilnya sebagai pemilih di antara 02 dan 03.** "Bandingkan" ramai → bangun
+   Konsep 03. "Hubungan" ramai → bangun Konsep 02. Keduanya sepi → pertanyaannya bukan
+   permukaan mana, melainkan apakah lapisan baca-saja ini dipakai untuk apa pun selain
+   satu pemeriksaan tunggal.
+3. **Tahan Konsep 01 sampai kurasi gejala punya peninjau bernama.** Tidak berubah. Yang
+   menghalanginya bukan rancangan, melainkan nol dari 4.256 rekaman kurasi yang punya
+   peninjau bernama — dan bentuk tanya-jawabnya adalah bentuk diagnosis, yang tidak bisa
+   dilawan rancangan.
+4. **Jangan gabungkan keempatnya jadi satu beranda.** Beranda yang mendahulukan empat hal
+   sekaligus tidak mendahulukan apa pun. Konsep 04 justru bekerja karena ia menolak
+   menjadi salah satu pilihan di antara yang lain.
 
 ### Satu perbaikan yang layak diambil terlepas dari konsep mana yang menang
 
@@ -482,8 +534,8 @@ Beranda yang berjalan sekarang (`app/index.html`) menaruh blok batas jawaban **d
 `<dialog>`** — satu-satunya permukaan yang masih begitu, sesudah commit `4f7d9ca`
 memindahkannya ke pucuk `<main>` di empat belas halaman lain. Menyelesaikan pengecualian
 itu adalah perubahan kecil yang tidak menuntut konsep baru, tidak menuntut data baru, dan
-bisa dikerjakan hari ini — dan ia satu-satunya hal yang ketiga konsep di atas sepakati
-tanpa kecuali.
+bisa dikerjakan hari ini — dan ia satu-satunya hal yang **keempat** konsep sepakati tanpa
+kecuali. Di Konsep 04 ia dihitung sebagai perubahan pertama dari tiga.
 
 ---
 
@@ -494,10 +546,11 @@ disunting.**
 
 | Berkas | Isi | Ukuran |
 |---|---|---|
-| [`index.html`](index.html) | Galeri & alat pembanding: pratinjau, tesis, pengguna, keputusan, model navigasi, kekuatan, risiko, asumsi, bedanya dari UI aktif, tabel banding sembilan dimensi, papan skor delapan sumbu, dan rekomendasi | 53 KB |
-| [`01-kanvas-keputusan.html`](01-kanvas-keputusan.html) | Konsep 01 · Kanvas Lapangan | 68 KB |
-| [`02-atlas-pengetahuan.html`](02-atlas-pengetahuan.html) | Konsep 02 · Atlas Tani | 55 KB |
+| [`index.html`](index.html) | Galeri & alat pembanding: pratinjau, tesis, pengguna, keputusan, model navigasi, kekuatan, risiko, asumsi, bedanya dari UI aktif, tabel banding sepuluh dimensi, papan skor delapan sumbu × empat konsep, dan rekomendasi | 64 KB |
+| [`01-kanvas-keputusan.html`](01-kanvas-keputusan.html) | Konsep 01 · Kanvas Lapangan | 67 KB |
+| [`02-atlas-pengetahuan.html`](02-atlas-pengetahuan.html) | Konsep 02 · Atlas Tani | 54 KB |
 | [`03-meja-banding.html`](03-meja-banding.html) | Konsep 03 · Meja Banding | 49 KB |
+| [`04-satu-pintu-dua-kata-kerja.html`](04-satu-pintu-dua-kata-kerja.html) | Konsep 04 · usulan tandingan | 45 KB |
 | `README.md` | Berkas ini | — |
 
 `screenshots/` **tidak dibuat** — lihat bagian 8, "Yang belum bisa diamati".
@@ -513,7 +566,7 @@ mengatakan itu sendiri kalau terjadi. Sajikan dari akar repositori:
 python3 -m http.server 8742
 ```
 
-Lalu buka `http://localhost:8742/prototypes/ux-3-alternatif/`.
+Lalu buka `http://localhost:8742/prototypes/ux-alternatif/`.
 
 ### Catatan tentang logo
 
@@ -529,3 +582,95 @@ dengan monogram **P** `#fffef8`, tiga garis `#54c7a6`, dan satu daun `#79d20a`.
 > membawa yang baru. Sudah diselaraskan. Kalau markahnya berganti lagi, **empat tempat**
 > harus ikut berubah: `app/ikon.svg` beserta ketiga prototipe ini. Galeri tidak, karena
 > ia merujuk, bukan menyalin.
+
+---
+
+## 11. Asal-usul Konsep 04 — ide yang diuji-tekan lalu tidak lolos
+
+Konsep 04 tidak dirancang bersama ketiganya. Ia lahir dari **menekan sebuah usulan yang
+lain** sampai patah, lalu menyelamatkan bagian yang bertahan.
+
+### Usulan yang diuji
+
+> *"Bagaimana kalau ada tiga pintu yang mengakomodasi tiga persona, tiga misi? Di
+> homepage ada pilihan pintu mana yang mau dipilih oleh user."*
+
+Menarik, dan menunjuk masalah yang nyata: sayang membuang dua dari tiga konsep. Tetapi
+sebagai **pintu-pemilih di beranda**, ia patah di lima titik.
+
+### Lima titik tekan
+
+1. **Ia melawan prinsip pendiri lapisan ini.** `docs/03-enam-pintu.md` bagian 1
+   menyatakan pembalikan yang jadi dasar seluruh permukaan baca-saja: *"Ia melayani
+   perilaku reaktif alih-alih melawannya — orang datang saat butuh, bukan saat
+   dijadwalkan."* Pintu-pemilih menuntut tindakan **proaktif** — mengklasifikasi diri —
+   sebelum satu pun nilai diberikan.
+
+2. **Identitas bukan tugas, dan salah-rutenya percaya diri.** Ketiga konsep berbeda pada
+   *bentuk pekerjaan*, bukan pada *siapa penggunanya*. Satu penyuluh menjalankan ketiga
+   pekerjaan itu dalam satu minggu. Dan `app/index.html` sendiri sudah menyatakan
+   sikapnya saat menolak pengenal foto: *"tebakan di pintu masuk mengirim orang ke layar
+   yang salah tanpa ia tahu kenapa."* Pintu-pemilih tidak menghapus tebakan itu — ia
+   **memindahkannya ke pengguna**, yang tahu lebih sedikit tentang isi ketiga pintu
+   daripada mesin.
+
+3. **Pilihannya tidak bisa diukur.** `catatBuka()` dipanggil tepat enam kali di
+   `app/*.js`, seluruhnya dari halaman jalur. `beranda.js` mengimpor `ukur.js` **hanya
+   untuk `catatLubang`** — ia mencatat lubang data yang ditabrak, bukan apa yang dibuka.
+   Dan `docs/11` batas ke-2 mengunci pintunya: *"Pencatatnya tidak pernah `fetch`, tidak
+   pernah `sendBeacon`"*, dengan akibat yang dinyatakan sendiri: **"tidak cocok untuk
+   mengukur lalu lintas anonim luas."** Memasang percabangan di titik paling menentukan
+   lalu tidak bisa tahu cabang mana yang diambil siapa adalah sifat terburuk yang bisa
+   dimiliki keputusan perutean.
+
+4. **Beranda memang bukan pintu utamanya.** `app/teruskan.js` (kapabilitas A2) dipanggil
+   12 modul, dan tesisnya eksplisit: yang beredar adalah kartu di grup WhatsApp, dan
+   *"yang membuka tautannya orang pertama; yang kesepuluh cuma membaca teksnya."* Q1
+   lapangan menguatkan: *"Umumnya rekomendasi dari peers."* Jalur masuk dominan
+   **menurut rancangan** adalah tautan-dalam ke satu rekaman, yang melewati beranda.
+
+5. **Tiga pintu setara mengklaim tiga khalayak setara; datanya bilang 400 : 1.** P5
+   petani gurem **17,2 juta** rumah tangga; P2 penyuluh **39.809** orang; P6 kios
+   **±27.000**; P1 — beachhead-nya sendiri — **belum diukur, tugas Fase 1**.
+
+   Ditambah satu ongkos tersembunyi: tiga permukaan berarti **tiga salinan blok batas
+   jawaban, layar kosong, dan layar penolakan** yang harus tetap jujur bersamaan. Repo
+   sudah pernah kena persis ini — `cangkang.js` mencatat 12 tautan di enam tempat, 7 di
+   toko, 6 di usaha, 4 di tiga halaman, 2 di kas, dan `kas.html` yang tidak ditaut dari
+   mana pun.
+
+### Apa yang harus benar supaya usulan itu menang
+
+Bisa dibantah, dan inilah syaratnya — ketiganya belum terpenuhi:
+
+1. Pengguna datang membawa **identitas yang stabil**, bukan perkara yang berganti-ganti.
+   *(Belum diuji, dan Q1 menunjuk sebaliknya.)*
+2. Beranda benar-benar **jalur masuk mayoritas**. *(Bertentangan dengan A2 dan Q1.)*
+3. Pilihan pintunya **bisa diukur**. *(Tidak bisa, tanpa mengubah batas ke-2 `docs/11` —
+   dan itu keputusan tersendiri yang mengubah sifat produknya.)*
+
+### Bagian yang bertahan, dan jadi Konsep 04
+
+Insting di balik usulan itu benar: **ketiga konsep memang tiga pekerjaan berbeda, dan
+membuang dua berarti membuang kapabilitas.** Yang salah cuma titik penggabungannya.
+
+Jadi ketiganya digabung bukan sebagai tiga pintu, melainkan sebagai **satu permukaan dan
+dua kata kerja** — nol klasifikasi diri, dan ketiganya langsung terukur karena hidup di
+halaman yang sudah memanggil `catatBuka()`:
+
+- **Meja Banding jadi kata kerja atas daftar.** Rumahnya sudah ada: ketik `phonska` hari
+  ini mengeluarkan 17 kartu datar dan menyerahkan pemilahannya ke mata pengguna.
+- **Atlas jadi panel atas rekaman.** Ongkos satu komponen, tanpa merombak beranda.
+- **Kanvas tetap permukaan**, tapi ditahan sampai kurasi gejala punya peninjau bernama.
+
+Kalau tetap diinginkan sebuah pemilih, yang bertahan dari tekanan adalah **pemilih tugas
+*sesudah* hasil, bukan pemilih persona *sebelum* apa pun**: *"Ada 17 yang cocok"* →
+*bandingkan · telusuri hubungannya · mulai dari gejala*. Reaktif, kontekstual, terukur.
+
+### Cara termurah menyelesaikan perdebatannya
+
+Jangan uji lewat beranda — ia tidak bisa dibaca. Uji lewat kanal yang benar-benar ada:
+**sebarkan keempat konsep sebagai tautan-dalam ke grup WhatsApp yang sama**, lalu ukur
+mana yang **diteruskan**, bukan mana yang diklik dari pemilih. Itu memakai mekanisme
+distribusi yang memang sudah dirancang, dan sekaligus menjawab pertanyaan terbuka nomor 5
+di `docs/17`: apakah kartu yang diteruskan bertahan utuh.
