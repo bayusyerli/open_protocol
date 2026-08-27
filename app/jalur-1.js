@@ -72,7 +72,7 @@ function gambarGejala() {
 
 /* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
  *
- * 738 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * 730 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
  * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
  *
  * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
@@ -93,7 +93,7 @@ async function bukaHama(kunci, opsi = {}) {
         <p>
           <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
           registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
-          deskripsi gejalanya</strong> — nol dari 738 OPT berproduk memuatnya.
+          deskripsi gejalanya</strong> — nol dari 730 OPT berproduk memuatnya.
         </p>
         <p class="catatan">
           Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
@@ -101,8 +101,8 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — sepuluh OPT cabai
-          punya ciri pembandingnya.
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — sembilan belas OPT
+          cabai dan bawang merah punya ciri pembandingnya.
         </p>
       </div>
       <h2 class="judul-bagian">Di tanaman apa?</h2>
@@ -340,7 +340,13 @@ function blokNamaLokal(k) {
 // punya nilai yang tidak bisa ditandingi siapa pun yang hidup dari margin penjualan:
 // kemampuan berkata "jangan beli apa-apa untuk ini".
 function blokNolProduk(k) {
-  const vektor = k.pembanding.map((p) => p.membantah).find((m) => m && /kutu kebul/i.test(m.label));
+  // Penular datang dari entitasnya (`vector` pada pest.json), bukan dari pencocokan nama
+  // pada blok pembanding. Yang lama mencari /kutu kebul/i di antara OPT yang DIBANTAH,
+  // dan itu keliru dua kali: rules_out menyatakan apa yang terbantah, bukan apa yang
+  // menularkan — pada virus kuning keriting daftarnya memuat trips, yang tidak menularkan
+  // apa pun — dan begitu virus kedua masuk (mosaik bawang, penularnya kutu daun persik)
+  // tombolnya hilang tanpa ada yang menyalak.
+  const vektor = k.penular;
   return `
     <div class="kartu tabrakan">
       <h2>Jangan beli apa pun untuk ini</h2>

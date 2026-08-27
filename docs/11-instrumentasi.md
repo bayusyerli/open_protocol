@@ -152,7 +152,7 @@ sudah tercetak di layar lewat blok batas jawaban, dan sudah terdaftar di
 | Kunci | Tertabrak ketika | Yang menutupnya |
 |---|---|---|
 | `namaDagang` | Nama dicari, tidak ada padanan terdaftar | Pemetaan nama dagang ke nama terdaftar |
-| `gejalaOpt` | Gejala dicari, di luar sepuluh OPT terkurasi | Deskripsi gejala untuk OPT registri |
+| `gejalaOpt` | Gejala dicari, di luar OPT terkurasi | Deskripsi gejala untuk OPT registri |
 | `namaLokalTakTerpetakan` | Nama lokal dikenal, rujukannya belum ada | Perluasan kamus nama lokal |
 | `kandunganTakTerdaftar` | Kandungan diperiksa, tidak ada yang cocok | Kelengkapan komposisi registri pupuk |
 | `haraSediaan` | Komposisi pupuk kosong, hara tak terhitung | Kelengkapan komposisi registri pupuk |

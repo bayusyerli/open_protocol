@@ -101,6 +101,10 @@
       "$ref": "common.schema.json#/$defs/LangText",
       "description": "Apa yang TERLIHAT di kebun, dalam kata-kata orang yang melihatnya — bukan nama hamanya. Jalur insiden masuk lewat sini: yang panik tahu daunnya mengeriting ke atas, ia tidak tahu kata 'trips'. Dipisahkan dari `definition`, yang memuat catatan epidemiologi dan bukan gejala."
     },
+    "vector": {
+      "$ref": "common.schema.json#/$defs/Ref",
+      "description": "OPT yang MENULARKAN yang ini. Dipakai layar nol-produk: yang terinfeksi tidak bisa disemprot, tetapi penularnya bisa, dan tanaman yang belum terkena masih bisa diselamatkan. Tidak bisa diturunkan dari `distinguishing` — `rules_out` menyatakan apa yang TERBANTAH, dan pada virus kuning keriting rules_out memuat trips (bukan penular) bersama kutu kebul (penular). Menebak salah satunya berarti mengarahkan orang menyemprot serangga yang tidak menularkan apa pun."
+    },
     "distinguishing": {
       "type": "array",
       "description": "Ciri pembanding yang bisa diperiksa sendiri tanpa alat, dan apa yang terbantah kalau hasilnya begitu. Mesin tidak menebak; ini yang membuat orang bisa memastikan sendiri sebelum menyemprot. `rules_out` menunjuk OPT yang paling mudah tertukar dengannya.",

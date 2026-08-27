@@ -74,7 +74,7 @@ Pasal 77 melarang mengedarkan *dan menggunakan*. Menunggu pendapat hukum.
 
 | Jalur | Kategori | Ditopang data | Yang tidak sanggup |
 |---|---|---|---|
-| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis; 10 OPT cabai terkurasi bergejala, masing-masing dua ciri pembanding | ✕ Diagnosis. Nol dari 768 OPT **registri** punya deskripsi gejala, jadi pintunya baru sepuluh dan baru untuk cabai |
+| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis; 19 OPT terkurasi bergejala — 10 untuk cabai, 11 untuk bawang merah, dua dipakai bersama — masing-masing dua ciri pembanding | ✕ Diagnosis. Nol dari 760 OPT **registri** punya deskripsi gejala, jadi pintunya baru sembilan belas dan baru untuk dua komoditas |
 | **2 · Produk** — kemasan → isi → setara | Ketiganya | 96,4% pestisida & 71,3% pupuk punya komposisi; 63,5% pestisida identik dengan produk lain | ◐ Nama dagang di kemasan bisa berbeda dari nama terdaftar |
 | **3 · Hitungan** — pupuk + harga → Rp/kg hara | Pupuk | 5.130 pupuk berkomposisi angka terhadap 17 hara | ✕ Harga (nol di registri) dan status subsidi (nol dari 7.196) |
 | **4 · Keabsahan** — varietas → surat | Benih & bibit | 5.822 surat pelepasan, 5.138 pendaftaran, 580 PVT | ✕ Rekomendasi varietas. **Nol** dari 11.227 menyebut sifat agronomi |
@@ -158,7 +158,7 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 
 | Yang hilang | Akibatnya | Jalan keluar |
 |---|---|---|
-| **Deskripsi gejala OPT** — 0 dari 768 OPT registri; 10 dari 10 terkurasi sudah ditulis | Jalur 1 hanya punya sepuluh pintu masuk, seluruhnya untuk cabai | Kurasi · komoditas berikutnya, dan peninjauan penyuluh atas yang sepuluh |
+| **Deskripsi gejala OPT** — 0 dari 760 OPT registri; 19 dari 19 terkurasi sudah ditulis | Jalur 1 punya sembilan belas pintu masuk, dan hanya untuk cabai dan bawang merah | Kurasi · komoditas ketiga, dan peninjauan penyuluh atas yang sembilan belas |
 | **PHI** — **nol** dari 23.058 penggunaan | Tanggal aman panen tidak bisa dijanjikan di jalur mana pun | Sumber lain · foto label atau terbitan BSIP |
 | **Harga** — nol | Jalur 3 butuh satu masukan pengguna | Sumber lain · diketik sekali di kios |
 | **Penanda subsidi** — 0 dari 7.196 pupuk | Perbandingan harga tidak sadar-subsidi, padahal dokumen fondasi mensyaratkannya | Sumber lain · daftar produk bersubsidi Kementan |
