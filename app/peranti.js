@@ -103,13 +103,16 @@ function gambar() {
   el.perJalur.innerHTML = `
     <div class="kartu">
       <h2>Per jalur</h2>
-      <table>
-        <thead><tr>
-          <th>Jalur</th><th>Dibuka</th><th>Jawaban</th><th>Nol</th><th>Tak sanggup</th>
-          <th>Gagal</th><th>Ditinggal</th><th>Waktu p50</th><th>Waktu p90</th><th>Berulang</th>
-        </tr></thead>
-        <tbody>${baris}</tbody>
-      </table>
+      <div class="pembungkus-tabel" tabindex="0" role="region"
+           aria-label="Ringkasan penggunaan per jalur">
+        <table>
+          <thead><tr>
+            <th>Jalur</th><th>Dibuka</th><th>Jawaban</th><th>Nol</th><th>Tak sanggup</th>
+            <th>Gagal</th><th>Ditinggal</th><th>Waktu p50</th><th>Waktu p90</th><th>Berulang</th>
+          </tr></thead>
+          <tbody>${baris}</tbody>
+        </table>
+      </div>
       <p class="catatan">
         <strong>Nol</strong> dan <strong>tak sanggup</strong> ikut dihitung sebagai jawaban,
         karena pada jalur-jalur ini keduanya memang jawaban yang benar — “jangan beli apa pun

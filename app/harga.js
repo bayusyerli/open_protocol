@@ -71,6 +71,8 @@ const arah = (p) => {
 };
 
 let kepala = [];
+const BATAS_DAFTAR_AWAL = 12;
+let daftarLengkap = false;
 
 // ---------------------------------------------------------------------------
 // Daftar
@@ -104,19 +106,22 @@ function gambarDaftar(kueri = '') {
     return;
   }
 
-  const berangka = cocok.filter((x) => !x.kosong);
+  const semuaBerangka = cocok.filter((x) => !x.kosong);
+  const berangka = (!r && !daftarLengkap)
+    ? semuaBerangka.slice(0, BATAS_DAFTAR_AWAL)
+    : semuaBerangka;
   const kosong = cocok.filter((x) => x.kosong);
 
   // Tanggal terbaru di seluruh daftar. Di layar harga "per kapan" sekelas dengan "berapa",
   // dan sampai 24 Agustus 2026 tanggalnya baru muncul setelah satu komoditas dibuka —
   // artinya seluruh daftar berdiri tanpa keterangan umur sama sekali.
-  const terbaru = berangka.map((x) => x.t).filter(Boolean).sort().at(-1);
+  const terbaru = semuaBerangka.map((x) => x.t).filter(Boolean).sort().at(-1);
 
   const luar = kepala.filter((x) => !TANI(x));
   el.daftar.innerHTML = `
     ${terbaru ? `<p class="catatan tanggal-daftar">Angka terbaru <strong>${teks(tanggal(terbaru) ?? terbaru)}</strong> · rata-rata nasional tertimbang penduduk.</p>` : ''}
     <p class="bantuan" role="status">
-      ${n(berangka.length)} komoditas berangka${kosong.length ? `, ${n(kosong.length)} diterbitkan tanpa angka` : ''}.
+      ${n(semuaBerangka.length)} komoditas berangka${kosong.length ? `, ${n(kosong.length)} diterbitkan tanpa angka` : ''}.
     </p>
     ${luar.length ? `
       <details class="luar-lingkup">
@@ -158,10 +163,14 @@ function gambarDaftar(kueri = '') {
             </li>`;
           }).join('')}
         </ul>
+        ${!r && !daftarLengkap && semuaBerangka.length > berangka.length ? `
+          <button type="button" class="tampilkan-lain" data-tampilkan-harga>
+            Tampilkan ${n(semuaBerangka.length - berangka.length)} komoditas berangka lainnya
+          </button>` : ''}
       </section>` : ''}
     ${kosong.length ? `
-      <section class="kelompok-harga">
-        <h2><span>Terdaftar, tanpa angka</span><span class="cacah">${n(kosong.length)}</span></h2>
+      <details class="kelompok-harga harga-tanpa-angka"${r ? ' open' : ''}>
+        <summary><span>Terdaftar, tanpa angka</span><span class="cacah">${n(kosong.length)}</span></summary>
         <ul class="daftar-harga">
           ${kosong.map((x) => {
             const l = lanjutKosong(x.k);
@@ -175,7 +184,7 @@ function gambarDaftar(kueri = '') {
             </li>`;
           }).join('')}
         </ul>
-      </section>` : ''}`;
+      </details>` : ''}`;
 }
 
 // Yang buntu di layar ini belum tentu buntu di platform ini. Keempat pupuk tidak punya
@@ -951,6 +960,13 @@ document.getElementById('formCari').addEventListener('submit', (ev) => {
 });
 
 el.daftar.addEventListener('click', (ev) => {
+  const tampilkan = ev.target.closest('[data-tampilkan-harga]');
+  if (tampilkan) {
+    daftarLengkap = true;
+    gambarDaftar(el.q.value);
+    el.daftar.querySelector('.daftar-harga li:nth-child(13) a')?.focus();
+    return;
+  }
   const a = ev.target.closest('a[href^="harga.html?k="]');
   if (!a) return;
   ev.preventDefault();

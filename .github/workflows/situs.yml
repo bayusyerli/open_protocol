@@ -75,6 +75,14 @@ jobs:
         working-directory: spec
         run: npm run uji-terbit
 
+      - name: Pasang Chromium untuk regression test UI
+        working-directory: spec
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser, keyboard, dan accessibility
+        working-directory: spec
+        run: npm run test:browser
+
       - name: Bangun halaman
         run: node spec/tools/bangun-halaman.mjs --tulis --asal="$ASAL"
 

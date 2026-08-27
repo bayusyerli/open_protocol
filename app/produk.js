@@ -32,6 +32,8 @@ const el = {
   hasil: document.getElementById('hasil'),
   rincian: document.getElementById('rincian'),
   batas: document.getElementById('batasJawaban'),
+  jalurNama: document.getElementById('jalurNama'),
+  jalurKandungan: document.getElementById('jalurKandungan'),
 };
 
 document.getElementById('tanpaJs')?.remove();
@@ -46,7 +48,25 @@ let produkKini = null;
  * digambar sekali saat halaman muat, sementara rekamannya dibuka jauh sesudahnya —
  * jadi yang diserahkan ke sana pembacanya, bukan nilainya. */
 let terbukaKini = null;
+let modeKembali = 'nama';
 const tautanKe = (q) => new URL(q, location.href).href;
+
+function pilihMode(mode) {
+  const kandungan = mode === 'kandungan';
+  el.jalurNama.hidden = kandungan;
+  el.jalurKandungan.hidden = !kandungan;
+  document.querySelectorAll('.pemilih-tugas button[data-mode]').forEach((b) => {
+    b.setAttribute('aria-pressed', String(b.dataset.mode === mode));
+  });
+  // Saat dipilih dengan keyboard, fokus tetap pada tombol pemilih. Memindahkannya ke
+  // formulir membuat tombol yang baru ditekan menghilang di balik bilah sticky dan
+  // memutus urutan Tab; pengguna melanjutkan sendiri ke medan pertama dengan Tab.
+}
+
+document.querySelector('.pemilih-tugas')?.addEventListener('click', (ev) => {
+  const tombol = ev.target.closest('button[data-mode]');
+  if (tombol) pilihMode(tombol.dataset.mode);
+});
 
 /* Kartu teruskan (A2). Disusun dari rekaman yang sedang terbuka, dan `wajib`-nya satu
  * kalimat yang tidak boleh hilang: nomor pendaftaran hanya berguna kalau dicocokkan ke
@@ -264,8 +284,9 @@ async function blokSetara(p) {
 function selesai() {
   catatJawab(2, UKUR.isi);
   pasangKembali(el.rincian, {
-    fokus: el.q,
+    fokus: modeKembali === 'kandungan' ? document.getElementById('hasilKandungan') : el.q,
     sesudah: () => {
+      pilihMode(modeKembali);
       el.hasil.hidden = false;
       // Paksa tata letak dihitung ulang sebelum fokus menggulir ke kotak carinya.
       void document.documentElement.scrollHeight;
@@ -273,7 +294,9 @@ function selesai() {
   });
 }
 
-async function buka(id, pecahan) {
+async function buka(id, pecahan, { dari = 'nama' } = {}) {
+  modeKembali = dari;
+  pilihMode('nama');
   el.hasil.hidden = true;
   el.rincian.innerHTML = '<p class="kosong">Mengambil rincian…</p>';
   el.rincian.focus();
@@ -343,6 +366,13 @@ for (const wadah of [el.hasil, el.rincian]) {
 
     // Daftar merek per kadar diambil saat kartunya dibuka, bukan saat layarnya
     // digambar: Sipermetrin punya 37 kadar, dan yang membukanya cuma butuh satu.
+    const semuaKadar = ev.target.closest('button[data-buka-semua-kadar]');
+    if (semuaKadar) {
+      el.rincian.querySelectorAll('[data-kadar-lanjutan]').forEach((k) => { k.hidden = false; });
+      semuaKadar.remove();
+      return;
+    }
+
     const kad = ev.target.closest('button[data-buka]');
     if (!kad || !bahanKini) return;
     const i = Number(kad.dataset.buka);
@@ -409,7 +439,7 @@ async function jalankan() {
       sanggah: () => terbukaKini,
     });
     // C2 — pintu kedua ke layar yang sama: masuk dari angka di karung, bukan dari nama.
-    pasangKandungan(buka);
+    pasangKandungan((id, pecahan) => buka(id, pecahan, { dari: 'kandungan' }));
     el.q.disabled = false;
 
     // Datang dari beranda: kuerinya dipulihkan supaya tombol kembali peramban tidak

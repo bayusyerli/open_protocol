@@ -3,6 +3,10 @@ node_modules/
 *.log
 data-registri/
 
+# Artefak regression test browser — laporan dan trace dibangun ulang oleh Playwright.
+spec/test-results/
+spec/playwright-report/
+
 # Indeks turunan — dibangun ulang dengan `node spec/tools/bangun-indeks.mjs --tulis`.
 # 5.142 berkas, 21 MB, deterministik dan sepenuhnya diturunkan dari spec/vocab/.
 spec/indeks/

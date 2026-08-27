@@ -30,8 +30,8 @@
   </div>
   <h1>Sebenarnya ini apa?</h1>
   <p class="lede">
-    Ketik nama yang tertulis di botol, karung, atau sachet. Yang keluar: isinya,
-    nomor pendaftarannya, dan <strong>merek lain yang isinya sama persis</strong>.
+    Pilih cara memeriksa kemasan: cari nama terdaftarnya, atau cocokkan angka kandungan
+    pupuk. Kedua pemeriksaan dipisah supaya satu tugas tidak menenggelamkan yang lain.
   </p>
 </header>
 
@@ -48,23 +48,36 @@
     </p>
   </div>
 
+  <div class="pemilih-tugas" role="group" aria-label="Cara memeriksa produk">
+    <button type="button" data-mode="nama" aria-pressed="true" aria-controls="jalurNama">
+      Cari nama produk
+      <span>Nomor, isi, penggunaan, dan merek setara</span>
+    </button>
+    <button type="button" data-mode="kandungan" aria-pressed="false" aria-controls="jalurKandungan">
+      Periksa angka kandungan
+      <span>Cocokkan angka pupuk pada karung ke registri</span>
+    </button>
+  </div>
 
-  <form class="cari" id="formCari" role="search" onsubmit="return false">
-    <label for="q">Nama produk pada kemasan</label>
-    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
-           placeholder="misal: LARBAN, Gramoxone, NPK" enterkeyhint="search" disabled>
-    <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
-  </form>
+  <section id="jalurNama" aria-label="Pencarian berdasarkan nama produk">
+    <form class="cari" id="formCari" role="search" onsubmit="return false">
+      <label for="q">Nama produk pada kemasan</label>
+      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="misal: LARBAN, Gramoxone, NPK" enterkeyhint="search" disabled>
+      <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
+    </form>
 
-  <section id="hasil"></section>
-  <section id="rincian" tabindex="-1"></section>
+    <section id="hasil" aria-label="Hasil pencarian nama"></section>
+    <section id="rincian" tabindex="-1" aria-label="Rincian produk"></section>
+  </section>
 
   <!-- C2 · pemeriksaan keaslian lewat KANDUNGAN, bukan nomor pendaftaran.
        Premisnya diganti jawaban lapangan: "Tidak. Biasanya langsung lihat kemasan, cek
        kandungan." Registri membenarkannya dari sisi lain — 667 dari 7.196 pupuk tidak
        punya nomor sama sekali. -->
+  <section id="jalurKandungan" aria-label="Pemeriksaan berdasarkan angka kandungan" hidden>
   <div class="kartu" id="kartuKandungan">
-    <h2>Atau periksa dari angka di karungnya</h2>
+    <h2>Periksa dari angka di karungnya</h2>
     <p>
       Nama dan nomor pendaftaran sering tidak dipakai orang saat membeli — yang dibaca
       <strong>kandungan yang tercetak di kemasan</strong>. Masukkan angkanya di sini, dan
@@ -88,6 +101,7 @@
   </div>
 
   <section id="hasilKandungan" tabindex="-1"></section>
+  </section>
 
   <details class="batas">
     <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>

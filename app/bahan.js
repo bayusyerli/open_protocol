@@ -20,10 +20,10 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
 // perilaku buka-tutup yang sama. Keduanya menyatakan hal yang sama (satu pasangan
 // bahan+kadar, sekian merek di baliknya); memberinya dua rupa membuat orang mengira
 // keduanya dua hal yang berbeda.
-function kartuKadar(k, i) {
+function kartuKadar(k, i, lanjutan = false) {
   const jumlah = Array.isArray(k.m) ? k.m.length : (k.merek ?? 0);
   return `
-    <div class="kartu bahan">
+    <div class="kartu bahan"${lanjutan ? ' data-kadar-lanjutan hidden' : ''}>
       <button type="button" class="bahan-kepala" data-buka="${i}" aria-expanded="false"
               aria-controls="bahan-${i}">
         <span class="bahan-nama">${teks(k.k)}</span>
@@ -70,6 +70,8 @@ export function tabelMerek(merek) {
 }
 
 export function layarBahan(id, b) {
+  const awal = 8;
+  const sisa = Math.max(0, b.kadar.length - awal);
   return `
     <div class="kartu">
       <h2>${teks(b.n)}<span class="lencana">Bahan aktif</span></h2>
@@ -104,7 +106,18 @@ export function layarBahan(id, b) {
       </p>
     </div>
 
-    ${b.kadar.map(kartuKadar).join('')}
+    <section class="kelompok-kadar" aria-labelledby="judulKadar">
+      <h2 id="judulKadar">Kadar yang tercatat</h2>
+      <p class="catatan">
+        ${angkaId(Math.min(awal, b.kadar.length))} dari ${angkaId(b.kadar.length)} kadar
+        ditampilkan lebih dulu. Buka satu kadar untuk melihat mereknya.
+      </p>
+      ${b.kadar.map((k, i) => kartuKadar(k, i, i >= awal)).join('')}
+      ${sisa ? `<button type="button" class="kembali tampil-semua-kadar"
+                       data-buka-semua-kadar aria-expanded="false">
+        Tampilkan ${angkaId(sisa)} kadar lainnya
+      </button>` : ''}
+    </section>
     ${HTML_KEMBALI}`;
 }
 

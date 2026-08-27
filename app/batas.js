@@ -268,6 +268,17 @@ export function pasangBatas(wadah, spek) {
   const meta = bacaMeta();
   const salah = [];
 
+  /* Ringkasan mutu data harus terbaca SEBELUM alat dipakai. Sampai sekarang tempat
+   * penampungnya ditulis di kaki tiap HTML, sehingga status draft dan lubang data baru
+   * terlihat sesudah ribuan piksel hasil. Pemindahan dilakukan komponen bersama agar
+   * halaman baru tidak bisa mengulangi urutan yang sama. Beranda dikecualikan: bloknya
+   * memang sudah tinggal di dalam lembar "Tentang data". */
+  if (!wadah.closest('dialog')) {
+    const utama = wadah.closest('main');
+    if (utama && utama.firstElementChild !== wadah) utama.prepend(wadah);
+    wadah.classList.add('batas-jawaban-utama');
+  }
+
   if (!spek?.sumber?.length) salah.push('layar ini tidak menyebut satu sumber pun');
   if (!spek?.takDijawab?.length) salah.push('layar ini tidak menyebut satu pun yang tidak diketahuinya');
 

@@ -187,15 +187,7 @@ async function bukaHama(kunci, opsi = {}) {
         Terdaftar pada ${h.di.length} komoditas. Pilih satu untuk melihat bahan aktif yang
         terdaftar untuknya di tanaman itu.
       </p>
-      <ul class="daftar">
-        ${h.di.map((d) => `
-          <li>
-            <button type="button" data-berkas="${teks(d.b)}">
-              <span class="nama">${teks(d.k)}</span>
-              <span class="sub">${angkaId(d.p)} produk terdaftar</span>
-            </button>
-          </li>`).join('')}
-      </ul>
+      ${blokPemilihTanaman(h.di.map((d) => ({ nama: d.k, berkas: d.b, produk: d.p })), 'hama')}
       <p class="catatan">${EJAAN_TERPISAH}</p>
       <button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>`;
     catatJawab(1, UKUR.isi);
@@ -569,6 +561,135 @@ const EJAAN_TERPISAH = 'Barisnya ejaan registri apa adanya dan <strong>tidak dig
   + 'satu tanaman kadang punya lebih dari satu baris, dan produk pada satu baris tidak '
   + 'ikut terhitung di baris lain. Pilih yang bunyinya sama dengan yang tercetak di label.';
 
+/* SATU BARIS, DUA PEMILIH, DAN SEKARANG SATU DEFINISI.
+ *
+ * Pemilih tanaman muncul di dua tempat — sesudah kartu gejala, dan sesudah kartu "kamu
+ * masuk lewat nama" — dengan bentuk yang sama persis tetapi ditulis dua kali, masing-masing
+ * dengan nama medan sendiri (`d.k`/`d.b`/`d.p` di satu sisi, `d.nama`/`d.berkas`/`d.produk`
+ * di sisi lain). Yang mengubah salah satunya tanpa mengubah yang lain membuat dua pintu ke
+ * layar yang sama berbeda diam-diam, dan itu sudah pernah terjadi di jalur ini.
+ *
+ * Yang tercetak tidak berubah sedikit pun dari yang ditulis dua kali sebelumnya, termasuk
+ * "produk terdaftar" utuh: yang dipadatkan pemilihnya ada di `gaya.css` (`.daftar.ringkas`),
+ * dan itu soal lebar kolom, bukan soal kata. Yang bertambah `data-cari` — nama yang sama
+ * dalam bentuk yang bisa dibandingkan saringan, dihitung sekali saat dirender dan bukan
+ * sekali per ketukan tombol.
+ */
+function barisKomoditas({ nama, berkas, produk }) {
+  return `
+    <li data-cari="${teks(kunciCari(nama))}">
+      <button type="button" data-berkas="${teks(berkas)}">
+        <span class="nama">${teks(nama)}</span>
+        <span class="sub">${angkaId(produk)} produk terdaftar</span>
+      </button>
+    </li>`;
+}
+
+/* Yang dibandingkan saringan BUKAN yang tercetak.
+ *
+ * Nama registri membawa tanda baca yang tidak diketik siapa pun: "Hutan Tanaman Industri
+ * (Acacia mangium)", "Persiapan lahan budidaya padi sawah (TOT)", "Eucalyptus sp". Yang
+ * mengetik "acacia mangium" tidak akan pernah cocok dengan kurungnya, dan yang mengetik
+ * "padi sawah" tidak boleh gagal karena ada "(TOT)" di belakangnya. Jadi kedua sisinya
+ * diratakan lebih dulu: huruf kecil, tanda diakritik dilepas, dan apa pun yang bukan
+ * huruf atau angka jadi satu spasi.
+ *
+ * Cocoknya DARI AWAL KATA, bukan dari mana saja. Potongan bebas kelihatan lebih murah hati
+ * sampai "ubi" menampilkan "Kubis" — barisnya benar-benar memuat huruf itu, dan yang mencari
+ * ubi kayu dapat sekeranjang sayur yang tidak ia sebut. Yang dijaga awalnya saja, ujungnya
+ * tetap terbuka: "jag" masih menemukan "Jagung", "sawit" masih menemukan "Budidaya kelapa
+ * sawit" (kata ketiga), dan "padi sawah" masih menemukan "Persiapan lahan budidaya padi
+ * sawah (TOT)" — sebab kurungnya sudah jadi spasi sebelum dibandingkan. */
+const kunciCari = (t) => t
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .replace(/[^a-z0-9]+/g, ' ')
+  .trim();
+
+/* SARINGAN CUMA MUNCUL KALAU DAFTARNYA MEMANG TIDAK MUAT.
+ *
+ * Tiga belas tanaman — ulat grayak — setinggi 731 px pada layar 812 px sesudah barisnya
+ * dijajarkan dua kolom, dan tiap dua tanaman berikutnya menambah satu baris petak 66 px.
+ * Enam belas sudah 797 px, dan itu belum menghitung nama panjang yang membungkus jadi dua
+ * baris. Di bawah angka itu kotaknya cuma satu benda tambahan di atas daftar yang sudah
+ * terlihat seluruhnya; di atasnya ia yang menggantikan menggulir. 31 dari 738 OPT registri
+ * melewatinya — yang terpanjang 75 komoditas — dan median daftarnya 1. */
+const AMBANG_SARING = 16;
+
+/* KOSONG DI SINI TIDAK BOLEH TERBACA "TIDAK TERDAFTAR", dan itu bahaya yang dibawa
+ * saringan ini sendiri.
+ *
+ * Seluruh jalur ini dibangun supaya nol produk berarti nol produk (lihat `blokNolProduk`).
+ * Saringan memasukkan satu cara baru untuk melihat layar kosong yang artinya sama sekali
+ * lain: barisnya ada, ejaannya saja yang tidak sama dengan yang diketik. Yang mengetik
+ * "cabe" atau "brambang" akan melihat daftar kosong di halaman yang sepanjang hari
+ * mengatakan "kalau kosong berarti memang tidak ada" — dan pulang mengira tanamannya
+ * tidak terdaftar.
+ *
+ * Jadi kekosongan saringan menyebut sebabnya, mengulangi kata yang diketik, dan membawa
+ * jalan keluarnya sendiri. Cacahnya juga tidak pernah disembunyikan: berapa yang tampil
+ * DAN berapa yang sedang ditutup selalu tertulis, supaya tidak ada keadaan di layar ini
+ * yang jumlahnya kelihatan lebih kecil daripada yang sebenarnya. */
+function blokPemilihTanaman(daftar, kunci) {
+  const baris = daftar.map(barisKomoditas).join('');
+  if (daftar.length < AMBANG_SARING) return `<ul class="daftar ringkas">${baris}</ul>`;
+  const id = `saring-${kunci}`;
+  return `
+    <div class="cari-tanaman">
+      <label for="${teks(id)}">Cari nama tanamannya</label>
+      <input type="search" id="${teks(id)}" data-saring autocomplete="off" spellcheck="false"
+             enterkeyhint="done" placeholder="misalnya: jagung"
+             aria-describedby="${teks(id)}-cacah">
+      <p class="bantuan" id="${teks(id)}-cacah" data-cacah aria-live="polite">
+        ${angkaId(daftar.length)} tanaman, semuanya tampil.
+      </p>
+    </div>
+    <ul class="daftar ringkas">${baris}</ul>
+    <div class="cari-tanaman-nihil" data-nihil hidden></div>`;
+}
+
+/* Dijalankan ulang tiap ketukan tombol, dan sengaja tanpa penundaan: yang dibandingkan
+ * paling banyak 75 potongan teks yang sudah diratakan saat dirender, jadi menundanya cuma
+ * menambah jeda yang terasa tanpa menghemat apa pun. */
+function jalankanSaring(kotak) {
+  const wadah = kotak.closest('.cari-tanaman');
+  const daftar = wadah.nextElementSibling;
+  const cacah = wadah.querySelector('[data-cacah]');
+  const nihil = daftar.nextElementSibling;
+  const baris = [...daftar.children];
+  const cari = kunciCari(kotak.value);
+
+  let tampil = 0;
+  for (const li of baris) {
+    const cocok = !cari || ` ${li.dataset.cari}`.includes(` ${cari}`);
+    li.hidden = !cocok;
+    if (cocok) tampil += 1;
+  }
+
+  const tertutup = baris.length - tampil;
+  daftar.hidden = tampil === 0;
+  nihil.hidden = tampil > 0;
+
+  if (!cari) {
+    cacah.textContent = `${angkaId(baris.length)} tanaman, semuanya tampil.`;
+  } else {
+    cacah.textContent = `${angkaId(tampil)} dari ${angkaId(baris.length)} tanaman tampil`
+      + `${tertutup ? `, ${angkaId(tertutup)} ditutup saringan` : ''}.`;
+  }
+
+  if (tampil === 0) {
+    nihil.innerHTML = `
+      <p>
+        <strong>Tidak ada baris yang ejaannya memuat “${teks(kotak.value.trim())}”.</strong>
+        Itu soal ejaan, <strong>bukan soal terdaftar atau tidak</strong> — yang di daftar ini
+        ejaan registri apa adanya, dan registri menulis “Cabai” untuk yang di kebun disebut
+        cabe, “Bawang merah” untuk yang disebut brambang.
+      </p>
+      <button type="button" class="kembali" data-hapus-saring>Tampilkan ${angkaId(baris.length)} tanamannya lagi</button>`;
+  }
+}
+
 function blokKomoditas(k) {
   const urut = k.di.slice().sort((a, b) => b.produk - a.produk);
   return `
@@ -578,15 +699,7 @@ function blokKomoditas(k) {
         Yang terdaftar berbeda-beda menurut tanamannya. Di luar daftar ini,
         <strong>tidak ada produk yang terdaftar</strong> untuk ${teks(k.nama.toLowerCase())}.
       </p>
-      <ul class="daftar">
-        ${urut.map((d) => `
-          <li>
-            <button type="button" data-berkas="${teks(d.berkas)}">
-              <span class="nama">${teks(d.nama)}</span>
-              <span class="sub">${angkaId(d.produk)} produk terdaftar</span>
-            </button>
-          </li>`).join('')}
-      </ul>
+      ${blokPemilihTanaman(urut, 'opt')}
       <p class="catatan">${EJAAN_TERPISAH}</p>
     </div>`;
 }
@@ -868,6 +981,27 @@ el.gejala.addEventListener('click', (ev) => {
   if (t) bukaOpt(t.dataset.opt);
 });
 
+/* Didengarkan di `el.hasil`, bukan dipasang ke kotaknya saat dirender.
+ *
+ * Pemilih tanaman digambar ulang setiap kali OPT lain dibuka — `el.hasil.innerHTML`
+ * ditimpa utuh — dan pemasang yang menempel ke elemennya harus dipanggil lagi di tiap
+ * tempat yang menimpanya: `bukaOpt` lewat `blokKomoditas`, dan `bukaHama` langsung. Yang
+ * lupa memanggilnya menghasilkan kotak cari yang terlihat normal dan diam saja saat
+ * diketik, dan diamnya cuma ketahuan kalau ada yang mengujinya di layar yang tepat. */
+el.hasil.addEventListener('input', (ev) => {
+  const kotak = ev.target.closest('input[data-saring]');
+  if (kotak) jalankanSaring(kotak);
+});
+
+/* Kotak cari di dalam kartu tanpa <form>: tanpa ini Enter tidak melakukan apa pun di
+ * papan ketik ponsel, dan yang mengetik menunggu sesuatu terjadi. Yang benar menutup
+ * papan ketiknya — hasilnya memang sudah tersaring sejak huruf pertama. */
+el.hasil.addEventListener('keydown', (ev) => {
+  if (ev.key !== 'Enter') return;
+  const kotak = ev.target.closest('input[data-saring]');
+  if (kotak) { ev.preventDefault(); kotak.blur(); }
+});
+
 el.hasil.addEventListener('click', async (ev) => {
   const opt = ev.target.closest('button[data-opt]');
   if (opt) return bukaOpt(opt.dataset.opt);
@@ -884,6 +1018,19 @@ el.hasil.addEventListener('click', async (ev) => {
 
   const kom = ev.target.closest('button[data-berkas]');
   if (kom) return bukaKomoditas(kom.dataset.berkas);
+
+  /* "Tampilkan N tanamannya lagi" — jalan keluar dari saringan yang tidak menemukan apa
+   * pun. Fokusnya dikembalikan ke kotaknya: yang menekan tombol ini masih sedang mencari,
+   * dan memulangkannya ke daftar tanpa titik sisip berarti ia harus menemukan kotaknya
+   * sekali lagi untuk mengetik ejaan yang lain. */
+  const hapusSaring = ev.target.closest('button[data-hapus-saring]');
+  if (hapusSaring) {
+    const kotak = hapusSaring.closest('.kartu, #hasil').querySelector('input[data-saring]');
+    kotak.value = '';
+    jalankanSaring(kotak);
+    kotak.focus();
+    return;
+  }
 
   // "← Pilih tanaman lain": tingkat ketiga menutup dirinya sendiri dan mengembalikan
   // pemilih tanaman, tanpa membuang layar OPT yang di atasnya.

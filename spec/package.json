@@ -8,6 +8,7 @@
     "check": "node validate.mjs",
     "test": "node test-rules.mjs && node tools/uji-dosis.mjs && node tools/uji-hitung.mjs",
     "uji-terbit": "npm run angka && node tools/uji-tanya.mjs",
+    "test:browser": "playwright test",
     "all": "npm run check && npm test && npm run urai && npm run pagar",
     "semua": "npm run all && npm run uji-terbit",
     "urai": "node tools/cek-urai-app.mjs",
@@ -15,7 +16,9 @@
     "angka": "node tools/cek-angka-docs.mjs"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.13.0",
     "@anthropic-ai/sdk": "^0.120.0",
+    "@playwright/test": "^1.62.1",
     "ajv": "^8.17.1",
     "ajv-formats": "^3.0.1"
   }

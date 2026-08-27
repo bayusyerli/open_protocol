@@ -269,7 +269,7 @@
 }
 .lembar-cangkang-kepala h2 { margin: 0; font-size: 1rem; }
 .lembar-cangkang-kepala button {
-  width: 34px; height: 34px; flex: none;
+  width: 44px; height: 44px; flex: none;
   border: 1px solid var(--garis); border-radius: 8px;
   background: transparent; color: var(--teks);
   font-size: 1.1rem; line-height: 1; cursor: pointer;
@@ -546,6 +546,92 @@ h3 { font-size: .95rem; margin: 1.2rem 0 .3rem; }
 .daftar .nama { display: block; font-weight: 600; }
 .daftar .sub { display: block; font-size: .82rem; color: var(--teks-lemah); }
 
+/* PEMILIH TANAMAN — daftar yang isinya cuma nama dan satu angka, dan karena itu tidak
+   berhak atas satu baris penuh masing-masing.
+
+   Bentuk `.daftar` biasa dipakai daftar gejala, dan di sana tinggi barisnya memang perlu:
+   yang dibandingkan kalimat pembeda, bukan nama. Pemilih tanaman tidak punya kalimat apa
+   pun — "Cabai" dan "184 produk terdaftar" — tetapi mewarisi tinggi yang sama: 71 px per
+   baris, dan kartunya jadi 1.296 px untuk ulat grayak (13 tanaman) di layar 812 px. Yang
+   menanam anggrek — baris terakhir — menggulir melewati dua belas nama yang bukan
+   miliknya untuk sampai ke satu tombol. Pada "Gulma Berdaun Lebar" (75 komoditas)
+   daftarnya 5.325 px, dan memilih dari sana berhenti jadi memilih.
+
+   Jadi barisnya dijajarkan menyamping selebar yang muat, dan sesaknya dikurangi. Urutannya
+   tetap menurut banyaknya produk — dibaca kiri ke kanan lalu turun. Yang tidak berubah:
+   satu tombol per ejaan registri, tidak digabung dan tidak dijumlahkan (lihat
+   EJAAN_TERPISAH di `tanaman.js`) — yang dipadatkan bentuknya, bukan isinya.
+
+   NAMA DAN ANGKANYA TETAP BERTUMPUK, DAN ITU SUDAH DIUJI SEBALIKNYA. Menyandingkannya
+   dalam satu baris memang lebih pendek lagi, tetapi pada kolom 150 px di ponsel 375 px
+   nama dua kata — "Kacang panjang", "Bawang merah", "Cabai merah" — patah dan barisnya
+   jadi 67 px sementara tetangganya 42 px. Daftar yang tingginya berselang-seling lebih
+   sulit dipindai daripada daftar yang sedikit lebih panjang, dan memendekkan angkanya
+   jadi "184" saja menghapus satu-satunya kata yang menyatakan ini pendaftaran. */
+.daftar.ringkas {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr));
+  gap: .4rem;
+  margin-top: .9rem;
+}
+
+.daftar.ringkas li + li { margin-top: 0; }
+
+/* `height: 100%` menyamakan tinggi sesama kolom dalam satu baris petak; tanpa itu tombol
+   yang namanya pendek berdiri lebih rendah daripada tetangganya dan tepinya bergerigi. */
+.daftar.ringkas button { height: 100%; padding: .5rem .6rem; }
+
+.daftar.ringkas .nama { font-size: .95rem; line-height: 1.35; }
+
+/* Angkanya tidak boleh patah dua baris: yang membedakan "184" dari "1" cuma dia, dan
+   `tabular-nums` menyejajarkan kolomnya tanpa perlu tabel. */
+.daftar.ringkas .sub { margin-top: .1rem; font-size: .78rem; font-variant-numeric: tabular-nums; }
+
+/* Baris yang sedang ditutup saringan. `.daftar.ringkas` petak, dan anak petak yang
+   `hidden` tetap menempati selnya di sebagian peramban kalau `display`-nya diberi nilai
+   lain di tempat mana pun — jadi dinyatakan sekali di sini, bukan diandalkan dari lembar
+   bawaan peramban. */
+.daftar.ringkas li[hidden] { display: none; }
+
+/* ----------------------------------------------------- saringan nama tanaman */
+/* NAMANYA `cari-tanaman`, BUKAN `saring`, DAN ITU BUKAN SELERA. `batas.css` sudah memakai
+   `.saring` untuk penyaring kemampuan lab di layar C7 — sebuah fieldset `display: flex`
+   berbingkai — dan `tanaman.html` memuat lembar itu untuk komponen batas jawabannya. Kotak
+   ini sempat mewarisinya utuh: bingkai kotak di sekeliling label dan sebuah baris flex yang
+   kebetulan masih terbaca karena `flex-wrap`. Dua komponen berlainan di bawah satu nama
+   kelas hanya menunggu salah satunya diperbaiki.
+
+   Kotaknya lebih kecil daripada `.cari` di beranda, dan itu bukan penghematan ruang.
+   Kotak beranda pintu masuk halaman — ia yang ditanya lebih dulu. Yang ini berdiri di
+   tengah kartu, sesudah pertanyaannya ("Di tanaman apa?") dijawab daftar di bawahnya;
+   sebesar kotak beranda ia akan terbaca sebagai pencarian seluruh situs, dan yang
+   mengetik nama hama ke dalamnya akan dijawab "tidak ada baris yang cocok" oleh saringan
+   yang memang cuma tahu nama tanaman. */
+.cari-tanaman { margin: 1rem 0 0; }
+
+.cari-tanaman label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: .3rem; }
+
+.cari-tanaman input {
+  width: 100%;
+  padding: .55rem .7rem;
+  font-size: 1rem;
+  font-family: inherit;
+  color: var(--teks);
+  background: var(--latar-kartu);
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+}
+
+.cari-tanaman input:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
+
+/* Cacahnya berubah tiap ketukan dan dibacakan `aria-live`; tingginya dikunci supaya
+   daftar di bawahnya tidak bergeser naik-turun saat angkanya berganti panjang. */
+.cari-tanaman .bantuan { min-height: 1.2em; margin-top: .35rem; }
+
+.cari-tanaman-nihil { margin: 1.25rem 0 0; }
+.cari-tanaman-nihil p { margin: 0; color: var(--teks-lemah); }
+.cari-tanaman-nihil .kembali { margin-top: .9rem; }
+
 /* Kalimat pembeda di bawah judul gejala jalur 1. BUKAN `.sub`: yang di sana keterangan
    cacah yang boleh diabaikan, sedangkan kalimat ini justru yang memutuskan pilihan —
    dua judul bisa sama-sama berbunyi "daun mengeriting" dan yang membedakannya arah
@@ -608,7 +694,8 @@ h3 { font-size: .95rem; margin: 1.2rem 0 .3rem; }
   .kunci dt { margin-top: .55rem; font-size: .8rem; }
 }
 
-.pembungkus-tabel { overflow-x: auto; margin: .75rem 0 0; }
+.pembungkus-tabel { overflow-x: auto; margin: .75rem 0 0; overscroll-behavior-inline: contain; }
+.pembungkus-tabel[tabindex]:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
 
 table { border-collapse: collapse; width: 100%; font-size: .88rem; }
 th, td { text-align: left; padding: .45rem .6rem; border-bottom: 1px solid var(--garis); }
@@ -632,6 +719,7 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 .kembali {
   margin: 1.5rem 0 0;
+  min-height: 44px;
   padding: .55rem .9rem;
   font: inherit;
   color: var(--teks);
@@ -645,7 +733,15 @@ td.angka { white-space: nowrap; font-variant-numeric: tabular-nums; }
 
 /* ------------------------------------------------------------------ batas */
 .batas { margin: 2.5rem 0 0; border-top: 1px solid var(--garis); padding-top: 1rem; }
-.batas summary { cursor: pointer; font-weight: 600; font-size: .92rem; }
+.batas summary {
+  display: flex;
+  align-items: center;
+  min-height: 44px;
+  padding: .35rem 0;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: .92rem;
+}
 
 /* Label bagian ini judul sungguhan sejak 23 Agustus 2026, supaya h3 di dalamnya punya
    induk dan tidak ada layar yang melompat h1 → h3. Gayanya sengaja tidak berubah:
@@ -783,6 +879,26 @@ a { color: var(--aksen); }
    yang tidak bisa ditarik kembali adalah kekeliruan yang mahal di layar sempit. */
 
 #tindakan .tombol-baris { display: flex; flex-wrap: wrap; gap: .6rem; }
+
+.tombol-baris button,
+#hapusSemua {
+  min-height: 44px;
+  padding: .6rem 1rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar-kartu);
+  color: var(--teks);
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+#hapusSemua { border-color: var(--bahaya); color: var(--bahaya); }
+
+main details > summary {
+  min-height: 44px;
+  box-sizing: border-box;
+}
 
 #tindakan button {
   min-height: 44px;
@@ -966,7 +1082,8 @@ a { color: var(--aksen); }
 /* Nama merek di dalam tabel: tetap tombol, karena ia membuka layar — tetapi
    berpakaian tautan, karena itulah yang dilakukannya. */
 .tautan {
-  padding: 0;
+  min-height: 44px;
+  padding: .45rem 0;
   border: 0;
   background: none;
   color: var(--aksen);
@@ -1231,7 +1348,7 @@ a { color: var(--aksen); }
 .strip-tingkat > summary:focus-visible { outline: 3px solid currentColor; outline-offset: -3px; border-radius: var(--sudut); }
 .st-teks { flex: 1; min-width: 0; }
 .st-judul { display: block; font-size: 0.88rem; font-weight: 650; line-height: 1.35; }
-.st-sub { display: block; font-size: 0.8rem; opacity: 0.85; }
+.st-sub { display: block; font-size: 0.8rem; }
 /* Tanda buka-tutup digambar CSS, bukan diketik: segitiga teks ikut terbaca pembaca layar
    sebagai kata, dan <summary> sudah mengumumkan keadaannya sendiri. */
 .st-tanda {
@@ -1277,6 +1394,24 @@ a { color: var(--aksen); }
   text-transform: uppercase;
   color: var(--teks-lemah);
 }
+.harga-tanpa-angka > summary {
+  position: sticky;
+  top: calc(var(--atas-bilah, 61px) + var(--tinggi-strip, 54px));
+  z-index: 6;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 44px;
+  padding: .35rem 0;
+  background: var(--latar);
+  border-bottom: 1px solid var(--garis);
+  color: var(--teks-lemah);
+  cursor: pointer;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
 .kelompok-harga .cacah {
   font-variant-numeric: tabular-nums;
   letter-spacing: 0;
@@ -1306,6 +1441,52 @@ a { color: var(--aksen); }
 .daftar-harga { display: grid; gap: 0.5rem; padding: 0; margin: 1rem 0; list-style: none; }
 .daftar-harga .harga-kini { font-variant-numeric: tabular-nums; font-weight: 700; }
 .daftar-harga .satuan { color: var(--teks-lemah); font-weight: 400; font-size: 0.85em; }
+
+.tampilkan-lain {
+  width: 100%;
+  min-height: 48px;
+  padding: .65rem 1rem;
+  border: 1px solid var(--aksen);
+  border-radius: var(--sudut);
+  background: var(--aksen-lemah);
+  color: var(--aksen);
+  font: inherit;
+  font-weight: 650;
+  cursor: pointer;
+}
+
+/* Dua pertanyaan pada layar produk kini dipilih lebih dulu. Keduanya tetap satu URL
+   karena hasil angka kandungan membuka perender produk yang sama, tetapi hanya satu
+   alat yang berada di alur baca dan urutan fokus pada satu waktu. */
+.pemilih-tugas {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+  margin: 0 0 1.25rem;
+}
+.pemilih-tugas button {
+  min-height: 64px;
+  padding: .7rem .8rem;
+  border: 1px solid var(--garis);
+  border-radius: var(--sudut);
+  background: var(--latar-kartu);
+  color: var(--teks);
+  font: inherit;
+  font-weight: 650;
+  text-align: left;
+  cursor: pointer;
+}
+.pemilih-tugas button span { display: block; margin-top: .15rem; color: var(--teks-lemah); font-size: .78rem; font-weight: 400; }
+.pemilih-tugas button[aria-pressed="true"] { border-color: var(--aksen); background: var(--aksen-lemah); color: var(--aksen); }
+.pemilih-tugas button:focus-visible { outline: 3px solid var(--aksen); outline-offset: 2px; }
+
+.kelompok-kadar { margin-top: 1.5rem; }
+.kelompok-kadar > .kartu { margin-top: .55rem; }
+.tampil-semua-kadar { width: 100%; margin-top: .75rem; }
+
+@media (max-width: 34rem) {
+  .pemilih-tugas { grid-template-columns: 1fr; }
+}
 
 .harga-besar {
   margin: 0.35rem 0 0.2rem;

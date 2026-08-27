@@ -32,6 +32,19 @@
   line-height: 1.55;
 }
 
+/* Ringkasan yang selalu terlihat ditempatkan komponen di pucuk <main>. Bentuknya padat:
+   status, tingkat, tanggal, dan lubang tetap ada, sedangkan uraian panjang tinggal di
+   dialog. Ini peringatan kerja, bukan catatan kaki. */
+.batas-jawaban.batas-jawaban-utama {
+  margin: 0 0 1rem;
+  padding: .75rem .85rem;
+  border: 1px solid var(--bj-garis);
+  border-left: 4px solid var(--bj-awas);
+  border-radius: 10px;
+  background: var(--bj-latar);
+}
+.batas-jawaban-utama .bj-judul { margin-bottom: .45rem; }
+
 /* ------------------------------------------------- ringkasan & lembar (T2)
 
    Blok batas dulu terbuka penuh di kaki tiap halaman: di principal.html ia 1.789 px
@@ -105,7 +118,7 @@
 }
 .bj-lembar-kepala h2 { margin: 0; font-size: 1rem; color: var(--bj-teks); }
 .bj-lembar-kepala button {
-  width: 34px; height: 34px; flex: none;
+  width: 44px; height: 44px; flex: none;
   border: 1px solid var(--bj-garis);
   border-radius: 8px;
   background: transparent;

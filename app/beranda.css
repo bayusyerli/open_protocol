@@ -267,7 +267,7 @@ a { color: var(--hijau-2); }
 }
 .cangkang-cari input:disabled { cursor: progress; }
 .tombol-hapus {
-  width: 34px; height: 34px; border: 0; border-radius: 50%;
+  width: 44px; height: 44px; border: 0; border-radius: 50%;
   background: transparent; color: var(--lemah); font-size: 22px; line-height: 1;
 }
 .tombol-hapus:hover { background: var(--permukaan); }
@@ -298,30 +298,10 @@ a { color: var(--hijau-2); }
 .pil-saran { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .pil-saran > button {
   position: relative;
-  display: inline-flex; align-items: center; min-height: 34px;
+  display: inline-flex; align-items: center; min-height: 44px;
   padding: 0 14px; border: 1px solid var(--garis); border-radius: 999px;
   background: var(--kanvas); color: inherit;
   font: inherit; font-size: 13px; line-height: 1.2; text-align: left;
-}
-/* Daerah ketuknya lebih tinggi daripada pilnya, dan angkanya ditentukan jaraknya —
-   bukan dipilih dari pedoman lalu diharap muat.
-
-   Menaikkan TINGGI pilnya sampai 44 px menambah 69 px ke kartu dan mendorong kalimat
-   "bukan bukti produknya tidak terdaftar" ke bawah batas layar lagi, jadi yang
-   ditinggikan daerah ketuknya. Tetapi perluasan itu punya langit-langit: dua baris pil
-   yang membungkus berjarak 6 px, jadi perluasan lebih dari 3 px ke atas dan 3 px ke
-   bawah membuat daerah ketuk baris atas dan baris bawah BERTINDIHAN — dan ketukan di
-   pita tindihan itu mendarat di pil yang salah, persis kegagalan yang aturan 44 px
-   ada untuk mencegah. Percobaan pertama memakai 44 px (5 px + 5 px dari 6 px) dan
-   `elementFromPoint` 4 px di bawah "Patek" mengembalikan pil di bawahnya, bukan
-   "Patek".
-
-   Jadi 34 + 3 + 3 = 40 px: setinggi yang bisa dicapai tanpa satu piksel pun
-   bertindihan, jauh di atas 24 px yang diminta WCAG 2.5.8, dan tidak berbohong
-   tentang mana yang akan tersentuh. */
-.pil-saran > button::after {
-  content: ""; position: absolute; left: 0; right: 0; top: 50%;
-  height: 40px; transform: translateY(-50%);
 }
 .pil-saran > button:hover, .pil-saran > button:focus-visible {
   border-color: var(--hijau-2); background: var(--hijau-lembut);
@@ -484,7 +464,7 @@ a { color: var(--hijau-2); }
 }
 .kepala-lembar h2 { margin: 4px 0 0; font-size: 20px; letter-spacing: -.03em; }
 .kepala-lembar button {
-  width: 34px; height: 34px; flex: none;
+  width: 44px; height: 44px; flex: none;
   border: 1px solid var(--garis); border-radius: 50%;
   background: var(--permukaan); font-size: 18px; line-height: 1;
 }
