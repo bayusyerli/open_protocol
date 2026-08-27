@@ -1,0 +1,1289 @@
+<!doctype html>
+<html lang="id" data-konsep="kanvas">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Konsep 01 · Kanvas Lapangan — Pranatani</title>
+<meta name="description" content="Prototipe UX: pintu masuk situasional. Satu perkara lapangan, satu keputusan per layar, sampai jawaban atau penolakan menjawab.">
+<style>
+/* =========================================================================
+   KONSEP 01 · KANVAS LAPANGAN
+   Rupa: instrumen lapangan. Sudut siku, garis tebal, tanpa bayang lembut.
+   Hijau rumah Pranatani DIPAKAI TERBATAS — hanya untuk jejak langkah yang
+   sudah dilalui. Warna putusan memakai amber bakar supaya tetap terbaca di
+   bawah matahari, dan tiap keadaan dibedakan BENTUK juga, bukan cuma warna.
+   Tanpa berkas luar, tanpa font unduhan, tanpa localStorage.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+  --kertas:      #f4f1e8;
+  --kanvas:      #e6e2d5;
+  --panel:       #fffdf7;
+  --tinta:       #16201b;
+  --lemah:       #55605a;
+  --garis:       #16201b;
+  --garis-tipis: #c2bcab;
+  --sorot:       #9c4508;   /* putusan aktif */
+  --sorot-latar: #fbe9d8;
+  --jalan:       #0b6b4f;   /* jejak yang sudah dilalui — hijau rumah */
+  --jalan-latar: #dfeee7;
+  --waspada:     #8a1c1c;
+  --waspada-latar:#fae4e1;
+  --henti:       #3a3f52;
+  --henti-latar: #e4e5ec;
+  --di-sorot:    #ffffff;
+  --sentuh: 48px;
+  --tepi: 3px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) {
+    color-scheme: dark;
+    --kertas:      #101512;
+    --kanvas:      #080b09;
+    --panel:       #182019;
+    --tinta:       #eef3ec;
+    --lemah:       #a4b0a8;
+    --garis:       #eef3ec;
+    --garis-tipis: #3b4740;
+    --sorot:       #ffb267;
+    --sorot-latar: #3a2410;
+    --jalan:       #6fd7ae;
+    --jalan-latar: #143229;
+    --waspada:     #ff9d92;
+    --waspada-latar:#3d1a17;
+    --henti:       #b9bed3;
+    --henti-latar: #232734;
+    --di-sorot:    #10150f;
+  }
+}
+:root[data-tema="gelap"] {
+  color-scheme: dark;
+  --kertas:#101512; --kanvas:#080b09; --panel:#182019; --tinta:#eef3ec;
+  --lemah:#a4b0a8; --garis:#eef3ec; --garis-tipis:#3b4740;
+  --sorot:#ffb267; --sorot-latar:#3a2410; --jalan:#6fd7ae; --jalan-latar:#143229;
+  --waspada:#ff9d92; --waspada-latar:#3d1a17; --henti:#b9bed3; --henti-latar:#232734;
+  --di-sorot:#10150f;
+}
+
+*,*::before,*::after { box-sizing: border-box; }
+html, body { margin:0; padding:0; }
+body {
+  background: var(--kanvas);
+  color: var(--tinta);
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
+}
+@media (min-width: 768px) { body { font-size: 18px; } }
+
+:where(a, button, input, select, [tabindex]):focus-visible {
+  outline: 3px solid var(--sorot);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+
+.lewati {
+  position:absolute; left:-9999px; top:0; z-index:60;
+  background: var(--sorot); color: var(--di-sorot); padding:12px 16px; font-weight:700;
+}
+.lewati:focus { left:8px; top:8px; }
+
+/* ---------- rangka instrumen ---------- */
+.alat {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  /* Kolomnya minmax(0,1fr), bukan 1fr. Butir grid berbawaan `min-width:auto`,
+     jadi tabel merek yang lebar akan MELEBARKAN kolomnya alih-alih menggulir di
+     dalam `.tabel-bungkus` — dan halaman ikut menggulir mendatar. */
+  grid-template-columns: minmax(0, 1fr);
+  max-width: 1180px;
+  margin: 0 auto;
+  background: var(--kertas);
+  border-left: var(--tepi) solid var(--garis);
+  border-right: var(--tepi) solid var(--garis);
+}
+@media (max-width: 719px) { .alat { border-left:0; border-right:0; } }
+
+/* ---------- kepala: merek + rel langkah ---------- */
+.kepala {
+  min-width: 0;
+  border-bottom: var(--tepi) solid var(--garis);
+  background: var(--panel);
+  position: sticky; top: 0; z-index: 20;
+}
+.baris-merek {
+  display:flex; align-items:center; gap:12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--garis-tipis);
+}
+.merek-h1 { margin:0; font:inherit; font-weight:inherit; min-width:0; }
+.merek { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; min-height:44px; }
+.merek svg { display:block; flex:none; }
+.merek b { font-size:1.06rem; letter-spacing:.01em; display:block; line-height:1.1; }
+.merek small { font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--lemah); display:block; }
+.baris-merek .kanan { margin-left:auto; display:flex; align-items:center; gap:8px; }
+
+.tandaproto {
+  font-size:.62rem; letter-spacing:.1em; text-transform:uppercase; font-weight:800;
+  border:2px solid var(--garis); padding:4px 7px; white-space:nowrap;
+}
+.tombol-kecil {
+  min-height:44px; min-width:44px; padding:0 12px;
+  background:transparent; border:2px solid var(--garis); color:var(--tinta);
+  font:inherit; font-size:.8rem; font-weight:700; cursor:pointer;
+}
+.tombol-kecil:hover { background: var(--sorot-latar); }
+
+/* rel langkah */
+.rel { min-width:0; display:flex; align-items:stretch; overflow-x:auto; scrollbar-width:thin; }
+.rel::-webkit-scrollbar { height:4px; }
+.rel-btn {
+  flex:none; display:flex; align-items:center; gap:8px;
+  min-height:44px; padding:8px 12px;
+  background:transparent; border:0; border-right:1px solid var(--garis-tipis);
+  font:inherit; font-size:.8rem; font-weight:700; color:var(--lemah);
+  cursor:pointer; text-align:left; white-space:nowrap;
+}
+.rel-btn[data-keadaan="lalu"] { color:var(--jalan); background:var(--jalan-latar); cursor:pointer; }
+.rel-btn[data-keadaan="kini"] { color:var(--sorot); background:var(--sorot-latar); box-shadow: inset 0 -4px 0 var(--sorot); cursor:default; }
+.rel-btn[disabled] { cursor:default; }
+.rel-btn i { font-style:normal; font-variant-numeric:tabular-nums; font-size:.72rem;
+  border:2px solid currentColor; width:22px; height:22px; display:grid; place-items:center; flex:none; }
+.rel-btn[data-keadaan="lalu"] i::after { content:"✓"; }
+.rel-btn[data-keadaan="lalu"] i span { display:none; }
+
+/* ---------- badan ---------- */
+.badan { min-width: 0; padding: 18px 14px 30px; }
+@media (min-width: 720px) { .badan { padding: 26px 30px 44px; } }
+
+.mata { font-size:.68rem; letter-spacing:.16em; text-transform:uppercase; font-weight:800; color:var(--sorot); margin:0 0 8px; }
+h1 { font-size: clamp(1.5rem, 5.2vw, 2.1rem); line-height:1.15; margin:0 0 8px; letter-spacing:-.015em; }
+h2 { font-size: clamp(1.35rem, 4.6vw, 1.8rem); line-height:1.18; margin:0 0 8px; letter-spacing:-.012em; }
+h3 { font-size: 1.02rem; margin: 20px 0 8px; }
+p { margin: 0 0 12px; max-width: 62ch; }
+.lede { font-size: 1.02rem; color: var(--lemah); }
+
+/* ---------- pilihan besar (satu keputusan per layar) ---------- */
+.pilihan { display:grid; gap:12px; margin: 18px 0 0; padding:0; list-style:none; }
+@media (min-width: 860px) { .pilihan.dua { grid-template-columns: 1fr 1fr; } }
+.pil {
+  display:flex; align-items:flex-start; gap:14px; width:100%; text-align:left;
+  min-height: 64px; padding: 16px 16px 16px 13px;
+  background: var(--panel); color: var(--tinta);
+  border: 2px solid var(--garis); border-left: 7px solid var(--garis);
+  font: inherit; cursor: pointer;
+  transition: background .12s ease, border-color .12s ease, transform .12s ease;
+}
+.pil:hover { background: var(--sorot-latar); border-left-color: var(--sorot); }
+.pil:active { transform: translateY(1px); }
+.pil .isi { min-width:0; }
+.pil strong { display:block; font-size:1.08rem; line-height:1.25; }
+.pil small { display:block; margin-top:5px; color:var(--lemah); font-size:.86rem; line-height:1.4; }
+.pil .tanda { flex:none; width:34px; height:34px; display:grid; place-items:center; border:2px solid currentColor; color:var(--sorot); }
+.pil .tanda svg { display:block; }
+
+/* ---------- pita putusan: bentuk berbeda per keadaan ---------- */
+.pita { border:var(--tepi) solid var(--garis); margin: 0 0 18px; background: var(--panel); }
+.pita-kepala { display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin:0;
+  padding:12px 14px; border-bottom:2px solid var(--garis);
+  font-size:1.05rem; line-height:1.3; letter-spacing:0; font-weight:800; }
+.pita-kepala .lencana {
+  font-size:.68rem; letter-spacing:.12em; text-transform:uppercase;
+  padding:5px 9px; border:2px solid currentColor; white-space:nowrap;
+}
+.pita-isi { padding: 14px; }
+
+.pita[data-hasil="ada"]      { border-color: var(--jalan); }
+.pita[data-hasil="ada"] .pita-kepala { background: var(--jalan-latar); color: var(--jalan); border-bottom-color: var(--jalan); }
+/* ragu: garis miring — beda BENTUK, bukan cuma warna */
+.pita[data-hasil="ragu"]     { border-color: var(--sorot); }
+.pita[data-hasil="ragu"] .pita-kepala {
+  color: var(--sorot); border-bottom-color: var(--sorot);
+  background: repeating-linear-gradient(135deg, var(--sorot-latar) 0 9px, transparent 9px 18px);
+}
+/* henti: bingkai ganda tebal */
+.pita[data-hasil="henti"]    { border-color: var(--henti); box-shadow: inset 0 0 0 3px var(--panel), inset 0 0 0 6px var(--henti); }
+.pita[data-hasil="henti"] .pita-kepala { background: var(--henti-latar); color: var(--henti); border-bottom-color: var(--henti); }
+.pita[data-hasil="awas"]     { border-color: var(--waspada); }
+.pita[data-hasil="awas"] .pita-kepala { background: var(--waspada-latar); color: var(--waspada); border-bottom-color: var(--waspada); }
+
+/* ---------- uji pembanding ---------- */
+.uji { border:2px dashed var(--sorot); background: var(--sorot-latar); padding:14px; margin: 16px 0; }
+.uji h3 { margin:0 0 6px; font-size:.98rem; color:var(--sorot); }
+.uji p { margin:0; color:var(--tinta); }
+
+/* ---------- daftar fakta ---------- */
+.fakta { display:grid; gap:0; margin:14px 0; border-top:2px solid var(--garis); }
+.fakta > div { display:grid; grid-template-columns: 1fr auto; gap:10px; align-items:baseline;
+  padding:9px 2px; border-bottom:1px solid var(--garis-tipis); }
+.fakta dt, .fakta .k { color:var(--lemah); font-size:.88rem; margin:0; }
+.fakta dd, .fakta .v { margin:0; font-weight:800; font-variant-numeric: tabular-nums; text-align:right; }
+.fakta .v.nol { color: var(--henti); }
+
+/* ---------- kartu bahan ---------- */
+.bahan-daftar { display:grid; gap:10px; margin:14px 0; padding:0; list-style:none; }
+/* Butir grid berbawaan `min-width:auto` dan menolak menyusut di bawah lebar
+   isinya. Tanpa baris ini, tabel merek melebarkan <li>-nya sampai halaman ikut
+   menggulir mendatar — persis yang `.tabel-bungkus` seharusnya cegah. */
+.bahan-daftar > li, .bahan, .bahan-isi { min-width: 0; }
+.pilihan > * { min-width: 0; }
+.fakta > div { min-width: 0; }
+.fakta .v { min-width: 0; overflow-wrap: anywhere; }
+.bahan {
+  border:2px solid var(--garis); background:var(--panel);
+}
+.bahan > summary {
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  padding:12px 14px; min-height:56px; cursor:pointer; font-weight:700; list-style:none;
+}
+.bahan > summary::-webkit-details-marker { display:none; }
+.bahan > summary::after { content:"▸"; margin-left:auto; font-size:1.1rem; color:var(--sorot); }
+.bahan[open] > summary::after { content:"▾"; }
+.bahan[open] > summary { border-bottom:2px solid var(--garis); background:var(--sorot-latar); }
+.bahan .kadar { font-variant-numeric:tabular-nums; color:var(--lemah); font-weight:600; }
+.bahan .irac { font-size:.68rem; letter-spacing:.06em; text-transform:uppercase; border:2px solid var(--sorot); color:var(--sorot); padding:3px 6px; font-weight:800; }
+.bahan .cacah { font-size:.8rem; color:var(--lemah); font-weight:600; }
+.bahan-isi { padding: 12px 14px 14px; }
+
+table.merek { width:100%; border-collapse:collapse; font-size:.88rem; }
+table.merek th, table.merek td { text-align:left; padding:8px 6px; border-bottom:1px solid var(--garis-tipis); vertical-align:top; }
+table.merek th { font-size:.7rem; letter-spacing:.08em; text-transform:uppercase; color:var(--lemah); border-bottom:2px solid var(--garis); }
+table.merek td.nomor, table.merek td.dosis { font-variant-numeric:tabular-nums; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.82rem; }
+table.merek td.dosis[data-lain="ya"] { color: var(--waspada); font-weight:700; }
+.tabel-bungkus { min-width:0; max-width:100%; overflow-x:auto; -webkit-overflow-scrolling:touch; }
+
+/* ---------- batas jawaban: DI DALAM ISI, bukan di kaki ---------- */
+.batas { border:var(--tepi) solid var(--garis); background:var(--panel); margin: 22px 0 0; }
+.batas > h3 { margin:0; padding:12px 14px; border-bottom:2px solid var(--garis); background:var(--henti-latar); color:var(--henti); font-size:.82rem; letter-spacing:.1em; text-transform:uppercase; }
+.batas-isi { padding: 12px 14px; }
+.sumber { display:grid; grid-template-columns:auto 1fr; gap:10px; padding:10px 0; border-bottom:1px solid var(--garis-tipis); }
+.sumber:last-child { border-bottom:0; }
+.tingkat {
+  width:34px; height:34px; display:grid; place-items:center; font-weight:800; font-size:1rem;
+  border:2px solid var(--garis);
+}
+.tingkat[data-t="B"] { background: var(--jalan-latar); color: var(--jalan); border-color: var(--jalan); }
+.tingkat[data-t="D"] { background: var(--sorot-latar); color: var(--sorot); border-color: var(--sorot); }
+.tingkat[data-t="?"] { background: var(--henti-latar); color: var(--henti); border-color: var(--henti);
+  background-image: repeating-linear-gradient(135deg, transparent 0 5px, rgb(0 0 0 / 7%) 5px 10px); }
+.sumber b { display:block; font-size:.94rem; }
+.sumber span { display:block; font-size:.82rem; color:var(--lemah); }
+.sumber em { display:block; font-size:.82rem; font-style:normal; margin-top:4px; }
+
+/* ---------- catatan / penolakan ---------- */
+.catatan { border-left:6px solid var(--henti); background:var(--henti-latar); padding:12px 14px; margin:14px 0; }
+.catatan.awas { border-left-color: var(--waspada); background: var(--waspada-latar); }
+.catatan p:last-child { margin-bottom:0; }
+.catatan strong { color: inherit; }
+
+/* ---------- kalkulator ---------- */
+.borang { display:grid; gap:14px; margin:18px 0; }
+.medan { display:grid; gap:6px; }
+.medan label { font-weight:700; font-size:.92rem; }
+.medan small { color:var(--lemah); font-size:.82rem; }
+.medan input, .medan select {
+  min-height: var(--sentuh); padding: 10px 12px; font: inherit; font-size:1.05rem;
+  background: var(--panel); color: var(--tinta); border: 2px solid var(--garis); border-radius:0;
+  font-variant-numeric: tabular-nums; width:100%;
+}
+.hasil-hitung { border:var(--tepi) solid var(--jalan); background:var(--jalan-latar); padding:14px; }
+.hasil-hitung .angka { font-size: clamp(1.8rem, 7vw, 2.6rem); font-weight:800; line-height:1.05; font-variant-numeric:tabular-nums; color:var(--jalan); }
+.hasil-hitung .satuan { font-size:1rem; font-weight:700; color:var(--jalan); }
+
+/* ---------- kaki: bilah status ---------- */
+.kaki {
+  min-width: 0;
+  border-top: var(--tepi) solid var(--garis); background: var(--panel);
+  position: sticky; bottom: 0; z-index: 20;
+}
+.status { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding:8px 14px; font-size:.78rem; }
+.status .jar { display:inline-flex; align-items:center; gap:7px; font-weight:700; }
+.status .jar i { width:10px; height:10px; background:var(--jalan); display:block; flex:none; }
+.status .jar[data-luring="ya"] i { background:var(--sorot); }
+.status .asal { color:var(--lemah); min-width:0; }
+.status .asal b { color: var(--tinta); }
+.aksi-kaki { display:flex; gap:8px; padding:0 14px 10px; }
+.tombol-kembali {
+  flex:1; min-height:var(--sentuh); padding:0 14px;
+  background:var(--panel); color:var(--tinta); border:2px solid var(--garis);
+  font:inherit; font-weight:800; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center; gap:8px;
+}
+.tombol-kembali:hover { background: var(--kanvas); }
+.tombol-kembali[hidden] { display:none; }
+.tombol-mulai { flex:1; min-height:var(--sentuh); background:var(--sorot); color:var(--di-sorot); border:2px solid var(--sorot); font:inherit; font-weight:800; cursor:pointer; }
+
+.khusus-pembaca {
+  position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden;
+  clip:rect(0 0 0 0); white-space:nowrap; border:0;
+}
+.grid-dua { display:grid; gap:14px; }
+@media (min-width: 860px) { .grid-dua { grid-template-columns: 1fr 1fr; align-items:start; } }
+.kandidat { border:2px solid var(--garis); background:var(--panel); padding:14px; }
+.kandidat h3 { margin:0 0 4px; font-size:1.05rem; }
+.kandidat .ilmiah { font-style:italic; color:var(--lemah); font-size:.88rem; margin:0 0 8px; }
+</style>
+</head>
+<body>
+
+<a class="lewati" href="#konten">Lewati ke isi</a>
+
+<div class="alat">
+
+  <header class="kepala">
+    <div class="baris-merek">
+      <h1 class="merek-h1"><a class="merek" href="index.html">
+        <svg viewBox="0 0 512 512" width="30" height="30" role="img" aria-label="Pranatani">
+          <!-- Disalin sebaris dari app/ikon.svg supaya prototipe tetap utuh lewat file://
+               maupun kalau berkasnya dipindahkan. Kalau markahnya berubah di sana, ubah di sini juga. -->
+          <rect width="512" height="512" rx="112" fill="#00442f"/>
+          <g transform="translate(84 84) scale(1.34)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94" stroke="#fffef8" stroke-width="26"/>
+            <path d="M94 77h45" stroke="#54c7a6" stroke-width="15"/>
+            <path d="M94 109h64" stroke="#54c7a6" stroke-width="15"/>
+            <path d="M94 141h45" stroke="#54c7a6" stroke-width="15"/>
+            <path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z" fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+            <path d="M165 111 196 80" stroke="#00442f" stroke-width="8"/>
+          </g>
+        </svg>
+        <span><b>Pranatani</b><small>Kanvas Lapangan</small></span>
+      </a></h1>
+      <span class="kanan">
+        <span class="tandaproto">Prototipe UX 01</span>
+        <button class="tombol-kecil" type="button" id="tombolTema" aria-live="polite">Gelap</button>
+      </span>
+    </div>
+    <nav class="rel" id="rel" aria-label="Langkah yang sudah dilalui"></nav>
+  </header>
+
+  <main class="badan" id="konten" tabindex="-1">
+    <div id="layar" aria-live="polite"></div>
+  </main>
+
+  <footer class="kaki">
+    <p class="status">
+      <span class="jar" id="jar"><i></i><span id="jarTeks">Memeriksa jaringan</span></span>
+      <span class="asal" id="asal">Sumber layar ini: <b>belum ada</b></span>
+    </p>
+    <div class="aksi-kaki">
+      <button class="tombol-kembali" type="button" id="kembali" hidden>← Kembali satu langkah</button>
+      <button class="tombol-kembali" type="button" id="ulang" hidden>Mulai perkara baru</button>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+"use strict";
+/* =========================================================================
+   DATA — disalin dari indeks turunan repositori (spec/indeks/, dibangun
+   19–23 Agustus 2026). Tidak ada angka, nomor pendaftaran, atau nama merek
+   yang dikarang. Yang disederhanakan untuk prototipe diberi tanda sendiri.
+   ========================================================================= */
+
+const OPT = {
+  trips: {
+    id: "op:pst:00000001", nama: "Trips", ilmiah: "Thrips parvispinus", jenis: "Serangga",
+    gejala: "Daun muda mengeriting ke ATAS seperti mangkuk, dan permukaan bawahnya keperakan atau kecoklatan seperti tergores halus. Bunga dan tunas rontok sebelum jadi buah; tanaman kerdil dan pucuknya mengumpul.",
+    diCabai: { produk: 246, zat: 60, kartu: 159, berlarangan: 39 }
+  },
+  kutuDaun: {
+    id: "op:pst:00000002", nama: "Kutu daun persik", ilmiah: "Myzus persicae", jenis: "Serangga",
+    gejala: "Daun muda mengeriting ke BAWAH dan mengerut. Permukaan daun lengket, sering ditumbuhi jelaga hitam, dan semut naik-turun di batang.",
+    diCabai: { produk: 220, zat: null, kartu: null, berlarangan: null }
+  },
+  kutuKebul: {
+    id: "op:pst:00000003", nama: "Kutu kebul", ilmiah: "Bemisia tabaci", jenis: "Serangga",
+    gejala: "Serangga putih sangat kecil beterbangan berhamburan saat tanaman disentuh, lalu hinggap lagi. Daun lengket dan berjelaga hitam, dan lama-lama menguning.",
+    diCabai: { produk: 32 }
+  },
+  ulatGrayak: {
+    id: "op:pst:00000005", nama: "Ulat grayak", ilmiah: "Spodoptera litura", jenis: "Serangga",
+    gejala: "Daun berlubang tidak beraturan sampai tinggal tulang daunnya, dan kerusakannya bertambah cepat dalam semalam. Ada butiran kotoran hitam menumpuk di ketiak daun.",
+    diCabai: { produk: 184 }
+  },
+  antraknosa: {
+    id: "op:pst:00000007", nama: "Antraknosa", ilmiah: "Colletotrichum spp.", jenis: "Penyakit jamur",
+    gejala: "Bercak melingkar cekung pada buah, mula-mula berair lalu meluas dan menghitam. Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar. Buah akhirnya mengering dan keriput.",
+    diCabai: { produk: 3 }
+  },
+  fusarium: {
+    id: "op:pst:00000008", nama: "Layu fusarium", ilmiah: "Fusarium oxysporum", jenis: "Penyakit jamur",
+    gejala: "Tanaman layu perlahan selama beberapa hari. Daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap.",
+    diCabai: { produk: 5 }
+  },
+  bakteri: {
+    id: "op:pst:00000009", nama: "Layu bakteri", ilmiah: "Ralstonia solanacearum", jenis: "Penyakit bakteri",
+    gejala: "Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah.",
+    diCabai: { produk: 2 }
+  },
+  virus: {
+    id: "op:pst:00000010", nama: "Virus kuning keriting", ilmiah: "Begomovirus", jenis: "Penyakit virus",
+    gejala: "Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun.",
+    diCabai: { produk: 0 }
+  }
+};
+
+/* Kartu bahan+kadar untuk Trips pada Cabai — empat teratas menurut cacah merek.
+   Kode IRAC dari spec/vocab/golongan-resistensi (IRAC v11.5, Feb 2026, status draft). */
+const BAHAN_TRIPS = [
+  { nama:"Abamektin",         kadar:"18 g/L",  merek:26, irac:"6",  larangan:false },
+  { nama:"Abamektin",         kadar:"36 g/L",  merek:14, irac:"6",  larangan:false },
+  { nama:"Abamektin",         kadar:"20 g/L",  merek:11, irac:"6",  larangan:false },
+  { nama:"Imidakloprid",      kadar:"200 g/L", merek:11, irac:"4A", larangan:false },
+  { nama:"Dimetoat",          kadar:"400 g/L", merek:8,  irac:null, larangan:"lain" },
+  { nama:"SIPERMETRIN",       kadar:"50 g/L",  merek:7,  irac:"3A", larangan:false },
+  { nama:"Emamektin Benzoat", kadar:"50 g/L",  merek:6,  irac:"6",  larangan:false }
+];
+
+/* 12 dari 26 merek Abamektin 18 g/L. Nomor pendaftaran, tanggal berlaku, dan
+   dosis terdaftar disalin apa adanya dari indeks. */
+const MEREK_ABA18 = [
+  { n:"DEMOLISH 18 EC",    d:"01010120052259", b:"2029-03-04", ds:"0,5 ml/l" },
+  { n:"PHOSCORMITE 18 EC", d:"01010120103645", b:"2029-09-19", ds:"0,5 ml/l" },
+  { n:"STADIUM 18 EC",     d:"01010120103648", b:"2029-03-05", ds:"0.5 ml/l" },
+  { n:"DIMECTIN 18 EC",    d:"01010120031755", b:"2028-08-28", ds:"0,75 ml/l" },
+  { n:"MECTIMAX 18 EC",    d:"01010120093548", b:"2029-11-18", ds:"0.75 ml/l" },
+  { n:"TSUBAME 18 EC",     d:"01010120031811", b:"2028-08-28", ds:"1 ml/l" },
+  { n:"MATROS 18 EC",      d:"01010120042102", b:"2029-09-19", ds:"1 ml/l" },
+  { n:"ABATEN 18 EC",      d:"01010120175666", b:"2029-08-09", ds:"1 ml/l" },
+  { n:"SUPEMEC 18 EC",     d:"01010120042151", b:"2029-03-05", ds:"1,5 ml/l" },
+  { n:"DKMEKTIN 18 EC",    d:"01010120155223", b:"2030-02-17", ds:"1,5 ml/l" },
+  { n:"OPTIMECT 18 EC",    d:"01010120155379", b:"2030-07-11", ds:"1,5 ml/l" },
+  { n:"STARMEK 18 EC",     d:"01010120031935", b:"2027-10-04", ds:"1-2 ml/l" },
+  { n:"RUTIN 18 EC",       d:"01010120072797", b:"2027-06-27", ds:"1 l/ha", lain:true }
+];
+
+/* Lima rekaman yang namanya PERSIS "PHONSKA" plus dua turunannya. */
+const PHONSKA = [
+  { n:"PHONSKA",      d:"01.01.2022.1248",   b:"2027-08-25", k:"NPK 15-8-10",  bentuk:"Butiran" },
+  { n:"PHONSKA",      d:"01.01.2022.1252",   b:"2027-08-25", k:"NPK 15-15-10", bentuk:"Butiran" },
+  { n:"PHONSKA",      d:"01.01.2022.1203",   b:"2027-08-21", k:"NPK 15-10-15", bentuk:"Butiran" },
+  { n:"PHONSKA",      d:"01.01.2024.261",    b:"2029-02-28", k:"NPK 10-10-10", bentuk:"Butiran" },
+  { n:"PHONSKA",      d:"TIDAK-TERCANTUM",   b:"2023-12-31", k:null,           bentuk:"Butiran", mati:true },
+  { n:"PHONSKA PLUS", d:"01.01.2021.538",    b:"2026-02-05", k:"NPK 15-15-15 + S 90 + B 1 + Cu 1 + Zn 2 g/kg", bentuk:"Butiran", mati:true },
+  { n:"PHONSKA CAIR", d:"01.02.2023.2310",   b:"2028-10-25", k:"N 100 · P₂O₅ 80 · K₂O 30 g/L", bentuk:"Cair" }
+];
+
+const LARBAN = {
+  n:"LARBAN 500/50 EC", d:"01010120124476", b:"2028-04-26",
+  produsen:"PT. TRIDA KIMIA SAKTI",
+  isi:[ {z:"Klorpirifos", v:"500 g/L", irac:"1B", larangan:true}, {z:"SIPERMETRIN", v:"50 g/L", irac:"3A", larangan:false} ],
+  setara:30,
+  guna:[ {k:"Cabai", o:"Trips", ds:"1.5 ml/l"}, {k:"Cabai", o:"Kutu daun persik", ds:"1.5 ml/l"} ],
+  larangan:{ lingkup:["rumah tangga","tanaman padi"], instrumen:"Permentan No. 43 Tahun 2019 tentang Pendaftaran Pestisida", kutipan:"Lampiran I.A" }
+};
+
+/* Sumber — bunyinya disalin dari meta.batas.sumber di indeks. */
+const SUMBER = {
+  pestisida: { t:"B", nama:"Registri pestisida terdaftar", meta:"Kementerian Pertanian RI · 7.724 rekaman · CC-BY-SA-4.0 · tarikan 19 Agustus 2026",
+    alasan:"Registri resmi kementerian, disalin apa adanya. Bukan A: yang dicatat izin edar, bukan hasil uji multi-lokasi — registri tidak menguji apa pun, ia mendaftarkan." },
+  pupuk: { t:"B", nama:"Registri pupuk terdaftar", meta:"Kementerian Pertanian RI · 7.196 rekaman · CC-BY-SA-4.0 · tarikan 19 Agustus 2026",
+    alasan:"Registri resmi kementerian. Bukan A dengan alasan yang sama seperti pestisida: pendaftaran bukan pengujian." },
+  kurasi: { t:"?", nama:"Kurasi OPT & gejala cabai", meta:"Pranatani · 10 rekaman · CC-BY-SA-4.0 · tarikan 20 Agustus 2026 · status draft",
+    alasan:"Tingkat bukti BELUM DITETAPKAN, dan itu disengaja. Teksnya disusun dari agronomi mapan — bukan dari registri — dan belum ditinjau penyuluh atau BPTP. Menandainya C berarti mengklaim konsensus penyuluh yang belum pernah diminta kepada seorang penyuluh pun." },
+  namaLokal: { t:"D", nama:"Kamus nama lokal OPT", meta:"Pranatani · 6 nama · wawancara satu narasumber",
+    alasan:"Tingkat D — satu narasumber, tanpa keterangan daerah. Empat dari enam nama tidak menunjuk satu OPT." },
+  golongan: { t:"D", nama:"Golongan resistensi IRAC", meta:"IRAC Mode of Action v11.5, Februari 2026 · status draft · tarikan 23 Agustus 2026",
+    alasan:"Tingkat D — pemetaan nama bahan ke kode golongan dicocokkan lewat EJAAN, dan ejaan Indonesia tidak selalu satu-satu dengan daftar IRAC. Yang disimpan pasangan nama→kode beserta versinya, supaya bisa ditelusuri ulang." }
+};
+
+const TIDAK_ADA = {
+  phi: "Nol dari 23.058 penggunaan berlabel memuat tenggang panen. Registri tidak mencatatnya sama sekali, jadi layar ini tidak boleh menjanjikan tanggal aman panen.",
+  gejalaOpt: "Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 10 OPT cabai terkurasi. Di luar sepuluh itu, masuk lewat gejala tidak punya pintu.",
+  namaDagang: "Registri menyimpan nama produk TERDAFTAR. Nama di kemasan bisa berbeda dan pemetaan antara keduanya belum ada.",
+  harga: "Registri tidak memuat harga sama sekali. Angka rupiah di layar ini seluruhnya masukan kamu sendiri.",
+  beratJenis: "Berat jenis tidak ada di registri, sehingga pupuk cair TIDAK sebanding dengan yang padat.",
+  bpp: "5.844 balai penyuluhan terdaftar di 504 kabupaten/kota, tetapi TANPA alamat — itu batas sumbernya, bukan tarikan yang belum selesai."
+};
+
+/* ========================================================================= */
+
+const el  = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const n   = (x) => (x ?? 0).toLocaleString('id-ID');
+
+let jejak = [];               /* tumpukan {layar, judul} */
+const negara = { tangki: 15, dosis: "0,5" };
+
+/* ---------- komponen bersama ---------- */
+
+function blokBatas(kunci, tidakAda, ekstra) {
+  const s = kunci.map((k) => {
+    const x = SUMBER[k];
+    return `<div class="sumber">
+      <span class="tingkat" data-t="${esc(x.t)}" aria-hidden="true">${x.t === '?' ? '–' : esc(x.t)}</span>
+      <span>
+        <b>${esc(x.nama)}</b>
+        <span>${x.t === '?' ? 'tingkat bukti belum ditetapkan' : 'tingkat bukti ' + esc(x.t)} · ${esc(x.meta)}</span>
+        <em>${esc(x.alasan)}</em>
+      </span>
+    </div>`;
+  }).join('');
+  const gaps = (tidakAda || []).map((k) => `<li>${esc(TIDAK_ADA[k])}</li>`).join('');
+  return `<section class="batas" aria-labelledby="jbatas">
+    <h3 id="jbatas">Batas jawaban di layar ini</h3>
+    <div class="batas-isi">
+      ${s}
+      ${gaps ? `<h3 style="margin-top:14px">Yang tidak diketahui, dan karena itu tidak ditebak</h3><ul style="margin:0;padding-left:20px">${gaps}</ul>` : ''}
+      ${ekstra || ''}
+    </div>
+  </section>`;
+}
+
+function ikonPil(d) {
+  return `<span class="tanda" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">${d}</svg></span>`;
+}
+const IK = {
+  daun:  '<path d="M4 20c0-8 6-14 16-16 0 10-6 16-16 16Z"/><path d="M4 20c4-4 7-6 12-8"/>',
+  botol: '<path d="M10 3h4v4l3 5v9H7v-9l3-5V3Z"/><path d="M7 15h10"/>',
+  semprot:'<path d="M9 8h6v13H9z"/><path d="M11 8V4h6"/><path d="M20 6h-3"/><path d="M12 12h0"/>',
+  duit:  '<path d="M3 6h18v12H3z"/><circle cx="12" cy="12" r="3"/>',
+  balik: '<path d="M9 14 4 9l5-5"/><path d="M4 9h11a5 5 0 0 1 0 10h-3"/>'
+};
+
+/* ---------- rel langkah ---------- */
+function gambarRel() {
+  const r = el('rel');
+  if (!jejak.length) { r.innerHTML = ''; return; }
+  r.innerHTML = jejak.map((j, i) => {
+    const kini = i === jejak.length - 1;
+    return `<button class="rel-btn" type="button" data-keadaan="${kini ? 'kini' : 'lalu'}"
+      data-ke="${i}" ${kini ? 'disabled aria-current="step"' : ''}>
+      <i aria-hidden="true"><span>${i + 1}</span></i>${esc(j.judul)}</button>`;
+  }).join('');
+  r.querySelectorAll('[data-ke]').forEach((b) => b.addEventListener('click', () => {
+    const i = Number(b.dataset.ke);
+    jejak = jejak.slice(0, i);
+    const j = jejak.pop();
+    buka(j.layar, j.judul);
+  }));
+  r.scrollLeft = r.scrollWidth;
+}
+
+/* ---------- navigasi ---------- */
+function buka(nama, judul) {
+  jejak.push({ layar: nama, judul });
+  const f = LAYAR[nama];
+  el('layar').innerHTML = f();
+  gambarRel();
+  el('kembali').hidden = jejak.length < 2;
+  el('ulang').hidden   = jejak.length < 2;
+  el('asal').innerHTML = 'Sumber layar ini: <b>' + esc(f.asal || 'tidak ada — layar pilihan') + '</b>';
+  el('konten').focus();
+  window.scrollTo({ top: 0, behavior: 'auto' });
+  pasangAksi();
+}
+
+function pasangAksi() {
+  document.querySelectorAll('[data-buka]').forEach((b) => {
+    b.addEventListener('click', () => buka(b.dataset.buka, b.dataset.judul || b.textContent.trim().slice(0, 22)));
+  });
+  const t = el('tangki'), d = el('dosisPilih');
+  if (t && d) {
+    const hitung = () => {
+      negara.tangki = parseFloat(String(t.value).replace(',', '.')) || 0;
+      negara.dosis = d.value;
+      const dv = parseFloat(String(d.value).replace(',', '.')) || 0;
+      const ml = negara.tangki * dv;
+      el('hasilTangki').textContent = ml ? ml.toLocaleString('id-ID', { maximumFractionDigits: 1 }) : '—';
+      el('hasilTutup').textContent = ml ? Math.round(ml / 10).toLocaleString('id-ID') : '—';
+    };
+    t.addEventListener('input', hitung); d.addEventListener('change', hitung); hitung();
+  }
+  const hp = el('hargaP');
+  if (hp) {
+    const hitungHara = () => {
+      const rows = document.querySelectorAll('[data-npk]');
+      let out = '';
+      rows.forEach((r) => {
+        const inp = r.querySelector('input');
+        const harga = parseFloat(String(inp.value).replace(/[^0-9.]/g, '')) || 0;
+        const [N, P, K] = r.dataset.npk.split('-').map(Number);
+        const karung = 50;
+        const kgHara = karung * (N + P + K) / 100;
+        const rp = kgHara > 0 && harga > 0 ? harga / kgHara : 0;
+        r.querySelector('.rp').textContent = rp ? 'Rp ' + Math.round(rp).toLocaleString('id-ID') + ' / kg hara' : '—';
+      });
+      return out;
+    };
+    document.querySelectorAll('[data-npk] input').forEach((i) => i.addEventListener('input', hitungHara));
+    hitungHara();
+  }
+}
+
+/* ========================================================================= */
+/* LAYAR                                                                     */
+/* ========================================================================= */
+const LAYAR = {};
+
+/* --- masuk: empat situasi, tanpa kotak pencarian --- */
+LAYAR.mulai = () => `
+  <p class="mata">Satu perkara, satu layar</p>
+  <h2>Apa yang sedang kamu hadapi?</h2>
+  <p class="lede">Halaman ini tidak dimulai dari kotak pencarian. Pilih keadaan yang paling
+  mirip dengan yang ada di depanmu sekarang — sisanya menyusul satu keputusan per layar.</p>
+
+  <div class="pilihan dua">
+    <button class="pil" type="button" data-buka="tanaman" data-judul="Tanaman">
+      ${ikonPil(IK.daun)}
+      <span class="isi"><strong>Ada yang tidak beres di tanaman</strong>
+      <small>Daun, batang, atau buah berubah rupa dan kamu belum tahu penyebabnya</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="pegang" data-judul="Kemasan">
+      ${ikonPil(IK.botol)}
+      <span class="isi"><strong>Sedang memegang produk</strong>
+      <small>Ada karung, botol, atau sachet di tangan dan kamu ingin tahu isinya apa</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="semprot" data-judul="Takaran">
+      ${ikonPil(IK.semprot)}
+      <span class="isi"><strong>Akan menyemprot hari ini</strong>
+      <small>Dosis di label perlu diubah jadi isi tangki dan jumlah tutup botol</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="biaya" data-judul="Biaya">
+      ${ikonPil(IK.duit)}
+      <span class="isi"><strong>Membandingkan biaya pupuk</strong>
+      <small>Dua karung berbeda harga dan berbeda kandungan — mana yang lebih murah per hara</small></span>
+    </button>
+  </div>
+
+  <div class="catatan">
+    <p><strong>Yang halaman ini tidak lakukan.</strong> Tidak ada anjuran memakai produk
+    tertentu, tidak ada peringkat merek, dan tidak ada kesimpulan legal atau ilegal.
+    Yang keluar cuma apa yang benar-benar tercatat di registri — beserta bagian yang
+    registri memang tidak muat.</p>
+  </div>
+`;
+LAYAR.mulai.asal = 'tidak ada — layar pilihan';
+
+/* --- 1.1 tanaman apa --- */
+LAYAR.tanaman = () => `
+  <p class="mata">Langkah 1 dari 3</p>
+  <h2>Tanaman apa yang bermasalah?</h2>
+  <p class="lede">Pintu masuk lewat gejala hanya terbuka untuk tanaman yang OPT-nya sudah
+  dikurasi. Sekarang baru satu.</p>
+
+  <div class="pilihan">
+    <button class="pil" type="button" data-buka="gejala" data-judul="Gejala">
+      ${ikonPil(IK.daun)}
+      <span class="isi"><strong>Cabai</strong>
+      <small>10 hama &amp; penyakit terkurasi, semuanya bergejala dan berciri pembanding</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="tanamanLain" data-judul="Belum ada">
+      ${ikonPil('<path d="M12 5v14"/><path d="M5 12h14"/>')}
+      <span class="isi"><strong>Tanaman lain</strong>
+      <small>Padi, bawang merah, tomat, kentang, dan 230 komoditas lain</small></span>
+    </button>
+  </div>
+`;
+LAYAR.tanaman.asal = 'kurasi OPT cabai (10 rekaman, status draft)';
+
+/* --- 1.1b penolakan cakupan --- */
+LAYAR.tanamanLain = () => `
+  <section class="pita" data-hasil="henti">
+    <h2 class="pita-kepala"><span class="lencana">Berhenti di sini</span> Belum bisa dijawab dari gejala</h2>
+    <div class="pita-isi">
+      <p><strong>Masuk lewat gejala belum punya pintu untuk tanaman ini.</strong> Bukan karena
+      datanya sedang dimuat, melainkan karena tidak ada.</p>
+      <div class="fakta">
+        <div><span class="k">OPT registri yang membawa teks gejala</span><span class="v nol">0 dari 1.360</span></div>
+        <div><span class="k">OPT yang gejalanya dikurasi sendiri</span><span class="v">10 — seluruhnya cabai</span></div>
+        <div><span class="k">Komoditas yang punya OPT berproduk di registri</span><span class="v">234</span></div>
+      </div>
+      <p>Registri mencatat <em>produk apa yang terdaftar untuk hama apa</em>. Ia tidak mencatat
+      <em>hama itu kelihatannya bagaimana</em>. Kedua hal itu berbeda, dan yang kedua harus
+      ditulis dan ditinjau orang, satu per satu.</p>
+      <p>Yang masih bisa dilakukan dari sini: masuk dari <strong>nama hamanya</strong> kalau kamu
+      sudah tahu namanya, atau dari <strong>nama produk</strong> yang sedang dipegang.</p>
+      <div class="pilihan">
+        <button class="pil" type="button" data-buka="pegang" data-judul="Kemasan">
+          ${ikonPil(IK.botol)}
+          <span class="isi"><strong>Masuk dari nama produk saja</strong><small>Kalau kebetulan sedang memegang kemasannya</small></span>
+        </button>
+      </div>
+    </div>
+  </section>
+  ${blokBatas(['kurasi'], ['gejalaOpt'])}
+`;
+LAYAR.tanamanLain.asal = 'meta.tidakAda.gejalaOpt';
+
+/* --- 1.2 gejala --- */
+LAYAR.gejala = () => `
+  <p class="mata">Langkah 2 dari 3 · Cabai</p>
+  <h2>Yang paling terlihat, apa?</h2>
+  <p class="lede">Pilih satu yang paling menonjol. Kalau ada dua, pilih yang muncul lebih dulu.</p>
+
+  <div class="pilihan dua">
+    <button class="pil" type="button" data-buka="keriting" data-judul="Mengeriting">
+      ${ikonPil('<path d="M4 18c4 0 4-6 8-6s4 6 8 6"/><path d="M4 8c4 0 4 4 8 4"/>')}
+      <span class="isi"><strong>Daun muda mengeriting</strong><small>Melipat, mengerut, atau mengecil di bagian pucuk</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="layu" data-judul="Layu">
+      ${ikonPil('<path d="M12 3v9"/><path d="M12 12c-4 0-6 3-6 8"/><path d="M12 12c4 0 6 2 6 6"/>')}
+      <span class="isi"><strong>Tanaman layu</strong><small>Menunduk dan lemas walaupun tanah lembap</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilUlat" data-judul="Berlubang">
+      ${ikonPil('<path d="M4 20c0-8 6-14 16-16 0 10-6 16-16 16Z"/><circle cx="11" cy="12" r="1.6"/><circle cx="15" cy="8" r="1.2"/>')}
+      <span class="isi"><strong>Daun berlubang atau habis dimakan</strong><small>Lubang tidak beraturan, bertambah cepat dalam semalam</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilAntraknosa" data-judul="Bercak buah">
+      ${ikonPil('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/>')}
+      <span class="isi"><strong>Bercak atau busuk pada buah</strong><small>Bercak melingkar cekung, menghitam, buah keriput</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilKebul" data-judul="Serangga putih">
+      ${ikonPil('<path d="M12 12 5 6"/><path d="m12 12 7-6"/><path d="M12 12v7"/>')}
+      <span class="isi"><strong>Serangga putih beterbangan</strong><small>Berhamburan saat tanaman disentuh, lalu hinggap lagi</small></span>
+    </button>
+  </div>
+
+  <div class="catatan">
+    <p><strong>Kalau yang kamu pakai nama lokal.</strong> Kamus nama lokal di sini baru berisi
+    enam nama, dan <strong>empat di antaranya tidak menunjuk satu hama</strong>. “Layu” tidak
+    membedakan fusarium dari bakteri, dan “keriting daun” tidak membedakan virus dari trips.
+    Ketaksaan itu ditampilkan, bukan diputuskan diam-diam.</p>
+  </div>
+`;
+LAYAR.gejala.asal = 'gejala.json — 10 OPT cabai terkurasi';
+
+/* --- 1.3a percabangan: keriting --- */
+LAYAR.keriting = () => `
+  <p class="mata">Langkah 3 dari 3 · Cabai · daun mengeriting</p>
+  <h2>Tiga penyebab menghasilkan rupa yang mirip</h2>
+  <p class="lede">Ketiganya membuat daun pucuk berubah bentuk, tetapi tindakannya berbeda —
+  satu di antaranya tidak bisa ditolong semprotan apa pun. Satu uji sederhana memisahkannya.</p>
+
+  <div class="uji">
+    <h3>Uji kertas putih</h3>
+    <p>Kibaskan daun pucuk di atas selembar kertas putih, lalu lihat kertasnya selama beberapa detik.</p>
+  </div>
+
+  <h3>Apa yang terlihat di kertas?</h3>
+  <div class="pilihan">
+    <button class="pil" type="button" data-buka="hasilTrips" data-judul="Trips">
+      ${ikonPil('<circle cx="12" cy="12" r="2"/><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/>')}
+      <span class="isi"><strong>Ada serangga kuning kecoklatan 1–2&nbsp;mm yang bergerak cepat</strong>
+      <small>Daun tetap hijau dengan goresan keperakan di permukaan bawahnya</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilVirus" data-judul="Virus">
+      ${ikonPil('<path d="M5 5l14 14M19 5 5 19"/>')}
+      <span class="isi"><strong>Tidak ada yang bergerak, dan daunnya menguning terang lalu mengecil</strong>
+      <small>Tanpa lubang, bercak, goresan, atau anyaman — yang berubah cuma warna dan bentuk</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilRagu" data-judul="Belum pasti">
+      ${ikonPil('<path d="M9.5 9a2.5 2.5 0 1 1 3.5 2.3c-.9.4-1 1-1 1.7"/><path d="M12 17h.01"/>')}
+      <span class="isi"><strong>Saya belum bisa memastikan</strong>
+      <small>Kertasnya tidak jelas, atau gejalanya bercampur</small></span>
+    </button>
+  </div>
+  ${blokBatas(['kurasi', 'namaLokal'], ['gejalaOpt'])}
+`;
+LAYAR.keriting.asal = 'ciri pembanding OPT terkurasi (status draft)';
+
+/* --- 1.3b percabangan: layu --- */
+LAYAR.layu = () => `
+  <p class="mata">Langkah 3 dari 3 · Cabai · tanaman layu</p>
+  <h2>Dua layu yang terlihat sama di kebun</h2>
+  <p class="lede">Layu fusarium dan layu bakteri tidak bisa dibedakan dari luar. Itu bukan
+  kekurangan kamus ini — memang begitu keadaannya. Uji berikut memisahkannya di tempat.</p>
+
+  <div class="uji">
+    <h3>Uji gelas</h3>
+    <p>Potong batang dekat pangkalnya, celupkan ujung potongan ke gelas berisi air bening,
+    lalu diamkan lima menit tanpa diaduk.</p>
+  </div>
+
+  <h3>Apa yang keluar dari potongan batang?</h3>
+  <div class="pilihan">
+    <button class="pil" type="button" data-buka="hasilBakteri" data-judul="Layu bakteri">
+      ${ikonPil('<path d="M12 4v6"/><path d="M12 10c0 5-3 6-3 10"/><path d="M12 10c0 5 3 6 3 10"/>')}
+      <span class="isi"><strong>Keluar lendir putih yang mengepul ke dalam air</strong>
+      <small>Layunya juga mendadak, dan daunnya masih hijau saat layu</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilFusarium" data-judul="Layu fusarium">
+      ${ikonPil('<path d="M4 20 20 4"/><path d="M14 4h6v6"/>')}
+      <span class="isi"><strong>Tidak keluar lendir apa pun</strong>
+      <small>Layunya perlahan berhari-hari, daun bawah menguning lebih dulu, sering hanya satu sisi</small></span>
+    </button>
+  </div>
+  ${blokBatas(['kurasi'], [])}
+`;
+LAYAR.layu.asal = 'ciri pembanding OPT terkurasi (status draft)';
+
+/* --- hasil generik --- */
+function hasilOpt(o, opts) {
+  const o2 = OPT[o];
+  const p = o2.diCabai.produk;
+  const bahanBlok = opts && opts.penuh ? `
+    <h3>Bahan aktif yang terdaftar untuk ini, dikelompokkan menurut kadar</h3>
+    <p>Kesetaraan hanya berlaku pada pasangan <strong>bahan dan kadar</strong> — dua produk
+    berbahan sama tetapi berbeda kadar bukan barang yang sama. Urutannya menurut banyaknya
+    merek, bukan menurut peringkat apa pun.</p>
+    <ul class="bahan-daftar">
+      ${BAHAN_TRIPS.map((b, i) => `
+        <li><details class="bahan" ${i === 0 ? 'open' : ''}>
+          <summary>
+            <span>${esc(b.nama)}</span>
+            <span class="kadar">${esc(b.kadar)}</span>
+            ${b.irac ? `<span class="irac">IRAC ${esc(b.irac)}</span>` : `<span class="cacah">golongan belum terpetakan</span>`}
+            <span class="cacah">${n(b.merek)} merek</span>
+            ${b.larangan === 'lain' ? `<span class="irac" style="border-color:var(--waspada);color:var(--waspada)">berlarangan di lingkup lain</span>` : ''}
+          </summary>
+          <div class="bahan-isi">
+            ${i === 0 ? `
+              <p>Tiga belas dari ${n(b.merek)} merek. Isinya identik — <strong>dosis terdaftarnya tidak.</strong></p>
+              <div class="tabel-bungkus">
+                <table class="merek">
+                  <caption class="khusus-pembaca">Merek Abamektin 18 g/L beserta nomor pendaftaran dan dosis terdaftarnya</caption>
+                  <thead><tr><th scope="col">Merek</th><th scope="col">Nomor pendaftaran</th><th scope="col">Dosis terdaftar</th><th scope="col">Berlaku s/d</th></tr></thead>
+                  <tbody>${MEREK_ABA18.map((m) => `<tr>
+                    <td>${esc(m.n)}</td>
+                    <td class="nomor">${esc(m.d)}</td>
+                    <td class="dosis" data-lain="${m.lain ? 'ya' : 'tidak'}">${esc(m.ds)}${m.lain ? ' ⚠' : ''}</td>
+                    <td class="nomor">${esc(m.b)}</td></tr>`).join('')}</tbody>
+                </table>
+              </div>
+              <div class="catatan awas">
+                <p><strong>Dosis terdaftarnya berbeda sampai tiga kali lipat</strong> — 0,5 sampai
+                1,5 ml per liter — untuk bahan dan kadar yang sama persis. Itu bukan salah salin:
+                masing-masing didaftarkan sendiri-sendiri. Yang berlaku untuk sebuah botol adalah
+                angka di label botol itu, bukan angka botol tetangganya.</p>
+                <p>⚠ <strong>RUTIN 18 EC didaftarkan dalam 1 l/ha</strong>, satuan yang berbeda
+                sama sekali. Tanpa volume semprot per hektare, angka itu tidak bisa dibandingkan
+                dengan yang ml/l — dan volume semprot tidak ada di registri.</p>
+              </div>
+            ` : `<p>Daftar mereknya ada di indeks; di prototipe ini yang dibuka lengkap baru kelompok teratas.
+                 <span class="irac" style="border-style:dashed">contoh prototipe</span></p>`}
+          </div>
+        </details></li>`).join('')}
+    </ul>` : '';
+
+  return `
+  <section class="pita" data-hasil="ada">
+    <h2 class="pita-kepala"><span class="lencana">Ada di registri</span> ${esc(o2.nama)}</h2>
+    <div class="pita-isi">
+      <p style="font-style:italic;color:var(--lemah);margin:0 0 10px">${esc(o2.ilmiah)} · ${esc(o2.jenis)}</p>
+      <p>${esc(o2.gejala)}</p>
+      <div class="fakta">
+        <div><span class="k">Produk terdaftar untuk ${esc(o2.nama)} pada Cabai</span><span class="v">${n(p)}</span></div>
+        ${o2.diCabai.zat ? `<div><span class="k">Bahan aktif berbeda di antaranya</span><span class="v">${n(o2.diCabai.zat)}</span></div>` : ''}
+        ${o2.diCabai.kartu ? `<div><span class="k">Pasangan bahan + kadar</span><span class="v">${n(o2.diCabai.kartu)}</span></div>` : ''}
+        ${o2.diCabai.berlarangan ? `<div><span class="k">Di antaranya memuat bahan yang dilarang di lingkup lain</span><span class="v" style="color:var(--waspada)">${n(o2.diCabai.berlarangan)}</span></div>` : ''}
+      </div>
+      ${p <= 5 ? `<div class="catatan"><p><strong>Cacahnya kecil, dan itu apa adanya.</strong>
+        ${n(p)} produk terdaftar bukan berarti hanya ${n(p)} yang bekerja — berarti hanya ${n(p)}
+        yang <em>didaftarkan</em> untuk pasangan hama–komoditas ini. Pendaftaran mengikuti
+        pengajuan perusahaan, bukan luasnya masalah di lapangan.</p></div>` : ''}
+      ${bahanBlok}
+      <div class="catatan awas">
+        <p><strong>Halaman ini tidak menganjurkan.</strong> Urutan di atas memakai cacah merek dan
+        nomor pendaftaran menaik — tanpa peringkat, tanpa slot berbayar, tanpa penilaian mutu.
+        Terdaftar berarti <em>punya izin edar</em>, bukan terjamin asli, bermutu, atau cocok
+        untuk kebunmu.</p>
+      </div>
+    </div>
+  </section>
+  ${blokBatas(['pestisida', 'kurasi', 'golongan'], ['phi', 'namaDagang'])}
+  `;
+}
+
+LAYAR.hasilTrips      = () => hasilOpt('trips', { penuh: true });
+LAYAR.hasilTrips.asal = 'registri pestisida + kurasi OPT + IRAC v11.5';
+LAYAR.hasilFusarium   = () => hasilOpt('fusarium');
+LAYAR.hasilFusarium.asal = 'registri pestisida + kurasi OPT';
+LAYAR.hasilBakteri    = () => hasilOpt('bakteri');
+LAYAR.hasilBakteri.asal  = 'registri pestisida + kurasi OPT';
+LAYAR.hasilUlat       = () => hasilOpt('ulatGrayak');
+LAYAR.hasilUlat.asal     = 'registri pestisida + kurasi OPT';
+LAYAR.hasilAntraknosa = () => hasilOpt('antraknosa');
+LAYAR.hasilAntraknosa.asal = 'registri pestisida + kurasi OPT';
+LAYAR.hasilKebul      = () => hasilOpt('kutuKebul');
+LAYAR.hasilKebul.asal    = 'registri pestisida + kurasi OPT';
+
+/* --- keadaan: tidak dapat menjawab --- */
+LAYAR.hasilVirus = () => `
+  <section class="pita" data-hasil="henti">
+    <h2 class="pita-kepala"><span class="lencana">Berhenti di sini</span> Tidak ada yang bisa ditawarkan</h2>
+    <div class="pita-isi">
+      <h3 style="margin-top:0">Virus kuning keriting <span style="font-weight:400;font-style:italic;color:var(--lemah)">(Begomovirus)</span></h3>
+      <p>${esc(OPT.virus.gejala)}</p>
+
+      <div class="fakta">
+        <div><span class="k">Produk terdaftar untuk Virus kuning keriting pada Cabai</span><span class="v nol">0</span></div>
+        <div><span class="k">Produk terdaftar untuk virus ini pada komoditas mana pun</span><span class="v nol">0</span></div>
+      </div>
+
+      <p><strong>Nol di sini berarti nol yang sebenarnya</strong>, bukan “sedang dimuat” dan bukan
+      “belum ditarik”. Registri Kementan tidak memuat satu pun produk yang didaftarkan untuk
+      hama ini pada komoditas apa pun.</p>
+
+      <div class="catatan awas">
+        <p><strong>Yang berbahaya di layar seperti ini adalah menawarkan yang terdekat.</strong>
+        Halaman ini sengaja tidak menampilkan “produk untuk hama yang mirip”, dan tidak
+        mengarahkanmu ke daftar insektisida kutu kebul hanya karena kutu kebul adalah
+        penularnya. Mengganti yang tidak ada dengan yang terdekat menanam karangan
+        sebagai fakta.</p>
+      </div>
+
+      <h3>Yang masih bisa dikatakan, dan dari mana asalnya</h3>
+      <p>Satu kalimat pada teks gejala di atas — <em>“tidak pulih walau disemprot apa pun”</em> —
+      datang dari kurasi agronomi proyek ini, <strong>bukan dari registri</strong>, dan
+      tingkat buktinya sengaja belum ditetapkan. Perlakukan sebagai keterangan yang masih
+      menunggu tinjauan penyuluh atau BPTP, bukan sebagai putusan.</p>
+
+      <h3>Ke mana perkara ini bisa dilanjutkan</h3>
+      <p>Bukan ke layar lain di sini. Yang bisa meneruskan adalah orang: penyuluh di balai
+      penyuluhan kecamatanmu, atau BPTP provinsi.</p>
+      <div class="catatan">
+        <p><strong>Dan di situ pun ada batasnya.</strong> ${esc(TIDAK_ADA.bpp)} Halaman ini bisa
+        menyebut bahwa balainya ada, tetapi tidak bisa memberi alamatnya.</p>
+      </div>
+    </div>
+  </section>
+  ${blokBatas(['pestisida', 'kurasi'], ['gejalaOpt', 'bpp'])}
+`;
+LAYAR.hasilVirus.asal = 'registri pestisida (0 rekaman) + kurasi OPT';
+
+/* --- keadaan: meragukan --- */
+LAYAR.hasilRagu = () => {
+  const kartu = (o) => `
+    <div class="kandidat">
+      <h3>${esc(o.nama)}</h3>
+      <p class="ilmiah">${esc(o.ilmiah)}</p>
+      <p style="font-size:.92rem">${esc(o.gejala)}</p>
+      <div class="fakta" style="margin-bottom:0">
+        <div><span class="k">Produk terdaftar pada Cabai</span>
+        <span class="v ${o.diCabai.produk === 0 ? 'nol' : ''}">${n(o.diCabai.produk)}</span></div>
+      </div>
+    </div>`;
+  return `
+  <section class="pita" data-hasil="ragu">
+    <h2 class="pita-kepala"><span class="lencana">Belum bisa dipastikan</span> Dua kemungkinan masih terbuka</h2>
+    <div class="pita-isi">
+      <p><strong>Layar ini tidak memilihkan salah satunya.</strong> Kedua kemungkinan di bawah
+      menuntut tindakan yang berlawanan: satu punya 246 produk terdaftar, satu lagi nol dan
+      tidak bisa ditolong semprotan apa pun. Menebak di antara keduanya lebih mahal daripada
+      mengatakan belum tahu.</p>
+
+      <div class="grid-dua">
+        ${kartu(OPT.trips)}
+        ${kartu(OPT.virus)}
+      </div>
+
+      <div class="uji" style="margin-top:18px">
+        <h3>Yang memisahkannya, dan bisa diulang sendiri</h3>
+        <p><strong>1 · Kertas putih.</strong> Kibaskan daun pucuk di atasnya. Trips terlihat sebagai
+        serangga kuning kecoklatan 1–2&nbsp;mm yang langsung bergerak cepat. Kalau tidak ada yang
+        bergerak, penyebabnya bukan trips.</p>
+        <p style="margin-top:8px"><strong>2 · Warna daun.</strong> Pada trips daunnya tetap hijau
+        dengan goresan keperakan. Kalau menguning terang dan mengecil tanpa goresan, itu gejala
+        virus.</p>
+      </div>
+
+      <div class="catatan">
+        <p><strong>Kenapa dua nama lokal ikut menunjuk keduanya.</strong> Dalam kamus nama lokal di
+        sini, <em>“bule”</em> dan <em>“keriting daun”</em> masing-masing menunjuk virus kuning
+        <em>maupun</em> trips. Kamusnya juga <strong>belum tahu nama itu dipakai di daerah
+        mana</strong>, padahal artinya berbeda tiap daerah — dan memetakannya salah lebih
+        berbahaya daripada tidak memetakannya sama sekali.</p>
+      </div>
+
+      <div class="pilihan">
+        <button class="pil" type="button" data-buka="keriting" data-judul="Ulangi uji">
+          ${ikonPil(IK.balik)}
+          <span class="isi"><strong>Sudah saya ulangi ujinya</strong><small>Kembali ke pertanyaan kertas putih</small></span>
+        </button>
+      </div>
+    </div>
+  </section>
+  ${blokBatas(['kurasi', 'namaLokal'], ['gejalaOpt'])}
+  `;
+};
+LAYAR.hasilRagu.asal = 'kurasi OPT + kamus nama lokal (tingkat D)';
+
+/* --- 2. memegang produk --- */
+LAYAR.pegang = () => `
+  <p class="mata">Langkah 1 dari 2</p>
+  <h2>Apa yang tertulis paling besar di kemasannya?</h2>
+  <p class="lede">Cukup nama yang paling menonjol — bukan nomor pendaftarannya. Tiga contoh
+  di bawah datang dari registri dan bisa dicoba langsung.</p>
+
+  <div class="pilihan">
+    <button class="pil" type="button" data-buka="hasilPhonska" data-judul="PHONSKA">
+      ${ikonPil(IK.botol)}
+      <span class="isi"><strong>PHONSKA</strong><small>Karung pupuk butiran</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilLarban" data-judul="LARBAN">
+      ${ikonPil(IK.botol)}
+      <span class="isi"><strong>LARBAN 500/50 EC</strong><small>Botol insektisida</small></span>
+    </button>
+    <button class="pil" type="button" data-buka="hasilTakCocok" data-judul="Tak ketemu">
+      ${ikonPil('<path d="M11 3a8 8 0 1 0 0 16 8 8 0 0 0 0-16Z"/><path d="m21 21-4.3-4.3"/>')}
+      <span class="isi"><strong>Nama lain — dan tidak ketemu</strong><small>Contoh keadaan saat registri tidak memuat nama yang dicari</small></span>
+    </button>
+  </div>
+
+  <div class="catatan">
+    <p><strong>Nama di kemasan sering bukan nama terdaftar.</strong> ${esc(TIDAK_ADA.namaDagang)}
+    Karena itu nama yang tidak ketemu <strong>bukan bukti produknya tidak terdaftar</strong>.</p>
+  </div>
+`;
+LAYAR.pegang.asal = 'registri pupuk + registri pestisida';
+
+LAYAR.hasilPhonska = () => `
+  <section class="pita" data-hasil="ragu">
+    <h2 class="pita-kepala"><span class="lencana">Cocok, tapi lebih dari satu</span> Tujuh rekaman bernama PHONSKA</h2>
+    <div class="pita-isi">
+      <p><strong>Lima di antaranya bernama persis “PHONSKA” — dan kandungannya berlainan.</strong>
+      Registri tidak menyimpan apa yang tercetak di karung, jadi layar ini tidak bisa
+      memutuskan yang mana yang sedang kamu pegang.</p>
+
+      <div class="tabel-bungkus">
+        <table class="merek">
+          <caption class="khusus-pembaca">Rekaman registri pupuk yang namanya diawali PHONSKA</caption>
+          <thead><tr><th scope="col">Nama terdaftar</th><th scope="col">Kandungan</th><th scope="col">Nomor pendaftaran</th><th scope="col">Berlaku s/d</th></tr></thead>
+          <tbody>${PHONSKA.map((p) => `<tr>
+            <td>${esc(p.n)}<br><span style="color:var(--lemah);font-size:.8rem">${esc(p.bentuk)}</span></td>
+            <td class="nomor">${p.k ? esc(p.k) : '<span style="color:var(--waspada);font-weight:700">tidak tercatat</span>'}</td>
+            <td class="nomor">${p.d === 'TIDAK-TERCANTUM' ? '<span style="color:var(--waspada);font-weight:700">TIDAK TERCANTUM</span>' : esc(p.d)}</td>
+            <td class="nomor">${esc(p.b)}${p.mati ? ' <span style="color:var(--waspada);font-weight:700">⧗ lewat</span>' : ''}</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+
+      <h3>Tiga hal yang layar ini tolak simpulkan</h3>
+      <div class="catatan awas">
+        <p><strong>1 · Tidak menebak yang mana.</strong> Yang paling banyak beredar bukan bukti
+        bahwa itu yang di tanganmu. Yang menentukan adalah angka komposisi yang tercetak di
+        karungmu sendiri — cocokkan itu dengan kolom kandungan di atas.</p>
+        <p><strong>2 · Tanggal lewat bukan berarti palsu.</strong> Tiga baris di atas tanggal
+        berlakunya sudah lewat per 27 Agustus 2026. Itu berarti <em>izin edarnya</em> tidak
+        berlaku pada tanggal itu — bukan bahwa barang di gudangmu palsu, dan bukan bahwa
+        barangnya berbahaya. Registri mencatat izin, bukan barang.</p>
+        <p><strong>3 · “Tidak tercantum” bukan kelalaian layar ini.</strong> Satu baris memang
+        terdaftar tanpa nomor. <strong>667 dari 7.196 pupuk</strong> di registri berkeadaan sama —
+        sembilan persen. Nomor pendaftaran bukan cuma jarang dibaca orang; untuk pupuk ia
+        sering memang tidak ada.</p>
+      </div>
+
+      <div class="pilihan">
+        <button class="pil" type="button" data-buka="biaya" data-judul="Biaya">
+          ${ikonPil(IK.duit)}
+          <span class="isi"><strong>Bandingkan harganya per kilogram hara</strong>
+          <small>Kalau yang ingin diputuskan bukan “yang mana”, melainkan “yang mana lebih murah”</small></span>
+        </button>
+      </div>
+    </div>
+  </section>
+  ${blokBatas(['pupuk'], ['namaDagang', 'harga'])}
+`;
+LAYAR.hasilPhonska.asal = 'registri pupuk — 7 rekaman bernama PHONSKA';
+
+LAYAR.hasilLarban = () => `
+  <section class="pita" data-hasil="awas">
+    <h2 class="pita-kepala"><span class="lencana">Ada — dengan lingkup larangan</span> ${esc(LARBAN.n)}</h2>
+    <div class="pita-isi">
+      <div class="fakta">
+        <div><span class="k">Nomor pendaftaran</span><span class="v" style="font-family:ui-monospace,Menlo,monospace">${esc(LARBAN.d)}</span></div>
+        <div><span class="k">Pemegang pendaftaran</span><span class="v">${esc(LARBAN.produsen)}</span></div>
+        <div><span class="k">Berlaku sampai</span><span class="v">${esc(LARBAN.b)}</span></div>
+        <div><span class="k">Merek lain yang isinya sama persis</span><span class="v">${n(LARBAN.setara)}</span></div>
+      </div>
+
+      <h3>Isinya</h3>
+      <ul class="bahan-daftar">
+        ${LARBAN.isi.map((i) => `<li><details class="bahan"><summary>
+          <span>${esc(i.z)}</span><span class="kadar">${esc(i.v)}</span>
+          <span class="irac">IRAC ${esc(i.irac)}</span>
+          ${i.larangan ? `<span class="irac" style="border-color:var(--waspada);color:var(--waspada)">berlarangan</span>` : ''}
+        </summary><div class="bahan-isi">
+          ${i.larangan ? `<p><strong>Klorpirifos dilarang pada lingkup tertentu</strong>, bukan dilarang seluruhnya.</p>
+            <div class="fakta"><div><span class="k">Lingkup larangan</span><span class="v">${esc(LARBAN.larangan.lingkup.join(' · '))}</span></div>
+            <div><span class="k">Dasar</span><span class="v" style="font-size:.82rem;text-align:right">${esc(LARBAN.larangan.instrumen)}<br>${esc(LARBAN.larangan.kutipan)}</span></div></div>
+            <p>Produk ini <strong>tetap terdaftar untuk Cabai</strong>. Halaman ini menampilkan
+            larangan beserta lingkup dan pasalnya, lalu berhenti — ia tidak menyimpulkan legal
+            atau ilegal untuk keadaanmu.</p>`
+          : `<p>Tidak ada larangan lingkup yang tercatat untuk bahan ini.</p>`}
+        </div></details></li>`).join('')}
+      </ul>
+
+      <div class="catatan">
+        <p><strong>Kedua bahannya bergolongan berbeda</strong> — IRAC 1B dan IRAC 3A. Golongan
+        dipakai untuk menata rotasi; pemetaan nama→kode di sini dicocokkan lewat ejaan dan
+        berstatus draft, jadi perlakukan sebagai petunjuk, bukan putusan.</p>
+      </div>
+
+      <h3>Penggunaan berlabel yang tercatat</h3>
+      <div class="tabel-bungkus">
+        <table class="merek">
+          <thead><tr><th scope="col">Komoditas</th><th scope="col">Sasaran</th><th scope="col">Dosis terdaftar</th><th scope="col">Tenggang panen</th></tr></thead>
+          <tbody>${LARBAN.guna.map((g) => `<tr><td>${esc(g.k)}</td><td>${esc(g.o)}</td>
+            <td class="dosis">${esc(g.ds)}</td>
+            <td style="color:var(--waspada);font-weight:700">tidak dicatat</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+      <div class="catatan awas">
+        <p><strong>Kolom terakhir kosong di seluruh registri.</strong> ${esc(TIDAK_ADA.phi)}</p>
+      </div>
+    </div>
+  </section>
+  ${blokBatas(['pestisida', 'golongan'], ['phi', 'namaDagang'])}
+`;
+LAYAR.hasilLarban.asal = 'registri pestisida + daftar larangan Permentan 43/2019';
+
+LAYAR.hasilTakCocok = () => `
+  <section class="pita" data-hasil="henti">
+    <h2 class="pita-kepala"><span class="lencana">Berhenti di sini</span> Tidak ada yang cocok</h2>
+    <div class="pita-isi">
+      <p><strong>Tidak ketemu bukan bukti produknya tidak terdaftar.</strong> Yang dicocokkan
+      layar ini nama <em>terdaftar</em>, dan nama itu sering berbeda dari nama jualan di
+      kemasan. Pemetaan antara keduanya belum ada.</p>
+
+      <div class="catatan awas">
+        <p><strong>Yang sengaja tidak ditawarkan: nama yang paling mirip.</strong> Menawarkan
+        “mungkin maksudmu …” di layar seperti ini adalah cara paling halus menanam karangan
+        sebagai fakta — orang membaca tebakan mesin sebagai konfirmasi, lalu membeli barang
+        yang bukan itu.</p>
+      </div>
+
+      <h3>Yang bisa dicoba, dengan hasil yang bisa diperiksa sendiri</h3>
+      <p>Cocokkan lewat <strong>isinya</strong>, bukan namanya. Angka komposisi tercetak di
+      kemasan — “NPK 15-15-15”, “Abamektin 18 g/L” — dan angka itu memang yang disimpan
+      registri.</p>
+
+      <div class="pilihan">
+        <button class="pil" type="button" data-buka="pegang" data-judul="Coba lagi">
+          ${ikonPil(IK.balik)}
+          <span class="isi"><strong>Coba nama lain</strong><small>Kembali ke daftar contoh</small></span>
+        </button>
+      </div>
+    </div>
+  </section>
+  ${blokBatas(['pestisida', 'pupuk'], ['namaDagang'])}
+`;
+LAYAR.hasilTakCocok.asal = 'registri pupuk + pestisida — 0 rekaman cocok';
+
+/* --- 3. takaran --- */
+LAYAR.semprot = () => `
+  <p class="mata">Aritmetika, bukan anjuran</p>
+  <h2>Dosis di label jadi isi tangki</h2>
+  <p class="lede">Angka yang keluar adalah hasil perkalian dari angka yang kamu masukkan
+  sendiri. Halaman ini tidak memilihkan dosis, dan tidak tahu berapa yang benar untuk kebunmu.</p>
+
+  <div class="borang">
+    <div class="medan">
+      <label for="dosisPilih">Dosis yang tertulis di label botolmu</label>
+      <small>Daftar ini memuat dosis terdaftar sungguhan dari merek Abamektin 18 g/L. Kalau botolmu
+      lain, pakai angka yang tertulis di botol itu.</small>
+      <select id="dosisPilih">
+        <option value="0,5">0,5 ml per liter — DEMOLISH / PHOSCORMITE / STADIUM 18 EC</option>
+        <option value="0,75">0,75 ml per liter — DIMECTIN / MECTIMAX 18 EC</option>
+        <option value="1">1 ml per liter — TSUBAME / MATROS / ABATEN 18 EC</option>
+        <option value="1,5">1,5 ml per liter — SUPEMEC / DKMEKTIN / OPTIMECT 18 EC</option>
+        <option value="2">2 ml per liter — batas atas STARMEK 18 EC (1–2 ml/l)</option>
+      </select>
+    </div>
+    <div class="medan">
+      <label for="tangki">Isi tangki semprotmu, dalam liter</label>
+      <small>Tangki gendong yang lazim 14–16 liter. Ukur sekali dengan botol air mineral kalau ragu.</small>
+      <input id="tangki" type="number" inputmode="decimal" min="1" max="200" step="0.5" value="15">
+    </div>
+  </div>
+
+  <div class="hasil-hitung">
+    <p style="margin:0 0 4px;font-weight:700;color:var(--jalan)">Yang dituang ke satu tangki penuh</p>
+    <p style="margin:0"><span class="angka" id="hasilTangki">—</span> <span class="satuan">mililiter</span></p>
+    <p style="margin:8px 0 0;font-size:.92rem">Kira-kira <strong><span id="hasilTutup">—</span></strong>
+    tutup botol air mineral, kalau satu tutup dihitung 10&nbsp;ml.</p>
+  </div>
+
+  <div class="catatan awas">
+    <p><strong>Tutup botol bukan alat ukur.</strong> Angka 10&nbsp;ml itu perkiraan lazim; tutup
+    yang berbeda merek berbeda isinya. Kalau selisih 20% berarti, pakai gelas ukur.</p>
+    <p><strong>Dan satu hal yang tidak bisa dijawab layar mana pun di sini:</strong>
+    ${esc(TIDAK_ADA.phi)}</p>
+  </div>
+  ${blokBatas(['pestisida'], ['phi'])}
+`;
+LAYAR.semprot.asal = 'dosis terdaftar dari registri; sisanya masukanmu sendiri';
+
+/* --- 4. biaya --- */
+LAYAR.biaya = () => {
+  const baris = [
+    { n: 'PHONSKA', d: '01.01.2022.1248', npk: '15-8-10' },
+    { n: 'PHONSKA', d: '01.01.2022.1252', npk: '15-15-10' },
+    { n: 'PHONSKA', d: '01.01.2024.261',  npk: '10-10-10' }
+  ];
+  return `
+  <p class="mata">Aritmetika, bukan anjuran</p>
+  <h2>Rupiah per kilogram hara, bukan per karung</h2>
+  <p class="lede">Tiga rekaman di bawah sama-sama bernama PHONSKA dan sama-sama sungguhan.
+  Kandungannya berbeda, jadi karung yang harganya sama tidak berarti haranya sama.</p>
+
+  <div class="borang">
+    ${baris.map((b, i) => `
+      <div class="medan" data-npk="${b.npk}">
+        <label for="h${i}">${esc(b.n)} — NPK ${esc(b.npk)} <span style="font-weight:400;color:var(--lemah);font-size:.84rem">· ${esc(b.d)}</span></label>
+        <small>Harga satu karung 50&nbsp;kg di tempatmu</small>
+        <input id="h${i}" type="number" inputmode="numeric" min="0" step="1000" placeholder="misal 250000" value="${250000 + i * 15000}">
+        <p class="rp" style="margin:2px 0 0;font-weight:800;font-variant-numeric:tabular-nums;color:var(--jalan)">—</p>
+      </div>`).join('')}
+    <input type="hidden" id="hargaP" value="1">
+  </div>
+
+  <div class="catatan awas">
+    <p><strong>Tiga hal yang tidak boleh dibandingkan begini.</strong></p>
+    <p>1 · <strong>Pupuk cair terhadap pupuk padat.</strong> ${esc(TIDAK_ADA.beratJenis)}
+    PHONSKA CAIR karena itu tidak masuk daftar di atas.</p>
+    <p>2 · <strong>Hara terhadap hara yang berbeda.</strong> Perhitungan di atas menjumlahkan
+    N, P₂O₅, dan K₂O jadi satu angka “kg hara”. Itu memudahkan pembanding harga, tetapi
+    <em>tidak</em> berarti satu kilogram N sama gunanya dengan satu kilogram K₂O bagi tanaman.</p>
+    <p>3 · <strong>Sediaan buatan sendiri.</strong> Kadar hara kompos dan pupuk organik cair
+    tidak diketahui sebelum batchnya diuji, dan berbeda tiap tumpukan. Karena itu resep
+    terbuka muncul <em>tanpa angka</em> di sini, bukan dengan angka taksiran.</p>
+  </div>
+
+  <div class="catatan">
+    <p><strong>Angka rupiahnya tidak datang dari mana-mana kecuali dari kamu.</strong>
+    ${esc(TIDAK_ADA.harga)} Harga eceran nasional yang diterbitkan pemerintah pun mendaftarkan
+    Urea, NPK 15-15-15, SP-36, dan ZA <em>tanpa mengisi angkanya</em>.</p>
+  </div>
+  ${blokBatas(['pupuk'], ['harga', 'beratJenis'])}
+  `;
+};
+LAYAR.biaya.asal = 'komposisi dari registri pupuk; harga masukanmu sendiri';
+
+/* ---------- pasang ---------- */
+el('kembali').addEventListener('click', () => {
+  if (jejak.length < 2) return;
+  jejak.pop(); const j = jejak.pop();
+  buka(j.layar, j.judul);
+});
+el('ulang').addEventListener('click', () => { jejak = []; buka('mulai', 'Mulai'); });
+
+el('tombolTema').addEventListener('click', () => {
+  const r = document.documentElement;
+  const gelapSistem = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const kini = r.dataset.tema || (gelapSistem ? 'gelap' : 'terang');
+  const baru = kini === 'gelap' ? 'terang' : 'gelap';
+  r.dataset.tema = baru;                       /* hanya di memori — tidak ditulis ke mana pun */
+  el('tombolTema').textContent = baru === 'gelap' ? 'Terang' : 'Gelap';
+});
+
+function jaringan() {
+  const j = el('jar'), t = el('jarTeks');
+  if (navigator.onLine) { j.dataset.luring = 'tidak'; t.textContent = 'Ada sinyal'; }
+  else { j.dataset.luring = 'ya'; t.textContent = 'Tanpa sinyal — layar ini tetap jalan'; }
+}
+addEventListener('online', jaringan); addEventListener('offline', jaringan); jaringan();
+
+buka('mulai', 'Mulai');
+</script>
+</body>
+</html>

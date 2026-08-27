@@ -1,0 +1,796 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Tiga alternatif UX beranda Pranatani</title>
+<meta name="description" content="Galeri dan alat pembanding tiga konsep UX beranda Pranatani: kanvas lapangan, atlas pengetahuan, dan meja banding bukti.">
+<style>
+:root {
+  color-scheme: light;
+  --kertas:#fbfaf7; --kanvas:#eceae3; --panel:#ffffff;
+  --tinta:#161a1f; --lemah:#5d6570; --garis:#d8d5cc; --garis-kuat:#9aa0a8;
+  --hijau:#00442f; --hijau-2:#0b6b4f; --hijau-latar:#e3efe8; --limau:#5e9c0a;
+  --k1:#9c4508; --k1-latar:#fbe9d8;     /* konsep 1 */
+  --k2:#1f4a7a; --k2-latar:#e4ecf5;     /* konsep 2 */
+  --k3:#6d5a8c; --k3-latar:#eee9f4;     /* konsep 3 */
+  --karat:#9d3f16; --karat-latar:#f7e9e0;
+  --di-aksen:#ffffff;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) {
+    color-scheme: dark;
+    --kertas:#14171b; --kanvas:#0b0d10; --panel:#1c2027; --tinta:#eef0f3; --lemah:#9aa3ae;
+    --garis:#313740; --garis-kuat:#5b636d;
+    --hijau:#8fe0c0; --hijau-2:#5fc9a5; --hijau-latar:#153029; --limau:#9ade36;
+    --k1:#ffb267; --k1-latar:#3a2410;
+    --k2:#8fb8e8; --k2-latar:#1c2735;
+    --k3:#c3aee0; --k3-latar:#251f31;
+    --karat:#eb9a6d; --karat-latar:#33211a;
+    --di-aksen:#0b0d10;
+  }
+}
+:root[data-tema="gelap"] {
+  color-scheme: dark;
+  --kertas:#14171b; --kanvas:#0b0d10; --panel:#1c2027; --tinta:#eef0f3; --lemah:#9aa3ae;
+  --garis:#313740; --garis-kuat:#5b636d;
+  --hijau:#8fe0c0; --hijau-2:#5fc9a5; --hijau-latar:#153029; --limau:#9ade36;
+  --k1:#ffb267; --k1-latar:#3a2410; --k2:#8fb8e8; --k2-latar:#1c2735;
+  --k3:#c3aee0; --k3-latar:#251f31; --karat:#eb9a6d; --karat-latar:#33211a; --di-aksen:#0b0d10;
+}
+
+*,*::before,*::after { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+body { background:var(--kanvas); color:var(--tinta); font-family:var(--sans);
+  font-size:16.5px; line-height:1.55; -webkit-text-size-adjust:100%; overflow-x:hidden; }
+:where(a,button,summary,[tabindex]):focus-visible { outline:3px solid var(--hijau-2); outline-offset:2px; border-radius:2px; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; } }
+.lewati { position:absolute; left:-9999px; top:0; z-index:90; background:var(--hijau); color:#fff; padding:12px 16px; font-weight:700; }
+.lewati:focus { left:8px; top:8px; }
+.sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+.bungkus { max-width:1240px; margin:0 auto; padding:0 16px; }
+@media (min-width:900px) { .bungkus { padding:0 28px; } }
+
+/* kepala */
+header.atas { background:var(--panel); border-bottom:2px solid var(--garis-kuat); position:sticky; top:0; z-index:40; }
+.baris { display:flex; align-items:center; gap:12px; padding:10px 0; }
+.merek { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; min-height:44px; }
+.merek img, .merek svg { display:block; flex:none; }
+.merek b { font-size:1.06rem; display:block; line-height:1.1; }
+.merek small { font-size:.63rem; letter-spacing:.18em; text-transform:uppercase; color:var(--lemah); display:block; }
+.baris .kanan { margin-left:auto; display:flex; gap:8px; align-items:center; }
+.tombol-kecil { min-height:44px; min-width:44px; padding:0 12px; background:transparent;
+  border:1px solid var(--garis-kuat); color:var(--tinta); font:inherit; font-size:.8rem; cursor:pointer; }
+.tombol-kecil:hover { background:var(--hijau-latar); }
+
+/* hero */
+.hero { padding:30px 0 22px; }
+.mata { font-size:.68rem; letter-spacing:.17em; text-transform:uppercase; font-weight:700; color:var(--hijau-2); margin:0 0 8px; }
+h1 { font-size:clamp(1.7rem,5.6vw,2.6rem); line-height:1.12; margin:0 0 12px; letter-spacing:-.018em; max-width:22ch; }
+.hero p { max-width:70ch; margin:0 0 12px; color:var(--lemah); font-size:1.02rem; }
+.hero p strong { color:var(--tinta); }
+
+/* pita status pekerjaan */
+.pita { border:2px solid var(--karat); background:var(--karat-latar); color:var(--karat);
+  padding:12px 14px; margin:0 0 26px; font-size:.88rem; }
+.pita strong { display:block; margin-bottom:4px; }
+.pita p { margin:0; color:inherit; }
+.pita p + p { margin-top:6px; }
+
+/* bagian */
+section.blok { padding:22px 0 6px; }
+h2 { font-size:clamp(1.25rem,4vw,1.6rem); line-height:1.2; margin:0 0 6px; letter-spacing:-.012em; }
+section.blok > .bungkus > p.ket { color:var(--lemah); max-width:70ch; margin:0 0 18px; }
+
+/* kartu konsep */
+.kartu-kisi { display:grid; gap:20px; }
+@media (min-width:1000px) { .kartu-kisi { grid-template-columns:repeat(3,1fr); align-items:start; } }
+.kartu { border:2px solid var(--garis-kuat); background:var(--panel); display:flex; flex-direction:column; }
+.kartu[data-k="1"] { border-top:6px solid var(--k1); }
+.kartu[data-k="2"] { border-top:6px solid var(--k2); }
+.kartu[data-k="3"] { border-top:6px solid var(--k3); }
+.kartu-kepala { padding:14px 16px 12px; border-bottom:1px solid var(--garis); }
+.nomor { font-family:var(--mono); font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700; }
+.kartu[data-k="1"] .nomor { color:var(--k1); }
+.kartu[data-k="2"] .nomor { color:var(--k2); }
+.kartu[data-k="3"] .nomor { color:var(--k3); }
+.kartu h3 { margin:4px 0 6px; font-size:1.3rem; line-height:1.15; letter-spacing:-.012em; }
+.tesis { margin:0; font-size:.95rem; }
+
+/* pratinjau */
+.pratinjau { border-bottom:1px solid var(--garis); background:var(--kanvas); position:relative; }
+.pratinjau svg { display:block; width:100%; height:auto; }
+.pratinjau .bingkai { position:relative; }
+.pratinjau iframe { display:block; width:100%; height:420px; border:0; background:var(--panel); }
+.pratinjau .alih { display:flex; border-top:1px solid var(--garis); }
+.pratinjau .alih button { flex:1; min-height:44px; background:transparent; border:0; font:inherit;
+  font-size:.78rem; cursor:pointer; color:var(--tinta); }
+.pratinjau .alih button + button { border-left:1px solid var(--garis); }
+.pratinjau .alih button[aria-pressed="true"] { background:var(--tinta); color:var(--kertas); font-weight:700; }
+.gagal-muat { padding:14px; font-size:.84rem; color:var(--karat); background:var(--karat-latar); margin:0; }
+
+/* isi kartu */
+.kartu-isi { padding:14px 16px 16px; flex:1; }
+.kartu-isi dl { margin:0 0 14px; display:grid; grid-template-columns:auto 1fr; gap:6px 12px; }
+.kartu-isi dt { font-size:.68rem; letter-spacing:.1em; text-transform:uppercase; color:var(--lemah); font-weight:700; padding-top:2px; }
+.kartu-isi dd { margin:0; font-size:.9rem; }
+.kartu-isi h4 { margin:14px 0 5px; font-size:.7rem; letter-spacing:.11em; text-transform:uppercase; color:var(--lemah); }
+.kartu-isi ul { margin:0; padding-left:19px; font-size:.89rem; }
+.kartu-isi ul li { margin-bottom:4px; }
+.kartu-isi ul.risiko li::marker { color:var(--karat); }
+.kartu-aksi { padding:0 16px 16px; display:flex; gap:8px; }
+.buka {
+  flex:1; min-height:48px; display:inline-flex; align-items:center; justify-content:center; gap:8px;
+  text-decoration:none; font-weight:700; font-size:.95rem; border:2px solid currentColor; padding:0 14px;
+}
+.kartu[data-k="1"] .buka { color:var(--k1); background:var(--k1-latar); }
+.kartu[data-k="2"] .buka { color:var(--k2); background:var(--k2-latar); }
+.kartu[data-k="3"] .buka { color:var(--k3); background:var(--k3-latar); }
+.buka:hover { filter:brightness(.96); }
+
+/* tabel banding */
+.tabel-bungkus { overflow-x:auto; -webkit-overflow-scrolling:touch; border:2px solid var(--garis-kuat); background:var(--panel); }
+table.banding { width:100%; border-collapse:collapse; min-width:720px; font-size:.88rem; }
+table.banding th, table.banding td { text-align:left; padding:10px 12px; border-bottom:1px solid var(--garis); vertical-align:top; }
+table.banding thead th { font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--lemah);
+  border-bottom:2px solid var(--garis-kuat); font-weight:700; background:var(--kanvas); position:sticky; top:0; }
+table.banding thead th span { display:block; font-size:.95rem; letter-spacing:0; text-transform:none; color:var(--tinta); margin-bottom:2px; }
+table.banding tbody th { font-weight:600; color:var(--lemah); width:180px; border-right:1px solid var(--garis); font-size:.82rem; }
+table.banding td.c1 { box-shadow: inset 3px 0 0 var(--k1); }
+table.banding td.c2 { box-shadow: inset 3px 0 0 var(--k2); }
+table.banding td.c3 { box-shadow: inset 3px 0 0 var(--k3); }
+
+/* skor */
+.skor-bungkus { overflow-x:auto; border:2px solid var(--garis-kuat); background:var(--panel); }
+table.skor { width:100%; border-collapse:collapse; min-width:640px; font-size:.87rem; }
+table.skor th, table.skor td { padding:9px 12px; border-bottom:1px solid var(--garis); text-align:left; }
+table.skor thead th { font-size:.66rem; letter-spacing:.1em; text-transform:uppercase; color:var(--lemah); border-bottom:2px solid var(--garis-kuat); }
+table.skor td.n { font-family:var(--mono); font-variant-numeric:tabular-nums; text-align:center; width:90px; }
+table.skor tbody th { font-weight:600; font-size:.85rem; }
+table.skor tfoot td, table.skor tfoot th { border-top:2px solid var(--garis-kuat); font-weight:800; border-bottom:0; }
+.bar { display:inline-grid; grid-template-columns:repeat(5,7px); gap:2px; vertical-align:middle; margin-left:7px; }
+.bar i { height:12px; background:var(--garis-kuat); display:block; }
+.bar i[data-isi="ya"] { background:var(--hijau-2); }
+
+/* rekomendasi */
+.rekom { border:3px solid var(--hijau-2); background:var(--panel); }
+.rekom-kepala { background:var(--hijau-2); color:var(--di-aksen); padding:12px 16px; }
+.rekom-kepala p { margin:0; font-size:.7rem; letter-spacing:.14em; text-transform:uppercase; font-weight:700; opacity:.9; }
+.rekom-kepala h3 { margin:2px 0 0; font-size:1.3rem; line-height:1.2; }
+.rekom-isi { padding:16px; }
+.rekom-isi p { max-width:72ch; }
+.rekom-isi h4 { margin:18px 0 6px; font-size:.98rem; }
+.urutan { display:grid; gap:10px; margin:16px 0 0; padding:0; list-style:none; counter-reset:u; }
+.urutan li { display:grid; grid-template-columns:auto 1fr; gap:12px; border:1px solid var(--garis-kuat); padding:11px 13px; background:var(--kertas); }
+.urutan li::before { counter-increment:u; content:counter(u); font-family:var(--mono); font-weight:800; font-size:1.1rem;
+  width:30px; height:30px; display:grid; place-items:center; border:2px solid var(--hijau-2); color:var(--hijau-2); }
+.urutan b { display:block; font-size:.96rem; margin-bottom:2px; }
+.urutan small { display:block; color:var(--lemah); font-size:.86rem; line-height:1.45; }
+
+/* daftar berkas */
+.berkas { list-style:none; margin:0; padding:0; border-top:1px solid var(--garis); }
+.berkas li { border-bottom:1px solid var(--garis); padding:10px 2px; display:grid; grid-template-columns:1fr auto; gap:12px; align-items:baseline; }
+.berkas code { font-family:var(--mono); font-size:.86rem; }
+.berkas small { color:var(--lemah); font-size:.82rem; }
+
+footer.kaki { border-top:2px solid var(--garis-kuat); background:var(--panel); margin-top:40px; padding:18px 0 30px; }
+footer.kaki p { margin:0 0 8px; font-size:.85rem; color:var(--lemah); max-width:78ch; }
+footer.kaki a { color:var(--hijau-2); }
+</style>
+</head>
+<body>
+
+<a class="lewati" href="#konten">Lewati ke isi</a>
+
+<header class="atas">
+  <div class="bungkus baris">
+    <a class="merek" href="index.html">
+      <img src="../../app/ikon.svg" width="32" height="32" alt="" aria-hidden="true">
+      <span><b>Pranatani</b><small>Tiga alternatif UX beranda</small></span>
+    </a>
+    <span class="kanan">
+      <button class="tombol-kecil" type="button" id="tombolTema">Gelap</button>
+    </span>
+  </div>
+</header>
+
+<main id="konten">
+
+<section class="hero">
+  <div class="bungkus">
+    <p class="mata">Prototipe · 27 Agustus 2026</p>
+    <h1>Tiga cara berbeda membuka pintu depan Pranatani</h1>
+    <p>Ketiganya <strong>bukan tiga kulit dari beranda yang sama</strong>. Masing-masing memulai
+    dari pertanyaan yang berbeda, mendahulukan pengguna yang berbeda, dan menyusun informasinya
+    dengan aturan yang berbeda. Yang satu tidak punya kotak pencarian sama sekali; yang satu
+    membuang konsep “halaman fungsi” dan menggantinya dengan hubungan antar-benda; yang satu
+    menolak menampilkan satu rekaman sendirian.</p>
+    <p>Halaman ini menyandingkan ketiganya supaya bisa diputuskan mana yang layak diuji lebih
+    dahulu — bukan mana yang paling enak dilihat.</p>
+
+    <div class="pita">
+      <strong>Yang perlu diketahui sebelum membaca</strong>
+      <p><strong>Isinya nyata, susunannya prototipe.</strong> Seluruh nomor pendaftaran, nama merek,
+      komposisi, dosis terdaftar, cacah, dan tanggal disalin dari indeks turunan repositori
+      (<code>spec/indeks/</code>, tarikan 19–23 Agustus 2026). Yang disederhanakan — misalnya
+      hanya sebagian dari 26 merek yang ditampilkan — diberi tanda <em>“contoh prototipe”</em>
+      di tempatnya.</p>
+      <p><strong>Ketiganya berdiri sendiri.</strong> Tidak ada permintaan ke internet, tidak ada
+      pustaka luar, tidak ada langkah bangun, dan tidak ada yang menulis ke penyimpanan peramban —
+      termasuk ke <code>localStorage</code> milik aplikasi produksi. Tombol tema di tiap prototipe
+      hanya berlaku selama halaman terbuka.</p>
+      <p><strong>Tidak satu pun menyentuh <code>app/</code>.</strong> Aplikasi yang sedang berjalan
+      tidak diubah sama sekali.</p>
+    </div>
+  </div>
+</section>
+
+<section class="blok">
+  <div class="bungkus">
+    <h2>Ketiga konsep</h2>
+    <p class="ket">Tiap kartu memuat tesis, pengguna, keputusan yang didahulukan, model navigasi,
+    kekuatan, risiko, dan asumsi yang harus diuji ke pengguna sungguhan. Pratinjau bisa dialihkan
+    antara sketsa dan prototipe hidup.</p>
+
+    <div class="kartu-kisi">
+
+      <!-- ============ KONSEP 1 ============ -->
+      <article class="kartu" data-k="1" aria-labelledby="j1">
+        <div class="pratinjau">
+          <div class="bingkai" data-sketsa>
+            <svg viewBox="0 0 320 200" role="img" aria-label="Sketsa Konsep 01: rel langkah di atas, empat tombol pilihan besar di tengah, bilah status di bawah.">
+              <rect width="320" height="200" fill="var(--kanvas)"/>
+              <rect x="8" y="8" width="304" height="184" fill="var(--panel)" stroke="var(--tinta)" stroke-width="2"/>
+              <rect x="8" y="8" width="304" height="20" fill="var(--k1-latar)" stroke="var(--tinta)" stroke-width="2"/>
+              <rect x="14" y="14" width="34" height="8" fill="var(--k1)"/>
+              <rect x="52" y="14" width="26" height="8" fill="var(--garis-kuat)"/>
+              <rect x="8" y="28" width="304" height="16" fill="var(--kertas)" stroke="var(--garis)" stroke-width="1"/>
+              <rect x="14" y="33" width="40" height="6" fill="var(--hijau-2)"/>
+              <rect x="60" y="33" width="46" height="6" fill="var(--k1)"/>
+              <rect x="16" y="54" width="96" height="10" fill="var(--tinta)"/>
+              <g>
+                <rect x="16" y="74" width="140" height="44" fill="var(--kertas)" stroke="var(--tinta)" stroke-width="2"/>
+                <rect x="16" y="74" width="6" height="44" fill="var(--k1)"/>
+                <rect x="30" y="84" width="80" height="7" fill="var(--tinta)"/><rect x="30" y="96" width="106" height="5" fill="var(--garis-kuat)"/>
+                <rect x="164" y="74" width="140" height="44" fill="var(--kertas)" stroke="var(--tinta)" stroke-width="2"/>
+                <rect x="164" y="74" width="6" height="44" fill="var(--garis-kuat)"/>
+                <rect x="178" y="84" width="90" height="7" fill="var(--tinta)"/><rect x="178" y="96" width="104" height="5" fill="var(--garis-kuat)"/>
+                <rect x="16" y="124" width="140" height="44" fill="var(--kertas)" stroke="var(--tinta)" stroke-width="2"/>
+                <rect x="16" y="124" width="6" height="44" fill="var(--garis-kuat)"/>
+                <rect x="30" y="134" width="74" height="7" fill="var(--tinta)"/><rect x="30" y="146" width="98" height="5" fill="var(--garis-kuat)"/>
+                <rect x="164" y="124" width="140" height="44" fill="var(--kertas)" stroke="var(--tinta)" stroke-width="2"/>
+                <rect x="164" y="124" width="6" height="44" fill="var(--garis-kuat)"/>
+                <rect x="178" y="134" width="86" height="7" fill="var(--tinta)"/><rect x="178" y="146" width="92" height="5" fill="var(--garis-kuat)"/>
+              </g>
+              <rect x="8" y="172" width="304" height="20" fill="var(--k1-latar)" stroke="var(--tinta)" stroke-width="2"/>
+              <circle cx="20" cy="182" r="4" fill="var(--hijau-2)"/>
+              <rect x="30" y="179" width="120" height="6" fill="var(--garis-kuat)"/>
+              <rect x="230" y="176" width="76" height="12" fill="var(--kertas)" stroke="var(--tinta)" stroke-width="2"/>
+            </svg>
+          </div>
+          <div class="bingkai" data-hidup hidden></div>
+          <div class="alih" role="group" aria-label="Bentuk pratinjau Konsep 01">
+            <button type="button" data-pv="sketsa" data-target="1" aria-pressed="true">Sketsa</button>
+            <button type="button" data-pv="hidup"  data-target="1" aria-pressed="false">Pratinjau hidup</button>
+          </div>
+        </div>
+        <div class="kartu-kepala">
+          <p class="nomor">Konsep 01</p>
+          <h3 id="j1">Kanvas Lapangan</h3>
+          <p class="tesis">Orang tidak datang untuk menjelajahi registri. Mereka datang membawa
+          <strong>satu perkara nyata</strong> yang harus diputuskan sekarang — jadi layar pertama
+          menanyakan keadaannya, bukan kata kuncinya.</p>
+        </div>
+        <div class="kartu-isi">
+          <dl>
+            <dt>Pengguna</dt><dd>Petani komersial hortikultura 0,5–2 ha (P4) dan buruh semprot — orang yang sedang berdiri di kebun atau di depan rak</dd>
+            <dt>Keputusan</dt><dd><em>Apa yang harus saya lakukan terhadap keadaan yang ada di depan saya sekarang?</em></dd>
+            <dt>Navigasi</dt><dd>Alur bercabang pendek, satu keputusan per layar, rel langkah yang bisa diketuk mundur. Tanpa menu, tanpa kotak pencarian.</dd>
+            <dt>Rupa</dt><dd>Instrumen lapangan — sudut siku, garis tebal, tombol slab, angka besar. Hijau rumah hanya untuk jejak langkah yang sudah dilalui.</dd>
+          </dl>
+          <h4>Kekuatan</h4>
+          <ul>
+            <li>Tidak menuntut kosakata apa pun di awal — tidak perlu tahu nama hama, nama bahan, atau nama halaman.</li>
+            <li>Penolakan menjawab jadi layar penuh yang bermartabat, bukan daftar kosong. Kasus <em>virus kuning keriting</em> — nol produk terdaftar — jadi jawaban, bukan kegagalan.</li>
+            <li>Paling ringan untuk HP entry-level: satu layar aktif, tanpa daftar panjang, tanpa tabel lebar.</li>
+          </ul>
+          <h4>Risiko</h4>
+          <ul class="risiko">
+            <li><strong>Kedalamannya tipis.</strong> Alur gejala hanya punya pintu untuk cabai — 10 OPT terkurasi dari 1.360. Empat dari lima pengguna akan menabrak dinding di langkah pertama.</li>
+            <li>Percabangan yang salah pilih di langkah 2 memaksa mundur; orang cenderung menyerah alih-alih mundur.</li>
+            <li>Bisa terbaca sebagai <em>diagnosis</em> walaupun tiap layar menyangkalnya — risiko salah tafsir tertinggi dari ketiganya.</li>
+          </ul>
+          <h4>Asumsi yang harus diuji</h4>
+          <ul>
+            <li>Bahwa orang mau menjawab 3 pertanyaan sebelum melihat apa pun.</li>
+            <li>Bahwa uji kertas putih dan uji gelas benar-benar dilakukan di kebun, bukan cuma dibaca.</li>
+            <li>Bahwa “tidak ada yang bisa ditawarkan” diterima sebagai jawaban, bukan sebagai aplikasi rusak.</li>
+          </ul>
+          <h4>Bedanya dari UI yang berjalan</h4>
+          <ul>
+            <li>Beranda sekarang menaruh kotak pencarian sebagai pusat; konsep ini <strong>menghapusnya dari layar masuk</strong>.</li>
+            <li>Beranda sekarang menampilkan 25 pintu sekaligus; konsep ini menampilkan 4, lalu 2–5 per layar.</li>
+            <li>Batas jawaban sekarang tersembunyi di dalam dialog “Tentang data”; di sini ia <strong>blok tetap di badan tiap layar hasil</strong>.</li>
+          </ul>
+        </div>
+        <p class="kartu-aksi"><a class="buka" href="01-kanvas-keputusan.html">Buka Konsep 01 →</a></p>
+      </article>
+
+      <!-- ============ KONSEP 2 ============ -->
+      <article class="kartu" data-k="2" aria-labelledby="j2">
+        <div class="pratinjau">
+          <div class="bingkai" data-sketsa>
+            <svg viewBox="0 0 320 200" role="img" aria-label="Sketsa Konsep 02: rak lapisan di kiri, lema di tengah, peta jari-jari hubungan di kanan.">
+              <rect width="320" height="200" fill="var(--kanvas)"/>
+              <rect x="8" y="8" width="304" height="184" fill="var(--panel)" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+              <rect x="8" y="8" width="304" height="16" fill="var(--kertas)" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+              <rect x="14" y="13" width="30" height="7" fill="var(--k2)"/>
+              <rect x="8" y="24" width="304" height="14" fill="var(--kanvas)" stroke="var(--garis)" stroke-width="1"/>
+              <rect x="14" y="28" width="26" height="6" fill="var(--k2)"/><text x="44" y="34" font-size="7" fill="var(--garis-kuat)">›</text>
+              <rect x="50" y="28" width="30" height="6" fill="var(--k2)"/><text x="84" y="34" font-size="7" fill="var(--garis-kuat)">›</text>
+              <rect x="90" y="28" width="34" height="6" fill="var(--tinta)"/>
+              <line x1="76" y1="38" x2="76" y2="192" stroke="var(--garis)" stroke-width="1.5"/>
+              <line x1="230" y1="38" x2="230" y2="192" stroke="var(--garis)" stroke-width="1.5"/>
+              <g fill="var(--garis-kuat)">
+                <rect x="14" y="46" width="42" height="5"/><rect x="14" y="58" width="52" height="6"/><rect x="14" y="70" width="46" height="6"/>
+                <rect x="14" y="82" width="50" height="6"/><rect x="14" y="94" width="40" height="6"/><rect x="14" y="106" width="48" height="6"/>
+              </g>
+              <rect x="14" y="58" width="3" height="6" fill="var(--k2)"/>
+              <rect x="86" y="48" width="86" height="12" fill="var(--tinta)"/>
+              <rect x="86" y="66" width="60" height="6" fill="var(--garis-kuat)"/>
+              <g fill="var(--garis)"><rect x="86" y="82" width="134" height="5"/><rect x="86" y="92" width="128" height="5"/><rect x="86" y="102" width="134" height="5"/><rect x="86" y="112" width="96" height="5"/></g>
+              <rect x="86" y="126" width="134" height="1.5" fill="var(--k2)"/>
+              <g fill="var(--garis)"><rect x="86" y="134" width="120" height="5"/><rect x="86" y="144" width="134" height="5"/><rect x="86" y="154" width="110" height="5"/></g>
+              <g>
+                <circle cx="271" cy="88" r="18" fill="var(--panel)" stroke="var(--tinta)" stroke-width="2"/>
+                <line x1="271" y1="88" x2="271" y2="56" stroke="var(--k2)" stroke-width="1.4"/><circle cx="271" cy="56" r="8" fill="var(--k2-latar)" stroke="var(--k2)" stroke-width="1.4"/>
+                <line x1="271" y1="88" x2="299" y2="104" stroke="var(--k2)" stroke-width="1.4"/><circle cx="299" cy="104" r="8" fill="var(--k2-latar)" stroke="var(--k2)" stroke-width="1.4"/>
+                <line x1="271" y1="88" x2="243" y2="104" stroke="var(--karat)" stroke-width="1.4" stroke-dasharray="3 3"/>
+                <rect x="235" y="97" width="16" height="14" fill="var(--karat-latar)" stroke="var(--karat)" stroke-width="1.4" stroke-dasharray="3 3"/>
+              </g>
+              <g fill="var(--garis)"><rect x="240" y="128" width="62" height="5"/><rect x="240" y="140" width="56" height="5"/><rect x="240" y="152" width="60" height="5"/></g>
+              <rect x="240" y="140" width="20" height="1.5" fill="var(--karat)"/>
+            </svg>
+          </div>
+          <div class="bingkai" data-hidup hidden></div>
+          <div class="alih" role="group" aria-label="Bentuk pratinjau Konsep 02">
+            <button type="button" data-pv="sketsa" data-target="2" aria-pressed="true">Sketsa</button>
+            <button type="button" data-pv="hidup"  data-target="2" aria-pressed="false">Pratinjau hidup</button>
+          </div>
+        </div>
+        <div class="kartu-kepala">
+          <p class="nomor">Konsep 02</p>
+          <h3 id="j2">Atlas Tani</h3>
+          <p class="tesis">Nilai Pranatani ada pada <strong>hubungan antar-benda</strong> — tanaman,
+          hama, bahan, produk, badan, harga — bukan pada daftar halaman fungsi. Jadi layar pertama
+          adalah lema, dan tiap lema memperlihatkan seluruh arah keluarnya, termasuk yang buntu.</p>
+        </div>
+        <div class="kartu-isi">
+          <dl>
+            <dt>Pengguna</dt><dd>Penyuluh (P2, P3), agronom &amp; QC eksportir (P7), peneliti dan dosen (P8) — orang yang belajar wilayah, bukan menyelesaikan satu perkara</dd>
+            <dt>Keputusan</dt><dd><em>Apa yang sebenarnya diketahui tentang hal ini, dan di mana pengetahuannya berhenti?</em></dd>
+            <dt>Navigasi</dt><dd>Jejak melintang yang menumpuk + panel hubungan tetap. Delapan lapisan di rak kiri, indeks abjad, tanpa jenjang menu.</dd>
+            <dt>Rupa</dt><dd>Atlas / ensiklopedia lapangan — kertas krem, garis rambut, huruf berkait untuk nama benda dan tanpa kait untuk kendali.</dd>
+          </dl>
+          <h4>Kekuatan</h4>
+          <ul>
+            <li><strong>Lubang data jadi bagian gambar, bukan absennya gambar.</strong> Jari-jari bercacah nol digambar putus-putus dan berkotak — bukan disembunyikan.</li>
+            <li>Menyerap seluruh registri tanpa menambah halaman: benda baru = lema baru, bukan menu baru.</li>
+            <li>Satu-satunya konsep yang bisa menunjukkan hal seperti “Abamektin dan Emamektin Benzoat bergolongan IRAC sama” — pengetahuan yang hanya kelihatan lewat hubungan.</li>
+          </ul>
+          <h4>Risiko</h4>
+          <ul class="risiko">
+            <li><strong>Tidak menutup keputusan apa pun.</strong> Ia membuat orang lebih tahu, bukan lebih selesai — dan itu sulit dibuktikan berguna lewat metrik.</li>
+            <li>Menuntut pengguna sudah punya kosakata untuk mulai. Petani yang cuma tahu “bule” tidak punya pintu.</li>
+            <li>Paling berat isinya per layar dari ketiganya — tabel dan lema panjang di jaringan buruk.</li>
+          </ul>
+          <h4>Asumsi yang harus diuji</h4>
+          <ul>
+            <li>Bahwa ada segmen yang benar-benar <em>menjelajah</em>, bukan cuma mencari lalu keluar.</li>
+            <li>Bahwa jari-jari putus terbaca sebagai kejujuran, bukan sebagai aplikasi yang belum jadi.</li>
+            <li>Bahwa penyuluh menganggap “apa yang tidak diketahui” sebagai isi yang layak dibaca, bukan sebagai keluhan.</li>
+          </ul>
+          <h4>Bedanya dari UI yang berjalan</h4>
+          <ul>
+            <li>Beranda sekarang menyusun produk sebagai <em>enam jalur bernomor + tujuh alat</em>; konsep ini <strong>membuang gagasan “halaman fungsi”</strong> sepenuhnya.</li>
+            <li>Hubungan antar-benda sekarang hanya muncul sebagai tautan di dalam layar rincian; di sini ia jadi permukaan tersendiri dengan cacahnya.</li>
+            <li>Nol sekarang dikatakan dalam prosa di kaki; di sini ia <strong>punya bentuk visualnya sendiri</strong>.</li>
+          </ul>
+        </div>
+        <p class="kartu-aksi"><a class="buka" href="02-atlas-pengetahuan.html">Buka Konsep 02 →</a></p>
+      </article>
+
+      <!-- ============ KONSEP 3 ============ -->
+      <article class="kartu" data-k="3" aria-labelledby="j3">
+        <div class="pratinjau">
+          <div class="bingkai" data-sketsa>
+            <svg viewBox="0 0 320 200" role="img" aria-label="Sketsa Konsep 03: baki di kiri, matriks pembanding di tengah dengan baris perbedaan bertanda, panel bukti di kanan.">
+              <rect width="320" height="200" fill="var(--kanvas)"/>
+              <rect x="8" y="8" width="304" height="184" fill="var(--panel)" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+              <rect x="8" y="8" width="304" height="14" fill="var(--kertas)" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+              <rect x="14" y="12" width="28" height="6" fill="var(--k3)"/>
+              <rect x="8" y="22" width="304" height="12" fill="var(--karat-latar)" stroke="var(--karat)" stroke-width="1.5"/>
+              <rect x="14" y="26" width="150" height="5" fill="var(--karat)"/>
+              <line x1="78" y1="34" x2="78" y2="192" stroke="var(--garis)" stroke-width="1.5"/>
+              <line x1="238" y1="34" x2="238" y2="192" stroke="var(--garis)" stroke-width="1.5"/>
+              <g>
+                <rect x="13" y="42" width="58" height="16" fill="var(--kertas)" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+                <rect x="17" y="47" width="34" height="5" fill="var(--tinta)"/><rect x="60" y="46" width="8" height="8" fill="var(--karat-latar)" stroke="var(--karat)" stroke-width="1"/>
+                <rect x="13" y="62" width="58" height="16" fill="var(--kertas)" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+                <rect x="17" y="67" width="38" height="5" fill="var(--tinta)"/><rect x="60" y="66" width="8" height="8" fill="var(--karat-latar)" stroke="var(--karat)" stroke-width="1"/>
+                <rect x="13" y="82" width="58" height="16" fill="var(--kertas)" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+                <rect x="17" y="87" width="30" height="5" fill="var(--tinta)"/><rect x="60" y="86" width="8" height="8" fill="var(--karat-latar)" stroke="var(--karat)" stroke-width="1"/>
+                <g fill="var(--garis)"><rect x="13" y="108" width="58" height="6"/><rect x="13" y="120" width="58" height="6"/><rect x="13" y="132" width="58" height="6"/><rect x="13" y="144" width="58" height="6"/></g>
+              </g>
+              <g>
+                <rect x="86" y="42" width="144" height="12" fill="var(--kanvas)"/>
+                <rect x="90" y="45" width="26" height="6" fill="var(--garis-kuat)"/><rect x="128" y="45" width="26" height="6" fill="var(--tinta)"/>
+                <rect x="166" y="45" width="26" height="6" fill="var(--tinta)"/><rect x="200" y="45" width="26" height="6" fill="var(--tinta)"/>
+                <line x1="86" y1="56" x2="230" y2="56" stroke="var(--garis-kuat)" stroke-width="2"/>
+              </g>
+              <g>
+                <rect x="86" y="62" width="3" height="12" fill="var(--karat)"/>
+                <rect x="94" y="65" width="24" height="5" fill="var(--karat)"/><rect x="128" y="65" width="26" height="5" fill="var(--garis)"/><rect x="166" y="65" width="20" height="5" fill="var(--garis)"/><rect x="200" y="65" width="24" height="5" fill="var(--garis)"/>
+                <line x1="86" y1="78" x2="230" y2="78" stroke="var(--garis)"/>
+                <rect x="86" y="84" width="3" height="12" fill="var(--karat)"/>
+                <rect x="94" y="87" width="20" height="5" fill="var(--karat)"/><rect x="128" y="87" width="22" height="5" fill="var(--garis)"/><rect x="166" y="87" width="26" height="5" fill="var(--k3)"/><rect x="200" y="87" width="18" height="5" fill="var(--garis)"/>
+                <line x1="86" y1="100" x2="230" y2="100" stroke="var(--garis)"/>
+                <rect x="86" y="106" width="3" height="12" fill="var(--hijau-2)"/>
+                <rect x="94" y="109" width="22" height="5" fill="var(--garis-kuat)"/><rect x="128" y="109" width="24" height="5" fill="var(--garis)"/><rect x="166" y="109" width="24" height="5" fill="var(--garis)"/><rect x="200" y="109" width="24" height="5" fill="var(--garis)"/>
+                <line x1="86" y1="122" x2="230" y2="122" stroke="var(--garis)"/>
+                <rect x="86" y="128" width="3" height="12" fill="var(--karat)"/>
+                <rect x="94" y="131" width="18" height="5" fill="var(--karat)"/><rect x="128" y="131" width="20" height="5" fill="var(--garis)"/><rect x="166" y="131" width="22" height="5" fill="var(--garis)"/><rect x="200" y="131" width="20" height="5" fill="var(--garis)"/>
+              </g>
+              <g>
+                <rect x="246" y="42" width="60" height="14" fill="var(--k3)"/>
+                <rect x="250" y="46" width="40" height="6" fill="var(--panel)"/>
+                <rect x="246" y="56" width="60" height="70" fill="var(--kertas)" stroke="var(--k3)" stroke-width="1.5"/>
+                <rect x="250" y="62" width="44" height="8" fill="var(--tinta)"/>
+                <line x1="250" y1="76" x2="302" y2="76" stroke="var(--garis-kuat)" stroke-width="1.5"/>
+                <g fill="var(--garis)"><rect x="250" y="82" width="50" height="4"/><rect x="250" y="90" width="44" height="4"/><rect x="250" y="98" width="48" height="4"/></g>
+                <rect x="250" y="108" width="52" height="14" fill="var(--k3-latar)"/>
+                <rect x="250" y="108" width="2" height="14" fill="var(--k3)"/>
+              </g>
+            </svg>
+          </div>
+          <div class="bingkai" data-hidup hidden></div>
+          <div class="alih" role="group" aria-label="Bentuk pratinjau Konsep 03">
+            <button type="button" data-pv="sketsa" data-target="3" aria-pressed="true">Sketsa</button>
+            <button type="button" data-pv="hidup"  data-target="3" aria-pressed="false">Pratinjau hidup</button>
+          </div>
+        </div>
+        <div class="kartu-kepala">
+          <p class="nomor">Konsep 03</p>
+          <h3 id="j3">Meja Banding</h3>
+          <p class="tesis">Pengguna profesional jarang butuh <em>satu</em> rekaman. Mereka butuh
+          <strong>meja untuk menyandingkan beberapa</strong> dan memeriksa dasar tiap angkanya —
+          jadi layar pertama adalah baki kosong, dan satu rekaman sendirian ditolak ditampilkan.</p>
+        </div>
+        <div class="kartu-isi">
+          <dl>
+            <dt>Pengguna</dt><dd>Petugas lapang offtaker &amp; koperasi (P1, beachhead), kios/KPL (P6), agronom QC (P7), peneliti (P8)</dd>
+            <dt>Keputusan</dt><dd><em>Dari beberapa yang tampak sama, apa persisnya yang berbeda — dan seberapa kuat dasar tiap perbedaannya?</em></dd>
+            <dt>Navigasi</dt><dd>Baki tetap + matriks + berkas bukti per sel. Desktop tiga panel; ponsel berubah jadi tumpukan medan berurutan, bukan tabel yang dikecilkan.</dd>
+            <dt>Rupa</dt><dd>Buku besar bukti — nilai selalu berhuruf mesin, perbedaan ditandai bentuk (▲ dan garis kiri), bukan warna saja.</dd>
+          </dl>
+          <h4>Kekuatan</h4>
+          <ul>
+            <li><strong>Satu-satunya yang membuat “terdaftar ≠ terjamin” jadi struktur, bukan kalimat.</strong> Pita itu permanen, dan tiap sel bisa dibuka sampai ke tingkat buktinya.</li>
+            <li>Menemukan hal yang tidak terlihat di layar tunggal: lima PHONSKA berkandungan berbeda, dosis terdaftar berselisih 3×, satu satuan yang tidak sebanding.</li>
+            <li>Paling dekat ke segmen berskor tertinggi (P1, skor 19) yang pekerjaannya memang sudah berupa pencatatan.</li>
+          </ul>
+          <h4>Risiko</h4>
+          <ul class="risiko">
+            <li><strong>Menuntut pengguna sudah tahu apa yang mau dibandingkan.</strong> Tidak berguna untuk orang yang belum punya kandidat.</li>
+            <li>Perbandingan mudah dibaca sebagai peringkat, walaupun urutannya urutan penambahan. Risiko “kolom paling kiri dianggap juara”.</li>
+            <li>Ponsel entry-level: layar tumpukan panjang; medan yang banyak menghasilkan gulungan yang panjang juga.</li>
+          </ul>
+          <h4>Asumsi yang harus diuji</h4>
+          <ul>
+            <li>Bahwa orang benar-benar membandingkan, bukan cuma memeriksa satu barang lalu selesai.</li>
+            <li>Bahwa “perbedaan didahulukan” lebih berguna daripada tabel penuh — atau justru bikin curiga ada yang disembunyikan.</li>
+            <li>Bahwa berkas bukti per sel dibuka sama sekali, atau cuma hiasan yang tidak pernah disentuh.</li>
+          </ul>
+          <h4>Bedanya dari UI yang berjalan</h4>
+          <ul>
+            <li>Beranda sekarang mengeluarkan <strong>daftar 17 kartu</strong> untuk “phonska” dan menyerahkan pemilahan ke mata pengguna; konsep ini menjadikan pemilahan itu <strong>pekerjaan layar</strong>.</li>
+            <li>Provenans sekarang satu blok per halaman; di sini ia <strong>per nilai</strong>.</li>
+            <li>Tidak ada permukaan pembanding sama sekali di aplikasi yang berjalan — ini kapabilitas baru, bukan penataan ulang.</li>
+          </ul>
+        </div>
+        <p class="kartu-aksi"><a class="buka" href="03-meja-banding.html">Buka Konsep 03 →</a></p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="blok">
+  <div class="bungkus">
+    <h2>Tabel banding ringkas</h2>
+    <p class="ket">Baris yang paling menentukan ada di dua tempat: <em>layar pertama</em> dan
+    <em>apa yang sengaja ditinggalkan</em>. Konsep tanpa yang ditinggalkan adalah konsep yang
+    belum memilih apa pun.</p>
+    <div class="tabel-bungkus">
+      <table class="banding">
+        <caption class="sr">Perbandingan sembilan dimensi antara ketiga konsep dan UI yang sedang berjalan</caption>
+        <thead>
+          <tr>
+            <th scope="col">Dimensi</th>
+            <th scope="col"><span>UI berjalan</span>beranda.html</th>
+            <th scope="col"><span>01 · Kanvas Lapangan</span>situasional</th>
+            <th scope="col"><span>02 · Atlas Tani</span>penjelajahan</th>
+            <th scope="col"><span>03 · Meja Banding</span>pembandingan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Layar pertama</th>
+            <td>Kotak pencarian + 11 keping contoh</td>
+            <td class="c1">Empat keadaan lapangan, tanpa kotak</td>
+            <td class="c2">Satu lema terbuka + rak delapan lapisan</td>
+            <td class="c3">Baki kosong + daftar calon</td></tr>
+          <tr><th scope="row">Pertanyaan yang diandaikan</th>
+            <td>“Apa namanya?”</td>
+            <td class="c1">“Apa yang saya hadapi?”</td>
+            <td class="c2">“Apa yang diketahui tentang ini?”</td>
+            <td class="c3">“Apa bedanya yang ini dan yang itu?”</td></tr>
+          <tr><th scope="row">Pengguna utama</th>
+            <td>Siapa pun</td>
+            <td class="c1">Petani &amp; buruh semprot (P4, P5)</td>
+            <td class="c2">Penyuluh, agronom, peneliti (P2, P7, P8)</td>
+            <td class="c3">Petugas lapang offtaker, kios, QC (P1, P6, P7)</td></tr>
+          <tr><th scope="row">Unit isi</th>
+            <td>Halaman fungsi (6 jalur + 7 alat)</td>
+            <td class="c1">Layar keputusan</td>
+            <td class="c2">Lema + jari-jari hubungan</td>
+            <td class="c3">Medan pada baris matriks</td></tr>
+          <tr><th scope="row">Model navigasi</th>
+            <td>Hub-and-spoke, 14 daun</td>
+            <td class="c1">Alur bercabang + rel mundur</td>
+            <td class="c2">Jejak melintang + lompat lateral</td>
+            <td class="c3">Baki tetap, isi berganti di tempat</td></tr>
+          <tr><th scope="row">Cara batas data tampil</th>
+            <td>Di dalam dialog “Tentang data”</td>
+            <td class="c1">Blok tetap di badan tiap layar hasil</td>
+            <td class="c2">Jari-jari putus di peta + blok per lema</td>
+            <td class="c3">Per nilai, di panel bukti + pita permanen</td></tr>
+          <tr><th scope="row">Keadaan “tidak bisa menjawab”</th>
+            <td>Daftar hasil kosong</td>
+            <td class="c1">Layar penuh berbingkai ganda, dengan alasan &amp; jalan lanjut</td>
+            <td class="c2">Blok buntu di badan lema, jari-jari digambar putus</td>
+            <td class="c3">Sel ⊘ + kartu bukti “kosong ≠ nol”</td></tr>
+          <tr><th scope="row">Rupa</th>
+            <td>Hijau rumah, kartu bersudut bulat</td>
+            <td class="c1">Instrumen: siku, garis tebal, amber bakar</td>
+            <td class="c2">Atlas: kertas krem, garis rambut, huruf berkait</td>
+            <td class="c3">Buku besar: huruf mesin, garis kolom, tinta biru–karat</td></tr>
+          <tr><th scope="row">Sengaja ditinggalkan</th>
+            <td>—</td>
+            <td class="c1">Penjelajahan bebas; kedalaman registri; siapa pun yang belum punya perkara</td>
+            <td class="c2">Penutupan keputusan; pintu untuk yang belum punya kosakata</td>
+            <td class="c3">Layar rincian tunggal; siapa pun yang belum punya kandidat</td></tr>
+          <tr><th scope="row">Kesiapan data hari ini</th>
+            <td>Berjalan</td>
+            <td class="c1">Terhambat — gejala hanya 10 OPT cabai</td>
+            <td class="c2">Siap — seluruh hubungan sudah ada di indeks</td>
+            <td class="c3">Siap — komposisi &amp; dosis sudah ada di indeks</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="blok">
+  <div class="bungkus">
+    <h2>Papan skor</h2>
+    <p class="ket">Delapan sumbu, masing-masing 1–5. Bukan selera rupa: tiap angka menunjuk sesuatu
+    yang bisa dibantah. Sumbu <em>risiko salah tafsir</em> dan <em>ongkos bangun</em> dibalik —
+    angka tinggi berarti risiko rendah dan ongkos rendah, supaya jumlahnya searah.</p>
+    <div class="skor-bungkus">
+      <table class="skor">
+        <caption class="sr">Papan skor delapan sumbu untuk ketiga konsep</caption>
+        <thead><tr><th scope="col">Sumbu</th><th scope="col">01</th><th scope="col">02</th><th scope="col">03</th><th scope="col">Dasar penilaian</th></tr></thead>
+        <tbody id="skorBadan"></tbody>
+        <tfoot><tr><th scope="row">Jumlah</th><td class="n" id="t1"></td><td class="n" id="t2"></td><td class="n" id="t3"></td><td></td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="blok">
+  <div class="bungkus">
+    <div class="rekom">
+      <div class="rekom-kepala">
+        <p>Rekomendasi</p>
+        <h3>Uji Konsep 03 · Meja Banding lebih dahulu</h3>
+      </div>
+      <div class="rekom-isi">
+        <p><strong>Alasannya bukan bahwa ia paling menarik, melainkan bahwa ia satu-satunya yang
+        bisa dibangun penuh dengan data yang sudah ada hari ini.</strong> Ketiga konsep ini bersaing
+        pada tesis, tetapi tidak bersaing pada kesiapan — dan kesiapan yang menentukan mana yang
+        bisa diuji bulan ini.</p>
+
+        <h4>Yang memutuskan</h4>
+        <ul>
+          <li><strong>Kebutuhan data — Konsep 01 terhalang, dua lainnya tidak.</strong> Alur gejala
+          Konsep 01 berdiri di atas 10 OPT cabai terkurasi dari 1.360 OPT registri, dan seluruhnya
+          <em>berstatus draft dengan tingkat bukti belum ditetapkan</em>. Mengujinya sekarang berarti
+          menguji rancangan sekaligus menguji kurasi yang belum ditinjau siapa pun — dan kalau
+          hasilnya buruk, tidak akan bisa dibedakan mana yang salah. Konsep 02 dan 03 berjalan
+          seluruhnya di atas registri yang sudah utuh.</li>
+
+          <li><strong>Kedekatan ke segmen beachhead.</strong> Segmen berskor tertinggi adalah petugas
+          lapang offtaker dan koperasi (P1, skor 19) — satu-satunya segmen yang pekerjaannya
+          <em>sudah</em> berupa pencatatan dan pembandingan. Konsep 03 adalah alat kerja mereka;
+          Konsep 01 dirancang untuk P4/P5 yang justru dijangkau lewat P1.</li>
+
+          <li><strong>Kejelasan keputusan yang ditutupnya.</strong> Konsep 03 menghasilkan sesuatu
+          yang bisa dibawa keluar layar: <em>“yang ini dan yang itu bedanya di sini, dan dasarnya
+          sekuat ini”</em>. Konsep 02 membuat orang lebih tahu tanpa menutup keputusan apa pun —
+          berharga, tetapi paling sulit dibuktikan berguna.</li>
+
+          <li><strong>Risiko salah tafsir yang bisa ditanggung.</strong> Risiko terbesar Konsep 03
+          adalah perbandingan dibaca sebagai peringkat, dan itu bisa dilawan dengan rancangan:
+          urutan mengikuti penambahan, pita “terdaftar ≠ terjamin” permanen, dan tiap sel bisa
+          dibuka sampai sumbernya. Risiko terbesar Konsep 01 adalah alurnya dibaca sebagai
+          <em>diagnosis</em> — dan itu tidak bisa sepenuhnya dilawan dengan rancangan, karena
+          bentuk “pertanyaan lalu jawaban” memang bentuk diagnosis.</li>
+
+          <li><strong>Ongkos bangun.</strong> Konsep 03 tidak menuntut kurasi baru, tidak menuntut
+          akun, tidak menuntut sumber baru. Yang dibutuhkannya sudah ada di
+          <code>spec/indeks/</code> — komposisi, dosis, tanggal, pemegang, dan blok batas jawaban
+          yang komponennya sudah dipakai seluruh layar.</li>
+        </ul>
+
+        <h4>Yang tidak dikatakan rekomendasi ini</h4>
+        <p>Bahwa Konsep 03 harus menggantikan beranda. Ia <strong>permukaan profesional</strong>, dan
+        segmen yang dilayaninya kecil. Yang direkomendasikan adalah <em>mengujinya lebih dahulu</em>,
+        karena ia satu-satunya yang hasil ujinya akan bersih — sukses atau gagal, sebabnya akan
+        jelas.</p>
+
+        <h4>Urutan yang diusulkan</h4>
+        <ol class="urutan">
+          <li><div><b>Uji Konsep 03 ke 5–8 petugas lapang &amp; kios</b>
+          <small>Pertanyaan tunggalnya: apakah mereka benar-benar membandingkan, atau memeriksa satu
+          barang lalu selesai. Ini pertanyaan terbuka nomor 4 di dokumen konsep lama, dan
+          <em>tidak bisa dijawab lewat wawancara</em> — hanya lewat pengamatan langsung di kios.</small></div></li>
+
+          <li><div><b>Pinjam mekanika Konsep 02 ke dalam layar rincian yang sudah ada</b>
+          <small>Panel “hubungan dari lema ini” beserta jari-jari buntunya bisa dipasang sebagai
+          komponen di layar produk dan OPT yang sudah berjalan, tanpa merombak beranda. Ia menguji
+          gagasan paling berharga Konsep 02 — <em>lubang data yang punya bentuk</em> — dengan ongkos
+          satu komponen.</small></div></li>
+
+          <li><div><b>Tahan Konsep 01 sampai kurasi gejala punya peninjau bernama</b>
+          <small>Konsep ini yang paling berpotensi mengubah keputusan lapangan, dan justru karena itu
+          paling berbahaya diuji di atas data draft. Yang menghalanginya bukan rancangan, melainkan
+          nol dari 4.256 rekaman kurasi yang punya peninjau bernama.</small></div></li>
+
+          <li><div><b>Jangan gabungkan ketiganya jadi satu beranda</b>
+          <small>Ketiganya mendahulukan keputusan yang berbeda, dan beranda yang mendahulukan tiga hal
+          sekaligus tidak mendahulukan apa pun. Kalau harus berdampingan, biarkan berdampingan sebagai
+          <em>permukaan berbeda</em> — bukan sebagai tiga bagian di satu gulungan.</small></div></li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="blok">
+  <div class="bungkus">
+    <h2>Berkas yang dibuat</h2>
+    <ul class="berkas">
+      <li><code>index.html</code><small>halaman ini — galeri &amp; pembanding</small></li>
+      <li><code>01-kanvas-keputusan.html</code><small>Konsep 01 · Kanvas Lapangan</small></li>
+      <li><code>02-atlas-pengetahuan.html</code><small>Konsep 02 · Atlas Tani</small></li>
+      <li><code>03-meja-banding.html</code><small>Konsep 03 · Meja Banding</small></li>
+      <li><code>README.md</code><small>tesis, asumsi, risiko, hasil QA, batas pengujian</small></li>
+    </ul>
+    <p style="font-size:.86rem;color:var(--lemah);margin-top:14px"><strong>Tanpa
+    <code>screenshots/</code>, dan itu disengaja.</strong> Peramban dalam-aplikasi
+    mengembalikan gambar ke sesi tetapi tidak bisa menulisnya ke disk, dan satu-satunya
+    jalan lain adalah memasang Playwright — yang dilarang di pekerjaan ini. Direktori
+    kosong yang tampak seperti sudah diisi lebih menyesatkan daripada direktori yang
+    memang tidak ada. Seluruh QA dilakukan lewat pengukuran DOM dan CSS terhitung;
+    rinciannya beserta yang <em>belum</em> bisa diamati ada di <code>README.md</code>
+    bagian 8.</p>
+    <p style="font-size:.86rem;color:var(--lemah);margin-top:14px">Tidak ada berkas di luar folder
+    ini yang disunting. Logo memakai aset repositori lewat jalur relatif
+    <code>../../app/ikon.svg</code> di halaman ini, dan disalin sebaris ke dalam ketiga prototipe
+    supaya ketiganya tetap utuh kalau berkasnya dipindahkan.</p>
+  </div>
+</section>
+
+</main>
+
+<footer class="kaki">
+  <div class="bungkus">
+    <p><strong>Pranatani</strong> — prototipe tinjauan rancangan, bukan implementasi. Ketiganya
+    berkas statis mandiri: tanpa kerangka kerja, tanpa langkah bangun, tanpa permintaan ke internet,
+    dan tanpa menulis ke penyimpanan peramban.</p>
+    <p>Isi diambil dari indeks turunan repositori, tarikan 19–23 Agustus 2026. Angka yang
+    disederhanakan untuk prototipe ditandai di tempatnya.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const el = (id) => document.getElementById(id);
+
+/* ---------- papan skor ---------- */
+const SUMBU = [
+  { n:"Kecocokan dengan perilaku pengguna", s:[3,3,4],
+    d:"01 mengandaikan orang mau menjawab tiga pertanyaan dulu. 02 mengandaikan ada yang menjelajah. 03 mengandaikan orang membandingkan — dan Q1 lapangan menyebut orang memang “langsung lihat kemasan, cek kandungan”." },
+  { n:"Kejelasan keputusan yang ditutup", s:[5,2,4],
+    d:"01 menutup satu perkara sampai jawaban atau penolakan. 02 sengaja tidak menutup apa pun. 03 menutup “apa bedanya” tetapi menyerahkan “lalu pilih yang mana” ke pengguna." },
+  { n:"Ongkos adopsi bagi pengguna", s:[4,2,3],
+    d:"01 tidak menuntut kosakata sama sekali. 02 menuntut pengguna tahu nama benda untuk mulai. 03 menuntut pengguna sudah punya kandidat." },
+  { n:"Jalan di HP entry-level", s:[5,3,3],
+    d:"01 satu layar aktif, tanpa tabel. 02 lema panjang dan tabel. 03 matriks jadi tumpukan panjang di ponsel." },
+  { n:"Kesiapan data hari ini", s:[1,5,5],
+    d:"01 berdiri di atas 10 OPT cabai draft dari 1.360 OPT registri. 02 dan 03 seluruhnya di atas registri yang sudah utuh." },
+  { n:"Risiko salah tafsir rendah", s:[2,4,3],
+    d:"01 berbentuk tanya-jawab, dan itu bentuk diagnosis — sulit dilawan rancangan. 02 paling aman: ia menyajikan, tidak menyimpulkan. 03 mudah dibaca sebagai peringkat, tetapi bisa dilawan rancangan." },
+  { n:"Ongkos bangun rendah", s:[2,3,4],
+    d:"01 menuntut kurasi gejala meluas ke komoditas lain. 02 menuntut model hubungan lintas lapisan. 03 memakai medan yang sudah ada di indeks apa adanya." },
+  { n:"Kedekatan ke segmen beachhead", s:[2,3,5],
+    d:"Beachhead-nya P1 — petugas lapang offtaker, skor 19, pekerjaannya sudah berupa pencatatan. 03 alat kerja mereka; 01 untuk P4/P5 yang dijangkau lewat P1." }
+];
+
+function bar(v) {
+  return `<span class="bar" aria-hidden="true">${[1,2,3,4,5].map((i)=>`<i data-isi="${i<=v?'ya':'tidak'}"></i>`).join('')}</span>`;
+}
+el('skorBadan').innerHTML = SUMBU.map((x) => `<tr>
+  <th scope="row">${x.n}</th>
+  ${x.s.map((v)=>`<td class="n">${v}${bar(v)}</td>`).join('')}
+  <td style="color:var(--lemah);font-size:.83rem">${x.d}</td></tr>`).join('');
+[0,1,2].forEach((i) => { el('t'+(i+1)).textContent = SUMBU.reduce((a,x)=>a+x.s[i],0) + ' / 40'; });
+
+/* ---------- pratinjau hidup, dimuat hanya saat diminta ---------- */
+const SRC = { 1:"01-kanvas-keputusan.html", 2:"02-atlas-pengetahuan.html", 3:"03-meja-banding.html" };
+const JUDUL = { 1:"Konsep 01 Kanvas Lapangan", 2:"Konsep 02 Atlas Tani", 3:"Konsep 03 Meja Banding" };
+
+document.querySelectorAll('[data-pv]').forEach((b) => b.addEventListener('click', () => {
+  const k = b.dataset.target, mode = b.dataset.pv;
+  const kartu = b.closest('.pratinjau');
+  kartu.querySelectorAll('[data-pv]').forEach((x) => x.setAttribute('aria-pressed', String(x.dataset.pv === mode)));
+  const sketsa = kartu.querySelector('[data-sketsa]');
+  const hidup  = kartu.querySelector('[data-hidup]');
+  if (mode === 'sketsa') { sketsa.hidden = false; hidup.hidden = true; return; }
+  sketsa.hidden = true; hidup.hidden = false;
+  if (hidup.dataset.dimuat) return;
+  hidup.dataset.dimuat = '1';
+  const f = document.createElement('iframe');
+  f.src = SRC[k];
+  f.title = 'Pratinjau ' + JUDUL[k];
+  f.loading = 'lazy';
+  hidup.append(f);
+  /* Kalau berkasnya dibuka lewat file:// sebagian peramban menolak memuat iframe
+     sesama berkas. Katakan itu, jangan biarkan kotak kosong. */
+  let selesai = false;
+  f.addEventListener('load', () => { selesai = true; });
+  setTimeout(() => {
+    if (selesai) return;
+    const p = document.createElement('p');
+    p.className = 'gagal-muat';
+    p.textContent = 'Pratinjau hidup tidak bisa dimuat di sini — kemungkinan besar halaman ini dibuka lewat file://, dan peramban menolak menyematkan berkas lokal. Sajikan folder ini lewat server sederhana, atau pakai tombol “Buka Konsep” di bawah.';
+    hidup.append(p);
+  }, 2600);
+}));
+
+/* ---------- tema (hanya di memori) ---------- */
+el('tombolTema').addEventListener('click', () => {
+  const r = document.documentElement;
+  const gelapSistem = matchMedia('(prefers-color-scheme: dark)').matches;
+  const kini = r.dataset.tema || (gelapSistem ? 'gelap' : 'terang');
+  const baru = kini === 'gelap' ? 'terang' : 'gelap';
+  r.dataset.tema = baru;
+  el('tombolTema').textContent = baru === 'gelap' ? 'Terang' : 'Gelap';
+});
+</script>
+</body>
+</html>
