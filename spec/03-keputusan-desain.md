@@ -764,6 +764,49 @@ virus yang dikurasi virus cabai, dan diam-diam gagal begitu virus kedua masuk de
 penular yang lain. `rules_out` menyatakan apa yang terbantah, bukan apa yang menularkan;
 keduanya kebetulan bertemu satu kali. Sekarang penular dinyatakan pada entitasnya.
 
+**Diperluas 28 Agustus 2026, sore, oleh tomat dan kentang.** Pola yang sama dipakai untuk
+komoditas ketiga dan keempat sekaligus — keduanya dikurasi bersama karena berbagi lima
+dari sepuluh OPT teratasnya — dan alatnya digeneralkan jadi `spec/tools/kurasi-opt.mjs`,
+satu mekanisme dengan satu tabel per kelompok komoditas. Dua aturan tambahan lahir di situ,
+dan keduanya berlaku untuk komoditas kelima:
+
+- **`PERLUAS` hanya boleh satu, bukan satu per kurasi.** Entri yang melayani lebih dari
+  satu komoditas — layu fusarium kini tiga, kutu daun persik empat — hanya boleh punya
+  SATU teks yang berlaku. Menyimpan versi per kelompok berarti menyimpan kalimat yang
+  tidak pernah menang, dan pembaca berikutnya tidak punya cara tahu yang mana.
+- **Entri yang sudah ada disegarkan pada medan struktural, tidak pernah pada prosanya.**
+  `label`, `definition`, `hosts`, dan `vector` ikut diperbarui; `symptoms`,
+  `distinguishing`, dan `notes` tidak pernah disentuh. Pembagian itu bukan kerapian: tiga
+  medan terakhir yang diminta ditinjau penyuluh di `docs/14-tinjauan-gejala.md`, dan
+  menimpanya berarti menghapus hasil tinjauan tanpa ada yang menyadarinya. Empat medan
+  pertama justru berbahaya kalau dibiarkan basi — pintu tetangga bisa berganti nama, dan
+  salinan labelnya di `rules_out` ikut disegarkan dari entitas yang ditunjuk.
+
+Sebaran komoditas menggugurkan satu calon lagi dan meloloskan satu yang sebelumnya
+tertinggal: *Liriomyza huidobrensis* naik dengan teks untuk daun LEBAR (kentang, tomat)
+sementara *L. chinensis* tetap memegang pintu bawang merah yang daunnya berongga — dua
+pintu untuk satu bentuk kerusakan, dibedakan oleh bentuk daunnya, bukan oleh spesiesnya
+yang memang tidak bisa dibedakan di kebun.
+
+### D39 — indeks gejala dipecah dua tingkat begitu melewati anggaran 48 KB
+
+Dengan 28 pintu, `spec/indeks/gejala.json` mencapai 53 KB — melewati anggaran 48 KB yang
+justru dipasang supaya tidak ada berkas yang harus diunduh utuh sebelum layar pertama
+muncul. Yang menahan layar DAFTAR cuma teks gejala dan jumlah produk per komoditas;
+ciri pembanding, keterangan, catatan, dan penular baru dibutuhkan sesudah SATU pintu
+dibuka, dan tidak seorang pun membuka dua puluh delapan.
+
+Jadi berkasnya dipecah: `gejala.json` 23,4 KB untuk daftarnya, dan `gejala/<id>.json`
+sekitar 1 KB per pintu untuk rinciannya. Ini pola yang sudah dipakai indeks OPT dan
+sediaan, bukan pola baru.
+
+Harganya satu, dan tidak boleh dilupakan: **rincian itu wajib ikut diprasimpan service
+worker.** Jalur 1 dibuka justru saat masalahnya sedang terjadi, sering jauh dari sinyal,
+dan blok "pastikan dulu" tanpa isinya adalah dugaan tanpa cara memastikan — persis yang
+ditolak seluruh jalur itu. `meta.pecahan.gejala` karena itu mendaftar kuncinya utuh,
+seperti `sediaan`, bukan menghitungnya. Yang berubah kapan 29 KB itu diunduh, bukan
+apakah ia ada.
+
 ---
 
 ## Pertanyaan yang masih terbuka

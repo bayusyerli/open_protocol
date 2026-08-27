@@ -33,9 +33,9 @@
 //     bisa disemprot apa pun.
 //
 // ALAT INI TIDAK LAGI BERWENANG PENUH ATAS DUA ENTRI
-// Sejak spec/tools/kurasi-opt-bawang.mjs (28 Agustus 2026), layu fusarium dan kutu daun
-// persik melayani cabai SEKALIGUS bawang merah, dan teks gejalanya di sana dibuka jadi
-// dua kalimat bertanaman. Teks di bawah masih versi cabai-saja. Kalau alat ini dijalankan
+// Sejak spec/tools/kurasi-opt.mjs (28 Agustus 2026), tujuh entri di bawah melayani cabai
+// SEKALIGUS bawang merah, tomat, atau kentang, dan teks gejalanya di sana dibuka jadi
+// kalimat berklausa per tanaman. Teks di bawah masih versi cabai-saja. Kalau alat ini dijalankan
 // ulang dengan --tulis, jalankan alat itu sesudahnya — kalau tidak, klausa bawang merah
 // hilang tanpa ada yang menyalak.
 //

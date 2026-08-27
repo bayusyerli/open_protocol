@@ -1094,7 +1094,7 @@ for (const r of sediaanCari) {
 // ---------------------------------------------------------------------------
 // OPT registri yang bisa dicari menurut NAMA — C3, sisi yang tidak menuntut agronomi
 // ---------------------------------------------------------------------------
-// 749 OPT registri punya produk terdaftar; sembilan belas di antaranya punya teks gejala.
+// 749 OPT registri punya produk terdaftar; dua puluh delapan di antaranya punya teks gejala.
 // Yang sisanya sampai hari ini TIDAK BISA DICAPAI SAMA SEKALI dari kotak beranda — nol
 // entri OPT di kepala pencarian — walau bahan aktif yang terdaftar untuknya sudah ada
 // di indeks. Yang tahu nama hamanya dijawab nol, dan itu bukan kekurangan data melainkan
@@ -1499,8 +1499,8 @@ const gejala = optTerkurasi
 // ---------------------------------------------------------------------------
 // Gejala tidak bisa diember menurut dua huruf pertama seperti nama: yang mengetik
 // "daun mengeriting ke atas" tidak sedang mengetik awalan sebuah nama, ia sedang
-// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — sembilan belas
-// OPT, sekitar 10 KB — lalu dicocokkan kata per kata di peramban.
+// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — dua puluh delapan
+// OPT, sekitar 16 KB — lalu dicocokkan kata per kata di peramban.
 //
 // Yang ikut hanya nama, nama ilmiah, dan teks gejalanya. Ciri pembanding TIDAK ikut:
 // begitu satu gejala dibuka, jalur 1 yang merendernya, dan di sanalah blok "pastikan
@@ -1956,7 +1956,7 @@ const batas = {
         'Registri resmi kementerian. Tingkatnya berlaku untuk keberadaan suratnya, bukan untuk sifat varietasnya — sifat agronomi nol dari 11.227, jadi tidak ada klaim agronomi yang bisa dinaungi tingkat ini.',
     }),
     kurasiOpt: {
-      label: 'Kurasi OPT & gejala cabai',
+      label: 'Kurasi OPT & teks gejala',
       penerbit: 'Open Protocols',
       url: null,
       tarikan: tanggalTerbaru(optTerkurasi),
@@ -2213,6 +2213,9 @@ const meta = {
     cari: Object.keys(cari).sort(),
     cariDalam,
     sediaan: Object.keys(berkasResep).sort(),
+    // Didaftar utuh, bukan dihitung, karena service worker memprasimpannya satu per satu:
+    // jalur 1 justru jalur yang paling mungkin dibuka jauh dari sinyal.
+    gejala: gejala.map((g) => kunciKomoditas(g.id)).sort(),
 
     setara: pecahanSetara.length,
     bahan: pecahanBahan.length,
@@ -2247,7 +2250,7 @@ const meta = {
   },
   tidakAda: {
     gejalaOpt:
-      'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 19 OPT terkurasi di pest.json — 10 untuk cabai, 11 untuk bawang merah, dua dipakai bersama — dan seluruhnya bertekst gejala (lihat gejala.json). Di luar yang sembilan belas itu jalur 1 tidak punya pintu masuk.',
+      'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 28 OPT terkurasi di pest.json — 11 pintu untuk cabai, 11 bawang merah, 12 tomat, 12 kentang, dengan 12 entri melayani lebih dari satu — dan seluruhnya bertekst gejala (lihat gejala.json). Di luar yang dua puluh delapan itu jalur 1 tidak punya pintu masuk.',
     phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. Jalur 3 mengandalkan satu masukan pengguna.',
     bahanHara:
@@ -2285,7 +2288,7 @@ const meta = {
     bppTanpaAlamat:
       'Balai penyuluhan tidak punya alamat maupun koordinat di rekaman ini, dan itu batas sumbernya: laporan tamu SIMLUHTAN hanya memberi nama balai dan kecamatan binaannya. Yang menemukan balainya bukan peta melainkan kecamatan — dan bagi yang tinggal di sana itu memang cukup. Menggeokode 5.844 balai secara massal ditolak dengan sadar, karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.',
     gejalaOptRegistri:
-      'Nol dari 730 OPT registri berproduk memuat teks gejala. Sembilan belas OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 730 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
+      'Nol dari 722 OPT registri berproduk memuat teks gejala. Dua puluh delapan OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 722 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
     hasilVarietas:
       'Registri tidak memuat potensi hasil satu pun varietas — nol dari 11.227. Perkiraan panen pada analisis usaha tani karena itu masukan pemakainya sendiri, dan tidak ada angka acuan yang bisa disodorkan menggantikannya.',
     arusKasMusim:
@@ -2311,7 +2314,19 @@ for (const [nomor, isi] of berkasBahan) simpan(`bahan/${nomor}.json`, isi);
 for (const [k, isi] of Object.entries(berkasBahanMerek).sort()) simpan(`bahan/${k}.json`, isi);
 simpan('sediaan.json', berkasSediaan);
 for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.json`, isi);
-simpan('gejala.json', gejala);
+// Dipecah dua tingkat sejak kurasi tomat & kentang. Dengan 28 pintu berkas tunggalnya
+// 53 KB, melewati anggaran 48 KB — dan anggaran itu dipasang justru supaya tidak ada
+// berkas yang harus diunduh utuh sebelum layar pertama muncul. Yang dibutuhkan layar
+// DAFTAR cuma teks gejalanya dan berapa produk di komoditas mana (24,8 KB untuk 28
+// pintu); ciri pembanding, keterangan, catatan, dan penular baru dibutuhkan SESUDAH satu
+// pintu dibuka — dan tidak seorang pun membuka dua puluh delapan. Rinciannya tetap
+// diprasimpan service worker lewat `pecahan.gejala`, jadi luring tidak berkurang: yang
+// berubah kapan 29 KB itu diunduh, bukan apakah ia ada.
+const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'adaPintu', 'di'];
+const GEJALA_RINCI = ['keterangan', 'pembanding', 'catatan', 'penular'];
+const pilihMedan = (o, medan) => Object.fromEntries(medan.map((k) => [k, o[k]]));
+simpan('gejala.json', gejala.map((g) => pilihMedan(g, GEJALA_DAFTAR)));
+for (const g of gejala) simpan(`gejala/${kunciKomoditas(g.id)}.json`, pilihMedan(g, GEJALA_RINCI));
 simpan('gejala-cari.json', gejalaCari);
 simpan('nama-lokal.json', namaLokalCari);
 for (const [k, isi] of Object.entries(berkasOptNama).sort()) simpan(`opt-nama/${k}.json`, isi);

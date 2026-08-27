@@ -1072,11 +1072,11 @@ yang sama seperti hasil pencarian nama.
 
 ### Masuk lewat nama hama — C3, sisi yang tidak menuntut agronomi
 
-Terukur sebelum mulai: **nol** entri OPT di kepala pencarian. 730 OPT registri punya
+Terukur sebelum mulai: **nol** entri OPT di kepala pencarian. 722 OPT registri punya
 produk terdaftar dan bahan aktifnya sudah ada di indeks — tetapi yang tahu nama hamanya
 dijawab **nol**. Itu bukan kekurangan data; itu pintu yang belum dibuka.
 
-- **Yang dibuka hanya pintunya.** Menulis teks gejala untuk 730 OPT adalah pekerjaan
+- **Yang dibuka hanya pintunya.** Menulis teks gejala untuk 722 OPT adalah pekerjaan
   agronomi, bukan pekerjaan indeks — dan mengarangnya persis yang ditolak jalur 1.
 - **Tidak ada blok "pastikan dulu" untuk pintu ini, dan itu bukan kelalaian.** Blok itu
   ada karena yang masuk lewat gejala sedang *menebak*, dan dua ciri yang bisa diperiksa

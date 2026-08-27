@@ -53,7 +53,10 @@ for (const p of opt) {
 }
 rumpun.sort((a, b) => b.anggota.length - a.anggota.length || a.label.localeCompare(b.label));
 const rangkap = opt.filter((p) => (p.hosts ?? []).length > 1);
-const sebutInang = rumpun.map((r) => r.label).join(' dan ');
+// Dirangkai dengan koma dan satu "dan" di ujung, bukan "dan" berulang: sejak inangnya
+// empat, `join(' dan ')` menghasilkan judul yang tidak bisa dibaca sekali jalan.
+const rangkai = (x) => (x.length < 2 ? x.join('') : `${x.slice(0, -1).join(', ')}, dan ${x[x.length - 1]}`);
+const sebutInang = rangkai(rumpun.map((r) => r.label));
 
 const B = [];
 const P = (...x) => B.push(x.join(''));
