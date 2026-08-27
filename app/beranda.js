@@ -47,7 +47,7 @@ const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.incl
 // tiap pemanggil.
 const tautanKunci = {
   // OPT registri dibuka jalur 1 lewat kuncinya sendiri, bukan lewat `opt=` yang dipakai
-  // sepuluh OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
+  // OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
   // membuat jalur 1 mencari teks gejala yang memang tidak ada.
   opt: (x) => `jalur-1.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
   sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
@@ -209,7 +209,7 @@ function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
   if (gejala.length) {
     bagian.push(kelompok(
       `${gejala.length} gejala cocok`,
-      'sepuluh OPT cabai terkurasi, <strong>berstatus draft</strong>',
+      'OPT cabai dan bawang merah terkurasi, <strong>berstatus draft</strong>',
       gejala.map((g) => `
         <li>
           <a href="${teks(tautanGejala(g))}" data-jenis="gejala">

@@ -32,6 +32,13 @@
 //     Tanpa itu, keriting ke atas mudah tertukar dengan virus kuning — dan virus tidak
 //     bisa disemprot apa pun.
 //
+// ALAT INI TIDAK LAGI BERWENANG PENUH ATAS DUA ENTRI
+// Sejak spec/tools/kurasi-opt-bawang.mjs (28 Agustus 2026), layu fusarium dan kutu daun
+// persik melayani cabai SEKALIGUS bawang merah, dan teks gejalanya di sana dibuka jadi
+// dua kalimat bertanaman. Teks di bawah masih versi cabai-saja. Kalau alat ini dijalankan
+// ulang dengan --tulis, jalankan alat itu sesudahnya — kalau tidak, klausa bawang merah
+// hilang tanpa ada yang menyalak.
+//
 // BATAS YANG HARUS IKUT TERBACA
 // Teks di bawah disusun dari pengetahuan agronomi yang mapan tentang OPT cabai, BUKAN
 // dari tarikan registri dan bukan dari satu terbitan tertentu. Statusnya draft dan

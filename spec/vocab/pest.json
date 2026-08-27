@@ -3,16 +3,17 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama cabai"
+      "id": "OPT utama cabai dan bawang merah"
     },
     "scope": {
-      "id": "Sepuluh OPT yang paling menentukan hasil dan biaya pada budidaya cabai di Indonesia. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada dua komoditas: sepuluh untuk cabai dan sepuluh untuk bawang merah, dua di antaranya (layu fusarium dan kutu daun persik) dipakai bersama. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
       "status": "draft",
       "created_at": "2026-08-19T00:00:00Z",
-      "review_due": "2027-02-19"
+      "review_due": "2027-02-28",
+      "updated_at": "2026-08-28T00:00:00Z"
     },
     "provenance": {
       "license": "CC-BY-SA-4.0",
@@ -199,6 +200,10 @@
         {
           "id": "op:cmd:00000001",
           "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
         }
       ],
       "definition": {
@@ -247,7 +252,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Kutu Daun",
@@ -266,7 +271,7 @@
         "kingdom": "Animalia"
       },
       "symptoms": {
-        "id": "Daun muda mengeriting ke BAWAH dan mengerut. Permukaan daun lengket, sering ditumbuhi jelaga hitam, dan semut naik-turun di batang."
+        "id": "Pada cabai daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada keduanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman."
       },
       "distinguishing": [
         {
@@ -929,6 +934,10 @@
         {
           "id": "op:cmd:00000001",
           "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
         }
       ],
       "mappings": [
@@ -956,7 +965,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Layu",
@@ -974,17 +983,17 @@
         "kingdom": "Fungi"
       },
       "symptoms": {
-        "id": "Tanaman layu perlahan selama beberapa hari. Daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap."
+        "id": "Pada cabai tanaman layu perlahan selama beberapa hari; daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap. Pada bawang merah daun menguning dari ujung lalu MELENGKUNG dan terpelintir — dari situ nama moler — dan tanaman mudah tercabut karena dasar umbinya sudah membusuk."
       },
       "distinguishing": [
         {
           "check": {
-            "id": "Belah pangkal batang membujur. Pembuluh di dalamnya berwarna coklat memanjang, sementara jaringan lain masih putih."
+            "id": "Belah pangkal batang atau umbi membujur. Pada cabai pembuluh di dalamnya coklat memanjang sementara jaringan lain masih putih. Pada bawang merah dasar umbi tempat akar keluar membusuk kecoklatan, sering berselaput putih seperti kapas."
           }
         },
         {
           "check": {
-            "id": "UJI GELAS. Potong batang dekat pangkal, celupkan ujungnya ke gelas berisi air bening, diamkan lima menit. Kalau TIDAK keluar lendir putih, penyebabnya fusarium, bukan bakteri."
+            "id": "UJI GELAS. Potong batang atau leher umbi dekat pangkal, celupkan ujungnya ke gelas berisi air bening, diamkan lima menit. Kalau TIDAK keluar lendir putih, penyebabnya fusarium, bukan bakteri."
           },
           "rules_out": {
             "id": "op:pst:00000009",
@@ -1111,7 +1120,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxonomic_rank": "genus",
       "taxon_verification": {
@@ -1146,6 +1155,799 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      },
+      "vector": {
+        "id": "op:pst:00000003",
+        "label": "Kutu kebul"
+      }
+    },
+    {
+      "id": "op:pst:00000011",
+      "key": "ulat-bawang",
+      "label": {
+        "id": "Ulat bawang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Spodoptera exigua",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Ulat grayak bawang. Ulatnya makan dari DALAM daun yang berongga, jadi kerusakannya sudah luas sebelum ulatnya terlihat dari luar."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "8352161",
+          "uri": "https://www.gbif.org/species/8352161",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 267 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptera exiqua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodopters exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodoptra exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Spodotera exigua",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Ulat",
+        "Hama Ulat Grayak",
+        "Perusak Daun",
+        "Spodoptera exiqua",
+        "Spodopters exigua",
+        "Spodoptra exigua",
+        "Spodotera exigua",
+        "Ulang Grayak",
+        "Ulat Gayak",
+        "Ulat Grayak"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun berlubang kecil di satu titik, lalu bagian di atas lubang itu memutih menerawang seperti kertas dan terkulai. Serangan berat menyisakan tunggak daun yang tinggal berdiri, dan petak terlihat gundul berpetak-petak, bukan merata."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Terawang daun yang memutih ke arah cahaya, lalu belah membujur. Ulat hijau kecoklatan bergaris memanjang ada di dalam rongga daun. Kalau rongganya kosong dan yang ada hanya lorong berkelok di dalam lapisan daun, penyebabnya pengorok daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000012",
+            "label": "Pengorok daun"
+          }
+        },
+        {
+          "check": {
+            "id": "Cari kelompok telur di permukaan daun: gundukan kecil tertutup bulu putih kecoklatan seperti kapas. Trips dan pengorok daun tidak meninggalkan apa pun seperti itu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000013",
+            "label": "Trips bawang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000012",
+      "key": "pengorok-daun-bawang",
+      "label": {
+        "id": "Pengorok daun"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Liriomyza chinensis",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Lalat pengorok daun bawang. Registri juga mendaftarkan Liriomyza huidobrensis dan Liriomyza sp. sebagai sasaran pada bawang merah — 32 baris penggunaan lagi. Keduanya tidak bisa dibedakan dari lorongnya di kebun, dan produk yang terdaftar atas nama itu TIDAK ikut terdaftar di bawah pintu ini."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1553308",
+          "uri": "https://www.gbif.org/species/1553308",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Liriomyza chinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 154 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lyriomiza chinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Penggorok Daun",
+        "Hama Pengorok Daun",
+        "Lalat Pengorok Daun",
+        "Lyriomiza chinensis",
+        "Penggorok Daun",
+        "Pengorok Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Bintik-bintik putih berjajar seperti tusukan jarum pada daun, lalu muncul lorong berkelok berwarna putih keperakan di dalam lapisan daun. Daun mengering dari ujung ke bawah; pada serangan berat seluruh rumpun terlihat kecoklatan seperti terbakar."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Terawang daun ke cahaya dan ikuti lorongnya. Lorong pengorok berkelok dan MELEBAR di ujungnya, dengan larva kuning bening sebesar biji wijen di bagian yang paling lebar. Ulat bawang tidak membuat lorong — ia mengosongkan rongga daun dari dalam."
+          },
+          "rules_out": {
+            "id": "op:pst:00000011",
+            "label": "Ulat bawang"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat bintik putih di permukaan. Bintik tusukan pengorok berukuran seragam dan berjajar mengikuti panjang daun; goresan trips tidak berbentuk titik melainkan bidang keperakan memanjang yang tepinya tidak beraturan."
+          },
+          "rules_out": {
+            "id": "op:pst:00000013",
+            "label": "Trips bawang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000013",
+      "key": "trips-bawang",
+      "label": {
+        "id": "Trips bawang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Thrips tabaci",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Paling parah pada musim kemarau dan pada petak yang jarang disiram. Registri juga mendaftarkan Thrips parvispinus dan Thrips sp. pada bawang merah, masing-masing lewat pintunya sendiri."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1420961",
+          "uri": "https://www.gbif.org/species/1420961",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4799962",
+          "uri": "https://www.gbif.org/species/4799962",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Trips'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips tabaci",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 32 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Trips tabaci",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Ham Thrips",
+        "Hama Thrips",
+        "Hama Trips",
+        "Thrips",
+        "Trips tabaci"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Bidang keperakan mengkilap memanjang searah daun, mulai dari ketiak daun termuda, lalu berubah kecoklatan dan daun mengering dari ujung. Di atas bidang keperakan itu ada titik-titik kotoran hitam sangat halus. Daun melengkung, tanaman kerdil, dan umbinya kecil."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka ketiak daun termuda dan kibaskan di atas kertas putih. Trips terlihat sebagai serangga kuning kecoklatan sepanjang 1–2 mm yang langsung berlari. Kalau tidak ada yang bergerak, penyebabnya bukan trips."
+          },
+          "rules_out": {
+            "id": "op:pst:00000012",
+            "label": "Pengorok daun"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa permukaan bidang keperakannya. Trips tidak meninggalkan lorong dan tidak melubangi: kalau ada lorong berkelok di dalam daun itu pengorok daun, dan kalau daunnya berlubang lalu memutih menerawang di atas lubangnya itu ulat bawang."
+          },
+          "rules_out": {
+            "id": "op:pst:00000011",
+            "label": "Ulat bawang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000014",
+      "key": "ulat-tanah",
+      "label": {
+        "id": "Ulat tanah"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Agrotis ipsilon",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang pada malam hari dan bersembunyi di tanah pada siang hari. Polifag: terdaftar juga pada kentang, jagung, cabai, dan kubis, dan gejalanya sama di semuanya — jadi teks di bawah sengaja tidak menyebut satu tanaman pun. Orong-orong (Gryllotalpa sp.) merusak dengan cara yang mirip, tetapi meninggalkan lorong gembur di permukaan tanah dan terdaftar lewat pintunya sendiri."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1771245",
+          "uri": "https://www.gbif.org/species/1771245",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8407958",
+          "uri": "https://www.gbif.org/species/8407958",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Agrotis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Agrotis epsilon",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Agrotis ipsilon",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 18 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Agrotis epsilon",
+        "Hama Ulat Tanah",
+        "Ulat Tanah"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Tanaman muda rebah dan terpotong tepat di pangkal, dekat permukaan tanah. Yang rebah ditemukan pagi hari, bergerombol di beberapa titik dalam petak dan bukan merata, dan daunnya masih hijau segar — tidak menguning lebih dulu."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Korek tanah sedalam 2–5 cm di sekeliling tanaman yang rebah, pagi hari. Ulat gemuk kelabu kecoklatan yang MELINGKAR seperti huruf C saat disentuh bersembunyi di situ. Kalau tidak ada, penyebab rebahnya bukan ulat tanah."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat bekas patahannya. Ulat tanah memotong batang bersih seperti disayat, dan sisa tanaman masih segar. Tanaman yang roboh karena pangkalnya membusuk tidak terpotong: batang atau umbinya lunak, dan seluruh tanaman terangkat hanya dengan menarik daunnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000015",
+      "key": "bercak-ungu",
+      "label": {
+        "id": "Bercak ungu"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Alternaria porri",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Trotol. Penyakit daun paling banyak didaftarkan pada bawang merah — 215 baris penggunaan berlabel, kedua terbanyak sesudah ulat bawang."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2616325",
+          "uri": "https://www.gbif.org/species/2616325",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Altemaria porri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Altenaria porri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Alternari porri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Alternaria porii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Alternaria porri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 213 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Altemaria porri",
+        "Altenaria porri",
+        "Alternari porri",
+        "Alternaria porii",
+        "Bercak Unggu",
+        "Bercak Ungu",
+        "Penyakit Becak Ungu",
+        "Penyakit Bercak Daun",
+        "Penyakit Bercak Ungu",
+        "Pernyakit Bercak Ungu"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak kecil keputihan berpusat di tengah daun, membesar jadi lonjong dengan bagian tengah keunguan dan tepi kuning. Daun patah terkulai tepat pada bercak yang sudah melingkari daun. Pada cuaca lembap permukaan bercak berbulu halus kehitaman."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan susunan di dalam bercaknya. Bercak ungu bercincin sepusat seperti sasaran panah dengan tepi kuning yang tegas. Embun bulu tidak berbercak bercincin — ia menutup bidang daun dengan lapisan berbulu keunguan yang merata dan tepinya kabur."
+          },
+          "rules_out": {
+            "id": "op:pst:00000017",
+            "label": "Embun bulu"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat di daun mana ia mulai. Bercak ungu muncul lebih dulu pada daun TUA dan meluas sesudah hujan atau embun berat; goresan keperakan trips justru mulai di daun MUDA di ketiak, dan tidak pernah membentuk bercak bercincin."
+          },
+          "rules_out": {
+            "id": "op:pst:00000013",
+            "label": "Trips bawang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000016",
+      "key": "antraknosa-bawang",
+      "label": {
+        "id": "Antraknosa bawang"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Colletotrichum circinans",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Di sentra Brebes disebut \"otomatis\" karena tanaman rebah serentak dalam beberapa hari. Terbawa umbi bibit, jadi petak berbibit turunan sendiri lebih berisiko. BATAS YANG HARUS IKUT TERBACA: registri menautkan nama \"antraknosa pada bawang merah\" ke DUA spesies Colletotrichum — C. circinans (5 baris penggunaan, hanya pada bawang merah) dan C. gloeosporioides (5 baris pada bawang merah, tetapi 44 baris lagi pada mangga, cabai, jeruk, dan karet). Literatur menautkan gejala \"otomatis\" yang khas — leher terpelintir, tanaman rebah serentak — pada C. gloeosporioides, sedangkan C. circinans penyebab smudge, bercak gelap pada sisik luar umbi. Pintu ini berdiri di atas C. circinans karena hanya entitas itu yang terdaftar semata-mata pada bawang merah; membuka pintu di atas yang satunya berarti menjanjikan teks gejala kepada mangga dan cabai, yang belum dikurasi. Gejala di bawah mencakup KEDUANYA, dan memisahkan keduanya menuntut laboratorium, bukan mata — jadi lima produk yang terdaftar atas nama C. gloeosporioides TIDAK ikut terdaftar di bawah pintu ini."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2563219",
+          "uri": "https://www.gbif.org/species/2563219",
+          "relation": "broad",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Colletotrichum'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2568930",
+          "uri": "https://www.gbif.org/species/2568930",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum circinans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum circinas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Colletotrichum circinas",
+        "Penyakit Antraknosa"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak lonjong keputihan pada daun, di tengahnya titik-titik hitam kecil tersusun melingkar. Leher tanaman terpelintir dan daun melengkung, lalu tanaman terkulai serentak dalam beberapa hari. Pada umbi muncul bercak gelap seperti jelaga pada sisik terluar, dan umbi yang terserang membusuk."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tatap titik hitam di tengah bercak, kalau perlu dengan kaca pembesar. Titiknya tersusun melingkar sepusat dan itu tubuh buah jamurnya. Bercak ungu tidak pernah bertitik hitam seperti itu — bagian tengahnya keunguan polos."
+          },
+          "rules_out": {
+            "id": "op:pst:00000015",
+            "label": "Bercak ungu"
+          }
+        },
+        {
+          "check": {
+            "id": "Cabut tanaman yang terkulai dan lihat lehernya. Pada antraknosa lehernya terpelintir dan berbercak sementara akarnya masih menahan tanah. Pada moler lehernya tidak terpelintir, dasar umbinya sudah membusuk, dan tanaman terangkat hampir tanpa perlawanan."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000017",
+      "key": "embun-bulu",
+      "label": {
+        "id": "Embun bulu"
+      },
+      "pest_kind": "disease_oomycete",
+      "scientific_name": "Peronospora destructor",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Oomycete, bukan jamur sejati — dan pembedaan itu menentukan bahan aktifnya. Metalaksil dan dimetomorf bekerja pada oomycete; banyak fungisida untuk jamur sejati tidak."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3203841",
+          "uri": "https://www.gbif.org/species/3203841",
+          "relation": "exact",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Peronospora destructor",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 18 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Peronospora destrutor",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Peronosprora destructor",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Busuk Daun",
+        "Penyakit Embun Bulu",
+        "Peronospora destrutor",
+        "Peronosprora destructor"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Chromista"
+      },
+      "symptoms": {
+        "id": "Bidang pucat kehijauan memanjang pada daun, tertutup lapisan berbulu halus keunguan atau kelabu yang paling jelas terlihat pagi hari saat daun masih berembun. Daun menguning, terkulai dari ujung, lalu mengering. Menyebar cepat pada musim hujan dan di petak yang lembap."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa pagi-pagi sebelum matahari naik, saat daun masih basah. Lapisan berbulu keunguan yang merata di permukaan daun hanya dibuat embun bulu; siang hari lapisan itu hilang dan yang tersisa cuma bidang pucat yang mudah dikira bercak biasa."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat bentuk kerusakannya. Embun bulu memberi BIDANG pucat memanjang yang tepinya kabur dan tanpa cincin; bercak ungu memberi bercak lonjong bercincin sepusat dengan tepi kuning yang tegas."
+          },
+          "rules_out": {
+            "id": "op:pst:00000015",
+            "label": "Bercak ungu"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000018",
+      "key": "busuk-leher-umbi",
+      "label": {
+        "id": "Busuk leher umbi"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Botrytis allii",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Kerugian penyimpanan, bukan kerugian lahan: gejalanya sering baru terlihat berminggu-minggu sesudah panen, pada umbi yang tampak sehat saat diangkat."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2583113",
+          "uri": "https://www.gbif.org/species/2583113",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Leotiomycetes; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Botrytis alii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Botrytis allii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Botrytis alii",
+        "Botrytis allii",
+        "Penyakit Busuk Leher"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Leher umbi melunak dan basah menjelang atau sesudah panen, lalu di antara sisiknya tumbuh lapisan kelabu berdebu. Umbi yang dibelah terlihat berair kecoklatan dari leher ke bawah, dan di antara sisik kadang muncul butiran hitam kecil sekeras pasir."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah umbi yang lunak membujur dari leher ke dasar. Busuk leher berjalan dari LEHER turun ke bawah. Moler kebalikannya: busuknya mulai dari dasar umbi, tempat akar keluar."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
+          }
+        },
+        {
+          "check": {
+            "id": "Tekan dan cium. Busuk leher berbau apak seperti jamur dan jaringannya lunak berair tanpa lendir; busuk karena bakteri berbau menyengat dan mengeluarkan lendir saat ditekan."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000019",
+      "key": "virus-mosaik-bawang",
+      "label": {
+        "id": "Virus mosaik bawang"
+      },
+      "pest_kind": "disease_viral",
+      "scientific_name": "Onion yellow dwarf virus",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        }
+      ],
+      "definition": {
+        "id": "Ditularkan kutu daun dan terbawa umbi bibit; tidak ada pengendalian kuratif. Umbi dari tanaman yang terkena meneruskan virusnya ke musim berikutnya, dan itulah kenapa petak berbibit turunan sendiri makin parah tiap musim."
+      },
+      "no_mapping_reason": "Belum dipetakan ke EPPO maupun GBIF. Kode kandidat tidak diperiksa ke sumbernya dalam sesi ini, dan kode yang tidak diperiksa lebih buruk daripada tidak ada kode. Tidak punya kembaran registri karena tidak satu pun produk terdaftar menyasarnya — sasaran yang tidak pernah muncul di label tidak pernah jadi entitas registri.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "symptoms": {
+        "id": "Garis-garis kuning memanjang searah daun, mulai dari pangkal daun muda. Daun jadi pipih, berkelok, dan terkulai; tanaman kerdil dan umbinya kecil. Gejalanya sudah ada sejak awal pertumbuhan, bukan muncul di tengah musim."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa daun yang bergaris kuning itu sendiri. Tidak ada lorong, lubang, bercak bercincin, bidang keperakan, atau lapisan berbulu di atasnya — yang berubah hanya warna dan bentuknya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000013",
+            "label": "Trips bawang"
+          }
+        },
+        {
+          "check": {
+            "id": "Ingat asal umbi bibitnya. Gejala yang merata sejak awal pertumbuhan pada petak berbibit turunan sendiri menguatkan dugaan virus. Mengendalikan kutu daunnya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergaris."
+          },
+          "rules_out": {
+            "id": "op:pst:00000002",
+            "label": "Kutu daun persik"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT bawang merah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      },
+      "vector": {
+        "id": "op:pst:00000002",
+        "label": "Kutu daun persik"
       }
     }
   ]

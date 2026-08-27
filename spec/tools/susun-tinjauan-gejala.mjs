@@ -3,7 +3,7 @@
 //   node spec/tools/susun-tinjauan-gejala.mjs [--tulis docs/14-tinjauan-gejala.md]
 //
 // KENAPA ALAT INI ADA, DAN KENAPA IA ALAT
-// Sepuluh teks gejala jalur 1 berstatus draft dan mengatakannya sendiri di layar. Yang
+// Teks gejala jalur 1 berstatus draft dan mengatakannya sendiri di layar. Yang
 // menahannya naik bukan datanya, melainkan tidak adanya orang yang mau menempelkan
 // namanya. Meminta orang itu menelusuri repositori untuk membaca yang perlu ditinjau
 // adalah cara paling pasti membuat ia tidak jadi meninjau.
@@ -38,10 +38,27 @@ const penanda = (p) => {
 };
 const bertanda = opt.filter((p) => penanda(p).length);
 
+// Dikelompokkan menurut INANG, bukan menurut nomor id. Sejak bawang merah masuk,
+// peninjau untuk cabai dan peninjau untuk bawang merah bukan orang yang sama, dan
+// daftar yang menyelang-nyeling keduanya memaksa masing-masing membaca separuh yang
+// bukan urusannya. Dua entri berinang dua — layu fusarium dan kutu daun persik —
+// sengaja muncul di kedua kelompok: teksnya memang harus benar untuk keduanya.
+const rumpun = [];
+for (const p of opt) {
+  for (const h of p.hosts?.length ? p.hosts : [{ id: '-', label: 'Tanpa inang tercatat' }]) {
+    let r = rumpun.find((x) => x.id === h.id);
+    if (!r) rumpun.push((r = { id: h.id, label: h.label, anggota: [] }));
+    r.anggota.push(p);
+  }
+}
+rumpun.sort((a, b) => b.anggota.length - a.anggota.length || a.label.localeCompare(b.label));
+const rangkap = opt.filter((p) => (p.hosts ?? []).length > 1);
+const sebutInang = rumpun.map((r) => r.label).join(' dan ');
+
 const B = [];
 const P = (...x) => B.push(x.join(''));
 
-P('# Daftar Tinjauan — Sepuluh Teks Gejala OPT Cabai');
+P(`# Daftar Tinjauan — ${opt.length} Teks Gejala OPT ${sebutInang}`);
 P('');
 P('> Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`');
 P('> oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah');
@@ -53,7 +70,7 @@ P('---');
 P('');
 P('## 1. Apa yang diminta, dan apa yang tidak');
 P('');
-P('Kesepuluh teks di bawah tampil di layar yang dibuka petani ketika tanamannya');
+P(`Seluruh ${opt.length} teks di bawah tampil di layar yang dibuka petani ketika tanamannya`);
 P('bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok');
 P('“pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri');
 P('menyebut OPT mana yang **terbantah** kalau hasilnya begitu.');
@@ -68,7 +85,7 @@ P('   masih mungkin.');
 P('');
 P('Yang **tidak** diminta:');
 P('');
-P('- Bukan menambah OPT baru. Sepuluh ini dipilih karena paling sering dicari; kekurangan');
+P(`- Bukan menambah OPT baru. Yang ${opt.length} ini dipilih karena paling sering dicari; kekurangan`);
 P('  cakupan sudah diketahui dan bukan yang ditinjau di sini.');
 P('- Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi');
 P('  dan tidak melewati penilaian peninjau.');
@@ -92,12 +109,21 @@ P('  hasil yang sah dan lebih berharga daripada persetujuan setengah hati.');
 P('');
 P('---');
 P('');
-P(`## 3. Kesepuluh entri`);
+P(`## 3. Seluruh ${opt.length} entri`);
 P('');
+if (rangkap.length) {
+  P(`${rangkap.length} entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:`);
+  P(`${rangkap.map((p) => `**${p.label?.id}**`).join(', ')}. Teksnya menyebut tiap tanaman secara terpisah,`);
+  P('dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman Anda.');
+  P('');
+}
 
-for (const [n, p] of opt.entries()) {
+for (const r of rumpun) {
+P(`### ${r.label} — ${r.anggota.length} entri`);
+P('');
+for (const [n, p] of r.anggota.entries()) {
   const cir = p.distinguishing ?? [];
-  P(`### ${n + 1}. ${p.label?.id} — *${p.scientific_name ?? '—'}*`);
+  P(`#### ${n + 1}. ${p.label?.id} — *${p.scientific_name ?? '—'}*`);
   P('');
   P(`\`${p.id}\` · ${p.pest_kind}${p.taxon_verification ? ` · taksonomi terverifikasi ${p.taxon_verification.source} (${p.taxon_verification.match_type}, ${p.taxon_verification.confidence}%)` : ''}`);
   P('');
@@ -127,6 +153,7 @@ for (const [n, p] of opt.entries()) {
   P('| Yang disebut terbantah memang terbantah? | |');
   P('| Kalau ada yang salah — apa yang seharusnya? | |');
   P('');
+}
 }
 
 P('---');

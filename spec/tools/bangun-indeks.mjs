@@ -1094,8 +1094,8 @@ for (const r of sediaanCari) {
 // ---------------------------------------------------------------------------
 // OPT registri yang bisa dicari menurut NAMA — C3, sisi yang tidak menuntut agronomi
 // ---------------------------------------------------------------------------
-// 749 OPT registri punya produk terdaftar; sepuluh di antaranya punya teks gejala. Yang
-// 739 sisanya sampai hari ini TIDAK BISA DICAPAI SAMA SEKALI dari kotak beranda — nol
+// 749 OPT registri punya produk terdaftar; sembilan belas di antaranya punya teks gejala.
+// Yang sisanya sampai hari ini TIDAK BISA DICAPAI SAMA SEKALI dari kotak beranda — nol
 // entri OPT di kepala pencarian — walau bahan aktif yang terdaftar untuknya sudah ada
 // di indeks. Yang tahu nama hamanya dijawab nol, dan itu bukan kekurangan data melainkan
 // pintu yang belum dibuka.
@@ -1481,6 +1481,10 @@ const gejala = optTerkurasi
         cek: d.check?.id ?? null,
         membantah: d.rules_out ?? null,
       })),
+      // Penular dibawa dari entitasnya, bukan ditebak dari `pembanding`: layar nol-produk
+      // dulu mencocokkan /kutu kebul/i pada label yang dibantah, dan itu benar hanya
+      // selama satu-satunya virus yang dikurasi virus cabai.
+      penular: k.vector ?? null,
       catatan: k.notes?.id ?? null,
       // Dinyatakan, bukan disembunyikan: tanpa teks gejala OPT ini tidak punya pintu
       // masuk sama sekali, sebanyak apa pun produk terdaftarnya.
@@ -1495,8 +1499,8 @@ const gejala = optTerkurasi
 // ---------------------------------------------------------------------------
 // Gejala tidak bisa diember menurut dua huruf pertama seperti nama: yang mengetik
 // "daun mengeriting ke atas" tidak sedang mengetik awalan sebuah nama, ia sedang
-// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — sepuluh OPT,
-// sekitar 5 KB — lalu dicocokkan kata per kata di peramban.
+// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — sembilan belas
+// OPT, sekitar 10 KB — lalu dicocokkan kata per kata di peramban.
 //
 // Yang ikut hanya nama, nama ilmiah, dan teks gejalanya. Ciri pembanding TIDAK ikut:
 // begitu satu gejala dibuka, jalur 1 yang merendernya, dan di sanalah blok "pastikan
@@ -2243,7 +2247,7 @@ const meta = {
   },
   tidakAda: {
     gejalaOpt:
-      'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 10 OPT cabai terkurasi di pest.json, 5 di antaranya bertekst gejala (lihat gejala.json). Di luar sepuluh itu jalur 1 tidak punya pintu masuk.',
+      'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 19 OPT terkurasi di pest.json — 10 untuk cabai, 11 untuk bawang merah, dua dipakai bersama — dan seluruhnya bertekst gejala (lihat gejala.json). Di luar yang sembilan belas itu jalur 1 tidak punya pintu masuk.',
     phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. Jalur 3 mengandalkan satu masukan pengguna.',
     bahanHara:
@@ -2281,7 +2285,7 @@ const meta = {
     bppTanpaAlamat:
       'Balai penyuluhan tidak punya alamat maupun koordinat di rekaman ini, dan itu batas sumbernya: laporan tamu SIMLUHTAN hanya memberi nama balai dan kecamatan binaannya. Yang menemukan balainya bukan peta melainkan kecamatan — dan bagi yang tinggal di sana itu memang cukup. Menggeokode 5.844 balai secara massal ditolak dengan sadar, karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.',
     gejalaOptRegistri:
-      'Nol dari 738 OPT registri berproduk memuat teks gejala. Sepuluh OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 738 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
+      'Nol dari 730 OPT registri berproduk memuat teks gejala. Sembilan belas OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 730 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
     hasilVarietas:
       'Registri tidak memuat potensi hasil satu pun varietas — nol dari 11.227. Perkiraan panen pada analisis usaha tani karena itu masukan pemakainya sendiri, dan tidak ada angka acuan yang bisa disodorkan menggantikannya.',
     arusKasMusim:

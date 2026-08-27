@@ -721,6 +721,49 @@ sama: kode berawalan huruf yang mengumumkan bukan-BBCH, `no_mapping_reason` yang
 alasannya, batas antara yang bersumber dan yang tidak ditarik di dalam `notes`, dan
 `review_due` enam bulan karena yang ditunggu pengamatan lapangan, bukan terbitan baru.
 
+### D38 — komoditas kedua masuk dengan MENAIKKAN entitas registri, bukan menyalinnya
+
+Bawang merah menyusul cabai sebagai komoditas berpintu gejala pada 28 Agustus 2026.
+Delapan dari sebelas OPT-nya sudah punya entitas di `vocab/pest-registri.json`, dan tiga
+jalan terbuka: menulis `symptoms` di berkas registri, membuat entitas kembar di
+`vocab/pest.json`, atau menaikkan entitasnya.
+
+Dipilih **menaikkan**, karena dua yang lain melanggar hal yang berbeda. Menulis gejala di
+berkas registri melanggar **provenans**: berkas itu menyatakan dirinya turunan label
+produk terdaftar, sedangkan teks gejala ditulis tangan dan tingkat buktinya belum
+ditetapkan — satu blok `provenance` tidak bisa menaungi keduanya tanpa membuat layar
+kehilangan cara membedakan yang ditarik dari yang dikarang. Entitas kembar melanggar
+**identitas**: dua entitas hidup dengan `scientific_name` yang sama meruntuhkan andaian
+`satukan-opt-kembar.mjs` dan membuat L26 menyalak pada tautan yang justru benar.
+
+Menaikkan berarti entri registri disalin ke blok terkurasi dengan nomor baru, yang lama
+jadi `superseded` menunjuk yang baru, dan `pest.id` pada 733 baris `label_uses` ditulis
+ulang — pola yang sudah dipakai 17 kali untuk salah ketik, kini dipakai pertama kali untuk
+entitas yang ejaannya benar.
+
+Harganya tiga, dan ketiganya dibayar di muka:
+
+- **Kunci dan label lama tidak bisa dipakai ulang.** Entri yang digantikan tetap
+  memegangnya dan L1 menghitungnya, jadi entri baru memakai nama kebun — `ulat-bawang`,
+  bukan `spodoptera-exigua`. Label registri turun jadi `synonyms`.
+- **`petaLabel` pada `bangun-sasaran-dosis.mjs` harus melewati yang digantikan.** Sebelum
+  ini tidak pernah terlihat, karena yang digantikan hanyalah salah ketik yang ejaannya toh
+  sudah naik ke penerusnya. Sesudah ini, delapan entitas berejaan BENAR jadi superseded,
+  dan tanpa saringan itu tarikan registri berikutnya akan menautkan "Spodoptera exigua"
+  kembali ke entitas mati.
+- **Sebaran komoditas ikut jadi syarat kelayakan.** Satu entitas OPT memegang SATU teks
+  gejala, jadi patogen polifag tidak boleh dinaikkan dengan teks satu tanaman.
+  *Colletotrichum gloeosporioides* karena itu gugur — 44 dari 49 barisnya di mangga, cabai,
+  jeruk, dan karet — dan antraknosa bawang naik lewat *C. circinans*, yang hanya terdaftar
+  pada bawang merah. Harga pilihan itu dinyatakan di `definition` entrinya, tidak
+  disembunyikan.
+
+Satu medan baru lahir dari sini: **`vector`**. Layar nol-produk dulu menemukan penular
+dengan mencocokkan `/kutu kebul/i` pada label yang **dibantah** — benar selama satu-satunya
+virus yang dikurasi virus cabai, dan diam-diam gagal begitu virus kedua masuk dengan
+penular yang lain. `rules_out` menyatakan apa yang terbantah, bukan apa yang menularkan;
+keduanya kebetulan bertemu satu kali. Sekarang penular dinyatakan pada entitasnya.
+
 ---
 
 ## Pertanyaan yang masih terbuka
