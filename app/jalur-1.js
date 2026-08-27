@@ -72,7 +72,7 @@ function gambarGejala() {
 
 /* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
  *
- * 730 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * 722 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
  * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
  *
  * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
@@ -93,7 +93,7 @@ async function bukaHama(kunci, opsi = {}) {
         <p>
           <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
           registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
-          deskripsi gejalanya</strong> — nol dari 730 OPT berproduk memuatnya.
+          deskripsi gejalanya</strong> — nol dari 722 OPT berproduk memuatnya.
         </p>
         <p class="catatan">
           Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
@@ -101,8 +101,8 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — sembilan belas OPT
-          cabai dan bawang merah punya ciri pembandingnya.
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — dua puluh delapan OPT
+          cabai, bawang merah, tomat, dan kentang punya ciri pembandingnya.
         </p>
       </div>
       <h2 class="judul-bagian">Di tanaman apa?</h2>
@@ -601,6 +601,14 @@ async function bukaOpt(id, opsi = {}) {
   el.hasil.focus();
   try {
     if (!larangan) larangan = await ambil('larangan');
+    // Rincian pintu — ciri pembanding, keterangan, catatan, penular — hidup di pecahannya
+    // sendiri sejak indeks gejala melewati anggaran 48 KB. Diambil saat pintu dibuka,
+    // sekali per pintu: `ambil` mengingat janjinya, dan hasilnya dilebur ke entri daftar
+    // supaya sisa berkas ini tidak perlu tahu bahwa datanya datang dari dua tempat.
+    if (!k.rinci) {
+      Object.assign(k, await ambil(`gejala/${k.id.replace(/[^a-z0-9]/gi, '')}`));
+      k.rinci = true;
+    }
     el.hasil.innerHTML = blokPastikan(k) + blokLapor(k) +
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';

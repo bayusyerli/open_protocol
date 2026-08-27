@@ -28,7 +28,7 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v21';
+const VERSI = 'v22';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 
@@ -67,6 +67,14 @@ const INDEKS_AKAR = [
 const SEDIAAN_LUARAN = (m, cap) =>
   (m.pecahan?.sediaan ?? []).map((k) => `${INDEKS}sediaan/${k}.json?v=${cap}`);
 
+/* Rincian tiap pintu gejala — ciri pembanding, keterangan, catatan, penular. 29 KB untuk
+ * 28 pintu, dipisahkan dari gejala.json supaya layar DAFTAR tidak menunggu semuanya.
+ * Ikut diprasimpan karena jalur 1 dibuka justru saat masalahnya sedang terjadi, dan blok
+ * "pastikan dulu" tanpa isinya adalah dugaan tanpa cara memastikan — persis yang ditolak
+ * seluruh jalur itu. */
+const GEJALA_LUARAN = (m, cap) =>
+  (m.pecahan?.gejala ?? []).map((k) => `${INDEKS}gejala/${k}.json?v=${cap}`);
+
 const dalamJangkauan = (u) => u.pathname.startsWith(APP) || u.pathname.startsWith(INDEKS);
 const adalahMeta = (u) => u.pathname === `${INDEKS}meta.json`;
 
@@ -100,6 +108,7 @@ self.addEventListener('install', (e) => {
       await simpanDiam(namaPecahan(cap), [
         ...INDEKS_AKAR.map((u) => `${u}?v=${cap}`),
         ...SEDIAAN_LUARAN(m, cap),
+        ...GEJALA_LUARAN(m, cap),
       ]);
     } catch { /* tanpa jaringan saat pasang: cangkangnya saja, dan itu tetap berguna */ }
 

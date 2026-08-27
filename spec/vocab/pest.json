@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama cabai dan bawang merah"
+      "id": "OPT utama bawang merah, cabai merah besar, kentang dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada dua komoditas: sepuluh untuk cabai dan sepuluh untuk bawang merah, dua di antaranya (layu fusarium dan kutu daun persik) dipakai bersama. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 4 komoditas: Bawang merah, Cabai merah besar, Kentang, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -204,10 +204,18 @@
         {
           "id": "op:cmd:00000004",
           "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
         }
       ],
       "definition": {
-        "id": "Vektor beberapa virus penting pada cabai."
+        "id": "Vektor beberapa virus penting, termasuk virus penggulung daun pada kentang. Mengendalikannya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergejala."
       },
       "mappings": [
         {
@@ -271,7 +279,7 @@
         "kingdom": "Animalia"
       },
       "symptoms": {
-        "id": "Pada cabai daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada keduanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman."
+        "id": "Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman."
       },
       "distinguishing": [
         {
@@ -309,6 +317,14 @@
         {
           "id": "op:cmd:00000001",
           "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
         }
       ],
       "definition": {
@@ -351,7 +367,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Bemicia tabaci",
@@ -544,6 +560,14 @@
         {
           "id": "op:cmd:00000001",
           "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
         }
       ],
       "mappings": [
@@ -667,7 +691,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Perusak Daun",
@@ -938,6 +962,10 @@
         {
           "id": "op:cmd:00000004",
           "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
         }
       ],
       "mappings": [
@@ -983,12 +1011,12 @@
         "kingdom": "Fungi"
       },
       "symptoms": {
-        "id": "Pada cabai tanaman layu perlahan selama beberapa hari; daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap. Pada bawang merah daun menguning dari ujung lalu MELENGKUNG dan terpelintir — dari situ nama moler — dan tanaman mudah tercabut karena dasar umbinya sudah membusuk."
+        "id": "Pada cabai dan tomat tanaman layu perlahan selama beberapa hari; daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap. Pada bawang merah daun menguning dari ujung lalu MELENGKUNG dan terpelintir — dari situ nama moler — dan tanaman mudah tercabut karena dasar umbinya sudah membusuk."
       },
       "distinguishing": [
         {
           "check": {
-            "id": "Belah pangkal batang atau umbi membujur. Pada cabai pembuluh di dalamnya coklat memanjang sementara jaringan lain masih putih. Pada bawang merah dasar umbi tempat akar keluar membusuk kecoklatan, sering berselaput putih seperti kapas."
+            "id": "Belah pangkal batang atau umbi membujur. Pada cabai dan tomat pembuluh di dalamnya coklat memanjang sementara jaringan lain masih putih. Pada bawang merah dasar umbi tempat akar keluar membusuk kecoklatan, sering berselaput putih seperti kapas."
           }
         },
         {
@@ -1017,6 +1045,14 @@
         {
           "id": "op:cmd:00000001",
           "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
         }
       ],
       "mappings": [
@@ -1044,7 +1080,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Layu Bakteri"
@@ -1058,12 +1094,12 @@
         "kingdom": "Bacteria"
       },
       "symptoms": {
-        "id": "Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah."
+        "id": "Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah. Pada kentang umbinya ikut terkena: cincin pembuluh di dalam umbi kecoklatan, dan dari mata tunas keluar lendir putih yang mengering jadi kerak bertanah."
       },
       "distinguishing": [
         {
           "check": {
-            "id": "UJI GELAS. Potong batang dekat pangkal, celupkan ujungnya ke gelas berisi air bening, diamkan lima menit. Untaian lendir putih susu yang turun perlahan dari potongan berarti layu bakteri."
+            "id": "UJI GELAS. Potong batang dekat pangkal — pada kentang boleh juga umbinya — lalu celupkan ujungnya ke gelas berisi air bening dan diamkan lima menit. Untaian lendir putih susu yang turun perlahan dari potongan berarti layu bakteri."
           },
           "rules_out": {
             "id": "op:pst:00000008",
@@ -1096,10 +1132,14 @@
         {
           "id": "op:cmd:00000001",
           "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
         }
       ],
       "definition": {
-        "id": "Ditularkan kutu kebul; tidak ada pengendalian kuratif, hanya pencegahan."
+        "id": "Ditularkan kutu kebul; tidak ada pengendalian kuratif, hanya pencegahan. Menyerang cabai dan tomat."
       },
       "mappings": [
         {
@@ -1252,7 +1292,7 @@
           },
           "rules_out": {
             "id": "op:pst:00000012",
-            "label": "Pengorok daun"
+            "label": "Pengorok daun bawang"
           }
         },
         {
@@ -1273,7 +1313,7 @@
       "id": "op:pst:00000012",
       "key": "pengorok-daun-bawang",
       "label": {
-        "id": "Pengorok daun"
+        "id": "Pengorok daun bawang"
       },
       "pest_kind": "insect",
       "scientific_name": "Liriomyza chinensis",
@@ -1284,7 +1324,7 @@
         }
       ],
       "definition": {
-        "id": "Lalat pengorok daun bawang. Registri juga mendaftarkan Liriomyza huidobrensis dan Liriomyza sp. sebagai sasaran pada bawang merah — 32 baris penggunaan lagi. Keduanya tidak bisa dibedakan dari lorongnya di kebun, dan produk yang terdaftar atas nama itu TIDAK ikut terdaftar di bawah pintu ini."
+        "id": "Lalat pengorok daun bawang. Registri juga mendaftarkan Liriomyza huidobrensis pada bawang merah (24 baris) — spesies yang tidak bisa dibedakan dari lorongnya di kebun, dan yang sejak kurasi tomat & kentang punya pintunya sendiri, \"Pengorok daun kentang\", karena teksnya ditulis untuk daun lebar. Yang tetap di luar kedua pintu hanya 8 baris atas nama Liriomyza sp."
       },
       "mappings": [
         {
@@ -1310,7 +1350,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Penggorok Daun",
@@ -1430,7 +1471,7 @@
           },
           "rules_out": {
             "id": "op:pst:00000012",
-            "label": "Pengorok daun"
+            "label": "Pengorok daun bawang"
           }
         },
         {
@@ -1459,6 +1500,10 @@
         {
           "id": "op:cmd:00000004",
           "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
         }
       ],
       "definition": {
@@ -1495,7 +1540,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Agrotis epsilon",
@@ -1948,6 +1994,875 @@
       "vector": {
         "id": "op:pst:00000002",
         "label": "Kutu daun persik"
+      }
+    },
+    {
+      "id": "op:pst:00000020",
+      "key": "hawar-daun-solanaceae",
+      "label": {
+        "id": "Hawar daun"
+      },
+      "pest_kind": "disease_oomycete",
+      "scientific_name": "Phytophthora infestans",
+      "hosts": [
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        }
+      ],
+      "definition": {
+        "id": "Oomycete, bukan jamur sejati — dan pembedaan itu menentukan bahan aktifnya: metalaksil, dimetomorf, dan simoksanil bekerja padanya, banyak fungisida untuk jamur sejati tidak. Pasangan OPT–komoditas dengan pendaftaran terbanyak KEDUA di seluruh registri: 376 baris pada kentang, sesudah wereng coklat pada padi."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3203589",
+          "uri": "https://www.gbif.org/species/3203589",
+          "relation": "broad",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Phytophthora'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "3203716",
+          "uri": "https://www.gbif.org/species/3203716",
+          "relation": "exact",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phitophthora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythophthora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythophtora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythopthora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora infenstans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora infestan",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 416 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora infestns",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora insestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora insfestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthrora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophtora infenstans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophtora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytopthora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 28 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Busuk Daun",
+        "Hama Trips",
+        "Hawar Daun",
+        "Penyakit Busuk Buah",
+        "Penyakit Busuk Daun",
+        "Penyakit Hawar Daun",
+        "Phitophthora infestans",
+        "Phythophthora infestans",
+        "Phythophtora infestans",
+        "Phythopthora infestans",
+        "Phytophthora infenstans",
+        "Phytophthora infestan",
+        "Phytophthora infestns",
+        "Phytophthora insestans",
+        "Phytophthora insfestans",
+        "Phytophthrora infestans",
+        "Phytophtora infenstans",
+        "Phytophtora infestans",
+        "Phytopthora infestans"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Chromista"
+      },
+      "symptoms": {
+        "id": "Bercak basah kelabu kehijauan pada daun, mulai dari ujung atau tepi, membesar cepat jadi coklat kehitaman. Batang ikut membusuk kecoklatan. Saat cuaca dingin berkabut satu petak bisa habis dalam dua sampai tiga hari — kecepatan itu sendiri gejalanya."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa pagi-pagi saat daun masih basah embun. Cari selaput putih halus tepat di BATAS antara bagian yang sudah mati dan yang masih hijau, di permukaan bawah daun. Bercak kering tidak pernah berselaput putih seperti itu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000021",
+            "label": "Bercak kering"
+          }
+        },
+        {
+          "check": {
+            "id": "Belah umbi (kentang) atau buah (tomat) yang berbercak. Hawar daun memberi busuk coklat kemerahan yang KERAS dan berbatas tidak rata dari kulit ke dalam, tanpa lendir. Layu bakteri memberi cincin pembuluh kecoklatan yang mengeluarkan lendir putih saat ditekan."
+          },
+          "rules_out": {
+            "id": "op:pst:00000009",
+            "label": "Layu bakteri"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000021",
+      "key": "bercak-kering",
+      "label": {
+        "id": "Bercak kering"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Alternaria solani",
+      "hosts": [
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang daun TUA lebih dulu, jadi tanaman yang kekurangan hara dan yang sudah berbuah lebat paling cepat terkena. Berjalan lambat — berbeda dari hawar daun, ia jarang menghabiskan petak dalam hitungan hari."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Alternaria solani",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 71 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2616205",
+          "uri": "https://www.gbif.org/species/2616205",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 97)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Bercak Cokelat",
+        "Penyakit Bercak Coklat",
+        "Penyakit Bercak Daun",
+        "Penyakit Bercak Daun Kering",
+        "Penyakit Bercak Kering",
+        "Penyakit Busuk Kering"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak coklat kehitaman pada daun TUA di bawah lebih dulu, bundar atau bersudut, dengan cincin sepusat di dalamnya seperti sasaran panah dan sering dikelilingi halo kuning. Daun bawah menguning lalu rontok dari bawah ke atas; batang dan buah dekat tangkai bisa ikut berbercak cekung berwarna gelap."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tatap ke dalam bercaknya kena cahaya miring, lalu raba. Bercak kering bercincin sepusat, tepinya tegas, dan terasa KERING. Hawar daun berair, tepinya kabur, dan meluas jauh lebih cepat."
+          },
+          "rules_out": {
+            "id": "op:pst:00000020",
+            "label": "Hawar daun"
+          }
+        },
+        {
+          "check": {
+            "id": "Ukur bercaknya. Bercak kering seukuran kuku atau lebih dan bercincin; bercak septoria kecil-kecil rapat seukuran kepala jarum, tengahnya kelabu keputihan dengan titik hitam halus di dalamnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000027",
+            "label": "Bercak daun septoria"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000022",
+      "key": "pengorok-daun-kentang",
+      "label": {
+        "id": "Pengorok daun kentang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Liriomyza huidobrensis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        }
+      ],
+      "definition": {
+        "id": "Lalat pengorok daun berdaun lebar. Registri juga mendaftarkannya pada bawang merah (24 baris), mentimun, krisan, cabai, dan seledri. Teks di bawah ditulis untuk daun LEBAR; pada bawang merah lorongnya berjalan di dalam daun yang berongga dan pintunya berdiri sendiri, atas nama Liriomyza chinensis."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1553283",
+          "uri": "https://www.gbif.org/species/1553283",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Liriomyza'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1553410",
+          "uri": "https://www.gbif.org/species/1553410",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Liriomyza haidobrensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Liriomyza hudobrensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Liriomyza huidobrensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 85 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Liriomyza huidobrensism",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lyriomyza huidobrensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Pengorok Daun",
+        "Lalat Penggorok Daun",
+        "Liriomyza haidobrensis",
+        "Liriomyza hudobrensis",
+        "Liriomyza huidobrensism",
+        "Lyriomyza huidobrensis",
+        "Penggorok Daun",
+        "Pengorok Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Lorong berkelok putih keperakan DI DALAM lapisan daun, melebar makin ke ujung, paling jelas bila daun diterawang ke cahaya. Permukaan daun bertitik putih bekas tusukan yang berjajar. Daun yang penuh lorong mengering dan rontok mulai dari bawah, sementara umbi atau buahnya belum tua."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Terawang daun ke cahaya dan ikuti lorongnya sampai bagian paling lebar. Di situ ada larva kuning bening tanpa kaki sebesar biji wijen. Bercak penyakit tidak punya lorong dan tidak punya larva."
+          },
+          "rules_out": {
+            "id": "op:pst:00000021",
+            "label": "Bercak kering"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah daunnya benar-benar berlubang. Lorong pengorok berada di ANTARA dua lapisan daun, jadi permukaan atas dan bawah tetap utuh. Kalau daunnya berlubang tembus atau tepinya tergigit, itu ulat."
+          },
+          "rules_out": {
+            "id": "op:pst:00000005",
+            "label": "Ulat grayak"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000023",
+      "key": "penggerek-buah",
+      "label": {
+        "id": "Penggerek buah"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Helicoverpa armigera",
+      "hosts": [
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Polifag: terdaftar juga pada jagung (19 baris), tembakau, semangka, dan melon, dan cara merusaknya sama di semuanya — karena itu teks di bawah sengaja tidak menyebut satu tanaman pun. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "8108800",
+          "uri": "https://www.gbif.org/species/8108800",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8109351",
+          "uri": "https://www.gbif.org/species/8109351",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Helicoverpa'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Heclicoverpa armigera",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helicoverpa amigera",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helicoverpa armigera",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 129 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Ulat Buah",
+        "Heclicoverpa armigera",
+        "Helicoverpa amigera",
+        "Penggerek Buah",
+        "Penggerek Pucuk",
+        "Penggerek Tongkol",
+        "Ulat Buah",
+        "Ulat Penggerek Buah"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah atau tongkol berlubang bundar bersih di dekat tangkainya, dan dari lubang itu menyembul kotoran berbutir basah. Di dalam satu buah biasanya hanya ADA SATU ulat, karena yang lebih besar memakan yang lain. Buah yang terlanjur berlubang membusuk dan gugur."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah buah yang berlubang. Penggerek buah meninggalkan SATU ulat gemuk bergaris memanjang beserta rongga besar dan kotoran. Lalat buah meninggalkan belatung putih tanpa kaki yang melenting, beberapa sekaligus, dan tidak ada lubang masuk yang bundar."
+          },
+          "rules_out": {
+            "id": "op:pst:00000004",
+            "label": "Lalat buah"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat lubangnya dari luar. Penggerek buah masuk lewat lubang bundar seukuran ujung pensil dengan kotoran menyembul. Antraknosa tidak berlubang — ia memberi bercak melingkar cekung dengan titik hitam di tengahnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000007",
+            "label": "Antraknosa"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000024",
+      "key": "trips-kentang",
+      "label": {
+        "id": "Trips kentang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Thrips palmi",
+      "hosts": [
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        }
+      ],
+      "definition": {
+        "id": "Trips ketiga yang dikurasi, dan ketiganya TIDAK BISA dibedakan satu sama lain di kebun — pemisahannya menuntut preparat dan mikroskop. Yang membedakan pintunya karena itu TANAMANNYA, bukan spesiesnya: Thrips parvispinus untuk cabai, Thrips tabaci untuk bawang merah, dan yang ini untuk kentang dan tomat. Registri juga mendaftarkannya pada semangka, melon, dan kacang panjang."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thrips palmi",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 45 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1420906",
+          "uri": "https://www.gbif.org/species/1420906",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Thrips",
+        "Hama Trip",
+        "Hama Trips"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun muda keperakan mengkilap lalu menebal dan mengeras, tepinya melengkung ke atas, dan permukaannya bertitik kotoran hitam sangat halus. Pucuk berhenti memanjang dan tanaman kerdil; pada serangan berat daun berubah kecoklatan seperti terbakar lalu rontok."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Kibaskan pucuk di atas kertas putih. Trips terlihat sebagai serangga kuning kecoklatan sepanjang 1–2 mm yang langsung berlari. Kalau tidak ada yang bergerak dan daunnya tetap menggulung kaku, curigai virus — dan virus tidak bisa disembuhkan semprotan apa pun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000028",
+            "label": "Virus penggulung daun kentang"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa permukaan daunnya. Trips meninggalkan bidang keperakan tanpa lorong. Kalau ada lorong berkelok DI DALAM daun, itu pengorok daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000022",
+            "label": "Pengorok daun kentang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000025",
+      "key": "penggerek-umbi-kentang",
+      "label": {
+        "id": "Penggerek umbi kentang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Phthorimaea operculella",
+      "hosts": [
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang di lahan lewat umbi yang tersembul dari tanah, dan berlanjut di gudang — di gudanglah kerugiannya paling besar, karena satu umbi terserang menulari tumpukan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1852118",
+          "uri": "https://www.gbif.org/species/1852118",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phthorimaea operculela",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phthorimaea operculella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 14 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Penggerek Umbi",
+        "Penggerek Daun",
+        "Penggerek Kentang",
+        "Penggerek Umbi",
+        "Perusak Daun Dan Umbi",
+        "Phthorimaea operculela",
+        "Ulat Umbi"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Pada daun, lorong lebar tembus pandang di dekat tulang daun, dan pucuk yang layu terkulai karena digerek dari dalam. Pada umbi, lubang kecil di permukaan dengan butiran kotoran menempel di mulutnya; umbi yang dibelah penuh lorong berkelok berisi kotoran, dan daging di sekitarnya menghitam."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah umbi yang berlubang. Penggerek umbi meninggalkan lorong berisi kotoran beserta ulat kecil merah jambu atau kehijauan sepanjang kurang dari satu sentimeter. Busuk karena penyakit tidak berlorong dan tidak berkotoran."
+          },
+          "rules_out": {
+            "id": "op:pst:00000020",
+            "label": "Hawar daun"
+          }
+        },
+        {
+          "check": {
+            "id": "Bandingkan lorongnya di daun. Penggerek umbi membuat lorong LEBAR yang menembus dekat tulang daun dan sering berujung pada pucuk yang layu. Lorong pengorok daun tipis, berkelok panjang, dan tidak pernah membuat pucuk layu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000022",
+            "label": "Pengorok daun kentang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000026",
+      "key": "nematoda-sista-kuning",
+      "label": {
+        "id": "Nematoda sista kuning"
+      },
+      "pest_kind": "nematode",
+      "scientific_name": "Globodera rostochiensis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        }
+      ],
+      "definition": {
+        "id": "Organisme pengganggu tumbuhan KARANTINA. Tidak bisa diberantas dari lahan yang sudah terinfestasi — sistanya bertahan bertahun-tahun di dalam tanah — sehingga yang menentukan justru asal umbi bibit dan lalu lintas tanah serta alat, bukan semprotan. Temuan baru wajib dilaporkan ke petugas karantina. Registri juga memuat Globodera sp. (2 baris lagi) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "5188667",
+          "uri": "https://www.gbif.org/species/5188667",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Chromadorea; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Globodera rostochiensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Globodera rostochinensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Globodera rostochinensis",
+        "Nematoda Sista Kuning"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Tanaman kerdil berkelompok pada bagian petak tertentu, daunnya menguning dari bawah dan layu di siang hari walau tanah lembap; umbinya kecil-kecil. Gejalanya MEMBENTUK LINGKARAN atau lajur yang melebar tiap kali kentang ditanam lagi di petak yang sama, bukan tersebar merata."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cabut tanaman kerdil beserta tanahnya hati-hati, lalu tatap akarnya kena cahaya. Butiran bulat sebesar butir pasir MENEMPEL pada akar — mula-mula putih, lalu kuning keemasan, lalu coklat. Kalau akarnya justru menggembung jadi bagian dari akar itu sendiri, itu nematoda puru akar, bukan sista kuning."
+          },
+          "rules_out": {
+            "id": "op:pst:00001223",
+            "label": "Nematoda Puru Akar"
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan sebaran dan riwayat petaknya. Sista kuning membentuk lingkaran yang MELEBAR di tempat yang sama tiap musim tanam kentang, dan paling parah di petak yang pernah dimasuki bibit atau alat dari luar. Layu karena penyakit tidak mengikuti pola lingkaran yang tetap begitu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000009",
+            "label": "Layu bakteri"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000027",
+      "key": "bercak-daun-septoria",
+      "label": {
+        "id": "Bercak daun septoria"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Septoria lycopersici",
+      "hosts": [
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        }
+      ],
+      "definition": {
+        "id": "Menular lewat percikan air dari tanah, jadi paling parah pada tanaman yang daun bawahnya menyentuh tanah dan pada musim hujan. Menyerang daun dan tangkai saja — buahnya tidak."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Septoria lycopersici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5264540",
+          "uri": "https://www.gbif.org/species/5264540",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Bercak Daun",
+        "Penyakit Busuk"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak kecil-kecil rapat pada daun TUA di bawah, bundar seukuran kepala jarum sampai sebesar biji sawi, tengahnya kelabu keputihan dengan tepi coklat gelap. Di dalam bagian kelabu itu ada titik-titik hitam sangat halus. Daun menguning lalu rontok dari bawah ke atas, sementara buahnya sendiri tetap mulus."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Ukur bercaknya dan lihat isinya. Bercak septoria kecil-kecil rapat dengan tengah KELABU bertitik hitam halus. Bercak kering jauh lebih besar, tengahnya coklat bercincin sepusat, dan tidak bertitik hitam."
+          },
+          "rules_out": {
+            "id": "op:pst:00000021",
+            "label": "Bercak kering"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa buahnya. Septoria menyerang daun dan tangkai saja, buahnya tetap mulus. Kalau buah ikut berbercak coklat keras berminyak, penyebabnya bukan septoria."
+          },
+          "rules_out": {
+            "id": "op:pst:00000020",
+            "label": "Hawar daun"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000028",
+      "key": "virus-penggulung-daun-kentang",
+      "label": {
+        "id": "Virus penggulung daun kentang"
+      },
+      "pest_kind": "disease_viral",
+      "scientific_name": "Potato leafroll virus",
+      "hosts": [
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        }
+      ],
+      "definition": {
+        "id": "Ditularkan kutu daun persik dan terbawa umbi bibit; tidak ada pengendalian kuratif. Umbi dari tanaman yang terkena meneruskan virusnya ke musim berikutnya, dan itulah sebab hasil menurun tiap kali bibit diturunkan sendiri — yang dijawab dengan kelas benih G0 sampai G4, bukan dengan semprotan."
+      },
+      "no_mapping_reason": "Belum dipetakan ke EPPO maupun GBIF. Kode kandidat tidak diperiksa ke sumbernya dalam sesi ini, dan kode yang tidak diperiksa lebih buruk daripada tidak ada kode. Tidak punya kembaran registri karena tidak satu pun produk terdaftar menyasarnya — sasaran yang tidak pernah muncul di label tidak pernah jadi entitas registri.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "vector": {
+        "id": "op:pst:00000002",
+        "label": "Kutu daun persik"
+      },
+      "symptoms": {
+        "id": "Daun TUA di bawah menggulung ke ATAS menutup seperti tabung, terasa kaku dan getas sehingga berderik bila diremas. Warnanya pucat kekuningan, kadang keunguan di tepi. Tanaman kerdil dan tegak kaku, umbinya kecil dan sedikit, dan petak berbibit turunan sendiri terkena lebih parah tiap musim."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Kibaskan pucuk di atas kertas putih dan periksa permukaan daunnya. Tidak ada serangga yang berlari, tidak ada bidang keperakan, tidak ada lorong — yang berubah hanya bentuk dan warna daunnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000024",
+            "label": "Trips kentang"
+          }
+        },
+        {
+          "check": {
+            "id": "Ingat asal umbi bibitnya dan lihat di mana gejalanya mulai. Virus ini mulai dari daun TUA di bawah dan paling parah pada petak berbibit turunan sendiri. Mengendalikan kutu daunnya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah menggulung."
+          },
+          "rules_out": {
+            "id": "op:pst:00000002",
+            "label": "Kutu daun persik"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
