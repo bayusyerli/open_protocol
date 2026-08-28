@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama bawang merah, cabai merah besar, jagung, kentang, padi dan tomat"
+      "id": "OPT utama bawang merah, cabai merah besar, jagung, kentang, kubis, padi dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 6 komoditas: Bawang merah, Cabai merah besar, Jagung, Kentang, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 7 komoditas: Bawang merah, Cabai merah besar, Jagung, Kentang, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -212,6 +212,10 @@
         {
           "id": "op:cmd:00001008",
           "label": "Kentang"
+        },
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
         }
       ],
       "definition": {
@@ -279,7 +283,7 @@
         "kingdom": "Animalia"
       },
       "symptoms": {
-        "id": "Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman."
+        "id": "Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman."
       },
       "distinguishing": [
         {
@@ -1519,6 +1523,10 @@
         {
           "id": "op:cmd:00001002",
           "label": "Jagung"
+        },
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
         }
       ],
       "definition": {
@@ -2417,7 +2425,7 @@
         }
       ],
       "definition": {
-        "id": "Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini."
+        "id": "Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini."
       },
       "mappings": [
         {
@@ -4736,6 +4744,488 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jagung, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000049",
+      "key": "ulat-daun-kubis",
+      "label": {
+        "id": "Ulat daun kubis"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Plutella xylostella",
+      "hosts": [
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        }
+      ],
+      "definition": {
+        "id": "Ulat tritip. Sasaran terbanyak pada kubis — 176 baris — dan hama sayuran dengan riwayat resistensi paling panjang di dunia: ia sudah kebal terhadap hampir setiap golongan insektisida di suatu tempat. Yang menentukan karena itu merotasi GOLONGAN bahan aktif, bukan berganti merek; dua merek berbeda yang segolongan tidak menghitung sebagai rotasi."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1831136",
+          "uri": "https://www.gbif.org/species/1831136",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plutela xylostella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plutella xylostela",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plutella xylostella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 174 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Perusak Daun",
+        "Hama Ulat Daun",
+        "Perusak Daun",
+        "Plutela xylostella",
+        "Plutella xylostela",
+        "Ulat Daun",
+        "Ulat Krop",
+        "Ulat Perusak Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun berlubang seperti JENDELA: lapisan bawah daun dikerok habis sementara lapisan atasnya tertinggal sebagai selaput bening, lalu sobek jadi lubang. Ulat hijau kecil kurang dari satu sentimeter menggeliat cepat dan MENJATUHKAN DIRI menggantung pada benang sutra saat daun disentuh. Kepompongnya berjaring seperti anyaman kasar, menempel di bawah daun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Sentuh daun yang berulat. Ulat daun kubis menjatuhkan diri dan menggantung pada benang sutra — tidak ada ulat kubis lain yang melakukannya. Ulat krop tetap di tempat, dan justru bergerak lebih dalam ke krop."
+          },
+          "rules_out": {
+            "id": "op:pst:00000050",
+            "label": "Ulat krop"
+          }
+        },
+        {
+          "check": {
+            "id": "Terawang daun yang rusak ke arah cahaya. Ulat daun kubis meninggalkan selaput bening seperti jendela sebelum sobek; bekicot dan siput memakan daun sampai tembus sejak awal, dengan tepi tergerus halus."
+          },
+          "rules_out": {
+            "id": "op:pst:00000051",
+            "label": "Bekicot"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kubis, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000050",
+      "key": "ulat-krop",
+      "label": {
+        "id": "Ulat krop"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Crocidolomia pavonana",
+      "hosts": [
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        }
+      ],
+      "definition": {
+        "id": "Jauh lebih menentukan daripada ulat daun kubis begitu krop mulai terbentuk, karena kerusakannya DI DALAM krop dan tidak terjangkau semprotan yang hanya membasahi daun luar. Registri juga memuatnya atas nama lama Crocidolomia binotalis (14 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1879340",
+          "uri": "https://www.gbif.org/species/1879340",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Crcidolomia pavonana",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Crocidolomia pavonana",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 85 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Crcidolomia pavonana",
+        "Hama Perusak Krop",
+        "Hama Ulat Krop",
+        "Perusak Daun",
+        "Ulat Crop",
+        "Ulat Daun",
+        "Ulat Krop"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Titik tumbuh dan daun muda di tengah rumpun habis dimakan sehingga krop gagal terbentuk atau berlubang di dalamnya. Ulatnya berkelompok, hijau bergaris memanjang dan berbulu halus, dan di antara daun yang dimakan menumpuk kotoran hijau kehitaman. Dari luar tanaman bisa tampak masih baik."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka krop atau daun muda di tengah rumpun. Ulat krop ada DI DALAM bersama kotorannya; ulat daun kubis makan di permukaan daun luar dan tidak masuk ke titik tumbuh."
+          },
+          "rules_out": {
+            "id": "op:pst:00000049",
+            "label": "Ulat daun kubis"
+          }
+        },
+        {
+          "check": {
+            "id": "Cari kelompok telurnya di permukaan bawah daun. Ulat krop bertelur BERKELOMPOK menyerupai sisik yang saling menindih; ulat daun kubis bertelur satu-satu tersebar dan telurnya nyaris tidak terlihat."
+          },
+          "rules_out": {
+            "id": "op:pst:00000049",
+            "label": "Ulat daun kubis"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kubis, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000051",
+      "key": "bekicot",
+      "label": {
+        "id": "Bekicot"
+      },
+      "pest_kind": "mollusc",
+      "scientific_name": "Achatina fulica",
+      "hosts": [
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        }
+      ],
+      "definition": {
+        "id": "Paling merusak di persemaian dan pada dua sampai tiga minggu pertama sesudah tanam pindah; aktif malam hari dan sesudah hujan. Registri juga memuat siput lain — Filicaulis bleekeri, Bradybaena similaris, Parmarion pupillaris — masing-masing satu sampai dua baris, semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Achatina fulica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "10928934",
+          "uri": "https://www.gbif.org/species/10928934",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Gastropoda; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Siput Babi",
+        "Siput Babi"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun berlubang besar tidak beraturan dengan tepi tergerus halus, dan bibit muda bisa habis sama sekali dalam semalam. Ada JEJAK LENDIR mengkilap yang mengering seperti perak di daun, batang, dan permukaan tanah, dengan butiran kotoran memanjang di dekatnya."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa malam hari dengan senter, atau pagi-pagi sekali. Jejak lendir mengkilap yang mengering seperti perak hanya ditinggalkan siput dan bekicot; tidak ada ulat yang meninggalkannya. Siang hari mereka bersembunyi di bawah mulsa, sisa tanaman, atau bongkahan tanah."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat tepi lubangnya. Bekicot menggerus tepi lubang jadi halus dan berlekuk lebar; ulat meninggalkan tepi bergerigi beserta butiran kotoran, bukan lendir."
+          },
+          "rules_out": {
+            "id": "op:pst:00000049",
+            "label": "Ulat daun kubis"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kubis, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000052",
+      "key": "akar-gada",
+      "label": {
+        "id": "Akar gada"
+      },
+      "pest_kind": "disease_oomycete",
+      "scientific_name": "Plasmodiophora brassicae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        }
+      ],
+      "definition": {
+        "id": "Bertahan di tanah sepuluh tahun atau lebih sebagai spora istirahat, dan menyebar lewat tanah yang menempel di alat, sepatu, dan bibit. Tidak ada semprotan yang menyembuhkan tanaman yang sudah bergejala: yang menentukan pengapuran sampai pH tanah naik, rotasi dengan bukan-brassica, dan bibit dari persemaian yang bebas — enam baris pendaftarannya tidak mengubah kenyataan itu."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plasmodiophora brassicae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "7949999",
+          "uri": "https://www.gbif.org/species/7949999",
+          "relation": "exact",
+          "note": "Kingdom Chromista, kelas Phytomyxea; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Chromista"
+      },
+      "symptoms": {
+        "id": "Tanaman layu di siang hari lalu segar lagi menjelang sore, berulang beberapa hari, sampai akhirnya kerdil dan menguning; kropnya kecil atau tidak terbentuk sama sekali. Gejalanya BERKELOMPOK di bagian petak yang paling lembap, dan bagian itu melebar tiap kali brassica ditanam lagi di situ."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cabut tanaman yang layu beserta akarnya, lalu cuci tanahnya. Akarnya menggembung jadi bonggol tidak beraturan seperti gada atau jari yang bengkak. Tidak ada penyakit kubis lain yang membentuknya — dan begitu terlihat, petak itu terinfestasi untuk bertahun-tahun ke depan."
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan pola layunya. Akar gada membuat tanaman layu siang lalu pulih sore, berulang selama beberapa hari; busuk lunak bakteri membuat jaringannya hancur berbau dan tanaman tidak pernah pulih."
+          },
+          "rules_out": {
+            "id": "op:pst:00000054",
+            "label": "Busuk lunak"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kubis, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000053",
+      "key": "bercak-daun-alternaria",
+      "label": {
+        "id": "Bercak daun alternaria"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Alternaria brassicae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        }
+      ],
+      "definition": {
+        "id": "Terdaftar merata pada kubis dan sawi, dan gejalanya sama pada seluruh brassica. Menular lewat benih dan sisa tanaman; paling parah pada musim hujan dan pada daun yang sudah tua atau terluka."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2616257",
+          "uri": "https://www.gbif.org/species/2616257",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Alternaria brassicae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Alternariaa brassicae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Alternariaa brassicae",
+        "Penyakit Bercak Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak bundar coklat kehitaman pada daun TUA lebih dulu, dengan cincin sepusat di dalamnya seperti sasaran panah dan sering dikelilingi halo kuning. Bercak yang bersambung membuat daun menguning lalu kering. Pada krop yang sudah terbentuk, bercaknya menurunkan mutu jual walau kropnya masih utuh."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tatap ke dalam bercaknya. Bercak alternaria bercincin sepusat, tepinya tegas, dan terasa kering. Busuk hitam tidak bercincin: ia masuk dari TEPI daun membentuk huruf V kuning dengan tulang daun di dalamnya menghitam."
+          },
+          "rules_out": {
+            "id": "op:pst:00001198",
+            "label": "Penyakit Busuk Hitam"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat daun mana yang kena lebih dulu. Bercak alternaria menumpuk di daun TUA di luar; ulat daun kubis melubangi daun mana saja termasuk yang muda, dan lubangnya berselaput bening sebelum sobek."
+          },
+          "rules_out": {
+            "id": "op:pst:00000049",
+            "label": "Ulat daun kubis"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kubis, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000054",
+      "key": "busuk-lunak",
+      "label": {
+        "id": "Busuk lunak"
+      },
+      "pest_kind": "disease_bacterial",
+      "scientific_name": "Erwinia carotovora",
+      "hosts": [
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        }
+      ],
+      "definition": {
+        "id": "Masuk lewat LUKA — bekas gigitan ulat, bekas potong, atau retak karena hujan sesudah kering — jadi mengendalikan ulat krop ikut menurunkan busuk lunak. Berkembang cepat pada suhu hangat dan lembap, dan berlanjut di dalam keranjang sesudah panen. Registri juga memuat busuk hitam (Xanthomonas campestris) pada kubis dan kembang kol (4 baris), tetapi entitas itu didominasi TUJUH baris pada padi — hampir pasti salah nama, karena bakteri hawar padi adalah X. oryzae — sehingga menaikkannya berarti membuka pintu bergejala kubis untuk padi. Busuk hitam karena itu belum berpintu di sini."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3222015",
+          "uri": "https://www.gbif.org/species/3222015",
+          "relation": "exact",
+          "note": "Kingdom Bacteria, kelas Gammaproteobacteria; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Erwinia carotovara",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Erwinia carotovora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Erwinia carotovara",
+        "Penyakit Bakteri Busuk Basah",
+        "Penyakit Bakteri Busuk Lunak"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Bacteria"
+      },
+      "symptoms": {
+        "id": "Krop atau pangkal daun melunak dan berair, warnanya coklat kelabu, dan jaringannya hancur jadi bubur yang menempel di tangan. Baunya BUSUK MENYENGAT dan khas. Menjalar cepat — satu krop bisa hancur dalam dua sampai tiga hari — dan menular ke krop di sebelahnya lewat air."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tekan bagian yang lunak, lalu cium. Busuk lunak bakteri berbau menyengat dan mengeluarkan cairan keruh berlendir saat ditekan; busuk karena jamur berbau apak dan jaringannya tidak hancur jadi bubur."
+          }
+        },
+        {
+          "check": {
+            "id": "Cari luka tempat ia masuk. Busuk lunak hampir selalu mulai dari bekas gigitan ulat, bekas potong, atau retakan — bukan dari daun yang utuh. Kalau tidak ada luka dan yang layu justru tanaman berakar menggembung, penyebabnya akar gada."
+          },
+          "rules_out": {
+            "id": "op:pst:00000052",
+            "label": "Akar gada"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kubis, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]

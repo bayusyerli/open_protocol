@@ -55,8 +55,8 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
  *
  * Tesis jalur ini masuk lewat APA YANG TERLIHAT, bukan lewat apa yang sudah diketahui;
  * memaksa pilih tanaman lebih dulu akan menukar pintu itu dengan pintu lain. Tetapi
- * sesudah komoditas keenam daftarnya 48 gejala, dan penanam padi harus melewati tiga
- * puluh lima gejala tanaman lain sebelum sampai ke miliknya. Jalan tengahnya:
+ * sesudah komoditas ketujuh daftarnya 54 gejala, dan penanam padi harus melewati empat
+ * puluh satu gejala tanaman lain sebelum sampai ke miliknya. Jalan tengahnya:
  * saringan ada, "semua tanaman" tetap yang terpilih saat layar dibuka, dan gejala tetap
  * yang tertulis besar pada tiap kartu.
  *
@@ -77,8 +77,7 @@ function gambarGejala() {
   // masalah paling sering dicari. Yang nol produk tetap ikut — justru layar itu yang
   // paling bernilai di seluruh jalur ini.
   const cocok = daftarOpt.filter((k) => !saringInang || (k.inang ?? []).includes(saringInang));
-  const urut = cocok.slice().sort((a, b) =>
-    b.di.reduce((x, y) => x + y.produk, 0) - a.di.reduce((x, y) => x + y.produk, 0));
+  const urut = cocok.slice().sort((a, b) => b.produk - a.produk);
   const inang = daftarInang();
   const cip = (nilai, label, n) => `
     <button type="button" data-inang="${teks(nilai)}" aria-pressed="${saringInang === (nilai || null)}">
@@ -95,8 +94,8 @@ function gambarGejala() {
         <li>
           <button type="button" data-opt="${teks(k.id)}">
             <span class="nama">${teks(k.gejala)}</span>
-            <span class="sub">${k.di.length
-              ? `${angkaId(k.di.reduce((a, b) => a + b.produk, 0))} produk terdaftar di ${k.di.length} komoditas`
+            <span class="sub">${k.komoditas
+              ? `${angkaId(k.produk)} produk terdaftar di ${angkaId(k.komoditas)} komoditas`
               : 'tidak ada produk terdaftar sama sekali'}</span>
           </button>
         </li>`).join('')}
@@ -105,7 +104,7 @@ function gambarGejala() {
 
 /* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
  *
- * 703 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * 697 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
  * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
  *
  * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
@@ -126,7 +125,7 @@ async function bukaHama(kunci, opsi = {}) {
         <p>
           <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
           registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
-          deskripsi gejalanya</strong> — nol dari 703 OPT berproduk memuatnya.
+          deskripsi gejalanya</strong> — nol dari 697 OPT berproduk memuatnya.
         </p>
         <p class="catatan">
           Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
@@ -134,8 +133,8 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — empat puluh delapan OPT
-          padi, jagung, cabai, bawang merah, tomat, dan kentang punya ciri pembandingnya.
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — lima puluh empat OPT
+          tujuh komoditas punya ciri pembandingnya.
         </p>
       </div>
       <h2 class="judul-bagian">Di tanaman apa?</h2>

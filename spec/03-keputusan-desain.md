@@ -796,9 +796,29 @@ muncul. Yang menahan layar DAFTAR cuma teks gejala dan jumlah produk per komodit
 ciri pembanding, keterangan, catatan, dan penular baru dibutuhkan sesudah SATU pintu
 dibuka, dan tidak seorang pun membuka dua puluh delapan.
 
-Jadi berkasnya dipecah: `gejala.json` 23,4 KB untuk daftarnya, dan `gejala/<id>.json`
-sekitar 1 KB per pintu untuk rinciannya. Ini pola yang sudah dipakai indeks OPT dan
-sediaan, bukan pola baru.
+Jadi berkasnya dipecah: `gejala.json` untuk daftarnya, dan `gejala/<id>.json` sekitar
+1 KB per pintu untuk rinciannya. Ini pola yang sudah dipakai indeks OPT dan sediaan,
+bukan pola baru.
+
+**Dipecah lagi pada kurasi kubis**, dan yang turun kali ini `di` — daftar komoditas per
+pintu. Ia bagian TERBESAR berkas daftar (25 KB dari 41 pada 54 pintu) sementara layar
+daftar cuma memakai dua angka darinya: berapa produk seluruhnya, dan di berapa komoditas.
+Daftar lengkapnya baru dibutuhkan pada layar "di tanaman apa", yaitu sesudah satu pintu
+dibuka. Kedua angka itu kini dihitung saat indeks dibangun dan dibawa sebagai angka, dan
+`gejala.json` kembali ke 23,5 KB pada 54 pintu — dari 41 KB sebelum dipecah.
+
+Pelajarannya bukan angkanya melainkan urutannya: **yang pertama diperiksa saat satu berkas
+membengkak adalah medan mana yang benar-benar dipakai layar PERTAMA**, bukan bagaimana
+memampatkan yang ada. Dua kali berturut-turut jawabannya medan yang cuma dipakai layar
+kedua.
+
+Bersamaan dengan itu `keterangan` dikeluarkan dari korpus `gejala-cari.json` (36 KB → 21
+KB), dan itu bukan soal ukuran saja: isinya catatan epidemiologi dan pernyataan batas —
+"registri juga memuat...", "produk atas nama itu tidak ikut terdaftar" — yang berguna
+dibaca sesudah satu pintu dibuka dan merusak sebagai korpus pencarian, karena yang
+mengetik "registri" akan mencocokkan belasan gejala yang tidak ada hubungannya dengan apa
+yang dilihatnya. Komentar di atas kodenya memang sudah menyatakan hanya nama, nama ilmiah,
+dan gejala yang ikut; kodenya yang belum menyusul.
 
 Harganya satu, dan tidak boleh dilupakan: **rincian itu wajib ikut diprasimpan service
 worker.** Jalur 1 dibuka justru saat masalahnya sedang terjadi, sering jauh dari sinyal,
@@ -809,8 +829,9 @@ apakah ia ada.
 
 ### D40 — saringan tanaman di layar daftar gejala: ada, tetapi tidak wajib
 
-Sesudah komoditas kelima daftar gejala jalur 1 berisi 41 kartu — 48 sesudah jagung —
-dan penanam padi harus melewati puluhan gejala tanaman lain sebelum sampai ke miliknya.
+Sesudah komoditas kelima daftar gejala jalur 1 berisi 41 kartu — 54 sesudah jagung dan
+kubis — dan penanam padi harus melewati puluhan gejala tanaman lain sebelum sampai ke
+miliknya.
 Daftarnya diurutkan menurut banyaknya produk terdaftar, jadi urutan teratas pun bercampur
 semua komoditas.
 
