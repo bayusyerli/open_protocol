@@ -1,0 +1,679 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Tiga alternatif logo dan konsep merek Pranatani: Jejak Terbuka, Petak Bersama, dan Simpul Bukti.">
+<title>Tiga alternatif logo Pranatani</title>
+<style>
+:root {
+  color-scheme: light;
+  --paper:#f5f1e7;
+  --paper-2:#ebe5d8;
+  --card:#fffdf7;
+  --ink:#10231d;
+  --muted:#5d6a64;
+  --line:#c8c4b8;
+  --forest:#00442f;
+  --jade:#00745d;
+  --lime:#79d20a;
+  --clay:#b95834;
+  --sun:#e4a934;
+  --water:#188f82;
+  --water-text:#0b7369;
+  --focus:#1669c9;
+  --sans:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --serif:Iowan Old Style, Baskerville, "Times New Roman", serif;
+  --mono:"SFMono-Regular", Consolas, "Liberation Mono", monospace;
+  --shadow:0 22px 60px rgba(33,48,41,.10);
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper:#101713;
+  --paper-2:#18211c;
+  --card:#1c2721;
+  --ink:#f1f4ec;
+  --muted:#a9b5ae;
+  --line:#3b4941;
+  --forest:#7bd8ae;
+  --jade:#55c7ab;
+  --lime:#a2e93e;
+  --clay:#f08b67;
+  --sun:#f2c25d;
+  --water:#5bd2c3;
+  --water-text:#7de2d2;
+  --focus:#75b9ff;
+  --shadow:0 22px 60px rgba(0,0,0,.28);
+}
+
+*,*::before,*::after { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  margin:0;
+  background:
+    linear-gradient(rgba(0,68,47,.028) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,68,47,.028) 1px, transparent 1px),
+    var(--paper);
+  background-size:28px 28px;
+  color:var(--ink);
+  font-family:var(--sans);
+  line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+
+button,a { font:inherit; }
+a { color:inherit; }
+:where(a,button,input):focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
+svg { display:block; max-width:100%; }
+.skip { position:fixed; left:12px; top:-80px; z-index:100; background:var(--ink); color:var(--paper); padding:12px 16px; text-decoration:none; font-weight:800; }
+.skip:focus { top:12px; }
+.wrap { width:min(1240px, calc(100% - 32px)); margin-inline:auto; }
+.eyebrow { margin:0; font-family:var(--mono); font-size:.72rem; font-weight:800; letter-spacing:.13em; text-transform:uppercase; }
+
+.topbar {
+  position:sticky;
+  top:0;
+  z-index:30;
+  border-bottom:1px solid var(--line);
+  background:color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter:blur(14px);
+}
+.topbar-inner { min-height:68px; display:flex; align-items:center; gap:20px; }
+.mini-brand { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:850; letter-spacing:-.02em; }
+.mini-mark { width:34px; height:34px; flex:none; }
+.nav { display:flex; align-items:center; gap:22px; margin-left:auto; }
+.nav a { text-decoration:none; color:var(--muted); font-size:.86rem; font-weight:700; }
+.nav a:hover { color:var(--ink); }
+.theme-button {
+  min-height:40px;
+  border:1px solid var(--line);
+  border-radius:999px;
+  padding:0 14px;
+  background:var(--card);
+  color:var(--ink);
+  cursor:pointer;
+  font-weight:750;
+  font-size:.82rem;
+}
+
+.hero { padding:clamp(64px, 9vw, 124px) 0 58px; overflow:hidden; }
+.hero-grid { display:grid; grid-template-columns:minmax(0,1.2fr) minmax(320px,.8fr); gap:64px; align-items:end; }
+.hero .eyebrow { color:var(--jade); margin-bottom:18px; }
+h1 { margin:0; max-width:12ch; font-size:clamp(3rem, 8.2vw, 7.25rem); line-height:.88; letter-spacing:-.072em; font-weight:850; }
+h1 em { color:var(--jade); font-family:var(--serif); font-weight:500; }
+.hero-copy { max-width:56ch; color:var(--muted); font-size:clamp(1rem, 1.4vw, 1.18rem); }
+.hero-copy strong { color:var(--ink); }
+.hero-meta { display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; }
+.tag { border:1px solid var(--line); border-radius:999px; padding:7px 11px; background:var(--card); font:700 .72rem var(--mono); letter-spacing:.03em; }
+
+.principles { border-block:1px solid var(--line); background:var(--card); }
+.principles-grid { display:grid; grid-template-columns:repeat(3,1fr); }
+.principle { padding:24px 26px 26px; min-height:146px; }
+.principle + .principle { border-left:1px solid var(--line); }
+.principle .number { color:var(--jade); font:800 .72rem var(--mono); }
+.principle h2 { margin:20px 0 5px; font-size:1.02rem; }
+.principle p { margin:0; color:var(--muted); font-size:.88rem; }
+
+.section-head { display:grid; grid-template-columns:160px minmax(0,700px); gap:28px; padding:88px 0 28px; align-items:start; }
+.section-head .eyebrow { color:var(--accent, var(--jade)); padding-top:7px; }
+.section-head h2 { margin:0 0 12px; font-size:clamp(2rem, 4vw, 4.25rem); line-height:.96; letter-spacing:-.055em; }
+.section-head p { margin:0; color:var(--muted); font-size:1rem; max-width:64ch; }
+
+.concept { --accent:var(--jade); --accent-soft:#dfeee8; }
+.concept-b { --accent:var(--clay); --accent-soft:#f3e3da; }
+.concept-c { --accent:var(--water-text); --accent-soft:#dcefeb; }
+:root[data-theme="dark"] .concept-a { --accent-soft:#173128; }
+:root[data-theme="dark"] .concept-b { --accent-soft:#39241c; }
+:root[data-theme="dark"] .concept-c { --accent-soft:#17312e; }
+
+.board {
+  border:1px solid var(--line);
+  background:var(--card);
+  box-shadow:var(--shadow);
+}
+.logo-stage {
+  min-height:410px;
+  display:grid;
+  place-items:center;
+  padding:clamp(30px, 6vw, 74px);
+  background:
+    radial-gradient(circle at 82% 18%, color-mix(in srgb, var(--accent) 14%, transparent), transparent 28%),
+    var(--card);
+  border-bottom:1px solid var(--line);
+  overflow:hidden;
+}
+.logo-stage svg { width:min(900px,100%); }
+.logo-stage .wordmark { fill:var(--ink); }
+.logo-stage .descriptor { fill:var(--muted); }
+.concept-a .logo-stage .mark-primary { stroke:var(--forest); }
+.concept-a .logo-stage .mark-secondary { stroke:var(--jade); }
+.concept-a .logo-stage .mark-accent { fill:var(--lime); stroke:var(--lime); }
+.concept-a .logo-stage .mark-leaf-line { stroke:var(--forest); }
+.concept-b .logo-stage .plot-dark { fill:#173f31; }
+.concept-b .logo-stage .plot-mid { fill:#2d7559; }
+.concept-b .logo-stage .plot-light { fill:#7fb34f; }
+.concept-b .logo-stage .plot-clay { fill:var(--clay); }
+.concept-c .logo-stage .bracket { stroke:#0d4a3b; }
+.concept-c .logo-stage .node-line { stroke:var(--water); }
+.concept-c .logo-stage .node { fill:var(--water); }
+.concept-c .logo-stage .seed { fill:#b9d93f; }
+:root[data-theme="dark"] .concept-a .logo-stage .mark-primary { stroke:#83d9b6; }
+:root[data-theme="dark"] .concept-a .logo-stage .mark-secondary { stroke:#4ebf9f; }
+:root[data-theme="dark"] .concept-a .logo-stage .mark-leaf-line { stroke:#193d30; }
+:root[data-theme="dark"] .concept-b .logo-stage .plot-dark { fill:#8bd0aa; }
+:root[data-theme="dark"] .concept-b .logo-stage .plot-mid { fill:#4ba27c; }
+:root[data-theme="dark"] .concept-b .logo-stage .plot-light { fill:#a4cf70; }
+:root[data-theme="dark"] .concept-c .logo-stage .bracket { stroke:#86d4bc; }
+
+.board-tools { min-height:58px; display:flex; align-items:center; gap:10px; padding:8px 12px; border-bottom:1px solid var(--line); background:var(--paper-2); }
+.board-tools .eyebrow { color:var(--muted); margin-right:auto; }
+.tool-button {
+  min-height:40px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:0 13px;
+  border:1px solid var(--line);
+  background:var(--card);
+  color:var(--ink);
+  cursor:pointer;
+  font-size:.78rem;
+  font-weight:800;
+  text-decoration:none;
+}
+.tool-button:hover { border-color:var(--accent); color:var(--accent); }
+.tool-button[data-state="done"] { background:var(--accent); color:#fff; border-color:var(--accent); }
+.selected-note { display:inline-flex; align-items:center; gap:7px; margin-top:16px; padding:7px 10px; border:1px solid var(--accent); color:var(--accent); font:800 .68rem var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+.selected-note::before { content:""; width:8px; height:8px; border-radius:50%; background:var(--accent); }
+
+.board-info { display:grid; grid-template-columns:1.05fr .95fr; }
+.story { padding:clamp(26px, 4vw, 48px); }
+.story-kicker { color:var(--accent); margin:0 0 12px; font:800 .72rem var(--mono); letter-spacing:.12em; text-transform:uppercase; }
+.story h3 { margin:0 0 18px; font:500 clamp(1.9rem, 3.3vw, 3.2rem)/1.02 var(--serif); letter-spacing:-.03em; }
+.story > p { color:var(--muted); max-width:58ch; }
+.promise { border-left:4px solid var(--accent); margin:28px 0; padding:4px 0 4px 18px; font-size:1.12rem; font-weight:750; max-width:46ch; }
+.concept-data { display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:22px 28px; margin-top:30px; }
+.concept-data div { border-top:1px solid var(--line); padding-top:12px; }
+.concept-data dt { margin-bottom:6px; color:var(--muted); font:800 .67rem var(--mono); letter-spacing:.09em; text-transform:uppercase; }
+.concept-data dd { margin:0; font-size:.88rem; }
+
+.applications { border-left:1px solid var(--line); display:grid; grid-template-rows:auto 1fr; }
+.applications-head { padding:24px 26px 12px; }
+.applications-head h3 { margin:0; font-size:.92rem; }
+.applications-head p { margin:5px 0 0; color:var(--muted); font-size:.8rem; }
+.mock-grid { padding:14px 26px 28px; display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.mock { min-height:142px; border:1px solid var(--line); background:var(--paper); overflow:hidden; position:relative; }
+.mock-label { position:absolute; left:10px; bottom:8px; margin:0; color:var(--muted); font:700 .62rem var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+.app-tile { display:grid; place-items:center; }
+.app-tile svg { width:76px; height:76px; }
+.small-lockup { display:flex; align-items:center; gap:8px; padding:26px 14px; }
+.small-lockup svg { width:34px; height:34px; flex:none; }
+.small-lockup b { font-size:.9rem; letter-spacing:-.025em; }
+.small-lockup small { display:block; color:var(--muted); font-size:.52rem; letter-spacing:.1em; }
+.field-sign { background:#0e372b; color:#fff; display:grid; place-items:center; text-align:center; padding:20px; }
+.field-sign span { font-weight:850; font-size:1rem; }
+.field-sign small { display:block; margin-top:4px; color:#b7d6c8; font:600 .55rem var(--mono); letter-spacing:.13em; }
+.stamp { display:grid; place-items:center; }
+.stamp-inner { width:94px; height:94px; border:1px solid var(--accent); color:var(--accent); border-radius:50%; display:grid; place-items:center; text-align:center; transform:rotate(-6deg); font:800 .58rem/1.25 var(--mono); letter-spacing:.08em; text-transform:uppercase; }
+
+.palette { display:flex; min-height:94px; border-top:1px solid var(--line); }
+.swatch { flex:1; padding:14px; display:flex; align-items:flex-end; min-width:0; }
+.swatch span { color:#fff; text-shadow:0 1px 3px rgba(0,0,0,.4); font:700 .68rem var(--mono); }
+.swatch.light span { color:#173328; text-shadow:none; }
+
+.comparison { padding:110px 0 96px; }
+.comparison-head { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:end; margin-bottom:28px; }
+.comparison h2 { margin:0; font-size:clamp(2.2rem,5vw,5.2rem); line-height:.92; letter-spacing:-.06em; max-width:9ch; }
+.comparison-head p { margin:0; color:var(--muted); max-width:58ch; }
+.table-wrap { overflow-x:auto; border:1px solid var(--line); background:var(--card); box-shadow:var(--shadow); }
+table { width:100%; min-width:780px; border-collapse:collapse; text-align:left; }
+th,td { padding:17px 18px; border-bottom:1px solid var(--line); vertical-align:top; }
+thead th { background:var(--paper-2); font:800 .7rem var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+tbody th { width:190px; color:var(--muted); font-size:.78rem; }
+tbody td { font-size:.86rem; }
+tbody tr:last-child th,tbody tr:last-child td { border-bottom:0; }
+.concept-name { display:block; margin-bottom:3px; color:var(--ink); font-size:.94rem; font-family:var(--sans); letter-spacing:-.01em; text-transform:none; }
+.fit { display:inline-block; padding:3px 7px; border:1px solid currentColor; border-radius:999px; font:800 .62rem var(--mono); text-transform:uppercase; letter-spacing:.04em; }
+
+.decision { display:grid; grid-template-columns:1fr 1fr; border:1px solid var(--line); background:var(--ink); color:var(--paper); }
+.decision-copy { padding:clamp(34px, 6vw, 72px); }
+.decision .eyebrow { color:var(--lime); }
+.decision h2 { margin:14px 0 18px; font:500 clamp(2rem, 4.3vw, 4.3rem)/.98 var(--serif); letter-spacing:-.04em; }
+.decision p { color:color-mix(in srgb, var(--paper) 72%, transparent); max-width:52ch; }
+.decision-list { display:grid; align-content:center; padding:clamp(24px,5vw,58px); border-left:1px solid color-mix(in srgb, var(--paper) 20%, transparent); }
+.decision-item { display:grid; grid-template-columns:34px 1fr; gap:14px; padding:18px 0; border-bottom:1px solid color-mix(in srgb, var(--paper) 18%, transparent); }
+.decision-item:last-child { border-bottom:0; }
+.decision-item span { width:28px; height:28px; display:grid; place-items:center; border:1px solid var(--lime); color:var(--lime); font:800 .72rem var(--mono); }
+.decision-item b { display:block; margin-bottom:3px; }
+.decision-item small { color:color-mix(in srgb, var(--paper) 66%, transparent); }
+
+footer { padding:28px 0 44px; }
+.footer-inner { display:flex; justify-content:space-between; gap:30px; color:var(--muted); font-size:.78rem; }
+.footer-inner p { margin:0; max-width:72ch; }
+
+@media (max-width:900px) {
+  .nav a { display:none; }
+  .hero-grid,.comparison-head { grid-template-columns:minmax(0,1fr); gap:28px; }
+  .hero-grid > *,.comparison-head > * { min-width:0; }
+  .hero-copy { max-width:62ch; }
+  .section-head { grid-template-columns:1fr; gap:8px; }
+  .section-head .eyebrow { padding:0; }
+  .board-info { grid-template-columns:1fr; }
+  .applications { border-left:0; border-top:1px solid var(--line); }
+  .decision { grid-template-columns:1fr; }
+  .decision-list { border-left:0; border-top:1px solid color-mix(in srgb, var(--paper) 20%, transparent); }
+}
+
+@media (max-width:640px) {
+  .wrap { width:min(100% - 22px, 1240px); }
+  .topbar-inner { min-height:60px; }
+  .mini-brand span { display:none; }
+  .hero { padding-top:52px; }
+  h1 { font-size:clamp(2.8rem, 13vw, 4.2rem); letter-spacing:-.06em; }
+  .hero-meta { align-items:flex-start; }
+  .tag { flex:none; }
+  .principles-grid { grid-template-columns:1fr; }
+  .principle { min-height:auto; }
+  .principle + .principle { border-left:0; border-top:1px solid var(--line); }
+  .section-head { padding-top:64px; }
+  .logo-stage { min-height:270px; padding:28px 18px; }
+  .board-tools { flex-wrap:wrap; padding:10px; }
+  .board-tools .eyebrow { width:100%; }
+  .tool-button { flex:1; }
+  .concept-data { grid-template-columns:1fr; }
+  .mock-grid { padding:12px 14px 24px; }
+  .mock { min-height:124px; }
+  .palette { display:grid; grid-template-columns:repeat(2,1fr); }
+  .swatch { min-height:76px; }
+  .comparison { padding-top:78px; }
+  .footer-inner { display:block; }
+  .footer-inner p + p { margin-top:8px; }
+}
+
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#utama">Lewati ke isi</a>
+
+<header class="topbar">
+  <div class="wrap topbar-inner">
+    <a class="mini-brand" href="#atas" aria-label="Kembali ke atas">
+      <svg class="mini-mark" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M11 39V9h13c8 0 13 4 13 10s-5 10-13 10h-7" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 18c0-5 4-9 9-9 0 5-4 9-9 9Z" fill="var(--lime)"/>
+      </svg>
+      <span>Pranatani / eksplorasi logo</span>
+    </a>
+    <nav class="nav" aria-label="Navigasi konsep">
+      <a href="#alternatif-1">01 Jejak</a>
+      <a href="#alternatif-2">02 Petak</a>
+      <a href="#alternatif-3">03 Simpul</a>
+      <button class="theme-button" id="themeButton" type="button" aria-pressed="false">Mode gelap</button>
+    </nav>
+  </div>
+</header>
+
+<main id="utama">
+  <section class="hero" id="atas">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">Eksplorasi identitas / 28.08.2026</p>
+        <h1>Tiga cara menumbuhkan <em>percaya.</em></h1>
+      </div>
+      <div class="hero-copy">
+        <p>Tiga alternatif logo untuk <strong>Pranatani</strong>—platform data pertanian terbuka yang membantu orang memeriksa sumber, membandingkan isi, dan mengambil keputusan tanpa janji berlebihan.</p>
+        <p>Setiap arah dibangun sebagai sistem merek: simbol, karakter, warna, pesan, dan perilaku di layar kecil. Ini adalah konsep untuk dipilih, belum penggantian identitas aplikasi.</p>
+        <div class="hero-meta" aria-label="Ciri halaman konsep">
+          <span class="tag">3 ARAH BERBEDA</span>
+          <span class="tag">SVG DAPAT DIUNDUH</span>
+          <span class="tag">OFFLINE-FRIENDLY</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles" aria-label="Prinsip bersama">
+    <div class="wrap principles-grid">
+      <article class="principle">
+        <span class="number">01 / TERBUKA</span>
+        <h2>Sumber terlihat, bukan disembunyikan.</h2>
+        <p>Logo tidak boleh terasa seperti stempel sertifikasi atau klaim kebenaran tunggal.</p>
+      </article>
+      <article class="principle">
+        <span class="number">02 / LAPANGAN</span>
+        <h2>Pertanian terasa sejak tatapan pertama.</h2>
+        <p>Isyarat petak, larik, benih, dan pertumbuhan hadir tanpa menjadi ikon daun generik.</p>
+      </article>
+      <article class="principle">
+        <span class="number">03 / NETRAL</span>
+        <h2>Membantu memeriksa, bukan menjual pilihan.</h2>
+        <p>Karakter visual tenang, dapat dipercaya, dan tidak menyerupai merek produk input.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="concept concept-a" id="alternatif-1">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Alternatif 01</p>
+        <div>
+          <h2>Jejak Terbuka</h2>
+          <p>Arah paling dekat dengan warisan visual Pranatani: monogram P menjadi jalur yang dapat ditelusuri, sementara tiga larik di dalamnya mewakili data yang tersusun.</p>
+        </div>
+      </header>
+
+      <article class="board">
+        <div class="logo-stage">
+          <svg id="logo-jejak" viewBox="0 0 920 260" role="img" aria-labelledby="jejak-title jejak-desc">
+            <title id="jejak-title">Logo Pranatani konsep Jejak Terbuka</title>
+            <desc id="jejak-desc">Monogram P berupa jalur terbuka, tiga larik data, dan tunas kecil.</desc>
+            <g transform="translate(24 19) scale(.86)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path class="mark-primary" d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94" stroke="#00442f" stroke-width="26"/>
+              <path class="mark-secondary" d="M94 77h45M94 109h64M94 141h45" stroke="#00745d" stroke-width="15"/>
+              <path class="mark-accent" d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z" fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+              <path class="mark-leaf-line" d="m165 111 31-31" stroke="#00442f" stroke-width="8"/>
+            </g>
+            <text class="wordmark" x="276" y="139" fill="#10231d" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="94" font-weight="760" letter-spacing="-5">Pranatani</text>
+            <text class="descriptor" x="282" y="190" fill="#5d6a64" font-family="SFMono-Regular,Consolas,monospace" font-size="19" font-weight="700" letter-spacing="5.1">DATA PERTANIAN TERBUKA</text>
+          </svg>
+        </div>
+        <div class="board-tools">
+          <p class="eyebrow">Primary lockup / horizontal</p>
+          <button class="tool-button" type="button" data-copy="#00442F">Salin Forest</button>
+          <button class="tool-button" type="button" data-download="logo-jejak" data-file="pranatani-jejak-terbuka.svg">Unduh SVG</button>
+        </div>
+        <div class="board-info">
+          <div class="story">
+            <p class="story-kicker">Tesis merek</p>
+            <h3>Setiap jawaban punya jalan pulang ke sumbernya.</h3>
+            <p>Garis utama membentuk huruf P sekaligus sebuah rute tanpa putus: data masuk, disusun, lalu keluar sebagai informasi yang tetap bisa ditelusuri. Tunas hadir sebagai keluaran hidup—kecil, bukan klaim hasil panen.</p>
+            <p class="promise">Janji merek: “Kami memperlihatkan dari mana informasi datang dan di mana batasnya.”</p>
+            <dl class="concept-data">
+              <div><dt>Karakter</dt><dd>Rasional, mapan, tenang, mudah dipercaya.</dd></div>
+              <div><dt>Paling cocok</dt><dd>Identitas induk platform dan transisi dari logo yang ada.</dd></div>
+              <div><dt>Tipografi</dt><dd>Humanist sans; ramah di layar kecil, tegas pada data.</dd></div>
+              <div><dt>Risiko</dt><dd>Monogram lebih korporat; cerita petak perlu diperkuat lewat sistem visual.</dd></div>
+            </dl>
+          </div>
+          <aside class="applications" aria-label="Contoh penerapan konsep Jejak Terbuka">
+            <header class="applications-head"><h3>Uji pakai</h3><p>Simbol tetap terbaca pada favicon, header, dan penanda sumber.</p></header>
+            <div class="mock-grid">
+              <div class="mock app-tile">
+                <svg viewBox="0 0 256 256" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94" stroke="#00442f" stroke-width="26"/><path d="M94 77h45M94 109h64M94 141h45" stroke="#00745d" stroke-width="15"/><path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z" fill="#79d20a" stroke="#79d20a" stroke-width="8"/><path d="m165 111 31-31" stroke="#00442f" stroke-width="8"/></g></svg>
+                <p class="mock-label">Ikon aplikasi</p>
+              </div>
+              <div class="mock small-lockup">
+                <svg viewBox="0 0 256 256" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94" stroke="#00442f" stroke-width="26"/><path d="M94 77h45M94 109h64M94 141h45" stroke="#00745d" stroke-width="15"/><path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z" fill="#79d20a"/></g></svg>
+                <div><b>Pranatani</b><small>DATA PERTANIAN TERBUKA</small></div>
+                <p class="mock-label">Header 32 px</p>
+              </div>
+              <div class="mock field-sign"><div><span>Pranatani</span><small>SUMBER · DATA · BATAS</small></div><p class="mock-label">Papan lapangan</p></div>
+              <div class="mock stamp"><div class="stamp-inner">Sumber<br>tercatat<br>28.08.26</div><p class="mock-label">Penanda sumber</p></div>
+            </div>
+          </aside>
+        </div>
+        <div class="palette" aria-label="Palet Jejak Terbuka">
+          <div class="swatch" style="background:#00442f"><span>#00442F / Forest</span></div>
+          <div class="swatch" style="background:#00745d"><span>#00745D / Jade</span></div>
+          <div class="swatch light" style="background:#79d20a"><span>#79D20A / Tunas</span></div>
+          <div class="swatch light" style="background:#fffef8"><span>#FFFEF8 / Beras</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="concept concept-b" id="alternatif-2">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Alternatif 02</p>
+        <div>
+          <h2>Petak Bersama</h2>
+          <p>Logo non-monogram yang mengubah bentang lahan menjadi sistem modular. Empat bidang berbeda berbagi satu jalur air—sebuah metafora untuk sumber yang beragam tetapi dapat dibaca bersama.</p>
+        </div>
+      </header>
+
+      <article class="board">
+        <div class="logo-stage">
+          <svg id="logo-petak" viewBox="0 0 920 260" role="img" aria-labelledby="petak-title petak-desc">
+            <title id="petak-title">Logo Pranatani konsep Petak Bersama</title>
+            <desc id="petak-desc">Empat bidang lahan berbentuk wajik dengan jalur terbuka di tengah.</desc>
+            <g transform="translate(30 25)">
+              <path class="plot-dark" d="M105 4 196 52 148 104 57 56Z" fill="#173f31"/>
+              <path class="plot-mid" d="m50 64 91 48-48 89L2 153Z" fill="#2d7559"/>
+              <path class="plot-light" d="m204 61 48 91-92 49-9-82Z" fill="#7fb34f"/>
+              <path class="plot-clay" d="m105 211 44-84 4 79-24 13Z" fill="#b95834"/>
+              <path d="M109 25 76 57l73 39 28-31" fill="none" stroke="#fffef8" stroke-width="8" stroke-linecap="round" opacity=".9"/>
+            </g>
+            <text class="wordmark" x="324" y="139" fill="#10231d" font-family="Iowan Old Style,Baskerville,Times New Roman,serif" font-size="96" font-weight="700" letter-spacing="-3">Pranatani</text>
+            <text class="descriptor" x="331" y="191" fill="#5d6a64" font-family="SFMono-Regular,Consolas,monospace" font-size="19" font-weight="700" letter-spacing="5.1">DATA PERTANIAN TERBUKA</text>
+          </svg>
+        </div>
+        <div class="board-tools">
+          <p class="eyebrow">Primary lockup / horizontal</p>
+          <button class="tool-button" type="button" data-copy="#B95834">Salin Tanah</button>
+          <button class="tool-button" type="button" data-download="logo-petak" data-file="pranatani-petak-bersama.svg">Unduh SVG</button>
+        </div>
+        <div class="board-info">
+          <div class="story">
+            <p class="story-kicker">Tesis merek</p>
+            <h3>Banyak petak. Banyak sumber. Satu ruang untuk memahaminya.</h3>
+            <p>Bidang yang tidak seragam sengaja dipertahankan: pertanian tidak datang dalam satu bentuk, dan data publik tidak selalu rapi. Jalur putih menunjukkan akses bersama, bukan pusat yang menguasai semuanya.</p>
+            <p class="promise">Janji merek: “Kami menyatukan yang tersebar tanpa menghapus perbedaannya.”</p>
+            <dl class="concept-data">
+              <div><dt>Karakter</dt><dd>Komunal, membumi, hangat, khas Indonesia.</dd></div>
+              <div><dt>Paling cocok</dt><dd>Ekosistem kolaborasi, data daerah, dan kemitraan lapangan.</dd></div>
+              <div><dt>Tipografi</dt><dd>Serif editorial; memberi rasa pengetahuan yang diwariskan dan dirawat.</dd></div>
+              <div><dt>Risiko</dt><dd>Tidak mengeja huruf P; perlu konsistensi agar tidak terbaca sebagai properti atau pemetaan.</dd></div>
+            </dl>
+          </div>
+          <aside class="applications" aria-label="Contoh penerapan konsep Petak Bersama">
+            <header class="applications-head"><h3>Uji pakai</h3><p>Bentuk modular kuat sebagai ikon, pola data, dan tanda mitra.</p></header>
+            <div class="mock-grid">
+              <div class="mock app-tile">
+                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M105 20 196 68 148 120 57 72Z" fill="#173f31"/><path d="m50 80 91 48-48 89L2 169Z" fill="#2d7559"/><path d="m204 77 48 91-92 49-9-82Z" fill="#7fb34f"/><path d="m105 227 44-84 4 79-24 13Z" fill="#b95834"/><path d="M109 41 76 73l73 39 28-31" fill="none" stroke="#fffef8" stroke-width="8" stroke-linecap="round"/></svg>
+                <p class="mock-label">Ikon aplikasi</p>
+              </div>
+              <div class="mock small-lockup">
+                <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M105 20 196 68 148 120 57 72Z" fill="#173f31"/><path d="m50 80 91 48-48 89L2 169Z" fill="#2d7559"/><path d="m204 77 48 91-92 49-9-82Z" fill="#7fb34f"/><path d="m105 227 44-84 4 79-24 13Z" fill="#b95834"/></svg>
+                <div><b style="font-family:var(--serif);font-size:1.02rem">Pranatani</b><small>DATA PERTANIAN TERBUKA</small></div>
+                <p class="mock-label">Header 32 px</p>
+              </div>
+              <div class="mock field-sign" style="background:#173f31"><div><span style="font-family:var(--serif)">Petak data terbuka</span><small>DESA · MUSIM · SUMBER</small></div><p class="mock-label">Papan kolektif</p></div>
+              <div class="mock stamp"><div class="stamp-inner">Data<br>bersama<br>01 / 04</div><p class="mock-label">Tanda mitra</p></div>
+            </div>
+          </aside>
+        </div>
+        <div class="palette" aria-label="Palet Petak Bersama">
+          <div class="swatch" style="background:#173f31"><span>#173F31 / Rindang</span></div>
+          <div class="swatch" style="background:#2d7559"><span>#2D7559 / Galengan</span></div>
+          <div class="swatch light" style="background:#7fb34f"><span>#7FB34F / Padi</span></div>
+          <div class="swatch" style="background:#b95834"><span>#B95834 / Tanah</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="concept concept-c" id="alternatif-3">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Alternatif 03</p>
+        <div>
+          <h2>Simpul Bukti</h2>
+          <p>Arah paling digital dan sistemik. Dua kurung terbuka membingkai satu batang bertitik; informasi boleh masuk dan keluar, sementara setiap simpul menandai bukti yang bisa diperiksa.</p>
+          <span class="selected-note">Arah terpilih</span>
+        </div>
+      </header>
+
+      <article class="board">
+        <div class="logo-stage">
+          <svg id="logo-simpul" viewBox="0 0 920 260" role="img" aria-labelledby="simpul-title simpul-desc">
+            <title id="simpul-title">Logo Pranatani konsep Simpul Bukti</title>
+            <desc id="simpul-desc">Dua kurung terbuka mengapit batang dengan tiga simpul dan satu benih.</desc>
+            <g transform="translate(32 28)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path class="bracket" d="M76 12H34v188h42M180 12h42v188h-42" stroke="#0d4a3b" stroke-width="18"/>
+              <path class="node-line" d="M128 38v130M128 76 91 103M128 117l39 28" stroke="#188f82" stroke-width="12"/>
+              <circle class="node" cx="91" cy="103" r="14" fill="#188f82"/>
+              <circle class="node" cx="167" cy="145" r="14" fill="#188f82"/>
+              <circle class="node" cx="128" cy="170" r="14" fill="#188f82"/>
+              <path class="seed" d="M128 39c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/>
+            </g>
+            <text class="wordmark" x="326" y="139" fill="#10231d" font-family="Inter,Segoe UI,Arial,sans-serif" font-size="91" font-weight="830" letter-spacing="-4.5">Pranatani</text>
+            <text class="descriptor" x="332" y="190" fill="#5d6a64" font-family="SFMono-Regular,Consolas,monospace" font-size="19" font-weight="700" letter-spacing="5.1">DATA PERTANIAN TERBUKA</text>
+          </svg>
+        </div>
+        <div class="board-tools">
+          <p class="eyebrow">Primary lockup / horizontal</p>
+          <a class="tool-button" href="simpul-bukti-brand-guideline.html">Buka brand guideline →</a>
+          <button class="tool-button" type="button" data-copy="#188F82">Salin Air</button>
+          <button class="tool-button" type="button" data-download="logo-simpul" data-file="pranatani-simpul-bukti.svg">Unduh SVG</button>
+        </div>
+        <div class="board-info">
+          <div class="story">
+            <p class="story-kicker">Tesis merek</p>
+            <h3>Pengetahuan tumbuh ketika bukti saling tersambung.</h3>
+            <p>Kurung bukan pagar: ujungnya terbuka dan memberi ruang pada sumber baru. Batang pusat tumbuh dari simpul-simpul data, lalu berakhir pada benih—keputusan yang lebih baik, bukan keputusan yang dibuatkan oleh sistem.</p>
+            <p class="promise">Janji merek: “Kami menghubungkan bukti agar Anda bisa menilai sendiri.”</p>
+            <dl class="concept-data">
+              <div><dt>Karakter</dt><dd>Progresif, presisi, transparan, digital-native.</dd></div>
+              <div><dt>Paling cocok</dt><dd>Produk data, API terbuka, alat banding, dan komunitas pengembang.</dd></div>
+              <div><dt>Tipografi</dt><dd>Grotesk tebal + mono; kontras antara kemudahan dan ketelitian.</dd></div>
+              <div><dt>Risiko</dt><dd>Paling teknologis; perlu fotografi dan bahasa lapangan agar tetap hangat.</dd></div>
+            </dl>
+          </div>
+          <aside class="applications" aria-label="Contoh penerapan konsep Simpul Bukti">
+            <header class="applications-head"><h3>Uji pakai</h3><p>Kurung dan simpul menjadi bahasa konsisten untuk sumber serta relasi data.</p></header>
+            <div class="mock-grid">
+              <div class="mock app-tile">
+                <svg viewBox="0 0 256 256" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#0d4a3b" stroke-width="18"/><path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#188f82" stroke-width="12"/><circle cx="91" cy="115" r="14" fill="#188f82"/><circle cx="167" cy="157" r="14" fill="#188f82"/><circle cx="128" cy="182" r="14" fill="#188f82"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></g></svg>
+                <p class="mock-label">Ikon aplikasi</p>
+              </div>
+              <div class="mock small-lockup">
+                <svg viewBox="0 0 256 256" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#0d4a3b" stroke-width="18"/><path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#188f82" stroke-width="12"/><circle cx="91" cy="115" r="14" fill="#188f82"/><circle cx="167" cy="157" r="14" fill="#188f82"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></g></svg>
+                <div><b>Pranatani</b><small>DATA PERTANIAN TERBUKA</small></div>
+                <p class="mock-label">Header 32 px</p>
+              </div>
+              <div class="mock field-sign" style="background:#0d4a3b"><div><span>[ Pranatani ]</span><small>BUKTI TERSAMBUNG</small></div><p class="mock-label">Papan data</p></div>
+              <div class="mock stamp"><div class="stamp-inner" style="border-radius:8px;transform:none">Sumber<br>[ 03 ]<br>terhubung</div><p class="mock-label">Status bukti</p></div>
+            </div>
+          </aside>
+        </div>
+        <div class="palette" aria-label="Palet Simpul Bukti">
+          <div class="swatch" style="background:#0d4a3b"><span>#0D4A3B / Kanopi</span></div>
+          <div class="swatch" style="background:#188f82"><span>#188F82 / Air</span></div>
+          <div class="swatch light" style="background:#b9d93f"><span>#B9D93F / Benih</span></div>
+          <div class="swatch light" style="background:#edf1e8"><span>#EDF1E8 / Kabut</span></div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="comparison">
+    <div class="wrap">
+      <header class="comparison-head">
+        <h2>Pilih berdasarkan peran.</h2>
+        <p>Tidak ada satu logo yang paling benar untuk semua strategi. Tabel ini memisahkan daya tarik visual dari tugas utama yang harus dilakukan merek.</p>
+      </header>
+      <div class="table-wrap" role="region" aria-label="Tabel perbandingan alternatif logo" tabindex="0">
+        <table>
+          <thead>
+            <tr><th>Kriteria</th><th><span class="concept-name">01 Jejak Terbuka</span>Kontinuitas</th><th><span class="concept-name">02 Petak Bersama</span>Kedekatan</th><th><span class="concept-name">03 Simpul Bukti</span>Diferensiasi</th></tr>
+          </thead>
+          <tbody>
+            <tr><th scope="row">Gagasan pusat</th><td>Ketertelusuran sumber</td><td>Keragaman petak dan data</td><td>Hubungan antar-bukti</td></tr>
+            <tr><th scope="row">Kesan pertama</th><td>Mapan dan terpercaya</td><td>Membumi dan kolaboratif</td><td>Modern dan presisi</td></tr>
+            <tr><th scope="row">Kejelasan pertanian</th><td><span class="fit">Tinggi</span></td><td><span class="fit">Sangat tinggi</span></td><td><span class="fit">Sedang</span></td></tr>
+            <tr><th scope="row">Kekuatan ikon kecil</th><td><span class="fit">Tinggi</span></td><td><span class="fit">Tinggi</span></td><td><span class="fit">Sangat tinggi</span></td></tr>
+            <tr><th scope="row">Perubahan dari identitas kini</th><td>Rendah</td><td>Tinggi</td><td>Tinggi</td></tr>
+            <tr><th scope="row">Peran terbaik</th><td>Logo induk platform</td><td>Gerakan dan kemitraan</td><td>Produk data dan teknologi</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap decision" aria-labelledby="pilih-judul">
+    <div class="decision-copy">
+      <p class="eyebrow">Cara memutuskan</p>
+      <h2 id="pilih-judul">Logo terbaik mengikuti masa depan Pranatani.</h2>
+      <p>Jangan memilih lewat voting selera saja. Uji ketiganya pada konteks nyata: header 32 px, ikon ponsel, halaman sumber, papan kegiatan, dan percakapan dengan pengguna lapangan.</p>
+    </div>
+    <div class="decision-list">
+      <div class="decision-item"><span>1</span><div><b>Pilih Jejak Terbuka</b><small>Jika prioritasnya kontinuitas, kepercayaan, dan implementasi paling aman.</small></div></div>
+      <div class="decision-item"><span>2</span><div><b>Pilih Petak Bersama</b><small>Jika Pranatani ingin terasa seperti gerakan bersama yang dekat dengan wilayah.</small></div></div>
+      <div class="decision-item"><span>3</span><div><b>Pilih Simpul Bukti</b><small>Jika masa depan merek berpusat pada infrastruktur data dan produk digital terbuka.</small></div></div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <p>Eksplorasi konsep—bukan klaim sertifikasi, rekomendasi produk, atau jaminan hasil. Seluruh bentuk dibuat sebagai SVG mandiri di dalam halaman ini.</p>
+    <p>Pranatani · Data Pertanian Terbuka</p>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var themeButton = document.getElementById('themeButton');
+  var savedTheme = null;
+  try { savedTheme = localStorage.getItem('pranatani-logo-theme'); } catch (error) {}
+  if (savedTheme === 'dark') {
+    root.dataset.theme = 'dark';
+    themeButton.textContent = 'Mode terang';
+    themeButton.setAttribute('aria-pressed', 'true');
+  }
+
+  themeButton.addEventListener('click', function () {
+    var dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark';
+    else delete root.dataset.theme;
+    themeButton.textContent = dark ? 'Mode terang' : 'Mode gelap';
+    themeButton.setAttribute('aria-pressed', String(dark));
+    try { localStorage.setItem('pranatani-logo-theme', dark ? 'dark' : 'light'); } catch (error) {}
+  });
+
+  function acknowledge(button, label) {
+    var original = button.textContent;
+    button.textContent = label;
+    button.dataset.state = 'done';
+    window.setTimeout(function () {
+      button.textContent = original;
+      delete button.dataset.state;
+    }, 1600);
+  }
+
+  document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var value = button.getAttribute('data-copy');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(value).then(function () { acknowledge(button, 'Tersalin ' + value); });
+      } else {
+        acknowledge(button, value);
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-download]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var source = document.getElementById(button.getAttribute('data-download'));
+      var clone = source.cloneNode(true);
+      clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      clone.removeAttribute('id');
+      var content = '<?xml version="1.0" encoding="UTF-8"?>\n' + clone.outerHTML;
+      var link = document.createElement('a');
+      link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(content);
+      link.download = button.getAttribute('data-file');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      acknowledge(button, 'SVG diunduh');
+    });
+  });
+})();
+</script>
+</body>
+</html>
