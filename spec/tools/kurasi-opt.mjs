@@ -156,6 +156,9 @@ const LADA = { id: 'op:cmd:00001036', label: 'Lada' };
 const PISANG = { id: 'op:cmd:00001041', label: 'Pisang' };
 const KRISAN = { id: 'op:cmd:00001082', label: 'Krisan' };
 const BAWANG_DAUN = { id: 'op:cmd:00001103', label: 'Bawang daun' };
+const PALA = { id: 'op:cmd:00001276', label: 'Pala' };
+const EUCALYPTUS = { id: 'op:cmd:00001048', label: 'Eucalyptus' };
+const GANDUM = { id: 'op:cmd:00001355', label: 'Gandum' };
 const SAWIT_BIBIT = { id: 'op:cmd:00001055', label: 'Pembibitan kelapa sawit' };
 const TEH_BIBIT = { id: 'op:cmd:00001230', label: 'Pembibitan teh' };
 const TEMBAKAU_SIMPAN = { id: 'op:cmd:00001482', label: 'Tembakau di penyimpanan' };
@@ -978,9 +981,10 @@ const PINTU_JAGUNG = [
     dari: 'op:pst:00001242',
     nama: 'Lalat Bibit',
     key: 'lalat-bibit',
-    label: 'Lalat bibit jagung',
+    label: 'Lalat bibit',
+    inang: [JAGUNG, PADI],
     definition:
-      'Menyerang tanaman berumur kurang dari tiga minggu; sesudah itu batangnya sudah terlalu keras. Registri memecahnya jadi tiga entitas — Atherigona sp. (9 baris), Atherigona exigua (8), dan Atherigona oryzae (2) — dan hanya yang kedua cocok tepat sampai spesies di GBIF. Pintu ini berdiri di atasnya; sebelas baris atas nama dua entitas lain tidak ikut terdaftar di sini, dan ketiganya toh tidak bisa dibedakan di kebun.',
+      'Menyerang tanaman berumur kurang dari tiga minggu; sesudah itu batangnya sudah terlalu keras. Lalat bibit jagung dan lalat bibit padi lalat yang SAMA marganya dan memberi kerusakan yang sama — pucuk mati sementara daun luar masih hijau — sehingga pintunya berinang keduanya dan teksnya sengaja tidak menyebut satu tanaman pun. Registri memecahnya jadi tiga entitas Atherigona, dan hanya satu yang cocok tepat sampai spesies di GBIF; ketiganya toh tidak bisa dibedakan di kebun.',
     gejala:
       'Pucuk tanaman muda menguning lalu mati dan MUDAH DITARIK LEPAS, sementara daun di bawahnya masih hijau. Tanaman jadi kerdil dan bertunas banyak dari pangkal, atau mati sama sekali sehingga petak terlihat jarang berpetak-petak pada tiga minggu pertama.',
     pembanding: [
@@ -1006,7 +1010,7 @@ const PINTU_JAGUNG = [
     pembanding: [
       {
         cek: 'Belah batang yang berlubang membujur. Ada lorong memanjang berisi kotoran beserta ulat berwarna krem kecoklatan bertitik gelap di tiap ruas. Lalat bibit meninggalkan belatung putih TANPA KAKI di pangkal, bukan ulat berkaki di dalam ruas batang.',
-        membantah: { id: 'op:pst:00000046', label: 'Lalat bibit jagung' },
+        membantah: { id: 'op:pst:00000046', label: 'Lalat bibit' },
       },
       {
         cek: 'Lihat di mana lubangnya. Penggerek batang melubangi BATANG dan tangkai bunga jantan pada tanaman yang sudah tinggi; ulat grayak jagung merusak dari corong pucuk dan ujung tongkol, dan tidak menggerek ruas batang.',
@@ -2485,7 +2489,7 @@ const PINTU_GUDANG = [
   {
     id: 'op:pst:00000122', dari: 'op:pst:00001082', nama: 'Hama Gudang',
     key: 'kumbang-tepung', label: 'Kumbang tepung',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS, GANDUM],
     definition:
       'Hama gudang dengan pendaftaran terbanyak — 23 baris. Ia TIDAK bisa melubangi butir yang utuh dan keras: ia hidup dari butir pecah, dedak, dan tepung, jadi kehadirannya menandakan ada butir rusak lebih dulu — sering bekas hama lain atau bekas penggilingan. Registri juga memuat Tribolium sp. dan Tribolium confusum (5 baris) yang belum disatukan. Yang menentukan kebersihan gudang, kadar air gabah di bawah 14%, dan mengosongkan sisa tumpukan lama sebelum memasukkan yang baru.',
     gejala:
@@ -2500,7 +2504,7 @@ const PINTU_GUDANG = [
   {
     id: 'op:pst:00000123', dari: 'op:pst:00001116', nama: 'Hama Gudang',
     key: 'bubuk-beras', label: 'Bubuk beras',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS, GANDUM],
     definition:
       'Kumbang bubuk beras. Berbeda dari kumbang tepung, ia MELUBANGI butir utuh dan berkembang di dalamnya, jadi ia bisa memulai serangan pada beras yang masih bagus. Registri juga memuat Sitophilus spp. (9 baris) dan Sitophilus zeamais, bubuk jagung (8 baris), yang belum disatukan. Betinanya bertelur di dalam butir dan menutupnya, jadi butir yang tampak utuh bisa sudah berisi larva.',
     gejala:
@@ -2514,7 +2518,7 @@ const PINTU_GUDANG = [
   {
     id: 'op:pst:00000124', dari: 'op:pst:00001183', nama: 'Hama Gudang',
     key: 'bubuk-gabah', label: 'Bubuk gabah',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS, GANDUM],
     definition:
       'Kumbang bubuk gabah. Seperti bubuk beras ia melubangi butir utuh, tetapi jauh lebih tahan panas dan kering — jadi ia yang paling sering bertahan di gudang yang sudah dikeringkan dengan baik. Larvanya menghasilkan bubuk halus yang menumpuk di dasar karung, dan bubuk itu sering tanda pertama sebelum kumbangnya terlihat.',
     gejala:
@@ -2635,7 +2639,7 @@ const PINTU_SISA2 = [
   {
     id: 'op:pst:00000132', dari: 'op:pst:00001162', nama: 'Hama Gudang',
     key: 'bubuk-jagung', label: 'Bubuk jagung',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS, GANDUM],
     definition:
       'Kembar dekat bubuk beras dan ditangani sama; membedakan keduanya menuntut kaca pembesar dan tidak mengubah tindakan. Yang membedakannya dari sisi kerugian: ia lebih menyukai jagung dan biji yang lebih besar, dan lebih kuat terbang sehingga menyebar antar-gudang lewat udara, bukan cuma lewat karung yang dipindahkan.',
     gejala:
@@ -2915,6 +2919,27 @@ const CAKUP = [
     ],
   },
   {
+    pintu: 'op:pst:00000201',
+    cakup: [
+      { id: 'op:pst:00002053', nama: 'Penyakit Rebah Kecambah',
+        dasar: 'Fusarium spp. sama-sama JAMUR SEJATI dan memberi rebah kecambah yang sama di bedengan: pangkal batang mengering mencoklat dan mengeras, bukan berair. Yang menentukan bagi pembacanya golongan itu — bahan aktif untuk oomycete tidak bekerja pada keduanya — dan memisahkan Fusarium dari Rhizoctonia menuntut membiakkan jamurnya.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000203',
+    cakup: [
+      { id: 'op:pst:00002171', nama: 'Hama Penggerek Batang',
+        dasar: 'Entri registrinya menulis "Bactrocera hercules" — marga lalat buah — sementara label Indonesianya berbunyi "Hama Penggerek Batang" dan komoditasnya pala. Yang dimaksud Batocera hercules, kumbang sungut panjang penggerek batang, dan lubang bundar dengan tumpukan serbuk kayu yang dijanjikan pintu ini memang gejala yang dimaksud label.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000204',
+    cakup: [
+      { id: 'op:pst:00001063', nama: 'Hama Trips',
+        dasar: 'Pada padi tidak ada pintu bermarga Thrips, sehingga sasaran "Thrips sp." di sana tidak terjangkau pencakupan marga. Yang dimaksud label trips yang menggulung ujung daun bibit padi, dan itu persis yang dijanjikan pintu ini. Pada tanaman lain sasaran yang sama tetap dilayani pintu trips bermarga Thrips lewat pencakupan marga.' },
+    ],
+  },
+  {
     pintu: 'op:pst:00000073',
     cakup: [
       { id: 'op:pst:00001851', nama: 'Ulat Kantong',
@@ -3187,7 +3212,7 @@ const PINTU_EKOR2 = [
   {
     id: 'op:pst:00000147', dari: 'op:pst:00001363', nama: 'Hama Gudang',
     key: 'kumbang-gudang-gepeng', label: 'Kumbang gudang gepeng',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, TERIGU_SIMPAN, BERAS, GANDUM],
     definition:
       'Tidak bisa melubangi butir utuh — ia hanya memakan butir yang SUDAH pecah, dedak, dan tepung. Karena itu kehadirannya menunjukkan ada yang melubangi lebih dulu, dan menyemprotnya tanpa menangani kumbang bermoncong hanya mengulang pekerjaan. Badannya sangat gepeng sehingga ia masuk lewat lipatan karung dan sambungan kemasan yang terlihat rapat.',
     gejala:
@@ -3976,6 +4001,144 @@ const PINTU_EKOR6 = [
   },
 ];
 
+const PINTU_EKOR7 = [
+  {
+    // Tanpa `dari`: pintu ini pasangan rebah kecambah oomycete, dan yang membuatnya
+    // berdiri sendiri justru BAHAN AKTIFNYA. Registri memuat "Rhizoctonia sp." sebagai
+    // sasaran, tetapi entitas itu sudah jadi sumber pencakupan bagi pintu hawar pelepah
+    // padi; menaikkannya akan mencabut delapan baris padi. Ia dicakup dari sisi persemaian
+    // lewat pencakupan marga, karena inang kedua pintu tidak beririsan.
+    id: 'op:pst:00000201',
+    key: 'rebah-kecambah-jamur', label: 'Rebah kecambah jamur sejati',
+    pest_kind: 'disease_fungal', scientific_name: 'Rhizoctonia solani',
+    taxonomic_rank: 'species',
+    no_mapping_reason:
+      'Registri memuat sasarannya sebagai "Rhizoctonia sp." dan "Fusarium spp.", dua entri bertingkat marga yang keduanya sudah bekerja sebagai sumber pencakupan bagi pintu lain — hawar pelepah padi dan layu fusarium. Menaikkan salah satunya akan mencabut jangkauan pintu itu, jadi pintu ini berdiri tanpa tautan dan menjangkau keduanya lewat pencakupan.',
+    inang: [CABAI, TOMAT, KENTANG, KUBIS, TEMBAKAU_SEMAI, JAGUNG],
+    definition:
+      'PASANGAN rebah kecambah yang oomycete, dan seluruh alasan ia berdiri sendiri satu keputusan: BAHAN AKTIFNYA berbeda. Metalaksil dan dimetomorf bekerja pada oomycete dan tidak menyentuh jamur sejati; yang ini justru sebaliknya. Karena gejalanya di bedengan hampir sama, urutan yang masuk akal biasanya: benahi dulu penyiraman dan kerapatan semai — itu menahan keduanya — dan kalau perlakuan oomycete sudah dicoba tanpa hasil, kemungkinan besar yang berjalan yang ini.',
+    gejala:
+      'Bibit rebah dengan pangkal batang MENGERING mencoklat dan MENGERAS seperti tercekik tali, bukan berair, dan bagian yang mengering itu sering menyempit rapi di batas permukaan media. Bibit yang lebih tua tidak rebah melainkan kerdil dengan pangkal batang bercekik coklat; pada media yang lembap terlihat benang jamur coklat halus menempel di pangkal.',
+    pembanding: [
+      { cek: 'Pijit pangkal batang bibit yang rebah. Rebah kecambah jamur sejati membuatnya KERING dan keras mencoklat; yang oomycete membuatnya lunak berair, dan bedanya menentukan bahan aktif yang dibeli.',
+        membantah: { id: 'op:pst:00000141', label: 'Rebah kecambah' } },
+      { cek: 'Ingat apa yang sudah dicoba. Kalau perlakuan untuk oomycete — metalaksil atau dimetomorf — sudah dipakai dan bibit tetap rebah, kemungkinan besar yang berjalan jamur sejati, dan menambah dosis bahan yang sama tidak akan mengubah apa pun.',
+        membantah: { id: 'op:pst:00000141', label: 'Rebah kecambah' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000202', dari: 'op:pst:00002340', nama: 'Hama Symphyla',
+    key: 'simfila-nenas', label: 'Simfila nenas',
+    inang: [NENAS],
+    definition:
+      'Hewan tanah bertubuh putih menyerupai kelabang kecil — bukan serangga — yang memakan UJUNG AKAR, sehingga tanaman kehilangan akar rambut dan berhenti tumbuh tanpa satu gejala pun di daun selain kerdil. Menumpuk pada tanah gembur berbahan organik banyak dan pada petak yang ditanami nenas terus-menerus. Ia bergerak cepat dan turun dalam saat tanah kering, jadi contoh tanah yang diambil siang hari di musim kering sering menyatakan tidak ada apa-apa.',
+    gejala:
+      'Tanaman KERDIL berpetak-petak dengan daun memendek dan memucat walau dipupuk, dan pertumbuhannya berhenti sementara tanaman di sebelahnya normal. Akar yang dicuci PENDEK tanpa akar rambut, ujungnya menggemuk lalu mati. Di gumpalan tanah yang baru dibongkar terlihat hewan putih ramping sepanjang beberapa milimeter yang berlari cepat menghindari cahaya.',
+    pembanding: [
+      { cek: 'Bongkar gumpalan tanah di sekitar akar dan amati beberapa detik. Simfila BERLARI CEPAT menghindari cahaya dan berkaki banyak seperti kelabang mini; nematoda tidak terlihat mata telanjang, dan larva kumbang bergerak lambat melengkung seperti huruf C.' },
+      { cek: 'Cuci akar tanaman yang kerdil. Simfila menghabiskan AKAR RAMBUT sehingga akar utama pendek berujung menggemuk; akar yang berbengkak bulat seperti manik penyebabnya nematoda puru akar.',
+        membantah: { id: 'op:pst:00000130', label: 'Nematoda puru akar' } },
+    ],
+  },
+  {
+    // Tanpa `dari` karena registri MENYALAHKAN nama marganya: entri "Bactrocera hercules"
+    // menyebut lalat buah, sementara label Indonesianya berbunyi "Hama Penggerek Batang"
+    // dan tanamannya pala. Yang dimaksud Batocera — kumbang sungut panjang penggerek
+    // batang — dan entri registrinya dicakup pintu ini beserta dasarnya.
+    id: 'op:pst:00000203',
+    key: 'penggerek-batang-pala', label: 'Penggerek batang pala',
+    pest_kind: 'insect', scientific_name: 'Batocera hercules',
+    taxonomic_rank: 'species',
+    no_mapping_reason:
+      'Entri registrinya menulis "Bactrocera hercules" — marga lalat buah — sementara label Indonesianya berbunyi "Hama Penggerek Batang" dan komoditasnya pala. Yang dimaksud Batocera hercules, kumbang sungut panjang; menautkan pintu ini ke entri itu berarti mengklaim nama yang salah eja sebagai identitasnya.',
+    inang: [PALA],
+    definition:
+      'Larvanya menggerek ke dalam KAYU dan sekali di dalam tidak ada semprotan yang menjangkaunya — yang bekerja menyumbat lubangnya atau menusuknya dengan kawat. Karena itu seluruh nilainya ada pada menemukan lubang lebih awal, dan tandanya justru kotoran serbuk kayu yang menumpuk di pangkal pohon. Menyerang pohon yang sudah lemah lebih dulu, jadi pohon yang terserang berulang biasanya menandakan masalah akar atau hara yang belum ditangani.',
+    gejala:
+      'Lubang BUNDAR sebesar jari kelingking pada batang, dan dari lubang itu keluar serbuk kayu kasar bercampur kotoran yang menumpuk di pangkal pohon atau menggantung di kulit. Cabang atau seluruh pohon di atas gerekan menguning dan meranggas; batang yang digerek berat mudah patah tertiup angin.',
+    pembanding: [
+      { cek: 'Cari TUMPUKAN serbuk kayu kasar di pangkal pohon, lalu telusuri ke atas sampai lubangnya. Penggerek batang meninggalkan keduanya; pohon yang meranggas tanpa lubang dan tanpa serbuk penyebabnya akar atau pembuluh, dan menyemprot batang tidak menolong.' },
+      { cek: 'Perhatikan ukuran lubangnya. Penggerek batang pala melubangi sebesar jari kelingking; lubang sebesar ujung jarum dengan serbuk halus penyebabnya kumbang penggerek yang jauh lebih kecil, dan penanganannya berbeda.' },
+    ],
+  },
+  {
+    // Tanpa `dari`: sasaran "Thrips sp." pada padi tidak bisa dinaikkan karena entitas itu
+    // sumber pencakupan bagi tiga pintu trips lain; ia dicakup pintu ini dari sisi padi.
+    id: 'op:pst:00000204',
+    key: 'trips-padi', label: 'Trips padi',
+    pest_kind: 'insect', scientific_name: 'Stenchaetothrips biformis',
+    taxonomic_rank: 'species',
+    no_mapping_reason:
+      'Registri tidak memuat Stenchaetothrips; yang ada sasaran bertingkat marga "Thrips sp." yang sudah bekerja sebagai sumber pencakupan bagi tiga pintu trips lain, sehingga menaikkannya akan mencabut jangkauan ketiganya. Entri itu dicakup pintu ini dari sisi padi saja.',
+    inang: [PADI],
+    definition:
+      'Masalah PERSEMAIAN dan padi muda, dan hampir selalu masalah AIR: menumpuk pada persemaian yang kering dan pada sawah yang airnya belum masuk, lalu berhenti sendiri begitu petak tergenang. Menggenangi persemaian beberapa hari sering menyelesaikannya tanpa semprotan apa pun, dan itu tindakan yang lebih murah daripada menyemprot bedengan. Tanaman yang sudah melewati fase anakan jarang dirugikan.',
+    gejala:
+      'Ujung daun MENGGULUNG memanjang ke dalam seperti pipa lalu menguning dan mengering dari ujung, dan daun yang digulung terasa kasar. Persemaian terlihat menguning berpetak dan bibitnya kerdil. Bila gulungan dibuka, di dalamnya ada serangga sangat kecil berwarna kuning kecoklatan yang bergerak cepat.',
+    pembanding: [
+      { cek: 'BUKA ujung daun yang menggulung. Trips padi ada di DALAM gulungan itu, berupa serangga kuning kecoklatan sangat kecil; daun yang menggulung karena kekeringan kosong dan menggulung dari kedua tepi, bukan memanjang dari ujung.' },
+      { cek: 'Periksa keadaan airnya. Trips padi menumpuk saat persemaian atau petak KERING dan berhenti sendiri begitu tergenang; kalau petaknya sudah berair dan gejalanya berlanjut, penyebabnya bukan ini.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000205', dari: 'op:pst:00001962', nama: 'Penyakit Busuk Batang',
+    key: 'busuk-batang-sklerotinia', label: 'Busuk batang sklerotinia',
+    inang: [TEMBAKAU],
+    definition:
+      'Bertahan di tanah sebagai butiran keras BESAR yang bisa hidup bertahun-tahun, sehingga petak yang pernah terserang tetap berisiko walau tanamannya diganti — dan itu yang membedakan keputusannya dari penyakit daun: yang menentukan pergiliran tanaman dan drainase, bukan jadwal semprot. Menumpuk pada cuaca sejuk lembap dan pada pertanaman rapat yang pangkal batangnya lama basah.',
+    gejala:
+      'Pangkal atau batang tengah membusuk BASAH dan memucat seperti direbus, lalu tertutup benang jamur PUTIH tebal seperti kapas. Di dalam batang yang dibelah dan di permukaan benang itu terdapat butiran keras HITAM sebesar biji kacang hijau sampai sebesar kuku. Tanaman layu di atas batas busuk sementara akarnya masih hidup.',
+    pembanding: [
+      { cek: 'Belah batang yang membusuk dan cari BUTIRAN HITAM keras di dalamnya. Busuk batang sklerotinia membentuknya sebesar biji kacang hijau atau lebih; busuk sklerotium pada kacang-kacangan membentuk butiran jauh lebih kecil sebesar biji sawi dan berwarna coklat kemerahan, di luar batang.',
+        membantah: { id: 'op:pst:00000176', label: 'Busuk pangkal batang sklerotium' } },
+      { cek: 'Lihat di mana busuknya bermula. Busuk batang sklerotinia bisa bermula di BATANG TENGAH, bukan cuma di pangkal, dan sering dari ketiak daun yang tertinggal; lanas bermula dari pangkal batang di batas tanah dan mengempis ke atas.',
+        membantah: { id: 'op:pst:00000098', label: 'Lanas' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000206', dari: 'op:pst:00002026', nama: 'Empoasca spp.',
+    key: 'wereng-daun-kedelai', label: 'Wereng daun kedelai',
+    inang: [KEDELAI, KACANG_PANJANG],
+    definition:
+      'Yang merusak bukan lubang melainkan RACUN dalam air liurnya, sehingga daun rusak tanpa satu lubang pun dan gejalanya mudah dikira kekurangan hara, keracunan pupuk, atau kekeringan. Menumpuk pada musim kering. Karena kerusakannya terjadi saat mengisap, ambangnya rendah: begitu tepi daun mulai menguning, sebagian hasil sudah hilang.',
+    gejala:
+      'Tepi daun menguning lalu MELENGKUNG KE BAWAH dan mencoklat mengering dari tepi ke dalam, sementara tulang daun dan bagian tengahnya masih hijau. Di permukaan bawah ada wereng hijau pucat kecil yang berjalan MENYAMPING dan melompat saat daun digoyang. Tanaman kerdil dan polongnya sedikit.',
+    pembanding: [
+      { cek: 'Balik daun dan goyang. Wereng daun berjalan MENYAMPING lalu melompat; kutu daun kedelai bergerombol diam di pucuk dan meninggalkan embun madu lengket berjelaga.',
+        membantah: { id: 'op:pst:00000146', label: 'Kutu daun kedelai' } },
+      { cek: 'Lihat pola menguningnya. Wereng daun menguningkan dan melengkungkan TEPI daun ke bawah sementara tengahnya hijau; kekurangan kalium juga menguningkan tepi tetapi tidak melengkungkan dan mengenai seluruh tanaman merata, bukan daun tengah lebih dulu.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000207', dari: 'op:pst:00002185', nama: 'Wereng Daun',
+    key: 'wereng-daun-padi', label: 'Wereng daun padi',
+    inang: [PADI],
+    definition:
+      'Jarang menentukan hasil sendirian, dan itu bagian dari jawabannya: ia terlihat mencolok karena bertubuh besar dan berlapis lilin putih, sehingga sering disemprot padahal jumlahnya belum mendekati ambang apa pun. Menyemprotnya justru merugikan bila menghabiskan laba-laba dan kepik pemangsa yang menahan wereng coklat — dan wereng coklat itulah yang benar-benar bisa memuso satu petak.',
+    gejala:
+      'Serangga bersayap seperti perahu berwarna hijau pucat sampai kecoklatan, jauh lebih besar daripada wereng coklat, hinggap di daun dan pelepah dan melompat jauh saat diganggu. Nimfanya berlapis lilin putih seperti kapas di ujung perut. Daun berembun madu lengket dan kadang berjelaga, tetapi tanaman tetap hijau dan tidak menguning berpetak.',
+    pembanding: [
+      { cek: 'Bandingkan UKURAN dan tempat hinggapnya. Wereng daun padi besar dan hinggap di daun atas; wereng coklat kecil dan berkumpul di PANGKAL batang di batas air — dan yang di pangkal itulah yang berbahaya.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' } },
+      { cek: 'Lihat apakah ada rumpun yang menguning lalu mengering berpetak melingkar. Wereng daun tidak memberikan itu; kalau ada, yang sedang berjalan wereng coklat dan tindakannya jauh lebih mendesak.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000208', dari: 'op:pst:00001925', nama: 'Penggulung Daun',
+    key: 'penggulung-daun-eucalyptus', label: 'Penggulung daun eucalyptus',
+    inang: [EUCALYPTUS],
+    definition:
+      'Masalah PEMBIBITAN dan tegakan muda; pada tegakan yang sudah menutup ia jarang menentukan. Ulatnya bersembunyi di dalam gulungan daun sehingga semprotan kontak sulit menjangkaunya, dan waktunya harus mengenai ulat yang baru menetas sebelum menggulung. Pada bibit di persemaian, memungut dan membuang gulungan lebih cepat daripada menyemprot seluruh bedengan.',
+    gejala:
+      'Daun pucuk MENGGULUNG atau dua daun terekat menjadi satu oleh benang sutera, dan di dalamnya ada ulat hijau kecoklatan beserta kotoran hitam halus. Bagian dalam gulungan tergerus sehingga daun yang dibuka berlubang; pucuk yang berulang terserang bercabang tidak beraturan dan batangnya bengkok.',
+    pembanding: [
+      { cek: 'BUKA gulungan atau daun yang terekat. Penggulung daun meninggalkan ulat dan kotoran hitam di dalamnya beserta benang sutera; daun yang menggulung karena kekeringan kosong dan tidak berbenang.' },
+      { cek: 'Lihat apakah kerusakannya terpusat di PUCUK. Penggulung daun menyerang daun termuda; daun tua yang berlubang tersebar tanpa gulungan penyebabnya kumbang atau belalang.' },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -4021,6 +4184,8 @@ const KELOMPOK = [
   { kunci: 'ekor5', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR5 },
 
   { kunci: 'ekor6', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR6 },
+
+  { kunci: 'ekor7', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR7 },
 ];
 
 // ---------------------------------------------------------------------------

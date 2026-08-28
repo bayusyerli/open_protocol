@@ -281,6 +281,30 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L40 — `broader` tidak boleh berputar, dan tidak boleh menunjuk diri sendiri.
+    //
+    // Rantai broader dijangkau berulang saat menyusun indeks, dan putaran membuatnya
+    // berjalan selamanya. Alat yang memasangnya sudah memeriksa ini, tetapi rantai bisa
+    // terbentuk dari DUA berkas yang disunting terpisah — "Cabai merah" menunjuk "Cabai"
+    // di satu berkas sementara "Cabai" menunjuk "Cabai merah" di berkas lain — dan tidak
+    // satu pun alat itu melihat keduanya sekaligus.
+    if (typeof doc.id === 'string' && doc.id.startsWith('op:cmd:') && doc.broader?.id) {
+      if (doc.broader.id === doc.id) {
+        fail(file, 'L40-broader-berputar', `${doc.id} menunjuk dirinya sendiri sebagai broader.`);
+      } else {
+        const lewat = new Set([doc.id]);
+        let kini = doc.broader.id;
+        while (kini) {
+          if (lewat.has(kini)) {
+            fail(file, 'L40-broader-berputar', `Rantai broader dari ${doc.id} berputar di ${kini}. Penjangkauan komoditas yang lebih sempit menelusuri rantai ini, dan putaran membuatnya tidak pernah berhenti.`);
+            break;
+          }
+          lewat.add(kini);
+          kini = entityById.get(kini)?.broader?.id;
+        }
+      }
+    }
+
     // L39 — sasaran yang dicakup sebuah pintu tidak boleh punya pintu sendiri.
     //
     // `covers` menyatakan "produk yang terdaftar untuk spesies ITU menjawab pintu INI",

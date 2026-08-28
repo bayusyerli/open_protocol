@@ -1,0 +1,31 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "commodity",
+    "label": { "id": "Fixture L40 negatif" },
+    "scope": { "id": "Dua komoditas yang saling menunjuk sebagai broader; bukan bagian kosakata." },
+    "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-28T00:00:00Z" },
+    "provenance": { "license": "CC-BY-SA-4.0", "sources": [{ "title": "Fixture uji aturan L40", "publisher": "Pranatani" }] },
+    "id_blocks": [{ "from": 9201, "to": 9202 }]
+  },
+  "items": [
+    {
+      "id": "op:cmd:00009201",
+      "key": "komoditas-uji-l40-a",
+      "label": { "id": "Komoditas uji L40 A" },
+      "kind": "crop",
+      "broader": { "id": "op:cmd:00009202", "label": "Komoditas uji L40 B" },
+      "no_mapping_reason": "Fixture negatif untuk L40: A menunjuk B dan B menunjuk A, sehingga penelusuran rantai broader saat menyusun indeks tidak pernah berhenti. Bentuk kambuhnya konkret — dua berkas kosakata disunting terpisah, dan tidak satu pun alat pemasang melihat keduanya sekaligus.",
+      "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-28T00:00:00Z" }
+    },
+    {
+      "id": "op:cmd:00009202",
+      "key": "komoditas-uji-l40-b",
+      "label": { "id": "Komoditas uji L40 B" },
+      "kind": "crop",
+      "broader": { "id": "op:cmd:00009201", "label": "Komoditas uji L40 A" },
+      "no_mapping_reason": "Pasangan putaran untuk fixture L40; lihat entri A.",
+      "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-28T00:00:00Z" }
+    }
+  ]
+}

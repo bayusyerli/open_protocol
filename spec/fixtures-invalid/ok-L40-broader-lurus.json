@@ -1,0 +1,22 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "commodity",
+    "label": { "id": "Fixture L40 positif" },
+    "scope": { "id": "Komoditas yang menunjuk broader tanpa putaran; bukan bagian kosakata." },
+    "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-28T00:00:00Z" },
+    "provenance": { "license": "CC-BY-SA-4.0", "sources": [{ "title": "Fixture uji aturan L40", "publisher": "Pranatani" }] },
+    "id_blocks": [{ "from": 9203, "to": 9203 }]
+  },
+  "items": [
+    {
+      "id": "op:cmd:00009203",
+      "key": "komoditas-uji-l40-lurus",
+      "label": { "id": "Komoditas uji L40 lurus" },
+      "kind": "crop",
+      "broader": { "id": "op:cmd:00001003", "label": "Cabai" },
+      "no_mapping_reason": "Fixture positif untuk L40: rantai broader yang berakhir pada komoditas yang tidak punya broader, yang memang bentuk yang harus lolos. Tanpa pasangan ini, L40 bisa saja menolak seluruh medan broader dan tetap terlihat benar.",
+      "lifecycle": { "version": "0.1.0", "status": "draft", "created_at": "2026-08-28T00:00:00Z" }
+    }
+  ]
+}

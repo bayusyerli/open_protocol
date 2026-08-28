@@ -1761,7 +1761,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Cabai Merah",
@@ -1771,7 +1771,11 @@
         "id": "op:sca:00000001",
         "label": "BBCH — Solanaceae (cabai, tomat, terung)"
       },
-      "perennial": false
+      "perennial": false,
+      "broader": {
+        "id": "op:cmd:00001003",
+        "label": "Cabai"
+      }
     },
     {
       "id": "op:cmd:00001034",
@@ -6044,14 +6048,18 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Budidaya tanaman padi sawah",
         "Padi (2 ml/l)",
         "Tanaman Padi",
         "Tanaman padi sawah"
-      ]
+      ],
+      "broader": {
+        "id": "op:cmd:00000006",
+        "label": "Padi"
+      }
     },
     {
       "id": "op:cmd:00001195",
@@ -9596,7 +9604,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
+      },
+      "broader": {
+        "id": "op:cmd:00001015",
+        "label": "Jeruk"
       }
     },
     {
@@ -11196,7 +11209,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
+      },
+      "broader": {
+        "id": "op:cmd:00001015",
+        "label": "Jeruk"
       }
     },
     {
