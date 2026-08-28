@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama bawang merah, cabai merah besar, jagung, jeruk, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, melon, mentimun, padi, semangka dan tomat"
+      "id": "OPT utama bawang merah, cabai merah besar, jagung, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, melon, mentimun, padi, semangka dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 15 komoditas: Bawang merah, Cabai merah besar, Jagung, Jeruk, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Melon, Mentimun, Padi, Semangka, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 18 komoditas: Bawang merah, Cabai merah besar, Jagung, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Melon, Mentimun, Padi, Semangka, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -357,6 +357,10 @@
         {
           "id": "op:cmd:00001045",
           "label": "Mentimun"
+        },
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
         }
       ],
       "definition": {
@@ -616,6 +620,10 @@
         {
           "id": "op:cmd:00001021",
           "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
         }
       ],
       "mappings": [
@@ -5303,6 +5311,10 @@
         {
           "id": "op:cmd:00001007",
           "label": "Kedelai"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
         }
       ],
       "definition": {
@@ -5369,7 +5381,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Etiella zickenella",
@@ -5428,6 +5441,14 @@
         {
           "id": "op:cmd:00001007",
           "label": "Kedelai"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
+        },
+        {
+          "id": "op:cmd:00001034",
+          "label": "Kacang tanah"
         }
       ],
       "definition": {
@@ -5451,7 +5472,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Penggulung Daun",
@@ -8415,6 +8437,408 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT semangka, melon, dan mentimun, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000093",
+      "key": "penggerek-polong-kacang-panjang",
+      "label": {
+        "id": "Penggerek polong kacang panjang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Maruca testulalis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
+        }
+      ],
+      "definition": {
+        "id": "Berbeda dari penggerek polong kedelai (Etiella zinckenella) yang masuk diam-diam lewat lubang kecil: yang ini MENGIKAT bunga dan polong dengan benang sutra dan makan dari dalam ikatan itu, jadi kerusakannya terlihat dari luar. Menyerang sejak fase bunga, dan bunga yang rontok lebih dulu sering satu-satunya tanda sebelum polong terbentuk."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1886730",
+          "uri": "https://www.gbif.org/species/1886730",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Marruca testulalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Maruca testulalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 25 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Maruca testutalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Meruca testulalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Penggerek Polong",
+        "Marruca testulalis",
+        "Maruca testutalis",
+        "Meruca testulalis",
+        "Penggerek Polong"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Bunga dan polong muda TERIKAT jadi gumpalan oleh benang sutra bercampur kotoran berbutir, dan bunga rontok banyak sebelum jadi polong. Polong yang terbentuk berlubang dengan kotoran menyembul di mulut lubang; dibelah, bijinya berlubang dan ada ulat bergaris dengan bintik gelap berbaris di punggungnya."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cari GUMPALAN bunga atau polong yang terikat benang, lalu buka. Penggerek polong kacang panjang meninggalkan benang sutra bercampur kotoran; penggerek polong kedelai tidak mengikat apa pun — ia masuk lewat lubang kecil dan polongnya tampak normal dari luar."
+          },
+          "rules_out": {
+            "id": "op:pst:00000055",
+            "label": "Penggerek polong"
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan kapan kerusakannya mulai. Penggerek polong kacang panjang sudah bekerja sejak FASE BUNGA — bunga rontok banyak sebelum ada polong. Kalau bunganya utuh dan hanya polong tua yang rusak, penyebabnya lain."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kacang panjang, kacang hijau, dan kacang tanah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000094",
+      "key": "kutu-daun-kacang",
+      "label": {
+        "id": "Kutu daun kacang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Aphis craccivora",
+      "hosts": [
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
+        }
+      ],
+      "definition": {
+        "id": "Penular beberapa virus mosaik pada kacang-kacangan, dan itu yang membuatnya menentukan pada tanaman muda — bukan isapannya. Registri juga memuat Aphis sp. (2 baris) yang belum disatukan. Musuh alaminya banyak; koloni yang terlihat besar sering sudah didatangi kepik dan larva syrphid, dan menyemprot menyeluruh membunuh keduanya lebih dulu."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2072061",
+          "uri": "https://www.gbif.org/species/2072061",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aphis craccivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 15 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aphis cracivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Aphis cracivora",
+        "Kutu Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Kutu HITAM mengkilap berkelompok sangat rapat di pucuk, tangkai bunga, dan polong muda sampai bagian itu terlihat menghitam seluruhnya. Pucuk mengeriting dan memendek, bunga rontok, dan polong yang terbentuk bengkok. Daun di bawahnya lengket lalu berjelaga; semut naik-turun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat warnanya. Kutu daun kacang HITAM mengkilap dan berkerumun sampai menghitamkan pucuk; kutu daun persik hijau atau kekuningan dan tidak sepadat itu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000002",
+            "label": "Kutu daun persik"
+          }
+        },
+        {
+          "check": {
+            "id": "Cari musuh alaminya di antara koloni sebelum memutuskan: kepik bertitik, larva pipih kehijauan, atau kutu yang menggembung kecoklatan seperti balon — yang terakhir berarti sudah diparasit. Kalau banyak, koloni itu sedang runtuh sendiri."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kacang panjang, kacang hijau, dan kacang tanah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000095",
+      "key": "bercak-daun-kacang-tanah",
+      "label": {
+        "id": "Bercak daun kacang tanah"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Cercospora arachidicola",
+      "hosts": [
+        {
+          "id": "op:cmd:00001034",
+          "label": "Kacang tanah"
+        }
+      ],
+      "definition": {
+        "id": "Bercak daun awal. Registri juga memuat pasangannya, bercak daun lambat Cercospora personata (3 baris), dan Cercospora sp. (2) — keduanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Keduanya bersama karat daun menggunduli tanaman sebelum polong terisi penuh, dan gundul itulah yang menurunkan hasil, bukan bercaknya sendiri."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cercospora arachidicola",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5264558",
+          "uri": "https://www.gbif.org/species/5264558",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Bercak Dauh",
+        "Penyakit Bercak Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak bulat coklat pada daun dengan HALO KUNING tegas mengelilinginya, mula-mula pada daun bawah lalu naik. Bercaknya terlihat lebih gelap dari sisi atas daripada sisi bawah. Daun yang penuh bercak menguning lalu rontok, dan tanaman gundul dari bawah sementara polongnya belum tua."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Bandingkan bercak dari sisi atas dan sisi bawah daun. Bercak daun kacang tanah lebih GELAP dari sisi atas dan berhalo kuning tegas; karat daun sebaliknya menonjol di sisi BAWAH dan meninggalkan serbuk coklat di jari."
+          },
+          "rules_out": {
+            "id": "op:pst:00000096",
+            "label": "Karat daun kacang tanah"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat dari daun mana ia mulai dan seberapa cepat gundulnya. Bercak daun mulai dari daun BAWAH lalu naik; kalau daun rontok tanpa bercak sama sekali, penyebabnya bukan penyakit daun ini."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kacang panjang, kacang hijau, dan kacang tanah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000096",
+      "key": "karat-daun-kacang-tanah",
+      "label": {
+        "id": "Karat daun kacang tanah"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Puccinia arachidis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001034",
+          "label": "Kacang tanah"
+        }
+      ],
+      "definition": {
+        "id": "Hampir selalu datang bersama bercak daun, dan gabungan keduanya yang menggunduli tanaman — memutuskan berdasarkan salah satunya saja sering keliru menilai keparahan. Sporanya terbawa angin dan bertahan pada sisa tanaman, jadi jarak tanam dan rotasi ikut menentukan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2514951",
+          "uri": "https://www.gbif.org/species/2514951",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Pucciniomycetes; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Puccinia arachidis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Puccinia arrachidis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Karat",
+        "Penyakit Karat Daun",
+        "Puccinia arrachidis"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bintil kecil coklat kemerahan MENONJOL di permukaan BAWAH daun, yang pecah dan menyisakan serbuk coklat di jari. Dari sisi atas terlihat sebagai bintik kuning kecil. Daun mengering tetapi sering tetap MENGGANTUNG di tanaman, tidak langsung rontok."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Usap permukaan bawah daun dengan jari. Karat daun meninggalkan SERBUK coklat kemerahan; bercak daun kacang tanah rata dan tidak berserbuk."
+          },
+          "rules_out": {
+            "id": "op:pst:00000095",
+            "label": "Bercak daun kacang tanah"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah daun yang mati rontok atau menggantung. Karat daun sering menyisakan daun kering yang tetap menggantung di batang; bercak daun membuat daunnya rontok."
+          },
+          "rules_out": {
+            "id": "op:pst:00000095",
+            "label": "Bercak daun kacang tanah"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kacang panjang, kacang hijau, dan kacang tanah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000097",
+      "key": "bercak-daun-kacang-panjang",
+      "label": {
+        "id": "Bercak daun kacang panjang"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Cercospora vignae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
+        }
+      ],
+      "definition": {
+        "id": "Registri juga memuat Cercospora cruenta (2 baris) dan Cercospora sp. (1) sebagai sasaran pada kacang panjang; keduanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Paling parah pada musim hujan dan pada pertanaman rapat yang daunnya lama basah."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cercospora vignae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5264760",
+          "uri": "https://www.gbif.org/species/5264760",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak BERSUDUT kecoklatan dibatasi tulang daun halus, sering menyatu jadi bidang kering yang lebih besar, dan pada cuaca lembap permukaan bawahnya berbulu halus kelabu. Daun menguning lalu rontok dari bawah ke atas; polong yang terbentuk lebih pendek karena daunnya habis lebih dulu."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat batas bercaknya terhadap tulang daun. Bercak daun kacang panjang BERSUDUT dan berhenti di tulang daun halus; bercak karena kutu atau terbakar pupuk tidak mengikuti tulang daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000094",
+            "label": "Kutu daun kacang"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa permukaan bawah bercak pada pagi lembap. Bulu halus kelabu di bawah bercak menandakan jamurnya sedang bersporulasi — itu saat penularannya paling cepat, dan saat menjarangkan atau memangkas daun bawah paling berguna."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kacang panjang, kacang hijau, dan kacang tanah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
