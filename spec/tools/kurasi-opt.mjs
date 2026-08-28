@@ -3,8 +3,8 @@
 //   node spec/tools/kurasi-opt.mjs            # periksa saja
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
-// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, dan jagung (seluruhnya
-// 28 Agustus 2026).
+// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, dan kubis
+// (seluruhnya 28 Agustus 2026).
 // Cabai — sepuluh entri pertama — ditulis lebih dulu oleh spec/tools/tulis-gejala-opt.mjs,
 // sebelum pola di bawah ini ada.
 //
@@ -103,6 +103,7 @@ const KENTANG = { id: 'op:cmd:00001008', label: 'Kentang' };
 const CABAI = { id: 'op:cmd:00000001', label: 'Cabai merah besar' };
 const PADI = { id: 'op:cmd:00000006', label: 'Padi' };
 const JAGUNG = { id: 'op:cmd:00001002', label: 'Jagung' };
+const KUBIS = { id: 'op:cmd:00001011', label: 'Kubis' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -185,6 +186,7 @@ const PINTU_BAWANG = [
     nama: 'Ulat Tanah',
     key: 'ulat-tanah',
     label: 'Ulat tanah',
+    inang: [BAWANG_MERAH, KENTANG, JAGUNG, KUBIS],
     definition:
       'Menyerang pada malam hari dan bersembunyi di tanah pada siang hari. Polifag: terdaftar juga pada kentang, jagung, cabai, dan kubis, dan gejalanya sama di semuanya — jadi teks di bawah sengaja tidak menyebut satu tanaman pun. ' +
       'Orong-orong (Gryllotalpa sp.) merusak dengan cara yang mirip, tetapi meninggalkan lorong gembur di permukaan tanah dan terdaftar lewat pintunya sendiri.',
@@ -388,9 +390,9 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Penggerek Buah',
     key: 'penggerek-buah',
     label: 'Penggerek buah',
-    inang: [TOMAT, CABAI],
+    inang: [TOMAT, CABAI, JAGUNG],
     definition:
-      'Polifag: terdaftar juga pada jagung (19 baris), tembakau, semangka, dan melon, dan cara merusaknya sama di semuanya — karena itu teks di bawah sengaja tidak menyebut satu tanaman pun. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.',
+      'Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.',
     gejala:
       'Buah atau tongkol berlubang bundar bersih di dekat tangkainya, dan dari lubang itu menyembul kotoran berbutir basah. Di dalam satu buah biasanya hanya ADA SATU ulat, karena yang lebih besar memakan yang lain. Buah yang terlanjur berlubang membusuk dan gugur.',
     pembanding: [
@@ -944,11 +946,138 @@ const PINTU_JAGUNG = [
   },
 ];
 
+const PINTU_KUBIS = [
+  {
+    id: 'op:pst:00000049',
+    dari: 'op:pst:00001028',
+    nama: 'Perusak Daun',
+    key: 'ulat-daun-kubis',
+    label: 'Ulat daun kubis',
+    definition:
+      'Ulat tritip. Sasaran terbanyak pada kubis — 176 baris — dan hama sayuran dengan riwayat resistensi paling panjang di dunia: ia sudah kebal terhadap hampir setiap golongan insektisida di suatu tempat. Yang menentukan karena itu merotasi GOLONGAN bahan aktif, bukan berganti merek; dua merek berbeda yang segolongan tidak menghitung sebagai rotasi.',
+    gejala:
+      'Daun berlubang seperti JENDELA: lapisan bawah daun dikerok habis sementara lapisan atasnya tertinggal sebagai selaput bening, lalu sobek jadi lubang. Ulat hijau kecil kurang dari satu sentimeter menggeliat cepat dan MENJATUHKAN DIRI menggantung pada benang sutra saat daun disentuh. Kepompongnya berjaring seperti anyaman kasar, menempel di bawah daun.',
+    pembanding: [
+      {
+        cek: 'Sentuh daun yang berulat. Ulat daun kubis menjatuhkan diri dan menggantung pada benang sutra — tidak ada ulat kubis lain yang melakukannya. Ulat krop tetap di tempat, dan justru bergerak lebih dalam ke krop.',
+        membantah: { id: 'op:pst:00000050', label: 'Ulat krop' },
+      },
+      {
+        cek: 'Terawang daun yang rusak ke arah cahaya. Ulat daun kubis meninggalkan selaput bening seperti jendela sebelum sobek; bekicot dan siput memakan daun sampai tembus sejak awal, dengan tepi tergerus halus.',
+        membantah: { id: 'op:pst:00000051', label: 'Bekicot' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000050',
+    dari: 'op:pst:00001047',
+    nama: 'Ulat Krop',
+    key: 'ulat-krop',
+    label: 'Ulat krop',
+    definition:
+      'Jauh lebih menentukan daripada ulat daun kubis begitu krop mulai terbentuk, karena kerusakannya DI DALAM krop dan tidak terjangkau semprotan yang hanya membasahi daun luar. Registri juga memuatnya atas nama lama Crocidolomia binotalis (14 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini.',
+    gejala:
+      'Titik tumbuh dan daun muda di tengah rumpun habis dimakan sehingga krop gagal terbentuk atau berlubang di dalamnya. Ulatnya berkelompok, hijau bergaris memanjang dan berbulu halus, dan di antara daun yang dimakan menumpuk kotoran hijau kehitaman. Dari luar tanaman bisa tampak masih baik.',
+    pembanding: [
+      {
+        cek: 'Buka krop atau daun muda di tengah rumpun. Ulat krop ada DI DALAM bersama kotorannya; ulat daun kubis makan di permukaan daun luar dan tidak masuk ke titik tumbuh.',
+        membantah: { id: 'op:pst:00000049', label: 'Ulat daun kubis' },
+      },
+      {
+        cek: 'Cari kelompok telurnya di permukaan bawah daun. Ulat krop bertelur BERKELOMPOK menyerupai sisik yang saling menindih; ulat daun kubis bertelur satu-satu tersebar dan telurnya nyaris tidak terlihat.',
+        membantah: { id: 'op:pst:00000049', label: 'Ulat daun kubis' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000051',
+    dari: 'op:pst:00001211',
+    nama: 'Siput Babi',
+    key: 'bekicot',
+    label: 'Bekicot',
+    definition:
+      'Paling merusak di persemaian dan pada dua sampai tiga minggu pertama sesudah tanam pindah; aktif malam hari dan sesudah hujan. Registri juga memuat siput lain — Filicaulis bleekeri, Bradybaena similaris, Parmarion pupillaris — masing-masing satu sampai dua baris, semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini.',
+    gejala:
+      'Daun berlubang besar tidak beraturan dengan tepi tergerus halus, dan bibit muda bisa habis sama sekali dalam semalam. Ada JEJAK LENDIR mengkilap yang mengering seperti perak di daun, batang, dan permukaan tanah, dengan butiran kotoran memanjang di dekatnya.',
+    pembanding: [
+      {
+        cek: 'Periksa malam hari dengan senter, atau pagi-pagi sekali. Jejak lendir mengkilap yang mengering seperti perak hanya ditinggalkan siput dan bekicot; tidak ada ulat yang meninggalkannya. Siang hari mereka bersembunyi di bawah mulsa, sisa tanaman, atau bongkahan tanah.',
+      },
+      {
+        cek: 'Lihat tepi lubangnya. Bekicot menggerus tepi lubang jadi halus dan berlekuk lebar; ulat meninggalkan tepi bergerigi beserta butiran kotoran, bukan lendir.',
+        membantah: { id: 'op:pst:00000049', label: 'Ulat daun kubis' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000052',
+    dari: 'op:pst:00001286',
+    nama: 'Penyakit Akar Gada',
+    key: 'akar-gada',
+    label: 'Akar gada',
+    definition:
+      'Bertahan di tanah sepuluh tahun atau lebih sebagai spora istirahat, dan menyebar lewat tanah yang menempel di alat, sepatu, dan bibit. Tidak ada semprotan yang menyembuhkan tanaman yang sudah bergejala: yang menentukan pengapuran sampai pH tanah naik, rotasi dengan bukan-brassica, dan bibit dari persemaian yang bebas — enam baris pendaftarannya tidak mengubah kenyataan itu.',
+    gejala:
+      'Tanaman layu di siang hari lalu segar lagi menjelang sore, berulang beberapa hari, sampai akhirnya kerdil dan menguning; kropnya kecil atau tidak terbentuk sama sekali. Gejalanya BERKELOMPOK di bagian petak yang paling lembap, dan bagian itu melebar tiap kali brassica ditanam lagi di situ.',
+    pembanding: [
+      {
+        cek: 'Cabut tanaman yang layu beserta akarnya, lalu cuci tanahnya. Akarnya menggembung jadi bonggol tidak beraturan seperti gada atau jari yang bengkak. Tidak ada penyakit kubis lain yang membentuknya — dan begitu terlihat, petak itu terinfestasi untuk bertahun-tahun ke depan.',
+      },
+      {
+        cek: 'Perhatikan pola layunya. Akar gada membuat tanaman layu siang lalu pulih sore, berulang selama beberapa hari; busuk lunak bakteri membuat jaringannya hancur berbau dan tanaman tidak pernah pulih.',
+        membantah: { id: 'op:pst:00000054', label: 'Busuk lunak' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000053',
+    dari: 'op:pst:00001248',
+    nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-alternaria',
+    label: 'Bercak daun alternaria',
+    definition:
+      'Terdaftar merata pada kubis dan sawi, dan gejalanya sama pada seluruh brassica. Menular lewat benih dan sisa tanaman; paling parah pada musim hujan dan pada daun yang sudah tua atau terluka.',
+    gejala:
+      'Bercak bundar coklat kehitaman pada daun TUA lebih dulu, dengan cincin sepusat di dalamnya seperti sasaran panah dan sering dikelilingi halo kuning. Bercak yang bersambung membuat daun menguning lalu kering. Pada krop yang sudah terbentuk, bercaknya menurunkan mutu jual walau kropnya masih utuh.',
+    pembanding: [
+      {
+        cek: 'Tatap ke dalam bercaknya. Bercak alternaria bercincin sepusat, tepinya tegas, dan terasa kering. Busuk hitam tidak bercincin: ia masuk dari TEPI daun membentuk huruf V kuning dengan tulang daun di dalamnya menghitam.',
+        membantah: { id: 'op:pst:00001198', label: 'Penyakit Busuk Hitam' },
+      },
+      {
+        cek: 'Lihat daun mana yang kena lebih dulu. Bercak alternaria menumpuk di daun TUA di luar; ulat daun kubis melubangi daun mana saja termasuk yang muda, dan lubangnya berselaput bening sebelum sobek.',
+        membantah: { id: 'op:pst:00000049', label: 'Ulat daun kubis' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000054',
+    dari: 'op:pst:00001499',
+    nama: 'Penyakit Bakteri Busuk Lunak',
+    key: 'busuk-lunak',
+    label: 'Busuk lunak',
+    definition:
+      'Masuk lewat LUKA — bekas gigitan ulat, bekas potong, atau retak karena hujan sesudah kering — jadi mengendalikan ulat krop ikut menurunkan busuk lunak. Berkembang cepat pada suhu hangat dan lembap, dan berlanjut di dalam keranjang sesudah panen. Registri juga memuat busuk hitam (Xanthomonas campestris) pada kubis dan kembang kol (4 baris), tetapi entitas itu didominasi TUJUH baris pada padi — hampir pasti salah nama, karena bakteri hawar padi adalah X. oryzae — sehingga menaikkannya berarti membuka pintu bergejala kubis untuk padi. Busuk hitam karena itu belum berpintu di sini.',
+    gejala:
+      'Krop atau pangkal daun melunak dan berair, warnanya coklat kelabu, dan jaringannya hancur jadi bubur yang menempel di tangan. Baunya BUSUK MENYENGAT dan khas. Menjalar cepat — satu krop bisa hancur dalam dua sampai tiga hari — dan menular ke krop di sebelahnya lewat air.',
+    pembanding: [
+      {
+        cek: 'Tekan bagian yang lunak, lalu cium. Busuk lunak bakteri berbau menyengat dan mengeluarkan cairan keruh berlendir saat ditekan; busuk karena jamur berbau apak dan jaringannya tidak hancur jadi bubur.',
+      },
+      {
+        cek: 'Cari luka tempat ia masuk. Busuk lunak hampir selalu mulai dari bekas gigitan ulat, bekas potong, atau retakan — bukan dari daun yang utuh. Kalau tidak ada luka dan yang layu justru tanaman berakar menggembung, penyebabnya akar gada.',
+        membantah: { id: 'op:pst:00000052', label: 'Akar gada' },
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
   { kunci: 'padi', tanaman: 'padi', inang: [PADI], pintu: PINTU_PADI },
   { kunci: 'jagung', tanaman: 'jagung', inang: [JAGUNG], pintu: PINTU_JAGUNG },
+  { kunci: 'kubis', tanaman: 'kubis', inang: [KUBIS], pintu: PINTU_KUBIS },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1008,11 +1137,11 @@ const PERLUAS = [
   {
     id: 'op:pst:00000002',
     nama: 'Kutu daun persik',
-    inang: [CABAI, BAWANG_MERAH, TOMAT, KENTANG],
+    inang: [CABAI, BAWANG_MERAH, TOMAT, KENTANG, KUBIS],
     definition:
       'Vektor beberapa virus penting, termasuk virus penggulung daun pada kentang. Mengendalikannya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergejala.',
     gejala:
-      'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
+      'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
   },
   { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG] },
   {
@@ -1034,14 +1163,6 @@ const PERLUAS = [
         membantah: { id: 'op:pst:00000042', label: 'Ulat grayak jagung' },
       },
     ],
-  },
-  { id: 'op:pst:00000014', nama: 'Ulat tanah', inang: [BAWANG_MERAH, KENTANG, JAGUNG] },
-  {
-    id: 'op:pst:00000023',
-    nama: 'Penggerek buah',
-    inang: [TOMAT, CABAI, JAGUNG],
-    definition:
-      'Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.',
   },
 ];
 
@@ -1156,6 +1277,14 @@ for (const kel of KELOMPOK) {
     naik.push(`${p.dari ?? '(baru)'} → ${p.id} ${p.label}`);
   }
 }
+
+// Satu entri tidak boleh dipegang PINTU sekaligus PERLUAS. Keduanya menulis medan yang
+// sama, jadi yang terjadi bukan salah satu menang melainkan keduanya bergantian menang
+// tiap kali alat dijalankan — dan alat yang tidak pernah diam adalah alat yang tidak bisa
+// dipakai memeriksa apakah masih ada yang perlu diubah. Entri yang lahir dari PINTU
+// memegang seluruh medannya di sana; PERLUAS hanya untuk yang lahir di luar alat ini.
+const idPintu = new Set(KELOMPOK.flatMap((k) => k.pintu).map((p) => p.id));
+for (const x of PERLUAS) if (idPintu.has(x.id)) bantah.push(`${x.id} ada di PINTU sekaligus PERLUAS; pindahkan seluruh medannya ke PINTU.`);
 
 for (const x of PERLUAS) {
   const e = olehId.get(x.id);

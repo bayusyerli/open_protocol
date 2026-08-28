@@ -216,7 +216,7 @@ daftar fitur. Kolom **pemegang de facto** sengaja dibedakan dari "petani" — da
    terdekat. Jalur 1 sudah menemui bentuknya sendiri: 246 produk yang tak satu pun
    terbeli.
 2. **Diagnosis tanpa cakupan yang jujur.** Model dilatih untuk segelintir komoditas lalu
-   dipasarkan seolah umum. Angka kita telanjang: **0 dari 733 OPT registri punya deskripsi
+   dipasarkan seolah umum. Angka kita telanjang: **0 dari 727 OPT registri punya deskripsi
    gejala**; yang terkurasi baru 10, dan semuanya cabai.
 3. **Pencatatan sebagai kerja tak dibayar.** Ditanggung penyuluh atau petani tanpa imbalan,
    lalu berhenti di musim kedua. Penyuluh 39.809 orang terhadap kebutuhan 83.000 — tidak
@@ -232,7 +232,7 @@ daftar fitur. Kolom **pemegang de facto** sengaja dibedakan dari "petani" — da
 |---|---|---|---|
 | Kapan tanam | Katam, BMKG | baik, skala kecamatan | turun ke petak; sambung ke rencana |
 | Hara & dosis | PHSL, Nutrient Expert, PUTS | baik | **kuota & harga subsidi** — 0 dari 7.196 pupuk |
-| Diagnosis OPT | Plantix, Nuru, POPT | sedang | gejala terkurasi berbahasa lokal; **0 dari 733** |
+| Diagnosis OPT | Plantix, Nuru, POPT | sedang | gejala terkurasi berbahasa lokal; **0 dari 727** |
 | Harga eceran | SP2KP Kemendag | baik, lisensi terbuka | sambungan ke biaya petak sendiri |
 | **Harga yang diterima petani** | **tidak ada** | — | **menganga — dan bukan celah cakupan, melainkan definisi** |
 | Cuaca | BMKG | baik | dibaca sebagai tindakan, bukan angka |
@@ -418,7 +418,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 |---|---|---|---|---|---|
 | C1 | Registri input terdaftar — pupuk, pestisida, benih | semua | #3, #4, #6, #9 | **selesai** — 14.920 produk, 11.227 varietas, dan sejak 23 Agustus 2026 **3.136 badan pemegang** beserta halaman profilnya | **selesai** |
 | C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | **sisi pupuk selesai** 23 Agustus 2026 — indeks `kandungan/` memuat 12.564 produk, formulir di jalur 2; sisi pestisida terindeks tetapi belum berpermukaan | **sebagian** |
-| C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **48 dari 781**; 0 dari 733 di registri. **Sisi pintu selesai** 23 Agustus 2026 — 703 OPT registri berproduk kini terjangkau dari kotak menurut nama, dengan pernyataan bahwa gejalanya tidak ada. Komoditas kedua sampai keenam masuk 28 Agustus 2026: 11 pintu bawang merah, 12 tomat, 12 kentang, 13 padi, 10 jagung | teks gejala **BANGUN bertahap**; pintunya **selesai** |
+| C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **54 dari 781**; 0 dari 727 di registri. **Sisi pintu selesai** 23 Agustus 2026 — 697 OPT registri berproduk kini terjangkau dari kotak menurut nama, dengan pernyataan bahwa gejalanya tidak ada. Komoditas kedua sampai ketujuh masuk 28 Agustus 2026: 11 pintu bawang merah, 12 tomat, 12 kentang, 13 padi, 10 jagung, 8 kubis | teks gejala **BANGUN bertahap**; pintunya **selesai** |
 | C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, satu permintaan ke SP2KP. **Sisi harga petani tidak lagi nol** (dikoreksi 23 Agustus 2026): 8 seri tingkat pekebun dari **6 provinsi sawit**, dua di antaranya harga pekebun **swadaya**. Tetapi ia hanya SAWIT, dan pangan pokok tetap nol | sisi eceran **selesai**; sisi petani **sebagian** — sawit ada, pangan belum; **pembanding di perangkat selesai** 23 Agustus 2026, **setoran tidak dibangun** dan itu putusan |
 | C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
