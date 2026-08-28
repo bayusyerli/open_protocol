@@ -4,8 +4,8 @@
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
-// kakao, kopi, kelapa sawit, jeruk, cucurbit, legum, tembakau, teh, dan mangga
-// (seluruhnya 28 Agustus 2026).
+// kakao, kopi, kelapa sawit, jeruk, cucurbit, legum, tembakau, teh, mangga, apel,
+// tebu, karet, lada, pisang, dan krisan (seluruhnya 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -137,6 +137,15 @@ const KACANG_TANAH = { id: 'op:cmd:00001034', label: 'Kacang tanah' };
 const TEMBAKAU = { id: 'op:cmd:00001018', label: 'Tembakau' };
 const TEH = { id: 'op:cmd:00001014', label: 'Teh' };
 const MANGGA = { id: 'op:cmd:00001019', label: 'Mangga' };
+const APEL = { id: 'op:cmd:00001028', label: 'Apel' };
+const TEBU = { id: 'op:cmd:00001006', label: 'Tebu' };
+const KARET = { id: 'op:cmd:00001464', label: 'Karet' };
+const LADA = { id: 'op:cmd:00001036', label: 'Lada' };
+const PISANG = { id: 'op:cmd:00001041', label: 'Pisang' };
+const KRISAN = { id: 'op:cmd:00001082', label: 'Krisan' };
+const KELAPA = { id: 'op:cmd:00001043', label: 'Kelapa' };
+const BAWANG_PUTIH = { id: 'op:cmd:00001073', label: 'Bawang putih' };
+const SAWI = { id: 'op:cmd:00001132', label: 'Sawi' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -155,6 +164,7 @@ const PINTU_BAWANG = [
     dari: 'op:pst:00001019',
     nama: 'Ulat Grayak',
     key: 'ulat-bawang',
+    inang: [BAWANG_MERAH, BAWANG_PUTIH],
     label: 'Ulat bawang',
     definition:
       'Ulat grayak bawang. Ulatnya makan dari DALAM daun yang berongga, jadi kerusakannya sudah luas sebelum ulatnya terlihat dari luar.',
@@ -197,6 +207,7 @@ const PINTU_BAWANG = [
     dari: 'op:pst:00001094',
     nama: 'Hama Trips',
     key: 'trips-bawang',
+    inang: [BAWANG_MERAH, BAWANG_PUTIH],
     label: 'Trips bawang',
     definition:
       'Paling parah pada musim kemarau dan pada petak yang jarang disiram. Registri juga mendaftarkan Thrips parvispinus dan Thrips sp. pada bawang merah, masing-masing lewat pintunya sendiri.',
@@ -240,6 +251,7 @@ const PINTU_BAWANG = [
     dari: 'op:pst:00001022',
     nama: 'Penyakit Bercak Ungu',
     key: 'bercak-ungu',
+    inang: [BAWANG_MERAH, BAWANG_PUTIH],
     label: 'Bercak ungu',
     definition:
       'Trotol. Penyakit daun paling banyak didaftarkan pada bawang merah — 215 baris penggunaan berlabel, kedua terbanyak sesudah ulat bawang.',
@@ -1006,6 +1018,7 @@ const PINTU_KUBIS = [
     dari: 'op:pst:00001047',
     nama: 'Ulat Krop',
     key: 'ulat-krop',
+    inang: [KUBIS, SAWI],
     label: 'Ulat krop',
     definition:
       'Jauh lebih menentukan daripada ulat daun kubis begitu krop mulai terbentuk, karena kerusakannya DI DALAM krop dan tidak terjangkau semprotan yang hanya membasahi daun luar. Registri juga memuatnya atas nama lama Crocidolomia binotalis (14 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini.',
@@ -1067,6 +1080,7 @@ const PINTU_KUBIS = [
     dari: 'op:pst:00001248',
     nama: 'Penyakit Bercak Daun',
     key: 'bercak-daun-alternaria',
+    inang: [KUBIS, SAWI],
     label: 'Bercak daun alternaria',
     definition:
       'Terdaftar merata pada kubis dan sawi, dan gejalanya sama pada seluruh brassica. Menular lewat benih dan sisa tanaman; paling parah pada musim hujan dan pada daun yang sudah tua atau terluka.',
@@ -1493,6 +1507,7 @@ const PINTU_SAWIT = [
     nama: 'Ulat Kantong',
     key: 'ulat-kantong',
     label: 'Ulat kantong',
+    inang: [SAWIT, KELAPA],
     definition:
       'Hama daun sawit dengan pendaftaran terbanyak — 62 baris. Ulatnya hidup di dalam kantong dari potongan daun yang dibawanya ke mana-mana, dan kantong itulah yang membuat semprotan kontak sering gagal: cairannya tidak masuk. Yang menentukan SENSUS PELEPAH — menghitung ulat hidup pada pelepah contoh sebelum memutuskan — karena musuh alaminya banyak dan penyemprotan menyeluruh membunuh musuh alami itu lebih dulu daripada ulatnya. Registri bahkan mencatat kumbang penyerbuk Elaeidobius kamerunicus sebagai sasaran terdaftar pada satu baris; menyemprotnya MENURUNKAN pembentukan buah, bukan menaikkannya. Mahasena corbetti (1 baris), ulat kantong jenis lain, belum disatukan.',
     gejala:
@@ -1513,6 +1528,7 @@ const PINTU_SAWIT = [
     nama: 'Ulat Api',
     key: 'ulat-api',
     label: 'Ulat api',
+    inang: [SAWIT, KELAPA],
     definition:
       'Registri memecah ulat api jadi beberapa entitas: Setothosea asigna (40 baris), nama lamanya Thosea asigna (12), serta Setora nitens (18) dan Darna trima (1) yang jenis lain tetapi ditangani sama. Pintu ini berdiri di atas yang pertama; tiga puluh satu baris atas nama entitas lain tidak ikut terdaftar di sini. Bulunya MENYENGAT kulit — periksa dengan ranting atau bersarung tangan, jangan dengan tangan telanjang.',
     gejala:
@@ -1534,6 +1550,7 @@ const PINTU_SAWIT = [
     nama: 'Kumbang Tanduk',
     key: 'kumbang-tanduk',
     label: 'Kumbang tanduk',
+    inang: [SAWIT, KELAPA],
     definition:
       'Paling merusak pada tanaman muda dan pada tahun-tahun sesudah replanting, karena berkembang biak di batang sawit tua yang dibiarkan melapuk dan di tumpukan tandan kosong. Yang menentukan MEMBERANTAS TEMPAT BERKEMBANG BIAKNYA — mencacah dan meratakan batang tumbang, membalik tumpukan tandan kosong — ditambah perangkap feromon. Menyemprot pohon tidak menjangkau kumbang yang hidup di dalam tumpukan.',
     gejala:
@@ -1554,6 +1571,7 @@ const PINTU_SAWIT = [
     nama: 'Rayap Tanah',
     key: 'rayap-tanah',
     label: 'Rayap tanah',
+    inang: [SAWIT, KELAPA, KARET],
     definition:
       'Dari 71 baris pendaftarannya, 43 justru BUKAN untuk tanaman melainkan untuk bangunan — registri mencatatnya sebagai tempat aplikasi, bukan komoditas — dan yang tersisa untuk sawit 18 baris. Paling merusak di lahan gambut dan pada tanaman muda, dan menyerang dari akar ke atas sehingga kerusakannya sudah lanjut saat terlihat dari luar.',
     gejala:
@@ -1633,6 +1651,7 @@ const PINTU_SAWIT = [
     nama: 'Penyakit Busuk Batang',
     key: 'busuk-pangkal-batang',
     label: 'Busuk pangkal batang',
+    inang: [SAWIT, KELAPA],
     definition:
       'Ganoderma — penyakit sawit paling merugikan di Indonesia, dan punya TIGA baris penggunaan berlabel di seluruh registri. Tidak ada yang menyembuhkan pohon yang sudah bergejala: begitu tubuh buahnya muncul, pohon itu tinggal menunggu tumbang. Yang menentukan dikerjakan saat REPLANTING — membongkar dan mencacah tunggul serta akar sawit lama, memberi jeda tanam, dan tidak menanam bibit baru tepat di bekas lubang pohon sakit. Menyemprot pohon yang berdiri tidak menjangkau jamur yang hidup di akarnya.',
     gejala:
@@ -2200,6 +2219,188 @@ const PINTU_MANGGA = [
   },
 ];
 
+const PINTU_APEL = [
+  {
+    id: 'op:pst:00000107', dari: 'op:pst:00001232', nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-apel', label: 'Bercak daun apel',
+    definition:
+      'Menggunduli pohon sebelum buah masak, dan gundul itulah yang menurunkan hasil serta melemahkan pohon untuk musim berikutnya — bukan bercaknya sendiri. Menular dari daun rontok yang menumpuk di bawah pohon, jadi mengumpulkan dan memendam serasah memutus daur tahunannya.',
+    gejala:
+      'Bercak bulat coklat kehitaman pada daun dengan tepi menyebar tidak tegas, dan di tengahnya titik-titik hitam halus. Bercak yang banyak membuat daun menguning lalu RONTOK dari bawah ke atas, sampai pohon gundul sementara buahnya masih menggantung.',
+    pembanding: [
+      { cek: 'Usap permukaan bercaknya. Bercak daun apel RATA dan kering tanpa lapisan yang bisa diusap; embun tepung meninggalkan lapisan putih yang menempel di jari seperti bedak.',
+        membantah: { id: 'op:pst:00000108', label: 'Embun tepung apel' } },
+      { cek: 'Periksa serasah daun di bawah pohon. Bercak daun apel menular dari daun rontok musim lalu, jadi tumpukan serasah di bawah pohon yang paling parah adalah sumbernya — dan itu bagian yang masih bisa dijawab tanpa menyemprot.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000108', dari: 'op:pst:00001203', nama: 'Penyakit Embun Tepung',
+    key: 'embun-tepung-apel', label: 'Embun tepung apel',
+    definition:
+      'Bertahan di dalam TUNAS selama musim dingin lalu keluar bersama tunas itu, jadi tunas yang terserang tahun lalu adalah sumber tahun ini — memangkas dan membakar tunas berpucuk putih pada awal musim memutus daurnya. Registri juga memuat Oidium sp. (3 baris) sebagai sasaran pada apel yang belum disatukan.',
+    gejala:
+      'Lapisan PUTIH seperti tepung menutup daun muda, tunas, dan kadang bunga, sehingga tunas yang membuka sudah tampak keputihan sejak awal. Daun yang tertutup menggulung ke atas memanjang seperti perahu, mengeras, dan tidak membesar; buah yang terkena berkulit kasar berjala.',
+    pembanding: [
+      { cek: 'Lihat tunas yang BARU membuka pada awal musim. Embun tepung sudah putih sejak tunas itu keluar — bukan menular ke daun yang sudah jadi. Tunas seperti itu yang perlu dipangkas.' },
+      { cek: 'Perhatikan bentuk daun yang terkena. Embun tepung membuat daun menggulung memanjang ke atas seperti perahu dan mengeras; kutu daun apel membuat daun menggulung ke bawah dan tetap lemas, serta meninggalkan permukaan lengket.',
+        membantah: { id: 'op:pst:00000109', label: 'Kutu daun apel' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000109', dari: 'op:pst:00001357', nama: 'Kutu Daun',
+    key: 'kutu-daun-apel', label: 'Kutu daun apel',
+    definition:
+      'Menyerang pucuk yang sedang memanjang, jadi kerugiannya pada pertumbuhan tunas dan pada bibit — pohon dewasa yang sudah berhenti bertunas jarang dirugikan. Musuh alaminya banyak, dan koloni pada pohon dewasa umumnya runtuh sendiri sebelum menuntut tindakan.',
+    gejala:
+      'Kutu hijau berkelompok rapat di permukaan bawah daun MUDA dan di pucuk, sehingga daun menggulung ke BAWAH dan tetap lemas. Permukaan daun di bawahnya lengket lalu ditumbuhi jelaga hitam; semut naik-turun di cabang.',
+    pembanding: [
+      { cek: 'Buka gulungan daunnya. Kutu daun apel ada di dalam gulungan dan daunnya tetap LEMAS; daun yang menggulung karena embun tepung kosong, mengeras, dan berlapis putih.',
+        membantah: { id: 'op:pst:00000108', label: 'Embun tepung apel' } },
+      { cek: 'Periksa apakah pohonnya masih bertunas. Kalau pucuk sudah berhenti memanjang, koloni sebanyak apa pun jarang menurunkan hasil — dan menyemprot saat itu membunuh musuh alaminya menjelang musim berikutnya.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000110', dari: 'op:pst:00001366', nama: 'Hama Tungau',
+    key: 'tungau-merah-apel', label: 'Tungau merah apel',
+    definition:
+      'Telurnya yang berwarna merah bata bertahan di kulit ranting sepanjang musim tanpa daun, dan itu yang bisa dihitung SEBELUM musim dimulai — pemeriksaan ranting pada awal musim memberi peringatan berminggu-minggu lebih awal daripada menunggu daun berubah warna. Musuh alaminya tungau pemangsa, yang mati lebih dulu oleh penyemprotan menyeluruh.',
+    gejala:
+      'Daun berbintik kuning halus rapat seperti tertusuk jarum, lalu berubah keperunggu kusam menyeluruh dan mengeras; daun rontok pada serangan berat. Tungaunya kemerahan dan sangat kecil, terkumpul di permukaan BAWAH daun di sepanjang tulang daun.',
+    pembanding: [
+      { cek: 'Periksa kulit ranting dan ketiak tunas pada awal musim, sebelum daun banyak. Kumpulan telur MERAH BATA sebesar butir debu di situ menandakan populasi yang akan meledak — itu peringatan paling awal yang bisa didapat.' },
+      { cek: 'Balik daun yang keperunggu dan tatap lama kena cahaya. Ada titik-titik kemerahan yang bergerak; kalau tidak ada yang bergerak dan warna perunggunya merata mengikuti tepi daun, curigai kekurangan hara atau terbakar.' },
+    ],
+  },
+];
+
+const PINTU_TEBU = [
+  {
+    id: 'op:pst:00000111', dari: 'op:pst:00001210', nama: 'Penggerek Batang',
+    key: 'penggerek-batang-tebu', label: 'Penggerek batang tebu',
+    definition:
+      'Registri juga memuat Chilo auricilius (3 baris) dan Phragmataecia castaneae (3 baris, dua ejaan) sebagai penggerek batang tebu; semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Ulatnya berada di dalam ruas, jadi semprotan hanya mengenai ngengat dan ulat yang sedang berpindah antar-ruas — jendela yang sempit.',
+    gejala:
+      'Lubang gerekan bulat pada ruas batang, sering berbaris ke atas, dengan butiran kotoran menyembul di mulutnya. Batang yang dibelah berlorong memanjang menembus beberapa ruas dan berisi kotoran. Ruas yang digerek memendek dan batangnya mudah patah saat berangin.',
+    pembanding: [
+      { cek: 'Belah batang yang berlubang membujur dan ikuti lorongnya. Penggerek batang membuat lorong yang MENEMBUS beberapa ruas dari samping; penggerek pucuk menggerek dari pucuk ke bawah dan mematikan titik tumbuhnya.',
+        membantah: { id: 'op:pst:00000112', label: 'Penggerek pucuk tebu' } },
+      { cek: 'Lihat apakah pucuknya masih hidup. Penggerek batang menyerang ruas di bawah dan pucuknya tetap tumbuh; kalau pucuknya mati dan mudah ditarik lepas, itu penggerek pucuk.',
+        membantah: { id: 'op:pst:00000112', label: 'Penggerek pucuk tebu' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000112', dari: 'op:pst:00001225', nama: 'Penggerek Pucuk',
+    key: 'penggerek-pucuk-tebu', label: 'Penggerek pucuk tebu',
+    definition:
+      'Registri juga memuat Scirpophaga nivella (7 baris) — nama yang lama dipakai untuk penggerek pucuk tebu yang sama — dan keduanya belum disatukan, jadi tujuh baris itu tidak ikut terdaftar di bawah pintu ini. Menyerang sejak tanaman muda, dan tunas samping yang tumbuh menggantikan pucuk mati membuat batang bercabang serta tidak layak giling.',
+    gejala:
+      'Pucuk menguning lalu mati dan MUDAH DITARIK LEPAS, sementara daun di bawahnya masih hijau; dari kejauhan terlihat sebagai titik-titik kering di atas hamparan hijau. Pada daun yang masih menggulung ada deretan lubang kecil sejajar bekas gigitan sebelum daunnya membuka. Tunas samping tumbuh banyak menggantikan pucuk yang mati.',
+    pembanding: [
+      { cek: 'Tarik pucuk yang menguning. Kalau lepas ringan dan pangkalnya berlubang serta berkotoran, itu gerekan pucuk. Pucuk yang mati karena kekeringan tidak lepas ditarik dan pangkalnya kering tanpa lubang.' },
+      { cek: 'Buka daun yang masih menggulung di pucuk. Deretan lubang kecil SEJAJAR di situ berarti daun itu digigit saat masih terlipat — tanda paling dini, jauh sebelum pucuknya mati.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000113', dari: 'op:pst:00001257', nama: 'Hama Uret',
+    key: 'uret-tebu', label: 'Uret',
+    definition:
+      'Larva kumbang yang hidup di dalam tanah dan memakan akar, jadi kerusakannya sudah lanjut saat terlihat dari atas. Paling parah di lahan kering berpasir dan di petak yang dekat pohon tempat kumbang dewasanya makan; menggenangi petak beberapa hari dan mengumpulkan kumbang dewasa saat menyala lampu adalah dua tindakan yang tidak menuntut semprotan.',
+    gejala:
+      'Rumpun menguning lalu layu dan mudah DICABUT karena akarnya habis, dan yang mati berkelompok membentuk petak-petak yang melebar. Digali sedalam sejengkal di sekitar rumpun mati, ada larva gemuk keputihan yang MELENGKUNG seperti huruf C dengan kepala coklat.',
+    pembanding: [
+      { cek: 'Gali tanah sedalam sekitar 20 cm di sekeliling rumpun yang layu. Uret melengkung seperti huruf C, berkepala coklat keras, dan diam saat diangkat — ulat tanah lebih ramping, kelabu, dan bergerak aktif.',
+        membantah: { id: 'op:pst:00000014', label: 'Ulat tanah' } },
+      { cek: 'Tarik rumpun yang menguning. Kalau tercabut ringan karena akarnya habis sementara pangkal batangnya utuh tanpa lubang gerekan, penyebabnya di TANAH — bukan penggerek batang.',
+        membantah: { id: 'op:pst:00000111', label: 'Penggerek batang tebu' } },
+    ],
+  },
+];
+
+const PINTU_KARET = [
+  {
+    id: 'op:pst:00000114', dari: 'op:pst:00001189', nama: 'Penyakit Bidang Sadap',
+    key: 'kanker-bidang-sadap', label: 'Kanker bidang sadap',
+    definition:
+      'Masuk lewat LUKA SADAP yang basah, jadi ia praktis penyakit yang dibuat oleh cara menyadap: pisau yang tidak bersih, sadapan terlalu dalam, dan menyadap saat kulit masih basah. Paling parah pada musim hujan. Yang menentukan menjarangkan giliran sadap saat hujan dan mengoles bidang sadap, bukan menyemprot tajuk.',
+    gejala:
+      'Garis coklat kehitaman memanjang TEGAK LURUS terhadap alur sadap, mulai tepat di alur lalu turun ke kulit di bawahnya. Lateks di sekitarnya menghitam dan membeku, kulit membusuk berbau, dan bila dikupas jaringan di bawahnya coklat berair. Bidang sadap yang parah tidak bisa disadap lagi.',
+    pembanding: [
+      { cek: 'Lihat arah garis kerusakannya terhadap alur sadap. Kanker bidang sadap membentuk garis TEGAK LURUS terhadap alur — tidak sejajar. Luka mekanis karena pisau mengikuti arah alurnya sendiri.' },
+      { cek: 'Kupas tipis kulit di bawah garis hitam itu. Kalau jaringannya coklat berair dengan batas tegas terhadap kulit sehat, itu jamurnya sudah masuk; kalau di bawahnya masih putih bersih, yang terlihat cuma lateks kering.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000115', dari: 'op:pst:00001253', nama: 'Penyakit Jamur Akar Putih',
+    key: 'jamur-akar-putih', label: 'Jamur akar putih',
+    definition:
+      'Registri juga memuatnya atas nama lama Rigidoporus lignosus (8 baris) — jamur yang sama — yang belum disatukan, jadi baris itu tidak ikut terdaftar di bawah pintu ini. Menular lewat SENTUHAN AKAR antar-pohon dan dari tunggul kayu yang tertinggal saat pembukaan lahan, jadi ia menyebar melingkar dari satu titik dan yang menentukan membongkar tunggul serta membuat parit isolasi — bukan menyemprot.',
+    gejala:
+      'Daun menguning lalu rontok dan tajuk menipis sementara pohon di sebelahnya masih hijau, dan pohon yang mati membentuk LINGKARAN yang melebar tiap tahun. Digali di sekitar leher akar, ada benang jamur PUTIH pipih menempel rata pada permukaan akar seperti akar yang dijalari urat putih; benang itu tidak lepas bila disikat ringan.',
+    pembanding: [
+      { cek: 'Gali leher akar dan cuci sedikit dengan air. Jamur akar putih menempel RATA pada permukaan akar sebagai benang putih pipih yang tidak lepas disikat; akar berjamur biasa berlapisan yang mudah lepas.' },
+      { cek: 'Petakan pohon yang mati di atas kertas. Jamur akar putih menular lewat sentuhan akar sehingga yang mati membentuk lingkaran melebar dari satu titik; kematian yang tersebar acak penyebabnya bukan ini.' },
+    ],
+  },
+];
+
+const PINTU_LADA = [
+  {
+    id: 'op:pst:00000116', dari: 'op:pst:00001219', nama: 'Hama Penghisap Buah',
+    key: 'pengisap-buah-lada', label: 'Pengisap buah lada',
+    definition:
+      'Menyerang buah sejak pentil sampai menjelang masak, dan kerugiannya pada JUMLAH buah yang jadi — bukan pada mutu buah yang terkumpul. Registri juga memuat bubuk buah Lophobaris piperis (1 baris) yang menggerek dari dalam, masalah lain dengan gejala yang mirip dari kejauhan.',
+    gejala:
+      'Buah pada malai berbintik coklat kehitaman bekas tusukan lalu mengering dan gugur, sehingga malai berbulir jarang-jarang atau tinggal tangkainya. Serangga coklat kekuningan ramping berkaki panjang beterbangan rendah dari malai saat sulur diguncang, dan meninggalkan bau khas.',
+    pembanding: [
+      { cek: 'Guncang sulur berbuah pada pagi hari dan cium. Pengisap buah lada beterbangan dan meninggalkan bau khas; kalau buah gugur tanpa ada serangga dan tanpa bau, periksa apakah ada lubang gerekan pada tangkainya.' },
+      { cek: 'Periksa buah yang masih menempel. Pengisap buah meninggalkan BINTIK tusukan pada kulit tanpa lubang tembus; bubuk buah meninggalkan lubang bundar kecil dan bubuk halus di mulutnya.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000117', dari: 'op:pst:00001456', nama: 'Hama Penghisap Bunga',
+    key: 'pengisap-bunga-lada', label: 'Pengisap bunga lada',
+    definition:
+      'Menyerang pada fase BERBUNGA saja, dan di luar fase itu tidak menuntut apa pun — jendelanya terikat pada saat malai bunga keluar. Registri memecahnya lagi jadi Diplogomphus hewitti dan Diplogomphus hewiti (2 baris) yang belum disatukan.',
+    gejala:
+      'Malai bunga mengering dari ujung lalu gugur sebelum jadi pentil, sehingga sulur berbunga banyak tetapi berbuah sedikit. Pada malai ada serangga pipih kecil kecoklatan yang bersembunyi di sela bunga dan bergerak menyamping saat malai dibuka.',
+    pembanding: [
+      { cek: 'Buka sela bunga pada malai yang mengering, jangan cuma melihat dari luar. Pengisap bunga bersembunyi di dalamnya dan bergerak menyamping; malai yang kering karena kekurangan air mengering merata tanpa serangga.' },
+      { cek: 'Perhatikan fase tanamannya. Pengisap bunga hanya menuntut tindakan saat malai keluar sampai pentil terbentuk. Kalau yang gugur justru buah yang sudah besar, penyebabnya pengisap buah, bukan pengisap bunga.',
+        membantah: { id: 'op:pst:00000116', label: 'Pengisap buah lada' } },
+    ],
+  },
+];
+
+const PINTU_PISANG = [
+  {
+    id: 'op:pst:00000118', dari: 'op:pst:00001200', nama: 'Penyakit Sigatoka',
+    key: 'sigatoka', label: 'Sigatoka',
+    definition:
+      'Menggunduli daun sehingga tandan tidak terisi penuh dan matang terlalu cepat setelah dipanen — kerugiannya lewat daun, bukan lewat buah yang berbercak. Registri juga memuat Cercospora musicola (1 baris) dan bercak speckle Cladosporium musae (1) yang belum disatukan. Memotong dan memendam daun yang bergejala memutus sumber spora, dan itu tindakan yang menentukan pada kebun kecil.',
+    gejala:
+      'Garis kecil kuning MEMANJANG sejajar tulang daun pada helai daun, lalu melebar jadi bercak lonjong bertengah kelabu dengan tepi coklat gelap. Bercak yang menyatu membuat helai daun mengering dari tepi dan menggantung; pohon yang parah tinggal beberapa daun saat tandan terbentuk.',
+    pembanding: [
+      { cek: 'Lihat arah bercak yang paling muda. Sigatoka selalu mulai sebagai GARIS memanjang sejajar tulang daun sebelum melebar — bukan sebagai bintik bundar. Garis itu tanda paling dini dan yang menentukan kapan daun sakit perlu dipotong.' },
+      { cek: 'Hitung daun sehat yang tersisa saat tandan keluar. Kalau tinggal kurang dari sekitar delapan helai, tandannya tidak akan terisi penuh sebanyak apa pun disemprot sesudah itu — keputusannya sudah lewat.' },
+    ],
+  },
+];
+
+const PINTU_KRISAN = [
+  {
+    id: 'op:pst:00000119', dari: 'op:pst:00001512', nama: 'Penyakit Karat Daun',
+    key: 'karat-krisan', label: 'Karat krisan',
+    definition:
+      'Registri juga memuat karat putih Puccinia horiana (1 baris), jenis lain yang dikarantina di banyak negara, serta embun tepung Oidium chrysanthemi (1); keduanya belum disatukan. Menyebar lewat percikan air dan kelembapan tinggi di dalam rumah lindung, jadi mengatur jarak tanam dan menyiram ke tanah bukan ke daun menurunkan lebih banyak daripada menambah semprotan.',
+    gejala:
+      'Bintil kecil MENONJOL di permukaan BAWAH daun, coklat kemerahan dan pecah menyisakan serbuk di jari, sementara dari sisi atas terlihat sebagai bintik kuning pucat. Daun bawah menguning lalu mengering; bunga yang terkena tidak laku dijual walau tangkainya sehat.',
+    pembanding: [
+      { cek: 'Balik daun dan usap bintilnya. Karat krisan meninggalkan SERBUK coklat kemerahan di jari. Kalau bintilnya PUTIH dan tidak berserbuk coklat, itu karat putih — jenis yang dikarantina, dan temuannya perlu dilaporkan, bukan cuma disemprot.' },
+      { cek: 'Lihat dari sisi mana bintilnya menonjol. Karat menonjol di permukaan BAWAH; embun tepung menaburkan lapisan putih di permukaan ATAS yang bisa diusap seperti bedak.' },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -2218,6 +2419,13 @@ const KELOMPOK = [
   { kunci: 'tembakau', tanaman: 'tembakau', inang: [TEMBAKAU], pintu: PINTU_TEMBAKAU },
   { kunci: 'teh', tanaman: 'teh', inang: [TEH], pintu: PINTU_TEH },
   { kunci: 'mangga', tanaman: 'mangga', inang: [MANGGA], pintu: PINTU_MANGGA },
+
+  { kunci: 'apel', tanaman: 'apel', inang: [APEL], pintu: PINTU_APEL },
+  { kunci: 'tebu', tanaman: 'tebu', inang: [TEBU], pintu: PINTU_TEBU },
+  { kunci: 'karet', tanaman: 'karet', inang: [KARET], pintu: PINTU_KARET },
+  { kunci: 'lada', tanaman: 'lada', inang: [LADA], pintu: PINTU_LADA },
+  { kunci: 'pisang', tanaman: 'pisang', inang: [PISANG], pintu: PINTU_PISANG },
+  { kunci: 'krisan', tanaman: 'krisan', inang: [KRISAN], pintu: PINTU_KRISAN },
 ];
 
 // ---------------------------------------------------------------------------
