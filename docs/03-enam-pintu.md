@@ -74,7 +74,7 @@ Pasal 77 melarang mengedarkan *dan menggunakan*. Menunggu pendapat hukum.
 
 | Jalur | Kategori | Ditopang data | Yang tidak sanggup |
 |---|---|---|---|
-| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis; 80 OPT terkurasi bergejala di 11 komoditas, masing-masing dua ciri pembanding; rincian per komoditas di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) | ✕ Diagnosis. Nol dari 701 OPT **registri** punya deskripsi gejala, jadi pintunya sebanyak yang terkurasi saja |
+| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis; 88 OPT terkurasi bergejala di 12 komoditas, masing-masing dua ciri pembanding; rincian per komoditas di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) | ✕ Diagnosis. Nol dari 694 OPT **registri** punya deskripsi gejala, jadi pintunya sebanyak yang terkurasi saja |
 | **2 · Produk** — kemasan → isi → setara | Ketiganya | 96,4% pestisida & 71,3% pupuk punya komposisi; 63,5% pestisida identik dengan produk lain | ◐ Nama dagang di kemasan bisa berbeda dari nama terdaftar |
 | **3 · Hitungan** — pupuk + harga → Rp/kg hara | Pupuk | 5.130 pupuk berkomposisi angka terhadap 17 hara | ✕ Harga (nol di registri) dan status subsidi (nol dari 7.196) |
 | **4 · Keabsahan** — varietas → surat | Benih & bibit | 5.822 surat pelepasan, 5.138 pendaftaran, 580 PVT | ✕ Rekomendasi varietas. **Nol** dari 11.227 menyebut sifat agronomi |

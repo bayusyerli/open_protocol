@@ -4,7 +4,7 @@
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
-// kakao, kopi, dan kelapa sawit (seluruhnya 28 Agustus 2026).
+// kakao, kopi, kelapa sawit, dan jeruk (seluruhnya 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -126,6 +126,7 @@ const KAKAO = { id: 'op:cmd:00001010', label: 'Kakao' };
 // muncul; yang berubah cuma nama yang tampil di saringan tanaman.
 const KOPI = { id: 'op:cmd:00001244', label: 'Kopi' };
 const SAWIT = { id: 'op:cmd:00001151', label: 'Kelapa sawit' };
+const JERUK = { id: 'op:cmd:00001015', label: 'Jeruk' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -1413,6 +1414,7 @@ const PINTU_KOPI = [
     nama: 'Kutu Putih',
     key: 'kutu-putih-kopi',
     label: 'Kutu putih',
+    inang: [KOPI, JERUK],
     definition:
       'Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.',
     gejala:
@@ -1433,6 +1435,7 @@ const PINTU_KOPI = [
     nama: 'Kutu Tempurung',
     key: 'kutu-tempurung',
     label: 'Kutu tempurung',
+    inang: [KOPI, JERUK],
     definition:
       'Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.',
     gejala:
@@ -1633,6 +1636,176 @@ const PINTU_SAWIT = [
   },
 ];
 
+const PINTU_JERUK = [
+  {
+    id: 'op:pst:00000081',
+    dari: 'op:pst:00001096',
+    nama: 'Kutu Loncat',
+    key: 'kutu-loncat-jeruk',
+    label: 'Kutu loncat',
+    definition:
+      'Penular CVPD, dan itulah yang membuatnya menentukan — bukan isapannya. Satu kutu loncat yang membawa bakteri cukup untuk menulari satu pohon selamanya. Yang menentukan mengendalikannya pada TUNAS MUDA, karena hanya di tunas muda ia bertelur, ditambah bibit berlabel bebas penyakit dan mencabut pohon yang sudah sakit.',
+    gejala:
+      'Tunas muda mengeriting, kerdil, dan tidak membuka sempurna; pada tunas itu ada serangga kecil 2–3 mm yang hinggap MIRING sekitar 45 derajat terhadap permukaan daun dan MELONCAT saat didekati. Nimfanya kuning kecoklatan bertubuh pipih dan mengeluarkan benang lilin putih melingkar seperti pegas.',
+    pembanding: [
+      {
+        cek: 'Perhatikan cara serangganya duduk dan pergi. Kutu loncat hinggap MIRING dengan ekor terangkat, lalu meloncat saat didekati; kutu daun duduk rata, berkelompok rapat, dan tidak meloncat.',
+        membantah: { id: 'op:pst:00000083', label: 'Kutu daun jeruk' },
+      },
+      {
+        cek: 'Periksa apakah ada benang lilin putih melingkar seperti pegas di sekitar nimfanya, dan periksa daun tua pohon yang sama. Kalau daun tuanya belang kuning tidak setangkup di kiri-kanan tulang daun, pohon itu kemungkinan sudah CVPD — dan mengendalikan kutu loncatnya tidak menyembuhkannya.',
+        membantah: { id: 'op:pst:00000088', label: 'CVPD' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000082',
+    dari: 'op:pst:00001190',
+    nama: 'Penyakit Embun Tepung',
+    key: 'embun-tepung-jeruk',
+    label: 'Embun tepung jeruk',
+    definition:
+      'Registri juga memuat Oidium sp. sebagai sasaran pada jeruk (9 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Menyerang tunas dan daun muda saja — daun yang sudah tua tidak lagi tertular, jadi jendela tindakannya mengikuti pertunasan.',
+    gejala:
+      'Lapisan putih seperti TEPUNG di permukaan daun muda dan tunas, mula-mula setitik lalu meluas menutup helai. Daun yang tertutup mengeriting, mengecil, dan rontok; tunas berhenti memanjang. Buah muda yang terkena berkulit kasar dan gugur.',
+    pembanding: [
+      {
+        cek: 'Usap lapisan putihnya dengan jari. Embun tepung TERANGKAT dan menempel di jari seperti bedak, dan daun di bawahnya masih hijau. Embun jelaga hitam juga terangkat tetapi warnanya gelap dan tumbuh di atas embun madu kutu, bukan di daun muda.',
+        membantah: { id: 'op:pst:00000083', label: 'Kutu daun jeruk' },
+      },
+      {
+        cek: 'Lihat daun mana yang terkena. Embun tepung hanya menyerang daun MUDA dan tunas; kalau yang berbercak justru daun tua dan bercaknya bertepi tegas kecoklatan, penyebabnya bukan embun tepung.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000083',
+    dari: 'op:pst:00001408',
+    nama: 'Kutu Daun',
+    key: 'kutu-daun-jeruk',
+    label: 'Kutu daun jeruk',
+    definition:
+      'Penular virus tristeza (CTV). Registri memecah kutu daun jeruk jadi beberapa entitas — Toxoptera aurantii (3 baris), Toxoptera sp. (2), dan Aphis sp. (6) — semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Seperti kutu lain, ia dipelihara semut, dan mengendalikan semutnya ikut menentukan.',
+    gejala:
+      'Kutu hitam kecoklatan berkelompok RAPAT di permukaan bawah daun muda dan pada tunas, sehingga tunas mengeriting ke bawah dan memendek. Daun di bawahnya lengket lalu ditumbuhi jelaga hitam; semut naik-turun di batang.',
+    pembanding: [
+      {
+        cek: 'Perhatikan cara serangganya bergerak. Kutu daun duduk rata dan berkelompok rapat, bergerak lambat kalau disentuh; kutu loncat hinggap miring dan MELONCAT pergi.',
+        membantah: { id: 'op:pst:00000081', label: 'Kutu loncat' },
+      },
+      {
+        cek: 'Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan jelaga hitam yang tumbuh di atasnya bisa diusap hilang. Embun tepung sebaliknya PUTIH dan menempel di jari seperti bedak.',
+        membantah: { id: 'op:pst:00000082', label: 'Embun tepung jeruk' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000084',
+    dari: 'op:pst:00001351',
+    nama: 'Pengorok Daun',
+    key: 'pengorok-daun-jeruk',
+    label: 'Pengorok daun jeruk',
+    definition:
+      'Menyerang daun muda saja, dan kerusakannya jarang menurunkan hasil pada pohon dewasa — yang menentukan justru pada BIBIT dan tanaman muda yang daunnya sedikit. Lorong yang dibuatnya juga jadi pintu masuk kanker jeruk, jadi dua masalah itu saling menyusul.',
+    gejala:
+      'Lorong berkelok PERAK MENGKILAP di dalam daun muda, dengan garis gelap halus di tengah lorong. Daun yang penuh lorong mengeriting, terlipat, dan tepinya menggulung; pertumbuhan tunas terhambat.',
+    pembanding: [
+      {
+        cek: 'Terawang daun ke cahaya dan lihat isi lorongnya. Pengorok daun meninggalkan garis GELAP halus memanjang di tengah lorong perak — itu kotorannya. Bekas gigitan di permukaan tidak punya lorong dan tidak berkelok.',
+      },
+      {
+        cek: 'Lihat umur daun yang terkena. Pengorok daun jeruk hanya menyerang daun MUDA yang masih lemas; daun tua yang mengeriting penyebabnya kutu atau penyakit, bukan pengorok.',
+        membantah: { id: 'op:pst:00000083', label: 'Kutu daun jeruk' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000085',
+    dari: 'op:pst:00001364',
+    nama: 'Penyakit Blendok',
+    key: 'blendok-jeruk',
+    label: 'Blendok',
+    definition:
+      'Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Masuk lewat luka dan lewat pangkal batang yang terlalu dalam tertimbun tanah atau terlalu sering basah; meninggikan guludan dan menjauhkan tanah dari pangkal batang mengurangi lebih banyak daripada menambah semprotan.',
+    gejala:
+      'Kulit batang atau pangkal batang mengeluarkan GETAH kental kekuningan yang mengering jadi kerak, dan kulit di bawahnya coklat kehitaman serta basah bila dikupas. Kanopi di atas bagian yang terserang menguning dan meranggas, dan cabangnya mati dari ujung.',
+    pembanding: [
+      {
+        cek: 'Kupas tipis kulit di sekitar getah dengan pisau bersih. Blendok memberi jaringan coklat kehitaman BASAH dengan batas tegas terhadap jaringan sehat yang keputihan. Getah tanpa jaringan coklat di bawahnya bisa berasal dari luka biasa.',
+      },
+      {
+        cek: 'Lihat di mana getahnya keluar. Blendok mulai dari pangkal batang dekat tanah lalu naik; kanker jeruk tidak mengeluarkan getah dan bercaknya di daun, ranting, serta buah, bukan di kulit batang.',
+        membantah: { id: 'op:pst:00000086', label: 'Kanker jeruk' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000086',
+    dari: 'op:pst:00001482',
+    nama: 'Penyakit Kanker',
+    key: 'kanker-jeruk',
+    label: 'Kanker jeruk',
+    definition:
+      'Menyebar lewat percikan air dan angin kencang, dan masuk lewat LUKA — termasuk lorong pengorok daun dan duri yang menggores buah. Karena itu mengendalikan pengorok daun dan memangkas agar tajuk tidak saling menggores ikut menurunkannya; bahan tembaga hanya melindungi jaringan yang belum terkena.',
+    gejala:
+      'Bercak bulat MENONJOL kasar seperti gabus pada daun, ranting, dan buah, berwarna coklat muda dengan tepi berminyak dan sering dikelilingi halo kuning. Pada daun bercaknya tembus dari kedua sisi. Buah yang berbercak tetap bisa dimakan tetapi tidak laku dijual.',
+    pembanding: [
+      {
+        cek: 'Raba bercak pada daun dengan ujung jari, dan lihat dari kedua sisi daun. Kanker jeruk MENONJOL kasar seperti gabus dan terlihat dari sisi atas maupun bawah; bercak jamur biasa rata dan sering hanya jelas dari satu sisi.',
+      },
+      {
+        cek: 'Cari halo kuning dan tepi berminyak di sekeliling bercaknya, lalu periksa apakah ada lorong pengorok daun di dekatnya. Bercak kanker sering duduk tepat di bekas lorong itu — dua masalah yang datang berurutan.',
+        membantah: { id: 'op:pst:00000084', label: 'Pengorok daun jeruk' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000087',
+    dari: 'op:pst:00001573',
+    nama: 'Kutu Sisik Merah',
+    key: 'kutu-sisik-merah',
+    label: 'Kutu sisik merah',
+    definition:
+      'Registri juga memuat kutu sisik jenis lain pada jeruk, Lepidosaphes beckii (1 baris), yang belum disatukan. Musuh alaminya — tabuhan parasit kecil — biasanya menahannya; penyemprotan menyeluruh justru sering diikuti ledakan karena musuh alaminya mati lebih dulu.',
+    gejala:
+      'Sisik bundar kemerahan sampai coklat seukuran kepala jarum menempel RAPAT dan tidak bergerak di daun, ranting, dan kulit buah. Daun di sekitarnya menguning setempat membentuk lingkaran pucat; buah yang tertutup sisik tidak laku walau dagingnya utuh.',
+    pembanding: [
+      {
+        cek: 'Dorong sisiknya dengan kuku. Kutu sisik terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya, dan tidak bergerak sama sekali; kutu putih hancur jadi bubuk lilin saat diusap.',
+        membantah: { id: 'op:pst:00000070', label: 'Kutu putih' },
+      },
+      {
+        cek: 'Periksa apakah daun di bawahnya lengket. Kutu sisik merah TIDAK menghasilkan embun madu, jadi daunnya tidak lengket dan tidak berjelaga; kutu daun dan kutu tempurung menghasilkannya.',
+        membantah: { id: 'op:pst:00000071', label: 'Kutu tempurung' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000088',
+    dari: null,
+    key: 'cvpd',
+    label: 'CVPD',
+    pest_kind: 'disease_bacterial',
+    scientific_name: 'Candidatus Liberibacter asiaticus',
+    taxonomic_rank: 'species',
+    penular: { id: 'op:pst:00000081', label: 'Kutu loncat' },
+    no_mapping_reason:
+      'Belum dipetakan ke EPPO maupun GBIF. Kode kandidat tidak diperiksa ke sumbernya dalam sesi ini, dan kode yang tidak diperiksa lebih buruk daripada tidak ada kode. Tidak punya kembaran registri karena tidak satu pun produk terdaftar menyasarnya — sasaran yang tidak pernah muncul di label tidak pernah jadi entitas registri.',
+    definition:
+      'Citrus vein phloem degeneration, di dunia disebut huanglongbing. Bakteri yang hidup di dalam pembuluh dan TIDAK BISA disembuhkan; pohon yang sudah bergejala akan terus menurun sampai tidak berbuah. Yang menentukan tiga hal, dan tidak satu pun berupa semprotan ke pohon sakit: bibit berlabel bebas penyakit, mengendalikan kutu loncat pada tunas muda, dan MENCABUT pohon sakit supaya tidak jadi sumber penularan bagi kebun sendiri dan tetangga.',
+    gejala:
+      'Daun belang kuning TIDAK SETANGKUP di kiri dan kanan tulang daun — itu bedanya dengan kekurangan hara, yang belangnya setangkup. Daun mengecil, tegak, dan tulang daunnya menebal pucat. Buah kecil, miring bentuknya, dan bila dibelah bijinya banyak yang gugur berwarna gelap; rasanya masam. Ranting mati dari ujung, dan pohon berbunga di luar musim.',
+    pembanding: [
+      {
+        cek: 'Bandingkan sisi kiri dan kanan helai daun terhadap tulang daun tengahnya. CVPD memberi belang kuning yang TIDAK setangkup — pola kuningnya berbeda di kedua sisi. Kekurangan hara memberi pola yang setangkup, sama di kiri dan kanan.',
+      },
+      {
+        cek: 'Belah beberapa buah yang bentuknya miring. CVPD membuat biji gugur berwarna gelap dan bagian dalam buah tidak simetris. Kalau bijinya penuh dan buahnya simetris, penyebab kuningnya bukan CVPD — dan itu kabar baik, karena yang lain masih bisa dijawab.',
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -1643,6 +1816,7 @@ const KELOMPOK = [
   { kunci: 'kakao', tanaman: 'kakao', inang: [KAKAO], pintu: PINTU_KAKAO },
   { kunci: 'kopi', tanaman: 'kopi', inang: [KOPI], pintu: PINTU_KOPI },
   { kunci: 'sawit', tanaman: 'kelapa sawit', inang: [SAWIT], pintu: PINTU_SAWIT },
+  { kunci: 'jeruk', tanaman: 'jeruk', inang: [JERUK], pintu: PINTU_JERUK },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1709,6 +1883,7 @@ const PERLUAS = [
       'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
   },
   { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI] },
+  { id: 'op:pst:00000004', nama: 'Lalat buah', inang: [CABAI, JERUK] },
   {
     id: 'op:pst:00000005',
     nama: 'Ulat grayak',

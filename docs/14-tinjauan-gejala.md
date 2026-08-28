@@ -1,4 +1,4 @@
-# Daftar Tinjauan — 80 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jagung, Kedelai, Kelapa sawit, Kubis, Kakao, dan Kopi
+# Daftar Tinjauan — 88 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jeruk, Jagung, Kedelai, Kelapa sawit, Kubis, Kakao, dan Kopi
 
 > Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`
 > oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah
@@ -10,7 +10,7 @@
 
 ## 1. Apa yang diminta, dan apa yang tidak
 
-Seluruh 80 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
+Seluruh 88 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
 bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok
 “pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri
 menyebut OPT mana yang **terbantah** kalau hasilnya begitu.
@@ -25,7 +25,7 @@ Yang diminta dari peninjau, untuk tiap entri:
 
 Yang **tidak** diminta:
 
-- Bukan menambah OPT baru. Yang 80 ini dipilih karena paling sering dicari; kekurangan
+- Bukan menambah OPT baru. Yang 88 ini dipilih karena paling sering dicari; kekurangan
   cakupan sudah diketahui dan bukan yang ditinjau di sini.
 - Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi
   dan tidak melewati penilaian peninjau.
@@ -49,10 +49,10 @@ Ini disebut di muka supaya tidak ada yang tersembunyi.
 
 ---
 
-## 3. Seluruh 80 entri
+## 3. Seluruh 88 entri
 
-12 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
-**Kutu daun persik**, **Kutu kebul**, **Ulat grayak**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat tanah**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**. Teksnya menyebut tiap tanaman secara terpisah,
+15 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
+**Kutu daun persik**, **Kutu kebul**, **Lalat buah**, **Ulat grayak**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat tanah**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**, **Kutu putih**, **Kutu tempurung**. Teksnya menyebut tiap tanaman secara terpisah,
 dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman Anda.
 
 ### Padi — 13 entri
@@ -1513,6 +1513,286 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Jeruk — 11 entri
+
+#### 1. Lalat buah — *Bactrocera dorsalis*
+
+`op:pst:00000004` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Buah berlubang tusukan sebesar ujung jarum, di sekitarnya melunak dan basah, lalu gugur sebelum tua. Di dalam buah yang gugur ada belatung putih.
+
+**Ciri pembanding**
+
+1. Belah buah yang gugur. Kalau ada belatung putih tanpa kaki yang melenting saat disentuh, itu lalat buah. Antraknosa tidak pernah berbelatung.
+   → membantah: **Antraknosa**
+2. Lihat bentuk kerusakannya. Lalat buah meninggalkan titik tusukan dengan daerah lembek berair di sekitarnya; antraknosa memberi bercak melingkar cekung dan kering dengan titik hitam di tengahnya.
+   → membantah: **Antraknosa**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Kutu putih — *Planococcus citri*
+
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
+
+**Ciri pembanding**
+
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
+   → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Kutu tempurung — *Coccus viridis*
+
+`op:pst:00000071` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Sisik cembung hijau kekuningan seukuran kepala jarum menempel RAPAT di tulang daun bagian bawah, di pucuk, dan di buah muda, dan tidak bergerak sama sekali. Daun di bawahnya lengket lalu tertutup jelaga hitam sampai permukaannya gelap; pucuk kerdil dan buah muda gugur.
+
+**Ciri pembanding**
+
+1. Coba dorong sisiknya dengan kuku. Kutu tempurung MENEMPEL keras dan terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya; kutu putih hancur jadi bubuk lilin saat diusap.
+   → membantah: **Kutu putih**
+2. Usap jelaga hitamnya dengan kain basah. Jelaga TERANGKAT dan daun di bawahnya masih hijau — ia tumbuh di atas embun madu, bukan menyerang daunnya. Yang perlu ditangani kutunya; membersihkan jelaganya saja tidak menghentikan apa pun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Kutu loncat — *Diaphorina citri*
+
+`op:pst:00000081` · insect · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Penular CVPD, dan itulah yang membuatnya menentukan — bukan isapannya. Satu kutu loncat yang membawa bakteri cukup untuk menulari satu pohon selamanya. Yang menentukan mengendalikannya pada TUNAS MUDA, karena hanya di tunas muda ia bertelur, ditambah bibit berlabel bebas penyakit dan mencabut pohon yang sudah sakit.*
+
+**Teks gejala yang tampil di layar**
+
+> Tunas muda mengeriting, kerdil, dan tidak membuka sempurna; pada tunas itu ada serangga kecil 2–3 mm yang hinggap MIRING sekitar 45 derajat terhadap permukaan daun dan MELONCAT saat didekati. Nimfanya kuning kecoklatan bertubuh pipih dan mengeluarkan benang lilin putih melingkar seperti pegas.
+
+**Ciri pembanding**
+
+1. Perhatikan cara serangganya duduk dan pergi. Kutu loncat hinggap MIRING dengan ekor terangkat, lalu meloncat saat didekati; kutu daun duduk rata, berkelompok rapat, dan tidak meloncat.
+   → membantah: **Kutu daun jeruk**
+2. Periksa apakah ada benang lilin putih melingkar seperti pegas di sekitar nimfanya, dan periksa daun tua pohon yang sama. Kalau daun tuanya belang kuning tidak setangkup di kiri-kanan tulang daun, pohon itu kemungkinan sudah CVPD — dan mengendalikan kutu loncatnya tidak menyembuhkannya.
+   → membantah: **CVPD**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Embun tepung jeruk — *Oidium tingitaninum*
+
+`op:pst:00000082` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Registri juga memuat Oidium sp. sebagai sasaran pada jeruk (9 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Menyerang tunas dan daun muda saja — daun yang sudah tua tidak lagi tertular, jadi jendela tindakannya mengikuti pertunasan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lapisan putih seperti TEPUNG di permukaan daun muda dan tunas, mula-mula setitik lalu meluas menutup helai. Daun yang tertutup mengeriting, mengecil, dan rontok; tunas berhenti memanjang. Buah muda yang terkena berkulit kasar dan gugur.
+
+**Ciri pembanding**
+
+1. Usap lapisan putihnya dengan jari. Embun tepung TERANGKAT dan menempel di jari seperti bedak, dan daun di bawahnya masih hijau. Embun jelaga hitam juga terangkat tetapi warnanya gelap dan tumbuh di atas embun madu kutu, bukan di daun muda.
+   → membantah: **Kutu daun jeruk**
+2. Lihat daun mana yang terkena. Embun tepung hanya menyerang daun MUDA dan tunas; kalau yang berbercak justru daun tua dan bercaknya bertepi tegas kecoklatan, penyebabnya bukan embun tepung.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 6. Kutu daun jeruk — *Toxoptera citricidus*
+
+`op:pst:00000083` · insect · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Penular virus tristeza (CTV). Registri memecah kutu daun jeruk jadi beberapa entitas — Toxoptera aurantii (3 baris), Toxoptera sp. (2), dan Aphis sp. (6) — semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Seperti kutu lain, ia dipelihara semut, dan mengendalikan semutnya ikut menentukan.*
+
+**Teks gejala yang tampil di layar**
+
+> Kutu hitam kecoklatan berkelompok RAPAT di permukaan bawah daun muda dan pada tunas, sehingga tunas mengeriting ke bawah dan memendek. Daun di bawahnya lengket lalu ditumbuhi jelaga hitam; semut naik-turun di batang.
+
+**Ciri pembanding**
+
+1. Perhatikan cara serangganya bergerak. Kutu daun duduk rata dan berkelompok rapat, bergerak lambat kalau disentuh; kutu loncat hinggap miring dan MELONCAT pergi.
+   → membantah: **Kutu loncat**
+2. Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan jelaga hitam yang tumbuh di atasnya bisa diusap hilang. Embun tepung sebaliknya PUTIH dan menempel di jari seperti bedak.
+   → membantah: **Embun tepung jeruk**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Pengorok daun jeruk — *Phyllocnistis citrella*
+
+`op:pst:00000084` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Menyerang daun muda saja, dan kerusakannya jarang menurunkan hasil pada pohon dewasa — yang menentukan justru pada BIBIT dan tanaman muda yang daunnya sedikit. Lorong yang dibuatnya juga jadi pintu masuk kanker jeruk, jadi dua masalah itu saling menyusul.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lorong berkelok PERAK MENGKILAP di dalam daun muda, dengan garis gelap halus di tengah lorong. Daun yang penuh lorong mengeriting, terlipat, dan tepinya menggulung; pertumbuhan tunas terhambat.
+
+**Ciri pembanding**
+
+1. Terawang daun ke cahaya dan lihat isi lorongnya. Pengorok daun meninggalkan garis GELAP halus memanjang di tengah lorong perak — itu kotorannya. Bekas gigitan di permukaan tidak punya lorong dan tidak berkelok.
+   → membantah: **—**
+2. Lihat umur daun yang terkena. Pengorok daun jeruk hanya menyerang daun MUDA yang masih lemas; daun tua yang mengeriting penyebabnya kutu atau penyakit, bukan pengorok.
+   → membantah: **Kutu daun jeruk**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Blendok — *Phytophthora citrophthora*
+
+`op:pst:00000085` · disease_oomycete · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Masuk lewat luka dan lewat pangkal batang yang terlalu dalam tertimbun tanah atau terlalu sering basah; meninggikan guludan dan menjauhkan tanah dari pangkal batang mengurangi lebih banyak daripada menambah semprotan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Kulit batang atau pangkal batang mengeluarkan GETAH kental kekuningan yang mengering jadi kerak, dan kulit di bawahnya coklat kehitaman serta basah bila dikupas. Kanopi di atas bagian yang terserang menguning dan meranggas, dan cabangnya mati dari ujung.
+
+**Ciri pembanding**
+
+1. Kupas tipis kulit di sekitar getah dengan pisau bersih. Blendok memberi jaringan coklat kehitaman BASAH dengan batas tegas terhadap jaringan sehat yang keputihan. Getah tanpa jaringan coklat di bawahnya bisa berasal dari luka biasa.
+   → membantah: **—**
+2. Lihat di mana getahnya keluar. Blendok mulai dari pangkal batang dekat tanah lalu naik; kanker jeruk tidak mengeluarkan getah dan bercaknya di daun, ranting, serta buah, bukan di kulit batang.
+   → membantah: **Kanker jeruk**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 9. Kanker jeruk — *Xanthomonas axonopodis*
+
+`op:pst:00000086` · disease_bacterial · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Menyebar lewat percikan air dan angin kencang, dan masuk lewat LUKA — termasuk lorong pengorok daun dan duri yang menggores buah. Karena itu mengendalikan pengorok daun dan memangkas agar tajuk tidak saling menggores ikut menurunkannya; bahan tembaga hanya melindungi jaringan yang belum terkena.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak bulat MENONJOL kasar seperti gabus pada daun, ranting, dan buah, berwarna coklat muda dengan tepi berminyak dan sering dikelilingi halo kuning. Pada daun bercaknya tembus dari kedua sisi. Buah yang berbercak tetap bisa dimakan tetapi tidak laku dijual.
+
+**Ciri pembanding**
+
+1. Raba bercak pada daun dengan ujung jari, dan lihat dari kedua sisi daun. Kanker jeruk MENONJOL kasar seperti gabus dan terlihat dari sisi atas maupun bawah; bercak jamur biasa rata dan sering hanya jelas dari satu sisi.
+   → membantah: **—**
+2. Cari halo kuning dan tepi berminyak di sekeliling bercaknya, lalu periksa apakah ada lorong pengorok daun di dekatnya. Bercak kanker sering duduk tepat di bekas lorong itu — dua masalah yang datang berurutan.
+   → membantah: **Pengorok daun jeruk**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 10. Kutu sisik merah — *Aonidiella aurantii*
+
+`op:pst:00000087` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Registri juga memuat kutu sisik jenis lain pada jeruk, Lepidosaphes beckii (1 baris), yang belum disatukan. Musuh alaminya — tabuhan parasit kecil — biasanya menahannya; penyemprotan menyeluruh justru sering diikuti ledakan karena musuh alaminya mati lebih dulu.*
+
+**Teks gejala yang tampil di layar**
+
+> Sisik bundar kemerahan sampai coklat seukuran kepala jarum menempel RAPAT dan tidak bergerak di daun, ranting, dan kulit buah. Daun di sekitarnya menguning setempat membentuk lingkaran pucat; buah yang tertutup sisik tidak laku walau dagingnya utuh.
+
+**Ciri pembanding**
+
+1. Dorong sisiknya dengan kuku. Kutu sisik terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya, dan tidak bergerak sama sekali; kutu putih hancur jadi bubuk lilin saat diusap.
+   → membantah: **Kutu putih**
+2. Periksa apakah daun di bawahnya lengket. Kutu sisik merah TIDAK menghasilkan embun madu, jadi daunnya tidak lengket dan tidak berjelaga; kutu daun dan kutu tempurung menghasilkannya.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 11. CVPD — *Candidatus Liberibacter asiaticus*
+
+`op:pst:00000088` · disease_bacterial
+
+*Citrus vein phloem degeneration, di dunia disebut huanglongbing. Bakteri yang hidup di dalam pembuluh dan TIDAK BISA disembuhkan; pohon yang sudah bergejala akan terus menurun sampai tidak berbuah. Yang menentukan tiga hal, dan tidak satu pun berupa semprotan ke pohon sakit: bibit berlabel bebas penyakit, mengendalikan kutu loncat pada tunas muda, dan MENCABUT pohon sakit supaya tidak jadi sumber penularan bagi kebun sendiri dan tetangga.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun belang kuning TIDAK SETANGKUP di kiri dan kanan tulang daun — itu bedanya dengan kekurangan hara, yang belangnya setangkup. Daun mengecil, tegak, dan tulang daunnya menebal pucat. Buah kecil, miring bentuknya, dan bila dibelah bijinya banyak yang gugur berwarna gelap; rasanya masam. Ranting mati dari ujung, dan pohon berbunga di luar musim.
+
+**Ciri pembanding**
+
+1. Bandingkan sisi kiri dan kanan helai daun terhadap tulang daun tengahnya. CVPD memberi belang kuning yang TIDAK setangkup — pola kuningnya berbeda di kedua sisi. Kekurangan hara memberi pola yang setangkup, sama di kiri dan kanan.
+   → membantah: **—**
+2. Belah beberapa buah yang bentuknya miring. CVPD membuat biji gugur berwarna gelap dan bagian dalam buah tidak simetris. Kalau bijinya penuh dan buahnya simetris, penyebab kuningnya bukan CVPD — dan itu kabar baik, karena yang lain masih bisa dijawab.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ### Jagung — 10 entri
 
 #### 1. Ulat grayak — *Spodoptera litura*
@@ -2694,8 +2974,8 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 ## 4. Yang kami tandai sendiri
 
 Dihitung dari datanya, bukan dari penilaian agronomi — supaya waktu peninjau tidak habis
-menemukan yang sudah kami ragukan. 40 dari 80 entri bertanda,
-dan secara keseluruhan **38 dari 160 ciri pembanding tidak menyebut apa yang dibantahnya**:
+menemukan yang sudah kami ragukan. 45 dari 88 entri bertanda,
+dan secara keseluruhan **44 dari 176 ciri pembanding tidak menyebut apa yang dibantahnya**:
 
 - **Trips** — kedua cirinya membantah OPT yang sama.
 - **Kutu kebul** — 1 ciri tidak menyebut apa yang dibantahnya.
@@ -2737,6 +3017,11 @@ dan secara keseluruhan **38 dari 160 ciri pembanding tidak menyebut apa yang dib
 - **Tikus pohon** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Penggerek tandan** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Busuk pangkal batang** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Embun tepung jeruk** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Pengorok daun jeruk** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Blendok** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Kanker jeruk** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **CVPD** — 2 ciri tidak menyebut apa yang dibantahnya.
 
 Dua pola itu **bukan bukti entrinya salah.** Ciri yang membantah OPT yang sama dua kali
 bisa saja memang dua sudut yang berbeda terhadap satu kekeliruan yang paling sering
