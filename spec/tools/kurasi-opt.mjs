@@ -2041,7 +2041,7 @@ const PINTU_LEGUM = [
     nama: 'Penyakit Bercak Daun',
     key: 'bercak-daun-kacang-panjang',
     label: 'Bercak daun kacang panjang',
-    inang: [KACANG_PANJANG],
+    inang: [KACANG_PANJANG, KACANG_HIJAU],
     definition:
       'Registri juga memuat Cercospora cruenta (2 baris) dan Cercospora sp. (1) sebagai sasaran pada kacang panjang; keduanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Paling parah pada musim hujan dan pada pertanaman rapat yang daunnya lama basah.',
     gejala:
@@ -2766,6 +2766,8 @@ const CAKUP = [
     cakup: [
       { id: 'op:pst:00001389', nama: 'Penggerek Batang',
         dasar: 'Scirpophaga innotata memberi sundep dan beluk yang sama persis dengan S. incertulas — pucuk mati mudah ditarik lepas, malai putih hampa dengan batang masih hijau — dan tidak ada ciri lapangan yang membedakan keduanya tanpa membedah ngengatnya. Yang berbeda musimnya, bukan yang terlihat, dan tindakannya sama.' },
+      { id: 'op:pst:00002172', nama: 'Penggerek Batang',
+        dasar: 'Chilo suppressalis pada padi memberi sundep dan beluk yang sama dengan Scirpophaga incertulas — pucuk mati mudah ditarik lepas, malai putih hampa dengan batang masih hijau — dan pemeriksaan lapangannya sama: belah batang dan lihat lorong berisi kotoran. Pemisahannya menuntut ngengat dewasa.' },
     ],
   },
   {
@@ -2773,13 +2775,6 @@ const CAKUP = [
     cakup: [
       { id: 'op:pst:00001557', nama: 'Tungau Merah',
         dasar: 'Panonychus citri memberi gejala yang sama pada jeruk: daun kusam berbintik keperakan lalu memerah tembaga, dan tungau merah kecil di permukaan bawah yang cuma terlihat bila daun ditepuk di atas kertas putih. Membedakannya dari Tetranychus menuntut kaca pembesar kuat, sementara keputusan lapangannya — akarisida, bukan insektisida — sama.' },
-    ],
-  },
-  {
-    pintu: 'op:pst:00000030',
-    cakup: [
-      { id: 'op:pst:00002172', nama: 'Penggerek Batang',
-        dasar: 'Chilo suppressalis pada padi memberi sundep dan beluk yang sama dengan Scirpophaga incertulas — pucuk mati mudah ditarik lepas, malai putih hampa dengan batang masih hijau — dan pemeriksaan lapangannya sama: belah batang dan lihat lorong berisi kotoran. Pemisahannya menuntut ngengat dewasa.' },
     ],
   },
   {
@@ -2796,6 +2791,22 @@ const CAKUP = [
     cakup: [
       { id: 'op:pst:00001426', nama: 'Penyakit Bercak Daun',
         dasar: 'Cercospora personata bercak daun LAMBAT kacang tanah, muncul sesudah bercak daun awal dan sering di daun yang sama. Bercaknya lebih gelap dan bertepi lebih tegas, tetapi keduanya menggugurkan daun dari bawah pada waktu yang tumpang tindih dan disemprot dengan jadwal yang sama; memisahkannya menuntut melihat susunan konidiofor.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000097',
+    cakup: [
+      { id: 'op:pst:00001446', nama: 'Penyakit Bercak Daun',
+        dasar: 'Cercospora canescens memberi bercak bersudut kecoklatan yang dibatasi tulang daun halus pada kacang hijau dan kedelai, sama bentuknya dengan yang di kacang panjang, dan sama-sama berbulu kelabu di permukaan bawah pada cuaca lembap. Memisahkan spesies Cercospora menuntut mengukur konidium di bawah mikroskop.' },
+      { id: 'op:pst:00001614', nama: 'Penyakit Bercak Daun',
+        dasar: 'Cercospora cruenta bercak daun kacang panjang yang lain, dan registri mendaftarkannya pada tanaman yang sama. Bercaknya bersudut dibatasi tulang daun seperti C. vignae, muncul pada fase yang sama, dan disemprot dengan jadwal yang sama; yang berbeda cuma ukuran konidiumnya.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000142',
+    cakup: [
+      { id: 'op:pst:00001631', nama: 'Hama Orong Orong',
+        dasar: 'Gryllotalpa africana salah satu jenis orong-orong yang pintu ini janjikan: pintunya berdiri bertingkat MARGA karena yang terlihat di lapangan — kaki depan melebar seperti sekop, alur galian dangkal, batang terpotong rapi di batas tanah — sama pada seluruh jenisnya.' },
     ],
   },
   {
@@ -2866,7 +2877,7 @@ const PINTU_EKOR2 = [
   {
     id: 'op:pst:00000141', dari: 'op:pst:00001244', nama: 'Penyakit Rebah Kecambah',
     key: 'rebah-kecambah', label: 'Rebah kecambah',
-    inang: [CABAI, TOMAT, KENTANG, KUBIS, TEMBAKAU],
+    inang: [CABAI, TOMAT, KENTANG, KUBIS, TEMBAKAU, JAGUNG],
     definition:
       'Penyakit PERSEMAIAN, dan hampir selalu penyakit pengelolaan air: menumpuk pada media yang terlalu basah, naungan terlalu rapat, dan semaian terlalu padat. Bukan jamur sejati melainkan oomycete — golongan yang sama dengan busuk daun kentang — sehingga fungisida untuk jamur sejati tidak menyentuhnya, dan yang bekerja metalaksil atau dimetomorf. Menjarangkan semaian dan mengurangi siraman menghentikannya tanpa semprotan apa pun.',
     gejala:
@@ -3353,6 +3364,16 @@ let cakupDipasang = 0;
   // teoretis: cakupan Aphis glycines pada kutu daun kapas harus dicabut begitu ia naik
   // jadi pintu kutu daun kedelai, dan alat ini diam saja sampai penjagaannya dipasang.
   const disebut = new Set(CAKUP.map((g) => g.pintu));
+  // Pintu kembar di dalam CAKUP sendiri, dan ini kambuh yang kelima dengan bentuk yang
+  // sama: kelompok belakangan MENGGANTI `covers` kelompok duluan, bukan menambahnya, jadi
+  // cakupan Scirpophaga innotata lenyap tanpa suara begitu kelompok kedua untuk pintu yang
+  // sama ditulis. Yang menyakitkan justru bahwa tabel ini baru saja dibuat menyatakan
+  // keadaan — dan sifat itu yang membuat kelompok kedua membatalkan yang pertama.
+  if (disebut.size !== CAKUP.length) {
+    const kali = new Map();
+    for (const g of CAKUP) kali.set(g.pintu, (kali.get(g.pintu) ?? 0) + 1);
+    for (const [id, n] of kali) if (n > 1) bantah.push(`${id} punya ${n} kelompok di CAKUP; yang belakangan mengganti yang duluan. Satukan sasarannya jadi satu kelompok.`);
+  }
   for (const e of kurasi) {
     if (disebut.has(e.id) || !e.covers) continue;
     delete e.covers;

@@ -34,7 +34,7 @@
 //
 // Idempoten: kelompok yang anggotanya sudah superseded dilewati.
 
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -46,6 +46,95 @@ const tulis = process.argv.includes('--tulis');
 
 // `dasar` wajib menyebut kenapa keduanya tempat/tanaman yang SAMA.
 const KELOMPOK = [
+  // --- "Budidaya X" bukan fase, melainkan kata untuk X ---
+  // Ini kebalikan dari kelompok di bawah, dan pembalikannya yang membuatnya penting:
+  // pada kelapa sawit dan kopi, MASSA pendaftaran justru duduk di ejaan "Budidaya", bukan
+  // di nama tanamannya. Sembilan pintu kelapa sawit berinang "Kelapa sawit" yang cuma
+  // dipegang 6 baris non-gulma, sementara 197 baris — Metisa plana 60, Setothosea asigna
+  // 51, Oryctes rhinoceros 20 — berdiri di bawah "Budidaya kelapa sawit". Layar
+  // menampilkan keduanya sebagai dua tanaman, dan yang membacanya tidak punya cara tahu
+  // bahwa keduanya kebun sawit yang sama.
+  //
+  // Yang menang tetap NAMA TANAMANNYA, bukan yang barisnya lebih banyak: "Budidaya kelapa
+  // sawit" bukan nama tanaman, dan keping saringan tanaman yang berbunyi begitu salah
+  // membaca. Catatan varietas yang berdiri di atas yang kalah — 110 untuk sawit, 125 untuk
+  // kopi, 103 untuk ubi kayu — ikut diarahkan ulang, dan itu justru alasan alat ini
+  // sekarang membaca varietas: tanpa itu 338 catatan menggantung.
+  //
+  // "Budidaya" berbeda dari kualifikasi yang MEMANG membedakan. "Padi sawah" bukan "Padi"
+  // (sawah lawan gogo), "Pembibitan kelapa sawit" bukan "Kelapa sawit" (umur dan
+  // perlakuannya berbeda), dan "Budidaya padi sawah (Tapin)" menyebut cara tanam. Yang
+  // disatukan di sini hanya yang kata tambahannya tidak membedakan apa pun.
+  {
+    menang: 'op:cmd:00001151',
+    kalah: ['op:cmd:00001000', 'op:cmd:00001053', 'op:cmd:00001138', 'op:cmd:00001117'],
+    dasar: '"Budidaya kelapa sawit", "Budidaya tanaman kelapa sawit", serta salah ketik "Budaidaya kelapa sawit" dan "Kepala sawit" seluruhnya menyebut kebun kelapa sawit yang sama; "budidaya" tidak membedakan apa pun dari nama tanamannya.',
+  },
+  {
+    menang: 'op:cmd:00001244',
+    kalah: ['op:cmd:00001009'],
+    dasar: '"Budidaya kopi" menyebut kebun kopi yang sama dengan "Kopi"; kata "budidaya" tidak membedakan jenis, umur, maupun cara tanamnya.',
+  },
+  {
+    menang: 'op:cmd:00001194',
+    kalah: ['op:cmd:00001051', 'op:cmd:00001394'],
+    dasar: '"Budidaya tanaman padi sawah" dan "Tanaman padi sawah" menyebut sawah padi yang sama dengan "Padi sawah"; yang membedakan dari "Padi" kata "sawah", bukan kata "budidaya" atau "tanaman".',
+  },
+  {
+    menang: 'op:cmd:00001002',
+    kalah: ['op:cmd:00001060', 'op:cmd:00001077'],
+    dasar: '"Budidaya tanaman jagung" dan "Budidaya jagung" menyebut pertanaman jagung yang sama dengan "Jagung".',
+  },
+  {
+    menang: 'op:cmd:00001018',
+    kalah: ['op:cmd:00001361'],
+    dasar: '"Tanaman Tembakau" menyebut pertanaman tembakau yang sama dengan "Tembakau"; kata "tanaman" tidak membedakan fase maupun cara budidayanya.',
+  },
+  {
+    menang: 'op:cmd:00001003',
+    kalah: ['op:cmd:00001513'],
+    dasar: '"TANAMAN CABAI" — ditulis huruf besar seluruhnya di registri — menyebut pertanaman cabai yang sama dengan "Cabai".',
+  },
+  {
+    menang: 'op:cmd:00001006',
+    kalah: ['op:cmd:00001038'],
+    dasar: '"Budidaya tanaman tebu" menyebut pertanaman tebu yang sama dengan "Tebu".',
+  },
+  {
+    menang: 'op:cmd:00001464',
+    kalah: ['op:cmd:00001057'],
+    dasar: '"Tanaman Karet" menyebut kebun karet yang sama dengan "Karet".',
+  },
+  {
+    menang: 'op:cmd:00001010',
+    kalah: ['op:cmd:00001102'],
+    dasar: '"Budidaya kakao" menyebut kebun kakao yang sama dengan "Kakao".',
+  },
+  {
+    menang: 'op:cmd:00001007',
+    kalah: ['op:cmd:00001124'],
+    dasar: '"Budidaya tanaman kedelai" menyebut pertanaman kedelai yang sama dengan "Kedelai".',
+  },
+  {
+    menang: 'op:cmd:00001218',
+    kalah: ['op:cmd:00001020'],
+    dasar: '"Budidaya ubi kayu" menyebut pertanaman ubi kayu yang sama dengan "Ubi Kayu"; 103 catatan varietas berdiri di atas yang kalah dan ikut diarahkan ulang.',
+  },
+  {
+    menang: 'op:cmd:00001039',
+    kalah: ['op:cmd:00001071'],
+    dasar: '"Budidaya tanaman akasia" menyebut tegakan akasia yang sama dengan "Akasia".',
+  },
+  {
+    menang: 'op:cmd:00001048',
+    kalah: ['op:cmd:00001114'],
+    dasar: '"Budidaya Tanaman Eucalyptus" menyebut tegakan eucalyptus yang sama dengan "Eucalyptus".',
+  },
+  {
+    menang: 'op:cmd:00001055',
+    kalah: ['op:cmd:00001292', 'op:cmd:00001496', 'op:cmd:00001086'],
+    dasar: '"Bibit tanaman kelapa sawit", "Bibit kelapa sawit", dan "Budidaya persemaian kelapa sawit" seluruhnya menyebut fase pembibitan kelapa sawit yang sama. Fasenya TETAP terpisah dari "Kelapa sawit" — umur dan perlakuannya memang berbeda — yang disatukan cuma keempat cara menuliskan fase itu.',
+  },
   {
     menang: 'op:cmd:00001023',
     kalah: ['op:cmd:00001113', 'op:cmd:00001144'],
@@ -155,8 +244,58 @@ let diratakan = 0;
 
 const pindah = new Map(KELOMPOK.flatMap((g) => g.kalah.map((k) => [k, g.menang])));
 
+// Berkas skala fase: rujukan `applies_to.commodities` diarahkan ulang, kembar dibuang.
+let ubahSkala = 0;
+const berkasSkala = readdirSync(VOCAB).filter((f) => f.startsWith('stage-scale') && f.endsWith('.json'));
+const tulisSkala = [];
+for (const f of berkasSkala) {
+  const isi = JSON.parse(readFileSync(join(VOCAB, f), 'utf8'));
+  const daftar = Array.isArray(isi) ? isi : (isi.items ?? [isi]);
+  let kena = false;
+  for (const e of daftar) {
+    const cs = e.applies_to?.commodities;
+    if (!Array.isArray(cs)) continue;
+    const lihat = new Set();
+    const baru = [];
+    for (const c of cs) {
+      const tuju = pindah.get(c.id) ?? c.id;
+      if (lihat.has(tuju)) { kena = true; continue; }
+      lihat.add(tuju);
+      if (tuju !== c.id) { kena = true; ubahSkala += 1; baru.push({ ...c, id: tuju, label: olehId.get(tuju)?.label?.id ?? c.label }); }
+      else baru.push(c);
+    }
+    if (kena) e.applies_to.commodities = baru;
+  }
+  if (kena) tulisSkala.push([f, isi]);
+}
+
+// Sisi seberangnya: `default_stage_scale` milik yang kalah naik ke pemenang kalau pemenang
+// belum punya, lalu DICABUT dari yang kalah. Pencabutannya bukan kerapian — `synonyms` dan
+// `mappings` ditinggalkan di yang kalah justru supaya ejaan aslinya bisa ditelusuri,
+// tetapi `default_stage_scale` bukan catatan asal-usul melainkan perintah yang masih
+// hidup: "pakai skala ini untuk komoditas ini". Entitas yang sudah digantikan tidak lagi
+// dicantumkan skalanya di `applies_to.commodities`, jadi meninggalkannya di sana membuat
+// tautan yang putus sebelah — persis yang L28 dipasang untuk menolak.
+let skalaNaik = 0;
+let skalaDicabut = 0;
+for (const g of KELOMPOK) {
+  const m = olehId.get(g.menang);
+  if (!m) continue;
+  for (const kid of g.kalah) {
+    const k = olehId.get(kid);
+    if (!k?.default_stage_scale) continue;
+    if (!m.default_stage_scale) { m.default_stage_scale = { ...k.default_stage_scale }; skalaNaik += 1; }
+    if (k.lifecycle?.status === 'superseded') { delete k.default_stage_scale; skalaDicabut += 1; }
+  }
+}
+
 // Seri harga ikut menunjuk komoditas, dan rujukannya sama nyatanya dengan rujukan pada
 // label produk: seri "Ketimun sedang" menunjuk entitas ketimun yang kini digantikan.
+// Skala fase menunjuk komoditas dari sisi seberang — `applies_to.commodities` — dan L28
+// menuntut tautannya sepakat dua arah. Menyatukan "Budidaya kopi" karena itu menyalakan
+// L29 pada stage-scale-bbch-kopi.json, dan memperbaikinya di berkas skala tidak cukup:
+// kalau yang kalah membawa `default_stage_scale` sementara yang menang tidak, tautannya
+// putus sebelah. Keduanya dirapikan di sini.
 // Varietas menunjuk komoditas juga, dan lupa itu bukan kesalahan kecil: 105 galat L29
 // menyala sekaligus saat "Kubis Bunga" digantikan, karena 60 catatan varietas kembang kol
 // berdiri di atasnya. Lebih dari itu, cacah varietas per komoditas yang jadi ALASAN memilih
@@ -214,6 +353,7 @@ if (bantah.length) {
 for (const s of satu) console.log(`  satu    ${s}`);
 console.log(`\n  commodity-registri.json  — ${satu.length} entitas jadi superseded, ${diratakan} rantai diratakan, ${dilewati.length} dilewati`);
 console.log(`  variety/varietas.ndjson  — ${ubahVarietas} catatan varietas diarahkan ulang`);
+console.log(`  stage-scale-*.json       — ${ubahSkala} rujukan komoditas diarahkan ulang, ${skalaNaik} skala bawaan naik ke pemenang, ${skalaDicabut} dicabut dari yang kalah`);
 console.log(`  harga/harga.ndjson       — ${ubahHarga} seri harga diarahkan ulang`);
 console.log(`  product/pestisida.ndjson — ${ubahRekaman} rekaman, ${ubahBaris} baris penggunaan`);
 
@@ -226,5 +366,6 @@ writeFileSync(join(VOCAB, 'commodity-registri.json'), JSON.stringify(bungkusRegi
 writeFileSync(join(VOCAB, 'commodity.json'), JSON.stringify(bungkusKurasi, null, 2) + '\n');
 writeFileSync(NDJSON, baruNdjson.join('\n'));
 writeFileSync(VARIETAS, baruVarietas.join('\n'));
+for (const [f, isi] of tulisSkala) writeFileSync(join(VOCAB, f), JSON.stringify(isi, null, 2) + '\n');
 writeFileSync(HARGA, baruHarga.join('\n'));
 console.log('\nDitulis.');
