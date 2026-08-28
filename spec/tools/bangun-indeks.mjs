@@ -1468,12 +1468,19 @@ let cakupAmbigu = 0;
 let cakupBaris = 0;
 {
   const genusDari = (x) => (x ?? '').trim().split(/\s+/)[0] || '';
+  // Genus pintu diambil dari nama ilmiahnya DAN dari synonyms yang berbentuk nama
+  // ilmiah. Alasannya konkret: sesudah satukan-opt-sinonim.mjs, pintu lalat bibit kedelai
+  // membawa "Agromyza phaseoli" sebagai synonym — nama genus lamanya — sementara registri
+  // masih memuat sasaran "Agromyza sp." pada dua belas baris. Tanpa membaca synonyms,
+  // dua belas baris itu berdiri di luar pintu yang justru sudah menyerap nama lamanya.
+  const binomial = (x) => /^[A-Z][a-z]+ [a-z][a-z-]+$/.test(String(x ?? '').trim());
   const pintuSegenus = new Map();
   for (const k of optTerkurasi) {
-    const g = genusDari(k.scientific_name);
-    if (!g) continue;
-    if (!pintuSegenus.has(g)) pintuSegenus.set(g, []);
-    pintuSegenus.get(g).push(k);
+    const g = new Set([k.scientific_name, ...(k.synonyms ?? []).filter(binomial)].map(genusDari).filter(Boolean));
+    for (const x of g) {
+      if (!pintuSegenus.has(x)) pintuSegenus.set(x, []);
+      pintuSegenus.get(x).push(k);
+    }
   }
   for (const e of optRegistri) {
     if (e.lifecycle?.status === 'superseded') continue;

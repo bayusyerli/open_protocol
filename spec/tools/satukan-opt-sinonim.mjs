@@ -72,6 +72,8 @@ const PASANGAN = [
   { kalah: 'op:pst:00001399', menang: 'op:pst:00000030', dasar: 'Tryporyza incertulas kombinasi lama untuk Scirpophaga incertulas, penggerek batang padi kuning.' },
   { kalah: 'op:pst:00001402', menang: 'op:pst:00001389', dasar: 'Tryporyza innotata kombinasi lama untuk Scirpophaga innotata, penggerek batang padi putih.' },
 
+  { kalah: 'op:pst:00001275', menang: 'op:pst:00000032', dasar: 'Pyricularia grisea lama dipakai untuk penyebab blas padi yang kini Pyricularia oryzae; P. grisea sensu stricto menyerang Digitaria, bukan padi.' },
+
   // --- salah ketik yang entitas berejaan benarnya sudah ada ---
   { kalah: 'op:pst:00001909', menang: 'op:pst:00000043', dasar: 'Salah ketik "Perenospora maydis" untuk Peronosclerospora maydis.' },
   { kalah: 'op:pst:00001814', menang: 'op:pst:00000056', dasar: 'Salah ketik "Lamprosemma indicata" untuk Lamprosema indicata.' },

@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama apel, bawang merah, bawang putih, beras di penyimpanan, budidaya udang windu dan ikan bandeng, cabai, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
+      "id": "OPT utama apel, bawang merah, bawang putih, beras, beras dalam penyimpanan, beras di penyimpanan, budidaya udang windu dan ikan bandeng, cabai, jagung, jagung dalam penyimpanan, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau, tepung terigu dalam penyimpanan dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 33 komoditas: Apel, Bawang merah, Bawang putih, Beras di penyimpanan, Budidaya udang windu dan ikan bandeng, Cabai, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 37 komoditas: Apel, Bawang merah, Bawang putih, Beras, Beras dalam penyimpanan, Beras di penyimpanan, Budidaya udang windu dan ikan bandeng, Cabai, Jagung, Jagung dalam penyimpanan, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tepung terigu dalam penyimpanan, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -3476,6 +3476,12 @@
           "id": "Pyricularia oryzae",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 133 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pyricularia grisea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -3487,10 +3493,13 @@
         "Blas",
         "Penyakit Blas",
         "Penyakit Blas Daun Dan Blas Leher",
+        "Penyakit Blas Leher",
         "Penyakit Blast",
+        "Penyakit Busuk Leher Malai",
         "Phyricularia oryzae",
         "Piricularia oryzae",
         "Pycularia oryzae",
+        "Pyricularia grisea",
         "Pyricularia orizae"
       ],
       "taxonomic_rank": "species",
@@ -11004,6 +11013,22 @@
         {
           "id": "op:cmd:00001080",
           "label": "Jagung di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001113",
+          "label": "Beras dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001169",
+          "label": "Jagung dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001170",
+          "label": "Tepung terigu dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001074",
+          "label": "Beras"
         }
       ],
       "definition": {
@@ -11027,7 +11052,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama",
@@ -11088,6 +11114,22 @@
         {
           "id": "op:cmd:00001080",
           "label": "Jagung di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001113",
+          "label": "Beras dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001169",
+          "label": "Jagung dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001170",
+          "label": "Tepung terigu dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001074",
+          "label": "Beras"
         }
       ],
       "definition": {
@@ -11117,7 +11159,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Beras",
@@ -11175,6 +11218,22 @@
         {
           "id": "op:cmd:00001080",
           "label": "Jagung di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001113",
+          "label": "Beras dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001169",
+          "label": "Jagung dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001170",
+          "label": "Tepung terigu dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001074",
+          "label": "Beras"
         }
       ],
       "definition": {
@@ -11204,7 +11263,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Beras",
@@ -11911,6 +11971,22 @@
         {
           "id": "op:cmd:00001080",
           "label": "Jagung di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001113",
+          "label": "Beras dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001169",
+          "label": "Jagung dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001170",
+          "label": "Tepung terigu dalam penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001074",
+          "label": "Beras"
         }
       ],
       "definition": {
@@ -11952,7 +12028,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama",
