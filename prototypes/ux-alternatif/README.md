@@ -200,7 +200,7 @@ dikatakan bahwa ia memang tidak bisa dijawab.
   bahan aktifnya → centang yang sudah dipakai musim ini → layar menjumlahkannya menurut
   golongan **dan menolak memperingatkan**.
 - **Empat kasus nyata, tiga skema** — Wereng Coklat pada Padi (IRAC, 454 produk → 17
-  golongan), Penyakit Hawar Daun pada Kentang (FRAC, 376 → 18), Gulma Berdaun Lebar pada
+  golongan), Penyakit Hawar Daun pada Kentang (FRAC, 376 → 23), Gulma Berdaun Lebar pada
   kelapa sawit (HRAC, 661 → **10**), dan Trips pada Cabai (IRAC, 246 → 22).
 - **Temuan yang jadi alasan konsep ini ada:**
   - **41% pilihan merek untuk wereng coklat ada di satu golongan.** IRAC 4 memuat 186 dari
@@ -750,11 +750,18 @@ Akibatnya bisa dihitung, dan mengejutkan:
 |---|---|---|---|---|
 | Gulma Berdaun Lebar · kelapa sawit | HRAC | 661 | 74 | **10** |
 | Wereng Coklat · padi | IRAC | 454 | 47 | **17** |
-| Penyakit Hawar Daun · kentang | FRAC | 376 | 53 | **18** |
+| Penyakit Hawar Daun · kentang | FRAC | 376 | 53 | **23** |
 | Trips · cabai | IRAC | 246 | 60 | **22** |
 
 Dan sebarannya timpang. Untuk wereng coklat, **IRAC 4 sendirian memuat 186 dari 454
 merek — 41%** — tersebar di sebelas bahan aktif yang namanya berbeda-beda di rak kios.
+
+> **Angka kentang sempat 18, dan itu keliru.** Versi pertama prototipe meruntuhkan
+> FRAC `M 01`…`M 13` jadi satu golongan “M”, seolah hurufnya induk sub-golongan. Bukan:
+> pada FRAC, huruf awalan menandai **kategori** dan angka di belakangnya golongan
+> tersendiri — mankozeb (`M 03`) dan klorotalonil (`M 05`) bukan satu golongan.
+> Diperbaiki, dan besarannya dicatat di
+> [`docs/19`](../../docs/19-golongan-resistensi.md) §5.
 
 ### Kesalahan yang akan dibuat UI resistensi mana pun
 
@@ -766,6 +773,14 @@ dengan **tempat kerja yang sama** — penghambat asetilkolinesterase. Berpindah 
 karbofuran (1A) ke klorpirifos (1B) **bukan rotasi**. Hal yang sama berlaku pada
 `3A`/`3B`, `4A`–`4F`, `20A`–`20D`, `21A`/`21B`, `22A`/`22B`, `24A`/`24B`, `25A`/`25B` —
 **kecuali `8A`–`8F`**, yang justru dikecualikan IRAC.
+
+**Tetapi penggabungannya harus sempit.** Diukur pada registri ini: dari 676 kode, **166
+berbentuk `<angka><huruf>` dan seluruhnya IRAC**; tujuh di antaranya golongan `8` yang
+dikecualikan, jadi 159 yang kena aturan. Tersisa **100 golongan utama**, dan **hanya
+sembilan** yang benar-benar terpecah — IRAC `1`, `2`, `3`, `4`, `7`, `9`, `10`, `12`, `22`.
+Dua bentuk yang *mirip* sub-golongan tetapi bukan: huruf awalan FRAC (`M`, `P`, `BM`) yang
+menandai kategori, dan kode HRAC bergaris miring (`4/29`, `6/24`) yang menandai keanggotaan
+ganda. Rinciannya kini tercatat di [`docs/19`](../../docs/19-golongan-resistensi.md) §5.
 
 Sebuah antarmuka yang membandingkan kode lengkap dan menyimpulkan “berbeda, aman” akan
 **salah**, dengan akibat yang nyata di lahan. Prototipe ini karena itu menjumlahkan
