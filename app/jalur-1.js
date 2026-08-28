@@ -422,13 +422,20 @@ function blokKomoditas(k) {
       <p class="catatan">
         Yang terdaftar berbeda-beda menurut tanamannya. Di luar daftar ini,
         <strong>tidak ada produk yang terdaftar</strong> untuk ${teks(k.nama.toLowerCase())}.
+        ${urut.some((d) => d.takBerspesies) ? `Sebagian produk terdaftar untuk sasaran yang
+        <strong>tidak menyebut nama spesies</strong> — misalnya “Thrips sp.” alih-alih satu
+        jenis trips tertentu. Itu tetap dihitung di sini karena label seperti itu memang
+        berlaku untuk jenis apa pun dari marga yang sama, dan jumlahnya disebut supaya
+        tidak terbaca lebih pasti daripada yang tertulis di registrinya.` : ''}
       </p>
       <ul class="daftar">
         ${urut.map((d) => `
           <li>
             <button type="button" data-berkas="${teks(d.berkas)}">
               <span class="nama">${teks(d.nama)}</span>
-              <span class="sub">${angkaId(d.produk)} produk terdaftar</span>
+              <span class="sub">${angkaId(d.produk)} produk terdaftar${d.takBerspesies
+                ? ` · ${angkaId(d.takBerspesies)} di antaranya terdaftar untuk sasaran tanpa nama spesies`
+                : ''}</span>
             </button>
           </li>`).join('')}
       </ul>

@@ -114,7 +114,18 @@ const tulis = process.argv.includes('--tulis');
 const BAWANG_MERAH = { id: 'op:cmd:00000004', label: 'Bawang merah' };
 const TOMAT = { id: 'op:cmd:00000003', label: 'Tomat' };
 const KENTANG = { id: 'op:cmd:00001008', label: 'Kentang' };
-const CABAI = { id: 'op:cmd:00000001', label: 'Cabai merah besar' };
+// Ditambatkan ke entitas registri "Cabai" (op:cmd:00001003), bukan ke komoditas
+// terkurasi "Cabai merah besar" (op:cmd:00000001). Dua alasan, dan keduanya baru
+// terlihat sesudah belasan komoditas masuk:
+//
+//   1. Pintunya memang ditulis untuk CABAI, bukan khusus cabai merah besar — rawit dan
+//      keriting memakai teks yang sama, dan saringan tanaman yang berbunyi "Cabai merah
+//      besar" menyempitkan janji lebih daripada yang dimaksud.
+//   2. Seluruh pendaftarannya duduk di bawah "Cabai". Pencakupan sasaran bertingkat
+//      genus ("Thrips sp." pada cabai) mensyaratkan inang pintu memuat komoditas baris
+//      itu; dengan inang yang tidak pernah dipakai registri, 39 baris cabai gagal
+//      tercakup tanpa ada yang menyalak.
+const CABAI = { id: 'op:cmd:00001003', label: 'Cabai' };
 const PADI = { id: 'op:cmd:00000006', label: 'Padi' };
 const JAGUNG = { id: 'op:cmd:00001002', label: 'Jagung' };
 const KUBIS = { id: 'op:cmd:00001011', label: 'Kubis' };
@@ -2651,6 +2662,11 @@ const PERLUAS = [
     definition:
       'Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit.',
   },
+  // Dua pintu cabai yang tidak pernah masuk tabel mana pun di alat ini — keduanya lahir
+  // dari tulis-gejala-opt.mjs dan tidak pernah diperluas ke komoditas lain — sehingga
+  // inangnya tertinggal pada "Cabai merah besar" saat yang lain pindah ke "Cabai".
+  { id: 'op:pst:00000001', nama: 'Trips', inang: [CABAI] },
+  { id: 'op:pst:00000006', nama: 'Tungau merah', inang: [CABAI, JERUK, APEL] },
   { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI, SEMANGKA, MELON, MENTIMUN, KACANG_PANJANG] },
   { id: 'op:pst:00000004', nama: 'Lalat buah', inang: [CABAI, JERUK] },
   {
