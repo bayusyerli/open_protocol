@@ -524,7 +524,7 @@ const PINTU_TOMAT_KENTANG = [
     pembanding: [
       {
         cek: 'Cabut tanaman kerdil beserta tanahnya hati-hati, lalu tatap akarnya kena cahaya. Butiran bulat sebesar butir pasir MENEMPEL pada akar — mula-mula putih, lalu kuning keemasan, lalu coklat. Kalau akarnya justru menggembung jadi bagian dari akar itu sendiri, itu nematoda puru akar, bukan sista kuning.',
-        membantah: { id: 'op:pst:00001223', label: 'Nematoda Puru Akar' },
+        membantah: { id: 'op:pst:00000130', label: 'Nematoda puru akar' },
       },
       {
         cek: 'Perhatikan sebaran dan riwayat petaknya. Sista kuning membentuk lingkaran yang MELEBAR di tempat yang sama tiap musim tanam kentang, dan paling parah di petak yang pernah dimasuki bibit atau alat dari luar. Layu karena penyakit tidak mengikuti pola lingkaran yang tetap begitu.',
@@ -2555,6 +2555,66 @@ const PINTU_SISA = [
   },
 ];
 
+const PINTU_SISA2 = [
+  {
+    id: 'op:pst:00000129', dari: 'op:pst:00001217', nama: 'Kutu Daun',
+    key: 'kutu-daun-kapas', label: 'Kutu daun kapas',
+    inang: [CABAI, TOMAT, KENTANG, SEMANGKA, MELON, MENTIMUN, JERUK, KUBIS, BAWANG_MERAH, APEL, KACANG_PANJANG],
+    definition:
+      'Kutu daun paling polifag di antara semuanya, dan yang paling sering tercatat registri sekadar sebagai "Aphis sp." — 35 baris lagi tanpa nama spesies, yang kini ikut terhitung di bawah pintu ini pada komoditas yang sama. Warnanya berubah-ubah dari kuning pucat sampai hijau tua sampai hampir hitam menurut cuaca dan tanaman inangnya, jadi WARNA bukan cara mengenalinya. Penular banyak virus; mengendalikannya melindungi tanaman yang belum tertular, bukan menyembuhkan yang sudah.',
+    gejala:
+      'Kutu bertubuh lunak seperti buah pir kecil berkelompok di permukaan BAWAH daun muda dan pucuk, warnanya bisa apa saja dari kuning sampai kehitaman dalam satu petak yang sama. Daun muda mengeriting ke bawah dan mengerut; permukaan di bawahnya lengket lalu ditumbuhi jelaga hitam, dan semut naik-turun di batang.',
+    pembanding: [
+      { cek: 'Balik daun muda dan lihat bentuk tubuhnya, bukan warnanya. Kutu daun berbentuk seperti buah pir kecil dengan sepasang tonjolan seperti knalpot di ujung belakang tubuh; kutu kebul bersayap putih dan beterbangan saat tanaman disentuh.',
+        membantah: { id: 'op:pst:00000003', label: 'Kutu kebul' } },
+      { cek: 'Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan jelaga hitam yang tumbuh di atasnya bisa diusap hilang — yang perlu ditangani kutunya. Trips dan tungau tidak menghasilkan embun madu sama sekali.',
+        membantah: { id: 'op:pst:00000001', label: 'Trips' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000130', dari: 'op:pst:00001223', nama: 'Nematoda Puru Akar',
+    key: 'nematoda-puru-akar', label: 'Nematoda puru akar',
+    inang: [TOMAT, CABAI, KENTANG, SEMANGKA, MELON, MENTIMUN, KUBIS, TEBU, KRISAN, PISANG],
+    definition:
+      'Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.',
+    gejala:
+      'Tanaman kerdil dan layu pada siang hari lalu pulih sore, berulang, sementara pupuk dan air cukup; gejalanya BERKELOMPOK di bagian petak tertentu, bukan merata. Dicabut, akarnya menggembung jadi BINTIL bulat tidak beraturan yang menyatu dengan akar itu sendiri — tidak bisa dilepas dengan kuku.',
+    pembanding: [
+      { cek: 'Cabut tanaman kerdil beserta akarnya lalu cuci tanahnya. Puru akar adalah pembengkakan yang MENYATU dengan akar dan tidak bisa dicungkil lepas; bintil rhizobium pada kacang-kacangan menempel di sisi akar dan lepas ditekan kuku, dan itu justru menguntungkan.' },
+      { cek: 'Bandingkan tanaman kerdil dengan tetangganya yang sehat, dan lihat sebarannya. Nematoda puru akar berkelompok di petak yang sama tiap musim; kekurangan hara membuat seluruh petak kerdil merata.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000131', dari: 'op:pst:00001141', nama: 'Ulat Api',
+    key: 'ulat-api-setora', label: 'Ulat api Setora',
+    inang: [SAWIT, KELAPA],
+    definition:
+      'Jenis ulat api kedua yang punya pendaftarannya sendiri di registri — 18 baris — dan ditangani persis sama dengan Setothosea asigna: sensus pelepah lebih dulu, dan bulunya menyengat sehingga diperiksa dengan ranting bukan tangan. Yang membedakan keduanya cuma rupa ulatnya, dan itu disebut di bawah supaya sensusnya tidak salah hitung, bukan supaya pengendaliannya berbeda.',
+    gejala:
+      'Anak daun tergerus dari permukaan bawah sampai tinggal selaput lalu berlubang, sama seperti ulat api yang lain. Ulatnya HIJAU dengan garis biru kehitaman memanjang di tengah punggung dan garis kuning di sisinya, bertubuh lonjong pipih dengan duri di sepanjang tepi — berbeda dari Setothosea yang berpola coklat bercabang di punggung.',
+    pembanding: [
+      { cek: 'Lihat punggung ulatnya, JANGAN dipegang. Setora bergaris biru kehitaman memanjang di tengah punggung dengan latar hijau; Setothosea berpola coklat bercabang. Keduanya ulat api dan ditangani sama — yang berubah cuma angka pada lembar sensus.',
+        membantah: { id: 'op:pst:00000074', label: 'Ulat api' } },
+      { cek: 'Hitung ulat hidup per pelepah contoh sebelum memutuskan, dan jumlahkan KEDUA jenis. Ambang pengendalian ulat api dihitung dari jumlah seluruh ulat api, bukan per jenis.',
+        membantah: { id: 'op:pst:00000074', label: 'Ulat api' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000132', dari: 'op:pst:00001162', nama: 'Hama Gudang',
+    key: 'bubuk-jagung', label: 'Bubuk jagung',
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    definition:
+      'Kembar dekat bubuk beras dan ditangani sama; membedakan keduanya menuntut kaca pembesar dan tidak mengubah tindakan. Yang membedakannya dari sisi kerugian: ia lebih menyukai jagung dan biji yang lebih besar, dan lebih kuat terbang sehingga menyebar antar-gudang lewat udara, bukan cuma lewat karung yang dipindahkan.',
+    gejala:
+      'Butir jagung atau beras berlubang bundar rapi dan terasa ringan, dengan bubuk halus di dasar tumpukan. Kumbang bermoncong panjang sepanjang 3–4 mm berjalan di antara butir; pada tumpukan jagung ia sering terlihat TERBANG pendek saat karung dibuka, dan itu yang paling membedakannya dari bubuk beras.',
+    pembanding: [
+      { cek: 'Buka karung dan perhatikan apakah ada yang TERBANG. Bubuk jagung terbang pendek; bubuk beras jarang terbang dan lebih sering merayap. Keduanya bermoncong panjang, dan keduanya ditangani sama.',
+        membantah: { id: 'op:pst:00000123', label: 'Bubuk beras' } },
+      { cek: 'Rendam segenggam di air dan hitung butir yang MENGAPUNG. Butir berongga karena dimakan dari dalam akan mengapung — pemeriksaan yang sama berlaku untuk kedua kumbang bermoncong, dan angkanya yang menentukan apakah tumpukan masih layak disimpan.' },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -2585,6 +2645,8 @@ const KELOMPOK = [
   { kunci: 'gudang', tanaman: 'hasil pertanian di penyimpanan', inang: [BERAS_SIMPAN, JAGUNG_SIMPAN], pintu: PINTU_GUDANG },
 
   { kunci: 'sisa', tanaman: 'cabai, padi, dan tambak', inang: [CABAI], pintu: PINTU_SISA },
+
+  { kunci: 'sisa2', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_SISA2 },
 ];
 
 // ---------------------------------------------------------------------------
@@ -2885,13 +2947,23 @@ for (const x of PERLUAS) {
 // di entri tetangganya. Yang tetap ditolak: menunjuk entitas yang tidak ada atau yang
 // sudah digantikan.
 let labelDisegarkan = 0;
+let rujukanDiarahkan = 0;
 for (const e of kurasi) {
   for (const d of e.distinguishing ?? []) {
-    const r = d.rules_out?.id;
+    let r = d.rules_out?.id;
     if (!r) continue;
+    // Entri yang DIBANTAH bisa ikut dinaikkan pada jalannya alat ini juga: nematoda puru
+    // akar sempat jadi rujukan bagi pintu nematoda sista kuning sebagai entitas registri,
+    // lalu naik jadi pintu tersendiri. Rujukan yang tertinggal diarahkan ke penerusnya —
+    // menolaknya berarti menyuruh orang menyunting tangan sesuatu yang alat ini sendiri
+    // yang menggesernya.
+    while (olehId.get(r)?.lifecycle?.superseded_by?.id) {
+      r = olehId.get(r).lifecycle.superseded_by.id;
+      d.rules_out.id = r;
+      rujukanDiarahkan += 1;
+    }
     const t = olehId.get(r);
     if (!t) { bantah.push(`${e.id} membantah ${r} yang tidak ada.`); continue; }
-    if (t.lifecycle?.status === 'superseded') { bantah.push(`${e.id} membantah ${r} yang sudah digantikan.`); continue; }
     if (d.rules_out.label !== t.label?.id) { d.rules_out.label = t.label?.id; labelDisegarkan += 1; }
   }
   const v = e.vector?.id && olehId.get(e.vector.id);
@@ -2946,7 +3018,7 @@ if (bantah.length) {
 
 for (const n of naik) console.log(`  naik      ${n}`);
 for (const d of disegarkan) console.log(`  segar     ${d}`);
-console.log(`\n  pest.json                 — ${naik.length} entri baru, ${disegarkan.length} disegarkan, ${labelDisegarkan} salinan label dirapatkan, ${kurasi.length} seluruhnya`);
+console.log(`\n  pest.json                 — ${naik.length} entri baru, ${disegarkan.length} disegarkan, ${labelDisegarkan} salinan label, ${rujukanDiarahkan} rujukan diarahkan, ${kurasi.length} seluruhnya`);
 console.log(`  pest-registri.json        — ${pindah.size} entitas jadi superseded, ${diratakan} rantai diratakan`);
 console.log(`  product/pestisida.ndjson  — ${ubahRekaman} rekaman, ${ubahBaris} baris penggunaan`);
 console.log(`  ${dilewati.length} entri dilewati tanpa perubahan`);
