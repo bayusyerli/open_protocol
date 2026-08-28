@@ -58,6 +58,31 @@ const tulis = process.argv.includes('--tulis');
 // `dasar` wajib menyebut MENGAPA keduanya organisme yang sama. "Mirip" bukan dasar.
 const PASANGAN = [
   // --- kombinasi lama lawan kombinasi yang diterima ---
+  { kalah: 'op:pst:00001556', menang: 'op:pst:00000106', dasar: 'Idioscopus nama marga yang kini dipakai untuk wereng mangga yang dulu ditaruh di Idiocerus; keduanya wereng mangga yang sama dan registri memuat kedua ejaan marganya.' },
+  { kalah: 'op:pst:00002150', menang: 'op:pst:00000106', dasar: 'Idiocerus spp. bentuk jamak dari sasaran bertingkat marga yang sama dengan Idiocerus sp.; tidak ada pembeda apa pun di antara keduanya.' },
+  { kalah: 'op:pst:00001899', menang: 'op:pst:00001760', dasar: 'Heliothis assulta kombinasi lama untuk Helicoverpa assulta, penggerek pucuk tembakau; Helicoverpa dipisahkan dari Heliothis 1965, sama seperti pada H. armigera.' },
+  { kalah: 'op:pst:00001782', menang: 'op:pst:00001689', dasar: 'Laemophloeus pusillus kombinasi lama untuk Cryptolestes pusillus, kumbang gudang bertubuh pipih; disatukan ke sasaran bertingkat marga Cryptolestes yang sudah ada.' },
+  { kalah: 'op:pst:00001754', menang: 'op:pst:00001874', dasar: 'Upasia salmonicolor dan Corticium salmonicolor dua nama untuk jamur upas yang sama — kini Erythricium salmonicolor — dan registri memuat keduanya pada tanaman berkayu.' },
+  { kalah: 'op:pst:00001500', menang: 'op:pst:00002306', dasar: 'Pseudomonas glumae nama lama untuk Burkholderia glumae, bakteri busuk bulir padi; marganya dipindahkan 1992 dan yang menang nama yang diterima sekarang.' },
+  { kalah: 'op:pst:00002021', menang: 'op:pst:00001239', dasar: 'Rhizoctonia oryzae salah satu jenis Rhizoctonia penyebab hawar pelepah padi yang tidak terbedakan dari R. solani di sawah; disatukan ke sasaran bertingkat marga Rhizoctonia sp. yang sudah ada, bukan ke salah satu spesiesnya.' },
+  { kalah: 'op:pst:00002052', menang: 'op:pst:00001239', dasar: 'Rhizoctonia spp. bentuk jamak dari sasaran bertingkat marga yang sama dengan Rhizoctonia sp.' },
+  { kalah: 'op:pst:00002310', menang: 'op:pst:00001150', dasar: 'Tetranychus spp. bentuk jamak dari sasaran bertingkat marga yang sama dengan Tetranychus sp.' },
+
+  { kalah: 'op:pst:00001895', menang: 'op:pst:00000117', dasar: 'Diplogomphus hewitti kombinasi lama untuk Diconocoris hewetti, pengisap bunga lada; marganya dipindahkan dan spesiesnya sama, sampai ke nama pengarangnya.' },
+  { kalah: 'op:pst:00002315', menang: 'op:pst:00000092', dasar: 'Sphaerotheca fuliginea nama lama yang dipakai luas untuk embun tepung cucurbit yang kini Podosphaera xanthii; marga Sphaerotheca dilebur ke Podosphaera.' },
+  { kalah: 'op:pst:00001706', menang: 'op:pst:00000015', dasar: 'Alternaria alii ejaan lain untuk Alternaria porri, bercak ungu bawang — "allii" merujuk marga inangnya Allium dan dipakai bergantian di pustaka lama untuk jamur yang sama.' },
+
+  // --- salah eja yang GBIF tidak kenali, jadi tidak tertangkap satukan-opt-salah-ketik ---
+  { kalah: 'op:pst:00001780', menang: 'op:pst:00000120', dasar: 'Salah eja "Coletrotichum capsici" untuk Colletotrichum capsici — dua huruf tertukar di marga — dan barisnya pada cabai, tanaman yang pintunya memang berdiri di atas spesies itu.' },
+  { kalah: 'op:pst:00001995', menang: 'op:pst:00001107', dasar: 'Salah eja "Colletothricum sp." untuk Colletotrichum sp.; keduanya sasaran bertingkat marga yang sama.' },
+  { kalah: 'op:pst:00002182', menang: 'op:pst:00001107', dasar: 'Salah eja "Colletotrichum gloesporium" — epitetnya terpotong dari gloeosporioides — dan registri menulisnya bertingkat marga, jadi disatukan ke sasaran marga Colletotrichum sp. alih-alih ditebak spesiesnya.' },
+  { kalah: 'op:pst:00001930', menang: 'op:pst:00001150', dasar: 'Salah eja "Tentranichus sp." untuk Tetranychus sp.; keduanya sasaran bertingkat marga tungau merah yang sama.' },
+  { kalah: 'op:pst:00002024', menang: 'op:pst:00001434', dasar: 'Salah eja "Chillo aurillius" untuk Chilo auricilius, penggerek batang tebu; kedua katanya salah dan tidak ada marga Chillo.' },
+  { kalah: 'op:pst:00001967', menang: 'op:pst:00000124', dasar: 'Salah eja "Rhizopertha dominica" untuk Rhyzopertha dominica, bubuk gabah; satu huruf pada marga, dan pintunya memang berdiri di atas spesies itu.' },
+  { kalah: 'op:pst:00002054', menang: 'op:pst:00001277', dasar: 'Salah eja "Phythium spp." untuk Pythium spp.; keduanya sasaran bertingkat marga oomycete rebah kecambah yang sama.' },
+  { kalah: 'op:pst:00002037', menang: 'op:pst:00001088', dasar: 'Salah eja "Aphid sp." — kata Inggris untuk kutu daun dengan akhiran nama ilmiah — untuk Aphis sp., sasaran bertingkat marga yang sudah ada.' },
+  { kalah: 'op:pst:00002327', menang: 'op:pst:00000128', dasar: 'Salah eja "Cerithidae sp." — nama SUKU Cerithiidae yang juga salah eja — untuk marga Cerithidea, siput trisipan tambak yang pintunya sudah berdiri di atasnya.' },
+  { kalah: 'op:pst:00002090', menang: 'op:pst:00002235', dasar: 'Salah eja "Trichoplussiani sp." untuk Trichoplusia sp., ulat jengkal kubis; keduanya sasaran bertingkat marga yang sama dan barisnya sama-sama pada kubis.' },
   { kalah: 'op:pst:00001523', menang: 'op:pst:00000009', dasar: 'Pseudomonas solanacearum nama lama untuk Ralstonia solanacearum; genusnya dipindahkan 1995 dan bakterinya sama.' },
   { kalah: 'op:pst:00002066', menang: 'op:pst:00000126', dasar: 'Hemitarsonemus latus kombinasi lama untuk Polyphagotarsonemus latus, tungau kuning; genusnya dipisahkan dan spesiesnya sama.' },
   { kalah: 'op:pst:00001548', menang: 'op:pst:00000006', dasar: 'Tetranychus cinnabarinus bentuk merah Tetranychus urticae, bukan spesies tersendiri: kawin silang subur dan pembedanya cuma warna, yang berubah menurut inang dan musim.' },

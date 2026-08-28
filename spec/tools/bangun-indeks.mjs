@@ -1245,6 +1245,16 @@ let cakupBaris = 0;
   // yang sama dengan "Thrips sp." bagi trips. Dua syarat pencakupan tidak dilonggarkan:
   // tetap harus ada TEPAT SATU pintu yang inangnya memuat komoditas baris itu, dan
   // sisanya tetap dibuang sebagai ambigu.
+  // Antraknosa punya pasangan yang persis sama bentuknya: Gloeosporium nama BENTUK TAK
+  // BERKELAMIN jamur antraknosa, dan Colletotrichum bentuk berkelaminnya. Registri memuat
+  // keduanya — "Gloeosporium piperatum" pada cabai, "Gloeosporium sp." — dan keduanya
+  // berkata hal yang sama: antraknosa, marganya tidak ditentukan.
+  {
+    const antraknosa = ['Colletotrichum', 'Gloeosporium', 'Glomerella'];
+    const gabung = new Set(antraknosa.flatMap((g) => pintuSegenus.get(g) ?? []));
+    for (const anamorf of ['Gloeosporium', 'Glomerella']) if (gabung.size) pintuSegenus.set(anamorf, [...gabung]);
+  }
+
   {
     const embunTepung = ['Podosphaera', 'Erysiphe', 'Leveillula', 'Golovinomyces', 'Sphaerotheca', 'Oidium', 'Oidiopsis'];
     const gabung = new Set(embunTepung.flatMap((g) => pintuSegenus.get(g) ?? []));
