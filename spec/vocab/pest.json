@@ -1912,6 +1912,12 @@
           "id": "Peronosprora destructor",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Perenospera detructor",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1922,6 +1928,7 @@
       "synonyms": [
         "Penyakit Busuk Daun",
         "Penyakit Embun Bulu",
+        "Perenospera detructor",
         "Peronospora destrutor",
         "Peronosprora destructor"
       ],
@@ -2209,6 +2216,12 @@
           "id": "Phytopthora infestans",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 28 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythophoathora infestans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -2224,6 +2237,7 @@
         "Penyakit Busuk Daun",
         "Penyakit Hawar Daun",
         "Phitophthora infestans",
+        "Phythophoathora infestans",
         "Phythophthora infestans",
         "Phythophtora infestans",
         "Phythopthora infestans",
@@ -2547,6 +2561,12 @@
           "id": "Helicoverpa armigera",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 129 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Heliothis armigera",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -2559,9 +2579,11 @@
         "Hama Ulat Buah",
         "Heclicoverpa armigera",
         "Helicoverpa amigera",
+        "Heliothis armigera",
         "Penggerek Buah",
         "Penggerek Pucuk",
         "Penggerek Tongkol",
+        "Perusak Buah",
         "Ulat Buah",
         "Ulat Penggerek Buah"
       ],
@@ -3201,6 +3223,24 @@
           "id": "Sirpophaga incertulas",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tryporiza incertulas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tryporyza incertulas",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Scirphopaga incertulans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -3219,6 +3259,7 @@
         "Schirpophaga incertulas",
         "Scipophaga incertulas",
         "Scircophaga incertulas",
+        "Scirphopaga incertulans",
         "Scirphopaga incertulas",
         "Scirphophaga incertulas",
         "Scirpohaga incerculas",
@@ -3226,7 +3267,9 @@
         "Scirpophaga insertulas",
         "Scirpophaga interculas",
         "Scripophaga incertulas",
-        "Sirpophaga incertulas"
+        "Sirpophaga incertulas",
+        "Tryporiza incertulas",
+        "Tryporyza incertulas"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -3616,6 +3659,12 @@
           "id": "Cnaphalocrosis medinalis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 59 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Canaphaloclosis medinalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -3624,6 +3673,7 @@
         "created_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
+        "Canaphaloclosis medinalis",
         "Cnaphalocrosis medinalis",
         "Hama Pelipat Daun",
         "Hama Pelipat Daun Palsu",
@@ -3867,6 +3917,12 @@
           "id": "Cerospora janseana",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cercospora oryzae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 15 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -3876,12 +3932,16 @@
       },
       "synonyms": [
         "Bercak Daun",
+        "Cercospora oryzae",
         "Cerospora janseana",
+        "Penyakit Barcak Daun",
         "Penyakit Bercak Cokelat",
         "Penyakit Bercak Cokelat Sempit",
         "Penyakit Bercak Coklat",
         "Penyakit Bercak Coklat Sempit",
-        "Penyakit Bercak Daun"
+        "Penyakit Bercak Daun",
+        "Penyakit Bercak Daun Sempit",
+        "Penyakit Bercak Sempit"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -4381,6 +4441,12 @@
           "id": "Peronosclerospora maydis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 48 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Perenospora maydis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -4391,6 +4457,7 @@
       "synonyms": [
         "Penyakit Bulai",
         "Perenosclerospora maydis",
+        "Perenospora maydis",
         "Peronoscleropsora maydis"
       ],
       "taxonomic_rank": "species",
@@ -4978,6 +5045,18 @@
           "id": "Crocidolomia pavonana",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 85 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Croccidolomia binotalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Crocidolomia binotalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -4988,12 +5067,15 @@
       },
       "synonyms": [
         "Crcidolomia pavonana",
+        "Croccidolomia binotalis",
+        "Crocidolomia binotalis",
         "Hama Perusak Krop",
         "Hama Ulat Krop",
         "Perusak Daun",
         "Ulat Crop",
         "Ulat Daun",
-        "Ulat Krop"
+        "Ulat Krop",
+        "Ulat Krop Kubis"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -5504,6 +5586,18 @@
           "uri": "https://www.gbif.org/species/1891594",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Lamprosema'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lamprosemma indicata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lamprosema indicate",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -5514,6 +5608,8 @@
       },
       "synonyms": [
         "Hama Penggulung Daun",
+        "Lamprosema indicate",
+        "Lamprosemma indicata",
         "Penggulung Batang",
         "Penggulung Daun",
         "Perusak Daun",
@@ -5683,6 +5779,18 @@
           "id": "Ophiomyia phaseoli",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Agromyza phaseoli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ophiornya phaseoli",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -5691,10 +5799,13 @@
         "created_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
+        "Agromyza phaseoli",
         "Hama Lalat Bibit",
+        "Hama Lalat Daun",
         "Lalat Bibit",
         "Lalat Kacang",
-        "Ophiomya phaseoli"
+        "Ophiomya phaseoli",
+        "Ophiornya phaseoli"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -5915,6 +6026,18 @@
           "uri": "https://www.gbif.org/species/1785185",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plusia calchites",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Plusia chalcites",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -5955,7 +6078,15 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kedelai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "synonyms": [
+        "Hama Perusak Daun",
+        "Perusak Daun",
+        "Plusia calchites",
+        "Plusia chalcites",
+        "Ulat Daun",
+        "Ulat Jengkal"
+      ]
     },
     {
       "id": "op:pst:00000062",
@@ -6346,6 +6477,12 @@
           "uri": "https://www.gbif.org/species/2555251",
           "relation": "exact",
           "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ceratobasidium theobromae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6354,10 +6491,12 @@
         "created_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
+        "Ceratobasidium theobromae",
         "Penyakit Pembuluh Kayu Vascular Streak Dieback Vsd",
         "Penyakit Pembuluh Kayu Vsd",
         "Penyakit Vascular Streak Dieback",
-        "Penyakit Vascular Streak Dieback Vsd"
+        "Penyakit Vascular Streak Dieback Vsd",
+        "Penyakit Vsd Vascular Streak Dieback"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -6577,6 +6716,12 @@
           "id": "Hypothenemus hampeii",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Stephanoderes hampei",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6588,7 +6733,8 @@
       "synonyms": [
         "Hypothenemus hampeii",
         "Penggerek Buah",
-        "Penggerek Buah Kopi"
+        "Penggerek Buah Kopi",
+        "Stephanoderes hampei"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -6651,6 +6797,12 @@
           "uri": "https://www.gbif.org/species/5164206",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pseudococcus citri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6688,7 +6840,11 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kopi, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "synonyms": [
+        "Kutu Putih",
+        "Pseudococcus citri"
+      ]
     },
     {
       "id": "op:pst:00000071",
@@ -6959,6 +7115,12 @@
           "uri": "https://www.gbif.org/species/10552362",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Thosea asigna",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6969,6 +7131,7 @@
       },
       "synonyms": [
         "Hama Ulat Api",
+        "Thosea asigna",
         "Ulat Api",
         "Ulat Kantong"
       ],
@@ -9601,6 +9764,12 @@
           "uri": "https://www.gbif.org/species/2033204",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Idiocerus'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ideocerus spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -9610,6 +9779,7 @@
       },
       "synonyms": [
         "Hama Wereng Mangga",
+        "Ideocerus spp.",
         "Wereng Mangga"
       ],
       "taxonomic_rank": "genus",
@@ -10050,6 +10220,18 @@
           "uri": "https://www.gbif.org/species/1881284",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Scirpophaga nivela",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Scirpophaga nivella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -10082,7 +10264,15 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tebu, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "synonyms": [
+        "Hama Penggerek Pucuk",
+        "Penggerek Batang",
+        "Penggerek Batang Pucuk",
+        "Penggerek Pucuk",
+        "Scirpophaga nivela",
+        "Scirpophaga nivella"
+      ]
     },
     {
       "id": "op:pst:00000113",
@@ -10266,6 +10456,12 @@
           "uri": "https://www.gbif.org/species/8667671",
           "relation": "exact",
           "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rigidoporus lignosus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 8 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -10275,7 +10471,11 @@
       },
       "synonyms": [
         "Jamur Akar Putih",
-        "Penyakit Jamur Akar Putih"
+        "Penyakit Akar Putih",
+        "Penyakit Cendawan Akar Putih",
+        "Penyakit Cendawan Akar Putih Penyiraman Di Sekitar Leher Akar",
+        "Penyakit Jamur Akar Putih",
+        "Rigidoporus lignosus"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {

@@ -664,7 +664,13 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       // sejak sebelum penyatuan apa pun. Membandingkan pest_scientific_name dengannya
       // tidak ada gunanya, dan menerimanya akan membuat aturan ini meloloskan tautan
       // ke organisme yang sama sekali lain.
-      const binomial = (x) => /^[A-Z][a-z]+ [a-z][a-z-]+$/.test(String(x).trim());
+      // Bentuk "Genus sp." dan "Genus spp." ikut dihitung sejak penyatuan sinonim OPT:
+      // registri memuat sasaran bertingkat genus atas nama itu, dan salah ketiknya
+      // ("Helopelthis sp.", "Rizoctonia sp.") dinaikkan jadi synonyms pada penerusnya.
+      // Sifat yang dijaga tidak berkurang — label KATEGORI berbahasa Indonesia tetap
+      // ditolak, karena kata keduanya berhuruf besar ("Hama Trips", "Gulma Berdaun
+      // Lebar") sementara pola ini menuntut huruf kecil atau "sp."/"spp." persis.
+      const binomial = (x) => /^[A-Z][a-z]+ (?:[a-z][a-z-]+|spp?\.)$/.test(String(x).trim());
       const ejaanTercatat = new Set(
         [ref.scientific_name, ref.accepted_scientific_name, ...(ref.synonyms ?? []).filter(binomial)]
           .filter(Boolean)

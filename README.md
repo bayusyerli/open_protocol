@@ -45,7 +45,7 @@ simpangan.
 
 Di atasnya, seluruh registri resmi Kementan sudah masuk: **14.920 produk terdaftar** —
 7.724 pestisida dengan 23.058 penggunaan berlabel, dan 7.196 pupuk — beserta **1.399
-substansi pestisida** (1.706 termasuk yang digantikan penggabungan ejaan), **782 OPT**
+substansi pestisida** (1.706 termasuk yang digantikan penggabungan ejaan), **755 OPT**
 (1.488 termasuk yang digantikan penyatuan kembar, salah ketik, dan kenaikan ke kosakata
 terkurasi), dan **692
 komoditas** (906 termasuk yang digantikan penyatuan serumpun). Registri varietas
