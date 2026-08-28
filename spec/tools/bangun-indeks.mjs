@@ -1201,6 +1201,157 @@ const hiasMerek = (m) => {
 // 960 KB — kelapa sawit sendiri punya 622 produk untuk satu gulma. Tingkat pertama
 // hanya daftar OPT beserta jumlahnya, yang memang itulah isi layar sesudah
 // komoditas dipilih; daftar bahan dan mereknya baru diambil saat satu OPT dibuka.
+// Sasaran bertingkat GENUS yang ikut dicakup pintu terkurasi
+// ---------------------------------------------------------------------------
+// Registri memuat sasaran yang sengaja tidak menyebut spesies — "Thrips sp.",
+// "Colletotrichum sp.", "Liriomyza sp." — dan 682 baris penggunaan berdiri di atasnya.
+// Menyatukannya ke sebuah spesies SALAH: label itu memang berkata "trips apa pun".
+// Tetapi membiarkannya juga salah, karena produk yang terdaftar untuk "trips apa pun
+// pada cabai" jelas jawaban yang sah bagi orang yang berdiri di depan cabai bertrips.
+//
+// Jadi ia tidak disatukan, melainkan DICAKUP: barisnya ikut dihitung pada pintu yang
+// (a) segenus dan (b) inangnya memuat komoditas baris itu. Dua syarat itu bersama yang
+// membuat pemetaannya tidak pernah menebak — dan pada data hari ini menghasilkan NOL
+// kasus ambigu dari 682 baris. Kalau suatu saat ada dua pintu segenus yang berbagi
+// inang, baris itu DIBUANG dari pencakupan dan dihitung sebagai ambigu, bukan
+// dibagikan ke salah satunya.
+//
+// Jumlahnya dibawa tersendiri sebagai `takBerspesies` supaya layar bisa menyebutkannya.
+const takBerspesies = new Map();
+let cakupAmbigu = 0;
+let cakupBaris = 0;
+{
+  const genusDari = (x) => (x ?? '').trim().split(/\s+/)[0] || '';
+  // Genus pintu diambil dari nama ilmiahnya DAN dari synonyms yang berbentuk nama
+  // ilmiah. Alasannya konkret: sesudah satukan-opt-sinonim.mjs, pintu lalat bibit kedelai
+  // membawa "Agromyza phaseoli" sebagai synonym — nama genus lamanya — sementara registri
+  // masih memuat sasaran "Agromyza sp." pada dua belas baris. Tanpa membaca synonyms,
+  // dua belas baris itu berdiri di luar pintu yang justru sudah menyerap nama lamanya.
+  const binomial = (x) => /^[A-Z][a-z]+ [a-z][a-z-]+$/.test(String(x ?? '').trim());
+  const pintuSegenus = new Map();
+  for (const k of optTerkurasi) {
+    const g = new Set([k.scientific_name, ...(k.synonyms ?? []).filter(binomial)].map(genusDari).filter(Boolean));
+    for (const x of g) {
+      if (!pintuSegenus.has(x)) pintuSegenus.set(x, []);
+      pintuSegenus.get(x).push(k);
+    }
+  }
+  // SATU kesetaraan marga yang ditulis tangan, dan alasannya bukan kepraktisan.
+  // "Oidium" bukan marga sejajar Podosphaera atau Leveillula — ia nama untuk BENTUK TAK
+  // BERKELAMIN jamur embun tepung, dipakai justru ketika bentuk berkelaminnya (yang
+  // memberi nama margasnya) tidak ditemukan. Jadi "Oidium sp." pada label tidak berkata
+  // "marga lain"; ia berkata "embun tepung, marganya tidak ditentukan" — persis peran
+  // yang sama dengan "Thrips sp." bagi trips. Dua syarat pencakupan tidak dilonggarkan:
+  // tetap harus ada TEPAT SATU pintu yang inangnya memuat komoditas baris itu, dan
+  // sisanya tetap dibuang sebagai ambigu.
+  {
+    const embunTepung = ['Podosphaera', 'Erysiphe', 'Leveillula', 'Golovinomyces', 'Sphaerotheca', 'Oidium'];
+    const gabung = new Set(embunTepung.flatMap((g) => pintuSegenus.get(g) ?? []));
+    if (gabung.size) pintuSegenus.set('Oidium', [...gabung]);
+  }
+
+  for (const e of optRegistri) {
+    if (e.lifecycle?.status === 'superseded') continue;
+    if (!/^[A-Z][a-z]+ spp?\.$/.test((e.scientific_name ?? '').trim())) continue;
+    const kandidat = pintuSegenus.get(genusDari(e.scientific_name)) ?? [];
+    if (!kandidat.length) continue;
+    for (const [kc, v] of perKomoditas) {
+      const o = v.opt.get(e.id);
+      if (!o) continue;
+      const pas = kandidat.filter((k) => (k.hosts ?? []).some((h) => h.id === kc));
+      if (pas.length !== 1) { if (pas.length > 1) cakupAmbigu += o.produk.size; continue; }
+      const id = pas[0].id;
+      if (!takBerspesies.has(id)) takBerspesies.set(id, new Map());
+      const perKom = takBerspesies.get(id);
+      if (!perKom.has(kc)) perKom.set(kc, { produk: new Set(), sumber: [] });
+      for (const x of o.produk) perKom.get(kc).produk.add(x);
+      perKom.get(kc).sumber.push(o);
+      cakupBaris += o.produk.size;
+    }
+  }
+}
+
+// Sasaran berspesies LAIN yang dicakup atas pernyataan kurator
+// ---------------------------------------------------------------------------
+// Pasangan blok di atas, dan sengaja dipisah darinya. Di atas, mesin membaca apa yang
+// label katakan; di sini ia membaca apa yang kurator NYATAKAN — medan `covers` pada
+// pest.json, tiap barisnya dengan `dasar` yang wajib menyebut cirinya. Aturan otomatis
+// dicoba dan ditolak: "spesies semarga, dipilah menurut inang" menjangkau 94 baris,
+// tetapi baris terbesarnya Xanthomonas campestris — pada padi hawar daun bakteri, pada
+// kubis busuk hitam, dua penyakit tanpa kemiripan apa pun.
+//
+// Saringan inang tetap berlaku penuh, jadi pernyataan kurator memperluas jangkauan
+// pintu tanpa pernah memindahkannya ke tanaman yang teksnya tidak ditulis untuknya.
+const namaLain = new Map();
+let cakupNamaLain = 0;
+{
+  const olehSasaran = new Map();
+  for (const k of optTerkurasi) {
+    for (const c of k.covers ?? []) {
+      if (!olehSasaran.has(c.pest.id)) olehSasaran.set(c.pest.id, []);
+      olehSasaran.get(c.pest.id).push(k);
+    }
+  }
+  for (const [sid, pintu] of olehSasaran) {
+    for (const [kc, v] of perKomoditas) {
+      const o = v.opt.get(sid);
+      if (!o) continue;
+      const pas = pintu.filter((k) => (k.hosts ?? []).some((h) => h.id === kc));
+      if (pas.length !== 1) { if (pas.length > 1) cakupAmbigu += o.produk.size; continue; }
+      const id = pas[0].id;
+      if (!namaLain.has(id)) namaLain.set(id, new Map());
+      const perKom = namaLain.get(id);
+      if (!perKom.has(kc)) perKom.set(kc, { produk: new Set(), sumber: [] });
+      for (const x of o.produk) perKom.get(kc).produk.add(x);
+      perKom.get(kc).sumber.push(o);
+      cakupNamaLain += o.produk.size;
+    }
+  }
+}
+
+// Produk yang dicakup DILEBUR ke entri pintu, bukan cuma dihitung
+// ---------------------------------------------------------------------------
+// Tanpa ini kedua mekanisme di atas berbohong dengan cara yang paling sulit dilihat:
+// layar "di tanaman apa" menyebut 278 produk untuk trips di cabai, lalu berkas rinciannya
+// berisi 246 — karena 32 sisanya terdaftar di bawah entri "Thrips sp." yang punya berkas
+// SENDIRI. Angkanya benar, daftarnya benar, dan keduanya tidak sama.
+//
+// Jadi peleburannya dilakukan di sumbernya, sebelum berkas apa pun disusun: produk dan
+// kelompok bahan aktif milik sasaran yang dicakup dimasukkan ke entri pintu, sehingga
+// setiap angka dan setiap daftar sesudah titik ini turun dari objek yang sama dan tidak
+// bisa lagi berselisih. Entri sasaran tetap ada di tempatnya — ia masih dicari lewat nama
+// di jalur 2, dan membuangnya akan memutus penelusuran ke ejaan asli registri.
+{
+  const lebur = (peta) => {
+    for (const [pid, perKom] of peta) {
+      for (const [kc, isi] of perKom) {
+        const kom = perKomoditas.get(kc);
+        if (!kom) continue;
+        // Pintu bisa saja TIDAK punya pendaftaran sendiri di komoditas itu dan tetap
+        // menjangkaunya lewat cakupan — kutu daun kapas tidak terdaftar sebagai dirinya
+        // di kubis, tetapi "Aphis sp." di kubis terdaftar. Entri barunya dibuat di sini;
+        // tanpa itu layar akan menyebut komoditas yang berkas rinciannya tidak ada.
+        let tuju = kom.opt.get(pid);
+        if (!tuju) {
+          tuju = { nama: namaOpt(pid, null), grup: new Map(), produk: new Set() };
+          kom.opt.set(pid, tuju);
+        }
+        for (const asal of isi.sumber) {
+          for (const x of asal.produk) tuju.produk.add(x);
+          for (const [gk, g] of asal.grup) {
+            const ada = tuju.grup.get(gk);
+            if (!ada) { tuju.grup.set(gk, { ...g, merek: g.merek.slice() }); continue; }
+            const punya = new Set(ada.merek.map((m) => m.id));
+            for (const m of g.merek) if (!punya.has(m.id)) ada.merek.push(m);
+          }
+        }
+      }
+    }
+  };
+  lebur(takBerspesies);
+  lebur(namaLain);
+}
+
 const berkasOpt = {};
 const kunciKomoditas = (id) => id.replace(/[^a-z0-9]/gi, '');
 for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
@@ -1447,61 +1598,6 @@ for (const s of sediaan) {
 // dua layar yang berbeda janjinya, bukan satu layar dengan dua tab.
 
 // ---------------------------------------------------------------------------
-// Sasaran bertingkat GENUS yang ikut dicakup pintu terkurasi
-// ---------------------------------------------------------------------------
-// Registri memuat sasaran yang sengaja tidak menyebut spesies — "Thrips sp.",
-// "Colletotrichum sp.", "Liriomyza sp." — dan 682 baris penggunaan berdiri di atasnya.
-// Menyatukannya ke sebuah spesies SALAH: label itu memang berkata "trips apa pun".
-// Tetapi membiarkannya juga salah, karena produk yang terdaftar untuk "trips apa pun
-// pada cabai" jelas jawaban yang sah bagi orang yang berdiri di depan cabai bertrips.
-//
-// Jadi ia tidak disatukan, melainkan DICAKUP: barisnya ikut dihitung pada pintu yang
-// (a) segenus dan (b) inangnya memuat komoditas baris itu. Dua syarat itu bersama yang
-// membuat pemetaannya tidak pernah menebak — dan pada data hari ini menghasilkan NOL
-// kasus ambigu dari 682 baris. Kalau suatu saat ada dua pintu segenus yang berbagi
-// inang, baris itu DIBUANG dari pencakupan dan dihitung sebagai ambigu, bukan
-// dibagikan ke salah satunya.
-//
-// Jumlahnya dibawa tersendiri sebagai `takBerspesies` supaya layar bisa menyebutkannya.
-const takBerspesies = new Map();
-let cakupAmbigu = 0;
-let cakupBaris = 0;
-{
-  const genusDari = (x) => (x ?? '').trim().split(/\s+/)[0] || '';
-  // Genus pintu diambil dari nama ilmiahnya DAN dari synonyms yang berbentuk nama
-  // ilmiah. Alasannya konkret: sesudah satukan-opt-sinonim.mjs, pintu lalat bibit kedelai
-  // membawa "Agromyza phaseoli" sebagai synonym — nama genus lamanya — sementara registri
-  // masih memuat sasaran "Agromyza sp." pada dua belas baris. Tanpa membaca synonyms,
-  // dua belas baris itu berdiri di luar pintu yang justru sudah menyerap nama lamanya.
-  const binomial = (x) => /^[A-Z][a-z]+ [a-z][a-z-]+$/.test(String(x ?? '').trim());
-  const pintuSegenus = new Map();
-  for (const k of optTerkurasi) {
-    const g = new Set([k.scientific_name, ...(k.synonyms ?? []).filter(binomial)].map(genusDari).filter(Boolean));
-    for (const x of g) {
-      if (!pintuSegenus.has(x)) pintuSegenus.set(x, []);
-      pintuSegenus.get(x).push(k);
-    }
-  }
-  for (const e of optRegistri) {
-    if (e.lifecycle?.status === 'superseded') continue;
-    if (!/^[A-Z][a-z]+ spp?\.$/.test((e.scientific_name ?? '').trim())) continue;
-    const kandidat = pintuSegenus.get(genusDari(e.scientific_name)) ?? [];
-    if (!kandidat.length) continue;
-    for (const [kc, v] of perKomoditas) {
-      const o = v.opt.get(e.id);
-      if (!o) continue;
-      const pas = kandidat.filter((k) => (k.hosts ?? []).some((h) => h.id === kc));
-      if (pas.length !== 1) { if (pas.length > 1) cakupAmbigu += o.produk.size; continue; }
-      const id = pas[0].id;
-      if (!takBerspesies.has(id)) takBerspesies.set(id, new Map());
-      const perKom = takBerspesies.get(id);
-      if (!perKom.has(kc)) perKom.set(kc, { produk: new Set() });
-      for (const x of o.produk) perKom.get(kc).produk.add(x);
-      cakupBaris += o.produk.size;
-    }
-  }
-}
-
 // ---------------------------------------------------------------------------
 // Pintu masuk jalur 1: OPT terkurasi beserta teks gejalanya
 // ---------------------------------------------------------------------------
@@ -1521,16 +1617,21 @@ const gejala = optTerkurasi
     for (const [kc, v] of perKomoditas) {
       const o = v.opt.get(k.id);
       const tb = takBerspesies.get(k.id)?.get(kc);
-      if (!o && !tb) continue;
+      const nl = namaLain.get(k.id)?.get(kc);
+      if (!o && !tb && !nl) continue;
+      const gabung = new Set([...(o?.produk ?? []), ...(tb?.produk ?? []), ...(nl?.produk ?? [])]);
       di.push({
         komoditas: kc,
         nama: v.nama,
-        produk: (o?.produk.size ?? 0) + (tb?.produk.size ?? 0),
+        produk: gabung.size,
         // Dinyatakan tersendiri, bukan dilebur diam-diam ke jumlah: sebagian produk ini
         // terdaftar untuk "Thrips sp." — sasaran yang memang tidak menyebut spesies —
         // dan layar harus bisa mengatakannya, bukan berpura-pura registrinya lebih
         // pasti daripada sebenarnya.
         ...(tb ? { takBerspesies: tb.produk.size } : {}),
+        // Sama alasannya, medan sendiri: produk ini terdaftar untuk spesies LAIN, dan
+        // yang menyatukannya pernyataan kurator yang bisa dibaca — bukan pembacaan label.
+        ...(nl ? { namaLain: nl.produk.size } : {}),
         berkas: `opt/${kunciKomoditas(kc)}/${kunciKomoditas(k.id)}`,
       });
     }
@@ -1581,6 +1682,26 @@ const gejala = optTerkurasi
 // dulu" berada. Gejala tanpa blok itu adalah tebakan yang dipoles, jadi pintu ini
 // tidak boleh bisa dibuka tanpa melewatinya.
 
+// Angka yang DIJANJIKAN layar harus sama dengan daftar yang DITERIMANYA.
+// Keduanya turun dari objek yang sama sejak peleburan cakupan, jadi selisih di sini
+// berarti ada yang memisahkan keduanya lagi — dan bentuk kambuhnya sudah pernah terjadi:
+// "278 produk terdaftar" pada layar, 246 di berkasnya. Tidak satu pun aturan L bisa
+// menangkapnya karena keduanya indeks, bukan kosakata; jadi penjaganya di sini.
+{
+  const salah = [];
+  for (const g of gejala) {
+    for (const d of g.di) {
+      const isi = berkasOpt[d.berkas.replace(/^opt\//, '')];
+      if (!isi) { salah.push(`${g.id} @ ${d.nama}: berkas ${d.berkas} tidak ada`); continue; }
+      if (isi.produk !== d.produk) salah.push(`${g.id} @ ${d.nama}: daftar menjanjikan ${d.produk}, berkasnya berisi ${isi.produk}`);
+    }
+  }
+  if (salah.length) {
+    for (const x of salah.slice(0, 12)) console.error(`  SELISIH  ${x}`);
+    throw new Error(`${salah.length} pintu menjanjikan jumlah produk yang tidak sama dengan isi berkasnya.`);
+  }
+}
+
 const gejalaCari = gejala
   .filter((g) => g.adaPintu)
   .map((g) => ({
@@ -1599,6 +1720,17 @@ const gejalaCari = gejala
     produk: g.di.reduce((a, b) => a + b.produk, 0),
     komoditas: g.di.length,
   }));
+
+const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'adaPintu', 'inang'];
+const GEJALA_RINCI = ['keterangan', 'pembanding', 'catatan', 'penular', 'di'];
+const pilihMedan = (o, medan) => Object.fromEntries(medan.map((k) => [k, o[k]]));
+const daftarGejala = gejala.map((g) => ({
+  ...pilihMedan(g, GEJALA_DAFTAR),
+  produk: g.di.reduce((a, b) => a + b.produk, 0),
+  komoditas: g.di.length,
+}));
+const pecahanGejalaDaftar = pecah(daftarGejala);
+const pecahanGejalaCari = pecah(gejalaCari);
 
 // ---------------------------------------------------------------------------
 // Kamus nama lokal — A3
@@ -2299,6 +2431,8 @@ const meta = {
     // Didaftar utuh, bukan dihitung, karena service worker memprasimpannya satu per satu:
     // jalur 1 justru jalur yang paling mungkin dibuka jauh dari sinyal.
     gejala: gejala.map((g) => kunciKomoditas(g.id)).sort(),
+    gejalaDaftar: pecahanGejalaDaftar.length,
+    gejalaCari: pecahanGejalaCari.length,
 
     setara: pecahanSetara.length,
     bahan: pecahanBahan.length,
@@ -2410,16 +2544,15 @@ for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.
 // cuma memakai dua angka darinya — berapa produk seluruhnya dan di berapa komoditas.
 // Daftar lengkapnya baru dibutuhkan pada layar "di tanaman apa", yaitu sesudah satu pintu
 // dibuka. Kedua angka itu karena itu dihitung di sini dan dibawa sebagai angka.
-const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'adaPintu', 'inang'];
-const GEJALA_RINCI = ['keterangan', 'pembanding', 'catatan', 'penular', 'di'];
-const pilihMedan = (o, medan) => Object.fromEntries(medan.map((k) => [k, o[k]]));
-simpan('gejala.json', gejala.map((g) => ({
-  ...pilihMedan(g, GEJALA_DAFTAR),
-  produk: g.di.reduce((a, b) => a + b.produk, 0),
-  komoditas: g.di.length,
-})));
+// Pecah ketiga, dan kali ini mendatar. Sesudah kurasi ekor, berkas daftarnya 63 KB pada
+// 140 pintu; memangkasnya lagi tidak mungkin tanpa mencabut yang justru jadi isinya —
+// teks gejala sendiri 38 KB dari 63, dan layar daftar memang layar tempat orang MEMBACA
+// teks-teks itu untuk menemukan miliknya. Jadi yang dipecah berkasnya, bukan isinya, dan
+// daftar pecahannya ikut di meta.json yang toh sudah diambil lebih dulu — pecahannya
+// diambil serentak, jadi tetap satu perjalanan pulang-pergi.
+pecahanGejalaDaftar.forEach((s, i) => simpan(`gejala-daftar/${String(i).padStart(3, '0')}.json`, s));
 for (const g of gejala) simpan(`gejala/${kunciKomoditas(g.id)}.json`, pilihMedan(g, GEJALA_RINCI));
-simpan('gejala-cari.json', gejalaCari);
+pecahanGejalaCari.forEach((s, i) => simpan(`gejala-cari/${String(i).padStart(3, '0')}.json`, s));
 simpan('nama-lokal.json', namaLokalCari);
 for (const [k, isi] of Object.entries(berkasOptNama).sort()) simpan(`opt-nama/${k}.json`, isi);
 simpan('varian.json', varian);
@@ -2512,6 +2645,7 @@ console.log(`  opt-nama/         : ${optRegistriIndeks.length} OPT registri berp
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
 console.log(`  cakupan tak berspesies: ${cakupBaris} produk dari sasaran "Genus sp." ikut terhitung, ${cakupAmbigu} dibuang karena ambigu`);
+console.log(`  cakupan nama lain     : ${cakupNamaLain} produk dari sasaran berspesies lain yang dicakup atas pernyataan kurator`);
 console.log(`  principal/        : ${kb([...berkas].filter(([p]) => p.startsWith('principal/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasPrincipal).length} berkas — ${meta.jumlah.principal} badan, ${meta.jumlah.produkBerprincipal} dari ${semuaProduk.length} produk tertaut`);
 console.log(`  harga/            : ${kb([...berkas].filter(([p]) => p.startsWith('harga/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasHarga).length} varian — ${meta.jumlah.hargaBerangka} berangka, ${meta.jumlah.hargaVarian - meta.jumlah.hargaBerangka} diterbitkan tanpa angka, ${meta.jumlah.hargaTitik} titik`);
 console.log(`  gambar kemasan    : ${meta.jumlah.produkBergambar} dari ${semuaProduk.length} produk (${(meta.jumlah.produkBergambar / semuaProduk.length * 100).toFixed(1)}%), ${meta.jumlah.gambarKemasan} gambar`);

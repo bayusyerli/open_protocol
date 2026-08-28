@@ -1,0 +1,75 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "pest",
+    "label": {
+      "id": "Fixture L39 positif"
+    },
+    "scope": {
+      "id": "Satu entitas OPT untuk menguji aturan L39; bukan bagian kosakata."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-28T00:00:00Z"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Fixture uji aturan L39",
+          "publisher": "Pranatani"
+        }
+      ]
+    },
+    "id_blocks": [
+      {
+        "from": 9102,
+        "to": 9102
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "op:pst:00009102",
+      "key": "penggerek-uji-l39-ok",
+      "label": {
+        "id": "Penggerek batang (fixture L39 positif)"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Scirpophaga incertulas",
+      "taxonomic_rank": "species",
+      "hosts": [
+        {
+          "id": "op:cmd:00001025",
+          "label": "Padi"
+        }
+      ],
+      "symptoms": {
+        "id": "Pucuk anakan muda menguning lalu mati dan mudah ditarik lepas, dan sesudah berbunga malai keluar putih hampa seluruhnya sementara batangnya masih hijau."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tarik pucuk yang mati. Kalau lepas ringan dengan pangkal berlubang dan berisi kotoran, itu gerekan."
+          }
+        }
+      ],
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001389",
+            "label": "Penggerek Batang"
+          },
+          "dasar": "Scirpophaga innotata sasaran registri tanpa ciri pembanding sendiri, jadi mencakupnya dari sini tidak menghitung produk mana pun dua kali — dan gejalanya di sawah memang tidak terbedakan dari S. incertulas."
+        }
+      ],
+      "no_mapping_reason": "Fixture positif untuk L39: cakupan yang sasarannya BUKAN pintu, yang memang bentuk yang harus lolos. Tanpa pasangan ini, L39 bisa saja menolak seluruh medan covers dan tetap terlihat benar.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      }
+    }
+  ]
+}

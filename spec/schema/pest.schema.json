@@ -105,6 +105,27 @@
       "$ref": "common.schema.json#/$defs/Ref",
       "description": "OPT yang MENULARKAN yang ini. Dipakai layar nol-produk: yang terinfeksi tidak bisa disemprot, tetapi penularnya bisa, dan tanaman yang belum terkena masih bisa diselamatkan. Tidak bisa diturunkan dari `distinguishing` — `rules_out` menyatakan apa yang TERBANTAH, dan pada virus kuning keriting rules_out memuat trips (bukan penular) bersama kutu kebul (penular). Menebak salah satunya berarti mengarahkan orang menyemprot serangga yang tidak menularkan apa pun."
     },
+    "covers": {
+      "type": "array",
+      "description": "Sasaran registri berspesies LAIN yang pintu ini jawab, ditulis tangan satu per satu. Berbeda dari pencakupan \"Genus sp.\" yang dihitung mesin: di sana labelnya sendiri yang menolak menyebut spesies, jadi pintu segenus menjawab persis apa yang tertulis. Di sini label MENYEBUT spesies lain, dan mengarahkannya ke pintu ini adalah pernyataan kurator — bahwa di lapangan keduanya terlihat sama dan keputusan tindakannya sama. Karena itu `dasar` wajib, dan wajib menyebut cirinya, bukan cuma kekerabatannya. Tidak boleh dipakai untuk organisme yang gejalanya berbeda walau semarga.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "pest": {
+            "$ref": "common.schema.json#/$defs/Ref"
+          },
+          "dasar": {
+            "type": "string",
+            "minLength": 60
+          }
+        },
+        "required": [
+          "pest",
+          "dasar"
+        ],
+        "additionalProperties": false
+      }
+    },
     "distinguishing": {
       "type": "array",
       "description": "Ciri pembanding yang bisa diperiksa sendiri tanpa alat, dan apa yang terbantah kalau hasilnya begitu. Mesin tidak menebak; ini yang membuat orang bisa memastikan sendiri sebelum menyemprot. `rules_out` menunjuk OPT yang paling mudah tertukar dengannya.",

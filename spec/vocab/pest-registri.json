@@ -12527,8 +12527,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000140"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -16324,8 +16328,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000134"
+        }
       },
       "synonyms": [
         "Penyakit Bercak Coklat",
@@ -17572,8 +17580,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000138"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -18169,8 +18181,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000136"
+        }
       },
       "synonyms": [
         "Hama Putih Palsu"
@@ -19203,8 +19219,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000135"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -20242,9 +20262,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001553"
+          "id": "op:pst:00000139"
         }
       },
       "synonyms": [
@@ -20684,9 +20704,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000137"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -22814,9 +22837,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000133"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -24125,9 +24151,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001447"
+          "id": "op:pst:00000133"
         }
       },
       "accepted_scientific_name": "Ustilaginoidea virens",
@@ -24855,9 +24881,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001553"
+          "id": "op:pst:00000139"
         }
       },
       "accepted_scientific_name": "Solenopsis geminata",
@@ -27143,9 +27169,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000139"
+        }
       },
       "synonyms": [
         "Hama Semut Api",
@@ -39793,9 +39822,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001396"
+          "id": "op:pst:00000137"
         }
       },
       "accepted_scientific_name": "Hydrellia philippina",
@@ -43143,9 +43172,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001553"
+          "id": "op:pst:00000139"
         }
       },
       "accepted_scientific_name": "Selenopsis",
@@ -49609,9 +49638,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001396"
+          "id": "op:pst:00000137"
         }
       },
       "accepted_scientific_name": "Hydrellia philippina",

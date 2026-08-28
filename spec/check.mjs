@@ -281,6 +281,28 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L39 — sasaran yang dicakup sebuah pintu tidak boleh punya pintu sendiri.
+    //
+    // `covers` menyatakan "produk yang terdaftar untuk spesies ITU menjawab pintu INI",
+    // dan indeks menjumlahkannya ke jangkauan pintu. Kalau sasarannya ternyata pintu
+    // tersendiri, produk yang sama terhitung di dua tempat dan layar menyebut angka yang
+    // lebih besar daripada yang ada — persis jenis kesalahan yang tidak terlihat dari
+    // layar mana pun, karena kedua angkanya masuk akal sendiri-sendiri.
+    //
+    // Bisa terjadi tanpa kelalaian: sasaran yang hari ini dicakup boleh saja besok layak
+    // dinaikkan jadi pintu, dan yang menaikkannya belum tentu ingat ada yang mencakupnya.
+    if (Array.isArray(doc.covers) && doc.covers.length) {
+      for (const c of doc.covers) {
+        const t = c?.pest?.id && entityById.get(c.pest.id);
+        if (t && Array.isArray(t.distinguishing) && t.distinguishing.length) {
+          fail(file, 'L39-cakupan-berpintu', `${doc.id} mencakup ${c.pest.id}, tetapi ${c.pest.id} punya ciri pembandingnya sendiri — artinya ia pintu tersendiri. Produk yang sama akan terhitung di kedua pintu, dan jangkauan yang ditampilkan jadi lebih besar daripada yang ada. Naikkan salah satunya, jangan keduanya.`);
+        }
+        if (c?.pest?.id === doc.id) {
+          fail(file, 'L39-cakupan-berpintu', `${doc.id} mencakup dirinya sendiri.`);
+        }
+      }
+    }
+
     // L10 — rujukan harus menunjuk entitas yang ada.
     // Hanya diperiksa untuk jenis entitas yang kosakatanya sudah dimuat; jenis yang
     // belum punya kosakata dilewati diam-diam supaya tidak berisik sebelum waktunya.

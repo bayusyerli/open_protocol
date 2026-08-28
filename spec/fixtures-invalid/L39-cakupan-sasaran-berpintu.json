@@ -1,0 +1,75 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "pest",
+    "label": {
+      "id": "Fixture L39 negatif"
+    },
+    "scope": {
+      "id": "Satu entitas OPT untuk menguji aturan L39; bukan bagian kosakata."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft",
+      "created_at": "2026-08-28T00:00:00Z"
+    },
+    "provenance": {
+      "license": "CC-BY-SA-4.0",
+      "sources": [
+        {
+          "title": "Fixture uji aturan L39",
+          "publisher": "Pranatani"
+        }
+      ]
+    },
+    "id_blocks": [
+      {
+        "from": 9101,
+        "to": 9101
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "op:pst:00009101",
+      "key": "penggerek-uji-l39",
+      "label": {
+        "id": "Penggerek batang (fixture L39)"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Scirpophaga incertulas",
+      "taxonomic_rank": "species",
+      "hosts": [
+        {
+          "id": "op:cmd:00001025",
+          "label": "Padi"
+        }
+      ],
+      "symptoms": {
+        "id": "Pucuk anakan muda menguning lalu mati dan mudah ditarik lepas, dan sesudah berbunga malai keluar putih hampa seluruhnya sementara batangnya masih hijau."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tarik pucuk yang mati. Kalau lepas ringan dengan pangkal berlubang dan berisi kotoran, itu gerekan."
+          }
+        }
+      ],
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00000030",
+            "label": "Penggerek batang"
+          },
+          "dasar": "Fixture negatif: op:pst:00000030 SUDAH pintu tersendiri — ia punya distinguishing sendiri — sehingga mencakupnya dari sini membuat produk yang sama terhitung dua kali, dan jangkauan yang ditampilkan lebih besar daripada yang ada."
+        }
+      ],
+      "no_mapping_reason": "Fixture negatif untuk L39. Rujukannya sah bagi L10 (entitasnya ada) dan bagi L29 (belum digantikan), jadi tidak satu pun aturan lama menolaknya; yang harus menyala L39. Bentuk kambuhnya konkret: sasaran yang hari ini dicakup layak dinaikkan jadi pintu besok, dan yang menaikkannya belum tentu ingat ada pintu lain yang sudah mencakupnya.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      }
+    }
+  ]
+}
