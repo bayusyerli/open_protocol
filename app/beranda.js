@@ -9,7 +9,7 @@
  * indeks yang sama, pemecahan ember yang sama, urutan yang sama.
  */
 
-import { muatMeta, cari, cariGejala, cariNamaLokal, namaBerdekatan, teks, JENIS } from './pustaka.js';
+import { muatMeta, isiCacah, cari, cariGejala, cariNamaLokal, namaBerdekatan, teks, JENIS } from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { catatLubang, LUBANG } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -448,6 +448,7 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
 (async function mulai() {
   try {
     const m = await muatMeta();
+    isiCacah();
     const j = m.jumlah;
     const n = (x) => (x ?? 0).toLocaleString('id-ID');
 

@@ -345,7 +345,7 @@ Isi awal, cukup untuk menyusun protokol referensi hortikultura pertama.
 | `product/pestisida.ndjson` | **7.724 produk pestisida** terdaftar, dengan 23.058 penggunaan berlabel | KEMENTAN |
 | `product/pupuk.ndjson` | **7.196 produk pupuk** terdaftar (SIMPEL + SIMPUK 2020) | KEMENTAN |
 | `variety/varietas.ndjson` | **11.227 varietas terdaftar** — pelepasan, pendaftaran, dan perlindungan varietas | KEMENTAN |
-| `pest.json` | 80 OPT utama sebelas komoditas — delapan semusim ditambah kakao, kopi, dan kelapa sawit | 10 ke EPPO, semua perlu verifikasi; sisanya ke GBIF lewat entri registri yang dinaikkan, tiga tanpa pemetaan beserta alasannya |
+| `pest.json` | OPT utama per komoditas, dikurasi bertahap lewat `tools/kurasi-opt.mjs`; daftar mutakhirnya di `docs/14-tinjauan-gejala.md` | 10 ke EPPO, semua perlu verifikasi; sisanya ke GBIF lewat entri registri yang dinaikkan, tiga tanpa pemetaan beserta alasannya |
 | `pest-registri.json` | **1.360 organisme sasaran** dari label produk | KEMENTAN + GBIF |
 | `commodity-registri.json` | **482 komoditas sasaran** dari label produk | KEMENTAN |
 | `commodity-varietas.json` | **418 jenis tanaman** dari registri varietas yang belum ada di kosakata | KEMENTAN |
