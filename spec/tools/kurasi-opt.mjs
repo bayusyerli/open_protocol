@@ -4,7 +4,7 @@
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
-// kakao, kopi, kelapa sawit, dan jeruk (seluruhnya 28 Agustus 2026).
+// kakao, kopi, kelapa sawit, jeruk, dan cucurbit (seluruhnya 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -127,6 +127,9 @@ const KAKAO = { id: 'op:cmd:00001010', label: 'Kakao' };
 const KOPI = { id: 'op:cmd:00001244', label: 'Kopi' };
 const SAWIT = { id: 'op:cmd:00001151', label: 'Kelapa sawit' };
 const JERUK = { id: 'op:cmd:00001015', label: 'Jeruk' };
+const SEMANGKA = { id: 'op:cmd:00001021', label: 'Semangka' };
+const MELON = { id: 'op:cmd:00001031', label: 'Melon' };
+const MENTIMUN = { id: 'op:cmd:00001045', label: 'Mentimun' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -391,7 +394,7 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Pengorok Daun',
     key: 'pengorok-daun-kentang',
     label: 'Pengorok daun kentang',
-    inang: [KENTANG, TOMAT],
+    inang: [KENTANG, TOMAT, MENTIMUN],
     definition:
       'Lalat pengorok daun berdaun lebar. Registri juga mendaftarkannya pada bawang merah (24 baris), mentimun, krisan, cabai, dan seledri. Teks di bawah ditulis untuk daun LEBAR; pada bawang merah lorongnya berjalan di dalam daun yang berongga dan pintunya berdiri sendiri, atas nama Liriomyza chinensis.',
     gejala:
@@ -413,7 +416,7 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Penggerek Buah',
     key: 'penggerek-buah',
     label: 'Penggerek buah',
-    inang: [TOMAT, CABAI, JAGUNG],
+    inang: [TOMAT, CABAI, JAGUNG, SEMANGKA, MELON],
     definition:
       'Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.',
     gejala:
@@ -435,7 +438,7 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Hama Trips',
     key: 'trips-kentang',
     label: 'Trips kentang',
-    inang: [KENTANG, TOMAT],
+    inang: [KENTANG, TOMAT, SEMANGKA, MELON],
     definition:
       'Trips ketiga yang dikurasi, dan ketiganya TIDAK BISA dibedakan satu sama lain di kebun — pemisahannya menuntut preparat dan mikroskop. Yang membedakan pintunya karena itu TANAMANNYA, bukan spesiesnya: Thrips parvispinus untuk cabai, Thrips tabaci untuk bawang merah, dan yang ini untuk kentang dan tomat. Registri juga mendaftarkannya pada semangka, melon, dan kacang panjang.',
     gejala:
@@ -1806,6 +1809,90 @@ const PINTU_JERUK = [
   },
 ];
 
+const PINTU_CUCURBIT = [
+  {
+    id: 'op:pst:00000089',
+    dari: 'op:pst:00001083',
+    nama: 'Penyakit Embun Bulu',
+    key: 'embun-bulu-cucurbit',
+    label: 'Embun bulu cucurbit',
+    definition:
+      'Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil, dimetomorf, dan simoksanil bekerja padanya, banyak fungisida untuk jamur sejati tidak. Penyakit daun paling banyak didaftarkan pada seluruh cucurbit — 40 baris. Sporanya terbawa angin antar-kebun, jadi menanam serempak dan menjarangkan tanaman ikut menentukan. Registri juga memuat ejaan Peronosclerospora cubensis (1 baris) yang belum disatukan.',
+    gejala:
+      'Bercak BERSUDUT dibatasi tulang daun — kotak-kotak kuning yang tidak melewati tulang daun — mula-mula pada daun tua di dekat pangkal lalu naik. Pagi hari saat masih berembun, permukaan BAWAH bercak berselaput halus keunguan sampai kelabu. Daun mengering dan menggulung ke atas; buahnya tetap terbentuk tetapi kecil dan hambar karena daunnya habis lebih dulu.',
+    pembanding: [
+      {
+        cek: 'Lihat batas bercaknya terhadap tulang daun. Embun bulu berhenti di tulang daun sehingga bercaknya BERSUDUT seperti kotak; embun tepung tidak berbercak sudut melainkan menaburkan lapisan putih di permukaan atas daun.',
+        membantah: { id: 'op:pst:00000092', label: 'Embun tepung cucurbit' },
+      },
+      {
+        cek: 'Balik daun pagi-pagi sebelum matahari naik. Selaput halus keunguan di permukaan BAWAH bercak hanya dibuat embun bulu; siang hari selaput itu hilang dan yang tersisa cuma bercak kuning bersudut.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000090',
+    dari: 'op:pst:00001142',
+    nama: 'Penyakit Antraknosa',
+    key: 'antraknosa-cucurbit',
+    label: 'Antraknosa cucurbit',
+    definition:
+      'Menular lewat benih dan sisa tanaman, dan menyebar lewat percikan air — jadi paling parah pada musim hujan dan pada petak tanpa mulsa. Registri juga memuat Colletotrichum sp. (3 baris), C. gloeosporioides (2), dan C. capsici (1) sebagai sasaran pada cucurbit; semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini.',
+    gejala:
+      'Bercak bulat coklat kemerahan pada daun yang tengahnya lama-lama berlubang seperti ditembak, dan pada batang bercak memanjang cekung. Pada buah muncul bercak CEKUNG bundar berair yang meluas, dan di tengahnya keluar massa spora merah jambu sampai jingga saat lembap.',
+    pembanding: [
+      {
+        cek: 'Perhatikan bercak pada BUAH dan warnanya saat lembap. Antraknosa memberi bercak cekung dengan massa spora MERAH JAMBU di tengahnya; busuk karena bakteri berbau menyengat dan tidak berwarna merah jambu.',
+      },
+      {
+        cek: 'Lihat bercak daunnya. Antraknosa memberi bercak bulat yang tengahnya berlubang seperti ditembak, tidak dibatasi tulang daun; embun bulu memberi bercak BERSUDUT yang berhenti tepat di tulang daun.',
+        membantah: { id: 'op:pst:00000089', label: 'Embun bulu cucurbit' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000091',
+    dari: 'op:pst:00001342',
+    nama: 'Kumbang Pemakan Daun',
+    key: 'oteng-oteng',
+    label: 'Oteng-oteng',
+    definition:
+      'Kumbang daun cucurbit; di banyak daerah disebut oteng-oteng. Identitasnya di GBIF hanya tertambat sampai GENUS, jadi yang dijanjikan pintu ini cirinya bukan nama spesiesnya. Registri juga memuat Aulacophora femoralis (3 baris) yang belum disatukan. Larvanya di dalam tanah memakan akar dan pangkal batang, jadi kerusakan daun yang terlihat hanya separuh ceritanya.',
+    gejala:
+      'Daun berlubang BUNDAR rapi seperti dilubangi pelubang kertas, sering berbaris melingkar, dan pada serangan berat daun muda habis tinggal tulangnya. Kumbangnya bulat lonjong seukuran biji jagung, jingga kekuningan mengkilap, dan langsung menjatuhkan diri atau terbang saat daun disentuh.',
+    pembanding: [
+      {
+        cek: 'Perhatikan bentuk lubangnya. Oteng-oteng meninggalkan lubang BUNDAR rapi berukuran seragam, sering melingkar; ulat meninggalkan lubang tidak beraturan dengan tepi bergerigi dan butiran kotoran.',
+        membantah: { id: 'op:pst:00000005', label: 'Ulat grayak' },
+      },
+      {
+        cek: 'Sentuh daunnya dan lihat apa yang terjadi. Kumbangnya menjatuhkan diri atau terbang seketika — kalau tidak ada yang bergerak dan lubangnya tetap bundar rapi, kumbangnya makan malam hari dan perlu diperiksa saat itu.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000092',
+    dari: 'op:pst:00001401',
+    nama: 'Penyakit Embun Tepung',
+    key: 'embun-tepung-cucurbit',
+    label: 'Embun tepung cucurbit',
+    definition:
+      'Registri lebih banyak memuatnya sebagai Oidium sp. (6 baris) daripada atas nama spesies ini (2 baris), dan keduanya belum disatukan; pintu ini berdiri di atas nama yang dikenali GBIF sampai spesies, jadi enam baris itu tidak ikut terdaftar di sini. Berbeda dari embun bulu, ia justru menyukai cuaca KERING dan panas — dua penyakit dengan nama mirip yang datang pada musim berlawanan.',
+    gejala:
+      'Lapisan PUTIH seperti tepung di permukaan ATAS daun tua lebih dulu, mula-mula setitik lalu meluas menutup helai dan menyeberang ke tangkai. Daun yang tertutup menguning lalu mengering tetapi tidak menggulung; buah yang terbuka karena daunnya habis jadi terbakar matahari.',
+    pembanding: [
+      {
+        cek: 'Usap lapisan putihnya dengan jari. Embun tepung TERANGKAT dan menempel di jari seperti bedak, dan daun di bawahnya masih hijau. Embun bulu tidak bisa diusap begitu — selaputnya di permukaan bawah dan bercaknya sudah menguning.',
+        membantah: { id: 'op:pst:00000089', label: 'Embun bulu cucurbit' },
+      },
+      {
+        cek: 'Ingat cuaca beberapa hari terakhir. Embun tepung menumpuk pada cuaca KERING dan panas; embun bulu justru meledak sesudah hujan dan embun berat. Cuacanya sendiri sudah setengah jawaban.',
+        membantah: { id: 'op:pst:00000089', label: 'Embun bulu cucurbit' },
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -1817,6 +1904,7 @@ const KELOMPOK = [
   { kunci: 'kopi', tanaman: 'kopi', inang: [KOPI], pintu: PINTU_KOPI },
   { kunci: 'sawit', tanaman: 'kelapa sawit', inang: [SAWIT], pintu: PINTU_SAWIT },
   { kunci: 'jeruk', tanaman: 'jeruk', inang: [JERUK], pintu: PINTU_JERUK },
+  { kunci: 'cucurbit', tanaman: 'semangka, melon, dan mentimun', inang: [SEMANGKA, MELON, MENTIMUN], pintu: PINTU_CUCURBIT },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1876,18 +1964,18 @@ const PERLUAS = [
   {
     id: 'op:pst:00000002',
     nama: 'Kutu daun persik',
-    inang: [CABAI, BAWANG_MERAH, TOMAT, KENTANG, KUBIS],
+    inang: [CABAI, BAWANG_MERAH, TOMAT, KENTANG, KUBIS, SEMANGKA, MELON, MENTIMUN],
     definition:
       'Vektor beberapa virus penting, termasuk virus penggulung daun pada kentang. Mengendalikannya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergejala.',
     gejala:
       'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
   },
-  { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI] },
+  { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI, SEMANGKA, MELON, MENTIMUN] },
   { id: 'op:pst:00000004', nama: 'Lalat buah', inang: [CABAI, JERUK] },
   {
     id: 'op:pst:00000005',
     nama: 'Ulat grayak',
-    inang: [CABAI, TOMAT, KENTANG, JAGUNG, KEDELAI],
+    inang: [CABAI, TOMAT, KENTANG, JAGUNG, KEDELAI, SEMANGKA],
     // Definisi baru dan ciri kedua ditulis ulang begitu ulat grayak JAGUNG punya
     // pintunya sendiri: dua ulat bernama sama pada satu tanaman, dan yang membedakan
     // keduanya menentukan cara menyemprotnya — yang satu makan dari luar, yang satu

@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama bawang merah, cabai merah besar, jagung, jeruk, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, padi dan tomat"
+      "id": "OPT utama bawang merah, cabai merah besar, jagung, jeruk, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, melon, mentimun, padi, semangka dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 12 komoditas: Bawang merah, Cabai merah besar, Jagung, Jeruk, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 15 komoditas: Bawang merah, Cabai merah besar, Jagung, Jeruk, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Melon, Mentimun, Padi, Semangka, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -216,6 +216,18 @@
         {
           "id": "op:cmd:00001011",
           "label": "Kubis"
+        },
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
         }
       ],
       "definition": {
@@ -333,6 +345,18 @@
         {
           "id": "op:cmd:00001007",
           "label": "Kedelai"
+        },
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
         }
       ],
       "definition": {
@@ -588,6 +612,10 @@
         {
           "id": "op:cmd:00001007",
           "label": "Kedelai"
+        },
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
         }
       ],
       "mappings": [
@@ -2313,6 +2341,10 @@
         {
           "id": "op:cmd:00000003",
           "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
         }
       ],
       "definition": {
@@ -2367,7 +2399,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Pengorok Daun",
@@ -2434,6 +2467,14 @@
         {
           "id": "op:cmd:00001002",
           "label": "Jagung"
+        },
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
         }
       ],
       "definition": {
@@ -2540,6 +2581,14 @@
         {
           "id": "op:cmd:00000003",
           "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
         }
       ],
       "definition": {
@@ -2563,7 +2612,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Thrips",
@@ -8023,6 +8073,348 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000089",
+      "key": "embun-bulu-cucurbit",
+      "label": {
+        "id": "Embun bulu cucurbit"
+      },
+      "pest_kind": "disease_oomycete",
+      "scientific_name": "Pseudoperonospora cubensis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        }
+      ],
+      "definition": {
+        "id": "Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil, dimetomorf, dan simoksanil bekerja padanya, banyak fungisida untuk jamur sejati tidak. Penyakit daun paling banyak didaftarkan pada seluruh cucurbit — 40 baris. Sporanya terbawa angin antar-kebun, jadi menanam serempak dan menjarangkan tanaman ikut menentukan. Registri juga memuat ejaan Peronosclerospora cubensis (1 baris) yang belum disatukan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3204007",
+          "uri": "https://www.gbif.org/species/3204007",
+          "relation": "exact",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pseudoperonospora cubencis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pseudoperonospora cubensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 40 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pseudoperonspora cubensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Embun Bulu",
+        "Pseudoperonospora cubencis",
+        "Pseudoperonspora cubensis"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Chromista"
+      },
+      "symptoms": {
+        "id": "Bercak BERSUDUT dibatasi tulang daun — kotak-kotak kuning yang tidak melewati tulang daun — mula-mula pada daun tua di dekat pangkal lalu naik. Pagi hari saat masih berembun, permukaan BAWAH bercak berselaput halus keunguan sampai kelabu. Daun mengering dan menggulung ke atas; buahnya tetap terbentuk tetapi kecil dan hambar karena daunnya habis lebih dulu."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat batas bercaknya terhadap tulang daun. Embun bulu berhenti di tulang daun sehingga bercaknya BERSUDUT seperti kotak; embun tepung tidak berbercak sudut melainkan menaburkan lapisan putih di permukaan atas daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000092",
+            "label": "Embun tepung cucurbit"
+          }
+        },
+        {
+          "check": {
+            "id": "Balik daun pagi-pagi sebelum matahari naik. Selaput halus keunguan di permukaan BAWAH bercak hanya dibuat embun bulu; siang hari selaput itu hilang dan yang tersisa cuma bercak kuning bersudut."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT semangka, melon, dan mentimun, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000090",
+      "key": "antraknosa-cucurbit",
+      "label": {
+        "id": "Antraknosa cucurbit"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Colletotrichum lagenarium",
+      "hosts": [
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        }
+      ],
+      "definition": {
+        "id": "Menular lewat benih dan sisa tanaman, dan menyebar lewat percikan air — jadi paling parah pada musim hujan dan pada petak tanpa mulsa. Registri juga memuat Colletotrichum sp. (3 baris), C. gloeosporioides (2), dan C. capsici (1) sebagai sasaran pada cucurbit; semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2568812",
+          "uri": "https://www.gbif.org/species/2568812",
+          "relation": "close",
+          "note": "Kingdom Fungi, kelas Leotiomycetes; kecocokan FUZZY (confidence 96). GBIF menerima nama 'Colletotrichum lagenaria'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum lagenarium",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 16 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum legenarium",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Colletotrichum legenarium",
+        "Penyakit Antraknosa",
+        "Penyakit Atraknosa"
+      ],
+      "taxonomic_rank": "species",
+      "accepted_scientific_name": "Colletotrichum lagenaria",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "fuzzy",
+        "checked_at": "2026-08-19",
+        "confidence": 96,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak bulat coklat kemerahan pada daun yang tengahnya lama-lama berlubang seperti ditembak, dan pada batang bercak memanjang cekung. Pada buah muncul bercak CEKUNG bundar berair yang meluas, dan di tengahnya keluar massa spora merah jambu sampai jingga saat lembap."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan bercak pada BUAH dan warnanya saat lembap. Antraknosa memberi bercak cekung dengan massa spora MERAH JAMBU di tengahnya; busuk karena bakteri berbau menyengat dan tidak berwarna merah jambu."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat bercak daunnya. Antraknosa memberi bercak bulat yang tengahnya berlubang seperti ditembak, tidak dibatasi tulang daun; embun bulu memberi bercak BERSUDUT yang berhenti tepat di tulang daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000089",
+            "label": "Embun bulu cucurbit"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT semangka, melon, dan mentimun, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000091",
+      "key": "oteng-oteng",
+      "label": {
+        "id": "Oteng-oteng"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Aulacophora sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        }
+      ],
+      "definition": {
+        "id": "Kumbang daun cucurbit; di banyak daerah disebut oteng-oteng. Identitasnya di GBIF hanya tertambat sampai GENUS, jadi yang dijanjikan pintu ini cirinya bukan nama spesiesnya. Registri juga memuat Aulacophora femoralis (3 baris) yang belum disatukan. Larvanya di dalam tanah memakan akar dan pangkal batang, jadi kerusakan daun yang terlihat hanya separuh ceritanya."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aulacophora sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 92,
+        "kingdom": "Animalia",
+        "needs_review": true,
+        "review_reason": "Tidak ada padanan di GBIF; pest_kind masih hasil simpulan dari nama Indonesia."
+      },
+      "symptoms": {
+        "id": "Daun berlubang BUNDAR rapi seperti dilubangi pelubang kertas, sering berbaris melingkar, dan pada serangan berat daun muda habis tinggal tulangnya. Kumbangnya bulat lonjong seukuran biji jagung, jingga kekuningan mengkilap, dan langsung menjatuhkan diri atau terbang saat daun disentuh."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan bentuk lubangnya. Oteng-oteng meninggalkan lubang BUNDAR rapi berukuran seragam, sering melingkar; ulat meninggalkan lubang tidak beraturan dengan tepi bergerigi dan butiran kotoran."
+          },
+          "rules_out": {
+            "id": "op:pst:00000005",
+            "label": "Ulat grayak"
+          }
+        },
+        {
+          "check": {
+            "id": "Sentuh daunnya dan lihat apa yang terjadi. Kumbangnya menjatuhkan diri atau terbang seketika — kalau tidak ada yang bergerak dan lubangnya tetap bundar rapi, kumbangnya makan malam hari dan perlu diperiksa saat itu."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT semangka, melon, dan mentimun, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000092",
+      "key": "embun-tepung-cucurbit",
+      "label": {
+        "id": "Embun tepung cucurbit"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Podosphaera xanthii",
+      "hosts": [
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        }
+      ],
+      "definition": {
+        "id": "Registri lebih banyak memuatnya sebagai Oidium sp. (6 baris) daripada atas nama spesies ini (2 baris), dan keduanya belum disatukan; pintu ini berdiri di atas nama yang dikenali GBIF sampai spesies, jadi enam baris itu tidak ikut terdaftar di sini. Berbeda dari embun bulu, ia justru menyukai cuaca KERING dan panas — dua penyakit dengan nama mirip yang datang pada musim berlawanan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "5255374",
+          "uri": "https://www.gbif.org/species/5255374",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Leotiomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Podosphaera xanthii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Podosphaera xantii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Embun Tepung",
+        "Podosphaera xantii"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Lapisan PUTIH seperti tepung di permukaan ATAS daun tua lebih dulu, mula-mula setitik lalu meluas menutup helai dan menyeberang ke tangkai. Daun yang tertutup menguning lalu mengering tetapi tidak menggulung; buah yang terbuka karena daunnya habis jadi terbakar matahari."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Usap lapisan putihnya dengan jari. Embun tepung TERANGKAT dan menempel di jari seperti bedak, dan daun di bawahnya masih hijau. Embun bulu tidak bisa diusap begitu — selaputnya di permukaan bawah dan bercaknya sudah menguning."
+          },
+          "rules_out": {
+            "id": "op:pst:00000089",
+            "label": "Embun bulu cucurbit"
+          }
+        },
+        {
+          "check": {
+            "id": "Ingat cuaca beberapa hari terakhir. Embun tepung menumpuk pada cuaca KERING dan panas; embun bulu justru meledak sesudah hujan dan embun berat. Cuacanya sendiri sudah setengah jawaban."
+          },
+          "rules_out": {
+            "id": "op:pst:00000089",
+            "label": "Embun bulu cucurbit"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT semangka, melon, dan mentimun, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
