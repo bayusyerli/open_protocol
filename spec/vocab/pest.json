@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama bawang merah, cabai merah besar, jagung, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, mangga, melon, mentimun, padi, semangka, teh, tembakau dan tomat"
+      "id": "OPT utama apel, bawang merah, bawang putih, cabai merah besar, jagung, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 21 komoditas: Bawang merah, Cabai merah besar, Jagung, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Mangga, Melon, Mentimun, Padi, Semangka, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 30 komoditas: Apel, Bawang merah, Bawang putih, Cabai merah besar, Jagung, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -1284,6 +1284,10 @@
         {
           "id": "op:cmd:00000004",
           "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00001073",
+          "label": "Bawang putih"
         }
       ],
       "definition": {
@@ -1331,7 +1335,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Ulat",
@@ -1479,6 +1484,10 @@
         {
           "id": "op:cmd:00000004",
           "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00001073",
+          "label": "Bawang putih"
         }
       ],
       "definition": {
@@ -1515,7 +1524,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Ham Thrips",
@@ -1670,6 +1680,10 @@
         {
           "id": "op:cmd:00000004",
           "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00001073",
+          "label": "Bawang putih"
         }
       ],
       "definition": {
@@ -1717,7 +1731,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Altemaria porri",
@@ -4935,6 +4950,10 @@
         {
           "id": "op:cmd:00001011",
           "label": "Kubis"
+        },
+        {
+          "id": "op:cmd:00001132",
+          "label": "Sawi"
         }
       ],
       "definition": {
@@ -4964,7 +4983,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Crcidolomia pavonana",
@@ -5162,6 +5182,10 @@
         {
           "id": "op:cmd:00001011",
           "label": "Kubis"
+        },
+        {
+          "id": "op:cmd:00001132",
+          "label": "Sawi"
         }
       ],
       "definition": {
@@ -5191,7 +5215,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Alternariaa brassicae",
@@ -6834,6 +6859,10 @@
         {
           "id": "op:cmd:00001151",
           "label": "Kelapa sawit"
+        },
+        {
+          "id": "op:cmd:00001043",
+          "label": "Kelapa"
         }
       ],
       "definition": {
@@ -6857,7 +6886,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Ulat Kantong",
@@ -6907,6 +6937,10 @@
         {
           "id": "op:cmd:00001151",
           "label": "Kelapa sawit"
+        },
+        {
+          "id": "op:cmd:00001043",
+          "label": "Kelapa"
         }
       ],
       "definition": {
@@ -6930,7 +6964,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Ulat Api",
@@ -6984,6 +7019,10 @@
         {
           "id": "op:cmd:00001151",
           "label": "Kelapa sawit"
+        },
+        {
+          "id": "op:cmd:00001043",
+          "label": "Kelapa"
         }
       ],
       "definition": {
@@ -7007,7 +7046,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Kumbang Tanduk",
@@ -7058,6 +7098,14 @@
         {
           "id": "op:cmd:00001151",
           "label": "Kelapa sawit"
+        },
+        {
+          "id": "op:cmd:00001043",
+          "label": "Kelapa"
+        },
+        {
+          "id": "op:cmd:00001464",
+          "label": "Karet"
         }
       ],
       "definition": {
@@ -7124,7 +7172,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Captotermes cuvignathus",
@@ -7440,6 +7489,10 @@
         {
           "id": "op:cmd:00001151",
           "label": "Kelapa sawit"
+        },
+        {
+          "id": "op:cmd:00001043",
+          "label": "Kelapa"
         }
       ],
       "definition": {
@@ -7463,7 +7516,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Busuk Batang",
@@ -9588,6 +9642,953 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT mangga, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000107",
+      "key": "bercak-daun-apel",
+      "label": {
+        "id": "Bercak daun apel"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Marssonina coronaria",
+      "hosts": [
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
+        }
+      ],
+      "definition": {
+        "id": "Menggunduli pohon sebelum buah masak, dan gundul itulah yang menurunkan hasil serta melemahkan pohon untuk musim berikutnya — bukan bercaknya sendiri. Menular dari daun rontok yang menumpuk di bawah pohon, jadi mengumpulkan dan memendam serasah memutus daur tahunannya."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3490249",
+          "uri": "https://www.gbif.org/species/3490249",
+          "relation": "close",
+          "note": "Kingdom Fungi, kelas Leotiomycetes; kecocokan FUZZY (confidence 96). GBIF menerima nama 'Marssonina coronariae'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Marsonina coronaria",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Marssonina coronaria",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 8 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Marsonina coronaria",
+        "Penyakit Bercak Daun",
+        "Pernyakit Bercak Daun"
+      ],
+      "taxonomic_rank": "species",
+      "accepted_scientific_name": "Marssonina coronariae",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "fuzzy",
+        "checked_at": "2026-08-19",
+        "confidence": 96,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak bulat coklat kehitaman pada daun dengan tepi menyebar tidak tegas, dan di tengahnya titik-titik hitam halus. Bercak yang banyak membuat daun menguning lalu RONTOK dari bawah ke atas, sampai pohon gundul sementara buahnya masih menggantung."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Usap permukaan bercaknya. Bercak daun apel RATA dan kering tanpa lapisan yang bisa diusap; embun tepung meninggalkan lapisan putih yang menempel di jari seperti bedak."
+          },
+          "rules_out": {
+            "id": "op:pst:00000108",
+            "label": "Embun tepung apel"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa serasah daun di bawah pohon. Bercak daun apel menular dari daun rontok musim lalu, jadi tumpukan serasah di bawah pohon yang paling parah adalah sumbernya — dan itu bagian yang masih bisa dijawab tanpa menyemprot."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT apel, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000108",
+      "key": "embun-tepung-apel",
+      "label": {
+        "id": "Embun tepung apel"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Podosphaera leucotricha",
+      "hosts": [
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
+        }
+      ],
+      "definition": {
+        "id": "Bertahan di dalam TUNAS selama musim dingin lalu keluar bersama tunas itu, jadi tunas yang terserang tahun lalu adalah sumber tahun ini — memangkas dan membakar tunas berpucuk putih pada awal musim memutus daurnya. Registri juga memuat Oidium sp. (3 baris) sebagai sasaran pada apel yang belum disatukan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Podosphaera leucotricha",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 10 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5255338",
+          "uri": "https://www.gbif.org/species/5255338",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Leotiomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Lapisan PUTIH seperti tepung menutup daun muda, tunas, dan kadang bunga, sehingga tunas yang membuka sudah tampak keputihan sejak awal. Daun yang tertutup menggulung ke atas memanjang seperti perahu, mengeras, dan tidak membesar; buah yang terkena berkulit kasar berjala."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat tunas yang BARU membuka pada awal musim. Embun tepung sudah putih sejak tunas itu keluar — bukan menular ke daun yang sudah jadi. Tunas seperti itu yang perlu dipangkas."
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan bentuk daun yang terkena. Embun tepung membuat daun menggulung memanjang ke atas seperti perahu dan mengeras; kutu daun apel membuat daun menggulung ke bawah dan tetap lemas, serta meninggalkan permukaan lengket."
+          },
+          "rules_out": {
+            "id": "op:pst:00000109",
+            "label": "Kutu daun apel"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT apel, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000109",
+      "key": "kutu-daun-apel",
+      "label": {
+        "id": "Kutu daun apel"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Aphis pomi",
+      "hosts": [
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang pucuk yang sedang memanjang, jadi kerugiannya pada pertumbuhan tunas dan pada bibit — pohon dewasa yang sudah berhenti bertunas jarang dirugikan. Musuh alaminya banyak, dan koloni pada pohon dewasa umumnya runtuh sendiri sebelum menuntut tindakan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aphis pomi",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "10961399",
+          "uri": "https://www.gbif.org/species/10961399",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Kutu hijau berkelompok rapat di permukaan bawah daun MUDA dan di pucuk, sehingga daun menggulung ke BAWAH dan tetap lemas. Permukaan daun di bawahnya lengket lalu ditumbuhi jelaga hitam; semut naik-turun di cabang."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka gulungan daunnya. Kutu daun apel ada di dalam gulungan dan daunnya tetap LEMAS; daun yang menggulung karena embun tepung kosong, mengeras, dan berlapis putih."
+          },
+          "rules_out": {
+            "id": "op:pst:00000108",
+            "label": "Embun tepung apel"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah pohonnya masih bertunas. Kalau pucuk sudah berhenti memanjang, koloni sebanyak apa pun jarang menurunkan hasil — dan menyemprot saat itu membunuh musuh alaminya menjelang musim berikutnya."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT apel, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000110",
+      "key": "tungau-merah-apel",
+      "label": {
+        "id": "Tungau merah apel"
+      },
+      "pest_kind": "mite",
+      "scientific_name": "Panonychus ulmi",
+      "hosts": [
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
+        }
+      ],
+      "definition": {
+        "id": "Telurnya yang berwarna merah bata bertahan di kulit ranting sepanjang musim tanpa daun, dan itu yang bisa dihitung SEBELUM musim dimulai — pemeriksaan ranting pada awal musim memberi peringatan berminggu-minggu lebih awal daripada menunggu daun berubah warna. Musuh alaminya tungau pemangsa, yang mati lebih dulu oleh penyemprotan menyeluruh."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Panonychus ulmi",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2129352",
+          "uri": "https://www.gbif.org/species/2129352",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Arachnida; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Tungau",
+        "Tungau",
+        "Tungau Sisik"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun berbintik kuning halus rapat seperti tertusuk jarum, lalu berubah keperunggu kusam menyeluruh dan mengeras; daun rontok pada serangan berat. Tungaunya kemerahan dan sangat kecil, terkumpul di permukaan BAWAH daun di sepanjang tulang daun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa kulit ranting dan ketiak tunas pada awal musim, sebelum daun banyak. Kumpulan telur MERAH BATA sebesar butir debu di situ menandakan populasi yang akan meledak — itu peringatan paling awal yang bisa didapat."
+          }
+        },
+        {
+          "check": {
+            "id": "Balik daun yang keperunggu dan tatap lama kena cahaya. Ada titik-titik kemerahan yang bergerak; kalau tidak ada yang bergerak dan warna perunggunya merata mengikuti tepi daun, curigai kekurangan hara atau terbakar."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT apel, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000111",
+      "key": "penggerek-batang-tebu",
+      "label": {
+        "id": "Penggerek batang tebu"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Chilo sacchariphagus",
+      "hosts": [
+        {
+          "id": "op:cmd:00001006",
+          "label": "Tebu"
+        }
+      ],
+      "definition": {
+        "id": "Registri juga memuat Chilo auricilius (3 baris) dan Phragmataecia castaneae (3 baris, dua ejaan) sebagai penggerek batang tebu; semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Ulatnya berada di dalam ruas, jadi semprotan hanya mengenai ngengat dan ulat yang sedang berpindah antar-ruas — jendela yang sempit."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1883157",
+          "uri": "https://www.gbif.org/species/1883157",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Chillo sacchariphagus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Chilo saccariphagus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Chilo sacchariphagus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Chillo sacchariphagus",
+        "Chilo saccariphagus",
+        "Hama Penggerek Batang",
+        "Penggerek Batang",
+        "Penggerek Batang Tebu"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Lubang gerekan bulat pada ruas batang, sering berbaris ke atas, dengan butiran kotoran menyembul di mulutnya. Batang yang dibelah berlorong memanjang menembus beberapa ruas dan berisi kotoran. Ruas yang digerek memendek dan batangnya mudah patah saat berangin."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah batang yang berlubang membujur dan ikuti lorongnya. Penggerek batang membuat lorong yang MENEMBUS beberapa ruas dari samping; penggerek pucuk menggerek dari pucuk ke bawah dan mematikan titik tumbuhnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000112",
+            "label": "Penggerek pucuk tebu"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah pucuknya masih hidup. Penggerek batang menyerang ruas di bawah dan pucuknya tetap tumbuh; kalau pucuknya mati dan mudah ditarik lepas, itu penggerek pucuk."
+          },
+          "rules_out": {
+            "id": "op:pst:00000112",
+            "label": "Penggerek pucuk tebu"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tebu, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000112",
+      "key": "penggerek-pucuk-tebu",
+      "label": {
+        "id": "Penggerek pucuk tebu"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Scirpophaga excerptalis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001006",
+          "label": "Tebu"
+        }
+      ],
+      "definition": {
+        "id": "Registri juga memuat Scirpophaga nivella (7 baris) — nama yang lama dipakai untuk penggerek pucuk tebu yang sama — dan keduanya belum disatukan, jadi tujuh baris itu tidak ikut terdaftar di bawah pintu ini. Menyerang sejak tanaman muda, dan tunas samping yang tumbuh menggantikan pucuk mati membuat batang bercabang serta tidak layak giling."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Scirpophaga excerptalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 8 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1881284",
+          "uri": "https://www.gbif.org/species/1881284",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Pucuk menguning lalu mati dan MUDAH DITARIK LEPAS, sementara daun di bawahnya masih hijau; dari kejauhan terlihat sebagai titik-titik kering di atas hamparan hijau. Pada daun yang masih menggulung ada deretan lubang kecil sejajar bekas gigitan sebelum daunnya membuka. Tunas samping tumbuh banyak menggantikan pucuk yang mati."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tarik pucuk yang menguning. Kalau lepas ringan dan pangkalnya berlubang serta berkotoran, itu gerekan pucuk. Pucuk yang mati karena kekeringan tidak lepas ditarik dan pangkalnya kering tanpa lubang."
+          }
+        },
+        {
+          "check": {
+            "id": "Buka daun yang masih menggulung di pucuk. Deretan lubang kecil SEJAJAR di situ berarti daun itu digigit saat masih terlipat — tanda paling dini, jauh sebelum pucuknya mati."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tebu, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000113",
+      "key": "uret-tebu",
+      "label": {
+        "id": "Uret"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Lepidiota stigma",
+      "hosts": [
+        {
+          "id": "op:cmd:00001006",
+          "label": "Tebu"
+        }
+      ],
+      "definition": {
+        "id": "Larva kumbang yang hidup di dalam tanah dan memakan akar, jadi kerusakannya sudah lanjut saat terlihat dari atas. Paling parah di lahan kering berpasir dan di petak yang dekat pohon tempat kumbang dewasanya makan; menggenangi petak beberapa hari dan mengumpulkan kumbang dewasa saat menyala lampu adalah dua tindakan yang tidak menuntut semprotan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lepidiota stigma",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1064867",
+          "uri": "https://www.gbif.org/species/1064867",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Lundi",
+        "Hama Uret",
+        "Perusak Akar"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Rumpun menguning lalu layu dan mudah DICABUT karena akarnya habis, dan yang mati berkelompok membentuk petak-petak yang melebar. Digali sedalam sejengkal di sekitar rumpun mati, ada larva gemuk keputihan yang MELENGKUNG seperti huruf C dengan kepala coklat."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Gali tanah sedalam sekitar 20 cm di sekeliling rumpun yang layu. Uret melengkung seperti huruf C, berkepala coklat keras, dan diam saat diangkat — ulat tanah lebih ramping, kelabu, dan bergerak aktif."
+          },
+          "rules_out": {
+            "id": "op:pst:00000014",
+            "label": "Ulat tanah"
+          }
+        },
+        {
+          "check": {
+            "id": "Tarik rumpun yang menguning. Kalau tercabut ringan karena akarnya habis sementara pangkal batangnya utuh tanpa lubang gerekan, penyebabnya di TANAH — bukan penggerek batang."
+          },
+          "rules_out": {
+            "id": "op:pst:00000111",
+            "label": "Penggerek batang tebu"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tebu, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000114",
+      "key": "kanker-bidang-sadap",
+      "label": {
+        "id": "Kanker bidang sadap"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Ceratocystis fimbriata",
+      "hosts": [
+        {
+          "id": "op:cmd:00001464",
+          "label": "Karet"
+        }
+      ],
+      "definition": {
+        "id": "Masuk lewat LUKA SADAP yang basah, jadi ia praktis penyakit yang dibuat oleh cara menyadap: pisau yang tidak bersih, sadapan terlalu dalam, dan menyadap saat kulit masih basah. Paling parah pada musim hujan. Yang menentukan menjarangkan giliran sadap saat hujan dan mengoles bidang sadap, bukan menyemprot tajuk."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "5252354",
+          "uri": "https://www.gbif.org/species/5252354",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ceratocystis fimbriata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ceratocytis fimbriata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Ceratocytis fimbriata",
+        "Jamur Bidang Sadap",
+        "Penyakit Bidang Sadap"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Garis coklat kehitaman memanjang TEGAK LURUS terhadap alur sadap, mulai tepat di alur lalu turun ke kulit di bawahnya. Lateks di sekitarnya menghitam dan membeku, kulit membusuk berbau, dan bila dikupas jaringan di bawahnya coklat berair. Bidang sadap yang parah tidak bisa disadap lagi."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat arah garis kerusakannya terhadap alur sadap. Kanker bidang sadap membentuk garis TEGAK LURUS terhadap alur — tidak sejajar. Luka mekanis karena pisau mengikuti arah alurnya sendiri."
+          }
+        },
+        {
+          "check": {
+            "id": "Kupas tipis kulit di bawah garis hitam itu. Kalau jaringannya coklat berair dengan batas tegas terhadap kulit sehat, itu jamurnya sudah masuk; kalau di bawahnya masih putih bersih, yang terlihat cuma lateks kering."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT karet, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000115",
+      "key": "jamur-akar-putih",
+      "label": {
+        "id": "Jamur akar putih"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Rigidoporus microporus",
+      "hosts": [
+        {
+          "id": "op:cmd:00001464",
+          "label": "Karet"
+        }
+      ],
+      "definition": {
+        "id": "Registri juga memuatnya atas nama lama Rigidoporus lignosus (8 baris) — jamur yang sama — yang belum disatukan, jadi baris itu tidak ikut terdaftar di bawah pintu ini. Menular lewat SENTUHAN AKAR antar-pohon dan dari tunggul kayu yang tertinggal saat pembukaan lahan, jadi ia menyebar melingkar dari satu titik dan yang menentukan membongkar tunggul serta membuat parit isolasi — bukan menyemprot."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rigidoporus microporus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8667671",
+          "uri": "https://www.gbif.org/species/8667671",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Jamur Akar Putih",
+        "Penyakit Jamur Akar Putih"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Daun menguning lalu rontok dan tajuk menipis sementara pohon di sebelahnya masih hijau, dan pohon yang mati membentuk LINGKARAN yang melebar tiap tahun. Digali di sekitar leher akar, ada benang jamur PUTIH pipih menempel rata pada permukaan akar seperti akar yang dijalari urat putih; benang itu tidak lepas bila disikat ringan."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Gali leher akar dan cuci sedikit dengan air. Jamur akar putih menempel RATA pada permukaan akar sebagai benang putih pipih yang tidak lepas disikat; akar berjamur biasa berlapisan yang mudah lepas."
+          }
+        },
+        {
+          "check": {
+            "id": "Petakan pohon yang mati di atas kertas. Jamur akar putih menular lewat sentuhan akar sehingga yang mati membentuk lingkaran melebar dari satu titik; kematian yang tersebar acak penyebabnya bukan ini."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT karet, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000116",
+      "key": "pengisap-buah-lada",
+      "label": {
+        "id": "Pengisap buah lada"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Dasynus piperis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001036",
+          "label": "Lada"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang buah sejak pentil sampai menjelang masak, dan kerugiannya pada JUMLAH buah yang jadi — bukan pada mutu buah yang terkumpul. Registri juga memuat bubuk buah Lophobaris piperis (1 baris) yang menggerek dari dalam, masalah lain dengan gejala yang mirip dari kejauhan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dasynus piperis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4391320",
+          "uri": "https://www.gbif.org/species/4391320",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Penghisap Buah",
+        "Hama Pengisap Buah",
+        "Penghisap Buah",
+        "Pengisap Buah"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah pada malai berbintik coklat kehitaman bekas tusukan lalu mengering dan gugur, sehingga malai berbulir jarang-jarang atau tinggal tangkainya. Serangga coklat kekuningan ramping berkaki panjang beterbangan rendah dari malai saat sulur diguncang, dan meninggalkan bau khas."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Guncang sulur berbuah pada pagi hari dan cium. Pengisap buah lada beterbangan dan meninggalkan bau khas; kalau buah gugur tanpa ada serangga dan tanpa bau, periksa apakah ada lubang gerekan pada tangkainya."
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa buah yang masih menempel. Pengisap buah meninggalkan BINTIK tusukan pada kulit tanpa lubang tembus; bubuk buah meninggalkan lubang bundar kecil dan bubuk halus di mulutnya."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT lada, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000117",
+      "key": "pengisap-bunga-lada",
+      "label": {
+        "id": "Pengisap bunga lada"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Diconocoris hewetti",
+      "hosts": [
+        {
+          "id": "op:cmd:00001036",
+          "label": "Lada"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang pada fase BERBUNGA saja, dan di luar fase itu tidak menuntut apa pun — jendelanya terikat pada saat malai bunga keluar. Registri memecahnya lagi jadi Diplogomphus hewitti dan Diplogomphus hewiti (2 baris) yang belum disatukan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "7634678",
+          "uri": "https://www.gbif.org/species/7634678",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diconocoris hewetti",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diconocoris hewitti",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Diconocoris hewitti",
+        "Hama Penghisap Buah",
+        "Hama Penghisap Bunga"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Malai bunga mengering dari ujung lalu gugur sebelum jadi pentil, sehingga sulur berbunga banyak tetapi berbuah sedikit. Pada malai ada serangga pipih kecil kecoklatan yang bersembunyi di sela bunga dan bergerak menyamping saat malai dibuka."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka sela bunga pada malai yang mengering, jangan cuma melihat dari luar. Pengisap bunga bersembunyi di dalamnya dan bergerak menyamping; malai yang kering karena kekurangan air mengering merata tanpa serangga."
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan fase tanamannya. Pengisap bunga hanya menuntut tindakan saat malai keluar sampai pentil terbentuk. Kalau yang gugur justru buah yang sudah besar, penyebabnya pengisap buah, bukan pengisap bunga."
+          },
+          "rules_out": {
+            "id": "op:pst:00000116",
+            "label": "Pengisap buah lada"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT lada, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000118",
+      "key": "sigatoka",
+      "label": {
+        "id": "Sigatoka"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Mycosphaerella musicola",
+      "hosts": [
+        {
+          "id": "op:cmd:00001041",
+          "label": "Pisang"
+        }
+      ],
+      "definition": {
+        "id": "Menggunduli daun sehingga tandan tidak terisi penuh dan matang terlalu cepat setelah dipanen — kerugiannya lewat daun, bukan lewat buah yang berbercak. Registri juga memuat Cercospora musicola (1 baris) dan bercak speckle Cladosporium musae (1) yang belum disatukan. Memotong dan memendam daun yang bergejala memutus sumber spora, dan itu tindakan yang menentukan pada kebun kecil."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mycosphaerella musicola",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 10 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8130593",
+          "uri": "https://www.gbif.org/species/8130593",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 97)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Garis kecil kuning MEMANJANG sejajar tulang daun pada helai daun, lalu melebar jadi bercak lonjong bertengah kelabu dengan tepi coklat gelap. Bercak yang menyatu membuat helai daun mengering dari tepi dan menggantung; pohon yang parah tinggal beberapa daun saat tandan terbentuk."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat arah bercak yang paling muda. Sigatoka selalu mulai sebagai GARIS memanjang sejajar tulang daun sebelum melebar — bukan sebagai bintik bundar. Garis itu tanda paling dini dan yang menentukan kapan daun sakit perlu dipotong."
+          }
+        },
+        {
+          "check": {
+            "id": "Hitung daun sehat yang tersisa saat tandan keluar. Kalau tinggal kurang dari sekitar delapan helai, tandannya tidak akan terisi penuh sebanyak apa pun disemprot sesudah itu — keputusannya sudah lewat."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT pisang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000119",
+      "key": "karat-krisan",
+      "label": {
+        "id": "Karat krisan"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Puccinia chrysanthemi",
+      "hosts": [
+        {
+          "id": "op:cmd:00001082",
+          "label": "Krisan"
+        }
+      ],
+      "definition": {
+        "id": "Registri juga memuat karat putih Puccinia horiana (1 baris), jenis lain yang dikarantina di banyak negara, serta embun tepung Oidium chrysanthemi (1); keduanya belum disatukan. Menyebar lewat percikan air dan kelembapan tinggi di dalam rumah lindung, jadi mengatur jarak tanam dan menyiram ke tanah bukan ke daun menurunkan lebih banyak daripada menambah semprotan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2515453",
+          "uri": "https://www.gbif.org/species/2515453",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Pucciniomycetes; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Puccinia chrysantemi",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Puccinia chrysanthemi",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Karat Daun",
+        "Puccinia chrysantemi"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bintil kecil MENONJOL di permukaan BAWAH daun, coklat kemerahan dan pecah menyisakan serbuk di jari, sementara dari sisi atas terlihat sebagai bintik kuning pucat. Daun bawah menguning lalu mengering; bunga yang terkena tidak laku dijual walau tangkainya sehat."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Balik daun dan usap bintilnya. Karat krisan meninggalkan SERBUK coklat kemerahan di jari. Kalau bintilnya PUTIH dan tidak berserbuk coklat, itu karat putih — jenis yang dikarantina, dan temuannya perlu dilaporkan, bukan cuma disemprot."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat dari sisi mana bintilnya menonjol. Karat menonjol di permukaan BAWAH; embun tepung menaburkan lapisan putih di permukaan ATAS yang bisa diusap seperti bedak."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT krisan, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]

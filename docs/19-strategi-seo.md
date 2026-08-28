@@ -273,7 +273,7 @@ selisihnya bisa dibaca seperti diff indeks.
 | Komoditas tanpa berkas OPT | 458 | tidak diterbitkan sampai ada isinya |
 | Produk dengan izin berakhir | 1.962 | **diterbitkan dan diindeks**, status di judul. Justru di sini kueri "masih boleh dipakai?" hidup — halaman menyebut faktanya, bukan kesimpulan hukumnya |
 | Komposisi unik (tanpa klaster setara) | 8.111 | kanonik atas dirinya sendiri, tanpa hub |
-| OPT tanpa teks gejala | 676 dari 782 | halaman ada bila punya produk terdaftar, tetapi **tidak menjanjikan pengenalan gejala**; hanya OPT terkurasi yang membawa blok gejala |
+| OPT tanpa teks gejala | 663 dari 782 | halaman ada bila punya produk terdaftar, tetapi **tidak menjanjikan pengenalan gejala**; hanya OPT terkurasi yang membawa blok gejala |
 | Toko tanpa alamat atau titik | 2.181 dari 2.248 | wilayah baru diterbitkan bila punya **≥5 entri beralamat atau bertitik**. Hari ini yang memenuhi: 234 titik OSM dan 92 entri beralamat, sisanya nama telanjang dari arsip TTI. Halaman berisi 47 nama tanpa alamat kalah dari listicle berisi 7 nama beralamat — dan pantas kalah |
 
 Sisanya: 6.710 pestisida dan 5.130 pupuk lolos → **11.840 halaman produk terindeks**.
