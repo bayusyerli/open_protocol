@@ -273,7 +273,7 @@ selisihnya bisa dibaca seperti diff indeks.
 | Komoditas tanpa berkas OPT | 458 | tidak diterbitkan sampai ada isinya |
 | Produk dengan izin berakhir | 1.962 | **diterbitkan dan diindeks**, status di judul. Justru di sini kueri "masih boleh dipakai?" hidup — halaman menyebut faktanya, bukan kesimpulan hukumnya |
 | Komposisi unik (tanpa klaster setara) | 8.111 | kanonik atas dirinya sendiri, tanpa hub |
-| OPT tanpa teks gejala | 719 dari 781 | halaman ada bila punya produk terdaftar, tetapi **tidak menjanjikan pengenalan gejala**; hanya 62 OPT terkurasi — delapan komoditas semusim — yang membawa blok gejala |
+| OPT tanpa teks gejala | 714 dari 781 | halaman ada bila punya produk terdaftar, tetapi **tidak menjanjikan pengenalan gejala**; hanya 67 OPT terkurasi — sembilan komoditas — yang membawa blok gejala |
 | Toko tanpa alamat atau titik | 2.181 dari 2.248 | wilayah baru diterbitkan bila punya **≥5 entri beralamat atau bertitik**. Hari ini yang memenuhi: 234 titik OSM dan 92 entri beralamat, sisanya nama telanjang dari arsip TTI. Halaman berisi 47 nama tanpa alamat kalah dari listicle berisi 7 nama beralamat — dan pantas kalah |
 
 Sisanya: 6.710 pestisida dan 5.130 pupuk lolos → **11.840 halaman produk terindeks**.
@@ -445,7 +445,7 @@ argumennya diturunkan — `docs/16` untuk harga eceran, `docs/13` untuk memo Pas
 tercatat, bukan ke tulisan yang muncul begitu saja di halaman publik.
 
 **Satu kekeliruan tertangkap justru saat menulisnya.** Peta kosakata OPT menggabungkan
-registri (1.360) dengan enam puluh dua OPT delapan komoditas yang dikurasi sendiri, dan prosa yang membacanya
+registri (1.360) dengan enam puluh tujuh OPT sembilan komoditas yang dikurasi sendiri, dan prosa yang membacanya
 menulis *"registri pestisida mencatat 1.370 OPT"* — mengklaim sepuluh tulisan sendiri
 sebagai catatan kementerian. Petanya dipisah, dan angkanya kembali ke 1.360. Menulis
 kalimat memaksa memeriksa asal angkanya dengan cara yang tidak dilakukan tabel.

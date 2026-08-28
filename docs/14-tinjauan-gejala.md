@@ -1,4 +1,4 @@
-# Daftar Tinjauan — 62 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jagung, Kedelai, dan Kubis
+# Daftar Tinjauan — 67 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jagung, Kedelai, Kubis, dan Kakao
 
 > Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`
 > oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah
@@ -10,7 +10,7 @@
 
 ## 1. Apa yang diminta, dan apa yang tidak
 
-Seluruh 62 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
+Seluruh 67 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
 bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok
 “pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri
 menyebut OPT mana yang **terbantah** kalau hasilnya begitu.
@@ -25,7 +25,7 @@ Yang diminta dari peninjau, untuk tiap entri:
 
 Yang **tidak** diminta:
 
-- Bukan menambah OPT baru. Yang 62 ini dipilih karena paling sering dicari; kekurangan
+- Bukan menambah OPT baru. Yang 67 ini dipilih karena paling sering dicari; kekurangan
   cakupan sudah diketahui dan bukan yang ditinjau di sini.
 - Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi
   dan tidak melewati penilaian peninjau.
@@ -49,7 +49,7 @@ Ini disebut di muka supaya tidak ada yang tersembunyi.
 
 ---
 
-## 3. Seluruh 62 entri
+## 3. Seluruh 67 entri
 
 12 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
 **Kutu daun persik**, **Kutu kebul**, **Ulat grayak**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat tanah**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**. Teksnya menyebut tiap tanaman secara terpisah,
@@ -2221,13 +2221,143 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Kakao — 5 entri
+
+#### 1. Helopeltis — *Helopeltis antonii*
+
+`op:pst:00000063` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada teh (7 baris) dan teks di bawah ditulis untuk kakao. Registri memecahnya jadi beberapa entitas — Helopeltis sp. (21 baris, 12 di antaranya pada teh), Helopeltis spp. (3), dan ejaan Helopelthis sp. (1) — semuanya bertambat hanya sampai GENUS di GBIF dan belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Luka tusukannya jadi pintu masuk busuk buah, jadi dua masalah itu saling menyusul.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Buah muda berbintik-bintik coklat kehitaman CEKUNG, seukuran ujung jarum sampai sebesar biji, mula-mula berair lalu mengering dan retak; buah yang tertusuk saat masih kecil mengering seluruhnya dan tetap menggantung. Pada pucuk dan ranting muda, tusukannya membuat kulit menghitam, daun layu, dan ranting mati dari ujung.
+
+**Ciri pembanding**
+
+1. Lihat bintiknya dari dekat, kalau perlu kena cahaya miring. Helopeltis meninggalkan bintik CEKUNG bertepi tegas, tersebar dan tidak menyatu walau jumlahnya banyak. Busuk buah memberi bercak yang MELUAS dan menyatu sampai menutup sebagian besar buah.
+   → membantah: **Busuk buah kakao**
+2. Cari serangganya pagi atau sore hari, di buah yang PALING MUDA. Helopeltis ramping seperti nyamuk besar dengan tonjolan seperti jarum di punggungnya, dan langsung berpindah ke sisi lain buah saat didekati. Kalau bintiknya ada tetapi serangganya tidak, ia sudah pindah ke buah yang lebih muda.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Penggerek buah kakao — *Conopomorpha cramerella*
+
+`op:pst:00000064` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*PBK. Yang menentukan bukan semprotan melainkan SARUNGISASI — membungkus buah muda dengan kantong plastik — panen sering setiap tujuh sampai sepuluh hari, dan memendam kulit buah bekas panen. Ulatnya berada DI DALAM buah sejak menetas, jadi semprotan hanya bisa mengenai ngengat dewasa yang aktif malam hari, dan itu jendela yang sempit.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Buah masak lebih cepat dan warnanya BELANG — sebagian kuning, sebagian masih hijau — padahal umurnya belum cukup. Buah terasa berat, dan saat diguncang tidak berbunyi karena bijinya saling melekat. Dibelah, bijinya kempis dan menempel satu sama lain sehingga sulit dipisahkan, dengan lorong kecoklatan di antara daging buahnya.
+
+**Ciri pembanding**
+
+1. Guncang buah yang warnanya belang di dekat telinga. Buah masak yang sehat BERBUNYI karena bijinya lepas; buah yang terserang PBK tidak berbunyi karena bijinya melekat. Pemeriksaan ini tidak merusak buahnya, jadi bisa dikerjakan pada banyak buah sekaligus.
+   → membantah: **—**
+2. Belah buah yang tidak berbunyi. PBK meninggalkan lorong halus di antara daging buah dan biji yang saling melekat, sementara KULIT LUARNYA tidak membusuk. Busuk buah sebaliknya: kulitnya menghitam meluas dari luar, dan bijinya membusuk bersama dagingnya.
+   → membantah: **Busuk buah kakao**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Busuk buah kakao — *Phytophthora palmivora*
+
+`op:pst:00000065` · disease_oomycete · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada durian dan lada (4 baris) dan teks di bawah ditulis untuk kakao. Yang paling menurunkan serangan bukan semprotan melainkan memangkas agar kebun tidak lembap, memetik dan MEMENDAM buah sakit, serta mengatur naungan.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak coklat kehitaman pada buah, mulai dari ujung atau pangkal, MELUAS cepat dan menyatu sampai menutup sebagian besar buah dalam beberapa hari, dengan batas tegas antara bagian sakit dan sehat. Pada cuaca lembap permukaan bercak berselaput putih halus seperti tepung. Buah yang terserang mengering menghitam dan tetap menggantung di batang.
+
+**Ciri pembanding**
+
+1. Perhatikan bagaimana bercaknya berubah dalam beberapa hari. Busuk buah MELUAS dan menyatu; bintik helopeltis tetap kecil, cekung, dan terpisah satu-satu walau jumlahnya banyak.
+   → membantah: **Helopeltis**
+2. Belah buah yang menghitam. Busuk buah membusukkan daging DAN biji bersama-sama dari kulit ke dalam; penggerek buah kakao meninggalkan kulit yang tidak membusuk dengan biji melekat di dalamnya.
+   → membantah: **Penggerek buah kakao**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Mati ranting VSD — *Oncobasidium theobromae*
+
+`op:pst:00000066` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Vascular streak dieback. Registri juga memuatnya atas nama barunya, Ceratobasidium theobromae (1 baris), yang belum disatukan — jamur yang sama. Sporanya terbawa angin pada malam lembap dan masuk lewat daun muda, jadi yang menentukan varietas atau klon tahan, sambung samping, dan memangkas ranting sakit sampai sekitar 30 cm di bawah bagian yang bergejala — bukan menyemprot daun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Satu atau dua daun di TENGAH ranting menguning dengan bercak hijau tersisa di antara tulang daun, lalu rontok — bukan daun paling tua di pangkal, bukan daun paling muda di pucuk. Ranting menggundul dari tengah ke ujung dan tinggal ranting telanjang berbintil bekas dudukan daun. Akhirnya ranting mati dari ujung ke pangkal.
+
+**Ciri pembanding**
+
+1. Potong ranting yang menggundul MELINTANG, lalu tatap penampangnya. Ada tiga titik coklat tersusun seperti segitiga pada berkas pembuluhnya; dibelah membujur, titik itu jadi garis coklat memanjang — dari situ nama vascular streak. Ranting yang mati karena penggerek berlubang dan berlorong, bukan bergaris.
+   → membantah: **Penggerek Batang**
+2. Lihat daun mana yang menguning lebih dulu. VSD mulai dari daun di TENGAH ranting. Kekurangan hara menguningkan daun TUA di pangkal lebih dulu dan merata di seluruh pohon, bukan ranting per ranting.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Ulat kilan — *Hyposidra talaca*
+
+`op:pst:00000067` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Ulat jengkal kakao. Datang berkala dalam ledakan singkat dan bisa menggunduli pohon dalam hitungan hari, lalu menghilang; di luar ledakan itu jarang menuntut tindakan apa pun — dan menyemprot terjadwal di luar ledakan menghabiskan biaya tanpa menyelamatkan apa pun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun muda dan pucuk habis dimakan dari TEPI ke dalam sampai tinggal tulang daun, dan pada ledakan berat pohon gundul sampai ke ranting. Ulatnya coklat kehijauan dan BERJALAN MELENGKUNG seperti sedang mengukur; saat terganggu ia menegang lurus menyerupai ranting kecil, atau menjatuhkan diri pada benang.
+
+**Ciri pembanding**
+
+1. Perhatikan cara ulatnya berjalan dan bersikap saat disentuh. Ulat kilan melengkungkan punggung tiap melangkah, lalu menegang lurus seperti ranting kecil. Tidak ada hama daun kakao lain yang bersikap begitu.
+   → membantah: **—**
+2. Lihat mengapa daunnya hilang. Ulat kilan menggigit dari TEPI daun sehingga tinggal tulang daun. Ranting yang menggundul karena VSD daunnya rontok sendiri sesudah menguning — tidak tergigit — dan yang tinggal ranting telanjang berbintil, bukan tulang daun.
+   → membantah: **Mati ranting VSD**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ---
 
 ## 4. Yang kami tandai sendiri
 
 Dihitung dari datanya, bukan dari penilaian agronomi — supaya waktu peninjau tidak habis
-menemukan yang sudah kami ragukan. 25 dari 62 entri bertanda,
-dan secara keseluruhan **22 dari 124 ciri pembanding tidak menyebut apa yang dibantahnya**:
+menemukan yang sudah kami ragukan. 29 dari 67 entri bertanda,
+dan secara keseluruhan **26 dari 134 ciri pembanding tidak menyebut apa yang dibantahnya**:
 
 - **Trips** — kedua cirinya membantah OPT yang sama.
 - **Kutu kebul** — 1 ciri tidak menyebut apa yang dibantahnya.
@@ -2254,6 +2384,10 @@ dan secara keseluruhan **22 dari 124 ciri pembanding tidak menyebut apa yang dib
 - **Busuk lunak** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Lalat bibit kedelai** — 2 ciri tidak menyebut apa yang dibantahnya.
 - **Bercak mata katak** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Helopeltis** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Penggerek buah kakao** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Mati ranting VSD** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Ulat kilan** — 1 ciri tidak menyebut apa yang dibantahnya.
 
 Dua pola itu **bukan bukti entrinya salah.** Ciri yang membantah OPT yang sama dua kali
 bisa saja memang dua sudut yang berbeda terhadap satu kekeliruan yang paling sering

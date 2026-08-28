@@ -3,8 +3,20 @@
 //   node spec/tools/kurasi-opt.mjs            # periksa saja
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
-// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, dan kedelai
-// (seluruhnya 28 Agustus 2026).
+// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai, dan
+// kakao (seluruhnya 28 Agustus 2026).
+//
+// KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
+// Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
+// menghalangi apa pun di sini — `pest.schema.json` tidak menyentuh skala fase sama sekali,
+// dan pintu gejala berdiri di atas `hosts` yang cuma rujukan ke komoditas. Skala fase
+// prasyarat LAPIS 2 (protokol), bukan prasyarat jalur 1. Kekhawatiran itu benar untuk
+// pekerjaan yang lain, dan salah untuk yang ini.
+//
+// Yang memang berubah: teks gejalanya tidak bisa menambatkan waktu pada fase pertumbuhan
+// ("saat masak susu", "tiga minggu pertama") karena pohon tahunan berbuah terus-menerus.
+// Penambatnya jadi KEADAAN BENDA yang dipegang — buah muda, buah belang, ranting yang
+// menggundul di tengah — dan itu lebih mudah diperiksa, bukan lebih sulit.
 // Cabai — sepuluh entri pertama — ditulis lebih dulu oleh spec/tools/tulis-gejala-opt.mjs,
 // sebelum pola di bawah ini ada.
 //
@@ -105,6 +117,7 @@ const PADI = { id: 'op:cmd:00000006', label: 'Padi' };
 const JAGUNG = { id: 'op:cmd:00001002', label: 'Jagung' };
 const KUBIS = { id: 'op:cmd:00001011', label: 'Kubis' };
 const KEDELAI = { id: 'op:cmd:00001007', label: 'Kedelai' };
+const KAKAO = { id: 'op:cmd:00001010', label: 'Kakao' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -1241,6 +1254,110 @@ const PINTU_KEDELAI = [
   },
 ];
 
+const PINTU_KAKAO = [
+  {
+    id: 'op:pst:00000063',
+    dari: 'op:pst:00001066',
+    nama: 'Pengisap Buah',
+    key: 'helopeltis',
+    label: 'Helopeltis',
+    definition:
+      'Terdaftar juga pada teh (7 baris) dan teks di bawah ditulis untuk kakao. Registri memecahnya jadi beberapa entitas — Helopeltis sp. (21 baris, 12 di antaranya pada teh), Helopeltis spp. (3), dan ejaan Helopelthis sp. (1) — semuanya bertambat hanya sampai GENUS di GBIF dan belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Luka tusukannya jadi pintu masuk busuk buah, jadi dua masalah itu saling menyusul.',
+    gejala:
+      'Buah muda berbintik-bintik coklat kehitaman CEKUNG, seukuran ujung jarum sampai sebesar biji, mula-mula berair lalu mengering dan retak; buah yang tertusuk saat masih kecil mengering seluruhnya dan tetap menggantung. Pada pucuk dan ranting muda, tusukannya membuat kulit menghitam, daun layu, dan ranting mati dari ujung.',
+    pembanding: [
+      {
+        cek: 'Lihat bintiknya dari dekat, kalau perlu kena cahaya miring. Helopeltis meninggalkan bintik CEKUNG bertepi tegas, tersebar dan tidak menyatu walau jumlahnya banyak. Busuk buah memberi bercak yang MELUAS dan menyatu sampai menutup sebagian besar buah.',
+        membantah: { id: 'op:pst:00000065', label: 'Busuk buah kakao' },
+      },
+      {
+        cek: 'Cari serangganya pagi atau sore hari, di buah yang PALING MUDA. Helopeltis ramping seperti nyamuk besar dengan tonjolan seperti jarum di punggungnya, dan langsung berpindah ke sisi lain buah saat didekati. Kalau bintiknya ada tetapi serangganya tidak, ia sudah pindah ke buah yang lebih muda.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000064',
+    dari: 'op:pst:00001108',
+    nama: 'Penggerek Buah',
+    key: 'penggerek-buah-kakao',
+    label: 'Penggerek buah kakao',
+    definition:
+      'PBK. Yang menentukan bukan semprotan melainkan SARUNGISASI — membungkus buah muda dengan kantong plastik — panen sering setiap tujuh sampai sepuluh hari, dan memendam kulit buah bekas panen. Ulatnya berada DI DALAM buah sejak menetas, jadi semprotan hanya bisa mengenai ngengat dewasa yang aktif malam hari, dan itu jendela yang sempit.',
+    gejala:
+      'Buah masak lebih cepat dan warnanya BELANG — sebagian kuning, sebagian masih hijau — padahal umurnya belum cukup. Buah terasa berat, dan saat diguncang tidak berbunyi karena bijinya saling melekat. Dibelah, bijinya kempis dan menempel satu sama lain sehingga sulit dipisahkan, dengan lorong kecoklatan di antara daging buahnya.',
+    pembanding: [
+      {
+        cek: 'Guncang buah yang warnanya belang di dekat telinga. Buah masak yang sehat BERBUNYI karena bijinya lepas; buah yang terserang PBK tidak berbunyi karena bijinya melekat. Pemeriksaan ini tidak merusak buahnya, jadi bisa dikerjakan pada banyak buah sekaligus.',
+      },
+      {
+        cek: 'Belah buah yang tidak berbunyi. PBK meninggalkan lorong halus di antara daging buah dan biji yang saling melekat, sementara KULIT LUARNYA tidak membusuk. Busuk buah sebaliknya: kulitnya menghitam meluas dari luar, dan bijinya membusuk bersama dagingnya.',
+        membantah: { id: 'op:pst:00000065', label: 'Busuk buah kakao' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000065',
+    dari: 'op:pst:00001097',
+    nama: 'Penyakit Busuk Buah',
+    key: 'busuk-buah-kakao',
+    label: 'Busuk buah kakao',
+    definition:
+      'Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada durian dan lada (4 baris) dan teks di bawah ditulis untuk kakao. Yang paling menurunkan serangan bukan semprotan melainkan memangkas agar kebun tidak lembap, memetik dan MEMENDAM buah sakit, serta mengatur naungan.',
+    gejala:
+      'Bercak coklat kehitaman pada buah, mulai dari ujung atau pangkal, MELUAS cepat dan menyatu sampai menutup sebagian besar buah dalam beberapa hari, dengan batas tegas antara bagian sakit dan sehat. Pada cuaca lembap permukaan bercak berselaput putih halus seperti tepung. Buah yang terserang mengering menghitam dan tetap menggantung di batang.',
+    pembanding: [
+      {
+        cek: 'Perhatikan bagaimana bercaknya berubah dalam beberapa hari. Busuk buah MELUAS dan menyatu; bintik helopeltis tetap kecil, cekung, dan terpisah satu-satu walau jumlahnya banyak.',
+        membantah: { id: 'op:pst:00000063', label: 'Helopeltis' },
+      },
+      {
+        cek: 'Belah buah yang menghitam. Busuk buah membusukkan daging DAN biji bersama-sama dari kulit ke dalam; penggerek buah kakao meninggalkan kulit yang tidak membusuk dengan biji melekat di dalamnya.',
+        membantah: { id: 'op:pst:00000064', label: 'Penggerek buah kakao' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000066',
+    dari: 'op:pst:00001230',
+    nama: 'Penyakit Pembuluh Kayu Vascular Streak Dieback Vsd',
+    key: 'mati-ranting-vsd',
+    label: 'Mati ranting VSD',
+    definition:
+      'Vascular streak dieback. Registri juga memuatnya atas nama barunya, Ceratobasidium theobromae (1 baris), yang belum disatukan — jamur yang sama. Sporanya terbawa angin pada malam lembap dan masuk lewat daun muda, jadi yang menentukan varietas atau klon tahan, sambung samping, dan memangkas ranting sakit sampai sekitar 30 cm di bawah bagian yang bergejala — bukan menyemprot daun.',
+    gejala:
+      'Satu atau dua daun di TENGAH ranting menguning dengan bercak hijau tersisa di antara tulang daun, lalu rontok — bukan daun paling tua di pangkal, bukan daun paling muda di pucuk. Ranting menggundul dari tengah ke ujung dan tinggal ranting telanjang berbintil bekas dudukan daun. Akhirnya ranting mati dari ujung ke pangkal.',
+    pembanding: [
+      {
+        cek: 'Potong ranting yang menggundul MELINTANG, lalu tatap penampangnya. Ada tiga titik coklat tersusun seperti segitiga pada berkas pembuluhnya; dibelah membujur, titik itu jadi garis coklat memanjang — dari situ nama vascular streak. Ranting yang mati karena penggerek berlubang dan berlorong, bukan bergaris.',
+        membantah: { id: 'op:pst:00002112', label: 'Penggerek Batang' },
+      },
+      {
+        cek: 'Lihat daun mana yang menguning lebih dulu. VSD mulai dari daun di TENGAH ranting. Kekurangan hara menguningkan daun TUA di pangkal lebih dulu dan merata di seluruh pohon, bukan ranting per ranting.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000067',
+    dari: 'op:pst:00001458',
+    nama: 'Ulat Kilan',
+    key: 'ulat-kilan',
+    label: 'Ulat kilan',
+    definition:
+      'Ulat jengkal kakao. Datang berkala dalam ledakan singkat dan bisa menggunduli pohon dalam hitungan hari, lalu menghilang; di luar ledakan itu jarang menuntut tindakan apa pun — dan menyemprot terjadwal di luar ledakan menghabiskan biaya tanpa menyelamatkan apa pun.',
+    gejala:
+      'Daun muda dan pucuk habis dimakan dari TEPI ke dalam sampai tinggal tulang daun, dan pada ledakan berat pohon gundul sampai ke ranting. Ulatnya coklat kehijauan dan BERJALAN MELENGKUNG seperti sedang mengukur; saat terganggu ia menegang lurus menyerupai ranting kecil, atau menjatuhkan diri pada benang.',
+    pembanding: [
+      {
+        cek: 'Perhatikan cara ulatnya berjalan dan bersikap saat disentuh. Ulat kilan melengkungkan punggung tiap melangkah, lalu menegang lurus seperti ranting kecil. Tidak ada hama daun kakao lain yang bersikap begitu.',
+      },
+      {
+        cek: 'Lihat mengapa daunnya hilang. Ulat kilan menggigit dari TEPI daun sehingga tinggal tulang daun. Ranting yang menggundul karena VSD daunnya rontok sendiri sesudah menguning — tidak tergigit — dan yang tinggal ranting telanjang berbintil, bukan tulang daun.',
+        membantah: { id: 'op:pst:00000066', label: 'Mati ranting VSD' },
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -1248,6 +1365,7 @@ const KELOMPOK = [
   { kunci: 'jagung', tanaman: 'jagung', inang: [JAGUNG], pintu: PINTU_JAGUNG },
   { kunci: 'kubis', tanaman: 'kubis', inang: [KUBIS], pintu: PINTU_KUBIS },
   { kunci: 'kedelai', tanaman: 'kedelai', inang: [KEDELAI], pintu: PINTU_KEDELAI },
+  { kunci: 'kakao', tanaman: 'kakao', inang: [KAKAO], pintu: PINTU_KAKAO },
 ];
 
 // ---------------------------------------------------------------------------
