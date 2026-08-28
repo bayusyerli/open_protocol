@@ -378,6 +378,12 @@
           "id": "4679",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Meraah",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -388,6 +394,7 @@
       },
       "synonyms": [
         "Bawang  merah",
+        "Bawang Meraah",
         "Bawang Merah",
         "Bawang Merah (3 ml/l)",
         "Bawang merah :",

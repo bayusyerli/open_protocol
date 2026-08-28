@@ -30,7 +30,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nyaris nol.** Dari 614 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya OPT terkurasi, seluruhnya bertekst — daftarnya per komoditas di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) |
+| **Ini apa?** | **Nyaris nol.** Dari 606 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya OPT terkurasi, seluruhnya bertekst — daftarnya per komoditas di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |

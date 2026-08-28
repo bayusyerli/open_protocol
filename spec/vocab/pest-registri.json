@@ -6498,6 +6498,12 @@
           "uri": "https://www.gbif.org/species/2049562",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Aphis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aphids sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6506,8 +6512,10 @@
         "created_at": "2026-08-19T00:00:00Z"
       },
       "synonyms": [
+        "Aphids sp.",
         "Hama Kutu Daun",
-        "Hamakutu Daun"
+        "Hamakutu Daun",
+        "Kutu Daun"
       ],
       "accepted_scientific_name": "Aphis",
       "taxon_verification": {
@@ -19469,6 +19477,12 @@
           "uri": "https://www.gbif.org/species/2029376",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Nephotettix'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Nephotetix sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -19483,7 +19497,11 @@
         "checked_at": "2026-08-19",
         "confidence": 94,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Nephotetix sp.",
+        "Wereng Hijau"
+      ]
     },
     {
       "id": "op:pst:00001368",
@@ -20022,8 +20040,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000004"
+        }
       },
       "accepted_scientific_name": "Dacus",
       "taxon_verification": {
@@ -25943,8 +25965,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000009"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -26940,8 +26966,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000006"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -28592,6 +28622,12 @@
           "uri": "https://www.gbif.org/species/7246398",
           "relation": "broad",
           "note": "Kingdom Fungi, kelas Leotiomycetes; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Oidiopsis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oidiopsis taurica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -28606,7 +28642,11 @@
         "checked_at": "2026-08-19",
         "confidence": 94,
         "kingdom": "Fungi"
-      }
+      },
+      "synonyms": [
+        "Oidiopsis taurica",
+        "Penyakit Embun Tepung"
+      ]
     },
     {
       "id": "op:pst:00001590",
@@ -29288,8 +29328,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001367"
+        }
       },
       "accepted_scientific_name": "Nephotetix",
       "taxon_verification": {
@@ -29531,8 +29575,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001088"
+        }
       },
       "accepted_scientific_name": "Aphids",
       "taxon_verification": {
@@ -47055,9 +47103,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000126"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -50710,8 +50761,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001589"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -54998,8 +55053,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000004"
+        }
       },
       "accepted_scientific_name": "Bactrocera",
       "taxon_verification": {
@@ -55135,9 +55194,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00002066"
+          "id": "op:pst:00000126"
         }
       },
       "taxon_verification": {

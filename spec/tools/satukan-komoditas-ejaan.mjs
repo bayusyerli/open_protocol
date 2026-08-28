@@ -67,6 +67,26 @@ const KELOMPOK = [
     dasar: 'Ketimun dan mentimun dua kata untuk Cucumis sativus yang sama; keduanya dipakai bergantian di Indonesia.',
   },
   {
+    menang: 'op:cmd:00001221',
+    kalah: ['op:cmd:00001499'],
+    dasar: '"Kembang kol" dan "Kubis Bunga" dua kata untuk Brassica oleracea var. botrytis yang sama. Yang menang justru yang ejaannya kaku, karena 60 catatan varietas berdiri di atasnya sementara "Kembang kol" cuma dipakai satu baris pendaftaran.',
+  },
+  {
+    menang: 'op:cmd:00001345',
+    kalah: ['op:cmd:00001330'],
+    dasar: '"Strawberi" ejaan Inggris yang diserap sebagian untuk stroberi, Fragaria x ananassa yang sama; keduanya membawa satu baris Botrytis cinerea.',
+  },
+  {
+    menang: 'op:cmd:00000004',
+    kalah: ['op:cmd:00001477'],
+    dasar: 'Salah ketik "Bawang Meraah" untuk "Bawang merah"; satu-satunya barisnya Alternaria porri, bercak ungu yang memang OPT bawang merah.',
+  },
+  {
+    menang: 'op:cmd:00001207',
+    kalah: ['op:cmd:00001295'],
+    dasar: 'Salah ketik "Tembakau di pesemaian" untuk "Tembakau di persemaian"; keduanya fase persemaian tembakau yang sama, bukan dua cara budidaya.',
+  },
+  {
     menang: 'op:cmd:00001482',
     kalah: ['op:cmd:00001495'],
     dasar: 'Salah ketik "Tambakau di penyimpanan" untuk "Tembakau di penyimpanan".',
@@ -137,6 +157,12 @@ const pindah = new Map(KELOMPOK.flatMap((g) => g.kalah.map((k) => [k, g.menang])
 
 // Seri harga ikut menunjuk komoditas, dan rujukannya sama nyatanya dengan rujukan pada
 // label produk: seri "Ketimun sedang" menunjuk entitas ketimun yang kini digantikan.
+// Varietas menunjuk komoditas juga, dan lupa itu bukan kesalahan kecil: 105 galat L29
+// menyala sekaligus saat "Kubis Bunga" digantikan, karena 60 catatan varietas kembang kol
+// berdiri di atasnya. Lebih dari itu, cacah varietas per komoditas yang jadi ALASAN memilih
+// pemenang — 60 lawan 0 — hanya bisa dilihat kalau berkas ini ikut dibaca.
+const VARIETAS = join(VOCAB, 'variety', 'varietas.ndjson');
+
 const HARGA = join(VOCAB, 'harga', 'harga.ndjson');
 const barisHarga = readFileSync(HARGA, 'utf8').split('\n');
 let ubahHarga = 0;
@@ -149,6 +175,18 @@ const baruHarga = barisHarga.map((b) => {
   ubahHarga += 1;
   return JSON.stringify(d);
 });
+const barisVarietas = readFileSync(VARIETAS, 'utf8').split('\n');
+let ubahVarietas = 0;
+const baruVarietas = barisVarietas.map((b) => {
+  if (!b.trim()) return b;
+  const d = JSON.parse(b);
+  const tuju = d.commodity?.id && pindah.get(d.commodity.id);
+  if (!tuju) return b;
+  d.commodity.id = tuju;
+  ubahVarietas += 1;
+  return JSON.stringify(d);
+});
+
 const baris = readFileSync(NDJSON, 'utf8').split('\n');
 let ubahRekaman = 0;
 let ubahBaris = 0;
@@ -175,6 +213,7 @@ if (bantah.length) {
 
 for (const s of satu) console.log(`  satu    ${s}`);
 console.log(`\n  commodity-registri.json  — ${satu.length} entitas jadi superseded, ${diratakan} rantai diratakan, ${dilewati.length} dilewati`);
+console.log(`  variety/varietas.ndjson  — ${ubahVarietas} catatan varietas diarahkan ulang`);
 console.log(`  harga/harga.ndjson       — ${ubahHarga} seri harga diarahkan ulang`);
 console.log(`  product/pestisida.ndjson — ${ubahRekaman} rekaman, ${ubahBaris} baris penggunaan`);
 
@@ -186,5 +225,6 @@ if (!tulis) {
 writeFileSync(join(VOCAB, 'commodity-registri.json'), JSON.stringify(bungkusRegistri, null, 2) + '\n');
 writeFileSync(join(VOCAB, 'commodity.json'), JSON.stringify(bungkusKurasi, null, 2) + '\n');
 writeFileSync(NDJSON, baruNdjson.join('\n'));
+writeFileSync(VARIETAS, baruVarietas.join('\n'));
 writeFileSync(HARGA, baruHarga.join('\n'));
 console.log('\nDitulis.');
