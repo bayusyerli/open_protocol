@@ -1072,11 +1072,11 @@ yang sama seperti hasil pencarian nama.
 
 ### Masuk lewat nama hama — C3, sisi yang tidak menuntut agronomi
 
-Terukur sebelum mulai: **nol** entri OPT di kepala pencarian. 671 OPT registri punya
+Terukur sebelum mulai: **nol** entri OPT di kepala pencarian. Ratusan OPT registri punya
 produk terdaftar dan bahan aktifnya sudah ada di indeks — tetapi yang tahu nama hamanya
 dijawab **nol**. Itu bukan kekurangan data; itu pintu yang belum dibuka.
 
-- **Yang dibuka hanya pintunya.** Menulis teks gejala untuk 671 OPT adalah pekerjaan
+- **Yang dibuka hanya pintunya.** Menulis teks gejala untuk sisa OPT registri adalah pekerjaan
   agronomi, bukan pekerjaan indeks — dan mengarangnya persis yang ditolak jalur 1.
 - **Tidak ada blok "pastikan dulu" untuk pintu ini, dan itu bukan kelalaian.** Blok itu
   ada karena yang masuk lewat gejala sedang *menebak*, dan dua ciri yang bisa diperiksa
@@ -1394,16 +1394,16 @@ mencobanya untuk tahu.
 - **Masuk lewat apa yang terlihat**, bukan nama hama. Yang panik tahu daunnya
   mengeriting ke atas; ia tidak tahu kata “trips”.
 - **Mesin tidak menebak.** Tidak ada pengenal foto. Setiap dugaan dibuka dengan blok
-  “pastikan dulu” berisi **dua ciri yang bisa diperiksa sendiri tanpa alat**. Seratus dua
-  puluh dua dari seratus enam puluh ciri menyebut OPT mana yang **terbantah** kalau
-  hasilnya begitu; tiga puluh delapan sisanya hanya menguatkan, dan layar tidak mengarang
-  pembantahan untuk mereka.
+  “pastikan dulu” berisi **dua ciri yang bisa diperiksa sendiri tanpa alat**. Sekitar tiga
+  perempat ciri menyebut OPT mana yang **terbantah** kalau hasilnya begitu; sisanya hanya
+  menguatkan, dan layar tidak mengarang pembantahan untuk mereka — cacah tepatnya
+  dibangkitkan ke docs/14-tinjauan-gejala.md.
   Tiga di antaranya uji gelas yang benar-benar memutuskan — layu bakteri lawan fusarium,
   hawar daun bakteri padi lawan bercak jamur — dan satu lagi kertas putih untuk
   membedakan trips dari virus.
-- **Saringan tanaman ada, tetapi tidak wajib.** Sesudah komoditas kesebelas daftarnya 80
-  gejala, dan penanam padi harus melewati enam puluh tujuh gejala tanaman lain sebelum
-  sampai ke miliknya. Saringannya karena itu ada di atas daftar, dengan **“semua tanaman”
+- **Saringan tanaman ada, tetapi tidak wajib.** Daftarnya tumbuh tiap kurasi komoditas
+  baru, dan penanam padi harus melewati puluhan gejala tanaman lain sebelum sampai ke
+  miliknya. Saringannya karena itu ada di atas daftar, dengan **“semua tanaman”
   tetap terpilih saat layar dibuka** — memaksa pilih tanaman lebih dulu akan menukar pintu
   “masuk lewat apa yang terlihat” dengan pintu lain. Disaring menurut tanaman yang
   **teksnya ditulis untuknya**, bukan menurut tempat produknya terdaftar; keduanya

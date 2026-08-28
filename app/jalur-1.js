@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, muatMeta, teks, tautanMasuk, pasangKembali } from './pustaka.js';
+import { ambil, muatMeta, cacah, teks, tautanMasuk, pasangKembali } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -55,8 +55,8 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
  *
  * Tesis jalur ini masuk lewat APA YANG TERLIHAT, bukan lewat apa yang sudah diketahui;
  * memaksa pilih tanaman lebih dulu akan menukar pintu itu dengan pintu lain. Tetapi
- * sesudah komoditas kesebelas daftarnya 80 gejala, dan penanam padi harus melewati enam
- * puluh tujuh gejala tanaman lain sebelum sampai ke miliknya. Jalan tengahnya:
+ * daftarnya tumbuh tiap kurasi komoditas baru, dan penanam padi harus melewati puluhan
+ * gejala tanaman lain sebelum sampai ke miliknya. Jalan tengahnya:
  * saringan ada, "semua tanaman" tetap yang terpilih saat layar dibuka, dan gejala tetap
  * yang tertulis besar pada tiap kartu.
  *
@@ -104,7 +104,7 @@ function gambarGejala() {
 
 /* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
  *
- * 671 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * Ratusan OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
  * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
  *
  * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
@@ -125,7 +125,8 @@ async function bukaHama(kunci, opsi = {}) {
         <p>
           <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
           registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
-          deskripsi gejalanya</strong> — nol dari 671 OPT berproduk memuatnya.
+          deskripsi gejalanya</strong> — nol dari ${angkaId(cacah('optRegistriBerproduk') ?? 0)}
+          OPT berproduk memuatnya.
         </p>
         <p class="catatan">
           Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
@@ -133,8 +134,9 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — delapan puluh OPT
-          sebelas komoditas punya ciri pembandingnya.
+          <a href="beranda.html">mulai dari apa yang terlihat</a> —
+          ${angkaId(cacah('optTerkurasi') ?? 0)} OPT pada
+          ${angkaId(cacah('optKomoditasBerpintu') ?? 0)} komoditas punya ciri pembandingnya.
         </p>
       </div>
       <h2 class="judul-bagian">Di tanaman apa?</h2>

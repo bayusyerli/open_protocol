@@ -59,6 +59,29 @@ export async function ambil(jalan) {
   return janji;
 }
 
+/* Mengisi angka yang HIDUP dari meta.json, alih-alih menuliskannya di markup.
+ *
+ * Sebelas komoditas kurasi OPT terakhir menghabiskan lebih banyak sunting pada angka yang
+ * tersebar di prosa daripada pada teks gejalanya sendiri, dan tiap angka yang ditulis
+ * tangan adalah angka yang suatu saat basi tanpa ada yang menyalak. Yang bertanda
+ * `data-cacah="<kunci>"` diisi dari `meta.jumlah`; isi bawaannya di markup tetap
+ * ditulis supaya halaman tanpa JS tidak kosong, dan supaya yang membaca sumbernya tahu
+ * kira-kira besarannya.
+ */
+export function isiCacah(akar = document) {
+  if (!meta?.jumlah) return 0;
+  let n = 0;
+  for (const el of akar.querySelectorAll('[data-cacah]')) {
+    const v = meta.jumlah[el.dataset.cacah];
+    if (v == null) continue;
+    el.textContent = Number(v).toLocaleString('id-ID');
+    n += 1;
+  }
+  return n;
+}
+
+export const cacah = (kunci) => meta?.jumlah?.[kunci] ?? null;
+
 // Tidak diekspor: pemakaiannya seluruhnya di dalam berkas ini.
 const rapikan = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
 
@@ -296,7 +319,7 @@ export const HTML_KEMBALI =
 // ---------------------------------------------------------------------------
 // Gejala tidak bisa diember menurut dua huruf pertama: yang mengetik "daun
 // mengeriting ke atas" bukan sedang mengetik awalan sebuah nama, ia sedang menyebut
-// apa yang dilihatnya. Kepalanya kecil — delapan puluh OPT, 32 KB — jadi dibawa utuh
+// apa yang dilihatnya. Kepalanya kecil — puluhan OPT, di bawah anggaran 48 KB — dibawa utuh
 // sekali per sesi lalu dicocokkan kata per kata di sini.
 
 const kata = (s) => (s ?? '')

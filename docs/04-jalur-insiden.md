@@ -30,7 +30,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nyaris nol.** Dari 701 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 80 OPT terkurasi — delapan komoditas semusim ditambah kakao, kopi, dan kelapa sawit, dengan 12 entri melayani lebih dari satu — seluruhnya bertekst |
+| **Ini apa?** | **Nyaris nol.** Dari 701 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya OPT terkurasi, seluruhnya bertekst — daftarnya per komoditas di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
@@ -44,8 +44,8 @@ masuk lewat kosakata petani sendiri juga belum ada.
 ## 2. Empat keputusan rancangan
 
 - **Masuk lewat apa yang terlihat, bukan nama hama.** Petani yang panik tidak tahu
-  kata "trips". Ia tahu daunnya mengeriting ke atas. Sebelas komoditas sudah punya
-  pintunya — 80 OPT terkurasi, seluruhnya bertekst.
+  kata "trips". Ia tahu daunnya mengeriting ke atas. Komoditas yang sudah dikurasi punya
+  pintunya, seluruhnya bertekst; yang belum tidak punya pintu sama sekali.
 - **Mesin tidak menebak, orang yang memilih.** Tidak ada pengenal foto. Diagnosis
   salah yang percaya diri menghasilkan semprotan salah — uang hilang, tanaman tetap
   mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
@@ -183,13 +183,12 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
   catatan epidemiologi, bukan sebagai gejala.
 - ~~**Sepuluh OPT itu tidak terbatas pada cabai.**~~ **Terbukti, dan dipakai.** Registri
   menautkannya jauh lebih luas — trips ke 15 komoditas, ulat grayak ke 13. Komoditas
-  kedua sampai kesembilan menyusul 28 Agustus 2026: **11 pintu bawang merah, 12 tomat,
-  12 kentang, 13 padi, 10 jagung, 8 kubis, 10 kedelai, 5 kakao**, lima puluh tujuh entri
-  baru yang dinaikkan dari registri ditambah entri lama yang teks gejalanya dibuka
-  berklausa per tanaman, ditambah **5 kopi dan 8 kelapa sawit**. Seluruhnya 80 OPT
-  terkurasi bergejala, 12 di antaranya melayani lebih dari satu komoditas. Kakao, kopi, dan
-  sawit tanaman TAHUNAN, dan skala fase yang belum ada ternyata tidak menghalangi jalur 1
-  sama sekali — ia prasyarat Lapis 2, bukan prasyarat pintu gejala.
+  berikutnya menyusul sejak 28 Agustus 2026 lewat `spec/tools/kurasi-opt.mjs`: entri
+  dinaikkan dari registri, dan entri lama yang melayani lebih dari satu tanaman teks
+  gejalanya dibuka berklausa per tanaman. Daftar mutakhirnya dibangkitkan ke
+  [14-tinjauan-gejala.md](14-tinjauan-gejala.md), jadi angka tidak ditulis di sini. Kakao,
+  kopi, dan sawit tanaman TAHUNAN, dan skala fase yang belum ada ternyata tidak
+  menghalangi jalur 1 sama sekali — ia prasyarat Lapis 2, bukan prasyarat pintu gejala.
 - **Tetapkan aturan urutan merek dan umumkan di layar.** Rancangan ini memakai nomor
   pendaftaran menaik. Apa pun pilihannya, ia harus tertulis dan tidak boleh bisa
   dibeli.

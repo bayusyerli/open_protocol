@@ -202,9 +202,8 @@ const kosakata = (berkas) => {
   return m;
 };
 const vocabOpt = kosakata(['pest-registri.json', 'pest.json']);
-// Dihitung terpisah: delapan puluh OPT terkurasi BUKAN isi registri, dan prosa yang
-// menyebut "registri mencatat 1.440" akan mengklaim yang ditulis sendiri sebagai
-// catatan kementerian.
+// Dihitung terpisah: OPT terkurasi BUKAN isi registri, dan prosa yang menyebut "registri
+// mencatat sekian ribu" akan mengklaim yang ditulis sendiri sebagai catatan kementerian.
 const vocabOptRegistri = kosakata(['pest-registri.json']);
 const vocabKomoditas = kosakata(['commodity-registri.json', 'commodity.json']);
 const ilmiahDari = (id) => vocabOpt.get(id)?.scientific_name ?? null;
