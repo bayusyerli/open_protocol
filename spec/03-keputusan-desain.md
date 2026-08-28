@@ -809,10 +809,10 @@ apakah ia ada.
 
 ### D40 — saringan tanaman di layar daftar gejala: ada, tetapi tidak wajib
 
-Sesudah komoditas kelima daftar gejala jalur 1 berisi 41 kartu, dan penanam padi harus
-melewati dua puluh delapan gejala tanaman lain sebelum sampai ke miliknya. Daftarnya
-diurutkan menurut banyaknya produk terdaftar, jadi urutan teratas pun bercampur lima
-komoditas.
+Sesudah komoditas kelima daftar gejala jalur 1 berisi 41 kartu — 48 sesudah jagung —
+dan penanam padi harus melewati puluhan gejala tanaman lain sebelum sampai ke miliknya.
+Daftarnya diurutkan menurut banyaknya produk terdaftar, jadi urutan teratas pun bercampur
+semua komoditas.
 
 Yang menahan jalan keluar termudah — minta pilih tanaman lebih dulu — adalah tesis jalur
 ini sendiri: **masuk lewat APA YANG TERLIHAT, bukan lewat apa yang sudah diketahui.**

@@ -3,7 +3,8 @@
 //   node spec/tools/kurasi-opt.mjs            # periksa saja
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
-// Sudah dipakai untuk: bawang merah, tomat & kentang, dan padi (seluruhnya 28 Agustus 2026).
+// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, dan jagung (seluruhnya
+// 28 Agustus 2026).
 // Cabai — sepuluh entri pertama — ditulis lebih dulu oleh spec/tools/tulis-gejala-opt.mjs,
 // sebelum pola di bawah ini ada.
 //
@@ -101,6 +102,7 @@ const TOMAT = { id: 'op:cmd:00000003', label: 'Tomat' };
 const KENTANG = { id: 'op:cmd:00001008', label: 'Kentang' };
 const CABAI = { id: 'op:cmd:00000001', label: 'Cabai merah besar' };
 const PADI = { id: 'op:cmd:00000006', label: 'Padi' };
+const JAGUNG = { id: 'op:cmd:00001002', label: 'Jagung' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -797,10 +799,156 @@ const PINTU_PADI = [
   },
 ];
 
+const PINTU_JAGUNG = [
+  {
+    id: 'op:pst:00000042',
+    dari: 'op:pst:00001033',
+    nama: 'Ulat Grayak',
+    key: 'ulat-grayak-jagung',
+    label: 'Ulat grayak jagung',
+    definition:
+      'Masuk Indonesia 2019 dan menyebar ke seluruh sentra dalam dua tahun; 151 baris penggunaan berlabel menjadikannya sasaran terbanyak pada jagung sejauh ini. Berbeda dari ulat grayak Spodoptera litura yang lebih dulu ada di sini: yang ini masuk ke DALAM corong pucuk dan bertahan di situ, sehingga semprotan yang tidak sampai ke corong tidak mengenainya.',
+    gejala:
+      'Daun muda berlubang-lubang berbaris sejajar seperti ditembak jarum saat daunnya membuka — bekas gigitan waktu daun masih tergulung di pucuk. Di corong pucuk menumpuk butiran kotoran basah seperti serbuk gergaji, dan pucuk yang terserang berat rusak compang-camping. Pada jagung tua ulatnya masuk ke ujung tongkol.',
+    pembanding: [
+      {
+        cek: 'Tengok ke DALAM corong pucuk. Ulat grayak jagung ada di situ bersama kotoran basahnya; di kepalanya ada tanda huruf Y terbalik berwarna terang, dan di ruas belakangnya empat bintik hitam tersusun persegi. Kalau pucuknya bersih dan yang berlubang hanya daun tua, penyebabnya ulat lain.',
+        membantah: { id: 'op:pst:00000005', label: 'Ulat grayak' },
+      },
+      {
+        cek: 'Perhatikan pola lubangnya. Lubang berbaris sejajar melintang daun berarti daun itu digigit saat masih tergulung — khas hama yang hidup di pucuk. Belalang menggigit dari TEPI daun ke dalam dan tidak meninggalkan kotoran di pucuk.',
+        membantah: { id: 'op:pst:00000045', label: 'Belalang' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000043',
+    dari: 'op:pst:00001075',
+    nama: 'Penyakit Bulai',
+    key: 'bulai',
+    label: 'Bulai',
+    definition:
+      'Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil bekerja padanya, banyak fungisida untuk jamur sejati tidak. Tanaman yang sudah bergejala TIDAK bisa disembuhkan; yang menentukan perlakuan benih sebelum tanam, varietas tahan, dan mencabut tanaman sakit sejak dini. Lima dari pendaftarannya memang tertulis untuk benih jagung dan perlakuan benih, bukan untuk semprotan di lahan. Registri juga memuat satu baris atas ejaan "Perenospora maydis" yang belum disatukan.',
+    gejala:
+      'Garis-garis KLOROTIK memanjang searah tulang daun, putih kekuningan, mulai dari pangkal daun muda lalu meluas ke seluruh helai. Pagi hari saat daun masih berembun, permukaan BAWAH daun berselaput putih halus seperti tepung. Tanaman kerdil dengan ruas memendek, dan yang terserang sejak muda tidak berbuah sama sekali.',
+    pembanding: [
+      {
+        cek: 'Periksa pagi-pagi sebelum matahari naik, saat daun masih basah. Selaput putih seperti tepung di permukaan BAWAH daun hanya dibuat bulai; siang hari selaput itu hilang dan yang tersisa cuma garis kuning yang mudah dikira kekurangan hara.',
+      },
+      {
+        cek: 'Lihat arah dan bentuk gejalanya. Bulai memberi GARIS memanjang searah tulang daun dan menguningkan seluruh helai dari pangkal; hawar daun jagung memberi bercak lonjong panjang seperti perahu dengan tepi tegas, dan daun di sekitarnya tetap hijau.',
+        membantah: { id: 'op:pst:00000044', label: 'Hawar daun jagung' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000044',
+    dari: 'op:pst:00001118',
+    nama: 'Penyakit Hawar Daun',
+    key: 'hawar-daun-jagung',
+    label: 'Hawar daun jagung',
+    definition:
+      'Paling parah pada musim hujan dan di dataran menengah ke atas, dan menular dari sisa tanaman jagung musim sebelumnya — jadi petak yang terus-menerus ditanami jagung paling berisiko. Registri juga memuat Helminthosporium sp. dan spp. (3 baris) serta H. maydis, hawar daun selatan (1 baris), yang belum disatukan.',
+    gejala:
+      'Bercak LONJONG PANJANG seperti perahu pada daun, panjangnya beberapa sampai belasan sentimeter, kelabu kecoklatan dengan tepi tegas dan sejajar tulang daun. Mulai dari daun BAWAH lalu naik; bercak yang bersambung membuat seluruh daun mengering sementara daun di atasnya masih hijau.',
+    pembanding: [
+      {
+        cek: 'Lihat bentuk dan batas gejalanya. Hawar daun jagung lonjong panjang seperti perahu dengan tepi tegas, dan daun di antara bercaknya tetap hijau; bulai tidak berbercak melainkan menggarisi SELURUH helai daun dengan kuning pucat.',
+        membantah: { id: 'op:pst:00000043', label: 'Bulai' },
+      },
+      {
+        cek: 'Raba permukaan bercaknya dengan jari. Hawar daun jagung kering rata dan tidak meninggalkan apa pun di jari; karat daun meninggalkan bintil kecil yang pecah dan menyisakan SERBUK coklat kemerahan.',
+        membantah: { id: 'op:pst:00001662', label: 'Penyakit Karat' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000045',
+    dari: 'op:pst:00001112',
+    nama: 'Hama Belalang',
+    key: 'belalang',
+    label: 'Belalang',
+    definition:
+      'Terdaftar juga pada padi dan kelapa sawit (3 baris), dan cara merusaknya sama di semuanya — teks di bawah karena itu sengaja tidak menyebut satu tanaman pun. Registri memecah belalang jadi beberapa entitas: Locusta sp. (7 baris pada jagung), Oxya sp. (3), dan Patanga succincta (2), semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini.',
+    gejala:
+      'Daun tergigit dari TEPI ke dalam dengan tepi bergerigi tidak beraturan, dan tulang daun utama sering ditinggalkan utuh. Kerusakan paling banyak di pinggir petak yang berbatasan dengan rumput, pematang, atau lahan bera, lalu berkurang ke arah tengah.',
+    pembanding: [
+      {
+        cek: 'Berjalan menyusuri petak pada siang hari yang terik. Belalang melompat dan terbang pendek di depan kaki; tidak ada hama daun lain yang melompat seperti itu. Kalau tidak ada yang melompat, gigitan itu bukan belalang.',
+      },
+      {
+        cek: 'Lihat dari mana daunnya tergigit. Belalang menggigit dari TEPI daun ke dalam dan tidak meninggalkan kotoran di pucuk; ulat grayak jagung melubangi tengah daun dan menumpuk kotoran basah di corong pucuk.',
+        membantah: { id: 'op:pst:00000042', label: 'Ulat grayak jagung' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000046',
+    dari: 'op:pst:00001242',
+    nama: 'Lalat Bibit',
+    key: 'lalat-bibit',
+    label: 'Lalat bibit',
+    definition:
+      'Menyerang tanaman berumur kurang dari tiga minggu; sesudah itu batangnya sudah terlalu keras. Registri memecahnya jadi tiga entitas — Atherigona sp. (9 baris), Atherigona exigua (8), dan Atherigona oryzae (2) — dan hanya yang kedua cocok tepat sampai spesies di GBIF. Pintu ini berdiri di atasnya; sebelas baris atas nama dua entitas lain tidak ikut terdaftar di sini, dan ketiganya toh tidak bisa dibedakan di kebun.',
+    gejala:
+      'Pucuk tanaman muda menguning lalu mati dan MUDAH DITARIK LEPAS, sementara daun di bawahnya masih hijau. Tanaman jadi kerdil dan bertunas banyak dari pangkal, atau mati sama sekali sehingga petak terlihat jarang berpetak-petak pada tiga minggu pertama.',
+    pembanding: [
+      {
+        cek: 'Belah pangkal batang tanaman yang pucuknya mati. Ada BELATUNG putih tanpa kaki di dalam pangkal dan jaringan di sekitarnya membusuk berbau. Penggerek batang meninggalkan ulat BERKAKI di dalam lorong bersih berisi butiran kotoran.',
+        membantah: { id: 'op:pst:00000047', label: 'Penggerek batang jagung' },
+      },
+      {
+        cek: 'Ingat umur tanamannya. Lalat bibit hanya menyerang pada tiga minggu pertama. Pucuk yang mati pada tanaman yang sudah lebih tua penyebabnya bukan lalat bibit, sebanyak apa pun yang mati.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000047',
+    dari: 'op:pst:00001310',
+    nama: 'Penggerek Batang',
+    key: 'penggerek-batang-jagung',
+    label: 'Penggerek batang jagung',
+    definition:
+      'Registri juga memuat Ostrinia nubilalis, penggerek batang jagung EROPA, pada lima baris. Spesies itu tidak ada di Indonesia, dan kelima barisnya hampir pasti salah nama untuk yang ini — tetapi keduanya belum disatukan, jadi produk atas nama itu tidak ikut terdaftar di bawah pintu ini.',
+    gejala:
+      'Lubang gerekan bulat di ruas batang dengan butiran kotoran menyembul di mulutnya, sering berbaris ke atas mengikuti ruas. Batang mudah patah tepat di titik gerekan saat berangin, dan tangkai bunga jantan di pucuk patah menggantung. Tongkol bisa ikut digerek dari pangkalnya.',
+    pembanding: [
+      {
+        cek: 'Belah batang yang berlubang membujur. Ada lorong memanjang berisi kotoran beserta ulat berwarna krem kecoklatan bertitik gelap di tiap ruas. Lalat bibit meninggalkan belatung putih TANPA KAKI di pangkal, bukan ulat berkaki di dalam ruas batang.',
+        membantah: { id: 'op:pst:00000046', label: 'Lalat bibit' },
+      },
+      {
+        cek: 'Lihat di mana lubangnya. Penggerek batang melubangi BATANG dan tangkai bunga jantan pada tanaman yang sudah tinggi; ulat grayak jagung merusak dari corong pucuk dan ujung tongkol, dan tidak menggerek ruas batang.',
+        membantah: { id: 'op:pst:00000042', label: 'Ulat grayak jagung' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000048',
+    dari: 'op:pst:00001284',
+    nama: 'Kutu Daun',
+    key: 'kutu-daun-jagung',
+    label: 'Kutu daun jagung',
+    definition:
+      'Paling menentukan pada fase berbunga, saat kutu menutupi bunga jantan dan mengganggu penyerbukan. Di luar fase itu koloni yang tampak banyak sering tidak menurunkan hasil, dan musuh alaminya biasanya menyusul dalam satu sampai dua minggu.',
+    gejala:
+      'Koloni kutu hijau kebiruan rapat pada bunga jantan di pucuk, di ketiak daun muda, dan di ujung tongkol. Permukaan daun di bawahnya lengket dan lama-lama ditumbuhi jelaga hitam; semut naik-turun di batang.',
+    pembanding: [
+      {
+        cek: 'Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan itu hanya dihasilkan kutu. Jelaga hitam yang tumbuh di atasnya bisa DIUSAP HILANG dan tidak menyerang daunnya — jadi yang perlu ditangani kutunya, bukan jelaganya.',
+      },
+      {
+        cek: 'Periksa fase tanamannya sebelum memutuskan. Kalau bunga jantan belum keluar atau penyerbukan sudah selesai, koloni sebanyak apa pun jarang menurunkan hasil. Cari juga kepik dan larvanya di antara koloni — kalau ada, musuh alaminya sudah bekerja.',
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
   { kunci: 'padi', tanaman: 'padi', inang: [PADI], pintu: PINTU_PADI },
+  { kunci: 'jagung', tanaman: 'jagung', inang: [JAGUNG], pintu: PINTU_JAGUNG },
 ];
 
 // ---------------------------------------------------------------------------
@@ -867,8 +1015,34 @@ const PERLUAS = [
       'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
   },
   { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG] },
-  { id: 'op:pst:00000005', nama: 'Ulat grayak', inang: [CABAI, TOMAT, KENTANG] },
-  { id: 'op:pst:00000014', nama: 'Ulat tanah', inang: [BAWANG_MERAH, KENTANG] },
+  {
+    id: 'op:pst:00000005',
+    nama: 'Ulat grayak',
+    inang: [CABAI, TOMAT, KENTANG, JAGUNG],
+    // Definisi baru dan ciri kedua ditulis ulang begitu ulat grayak JAGUNG punya
+    // pintunya sendiri: dua ulat bernama sama pada satu tanaman, dan yang membedakan
+    // keduanya menentukan cara menyemprotnya — yang satu makan dari luar, yang satu
+    // bertahan di dalam corong pucuk yang tidak terkena semprotan biasa.
+    definition:
+      'Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari.',
+    pembanding: [
+      {
+        cek: 'Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok.',
+      },
+      {
+        cek: 'Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya. Ulat grayak jagung berbeda: ia bertahan di dalam corong pucuk bersama kotoran basahnya, dan kepalanya bertanda Y terbalik.',
+        membantah: { id: 'op:pst:00000042', label: 'Ulat grayak jagung' },
+      },
+    ],
+  },
+  { id: 'op:pst:00000014', nama: 'Ulat tanah', inang: [BAWANG_MERAH, KENTANG, JAGUNG] },
+  {
+    id: 'op:pst:00000023',
+    nama: 'Penggerek buah',
+    inang: [TOMAT, CABAI, JAGUNG],
+    definition:
+      'Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.',
+  },
 ];
 
 // ---------------------------------------------------------------------------
