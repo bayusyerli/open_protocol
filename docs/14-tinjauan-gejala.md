@@ -1,4 +1,4 @@
-# Daftar Tinjauan — 41 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, dan Cabai merah besar
+# Daftar Tinjauan — 48 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, dan Jagung
 
 > Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`
 > oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah
@@ -10,7 +10,7 @@
 
 ## 1. Apa yang diminta, dan apa yang tidak
 
-Seluruh 41 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
+Seluruh 48 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
 bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok
 “pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri
 menyebut OPT mana yang **terbantah** kalau hasilnya begitu.
@@ -25,7 +25,7 @@ Yang diminta dari peninjau, untuk tiap entri:
 
 Yang **tidak** diminta:
 
-- Bukan menambah OPT baru. Yang 41 ini dipilih karena paling sering dicari; kekurangan
+- Bukan menambah OPT baru. Yang 48 ini dipilih karena paling sering dicari; kekurangan
   cakupan sudah diketahui dan bukan yang ditinjau di sini.
 - Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi
   dan tidak melewati penilaian peninjau.
@@ -49,7 +49,7 @@ Ini disebut di muka supaya tidak ada yang tersembunyi.
 
 ---
 
-## 3. Seluruh 41 entri
+## 3. Seluruh 48 entri
 
 12 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
 **Kutu daun persik**, **Kutu kebul**, **Ulat grayak**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat tanah**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**. Teksnya menyebut tiap tanaman secara terpisah,
@@ -433,7 +433,9 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000005` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+*Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
 
 **Teks gejala yang tampil di layar**
 
@@ -443,8 +445,8 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 1. Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok.
    → membantah: **—**
-2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya.
-   → membantah: **—**
+2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya. Ulat grayak jagung berbeda: ia bertahan di dalam corong pucuk bersama kotoran basahnya, dan kepalanya bertanda Y terbalik.
+   → membantah: **Ulat grayak jagung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -727,7 +729,9 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000005` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+*Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
 
 **Teks gejala yang tampil di layar**
 
@@ -737,8 +741,8 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 1. Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok.
    → membantah: **—**
-2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya.
-   → membantah: **—**
+2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya. Ulat grayak jagung berbeda: ia bertahan di dalam corong pucuk bersama kotoran basahnya, dan kepalanya bertanda Y terbalik.
+   → membantah: **Ulat grayak jagung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -895,7 +899,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000023` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-*Polifag: terdaftar juga pada jagung (19 baris), tembakau, semangka, dan melon, dan cara merusaknya sama di semuanya — karena itu teks di bawah sengaja tidak menyebut satu tanaman pun. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
+*Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
 
 **Teks gejala yang tampil di layar**
 
@@ -1341,7 +1345,9 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000005` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+*Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
 
 **Teks gejala yang tampil di layar**
 
@@ -1351,8 +1357,8 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 1. Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok.
    → membantah: **—**
-2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya.
-   → membantah: **—**
+2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya. Ulat grayak jagung berbeda: ia bertahan di dalam corong pucuk bersama kotoran basahnya, dan kepalanya bertanda Y terbalik.
+   → membantah: **Ulat grayak jagung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -1487,7 +1493,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000023` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-*Polifag: terdaftar juga pada jagung (19 baris), tembakau, semangka, dan melon, dan cara merusaknya sama di semuanya — karena itu teks di bawah sengaja tidak menyebut satu tanaman pun. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
+*Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
 
 **Teks gejala yang tampil di layar**
 
@@ -1507,18 +1513,272 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Jagung — 10 entri
+
+#### 1. Ulat grayak — *Spodoptera litura*
+
+`op:pst:00000005` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun berlubang tidak beraturan sampai tinggal tulang daunnya, dan kerusakannya bertambah cepat dalam semalam. Ada butiran kotoran hitam menumpuk di ketiak daun.
+
+**Ciri pembanding**
+
+1. Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok.
+   → membantah: **—**
+2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya. Ulat grayak jagung berbeda: ia bertahan di dalam corong pucuk bersama kotoran basahnya, dan kepalanya bertanda Y terbalik.
+   → membantah: **Ulat grayak jagung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Ulat tanah — *Agrotis ipsilon*
+
+`op:pst:00000014` · insect · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Menyerang pada malam hari dan bersembunyi di tanah pada siang hari. Polifag: terdaftar juga pada kentang, jagung, cabai, dan kubis, dan gejalanya sama di semuanya — jadi teks di bawah sengaja tidak menyebut satu tanaman pun. Orong-orong (Gryllotalpa sp.) merusak dengan cara yang mirip, tetapi meninggalkan lorong gembur di permukaan tanah dan terdaftar lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman muda rebah dan terpotong tepat di pangkal, dekat permukaan tanah. Yang rebah ditemukan pagi hari, bergerombol di beberapa titik dalam petak dan bukan merata, dan daunnya masih hijau segar — tidak menguning lebih dulu.
+
+**Ciri pembanding**
+
+1. Korek tanah sedalam 2–5 cm di sekeliling tanaman yang rebah, pagi hari. Ulat gemuk kelabu kecoklatan yang MELINGKAR seperti huruf C saat disentuh bersembunyi di situ. Kalau tidak ada, penyebab rebahnya bukan ulat tanah.
+   → membantah: **—**
+2. Lihat bekas patahannya. Ulat tanah memotong batang bersih seperti disayat, dan sisa tanaman masih segar. Tanaman yang roboh karena pangkalnya membusuk tidak terpotong: batang atau umbinya lunak, dan seluruh tanaman terangkat hanya dengan menarik daunnya.
+   → membantah: **Layu fusarium**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Penggerek buah — *Helicoverpa armigera*
+
+`op:pst:00000023` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
+
+**Teks gejala yang tampil di layar**
+
+> Buah atau tongkol berlubang bundar bersih di dekat tangkainya, dan dari lubang itu menyembul kotoran berbutir basah. Di dalam satu buah biasanya hanya ADA SATU ulat, karena yang lebih besar memakan yang lain. Buah yang terlanjur berlubang membusuk dan gugur.
+
+**Ciri pembanding**
+
+1. Belah buah yang berlubang. Penggerek buah meninggalkan SATU ulat gemuk bergaris memanjang beserta rongga besar dan kotoran. Lalat buah meninggalkan belatung putih tanpa kaki yang melenting, beberapa sekaligus, dan tidak ada lubang masuk yang bundar.
+   → membantah: **Lalat buah**
+2. Lihat lubangnya dari luar. Penggerek buah masuk lewat lubang bundar seukuran ujung pensil dengan kotoran menyembul. Antraknosa tidak berlubang — ia memberi bercak melingkar cekung dengan titik hitam di tengahnya.
+   → membantah: **Antraknosa**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Ulat grayak jagung — *Spodoptera frugiperda*
+
+`op:pst:00000042` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Masuk Indonesia 2019 dan menyebar ke seluruh sentra dalam dua tahun; 151 baris penggunaan berlabel menjadikannya sasaran terbanyak pada jagung sejauh ini. Berbeda dari ulat grayak Spodoptera litura yang lebih dulu ada di sini: yang ini masuk ke DALAM corong pucuk dan bertahan di situ, sehingga semprotan yang tidak sampai ke corong tidak mengenainya.*
+
+**Teks gejala yang tampil di layar**
+
+> Daun muda berlubang-lubang berbaris sejajar seperti ditembak jarum saat daunnya membuka — bekas gigitan waktu daun masih tergulung di pucuk. Di corong pucuk menumpuk butiran kotoran basah seperti serbuk gergaji, dan pucuk yang terserang berat rusak compang-camping. Pada jagung tua ulatnya masuk ke ujung tongkol.
+
+**Ciri pembanding**
+
+1. Tengok ke DALAM corong pucuk. Ulat grayak jagung ada di situ bersama kotoran basahnya; di kepalanya ada tanda huruf Y terbalik berwarna terang, dan di ruas belakangnya empat bintik hitam tersusun persegi. Kalau pucuknya bersih dan yang berlubang hanya daun tua, penyebabnya ulat lain.
+   → membantah: **Ulat grayak**
+2. Perhatikan pola lubangnya. Lubang berbaris sejajar melintang daun berarti daun itu digigit saat masih tergulung — khas hama yang hidup di pucuk. Belalang menggigit dari TEPI daun ke dalam dan tidak meninggalkan kotoran di pucuk.
+   → membantah: **Belalang**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Bulai — *Peronosclerospora maydis*
+
+`op:pst:00000043` · disease_oomycete · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil bekerja padanya, banyak fungisida untuk jamur sejati tidak. Tanaman yang sudah bergejala TIDAK bisa disembuhkan; yang menentukan perlakuan benih sebelum tanam, varietas tahan, dan mencabut tanaman sakit sejak dini. Lima dari pendaftarannya memang tertulis untuk benih jagung dan perlakuan benih, bukan untuk semprotan di lahan. Registri juga memuat satu baris atas ejaan "Perenospora maydis" yang belum disatukan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Garis-garis KLOROTIK memanjang searah tulang daun, putih kekuningan, mulai dari pangkal daun muda lalu meluas ke seluruh helai. Pagi hari saat daun masih berembun, permukaan BAWAH daun berselaput putih halus seperti tepung. Tanaman kerdil dengan ruas memendek, dan yang terserang sejak muda tidak berbuah sama sekali.
+
+**Ciri pembanding**
+
+1. Periksa pagi-pagi sebelum matahari naik, saat daun masih basah. Selaput putih seperti tepung di permukaan BAWAH daun hanya dibuat bulai; siang hari selaput itu hilang dan yang tersisa cuma garis kuning yang mudah dikira kekurangan hara.
+   → membantah: **—**
+2. Lihat arah dan bentuk gejalanya. Bulai memberi GARIS memanjang searah tulang daun dan menguningkan seluruh helai dari pangkal; hawar daun jagung memberi bercak lonjong panjang seperti perahu dengan tepi tegas, dan daun di sekitarnya tetap hijau.
+   → membantah: **Hawar daun jagung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 6. Hawar daun jagung — *Helminthosporium turcicum*
+
+`op:pst:00000044` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Paling parah pada musim hujan dan di dataran menengah ke atas, dan menular dari sisa tanaman jagung musim sebelumnya — jadi petak yang terus-menerus ditanami jagung paling berisiko. Registri juga memuat Helminthosporium sp. dan spp. (3 baris) serta H. maydis, hawar daun selatan (1 baris), yang belum disatukan.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak LONJONG PANJANG seperti perahu pada daun, panjangnya beberapa sampai belasan sentimeter, kelabu kecoklatan dengan tepi tegas dan sejajar tulang daun. Mulai dari daun BAWAH lalu naik; bercak yang bersambung membuat seluruh daun mengering sementara daun di atasnya masih hijau.
+
+**Ciri pembanding**
+
+1. Lihat bentuk dan batas gejalanya. Hawar daun jagung lonjong panjang seperti perahu dengan tepi tegas, dan daun di antara bercaknya tetap hijau; bulai tidak berbercak melainkan menggarisi SELURUH helai daun dengan kuning pucat.
+   → membantah: **Bulai**
+2. Raba permukaan bercaknya dengan jari. Hawar daun jagung kering rata dan tidak meninggalkan apa pun di jari; karat daun meninggalkan bintil kecil yang pecah dan menyisakan SERBUK coklat kemerahan.
+   → membantah: **Penyakit Karat**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Belalang — *Oxya chinensis*
+
+`op:pst:00000045` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Terdaftar juga pada padi dan kelapa sawit (3 baris), dan cara merusaknya sama di semuanya — teks di bawah karena itu sengaja tidak menyebut satu tanaman pun. Registri memecah belalang jadi beberapa entitas: Locusta sp. (7 baris pada jagung), Oxya sp. (3), dan Patanga succincta (2), semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun tergigit dari TEPI ke dalam dengan tepi bergerigi tidak beraturan, dan tulang daun utama sering ditinggalkan utuh. Kerusakan paling banyak di pinggir petak yang berbatasan dengan rumput, pematang, atau lahan bera, lalu berkurang ke arah tengah.
+
+**Ciri pembanding**
+
+1. Berjalan menyusuri petak pada siang hari yang terik. Belalang melompat dan terbang pendek di depan kaki; tidak ada hama daun lain yang melompat seperti itu. Kalau tidak ada yang melompat, gigitan itu bukan belalang.
+   → membantah: **—**
+2. Lihat dari mana daunnya tergigit. Belalang menggigit dari TEPI daun ke dalam dan tidak meninggalkan kotoran di pucuk; ulat grayak jagung melubangi tengah daun dan menumpuk kotoran basah di corong pucuk.
+   → membantah: **Ulat grayak jagung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Lalat bibit — *Atherigona exigua*
+
+`op:pst:00000046` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Menyerang tanaman berumur kurang dari tiga minggu; sesudah itu batangnya sudah terlalu keras. Registri memecahnya jadi tiga entitas — Atherigona sp. (9 baris), Atherigona exigua (8), dan Atherigona oryzae (2) — dan hanya yang kedua cocok tepat sampai spesies di GBIF. Pintu ini berdiri di atasnya; sebelas baris atas nama dua entitas lain tidak ikut terdaftar di sini, dan ketiganya toh tidak bisa dibedakan di kebun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Pucuk tanaman muda menguning lalu mati dan MUDAH DITARIK LEPAS, sementara daun di bawahnya masih hijau. Tanaman jadi kerdil dan bertunas banyak dari pangkal, atau mati sama sekali sehingga petak terlihat jarang berpetak-petak pada tiga minggu pertama.
+
+**Ciri pembanding**
+
+1. Belah pangkal batang tanaman yang pucuknya mati. Ada BELATUNG putih tanpa kaki di dalam pangkal dan jaringan di sekitarnya membusuk berbau. Penggerek batang meninggalkan ulat BERKAKI di dalam lorong bersih berisi butiran kotoran.
+   → membantah: **Penggerek batang jagung**
+2. Ingat umur tanamannya. Lalat bibit hanya menyerang pada tiga minggu pertama. Pucuk yang mati pada tanaman yang sudah lebih tua penyebabnya bukan lalat bibit, sebanyak apa pun yang mati.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 9. Penggerek batang jagung — *Ostrinia furnacalis*
+
+`op:pst:00000047` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Registri juga memuat Ostrinia nubilalis, penggerek batang jagung EROPA, pada lima baris. Spesies itu tidak ada di Indonesia, dan kelima barisnya hampir pasti salah nama untuk yang ini — tetapi keduanya belum disatukan, jadi produk atas nama itu tidak ikut terdaftar di bawah pintu ini.*
+
+**Teks gejala yang tampil di layar**
+
+> Lubang gerekan bulat di ruas batang dengan butiran kotoran menyembul di mulutnya, sering berbaris ke atas mengikuti ruas. Batang mudah patah tepat di titik gerekan saat berangin, dan tangkai bunga jantan di pucuk patah menggantung. Tongkol bisa ikut digerek dari pangkalnya.
+
+**Ciri pembanding**
+
+1. Belah batang yang berlubang membujur. Ada lorong memanjang berisi kotoran beserta ulat berwarna krem kecoklatan bertitik gelap di tiap ruas. Lalat bibit meninggalkan belatung putih TANPA KAKI di pangkal, bukan ulat berkaki di dalam ruas batang.
+   → membantah: **Lalat bibit**
+2. Lihat di mana lubangnya. Penggerek batang melubangi BATANG dan tangkai bunga jantan pada tanaman yang sudah tinggi; ulat grayak jagung merusak dari corong pucuk dan ujung tongkol, dan tidak menggerek ruas batang.
+   → membantah: **Ulat grayak jagung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 10. Kutu daun jagung — *Rhopalosiphum maidis*
+
+`op:pst:00000048` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Paling menentukan pada fase berbunga, saat kutu menutupi bunga jantan dan mengganggu penyerbukan. Di luar fase itu koloni yang tampak banyak sering tidak menurunkan hasil, dan musuh alaminya biasanya menyusul dalam satu sampai dua minggu.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Koloni kutu hijau kebiruan rapat pada bunga jantan di pucuk, di ketiak daun muda, dan di ujung tongkol. Permukaan daun di bawahnya lengket dan lama-lama ditumbuhi jelaga hitam; semut naik-turun di batang.
+
+**Ciri pembanding**
+
+1. Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan itu hanya dihasilkan kutu. Jelaga hitam yang tumbuh di atasnya bisa DIUSAP HILANG dan tidak menyerang daunnya — jadi yang perlu ditangani kutunya, bukan jelaganya.
+   → membantah: **—**
+2. Periksa fase tanamannya sebelum memutuskan. Kalau bunga jantan belum keluar atau penyerbukan sudah selesai, koloni sebanyak apa pun jarang menurunkan hasil. Cari juga kepik dan larvanya di antara koloni — kalau ada, musuh alaminya sudah bekerja.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ---
 
 ## 4. Yang kami tandai sendiri
 
 Dihitung dari datanya, bukan dari penilaian agronomi — supaya waktu peninjau tidak habis
-menemukan yang sudah kami ragukan. 15 dari 41 entri bertanda,
-dan secara keseluruhan **12 dari 82 ciri pembanding tidak menyebut apa yang dibantahnya**:
+menemukan yang sudah kami ragukan. 19 dari 48 entri bertanda,
+dan secara keseluruhan **16 dari 96 ciri pembanding tidak menyebut apa yang dibantahnya**:
 
 - **Trips** — kedua cirinya membantah OPT yang sama.
 - **Kutu kebul** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Lalat buah** — kedua cirinya membantah OPT yang sama.
-- **Ulat grayak** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Ulat grayak** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Tungau merah** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Antraknosa** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Layu fusarium** — 1 ciri tidak menyebut apa yang dibantahnya.
@@ -1530,6 +1790,10 @@ dan secara keseluruhan **12 dari 82 ciri pembanding tidak menyebut apa yang diba
 - **Hama putih palsu** — 2 ciri tidak menyebut apa yang dibantahnya.
 - **Walang sangit** — kedua cirinya membantah OPT yang sama.
 - **Wereng punggung putih** — kedua cirinya membantah OPT yang sama.
+- **Bulai** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Belalang** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Lalat bibit** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Kutu daun jagung** — 2 ciri tidak menyebut apa yang dibantahnya.
 
 Dua pola itu **bukan bukti entrinya salah.** Ciri yang membantah OPT yang sama dua kali
 bisa saja memang dua sudut yang berbeda terhadap satu kekeliruan yang paling sering

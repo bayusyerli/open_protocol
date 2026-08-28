@@ -30,7 +30,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nyaris nol.** Dari 740 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 41 OPT terkurasi — cabai, bawang merah, tomat, kentang, dan padi, dengan 12 entri melayani lebih dari satu — seluruhnya bertekst |
+| **Ini apa?** | **Nyaris nol.** Dari 733 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 48 OPT terkurasi — padi, jagung, cabai, bawang merah, tomat, kentang, dengan 12 entri melayani lebih dari satu — seluruhnya bertekst |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
@@ -44,8 +44,8 @@ masuk lewat kosakata petani sendiri juga belum ada.
 ## 2. Empat keputusan rancangan
 
 - **Masuk lewat apa yang terlihat, bukan nama hama.** Petani yang panik tidak tahu
-  kata "trips". Ia tahu daunnya mengeriting ke atas. Lima komoditas sudah punya
-  pintunya — 41 OPT terkurasi, seluruhnya bertekst.
+  kata "trips". Ia tahu daunnya mengeriting ke atas. Enam komoditas sudah punya
+  pintunya — 48 OPT terkurasi, seluruhnya bertekst.
 - **Mesin tidak menebak, orang yang memilih.** Tidak ada pengenal foto. Diagnosis
   salah yang percaya diri menghasilkan semprotan salah — uang hilang, tanaman tetap
   mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
@@ -183,10 +183,11 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
   catatan epidemiologi, bukan sebagai gejala.
 - ~~**Sepuluh OPT itu tidak terbatas pada cabai.**~~ **Terbukti, dan dipakai.** Registri
   menautkannya jauh lebih luas — trips ke 15 komoditas, ulat grayak ke 13. Komoditas
-  kedua sampai kelima menyusul 28 Agustus 2026: **11 pintu bawang merah, 12 tomat,
-  12 kentang, 13 padi**, tiga puluh satu entri baru yang dinaikkan dari registri ditambah
-  entri cabai yang teks gejalanya dibuka berklausa per tanaman. Seluruhnya 41 OPT terkurasi
-  bergejala, 12 di antaranya melayani lebih dari satu komoditas.
+  kedua sampai keenam menyusul 28 Agustus 2026: **11 pintu bawang merah, 12 tomat,
+  12 kentang, 13 padi, 10 jagung**, tiga puluh delapan entri baru yang dinaikkan dari
+  registri ditambah entri lama yang teks gejalanya dibuka berklausa per tanaman.
+  Seluruhnya 48 OPT terkurasi bergejala, 12 di antaranya melayani lebih dari satu
+  komoditas.
 - **Tetapkan aturan urutan merek dan umumkan di layar.** Rancangan ini memakai nomor
   pendaftaran menaik. Apa pun pilihannya, ia harus tertulis dan tidak boleh bisa
   dibeli.

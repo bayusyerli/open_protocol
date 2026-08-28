@@ -74,7 +74,7 @@ Pasal 77 melarang mengedarkan *dan menggunakan*. Menunggu pendapat hukum.
 
 | Jalur | Kategori | Ditopang data | Yang tidak sanggup |
 |---|---|---|---|
-| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis; 41 OPT terkurasi bergejala — 11 pintu untuk cabai, 11 bawang merah, 12 tomat, 12 kentang, 13 padi, dan 12 entri melayani lebih dari satu — masing-masing dua ciri pembanding | ✕ Diagnosis. Nol dari 740 OPT **registri** punya deskripsi gejala, jadi pintunya baru empat puluh satu dan baru untuk lima komoditas |
+| **1 · Insiden** — gejala → OPT → bahan | Pestisida | 23.058 penggunaan berlabel, 96,1% tertaut OPT, 80% berdosis; 48 OPT terkurasi bergejala — 13 pintu untuk padi, 12 tomat, 12 kentang, 11 cabai, 11 bawang merah, 10 jagung, dan 12 entri melayani lebih dari satu — masing-masing dua ciri pembanding | ✕ Diagnosis. Nol dari 733 OPT **registri** punya deskripsi gejala, jadi pintunya baru empat puluh delapan dan baru untuk enam komoditas |
 | **2 · Produk** — kemasan → isi → setara | Ketiganya | 96,4% pestisida & 71,3% pupuk punya komposisi; 63,5% pestisida identik dengan produk lain | ◐ Nama dagang di kemasan bisa berbeda dari nama terdaftar |
 | **3 · Hitungan** — pupuk + harga → Rp/kg hara | Pupuk | 5.130 pupuk berkomposisi angka terhadap 17 hara | ✕ Harga (nol di registri) dan status subsidi (nol dari 7.196) |
 | **4 · Keabsahan** — varietas → surat | Benih & bibit | 5.822 surat pelepasan, 5.138 pendaftaran, 580 PVT | ✕ Rekomendasi varietas. **Nol** dari 11.227 menyebut sifat agronomi |
@@ -158,7 +158,7 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 
 | Yang hilang | Akibatnya | Jalan keluar |
 |---|---|---|
-| **Deskripsi gejala OPT** — 0 dari 740 OPT registri; 41 dari 41 terkurasi sudah ditulis | Jalur 1 punya empat puluh satu pintu masuk, dan hanya untuk cabai, bawang merah, tomat, kentang, dan padi | Kurasi · komoditas keenam, peninjauan penyuluh atas yang empat puluh satu, dan penyaring komoditas di layar daftar |
+| **Deskripsi gejala OPT** — 0 dari 733 OPT registri; 48 dari 48 terkurasi sudah ditulis | Jalur 1 punya empat puluh delapan pintu masuk, dan hanya untuk enam komoditas: padi, jagung, cabai, bawang merah, tomat, kentang | Kurasi · komoditas ketujuh, dan peninjauan penyuluh atas yang empat puluh delapan |
 | **PHI** — **nol** dari 23.058 penggunaan | Tanggal aman panen tidak bisa dijanjikan di jalur mana pun | Sumber lain · foto label atau terbitan BSIP |
 | **Harga** — nol | Jalur 3 butuh satu masukan pengguna | Sumber lain · diketik sekali di kios |
 | **Penanda subsidi** — 0 dari 7.196 pupuk | Perbandingan harga tidak sadar-subsidi, padahal dokumen fondasi mensyaratkannya | Sumber lain · daftar produk bersubsidi Kementan |
