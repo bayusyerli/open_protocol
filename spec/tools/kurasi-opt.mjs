@@ -4,7 +4,8 @@
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
-// kakao, kopi, kelapa sawit, jeruk, cucurbit, dan legum (seluruhnya 28 Agustus 2026).
+// kakao, kopi, kelapa sawit, jeruk, cucurbit, legum, tembakau, teh, dan mangga
+// (seluruhnya 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -133,6 +134,9 @@ const MENTIMUN = { id: 'op:cmd:00001045', label: 'Mentimun' };
 const KACANG_PANJANG = { id: 'op:cmd:00001026', label: 'Kacang panjang' };
 const KACANG_HIJAU = { id: 'op:cmd:00001032', label: 'Kacang hijau' };
 const KACANG_TANAH = { id: 'op:cmd:00001034', label: 'Kacang tanah' };
+const TEMBAKAU = { id: 'op:cmd:00001018', label: 'Tembakau' };
+const TEH = { id: 'op:cmd:00001014', label: 'Teh' };
+const MANGGA = { id: 'op:cmd:00001019', label: 'Mangga' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -419,7 +423,7 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Penggerek Buah',
     key: 'penggerek-buah',
     label: 'Penggerek buah',
-    inang: [TOMAT, CABAI, JAGUNG, SEMANGKA, MELON],
+    inang: [TOMAT, CABAI, JAGUNG, SEMANGKA, MELON, TEMBAKAU],
     definition:
       'Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.',
     gejala:
@@ -1278,6 +1282,7 @@ const PINTU_KAKAO = [
     nama: 'Pengisap Buah',
     key: 'helopeltis',
     label: 'Helopeltis',
+    inang: [KAKAO, TEH],
     definition:
       'Terdaftar juga pada teh (7 baris) dan teks di bawah ditulis untuk kakao. Registri memecahnya jadi beberapa entitas — Helopeltis sp. (21 baris, 12 di antaranya pada teh), Helopeltis spp. (3), dan ejaan Helopelthis sp. (1) — semuanya bertambat hanya sampai GENUS di GBIF dan belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Luka tusukannya jadi pintu masuk busuk buah, jadi dua masalah itu saling menyusul.',
     gejala:
@@ -2007,6 +2012,194 @@ const PINTU_LEGUM = [
   },
 ];
 
+const PINTU_TEMBAKAU = [
+  {
+    id: 'op:pst:00000098',
+    dari: 'op:pst:00001166',
+    nama: 'Penyakit Lanas',
+    key: 'lanas',
+    label: 'Lanas',
+    definition:
+      'Oomycete, bukan jamur sejati — metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Menular lewat air yang mengalir di permukaan tanah, jadi satu petak yang terkena bisa menulari petak di bawahnya lewat parit. Yang menentukan guludan tinggi, drainase, dan tidak menyiram melimpah dari atas — semprotan ke daun tidak menjangkau jamur yang menyerang dari pangkal batang.',
+    gejala:
+      'Tanaman layu mendadak pada siang hari lalu tidak pulih, dan pada pangkal batang ada bercak coklat kehitaman BASAH yang melingkari batang. Batang yang dibelah membujur berlubang berongga dengan sekat-sekat melintang seperti tangga. Kerusakan menyebar mengikuti arah aliran air, bukan tersebar merata.',
+    pembanding: [
+      {
+        cek: 'Belah pangkal batang tanaman yang layu MEMBUJUR. Lanas meninggalkan rongga bersekat melintang seperti tangga di dalam empulur — tidak ada penyakit tembakau lain yang membentuknya.',
+      },
+      {
+        cek: 'Perhatikan arah sebarannya di petak. Lanas mengikuti aliran air dan menumpuk di bagian rendah atau di sepanjang parit; layu karena bakteri atau fusarium tidak mengikuti aliran air seperti itu.',
+        membantah: { id: 'op:pst:00000009', label: 'Layu bakteri' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000099',
+    dari: 'op:pst:00001182',
+    nama: 'Penyakit Patik Daun',
+    key: 'patik-daun-tembakau',
+    label: 'Patik daun',
+    definition:
+      'Menyerang daun yang justru dipanen, jadi kerugiannya langsung pada mutu — bukan pada jumlah. Paling parah pada daun bawah yang lama basah dan pada pertanaman rapat; memangkas daun bawah yang sudah tua memutus sumber penularan ke daun di atasnya.',
+    gejala:
+      'Bercak bulat kecil pada daun dengan tengah KEPUTIHAN tipis sampai tembus cahaya dan tepi coklat tegas, mula-mula pada daun BAWAH lalu naik. Bercak yang banyak menyatu jadi bidang kering dan daunnya sobek di bagian itu saat dipanen atau dijemur.',
+    pembanding: [
+      {
+        cek: 'Terawang bercaknya ke cahaya. Patik daun bertengah tipis sampai TEMBUS CAHAYA dan sering berlubang saat kering; bercak karena terbakar pupuk tidak tembus cahaya dan mengikuti tepi atau ujung daun.',
+      },
+      {
+        cek: 'Lihat daun mana yang kena lebih dulu. Patik daun mulai dari daun BAWAH yang paling tua dan lama basah, lalu naik. Kalau justru daun pucuk yang bergejala sementara daun bawah bersih, penyebabnya bukan patik daun.',
+      },
+    ],
+  },
+];
+
+const PINTU_TEH = [
+  {
+    id: 'op:pst:00000100',
+    dari: 'op:pst:00001129',
+    nama: 'Wereng Daun',
+    key: 'wereng-daun-teh',
+    label: 'Wereng daun teh',
+    definition:
+      'Identitasnya di GBIF hanya tertambat sampai GENUS, jadi yang dijanjikan pintu ini cirinya bukan nama spesiesnya. Menyerang pucuk yang justru dipetik, sehingga kerugiannya langsung pada mutu dan bobot pucuk. Ledakannya mengikuti giliran petik: pucuk muda yang serentak muncul sesudah pemetikan adalah yang paling disukainya.',
+    gejala:
+      'Tepi daun muda menguning lalu MENCOKLAT dan menggulung ke bawah, mulai dari ujung dan tepi ke dalam, sehingga pucuk terlihat seperti terbakar. Pucuk kerdil dan ruasnya memendek. Serangga hijau pucat ramping berjalan MENYAMPING seperti kepiting saat daun dibalik, lalu melompat.',
+    pembanding: [
+      {
+        cek: 'Balik daun muda dan perhatikan cara serangganya bergerak. Wereng daun berjalan MENYAMPING lalu melompat — tidak ada hama teh lain yang berjalan begitu. Kalau tidak ada yang bergerak dan tepi daunnya tetap mencoklat, curigai kekurangan hara atau terbakar angin.',
+      },
+      {
+        cek: 'Lihat dari mana kerusakan daun mulai. Wereng daun merusak dari TEPI dan ujung ke dalam sehingga daun menggulung; helopeltis meninggalkan bintik cekung kehitaman yang tersebar di tengah helai, bukan di tepi.',
+        membantah: { id: 'op:pst:00000063', label: 'Helopeltis' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000101',
+    dari: 'op:pst:00001191',
+    nama: 'Penyakit Cacar Daun',
+    key: 'cacar-daun-teh',
+    label: 'Cacar daun teh',
+    definition:
+      'Hanya menyerang daun MUDA yang belum mengeras — daun tua kebal — jadi ia menyerang tepat bagian yang dipetik. Menyukai kebun yang lembap, berkabut, dan bernaungan berat; mengurangi naungan dan mempersingkat giliran petik menurunkan lebih banyak daripada menambah semprotan.',
+    gejala:
+      'Bintik kecil TEMBUS CAHAYA pada daun muda, lalu membesar jadi bercak bundar yang CEKUNG di permukaan atas dan MENONJOL di permukaan bawah seperti cacar. Bagian yang menonjol itu berselaput putih keabuan berisi spora. Daun sobek di bekas bercaknya dan pucuk yang berat serangannya patah.',
+    pembanding: [
+      {
+        cek: 'Raba bercak dari kedua sisi daun. Cacar daun CEKUNG di atas dan MENONJOL di bawah — satu-satunya penyakit teh yang begitu — dan bagian menonjolnya berselaput putih.',
+      },
+      {
+        cek: 'Lihat umur daun yang terkena. Cacar daun hanya menyerang daun muda yang masih lemas; kalau yang berbercak justru daun tua yang sudah keras, penyebabnya bukan cacar daun.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000102',
+    dari: 'op:pst:00001306',
+    nama: 'Tungau Jingga',
+    key: 'tungau-jingga',
+    label: 'Tungau jingga',
+    definition:
+      'Paling parah pada musim kemarau dan pada kebun yang berdebu di pinggir jalan. Musuh alaminya — tungau pemangsa — mudah mati oleh penyemprotan menyeluruh, dan ledakan tungau sesudah menyemprot hama lain adalah pola yang lazim.',
+    gejala:
+      'Permukaan ATAS daun tua berubah kemerahan sampai coklat kusam seperti berkarat, mulai dari sepanjang tulang daun tengah lalu meluas. Daun mengeras, mengkilap tidak wajar, lalu rontok. Tungaunya jingga kemerahan dan JAUH lebih kecil dari kepala jarum — perlu ditatap lama atau dengan kaca pembesar.',
+    pembanding: [
+      {
+        cek: 'Tatap sepanjang tulang daun tengah di permukaan ATAS daun tua, kena cahaya miring. Tungau jingga berkumpul di situ lebih dulu sebelum menyebar. Tungau merah sebaliknya berkumpul di permukaan BAWAH dan meninggalkan anyaman benang halus.',
+        membantah: { id: 'op:pst:00000006', label: 'Tungau merah' },
+      },
+      {
+        cek: 'Periksa apakah ada anyaman benang. Tungau jingga TIDAK menganyam; kalau ada anyaman halus di pucuk atau bawah daun, itu tungau jenis lain.',
+        membantah: { id: 'op:pst:00000006', label: 'Tungau merah' },
+      },
+    ],
+  },
+];
+
+const PINTU_MANGGA = [
+  {
+    id: 'op:pst:00000103',
+    dari: 'op:pst:00001081',
+    nama: 'Penyakit Antraknosa',
+    key: 'antraknosa-mangga',
+    label: 'Antraknosa mangga',
+    definition:
+      'Entitas ini terdaftar juga di luar mangga — cabai 12 baris, jeruk 3, karet 2, dan lainnya — dan teks di bawah ditulis UNTUK MANGGA. Cabai punya pintu antraknosanya sendiri atas nama Colletotrichum spp. Sporanya menempel di buah sejak masih pentil lalu diam sampai buah matang, jadi bercaknya baru muncul menjelang atau sesudah panen; menyemprot saat buah sudah berbercak sudah terlambat.',
+    gejala:
+      'Bercak hitam bersudut pada daun muda yang lalu berlubang, dan pada tangkai bunga bercak hitam memanjang yang membuat bunga mengering hitam sebelum jadi pentil. Pada buah, bercak hitam CEKUNG bundar yang meluas dan menyatu, sering membentuk aliran memanjang seperti bekas air mata dari pangkal buah.',
+    pembanding: [
+      {
+        cek: 'Lihat bentuk bercak pada buah yang sudah tua. Antraknosa mangga membentuk aliran memanjang seperti bekas air mata dari pangkal ke bawah, karena sporanya terbawa air hujan yang mengalir di kulit buah. Bercak daun mangga tidak pernah membentuk aliran begitu.',
+        membantah: { id: 'op:pst:00000104', label: 'Bercak daun mangga' },
+      },
+      {
+        cek: 'Ingat kapan bercaknya muncul. Antraknosa menempel sejak pentil dan baru terlihat menjelang matang — jadi buah yang mulus di pohon bisa berbercak di keranjang. Kalau bercaknya sudah ada sejak buah masih kecil dan tidak meluas, penyebabnya lain.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000104',
+    dari: 'op:pst:00001185',
+    nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-mangga',
+    label: 'Bercak daun mangga',
+    definition:
+      'Menyerang daun dan ranting, bukan buah — jadi kerugiannya lewat daun yang habis dan pohon yang melemah, bukan lewat buah yang tidak laku. Paling parah pada pohon yang tajuknya rapat dan jarang dipangkas.',
+    gejala:
+      'Bercak bersudut coklat kehitaman pada daun yang dibatasi tulang daun, tengahnya lama-lama keabuan dengan titik hitam halus, dan tepinya kadang berhalo kuning. Bercak yang banyak menyatu sampai daun mengering dan rontok; ranting muda ikut berbercak dan mati dari ujung.',
+    pembanding: [
+      {
+        cek: 'Lihat apakah buahnya ikut berbercak. Bercak daun mangga menyerang DAUN dan ranting saja — buahnya mulus. Kalau buah ikut berbercak hitam cekung, itu antraknosa.',
+        membantah: { id: 'op:pst:00000103', label: 'Antraknosa mangga' },
+      },
+      {
+        cek: 'Perhatikan batas bercaknya. Bercak daun mangga bersudut dibatasi tulang daun; antraknosa pada daun muda memberi bercak hitam yang lalu berlubang, tidak mengikuti tulang daun.',
+        membantah: { id: 'op:pst:00000103', label: 'Antraknosa mangga' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000105',
+    dari: 'op:pst:00001359',
+    nama: 'Kutu Putih',
+    key: 'kutu-putih-mangga',
+    label: 'Kutu putih mangga',
+    definition:
+      'Identitasnya di GBIF hanya tertambat sampai GENUS. Nimfanya naik dari tanah ke tajuk lewat batang, jadi PITA PERANGKAP dari plastik licin atau lem di batang memutus jalannya — tindakan yang tidak menuntut semprotan sama sekali. Semut memelihara dan mengangkutnya, dan mengendalikan semutnya ikut menentukan.',
+    gejala:
+      'Gerombolan kutu berlapis lilin PUTIH seperti kapas menutup tangkai bunga, pentil, dan pucuk sampai bagian itu tampak memutih. Bunga dan pentil rontok banyak; daun di bawahnya lengket lalu tertutup jelaga hitam sampai gelap.',
+    pembanding: [
+      {
+        cek: 'Periksa batang dari pangkal ke atas, bukan cuma tajuknya. Kutu putih mangga NAIK lewat batang dari tanah, jadi barisan kutu di kulit batang menandakan gelombang berikutnya sedang berjalan — dan di situlah pita perangkap masih sempat memutusnya.',
+      },
+      {
+        cek: 'Usap gerombolan putihnya. Kutu putih hancur jadi bubuk lilin dan menyisakan tubuh kutu di bawahnya; embun tepung juga putih tetapi tidak menyisakan tubuh serangga apa pun.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000106',
+    dari: 'op:pst:00001442',
+    nama: 'Wereng Mangga',
+    key: 'wereng-mangga',
+    label: 'Wereng mangga',
+    definition:
+      'Identitasnya di GBIF hanya tertambat sampai GENUS, dan registri memecahnya lagi jadi Idioscopus sp. (2 baris) serta ejaan Ideocerus spp. (1) yang belum disatukan. Menyerang tepat pada fase BERBUNGA, dan di luar fase itu jarang menuntut tindakan — jendela pengendaliannya sempit dan terikat pada saat malai keluar.',
+    gejala:
+      'Malai bunga mengering dan rontok sebelum jadi pentil, dan saat malai diguncang serangga pipih berbentuk baji seukuran biji wijen BERHAMBURAN keluar lalu hinggap lagi. Bunga dan daun muda lengket oleh embun madu, lalu tertutup jelaga hitam sampai malai menghitam seluruhnya.',
+    pembanding: [
+      {
+        cek: 'Guncang malai bunga di pagi hari dan lihat apa yang berhamburan. Wereng mangga pipih berbentuk BAJI — lebar di kepala, meruncing ke belakang — dan langsung hinggap lagi; kutu putih tidak terbang dan tetap menempel bergerombol.',
+        membantah: { id: 'op:pst:00000105', label: 'Kutu putih mangga' },
+      },
+      {
+        cek: 'Perhatikan fase pohonnya. Wereng mangga menumpuk tepat saat malai keluar sampai pentil terbentuk; di luar fase itu jumlahnya turun sendiri, dan menyemprot terjadwal di luar masa berbunga menghabiskan biaya tanpa menyelamatkan apa pun.',
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -2021,6 +2214,10 @@ const KELOMPOK = [
   { kunci: 'cucurbit', tanaman: 'semangka, melon, dan mentimun', inang: [SEMANGKA, MELON, MENTIMUN], pintu: PINTU_CUCURBIT },
 
   { kunci: 'legum', tanaman: 'kacang panjang, kacang hijau, dan kacang tanah', inang: [KACANG_PANJANG, KACANG_HIJAU, KACANG_TANAH], pintu: PINTU_LEGUM },
+
+  { kunci: 'tembakau', tanaman: 'tembakau', inang: [TEMBAKAU], pintu: PINTU_TEMBAKAU },
+  { kunci: 'teh', tanaman: 'teh', inang: [TEH], pintu: PINTU_TEH },
+  { kunci: 'mangga', tanaman: 'mangga', inang: [MANGGA], pintu: PINTU_MANGGA },
 ];
 
 // ---------------------------------------------------------------------------
@@ -2080,7 +2277,7 @@ const PERLUAS = [
   {
     id: 'op:pst:00000002',
     nama: 'Kutu daun persik',
-    inang: [CABAI, BAWANG_MERAH, TOMAT, KENTANG, KUBIS, SEMANGKA, MELON, MENTIMUN],
+    inang: [CABAI, BAWANG_MERAH, TOMAT, KENTANG, KUBIS, SEMANGKA, MELON, MENTIMUN, TEMBAKAU],
     definition:
       'Vektor beberapa virus penting, termasuk virus penggulung daun pada kentang. Mengendalikannya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergejala.',
     gejala:
@@ -2091,7 +2288,7 @@ const PERLUAS = [
   {
     id: 'op:pst:00000005',
     nama: 'Ulat grayak',
-    inang: [CABAI, TOMAT, KENTANG, JAGUNG, KEDELAI, SEMANGKA, KACANG_HIJAU],
+    inang: [CABAI, TOMAT, KENTANG, JAGUNG, KEDELAI, SEMANGKA, KACANG_HIJAU, TEMBAKAU],
     // Definisi baru dan ciri kedua ditulis ulang begitu ulat grayak JAGUNG punya
     // pintunya sendiri: dua ulat bernama sama pada satu tanaman, dan yang membedakan
     // keduanya menentukan cara menyemprotnya — yang satu makan dari luar, yang satu
