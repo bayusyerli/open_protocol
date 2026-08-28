@@ -8327,6 +8327,12 @@
           "uri": "https://www.gbif.org/species/3265690",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Helopeltis'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helopelthis sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -8337,6 +8343,8 @@
       "synonyms": [
         "Hama Kutu Daun",
         "Hama Penghisap Pucuk",
+        "Helopelthis sp.",
+        "Penghisap Buah",
         "Penghisap Daun",
         "Pengisap Buah",
         "Pengisap Daun"
@@ -9504,8 +9512,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000037"
+        }
       },
       "synonyms": [
         "Penyakit Barcak Daun",
@@ -10375,8 +10387,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000023"
+        }
       },
       "synonyms": [
         "Hama Ulat Buah",
@@ -10432,9 +10448,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000061"
+        }
       },
       "synonyms": [
         "Hama Perusak Daun",
@@ -10898,8 +10917,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000074"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -11152,9 +11175,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000050"
+        }
       },
       "synonyms": [
         "Croccidolomia binotalis",
@@ -13488,8 +13514,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000115"
+        }
       },
       "synonyms": [
         "Penyakit Cendawan Akar Putih",
@@ -13854,6 +13884,12 @@
           "uri": "https://www.gbif.org/species/8612683",
           "relation": "broad",
           "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Rhizoctonia'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rizoctonia sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -13863,9 +13899,11 @@
       },
       "synonyms": [
         "Penyakit Busuk Pelepah",
+        "Penyakit Hawar Pelepah",
         "Penyakit Hawar Upih",
         "Penyakit Hawar Upih Daun",
-        "Penyakit Rebah Kecambah"
+        "Penyakit Rebah Kecambah",
+        "Rizoctonia sp."
       ],
       "accepted_scientific_name": "Rhizoctonia",
       "taxon_verification": {
@@ -14122,8 +14160,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000058"
+        }
       },
       "synonyms": [
         "Hama Lalat Bibit",
@@ -15142,9 +15184,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000112"
+        }
       },
       "synonyms": [
         "Hama Penggerek Pucuk",
@@ -20300,6 +20345,12 @@
           "id": "Scirpophaga inotata",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tryporyza innotata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -20309,9 +20360,11 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Penggerek Batang",
         "Penggerek Batang Kuning",
         "Penggerek Batang Padi Putih",
-        "Scirpophaga inotata"
+        "Scirpophaga inotata",
+        "Tryporyza innotata"
       ],
       "taxon_verification": {
         "source": "GBIF",
@@ -20739,9 +20792,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000030"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -20867,8 +20923,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001389"
+        }
       },
       "accepted_scientific_name": "Tryporyza",
       "taxon_verification": {
@@ -22559,8 +22619,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000070"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -28164,9 +28228,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001399"
+          "id": "op:pst:00000030"
         }
       },
       "taxon_verification": {
@@ -29259,9 +29323,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001180"
+          "id": "op:pst:00000050"
         }
       },
       "accepted_scientific_name": "Crocidolomia binotalis",
@@ -29332,6 +29396,12 @@
           "uri": "https://www.gbif.org/species/1731598",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phragmagtocia castaneae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -29345,7 +29415,11 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Penggerek Batang",
+        "Phragmagtocia castaneae"
+      ]
     },
     {
       "id": "op:pst:00001611",
@@ -31562,8 +31636,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000030"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -31677,8 +31755,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000020"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -31939,8 +32021,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001723"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32282,8 +32368,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000066"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32958,8 +33048,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001610"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -33507,8 +33601,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000106"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -33684,6 +33782,12 @@
           "uri": "https://www.gbif.org/species/1043619",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Epilachna'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Epiachna spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -33698,7 +33802,11 @@
         "checked_at": "2026-08-19",
         "confidence": 94,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Epiachna spp.",
+        "Kutu Kumbang Daun"
+      ]
     },
     {
       "id": "op:pst:00001724",
@@ -35558,8 +35666,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000058"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -37148,8 +37260,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000056"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -40052,9 +40168,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001268"
+          "id": "op:pst:00000112"
         }
       },
       "accepted_scientific_name": "Scirpophaga nivella",
@@ -40291,6 +40407,12 @@
           "uri": "https://www.gbif.org/species/4783625",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Diplogomphus'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diplogomphus hewiti",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -40305,7 +40427,11 @@
         "checked_at": "2026-08-19",
         "confidence": 92,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Diplogomphus hewiti",
+        "Penghisap Bunga"
+      ]
     },
     {
       "id": "op:pst:00001896",
@@ -40851,8 +40977,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000043"
+        }
       },
       "accepted_scientific_name": "Peronospora maydis",
       "taxon_verification": {
@@ -44987,8 +45117,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001122"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -46908,8 +47042,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001239"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -48078,8 +48216,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000056"
+        }
       },
       "accepted_scientific_name": "Lamprosema",
       "taxon_verification": {
@@ -48759,8 +48901,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000017"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -50202,8 +50348,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001895"
+        }
       },
       "accepted_scientific_name": "Diplogomphus",
       "taxon_verification": {
@@ -50471,8 +50621,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000034"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -50917,8 +51071,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000069"
+        }
       },
       "accepted_scientific_name": "Stephanoderes",
       "taxon_verification": {
@@ -54722,9 +54880,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001164"
+          "id": "op:pst:00000061"
         }
       },
       "accepted_scientific_name": "Plusia",
