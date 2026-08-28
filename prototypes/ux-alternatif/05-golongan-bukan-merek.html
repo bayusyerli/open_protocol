@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="id" data-konsep="golongan">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Konsep 05 · Golongan, Bukan Merek — Pranatani</title>
+<meta name="description" content="Prototipe UX berfokus OPT: registri disusun menurut golongan cara kerja, bukan menurut nama merek — dan berhenti tepat sebelum menganjurkan rotasi.">
+<style>
+/* =========================================================================
+   KONSEP 05 · GOLONGAN, BUKAN MEREK
+   Rupa: lembar uji laboratorium. Kertas pasir hangat, permukaan grafik
+   nyaris putih tersendiri, angka bertabel, garis rambut. Berbeda dari
+   keempat konsep lain: 01 instrumen, 02 atlas, 03 buku besar, 04 hijau rumah.
+
+   WARNA GRAFIK MENGIKUTI PALET TERVALIDASI.
+   Batang satu rona (magnitudo, satu seri — karena itu tanpa legenda), dan rona
+   itu TIDAK PERNAH dipakai untuk teks: warna seri divalidasi sebagai mark (>=3:1),
+   sedangkan teks menuntut 4,5:1. Untuk teks ada --seri-teks tersendiri.
+   Kuning status HANYA dipakai sebagai garis tepi + ikon + label, tidak
+   pernah sebagai isian: pada permukaan terang ia 1,79:1, dan kelegaannya
+   adalah label yang terlihat + tampilan tabel — keduanya disediakan.
+   Batang "tanpa kode" memakai TEKSTUR, bukan rona baru.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+  --kertas:#f4f1e9; --panel:#fbf9f4; --tinta:#16171c; --lemah:#585a63; --pudar:#8a8b93;
+  --garis:#dedbd1; --garis-kuat:#a9a79c;
+  /* permukaan grafik tersendiri — persis permukaan yang dipakai validator */
+  --grafik:#fcfcfb;
+  --seri:#2a78d6;          /* slot 1 — HANYA isian batang (mark, gate >=3:1) */
+  --seri-teks:#1f66c2;     /* varian tinta — teks & latar di bawah teks (gate >=4,5:1) */
+  --seri-lembut:#e3eefb;
+  --awas:#fab219;          /* status warning — tepi + ikon + label saja */
+  --awas-teks:#7a5200;     /* bunyi kata "awas" harus lolos kontras teks */
+  --kritis:#d03b3b;
+  --kosong:#6b6478;        /* lubang data */
+  --kosong-lembut:#eeecf2;
+  --di-seri:#ffffff;
+  --sudut:10px; --sentuh:44px;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) {
+    color-scheme: dark;
+    --kertas:#14151a; --panel:#1e2027; --tinta:#f1f1ee; --lemah:#a2a4ad; --pudar:#7b7d86;
+    --garis:#33353d; --garis-kuat:#5c5e68;
+    --grafik:#1a1a19;
+    --seri:#3987e5; --seri-teks:#4d95ea; --seri-lembut:#1c2c41;
+    --awas:#fab219; --awas-teks:#fab219; --kritis:#e66767;
+    --kosong:#b9aed2; --kosong-lembut:#262231;
+    --di-seri:#0d1016;
+  }
+}
+:root[data-tema="gelap"] {
+  color-scheme: dark;
+  --kertas:#14151a; --panel:#1e2027; --tinta:#f1f1ee; --lemah:#a2a4ad; --pudar:#7b7d86;
+  --garis:#33353d; --garis-kuat:#5c5e68; --grafik:#1a1a19;
+  --seri:#3987e5; --seri-teks:#4d95ea; --seri-lembut:#1c2c41; --awas:#fab219; --awas-teks:#fab219;
+  --kritis:#e66767; --kosong:#b9aed2; --kosong-lembut:#262231; --di-seri:#0d1016;
+}
+
+*,*::before,*::after { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+body { background:var(--kertas); color:var(--tinta); font-family:var(--sans);
+  font-size:16.5px; line-height:1.55; -webkit-text-size-adjust:100%; overflow-x:hidden;
+  font-variant-numeric:tabular-nums; }
+:where(a,button,input,select,summary,[tabindex]):focus-visible { outline:3px solid var(--seri-teks); outline-offset:2px; border-radius:3px; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; } }
+.lewati { position:absolute; left:-9999px; top:0; z-index:90; background:var(--seri-teks); color:var(--di-seri); padding:12px 16px; font-weight:700; }
+.lewati:focus { left:8px; top:8px; }
+.sr { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+.bungkus { max-width:1120px; margin:0 auto; padding:0 16px; min-width:0; }
+@media (min-width:900px) { .bungkus { padding:0 28px; } }
+
+/* kepala */
+.kepala { background:var(--panel); border-bottom:1px solid var(--garis-kuat); position:sticky; top:0; z-index:40; }
+.baris { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px; padding:9px 0; min-width:0; }
+.merek-h1 { margin:0; font:inherit; font-weight:inherit; min-width:0; }
+.merek { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; min-height:44px; min-width:0; }
+.merek svg { display:block; flex:none; border-radius:6px; }
+.merek b { font-size:1.05rem; display:block; line-height:1.1; }
+.merek small { font-size:.62rem; letter-spacing:.17em; text-transform:uppercase; color:var(--lemah); display:block; }
+.baris .kanan { margin-left:auto; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.tandaproto { font-size:.6rem; letter-spacing:.11em; text-transform:uppercase; font-weight:700;
+  border:1px solid var(--garis-kuat); padding:5px 9px; white-space:nowrap; color:var(--lemah); }
+.tombol-kecil { min-height:44px; min-width:44px; padding:0 13px; background:transparent;
+  border:1px solid var(--garis-kuat); color:var(--tinta); font:inherit; font-size:.8rem; cursor:pointer; }
+.tombol-kecil:hover { background:var(--seri-lembut); }
+.tombol-kecil[aria-pressed="true"] { background:var(--tinta); color:var(--kertas); border-color:var(--tinta); font-weight:700; }
+
+main { padding:22px 0 50px; }
+.mata { font-size:.66rem; letter-spacing:.17em; text-transform:uppercase; font-weight:800; color:var(--seri-teks); margin:0 0 8px; }
+h2 { font-size:clamp(1.4rem,4.8vw,2rem); line-height:1.16; margin:0 0 10px; letter-spacing:-.015em; max-width:24ch; }
+h3 { font-size:1.02rem; margin:0 0 8px; }
+h4 { font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; color:var(--lemah); margin:22px 0 8px; }
+p { margin:0 0 12px; max-width:66ch; }
+.lede { color:var(--lemah); }
+
+/* pita tingkat bukti — permanen */
+.pita-d { display:flex; gap:11px; align-items:flex-start; border:1px solid var(--garis-kuat);
+  background:var(--panel); padding:11px 13px; margin:0 0 20px; font-size:.86rem; }
+.pita-d .lencana { flex:none; width:30px; height:30px; display:grid; place-items:center; font-weight:800;
+  border:2px solid var(--awas-teks); color:var(--awas-teks); font-size:.95rem; }
+.pita-d p { margin:0; max-width:none; }
+
+/* pemilih perkara — satu baris di atas grafik */
+.saring { display:flex; flex-wrap:wrap; gap:7px; margin:0 0 18px; }
+.saring button { min-height:var(--sentuh); padding:6px 13px; border:1px solid var(--garis-kuat);
+  background:var(--panel); color:var(--tinta); font:inherit; font-size:.84rem; cursor:pointer; text-align:left; }
+.saring button:hover { border-color:var(--seri-teks); background:var(--seri-lembut); }
+.saring button[aria-pressed="true"] { background:var(--seri-teks); color:var(--di-seri); border-color:var(--seri-teks); font-weight:700; }
+.saring button small { display:block; font-size:.68rem; opacity:.8; }
+
+/* panel grafik — permukaannya sendiri */
+.lembar { background:var(--grafik); border:1px solid var(--garis-kuat); padding:16px 14px 18px; margin:0 0 18px; min-width:0; }
+@media (min-width:700px) { .lembar { padding:20px 22px 22px; } }
+.lembar-kepala { display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; margin:0 0 4px; }
+.lembar-kepala h3 { margin:0; flex:1; min-width:190px; font-size:1.05rem; }
+.lembar-kepala .alih { display:flex; }
+.lembar-kepala .alih button { min-height:var(--sentuh); padding:0 13px; border:1px solid var(--garis-kuat);
+  background:transparent; color:var(--tinta); font:inherit; font-size:.8rem; cursor:pointer; }
+.lembar-kepala .alih button + button { border-left:0; }
+.lembar-kepala .alih button[aria-pressed="true"] { background:var(--tinta); color:var(--grafik); font-weight:700; }
+.ket-grafik { color:var(--lemah); font-size:.85rem; margin:0 0 16px; max-width:70ch; }
+
+/* hero: keruntuhan */
+.hero { display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 14px; margin:0 0 6px; }
+.hero .n { font-size:clamp(2rem,8vw,3.1rem); font-weight:800; line-height:1; letter-spacing:-.03em; }
+.hero .n.kecil { color:var(--seri-teks); }
+.hero .panah { font-size:1.5rem; color:var(--pudar); }
+.hero .unit { font-size:.9rem; color:var(--lemah); }
+
+/* batang */
+.batang-daftar { list-style:none; margin:14px 0 0; padding:0; }
+.batang-daftar > li { border-top:1px solid var(--garis); }
+.batang-daftar > li:last-child { border-bottom:1px solid var(--garis); }
+.brs {
+  display:grid; grid-template-columns:92px 1fr auto; gap:10px; align-items:center; width:100%;
+  min-height:52px; padding:7px 2px; background:none; border:0; font:inherit; text-align:left;
+  cursor:pointer; color:var(--tinta); min-width:0;
+}
+.brs:hover { background:var(--seri-lembut); }
+.brs .kode { font-family:var(--mono); font-size:.82rem; font-weight:700; white-space:nowrap; }
+.brs .kode em { display:block; font-style:normal; font-size:.68rem; color:var(--lemah); font-weight:400; }
+.jalur { position:relative; height:22px; min-width:0; }
+.isi-batang { position:absolute; inset:0 auto 0 0; background:var(--seri);
+  border-radius:0 4px 4px 0; box-shadow:0 0 0 2px var(--grafik); }
+.brs[data-awas="ya"] .isi-batang { box-shadow:0 0 0 2px var(--grafik), inset 0 0 0 3px var(--awas); }
+.brs[data-kosong="ya"] .isi-batang {
+  background:var(--kosong-lembut);
+  background-image:repeating-linear-gradient(45deg, var(--kosong) 0 2px, transparent 2px 7px);
+  border:1px dashed var(--kosong); }
+.brs .angka { font-family:var(--mono); font-weight:700; font-size:.92rem; white-space:nowrap; }
+.brs .angka small { display:block; font-weight:400; font-size:.7rem; color:var(--lemah); font-family:var(--sans); }
+.tanda-awas { display:inline-flex; align-items:center; gap:4px; font-size:.66rem; font-weight:800;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--awas-teks); border:1px solid var(--awas-teks); padding:1px 5px; margin-left:6px; white-space:nowrap; }
+.tanda-kosong { display:inline-flex; align-items:center; gap:4px; font-size:.66rem; font-weight:800;
+  letter-spacing:.06em; text-transform:uppercase; color:var(--kosong); border:1px dashed var(--kosong); padding:1px 5px; white-space:nowrap; }
+
+/* isi golongan yang dibuka */
+.isi-golongan { padding:2px 2px 16px 2px; border-top:1px dashed var(--garis-kuat); }
+.zat-daftar { list-style:none; margin:10px 0 0; padding:0; }
+.zat-daftar li { display:grid; grid-template-columns:1fr auto auto; gap:10px; align-items:center;
+  padding:7px 0; border-bottom:1px solid var(--garis); font-size:.87rem; min-width:0; }
+.zat-daftar li:last-child { border-bottom:0; }
+.zat-daftar .nm { min-width:0; overflow-wrap:anywhere; }
+.zat-daftar .kd { font-family:var(--mono); font-size:.78rem; color:var(--lemah); white-space:nowrap; }
+.zat-daftar .mk { font-family:var(--mono); font-weight:700; font-size:.82rem; white-space:nowrap; }
+.pilih-zat { min-height:var(--sentuh); min-width:var(--sentuh); display:grid; place-items:center;
+  background:none; border:0; cursor:pointer; padding:0; margin:-8px -6px -8px 0; }
+.pilih-zat span { width:21px; height:21px; border:2px solid var(--garis-kuat); display:grid;
+  place-items:center; font-size:.8rem; font-weight:800; color:transparent; }
+.pilih-zat[aria-pressed="true"] span { background:var(--seri-teks); border-color:var(--seri-teks); color:var(--di-seri); }
+
+/* tabel */
+.tbl-gulir { overflow-x:auto; -webkit-overflow-scrolling:touch; min-width:0; max-width:100%; }
+table.data { width:100%; border-collapse:collapse; min-width:460px; font-size:.85rem; }
+table.data th, table.data td { text-align:left; padding:8px 10px; border-bottom:1px solid var(--garis); }
+table.data thead th { font-size:.63rem; letter-spacing:.1em; text-transform:uppercase; color:var(--lemah);
+  border-bottom:1px solid var(--garis-kuat); }
+table.data td.n { font-family:var(--mono); text-align:right; }
+table.data td.k { font-family:var(--mono); font-size:.78rem; }
+
+/* baki golongan terpakai */
+.baki { border:1px solid var(--garis-kuat); background:var(--panel); padding:14px; margin:18px 0 0; }
+.baki-kosong { color:var(--lemah); font-size:.87rem; margin:0; }
+.tally { list-style:none; margin:12px 0 0; padding:0; display:grid; gap:8px; }
+.tally li { display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center;
+  border:1px solid var(--garis); padding:9px 11px; background:var(--grafik); min-width:0; }
+.tally .kode { font-family:var(--mono); font-weight:800; font-size:.85rem; white-space:nowrap; }
+.tally .isi { min-width:0; font-size:.84rem; }
+.tally .isi small { display:block; color:var(--lemah); font-size:.76rem; overflow-wrap:anywhere; }
+.tally .cacah { font-family:var(--mono); font-weight:800; }
+.tally li[data-ulang="ya"] { border-color:var(--awas-teks); box-shadow:inset 3px 0 0 var(--awas); }
+
+/* nota */
+.nota { padding:12px 14px; margin:16px 0; font-size:.87rem; border-left:5px solid; background:var(--panel); }
+.nota.awas { border-color:var(--awas-teks); }
+.nota.awas strong { color:var(--awas-teks); }
+.nota.kosong { border-color:var(--kosong); background:var(--kosong-lembut); }
+.nota.kosong strong { color:var(--kosong); }
+.nota.netral { border-color:var(--garis-kuat); }
+.nota p { margin:0 0 8px; max-width:none; } .nota p:last-child { margin:0; }
+
+/* batas */
+.batas { border:1px solid var(--garis-kuat); background:var(--panel); margin:26px 0 0; }
+.batas > h3 { margin:0; padding:11px 13px; border-bottom:1px solid var(--garis-kuat); background:var(--kertas);
+  font-size:.66rem; letter-spacing:.14em; text-transform:uppercase; }
+.batas-isi { padding:13px; }
+.sumber { display:grid; grid-template-columns:auto 1fr; gap:10px; padding:9px 0; border-bottom:1px solid var(--garis); }
+.sumber:last-of-type { border-bottom:0; }
+.tingkat { width:29px; height:29px; display:grid; place-items:center; font-weight:800; border:2px solid currentColor; font-size:.9rem; }
+.tingkat[data-t="B"] { color:var(--seri-teks); }
+.tingkat[data-t="D"] { color:var(--awas-teks); }
+.sumber b { display:block; font-size:.9rem; }
+.sumber span { display:block; font-size:.79rem; color:var(--lemah); }
+.sumber em { display:block; font-size:.79rem; font-style:normal; margin-top:4px; }
+.lubang { list-style:none; margin:10px 0 0; padding:0; }
+.lubang li { display:grid; grid-template-columns:auto 1fr; gap:9px; padding:8px 0; border-bottom:1px dotted var(--garis-kuat); font-size:.84rem; }
+.lubang li::before { content:"⊘"; color:var(--kosong); }
+.lubang li:last-child { border-bottom:0; }
+
+.kaki { border-top:1px solid var(--garis-kuat); background:var(--panel); padding:16px 0 26px; margin-top:32px; }
+.kaki p { font-size:.81rem; color:var(--lemah); max-width:76ch; }
+</style>
+</head>
+<body>
+
+<a class="lewati" href="#konten">Lewati ke isi</a>
+
+<header class="kepala">
+  <div class="bungkus baris">
+    <h1 class="merek-h1"><a class="merek" href="index.html">
+      <svg viewBox="0 0 512 512" width="30" height="30" role="img" aria-label="Pranatani">
+        <rect width="512" height="512" rx="112" fill="#00442f"/>
+        <g transform="translate(84 84) scale(1.34)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94" stroke="#fffef8" stroke-width="26"/>
+          <path d="M94 77h45" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M94 109h64" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M94 141h45" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z" fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+          <path d="M165 111 196 80" stroke="#00442f" stroke-width="8"/>
+        </g>
+      </svg>
+      <span><b>Pranatani</b><small>Golongan cara kerja</small></span>
+    </a></h1>
+    <span class="kanan">
+      <span class="tandaproto">Prototipe UX 05</span>
+      <button class="tombol-kecil" type="button" id="tombolTema">Gelap</button>
+    </span>
+  </div>
+</header>
+
+<main id="konten" tabindex="-1">
+  <div class="bungkus">
+
+    <p class="mata">Masuk dari hama, bukan dari produk</p>
+    <h2>Pilihannya jauh lebih sedikit daripada kelihatannya</h2>
+    <p class="lede">Layar ini menyusun registri menurut <strong>golongan cara kerja</strong>, bukan
+      menurut nama merek. Yang keluar bukan anjuran — cuma satu fakta yang tidak terlihat dari daftar
+      merek: berapa banyak pilihan yang tampak berbeda ternyata bekerja dengan cara yang sama.</p>
+
+    <div class="pita-d">
+      <span class="lencana" aria-hidden="true">D</span>
+      <p><strong>Seluruh halaman ini bertingkat bukti D, dan itu tingkat terendah yang dipakai
+      proyek ini.</strong> Pemetaan nama bahan ke kode golongan dicocokkan lewat <strong>ejaan</strong>,
+      dari dokumen IRAC v11.5 (Feb 2026), FRAC, dan HRAC 2026. Seluruh rekaman berstatus
+      <em>draft</em>, tinjauan jatuh tempo 23 Februari 2027. Yang di bawah bisa ditelusuri ulang,
+      bukan dipercaya begitu saja.</p>
+    </div>
+
+    <h3 id="jsaring">Pilih pasangan hama–tanaman</h3>
+    <div class="saring" id="saring" role="group" aria-labelledby="jsaring"></div>
+
+    <section class="lembar" aria-labelledby="jlembar">
+      <div class="lembar-kepala">
+        <h3 id="jlembar"></h3>
+        <div class="alih" role="group" aria-label="Bentuk tampilan">
+          <button type="button" data-tampil="grafik" aria-pressed="true">Grafik</button>
+          <button type="button" data-tampil="tabel" aria-pressed="false">Tabel</button>
+        </div>
+      </div>
+      <div id="hero"></div>
+      <p class="ket-grafik" id="ketGrafik"></p>
+      <div id="tampil" aria-live="polite"></div>
+    </section>
+
+    <section id="tandai"></section>
+    <div id="batas"></div>
+
+  </div>
+</main>
+
+<footer class="kaki">
+  <div class="bungkus">
+    <p><strong>Yang halaman ini tidak lakukan.</strong> Ia tidak menganjurkan rotasi, tidak
+      memperingatkan, dan tidak menilai satu golongan lebih baik daripada yang lain. Urutan batangnya
+      cacah merek menurun — bukan peringkat mutu, bukan urutan yang disarankan.</p>
+    <p><span class="tandaproto">contoh prototipe</span> Empat pasangan hama–tanaman dari 738 OPT
+      registri yang punya produk terdaftar. Angka, kode, dan nama bahan disalin apa adanya dari
+      <code>spec/indeks/</code> dan <code>spec/vocab/golongan-resistensi/</code>.</p>
+  </div>
+</footer>
+
+<script>
+"use strict";
+const KASUS = [{"id":"wereng","komoditas":"Padi","opt":"Wereng Coklat","skema":"IRAC","produk":454,"bahan":47,"kartu":190,"berlarangan":0,"grup":[{"s":"IRAC","g":"4","sub":["4A","4E"],"m":186,"z":[{"n":"Nitenpiram","k":"4A","m":67},{"n":"Imidakloprid","k":"4A","m":65},{"n":"Dinotefuran","k":"4A","m":27},{"n":"Tiametoksam","k":"4A","m":12},{"n":"Klotianidin","k":"4A","m":7},{"n":"Asetamiprid","k":"4A","m":2},{"n":"Triflumezopyrim","k":"4E","m":2},{"n":"Tiakloprid","k":"4A","m":1},{"n":"Dinotefuron","k":"4A","m":1},{"n":"imidaklorid","k":"4A","m":1},{"n":"Nitempiram","k":"4A","m":1}]},{"s":"IRAC","g":"14","sub":["14"],"m":92,"z":[{"n":"DIMEHIPO","k":"14","m":74},{"n":"Monosultap","k":"14","m":12},{"n":"Bisultap","k":"14","m":4},{"n":"Tiosiklam hidrogen oksalat","k":"14","m":2}]},{"s":"IRAC","g":"9","sub":["9B"],"m":63,"z":[{"n":"Pimetrozin","k":"9B","m":63}]},{"s":"IRAC","g":"1","sub":["1A","1B"],"m":62,"z":[{"n":"Karbofuran","k":"1A","m":23},{"n":"BPMC","k":"1A","m":23},{"n":"Karbosulfan","k":"1A","m":6},{"n":"MIPC","k":"1A","m":6},{"n":"propoksur","k":"1A","m":1},{"n":"Poksim","k":"1B","m":1},{"n":"Fenobukarb atau BPMC","k":"1A","m":1},{"n":"Metolkarb","k":"1A","m":1}]},{"s":"IRAC","g":"2","sub":["2B"],"m":43,"z":[{"n":"Fipronil","k":"2B","m":43}]},{"s":"IRAC","g":"6","sub":["6"],"m":40,"z":[{"n":"Abamektin","k":"6","m":30},{"n":"Emamektin Benzoat","k":"6","m":7},{"n":"ABAMECTIN","k":"6","m":1},{"n":"EMAMECTIN BENZOATE","k":"6","m":1},{"n":"Emammektin Benzoat","k":"6","m":1}]},{"s":"IRAC","g":"16","sub":["16"],"m":20,"z":[{"n":"Buprofezin","k":"16","m":20}]},{"s":"IRAC","g":"28","sub":["28"],"m":17,"z":[{"n":"Klorantraniliprol","k":"28","m":13},{"n":"Flubendiamida","k":"28","m":3},{"n":"flubendiamid","k":"28","m":1}]},{"s":"IRAC","g":"22","sub":["22A"],"m":9,"z":[{"n":"INDOKSAKARB","k":"22A","m":9}]},{"s":"IRAC","g":"13","sub":["13"],"m":6,"z":[{"n":"Klorfenapir","k":"13","m":6}]},{"s":"IRAC","g":"17","sub":["17"],"m":2,"z":[{"n":"Siromazin","k":"17","m":2}]},{"s":"IRAC","g":"29","sub":["29"],"m":2,"z":[{"n":"Flonicamid","k":"29","m":2}]},{"s":"IRAC","g":"15","sub":["15"],"m":2,"z":[{"n":"Novaluron","k":"15","m":1},{"n":"Heksaflumuron","k":"15","m":1}]},{"s":"IRAC","g":"3","sub":["3A"],"m":2,"z":[{"n":"Etofenproks","k":"3A","m":2}]},{"s":"IRAC","g":"UN","sub":["UN"],"m":2,"z":[{"n":"Azadiraktin","k":"UN","m":2}]},{"s":"IRAC","g":"5","sub":["5"],"m":1,"z":[{"n":"Spinetoram","k":"5","m":1}]},{"s":"IRAC","g":"23","sub":["23"],"m":1,"z":[{"n":"Spirotetramat","k":"23","m":1}]}],"tanpa":[{"n":"Eugenol","m":2},{"n":"Metaldehida","m":1},{"n":"klorbenzuron","m":1}]},{"id":"hawar","komoditas":"Kentang","opt":"Penyakit Hawar Daun","skema":"FRAC","produk":376,"bahan":53,"kartu":150,"berlarangan":0,"grup":[{"s":"FRAC","g":"M","sub":["M 01","M 02","M 03","M 04","M 05"],"m":258,"z":[{"n":"Mankozeb","k":"M 03","m":127},{"n":"Klorotalonil","k":"M 05","m":75},{"n":"Propineb","k":"M 03","m":28},{"n":"Tembaga Oksiklorida","k":"M 01","m":7},{"n":"Metiram","k":"M 03","m":3},{"n":"Tembaga Hidroksida","k":"M 01","m":3},{"n":"Zineb","k":"M 03","m":3},{"n":"maneb","k":"M 03","m":2},{"n":"Ziram","k":"M 03","m":2},{"n":"Tribasik tembaga sulfat","k":"M 01","m":2},{"n":"Belerang (S)","k":"M 02","m":1},{"n":"Kaptan","k":"M 04","m":1},{"n":"Copper hydroxide","k":"M 01","m":1},{"n":"Tembaga oksida (Copper oxide)","k":"M 01","m":1},{"n":"Copper hydroxida","k":"M 01","m":1},{"n":"Tembaga Sulfat Pentahidrat","k":"M 01","m":1}]},{"s":"IRAC","g":"UN","sub":["UN"],"m":128,"z":[{"n":"Mankozeb","k":"UN","m":127},{"n":"Belerang (S)","k":"UN","m":1}]},{"s":"FRAC","g":"27","sub":["27"],"m":65,"z":[{"n":"SIMOKSANIL","k":"27","m":65}]},{"s":"FRAC","g":"40","sub":["40"],"m":33,"z":[{"n":"Dimetomorf","k":"40","m":28},{"n":"Mandipropamid","k":"40","m":4},{"n":"Valifenalat","k":"40","m":1}]},{"s":"FRAC","g":"11","sub":["11"],"m":24,"z":[{"n":"Azoksistrobin","k":"11","m":8},{"n":"Piraklostrobin","k":"11","m":8},{"n":"Famoksadon","k":"11","m":5},{"n":"Trifloksistrobin","k":"11","m":1},{"n":"Metil Kresoksim","k":"11","m":1},{"n":"Azoksitrobin","k":"11","m":1}]},{"s":"FRAC","g":"4","sub":["4"],"m":17,"z":[{"n":"Metalaksil","k":"4","m":13},{"n":"Metalaksil-M","k":"4","m":3},{"n":"Metalksil","k":"4","m":1}]},{"s":"FRAC","g":"28","sub":["28"],"m":15,"z":[{"n":"Propamokarb hidroklorida","k":"28","m":15}]},{"s":"FRAC","g":"1","sub":["1"],"m":12,"z":[{"n":"Karbendazim","k":"1","m":7},{"n":"Metil Tiofanat","k":"1","m":4},{"n":"Benomil","k":"1","m":1}]},{"s":"FRAC","g":"3","sub":["3"],"m":11,"z":[{"n":"HEKSAKONAZOL","k":"3","m":3},{"n":"Difenokonazol","k":"3","m":3},{"n":"Tebukonazol","k":"3","m":2},{"n":"Epoksikonazol","k":"3","m":1},{"n":"Prokloraz","k":"3","m":1},{"n":"Siprokonazol","k":"3","m":1}]},{"s":"FRAC","g":"21","sub":["21"],"m":7,"z":[{"n":"Siazofamid","k":"21","m":6},{"n":"Amisulbrom","k":"21","m":1}]},{"s":"FRAC","g":"29","sub":["29"],"m":6,"z":[{"n":"Fluazinam","k":"29","m":6}]},{"s":"FRAC","g":"43","sub":["43"],"m":4,"z":[{"n":"Fluopikolid","k":"43","m":3},{"n":"Flupikolid","k":"43","m":1}]},{"s":"FRAC","g":"P","sub":["P 01","P 07"],"m":3,"z":[{"n":"Asam Fosfit","k":"P 07","m":2},{"n":"Acibenzolar-S-Methyl","k":"P 01","m":1}]},{"s":"FRAC","g":"49","sub":["49"],"m":3,"z":[{"n":"Oxathiapiprolin","k":"49","m":2},{"n":"fluoksapiprolin (fluoxapiprolin)","k":"49","m":1}]},{"s":"FRAC","g":"45","sub":["45"],"m":2,"z":[{"n":"Ametoktradin","k":"45","m":2}]},{"s":"FRAC","g":"2","sub":["2"],"m":1,"z":[{"n":"Iprodion","k":"2","m":1}]},{"s":"FRAC","g":"22","sub":["22"],"m":1,"z":[{"n":"etaboksam","k":"22","m":1}]},{"s":"FRAC","g":"7","sub":["7"],"m":1,"z":[{"n":"Boscolid","k":"7","m":1}]}],"tanpa":[{"n":"asam fosfat","m":1}]},{"id":"gulma","komoditas":"Budidaya kelapa sawit","opt":"Gulma Berdaun Lebar","skema":"HRAC","produk":661,"bahan":74,"kartu":259,"berlarangan":0,"grup":[{"s":"HRAC","g":"9","sub":["9"],"m":216,"z":[{"n":"ISOPROPIL AMINA GLIFOSAT","k":"9","m":179},{"n":"IPA Glifosat","k":"9","m":15},{"n":"Kalium Glifosat","k":"9","m":8},{"n":"Glifosat","k":"9","m":5},{"n":"Isopropilamina Glyphosate","k":"9","m":3},{"n":"gliphosate-isopropyl ammonium","k":"9","m":2},{"n":"Natrium Glyphosate","k":"9","m":2},{"n":"Amonium glifosat","k":"9","m":1},{"n":"amonium glifosate ( setara glifosate aktif 360 g/l)","k":"9","m":1}]},{"s":"HRAC","g":"22","sub":["22"],"m":173,"z":[{"n":"PARAKUAT DIKLORIDA","k":"22","m":163},{"n":"Paraquat Diklorida","k":"22","m":5},{"n":"Paraquat Dichlorida","k":"22","m":3},{"n":"parakuat dikolrida","k":"22","m":1},{"n":"Dikuat diklorida","k":"22","m":1}]},{"s":"HRAC","g":"10","sub":["10"],"m":135,"z":[{"n":"Amonium Glufosinat","k":"10","m":76},{"n":"p-glufosinat","k":"10","m":11},{"n":"L-amonium glufosinat","k":"10","m":7},{"n":"Amonium glufosinat (setara dengan glufosinat 137 g/l)","k":"10","m":4},{"n":"Amonium glufosinat, setara dengan glufosinat 182,7 g/l","k":"10","m":4},{"n":"AMMONIUM GLUFOSINATE","k":"10","m":4},{"n":"Glufosinate Ammonium","k":"10","m":4},{"n":"p-amonium glufosinat","k":"10","m":4},{"n":"Amonium glufosinat (Setara dengan glufosinat 183 g/l)","k":"10","m":3},{"n":"Ammonium Glufosinat","k":"10","m":3},{"n":"Glufosinat Amonium","k":"10","m":3},{"n":"Glufosinat-P","k":"10","m":2},{"n":"Amonium glufosinat (setara dengan glufosinat : 146 g/l)","k":"10","m":2},{"n":"Glufosinat ammonium","k":"10","m":2},{"n":"L-Glufosinate Ammonium","k":"10","m":2},{"n":"Amonium glufosinate","k":"10","m":1},{"n":"Amonium glufosinat (Glufosinate-ammonium)","k":"10","m":1},{"n":"Glufosinate-P","k":"10","m":1},{"n":"Amonium glufosinat (glufosinate ammonium) setara dengan glufosinat (glufosinate active equivalent : 137 g/l)","k":"10","m":1}]},{"s":"HRAC","g":"4","sub":["4"],"m":62,"z":[{"n":"2,4-D DIMETIL AMINA","k":"4","m":12},{"n":"Fluroksipir meptil","k":"4","m":9},{"n":"Triklopir Butoksi Etil Ester","k":"4","m":8},{"n":"Triklopir","k":"4","m":6},{"n":"Triklopir butotil","k":"4","m":4},{"n":"Triclopyr Butoxy Ethyl Ester","k":"4","m":4},{"n":"Fluroksipir Meptil Heptil Ester","k":"4","m":3},{"n":"Fluroksipir meptil ester","k":"4","m":2},{"n":"2,4-D Amina","k":"4","m":2},{"n":"Triklopir butiletil ester","k":"4","m":2},{"n":"triklopir butoksil","k":"4","m":2},{"n":"2,4-D dimetil amina (setara dengan 2,4-D : 720 g/l)","k":"4","m":1},{"n":"2,4 dimetil amina","k":"4","m":1},{"n":"Triklopir butoksi etil ester (Setara Triklopir 480 g/l)","k":"4","m":1},{"n":"Triklopir butoksi etil ester (triclopyr butoxyethyl ester)","k":"4","m":1},{"n":"2,4 D Amine","k":"4","m":1},{"n":"2,4 D dimetilamina (setara dengan 2,4-D 95 g/l)","k":"4","m":1},{"n":"2,4-D 2-etilheksil ester","k":"4","m":1},{"n":"2,4-D isopropil amina (setara dengan 2,4-D : 110,42 g/l)","k":"4","m":1}]},{"s":"HRAC","g":"2","sub":["2"],"m":46,"z":[{"n":"Metil Metsulfuron","k":"2","m":41},{"n":"Triasulfuron","k":"2","m":2},{"n":"Nikosulfuron","k":"2","m":1},{"n":"Imazapir","k":"2","m":1},{"n":"Imazetapir","k":"2","m":1}]},{"s":"HRAC","g":"14","sub":["14"],"m":18,"z":[{"n":"Flumioxazin","k":"14","m":8},{"n":"Trifludimoksazin","k":"14","m":4},{"n":"Sulfentrazon","k":"14","m":2},{"n":"Oksifluorfen","k":"14","m":2},{"n":"Saflufenasil","k":"14","m":1},{"n":"Sulfentrazone","k":"14","m":1}]},{"s":"HRAC","g":"5","sub":["5"],"m":4,"z":[{"n":"DIURON","k":"5","m":2},{"n":"Atrazin","k":"5","m":1},{"n":"Ametrin","k":"5","m":1}]},{"s":"HRAC","g":"1","sub":["1"],"m":2,"z":[{"n":"Kletodim","k":"1","m":1},{"n":"Propaquizafop","k":"1","m":1}]},{"s":"HRAC","g":"27","sub":["27"],"m":1,"z":[{"n":"Topramezon","k":"27","m":1}]},{"s":"HRAC","g":"29","sub":["29"],"m":1,"z":[{"n":"Indaziflam","k":"29","m":1}]}],"tanpa":[{"n":"flufenoximacil","m":7},{"n":"fluchloraminopyr-tefuryl","m":3},{"n":"(setara dengan glufosinat)","m":1},{"n":"flukloraminopir","m":1}]},{"id":"trips","komoditas":"Cabai","opt":"Trips","skema":"IRAC","produk":246,"bahan":60,"kartu":159,"berlarangan":39,"grup":[{"s":"IRAC","g":"6","sub":["6"],"m":90,"z":[{"n":"Abamektin","k":"6","m":67},{"n":"Emamektin Benzoat","k":"6","m":13},{"n":"ABAMECTIN","k":"6","m":8},{"n":"Emamektin benzoat (setara dengan emamektin : 43,9 g/l)","k":"6","m":1},{"n":"Emamectin Benzoate (equivalent to Emamectin 43,8 g/L)","k":"6","m":1}]},{"s":"IRAC","g":"4","sub":["4A","4C"],"m":50,"z":[{"n":"Imidakloprid","k":"4A","m":31},{"n":"Asetamiprid","k":"4A","m":5},{"n":"Nitenpiram","k":"4A","m":4},{"n":"Klotianidin","k":"4A","m":3},{"n":"Tiametoksam","k":"4A","m":2},{"n":"Dinotefuran","k":"4A","m":1},{"n":"Tiakloprid","k":"4A","m":1},{"n":"Dinotefuron","k":"4A","m":1},{"n":"Sulfoxaflor","k":"4C","m":1},{"n":"Nitenpiran","k":"4A","m":1}]},{"s":"IRAC","g":"1","sub":["1A","1B"],"m":45,"z":[{"n":"Klorpirifos","k":"1B","m":14},{"n":"Dimetoat","k":"1B","m":10},{"n":"PROFENOFOS","k":"1B","m":8},{"n":"Asefat","k":"1B","m":5},{"n":"Etion","k":"1B","m":5},{"n":"Karbosulfan","k":"1A","m":1},{"n":"Chlorpirifos metil","k":"1B","m":1},{"n":"kuinalfos","k":"1B","m":1}]},{"s":"IRAC","g":"3","sub":["3A"],"m":43,"z":[{"n":"SIPERMETRIN","k":"3A","m":20},{"n":"Lamda Sihalotrin","k":"3A","m":7},{"n":"Alfa Sipermetrin","k":"3A","m":5},{"n":"Beta Sipermetrin","k":"3A","m":2},{"n":"Deltametrin","k":"3A","m":2},{"n":"Bifentrin","k":"3A","m":2},{"n":"Beta Siflutrin","k":"3A","m":2},{"n":"Permetrin","k":"3A","m":1},{"n":"L-Cyhalothrin","k":"3A","m":1},{"n":"Tau-fluvalinat","k":"3A","m":1}]},{"s":"IRAC","g":"13","sub":["13"],"m":18,"z":[{"n":"Klorfenapir","k":"13","m":18}]},{"s":"IRAC","g":"2","sub":["2B"],"m":13,"z":[{"n":"Fipronil","k":"2B","m":13}]},{"s":"IRAC","g":"28","sub":["28"],"m":8,"z":[{"n":"Siantraniliprol","k":"28","m":5},{"n":"Klorantraniliprol","k":"28","m":3}]},{"s":"IRAC","g":"14","sub":["14"],"m":4,"z":[{"n":"DIMEHIPO","k":"14","m":2},{"n":"Kartap Hidroklorida","k":"14","m":1},{"n":"Tiosiklam hidrogen oksalat","k":"14","m":1}]},{"s":"IRAC","g":"5","sub":["5"],"m":4,"z":[{"n":"Spinetoram","k":"5","m":3},{"n":"SPINOSAD","k":"5","m":1}]},{"s":"IRAC","g":"23","sub":["23"],"m":4,"z":[{"n":"Spirotetramat","k":"23","m":4}]},{"s":"IRAC","g":"12","sub":["12A"],"m":3,"z":[{"n":"Diafentiuron","k":"12A","m":3}]},{"s":"IRAC","g":"UN","sub":["UN"],"m":3,"z":[{"n":"Azadiraktin","k":"UN","m":2},{"n":"Piridalil","k":"UN","m":1}]},{"s":"IRAC","g":"30","sub":["30"],"m":3,"z":[{"n":"Broflanilida","k":"30","m":1},{"n":"Isocycloseram","k":"30","m":1},{"n":"Fluksametamid","k":"30","m":1}]},{"s":"IRAC","g":"15","sub":["15"],"m":2,"z":[{"n":"Heksaflumuron","k":"15","m":2}]},{"s":"IRAC","g":"7","sub":["7C"],"m":2,"z":[{"n":"Piriproksifen","k":"7C","m":2}]},{"s":"IRAC","g":"16","sub":["16"],"m":2,"z":[{"n":"Buprofezin","k":"16","m":1},{"n":"Buprofenzin","k":"16","m":1}]},{"s":"IRAC","g":"21","sub":["21A"],"m":2,"z":[{"n":"Piridaben","k":"21A","m":2}]},{"s":"IRAC","g":"22","sub":["22A"],"m":1,"z":[{"n":"INDOKSAKARB","k":"22A","m":1}]},{"s":"IRAC","g":"29","sub":["29"],"m":1,"z":[{"n":"Flonicamid","k":"29","m":1}]},{"s":"IRAC","g":"17","sub":["17"],"m":1,"z":[{"n":"Siromazin","k":"17","m":1}]},{"s":"FRAC","g":"U","sub":["U 19"],"m":1,"z":[{"n":"Kartap Hidroklorida","k":"U 19","m":1}]},{"s":"IRAC","g":"20","sub":["20D"],"m":1,"z":[{"n":"Bifenazat","k":"20D","m":1}]}],"tanpa":[{"n":"fluralaner","m":1},{"n":"asam asetat (dihasilkan dari proses kondensasi  asap tempurung kelapa melalui proses pirolisis)","m":1}]}];
+
+const el = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const n = (x) => (x ?? 0).toLocaleString('id-ID');
+
+let kini = KASUS[0];
+let tampil = 'grafik';
+let buka = null;          /* kunci golongan yang dibuka */
+let dipakai = [];         /* {zat, kode, golongan, skema} */
+
+const kunci = (g) => g.s + '|' + g.g;
+
+/* ---------- pemilih perkara ---------- */
+function gambarSaring() {
+  el('saring').innerHTML = KASUS.map((k) => `
+    <button type="button" data-kasus="${esc(k.id)}" aria-pressed="${k.id === kini.id}">
+      ${esc(k.opt)}<small>${esc(k.komoditas)} · ${esc(k.skema)} · ${n(k.produk)} produk</small>
+    </button>`).join('');
+  el('saring').querySelectorAll('[data-kasus]').forEach((b) => b.addEventListener('click', () => {
+    kini = KASUS.find((k) => k.id === b.dataset.kasus);
+    buka = null; dipakai = []; gambar();
+  }));
+}
+
+/* ---------- hero keruntuhan ---------- */
+function gambarHero() {
+  const perangkap = kini.grup.filter((g) => g.sub.length > 1);
+  el('jlembar').textContent = `${kini.opt} pada ${kini.komoditas}`;
+  el('hero').innerHTML = `
+    <p class="hero">
+      <span class="n">${n(kini.produk)}</span><span class="unit">merek terdaftar</span>
+      <span class="panah" aria-hidden="true">→</span>
+      <span class="n kecil">${n(kini.grup.length)}</span><span class="unit">golongan cara kerja</span>
+    </p>`;
+  el('ketGrafik').innerHTML =
+    `${n(kini.bahan)} bahan aktif berbeda didaftarkan untuk pasangan ini. Dikelompokkan menurut
+     <strong>nomor golongan utama</strong> — bukan kode lengkapnya, dan alasannya ada di bawah.
+     ${perangkap.length ? `<strong>${perangkap.length} golongan</strong> di antaranya memuat lebih
+     dari satu sub-golongan.` : 'Tidak ada golongan di sini yang memuat lebih dari satu sub-golongan.'}
+     Satu seri, jadi tanpa legenda; tiap batang berlabel langsung.`;
+}
+
+/* ---------- grafik batang ---------- */
+function gambarGrafik() {
+  const maks = Math.max(...kini.grup.map((g) => g.m), ...(kini.tanpa.length ? [kini.tanpa.reduce((a, b) => a + b.m, 0)] : [0]));
+  const totalTanpa = kini.tanpa.reduce((a, b) => a + b.m, 0);
+
+  const baris = kini.grup.map((g) => {
+    const k = kunci(g);
+    const awas = g.sub.length > 1;
+    const lebar = Math.max(1.5, (g.m / maks) * 100);
+    return `<li>
+      <button class="brs" type="button" data-golongan="${esc(k)}" data-awas="${awas ? 'ya' : 'tidak'}"
+        aria-expanded="${buka === k}"
+        title="${esc(g.s)} ${esc(g.g)} — ${n(g.m)} merek dari ${n(g.z.length)} bahan aktif${awas ? '; memuat sub-golongan ' + g.sub.join(', ') : ''}">
+        <span class="kode">${esc(g.s)} ${esc(g.g)}<em>${g.z.length} bahan</em></span>
+        <span class="jalur"><span class="isi-batang" style="width:${lebar}%"></span></span>
+        <span class="angka">${n(g.m)}<small>merek</small></span>
+      </button>
+      ${awas ? `<p style="margin:-4px 0 8px 0;padding-left:2px"><span class="tanda-awas">⚠ sub-golongan ${esc(g.sub.join(' + '))}</span></p>` : ''}
+      ${buka === k ? isiGolongan(g) : ''}
+    </li>`;
+  }).join('');
+
+  const barisKosong = kini.tanpa.length ? `<li>
+      <button class="brs" type="button" data-kosong="ya" disabled
+        title="${n(kini.tanpa.length)} bahan aktif tanpa kode golongan di berkas ini">
+        <span class="kode">tanpa kode<em>${kini.tanpa.length} bahan</em></span>
+        <span class="jalur"><span class="isi-batang" style="width:${Math.max(1.5, (totalTanpa / maks) * 100)}%"></span></span>
+        <span class="angka">${n(totalTanpa)}<small>merek</small></span>
+      </button>
+      <p style="margin:-4px 0 10px 0;padding-left:2px"><span class="tanda-kosong">⊘ tidak terpetakan</span>
+        <span style="font-size:.82rem;color:var(--lemah)">${kini.tanpa.map((t) => esc(t.n)).join(' · ')}</span></p>
+    </li>` : '';
+
+  return `<ul class="batang-daftar">${baris}${barisKosong}</ul>`;
+}
+
+function isiGolongan(g) {
+  return `<div class="isi-golongan">
+    ${g.sub.length > 1 ? `<div class="nota awas">
+      <p><strong>⚠ Golongan ini memuat ${g.sub.length} sub-golongan: ${esc(g.sub.join(', '))}.</strong>
+      IRAC menulis bahwa generasi hama berturut-turut tidak boleh diperlakukan dengan bahan dari
+      golongan cara kerja yang sama — dan yang dimaksud <strong>golongan</strong>, bukan sub-golongan.</p>
+      <p>${g.s === 'IRAC' && g.g === '1'
+        ? 'Contohnya persis di sini: <strong>1A</strong> dan <strong>1B</strong> dua kelas kimia berbeda dengan <strong>tempat kerja yang sama</strong> — penghambat asetilkolinesterase. Berpindah dari karbofuran (1A) ke klorpirifos (1B) <strong>bukan rotasi</strong>.'
+        : 'Karena itu baris ini menjumlahkannya jadi satu batang. Berpindah antar sub-golongan di dalam satu baris <strong>bukan rotasi</strong>.'}</p>
+    </div>` : ''}
+    <h4 style="margin-top:12px">${n(g.z.length)} bahan aktif di golongan ini</h4>
+    <p style="font-size:.84rem;color:var(--lemah);margin:0 0 4px">
+      Centang yang sudah dipakai musim ini. Tidak dikirim ke mana pun, dan hilang saat halaman dimuat ulang.</p>
+    <ul class="zat-daftar">
+      ${g.z.map((z) => {
+        const sudah = dipakai.some((d) => d.zat === z.n && d.kode === z.k);
+        return `<li>
+          <span class="nm">${esc(z.n)}</span>
+          <span class="kd">${esc(g.s)} ${esc(z.k)}</span>
+          <span class="mk">${n(z.m)}</span>
+          <button class="pilih-zat" type="button" aria-pressed="${sudah}"
+            data-pakai="${esc(z.n)}|${esc(z.k)}|${esc(g.g)}|${esc(g.s)}"
+            aria-label="${sudah ? 'Batalkan tanda' : 'Tandai'} ${esc(z.n)} sebagai sudah dipakai">
+            <span aria-hidden="true">✓</span></button>
+        </li>`;
+      }).join('')}
+    </ul>
+  </div>`;
+}
+
+/* ---------- tabel (kelegaan wajib untuk kontras & pembaca layar) ---------- */
+function gambarTabel() {
+  const totalTanpa = kini.tanpa.reduce((a, b) => a + b.m, 0);
+  return `<div class="tbl-gulir"><table class="data">
+    <caption class="sr">Golongan cara kerja untuk ${esc(kini.opt)} pada ${esc(kini.komoditas)},
+      urut menurut cacah merek menurun</caption>
+    <thead><tr><th scope="col">Golongan utama</th><th scope="col">Sub-golongan</th>
+      <th scope="col">Bahan aktif</th><th scope="col">Merek</th></tr></thead>
+    <tbody>
+      ${kini.grup.map((g) => `<tr>
+        <th scope="row" style="font-family:var(--mono)">${esc(g.s)} ${esc(g.g)}</th>
+        <td class="k">${esc(g.sub.join(', '))}${g.sub.length > 1 ? ' ⚠' : ''}</td>
+        <td class="n">${n(g.z.length)}</td><td class="n">${n(g.m)}</td></tr>`).join('')}
+      ${kini.tanpa.length ? `<tr><th scope="row">tanpa kode ⊘</th><td class="k">—</td>
+        <td class="n">${n(kini.tanpa.length)}</td><td class="n">${n(totalTanpa)}</td></tr>` : ''}
+    </tbody>
+  </table></div>`;
+}
+
+/* ---------- baki golongan terpakai ---------- */
+function gambarTandai() {
+  if (!dipakai.length) {
+    el('tandai').innerHTML = `<div class="baki">
+      <h3>Yang sudah dipakai musim ini</h3>
+      <p class="baki-kosong">Belum ada yang ditandai. Buka salah satu golongan di atas, lalu centang
+      bahan yang sudah dipakai — layar ini akan menjumlahkannya menurut golongan utama.</p></div>`;
+    return;
+  }
+  const tally = new Map();
+  for (const d of dipakai) {
+    const k = d.skema + '|' + d.golongan;
+    if (!tally.has(k)) tally.set(k, { s: d.skema, g: d.golongan, zat: [] });
+    tally.get(k).zat.push(d);
+  }
+  const urut = [...tally.values()].sort((a, b) => b.zat.length - a.zat.length);
+  const ulang = urut.filter((t) => t.zat.length > 1);
+
+  el('tandai').innerHTML = `<div class="baki">
+    <h3>Yang sudah dipakai musim ini</h3>
+    <p style="font-size:.87rem;color:var(--lemah);margin:0">
+      ${n(dipakai.length)} bahan ditandai, jatuh ke <strong>${n(urut.length)} golongan</strong>.</p>
+    <ul class="tally">
+      ${urut.map((t) => `<li data-ulang="${t.zat.length > 1 ? 'ya' : 'tidak'}">
+        <span class="kode">${esc(t.s)} ${esc(t.g)}</span>
+        <span class="isi">${t.zat.length > 1 ? '<strong>Lebih dari satu bahan di golongan yang sama</strong>' : 'Satu bahan'}
+          <small>${t.zat.map((z) => esc(z.zat) + ' (' + esc(z.kode) + ')').join(' · ')}</small></span>
+        <span class="cacah">${t.zat.length}×</span></li>`).join('')}
+    </ul>
+
+    <div class="nota netral" style="margin-bottom:0">
+      <p><strong>Dan di sinilah halaman ini berhenti — dengan sengaja.</strong>
+      ${ulang.length
+        ? `Yang bisa dikatakannya: ${ulang.map((t) => `<strong>${esc(t.s)} ${esc(t.g)}</strong> ditandai ${t.zat.length} kali`).join(', ')}. Itu <em>fakta</em>.`
+        : 'Yang ditandai jatuh ke golongan yang berbeda-beda. Itu <em>fakta</em>.'}
+      Apakah itu masalah, berapa musim berturut-turut sebelum layak diperingatkan, dan apa yang
+      sebaiknya dilakukan — <strong>tidak dijawab di sini</strong>.</p>
+      <p>Alasannya tertulis di kosakatanya sendiri: <em>“aturan rotasinya sendiri belum ada. Berkas
+      ini menyediakan bahannya; aturan ‘berapa musim berturut-turut sebelum diperingatkan’ adalah
+      keputusan agronomis yang belum diambil, dan tempatnya bukan di sini.”</em></p>
+      <p>Yang berhak mengambil keputusan itu penyuluh atau agronom — bukan layar yang tidak tahu
+      riwayat lahanmu, tekanan hamanya, atau apa yang dipakai tetangga sebelah.</p>
+    </div>
+
+    <p style="margin:12px 0 0"><button class="tombol-kecil" type="button" id="hapusTandai">Hapus semua tanda</button></p>
+  </div>`;
+  el('hapusTandai').addEventListener('click', () => { dipakai = []; gambar(); });
+}
+
+/* ---------- batas jawaban ---------- */
+function gambarBatas() {
+  const dua = kini.grup.filter((g) => g.z.some((z) => kini.grup.some((h) => h !== g && h.z.some((y) => y.n === z.n))));
+  el('batas').innerHTML = `<section class="batas" aria-labelledby="jbatas">
+    <h3 id="jbatas">Batas jawaban di layar ini</h3>
+    <div class="batas-isi">
+      <div class="sumber">
+        <span class="tingkat" data-t="B" aria-hidden="true">B</span>
+        <span><b>Registri pestisida terdaftar</b>
+          <span>Kementerian Pertanian RI · 7.724 rekaman · CC-BY-SA-4.0 · tarikan 19 Agustus 2026</span>
+          <em>Cacah merek, bahan aktif, dan pasangan hama–komoditas datang dari sini, disalin apa adanya.
+          Bukan A: yang dicatat izin edar, bukan hasil uji.</em></span>
+      </div>
+      <div class="sumber">
+        <span class="tingkat" data-t="D" aria-hidden="true">D</span>
+        <span><b>Golongan resistensi IRAC · FRAC · HRAC</b>
+          <span>IRAC MoA v11.5 Feb 2026 · FRAC &amp; HRAC 2026 · status draft · tarikan 23 Agustus 2026</span>
+          <em>Pengelompokan di halaman ini seluruhnya bertumpu pada pemetaan ini, dan pemetaannya
+          dicocokkan lewat EJAAN. Yang disimpan cuma pasangan nama→kode beserta versi sumbernya,
+          supaya bisa ditelusuri ulang — bukan salinan daftar aslinya.</em></span>
+      </div>
+
+      <h4>Yang tidak diketahui, dan karena itu tidak ditebak</h4>
+      <ul class="lubang">
+        <li><span><strong>Registri tidak mencatat apa yang kamu semprotkan.</strong> Tanda di baki
+          atas seluruhnya masukanmu sendiri, hidup di memori halaman ini saja, dan hilang saat
+          dimuat ulang. Tidak ada riwayat lahan di mana pun di sistem ini.</span></li>
+        <li><span><strong>Aturan rotasinya belum ada dan sengaja belum diambil.</strong> Halaman ini
+          menyediakan bahannya, bukan putusannya.</span></li>
+        <li><span><strong>Ejaan registri sendiri tidak seragam.</strong> Di data ini ada
+          “Abamektin” dan “ABAMECTIN”, “Buprofezin” dan “Buprofenzin”, “Metalaksil” dan “Metalksil”,
+          serta tiga ejaan parakuat — masing-masing rekaman terpisah. Yang menyatukannya justru
+          pemetaan golongan, dan pemetaan itu sendiri dicocokkan lewat ejaan.</span></li>
+        ${dua.length ? `<li><span><strong>Sebagian bahan bergolongan ganda</strong> dan karena itu
+          muncul di dua batang sekaligus — mankozeb tercatat FRAC M 03 sekaligus IRAC UN, kartap
+          hidroklorida IRAC 14 sekaligus FRAC U 19. Bukan cacat data; memang begitu keadaannya.</span></li>` : ''}
+        <li><span><strong>Sebagian jenis pestisida tidak punya skema sama sekali.</strong> Rodentisida
+          punya komitenya sendiri (RRAC) yang belum ditarik; moluskisida tidak tercakup komite mana pun;
+          zat pengatur tumbuh, atraktan, dan penolak juga tidak. Skema nematisida IRAC terpisah dan
+          <strong>belum ditarik</strong> — sembilan bahan bertanda nematisida membawa kode insektisida
+          atau fungisidanya, tetapi belum diperiksa terhadap skema itu.</span></li>
+        <li><span><strong>Tenggang panen nol dari 23.058 penggunaan berlabel.</strong> Registri tidak
+          mencatatnya sama sekali, jadi tidak ada layar di sini yang boleh menjanjikan tanggal aman panen.</span></li>
+        <li><span><strong>Agens hayati dicocokkan pada tingkat spesies, bukan galur</strong> — dan
+          galur yang berbeda bisa berbeda perilakunya.</span></li>
+      </ul>
+    </div>
+  </section>`;
+}
+
+/* ---------- render ---------- */
+function gambar() {
+  gambarSaring(); gambarHero();
+  el('tampil').innerHTML = tampil === 'grafik' ? gambarGrafik() : gambarTabel();
+  document.querySelectorAll('[data-tampil]').forEach((b) => {
+    b.setAttribute('aria-pressed', String(b.dataset.tampil === tampil));
+    if (!b.dataset.terpasang) { b.dataset.terpasang = '1';
+      b.addEventListener('click', () => { tampil = b.dataset.tampil; gambar(); }); }
+  });
+  el('tampil').querySelectorAll('[data-golongan]').forEach((b) => b.addEventListener('click', () => {
+    buka = buka === b.dataset.golongan ? null : b.dataset.golongan; gambar();
+  }));
+  el('tampil').querySelectorAll('[data-pakai]').forEach((b) => b.addEventListener('click', () => {
+    const [zat, kode, golongan, skema] = b.dataset.pakai.split('|');
+    const i = dipakai.findIndex((d) => d.zat === zat && d.kode === kode);
+    if (i >= 0) dipakai.splice(i, 1); else dipakai.push({ zat, kode, golongan, skema });
+    gambar();
+  }));
+  gambarTandai(); gambarBatas();
+}
+
+el('tombolTema').addEventListener('click', () => {
+  const r = document.documentElement;
+  const gelapSistem = matchMedia('(prefers-color-scheme: dark)').matches;
+  const kiniT = r.dataset.tema || (gelapSistem ? 'gelap' : 'terang');
+  const baru = kiniT === 'gelap' ? 'terang' : 'gelap';
+  r.dataset.tema = baru;                        /* hanya di memori */
+  el('tombolTema').textContent = baru === 'gelap' ? 'Terang' : 'Gelap';
+});
+addEventListener('keydown', (e) => { if (e.key === 'Escape' && buka) { buka = null; gambar(); } });
+
+gambar();
+</script>
+</body>
+</html>

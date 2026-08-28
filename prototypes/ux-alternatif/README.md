@@ -1,17 +1,21 @@
-# Empat alternatif UX beranda Pranatani
+# Lima alternatif UX beranda Pranatani
 
 > Prototipe tinjauan rancangan · 27 Agustus 2026 · status **usulan**
 >
 > Galeri & pembanding: [`index.html`](index.html) ·
 > [Konsep 01](01-kanvas-keputusan.html) · [Konsep 02](02-atlas-pengetahuan.html) ·
-> [Konsep 03](03-meja-banding.html) · [Konsep 04](04-satu-pintu-dua-kata-kerja.html)
+> [Konsep 03](03-meja-banding.html) · [Konsep 04](04-satu-pintu-dua-kata-kerja.html) ·
+> [Konsep 05](05-golongan-bukan-merek.html)
 >
-> Empat berkas HTML mandiri. Tanpa kerangka kerja, tanpa langkah bangun, tanpa
+> Lima berkas HTML mandiri. Tanpa kerangka kerja, tanpa langkah bangun, tanpa
 > permintaan ke internet, tanpa dependency baru, dan tanpa satu pun tulisan ke
 > penyimpanan peramban.
 >
 > **Konsep 04 ditambahkan 28 Agustus 2026** sebagai *usulan tandingan* — ia menolak
 > premis yang dipegang ketiganya, bukan bersaing di dalamnya. Asal-usulnya di bagian 11.
+>
+> **Konsep 05 ditambahkan 28 Agustus 2026** — berfokus OPT, dan satu-satunya yang unit
+> navigasinya bukan merek maupun rekaman melainkan *golongan cara kerja*. Bagian 12.
 >
 > Foldernya ikut berganti nama, `ux-3-alternatif` → `ux-alternatif`: angka di nama folder
 > berhenti benar begitu isinya bertambah, dan akan salah lagi pada konsep berikutnya.
@@ -111,6 +115,7 @@ dikatakan bahwa ia memang tidak bisa dijawab.
 | **02 · Atlas Tani** | Nilai Pranatani ada pada **hubungan antar-benda**, bukan pada daftar halaman fungsi — jadi layar pertama adalah lema, dan tiap lema memperlihatkan seluruh arah keluarnya, **termasuk yang buntu**. |
 | **03 · Meja Banding** | Pengguna profesional jarang butuh *satu* rekaman; mereka butuh **meja untuk menyandingkan beberapa** dan memeriksa dasar tiap angkanya — jadi layar pertama adalah baki kosong, dan satu rekaman sendirian **ditolak** ditampilkan. |
 | **04 · Satu Pintu, Dua Kata Kerja** | Pintu depan **tidak diganti sama sekali**; kedua kapabilitas datang ke tempat pertanyaannya sudah muncul — *bandingkan* tumbuh dari daftar hasil, *hubungan* tumbuh dari satu rekaman — dan **tidak ada layar yang menanyakan siapa penggunanya**. |
+| **05 · Golongan, Bukan Merek** | Masuk dari **hama**, bukan dari produk: registri disusun menurut **golongan cara kerja**, sehingga 661 merek gulma sawit runtuh jadi 10 golongan — lalu layarnya **berhenti tepat sebelum menganjurkan rotasi**, karena aturannya memang belum diambil siapa pun. |
 
 ---
 
@@ -182,6 +187,34 @@ dikatakan bahwa ia memang tidak bisa dijawab.
   kartu, perbedaan itu tidak kelihatan. Layar tetap **tidak menyimpulkan** bahwa
   produknya menyesatkan; ia cuma menyatakan bahwa nama dan komposisi terdaftar tidak
   berbunyi sama.
+
+### Konsep 05 · Golongan, Bukan Merek
+
+- **Pengguna** — penyuluh (P2, P3), agronom &amp; QC eksportir (P7), petugas lapang
+  offtaker (P1). Bukan P4/P5: konsep ini menuntut pengguna sudah tahu apa itu golongan
+  cara kerja.
+- **Keputusan yang didahulukan** — *berapa banyak pilihan yang tampak berbeda ternyata
+  bekerja dengan cara yang sama?*
+- **Skenario interaktif utama** — pilih pasangan hama–tanaman → grafik batang berperingkat
+  menurut cacah merek, satu batang per **golongan utama** → buka satu golongan untuk melihat
+  bahan aktifnya → centang yang sudah dipakai musim ini → layar menjumlahkannya menurut
+  golongan **dan menolak memperingatkan**.
+- **Empat kasus nyata, tiga skema** — Wereng Coklat pada Padi (IRAC, 454 produk → 17
+  golongan), Penyakit Hawar Daun pada Kentang (FRAC, 376 → 18), Gulma Berdaun Lebar pada
+  kelapa sawit (HRAC, 661 → **10**), dan Trips pada Cabai (IRAC, 246 → 22).
+- **Temuan yang jadi alasan konsep ini ada:**
+  - **41% pilihan merek untuk wereng coklat ada di satu golongan.** IRAC 4 memuat 186 dari
+    454 merek, tersebar di 11 bahan aktif yang namanya berbeda-beda.
+  - **Perangkap sub-golongan.** IRAC 1 memuat `1A` **dan** `1B` — dua kelas kimia berbeda
+    dengan **tempat kerja yang sama**. Berpindah dari karbofuran (1A) ke klorpirifos (1B)
+    **bukan rotasi**. UI naif yang membandingkan kode lengkap akan menyimpulkan sebaliknya.
+  - **Ejaan registri sendiri tidak seragam** — “Abamektin”/“ABAMECTIN”,
+    “Buprofezin”/“Buprofenzin”, “Metalaksil”/“Metalksil”, tiga ejaan parakuat. Yang
+    menyatukannya justru pemetaan golongan, dan pemetaan itu sendiri **dicocokkan lewat
+    ejaan**.
+  - **Bahan bergolongan ganda** — mankozeb FRAC `M 03` sekaligus IRAC `UN`; kartap
+    hidroklorida IRAC `14` sekaligus FRAC `U 19`. Muncul di dua batang, dan itu memang
+    keadaannya.
 
 ---
 
@@ -476,7 +509,7 @@ membeli buktinya.**
 Rekomendasi sebelumnya adalah Konsep 03, dan **alasannya masih berlaku utuh**: dari
 ketiganya, hanya ia yang bisa dibangun penuh dengan data yang sudah ada. Yang berubah
 bukan penilaian atas ketiganya, melainkan munculnya pilihan yang jauh lebih murah untuk
-*mendahuluinya*. Papan skor: **24 / 25 / 31 / 35** dari 40.
+*mendahuluinya*. Papan skor: **24 / 25 / 31 / 35 / 24** dari 40.
 
 ### Yang memutuskan
 
@@ -509,6 +542,26 @@ Jumlah tertinggi di papan skor karena itu harus dibaca sebagai *"paling layak di
 lebih dulu"*, bukan *"paling benar"*. Ia unggul pada sumbu yang mengukur seberapa murah
 dan cepat sesuatu bisa diuji.
 
+### Di mana Konsep 05 duduk
+
+**24 dari 40 — angka yang sama dengan Konsep 01, dan bukan kebetulan.** Keduanya konsep
+dengan nilai agronomis paling tinggi dan ongkos tafsir paling mahal, dan keduanya
+**terhalang oleh keputusan yang belum diambil siapa pun** — bukan oleh rancangan.
+
+Konsep 01 menunggu kurasi gejala punya peninjau bernama. Konsep 05 menunggu hal sejenis:
+kosakatanya sendiri menyatakan bahwa *“aturan rotasinya sendiri belum ada. Berkas ini
+menyediakan bahannya; aturan ‘berapa musim berturut-turut sebelum diperingatkan’ adalah
+keputusan agronomis yang belum diambil, dan tempatnya bukan di sini.”* Sampai keputusan
+itu diambil, yang bisa dibangun cuma separuhnya — dan prototipenya memang berhenti tepat
+di situ, dengan sengaja.
+
+**Satu hal yang membuatnya berharga sekarang juga: ia menangkap kesalahan yang akan
+dibuat UI mana pun yang menyentuh resistensi.** Membandingkan kode lengkap (`4A` lawan
+`4C`, `1A` lawan `1B`) dan menyimpulkan “berbeda, aman” adalah **keliru** — IRAC
+menghitung nomor golongan utama, dan `1A`/`1B` punya tempat kerja yang sama. Kekeliruan
+itu murah dihindari kalau diketahui sekarang, dan mahal kalau ditemukan sesudah ada yang
+memakainya di lahan.
+
 ### Urutan yang diusulkan
 
 1. **Kerjakan Konsep 04, lalu sebarkan lewat kanal yang memang ada.** Tiga perubahan
@@ -524,7 +577,11 @@ dan cepat sesuatu bisa diuji.
    menghalanginya bukan rancangan, melainkan nol dari 4.256 rekaman kurasi yang punya
    peninjau bernama — dan bentuk tanya-jawabnya adalah bentuk diagnosis, yang tidak bisa
    dilawan rancangan.
-4. **Jangan gabungkan keempatnya jadi satu beranda.** Beranda yang mendahulukan empat hal
+4. **Tahan Konsep 05 sampai aturan rotasinya diputuskan — tetapi simpan temuannya
+   sekarang.** Pengelompokan harus memakai **nomor golongan utama**, bukan kode lengkap.
+   Itu berlaku bahkan kalau konsep ini tidak pernah dibangun, dan ia lebih murah dicatat
+   hari ini daripada ditemukan sesudah dipakai.
+5. **Jangan gabungkan kelimanya jadi satu beranda.** Beranda yang mendahulukan lima hal
    sekaligus tidak mendahulukan apa pun. Konsep 04 justru bekerja karena ia menolak
    menjadi salah satu pilihan di antara yang lain.
 
@@ -551,6 +608,7 @@ disunting.**
 | [`02-atlas-pengetahuan.html`](02-atlas-pengetahuan.html) | Konsep 02 · Atlas Tani | 54 KB |
 | [`03-meja-banding.html`](03-meja-banding.html) | Konsep 03 · Meja Banding | 49 KB |
 | [`04-satu-pintu-dua-kata-kerja.html`](04-satu-pintu-dua-kata-kerja.html) | Konsep 04 · usulan tandingan | 45 KB |
+| [`05-golongan-bukan-merek.html`](05-golongan-bukan-merek.html) | Konsep 05 · berfokus OPT | 45 KB |
 | `README.md` | Berkas ini | — |
 
 `screenshots/` **tidak dibuat** — lihat bagian 8, "Yang belum bisa diamati".
@@ -674,3 +732,90 @@ Jangan uji lewat beranda — ia tidak bisa dibaca. Uji lewat kanal yang benar-be
 mana yang **diteruskan**, bukan mana yang diklik dari pemilih. Itu memakai mekanisme
 distribusi yang memang sudah dirancang, dan sekaligus menjawab pertanyaan terbuka nomor 5
 di `docs/17`: apakah kartu yang diteruskan bertahan utuh.
+
+---
+
+## 12. Konsep 05 — kenapa golongan, dan kenapa ia berhenti
+
+### Kenapa unitnya golongan, bukan merek atau hama
+
+Keempat konsep sebelumnya bernavigasi lewat benda yang punya nama di kemasan: produk,
+bahan aktif, rekaman, hama. Konsep 05 memakai unit yang **tidak tercetak di mana pun**
+— golongan cara kerja — dan justru itu nilainya: golongan adalah satu-satunya sumbu di
+mana pertanyaan resistensi bisa ditanyakan sama sekali.
+
+Akibatnya bisa dihitung, dan mengejutkan:
+
+| Kasus | Skema | Merek | Bahan aktif | **Golongan utama** |
+|---|---|---|---|---|
+| Gulma Berdaun Lebar · kelapa sawit | HRAC | 661 | 74 | **10** |
+| Wereng Coklat · padi | IRAC | 454 | 47 | **17** |
+| Penyakit Hawar Daun · kentang | FRAC | 376 | 53 | **18** |
+| Trips · cabai | IRAC | 246 | 60 | **22** |
+
+Dan sebarannya timpang. Untuk wereng coklat, **IRAC 4 sendirian memuat 186 dari 454
+merek — 41%** — tersebar di sebelas bahan aktif yang namanya berbeda-beda di rak kios.
+
+### Kesalahan yang akan dibuat UI resistensi mana pun
+
+Ini temuan yang paling layak diselamatkan dari prototipe ini, terlepas dari apakah
+konsepnya dibangun.
+
+**Sub-golongan IRAC bukan pasangan rotasi.** `1A` dan `1B` adalah dua kelas kimia berbeda
+dengan **tempat kerja yang sama** — penghambat asetilkolinesterase. Berpindah dari
+karbofuran (1A) ke klorpirifos (1B) **bukan rotasi**. Hal yang sama berlaku pada
+`3A`/`3B`, `4A`–`4F`, `20A`–`20D`, `21A`/`21B`, `22A`/`22B`, `24A`/`24B`, `25A`/`25B` —
+**kecuali `8A`–`8F`**, yang justru dikecualikan IRAC.
+
+Sebuah antarmuka yang membandingkan kode lengkap dan menyimpulkan “berbeda, aman” akan
+**salah**, dengan akibat yang nyata di lahan. Prototipe ini karena itu menjumlahkan
+sub-golongan jadi satu batang dan mengatakan alasannya di tempat.
+
+### Kenapa ia berhenti, dan kenapa itu bukan kekurangan
+
+Layar ini menghitung golongan yang ditandai lalu **menolak mengatakan apakah pengulangan
+itu masalah**. Alasannya bukan kehati-hatian umum, melainkan kutipan langsung dari
+kosakatanya sendiri:
+
+> *“Aturan rotasinya sendiri belum ada. Berkas ini menyediakan bahannya; aturan ‘berapa
+> musim berturut-turut sebelum diperingatkan’ adalah keputusan agronomis yang belum
+> diambil, dan tempatnya bukan di sini.”*
+
+Menambahkan ambang di prototipe berarti mengarang keputusan agronomis dan menyematkannya
+di UI — persis jenis kesalahan yang paling sulit dicabut kemudian.
+
+### Yang paling rapuh di konsep ini
+
+**Seluruh permukaannya bertumpu pada pemetaan bertingkat D** — terendah yang dipakai
+proyek ini. Nama bahan dicocokkan ke kode golongan **lewat ejaan**, berstatus draft,
+tinjauan jatuh tempo 23 Februari 2027.
+
+Dan ada ironi yang layak dinyatakan: registri sendiri tidak seragam ejaannya —
+“Abamektin”/“ABAMECTIN”, “Buprofezin”/“Buprofenzin” (yang kedua salah ketik),
+“Metalaksil”/“Metalksil”, tiga ejaan parakuat. **Yang menyatukan ejaan-ejaan itu justru
+pemetaan golongan — dan pemetaan itu sendiri dicocokkan lewat ejaan.** Kalau satu ejaan
+luput, bahannya jatuh ke keranjang “tanpa kode” tanpa suara.
+
+Yang memang tidak punya skema sama sekali juga dinyatakan di layar: rodentisida (RRAC
+belum ditarik), moluskisida (tidak ada komite), zat pengatur tumbuh, atraktan, dan
+penolak. Skema nematisida IRAC terpisah dan **belum ditarik** — sembilan bahan bertanda
+nematisida membawa kode insektisida atau fungisidanya, tetapi belum diperiksa terhadap
+skema itu.
+
+### Catatan tentang grafiknya
+
+Bentuknya batang mendatar berperingkat, bukan pai maupun donat: pekerjaannya
+**magnitudo + identitas**, dan pai gagal pada keduanya di atas lima irisan. Satu seri,
+jadi **tanpa legenda** — tiap batang berlabel langsung.
+
+Warnanya dipilih menurut pekerjaannya, dan divalidasi alih-alih dikira-kira:
+
+- **Isian batang satu rona** (`#2a78d6` terang / `#3987e5` gelap) — warna *mark*, digate
+  pada ≥3:1 terhadap permukaan grafiknya sendiri.
+- **Teks tidak pernah memakai warna itu.** Warna seri divalidasi sebagai mark, sedangkan
+  teks menuntut ≥4,5:1 — jadi ada `--seri-teks` tersendiri (`#1f66c2` / `#4d95ea`).
+  Kekeliruan ini sempat terjadi dan tertangkap saat pemeriksaan kontras.
+- **Kuning status hanya tepi + ikon + label**, tidak pernah isian: pada permukaan terang
+  ia 1,79:1, dan kelegaannya adalah label terlihat + tampilan tabel — keduanya ada.
+- **Batang “tanpa kode” memakai tekstur**, bukan rona baru — supaya keadaan itu terbaca
+  tanpa mengandalkan warna.
