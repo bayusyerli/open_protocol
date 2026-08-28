@@ -3377,6 +3377,13 @@
       "covers": [
         {
           "pest": {
+            "id": "op:pst:00001389",
+            "label": "Penggerek Batang"
+          },
+          "dasar": "Scirpophaga innotata memberi sundep dan beluk yang sama persis dengan S. incertulas — pucuk mati mudah ditarik lepas, malai putih hampa dengan batang masih hijau — dan tidak ada ciri lapangan yang membedakan keduanya tanpa membedah ngengatnya. Yang berbeda musimnya, bukan yang terlihat, dan tindakannya sama."
+        },
+        {
+          "pest": {
             "id": "op:pst:00002172",
             "label": "Penggerek Batang"
           },
@@ -9193,6 +9200,10 @@
         {
           "id": "op:cmd:00001026",
           "label": "Kacang panjang"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
         }
       ],
       "definition": {
@@ -9216,7 +9227,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -9247,7 +9259,23 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kacang panjang, kacang hijau, dan kacang tanah, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001446",
+            "label": "Penyakit Bercak Daun"
+          },
+          "dasar": "Cercospora canescens memberi bercak bersudut kecoklatan yang dibatasi tulang daun halus pada kacang hijau dan kedelai, sama bentuknya dengan yang di kacang panjang, dan sama-sama berbulu kelabu di permukaan bawah pada cuaca lembap. Memisahkan spesies Cercospora menuntut mengukur konidium di bawah mikroskop."
+        },
+        {
+          "pest": {
+            "id": "op:pst:00001614",
+            "label": "Penyakit Bercak Daun"
+          },
+          "dasar": "Cercospora cruenta bercak daun kacang panjang yang lain, dan registri mendaftarkannya pada tanaman yang sama. Bercaknya bersudut dibatasi tulang daun seperti C. vignae, muncul pada fase yang sama, dan disemprot dengan jadwal yang sama; yang berbeda cuma ukuran konidiumnya."
+        }
+      ]
     },
     {
       "id": "op:pst:00000098",
@@ -12904,6 +12932,10 @@
         {
           "id": "op:cmd:00001018",
           "label": "Tembakau"
+        },
+        {
+          "id": "op:cmd:00001002",
+          "label": "Jagung"
         }
       ],
       "definition": {
@@ -12927,7 +12959,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Layu",
@@ -13042,7 +13075,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001631",
+            "label": "Hama Orong Orong"
+          },
+          "dasar": "Gryllotalpa africana salah satu jenis orong-orong yang pintu ini janjikan: pintunya berdiri bertingkat MARGA karena yang terlihat di lapangan — kaki depan melebar seperti sekop, alur galian dangkal, batang terpotong rapi di batas tanah — sama pada seluruh jenisnya."
+        }
+      ]
     },
     {
       "id": "op:pst:00000143",
