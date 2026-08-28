@@ -26,9 +26,11 @@
         "weed",
         "vertebrate",
         "mollusc",
-        "abiotic"
+        "abiotic",
+        "beneficial",
+        "not_an_organism"
       ],
-      "description": "Oomycete dipisahkan dari jamur sejati karena bedanya menentukan pilihan bahan aktif: metalaksil dan dimetomorf bekerja pada oomycete, tidak pada jamur sejati. GBIF menempatkannya di kingdom Chromista."
+      "description": "Oomycete dipisahkan dari jamur sejati karena bedanya menentukan pilihan bahan aktif: metalaksil dan dimetomorf bekerja pada oomycete, tidak pada jamur sejati. GBIF menempatkannya di kingdom Chromista.\n\nDua nilai terakhir menyatakan bahwa barisnya BUKAN sasaran pengendalian, dan keduanya ada karena registri memuatnya. `beneficial` untuk organisme yang justru dijaga — Elaeidobius kamerunicus, kumbang penyerbuk kelapa sawit, tercatat sebagai sasaran pada label yang menyatakan produknya aman baginya. `not_an_organism` untuk baris yang bukan makhluk hidup sama sekali: nama bahan aktif yang tersalin ke kolom sasaran (Fentin hydroxide), maksud perlakuan alih-alih sasarannya (\"Mematikan tunggul\"), dan potongan kalimat (\"Meningkat tinggi\"). Keduanya menahan jalur 1 dari menawarkan pintu gejala untuk sesuatu yang tidak punya gejala."
     },
     "scientific_name": {
       "type": "string"

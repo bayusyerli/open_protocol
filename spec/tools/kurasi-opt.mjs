@@ -2974,6 +2974,281 @@ const PINTU_EKOR2 = [
   },
 ];
 
+const PINTU_EKOR3 = [
+  {
+    id: 'op:pst:00000148', dari: 'op:pst:00002306', nama: 'Penyakit Busuk Gabah',
+    key: 'busuk-bulir-bakteri', label: 'Busuk bulir bakteri',
+    inang: [PADI],
+    definition:
+      'Menyerang tepat saat berbunga sampai pengisian, dan menumpuk pada malam yang panas sesudah hujan — jadi ia penyakit MUSIM, bukan penyakit petak. Terbawa benih, sehingga gabah dari petak yang terserang meneruskannya ke musim berikutnya, dan itu titik paling murah untuk memutusnya. Bakteri: fungisida tidak menyentuhnya.',
+    gejala:
+      'Bulir pada malai berubah COKLAT KEMERAHAN dari pangkal ke ujung sementara malainya tetap tegak, dan bulir yang terkena hampa atau berisi sebagian. Warnanya berbatas jelas dengan bulir sehat di sebelahnya, dan bercaknya tidak berdebu maupun bergumpal.',
+    pembanding: [
+      { cek: 'Pijit bulir yang mencoklat. Busuk bulir bakteri menyisakan bulir HAMPA atau setengah isi tanpa serbuk apa pun; gosong palsu menggantikan bulirnya dengan gumpalan berdebu hijau kehitaman yang jauh lebih besar.',
+        membantah: { id: 'op:pst:00000133', label: 'Gosong palsu' } },
+      { cek: 'Lihat apakah SELURUH malai putih hampa atau cuma sebagian bulirnya yang mencoklat. Busuk bulir mengenai bulir satu-satu; malai yang hampa seluruhnya dan mudah dicabut penyebabnya penggerek batang.',
+        membantah: { id: 'op:pst:00000030', label: 'Penggerek batang' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000149', dari: 'op:pst:00001978', nama: 'Ulat Grayak',
+    key: 'ulat-grayak-padi', label: 'Ulat grayak padi',
+    inang: [PADI],
+    definition:
+      'Berbeda dari ulat grayak sayuran: yang ini menyerang BERGEROMBOL dan berpindah dari petak ke petak seperti pasukan, sehingga petak yang bersih pagi ini bisa gundul sore nanti. Menumpuk sesudah musim kering panjang yang diputus hujan, dan pada padi gogo lebih sering daripada di sawah berair. Aktif malam; siang hari ia bersembunyi di pangkal rumpun dan di retakan tanah.',
+    gejala:
+      'Daun habis dimakan dari tepi sampai tinggal tulang daun, merata di satu bagian petak dan berbatas tegas dengan bagian yang belum terserang. Pada fase malai, tangkai malai terpotong sehingga malai jatuh. Ulat berwarna coklat kelabu bergaris memanjang, ditemukan di pangkal rumpun atau retakan tanah pada siang hari.',
+    pembanding: [
+      { cek: 'Korek pangkal rumpun dan retakan tanah pada SIANG hari. Ulat grayak padi bersembunyi di sana dan keluar malam; ulat yang terlihat makan di siang bolong biasanya ulat lain.' },
+      { cek: 'Lihat batas kerusakannya. Ulat grayak padi menggunduli satu bagian petak dengan batas tegas lalu maju bergerombol; hama putih palsu meninggalkan daun tergulung dan memutih menerawang yang tersebar merata.',
+        membantah: { id: 'op:pst:00000034', label: 'Hama putih palsu' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000150', dari: 'op:pst:00001611', nama: 'Hama Lundi',
+    key: 'lundi-padi', label: 'Lundi padi',
+    inang: [PADI],
+    definition:
+      'Yang merusak LARVANYA di dalam tanah, bukan kumbangnya, sehingga tanaman terlihat kekurangan air atau hara sampai dicabut. Masalah padi GOGO dan sawah tadah hujan; pada sawah yang tergenang terus ia tidak bertahan, dan menggenangi petak beberapa hari adalah tindakan yang lebih murah daripada menyemprot. Satu generasi setahun, muncul serempak pada awal musim hujan.',
+    gejala:
+      'Rumpun menguning dan layu berpetak-petak walau tanahnya lembap, dan bila ditarik rumpunnya LEPAS dengan mudah karena akarnya habis. Di tanah sekitar akar ada larva putih gemuk melengkung seperti huruf C dengan kepala coklat dan tiga pasang kaki di depan.',
+    pembanding: [
+      { cek: 'Tarik rumpun yang menguning. Lundi membuat rumpun LEPAS ringan tanpa akar; rumpun yang menguning tetapi akarnya masih mencengkeram penyebabnya hara atau penyakit, bukan hama tanah.' },
+      { cek: 'Korek tanah sedalam sejengkal di bawah rumpun yang mati. Larva lundi melengkung seperti huruf C, gemuk, dan berkaki tiga pasang; orong-orong bertubuh lurus dengan kaki depan melebar seperti sekop.',
+        membantah: { id: 'op:pst:00000142', label: 'Orong-orong' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000151', dari: 'op:pst:00001650', nama: 'Kepinding Tanah',
+    key: 'kepinding-tanah', label: 'Kepinding tanah',
+    inang: [PADI],
+    definition:
+      'Mengisap pangkal batang di batas air, bukan daun maupun malai, sehingga gejalanya mudah dikira kekurangan hara. Bersembunyi di pangkal rumpun dan di celah tanah siang hari dan naik malam; karena itu pengamatan siang hampir selalu menyatakan tidak ada apa-apa. Tertarik lampu, sehingga perangkap lampu berguna untuk mengetahui kapan populasinya naik.',
+    gejala:
+      'Rumpun kerdil dan menguning dari daun bawah, anakan berkurang, dan pada serangan berat rumpun mengering berpetak seperti terbakar. Di pangkal batang tepat di batas air ada kepik pipih coklat kehitaman sepanjang sebutir beras yang mengeluarkan BAU MENYENGAT bila diganggu.',
+    pembanding: [
+      { cek: 'Buka pangkal rumpun di batas air dan cium. Kepinding tanah mengeluarkan bau menyengat khas dan berkumpul di pangkal batang; walang sangit berbau serupa tetapi berada di MALAI, bukan di pangkal, dan menyerang saat bulir masak susu.',
+        membantah: { id: 'op:pst:00000035', label: 'Walang sangit' } },
+      { cek: 'Periksa malam hari atau pasang perangkap lampu. Kepinding tanah naik ke batang saat gelap; petak yang siangnya terlihat bersih bisa penuh saat diperiksa malam.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000152', dari: 'op:pst:00001471', nama: 'Penyakit Bulir Kotor',
+    key: 'bulir-kotor', label: 'Bulir kotor',
+    inang: [PADI],
+    definition:
+      'Bukan satu jamur melainkan BEBERAPA yang menumpang pada bulir yang sudah terluka atau yang pengisiannya terganggu — registri sendiri menuliskannya sebagai "Dirty panicle", nama gejala, bukan nama organisme. Karena itu pintu ini menjanjikan cirinya dan bukan penyebabnya, dan yang paling menentukan justru sebabnya yang lebih dulu: tusukan walang sangit, hujan saat berbunga, atau pemupukan nitrogen berlebih.',
+    gejala:
+      'Bulir bernoda COKLAT sampai kehitaman tidak beraturan, sebagian berbercak kelabu berjelaga, tersebar tidak merata pada malai dan bercampur dengan bulir yang bersih. Gabahnya ringan dan berasnya berbintik saat digiling. Malainya sendiri tetap tegak dan hijau.',
+    pembanding: [
+      { cek: 'Periksa apakah ada tusukan kecil pada bulir yang bernoda, dan cari walang sangit pada malai menjelang senja. Bulir kotor sangat sering MENUMPANG pada bekas tusukan; kalau walang sangitnya masih ada, yang perlu ditangani lebih dulu itu.',
+        membantah: { id: 'op:pst:00000035', label: 'Walang sangit' } },
+      { cek: 'Bandingkan sebaran nodanya. Bulir kotor bernoda tidak beraturan dan bercampur bulir bersih di malai yang sama; bercak coklat padi memberi bercak bulat lonjong seragam yang juga ada di DAUN, bukan cuma di bulir.',
+        membantah: { id: 'op:pst:00000134', label: 'Bercak coklat padi' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000153', dari: 'op:pst:00002325', nama: 'Wereng',
+    key: 'wereng-jagung', label: 'Wereng jagung',
+    inang: [JAGUNG],
+    definition:
+      'Yang merugikan bukan isapannya melainkan VIRUS yang dibawanya — mosaik kerdil jagung — dan tanaman yang sudah terinfeksi tidak bisa dipulihkan. Karena itu keputusannya soal waktu: menahan wereng pada bulan pertama menentukan, menyemprot sesudah tanaman kerdil tidak. Menumpuk pada musim kering dan pada pertanaman yang tidak serempak.',
+    gejala:
+      'Wereng kecil putih kekuningan bergerombol di dalam GULUNGAN daun pucuk, terlihat begitu daun termuda dibuka, dan berlompatan saat terganggu. Tanaman yang terinfeksi virusnya kerdil dengan ruas memendek, daun bergaris kuning putus-putus sejajar tulang daun, dan tongkolnya kecil atau tidak terbentuk.',
+    pembanding: [
+      { cek: 'Buka gulungan daun pucuk. Wereng jagung bergerombol DI DALAM gulungan itu — bukan di permukaan bawah daun terbuka seperti kutu daun jagung, yang bergerombol rapat dan meninggalkan embun madu lengket.',
+        membantah: { id: 'op:pst:00000048', label: 'Kutu daun jagung' } },
+      { cek: 'Lihat garis kuning pada daunnya. Wereng jagung menularkan virus yang memberi garis PUTUS-PUTUS sejajar tulang daun pada tanaman kerdil; bulai memberi garis kuning MEMANJANG penuh dengan tepung putih di permukaan bawah pada pagi berembun.',
+        membantah: { id: 'op:pst:00000043', label: 'Bulai' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000154', dari: 'op:pst:00001662', nama: 'Penyakit Karat',
+    key: 'karat-jagung', label: 'Karat jagung',
+    inang: [JAGUNG],
+    definition:
+      'Menumpuk di dataran TINGGI dan pada musim berembun panjang; di dataran rendah panas ia jarang jadi masalah. Merugikan bila menyerang sebelum berbunga — sesudah pengisian biji, daun yang berkarat sudah tidak banyak mengubah hasil, dan menyemprot pada saat itu ongkos tanpa balasan.',
+    gejala:
+      'Bintil kecil lonjong COKLAT KEMERAHAN seperti karat besi bertaburan di kedua permukaan daun, dan bila diusap dengan jari meninggalkan bubuk berwarna karat. Bintilnya menonjol dan pecah, bukan bercak rata. Pada serangan berat daun mengering dari bawah.',
+    pembanding: [
+      { cek: 'Usap bintilnya dengan jari. Karat meninggalkan BUBUK berwarna karat di jari karena bintilnya pecah menaburkan spora; bercak hawar daun jagung rata, tidak menonjol, dan tidak meninggalkan bubuk apa pun.',
+        membantah: { id: 'op:pst:00000044', label: 'Hawar daun jagung' } },
+      { cek: 'Perhatikan bentuknya. Karat memberi bintil BULAT LONJONG kecil bertaburan; hawar daun memberi bercak panjang berbentuk perahu sepanjang beberapa sentimeter.',
+        membantah: { id: 'op:pst:00000044', label: 'Hawar daun jagung' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000155', dari: 'op:pst:00001697', nama: 'Penyakit Bercak Daun',
+    key: 'hawar-daun-maydis', label: 'Hawar daun maydis',
+    inang: [JAGUNG],
+    definition:
+      'Hawar jagung yang kedua, dan bedanya dari yang pertama bukan bentuk pengendaliannya melainkan IKLIMNYA: yang ini menumpuk di dataran RENDAH yang panas dan lembap, sementara hawar daun jagung lebih menyukai dataran menengah dan tinggi. Bertahan pada sisa tanaman, jadi jagung yang ditanam terus-menerus di petak yang sama menaikkannya musim demi musim.',
+    gejala:
+      'Bercak lonjong SEJAJAR tulang daun, coklat kekuningan bertepi lebih tua, panjangnya satu sampai dua sentimeter dan dibatasi tulang daun sehingga sisinya lurus. Bercaknya banyak dan menyatu jadi bidang kering; menyerang dari daun bawah ke atas.',
+    pembanding: [
+      { cek: 'Ukur dan lihat bentuk bercaknya. Hawar maydis memberi bercak PENDEK satu sampai dua sentimeter dengan sisi lurus dibatasi tulang daun; hawar daun jagung memberi bercak panjang berbentuk perahu yang melampaui tulang daun.',
+        membantah: { id: 'op:pst:00000044', label: 'Hawar daun jagung' } },
+      { cek: 'Ingat ketinggian tempatnya. Hawar maydis menumpuk di dataran rendah panas lembap; kalau kebunnya di dataran tinggi berembun, yang lebih mungkin hawar daun jagung atau karat.',
+        membantah: { id: 'op:pst:00000044', label: 'Hawar daun jagung' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000156', dari: 'op:pst:00001934', nama: 'Penyakit Busuk Tongkol',
+    key: 'busuk-tongkol', label: 'Busuk tongkol',
+    inang: [JAGUNG],
+    definition:
+      'Bahayanya berlanjut SESUDAH panen: tongkol yang terserang menghasilkan biji yang berjamur di penyimpanan, dan sebagian jamur busuk tongkol menghasilkan racun yang menyusahkan bila jagungnya dipakai untuk pakan. Masuk lewat luka — bekas gerekan, bekas patukan burung, kelobot yang terbuka — dan lewat ujung tongkol yang basah. Memanen tepat waktu dan mengeringkan cepat lebih menentukan daripada penyemprotan.',
+    gejala:
+      'Biji pada tongkol tertutup jamur berwarna PUTIH KELABU sampai kehitaman, mulai dari pangkal atau ujung tongkol, dan biji yang terkena kusam, ringan, serta melekat satu sama lain. Kelobot yang menutupinya ikut mengering dan menempel; tongkol yang dibuka berbau apak.',
+    pembanding: [
+      { cek: 'Buka kelobot dan lihat dari mana busuknya bermula. Busuk tongkol bermula dari PANGKAL atau UJUNG dan menyebar sepanjang tongkol; kerusakan yang terpusat pada beberapa biji berlubang dengan kotoran halus penyebabnya penggerek.',
+        membantah: { id: 'op:pst:00000047', label: 'Penggerek batang jagung' } },
+      { cek: 'Periksa apakah ada luka atau gerekan pada tongkol yang berjamur. Busuk tongkol hampir selalu MENUMPANG pada luka; menutup jalan masuknya — menahan penggerek dan memanen tepat waktu — lebih menolong daripada menyemprot tongkol yang sudah berjamur.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000157', dari: 'op:pst:00002235', nama: 'Ulat Jengkal',
+    key: 'ulat-jengkal-kubis', label: 'Ulat jengkal kubis',
+    inang: [KUBIS, SAWI],
+    definition:
+      'Ulatnya berjalan MELENGKUNG seperti mengukur jengkal karena kaki tengahnya berkurang — itu satu-satunya ciri yang tidak bisa tertukar dengan ulat kubis lain. Memakan daun luar lebih dulu dan baru masuk ke krop, jadi ia terlihat lebih awal daripada ulat krop dan masih bisa ditangani sebelum kropnya rusak.',
+    gejala:
+      'Daun luar berlubang besar tidak beraturan, tepinya tergerus, dan pada permukaan bawah ada ulat hijau bergaris putih tipis yang berjalan MELENGKUNG mengangkat badan tengahnya. Kotoran hijau kehitaman bertaburan di ketiak daun.',
+    pembanding: [
+      { cek: 'Perhatikan cara ulatnya berjalan. Ulat jengkal melengkung mengangkat badan tengah setiap langkah; ulat daun kubis berjalan rata dan menjatuhkan diri dengan benang sutera bila disentuh.',
+        membantah: { id: 'op:pst:00000049', label: 'Ulat daun kubis' } },
+      { cek: 'Lihat di mana kerusakannya. Ulat jengkal memakan DAUN LUAR lebih dulu; ulat krop masuk langsung ke titik tumbuh dan kerusakannya baru terlihat saat krop dibelah.',
+        membantah: { id: 'op:pst:00000050', label: 'Ulat krop' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000158', dari: 'op:pst:00001514', nama: 'Penyakit Karat Daun',
+    key: 'karat-kacang-panjang', label: 'Karat kacang panjang',
+    inang: [KACANG_PANJANG, KACANG_HIJAU],
+    definition:
+      'Menumpuk pada musim hujan dan pada pertanaman yang rapat serta lembap; jarak tanam dan pemangkasan sulur bagian bawah menurunkannya tanpa semprotan. Menyerang dari daun tua ke atas, dan bila mencapai daun muda sebelum polong terisi, hasilnya turun tajam.',
+    gejala:
+      'Bintil kecil menonjol COKLAT KEMERAHAN di permukaan BAWAH daun, mula-mula terpencar lalu rapat, dan bila diusap meninggalkan bubuk warna karat di jari. Dari atas terlihat sebagai bintik kuning pucat tepat di atas tiap bintil. Daun tua menguning lalu rontok.',
+    pembanding: [
+      { cek: 'Balik daun dan usap bintilnya. Karat menonjol di permukaan BAWAH dan meninggalkan bubuk warna karat; bercak daun kacang panjang rata, bersudut, dibatasi tulang daun, dan tidak berbubuk.',
+        membantah: { id: 'op:pst:00000097', label: 'Bercak daun kacang panjang' } },
+      { cek: 'Lihat urutan daun yang terkena. Karat naik dari daun TUA ke daun muda; kerusakan yang bermula di pucuk dan daun termuda penyebabnya hama pengisap, bukan karat.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000159', dari: 'op:pst:00001536', nama: 'Penyakit Kudis',
+    key: 'kudis-kacang-hijau', label: 'Kudis kacang hijau',
+    inang: [KACANG_HIJAU],
+    definition:
+      'Menyerang bagian yang masih MUDA — daun yang baru membuka, tangkai, dan polong muda — dan berhenti begitu jaringannya mengeras, sehingga penyemprotan hanya berarti pada fase pertumbuhan cepat. Menumpuk pada musim hujan berangin, karena percikan air yang memindahkan sporanya. Bertahan pada sisa tanaman dan pada benih.',
+    gejala:
+      'Bercak kecil menonjol seperti KUDIS di daun, tangkai, dan polong: coklat kemerahan dengan tengah kelabu kasar, dan bila diraba terasa berkerak. Daun muda yang bercaknya rapat menggulung dan terpuntir; polong yang terkena bengkok dan bijinya kecil.',
+    pembanding: [
+      { cek: 'Raba bercaknya. Kudis MENONJOL dan berkerak kasar seperti amplas; bercak daun rata dan hanya terlihat sebagai perubahan warna.',
+        membantah: { id: 'op:pst:00000097', label: 'Bercak daun kacang panjang' } },
+      { cek: 'Lihat apakah TANGKAI dan POLONG ikut berbercak, bukan cuma daunnya. Kudis mengenai ketiganya; penyakit daun yang berhenti di daun bukan ini.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000160', dari: 'op:pst:00001453', nama: 'Penyakit Gugur Daun',
+    key: 'gugur-daun-karet', label: 'Gugur daun karet',
+    inang: [KARET],
+    definition:
+      'Menggugurkan daun di luar musim gugur daun alaminya, dan itu yang membedakannya dari daun yang rontok karena musim: pohon yang menggugurkan daun berulang kali dalam setahun menurunkan hasil sadapan musim berikutnya. Menumpuk pada musim hujan dengan kelembapan tinggi terus-menerus. Menyerang daun TUA lebih dulu, berbeda dari gugur daun yang menyerang daun muda saat pohon bertunas.',
+    gejala:
+      'Bercak bulat COKLAT bertepi lebih tua pada daun tua, sering dengan titik hitam kecil di tengahnya, dan bercaknya melebar sampai menyatu. Daun menguning lalu gugur berjatuhan di bawah tajuk walau bukan musim gugur daun; tajuk menipis berpetak-petak di kebun.',
+    pembanding: [
+      { cek: 'Ingat waktunya. Gugur daun karena penyakit terjadi di LUAR musim gugur daun tahunan dan berulang; gugur daun musiman menggugurkan seluruh kebun serempak lalu pohon bertunas kembali.' },
+      { cek: 'Lihat umur daun yang gugur. Pintu ini untuk gugur daun yang mengenai daun TUA berbercak bulat bertitik hitam; bercak pada daun muda yang baru membuka saat pohon bertunas penyebabnya lain dan waktu penyemprotannya berbeda.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000161', dari: 'op:pst:00001874', nama: 'Penyakit Jamur Upas',
+    key: 'jamur-upas', label: 'Jamur upas',
+    inang: [KAKAO, APEL, KARET],
+    definition:
+      'Menyerang CABANG dan batang, bukan daun, dan cabang yang sudah dilingkari seluruhnya tidak bisa diselamatkan — yang bisa hanya memotongnya di bawah batas serangan sebelum menyebar. Karena itu keputusannya soal waktu memeriksa, bukan soal bahan aktif: sekali terlihat merah muda, cabangnya sudah mati. Menumpuk di kebun rapat yang lembap dan kurang cahaya.',
+    gejala:
+      'Lapisan tipis merah JAMBU sampai jingga menempel rata di kulit cabang, seperti dicat, sering dimulai dari sisi bawah cabang. Di atas batas lapisan itu daun menguning dan cabangnya mati mengering sementara bagian bawahnya masih hidup. Kulit di bawah lapisan itu mengelupas dan mengeluarkan getah kering.',
+    pembanding: [
+      { cek: 'Lihat WARNANYA dan di mana ia menempel. Jamur upas berwarna merah jambu sampai jingga menempel rata di KULIT CABANG; jamur akar putih memberi benang putih rata di AKAR dan pangkal batang, di bawah permukaan tanah.',
+        membantah: { id: 'op:pst:00000115', label: 'Jamur akar putih' } },
+      { cek: 'Periksa apakah bagian cabang di BAWAH lapisan itu masih hidup. Jamur upas mematikan cabang dari batas lapisannya ke ujung; pohon yang mati dari bawah ke atas penyebabnya akar, bukan ini.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000162', dari: 'op:pst:00002332', nama: 'Didymella bryoniae',
+    key: 'busuk-batang-bergetah', label: 'Busuk batang bergetah',
+    inang: [SEMANGKA, MELON, MENTIMUN],
+    definition:
+      'Masuk lewat LUKA — bekas pangkas sulur, bekas petik, retakan batang — sehingga pekerjaan tangan di kebun basah adalah cara penularannya yang paling sering. Karena itu memangkas saat kering dan tidak berpindah petak dengan alat yang sama menurunkannya lebih banyak daripada menambah semprotan. Terbawa benih dan bertahan pada sisa tanaman.',
+    gejala:
+      'Batang dekat pangkal atau di ketiak sulur retak memanjang dan mengeluarkan GETAH coklat kemerahan yang mengering seperti damar, dan di sekitarnya jaringan mencoklat berbatas jelas. Daun bertepi bercak coklat kekuningan bersudut yang meluas dari tepi ke dalam; tanaman layu sebagian, sisi yang batangnya terluka lebih dulu.',
+    pembanding: [
+      { cek: 'Cari GETAH kering berwarna coklat kemerahan di retakan batang. Busuk batang bergetah meninggalkannya; layu fusarium tidak mengeluarkan getah, dan batangnya bila dibelah memperlihatkan pembuluh yang mencoklat dari dalam.',
+        membantah: { id: 'op:pst:00000008', label: 'Layu fusarium' } },
+      { cek: 'Lihat apakah layunya sebagian atau seluruh tanaman sekaligus. Busuk batang bergetah mematikan sisi yang batangnya terluka lebih dulu; layu bakteri melayukan seluruh tanaman dalam hitungan hari sementara daunnya masih hijau.',
+        membantah: { id: 'op:pst:00000009', label: 'Layu bakteri' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000163', dari: 'op:pst:00001592', nama: 'Hama Kutu Daun',
+    key: 'kutu-daun-bawang', label: 'Kutu daun bawang',
+    inang: [BAWANG_MERAH, BAWANG_PUTIH],
+    definition:
+      'Kutu daun yang khusus Allium, dan bertahan di gudang pada umbi yang disimpan — jadi umbi bibit yang berkutu membawanya ke petak baru, dan memeriksa bibit sebelum tanam menutup jalur yang paling sering. Menumpuk pada musim kering. Semut yang naik-turun daun memeliharanya.',
+    gejala:
+      'Gerombolan kutu kecil COKLAT KEMERAHAN sampai kehitaman di pangkal daun dan di sela daun yang masih menggulung, rapat sampai bertumpuk. Daun terpuntir dan menguning dari ujung, permukaannya lengket oleh embun madu, dan di atas lengket itu tumbuh jelaga hitam.',
+    pembanding: [
+      { cek: 'Buka sela daun yang masih menggulung di pangkal. Kutu daun bawang bergerombol DI SANA dan berwarna coklat kemerahan sampai kehitaman; trips bawang jauh lebih kecil, kuning kecoklatan, dan meninggalkan bercak keperakan bukan gerombolan.',
+        membantah: { id: 'op:pst:00000013', label: 'Trips bawang' } },
+      { cek: 'Raba permukaan daunnya. Kutu daun meninggalkan LENGKET embun madu yang lalu berjelaga hitam; trips tidak meninggalkan apa pun yang lengket.',
+        membantah: { id: 'op:pst:00000013', label: 'Trips bawang' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000164', dari: 'op:pst:00001502', nama: 'Belalang',
+    key: 'belalang-kelapa', label: 'Belalang kelapa',
+    inang: [KELAPA],
+    definition:
+      'Aktif MALAM dan bersembunyi di ketiak pelepah siang hari, sehingga kebun yang terlihat rusak parah sering diperiksa tanpa menemukan seekor pun. Kerusakannya menumpuk lambat tetapi tidak pulih cepat: pelepah yang habis dimakan tidak diganti sampai pelepah baru terbentuk, dan buah muda rontok berbulan-bulan sesudahnya. Menyebar dari pohon ke pohon lewat tajuk yang bersentuhan.',
+    gejala:
+      'Anak daun pelepah habis dimakan dari tepi sehingga tinggal lidi, dimulai dari pelepah TUA di bawah dan naik ke atas; tajuk terlihat compang-camping seperti sapu. Bunga dan buah muda ikut dimakan lalu rontok. Belalang hijau kecoklatan bersungut sangat panjang ditemukan di ketiak pelepah pada siang hari.',
+    pembanding: [
+      { cek: 'Periksa ketiak pelepah pada SIANG hari, atau datang malam dengan senter. Belalang kelapa bersembunyi di sana dan bersungut lebih panjang daripada badannya — tidak ada belalang lain di kelapa yang begitu.' },
+      { cek: 'Lihat dari pelepah mana kerusakannya bermula. Belalang kelapa memakan dari pelepah TUA di bawah ke atas; kumbang tanduk merusak pucuk yang belum membuka sehingga daun baru keluar bergerigi seperti digunting segitiga.',
+        membantah: { id: 'op:pst:00000075', label: 'Kumbang tanduk' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000165', dari: 'op:pst:00001760', nama: 'Penggerek Pucuk',
+    key: 'penggerek-pucuk-tembakau', label: 'Penggerek pucuk tembakau',
+    inang: [TEMBAKAU],
+    definition:
+      'Menggerek titik tumbuh, dan itu yang membuatnya berbeda dari ulat pemakan daun mana pun: satu ulat menghabisi satu tanaman, karena pucuk yang mati menghentikan pembentukan daun yang justru jadi hasilnya. Kerabat dekat penggerek buah yang menyerang tomat dan jagung, dan bergerak di antara ketiganya bila ditanam berdekatan.',
+    gejala:
+      'Pucuk berlubang dan mengeluarkan kotoran halus seperti serbuk gergaji di ketiaknya; daun termuda yang membuka sesudahnya berlubang berderet karena tergerek saat masih terlipat. Pucuk akhirnya mati dan tanaman mengeluarkan tunas samping berlebihan.',
+    pembanding: [
+      { cek: 'Cari KOTORAN halus seperti serbuk gergaji di ketiak pucuk. Penggerek pucuk meninggalkannya karena ia menggerek dari dalam; ulat grayak memakan dari luar dan tidak meninggalkan serbuk di dalam ketiak.',
+        membantah: { id: 'op:pst:00000005', label: 'Ulat grayak' } },
+      { cek: 'Lihat apakah lubang pada daun BERDERET rapi. Daun yang tergerek saat masih terlipat membuka dengan lubang berderet; lubang yang tersebar tidak beraturan penyebabnya ulat pemakan daun.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000166', dari: 'op:pst:00001507', nama: 'Hama Jembret',
+    key: 'jembret', label: 'Jembret',
+    inang: [TAMBAK],
+    definition:
+      'Udang kecil liar yang masuk bersama air pasang dan BERSAING dengan udang atau bandeng yang dipelihara — memakan pakan yang ditebar dan menghabiskan oksigen — bukan memangsa. Karena itu pengendaliannya terjadi saat persiapan tambak, sebelum benur ditebar; sesudah benur masuk, hampir tidak ada yang bisa dipakai tanpa membahayakan yang dipelihara. Penyaringan air masuk lebih menentukan daripada bahan apa pun.',
+    gejala:
+      'Udang kecil bening kelabu sepanjang kuku jari berenang bergerombol di permukaan air terutama pagi dan senja, dan terangkat banyak bila air diciduk dengan ember. Pakan cepat habis tetapi udang atau bandeng yang dipelihara tidak bertambah besar; air terlihat berkabut oleh gerombolannya.',
+    pembanding: [
+      { cek: 'Ciduk air dengan ember pada pagi hari dan lihat isinya. Jembret bening kelabu, berukuran seragam kecil, dan bergerombol; benur yang dipelihara berukuran lebih besar dan menyebar, bukan bergerombol di permukaan.' },
+      { cek: 'Periksa saringan air masuk sebelum menyimpulkan. Jembret masuk bersama air pasang; kalau saringannya rusak atau terlalu kasar, mengobati petaknya tidak akan menyelesaikan apa pun karena ia masuk lagi pada pasang berikutnya.' },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -3011,6 +3286,8 @@ const KELOMPOK = [
   { kunci: 'ekor', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR },
 
   { kunci: 'ekor2', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR2 },
+
+  { kunci: 'ekor3', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR3 },
 ];
 
 // ---------------------------------------------------------------------------

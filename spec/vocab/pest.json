@@ -1779,6 +1779,12 @@
           "id": "Alternaria porri",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 213 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Alternaria alii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1791,6 +1797,7 @@
         "Altemaria porri",
         "Altenaria porri",
         "Alternari porri",
+        "Alternaria alii",
         "Alternaria porii",
         "Bercak Unggu",
         "Bercak Ungu",
@@ -4682,8 +4689,8 @@
             "id": "Raba permukaan bercaknya dengan jari. Hawar daun jagung kering rata dan tidak meninggalkan apa pun di jari; karat daun meninggalkan bintil kecil yang pecah dan menyisakan SERBUK coklat kemerahan."
           },
           "rules_out": {
-            "id": "op:pst:00001662",
-            "label": "Penyakit Karat"
+            "id": "op:pst:00000154",
+            "label": "Karat jagung"
           }
         }
       ],
@@ -8799,6 +8806,12 @@
           "id": "Podosphaera xantii",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sphaerotheca fuliginea",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -8808,7 +8821,8 @@
       },
       "synonyms": [
         "Penyakit Embun Tepung",
-        "Podosphaera xantii"
+        "Podosphaera xantii",
+        "Sphaerotheca fuliginea"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -9972,6 +9986,18 @@
           "id": "Ideocerus spp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Idioscopus sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Idiocerus spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -9982,6 +10008,9 @@
       "synonyms": [
         "Hama Wereng Mangga",
         "Ideocerus spp.",
+        "Idiocerus spp.",
+        "Idioscopus sp.",
+        "Wereng",
         "Wereng Mangga"
       ],
       "taxonomic_rank": "genus",
@@ -10835,6 +10864,18 @@
           "id": "Diconocoris hewitti",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diplogomphus hewitti",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diplogomphus hewiti",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -10844,8 +10885,12 @@
       },
       "synonyms": [
         "Diconocoris hewitti",
+        "Diplogomphus hewiti",
+        "Diplogomphus hewitti",
         "Hama Penghisap Buah",
-        "Hama Penghisap Bunga"
+        "Hama Penghisap Bunga",
+        "Penghisap Bunga",
+        "Pengisap Bunga"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -11070,6 +11115,12 @@
           "id": "Colletrotichum capsici",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coletrotichum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -11080,6 +11131,7 @@
       },
       "synonyms": [
         "Antraknosa",
+        "Coletrotichum capsici",
         "Collectotricum capsici",
         "Colletotrchum capsici",
         "Colletotricum capsici",
@@ -11451,6 +11503,12 @@
           "id": "Rhyzopertha dominica",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rhizopertha dominica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -11463,6 +11521,7 @@
         "Hama Beras",
         "Hama Gudang",
         "Kumbang Bubuk Gabah",
+        "Rhizopertha dominica",
         "Rhyzoperta dominica"
       ],
       "taxonomic_rank": "species",
@@ -11816,6 +11875,12 @@
           "uri": "https://www.gbif.org/species/9040016",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Gastropoda; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Cerithidea'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cerithidae sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -11824,6 +11889,7 @@
         "created_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
+        "Cerithidae sp.",
         "Hama Siput Trisipan",
         "Siput Trisipan"
       ],
@@ -13463,6 +13529,1423 @@
           "rules_out": {
             "id": "op:pst:00000122",
             "label": "Kumbang tepung"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000148",
+      "key": "busuk-bulir-bakteri",
+      "label": {
+        "id": "Busuk bulir bakteri"
+      },
+      "pest_kind": "disease_bacterial",
+      "scientific_name": "Burkholderia glumae",
+      "hosts": [
+        {
+          "id": "op:cmd:00000006",
+          "label": "Padi"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang tepat saat berbunga sampai pengisian, dan menumpuk pada malam yang panas sesudah hujan — jadi ia penyakit MUSIM, bukan penyakit petak. Terbawa benih, sehingga gabah dari petak yang terserang meneruskannya ke musim berikutnya, dan itu titik paling murah untuk memutusnya. Bakteri: fungisida tidak menyentuhnya."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Burkholderia glumae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "3219966",
+          "uri": "https://www.gbif.org/species/3219966",
+          "relation": "exact",
+          "note": "Kingdom Bacteria, kelas Gammaproteobacteria; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pseudomonas glumae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Busuk Gabah",
+        "Pseudomonas glumae"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Bacteria"
+      },
+      "symptoms": {
+        "id": "Bulir pada malai berubah COKLAT KEMERAHAN dari pangkal ke ujung sementara malainya tetap tegak, dan bulir yang terkena hampa atau berisi sebagian. Warnanya berbatas jelas dengan bulir sehat di sebelahnya, dan bercaknya tidak berdebu maupun bergumpal."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Pijit bulir yang mencoklat. Busuk bulir bakteri menyisakan bulir HAMPA atau setengah isi tanpa serbuk apa pun; gosong palsu menggantikan bulirnya dengan gumpalan berdebu hijau kehitaman yang jauh lebih besar."
+          },
+          "rules_out": {
+            "id": "op:pst:00000133",
+            "label": "Gosong palsu"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah SELURUH malai putih hampa atau cuma sebagian bulirnya yang mencoklat. Busuk bulir mengenai bulir satu-satu; malai yang hampa seluruhnya dan mudah dicabut penyebabnya penggerek batang."
+          },
+          "rules_out": {
+            "id": "op:pst:00000030",
+            "label": "Penggerek batang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000149",
+      "key": "ulat-grayak-padi",
+      "label": {
+        "id": "Ulat grayak padi"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Mythimna separata",
+      "hosts": [
+        {
+          "id": "op:cmd:00000006",
+          "label": "Padi"
+        }
+      ],
+      "definition": {
+        "id": "Berbeda dari ulat grayak sayuran: yang ini menyerang BERGEROMBOL dan berpindah dari petak ke petak seperti pasukan, sehingga petak yang bersih pagi ini bisa gundul sore nanti. Menumpuk sesudah musim kering panjang yang diputus hujan, dan pada padi gogo lebih sering daripada di sawah berair. Aktif malam; siang hari ia bersembunyi di pangkal rumpun dan di retakan tanah."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "5802396",
+          "uri": "https://www.gbif.org/species/5802396",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mythimna separata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mythmna sepurata",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Mythmna sepurata",
+        "Ulat Grayak"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun habis dimakan dari tepi sampai tinggal tulang daun, merata di satu bagian petak dan berbatas tegas dengan bagian yang belum terserang. Pada fase malai, tangkai malai terpotong sehingga malai jatuh. Ulat berwarna coklat kelabu bergaris memanjang, ditemukan di pangkal rumpun atau retakan tanah pada siang hari."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Korek pangkal rumpun dan retakan tanah pada SIANG hari. Ulat grayak padi bersembunyi di sana dan keluar malam; ulat yang terlihat makan di siang bolong biasanya ulat lain."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat batas kerusakannya. Ulat grayak padi menggunduli satu bagian petak dengan batas tegas lalu maju bergerombol; hama putih palsu meninggalkan daun tergulung dan memutih menerawang yang tersebar merata."
+          },
+          "rules_out": {
+            "id": "op:pst:00000034",
+            "label": "Hama putih palsu"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000150",
+      "key": "lundi-padi",
+      "label": {
+        "id": "Lundi padi"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Holotrichia helleri",
+      "hosts": [
+        {
+          "id": "op:cmd:00000006",
+          "label": "Padi"
+        }
+      ],
+      "definition": {
+        "id": "Yang merusak LARVANYA di dalam tanah, bukan kumbangnya, sehingga tanaman terlihat kekurangan air atau hara sampai dicabut. Masalah padi GOGO dan sawah tadah hujan; pada sawah yang tergenang terus ia tidak bertahan, dan menggenangi petak beberapa hari adalah tindakan yang lebih murah daripada menyemprot. Satu generasi setahun, muncul serempak pada awal musim hujan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Holotrichia helleri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4993958",
+          "uri": "https://www.gbif.org/species/4993958",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Rumpun menguning dan layu berpetak-petak walau tanahnya lembap, dan bila ditarik rumpunnya LEPAS dengan mudah karena akarnya habis. Di tanah sekitar akar ada larva putih gemuk melengkung seperti huruf C dengan kepala coklat dan tiga pasang kaki di depan."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tarik rumpun yang menguning. Lundi membuat rumpun LEPAS ringan tanpa akar; rumpun yang menguning tetapi akarnya masih mencengkeram penyebabnya hara atau penyakit, bukan hama tanah."
+          }
+        },
+        {
+          "check": {
+            "id": "Korek tanah sedalam sejengkal di bawah rumpun yang mati. Larva lundi melengkung seperti huruf C, gemuk, dan berkaki tiga pasang; orong-orong bertubuh lurus dengan kaki depan melebar seperti sekop."
+          },
+          "rules_out": {
+            "id": "op:pst:00000142",
+            "label": "Orong-orong"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000151",
+      "key": "kepinding-tanah",
+      "label": {
+        "id": "Kepinding tanah"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Scotinophara sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00000006",
+          "label": "Padi"
+        }
+      ],
+      "definition": {
+        "id": "Mengisap pangkal batang di batas air, bukan daun maupun malai, sehingga gejalanya mudah dikira kekurangan hara. Bersembunyi di pangkal rumpun dan di celah tanah siang hari dan naik malam; karena itu pengamatan siang hampir selalu menyatakan tidak ada apa-apa. Tertarik lampu, sehingga perangkap lampu berguna untuk mengetahui kapan populasinya naik."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Scotinophara sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2079209",
+          "uri": "https://www.gbif.org/species/2079209",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Scotinophara'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Scotinophara",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Rumpun kerdil dan menguning dari daun bawah, anakan berkurang, dan pada serangan berat rumpun mengering berpetak seperti terbakar. Di pangkal batang tepat di batas air ada kepik pipih coklat kehitaman sepanjang sebutir beras yang mengeluarkan BAU MENYENGAT bila diganggu."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka pangkal rumpun di batas air dan cium. Kepinding tanah mengeluarkan bau menyengat khas dan berkumpul di pangkal batang; walang sangit berbau serupa tetapi berada di MALAI, bukan di pangkal, dan menyerang saat bulir masak susu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000035",
+            "label": "Walang sangit"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa malam hari atau pasang perangkap lampu. Kepinding tanah naik ke batang saat gelap; petak yang siangnya terlihat bersih bisa penuh saat diperiksa malam."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000152",
+      "key": "bulir-kotor",
+      "label": {
+        "id": "Bulir kotor"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Dirty panicle",
+      "hosts": [
+        {
+          "id": "op:cmd:00000006",
+          "label": "Padi"
+        }
+      ],
+      "definition": {
+        "id": "Bukan satu jamur melainkan BEBERAPA yang menumpang pada bulir yang sudah terluka atau yang pengisiannya terganggu — registri sendiri menuliskannya sebagai \"Dirty panicle\", nama gejala, bukan nama organisme. Karena itu pintu ini menjanjikan cirinya dan bukan penyebabnya, dan yang paling menentukan justru sebabnya yang lebih dulu: tusukan walang sangit, hujan saat berbunga, atau pemupukan nitrogen berlebih."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dirty panicle",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "none",
+        "checked_at": "2026-08-19",
+        "confidence": 100,
+        "needs_review": true,
+        "review_reason": "Tidak ada padanan di GBIF; pest_kind masih hasil simpulan dari nama Indonesia."
+      },
+      "symptoms": {
+        "id": "Bulir bernoda COKLAT sampai kehitaman tidak beraturan, sebagian berbercak kelabu berjelaga, tersebar tidak merata pada malai dan bercampur dengan bulir yang bersih. Gabahnya ringan dan berasnya berbintik saat digiling. Malainya sendiri tetap tegak dan hijau."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa apakah ada tusukan kecil pada bulir yang bernoda, dan cari walang sangit pada malai menjelang senja. Bulir kotor sangat sering MENUMPANG pada bekas tusukan; kalau walang sangitnya masih ada, yang perlu ditangani lebih dulu itu."
+          },
+          "rules_out": {
+            "id": "op:pst:00000035",
+            "label": "Walang sangit"
+          }
+        },
+        {
+          "check": {
+            "id": "Bandingkan sebaran nodanya. Bulir kotor bernoda tidak beraturan dan bercampur bulir bersih di malai yang sama; bercak coklat padi memberi bercak bulat lonjong seragam yang juga ada di DAUN, bukan cuma di bulir."
+          },
+          "rules_out": {
+            "id": "op:pst:00000134",
+            "label": "Bercak coklat padi"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000153",
+      "key": "wereng-jagung",
+      "label": {
+        "id": "Wereng jagung"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Peregrinus maidis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001002",
+          "label": "Jagung"
+        }
+      ],
+      "definition": {
+        "id": "Yang merugikan bukan isapannya melainkan VIRUS yang dibawanya — mosaik kerdil jagung — dan tanaman yang sudah terinfeksi tidak bisa dipulihkan. Karena itu keputusannya soal waktu: menahan wereng pada bulan pertama menentukan, menyemprot sesudah tanaman kerdil tidak. Menumpuk pada musim kering dan pada pertanaman yang tidak serempak."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "5156453",
+          "uri": "https://www.gbif.org/species/5156453",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pereginus maydis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Peregrinus maidis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Wereng",
+        "Pereginus maydis",
+        "Wereng"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Wereng kecil putih kekuningan bergerombol di dalam GULUNGAN daun pucuk, terlihat begitu daun termuda dibuka, dan berlompatan saat terganggu. Tanaman yang terinfeksi virusnya kerdil dengan ruas memendek, daun bergaris kuning putus-putus sejajar tulang daun, dan tongkolnya kecil atau tidak terbentuk."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka gulungan daun pucuk. Wereng jagung bergerombol DI DALAM gulungan itu — bukan di permukaan bawah daun terbuka seperti kutu daun jagung, yang bergerombol rapat dan meninggalkan embun madu lengket."
+          },
+          "rules_out": {
+            "id": "op:pst:00000048",
+            "label": "Kutu daun jagung"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat garis kuning pada daunnya. Wereng jagung menularkan virus yang memberi garis PUTUS-PUTUS sejajar tulang daun pada tanaman kerdil; bulai memberi garis kuning MEMANJANG penuh dengan tepung putih di permukaan bawah pada pagi berembun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000043",
+            "label": "Bulai"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000154",
+      "key": "karat-jagung",
+      "label": {
+        "id": "Karat jagung"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Puccinia sorghi",
+      "hosts": [
+        {
+          "id": "op:cmd:00001002",
+          "label": "Jagung"
+        }
+      ],
+      "definition": {
+        "id": "Menumpuk di dataran TINGGI dan pada musim berembun panjang; di dataran rendah panas ia jarang jadi masalah. Merugikan bila menyerang sebelum berbunga — sesudah pengisian biji, daun yang berkarat sudah tidak banyak mengubah hasil, dan menyemprot pada saat itu ongkos tanpa balasan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Puccinia sorghi",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2514966",
+          "uri": "https://www.gbif.org/species/2514966",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Pucciniomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bintil kecil lonjong COKLAT KEMERAHAN seperti karat besi bertaburan di kedua permukaan daun, dan bila diusap dengan jari meninggalkan bubuk berwarna karat. Bintilnya menonjol dan pecah, bukan bercak rata. Pada serangan berat daun mengering dari bawah."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Usap bintilnya dengan jari. Karat meninggalkan BUBUK berwarna karat di jari karena bintilnya pecah menaburkan spora; bercak hawar daun jagung rata, tidak menonjol, dan tidak meninggalkan bubuk apa pun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000044",
+            "label": "Hawar daun jagung"
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan bentuknya. Karat memberi bintil BULAT LONJONG kecil bertaburan; hawar daun memberi bercak panjang berbentuk perahu sepanjang beberapa sentimeter."
+          },
+          "rules_out": {
+            "id": "op:pst:00000044",
+            "label": "Hawar daun jagung"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000155",
+      "key": "hawar-daun-maydis",
+      "label": {
+        "id": "Hawar daun maydis"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Helminthosporium maydis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001002",
+          "label": "Jagung"
+        }
+      ],
+      "definition": {
+        "id": "Hawar jagung yang kedua, dan bedanya dari yang pertama bukan bentuk pengendaliannya melainkan IKLIMNYA: yang ini menumpuk di dataran RENDAH yang panas dan lembap, sementara hawar daun jagung lebih menyukai dataran menengah dan tinggi. Bertahan pada sisa tanaman, jadi jagung yang ditanam terus-menerus di petak yang sama menaikkannya musim demi musim."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helminthosporium maydis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2615947",
+          "uri": "https://www.gbif.org/species/2615947",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak lonjong SEJAJAR tulang daun, coklat kekuningan bertepi lebih tua, panjangnya satu sampai dua sentimeter dan dibatasi tulang daun sehingga sisinya lurus. Bercaknya banyak dan menyatu jadi bidang kering; menyerang dari daun bawah ke atas."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Ukur dan lihat bentuk bercaknya. Hawar maydis memberi bercak PENDEK satu sampai dua sentimeter dengan sisi lurus dibatasi tulang daun; hawar daun jagung memberi bercak panjang berbentuk perahu yang melampaui tulang daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000044",
+            "label": "Hawar daun jagung"
+          }
+        },
+        {
+          "check": {
+            "id": "Ingat ketinggian tempatnya. Hawar maydis menumpuk di dataran rendah panas lembap; kalau kebunnya di dataran tinggi berembun, yang lebih mungkin hawar daun jagung atau karat."
+          },
+          "rules_out": {
+            "id": "op:pst:00000044",
+            "label": "Hawar daun jagung"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000156",
+      "key": "busuk-tongkol",
+      "label": {
+        "id": "Busuk tongkol"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Diplodia maydis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001002",
+          "label": "Jagung"
+        }
+      ],
+      "definition": {
+        "id": "Bahayanya berlanjut SESUDAH panen: tongkol yang terserang menghasilkan biji yang berjamur di penyimpanan, dan sebagian jamur busuk tongkol menghasilkan racun yang menyusahkan bila jagungnya dipakai untuk pakan. Masuk lewat luka — bekas gerekan, bekas patukan burung, kelobot yang terbuka — dan lewat ujung tongkol yang basah. Memanen tepat waktu dan mengeringkan cepat lebih menentukan daripada penyemprotan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diplodia maydis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2567313",
+          "uri": "https://www.gbif.org/species/2567313",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Biji pada tongkol tertutup jamur berwarna PUTIH KELABU sampai kehitaman, mulai dari pangkal atau ujung tongkol, dan biji yang terkena kusam, ringan, serta melekat satu sama lain. Kelobot yang menutupinya ikut mengering dan menempel; tongkol yang dibuka berbau apak."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka kelobot dan lihat dari mana busuknya bermula. Busuk tongkol bermula dari PANGKAL atau UJUNG dan menyebar sepanjang tongkol; kerusakan yang terpusat pada beberapa biji berlubang dengan kotoran halus penyebabnya penggerek."
+          },
+          "rules_out": {
+            "id": "op:pst:00000047",
+            "label": "Penggerek batang jagung"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah ada luka atau gerekan pada tongkol yang berjamur. Busuk tongkol hampir selalu MENUMPANG pada luka; menutup jalan masuknya — menahan penggerek dan memanen tepat waktu — lebih menolong daripada menyemprot tongkol yang sudah berjamur."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000157",
+      "key": "ulat-jengkal-kubis",
+      "label": {
+        "id": "Ulat jengkal kubis"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Trichoplusia sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        },
+        {
+          "id": "op:cmd:00001132",
+          "label": "Sawi"
+        }
+      ],
+      "definition": {
+        "id": "Ulatnya berjalan MELENGKUNG seperti mengukur jengkal karena kaki tengahnya berkurang — itu satu-satunya ciri yang tidak bisa tertukar dengan ulat kubis lain. Memakan daun luar lebih dulu dan baru masuk ke krop, jadi ia terlihat lebih awal daripada ulat krop dan masih bisa ditangani sebelum kropnya rusak."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Trichoplusia sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1786329",
+          "uri": "https://www.gbif.org/species/1786329",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Trichoplusia'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Trichoplussiani sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Perusak Daun",
+        "Trichoplussiani sp.",
+        "Ulat Jengkal"
+      ],
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Trichoplusia",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun luar berlubang besar tidak beraturan, tepinya tergerus, dan pada permukaan bawah ada ulat hijau bergaris putih tipis yang berjalan MELENGKUNG mengangkat badan tengahnya. Kotoran hijau kehitaman bertaburan di ketiak daun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan cara ulatnya berjalan. Ulat jengkal melengkung mengangkat badan tengah setiap langkah; ulat daun kubis berjalan rata dan menjatuhkan diri dengan benang sutera bila disentuh."
+          },
+          "rules_out": {
+            "id": "op:pst:00000049",
+            "label": "Ulat daun kubis"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat di mana kerusakannya. Ulat jengkal memakan DAUN LUAR lebih dulu; ulat krop masuk langsung ke titik tumbuh dan kerusakannya baru terlihat saat krop dibelah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000050",
+            "label": "Ulat krop"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000158",
+      "key": "karat-kacang-panjang",
+      "label": {
+        "id": "Karat kacang panjang"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Uromyces vignae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
+        }
+      ],
+      "definition": {
+        "id": "Menumpuk pada musim hujan dan pada pertanaman yang rapat serta lembap; jarak tanam dan pemangkasan sulur bagian bawah menurunkannya tanpa semprotan. Menyerang dari daun tua ke atas, dan bila mencapai daun muda sebelum polong terisi, hasilnya turun tajam."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Uromyces vignae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2516036",
+          "uri": "https://www.gbif.org/species/2516036",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Pucciniomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bintil kecil menonjol COKLAT KEMERAHAN di permukaan BAWAH daun, mula-mula terpencar lalu rapat, dan bila diusap meninggalkan bubuk warna karat di jari. Dari atas terlihat sebagai bintik kuning pucat tepat di atas tiap bintil. Daun tua menguning lalu rontok."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Balik daun dan usap bintilnya. Karat menonjol di permukaan BAWAH dan meninggalkan bubuk warna karat; bercak daun kacang panjang rata, bersudut, dibatasi tulang daun, dan tidak berbubuk."
+          },
+          "rules_out": {
+            "id": "op:pst:00000097",
+            "label": "Bercak daun kacang panjang"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat urutan daun yang terkena. Karat naik dari daun TUA ke daun muda; kerusakan yang bermula di pucuk dan daun termuda penyebabnya hama pengisap, bukan karat."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000159",
+      "key": "kudis-kacang-hijau",
+      "label": {
+        "id": "Kudis kacang hijau"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Elsinoe iwatae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang bagian yang masih MUDA — daun yang baru membuka, tangkai, dan polong muda — dan berhenti begitu jaringannya mengeras, sehingga penyemprotan hanya berarti pada fase pertumbuhan cepat. Menumpuk pada musim hujan berangin, karena percikan air yang memindahkan sporanya. Bertahan pada sisa tanaman dan pada benih."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Elsinoe iwatae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "3499146",
+          "uri": "https://www.gbif.org/species/3499146",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak kecil menonjol seperti KUDIS di daun, tangkai, dan polong: coklat kemerahan dengan tengah kelabu kasar, dan bila diraba terasa berkerak. Daun muda yang bercaknya rapat menggulung dan terpuntir; polong yang terkena bengkok dan bijinya kecil."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Raba bercaknya. Kudis MENONJOL dan berkerak kasar seperti amplas; bercak daun rata dan hanya terlihat sebagai perubahan warna."
+          },
+          "rules_out": {
+            "id": "op:pst:00000097",
+            "label": "Bercak daun kacang panjang"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah TANGKAI dan POLONG ikut berbercak, bukan cuma daunnya. Kudis mengenai ketiganya; penyakit daun yang berhenti di daun bukan ini."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000160",
+      "key": "gugur-daun-karet",
+      "label": {
+        "id": "Gugur daun karet"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Pestalotiopsis sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00001464",
+          "label": "Karet"
+        }
+      ],
+      "definition": {
+        "id": "Menggugurkan daun di luar musim gugur daun alaminya, dan itu yang membedakannya dari daun yang rontok karena musim: pohon yang menggugurkan daun berulang kali dalam setahun menurunkan hasil sadapan musim berikutnya. Menumpuk pada musim hujan dengan kelembapan tinggi terus-menerus. Menyerang daun TUA lebih dulu, berbeda dari gugur daun yang menyerang daun muda saat pohon bertunas."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pestalotiopsis sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2574855",
+          "uri": "https://www.gbif.org/species/2574855",
+          "relation": "broad",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Pestalotiopsis'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Pestalotiopsis",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak bulat COKLAT bertepi lebih tua pada daun tua, sering dengan titik hitam kecil di tengahnya, dan bercaknya melebar sampai menyatu. Daun menguning lalu gugur berjatuhan di bawah tajuk walau bukan musim gugur daun; tajuk menipis berpetak-petak di kebun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Ingat waktunya. Gugur daun karena penyakit terjadi di LUAR musim gugur daun tahunan dan berulang; gugur daun musiman menggugurkan seluruh kebun serempak lalu pohon bertunas kembali."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat umur daun yang gugur. Pintu ini untuk gugur daun yang mengenai daun TUA berbercak bulat bertitik hitam; bercak pada daun muda yang baru membuka saat pohon bertunas penyebabnya lain dan waktu penyemprotannya berbeda."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000161",
+      "key": "jamur-upas",
+      "label": {
+        "id": "Jamur upas"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Corticium salmonicolor",
+      "hosts": [
+        {
+          "id": "op:cmd:00001010",
+          "label": "Kakao"
+        },
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
+        },
+        {
+          "id": "op:cmd:00001464",
+          "label": "Karet"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang CABANG dan batang, bukan daun, dan cabang yang sudah dilingkari seluruhnya tidak bisa diselamatkan — yang bisa hanya memotongnya di bawah batas serangan sebelum menyebar. Karena itu keputusannya soal waktu memeriksa, bukan soal bahan aktif: sekali terlihat merah muda, cabangnya sudah mati. Menumpuk di kebun rapat yang lembap dan kurang cahaya."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Corticium salmonicolor",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4911649",
+          "uri": "https://www.gbif.org/species/4911649",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Upasia salmonicolor",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Jamur Upas",
+        "Penyakit Jamur Upas",
+        "Upasia salmonicolor"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Lapisan tipis merah JAMBU sampai jingga menempel rata di kulit cabang, seperti dicat, sering dimulai dari sisi bawah cabang. Di atas batas lapisan itu daun menguning dan cabangnya mati mengering sementara bagian bawahnya masih hidup. Kulit di bawah lapisan itu mengelupas dan mengeluarkan getah kering."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat WARNANYA dan di mana ia menempel. Jamur upas berwarna merah jambu sampai jingga menempel rata di KULIT CABANG; jamur akar putih memberi benang putih rata di AKAR dan pangkal batang, di bawah permukaan tanah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000115",
+            "label": "Jamur akar putih"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah bagian cabang di BAWAH lapisan itu masih hidup. Jamur upas mematikan cabang dari batas lapisannya ke ujung; pohon yang mati dari bawah ke atas penyebabnya akar, bukan ini."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000162",
+      "key": "busuk-batang-bergetah",
+      "label": {
+        "id": "Busuk batang bergetah"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Didymella bryoniae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        }
+      ],
+      "definition": {
+        "id": "Masuk lewat LUKA — bekas pangkas sulur, bekas petik, retakan batang — sehingga pekerjaan tangan di kebun basah adalah cara penularannya yang paling sering. Karena itu memangkas saat kering dan tidak berpindah petak dengan alat yang sama menurunkannya lebih banyak daripada menambah semprotan. Terbawa benih dan bertahan pada sisa tanaman."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2614031",
+          "uri": "https://www.gbif.org/species/2614031",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Didymella bryoniae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Dydimella bryoniae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Didymella bryoniae",
+        "Dydimella bryoniae"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Batang dekat pangkal atau di ketiak sulur retak memanjang dan mengeluarkan GETAH coklat kemerahan yang mengering seperti damar, dan di sekitarnya jaringan mencoklat berbatas jelas. Daun bertepi bercak coklat kekuningan bersudut yang meluas dari tepi ke dalam; tanaman layu sebagian, sisi yang batangnya terluka lebih dulu."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cari GETAH kering berwarna coklat kemerahan di retakan batang. Busuk batang bergetah meninggalkannya; layu fusarium tidak mengeluarkan getah, dan batangnya bila dibelah memperlihatkan pembuluh yang mencoklat dari dalam."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah layunya sebagian atau seluruh tanaman sekaligus. Busuk batang bergetah mematikan sisi yang batangnya terluka lebih dulu; layu bakteri melayukan seluruh tanaman dalam hitungan hari sementara daunnya masih hijau."
+          },
+          "rules_out": {
+            "id": "op:pst:00000009",
+            "label": "Layu bakteri"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000163",
+      "key": "kutu-daun-bawang",
+      "label": {
+        "id": "Kutu daun bawang"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Neotoxoptera formosana",
+      "hosts": [
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00001073",
+          "label": "Bawang putih"
+        }
+      ],
+      "definition": {
+        "id": "Kutu daun yang khusus Allium, dan bertahan di gudang pada umbi yang disimpan — jadi umbi bibit yang berkutu membawanya ke petak baru, dan memeriksa bibit sebelum tanam menutup jalur yang paling sering. Menumpuk pada musim kering. Semut yang naik-turun daun memeliharanya."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Neotoxoptera formosana",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2078259",
+          "uri": "https://www.gbif.org/species/2078259",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Kutu Daun",
+        "Kutu Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Gerombolan kutu kecil COKLAT KEMERAHAN sampai kehitaman di pangkal daun dan di sela daun yang masih menggulung, rapat sampai bertumpuk. Daun terpuntir dan menguning dari ujung, permukaannya lengket oleh embun madu, dan di atas lengket itu tumbuh jelaga hitam."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka sela daun yang masih menggulung di pangkal. Kutu daun bawang bergerombol DI SANA dan berwarna coklat kemerahan sampai kehitaman; trips bawang jauh lebih kecil, kuning kecoklatan, dan meninggalkan bercak keperakan bukan gerombolan."
+          },
+          "rules_out": {
+            "id": "op:pst:00000013",
+            "label": "Trips bawang"
+          }
+        },
+        {
+          "check": {
+            "id": "Raba permukaan daunnya. Kutu daun meninggalkan LENGKET embun madu yang lalu berjelaga hitam; trips tidak meninggalkan apa pun yang lengket."
+          },
+          "rules_out": {
+            "id": "op:pst:00000013",
+            "label": "Trips bawang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000164",
+      "key": "belalang-kelapa",
+      "label": {
+        "id": "Belalang kelapa"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Sexava nubila",
+      "hosts": [
+        {
+          "id": "op:cmd:00001043",
+          "label": "Kelapa"
+        }
+      ],
+      "definition": {
+        "id": "Aktif MALAM dan bersembunyi di ketiak pelepah siang hari, sehingga kebun yang terlihat rusak parah sering diperiksa tanpa menemukan seekor pun. Kerusakannya menumpuk lambat tetapi tidak pulih cepat: pelepah yang habis dimakan tidak diganti sampai pelepah baru terbentuk, dan buah muda rontok berbulan-bulan sesudahnya. Menyebar dari pohon ke pohon lewat tajuk yang bersentuhan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sexava nubila",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1690014",
+          "uri": "https://www.gbif.org/species/1690014",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Belalang",
+        "Hama Belalang"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Anak daun pelepah habis dimakan dari tepi sehingga tinggal lidi, dimulai dari pelepah TUA di bawah dan naik ke atas; tajuk terlihat compang-camping seperti sapu. Bunga dan buah muda ikut dimakan lalu rontok. Belalang hijau kecoklatan bersungut sangat panjang ditemukan di ketiak pelepah pada siang hari."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa ketiak pelepah pada SIANG hari, atau datang malam dengan senter. Belalang kelapa bersembunyi di sana dan bersungut lebih panjang daripada badannya — tidak ada belalang lain di kelapa yang begitu."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat dari pelepah mana kerusakannya bermula. Belalang kelapa memakan dari pelepah TUA di bawah ke atas; kumbang tanduk merusak pucuk yang belum membuka sehingga daun baru keluar bergerigi seperti digunting segitiga."
+          },
+          "rules_out": {
+            "id": "op:pst:00000075",
+            "label": "Kumbang tanduk"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000165",
+      "key": "penggerek-pucuk-tembakau",
+      "label": {
+        "id": "Penggerek pucuk tembakau"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Helicoverpa assulta",
+      "hosts": [
+        {
+          "id": "op:cmd:00001018",
+          "label": "Tembakau"
+        }
+      ],
+      "definition": {
+        "id": "Menggerek titik tumbuh, dan itu yang membuatnya berbeda dari ulat pemakan daun mana pun: satu ulat menghabisi satu tanaman, karena pucuk yang mati menghentikan pembentukan daun yang justru jadi hasilnya. Kerabat dekat penggerek buah yang menyerang tomat dan jagung, dan bergerak di antara ketiganya bila ditanam berdekatan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helicoverpa assulta",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1792555",
+          "uri": "https://www.gbif.org/species/1792555",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Heliothis assulta",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Heliothis assulta",
+        "Penggerek Pucuk"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Pucuk berlubang dan mengeluarkan kotoran halus seperti serbuk gergaji di ketiaknya; daun termuda yang membuka sesudahnya berlubang berderet karena tergerek saat masih terlipat. Pucuk akhirnya mati dan tanaman mengeluarkan tunas samping berlebihan."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cari KOTORAN halus seperti serbuk gergaji di ketiak pucuk. Penggerek pucuk meninggalkannya karena ia menggerek dari dalam; ulat grayak memakan dari luar dan tidak meninggalkan serbuk di dalam ketiak."
+          },
+          "rules_out": {
+            "id": "op:pst:00000005",
+            "label": "Ulat grayak"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah lubang pada daun BERDERET rapi. Daun yang tergerek saat masih terlipat membuka dengan lubang berderet; lubang yang tersebar tidak beraturan penyebabnya ulat pemakan daun."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000166",
+      "key": "jembret",
+      "label": {
+        "id": "Jembret"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Mesopodopsis sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00001109",
+          "label": "Budidaya udang windu dan ikan bandeng"
+        }
+      ],
+      "definition": {
+        "id": "Udang kecil liar yang masuk bersama air pasang dan BERSAING dengan udang atau bandeng yang dipelihara — memakan pakan yang ditebar dan menghabiskan oksigen — bukan memangsa. Karena itu pengendaliannya terjadi saat persiapan tambak, sebelum benur ditebar; sesudah benur masuk, hampir tidak ada yang bisa dipakai tanpa membahayakan yang dipelihara. Penyaringan air masuk lebih menentukan daripada bahan apa pun."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Mesopodopsis sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Animalia",
+        "needs_review": true,
+        "review_reason": "Tidak ada padanan di GBIF; pest_kind masih hasil simpulan dari nama Indonesia."
+      },
+      "symptoms": {
+        "id": "Udang kecil bening kelabu sepanjang kuku jari berenang bergerombol di permukaan air terutama pagi dan senja, dan terangkat banyak bila air diciduk dengan ember. Pakan cepat habis tetapi udang atau bandeng yang dipelihara tidak bertambah besar; air terlihat berkabut oleh gerombolannya."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Ciduk air dengan ember pada pagi hari dan lihat isinya. Jembret bening kelabu, berukuran seragam kecil, dan bergerombol; benur yang dipelihara berukuran lebih besar dan menyebar, bukan bergerombol di permukaan."
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa saringan air masuk sebelum menyimpulkan. Jembret masuk bersama air pasang; kalau saringannya rusak atau terlalu kasar, mengobati petaknya tidak akan menyelesaikan apa pun karena ia masuk lagi pada pasang berikutnya."
           }
         }
       ],

@@ -6504,6 +6504,12 @@
           "id": "Aphids sp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aphid sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -6512,6 +6518,7 @@
         "created_at": "2026-08-19T00:00:00Z"
       },
       "synonyms": [
+        "Aphid sp.",
         "Aphids sp.",
         "Hama Kutu Daun",
         "Hamakutu Daun",
@@ -7505,6 +7512,18 @@
           "uri": "https://www.gbif.org/species/2563219",
           "relation": "broad",
           "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Colletotrichum'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletothricum sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum gloesporium",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -7514,6 +7533,9 @@
       },
       "synonyms": [
         "Antraknosa",
+        "Colletothricum sp.",
+        "Colletotrichum gloesporium",
+        "Penyakit Antraknosa",
         "Penyakit Busuk Buah"
       ],
       "accepted_scientific_name": "Colletotrichum",
@@ -9744,6 +9766,18 @@
           "uri": "https://www.gbif.org/species/2130777",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Arachnida; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Tetranychus'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tetranychus spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tentranichus sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -9753,6 +9787,8 @@
       },
       "synonyms": [
         "Hama Tungau",
+        "Tentranichus sp.",
+        "Tetranychus spp.",
         "Tungau Merah"
       ],
       "accepted_scientific_name": "Tetranychus",
@@ -13919,6 +13955,18 @@
           "id": "Rizoctonia sp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rhizoctonia oryzae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rhizoctonia spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -13932,6 +13980,8 @@
         "Penyakit Hawar Upih",
         "Penyakit Hawar Upih Daun",
         "Penyakit Rebah Kecambah",
+        "Rhizoctonia oryzae",
+        "Rhizoctonia spp.",
         "Rizoctonia sp."
       ],
       "accepted_scientific_name": "Rhizoctonia",
@@ -15596,6 +15646,12 @@
           "uri": "https://www.gbif.org/species/3202728",
           "relation": "broad",
           "note": "Kingdom Chromista, kelas Peronosporea; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Pythium'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythium spp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -15605,7 +15661,9 @@
       },
       "synonyms": [
         "Penyakit Busuk Akar",
-        "Penyakit Rebah Batang"
+        "Penyakit Rebah Batang",
+        "Penyakit Rebah Kecambah",
+        "Phythium spp."
       ],
       "accepted_scientific_name": "Pythium",
       "taxon_verification": {
@@ -22328,6 +22386,12 @@
           "uri": "https://www.gbif.org/species/1883240",
           "relation": "close",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan FUZZY (confidence 96). GBIF menerima nama 'Chilo auricilia'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Chillo aurillius",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -22336,7 +22400,9 @@
         "created_at": "2026-08-19T00:00:00Z"
       },
       "synonyms": [
-        "Hama Penggerek Batang"
+        "Chillo aurillius",
+        "Hama Penggerek Batang",
+        "Pengerek Batang"
       ],
       "accepted_scientific_name": "Chilo auricilia",
       "taxon_verification": {
@@ -23129,8 +23195,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000160"
+        }
       },
       "accepted_scientific_name": "Pestalotiopsis",
       "taxon_verification": {
@@ -23864,8 +23934,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000152"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -25062,8 +25136,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000148"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -25141,8 +25219,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000164"
+        }
       },
       "synonyms": [
         "Hama Belalang"
@@ -25331,8 +25413,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000166"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -25629,8 +25715,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000158"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -26506,8 +26596,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000159"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -27352,8 +27446,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000106"
+        }
       },
       "accepted_scientific_name": "Idioscopus",
       "taxon_verification": {
@@ -28789,8 +28887,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000163"
+        }
       },
       "synonyms": [
         "Kutu Daun"
@@ -29564,8 +29666,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000150"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -30625,7 +30731,7 @@
       "label": {
         "id": "Nephrolepsis sp."
       },
-      "pest_kind": "insect",
+      "pest_kind": "weed",
       "scientific_name": "Nephrolepsis sp.",
       "taxonomic_rank": "genus",
       "mappings": [
@@ -30639,7 +30745,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -31079,8 +31186,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000151"
+        }
       },
       "accepted_scientific_name": "Scotinophara",
       "taxon_verification": {
@@ -31566,8 +31677,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000154"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32195,7 +32310,7 @@
       "label": {
         "id": "Mematikan tunggul"
       },
-      "pest_kind": "insect",
+      "pest_kind": "not_an_organism",
       "scientific_name": "Mematikan tunggul",
       "taxonomic_rank": "species",
       "mappings": [
@@ -32209,7 +32324,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32591,6 +32707,12 @@
           "id": "Cryptolestes spp.",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Laemophloeus pusillus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -32606,7 +32728,11 @@
         "kingdom": "Animalia",
         "needs_review": true,
         "review_reason": "Tidak ada padanan di GBIF; pest_kind masih hasil simpulan dari nama Indonesia."
-      }
+      },
+      "synonyms": [
+        "Hama Gudang",
+        "Laemophloeus pusillus"
+      ]
     },
     {
       "id": "op:pst:00001690",
@@ -32793,9 +32919,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001978"
+          "id": "op:pst:00000149"
         }
       },
       "accepted_scientific_name": "Mythimna separata",
@@ -32913,8 +33039,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000155"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -33253,8 +33383,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000015"
+        }
       },
       "accepted_scientific_name": "Alternaria allii",
       "taxon_verification": {
@@ -35001,7 +35135,7 @@
       "label": {
         "id": "Meningkat tinggi"
       },
-      "pest_kind": "insect",
+      "pest_kind": "not_an_organism",
       "scientific_name": "Meningkat tinggi",
       "taxonomic_rank": "species",
       "mappings": [
@@ -35015,7 +35149,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -35136,8 +35271,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000161"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -35359,12 +35498,22 @@
           "uri": "https://www.gbif.org/species/1792555",
           "relation": "exact",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Heliothis assulta",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000165"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -35372,7 +35521,11 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Heliothis assulta",
+        "Penggerek Pucuk"
+      ]
     },
     {
       "id": "op:pst:00001761",
@@ -35395,9 +35548,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00002332"
+          "id": "op:pst:00000162"
         }
       },
       "taxon_verification": {
@@ -36037,7 +36190,7 @@
       "label": {
         "id": "Gulma Golongan Rumput"
       },
-      "pest_kind": "insect",
+      "pest_kind": "weed",
       "scientific_name": "Brachia mutica",
       "taxonomic_rank": "genus",
       "mappings": [
@@ -36058,7 +36211,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "accepted_scientific_name": "Brachia",
       "taxon_verification": {
@@ -36088,8 +36242,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000120"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -36157,8 +36315,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001689"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -39706,12 +39868,22 @@
           "uri": "https://www.gbif.org/species/4911649",
           "relation": "exact",
           "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Upasia salmonicolor",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000161"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -39719,7 +39891,11 @@
         "checked_at": "2026-08-19",
         "confidence": 98,
         "kingdom": "Fungi"
-      }
+      },
+      "synonyms": [
+        "Jamur Upas",
+        "Upasia salmonicolor"
+      ]
     },
     {
       "id": "op:pst:00001875",
@@ -39993,7 +40169,7 @@
       "label": {
         "id": "Gulma Berdaun Lebar"
       },
-      "pest_kind": "insect",
+      "pest_kind": "weed",
       "scientific_name": "Philantus niruri",
       "taxonomic_rank": "genus",
       "mappings": [
@@ -40014,7 +40190,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "accepted_scientific_name": "Philantus",
       "taxon_verification": {
@@ -40538,8 +40715,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000117"
+        }
       },
       "accepted_scientific_name": "Diplogomphus",
       "taxon_verification": {
@@ -40698,8 +40879,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000165"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -41666,7 +41851,7 @@
       "label": {
         "id": "Serangga Penyerbuk"
       },
-      "pest_kind": "insect",
+      "pest_kind": "beneficial",
       "scientific_name": "Elaeidobius kamerunicus",
       "taxonomic_rank": "species",
       "mappings": [
@@ -41687,7 +41872,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -41899,8 +42085,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001150"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -42055,8 +42245,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000156"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -43317,8 +43511,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000124"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -43761,9 +43959,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000149"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -43813,7 +44014,7 @@
       "label": {
         "id": "Alternantera philoxoides"
       },
-      "pest_kind": "insect",
+      "pest_kind": "weed",
       "scientific_name": "Alternantera philoxoides",
       "taxonomic_rank": "species",
       "mappings": [
@@ -43827,7 +44028,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -44422,8 +44624,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001107"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -44440,7 +44646,7 @@
       "label": {
         "id": "Gulma Berdaun Lebar"
       },
-      "pest_kind": "disease_oomycete",
+      "pest_kind": "weed",
       "scientific_name": "Rotalia indica",
       "taxonomic_rank": "species",
       "mappings": [
@@ -44461,7 +44667,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -45395,8 +45602,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001239"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -45500,8 +45711,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001434"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -45985,8 +46200,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001088"
+        }
       },
       "accepted_scientific_name": "Aphid",
       "taxon_verification": {
@@ -46574,8 +46793,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001239"
+        }
       },
       "accepted_scientific_name": "Rhizoctonia",
       "taxon_verification": {
@@ -46643,8 +46866,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001277"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -48054,8 +48281,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000157"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -50434,8 +50665,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000106"
+        }
       },
       "accepted_scientific_name": "Idiocerus",
       "taxon_verification": {
@@ -50476,7 +50711,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001895"
+          "id": "op:pst:00000117"
         }
       },
       "accepted_scientific_name": "Diplogomphus",
@@ -51106,7 +51341,7 @@
       "label": {
         "id": "Melostoma mabathricunm"
       },
-      "pest_kind": "insect",
+      "pest_kind": "weed",
       "scientific_name": "Melostoma mabathricunm",
       "taxonomic_rank": "species",
       "mappings": [
@@ -51120,7 +51355,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -51687,8 +51923,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001107"
+        }
       },
       "accepted_scientific_name": "Colletotrichum",
       "taxon_verification": {
@@ -52750,7 +52990,7 @@
       "label": {
         "id": "Serangga Penyerbuk"
       },
-      "pest_kind": "insect",
+      "pest_kind": "beneficial",
       "scientific_name": "Elaedobius spp.",
       "taxonomic_rank": "genus",
       "mappings": [
@@ -52764,7 +53004,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -53083,7 +53324,7 @@
       "label": {
         "id": "Kacangan penutup"
       },
-      "pest_kind": "insect",
+      "pest_kind": "weed",
       "scientific_name": "Kacangan penutup",
       "taxonomic_rank": "species",
       "mappings": [
@@ -53097,7 +53338,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -53760,12 +54002,22 @@
           "uri": "https://www.gbif.org/species/1786329",
           "relation": "broad",
           "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Trichoplusia'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Trichoplussiani sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000157"
+        }
       },
       "accepted_scientific_name": "Trichoplusia",
       "taxon_verification": {
@@ -53774,7 +54026,11 @@
         "checked_at": "2026-08-19",
         "confidence": 94,
         "kingdom": "Animalia"
-      }
+      },
+      "synonyms": [
+        "Perusak Daun",
+        "Trichoplussiani sp."
+      ]
     },
     {
       "id": "op:pst:00002236",
@@ -55123,9 +55379,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00002325"
+          "id": "op:pst:00000153"
         }
       },
       "accepted_scientific_name": "Peregrinus maidis",
@@ -55282,7 +55538,7 @@
       "label": {
         "id": "Mempengaruhi pada"
       },
-      "pest_kind": "insect",
+      "pest_kind": "not_an_organism",
       "scientific_name": "Mempengaruhi pada",
       "taxonomic_rank": "species",
       "mappings": [
@@ -55296,7 +55552,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -55815,7 +56072,7 @@
       "label": {
         "id": "Mematikan Tunggak Pohon Karet Tua"
       },
-      "pest_kind": "insect",
+      "pest_kind": "not_an_organism",
       "scientific_name": "Mematikan tunggak",
       "taxonomic_rank": "species",
       "mappings": [
@@ -55829,7 +56086,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -56524,12 +56782,22 @@
           "uri": "https://www.gbif.org/species/3219966",
           "relation": "exact",
           "note": "Kingdom Bacteria, kelas Gammaproteobacteria; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pseudomonas glumae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000148"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -56537,7 +56805,11 @@
         "checked_at": "2026-08-19",
         "confidence": 99,
         "kingdom": "Bacteria"
-      }
+      },
+      "synonyms": [
+        "Penyakit Busuk Gabah",
+        "Pseudomonas glumae"
+      ]
     },
     {
       "id": "op:pst:00002307",
@@ -56681,8 +56953,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00001150"
+        }
       },
       "accepted_scientific_name": "Tetranychus",
       "taxon_verification": {
@@ -56864,8 +57140,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000092"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -57275,9 +57555,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000153"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -57352,8 +57635,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000128"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -57447,7 +57734,7 @@
       "label": {
         "id": "Siput Murbei"
       },
-      "pest_kind": "mollusc",
+      "pest_kind": "not_an_organism",
       "scientific_name": "Fentin hydroxide",
       "taxonomic_rank": "species",
       "mappings": [
@@ -57461,7 +57748,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -57546,9 +57834,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000162"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
