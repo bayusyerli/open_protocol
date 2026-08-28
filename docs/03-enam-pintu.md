@@ -158,7 +158,7 @@ Diurutkan menurut seberapa besar ia membatasi, bukan seberapa sulit ditutup.
 
 | Yang hilang | Akibatnya | Jalan keluar |
 |---|---|---|
-| **Deskripsi gejala OPT** — 0 dari 701 OPT registri; seluruh yang terkurasi sudah ditulis | Jalur 1 hanya berpintu untuk komoditas yang sudah dikurasi; daftarnya di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) | Kurasi · komoditas berikutnya, dan peninjauan penyuluh atas yang sudah ditulis |
+| **Deskripsi gejala OPT** — 0 dari 694 OPT registri; seluruh yang terkurasi sudah ditulis | Jalur 1 hanya berpintu untuk komoditas yang sudah dikurasi; daftarnya di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) | Kurasi · komoditas berikutnya, dan peninjauan penyuluh atas yang sudah ditulis |
 | **PHI** — **nol** dari 23.058 penggunaan | Tanggal aman panen tidak bisa dijanjikan di jalur mana pun | Sumber lain · foto label atau terbitan BSIP |
 | **Harga** — nol | Jalur 3 butuh satu masukan pengguna | Sumber lain · diketik sekali di kios |
 | **Penanda subsidi** — 0 dari 7.196 pupuk | Perbandingan harga tidak sadar-subsidi, padahal dokumen fondasi mensyaratkannya | Sumber lain · daftar produk bersubsidi Kementan |
