@@ -921,6 +921,38 @@ menjumlahkan keduanya menghasilkan angka yang tidak ada.
 L40 menjaga satu-satunya cara rantai ini bisa menggantung mesin: putaran. Alat yang
 memasangnya sudah memeriksanya, tetapi rantai bisa terbentuk dari dua berkas kosakata yang
 disunting terpisah, dan tidak satu pun alat itu melihat keduanya sekaligus.
+### D43 — pembetulan pada BARIS pendaftaran menuntut bukti yang bisa diperiksa mesin
+
+Tiga baris terakhir yang tak terjangkau punya bentuk yang sama: kolom komoditas menyebut
+tanaman LADANG sementara barisnya jelas bukan soal ladang. `Sitophilus spp.` didaftarkan
+pada "Jagung" oleh produk berbahan sulfuril fluorida; `Alphitobius diaperinus` — kumbang
+gudang — pada "Jagung" juga.
+
+Menutupnya menuntut sesuatu yang belum pernah dilakukan di repositori ini. Seluruh alat
+penyatuan berkata **"dua nama ini satu hal"**, pernyataan tentang kosakata yang berlaku
+untuk setiap baris. Yang dibutuhkan di sini jauh lebih berat: **"pada baris INI, registri
+keliru"** — pernyataan tentang isi dokumen label yang tidak kita punya.
+
+Yang membuatnya bisa diterima bukan panjangnya prosa melainkan **bukti yang bisa diperiksa
+ulang mesin, dan yang ada DI DALAM rekaman itu sendiri**. INDOFUME 99,8 GA mendaftarkan
+dosisnya `16 g/m3` — gram per meter KUBIK. Takaran per satuan volume hanya berarti untuk
+ruang tertutup; petak jagung berdiri tidak punya meter kubik. Itu bukan simpulan tentang
+dokumen yang tidak dilihat, itu pembacaan atas angka yang ada di rekaman ini.
+
+`spec/tools/betulkan-komoditas-baris.mjs` karena itu menuntut medan `bukti` pada tiap
+barisnya, dan **memeriksanya ulang tiap kali dijalankan**: entah sebuah medan pada baris itu
+harus bernilai tertentu, entah produk yang sama harus punya baris lain pada komoditas
+tertentu. Kalau tarikan registri berikutnya menghapus buktinya, alat ini berhenti dan tidak
+menulis apa pun. `commodity_label` tidak disentuh — ia satu-satunya jejak bahwa registri
+menulis "Jagung" di situ, dan membetulkannya akan menghapus bukti alat ini sendiri.
+
+Baris ketiga TIDAK dibetulkan begitu, dan bedanya menunjukkan batasnya. BELT EXPERT 480 SC
+mendaftarkan `Hydrellia sp.` pada "Jagung" dengan dosis 225 ml/ha bersama dua OPT jagung
+sejati — jadi komoditasnya benar dan NAMA OPT-nya yang meleset. Membetulkan `pest.id` akan
+menyalakan L26, yang menuntut nama ilmiah pada baris cocok dengan ejaan yang tercatat pada
+entitasnya — dan aturan itu benar menolaknya, karena Hydrellia memang bukan ejaan lain
+Atherigona. Yang dipakai `covers`: registri menulis pest_label "Lalat bibit", dan pada
+jagung lalat bibit berarti Atherigona.
 
 ---
 
@@ -949,7 +981,7 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 11 | 275 pestisida tanpa komposisi | Kadar bahan aktifnya bukan angka di sumber (mis. agens hayati berbasis populasi) |
 | 18 | 8 catatan varietas tanpa jenis tanaman tidak diterbitkan | Tidak bisa ditautkan ke komoditas mana pun. Salah satunya `kelapa ok` dari pemohon `tes ujicoba` — data uji coba yang tertinggal di registri resmi |
 | 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | **Terjawab sebagian (D42).** Kegranularan registri dipertahankan, dan `Commodity` kini punya hubungan hierarkis internal lewat medan `broader` — pintu yang berinang yang lebih luas menjangkau yang lebih sempit tanpa menyatukannya. Yang belum: pemetaan ke konsep broader AGROVOC, sehingga hubungannya masih ditulis tangan per pasangan |
-| 24 | 3 baris label non-gulma masih di luar jalur 1 (0,04%) | Ketiganya satu bentuk: **kolom komoditas menyebut tanaman LADANG sementara barisnya jelas bukan soal ladang**, dan membetulkannya berarti menyatakan isi dokumen label yang tidak kita punya. INDOFUME 99,8 GA berbahan sulfuril fluorida — fumigan murni, yang tidak mungkin dipakai di petak berdiri — mendaftarkan `Sitophilus spp.` pada "Jagung", sementara dua baris lainnya di label yang sama tertulis "Beras" dan "Tepung terigu dalam penyimpanan". Delstar Plus mendaftarkan `Alphitobius diaperinus` — kumbang gudang — pada "Jagung", dengan baris keduanya `Sitophilus` pada "Gandum". BELT EXPERT 480 SC mendaftarkan `Hydrellia sp.` pada "Jagung", padahal pintunya ditulis untuk sawah tergenang. Menaruh ketiganya di pintu gudang atau pintu padi menuntut menulis ulang komoditas pada baris pendaftaran tertentu — bukan menyatakan dua nama itu satu hal, melainkan menyatakan bahwa registrinya keliru pada baris ini — dan itu batas yang tidak dilewati |
+| 24 | ~~Baris label non-gulma di luar jalur 1~~ | **Tertutup.** 6.707 dari 6.707 baris penggunaan berlabel non-gulma pada komoditas pertanian terjangkau dari jalur 1. Yang tersisa di luar hanya yang memang bukan komoditas pertanian (pertanyaan 28) dan gulma, yang jalurnya lain. Angka ini akan bergeser lagi pada tarikan registri berikutnya; `spec/tools/bangun-indeks.mjs` yang menghitungnya, bukan dokumen ini |
 | 28 | Kolom komoditas berisi SASARAN atau KONTEKS, bukan komoditas | Ditandai, bukan dihapus. Pendaftaran pestisida rumah tangga mengisi kolom komoditas dengan "Kecoak", "Nyamuk", "Rayap tanah", "Tikus rumah", atau dengan tempat pemakaiannya — "Di dalam ruangan", "Di luar rumah", "Umum" — dan satu baris berisi nama DAGANG produknya. Bentuknya sah dan tidak ada aturan yang bisa menolaknya, karena "Kecoak" tidak berbeda bentuknya dari "Kubis". 24 entri diberi `kind: not_a_commodity` lewat `spec/tools/perbaiki-jenis-komoditas.mjs`, tiap satunya dengan dasar tertulis. Pasangannya `perbaiki-jenis-opt.mjs` di sisi seberang, yang menangani kolom SASARAN berisi nama bahan aktif atau potongan kalimat |
 | 27 | Sepuluh baris terakhir tertahan BENTUK datanya, bukan kurangnya teks | Empat bentuk, dan tiap satunya keputusan yang sudah diambil. (a) Kumbang GUDANG yang didaftarkan pada komoditas LADANG — `Sitophilus spp.` dan `Alphitobius diaperinus` pada "Jagung", bukan "Jagung di penyimpanan"; menambahkan jagung ladang jadi inang pintu gudang akan menaruh pintu gudang di saringan tanaman pangan. (b) Pintu yang ada di tanaman SEBELAHNYA — `Hydrellia sp.` pada jagung sementara pintunya berdiri di padi, dan `Atherigona oryzae` pada padi sementara pintunya berdiri di jagung. (c) `Rhizoctonia sp.` dan `Fusarium spp.` pada jagung: satu-satunya pintu rebah kecambah di sana berdiri di atas Pythium, dan seluruh isinya justru bahwa bahan aktifnya harus mengenai OOMYCETE — mencakupkan jamur sejati ke sana berarti menganjurkan bahan yang tidak bekerja. (d) Satu baris tunggal tanpa pintu semarga di tanaman itu: `Siphanta acuta` dan `Thrips sp.` pada padi, `Empoasca spp.` pada kedelai, `Sclerotinia sp.` pada tembakau |
 | 26 | Pembibitan dan persemaian: fase atau tanaman? | Tetap terpisah dari tanamannya, dan itu keputusan yang menahan 10 baris di luar jangkauan. Umur dan perlakuannya memang berbeda; menyatukannya berarti menjanjikan teks gejala tanaman dewasa kepada yang berdiri di depan bedengan semai. Yang belum diputuskan apakah fase layak punya PINTUNYA SENDIRI — rebah kecambah sudah jadi contoh bahwa jawabannya kadang ya |

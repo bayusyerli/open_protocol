@@ -4946,6 +4946,13 @@
             "label": "Lalat Bibit"
           },
           "dasar": "Atherigona oryzae merusak jagung muda dengan cara yang sama seperti A. exigua: pucuk layu lalu mati sementara daun luar masih hijau, dan bila ditarik lepas dengan pangkal tergerek belatung. Keduanya lalat bibit yang menyerang pada dua sampai tiga minggu pertama dan ditangani dengan perlakuan benih yang sama."
+        },
+        {
+          "pest": {
+            "id": "op:pst:00001428",
+            "label": "Lalat Bibit"
+          },
+          "dasar": "Registri menulis pest_label \"Lalat bibit\" untuk baris ini, dan pada jagung lalat bibit berarti Atherigona — Hydrellia lalat sawah yang tidak menyerang jagung, sementara barisnya berdosis 225 ml/ha bersama dua OPT jagung sejati pada label yang sama. Pada padi keduanya sama-sama lalat perusak bibit yang diperiksa dengan cara yang sama: tarik pucuk yang layu dan cari belatung di pangkalnya."
         }
       ]
     },
@@ -11654,6 +11661,13 @@
             "label": "Hama Gudang"
           },
           "dasar": "Tribolium confusum dan T. castaneum hanya dibedakan dari bentuk ujung sungutnya di bawah kaca pembesar — di karung keduanya kumbang pipih coklat kemerahan yang sama, meninggalkan tepung menggumpal berbau tengik yang sama, dan disanitasi gudang yang sama."
+        },
+        {
+          "pest": {
+            "id": "op:pst:00001250",
+            "label": "Kumbang"
+          },
+          "dasar": "Alphitobius diaperinus kumbang gudang bersuku sama dengan Tribolium — Tenebrionidae — dan sama-sama memakan butir yang SUDAH pecah beserta sisa tepungnya, bukan butir utuh. Di tumpukan keduanya kumbang coklat kehitaman kecil yang berlari saat karung dibuka, dan keputusannya sama: cari dulu apa yang melubangi butir utuh, lalu sanitasi gudang."
         }
       ]
     },

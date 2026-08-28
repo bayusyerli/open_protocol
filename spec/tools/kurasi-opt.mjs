@@ -2940,6 +2940,24 @@ const CAKUP = [
     ],
   },
   {
+    pintu: 'op:pst:00000046',
+    cakup: [
+      { id: 'op:pst:00001392', nama: 'Lalat Bibit',
+        dasar: 'Atherigona oryzae merusak jagung muda dengan cara yang sama seperti A. exigua: pucuk layu lalu mati sementara daun luar masih hijau, dan bila ditarik lepas dengan pangkal tergerek belatung. Keduanya lalat bibit yang menyerang pada dua sampai tiga minggu pertama dan ditangani dengan perlakuan benih yang sama.' },
+      { id: 'op:pst:00001428', nama: 'Lalat Bibit',
+        dasar: 'Registri menulis pest_label "Lalat bibit" untuk baris ini, dan pada jagung lalat bibit berarti Atherigona — Hydrellia lalat sawah yang tidak menyerang jagung, sementara barisnya berdosis 225 ml/ha bersama dua OPT jagung sejati pada label yang sama. Pada padi keduanya sama-sama lalat perusak bibit yang diperiksa dengan cara yang sama: tarik pucuk yang layu dan cari belatung di pangkalnya.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000122',
+    cakup: [
+      { id: 'op:pst:00001362', nama: 'Hama Gudang',
+        dasar: 'Tribolium confusum dan T. castaneum hanya dibedakan dari bentuk ujung sungutnya di bawah kaca pembesar — di karung keduanya kumbang pipih coklat kemerahan yang sama, meninggalkan tepung menggumpal berbau tengik yang sama, dan disanitasi gudang yang sama.' },
+      { id: 'op:pst:00001250', nama: 'Kumbang',
+        dasar: 'Alphitobius diaperinus kumbang gudang bersuku sama dengan Tribolium — Tenebrionidae — dan sama-sama memakan butir yang SUDAH pecah beserta sisa tepungnya, bukan butir utuh. Di tumpukan keduanya kumbang coklat kehitaman kecil yang berlari saat karung dibuka, dan keputusannya sama: cari dulu apa yang melubangi butir utuh, lalu sanitasi gudang.' },
+    ],
+  },
+  {
     pintu: 'op:pst:00000073',
     cakup: [
       { id: 'op:pst:00001851', nama: 'Ulat Kantong',
@@ -3069,13 +3087,6 @@ const CAKUP = [
     ],
   },
   {
-    pintu: 'op:pst:00000046',
-    cakup: [
-      { id: 'op:pst:00001392', nama: 'Lalat Bibit',
-        dasar: 'Atherigona oryzae merusak jagung muda dengan cara yang sama seperti A. exigua: pucuk layu lalu mati sementara daun luar masih hijau, dan bila ditarik lepas dengan pangkal tergerek belatung. Keduanya lalat bibit yang menyerang pada dua sampai tiga minggu pertama dan ditangani dengan perlakuan benih yang sama.' },
-    ],
-  },
-  {
     pintu: 'op:pst:00000047',
     cakup: [
       { id: 'op:pst:00001318', nama: 'Penggerek Batang',
@@ -3107,13 +3118,6 @@ const CAKUP = [
         dasar: 'Chilo suppressalis pada pendaftaran tebu memberi gerekan ruas yang sama dengan C. sacchariphagus, dan pemeriksaan lapangannya sama: belah ruas yang lubangnya terlihat dan lihat lorong berisi kotoran. Pemilahan spesies Chilo menuntut pembedahan ngengat, jadi tidak masuk akal dijadikan syarat sebelum bertindak.' },
       { id: 'op:pst:00001610', nama: 'Penggerek Batang',
         dasar: 'Phragmataecia castaneae menggerek ruas tebu dari dalam persis seperti Chilo: mati pucuk pada tebu muda, ruas berlubang dengan lorong berisi kotoran pada tebu tua. Ngengatnya berbeda marga dan jauh lebih besar, tetapi yang terlihat di kebun — dan yang menentukan tindakan — lubang gerekannya.' },
-    ],
-  },
-  {
-    pintu: 'op:pst:00000122',
-    cakup: [
-      { id: 'op:pst:00001362', nama: 'Hama Gudang',
-        dasar: 'Tribolium confusum dan T. castaneum hanya dibedakan dari bentuk ujung sungutnya di bawah kaca pembesar — di karung keduanya kumbang pipih coklat kemerahan yang sama, meninggalkan tepung menggumpal berbau tengik yang sama, dan disanitasi gudang yang sama.' },
     ],
   },
   {
