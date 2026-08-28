@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama bawang merah, cabai merah besar, jagung, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, padi dan tomat"
+      "id": "OPT utama bawang merah, cabai merah besar, jagung, jeruk, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, padi dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 11 komoditas: Bawang merah, Cabai merah besar, Jagung, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 12 komoditas: Bawang merah, Cabai merah besar, Jagung, Jeruk, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -428,6 +428,10 @@
         {
           "id": "op:cmd:00000001",
           "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
         }
       ],
       "mappings": [
@@ -515,7 +519,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Bactocera dorsalis",
@@ -6511,6 +6515,10 @@
         {
           "id": "op:cmd:00001244",
           "label": "Kopi"
+        },
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
         }
       ],
       "definition": {
@@ -6580,6 +6588,10 @@
         {
           "id": "op:cmd:00001244",
           "label": "Kopi"
+        },
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
         }
       ],
       "definition": {
@@ -7398,6 +7410,619 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000081",
+      "key": "kutu-loncat-jeruk",
+      "label": {
+        "id": "Kutu loncat"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Diaphorina citri",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Penular CVPD, dan itulah yang membuatnya menentukan — bukan isapannya. Satu kutu loncat yang membawa bakteri cukup untuk menulari satu pohon selamanya. Yang menentukan mengendalikannya pada TUNAS MUDA, karena hanya di tunas muda ia bertelur, ditambah bibit berlabel bebas penyakit dan mencabut pohon yang sudah sakit."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Diaphorina citri",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 31 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2013312",
+          "uri": "https://www.gbif.org/species/2013312",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Kutu Loncat",
+        "Kutu Daun",
+        "Kutu Loncat",
+        "Penghisap Pucuk",
+        "Pengisap Pucuk"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Tunas muda mengeriting, kerdil, dan tidak membuka sempurna; pada tunas itu ada serangga kecil 2–3 mm yang hinggap MIRING sekitar 45 derajat terhadap permukaan daun dan MELONCAT saat didekati. Nimfanya kuning kecoklatan bertubuh pipih dan mengeluarkan benang lilin putih melingkar seperti pegas."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan cara serangganya duduk dan pergi. Kutu loncat hinggap MIRING dengan ekor terangkat, lalu meloncat saat didekati; kutu daun duduk rata, berkelompok rapat, dan tidak meloncat."
+          },
+          "rules_out": {
+            "id": "op:pst:00000083",
+            "label": "Kutu daun jeruk"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah ada benang lilin putih melingkar seperti pegas di sekitar nimfanya, dan periksa daun tua pohon yang sama. Kalau daun tuanya belang kuning tidak setangkup di kiri-kanan tulang daun, pohon itu kemungkinan sudah CVPD — dan mengendalikan kutu loncatnya tidak menyembuhkannya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000088",
+            "label": "CVPD"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000082",
+      "key": "embun-tepung-jeruk",
+      "label": {
+        "id": "Embun tepung jeruk"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Oidium tingitaninum",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Registri juga memuat Oidium sp. sebagai sasaran pada jeruk (9 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Menyerang tunas dan daun muda saja — daun yang sudah tua tidak lagi tertular, jadi jendela tindakannya mengikuti pertunasan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "5255293",
+          "uri": "https://www.gbif.org/species/5255293",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Leotiomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oidium tingitaninum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oidium tingitanium",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oidum tingitaninum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Oidium tingitanium",
+        "Oidum tingitaninum",
+        "Penyakit Antraknosa",
+        "Penyakit Embun Tepung"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Lapisan putih seperti TEPUNG di permukaan daun muda dan tunas, mula-mula setitik lalu meluas menutup helai. Daun yang tertutup mengeriting, mengecil, dan rontok; tunas berhenti memanjang. Buah muda yang terkena berkulit kasar dan gugur."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Usap lapisan putihnya dengan jari. Embun tepung TERANGKAT dan menempel di jari seperti bedak, dan daun di bawahnya masih hijau. Embun jelaga hitam juga terangkat tetapi warnanya gelap dan tumbuh di atas embun madu kutu, bukan di daun muda."
+          },
+          "rules_out": {
+            "id": "op:pst:00000083",
+            "label": "Kutu daun jeruk"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat daun mana yang terkena. Embun tepung hanya menyerang daun MUDA dan tunas; kalau yang berbercak justru daun tua dan bercaknya bertepi tegas kecoklatan, penyebabnya bukan embun tepung."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000083",
+      "key": "kutu-daun-jeruk",
+      "label": {
+        "id": "Kutu daun jeruk"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Toxoptera citricidus",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Penular virus tristeza (CTV). Registri memecah kutu daun jeruk jadi beberapa entitas — Toxoptera aurantii (3 baris), Toxoptera sp. (2), dan Aphis sp. (6) — semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Seperti kutu lain, ia dipelihara semut, dan mengendalikan semutnya ikut menentukan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2075865",
+          "uri": "https://www.gbif.org/species/2075865",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Toxoptera citricida",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Toxoptera citricidus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Toxoptera citridus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 6 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Kutu Daun",
+        "Kutu Daun Aphid",
+        "Toxoptera citricida",
+        "Toxoptera citridus"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Kutu hitam kecoklatan berkelompok RAPAT di permukaan bawah daun muda dan pada tunas, sehingga tunas mengeriting ke bawah dan memendek. Daun di bawahnya lengket lalu ditumbuhi jelaga hitam; semut naik-turun di batang."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan cara serangganya bergerak. Kutu daun duduk rata dan berkelompok rapat, bergerak lambat kalau disentuh; kutu loncat hinggap miring dan MELONCAT pergi."
+          },
+          "rules_out": {
+            "id": "op:pst:00000081",
+            "label": "Kutu loncat"
+          }
+        },
+        {
+          "check": {
+            "id": "Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan jelaga hitam yang tumbuh di atasnya bisa diusap hilang. Embun tepung sebaliknya PUTIH dan menempel di jari seperti bedak."
+          },
+          "rules_out": {
+            "id": "op:pst:00000082",
+            "label": "Embun tepung jeruk"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000084",
+      "key": "pengorok-daun-jeruk",
+      "label": {
+        "id": "Pengorok daun jeruk"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Phyllocnistis citrella",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang daun muda saja, dan kerusakannya jarang menurunkan hasil pada pohon dewasa — yang menentukan justru pada BIBIT dan tanaman muda yang daunnya sedikit. Lorong yang dibuatnya juga jadi pintu masuk kanker jeruk, jadi dua masalah itu saling menyusul."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1749580",
+          "uri": "https://www.gbif.org/species/1749580",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phyllocnistis citrella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phyllocnitis critrella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phylocnistis citrella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Penggorok Daun",
+        "Penggerek Daun",
+        "Pengorok Daun",
+        "Phyllocnitis critrella",
+        "Phylocnistis citrella"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Lorong berkelok PERAK MENGKILAP di dalam daun muda, dengan garis gelap halus di tengah lorong. Daun yang penuh lorong mengeriting, terlipat, dan tepinya menggulung; pertumbuhan tunas terhambat."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Terawang daun ke cahaya dan lihat isi lorongnya. Pengorok daun meninggalkan garis GELAP halus memanjang di tengah lorong perak — itu kotorannya. Bekas gigitan di permukaan tidak punya lorong dan tidak berkelok."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat umur daun yang terkena. Pengorok daun jeruk hanya menyerang daun MUDA yang masih lemas; daun tua yang mengeriting penyebabnya kutu atau penyakit, bukan pengorok."
+          },
+          "rules_out": {
+            "id": "op:pst:00000083",
+            "label": "Kutu daun jeruk"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000085",
+      "key": "blendok-jeruk",
+      "label": {
+        "id": "Blendok"
+      },
+      "pest_kind": "disease_oomycete",
+      "scientific_name": "Phytophthora citrophthora",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Masuk lewat luka dan lewat pangkal batang yang terlalu dalam tertimbun tanah atau terlalu sering basah; meninggikan guludan dan menjauhkan tanah dari pangkal batang mengurangi lebih banyak daripada menambah semprotan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3203668",
+          "uri": "https://www.gbif.org/species/3203668",
+          "relation": "exact",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora citrophthora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora citrosphthora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyait Blendok",
+        "Penyakit Blendok",
+        "Penyakit Gumosis",
+        "Phytophthora citrosphthora"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Chromista"
+      },
+      "symptoms": {
+        "id": "Kulit batang atau pangkal batang mengeluarkan GETAH kental kekuningan yang mengering jadi kerak, dan kulit di bawahnya coklat kehitaman serta basah bila dikupas. Kanopi di atas bagian yang terserang menguning dan meranggas, dan cabangnya mati dari ujung."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Kupas tipis kulit di sekitar getah dengan pisau bersih. Blendok memberi jaringan coklat kehitaman BASAH dengan batas tegas terhadap jaringan sehat yang keputihan. Getah tanpa jaringan coklat di bawahnya bisa berasal dari luka biasa."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat di mana getahnya keluar. Blendok mulai dari pangkal batang dekat tanah lalu naik; kanker jeruk tidak mengeluarkan getah dan bercaknya di daun, ranting, serta buah, bukan di kulit batang."
+          },
+          "rules_out": {
+            "id": "op:pst:00000086",
+            "label": "Kanker jeruk"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000086",
+      "key": "kanker-jeruk",
+      "label": {
+        "id": "Kanker jeruk"
+      },
+      "pest_kind": "disease_bacterial",
+      "scientific_name": "Xanthomonas axonopodis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Menyebar lewat percikan air dan angin kencang, dan masuk lewat LUKA — termasuk lorong pengorok daun dan duri yang menggores buah. Karena itu mengendalikan pengorok daun dan memangkas agar tajuk tidak saling menggores ikut menurunkannya; bahan tembaga hanya melindungi jaringan yang belum terkena."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Xanthomonas axonopodis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8900922",
+          "uri": "https://www.gbif.org/species/8900922",
+          "relation": "exact",
+          "note": "Kingdom Bacteria, kelas Gammaproteobacteria; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Kanker",
+        "Penyakit Kanker Jeruk"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Bacteria"
+      },
+      "symptoms": {
+        "id": "Bercak bulat MENONJOL kasar seperti gabus pada daun, ranting, dan buah, berwarna coklat muda dengan tepi berminyak dan sering dikelilingi halo kuning. Pada daun bercaknya tembus dari kedua sisi. Buah yang berbercak tetap bisa dimakan tetapi tidak laku dijual."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Raba bercak pada daun dengan ujung jari, dan lihat dari kedua sisi daun. Kanker jeruk MENONJOL kasar seperti gabus dan terlihat dari sisi atas maupun bawah; bercak jamur biasa rata dan sering hanya jelas dari satu sisi."
+          }
+        },
+        {
+          "check": {
+            "id": "Cari halo kuning dan tepi berminyak di sekeliling bercaknya, lalu periksa apakah ada lorong pengorok daun di dekatnya. Bercak kanker sering duduk tepat di bekas lorong itu — dua masalah yang datang berurutan."
+          },
+          "rules_out": {
+            "id": "op:pst:00000084",
+            "label": "Pengorok daun jeruk"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000087",
+      "key": "kutu-sisik-merah",
+      "label": {
+        "id": "Kutu sisik merah"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Aonidiella aurantii",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Registri juga memuat kutu sisik jenis lain pada jeruk, Lepidosaphes beckii (1 baris), yang belum disatukan. Musuh alaminya — tabuhan parasit kecil — biasanya menahannya; penyemprotan menyeluruh justru sering diikuti ledakan karena musuh alaminya mati lebih dulu."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aonidiella aurantii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "9198247",
+          "uri": "https://www.gbif.org/species/9198247",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Sisik bundar kemerahan sampai coklat seukuran kepala jarum menempel RAPAT dan tidak bergerak di daun, ranting, dan kulit buah. Daun di sekitarnya menguning setempat membentuk lingkaran pucat; buah yang tertutup sisik tidak laku walau dagingnya utuh."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Dorong sisiknya dengan kuku. Kutu sisik terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya, dan tidak bergerak sama sekali; kutu putih hancur jadi bubuk lilin saat diusap."
+          },
+          "rules_out": {
+            "id": "op:pst:00000070",
+            "label": "Kutu putih"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah daun di bawahnya lengket. Kutu sisik merah TIDAK menghasilkan embun madu, jadi daunnya tidak lengket dan tidak berjelaga; kutu daun dan kutu tempurung menghasilkannya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000071",
+            "label": "Kutu tempurung"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000088",
+      "key": "cvpd",
+      "label": {
+        "id": "CVPD"
+      },
+      "pest_kind": "disease_bacterial",
+      "scientific_name": "Candidatus Liberibacter asiaticus",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        }
+      ],
+      "definition": {
+        "id": "Citrus vein phloem degeneration, di dunia disebut huanglongbing. Bakteri yang hidup di dalam pembuluh dan TIDAK BISA disembuhkan; pohon yang sudah bergejala akan terus menurun sampai tidak berbuah. Yang menentukan tiga hal, dan tidak satu pun berupa semprotan ke pohon sakit: bibit berlabel bebas penyakit, mengendalikan kutu loncat pada tunas muda, dan MENCABUT pohon sakit supaya tidak jadi sumber penularan bagi kebun sendiri dan tetangga."
+      },
+      "no_mapping_reason": "Belum dipetakan ke EPPO maupun GBIF. Kode kandidat tidak diperiksa ke sumbernya dalam sesi ini, dan kode yang tidak diperiksa lebih buruk daripada tidak ada kode. Tidak punya kembaran registri karena tidak satu pun produk terdaftar menyasarnya — sasaran yang tidak pernah muncul di label tidak pernah jadi entitas registri.",
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "vector": {
+        "id": "op:pst:00000081",
+        "label": "Kutu loncat"
+      },
+      "symptoms": {
+        "id": "Daun belang kuning TIDAK SETANGKUP di kiri dan kanan tulang daun — itu bedanya dengan kekurangan hara, yang belangnya setangkup. Daun mengecil, tegak, dan tulang daunnya menebal pucat. Buah kecil, miring bentuknya, dan bila dibelah bijinya banyak yang gugur berwarna gelap; rasanya masam. Ranting mati dari ujung, dan pohon berbunga di luar musim."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Bandingkan sisi kiri dan kanan helai daun terhadap tulang daun tengahnya. CVPD memberi belang kuning yang TIDAK setangkup — pola kuningnya berbeda di kedua sisi. Kekurangan hara memberi pola yang setangkup, sama di kiri dan kanan."
+          }
+        },
+        {
+          "check": {
+            "id": "Belah beberapa buah yang bentuknya miring. CVPD membuat biji gugur berwarna gelap dan bagian dalam buah tidak simetris. Kalau bijinya penuh dan buahnya simetris, penyebab kuningnya bukan CVPD — dan itu kabar baik, karena yang lain masih bisa dijawab."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT jeruk, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
