@@ -5,7 +5,8 @@
 //
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
 // kakao, kopi, kelapa sawit, jeruk, cucurbit, legum, tembakau, teh, mangga, apel,
-// tebu, karet, lada, pisang, dan krisan (seluruhnya 28 Agustus 2026).
+// tebu, karet, lada, pisang, krisan, celah cabai, dan hama gudang (seluruhnya
+// 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -146,6 +147,8 @@ const KRISAN = { id: 'op:cmd:00001082', label: 'Krisan' };
 const KELAPA = { id: 'op:cmd:00001043', label: 'Kelapa' };
 const BAWANG_PUTIH = { id: 'op:cmd:00001073', label: 'Bawang putih' };
 const SAWI = { id: 'op:cmd:00001132', label: 'Sawi' };
+const BERAS_SIMPAN = { id: 'op:cmd:00001023', label: 'Beras di penyimpanan' };
+const JAGUNG_SIMPAN = { id: 'op:cmd:00001080', label: 'Jagung di penyimpanan' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -2401,6 +2404,84 @@ const PINTU_KRISAN = [
   },
 ];
 
+const PINTU_CABAI_LANJUT = [
+  {
+    id: 'op:pst:00000120', dari: 'op:pst:00001043', nama: 'Penyakit Antraknosa',
+    key: 'antraknosa-cabai', label: 'Antraknosa cabai',
+    inang: [CABAI],
+    definition:
+      'Patek. Entitas INI yang memegang hampir seluruh pendaftaran antraknosa cabai — 102 baris — sementara pintu "Antraknosa" yang lebih dulu ada berdiri di atas sasaran genus Colletotrichum spp. yang cuma dipakai 8 baris. Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang membedakan hanya bagaimana registri menuliskan sasarannya. Sporanya menempel sejak buah masih hijau lalu diam sampai buah memerah, jadi menyemprot saat buah sudah berbercak selalu terlambat.',
+    gejala:
+      'Bercak melingkar CEKUNG pada buah, mula-mula berair lalu meluas dan menghitam, dan di tengah bercak muncul titik-titik hitam kecil tersusun melingkar sepusat. Buah yang terkena mengering keriput dan tetap menggantung; pada serangan berat buah merah berguguran sebelum sempat dipetik.',
+    pembanding: [
+      { cek: 'Lihat susunan titik hitam di tengah bercak. Antraknosa menyusunnya MELINGKAR sepusat — itu tubuh buah jamurnya. Busuk karena tusukan lalat buah tidak bertitik hitam bersusun dan berbelatung di dalamnya.',
+        membantah: { id: 'op:pst:00000004', label: 'Lalat buah' } },
+      { cek: 'Ingat kapan buahnya mulai berbercak. Antraknosa menempel sejak buah masih hijau dan baru terlihat saat memerah — buah yang mulus di kebun bisa berbercak di keranjang. Kalau bercak sudah ada sejak buah kecil dan tidak meluas, penyebabnya lain.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000121', dari: 'op:pst:00001049', nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-cabai', label: 'Bercak daun cabai',
+    inang: [CABAI],
+    definition:
+      'Bercak mata katak pada cabai — 73 baris penggunaan berlabel, dan sampai sekarang tidak punya pintu sama sekali di jalur ini. Menyerang daun, bukan buah, dan kerugiannya lewat daun yang rontok sehingga buah terbakar matahari dan tanaman berhenti berbunga. Paling parah pada musim hujan dan pada pertanaman rapat.',
+    gejala:
+      'Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu tipis dan tepi coklat gelap yang tegas — bentuknya seperti mata, dan tengahnya sering berlubang saat mengering. Daun yang berbercak banyak menguning lalu RONTOK dari bawah ke atas, sampai batang tinggal telanjang sementara buahnya masih menggantung.',
+    pembanding: [
+      { cek: 'Lihat apakah buahnya ikut berbercak. Bercak daun cabai menyerang DAUN dan tangkai saja — buahnya mulus. Kalau buah ikut berbercak melingkar cekung, itu antraknosa.',
+        membantah: { id: 'op:pst:00000120', label: 'Antraknosa cabai' } },
+      { cek: 'Terawang bercak daunnya ke cahaya. Bercak daun cabai bertengah TIPIS sampai tembus cahaya dan sering berlubang; bercak karena tusukan trips atau terbakar pupuk tidak bundar dan tidak bertepi coklat tegas.',
+        membantah: { id: 'op:pst:00000001', label: 'Trips' } },
+    ],
+  },
+];
+
+const PINTU_GUDANG = [
+  {
+    id: 'op:pst:00000122', dari: 'op:pst:00001082', nama: 'Hama Gudang',
+    key: 'kumbang-tepung', label: 'Kumbang tepung',
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    definition:
+      'Hama gudang dengan pendaftaran terbanyak — 23 baris. Ia TIDAK bisa melubangi butir yang utuh dan keras: ia hidup dari butir pecah, dedak, dan tepung, jadi kehadirannya menandakan ada butir rusak lebih dulu — sering bekas hama lain atau bekas penggilingan. Registri juga memuat Tribolium sp. dan Tribolium confusum (5 baris) yang belum disatukan. Yang menentukan kebersihan gudang, kadar air gabah di bawah 14%, dan mengosongkan sisa tumpukan lama sebelum memasukkan yang baru.',
+    gejala:
+      'Kumbang pipih coklat kemerahan sepanjang 3–4 mm bergerak cepat di permukaan tumpukan dan di sela karung, dan berlarian saat karung dibuka. Beras berdebu, menggumpal, dan berbau apak tajam; butir yang pecah habis tinggal kulit. Tepung dan dedak di dasar tumpukan bergerak bila ditatap lama.',
+    pembanding: [
+      { cek: 'Ambil segenggam dan tuang perlahan di atas nampan terang. Kumbang tepung PIPIH dan berlari cepat di permukaan; kumbang bubuk beras bertubuh silinder dengan moncong panjang menonjol ke depan.',
+        membantah: { id: 'op:pst:00000123', label: 'Bubuk beras' } },
+      { cek: 'Periksa apakah butirnya berlubang. Kumbang tepung tidak bisa melubangi butir utuh — kalau ada butir berlubang bundar, ada hama LAIN yang membukanya lebih dulu, dan itu yang perlu ditangani.',
+        membantah: { id: 'op:pst:00000123', label: 'Bubuk beras' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000123', dari: 'op:pst:00001116', nama: 'Hama Gudang',
+    key: 'bubuk-beras', label: 'Bubuk beras',
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    definition:
+      'Kumbang bubuk beras. Berbeda dari kumbang tepung, ia MELUBANGI butir utuh dan berkembang di dalamnya, jadi ia bisa memulai serangan pada beras yang masih bagus. Registri juga memuat Sitophilus spp. (9 baris) dan Sitophilus zeamais, bubuk jagung (8 baris), yang belum disatukan. Betinanya bertelur di dalam butir dan menutupnya, jadi butir yang tampak utuh bisa sudah berisi larva.',
+    gejala:
+      'Butir beras atau jagung berlubang BUNDAR rapi seukuran ujung jarum, dan bila digenggam terasa ringan serta berdebu. Kumbang kecoklatan sampai kehitaman sepanjang 3–4 mm dengan MONCONG panjang menonjol ke depan berjalan di antara butir. Tumpukan yang berat serangannya terasa hangat dan berbau apak.',
+    pembanding: [
+      { cek: 'Lihat kepala kumbangnya dari dekat. Bubuk beras punya MONCONG panjang seperti belalai yang menonjol ke depan — tidak ada hama gudang beras lain yang punya. Kumbang tepung berkepala rata tanpa moncong.',
+        membantah: { id: 'op:pst:00000122', label: 'Kumbang tepung' } },
+      { cek: 'Rendam segenggam beras di air. Butir yang MENGAPUNG berisi rongga karena sudah dimakan dari dalam; itu memperlihatkan serangan yang belum terlihat dari luar, dan angkanya menentukan apakah tumpukan masih layak disimpan lebih lama.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000124', dari: 'op:pst:00001183', nama: 'Hama Gudang',
+    key: 'bubuk-gabah', label: 'Bubuk gabah',
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    definition:
+      'Kumbang bubuk gabah. Seperti bubuk beras ia melubangi butir utuh, tetapi jauh lebih tahan panas dan kering — jadi ia yang paling sering bertahan di gudang yang sudah dikeringkan dengan baik. Larvanya menghasilkan bubuk halus yang menumpuk di dasar karung, dan bubuk itu sering tanda pertama sebelum kumbangnya terlihat.',
+    gejala:
+      'Butir berlubang tidak beraturan dengan tepi bergerigi, dan di dasar karung menumpuk BUBUK HALUS berwarna terang seperti tepung. Kumbangnya silinder memanjang coklat gelap sepanjang 2–3 mm, berkepala tertunduk sehingga tidak terlihat dari atas, dan pura-pura mati saat disentuh.',
+    pembanding: [
+      { cek: 'Angkat karung dan lihat apa yang tertinggal di bawahnya. Bubuk gabah meninggalkan BUBUK HALUS terang di dasar — tanda paling dini, sering sebelum satu kumbang pun terlihat.' },
+      { cek: 'Sentuh kumbangnya. Bubuk gabah berpura-pura mati dan diam kaku; kumbang tepung justru berlari cepat, dan bubuk beras bermoncong panjang.',
+        membantah: { id: 'op:pst:00000122', label: 'Kumbang tepung' } },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -2426,6 +2507,9 @@ const KELOMPOK = [
   { kunci: 'lada', tanaman: 'lada', inang: [LADA], pintu: PINTU_LADA },
   { kunci: 'pisang', tanaman: 'pisang', inang: [PISANG], pintu: PINTU_PISANG },
   { kunci: 'krisan', tanaman: 'krisan', inang: [KRISAN], pintu: PINTU_KRISAN },
+
+  { kunci: 'cabai-lanjut', tanaman: 'cabai', inang: [CABAI], pintu: PINTU_CABAI_LANJUT },
+  { kunci: 'gudang', tanaman: 'hasil pertanian di penyimpanan', inang: [BERAS_SIMPAN, JAGUNG_SIMPAN], pintu: PINTU_GUDANG },
 ];
 
 // ---------------------------------------------------------------------------
@@ -2490,6 +2574,18 @@ const PERLUAS = [
       'Vektor beberapa virus penting, termasuk virus penggulung daun pada kentang. Mengendalikannya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergejala.',
     gejala:
       'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
+  },
+  {
+    // Pintu antraknosa cabai yang lebih dulu ada berdiri di atas sasaran GENUS, dan
+    // ternyata cuma dipakai 8 baris pendaftaran sementara species-nya memegang 102.
+    // Entri ini tidak dibuang — ia sah, dan produk yang terdaftar atas nama genus memang
+    // hanya terjangkau lewat sini — tetapi pembagiannya berhenti jadi teka-teki: yang
+    // membaca salah satunya kini diberi tahu bahwa yang satunya ada dan kenapa.
+    id: 'op:pst:00000007',
+    nama: 'Antraknosa',
+    inang: [CABAI],
+    definition:
+      'Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit.',
   },
   { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI, SEMANGKA, MELON, MENTIMUN, KACANG_PANJANG] },
   { id: 'op:pst:00000004', nama: 'Lalat buah', inang: [CABAI, JERUK] },
