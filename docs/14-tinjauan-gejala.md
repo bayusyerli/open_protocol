@@ -1,4 +1,4 @@
-# Daftar Tinjauan — 67 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jagung, Kedelai, Kubis, dan Kakao
+# Daftar Tinjauan — 72 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jagung, Kedelai, Kubis, Kakao, dan Kopi
 
 > Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`
 > oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah
@@ -10,7 +10,7 @@
 
 ## 1. Apa yang diminta, dan apa yang tidak
 
-Seluruh 67 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
+Seluruh 72 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
 bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok
 “pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri
 menyebut OPT mana yang **terbantah** kalau hasilnya begitu.
@@ -25,7 +25,7 @@ Yang diminta dari peninjau, untuk tiap entri:
 
 Yang **tidak** diminta:
 
-- Bukan menambah OPT baru. Yang 67 ini dipilih karena paling sering dicari; kekurangan
+- Bukan menambah OPT baru. Yang 72 ini dipilih karena paling sering dicari; kekurangan
   cakupan sudah diketahui dan bukan yang ditinjau di sini.
 - Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi
   dan tidak melewati penilaian peninjau.
@@ -49,7 +49,7 @@ Ini disebut di muka supaya tidak ada yang tersembunyi.
 
 ---
 
-## 3. Seluruh 67 entri
+## 3. Seluruh 72 entri
 
 12 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
 **Kutu daun persik**, **Kutu kebul**, **Ulat grayak**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat tanah**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**. Teksnya menyebut tiap tanaman secara terpisah,
@@ -1869,7 +1869,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-#### 5. Karat daun — *Phakopsora pachyrhizi*
+#### 5. Karat daun kedelai — *Phakopsora pachyrhizi*
 
 `op:pst:00000057` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
 
@@ -2006,7 +2006,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 **Ciri pembanding**
 
 1. Lihat tengah bercaknya dan raba permukaannya. Bercak mata katak bertengah kelabu keputihan dengan tepi coklat kemerahan tegas, dan permukaannya RATA; karat daun menonjol berbintil dan menyisakan serbuk coklat di jari.
-   → membantah: **Karat daun**
+   → membantah: **Karat daun kedelai**
 2. Perhatikan apakah bercaknya menyatu. Bercak mata katak tetap terpisah satu-satu walau jumlahnya banyak; bercak yang menyatu jadi bidang kering luas penyebabnya bukan ini.
    → membantah: **—**
 
@@ -2351,13 +2351,143 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Kopi — 5 entri
+
+#### 1. Karat daun kopi — *Hemileia vastatrix*
+
+`op:pst:00000068` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Penyakit kopi paling menentukan di dunia, dan yang membuat arabika sulit dipertahankan di dataran rendah tanpa varietas tahan; robusta jauh lebih tahan. Yang menentukan pemangkasan agar tajuk tidak lembap, pemupukan berimbang, dan pilihan varietas — semprotan tembaga hanya menahan, dan hanya kalau diberikan sebelum bercaknya meluas.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak bulat kuning terang di permukaan BAWAH daun, dan di atas bercak itu ada SERBUK jingga kekuningan yang menempel di jari. Dari permukaan atas terlihat sebagai bercak kuning pucat berbatas kabur. Daun rontok dari bawah ke atas sampai ranting telanjang, dan pohon yang gundul tidak berbuah pada musim berikutnya.
+
+**Ciri pembanding**
+
+1. Balik daun dan usap bercaknya dengan jari. Karat daun meninggalkan SERBUK jingga di jari — tidak ada penyakit daun kopi lain yang begitu. Bercak daun kopi rata, kering, dan tidak berserbuk.
+   → membantah: **Bercak daun kopi**
+2. Periksa apakah daunnya lengket. Karat daun tidak melengketkan daun. Kalau daun menguning DAN lengket serta berjelaga hitam, yang menguningkannya kutu, bukan karat.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Penggerek buah kopi — *Hypothenemus hampei*
+
+`op:pst:00000069` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*PBKo — hama kopi paling menentukan di Indonesia, dan sekaligus yang paling sedikit produk terdaftarnya: LIMA baris penggunaan berlabel di seluruh registri. Yang menentukan memang bukan semprotan melainkan PETIK BUBUK dan LELESAN — memetik buah terserang lebih awal dan memungut buah jatuh sampai bersih — ditambah Beauveria bassiana dan perangkap beralkohol. Kumbangnya berada di dalam biji hampir seumur hidupnya, jadi semprotan hanya mengenai yang sedang terbang. Registri juga memuatnya atas nama genus lama Stephanoderes hampei (1 baris) yang belum disatukan.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lubang bundar kecil sebesar ujung jarum tepat di UJUNG buah — sisi yang berseberangan dengan tangkai — kadang dengan serbuk halus di mulut lubang. Buah yang terserang saat masih muda gugur; yang bertahan sampai panen bijinya berlubang dan berlorong, dan bobot serta mutunya turun.
+
+**Ciri pembanding**
+
+1. Lihat DI MANA lubangnya. Penggerek buah kopi hampir selalu masuk lewat ujung buah, sisi yang berlawanan dengan tangkai, dan lubangnya bundar rapi sebesar ujung jarum. Lubang di sisi lain buah, atau yang tidak bundar, penyebabnya lain.
+   → membantah: **—**
+2. Belah buah yang berlubang. Ada lorong dan ruang di dalam biji beserta kumbang hitam kecil kurang dari dua milimeter, kadang beberapa sekaligus. Buah yang gugur karena kekurangan air atau hara tidak berlubang dan bijinya utuh.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Kutu putih — *Planococcus citri*
+
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
+
+**Ciri pembanding**
+
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
+   → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Kutu tempurung — *Coccus viridis*
+
+`op:pst:00000071` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Sisik cembung hijau kekuningan seukuran kepala jarum menempel RAPAT di tulang daun bagian bawah, di pucuk, dan di buah muda, dan tidak bergerak sama sekali. Daun di bawahnya lengket lalu tertutup jelaga hitam sampai permukaannya gelap; pucuk kerdil dan buah muda gugur.
+
+**Ciri pembanding**
+
+1. Coba dorong sisiknya dengan kuku. Kutu tempurung MENEMPEL keras dan terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya; kutu putih hancur jadi bubuk lilin saat diusap.
+   → membantah: **Kutu putih**
+2. Usap jelaga hitamnya dengan kain basah. Jelaga TERANGKAT dan daun di bawahnya masih hijau — ia tumbuh di atas embun madu, bukan menyerang daunnya. Yang perlu ditangani kutunya; membersihkan jelaganya saja tidak menghentikan apa pun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Bercak daun kopi — *Cercospora coffeicola*
+
+`op:pst:00000072` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Paling parah pada bibit di pembibitan dan pada pohon yang kekurangan hara atau kepanasan karena naungannya terlalu terbuka — jadi bercaknya sering pertanda pemeliharaan, bukan cuma pertanda jamur. Menyerang daun dan buah; pada buah ia membuat kulit melekat pada biji sehingga sulit dikupas.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu dan tepi coklat kemerahan yang tegas, sering dikelilingi halo kuning, dan di bagian tengahnya ada titik-titik hitam halus. Pada buah muncul bercak coklat kehitaman cekung memanjang yang membuat kulit buah melekat ke biji.
+
+**Ciri pembanding**
+
+1. Raba dan usap bercaknya. Bercak daun kopi RATA dan kering serta tidak meninggalkan apa pun di jari; karat daun meninggalkan serbuk jingga saat diusap di permukaan bawah daun.
+   → membantah: **Karat daun kopi**
+2. Lihat di mana bercak terbanyak. Bercak daun kopi menumpuk pada bibit dan pada pohon yang naungannya terlalu terbuka atau kurang pupuk; karat daun tidak memilih begitu, dan justru menyerang pohon yang tajuknya rimbun dan lembap.
+   → membantah: **Karat daun kopi**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ---
 
 ## 4. Yang kami tandai sendiri
 
 Dihitung dari datanya, bukan dari penilaian agronomi — supaya waktu peninjau tidak habis
-menemukan yang sudah kami ragukan. 29 dari 67 entri bertanda,
-dan secara keseluruhan **26 dari 134 ciri pembanding tidak menyebut apa yang dibantahnya**:
+menemukan yang sudah kami ragukan. 33 dari 72 entri bertanda,
+dan secara keseluruhan **30 dari 144 ciri pembanding tidak menyebut apa yang dibantahnya**:
 
 - **Trips** — kedua cirinya membantah OPT yang sama.
 - **Kutu kebul** — 1 ciri tidak menyebut apa yang dibantahnya.
@@ -2388,6 +2518,10 @@ dan secara keseluruhan **26 dari 134 ciri pembanding tidak menyebut apa yang dib
 - **Penggerek buah kakao** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Mati ranting VSD** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Ulat kilan** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Penggerek buah kopi** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Kutu putih** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Kutu tempurung** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Bercak daun kopi** — kedua cirinya membantah OPT yang sama.
 
 Dua pola itu **bukan bukti entrinya salah.** Ciri yang membantah OPT yang sama dua kali
 bisa saja memang dua sudut yang berbeda terhadap satu kekeliruan yang paling sering
