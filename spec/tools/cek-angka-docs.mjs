@@ -227,7 +227,7 @@ if (HRG) {
   cek('16', 'varian harga berangka', HRG.filter((h) => h.series?.length).length, 51);
   cek('16', 'varian harga TANPA angka', HRG.filter((h) => !h.series?.length).length, 45);
   cek('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26752);
-  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 24);
+  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 23);
   // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
   // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
   cek('16', 'harga pupuk berangka', HRG.filter((h) => /^pupuk/i.test(h.label.id) && h.series?.length).length, 0);
