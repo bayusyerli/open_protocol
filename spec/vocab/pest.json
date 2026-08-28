@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama apel, bawang merah, bawang putih, cabai merah besar, jagung, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
+      "id": "OPT utama apel, bawang merah, bawang putih, beras di penyimpanan, cabai merah besar, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 30 komoditas: Apel, Bawang merah, Bawang putih, Cabai merah besar, Jagung, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 32 komoditas: Apel, Bawang merah, Bawang putih, Beras di penyimpanan, Cabai merah besar, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -930,7 +930,7 @@
         }
       ],
       "definition": {
-        "id": "Patek. Penyebab kerugian terbesar pada cabai di banyak sentra."
+        "id": "Patek. Entri ini berdiri di atas sasaran GENUS \"Colletotrichum spp.\" yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: \"Antraknosa cabai\". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit."
       },
       "mappings": [
         {
@@ -975,7 +975,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Antraknosa",
@@ -10589,6 +10589,448 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT krisan, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000120",
+      "key": "antraknosa-cabai",
+      "label": {
+        "id": "Antraknosa cabai"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Colletotrichum capsici",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Patek. Entitas INI yang memegang hampir seluruh pendaftaran antraknosa cabai — 102 baris — sementara pintu \"Antraknosa\" yang lebih dulu ada berdiri di atas sasaran genus Colletotrichum spp. yang cuma dipakai 8 baris. Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang membedakan hanya bagaimana registri menuliskan sasarannya. Sporanya menempel sejak buah masih hijau lalu diam sampai buah memerah, jadi menyemprot saat buah sudah berbercak selalu terlambat."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2568802",
+          "uri": "https://www.gbif.org/species/2568802",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Collectotricum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrchum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotrichum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 107 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletotricum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Colletrotichum capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Antraknosa",
+        "Collectotricum capsici",
+        "Colletotrchum capsici",
+        "Colletotricum capsici",
+        "Colletrotichum capsici",
+        "Penyakit Antarknosa",
+        "Penyakit Antraknosa",
+        "Penyakit Antraknose",
+        "Penyakit Antranoksa",
+        "Penyakit Busuk Buah"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak melingkar CEKUNG pada buah, mula-mula berair lalu meluas dan menghitam, dan di tengah bercak muncul titik-titik hitam kecil tersusun melingkar sepusat. Buah yang terkena mengering keriput dan tetap menggantung; pada serangan berat buah merah berguguran sebelum sempat dipetik."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat susunan titik hitam di tengah bercak. Antraknosa menyusunnya MELINGKAR sepusat — itu tubuh buah jamurnya. Busuk karena tusukan lalat buah tidak bertitik hitam bersusun dan berbelatung di dalamnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000004",
+            "label": "Lalat buah"
+          }
+        },
+        {
+          "check": {
+            "id": "Ingat kapan buahnya mulai berbercak. Antraknosa menempel sejak buah masih hijau dan baru terlihat saat memerah — buah yang mulus di kebun bisa berbercak di keranjang. Kalau bercak sudah ada sejak buah kecil dan tidak meluas, penyebabnya lain."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000121",
+      "key": "bercak-daun-cabai",
+      "label": {
+        "id": "Bercak daun cabai"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Cercospora capsici",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Bercak mata katak pada cabai — 73 baris penggunaan berlabel, dan sampai sekarang tidak punya pintu sama sekali di jalur ini. Menyerang daun, bukan buah, dan kerugiannya lewat daun yang rontok sehingga buah terbakar matahari dan tanaman berhenti berbunga. Paling parah pada musim hujan dan pada pertanaman rapat."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "5264625",
+          "uri": "https://www.gbif.org/species/5264625",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cercospora capsica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cercospora capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 84 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Cercospora capsica",
+        "Penyakit Bercak Daun",
+        "Penyakit Bercak Ungu"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu tipis dan tepi coklat gelap yang tegas — bentuknya seperti mata, dan tengahnya sering berlubang saat mengering. Daun yang berbercak banyak menguning lalu RONTOK dari bawah ke atas, sampai batang tinggal telanjang sementara buahnya masih menggantung."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat apakah buahnya ikut berbercak. Bercak daun cabai menyerang DAUN dan tangkai saja — buahnya mulus. Kalau buah ikut berbercak melingkar cekung, itu antraknosa."
+          },
+          "rules_out": {
+            "id": "op:pst:00000120",
+            "label": "Antraknosa cabai"
+          }
+        },
+        {
+          "check": {
+            "id": "Terawang bercak daunnya ke cahaya. Bercak daun cabai bertengah TIPIS sampai tembus cahaya dan sering berlubang; bercak karena tusukan trips atau terbakar pupuk tidak bundar dan tidak bertepi coklat tegas."
+          },
+          "rules_out": {
+            "id": "op:pst:00000001",
+            "label": "Trips"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000122",
+      "key": "kumbang-tepung",
+      "label": {
+        "id": "Kumbang tepung"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Tribolium castaneum",
+      "hosts": [
+        {
+          "id": "op:cmd:00001023",
+          "label": "Beras di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001080",
+          "label": "Jagung di penyimpanan"
+        }
+      ],
+      "definition": {
+        "id": "Hama gudang dengan pendaftaran terbanyak — 23 baris. Ia TIDAK bisa melubangi butir yang utuh dan keras: ia hidup dari butir pecah, dedak, dan tepung, jadi kehadirannya menandakan ada butir rusak lebih dulu — sering bekas hama lain atau bekas penggilingan. Registri juga memuat Tribolium sp. dan Tribolium confusum (5 baris) yang belum disatukan. Yang menentukan kebersihan gudang, kadar air gabah di bawah 14%, dan mengosongkan sisa tumpukan lama sebelum memasukkan yang baru."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tribolium castaneum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 40 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4990338",
+          "uri": "https://www.gbif.org/species/4990338",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama",
+        "Hama Beras",
+        "Hama Gudang",
+        "Komoditas Beras",
+        "Komoditi Beras",
+        "Ulat Tepung"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Kumbang pipih coklat kemerahan sepanjang 3–4 mm bergerak cepat di permukaan tumpukan dan di sela karung, dan berlarian saat karung dibuka. Beras berdebu, menggumpal, dan berbau apak tajam; butir yang pecah habis tinggal kulit. Tepung dan dedak di dasar tumpukan bergerak bila ditatap lama."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Ambil segenggam dan tuang perlahan di atas nampan terang. Kumbang tepung PIPIH dan berlari cepat di permukaan; kumbang bubuk beras bertubuh silinder dengan moncong panjang menonjol ke depan."
+          },
+          "rules_out": {
+            "id": "op:pst:00000123",
+            "label": "Bubuk beras"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah butirnya berlubang. Kumbang tepung tidak bisa melubangi butir utuh — kalau ada butir berlubang bundar, ada hama LAIN yang membukanya lebih dulu, dan itu yang perlu ditangani."
+          },
+          "rules_out": {
+            "id": "op:pst:00000123",
+            "label": "Bubuk beras"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT hasil pertanian di penyimpanan, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000123",
+      "key": "bubuk-beras",
+      "label": {
+        "id": "Bubuk beras"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Sitophilus oryzae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001023",
+          "label": "Beras di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001080",
+          "label": "Jagung di penyimpanan"
+        }
+      ],
+      "definition": {
+        "id": "Kumbang bubuk beras. Berbeda dari kumbang tepung, ia MELUBANGI butir utuh dan berkembang di dalamnya, jadi ia bisa memulai serangan pada beras yang masih bagus. Registri juga memuat Sitophilus spp. (9 baris) dan Sitophilus zeamais, bubuk jagung (8 baris), yang belum disatukan. Betinanya bertelur di dalam butir dan menutupnya, jadi butir yang tampak utuh bisa sudah berisi larva."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "9915023",
+          "uri": "https://www.gbif.org/species/9915023",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sitophilus oryzae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 23 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sitophylus oryzae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Beras",
+        "Hama Gudang",
+        "Hama Gudang Komoditas Beras",
+        "Hama Jagung",
+        "Kutu Beras",
+        "Sitophilus Oryzae",
+        "Sitophylus oryzae"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Butir beras atau jagung berlubang BUNDAR rapi seukuran ujung jarum, dan bila digenggam terasa ringan serta berdebu. Kumbang kecoklatan sampai kehitaman sepanjang 3–4 mm dengan MONCONG panjang menonjol ke depan berjalan di antara butir. Tumpukan yang berat serangannya terasa hangat dan berbau apak."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat kepala kumbangnya dari dekat. Bubuk beras punya MONCONG panjang seperti belalai yang menonjol ke depan — tidak ada hama gudang beras lain yang punya. Kumbang tepung berkepala rata tanpa moncong."
+          },
+          "rules_out": {
+            "id": "op:pst:00000122",
+            "label": "Kumbang tepung"
+          }
+        },
+        {
+          "check": {
+            "id": "Rendam segenggam beras di air. Butir yang MENGAPUNG berisi rongga karena sudah dimakan dari dalam; itu memperlihatkan serangan yang belum terlihat dari luar, dan angkanya menentukan apakah tumpukan masih layak disimpan lebih lama."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT hasil pertanian di penyimpanan, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000124",
+      "key": "bubuk-gabah",
+      "label": {
+        "id": "Bubuk gabah"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Rhyzopertha dominica",
+      "hosts": [
+        {
+          "id": "op:cmd:00001023",
+          "label": "Beras di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001080",
+          "label": "Jagung di penyimpanan"
+        }
+      ],
+      "definition": {
+        "id": "Kumbang bubuk gabah. Seperti bubuk beras ia melubangi butir utuh, tetapi jauh lebih tahan panas dan kering — jadi ia yang paling sering bertahan di gudang yang sudah dikeringkan dengan baik. Larvanya menghasilkan bubuk halus yang menumpuk di dasar karung, dan bubuk itu sering tanda pertama sebelum kumbangnya terlihat."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1095716",
+          "uri": "https://www.gbif.org/species/1095716",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rhyzoperta dominica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rhyzopertha dominica",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Beras",
+        "Hama Gudang",
+        "Kumbang Bubuk Gabah",
+        "Rhyzoperta dominica"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Butir berlubang tidak beraturan dengan tepi bergerigi, dan di dasar karung menumpuk BUBUK HALUS berwarna terang seperti tepung. Kumbangnya silinder memanjang coklat gelap sepanjang 2–3 mm, berkepala tertunduk sehingga tidak terlihat dari atas, dan pura-pura mati saat disentuh."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Angkat karung dan lihat apa yang tertinggal di bawahnya. Bubuk gabah meninggalkan BUBUK HALUS terang di dasar — tanda paling dini, sering sebelum satu kumbang pun terlihat."
+          }
+        },
+        {
+          "check": {
+            "id": "Sentuh kumbangnya. Bubuk gabah berpura-pura mati dan diam kaku; kumbang tepung justru berlari cepat, dan bubuk beras bermoncong panjang."
+          },
+          "rules_out": {
+            "id": "op:pst:00000122",
+            "label": "Kumbang tepung"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT hasil pertanian di penyimpanan, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
