@@ -2621,6 +2621,216 @@ const PINTU_SISA2 = [
   },
 ];
 
+const PINTU_PADI_EKOR = [
+  {
+    id: 'op:pst:00000133', dari: 'op:pst:00001447', nama: 'Penyakit Gosong Palsu',
+    key: 'gosong-palsu', label: 'Gosong palsu',
+    inang: [PADI],
+    definition:
+      'Menyerang tepat saat bunga terbuka, dan hanya saat itu — jadi jendela tindakannya sekitar seminggu menjelang malai keluar, bukan sesudah gumpalannya terlihat. Diperparah hujan pada masa berbunga dan pemupukan nitrogen berlebih. Bertahan pada gabah dan sisa tanaman, jadi benih dari petak yang terserang meneruskannya.',
+    gejala:
+      'Beberapa bulir pada malai berubah jadi GUMPALAN BULAT jauh lebih besar daripada gabah normal, mula-mula jingga kekuningan lalu hijau zaitun kehitaman dan berdebu bila disentuh. Malainya sendiri tetap hijau dan bulir lain di sebelahnya normal — biasanya hanya beberapa bulir per malai.',
+    pembanding: [
+      { cek: 'Hitung berapa bulir per malai yang jadi gumpalan. Gosong palsu hanya mengenai beberapa bulir dan menyisakan sisanya normal; malai yang hampa SELURUHNYA penyebabnya beluk karena penggerek atau blas leher.',
+        membantah: { id: 'op:pst:00000032', label: 'Blas' } },
+      { cek: 'Pecahkan satu gumpalan. Isinya serbuk hijau zaitun sampai kehitaman yang menempel di jari — bukan bulir kosong, bukan ulat. Gumpalan itu jamurnya sendiri yang menggantikan bulir.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000134', dari: 'op:pst:00001293', nama: 'Penyakit Bercak Daun Coklat',
+    key: 'bercak-coklat-padi', label: 'Bercak coklat padi',
+    inang: [PADI],
+    definition:
+      'Lebih sering pertanda TANAH daripada pertanda jamur: menumpuk pada lahan yang kekurangan kalium, tanah masam, dan sawah tadah hujan yang miskin hara. Menyemprot tanpa membenahi pemupukan hanya menunda. Terbawa benih juga, sehingga perlakuan benih menahan serangan awal di persemaian.',
+    gejala:
+      'Bercak BULAT LONJONG seperti biji wijen pada daun — coklat dengan tengah keabuan dan tepi kecoklatan, tersebar merata di seluruh helai. Pada gabah muncul bercak coklat kehitaman yang membuat beras berbintik saat digiling. Bibit di persemaian bisa mati kalau bercaknya rapat.',
+    pembanding: [
+      { cek: 'Lihat bentuk bercaknya. Bercak coklat padi BULAT LONJONG seperti biji wijen dan tersebar merata; blas melebar di tengah membentuk belah ketupat dengan kedua ujung lancip, dan bercak coklat sempit lurus memanjang selebar satu milimeter.',
+        membantah: { id: 'op:pst:00000032', label: 'Blas' } },
+      { cek: 'Periksa riwayat pemupukan dan jenis lahannya sebelum memutuskan menyemprot. Bercak coklat menumpuk pada lahan yang kurang kalium dan tanah masam; kalau seluruh hamparan bergejala merata dan pemupukannya memang tipis, yang perlu dibenahi haranya.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000135', dari: 'op:pst:00001361', nama: 'Hama Ganjur',
+    key: 'ganjur', label: 'Ganjur',
+    inang: [PADI],
+    definition:
+      'Hanya menyerang anakan yang belum berbunga, dan kerusakannya tidak bisa diperbaiki: anakan yang jadi puru tidak akan pernah bermalai. Menumpuk pada musim hujan dan pada pertanaman yang tidak serempak, karena ia berpindah dari petak yang lebih tua. Semprotan sesudah puru terlihat sudah terlambat — larvanya di dalam.',
+    gejala:
+      'Dari tengah anakan keluar tabung putih keperakan panjang seperti DAUN BAWANG, tegak dan menggulung rapat, sepanjang beberapa sentimeter sampai sejengkal. Anakan yang membentuknya berhenti tumbuh dan tidak bermalai, tetapi rumpun mengeluarkan anakan baru sehingga terlihat rimbun namun hampa.',
+    pembanding: [
+      { cek: 'Perhatikan bentuk yang keluar dari tengah anakan. Ganjur membentuk TABUNG keperakan mirip daun bawang — tidak ada OPT padi lain yang membentuknya, dan sekali terlihat tidak perlu diperiksa lagi.' },
+      { cek: 'Lihat apakah anakannya mati atau cuma berhenti. Ganjur menyisakan anakan HIDUP yang tidak bermalai; sundep karena penggerek batang mematikan pucuknya dan pucuk itu mudah ditarik lepas.',
+        membantah: { id: 'op:pst:00000030', label: 'Penggerek batang' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000136', dari: 'op:pst:00001336', nama: 'Hama Putih',
+    key: 'hama-putih', label: 'Hama putih',
+    inang: [PADI],
+    definition:
+      'Berbeda dari hama putih PALSU yang menggulung daun di tempatnya: yang ini MEMOTONG ujung daun jadi tabung lalu menjatuhkannya ke air dan hidup di dalamnya. Karena larvanya hidup di air, menyurutkan air beberapa hari menghentikannya tanpa semprotan apa pun — dan itu tindakan yang lebih murah daripada menyemprot petak tergenang.',
+    gejala:
+      'Daun terpotong rapi di ujung, dan potongan itu menggulung jadi TABUNG yang mengapung atau menempel di pangkal rumpun. Daun yang tersisa tergerus memutih menerawang dari ujung. Petak yang berat serangannya terlihat memutih dan air di sekitarnya penuh tabung kecil.',
+    pembanding: [
+      { cek: 'Lihat permukaan air di sela rumpun. Hama putih meninggalkan TABUNG daun yang mengapung atau menempel di pangkal, dan di dalamnya ada larva. Hama putih palsu tidak memotong daun — gulungannya tetap menempel di tanamannya.',
+        membantah: { id: 'op:pst:00000034', label: 'Hama putih palsu' } },
+      { cek: 'Coba surutkan air pada sebagian petak. Serangan hama putih berhenti begitu air surut karena larvanya hidup di air; kerusakan yang berlanjut walau air surut penyebabnya bukan ini.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000137', dari: 'op:pst:00001396', nama: 'Lalat Daun',
+    key: 'lalat-daun-padi', label: 'Lalat daun padi',
+    inang: [PADI],
+    definition:
+      'Menyerang pada bulan pertama sesudah tanam, terutama pada petak yang airnya dalam dan tanamannya lambat tumbuh. Tanaman yang haranya cukup umumnya pulih sendiri dan tetap bermalai penuh — jadi keputusannya lebih sering "perbaiki pengairan dan pemupukan" daripada "semprot".',
+    gejala:
+      'Daun muda yang baru membuka bertepi TERGERUS tidak beraturan dan berlubang memanjang sejajar tulang daun, seperti bekas dikerok dari dalam gulungan. Daun terlihat kuning pucat dan terpuntir; anakan berkurang dan tanaman lambat tumbuh, tetapi rumpunnya tidak mati.',
+    pembanding: [
+      { cek: 'Buka daun termuda yang masih menggulung. Lalat daun meninggalkan belatung putih kecil dan bekas kerokan DI DALAM gulungan, sehingga kerusakannya muncul saat daun membuka. Kalau gulungannya bersih, penyebabnya bukan ini.' },
+      { cek: 'Periksa dalamnya air dan warna tanaman sebelum memutuskan. Lalat daun menumpuk di petak yang airnya dalam dan tanamannya lambat; menurunkan tinggi air dan memupuk sering cukup, dan tanamannya pulih sendiri.' },
+    ],
+  },
+];
+
+const PINTU_EKOR = [
+  {
+    id: 'op:pst:00000138', dari: 'op:pst:00001322', nama: 'Penyakit Embun Tepung',
+    key: 'embun-tepung-cabai', label: 'Embun tepung cabai',
+    inang: [CABAI, KENTANG],
+    definition:
+      'Berbeda dari embun tepung yang lain: jamurnya hidup DI DALAM daun dan hanya menyembulkan spora lewat mulut daun di permukaan bawah, sehingga tepung putihnya muncul di bawah sementara yang terlihat dari atas cuma bercak kuning. Itu sebabnya ia sering dikira penyakit lain atau kekurangan hara. Menyukai cuaca kering berangin dan suhu hangat.',
+    gejala:
+      'Bercak kuning bersudut di permukaan ATAS daun tua, dibatasi tulang daun, dan tepat di baliknya lapisan PUTIH keabuan seperti tepung di permukaan BAWAH. Daun yang terkena menggulung ke atas lalu rontok, dan tanaman menggundul dari bawah sehingga buah terbakar matahari.',
+    pembanding: [
+      { cek: 'Balik daun yang bercak kuningnya terlihat dari atas. Embun tepung cabai menaburkan tepung putih di permukaan BAWAH saja; embun tepung pada tanaman lain justru memutih di permukaan atas.' },
+      { cek: 'Usap tepung putihnya. Ia terangkat seperti bedak dan daun di bawahnya masih hijau kekuningan; embun bulu meninggalkan selaput yang tidak bisa diusap begitu dan bercaknya sudah mati kecoklatan.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000139', dari: 'op:pst:00001553', nama: 'Semut',
+    key: 'semut-api', label: 'Semut api',
+    inang: [JAGUNG, KOPI, KAKAO],
+    definition:
+      'Jarang jadi masalah karena memakan tanaman — ia jadi masalah karena MEMELIHARA kutu putih dan kutu tempurung, mengangkutnya dari pohon ke pohon, dan mengusir musuh alami kutu itu. Karena itu ia sering pintu masuk yang lebih murah: memutus jalur semut di batang menurunkan kutu tanpa menyemprot tajuk sama sekali. Pada jagung ia juga memakan benih yang baru ditugal.',
+    gejala:
+      'Barisan semut merah kecoklatan naik-turun di batang sepanjang hari, paling ramai menuju bagian yang bergerombol kutu. Di tanah ada gundukan sarang lepas di dekat pangkal batang. Pada jagung, benih hilang atau berlubang beberapa hari sesudah ditugal, dan tanaman tidak tumbuh berpetak-petak.',
+    pembanding: [
+      { cek: 'Ikuti barisan semutnya ke atas dan lihat ke mana ia menuju. Kalau ujungnya gerombolan kutu, yang sedang dilihat SEBAB dan AKIBAT sekaligus — memutus jalur semut di batang menurunkan keduanya.',
+        membantah: { id: 'op:pst:00000070', label: 'Kutu putih' } },
+      { cek: 'Pada jagung, korek tanah di titik yang benihnya tidak tumbuh. Benih berlubang dengan semut di sekitarnya berarti semut; benih utuh yang membusuk berarti masalah benih atau kelembapan, dan menyemprot semut tidak menolong apa pun.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000140', dari: 'op:pst:00001208', nama: 'Belalang',
+    key: 'belalang-kembara', label: 'Belalang kembara',
+    inang: [JAGUNG, PADI],
+    definition:
+      'Identitasnya di GBIF tidak tertambat sama sekali — registri menulisnya bertingkat genus — jadi yang dijanjikan pintu ini cirinya, bukan nama spesiesnya. Berbeda dari belalang biasa yang tinggal di petaknya: jenis ini BERGEROMBOL dan berpindah, sehingga petak yang bersih pagi ini bisa habis sore nanti. Karena itu yang menentukan pengamatan bersama satu hamparan dan tindakan serentak, bukan penyemprotan per petak.',
+    gejala:
+      'Daun habis dimakan dari tepi dalam waktu singkat dan merata di seluruh petak, bukan cuma di pinggir; pada serangan berat tinggal tulang daun dan batang. Belalang terlihat BERGEROMBOL dalam jumlah besar, hinggap rapat di tanaman dan pematang, dan berpindah bersama-sama saat terganggu.',
+    pembanding: [
+      { cek: 'Perhatikan jumlah dan cara perginya. Belalang kembara bergerombol dan berpindah bersama-sama; belalang biasa melompat satu-satu di depan kaki dan tetap di petak yang sama.',
+        membantah: { id: 'op:pst:00000045', label: 'Belalang' } },
+      { cek: 'Lihat dari mana kerusakan mulai. Belalang kembara menghabiskan daun merata dan cepat di seluruh petak; belalang biasa merusak paling banyak di pinggir yang berbatasan rumput lalu berkurang ke tengah.',
+        membantah: { id: 'op:pst:00000045', label: 'Belalang' } },
+    ],
+  },
+];
+
+// Sasaran registri berspesies LAIN yang sebuah pintu jawab, ditulis satu per satu.
+//
+// KENAPA INI TIDAK BOLEH DIHITUNG MESIN
+// Pencakupan "Genus sp." di bangun-indeks.mjs aman karena LABELNYA SENDIRI menolak
+// menyebut spesies: produk yang terdaftar untuk "Thrips sp. pada cabai" memang menjawab
+// trips apa pun di cabai. Yang di bawah ini berbeda — labelnya MENYEBUT spesies, dan
+// mengarahkannya ke pintu spesies lain adalah pernyataan, bukan pembacaan.
+//
+// Percobaan yang menunjukkan kenapa aturan otomatis salah: "spesies semarga dengan pintu
+// yang ada, dipilah menurut inang" menjangkau 94 baris — dan baris terbesarnya
+// Xanthomonas campestris, yang pada padi berarti hawar daun bakteri dan pada kubis
+// berarti busuk hitam, dua penyakit yang tidak punya kemiripan apa pun. Saringan inang
+// kebetulan memisahkan keduanya dengan benar; kebetulan bukan dasar.
+//
+// Jadi setiap baris di bawah menyebut CIRINYA, bukan kekerabatannya, dan alat ini menolak
+// `dasar` yang lebih pendek dari 60 aksara supaya tidak ada yang lolos dengan "semarga".
+const CAKUP = [
+  {
+    pintu: 'op:pst:00000030',
+    cakup: [
+      { id: 'op:pst:00001389', nama: 'Penggerek Batang',
+        dasar: 'Scirpophaga innotata memberi sundep dan beluk yang sama persis dengan S. incertulas — pucuk mati mudah ditarik lepas, malai putih hampa dengan batang masih hijau — dan tidak ada ciri lapangan yang membedakan keduanya tanpa membedah ngengatnya. Yang berbeda musimnya, bukan yang terlihat, dan tindakannya sama.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000036',
+    cakup: [
+      { id: 'op:pst:00001198', nama: 'Penyakit Busuk Hitam',
+        dasar: 'Registri menulis "Xanthomonas campestris" telanjang tanpa patovar. Pada padi yang dimaksud pv. oryzae — hawar daun bakteri — karena tidak ada Xanthomonas lain yang didaftarkan pada padi, dan tujuh barisnya semua padi. Pencakupan ini hanya berlaku pada inang pintu ini; baris kubisnya penyakit lain sama sekali dan tidak ikut.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000046',
+    cakup: [
+      { id: 'op:pst:00001392', nama: 'Lalat Bibit',
+        dasar: 'Atherigona oryzae merusak jagung muda dengan cara yang sama seperti A. exigua: pucuk layu lalu mati sementara daun luar masih hijau, dan bila ditarik lepas dengan pangkal tergerek belatung. Keduanya lalat bibit yang menyerang pada dua sampai tiga minggu pertama dan ditangani dengan perlakuan benih yang sama.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000047',
+    cakup: [
+      { id: 'op:pst:00001318', nama: 'Penggerek Batang',
+        dasar: 'Ostrinia nubilalis tidak ada di Indonesia — sebarannya Eropa dan Amerika Utara — sehingga kelima baris registri ini salah nama untuk O. furnacalis, satu-satunya penggerek batang jagung Ostrinia di sini. Gejala yang dijanjikan pintu ini, lubang berderet pada daun yang membuka lalu gerekan di batang, memang gejala yang dimaksud label.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000083',
+    cakup: [
+      { id: 'op:pst:00001425', nama: 'Kutu Daun',
+        dasar: 'Toxoptera aurantii bergerombol di tunas dan daun muda jeruk persis seperti T. citricidus, sama-sama hitam mengkilap dan sama-sama meninggalkan embun madu berjelaga. Bedanya yang penting bukan yang terlihat: T. citricidus penular CVPD yang jauh lebih mampu, dan itu menaikkan alasan bertindak, bukan mengubah apa yang dilihat.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000091',
+    cakup: [
+      { id: 'op:pst:00001441', nama: 'Kutu Daun',
+        dasar: 'Aulacophora femoralis kumbang oteng-oteng yang sama bentuk dan cara makannya: melubangi daun mentimun-semangka-melon berbentuk bundar seperti ditembus, dan larvanya menggerek akar. Pintu ini memang bertingkat marga Aulacophora, jadi yang dijanjikannya sudah mencakup spesies ini apa adanya.' },
+      { id: 'op:pst:00002286', nama: 'Oteng Oteng Kutu Kuya',
+        dasar: 'Aulocophora similis salah eja untuk Aulacophora similis, kumbang oteng-oteng bermarga sama dengan lubang daun bundar yang sama, dan nama Indonesianya di registri pun "Oteng Oteng". Pintu ini bertingkat marga sehingga cakupannya memang sampai ke spesies ini.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000111',
+    cakup: [
+      { id: 'op:pst:00001434', nama: 'Penggerek Batang',
+        dasar: 'Chilo auricilius menggerek ruas tebu dengan lorong dan lubang keluar yang sama dengan C. sacchariphagus, dan di lapangan keduanya cuma dibedakan dengan membedah ngengat dewasa. Mati pucuk pada tebu muda dan ruas berlubang pada tebu tua sama-sama gejala keduanya.' },
+      { id: 'op:pst:00002172', nama: 'Penggerek Batang',
+        dasar: 'Chilo suppressalis pada pendaftaran tebu memberi gerekan ruas yang sama dengan C. sacchariphagus, dan pemeriksaan lapangannya sama: belah ruas yang lubangnya terlihat dan lihat lorong berisi kotoran. Pemilahan spesies Chilo menuntut pembedahan ngengat, jadi tidak masuk akal dijadikan syarat sebelum bertindak.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000122',
+    cakup: [
+      { id: 'op:pst:00001362', nama: 'Hama Gudang',
+        dasar: 'Tribolium confusum dan T. castaneum hanya dibedakan dari bentuk ujung sungutnya di bawah kaca pembesar — di karung keduanya kumbang pipih coklat kemerahan yang sama, meninggalkan tepung menggumpal berbau tengik yang sama, dan disanitasi gudang yang sama.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000129',
+    cakup: [
+      { id: 'op:pst:00001226', nama: 'Kutu Daun',
+        dasar: 'Aphis glycines kutu daun kedelai, tetapi barisnya di registri berdiri pada bawang merah dan apel — inang yang bukan inangnya — sehingga yang dimaksud label kutu daun bergerombol di pucuk pada tanaman itu, dan yang berperan di sana A. gossypii. Gejala dan tindakannya yang dijanjikan pintu ini memang itu.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000140',
+    cakup: [
+      { id: 'op:pst:00001555', nama: 'Locusta migratoria',
+        dasar: 'Locusta migratoria justru spesies yang dimaksud "belalang kembara": pintu ini ditulis bertingkat marga Locusta karena registri menuliskannya begitu, dan gerombolan yang berpindah bersama-sama yang dijanjikannya adalah perilaku spesies ini.' },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -2653,6 +2863,9 @@ const KELOMPOK = [
   { kunci: 'sisa', tanaman: 'cabai, padi, dan tambak', inang: [CABAI], pintu: PINTU_SISA },
 
   { kunci: 'sisa2', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_SISA2 },
+
+  { kunci: 'padi-ekor', tanaman: 'padi', inang: [PADI], pintu: PINTU_PADI_EKOR },
+  { kunci: 'ekor', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR },
 ];
 
 // ---------------------------------------------------------------------------
@@ -2977,6 +3190,34 @@ for (const e of kurasi) {
   else if (v && e.vector.label !== v.label?.id) { e.vector.label = v.label?.id; labelDisegarkan += 1; }
 }
 
+// CAKUP dipasang di sini, sesudah semua pintu berdiri dan sesudah rantai diratakan —
+// supaya sasaran yang hari ini baru saja digantikan tidak sempat masuk sebagai cakupan.
+let cakupDipasang = 0;
+{
+  const punyaPintu = new Set(kurasi.map((e) => e.id));
+  for (const g of CAKUP) {
+    const pintu = olehId.get(g.pintu);
+    if (!pintu) { bantah.push(`${g.pintu} tidak ada — pintu yang mau diberi cakupan hilang.`); continue; }
+    if (!punyaPintu.has(g.pintu)) { bantah.push(`${g.pintu} bukan pintu terkurasi; cakupan hanya boleh dipasang pada pintu.`); continue; }
+    const isi = [];
+    for (const c of g.cakup) {
+      const t = olehId.get(c.id);
+      if (!t) { bantah.push(`${g.pintu} mencakup ${c.id} yang tidak ada.`); continue; }
+      if (t.label?.id !== c.nama) { bantah.push(`${c.id} berlabel "${t.label?.id}", diharapkan "${c.nama}". Entri registri berubah; periksa dulu sebelum mencakupnya.`); continue; }
+      if (t.lifecycle?.status === 'superseded') { bantah.push(`${g.pintu} mencakup ${c.id} yang sudah digantikan ${t.lifecycle?.superseded_by?.id}; cakup penerusnya, atau hapus barisnya kalau penerusnya pintu ini sendiri.`); continue; }
+      if (punyaPintu.has(c.id)) { bantah.push(`${c.id} sudah jadi pintu sendiri; ia tidak boleh sekaligus dicakup pintu lain.`); continue; }
+      if (!c.dasar || c.dasar.length < 60) { bantah.push(`${g.pintu} → ${c.id}: dasar cakupan terlalu pendek untuk diperiksa orang lain.`); continue; }
+      // "Semarga" bukan dasar — itu justru yang dicoba dan gagal. Kalau seluruh dasarnya
+      // cuma menyebut kekerabatan, ia ditolak.
+      if (!/[a-z]/.test(c.dasar.replace(/[^a-z]/g, '')) || /^\s*(se)?marga\b/i.test(c.dasar)) { bantah.push(`${g.pintu} → ${c.id}: dasar harus menyebut ciri lapangannya, bukan kekerabatannya.`); continue; }
+      isi.push({ pest: { id: c.id, label: t.label?.id }, dasar: c.dasar });
+    }
+    const lama = JSON.stringify(pintu.covers ?? null);
+    if (isi.length) pintu.covers = isi; else delete pintu.covers;
+    if (JSON.stringify(pintu.covers ?? null) !== lama) cakupDipasang += 1;
+  }
+}
+
 // Cakupan koleksi tidak lagi cabai saja. Membiarkannya berbunyi "OPT utama cabai"
 // sementara isinya empat komoditas adalah cara paling murah membuat berkas ini berbohong.
 const tanamanKoleksi = [...new Set(kurasi.flatMap((e) => (e.hosts ?? []).map((h) => h.label)))].sort();
@@ -3027,6 +3268,7 @@ for (const d of disegarkan) console.log(`  segar     ${d}`);
 console.log(`\n  pest.json                 — ${naik.length} entri baru, ${disegarkan.length} disegarkan, ${labelDisegarkan} salinan label, ${rujukanDiarahkan} rujukan diarahkan, ${kurasi.length} seluruhnya`);
 console.log(`  pest-registri.json        — ${pindah.size} entitas jadi superseded, ${diratakan} rantai diratakan`);
 console.log(`  product/pestisida.ndjson  — ${ubahRekaman} rekaman, ${ubahBaris} baris penggunaan`);
+console.log(`  cakupan sasaran berspesies lain: ${cakupDipasang} pintu diperbarui, ${CAKUP.reduce((n, g) => n + g.cakup.length, 0)} sasaran ditulis tangan`);
 console.log(`  ${dilewati.length} entri dilewati tanpa perubahan`);
 
 if (!tulis) {

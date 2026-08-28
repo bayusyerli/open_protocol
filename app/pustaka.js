@@ -351,10 +351,28 @@ export async function cariNamaLokal(kueri) {
     .slice(0, 6);
 }
 
+/* Keluarga pecahan bernomor — `gejala-daftar/000.json`, `gejala-cari/001.json`, dan
+ * seterusnya. Jumlahnya ada di meta.json yang sudah diambil lebih dulu, jadi tidak ada
+ * pertanyaan tambahan untuk mencari tahu ada berapa; pecahannya sendiri diambil
+ * SERENTAK, sehingga berkas yang dipecah demi anggaran 48 KB tidak berubah jadi
+ * beberapa perjalanan pulang-pergi berurutan. */
+export async function ambilPecahan(akar, kunci) {
+  // meta.json dipastikan ada DULU. Jumlah pecahannya ada di sana, jadi memanggil ini
+  // sebelum meta dimuat akan mengembalikan larik kosong tanpa galat apa pun — layar yang
+  // terisi rapi dan kosong, bentuk kegagalan yang paling sulit dilihat.
+  if (!bacaMeta()) await muatMeta();
+  const n = bacaMeta()?.pecahan?.[kunci] ?? 0;
+  if (!n) return [];
+  const bagian = await Promise.all(
+    Array.from({ length: n }, (_, i) => ambil(`${akar}/${String(i).padStart(3, '0')}`)),
+  );
+  return bagian.flat();
+}
+
 export async function cariGejala(kueri) {
   const kk = kata(kueri).filter((w) => w.length >= 3);
   if (!kk.length) return [];
-  const daftar = await ambil('gejala-cari');
+  const daftar = await ambilPecahan('gejala-cari', 'gejalaCari');
 
   // Separuh kata harus cocok, dibulatkan ke atas. Tanpa ambang itu satu kata lazim
   // seperti "daun" memanggil kesepuluh gejalanya, dan daftar yang selalu penuh sama

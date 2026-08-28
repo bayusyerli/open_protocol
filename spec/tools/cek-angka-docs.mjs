@@ -84,9 +84,9 @@ const guna = P.flatMap((p) => p.label_uses ?? []);
 cek('04/05', 'penggunaan berlabel', guna.length, 23058);
 cek('04', 'tertaut OPT %', ((guna.filter((u) => u.pest?.id).length / guna.length) * 100).toFixed(1), '96.1');
 cek('04', 'PHI ada', guna.filter((u) => /\\bPHI\\b|tenggang panen/i.test(JSON.stringify(u))).length, 0);
-cek('04', 'OPT registri hidup', hidup(OPTR).length, 622);
+cek('04', 'OPT registri hidup', hidup(OPTR).length, 614);
 cek('04', 'OPT registri bergejala', OPTR.filter((e) => e.symptoms).length, 0);
-cek('04', 'OPT terkurasi bergejala', KUR.filter((e) => e.symptoms).length, 132);
+cek('04', 'OPT terkurasi bergejala', KUR.filter((e) => e.symptoms).length, 140);
 
 // ---- padanan bahan aktif: berapa yang bernama, dan dari mana namanya
 // Angka ini punya DUA sumber yang bergerak sendiri-sendiri — tarikan registri baru dan
@@ -318,7 +318,7 @@ const BEKAS_SALAH = [
   [/44 dari 11\.227 rekaman menyinggung/, 'sertifikasi lot 44 menyinggung — sebenarnya nol'],
   [/15 kadar berbeda/, 'abamektin 15 kadar — sebenarnya 33'],
   [/Dari 25 produk berisi Abamektin/, 'abamektin 18 g/L 25 produk — sebenarnya 26'],
-  [/778 OPT registri/, '778 OPT registri — sebenarnya 622 registri + 132 terkurasi'],
+  [/778 OPT registri/, '778 OPT registri — sebenarnya 614 registri + 140 terkurasi'],
   // Rendemen sawit. Dikoreksi 23 Agustus 2026 dari 21% ke 19,7% — lihat docs/16 bagian 7a.
   // Angka 21% bukan salah hitung melainkan ASUMSI yang menyamar jadi pengukuran, dan itu
   // jenis kekeliruan yang paling mudah kembali: ia terlihat wajar, dan ia masih tertulis di

@@ -28,7 +28,7 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v22';
+const VERSI = 'v23';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 
@@ -57,7 +57,7 @@ const BERKAS_CANGKANG = [
 // resepnya cuma 36 KB, dan tanpanya jalur 5 dan 6 kosong saat luring — dua jalur yang
 // justru paling mungkin dibuka jauh dari sinyal.
 const INDEKS_AKAR = [
-  'gejala.json', 'gejala-cari.json', 'nama-lokal.json',
+  'nama-lokal.json',
   'sediaan.json', 'varian.json', 'larangan.json', 'harga.json',
 ].map((f) => INDEKS + f);
 
@@ -74,6 +74,13 @@ const SEDIAAN_LUARAN = (m, cap) =>
  * seluruh jalur itu. */
 const GEJALA_LUARAN = (m, cap) =>
   (m.pecahan?.gejala ?? []).map((k) => `${INDEKS}gejala/${k}.json?v=${cap}`);
+
+/* Daftar gejala dan kepala pencariannya, keduanya dipecah bernomor sejak berkas
+ * tunggalnya melewati anggaran 48 KB pada 140 pintu. Keduanya wajib ada saat luring:
+ * yang pertama ISI layar pertama jalur 1, yang kedua satu-satunya cara mencarinya. */
+const bernomor = (m, cap, akar, kunci) =>
+  Array.from({ length: m.pecahan?.[kunci] ?? 0 },
+    (_, i) => `${INDEKS}${akar}/${String(i).padStart(3, '0')}.json?v=${cap}`);
 
 const dalamJangkauan = (u) => u.pathname.startsWith(APP) || u.pathname.startsWith(INDEKS);
 const adalahMeta = (u) => u.pathname === `${INDEKS}meta.json`;
@@ -109,6 +116,8 @@ self.addEventListener('install', (e) => {
         ...INDEKS_AKAR.map((u) => `${u}?v=${cap}`),
         ...SEDIAAN_LUARAN(m, cap),
         ...GEJALA_LUARAN(m, cap),
+        ...bernomor(m, cap, 'gejala-daftar', 'gejalaDaftar'),
+        ...bernomor(m, cap, 'gejala-cari', 'gejalaCari'),
       ]);
     } catch { /* tanpa jaringan saat pasang: cangkangnya saja, dan itu tetap berguna */ }
 

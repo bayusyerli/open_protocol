@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, muatMeta, cacah, teks, tautanMasuk, pasangKembali } from './pustaka.js';
+import { ambil, ambilPecahan, muatMeta, cacah, teks, tautanMasuk, pasangKembali } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -427,6 +427,11 @@ function blokKomoditas(k) {
         jenis trips tertentu. Itu tetap dihitung di sini karena label seperti itu memang
         berlaku untuk jenis apa pun dari marga yang sama, dan jumlahnya disebut supaya
         tidak terbaca lebih pasti daripada yang tertulis di registrinya.` : ''}
+        ${urut.some((d) => d.namaLain) ? `Sebagian lagi terdaftar untuk
+        <strong>spesies lain yang di lapangan tidak bisa dibedakan dari ini</strong> —
+        misalnya dua penggerek batang yang cuma terpisah kalau ngengatnya dibedah.
+        Penggabungannya keputusan kurator, bukan bacaan registri, dan alasannya ditulis
+        satu per satu di spec/vocab/pest.json.` : ''}
       </p>
       <ul class="daftar">
         ${urut.map((d) => `
@@ -435,6 +440,8 @@ function blokKomoditas(k) {
               <span class="nama">${teks(d.nama)}</span>
               <span class="sub">${angkaId(d.produk)} produk terdaftar${d.takBerspesies
                 ? ` · ${angkaId(d.takBerspesies)} di antaranya terdaftar untuk sasaran tanpa nama spesies`
+                : ''}${d.namaLain
+                ? ` · ${angkaId(d.namaLain)} untuk spesies lain yang tidak terbedakan di lapangan`
                 : ''}</span>
             </button>
           </li>`).join('')}
@@ -716,7 +723,7 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // Dua pengambilan sekaligus, bukan berurutan: kamusnya kecil dan tidak
     // menghalangi apa pun, tetapi kartu OPT butuh keduanya sudah ada.
     const [gejalaAda, lokalAda, bppAda] = await Promise.all([
-      ambil('gejala'),
+      ambilPecahan('gejala-daftar', 'gejalaDaftar'),
       ambil('nama-lokal').catch(() => []),
       // Daftar wilayah balai — 39 KB, dan hanya dipakai kalau pintu laporan dibuka.
       // Gagalnya tidak boleh menjatuhkan jalur ini: yang datang ke sini datang untuk

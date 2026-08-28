@@ -851,6 +851,45 @@ dipakai untuk mencegah: hawar daun punya tujuh produk terdaftar di cabai sementa
 ditulis untuk kentang dan tomat, dan menyodorkannya kepada penanam cabai berarti
 menjanjikan gejala yang tidak pernah ditulis untuknya.
 
+### D41 — sasaran berspesies lain: dicakup lewat pernyataan tertulis, bukan lewat aturan
+
+Sesudah 140 pintu, sisa baris label yang tak terjangkau tinggal 353 — dan 94 di antaranya
+berdiri pada spesies yang **semarga dengan pintu yang sudah ada**: *Chilo auricilius* di
+samping *C. sacchariphagus* pada tebu, *Tribolium confusum* di samping *T. castaneum* di
+gudang, *Ostrinia nubilalis* di samping *O. furnacalis* pada jagung.
+
+Aturan otomatis untuk itu ditulis dan **ditolak sesudah diukur**. Bentuknya wajar
+— "spesies semarga, dipilah menurut inang" — dan hasilnya 94 baris. Tetapi baris
+terbesarnya *Xanthomonas campestris*: pada padi ia hawar daun bakteri, pada kubis ia busuk
+hitam, dua penyakit yang tidak punya kemiripan apa pun. Saringan inang kebetulan
+memisahkan keduanya dengan benar. **Kebetulan bukan dasar**, dan aturan yang benar hari
+ini karena kebetulan akan salah pada tarikan registri berikutnya tanpa ada yang tahu.
+
+Bedanya dengan pencakupan "Genus sp." (yang memang dihitung mesin) tajam dan bisa
+dinyatakan: di sana **labelnya sendiri** menolak menyebut spesies, sehingga pintu segenus
+menjawab persis apa yang tertulis. Di sini label **menyebut** spesies, dan mengarahkannya
+ke pintu lain adalah pernyataan tentang dunia — bahwa keduanya terlihat sama di lapangan
+dan keputusan tindakannya sama.
+
+Jadi pernyataan itu ditulis, satu per satu, di medan `covers` pada `pest.json`, tiap baris
+dengan `dasar` yang wajib menyebut **cirinya**, bukan kekerabatannya — "cuma terpisah
+kalau ngengatnya dibedah", bukan "semarga". Dua belas baris, 39 produk. Saringan inang
+tetap berlaku penuh, jadi pernyataan kurator memperluas jangkauan pintu tanpa pernah
+memindahkannya ke tanaman yang teksnya tidak ditulis untuknya, dan layar menyebut
+jumlahnya tersendiri alih-alih meleburkannya diam-diam.
+
+L39 menjaga satu-satunya cara mekanisme ini bisa berbohong: sasaran yang dicakup tidak
+boleh punya ciri pembandingnya sendiri. Kalau ia punya, ia pintu — dan produk yang sama
+akan terhitung di dua tempat, dua angka yang masuk akal sendiri-sendiri dan tidak
+terlihat salah dari layar mana pun.
+
+Yang pertama diuji justru menolak pintu yang sudah ditulis: *Scirpophaga innotata* sempat
+dinaikkan jadi pintu ke-138, dan pembandingnya terpaksa berbunyi "ingat musim dan riwayat
+lahannya" — bukan ciri yang bisa diperiksa orang yang sedang berdiri di sawahnya, dan
+karena itu bukan pintu menurut ukuran jalur 1 sendiri. Ia juga membuat *Scirpophaga sp.*
+jadi ambigu dan **membuang enam baris yang tadinya terjangkau**. Pintunya dicabut; ia jadi
+baris `covers` pertama.
+
 ---
 
 ## Pertanyaan yang masih terbuka
