@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama bawang merah, cabai merah besar, jagung, kedelai, kentang, kubis, padi dan tomat"
+      "id": "OPT utama bawang merah, cabai merah besar, jagung, kakao, kedelai, kentang, kubis, padi dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 8 komoditas: Bawang merah, Cabai merah besar, Jagung, Kedelai, Kentang, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 9 komoditas: Bawang merah, Cabai merah besar, Jagung, Kakao, Kedelai, Kentang, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -5919,6 +5919,434 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kedelai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000063",
+      "key": "helopeltis",
+      "label": {
+        "id": "Helopeltis"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Helopeltis antonii",
+      "hosts": [
+        {
+          "id": "op:cmd:00001010",
+          "label": "Kakao"
+        }
+      ],
+      "definition": {
+        "id": "Terdaftar juga pada teh (7 baris) dan teks di bawah ditulis untuk kakao. Registri memecahnya jadi beberapa entitas — Helopeltis sp. (21 baris, 12 di antaranya pada teh), Helopeltis spp. (3), dan ejaan Helopelthis sp. (1) — semuanya bertambat hanya sampai GENUS di GBIF dan belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Luka tusukannya jadi pintu masuk busuk buah, jadi dua masalah itu saling menyusul."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "8099438",
+          "uri": "https://www.gbif.org/species/8099438",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helopelthis antonii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helopeltis antonii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 60 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Kepik Penghisap Buah",
+        "Hama Penghisap Buah",
+        "Hama Penghisap Daun",
+        "Helopelthis antonii",
+        "Penghisap Buah",
+        "Pengisap Buah",
+        "Pengisap Daun"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah muda berbintik-bintik coklat kehitaman CEKUNG, seukuran ujung jarum sampai sebesar biji, mula-mula berair lalu mengering dan retak; buah yang tertusuk saat masih kecil mengering seluruhnya dan tetap menggantung. Pada pucuk dan ranting muda, tusukannya membuat kulit menghitam, daun layu, dan ranting mati dari ujung."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat bintiknya dari dekat, kalau perlu kena cahaya miring. Helopeltis meninggalkan bintik CEKUNG bertepi tegas, tersebar dan tidak menyatu walau jumlahnya banyak. Busuk buah memberi bercak yang MELUAS dan menyatu sampai menutup sebagian besar buah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000065",
+            "label": "Busuk buah kakao"
+          }
+        },
+        {
+          "check": {
+            "id": "Cari serangganya pagi atau sore hari, di buah yang PALING MUDA. Helopeltis ramping seperti nyamuk besar dengan tonjolan seperti jarum di punggungnya, dan langsung berpindah ke sisi lain buah saat didekati. Kalau bintiknya ada tetapi serangganya tidak, ia sudah pindah ke buah yang lebih muda."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kakao, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000064",
+      "key": "penggerek-buah-kakao",
+      "label": {
+        "id": "Penggerek buah kakao"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Conopomorpha cramerella",
+      "hosts": [
+        {
+          "id": "op:cmd:00001010",
+          "label": "Kakao"
+        }
+      ],
+      "definition": {
+        "id": "PBK. Yang menentukan bukan semprotan melainkan SARUNGISASI — membungkus buah muda dengan kantong plastik — panen sering setiap tujuh sampai sepuluh hari, dan memendam kulit buah bekas panen. Ulatnya berada DI DALAM buah sejak menetas, jadi semprotan hanya bisa mengenai ngengat dewasa yang aktif malam hari, dan itu jendela yang sempit."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1749673",
+          "uri": "https://www.gbif.org/species/1749673",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Canopomorha cramerella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Canopomorpha cramerella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Conopomorpha cramerella",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 24 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Canopomorha cramerella",
+        "Canopomorpha cramerella",
+        "Hama Penggerek Buah",
+        "Penggerek Buah",
+        "Penggerek Buah Kakao",
+        "Penggerek Buah Kako"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah masak lebih cepat dan warnanya BELANG — sebagian kuning, sebagian masih hijau — padahal umurnya belum cukup. Buah terasa berat, dan saat diguncang tidak berbunyi karena bijinya saling melekat. Dibelah, bijinya kempis dan menempel satu sama lain sehingga sulit dipisahkan, dengan lorong kecoklatan di antara daging buahnya."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Guncang buah yang warnanya belang di dekat telinga. Buah masak yang sehat BERBUNYI karena bijinya lepas; buah yang terserang PBK tidak berbunyi karena bijinya melekat. Pemeriksaan ini tidak merusak buahnya, jadi bisa dikerjakan pada banyak buah sekaligus."
+          }
+        },
+        {
+          "check": {
+            "id": "Belah buah yang tidak berbunyi. PBK meninggalkan lorong halus di antara daging buah dan biji yang saling melekat, sementara KULIT LUARNYA tidak membusuk. Busuk buah sebaliknya: kulitnya menghitam meluas dari luar, dan bijinya membusuk bersama dagingnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000065",
+            "label": "Busuk buah kakao"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kakao, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000065",
+      "key": "busuk-buah-kakao",
+      "label": {
+        "id": "Busuk buah kakao"
+      },
+      "pest_kind": "disease_oomycete",
+      "scientific_name": "Phytophthora palmivora",
+      "hosts": [
+        {
+          "id": "op:cmd:00001010",
+          "label": "Kakao"
+        }
+      ],
+      "definition": {
+        "id": "Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada durian dan lada (4 baris) dan teks di bawah ditulis untuk kakao. Yang paling menurunkan serangan bukan semprotan melainkan memangkas agar kebun tidak lembap, memetik dan MEMENDAM buah sakit, serta mengatur naungan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3203590",
+          "uri": "https://www.gbif.org/species/3203590",
+          "relation": "exact",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythophthora palmivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phythopthora palmivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora palmivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 30 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophtora palmivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytoptora palmivora",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Busuk Buah",
+        "Penyakit Busuk Pangkal Batang",
+        "Penyakit Kanker Batang",
+        "Phythophthora palmivora",
+        "Phythopthora palmivora",
+        "Phytophtora palmivora",
+        "Phytoptora palmivora"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Chromista"
+      },
+      "symptoms": {
+        "id": "Bercak coklat kehitaman pada buah, mulai dari ujung atau pangkal, MELUAS cepat dan menyatu sampai menutup sebagian besar buah dalam beberapa hari, dengan batas tegas antara bagian sakit dan sehat. Pada cuaca lembap permukaan bercak berselaput putih halus seperti tepung. Buah yang terserang mengering menghitam dan tetap menggantung di batang."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan bagaimana bercaknya berubah dalam beberapa hari. Busuk buah MELUAS dan menyatu; bintik helopeltis tetap kecil, cekung, dan terpisah satu-satu walau jumlahnya banyak."
+          },
+          "rules_out": {
+            "id": "op:pst:00000063",
+            "label": "Helopeltis"
+          }
+        },
+        {
+          "check": {
+            "id": "Belah buah yang menghitam. Busuk buah membusukkan daging DAN biji bersama-sama dari kulit ke dalam; penggerek buah kakao meninggalkan kulit yang tidak membusuk dengan biji melekat di dalamnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000064",
+            "label": "Penggerek buah kakao"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kakao, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000066",
+      "key": "mati-ranting-vsd",
+      "label": {
+        "id": "Mati ranting VSD"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Oncobasidium theobromae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001010",
+          "label": "Kakao"
+        }
+      ],
+      "definition": {
+        "id": "Vascular streak dieback. Registri juga memuatnya atas nama barunya, Ceratobasidium theobromae (1 baris), yang belum disatukan — jamur yang sama. Sporanya terbawa angin pada malam lembap dan masuk lewat daun muda, jadi yang menentukan varietas atau klon tahan, sambung samping, dan memangkas ranting sakit sampai sekitar 30 cm di bawah bagian yang bergejala — bukan menyemprot daun."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oncobasidium theobromae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 8 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2555251",
+          "uri": "https://www.gbif.org/species/2555251",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Pembuluh Kayu Vascular Streak Dieback Vsd",
+        "Penyakit Pembuluh Kayu Vsd",
+        "Penyakit Vascular Streak Dieback",
+        "Penyakit Vascular Streak Dieback Vsd"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Satu atau dua daun di TENGAH ranting menguning dengan bercak hijau tersisa di antara tulang daun, lalu rontok — bukan daun paling tua di pangkal, bukan daun paling muda di pucuk. Ranting menggundul dari tengah ke ujung dan tinggal ranting telanjang berbintil bekas dudukan daun. Akhirnya ranting mati dari ujung ke pangkal."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Potong ranting yang menggundul MELINTANG, lalu tatap penampangnya. Ada tiga titik coklat tersusun seperti segitiga pada berkas pembuluhnya; dibelah membujur, titik itu jadi garis coklat memanjang — dari situ nama vascular streak. Ranting yang mati karena penggerek berlubang dan berlorong, bukan bergaris."
+          },
+          "rules_out": {
+            "id": "op:pst:00002112",
+            "label": "Penggerek Batang"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat daun mana yang menguning lebih dulu. VSD mulai dari daun di TENGAH ranting. Kekurangan hara menguningkan daun TUA di pangkal lebih dulu dan merata di seluruh pohon, bukan ranting per ranting."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kakao, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000067",
+      "key": "ulat-kilan",
+      "label": {
+        "id": "Ulat kilan"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Hyposidra talaca",
+      "hosts": [
+        {
+          "id": "op:cmd:00001010",
+          "label": "Kakao"
+        }
+      ],
+      "definition": {
+        "id": "Ulat jengkal kakao. Datang berkala dalam ledakan singkat dan bisa menggunduli pohon dalam hitungan hari, lalu menghilang; di luar ledakan itu jarang menuntut tindakan apa pun — dan menyemprot terjadwal di luar ledakan menghabiskan biaya tanpa menyelamatkan apa pun."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1958454",
+          "uri": "https://www.gbif.org/species/1958454",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hyposidra talaca",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hyprosida talaca",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hyprosida talaca",
+        "Ulat Kilan"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun muda dan pucuk habis dimakan dari TEPI ke dalam sampai tinggal tulang daun, dan pada ledakan berat pohon gundul sampai ke ranting. Ulatnya coklat kehijauan dan BERJALAN MELENGKUNG seperti sedang mengukur; saat terganggu ia menegang lurus menyerupai ranting kecil, atau menjatuhkan diri pada benang."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan cara ulatnya berjalan dan bersikap saat disentuh. Ulat kilan melengkungkan punggung tiap melangkah, lalu menegang lurus seperti ranting kecil. Tidak ada hama daun kakao lain yang bersikap begitu."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat mengapa daunnya hilang. Ulat kilan menggigit dari TEPI daun sehingga tinggal tulang daun. Ranting yang menggundul karena VSD daunnya rontok sendiri sesudah menguning — tidak tergigit — dan yang tinggal ranting telanjang berbintil, bukan tulang daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000066",
+            "label": "Mati ranting VSD"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kakao, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]

@@ -5161,9 +5161,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000063"
+        }
       },
       "synonyms": [
         "Hama Kepik Penghisap Buah",
@@ -6974,9 +6977,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000065"
+        }
       },
       "synonyms": [
         "Penyakit Busuk Pangkal Batang",
@@ -7515,9 +7521,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000064"
+        }
       },
       "synonyms": [
         "Canopomorha cramerella",
@@ -10651,9 +10660,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001108"
+          "id": "op:pst:00000064"
         }
       },
       "synonyms": [
@@ -13317,8 +13326,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000066"
+        }
       },
       "synonyms": [
         "Penyakit Pembuluh Kayu Vsd",
@@ -17617,9 +17630,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001097"
+          "id": "op:pst:00000065"
         }
       },
       "accepted_scientific_name": "Phytophthora palmivora",
@@ -22996,9 +23009,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000067"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -30464,9 +30480,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001066"
+          "id": "op:pst:00000063"
         }
       },
       "accepted_scientific_name": "Helopeltis antonii",
@@ -32089,9 +32105,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001097"
+          "id": "op:pst:00000065"
         }
       },
       "taxon_verification": {
@@ -37907,9 +37923,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001108"
+          "id": "op:pst:00000064"
         }
       },
       "taxon_verification": {
@@ -38935,9 +38951,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001097"
+          "id": "op:pst:00000065"
         }
       },
       "accepted_scientific_name": "Phytophthora palmivora",
@@ -45970,9 +45986,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001097"
+          "id": "op:pst:00000065"
         }
       },
       "taxon_verification": {
@@ -50010,9 +50026,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001458"
+          "id": "op:pst:00000067"
         }
       },
       "taxon_verification": {
