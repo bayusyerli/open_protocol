@@ -156,6 +156,24 @@ const LADA = { id: 'op:cmd:00001036', label: 'Lada' };
 const PISANG = { id: 'op:cmd:00001041', label: 'Pisang' };
 const KRISAN = { id: 'op:cmd:00001082', label: 'Krisan' };
 const BAWANG_DAUN = { id: 'op:cmd:00001103', label: 'Bawang daun' };
+const SAWIT_BIBIT = { id: 'op:cmd:00001055', label: 'Pembibitan kelapa sawit' };
+const TEH_BIBIT = { id: 'op:cmd:00001230', label: 'Pembibitan teh' };
+const TEMBAKAU_SIMPAN = { id: 'op:cmd:00001482', label: 'Tembakau di penyimpanan' };
+const TEMBAKAU_SEMAI = { id: 'op:cmd:00001207', label: 'Tembakau di persemaian' };
+const CENGKEH = { id: 'op:cmd:00001040', label: 'Cengkeh' };
+const CENGKEH_BIBIT = { id: 'op:cmd:00001508', label: 'Pembibitan cengkeh' };
+const NENAS = { id: 'op:cmd:00001052', label: 'Nenas' };
+const TERUNG = { id: 'op:cmd:00001108', label: 'Terung' };
+const ANGGREK = { id: 'op:cmd:00001165', label: 'Anggrek' };
+const KAPAS = { id: 'op:cmd:00001131', label: 'Kapas' };
+const UBI_JALAR = { id: 'op:cmd:00001503', label: 'Ubi jalar' };
+const ALPUKAT = { id: 'op:cmd:00001417', label: 'Alpukat' };
+const RAMBUTAN = { id: 'op:cmd:00001373', label: 'Rambutan' };
+const JAMBU_BIJI = { id: 'op:cmd:00001374', label: 'Jambu biji' };
+const WORTEL = { id: 'op:cmd:00001105', label: 'Wortel' };
+const BUAH_NAGA = { id: 'op:cmd:00001215', label: 'Buah naga' };
+const KUBIS_BUNGA = { id: 'op:cmd:00001221', label: 'Kubis Bunga' };
+const KACANG_TANAH_BIBIT = { id: 'op:cmd:00001450', label: 'Bibit kacang tanah' };
 const ANGGUR = { id: 'op:cmd:00001157', label: 'Anggur' };
 const STROBERI = { id: 'op:cmd:00001345', label: 'Stroberi' };
 const KELAPA = { id: 'op:cmd:00001043', label: 'Kelapa' };
@@ -255,7 +273,7 @@ const PINTU_BAWANG = [
     nama: 'Ulat Tanah',
     key: 'ulat-tanah',
     label: 'Ulat tanah',
-    inang: [BAWANG_MERAH, KENTANG, JAGUNG, KUBIS],
+    inang: [BAWANG_MERAH, KENTANG, JAGUNG, KUBIS, KACANG_TANAH_BIBIT],
     definition:
       'Menyerang pada malam hari dan bersembunyi di tanah pada siang hari. Polifag: terdaftar juga pada kentang, jagung, cabai, dan kubis, dan gejalanya sama di semuanya — jadi teks di bawah sengaja tidak menyebut satu tanaman pun. ' +
       'Orong-orong (Gryllotalpa sp.) merusak dengan cara yang mirip, tetapi meninggalkan lorong gembur di permukaan tanah dan terdaftar lewat pintunya sendiri.',
@@ -460,7 +478,7 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Penggerek Buah',
     key: 'penggerek-buah',
     label: 'Penggerek buah',
-    inang: [TOMAT, CABAI, JAGUNG, SEMANGKA, MELON, TEMBAKAU],
+    inang: [TOMAT, CABAI, JAGUNG, SEMANGKA, MELON, TEMBAKAU, KAPAS],
     definition:
       'Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.',
     gejala:
@@ -1067,8 +1085,9 @@ const PINTU_KUBIS = [
     nama: 'Siput Babi',
     key: 'bekicot',
     label: 'Bekicot',
+    inang: [KUBIS, KUBIS_BUNGA],
     definition:
-      'Paling merusak di persemaian dan pada dua sampai tiga minggu pertama sesudah tanam pindah; aktif malam hari dan sesudah hujan. Registri juga memuat siput lain — Filicaulis bleekeri, Bradybaena similaris, Parmarion pupillaris — masing-masing satu sampai dua baris, semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini.',
+      'Paling merusak di persemaian dan pada dua sampai tiga minggu pertama sesudah tanam pindah; aktif malam hari dan sesudah hujan. Registri memuat siput lain — Filicaulis bleekeri, Bradybaena similaris, Parmarion pupillaris — yang kini dicakup pintu ini karena kedua ciri yang dipakainya, jejak lendir dan tepi gerusan yang halus, tidak menyentuh cangkang sama sekali.',
     gejala:
       'Daun berlubang besar tidak beraturan dengan tepi tergerus halus, dan bibit muda bisa habis sama sekali dalam semalam. Ada JEJAK LENDIR mengkilap yang mengering seperti perak di daun, batang, dan permukaan tanah, dengan butiran kotoran memanjang di dekatnya.',
     pembanding: [
@@ -1468,7 +1487,7 @@ const PINTU_KOPI = [
     nama: 'Kutu Putih',
     key: 'kutu-putih-kopi',
     label: 'Kutu putih',
-    inang: [KOPI, JERUK, KAKAO],
+    inang: [KOPI, JERUK, KAKAO, NENAS, RAMBUTAN, JAMBU_BIJI, CENGKEH_BIBIT],
     definition:
       'Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.',
     gejala:
@@ -1489,7 +1508,7 @@ const PINTU_KOPI = [
     nama: 'Kutu Tempurung',
     key: 'kutu-tempurung',
     label: 'Kutu tempurung',
-    inang: [KOPI, JERUK],
+    inang: [KOPI, JERUK, CENGKEH],
     definition:
       'Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.',
     gejala:
@@ -1577,7 +1596,7 @@ const PINTU_SAWIT = [
     nama: 'Kumbang Tanduk',
     key: 'kumbang-tanduk',
     label: 'Kumbang tanduk',
-    inang: [SAWIT, KELAPA],
+    inang: [SAWIT, KELAPA, SAWIT_BIBIT],
     definition:
       'Paling merusak pada tanaman muda dan pada tahun-tahun sesudah replanting, karena berkembang biak di batang sawit tua yang dibiarkan melapuk dan di tumpukan tandan kosong. Yang menentukan MEMBERANTAS TEMPAT BERKEMBANG BIAKNYA — mencacah dan meratakan batang tumbang, membalik tumpukan tandan kosong — ditambah perangkap feromon. Menyemprot pohon tidak menjangkau kumbang yang hidup di dalam tumpukan.',
     gejala:
@@ -2588,9 +2607,9 @@ const PINTU_SISA2 = [
   {
     id: 'op:pst:00000130', dari: 'op:pst:00001223', nama: 'Nematoda Puru Akar',
     key: 'nematoda-puru-akar', label: 'Nematoda puru akar',
-    inang: [TOMAT, CABAI, KENTANG, SEMANGKA, MELON, MENTIMUN, KUBIS, TEBU, KRISAN, PISANG],
+    inang: [TOMAT, CABAI, KENTANG, SEMANGKA, MELON, MENTIMUN, KUBIS, TEBU, KRISAN, PISANG, TEH_BIBIT, WORTEL],
     definition:
-      'Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.',
+      'Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.',
     gejala:
       'Tanaman kerdil dan layu pada siang hari lalu pulih sore, berulang, sementara pupuk dan air cukup; gejalanya BERKELOMPOK di bagian petak tertentu, bukan merata. Dicabut, akarnya menggembung jadi BINTIL bulat tidak beraturan yang menyatu dengan akar itu sendiri — tidak bisa dilepas dengan kuku.',
     pembanding: [
@@ -2785,22 +2804,6 @@ const CAKUP = [
     ],
   },
   {
-    pintu: 'op:pst:00000141',
-    cakup: [
-      { id: 'op:pst:00002237', nama: 'Penyakit Rebah Semai',
-        dasar: 'Pythium debaryanum salah satu jenis Pythium penyebab rebah kecambah yang sama, dan pada bedengan semai kubis ia memberi pangkal batang menyempit berair pada bibit yang daunnya masih hijau — persis yang dijanjikan pintu ini, termasuk bahan aktifnya yang harus mengenai oomycete.' },
-    ],
-  },
-  {
-    pintu: 'op:pst:00000051',
-    cakup: [
-      { id: 'op:pst:00001605', nama: 'Siput',
-        dasar: 'Filicaulis bleekeri siput telanjang tanpa cangkang, tetapi kedua ciri yang dipakai pintu ini tidak menyentuh cangkang sama sekali: jejak lendir mengkilap yang mengering seperti perak, dan tepi lubang yang tergerus halus. Umpan dan pemungutan malamnya pun sama.' },
-      { id: 'op:pst:00002350', nama: 'Siput Darat',
-        dasar: 'Bradybaena similaris siput darat bercangkang kecil yang merusak kubis dengan cara yang sama seperti bekicot — menggerus tepi daun halus dan meninggalkan jejak lendir mengkilap — dan sama-sama dipungut malam hari atau diumpan.' },
-    ],
-  },
-  {
     pintu: 'op:pst:00000158',
     cakup: [
       { id: 'op:pst:00002129', nama: 'Penyakit Karat',
@@ -2826,6 +2829,8 @@ const CAKUP = [
     cakup: [
       { id: 'op:pst:00001063', nama: 'Hama Trips',
         dasar: 'Pada jeruk dan apel tidak ada pintu bermarga Thrips, sehingga sasaran "Thrips sp." di sana tidak terjangkau pencakupan marga. Yang dimaksud label kerusakan trips pada kulit buah — kerak keperakan melingkar di sekitar bekas kelopak — dan itu persis yang dijanjikan pintu ini, apa pun marga tripsnya. Pada tanaman lain sasaran yang sama tetap dilayani pintu trips bermarga Thrips lewat pencakupan marga.' },
+      { id: 'op:pst:00001883', nama: 'Hama Trips',
+        dasar: 'Scirtothrips dorsalis salah satu jenis trips yang mendasari pintu ini — pintunya berdiri bertingkat MARGA — dan pada cengkeh ia memberi kerak keperakan pada bagian yang masih muda dengan jendela penyemprotan yang sama.' },
     ],
   },
   {
@@ -2853,6 +2858,60 @@ const CAKUP = [
     cakup: [
       { id: 'op:pst:00001120', nama: 'Penyakit Bercak Daun',
         dasar: 'Cercospora sasaran bertingkat marga bercak daun, dan pada apel tidak ada pintu bermarga Cercospora sehingga ia tidak terjangkau pencakupan marga. Bercaknya coklat bertepi tegas pada daun tua yang menggugurkan daun dari bawah — sama bentuk, sama waktunya, dan sama jadwal semprotnya dengan bercak daun apel.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000192',
+    cakup: [
+      { id: 'op:pst:00002191', nama: 'Nematoda Parasit',
+        dasar: 'Criconemoides nematoda cincin yang mengisap akar bibit teh dari luar, dan di bedengan gejalanya tidak terbedakan dari Pratylenchus: bibit kerdil berpetak dengan akar pendek berujung menghitam. Memisahkannya menuntut menyaring tanah dan mengenali nematodanya di bawah mikroskop.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000141',
+    cakup: [
+      { id: 'op:pst:00002237', nama: 'Penyakit Rebah Semai',
+        dasar: 'Pythium debaryanum salah satu jenis Pythium penyebab rebah kecambah yang sama, dan pada bedengan semai kubis ia memberi pangkal batang menyempit berair pada bibit yang daunnya masih hijau — persis yang dijanjikan pintu ini, termasuk bahan aktifnya yang harus mengenai oomycete.' },
+      { id: 'op:pst:00001845', nama: 'Penyakit Rebah Kecambah',
+        dasar: 'Phytophthora parasitica sama-sama OOMYCETE dan memberi rebah kecambah yang sama di persemaian tembakau: pangkal batang menyempit berair sementara daun bibit masih hijau. Yang menentukan bagi pembacanya golongan itu, bukan marganya — metalaksil dan dimetomorf bekerja pada keduanya, fungisida jamur sejati pada tidak satu pun.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000051',
+    cakup: [
+      { id: 'op:pst:00001605', nama: 'Siput',
+        dasar: 'Filicaulis bleekeri siput telanjang tanpa cangkang, tetapi kedua ciri yang dipakai pintu ini tidak menyentuh cangkang sama sekali: jejak lendir mengkilap yang mengering seperti perak, dan tepi lubang yang tergerus halus. Umpan dan pemungutan malamnya pun sama.' },
+      { id: 'op:pst:00002350', nama: 'Siput Darat',
+        dasar: 'Bradybaena similaris siput darat bercangkang kecil yang merusak kubis dengan cara yang sama seperti bekicot — menggerus tepi daun halus dan meninggalkan jejak lendir mengkilap — dan sama-sama dipungut malam hari atau diumpan.' },
+      { id: 'op:pst:00001993', nama: 'Siput',
+        dasar: 'Parmarion pupillaris siput setengah telanjang dengan cangkang tersisa kecil di punggung, dan di kebun kubis bunga ia meninggalkan jejak lendir serta tepi daun tergerus halus yang sama; tindakannya sama-sama umpan dan pemungutan malam.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000070',
+    cakup: [
+      { id: 'op:pst:00001989', nama: 'Kutu Daun Kutuputih',
+        dasar: 'Dysmicoccus kutu putih berlapis lilin seperti kapas yang bergerombol di pangkal daun nenas dan di akar, sama bentuknya dengan Planococcus dan sama-sama dipelihara semut; keduanya dipilah dari jumlah dan susunan juntai lilin di tepi badan, yang menuntut kaca pembesar.' },
+      { id: 'op:pst:00001859', nama: 'Kutu Putih',
+        dasar: 'Pseudococcus lilacinus kutu putih berlapis lilin yang bergerombol di dompolan buah rambutan dan ketiak cabang, sama bentuk dan sama akibatnya — embun madu yang lalu ditumbuhi jelaga — dengan Planococcus citri.' },
+      { id: 'op:pst:00001860', nama: 'Kutu Putih',
+        dasar: 'Ferrisia virgata kutu putih bergaris yang bergerombol di pucuk dan buah jambu biji; juntai lilin panjangnya lebih menonjol, tetapi gerombolan berlilin putih, embun madu, dan semut yang memeliharanya sama persis.' },
+      { id: 'op:pst:00002032', nama: 'Kutu Putih',
+        dasar: 'Planococcus spp. bentuk jamak dari marga yang sama dengan yang jadi dasar pintu ini, dan pada bibit cengkeh ia bergerombol di pucuk dengan lapisan lilin putih yang sama.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000128',
+    cakup: [
+      { id: 'op:pst:00001932', nama: 'Siput Trisipan',
+        dasar: 'Cerithidea angulata salah satu jenis trisipan yang mendasari pintu ini — pintunya memang berdiri bertingkat MARGA — dan di tambak ia bertumpuk di dasar dan di pematang dengan cangkang kerucut memanjang yang sama.' },
+    ],
+  },
+  {
+    pintu: 'op:pst:00000166',
+    cakup: [
+      { id: 'op:pst:00002304', nama: 'Jambret',
+        dasar: 'Mesopodopsis slaberri salah satu jenis jembret yang mendasari pintu ini, dan di tambak ia bening kelabu bergerombol di permukaan air pada pagi dan senja persis seperti yang dijanjikan pintu ini; penyaringan air masuknya pun sama.' },
     ],
   },
   {
@@ -3045,7 +3104,7 @@ const PINTU_EKOR2 = [
   {
     id: 'op:pst:00000141', dari: 'op:pst:00001244', nama: 'Penyakit Rebah Kecambah',
     key: 'rebah-kecambah', label: 'Rebah kecambah',
-    inang: [CABAI, TOMAT, KENTANG, KUBIS, TEMBAKAU, JAGUNG],
+    inang: [CABAI, TOMAT, KENTANG, KUBIS, TEMBAKAU, JAGUNG, TEMBAKAU_SEMAI],
     definition:
       'Penyakit PERSEMAIAN, dan hampir selalu penyakit pengelolaan air: menumpuk pada media yang terlalu basah, naungan terlalu rapat, dan semaian terlalu padat. Bukan jamur sejati melainkan oomycete — golongan yang sama dengan busuk daun kentang — sehingga fungisida untuk jamur sejati tidak menyentuhnya, dan yang bekerja metalaksil atau dimetomorf. Menjarangkan semaian dan mengurangi siraman menghentikannya tanpa semprotan apa pun.',
     gejala:
@@ -3579,7 +3638,7 @@ const PINTU_EKOR5 = [
     taxonomic_rank: 'species',
     no_mapping_reason:
       'Registri tidak memuat patovarnya: yang ada satu entitas "Xanthomonas campestris" telanjang yang dipakai untuk hawar daun bakteri padi sekaligus busuk hitam kubis. Menautkan pintu ini ke entitas itu berarti mengklaim keduanya penyakit yang sama; ia dicakup lewat `covers` dari sisi kubis saja.',
-    inang: [KUBIS, SAWI],
+    inang: [KUBIS, SAWI, KUBIS_BUNGA],
     definition:
       'Masuk lewat MULUT AIR di tepi daun dan lewat luka, bukan lewat akar, sehingga hujan berangin dan pekerjaan tangan di kebun basah yang menyebarkannya. Terbawa BENIH, dan itu jalur masuknya ke petak yang belum pernah terserang — perlakuan benih air panas lebih menentukan daripada penyemprotan sesudahnya. Bakteri: fungisida tidak menyentuhnya, dan bakterisida tembaga hanya menahan, tidak menyembuhkan.',
     gejala:
@@ -3594,7 +3653,7 @@ const PINTU_EKOR5 = [
   {
     id: 'op:pst:00000178', dari: 'op:pst:00002000', nama: 'Hama Trips',
     key: 'trips-buah', label: 'Trips buah',
-    inang: [JERUK, APEL],
+    inang: [JERUK, APEL, CENGKEH],
     definition:
       'Merusak KULIT buah, bukan daunnya, dan kerusakan itu tidak menular ke dalam: buahnya tetap layak dimakan tetapi tidak layak dijual. Karena itu keputusannya soal harga, bukan soal panen. Menyerang pada jendela yang sempit — sejak kelopak bunga rontok sampai buah sebesar kelereng — dan sesudah itu kulitnya sudah terlalu tebal untuk ditembus.',
     gejala:
@@ -3765,6 +3824,158 @@ const PINTU_EKOR5 = [
   },
 ];
 
+const PINTU_EKOR6 = [
+  {
+    id: 'op:pst:00000190', dari: 'op:pst:00001619', nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-pestalotiopsis-sawit', label: 'Bercak daun pestalotiopsis bibit sawit',
+    inang: [SAWIT_BIBIT],
+    definition:
+      'Masuk lewat LUKA dan lewat daun yang lama basah, jadi ia hampir selalu menyusul sesuatu yang lain: bibit yang tergores saat dipindah, disiram dari atas menjelang sore, atau ditaruh terlalu rapat sehingga daunnya bersentuhan. Membenahi jarak polibag dan waktu penyiraman menurunkannya lebih banyak daripada menambah semprotan. Bibit yang sepertiga daunnya bergejala tidak layak ditanam ke lapangan.',
+    gejala:
+      'Bercak lonjong pada anak daun, tengahnya KELABU KEPUTIHAN kering dan tepinya coklat tua bergaris kuning di luarnya, sering bermula dari UJUNG atau tepi daun yang terluka. Bercak yang berdekatan menyatu jadi bidang kering yang luas; pada bagian yang mati muncul titik hitam kecil bertaburan.',
+    pembanding: [
+      { cek: 'Lihat DI MANA bercaknya bermula. Bercak pestalotiopsis bermula dari ujung atau tepi anak daun yang terluka lalu menjalar ke dalam; bercak daun bibit sawit yang lain bermula sebagai bintik bulat di tengah helai dan melebar melingkar.',
+        membantah: { id: 'op:pst:00000077', label: 'Bercak daun bibit sawit' } },
+      { cek: 'Periksa pangkal pelepah dan pucuknya. Bercak pestalotiopsis berhenti di helai daun; kalau pucuknya ikut membusuk dan berbau, yang sedang berjalan busuk pucuk dan itu jauh lebih menentukan.',
+        membantah: { id: 'op:pst:00000191', label: 'Busuk pucuk bibit sawit' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000191', dari: 'op:pst:00002333', nama: 'Marasmius palmivorus',
+    key: 'busuk-pucuk-bibit-sawit', label: 'Busuk pucuk bibit sawit',
+    inang: [SAWIT_BIBIT],
+    definition:
+      'Jamur yang hidup dari SISA TANAMAN dan berpindah ke bibit hidup lewat benang putihnya, jadi tumpukan pelepah dan gulma lapuk di sela polibag adalah sumbernya. Membersihkan sisa itu dan menjarangkan polibag memutus jalannya. Bibit yang pucuknya sudah membusuk tidak bisa diselamatkan dan harus dibuang beserta media tanamnya supaya tidak menulari tetangganya.',
+    gejala:
+      'Benang jamur PUTIH seperti tali halus menjalar di permukaan media tanam, memanjat pangkal pelepah, dan mengikat sisa daun di sekitarnya. Pucuk yang dijangkaunya membusuk basah dan mudah dicabut; daun termuda menguning lalu mati sementara daun tua di bawahnya masih hijau.',
+    pembanding: [
+      { cek: 'Cari BENANG PUTIH yang menjalar di permukaan media tanam dan memanjat pangkal pelepah. Busuk pucuk bibit sawit meninggalkannya; bercak daun tidak menumbuhkan benang apa pun di media tanam.',
+        membantah: { id: 'op:pst:00000190', label: 'Bercak daun pestalotiopsis bibit sawit' } },
+      { cek: 'Tarik pucuk yang menguning. Busuk pucuk membuatnya lepas basah dan berbau; pucuk yang menguning tetapi masih melekat kuat penyebabnya hara atau air, bukan ini.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000192', dari: 'op:pst:00002190', nama: 'Nematoda Parasit',
+    key: 'nematoda-akar-bibit-teh', label: 'Nematoda akar bibit teh',
+    inang: [TEH_BIBIT],
+    definition:
+      'Merusak AKAR, jadi yang terlihat di atas selalu terlambat dan selalu mirip kekurangan air atau hara — dan itu sebabnya bibit yang kerdil berulang kali dipupuk tanpa hasil. Bertahan di media tanam, sehingga tanah bekas persemaian yang dipakai ulang membawanya ke angkatan berikutnya; mengganti atau memanaskan media lebih menentukan daripada menyiram nematisida ke bibit yang sudah kerdil.',
+    gejala:
+      'Bibit KERDIL berpetak-petak di bedengan, daunnya kecil menguning dan gugur dari bawah walau disiram cukup, dan pertumbuhannya berhenti sementara bibit di sebelahnya normal. Akar yang dicuci terlihat PENDEK bercabang banyak dengan ujung menghitam dan sebagian luruh; tidak ada bengkakan bulat pada akarnya.',
+    pembanding: [
+      { cek: 'Cuci akar bibit yang kerdil dan lihat ujungnya. Nematoda akar memberi akar PENDEK berujung menghitam tanpa bengkakan; nematoda puru akar justru membentuk bengkakan bulat seperti manik pada akarnya.',
+        membantah: { id: 'op:pst:00000130', label: 'Nematoda puru akar' } },
+      { cek: 'Bandingkan bibit yang kerdil dengan tetangganya yang normal di bedengan yang sama. Nematoda memberi kerdil BERPETAK karena sebarannya di media tanam tidak merata; kekurangan hara membuat seluruh bedengan menguning bersamaan.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000193', dari: 'op:pst:00001387', nama: 'Hama Gudang',
+    key: 'kumbang-tembakau', label: 'Kumbang tembakau',
+    inang: [TEMBAKAU_SIMPAN],
+    definition:
+      'Kumbang gudang yang paling merugikan pada tembakau karena ia melubangi DAUN — bagian yang justru dijual — sehingga kerusakannya langsung memotong harga, bukan sekadar bobot. Larvanya di dalam bal dan tidak terjangkau semprotan permukaan; yang dipakai fumigasi atau pendinginan, dan pencegahannya sanitasi gudang serta memutus sisa bal lama. Terbang dan tertarik cahaya, jadi perangkap feromon dipakai untuk mengetahui kapan populasinya naik.',
+    gejala:
+      'Daun tembakau dalam bal berlubang BUNDAR kecil bertaburan, dengan bubuk halus seperti debu tembakau jatuh di bawah bal. Kumbang coklat kemerahan sepanjang dua sampai tiga milimeter dengan kepala menunduk sehingga badannya terlihat membungkuk, berjalan atau terbang di sekitar tumpukan.',
+    pembanding: [
+      { cek: 'Lihat bentuk kumbangnya dari samping. Kumbang tembakau MEMBUNGKUK — kepalanya tertunduk di bawah dada sehingga badannya terlihat melengkung; kumbang gudang lain berbadan lurus memanjang.',
+        membantah: { id: 'op:pst:00000122', label: 'Kumbang tepung' } },
+      { cek: 'Periksa apakah lubangnya menembus beberapa lapis daun sekaligus. Kumbang tembakau menggerek dari lapisan luar ke dalam bal; kerusakan yang cuma di permukaan luar biasanya bekas penanganan, bukan hama.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000194', dari: 'op:pst:00001213', nama: 'Penyakit Busuk Daun',
+    key: 'busuk-daun-cengkeh', label: 'Busuk daun cengkeh',
+    inang: [CENGKEH],
+    definition:
+      'Oomycete, bukan jamur sejati — jadi yang bekerja metalaksil, dimetomorf, atau tembaga, dan fungisida untuk jamur sejati tidak menyentuhnya. Menumpuk pada musim hujan panjang dan pada kebun yang tajuknya rapat sehingga daun lama basah. Percikan air dari tanah yang membawanya naik, sehingga daun paling bawah hampir selalu yang pertama.',
+    gejala:
+      'Bercak coklat kehitaman BERAIR pada daun, bertepi tidak tegas dan basah seperti tersiram air panas, mulai dari daun paling BAWAH dan dari ujung atau tepi helai. Daun yang terkena gugur cepat sehingga ranting bawah menggundul; pada cuaca sangat lembap tangkai dan ranting muda ikut menghitam dan mati.',
+    pembanding: [
+      { cek: 'Raba tepi bercaknya. Busuk daun cengkeh memberi bercak BERAIR yang tepinya tidak tegas dan terasa lunak; bercak jamur sejati kering dengan tepi tegas berbatas jelas.' },
+      { cek: 'Lihat dari daun mana ia bermula. Busuk daun cengkeh bermula dari daun paling BAWAH karena percikan air dari tanah; kematian yang bermula dari pucuk dan turun penyebabnya lain — pada cengkeh yang paling sering penyakit pembuluh kayu, dan itu tidak bisa disembuhkan dengan semprotan.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000195', dari: 'op:pst:00001784', nama: 'Penyakit Busuk Hati',
+    key: 'busuk-hati-nenas', label: 'Busuk hati nenas',
+    inang: [NENAS],
+    definition:
+      'Oomycete yang masuk lewat AIR yang menggenang di pucuk dan di pangkal daun, sehingga drainase dan arah tanam menentukan lebih banyak daripada bahan aktif. Menyerang paling parah pada bibit yang baru ditanam di musim hujan; merendam bibit sebelum tanam adalah tindakan pencegahan yang lazim dan jauh lebih murah daripada menyemprot hamparan. Bertahan di tanah.',
+    gejala:
+      'Daun MUDA di tengah roset menguning lalu memerah, dan bila DITARIK ia lepas dengan mudah — pangkalnya membusuk basah, berwarna coklat berbatas jelas dengan jaringan sehat, dan berbau. Daun tua di luar masih hijau saat pucuknya sudah busuk, sehingga tanaman terlihat sehat dari jauh.',
+    pembanding: [
+      { cek: 'TARIK daun termuda di tengah roset. Busuk hati membuatnya lepas ringan dengan pangkal yang membusuk basah; tanaman yang sehat menahan daunnya dan daun akan robek alih-alih lepas.' },
+      { cek: 'Cium pangkal daun yang lepas. Busuk hati berbau busuk basah tanpa berlendir; busuk yang berlendir kental dan berbau tajam biasanya bakteri, dan bahan aktifnya berbeda.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000196', dari: 'op:pst:00001723', nama: 'Epilachna sp.',
+    key: 'kumbang-epilachna', label: 'Kumbang epilachna',
+    inang: [TERUNG],
+    definition:
+      'Satu-satunya kumbang koksi yang MEMAKAN DAUN — kerabatnya yang lain justru pemangsa kutu dan harus dijaga, sehingga menyemprot berspektrum luas karena kumbang ini sering menukar satu masalah dengan dua. Dewasa dan larvanya memakan bagian yang sama pada waktu yang sama, jadi keduanya terlihat berbarengan. Memungut kumbang dan kelompok telurnya pada pagi hari cukup pada pertanaman kecil.',
+    gejala:
+      'Daun tergerus dalam pola GARIS SEJAJAR melengkung sehingga tinggal jaring urat daun yang menerawang seperti renda, dan bekasnya mengering kecoklatan. Kumbang bulat kubah jingga kemerahan berbintik hitam banyak, berbulu halus sehingga terlihat kusam; larvanya kuning berduri lunak bercabang, di permukaan bawah daun.',
+    pembanding: [
+      { cek: 'Lihat POLA gerusannya. Kumbang epilachna menggerus dalam garis sejajar melengkung sehingga daun terlihat seperti renda dengan urat yang tersisa; ulat memakan tembus sampai berlubang atau memakan dari tepi.' },
+      { cek: 'Perhatikan permukaan kumbangnya. Epilachna berbulu halus sehingga KUSAM; kumbang koksi pemangsa kutu licin mengkilap, dan yang itu justru harus dibiarkan.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000197', dari: 'op:pst:00001516', nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-anggrek', label: 'Bercak daun anggrek',
+    inang: [ANGGREK],
+    definition:
+      'Menyebar lewat PERCIKAN air dan lewat tangan serta alat yang berpindah antar-pot, sehingga rumah lindung yang rapat justru menaikkannya. Menyiram dari bawah dan tidak menyemprot air ke daun menjelang sore menurunkannya tanpa bahan apa pun. Daun anggrek berumur panjang dan bekas bercaknya tidak hilang, jadi kerugiannya menetap pada tanaman yang dijual sebagai tanaman hias.',
+    gejala:
+      'Bercak BULAT sampai lonjong pada daun, mula-mula kuning jernih lalu coklat tua dengan tengah lebih pucat dan tepi yang jelas, sering dikelilingi lingkaran kuning. Bercak yang berdekatan menyatu; pada daun tua bercaknya menghitam dan bagian tengahnya bisa mengering menipis.',
+    pembanding: [
+      { cek: 'Tekan bercaknya. Bercak daun anggrek KERING dan menipis tetapi tidak berair; busuk bakteri anggrek melunak berair dan menyebar cepat dalam hitungan hari, dan itu menuntut membuang daunnya segera.' },
+      { cek: 'Lihat apakah bercaknya bertepi tegas dengan lingkaran kuning. Bercak jamur memberikannya; bekas terbakar matahari atau bekas air dingin bertepi kabur tanpa lingkaran dan tidak bertambah luas.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000198', dari: 'op:pst:00002027', nama: 'Sundapteryx biguttulla',
+    key: 'wereng-kapas', label: 'Wereng kapas',
+    inang: [KAPAS],
+    definition:
+      'Yang merusak bukan lubang melainkan RACUN dalam air liurnya, sehingga daun rusak tanpa satu lubang pun dan gejalanya mudah dikira kekurangan hara atau keracunan pupuk. Menumpuk pada musim kering dan pada tanaman yang dipupuk nitrogen berlebih. Varietas berdaun berbulu jauh lebih tahan, dan itu keputusan yang diambil saat memilih benih, bukan saat menyemprot.',
+    gejala:
+      'Tepi daun menguning lalu MELENGKUNG KE BAWAH seperti mangkuk terbalik, kemudian mencoklat dan mengering dari tepi ke dalam sementara tengahnya masih hijau. Di permukaan bawah daun ada wereng hijau pucat kecil yang berjalan MENYAMPING dan melompat saat daun digoyang.',
+    pembanding: [
+      { cek: 'Balik daun dan goyang. Wereng kapas berjalan MENYAMPING lalu melompat — gerak yang khas dan tidak dilakukan kutu daun, yang bergerombol diam dan meninggalkan embun madu lengket.' },
+      { cek: 'Lihat arah melengkungnya daun. Wereng kapas melengkungkan tepi daun KE BAWAH dan mengeringkannya dari tepi; kekurangan kalium menguningkan tepi tanpa melengkungkan, dan bercaknya merata di seluruh tanaman bukan di daun tengah lebih dulu.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000199', dari: 'op:pst:00002299', nama: 'Hama Lanas',
+    key: 'lanas-ubi-jalar', label: 'Lanas ubi jalar',
+    inang: [UBI_JALAR],
+    definition:
+      'Hama yang menentukan pada ubi jalar, dan kerugiannya dua lapis: umbi berlubang, DAN umbi yang tersisa jadi pahit serta berbau tidak enak karena tanaman mengeluarkan zat pertahanan — sehingga umbi yang cuma sedikit terserang pun tidak laku. Masuk lewat RETAKAN tanah ke umbi, jadi menggemburkan dan menimbun guludan saat tanah retak di musim kering adalah tindakan yang paling menentukan. Terbawa pada stek, jadi bibit dari petak yang terserang meneruskannya.',
+    gejala:
+      'Umbi berlubang kecil dengan kotoran halus di sekitar lubang, dan bila dibelah ada lorong berkelok berisi larva putih berkepala coklat; daging umbi di sekitar lorong menghitam kehijauan dan BERBAU seperti terpentin serta terasa pahit. Batang di dekat pangkal juga berlubang dan tanaman layu sebagian.',
+    pembanding: [
+      { cek: 'Belah umbi yang berlubang dan CIUM. Lanas meninggalkan bau tajam seperti terpentin dari jaringan yang menghitam; lubang tanpa bau itu dan tanpa lorong berkelok biasanya bekas hama tanah lain.' },
+      { cek: 'Periksa apakah tanah di sekitar guludan RETAK. Lanas masuk lewat retakan; guludan yang tanahnya rapat menutup umbi hampir tidak pernah terserang, dan menimbunnya lebih menentukan daripada menyemprot.' },
+    ],
+  },
+  {
+    id: 'op:pst:00000200', dari: 'op:pst:00001936', nama: 'Penyakit Embun Jelaga',
+    key: 'embun-jelaga', label: 'Embun jelaga',
+    inang: [ALPUKAT, JERUK, KOPI, MANGGA, KAKAO],
+    definition:
+      'BUKAN penyakit tanaman, dan itu satu-satunya hal yang perlu diketahui sebelum membeli apa pun: jamurnya tumbuh di atas EMBUN MADU — cairan manis yang dikeluarkan kutu — dan tidak menembus jaringan tanaman sama sekali. Menyemprot fungisida menghilangkan jelaganya sebentar lalu ia kembali, karena kutunya masih ada. Yang menghentikannya menangani kutu putih, kutu tempurung, atau kutu daun yang ada di atasnya, dan memutus jalur semut yang memelihara kutu itu. Kerugiannya nyata tetapi tidak langsung: daun yang tertutup jelaga berkurang cahayanya, dan buah yang berjelaga tidak laku walau isinya utuh.',
+    gejala:
+      'Lapisan HITAM seperti jelaga menutupi permukaan ATAS daun, ranting, dan kulit buah, kering dan bisa DIKELUPAS sebagai lembaran tipis sehingga permukaan di bawahnya terlihat HIJAU SEHAT tidak berbekas. Permukaan di sekitarnya terasa lengket. Hampir selalu ada gerombolan kutu di atasnya — di pucuk, ketiak daun, atau dompolan buah — dan barisan semut naik-turun batang.',
+    pembanding: [
+      { cek: 'KELUPAS lapisan hitamnya dengan kuku atau usap dengan kain basah. Embun jelaga terangkat sebagai lembaran dan menyisakan jaringan HIJAU SEHAT di bawahnya; penyakit yang benar-benar menyerang daun meninggalkan jaringan mati kecoklatan yang tidak bisa dikelupas.' },
+      { cek: 'Cari SUMBERNYA di atas bagian yang berjelaga: gerombolan kutu putih, kutu tempurung, atau kutu daun, dan barisan semut di batang. Kalau ketemu, itu yang harus ditangani — menyemprot jelaganya saja akan mengulang pekerjaan yang sama bulan depan.',
+        membantah: { id: 'op:pst:00000071', label: 'Kutu tempurung' } },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -3808,6 +4019,8 @@ const KELOMPOK = [
   { kunci: 'ekor4', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR4 },
 
   { kunci: 'ekor5', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR5 },
+
+  { kunci: 'ekor6', tanaman: 'beberapa komoditas', inang: [CABAI], pintu: PINTU_EKOR6 },
 ];
 
 // ---------------------------------------------------------------------------
@@ -3882,7 +4095,7 @@ const PERLUAS = [
     // membaca salah satunya kini diberi tahu bahwa yang satunya ada dan kenapa.
     id: 'op:pst:00000007',
     nama: 'Antraknosa',
-    inang: [CABAI, TOMAT, JERUK],
+    inang: [CABAI, TOMAT, JERUK, BUAH_NAGA],
     definition:
       'Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit. Tomat ikut jadi inang di sini dan tidak di pintu spesiesnya, karena antraknosa buah tomat memang dilayani beberapa Colletotrichum yang tidak terpisahkan di kebun.',
   },
@@ -3891,7 +4104,7 @@ const PERLUAS = [
   // inangnya tertinggal pada "Cabai merah besar" saat yang lain pindah ke "Cabai".
   { id: 'op:pst:00000001', nama: 'Trips', inang: [CABAI] },
   {
-    id: 'op:pst:00000006', nama: 'Tungau merah', inang: [CABAI, JERUK, APEL, TOMAT, MELON],
+    id: 'op:pst:00000006', nama: 'Tungau merah', inang: [CABAI, JERUK, APEL, TOMAT, MELON, CENGKEH_BIBIT],
     definition: 'Tungau berinang sangat luas yang menumpuk pada musim kering dan pada tanaman berdebu di pinggir jalan. Bukan serangga: insektisida umum tidak menyentuhnya, dan justru menghabiskan tungau pemangsa yang menahannya.',
   },
   { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI, SEMANGKA, MELON, MENTIMUN, KACANG_PANJANG] },

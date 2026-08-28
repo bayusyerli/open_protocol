@@ -75,6 +75,7 @@ const PASANGAN = [
   { kalah: 'op:pst:00001735', menang: 'op:pst:00000118', dasar: 'Cercospora musicola bentuk tak berkelamin Mycosphaerella musicola, penyebab sigatoka kuning pisang; registri memuat keduanya dan pintunya berdiri di atas nama berkelaminnya.' },
 
   // --- salah eja yang GBIF tidak kenali, jadi tidak tertangkap satukan-opt-salah-ketik ---
+  { kalah: 'op:pst:00002072', menang: 'op:pst:00000128', dasar: 'Salah eja "Cerithidia sp." untuk marga Cerithidea, siput trisipan tambak yang pintunya sudah berdiri di atasnya; satu huruf, dan tidak ada marga Cerithidia.' },
   { kalah: 'op:pst:00001933', menang: 'op:pst:00000089', dasar: 'Salah gabung "Peronosclerospora cubensis": epitet cubensis milik Pseudoperonospora cubensis, embun bulu cucurbit, sementara Peronosclerospora marga embun bulu jagung. Barisnya pada semangka, jadi yang dimaksud yang pertama.' },
   { kalah: 'op:pst:00001787', menang: 'op:pst:00001250', dasar: 'Salah eja "Alphiobius sp." untuk Alphitobius, kumbang gudang yang registri catat sendiri sebagai Alphitobius diaperinus; label Indonesianya pun berbunyi "Alphitobius Sp".' },
   { kalah: 'op:pst:00001780', menang: 'op:pst:00000120', dasar: 'Salah eja "Coletrotichum capsici" untuk Colletotrichum capsici — dua huruf tertukar di marga — dan barisnya pada cabai, tanaman yang pintunya memang berdiri di atas spesies itu.' },

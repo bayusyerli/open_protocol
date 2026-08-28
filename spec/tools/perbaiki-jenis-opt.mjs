@@ -55,6 +55,11 @@ const BETULKAN = [
   { id: 'op:pst:00002219', nama: 'Kacangan penutup', jadi: 'weed',
     dasar: 'Bukan nama organisme melainkan sebutan untuk kacangan penutup tanah di kebun sawit. Digolongkan tumbuhan karena memang tumbuhan; bahwa ia ditanam sengaja urusan lain, dan yang menentukan di sini kolom sasaran herbisida.' },
 
+  { id: 'op:pst:00002194', nama: 'Naphrolepsis sp.', jadi: 'weed',
+    dasar: 'Salah eja Nephrolepis, paku pedang — sama dengan entri "Nephrolepsis sp." yang sudah dibetulkan; tumbuhan paku yang tumbuh menempel di batang cengkeh, bukan serangga.' },
+  { id: 'op:pst:00002270', nama: 'Mempercepat pematangan', jadi: 'not_an_organism',
+    dasar: 'Menyebut MAKSUD perlakuan — mempercepat pematangan buah manggis dengan zat pengatur tumbuh — bukan organisme yang dikendalikan.' },
+
   // --- organisme yang justru dijaga ---
   { id: 'op:pst:00001924', nama: 'Elaeidobius kamerunicus', jadi: 'beneficial',
     dasar: 'Kumbang penyerbuk kelapa sawit, dan satu-satunya penyerbuk yang menentukan pembentukan buah sejak dilepas 1982. Ia tercatat sebagai "sasaran" hanya karena label menyatakan produknya aman baginya; menawarkan pintu gejala untuknya berarti menganjurkan menyemprot yang justru menentukan hasil panen.' },

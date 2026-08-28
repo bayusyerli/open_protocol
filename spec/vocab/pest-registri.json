@@ -12810,8 +12810,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000194"
+        }
       },
       "synonyms": [
         "Penyakit Busuk Blendok",
@@ -20413,8 +20417,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000193"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -25805,8 +25813,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000197"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -29957,8 +29969,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000190"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -32277,7 +32293,7 @@
         "created_at": "2026-08-19T00:00:00Z",
         "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001723"
+          "id": "op:pst:00000196"
         }
       },
       "taxon_verification": {
@@ -34079,8 +34095,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000196"
+        }
       },
       "accepted_scientific_name": "Epilachna",
       "taxon_verification": {
@@ -36431,8 +36451,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000195"
+        }
       },
       "accepted_scientific_name": "Phytophthora",
       "taxon_verification": {
@@ -42396,8 +42420,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000200"
+        }
       },
       "accepted_scientific_name": "Capnodium",
       "taxon_verification": {
@@ -45898,8 +45926,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000198"
+        }
       },
       "accepted_scientific_name": "Sundapteryx",
       "taxon_verification": {
@@ -47654,8 +47686,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000128"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -49950,9 +49986,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00002333"
+          "id": "op:pst:00000191"
         }
       },
       "accepted_scientific_name": "Marasmius palmivorus",
@@ -52331,8 +52367,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000192"
+        }
       },
       "accepted_scientific_name": "Pratylenchus",
       "taxon_verification": {
@@ -52466,7 +52506,7 @@
       "label": {
         "id": "Naphrolepsis sp."
       },
-      "pest_kind": "insect",
+      "pest_kind": "weed",
       "scientific_name": "Naphrolepsis sp.",
       "taxonomic_rank": "genus",
       "mappings": [
@@ -52480,7 +52520,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -55495,7 +55536,7 @@
       "label": {
         "id": "Mempercepat pematangan"
       },
-      "pest_kind": "insect",
+      "pest_kind": "not_an_organism",
       "scientific_name": "Mempercepat pematangan",
       "taxonomic_rank": "species",
       "mappings": [
@@ -55509,7 +55550,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -56603,8 +56645,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000199"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -57984,9 +58030,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000191"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",

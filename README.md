@@ -36,7 +36,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 Kosakata sudah terisi: **15 skala fase dengan 868 fase** — empat belas kunci BBCH dari
 monografnya (Solanaceae, padi, jagung, kedelai, kentang, kopi, cucurbit, brassica, buncis,
 kacang tanah, dan lainnya) plus satu skala umur budidaya udang — ditambah 67 jenis tindakan,
-57 variabel, 23 cara aplikasi, **189 OPT terkurasi untuk 38 komoditas** — pangan, hortikultura,
+57 variabel, 23 cara aplikasi, **200 OPT terkurasi untuk 56 komoditas** — pangan, hortikultura,
 dan perkebunan, dengan sebagian entri melayani lebih dari satu komoditas sekaligus;
 rincian per komoditas dibangkitkan ke [docs/14-tinjauan-gejala.md](docs/14-tinjauan-gejala.md)
 — seluruhnya bergejala,
@@ -45,8 +45,8 @@ simpangan.
 
 Di atasnya, seluruh registri resmi Kementan sudah masuk: **14.920 produk terdaftar** —
 7.724 pestisida dengan 23.058 penggunaan berlabel, dan 7.196 pupuk — beserta **1.399
-substansi pestisida** (1.706 termasuk yang digantikan penggabungan ejaan), **722 OPT**
-(1.549 termasuk yang digantikan penyatuan kembar, salah ketik, dan kenaikan ke kosakata
+substansi pestisida** (1.706 termasuk yang digantikan penggabungan ejaan), **721 OPT**
+(1.560 termasuk yang digantikan penyatuan kembar, salah ketik, dan kenaikan ke kosakata
 terkurasi), dan **692
 komoditas** (906 termasuk yang digantikan penyatuan serumpun). Registri varietas
 menyusul dengan **11.227 varietas**, 52,4% di antaranya mewarisi skala fase lewat
