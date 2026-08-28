@@ -4,7 +4,7 @@
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
-// kakao, dan kopi (seluruhnya 28 Agustus 2026).
+// kakao, kopi, dan kelapa sawit (seluruhnya 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -125,6 +125,7 @@ const KAKAO = { id: 'op:cmd:00001010', label: 'Kakao' };
 // tetap datang dari pendaftarannya, jadi yang terdaftar di bawah "Budidaya kopi" tetap
 // muncul; yang berubah cuma nama yang tampil di saringan tanaman.
 const KOPI = { id: 'op:cmd:00001244', label: 'Kopi' };
+const SAWIT = { id: 'op:cmd:00001151', label: 'Kelapa sawit' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -1469,6 +1470,169 @@ const PINTU_KOPI = [
   },
 ];
 
+const PINTU_SAWIT = [
+  {
+    id: 'op:pst:00000073',
+    dari: 'op:pst:00001064',
+    nama: 'Ulat Kantong',
+    key: 'ulat-kantong',
+    label: 'Ulat kantong',
+    definition:
+      'Hama daun sawit dengan pendaftaran terbanyak — 62 baris. Ulatnya hidup di dalam kantong dari potongan daun yang dibawanya ke mana-mana, dan kantong itulah yang membuat semprotan kontak sering gagal: cairannya tidak masuk. Yang menentukan SENSUS PELEPAH — menghitung ulat hidup pada pelepah contoh sebelum memutuskan — karena musuh alaminya banyak dan penyemprotan menyeluruh membunuh musuh alami itu lebih dulu daripada ulatnya. Registri bahkan mencatat kumbang penyerbuk Elaeidobius kamerunicus sebagai sasaran terdaftar pada satu baris; menyemprotnya MENURUNKAN pembentukan buah, bukan menaikkannya. Mahasena corbetti (1 baris), ulat kantong jenis lain, belum disatukan.',
+    gejala:
+      'Pelepah bawah menggundul dari ujung anak daun sampai tinggal tulang anak daun seperti lidi, dan pohon terlihat berlubang-lubang saat ditengadah. Di bawah anak daun menggantung KANTONG kecil memanjang dari potongan daun kering, sepanjang satu sampai tiga sentimeter, yang ikut bergoyang saat pelepah digerakkan.',
+    pembanding: [
+      {
+        cek: 'Pegang salah satu kantongnya dan buka. Ada ulat di dalamnya, dan kantong itu ikut terbawa ke mana pun ulatnya berpindah — tidak menempel tetap di satu tempat. Ulat api tidak berkantong: ia menempel telanjang di bawah anak daun.',
+        membantah: { id: 'op:pst:00000074', label: 'Ulat api' },
+      },
+      {
+        cek: 'Hitung dulu sebelum memutuskan. Ambil satu pelepah contoh dari beberapa pohon dan hitung ulat HIDUPNYA; kantong kosong yang tertinggal dari serangan lama menipu, dan menyemprot karena kantong kosong membunuh musuh alaminya tanpa alasan.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000074',
+    dari: 'op:pst:00001084',
+    nama: 'Ulat Api',
+    key: 'ulat-api',
+    label: 'Ulat api',
+    definition:
+      'Registri memecah ulat api jadi beberapa entitas: Setothosea asigna (40 baris), nama lamanya Thosea asigna (12), serta Setora nitens (18) dan Darna trima (1) yang jenis lain tetapi ditangani sama. Pintu ini berdiri di atas yang pertama; tiga puluh satu baris atas nama entitas lain tidak ikut terdaftar di sini. Bulunya MENYENGAT kulit — periksa dengan ranting atau bersarung tangan, jangan dengan tangan telanjang.',
+    gejala:
+      'Anak daun tergerus dari permukaan BAWAH sampai tinggal selaput bening, lalu berlubang dan mengering sehingga pelepah tampak seperti terbakar. Ulatnya menempel telanjang di bawah anak daun: pipih seperti siput, hijau kekuningan berpola, dengan duri-duri bercabang di punggungnya. Serangan berat menggunduli pohon dan menunda buah sampai dua tahun.',
+    pembanding: [
+      {
+        cek: 'Lihat ulatnya — JANGAN dipegang. Ulat api pipih dan menempel telanjang di bawah anak daun dengan duri bercabang yang menyengat; ulat kantong selalu berada di dalam kantong dari potongan daun.',
+        membantah: { id: 'op:pst:00000073', label: 'Ulat kantong' },
+      },
+      {
+        cek: 'Perhatikan bentuk kerusakannya. Ulat api mengerok anak daun sampai tinggal selaput lalu berlubang, sementara pelepahnya sendiri tetap utuh. Kumbang tanduk memotong pelepah muda sehingga saat membuka daunnya bertakik segitiga seperti digunting.',
+        membantah: { id: 'op:pst:00000075', label: 'Kumbang tanduk' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000075',
+    dari: 'op:pst:00001119',
+    nama: 'Kumbang Tanduk',
+    key: 'kumbang-tanduk',
+    label: 'Kumbang tanduk',
+    definition:
+      'Paling merusak pada tanaman muda dan pada tahun-tahun sesudah replanting, karena berkembang biak di batang sawit tua yang dibiarkan melapuk dan di tumpukan tandan kosong. Yang menentukan MEMBERANTAS TEMPAT BERKEMBANG BIAKNYA — mencacah dan meratakan batang tumbang, membalik tumpukan tandan kosong — ditambah perangkap feromon. Menyemprot pohon tidak menjangkau kumbang yang hidup di dalam tumpukan.',
+    gejala:
+      'Pelepah muda yang BARU MEMBUKA bertakik segitiga seperti digunting, dan pada serangan berat anak daunnya berbentuk kipas terpotong. Di pucuk ada lubang gerekan besar berserat kasar dengan serbuk seperti sabut menyembul. Tanaman muda yang titik tumbuhnya digerek bisa mati.',
+    pembanding: [
+      {
+        cek: 'Perhatikan bentuk potongan pada pelepah yang BARU MEMBUKA. Takik segitiga rapi seperti guntingan berarti pelepah itu digerek saat masih terlipat di pucuk — khas kumbang tanduk, dan kerusakannya baru terlihat berminggu-minggu sesudah kumbangnya pergi.',
+      },
+      {
+        cek: 'Raba lubang di pucuk. Kumbang tanduk meninggalkan lubang besar berserat kasar dengan serbuk seperti sabut; ulat api dan ulat kantong tidak melubangi pucuk sama sekali.',
+        membantah: { id: 'op:pst:00000074', label: 'Ulat api' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000076',
+    dari: 'op:pst:00001061',
+    nama: 'Rayap Tanah',
+    key: 'rayap-tanah',
+    label: 'Rayap tanah',
+    definition:
+      'Dari 71 baris pendaftarannya, 43 justru BUKAN untuk tanaman melainkan untuk bangunan — registri mencatatnya sebagai tempat aplikasi, bukan komoditas — dan yang tersisa untuk sawit 18 baris. Paling merusak di lahan gambut dan pada tanaman muda, dan menyerang dari akar ke atas sehingga kerusakannya sudah lanjut saat terlihat dari luar.',
+    gejala:
+      'Pelepah bawah menguning lalu mengering seluruhnya sementara pelepah atas masih hijau, dan tanaman muda bisa mati mendadak. Pada pangkal batang dan akar menempel LORONG TANAH berkerak seperti jalur lumpur kering, dan bila dikupas ada rayap putih kecoklatan berhamburan di dalamnya.',
+    pembanding: [
+      {
+        cek: 'Kupas kerak tanah yang menempel di pangkal batang dengan parang atau kayu. Kalau di dalamnya ada rayap putih kecoklatan yang berhamburan, itu rayap tanah; kerak tanpa isi berarti serangan lama yang sudah berhenti, dan menyemprotnya tidak menyelamatkan apa pun.',
+      },
+      {
+        cek: 'Ketuk pangkal batang dan korek sedikit. Rayap memakan bagian dalam sehingga terdengar kopong sementara kulit luarnya masih utuh, dan selalu meninggalkan lorong tanah. Busuk pangkal batang melunakkan jaringan jadi rapuh dan berbau jamur, TANPA lorong tanah.',
+        membantah: { id: 'op:pst:00000080', label: 'Busuk pangkal batang' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000077',
+    dari: 'op:pst:00001184',
+    nama: 'Penyakit Bercak Daun Coklat',
+    key: 'bercak-daun-bibit-sawit',
+    label: 'Bercak daun bibit sawit',
+    definition:
+      'Penyakit PEMBIBITAN: dua belas dari tiga belas barisnya terdaftar untuk pembibitan kelapa sawit, bukan untuk kebun. Menyebar cepat pada bibit yang ditanam terlalu rapat dan disiram dari atas — menjarangkan bibit dan menyiram ke tanah mengurangi lebih banyak daripada menambah semprotan.',
+    gejala:
+      'Bintik bulat kecil TEMBUS CAHAYA pada daun bibit, lalu membesar jadi bercak coklat bertengah kelabu dengan halo kuning mengelilinginya. Bercak yang bersambung membuat daun mengering dari ujung; bibit yang berat serangannya kerdil dan tidak layak tanam.',
+    pembanding: [
+      {
+        cek: 'Terawang daun bibit ke arah cahaya saat bintiknya masih kecil. Bercak ini mulai sebagai bintik TEMBUS CAHAYA sebelum berwarna — tahap paling dini, dan tahap itulah yang masih bisa dijawab dengan menjarangkan bibit.',
+      },
+      {
+        cek: 'Lihat apakah ada halo kuning tegas mengelilingi bercaknya. Halo kuning dengan tengah kelabu khas penyakit ini; kerusakan karena terbakar matahari atau pupuk tidak berhalo dan mengikuti tepi daun.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000078',
+    dari: 'op:pst:00001133',
+    nama: 'Tikus Pohon',
+    key: 'tikus-pohon',
+    label: 'Tikus pohon',
+    definition:
+      'Berbeda dari tikus sawah: yang ini MEMANJAT dan bersarang di tajuk, di ketiak pelepah, dan di tumpukan pelepah bekas tunasan. Yang menentukan burung hantu Tyto alba beserta pagupon sarangnya, dan itu berjalan di tingkat hamparan bukan per kebun — sebelas baris pendaftaran racun tidak menggantikannya.',
+    gejala:
+      'Buah pada tandan tergerek dengan bekas gigitan bergerigi, dan brondolan bertumpuk di piringan dalam keadaan tergerus. Bunga jantan dan tandan muda ikut dimakan sehingga tandan gagal terbentuk. Ada jalur licin bekas lalu-lalang di pelepah, dan sarang dari serat di ketiak pelepah.',
+    pembanding: [
+      {
+        cek: 'Lihat bekas gigitan pada buahnya. Tikus meninggalkan gerusan bergerigi dengan bekas dua gigi seri yang sejajar; penggerek tandan meninggalkan lubang kecil beserta jaring dan kotoran di antara buah.',
+        membantah: { id: 'op:pst:00000079', label: 'Penggerek tandan' },
+      },
+      {
+        cek: 'Periksa ketiak pelepah dan tumpukan pelepah bekas tunasan. Tikus pohon bersarang DI ATAS, bukan di tanah. Kalau sarang dan lubangnya justru di tanah, itu tikus jenis lain dan penanganannya berbeda.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000079',
+    dari: 'op:pst:00001319',
+    nama: 'Penggerek Buah',
+    key: 'penggerek-tandan',
+    label: 'Penggerek tandan',
+    definition:
+      'Paling merusak pada tanaman muda yang baru mulai berbuah dan pada kebun yang penyerbukannya buruk, karena bunga yang tidak jadi buah justru jadi tempatnya berkembang. Registri juga memuat Tirathaba sp. (2 baris) yang belum disatukan.',
+    gejala:
+      'Di antara buah pada tandan ada JARING benang bercampur kotoran berbutir dan sisa gerekan yang menggumpal, dan buah di sekitarnya berlubang lalu membusuk. Bunga jantan dan tandan muda paling sering terkena; tandan yang terserang berat gugur sebelum matang.',
+    pembanding: [
+      {
+        cek: 'Buka gumpalan di antara buah pada tandan. Penggerek tandan meninggalkan jaring benang bercampur kotoran beserta ulat kemerahan di dalamnya; tikus tidak berjaring dan meninggalkan gerusan terbuka pada permukaan buah.',
+        membantah: { id: 'op:pst:00000078', label: 'Tikus pohon' },
+      },
+      {
+        cek: 'Perhatikan umur kebun dan penyerbukannya. Penggerek tandan menumpuk pada tanaman muda dan pada kebun yang banyak buahnya tidak jadi — dan kalau kumbang penyerbuk Elaeidobius ikut mati karena penyemprotan, masalah itu justru bertambah, bukan berkurang.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000080',
+    dari: 'op:pst:00001410',
+    nama: 'Penyakit Busuk Batang',
+    key: 'busuk-pangkal-batang',
+    label: 'Busuk pangkal batang',
+    definition:
+      'Ganoderma — penyakit sawit paling merugikan di Indonesia, dan punya TIGA baris penggunaan berlabel di seluruh registri. Tidak ada yang menyembuhkan pohon yang sudah bergejala: begitu tubuh buahnya muncul, pohon itu tinggal menunggu tumbang. Yang menentukan dikerjakan saat REPLANTING — membongkar dan mencacah tunggul serta akar sawit lama, memberi jeda tanam, dan tidak menanam bibit baru tepat di bekas lubang pohon sakit. Menyemprot pohon yang berdiri tidak menjangkau jamur yang hidup di akarnya.',
+    gejala:
+      'Pelepah bawah menguning lalu mengering dan MENGGANTUNG di sekeliling batang seperti rok, sementara pucuknya masih tegak dengan daun tombak menumpuk tidak membuka. Pada pangkal batang tumbuh TUBUH BUAH seperti kipas atau piring, bertepi putih dengan permukaan coklat mengkilap. Pohon akhirnya tumbang di pangkal walau daunnya masih ada.',
+    pembanding: [
+      {
+        cek: 'Periksa pangkal batang sampai ke permukaan tanah, termasuk sisi yang tertutup pelepah dan gulma. Tubuh buah seperti kipas bertepi putih tanda yang paling pasti — dan begitu muncul, pohon itu tidak bisa diselamatkan. Yang masih bisa diselamatkan pohon di sekitarnya, lewat tindakan saat replanting.',
+      },
+      {
+        cek: 'Ketuk pangkal batang dan bandingkan bunyinya dengan pohon sehat. Yang terserang terdengar kopong dan jaringannya rapuh berbau jamur bila dikorek, TANPA lorong tanah. Rayap tanah selalu meninggalkan lorong tanah berkerak di permukaan batang.',
+        membantah: { id: 'op:pst:00000076', label: 'Rayap tanah' },
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -1478,6 +1642,7 @@ const KELOMPOK = [
   { kunci: 'kedelai', tanaman: 'kedelai', inang: [KEDELAI], pintu: PINTU_KEDELAI },
   { kunci: 'kakao', tanaman: 'kakao', inang: [KAKAO], pintu: PINTU_KAKAO },
   { kunci: 'kopi', tanaman: 'kopi', inang: [KOPI], pintu: PINTU_KOPI },
+  { kunci: 'sawit', tanaman: 'kelapa sawit', inang: [SAWIT], pintu: PINTU_SAWIT },
 ];
 
 // ---------------------------------------------------------------------------

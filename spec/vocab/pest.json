@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama bawang merah, cabai merah besar, jagung, kakao, kedelai, kentang, kopi, kubis, padi dan tomat"
+      "id": "OPT utama bawang merah, cabai merah besar, jagung, kakao, kedelai, kelapa sawit, kentang, kopi, kubis, padi dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 10 komoditas: Bawang merah, Cabai merah besar, Jagung, Kakao, Kedelai, Kentang, Kopi, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 11 komoditas: Bawang merah, Cabai merah besar, Jagung, Kakao, Kedelai, Kelapa sawit, Kentang, Kopi, Kubis, Padi, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -6719,6 +6719,685 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kopi, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000073",
+      "key": "ulat-kantong",
+      "label": {
+        "id": "Ulat kantong"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Metisa plana",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Hama daun sawit dengan pendaftaran terbanyak — 62 baris. Ulatnya hidup di dalam kantong dari potongan daun yang dibawanya ke mana-mana, dan kantong itulah yang membuat semprotan kontak sering gagal: cairannya tidak masuk. Yang menentukan SENSUS PELEPAH — menghitung ulat hidup pada pelepah contoh sebelum memutuskan — karena musuh alaminya banyak dan penyemprotan menyeluruh membunuh musuh alami itu lebih dulu daripada ulatnya. Registri bahkan mencatat kumbang penyerbuk Elaeidobius kamerunicus sebagai sasaran terdaftar pada satu baris; menyemprotnya MENURUNKAN pembentukan buah, bukan menaikkannya. Mahasena corbetti (1 baris), ulat kantong jenis lain, belum disatukan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Metisa plana",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 63 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1854005",
+          "uri": "https://www.gbif.org/species/1854005",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Ulat Kantong",
+        "Ulat Kantong",
+        "Ulat Kantung"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Pelepah bawah menggundul dari ujung anak daun sampai tinggal tulang anak daun seperti lidi, dan pohon terlihat berlubang-lubang saat ditengadah. Di bawah anak daun menggantung KANTONG kecil memanjang dari potongan daun kering, sepanjang satu sampai tiga sentimeter, yang ikut bergoyang saat pelepah digerakkan."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Pegang salah satu kantongnya dan buka. Ada ulat di dalamnya, dan kantong itu ikut terbawa ke mana pun ulatnya berpindah — tidak menempel tetap di satu tempat. Ulat api tidak berkantong: ia menempel telanjang di bawah anak daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000074",
+            "label": "Ulat api"
+          }
+        },
+        {
+          "check": {
+            "id": "Hitung dulu sebelum memutuskan. Ambil satu pelepah contoh dari beberapa pohon dan hitung ulat HIDUPNYA; kantong kosong yang tertinggal dari serangan lama menipu, dan menyemprot karena kantong kosong membunuh musuh alaminya tanpa alasan."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000074",
+      "key": "ulat-api",
+      "label": {
+        "id": "Ulat api"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Setothosea asigna",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Registri memecah ulat api jadi beberapa entitas: Setothosea asigna (40 baris), nama lamanya Thosea asigna (12), serta Setora nitens (18) dan Darna trima (1) yang jenis lain tetapi ditangani sama. Pintu ini berdiri di atas yang pertama; tiga puluh satu baris atas nama entitas lain tidak ikut terdaftar di sini. Bulunya MENYENGAT kulit — periksa dengan ranting atau bersarung tangan, jangan dengan tangan telanjang."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Setothosea asigna",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 40 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "10552362",
+          "uri": "https://www.gbif.org/species/10552362",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Ulat Api",
+        "Ulat Api",
+        "Ulat Kantong"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Anak daun tergerus dari permukaan BAWAH sampai tinggal selaput bening, lalu berlubang dan mengering sehingga pelepah tampak seperti terbakar. Ulatnya menempel telanjang di bawah anak daun: pipih seperti siput, hijau kekuningan berpola, dengan duri-duri bercabang di punggungnya. Serangan berat menggunduli pohon dan menunda buah sampai dua tahun."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat ulatnya — JANGAN dipegang. Ulat api pipih dan menempel telanjang di bawah anak daun dengan duri bercabang yang menyengat; ulat kantong selalu berada di dalam kantong dari potongan daun."
+          },
+          "rules_out": {
+            "id": "op:pst:00000073",
+            "label": "Ulat kantong"
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan bentuk kerusakannya. Ulat api mengerok anak daun sampai tinggal selaput lalu berlubang, sementara pelepahnya sendiri tetap utuh. Kumbang tanduk memotong pelepah muda sehingga saat membuka daunnya bertakik segitiga seperti digunting."
+          },
+          "rules_out": {
+            "id": "op:pst:00000075",
+            "label": "Kumbang tanduk"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000075",
+      "key": "kumbang-tanduk",
+      "label": {
+        "id": "Kumbang tanduk"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Oryctes rhinoceros",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Paling merusak pada tanaman muda dan pada tahun-tahun sesudah replanting, karena berkembang biak di batang sawit tua yang dibiarkan melapuk dan di tumpukan tandan kosong. Yang menentukan MEMBERANTAS TEMPAT BERKEMBANG BIAKNYA — mencacah dan meratakan batang tumbang, membalik tumpukan tandan kosong — ditambah perangkap feromon. Menyemprot pohon tidak menjangkau kumbang yang hidup di dalam tumpukan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Oryctes rhinoceros",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 22 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "4995642",
+          "uri": "https://www.gbif.org/species/4995642",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Kumbang Tanduk",
+        "Kumbang Badak",
+        "Kumbang Tanduk",
+        "Penggerek Pucuk"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Pelepah muda yang BARU MEMBUKA bertakik segitiga seperti digunting, dan pada serangan berat anak daunnya berbentuk kipas terpotong. Di pucuk ada lubang gerekan besar berserat kasar dengan serbuk seperti sabut menyembul. Tanaman muda yang titik tumbuhnya digerek bisa mati."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan bentuk potongan pada pelepah yang BARU MEMBUKA. Takik segitiga rapi seperti guntingan berarti pelepah itu digerek saat masih terlipat di pucuk — khas kumbang tanduk, dan kerusakannya baru terlihat berminggu-minggu sesudah kumbangnya pergi."
+          }
+        },
+        {
+          "check": {
+            "id": "Raba lubang di pucuk. Kumbang tanduk meninggalkan lubang besar berserat kasar dengan serbuk seperti sabut; ulat api dan ulat kantong tidak melubangi pucuk sama sekali."
+          },
+          "rules_out": {
+            "id": "op:pst:00000074",
+            "label": "Ulat api"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000076",
+      "key": "rayap-tanah",
+      "label": {
+        "id": "Rayap tanah"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Coptotermes curvignathus",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Dari 71 baris pendaftarannya, 43 justru BUKAN untuk tanaman melainkan untuk bangunan — registri mencatatnya sebagai tempat aplikasi, bukan komoditas — dan yang tersisa untuk sawit 18 baris. Paling merusak di lahan gambut dan pada tanaman muda, dan menyerang dari akar ke atas sehingga kerusakannya sudah lanjut saat terlihat dari luar."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2007379",
+          "uri": "https://www.gbif.org/species/2007379",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Coptotermes'; ejaan registri dipertahankan pada scientific_name."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "9785354",
+          "uri": "https://www.gbif.org/species/9785354",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Captotermes cuvignathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coprtotermes curvignathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coptotermes currvignathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coptotermes curvignathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 64 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coptotermes curvignatus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coptotermes curvignsathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Coptotermes cuvignathus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Captotermes cuvignathus",
+        "Coprtotermes curvignathus",
+        "Coptotermes currvignathus",
+        "Coptotermes curvignatus",
+        "Coptotermes curvignsathus",
+        "Coptotermes cuvignathus",
+        "Hama Rayap",
+        "Hama Rayap Tanah",
+        "Kayu Gergajian",
+        "Rayap",
+        "Rayap Tanah"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Pelepah bawah menguning lalu mengering seluruhnya sementara pelepah atas masih hijau, dan tanaman muda bisa mati mendadak. Pada pangkal batang dan akar menempel LORONG TANAH berkerak seperti jalur lumpur kering, dan bila dikupas ada rayap putih kecoklatan berhamburan di dalamnya."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Kupas kerak tanah yang menempel di pangkal batang dengan parang atau kayu. Kalau di dalamnya ada rayap putih kecoklatan yang berhamburan, itu rayap tanah; kerak tanpa isi berarti serangan lama yang sudah berhenti, dan menyemprotnya tidak menyelamatkan apa pun."
+          }
+        },
+        {
+          "check": {
+            "id": "Ketuk pangkal batang dan korek sedikit. Rayap memakan bagian dalam sehingga terdengar kopong sementara kulit luarnya masih utuh, dan selalu meninggalkan lorong tanah. Busuk pangkal batang melunakkan jaringan jadi rapuh dan berbau jamur, TANPA lorong tanah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000080",
+            "label": "Busuk pangkal batang"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000077",
+      "key": "bercak-daun-bibit-sawit",
+      "label": {
+        "id": "Bercak daun bibit sawit"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Curvularia maculans",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Penyakit PEMBIBITAN: dua belas dari tiga belas barisnya terdaftar untuk pembibitan kelapa sawit, bukan untuk kebun. Menyebar cepat pada bibit yang ditanam terlalu rapat dan disiram dari atas — menjarangkan bibit dan menyiram ke tanah mengurangi lebih banyak daripada menambah semprotan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2616094",
+          "uri": "https://www.gbif.org/species/2616094",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Culvularia maculans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Curvularia maculans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Curvularia muculans",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Culvularia maculans",
+        "Curvularia muculans",
+        "Penyakit Bercak Cokelat",
+        "Penyakit Bercak Coklat",
+        "Penyakit Bercak Daun",
+        "Penyakit Bercak Daun Coklat"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bintik bulat kecil TEMBUS CAHAYA pada daun bibit, lalu membesar jadi bercak coklat bertengah kelabu dengan halo kuning mengelilinginya. Bercak yang bersambung membuat daun mengering dari ujung; bibit yang berat serangannya kerdil dan tidak layak tanam."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Terawang daun bibit ke arah cahaya saat bintiknya masih kecil. Bercak ini mulai sebagai bintik TEMBUS CAHAYA sebelum berwarna — tahap paling dini, dan tahap itulah yang masih bisa dijawab dengan menjarangkan bibit."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat apakah ada halo kuning tegas mengelilingi bercaknya. Halo kuning dengan tengah kelabu khas penyakit ini; kerusakan karena terbakar matahari atau pupuk tidak berhalo dan mengikuti tepi daun."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000078",
+      "key": "tikus-pohon",
+      "label": {
+        "id": "Tikus pohon"
+      },
+      "pest_kind": "vertebrate",
+      "scientific_name": "Rattus tiomanicus",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Berbeda dari tikus sawah: yang ini MEMANJAT dan bersarang di tajuk, di ketiak pelepah, dan di tumpukan pelepah bekas tunasan. Yang menentukan burung hantu Tyto alba beserta pagupon sarangnya, dan itu berjalan di tingkat hamparan bukan per kebun — sebelas baris pendaftaran racun tidak menggantikannya."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2439235",
+          "uri": "https://www.gbif.org/species/2439235",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Mammalia; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rattus tiamanicus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rattus tiomanicus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 19 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Rattus tiomannicus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ratus tiomaniccus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ratus tiomanicus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Rattus tiamanicus",
+        "Rattus tiomannicus",
+        "Ratus tiomaniccus",
+        "Ratus tiomanicus",
+        "Tikur Belukar",
+        "Tikus Belukar",
+        "Tikus Pohon",
+        "Tikus Semak"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah pada tandan tergerek dengan bekas gigitan bergerigi, dan brondolan bertumpuk di piringan dalam keadaan tergerus. Bunga jantan dan tandan muda ikut dimakan sehingga tandan gagal terbentuk. Ada jalur licin bekas lalu-lalang di pelepah, dan sarang dari serat di ketiak pelepah."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat bekas gigitan pada buahnya. Tikus meninggalkan gerusan bergerigi dengan bekas dua gigi seri yang sejajar; penggerek tandan meninggalkan lubang kecil beserta jaring dan kotoran di antara buah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000079",
+            "label": "Penggerek tandan"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa ketiak pelepah dan tumpukan pelepah bekas tunasan. Tikus pohon bersarang DI ATAS, bukan di tanah. Kalau sarang dan lubangnya justru di tanah, itu tikus jenis lain dan penanganannya berbeda."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000079",
+      "key": "penggerek-tandan",
+      "label": {
+        "id": "Penggerek tandan"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Tirathaba rufivena",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Paling merusak pada tanaman muda yang baru mulai berbuah dan pada kebun yang penyerbukannya buruk, karena bunga yang tidak jadi buah justru jadi tempatnya berkembang. Registri juga memuat Tirathaba sp. (2 baris) yang belum disatukan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tirathaba rufivena",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 5 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1873843",
+          "uri": "https://www.gbif.org/species/1873843",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penggerek Buah",
+        "Ulat Penggerek Buah"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Di antara buah pada tandan ada JARING benang bercampur kotoran berbutir dan sisa gerekan yang menggumpal, dan buah di sekitarnya berlubang lalu membusuk. Bunga jantan dan tandan muda paling sering terkena; tandan yang terserang berat gugur sebelum matang."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka gumpalan di antara buah pada tandan. Penggerek tandan meninggalkan jaring benang bercampur kotoran beserta ulat kemerahan di dalamnya; tikus tidak berjaring dan meninggalkan gerusan terbuka pada permukaan buah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000078",
+            "label": "Tikus pohon"
+          }
+        },
+        {
+          "check": {
+            "id": "Perhatikan umur kebun dan penyerbukannya. Penggerek tandan menumpuk pada tanaman muda dan pada kebun yang banyak buahnya tidak jadi — dan kalau kumbang penyerbuk Elaeidobius ikut mati karena penyemprotan, masalah itu justru bertambah, bukan berkurang."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000080",
+      "key": "busuk-pangkal-batang",
+      "label": {
+        "id": "Busuk pangkal batang"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Ganoderma boninense",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        }
+      ],
+      "definition": {
+        "id": "Ganoderma — penyakit sawit paling merugikan di Indonesia, dan punya TIGA baris penggunaan berlabel di seluruh registri. Tidak ada yang menyembuhkan pohon yang sudah bergejala: begitu tubuh buahnya muncul, pohon itu tinggal menunggu tumbang. Yang menentukan dikerjakan saat REPLANTING — membongkar dan mencacah tunggul serta akar sawit lama, memberi jeda tanam, dan tidak menanam bibit baru tepat di bekas lubang pohon sakit. Menyemprot pohon yang berdiri tidak menjangkau jamur yang hidup di akarnya."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ganoderma boninense",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 3 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2549546",
+          "uri": "https://www.gbif.org/species/2549546",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Busuk Batang",
+        "Penyakit Busuk Pangkal Batang",
+        "Penyakit Busuk Pangkal Batang Injeksi Batang"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Pelepah bawah menguning lalu mengering dan MENGGANTUNG di sekeliling batang seperti rok, sementara pucuknya masih tegak dengan daun tombak menumpuk tidak membuka. Pada pangkal batang tumbuh TUBUH BUAH seperti kipas atau piring, bertepi putih dengan permukaan coklat mengkilap. Pohon akhirnya tumbang di pangkal walau daunnya masih ada."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Periksa pangkal batang sampai ke permukaan tanah, termasuk sisi yang tertutup pelepah dan gulma. Tubuh buah seperti kipas bertepi putih tanda yang paling pasti — dan begitu muncul, pohon itu tidak bisa diselamatkan. Yang masih bisa diselamatkan pohon di sekitarnya, lewat tindakan saat replanting."
+          }
+        },
+        {
+          "check": {
+            "id": "Ketuk pangkal batang dan bandingkan bunyinya dengan pohon sehat. Yang terserang terdengar kopong dan jaringannya rapuh berbau jamur bila dikorek, TANPA lorong tanah. Rayap tanah selalu meninggalkan lorong tanah berkerak di permukaan batang."
+          },
+          "rules_out": {
+            "id": "op:pst:00000076",
+            "label": "Rayap tanah"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
