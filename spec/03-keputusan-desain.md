@@ -889,6 +889,38 @@ lahannya" — bukan ciri yang bisa diperiksa orang yang sedang berdiri di sawahn
 karena itu bukan pintu menurut ukuran jalur 1 sendiri. Ia juga membuat *Scirpophaga sp.*
 jadi ambigu dan **membuang enam baris yang tadinya terjangkau**. Pintunya dicabut; ia jadi
 baris `covers` pertama.
+### D42 — komoditas yang lebih sempit: ditautkan, bukan disatukan
+
+Registri menulis "Cabai merah" di samping "Cabai", "Jeruk Siam" di samping "Jeruk", "Padi
+sawah" di samping "Padi". Menyatukannya **sudah dicoba dan dibatalkan**: registri VARIETAS
+memakai pembedaan itu — 35 catatan varietas berdiri di atas "Cabai merah", 103 di atas
+"Cabai", 8 di atas "Jeruk Siam" — dan menyatukannya membuang pembedaan yang memang
+dimaksud.
+
+Membiarkannya terpisah juga salah, dan salahnya terlihat di layar: pintu antraknosa
+berinang "Cabai" tidak menjangkau tiga baris yang registrinya menulis "Cabai merah",
+padahal apa pun yang berlaku untuk cabai berlaku untuk cabai merah.
+
+Jadi yang dipasang **hubungan**, bukan penyatuan: medan `broader` pada komoditas. Keduanya
+tetap entitas tersendiri; yang berubah cuma JANGKAUAN pintu. Ini jawaban atas pertanyaan
+terbuka 19, yang sudah menyebut bahwa `Commodity` belum punya hubungan hierarkis internal.
+
+**Arahnya SATU, dan itu yang menahannya jadi tebakan.** Pintu yang berinang yang lebih luas
+menjangkau ke bawah; yang lebih sempit tidak pernah menjangkau ke atas. Pendaftaran yang
+tertulis "Bawang" karena itu tetap di luar jangkauan pintu bawang merah — bisa saja yang
+dimaksud bawang putih, dan mengklaimnya adalah menebak. Barisnya dibiarkan tak terjangkau,
+dan itu jawaban yang benar.
+
+Dua akibat yang harus ditangani bersamaan, dan keduanya soal apa yang dibaca orang. Layar
+menyebut berapa produk yang datang dari nama yang lebih sempit — "10 tertulis sebagai Cabai
+merah" — alih-alih meleburnya diam-diam ke satu angka bulat. Dan komoditas yang produknya
+sudah dinaikkan TIDAK muncul lagi sebagai barisnya sendiri: tanpa itu pembacanya melihat
+"Cabai 126" yang di dalamnya sudah termasuk sepuluh, lalu "Cabai merah 10" di bawahnya, dan
+menjumlahkan keduanya menghasilkan angka yang tidak ada.
+
+L40 menjaga satu-satunya cara rantai ini bisa menggantung mesin: putaran. Alat yang
+memasangnya sudah memeriksanya, tetapi rantai bisa terbentuk dari dua berkas kosakata yang
+disunting terpisah, dan tidak satu pun alat itu melihat keduanya sekaligus.
 
 ---
 
@@ -916,8 +948,8 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 17 | Bentuk oksida & unsur yang belum dimodelkan | `B2O3`, `Na2O`, `CuO`, `ZnO`, `SO4`, serta `K`/`P`/`Mg` sebagai unsur ditinggal mentah — mengonversinya ke bentuk yang sudah ada akan mengarang angka yang tidak ditulis sumbernya |
 | 11 | 275 pestisida tanpa komposisi | Kadar bahan aktifnya bukan angka di sumber (mis. agens hayati berbasis populasi) |
 | 18 | 8 catatan varietas tanpa jenis tanaman tidak diterbitkan | Tidak bisa ditautkan ke komoditas mana pun. Salah satunya `kelapa ok` dari pemohon `tes ujicoba` — data uji coba yang tertinggal di registri resmi |
-| 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | Kegranularan registri dipertahankan, tetapi `Commodity` belum punya hubungan hierarkis internal — pengelompokan seharusnya lewat konsep broader AGROVOC yang belum dipetakan |
-| 24 | 24 baris label non-gulma masih di luar jalur 1 (0,4%) | **10** pada komoditas yang belum punya pintu, dan tujuh di antaranya varian ejaan yang SENGAJA tidak disatukan karena registri varietas memakai pembedaannya — "Cabai merah" (35 varietas), "Jeruk Siam" (8), "Padi sawah", "Bawang", "Gandum", "Pala", "Eucalyptus". **14** OPT belum berpintu pada tanaman yang sudah berpintu, tertahan bentuk datanya (pertanyaan 27). Baris yang bukan komoditas pertanian tidak lagi ikut dihitung: 24 entri kolom komoditas kini bertanda `kind: not_a_commodity` — lihat pertanyaan 28 |
+| 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | **Terjawab sebagian (D42).** Kegranularan registri dipertahankan, dan `Commodity` kini punya hubungan hierarkis internal lewat medan `broader` — pintu yang berinang yang lebih luas menjangkau yang lebih sempit tanpa menyatukannya. Yang belum: pemetaan ke konsep broader AGROVOC, sehingga hubungannya masih ditulis tangan per pasangan |
+| 24 | 6 baris label non-gulma masih di luar jalur 1 (0,09%) | Dan keenamnya satu bentuk yang sama: pendaftarannya berdiri pada komoditas yang lebih LUAS daripada inang pintunya, sehingga menjangkaunya berarti menebak ke bawah. `Sitophilus spp.` dan `Alphitobius diaperinus` terdaftar pada "Jagung" — jagung ladang — sementara pintu hama gudang berinang "Jagung di penyimpanan"; `Colletotrichum sp.` terdaftar pada "Bawang", yang bisa berarti bawang merah maupun bawang putih. `broader` sengaja berarah satu justru untuk menolak tebakan ini (D42) |
 | 28 | Kolom komoditas berisi SASARAN atau KONTEKS, bukan komoditas | Ditandai, bukan dihapus. Pendaftaran pestisida rumah tangga mengisi kolom komoditas dengan "Kecoak", "Nyamuk", "Rayap tanah", "Tikus rumah", atau dengan tempat pemakaiannya — "Di dalam ruangan", "Di luar rumah", "Umum" — dan satu baris berisi nama DAGANG produknya. Bentuknya sah dan tidak ada aturan yang bisa menolaknya, karena "Kecoak" tidak berbeda bentuknya dari "Kubis". 24 entri diberi `kind: not_a_commodity` lewat `spec/tools/perbaiki-jenis-komoditas.mjs`, tiap satunya dengan dasar tertulis. Pasangannya `perbaiki-jenis-opt.mjs` di sisi seberang, yang menangani kolom SASARAN berisi nama bahan aktif atau potongan kalimat |
 | 27 | Sepuluh baris terakhir tertahan BENTUK datanya, bukan kurangnya teks | Empat bentuk, dan tiap satunya keputusan yang sudah diambil. (a) Kumbang GUDANG yang didaftarkan pada komoditas LADANG — `Sitophilus spp.` dan `Alphitobius diaperinus` pada "Jagung", bukan "Jagung di penyimpanan"; menambahkan jagung ladang jadi inang pintu gudang akan menaruh pintu gudang di saringan tanaman pangan. (b) Pintu yang ada di tanaman SEBELAHNYA — `Hydrellia sp.` pada jagung sementara pintunya berdiri di padi, dan `Atherigona oryzae` pada padi sementara pintunya berdiri di jagung. (c) `Rhizoctonia sp.` dan `Fusarium spp.` pada jagung: satu-satunya pintu rebah kecambah di sana berdiri di atas Pythium, dan seluruh isinya justru bahwa bahan aktifnya harus mengenai OOMYCETE — mencakupkan jamur sejati ke sana berarti menganjurkan bahan yang tidak bekerja. (d) Satu baris tunggal tanpa pintu semarga di tanaman itu: `Siphanta acuta` dan `Thrips sp.` pada padi, `Empoasca spp.` pada kedelai, `Sclerotinia sp.` pada tembakau |
 | 26 | Pembibitan dan persemaian: fase atau tanaman? | Tetap terpisah dari tanamannya, dan itu keputusan yang menahan 10 baris di luar jangkauan. Umur dan perlakuannya memang berbeda; menyatukannya berarti menjanjikan teks gejala tanaman dewasa kepada yang berdiri di depan bedengan semai. Yang belum diputuskan apakah fase layak punya PINTUNYA SENDIRI — rebah kecambah sudah jadi contoh bahwa jawabannya kadang ya |

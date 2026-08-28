@@ -1340,6 +1340,58 @@ let cakupNamaLain = 0;
   }
 }
 
+// Komoditas yang lebih SEMPIT ikut dijangkau pintu yang berinang yang lebih luas
+// ---------------------------------------------------------------------------
+// Registri menulis "Cabai merah" di samping "Cabai", dan keduanya sengaja TIDAK
+// disatukan: 35 catatan varietas berdiri di atas yang pertama dan 103 di atas yang kedua,
+// jadi menyatukannya membuang pembedaan yang memang dimaksud. Tetapi membiarkannya
+// terpisah juga salah — pintu antraknosa berinang "Cabai" tidak menjangkau tiga baris yang
+// tertulis "Cabai merah", padahal apa pun yang berlaku untuk cabai berlaku untuk cabai
+// merah.
+//
+// Jadi `broader` pada komoditas dipakai di sini, dan ARAHNYA SATU: pintu yang berinang
+// yang lebih luas menjangkau ke bawah, yang lebih sempit tidak pernah menjangkau ke atas.
+// Pendaftaran yang tertulis "Bawang" karena itu tetap di luar jangkauan pintu bawang
+// merah — bisa saja yang dimaksud bawang putih, dan mengklaimnya adalah menebak.
+const lewatLebihSempit = new Map();
+// Pasangan pintu\u00d7komoditas yang produknya sudah dinaikkan; dipakai layar daftar supaya
+// komoditas yang lebih sempit tidak muncul dua kali.
+const naikKe = new Set();
+let cakupSempit = 0;
+{
+  // Rantai broader diratakan lebih dulu supaya "Cabai merah besar" yang menunjuk "Cabai"
+  // lewat satu langkah maupun beberapa langkah sama-sama terjangkau.
+  const keAtas = (id) => {
+    const naik = [];
+    const lewat = new Set([id]);
+    let kini = komoditasById.get(id)?.broader?.id;
+    while (kini && !lewat.has(kini)) { naik.push(kini); lewat.add(kini); kini = komoditasById.get(kini)?.broader?.id; }
+    return naik;
+  };
+  for (const k of optTerkurasi) {
+    const inang = new Set((k.hosts ?? []).map((h) => h.id));
+    if (!inang.size) continue;
+    for (const [kc, v] of perKomoditas) {
+      if (inang.has(kc)) continue;
+      if (!keAtas(kc).some((x) => inang.has(x))) continue;
+      const o = v.opt.get(k.id) ?? null;
+      // Sasaran yang dicakup pintu ini pada komoditas sempit itu ikut — jangkauannya
+      // berlaku pada tanaman, bukan pada nama entitasnya.
+      const sumber = [o, takBerspesies.get(k.id)?.get(kc), namaLain.get(k.id)?.get(kc)]
+        .flatMap((x) => (x ? (x.sumber ?? [x]) : []));
+      if (!sumber.length) continue;
+      if (!lewatLebihSempit.has(k.id)) lewatLebihSempit.set(k.id, new Map());
+      const perKom = lewatLebihSempit.get(k.id);
+      const tuju = [...inang].find((x) => keAtas(kc).includes(x));
+      if (!perKom.has(tuju)) perKom.set(tuju, { produk: new Set(), sumber: [], dari: new Set() });
+      const isi = perKom.get(tuju);
+      for (const x of sumber) { for (const y of x.produk) isi.produk.add(y); isi.sumber.push(x); cakupSempit += x.produk.size; }
+      isi.dari.add(v.nama);
+      naikKe.add(`${k.id}\u0000${kc}`);
+    }
+  }
+}
+
 // Produk yang dicakup DILEBUR ke entri pintu, bukan cuma dihitung
 // ---------------------------------------------------------------------------
 // Tanpa ini kedua mekanisme di atas berbohong dengan cara yang paling sulit dilihat:
@@ -1381,6 +1433,7 @@ let cakupNamaLain = 0;
   };
   lebur(takBerspesies);
   lebur(namaLain);
+  lebur(lewatLebihSempit);
 }
 
 const berkasOpt = {};
@@ -1649,8 +1702,14 @@ const gejala = optTerkurasi
       const o = v.opt.get(k.id);
       const tb = takBerspesies.get(k.id)?.get(kc);
       const nl = namaLain.get(k.id)?.get(kc);
-      if (!o && !tb && !nl) continue;
-      const gabung = new Set([...(o?.produk ?? []), ...(tb?.produk ?? []), ...(nl?.produk ?? [])]);
+      const ls = lewatLebihSempit.get(k.id)?.get(kc);
+      // Komoditas yang produknya SUDAH dinaikkan ke inang yang lebih luas tidak boleh
+      // muncul lagi sebagai barisnya sendiri: pembacanya akan melihat produk yang sama
+      // dua kali — "Cabai 126" yang di dalamnya sudah termasuk sepuluh, lalu "Cabai merah
+      // 10" di bawahnya — dan menjumlahkan keduanya menghasilkan angka yang tidak ada.
+      if (naikKe.has(`${k.id}\u0000${kc}`)) continue;
+      if (!o && !tb && !nl && !ls) continue;
+      const gabung = new Set([...(o?.produk ?? []), ...(tb?.produk ?? []), ...(nl?.produk ?? []), ...(ls?.produk ?? [])]);
       di.push({
         komoditas: kc,
         nama: v.nama,
@@ -1663,6 +1722,10 @@ const gejala = optTerkurasi
         // Sama alasannya, medan sendiri: produk ini terdaftar untuk spesies LAIN, dan
         // yang menyatukannya pernyataan kurator yang bisa dibaca — bukan pembacaan label.
         ...(nl ? { namaLain: nl.produk.size } : {}),
+        // Sama alasannya lagi: produk ini terdaftar di bawah nama komoditas yang lebih
+        // SEMPIT — "Cabai merah" di bawah "Cabai" — dan yang membacanya berhak tahu
+        // bahwa registrinya menuliskannya begitu, bukan disodori satu angka bulat.
+        ...(ls ? { lebihSempit: ls.produk.size, sempitNama: [...ls.dari].sort() } : {}),
         berkas: `opt/${kunciKomoditas(kc)}/${kunciKomoditas(k.id)}`,
       });
     }
@@ -2677,6 +2740,7 @@ console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalC
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
 console.log(`  cakupan tak berspesies: ${cakupBaris} produk dari sasaran "Genus sp." ikut terhitung, ${cakupRangkap} di antaranya pada lebih dari satu pintu segenus`);
 console.log(`  cakupan nama lain     : ${cakupNamaLain} produk dari sasaran berspesies lain yang dicakup atas pernyataan kurator`);
+console.log(`  cakupan komoditas sempit: ${cakupSempit} produk dari komoditas yang lebih sempit, dijangkau lewat broader`);
 console.log(`  principal/        : ${kb([...berkas].filter(([p]) => p.startsWith('principal/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasPrincipal).length} berkas — ${meta.jumlah.principal} badan, ${meta.jumlah.produkBerprincipal} dari ${semuaProduk.length} produk tertaut`);
 console.log(`  harga/            : ${kb([...berkas].filter(([p]) => p.startsWith('harga/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasHarga).length} varian — ${meta.jumlah.hargaBerangka} berangka, ${meta.jumlah.hargaVarian - meta.jumlah.hargaBerangka} diterbitkan tanpa angka, ${meta.jumlah.hargaTitik} titik`);
 console.log(`  gambar kemasan    : ${meta.jumlah.produkBergambar} dari ${semuaProduk.length} produk (${(meta.jumlah.produkBergambar / semuaProduk.length * 100).toFixed(1)}%), ${meta.jumlah.gambarKemasan} gambar`);

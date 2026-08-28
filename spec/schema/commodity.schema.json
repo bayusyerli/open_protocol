@@ -27,6 +27,10 @@
       ],
       "description": "`not_a_commodity` menyatakan bahwa barisnya BUKAN komoditas, dan ia ada karena registri memuatnya. Kolom komoditas pada pendaftaran pestisida rumah tangga sering diisi SASARANNYA — \"Kecoak\", \"Nyamuk\", \"Rayap tanah\", \"Tikus rumah\" — atau konteks pemakaiannya: \"Di dalam ruangan\", \"Di luar rumah\", \"Umum\". Keduanya sah sebagai rekaman registri dan tidak dihapus, tetapi menghitungnya sebagai komoditas membuat cakupan jalur 1 terbaca lebih buruk daripada sebenarnya, dan membuka kemungkinan seseorang menulis pintu gejala untuk \"Umum\"."
     },
+    "broader": {
+      "$ref": "common.schema.json#/$defs/Ref",
+      "description": "Komoditas yang LEBIH LUAS, dan hanya dipakai kalau yang ini benar-benar termasuk di dalamnya: \"Cabai merah\" di dalam \"Cabai\", \"Jeruk Siam\" di dalam \"Jeruk\", \"Padi sawah\" di dalam \"Padi\". Bukan alat penyatuan — keduanya tetap entitas tersendiri, karena registri VARIETAS memakai pembedaannya: 35 catatan varietas berdiri di atas \"Cabai merah\" dan 103 di atas \"Cabai\", dan menyatukannya membuang pembedaan yang memang dimaksud.\n\nYang diubahnya cuma JANGKAUAN: pintu gejala yang berinang \"Cabai\" ikut menjangkau pendaftaran yang tertulis \"Cabai merah\", karena apa pun yang berlaku untuk cabai berlaku untuk cabai merah. Arahnya SATU: yang lebih luas tidak pernah menjangkau ke bawah — pendaftaran yang tertulis \"Bawang\" tidak boleh diklaim pintu bawang merah, karena bisa saja yang dimaksud bawang putih."
+    },
     "scientific_name": {
       "type": "string"
     },

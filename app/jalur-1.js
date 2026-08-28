@@ -432,6 +432,11 @@ function blokKomoditas(k) {
         misalnya dua penggerek batang yang cuma terpisah kalau ngengatnya dibedah.
         Penggabungannya keputusan kurator, bukan bacaan registri, dan alasannya ditulis
         satu per satu di spec/vocab/pest.json.` : ''}
+        ${urut.some((d) => d.lebihSempit) ? `Sebagian lagi terdaftar di bawah nama tanaman
+        yang <strong>lebih sempit</strong> — misalnya “Cabai merah” di bawah “Cabai”.
+        Registri memuat keduanya sebagai tanaman tersendiri karena catatan varietasnya
+        memakai pembedaan itu; jangkauannya digabung ke sini karena apa pun yang terdaftar
+        untuk yang lebih luas berlaku untuk yang lebih sempit.` : ''}
       </p>
       <ul class="daftar">
         ${urut.map((d) => `
@@ -442,6 +447,8 @@ function blokKomoditas(k) {
                 ? ` · ${angkaId(d.takBerspesies)} di antaranya terdaftar untuk sasaran tanpa nama spesies`
                 : ''}${d.namaLain
                 ? ` · ${angkaId(d.namaLain)} untuk spesies lain yang tidak terbedakan di lapangan`
+                : ''}${d.lebihSempit
+                ? ` · ${angkaId(d.lebihSempit)} tertulis sebagai ${teks((d.sempitNama ?? []).join(', '))}`
                 : ''}</span>
             </button>
           </li>`).join('')}
