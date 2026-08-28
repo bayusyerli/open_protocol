@@ -211,7 +211,7 @@ function bacaVocab(nama) {
 // menunjuk entitas superseded, dan peta ini yang membuat rujukannya. Sebelum ada
 // entitas yang naik dari registri ke kosakata terkurasi hal ini tidak pernah terlihat —
 // yang digantikan hanyalah salah ketik, dan ejaannya toh sudah dinaikkan jadi mappings
-// KEMENTAN pada penerusnya. Sesudah spec/tools/kurasi-opt.mjs, empat puluh satu entitas
+// KEMENTAN pada penerusnya. Sesudah spec/tools/kurasi-opt.mjs, empat puluh sembilan entitas
 // yang ejaannya BENAR jadi superseded, dan tanpa saringan ini peta akan menautkan
 // "Spodoptera exigua" kembali ke entitas mati pada tarikan registri berikutnya.
 //

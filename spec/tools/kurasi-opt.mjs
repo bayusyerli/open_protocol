@@ -3,7 +3,7 @@
 //   node spec/tools/kurasi-opt.mjs            # periksa saja
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
-// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, dan kubis
+// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, dan kedelai
 // (seluruhnya 28 Agustus 2026).
 // Cabai — sepuluh entri pertama — ditulis lebih dulu oleh spec/tools/tulis-gejala-opt.mjs,
 // sebelum pola di bawah ini ada.
@@ -104,6 +104,7 @@ const CABAI = { id: 'op:cmd:00000001', label: 'Cabai merah besar' };
 const PADI = { id: 'op:cmd:00000006', label: 'Padi' };
 const JAGUNG = { id: 'op:cmd:00001002', label: 'Jagung' };
 const KUBIS = { id: 'op:cmd:00001011', label: 'Kubis' };
+const KEDELAI = { id: 'op:cmd:00001007', label: 'Kedelai' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -889,7 +890,7 @@ const PINTU_JAGUNG = [
     dari: 'op:pst:00001242',
     nama: 'Lalat Bibit',
     key: 'lalat-bibit',
-    label: 'Lalat bibit',
+    label: 'Lalat bibit jagung',
     definition:
       'Menyerang tanaman berumur kurang dari tiga minggu; sesudah itu batangnya sudah terlalu keras. Registri memecahnya jadi tiga entitas — Atherigona sp. (9 baris), Atherigona exigua (8), dan Atherigona oryzae (2) — dan hanya yang kedua cocok tepat sampai spesies di GBIF. Pintu ini berdiri di atasnya; sebelas baris atas nama dua entitas lain tidak ikut terdaftar di sini, dan ketiganya toh tidak bisa dibedakan di kebun.',
     gejala:
@@ -917,7 +918,7 @@ const PINTU_JAGUNG = [
     pembanding: [
       {
         cek: 'Belah batang yang berlubang membujur. Ada lorong memanjang berisi kotoran beserta ulat berwarna krem kecoklatan bertitik gelap di tiap ruas. Lalat bibit meninggalkan belatung putih TANPA KAKI di pangkal, bukan ulat berkaki di dalam ruas batang.',
-        membantah: { id: 'op:pst:00000046', label: 'Lalat bibit' },
+        membantah: { id: 'op:pst:00000046', label: 'Lalat bibit jagung' },
       },
       {
         cek: 'Lihat di mana lubangnya. Penggerek batang melubangi BATANG dan tangkai bunga jantan pada tanaman yang sudah tinggi; ulat grayak jagung merusak dari corong pucuk dan ujung tongkol, dan tidak menggerek ruas batang.',
@@ -1072,12 +1073,181 @@ const PINTU_KUBIS = [
   },
 ];
 
+const PINTU_KEDELAI = [
+  {
+    id: 'op:pst:00000055',
+    dari: 'op:pst:00001055',
+    nama: 'Penggerek Polong',
+    key: 'penggerek-polong',
+    label: 'Penggerek polong',
+    definition:
+      'Terdaftar juga pada kacang hijau (3 baris) dan cara merusaknya sama pada legum berpolong. Kerusakannya baru terlihat saat polong DIBUKA — dari luar polong yang terserang sering tampak normal — jadi keputusan menyemprot harus diambil pada fase pembentukan polong, bukan sesudah melihat kerusakannya. Registri juga memuat Etiella sp. (1 baris) dan Maruca testulalis (2 baris) yang belum disatukan.',
+    gejala:
+      'Polong berlubang kecil bundar pada kulitnya, kadang dengan butiran kotoran menempel di mulut lubang, sementara polongnya sendiri masih hijau. Biji di dalamnya berlubang atau habis dimakan dan tergantikan kotoran; satu ulat bisa pindah ke beberapa biji dalam satu polong. Polong yang terserang berat mengering lebih cepat daripada yang lain.',
+    pembanding: [
+      {
+        cek: 'Buka polong yang berlubang. Penggerek polong meninggalkan ULAT di dalam beserta kotorannya, dan bijinya berlubang atau habis. Pengisap polong tidak melubangi kulit — ia menusuk halus, dan bijinya mengempis atau bernoda tanpa ada ulat di dalam.',
+        membantah: { id: 'op:pst:00000060', label: 'Pengisap polong' },
+      },
+      {
+        cek: 'Periksa sebaran polong yang rusak di seluruh petak, bukan hanya yang ada di tangan. Kerusakan penggerek polong menyebar merata; kalau yang rusak menumpuk di pinggir petak, curigai kepik yang datang dari luar.',
+        membantah: { id: 'op:pst:00000059', label: 'Kepik hijau' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000056',
+    dari: 'op:pst:00001073',
+    nama: 'Penggulung Daun',
+    key: 'penggulung-daun',
+    label: 'Penggulung daun',
+    definition:
+      'Identitasnya di GBIF hanya tertambat sampai GENUS — nama spesiesnya tidak dikenali — jadi yang dijanjikan pintu ini CIRINYA, bukan nama spesiesnya. Terdaftar juga pada kacang hijau dan kacang tanah (3 baris). Registri juga memuat ejaan Lamprosemma indicata dan Lamprosema indicate (2 baris) yang belum disatukan.',
+    gejala:
+      'Daun terlipat atau tergulung dan terikat benang sutra jadi seperti kantong, dan permukaan di dalamnya dikerok sampai tinggal selaput. Beberapa helai daun bisa terikat jadi satu. Dari kejauhan tanaman terlihat berbintik coklat kering di antara daun yang masih hijau.',
+    pembanding: [
+      {
+        cek: 'Buka lipatan daunnya. Ada ulat hijau bening yang bergerak cepat mundur saat terganggu, beserta butiran kotoran di dalam lipatan. Ulat jengkal tidak melipat daun — ia makan di permukaan terbuka dan berjalan melengkung seperti mengukur.',
+        membantah: { id: 'op:pst:00000061', label: 'Ulat jengkal' },
+      },
+      {
+        cek: 'Lihat apakah daunnya TERIKAT. Penggulung daun mengikat daun dengan benang sutra sehingga lipatannya tidak membuka sendiri; daun yang keriting karena kutu atau virus tidak terikat dan bisa dibuka tanpa merobek.',
+        membantah: { id: 'op:pst:00000003', label: 'Kutu kebul' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000057',
+    dari: 'op:pst:00001131',
+    nama: 'Penyakit Karat Daun',
+    key: 'karat-daun-kedelai',
+    label: 'Karat daun',
+    definition:
+      'Penyakit kedelai paling menentukan di lahan lembap dan pada musim hujan; hasil turun banyak kalau menyerang sebelum polong terisi penuh. Sporanya terbawa angin dari petak lain, jadi menanam serempak satu hamparan ikut menentukan. Registri juga memuat Phakospora spp. (1 baris) yang belum disatukan.',
+    gejala:
+      'Bintil-bintil kecil coklat kemerahan MENONJOL di permukaan BAWAH daun, mula-mula pada daun bawah lalu naik. Dari permukaan atas terlihat sebagai bercak bersudut kecil kecoklatan di antara tulang daun halus. Daun menguning lalu rontok dari bawah ke atas, dan tanaman gundul sebelum polongnya tua.',
+    pembanding: [
+      {
+        cek: 'Balik daun dan raba permukaan bawahnya dengan jari. Karat daun meninggalkan bintil menonjol yang pecah dan MENYISAKAN SERBUK coklat di jari; bercak mata katak rata dan tidak berserbuk.',
+        membantah: { id: 'op:pst:00000062', label: 'Bercak mata katak' },
+      },
+      {
+        cek: 'Lihat dari daun mana ia mulai dan ke mana ia berjalan. Karat mulai dari daun BAWAH lalu naik, dan daun yang terserang rontok. Kerusakan ulat tidak berjalan dari bawah ke atas begitu, dan daunnya berlubang bukan berbintil.',
+        membantah: { id: 'op:pst:00000056', label: 'Penggulung daun' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000058',
+    dari: 'op:pst:00001209',
+    nama: 'Lalat Bibit',
+    key: 'lalat-bibit-kedelai',
+    label: 'Lalat bibit kedelai',
+    definition:
+      'Menyerang pada dua minggu pertama sesudah tumbuh; sesudah itu batangnya sudah terlalu keras. Registri memecahnya jadi empat entitas — Ophiomyia phaseoli (23 baris), Agromyza sp. (12), Agromyza phaseoli (7), dan ejaan Ophiornya phaseoli (1) — dan tiga yang terakhir nama genus lama untuk lalat yang sama. Pintu ini berdiri di atas yang pertama; sembilan belas baris atas nama tiga entitas lain tidak ikut terdaftar di sini.',
+    gejala:
+      'Daun bibit berbintik-bintik putih bekas tusukan, lalu muncul lorong halus dari helai daun turun ke tangkai dan pangkal batang. Tanaman muda layu, menguning, dan mati sejak dua minggu pertama; yang bertahan jadi kerdil dengan pangkal batang membengkak dan retak.',
+    pembanding: [
+      {
+        cek: 'Belah pangkal batang tanaman yang layu, membujur. Ada lorong kecoklatan tepat di bawah kulit batang beserta belatung putih atau kepompong coklat di dalamnya. Rebah karena penyakit tidak berlorong — jaringannya membusuk merata.',
+      },
+      {
+        cek: 'Ingat umur tanamannya. Lalat bibit hanya menyerang pada dua minggu pertama. Tanaman yang layu sesudah berbunga penyebabnya bukan lalat bibit, sebanyak apa pun yang layu.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000059',
+    dari: 'op:pst:00001127',
+    nama: 'Kepik Hijau',
+    key: 'kepik-hijau',
+    label: 'Kepik hijau',
+    definition:
+      'Menyerang pada fase pengisian polong, dan bau yang ditinggalkannya menempel pada biji sehingga menurunkan mutu jual walau bijinya utuh. Datang dari luar petak, jadi kerusakannya sering menumpuk di pinggir lebih dulu.',
+    gejala:
+      'Polong bernoda coklat bekas tusukan halus, dan biji di dalamnya mengempis, keriput, atau bernoda coklat kehitaman; polong yang tertusuk saat masih muda gugur. Kepik hijau polos seukuran kuku jari beterbangan rendah saat rumpun disibak, dan meninggalkan BAU MENYENGAT khas.',
+    pembanding: [
+      {
+        cek: 'Sibak rumpun pagi hari, lalu lihat dan cium. Kepik hijau berbentuk perisai lebar, hijau polos seukuran kuku, dan berbau menyengat; pengisap polong lebih ramping, coklat kekuningan, dan berkaki belakang panjang.',
+        membantah: { id: 'op:pst:00000060', label: 'Pengisap polong' },
+      },
+      {
+        cek: 'Buka polong yang bernoda. Kepik hijau tidak melubangi kulit polong — bijinya mengempis atau bernoda tanpa ada ulat maupun kotoran di dalam. Kalau ada ulat dan kotoran, itu penggerek polong.',
+        membantah: { id: 'op:pst:00000055', label: 'Penggerek polong' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000060',
+    dari: 'op:pst:00001143',
+    nama: 'Pengisap Polong',
+    key: 'pengisap-polong',
+    label: 'Pengisap polong',
+    definition:
+      'Bersama kepik hijau menentukan MUTU biji, bukan jumlah polong: yang diserang isi polongnya sementara polongnya tetap di tanaman sampai panen. Kerugiannya karena itu baru terlihat saat perontokan, dan pada saat itu sudah terlambat disemprot.',
+    gejala:
+      'Polong bernoda dan biji di dalamnya mengempis atau berbintik coklat mengeras; polong yang tertusuk saat muda gugur atau tetap kempis sampai panen. Serangga ramping coklat kekuningan berkaki belakang panjang dan berduri terlihat di polong, dan berpindah cepat ke sisi lain batang saat didekati.',
+    pembanding: [
+      {
+        cek: 'Lihat bentuk serangganya. Pengisap polong RAMPING memanjang, coklat kekuningan, dengan kaki belakang panjang berduri; kepik hijau lebar berbentuk perisai dan hijau polos.',
+        membantah: { id: 'op:pst:00000059', label: 'Kepik hijau' },
+      },
+      {
+        cek: 'Buka polong yang kempis. Pengisap polong tidak meninggalkan lubang, ulat, maupun kotoran — hanya biji yang mengempis atau bernoda. Lubang bundar pada kulit polong berarti penggerek polong.',
+        membantah: { id: 'op:pst:00000055', label: 'Penggerek polong' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000061',
+    dari: 'op:pst:00001222',
+    nama: 'Ulat Jengkal',
+    key: 'ulat-jengkal',
+    label: 'Ulat jengkal',
+    definition:
+      'Registri juga memuatnya atas nama lama Plusia chalcites (14 baris, sebagian pada kacang hijau, kacang tanah, dan tembakau) serta Plusia spp. dan Plusia sp. (2 baris); ketiganya belum disatukan. Produk atas nama itu tidak ikut terdaftar di bawah pintu ini — LEBIH BANYAK daripada yang terdaftar di sini, dan pintu ini tetap berdiri atas nama yang diterima GBIF, bukan atas nama yang barisnya lebih banyak.',
+    gejala:
+      'Daun berlubang tidak beraturan dari tengah helai, sering menyisakan tulang daun halus seperti jala, dan daun yang habis menyisakan tangkainya. Ulatnya hijau dengan garis putih memanjang di sisi tubuh, dan BERJALAN MELENGKUNG seperti sedang mengukur karena kaki tengahnya tidak lengkap.',
+    pembanding: [
+      {
+        cek: 'Perhatikan cara ulatnya berjalan. Ulat jengkal melengkungkan punggungnya tiap melangkah seperti mengukur; ulat grayak merayap lurus dan bertubuh jauh lebih gemuk.',
+        membantah: { id: 'op:pst:00000005', label: 'Ulat grayak' },
+      },
+      {
+        cek: 'Lihat apakah daunnya terlipat. Ulat jengkal makan di permukaan daun yang terbuka; penggulung daun mengikat daun dengan benang sutra dan makan dari dalam lipatan.',
+        membantah: { id: 'op:pst:00000056', label: 'Penggulung daun' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000062',
+    dari: 'op:pst:00001331',
+    nama: 'Penyakit Bercak Daun',
+    key: 'bercak-mata-katak',
+    label: 'Bercak mata katak',
+    definition:
+      'Menular lewat benih dan sisa tanaman, jadi benih dari petak yang terserang meneruskannya ke musim berikutnya. Registri juga memuat Cercospora sp., C. canescens, dan C. capsici sebagai sasaran pada kedelai (3 baris) yang belum disatukan.',
+    gejala:
+      'Bercak bundar kecil pada daun dengan tengah KELABU KEPUTIHAN dan tepi coklat kemerahan yang tegas — bentuknya seperti mata, dan dari situ namanya. Bercaknya tetap terpisah satu-satu, tidak menyatu jadi hawar luas; daun yang penuh bercak menguning lalu rontok. Polong dan biji bisa ikut berbercak.',
+    pembanding: [
+      {
+        cek: 'Lihat tengah bercaknya dan raba permukaannya. Bercak mata katak bertengah kelabu keputihan dengan tepi coklat kemerahan tegas, dan permukaannya RATA; karat daun menonjol berbintil dan menyisakan serbuk coklat di jari.',
+        membantah: { id: 'op:pst:00000057', label: 'Karat daun' },
+      },
+      {
+        cek: 'Perhatikan apakah bercaknya menyatu. Bercak mata katak tetap terpisah satu-satu walau jumlahnya banyak; bercak yang menyatu jadi bidang kering luas penyebabnya bukan ini.',
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
   { kunci: 'padi', tanaman: 'padi', inang: [PADI], pintu: PINTU_PADI },
   { kunci: 'jagung', tanaman: 'jagung', inang: [JAGUNG], pintu: PINTU_JAGUNG },
   { kunci: 'kubis', tanaman: 'kubis', inang: [KUBIS], pintu: PINTU_KUBIS },
+  { kunci: 'kedelai', tanaman: 'kedelai', inang: [KEDELAI], pintu: PINTU_KEDELAI },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1143,11 +1313,11 @@ const PERLUAS = [
     gejala:
       'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
   },
-  { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG] },
+  { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI] },
   {
     id: 'op:pst:00000005',
     nama: 'Ulat grayak',
-    inang: [CABAI, TOMAT, KENTANG, JAGUNG],
+    inang: [CABAI, TOMAT, KENTANG, JAGUNG, KEDELAI],
     // Definisi baru dan ciri kedua ditulis ulang begitu ulat grayak JAGUNG punya
     // pintunya sendiri: dua ulat bernama sama pada satu tanaman, dan yang membedakan
     // keduanya menentukan cara menyemprotnya — yang satu makan dari luar, yang satu

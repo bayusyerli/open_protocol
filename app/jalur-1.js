@@ -55,8 +55,8 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
  *
  * Tesis jalur ini masuk lewat APA YANG TERLIHAT, bukan lewat apa yang sudah diketahui;
  * memaksa pilih tanaman lebih dulu akan menukar pintu itu dengan pintu lain. Tetapi
- * sesudah komoditas ketujuh daftarnya 54 gejala, dan penanam padi harus melewati empat
- * puluh satu gejala tanaman lain sebelum sampai ke miliknya. Jalan tengahnya:
+ * sesudah komoditas kedelapan daftarnya 62 gejala, dan penanam padi harus melewati empat
+ * puluh sembilan gejala tanaman lain sebelum sampai ke miliknya. Jalan tengahnya:
  * saringan ada, "semua tanaman" tetap yang terpilih saat layar dibuka, dan gejala tetap
  * yang tertulis besar pada tiap kartu.
  *
@@ -104,7 +104,7 @@ function gambarGejala() {
 
 /* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
  *
- * 697 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * 689 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
  * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
  *
  * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
@@ -125,7 +125,7 @@ async function bukaHama(kunci, opsi = {}) {
         <p>
           <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
           registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
-          deskripsi gejalanya</strong> — nol dari 697 OPT berproduk memuatnya.
+          deskripsi gejalanya</strong> — nol dari 689 OPT berproduk memuatnya.
         </p>
         <p class="catatan">
           Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
@@ -133,8 +133,8 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — lima puluh empat OPT
-          tujuh komoditas punya ciri pembandingnya.
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — enam puluh dua OPT
+          delapan komoditas punya ciri pembandingnya.
         </p>
       </div>
       <h2 class="judul-bagian">Di tanaman apa?</h2>
