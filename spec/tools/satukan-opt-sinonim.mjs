@@ -72,7 +72,11 @@ const PASANGAN = [
   { kalah: 'op:pst:00002315', menang: 'op:pst:00000092', dasar: 'Sphaerotheca fuliginea nama lama yang dipakai luas untuk embun tepung cucurbit yang kini Podosphaera xanthii; marga Sphaerotheca dilebur ke Podosphaera.' },
   { kalah: 'op:pst:00001706', menang: 'op:pst:00000015', dasar: 'Alternaria alii ejaan lain untuk Alternaria porri, bercak ungu bawang — "allii" merujuk marga inangnya Allium dan dipakai bergantian di pustaka lama untuk jamur yang sama.' },
 
+  { kalah: 'op:pst:00001735', menang: 'op:pst:00000118', dasar: 'Cercospora musicola bentuk tak berkelamin Mycosphaerella musicola, penyebab sigatoka kuning pisang; registri memuat keduanya dan pintunya berdiri di atas nama berkelaminnya.' },
+
   // --- salah eja yang GBIF tidak kenali, jadi tidak tertangkap satukan-opt-salah-ketik ---
+  { kalah: 'op:pst:00001933', menang: 'op:pst:00000089', dasar: 'Salah gabung "Peronosclerospora cubensis": epitet cubensis milik Pseudoperonospora cubensis, embun bulu cucurbit, sementara Peronosclerospora marga embun bulu jagung. Barisnya pada semangka, jadi yang dimaksud yang pertama.' },
+  { kalah: 'op:pst:00001787', menang: 'op:pst:00001250', dasar: 'Salah eja "Alphiobius sp." untuk Alphitobius, kumbang gudang yang registri catat sendiri sebagai Alphitobius diaperinus; label Indonesianya pun berbunyi "Alphitobius Sp".' },
   { kalah: 'op:pst:00001780', menang: 'op:pst:00000120', dasar: 'Salah eja "Coletrotichum capsici" untuk Colletotrichum capsici — dua huruf tertukar di marga — dan barisnya pada cabai, tanaman yang pintunya memang berdiri di atas spesies itu.' },
   { kalah: 'op:pst:00001995', menang: 'op:pst:00001107', dasar: 'Salah eja "Colletothricum sp." untuk Colletotrichum sp.; keduanya sasaran bertingkat marga yang sama.' },
   { kalah: 'op:pst:00002182', menang: 'op:pst:00001107', dasar: 'Salah eja "Colletotrichum gloesporium" — epitetnya terpotong dari gloeosporioides — dan registri menulisnya bertingkat marga, jadi disatukan ke sasaran marga Colletotrichum sp. alih-alih ditebak spesiesnya.' },

@@ -603,7 +603,16 @@
       },
       "definition": {
         "id": "Lalat buah oriental, berinang sangat luas — cabai, jeruk, mangga, tomat, dan puluhan buah lain — sehingga petak yang bersih tetap terserang dari pohon tetangga. Yang menentukan pengumpulan buah gugur dan perangkap serempak se-hamparan, bukan penyemprotan sendiri-sendiri."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001952",
+            "label": "Lalat Buah"
+          },
+          "dasar": "Bactrocera tryoni lalat buah Queensland yang tidak ada di Indonesia — sebarannya Australia timur — sehingga barisnya pada cabai salah nama untuk lalat buah yang memang ada di sini. Tusukan sebesar ujung jarum dengan belatung di dalam buah yang gugur memang gejala yang dimaksud label."
+        }
+      ]
     },
     {
       "id": "op:pst:00000005",
@@ -838,6 +847,10 @@
         {
           "id": "op:cmd:00000003",
           "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
         }
       ],
       "mappings": [
@@ -2558,7 +2571,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tomat dan kentang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00002324",
+            "label": "Pengorok Daun"
+          },
+          "dasar": "Liriomyza chrysanthemi pengorok daun krisan yang meninggalkan lorong berkelok putih keperakan di dalam lapisan daun, sama bentuknya dengan L. huidobrensis pada tanaman yang sama; keduanya dipilah dari ngengat dewasanya, bukan dari lorongnya."
+        }
+      ]
     },
     {
       "id": "op:pst:00000023",
@@ -3722,7 +3744,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT padi, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001834",
+            "label": "Siput Murbei"
+          },
+          "dasar": "Label Indonesianya berbunyi \"Siput Murbei\" — nama keong mas — sementara kolom nama ilmiahnya berisi Pila ampullacea, keong sawah asli yang justru dipungut untuk dimakan. Yang dimaksud pendaftarannya keong yang merusak bibit padi, dan cirinya cangkang bulat dengan telur merah jambu di batang."
+        }
+      ]
     },
     {
       "id": "op:pst:00000034",
@@ -5331,7 +5362,23 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kubis, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001605",
+            "label": "Siput"
+          },
+          "dasar": "Filicaulis bleekeri siput telanjang tanpa cangkang, tetapi kedua ciri yang dipakai pintu ini tidak menyentuh cangkang sama sekali: jejak lendir mengkilap yang mengering seperti perak, dan tepi lubang yang tergerus halus. Umpan dan pemungutan malamnya pun sama."
+        },
+        {
+          "pest": {
+            "id": "op:pst:00002350",
+            "label": "Siput Darat"
+          },
+          "dasar": "Bradybaena similaris siput darat bercangkang kecil yang merusak kubis dengan cara yang sama seperti bekicot — menggerus tepi daun halus dan meninggalkan jejak lendir mengkilap — dan sama-sama dipungut malam hari atau diumpan."
+        }
+      ]
     },
     {
       "id": "op:pst:00000052",
@@ -5986,7 +6033,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kedelai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001968",
+            "label": "Lalat Pucuk"
+          },
+          "dasar": "Melanagromyza sojae menggerek batang kedelai muda dari dalam sama seperti Ophiomyia phaseoli, dan pemeriksaannya sama: belah batang tanaman yang layu dan cari lorong berisi belatung. Keduanya lalat pengorok yang menyerang pada dua minggu pertama dan sama-sama ditahan perlakuan benih."
+        }
+      ]
     },
     {
       "id": "op:pst:00000059",
@@ -6148,7 +6204,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kedelai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001808",
+            "label": "Penghisap Polong"
+          },
+          "dasar": "Piezodorus — registri menulisnya \"Peizodorus\" — kepik pengisap polong yang menusuk polong kedelai dari luar sama seperti Riptortus, meninggalkan bintik coklat pada kulit polong dan biji yang kempis atau kosong di baliknya. Pemeriksaannya sama: buka polong yang berbintik dan lihat bijinya."
+        }
+      ]
     },
     {
       "id": "op:pst:00000061",
@@ -6318,7 +6383,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kedelai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001446",
+            "label": "Penyakit Bercak Daun"
+          },
+          "dasar": "Cercospora canescens pada kedelai memberi bercak bersudut kecoklatan yang dibatasi tulang daun, dan pada tanaman yang sama ia ditemukan bersama C. sojina tanpa cara memisahkannya tanpa mikroskop. Jadwal penyemprotannya sama."
+        }
+      ]
     },
     {
       "id": "op:pst:00000063",
@@ -6933,6 +7007,10 @@
         {
           "id": "op:cmd:00001015",
           "label": "Jeruk"
+        },
+        {
+          "id": "op:cmd:00001010",
+          "label": "Kakao"
         }
       ],
       "definition": {
@@ -7233,7 +7311,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001851",
+            "label": "Ulat Kantong"
+          },
+          "dasar": "Mahasena corbetti ulat kantung sawit yang lebih besar, dan bentuk yang terlihat sama: kantung dari potongan daun yang tergantung di permukaan bawah pelepah, dan daun tergerus memutih menerawang dari dalam kantung. Pemeriksaannya sama — hitung kantung per pelepah contoh — dan ambang tindakannya sama."
+        }
+      ]
     },
     {
       "id": "op:pst:00000074",
@@ -7322,7 +7409,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT kelapa sawit, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001850",
+            "label": "Ulat Api"
+          },
+          "dasar": "Darna trima ulat api yang lebih kecil tetapi sama sengatnya dan sama bentuk kerusakannya: daun tergerus dari permukaan bawah sampai tinggal urat sehingga pelepah terlihat menerawang. Ketiga jenis ulat api sawit sering ditemukan bersamaan pada pelepah yang sama, dan pengamatannya memang dilakukan bersama."
+        }
+      ]
     },
     {
       "id": "op:pst:00000075",
@@ -8544,6 +8640,12 @@
           "id": "Pseudoperonspora cubensis",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Peronosclerospora cubensis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -8553,6 +8655,7 @@
       },
       "synonyms": [
         "Penyakit Embun Bulu",
+        "Peronosclerospora cubensis",
         "Pseudoperonospora cubencis",
         "Pseudoperonspora cubensis"
       ],
@@ -8695,10 +8798,14 @@
         {
           "id": "op:cmd:00001045",
           "label": "Mentimun"
+        },
+        {
+          "id": "op:cmd:00001132",
+          "label": "Sawi"
         }
       ],
       "definition": {
-        "id": "Kumbang daun cucurbit; di banyak daerah disebut oteng-oteng. Identitasnya di GBIF hanya tertambat sampai GENUS, jadi yang dijanjikan pintu ini cirinya bukan nama spesiesnya. Registri juga memuat Aulacophora femoralis (3 baris) yang belum disatukan. Larvanya di dalam tanah memakan akar dan pangkal batang, jadi kerusakan daun yang terlihat hanya separuh ceritanya."
+        "id": "Kumbang daun cucurbit; di banyak daerah disebut oteng-oteng. Identitasnya di GBIF hanya tertambat sampai GENUS, jadi yang dijanjikan pintu ini cirinya bukan nama spesiesnya. Registri juga mendaftarkannya pada sawi, dan cara merusaknya di sana sama. Larvanya di dalam tanah memakan akar dan pangkal batang, jadi kerusakan daun yang terlihat hanya separuh ceritanya."
       },
       "mappings": [
         {
@@ -8711,7 +8818,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxonomic_rank": "genus",
       "taxon_verification": {
@@ -8857,7 +8965,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT semangka, melon, dan mentimun, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00002316",
+            "label": "Penyakit Embun Tepung"
+          },
+          "dasar": "Erysiphe cichoracearum embun tepung cucurbit yang satunya lagi, dan keduanya kerap ada pada daun yang sama; memisahkannya menuntut melihat bentuk konidiumnya di bawah mikroskop, sementara tepung putih di permukaan atas daun tua dan cara mengusapnya sama persis."
+        }
+      ]
     },
     {
       "id": "op:pst:00000093",
@@ -10603,7 +10720,23 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT tebu, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001703",
+            "label": "Hama Lundi Uret"
+          },
+          "dasar": "Stibarophus molginus uret tebu yang larvanya melengkung seperti huruf C di dalam tanah dan memakan akar, sama bentuk dan sama letaknya dengan Lepidiota stigma; keduanya dipilah dengan melihat pola bulu di ujung perut larva, yang menuntut kaca pembesar."
+        },
+        {
+          "pest": {
+            "id": "op:pst:00001739",
+            "label": "Hama Lindu Uret"
+          },
+          "dasar": "Phyllophaga sp. uret yang larvanya sama melengkung seperti huruf C, sama putih gemuk berkepala coklat, dan memakan akar dengan cara yang sama; pada jagung ia memberi tanaman yang menguning berpetak dan mudah dicabut, persis yang dijanjikan pintu ini."
+        }
+      ]
     },
     {
       "id": "op:pst:00000114",
@@ -10953,6 +11086,12 @@
           "uri": "https://www.gbif.org/species/8130593",
           "relation": "exact",
           "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan EXACT (confidence 97)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cercospora musicola",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -10985,7 +11124,20 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT pisang, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "synonyms": [
+        "Cercospora musicola",
+        "Penyakit Bercak Daun"
+      ],
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001856",
+            "label": "Penyakit Speckle Daun Pisang"
+          },
+          "dasar": "Cladosporium musae memberi bintik dan bercak pada daun pisang yang di kebun bercampur dengan sigatoka pada helai yang sama, dan keduanya dikendalikan dengan memangkas daun terbawah yang bergejala serta jadwal fungisida yang sama."
+        }
+      ]
     },
     {
       "id": "op:pst:00000119",
@@ -12780,7 +12932,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00002278",
+            "label": "Penyakit Embun Tepung"
+          },
+          "dasar": "Oidium lycopersici bentuk tak berkelamin embun tepung tomat, dan pada tomat gejalanya sama dengan yang dijanjikan pintu ini: bercak kuning di permukaan atas daun tua dengan tepung putih tepat di baliknya."
+        }
+      ]
     },
     {
       "id": "op:pst:00000139",
@@ -13064,7 +13225,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00002237",
+            "label": "Penyakit Rebah Semai"
+          },
+          "dasar": "Pythium debaryanum salah satu jenis Pythium penyebab rebah kecambah yang sama, dan pada bedengan semai kubis ia memberi pangkal batang menyempit berair pada bibit yang daunnya masih hijau — persis yang dijanjikan pintu ini, termasuk bahan aktifnya yang harus mengenai oomycete."
+        }
+      ]
     },
     {
       "id": "op:pst:00000142",
@@ -13534,7 +13704,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001689",
+            "label": "Hama Gudang"
+          },
+          "dasar": "Cryptolestes kumbang gudang yang sama pipihnya, sama kecilnya, dan sama-sama hanya memakan butir yang SUDAH pecah beserta tepungnya. Memisahkannya dari Oryzaephilus menuntut melihat tepi dada di bawah kaca pembesar, sementara keputusan lapangannya — cari dulu apa yang melubangi butir utuh — sama."
+        }
+      ]
     },
     {
       "id": "op:pst:00000148",
@@ -14352,7 +14531,16 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00002129",
+            "label": "Penyakit Karat"
+          },
+          "dasar": "Uromyces phaseoli karat kacang-kacangan yang memberi bintil menonjol coklat kemerahan di permukaan bawah daun dan meninggalkan bubuk warna karat bila diusap, sama dengan U. vignae; pada kacang hijau keduanya dicatat bergantian di pustaka untuk karat yang sama."
+        }
+      ]
     },
     {
       "id": "op:pst:00000159",
@@ -14946,6 +15134,736 @@
         {
           "check": {
             "id": "Periksa saringan air masuk sebelum menyimpulkan. Jembret masuk bersama air pasang; kalau saringannya rusak atau terlalu kasar, mengobati petaknya tidak akan menyelesaikan apa pun karena ia masuk lagi pada pasang berikutnya."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000167",
+      "key": "bercak-daun-cucurbit",
+      "label": {
+        "id": "Bercak daun cucurbit"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Cercospora citrulina",
+      "hosts": [
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang DAUN saja dan tidak masuk ke buah, sehingga kerugiannya tidak langsung: daun yang gugur membuat buah terbakar matahari dan gulanya tidak terbentuk. Karena itu keputusannya bergantung fase — sebelum buah membesar layak ditahan, sesudah panen dekat tidak. Menumpuk pada musim hujan dan pada pertanaman rapat yang lama basah."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cercospora citrulina",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5262032",
+          "uri": "https://www.gbif.org/species/5262032",
+          "relation": "close",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan FUZZY (confidence 96). GBIF menerima nama 'Cercospora citrullina'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "accepted_scientific_name": "Cercospora citrullina",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "fuzzy",
+        "checked_at": "2026-08-19",
+        "confidence": 96,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak BULAT kecil pada daun tua, tengahnya kelabu keputihan dan tepinya coklat tua berbatas tegas, kadang dengan lingkaran kuning di luarnya. Bercak yang tua berlubang karena bagian tengahnya rontok. Daun mengering dari bawah dan gugur sementara sulur dan buahnya tetap sehat."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat apakah BUAHNYA ikut berbercak. Bercak daun cucurbit berhenti di daun; antraknosa cucurbit memberi bercak melingkar cekung pada buah juga, dan itu yang menentukan buahnya masih bisa dijual atau tidak."
+          },
+          "rules_out": {
+            "id": "op:pst:00000090",
+            "label": "Antraknosa cucurbit"
+          }
+        },
+        {
+          "check": {
+            "id": "Balik daun yang berbercak. Bercak daun cucurbit tidak menumbuhkan apa pun di permukaan bawah; embun bulu menumbuhkan lapisan keunguan berbulu tepat di balik bercak kuning bersudutnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000089",
+            "label": "Embun bulu cucurbit"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000168",
+      "key": "puru-daun-mangga",
+      "label": {
+        "id": "Puru daun mangga"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Procontarinia sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00001019",
+          "label": "Mangga"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang daun MUDA saja — begitu daun mengeras ia tidak bisa masuk lagi — sehingga jendelanya persis saat pohon bertunas, beberapa minggu setelah pemangkasan atau setelah hujan pertama. Menyemprot di luar masa bertunas tidak menolong apa pun. Larvanya keluar dari puru dan menjatuhkan diri ke tanah untuk jadi kepompong, jadi tanah di bawah tajuk bagian dari daurnya."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Procontarinia sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1594017",
+          "uri": "https://www.gbif.org/species/1594017",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Procontarinia'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Procontarinia",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun muda bertaburan BENJOL bulat sebesar kepala jarum yang menonjol di kedua permukaan, mula-mula hijau kekuningan lalu menghitam berlubang di tengah setelah larvanya keluar. Daun yang purunya rapat terpuntir, mengering di ujung, dan gugur; tunas baru jadi pendek dan tidak beraturan."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah satu benjol yang masih hijau. Puru daun mangga berisi belatung kecil putih di rongga di dalamnya; benjol yang berisi jaringan padat tanpa rongga bukan ini."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat umur daun yang berpuru. Puru daun hanya terbentuk pada daun MUDA saat pohon bertunas; kerusakan yang muncul pada daun tua yang sudah mengeras penyebabnya lain."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000169",
+      "key": "penggerek-buah-mangga",
+      "label": {
+        "id": "Penggerek buah mangga"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Noorda albizonalis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001019",
+          "label": "Mangga"
+        }
+      ],
+      "definition": {
+        "id": "Menggerek buah dari UJUNG, dan itu yang membedakannya dari lalat buah yang menusuk di mana saja. Buah yang tergerek tidak bisa diselamatkan, jadi seluruh nilainya ada pada pencegahan: membungkus buah sejak sebesar telur ayam menghentikannya sepenuhnya tanpa bahan apa pun, dan itu tindakan yang sudah lazim di sentra mangga."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Noorda albizonalis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1888342",
+          "uri": "https://www.gbif.org/species/1888342",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Noorda'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Noorda",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah berlubang di bagian UJUNG (bagian yang jauh dari tangkai) dengan kotoran coklat basah keluar dari lubangnya, dan di sekitarnya getah mengering. Buah yang dibelah berisi ulat kemerahan di rongga dekat biji. Buah yang terserang gugur sebelum tua."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat DI MANA lubangnya. Penggerek buah mangga masuk dari ujung buah dan mengeluarkan kotoran basah dari lubang itu; lalat buah menusuk sebesar ujung jarum di mana saja dan tidak mengeluarkan kotoran."
+          },
+          "rules_out": {
+            "id": "op:pst:00000004",
+            "label": "Lalat buah"
+          }
+        },
+        {
+          "check": {
+            "id": "Belah buah yang gugur. Penggerek buah mangga meninggalkan satu ulat kemerahan di rongga dekat biji; lalat buah meninggalkan banyak belatung putih kecil di daging buah yang membusuk lunak."
+          },
+          "rules_out": {
+            "id": "op:pst:00000004",
+            "label": "Lalat buah"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000170",
+      "key": "bercak-daun-phyllosticta",
+      "label": {
+        "id": "Bercak daun phyllosticta"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Phyllosticta sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00001019",
+          "label": "Mangga"
+        }
+      ],
+      "definition": {
+        "id": "Penyakit daun yang jarang menentukan hasil sendirian — yang membuatnya penting kebun yang tajuknya sudah menipis karena hal lain, karena daun yang gugur berulang menurunkan pembungaan musim berikutnya. Menumpuk pada kebun rapat yang lembap dan pada pohon yang lama tidak dipangkas. Bertahan pada daun gugur di bawah tajuk."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phyllosticta sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2513141",
+          "uri": "https://www.gbif.org/species/2513141",
+          "relation": "broad",
+          "note": "Kingdom Fungi, kelas Dothideomycetes; kecocokan HIGHERRANK (confidence 92). GBIF menerima nama 'Phyllosticta'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Phyllosticta",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 92,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak BULAT pada daun tua, tengahnya kelabu keputihan bertaburan titik hitam kecil dan tepinya coklat tua berbatas tegas seperti digambar. Bercak yang berdekatan menyatu jadi bidang kering; daun tua menguning lalu gugur sementara daun muda masih bersih."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat titik hitam di TENGAH bercak dengan cermat. Bercak phyllosticta menaburkannya tidak beraturan di bagian kelabu; antraknosa menyusunnya MELINGKAR sepusat, dan itu pembeda yang paling mudah dilihat."
+          },
+          "rules_out": {
+            "id": "op:pst:00000103",
+            "label": "Antraknosa mangga"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah buah dan tangkai bunga ikut bergejala. Bercak phyllosticta berhenti di daun; antraknosa mangga menghitamkan tangkai bunga dan memberi bercak cekung pada buah, dan itu yang menentukan kerugiannya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000103",
+            "label": "Antraknosa mangga"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000171",
+      "key": "kutu-sisik-koma",
+      "label": {
+        "id": "Kutu sisik koma"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Lepidosaphes beckii",
+      "hosts": [
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        },
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
+        }
+      ],
+      "definition": {
+        "id": "Menempel dan tidak berpindah lagi seumur hidupnya, dan perisai lilin di atasnya menahan semprotan — jadi satu-satunya saat penyemprotan berarti ketika anakannya masih merayap, sebelum perisainya terbentuk. Di luar jendela itu yang bekerja minyak yang menyelimuti, bukan racun yang menembus. Semut yang naik-turun batang mengusir musuh alaminya."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lepidosaphes beckii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2089006",
+          "uri": "https://www.gbif.org/species/2089006",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 97)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 97,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Sisik kecil coklat berbentuk KOMA atau tanda kutip sepanjang dua sampai tiga milimeter menempel rapat pada kulit ranting, tangkai daun, dan kulit buah, sering bertumpuk sampai kulitnya terlihat berkerak. Ranting yang tertutup rapat mengering dari ujung; buah yang bersisik tetap keras tetapi tidak laku."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Perhatikan BENTUK sisiknya. Kutu sisik koma memanjang melengkung seperti tanda koma; kutu sisik merah bundar seperti tetesan lilin dengan titik di tengah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000087",
+            "label": "Kutu sisik merah"
+          }
+        },
+        {
+          "check": {
+            "id": "Congkel satu sisik dengan kuku. Kutu sisik meninggalkan perisai keras yang terlepas dan menyisakan tubuh lunak di bawahnya; kutu putih tidak berperisai keras — ia berlapis lilin seperti kapas yang hancur bila ditekan."
+          },
+          "rules_out": {
+            "id": "op:pst:00000070",
+            "label": "Kutu putih"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      },
+      "covers": [
+        {
+          "pest": {
+            "id": "op:pst:00001857",
+            "label": "Kutu Sisik"
+          },
+          "dasar": "Lepidosaphes ulmi kutu sisik koma pada apel — sisik memanjang melengkung yang sama bentuknya, menempel rapat di kulit ranting yang sama, dan sama-sama hanya bisa disemprot saat anakannya merayap sebelum perisainya terbentuk."
+        }
+      ]
+    },
+    {
+      "id": "op:pst:00000172",
+      "key": "lalat-buah-cucurbit",
+      "label": {
+        "id": "Lalat buah cucurbit"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Bactrocera cucurbitae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        }
+      ],
+      "definition": {
+        "id": "Lalat buah yang khusus labu-labuan, dan berbeda dari lalat buah oriental ia menyerang buah yang masih SANGAT MUDA — sering sebelum sebesar telur — sehingga buah gugur tanpa pernah terlihat bertusukan. Karena itu petak yang buahnya \"tidak jadi\" berulang kali perlu diperiksa untuk ini sebelum disimpulkan sebagai masalah penyerbukan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bactrocera cucurbitae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "8070510",
+          "uri": "https://www.gbif.org/species/8070510",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah muda menguning lalu gugur, dan bila dibelah berisi belatung putih di daging yang membusuk lunak berbau. Pada buah yang lebih tua terlihat tusukan sebesar ujung jarum dengan getah mengering di sekitarnya. Lalat bersayap bening bertanda gelap hinggap di daun pada pagi hari."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah buah muda yang gugur. Lalat buah cucurbit meninggalkan belatung putih di dalamnya; buah muda yang gugur tanpa belatung dan tanpa bekas tusukan biasanya gagal diserbuki, dan menyemprot tidak akan mengubah apa pun."
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat pada UMUR buah berapa kerugiannya terjadi. Lalat buah cucurbit menyerang buah yang masih sangat muda; kerusakan yang baru muncul pada buah tua menjelang panen lebih mungkin lalat buah oriental atau busuk buah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000004",
+            "label": "Lalat buah"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000173",
+      "key": "pokkah-boeng",
+      "label": {
+        "id": "Pokkah boeng"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Fusarium moniliformae",
+      "hosts": [
+        {
+          "id": "op:cmd:00001006",
+          "label": "Tebu"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang lewat DAUN MUDA yang masih menggulung di pucuk, bukan lewat akar maupun luka batang, dan itu sebabnya gejalanya muncul serentak sesudah hujan pada tanaman muda. Sebagian besar tanaman pulih sendiri begitu cuaca berubah — yang tidak pulih hanya yang pucuknya telanjur membusuk, dan itu jumlahnya kecil. Menyemprot seluruh kebun karena gejala daun sering ongkos tanpa balasan."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Fusarium moniliformae",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "5251648",
+          "uri": "https://www.gbif.org/species/5251648",
+          "relation": "close",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan FUZZY (confidence 96). GBIF menerima nama 'Fusarium moniliforme'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "accepted_scientific_name": "Fusarium moniliforme",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "fuzzy",
+        "checked_at": "2026-08-19",
+        "confidence": 96,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Daun muda di pucuk MENGKERUT dan terpuntir dengan pangkal helai berwarna kuning pucat keputihan, tepinya bergerigi seperti robek, dan pelepah yang membuka lebih pendek daripada yang lain. Pada serangan berat pucuk membusuk berbau dan mudah dicabut; batang di bawahnya bisa berlekuk seperti tangga."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Tarik pucuk yang terpuntir. Pokkah boeng membuat pucuk membusuk basah berbau dan mudah lepas TANPA lubang gerekan; penggerek pucuk tebu meninggalkan lubang dan lorong berisi kotoran di dalam batangnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000112",
+            "label": "Penggerek pucuk tebu"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat pangkal helai daun mudanya. Pokkah boeng memucatkan pangkal helai jadi kuning keputihan sementara ujungnya masih hijau — pola yang khas dan tidak diberikan penggerek mana pun."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000174",
+      "key": "bubuk-buah-lada",
+      "label": {
+        "id": "Bubuk buah lada"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Lophobaris piperis",
+      "hosts": [
+        {
+          "id": "op:cmd:00001036",
+          "label": "Lada"
+        }
+      ],
+      "definition": {
+        "id": "Menggerek buah DAN ruas batang, sehingga kerugiannya dua lapis: buah yang gugur pada musim ini, dan sulur yang mati pada musim berikutnya. Karena larvanya di dalam jaringan, penyemprotan hanya mengenai kumbang dewasa yang keluar — jadi waktunya menentukan, dan memungut buah gugur serta memotong sulur yang berlubang memutus daurnya lebih pasti."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Lophobaris piperis",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "1203356",
+          "uri": "https://www.gbif.org/species/1203356",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Buah pada dompolan berlubang BUNDAR sebesar ujung jarum dengan serbuk halus di sekitar lubang, menghitam lalu gugur sehingga dompolan menjadi jarang. Ruas batang dan sulur juga berlubang; sulur di atas lubang layu dan mengering sementara bagian bawahnya masih hijau."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cari SERBUK halus seperti bubuk gergaji di sekitar lubang pada buah atau ruas. Bubuk buah lada meninggalkannya karena menggerek dari dalam; pengisap buah lada menusuk dari luar dan tidak meninggalkan serbuk maupun lubang bundar."
+          },
+          "rules_out": {
+            "id": "op:pst:00000116",
+            "label": "Pengisap buah lada"
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa apakah RUAS BATANG ikut berlubang, bukan cuma buahnya. Bubuk buah lada menggerek keduanya, dan sulur yang mati di atas lubang gerekan tanda yang paling menentukan."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000175",
+      "key": "penggulung-pucuk-teh",
+      "label": {
+        "id": "Penggulung pucuk teh"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Laspeyresia leucostoma",
+      "hosts": [
+        {
+          "id": "op:cmd:00001014",
+          "label": "Teh"
+        }
+      ],
+      "definition": {
+        "id": "Menyerang PUCUK — bagian yang justru dipetik — sehingga kerugiannya langsung terlihat pada hasil petikan, bukan pada pertumbuhan pohon. Bersembunyi di dalam gulungan daun, jadi semprotan kontak sulit menjangkaunya dan waktunya harus mengenai ulat yang baru menetas sebelum menggulung. Menumpuk sesudah pemangkasan, saat pucuk baru keluar serempak."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Laspeyresia leucostoma",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "12022921",
+          "uri": "https://www.gbif.org/species/12022921",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun pucuk MENGGULUNG memanjang dan terikat benang sutera, dan di dalam gulungan ada ulat hijau kecoklatan beserta kotoran hitam halus. Bagian dalam gulungan tergerus sehingga daun yang dibuka berlubang tidak beraturan; pucuk yang terserang tidak layak petik."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka gulungan pucuknya. Penggulung pucuk teh meninggalkan ulat dan kotoran hitam DI DALAM gulungan yang terikat benang; daun yang menggulung karena kekeringan atau tungau tidak berbenang dan tidak berisi apa pun."
+          }
+        },
+        {
+          "check": {
+            "id": "Periksa permukaan bawah daun yang tidak menggulung. Kalau di sana ada bercak seperti karat dan daun terasa kasar berdebu, yang sedang berjalan tungau jingga dan bukan ini."
+          },
+          "rules_out": {
+            "id": "op:pst:00000102",
+            "label": "Tungau jingga"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000176",
+      "key": "busuk-pangkal-batang-sklerotium",
+      "label": {
+        "id": "Busuk pangkal batang sklerotium"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Sclerotium rolfsii",
+      "hosts": [
+        {
+          "id": "op:cmd:00001007",
+          "label": "Kedelai"
+        },
+        {
+          "id": "op:cmd:00001034",
+          "label": "Kacang tanah"
+        }
+      ],
+      "definition": {
+        "id": "Hidup di TANAH dan bertahan bertahun-tahun sebagai butiran keras sebesar biji sawi, sehingga petak yang pernah terserang tetap berisiko walau tanamannya diganti. Menumpuk pada tanah yang banyak sisa tanaman belum lapuk dan pada cuaca panas lembap. Fungisida tajuk tidak menjangkaunya; yang menentukan pergiliran tanaman, pembenaman sisa tanaman, dan drainase."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sclerotium rolfsii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "2554083",
+          "uri": "https://www.gbif.org/species/2554083",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Agaricomycetes; kecocokan EXACT (confidence 98)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Tanaman layu mendadak dan mati satu-satu di antara tanaman sehat, dan pada pangkal batang tepat di batas tanah ada lapisan benang PUTIH seperti kapas yang menjalar ke tanah di sekitarnya. Di atas lapisan itu muncul butiran bulat keras sebesar biji sawi, mula-mula putih lalu coklat kemerahan."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cari BUTIRAN bulat keras seperti biji sawi pada benang putih di pangkal batang. Tidak ada penyakit pangkal batang lain yang membentuknya, dan sekali terlihat tidak perlu diperiksa lagi."
+          }
+        },
+        {
+          "check": {
+            "id": "Belah batang di atas pangkal yang membusuk. Busuk sklerotium menyerang dari LUAR ke dalam dan pembuluh di atasnya masih putih; layu fusarium mencoklatkan pembuluh jauh ke atas batang tanpa benang putih di pangkalnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
           }
         }
       ],
