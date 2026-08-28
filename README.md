@@ -36,7 +36,7 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 Kosakata sudah terisi: **15 skala fase dengan 868 fase** — empat belas kunci BBCH dari
 monografnya (Solanaceae, padi, jagung, kedelai, kentang, kopi, cucurbit, brassica, buncis,
 kacang tanah, dan lainnya) plus satu skala umur budidaya udang — ditambah 67 jenis tindakan,
-57 variabel, 23 cara aplikasi, **132 OPT terkurasi untuk 37 komoditas** — pangan, hortikultura,
+57 variabel, 23 cara aplikasi, **132 OPT terkurasi untuk 35 komoditas** — pangan, hortikultura,
 dan perkebunan, dengan sebagian entri melayani lebih dari satu komoditas sekaligus;
 rincian per komoditas dibangkitkan ke [docs/14-tinjauan-gejala.md](docs/14-tinjauan-gejala.md)
 — seluruhnya bergejala,

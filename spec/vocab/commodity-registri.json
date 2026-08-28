@@ -1280,6 +1280,18 @@
           "id": "Beras di penyimpanan",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 73 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Beras dalam penyimpanan",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 7 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Beras di peyimpanan",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 5 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1288,9 +1300,11 @@
         "created_at": "2026-08-19T00:00:00Z"
       },
       "synonyms": [
+        "Beras dalam penyimpanan",
         "Beras di Penyimpanan",
         "Beras di penyimpanan :",
-        "Beras di penyimpanan:"
+        "Beras di penyimpanan:",
+        "Beras di peyimpanan"
       ]
     },
     {
@@ -2060,6 +2074,24 @@
           "id": "Mentimun (125 - 250 ml/ha )",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ketimun",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ketimun (2 ml/l )",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Ketimun (4 g/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -2069,6 +2101,7 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Ketimun",
         "Mentimun:"
       ],
       "default_stage_scale": {
@@ -2872,13 +2905,22 @@
           "id": "Jagung di penyimpanan",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 10 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Jagung dalam penyimpanan",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Jagung dalam penyimpanan"
+      ]
     },
     {
       "id": "op:cmd:00001082",
@@ -3159,9 +3201,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001045"
+        }
       },
       "synonyms": []
     },
@@ -3712,8 +3757,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001023"
+        }
       }
     },
     {
@@ -4459,8 +4508,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001023"
+        }
       }
     },
     {
@@ -5088,8 +5141,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001080"
+        }
       }
     },
     {
@@ -5105,13 +5162,29 @@
           "id": "Tepung terigu dalam penyimpanan",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 4 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Terigu di penyimpanan",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tepung di penyimpanan",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Tepung di penyimpanan",
+        "Terigu di penyimpanan"
+      ]
     },
     {
       "id": "op:cmd:00001171",
@@ -6863,8 +6936,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001170"
+        }
       }
     },
     {
@@ -8836,9 +8913,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001091"
+          "id": "op:cmd:00001045"
         }
       }
     },
@@ -9661,9 +9738,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:cmd:00001091"
+          "id": "op:cmd:00001045"
         }
       }
     },
@@ -12251,13 +12328,22 @@
           "id": "Tembakau di penyimpanan",
           "relation": "exact",
           "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Tambakau di penyimpanan",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z"
-      }
+      },
+      "synonyms": [
+        "Tambakau di penyimpanan"
+      ]
     },
     {
       "id": "op:cmd:00001483",
@@ -12339,8 +12425,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001170"
+        }
       }
     },
     {
@@ -12521,8 +12611,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:cmd:00001482"
+        }
       }
     },
     {
