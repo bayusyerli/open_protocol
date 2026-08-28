@@ -1256,13 +1256,13 @@ let cakupBaris = 0;
   }
 
   {
-    const embunTepung = ['Podosphaera', 'Erysiphe', 'Leveillula', 'Golovinomyces', 'Sphaerotheca', 'Oidium', 'Oidiopsis'];
+    const embunTepung = ['Podosphaera', 'Erysiphe', 'Leveillula', 'Golovinomyces', 'Sphaerotheca', 'Oidium', 'Oidiopsis', 'Oidiospora'];
     const gabung = new Set(embunTepung.flatMap((g) => pintuSegenus.get(g) ?? []));
     // Dua nama bentuk tak berkelamin, bukan satu: Oidiopsis khusus untuk bentuk tak
     // berkelamin Leveillula — jamur yang hidup DI DALAM daun dan menyembulkan spora lewat
     // mulut daun — sementara Oidium dipakai untuk yang lain. Keduanya sama-sama berkata
     // "embun tepung, marganya tidak ditentukan", jadi keduanya dilayani daftar yang sama.
-    for (const anamorf of ['Oidium', 'Oidiopsis']) if (gabung.size) pintuSegenus.set(anamorf, [...gabung]);
+    for (const anamorf of ['Oidium', 'Oidiopsis', 'Oidiospora']) if (gabung.size) pintuSegenus.set(anamorf, [...gabung]);
   }
 
   for (const e of optRegistri) {
