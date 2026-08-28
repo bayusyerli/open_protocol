@@ -3,8 +3,8 @@
 //   node spec/tools/kurasi-opt.mjs            # periksa saja
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
-// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai, dan
-// kakao (seluruhnya 28 Agustus 2026).
+// Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
+// kakao, dan kopi (seluruhnya 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -118,6 +118,13 @@ const JAGUNG = { id: 'op:cmd:00001002', label: 'Jagung' };
 const KUBIS = { id: 'op:cmd:00001011', label: 'Kubis' };
 const KEDELAI = { id: 'op:cmd:00001007', label: 'Kedelai' };
 const KAKAO = { id: 'op:cmd:00001010', label: 'Kakao' };
+// Ditambatkan ke entitas TANAMAN ('Kopi'), bukan ke 'Budidaya kopi' tempat sebagian besar
+// pendaftarannya duduk. `hosts` menyatakan teks ini ditulis untuk TANAMAN apa, dan
+// "budidaya kopi" bukan nama tanaman melainkan cara registri menandai sasaran yang
+// sebenarnya lahannya — 469 dari 497 barisnya herbisida. Daftar produk pada layar kedua
+// tetap datang dari pendaftarannya, jadi yang terdaftar di bawah "Budidaya kopi" tetap
+// muncul; yang berubah cuma nama yang tampil di saringan tanaman.
+const KOPI = { id: 'op:cmd:00001244', label: 'Kopi' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -1134,7 +1141,7 @@ const PINTU_KEDELAI = [
     dari: 'op:pst:00001131',
     nama: 'Penyakit Karat Daun',
     key: 'karat-daun-kedelai',
-    label: 'Karat daun',
+    label: 'Karat daun kedelai',
     definition:
       'Penyakit kedelai paling menentukan di lahan lembap dan pada musim hujan; hasil turun banyak kalau menyerang sebelum polong terisi penuh. Sporanya terbawa angin dari petak lain, jadi menanam serempak satu hamparan ikut menentukan. Registri juga memuat Phakospora spp. (1 baris) yang belum disatukan.',
     gejala:
@@ -1245,7 +1252,7 @@ const PINTU_KEDELAI = [
     pembanding: [
       {
         cek: 'Lihat tengah bercaknya dan raba permukaannya. Bercak mata katak bertengah kelabu keputihan dengan tepi coklat kemerahan tegas, dan permukaannya RATA; karat daun menonjol berbintil dan menyisakan serbuk coklat di jari.',
-        membantah: { id: 'op:pst:00000057', label: 'Karat daun' },
+        membantah: { id: 'op:pst:00000057', label: 'Karat daun kedelai' },
       },
       {
         cek: 'Perhatikan apakah bercaknya menyatu. Bercak mata katak tetap terpisah satu-satu walau jumlahnya banyak; bercak yang menyatu jadi bidang kering luas penyebabnya bukan ini.',
@@ -1358,6 +1365,110 @@ const PINTU_KAKAO = [
   },
 ];
 
+const PINTU_KOPI = [
+  {
+    id: 'op:pst:00000068',
+    dari: 'op:pst:00001202',
+    nama: 'Penyakit Karat Daun',
+    key: 'karat-daun-kopi',
+    label: 'Karat daun kopi',
+    definition:
+      'Penyakit kopi paling menentukan di dunia, dan yang membuat arabika sulit dipertahankan di dataran rendah tanpa varietas tahan; robusta jauh lebih tahan. Yang menentukan pemangkasan agar tajuk tidak lembap, pemupukan berimbang, dan pilihan varietas — semprotan tembaga hanya menahan, dan hanya kalau diberikan sebelum bercaknya meluas.',
+    gejala:
+      'Bercak bulat kuning terang di permukaan BAWAH daun, dan di atas bercak itu ada SERBUK jingga kekuningan yang menempel di jari. Dari permukaan atas terlihat sebagai bercak kuning pucat berbatas kabur. Daun rontok dari bawah ke atas sampai ranting telanjang, dan pohon yang gundul tidak berbuah pada musim berikutnya.',
+    pembanding: [
+      {
+        cek: 'Balik daun dan usap bercaknya dengan jari. Karat daun meninggalkan SERBUK jingga di jari — tidak ada penyakit daun kopi lain yang begitu. Bercak daun kopi rata, kering, dan tidak berserbuk.',
+        membantah: { id: 'op:pst:00000072', label: 'Bercak daun kopi' },
+      },
+      {
+        cek: 'Periksa apakah daunnya lengket. Karat daun tidak melengketkan daun. Kalau daun menguning DAN lengket serta berjelaga hitam, yang menguningkannya kutu, bukan karat.',
+        membantah: { id: 'op:pst:00000071', label: 'Kutu tempurung' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000069',
+    dari: 'op:pst:00001381',
+    nama: 'Penggerek Buah Kopi',
+    key: 'penggerek-buah-kopi',
+    label: 'Penggerek buah kopi',
+    definition:
+      'PBKo — hama kopi paling menentukan di Indonesia, dan sekaligus yang paling sedikit produk terdaftarnya: LIMA baris penggunaan berlabel di seluruh registri. Yang menentukan memang bukan semprotan melainkan PETIK BUBUK dan LELESAN — memetik buah terserang lebih awal dan memungut buah jatuh sampai bersih — ditambah Beauveria bassiana dan perangkap beralkohol. Kumbangnya berada di dalam biji hampir seumur hidupnya, jadi semprotan hanya mengenai yang sedang terbang. Registri juga memuatnya atas nama genus lama Stephanoderes hampei (1 baris) yang belum disatukan.',
+    gejala:
+      'Lubang bundar kecil sebesar ujung jarum tepat di UJUNG buah — sisi yang berseberangan dengan tangkai — kadang dengan serbuk halus di mulut lubang. Buah yang terserang saat masih muda gugur; yang bertahan sampai panen bijinya berlubang dan berlorong, dan bobot serta mutunya turun.',
+    pembanding: [
+      {
+        cek: 'Lihat DI MANA lubangnya. Penggerek buah kopi hampir selalu masuk lewat ujung buah, sisi yang berlawanan dengan tangkai, dan lubangnya bundar rapi sebesar ujung jarum. Lubang di sisi lain buah, atau yang tidak bundar, penyebabnya lain.',
+      },
+      {
+        cek: 'Belah buah yang berlubang. Ada lorong dan ruang di dalam biji beserta kumbang hitam kecil kurang dari dua milimeter, kadang beberapa sekaligus. Buah yang gugur karena kekurangan air atau hara tidak berlubang dan bijinya utuh.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000070',
+    dari: 'op:pst:00001252',
+    nama: 'Kutu Putih',
+    key: 'kutu-putih-kopi',
+    label: 'Kutu putih',
+    definition:
+      'Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.',
+    gejala:
+      'Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.',
+    pembanding: [
+      {
+        cek: 'Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.',
+      },
+      {
+        cek: 'Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.',
+        membantah: { id: 'op:pst:00000071', label: 'Kutu tempurung' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000071',
+    dari: 'op:pst:00001444',
+    nama: 'Kutu Tempurung',
+    key: 'kutu-tempurung',
+    label: 'Kutu tempurung',
+    definition:
+      'Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.',
+    gejala:
+      'Sisik cembung hijau kekuningan seukuran kepala jarum menempel RAPAT di tulang daun bagian bawah, di pucuk, dan di buah muda, dan tidak bergerak sama sekali. Daun di bawahnya lengket lalu tertutup jelaga hitam sampai permukaannya gelap; pucuk kerdil dan buah muda gugur.',
+    pembanding: [
+      {
+        cek: 'Coba dorong sisiknya dengan kuku. Kutu tempurung MENEMPEL keras dan terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya; kutu putih hancur jadi bubuk lilin saat diusap.',
+        membantah: { id: 'op:pst:00000070', label: 'Kutu putih' },
+      },
+      {
+        cek: 'Usap jelaga hitamnya dengan kain basah. Jelaga TERANGKAT dan daun di bawahnya masih hijau — ia tumbuh di atas embun madu, bukan menyerang daunnya. Yang perlu ditangani kutunya; membersihkan jelaganya saja tidak menghentikan apa pun.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000072',
+    dari: 'op:pst:00001517',
+    nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-kopi',
+    label: 'Bercak daun kopi',
+    definition:
+      'Paling parah pada bibit di pembibitan dan pada pohon yang kekurangan hara atau kepanasan karena naungannya terlalu terbuka — jadi bercaknya sering pertanda pemeliharaan, bukan cuma pertanda jamur. Menyerang daun dan buah; pada buah ia membuat kulit melekat pada biji sehingga sulit dikupas.',
+    gejala:
+      'Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu dan tepi coklat kemerahan yang tegas, sering dikelilingi halo kuning, dan di bagian tengahnya ada titik-titik hitam halus. Pada buah muncul bercak coklat kehitaman cekung memanjang yang membuat kulit buah melekat ke biji.',
+    pembanding: [
+      {
+        cek: 'Raba dan usap bercaknya. Bercak daun kopi RATA dan kering serta tidak meninggalkan apa pun di jari; karat daun meninggalkan serbuk jingga saat diusap di permukaan bawah daun.',
+        membantah: { id: 'op:pst:00000068', label: 'Karat daun kopi' },
+      },
+      {
+        cek: 'Lihat di mana bercak terbanyak. Bercak daun kopi menumpuk pada bibit dan pada pohon yang naungannya terlalu terbuka atau kurang pupuk; karat daun tidak memilih begitu, dan justru menyerang pohon yang tajuknya rimbun dan lembap.',
+        membantah: { id: 'op:pst:00000068', label: 'Karat daun kopi' },
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -1366,6 +1477,7 @@ const KELOMPOK = [
   { kunci: 'kubis', tanaman: 'kubis', inang: [KUBIS], pintu: PINTU_KUBIS },
   { kunci: 'kedelai', tanaman: 'kedelai', inang: [KEDELAI], pintu: PINTU_KEDELAI },
   { kunci: 'kakao', tanaman: 'kakao', inang: [KAKAO], pintu: PINTU_KAKAO },
+  { kunci: 'kopi', tanaman: 'kopi', inang: [KOPI], pintu: PINTU_KOPI },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1472,14 +1584,23 @@ const disegarkan = [];
 const dilewati = [];
 let diratakan = 0;
 
-// Menambah inang tanpa menduakan yang sudah ada. Urutannya ikut daftar yang diminta,
-// karena `hosts` ikut terbaca manusia di docs/14 dan urutan acak menyulitkan pembacaan.
+// `inang` pada tabel adalah daftar LENGKAP, bukan tambahan — jadi hosts disetel persis,
+// bukan digabung. Semula ia menggabung, dan itu terlihat aman sampai satu inang ditulis
+// keliru: kopi sempat ditambatkan ke "Budidaya kopi" (sasaran lahan, 469 dari 497 barisnya
+// herbisida) sebelum dibetulkan ke entitas tanamannya, dan penggabungan menyimpan KEDUANYA
+// tanpa ada yang menyalak. Alat yang cuma bisa menambah tidak bisa dipakai membetulkan.
+//
+// Yang DIBUANG dilaporkan tersendiri, tidak didiamkan: menghapus inang mengubah komoditas
+// mana yang menyaring pintu ini di layar daftar, dan itu terlalu besar untuk lewat sebagai
+// "disegarkan" biasa. Urutannya ikut daftar yang diminta, karena `hosts` ikut terbaca
+// manusia di docs/14.
 const rapatkanInang = (e, minta) => {
-  const ada = new Map((e.hosts ?? []).map((h) => [h.id, h]));
-  let berubah = false;
-  for (const h of minta) if (!ada.has(h.id)) { ada.set(h.id, h); berubah = true; }
-  if (berubah) e.hosts = [...ada.values()];
-  return berubah;
+  const lama = (e.hosts ?? []).map((h) => h.id);
+  const baru = minta.map((h) => h.id);
+  if (lama.length === baru.length && lama.every((x, i) => x === baru[i])) return null;
+  const dibuang = (e.hosts ?? []).filter((h) => !baru.includes(h.id)).map((h) => h.label);
+  e.hosts = minta.map((h) => ({ ...h }));
+  return dibuang.length ? `inang (buang ${dibuang.join(', ')})` : 'inang';
 };
 
 const bangunPembanding = (pembanding) =>
@@ -1499,7 +1620,8 @@ for (const kel of KELOMPOK) {
       if (ada.label?.id !== p.label) { ada.label = { id: p.label }; ubah.push('label'); }
       if (p.definition && ada.definition?.id !== p.definition) { ada.definition = { id: p.definition }; ubah.push('definition'); }
       if (p.penular && ada.vector?.id !== p.penular.id) { ada.vector = p.penular; ubah.push('penular'); }
-      if (rapatkanInang(ada, inang)) ubah.push('inang');
+      const kabarInang = rapatkanInang(ada, inang);
+      if (kabarInang) ubah.push(kabarInang);
       if (ubah.length) {
         ada.lifecycle = { ...(ada.lifecycle ?? {}), updated_at: STAMP };
         disegarkan.push(`${p.id} ${p.label} — ${ubah.join(', ')}`);
@@ -1580,7 +1702,8 @@ for (const x of PERLUAS) {
   if (e.label?.id !== x.nama) { bantah.push(`${x.id} berlabel "${e.label?.id}", diharapkan "${x.nama}".`); continue; }
   const ubah = [];
   if (x.penular && e.vector?.id !== x.penular.id) { e.vector = x.penular; ubah.push('penular'); }
-  if (x.inang && rapatkanInang(e, x.inang)) ubah.push('inang');
+  const kabarInang = x.inang && rapatkanInang(e, x.inang);
+  if (kabarInang) ubah.push(kabarInang);
   if (x.definition && e.definition?.id !== x.definition) { e.definition = { id: x.definition }; ubah.push('definition'); }
   // Teks gejala pada PERLUAS SENGAJA menimpa: entri yang melayani banyak komoditas hanya
   // boleh punya satu bunyi, dan bunyi itu ada di sini. Bedanya dengan pintu di atas —
