@@ -13326,9 +13326,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000146"
+        }
       },
       "synonyms": [
         "Aphis glycine",
@@ -14143,8 +14146,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000141"
+        }
       },
       "synonyms": [
         "Penyakit Layu",
@@ -17671,8 +17678,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000142"
+        }
       },
       "accepted_scientific_name": "Gryllotalpa",
       "taxon_verification": {
@@ -19305,8 +19316,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000147"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -20000,8 +20015,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000145"
+        }
       },
       "synonyms": [
         "Penyakit Gray Mold"
@@ -21878,8 +21897,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000143"
+        }
       },
       "accepted_scientific_name": "Phaedonia",
       "taxon_verification": {
@@ -25560,9 +25583,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000144"
+        }
       },
       "synonyms": [
         "Penyakit Tepung Embun Bulu",
@@ -27538,9 +27564,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001513"
+          "id": "op:pst:00000144"
         }
       },
       "accepted_scientific_name": "Plasmopara viticola",
@@ -37106,9 +37132,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001226"
+          "id": "op:pst:00000146"
         }
       },
       "accepted_scientific_name": "Aphis glycines",
