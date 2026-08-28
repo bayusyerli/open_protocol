@@ -4,7 +4,7 @@
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
-// kakao, kopi, kelapa sawit, jeruk, dan cucurbit (seluruhnya 28 Agustus 2026).
+// kakao, kopi, kelapa sawit, jeruk, cucurbit, dan legum (seluruhnya 28 Agustus 2026).
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -130,6 +130,9 @@ const JERUK = { id: 'op:cmd:00001015', label: 'Jeruk' };
 const SEMANGKA = { id: 'op:cmd:00001021', label: 'Semangka' };
 const MELON = { id: 'op:cmd:00001031', label: 'Melon' };
 const MENTIMUN = { id: 'op:cmd:00001045', label: 'Mentimun' };
+const KACANG_PANJANG = { id: 'op:cmd:00001026', label: 'Kacang panjang' };
+const KACANG_HIJAU = { id: 'op:cmd:00001032', label: 'Kacang hijau' };
+const KACANG_TANAH = { id: 'op:cmd:00001034', label: 'Kacang tanah' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -1105,6 +1108,7 @@ const PINTU_KEDELAI = [
     nama: 'Penggerek Polong',
     key: 'penggerek-polong',
     label: 'Penggerek polong',
+    inang: [KEDELAI, KACANG_HIJAU],
     definition:
       'Terdaftar juga pada kacang hijau (3 baris) dan cara merusaknya sama pada legum berpolong. Kerusakannya baru terlihat saat polong DIBUKA — dari luar polong yang terserang sering tampak normal — jadi keputusan menyemprot harus diambil pada fase pembentukan polong, bukan sesudah melihat kerusakannya. Registri juga memuat Etiella sp. (1 baris) dan Maruca testulalis (2 baris) yang belum disatukan.',
     gejala:
@@ -1126,6 +1130,7 @@ const PINTU_KEDELAI = [
     nama: 'Penggulung Daun',
     key: 'penggulung-daun',
     label: 'Penggulung daun',
+    inang: [KEDELAI, KACANG_HIJAU, KACANG_TANAH],
     definition:
       'Identitasnya di GBIF hanya tertambat sampai GENUS — nama spesiesnya tidak dikenali — jadi yang dijanjikan pintu ini CIRINYA, bukan nama spesiesnya. Terdaftar juga pada kacang hijau dan kacang tanah (3 baris). Registri juga memuat ejaan Lamprosemma indicata dan Lamprosema indicate (2 baris) yang belum disatukan.',
     gejala:
@@ -1893,6 +1898,115 @@ const PINTU_CUCURBIT = [
   },
 ];
 
+const PINTU_LEGUM = [
+  {
+    id: 'op:pst:00000093',
+    dari: 'op:pst:00001104',
+    nama: 'Penggerek Polong',
+    key: 'penggerek-polong-kacang-panjang',
+    label: 'Penggerek polong kacang panjang',
+    inang: [KACANG_PANJANG, KACANG_HIJAU],
+    definition:
+      'Berbeda dari penggerek polong kedelai (Etiella zinckenella) yang masuk diam-diam lewat lubang kecil: yang ini MENGIKAT bunga dan polong dengan benang sutra dan makan dari dalam ikatan itu, jadi kerusakannya terlihat dari luar. Menyerang sejak fase bunga, dan bunga yang rontok lebih dulu sering satu-satunya tanda sebelum polong terbentuk.',
+    gejala:
+      'Bunga dan polong muda TERIKAT jadi gumpalan oleh benang sutra bercampur kotoran berbutir, dan bunga rontok banyak sebelum jadi polong. Polong yang terbentuk berlubang dengan kotoran menyembul di mulut lubang; dibelah, bijinya berlubang dan ada ulat bergaris dengan bintik gelap berbaris di punggungnya.',
+    pembanding: [
+      {
+        cek: 'Cari GUMPALAN bunga atau polong yang terikat benang, lalu buka. Penggerek polong kacang panjang meninggalkan benang sutra bercampur kotoran; penggerek polong kedelai tidak mengikat apa pun — ia masuk lewat lubang kecil dan polongnya tampak normal dari luar.',
+        membantah: { id: 'op:pst:00000055', label: 'Penggerek polong' },
+      },
+      {
+        cek: 'Perhatikan kapan kerusakannya mulai. Penggerek polong kacang panjang sudah bekerja sejak FASE BUNGA — bunga rontok banyak sebelum ada polong. Kalau bunganya utuh dan hanya polong tua yang rusak, penyebabnya lain.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000094',
+    dari: 'op:pst:00001146',
+    nama: 'Kutu Daun',
+    key: 'kutu-daun-kacang',
+    label: 'Kutu daun kacang',
+    inang: [KACANG_PANJANG, KACANG_HIJAU],
+    definition:
+      'Penular beberapa virus mosaik pada kacang-kacangan, dan itu yang membuatnya menentukan pada tanaman muda — bukan isapannya. Registri juga memuat Aphis sp. (2 baris) yang belum disatukan. Musuh alaminya banyak; koloni yang terlihat besar sering sudah didatangi kepik dan larva syrphid, dan menyemprot menyeluruh membunuh keduanya lebih dulu.',
+    gejala:
+      'Kutu HITAM mengkilap berkelompok sangat rapat di pucuk, tangkai bunga, dan polong muda sampai bagian itu terlihat menghitam seluruhnya. Pucuk mengeriting dan memendek, bunga rontok, dan polong yang terbentuk bengkok. Daun di bawahnya lengket lalu berjelaga; semut naik-turun.',
+    pembanding: [
+      {
+        cek: 'Lihat warnanya. Kutu daun kacang HITAM mengkilap dan berkerumun sampai menghitamkan pucuk; kutu daun persik hijau atau kekuningan dan tidak sepadat itu.',
+        membantah: { id: 'op:pst:00000002', label: 'Kutu daun persik' },
+      },
+      {
+        cek: 'Cari musuh alaminya di antara koloni sebelum memutuskan: kepik bertitik, larva pipih kehijauan, atau kutu yang menggembung kecoklatan seperti balon — yang terakhir berarti sudah diparasit. Kalau banyak, koloni itu sedang runtuh sendiri.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000095',
+    dari: 'op:pst:00001302',
+    nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-kacang-tanah',
+    label: 'Bercak daun kacang tanah',
+    inang: [KACANG_TANAH],
+    definition:
+      'Bercak daun awal. Registri juga memuat pasangannya, bercak daun lambat Cercospora personata (3 baris), dan Cercospora sp. (2) — keduanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Keduanya bersama karat daun menggunduli tanaman sebelum polong terisi penuh, dan gundul itulah yang menurunkan hasil, bukan bercaknya sendiri.',
+    gejala:
+      'Bercak bulat coklat pada daun dengan HALO KUNING tegas mengelilinginya, mula-mula pada daun bawah lalu naik. Bercaknya terlihat lebih gelap dari sisi atas daripada sisi bawah. Daun yang penuh bercak menguning lalu rontok, dan tanaman gundul dari bawah sementara polongnya belum tua.',
+    pembanding: [
+      {
+        cek: 'Bandingkan bercak dari sisi atas dan sisi bawah daun. Bercak daun kacang tanah lebih GELAP dari sisi atas dan berhalo kuning tegas; karat daun sebaliknya menonjol di sisi BAWAH dan meninggalkan serbuk coklat di jari.',
+        membantah: { id: 'op:pst:00000096', label: 'Karat daun kacang tanah' },
+      },
+      {
+        cek: 'Lihat dari daun mana ia mulai dan seberapa cepat gundulnya. Bercak daun mulai dari daun BAWAH lalu naik; kalau daun rontok tanpa bercak sama sekali, penyebabnya bukan penyakit daun ini.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000096',
+    dari: 'op:pst:00001372',
+    nama: 'Penyakit Karat Daun',
+    key: 'karat-daun-kacang-tanah',
+    label: 'Karat daun kacang tanah',
+    inang: [KACANG_TANAH],
+    definition:
+      'Hampir selalu datang bersama bercak daun, dan gabungan keduanya yang menggunduli tanaman — memutuskan berdasarkan salah satunya saja sering keliru menilai keparahan. Sporanya terbawa angin dan bertahan pada sisa tanaman, jadi jarak tanam dan rotasi ikut menentukan.',
+    gejala:
+      'Bintil kecil coklat kemerahan MENONJOL di permukaan BAWAH daun, yang pecah dan menyisakan serbuk coklat di jari. Dari sisi atas terlihat sebagai bintik kuning kecil. Daun mengering tetapi sering tetap MENGGANTUNG di tanaman, tidak langsung rontok.',
+    pembanding: [
+      {
+        cek: 'Usap permukaan bawah daun dengan jari. Karat daun meninggalkan SERBUK coklat kemerahan; bercak daun kacang tanah rata dan tidak berserbuk.',
+        membantah: { id: 'op:pst:00000095', label: 'Bercak daun kacang tanah' },
+      },
+      {
+        cek: 'Lihat apakah daun yang mati rontok atau menggantung. Karat daun sering menyisakan daun kering yang tetap menggantung di batang; bercak daun membuat daunnya rontok.',
+        membantah: { id: 'op:pst:00000095', label: 'Bercak daun kacang tanah' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000097',
+    dari: 'op:pst:00001332',
+    nama: 'Penyakit Bercak Daun',
+    key: 'bercak-daun-kacang-panjang',
+    label: 'Bercak daun kacang panjang',
+    inang: [KACANG_PANJANG],
+    definition:
+      'Registri juga memuat Cercospora cruenta (2 baris) dan Cercospora sp. (1) sebagai sasaran pada kacang panjang; keduanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini. Paling parah pada musim hujan dan pada pertanaman rapat yang daunnya lama basah.',
+    gejala:
+      'Bercak BERSUDUT kecoklatan dibatasi tulang daun halus, sering menyatu jadi bidang kering yang lebih besar, dan pada cuaca lembap permukaan bawahnya berbulu halus kelabu. Daun menguning lalu rontok dari bawah ke atas; polong yang terbentuk lebih pendek karena daunnya habis lebih dulu.',
+    pembanding: [
+      {
+        cek: 'Lihat batas bercaknya terhadap tulang daun. Bercak daun kacang panjang BERSUDUT dan berhenti di tulang daun halus; bercak karena kutu atau terbakar pupuk tidak mengikuti tulang daun.',
+        membantah: { id: 'op:pst:00000094', label: 'Kutu daun kacang' },
+      },
+      {
+        cek: 'Periksa permukaan bawah bercak pada pagi lembap. Bulu halus kelabu di bawah bercak menandakan jamurnya sedang bersporulasi — itu saat penularannya paling cepat, dan saat menjarangkan atau memangkas daun bawah paling berguna.',
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -1905,6 +2019,8 @@ const KELOMPOK = [
   { kunci: 'sawit', tanaman: 'kelapa sawit', inang: [SAWIT], pintu: PINTU_SAWIT },
   { kunci: 'jeruk', tanaman: 'jeruk', inang: [JERUK], pintu: PINTU_JERUK },
   { kunci: 'cucurbit', tanaman: 'semangka, melon, dan mentimun', inang: [SEMANGKA, MELON, MENTIMUN], pintu: PINTU_CUCURBIT },
+
+  { kunci: 'legum', tanaman: 'kacang panjang, kacang hijau, dan kacang tanah', inang: [KACANG_PANJANG, KACANG_HIJAU, KACANG_TANAH], pintu: PINTU_LEGUM },
 ];
 
 // ---------------------------------------------------------------------------
@@ -1970,12 +2086,12 @@ const PERLUAS = [
     gejala:
       'Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.',
   },
-  { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI, SEMANGKA, MELON, MENTIMUN] },
+  { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI, SEMANGKA, MELON, MENTIMUN, KACANG_PANJANG] },
   { id: 'op:pst:00000004', nama: 'Lalat buah', inang: [CABAI, JERUK] },
   {
     id: 'op:pst:00000005',
     nama: 'Ulat grayak',
-    inang: [CABAI, TOMAT, KENTANG, JAGUNG, KEDELAI, SEMANGKA],
+    inang: [CABAI, TOMAT, KENTANG, JAGUNG, KEDELAI, SEMANGKA, KACANG_HIJAU],
     // Definisi baru dan ciri kedua ditulis ulang begitu ulat grayak JAGUNG punya
     // pintunya sendiri: dua ulat bernama sama pada satu tanaman, dan yang membedakan
     // keduanya menentukan cara menyemprotnya — yang satu makan dari luar, yang satu
