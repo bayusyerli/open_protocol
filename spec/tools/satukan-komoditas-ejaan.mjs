@@ -46,6 +46,11 @@ const tulis = process.argv.includes('--tulis');
 
 // `dasar` wajib menyebut kenapa keduanya tempat/tanaman yang SAMA.
 const KELOMPOK = [
+  {
+    menang: 'op:cmd:00000004',
+    kalah: ['op:cmd:00001261'],
+    dasar: '"Bawang" di registri ini menyebut bawang merah, dan buktinya ada di dua tempat sekaligus: satu-satunya catatan varietas yang berdiri di atasnya berjudul "Bawang Merah Selupu Merah", dan ketiga baris non-gulmanya OPT bawang merah yang khas — bercak ungu Alternaria porri, ulat bawang Spodoptera exigua, dan antraknosa. Tidak ada satu pun baris yang menunjuk bawang putih.',
+  },
   // --- fase dan tempat yang sama, ditulis dengan kata yang berbeda ---
   // Fase TETAP terpisah dari tanamannya — "Pembibitan kelapa sawit" bukan "Kelapa sawit",
   // karena umur dan perlakuannya berbeda. Yang disatukan di sini hanya cara MENULISKAN
