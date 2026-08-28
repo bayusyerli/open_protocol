@@ -160,6 +160,13 @@ const BAWANG_PUTIH = { id: 'op:cmd:00001073', label: 'Bawang putih' };
 const SAWI = { id: 'op:cmd:00001132', label: 'Sawi' };
 const BERAS_SIMPAN = { id: 'op:cmd:00001023', label: 'Beras di penyimpanan' };
 const JAGUNG_SIMPAN = { id: 'op:cmd:00001080', label: 'Jagung di penyimpanan' };
+// Registri memuat gudang yang sama dengan beberapa ejaan — "di penyimpanan", "dalam
+// penyimpanan" — dan belum disatukan. Selama belum, inang pintu gudang menyebut
+// semuanya, karena yang menyimpan beras tidak peduli ejaan mana yang dipakai registri.
+const BERAS_SIMPAN2 = { id: 'op:cmd:00001113', label: 'Beras dalam penyimpanan' };
+const JAGUNG_SIMPAN2 = { id: 'op:cmd:00001169', label: 'Jagung dalam penyimpanan' };
+const TERIGU_SIMPAN = { id: 'op:cmd:00001170', label: 'Tepung terigu dalam penyimpanan' };
+const BERAS = { id: 'op:cmd:00001074', label: 'Beras' };
 const TAMBAK = { id: 'op:cmd:00001109', label: 'Budidaya udang windu dan ikan bandeng' };
 
 const CATATAN = (tanaman) =>
@@ -2452,7 +2459,7 @@ const PINTU_GUDANG = [
   {
     id: 'op:pst:00000122', dari: 'op:pst:00001082', nama: 'Hama Gudang',
     key: 'kumbang-tepung', label: 'Kumbang tepung',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, BERAS_SIMPAN2, JAGUNG_SIMPAN2, TERIGU_SIMPAN, BERAS],
     definition:
       'Hama gudang dengan pendaftaran terbanyak — 23 baris. Ia TIDAK bisa melubangi butir yang utuh dan keras: ia hidup dari butir pecah, dedak, dan tepung, jadi kehadirannya menandakan ada butir rusak lebih dulu — sering bekas hama lain atau bekas penggilingan. Registri juga memuat Tribolium sp. dan Tribolium confusum (5 baris) yang belum disatukan. Yang menentukan kebersihan gudang, kadar air gabah di bawah 14%, dan mengosongkan sisa tumpukan lama sebelum memasukkan yang baru.',
     gejala:
@@ -2467,7 +2474,7 @@ const PINTU_GUDANG = [
   {
     id: 'op:pst:00000123', dari: 'op:pst:00001116', nama: 'Hama Gudang',
     key: 'bubuk-beras', label: 'Bubuk beras',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, BERAS_SIMPAN2, JAGUNG_SIMPAN2, TERIGU_SIMPAN, BERAS],
     definition:
       'Kumbang bubuk beras. Berbeda dari kumbang tepung, ia MELUBANGI butir utuh dan berkembang di dalamnya, jadi ia bisa memulai serangan pada beras yang masih bagus. Registri juga memuat Sitophilus spp. (9 baris) dan Sitophilus zeamais, bubuk jagung (8 baris), yang belum disatukan. Betinanya bertelur di dalam butir dan menutupnya, jadi butir yang tampak utuh bisa sudah berisi larva.',
     gejala:
@@ -2481,7 +2488,7 @@ const PINTU_GUDANG = [
   {
     id: 'op:pst:00000124', dari: 'op:pst:00001183', nama: 'Hama Gudang',
     key: 'bubuk-gabah', label: 'Bubuk gabah',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, BERAS_SIMPAN2, JAGUNG_SIMPAN2, TERIGU_SIMPAN, BERAS],
     definition:
       'Kumbang bubuk gabah. Seperti bubuk beras ia melubangi butir utuh, tetapi jauh lebih tahan panas dan kering — jadi ia yang paling sering bertahan di gudang yang sudah dikeringkan dengan baik. Larvanya menghasilkan bubuk halus yang menumpuk di dasar karung, dan bubuk itu sering tanda pertama sebelum kumbangnya terlihat.',
     gejala:
@@ -2602,7 +2609,7 @@ const PINTU_SISA2 = [
   {
     id: 'op:pst:00000132', dari: 'op:pst:00001162', nama: 'Hama Gudang',
     key: 'bubuk-jagung', label: 'Bubuk jagung',
-    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN],
+    inang: [BERAS_SIMPAN, JAGUNG_SIMPAN, BERAS_SIMPAN2, JAGUNG_SIMPAN2, TERIGU_SIMPAN, BERAS],
     definition:
       'Kembar dekat bubuk beras dan ditangani sama; membedakan keduanya menuntut kaca pembesar dan tidak mengubah tindakan. Yang membedakannya dari sisi kerugian: ia lebih menyukai jagung dan biji yang lebih besar, dan lebih kuat terbang sehingga menyebar antar-gudang lewat udara, bukan cuma lewat karung yang dipindahkan.',
     gejala:
