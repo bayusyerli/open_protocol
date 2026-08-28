@@ -1094,7 +1094,7 @@ for (const r of sediaanCari) {
 // ---------------------------------------------------------------------------
 // OPT registri yang bisa dicari menurut NAMA — C3, sisi yang tidak menuntut agronomi
 // ---------------------------------------------------------------------------
-// 749 OPT registri punya produk terdaftar; dua puluh delapan di antaranya punya teks gejala.
+// 749 OPT registri punya produk terdaftar; empat puluh satu di antaranya punya teks gejala.
 // Yang sisanya sampai hari ini TIDAK BISA DICAPAI SAMA SEKALI dari kotak beranda — nol
 // entri OPT di kepala pencarian — walau bahan aktif yang terdaftar untuknya sudah ada
 // di indeks. Yang tahu nama hamanya dijawab nol, dan itu bukan kekurangan data melainkan
@@ -1473,6 +1473,13 @@ const gejala = optTerkurasi
       ilmiah: k.scientific_name ?? null,
       jenis: k.pest_kind ?? null,
       gejala: k.symptoms?.id ?? null,
+      // Inang IKUT, dan diambil dari `hosts` bukan dari pendaftaran. Layar daftar
+      // menyaring dengannya, dan yang benar disaring adalah "teks ini ditulis untuk
+      // tanaman apa" — bukan "produknya terdaftar di mana". Rhizoctonia solani punya
+      // empat baris di jagung dan kentang sementara teksnya ditulis untuk padi;
+      // menyaringnya lewat pendaftaran akan menyodorkan gejala padi kepada penanam
+      // kentang, persis kekeliruan yang sebaran komoditas dipakai untuk mencegah.
+      inang: (k.hosts ?? []).map((h) => h.label),
       keterangan: k.definition?.id ?? null,
       // Ciri pembanding ikut, dan `membantah` menunjuk OPT yang paling mudah tertukar
       // dengannya. Mesin tidak menebak — ini yang membuat orang bisa memastikan
@@ -1499,8 +1506,8 @@ const gejala = optTerkurasi
 // ---------------------------------------------------------------------------
 // Gejala tidak bisa diember menurut dua huruf pertama seperti nama: yang mengetik
 // "daun mengeriting ke atas" tidak sedang mengetik awalan sebuah nama, ia sedang
-// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — dua puluh delapan
-// OPT, sekitar 16 KB — lalu dicocokkan kata per kata di peramban.
+// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — empat puluh satu
+// OPT, sekitar 24 KB — lalu dicocokkan kata per kata di peramban.
 //
 // Yang ikut hanya nama, nama ilmiah, dan teks gejalanya. Ciri pembanding TIDAK ikut:
 // begitu satu gejala dibuka, jalur 1 yang merendernya, dan di sanalah blok "pastikan
@@ -2250,7 +2257,7 @@ const meta = {
   },
   tidakAda: {
     gejalaOpt:
-      'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 28 OPT terkurasi di pest.json — 11 pintu untuk cabai, 11 bawang merah, 12 tomat, 12 kentang, dengan 12 entri melayani lebih dari satu — dan seluruhnya bertekst gejala (lihat gejala.json). Di luar yang dua puluh delapan itu jalur 1 tidak punya pintu masuk.',
+      'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 41 OPT terkurasi di pest.json — 11 pintu untuk cabai, 11 bawang merah, 12 tomat, 12 kentang, 13 padi, dengan 12 entri melayani lebih dari satu — dan seluruhnya bertekst gejala (lihat gejala.json). Di luar yang empat puluh satu itu jalur 1 tidak punya pintu masuk.',
     phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. Jalur 3 mengandalkan satu masukan pengguna.',
     bahanHara:
@@ -2288,7 +2295,7 @@ const meta = {
     bppTanpaAlamat:
       'Balai penyuluhan tidak punya alamat maupun koordinat di rekaman ini, dan itu batas sumbernya: laporan tamu SIMLUHTAN hanya memberi nama balai dan kecamatan binaannya. Yang menemukan balainya bukan peta melainkan kecamatan — dan bagi yang tinggal di sana itu memang cukup. Menggeokode 5.844 balai secara massal ditolak dengan sadar, karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.',
     gejalaOptRegistri:
-      'Nol dari 722 OPT registri berproduk memuat teks gejala. Dua puluh delapan OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 722 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
+      'Nol dari 710 OPT registri berproduk memuat teks gejala. Empat puluh satu OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 710 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
     hasilVarietas:
       'Registri tidak memuat potensi hasil satu pun varietas — nol dari 11.227. Perkiraan panen pada analisis usaha tani karena itu masukan pemakainya sendiri, dan tidak ada angka acuan yang bisa disodorkan menggantikannya.',
     arusKasMusim:
@@ -2322,7 +2329,7 @@ for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.
 // pintu dibuka — dan tidak seorang pun membuka dua puluh delapan. Rinciannya tetap
 // diprasimpan service worker lewat `pecahan.gejala`, jadi luring tidak berkurang: yang
 // berubah kapan 29 KB itu diunduh, bukan apakah ia ada.
-const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'adaPintu', 'di'];
+const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'adaPintu', 'di', 'inang'];
 const GEJALA_RINCI = ['keterangan', 'pembanding', 'catatan', 'penular'];
 const pilihMedan = (o, medan) => Object.fromEntries(medan.map((k) => [k, o[k]]));
 simpan('gejala.json', gejala.map((g) => pilihMedan(g, GEJALA_DAFTAR)));
