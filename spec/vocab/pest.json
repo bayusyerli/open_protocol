@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama apel, bawang merah, bawang putih, beras di penyimpanan, budidaya udang windu dan ikan bandeng, cabai merah besar, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
+      "id": "OPT utama apel, bawang merah, bawang putih, beras di penyimpanan, budidaya udang windu dan ikan bandeng, cabai, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 33 komoditas: Apel, Bawang merah, Bawang putih, Beras di penyimpanan, Budidaya udang windu dan ikan bandeng, Cabai merah besar, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 33 komoditas: Apel, Bawang merah, Bawang putih, Beras di penyimpanan, Budidaya udang windu dan ikan bandeng, Cabai, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -50,8 +50,8 @@
       "scientific_name": "Thrips parvispinus",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         }
       ],
       "definition": {
@@ -138,7 +138,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Thrips",
@@ -198,8 +198,8 @@
       "scientific_name": "Myzus persicae",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00000004",
@@ -335,8 +335,8 @@
       "scientific_name": "Bemisia tabaci",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00000003",
@@ -458,8 +458,8 @@
       "scientific_name": "Bactrocera dorsalis",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00001015",
@@ -602,8 +602,8 @@
       "scientific_name": "Spodoptera litura",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00000003",
@@ -811,8 +811,16 @@
       "scientific_name": "Tetranychus urticae",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
+        },
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        },
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
         }
       ],
       "mappings": [
@@ -876,7 +884,7 @@
         "version": "0.1.0",
         "status": "draft",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Tungau",
@@ -925,8 +933,8 @@
       "scientific_name": "Colletotrichum spp.",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         }
       ],
       "definition": {
@@ -1027,8 +1035,8 @@
       "scientific_name": "Fusarium oxysporum",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00000004",
@@ -1114,8 +1122,8 @@
       "scientific_name": "Ralstonia solanacearum",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00000003",
@@ -1201,8 +1209,8 @@
       "scientific_name": "Begomovirus",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00000003",
@@ -2506,8 +2514,8 @@
           "label": "Tomat"
         },
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00001002",
@@ -10801,8 +10809,8 @@
       "scientific_name": "Colletotrichum capsici",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         }
       ],
       "definition": {
@@ -10850,7 +10858,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Antraknosa",
@@ -10905,8 +10914,8 @@
       "scientific_name": "Cercospora capsici",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         }
       ],
       "definition": {
@@ -10936,7 +10945,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Cercospora capsica",
@@ -11243,8 +11253,8 @@
       "scientific_name": "Phytophthora capsici",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         }
       ],
       "definition": {
@@ -11280,7 +11290,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Penyakit Busuh Buah",
@@ -11337,8 +11348,8 @@
       "scientific_name": "Polyphagotarsonemus latus",
       "hosts": [
         {
-          "id": "op:cmd:00000001",
-          "label": "Cabai merah besar"
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
         },
         {
           "id": "op:cmd:00000003",
@@ -11372,7 +11383,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Hama Tungau",
