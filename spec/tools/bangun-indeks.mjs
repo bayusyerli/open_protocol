@@ -1219,6 +1219,7 @@ const hiasMerek = (m) => {
 // Jumlahnya dibawa tersendiri sebagai `takBerspesies` supaya layar bisa menyebutkannya.
 const takBerspesies = new Map();
 let cakupAmbigu = 0;
+let cakupRangkap = 0;
 let cakupBaris = 0;
 {
   const genusDari = (x) => (x ?? '').trim().split(/\s+/)[0] || '';
@@ -1236,7 +1237,7 @@ let cakupBaris = 0;
       pintuSegenus.get(x).push(k);
     }
   }
-  // SATU kesetaraan marga yang ditulis tangan, dan alasannya bukan kepraktisan.
+  // Kesetaraan marga yang ditulis tangan, dan alasannya bukan kepraktisan.
   // "Oidium" bukan marga sejajar Podosphaera atau Leveillula — ia nama untuk BENTUK TAK
   // BERKELAMIN jamur embun tepung, dipakai justru ketika bentuk berkelaminnya (yang
   // memberi nama margasnya) tidak ditemukan. Jadi "Oidium sp." pada label tidak berkata
@@ -1245,9 +1246,13 @@ let cakupBaris = 0;
   // tetap harus ada TEPAT SATU pintu yang inangnya memuat komoditas baris itu, dan
   // sisanya tetap dibuang sebagai ambigu.
   {
-    const embunTepung = ['Podosphaera', 'Erysiphe', 'Leveillula', 'Golovinomyces', 'Sphaerotheca', 'Oidium'];
+    const embunTepung = ['Podosphaera', 'Erysiphe', 'Leveillula', 'Golovinomyces', 'Sphaerotheca', 'Oidium', 'Oidiopsis'];
     const gabung = new Set(embunTepung.flatMap((g) => pintuSegenus.get(g) ?? []));
-    if (gabung.size) pintuSegenus.set('Oidium', [...gabung]);
+    // Dua nama bentuk tak berkelamin, bukan satu: Oidiopsis khusus untuk bentuk tak
+    // berkelamin Leveillula — jamur yang hidup DI DALAM daun dan menyembulkan spora lewat
+    // mulut daun — sementara Oidium dipakai untuk yang lain. Keduanya sama-sama berkata
+    // "embun tepung, marganya tidak ditentukan", jadi keduanya dilayani daftar yang sama.
+    for (const anamorf of ['Oidium', 'Oidiopsis']) if (gabung.size) pintuSegenus.set(anamorf, [...gabung]);
   }
 
   for (const e of optRegistri) {
@@ -1259,13 +1264,29 @@ let cakupBaris = 0;
       const o = v.opt.get(e.id);
       if (!o) continue;
       const pas = kandidat.filter((k) => (k.hosts ?? []).some((h) => h.id === kc));
-      if (pas.length !== 1) { if (pas.length > 1) cakupAmbigu += o.produk.size; continue; }
-      const id = pas[0].id;
-      if (!takBerspesies.has(id)) takBerspesies.set(id, new Map());
-      const perKom = takBerspesies.get(id);
-      if (!perKom.has(kc)) perKom.set(kc, { produk: new Set(), sumber: [] });
-      for (const x of o.produk) perKom.get(kc).produk.add(x);
-      perKom.get(kc).sumber.push(o);
+      if (!pas.length) continue;
+      // Dua pintu segenus yang berbagi inang dulu membuat barisnya DIBUANG. Itu keliru,
+      // dan salahnya bukan pada kehati-hatiannya melainkan pada pertanyaannya: yang
+      // ditanyakan "pintu mana yang dimaksud label", padahal label "Sitophilus spp." tidak
+      // memaksudkan satu pun secara khusus — ia memaksudkan SEMUANYA. Bubuk beras dan
+      // bubuk jagung dua pintu yang sah, punya ciri pembanding sendiri (yang satu terbang,
+      // yang lain jarang), dan produk yang terdaftar untuk "Sitophilus spp. pada beras"
+      // memang jawaban yang benar bagi keduanya.
+      //
+      // Jadi barisnya diberikan ke SEMUA pintu yang cocok — bukan dibagi ke salah satunya,
+      // yang memang akan jadi tebakan. Yang perlu dijaga cuma satu: jumlah produk per
+      // pintu tetap benar (produk itu memang terdaftar untuk sasaran yang mencakupnya),
+      // sementara MENJUMLAHKAN antar-pintu akan menghitungnya berkali-kali. Tidak ada
+      // layar yang menjumlahkan begitu, dan angka rangkapnya dilaporkan tersendiri di
+      // bawah supaya yang membangunnya tahu ada berapa.
+      if (pas.length > 1) cakupRangkap += o.produk.size * (pas.length - 1);
+      for (const k of pas) {
+        if (!takBerspesies.has(k.id)) takBerspesies.set(k.id, new Map());
+        const perKom = takBerspesies.get(k.id);
+        if (!perKom.has(kc)) perKom.set(kc, { produk: new Set(), sumber: [] });
+        for (const x of o.produk) perKom.get(kc).produk.add(x);
+        perKom.get(kc).sumber.push(o);
+      }
       cakupBaris += o.produk.size;
     }
   }
@@ -2644,7 +2665,7 @@ console.log(`  kandungan/        : ${kb([...berkas].filter(([p]) => p.startsWith
 console.log(`  opt-nama/         : ${optRegistriIndeks.length} OPT registri berproduk dapat dicari menurut nama — tidak satu pun punya teks gejala`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
-console.log(`  cakupan tak berspesies: ${cakupBaris} produk dari sasaran "Genus sp." ikut terhitung, ${cakupAmbigu} dibuang karena ambigu`);
+console.log(`  cakupan tak berspesies: ${cakupBaris} produk dari sasaran "Genus sp." ikut terhitung, ${cakupRangkap} di antaranya pada lebih dari satu pintu segenus`);
 console.log(`  cakupan nama lain     : ${cakupNamaLain} produk dari sasaran berspesies lain yang dicakup atas pernyataan kurator`);
 console.log(`  principal/        : ${kb([...berkas].filter(([p]) => p.startsWith('principal/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasPrincipal).length} berkas — ${meta.jumlah.principal} badan, ${meta.jumlah.produkBerprincipal} dari ${semuaProduk.length} produk tertaut`);
 console.log(`  harga/            : ${kb([...berkas].filter(([p]) => p.startsWith('harga/')).reduce((a, [, s]) => a + Buffer.byteLength(s), 0))} dalam ${Object.keys(berkasHarga).length} varian — ${meta.jumlah.hargaBerangka} berangka, ${meta.jumlah.hargaVarian - meta.jumlah.hargaBerangka} diterbitkan tanpa angka, ${meta.jumlah.hargaTitik} titik`);

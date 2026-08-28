@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama apel, bawang merah, bawang putih, beras, beras di penyimpanan, budidaya udang windu dan ikan bandeng, cabai, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau, tepung terigu dalam penyimpanan dan tomat"
+      "id": "OPT utama apel, bawang daun, bawang merah, bawang putih, beras, beras di penyimpanan, budidaya udang windu dan ikan bandeng, cabai, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau, tepung terigu dalam penyimpanan dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 35 komoditas: Apel, Bawang merah, Bawang putih, Beras, Beras di penyimpanan, Budidaya udang windu dan ikan bandeng, Cabai, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tepung terigu dalam penyimpanan, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 36 komoditas: Apel, Bawang daun, Bawang merah, Bawang putih, Beras, Beras di penyimpanan, Budidaya udang windu dan ikan bandeng, Cabai, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tepung terigu dalam penyimpanan, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -464,6 +464,14 @@
         {
           "id": "op:cmd:00001015",
           "label": "Jeruk"
+        },
+        {
+          "id": "op:cmd:00001019",
+          "label": "Mangga"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
         }
       ],
       "mappings": [
@@ -555,6 +563,8 @@
       },
       "synonyms": [
         "Bactocera dorsalis",
+        "Bactrocera ferrungineus",
+        "Dacus ferrugineus",
         "Lalat Buah"
       ],
       "taxonomic_rank": "species",
@@ -590,6 +600,9 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      },
+      "definition": {
+        "id": "Lalat buah oriental, berinang sangat luas — cabai, jeruk, mangga, tomat, dan puluhan buah lain — sehingga petak yang bersih tetap terserang dari pohon tetangga. Yang menentukan pengumpulan buah gugur dan perangkap serempak se-hamparan, bukan penyemprotan sendiri-sendiri."
       }
     },
     {
@@ -821,6 +834,10 @@
         {
           "id": "op:cmd:00001028",
           "label": "Apel"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
         }
       ],
       "mappings": [
@@ -888,6 +905,7 @@
       },
       "synonyms": [
         "Hama Tungau",
+        "Tetranychus cinnabarinus",
         "Tetranycus urticae",
         "Tungau",
         "Tungau Merah"
@@ -921,6 +939,9 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      },
+      "definition": {
+        "id": "Tungau berinang sangat luas yang menumpuk pada musim kering dan pada tanaman berdebu di pinggir jalan. Bukan serangga: insektisida umum tidak menyentuhnya, dan justru menghabiskan tungau pemangsa yang menahannya."
       }
     },
     {
@@ -935,10 +956,14 @@
         {
           "id": "op:cmd:00001003",
           "label": "Cabai"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
         }
       ],
       "definition": {
-        "id": "Patek. Entri ini berdiri di atas sasaran GENUS \"Colletotrichum spp.\" yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: \"Antraknosa cabai\". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit."
+        "id": "Patek. Entri ini berdiri di atas sasaran GENUS \"Colletotrichum spp.\" yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: \"Antraknosa cabai\". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit. Tomat ikut jadi inang di sini dan tidak di pintu spesiesnya, karena antraknosa buah tomat memang dilayani beberapa Colletotrichum yang tidak terpisahkan di kebun."
       },
       "mappings": [
         {
@@ -1153,6 +1178,12 @@
           "uri": "https://www.gbif.org/species/3219898",
           "relation": "exact",
           "note": "Kingdom Bacteria, kelas Gammaproteobacteria; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Pseudomonas solanacearum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -1162,7 +1193,8 @@
         "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
-        "Penyakit Layu Bakteri"
+        "Penyakit Layu Bakteri",
+        "Pseudomonas solanacearum"
       ],
       "taxonomic_rank": "species",
       "taxon_verification": {
@@ -1405,10 +1437,14 @@
         {
           "id": "op:cmd:00000004",
           "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00001103",
+          "label": "Bawang daun"
         }
       ],
       "definition": {
-        "id": "Lalat pengorok daun bawang. Registri juga mendaftarkan Liriomyza huidobrensis pada bawang merah (24 baris) — spesies yang tidak bisa dibedakan dari lorongnya di kebun, dan yang sejak kurasi tomat & kentang punya pintunya sendiri, \"Pengorok daun kentang\", karena teksnya ditulis untuk daun lebar. Yang tetap di luar kedua pintu hanya 8 baris atas nama Liriomyza sp."
+        "id": "Pengorok daun yang khusus Allium — bawang merah dan bawang daun — dan karena daunnya berbentuk pipa, lorongnya terlihat sebagai garis putih memanjang, bukan berkelok seperti pada daun pipih. Registri juga mendaftarkan Liriomyza huidobrensis pada bawang merah (24 baris), spesies yang tidak bisa dibedakan dari lorongnya di kebun dan yang punya pintunya sendiri, \"Pengorok daun kentang\", karena teksnya ditulis untuk daun lebar."
       },
       "mappings": [
         {
@@ -2398,10 +2434,18 @@
         {
           "id": "op:cmd:00001045",
           "label": "Mentimun"
+        },
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
+        },
+        {
+          "id": "op:cmd:00001082",
+          "label": "Krisan"
         }
       ],
       "definition": {
-        "id": "Lalat pengorok daun berdaun lebar. Registri juga mendaftarkannya pada bawang merah (24 baris), mentimun, krisan, cabai, dan seledri. Teks di bawah ditulis untuk daun LEBAR; pada bawang merah lorongnya berjalan di dalam daun yang berongga dan pintunya berdiri sendiri, atas nama Liriomyza chinensis."
+        "id": "Lalat pengorok daun berdaun lebar: kentang, tomat, mentimun, kacang panjang, dan krisan. Pada krisan ia jadi masalah karantina dan bukan cuma masalah hasil, karena bunga potong yang berlorong ditolak. Teks di bawah ditulis untuk daun LEBAR; pada bawang merah lorongnya berjalan di dalam daun yang berongga dan pintunya berdiri sendiri, atas nama Liriomyza chinensis."
       },
       "mappings": [
         {
@@ -2654,10 +2698,18 @@
         {
           "id": "op:cmd:00001031",
           "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        },
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
         }
       ],
       "definition": {
-        "id": "Trips ketiga yang dikurasi, dan ketiganya TIDAK BISA dibedakan satu sama lain di kebun — pemisahannya menuntut preparat dan mikroskop. Yang membedakan pintunya karena itu TANAMANNYA, bukan spesiesnya: Thrips parvispinus untuk cabai, Thrips tabaci untuk bawang merah, dan yang ini untuk kentang dan tomat. Registri juga mendaftarkannya pada semangka, melon, dan kacang panjang."
+        "id": "Trips ketiga yang dikurasi, dan ketiganya TIDAK BISA dibedakan satu sama lain di kebun — pemisahannya menuntut preparat dan mikroskop. Yang membedakan pintunya karena itu TANAMANNYA, bukan spesiesnya: Thrips parvispinus untuk cabai, Thrips tabaci untuk bawang merah, dan yang ini untuk solanaceae, cucurbitaceae, dan kacang-kacangan — inang terluas di antara ketiganya, karena yang dilakukannya sama pada semuanya: mengisap isi sel daun muda."
       },
       "mappings": [
         {
@@ -4635,10 +4687,14 @@
         {
           "id": "op:cmd:00001002",
           "label": "Jagung"
+        },
+        {
+          "id": "op:cmd:00000006",
+          "label": "Padi"
         }
       ],
       "definition": {
-        "id": "Terdaftar juga pada padi dan kelapa sawit (3 baris), dan cara merusaknya sama di semuanya — teks di bawah karena itu sengaja tidak menyebut satu tanaman pun. Registri memecah belalang jadi beberapa entitas: Locusta sp. (7 baris pada jagung), Oxya sp. (3), dan Patanga succincta (2), semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini."
+        "id": "Belalang yang tinggal di petaknya dan tidak berpindah bergerombol — itu yang membedakannya dari belalang kembara, dan bedanya menentukan apakah tindakannya per petak atau se-hamparan. Oxya justru belalang padi yang paling lazim, jadi padi ikut jadi inangnya di samping jagung; cara merusaknya sama di keduanya, sehingga teks di bawah sengaja tidak menyebut satu tanaman pun."
       },
       "mappings": [
         {
@@ -4671,7 +4727,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Belalang",
@@ -5808,10 +5865,14 @@
         {
           "id": "op:cmd:00001007",
           "label": "Kedelai"
+        },
+        {
+          "id": "op:cmd:00001032",
+          "label": "Kacang hijau"
         }
       ],
       "definition": {
-        "id": "Menyerang pada dua minggu pertama sesudah tumbuh; sesudah itu batangnya sudah terlalu keras. Registri memecahnya jadi empat entitas — Ophiomyia phaseoli (23 baris), Agromyza sp. (12), Agromyza phaseoli (7), dan ejaan Ophiornya phaseoli (1) — dan tiga yang terakhir nama genus lama untuk lalat yang sama. Pintu ini berdiri di atas yang pertama; sembilan belas baris atas nama tiga entitas lain tidak ikut terdaftar di sini."
+        "id": "Menyerang kedelai dan kacang hijau pada dua minggu pertama sesudah tumbuh; sesudah itu batangnya sudah terlalu keras. Karena jendelanya sempit dan seragam, perlakuan benih lebih menentukan daripada penyemprotan sesudah tanam. Registri memecahnya jadi beberapa entitas atas nama marga lama Agromyza, yang sudah disatukan ke sini kecuali sasaran bertingkat marga Agromyza sp."
       },
       "mappings": [
         {
@@ -5849,7 +5910,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "synonyms": [
         "Agromyza phaseoli",
@@ -11500,6 +11562,18 @@
           "id": "Polyphagotarsonemus latus",
           "relation": "exact",
           "note": "Nama ilmiah pada label produk terdaftar; muncul pada 14 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hemitarsonemus latus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Hermitarsonemus latus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -11511,6 +11585,8 @@
       "synonyms": [
         "Hama Tungau",
         "Hama Tungau Kuning",
+        "Hemitarsonemus latus",
+        "Hermitarsonemus latus",
         "Polypagotarsonemus latus",
         "Tungau",
         "Tungau Kuning",
@@ -12523,6 +12599,10 @@
         {
           "id": "op:cmd:00001008",
           "label": "Kentang"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
         }
       ],
       "definition": {
@@ -12546,7 +12626,8 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-28T00:00:00Z"
+        "created_at": "2026-08-28T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
       },
       "taxonomic_rank": "species",
       "taxon_verification": {

@@ -155,6 +155,7 @@ const KARET = { id: 'op:cmd:00001464', label: 'Karet' };
 const LADA = { id: 'op:cmd:00001036', label: 'Lada' };
 const PISANG = { id: 'op:cmd:00001041', label: 'Pisang' };
 const KRISAN = { id: 'op:cmd:00001082', label: 'Krisan' };
+const BAWANG_DAUN = { id: 'op:cmd:00001103', label: 'Bawang daun' };
 const KELAPA = { id: 'op:cmd:00001043', label: 'Kelapa' };
 const BAWANG_PUTIH = { id: 'op:cmd:00001073', label: 'Bawang putih' };
 const SAWI = { id: 'op:cmd:00001132', label: 'Sawi' };
@@ -208,8 +209,9 @@ const PINTU_BAWANG = [
     nama: 'Pengorok Daun',
     key: 'pengorok-daun-bawang',
     label: 'Pengorok daun bawang',
+    inang: [BAWANG_MERAH, BAWANG_DAUN],
     definition:
-      'Lalat pengorok daun bawang. Registri juga mendaftarkan Liriomyza huidobrensis pada bawang merah (24 baris) — spesies yang tidak bisa dibedakan dari lorongnya di kebun, dan yang sejak kurasi tomat & kentang punya pintunya sendiri, "Pengorok daun kentang", karena teksnya ditulis untuk daun lebar. Yang tetap di luar kedua pintu hanya 8 baris atas nama Liriomyza sp.',
+      'Pengorok daun yang khusus Allium — bawang merah dan bawang daun — dan karena daunnya berbentuk pipa, lorongnya terlihat sebagai garis putih memanjang, bukan berkelok seperti pada daun pipih. Registri juga mendaftarkan Liriomyza huidobrensis pada bawang merah (24 baris), spesies yang tidak bisa dibedakan dari lorongnya di kebun dan yang punya pintunya sendiri, "Pengorok daun kentang", karena teksnya ditulis untuk daun lebar.',
     gejala:
       'Bintik-bintik putih berjajar seperti tusukan jarum pada daun, lalu muncul lorong berkelok berwarna putih keperakan di dalam lapisan daun. Daun mengering dari ujung ke bawah; pada serangan berat seluruh rumpun terlihat kecoklatan seperti terbakar.',
     pembanding: [
@@ -434,9 +436,9 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Pengorok Daun',
     key: 'pengorok-daun-kentang',
     label: 'Pengorok daun kentang',
-    inang: [KENTANG, TOMAT, MENTIMUN],
+    inang: [KENTANG, TOMAT, MENTIMUN, KACANG_PANJANG, KRISAN],
     definition:
-      'Lalat pengorok daun berdaun lebar. Registri juga mendaftarkannya pada bawang merah (24 baris), mentimun, krisan, cabai, dan seledri. Teks di bawah ditulis untuk daun LEBAR; pada bawang merah lorongnya berjalan di dalam daun yang berongga dan pintunya berdiri sendiri, atas nama Liriomyza chinensis.',
+      'Lalat pengorok daun berdaun lebar: kentang, tomat, mentimun, kacang panjang, dan krisan. Pada krisan ia jadi masalah karantina dan bukan cuma masalah hasil, karena bunga potong yang berlorong ditolak. Teks di bawah ditulis untuk daun LEBAR; pada bawang merah lorongnya berjalan di dalam daun yang berongga dan pintunya berdiri sendiri, atas nama Liriomyza chinensis.',
     gejala:
       'Lorong berkelok putih keperakan DI DALAM lapisan daun, melebar makin ke ujung, paling jelas bila daun diterawang ke cahaya. Permukaan daun bertitik putih bekas tusukan yang berjajar. Daun yang penuh lorong mengering dan rontok mulai dari bawah, sementara umbi atau buahnya belum tua.',
     pembanding: [
@@ -478,9 +480,9 @@ const PINTU_TOMAT_KENTANG = [
     nama: 'Hama Trips',
     key: 'trips-kentang',
     label: 'Trips kentang',
-    inang: [KENTANG, TOMAT, SEMANGKA, MELON],
+    inang: [KENTANG, TOMAT, SEMANGKA, MELON, MENTIMUN, KACANG_PANJANG],
     definition:
-      'Trips ketiga yang dikurasi, dan ketiganya TIDAK BISA dibedakan satu sama lain di kebun — pemisahannya menuntut preparat dan mikroskop. Yang membedakan pintunya karena itu TANAMANNYA, bukan spesiesnya: Thrips parvispinus untuk cabai, Thrips tabaci untuk bawang merah, dan yang ini untuk kentang dan tomat. Registri juga mendaftarkannya pada semangka, melon, dan kacang panjang.',
+      'Trips ketiga yang dikurasi, dan ketiganya TIDAK BISA dibedakan satu sama lain di kebun — pemisahannya menuntut preparat dan mikroskop. Yang membedakan pintunya karena itu TANAMANNYA, bukan spesiesnya: Thrips parvispinus untuk cabai, Thrips tabaci untuk bawang merah, dan yang ini untuk solanaceae, cucurbitaceae, dan kacang-kacangan — inang terluas di antara ketiganya, karena yang dilakukannya sama pada semuanya: mengisap isi sel daun muda.',
     gejala:
       'Daun muda keperakan mengkilap lalu menebal dan mengeras, tepinya melengkung ke atas, dan permukaannya bertitik kotoran hitam sangat halus. Pucuk berhenti memanjang dan tanaman kerdil; pada serangan berat daun berubah kecoklatan seperti terbakar lalu rontok.',
     pembanding: [
@@ -936,8 +938,9 @@ const PINTU_JAGUNG = [
     nama: 'Hama Belalang',
     key: 'belalang',
     label: 'Belalang',
+    inang: [JAGUNG, PADI],
     definition:
-      'Terdaftar juga pada padi dan kelapa sawit (3 baris), dan cara merusaknya sama di semuanya — teks di bawah karena itu sengaja tidak menyebut satu tanaman pun. Registri memecah belalang jadi beberapa entitas: Locusta sp. (7 baris pada jagung), Oxya sp. (3), dan Patanga succincta (2), semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini.',
+      'Belalang yang tinggal di petaknya dan tidak berpindah bergerombol — itu yang membedakannya dari belalang kembara, dan bedanya menentukan apakah tindakannya per petak atau se-hamparan. Oxya justru belalang padi yang paling lazim, jadi padi ikut jadi inangnya di samping jagung; cara merusaknya sama di keduanya, sehingga teks di bawah sengaja tidak menyebut satu tanaman pun.',
     gejala:
       'Daun tergigit dari TEPI ke dalam dengan tepi bergerigi tidak beraturan, dan tulang daun utama sering ditinggalkan utuh. Kerusakan paling banyak di pinggir petak yang berbatasan dengan rumput, pematang, atau lahan bera, lalu berkurang ke arah tengah.',
     pembanding: [
@@ -1212,8 +1215,9 @@ const PINTU_KEDELAI = [
     nama: 'Lalat Bibit',
     key: 'lalat-bibit-kedelai',
     label: 'Lalat bibit kedelai',
+    inang: [KEDELAI, KACANG_HIJAU],
     definition:
-      'Menyerang pada dua minggu pertama sesudah tumbuh; sesudah itu batangnya sudah terlalu keras. Registri memecahnya jadi empat entitas — Ophiomyia phaseoli (23 baris), Agromyza sp. (12), Agromyza phaseoli (7), dan ejaan Ophiornya phaseoli (1) — dan tiga yang terakhir nama genus lama untuk lalat yang sama. Pintu ini berdiri di atas yang pertama; sembilan belas baris atas nama tiga entitas lain tidak ikut terdaftar di sini.',
+      'Menyerang kedelai dan kacang hijau pada dua minggu pertama sesudah tumbuh; sesudah itu batangnya sudah terlalu keras. Karena jendelanya sempit dan seragam, perlakuan benih lebih menentukan daripada penyemprotan sesudah tanam. Registri memecahnya jadi beberapa entitas atas nama marga lama Agromyza, yang sudah disatukan ke sini kecuali sasaran bertingkat marga Agromyza sp.',
     gejala:
       'Daun bibit berbintik-bintik putih bekas tusukan, lalu muncul lorong halus dari helai daun turun ke tangkai dan pangkal batang. Tanaman muda layu, menguning, dan mati sejak dua minggu pertama; yang bertahan jadi kerdil dengan pangkal batang membengkak dan retak.',
     pembanding: [
@@ -2697,7 +2701,7 @@ const PINTU_EKOR = [
   {
     id: 'op:pst:00000138', dari: 'op:pst:00001322', nama: 'Penyakit Embun Tepung',
     key: 'embun-tepung-cabai', label: 'Embun tepung cabai',
-    inang: [CABAI, KENTANG],
+    inang: [CABAI, KENTANG, TOMAT],
     definition:
       'Berbeda dari embun tepung yang lain: jamurnya hidup DI DALAM daun dan hanya menyembulkan spora lewat mulut daun di permukaan bawah, sehingga tepung putihnya muncul di bawah sementara yang terlihat dari atas cuma bercak kuning. Itu sebabnya ia sering dikira penyakit lain atau kekurangan hara. Menyukai cuaca kering berangin dan suhu hangat.',
     gejala:
@@ -2877,6 +2881,7 @@ const KELOMPOK = [
 // semuanya, jadi yang bentuknya memang berbeda ditulis berklausa per tanaman, dan yang
 // bentuknya memang sama dibiarkan tanpa menyebut tanaman sama sekali.
 const PERLUAS = [
+  // --- Inang diperluas ke tanaman yang teksnya memang sudah menjangkau ---
   {
     // Bukan perluasan inang, melainkan pemindahan pengetahuan yang tadinya hidup sebagai
     // TEBAKAN NAMA di app/jalur-1.js: layar nol-produk mencari penular dengan mencocokkan
@@ -2939,17 +2944,23 @@ const PERLUAS = [
     // membaca salah satunya kini diberi tahu bahwa yang satunya ada dan kenapa.
     id: 'op:pst:00000007',
     nama: 'Antraknosa',
-    inang: [CABAI],
+    inang: [CABAI, TOMAT],
     definition:
-      'Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit.',
+      'Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit. Tomat ikut jadi inang di sini dan tidak di pintu spesiesnya, karena antraknosa buah tomat memang dilayani beberapa Colletotrichum yang tidak terpisahkan di kebun.',
   },
   // Dua pintu cabai yang tidak pernah masuk tabel mana pun di alat ini — keduanya lahir
   // dari tulis-gejala-opt.mjs dan tidak pernah diperluas ke komoditas lain — sehingga
   // inangnya tertinggal pada "Cabai merah besar" saat yang lain pindah ke "Cabai".
   { id: 'op:pst:00000001', nama: 'Trips', inang: [CABAI] },
-  { id: 'op:pst:00000006', nama: 'Tungau merah', inang: [CABAI, JERUK, APEL] },
+  {
+    id: 'op:pst:00000006', nama: 'Tungau merah', inang: [CABAI, JERUK, APEL, TOMAT],
+    definition: 'Tungau berinang sangat luas yang menumpuk pada musim kering dan pada tanaman berdebu di pinggir jalan. Bukan serangga: insektisida umum tidak menyentuhnya, dan justru menghabiskan tungau pemangsa yang menahannya.',
+  },
   { id: 'op:pst:00000003', nama: 'Kutu kebul', inang: [CABAI, TOMAT, KENTANG, KEDELAI, SEMANGKA, MELON, MENTIMUN, KACANG_PANJANG] },
-  { id: 'op:pst:00000004', nama: 'Lalat buah', inang: [CABAI, JERUK] },
+  {
+    id: 'op:pst:00000004', nama: 'Lalat buah', inang: [CABAI, JERUK, MANGGA, TOMAT],
+    definition: 'Lalat buah oriental, berinang sangat luas — cabai, jeruk, mangga, tomat, dan puluhan buah lain — sehingga petak yang bersih tetap terserang dari pohon tetangga. Yang menentukan pengumpulan buah gugur dan perangkap serempak se-hamparan, bukan penyemprotan sendiri-sendiri.',
+  },
   {
     id: 'op:pst:00000005',
     nama: 'Ulat grayak',
@@ -3101,6 +3112,17 @@ for (const kel of KELOMPOK) {
 // memegang seluruh medannya di sana; PERLUAS hanya untuk yang lahir di luar alat ini.
 const idPintu = new Set(KELOMPOK.flatMap((k) => k.pintu).map((p) => p.id));
 for (const x of PERLUAS) if (idPintu.has(x.id)) bantah.push(`${x.id} ada di PINTU sekaligus PERLUAS; pindahkan seluruh medannya ke PINTU.`);
+// Id kembar DI DALAM satu tabel, dan ini bukan kehati-hatian berlebihan: `inang` memasang
+// himpunan inang PERSIS, jadi dua entri untuk id yang sama membuat yang belakangan
+// membatalkan yang duluan — diam-diam, dengan kedua entri terlihat benar sendiri-sendiri.
+// Kambuhnya sudah terjadi: entri tungau merah dan lalat buah ditambahkan di kepala tabel
+// sementara entri lamanya masih di ekor, dan Tomat yang baru ditambahkan langsung dibuang
+// lagi pada langkah berikutnya di jalannya yang sama.
+for (const [nama, tabel] of [['PINTU', [...idPintu]], ['PERLUAS', PERLUAS.map((x) => x.id)]]) {
+  const kali = new Map();
+  for (const id of tabel) kali.set(id, (kali.get(id) ?? 0) + 1);
+  for (const [id, n] of kali) if (n > 1) bantah.push(`${id} muncul ${n} kali di ${nama}; entri belakangan membatalkan yang duluan. Satukan medannya jadi satu entri.`);
+}
 
 for (const x of PERLUAS) {
   const e = olehId.get(x.id);

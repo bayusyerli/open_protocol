@@ -58,6 +58,14 @@ const tulis = process.argv.includes('--tulis');
 // `dasar` wajib menyebut MENGAPA keduanya organisme yang sama. "Mirip" bukan dasar.
 const PASANGAN = [
   // --- kombinasi lama lawan kombinasi yang diterima ---
+  { kalah: 'op:pst:00001523', menang: 'op:pst:00000009', dasar: 'Pseudomonas solanacearum nama lama untuk Ralstonia solanacearum; genusnya dipindahkan 1995 dan bakterinya sama.' },
+  { kalah: 'op:pst:00002066', menang: 'op:pst:00000126', dasar: 'Hemitarsonemus latus kombinasi lama untuk Polyphagotarsonemus latus, tungau kuning; genusnya dipisahkan dan spesiesnya sama.' },
+  { kalah: 'op:pst:00001548', menang: 'op:pst:00000006', dasar: 'Tetranychus cinnabarinus bentuk merah Tetranychus urticae, bukan spesies tersendiri: kawin silang subur dan pembedanya cuma warna, yang berubah menurut inang dan musim.' },
+  { kalah: 'op:pst:00001380', menang: 'op:pst:00000004', dasar: 'Dacus ferrugineus nama lama yang dipakai di Asia untuk lalat buah oriental yang kini Bactrocera dorsalis; genus Dacus dipecah dan spesies ini masuk Bactrocera.' },
+  { kalah: 'op:pst:00002268', menang: 'op:pst:00000004', dasar: 'Bactrocera ferrungineus salah eja Bactrocera ferrugineus, yang sendiri nama lama untuk Bactrocera dorsalis; dua langkah nama untuk lalat buah yang sama.' },
+  { kalah: 'op:pst:00001606', menang: 'op:pst:00001367', dasar: 'Nephotetix sp. salah eja Nephotettix sp.; keduanya sasaran bertingkat marga yang sama pada padi, dan tidak ada marga Nephotetix.' },
+  { kalah: 'op:pst:00001612', menang: 'op:pst:00001088', dasar: 'Aphids sp. bukan nama ilmiah melainkan kata Inggris untuk kutu daun yang tercatat sebagai sasaran; yang dimaksud Aphis sp., sasaran bertingkat marga yang sudah ada.' },
+  { kalah: 'op:pst:00002159', menang: 'op:pst:00001589', dasar: 'Oidiopsis taurica bentuk tak berkelamin Leveillula taurica, dan registri memuat keduanya; disatukan ke sasaran bertingkat marga Oidiopsis sp. yang barisnya lebih banyak.' },
   { kalah: 'op:pst:00001174', menang: 'op:pst:00000074', dasar: 'Thosea asigna kombinasi lama untuk Setothosea asigna; genus Setothosea dipisahkan dari Thosea, spesiesnya sama.' },
   { kalah: 'op:pst:00001180', menang: 'op:pst:00000050', dasar: 'Crocidolomia binotalis nama lama yang dipakai luas di Asia Tenggara untuk Crocidolomia pavonana.' },
   { kalah: 'op:pst:00001164', menang: 'op:pst:00000061', dasar: 'Plusia chalcites kombinasi lama untuk Chrysodeixis chalcites; genus Plusia dipecah.' },
