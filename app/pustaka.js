@@ -296,7 +296,7 @@ export const HTML_KEMBALI =
 // ---------------------------------------------------------------------------
 // Gejala tidak bisa diember menurut dua huruf pertama: yang mengetik "daun
 // mengeriting ke atas" bukan sedang mengetik awalan sebuah nama, ia sedang menyebut
-// apa yang dilihatnya. Kepalanya kecil — dua puluh delapan OPT, 16,4 KB — jadi dibawa utuh
+// apa yang dilihatnya. Kepalanya kecil — empat puluh satu OPT, 24 KB — jadi dibawa utuh
 // sekali per sesi lalu dicocokkan kata per kata di sini.
 
 const kata = (s) => (s ?? '')

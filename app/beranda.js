@@ -209,7 +209,7 @@ function gambar(nama, bahan, gejala, lokal, kueri, harga = [], badan = []) {
   if (gejala.length) {
     bagian.push(kelompok(
       `${gejala.length} gejala cocok`,
-      'OPT empat komoditas terkurasi, <strong>berstatus draft</strong>',
+      'OPT lima komoditas terkurasi, <strong>berstatus draft</strong>',
       gejala.map((g) => `
         <li>
           <a href="${teks(tautanGejala(g))}" data-jenis="gejala">

@@ -43,6 +43,7 @@ let kamusLokal = [];
 let bppWilayah = [];
 let optKini = null;
 let daftarOpt = null;
+let saringInang = null;
 let larangan = null;
 
 const angkaId = (n) => Number(n).toLocaleString('id-ID');
@@ -50,13 +51,45 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
 // ---------------------------------------------------------------------------
 // Layar 1 — daftar gejala
 // ---------------------------------------------------------------------------
+/* Penyaring tanaman — TIDAK WAJIB, dan itu bagian dari keputusannya.
+ *
+ * Tesis jalur ini masuk lewat APA YANG TERLIHAT, bukan lewat apa yang sudah diketahui;
+ * memaksa pilih tanaman lebih dulu akan menukar pintu itu dengan pintu lain. Tetapi
+ * sesudah komoditas kelima daftarnya 41 gejala, dan penanam padi harus melewati dua
+ * puluh delapan gejala tanaman lain sebelum sampai ke miliknya. Jalan tengahnya:
+ * saringan ada, "semua tanaman" tetap yang terpilih saat layar dibuka, dan gejala tetap
+ * yang tertulis besar pada tiap kartu.
+ *
+ * Disaring menurut `inang` — tanaman yang teksnya memang ditulis untuknya — bukan
+ * menurut `di`, tempat produknya terdaftar. Keduanya berbeda dan bedanya menentukan:
+ * hawar daun punya tujuh produk terdaftar di cabai sementara teksnya ditulis untuk
+ * kentang dan tomat, dan menyodorkannya kepada penanam cabai adalah persis kekeliruan
+ * yang aturan sebaran komoditas dipakai untuk mencegah.
+ */
+function daftarInang() {
+  const c = new Map();
+  for (const k of daftarOpt) for (const n of k.inang ?? []) c.set(n, (c.get(n) ?? 0) + 1);
+  return [...c.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+}
+
 function gambarGejala() {
   // Diurutkan menurut banyaknya produk terdaftar, bukan abjad: yang paling sering jadi
   // masalah paling sering dicari. Yang nol produk tetap ikut — justru layar itu yang
   // paling bernilai di seluruh jalur ini.
-  const urut = daftarOpt.slice().sort((a, b) =>
+  const cocok = daftarOpt.filter((k) => !saringInang || (k.inang ?? []).includes(saringInang));
+  const urut = cocok.slice().sort((a, b) =>
     b.di.reduce((x, y) => x + y.produk, 0) - a.di.reduce((x, y) => x + y.produk, 0));
+  const inang = daftarInang();
+  const cip = (nilai, label, n) => `
+    <button type="button" data-inang="${teks(nilai)}" aria-pressed="${saringInang === (nilai || null)}">
+      ${teks(label)} · ${angkaId(n)}
+    </button>`;
   el.gejala.innerHTML = `
+    ${inang.length > 1 ? `
+      <div class="preset" role="group" aria-label="Saring menurut tanaman">
+        ${cip('', 'Semua tanaman', daftarOpt.length)}
+        ${inang.map(([n, j]) => cip(n, n, j)).join('')}
+      </div>` : ''}
     <ul class="daftar">
       ${urut.map((k) => `
         <li>
@@ -72,7 +105,7 @@ function gambarGejala() {
 
 /* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
  *
- * 722 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * 710 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
  * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
  *
  * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
@@ -93,7 +126,7 @@ async function bukaHama(kunci, opsi = {}) {
         <p>
           <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
           registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
-          deskripsi gejalanya</strong> — nol dari 722 OPT berproduk memuatnya.
+          deskripsi gejalanya</strong> — nol dari 710 OPT berproduk memuatnya.
         </p>
         <p class="catatan">
           Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
@@ -101,8 +134,8 @@ async function bukaHama(kunci, opsi = {}) {
           mengarangnya berarti mengubah daftar pendaftaran jadi diagnosis. Yang di bawah
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
-          <a href="beranda.html">mulai dari apa yang terlihat</a> — dua puluh delapan OPT
-          cabai, bawang merah, tomat, dan kentang punya ciri pembandingnya.
+          <a href="beranda.html">mulai dari apa yang terlihat</a> — empat puluh satu OPT
+          cabai, bawang merah, tomat, kentang, dan padi punya ciri pembandingnya.
         </p>
       </div>
       <h2 class="judul-bagian">Di tanaman apa?</h2>
@@ -626,7 +659,14 @@ async function bukaOpt(id, opsi = {}) {
 
 el.gejala.addEventListener('click', (ev) => {
   const t = ev.target.closest('button[data-opt]');
-  if (t) bukaOpt(t.dataset.opt);
+  if (t) return bukaOpt(t.dataset.opt);
+
+  const s = ev.target.closest('button[data-inang]');
+  if (s) {
+    saringInang = s.dataset.inang || null;
+    gambarGejala();
+    el.gejala.querySelector('button[aria-pressed="true"]')?.focus();
+  }
 });
 
 el.hasil.addEventListener('click', async (ev) => {

@@ -1,4 +1,4 @@
-# Daftar Tinjauan — 28 Teks Gejala OPT Kentang, Tomat, Bawang merah, dan Cabai merah besar
+# Daftar Tinjauan — 41 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, dan Cabai merah besar
 
 > Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`
 > oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah
@@ -10,7 +10,7 @@
 
 ## 1. Apa yang diminta, dan apa yang tidak
 
-Seluruh 28 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
+Seluruh 41 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
 bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok
 “pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri
 menyebut OPT mana yang **terbantah** kalau hasilnya begitu.
@@ -25,7 +25,7 @@ Yang diminta dari peninjau, untuk tiap entri:
 
 Yang **tidak** diminta:
 
-- Bukan menambah OPT baru. Yang 28 ini dipilih karena paling sering dicari; kekurangan
+- Bukan menambah OPT baru. Yang 41 ini dipilih karena paling sering dicari; kekurangan
   cakupan sudah diketahui dan bukan yang ditinjau di sini.
 - Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi
   dan tidak melewati penilaian peninjau.
@@ -49,11 +49,333 @@ Ini disebut di muka supaya tidak ada yang tersembunyi.
 
 ---
 
-## 3. Seluruh 28 entri
+## 3. Seluruh 41 entri
 
 12 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
 **Kutu daun persik**, **Kutu kebul**, **Ulat grayak**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat tanah**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**. Teksnya menyebut tiap tanaman secara terpisah,
 dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman Anda.
+
+### Padi — 13 entri
+
+#### 1. Wereng coklat — *Nilaparvata lugens*
+
+`op:pst:00000029` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Pasangan OPT–komoditas dengan pendaftaran TERBANYAK di seluruh registri: 455 baris pada padi. Selain mengisap, ia menularkan virus kerdil hampa dan kerdil rumput — dan yang sudah tertular tidak bisa disembuhkan semprotan apa pun. Kedua virus itu belum punya pintunya sendiri di sini.*
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman menguning lalu mengering seperti terbakar, mulai dari satu titik lalu MELEBAR MEMBUNDAR ke sekelilingnya — dari pematang terlihat sebagai petak gundul di tengah hamparan yang masih hijau. Di pangkal rumpun, tepat di atas permukaan air, ada serangga coklat sebesar biji wijen yang berhamburan turun saat rumpun disibak.
+
+**Ciri pembanding**
+
+1. Sibak rumpun dan tunduk sampai pangkal batang, tepat di atas air. Wereng coklat berkerumun DI SITU, bukan di daun atas, dan langsung berhamburan saat disibak. Kalau pangkalnya bersih dan yang mengering justru mulai dari ujung daun, penyebabnya bukan wereng.
+   → membantah: **Hawar daun bakteri**
+2. Tangkap satu werengnya dan lihat punggungnya. Wereng coklat coklat merata tanpa garis; wereng punggung putih punya garis putih memanjang jelas di punggung dan lebih sering berada di batang bagian tengah, bukan di pangkal.
+   → membantah: **Wereng punggung putih**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Penggerek batang — *Scirpophaga incertulas*
+
+`op:pst:00000030` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Sundep saat masih anakan, beluk sesudah malai keluar — satu hama, dua nama, menurut kapan ia menyerang. Registri juga memuatnya atas nama lama Tryporyza incertulas (5 baris) dan sebagai Scirpophaga innotata, penggerek batang putih (4 baris), keduanya belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini.*
+
+**Teks gejala yang tampil di layar**
+
+> Pucuk anakan muda menguning lalu mati sementara daun lain masih hijau, dan pucuk itu MUDAH DITARIK LEPAS tanpa perlawanan — itu sundep. Sesudah berbunga, malai keluar putih dan hampa seluruhnya sementara batangnya masih hijau — itu beluk. Pada batang ada lubang gerekan kecil.
+
+**Ciri pembanding**
+
+1. Tarik pucuk atau malai yang mati. Kalau lepas ringan dan pangkalnya berlubang serta berkotoran, itu gerekan. Malai yang hampa karena walang sangit tidak lepas ditarik dan batangnya tidak berlubang.
+   → membantah: **Walang sangit**
+2. Lihat apakah batangnya terpotong. Penggerek meninggalkan batang UTUH dengan lubang kecil dan lorong berisi kotoran di dalamnya; tikus memotong batang miring rapi seperti disayat, dan yang terpotong bergerombol membentuk jalur.
+   → membantah: **Tikus sawah**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Hawar pelepah — *Rhizoctonia solani*
+
+`op:pst:00000031` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Paling parah pada tanaman yang dipupuk nitrogen berlebih dan ditanam rapat, karena jamurnya menjalar lewat pelepah yang saling bersentuhan. Registri juga memuat Rhizoctonia sp. (6 baris) dan Rhizoctonia oryzae (1 baris) yang belum disatukan. Empat baris lagi terdaftar di luar padi — jagung dan kentang — dan teks di bawah ditulis untuk padi.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak lonjong pada PELEPAH dekat permukaan air, mula-mula kelabu kehijauan berair lalu memutih di tengah dengan tepi coklat bergelombang seperti kulit ular. Bercaknya merambat naik ke pelepah dan daun di atasnya; pada serangan berat butiran coklat sebesar biji sawi menempel di pelepah.
+
+**Ciri pembanding**
+
+1. Lihat dari mana bercaknya mulai. Hawar pelepah mulai di PELEPAH dekat permukaan air lalu naik. Blas memberi bercak di helai daun mana saja, termasuk yang paling atas, dan bentuknya belah ketupat, bukan lonjong bertepi bergelombang.
+   → membantah: **Blas**
+2. Cari butiran coklat keras sebesar biji sawi yang menempel dan mudah lepas dari pelepah — itu sklerotianya. Bercak coklat sempit tidak pernah meninggalkan butiran, dan bercaknya kecil memanjang di helai daun, bukan lonjong di pelepah.
+   → membantah: **Bercak coklat sempit**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Blas — *Pyricularia oryzae*
+
+`op:pst:00000032` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Menyerang dua kali dalam satu musim dengan dua nama: blas daun saat vegetatif, blas leher saat malai keluar — dan yang kedua jauh lebih menentukan hasil karena memutus jalan hara ke bulir. Registri juga memuat Pyricularia grisea (6 baris) dan Pyricularia sp. (1 baris) yang belum disatukan.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak pada daun berbentuk BELAH KETUPAT — lancip di kedua ujung, lebar di tengah — dengan tengah kelabu keputihan dan tepi coklat. Menjelang panen leher malai menghitam dan mengering sehingga malai patah menggantung dan bulirnya hampa, sementara batang di bawahnya masih hijau.
+
+**Ciri pembanding**
+
+1. Perhatikan bentuk bercak daunnya. Blas belah ketupat dengan kedua ujung lancip dan melebar di tengah; bercak coklat sempit lurus memanjang seperti garis dan tidak pernah melebar.
+   → membantah: **Bercak coklat sempit**
+2. Kalau yang menghitam lehernya, pegang malai yang menggantung. Blas leher memutus tepat di leher, malainya hampa dan mudah patah di titik itu, dan batang di bawahnya tetap hijau. Beluk karena penggerek meninggalkan malai putih UTUH yang bisa ditarik lepas dari batang yang berlubang.
+   → membantah: **Penggerek batang**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Keong mas — *Pomacea canaliculata*
+
+`op:pst:00000033` · mollusc · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Paling merusak pada sepuluh sampai dua puluh satu hari pertama sesudah tanam pindah, dan pada tabela sejak benih disebar; sesudah itu batangnya sudah terlalu keras. Registri juga memuat Pomacea sp. dan Pomacea spp. (5 baris) serta Pila ampullacea (1 baris) yang belum disatukan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bibit muda hilang atau tinggal potongan mengapung, paling banyak di bagian petak yang genangannya PALING DALAM, sehingga petak jadi jarang berpetak-petak. Di pematang, batang, dan apa saja yang menonjol dari air ada kelompok telur merah muda terang seperti butiran sagu.
+
+**Ciri pembanding**
+
+1. Cari kelompok telur MERAH MUDA di pematang, batang padi, atau benda apa pun yang menonjol dari air. Tidak ada hama padi lain yang bertelur merah muda mencolok seperti itu; tikus tidak bertelur dan memotong batang yang sudah tinggi, bukan memakan bibit di bawah air.
+   → membantah: **Tikus sawah**
+2. Lihat di mana tanaman hilangnya. Keong mas merusak paling parah di bagian yang genangannya PALING DALAM, dan kerusakannya berhenti begitu air disurutkan sampai macak-macak. Kerusakan yang tidak mengikuti dalamnya air penyebabnya bukan keong.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 6. Hama putih palsu — *Cnaphalocrocis medinalis*
+
+`op:pst:00000034` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Disebut "palsu" untuk membedakannya dari hama putih (Nymphula depunctalis), yang memotong daun jadi tabung lalu menjatuhkannya ke air. Sering terlihat mengkhawatirkan tetapi jarang menurunkan hasil selama daun bendera masih utuh — dan itu yang paling sering membuat orang menyemprot lebih dulu daripada perlu.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun menggulung MEMANJANG searah tulang daun dan terikat benang halus jadi seperti pipa. Bagian dalam gulungan memutih menerawang karena hijau daunnya dikerok, tanpa berlubang tembus. Dari kejauhan petak terlihat memutih berpetak-petak.
+
+**Ciri pembanding**
+
+1. Buka gulungan daunnya. Ada ulat hijau bening yang menggeliat mundur cepat saat terganggu, dan permukaan dalam daun tergerus memutih tetapi TIDAK berlubang tembus. Gulungan kosong dengan daun berlubang tembus penyebabnya ulat lain.
+   → membantah: **—**
+2. Periksa DAUN BENDERA — daun teratas tepat di bawah malai. Selama daun bendera masih utuh hijau, kerusakan ini hampir tidak menurunkan hasil, dan menyemprot lebih banyak merugikan daripada menolong.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Walang sangit — *Leptocorisa oratorius*
+
+`op:pst:00000035` · insect · taksonomi terverifikasi GBIF (fuzzy, 96%)
+
+*Menyerang pada fase masak susu — sekitar satu sampai dua minggu sesudah berbunga — dan hanya pada fase itu. Di luar jendela itu menyemprotnya tidak menyelamatkan apa pun.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Bulir hampa atau berisi separuh dengan bercak coklat bekas tusukan pada kulitnya, dan gabahnya jadi berkapur. Saat petak dimasuki tercium BAU MENYENGAT khas, dan serangga hijau kecoklatan ramping berkaki panjang beterbangan rendah dari malai.
+
+**Ciri pembanding**
+
+1. Masuki petak pagi hari dan cium. Bau menyengat khas itu sendiri sudah penanda, dan serangganya beterbangan dari malai saat rumpun disibak. Kalau tidak ada bau dan tidak ada yang terbang, hampa itu sebabnya lain.
+   → membantah: **Penggerek batang**
+2. Lihat malai yang hampa. Walang sangit meninggalkan malai berwarna normal dengan bulir bertusuk dan hampa sebagian; beluk karena penggerek meninggalkan SELURUH malai putih kering dan hampa total.
+   → membantah: **Penggerek batang**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Hawar daun bakteri — *Xanthomonas oryzae*
+
+`op:pst:00000036` · disease_bacterial · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Kresek pada tanaman muda, hawar daun pada tanaman dewasa. Menyebar lewat air dan lewat luka, jadi paling parah sesudah hujan deras, angin kencang, atau petak yang baru disiangi — dan pemupukan nitrogen berlebih memperparahnya.*
+
+**Teks gejala yang tampil di layar**
+
+> Daun mengering dari UJUNG atau TEPI ke arah pangkal, dengan batas basah bergelombang kekuningan antara bagian yang mati dan yang masih hijau. Pada tanaman muda seluruh daun bisa layu mengering dalam beberapa hari — itu kresek. Pagi hari pada tepi bercak sering ada tetesan kuning kental yang mengering jadi kerak.
+
+**Ciri pembanding**
+
+1. UJI GELAS. Potong ujung daun yang bergejala, celupkan ke gelas berisi air bening, diamkan lima menit. Untaian keruh kekuningan yang turun perlahan dari potongan berarti bakteri. Kalau airnya tetap bening, penyebabnya bukan hawar daun bakteri.
+   → membantah: **Bercak coklat sempit**
+2. Lihat arah mengeringnya. Hawar daun bakteri berjalan dari ujung atau tepi daun ke pangkal dengan batas bergelombang. Wereng coklat mengeringkan seluruh rumpun sekaligus dari pangkal, dan pangkalnya berkerumun serangga.
+   → membantah: **Wereng coklat**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 9. Bercak coklat sempit — *Cercospora janseana*
+
+`op:pst:00000037` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Registri juga memuatnya atas nama lama Cercospora oryzae (14 baris) dan Cercospora sp. (12 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Menumpuk pada tanaman yang kekurangan kalium dan pada tanah miskin, jadi bercaknya sering pertanda hara, bukan cuma pertanda jamur.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak SEMPIT MEMANJANG lurus searah tulang daun, panjangnya beberapa milimeter sampai satu sentimeter dan lebarnya hanya sekitar satu milimeter, berwarna coklat gelap. Paling banyak pada daun tua menjelang panen; pelepah dan kulit gabah bisa ikut berbercak.
+
+**Ciri pembanding**
+
+1. Ukur lebar bercaknya. Bercak coklat sempit selebar sekitar satu milimeter dan lurus memanjang; blas melebar di tengah membentuk belah ketupat dengan kedua ujung lancip.
+   → membantah: **Blas**
+2. Lihat di mana ia terbanyak. Bercak coklat sempit menumpuk di helai daun TUA menjelang panen; hawar pelepah tidak berbercak di helai daun melainkan di pelepah dekat permukaan air.
+   → membantah: **Hawar pelepah**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 10. Tikus sawah — *Rattus argentiventer*
+
+`op:pst:00000038` · vertebrate · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Kerusakannya bertumpuk pada fase generatif, dan pengendaliannya menuntut gerakan bersama satu hamparan — petak yang dikendalikan sendirian akan dimasuki lagi dari petak tetangga. Registri mencatat "Tikus sawah" juga sebagai KOMODITAS pada tujuh baris; itu keliru di sumbernya, dan produk pada baris-baris itu tidak ikut terdaftar di bawah pintu ini.*
+
+**Teks gejala yang tampil di layar**
+
+> Batang terpotong MIRING dan rapi seperti disayat, pada ketinggian yang seragam, dan yang terpotong bergerombol membentuk jalur atau petak bertepi tegas. Kerusakan mulai dari pinggir petak dekat pematang, saluran, atau semak, lalu masuk ke tengah. Ada jalur pipih bekas lalu-lalang di antara rumpun dan lubang di pematang.
+
+**Ciri pembanding**
+
+1. Periksa bekas potongannya. Tikus memotong batang miring rapi seperti disayat pisau, dan potongannya sering ditinggalkan di tempat. Batang yang mati karena penggerek TIDAK terpotong — ia utuh dengan lubang kecil dan lorong di dalamnya.
+   → membantah: **Penggerek batang**
+2. Ikuti bentuk kerusakannya. Tikus masuk dari PINGGIR petak dekat pematang atau saluran dan meninggalkan jalur pipih di antara rumpun. Petak kering karena wereng justru mulai dari satu titik di tengah lalu melebar membundar.
+   → membantah: **Wereng coklat**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 11. Wereng hijau — *Nephotettix virescens*
+
+`op:pst:00000039` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Kerusakan isapannya sendiri jarang menentukan hasil. Yang menentukan penularannya: ia penular tungro, dan tungro tidak bisa disembuhkan semprotan apa pun. Registri juga memuat Nephotettix sp. dan Nephotetix sp. (6 baris) yang belum disatukan.*
+
+**Teks gejala yang tampil di layar**
+
+> Serangga hijau ramping sepanjang sekitar 3–5 mm melompat dan terbang pendek dari DAUN ATAS saat rumpun disibak, terutama pada tanaman muda. Daun bisa berbintik kuning halus, tetapi tanamannya sendiri sering tampak masih baik — dan justru itu yang menyesatkan.
+
+**Ciri pembanding**
+
+1. Sibak rumpun dan lihat di ketinggian mana serangganya. Wereng hijau berada di DAUN ATAS dan melompat; wereng coklat berkerumun di pangkal batang tepat di atas air dan berhamburan turun.
+   → membantah: **Wereng coklat**
+2. Periksa apakah ada tanaman kerdil berdaun kuning jingga di sekitarnya. Kalau ada, yang menentukan bukan wereng hijaunya melainkan tungro yang dibawanya — dan menyemprot tidak menyembuhkan tanaman yang sudah tertular.
+   → membantah: **Tungro**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 12. Wereng punggung putih — *Sogatella furcifera*
+
+`op:pst:00000040` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Datang lebih awal dalam satu musim daripada wereng coklat, umumnya pada fase vegetatif, dan jarang menimbulkan petak terbakar seluas itu. Membedakan keduanya menentukan karena ambang pengendaliannya berbeda.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Daun menguning dari ujung dan tanaman kerdil pada fase anakan, dengan serangga sebesar biji wijen di batang bagian TENGAH sampai atas. Punggungnya bergaris putih memanjang jelas di antara sayap. Serangan berat mengeringkan rumpun, tetapi petaknya jarang selebar dan secepat wereng coklat.
+
+**Ciri pembanding**
+
+1. Tangkap satu dan lihat punggungnya. Wereng punggung putih punya garis PUTIH memanjang jelas di punggung; wereng coklat coklat merata tanpa garis.
+   → membantah: **Wereng coklat**
+2. Lihat di ketinggian mana ia berkerumun. Punggung putih lebih banyak di batang bagian tengah dan di daun; wereng coklat menumpuk di pangkal tepat di atas permukaan air.
+   → membantah: **Wereng coklat**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 13. Tungro — *Rice tungro virus complex*
+
+`op:pst:00000041` · disease_viral
+
+*Dua virus sekaligus — RTBV dan RTSV — dan keduanya harus ada untuk menimbulkan gejala penuh. Ditularkan wereng hijau, tidak terbawa benih, dan tidak bisa disembuhkan. Yang menentukan justru tanam serempak dan varietas tahan, bukan semprotan.*
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman kerdil dengan anakan sedikit, dan daunnya menguning sampai JINGGA kemerahan mulai dari UJUNG daun muda lalu turun. Gejalanya muncul BERKELOMPOK di beberapa titik dalam petak, bukan merata, dan melebar dari arah petak tetangga yang lebih tua.
+
+**Ciri pembanding**
+
+1. Periksa daun yang menguning jingga itu sendiri. Tidak ada bercak, tidak ada lubang, tidak ada bekas gerekan — yang berubah hanya warna, tinggi tanaman, dan jumlah anakannya. Petak kering karena wereng coklat mengering coklat dari PANGKAL, dan pangkalnya berkerumun serangga.
+   → membantah: **Wereng coklat**
+2. Lihat sebarannya dan umur petak di sekitarnya. Tungro muncul berkelompok dan melebar dari arah petak yang lebih tua. Mengendalikan wereng hijaunya melindungi tanaman yang BELUM tertular; yang sudah menguning jingga tidak akan pulih.
+   → membantah: **Wereng hijau**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
 
 ### Kentang — 12 entri
 
@@ -1190,8 +1512,8 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 ## 4. Yang kami tandai sendiri
 
 Dihitung dari datanya, bukan dari penilaian agronomi — supaya waktu peninjau tidak habis
-menemukan yang sudah kami ragukan. 11 dari 28 entri bertanda,
-dan secara keseluruhan **9 dari 56 ciri pembanding tidak menyebut apa yang dibantahnya**:
+menemukan yang sudah kami ragukan. 15 dari 41 entri bertanda,
+dan secara keseluruhan **12 dari 82 ciri pembanding tidak menyebut apa yang dibantahnya**:
 
 - **Trips** — kedua cirinya membantah OPT yang sama.
 - **Kutu kebul** — 1 ciri tidak menyebut apa yang dibantahnya.
@@ -1204,6 +1526,10 @@ dan secara keseluruhan **9 dari 56 ciri pembanding tidak menyebut apa yang diban
 - **Ulat tanah** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Embun bulu** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Busuk leher umbi** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Keong mas** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Hama putih palsu** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Walang sangit** — kedua cirinya membantah OPT yang sama.
+- **Wereng punggung putih** — kedua cirinya membantah OPT yang sama.
 
 Dua pola itu **bukan bukti entrinya salah.** Ciri yang membantah OPT yang sama dua kali
 bisa saja memang dua sudut yang berbeda terhadap satu kekeliruan yang paling sering

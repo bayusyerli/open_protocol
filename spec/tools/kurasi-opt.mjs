@@ -3,7 +3,7 @@
 //   node spec/tools/kurasi-opt.mjs            # periksa saja
 //   node spec/tools/kurasi-opt.mjs --tulis    # tulis perubahannya
 //
-// Sudah dipakai untuk: bawang merah (28 Agustus 2026), tomat & kentang (28 Agustus 2026).
+// Sudah dipakai untuk: bawang merah, tomat & kentang, dan padi (seluruhnya 28 Agustus 2026).
 // Cabai — sepuluh entri pertama — ditulis lebih dulu oleh spec/tools/tulis-gejala-opt.mjs,
 // sebelum pola di bawah ini ada.
 //
@@ -100,6 +100,7 @@ const BAWANG_MERAH = { id: 'op:cmd:00000004', label: 'Bawang merah' };
 const TOMAT = { id: 'op:cmd:00000003', label: 'Tomat' };
 const KENTANG = { id: 'op:cmd:00001008', label: 'Kentang' };
 const CABAI = { id: 'op:cmd:00000001', label: 'Cabai merah besar' };
+const PADI = { id: 'op:cmd:00000006', label: 'Padi' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -518,9 +519,288 @@ const PINTU_TOMAT_KENTANG = [
   },
 ];
 
+const PINTU_PADI = [
+  {
+    id: 'op:pst:00000029',
+    dari: 'op:pst:00001009',
+    nama: 'Wereng Coklat',
+    key: 'wereng-coklat',
+    label: 'Wereng coklat',
+    definition:
+      'Pasangan OPT–komoditas dengan pendaftaran TERBANYAK di seluruh registri: 455 baris pada padi. Selain mengisap, ia menularkan virus kerdil hampa dan kerdil rumput — dan yang sudah tertular tidak bisa disembuhkan semprotan apa pun. Kedua virus itu belum punya pintunya sendiri di sini.',
+    gejala:
+      'Tanaman menguning lalu mengering seperti terbakar, mulai dari satu titik lalu MELEBAR MEMBUNDAR ke sekelilingnya — dari pematang terlihat sebagai petak gundul di tengah hamparan yang masih hijau. Di pangkal rumpun, tepat di atas permukaan air, ada serangga coklat sebesar biji wijen yang berhamburan turun saat rumpun disibak.',
+    pembanding: [
+      {
+        cek: 'Sibak rumpun dan tunduk sampai pangkal batang, tepat di atas air. Wereng coklat berkerumun DI SITU, bukan di daun atas, dan langsung berhamburan saat disibak. Kalau pangkalnya bersih dan yang mengering justru mulai dari ujung daun, penyebabnya bukan wereng.',
+        membantah: { id: 'op:pst:00000036', label: 'Hawar daun bakteri' },
+      },
+      {
+        cek: 'Tangkap satu werengnya dan lihat punggungnya. Wereng coklat coklat merata tanpa garis; wereng punggung putih punya garis putih memanjang jelas di punggung dan lebih sering berada di batang bagian tengah, bukan di pangkal.',
+        membantah: { id: 'op:pst:00000040', label: 'Wereng punggung putih' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000030',
+    dari: 'op:pst:00001023',
+    nama: 'Penggerek Batang',
+    key: 'penggerek-batang-padi',
+    label: 'Penggerek batang',
+    definition:
+      'Sundep saat masih anakan, beluk sesudah malai keluar — satu hama, dua nama, menurut kapan ia menyerang. Registri juga memuatnya atas nama lama Tryporyza incertulas (5 baris) dan sebagai Scirpophaga innotata, penggerek batang putih (4 baris), keduanya belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini.',
+    gejala:
+      'Pucuk anakan muda menguning lalu mati sementara daun lain masih hijau, dan pucuk itu MUDAH DITARIK LEPAS tanpa perlawanan — itu sundep. Sesudah berbunga, malai keluar putih dan hampa seluruhnya sementara batangnya masih hijau — itu beluk. Pada batang ada lubang gerekan kecil.',
+    pembanding: [
+      {
+        cek: 'Tarik pucuk atau malai yang mati. Kalau lepas ringan dan pangkalnya berlubang serta berkotoran, itu gerekan. Malai yang hampa karena walang sangit tidak lepas ditarik dan batangnya tidak berlubang.',
+        membantah: { id: 'op:pst:00000035', label: 'Walang sangit' },
+      },
+      {
+        cek: 'Lihat apakah batangnya terpotong. Penggerek meninggalkan batang UTUH dengan lubang kecil dan lorong berisi kotoran di dalamnya; tikus memotong batang miring rapi seperti disayat, dan yang terpotong bergerombol membentuk jalur.',
+        membantah: { id: 'op:pst:00000038', label: 'Tikus sawah' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000031',
+    dari: 'op:pst:00001030',
+    nama: 'Penyakit Hawar Pelepah',
+    key: 'hawar-pelepah',
+    label: 'Hawar pelepah',
+    definition:
+      'Paling parah pada tanaman yang dipupuk nitrogen berlebih dan ditanam rapat, karena jamurnya menjalar lewat pelepah yang saling bersentuhan. Registri juga memuat Rhizoctonia sp. (6 baris) dan Rhizoctonia oryzae (1 baris) yang belum disatukan. Empat baris lagi terdaftar di luar padi — jagung dan kentang — dan teks di bawah ditulis untuk padi.',
+    gejala:
+      'Bercak lonjong pada PELEPAH dekat permukaan air, mula-mula kelabu kehijauan berair lalu memutih di tengah dengan tepi coklat bergelombang seperti kulit ular. Bercaknya merambat naik ke pelepah dan daun di atasnya; pada serangan berat butiran coklat sebesar biji sawi menempel di pelepah.',
+    pembanding: [
+      {
+        cek: 'Lihat dari mana bercaknya mulai. Hawar pelepah mulai di PELEPAH dekat permukaan air lalu naik. Blas memberi bercak di helai daun mana saja, termasuk yang paling atas, dan bentuknya belah ketupat, bukan lonjong bertepi bergelombang.',
+        membantah: { id: 'op:pst:00000032', label: 'Blas' },
+      },
+      {
+        cek: 'Cari butiran coklat keras sebesar biji sawi yang menempel dan mudah lepas dari pelepah — itu sklerotianya. Bercak coklat sempit tidak pernah meninggalkan butiran, dan bercaknya kecil memanjang di helai daun, bukan lonjong di pelepah.',
+        membantah: { id: 'op:pst:00000037', label: 'Bercak coklat sempit' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000032',
+    dari: 'op:pst:00001037',
+    nama: 'Penyakit Blas',
+    key: 'blas',
+    label: 'Blas',
+    definition:
+      'Menyerang dua kali dalam satu musim dengan dua nama: blas daun saat vegetatif, blas leher saat malai keluar — dan yang kedua jauh lebih menentukan hasil karena memutus jalan hara ke bulir. Registri juga memuat Pyricularia grisea (6 baris) dan Pyricularia sp. (1 baris) yang belum disatukan.',
+    gejala:
+      'Bercak pada daun berbentuk BELAH KETUPAT — lancip di kedua ujung, lebar di tengah — dengan tengah kelabu keputihan dan tepi coklat. Menjelang panen leher malai menghitam dan mengering sehingga malai patah menggantung dan bulirnya hampa, sementara batang di bawahnya masih hijau.',
+    pembanding: [
+      {
+        cek: 'Perhatikan bentuk bercak daunnya. Blas belah ketupat dengan kedua ujung lancip dan melebar di tengah; bercak coklat sempit lurus memanjang seperti garis dan tidak pernah melebar.',
+        membantah: { id: 'op:pst:00000037', label: 'Bercak coklat sempit' },
+      },
+      {
+        cek: 'Kalau yang menghitam lehernya, pegang malai yang menggantung. Blas leher memutus tepat di leher, malainya hampa dan mudah patah di titik itu, dan batang di bawahnya tetap hijau. Beluk karena penggerek meninggalkan malai putih UTUH yang bisa ditarik lepas dari batang yang berlubang.',
+        membantah: { id: 'op:pst:00000030', label: 'Penggerek batang' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000033',
+    dari: 'op:pst:00001058',
+    nama: 'Siput Murbei',
+    key: 'keong-mas',
+    label: 'Keong mas',
+    definition:
+      'Paling merusak pada sepuluh sampai dua puluh satu hari pertama sesudah tanam pindah, dan pada tabela sejak benih disebar; sesudah itu batangnya sudah terlalu keras. Registri juga memuat Pomacea sp. dan Pomacea spp. (5 baris) serta Pila ampullacea (1 baris) yang belum disatukan.',
+    gejala:
+      'Bibit muda hilang atau tinggal potongan mengapung, paling banyak di bagian petak yang genangannya PALING DALAM, sehingga petak jadi jarang berpetak-petak. Di pematang, batang, dan apa saja yang menonjol dari air ada kelompok telur merah muda terang seperti butiran sagu.',
+    pembanding: [
+      {
+        cek: 'Cari kelompok telur MERAH MUDA di pematang, batang padi, atau benda apa pun yang menonjol dari air. Tidak ada hama padi lain yang bertelur merah muda mencolok seperti itu; tikus tidak bertelur dan memotong batang yang sudah tinggi, bukan memakan bibit di bawah air.',
+        membantah: { id: 'op:pst:00000038', label: 'Tikus sawah' },
+      },
+      {
+        cek: 'Lihat di mana tanaman hilangnya. Keong mas merusak paling parah di bagian yang genangannya PALING DALAM, dan kerusakannya berhenti begitu air disurutkan sampai macak-macak. Kerusakan yang tidak mengikuti dalamnya air penyebabnya bukan keong.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000034',
+    dari: 'op:pst:00001132',
+    nama: 'Hama Putih Palsu',
+    key: 'hama-putih-palsu',
+    label: 'Hama putih palsu',
+    definition:
+      'Disebut "palsu" untuk membedakannya dari hama putih (Nymphula depunctalis), yang memotong daun jadi tabung lalu menjatuhkannya ke air. Sering terlihat mengkhawatirkan tetapi jarang menurunkan hasil selama daun bendera masih utuh — dan itu yang paling sering membuat orang menyemprot lebih dulu daripada perlu.',
+    gejala:
+      'Daun menggulung MEMANJANG searah tulang daun dan terikat benang halus jadi seperti pipa. Bagian dalam gulungan memutih menerawang karena hijau daunnya dikerok, tanpa berlubang tembus. Dari kejauhan petak terlihat memutih berpetak-petak.',
+    pembanding: [
+      {
+        cek: 'Buka gulungan daunnya. Ada ulat hijau bening yang menggeliat mundur cepat saat terganggu, dan permukaan dalam daun tergerus memutih tetapi TIDAK berlubang tembus. Gulungan kosong dengan daun berlubang tembus penyebabnya ulat lain.',
+      },
+      {
+        cek: 'Periksa DAUN BENDERA — daun teratas tepat di bawah malai. Selama daun bendera masih utuh hijau, kerusakan ini hampir tidak menurunkan hasil, dan menyemprot lebih banyak merugikan daripada menolong.',
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000035',
+    dari: 'op:pst:00001093',
+    nama: 'Walang Sangit',
+    key: 'walang-sangit',
+    label: 'Walang sangit',
+    definition:
+      'Menyerang pada fase masak susu — sekitar satu sampai dua minggu sesudah berbunga — dan hanya pada fase itu. Di luar jendela itu menyemprotnya tidak menyelamatkan apa pun.',
+    gejala:
+      'Bulir hampa atau berisi separuh dengan bercak coklat bekas tusukan pada kulitnya, dan gabahnya jadi berkapur. Saat petak dimasuki tercium BAU MENYENGAT khas, dan serangga hijau kecoklatan ramping berkaki panjang beterbangan rendah dari malai.',
+    pembanding: [
+      {
+        cek: 'Masuki petak pagi hari dan cium. Bau menyengat khas itu sendiri sudah penanda, dan serangganya beterbangan dari malai saat rumpun disibak. Kalau tidak ada bau dan tidak ada yang terbang, hampa itu sebabnya lain.',
+        membantah: { id: 'op:pst:00000030', label: 'Penggerek batang' },
+      },
+      {
+        cek: 'Lihat malai yang hampa. Walang sangit meninggalkan malai berwarna normal dengan bulir bertusuk dan hampa sebagian; beluk karena penggerek meninggalkan SELURUH malai putih kering dan hampa total.',
+        membantah: { id: 'op:pst:00000030', label: 'Penggerek batang' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000036',
+    dari: 'op:pst:00001101',
+    nama: 'Penyakit Hawar Daun Bakteri',
+    key: 'hawar-daun-bakteri',
+    label: 'Hawar daun bakteri',
+    definition:
+      'Kresek pada tanaman muda, hawar daun pada tanaman dewasa. Menyebar lewat air dan lewat luka, jadi paling parah sesudah hujan deras, angin kencang, atau petak yang baru disiangi — dan pemupukan nitrogen berlebih memperparahnya.',
+    gejala:
+      'Daun mengering dari UJUNG atau TEPI ke arah pangkal, dengan batas basah bergelombang kekuningan antara bagian yang mati dan yang masih hijau. Pada tanaman muda seluruh daun bisa layu mengering dalam beberapa hari — itu kresek. Pagi hari pada tepi bercak sering ada tetesan kuning kental yang mengering jadi kerak.',
+    pembanding: [
+      {
+        cek: 'UJI GELAS. Potong ujung daun yang bergejala, celupkan ke gelas berisi air bening, diamkan lima menit. Untaian keruh kekuningan yang turun perlahan dari potongan berarti bakteri. Kalau airnya tetap bening, penyebabnya bukan hawar daun bakteri.',
+        membantah: { id: 'op:pst:00000037', label: 'Bercak coklat sempit' },
+      },
+      {
+        cek: 'Lihat arah mengeringnya. Hawar daun bakteri berjalan dari ujung atau tepi daun ke pangkal dengan batas bergelombang. Wereng coklat mengeringkan seluruh rumpun sekaligus dari pangkal, dan pangkalnya berkerumun serangga.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000037',
+    dari: 'op:pst:00001125',
+    nama: 'Penyakit Bercak Coklat Sempit',
+    key: 'bercak-coklat-sempit',
+    label: 'Bercak coklat sempit',
+    definition:
+      'Registri juga memuatnya atas nama lama Cercospora oryzae (14 baris) dan Cercospora sp. (12 baris) yang belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Menumpuk pada tanaman yang kekurangan kalium dan pada tanah miskin, jadi bercaknya sering pertanda hara, bukan cuma pertanda jamur.',
+    gejala:
+      'Bercak SEMPIT MEMANJANG lurus searah tulang daun, panjangnya beberapa milimeter sampai satu sentimeter dan lebarnya hanya sekitar satu milimeter, berwarna coklat gelap. Paling banyak pada daun tua menjelang panen; pelepah dan kulit gabah bisa ikut berbercak.',
+    pembanding: [
+      {
+        cek: 'Ukur lebar bercaknya. Bercak coklat sempit selebar sekitar satu milimeter dan lurus memanjang; blas melebar di tengah membentuk belah ketupat dengan kedua ujung lancip.',
+        membantah: { id: 'op:pst:00000032', label: 'Blas' },
+      },
+      {
+        cek: 'Lihat di mana ia terbanyak. Bercak coklat sempit menumpuk di helai daun TUA menjelang panen; hawar pelepah tidak berbercak di helai daun melainkan di pelepah dekat permukaan air.',
+        membantah: { id: 'op:pst:00000031', label: 'Hawar pelepah' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000038',
+    dari: 'op:pst:00001089',
+    nama: 'Tikus Sawah',
+    key: 'tikus-sawah',
+    label: 'Tikus sawah',
+    definition:
+      'Kerusakannya bertumpuk pada fase generatif, dan pengendaliannya menuntut gerakan bersama satu hamparan — petak yang dikendalikan sendirian akan dimasuki lagi dari petak tetangga. Registri mencatat "Tikus sawah" juga sebagai KOMODITAS pada tujuh baris; itu keliru di sumbernya, dan produk pada baris-baris itu tidak ikut terdaftar di bawah pintu ini.',
+    gejala:
+      'Batang terpotong MIRING dan rapi seperti disayat, pada ketinggian yang seragam, dan yang terpotong bergerombol membentuk jalur atau petak bertepi tegas. Kerusakan mulai dari pinggir petak dekat pematang, saluran, atau semak, lalu masuk ke tengah. Ada jalur pipih bekas lalu-lalang di antara rumpun dan lubang di pematang.',
+    pembanding: [
+      {
+        cek: 'Periksa bekas potongannya. Tikus memotong batang miring rapi seperti disayat pisau, dan potongannya sering ditinggalkan di tempat. Batang yang mati karena penggerek TIDAK terpotong — ia utuh dengan lubang kecil dan lorong di dalamnya.',
+        membantah: { id: 'op:pst:00000030', label: 'Penggerek batang' },
+      },
+      {
+        cek: 'Ikuti bentuk kerusakannya. Tikus masuk dari PINGGIR petak dekat pematang atau saluran dan meninggalkan jalur pipih di antara rumpun. Petak kering karena wereng justru mulai dari satu titik di tengah lalu melebar membundar.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000039',
+    dari: 'op:pst:00001168',
+    nama: 'Wereng Hijau',
+    key: 'wereng-hijau',
+    label: 'Wereng hijau',
+    definition:
+      'Kerusakan isapannya sendiri jarang menentukan hasil. Yang menentukan penularannya: ia penular tungro, dan tungro tidak bisa disembuhkan semprotan apa pun. Registri juga memuat Nephotettix sp. dan Nephotetix sp. (6 baris) yang belum disatukan.',
+    gejala:
+      'Serangga hijau ramping sepanjang sekitar 3–5 mm melompat dan terbang pendek dari DAUN ATAS saat rumpun disibak, terutama pada tanaman muda. Daun bisa berbintik kuning halus, tetapi tanamannya sendiri sering tampak masih baik — dan justru itu yang menyesatkan.',
+    pembanding: [
+      {
+        cek: 'Sibak rumpun dan lihat di ketinggian mana serangganya. Wereng hijau berada di DAUN ATAS dan melompat; wereng coklat berkerumun di pangkal batang tepat di atas air dan berhamburan turun.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' },
+      },
+      {
+        cek: 'Periksa apakah ada tanaman kerdil berdaun kuning jingga di sekitarnya. Kalau ada, yang menentukan bukan wereng hijaunya melainkan tungro yang dibawanya — dan menyemprot tidak menyembuhkan tanaman yang sudah tertular.',
+        membantah: { id: 'op:pst:00000041', label: 'Tungro' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000040',
+    dari: 'op:pst:00001205',
+    nama: 'Wereng Punggung Putih',
+    key: 'wereng-punggung-putih',
+    label: 'Wereng punggung putih',
+    definition:
+      'Datang lebih awal dalam satu musim daripada wereng coklat, umumnya pada fase vegetatif, dan jarang menimbulkan petak terbakar seluas itu. Membedakan keduanya menentukan karena ambang pengendaliannya berbeda.',
+    gejala:
+      'Daun menguning dari ujung dan tanaman kerdil pada fase anakan, dengan serangga sebesar biji wijen di batang bagian TENGAH sampai atas. Punggungnya bergaris putih memanjang jelas di antara sayap. Serangan berat mengeringkan rumpun, tetapi petaknya jarang selebar dan secepat wereng coklat.',
+    pembanding: [
+      {
+        cek: 'Tangkap satu dan lihat punggungnya. Wereng punggung putih punya garis PUTIH memanjang jelas di punggung; wereng coklat coklat merata tanpa garis.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' },
+      },
+      {
+        cek: 'Lihat di ketinggian mana ia berkerumun. Punggung putih lebih banyak di batang bagian tengah dan di daun; wereng coklat menumpuk di pangkal tepat di atas permukaan air.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' },
+      },
+    ],
+  },
+  {
+    id: 'op:pst:00000041',
+    dari: null,
+    key: 'tungro',
+    label: 'Tungro',
+    pest_kind: 'disease_viral',
+    scientific_name: 'Rice tungro virus complex',
+    taxonomic_rank: 'group',
+    penular: { id: 'op:pst:00000039', label: 'Wereng hijau' },
+    no_mapping_reason:
+      'Belum dipetakan ke EPPO maupun GBIF. Kode kandidat tidak diperiksa ke sumbernya dalam sesi ini, dan kode yang tidak diperiksa lebih buruk daripada tidak ada kode. Tidak punya kembaran registri karena tidak satu pun produk terdaftar menyasarnya — sasaran yang tidak pernah muncul di label tidak pernah jadi entitas registri. Ditulis sebagai KELOMPOK, bukan spesies, karena memang dua virus.',
+    definition:
+      'Dua virus sekaligus — RTBV dan RTSV — dan keduanya harus ada untuk menimbulkan gejala penuh. Ditularkan wereng hijau, tidak terbawa benih, dan tidak bisa disembuhkan. Yang menentukan justru tanam serempak dan varietas tahan, bukan semprotan.',
+    gejala:
+      'Tanaman kerdil dengan anakan sedikit, dan daunnya menguning sampai JINGGA kemerahan mulai dari UJUNG daun muda lalu turun. Gejalanya muncul BERKELOMPOK di beberapa titik dalam petak, bukan merata, dan melebar dari arah petak tetangga yang lebih tua.',
+    pembanding: [
+      {
+        cek: 'Periksa daun yang menguning jingga itu sendiri. Tidak ada bercak, tidak ada lubang, tidak ada bekas gerekan — yang berubah hanya warna, tinggi tanaman, dan jumlah anakannya. Petak kering karena wereng coklat mengering coklat dari PANGKAL, dan pangkalnya berkerumun serangga.',
+        membantah: { id: 'op:pst:00000029', label: 'Wereng coklat' },
+      },
+      {
+        cek: 'Lihat sebarannya dan umur petak di sekitarnya. Tungro muncul berkelompok dan melebar dari arah petak yang lebih tua. Mengendalikan wereng hijaunya melindungi tanaman yang BELUM tertular; yang sudah menguning jingga tidak akan pulih.',
+        membantah: { id: 'op:pst:00000039', label: 'Wereng hijau' },
+      },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
+  { kunci: 'padi', tanaman: 'padi', inang: [PADI], pintu: PINTU_PADI },
 ];
 
 // ---------------------------------------------------------------------------

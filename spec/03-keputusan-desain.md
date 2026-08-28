@@ -807,6 +807,29 @@ ditolak seluruh jalur itu. `meta.pecahan.gejala` karena itu mendaftar kuncinya u
 seperti `sediaan`, bukan menghitungnya. Yang berubah kapan 29 KB itu diunduh, bukan
 apakah ia ada.
 
+### D40 — saringan tanaman di layar daftar gejala: ada, tetapi tidak wajib
+
+Sesudah komoditas kelima daftar gejala jalur 1 berisi 41 kartu, dan penanam padi harus
+melewati dua puluh delapan gejala tanaman lain sebelum sampai ke miliknya. Daftarnya
+diurutkan menurut banyaknya produk terdaftar, jadi urutan teratas pun bercampur lima
+komoditas.
+
+Yang menahan jalan keluar termudah — minta pilih tanaman lebih dulu — adalah tesis jalur
+ini sendiri: **masuk lewat APA YANG TERLIHAT, bukan lewat apa yang sudah diketahui.**
+Layar yang membuka dengan "tanaman apa?" adalah pintu lain, dan pintu itu sudah ada di
+jalur 2.
+
+Jalan tengahnya: saringan ada di atas daftar, **"semua tanaman" tetap yang terpilih saat
+layar dibuka**, dan gejala tetap yang tertulis besar pada tiap kartu. Yang memilih boleh
+mempersempit; yang tidak memilih mendapat layar yang sama seperti sebelumnya.
+
+Satu keputusan kecil di dalamnya menentukan benar-salahnya: **disaring menurut `hosts` —
+tanaman yang teksnya memang ditulis untuknya — bukan menurut tempat produknya terdaftar.**
+Keduanya berbeda dan bedanya persis kekeliruan yang aturan sebaran komoditas (D38)
+dipakai untuk mencegah: hawar daun punya tujuh produk terdaftar di cabai sementara teksnya
+ditulis untuk kentang dan tomat, dan menyodorkannya kepada penanam cabai berarti
+menjanjikan gejala yang tidak pernah ditulis untuknya.
+
 ---
 
 ## Pertanyaan yang masih terbuka
