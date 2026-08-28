@@ -1,4 +1,4 @@
-# Daftar Tinjauan — 72 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jagung, Kedelai, Kubis, Kakao, dan Kopi
+# Daftar Tinjauan — 80 Teks Gejala OPT Padi, Kentang, Tomat, Bawang merah, Cabai merah besar, Jagung, Kedelai, Kelapa sawit, Kubis, Kakao, dan Kopi
 
 > Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`
 > oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah
@@ -10,7 +10,7 @@
 
 ## 1. Apa yang diminta, dan apa yang tidak
 
-Seluruh 72 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
+Seluruh 80 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
 bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok
 “pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri
 menyebut OPT mana yang **terbantah** kalau hasilnya begitu.
@@ -25,7 +25,7 @@ Yang diminta dari peninjau, untuk tiap entri:
 
 Yang **tidak** diminta:
 
-- Bukan menambah OPT baru. Yang 72 ini dipilih karena paling sering dicari; kekurangan
+- Bukan menambah OPT baru. Yang 80 ini dipilih karena paling sering dicari; kekurangan
   cakupan sudah diketahui dan bukan yang ditinjau di sini.
 - Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi
   dan tidak melewati penilaian peninjau.
@@ -49,7 +49,7 @@ Ini disebut di muka supaya tidak ada yang tersembunyi.
 
 ---
 
-## 3. Seluruh 72 entri
+## 3. Seluruh 80 entri
 
 12 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
 **Kutu daun persik**, **Kutu kebul**, **Ulat grayak**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat tanah**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**. Teksnya menyebut tiap tanaman secara terpisah,
@@ -2017,6 +2017,214 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Kelapa sawit — 8 entri
+
+#### 1. Ulat kantong — *Metisa plana*
+
+`op:pst:00000073` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Hama daun sawit dengan pendaftaran terbanyak — 62 baris. Ulatnya hidup di dalam kantong dari potongan daun yang dibawanya ke mana-mana, dan kantong itulah yang membuat semprotan kontak sering gagal: cairannya tidak masuk. Yang menentukan SENSUS PELEPAH — menghitung ulat hidup pada pelepah contoh sebelum memutuskan — karena musuh alaminya banyak dan penyemprotan menyeluruh membunuh musuh alami itu lebih dulu daripada ulatnya. Registri bahkan mencatat kumbang penyerbuk Elaeidobius kamerunicus sebagai sasaran terdaftar pada satu baris; menyemprotnya MENURUNKAN pembentukan buah, bukan menaikkannya. Mahasena corbetti (1 baris), ulat kantong jenis lain, belum disatukan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Pelepah bawah menggundul dari ujung anak daun sampai tinggal tulang anak daun seperti lidi, dan pohon terlihat berlubang-lubang saat ditengadah. Di bawah anak daun menggantung KANTONG kecil memanjang dari potongan daun kering, sepanjang satu sampai tiga sentimeter, yang ikut bergoyang saat pelepah digerakkan.
+
+**Ciri pembanding**
+
+1. Pegang salah satu kantongnya dan buka. Ada ulat di dalamnya, dan kantong itu ikut terbawa ke mana pun ulatnya berpindah — tidak menempel tetap di satu tempat. Ulat api tidak berkantong: ia menempel telanjang di bawah anak daun.
+   → membantah: **Ulat api**
+2. Hitung dulu sebelum memutuskan. Ambil satu pelepah contoh dari beberapa pohon dan hitung ulat HIDUPNYA; kantong kosong yang tertinggal dari serangan lama menipu, dan menyemprot karena kantong kosong membunuh musuh alaminya tanpa alasan.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Ulat api — *Setothosea asigna*
+
+`op:pst:00000074` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Registri memecah ulat api jadi beberapa entitas: Setothosea asigna (40 baris), nama lamanya Thosea asigna (12), serta Setora nitens (18) dan Darna trima (1) yang jenis lain tetapi ditangani sama. Pintu ini berdiri di atas yang pertama; tiga puluh satu baris atas nama entitas lain tidak ikut terdaftar di sini. Bulunya MENYENGAT kulit — periksa dengan ranting atau bersarung tangan, jangan dengan tangan telanjang.*
+
+**Teks gejala yang tampil di layar**
+
+> Anak daun tergerus dari permukaan BAWAH sampai tinggal selaput bening, lalu berlubang dan mengering sehingga pelepah tampak seperti terbakar. Ulatnya menempel telanjang di bawah anak daun: pipih seperti siput, hijau kekuningan berpola, dengan duri-duri bercabang di punggungnya. Serangan berat menggunduli pohon dan menunda buah sampai dua tahun.
+
+**Ciri pembanding**
+
+1. Lihat ulatnya — JANGAN dipegang. Ulat api pipih dan menempel telanjang di bawah anak daun dengan duri bercabang yang menyengat; ulat kantong selalu berada di dalam kantong dari potongan daun.
+   → membantah: **Ulat kantong**
+2. Perhatikan bentuk kerusakannya. Ulat api mengerok anak daun sampai tinggal selaput lalu berlubang, sementara pelepahnya sendiri tetap utuh. Kumbang tanduk memotong pelepah muda sehingga saat membuka daunnya bertakik segitiga seperti digunting.
+   → membantah: **Kumbang tanduk**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Kumbang tanduk — *Oryctes rhinoceros*
+
+`op:pst:00000075` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Paling merusak pada tanaman muda dan pada tahun-tahun sesudah replanting, karena berkembang biak di batang sawit tua yang dibiarkan melapuk dan di tumpukan tandan kosong. Yang menentukan MEMBERANTAS TEMPAT BERKEMBANG BIAKNYA — mencacah dan meratakan batang tumbang, membalik tumpukan tandan kosong — ditambah perangkap feromon. Menyemprot pohon tidak menjangkau kumbang yang hidup di dalam tumpukan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Pelepah muda yang BARU MEMBUKA bertakik segitiga seperti digunting, dan pada serangan berat anak daunnya berbentuk kipas terpotong. Di pucuk ada lubang gerekan besar berserat kasar dengan serbuk seperti sabut menyembul. Tanaman muda yang titik tumbuhnya digerek bisa mati.
+
+**Ciri pembanding**
+
+1. Perhatikan bentuk potongan pada pelepah yang BARU MEMBUKA. Takik segitiga rapi seperti guntingan berarti pelepah itu digerek saat masih terlipat di pucuk — khas kumbang tanduk, dan kerusakannya baru terlihat berminggu-minggu sesudah kumbangnya pergi.
+   → membantah: **—**
+2. Raba lubang di pucuk. Kumbang tanduk meninggalkan lubang besar berserat kasar dengan serbuk seperti sabut; ulat api dan ulat kantong tidak melubangi pucuk sama sekali.
+   → membantah: **Ulat api**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Rayap tanah — *Coptotermes curvignathus*
+
+`op:pst:00000076` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Dari 71 baris pendaftarannya, 43 justru BUKAN untuk tanaman melainkan untuk bangunan — registri mencatatnya sebagai tempat aplikasi, bukan komoditas — dan yang tersisa untuk sawit 18 baris. Paling merusak di lahan gambut dan pada tanaman muda, dan menyerang dari akar ke atas sehingga kerusakannya sudah lanjut saat terlihat dari luar.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Pelepah bawah menguning lalu mengering seluruhnya sementara pelepah atas masih hijau, dan tanaman muda bisa mati mendadak. Pada pangkal batang dan akar menempel LORONG TANAH berkerak seperti jalur lumpur kering, dan bila dikupas ada rayap putih kecoklatan berhamburan di dalamnya.
+
+**Ciri pembanding**
+
+1. Kupas kerak tanah yang menempel di pangkal batang dengan parang atau kayu. Kalau di dalamnya ada rayap putih kecoklatan yang berhamburan, itu rayap tanah; kerak tanpa isi berarti serangan lama yang sudah berhenti, dan menyemprotnya tidak menyelamatkan apa pun.
+   → membantah: **—**
+2. Ketuk pangkal batang dan korek sedikit. Rayap memakan bagian dalam sehingga terdengar kopong sementara kulit luarnya masih utuh, dan selalu meninggalkan lorong tanah. Busuk pangkal batang melunakkan jaringan jadi rapuh dan berbau jamur, TANPA lorong tanah.
+   → membantah: **Busuk pangkal batang**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Bercak daun bibit sawit — *Curvularia maculans*
+
+`op:pst:00000077` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Penyakit PEMBIBITAN: dua belas dari tiga belas barisnya terdaftar untuk pembibitan kelapa sawit, bukan untuk kebun. Menyebar cepat pada bibit yang ditanam terlalu rapat dan disiram dari atas — menjarangkan bibit dan menyiram ke tanah mengurangi lebih banyak daripada menambah semprotan.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bintik bulat kecil TEMBUS CAHAYA pada daun bibit, lalu membesar jadi bercak coklat bertengah kelabu dengan halo kuning mengelilinginya. Bercak yang bersambung membuat daun mengering dari ujung; bibit yang berat serangannya kerdil dan tidak layak tanam.
+
+**Ciri pembanding**
+
+1. Terawang daun bibit ke arah cahaya saat bintiknya masih kecil. Bercak ini mulai sebagai bintik TEMBUS CAHAYA sebelum berwarna — tahap paling dini, dan tahap itulah yang masih bisa dijawab dengan menjarangkan bibit.
+   → membantah: **—**
+2. Lihat apakah ada halo kuning tegas mengelilingi bercaknya. Halo kuning dengan tengah kelabu khas penyakit ini; kerusakan karena terbakar matahari atau pupuk tidak berhalo dan mengikuti tepi daun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 6. Tikus pohon — *Rattus tiomanicus*
+
+`op:pst:00000078` · vertebrate · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Berbeda dari tikus sawah: yang ini MEMANJAT dan bersarang di tajuk, di ketiak pelepah, dan di tumpukan pelepah bekas tunasan. Yang menentukan burung hantu Tyto alba beserta pagupon sarangnya, dan itu berjalan di tingkat hamparan bukan per kebun — sebelas baris pendaftaran racun tidak menggantikannya.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Buah pada tandan tergerek dengan bekas gigitan bergerigi, dan brondolan bertumpuk di piringan dalam keadaan tergerus. Bunga jantan dan tandan muda ikut dimakan sehingga tandan gagal terbentuk. Ada jalur licin bekas lalu-lalang di pelepah, dan sarang dari serat di ketiak pelepah.
+
+**Ciri pembanding**
+
+1. Lihat bekas gigitan pada buahnya. Tikus meninggalkan gerusan bergerigi dengan bekas dua gigi seri yang sejajar; penggerek tandan meninggalkan lubang kecil beserta jaring dan kotoran di antara buah.
+   → membantah: **Penggerek tandan**
+2. Periksa ketiak pelepah dan tumpukan pelepah bekas tunasan. Tikus pohon bersarang DI ATAS, bukan di tanah. Kalau sarang dan lubangnya justru di tanah, itu tikus jenis lain dan penanganannya berbeda.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Penggerek tandan — *Tirathaba rufivena*
+
+`op:pst:00000079` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Paling merusak pada tanaman muda yang baru mulai berbuah dan pada kebun yang penyerbukannya buruk, karena bunga yang tidak jadi buah justru jadi tempatnya berkembang. Registri juga memuat Tirathaba sp. (2 baris) yang belum disatukan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Di antara buah pada tandan ada JARING benang bercampur kotoran berbutir dan sisa gerekan yang menggumpal, dan buah di sekitarnya berlubang lalu membusuk. Bunga jantan dan tandan muda paling sering terkena; tandan yang terserang berat gugur sebelum matang.
+
+**Ciri pembanding**
+
+1. Buka gumpalan di antara buah pada tandan. Penggerek tandan meninggalkan jaring benang bercampur kotoran beserta ulat kemerahan di dalamnya; tikus tidak berjaring dan meninggalkan gerusan terbuka pada permukaan buah.
+   → membantah: **Tikus pohon**
+2. Perhatikan umur kebun dan penyerbukannya. Penggerek tandan menumpuk pada tanaman muda dan pada kebun yang banyak buahnya tidak jadi — dan kalau kumbang penyerbuk Elaeidobius ikut mati karena penyemprotan, masalah itu justru bertambah, bukan berkurang.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Busuk pangkal batang — *Ganoderma boninense*
+
+`op:pst:00000080` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Ganoderma — penyakit sawit paling merugikan di Indonesia, dan punya TIGA baris penggunaan berlabel di seluruh registri. Tidak ada yang menyembuhkan pohon yang sudah bergejala: begitu tubuh buahnya muncul, pohon itu tinggal menunggu tumbang. Yang menentukan dikerjakan saat REPLANTING — membongkar dan mencacah tunggul serta akar sawit lama, memberi jeda tanam, dan tidak menanam bibit baru tepat di bekas lubang pohon sakit. Menyemprot pohon yang berdiri tidak menjangkau jamur yang hidup di akarnya.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Pelepah bawah menguning lalu mengering dan MENGGANTUNG di sekeliling batang seperti rok, sementara pucuknya masih tegak dengan daun tombak menumpuk tidak membuka. Pada pangkal batang tumbuh TUBUH BUAH seperti kipas atau piring, bertepi putih dengan permukaan coklat mengkilap. Pohon akhirnya tumbang di pangkal walau daunnya masih ada.
+
+**Ciri pembanding**
+
+1. Periksa pangkal batang sampai ke permukaan tanah, termasuk sisi yang tertutup pelepah dan gulma. Tubuh buah seperti kipas bertepi putih tanda yang paling pasti — dan begitu muncul, pohon itu tidak bisa diselamatkan. Yang masih bisa diselamatkan pohon di sekitarnya, lewat tindakan saat replanting.
+   → membantah: **—**
+2. Ketuk pangkal batang dan bandingkan bunyinya dengan pohon sehat. Yang terserang terdengar kopong dan jaringannya rapuh berbau jamur bila dikorek, TANPA lorong tanah. Rayap tanah selalu meninggalkan lorong tanah berkerak di permukaan batang.
+   → membantah: **Rayap tanah**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ### Kubis — 8 entri
 
 #### 1. Kutu daun persik — *Myzus persicae*
@@ -2486,8 +2694,8 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 ## 4. Yang kami tandai sendiri
 
 Dihitung dari datanya, bukan dari penilaian agronomi — supaya waktu peninjau tidak habis
-menemukan yang sudah kami ragukan. 33 dari 72 entri bertanda,
-dan secara keseluruhan **30 dari 144 ciri pembanding tidak menyebut apa yang dibantahnya**:
+menemukan yang sudah kami ragukan. 40 dari 80 entri bertanda,
+dan secara keseluruhan **38 dari 160 ciri pembanding tidak menyebut apa yang dibantahnya**:
 
 - **Trips** — kedua cirinya membantah OPT yang sama.
 - **Kutu kebul** — 1 ciri tidak menyebut apa yang dibantahnya.
@@ -2522,6 +2730,13 @@ dan secara keseluruhan **30 dari 144 ciri pembanding tidak menyebut apa yang dib
 - **Kutu putih** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Kutu tempurung** — 1 ciri tidak menyebut apa yang dibantahnya.
 - **Bercak daun kopi** — kedua cirinya membantah OPT yang sama.
+- **Ulat kantong** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Kumbang tanduk** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Rayap tanah** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Bercak daun bibit sawit** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Tikus pohon** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Penggerek tandan** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Busuk pangkal batang** — 1 ciri tidak menyebut apa yang dibantahnya.
 
 Dua pola itu **bukan bukti entrinya salah.** Ciri yang membantah OPT yang sama dua kali
 bisa saja memang dua sudut yang berbeda terhadap satu kekeliruan yang paling sering
