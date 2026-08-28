@@ -2871,8 +2871,8 @@
             "id": "Cabut tanaman kerdil beserta tanahnya hati-hati, lalu tatap akarnya kena cahaya. Butiran bulat sebesar butir pasir MENEMPEL pada akar — mula-mula putih, lalu kuning keemasan, lalu coklat. Kalau akarnya justru menggembung jadi bagian dari akar itu sendiri, itu nematoda puru akar, bukan sista kuning."
           },
           "rules_out": {
-            "id": "op:pst:00001223",
-            "label": "Nematoda Puru Akar"
+            "id": "op:pst:00000130",
+            "label": "Nematoda puru akar"
           }
         },
         {
@@ -11586,6 +11586,411 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, padi, dan tambak, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000129",
+      "key": "kutu-daun-kapas",
+      "label": {
+        "id": "Kutu daun kapas"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Aphis gossypii",
+      "hosts": [
+        {
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        },
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        },
+        {
+          "id": "op:cmd:00001015",
+          "label": "Jeruk"
+        },
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        },
+        {
+          "id": "op:cmd:00000004",
+          "label": "Bawang merah"
+        },
+        {
+          "id": "op:cmd:00001028",
+          "label": "Apel"
+        },
+        {
+          "id": "op:cmd:00001026",
+          "label": "Kacang panjang"
+        }
+      ],
+      "definition": {
+        "id": "Kutu daun paling polifag di antara semuanya, dan yang paling sering tercatat registri sekadar sebagai \"Aphis sp.\" — 35 baris lagi tanpa nama spesies, yang kini ikut terhitung di bawah pintu ini pada komoditas yang sama. Warnanya berubah-ubah dari kuning pucat sampai hijau tua sampai hampir hitam menurut cuaca dan tanaman inangnya, jadi WARNA bukan cara mengenalinya. Penular banyak virus; mengendalikannya melindungi tanaman yang belum tertular, bukan menyembuhkan yang sudah."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Aphis gossypii",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "9083295",
+          "uri": "https://www.gbif.org/species/9083295",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Kutu bertubuh lunak seperti buah pir kecil berkelompok di permukaan BAWAH daun muda dan pucuk, warnanya bisa apa saja dari kuning sampai kehitaman dalam satu petak yang sama. Daun muda mengeriting ke bawah dan mengerut; permukaan di bawahnya lengket lalu ditumbuhi jelaga hitam, dan semut naik-turun di batang."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Balik daun muda dan lihat bentuk tubuhnya, bukan warnanya. Kutu daun berbentuk seperti buah pir kecil dengan sepasang tonjolan seperti knalpot di ujung belakang tubuh; kutu kebul bersayap putih dan beterbangan saat tanaman disentuh."
+          },
+          "rules_out": {
+            "id": "op:pst:00000003",
+            "label": "Kutu kebul"
+          }
+        },
+        {
+          "check": {
+            "id": "Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan jelaga hitam yang tumbuh di atasnya bisa diusap hilang — yang perlu ditangani kutunya. Trips dan tungau tidak menghasilkan embun madu sama sekali."
+          },
+          "rules_out": {
+            "id": "op:pst:00000001",
+            "label": "Trips"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000130",
+      "key": "nematoda-puru-akar",
+      "label": {
+        "id": "Nematoda puru akar"
+      },
+      "pest_kind": "nematode",
+      "scientific_name": "Meloidogyne sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        },
+        {
+          "id": "op:cmd:00001003",
+          "label": "Cabai"
+        },
+        {
+          "id": "op:cmd:00001008",
+          "label": "Kentang"
+        },
+        {
+          "id": "op:cmd:00001021",
+          "label": "Semangka"
+        },
+        {
+          "id": "op:cmd:00001031",
+          "label": "Melon"
+        },
+        {
+          "id": "op:cmd:00001045",
+          "label": "Mentimun"
+        },
+        {
+          "id": "op:cmd:00001011",
+          "label": "Kubis"
+        },
+        {
+          "id": "op:cmd:00001006",
+          "label": "Tebu"
+        },
+        {
+          "id": "op:cmd:00001082",
+          "label": "Krisan"
+        },
+        {
+          "id": "op:cmd:00001041",
+          "label": "Pisang"
+        }
+      ],
+      "definition": {
+        "id": "Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Meloidogyne sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 9 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "9705419",
+          "uri": "https://www.gbif.org/species/9705419",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Chromadorea; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Meloidogyne'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Nematoda Bintil Akar",
+        "Nematoda",
+        "Nematoda Bintil Akar",
+        "Nematoda Puru Akar",
+        "Penyakit Bengkak Akar"
+      ],
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Meloidogyne",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Tanaman kerdil dan layu pada siang hari lalu pulih sore, berulang, sementara pupuk dan air cukup; gejalanya BERKELOMPOK di bagian petak tertentu, bukan merata. Dicabut, akarnya menggembung jadi BINTIL bulat tidak beraturan yang menyatu dengan akar itu sendiri — tidak bisa dilepas dengan kuku."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Cabut tanaman kerdil beserta akarnya lalu cuci tanahnya. Puru akar adalah pembengkakan yang MENYATU dengan akar dan tidak bisa dicungkil lepas; bintil rhizobium pada kacang-kacangan menempel di sisi akar dan lepas ditekan kuku, dan itu justru menguntungkan."
+          }
+        },
+        {
+          "check": {
+            "id": "Bandingkan tanaman kerdil dengan tetangganya yang sehat, dan lihat sebarannya. Nematoda puru akar berkelompok di petak yang sama tiap musim; kekurangan hara membuat seluruh petak kerdil merata."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000131",
+      "key": "ulat-api-setora",
+      "label": {
+        "id": "Ulat api Setora"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Setora nitens",
+      "hosts": [
+        {
+          "id": "op:cmd:00001151",
+          "label": "Kelapa sawit"
+        },
+        {
+          "id": "op:cmd:00001043",
+          "label": "Kelapa"
+        }
+      ],
+      "definition": {
+        "id": "Jenis ulat api kedua yang punya pendaftarannya sendiri di registri — 18 baris — dan ditangani persis sama dengan Setothosea asigna: sensus pelepah lebih dulu, dan bulunya menyengat sehingga diperiksa dengan ranting bukan tangan. Yang membedakan keduanya cuma rupa ulatnya, dan itu disebut di bawah supaya sensusnya tidak salah hitung, bukan supaya pengendaliannya berbeda."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "1753749",
+          "uri": "https://www.gbif.org/species/1753749",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Setora nitens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 17 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Setoria nitens",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Ulat Api",
+        "Setoria nitens",
+        "Ulat Api"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Anak daun tergerus dari permukaan bawah sampai tinggal selaput lalu berlubang, sama seperti ulat api yang lain. Ulatnya HIJAU dengan garis biru kehitaman memanjang di tengah punggung dan garis kuning di sisinya, bertubuh lonjong pipih dengan duri di sepanjang tepi — berbeda dari Setothosea yang berpola coklat bercabang di punggung."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat punggung ulatnya, JANGAN dipegang. Setora bergaris biru kehitaman memanjang di tengah punggung dengan latar hijau; Setothosea berpola coklat bercabang. Keduanya ulat api dan ditangani sama — yang berubah cuma angka pada lembar sensus."
+          },
+          "rules_out": {
+            "id": "op:pst:00000074",
+            "label": "Ulat api"
+          }
+        },
+        {
+          "check": {
+            "id": "Hitung ulat hidup per pelepah contoh sebelum memutuskan, dan jumlahkan KEDUA jenis. Ambang pengendalian ulat api dihitung dari jumlah seluruh ulat api, bukan per jenis."
+          },
+          "rules_out": {
+            "id": "op:pst:00000074",
+            "label": "Ulat api"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000132",
+      "key": "bubuk-jagung",
+      "label": {
+        "id": "Bubuk jagung"
+      },
+      "pest_kind": "insect",
+      "scientific_name": "Sitophilus zeamais",
+      "hosts": [
+        {
+          "id": "op:cmd:00001023",
+          "label": "Beras di penyimpanan"
+        },
+        {
+          "id": "op:cmd:00001080",
+          "label": "Jagung di penyimpanan"
+        }
+      ],
+      "definition": {
+        "id": "Kembar dekat bubuk beras dan ditangani sama; membedakan keduanya menuntut kaca pembesar dan tidak mengubah tindakan. Yang membedakannya dari sisi kerugian: ia lebih menyukai jagung dan biji yang lebih besar, dan lebih kuat terbang sehingga menyebar antar-gudang lewat udara, bukan cuma lewat karung yang dipindahkan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "4291553",
+          "uri": "https://www.gbif.org/species/4291553",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Insecta; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sitohilus zeamais",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sitophillus zeamais",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sitophilus zeamais",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 13 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Sitophylus zeamays",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama",
+        "Hama Gudang",
+        "Hama Gudang Komoditas Jagung",
+        "Sitohilus zeamais",
+        "Sitophillus zeamais",
+        "Sitophylus zeamays"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Butir jagung atau beras berlubang bundar rapi dan terasa ringan, dengan bubuk halus di dasar tumpukan. Kumbang bermoncong panjang sepanjang 3–4 mm berjalan di antara butir; pada tumpukan jagung ia sering terlihat TERBANG pendek saat karung dibuka, dan itu yang paling membedakannya dari bubuk beras."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Buka karung dan perhatikan apakah ada yang TERBANG. Bubuk jagung terbang pendek; bubuk beras jarang terbang dan lebih sering merayap. Keduanya bermoncong panjang, dan keduanya ditangani sama."
+          },
+          "rules_out": {
+            "id": "op:pst:00000123",
+            "label": "Bubuk beras"
+          }
+        },
+        {
+          "check": {
+            "id": "Rendam segenggam di air dan hitung butir yang MENGAPUNG. Butir berongga karena dimakan dari dalam akan mengapung — pemeriksaan yang sama berlaku untuk kedua kumbang bermoncong, dan angkanya yang menentukan apakah tumpukan masih layak disimpan."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT beberapa komoditas, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
