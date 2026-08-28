@@ -46,6 +46,45 @@ const tulis = process.argv.includes('--tulis');
 
 // `dasar` wajib menyebut kenapa keduanya tempat/tanaman yang SAMA.
 const KELOMPOK = [
+  // --- fase dan tempat yang sama, ditulis dengan kata yang berbeda ---
+  // Fase TETAP terpisah dari tanamannya — "Pembibitan kelapa sawit" bukan "Kelapa sawit",
+  // karena umur dan perlakuannya berbeda. Yang disatukan di sini hanya cara MENULISKAN
+  // fase yang sama, persis seperti "di" lawan "dalam" pada gudang beras.
+  {
+    menang: 'op:cmd:00001052',
+    kalah: ['op:cmd:00001050'],
+    dasar: '"Nanas" dan "Nenas" dua ejaan untuk Ananas comosus yang sama, dipakai bergantian di Indonesia. Yang menang ejaan yang dipakai 94 catatan varietas, sementara yang kalah cuma satu.',
+  },
+  {
+    menang: 'op:cmd:00001109',
+    kalah: ['op:cmd:00001416', 'op:cmd:00001198', 'op:cmd:00001507'],
+    dasar: '"Tambak udang dan ikan bandeng", "Tambak budidaya udang windu dan ikan bandeng", dan "Tambak udang" seluruhnya menyebut tambak yang sama dengan "Budidaya udang windu dan ikan bandeng"; yang berbeda cuma seberapa panjang kalimatnya.',
+  },
+  {
+    menang: 'op:cmd:00001207',
+    kalah: ['op:cmd:00001320'],
+    dasar: '"Tembakau di pembibitan" dan "Tembakau di persemaian" menyebut fase persemaian tembakau yang sama; pembibitan dan persemaian dua kata untuk bedengan semai yang sama.',
+  },
+  {
+    menang: 'op:cmd:00001508',
+    kalah: ['op:cmd:00001454'],
+    dasar: '"Pembibitan Tanaman Cengkeh" dan "Pembibitan cengkeh" menyebut fase pembibitan cengkeh yang sama; kata "tanaman" tidak membedakan apa pun.',
+  },
+  {
+    menang: 'op:cmd:00001230',
+    kalah: ['op:cmd:00001494'],
+    dasar: '"Teh di persemaian" dan "Pembibitan teh" menyebut fase pembibitan teh yang sama, dan ketiga barisnya sama-sama nematoda parasit akar bibit.',
+  },
+  {
+    menang: 'op:cmd:00001482',
+    kalah: ['op:cmd:00001296'],
+    dasar: '"Daun tembakau" pada pendaftaran kumbang gudang Lasioderma menyebut daun tembakau YANG DISIMPAN, sama dengan "Tembakau di penyimpanan"; kumbang itu hama gudang dan tidak menyerang tembakau yang masih tumbuh.',
+  },
+  {
+    menang: 'op:cmd:00001170',
+    kalah: ['op:cmd:00001310'],
+    dasar: '"Terigu" pada pendaftaran kumbang gudang Tribolium menyebut tepung terigu yang disimpan, sama dengan "Tepung terigu dalam penyimpanan".',
+  },
   // --- "Budidaya X" bukan fase, melainkan kata untuk X ---
   // Ini kebalikan dari kelompok di bawah, dan pembalikannya yang membuatnya penting:
   // pada kelapa sawit dan kopi, MASSA pendaftaran justru duduk di ejaan "Budidaya", bukan

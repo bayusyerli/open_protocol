@@ -1,4 +1,4 @@
-# Daftar Tinjauan — 189 Teks Gejala OPT Padi, Tomat, Jagung, Cabai, Jeruk, Kentang, Bawang merah, Melon, Semangka, Kedelai, Kubis, Mentimun, Kelapa sawit, Apel, Kacang hijau, Kacang panjang, Kakao, Kelapa, Mangga, Tembakau, Kopi, Karet, Bawang putih, Beras, Beras di penyimpanan, Jagung di penyimpanan, Krisan, Sawi, Tebu, Teh, Tepung terigu dalam penyimpanan, Kacang tanah, Lada, Budidaya udang windu dan ikan bandeng, Pisang, Anggur, Bawang daun, dan Stroberi
+# Daftar Tinjauan — 200 Teks Gejala OPT Padi, Tomat, Jagung, Jeruk, Cabai, Kentang, Bawang merah, Melon, Semangka, Kedelai, Kubis, Mentimun, Kelapa sawit, Kakao, Apel, Kacang hijau, Kacang panjang, Mangga, Kelapa, Kopi, Tembakau, Karet, Bawang putih, Beras, Beras di penyimpanan, Jagung di penyimpanan, Krisan, Sawi, Tebu, Teh, Tepung terigu dalam penyimpanan, Kacang tanah, Cengkeh, Lada, Pembibitan kelapa sawit, Budidaya udang windu dan ikan bandeng, Kapas, Kubis Bunga, Nenas, Pembibitan cengkeh, Pembibitan teh, Pisang, Alpukat, Anggrek, Anggur, Bawang daun, Bibit kacang tanah, Buah naga, Jambu biji, Rambutan, Stroberi, Tembakau di penyimpanan, Tembakau di persemaian, Terung, Ubi jalar, dan Wortel
 
 > Bahan untuk agronom atau BPTP · dibangkitkan dari `spec/vocab/pest.json`
 > oleh `spec/tools/susun-tinjauan-gejala.mjs` · jalankan ulang bila teksnya berubah
@@ -10,7 +10,7 @@
 
 ## 1. Apa yang diminta, dan apa yang tidak
 
-Seluruh 189 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
+Seluruh 200 teks di bawah tampil di layar yang dibuka petani ketika tanamannya
 bermasalah. Layar itu **tidak mendiagnosis**: ia menyajikan dugaan, lalu membuka blok
 “pastikan dulu” berisi dua ciri yang bisa diperiksa sendiri tanpa alat. Tiap ciri
 menyebut OPT mana yang **terbantah** kalau hasilnya begitu.
@@ -25,7 +25,7 @@ Yang diminta dari peninjau, untuk tiap entri:
 
 Yang **tidak** diminta:
 
-- Bukan menambah OPT baru. Yang 189 ini dipilih karena paling sering dicari; kekurangan
+- Bukan menambah OPT baru. Yang 200 ini dipilih karena paling sering dicari; kekurangan
   cakupan sudah diketahui dan bukan yang ditinjau di sini.
 - Bukan merekomendasikan bahan aktif atau merek. Sisi itu datang dari registri resmi
   dan tidak melewati penilaian peninjau.
@@ -49,10 +49,10 @@ Ini disebut di muka supaya tidak ada yang tersembunyi.
 
 ---
 
-## 3. Seluruh 189 entri
+## 3. Seluruh 200 entri
 
-70 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
-**Kutu daun persik**, **Kutu kebul**, **Lalat buah**, **Ulat grayak**, **Tungau merah**, **Antraknosa**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat bawang**, **Pengorok daun bawang**, **Trips bawang**, **Ulat tanah**, **Bercak ungu**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**, **Belalang**, **Ulat krop**, **Bercak daun alternaria**, **Penggerek polong**, **Penggulung daun**, **Lalat bibit kedelai**, **Helopeltis**, **Kutu putih**, **Kutu tempurung**, **Ulat kantong**, **Ulat api**, **Kumbang tanduk**, **Rayap tanah**, **Busuk pangkal batang**, **Embun bulu cucurbit**, **Antraknosa cucurbit**, **Oteng-oteng**, **Embun tepung cucurbit**, **Penggerek polong kacang panjang**, **Kutu daun kacang**, **Bercak daun kacang panjang**, **Uret**, **Kumbang tepung**, **Bubuk beras**, **Bubuk gabah**, **Tungau kuning**, **Kutu daun kapas**, **Nematoda puru akar**, **Ulat api Setora**, **Bubuk jagung**, **Embun tepung cabai**, **Semut api**, **Belalang kembara**, **Rebah kecambah**, **Orong-orong**, **Kapang kelabu**, **Kumbang gudang gepeng**, **Ulat jengkal kubis**, **Karat kacang panjang**, **Jamur upas**, **Busuk batang bergetah**, **Kutu daun bawang**, **Bercak daun cucurbit**, **Kutu sisik koma**, **Lalat buah cucurbit**, **Busuk pangkal batang sklerotium**, **Busuk hitam kubis**, **Trips buah**, **Penggerek batang kakao**, **Kutu perisai kelapa**, **Busuk putih bawang**. Teksnya menyebut tiap tanaman secara terpisah,
+72 entri berinang lebih dari satu dan karena itu muncul di lebih dari satu kelompok:
+**Kutu daun persik**, **Kutu kebul**, **Lalat buah**, **Ulat grayak**, **Tungau merah**, **Antraknosa**, **Layu fusarium**, **Layu bakteri**, **Virus kuning keriting**, **Ulat bawang**, **Pengorok daun bawang**, **Trips bawang**, **Ulat tanah**, **Bercak ungu**, **Hawar daun**, **Bercak kering**, **Pengorok daun kentang**, **Penggerek buah**, **Trips kentang**, **Belalang**, **Ulat krop**, **Bekicot**, **Bercak daun alternaria**, **Penggerek polong**, **Penggulung daun**, **Lalat bibit kedelai**, **Helopeltis**, **Kutu putih**, **Kutu tempurung**, **Ulat kantong**, **Ulat api**, **Kumbang tanduk**, **Rayap tanah**, **Busuk pangkal batang**, **Embun bulu cucurbit**, **Antraknosa cucurbit**, **Oteng-oteng**, **Embun tepung cucurbit**, **Penggerek polong kacang panjang**, **Kutu daun kacang**, **Bercak daun kacang panjang**, **Uret**, **Kumbang tepung**, **Bubuk beras**, **Bubuk gabah**, **Tungau kuning**, **Kutu daun kapas**, **Nematoda puru akar**, **Ulat api Setora**, **Bubuk jagung**, **Embun tepung cabai**, **Semut api**, **Belalang kembara**, **Rebah kecambah**, **Orong-orong**, **Kapang kelabu**, **Kumbang gudang gepeng**, **Ulat jengkal kubis**, **Karat kacang panjang**, **Jamur upas**, **Busuk batang bergetah**, **Kutu daun bawang**, **Bercak daun cucurbit**, **Kutu sisik koma**, **Lalat buah cucurbit**, **Busuk pangkal batang sklerotium**, **Busuk hitam kubis**, **Trips buah**, **Penggerek batang kakao**, **Kutu perisai kelapa**, **Busuk putih bawang**, **Embun jelaga**. Teksnya menyebut tiap tanaman secara terpisah,
 dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman Anda.
 
 ### Padi — 27 entri
@@ -1159,7 +1159,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -1769,485 +1769,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-### Cabai — 19 entri
-
-#### 1. Trips — *Thrips parvispinus*
-
-`op:pst:00000001` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Vektor virus, menyebabkan daun keriting ke atas.*
-
-> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
-
-**Teks gejala yang tampil di layar**
-
-> Daun muda mengeriting ke ATAS seperti mangkuk, dan permukaan bawahnya keperakan atau kecoklatan seperti tergores halus. Bunga dan tunas rontok sebelum jadi buah; tanaman kerdil dan pucuknya mengumpul.
-
-**Ciri pembanding**
-
-1. Kibaskan daun pucuk di atas kertas putih. Trips terlihat sebagai serangga kuning kecoklatan sepanjang 1–2 mm yang langsung bergerak cepat. Kalau tidak ada yang bergerak, penyebabnya bukan trips.
-   → membantah: **Virus kuning keriting**
-2. Lihat warna daun yang mengeriting. Pada trips daunnya tetap hijau dengan goresan keperakan; kalau daunnya menguning terang dan mengecil tanpa goresan, itu gejala virus dan tidak ada semprotan yang menyembuhkannya.
-   → membantah: **Virus kuning keriting**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 2. Kutu daun persik — *Myzus persicae*
-
-`op:pst:00000002` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Vektor beberapa virus penting, termasuk virus penggulung daun pada kentang. Mengendalikannya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergejala.*
-
-**Teks gejala yang tampil di layar**
-
-> Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.
-
-**Ciri pembanding**
-
-1. Balik daun pucuk. Kutu daun bertubuh lunak seperti buah pir kecil, hijau atau kekuningan, berkelompok rapat dan bergerak lambat — berbeda dari trips yang langsing dan berlari cepat.
-   → membantah: **Trips**
-2. Raba permukaan daun. Lengket berarti ada embun madu, dan itu hanya dihasilkan kutu daun atau kutu kebul. Trips dan tungau tidak menghasilkannya.
-   → membantah: **Tungau merah**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 3. Kutu kebul — *Bemisia tabaci*
-
-`op:pst:00000003` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Vektor virus kuning keriting.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Serangga putih sangat kecil beterbangan berhamburan saat tanaman disentuh, lalu hinggap lagi. Daun lengket dan berjelaga hitam, dan lama-lama menguning.
-
-**Ciri pembanding**
-
-1. Goyang tanaman. Kutu kebul terbang seperti serbuk bedak putih lalu kembali hinggap; kutu daun tidak terbang berhamburan seperti itu.
-   → membantah: **Kutu daun persik**
-2. Balik daun bawah. Nimfa kutu kebul menempel seperti sisik bening pipih dan tidak bergerak sama sekali — mudah dikira kotoran.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 4. Lalat buah — *Bactrocera dorsalis*
-
-`op:pst:00000004` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Lalat buah oriental, berinang sangat luas — cabai, jeruk, mangga, tomat, dan puluhan buah lain — sehingga petak yang bersih tetap terserang dari pohon tetangga. Yang menentukan pengumpulan buah gugur dan perangkap serempak se-hamparan, bukan penyemprotan sendiri-sendiri.*
-
-> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
-
-**Teks gejala yang tampil di layar**
-
-> Buah berlubang tusukan sebesar ujung jarum, di sekitarnya melunak dan basah, lalu gugur sebelum tua. Di dalam buah yang gugur ada belatung putih.
-
-**Ciri pembanding**
-
-1. Belah buah yang gugur. Kalau ada belatung putih tanpa kaki yang melenting saat disentuh, itu lalat buah. Antraknosa tidak pernah berbelatung.
-   → membantah: **Antraknosa**
-2. Lihat bentuk kerusakannya. Lalat buah meninggalkan titik tusukan dengan daerah lembek berair di sekitarnya; antraknosa memberi bercak melingkar cekung dan kering dengan titik hitam di tengahnya.
-   → membantah: **Antraknosa**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 5. Ulat grayak — *Spodoptera litura*
-
-`op:pst:00000005` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Daun berlubang tidak beraturan sampai tinggal tulang daunnya, dan kerusakannya bertambah cepat dalam semalam. Ada butiran kotoran hitam menumpuk di ketiak daun.
-
-**Ciri pembanding**
-
-1. Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok.
-   → membantah: **—**
-2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya. Ulat grayak jagung berbeda: ia bertahan di dalam corong pucuk bersama kotoran basahnya, dan kepalanya bertanda Y terbalik.
-   → membantah: **Ulat grayak jagung**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 6. Tungau merah — *Tetranychus urticae*
-
-`op:pst:00000006` · mite · taksonomi terverifikasi GBIF (exact, 98%)
-
-*Tungau berinang sangat luas yang menumpuk pada musim kering dan pada tanaman berdebu di pinggir jalan. Bukan serangga: insektisida umum tidak menyentuhnya, dan justru menghabiskan tungau pemangsa yang menahannya.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Daun berbintik kuning halus rapat seperti tertusuk jarum, lalu menguning menyeluruh, kecoklatan, dan kering. Serangan berat meninggalkan anyaman benang halus di pucuk dan bawah daun.
-
-**Ciri pembanding**
-
-1. Cari anyaman benang halus di bawah daun dan di sela pucuk, paling jelas kena sinar miring. Trips dan kutu tidak pernah membuat anyaman.
-   → membantah: **Trips**
-2. Balik daun dan tatap lama. Tungau tampak sebagai titik-titik bergerak jauh lebih kecil dari trips — di bawah setengah milimeter, kemerahan atau kehijauan dengan dua bercak gelap.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 7. Antraknosa — *Colletotrichum spp.*
-
-`op:pst:00000007` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
-
-*Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit. Tomat ikut jadi inang di sini dan tidak di pintu spesiesnya, karena antraknosa buah tomat memang dilayani beberapa Colletotrichum yang tidak terpisahkan di kebun.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Bercak melingkar cekung pada buah, mula-mula berair lalu meluas dan menghitam. Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar. Buah akhirnya mengering dan keriput.
-
-**Ciri pembanding**
-
-1. Lihat titik hitam di tengah bercak. Susunannya melingkar sepusat, dan itu tubuh buah jamurnya — tidak ada pada busuk karena tusukan lalat buah.
-   → membantah: **Lalat buah**
-2. Tekan bercaknya. Antraknosa cekung dan kering seperti kulit tertarik ke dalam; busuk bakteri lembek berair dan berbau.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 8. Layu fusarium — *Fusarium oxysporum*
-
-`op:pst:00000008` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Pada cabai dan tomat tanaman layu perlahan selama beberapa hari; daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap. Pada bawang merah daun menguning dari ujung lalu MELENGKUNG dan terpelintir — dari situ nama moler — dan tanaman mudah tercabut karena dasar umbinya sudah membusuk.
-
-**Ciri pembanding**
-
-1. Belah pangkal batang atau umbi membujur. Pada cabai dan tomat pembuluh di dalamnya coklat memanjang sementara jaringan lain masih putih. Pada bawang merah dasar umbi tempat akar keluar membusuk kecoklatan, sering berselaput putih seperti kapas.
-   → membantah: **—**
-2. UJI GELAS. Potong batang atau leher umbi dekat pangkal, celupkan ujungnya ke gelas berisi air bening, diamkan lima menit. Kalau TIDAK keluar lendir putih, penyebabnya fusarium, bukan bakteri.
-   → membantah: **Layu bakteri**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 9. Layu bakteri — *Ralstonia solanacearum*
-
-`op:pst:00000009` · disease_bacterial · taksonomi terverifikasi GBIF (exact, 99%)
-
-> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
-
-**Teks gejala yang tampil di layar**
-
-> Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah. Pada kentang umbinya ikut terkena: cincin pembuluh di dalam umbi kecoklatan, dan dari mata tunas keluar lendir putih yang mengering jadi kerak bertanah.
-
-**Ciri pembanding**
-
-1. UJI GELAS. Potong batang dekat pangkal — pada kentang boleh juga umbinya — lalu celupkan ujungnya ke gelas berisi air bening dan diamkan lima menit. Untaian lendir putih susu yang turun perlahan dari potongan berarti layu bakteri.
-   → membantah: **Layu fusarium**
-2. Perhatikan warna daun saat layu. Layu bakteri menyerang cepat dengan daun masih hijau; fusarium menguningkan daun bawah lebih dulu dan berjalan berhari-hari.
-   → membantah: **Layu fusarium**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 10. Virus kuning keriting — *Begomovirus*
-
-`op:pst:00000010` · disease_viral · taksonomi terverifikasi GBIF (exact, 100%)
-
-*Ditularkan kutu kebul; tidak ada pengendalian kuratif, hanya pencegahan. Menyerang cabai dan tomat.*
-
-**Teks gejala yang tampil di layar**
-
-> Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun.
-
-**Ciri pembanding**
-
-1. Periksa daun yang menguning itu sendiri. Tidak ada lubang, bercak, goresan, anyaman, atau serangga di atasnya — yang berubah hanya warna dan bentuknya.
-   → membantah: **Trips**
-2. Goyang tanaman di sekitarnya dan cari kutu kebul putih yang beterbangan. Virus ini ditularkan kutu kebul, jadi kehadirannya menguatkan — tetapi mengendalikan kutu kebulnya tidak menyembuhkan tanaman yang sudah terkena.
-   → membantah: **Kutu kebul**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 11. Penggerek buah — *Helicoverpa armigera*
-
-`op:pst:00000023` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
-
-**Teks gejala yang tampil di layar**
-
-> Buah atau tongkol berlubang bundar bersih di dekat tangkainya, dan dari lubang itu menyembul kotoran berbutir basah. Di dalam satu buah biasanya hanya ADA SATU ulat, karena yang lebih besar memakan yang lain. Buah yang terlanjur berlubang membusuk dan gugur.
-
-**Ciri pembanding**
-
-1. Belah buah yang berlubang. Penggerek buah meninggalkan SATU ulat gemuk bergaris memanjang beserta rongga besar dan kotoran. Lalat buah meninggalkan belatung putih tanpa kaki yang melenting, beberapa sekaligus, dan tidak ada lubang masuk yang bundar.
-   → membantah: **Lalat buah**
-2. Lihat lubangnya dari luar. Penggerek buah masuk lewat lubang bundar seukuran ujung pensil dengan kotoran menyembul. Antraknosa tidak berlubang — ia memberi bercak melingkar cekung dengan titik hitam di tengahnya.
-   → membantah: **Antraknosa**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 12. Antraknosa cabai — *Colletotrichum capsici*
-
-`op:pst:00000120` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
-
-*Patek. Entitas INI yang memegang hampir seluruh pendaftaran antraknosa cabai — 102 baris — sementara pintu "Antraknosa" yang lebih dulu ada berdiri di atas sasaran genus Colletotrichum spp. yang cuma dipakai 8 baris. Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang membedakan hanya bagaimana registri menuliskan sasarannya. Sporanya menempel sejak buah masih hijau lalu diam sampai buah memerah, jadi menyemprot saat buah sudah berbercak selalu terlambat.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Bercak melingkar CEKUNG pada buah, mula-mula berair lalu meluas dan menghitam, dan di tengah bercak muncul titik-titik hitam kecil tersusun melingkar sepusat. Buah yang terkena mengering keriput dan tetap menggantung; pada serangan berat buah merah berguguran sebelum sempat dipetik.
-
-**Ciri pembanding**
-
-1. Lihat susunan titik hitam di tengah bercak. Antraknosa menyusunnya MELINGKAR sepusat — itu tubuh buah jamurnya. Busuk karena tusukan lalat buah tidak bertitik hitam bersusun dan berbelatung di dalamnya.
-   → membantah: **Lalat buah**
-2. Ingat kapan buahnya mulai berbercak. Antraknosa menempel sejak buah masih hijau dan baru terlihat saat memerah — buah yang mulus di kebun bisa berbercak di keranjang. Kalau bercak sudah ada sejak buah kecil dan tidak meluas, penyebabnya lain.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 13. Bercak daun cabai — *Cercospora capsici*
-
-`op:pst:00000121` · disease_fungal · taksonomi terverifikasi GBIF (exact, 97%)
-
-*Bercak mata katak pada cabai — 73 baris penggunaan berlabel, dan sampai sekarang tidak punya pintu sama sekali di jalur ini. Menyerang daun, bukan buah, dan kerugiannya lewat daun yang rontok sehingga buah terbakar matahari dan tanaman berhenti berbunga. Paling parah pada musim hujan dan pada pertanaman rapat.*
-
-**Teks gejala yang tampil di layar**
-
-> Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu tipis dan tepi coklat gelap yang tegas — bentuknya seperti mata, dan tengahnya sering berlubang saat mengering. Daun yang berbercak banyak menguning lalu RONTOK dari bawah ke atas, sampai batang tinggal telanjang sementara buahnya masih menggantung.
-
-**Ciri pembanding**
-
-1. Lihat apakah buahnya ikut berbercak. Bercak daun cabai menyerang DAUN dan tangkai saja — buahnya mulus. Kalau buah ikut berbercak melingkar cekung, itu antraknosa.
-   → membantah: **Antraknosa cabai**
-2. Terawang bercak daunnya ke cahaya. Bercak daun cabai bertengah TIPIS sampai tembus cahaya dan sering berlubang; bercak karena tusukan trips atau terbakar pupuk tidak bundar dan tidak bertepi coklat tegas.
-   → membantah: **Trips**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 14. Busuk pangkal batang cabai — *Phytophthora capsici*
-
-`op:pst:00000125` · disease_oomycete · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Oomycete, bukan jamur sejati — metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada lada (6 baris) dan bawang merah (1), dan teks di bawah ditulis untuk cabai. Menyebar lewat air yang menggenang dan mengalir di permukaan tanah, jadi ia menyerang berlajur mengikuti bedengan yang tergenang — guludan tinggi dan drainase menurunkan lebih banyak daripada menambah semprotan.*
-
-**Teks gejala yang tampil di layar**
-
-> Tanaman layu mendadak dan tidak pulih, dan pada pangkal batang tepat di permukaan tanah ada bagian yang MELINGKARI batang berwarna coklat kehitaman dan basah, sering dengan batas tegas seperti diikat. Daun tetap menempel saat tanaman mati. Buah yang menyentuh tanah membusuk berair dan berselaput putih halus pada cuaca lembap.
-
-**Ciri pembanding**
-
-1. Lihat di mana batangnya berubah warna. Busuk pangkal batang melingkari batang tepat di PERMUKAAN TANAH dengan batas tegas seperti diikat; layu fusarium tidak menghitamkan permukaan batang — yang coklat justru pembuluh di dalamnya saat dibelah.
-   → membantah: **Layu fusarium**
-2. Petakan tanaman yang mati di bedengan. Busuk pangkal batang menyerang BERLAJUR mengikuti alur air dan bagian yang tergenang; layu bakteri tersebar tanpa mengikuti aliran air.
-   → membantah: **Layu bakteri**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 15. Tungau kuning — *Polyphagotarsonemus latus*
-
-`op:pst:00000126` · mite · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Jauh lebih kecil daripada tungau merah dan TIDAK menganyam benang — dan justru itu yang membuatnya sering terlambat dikenali: gejalanya dikira virus, lalu tanaman dicabut padahal masih bisa diselamatkan. Menyerang hanya pucuk dan daun muda. Terdaftar juga pada kedelai dan teh (2 baris).*
-
-**Teks gejala yang tampil di layar**
-
-> Daun muda mengeriting ke BAWAH, tepinya menggulung ke bawah dan menyempit memanjang, permukaannya mengeras dan MENGKILAP seperti berminyak, sering keperakan atau keunguan di bawahnya. Pucuk berhenti memanjang dan menjadi kaku; bunga rontok. Daun tua di bawahnya tetap normal.
-
-**Ciri pembanding**
-
-1. Lihat ARAH keritingnya dan permukaannya. Tungau kuning menggulungkan daun ke BAWAH dan membuatnya mengkilap seperti berminyak; trips menggulungkan daun ke ATAS seperti mangkuk dan meninggalkan goresan keperakan kusam, bukan mengkilap.
-   → membantah: **Trips**
-2. Bandingkan daun muda dengan daun tua pada satu tanaman. Tungau kuning hanya merusak PUCUK — daun tua di bawahnya tetap normal dan hijau. Virus kuning keriting menguningkan seluruh tanaman termasuk daun yang sudah jadi, dan tanamannya kerdil menyeluruh.
-   → membantah: **Virus kuning keriting**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 16. Kutu daun kapas — *Aphis gossypii*
-
-`op:pst:00000129` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Kutu daun paling polifag di antara semuanya, dan yang paling sering tercatat registri sekadar sebagai "Aphis sp." — 35 baris lagi tanpa nama spesies, yang kini ikut terhitung di bawah pintu ini pada komoditas yang sama. Warnanya berubah-ubah dari kuning pucat sampai hijau tua sampai hampir hitam menurut cuaca dan tanaman inangnya, jadi WARNA bukan cara mengenalinya. Penular banyak virus; mengendalikannya melindungi tanaman yang belum tertular, bukan menyembuhkan yang sudah.*
-
-**Teks gejala yang tampil di layar**
-
-> Kutu bertubuh lunak seperti buah pir kecil berkelompok di permukaan BAWAH daun muda dan pucuk, warnanya bisa apa saja dari kuning sampai kehitaman dalam satu petak yang sama. Daun muda mengeriting ke bawah dan mengerut; permukaan di bawahnya lengket lalu ditumbuhi jelaga hitam, dan semut naik-turun di batang.
-
-**Ciri pembanding**
-
-1. Balik daun muda dan lihat bentuk tubuhnya, bukan warnanya. Kutu daun berbentuk seperti buah pir kecil dengan sepasang tonjolan seperti knalpot di ujung belakang tubuh; kutu kebul bersayap putih dan beterbangan saat tanaman disentuh.
-   → membantah: **Kutu kebul**
-2. Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan jelaga hitam yang tumbuh di atasnya bisa diusap hilang — yang perlu ditangani kutunya. Trips dan tungau tidak menghasilkan embun madu sama sekali.
-   → membantah: **Trips**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 17. Nematoda puru akar — *Meloidogyne sp.*
-
-`op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
-
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
-
-> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Tanaman kerdil dan layu pada siang hari lalu pulih sore, berulang, sementara pupuk dan air cukup; gejalanya BERKELOMPOK di bagian petak tertentu, bukan merata. Dicabut, akarnya menggembung jadi BINTIL bulat tidak beraturan yang menyatu dengan akar itu sendiri — tidak bisa dilepas dengan kuku.
-
-**Ciri pembanding**
-
-1. Cabut tanaman kerdil beserta akarnya lalu cuci tanahnya. Puru akar adalah pembengkakan yang MENYATU dengan akar dan tidak bisa dicungkil lepas; bintil rhizobium pada kacang-kacangan menempel di sisi akar dan lepas ditekan kuku, dan itu justru menguntungkan.
-   → membantah: **—**
-2. Bandingkan tanaman kerdil dengan tetangganya yang sehat, dan lihat sebarannya. Nematoda puru akar berkelompok di petak yang sama tiap musim; kekurangan hara membuat seluruh petak kerdil merata.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 18. Embun tepung cabai — *Leveillula taurica*
-
-`op:pst:00000138` · disease_fungal · taksonomi terverifikasi GBIF (exact, 97%)
-
-*Berbeda dari embun tepung yang lain: jamurnya hidup DI DALAM daun dan hanya menyembulkan spora lewat mulut daun di permukaan bawah, sehingga tepung putihnya muncul di bawah sementara yang terlihat dari atas cuma bercak kuning. Itu sebabnya ia sering dikira penyakit lain atau kekurangan hara. Menyukai cuaca kering berangin dan suhu hangat.*
-
-> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Bercak kuning bersudut di permukaan ATAS daun tua, dibatasi tulang daun, dan tepat di baliknya lapisan PUTIH keabuan seperti tepung di permukaan BAWAH. Daun yang terkena menggulung ke atas lalu rontok, dan tanaman menggundul dari bawah sehingga buah terbakar matahari.
-
-**Ciri pembanding**
-
-1. Balik daun yang bercak kuningnya terlihat dari atas. Embun tepung cabai menaburkan tepung putih di permukaan BAWAH saja; embun tepung pada tanaman lain justru memutih di permukaan atas.
-   → membantah: **—**
-2. Usap tepung putihnya. Ia terangkat seperti bedak dan daun di bawahnya masih hijau kekuningan; embun bulu meninggalkan selaput yang tidak bisa diusap begitu dan bercaknya sudah mati kecoklatan.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 19. Rebah kecambah — *Pythium sp.*
-
-`op:pst:00000141` · disease_oomycete · taksonomi terverifikasi GBIF (higher_rank, 94%)
-
-*Penyakit PERSEMAIAN, dan hampir selalu penyakit pengelolaan air: menumpuk pada media yang terlalu basah, naungan terlalu rapat, dan semaian terlalu padat. Bukan jamur sejati melainkan oomycete — golongan yang sama dengan busuk daun kentang — sehingga fungisida untuk jamur sejati tidak menyentuhnya, dan yang bekerja metalaksil atau dimetomorf. Menjarangkan semaian dan mengurangi siraman menghentikannya tanpa semprotan apa pun.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Bibit rebah mendadak sementara daunnya masih HIJAU segar, dan bila diangkat pangkal batangnya menyempit berwarna coklat berair seperti tercekik. Rebahnya bermula dari satu titik lalu melebar melingkar hari demi hari. Sebagian benih malah tidak pernah muncul karena membusuk sebelum menembus permukaan.
-
-**Ciri pembanding**
-
-1. Pegang pangkal batang bibit yang rebah. Rebah kecambah menyempitkannya jadi berair dan lunak sementara DAUNNYA MASIH HIJAU; bibit yang mati karena layu fusarium menguning dari daun bawah dulu dan pangkalnya tetap keras.
-   → membantah: **Layu fusarium**
-2. Perhatikan sebarannya di bedengan. Rebah kecambah melebar MELINGKAR dari satu titik yang paling basah; kerusakan yang tersebar merata atau terpotong rapi di pangkal penyebabnya hama tanah, bukan ini.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-### Jeruk — 19 entri
+### Jeruk — 20 entri
 
 #### 1. Lalat buah — *Bactrocera dorsalis*
 
@@ -2733,6 +2255,510 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+#### 20. Embun jelaga — *Capnodium sp.*
+
+`op:pst:00000200` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*BUKAN penyakit tanaman, dan itu satu-satunya hal yang perlu diketahui sebelum membeli apa pun: jamurnya tumbuh di atas EMBUN MADU — cairan manis yang dikeluarkan kutu — dan tidak menembus jaringan tanaman sama sekali. Menyemprot fungisida menghilangkan jelaganya sebentar lalu ia kembali, karena kutunya masih ada. Yang menghentikannya menangani kutu putih, kutu tempurung, atau kutu daun yang ada di atasnya, dan memutus jalur semut yang memelihara kutu itu. Kerugiannya nyata tetapi tidak langsung: daun yang tertutup jelaga berkurang cahayanya, dan buah yang berjelaga tidak laku walau isinya utuh.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lapisan HITAM seperti jelaga menutupi permukaan ATAS daun, ranting, dan kulit buah, kering dan bisa DIKELUPAS sebagai lembaran tipis sehingga permukaan di bawahnya terlihat HIJAU SEHAT tidak berbekas. Permukaan di sekitarnya terasa lengket. Hampir selalu ada gerombolan kutu di atasnya — di pucuk, ketiak daun, atau dompolan buah — dan barisan semut naik-turun batang.
+
+**Ciri pembanding**
+
+1. KELUPAS lapisan hitamnya dengan kuku atau usap dengan kain basah. Embun jelaga terangkat sebagai lembaran dan menyisakan jaringan HIJAU SEHAT di bawahnya; penyakit yang benar-benar menyerang daun meninggalkan jaringan mati kecoklatan yang tidak bisa dikelupas.
+   → membantah: **—**
+2. Cari SUMBERNYA di atas bagian yang berjelaga: gerombolan kutu putih, kutu tempurung, atau kutu daun, dan barisan semut di batang. Kalau ketemu, itu yang harus ditangani — menyemprot jelaganya saja akan mengulang pekerjaan yang sama bulan depan.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Cabai — 19 entri
+
+#### 1. Trips — *Thrips parvispinus*
+
+`op:pst:00000001` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Vektor virus, menyebabkan daun keriting ke atas.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Daun muda mengeriting ke ATAS seperti mangkuk, dan permukaan bawahnya keperakan atau kecoklatan seperti tergores halus. Bunga dan tunas rontok sebelum jadi buah; tanaman kerdil dan pucuknya mengumpul.
+
+**Ciri pembanding**
+
+1. Kibaskan daun pucuk di atas kertas putih. Trips terlihat sebagai serangga kuning kecoklatan sepanjang 1–2 mm yang langsung bergerak cepat. Kalau tidak ada yang bergerak, penyebabnya bukan trips.
+   → membantah: **Virus kuning keriting**
+2. Lihat warna daun yang mengeriting. Pada trips daunnya tetap hijau dengan goresan keperakan; kalau daunnya menguning terang dan mengecil tanpa goresan, itu gejala virus dan tidak ada semprotan yang menyembuhkannya.
+   → membantah: **Virus kuning keriting**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Kutu daun persik — *Myzus persicae*
+
+`op:pst:00000002` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Vektor beberapa virus penting, termasuk virus penggulung daun pada kentang. Mengendalikannya melindungi tanaman yang BELUM terkena, dan tidak menyembuhkan satu pun yang sudah bergejala.*
+
+**Teks gejala yang tampil di layar**
+
+> Pada cabai, tomat, dan kentang daun muda mengeriting ke BAWAH dan mengerut. Pada bawang merah kutu berkelompok di ketiak daun dan pangkal umbi, dan daunnya tidak mengeriting sejelas itu — yang lebih dulu terlihat justru permukaan yang lengket. Pada kubis kutu berkelompok rapat di permukaan bawah daun luar dan di sela daun krop, sering berselaput lilin kelabu. Pada semuanya daun lengket sering ditumbuhi jelaga hitam, dan semut naik-turun di tanaman.
+
+**Ciri pembanding**
+
+1. Balik daun pucuk. Kutu daun bertubuh lunak seperti buah pir kecil, hijau atau kekuningan, berkelompok rapat dan bergerak lambat — berbeda dari trips yang langsing dan berlari cepat.
+   → membantah: **Trips**
+2. Raba permukaan daun. Lengket berarti ada embun madu, dan itu hanya dihasilkan kutu daun atau kutu kebul. Trips dan tungau tidak menghasilkannya.
+   → membantah: **Tungau merah**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Kutu kebul — *Bemisia tabaci*
+
+`op:pst:00000003` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Vektor virus kuning keriting.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Serangga putih sangat kecil beterbangan berhamburan saat tanaman disentuh, lalu hinggap lagi. Daun lengket dan berjelaga hitam, dan lama-lama menguning.
+
+**Ciri pembanding**
+
+1. Goyang tanaman. Kutu kebul terbang seperti serbuk bedak putih lalu kembali hinggap; kutu daun tidak terbang berhamburan seperti itu.
+   → membantah: **Kutu daun persik**
+2. Balik daun bawah. Nimfa kutu kebul menempel seperti sisik bening pipih dan tidak bergerak sama sekali — mudah dikira kotoran.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Lalat buah — *Bactrocera dorsalis*
+
+`op:pst:00000004` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Lalat buah oriental, berinang sangat luas — cabai, jeruk, mangga, tomat, dan puluhan buah lain — sehingga petak yang bersih tetap terserang dari pohon tetangga. Yang menentukan pengumpulan buah gugur dan perangkap serempak se-hamparan, bukan penyemprotan sendiri-sendiri.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Buah berlubang tusukan sebesar ujung jarum, di sekitarnya melunak dan basah, lalu gugur sebelum tua. Di dalam buah yang gugur ada belatung putih.
+
+**Ciri pembanding**
+
+1. Belah buah yang gugur. Kalau ada belatung putih tanpa kaki yang melenting saat disentuh, itu lalat buah. Antraknosa tidak pernah berbelatung.
+   → membantah: **Antraknosa**
+2. Lihat bentuk kerusakannya. Lalat buah meninggalkan titik tusukan dengan daerah lembek berair di sekitarnya; antraknosa memberi bercak melingkar cekung dan kering dengan titik hitam di tengahnya.
+   → membantah: **Antraknosa**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Ulat grayak — *Spodoptera litura*
+
+`op:pst:00000005` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun berlubang tidak beraturan sampai tinggal tulang daunnya, dan kerusakannya bertambah cepat dalam semalam. Ada butiran kotoran hitam menumpuk di ketiak daun.
+
+**Ciri pembanding**
+
+1. Cari pada siang hari di bawah daun, di ketiak, atau di tanah dekat pangkal batang. Ulat grayak bersembunyi saat panas dan makan pada malam hari; kalau tidak ditemukan di bagian atas tanaman, itu justru cocok.
+   → membantah: **—**
+2. Perhatikan ulatnya. Ulat muda berkelompok rapat pada satu daun sebelum menyebar, dan ulat besar punya sepasang bintik hitam di ruas belakang kepalanya. Ulat grayak jagung berbeda: ia bertahan di dalam corong pucuk bersama kotoran basahnya, dan kepalanya bertanda Y terbalik.
+   → membantah: **Ulat grayak jagung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 6. Tungau merah — *Tetranychus urticae*
+
+`op:pst:00000006` · mite · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Tungau berinang sangat luas yang menumpuk pada musim kering dan pada tanaman berdebu di pinggir jalan. Bukan serangga: insektisida umum tidak menyentuhnya, dan justru menghabiskan tungau pemangsa yang menahannya.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun berbintik kuning halus rapat seperti tertusuk jarum, lalu menguning menyeluruh, kecoklatan, dan kering. Serangan berat meninggalkan anyaman benang halus di pucuk dan bawah daun.
+
+**Ciri pembanding**
+
+1. Cari anyaman benang halus di bawah daun dan di sela pucuk, paling jelas kena sinar miring. Trips dan kutu tidak pernah membuat anyaman.
+   → membantah: **Trips**
+2. Balik daun dan tatap lama. Tungau tampak sebagai titik-titik bergerak jauh lebih kecil dari trips — di bawah setengah milimeter, kemerahan atau kehijauan dengan dua bercak gelap.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Antraknosa — *Colletotrichum spp.*
+
+`op:pst:00000007` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit. Tomat ikut jadi inang di sini dan tidak di pintu spesiesnya, karena antraknosa buah tomat memang dilayani beberapa Colletotrichum yang tidak terpisahkan di kebun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak melingkar cekung pada buah, mula-mula berair lalu meluas dan menghitam. Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar. Buah akhirnya mengering dan keriput.
+
+**Ciri pembanding**
+
+1. Lihat titik hitam di tengah bercak. Susunannya melingkar sepusat, dan itu tubuh buah jamurnya — tidak ada pada busuk karena tusukan lalat buah.
+   → membantah: **Lalat buah**
+2. Tekan bercaknya. Antraknosa cekung dan kering seperti kulit tertarik ke dalam; busuk bakteri lembek berair dan berbau.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Layu fusarium — *Fusarium oxysporum*
+
+`op:pst:00000008` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Pada cabai dan tomat tanaman layu perlahan selama beberapa hari; daun bawah menguning lebih dulu, sering hanya pada satu sisi tanaman, dan layunya menetap walau tanah lembap. Pada bawang merah daun menguning dari ujung lalu MELENGKUNG dan terpelintir — dari situ nama moler — dan tanaman mudah tercabut karena dasar umbinya sudah membusuk.
+
+**Ciri pembanding**
+
+1. Belah pangkal batang atau umbi membujur. Pada cabai dan tomat pembuluh di dalamnya coklat memanjang sementara jaringan lain masih putih. Pada bawang merah dasar umbi tempat akar keluar membusuk kecoklatan, sering berselaput putih seperti kapas.
+   → membantah: **—**
+2. UJI GELAS. Potong batang atau leher umbi dekat pangkal, celupkan ujungnya ke gelas berisi air bening, diamkan lima menit. Kalau TIDAK keluar lendir putih, penyebabnya fusarium, bukan bakteri.
+   → membantah: **Layu bakteri**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 9. Layu bakteri — *Ralstonia solanacearum*
+
+`op:pst:00000009` · disease_bacterial · taksonomi terverifikasi GBIF (exact, 99%)
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman layu mendadak, sering hanya dalam satu sampai dua hari, dan daunnya MASIH HIJAU saat layu — tidak menguning lebih dulu. Pangkal batang kecoklatan dan basah. Pada kentang umbinya ikut terkena: cincin pembuluh di dalam umbi kecoklatan, dan dari mata tunas keluar lendir putih yang mengering jadi kerak bertanah.
+
+**Ciri pembanding**
+
+1. UJI GELAS. Potong batang dekat pangkal — pada kentang boleh juga umbinya — lalu celupkan ujungnya ke gelas berisi air bening dan diamkan lima menit. Untaian lendir putih susu yang turun perlahan dari potongan berarti layu bakteri.
+   → membantah: **Layu fusarium**
+2. Perhatikan warna daun saat layu. Layu bakteri menyerang cepat dengan daun masih hijau; fusarium menguningkan daun bawah lebih dulu dan berjalan berhari-hari.
+   → membantah: **Layu fusarium**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 10. Virus kuning keriting — *Begomovirus*
+
+`op:pst:00000010` · disease_viral · taksonomi terverifikasi GBIF (exact, 100%)
+
+*Ditularkan kutu kebul; tidak ada pengendalian kuratif, hanya pencegahan. Menyerang cabai dan tomat.*
+
+**Teks gejala yang tampil di layar**
+
+> Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun.
+
+**Ciri pembanding**
+
+1. Periksa daun yang menguning itu sendiri. Tidak ada lubang, bercak, goresan, anyaman, atau serangga di atasnya — yang berubah hanya warna dan bentuknya.
+   → membantah: **Trips**
+2. Goyang tanaman di sekitarnya dan cari kutu kebul putih yang beterbangan. Virus ini ditularkan kutu kebul, jadi kehadirannya menguatkan — tetapi mengendalikan kutu kebulnya tidak menyembuhkan tanaman yang sudah terkena.
+   → membantah: **Kutu kebul**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 11. Penggerek buah — *Helicoverpa armigera*
+
+`op:pst:00000023` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
+
+**Teks gejala yang tampil di layar**
+
+> Buah atau tongkol berlubang bundar bersih di dekat tangkainya, dan dari lubang itu menyembul kotoran berbutir basah. Di dalam satu buah biasanya hanya ADA SATU ulat, karena yang lebih besar memakan yang lain. Buah yang terlanjur berlubang membusuk dan gugur.
+
+**Ciri pembanding**
+
+1. Belah buah yang berlubang. Penggerek buah meninggalkan SATU ulat gemuk bergaris memanjang beserta rongga besar dan kotoran. Lalat buah meninggalkan belatung putih tanpa kaki yang melenting, beberapa sekaligus, dan tidak ada lubang masuk yang bundar.
+   → membantah: **Lalat buah**
+2. Lihat lubangnya dari luar. Penggerek buah masuk lewat lubang bundar seukuran ujung pensil dengan kotoran menyembul. Antraknosa tidak berlubang — ia memberi bercak melingkar cekung dengan titik hitam di tengahnya.
+   → membantah: **Antraknosa**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 12. Antraknosa cabai — *Colletotrichum capsici*
+
+`op:pst:00000120` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Patek. Entitas INI yang memegang hampir seluruh pendaftaran antraknosa cabai — 102 baris — sementara pintu "Antraknosa" yang lebih dulu ada berdiri di atas sasaran genus Colletotrichum spp. yang cuma dipakai 8 baris. Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang membedakan hanya bagaimana registri menuliskan sasarannya. Sporanya menempel sejak buah masih hijau lalu diam sampai buah memerah, jadi menyemprot saat buah sudah berbercak selalu terlambat.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak melingkar CEKUNG pada buah, mula-mula berair lalu meluas dan menghitam, dan di tengah bercak muncul titik-titik hitam kecil tersusun melingkar sepusat. Buah yang terkena mengering keriput dan tetap menggantung; pada serangan berat buah merah berguguran sebelum sempat dipetik.
+
+**Ciri pembanding**
+
+1. Lihat susunan titik hitam di tengah bercak. Antraknosa menyusunnya MELINGKAR sepusat — itu tubuh buah jamurnya. Busuk karena tusukan lalat buah tidak bertitik hitam bersusun dan berbelatung di dalamnya.
+   → membantah: **Lalat buah**
+2. Ingat kapan buahnya mulai berbercak. Antraknosa menempel sejak buah masih hijau dan baru terlihat saat memerah — buah yang mulus di kebun bisa berbercak di keranjang. Kalau bercak sudah ada sejak buah kecil dan tidak meluas, penyebabnya lain.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 13. Bercak daun cabai — *Cercospora capsici*
+
+`op:pst:00000121` · disease_fungal · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Bercak mata katak pada cabai — 73 baris penggunaan berlabel, dan sampai sekarang tidak punya pintu sama sekali di jalur ini. Menyerang daun, bukan buah, dan kerugiannya lewat daun yang rontok sehingga buah terbakar matahari dan tanaman berhenti berbunga. Paling parah pada musim hujan dan pada pertanaman rapat.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu tipis dan tepi coklat gelap yang tegas — bentuknya seperti mata, dan tengahnya sering berlubang saat mengering. Daun yang berbercak banyak menguning lalu RONTOK dari bawah ke atas, sampai batang tinggal telanjang sementara buahnya masih menggantung.
+
+**Ciri pembanding**
+
+1. Lihat apakah buahnya ikut berbercak. Bercak daun cabai menyerang DAUN dan tangkai saja — buahnya mulus. Kalau buah ikut berbercak melingkar cekung, itu antraknosa.
+   → membantah: **Antraknosa cabai**
+2. Terawang bercak daunnya ke cahaya. Bercak daun cabai bertengah TIPIS sampai tembus cahaya dan sering berlubang; bercak karena tusukan trips atau terbakar pupuk tidak bundar dan tidak bertepi coklat tegas.
+   → membantah: **Trips**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 14. Busuk pangkal batang cabai — *Phytophthora capsici*
+
+`op:pst:00000125` · disease_oomycete · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Oomycete, bukan jamur sejati — metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada lada (6 baris) dan bawang merah (1), dan teks di bawah ditulis untuk cabai. Menyebar lewat air yang menggenang dan mengalir di permukaan tanah, jadi ia menyerang berlajur mengikuti bedengan yang tergenang — guludan tinggi dan drainase menurunkan lebih banyak daripada menambah semprotan.*
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman layu mendadak dan tidak pulih, dan pada pangkal batang tepat di permukaan tanah ada bagian yang MELINGKARI batang berwarna coklat kehitaman dan basah, sering dengan batas tegas seperti diikat. Daun tetap menempel saat tanaman mati. Buah yang menyentuh tanah membusuk berair dan berselaput putih halus pada cuaca lembap.
+
+**Ciri pembanding**
+
+1. Lihat di mana batangnya berubah warna. Busuk pangkal batang melingkari batang tepat di PERMUKAAN TANAH dengan batas tegas seperti diikat; layu fusarium tidak menghitamkan permukaan batang — yang coklat justru pembuluh di dalamnya saat dibelah.
+   → membantah: **Layu fusarium**
+2. Petakan tanaman yang mati di bedengan. Busuk pangkal batang menyerang BERLAJUR mengikuti alur air dan bagian yang tergenang; layu bakteri tersebar tanpa mengikuti aliran air.
+   → membantah: **Layu bakteri**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 15. Tungau kuning — *Polyphagotarsonemus latus*
+
+`op:pst:00000126` · mite · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Jauh lebih kecil daripada tungau merah dan TIDAK menganyam benang — dan justru itu yang membuatnya sering terlambat dikenali: gejalanya dikira virus, lalu tanaman dicabut padahal masih bisa diselamatkan. Menyerang hanya pucuk dan daun muda. Terdaftar juga pada kedelai dan teh (2 baris).*
+
+**Teks gejala yang tampil di layar**
+
+> Daun muda mengeriting ke BAWAH, tepinya menggulung ke bawah dan menyempit memanjang, permukaannya mengeras dan MENGKILAP seperti berminyak, sering keperakan atau keunguan di bawahnya. Pucuk berhenti memanjang dan menjadi kaku; bunga rontok. Daun tua di bawahnya tetap normal.
+
+**Ciri pembanding**
+
+1. Lihat ARAH keritingnya dan permukaannya. Tungau kuning menggulungkan daun ke BAWAH dan membuatnya mengkilap seperti berminyak; trips menggulungkan daun ke ATAS seperti mangkuk dan meninggalkan goresan keperakan kusam, bukan mengkilap.
+   → membantah: **Trips**
+2. Bandingkan daun muda dengan daun tua pada satu tanaman. Tungau kuning hanya merusak PUCUK — daun tua di bawahnya tetap normal dan hijau. Virus kuning keriting menguningkan seluruh tanaman termasuk daun yang sudah jadi, dan tanamannya kerdil menyeluruh.
+   → membantah: **Virus kuning keriting**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 16. Kutu daun kapas — *Aphis gossypii*
+
+`op:pst:00000129` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Kutu daun paling polifag di antara semuanya, dan yang paling sering tercatat registri sekadar sebagai "Aphis sp." — 35 baris lagi tanpa nama spesies, yang kini ikut terhitung di bawah pintu ini pada komoditas yang sama. Warnanya berubah-ubah dari kuning pucat sampai hijau tua sampai hampir hitam menurut cuaca dan tanaman inangnya, jadi WARNA bukan cara mengenalinya. Penular banyak virus; mengendalikannya melindungi tanaman yang belum tertular, bukan menyembuhkan yang sudah.*
+
+**Teks gejala yang tampil di layar**
+
+> Kutu bertubuh lunak seperti buah pir kecil berkelompok di permukaan BAWAH daun muda dan pucuk, warnanya bisa apa saja dari kuning sampai kehitaman dalam satu petak yang sama. Daun muda mengeriting ke bawah dan mengerut; permukaan di bawahnya lengket lalu ditumbuhi jelaga hitam, dan semut naik-turun di batang.
+
+**Ciri pembanding**
+
+1. Balik daun muda dan lihat bentuk tubuhnya, bukan warnanya. Kutu daun berbentuk seperti buah pir kecil dengan sepasang tonjolan seperti knalpot di ujung belakang tubuh; kutu kebul bersayap putih dan beterbangan saat tanaman disentuh.
+   → membantah: **Kutu kebul**
+2. Raba permukaan daun di bawah koloninya. Lengket berarti embun madu, dan jelaga hitam yang tumbuh di atasnya bisa diusap hilang — yang perlu ditangani kutunya. Trips dan tungau tidak menghasilkan embun madu sama sekali.
+   → membantah: **Trips**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 17. Nematoda puru akar — *Meloidogyne sp.*
+
+`op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman kerdil dan layu pada siang hari lalu pulih sore, berulang, sementara pupuk dan air cukup; gejalanya BERKELOMPOK di bagian petak tertentu, bukan merata. Dicabut, akarnya menggembung jadi BINTIL bulat tidak beraturan yang menyatu dengan akar itu sendiri — tidak bisa dilepas dengan kuku.
+
+**Ciri pembanding**
+
+1. Cabut tanaman kerdil beserta akarnya lalu cuci tanahnya. Puru akar adalah pembengkakan yang MENYATU dengan akar dan tidak bisa dicungkil lepas; bintil rhizobium pada kacang-kacangan menempel di sisi akar dan lepas ditekan kuku, dan itu justru menguntungkan.
+   → membantah: **—**
+2. Bandingkan tanaman kerdil dengan tetangganya yang sehat, dan lihat sebarannya. Nematoda puru akar berkelompok di petak yang sama tiap musim; kekurangan hara membuat seluruh petak kerdil merata.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 18. Embun tepung cabai — *Leveillula taurica*
+
+`op:pst:00000138` · disease_fungal · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Berbeda dari embun tepung yang lain: jamurnya hidup DI DALAM daun dan hanya menyembulkan spora lewat mulut daun di permukaan bawah, sehingga tepung putihnya muncul di bawah sementara yang terlihat dari atas cuma bercak kuning. Itu sebabnya ia sering dikira penyakit lain atau kekurangan hara. Menyukai cuaca kering berangin dan suhu hangat.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak kuning bersudut di permukaan ATAS daun tua, dibatasi tulang daun, dan tepat di baliknya lapisan PUTIH keabuan seperti tepung di permukaan BAWAH. Daun yang terkena menggulung ke atas lalu rontok, dan tanaman menggundul dari bawah sehingga buah terbakar matahari.
+
+**Ciri pembanding**
+
+1. Balik daun yang bercak kuningnya terlihat dari atas. Embun tepung cabai menaburkan tepung putih di permukaan BAWAH saja; embun tepung pada tanaman lain justru memutih di permukaan atas.
+   → membantah: **—**
+2. Usap tepung putihnya. Ia terangkat seperti bedak dan daun di bawahnya masih hijau kekuningan; embun bulu meninggalkan selaput yang tidak bisa diusap begitu dan bercaknya sudah mati kecoklatan.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 19. Rebah kecambah — *Pythium sp.*
+
+`op:pst:00000141` · disease_oomycete · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Penyakit PERSEMAIAN, dan hampir selalu penyakit pengelolaan air: menumpuk pada media yang terlalu basah, naungan terlalu rapat, dan semaian terlalu padat. Bukan jamur sejati melainkan oomycete — golongan yang sama dengan busuk daun kentang — sehingga fungisida untuk jamur sejati tidak menyentuhnya, dan yang bekerja metalaksil atau dimetomorf. Menjarangkan semaian dan mengurangi siraman menghentikannya tanpa semprotan apa pun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bibit rebah mendadak sementara daunnya masih HIJAU segar, dan bila diangkat pangkal batangnya menyempit berwarna coklat berair seperti tercekik. Rebahnya bermula dari satu titik lalu melebar melingkar hari demi hari. Sebagian benih malah tidak pernah muncul karena membusuk sebelum menembus permukaan.
+
+**Ciri pembanding**
+
+1. Pegang pangkal batang bibit yang rebah. Rebah kecambah menyempitkannya jadi berair dan lunak sementara DAUNNYA MASIH HIJAU; bibit yang mati karena layu fusarium menguning dari daun bawah dulu dan pangkalnya tetap keras.
+   → membantah: **Layu fusarium**
+2. Perhatikan sebarannya di bedengan. Rebah kecambah melebar MELINGKAR dari satu titik yang paling basah; kerusakan yang tersebar merata atau terpotong rapi di pangkal penyebabnya hama tanah, bukan ini.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ### Kentang — 16 entri
 
 #### 1. Kutu daun persik — *Myzus persicae*
@@ -3057,7 +3083,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -3761,7 +3787,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -4115,7 +4141,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -4645,7 +4671,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000051` · mollusc · taksonomi terverifikasi GBIF (exact, 98%)
 
-*Paling merusak di persemaian dan pada dua sampai tiga minggu pertama sesudah tanam pindah; aktif malam hari dan sesudah hujan. Registri juga memuat siput lain — Filicaulis bleekeri, Bradybaena similaris, Parmarion pupillaris — masing-masing satu sampai dua baris, semuanya belum disatukan dan tidak ikut terdaftar di bawah pintu ini.*
+*Paling merusak di persemaian dan pada dua sampai tiga minggu pertama sesudah tanam pindah; aktif malam hari dan sesudah hujan. Registri memuat siput lain — Filicaulis bleekeri, Bradybaena similaris, Parmarion pupillaris — yang kini dicakup pintu ini karena kedua ciri yang dipakainya, jejak lendir dan tepi gerusan yang halus, tidak menyentuh cangkang sama sekali.*
 
 > **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
 
@@ -4771,7 +4797,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -5099,7 +5125,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -5473,6 +5499,266 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
    → membantah: **—**
 2. Lihat apakah ada ANYAMAN benang halus di antara anak daun, terutama di permukaan bawah. Tungau meninggalkannya pada serangan berat; bercak daun bibit sawit memberi bercak bulat bercincin tanpa benang apa pun.
    → membantah: **Bercak daun bibit sawit**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Kakao — 10 entri
+
+#### 1. Helopeltis — *Helopeltis antonii*
+
+`op:pst:00000063` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada teh (7 baris) dan teks di bawah ditulis untuk kakao. Registri memecahnya jadi beberapa entitas — Helopeltis sp. (21 baris, 12 di antaranya pada teh), Helopeltis spp. (3), dan ejaan Helopelthis sp. (1) — semuanya bertambat hanya sampai GENUS di GBIF dan belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Luka tusukannya jadi pintu masuk busuk buah, jadi dua masalah itu saling menyusul.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Buah muda berbintik-bintik coklat kehitaman CEKUNG, seukuran ujung jarum sampai sebesar biji, mula-mula berair lalu mengering dan retak; buah yang tertusuk saat masih kecil mengering seluruhnya dan tetap menggantung. Pada pucuk dan ranting muda, tusukannya membuat kulit menghitam, daun layu, dan ranting mati dari ujung.
+
+**Ciri pembanding**
+
+1. Lihat bintiknya dari dekat, kalau perlu kena cahaya miring. Helopeltis meninggalkan bintik CEKUNG bertepi tegas, tersebar dan tidak menyatu walau jumlahnya banyak. Busuk buah memberi bercak yang MELUAS dan menyatu sampai menutup sebagian besar buah.
+   → membantah: **Busuk buah kakao**
+2. Cari serangganya pagi atau sore hari, di buah yang PALING MUDA. Helopeltis ramping seperti nyamuk besar dengan tonjolan seperti jarum di punggungnya, dan langsung berpindah ke sisi lain buah saat didekati. Kalau bintiknya ada tetapi serangganya tidak, ia sudah pindah ke buah yang lebih muda.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Penggerek buah kakao — *Conopomorpha cramerella*
+
+`op:pst:00000064` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*PBK. Yang menentukan bukan semprotan melainkan SARUNGISASI — membungkus buah muda dengan kantong plastik — panen sering setiap tujuh sampai sepuluh hari, dan memendam kulit buah bekas panen. Ulatnya berada DI DALAM buah sejak menetas, jadi semprotan hanya bisa mengenai ngengat dewasa yang aktif malam hari, dan itu jendela yang sempit.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Buah masak lebih cepat dan warnanya BELANG — sebagian kuning, sebagian masih hijau — padahal umurnya belum cukup. Buah terasa berat, dan saat diguncang tidak berbunyi karena bijinya saling melekat. Dibelah, bijinya kempis dan menempel satu sama lain sehingga sulit dipisahkan, dengan lorong kecoklatan di antara daging buahnya.
+
+**Ciri pembanding**
+
+1. Guncang buah yang warnanya belang di dekat telinga. Buah masak yang sehat BERBUNYI karena bijinya lepas; buah yang terserang PBK tidak berbunyi karena bijinya melekat. Pemeriksaan ini tidak merusak buahnya, jadi bisa dikerjakan pada banyak buah sekaligus.
+   → membantah: **—**
+2. Belah buah yang tidak berbunyi. PBK meninggalkan lorong halus di antara daging buah dan biji yang saling melekat, sementara KULIT LUARNYA tidak membusuk. Busuk buah sebaliknya: kulitnya menghitam meluas dari luar, dan bijinya membusuk bersama dagingnya.
+   → membantah: **Busuk buah kakao**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Busuk buah kakao — *Phytophthora palmivora*
+
+`op:pst:00000065` · disease_oomycete · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada durian dan lada (4 baris) dan teks di bawah ditulis untuk kakao. Yang paling menurunkan serangan bukan semprotan melainkan memangkas agar kebun tidak lembap, memetik dan MEMENDAM buah sakit, serta mengatur naungan.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak coklat kehitaman pada buah, mulai dari ujung atau pangkal, MELUAS cepat dan menyatu sampai menutup sebagian besar buah dalam beberapa hari, dengan batas tegas antara bagian sakit dan sehat. Pada cuaca lembap permukaan bercak berselaput putih halus seperti tepung. Buah yang terserang mengering menghitam dan tetap menggantung di batang.
+
+**Ciri pembanding**
+
+1. Perhatikan bagaimana bercaknya berubah dalam beberapa hari. Busuk buah MELUAS dan menyatu; bintik helopeltis tetap kecil, cekung, dan terpisah satu-satu walau jumlahnya banyak.
+   → membantah: **Helopeltis**
+2. Belah buah yang menghitam. Busuk buah membusukkan daging DAN biji bersama-sama dari kulit ke dalam; penggerek buah kakao meninggalkan kulit yang tidak membusuk dengan biji melekat di dalamnya.
+   → membantah: **Penggerek buah kakao**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Mati ranting VSD — *Oncobasidium theobromae*
+
+`op:pst:00000066` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Vascular streak dieback. Registri juga memuatnya atas nama barunya, Ceratobasidium theobromae (1 baris), yang belum disatukan — jamur yang sama. Sporanya terbawa angin pada malam lembap dan masuk lewat daun muda, jadi yang menentukan varietas atau klon tahan, sambung samping, dan memangkas ranting sakit sampai sekitar 30 cm di bawah bagian yang bergejala — bukan menyemprot daun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Satu atau dua daun di TENGAH ranting menguning dengan bercak hijau tersisa di antara tulang daun, lalu rontok — bukan daun paling tua di pangkal, bukan daun paling muda di pucuk. Ranting menggundul dari tengah ke ujung dan tinggal ranting telanjang berbintil bekas dudukan daun. Akhirnya ranting mati dari ujung ke pangkal.
+
+**Ciri pembanding**
+
+1. Potong ranting yang menggundul MELINTANG, lalu tatap penampangnya. Ada tiga titik coklat tersusun seperti segitiga pada berkas pembuluhnya; dibelah membujur, titik itu jadi garis coklat memanjang — dari situ nama vascular streak. Ranting yang mati karena penggerek berlubang dan berlorong, bukan bergaris.
+   → membantah: **Penggerek batang kakao**
+2. Lihat daun mana yang menguning lebih dulu. VSD mulai dari daun di TENGAH ranting. Kekurangan hara menguningkan daun TUA di pangkal lebih dulu dan merata di seluruh pohon, bukan ranting per ranting.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Ulat kilan — *Hyposidra talaca*
+
+`op:pst:00000067` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Ulat jengkal kakao. Datang berkala dalam ledakan singkat dan bisa menggunduli pohon dalam hitungan hari, lalu menghilang; di luar ledakan itu jarang menuntut tindakan apa pun — dan menyemprot terjadwal di luar ledakan menghabiskan biaya tanpa menyelamatkan apa pun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun muda dan pucuk habis dimakan dari TEPI ke dalam sampai tinggal tulang daun, dan pada ledakan berat pohon gundul sampai ke ranting. Ulatnya coklat kehijauan dan BERJALAN MELENGKUNG seperti sedang mengukur; saat terganggu ia menegang lurus menyerupai ranting kecil, atau menjatuhkan diri pada benang.
+
+**Ciri pembanding**
+
+1. Perhatikan cara ulatnya berjalan dan bersikap saat disentuh. Ulat kilan melengkungkan punggung tiap melangkah, lalu menegang lurus seperti ranting kecil. Tidak ada hama daun kakao lain yang bersikap begitu.
+   → membantah: **—**
+2. Lihat mengapa daunnya hilang. Ulat kilan menggigit dari TEPI daun sehingga tinggal tulang daun. Ranting yang menggundul karena VSD daunnya rontok sendiri sesudah menguning — tidak tergigit — dan yang tinggal ranting telanjang berbintil, bukan tulang daun.
+   → membantah: **Mati ranting VSD**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 6. Kutu putih — *Planococcus citri*
+
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
+
+**Ciri pembanding**
+
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
+   → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Semut api — *Solenopsis geminata*
+
+`op:pst:00000139` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Jarang jadi masalah karena memakan tanaman — ia jadi masalah karena MEMELIHARA kutu putih dan kutu tempurung, mengangkutnya dari pohon ke pohon, dan mengusir musuh alami kutu itu. Karena itu ia sering pintu masuk yang lebih murah: memutus jalur semut di batang menurunkan kutu tanpa menyemprot tajuk sama sekali. Pada jagung ia juga memakan benih yang baru ditugal.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Barisan semut merah kecoklatan naik-turun di batang sepanjang hari, paling ramai menuju bagian yang bergerombol kutu. Di tanah ada gundukan sarang lepas di dekat pangkal batang. Pada jagung, benih hilang atau berlubang beberapa hari sesudah ditugal, dan tanaman tidak tumbuh berpetak-petak.
+
+**Ciri pembanding**
+
+1. Ikuti barisan semutnya ke atas dan lihat ke mana ia menuju. Kalau ujungnya gerombolan kutu, yang sedang dilihat SEBAB dan AKIBAT sekaligus — memutus jalur semut di batang menurunkan keduanya.
+   → membantah: **Kutu putih**
+2. Pada jagung, korek tanah di titik yang benihnya tidak tumbuh. Benih berlubang dengan semut di sekitarnya berarti semut; benih utuh yang membusuk berarti masalah benih atau kelembapan, dan menyemprot semut tidak menolong apa pun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Jamur upas — *Corticium salmonicolor*
+
+`op:pst:00000161` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Menyerang CABANG dan batang, bukan daun, dan cabang yang sudah dilingkari seluruhnya tidak bisa diselamatkan — yang bisa hanya memotongnya di bawah batas serangan sebelum menyebar. Karena itu keputusannya soal waktu memeriksa, bukan soal bahan aktif: sekali terlihat merah muda, cabangnya sudah mati. Menumpuk di kebun rapat yang lembap dan kurang cahaya.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lapisan tipis merah JAMBU sampai jingga menempel rata di kulit cabang, seperti dicat, sering dimulai dari sisi bawah cabang. Di atas batas lapisan itu daun menguning dan cabangnya mati mengering sementara bagian bawahnya masih hidup. Kulit di bawah lapisan itu mengelupas dan mengeluarkan getah kering.
+
+**Ciri pembanding**
+
+1. Lihat WARNANYA dan di mana ia menempel. Jamur upas berwarna merah jambu sampai jingga menempel rata di KULIT CABANG; jamur akar putih memberi benang putih rata di AKAR dan pangkal batang, di bawah permukaan tanah.
+   → membantah: **Jamur akar putih**
+2. Periksa apakah bagian cabang di BAWAH lapisan itu masih hidup. Jamur upas mematikan cabang dari batas lapisannya ke ujung; pohon yang mati dari bawah ke atas penyebabnya akar, bukan ini.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 9. Penggerek batang kakao — *Zeurera cofeae*
+
+`op:pst:00000186` · insect · taksonomi terverifikasi GBIF (fuzzy, 84%)
+
+*Menggerek ke dalam KAYU, dan sekali larvanya di dalam tidak ada semprotan yang menjangkaunya — yang bekerja hanya menyumbat lubangnya atau memotong cabang di bawah gerekan. Karena itu seluruh nilainya ada pada menemukan lubangnya lebih awal, dan tanda yang paling mudah dilihat justru kotoran yang menggantung di bawah lubang. Menyerang cabang dan batang muda berdiameter jari sampai lengan.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Lubang BUNDAR sebesar pensil pada batang atau cabang, dan di bawahnya menggantung kotoran serbuk kayu berwarna kemerahan yang terikat benang, sering menumpuk di pangkal pohon. Cabang di atas lubang layu, daunnya menguning lalu mengering, dan cabang itu mudah patah saat tertiup angin.
+
+**Ciri pembanding**
+
+1. Cari LUBANG BUNDAR pada batang beserta kotoran serbuk kayu yang menggantung di bawahnya. Penggerek batang kakao meninggalkan keduanya; mati ranting VSD tidak melubangi apa pun dan bekasnya justru di bekas daun yang gugur.
+   → membantah: **Mati ranting VSD**
+2. Potong cabang yang layu tepat di bawah lubang dan belah. Penggerek batang meninggalkan lorong memanjang di dalam kayu; kayu yang utuh tetapi bergaris coklat di berkas pembuluh penyebabnya VSD.
+   → membantah: **Mati ranting VSD**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 10. Embun jelaga — *Capnodium sp.*
+
+`op:pst:00000200` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*BUKAN penyakit tanaman, dan itu satu-satunya hal yang perlu diketahui sebelum membeli apa pun: jamurnya tumbuh di atas EMBUN MADU — cairan manis yang dikeluarkan kutu — dan tidak menembus jaringan tanaman sama sekali. Menyemprot fungisida menghilangkan jelaganya sebentar lalu ia kembali, karena kutunya masih ada. Yang menghentikannya menangani kutu putih, kutu tempurung, atau kutu daun yang ada di atasnya, dan memutus jalur semut yang memelihara kutu itu. Kerugiannya nyata tetapi tidak langsung: daun yang tertutup jelaga berkurang cahayanya, dan buah yang berjelaga tidak laku walau isinya utuh.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lapisan HITAM seperti jelaga menutupi permukaan ATAS daun, ranting, dan kulit buah, kering dan bisa DIKELUPAS sebagai lembaran tipis sehingga permukaan di bawahnya terlihat HIJAU SEHAT tidak berbekas. Permukaan di sekitarnya terasa lengket. Hampir selalu ada gerombolan kutu di atasnya — di pucuk, ketiak daun, atau dompolan buah — dan barisan semut naik-turun batang.
+
+**Ciri pembanding**
+
+1. KELUPAS lapisan hitamnya dengan kuku atau usap dengan kain basah. Embun jelaga terangkat sebagai lembaran dan menyisakan jaringan HIJAU SEHAT di bawahnya; penyakit yang benar-benar menyerang daun meninggalkan jaringan mati kecoklatan yang tidak bisa dikelupas.
+   → membantah: **—**
+2. Cari SUMBERNYA di atas bagian yang berjelaga: gerombolan kutu putih, kutu tempurung, atau kutu daun, dan barisan semut di batang. Kalau ketemu, itu yang harus ditangani — menyemprot jelaganya saja akan mengulang pekerjaan yang sama bulan depan.
+   → membantah: **Kutu tempurung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -6175,232 +6461,234 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-### Kakao — 9 entri
+### Mangga — 9 entri
 
-#### 1. Helopeltis — *Helopeltis antonii*
+#### 1. Lalat buah — *Bactrocera dorsalis*
 
-`op:pst:00000063` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+`op:pst:00000004` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-*Terdaftar juga pada teh (7 baris) dan teks di bawah ditulis untuk kakao. Registri memecahnya jadi beberapa entitas — Helopeltis sp. (21 baris, 12 di antaranya pada teh), Helopeltis spp. (3), dan ejaan Helopelthis sp. (1) — semuanya bertambat hanya sampai GENUS di GBIF dan belum disatukan; produk atas nama itu tidak ikut terdaftar di bawah pintu ini. Luka tusukannya jadi pintu masuk busuk buah, jadi dua masalah itu saling menyusul.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Buah muda berbintik-bintik coklat kehitaman CEKUNG, seukuran ujung jarum sampai sebesar biji, mula-mula berair lalu mengering dan retak; buah yang tertusuk saat masih kecil mengering seluruhnya dan tetap menggantung. Pada pucuk dan ranting muda, tusukannya membuat kulit menghitam, daun layu, dan ranting mati dari ujung.
-
-**Ciri pembanding**
-
-1. Lihat bintiknya dari dekat, kalau perlu kena cahaya miring. Helopeltis meninggalkan bintik CEKUNG bertepi tegas, tersebar dan tidak menyatu walau jumlahnya banyak. Busuk buah memberi bercak yang MELUAS dan menyatu sampai menutup sebagian besar buah.
-   → membantah: **Busuk buah kakao**
-2. Cari serangganya pagi atau sore hari, di buah yang PALING MUDA. Helopeltis ramping seperti nyamuk besar dengan tonjolan seperti jarum di punggungnya, dan langsung berpindah ke sisi lain buah saat didekati. Kalau bintiknya ada tetapi serangganya tidak, ia sudah pindah ke buah yang lebih muda.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 2. Penggerek buah kakao — *Conopomorpha cramerella*
-
-`op:pst:00000064` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*PBK. Yang menentukan bukan semprotan melainkan SARUNGISASI — membungkus buah muda dengan kantong plastik — panen sering setiap tujuh sampai sepuluh hari, dan memendam kulit buah bekas panen. Ulatnya berada DI DALAM buah sejak menetas, jadi semprotan hanya bisa mengenai ngengat dewasa yang aktif malam hari, dan itu jendela yang sempit.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Buah masak lebih cepat dan warnanya BELANG — sebagian kuning, sebagian masih hijau — padahal umurnya belum cukup. Buah terasa berat, dan saat diguncang tidak berbunyi karena bijinya saling melekat. Dibelah, bijinya kempis dan menempel satu sama lain sehingga sulit dipisahkan, dengan lorong kecoklatan di antara daging buahnya.
-
-**Ciri pembanding**
-
-1. Guncang buah yang warnanya belang di dekat telinga. Buah masak yang sehat BERBUNYI karena bijinya lepas; buah yang terserang PBK tidak berbunyi karena bijinya melekat. Pemeriksaan ini tidak merusak buahnya, jadi bisa dikerjakan pada banyak buah sekaligus.
-   → membantah: **—**
-2. Belah buah yang tidak berbunyi. PBK meninggalkan lorong halus di antara daging buah dan biji yang saling melekat, sementara KULIT LUARNYA tidak membusuk. Busuk buah sebaliknya: kulitnya menghitam meluas dari luar, dan bijinya membusuk bersama dagingnya.
-   → membantah: **Busuk buah kakao**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 3. Busuk buah kakao — *Phytophthora palmivora*
-
-`op:pst:00000065` · disease_oomycete · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Oomycete, bukan jamur sejati — dan itu menentukan bahan aktifnya: metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada durian dan lada (4 baris) dan teks di bawah ditulis untuk kakao. Yang paling menurunkan serangan bukan semprotan melainkan memangkas agar kebun tidak lembap, memetik dan MEMENDAM buah sakit, serta mengatur naungan.*
-
-**Teks gejala yang tampil di layar**
-
-> Bercak coklat kehitaman pada buah, mulai dari ujung atau pangkal, MELUAS cepat dan menyatu sampai menutup sebagian besar buah dalam beberapa hari, dengan batas tegas antara bagian sakit dan sehat. Pada cuaca lembap permukaan bercak berselaput putih halus seperti tepung. Buah yang terserang mengering menghitam dan tetap menggantung di batang.
-
-**Ciri pembanding**
-
-1. Perhatikan bagaimana bercaknya berubah dalam beberapa hari. Busuk buah MELUAS dan menyatu; bintik helopeltis tetap kecil, cekung, dan terpisah satu-satu walau jumlahnya banyak.
-   → membantah: **Helopeltis**
-2. Belah buah yang menghitam. Busuk buah membusukkan daging DAN biji bersama-sama dari kulit ke dalam; penggerek buah kakao meninggalkan kulit yang tidak membusuk dengan biji melekat di dalamnya.
-   → membantah: **Penggerek buah kakao**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 4. Mati ranting VSD — *Oncobasidium theobromae*
-
-`op:pst:00000066` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
-
-*Vascular streak dieback. Registri juga memuatnya atas nama barunya, Ceratobasidium theobromae (1 baris), yang belum disatukan — jamur yang sama. Sporanya terbawa angin pada malam lembap dan masuk lewat daun muda, jadi yang menentukan varietas atau klon tahan, sambung samping, dan memangkas ranting sakit sampai sekitar 30 cm di bawah bagian yang bergejala — bukan menyemprot daun.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Satu atau dua daun di TENGAH ranting menguning dengan bercak hijau tersisa di antara tulang daun, lalu rontok — bukan daun paling tua di pangkal, bukan daun paling muda di pucuk. Ranting menggundul dari tengah ke ujung dan tinggal ranting telanjang berbintil bekas dudukan daun. Akhirnya ranting mati dari ujung ke pangkal.
-
-**Ciri pembanding**
-
-1. Potong ranting yang menggundul MELINTANG, lalu tatap penampangnya. Ada tiga titik coklat tersusun seperti segitiga pada berkas pembuluhnya; dibelah membujur, titik itu jadi garis coklat memanjang — dari situ nama vascular streak. Ranting yang mati karena penggerek berlubang dan berlorong, bukan bergaris.
-   → membantah: **Penggerek batang kakao**
-2. Lihat daun mana yang menguning lebih dulu. VSD mulai dari daun di TENGAH ranting. Kekurangan hara menguningkan daun TUA di pangkal lebih dulu dan merata di seluruh pohon, bukan ranting per ranting.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 5. Ulat kilan — *Hyposidra talaca*
-
-`op:pst:00000067` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Ulat jengkal kakao. Datang berkala dalam ledakan singkat dan bisa menggunduli pohon dalam hitungan hari, lalu menghilang; di luar ledakan itu jarang menuntut tindakan apa pun — dan menyemprot terjadwal di luar ledakan menghabiskan biaya tanpa menyelamatkan apa pun.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Daun muda dan pucuk habis dimakan dari TEPI ke dalam sampai tinggal tulang daun, dan pada ledakan berat pohon gundul sampai ke ranting. Ulatnya coklat kehijauan dan BERJALAN MELENGKUNG seperti sedang mengukur; saat terganggu ia menegang lurus menyerupai ranting kecil, atau menjatuhkan diri pada benang.
-
-**Ciri pembanding**
-
-1. Perhatikan cara ulatnya berjalan dan bersikap saat disentuh. Ulat kilan melengkungkan punggung tiap melangkah, lalu menegang lurus seperti ranting kecil. Tidak ada hama daun kakao lain yang bersikap begitu.
-   → membantah: **—**
-2. Lihat mengapa daunnya hilang. Ulat kilan menggigit dari TEPI daun sehingga tinggal tulang daun. Ranting yang menggundul karena VSD daunnya rontok sendiri sesudah menguning — tidak tergigit — dan yang tinggal ranting telanjang berbintil, bukan tulang daun.
-   → membantah: **Mati ranting VSD**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 6. Kutu putih — *Planococcus citri*
-
-`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
-
-*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
-
-**Ciri pembanding**
-
-1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
-   → membantah: **—**
-2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
-   → membantah: **Kutu tempurung**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 7. Semut api — *Solenopsis geminata*
-
-`op:pst:00000139` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Jarang jadi masalah karena memakan tanaman — ia jadi masalah karena MEMELIHARA kutu putih dan kutu tempurung, mengangkutnya dari pohon ke pohon, dan mengusir musuh alami kutu itu. Karena itu ia sering pintu masuk yang lebih murah: memutus jalur semut di batang menurunkan kutu tanpa menyemprot tajuk sama sekali. Pada jagung ia juga memakan benih yang baru ditugal.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Barisan semut merah kecoklatan naik-turun di batang sepanjang hari, paling ramai menuju bagian yang bergerombol kutu. Di tanah ada gundukan sarang lepas di dekat pangkal batang. Pada jagung, benih hilang atau berlubang beberapa hari sesudah ditugal, dan tanaman tidak tumbuh berpetak-petak.
-
-**Ciri pembanding**
-
-1. Ikuti barisan semutnya ke atas dan lihat ke mana ia menuju. Kalau ujungnya gerombolan kutu, yang sedang dilihat SEBAB dan AKIBAT sekaligus — memutus jalur semut di batang menurunkan keduanya.
-   → membantah: **Kutu putih**
-2. Pada jagung, korek tanah di titik yang benihnya tidak tumbuh. Benih berlubang dengan semut di sekitarnya berarti semut; benih utuh yang membusuk berarti masalah benih atau kelembapan, dan menyemprot semut tidak menolong apa pun.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 8. Jamur upas — *Corticium salmonicolor*
-
-`op:pst:00000161` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
-
-*Menyerang CABANG dan batang, bukan daun, dan cabang yang sudah dilingkari seluruhnya tidak bisa diselamatkan — yang bisa hanya memotongnya di bawah batas serangan sebelum menyebar. Karena itu keputusannya soal waktu memeriksa, bukan soal bahan aktif: sekali terlihat merah muda, cabangnya sudah mati. Menumpuk di kebun rapat yang lembap dan kurang cahaya.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Lapisan tipis merah JAMBU sampai jingga menempel rata di kulit cabang, seperti dicat, sering dimulai dari sisi bawah cabang. Di atas batas lapisan itu daun menguning dan cabangnya mati mengering sementara bagian bawahnya masih hidup. Kulit di bawah lapisan itu mengelupas dan mengeluarkan getah kering.
-
-**Ciri pembanding**
-
-1. Lihat WARNANYA dan di mana ia menempel. Jamur upas berwarna merah jambu sampai jingga menempel rata di KULIT CABANG; jamur akar putih memberi benang putih rata di AKAR dan pangkal batang, di bawah permukaan tanah.
-   → membantah: **Jamur akar putih**
-2. Periksa apakah bagian cabang di BAWAH lapisan itu masih hidup. Jamur upas mematikan cabang dari batas lapisannya ke ujung; pohon yang mati dari bawah ke atas penyebabnya akar, bukan ini.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 9. Penggerek batang kakao — *Zeurera cofeae*
-
-`op:pst:00000186` · insect · taksonomi terverifikasi GBIF (fuzzy, 84%)
-
-*Menggerek ke dalam KAYU, dan sekali larvanya di dalam tidak ada semprotan yang menjangkaunya — yang bekerja hanya menyumbat lubangnya atau memotong cabang di bawah gerekan. Karena itu seluruh nilainya ada pada menemukan lubangnya lebih awal, dan tanda yang paling mudah dilihat justru kotoran yang menggantung di bawah lubang. Menyerang cabang dan batang muda berdiameter jari sampai lengan.*
+*Lalat buah oriental, berinang sangat luas — cabai, jeruk, mangga, tomat, dan puluhan buah lain — sehingga petak yang bersih tetap terserang dari pohon tetangga. Yang menentukan pengumpulan buah gugur dan perangkap serempak se-hamparan, bukan penyemprotan sendiri-sendiri.*
 
 > **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
 
 **Teks gejala yang tampil di layar**
 
-> Lubang BUNDAR sebesar pensil pada batang atau cabang, dan di bawahnya menggantung kotoran serbuk kayu berwarna kemerahan yang terikat benang, sering menumpuk di pangkal pohon. Cabang di atas lubang layu, daunnya menguning lalu mengering, dan cabang itu mudah patah saat tertiup angin.
+> Buah berlubang tusukan sebesar ujung jarum, di sekitarnya melunak dan basah, lalu gugur sebelum tua. Di dalam buah yang gugur ada belatung putih.
 
 **Ciri pembanding**
 
-1. Cari LUBANG BUNDAR pada batang beserta kotoran serbuk kayu yang menggantung di bawahnya. Penggerek batang kakao meninggalkan keduanya; mati ranting VSD tidak melubangi apa pun dan bekasnya justru di bekas daun yang gugur.
-   → membantah: **Mati ranting VSD**
-2. Potong cabang yang layu tepat di bawah lubang dan belah. Penggerek batang meninggalkan lorong memanjang di dalam kayu; kayu yang utuh tetapi bergaris coklat di berkas pembuluh penyebabnya VSD.
-   → membantah: **Mati ranting VSD**
+1. Belah buah yang gugur. Kalau ada belatung putih tanpa kaki yang melenting saat disentuh, itu lalat buah. Antraknosa tidak pernah berbelatung.
+   → membantah: **Antraknosa**
+2. Lihat bentuk kerusakannya. Lalat buah meninggalkan titik tusukan dengan daerah lembek berair di sekitarnya; antraknosa memberi bercak melingkar cekung dan kering dengan titik hitam di tengahnya.
+   → membantah: **Antraknosa**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Antraknosa mangga — *Colletotrichum gloeosporioides*
+
+`op:pst:00000103` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Entitas ini terdaftar juga di luar mangga — cabai 12 baris, jeruk 3, karet 2, dan lainnya — dan teks di bawah ditulis UNTUK MANGGA. Cabai punya pintu antraknosanya sendiri atas nama Colletotrichum spp. Sporanya menempel di buah sejak masih pentil lalu diam sampai buah matang, jadi bercaknya baru muncul menjelang atau sesudah panen; menyemprot saat buah sudah berbercak sudah terlambat.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak hitam bersudut pada daun muda yang lalu berlubang, dan pada tangkai bunga bercak hitam memanjang yang membuat bunga mengering hitam sebelum jadi pentil. Pada buah, bercak hitam CEKUNG bundar yang meluas dan menyatu, sering membentuk aliran memanjang seperti bekas air mata dari pangkal buah.
+
+**Ciri pembanding**
+
+1. Lihat bentuk bercak pada buah yang sudah tua. Antraknosa mangga membentuk aliran memanjang seperti bekas air mata dari pangkal ke bawah, karena sporanya terbawa air hujan yang mengalir di kulit buah. Bercak daun mangga tidak pernah membentuk aliran begitu.
+   → membantah: **Bercak daun mangga**
+2. Ingat kapan bercaknya muncul. Antraknosa menempel sejak pentil dan baru terlihat menjelang matang — jadi buah yang mulus di pohon bisa berbercak di keranjang. Kalau bercaknya sudah ada sejak buah masih kecil dan tidak meluas, penyebabnya lain.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Bercak daun mangga — *Stigmina mangiferae*
+
+`op:pst:00000104` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Menyerang daun dan ranting, bukan buah — jadi kerugiannya lewat daun yang habis dan pohon yang melemah, bukan lewat buah yang tidak laku. Paling parah pada pohon yang tajuknya rapat dan jarang dipangkas.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak bersudut coklat kehitaman pada daun yang dibatasi tulang daun, tengahnya lama-lama keabuan dengan titik hitam halus, dan tepinya kadang berhalo kuning. Bercak yang banyak menyatu sampai daun mengering dan rontok; ranting muda ikut berbercak dan mati dari ujung.
+
+**Ciri pembanding**
+
+1. Lihat apakah buahnya ikut berbercak. Bercak daun mangga menyerang DAUN dan ranting saja — buahnya mulus. Kalau buah ikut berbercak hitam cekung, itu antraknosa.
+   → membantah: **Antraknosa mangga**
+2. Perhatikan batas bercaknya. Bercak daun mangga bersudut dibatasi tulang daun; antraknosa pada daun muda memberi bercak hitam yang lalu berlubang, tidak mengikuti tulang daun.
+   → membantah: **Antraknosa mangga**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 4. Kutu putih mangga — *Rastrococcus sp.*
+
+`op:pst:00000105` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Identitasnya di GBIF hanya tertambat sampai GENUS. Nimfanya naik dari tanah ke tajuk lewat batang, jadi PITA PERANGKAP dari plastik licin atau lem di batang memutus jalannya — tindakan yang tidak menuntut semprotan sama sekali. Semut memelihara dan mengangkutnya, dan mengendalikan semutnya ikut menentukan.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas menutup tangkai bunga, pentil, dan pucuk sampai bagian itu tampak memutih. Bunga dan pentil rontok banyak; daun di bawahnya lengket lalu tertutup jelaga hitam sampai gelap.
+
+**Ciri pembanding**
+
+1. Periksa batang dari pangkal ke atas, bukan cuma tajuknya. Kutu putih mangga NAIK lewat batang dari tanah, jadi barisan kutu di kulit batang menandakan gelombang berikutnya sedang berjalan — dan di situlah pita perangkap masih sempat memutusnya.
+   → membantah: **—**
+2. Usap gerombolan putihnya. Kutu putih hancur jadi bubuk lilin dan menyisakan tubuh kutu di bawahnya; embun tepung juga putih tetapi tidak menyisakan tubuh serangga apa pun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 5. Wereng mangga — *Idiocerus sp.*
+
+`op:pst:00000106` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan registri memecahnya lagi jadi Idioscopus sp. (2 baris) serta ejaan Ideocerus spp. (1) yang belum disatukan. Menyerang tepat pada fase BERBUNGA, dan di luar fase itu jarang menuntut tindakan — jendela pengendaliannya sempit dan terikat pada saat malai keluar.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Malai bunga mengering dan rontok sebelum jadi pentil, dan saat malai diguncang serangga pipih berbentuk baji seukuran biji wijen BERHAMBURAN keluar lalu hinggap lagi. Bunga dan daun muda lengket oleh embun madu, lalu tertutup jelaga hitam sampai malai menghitam seluruhnya.
+
+**Ciri pembanding**
+
+1. Guncang malai bunga di pagi hari dan lihat apa yang berhamburan. Wereng mangga pipih berbentuk BAJI — lebar di kepala, meruncing ke belakang — dan langsung hinggap lagi; kutu putih tidak terbang dan tetap menempel bergerombol.
+   → membantah: **Kutu putih mangga**
+2. Perhatikan fase pohonnya. Wereng mangga menumpuk tepat saat malai keluar sampai pentil terbentuk; di luar fase itu jumlahnya turun sendiri, dan menyemprot terjadwal di luar masa berbunga menghabiskan biaya tanpa menyelamatkan apa pun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 6. Puru daun mangga — *Procontarinia sp.*
+
+`op:pst:00000168` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Menyerang daun MUDA saja — begitu daun mengeras ia tidak bisa masuk lagi — sehingga jendelanya persis saat pohon bertunas, beberapa minggu setelah pemangkasan atau setelah hujan pertama. Menyemprot di luar masa bertunas tidak menolong apa pun. Larvanya keluar dari puru dan menjatuhkan diri ke tanah untuk jadi kepompong, jadi tanah di bawah tajuk bagian dari daurnya.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun muda bertaburan BENJOL bulat sebesar kepala jarum yang menonjol di kedua permukaan, mula-mula hijau kekuningan lalu menghitam berlubang di tengah setelah larvanya keluar. Daun yang purunya rapat terpuntir, mengering di ujung, dan gugur; tunas baru jadi pendek dan tidak beraturan.
+
+**Ciri pembanding**
+
+1. Belah satu benjol yang masih hijau. Puru daun mangga berisi belatung kecil putih di rongga di dalamnya; benjol yang berisi jaringan padat tanpa rongga bukan ini.
+   → membantah: **—**
+2. Lihat umur daun yang berpuru. Puru daun hanya terbentuk pada daun MUDA saat pohon bertunas; kerusakan yang muncul pada daun tua yang sudah mengeras penyebabnya lain.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Penggerek buah mangga — *Noorda albizonalis*
+
+`op:pst:00000169` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Menggerek buah dari UJUNG, dan itu yang membedakannya dari lalat buah yang menusuk di mana saja. Buah yang tergerek tidak bisa diselamatkan, jadi seluruh nilainya ada pada pencegahan: membungkus buah sejak sebesar telur ayam menghentikannya sepenuhnya tanpa bahan apa pun, dan itu tindakan yang sudah lazim di sentra mangga.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Buah berlubang di bagian UJUNG (bagian yang jauh dari tangkai) dengan kotoran coklat basah keluar dari lubangnya, dan di sekitarnya getah mengering. Buah yang dibelah berisi ulat kemerahan di rongga dekat biji. Buah yang terserang gugur sebelum tua.
+
+**Ciri pembanding**
+
+1. Lihat DI MANA lubangnya. Penggerek buah mangga masuk dari ujung buah dan mengeluarkan kotoran basah dari lubang itu; lalat buah menusuk sebesar ujung jarum di mana saja dan tidak mengeluarkan kotoran.
+   → membantah: **Lalat buah**
+2. Belah buah yang gugur. Penggerek buah mangga meninggalkan satu ulat kemerahan di rongga dekat biji; lalat buah meninggalkan banyak belatung putih kecil di daging buah yang membusuk lunak.
+   → membantah: **Lalat buah**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Bercak daun phyllosticta — *Phyllosticta sp.*
+
+`op:pst:00000170` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 92%)
+
+*Penyakit daun yang jarang menentukan hasil sendirian — yang membuatnya penting kebun yang tajuknya sudah menipis karena hal lain, karena daun yang gugur berulang menurunkan pembungaan musim berikutnya. Menumpuk pada kebun rapat yang lembap dan pada pohon yang lama tidak dipangkas. Bertahan pada daun gugur di bawah tajuk.*
+
+> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak BULAT pada daun tua, tengahnya kelabu keputihan bertaburan titik hitam kecil dan tepinya coklat tua berbatas tegas seperti digambar. Bercak yang berdekatan menyatu jadi bidang kering; daun tua menguning lalu gugur sementara daun muda masih bersih.
+
+**Ciri pembanding**
+
+1. Lihat titik hitam di TENGAH bercak dengan cermat. Bercak phyllosticta menaburkannya tidak beraturan di bagian kelabu; antraknosa menyusunnya MELINGKAR sepusat, dan itu pembeda yang paling mudah dilihat.
+   → membantah: **Antraknosa mangga**
+2. Periksa apakah buah dan tangkai bunga ikut bergejala. Bercak phyllosticta berhenti di daun; antraknosa mangga menghitamkan tangkai bunga dan memberi bercak cekung pada buah, dan itu yang menentukan kerugiannya.
+   → membantah: **Antraknosa mangga**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 9. Embun jelaga — *Capnodium sp.*
+
+`op:pst:00000200` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*BUKAN penyakit tanaman, dan itu satu-satunya hal yang perlu diketahui sebelum membeli apa pun: jamurnya tumbuh di atas EMBUN MADU — cairan manis yang dikeluarkan kutu — dan tidak menembus jaringan tanaman sama sekali. Menyemprot fungisida menghilangkan jelaganya sebentar lalu ia kembali, karena kutunya masih ada. Yang menghentikannya menangani kutu putih, kutu tempurung, atau kutu daun yang ada di atasnya, dan memutus jalur semut yang memelihara kutu itu. Kerugiannya nyata tetapi tidak langsung: daun yang tertutup jelaga berkurang cahayanya, dan buah yang berjelaga tidak laku walau isinya utuh.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lapisan HITAM seperti jelaga menutupi permukaan ATAS daun, ranting, dan kulit buah, kering dan bisa DIKELUPAS sebagai lembaran tipis sehingga permukaan di bawahnya terlihat HIJAU SEHAT tidak berbekas. Permukaan di sekitarnya terasa lengket. Hampir selalu ada gerombolan kutu di atasnya — di pucuk, ketiak daun, atau dompolan buah — dan barisan semut naik-turun batang.
+
+**Ciri pembanding**
+
+1. KELUPAS lapisan hitamnya dengan kuku atau usap dengan kain basah. Embun jelaga terangkat sebagai lembaran dan menyisakan jaringan HIJAU SEHAT di bawahnya; penyakit yang benar-benar menyerang daun meninggalkan jaringan mati kecoklatan yang tidak bisa dikelupas.
+   → membantah: **—**
+2. Cari SUMBERNYA di atas bagian yang berjelaga: gerombolan kutu putih, kutu tempurung, atau kutu daun, dan barisan semut di batang. Kalau ketemu, itu yang harus ditangani — menyemprot jelaganya saja akan mengulang pekerjaan yang sama bulan depan.
+   → membantah: **Kutu tempurung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -6617,26 +6905,24 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-### Mangga — 8 entri
+### Kopi — 8 entri
 
-#### 1. Lalat buah — *Bactrocera dorsalis*
+#### 1. Karat daun kopi — *Hemileia vastatrix*
 
-`op:pst:00000004` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+`op:pst:00000068` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
 
-*Lalat buah oriental, berinang sangat luas — cabai, jeruk, mangga, tomat, dan puluhan buah lain — sehingga petak yang bersih tetap terserang dari pohon tetangga. Yang menentukan pengumpulan buah gugur dan perangkap serempak se-hamparan, bukan penyemprotan sendiri-sendiri.*
-
-> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
+*Penyakit kopi paling menentukan di dunia, dan yang membuat arabika sulit dipertahankan di dataran rendah tanpa varietas tahan; robusta jauh lebih tahan. Yang menentukan pemangkasan agar tajuk tidak lembap, pemupukan berimbang, dan pilihan varietas — semprotan tembaga hanya menahan, dan hanya kalau diberikan sebelum bercaknya meluas.*
 
 **Teks gejala yang tampil di layar**
 
-> Buah berlubang tusukan sebesar ujung jarum, di sekitarnya melunak dan basah, lalu gugur sebelum tua. Di dalam buah yang gugur ada belatung putih.
+> Bercak bulat kuning terang di permukaan BAWAH daun, dan di atas bercak itu ada SERBUK jingga kekuningan yang menempel di jari. Dari permukaan atas terlihat sebagai bercak kuning pucat berbatas kabur. Daun rontok dari bawah ke atas sampai ranting telanjang, dan pohon yang gundul tidak berbuah pada musim berikutnya.
 
 **Ciri pembanding**
 
-1. Belah buah yang gugur. Kalau ada belatung putih tanpa kaki yang melenting saat disentuh, itu lalat buah. Antraknosa tidak pernah berbelatung.
-   → membantah: **Antraknosa**
-2. Lihat bentuk kerusakannya. Lalat buah meninggalkan titik tusukan dengan daerah lembek berair di sekitarnya; antraknosa memberi bercak melingkar cekung dan kering dengan titik hitam di tengahnya.
-   → membantah: **Antraknosa**
+1. Balik daun dan usap bercaknya dengan jari. Karat daun meninggalkan SERBUK jingga di jari — tidak ada penyakit daun kopi lain yang begitu. Bercak daun kopi rata, kering, dan tidak berserbuk.
+   → membantah: **Bercak daun kopi**
+2. Periksa apakah daunnya lengket. Karat daun tidak melengketkan daun. Kalau daun menguning DAN lengket serta berjelaga hitam, yang menguningkannya kutu, bukan karat.
+   → membantah: **Kutu tempurung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -6645,75 +6931,23 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-#### 2. Antraknosa mangga — *Colletotrichum gloeosporioides*
+#### 2. Penggerek buah kopi — *Hypothenemus hampei*
 
-`op:pst:00000103` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+`op:pst:00000069` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-*Entitas ini terdaftar juga di luar mangga — cabai 12 baris, jeruk 3, karet 2, dan lainnya — dan teks di bawah ditulis UNTUK MANGGA. Cabai punya pintu antraknosanya sendiri atas nama Colletotrichum spp. Sporanya menempel di buah sejak masih pentil lalu diam sampai buah matang, jadi bercaknya baru muncul menjelang atau sesudah panen; menyemprot saat buah sudah berbercak sudah terlambat.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Bercak hitam bersudut pada daun muda yang lalu berlubang, dan pada tangkai bunga bercak hitam memanjang yang membuat bunga mengering hitam sebelum jadi pentil. Pada buah, bercak hitam CEKUNG bundar yang meluas dan menyatu, sering membentuk aliran memanjang seperti bekas air mata dari pangkal buah.
-
-**Ciri pembanding**
-
-1. Lihat bentuk bercak pada buah yang sudah tua. Antraknosa mangga membentuk aliran memanjang seperti bekas air mata dari pangkal ke bawah, karena sporanya terbawa air hujan yang mengalir di kulit buah. Bercak daun mangga tidak pernah membentuk aliran begitu.
-   → membantah: **Bercak daun mangga**
-2. Ingat kapan bercaknya muncul. Antraknosa menempel sejak pentil dan baru terlihat menjelang matang — jadi buah yang mulus di pohon bisa berbercak di keranjang. Kalau bercaknya sudah ada sejak buah masih kecil dan tidak meluas, penyebabnya lain.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 3. Bercak daun mangga — *Stigmina mangiferae*
-
-`op:pst:00000104` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
-
-*Menyerang daun dan ranting, bukan buah — jadi kerugiannya lewat daun yang habis dan pohon yang melemah, bukan lewat buah yang tidak laku. Paling parah pada pohon yang tajuknya rapat dan jarang dipangkas.*
-
-> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
-
-**Teks gejala yang tampil di layar**
-
-> Bercak bersudut coklat kehitaman pada daun yang dibatasi tulang daun, tengahnya lama-lama keabuan dengan titik hitam halus, dan tepinya kadang berhalo kuning. Bercak yang banyak menyatu sampai daun mengering dan rontok; ranting muda ikut berbercak dan mati dari ujung.
-
-**Ciri pembanding**
-
-1. Lihat apakah buahnya ikut berbercak. Bercak daun mangga menyerang DAUN dan ranting saja — buahnya mulus. Kalau buah ikut berbercak hitam cekung, itu antraknosa.
-   → membantah: **Antraknosa mangga**
-2. Perhatikan batas bercaknya. Bercak daun mangga bersudut dibatasi tulang daun; antraknosa pada daun muda memberi bercak hitam yang lalu berlubang, tidak mengikuti tulang daun.
-   → membantah: **Antraknosa mangga**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 4. Kutu putih mangga — *Rastrococcus sp.*
-
-`op:pst:00000105` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
-
-*Identitasnya di GBIF hanya tertambat sampai GENUS. Nimfanya naik dari tanah ke tajuk lewat batang, jadi PITA PERANGKAP dari plastik licin atau lem di batang memutus jalannya — tindakan yang tidak menuntut semprotan sama sekali. Semut memelihara dan mengangkutnya, dan mengendalikan semutnya ikut menentukan.*
+*PBKo — hama kopi paling menentukan di Indonesia, dan sekaligus yang paling sedikit produk terdaftarnya: LIMA baris penggunaan berlabel di seluruh registri. Yang menentukan memang bukan semprotan melainkan PETIK BUBUK dan LELESAN — memetik buah terserang lebih awal dan memungut buah jatuh sampai bersih — ditambah Beauveria bassiana dan perangkap beralkohol. Kumbangnya berada di dalam biji hampir seumur hidupnya, jadi semprotan hanya mengenai yang sedang terbang. Registri juga memuatnya atas nama genus lama Stephanoderes hampei (1 baris) yang belum disatukan.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
 **Teks gejala yang tampil di layar**
 
-> Gerombolan kutu berlapis lilin PUTIH seperti kapas menutup tangkai bunga, pentil, dan pucuk sampai bagian itu tampak memutih. Bunga dan pentil rontok banyak; daun di bawahnya lengket lalu tertutup jelaga hitam sampai gelap.
+> Lubang bundar kecil sebesar ujung jarum tepat di UJUNG buah — sisi yang berseberangan dengan tangkai — kadang dengan serbuk halus di mulut lubang. Buah yang terserang saat masih muda gugur; yang bertahan sampai panen bijinya berlubang dan berlorong, dan bobot serta mutunya turun.
 
 **Ciri pembanding**
 
-1. Periksa batang dari pangkal ke atas, bukan cuma tajuknya. Kutu putih mangga NAIK lewat batang dari tanah, jadi barisan kutu di kulit batang menandakan gelombang berikutnya sedang berjalan — dan di situlah pita perangkap masih sempat memutusnya.
+1. Lihat DI MANA lubangnya. Penggerek buah kopi hampir selalu masuk lewat ujung buah, sisi yang berlawanan dengan tangkai, dan lubangnya bundar rapi sebesar ujung jarum. Lubang di sisi lain buah, atau yang tidak bundar, penyebabnya lain.
    → membantah: **—**
-2. Usap gerombolan putihnya. Kutu putih hancur jadi bubuk lilin dan menyisakan tubuh kutu di bawahnya; embun tepung juga putih tetapi tidak menyisakan tubuh serangga apa pun.
+2. Belah buah yang berlubang. Ada lorong dan ruang di dalam biji beserta kumbang hitam kecil kurang dari dua milimeter, kadang beberapa sekaligus. Buah yang gugur karena kekurangan air atau hara tidak berlubang dan bijinya utuh.
    → membantah: **—**
 
 | Pertanyaan | Jawaban peninjau |
@@ -6723,24 +6957,24 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-#### 5. Wereng mangga — *Idiocerus sp.*
+#### 3. Kutu putih — *Planococcus citri*
 
-`op:pst:00000106` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan registri memecahnya lagi jadi Idioscopus sp. (2 baris) serta ejaan Ideocerus spp. (1) yang belum disatukan. Menyerang tepat pada fase BERBUNGA, dan di luar fase itu jarang menuntut tindakan — jendela pengendaliannya sempit dan terikat pada saat malai keluar.*
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
 
 > **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
 
 **Teks gejala yang tampil di layar**
 
-> Malai bunga mengering dan rontok sebelum jadi pentil, dan saat malai diguncang serangga pipih berbentuk baji seukuran biji wijen BERHAMBURAN keluar lalu hinggap lagi. Bunga dan daun muda lengket oleh embun madu, lalu tertutup jelaga hitam sampai malai menghitam seluruhnya.
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
 
 **Ciri pembanding**
 
-1. Guncang malai bunga di pagi hari dan lihat apa yang berhamburan. Wereng mangga pipih berbentuk BAJI — lebar di kepala, meruncing ke belakang — dan langsung hinggap lagi; kutu putih tidak terbang dan tetap menempel bergerombol.
-   → membantah: **Kutu putih mangga**
-2. Perhatikan fase pohonnya. Wereng mangga menumpuk tepat saat malai keluar sampai pentil terbentuk; di luar fase itu jumlahnya turun sendiri, dan menyemprot terjadwal di luar masa berbunga menghabiskan biaya tanpa menyelamatkan apa pun.
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
    → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -6749,23 +6983,23 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-#### 6. Puru daun mangga — *Procontarinia sp.*
+#### 4. Kutu tempurung — *Coccus viridis*
 
-`op:pst:00000168` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+`op:pst:00000071` · insect · taksonomi terverifikasi GBIF (exact, 97%)
 
-*Menyerang daun MUDA saja — begitu daun mengeras ia tidak bisa masuk lagi — sehingga jendelanya persis saat pohon bertunas, beberapa minggu setelah pemangkasan atau setelah hujan pertama. Menyemprot di luar masa bertunas tidak menolong apa pun. Larvanya keluar dari puru dan menjatuhkan diri ke tanah untuk jadi kepompong, jadi tanah di bawah tajuk bagian dari daurnya.*
+*Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.*
 
-> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
 
 **Teks gejala yang tampil di layar**
 
-> Daun muda bertaburan BENJOL bulat sebesar kepala jarum yang menonjol di kedua permukaan, mula-mula hijau kekuningan lalu menghitam berlubang di tengah setelah larvanya keluar. Daun yang purunya rapat terpuntir, mengering di ujung, dan gugur; tunas baru jadi pendek dan tidak beraturan.
+> Sisik cembung hijau kekuningan seukuran kepala jarum menempel RAPAT di tulang daun bagian bawah, di pucuk, dan di buah muda, dan tidak bergerak sama sekali. Daun di bawahnya lengket lalu tertutup jelaga hitam sampai permukaannya gelap; pucuk kerdil dan buah muda gugur.
 
 **Ciri pembanding**
 
-1. Belah satu benjol yang masih hijau. Puru daun mangga berisi belatung kecil putih di rongga di dalamnya; benjol yang berisi jaringan padat tanpa rongga bukan ini.
-   → membantah: **—**
-2. Lihat umur daun yang berpuru. Puru daun hanya terbentuk pada daun MUDA saat pohon bertunas; kerusakan yang muncul pada daun tua yang sudah mengeras penyebabnya lain.
+1. Coba dorong sisiknya dengan kuku. Kutu tempurung MENEMPEL keras dan terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya; kutu putih hancur jadi bubuk lilin saat diusap.
+   → membantah: **Kutu putih**
+2. Usap jelaga hitamnya dengan kain basah. Jelaga TERANGKAT dan daun di bawahnya masih hijau — ia tumbuh di atas embun madu, bukan menyerang daunnya. Yang perlu ditangani kutunya; membersihkan jelaganya saja tidak menghentikan apa pun.
    → membantah: **—**
 
 | Pertanyaan | Jawaban peninjau |
@@ -6775,24 +7009,24 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-#### 7. Penggerek buah mangga — *Noorda albizonalis*
+#### 5. Bercak daun kopi — *Cercospora coffeicola*
 
-`op:pst:00000169` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+`op:pst:00000072` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
 
-*Menggerek buah dari UJUNG, dan itu yang membedakannya dari lalat buah yang menusuk di mana saja. Buah yang tergerek tidak bisa diselamatkan, jadi seluruh nilainya ada pada pencegahan: membungkus buah sejak sebesar telur ayam menghentikannya sepenuhnya tanpa bahan apa pun, dan itu tindakan yang sudah lazim di sentra mangga.*
+*Paling parah pada bibit di pembibitan dan pada pohon yang kekurangan hara atau kepanasan karena naungannya terlalu terbuka — jadi bercaknya sering pertanda pemeliharaan, bukan cuma pertanda jamur. Menyerang daun dan buah; pada buah ia membuat kulit melekat pada biji sehingga sulit dikupas.*
 
 > **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
 
 **Teks gejala yang tampil di layar**
 
-> Buah berlubang di bagian UJUNG (bagian yang jauh dari tangkai) dengan kotoran coklat basah keluar dari lubangnya, dan di sekitarnya getah mengering. Buah yang dibelah berisi ulat kemerahan di rongga dekat biji. Buah yang terserang gugur sebelum tua.
+> Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu dan tepi coklat kemerahan yang tegas, sering dikelilingi halo kuning, dan di bagian tengahnya ada titik-titik hitam halus. Pada buah muncul bercak coklat kehitaman cekung memanjang yang membuat kulit buah melekat ke biji.
 
 **Ciri pembanding**
 
-1. Lihat DI MANA lubangnya. Penggerek buah mangga masuk dari ujung buah dan mengeluarkan kotoran basah dari lubang itu; lalat buah menusuk sebesar ujung jarum di mana saja dan tidak mengeluarkan kotoran.
-   → membantah: **Lalat buah**
-2. Belah buah yang gugur. Penggerek buah mangga meninggalkan satu ulat kemerahan di rongga dekat biji; lalat buah meninggalkan banyak belatung putih kecil di daging buah yang membusuk lunak.
-   → membantah: **Lalat buah**
+1. Raba dan usap bercaknya. Bercak daun kopi RATA dan kering serta tidak meninggalkan apa pun di jari; karat daun meninggalkan serbuk jingga saat diusap di permukaan bawah daun.
+   → membantah: **Karat daun kopi**
+2. Lihat di mana bercak terbanyak. Bercak daun kopi menumpuk pada bibit dan pada pohon yang naungannya terlalu terbuka atau kurang pupuk; karat daun tidak memilih begitu, dan justru menyerang pohon yang tajuknya rimbun dan lembap.
+   → membantah: **Karat daun kopi**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -6801,24 +7035,76 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
-#### 8. Bercak daun phyllosticta — *Phyllosticta sp.*
+#### 6. Semut api — *Solenopsis geminata*
 
-`op:pst:00000170` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 92%)
+`op:pst:00000139` · insect · taksonomi terverifikasi GBIF (exact, 99%)
 
-*Penyakit daun yang jarang menentukan hasil sendirian — yang membuatnya penting kebun yang tajuknya sudah menipis karena hal lain, karena daun yang gugur berulang menurunkan pembungaan musim berikutnya. Menumpuk pada kebun rapat yang lembap dan pada pohon yang lama tidak dipangkas. Bertahan pada daun gugur di bawah tajuk.*
+*Jarang jadi masalah karena memakan tanaman — ia jadi masalah karena MEMELIHARA kutu putih dan kutu tempurung, mengangkutnya dari pohon ke pohon, dan mengusir musuh alami kutu itu. Karena itu ia sering pintu masuk yang lebih murah: memutus jalur semut di batang menurunkan kutu tanpa menyemprot tajuk sama sekali. Pada jagung ia juga memakan benih yang baru ditugal.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Barisan semut merah kecoklatan naik-turun di batang sepanjang hari, paling ramai menuju bagian yang bergerombol kutu. Di tanah ada gundukan sarang lepas di dekat pangkal batang. Pada jagung, benih hilang atau berlubang beberapa hari sesudah ditugal, dan tanaman tidak tumbuh berpetak-petak.
+
+**Ciri pembanding**
+
+1. Ikuti barisan semutnya ke atas dan lihat ke mana ia menuju. Kalau ujungnya gerombolan kutu, yang sedang dilihat SEBAB dan AKIBAT sekaligus — memutus jalur semut di batang menurunkan keduanya.
+   → membantah: **Kutu putih**
+2. Pada jagung, korek tanah di titik yang benihnya tidak tumbuh. Benih berlubang dengan semut di sekitarnya berarti semut; benih utuh yang membusuk berarti masalah benih atau kelembapan, dan menyemprot semut tidak menolong apa pun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 7. Penggerek batang kakao — *Zeurera cofeae*
+
+`op:pst:00000186` · insect · taksonomi terverifikasi GBIF (fuzzy, 84%)
+
+*Menggerek ke dalam KAYU, dan sekali larvanya di dalam tidak ada semprotan yang menjangkaunya — yang bekerja hanya menyumbat lubangnya atau memotong cabang di bawah gerekan. Karena itu seluruh nilainya ada pada menemukan lubangnya lebih awal, dan tanda yang paling mudah dilihat justru kotoran yang menggantung di bawah lubang. Menyerang cabang dan batang muda berdiameter jari sampai lengan.*
 
 > **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
 
 **Teks gejala yang tampil di layar**
 
-> Bercak BULAT pada daun tua, tengahnya kelabu keputihan bertaburan titik hitam kecil dan tepinya coklat tua berbatas tegas seperti digambar. Bercak yang berdekatan menyatu jadi bidang kering; daun tua menguning lalu gugur sementara daun muda masih bersih.
+> Lubang BUNDAR sebesar pensil pada batang atau cabang, dan di bawahnya menggantung kotoran serbuk kayu berwarna kemerahan yang terikat benang, sering menumpuk di pangkal pohon. Cabang di atas lubang layu, daunnya menguning lalu mengering, dan cabang itu mudah patah saat tertiup angin.
 
 **Ciri pembanding**
 
-1. Lihat titik hitam di TENGAH bercak dengan cermat. Bercak phyllosticta menaburkannya tidak beraturan di bagian kelabu; antraknosa menyusunnya MELINGKAR sepusat, dan itu pembeda yang paling mudah dilihat.
-   → membantah: **Antraknosa mangga**
-2. Periksa apakah buah dan tangkai bunga ikut bergejala. Bercak phyllosticta berhenti di daun; antraknosa mangga menghitamkan tangkai bunga dan memberi bercak cekung pada buah, dan itu yang menentukan kerugiannya.
-   → membantah: **Antraknosa mangga**
+1. Cari LUBANG BUNDAR pada batang beserta kotoran serbuk kayu yang menggantung di bawahnya. Penggerek batang kakao meninggalkan keduanya; mati ranting VSD tidak melubangi apa pun dan bekasnya justru di bekas daun yang gugur.
+   → membantah: **Mati ranting VSD**
+2. Potong cabang yang layu tepat di bawah lubang dan belah. Penggerek batang meninggalkan lorong memanjang di dalam kayu; kayu yang utuh tetapi bergaris coklat di berkas pembuluh penyebabnya VSD.
+   → membantah: **Mati ranting VSD**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 8. Embun jelaga — *Capnodium sp.*
+
+`op:pst:00000200` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*BUKAN penyakit tanaman, dan itu satu-satunya hal yang perlu diketahui sebelum membeli apa pun: jamurnya tumbuh di atas EMBUN MADU — cairan manis yang dikeluarkan kutu — dan tidak menembus jaringan tanaman sama sekali. Menyemprot fungisida menghilangkan jelaganya sebentar lalu ia kembali, karena kutunya masih ada. Yang menghentikannya menangani kutu putih, kutu tempurung, atau kutu daun yang ada di atasnya, dan memutus jalur semut yang memelihara kutu itu. Kerugiannya nyata tetapi tidak langsung: daun yang tertutup jelaga berkurang cahayanya, dan buah yang berjelaga tidak laku walau isinya utuh.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lapisan HITAM seperti jelaga menutupi permukaan ATAS daun, ranting, dan kulit buah, kering dan bisa DIKELUPAS sebagai lembaran tipis sehingga permukaan di bawahnya terlihat HIJAU SEHAT tidak berbekas. Permukaan di sekitarnya terasa lengket. Hampir selalu ada gerombolan kutu di atasnya — di pucuk, ketiak daun, atau dompolan buah — dan barisan semut naik-turun batang.
+
+**Ciri pembanding**
+
+1. KELUPAS lapisan hitamnya dengan kuku atau usap dengan kain basah. Embun jelaga terangkat sebagai lembaran dan menyisakan jaringan HIJAU SEHAT di bawahnya; penyakit yang benar-benar menyerang daun meninggalkan jaringan mati kecoklatan yang tidak bisa dikelupas.
+   → membantah: **—**
+2. Cari SUMBERNYA di atas bagian yang berjelaga: gerombolan kutu putih, kutu tempurung, atau kutu daun, dan barisan semut di batang. Kalau ketemu, itu yang harus ditangani — menyemprot jelaganya saja akan mengulang pekerjaan yang sama bulan depan.
+   → membantah: **Kutu tempurung**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -7025,188 +7311,6 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
    → membantah: **Patik daun**
 2. Lihat dari daun mana ia bermula. Embun tepung tembakau bermula dari daun TUA di bawah dan naik; kerusakan yang bermula di pucuk penyebabnya bukan ini.
    → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-### Kopi — 7 entri
-
-#### 1. Karat daun kopi — *Hemileia vastatrix*
-
-`op:pst:00000068` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Penyakit kopi paling menentukan di dunia, dan yang membuat arabika sulit dipertahankan di dataran rendah tanpa varietas tahan; robusta jauh lebih tahan. Yang menentukan pemangkasan agar tajuk tidak lembap, pemupukan berimbang, dan pilihan varietas — semprotan tembaga hanya menahan, dan hanya kalau diberikan sebelum bercaknya meluas.*
-
-**Teks gejala yang tampil di layar**
-
-> Bercak bulat kuning terang di permukaan BAWAH daun, dan di atas bercak itu ada SERBUK jingga kekuningan yang menempel di jari. Dari permukaan atas terlihat sebagai bercak kuning pucat berbatas kabur. Daun rontok dari bawah ke atas sampai ranting telanjang, dan pohon yang gundul tidak berbuah pada musim berikutnya.
-
-**Ciri pembanding**
-
-1. Balik daun dan usap bercaknya dengan jari. Karat daun meninggalkan SERBUK jingga di jari — tidak ada penyakit daun kopi lain yang begitu. Bercak daun kopi rata, kering, dan tidak berserbuk.
-   → membantah: **Bercak daun kopi**
-2. Periksa apakah daunnya lengket. Karat daun tidak melengketkan daun. Kalau daun menguning DAN lengket serta berjelaga hitam, yang menguningkannya kutu, bukan karat.
-   → membantah: **Kutu tempurung**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 2. Penggerek buah kopi — *Hypothenemus hampei*
-
-`op:pst:00000069` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*PBKo — hama kopi paling menentukan di Indonesia, dan sekaligus yang paling sedikit produk terdaftarnya: LIMA baris penggunaan berlabel di seluruh registri. Yang menentukan memang bukan semprotan melainkan PETIK BUBUK dan LELESAN — memetik buah terserang lebih awal dan memungut buah jatuh sampai bersih — ditambah Beauveria bassiana dan perangkap beralkohol. Kumbangnya berada di dalam biji hampir seumur hidupnya, jadi semprotan hanya mengenai yang sedang terbang. Registri juga memuatnya atas nama genus lama Stephanoderes hampei (1 baris) yang belum disatukan.*
-
-> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Lubang bundar kecil sebesar ujung jarum tepat di UJUNG buah — sisi yang berseberangan dengan tangkai — kadang dengan serbuk halus di mulut lubang. Buah yang terserang saat masih muda gugur; yang bertahan sampai panen bijinya berlubang dan berlorong, dan bobot serta mutunya turun.
-
-**Ciri pembanding**
-
-1. Lihat DI MANA lubangnya. Penggerek buah kopi hampir selalu masuk lewat ujung buah, sisi yang berlawanan dengan tangkai, dan lubangnya bundar rapi sebesar ujung jarum. Lubang di sisi lain buah, atau yang tidak bundar, penyebabnya lain.
-   → membantah: **—**
-2. Belah buah yang berlubang. Ada lorong dan ruang di dalam biji beserta kumbang hitam kecil kurang dari dua milimeter, kadang beberapa sekaligus. Buah yang gugur karena kekurangan air atau hara tidak berlubang dan bijinya utuh.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 3. Kutu putih — *Planococcus citri*
-
-`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
-
-*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
-
-**Ciri pembanding**
-
-1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
-   → membantah: **—**
-2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
-   → membantah: **Kutu tempurung**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 4. Kutu tempurung — *Coccus viridis*
-
-`op:pst:00000071` · insect · taksonomi terverifikasi GBIF (exact, 97%)
-
-*Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Sisik cembung hijau kekuningan seukuran kepala jarum menempel RAPAT di tulang daun bagian bawah, di pucuk, dan di buah muda, dan tidak bergerak sama sekali. Daun di bawahnya lengket lalu tertutup jelaga hitam sampai permukaannya gelap; pucuk kerdil dan buah muda gugur.
-
-**Ciri pembanding**
-
-1. Coba dorong sisiknya dengan kuku. Kutu tempurung MENEMPEL keras dan terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya; kutu putih hancur jadi bubuk lilin saat diusap.
-   → membantah: **Kutu putih**
-2. Usap jelaga hitamnya dengan kain basah. Jelaga TERANGKAT dan daun di bawahnya masih hijau — ia tumbuh di atas embun madu, bukan menyerang daunnya. Yang perlu ditangani kutunya; membersihkan jelaganya saja tidak menghentikan apa pun.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 5. Bercak daun kopi — *Cercospora coffeicola*
-
-`op:pst:00000072` · disease_fungal · taksonomi terverifikasi GBIF (exact, 98%)
-
-*Paling parah pada bibit di pembibitan dan pada pohon yang kekurangan hara atau kepanasan karena naungannya terlalu terbuka — jadi bercaknya sering pertanda pemeliharaan, bukan cuma pertanda jamur. Menyerang daun dan buah; pada buah ia membuat kulit melekat pada biji sehingga sulit dikupas.*
-
-> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
-
-**Teks gejala yang tampil di layar**
-
-> Bercak bulat pada daun dengan tengah KEPUTIHAN atau kelabu dan tepi coklat kemerahan yang tegas, sering dikelilingi halo kuning, dan di bagian tengahnya ada titik-titik hitam halus. Pada buah muncul bercak coklat kehitaman cekung memanjang yang membuat kulit buah melekat ke biji.
-
-**Ciri pembanding**
-
-1. Raba dan usap bercaknya. Bercak daun kopi RATA dan kering serta tidak meninggalkan apa pun di jari; karat daun meninggalkan serbuk jingga saat diusap di permukaan bawah daun.
-   → membantah: **Karat daun kopi**
-2. Lihat di mana bercak terbanyak. Bercak daun kopi menumpuk pada bibit dan pada pohon yang naungannya terlalu terbuka atau kurang pupuk; karat daun tidak memilih begitu, dan justru menyerang pohon yang tajuknya rimbun dan lembap.
-   → membantah: **Karat daun kopi**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 6. Semut api — *Solenopsis geminata*
-
-`op:pst:00000139` · insect · taksonomi terverifikasi GBIF (exact, 99%)
-
-*Jarang jadi masalah karena memakan tanaman — ia jadi masalah karena MEMELIHARA kutu putih dan kutu tempurung, mengangkutnya dari pohon ke pohon, dan mengusir musuh alami kutu itu. Karena itu ia sering pintu masuk yang lebih murah: memutus jalur semut di batang menurunkan kutu tanpa menyemprot tajuk sama sekali. Pada jagung ia juga memakan benih yang baru ditugal.*
-
-> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
-
-**Teks gejala yang tampil di layar**
-
-> Barisan semut merah kecoklatan naik-turun di batang sepanjang hari, paling ramai menuju bagian yang bergerombol kutu. Di tanah ada gundukan sarang lepas di dekat pangkal batang. Pada jagung, benih hilang atau berlubang beberapa hari sesudah ditugal, dan tanaman tidak tumbuh berpetak-petak.
-
-**Ciri pembanding**
-
-1. Ikuti barisan semutnya ke atas dan lihat ke mana ia menuju. Kalau ujungnya gerombolan kutu, yang sedang dilihat SEBAB dan AKIBAT sekaligus — memutus jalur semut di batang menurunkan keduanya.
-   → membantah: **Kutu putih**
-2. Pada jagung, korek tanah di titik yang benihnya tidak tumbuh. Benih berlubang dengan semut di sekitarnya berarti semut; benih utuh yang membusuk berarti masalah benih atau kelembapan, dan menyemprot semut tidak menolong apa pun.
-   → membantah: **—**
-
-| Pertanyaan | Jawaban peninjau |
-|---|---|
-| Teks gejalanya benar? | |
-| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
-| Yang disebut terbantah memang terbantah? | |
-| Kalau ada yang salah — apa yang seharusnya? | |
-
-#### 7. Penggerek batang kakao — *Zeurera cofeae*
-
-`op:pst:00000186` · insect · taksonomi terverifikasi GBIF (fuzzy, 84%)
-
-*Menggerek ke dalam KAYU, dan sekali larvanya di dalam tidak ada semprotan yang menjangkaunya — yang bekerja hanya menyumbat lubangnya atau memotong cabang di bawah gerekan. Karena itu seluruh nilainya ada pada menemukan lubangnya lebih awal, dan tanda yang paling mudah dilihat justru kotoran yang menggantung di bawah lubang. Menyerang cabang dan batang muda berdiameter jari sampai lengan.*
-
-> **Ditandai untuk didahulukan:** kedua cirinya membantah OPT yang sama.
-
-**Teks gejala yang tampil di layar**
-
-> Lubang BUNDAR sebesar pensil pada batang atau cabang, dan di bawahnya menggantung kotoran serbuk kayu berwarna kemerahan yang terikat benang, sering menumpuk di pangkal pohon. Cabang di atas lubang layu, daunnya menguning lalu mengering, dan cabang itu mudah patah saat tertiup angin.
-
-**Ciri pembanding**
-
-1. Cari LUBANG BUNDAR pada batang beserta kotoran serbuk kayu yang menggantung di bawahnya. Penggerek batang kakao meninggalkan keduanya; mati ranting VSD tidak melubangi apa pun dan bekasnya justru di bekas daun yang gugur.
-   → membantah: **Mati ranting VSD**
-2. Potong cabang yang layu tepat di bawah lubang dan belah. Penggerek batang meninggalkan lorong memanjang di dalam kayu; kayu yang utuh tetapi bergaris coklat di berkas pembuluh penyebabnya VSD.
-   → membantah: **Mati ranting VSD**
 
 | Pertanyaan | Jawaban peninjau |
 |---|---|
@@ -7943,7 +8047,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -8223,7 +8327,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -8637,6 +8741,86 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Cengkeh — 3 entri
+
+#### 1. Kutu tempurung — *Coccus viridis*
+
+`op:pst:00000071` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Kutu hijau. Terdaftar juga pada jeruk (1 baris). Seperti kutu putih ia dipelihara semut dan menghasilkan embun madu yang mengundang jelaga — dan JELAGA itu yang menutup daun sehingga pohon kehilangan cahaya, bukan kutunya secara langsung.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Sisik cembung hijau kekuningan seukuran kepala jarum menempel RAPAT di tulang daun bagian bawah, di pucuk, dan di buah muda, dan tidak bergerak sama sekali. Daun di bawahnya lengket lalu tertutup jelaga hitam sampai permukaannya gelap; pucuk kerdil dan buah muda gugur.
+
+**Ciri pembanding**
+
+1. Coba dorong sisiknya dengan kuku. Kutu tempurung MENEMPEL keras dan terangkat utuh seperti perisai kecil dengan tubuh lunak di bawahnya; kutu putih hancur jadi bubuk lilin saat diusap.
+   → membantah: **Kutu putih**
+2. Usap jelaga hitamnya dengan kain basah. Jelaga TERANGKAT dan daun di bawahnya masih hijau — ia tumbuh di atas embun madu, bukan menyerang daunnya. Yang perlu ditangani kutunya; membersihkan jelaganya saja tidak menghentikan apa pun.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Trips buah — *Scirtothrips sp.*
+
+`op:pst:00000178` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Merusak KULIT buah, bukan daunnya, dan kerusakan itu tidak menular ke dalam: buahnya tetap layak dimakan tetapi tidak layak dijual. Karena itu keputusannya soal harga, bukan soal panen. Menyerang pada jendela yang sempit — sejak kelopak bunga rontok sampai buah sebesar kelereng — dan sesudah itu kulitnya sudah terlalu tebal untuk ditembus.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Buah muda bercincin atau berbercak KERAK KEPERAKAN sampai kecoklatan seperti tergores halus, paling sering melingkar di sekitar bekas kelopak, dan bekasnya ikut membesar bersama buah sehingga terlihat makin jelas menjelang panen. Daun muda menebal, tepinya melengkung ke atas, dan permukaan bawahnya keperakan.
+
+**Ciri pembanding**
+
+1. Lihat DI MANA kerak keperakannya berada pada buah. Trips buah meninggalkannya melingkar di sekitar bekas kelopak dan pada permukaan yang bersentuhan dengan daun atau buah lain; kudis jeruk menonjol berkerak kasar dan tersebar di mana saja.
+   → membantah: **Kudis jeruk**
+2. Raba bekasnya. Trips buah menyisakan permukaan yang RATA atau sedikit kasar tetapi tidak menonjol; kudis dan kanker menonjol dan terasa seperti amplas kasar.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Busuk daun cengkeh — *Phytophthora sp.*
+
+`op:pst:00000194` · disease_oomycete · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Oomycete, bukan jamur sejati — jadi yang bekerja metalaksil, dimetomorf, atau tembaga, dan fungisida untuk jamur sejati tidak menyentuhnya. Menumpuk pada musim hujan panjang dan pada kebun yang tajuknya rapat sehingga daun lama basah. Percikan air dari tanah yang membawanya naik, sehingga daun paling bawah hampir selalu yang pertama.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak coklat kehitaman BERAIR pada daun, bertepi tidak tegas dan basah seperti tersiram air panas, mulai dari daun paling BAWAH dan dari ujung atau tepi helai. Daun yang terkena gugur cepat sehingga ranting bawah menggundul; pada cuaca sangat lembap tangkai dan ranting muda ikut menghitam dan mati.
+
+**Ciri pembanding**
+
+1. Raba tepi bercaknya. Busuk daun cengkeh memberi bercak BERAIR yang tepinya tidak tegas dan terasa lunak; bercak jamur sejati kering dengan tepi tegas berbatas jelas.
+   → membantah: **—**
+2. Lihat dari daun mana ia bermula. Busuk daun cengkeh bermula dari daun paling BAWAH karena percikan air dari tanah; kematian yang bermula dari pucuk dan turun penyebabnya lain — pada cengkeh yang paling sering penyakit pembuluh kayu, dan itu tidak bisa disembuhkan dengan semprotan.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ### Lada — 3 entri
 
 #### 1. Pengisap buah lada — *Dasynus piperis*
@@ -8717,6 +8901,84 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Pembibitan kelapa sawit — 3 entri
+
+#### 1. Kumbang tanduk — *Oryctes rhinoceros*
+
+`op:pst:00000075` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Paling merusak pada tanaman muda dan pada tahun-tahun sesudah replanting, karena berkembang biak di batang sawit tua yang dibiarkan melapuk dan di tumpukan tandan kosong. Yang menentukan MEMBERANTAS TEMPAT BERKEMBANG BIAKNYA — mencacah dan meratakan batang tumbang, membalik tumpukan tandan kosong — ditambah perangkap feromon. Menyemprot pohon tidak menjangkau kumbang yang hidup di dalam tumpukan.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Pelepah muda yang BARU MEMBUKA bertakik segitiga seperti digunting, dan pada serangan berat anak daunnya berbentuk kipas terpotong. Di pucuk ada lubang gerekan besar berserat kasar dengan serbuk seperti sabut menyembul. Tanaman muda yang titik tumbuhnya digerek bisa mati.
+
+**Ciri pembanding**
+
+1. Perhatikan bentuk potongan pada pelepah yang BARU MEMBUKA. Takik segitiga rapi seperti guntingan berarti pelepah itu digerek saat masih terlipat di pucuk — khas kumbang tanduk, dan kerusakannya baru terlihat berminggu-minggu sesudah kumbangnya pergi.
+   → membantah: **—**
+2. Raba lubang di pucuk. Kumbang tanduk meninggalkan lubang besar berserat kasar dengan serbuk seperti sabut; ulat api dan ulat kantong tidak melubangi pucuk sama sekali.
+   → membantah: **Ulat api**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Bercak daun pestalotiopsis bibit sawit — *Pestalotiopsis palmarum*
+
+`op:pst:00000190` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Masuk lewat LUKA dan lewat daun yang lama basah, jadi ia hampir selalu menyusul sesuatu yang lain: bibit yang tergores saat dipindah, disiram dari atas menjelang sore, atau ditaruh terlalu rapat sehingga daunnya bersentuhan. Membenahi jarak polibag dan waktu penyiraman menurunkannya lebih banyak daripada menambah semprotan. Bibit yang sepertiga daunnya bergejala tidak layak ditanam ke lapangan.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak lonjong pada anak daun, tengahnya KELABU KEPUTIHAN kering dan tepinya coklat tua bergaris kuning di luarnya, sering bermula dari UJUNG atau tepi daun yang terluka. Bercak yang berdekatan menyatu jadi bidang kering yang luas; pada bagian yang mati muncul titik hitam kecil bertaburan.
+
+**Ciri pembanding**
+
+1. Lihat DI MANA bercaknya bermula. Bercak pestalotiopsis bermula dari ujung atau tepi anak daun yang terluka lalu menjalar ke dalam; bercak daun bibit sawit yang lain bermula sebagai bintik bulat di tengah helai dan melebar melingkar.
+   → membantah: **Bercak daun bibit sawit**
+2. Periksa pangkal pelepah dan pucuknya. Bercak pestalotiopsis berhenti di helai daun; kalau pucuknya ikut membusuk dan berbau, yang sedang berjalan busuk pucuk dan itu jauh lebih menentukan.
+   → membantah: **Busuk pucuk bibit sawit**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 3. Busuk pucuk bibit sawit — *Marasmius palmivorus*
+
+`op:pst:00000191` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Jamur yang hidup dari SISA TANAMAN dan berpindah ke bibit hidup lewat benang putihnya, jadi tumpukan pelepah dan gulma lapuk di sela polibag adalah sumbernya. Membersihkan sisa itu dan menjarangkan polibag memutus jalannya. Bibit yang pucuknya sudah membusuk tidak bisa diselamatkan dan harus dibuang beserta media tanamnya supaya tidak menulari tetangganya.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Benang jamur PUTIH seperti tali halus menjalar di permukaan media tanam, memanjat pangkal pelepah, dan mengikat sisa daun di sekitarnya. Pucuk yang dijangkaunya membusuk basah dan mudah dicabut; daun termuda menguning lalu mati sementara daun tua di bawahnya masih hijau.
+
+**Ciri pembanding**
+
+1. Cari BENANG PUTIH yang menjalar di permukaan media tanam dan memanjat pangkal pelepah. Busuk pucuk bibit sawit meninggalkannya; bercak daun tidak menumbuhkan benang apa pun di media tanam.
+   → membantah: **Bercak daun pestalotiopsis bibit sawit**
+2. Tarik pucuk yang menguning. Busuk pucuk membuatnya lepas basah dan berbau; pucuk yang menguning tetapi masih melekat kuat penyebabnya hara atau air, bukan ini.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ### Budidaya udang windu dan ikan bandeng — 2 entri
 
 #### 1. Siput trisipan — *Cerithidea sp.*
@@ -8771,6 +9033,272 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Kapas — 2 entri
+
+#### 1. Penggerek buah — *Helicoverpa armigera*
+
+`op:pst:00000023` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Polifag, dan teks di bawah sengaja tidak menyebut satu tanaman pun karena cara merusaknya sama di semuanya — tomat, cabai, jagung, tembakau, semangka, melon. Registri masih memuatnya DUA KALI, atas nama Helicoverpa armigera dan nama lamanya Heliothis armigera (13 baris lagi, 8 di antaranya pada tomat); keduanya belum disatukan, jadi produk atas nama yang kedua tidak ikut terdaftar di bawah pintu ini.*
+
+**Teks gejala yang tampil di layar**
+
+> Buah atau tongkol berlubang bundar bersih di dekat tangkainya, dan dari lubang itu menyembul kotoran berbutir basah. Di dalam satu buah biasanya hanya ADA SATU ulat, karena yang lebih besar memakan yang lain. Buah yang terlanjur berlubang membusuk dan gugur.
+
+**Ciri pembanding**
+
+1. Belah buah yang berlubang. Penggerek buah meninggalkan SATU ulat gemuk bergaris memanjang beserta rongga besar dan kotoran. Lalat buah meninggalkan belatung putih tanpa kaki yang melenting, beberapa sekaligus, dan tidak ada lubang masuk yang bundar.
+   → membantah: **Lalat buah**
+2. Lihat lubangnya dari luar. Penggerek buah masuk lewat lubang bundar seukuran ujung pensil dengan kotoran menyembul. Antraknosa tidak berlubang — ia memberi bercak melingkar cekung dengan titik hitam di tengahnya.
+   → membantah: **Antraknosa**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Wereng kapas — *Sundapteryx biguttulla*
+
+`op:pst:00000198` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Yang merusak bukan lubang melainkan RACUN dalam air liurnya, sehingga daun rusak tanpa satu lubang pun dan gejalanya mudah dikira kekurangan hara atau keracunan pupuk. Menumpuk pada musim kering dan pada tanaman yang dipupuk nitrogen berlebih. Varietas berdaun berbulu jauh lebih tahan, dan itu keputusan yang diambil saat memilih benih, bukan saat menyemprot.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Tepi daun menguning lalu MELENGKUNG KE BAWAH seperti mangkuk terbalik, kemudian mencoklat dan mengering dari tepi ke dalam sementara tengahnya masih hijau. Di permukaan bawah daun ada wereng hijau pucat kecil yang berjalan MENYAMPING dan melompat saat daun digoyang.
+
+**Ciri pembanding**
+
+1. Balik daun dan goyang. Wereng kapas berjalan MENYAMPING lalu melompat — gerak yang khas dan tidak dilakukan kutu daun, yang bergerombol diam dan meninggalkan embun madu lengket.
+   → membantah: **—**
+2. Lihat arah melengkungnya daun. Wereng kapas melengkungkan tepi daun KE BAWAH dan mengeringkannya dari tepi; kekurangan kalium menguningkan tepi tanpa melengkungkan, dan bercaknya merata di seluruh tanaman bukan di daun tengah lebih dulu.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Kubis Bunga — 2 entri
+
+#### 1. Bekicot — *Achatina fulica*
+
+`op:pst:00000051` · mollusc · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Paling merusak di persemaian dan pada dua sampai tiga minggu pertama sesudah tanam pindah; aktif malam hari dan sesudah hujan. Registri memuat siput lain — Filicaulis bleekeri, Bradybaena similaris, Parmarion pupillaris — yang kini dicakup pintu ini karena kedua ciri yang dipakainya, jejak lendir dan tepi gerusan yang halus, tidak menyentuh cangkang sama sekali.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun berlubang besar tidak beraturan dengan tepi tergerus halus, dan bibit muda bisa habis sama sekali dalam semalam. Ada JEJAK LENDIR mengkilap yang mengering seperti perak di daun, batang, dan permukaan tanah, dengan butiran kotoran memanjang di dekatnya.
+
+**Ciri pembanding**
+
+1. Periksa malam hari dengan senter, atau pagi-pagi sekali. Jejak lendir mengkilap yang mengering seperti perak hanya ditinggalkan siput dan bekicot; tidak ada ulat yang meninggalkannya. Siang hari mereka bersembunyi di bawah mulsa, sisa tanaman, atau bongkahan tanah.
+   → membantah: **—**
+2. Lihat tepi lubangnya. Bekicot menggerus tepi lubang jadi halus dan berlekuk lebar; ulat meninggalkan tepi bergerigi beserta butiran kotoran, bukan lendir.
+   → membantah: **Ulat daun kubis**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Busuk hitam kubis — *Xanthomonas campestris pv. campestris*
+
+`op:pst:00000177` · disease_bacterial
+
+*Masuk lewat MULUT AIR di tepi daun dan lewat luka, bukan lewat akar, sehingga hujan berangin dan pekerjaan tangan di kebun basah yang menyebarkannya. Terbawa BENIH, dan itu jalur masuknya ke petak yang belum pernah terserang — perlakuan benih air panas lebih menentukan daripada penyemprotan sesudahnya. Bakteri: fungisida tidak menyentuhnya, dan bakterisida tembaga hanya menahan, tidak menyembuhkan.*
+
+**Teks gejala yang tampil di layar**
+
+> Bercak kuning berbentuk HURUF V yang pangkalnya di TEPI daun dan ujungnya menunjuk ke tengah, dan di dalamnya tulang daun MENGHITAM sehingga terlihat seperti jala hitam bila daun diterawang. Daun yang terkena mengering dari tepi; pada serangan berat batang yang dipotong memperlihatkan cincin pembuluh yang menghitam.
+
+**Ciri pembanding**
+
+1. Terawang daun yang menguning ke arah cahaya dan lihat tulang daunnya. Busuk hitam MENGHITAMKAN tulang daun di dalam bercak berbentuk V dari tepi; bercak daun alternaria memberi bercak bulat bercincin sepusat dan tidak menyentuh tulang daun.
+   → membantah: **Bercak daun alternaria**
+2. Potong batang dan lihat penampangnya. Busuk hitam meninggalkan cincin pembuluh yang menghitam sementara jaringan di sekitarnya masih padat; busuk lunak melunakkan seluruh jaringan jadi bubur berbau busuk.
+   → membantah: **Busuk lunak**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Nenas — 2 entri
+
+#### 1. Kutu putih — *Planococcus citri*
+
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
+
+**Ciri pembanding**
+
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
+   → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Busuk hati nenas — *Phytophthora spp.*
+
+`op:pst:00000195` · disease_oomycete · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Oomycete yang masuk lewat AIR yang menggenang di pucuk dan di pangkal daun, sehingga drainase dan arah tanam menentukan lebih banyak daripada bahan aktif. Menyerang paling parah pada bibit yang baru ditanam di musim hujan; merendam bibit sebelum tanam adalah tindakan pencegahan yang lazim dan jauh lebih murah daripada menyemprot hamparan. Bertahan di tanah.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun MUDA di tengah roset menguning lalu memerah, dan bila DITARIK ia lepas dengan mudah — pangkalnya membusuk basah, berwarna coklat berbatas jelas dengan jaringan sehat, dan berbau. Daun tua di luar masih hijau saat pucuknya sudah busuk, sehingga tanaman terlihat sehat dari jauh.
+
+**Ciri pembanding**
+
+1. TARIK daun termuda di tengah roset. Busuk hati membuatnya lepas ringan dengan pangkal yang membusuk basah; tanaman yang sehat menahan daunnya dan daun akan robek alih-alih lepas.
+   → membantah: **—**
+2. Cium pangkal daun yang lepas. Busuk hati berbau busuk basah tanpa berlendir; busuk yang berlendir kental dan berbau tajam biasanya bakteri, dan bahan aktifnya berbeda.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Pembibitan cengkeh — 2 entri
+
+#### 1. Tungau merah — *Tetranychus urticae*
+
+`op:pst:00000006` · mite · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Tungau berinang sangat luas yang menumpuk pada musim kering dan pada tanaman berdebu di pinggir jalan. Bukan serangga: insektisida umum tidak menyentuhnya, dan justru menghabiskan tungau pemangsa yang menahannya.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun berbintik kuning halus rapat seperti tertusuk jarum, lalu menguning menyeluruh, kecoklatan, dan kering. Serangan berat meninggalkan anyaman benang halus di pucuk dan bawah daun.
+
+**Ciri pembanding**
+
+1. Cari anyaman benang halus di bawah daun dan di sela pucuk, paling jelas kena sinar miring. Trips dan kutu tidak pernah membuat anyaman.
+   → membantah: **Trips**
+2. Balik daun dan tatap lama. Tungau tampak sebagai titik-titik bergerak jauh lebih kecil dari trips — di bawah setengah milimeter, kemerahan atau kehijauan dengan dua bercak gelap.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Kutu putih — *Planococcus citri*
+
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
+
+**Ciri pembanding**
+
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
+   → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Pembibitan teh — 2 entri
+
+#### 1. Nematoda puru akar — *Meloidogyne sp.*
+
+`op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman kerdil dan layu pada siang hari lalu pulih sore, berulang, sementara pupuk dan air cukup; gejalanya BERKELOMPOK di bagian petak tertentu, bukan merata. Dicabut, akarnya menggembung jadi BINTIL bulat tidak beraturan yang menyatu dengan akar itu sendiri — tidak bisa dilepas dengan kuku.
+
+**Ciri pembanding**
+
+1. Cabut tanaman kerdil beserta akarnya lalu cuci tanahnya. Puru akar adalah pembengkakan yang MENYATU dengan akar dan tidak bisa dicungkil lepas; bintil rhizobium pada kacang-kacangan menempel di sisi akar dan lepas ditekan kuku, dan itu justru menguntungkan.
+   → membantah: **—**
+2. Bandingkan tanaman kerdil dengan tetangganya yang sehat, dan lihat sebarannya. Nematoda puru akar berkelompok di petak yang sama tiap musim; kekurangan hara membuat seluruh petak kerdil merata.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+#### 2. Nematoda akar bibit teh — *Pratylenchus spp.*
+
+`op:pst:00000192` · nematode · taksonomi terverifikasi GBIF (higher_rank, 92%)
+
+*Merusak AKAR, jadi yang terlihat di atas selalu terlambat dan selalu mirip kekurangan air atau hara — dan itu sebabnya bibit yang kerdil berulang kali dipupuk tanpa hasil. Bertahan di media tanam, sehingga tanah bekas persemaian yang dipakai ulang membawanya ke angkatan berikutnya; mengganti atau memanaskan media lebih menentukan daripada menyiram nematisida ke bibit yang sudah kerdil.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bibit KERDIL berpetak-petak di bedengan, daunnya kecil menguning dan gugur dari bawah walau disiram cukup, dan pertumbuhannya berhenti sementara bibit di sebelahnya normal. Akar yang dicuci terlihat PENDEK bercabang banyak dengan ujung menghitam dan sebagian luruh; tidak ada bengkakan bulat pada akarnya.
+
+**Ciri pembanding**
+
+1. Cuci akar bibit yang kerdil dan lihat ujungnya. Nematoda akar memberi akar PENDEK berujung menghitam tanpa bengkakan; nematoda puru akar justru membentuk bengkakan bulat seperti manik pada akarnya.
+   → membantah: **Nematoda puru akar**
+2. Bandingkan bibit yang kerdil dengan tetangganya yang normal di bedengan yang sama. Nematoda memberi kerdil BERPETAK karena sebarannya di media tanam tidak merata; kekurangan hara membuat seluruh bedengan menguning bersamaan.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ### Pisang — 2 entri
 
 #### 1. Sigatoka — *Mycosphaerella musicola*
@@ -8803,7 +9331,7 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 
 `op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
 
-*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Registri juga memuat Meloidogyne spp. (7 baris) yang belum disatukan. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
 
 > **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
 
@@ -8816,6 +9344,62 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 1. Cabut tanaman kerdil beserta akarnya lalu cuci tanahnya. Puru akar adalah pembengkakan yang MENYATU dengan akar dan tidak bisa dicungkil lepas; bintil rhizobium pada kacang-kacangan menempel di sisi akar dan lepas ditekan kuku, dan itu justru menguntungkan.
    → membantah: **—**
 2. Bandingkan tanaman kerdil dengan tetangganya yang sehat, dan lihat sebarannya. Nematoda puru akar berkelompok di petak yang sama tiap musim; kekurangan hara membuat seluruh petak kerdil merata.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Alpukat — 1 entri
+
+#### 1. Embun jelaga — *Capnodium sp.*
+
+`op:pst:00000200` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*BUKAN penyakit tanaman, dan itu satu-satunya hal yang perlu diketahui sebelum membeli apa pun: jamurnya tumbuh di atas EMBUN MADU — cairan manis yang dikeluarkan kutu — dan tidak menembus jaringan tanaman sama sekali. Menyemprot fungisida menghilangkan jelaganya sebentar lalu ia kembali, karena kutunya masih ada. Yang menghentikannya menangani kutu putih, kutu tempurung, atau kutu daun yang ada di atasnya, dan memutus jalur semut yang memelihara kutu itu. Kerugiannya nyata tetapi tidak langsung: daun yang tertutup jelaga berkurang cahayanya, dan buah yang berjelaga tidak laku walau isinya utuh.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Lapisan HITAM seperti jelaga menutupi permukaan ATAS daun, ranting, dan kulit buah, kering dan bisa DIKELUPAS sebagai lembaran tipis sehingga permukaan di bawahnya terlihat HIJAU SEHAT tidak berbekas. Permukaan di sekitarnya terasa lengket. Hampir selalu ada gerombolan kutu di atasnya — di pucuk, ketiak daun, atau dompolan buah — dan barisan semut naik-turun batang.
+
+**Ciri pembanding**
+
+1. KELUPAS lapisan hitamnya dengan kuku atau usap dengan kain basah. Embun jelaga terangkat sebagai lembaran dan menyisakan jaringan HIJAU SEHAT di bawahnya; penyakit yang benar-benar menyerang daun meninggalkan jaringan mati kecoklatan yang tidak bisa dikelupas.
+   → membantah: **—**
+2. Cari SUMBERNYA di atas bagian yang berjelaga: gerombolan kutu putih, kutu tempurung, atau kutu daun, dan barisan semut di batang. Kalau ketemu, itu yang harus ditangani — menyemprot jelaganya saja akan mengulang pekerjaan yang sama bulan depan.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Anggrek — 1 entri
+
+#### 1. Bercak daun anggrek — *Cercospora dendrobii*
+
+`op:pst:00000197` · disease_fungal · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Menyebar lewat PERCIKAN air dan lewat tangan serta alat yang berpindah antar-pot, sehingga rumah lindung yang rapat justru menaikkannya. Menyiram dari bawah dan tidak menyemprot air ke daun menjelang sore menurunkannya tanpa bahan apa pun. Daun anggrek berumur panjang dan bekas bercaknya tidak hilang, jadi kerugiannya menetap pada tanaman yang dijual sebagai tanaman hias.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak BULAT sampai lonjong pada daun, mula-mula kuning jernih lalu coklat tua dengan tengah lebih pucat dan tepi yang jelas, sering dikelilingi lingkaran kuning. Bercak yang berdekatan menyatu; pada daun tua bercaknya menghitam dan bagian tengahnya bisa mengering menipis.
+
+**Ciri pembanding**
+
+1. Tekan bercaknya. Bercak daun anggrek KERING dan menipis tetapi tidak berair; busuk bakteri anggrek melunak berair dan menyebar cepat dalam hitungan hari, dan itu menuntut membuang daunnya segera.
+   → membantah: **—**
+2. Lihat apakah bercaknya bertepi tegas dengan lingkaran kuning. Bercak jamur memberikannya; bekas terbakar matahari atau bekas air dingin bertepi kabur tanpa lingkaran dan tidak bertambah luas.
    → membantah: **—**
 
 | Pertanyaan | Jawaban peninjau |
@@ -8879,6 +9463,118 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Bibit kacang tanah — 1 entri
+
+#### 1. Ulat tanah — *Agrotis ipsilon*
+
+`op:pst:00000014` · insect · taksonomi terverifikasi GBIF (exact, 98%)
+
+*Menyerang pada malam hari dan bersembunyi di tanah pada siang hari. Polifag: terdaftar juga pada kentang, jagung, cabai, dan kubis, dan gejalanya sama di semuanya — jadi teks di bawah sengaja tidak menyebut satu tanaman pun. Orong-orong (Gryllotalpa sp.) merusak dengan cara yang mirip, tetapi meninggalkan lorong gembur di permukaan tanah dan terdaftar lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman muda rebah dan terpotong tepat di pangkal, dekat permukaan tanah. Yang rebah ditemukan pagi hari, bergerombol di beberapa titik dalam petak dan bukan merata, dan daunnya masih hijau segar — tidak menguning lebih dulu.
+
+**Ciri pembanding**
+
+1. Korek tanah sedalam 2–5 cm di sekeliling tanaman yang rebah, pagi hari. Ulat gemuk kelabu kecoklatan yang MELINGKAR seperti huruf C saat disentuh bersembunyi di situ. Kalau tidak ada, penyebab rebahnya bukan ulat tanah.
+   → membantah: **—**
+2. Lihat bekas patahannya. Ulat tanah memotong batang bersih seperti disayat, dan sisa tanaman masih segar. Tanaman yang roboh karena pangkalnya membusuk tidak terpotong: batang atau umbinya lunak, dan seluruh tanaman terangkat hanya dengan menarik daunnya.
+   → membantah: **Layu fusarium**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Buah naga — 1 entri
+
+#### 1. Antraknosa — *Colletotrichum spp.*
+
+`op:pst:00000007` · disease_fungal · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Patek. Entri ini berdiri di atas sasaran GENUS "Colletotrichum spp." yang dipakai 8 baris pendaftaran. Hampir seluruh pendaftaran antraknosa cabai — 102 baris — justru tertulis atas nama spesiesnya, Colletotrichum capsici, dan punya pintunya sendiri: "Antraknosa cabai". Keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium; yang berbeda hanya cara registri menuliskan sasarannya, jadi periksa KEDUA pintu sebelum menyimpulkan produknya sedikit. Tomat ikut jadi inang di sini dan tidak di pintu spesiesnya, karena antraknosa buah tomat memang dilayani beberapa Colletotrichum yang tidak terpisahkan di kebun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bercak melingkar cekung pada buah, mula-mula berair lalu meluas dan menghitam. Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar. Buah akhirnya mengering dan keriput.
+
+**Ciri pembanding**
+
+1. Lihat titik hitam di tengah bercak. Susunannya melingkar sepusat, dan itu tubuh buah jamurnya — tidak ada pada busuk karena tusukan lalat buah.
+   → membantah: **Lalat buah**
+2. Tekan bercaknya. Antraknosa cekung dan kering seperti kulit tertarik ke dalam; busuk bakteri lembek berair dan berbau.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Jambu biji — 1 entri
+
+#### 1. Kutu putih — *Planococcus citri*
+
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
+
+**Ciri pembanding**
+
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
+   → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Rambutan — 1 entri
+
+#### 1. Kutu putih — *Planococcus citri*
+
+`op:pst:00000070` · insect · taksonomi terverifikasi GBIF (exact, 97%)
+
+*Terdaftar juga pada jeruk (2 baris). Registri juga memuatnya atas nama genus lama Pseudococcus citri (3 baris) yang belum disatukan — kutu yang sama. SEMUT memelihara dan memindahkannya dari pohon ke pohon, jadi mengendalikan semutnya ikut menentukan; registri mencatat semut sebagai sasaran tersendiri pada kopi (3 baris) lewat pintunya sendiri.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Gerombolan kutu berlapis lilin PUTIH seperti kapas di dompolan buah, ketiak cabang, dan pucuk, sehingga bagian itu tampak seperti ditaburi tepung. Buah dan daun di bawahnya lengket lalu ditumbuhi jelaga hitam. Dompolan yang tertutup kutu buahnya kecil-kecil dan banyak yang gugur.
+
+**Ciri pembanding**
+
+1. Usap gerombolan putihnya. Kutu putih berlapis lilin yang HANCUR jadi bubuk saat diusap, dan menyisakan tubuh kutu berwarna merah muda kekuningan di bawahnya. Jelaga dan jamur tidak menyisakan tubuh serangga.
+   → membantah: **—**
+2. Bandingkan dengan kutu tempurung. Kutu putih lonjong berlapis tepung dan MASIH BISA berjalan pelan; kutu tempurung menempel keras seperti sisik cembung kehijauan dan tidak bergerak sama sekali.
+   → membantah: **Kutu tempurung**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ### Stroberi — 1 entri
 
 #### 1. Kapang kelabu — *Botrytis cinerea*
@@ -8907,13 +9603,153 @@ dan yang perlu ditinjau justru apakah pemisahan itu sudah benar untuk tanaman An
 | Yang disebut terbantah memang terbantah? | |
 | Kalau ada yang salah — apa yang seharusnya? | |
 
+### Tembakau di penyimpanan — 1 entri
+
+#### 1. Kumbang tembakau — *Lasioderma serricorne*
+
+`op:pst:00000193` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Kumbang gudang yang paling merugikan pada tembakau karena ia melubangi DAUN — bagian yang justru dijual — sehingga kerusakannya langsung memotong harga, bukan sekadar bobot. Larvanya di dalam bal dan tidak terjangkau semprotan permukaan; yang dipakai fumigasi atau pendinginan, dan pencegahannya sanitasi gudang serta memutus sisa bal lama. Terbang dan tertarik cahaya, jadi perangkap feromon dipakai untuk mengetahui kapan populasinya naik.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun tembakau dalam bal berlubang BUNDAR kecil bertaburan, dengan bubuk halus seperti debu tembakau jatuh di bawah bal. Kumbang coklat kemerahan sepanjang dua sampai tiga milimeter dengan kepala menunduk sehingga badannya terlihat membungkuk, berjalan atau terbang di sekitar tumpukan.
+
+**Ciri pembanding**
+
+1. Lihat bentuk kumbangnya dari samping. Kumbang tembakau MEMBUNGKUK — kepalanya tertunduk di bawah dada sehingga badannya terlihat melengkung; kumbang gudang lain berbadan lurus memanjang.
+   → membantah: **Kumbang tepung**
+2. Periksa apakah lubangnya menembus beberapa lapis daun sekaligus. Kumbang tembakau menggerek dari lapisan luar ke dalam bal; kerusakan yang cuma di permukaan luar biasanya bekas penanganan, bukan hama.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Tembakau di persemaian — 1 entri
+
+#### 1. Rebah kecambah — *Pythium sp.*
+
+`op:pst:00000141` · disease_oomycete · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Penyakit PERSEMAIAN, dan hampir selalu penyakit pengelolaan air: menumpuk pada media yang terlalu basah, naungan terlalu rapat, dan semaian terlalu padat. Bukan jamur sejati melainkan oomycete — golongan yang sama dengan busuk daun kentang — sehingga fungisida untuk jamur sejati tidak menyentuhnya, dan yang bekerja metalaksil atau dimetomorf. Menjarangkan semaian dan mengurangi siraman menghentikannya tanpa semprotan apa pun.*
+
+> **Ditandai untuk didahulukan:** 1 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Bibit rebah mendadak sementara daunnya masih HIJAU segar, dan bila diangkat pangkal batangnya menyempit berwarna coklat berair seperti tercekik. Rebahnya bermula dari satu titik lalu melebar melingkar hari demi hari. Sebagian benih malah tidak pernah muncul karena membusuk sebelum menembus permukaan.
+
+**Ciri pembanding**
+
+1. Pegang pangkal batang bibit yang rebah. Rebah kecambah menyempitkannya jadi berair dan lunak sementara DAUNNYA MASIH HIJAU; bibit yang mati karena layu fusarium menguning dari daun bawah dulu dan pangkalnya tetap keras.
+   → membantah: **Layu fusarium**
+2. Perhatikan sebarannya di bedengan. Rebah kecambah melebar MELINGKAR dari satu titik yang paling basah; kerusakan yang tersebar merata atau terpotong rapi di pangkal penyebabnya hama tanah, bukan ini.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Terung — 1 entri
+
+#### 1. Kumbang epilachna — *Epilachna sp.*
+
+`op:pst:00000196` · insect · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Satu-satunya kumbang koksi yang MEMAKAN DAUN — kerabatnya yang lain justru pemangsa kutu dan harus dijaga, sehingga menyemprot berspektrum luas karena kumbang ini sering menukar satu masalah dengan dua. Dewasa dan larvanya memakan bagian yang sama pada waktu yang sama, jadi keduanya terlihat berbarengan. Memungut kumbang dan kelompok telurnya pada pagi hari cukup pada pertanaman kecil.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Daun tergerus dalam pola GARIS SEJAJAR melengkung sehingga tinggal jaring urat daun yang menerawang seperti renda, dan bekasnya mengering kecoklatan. Kumbang bulat kubah jingga kemerahan berbintik hitam banyak, berbulu halus sehingga terlihat kusam; larvanya kuning berduri lunak bercabang, di permukaan bawah daun.
+
+**Ciri pembanding**
+
+1. Lihat POLA gerusannya. Kumbang epilachna menggerus dalam garis sejajar melengkung sehingga daun terlihat seperti renda dengan urat yang tersisa; ulat memakan tembus sampai berlubang atau memakan dari tepi.
+   → membantah: **—**
+2. Perhatikan permukaan kumbangnya. Epilachna berbulu halus sehingga KUSAM; kumbang koksi pemangsa kutu licin mengkilap, dan yang itu justru harus dibiarkan.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Ubi jalar — 1 entri
+
+#### 1. Lanas ubi jalar — *Cylas formicarius*
+
+`op:pst:00000199` · insect · taksonomi terverifikasi GBIF (exact, 99%)
+
+*Hama yang menentukan pada ubi jalar, dan kerugiannya dua lapis: umbi berlubang, DAN umbi yang tersisa jadi pahit serta berbau tidak enak karena tanaman mengeluarkan zat pertahanan — sehingga umbi yang cuma sedikit terserang pun tidak laku. Masuk lewat RETAKAN tanah ke umbi, jadi menggemburkan dan menimbun guludan saat tanah retak di musim kering adalah tindakan yang paling menentukan. Terbawa pada stek, jadi bibit dari petak yang terserang meneruskannya.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Umbi berlubang kecil dengan kotoran halus di sekitar lubang, dan bila dibelah ada lorong berkelok berisi larva putih berkepala coklat; daging umbi di sekitar lorong menghitam kehijauan dan BERBAU seperti terpentin serta terasa pahit. Batang di dekat pangkal juga berlubang dan tanaman layu sebagian.
+
+**Ciri pembanding**
+
+1. Belah umbi yang berlubang dan CIUM. Lanas meninggalkan bau tajam seperti terpentin dari jaringan yang menghitam; lubang tanpa bau itu dan tanpa lorong berkelok biasanya bekas hama tanah lain.
+   → membantah: **—**
+2. Periksa apakah tanah di sekitar guludan RETAK. Lanas masuk lewat retakan; guludan yang tanahnya rapat menutup umbi hampir tidak pernah terserang, dan menimbunnya lebih menentukan daripada menyemprot.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
+### Wortel — 1 entri
+
+#### 1. Nematoda puru akar — *Meloidogyne sp.*
+
+`op:pst:00000130` · nematode · taksonomi terverifikasi GBIF (higher_rank, 94%)
+
+*Identitasnya di GBIF hanya tertambat sampai GENUS, dan itu memang batas yang jujur: membedakan jenisnya menuntut laboratorium, sementara penanganannya sama. Hidup di dalam tanah dan bertahan bertahun-tahun, jadi yang menentukan rotasi dengan tanaman bukan inang, bahan organik, dan bibit dari persemaian yang tanahnya bersih — bukan menyemprot daun, yang tidak menjangkau apa pun.*
+
+> **Ditandai untuk didahulukan:** 2 ciri tidak menyebut apa yang dibantahnya.
+
+**Teks gejala yang tampil di layar**
+
+> Tanaman kerdil dan layu pada siang hari lalu pulih sore, berulang, sementara pupuk dan air cukup; gejalanya BERKELOMPOK di bagian petak tertentu, bukan merata. Dicabut, akarnya menggembung jadi BINTIL bulat tidak beraturan yang menyatu dengan akar itu sendiri — tidak bisa dilepas dengan kuku.
+
+**Ciri pembanding**
+
+1. Cabut tanaman kerdil beserta akarnya lalu cuci tanahnya. Puru akar adalah pembengkakan yang MENYATU dengan akar dan tidak bisa dicungkil lepas; bintil rhizobium pada kacang-kacangan menempel di sisi akar dan lepas ditekan kuku, dan itu justru menguntungkan.
+   → membantah: **—**
+2. Bandingkan tanaman kerdil dengan tetangganya yang sehat, dan lihat sebarannya. Nematoda puru akar berkelompok di petak yang sama tiap musim; kekurangan hara membuat seluruh petak kerdil merata.
+   → membantah: **—**
+
+| Pertanyaan | Jawaban peninjau |
+|---|---|
+| Teks gejalanya benar? | |
+| Kedua cirinya bisa dikerjakan petani tanpa alat? | |
+| Yang disebut terbantah memang terbantah? | |
+| Kalau ada yang salah — apa yang seharusnya? | |
+
 ---
 
 ## 4. Yang kami tandai sendiri
 
 Dihitung dari datanya, bukan dari penilaian agronomi — supaya waktu peninjau tidak habis
-menemukan yang sudah kami ragukan. 129 dari 189 entri bertanda,
-dan secara keseluruhan **131 dari 378 ciri pembanding tidak menyebut apa yang dibantahnya**:
+menemukan yang sudah kami ragukan. 139 dari 200 entri bertanda,
+dan secara keseluruhan **147 dari 400 ciri pembanding tidak menyebut apa yang dibantahnya**:
 
 - **Trips** — kedua cirinya membantah OPT yang sama.
 - **Kutu kebul** — 1 ciri tidak menyebut apa yang dibantahnya.
@@ -9044,6 +9880,16 @@ dan secara keseluruhan **131 dari 378 ciri pembanding tidak menyebut apa yang di
 - **Penggerek batang kakao** — kedua cirinya membantah OPT yang sama.
 - **Kutu perisai kelapa** — 2 ciri tidak menyebut apa yang dibantahnya.
 - **Tungau sawit** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Busuk pucuk bibit sawit** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Nematoda akar bibit teh** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Kumbang tembakau** — 1 ciri tidak menyebut apa yang dibantahnya.
+- **Busuk daun cengkeh** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Busuk hati nenas** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Kumbang epilachna** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Bercak daun anggrek** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Wereng kapas** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Lanas ubi jalar** — 2 ciri tidak menyebut apa yang dibantahnya.
+- **Embun jelaga** — 1 ciri tidak menyebut apa yang dibantahnya.
 
 Dua pola itu **bukan bukti entrinya salah.** Ciri yang membantah OPT yang sama dua kali
 bisa saja memang dua sudut yang berbeda terhadap satu kekeliruan yang paling sering

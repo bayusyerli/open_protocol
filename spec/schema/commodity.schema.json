@@ -3,24 +3,54 @@
   "$id": "https://spec.openprotocols.id/v0.1/commodity.schema.json",
   "title": "Commodity — komoditas yang dibudidayakan",
   "description": "Sengaja tanpa field 'kelompok komoditas': pengelompokan diambil dari konsep broader AGROVOC lewat mappings, bukan dari taksonomi buatan sendiri.",
-  "allOf": [{ "$ref": "common.schema.json#/$defs/CuratedEntity" }],
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
   "type": "object",
   "properties": {
-    "id": { "type": "string", "pattern": "^op:cmd:[0-9]{8}$" },
+    "id": {
+      "type": "string",
+      "pattern": "^op:cmd:[0-9]{8}$"
+    },
     "kind": {
       "type": "string",
-      "enum": ["crop", "livestock", "aquaculture", "fungi", "insect", "other"]
+      "enum": [
+        "crop",
+        "livestock",
+        "aquaculture",
+        "fungi",
+        "insect",
+        "other",
+        "not_a_commodity"
+      ],
+      "description": "`not_a_commodity` menyatakan bahwa barisnya BUKAN komoditas, dan ia ada karena registri memuatnya. Kolom komoditas pada pendaftaran pestisida rumah tangga sering diisi SASARANNYA — \"Kecoak\", \"Nyamuk\", \"Rayap tanah\", \"Tikus rumah\" — atau konteks pemakaiannya: \"Di dalam ruangan\", \"Di luar rumah\", \"Umum\". Keduanya sah sebagai rekaman registri dan tidak dihapus, tetapi menghitungnya sebagai komoditas membuat cakupan jalur 1 terbaca lebih buruk daripada sebenarnya, dan membuka kemungkinan seseorang menulis pintu gejala untuk \"Umum\"."
     },
-    "scientific_name": { "type": "string" },
-    "default_stage_scale": { "$ref": "common.schema.json#/$defs/Ref" },
-    "perennial": { "type": "boolean" },
-    "typical_cycle_length": { "$ref": "common.schema.json#/$defs/Duration" },
+    "scientific_name": {
+      "type": "string"
+    },
+    "default_stage_scale": {
+      "$ref": "common.schema.json#/$defs/Ref"
+    },
+    "perennial": {
+      "type": "boolean"
+    },
+    "typical_cycle_length": {
+      "$ref": "common.schema.json#/$defs/Duration"
+    },
     "harvest_pattern": {
       "type": "string",
-      "enum": ["single", "multiple", "continuous"],
+      "enum": [
+        "single",
+        "multiple",
+        "continuous"
+      ],
       "description": "Cabai dipanen berkali-kali; padi sekali. Ini mengubah bentuk kalender."
     }
   },
-  "required": ["kind"],
+  "required": [
+    "kind"
+  ],
   "unevaluatedProperties": false
 }
