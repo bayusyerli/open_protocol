@@ -9011,9 +9011,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000125"
+        }
       },
       "synonyms": [
         "Penyakit Busuh Buah",
@@ -9990,9 +9993,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000126"
+        }
       },
       "synonyms": [
         "Hama Tungau",
@@ -10847,8 +10853,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "status": "superseded",
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000128"
+        }
       },
       "synonyms": [
         "Hama Siput Trisipan"
@@ -11540,9 +11550,12 @@
       ],
       "lifecycle": {
         "version": "0.1.0",
-        "status": "draft",
+        "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z"
+        "updated_at": "2026-08-28T00:00:00Z",
+        "superseded_by": {
+          "id": "op:pst:00000127"
+        }
       },
       "taxon_verification": {
         "source": "GBIF",
@@ -31741,9 +31754,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001188"
+          "id": "op:pst:00000127"
         }
       },
       "accepted_scientific_name": "Helminthosporium sigmoideum",
@@ -41602,9 +41615,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001156"
+          "id": "op:pst:00000126"
         }
       },
       "accepted_scientific_name": "Polyphagotarsonemus latus",
@@ -45948,9 +45961,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001188"
+          "id": "op:pst:00000127"
         }
       },
       "accepted_scientific_name": "Helminthosporium sigmoideum",
@@ -46147,9 +46160,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001135"
+          "id": "op:pst:00000125"
         }
       },
       "taxon_verification": {
@@ -49780,9 +49793,9 @@
         "version": "0.1.0",
         "status": "superseded",
         "created_at": "2026-08-19T00:00:00Z",
-        "updated_at": "2026-08-20T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z",
         "superseded_by": {
-          "id": "op:pst:00001135"
+          "id": "op:pst:00000125"
         }
       },
       "accepted_scientific_name": "Phytophthora capsici",

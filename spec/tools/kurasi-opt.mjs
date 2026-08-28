@@ -6,7 +6,7 @@
 // Sudah dipakai untuk: bawang merah, tomat & kentang, padi, jagung, kubis, kedelai,
 // kakao, kopi, kelapa sawit, jeruk, cucurbit, legum, tembakau, teh, mangga, apel,
 // tebu, karet, lada, pisang, krisan, celah cabai, dan hama gudang (seluruhnya
-// 28 Agustus 2026).
+// 28 Agustus 2026), lalu celah yang tersisa lintas komoditas.
 //
 // KAKAO TANAMAN TAHUNAN PERTAMA, DAN YANG BERUBAH LEBIH SEDIKIT DARIPADA DUGAAN
 // Yang dikhawatirkan sebelum masuk: kakao belum punya skala fase BBCH. Ternyata itu tidak
@@ -149,6 +149,7 @@ const BAWANG_PUTIH = { id: 'op:cmd:00001073', label: 'Bawang putih' };
 const SAWI = { id: 'op:cmd:00001132', label: 'Sawi' };
 const BERAS_SIMPAN = { id: 'op:cmd:00001023', label: 'Beras di penyimpanan' };
 const JAGUNG_SIMPAN = { id: 'op:cmd:00001080', label: 'Jagung di penyimpanan' };
+const TAMBAK = { id: 'op:cmd:00001109', label: 'Budidaya udang windu dan ikan bandeng' };
 
 const CATATAN = (tanaman) =>
   `Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT ${tanaman}, bukan dari registri. ` +
@@ -2482,6 +2483,67 @@ const PINTU_GUDANG = [
   },
 ];
 
+const PINTU_SISA = [
+  {
+    id: 'op:pst:00000125', dari: 'op:pst:00001135', nama: 'Penyakit Busuk Daun',
+    key: 'busuk-pangkal-batang-cabai', label: 'Busuk pangkal batang cabai',
+    inang: [CABAI],
+    definition:
+      'Oomycete, bukan jamur sejati — metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada lada (6 baris) dan bawang merah (1), dan teks di bawah ditulis untuk cabai. Menyebar lewat air yang menggenang dan mengalir di permukaan tanah, jadi ia menyerang berlajur mengikuti bedengan yang tergenang — guludan tinggi dan drainase menurunkan lebih banyak daripada menambah semprotan.',
+    gejala:
+      'Tanaman layu mendadak dan tidak pulih, dan pada pangkal batang tepat di permukaan tanah ada bagian yang MELINGKARI batang berwarna coklat kehitaman dan basah, sering dengan batas tegas seperti diikat. Daun tetap menempel saat tanaman mati. Buah yang menyentuh tanah membusuk berair dan berselaput putih halus pada cuaca lembap.',
+    pembanding: [
+      { cek: 'Lihat di mana batangnya berubah warna. Busuk pangkal batang melingkari batang tepat di PERMUKAAN TANAH dengan batas tegas seperti diikat; layu fusarium tidak menghitamkan permukaan batang — yang coklat justru pembuluh di dalamnya saat dibelah.',
+        membantah: { id: 'op:pst:00000008', label: 'Layu fusarium' } },
+      { cek: 'Petakan tanaman yang mati di bedengan. Busuk pangkal batang menyerang BERLAJUR mengikuti alur air dan bagian yang tergenang; layu bakteri tersebar tanpa mengikuti aliran air.',
+        membantah: { id: 'op:pst:00000009', label: 'Layu bakteri' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000126', dari: 'op:pst:00001156', nama: 'Tungau Kuning',
+    key: 'tungau-kuning', label: 'Tungau kuning',
+    inang: [CABAI, TOMAT],
+    definition:
+      'Jauh lebih kecil daripada tungau merah dan TIDAK menganyam benang — dan justru itu yang membuatnya sering terlambat dikenali: gejalanya dikira virus, lalu tanaman dicabut padahal masih bisa diselamatkan. Menyerang hanya pucuk dan daun muda. Terdaftar juga pada kedelai dan teh (2 baris).',
+    gejala:
+      'Daun muda mengeriting ke BAWAH, tepinya menggulung ke bawah dan menyempit memanjang, permukaannya mengeras dan MENGKILAP seperti berminyak, sering keperakan atau keunguan di bawahnya. Pucuk berhenti memanjang dan menjadi kaku; bunga rontok. Daun tua di bawahnya tetap normal.',
+    pembanding: [
+      { cek: 'Lihat ARAH keritingnya dan permukaannya. Tungau kuning menggulungkan daun ke BAWAH dan membuatnya mengkilap seperti berminyak; trips menggulungkan daun ke ATAS seperti mangkuk dan meninggalkan goresan keperakan kusam, bukan mengkilap.',
+        membantah: { id: 'op:pst:00000001', label: 'Trips' } },
+      { cek: 'Bandingkan daun muda dengan daun tua pada satu tanaman. Tungau kuning hanya merusak PUCUK — daun tua di bawahnya tetap normal dan hijau. Virus kuning keriting menguningkan seluruh tanaman termasuk daun yang sudah jadi, dan tanamannya kerdil menyeluruh.',
+        membantah: { id: 'op:pst:00000010', label: 'Virus kuning keriting' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000127', dari: 'op:pst:00001188', nama: 'Penyakit Busuk Batang',
+    key: 'busuk-batang-padi', label: 'Busuk batang padi',
+    inang: [PADI],
+    definition:
+      'Bertahan sebagai butiran keras di jerami dan tunggul, lalu mengapung ke permukaan air saat lahan digenangi dan menempel pada pangkal batang — jadi membenamkan jerami dan mengeringkan lahan di antara musim memutus daurnya. Diperparah pemupukan nitrogen berlebih dan kalium yang kurang.',
+    gejala:
+      'Bercak kehitaman pada pelepah tepat di batas permukaan air, lalu batang di dalamnya membusuk dan menjadi kopong sehingga rumpun REBAH menjelang panen sementara malainya sudah terbentuk. Batang yang dibelah berongga dengan butiran hitam kecil sekeras pasir di dalamnya.',
+    pembanding: [
+      { cek: 'Belah pangkal batang rumpun yang rebah, membujur. Busuk batang meninggalkan rongga dengan BUTIRAN HITAM kecil sekeras pasir di dalamnya; penggerek batang meninggalkan lorong berisi kotoran halus beserta ulatnya.',
+        membantah: { id: 'op:pst:00000030', label: 'Penggerek batang' } },
+      { cek: 'Lihat di ketinggian mana bercaknya. Busuk batang mulai tepat di BATAS PERMUKAAN AIR dan turun ke dalam batang; hawar pelepah juga mulai dekat air tetapi bercaknya lonjong bertepi bergelombang di permukaan pelepah dan merambat NAIK, bukan menghitamkan batang dari dalam.',
+        membantah: { id: 'op:pst:00000031', label: 'Hawar pelepah' } },
+    ],
+  },
+  {
+    id: 'op:pst:00000128', dari: 'op:pst:00001173', nama: 'Siput Trisipan',
+    key: 'siput-trisipan', label: 'Siput trisipan',
+    inang: [TAMBAK],
+    definition:
+      'Bukan hama tanaman: ia bersaing dengan udang dan bandeng memakan KLEKAP — lapisan lumut dasar tambak yang jadi pakan alami — sehingga pertumbuhan udang melambat tanpa ada tanda penyakit apa pun. Yang menentukan pengeringan dasar tambak sampai retak dan pembalikan lumpur antar-siklus; pemberantasan dengan racun di tambak berisi menuntut kehati-hatian karena sasaran dan yang dibudidayakan sama-sama hewan air.',
+    gejala:
+      'Cangkang kerucut memanjang seperti sekrup, coklat kehitaman, sepanjang dua sampai empat sentimeter, menempel rapat di dasar dan pematang tambak serta terlihat saat air disurutkan. Klekap di dasar menipis atau habis berpetak-petak; udang dan bandeng tumbuh lambat walau pakan tetap diberi dan air terlihat baik.',
+    pembanding: [
+      { cek: 'Surutkan air pada satu petak sudut dan periksa dasarnya. Siput trisipan bercangkang KERUCUT MEMANJANG seperti sekrup — bukan bulat seperti keong sawah — dan menempel rapat di dasar, tidak mengapung.' },
+      { cek: 'Bandingkan tebal klekap di bagian yang bersiput dengan bagian yang bersih. Kalau klekapnya menipis tepat di bagian yang bersiput sementara mutu air sama, pertumbuhan yang lambat itu soal PAKAN ALAMI yang habis, bukan soal penyakit.' },
+    ],
+  },
+];
+
 const KELOMPOK = [
   { kunci: 'bawang-merah', tanaman: 'bawang merah', inang: [BAWANG_MERAH], pintu: PINTU_BAWANG },
   { kunci: 'tomat-kentang', tanaman: 'tomat dan kentang', inang: [TOMAT, KENTANG], pintu: PINTU_TOMAT_KENTANG },
@@ -2510,6 +2572,8 @@ const KELOMPOK = [
 
   { kunci: 'cabai-lanjut', tanaman: 'cabai', inang: [CABAI], pintu: PINTU_CABAI_LANJUT },
   { kunci: 'gudang', tanaman: 'hasil pertanian di penyimpanan', inang: [BERAS_SIMPAN, JAGUNG_SIMPAN], pintu: PINTU_GUDANG },
+
+  { kunci: 'sisa', tanaman: 'cabai, padi, dan tambak', inang: [CABAI], pintu: PINTU_SISA },
 ];
 
 // ---------------------------------------------------------------------------

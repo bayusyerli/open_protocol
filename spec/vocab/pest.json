@@ -3,10 +3,10 @@
   "collection": {
     "entity_type": "pest",
     "label": {
-      "id": "OPT utama apel, bawang merah, bawang putih, beras di penyimpanan, cabai merah besar, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
+      "id": "OPT utama apel, bawang merah, bawang putih, beras di penyimpanan, budidaya udang windu dan ikan bandeng, cabai merah besar, jagung, jagung di penyimpanan, jeruk, kacang hijau, kacang panjang, kacang tanah, kakao, karet, kedelai, kelapa, kelapa sawit, kentang, kopi, krisan, kubis, lada, mangga, melon, mentimun, padi, pisang, sawi, semangka, tebu, teh, tembakau dan tomat"
     },
     "scope": {
-      "id": "OPT yang paling menentukan hasil dan biaya pada 32 komoditas: Apel, Bawang merah, Bawang putih, Beras di penyimpanan, Cabai merah besar, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
+      "id": "OPT yang paling menentukan hasil dan biaya pada 33 komoditas: Apel, Bawang merah, Bawang putih, Beras di penyimpanan, Budidaya udang windu dan ikan bandeng, Cabai merah besar, Jagung, Jagung di penyimpanan, Jeruk, Kacang hijau, Kacang panjang, Kacang tanah, Kakao, Karet, Kedelai, Kelapa, Kelapa sawit, Kentang, Kopi, Krisan, Kubis, Lada, Mangga, Melon, Mentimun, Padi, Pisang, Sawi, Semangka, Tebu, Teh, Tembakau, Tomat. Entri yang melayani lebih dari satu komoditas membawa teks gejala berklausa per tanaman, karena kalimat yang menyamaratakan akan salah di semuanya. Kode EPPO diisi sebagai kandidat dan SEMUANYA masih bertanda perlu verifikasi — pemeriksa akan terus memperingatkan sampai dicek satu per satu."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -11031,6 +11031,349 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT hasil pertanian di penyimpanan, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000125",
+      "key": "busuk-pangkal-batang-cabai",
+      "label": {
+        "id": "Busuk pangkal batang cabai"
+      },
+      "pest_kind": "disease_oomycete",
+      "scientific_name": "Phytophthora capsici",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        }
+      ],
+      "definition": {
+        "id": "Oomycete, bukan jamur sejati — metalaksil dan dimetomorf bekerja padanya, banyak fungisida untuk jamur sejati tidak. Terdaftar juga pada lada (6 baris) dan bawang merah (1), dan teks di bawah ditulis untuk cabai. Menyebar lewat air yang menggenang dan mengalir di permukaan tanah, jadi ia menyerang berlajur mengikuti bedengan yang tergenang — guludan tinggi dan drainase menurunkan lebih banyak daripada menambah semprotan."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "3203693",
+          "uri": "https://www.gbif.org/species/3203693",
+          "relation": "exact",
+          "note": "Kingdom Chromista, kelas Peronosporea; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophora capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytophthora capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 18 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Phytopthora capsici",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Penyakit Busuh Buah",
+        "Penyakit Busuk Buah",
+        "Penyakit Busuk Daun",
+        "Penyakit Busuk Pangkal",
+        "Penyakit Busuk Pangkal Batang",
+        "Penyakit Hawar Daun",
+        "Phytophora capsici",
+        "Phytopthora capsici"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Chromista"
+      },
+      "symptoms": {
+        "id": "Tanaman layu mendadak dan tidak pulih, dan pada pangkal batang tepat di permukaan tanah ada bagian yang MELINGKARI batang berwarna coklat kehitaman dan basah, sering dengan batas tegas seperti diikat. Daun tetap menempel saat tanaman mati. Buah yang menyentuh tanah membusuk berair dan berselaput putih halus pada cuaca lembap."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat di mana batangnya berubah warna. Busuk pangkal batang melingkari batang tepat di PERMUKAAN TANAH dengan batas tegas seperti diikat; layu fusarium tidak menghitamkan permukaan batang — yang coklat justru pembuluh di dalamnya saat dibelah."
+          },
+          "rules_out": {
+            "id": "op:pst:00000008",
+            "label": "Layu fusarium"
+          }
+        },
+        {
+          "check": {
+            "id": "Petakan tanaman yang mati di bedengan. Busuk pangkal batang menyerang BERLAJUR mengikuti alur air dan bagian yang tergenang; layu bakteri tersebar tanpa mengikuti aliran air."
+          },
+          "rules_out": {
+            "id": "op:pst:00000009",
+            "label": "Layu bakteri"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, padi, dan tambak, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000126",
+      "key": "tungau-kuning",
+      "label": {
+        "id": "Tungau kuning"
+      },
+      "pest_kind": "mite",
+      "scientific_name": "Polyphagotarsonemus latus",
+      "hosts": [
+        {
+          "id": "op:cmd:00000001",
+          "label": "Cabai merah besar"
+        },
+        {
+          "id": "op:cmd:00000003",
+          "label": "Tomat"
+        }
+      ],
+      "definition": {
+        "id": "Jauh lebih kecil daripada tungau merah dan TIDAK menganyam benang — dan justru itu yang membuatnya sering terlambat dikenali: gejalanya dikira virus, lalu tanaman dicabut padahal masih bisa diselamatkan. Menyerang hanya pucuk dan daun muda. Terdaftar juga pada kedelai dan teh (2 baris)."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2131854",
+          "uri": "https://www.gbif.org/species/2131854",
+          "relation": "exact",
+          "note": "Kingdom Animalia, kelas Arachnida; kecocokan EXACT (confidence 99)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Polypagotarsonemus latus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Polyphagotarsonemus latus",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 14 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Tungau",
+        "Hama Tungau Kuning",
+        "Polypagotarsonemus latus",
+        "Tungau",
+        "Tungau Kuning",
+        "Tungau Kuning Teh",
+        "Tungau Teh Kuning"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 99,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Daun muda mengeriting ke BAWAH, tepinya menggulung ke bawah dan menyempit memanjang, permukaannya mengeras dan MENGKILAP seperti berminyak, sering keperakan atau keunguan di bawahnya. Pucuk berhenti memanjang dan menjadi kaku; bunga rontok. Daun tua di bawahnya tetap normal."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Lihat ARAH keritingnya dan permukaannya. Tungau kuning menggulungkan daun ke BAWAH dan membuatnya mengkilap seperti berminyak; trips menggulungkan daun ke ATAS seperti mangkuk dan meninggalkan goresan keperakan kusam, bukan mengkilap."
+          },
+          "rules_out": {
+            "id": "op:pst:00000001",
+            "label": "Trips"
+          }
+        },
+        {
+          "check": {
+            "id": "Bandingkan daun muda dengan daun tua pada satu tanaman. Tungau kuning hanya merusak PUCUK — daun tua di bawahnya tetap normal dan hijau. Virus kuning keriting menguningkan seluruh tanaman termasuk daun yang sudah jadi, dan tanamannya kerdil menyeluruh."
+          },
+          "rules_out": {
+            "id": "op:pst:00000010",
+            "label": "Virus kuning keriting"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, padi, dan tambak, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000127",
+      "key": "busuk-batang-padi",
+      "label": {
+        "id": "Busuk batang padi"
+      },
+      "pest_kind": "disease_fungal",
+      "scientific_name": "Helminthosporium sigmoideum",
+      "hosts": [
+        {
+          "id": "op:cmd:00000006",
+          "label": "Padi"
+        }
+      ],
+      "definition": {
+        "id": "Bertahan sebagai butiran keras di jerami dan tunggul, lalu mengapung ke permukaan air saat lahan digenangi dan menempel pada pangkal batang — jadi membenamkan jerami dan mengeringkan lahan di antara musim memutus daurnya. Diperparah pemupukan nitrogen berlebih dan kalium yang kurang."
+      },
+      "mappings": [
+        {
+          "scheme": "GBIF",
+          "id": "2569262",
+          "uri": "https://www.gbif.org/species/2569262",
+          "relation": "exact",
+          "note": "Kingdom Fungi, kelas Sordariomycetes; kecocokan EXACT (confidence 98)."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helminthosphorium sigmoideum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helminthosporium sigmoideum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 11 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Helminthosporium sigmoidum",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Helminthosphorium sigmoideum",
+        "Helminthosporium sigmoidum",
+        "Penyakit Busuk Batang"
+      ],
+      "taxonomic_rank": "species",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "exact",
+        "checked_at": "2026-08-19",
+        "confidence": 98,
+        "kingdom": "Fungi"
+      },
+      "symptoms": {
+        "id": "Bercak kehitaman pada pelepah tepat di batas permukaan air, lalu batang di dalamnya membusuk dan menjadi kopong sehingga rumpun REBAH menjelang panen sementara malainya sudah terbentuk. Batang yang dibelah berongga dengan butiran hitam kecil sekeras pasir di dalamnya."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Belah pangkal batang rumpun yang rebah, membujur. Busuk batang meninggalkan rongga dengan BUTIRAN HITAM kecil sekeras pasir di dalamnya; penggerek batang meninggalkan lorong berisi kotoran halus beserta ulatnya."
+          },
+          "rules_out": {
+            "id": "op:pst:00000030",
+            "label": "Penggerek batang"
+          }
+        },
+        {
+          "check": {
+            "id": "Lihat di ketinggian mana bercaknya. Busuk batang mulai tepat di BATAS PERMUKAAN AIR dan turun ke dalam batang; hawar pelepah juga mulai dekat air tetapi bercaknya lonjong bertepi bergelombang di permukaan pelepah dan merambat NAIK, bukan menghitamkan batang dari dalam."
+          },
+          "rules_out": {
+            "id": "op:pst:00000031",
+            "label": "Hawar pelepah"
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, padi, dan tambak, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
+      }
+    },
+    {
+      "id": "op:pst:00000128",
+      "key": "siput-trisipan",
+      "label": {
+        "id": "Siput trisipan"
+      },
+      "pest_kind": "mollusc",
+      "scientific_name": "Cerithidea sp.",
+      "hosts": [
+        {
+          "id": "op:cmd:00001109",
+          "label": "Budidaya udang windu dan ikan bandeng"
+        }
+      ],
+      "definition": {
+        "id": "Bukan hama tanaman: ia bersaing dengan udang dan bandeng memakan KLEKAP — lapisan lumut dasar tambak yang jadi pakan alami — sehingga pertumbuhan udang melambat tanpa ada tanda penyakit apa pun. Yang menentukan pengeringan dasar tambak sampai retak dan pembalikan lumpur antar-siklus; pemberantasan dengan racun di tambak berisi menuntut kehati-hatian karena sasaran dan yang dibudidayakan sama-sama hewan air."
+      },
+      "mappings": [
+        {
+          "scheme": "KEMENTAN",
+          "id": "Cerithidea sp.",
+          "relation": "exact",
+          "note": "Nama ilmiah pada label produk terdaftar; muncul pada 12 baris penggunaan."
+        },
+        {
+          "scheme": "GBIF",
+          "id": "9040016",
+          "uri": "https://www.gbif.org/species/9040016",
+          "relation": "broad",
+          "note": "Kingdom Animalia, kelas Gastropoda; kecocokan HIGHERRANK (confidence 94). GBIF menerima nama 'Cerithidea'; ejaan registri dipertahankan pada scientific_name."
+        }
+      ],
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-28T00:00:00Z"
+      },
+      "synonyms": [
+        "Hama Siput Trisipan",
+        "Siput Trisipan"
+      ],
+      "taxonomic_rank": "genus",
+      "accepted_scientific_name": "Cerithidea",
+      "taxon_verification": {
+        "source": "GBIF",
+        "match_type": "higher_rank",
+        "checked_at": "2026-08-19",
+        "confidence": 94,
+        "kingdom": "Animalia"
+      },
+      "symptoms": {
+        "id": "Cangkang kerucut memanjang seperti sekrup, coklat kehitaman, sepanjang dua sampai empat sentimeter, menempel rapat di dasar dan pematang tambak serta terlihat saat air disurutkan. Klekap di dasar menipis atau habis berpetak-petak; udang dan bandeng tumbuh lambat walau pakan tetap diberi dan air terlihat baik."
+      },
+      "distinguishing": [
+        {
+          "check": {
+            "id": "Surutkan air pada satu petak sudut dan periksa dasarnya. Siput trisipan bercangkang KERUCUT MEMANJANG seperti sekrup — bukan bulat seperti keong sawah — dan menempel rapat di dasar, tidak mengapung."
+          }
+        },
+        {
+          "check": {
+            "id": "Bandingkan tebal klekap di bagian yang bersiput dengan bagian yang bersih. Kalau klekapnya menipis tepat di bagian yang bersiput sementara mutu air sama, pertumbuhan yang lambat itu soal PAKAN ALAMI yang habis, bukan soal penyakit."
+          }
+        }
+      ],
+      "notes": {
+        "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, padi, dan tambak, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
       }
     }
   ]
