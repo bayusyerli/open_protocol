@@ -44,13 +44,24 @@ Urutannya tidak bisa ditukar: halaman dibangun dari indeks, dan perakitan menunt
 sudah ada. Ketiganya menolak berjalan bila prasyaratnya belum ada, dengan menyebut perintah
 yang kurang.
 
-## Dua gerbang yang menghentikan deploy yang bolong
+## Tiga gerbang yang menghentikan deploy yang bolong
 
 **Domain.** `bangun-halaman.mjs` menolak `--asal` yang bukan http/https, tidak bisa diurai,
 atau nama hostnya tidak bertitik — termasuk `domain-anda` dan `localhost`. Build sebelum 24
 Agustus 2026 pernah dijalankan dengan placeholder harfiah, dan hasilnya 30 ribu halaman
 dengan canonical yang menunjuk domain yang tidak pernah ada. Menolak di awal lebih murah
 daripada menulis 30 ribu berkas yang harus dibuang.
+
+**Cap service worker.** `rakit-situs.mjs` menghitung sidik isi seluruh berkas cangkang yang
+terangkut, lalu menuliskannya sebagai `VERSI` ke salinan `sw.js` di rakitan — sumbernya
+tetap berbunyi `dev`. Cangkang disajikan cache-first, dan yang membebaskannya cuma nama
+cache yang berubah; selama nama itu berupa angka yang dinaikkan orang, ia tertinggal. Empat
+kali berturut-turut CI menolak push karena isi berubah sementara versinya tidak, tiap kali
+berpola sama: versi dinaikkan, `app/` disunting lagi, keduanya ikut satu commit — sekali di
+antaranya oleh orang yang memasang pagarnya. Cap yang lahir sesudah penyalinan terakhir
+tidak bisa didahului suntingan, jadi kelas kesalahan itu hilang alih-alih dijaga. Merakit
+ulang tanpa perubahan menghasilkan cap yang sama, sehingga pengguna tidak mengunduh ulang
+700 KB tanpa alasan.
 
 **Tautan.** `rakit-situs.mjs` mencocokkan **tiap** `href` dan `src` mutlak di seluruh HTML ke
 berkas yang benar-benar ikut terangkut — 414.350 tautan pada rakitan 24 Agustus 2026 — dan

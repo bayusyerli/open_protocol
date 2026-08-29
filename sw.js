@@ -28,7 +28,25 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v46';
+/* CAPNYA DISUNTIKKAN SAAT PERAKITAN, BUKAN DIKETIK.
+ *
+ * Nilai di bawah sengaja `dev` dan sengaja tidak pernah diubah tangan.
+ * `spec/tools/rakit-situs.mjs` menghitung sidik isi seluruh berkas cangkang lalu
+ * menuliskannya ke salinan sw.js di `_situs/` — jadi cap ini berubah tepat ketika isinya
+ * berubah, tidak pernah lebih awal dan tidak pernah tertinggal.
+ *
+ * KENAPA BUKAN ANGKA YANG DINAIKKAN ORANG. Selama empat kali berturut-turut, CI menolak
+ * push karena isi cangkang berubah sementara versinya tidak — dan keempatnya berpola sama:
+ * versi dinaikkan dan sidiknya dicatat, lalu app/ disunting lagi sebelum commit. Sekali di
+ * antaranya dilakukan justru oleh yang memasang pagarnya. Yang menghapus kelas kesalahan
+ * itu bukan kedisiplinan melainkan mencabut kesempatannya: cap yang dihitung dari isi tidak
+ * bisa didahului suntingan, karena ia lahir sesudah suntingan terakhir.
+ *
+ * SAAT PENGEMBANGAN nilainya tetap `dev`, dan itu berarti cangkang tidak berganti sendiri
+ * ketika app/ disunting. Pakai "Update on reload" di DevTools, atau cabut pekerjanya —
+ * halaman ukur/peranti punya tombolnya. Yang tayang ke orang selalu hasil rakitan, dan di
+ * sana capnya nyata. */
+const VERSI = 'dev';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 

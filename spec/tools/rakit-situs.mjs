@@ -25,7 +25,8 @@
 // bukan nol dan menyebut berkasnya. Deploy yang bolong berhenti di sini, bukan di mesin
 // pencari.
 
-import { readdirSync, statSync, mkdirSync, rmSync, copyFileSync, linkSync, existsSync, readFileSync } from 'node:fs';
+import { readdirSync, statSync, mkdirSync, rmSync, copyFileSync, linkSync, existsSync, readFileSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { join, dirname, relative, posix } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -100,6 +101,23 @@ for (const { dari, ke, apa } of SUMBER) {
   console.log(`  ${String(daftar.length).padStart(6)}  ${dari}/`.padEnd(34) + `— ${apa}`);
 }
 
+/* CAP SERVICE WORKER DISUNTIKKAN DI SINI, dan itu satu-satunya tempat ia lahir.
+ *
+ * Cangkang disajikan cache-first, dan yang membebaskannya cuma nama cache yang berubah.
+ * Selama nama itu berupa angka yang dinaikkan orang, ia akan tertinggal — empat kali
+ * berturut-turut CI menolak push karena isi berubah sementara versinya tidak, dan tiap kali
+ * berpola sama: versi dinaikkan, app/ disunting lagi, keduanya ikut satu commit.
+ *
+ * Di sini urutan itu mustahil. Capnya dihitung dari isi berkas cangkang yang BENAR-BENAR
+ * terangkut ke rakitan — sesudah penyalinan terakhir, sebelum satu byte pun diunggah — jadi
+ * ia tidak bisa didahului suntingan. Yang menyunting app/ lalu merakit ulang otomatis
+ * mendapat cap baru; yang tidak menyunting apa pun mendapat cap yang sama, sehingga
+ * pengguna tidak mengunduh ulang 700 KB tanpa alasan.
+ *
+ * Sumbernya tidak ikut berubah: `sw.js` di repositori tetap berbunyi `dev`, dan itu yang
+ * dipakai saat pengembangan. Yang ditulis ulang hanya salinan di `_situs/`. */
+const BENTUK_VERSI = /^const VERSI = '[^']*';$/m;
+
 for (const { dari, ke } of BERKAS_AKAR) {
   const s = join(AKAR, dari);
   if (!existsSync(s)) { console.error(`${dari} tidak ada.`); process.exit(1); }
@@ -107,6 +125,40 @@ for (const { dari, ke } of BERKAS_AKAR) {
   pasang(s, join(KELUAR, ke));
   console.log(`  ${String(1).padStart(6)}  ${dari}`.padEnd(34) + '— service worker');
 }
+
+// Cap dihitung dari isi berkas cangkang yang didaftar sw.js sendiri — bukan dari seluruh
+// app/, karena yang menentukan kebaruan cache justru yang masuk ke dalamnya.
+const swSumber = readFileSync(join(AKAR, 'sw.js'), 'utf8');
+const daftarCangkang = [...(/const BERKAS_CANGKANG = \[([\s\S]*?)\]\.map/.exec(swSumber)?.[1] ?? '')
+  .matchAll(/'([^']+)'/g)].map((m) => m[1]);
+
+if (!daftarCangkang.length) {
+  console.error('\nsw.js: BERKAS_CANGKANG tidak terbaca — cap tidak bisa dihitung.');
+  process.exit(1);
+}
+
+const hilangCangkang = daftarCangkang.filter((f) => !asal.has(f));
+if (hilangCangkang.length) {
+  console.error(`\n${hilangCangkang.length} berkas cangkang tidak ada di rakitan:`);
+  for (const f of hilangCangkang.slice(0, 10)) console.error(`  ${f}`);
+  console.error('Precache-nya akan gagal senyap, dan luring jadi bolong tanpa satu pun galat.');
+  process.exit(1);
+}
+
+const sidik = createHash('sha256');
+for (const f of daftarCangkang) sidik.update(f).update('\0').update(readFileSync(join(KELUAR, f)));
+const cap = `c${sidik.digest('hex').slice(0, 12)}`;
+
+const swRakit = join(KELUAR, 'sw.js');
+const swIsi = readFileSync(swRakit, 'utf8');
+if (!BENTUK_VERSI.test(swIsi)) {
+  console.error('\nsw.js: baris `const VERSI = \'…\';` tidak ketemu — cap tidak bisa disuntikkan.');
+  process.exit(1);
+}
+// Hardlink dibuang lebih dulu: menulis lewat tautan akan ikut mengubah sw.js di repositori.
+rmSync(swRakit);
+writeFileSync(swRakit, swIsi.replace(BENTUK_VERSI, `const VERSI = '${cap}';`));
+console.log(`  ${String(daftarCangkang.length).padStart(6)}  cangkang`.padEnd(34) + `— cap disuntikkan: ${cap}`);
 
 if (tabrakan.length) {
   console.error(`\n${tabrakan.length} nama bertabrakan antar-sumber:`);

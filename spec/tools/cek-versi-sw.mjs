@@ -1,89 +1,73 @@
-// Menjaga `VERSI` di sw.js ikut berubah setiap kali cangkang aplikasi berubah.
+// Menjaga daftar cangkang service worker tetap utuh — dan menjaga capnya tetap disuntikkan,
+// bukan diketik.
 //
-//   node spec/tools/cek-versi-sw.mjs           # periksa
-//   node spec/tools/cek-versi-sw.mjs --tulis   # segarkan sidik jarinya sesudah bump
+//   node spec/tools/cek-versi-sw.mjs
 //
-// MODE GAGALNYA SUNYI, DAN ITU YANG MEMBUATNYA MAHAL. Service worker menyajikan cangkang
-// cache-first: berkas HTML, modul, dan gaya dilayani dari cache tanpa bertanya. Yang
-// membebaskan cache itu cuma satu hal — `VERSI` berubah, sehingga nama cache berubah dan
-// yang lama dibuang. Deploy yang mengubah app/ tetapi lupa menaikkan `VERSI` membuat
-// pengguna yang pernah membuka permukaan ini terkunci di versi lama TANPA BATAS WAKTU dan
-// tanpa satu pun tanda — perbaikan keselamatan sekalipun tidak akan sampai kepadanya.
+// APA YANG BERUBAH, DAN KENAPA ALAT INI TIDAK LAGI MENUNTUT BUMP.
+// Versi sebelumnya menyimpan sidik isi cangkang dan gagal bila isinya berubah sementara
+// `VERSI` di sw.js tidak. Ia bekerja — empat kali menangkap kelalaian nyata, sekali pada
+// orang yang memasangnya sendiri. Tetapi keempatnya berpola identik: versi dinaikkan dan
+// sidiknya dicatat, lalu app/ disunting lagi sebelum commit. Yang salah urutannya, dan
+// urutan yang mudah salah akan terus salah.
 //
-// Ini bukan kekhawatiran teoretis: selama satu sesi kerja 24 Agustus 2026 saja, kelalaian
-// ini terjadi berkali-kali dan tiap kali baru ketahuan lewat verifikasi manual di peramban
-// — "kenapa perubahannya tidak muncul" — bukan lewat sesuatu yang memberi tahu.
+// Sejak 25 Agustus 2026 capnya tidak lagi diketik siapa pun: `rakit-situs.mjs` menghitungnya
+// dari isi berkas cangkang yang benar-benar terangkut, sesudah penyalinan terakhir, lalu
+// menuliskannya ke salinan sw.js di `_situs/`. Cap yang lahir sesudah suntingan terakhir
+// tidak bisa didahului suntingan — kelas kesalahannya hilang, bukan dijaga.
 //
-// Yang disimpan sidik jari isi cangkang, bukan daftar berkasnya: nama berkas yang sama
-// dengan isi berbeda persis kasus yang harus tertangkap.
+// YANG MASIH DIJAGA DI SINI, dan kenapa alat ini tetap ada:
+//
+//   1. Placeholder `dev` masih berbentuk yang bisa disuntik. Kalau baris `const VERSI`
+//      berubah bentuk, penyuntikan gagal — dan gagalnya akan sunyi kalau tidak diperiksa.
+//   2. Tiap berkas yang didaftar BERKAS_CANGKANG benar-benar ada di app/. Yang didaftar
+//      tetapi tidak ada gagal di-precache tanpa satu pun galat.
+//   3. Tiap berkas app/ yang layak masuk cangkang memang didaftar. Yang tercecer tidak
+//      tersedia saat luring — dan itu persis cara `hitung.js` dan `tanya.js` nyaris lolos.
 
-import { readFileSync, writeFileSync, existsSync, readdirSync } from 'node:fs';
-import { createHash } from 'node:crypto';
+import { readFileSync, existsSync, readdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const AKAR = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const SW = join(AKAR, 'sw.js');
 const APP = join(AKAR, 'app');
-const SIDIK = join(AKAR, 'spec', 'tools', 'sidik-cangkang.json');
-const tulis = process.argv.includes('--tulis');
 
 const sw = readFileSync(SW, 'utf8');
-const versi = /const VERSI = '([^']+)'/.exec(sw)?.[1];
-if (!versi) { console.error('sw.js: tidak menemukan `const VERSI`.'); process.exit(1); }
-
-/* Daftar cangkang dibaca DARI sw.js, bukan diketik ulang di sini. Dua daftar yang wajib
- * sama akan menyimpang, dan yang menyimpang membuat pemeriksa ini menjaga berkas yang
- * bukan berkas yang benar-benar di-cache. */
-const blok = /const BERKAS_CANGKANG = \[([\s\S]*?)\]\.map/.exec(sw)?.[1];
-if (!blok) { console.error('sw.js: tidak menemukan BERKAS_CANGKANG.'); process.exit(1); }
-const daftar = [...blok.matchAll(/'([^']+)'/g)].map((m) => m[1]);
-
-const hilang = daftar.filter((f) => !existsSync(join(APP, f)));
-// Berkas app/ yang ADA tetapi tidak didaftar juga masalah — ia gagal senyap saat luring.
-const punya = new Set(daftar);
-const tercecer = readdirSync(APP)
-  .filter((f) => /\.(html|css|js|webmanifest|svg)$/.test(f) && !punya.has(f))
-  .filter((f) => !f.endsWith('.md'));
-
-const sidikKini = createHash('sha256');
-for (const f of daftar) {
-  if (!existsSync(join(APP, f))) continue;
-  sidikKini.update(f).update('\0').update(readFileSync(join(APP, f)));
-}
-const sidik = sidikKini.digest('hex').slice(0, 16);
-
-const lama = existsSync(SIDIK) ? JSON.parse(readFileSync(SIDIK, 'utf8')) : null;
-
-console.log(`sw.js VERSI        : ${versi}`);
-console.log(`  berkas cangkang  : ${daftar.length}`);
-console.log(`  sidik isi        : ${sidik}${lama ? ` (tercatat: ${lama.sidik} pada ${lama.versi})` : ' — belum pernah dicatat'}`);
-
 const salah = [];
-for (const f of hilang) salah.push(`sw.js mendaftar '${f}', tetapi app/${f} tidak ada — precache-nya akan gagal senyap`);
-for (const f of tercecer) salah.push(`app/${f} tidak didaftar di BERKAS_CANGKANG — ia tidak akan tersedia saat luring`);
 
-if (lama && lama.sidik !== sidik && lama.versi === versi) {
-  salah.push(
-    `isi cangkang berubah tetapi VERSI masih '${versi}'.\n`
-    + '      Pengguna yang pernah membuka permukaan ini akan terkunci di versi lama tanpa batas waktu.\n'
-    + `      Naikkan VERSI di sw.js, lalu: node spec/tools/cek-versi-sw.mjs --tulis`,
-  );
+// 1 — bentuk yang bisa disuntik rakit-situs.mjs. Pola ini SAMA dengan miliknya; kalau
+// keduanya menyimpang, yang satu memeriksa sesuatu yang tidak pernah disuntik yang lain.
+const versi = /^const VERSI = '([^']*)';$/m.exec(sw)?.[1];
+if (versi === undefined) {
+  salah.push('baris `const VERSI = \'…\';` tidak ketemu — rakit-situs.mjs tidak akan bisa menyuntikkan capnya');
+} else if (versi !== 'dev') {
+  salah.push(`VERSI di sumber berbunyi '${versi}', bukan 'dev'. Capnya disuntikkan saat perakitan; `
+    + 'angka yang diketik di sini akan tertimpa, dan sementara itu ia menyesatkan pembacanya.');
 }
+
+// 2 & 3 — daftar cangkang terhadap isi app/ yang sebenarnya.
+const blok = /const BERKAS_CANGKANG = \[([\s\S]*?)\]\.map/.exec(sw)?.[1];
+if (!blok) salah.push('BERKAS_CANGKANG tidak ketemu di sw.js');
+
+const daftar = blok ? [...blok.matchAll(/'([^']+)'/g)].map((m) => m[1]) : [];
+const punya = new Set(daftar);
+
+for (const f of daftar) {
+  if (!existsSync(join(APP, f))) {
+    salah.push(`sw.js mendaftar '${f}', tetapi app/${f} tidak ada — precache-nya akan gagal senyap`);
+  }
+}
+for (const f of readdirSync(APP)) {
+  if (!/\.(html|css|js|webmanifest|svg)$/.test(f) || punya.has(f)) continue;
+  salah.push(`app/${f} tidak didaftar di BERKAS_CANGKANG — ia tidak akan tersedia saat luring`);
+}
+
+console.log(`sw.js VERSI        : ${versi ?? '—'}${versi === 'dev' ? ' (cap disuntikkan saat perakitan)' : ''}`);
+console.log(`  berkas cangkang  : ${daftar.length}`);
 
 if (salah.length) {
   console.error(`\n${salah.length} masalah:`);
   for (const s of salah) console.error(`  ✗ ${s}`);
   process.exit(1);
 }
-
-if (!lama || lama.sidik !== sidik || lama.versi !== versi) {
-  if (!tulis) {
-    console.log('\nSidik jarinya perlu dicatat. Jalankan dengan --tulis.');
-    process.exit(0);
-  }
-  writeFileSync(SIDIK, `${JSON.stringify({ versi, sidik, dicatat: 'oleh cek-versi-sw.mjs' }, null, 2)}\n`);
-  console.log(`\nDicatat: ${versi} → ${sidik}`);
-} else {
-  console.log('\nVERSI cocok dengan isi cangkang.');
-}
+console.log('Daftar cangkang utuh, dan capnya siap disuntikkan.');
