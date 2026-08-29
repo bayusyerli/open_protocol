@@ -58,11 +58,20 @@ jobs:
       # Object Read-only akan melewati `ls` dengan mulus dan tetap menjatuhkan `aws s3 sync`
       # di ujung — jadi probe baca membuktikan persis hal yang tidak perlu dibuktikan.
       #
-      # Untuk Worker ia memakai endpoint verifikasi token, bukan `wrangler whoami`. Alasannya
-      # sempit: `whoami` menuntut izin User Details:Read yang tidak ada hubungannya dengan
-      # menerbitkan Worker, sehingga token yang sah tapi diracik sendiri bisa gagal di sini
-      # tanpa sebab. `whoami` tetap dijalankan sesudahnya — untuk mencetak daftar izinnya,
-      # yang berguna saat mendiagnosis, tapi tidak boleh menjatuhkan build.
+      # Untuk Worker ia membaca daftar Worker MILIK AKUN INI, dan itu percobaan ketiga.
+      # `wrangler whoami` gugur lebih dulu karena menuntut User Details:Read, izin yang tidak
+      # ada hubungannya dengan menerbitkan Worker. Penggantinya, `/user/tokens/verify`, gugur
+      # pada 29 Agustus 2026 di runner ini juga: endpoint itu hanya mengenal User API token,
+      # sedangkan token yang dipakai — dan yang Cloudflare sendiri sarankan untuk produksi —
+      # adalah Account API token. Balasannya tidak memuat medan `status`, dan gerbangnya
+      # menjatuhkan token yang sebenarnya sehat.
+      #
+      # Membaca daftar Worker akun tidak punya cacat itu. Ia menguji ketiga hal yang benar-
+      # benar disyaratkan `wrangler deploy` sekaligus — token hidup, berizin Workers Scripts,
+      # dan terarah ke akun yang benar — dan tidak menuntut satu pun izin di luar itu.
+      #
+      # Saat gagal, badan balasannya dicetak: isinya kode galat Cloudflare, bukan rahasia.
+      # Tanpa itu, kegagalan 29 Agustus tadi hanya berbunyi "tak terbaca".
       #
       # Tanpa rahasia, langkah ini lewat tanpa suara: fork dan kontributor tidak punya urusan
       # dengan bucket ini. Dengan rahasia yang ADA tapi rusak, ia gagal — jalur rilis yang
@@ -92,19 +101,20 @@ jobs:
             echo "R2: tulis dan hapus berhasil di bucket pranatani-situs."
           fi
 
-          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$AKUN" ]; then
             echo "Token Cloudflare belum disetel — pembuktian Worker dilewati."
           else
-            balasan=$(curl -sS --max-time 20 \
+            kode=$(curl -sS --max-time 20 -o /tmp/balasan -w '%{http_code}' \
               -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-              https://api.cloudflare.com/client/v4/user/tokens/verify || true)
-            status=$(printf '%s' "$balasan" | grep -o '"status":"[a-z]*"' | cut -d'"' -f4 | head -1 || true)
-            if [ "$status" != "active" ]; then
-              echo "Token Cloudflare tidak berlaku - status: ${status:-tak terbaca}." >&2
+              "https://api.cloudflare.com/client/v4/accounts/$AKUN/workers/scripts" || true)
+            if [ "$kode" != "200" ]; then
+              echo "Token Cloudflare ditolak saat membaca daftar Worker akun ini (HTTP $kode)." >&2
+              echo "Balasan API — memuat kode galat, bukan rahasia:" >&2
+              cat /tmp/balasan >&2 || true
+              echo >&2
               exit 1
             fi
-            echo "Token Cloudflare: aktif."
-            npx --yes wrangler@4 whoami || echo "(whoami gagal — tidak menjatuhkan build; lihat catatan di atas.)"
+            echo "Token Cloudflare: berlaku, dan berizin Workers pada akun ini."
           fi
 
       - name: Pasang dependensi
