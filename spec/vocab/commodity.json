@@ -72,7 +72,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
+      },
+      "broader": {
+        "id": "op:cmd:00001003",
+        "label": "Cabai"
       }
     },
     {
@@ -111,7 +116,12 @@
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-19T00:00:00Z"
+        "created_at": "2026-08-19T00:00:00Z",
+        "updated_at": "2026-08-28T00:00:00Z"
+      },
+      "broader": {
+        "id": "op:cmd:00001003",
+        "label": "Cabai"
       }
     },
     {
@@ -378,6 +388,24 @@
           "id": "4679",
           "relation": "exact",
           "note": "PERLU VERIFIKASI ke sumber aslinya sebelum status naik ke published."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang Meraah",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 2 baris penggunaan."
+        },
+        {
+          "scheme": "KEMENTAN",
+          "id": "Bawang (2,25 ml/l)",
+          "relation": "exact",
+          "note": "Nama sasaran pada label produk terdaftar; muncul pada 1 baris penggunaan."
         }
       ],
       "lifecycle": {
@@ -387,7 +415,9 @@
         "updated_at": "2026-08-20T00:00:00Z"
       },
       "synonyms": [
+        "Bawang",
         "Bawang  merah",
+        "Bawang Meraah",
         "Bawang Merah",
         "Bawang Merah (3 ml/l)",
         "Bawang merah :",

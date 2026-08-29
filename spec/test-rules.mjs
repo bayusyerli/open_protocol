@@ -24,12 +24,21 @@ const fixtures = [
     .flatMap((d) => readdirSync(join(DIR, d.name)).filter((f) => f.endsWith('.meta.json')).map((f) => `${d.name}/${f}`)),
 ].sort();
 
+// Galat pada berkas KOLEKSI dilaporkan dengan buntut penunjuk item — "berkas.json [0]
+// kunci-entitas" — supaya yang membacanya tahu item mana yang salah. Buntut itu membuat
+// endsWith() gagal, dan akibatnya fixture berbentuk koleksi tidak akan pernah cocok
+// dengan aturannya sendiri: ia terbaca "tidak ada yang menyala" dan lolos diam-diam,
+// justru pada berkas yang ditulis untuk membuktikan sebuah aturan menyala. Jadi buntutnya
+// dipotong dulu, dan pencocokannya tetap pada nama berkasnya.
+const namaBerkas = (f) => f.replace(/ \[\d+\].*$/, '');
+
 for (const file of fixtures) {
   // Galat pada item di dalam koleksi dilaporkan dengan label berimbuhan —
   // "fixtures-invalid/x.json [0] kunci" — sehingga endsWith saja tidak pernah cocok, dan
-  // fixture berbentuk koleksi diam-diam tidak teruji. Imbuhannya dipotong lebih dulu.
-  const jalur = (f) => f.replace(/[\s[].*$/, '');
-  const rules = [...byFile.entries()].filter(([f]) => jalur(f).endsWith(file)).flatMap(([, r]) => r);
+  // fixture berbentuk koleksi diam-diam tidak teruji. Imbuhannya dipotong `namaBerkas()`
+  // di atas, yang memotong tepat pada " [N]" alih-alih pada spasi pertama: nama berkas
+  // yang mengandung spasi tidak boleh ikut terpotong.
+  const rules = [...byFile.entries()].filter(([f]) => namaBerkas(f).endsWith(file)).flatMap(([, r]) => r);
   if (file.split('/').pop().startsWith('ok-')) {
     if (rules.length === 0) { console.log(`  OK    ${file} — lolos, sesuai harapan`); pass++; }
     else { console.log(`  GAGAL ${file} — seharusnya lolos, tapi menyala: ${rules.join(', ')}`); fail++; }

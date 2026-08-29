@@ -9,7 +9,7 @@
  * indeks yang sama, pemecahan ember yang sama, urutan yang sama.
  */
 
-import { muatMeta, bacaMeta, ambil, cari, cariGejala, cariNamaLokal, namaBerdekatan, tautanHasil, teks, JENIS, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
+import { muatMeta, bacaMeta, isiCacah, ambil, cari, cariGejala, cariNamaLokal, namaBerdekatan, tautanHasil, teks, JENIS, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { jawabPemegang, kelasKetinggian, kataDasar } from './tanya.js';
 import { pasangTombolTema } from './tema.js';
 import { catatLubang, LUBANG } from './ukur.js';
@@ -708,6 +708,9 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
 (async function mulai() {
   try {
     const m = await muatMeta();
+    // Angka yang tercetak di prosa halaman ini diisi dari meta, bukan diketik tangan —
+    // lihat isiCacah() di pustaka.js. Dipanggil sesudah meta ada, sebelum apa pun digambar.
+    isiCacah();
     const j = m.jumlah;
     const n = (x) => (x ?? 0).toLocaleString('id-ID');
 

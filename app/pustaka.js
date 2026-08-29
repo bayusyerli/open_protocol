@@ -71,6 +71,24 @@ export async function ambil(jalan) {
   return janji;
 }
 
+/* Keluarga pecahan bernomor — `gejala-daftar/000.json`, `gejala-cari/001.json`, dan
+ * seterusnya. Jumlahnya ada di meta.json yang sudah diambil lebih dulu, jadi tidak ada
+ * pertanyaan tambahan untuk mencari tahu ada berapa; pecahannya sendiri diambil
+ * SERENTAK, sehingga berkas yang dipecah demi anggaran 48 KB tidak berubah jadi
+ * beberapa perjalanan pulang-pergi berurutan. */
+export async function ambilPecahan(akar, kunci) {
+  // meta.json dipastikan ada DULU. Jumlah pecahannya ada di sana, jadi memanggil ini
+  // sebelum meta dimuat akan mengembalikan larik kosong tanpa galat apa pun — layar yang
+  // terisi rapi dan kosong, bentuk kegagalan yang paling sulit dilihat.
+  if (!bacaMeta()) await muatMeta();
+  const n = bacaMeta()?.pecahan?.[kunci] ?? 0;
+  if (!n) return [];
+  const bagian = await Promise.all(
+    Array.from({ length: n }, (_, i) => ambil(`${akar}/${String(i).padStart(3, '0')}`)),
+  );
+  return bagian.flat();
+}
+
 /* DUA KEGAGALAN YANG BERBEDA, DAN SELAMA INI KEDUANYA BERBUNYI SAMA.
  *
  * Sampai 24 Agustus 2026 kedelapan layar menjawab kegagalan muat pertama dengan kalimat
@@ -249,6 +267,28 @@ export async function muatMeta() {
   cap = meta.cap ?? 'x';
   return meta;
 }
+
+/* ANGKA YANG HIDUP BERHENTI DITULIS TANGAN. Prosa yang mengetik cacahnya sendiri basi
+ * diam-diam begitu datanya tumbuh — dan basi diam-diam persis yang dilawan seluruh
+ * permukaan ini. Penanda `data-cacah="<kunci>"` di HTML diisi dari `meta.jumlah` saat
+ * halaman muat, jadi yang tertulis selalu yang benar-benar ada di indeks. Dibawa dari
+ * cabang utama pada merge 25 Agustus 2026.
+ *
+ * Kunci yang tidak dikenali DILEWATI, bukan dikosongkan: angka bawaan di HTML tetap
+ * terbaca, dan itu lebih baik daripada kotak kosong pada halaman yang metanya gagal muat. */
+export function isiCacah(akar = document) {
+  if (!meta?.jumlah) return 0;
+  let n = 0;
+  for (const el of akar.querySelectorAll('[data-cacah]')) {
+    const v = meta.jumlah[el.dataset.cacah];
+    if (v == null) continue;
+    el.textContent = Number(v).toLocaleString('id-ID');
+    n += 1;
+  }
+  return n;
+}
+
+export const cacah = (kunci) => meta?.jumlah?.[kunci] ?? null;
 
 // ---------------------------------------------------------------------------
 // Ember pencarian
@@ -683,7 +723,7 @@ export async function cariNamaLokal(kueri) {
 export async function cariGejala(kueri) {
   const kk = kata(kueri).filter((w) => w.length >= 3);
   if (!kk.length) return [];
-  const daftar = await ambil('gejala-cari');
+  const daftar = await ambilPecahan('gejala-cari', 'gejalaCari');
 
   // Separuh kata harus cocok, dibulatkan ke atas. Tanpa ambang itu satu kata lazim
   // seperti "daun" memanggil kesepuluh gejalanya, dan daftar yang selalu penuh sama

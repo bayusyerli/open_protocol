@@ -30,7 +30,7 @@ total di satu — sayangnya yang pertama.
 
 | Pertanyaan | Jawaban data |
 |---|---|
-| **Ini apa?** | **Nyaris nol.** Dari 768 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya 10 OPT cabai terkurasi, seluruhnya kini bertekst |
+| **Ini apa?** | **Nyaris nol.** Dari 516 OPT registri tidak satu pun punya deskripsi gejala; yang ada hanya OPT terkurasi, seluruhnya bertekst — daftarnya per komoditas di [14-tinjauan-gejala.md](14-tinjauan-gejala.md) |
 | **Boleh pakai apa?** | Kuat — 23.058 penggunaan berlabel, 96,1% tertaut OPT |
 | **Dosisnya berapa?** | Kuat — 80% membawa dosis |
 | **Gimana caranya?** | Sebagian — 23 cara aplikasi, tanpa panduan teknik |
@@ -44,8 +44,8 @@ masuk lewat kosakata petani sendiri juga belum ada.
 ## 2. Empat keputusan rancangan
 
 - **Masuk lewat apa yang terlihat, bukan nama hama.** Petani yang panik tidak tahu
-  kata "trips". Ia tahu daunnya mengeriting ke atas. Menutup lubang gejala untuk
-  cabai tinggal butuh lima kalimat — lima dari sepuluh OPT terkurasi sudah punya.
+  kata "trips". Ia tahu daunnya mengeriting ke atas. Komoditas yang sudah dikurasi punya
+  pintunya, seluruhnya bertekst; yang belum tidak punya pintu sama sekali.
 - **Mesin tidak menebak, orang yang memilih.** Tidak ada pengenal foto. Diagnosis
   salah yang percaya diri menghasilkan semprotan salah — uang hilang, tanaman tetap
   mati, kepercayaan habis di kejadian pertama. Ini juga bagian sistem yang paling
@@ -178,14 +178,17 @@ Arsitekturnya berbalik. Bukan lagi rencana → realisasi → simpangan, melainka
 
 ## 7. Prasyarat rilis
 
-- **Lima kalimat gejala.** Dari sepuluh OPT cabai terkurasi, lima sudah punya
-  deskripsi gejala — tersimpan pada medan `definition`, bukan pada medan bernama
-  gejala. Ulat grayak justru punya 184 produk terdaftar di cabai tetapi tidak bisa
-  dimasuki karena teksnya belum ada. Setengah hari kerja membuka seluruh jalur reaktif
-  komoditas beachhead.
-- **Sepuluh OPT itu tidak terbatas pada cabai.** Registri menautkannya jauh lebih
-  luas — trips ke 15 komoditas dengan 283 produk, ulat grayak ke 13 komoditas dengan
-  320 produk. Teks gejala yang ditulis untuk cabai langsung terpakai di luar cabai.
+- ~~**Lima kalimat gejala.**~~ **Sudah dikerjakan.** Kesepuluh OPT cabai kini punya
+  medan `symptoms` sendiri beserta dua ciri pembanding — `definition` dibiarkan sebagai
+  catatan epidemiologi, bukan sebagai gejala.
+- ~~**Sepuluh OPT itu tidak terbatas pada cabai.**~~ **Terbukti, dan dipakai.** Registri
+  menautkannya jauh lebih luas — trips ke 15 komoditas, ulat grayak ke 13. Komoditas
+  berikutnya menyusul sejak 28 Agustus 2026 lewat `spec/tools/kurasi-opt.mjs`: entri
+  dinaikkan dari registri, dan entri lama yang melayani lebih dari satu tanaman teks
+  gejalanya dibuka berklausa per tanaman. Daftar mutakhirnya dibangkitkan ke
+  [14-tinjauan-gejala.md](14-tinjauan-gejala.md), jadi angka tidak ditulis di sini. Kakao,
+  kopi, dan sawit tanaman TAHUNAN, dan skala fase yang belum ada ternyata tidak
+  menghalangi jalur 1 sama sekali — ia prasyarat Lapis 2, bukan prasyarat pintu gejala.
 - **Tetapkan aturan urutan merek dan umumkan di layar.** Rancangan ini memakai nomor
   pendaftaran menaik. Apa pun pilihannya, ia harus tertulis dan tidak boleh bisa
   dibeli.

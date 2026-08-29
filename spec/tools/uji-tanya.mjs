@@ -58,7 +58,7 @@ globalThis.fetch = async (alamat) => {
 globalThis.addEventListener ??= () => {};
 
 const { uraikan, uraiKetinggian, uraiDataran, kelasKetinggian, jawabPemegang } = await import(join(AKAR, 'app', 'tanya.js'));
-const { muatMeta, cari, tautanHasil } = await import(join(AKAR, 'app', 'pustaka.js'));
+const { muatMeta, cari, cariGejala, tautanHasil } = await import(join(AKAR, 'app', 'pustaka.js'));
 const { kelasCocok } = await import(join(AKAR, 'spec', 'tools', 'agroklimat.mjs'));
 
 await muatMeta();
@@ -229,12 +229,21 @@ const pintu = { pintu: true };
 {
   // 113 dari 198 nama OPT berproduk diawali kata golongan, jadi embernya ditentukan kata
   // yang tidak membedakan apa pun. Sebelum aliasnya ada, ketiga kueri di bawah dijawab nol.
-  for (const [kueri, harap] of [['trips', 'Hama Trips'], ['ganjur', 'Hama Ganjur'],
+  for (const [kueri, harap] of [['trips', 'Hama Trips'],
     ['apa obat untuk ulat grayak pada padi', 'Ulat Grayak']]) {
     const { hasil } = await cari(kueri, null, pintu);
     uji(`opt/alias ${kueri}`, hasil.some((x) => x.j === 'opt' && x.n === harap),
       hasil.slice(0, 3).map((x) => `${x.j}:${x.n}`).join(' | '));
   }
+
+  // "Ganjur" DULU diuji di baris atas sebagai OPT registri. Kurasi menaikkannya ke
+  // kosakata terkurasi, sehingga `op:pst:00001361 "Hama Ganjur"` kini berstatus superseded
+  // dan `cari()` memang tidak lagi menemukannya — bukan regresi, melainkan perpindahan
+  // ruang id. Yang harus tetap benar: orang yang mengetik "ganjur" tetap sampai. Ia
+  // sekarang sampai lewat kepala gejala, dan beranda memanggil keduanya berdampingan.
+  const gGanjur = await cariGejala('ganjur');
+  uji('opt/ganjur naik ke terkurasi', gGanjur.some((x) => (x.nama ?? x.n) === 'Ganjur'),
+    gGanjur.map((x) => x.nama ?? x.n).join(' | ') || 'nol hasil');
 }
 {
   // Saringan jenis yang tidak menyisakan apa pun DIJATUHKAN, dan penjatuhannya dilaporkan —

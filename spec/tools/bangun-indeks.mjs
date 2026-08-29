@@ -1207,8 +1207,8 @@ for (const r of sediaanCari) {
 // ---------------------------------------------------------------------------
 // OPT registri yang bisa dicari menurut NAMA — C3, sisi yang tidak menuntut agronomi
 // ---------------------------------------------------------------------------
-// 749 OPT registri punya produk terdaftar; sepuluh di antaranya punya teks gejala. Yang
-// 739 sisanya sampai hari ini TIDAK BISA DICAPAI SAMA SEKALI dari kotak beranda — nol
+// 749 OPT registri punya produk terdaftar; yang punya teks gejala cuma yang terkurasi.
+// Yang sisanya sampai hari ini TIDAK BISA DICAPAI SAMA SEKALI dari kotak beranda — nol
 // entri OPT di kepala pencarian — walau bahan aktif yang terdaftar untuknya sudah ada
 // di indeks. Yang tahu nama hamanya dijawab nol, dan itu bukan kekurangan data melainkan
 // pintu yang belum dibuka.
@@ -1409,6 +1409,241 @@ const hiasMerek = (m) => {
 // 960 KB — kelapa sawit sendiri punya 622 produk untuk satu gulma. Tingkat pertama
 // hanya daftar OPT beserta jumlahnya, yang memang itulah isi layar sesudah
 // komoditas dipilih; daftar bahan dan mereknya baru diambil saat satu OPT dibuka.
+// Sasaran bertingkat GENUS yang ikut dicakup pintu terkurasi
+// ---------------------------------------------------------------------------
+// Registri memuat sasaran yang sengaja tidak menyebut spesies — "Thrips sp.",
+// "Colletotrichum sp.", "Liriomyza sp." — dan 682 baris penggunaan berdiri di atasnya.
+// Menyatukannya ke sebuah spesies SALAH: label itu memang berkata "trips apa pun".
+// Tetapi membiarkannya juga salah, karena produk yang terdaftar untuk "trips apa pun
+// pada cabai" jelas jawaban yang sah bagi orang yang berdiri di depan cabai bertrips.
+//
+// Jadi ia tidak disatukan, melainkan DICAKUP: barisnya ikut dihitung pada pintu yang
+// (a) segenus dan (b) inangnya memuat komoditas baris itu. Dua syarat itu bersama yang
+// membuat pemetaannya tidak pernah menebak — dan pada data hari ini menghasilkan NOL
+// kasus ambigu dari 682 baris. Kalau suatu saat ada dua pintu segenus yang berbagi
+// inang, baris itu DIBUANG dari pencakupan dan dihitung sebagai ambigu, bukan
+// dibagikan ke salah satunya.
+//
+// Jumlahnya dibawa tersendiri sebagai `takBerspesies` supaya layar bisa menyebutkannya.
+const takBerspesies = new Map();
+let cakupAmbigu = 0;
+let cakupRangkap = 0;
+let cakupBaris = 0;
+{
+  const genusDari = (x) => (x ?? '').trim().split(/\s+/)[0] || '';
+  // Genus pintu diambil dari nama ilmiahnya DAN dari synonyms yang berbentuk nama
+  // ilmiah. Alasannya konkret: sesudah satukan-opt-sinonim.mjs, pintu lalat bibit kedelai
+  // membawa "Agromyza phaseoli" sebagai synonym — nama genus lamanya — sementara registri
+  // masih memuat sasaran "Agromyza sp." pada dua belas baris. Tanpa membaca synonyms,
+  // dua belas baris itu berdiri di luar pintu yang justru sudah menyerap nama lamanya.
+  const binomial = (x) => /^[A-Z][a-z]+ [a-z][a-z-]+$/.test(String(x ?? '').trim());
+  const pintuSegenus = new Map();
+  for (const k of optTerkurasi) {
+    const g = new Set([k.scientific_name, ...(k.synonyms ?? []).filter(binomial)].map(genusDari).filter(Boolean));
+    for (const x of g) {
+      if (!pintuSegenus.has(x)) pintuSegenus.set(x, []);
+      pintuSegenus.get(x).push(k);
+    }
+  }
+  // Kesetaraan marga yang ditulis tangan, dan alasannya bukan kepraktisan.
+  // "Oidium" bukan marga sejajar Podosphaera atau Leveillula — ia nama untuk BENTUK TAK
+  // BERKELAMIN jamur embun tepung, dipakai justru ketika bentuk berkelaminnya (yang
+  // memberi nama margasnya) tidak ditemukan. Jadi "Oidium sp." pada label tidak berkata
+  // "marga lain"; ia berkata "embun tepung, marganya tidak ditentukan" — persis peran
+  // yang sama dengan "Thrips sp." bagi trips. Dua syarat pencakupan tidak dilonggarkan:
+  // tetap harus ada TEPAT SATU pintu yang inangnya memuat komoditas baris itu, dan
+  // sisanya tetap dibuang sebagai ambigu.
+  // Antraknosa punya pasangan yang persis sama bentuknya: Gloeosporium nama BENTUK TAK
+  // BERKELAMIN jamur antraknosa, dan Colletotrichum bentuk berkelaminnya. Registri memuat
+  // keduanya — "Gloeosporium piperatum" pada cabai, "Gloeosporium sp." — dan keduanya
+  // berkata hal yang sama: antraknosa, marganya tidak ditentukan.
+  {
+    const antraknosa = ['Colletotrichum', 'Gloeosporium', 'Glomerella'];
+    const gabung = new Set(antraknosa.flatMap((g) => pintuSegenus.get(g) ?? []));
+    for (const anamorf of ['Gloeosporium', 'Glomerella']) if (gabung.size) pintuSegenus.set(anamorf, [...gabung]);
+  }
+
+  {
+    const embunTepung = ['Podosphaera', 'Erysiphe', 'Leveillula', 'Golovinomyces', 'Sphaerotheca', 'Oidium', 'Oidiopsis', 'Oidiospora'];
+    const gabung = new Set(embunTepung.flatMap((g) => pintuSegenus.get(g) ?? []));
+    // Dua nama bentuk tak berkelamin, bukan satu: Oidiopsis khusus untuk bentuk tak
+    // berkelamin Leveillula — jamur yang hidup DI DALAM daun dan menyembulkan spora lewat
+    // mulut daun — sementara Oidium dipakai untuk yang lain. Keduanya sama-sama berkata
+    // "embun tepung, marganya tidak ditentukan", jadi keduanya dilayani daftar yang sama.
+    for (const anamorf of ['Oidium', 'Oidiopsis', 'Oidiospora']) if (gabung.size) pintuSegenus.set(anamorf, [...gabung]);
+  }
+
+  for (const e of optRegistri) {
+    if (e.lifecycle?.status === 'superseded') continue;
+    if (!/^[A-Z][a-z]+ spp?\.$/.test((e.scientific_name ?? '').trim())) continue;
+    const kandidat = pintuSegenus.get(genusDari(e.scientific_name)) ?? [];
+    if (!kandidat.length) continue;
+    for (const [kc, v] of perKomoditas) {
+      const o = v.opt.get(e.id);
+      if (!o) continue;
+      const pas = kandidat.filter((k) => (k.hosts ?? []).some((h) => h.id === kc));
+      if (!pas.length) continue;
+      // Dua pintu segenus yang berbagi inang dulu membuat barisnya DIBUANG. Itu keliru,
+      // dan salahnya bukan pada kehati-hatiannya melainkan pada pertanyaannya: yang
+      // ditanyakan "pintu mana yang dimaksud label", padahal label "Sitophilus spp." tidak
+      // memaksudkan satu pun secara khusus — ia memaksudkan SEMUANYA. Bubuk beras dan
+      // bubuk jagung dua pintu yang sah, punya ciri pembanding sendiri (yang satu terbang,
+      // yang lain jarang), dan produk yang terdaftar untuk "Sitophilus spp. pada beras"
+      // memang jawaban yang benar bagi keduanya.
+      //
+      // Jadi barisnya diberikan ke SEMUA pintu yang cocok — bukan dibagi ke salah satunya,
+      // yang memang akan jadi tebakan. Yang perlu dijaga cuma satu: jumlah produk per
+      // pintu tetap benar (produk itu memang terdaftar untuk sasaran yang mencakupnya),
+      // sementara MENJUMLAHKAN antar-pintu akan menghitungnya berkali-kali. Tidak ada
+      // layar yang menjumlahkan begitu, dan angka rangkapnya dilaporkan tersendiri di
+      // bawah supaya yang membangunnya tahu ada berapa.
+      if (pas.length > 1) cakupRangkap += o.produk.size * (pas.length - 1);
+      for (const k of pas) {
+        if (!takBerspesies.has(k.id)) takBerspesies.set(k.id, new Map());
+        const perKom = takBerspesies.get(k.id);
+        if (!perKom.has(kc)) perKom.set(kc, { produk: new Set(), sumber: [] });
+        for (const x of o.produk) perKom.get(kc).produk.add(x);
+        perKom.get(kc).sumber.push(o);
+      }
+      cakupBaris += o.produk.size;
+    }
+  }
+}
+
+// Sasaran berspesies LAIN yang dicakup atas pernyataan kurator
+// ---------------------------------------------------------------------------
+// Pasangan blok di atas, dan sengaja dipisah darinya. Di atas, mesin membaca apa yang
+// label katakan; di sini ia membaca apa yang kurator NYATAKAN — medan `covers` pada
+// pest.json, tiap barisnya dengan `dasar` yang wajib menyebut cirinya. Aturan otomatis
+// dicoba dan ditolak: "spesies semarga, dipilah menurut inang" menjangkau 94 baris,
+// tetapi baris terbesarnya Xanthomonas campestris — pada padi hawar daun bakteri, pada
+// kubis busuk hitam, dua penyakit tanpa kemiripan apa pun.
+//
+// Saringan inang tetap berlaku penuh, jadi pernyataan kurator memperluas jangkauan
+// pintu tanpa pernah memindahkannya ke tanaman yang teksnya tidak ditulis untuknya.
+const namaLain = new Map();
+let cakupNamaLain = 0;
+{
+  const olehSasaran = new Map();
+  for (const k of optTerkurasi) {
+    for (const c of k.covers ?? []) {
+      if (!olehSasaran.has(c.pest.id)) olehSasaran.set(c.pest.id, []);
+      olehSasaran.get(c.pest.id).push(k);
+    }
+  }
+  for (const [sid, pintu] of olehSasaran) {
+    for (const [kc, v] of perKomoditas) {
+      const o = v.opt.get(sid);
+      if (!o) continue;
+      const pas = pintu.filter((k) => (k.hosts ?? []).some((h) => h.id === kc));
+      if (pas.length !== 1) { if (pas.length > 1) cakupAmbigu += o.produk.size; continue; }
+      const id = pas[0].id;
+      if (!namaLain.has(id)) namaLain.set(id, new Map());
+      const perKom = namaLain.get(id);
+      if (!perKom.has(kc)) perKom.set(kc, { produk: new Set(), sumber: [] });
+      for (const x of o.produk) perKom.get(kc).produk.add(x);
+      perKom.get(kc).sumber.push(o);
+      cakupNamaLain += o.produk.size;
+    }
+  }
+}
+
+// Komoditas yang lebih SEMPIT ikut dijangkau pintu yang berinang yang lebih luas
+// ---------------------------------------------------------------------------
+// Registri menulis "Cabai merah" di samping "Cabai", dan keduanya sengaja TIDAK
+// disatukan: 35 catatan varietas berdiri di atas yang pertama dan 103 di atas yang kedua,
+// jadi menyatukannya membuang pembedaan yang memang dimaksud. Tetapi membiarkannya
+// terpisah juga salah — pintu antraknosa berinang "Cabai" tidak menjangkau tiga baris yang
+// tertulis "Cabai merah", padahal apa pun yang berlaku untuk cabai berlaku untuk cabai
+// merah.
+//
+// Jadi `broader` pada komoditas dipakai di sini, dan ARAHNYA SATU: pintu yang berinang
+// yang lebih luas menjangkau ke bawah, yang lebih sempit tidak pernah menjangkau ke atas.
+// Pendaftaran yang tertulis "Bawang" karena itu tetap di luar jangkauan pintu bawang
+// merah — bisa saja yang dimaksud bawang putih, dan mengklaimnya adalah menebak.
+const lewatLebihSempit = new Map();
+// Pasangan pintu\u00d7komoditas yang produknya sudah dinaikkan; dipakai layar daftar supaya
+// komoditas yang lebih sempit tidak muncul dua kali.
+const naikKe = new Set();
+let cakupSempit = 0;
+{
+  // Rantai broader diratakan lebih dulu supaya "Cabai merah besar" yang menunjuk "Cabai"
+  // lewat satu langkah maupun beberapa langkah sama-sama terjangkau.
+  const keAtas = (id) => {
+    const naik = [];
+    const lewat = new Set([id]);
+    let kini = komoditasById.get(id)?.broader?.id;
+    while (kini && !lewat.has(kini)) { naik.push(kini); lewat.add(kini); kini = komoditasById.get(kini)?.broader?.id; }
+    return naik;
+  };
+  for (const k of optTerkurasi) {
+    const inang = new Set((k.hosts ?? []).map((h) => h.id));
+    if (!inang.size) continue;
+    for (const [kc, v] of perKomoditas) {
+      if (inang.has(kc)) continue;
+      if (!keAtas(kc).some((x) => inang.has(x))) continue;
+      const o = v.opt.get(k.id) ?? null;
+      // Sasaran yang dicakup pintu ini pada komoditas sempit itu ikut — jangkauannya
+      // berlaku pada tanaman, bukan pada nama entitasnya.
+      const sumber = [o, takBerspesies.get(k.id)?.get(kc), namaLain.get(k.id)?.get(kc)]
+        .flatMap((x) => (x ? (x.sumber ?? [x]) : []));
+      if (!sumber.length) continue;
+      if (!lewatLebihSempit.has(k.id)) lewatLebihSempit.set(k.id, new Map());
+      const perKom = lewatLebihSempit.get(k.id);
+      const tuju = [...inang].find((x) => keAtas(kc).includes(x));
+      if (!perKom.has(tuju)) perKom.set(tuju, { produk: new Set(), sumber: [], dari: new Set() });
+      const isi = perKom.get(tuju);
+      for (const x of sumber) { for (const y of x.produk) isi.produk.add(y); isi.sumber.push(x); cakupSempit += x.produk.size; }
+      isi.dari.add(v.nama);
+      naikKe.add(`${k.id}\u0000${kc}`);
+    }
+  }
+}
+
+// Produk yang dicakup DILEBUR ke entri pintu, bukan cuma dihitung
+// ---------------------------------------------------------------------------
+// Tanpa ini kedua mekanisme di atas berbohong dengan cara yang paling sulit dilihat:
+// layar "di tanaman apa" menyebut 278 produk untuk trips di cabai, lalu berkas rinciannya
+// berisi 246 — karena 32 sisanya terdaftar di bawah entri "Thrips sp." yang punya berkas
+// SENDIRI. Angkanya benar, daftarnya benar, dan keduanya tidak sama.
+//
+// Jadi peleburannya dilakukan di sumbernya, sebelum berkas apa pun disusun: produk dan
+// kelompok bahan aktif milik sasaran yang dicakup dimasukkan ke entri pintu, sehingga
+// setiap angka dan setiap daftar sesudah titik ini turun dari objek yang sama dan tidak
+// bisa lagi berselisih. Entri sasaran tetap ada di tempatnya — ia masih dicari lewat nama
+// di jalur 2, dan membuangnya akan memutus penelusuran ke ejaan asli registri.
+{
+  const lebur = (peta) => {
+    for (const [pid, perKom] of peta) {
+      for (const [kc, isi] of perKom) {
+        const kom = perKomoditas.get(kc);
+        if (!kom) continue;
+        // Pintu bisa saja TIDAK punya pendaftaran sendiri di komoditas itu dan tetap
+        // menjangkaunya lewat cakupan — kutu daun kapas tidak terdaftar sebagai dirinya
+        // di kubis, tetapi "Aphis sp." di kubis terdaftar. Entri barunya dibuat di sini;
+        // tanpa itu layar akan menyebut komoditas yang berkas rinciannya tidak ada.
+        let tuju = kom.opt.get(pid);
+        if (!tuju) {
+          tuju = { nama: namaOpt(pid, null), grup: new Map(), produk: new Set() };
+          kom.opt.set(pid, tuju);
+        }
+        for (const asal of isi.sumber) {
+          for (const x of asal.produk) tuju.produk.add(x);
+          for (const [gk, g] of asal.grup) {
+            const ada = tuju.grup.get(gk);
+            if (!ada) { tuju.grup.set(gk, { ...g, merek: g.merek.slice() }); continue; }
+            const punya = new Set(ada.merek.map((m) => m.id));
+            for (const m of g.merek) if (!punya.has(m.id)) ada.merek.push(m);
+          }
+        }
+      }
+    }
+  };
+  lebur(takBerspesies);
+  lebur(namaLain);
+  lebur(lewatLebihSempit);
+}
+
 const berkasOpt = {};
 const kunciKomoditas = (id) => id.replace(/[^a-z0-9]/gi, '');
 for (const [kc, v] of [...perKomoditas.entries()].sort((a, b) => a[0].localeCompare(b[0]))) {
@@ -1655,6 +1890,7 @@ for (const s of sediaan) {
 // dua layar yang berbeda janjinya, bukan satu layar dengan dua tab.
 
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // Pintu masuk jalur 1: OPT terkurasi beserta teks gejalanya
 // ---------------------------------------------------------------------------
 // `definition` pada pest.json sempat terhitung sebagai teks gejala. Isinya bukan:
@@ -1672,8 +1908,34 @@ const gejala = optTerkurasi
     const di = [];
     for (const [kc, v] of perKomoditas) {
       const o = v.opt.get(k.id);
-      if (!o) continue;
-      di.push({ komoditas: kc, nama: v.nama, produk: o.produk.size, berkas: `opt/${kunciKomoditas(kc)}/${kunciKomoditas(k.id)}` });
+      const tb = takBerspesies.get(k.id)?.get(kc);
+      const nl = namaLain.get(k.id)?.get(kc);
+      const ls = lewatLebihSempit.get(k.id)?.get(kc);
+      // Komoditas yang produknya SUDAH dinaikkan ke inang yang lebih luas tidak boleh
+      // muncul lagi sebagai barisnya sendiri: pembacanya akan melihat produk yang sama
+      // dua kali — "Cabai 126" yang di dalamnya sudah termasuk sepuluh, lalu "Cabai merah
+      // 10" di bawahnya — dan menjumlahkan keduanya menghasilkan angka yang tidak ada.
+      if (naikKe.has(`${k.id}\u0000${kc}`)) continue;
+      if (!o && !tb && !nl && !ls) continue;
+      const gabung = new Set([...(o?.produk ?? []), ...(tb?.produk ?? []), ...(nl?.produk ?? []), ...(ls?.produk ?? [])]);
+      di.push({
+        komoditas: kc,
+        nama: v.nama,
+        produk: gabung.size,
+        // Dinyatakan tersendiri, bukan dilebur diam-diam ke jumlah: sebagian produk ini
+        // terdaftar untuk "Thrips sp." — sasaran yang memang tidak menyebut spesies —
+        // dan layar harus bisa mengatakannya, bukan berpura-pura registrinya lebih
+        // pasti daripada sebenarnya.
+        ...(tb ? { takBerspesies: tb.produk.size } : {}),
+        // Sama alasannya, medan sendiri: produk ini terdaftar untuk spesies LAIN, dan
+        // yang menyatukannya pernyataan kurator yang bisa dibaca — bukan pembacaan label.
+        ...(nl ? { namaLain: nl.produk.size } : {}),
+        // Sama alasannya lagi: produk ini terdaftar di bawah nama komoditas yang lebih
+        // SEMPIT — "Cabai merah" di bawah "Cabai" — dan yang membacanya berhak tahu
+        // bahwa registrinya menuliskannya begitu, bukan disodori satu angka bulat.
+        ...(ls ? { lebihSempit: ls.produk.size, sempitNama: [...ls.dari].sort() } : {}),
+        berkas: `opt/${kunciKomoditas(kc)}/${kunciKomoditas(k.id)}`,
+      });
     }
     return {
       id: k.id,
@@ -1687,6 +1949,13 @@ const gejala = optTerkurasi
       // akhir kalimat. Keduanya boleh kosong; penyaji jatuh ke teks penuhnya.
       judul: k.symptom_title?.id ?? null,
       ringkas: k.symptom_brief?.id ?? null,
+      // Inang IKUT, dan diambil dari `hosts` bukan dari pendaftaran. Layar daftar
+      // menyaring dengannya, dan yang benar disaring adalah "teks ini ditulis untuk
+      // tanaman apa" — bukan "produknya terdaftar di mana". Rhizoctonia solani punya
+      // empat baris di jagung dan kentang sementara teksnya ditulis untuk padi;
+      // menyaringnya lewat pendaftaran akan menyodorkan gejala padi kepada penanam
+      // kentang, persis kekeliruan yang sebaran komoditas dipakai untuk mencegah.
+      inang: (k.hosts ?? []).map((h) => h.label),
       keterangan: k.definition?.id ?? null,
       // Ciri pembanding ikut, dan `membantah` menunjuk OPT yang paling mudah tertukar
       // dengannya. Mesin tidak menebak — ini yang membuat orang bisa memastikan
@@ -1695,6 +1964,10 @@ const gejala = optTerkurasi
         cek: d.check?.id ?? null,
         membantah: d.rules_out ?? null,
       })),
+      // Penular dibawa dari entitasnya, bukan ditebak dari `pembanding`: layar nol-produk
+      // dulu mencocokkan /kutu kebul/i pada label yang dibantah, dan itu benar hanya
+      // selama satu-satunya virus yang dikurasi virus cabai.
+      penular: k.vector ?? null,
       catatan: k.notes?.id ?? null,
       // Gambar yang BERKASNYA SUDAH ADA — bukan yang sudah didata. Keduanya berbeda:
       // pest.json mencatat 48 gambar beserta asal-usulnya, tetapi selama panen belum
@@ -1743,13 +2016,33 @@ const gejala = optTerkurasi
 // ---------------------------------------------------------------------------
 // Gejala tidak bisa diember menurut dua huruf pertama seperti nama: yang mengetik
 // "daun mengeriting ke atas" tidak sedang mengetik awalan sebuah nama, ia sedang
-// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — sepuluh OPT,
-// sekitar 5 KB — lalu dicocokkan kata per kata di peramban.
+// menyebut apa yang dilihatnya. Jadi kepala ini kecil dan dibawa utuh — puluhan OPT, di
+// bawah anggaran 48 KB — lalu dicocokkan kata per kata di peramban.
 //
 // Yang ikut hanya nama, nama ilmiah, dan teks gejalanya. Ciri pembanding TIDAK ikut:
 // begitu satu gejala dibuka, jalur 1 yang merendernya, dan di sanalah blok "pastikan
 // dulu" berada. Gejala tanpa blok itu adalah tebakan yang dipoles, jadi pintu ini
 // tidak boleh bisa dibuka tanpa melewatinya.
+
+// Angka yang DIJANJIKAN layar harus sama dengan daftar yang DITERIMANYA.
+// Keduanya turun dari objek yang sama sejak peleburan cakupan, jadi selisih di sini
+// berarti ada yang memisahkan keduanya lagi — dan bentuk kambuhnya sudah pernah terjadi:
+// "278 produk terdaftar" pada layar, 246 di berkasnya. Tidak satu pun aturan L bisa
+// menangkapnya karena keduanya indeks, bukan kosakata; jadi penjaganya di sini.
+{
+  const salah = [];
+  for (const g of gejala) {
+    for (const d of g.di) {
+      const isi = berkasOpt[d.berkas.replace(/^opt\//, '')];
+      if (!isi) { salah.push(`${g.id} @ ${d.nama}: berkas ${d.berkas} tidak ada`); continue; }
+      if (isi.produk !== d.produk) salah.push(`${g.id} @ ${d.nama}: daftar menjanjikan ${d.produk}, berkasnya berisi ${isi.produk}`);
+    }
+  }
+  if (salah.length) {
+    for (const x of salah.slice(0, 12)) console.error(`  SELISIH  ${x}`);
+    throw new Error(`${salah.length} pintu menjanjikan jumlah produk yang tidak sama dengan isi berkasnya.`);
+  }
+}
 
 const gejalaCari = gejala
   .filter((g) => g.adaPintu)
@@ -1759,10 +2052,30 @@ const gejalaCari = gejala
     l: g.ilmiah ?? null,
     // Satu medan teks, bukan tiga: penyaji cukup mencocokkan sekali, dan bobot antar
     // medan yang tidak pernah diputuskan siapa pun tidak perlu dikarang di sini.
-    t: [g.nama, g.ilmiah, g.judul, g.ringkas, g.gejala, g.keterangan].filter(Boolean).join(' '),
+    //
+    // `keterangan` sengaja TIDAK ikut, dan sejak kurasi kubis itu bukan lagi soal ukuran
+    // saja. Isinya catatan epidemiologi dan pernyataan batas — "registri juga memuat...",
+    // "produk atas nama itu tidak ikut terdaftar" — yang berguna dibaca sesudah satu pintu
+    // dibuka dan merusak kalau jadi korpus pencarian: yang mengetik "registri" akan
+    // mencocokkan belasan gejala yang tidak ada hubungannya dengan apa yang dilihatnya.
+    //
+    // `judul` dan `ringkas` IKUT: keduanya terkurasi, pendek, dan justru kata yang
+    // diketik orang saat mencari — beda sifatnya dengan `keterangan`.
+    t: [g.nama, g.ilmiah, g.judul, g.ringkas, g.gejala].filter(Boolean).join(' '),
     produk: g.di.reduce((a, b) => a + b.produk, 0),
     komoditas: g.di.length,
   }));
+
+const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'adaPintu', 'inang'];
+const GEJALA_RINCI = ['keterangan', 'pembanding', 'catatan', 'penular', 'di'];
+const pilihMedan = (o, medan) => Object.fromEntries(medan.map((k) => [k, o[k]]));
+const daftarGejala = gejala.map((g) => ({
+  ...pilihMedan(g, GEJALA_DAFTAR),
+  produk: g.di.reduce((a, b) => a + b.produk, 0),
+  komoditas: g.di.length,
+}));
+const pecahanGejalaDaftar = pecah(daftarGejala);
+const pecahanGejalaCari = pecah(gejalaCari);
 
 // ---------------------------------------------------------------------------
 // Kamus nama lokal — A3
@@ -2276,7 +2589,7 @@ const batas = {
         'Registri resmi kementerian. Tingkatnya berlaku untuk keberadaan suratnya, bukan untuk sifat varietasnya — sifat agronomi nol dari 11.227, jadi tidak ada klaim agronomi yang bisa dinaungi tingkat ini.',
     }),
     kurasiOpt: {
-      label: 'Kurasi OPT & gejala cabai',
+      label: 'Kurasi OPT & teks gejala',
       penerbit: 'Pranatani',
       url: null,
       tarikan: tanggalTerbaru(optTerkurasi),
@@ -2526,6 +2839,9 @@ const meta = {
     komoditasBervarian: Object.keys(varian).length,
     optTerkurasi: gejala.length,
     optBerpintu: gejala.filter((g) => g.adaPintu).length,
+    // Dipakai layar dan prosa dokumen supaya keduanya berhenti menghafal angka yang
+    // berubah tiap kurasi komoditas baru.
+    optKomoditasBerpintu: new Set(gejala.flatMap((g) => g.inang ?? [])).size,
     optRegistriBerproduk: optRegistriIndeks.length,
 
     namaLokal: namaLokalCari.length,
@@ -2605,6 +2921,11 @@ const meta = {
     cari: Object.keys(cari).sort(),
     cariDalam,
     sediaan: Object.keys(berkasResep).sort(),
+    // Didaftar utuh, bukan dihitung, karena service worker memprasimpannya satu per satu:
+    // jalur 1 justru jalur yang paling mungkin dibuka jauh dari sinyal.
+    gejala: gejala.map((g) => kunciKomoditas(g.id)).sort(),
+    gejalaDaftar: pecahanGejalaDaftar.length,
+    gejalaCari: pecahanGejalaCari.length,
 
     setara: pecahanSetara.length,
     bahan: pecahanBahan.length,
@@ -2639,7 +2960,7 @@ const meta = {
   },
   tidakAda: {
     gejalaOpt:
-      'Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang ada hanya 10 OPT cabai terkurasi di pest.json, 5 di antaranya bertekst gejala (lihat gejala.json). Di luar sepuluh itu jalur 1 tidak punya pintu masuk.',
+      `Nol dari ${optRegistri.length.toLocaleString('id-ID')} OPT registri membawa deskripsi gejala. Yang ada hanya ${gejala.length} OPT terkurasi di pest.json, tersebar di ${new Set(gejala.flatMap((g) => g.inang ?? [])).size} komoditas, dan seluruhnya bertekst gejala (lihat gejala.json). Rincian per komoditas ada di docs/14-tinjauan-gejala.md. Di luar yang terkurasi itu jalur 1 tidak punya pintu masuk.`,
     phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. "Bandingkan harga pupuk" mengandalkan satu masukan pengguna.',
     // Dua lubang di bawah dulu tinggal di dalam kartu keselamatan aplikasi. Kartunya
@@ -2686,7 +3007,7 @@ const meta = {
     bppTanpaAlamat:
       'Balai penyuluhan tidak punya alamat maupun koordinat di rekaman ini, dan itu batas sumbernya: laporan tamu SIMLUHTAN hanya memberi nama balai dan kecamatan binaannya. Yang menemukan balainya bukan peta melainkan kecamatan — dan bagi yang tinggal di sana itu memang cukup. Menggeokode 5.844 balai secara massal ditolak dengan sadar, karena bertabrakan dengan rancangan "klaim" yang sama seperti pada toko tani.',
     gejalaOptRegistri:
-      'Nol dari 738 OPT registri berproduk memuat teks gejala. Sepuluh OPT yang punya teksnya adalah entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari 738 ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.',
+      `Nol dari ${optRegistriIndeks.length} OPT registri berproduk memuat teks gejala. Yang punya teksnya entitas terkurasi tersendiri di ruang id yang berbeda — tidak satu pun dari yang ${optRegistriIndeks.length} ini ada di antaranya. Akibatnya layar bisa menunjukkan bahan aktif yang terdaftar untuk sebuah hama, tetapi TIDAK bisa membantu memastikan bahwa hama itu memang yang ada di kebun. Menulis teksnya pekerjaan agronomi, bukan pekerjaan indeks.`,
     hasilVarietas:
       'Registri tidak memuat potensi hasil satu pun varietas — nol dari 11.227. Perkiraan panen pada analisis usaha tani karena itu masukan pemakainya sendiri, dan tidak ada angka acuan yang bisa disodorkan menggantikannya.',
     ketinggianVarietas:
@@ -2717,8 +3038,28 @@ for (const [nomor, isi] of berkasBahan) simpan(`bahan/${nomor}.json`, isi);
 for (const [k, isi] of Object.entries(berkasBahanMerek).sort()) simpan(`bahan/${k}.json`, isi);
 simpan('sediaan.json', berkasSediaan);
 for (const [k, isi] of Object.entries(berkasResep).sort()) simpan(`sediaan/${k}.json`, isi);
-simpan('gejala.json', gejala);
-simpan('gejala-cari.json', gejalaCari);
+// Dipecah dua tingkat sejak kurasi tomat & kentang. Dengan 28 pintu berkas tunggalnya
+// 53 KB, melewati anggaran 48 KB — dan anggaran itu dipasang justru supaya tidak ada
+// berkas yang harus diunduh utuh sebelum layar pertama muncul. Yang dibutuhkan layar
+// DAFTAR cuma teks gejalanya dan berapa produk di komoditas mana (24,8 KB untuk 28
+// pintu); ciri pembanding, keterangan, catatan, dan penular baru dibutuhkan SESUDAH satu
+// pintu dibuka — dan tidak seorang pun membuka dua puluh delapan. Rinciannya tetap
+// diprasimpan service worker lewat `pecahan.gejala`, jadi luring tidak berkurang: yang
+// berubah kapan 29 KB itu diunduh, bukan apakah ia ada.
+// `di` ikut turun ke pecahan rincian sejak kurasi kubis: daftar komoditas per pintu
+// bagian TERBESAR berkas daftar (25 KB dari 41 pada 54 pintu), sementara layar daftar
+// cuma memakai dua angka darinya — berapa produk seluruhnya dan di berapa komoditas.
+// Daftar lengkapnya baru dibutuhkan pada layar "di tanaman apa", yaitu sesudah satu pintu
+// dibuka. Kedua angka itu karena itu dihitung di sini dan dibawa sebagai angka.
+// Pecah ketiga, dan kali ini mendatar. Sesudah kurasi ekor, berkas daftarnya 63 KB pada
+// 140 pintu; memangkasnya lagi tidak mungkin tanpa mencabut yang justru jadi isinya —
+// teks gejala sendiri 38 KB dari 63, dan layar daftar memang layar tempat orang MEMBACA
+// teks-teks itu untuk menemukan miliknya. Jadi yang dipecah berkasnya, bukan isinya, dan
+// daftar pecahannya ikut di meta.json yang toh sudah diambil lebih dulu — pecahannya
+// diambil serentak, jadi tetap satu perjalanan pulang-pergi.
+pecahanGejalaDaftar.forEach((s, i) => simpan(`gejala-daftar/${String(i).padStart(3, '0')}.json`, s));
+for (const g of gejala) simpan(`gejala/${kunciKomoditas(g.id)}.json`, pilihMedan(g, GEJALA_RINCI));
+pecahanGejalaCari.forEach((s, i) => simpan(`gejala-cari/${String(i).padStart(3, '0')}.json`, s));
 simpan('nama-lokal.json', namaLokalCari);
 for (const [k, isi] of Object.entries(berkasOptNama).sort()) simpan(`opt-nama/${k}.json`, isi);
 simpan('varian.json', varian);
@@ -2817,6 +3158,9 @@ console.log(`  rekaman uji       : ${cariUji} produk + ${bahanUji} bahan aktif �
 console.log(`  surel lab         : ${surelTerbit} terbit sebagai kontak lembaga; ${surelDitahan} ditahan karena berpola nama orang — UU PDP 27/2022`);
 console.log(`  kamus nama lokal  : ${namaLokalCari.length} nama — ${namaLokalCari.filter((x) => x.ke.length).length} terpetakan, ${namaLokalCari.filter((x) => x.ke.length > 1).length} bertaksa, ${namaLokalCari.filter((x) => !x.ke.length).length} belum${namaLokalGugur ? `, ${namaLokalGugur} rujukan gugur karena OPT-nya tak berpintu` : ''}`);
 console.log(`  pintu jalur 1     : ${gejala.filter((g) => g.adaPintu).length} dari ${gejala.length} OPT terkurasi punya teks gejala`);
+console.log(`  cakupan tak berspesies: ${cakupBaris} produk dari sasaran "Genus sp." ikut terhitung, ${cakupRangkap} di antaranya pada lebih dari satu pintu segenus`);
+console.log(`  cakupan nama lain     : ${cakupNamaLain} produk dari sasaran berspesies lain yang dicakup atas pernyataan kurator`);
+console.log(`  cakupan komoditas sempit: ${cakupSempit} produk dari komoditas yang lebih sempit, dijangkau lewat broader`);
 // Dua angka, bukan satu, dan jaraknya yang jadi kabarnya: yang TERCATAT sudah lengkap
 // asal-usul dan lisensinya, yang TERPASANG berkasnya benar-benar sudah turun. Selisihnya
 // pekerjaan mata yang tersisa — panel yang harus dipotong dan gambar yang harus diambil

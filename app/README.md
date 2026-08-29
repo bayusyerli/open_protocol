@@ -1121,11 +1121,11 @@ yang sama seperti hasil pencarian nama.
 
 ### Masuk lewat nama hama — C3, sisi yang tidak menuntut agronomi
 
-Terukur sebelum mulai: **nol** entri OPT di kepala pencarian. 738 OPT registri punya
+Terukur sebelum mulai: **nol** entri OPT di kepala pencarian. Ratusan OPT registri punya
 produk terdaftar dan bahan aktifnya sudah ada di indeks — tetapi yang tahu nama hamanya
 dijawab **nol**. Itu bukan kekurangan data; itu pintu yang belum dibuka.
 
-- **Yang dibuka hanya pintunya.** Menulis teks gejala untuk 738 OPT adalah pekerjaan
+- **Yang dibuka hanya pintunya.** Menulis teks gejala untuk sisa OPT registri adalah pekerjaan
   agronomi, bukan pekerjaan indeks — dan mengarangnya persis yang ditolak jalur 1.
 - **Tidak ada blok "pastikan dulu" untuk pintu ini, dan itu bukan kelalaian.** Blok itu
   ada karena yang masuk lewat gejala sedang *menebak*, dan dua ciri yang bisa diperiksa
@@ -1428,7 +1428,7 @@ daun, keriting daun.*
 - **Dua dari enam belum terpetakan, dan tetap ditampilkan.** "Lodoh" punya dua calon yang
   bertabrakan — rebah kecambah milik layu fusarium, atau buah membusuk milik antraknosa.
   "Bercak daun" kemungkinan besar menunjuk serkospora, yang **bukan** salah satu dari
-  sepuluh OPT terkurasi; itu kekosongan cakupan, bukan pemetaan yang belum selesai.
+  OPT terkurasi; itu kekosongan cakupan, bukan pemetaan yang belum selesai.
   Keduanya muncul di hasil pencarian sebagai kartu bergaris putus beserta alasannya,
   karena hasil nol terbaca sebagai *"tidak ada penyakitnya"* dan mengirim orang mencari
   di tempat yang tidak menjelaskan apa pun.
@@ -1613,18 +1613,30 @@ mencobanya untuk tahu.
 - **Masuk lewat apa yang terlihat**, bukan nama hama. Yang panik tahu daunnya
   mengeriting ke atas; ia tidak tahu kata “trips”.
 - **Mesin tidak menebak.** Tidak ada pengenal foto. Setiap dugaan dibuka dengan blok
-  “pastikan dulu” berisi **dua ciri yang bisa diperiksa sendiri tanpa alat**. Empat belas
-  dari dua puluh ciri menyebut OPT mana yang **terbantah** kalau hasilnya begitu; enam
-  sisanya hanya menguatkan, dan layar tidak mengarang pembantahan untuk mereka. Dua ciri
-  di antaranya uji yang benar-benar memutuskan — uji gelas untuk membedakan layu bakteri
-  dari fusarium, dan kertas putih untuk membedakan trips dari virus kuning.
+  “pastikan dulu” berisi **dua ciri yang bisa diperiksa sendiri tanpa alat**. Sekitar tiga
+  perempat ciri menyebut OPT mana yang **terbantah** kalau hasilnya begitu; sisanya hanya
+  menguatkan, dan layar tidak mengarang pembantahan untuk mereka — cacah tepatnya
+  dibangkitkan ke docs/14-tinjauan-gejala.md.
+  Tiga di antaranya uji gelas yang benar-benar memutuskan — layu bakteri lawan fusarium,
+  hawar daun bakteri padi lawan bercak jamur — dan satu lagi kertas putih untuk
+  membedakan trips dari virus.
+- **Saringan tanaman ada, tetapi tidak wajib.** Daftarnya tumbuh tiap kurasi komoditas
+  baru, dan penanam padi harus melewati puluhan gejala tanaman lain sebelum sampai ke
+  miliknya. Saringannya karena itu ada di atas daftar, dengan **“semua tanaman”
+  tetap terpilih saat layar dibuka** — memaksa pilih tanaman lebih dulu akan menukar pintu
+  “masuk lewat apa yang terlihat” dengan pintu lain. Disaring menurut tanaman yang
+  **teksnya ditulis untuknya**, bukan menurut tempat produknya terdaftar; keduanya
+  berbeda, dan hawar daun yang punya tujuh produk di cabai tidak muncul di saringan cabai.
 - **Merek diruntuhkan jadi bahan aktif + kadar.** Kesetaraan hanya benar pada pasangan
   itu: satu entitas “Abamektin” dipakai pada 33 kadar berbeda, 24 di antaranya g/L.
 - **Dosis tidak pernah ditempel ke bahan.** Ia muncul per merek, karena dosis milik
   pendaftaran tiap produk — 26 merek Abamektin 18 g/L membawa 11 dosis yang berbeda.
-- **Cabang nol produk adalah layar terpentingnya.** Untuk virus kuning keriting layar
+- **Cabang nol produk adalah layar terpentingnya.** Empat pintu virus memakainya — virus
+  kuning keriting, virus mosaik bawang, virus penggulung daun kentang, dan tungro. Layar
   berkata *“jangan beli apa pun untuk ini”*, menyebut tiga tindakan yang memang
-  berpengaruh, lalu menawarkan satu jalan keluar konkret ke vektornya.
+  berpengaruh, lalu menawarkan satu jalan keluar konkret ke penularnya. Penular dibaca
+  dari medan `vector` pada entitasnya, bukan ditebak dari nama pada blok pembanding —
+  tebakan itu benar tepat satu kali, saat virus yang dikurasi baru satu.
 - **Gejalanya berstatus draft** dan layar mengatakannya: disusun dari pengetahuan
   agronomi mapan, bukan dari registri, dan wajib ditinjau penyuluh atau BPTP.
 

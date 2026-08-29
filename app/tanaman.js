@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, muatMeta, bacaMeta, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
+import { ambil, muatMeta, cacah, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -58,6 +58,7 @@ let kamusLokal = [];
 let bppWilayah = [];
 let optKini = null;
 let daftarOpt = null;
+let saringInang = null;
 let larangan = null;
 
 const angkaId = (n) => Number(n).toLocaleString('id-ID');
@@ -127,9 +128,19 @@ function gambarGejala() {
   // Diurutkan menurut banyaknya produk terdaftar, bukan abjad: yang paling sering jadi
   // masalah paling sering dicari. Yang nol produk tetap ikut — justru layar itu yang
   // paling bernilai di seluruh jalur ini.
-  const urut = daftarOpt.slice().sort((a, b) =>
-    b.di.reduce((x, y) => x + y.produk, 0) - a.di.reduce((x, y) => x + y.produk, 0));
+  const cocok = daftarOpt.filter((k) => !saringInang || (k.inang ?? []).includes(saringInang));
+  const urut = cocok.slice().sort((a, b) => b.produk - a.produk);
+  const inang = daftarInang();
+  const cip = (nilai, label, n) => `
+    <button type="button" data-inang="${teks(nilai)}" aria-pressed="${saringInang === (nilai || null)}">
+      ${teks(label)} · ${angkaId(n)}
+    </button>`;
   el.gejala.innerHTML = `
+    ${inang.length > 1 ? `
+      <div class="preset" role="group" aria-label="Saring menurut tanaman">
+        ${cip('', 'Semua tanaman', daftarOpt.length)}
+        ${inang.map(([n, j]) => cip(n, n, j)).join('')}
+      </div>` : ''}
     <ul class="daftar">
       ${urut.map((k) => `
         <li>
@@ -146,7 +157,7 @@ function gambarGejala() {
 
 /* C3 — OPT registri, dimasuki lewat NAMA dan bukan lewat gejala.
  *
- * 738 OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
+ * Ratusan OPT registri punya produk terdaftar dan nol punya teks gejala. Sampai sekarang
  * tidak satu pun bisa dicapai dari kotak beranda; yang tahu nama hamanya dijawab nol.
  *
  * TIDAK ADA BLOK "PASTIKAN DULU" DI SINI, DAN ITU BUKAN KELALAIAN. Blok itu ada karena
@@ -170,7 +181,8 @@ async function bukaHama(kunci, opsi = {}) {
         <p>
           <strong>${teks(h.nama)}</strong>${h.ilmiah ? ` (<em>${teks(h.ilmiah)}</em>)` : ''} ada di
           registri sebagai sasaran pendaftaran, tetapi <strong>registri tidak memuat
-          deskripsi gejalanya</strong> — nol dari 738 OPT berproduk memuatnya.
+          deskripsi gejalanya</strong> — nol dari ${angkaId(cacah('optRegistriBerproduk') ?? 0)}
+          OPT berproduk memuatnya.
         </p>
         <p class="catatan">
           Artinya layar ini <strong>tidak bisa membantu memastikan</strong> bahwa hama ini
@@ -179,7 +191,9 @@ async function bukaHama(kunci, opsi = {}) {
           hanya <em>apa yang terdaftar untuk nama ini</em> — bukan anjuran, dan bukan
           pemastian. Kalau yang kamu punya baru gejalanya,
           <button type="button" class="tautan-dalam" data-mulai-gejala>mulai dari apa
-          yang terlihat</button> — sepuluh OPT cabai punya ciri pembandingnya.
+          yang terlihat</button> —
+          ${angkaId(cacah('optTerkurasi') ?? 0)} OPT pada
+          ${angkaId(cacah('optKomoditasBerpintu') ?? 0)} komoditas punya ciri pembandingnya.
         </p>
       </div>
       <h2 class="judul-bagian" id="pilihKedua">Di tanaman apa?</h2>
@@ -499,7 +513,13 @@ function blokNamaLokal(k) {
 // punya nilai yang tidak bisa ditandingi siapa pun yang hidup dari margin penjualan:
 // kemampuan berkata "jangan beli apa-apa untuk ini".
 function blokNolProduk(k) {
-  const vektor = k.pembanding.map((p) => p.membantah).find((m) => m && /kutu kebul/i.test(m.label));
+  // Penular datang dari entitasnya (`vector` pada pest.json), bukan dari pencocokan nama
+  // pada blok pembanding. Yang lama mencari /kutu kebul/i di antara OPT yang DIBANTAH,
+  // dan itu keliru dua kali: rules_out menyatakan apa yang terbantah, bukan apa yang
+  // menularkan — pada virus kuning keriting daftarnya memuat trips, yang tidak menularkan
+  // apa pun — dan begitu virus kedua masuk (mosaik bawang, penularnya kutu daun persik)
+  // tombolnya hilang tanpa ada yang menyalak.
+  const vektor = k.penular;
   return `
     <div class="kartu tabrakan">
       <h2>Jangan beli apa pun untuk ini</h2>
@@ -698,6 +718,21 @@ function blokKomoditas(k) {
       <p class="catatan">
         Yang terdaftar berbeda-beda menurut tanamannya. Di luar daftar ini,
         <strong>tidak ada produk yang terdaftar</strong> untuk ${teks(k.nama.toLowerCase())}.
+        ${urut.some((d) => d.takBerspesies) ? `Sebagian produk terdaftar untuk sasaran yang
+        <strong>tidak menyebut nama spesies</strong> — misalnya “Thrips sp.” alih-alih satu
+        jenis trips tertentu. Itu tetap dihitung di sini karena label seperti itu memang
+        berlaku untuk jenis apa pun dari marga yang sama, dan jumlahnya disebut supaya
+        tidak terbaca lebih pasti daripada yang tertulis di registrinya.` : ''}
+        ${urut.some((d) => d.namaLain) ? `Sebagian lagi terdaftar untuk
+        <strong>spesies lain yang di lapangan tidak bisa dibedakan dari ini</strong> —
+        misalnya dua penggerek batang yang cuma terpisah kalau ngengatnya dibedah.
+        Penggabungannya keputusan kurator, bukan bacaan registri, dan alasannya ditulis
+        satu per satu di spec/vocab/pest.json.` : ''}
+        ${urut.some((d) => d.lebihSempit) ? `Sebagian lagi terdaftar di bawah nama tanaman
+        yang <strong>lebih sempit</strong> — misalnya “Cabai merah” di bawah “Cabai”.
+        Registri memuat keduanya sebagai tanaman tersendiri karena catatan varietasnya
+        memakai pembedaan itu; jangkauannya digabung ke sini karena apa pun yang terdaftar
+        untuk yang lebih luas berlaku untuk yang lebih sempit.` : ''}
       </p>
       ${blokPemilihTanaman(urut, 'opt')}
       <p class="catatan">${EJAAN_TERPISAH}</p>
@@ -960,6 +995,14 @@ async function bukaOpt(id, opsi = {}) {
   tampilkanGejala(false);
   try {
     if (!larangan) larangan = await ambil('larangan');
+    // Rincian pintu — ciri pembanding, keterangan, catatan, penular — hidup di pecahannya
+    // sendiri sejak indeks gejala melewati anggaran 48 KB. Diambil saat pintu dibuka,
+    // sekali per pintu: `ambil` mengingat janjinya, dan hasilnya dilebur ke entri daftar
+    // supaya sisa berkas ini tidak perlu tahu bahwa datanya datang dari dua tempat.
+    if (!k.rinci) {
+      Object.assign(k, await ambil(`gejala/${k.id.replace(/[^a-z0-9]/gi, '')}`));
+      k.rinci = true;
+    }
     el.hasil.innerHTML = blokPastikan(k) + blokLapor(k) +
       (k.di.length ? blokKomoditas(k) : blokNolProduk(k)) +
       '<button type="button" class="kembali" id="kembali">← Pilih gejala lain</button>';
@@ -978,7 +1021,14 @@ async function bukaOpt(id, opsi = {}) {
 
 el.gejala.addEventListener('click', (ev) => {
   const t = ev.target.closest('button[data-opt]');
-  if (t) bukaOpt(t.dataset.opt);
+  if (t) return bukaOpt(t.dataset.opt);
+
+  const s = ev.target.closest('button[data-inang]');
+  if (s) {
+    saringInang = s.dataset.inang || null;
+    gambarGejala();
+    el.gejala.querySelector('button[aria-pressed="true"]')?.focus();
+  }
 });
 
 /* Didengarkan di `el.hasil`, bukan dipasang ke kotaknya saat dirender.
@@ -1071,7 +1121,7 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // Dua pengambilan sekaligus, bukan berurutan: kamusnya kecil dan tidak
     // menghalangi apa pun, tetapi kartu OPT butuh keduanya sudah ada.
     const [gejalaAda, lokalAda, bppAda] = await Promise.all([
-      ambil('gejala'),
+      ambilPecahan('gejala-daftar', 'gejalaDaftar'),
       ambil('nama-lokal').catch(() => []),
       // Daftar wilayah balai — 39 KB, dan hanya dipakai kalau pintu laporan dibuka.
       // Gagalnya tidak boleh menjatuhkan jalur ini: yang datang ke sini datang untuk

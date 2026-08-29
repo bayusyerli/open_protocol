@@ -721,6 +721,239 @@ sama: kode berawalan huruf yang mengumumkan bukan-BBCH, `no_mapping_reason` yang
 alasannya, batas antara yang bersumber dan yang tidak ditarik di dalam `notes`, dan
 `review_due` enam bulan karena yang ditunggu pengamatan lapangan, bukan terbitan baru.
 
+### D38 — komoditas kedua masuk dengan MENAIKKAN entitas registri, bukan menyalinnya
+
+Bawang merah menyusul cabai sebagai komoditas berpintu gejala pada 28 Agustus 2026.
+Delapan dari sebelas OPT-nya sudah punya entitas di `vocab/pest-registri.json`, dan tiga
+jalan terbuka: menulis `symptoms` di berkas registri, membuat entitas kembar di
+`vocab/pest.json`, atau menaikkan entitasnya.
+
+Dipilih **menaikkan**, karena dua yang lain melanggar hal yang berbeda. Menulis gejala di
+berkas registri melanggar **provenans**: berkas itu menyatakan dirinya turunan label
+produk terdaftar, sedangkan teks gejala ditulis tangan dan tingkat buktinya belum
+ditetapkan — satu blok `provenance` tidak bisa menaungi keduanya tanpa membuat layar
+kehilangan cara membedakan yang ditarik dari yang dikarang. Entitas kembar melanggar
+**identitas**: dua entitas hidup dengan `scientific_name` yang sama meruntuhkan andaian
+`satukan-opt-kembar.mjs` dan membuat L26 menyalak pada tautan yang justru benar.
+
+Menaikkan berarti entri registri disalin ke blok terkurasi dengan nomor baru, yang lama
+jadi `superseded` menunjuk yang baru, dan `pest.id` pada 733 baris `label_uses` ditulis
+ulang — pola yang sudah dipakai 17 kali untuk salah ketik, kini dipakai pertama kali untuk
+entitas yang ejaannya benar.
+
+Harganya tiga, dan ketiganya dibayar di muka:
+
+- **Kunci dan label lama tidak bisa dipakai ulang.** Entri yang digantikan tetap
+  memegangnya dan L1 menghitungnya, jadi entri baru memakai nama kebun — `ulat-bawang`,
+  bukan `spodoptera-exigua`. Label registri turun jadi `synonyms`.
+- **`petaLabel` pada `bangun-sasaran-dosis.mjs` harus melewati yang digantikan.** Sebelum
+  ini tidak pernah terlihat, karena yang digantikan hanyalah salah ketik yang ejaannya toh
+  sudah naik ke penerusnya. Sesudah ini, delapan entitas berejaan BENAR jadi superseded,
+  dan tanpa saringan itu tarikan registri berikutnya akan menautkan "Spodoptera exigua"
+  kembali ke entitas mati.
+- **Sebaran komoditas ikut jadi syarat kelayakan.** Satu entitas OPT memegang SATU teks
+  gejala, jadi patogen polifag tidak boleh dinaikkan dengan teks satu tanaman.
+  *Colletotrichum gloeosporioides* karena itu gugur — 44 dari 49 barisnya di mangga, cabai,
+  jeruk, dan karet — dan antraknosa bawang naik lewat *C. circinans*, yang hanya terdaftar
+  pada bawang merah. Harga pilihan itu dinyatakan di `definition` entrinya, tidak
+  disembunyikan.
+
+Satu medan baru lahir dari sini: **`vector`**. Layar nol-produk dulu menemukan penular
+dengan mencocokkan `/kutu kebul/i` pada label yang **dibantah** — benar selama satu-satunya
+virus yang dikurasi virus cabai, dan diam-diam gagal begitu virus kedua masuk dengan
+penular yang lain. `rules_out` menyatakan apa yang terbantah, bukan apa yang menularkan;
+keduanya kebetulan bertemu satu kali. Sekarang penular dinyatakan pada entitasnya.
+
+**Diperluas 28 Agustus 2026, sore, oleh tomat dan kentang.** Pola yang sama dipakai untuk
+komoditas ketiga dan keempat sekaligus — keduanya dikurasi bersama karena berbagi lima
+dari sepuluh OPT teratasnya — dan alatnya digeneralkan jadi `spec/tools/kurasi-opt.mjs`,
+satu mekanisme dengan satu tabel per kelompok komoditas. Dua aturan tambahan lahir di situ,
+dan keduanya berlaku untuk komoditas kelima:
+
+- **`PERLUAS` hanya boleh satu, bukan satu per kurasi.** Entri yang melayani lebih dari
+  satu komoditas — layu fusarium kini tiga, kutu daun persik empat — hanya boleh punya
+  SATU teks yang berlaku. Menyimpan versi per kelompok berarti menyimpan kalimat yang
+  tidak pernah menang, dan pembaca berikutnya tidak punya cara tahu yang mana.
+- **Entri yang sudah ada disegarkan pada medan struktural, tidak pernah pada prosanya.**
+  `label`, `definition`, `hosts`, dan `vector` ikut diperbarui; `symptoms`,
+  `distinguishing`, dan `notes` tidak pernah disentuh. Pembagian itu bukan kerapian: tiga
+  medan terakhir yang diminta ditinjau penyuluh di `docs/14-tinjauan-gejala.md`, dan
+  menimpanya berarti menghapus hasil tinjauan tanpa ada yang menyadarinya. Empat medan
+  pertama justru berbahaya kalau dibiarkan basi — pintu tetangga bisa berganti nama, dan
+  salinan labelnya di `rules_out` ikut disegarkan dari entitas yang ditunjuk.
+
+Sebaran komoditas menggugurkan satu calon lagi dan meloloskan satu yang sebelumnya
+tertinggal: *Liriomyza huidobrensis* naik dengan teks untuk daun LEBAR (kentang, tomat)
+sementara *L. chinensis* tetap memegang pintu bawang merah yang daunnya berongga — dua
+pintu untuk satu bentuk kerusakan, dibedakan oleh bentuk daunnya, bukan oleh spesiesnya
+yang memang tidak bisa dibedakan di kebun.
+
+### D39 — indeks gejala dipecah dua tingkat begitu melewati anggaran 48 KB
+
+Dengan 28 pintu, `spec/indeks/gejala.json` mencapai 53 KB — melewati anggaran 48 KB yang
+justru dipasang supaya tidak ada berkas yang harus diunduh utuh sebelum layar pertama
+muncul. Yang menahan layar DAFTAR cuma teks gejala dan jumlah produk per komoditas;
+ciri pembanding, keterangan, catatan, dan penular baru dibutuhkan sesudah SATU pintu
+dibuka, dan tidak seorang pun membuka dua puluh delapan.
+
+Jadi berkasnya dipecah: `gejala.json` untuk daftarnya, dan `gejala/<id>.json` sekitar
+1 KB per pintu untuk rinciannya. Ini pola yang sudah dipakai indeks OPT dan sediaan,
+bukan pola baru.
+
+**Dipecah lagi pada kurasi kubis**, dan yang turun kali ini `di` — daftar komoditas per
+pintu. Ia bagian TERBESAR berkas daftar (25 KB dari 41 pada 54 pintu) sementara layar
+daftar cuma memakai dua angka darinya: berapa produk seluruhnya, dan di berapa komoditas.
+Daftar lengkapnya baru dibutuhkan pada layar "di tanaman apa", yaitu sesudah satu pintu
+dibuka. Kedua angka itu kini dihitung saat indeks dibangun dan dibawa sebagai angka, dan
+`gejala.json` kembali ke 23,5 KB pada 54 pintu — dari 41 KB sebelum dipecah.
+
+Pelajarannya bukan angkanya melainkan urutannya: **yang pertama diperiksa saat satu berkas
+membengkak adalah medan mana yang benar-benar dipakai layar PERTAMA**, bukan bagaimana
+memampatkan yang ada. Dua kali berturut-turut jawabannya medan yang cuma dipakai layar
+kedua.
+
+Bersamaan dengan itu `keterangan` dikeluarkan dari korpus `gejala-cari.json` (36 KB → 21
+KB), dan itu bukan soal ukuran saja: isinya catatan epidemiologi dan pernyataan batas —
+"registri juga memuat...", "produk atas nama itu tidak ikut terdaftar" — yang berguna
+dibaca sesudah satu pintu dibuka dan merusak sebagai korpus pencarian, karena yang
+mengetik "registri" akan mencocokkan belasan gejala yang tidak ada hubungannya dengan apa
+yang dilihatnya. Komentar di atas kodenya memang sudah menyatakan hanya nama, nama ilmiah,
+dan gejala yang ikut; kodenya yang belum menyusul.
+
+Harganya satu, dan tidak boleh dilupakan: **rincian itu wajib ikut diprasimpan service
+worker.** Jalur 1 dibuka justru saat masalahnya sedang terjadi, sering jauh dari sinyal,
+dan blok "pastikan dulu" tanpa isinya adalah dugaan tanpa cara memastikan — persis yang
+ditolak seluruh jalur itu. `meta.pecahan.gejala` karena itu mendaftar kuncinya utuh,
+seperti `sediaan`, bukan menghitungnya. Yang berubah kapan 29 KB itu diunduh, bukan
+apakah ia ada.
+
+### D40 — saringan tanaman di layar daftar gejala: ada, tetapi tidak wajib
+
+Sesudah komoditas kelima daftar gejala jalur 1 berisi 41 kartu — 54 sesudah jagung dan
+kubis — dan penanam padi harus melewati puluhan gejala tanaman lain sebelum sampai ke
+miliknya.
+Daftarnya diurutkan menurut banyaknya produk terdaftar, jadi urutan teratas pun bercampur
+semua komoditas.
+
+Yang menahan jalan keluar termudah — minta pilih tanaman lebih dulu — adalah tesis jalur
+ini sendiri: **masuk lewat APA YANG TERLIHAT, bukan lewat apa yang sudah diketahui.**
+Layar yang membuka dengan "tanaman apa?" adalah pintu lain, dan pintu itu sudah ada di
+jalur 2.
+
+Jalan tengahnya: saringan ada di atas daftar, **"semua tanaman" tetap yang terpilih saat
+layar dibuka**, dan gejala tetap yang tertulis besar pada tiap kartu. Yang memilih boleh
+mempersempit; yang tidak memilih mendapat layar yang sama seperti sebelumnya.
+
+Satu keputusan kecil di dalamnya menentukan benar-salahnya: **disaring menurut `hosts` —
+tanaman yang teksnya memang ditulis untuknya — bukan menurut tempat produknya terdaftar.**
+Keduanya berbeda dan bedanya persis kekeliruan yang aturan sebaran komoditas (D38)
+dipakai untuk mencegah: hawar daun punya tujuh produk terdaftar di cabai sementara teksnya
+ditulis untuk kentang dan tomat, dan menyodorkannya kepada penanam cabai berarti
+menjanjikan gejala yang tidak pernah ditulis untuknya.
+
+### D41 — sasaran berspesies lain: dicakup lewat pernyataan tertulis, bukan lewat aturan
+
+Sesudah 140 pintu, sisa baris label yang tak terjangkau tinggal 353 — dan 94 di antaranya
+berdiri pada spesies yang **semarga dengan pintu yang sudah ada**: *Chilo auricilius* di
+samping *C. sacchariphagus* pada tebu, *Tribolium confusum* di samping *T. castaneum* di
+gudang, *Ostrinia nubilalis* di samping *O. furnacalis* pada jagung.
+
+Aturan otomatis untuk itu ditulis dan **ditolak sesudah diukur**. Bentuknya wajar
+— "spesies semarga, dipilah menurut inang" — dan hasilnya 94 baris. Tetapi baris
+terbesarnya *Xanthomonas campestris*: pada padi ia hawar daun bakteri, pada kubis ia busuk
+hitam, dua penyakit yang tidak punya kemiripan apa pun. Saringan inang kebetulan
+memisahkan keduanya dengan benar. **Kebetulan bukan dasar**, dan aturan yang benar hari
+ini karena kebetulan akan salah pada tarikan registri berikutnya tanpa ada yang tahu.
+
+Bedanya dengan pencakupan "Genus sp." (yang memang dihitung mesin) tajam dan bisa
+dinyatakan: di sana **labelnya sendiri** menolak menyebut spesies, sehingga pintu segenus
+menjawab persis apa yang tertulis. Di sini label **menyebut** spesies, dan mengarahkannya
+ke pintu lain adalah pernyataan tentang dunia — bahwa keduanya terlihat sama di lapangan
+dan keputusan tindakannya sama.
+
+Jadi pernyataan itu ditulis, satu per satu, di medan `covers` pada `pest.json`, tiap baris
+dengan `dasar` yang wajib menyebut **cirinya**, bukan kekerabatannya — "cuma terpisah
+kalau ngengatnya dibedah", bukan "semarga". Dua belas baris, 39 produk. Saringan inang
+tetap berlaku penuh, jadi pernyataan kurator memperluas jangkauan pintu tanpa pernah
+memindahkannya ke tanaman yang teksnya tidak ditulis untuknya, dan layar menyebut
+jumlahnya tersendiri alih-alih meleburkannya diam-diam.
+
+L39 menjaga satu-satunya cara mekanisme ini bisa berbohong: sasaran yang dicakup tidak
+boleh punya ciri pembandingnya sendiri. Kalau ia punya, ia pintu — dan produk yang sama
+akan terhitung di dua tempat, dua angka yang masuk akal sendiri-sendiri dan tidak
+terlihat salah dari layar mana pun.
+
+Yang pertama diuji justru menolak pintu yang sudah ditulis: *Scirpophaga innotata* sempat
+dinaikkan jadi pintu ke-138, dan pembandingnya terpaksa berbunyi "ingat musim dan riwayat
+lahannya" — bukan ciri yang bisa diperiksa orang yang sedang berdiri di sawahnya, dan
+karena itu bukan pintu menurut ukuran jalur 1 sendiri. Ia juga membuat *Scirpophaga sp.*
+jadi ambigu dan **membuang enam baris yang tadinya terjangkau**. Pintunya dicabut; ia jadi
+baris `covers` pertama.
+### D42 — komoditas yang lebih sempit: ditautkan, bukan disatukan
+
+Registri menulis "Cabai merah" di samping "Cabai", "Jeruk Siam" di samping "Jeruk", "Padi
+sawah" di samping "Padi". Menyatukannya **sudah dicoba dan dibatalkan**: registri VARIETAS
+memakai pembedaan itu — 35 catatan varietas berdiri di atas "Cabai merah", 103 di atas
+"Cabai", 8 di atas "Jeruk Siam" — dan menyatukannya membuang pembedaan yang memang
+dimaksud.
+
+Membiarkannya terpisah juga salah, dan salahnya terlihat di layar: pintu antraknosa
+berinang "Cabai" tidak menjangkau tiga baris yang registrinya menulis "Cabai merah",
+padahal apa pun yang berlaku untuk cabai berlaku untuk cabai merah.
+
+Jadi yang dipasang **hubungan**, bukan penyatuan: medan `broader` pada komoditas. Keduanya
+tetap entitas tersendiri; yang berubah cuma JANGKAUAN pintu. Ini jawaban atas pertanyaan
+terbuka 19, yang sudah menyebut bahwa `Commodity` belum punya hubungan hierarkis internal.
+
+**Arahnya SATU, dan itu yang menahannya jadi tebakan.** Pintu yang berinang yang lebih luas
+menjangkau ke bawah; yang lebih sempit tidak pernah menjangkau ke atas. Pendaftaran yang
+tertulis "Bawang" karena itu tetap di luar jangkauan pintu bawang merah — bisa saja yang
+dimaksud bawang putih, dan mengklaimnya adalah menebak. Barisnya dibiarkan tak terjangkau,
+dan itu jawaban yang benar.
+
+Dua akibat yang harus ditangani bersamaan, dan keduanya soal apa yang dibaca orang. Layar
+menyebut berapa produk yang datang dari nama yang lebih sempit — "10 tertulis sebagai Cabai
+merah" — alih-alih meleburnya diam-diam ke satu angka bulat. Dan komoditas yang produknya
+sudah dinaikkan TIDAK muncul lagi sebagai barisnya sendiri: tanpa itu pembacanya melihat
+"Cabai 126" yang di dalamnya sudah termasuk sepuluh, lalu "Cabai merah 10" di bawahnya, dan
+menjumlahkan keduanya menghasilkan angka yang tidak ada.
+
+L40 menjaga satu-satunya cara rantai ini bisa menggantung mesin: putaran. Alat yang
+memasangnya sudah memeriksanya, tetapi rantai bisa terbentuk dari dua berkas kosakata yang
+disunting terpisah, dan tidak satu pun alat itu melihat keduanya sekaligus.
+### D43 — pembetulan pada BARIS pendaftaran menuntut bukti yang bisa diperiksa mesin
+
+Tiga baris terakhir yang tak terjangkau punya bentuk yang sama: kolom komoditas menyebut
+tanaman LADANG sementara barisnya jelas bukan soal ladang. `Sitophilus spp.` didaftarkan
+pada "Jagung" oleh produk berbahan sulfuril fluorida; `Alphitobius diaperinus` — kumbang
+gudang — pada "Jagung" juga.
+
+Menutupnya menuntut sesuatu yang belum pernah dilakukan di repositori ini. Seluruh alat
+penyatuan berkata **"dua nama ini satu hal"**, pernyataan tentang kosakata yang berlaku
+untuk setiap baris. Yang dibutuhkan di sini jauh lebih berat: **"pada baris INI, registri
+keliru"** — pernyataan tentang isi dokumen label yang tidak kita punya.
+
+Yang membuatnya bisa diterima bukan panjangnya prosa melainkan **bukti yang bisa diperiksa
+ulang mesin, dan yang ada DI DALAM rekaman itu sendiri**. INDOFUME 99,8 GA mendaftarkan
+dosisnya `16 g/m3` — gram per meter KUBIK. Takaran per satuan volume hanya berarti untuk
+ruang tertutup; petak jagung berdiri tidak punya meter kubik. Itu bukan simpulan tentang
+dokumen yang tidak dilihat, itu pembacaan atas angka yang ada di rekaman ini.
+
+`spec/tools/betulkan-komoditas-baris.mjs` karena itu menuntut medan `bukti` pada tiap
+barisnya, dan **memeriksanya ulang tiap kali dijalankan**: entah sebuah medan pada baris itu
+harus bernilai tertentu, entah produk yang sama harus punya baris lain pada komoditas
+tertentu. Kalau tarikan registri berikutnya menghapus buktinya, alat ini berhenti dan tidak
+menulis apa pun. `commodity_label` tidak disentuh — ia satu-satunya jejak bahwa registri
+menulis "Jagung" di situ, dan membetulkannya akan menghapus bukti alat ini sendiri.
+
+Baris ketiga TIDAK dibetulkan begitu, dan bedanya menunjukkan batasnya. BELT EXPERT 480 SC
+mendaftarkan `Hydrellia sp.` pada "Jagung" dengan dosis 225 ml/ha bersama dua OPT jagung
+sejati — jadi komoditasnya benar dan NAMA OPT-nya yang meleset. Membetulkan `pest.id` akan
+menyalakan L26, yang menuntut nama ilmiah pada baris cocok dengan ejaan yang tercatat pada
+entitasnya — dan aturan itu benar menolaknya, karena Hydrellia memang bukan ejaan lain
+Atherigona. Yang dipakai `covers`: registri menulis pest_label "Lalat bibit", dan pada
+jagung lalat bibit berarti Atherigona.
+
 ---
 
 ## Pertanyaan yang masih terbuka
@@ -747,7 +980,11 @@ Perlu keputusan sebelum v0.2 — sebagian butuh data lapangan Fase 1 lebih dulu.
 | 17 | Bentuk oksida & unsur yang belum dimodelkan | `B2O3`, `Na2O`, `CuO`, `ZnO`, `SO4`, serta `K`/`P`/`Mg` sebagai unsur ditinggal mentah — mengonversinya ke bentuk yang sudah ada akan mengarang angka yang tidak ditulis sumbernya |
 | 11 | 275 pestisida tanpa komposisi | Kadar bahan aktifnya bukan angka di sumber (mis. agens hayati berbasis populasi) |
 | 18 | 8 catatan varietas tanpa jenis tanaman tidak diterbitkan | Tidak bisa ditautkan ke komoditas mana pun. Salah satunya `kelapa ok` dari pemohon `tes ujicoba` — data uji coba yang tertinggal di registri resmi |
-| 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | Kegranularan registri dipertahankan, tetapi `Commodity` belum punya hubungan hierarkis internal — pengelompokan seharusnya lewat konsep broader AGROVOC yang belum dipetakan |
+| 19 | Cabai Keriting dan Cabai Besar jadi komoditas terpisah dari Cabai | **Terjawab sebagian (D42).** Kegranularan registri dipertahankan, dan `Commodity` kini punya hubungan hierarkis internal lewat medan `broader` — pintu yang berinang yang lebih luas menjangkau yang lebih sempit tanpa menyatukannya. Yang belum: pemetaan ke konsep broader AGROVOC, sehingga hubungannya masih ditulis tangan per pasangan |
+| 24 | ~~Baris label non-gulma di luar jalur 1~~ | **Tertutup.** 6.707 dari 6.707 baris penggunaan berlabel non-gulma pada komoditas pertanian terjangkau dari jalur 1. Yang tersisa di luar hanya yang memang bukan komoditas pertanian (pertanyaan 28) dan gulma, yang jalurnya lain. Angka ini akan bergeser lagi pada tarikan registri berikutnya; `spec/tools/bangun-indeks.mjs` yang menghitungnya, bukan dokumen ini |
+| 28 | Kolom komoditas berisi SASARAN atau KONTEKS, bukan komoditas | Ditandai, bukan dihapus. Pendaftaran pestisida rumah tangga mengisi kolom komoditas dengan "Kecoak", "Nyamuk", "Rayap tanah", "Tikus rumah", atau dengan tempat pemakaiannya — "Di dalam ruangan", "Di luar rumah", "Umum" — dan satu baris berisi nama DAGANG produknya. Bentuknya sah dan tidak ada aturan yang bisa menolaknya, karena "Kecoak" tidak berbeda bentuknya dari "Kubis". 24 entri diberi `kind: not_a_commodity` lewat `spec/tools/perbaiki-jenis-komoditas.mjs`, tiap satunya dengan dasar tertulis. Pasangannya `perbaiki-jenis-opt.mjs` di sisi seberang, yang menangani kolom SASARAN berisi nama bahan aktif atau potongan kalimat |
+| 27 | Sepuluh baris terakhir tertahan BENTUK datanya, bukan kurangnya teks | Empat bentuk, dan tiap satunya keputusan yang sudah diambil. (a) Kumbang GUDANG yang didaftarkan pada komoditas LADANG — `Sitophilus spp.` dan `Alphitobius diaperinus` pada "Jagung", bukan "Jagung di penyimpanan"; menambahkan jagung ladang jadi inang pintu gudang akan menaruh pintu gudang di saringan tanaman pangan. (b) Pintu yang ada di tanaman SEBELAHNYA — `Hydrellia sp.` pada jagung sementara pintunya berdiri di padi, dan `Atherigona oryzae` pada padi sementara pintunya berdiri di jagung. (c) `Rhizoctonia sp.` dan `Fusarium spp.` pada jagung: satu-satunya pintu rebah kecambah di sana berdiri di atas Pythium, dan seluruh isinya justru bahwa bahan aktifnya harus mengenai OOMYCETE — mencakupkan jamur sejati ke sana berarti menganjurkan bahan yang tidak bekerja. (d) Satu baris tunggal tanpa pintu semarga di tanaman itu: `Siphanta acuta` dan `Thrips sp.` pada padi, `Empoasca spp.` pada kedelai, `Sclerotinia sp.` pada tembakau |
+| 26 | Pembibitan dan persemaian: fase atau tanaman? | Tetap terpisah dari tanamannya, dan itu keputusan yang menahan 10 baris di luar jangkauan. Umur dan perlakuannya memang berbeda; menyatukannya berarti menjanjikan teks gejala tanaman dewasa kepada yang berdiri di depan bedengan semai. Yang belum diputuskan apakah fase layak punya PINTUNYA SENDIRI — rebah kecambah sudah jadi contoh bahwa jawabannya kadang ya |
 | 20 | 772 kelompok varietas sama nama & sama jenis | Sengaja tidak digabung (D25). Perlu kurasi berbukti untuk memutuskan mana yang benar-benar satu varietas |
 | 21 | 1.042 catatan varietas tanpa pemohon | Sebagian besar era pelepasan lama yang pengusulnya tidak tercatat; `maintainer` dikosongkan, bukan ditebak |
 | 22 | 47,6% varietas belum punya skala fase | Turun dari 89% setelah lima belas kunci masuk. Sisa terbesar: durian (495 varietas), tembakau (267), krisan (247), kacang panjang (224), pisang (185), tebu (168), alpukat (145). Kunci monograf yang masih tersisa tinggal bit dan kacang polong; selebihnya perlu kunci dari luar monograf, atau belum pernah ada |

@@ -207,11 +207,23 @@ function bacaVocab(nama) {
   return Array.isArray(d) ? d : d.items || [];
 }
 
+// Entitas yang sudah DIGANTIKAN tidak boleh jadi tujuan penautan: L29 melarang rujukan
+// menunjuk entitas superseded, dan peta ini yang membuat rujukannya. Sebelum ada
+// entitas yang naik dari registri ke kosakata terkurasi hal ini tidak pernah terlihat —
+// yang digantikan hanyalah salah ketik, dan ejaannya toh sudah dinaikkan jadi mappings
+// KEMENTAN pada penerusnya. Sesudah spec/tools/kurasi-opt.mjs, puluhan entitas
+// yang ejaannya BENAR jadi superseded, dan tanpa saringan ini peta akan menautkan
+// "Spodoptera exigua" kembali ke entitas mati pada tarikan registri berikutnya.
+//
+// Aman karena penyatuan selalu menaikkan seluruh ejaan yang kalah ke penerusnya:
+// 593 ejaan KEMENTAN pada entitas yang digantikan, 593 di antaranya juga tercatat pada
+// penerusnya masing-masing. Tidak ada label yang kehilangan jalannya.
 function petaLabel(berkas, ambilTambahan) {
   const tepat = new Map();
   const longgar = new Map();
   for (const nama of berkas) {
     for (const it of bacaVocab(nama)) {
+      if (it.lifecycle?.status === 'superseded') continue;
       const kandidat = [];
       for (const m of it.mappings || []) if (m.scheme === 'KEMENTAN' && m.id) kandidat.push(m.id);
       if (ambilTambahan) for (const x of ambilTambahan(it)) if (x) kandidat.push(x);

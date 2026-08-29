@@ -151,9 +151,9 @@ const guna = P.flatMap((p) => p.label_uses ?? []);
 cek('04/05', 'penggunaan berlabel', guna.length, 23058);
 cek('04', 'tertaut OPT %', ((guna.filter((u) => u.pest?.id).length / guna.length) * 100).toFixed(1), '96.1');
 cek('04', 'PHI ada', guna.filter((u) => /\\bPHI\\b|tenggang panen/i.test(JSON.stringify(u))).length, 0);
-cek('04', 'OPT registri hidup', hidup(OPTR).length, 768);
+cek('04', 'OPT registri hidup', hidup(OPTR).length, 516);
 cek('04', 'OPT registri bergejala', OPTR.filter((e) => e.symptoms).length, 0);
-cek('04', 'OPT terkurasi bergejala', KUR.filter((e) => e.symptoms).length, 10);
+cek('04', 'OPT terkurasi bergejala', KUR.filter((e) => e.symptoms).length, 208);
 
 // ---- padanan bahan aktif: berapa yang bernama, dan dari mana namanya
 // Angka ini punya DUA sumber yang bergerak sendiri-sendiri — tarikan registri baru dan
@@ -305,7 +305,7 @@ if (HRG) {
   cek('16/18', 'seri berpangkal 1 Feb 2024',
     HRG.filter((h) => h.source_system === 'SP2KP' && h.series?.length
       && h.coverage.from === '2024-02-01').length, 42);
-  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 24);
+  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 23);
   // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
   // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
   cek('16', 'harga pupuk berangka', HRG.filter((h) => /^pupuk/i.test(h.label.id) && h.series?.length).length, 0);

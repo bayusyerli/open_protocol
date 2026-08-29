@@ -951,6 +951,10 @@ main details > summary {
 }
 
 .preset button:hover { border-color: var(--aksen); color: var(--teks); }
+/* Terpilih ditandai border DAN warna teks, bukan warna latar saja: satu penanda warna
+   sendirian gagal pada layar HP di bawah matahari, dan itu keadaan pemakaian yang biasa
+   di sini, bukan yang langka. */
+.preset button[aria-pressed="true"] { border-color: var(--aksen); color: var(--teks); font-weight: 600; }
 .preset button:focus-visible { outline: 3px solid var(--aksen); outline-offset: 1px; }
 
 /* Angka besar sengaja tidak diberi warna aksen: ia hasil aritmetika atas harga yang

@@ -149,7 +149,7 @@ function gambarTinjauan(meta) {
  * layar: dua layar yang menyebut lubang yang sama dengan kalimat berbeda membuat
  * pembacanya mengira keduanya dua lubang. */
 const JUDUL_LUBANG = {
-  gejalaOpt: 'Gejala OPT di luar sepuluh yang terkurasi',
+  gejalaOpt: 'Gejala OPT di luar yang terkurasi',
   gejalaOptRegistri: 'Teks gejala pada OPT registri',
   phi: 'Tenggang panen (PHI)',
   kelasBahayaWho: 'Kelas bahaya WHO bahan aktif',

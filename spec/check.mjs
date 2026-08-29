@@ -295,6 +295,52 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       }
     }
 
+    // L40 — `broader` tidak boleh berputar, dan tidak boleh menunjuk diri sendiri.
+    //
+    // Rantai broader dijangkau berulang saat menyusun indeks, dan putaran membuatnya
+    // berjalan selamanya. Alat yang memasangnya sudah memeriksa ini, tetapi rantai bisa
+    // terbentuk dari DUA berkas yang disunting terpisah — "Cabai merah" menunjuk "Cabai"
+    // di satu berkas sementara "Cabai" menunjuk "Cabai merah" di berkas lain — dan tidak
+    // satu pun alat itu melihat keduanya sekaligus.
+    if (typeof doc.id === 'string' && doc.id.startsWith('op:cmd:') && doc.broader?.id) {
+      if (doc.broader.id === doc.id) {
+        fail(file, 'L40-broader-berputar', `${doc.id} menunjuk dirinya sendiri sebagai broader.`);
+      } else {
+        const lewat = new Set([doc.id]);
+        let kini = doc.broader.id;
+        while (kini) {
+          if (lewat.has(kini)) {
+            fail(file, 'L40-broader-berputar', `Rantai broader dari ${doc.id} berputar di ${kini}. Penjangkauan komoditas yang lebih sempit menelusuri rantai ini, dan putaran membuatnya tidak pernah berhenti.`);
+            break;
+          }
+          lewat.add(kini);
+          kini = entityById.get(kini)?.broader?.id;
+        }
+      }
+    }
+
+    // L39 — sasaran yang dicakup sebuah pintu tidak boleh punya pintu sendiri.
+    //
+    // `covers` menyatakan "produk yang terdaftar untuk spesies ITU menjawab pintu INI",
+    // dan indeks menjumlahkannya ke jangkauan pintu. Kalau sasarannya ternyata pintu
+    // tersendiri, produk yang sama terhitung di dua tempat dan layar menyebut angka yang
+    // lebih besar daripada yang ada — persis jenis kesalahan yang tidak terlihat dari
+    // layar mana pun, karena kedua angkanya masuk akal sendiri-sendiri.
+    //
+    // Bisa terjadi tanpa kelalaian: sasaran yang hari ini dicakup boleh saja besok layak
+    // dinaikkan jadi pintu, dan yang menaikkannya belum tentu ingat ada yang mencakupnya.
+    if (Array.isArray(doc.covers) && doc.covers.length) {
+      for (const c of doc.covers) {
+        const t = c?.pest?.id && entityById.get(c.pest.id);
+        if (t && Array.isArray(t.distinguishing) && t.distinguishing.length) {
+          fail(file, 'L39-cakupan-berpintu', `${doc.id} mencakup ${c.pest.id}, tetapi ${c.pest.id} punya ciri pembandingnya sendiri — artinya ia pintu tersendiri. Produk yang sama akan terhitung di kedua pintu, dan jangkauan yang ditampilkan jadi lebih besar daripada yang ada. Naikkan salah satunya, jangan keduanya.`);
+        }
+        if (c?.pest?.id === doc.id) {
+          fail(file, 'L39-cakupan-berpintu', `${doc.id} mencakup dirinya sendiri.`);
+        }
+      }
+    }
+
     // L10 — rujukan harus menunjuk entitas yang ada.
     // Hanya diperiksa untuk jenis entitas yang kosakatanya sudah dimuat; jenis yang
     // belum punya kosakata dilewati diam-diam supaya tidak berisik sebelum waktunya.
@@ -678,7 +724,13 @@ export function runChecks({ schemaDir = 'schema', dirs = ['vocab', 'examples'] }
       // sejak sebelum penyatuan apa pun. Membandingkan pest_scientific_name dengannya
       // tidak ada gunanya, dan menerimanya akan membuat aturan ini meloloskan tautan
       // ke organisme yang sama sekali lain.
-      const binomial = (x) => /^[A-Z][a-z]+ [a-z][a-z-]+$/.test(String(x).trim());
+      // Bentuk "Genus sp." dan "Genus spp." ikut dihitung sejak penyatuan sinonim OPT:
+      // registri memuat sasaran bertingkat genus atas nama itu, dan salah ketiknya
+      // ("Helopelthis sp.", "Rizoctonia sp.") dinaikkan jadi synonyms pada penerusnya.
+      // Sifat yang dijaga tidak berkurang — label KATEGORI berbahasa Indonesia tetap
+      // ditolak, karena kata keduanya berhuruf besar ("Hama Trips", "Gulma Berdaun
+      // Lebar") sementara pola ini menuntut huruf kecil atau "sp."/"spp." persis.
+      const binomial = (x) => /^[A-Z][a-z]+ (?:[a-z][a-z-]+|spp?\.)$/.test(String(x).trim());
       const ejaanTercatat = new Set(
         [ref.scientific_name, ref.accepted_scientific_name, ...(ref.synonyms ?? []).filter(binomial)]
           .filter(Boolean)

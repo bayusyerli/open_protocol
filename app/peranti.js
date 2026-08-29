@@ -34,7 +34,7 @@ document.getElementById('tanpaJs')?.remove();
  * ditabrak. */
 const LUBANG_NAMA = {
   namaDagang: ['Nama di kemasan tidak ketemu', 'Pemetaan nama dagang ke nama terdaftar'],
-  gejalaOpt: ['Gejala di luar sepuluh OPT terkurasi', 'Deskripsi gejala untuk OPT registri'],
+  gejalaOpt: ['Gejala di luar OPT terkurasi', 'Deskripsi gejala untuk OPT registri'],
   namaLokalTakTerpetakan: ['Nama lokal belum terpetakan', 'Perluasan kamus nama lokal'],
   kandunganTakTerdaftar: ['Kandungan tidak cocok satu pun', 'Kelengkapan komposisi registri pupuk'],
   haraSediaan: ['Komposisi pupuk kosong di registri', 'Kelengkapan komposisi registri pupuk'],
