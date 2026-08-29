@@ -84,16 +84,51 @@ klaster `/toko/`, yang dua berkas sumbernya memang belum pernah di-commit.
 Pull request tidak mengunggah artefak: yang perlu diketahui sebuah PR adalah apakah ia
 membangun dan tautannya utuh, bukan salinan situsnya.
 
-## Host — belum diputuskan, dan sebagian pilihan sudah tercoret
+## Host — dibandingkan dengan harga, 29 Agustus 2026
 
-Rakitannya **42.085 berkas, ±480 MB**. Angka pertama yang menentukan, bukan yang kedua:
+Rakitannya **41.852 berkas, ±480 MB**. Angka pertama yang menentukan, bukan yang kedua:
+setengah gigabyte praktis gratis di mana pun, sedangkan 42 ribu berkas menabrak batas
+platform dan mengisi kuota permintaan.
 
-| Host | Muat? | Alasan |
-|---|---|---|
-| Cloudflare Pages | **tidak** | batas 20.000 berkas per deploy — terlewati dua kali lipat |
-| GitHub Pages | ya, dengan catatan | batas situs ±1 GB; bandwidth lunak 100 GB/bulan |
-| Netlify | ya | tiap publish mengunggah ratusan MB |
-| Object storage + CDN (R2/S3) | ya | sync inkremental; paling cocok untuk `terbit/` yang tumbuh tiap musim |
+Tiga skenario di bawah memakai 8 halaman per kunjungan × 40 KB dan 5 permintaan HTTP per
+tampilan halaman, dengan 95% terlayani dari edge.
+
+| Opsi | 1.000 kunjungan/bln | 50.000 | 500.000 | Catatan |
+|---|---|---|---|---|
+| **Cloudflare R2 + CDN** | **$0** | **$0** | **$0** | 10 GB simpan gratis, egress gratis tanpa batas, 41.852 tulis/build masuk kuota 1 juta Class A |
+| Backblaze B2 + Cloudflare | $0 | $0 | $0 | setara; menuntut merangkai CNAME + Transform Rule agar rutenya benar |
+| DigitalOcean Spaces | $5 | $5 | $5 | datar dan bisa diramalkan; 1 TiB transfer termasuk |
+| AWS S3 (Jakarta) + CloudFront | $0,06 | $0,10 | $12,46 | CloudFront punya Always Free 1 TB + 10 juta permintaan/bln, permanen |
+| Cloudflare Pages (Pro) | $25 | $25 | $25 | **muat** — batas 20.000 berkas hanya paket Free; berbayar 100.000 |
+| GCS + Cloud CDN | $18,37 | $21,17 | $46,87 | terbebani $18,25/bln tetap untuk forwarding rule, jalan meski trafik nol |
+| Netlify | $0 (Free) | $9 | ~$48 | Free menjeda situs saat 300 kredit habis — risiko padam mendadak |
+
+**Cloudflare punya empat PoP di Indonesia** — Jakarta, Denpasar, Malang, Yogyakarta — dan
+itu menjawab langsung syarat lapangan nomor satu permukaan ini. AWS punya delapan di
+Jakarta. PoP DigitalOcean daftarnya identik dengan Cloudflare, yang mengisyaratkan ia
+ditenagai Cloudflare, tetapi DigitalOcean tidak menyatakannya.
+
+### Dua kekhawatiran yang tidak terbukti
+
+**Cloudflare Pages tidak tercoret.** Batas 20.000 berkas hanya berlaku di paket Free;
+dokumentasi 16 Juli 2026 menyatakan paket berbayar memuat hingga 100.000 berkas per situs
+dengan `PAGES_WRANGLER_MAJOR_VERSION=4`. Ia muat — hanya sepuluh kali lebih mahal daripada
+R2 yang nol.
+
+**Biaya operasi saat sync penuh bukan jebakan.** Mengunggah ulang seluruh 41.852 berkas
+berharga $0,19–$0,21 sekali jalan, dan pada kadensi 3×/tahun itu ~$0,05/bulan. Ketakutan
+ini tidak boleh mendorong pemilihan platform.
+
+### Yang justru menagih
+
+Permintaan, bukan bandwidth. CloudFront melayani 160 GB gratis tetapi menagih $12 untuk 10
+juta permintaan berlebih. Perayapan menambah permintaan, bukan bandwidth: Googlebot yang
+menyapu 41.852 URL sebulan sekali menambah 41.852 permintaan dan ~480 MB egress — tak
+berarti di R2, tetapi ikut mengisi kuota CloudFront.
+
+**Putusan yang disarankan: Cloudflare R2 + CDN Cloudflare.** Nol rupiah pada ketiga
+skenario, PoP terdekat dengan pembaca, satu penyedia saja, dan "egress gratis" adalah janji
+produk — bukan janji kemitraan yang bisa berubah sepihak seperti pada jalur B2.
 
 Begitu host diputuskan, langkah unggah menggantikan langkah artefak di workflow; empat
 langkah di atasnya tidak berubah sama sekali.
