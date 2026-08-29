@@ -57,6 +57,21 @@ export default {
   async fetch(permintaan, env) {
     const url = new URL(permintaan.url);
 
+    /* `www` diproksi Cloudflare persis seperti apex, tetapi rute Worker dipasang per pola
+     * host — jadi tanpa penanganan di sini ia jatuh ke origin placeholder dan menjawab 522
+     * selamanya. Alihannya ditaruh di berkas ini, bukan sebagai Redirect Rule di dasbor,
+     * supaya aturannya ikut terbaca bersama kodenya dan ikut diuji; aturan yang hanya ada
+     * di dasbor tidak muncul di satu pun tinjauan kode.
+     *
+     * 301, bukan melayani keduanya: canonical dan seluruh sitemap memakai apex, dan dua
+     * host yang sama-sama menjawab 200 menggandakan 30 ribu URL sekaligus membelah
+     * sinyalnya. */
+    if (url.hostname.startsWith('www.')) {
+      const tujuan = new URL(url);
+      tujuan.hostname = url.hostname.slice(4);
+      return Response.redirect(tujuan.toString(), 301);
+    }
+
     if (permintaan.method !== 'GET' && permintaan.method !== 'HEAD') {
       return new Response('Metode tidak dilayani', { status: 405, headers: { Allow: 'GET, HEAD' } });
     }

@@ -20,10 +20,17 @@ workers_dev = false
 binding = "SITUS"
 bucket_name = "pranatani-situs"
 
-# Domain disetel di dasbor Cloudflare, bukan di sini: ia menuntut zona DNS yang aktif, dan
-# menaruhnya di berkas ini akan membuat deploy gagal selama nameserver-nya belum diarahkan.
-# Sesudah zonanya hidup, tambahkan:
+# Zona pranatani.com aktif sejak 30 Agustus 2026 — nameserver-nya berpindah dari Rumahweb
+# ke bonnie/justin.ns.cloudflare.com, dan sejak itu rute di bawah bisa dipasang. Sebelum
+# tanggal itu blok ini dikomentari, sebab deploy gagal selama zonanya belum ada.
 #
-# [[routes]]
-# pattern = "pranatani.com/*"
-# zone_name = "pranatani.com"
+# DUA POLA, bukan satu. `www` diproksi sama seperti apex, dan rute dipasang per pola host:
+# tanpa baris keduanya, www.pranatani.com melewati Worker sepenuhnya dan jatuh ke origin
+# placeholder 192.0.2.1 — 522, selamanya. Worker sendiri yang mengalihkannya ke apex.
+[[routes]]
+pattern = "pranatani.com/*"
+zone_name = "pranatani.com"
+
+[[routes]]
+pattern = "www.pranatani.com/*"
+zone_name = "pranatani.com"

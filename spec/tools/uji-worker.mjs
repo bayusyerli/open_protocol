@@ -45,6 +45,9 @@ const env = {
 const minta = (jalur, metode = 'GET') =>
   worker.fetch(new Request(`https://pranatani.com${jalur}`, { method: metode, redirect: 'manual' }), env);
 
+const mintaHost = (host, jalur) =>
+  worker.fetch(new Request(`https://${host}${jalur}`, { redirect: 'manual' }), env);
+
 let lolos = 0; const gagal = [];
 const uji = (nama, dapat, harap) => {
   if (Object.is(dapat, harap)) { lolos++; return; }
@@ -67,6 +70,20 @@ uji('hub klaster dilayani', (await minta('/produk/')).status, 200);
   uji('tanpa garis miring dialihkan', r.status, 301);
   uji('  ke jalur bergaris miring', new URL(r.headers.get('Location')).pathname,
     '/produk/larban-500-50-ec/');
+}
+
+// --- satu situs, satu host --------------------------------------------------------------
+// `www` diproksi sama seperti apex; tanpa alihan ini ia tidak pernah sampai ke Worker
+// dengan benar dan situsnya punya dua alamat yang sama-sama sah.
+{
+  const r = await mintaHost('www.pranatani.com', '/produk/larban-500-50-ec/');
+  uji('www dialihkan ke apex', r.status, 301);
+  uji('  host jadi apex', new URL(r.headers.get('Location')).hostname, 'pranatani.com');
+  uji('  jalurnya utuh', new URL(r.headers.get('Location')).pathname,
+    '/produk/larban-500-50-ec/');
+  const q = await mintaHost('www.pranatani.com', '/spec/indeks/produk/001.json?v=abc');
+  uji('  kueri ikut terbawa', new URL(q.headers.get('Location')).search, '?v=abc');
+  uji('apex TIDAK dialihkan', (await mintaHost('pranatani.com', '/produk/')).status, 200);
 }
 
 // --- yang benar-benar tidak ada ---------------------------------------------------------
