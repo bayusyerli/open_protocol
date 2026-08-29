@@ -106,11 +106,6 @@ jobs:
             echo "| Sitemap | $(ls _situs/sitemap-*.xml | wc -l | tr -d ' ') berkas, $(grep -ho '<loc>' _situs/sitemap-*.xml | wc -l | tr -d ' ') URL |"
           } >> "$GITHUB_STEP_SUMMARY"
 
-      # Artefak, bukan deploy. Host belum dipilih — dan 42 ribu berkas mencoret sebagian
-      # pilihan sebelum dibandingkan (Cloudflare Pages membatasi 20.000 berkas per deploy).
-      # Begitu host diputuskan, langkah unggahnya menggantikan langkah ini; yang di atas
-      # tidak perlu berubah sama sekali.
-      #
       # Tidak dijalankan pada pull request: rakitannya ±480 MB, dan yang perlu diketahui
       # sebuah PR adalah apakah ia membangun dan tautannya utuh — bukan salinan situsnya.
       - name: Unggah artefak situs
@@ -121,3 +116,54 @@ jobs:
           path: _situs
           retention-days: 7
           if-no-files-found: error
+
+      # ---------------------------------------------------------------------------------
+      # Deploy ke Cloudflare R2 — hanya dari main, dan hanya bila rahasianya ada
+      # ---------------------------------------------------------------------------------
+      # SYNC, BUKAN UNGGAH ULANG. R2 berbicara S3, jadi `aws s3 sync` bekerja apa adanya —
+      # dan ia hanya mengirim berkas yang ukuran atau waktunya berubah. Antar-build musiman
+      # yang berubah biasanya sebagian kecil dari 41.852; mengunggah semuanya tiap kali
+      # membuang waktu, walau ongkosnya sendiri kecil (~$0,20 untuk unggah penuh).
+      #
+      # `--delete` menghapus objek yang tidak lagi ada di rakitan. Tanpa itu, entitas yang
+      # dicabut registri akan terus dilayani selamanya — dan halaman produk yang izinnya
+      # sudah dicabut adalah persis yang tidak boleh tertinggal hidup.
+      #
+      # Rahasia yang dibutuhkan (Settings → Secrets → Actions):
+      #   CF_ACCOUNT_ID           id akun Cloudflare
+      #   CF_R2_ACCESS_KEY_ID     token R2 dengan izin Object Read & Write
+      #   CF_R2_SECRET_ACCESS_KEY pasangannya
+      #   CLOUDFLARE_API_TOKEN    token dengan izin Workers Scripts:Edit, untuk wrangler
+      # Tanpa keempatnya, langkah ini dilewati dan build tetap hijau — supaya fork dan
+      # kontributor tidak melihat kegagalan yang bukan urusannya.
+      - name: Sync ke R2
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CF_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AKUN: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          if [ -z "$AKUN" ] || [ -z "$AWS_ACCESS_KEY_ID" ]; then
+            echo "Rahasia R2 belum disetel — deploy dilewati, build tetap hijau."
+            exit 0
+          fi
+          aws s3 sync _situs "s3://pranatani-situs" \
+            --endpoint-url "https://$AKUN.r2.cloudflarestorage.com" \
+            --delete --only-show-errors
+          echo "Tersinkron: $(find _situs -type f | wc -l | tr -d ' ') berkas."
+
+      # Worker-nya kecil dan jarang berubah, tetapi ia yang memetakan `/produk/x/` ke
+      # `index.html` di dalamnya — tanpa deploy ini, sync di atas menghasilkan 30 ribu
+      # halaman yang seluruhnya 404.
+      - name: Deploy Worker
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "Token Cloudflare belum disetel — deploy Worker dilewati."
+            exit 0
+          fi
+          npx --yes wrangler@4 deploy --config worker/wrangler.toml

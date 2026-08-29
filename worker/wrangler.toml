@@ -1,0 +1,29 @@
+# Worker yang melayani situs dari R2. Alasannya di kepala situs.js.
+#
+#   npx wrangler deploy --config worker/wrangler.toml
+#
+# Bucket-nya TIDAK dibuat berkas ini; ia dibuat sekali dengan
+#   npx wrangler r2 bucket create pranatani-situs
+# lalu isinya disinkronkan CI. Memisahkan keduanya disengaja: yang sering berubah isinya,
+# dan pembuatan bucket yang dijalankan tiap deploy adalah operasi yang menunggu untuk gagal
+# pada hari seseorang salah ketik namanya.
+
+name = "pranatani-situs"
+main = "situs.js"
+compatibility_date = "2026-08-01"
+
+# Nol permintaan ke Worker saat tidak ada yang membuka situs — dan itu yang membuat
+# tagihannya benar-benar nol pada trafik awal.
+workers_dev = false
+
+[[r2_buckets]]
+binding = "SITUS"
+bucket_name = "pranatani-situs"
+
+# Domain disetel di dasbor Cloudflare, bukan di sini: ia menuntut zona DNS yang aktif, dan
+# menaruhnya di berkas ini akan membuat deploy gagal selama nameserver-nya belum diarahkan.
+# Sesudah zonanya hidup, tambahkan:
+#
+# [[routes]]
+# pattern = "pranatani.com/*"
+# zone_name = "pranatani.com"

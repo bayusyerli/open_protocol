@@ -6,7 +6,7 @@
   "description": "Spesifikasi Lapis 1 (ontologi) Pranatani — skema, contoh, dan pemeriksa.",
   "scripts": {
     "check": "node validate.mjs",
-    "test": "node test-rules.mjs && node tools/uji-dosis.mjs && node tools/uji-hitung.mjs",
+    "test": "node test-rules.mjs && node tools/uji-dosis.mjs && node tools/uji-hitung.mjs && node tools/uji-worker.mjs",
     "uji-terbit": "npm run angka && node tools/uji-tanya.mjs",
     "test:browser": "playwright test",
     "all": "npm run check && npm test && npm run urai && npm run pagar",

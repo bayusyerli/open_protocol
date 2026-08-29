@@ -133,10 +133,70 @@ produk — bukan janji kemitraan yang bisa berubah sepihak seperti pada jalur B2
 Begitu host diputuskan, langkah unggah menggantikan langkah artefak di workflow; empat
 langkah di atasnya tidak berubah sama sekali.
 
+## Menayangkannya — Cloudflare R2, dan lima langkah yang hanya bisa dikerjakan orang
+
+Diputuskan 29 Agustus 2026. CI sudah membawa rakitan sampai ke R2 dan men-deploy
+Worker-nya; yang di bawah ini tidak bisa dijalankan runner karena menuntut akun.
+
+**1. Buat bucket, sekali seumur hidup.**
+
+```
+npx wrangler r2 bucket create pranatani-situs
+```
+
+Sengaja tidak dijalankan CI: pembuatan bucket yang berulang tiap deploy adalah operasi
+yang menunggu untuk gagal pada hari seseorang salah ketik namanya.
+
+**2. Setel empat rahasia** di Settings → Secrets and variables → Actions:
+
+| Rahasia | Isinya |
+|---|---|
+| `CF_ACCOUNT_ID` | id akun Cloudflare |
+| `CF_R2_ACCESS_KEY_ID` | token R2, izin Object Read & Write |
+| `CF_R2_SECRET_ACCESS_KEY` | pasangannya |
+| `CLOUDFLARE_API_TOKEN` | token dengan izin Workers Scripts:Edit |
+
+Tanpa keempatnya, langkah deploy **dilewati** dan build tetap hijau — supaya fork dan
+kontributor tidak melihat kegagalan yang bukan urusannya.
+
+**3. Arahkan nameserver `pranatani.com` ke Cloudflare** dari dasbor Rumahweb. Sampai
+zonanya aktif, langkah berikutnya akan menolak.
+
+**4. Pasang rute Worker** sesudah zonanya hidup — buka `worker/wrangler.toml`, cabut
+komentar pada blok `[[routes]]`. Ia sengaja dikomentari: menaruhnya lebih awal membuat
+deploy gagal selama nameserver-nya belum diarahkan.
+
+**5. Serahkan sitemap** ke Google Search Console dan Bing Webmaster Tools:
+`https://pranatani.com/sitemap-index.xml`.
+
+### Kenapa Worker, padahal R2 sudah bisa dijadikan publik
+
+**R2 bukan hosting situs statis.** Ia menyajikan objek menurut kunci yang persis:
+`GET /produk/larban-500-50-ec/` mencari objek bernama `produk/larban-500-50-ec/` yang tidak
+pernah ada — yang ada `.../index.html`. Seluruh 30 ribu halaman entitas berbentuk begitu,
+jadi tanpa `worker/situs.js` semuanya 404.
+
+Worker itu juga satu-satunya tempat tiga hal berikut bisa dipasang: pengalihan 301 dari
+jalur tanpa garis miring (supaya satu halaman tidak punya dua URL yang sama-sama menjawab
+200), header `frame-ancestors` dan `nosniff` yang diabaikan bila lewat `<meta>`, dan
+`Cache-Control` menurut jenis isi — pecahan indeks bercap dapat `immutable` setahun,
+sedangkan `meta.json` yang menyebutkan cap itu tidak pernah di-cache. Logikanya dikunci
+**24 uji** di `spec/tools/uji-worker.mjs`, dengan R2 disulih Map.
+
+### Kenapa bukan Workers Static Assets
+
+Ia menangani pemetaan direktori dan pengalihan secara bawaan, dan permintaannya gratis
+tanpa batas — tetapi menuntut Workers Paid begitu berkasnya lewat 20.000, dan situs ini
+41.852. Itu $5 per bulan sejak hari pertama. R2 pada trafik awal benar-benar nol, dan
+permintaan Worker masih di dalam kuota gratis 100.000 per hari. Pindah ke sana layak
+dipertimbangkan ketika permintaan Worker mulai ditagih; struktur berkasnya sama persis,
+jadi ongkos pindahnya kecil.
+
 ## Header yang harus dipasang host
 
-Dua hal tidak bisa dikirim lewat `<meta>` dan karena itu tidak ada di halaman — keduanya
-menunggu host dipilih:
+Dua hal tidak bisa dikirim lewat `<meta>`. **Keduanya kini dipasang `worker/situs.js`**
+sejak host diputuskan; tabel ini tinggal sebagai catatan alasannya, bukan pekerjaan yang
+menunggu:
 
 | Header | Nilai | Kenapa |
 |---|---|---|
