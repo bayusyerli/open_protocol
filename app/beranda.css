@@ -623,3 +623,48 @@ a { color: var(--hijau-2); }
   font-variant-numeric: tabular-nums;
 }
 .daftar-hasil a[data-jenis="komoditas"] { --tepi: var(--hijau-2); }
+
+/* ------------------------------------------------------------ jelajah klaster
+   Jalan masuk ke seluruh isi, dan satu-satunya blok di beranda yang ditulis untuk dua
+   pembaca sekaligus: orang yang belum tahu apa yang dicarinya, dan perayap yang tidak
+   bisa mengetik. Sengaja daftar tautan biasa — bukan kartu, bukan grid berhias — karena
+   yang menentukan gunanya bukan tampilannya melainkan bahwa tautannya benar-benar ada
+   di HTML sebelum satu baris skrip berjalan. */
+.jelajah {
+  max-width: var(--lebar, 44rem);
+  margin: 2.5rem auto 0;
+  padding: 0 1rem;
+}
+.jelajah h2 {
+  font-size: 1rem;
+  margin: 0 0 .8rem;
+  color: var(--teks, var(--tinta));
+}
+.jelajah ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: .1rem 1.5rem;
+}
+.jelajah li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .5rem;
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--garis);
+  min-height: 44px;
+  box-sizing: border-box;
+}
+.jelajah a { font-weight: 600; text-underline-offset: 2px; }
+.jelajah li span {
+  font-size: .82rem;
+  color: var(--teks-lemah, var(--lemah));
+}
+.jelajah .catatan {
+  margin: 1rem 0 0;
+  font-size: .82rem;
+  color: var(--teks-lemah, var(--lemah));
+}
