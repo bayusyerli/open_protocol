@@ -34,7 +34,12 @@ env:
 jobs:
   bangun:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    # 60, bukan 30. Seluruh pekerjaan nyata — 30 ribu halaman, Playwright, pemeriksaan
+    # 30 ribu tautan — selesai dalam 157 detik; yang panjang hanya sync ke R2. Percobaan
+    # pertama pada 29 Agustus 2026 mati di batas 30 menit dengan sync berjalan 27,6 menit
+    # dan belum tuntas. Batasnya dinaikkan bersama perbaikan kecepatan di langkah itu,
+    # bukan sebagai gantinya: yang satu memberi ruang, yang lain menghapus sebabnya.
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
 
@@ -209,10 +214,17 @@ jobs:
       # ---------------------------------------------------------------------------------
       # Deploy ke Cloudflare R2 — hanya dari main, dan hanya bila rahasianya ada
       # ---------------------------------------------------------------------------------
-      # SYNC, BUKAN UNGGAH ULANG. R2 berbicara S3, jadi `aws s3 sync` bekerja apa adanya —
-      # dan ia hanya mengirim berkas yang ukuran atau waktunya berubah. Antar-build musiman
-      # yang berubah biasanya sebagian kecil dari 41.852; mengunggah semuanya tiap kali
-      # membuang waktu, walau ongkosnya sendiri kecil (~$0,20 untuk unggah penuh).
+      # SETIAP JALAN MENGUNGGAH ULANG SEMUANYA, dan itu bukan kelalaian melainkan akibat
+      # yang harus disebut terang-terangan. `aws s3 sync` membandingkan ukuran dan waktu
+      # ubah; di runner setiap berkas dibangun ulang dari nol, jadi waktu ubahnya selalu
+      # lebih baru daripada salinan di R2 dan seluruh 41.852 dianggap perlu dikirim.
+      #
+      # `--size-only` akan menghapus pemborosan itu, dan ditolak. Perubahan yang tidak
+      # mengubah ukuran benar-benar ada di sini: cap service worker adalah string panjang
+      # tetap (`c` + 12 heksadesimal), sehingga sw.js yang berganti versi punya ukuran yang
+      # persis sama — dan `--size-only` tidak akan pernah mengirimnya. Melewatkan justru
+      # berkas yang menentukan versi mana yang dilihat pengguna adalah harga yang jauh
+      # lebih mahal daripada ~$0,19 ongkos operasi Class A per unggah penuh.
       #
       # `--delete` menghapus objek yang tidak lagi ada di rakitan. Tanpa itu, entitas yang
       # dicabut registri akan terus dilayani selamanya — dan halaman produk yang izinnya
@@ -237,10 +249,19 @@ jobs:
             echo "Rahasia R2 belum disetel — deploy dilewati, build tetap hijau."
             exit 0
           fi
+          # Bandwidth bukan penghambatnya: 480 MB lewat dalam hitungan puluhan detik. Yang
+          # memakan waktu adalah 41.852 permintaan bolak-balik, dan bawaan `aws s3 sync`
+          # menjalankan sepuluh sekaligus. Pada 29 Agustus 2026 itu berarti 1.655 detik
+          # tanpa tuntas. Naik ke 64 membuat langkah ini terikat latensi yang diparalelkan,
+          # bukan latensi yang diantre.
+          aws configure set default.s3.max_concurrent_requests 64
+          aws configure set default.s3.max_queue_size 10000
+
+          mulai=$SECONDS
           aws s3 sync _situs "s3://pranatani-situs" \
             --endpoint-url "https://$AKUN.r2.cloudflarestorage.com" \
             --delete --only-show-errors
-          echo "Tersinkron: $(find _situs -type f | wc -l | tr -d ' ') berkas."
+          echo "Tersinkron: $(find _situs -type f | wc -l | tr -d ' ') berkas dalam $((SECONDS - mulai)) detik."
 
       # Worker-nya kecil dan jarang berubah, tetapi ia yang memetakan `/produk/x/` ke
       # `index.html` di dalamnya — tanpa deploy ini, sync di atas menghasilkan 30 ribu
