@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "1222010",
+  "nama_bps": "SUNGAI KANAN",
+  "kode_dagri": "12.22.04",
+  "nama_dagri": "SUNGAI KANAN"
+ },
+ {
+  "kode_bps": "1222020",
+  "nama_bps": "TORGAMBA",
+  "kode_dagri": "12.22.03",
+  "nama_dagri": "TORGAMBA"
+ },
+ {
+  "kode_bps": "1222030",
+  "nama_bps": "KOTA PINANG",
+  "kode_dagri": "12.22.01",
+  "nama_dagri": "KOTAPINANG"
+ },
+ {
+  "kode_bps": "1222040",
+  "nama_bps": "SILANGKITANG",
+  "kode_dagri": "12.22.05",
+  "nama_dagri": "SILANGKITANG"
+ },
+ {
+  "kode_bps": "1222050",
+  "nama_bps": "KAMPUNG RAKYAT",
+  "kode_dagri": "12.22.02",
+  "nama_dagri": "KAMPUNG RAKYAT"
+ }
+]

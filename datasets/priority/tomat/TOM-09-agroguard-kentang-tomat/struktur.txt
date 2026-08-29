@@ -1,0 +1,36 @@
+# Cuplikan isi AgroGuard_Dataset.zip (unzip -l) + cacah per kelas
+
+## Uji integritas arsip (unzip -t, 3 baris terakhir)
+    testing: AgroGuard_Dataset/Raw_Dataset/Tomato Late Blight Leaf - Google Search/imgi_{number} (95).jpeg   OK
+    testing: AgroGuard_Dataset/Raw_Dataset/Tomato Late Blight Leaf - Google Search/imgi_{number}.jpeg   OK
+No errors detected in compressed data of TOM-09-agroguard-kentang-tomat/raw/AgroGuard_Dataset.zip.
+
+## Struktur direktori
+AgroGuard_Dataset/
+AgroGuard_Dataset/Advanced_Processed_Dataset/
+AgroGuard_Dataset/Advanced_Processed_Dataset/Potato Late Blight leaf - Google Search/
+AgroGuard_Dataset/Advanced_Processed_Dataset/Tomato Early Blight Leaf - Google Search/
+AgroGuard_Dataset/Advanced_Processed_Dataset/Tomato Healthy Leaf - Google Search/
+AgroGuard_Dataset/Advanced_Processed_Dataset/Tomato Late Blight Leaf - Google Search/
+AgroGuard_Dataset/Raw_Dataset/
+AgroGuard_Dataset/Raw_Dataset/Potato Late Blight leaf - Google Search/
+AgroGuard_Dataset/Raw_Dataset/Tomato Early Blight Leaf - Google Search/
+AgroGuard_Dataset/Raw_Dataset/Tomato Healthy Leaf - Google Search/
+AgroGuard_Dataset/Raw_Dataset/Tomato Late Blight Leaf - Google Search/
+
+## Cacah gambar per subset/kelas
+ 124 Raw_Dataset/Potato Late Blight leaf - Google Search
+ 124 Advanced_Processed_Dataset/Potato Late Blight leaf - Google Search
+ 110 Raw_Dataset/Tomato Healthy Leaf - Google Search
+ 110 Advanced_Processed_Dataset/Tomato Healthy Leaf - Google Search
+ 105 Raw_Dataset/Tomato Early Blight Leaf - Google Search
+ 105 Advanced_Processed_Dataset/Tomato Early Blight Leaf - Google Search
+  96 Raw_Dataset/Tomato Late Blight Leaf - Google Search
+  96 Advanced_Processed_Dataset/Tomato Late Blight Leaf - Google Search
+
+## Ekstensi
+ 870 jpeg
+   1 md
+
+## Ringkasan: 435 gambar unik x 2 salinan (Raw_Dataset + Advanced_Processed_Dataset) = 870 berkas + 1 README.md
+## Nama folder memuat harfiah '- Google Search' dan nama berkas 'imgi_{number} (N).jpeg' -> gambar hasil scraping mesin pencari.

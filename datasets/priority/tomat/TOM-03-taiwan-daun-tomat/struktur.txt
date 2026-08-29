@@ -1,0 +1,66 @@
+# Cuplikan isi taiwan.7z (bsdtar -tf) + cacah gambar per kelas
+
+## 30 entri pertama
+taiwan/
+taiwan/data augmentation/
+taiwan/data augmentation/Test/
+taiwan/data augmentation/Test/Bacterial spot/
+taiwan/data augmentation/Test/Black mold/
+taiwan/data augmentation/Test/Gray spot/
+taiwan/data augmentation/Test/health/
+taiwan/data augmentation/Test/Late blight/
+taiwan/data augmentation/Test/powdery mildew/
+taiwan/data augmentation/Train/
+taiwan/data augmentation/Train/Bacterial spot/
+taiwan/data augmentation/Train/Black mold/
+taiwan/data augmentation/Train/Gray spot/
+taiwan/data augmentation/Train/health/
+taiwan/data augmentation/Train/Late blight/
+taiwan/data augmentation/Train/powdery mildew/
+taiwan/Preprocessed data/
+taiwan/Preprocessed data/Test/
+taiwan/Preprocessed data/Test/Bacterial spot/
+taiwan/Preprocessed data/Test/Black mold/
+taiwan/Preprocessed data/Test/Gray spot/
+taiwan/Preprocessed data/Test/health/
+taiwan/Preprocessed data/Test/Late blight/
+taiwan/Preprocessed data/Test/powdery mildew/
+taiwan/Preprocessed data/Train/
+taiwan/Preprocessed data/Train/Bacterial spot/
+taiwan/Preprocessed data/Train/Black mold/
+taiwan/Preprocessed data/Train/Gray spot/
+taiwan/Preprocessed data/Train/health/
+taiwan/Preprocessed data/Train/Late blight/
+
+## Total entri: 5629
+## Total berkas gambar: 5598
+
+## Cacah gambar per subset/split/kelas
+  22 Preprocessed data/Test/Bacterial spot
+  14 Preprocessed data/Test/Black mold
+  17 Preprocessed data/Test/Gray spot
+  20 Preprocessed data/Test/Late blight
+  22 Preprocessed data/Test/health
+  32 Preprocessed data/Test/powdery mildew
+  88 Preprocessed data/Train/Bacterial spot
+  53 Preprocessed data/Train/Black mold
+  67 Preprocessed data/Train/Gray spot
+  78 Preprocessed data/Train/Late blight
+  84 Preprocessed data/Train/health
+ 125 Preprocessed data/Train/powdery mildew
+ 176 data augmentation/Test/Bacterial spot
+ 108 data augmentation/Test/Black mold
+ 135 data augmentation/Test/Gray spot
+ 157 data augmentation/Test/Late blight
+ 170 data augmentation/Test/health
+ 252 data augmentation/Test/powdery mildew
+ 704 data augmentation/Train/Bacterial spot
+ 428 data augmentation/Train/Black mold
+ 537 data augmentation/Train/Gray spot
+ 627 data augmentation/Train/Late blight
+ 678 data augmentation/Train/health
+1004 data augmentation/Train/powdery mildew
+
+## Ringkasan
+- 'Preprocessed data' = 622 gambar asli (127 test + 495 train) -> COCOK dengan klaim sumber 622
+- 'data augmentation'  = 4.976 gambar hasil augmentasi (turunan, JANGAN dipakai untuk evaluasi)

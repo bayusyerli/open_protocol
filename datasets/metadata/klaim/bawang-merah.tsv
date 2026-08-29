@@ -1,0 +1,9 @@
+BWM-01-onion-cold-mendeley	10.17632/7nxxn4gj5s	Onion dataset (COLD - Chilli and Onion Leaf Dataset, bagian onion)	datasets/priority/bawang-merah/BWM-01-onion-cold-mendeley
+BWM-02-onion-bulb-leaf-mendeley	10.17632/42bcyncfhy	Image Dataset of Red and White Onion Bulbs and Leaves	datasets/priority/bawang-merah/BWM-02-onion-bulb-leaf-mendeley
+BWM-03-tom2024-multicrop	10.17632/3d4yg89rtr	TOM2024: tomato, onion and maize pest & disease image dataset	datasets/additional/BWM-03-tom2024-multicrop
+BWM-04-ditjenhorti-opt-pestisida	https://hortikultura.pertanian.go.id/buku-direktorat-perlindungan/	Buku Direktorat Perlindungan Hortikultura: hama-penyakit cabai & daftar pestisida bawang merah/cabai/kubis/kentang (2024)	datasets/additional/BWM-04-ditjenhorti-opt-pestisida
+BWM-05-eppo-distribusi-inang	https://gd.eppo.int/taxon/	EPPO Global Database: tabel distribusi & inang (CSV) untuk OPT cabai/tomat/kentang/bawang merah	datasets/additional/BWM-05-eppo-distribusi-inang
+BWM-06-gbif-okurensi-patogen	https://api.gbif.org/v1/occurrence/search	GBIF: okurensi & faset negara untuk 13 patogen/hama komoditas prioritas	datasets/additional/BWM-06-gbif-okurensi-patogen
+BWM-07-serangan-opt-hortikultura	https://data.go.id/ (agregasi portal daerah)	Luas serangan OPT hortikultura tingkat kabupaten/provinsi (Sumut, Kota Batu, Kotabaru, Malang)	datasets/additional/BWM-07-serangan-opt-hortikultura
+BWM-08-globi-interaksi-inang	https://api.globalbioticinteractions.org/interaction	GloBI: interaksi patogen/hama-inang untuk OPT komoditas prioritas	datasets/additional/BWM-08-globi-interaksi-inang
+BWM-09-wikidata-patogen-inang	https://query.wikidata.org/sparql	Wikidata: relasi patogen-inang (P2975) untuk 4 komoditas prioritas	datasets/additional/BWM-09-wikidata-patogen-inang

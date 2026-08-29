@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/toko.schema.json",
+  "title": "Toko — penjual sarana produksi pertanian",
+  "description": "Satu toko, kios, atau depo yang menjual sarana produksi pertanian, sebagai entitas MILIK KITA.\n\nIni bukan pemindahan `toko_data/` ke dalam kosakata. Direktori sapuan tetap tinggal di sana beserta pembagian lisensinya di toko_data/LAPIS.md; yang naik ke sini hanya toko yang sudah bisa kita pertanggungjawabkan sendiri. Pembagiannya sama dengan `pest-registri.json` di samping `pest.json`: yang satu hasil panen, yang satu hasil kurasi.\n\nAlasan entitas ini ada sama sekali: fitur \"toko tani terdekat\" tidak punya sumber berlisensi bersih. Diukur 24 Agustus 2026 untuk Bandung Raya — OSM hanya 8 toko yang lolos saringan presisi, TTI Kementan 106 tetapi tak satu pun alamatnya memuat nama jalan, sedangkan Google melihat 195 yang tidak boleh kita simpan namanya. Kesimpulannya bukan \"cari sumber lain\" melainkan \"jadilah sumbernya\". Setiap rekaman di sini karena itu wajib membawa lisensinya sendiri, dan `sourcing` menyatakan bagaimana kita memperolehnya.\n\nGoogle tidak pernah jadi `sourcing`. Ia hanya boleh muncul sebagai `mappings` berskema GOOGLE_PLACE_ID — sebuah PENGENAL, bukan isi. Service Specific Terms §A.3 mengizinkan place ID disimpan tanpa batas waktu, sementara §14.3 membatasi lintang-bujur pada 30 hari dan §3.2.3(a) menyebut penyimpanan nama serta alamat usaha sebagai contoh larangan. Nama toko di rekaman yang place_id-nya ada TETAP harus datang dari pemilik atau survei kita, bukan dari Places. Ditegakkan mesin oleh L50-toko-lisensi.",
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    }
+  ],
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:tko:[0-9]{8}$"
+    },
+    "sourcing": {
+      "type": "string",
+      "description": "Dari mana rekaman ini kita peroleh — dan karena itu, apa yang boleh kita perbuat atasnya. Medan ini yang menentukan lisensi, bukan sebaliknya.\n\n`setoran-pemilik` — pemilik toko sendiri yang mengirimkannya. Satu-satunya asal yang lepas dari ikatan pihak mana pun, dan satu-satunya yang boleh membawa kontak serta foto. Inilah arah yang dituju seluruh lajur ini.\n`survei` — petugas atau mitra kita mendatangi tempatnya. Milik kita sepenuhnya.\n`osm` — OpenStreetMap. Boleh terbit, tetapi ODbL dan wajib diatribusi per rekaman.\n`opendata` — terbitan pemerintah atau data terbuka berlisensi jelas.\n\nTidak ada nilai untuk Google, dan itu disengaja. Places tidak pernah jadi asal sebuah toko di sini; lihat `mappings`.",
+      "enum": ["setoran-pemilik", "survei", "osm", "opendata"]
+    },
+    "license": {
+      "type": "string",
+      "description": "Lisensi rekaman INI, bukan lisensi repositori. Ditulis per rekaman karena satu koleksi ini memang bercampur asal: baris OSM tunduk pada ODbL sementara setoran pemilik masuk di bawah lisensi konten repositori. Menyeragamkannya jadi satu nilai di tingkat koleksi akan menyembunyikan kewajiban atribusi ODbL, dan cacat semacam itu menular ke setiap pemakai ulang di hilir.",
+      "enum": ["ODbL-1.0", "CC-BY-SA-4.0", "CC-BY-4.0", "karya-pemerintah-ri"]
+    },
+    "attribution": {
+      "type": "string",
+      "description": "Teks atribusi yang WAJIB ikut ditampilkan bila lisensinya menuntut. Untuk baris OSM inilah tempat \"© Kontributor OpenStreetMap\" hidup, supaya penyaji tidak perlu menebak dari `sourcing`.",
+      "minLength": 3
+    },
+    "location": {
+      "type": "object",
+      "description": "Titik toko. BOLEH tidak ada: sebagian besar toko yang kita kenal namanya belum kita ketahui titiknya, dan mengarang koordinat tingkat kabupaten akan membuat \"toko terdekat\" mengarahkan petani ke titik tengah kabupaten yang tidak ada tokonya. Ketiadaan titik harus terbaca sebagai ketiadaan, bukan sebagai titik yang buruk.",
+      "properties": {
+        "lat": { "type": "number", "minimum": -11.5, "maximum": 6.5 },
+        "lon": { "type": "number", "minimum": 94.5, "maximum": 141.5 },
+        "precision": {
+          "type": "string",
+          "description": "Seberapa dekat titik ini dengan pintu tokonya. `pintu` — diambil di tempat, oleh pemilik atau petugas survei. `bangunan` — jatuh pada bangunan yang benar. `jalan` — hanya ruas jalannya yang pasti. Dipakai penyaji untuk memutuskan apakah boleh menampilkan jarak dalam meter atau harus membulatkannya.",
+          "enum": ["pintu", "bangunan", "jalan"]
+        },
+        "source": {
+          "type": "string",
+          "description": "Asal koordinatnya, bila berbeda dari `sourcing` rekaman. Sebuah toko bisa dikenal dari opendata tetapi titiknya baru ada setelah pemiliknya mengklaim.",
+          "enum": ["setoran-pemilik", "survei", "osm", "opendata"]
+        }
+      },
+      "required": ["lat", "lon", "precision"],
+      "additionalProperties": false
+    },
+    "address": {
+      "type": "object",
+      "description": "Alamat sebagai teks DAN sebagai rujukan wilayah, pola yang sama dengan `region` pada BPP. Teksnya menyatakan apa yang tertulis di sumber; `region` menyatakan wilayah mana yang dimaksud. Keduanya bertahan karena pada rekaman yang bermasalah keduanya tidak sepakat, dan ketidaksepakatan itu yang perlu terlihat.",
+      "properties": {
+        "text": { "type": "string", "minLength": 3 },
+        "region": {
+          "type": "string",
+          "pattern": "^op:rgn:[0-9]{8}$",
+          "description": "Kabupaten/kota atau kecamatan tempat toko ini berada, di kosakata wilayah."
+        }
+      },
+      "additionalProperties": false
+    },
+    "claim": {
+      "type": "object",
+      "description": "Status kepemilikan rekaman. Inilah alur yang membuat lajur ini tumbuh: toko masuk sebagai `belum-diklaim` dari sumber terbuka, pemiliknya diundang, dan begitu ia mengonfirmasi, rekamannya berpindah tangan — lisensinya jadi bersih dan nama, foto, serta kontaknya baru boleh ada.",
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["belum-diklaim", "diklaim", "terverifikasi", "ditolak"]
+        },
+        "claimed_at": { "type": "string", "format": "date" },
+        "verified_at": { "type": "string", "format": "date" },
+        "method": {
+          "type": "string",
+          "description": "Bagaimana klaimnya diperiksa. Ditulis supaya `terverifikasi` tidak jadi stempel tanpa isi.",
+          "enum": ["kunjungan", "telepon", "dokumen-usaha", "surel"]
+        }
+      },
+      "required": ["status"],
+      "additionalProperties": false
+    },
+    "photos": {
+      "type": "array",
+      "description": "Foto toko. HANYA dari setoran pemilik atau survei kita sendiri — tidak pernah dari Places, yang fotonya milik perorangan bernama di `authorAttributions` dan tidak pernah jadi milik Google untuk dilisensikan ulang. Ditegakkan L50-toko-lisensi.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "credit": { "type": "string", "minLength": 2 },
+          "license": { "enum": ["CC-BY-SA-4.0", "CC-BY-4.0"] },
+          "taken": { "type": "string", "format": "date" }
+        },
+        "required": ["path", "credit", "license"],
+        "additionalProperties": false
+      }
+    },
+    "contact": {
+      "type": "object",
+      "description": "Kontak USAHA, dan hanya bila pemiliknya menyetorkannya sendiri. Nomor pribadi yang dipanen dari mana pun tidak masuk ke sini — keputusan yang sama sudah diambil untuk penyuluh di skema BPP dan untuk narahubung di penarik LeSOS. Nama perorangan sengaja tidak punya medan.",
+      "properties": {
+        "phone": { "type": "string", "minLength": 6 },
+        "whatsapp": { "type": "string", "minLength": 6 },
+        "hours": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "sells": {
+      "type": "array",
+      "description": "Golongan sarana yang dijual. Sengaja kasar — petani mencari \"yang jual pupuk\", bukan SKU. Rincian per produk menunggu setoran pemilik yang memang mendaftarkan stoknya.",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": ["pupuk", "pestisida", "benih", "alsintan", "pakan", "sediaan-organik"]
+      }
+    }
+  },
+  "required": ["id", "key", "label", "lifecycle", "sourcing", "license", "claim"]
+}

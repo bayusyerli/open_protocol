@@ -1,7 +1,7 @@
 # Audit Permukaan `app/` — sembilan temuan, dan apa yang ternyata bersih
 
 > Audit · 23 Agustus 2026 · status **selesai; kesembilan temuan sudah diperbaiki**
-> Cakupan: kedelapan halaman di [`app/`](../app/) — beranda, jalur 1–6, dan `ukur.html`.
+> Cakupan: kedelapan halaman di [`app/`](../app/) — beranda, jalur 1–6, dan `peranti.html`.
 > Metode: sapuan statis atas seluruh berkas, lalu **pemeriksaan berjalan di peramban**
 > pada tiap halaman — bukan pembacaan kode saja.
 >
@@ -15,13 +15,13 @@
 | # | Temuan | Berat | Letak |
 |---|---|---|---|
 | 1 | ~~Pilihan tema tidak ikut keluar dari beranda~~ — **diperbaiki** | **besar** | `tema.js` baru, `gaya.css`, kedelapan HTML |
-| 2 | ~~Klaim *"nomor pendaftaran menaik"* tidak sepenuhnya benar~~ — **diperbaiki** | sedang | `bangun-indeks.mjs`, `jalur-1.js`, `bahan.js` |
+| 2 | ~~Klaim *"nomor pendaftaran menaik"* tidak sepenuhnya benar~~ — **diperbaiki** | sedang | `bangun-indeks.mjs`, `tanaman.js`, `bahan.js` |
 | 3 | ~~Satu tautan tanpa gaya — 1,72:1 di tema gelap~~ — **diperbaiki** | sedang | `gaya.css` |
 | 4 | ~~`tombolKembali()` mati, dan enam salinan penangannya hidup~~ — **diperbaiki** | sedang | `pustaka.js`, enam jalur |
 | 5 | ~~Setiap muat halaman membayar satu perjalanan pulang-pergi per berkas~~ — **diperbaiki** | sedang | `bangun-indeks.mjs`, `pustaka.js` |
 | 6 | ~~`batas.js` merender tingkat bukti yang sudah dinyatakannya cacat~~ — **diperbaiki** | kecil | `batas.js` |
 | 7 | ~~Jalur 2 melompat `h1 → h3`~~ — **diperbaiki** | kecil | enam HTML, `gaya.css` |
-| 8 | ~~Dua halaman menaut ke dirinya sendiri~~ — **diperbaiki** | kecil | `index.html`, `jalur-4.html` |
+| 8 | ~~Dua halaman menaut ke dirinya sendiri~~ — **diperbaiki** | kecil | `index.html`, `varietas.html` |
 | 9 | ~~Teks 12,5 px dan sasaran sentuh 17 px~~ — **diperbaiki** | kecil | `batas.css`, `gaya.css`, `beranda.css` |
 
 Bagian 2 mencatat apa yang **diperiksa dan ternyata bersih** — sama pentingnya, karena
@@ -48,7 +48,7 @@ Tombol tema menulis `data-tema` (bahasa Indonesia) ke `<html>` dan menyimpannya 
 berganti warna saat berpindah halaman.
 
 **Cara memeriksanya ulang.** Setel peranti ke tema **terang**, buka beranda, ketuk tombol
-tema sampai **gelap**, lalu buka `jalur-4.html`. Beranda gelap, jalur 4 terang — satu
+tema sampai **gelap**, lalu buka `varietas.html`. Beranda gelap, jalur 4 terang — satu
 ketukan, dua tampilan. Terbalik juga berlaku.
 
 > Ini bukan cacat kecil yang kebetulan lolos. Commit terakhir berjudul *"Tema satu ikon
@@ -81,7 +81,7 @@ Dua tabel merek mencetak kalimat yang sama:
 > Diurutkan menurut **nomor pendaftaran menaik** — tanpa peringkat, tanpa slot berbayar.
 
 Pengurutannya `String(a.daftar).localeCompare(b.daftar)` — perbandingan **teks**, di
-`spec/tools/bangun-indeks.mjs:599` dan sekali lagi di `app/jalur-1.js:231`. Nomor
+`spec/tools/bangun-indeks.mjs:599` dan sekali lagi di `app/tanaman.js:231`. Nomor
 pendaftarannya tidak seragam:
 
 | Panjang nomor | Jumlah (dari 4.000 sampel pestisida) |
@@ -117,7 +117,7 @@ situ. Kalau kolom nomornya tidak ditampilkan, jangan menyebut nomor sebagai kunc
 > depan — menaruhnya di puncak persis terbaca sebagai slot teratas — dan nama jadi
 > pemutus supaya keluarannya tetap deterministik.
 >
-> Pengurutan ulang di `jalur-1.js` **dibuang**: ia memakai pembanding lama dan akan
+> Pengurutan ulang di `tanaman.js` **dibuang**: ia memakai pembanding lama dan akan
 > membatalkan perbaikan ini tepat di layar yang menampilkan nomornya. Sekarang satu
 > otoritas urutan, di pembangun indeks.
 >
@@ -133,7 +133,7 @@ situ. Kalau kolom nomornya tidak ditampilkan, jangan menyebut nomor sebagai kunc
 `gaya.css` hanya mewarnai `.lain a`. Satu tautan berada di luar pembungkus itu:
 
 ```
-jalur-6.html:64   <p><a href="jalur-5.html">Meramu pupuk sendiri — jalur 5 →</a></p>
+pengendali-sendiri.html:64   <p><a href="pupuk-sendiri.html">Meramu pupuk sendiri — jalur 5 →</a></p>
 ```
 
 Ia mewarisi biru bawaan peramban `#0000EE`. Di tema gelap (`--latar: #16181a`) rasionya
@@ -156,8 +156,8 @@ permukaan. Disapu ke kedelapan halaman: hanya tautan ini.
 "kembali ke hasil pencarian". **Tidak ada satu pun berkas yang memanggilnya.** Sementara
 itu keenam jalur memasang penangannya sendiri-sendiri:
 
-`jalur-1.js:287` · `jalur-2.js:162` · `jalur-3.js:301` · `jalur-4.js:38` ·
-`jalur-5.js:291` · `jalur-6.js:297`
+`tanaman.js:287` · `produk.js:162` · `harga-pupuk.js:301` · `cek-varietas.js:38` ·
+`pupuk-sendiri.js:291` · `pengendali-sendiri.js:297`
 
 Konstanta `HTML_KEMBALI` di berkas yang sama **dipakai** tiga tempat, jadi yang terpecah
 bukan tombolnya melainkan perilakunya. Dua ekspor lain juga tidak terpakai di luar
@@ -187,7 +187,7 @@ Tidak ada gejala di layar: keenam salinan berperilaku sama **hari ini**.
 `ambil()` di `pustaka.js:24` memakai `cache: 'no-cache'` — peramban selalu bertanya ke
 server, bahkan untuk berkas yang tidak berubah.
 
-Terukur pada muatan kedua `jalur-4.html`:
+Terukur pada muatan kedua `varietas.html`:
 
 | | |
 |---|---|
@@ -281,7 +281,7 @@ jalur 2 yang tidak.
 
 ### 8 · Dua halaman menaut ke dirinya sendiri — kecil
 
-`index.html` dan `jalur-4.html` memuat tautan ke dirinya sendiri di daftar `.lain`.
+`index.html` dan `varietas.html` memuat tautan ke dirinya sendiri di daftar `.lain`.
 Daftar itu ditulis tangan delapan kali; dua di antaranya sudah menyimpang.
 
 > **Diperbaiki 23 Agustus 2026.** Kedua tautan ke halaman sendiri dibuang; enam halaman
@@ -318,17 +318,17 @@ dengan syarat lapangan yang dinyatakan proyek ini sendiri.
 > 17 → **44 px**; di beranda "Tentang data" 17 → 44, tombol tema 34 → 44 (40×44 di layar
 > sempit), tautan kaki dan blok merek → 44.
 >
-> **Yang ikut ketahuan saat memverifikasi, dan ikut diperbaiki:** `ukur.html` punya dua
+> **Yang ikut ketahuan saat memverifikasi, dan ikut diperbaiki:** `peranti.html` punya dua
 > tombol dan **tidak ada satu pun aturan gaya untuknya** — keduanya bawaan peramban,
 > setinggi 22 px. Salah satunya menghapus seluruh catatan dan tidak bisa dibatalkan.
 > Keduanya kini 44 px, dan yang menghapus diberi rupa berbeda: dua tombol berdampingan
 > yang tampak sama membuat yang merusak sama mudahnya diketuk dengan yang tidak.
 >
 > **Yang sengaja dibiarkan**, dan alasannya:
-> - Tautan `jalur-6.html:64` setinggi 19 px — ia **di dalam kalimat**, dan WCAG 2.5.8
+> - Tautan `pengendali-sendiri.html:64` setinggi 19 px — ia **di dalam kalimat**, dan WCAG 2.5.8
 >   memang mengecualikan tautan sebaris di dalam kalimat. Membesarkannya merusak
 >   paragrafnya.
-> - Lencana `.lencana` 11,2 px, serta `dt` dan `.sumber` di `ukur.html` 12,8 px —
+> - Lencana `.lencana` 11,2 px, serta `dt` dan `.sumber` di `peranti.html` 12,8 px —
 >   di bawah ambang pilihan sendiri, tetapi menaikkannya mengubah irama daftar hasil,
 >   dan tidak satu pun disebut temuan ini.
 > - Skala kecil milik `beranda.css` (9–12 px pada label mata, `small`, dan cip jaringan)
@@ -359,8 +359,8 @@ permukaan rapuh.
   yang dijanjikan README.
 - **Galat konsol — nol** pada kedelapan halaman, termasuk sesudah membuka rincian,
   kartu bahan, dan resep.
-- **`id` ganda — nol**, termasuk setelah interaksi. Dua `#kembali` di `jalur-3.js` dan
-  `jalur-6.js` berada di cabang render yang saling meniadakan.
+- **`id` ganda — nol**, termasuk setelah interaksi. Dua `#kembali` di `harga-pupuk.js` dan
+  `pengendali-sendiri.js` berada di cabang render yang saling meniadakan.
 - **Nama kontrol — lengkap.** Tidak ada tombol tanpa nama, input tanpa label, atau
   tautan tanpa teks di kedelapan halaman.
 - **Urutan judul — bersih** di tujuh halaman; kekecualiannya temuan 7.

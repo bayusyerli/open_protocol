@@ -12,7 +12,7 @@ Sebagian besar petani tidak menjalankan protokol yang isinya karung bermerek. Me
 memformulasi sendiri: pupuk kandang, kompos, bokashi, MOL, pupuk organik cair,
 perbanyakan mikroba, dan pestisida nabati. Praktik ini nyata, murah, dan sepenuhnya
 tidak terlihat oleh sistem pencatatan pertanian mana pun — termasuk oleh Lapis 1
-Open Protocols sebelum dokumen ini.
+Pranatani sebelum dokumen ini.
 
 Penyebabnya bukan kelalaian, melainkan bentuk modelnya. Lapis 1 hanya punya dua
 tempat untuk masukan:

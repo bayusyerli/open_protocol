@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "5101010",
+  "nama_bps": "MELAYA",
+  "kode_dagri": "51.01.04",
+  "nama_dagri": "MELAYA"
+ },
+ {
+  "kode_bps": "5101020",
+  "nama_bps": "NEGARA",
+  "kode_dagri": "51.01.01",
+  "nama_dagri": "NEGARA"
+ },
+ {
+  "kode_bps": "5101021",
+  "nama_bps": "JEMBRANA",
+  "kode_dagri": "51.01.05",
+  "nama_dagri": "JEMBRANA"
+ },
+ {
+  "kode_bps": "5101030",
+  "nama_bps": "MENDOYO",
+  "kode_dagri": "51.01.02",
+  "nama_dagri": "MENDOYO"
+ },
+ {
+  "kode_bps": "5101040",
+  "nama_bps": "PEKUTATAN",
+  "kode_dagri": "51.01.03",
+  "nama_dagri": "PEKUTATAN"
+ }
+]

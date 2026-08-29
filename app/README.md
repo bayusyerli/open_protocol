@@ -6,18 +6,18 @@ aplikasi. Seluruh jawaban datang dari `spec/indeks/`.
 | Halaman | Jalur | Rancangan |
 |---|---|---|
 | `beranda.html` | — pintu depan: satu kotak pencarian, lalu diserahkan ke jalur yang punya perendernya | — |
-| `jalur-1.html` | 1 — masuk dari gejala: dugaan penyebab, dua cara memastikan, bahan aktif yang terdaftar | [`docs/04-jalur-insiden.md`](../docs/04-jalur-insiden.md) |
+| `tanaman.html` | 1 — masuk dari gejala: dugaan penyebab, dua cara memastikan, bahan aktif yang terdaftar | [`docs/04-jalur-insiden.md`](../docs/04-jalur-insiden.md) |
 | `index.html` | 2 — masuk dari kemasan: isi produk dan merek lain yang isinya sama | [`docs/05-jalur-produk.md`](../docs/05-jalur-produk.md) |
-| `jalur-3.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
-| `jalur-4.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
-| `jalur-5.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
-| `jalur-6.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
+| `harga-pupuk.html` | 3 — kalkulator: rupiah per kilogram hara, bukan per karung | [`docs/06-jalur-hitungan-hara.md`](../docs/06-jalur-hitungan-hara.md) |
+| `varietas.html` | 4 — benih & bibit: surat apa yang dipegang varietasnya | [`docs/07-jalur-keabsahan-benih-bibit.md`](../docs/07-jalur-keabsahan-benih-bibit.md) |
+| `pupuk-sendiri.html` | 5 — meramu pupuk sendiri: resep terbuka beserta kedudukan hukumnya | [`docs/08-jalur-sediaan-pupuk.md`](../docs/08-jalur-sediaan-pupuk.md) |
+| `pengendali-sendiri.html` | 6 — sediaan pengendali sendiri: **status hukum, bukan anjuran** | [`docs/09-jalur-sediaan-pengendali.md`](../docs/09-jalur-sediaan-pengendali.md) |
 | `takaran.html` | — kalibrasi semprot & takaran alat rumah tangga: aritmetika, bukan anjuran | D4 + D5 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `harga.html` | — harga komoditas: eceran harian nasional, riwayat, pola bulanan, komentar per seri, dan — untuk TBS sawit — tabel harga & rendemen per umur tanaman | C4 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) + [`docs/16`](../docs/16-sumber-harga-komoditas.md) |
-| `principal.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
-| `toko.html` | — direktori layanan: toko tani berkoordinat, dan penjual benih yang **tidak** bisa dituju | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
+| `perusahaan.html` | — profil badan pemegang pendaftaran: apa saja yang terdaftar atas namanya | C1 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
+| `toko.html` | — direktori layanan: empat pintu — toko tani berkoordinat, penjual benih yang **tidak** bisa dituju, balai penyuluhan, dan laboratorium | C7 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
 | `usaha.html` | — analisis usaha tani: RAB dan titik impas, dinyatakan sebagai **rasio** terhadap harga eceran | D3 pada [`docs/15`](../docs/15-kapabilitas-lintas-pemangku.md) |
-| `ukur.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
+| `peranti.html` | — instrumentasi: apa yang tercatat di peranti ini, dan apa yang tidak | [`docs/11-instrumentasi.md`](../docs/11-instrumentasi.md) |
 
 `beranda.html` tidak punya perender rincian sama sekali. Ia mencari, lalu menautkan
 ke jalur yang memang perendernya — produk dan **bahan aktif** ke jalur 2, varietas ke
@@ -52,12 +52,12 @@ kalau disalin: **namanya selalu tampil, tautannya hanya kalau badan itu ada di k
 576 varietas dipegang pemulia perorangan dan mereka sengaja tidak punya halaman profil —
 halaman bernama tentang orang adalah pemrosesan data pribadi tanpa dasar.
 
-`bahan.js` dan `varietas.js` sama-sama perender bersama, bukan halaman. Kartu
+`bahan.js` dan `layar-varietas.js` sama-sama perender bersama, bukan halaman. Kartu
 bahan+kadar di jalur 2 memakai kelas dan perilaku buka-tutup yang persis sama dengan
 kartu bahan jalur 1: keduanya menyatakan hal yang sama, dan memberinya dua rupa
 membuat orang mengira keduanya dua hal yang berbeda.
 
-`varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
+`layar-varietas.js` dipakai keduanya. Layar varietas muncul di jalur 4 lewat pintunya
 sendiri, dan di jalur 2 kalau yang dicari ternyata varietas — satu perender, dua
 pintu, supaya keduanya tidak menyimpang diam-diam.
 
@@ -103,7 +103,7 @@ menyajikan `app/` saja tidak cukup:
 python3 -m http.server 8742
 ```
 
-Buka `http://localhost:8742/app/beranda.html`. Konfigurasi `open-protocols` di
+Buka `http://localhost:8742/app/beranda.html`. Konfigurasi `pranatani` di
 `.claude/launch.json` sudah melakukan persis itu, dengan `autoPort` supaya tidak
 bertabrakan dengan sesi lain yang memakai repositori sama.
 
@@ -236,7 +236,7 @@ kenapa" memang berbeda di tiap jalur.
   semuanya menggambar blok merah di layar dan menulis ke konsol. Halaman yang tampak beres
   sambil diam-diam menjanjikan lebih dari yang bisa ditanggung datanya adalah persis
   kegagalan yang komponen ini dibangun untuk mencegah.
-- **`ukur.html` sengaja tidak ikut.** Ia tidak menjawab dari data mana pun — subjeknya
+- **`peranti.html` sengaja tidak ikut.** Ia tidak menjawab dari data mana pun — subjeknya
   hitungan di peranti pembaca sendiri, dan keempat medannya akan kosong artinya. Memberinya
   blok batas berarti mengambil `meta.json` 13,2 KB pada satu-satunya halaman yang seluruh
   isinya adalah "tidak ada yang dikirim ke mana pun".
@@ -308,6 +308,32 @@ jadi pemisahannya tidak terhindarkan — dan dua salinan akan menyimpang begitu 
 diperbaiki. Yang menahannya uji: keluaran keduanya dibandingkan untuk masukan yang sama
 (pindah tanam 2026-09-01, luas 0,28 ha) dan **identik** sampai ke tanggal, cacah, dan
 ketiga angka kebutuhan input.
+
+### Kontak darurat keracunan — dicabut, dan yang tersisa darinya
+
+Permukaan ini pernah memasang kartu kontak darurat BPOM di lima layar, ditambah strip
+lengket di empat di antaranya. Keduanya **dicabut**: menyalurkan orang ke pertolongan
+medis bukan bentuk jawaban yang dijanjikan permukaan ini, dan nomor yang perlu dipelihara
+sendiri — jam layanan, pengalihan di luar jam, nomor SMS — adalah utang perawatan atas
+janji yang tidak pernah dibuat. Label kemasan tetap tempat petunjuk pertolongan pertama
+berada, dan secara hukum memang wajib memuatnya.
+
+**Yang TIDAK ikut dicabut: pernyataan kekosongan datanya.** Dua di antaranya dulu tinggal
+di dalam kartu itu, dan keduanya kekosongan *data* — bukan anjuran medis — jadi tempatnya
+blok batas jawaban (B1), sama seperti lubang-lubang lain. Angkanya tetap **dihitung** dari
+`meta.jumlah`, tidak diketik, supaya klaimnya tidak basi diam-diam pada hari registri mulai
+memuatnya:
+
+| lubang | kunci `meta.tidakAda` | ada |
+|---|---|---|
+| tenggang panen (PHI) | `phi` | **0 dari 23.058** penggunaan berlabel |
+| kelas bahaya WHO | `kelasBahayaWho` | **1 dari 1.706** bahan aktif |
+| alat pelindung diri | `apdProduk` | **tidak ada medannya sama sekali** di registri produk terdaftar |
+
+Ketiganya dideklarasikan pada jalur 1, jalur 2, dan takaran — tiga layar yang dulu memuat
+blok `<details>` itu — dan pada halaman produk pestisida terbitan. Jalur 5 dan 6 tidak:
+keduanya sediaan buatan sendiri, sudah menampilkan APD per resep, dan lubang-lubang ini
+berbicara tentang produk *terdaftar*.
 
 ### Kosakata sebab kegagalan siklus — 15 sebab, 3 di antaranya dijamin
 
@@ -856,13 +882,36 @@ harus diterima supaya biaya semusim tertutup.
 
 ### Direktori layanan — C7
 
-`toko.html`. **Dua pintu, karena datanya memang dua bentuk** — dan yang paling menentukan
-di halaman ini bukan pencariannya melainkan pemisahannya.
+`toko.html`. **Empat pintu, karena datanya memang empat bentuk** — dan yang paling
+menentukan di halaman ini bukan pencariannya melainkan pemisahannya.
 
 | Kumpulan | Punya | Pintunya | Bisa dituju? |
 |---|---|---|---|
 | 234 · OpenStreetMap (ODbL) | koordinat, tanpa wilayah | jarak dari posisi pembaca | **ya** |
 | 2.248 · TTI Kementan + Pemkab Batang | nama + wilayah, tanpa koordinat | telusur menurut wilayah | **hampir tidak** |
+| 5.844 · SIMLUHTAN | nama + kecamatan binaan, tanpa alamat | nama kecamatan | **oleh yang tinggal di kecamatan itu** |
+| 889 · papan KAN | alamat, telepon, ruang lingkup | kemampuan yang perlu diuji | **ya** |
+
+**Keempatnya disebut sekaligus di kepala halaman, dan itu perubahan 25 Agustus 2026.**
+Sampai hari itu keempat pintu berdiri berurutan ke bawah: 7.269 px pada layar 812 px,
+laboratorium mulai di layar keempat dan balai penyuluhan di layar ketiga, dengan 115
+kendali sebelum satu huruf pun diketik — dan di antara pintu dua dan tiga berdiri kartu
+peringatan setinggi layar penuh yang terbaca seperti akhir halaman. Yang mendarat di sana
+praktis cuma tahu satu dari empat.
+
+Yang menggantikannya empat kartu pemilih yang muat satu layar, dan tiap kartu menyebut
+**keterjangkauan**-nya, bukan cuma namanya — kolom keempat tabel di atas, dijadikan hal
+pertama yang terbaca. Satu pintu terbuka pada satu waktu; keempat kartunya menyusut jadi
+baris tunggal dan tetap terlihat, jadi berpindah tidak menuntut menggulir kembali ke atas.
+Mendarat kini 1.966 px dan 61 kendali. Pintu yang terbuka ikut ditulis ke alamat
+(`?ada=toko|benih|bpp|lab`) lewat `replaceState` — bisa dibagikan dan bertahan saat dimuat
+ulang, tanpa merebut arti tombol Back, yang di halaman ini sudah dipakai menutup layar
+rincian.
+
+**Indeks tiap pintu baru diambil saat pintunya dibuka.** Keempatnya dulu ditarik sekaligus
+saat halaman dibuka — 12,7 + 8,4 + 40,2 + 3,1 KB di atas meta 27 KB — dan dibayar penuh
+juga oleh yang datang untuk satu pintu saja. Mendarat kini menarik meta saja. Cacah di
+kartu pemilih tidak ikut menunggu: angkanya memang sudah ada di meta.
 
 - **Satu angka di `docs/15` perlu dikoreksi.** Dokumen itu menyebut *"2.181 benih TTI
   beralamat"*. Terhitung dari berkasnya: hanya **92 dari 2.248 — 4,1%** — menyebut sesuatu
@@ -913,7 +962,7 @@ di halaman ini bukan pencariannya melainkan pemisahannya.
   | Atas permintaan | ±4,6 MB, 1.175 ember | Pencarian nama — produk, pupuk, varietas |
   | Menyusul saat dibuka | — | Rincian yang pernah dibuka bertahan; yang belum pernah dibuka tidak ada |
 
-- **Ukurannya disebut sebelum diketuk, bukan sesudah.** Tombolnya di `ukur.html` — halaman
+- **Ukurannya disebut sebelum diketuk, bukan sesudah.** Tombolnya di `peranti.html` — halaman
   yang memang tentang apa yang tersimpan di peranti — bukan di beranda: 4,6 MB adalah
   keputusan yang diambil sadar, bukan disodorkan di jalan orang mencari sesuatu.
 - **Aman karena URL-nya bercap.** Cache-first hanya boleh dipasang setelah pecahan diambil
@@ -937,7 +986,7 @@ di halaman ini bukan pencariannya melainkan pemisahannya.
   ketidaksanggupan pencarian nama dinyatakan di bawah hasil yang berhasil.
 - **Saat mengembangkan, cangkangnya harus dibuang dulu.** Sesudah A5 hidup, `sw.js`
   menyajikan HTML, CSS, dan modul dari cache — jadi perubahan berkas **tidak terlihat**
-  sampai `VERSI` di `sw.js` dinaikkan atau cache dibuang lewat tombol di `ukur.html`. Ini
+  sampai `VERSI` di `sw.js` dinaikkan atau cache dibuang lewat tombol di `peranti.html`. Ini
   bukan cacat; ia justru buktinya bekerja, tetapi ia akan membuang waktu siapa pun yang
   lupa.
 - **Dan membuang cangkangnya saja belum cukup.** `python3 -m http.server` tidak mengirim
@@ -956,7 +1005,7 @@ di halaman ini bukan pencariannya melainkan pemisahannya.
 ### Antrean pertanyaan tak terjawab — B4
 
 Tiap "tidak sanggup" yang ditampilkan hari ini menghilang begitu layar ditutup. Dicatat,
-ia jadi peta permintaan data. Tercacah di `ukur.js`, terbaca di `ukur.html`.
+ia jadi peta permintaan data. Tercacah di `ukur.js`, terbaca di `peranti.html`.
 
 - **B1 menyatakan lubangnya; B4 menghitung berapa kali ia ditabrak.** Keenam kunci sama
   persis dengan `meta.tidakAda`, yang sudah tercetak di tiap layar lewat blok batas
@@ -991,7 +1040,7 @@ dosis label yang benar jadi salah begitu kalibrasi tangki keliru.
 - **Bukan jalur ketujuh, dan itu keputusan.** Enam pintu ditetapkan
   [`docs/03-enam-pintu.md`](../docs/03-enam-pintu.md), dan `ukur.js` menghitung **per
   jalur** menurut tabel di [`docs/11`](../docs/11-instrumentasi.md). Menomorinya jadi
-  jalur 7 mengubah tabel itu; ia berdiri sebagai layar utilitas seperti `ukur.html`,
+  jalur 7 mengubah tabel itu; ia berdiri sebagai layar utilitas seperti `peranti.html`,
   ditautkan dari kesembilan halaman.
 - **Ditulis untuk orang yang tidak memilih dosisnya.** Ditanya siapa yang menakar di
   lahan, jawabannya *"keduanya"* — petani **dan** buruh semprot, dan yang kedua menerima
@@ -1197,6 +1246,59 @@ Arah sebaliknya, dari tabel merek ke rincian produk:
   seluruh indeks. Tidak satu berkas pun melewati anggaran 48 KB sesudahnya; yang gemuk
   dipecah lebih banyak oleh pemecah yang sudah ada.
 
+### Logo badan di halaman profil — dan sembilan yang tidak jadi
+
+Slot logonya kosong sebelum ini, dan yang mengisinya bukan sekadar penyaji: repositori tidak
+punya satu pun logo BADAN. Yang ada tiga logo MEREK di manifes gambar produk — DAUN SAWIT,
+LAO YING, KANCIL EMAS — dan catatannya sendiri menyebut lingkupnya: *"berlaku untuk seluruh
+merek, bukan untuk satu pendaftaran"*. Memakainya sebagai logo perusahaan berarti menuliskan
+lambang satu lini produk sebagai lambang badan yang memegangnya.
+
+- **Skema sendiri, dan pemisahannya bukan kerapian.** `product-image.schema.json` mewajibkan
+  `brand_key` dan `brand.name` — nama dagang persis seperti tertulis di registri. Badan bukan
+  merek: PT Petrokimia Gresik memegang PHONSKA, PETROGANIK, dan puluhan lainnya. Menuliskan
+  nama badan di medan yang skemanya sendiri sebut nama dagang menghapus perbedaan itu untuk
+  selamanya. Jadi `principal-logo.schema.json`, berkunci `principal_key`.
+- **`robots.txt` diperiksa sebelum satu berkas pun diunduh** (panduan panen pasal 4h). Dari 94
+  badan bersitus: 68 mengizinkan, 15 tanpa `robots.txt`, **7 melarang** — enam menyebut perayap
+  AI dengan `Disallow: /` atau `Content-Signal` yang menolak `ai-train`, satu melarang semua
+  perayap. Ketujuhnya dilewati, dan yang melarang tetap tercatat namanya supaya tidak
+  diperiksa ulang setiap gelombang.
+- **Kendali jangkauan dijalankan lebih dulu.** Ketujuh situs kendali menjawab 200, termasuk
+  tiga yang blok /24-nya pernah buta pada 22 Agustus. Tanpa itu, 19 situs yang tak terjangkau
+  hari ini akan tercatat sebagai sifat situsnya, bukan sifat titik pandang kita.
+- **Nama registrinya dicari di dalam halamannya sendiri.** Sambungan badan→situs berasal dari
+  `profile.website`, tingkat bukti D — laporan agen riset, belum diverifikasi. Logo yang benar
+  dari situs yang salah menempelkan lambang perusahaan lain ke halaman profil, dan itu jauh
+  lebih buruk daripada slot kosong. Kata lazim (PT, Indonesia, Jaya, Makmur) tidak dihitung
+  sebagai kecocokan; ia ada di hampir tiap nama badan.
+- **Peringkat otomatis memilih dengan percaya diri, dan sering keliru.** Dari 49 calon
+  teratas, mata menolak sepuluh: logo ASEAN Indonesia 2023 untuk Pupuk Indonesia, ikon centang
+  antarmuka untuk Corteva, foto ruang rapat untuk Masco, ikon bendera pemilih bahasa untuk
+  East West Seed, logo ID FOOD untuk PG Rajawali II, logo AMERICAN TAKII untuk Takii
+  Indonesia. Ronde kedua atas calon ke-2 sampai ke-6 memulihkan tujuh. **Tidak ada peringkat
+  yang bisa menggantikan melihatnya**, dan itu sebabnya angkanya 39, bukan 49.
+- **Sembilan tetap tanpa logo, dan sebabnya ditulis satu per satu** di `pilihan.json` — mulai
+  dari "situsnya hanya memuat foto lahan" sampai "yang ada logo induknya, bukan badan ini".
+- **Diuji di latar GELAP, bukan hanya terang.** Sepuluh dari 39 logo bertulisan gelap di latar
+  transparan; di tema gelap tanpa perlakuan, namanya hilang sama sekali. Yang menyesuaikan
+  **latarnya, bukan logonya**: piring putih yang warnanya sama di kedua tema. Logo merek dagang
+  tidak diwarnai ulang, tidak dibalik, dan tidak dipotong tandanya — dipakai apa adanya atau
+  tidak dipakai sama sekali.
+- **Tiga hal dinyatakan di bawah logonya**, dan ketiganya menahan salah baca: ia logo yang
+  dipasang badan itu di situsnya sendiri; ia bukan lencana mitra dan bukan tanda hubungan
+  dengan platform ini; dan sambungannya bertingkat bukti D, dengan jumlah kata yang cocok
+  ikut disebut.
+- **Ketiadaannya berbunyi.** 39 dari 3.136, jadi keadaan yang lazim adalah tanpa — dan kepala
+  kartu yang diam-diam kosong terbaca sebagai "badan ini kurang resmi". Angkanya dibaca dari
+  meta, tidak diketik: panen tumbuh sedangkan prosa diam.
+- **Keputusan penerbitannya perluasan, dan dicatat seperti yang pertama.** Keputusan 23
+  Agustus 2026 di kepala `terbitkan.mjs` menyebut gambar kemasan; logo bukan gambar kemasan.
+  Perluasannya ditulis di kepala `terbitkan-logo.mjs` beserta dua kewajiban tambahan yang
+  memang hanya dibawa merek dagang. Membalikkannya semurah yang pertama: hapus berkas
+  `*__logo__*` dari `app/gambar/`, bangun ulang indeks, dan tiap slot jatuh ke placeholder
+  tanpa satu pun perubahan kode.
+
 ### Kotak tanya multimoda — A1
 
 Kotaknya sudah ada sejak beranda dibangun; yang belum, semua jalur tersambung ke sana.
@@ -1232,6 +1334,72 @@ tidak bisa dicapai darinya sama sekali**.
   persis yang ditolak jalur 1 — *"mesin tidak menebak"*. Masuk lewat gambar dan suara
   adalah kapabilitas tersendiri yang **ditunda**, dan layar mengatakannya di lembar
   "Tentang data" alih-alih membiarkan orang mencari tombol kamera yang tidak ada.
+
+### Kalimat diterima sebagai kalimat — A1, lanjutannya
+
+Kotak itu menerima kalimat sejak hari pertama; yang tidak pernah ada cara membacanya.
+`rapikan()` membuang seluruh spasi lalu mencari untaian hasilnya di dalam **nama** entri —
+tepat untuk satu kata, dan **selalu nol untuk satu kalimat**. Ketiga contoh yang diminta
+pemilik pada 24 Agustus 2026 ketiganya dijawab nol, tanpa satu pun galat:
+
+| Yang diketik | Yang dicari kepala pencarian | Hasil |
+|---|---|---|
+| `Phonska produk perusahaan apa?` | `phonskaprodukperusahaanapa` | 0 |
+| `Apa saja varietas alpukat untuk 500 mdpl?` | `apasajavarietasalpukatuntuk500mdpl` | 0 |
+| `Kapan waktu yang cocok untuk menanam cabai?` | `kapanwaktuyangcocokuntukmenanamcabai` | 0 |
+
+- **`app/tanya.js` menggolongkan kata, bukan membuangnya.** Tujuh golongan: istilah yang
+  dicari, jenis yang menyempitkan, atribut yang ditanyakan, **nilai yang ditolak dijawab**,
+  waktu, tindakan, dan ukuran. Kueri satu kata melewati jalan yang sama persis seperti
+  dulu — satu istilah, satu ember, urutan yang sama.
+- **Golongan `nilai` yang paling menentukan, dan ia bukan urusan tata bahasa.** "cocok",
+  "terbaik", "paling ampuh", "aman" adalah permintaan **peringkat**, dan registri mencatat
+  izin edar — bukan mutu, bukan kemanjuran, bukan kecocokan. Kata itu dikeluarkan dari
+  pencarian **lalu disebutkan di layar**: daftar yang muncul sesudah kata "terbaik" akan
+  dibaca sebagai peringkat, dan itu kekeliruan yang jauh lebih mahal daripada nol hasil.
+- **Tiap kata mengambil embernya sendiri.** PHONSKA tinggal di ember `ph` dan tidak akan
+  pernah terambil dari `pe`, jadi "phonska petrokimia" tidak bisa dijawab dengan satu
+  pengambilan. Tiga istilah terpanjang saja yang diambil — kalimat yang lebih panjang tidak
+  menyempit lebih jauh, dan tiap ember tambahan satu perjalanan lagi di sinyal buruk.
+- **DAN kalau bisa, ATAU kalau tidak.** Kalau ada entri yang mencocoki seluruh kata, hanya
+  itu yang tampil. Kalau tidak ada satu pun, saringannya dilonggarkan jadi "cocok salah
+  satu" dan hasilnya diurutkan menurut berapa kata yang cocok. Untaian penuh tetap menang
+  di urutan teratas.
+- **Saringan jenis LUNAK, dan penjatuhannya dilaporkan.** "perusahaan" pada *Phonska produk
+  perusahaan apa* menyebut jenis `principal`, tetapi tidak ada badan bernama Phonska.
+  Menyaring dengan keras akan menjawab nol untuk pertanyaan yang jawabannya justru lengkap.
+- **Satu kalimat fakta terdaftar, bukan bentuk jawaban kelima.** "Terdaftar atas nama PT
+  Petrokimia Gresik" disusun dari medan yang **sudah** tercetak di kartu hasilnya. Aturannya
+  dua tingkat, dan tingkat kedua yang penting: nama dagang tidak eksklusif di registri —
+  17 pendaftaran berawalan "Phonska" dipegang **empat badan**. Yang menjawab entri yang
+  bernama *persis* itu; sisanya tetap dihitung dan tetap disebutkan.
+- **234 pintu komoditas.** `/tanaman/alpukat/` sudah menyebut 145 varietas sejak halaman
+  pertama diterbitkan; yang tidak pernah ada cuma jalan dari kotak cari ke sana. Satu baris
+  per komoditas, bukan alias per varietas — 145 kartu varietas yang tidak bisa dibedakan
+  satu sama lain akan terbaca sebagai peringkat, dan registri tidak memuat satu pun sifat
+  yang membuat salah satunya lebih pantas dipilih.
+- **Kata pembeda nama OPT jadi alias.** 113 dari 198 nama OPT berproduk diawali kata
+  golongan — "Penyakit" 53 kali, "Hama" 21 kali — jadi embernya ditentukan kata yang tidak
+  membedakan apa pun. "trips" tidak menemukan "Hama Trips"; sekarang menemukannya.
+- **Ambang agroklimat terbit.** `agroklimat.json` — kelima skema, ambangnya utuh, beserta
+  terbitan asalnya. "500 mdpl" dijawab **Dataran menengah** (400–700 m) *dan* **Zona panas**
+  Junghuhn (0–700 m); keduanya benar untuk angka yang sama, dan memilih salah satunya
+  diam-diam menyembunyikan bahwa istilah harian itu punya dua arti yang sah. Jawabannya
+  hampir seluruhnya berupa **batas**: nol dari 11.227 varietas membawa sifat agronomi, jadi
+  kelas itu **tidak bisa** dipakai menyaring daftar varietas.
+- **Perutean niat mencocokkan kumpulan kata, bukan untaian berurutan.** "kapan tanam" kini
+  cocok pada "Kapan waktu yang cocok untuk menanam cabai" — kedua katanya ada, terpisah
+  lima kata dan berimbuhan. Sebelumnya kalimat itu menyebut "pintunya di bawah" sementara
+  tidak ada satu pun pintu yang digambar.
+- **Nol punya dua bentuk sekarang.** "Tidak ada yang cocok dengan X" untuk nama yang dicari
+  dan tidak ada padanannya; "tidak ada nama yang bisa dicari di pertanyaan itu" untuk
+  pertanyaan yang memang tidak menyebut satu pun nama. Menjawab keduanya dengan kalimat
+  yang sama membuat yang kedua terbaca sebagai "produknya tidak terdaftar", padahal tidak
+  ada produk yang ditanyakan.
+
+Diuji `spec/tools/uji-tanya.mjs` — 100 uji, dijalankan `npm run uji-terbit` **sesudah**
+indeks dibangun karena ia menjalankan `cari()` yang sungguhan di atas indeks yang
+benar-benar terbit, dengan `fetch` disulih pembaca berkas.
 
 ### Kamus nama lokal — A3
 
@@ -1344,7 +1512,7 @@ mencobanya untuk tahu.
   sini: produk dan bahan aktif diserahkan ke jalur 2 — pertanyaannya sama-sama
   "sebenarnya ini apa" — varietas ke jalur 4, gejala dan nama lokal ke jalur 1 karena
   di sanalah blok "pastikan dulu" berada, sediaan ke jalur 5 atau 6 menurut rezimnya,
-  perusahaan ke `principal.html`, dan komoditas ke `harga.html`. Satu layar rincian,
+  perusahaan ke `perusahaan.html`, dan komoditas ke `harga.html`. Satu layar rincian,
   satu tempat — kalau disalin ke sini, keduanya akan menyimpang begitu salah satunya
   diperbaiki.
 - **Yang bisa dicari disebut sebelum ada yang diketik — kesebelasnya.** Kotak kosong
@@ -1353,9 +1521,60 @@ mencobanya untuk tahu.
   gejala, nama varietas. Tujuh yang lain sudah bisa dicari berbulan-bulan — nama
   pestisida, nama lokal hama, nama OPT registri, resep sediaan, perusahaan, harga
   komoditas, dan pertanyaan tentang alatnya — dan tidak satu pun disebut. Aturannya
-  sekarang bisa diperiksa, bukan diingat: **satu keping per kelompok hasil.** Keping
-  tanpa kelompok menjanjikan yang tidak ada; kelompok tanpa keping menyembunyikan yang
+  sekarang bisa diperiksa, bukan diingat: **satu contoh per kelompok hasil.** Contoh
+  tanpa kelompok menjanjikan yang tidak ada; kelompok tanpa contoh menyembunyikan yang
   ada. Kesebelasnya diuji balik terhadap indeks — tidak satu pun berakhir nol.
+- **Menyebut kesebelasnya dengan sebelas keping berlabel memakan satu layar penuh.**
+  Bentuk pertamanya kisi sebelas keping, tiap keping dua tingkat teks — label golongan
+  di atas, contoh di bawah. Ia benar dan ia tidak terbaca: pada 375 × 812 px kartunya
+  **1.005 px**, sementara yang tersisa dari puncak kartu sampai batas layar cuma 715 px.
+  Yang jatuh di bawah batas persis dua hal yang paling perlu dibaca sebelum mengetik —
+  baris keping terakhir, dan seluruh paragraf 71 kata yang menerangkan apa yang diterima
+  kotaknya. Keterangan yang ditulis supaya dibaca lebih dulu, diletakkan di tempat yang
+  membuat itu mustahil. Tinggi kepingnya juga bergerigi 61–81 px, karena kolom selebar
+  sama memaksa "Patek" dan "Petrokimia Gresik" ke lebar yang sama.
+- **Yang dipangkas ongkos labelnya, bukan cakupannya — tiga kali, bukan sebelas.**
+  Kesebelas contoh dibagi tiga baris berlabel, dan tiap label membawa baris kecil yang
+  menyebut golongan di dalamnya. Kesebelas macamnya masih tertulis sebelum ada yang
+  diketik: baca ketiga baris kecil itu berturut-turut dan kesebelasnya tersebut. Uji
+  lamanya tetap jalan pada markup baru — satu contoh per kelompok hasil, kesebelasnya
+  diuji balik terhadap indeks, tidak satu pun nol. Kartunya turun ke **714 px**, muat
+  utuh di satu layar, dan papan enam jalur naik dari 1.158 px ke 867 px.
+- **Nama golongan tidak hilang dari pembaca layar meski hilang dari layar.** Dulu tiap
+  keping membawa label golongannya sebagai `<small>`, jadi nama terbacanya "Nama lokal
+  hama Patek". Pil hanya membawa contohnya, jadi labelnya pindah ke `.khusus-pembaca`
+  di dalam tombol yang sama: nama terbacanya tetap "Nama lokal hama: Patek", nol piksel.
+  Tiap baris juga `role="group"` ber-`aria-labelledby` ke judulnya sendiri.
+- **Ketiga nama golongannya klaim editorial, dan itu risiko yang disadari.**
+  `beranda.js` mengelompokkan hasil menurut kelompok hasilnya, bukan menurut "yang ada
+  di tangan" atau "yang terlihat di kebun" — jadi ketiga ember itu tafsiran, bukan
+  turunan kode. Ujinya ada dan **belum dijalankan**: bacakan ketiga label ke orang yang
+  benar-benar memakainya, lalu minta ia menaruh "Biosaka" dan "Cabai merah keriting".
+  Kalau ia ragu, embernya yang salah, dan bentuk penggantinya sudah diketahui — satu
+  baris pil tanpa golongan sama sekali, 584 px, dengan kesebelas nama golongan disebut
+  dalam satu baris di atasnya.
+- **Dua urutan, dan keduanya punya alasan.** Urutan *barisnya* mengikuti papan jalur di
+  bawahnya, yang dibuka jalur 1: yang terlihat di kebun lebih dulu, karena yang panik
+  tahu daunnya mengeriting sebelum ia tahu nama apa pun. Urutan contoh *di dalam* tiap
+  baris tetap urutan kelompok hasil di `gambar()` — lokal, gejala, bahan, harga, badan,
+  nama, niat.
+- **Sasaran ketuk pilnya 40 px, dan angka itu ditentukan jaraknya — bukan dipilih dari
+  pedoman lalu diharap muat.** Meninggikan pilnya sendiri sampai 44 px menambah 69 px ke
+  kartu dan mendorong kalimat penutup ke bawah batas layar lagi, jadi yang ditinggikan
+  daerah ketuknya lewat `::after`. Tetapi perluasan itu punya langit-langit yang keras:
+  dua baris pil yang membungkus berjarak 6 px, jadi 44 px (5 px + 5 px) membuat daerah
+  ketuk baris atas dan bawah **bertindihan 4 px** — dan `elementFromPoint` 4 px di bawah
+  "Patek" memang mengembalikan pil di bawahnya. Ketukan yang mendarat di pil yang salah
+  persis kegagalan yang aturan 44 px ada untuk mencegah, jadi 34 + 3 + 3 = **40 px**:
+  setinggi yang bisa dicapai tanpa satu piksel pun bertindihan, jauh di atas 24 px yang
+  diminta WCAG 2.5.8. Kesebelas pil diuji balik — tidak satu pun tindihan tersisa.
+- **Paragraf 71 kata dipotong jadi satu kalimat, dan tidak ada isi yang hilang.** Yang
+  tinggal cuma kalimat yang tidak ada di tempat lain: nama di kemasan sering berbeda
+  dari nama terdaftarnya. Sisanya — kesebelas golongan beserta batas masing-masing, dan
+  aturan "yang keluar pintu, bukan jawaban" — sudah ditulis **lebih lengkap** di lembar
+  "Tentang data" di bawah judul "Yang bisa dicari, dan sampai mana", dan tombolnya ada
+  di ujung kalimat itu. Paragraf lamanya mengulangi lembar itu kata demi kata, 232 px,
+  seluruhnya di bawah batas layar.
 - **Menunggu sampai hasilnya nol adalah cara termahal memberi tahu.** Yang mengetik
   nama pestisidanya lalu dijawab kosong menyimpulkan barangnya tidak terdaftar; yang
   meleset sebenarnya cuma dugaannya tentang apa yang boleh diketik.

@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "9427010",
+  "nama_bps": "SUPIORI SELATAN",
+  "kode_dagri": "91.19.01",
+  "nama_dagri": "SUPIORI SELATAN"
+ },
+ {
+  "kode_bps": "9427011",
+  "nama_bps": "KEPULAUAN ARURI",
+  "kode_dagri": "91.19.04",
+  "nama_dagri": "KEPULAUAN ARURI"
+ },
+ {
+  "kode_bps": "9427020",
+  "nama_bps": "SUPIORI UTARA",
+  "kode_dagri": "91.19.02",
+  "nama_dagri": "SUPIORI UTARA"
+ },
+ {
+  "kode_bps": "9427021",
+  "nama_bps": "SUPIORI BARAT",
+  "kode_dagri": "91.19.05",
+  "nama_dagri": "SUPIORI BARAT"
+ },
+ {
+  "kode_bps": "9427030",
+  "nama_bps": "SUPIORI TIMUR",
+  "kode_dagri": "91.19.03",
+  "nama_dagri": "SUPIORI TIMUR"
+ }
+]

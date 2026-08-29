@@ -80,7 +80,7 @@ memang sepatutnya tidak. Janji yang dijalankan mesin dan diuji di
 ### D7 — Pemetaan luar wajib, atau alasan tertulis wajib
 
 Aturan `L9`. Tanpa ini, membuat istilah sendiri selalu lebih cepat daripada mencari
-padanan yang sudah ada, dan dalam enam bulan kosakata Open Protocols akan jadi pulau
+padanan yang sudah ada, dan dalam enam bulan kosakata Pranatani akan jadi pulau
 terpencil yang tidak bisa ditukar dengan siapa pun.
 
 `no_mapping_reason` sengaja diberi panjang minimum supaya tidak bisa diisi "-".

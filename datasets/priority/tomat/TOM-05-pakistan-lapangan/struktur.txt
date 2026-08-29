@@ -1,0 +1,79 @@
+# Struktur Tomato_Leaf_Disease_Dataset_Pakistan.zip
+
+## file(1)
+raw/Tomato_Leaf_Disease_Dataset_Pakistan.zip: Zip archive data, at least v2.0 to extract, compression method=store
+
+## unzip -t (2 baris terakhir)
+    testing: Tomato Dataset/README.md   OK
+No errors detected in compressed data of raw/Tomato_Leaf_Disease_Dataset_Pakistan.zip.
+
+## Direktori
+Tomato Dataset/Augmented Dataset/
+Tomato Dataset/Augmented Dataset/test/
+Tomato Dataset/Augmented Dataset/test/Tomato_Early_Blight/
+Tomato Dataset/Augmented Dataset/test/Tomato_Healthy/
+Tomato Dataset/Augmented Dataset/test/Tomato_leaf_late_blight/
+Tomato Dataset/Augmented Dataset/test/Tomato_leaf_yellow_curl_virus/
+Tomato Dataset/Augmented Dataset/test/Tomato_mold_leaf/
+Tomato Dataset/Augmented Dataset/test/Tomato_septora_leaf_spot/
+Tomato Dataset/Augmented Dataset/train/
+Tomato Dataset/Augmented Dataset/train/Tomato_Early_Blight/
+Tomato Dataset/Augmented Dataset/train/Tomato_Healthy/
+Tomato Dataset/Augmented Dataset/train/Tomato_leaf_late_blight/
+Tomato Dataset/Augmented Dataset/train/Tomato_leaf_yellow_curl_virus/
+Tomato Dataset/Augmented Dataset/train/Tomato_mold_leaf/
+Tomato Dataset/Augmented Dataset/train/Tomato_septora_leaf_spot/
+Tomato Dataset/Augmented Dataset/val/
+Tomato Dataset/Augmented Dataset/val/Tomato_Early_Blight/
+Tomato Dataset/Augmented Dataset/val/Tomato_Healthy/
+Tomato Dataset/Augmented Dataset/val/Tomato_leaf_late_blight/
+Tomato Dataset/Augmented Dataset/val/Tomato_leaf_yellow_curl_virus/
+Tomato Dataset/Augmented Dataset/val/Tomato_mold_leaf/
+Tomato Dataset/Augmented Dataset/val/Tomato_septora_leaf_spot/
+Tomato Dataset/Dataset (raw)/
+Tomato Dataset/Dataset (raw)/Tomato_Early_blight_leaf/
+Tomato Dataset/Dataset (raw)/Tomato_Healthy_leaf/
+Tomato Dataset/Dataset (raw)/Tomato_leaf_late_blight/
+Tomato Dataset/Dataset (raw)/Tomato_leaf_yellow_curl_virus/
+Tomato Dataset/Dataset (raw)/Tomato_mold_leaf/
+Tomato Dataset/Dataset (raw)/Tomato_Septoria_leaf_spot/
+
+## Cacah gambar per direktori
+ 840 Tomato Dataset/Augmented Dataset/train/Tomato_septora_leaf_spot/
+ 840 Tomato Dataset/Augmented Dataset/train/Tomato_mold_leaf/
+ 840 Tomato Dataset/Augmented Dataset/train/Tomato_leaf_yellow_curl_virus/
+ 840 Tomato Dataset/Augmented Dataset/train/Tomato_leaf_late_blight/
+ 840 Tomato Dataset/Augmented Dataset/train/Tomato_Healthy/
+ 840 Tomato Dataset/Augmented Dataset/train/Tomato_Early_Blight/
+ 240 Tomato Dataset/Augmented Dataset/val/Tomato_septora_leaf_spot/
+ 240 Tomato Dataset/Augmented Dataset/val/Tomato_mold_leaf/
+ 240 Tomato Dataset/Augmented Dataset/val/Tomato_leaf_yellow_curl_virus/
+ 240 Tomato Dataset/Augmented Dataset/val/Tomato_leaf_late_blight/
+ 240 Tomato Dataset/Augmented Dataset/val/Tomato_Healthy/
+ 240 Tomato Dataset/Augmented Dataset/val/Tomato_Early_Blight/
+ 195 Tomato Dataset/Dataset (raw)/Tomato_Septoria_leaf_spot/
+ 186 Tomato Dataset/Dataset (raw)/Tomato_mold_leaf/
+ 137 Tomato Dataset/Dataset (raw)/Tomato_Healthy_leaf/
+ 120 Tomato Dataset/Augmented Dataset/test/Tomato_septora_leaf_spot/
+ 120 Tomato Dataset/Augmented Dataset/test/Tomato_mold_leaf/
+ 120 Tomato Dataset/Augmented Dataset/test/Tomato_leaf_yellow_curl_virus/
+ 120 Tomato Dataset/Augmented Dataset/test/Tomato_leaf_late_blight/
+ 120 Tomato Dataset/Augmented Dataset/test/Tomato_Healthy/
+ 120 Tomato Dataset/Augmented Dataset/test/Tomato_Early_Blight/
+ 119 Tomato Dataset/Dataset (raw)/Tomato_Early_blight_leaf/
+ 113 Tomato Dataset/Dataset (raw)/Tomato_leaf_late_blight/
+  80 Tomato Dataset/Dataset (raw)/Tomato_leaf_yellow_curl_virus/
+   3 Tomato Dataset/
+
+## Ekstensi
+  18 JPG
+   1 jpeg
+8011 jpg
+   1 md
+   1 pdf
+   1 txt
+
+## RINGKASAN PENTING
+   'Dataset (raw)'      = 830 gambar asli (195+186+137+119+113+80)
+   'Augmented Dataset'  = 7.200 gambar augmentasi (train 5.040 + val 1.440 + test 720)
+   Total berkas gambar  = 8.030. Angka '7.200 gambar' di deskripsi sumber = SET AUGMENTASI, bukan foto asli.

@@ -1,0 +1,15 @@
+TOM-01-plantvillage	https://github.com/spMohanty/PlantVillage-Dataset	PlantVillage Dataset (color/grayscale/segmented, 38 kelas, 14 tanaman)	datasets/additional/TOM-01-plantvillage
+TOM-02-tomato-village-lapangan	https://github.com/mamta-joshi-gehlot/Tomato-Village	Tomato-Village: dataset penyakit tomat lapangan (Rajasthan, India)	datasets/priority/tomat/TOM-02-tomato-village-lapangan
+TOM-03-taiwan-daun-tomat	10.17632/ngdgg79rzb.1	Dataset of Tomato Leaves (Taiwan Tomato Leaves Dataset)	datasets/priority/tomat/TOM-03-taiwan-daun-tomat
+TOM-04-tomat-9-kelas-zenodo	10.5281/zenodo.15868288	A dataset for tomato disease detection (9 kelas + sehat)	datasets/priority/tomat/TOM-04-tomat-9-kelas-zenodo
+TOM-05-pakistan-lapangan	10.17632/3mbnb82mxd.2	Tomato Leaf Disease Classification Dataset in Pakistan (lapangan, 7.200 gambar)	datasets/priority/tomat/TOM-05-pakistan-lapangan
+TOM-06-daun-buah-lapangan-bd	10.17632/9jxvtgh325.1	Tomato Leaf and Fruit Disease Image Dataset (Bangladesh, lapangan)	datasets/priority/tomat/TOM-06-daun-buah-lapangan-bd
+TOM-07-tfdd-buah-tomat	10.17632/ktfnhjspjn.3	TFDD: High-Quality Image Dataset for Tomato Fruit Disease Detection	datasets/priority/tomat/TOM-07-tfdd-buah-tomat
+TOM-08-tabular-penyakit-tomat	10.17632/ztncd79yhk.1	A Comprehensive Dataset of Tomato Plant Diseases for National Predictive Analytics (tabular)	datasets/priority/tomat/TOM-08-tabular-penyakit-tomat
+TOM-09-agroguard-kentang-tomat	10.17632/354fsxwccb.1	Pota-Toma-To leaf disease images dataset (AgroGuard)	datasets/priority/tomat/TOM-09-agroguard-kentang-tomat
+TOM-10-cuaca-tanah-tabular	10.5281/zenodo.19885785	Soil-Weather Multivariate Crop Disease Dataset (250.000 observasi)	datasets/additional/TOM-10-cuaca-tanah-tabular
+TOM-11-kebun-bangladesh	10.17632/bpfd9cns5g.2	Tomato Leaf Dataset: multiclass disease detection and classification (Dinajpur/Thakurgaon/Kushtia)	datasets/priority/tomat/TOM-11-kebun-bangladesh
+TOM-12-phytoscope-lapangan	10.5281/zenodo.21383492	PhytoScope: benchmark deteksi & lokalisasi penyakit multi-tanaman (25 tanaman, YOLO, lapangan)	datasets/additional/TOM-12-phytoscope-lapangan
+TOM-13-zenodo-tomat-7z	10.5281/zenodo.11102494	Tomato Disease Dataset (Appe) - train.7z	datasets/priority/tomat/TOM-13-zenodo-tomat-7z
+TOM-14-tomat-spanyol-tabular	10.5281/zenodo.22024764	Evaluation of tomato (Solanum lycopersicum) genetic resources in Spain (2023-2024)	datasets/priority/tomat/TOM-14-tomat-spanyol-tabular
+TOM-16-sichuan-layu-bakteri	10.17632/c2x8rynybg.1	Tomato Disease Dataset (Sichuan, layu bakteri Ralstonia + viral + gray mold, anotasi PASCAL VOC)	datasets/priority/tomat/TOM-16-sichuan-layu-bakteri

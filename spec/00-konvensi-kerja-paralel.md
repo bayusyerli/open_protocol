@@ -91,16 +91,35 @@ Penambahan baru mengambil nomor dari blok berkasnya sendiri — tidak pernah dar
 | `hrg` | `vocab/harga/harga.meta.json` | 1000–1999 | seri harga komoditas SP2KP; 1–999 disisakan untuk patokan regulasi yang dikurasi tangan |
 | `lab` | `vocab/lab/lab.meta.json` | 1000–9999 | laboratorium penguji terakreditasi KAN; 1–999 disisakan untuk kurasi tangan |
 | `bpp` | `vocab/bpp/bpp.meta.json` | 1000–19999 | balai penyuluhan, turunan laporan tamu SIMLUHTAN; 1–999 disisakan untuk kurasi tangan |
+| `tko` | `vocab/toko/toko.meta.json` | 1000–19999 | toko sarana produksi pertanian yang lisensinya bersih; 1–999 disisakan untuk kurasi tangan. Tumbuh lewat setoran pemilik, jadi blok ini akan terisi jauh lebih lambat daripada yang lain |
+| `rgn` | `vocab/region/wilayah.meta.json` | 1–19999 | wilayah administratif; internalnya: 1–9 negara, 10–99 provinsi, 100–1999 kabupaten/kota, 2000–19999 kecamatan |
+| `akl` | `vocab/agroklimat-oldeman.json` | 1 | berkas entitas tunggal, seperti skala fase |
+| `akl` | `vocab/agroklimat-schmidt-ferguson.json` | 2 | berkas entitas tunggal |
+| `akl` | `vocab/agroklimat-junghuhn.json` | 3 | berkas entitas tunggal |
+| `akl` | `vocab/agroklimat-dataran-hortikultura.json` | 4 | berkas entitas tunggal |
+| `akl` | `vocab/agroklimat-pola-hujan.json` | 5 | berkas entitas tunggal |
+| `akz` | `vocab/agroklimat-oldeman.json` | 1–99 | kelas di dalam skema; diklaim lewat `class_id_blocks` |
+| `akz` | `vocab/agroklimat-schmidt-ferguson.json` | 100–199 | kelas di dalam skema |
+| `akz` | `vocab/agroklimat-junghuhn.json` | 200–299 | kelas di dalam skema |
+| `akz` | `vocab/agroklimat-dataran-hortikultura.json` | 300–399 | kelas di dalam skema |
+| `akz` | `vocab/agroklimat-pola-hujan.json` | 400–499 | kelas di dalam skema |
 | `dev` `met` `opt` `sed` `var` | masing-masing satu berkas | 1–999 | belum dipakai bersama |
 
 **Belum dialokasikan** pada jenis `sub`: 100, 1691–1700, 2000–4999, 10000 ke atas; pada `cmd`: 3000 ke atas;
 pada `vty`: 1–999 dan 20000 ke atas; pada `sca`: 22 ke atas; pada `stg`: 2200 ke atas; pada `pcp`: 1–999 dan
 10000 ke atas; pada `hrg`: 1–999 dan 2000 ke atas; pada `lab`: 1–999 dan 10000 ke atas; pada `bpp`:
-1–999 dan 20000 ke atas.
+1–999 dan 20000 ke atas; pada `akl`: 6 ke atas; pada `akz`: 500 ke atas; pada `rgn`: 20000 ke atas — **zona agroekologi ambil dari sana**, jangan dari sisa blok wilayah administratif.
 
 Fase (`stg`) hidup di dalam berkas skalanya, bukan sebagai dokumen tersendiri, sehingga
 aturan `L1` dan `L23` tidak menyentuhnya. Bloknya tetap dicatat di sini dan dijaga tangan —
 satu skala satu ratusan.
+
+Kelas agroklimat (`akz`) bersarang dengan cara yang sama tetapi **tidak dijaga tangan**.
+Ia mengklaim bloknya lewat medan tersendiri, `class_id_blocks`, dan `L40` menegakkannya
+persis seperti `L23` dan `L25` menegakkan blok entitas tingkat atas: kelas di luar blok
+ditolak, blok yang bertindih antar-skema ditolak, dan nomor kelas yang kembar ditolak.
+Bentuk bersarang milik `stg` ditiru; lubang penegakannya tidak. Kalau `stg` kelak diberi
+perlakuan yang sama, aturannya sudah ada bentuknya.
 Ambil dari situ bila butuh blok baru, lalu tambahkan barisnya ke tabel ini.
 
 ### Cara mengklaim blok
@@ -121,8 +140,10 @@ Nomor aturan sama langkanya dengan nomor ID, dan sama mudahnya bertabrakan.
 | `L1`–`L15` | Struktur inti, netralitas vendor, PDP, keselamatan dasar | seluruhnya |
 | `L16`–`L21` | Sediaan buatan petani | seluruhnya |
 | `L22`–`L29` | Kepatuhan regulasi dan integritas kosakata | seluruhnya |
-| `L30`–`L39` | Protokol Lapis 2 dan keutuhan isi | `L30`–`L34` |
-| `L40`+ | **Belum diklaim** | — |
+| `L30`–`L39` | Protokol Lapis 2 dan keutuhan isi | `L30`–`L38` |
+| `L40`–`L49` | Agroklimat & wilayah — skema, kelas, asal-usul penetapan, dan jenjang wilayah | `L40`–`L44` |
+| `L50`–`L59` | Lajur toko — batas lisensi, asal-usul, dan data pribadi | `L50` |
+| `L60`+ | **Belum diklaim** | — |
 
 Sebelum menambah aturan, jalankan:
 
@@ -178,6 +199,28 @@ Catatan: `pukpes_data/produsen_master.csv` dibuat sebelum konvensi ini disepakat
 cara lama — nama asli tidak disimpan, alasan penggabungan tidak dicatat, dan bentuk
 kanoniknya kadang keliru (ia memilih `PT. SINAR␣␣GENERAL INDUSTRIES` dengan spasi ganda).
 Berkas itu dibiarkan apa adanya sebagai jejak, tetapi yang mengikat adalah `principal_alias.csv`.
+
+## 4b. Nomor wilayah bukan kode wilayah
+
+Godaan yang paling besar saat kosakata wilayah dibangun adalah memakai kode BPS sebagai
+nomor ID — kodenya hierarkis, sudah unik, dan enak dibaca. **Jangan.**
+
+Repositori ini sudah pernah melakukannya tanpa sengaja. Tiga berkas contoh menunjuk
+`op:rgn:00003318` berlabel *"Kabupaten Rembang"* — nomor yang disusun agar menyerupai
+kode BPS Rembang. Kode BPS Rembang **3317**; 3318 adalah Pati. Ketika kosakata wilayah
+akhirnya dibangun, nomor itu ternyata menunjuk **Babat Toman, sebuah kecamatan di Musi
+Banyuasin**, 700 km dari petak yang dimaksud. `L10` meloloskannya karena tujuannya memang
+ada.
+
+Alasan yang lebih dalam: **kode wilayah bukan identitas.** Kode 91 berarti Papua Barat
+menurut BPS dan Papua menurut Kemendagri, dan 167 kode lain sah di kedua sistem sambil
+menunjuk kabupaten yang berlainan. Nomor yang janjinya tidak pernah didaur ulang tidak
+boleh diturunkan dari angka yang artinya bergantung skema.
+
+Kode hidup di `code` beserta `code_scheme`, dan di `mappings`. `L44` menegakkan ketiganya
+— termasuk bahwa label pada rujukan wilayah harus sepakat dengan wilayah yang ditunjuknya.
+
+---
 
 ## 5. Aturan main
 

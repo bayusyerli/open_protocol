@@ -1,0 +1,35 @@
+# Pota-Toma-To leaf disease images dataset (AgroGuard 2.0)
+
+- **dataset_id**: TOM-09-agroguard-kentang-tomat
+- **Tanaman**: Tomat (*Solanum lycopersicum*) dan kentang (*Solanum tuberosum*) — 2 tanaman, jadi tetap di `priority/tomat/`
+- **Penyakit/kelas tercakup**: 4 kelas apa adanya dari nama folder — `Tomato Early Blight Leaf - Google Search`, `Tomato Healthy Leaf - Google Search`, `Tomato Late Blight Leaf - Google Search`, `Potato Late Blight leaf - Google Search`. README internal menamainya `Tomato_Early_Blight`, `Tomato_Healthy`, `Tomato_Late_Blight`, `Potato_Late_Blight`.
+- **Jenis data**: gambar
+- **Format**: JPEG dalam ZIP, dua salinan: `Raw_Dataset/` dan `Advanced_Processed_Dataset/`
+- **Jumlah**: diklaim 435 gambar / 4 kelas, terhitung 435 gambar unik per salinan (105 + 110 + 96 + 124), total 870 berkas gambar + 1 berkas README.md — **cocok**
+- **Sumber**: Mendeley Data
+- **URL sumber**: https://data.mendeley.com/datasets/354fsxwccb/1
+- **DOI**: 10.17632/354fsxwccb.1
+- **Pembuat**: (kontributor tercatat di Mendeley; tim menamai dirinya "AgroGuard engineering team" di README internal)
+- **Tahun terbit / pembaruan**: 2026-04-05 (versi 1)
+- **Lisensi**: CC BY 4.0 (**dinyatakan penyetor, tapi lihat catatan provenans di bawah**)
+- **Ketentuan atribusi**: Atribusi ke penyetor + tautan lisensi + penandaan perubahan.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 68.318.675 byte (65,2 MiB)
+- **SHA-256**: `b029b6e8e9ffc1c31125401ddb0ae90afba1feb402f0e687466ef709e0b56090`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - `file raw/AgroGuard_Dataset.zip` → `Zip archive data, at least v2.0 to extract, compression method=store`
+  - `shasum -a 256 raw/AgroGuard_Dataset.zip` → cocok persis dengan `sha256_hash` API Mendeley (`b029b6e8e9ffc1c3…`)
+  - `unzip -t raw/AgroGuard_Dataset.zip` → tanpa galat
+  - `unzip -l` → 882 entri, 870 `.jpeg` + 1 `.md`
+  - Cacah per kelas: `unzip -Z1 … | grep -viE '/$' | awk -F/ 'NF>2{print $2"/"$3}' | sort | uniq -c` → hasil di `struktur.txt`
+  - README internal arsip dibaca dengan `unzip -p` dan mengonfirmasi 435 gambar / 4 kelas
+- **Keterbatasan / masalah kualitas**:
+  - **PROVENANS BERMASALAH — risiko penerbitan ulang tinggi.** Nama folder memuat harfiah sufiks `- Google Search` dan nama berkasnya berpola `imgi_{number} (1).jpeg`. Ini pola khas hasil *scraping* halaman Google Images, bukan pengambilan foto sendiri. README internal hanya menyebut "aggregated from publicly available agricultural research repositories" tanpa menyebut satu pun sumber. **Klaim lisensi CC BY 4.0 dari penyetor tidak bisa menutupi hak cipta pemilik asli tiap gambar.** Jangan diterbitkan ulang atau dipakai komersial tanpa penelusuran hak per gambar.
+  - **Label tidak diverifikasi ahli**: label = kata kunci pencarian. Hasil pencarian gambar rutin memuat gambar salah label, ilustrasi, diagram, dan tanaman lain.
+  - **Duplikasi internal**: `Advanced_Processed_Dataset/` adalah turunan `Raw_Dataset/` (resize 224×224, Discrete Wavelet Transform sub-band LL, ambang HSV, normalisasi). Jumlah berkasnya identik. Kalau keduanya dimuat bersamaan, setiap gambar terhitung dua kali dan bocor lintas split. **Pakai hanya `Raw_Dataset/`.**
+  - Bahkan `Raw_Dataset/` sudah diseragamkan ke `.jpeg` dari campuran `.jpg/.png/.jpeg/.webp/.bmp`, jadi bukan berkas mentah kamera.
+  - **Sangat kecil dan pincang cakupannya**: kentang hanya punya satu kelas (`Potato_Late_Blight`) tanpa kelas sehat, jadi tidak bisa dipakai sebagai pengklasifikasi kentang yang utuh. Tomat hanya 3 kelas.
+  - Tidak ada metadata lokasi, tanggal, kultivar, atau alat pengambilan.
+  - Bukan tanaman Indonesia dan tidak diketahui asal geografisnya sama sekali.

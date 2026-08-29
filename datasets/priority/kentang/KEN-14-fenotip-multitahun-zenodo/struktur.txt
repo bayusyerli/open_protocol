@@ -1,0 +1,34 @@
+== KEN-14 Multi-year phenotypic dataset of potato genotypes — verifikasi 2026-08-25
+Perintah 1: file -b raw/*.xlsx
+  Microsoft Excel 2007+
+Perintah 2: urai XLSX dengan zipfile + ElementTree (tanpa menjalankan makro apa pun)
+
+-- LEMBAR --
+    '2022'   : 143 baris (142 baris data), 29 kolom, 47 genotipe unik
+    '2023'   : 143 baris (142 baris data), 29 kolom, 47 genotipe unik
+    '2024'   : 143 baris (142 baris data), 29 kolom, 47 genotipe unik
+    'Traits' : 27 baris — kamus 26 sifat beserta singkatannya
+    TOTAL baris data pengamatan: 426
+
+-- KOLOM PENYAKIT DAN HAMA (inti nilai berkas ini) --
+    Virus Infection        (VI)
+    Late blight Infection  (hawar daun, Phytophthora infestans)
+    Rhizoctonia Infection  (Rhizoctonia solani — patogen black scurf)
+    Aphid Infection        (kutu daun — vektor virus)
+    Mite Infection         (tungau)
+
+-- KOLOM SIFAT UMBI --
+    Total tuber number · Tuber weight (g) · Total tuber weight (g)
+    Tuber shape · Tuber skin color · Tuber deep eye · Tuber fresh color
+    Solid content (%) · Reduced sugar content (%)
+
+-- KOLOM AGRONOMI --
+    Germination rate · Planting to Germination/tuber formation/harvesting (DAP)
+    Plant height · Leaf number · Stem number/plant · Shape of plant · Leaf color
+    Secondary leaflets · Flowering rate · Anthocyanin coloration petal
+
+-- CATATAN --
+    Nama kolom memuat karakter baris-baru di dalam sel (mis. 'Virus
+Infection ')
+    dan spasi di ujung — perlu dinormalkan sebelum dipakai sebagai nama medan.
+    Tiga lembar tahun berbagi 47 genotipe yang sama -> dapat dipasangkan lintas tahun.

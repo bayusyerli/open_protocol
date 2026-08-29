@@ -20,7 +20,7 @@ untuk keperluan sendiri, tanpa mengedarkannya, termasuk yang dilarang?
 
 ## 2. Siapa yang bertanya dan untuk apa
 
-Open Protocols adalah rujukan budidaya berbasis registri resmi Kementan, dipakai
+Pranatani adalah rujukan budidaya berbasis registri resmi Kementan, dipakai
 tanpa akun dan tanpa biaya. Salah satu permukaannya menjelaskan **kedudukan hukum
 sediaan yang diramu petani sendiri** — kompos, MOL, ekstrak nabati, biakan mikroba.
 
@@ -130,8 +130,23 @@ apa pun atas pertanyaan ini tidak menahannya.
 
 Disebutkan supaya jelas tidak ada yang sedang berjalan di luar batas:
 
+> **Diperbarui 24 Agustus 2026.** Sampai tanggal itu bagian ini mendeskripsikan layar
+> lebih sempit daripada kenyataannya: layar mencetak Takaran, Cara, tenggang panen, dan
+> alat pelindung untuk empat resep berkriteria, dan hanya Biosaka yang ditahan. Itu sudah
+> mempraktikkan **Bacaan B** sebelum jawabannya ada. Selisihnya ditutup dengan menurunkan
+> layar ke Bacaan A untuk **seluruh** sisi pengendali, bukan dengan melonggarkan memo ini.
+
 - Lima sediaan pengendali **ditampilkan**, tetapi hanya sebagai catatan kedudukan hukum,
   ditandai `own_use_only`, dan layar **tidak menyimpulkan aman**.
+- **Takaran dan cara pakai tidak diterbitkan untuk satu pun sediaan pengendali** — termasuk
+  yang kriteria pelepasannya lengkap. Kosakata memuat angkanya; layar menyatakan bahwa
+  penahanan itu keputusan, bukan data yang hilang. Tenggang panen ikut ditahan, karena §6
+  menempatkannya di dalam paket Bacaan B.
+- Kartu yang diteruskan lewat WhatsApp **juga** tidak membawa takaran. Kartu berpindah
+  tanpa membawa layar tempat batasnya dicetak, jadi ia justru yang paling penting ditahan.
+- Yang tetap tampil: kedudukan hukum, bahan dan prosesnya, kriteria pelepasannya, dan
+  peringatan bahaya bahannya — peringatan bukan anjuran, dan menghapusnya justru merugikan
+  orang yang tetap meramu sendiri.
 - Pasal 75, 76 ayat (2), 77 ayat (1), dan 123 **dicetak lebih dulu**, sebelum apa pun
   yang bisa dibuka.
 - Satu sediaan — Biosaka — **ditahan sampai sebelum takaran**, karena tanpa kriteria

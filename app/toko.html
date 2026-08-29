@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Toko tani, benih, penyuluhan &amp; lab — Open Protocols</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-DNPNcLjUG4zlmdaYgGYD9nMFoEvRKSs1IHGJXWCYX+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'">
+<title>Toko tani, benih, penyuluhan &amp; lab — Pranatani</title>
 <meta name="description" content="Empat direktori dari data terbuka: toko tani berkoordinat, penjual benih yang hanya bernama kabupaten, balai penyuluhan yang ditemukan lewat kecamatan, dan laboratorium terakreditasi KAN. Yang bisa dituju dan yang tidak dinyatakan begitu, bukan disamarkan jadi alamat.">
 <!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu. -->
 <script>
@@ -12,6 +13,7 @@
     if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
   } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
 </script>
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="gaya.css">
 <link rel="stylesheet" href="batas.css">
@@ -26,9 +28,8 @@
   </div>
   <h1>Beli di mana, tanya ke siapa, uji ke mana?</h1>
   <p class="lede">
-    Empat kumpulan yang <strong>tidak sama nilainya</strong>, dan halaman ini tidak
-    menyatukannya: yang berkoordinat bisa dituju, yang hanya bernama kabupaten tidak,
-    balai penyuluhan ditemukan lewat kecamatan, dan laboratorium lewat telepon.
+    Empat direktori terpisah, dan yang membedakannya
+    <strong>seberapa jauh masing-masing bisa mengantarmu</strong>.
   </p>
 </header>
 
@@ -39,70 +40,142 @@
     <p>Daftarnya dibaca dari berkas indeks langsung di peramban, dan jaraknya dihitung di peranti ini.</p>
   </div>
 
-  <h2 class="judul-bagian">Toko tani terdekat dari posisimu</h2>
+  <!-- KEEMPAT PINTU DISEBUT SEKALIGUS DI SINI, DAN ITU SELURUH SEBAB BLOK INI ADA.
+       Sampai 25 Agustus 2026 keempatnya berdiri berurutan ke bawah: laboratorium mulai
+       di 4,4 layar dan balai penyuluhan di 3,1 layar dari kepala halaman, di belakang
+       satu kartu peringatan setinggi layar penuh yang terbaca seperti akhir halaman.
+       Yang mendarat di sini praktis cuma tahu satu dari empat.
 
-  <div class="kartu">
-    <p id="ringkasTitik">Memuat…</p>
-    <p class="aksi-kandungan">
-      <button type="button" id="cariDekat">Cari yang terdekat</button>
-    </p>
-    <p class="catatan">
-      <strong>Posisimu tidak dikirim ke mana pun.</strong> Jaraknya dihitung di peranti ini
-      terhadap daftar yang sudah diambil — tidak ada server yang bisa menerimanya, dan
-      tidak ada permintaan jaringan yang dibuat saat menghitungnya.
-    </p>
-    <div id="hasilDekat" aria-live="polite"></div>
+       Cacahnya diisi toko.js dari meta, bukan ditulis tangan — angka yang dipahat di
+       HTML akan menyimpang diam-diam begitu indeksnya dibangun ulang. -->
+  <div class="pemilih" id="pemilih" role="group" aria-label="Empat direktori yang bisa ditelusuri">
+    <button type="button" data-ada="toko" aria-expanded="false" aria-controls="pintuToko">
+      <span class="pm-mata">Beli di mana</span>
+      <span class="pm-nama">Toko tani<span class="lencana" data-cacah="toko">…</span></span>
+      <span class="pm-sub">Berkoordinat, jadi bisa dituju. Diurutkan dari posisimu.</span>
+    </button>
+    <button type="button" data-ada="benih" aria-expanded="false" aria-controls="pintuBenih">
+      <span class="pm-mata">Beli di mana</span>
+      <span class="pm-nama">Penjual benih<span class="lencana" data-cacah="benih">…</span></span>
+      <span class="pm-sub">Hanya bernama kabupaten — bukti ada, bukan petunjuk ke mana pergi.</span>
+    </button>
+    <button type="button" data-ada="bpp" aria-expanded="false" aria-controls="pintuBpp">
+      <span class="pm-mata">Tanya ke siapa</span>
+      <span class="pm-nama">Balai penyuluhan<span class="lencana" data-cacah="bpp">…</span></span>
+      <span class="pm-sub">Tanpa alamat. Yang menemukannya nama kecamatan, bukan peta.</span>
+    </button>
+    <button type="button" data-ada="lab" aria-expanded="false" aria-controls="pintuLab">
+      <span class="pm-mata">Uji ke mana</span>
+      <span class="pm-nama">Laboratorium<span class="lencana" data-cacah="lab">…</span></span>
+      <span class="pm-sub">Beralamat dan bertelepon. Disaring menurut yang perlu diuji.</span>
+    </button>
   </div>
 
-  <h2 class="judul-bagian">Penjual benih menurut wilayah</h2>
+  <p class="pemilih-bantu" id="pemilihBantu">
+    Ketuk satu untuk membukanya. Keempatnya tetap terlihat sesudah itu, jadi berpindah
+    tidak menuntut menggulir kembali ke atas.
+  </p>
 
-  <div class="kartu">
-    <p id="ringkasWilayah">Memuat…</p>
-    <form class="cari" id="formWilayah" role="search" onsubmit="return false">
-      <label for="q">Nama kabupaten, kota, atau provinsi</label>
-      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
-             placeholder="misal: Batang, Bogor, Jawa Timur" enterkeyhint="search">
-    </form>
-    <div id="hasilWilayah" aria-live="polite"></div>
-  </div>
+  <!-- ------------------------------------------------------------- pintu 1 -->
+  <section class="pintu" id="pintuToko" aria-labelledby="judulToko" hidden>
+    <h2 class="judul-bagian" id="judulToko" tabindex="-1">Toko tani terdekat dari posisimu</h2>
 
-  <section id="rincian" tabindex="-1"></section>
+    <div class="kartu">
+      <p id="ringkasTitik">Memuat…</p>
+      <p class="aksi-kandungan">
+        <button type="button" id="cariDekat">Cari yang terdekat</button>
+      </p>
+      <p class="catatan">
+        <strong>Posisimu tidak dikirim ke mana pun.</strong> Jaraknya dihitung di peranti ini
+        terhadap daftar yang sudah diambil — tidak ada server yang bisa menerimanya, dan
+        tidak ada permintaan jaringan yang dibuat saat menghitungnya.
+      </p>
+      <!-- Kaveat yang dulu berdiri sebagai kartu peringatan setinggi layar penuh di antara
+           pintu dua dan pintu tiga. Isinya benar, tetapi tempatnya menyesatkan: ia hanya
+           berlaku bagi toko tani dan penjual benih — laboratorium justru beralamat dan
+           bertelepon — dan sebagai pemisah antarbagian ia terbaca seperti akhir halaman.
+           Di sini ia satu kalimat; kartu utuhnya tinggal di pintu penjual benih. -->
+      <p class="catatan">
+        Tidak ada nomor telepon, jam buka, maupun keterangan apakah tokonya masih ada.
+        Medan itu sengaja dibiarkan kosong menunggu pemilik toko mengklaimnya sendiri.
+      </p>
+      <div id="hasilDekat"></div>
+    </div>
+  </section>
 
-  <div class="kartu peringatan">
-    <h2>Yang tidak ada di sini, dan tidak akan ditambal</h2>
-    <p>
-      Tidak satu pun rekaman memuat <strong>nomor telepon, surel, jam buka, atau apakah
-      tokonya masih ada</strong>. Medan itu sengaja dibiarkan kosong menunggu pemilik toko
-      mengklaimnya sendiri.
-    </p>
-    <p class="catatan">
-      Menambalnya dengan geokode massal atau tarikan pihak ketiga akan mengisi direktori
-      dengan tebakan yang tidak bisa dibantah siapa pun — dan direktori yang salah lebih
-      buruk daripada direktori yang pendek.
-    </p>
-  </div>
+  <!-- ------------------------------------------------------------- pintu 2 -->
+  <section class="pintu" id="pintuBenih" aria-labelledby="judulBenih" hidden>
+    <h2 class="judul-bagian" id="judulBenih" tabindex="-1">Penjual benih menurut wilayah</h2>
 
-  <h2 class="judul-bagian">Balai penyuluhan di kecamatanmu</h2>
+    <div class="kartu">
+      <p id="ringkasWilayah">Memuat…</p>
+      <form class="cari" id="formWilayah" role="search" onsubmit="return false">
+        <label for="q">Nama kabupaten, kota, atau provinsi</label>
+        <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+               placeholder="misal: Batang, Bogor, Jawa Timur" enterkeyhint="search">
+      </form>
+      <div id="hasilWilayah"></div>
+    </div>
 
-  <section class="pintu">
-    <p id="ringkasBpp">Memuat…</p>
-    <form class="cari" id="formBpp" role="search" onsubmit="return false">
-      <label for="qBpp">Kabupaten atau kota</label>
-      <input id="qBpp" name="qBpp" type="search" autocomplete="off" spellcheck="false"
-             placeholder="misal: Sukabumi">
-    </form>
-    <div id="hasilBpp" aria-live="polite"></div>
+    <section id="rincian" tabindex="-1"></section>
+
+    <div class="kartu peringatan">
+      <h2>Yang tidak ada di sini, dan tidak akan ditambal</h2>
+      <p>
+        Tidak satu pun rekaman memuat <strong>nomor telepon, surel, jam buka, atau apakah
+        tokonya masih ada</strong>. Medan itu sengaja dibiarkan kosong menunggu pemilik toko
+        mengklaimnya sendiri.
+      </p>
+      <p class="catatan">
+        Menambalnya dengan geokode massal atau tarikan pihak ketiga akan mengisi direktori
+        dengan tebakan yang tidak bisa dibantah siapa pun — dan direktori yang salah lebih
+        buruk daripada direktori yang pendek.
+      </p>
+    </div>
+  </section>
+
+  <!-- ------------------------------------------------------------- pintu 3 -->
+  <section class="pintu" id="pintuBpp" aria-labelledby="judulBpp" hidden>
+    <h2 class="judul-bagian" id="judulBpp" tabindex="-1">Balai penyuluhan di kecamatanmu</h2>
+
+    <div class="kartu">
+      <p id="ringkasBpp">Memuat…</p>
+      <form class="cari" id="formBpp" role="search" onsubmit="return false">
+        <label for="qBpp">Kabupaten atau kota</label>
+        <input id="qBpp" name="qBpp" type="search" autocomplete="off" spellcheck="false"
+               placeholder="misal: Sukabumi">
+
+        <!-- Pintu kedua, dan sebenarnya pintu yang dijanjikan judul bagian ini. Nama
+             kecamatannya diketahui orang yang mencari balai; nama kabupatennya belum tentu
+             tertulis sama di basis data sumbernya. Daftarnya 99 KB dan TIDAK ikut dimuat
+             saat halaman dibuka — diambil saat kotak ini pertama kali diketik, dan
+             ukurannya disebut sebelum itu terjadi. -->
+        <label for="qKec">Kecamatan</label>
+        <input id="qKec" name="qKec" type="search" autocomplete="off" spellcheck="false"
+               placeholder="misal: Cicurug" aria-describedby="bantuKec">
+        <p class="bantuan" id="bantuKec">
+          Menyaring 6.824 nama kecamatan. Daftarnya 99 KB dan baru diambil saat kamu
+          mengetik di sini.
+        </p>
+      </form>
+      <div id="hasilBpp"></div>
+    </div>
+
     <section id="rincianBpp" tabindex="-1"></section>
   </section>
 
-  <h2 class="judul-bagian">Laboratorium yang bisa mengujinya</h2>
+  <!-- ------------------------------------------------------------- pintu 4 -->
+  <section class="pintu" id="pintuLab" aria-labelledby="judulLab" hidden>
+    <h2 class="judul-bagian" id="judulLab" tabindex="-1">Laboratorium yang bisa mengujinya</h2>
 
-  <section class="pintu">
-    <p id="ringkasLab">Memuat…</p>
-    <fieldset id="saringLab" class="saring">
-      <legend>Yang perlu diuji</legend>
-    </fieldset>
-    <div id="hasilLab" aria-live="polite"></div>
+    <div class="kartu">
+      <p id="ringkasLab">Memuat…</p>
+      <fieldset id="saringLab" class="saring">
+        <legend>Yang perlu diuji</legend>
+      </fieldset>
+      <div id="hasilLab"></div>
+    </div>
+
     <section id="rincianLab" tabindex="-1"></section>
   </section>
 
@@ -159,7 +232,7 @@
   <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
        daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
   <p class="lain">
-    <a href="beranda.html">← Beranda</a>
+    <a href="index.html">← Beranda</a>
   </p>
 
   <section class="batas-jawaban" id="batasJawaban">

@@ -62,7 +62,7 @@ Atribusi yang harus dipasang bila menayangkan ulang SP2KP:
 
 ```
 Sumber: Portal Satu Data Kementerian Perdagangan (satudata.kemendag.go.id) – 2026,
-diolah kembali oleh Open Protocols.
+diolah kembali oleh Pranatani.
 ```
 
 ## 2. Lapis BENIH PRIVAT — ditarik, tidak diterbitkan
@@ -876,6 +876,85 @@ Satu koreksi kecil ikut: kartu pita umur menutup dirinya dengan kalimat "ia rata
 pita", padahal **tidak satu pun dari delapan seri memakai rata-rata** — semuanya memakai pita
 puncak atau pita tertentu, dan tiap keterangannya sudah menyebutkan itu. Layar membantah
 keterangannya sendiri di kartu yang sama. Arti garis grafik sekarang ikut data.
+
+---
+
+## 8c. Kadensi harian — 25 Agustus 2026
+
+Sampai tanggal ini modul harga punya sumber harian tetapi tidak punya kadensi harian. Angka
+terbarunya bertanggal **21 Agustus**, empat hari sebelumnya, karena penariknya hanya berjalan
+saat ada yang ingat menjalankannya. Layar tidak berbohong — ia menulis "per 21 Agustus" —
+tetapi ia menjawab pertanyaan yang tidak ditanyakan siapa pun. Sejak sekarang
+`.github/workflows/harga.yml` menariknya tiap hari pukul 16.00 WIB.
+
+### Endpoint yang sama ternyata menerima saringan tanggal
+
+Bagian 5 butir 2 melarang panen lewat iterasi harian, dan larangan itu tetap berlaku. Yang
+berubah: `report/api/hnt` menerima **`?tanggal=YYYY-MM-DD`** dan menjawab hanya hari itu.
+
+| Permintaan | Jawaban |
+|---|---:|
+| `hnt` tanpa parameter | 56 MB, 34.716 baris, seluruh riwayat |
+| `hnt?tanggal=2026-08-24` | **91 KB, 56 baris** |
+
+Enam ratus kali lebih ringan, dan ia tetap "yang disediakan Portal" — bukan penelusuran
+halaman demi halaman yang dilarang ketentuannya. Tiga parameter lain yang dicoba pada hari
+yang sama — `limit`, `start_date`/`end_date`, dan `page`/`per_page` — **diabaikan diam-diam**:
+jawabannya tetap seluruh riwayat. Hanya `tanggal` yang benar-benar menyaring.
+
+### Tiga sifat sumbernya yang menentukan lebar jendela
+
+1. **Terbitnya berjeda.** Pukul 14.00 WIB tanggal 25, tanggal 25 masih kosong sementara
+   tanggal 24 sudah terisi. Baris pertama tanggal 21 dibuat pukul 13.22 WIB.
+2. **Sabtu dan Minggu tidak ada.** 22 dan 23 Agustus 2026 menjawab **0 baris**. Itu bukan
+   galat dan tidak boleh diperlakukan sebagai galat — tetapi jendela satu hari membuat Senin
+   pagi tampak seperti kegagalan sistem.
+3. **Angka lama direvisi.** Baris untuk **29 Februari 2024** membawa `created_at`
+   **15 Februari 2026** — dua tahun sesudah tanggalnya. Sumbernya menulis ulang ke belakang.
+
+Sifat ketiga itu tidak bisa ditutup jendela selebar apa pun, dan ia yang menentukan bentuk
+kadensinya: **jendela 14 hari tiap hari, tarikan penuh tiap tanggal 1.** Jendela menjaga
+kesegaran; tarikan penuh menjaga kebenaran. Tanpa yang kedua, angka yang sudah tidak diakui
+sumbernya sendiri akan tersimpan di sini selamanya, dan tidak ada yang memberi tahu.
+
+### Yang tidak ikut harian, dan sebabnya
+
+- **Delapan seri TBS provinsi.** Penetapannya mingguan — Aceh bahkan beberapa kali setahun
+  (bagian 8b). Menariknya harian tujuh kali lebih sering daripada angkanya berubah. Dua di
+  antaranya lewat OCR yang bersandar pada biner yang hanya terbangun di macOS.
+- **Bapanas dan PIHPS.** Benih privat menurut bagian 2. Kadensinya tidak berubah karena
+  lisensinya yang tidak berubah.
+
+### Tiga akibat yang perlu diketahui sebelum ada yang heran
+
+1. **Komentar harga ditulis ulang tiap hari kerja.** `bangun-komentar-harga.mjs` menulis ulang
+   begitu fakta serinya bergeser, dan pada seri harian itu berarti tiap terbitan baru. Ikutnya:
+   **tinjauan manusia gugur tiap hari juga**, karena tinjauan menempel pada sidik faktanya
+   (docs/18). Per hari ini tidak satu pun dari 51 komentar sudah ditinjau orang, jadi belum ada
+   yang hilang — tetapi begitu tinjauan pertama dicatat, ia hanya akan berumur satu hari.
+   Itu soal yang belum terpecahkan, bukan soal yang sudah diputuskan.
+2. **Pencocokan angka dokumen berubah bentuk untuk satu baris.** Jumlah titik harga tumbuh
+   sendiri tiap hari kerja, jadi menuntutnya sama persis mengubah `cek-angka-docs.mjs` jadi
+   alarm yang berbunyi tiap pagi tanpa ada yang salah — dan alarm semacam itu dimatikan orang,
+   bersama 125 baris lain yang justru berarti. Baris itu kini menagih **batas bawah**: boleh
+   naik, tidak boleh turun. Yang lain tetap menuntut kesamaan, termasuk "empat harga pupuk
+   masih kosong" dan pangkal seri 1 Februari 2024.
+3. **Situs tidak ikut terbangun.** Push dari GitHub Actions memakai `GITHUB_TOKEN` tidak
+   memicu workflow lain, jadi `situs.yml` tidak berjalan sesudah commit harian. Selama situsnya
+   masih artefak dan hostnya belum dipilih, itu tidak merugikan apa pun; begitu host dipilih,
+   jalur tayangnya ditambahkan di `situs.yml`.
+
+### Batas kadensi ini
+
+- **Revisi yang lebih tua dari 14 hari baru tertangkap tanggal 1.** Sepanjang bulan, seri di
+  sini bisa memuat angka yang sudah diperbarui di sumbernya.
+- **SP2KP berhenti terbit tidak langsung terlihat.** Yang menyalak hanya jendela yang
+  seluruhnya kosong — 14 hari kerja beruntun. Sebelum itu, keluarannya sekadar "tidak ada yang
+  berubah", dan itu bunyi yang sama dengan akhir pekan.
+- **Kadensinya belum pernah berjalan sekali pun.** Yang sudah diuji: tarikan jendelanya
+  (7 hari, menambah tepat 56 titik tanggal 24 Agustus tanpa menyentuh satu pun titik lama),
+  pembangunan kosakata, dan gerbang mutunya. Yang belum: `schedule` itu sendiri, yang baru
+  hidup setelah berkasnya berada di `main`.
 
 ---
 

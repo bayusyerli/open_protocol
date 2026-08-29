@@ -1,0 +1,60 @@
+== KEN-09 CIP integrated management of late blight — verifikasi 2026-08-25
+Perintah: file / head / wc -l / awk pada raw/*
+
+--- KEN-09-cip-pengelolaan-terpadu/raw/4296_Data.tab
+tipe   : ASCII text
+baris  :      310
+kolom  : 16
+header : SITE	YEAR	REP	SEASON	ACCENAME	ACCENUMB	TREATMENT	MTYA	AUDPC	rAUDPC	DiseasePressure	Pressure	RLB	Diseasereduction	RelativetoAsante	Yieldincreaserelativetocontrol
+
+--- KEN-09-cip-pengelolaan-terpadu/raw/4296_Localities.tab
+tipe   : ASCII text
+baris  :      307
+kolom  : 5
+header : SITE	District	Country	Continent	GeoNames
+
+--- KEN-09-cip-pengelolaan-terpadu/raw/4296_DataDictionary_ElementDescription.xlsx
+tipe   : Microsoft Excel 2007+
+--- KEN-09-cip-pengelolaan-terpadu/raw/4296_DataDictionary_UniqueIdentifier.xlsx
+tipe   : Microsoft Excel 2007+
+
+--- baris data terisi: 309 dari 309 baris non-header
+--- lokasi uji terisi (sisanya baris kosong bawaan berkas):
+    University of Nairobi (UoN) | Nairobi | Kenya | https://www.geonames.org/6533921/university-of-nairobi.html
+    Koibatek | Koibatek | Kenya | https://www.geonames.org/7909894/koibatek-district.html
+    Njabini | Nyandarua | Kenya | https://www.geonames.org/183371/njabini.html
+    Limuru | Kiambu | Kenya | https://www.geonames.org/189386/limuru.html
+
+--- cacah per TREATMENT
+ 103     Phosphonate
+ 103     Metalaxyl + Mancozeb
+ 103     Control
+
+--- cacah per YEAR
+ 108     2010
+  63     2011
+  18     2011a
+  72     2011b
+  24     2012
+  24     2014
+
+--- cacah per tingkat tekanan penyakit (Pressure)
+ 195     High
+ 114     Low
+
+--- cacah kultivar (ACCENAME)
+  69     Asante
+  57     Tigoni
+  36     Kenya Mpya
+  27     Nyayo
+  27     Mavuno
+  27     Dutch Robyjn
+  21     Shangi
+  18     Kenya Karibu
+  18     Desiree
+   9     Arka
+
+--- 2 baris contoh
+SITE	YEAR	REP	SEASON	ACCENAME	ACCENUMB	TREATMENT	MTYA	AUDPC	rAUDPC	DiseasePressure	Pressure	RLB	Diseasereduction	RelativetoAsante	Yieldincreaserelativetocontrol
+"Koibatek"	"2010"	1.0	"LR"	"Arka"	""	"Control"	7.08	4005.0	0.651219512195122	"High"	"High"	"Highly Susceptible"	"0.91022727272727277"	0.8920815235549616	1.0
+"Koibatek"	"2010"	2.0	"LR"	"Arka"	""	"Control"	5.04	4400.0	0.7154471544715447	"High"	"High"	"Highly Susceptible"	"0.94725511302475784"	0.9800645951664997	1.0

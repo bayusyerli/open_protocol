@@ -1,0 +1,57 @@
+# Bukti verifikasi CAB-04
+Tanggal: 2026-08-25
+
+## 1. Integritas (shasum -a 256 raw/* vs content_details.sha256_hash Mendeley)
+  Anthracnose.zip                    1b6c40ca...e9ef  COCOK  (447.495.800 byte)
+  Cercospora Leaf Spot.zip           e09dfd1c...da44*  COCOK  (878.796.931 byte)
+  Fresh Leaf.zip                     1b6668a0...c28d0  COCOK  (872.136.713 byte)
+  dataset_image_metadata_full.csv    efa996e7...01ada  COCOK  (395.025 byte)
+  dataset_image_metadata_summary.csv b379dd01...1ab52  COCOK  (353.569 byte)
+  -> 5 dari 5 berkas yang diunduh cocok. Nilai lengkap di SHA256SUMS.txt.
+  TIDAK DIUNDUH: Leaf Curl Disease.zip (1.050.819.268 byte) - lihat README bagian Keterbatasan.
+
+$ unzip -tqq raw/*.zip -> ketiga ZIP lolos tanpa galat
+
+## 2. Cacah isi arsip
+  Anthracnose.zip           : 695 entri = 347 gambar asli + 348 stub __MACOSX
+  Cercospora Leaf Spot.zip  : 735 entri = 367 gambar asli + 368 stub __MACOSX
+  Fresh Leaf.zip            : 865 entri = 432 gambar asli + 433 stub __MACOSX
+  Semua .jpg, masing-masing dalam satu folder bernama kelasnya.
+  Total gambar yang benar-benar ada di disk: 1146.
+
+## 3. Analisis dataset_image_metadata_full.csv (1515 baris data)
+  Kolom: class, filename, filepath, file_size_mb, width, height, megapixels, aspect_ratio, mode, sharpness_score, image_hash, size_category
+  Baris data: 1515  (cocok dengan klaim sumber: 1515 citra)
+
+  Cacah per kelas (SELURUH dataset, termasuk kelas yang tidak diunduh):
+      432  Fresh Leaf
+      369  Leaf Curl Disease
+      367  Cercospora Leaf Spot
+      347  Anthracnose
+
+  UJI DUPLIKAT lewat kolom image_hash (hash perseptual bawaan sumber):
+    hash yang muncul lebih dari sekali : 0
+    hash yang muncul di >1 kelas       : 0
+    -> BERSIH: tidak ada duplikat, tidak ada tumpang tindih antar kelas.
+
+  Dimensi tersering:
+      856  4080x3072
+      312  4000x3000
+      185  1728x3936
+      162  3936x1728
+    >=1728 px di kedua sisi: 1515 dari 1515 (100%)
+  Skor ketajaman min/median/maks: 6.29 / 9.80 / 20.44
+
+  CATATAN: kolom filepath membocorkan jalur Google Drive milik penulis
+  (/content/drive/MyDrive/Chili Leaf Project/...). Tidak berisi data pribadi,
+  tapi menunjukkan metadata dibuat di Colab tanpa pembersihan.
+
+## 4. Uji duplikat byte-identik (SHA-256 isi gambar, bukan hanya image_hash sumber)
+  Anthracnose.zip          : 347 gambar, 347 sha256 unik, 0 salinan berlebih
+  Cercospora Leaf Spot.zip : 367 gambar, 367 sha256 unik, 0 salinan berlebih
+  Fresh Leaf.zip           : 432 gambar, 432 sha256 unik, 0 salinan berlebih
+  -> BERSIH SEMPURNA. Ini satu-satunya dataset citra cabai dalam panen ini dengan
+     0% duplikat byte, dikonfirmasi dua cara (image_hash perseptual sumber DAN sha256 sendiri).
+
+## 5. Uji irisan dengan dataset cabai lain dalam panen ini
+  Dibandingkan dengan CAB-01, CAB-05, CAB-09, CAB-12: tidak ada gambar byte-identik yang sama.

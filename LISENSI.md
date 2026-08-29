@@ -45,7 +45,7 @@ adalah mengklaim prosanya sebagai milik sendiri.
 
 ---
 
-## 2. Tiga hal yang TIDAK kami lisensikan
+## 2. Empat hal yang TIDAK kami lisensikan
 
 Ini bagian yang paling mudah salah, dan akibatnya paling mahal.
 
@@ -65,17 +65,41 @@ Akibat praktisnya: **kalau kamu hanya membutuhkan faktanya, kamu tidak terikat
 BerbagiSerupa.** Tarik sendiri dari sumbernya, atau ambil dari sini — keduanya
 sah. Yang terikat adalah kalau kamu memakai susunan dan penilaian kami.
 
+### Direktori toko dari OpenStreetMap
+
+234 titik toko tani di `toko_data/toko-tani-jawa.ndjson` — dan halaman `/toko/`
+yang diturunkan darinya — berasal dari **OpenStreetMap** dan tunduk pada
+**ODbL 1.0**, bukan CC BY-SA.
+
+Keduanya sama-sama berbagi-serupa, dan justru itu yang membuatnya mudah salah:
+**ODbL menular ke basis datanya**, sedangkan CC BY-SA menular ke karyanya.
+Turunan basis data OSM tidak bisa direlisensikan CC BY-SA oleh kami, dan siapa
+pun yang mengambil lapis toko dari sini terikat ODbL — termasuk kewajiban
+menyebut **© Kontributor OpenStreetMap** dan membuka basis data turunannya.
+
+Atribusinya sudah terpasang di permukaan dan di metadata sumber. Yang tidak boleh
+disimpulkan: bahwa lisensi repositori ini menggantikannya.
+
+Dua lapis toko lainnya berdiri sendiri dan dijelaskan di
+[`toko_data/LAPIS.md`](toko_data/LAPIS.md): 2.181 alamat dari arsip TTI Kementan
+(karya pemerintah), 67 dari Batang (CC-BY), dan lapis principal yang **tidak
+terbit sama sekali** karena lisensinya tidak mengizinkannya.
+
 ### Dokumen pihak ketiga
 
-`docs/Guide-No07-Growth-Stages_Dec19.pdf` adalah **CORESTA Guide N° 7**, terbitan
-CORESTA, bukan tulisan kami. Ia dilacak di sini sebagai sumber skala fase
-tembakau. Lisensinya milik penerbitnya, dan tidak berubah karena ia ada di
-repositori ini.
+**CORESTA Guide N° 7** adalah terbitan CORESTA, bukan tulisan kami; ia dipakai
+sebagai sumber skala fase tembakau. Lisensinya milik penerbitnya, dan tidak
+berubah karena ia pernah ada di repositori ini.
 
-> Sebelum repositori ini dipublikasikan, hak sebar ulang berkas itu perlu
-> diperiksa lebih dulu. Menautkan sumbernya bisa jadi lebih tepat daripada
-> menyertakan berkasnya. Catatan yang sama sudah ada di `git notes` pada
-> commit yang melacaknya.
+> **Status per 24 Agustus 2026:** berkas PDF-nya sudah dikeluarkan dari pohon
+> kerja, karena hak sebar ulangnya tidak pernah diperiksa dan repositori ini
+> sudah publik sejak 23 Agustus. Yang dipakai sekarang rujukannya, bukan
+> salinannya.
+>
+> Menghapusnya dari pohon kerja **tidak** mengeluarkannya dari riwayat git: ia
+> masih bisa diambil dari commit lama. Membersihkan riwayat menulis ulang seluruh
+> SHA dan menuntut koordinasi dengan tiap klon dan cabang, jadi ia keputusan
+> pemilik repositori — bukan sesuatu yang boleh dijalankan diam-diam.
 
 ### Data usaha tani
 
@@ -117,7 +141,7 @@ dan pintu pendanaan.
 
 ## 4. Cara mengutip
 
-> Open Protocols (2026). Kosakata dan protokol budidaya. CC BY-SA 4.0.
+> Pranatani (2026). Kosakata dan protokol budidaya. CC BY-SA 4.0.
 
 Untuk entitas tertentu, sebutkan pengenalnya — misalnya `op:proto:00000001`
 beserta versinya — karena entitas di sini berversi dan bisa direvisi.

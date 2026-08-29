@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-DNPNcLjUG4zlmdaYgGYD9nMFoEvRKSs1IHGJXWCYX+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'">
+<title>Sediaan pengendali sendiri — status hukumnya — Pranatani</title>
+<meta name="description" content="Lima resep pengendali buatan sendiri, ditampilkan beserta status hukumnya. Bukan anjuran: Pasal 77 ayat (1) melarang mengedarkan dan/atau menggunakan, dan bacaannya belum dijawab.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Pengendali buatan sendiri</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Sisi yang terikat</h1>
+  <p class="lede">
+    Halaman ini <strong>mencatat status hukum</strong> lima resep pengendali buatan
+    sendiri. Ia <strong>bukan anjuran</strong>, dan sengaja berhenti sebelum menjadi
+    anjuran.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Halaman ini butuh JavaScript</h2>
+    <p>Resepnya dibaca dari berkas indeks langsung di peramban.</p>
+  </div>
+
+
+  <div class="kartu tabrakan">
+    <h2>Baca ini dulu — jalur ini belum boleh dipakai sebagai anjuran</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <thead><tr><th>Pasal</th><th>Bunyi ringkasnya</th></tr></thead>
+        <tbody>
+          <tr><td>75</td><td>Pestisida ditentukan dari <strong>kegunaan yang diklaim</strong> — termasuk jasad renik dan virus, dan pada huruf d bahan pengatur pertumbuhan yang <em>tidak</em> termasuk pupuk</td></tr>
+          <tr><td>76 ayat (2)</td><td>Pestisida yang <strong>diedarkan</strong> wajib terdaftar</td></tr>
+          <tr><td>77 ayat (1)</td><td>Dilarang mengedarkan <strong>dan/atau MENGGUNAKAN</strong> pestisida yang tidak terdaftar, membahayakan, dan/atau tidak berlabel</td></tr>
+          <tr><td>123</td><td>Sanksi maksimal <strong>7 tahun</strong> dan <strong>Rp5 miliar</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      Kata <strong>“menggunakan”</strong> muncul di sini dan <strong>tidak muncul</strong>
+      di sisi pupuk. Dan tidak ada pasal yang sepadan dengan Pasal 72 — kelonggaran
+      petani kecil hanya ada untuk pupuk.
+    </p>
+    <p class="catatan">
+      Rangkaian kata pada Pasal 77 ayat (1) — “tidak terdaftar, membahayakan…, dan/atau
+      tidak berlabel” — bisa dibaca <strong>kumulatif maupun alternatif</strong>, dan
+      bacaan itu menentukan apakah memakai pestisida nabati untuk keperluan sendiri
+      benar-benar terlarang. Itu pertanyaan hukum, bukan pertanyaan agronomi, dan
+      <strong>belum dijawab penasihat hukum</strong>. Sampai itu, halaman ini menyatakan
+      status apa adanya dan <strong>tidak menyimpulkan aman</strong>.
+    </p>
+  </div>
+
+  <h2 class="judul-bagian">Untuk apa?</h2>
+
+  <section id="fungsi"></section>
+
+  <section id="daftar" aria-live="polite"></section>
+
+  <section id="resep" tabindex="-1"></section>
+
+  <div class="kartu">
+    <h2>Cari penyubur, bukan pengendali?</h2>
+    <p class="catatan">
+      Sisi pupuk lapang: kewajiban pendaftaran di sana melekat pada peredaran saja, dan
+      Pasal 72 mengecualikan petani kecil. Tujuh resepnya tidak menunggu apa pun.
+    </p>
+    <p><a href="pupuk-sendiri.html">Buat pupuk sendiri →</a></p>
+  </div>
+
+  <details class="batas">
+    <summary><h2>Kenapa satu klaim pengendalian memindahkan seluruh sediaan ke sini</h2></summary>
+    <div class="batas-isi">
+      <p>
+        Yang menarik sebuah sediaan ke sisi ini <strong>bukan bahannya dan bukan cara
+        membuatnya</strong> — melainkan klaimnya. Pasal 75 menentukan pestisida dari
+        kegunaan yang diklaim.
+      </p>
+      <div class="pembungkus-tabel">
+        <table>
+          <thead><tr><th>Sediaan</th><th>Fungsi yang diklaim</th><th>Letaknya</th></tr></thead>
+          <tbody>
+            <tr><td>MOL bonggol pisang</td><td>pemicu penguraian · merangsang pertumbuhan</td><td>tetap di jalur pupuk</td></tr>
+            <tr><td><strong>Biakan PGPR bambu</strong></td><td>merangsang pertumbuhan · <strong>menekan penyakit</strong></td><td>pindah ke sini</td></tr>
+            <tr><td><strong>Trichoderma</strong></td><td><strong>menekan penyakit</strong> · memperbaiki tanah</td><td>di sini, walau organismenya hidup</td></tr>
+            <tr><td><strong>Biosaka</strong></td><td>merangsang pertumbuhan saja</td><td>di sini lewat Pasal 75 huruf d — menolak disebut pupuk justru menariknya masuk</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+
+  <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
+       daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
+  <p class="lain">
+    <a href="index.html">← Beranda</a>
+  </p>
+
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: resep sediaan di <code>spec/vocab/preparation.json</code>.</p>
+  </section>
+
+</main>
+
+<script type="module" src="pengendali-sendiri.js"></script>
+</body>
+</html>

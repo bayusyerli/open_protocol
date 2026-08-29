@@ -2,10 +2,17 @@
   "version": "0.0.1",
   "configurations": [
     {
-      "name": "open-protocols",
+      "name": "pranatani",
       "runtimeExecutable": "sh",
       "runtimeArgs": ["-c", "exec python3 -m http.server \"$PORT\""],
       "port": 8742,
+      "autoPort": true
+    },
+    {
+      "name": "pranatani-situs",
+      "runtimeExecutable": "sh",
+      "runtimeArgs": ["-c", "exec python3 -m http.server \"$PORT\" --directory _situs"],
+      "port": 8743,
       "autoPort": true
     }
   ]

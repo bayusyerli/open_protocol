@@ -33,6 +33,11 @@ const fixtures = [
 const namaBerkas = (f) => f.replace(/ \[\d+\].*$/, '');
 
 for (const file of fixtures) {
+  // Galat pada item di dalam koleksi dilaporkan dengan label berimbuhan —
+  // "fixtures-invalid/x.json [0] kunci" — sehingga endsWith saja tidak pernah cocok, dan
+  // fixture berbentuk koleksi diam-diam tidak teruji. Imbuhannya dipotong `namaBerkas()`
+  // di atas, yang memotong tepat pada " [N]" alih-alih pada spasi pertama: nama berkas
+  // yang mengandung spasi tidak boleh ikut terpotong.
   const rules = [...byFile.entries()].filter(([f]) => namaBerkas(f).endsWith(file)).flatMap(([, r]) => r);
   if (file.split('/').pop().startsWith('ok-')) {
     if (rules.length === 0) { console.log(`  OK    ${file} — lolos, sesuai harapan`); pass++; }

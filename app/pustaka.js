@@ -6,8 +6,20 @@
  * varietas memang muncul di kedua jalur.
  */
 
-// Tidak diekspor: hanya `ambil()` di bawah yang memakainya.
-const BASIS = '../spec/indeks';
+// Penguraian kalimat tinggal di berkasnya sendiri karena ia tidak menyentuh jaringan maupun
+// DOM — seluruhnya fungsi murni, dan itu yang membuatnya bisa diuji di luar peramban.
+import { uraikan } from './tanya.js';
+
+/* Tidak diekspor: hanya `ambil()` di bawah yang memakainya.
+ *
+ * MUTLAK, BUKAN RELATIF, dan itu yang membuat permukaan ini bisa tinggal di dua kedalaman
+ * sekaligus. Selama pengembangan app/ disajikan di `/app/`, tetapi situs terbitan menaruhnya
+ * di akar — halaman produk di `terbit/` menaut `/gaya.css` dan `/produk.html`, bukan
+ * `/app/gaya.css`. Dengan `../spec/indeks`, satu di antara keduanya pasti salah: dari akar
+ * ia menunjuk ke atas akar dan setiap pengambilan gagal. Jalur mutlak benar di keduanya,
+ * dan ia juga yang sudah dipakai sw.js (`INDEKS = '/spec/indeks/'`) sejak awal — jadi ini
+ * membuat ketiganya sepakat, bukan menambah satu asumsi baru. */
+const BASIS = '/spec/indeks';
 
 const ingatan = new Map();
 
@@ -59,28 +71,76 @@ export async function ambil(jalan) {
   return janji;
 }
 
-/* Mengisi angka yang HIDUP dari meta.json, alih-alih menuliskannya di markup.
- *
- * Sebelas komoditas kurasi OPT terakhir menghabiskan lebih banyak sunting pada angka yang
- * tersebar di prosa daripada pada teks gejalanya sendiri, dan tiap angka yang ditulis
- * tangan adalah angka yang suatu saat basi tanpa ada yang menyalak. Yang bertanda
- * `data-cacah="<kunci>"` diisi dari `meta.jumlah`; isi bawaannya di markup tetap
- * ditulis supaya halaman tanpa JS tidak kosong, dan supaya yang membaca sumbernya tahu
- * kira-kira besarannya.
- */
-export function isiCacah(akar = document) {
-  if (!meta?.jumlah) return 0;
-  let n = 0;
-  for (const el of akar.querySelectorAll('[data-cacah]')) {
-    const v = meta.jumlah[el.dataset.cacah];
-    if (v == null) continue;
-    el.textContent = Number(v).toLocaleString('id-ID');
-    n += 1;
-  }
-  return n;
+/* Keluarga pecahan bernomor — `gejala-daftar/000.json`, `gejala-cari/001.json`, dan
+ * seterusnya. Jumlahnya ada di meta.json yang sudah diambil lebih dulu, jadi tidak ada
+ * pertanyaan tambahan untuk mencari tahu ada berapa; pecahannya sendiri diambil
+ * SERENTAK, sehingga berkas yang dipecah demi anggaran 48 KB tidak berubah jadi
+ * beberapa perjalanan pulang-pergi berurutan. */
+export async function ambilPecahan(akar, kunci) {
+  // meta.json dipastikan ada DULU. Jumlah pecahannya ada di sana, jadi memanggil ini
+  // sebelum meta dimuat akan mengembalikan larik kosong tanpa galat apa pun — layar yang
+  // terisi rapi dan kosong, bentuk kegagalan yang paling sulit dilihat.
+  if (!bacaMeta()) await muatMeta();
+  const n = bacaMeta()?.pecahan?.[kunci] ?? 0;
+  if (!n) return [];
+  const bagian = await Promise.all(
+    Array.from({ length: n }, (_, i) => ambil(`${akar}/${String(i).padStart(3, '0')}`)),
+  );
+  return bagian.flat();
 }
 
-export const cacah = (kunci) => meta?.jumlah?.[kunci] ?? null;
+/* DUA KEGAGALAN YANG BERBEDA, DAN SELAMA INI KEDUANYA BERBUNYI SAMA.
+ *
+ * Sampai 24 Agustus 2026 kedelapan layar menjawab kegagalan muat pertama dengan kalimat
+ * yang sama: "Indeks tidak ditemukan — bangun dulu dengan `node spec/tools/bangun-indeks.mjs
+ * --tulis`". Itu benar untuk satu pembaca — orang yang menjalankan repositori di
+ * laptopnya — dan salah untuk semua pembaca lain. Petani bersinyal buruk, yang justru
+ * syarat lapangan nomor satu permukaan ini, dibalas instruksi terminal untuk masalah yang
+ * sebenarnya cuma sambungan putus.
+ *
+ * Yang membedakan: `ambil()` melempar `Error` bertuliskan status HTTP hanya ketika peladen
+ * MENJAWAB tetapi berkasnya tidak ada; kegagalan jaringan melempar TypeError dari fetch,
+ * tanpa status. Ditambah `navigator.onLine` yang menyatakan peranti memang sedang lepas.
+ * Petunjuk membangun tetap ada — ia turun ke console, tempat pembacanya memang menengok. */
+const GAGAL_STATUS = /: (\d{3})$/;
+
+export function pesanGagalMuat(e) {
+  const status = Number(GAGAL_STATUS.exec(e?.message ?? '')?.[1]) || null;
+  const luring = navigator.onLine === false || !status;
+
+  if (luring) {
+    return `
+      <div class="kartu peringatan">
+        <h2>Datanya belum bisa diambil</h2>
+        <p>Sambungan ke jaringan sedang tidak jalan, atau terputus di tengah pengambilan.
+        Yang di halaman ini tidak hilang — begitu sinyalnya kembali, muat ulang saja.</p>
+        <p><button type="button" class="kembali" id="cobaLagi">Coba lagi</button></p>
+        <p class="catatan">Kalau permukaan ini pernah dibuka sebelumnya dan luring sudah
+        disimpan, sebagian layar tetap bisa dipakai tanpa sinyal.</p>
+      </div>`;
+  }
+
+  // 404 dan sebangsanya: peladen menjawab, berkasnya yang tidak ada. Itu keadaan
+  // pemasangan, bukan keadaan lapangan — dan orang yang bisa memperbaikinya bukan
+  // pembaca halaman ini.
+  console.error(
+    `Indeks tidak terambil (${status}). Bangun dulu dari akar repositori:\n`
+    + '  node spec/tools/bangun-indeks.mjs --tulis\n'
+    + 'lalu sajikan AKARNYA — menyajikan app/ saja tidak cukup.', e,
+  );
+  return `
+    <div class="kartu peringatan">
+      <h2>Datanya belum tersedia di peladen ini</h2>
+      <p>Halaman ini ada, tetapi berkas datanya tidak terkirim. Ini bukan sesuatu yang bisa
+      diperbaiki dari sisi kamu — silakan coba lagi nanti.</p>
+      <p class="catatan">Rinciannya ada di konsol peramban, untuk yang memasang permukaan ini.</p>
+    </div>`;
+}
+
+/** Pasang tombol "Coba lagi" yang digambar `pesanGagalMuat`, kalau ada. */
+export function pasangCobaLagi(wadah, aksi) {
+  wadah.querySelector('#cobaLagi')?.addEventListener('click', aksi ?? (() => location.reload()));
+}
 
 // Tidak diekspor: pemakaiannya seluruhnya di dalam berkas ini.
 const rapikan = (s) => (s ?? '').normalize('NFKD').toLowerCase().replace(/[^a-z0-9]/g, '');
@@ -97,7 +157,7 @@ export const tanggal = (s) => {
 export const JENIS = {
   pestisida: 'Pestisida', pupuk: 'Pupuk', varietas: 'Varietas', bahan: 'Bahan aktif',
   gejala: 'Gejala', principal: 'Perusahaan', harga: 'Harga',
-  sediaan: 'Sediaan sendiri', opt: 'Hama & penyakit',
+  sediaan: 'Sediaan sendiri', opt: 'Hama & penyakit', komoditas: 'Tanaman',
 };
 
 /**
@@ -115,7 +175,88 @@ export const JENIS = {
 export function namaPemegang(nama, key) {
   const t = teks(nama ?? '—');
   if (!nama || !key) return t;
-  return `<a class="tautan-principal" href="principal.html?key=${encodeURIComponent(key)}">${t}</a>`;
+  return `<a class="tautan-principal" href="perusahaan.html?key=${encodeURIComponent(key)}">${t}</a>`;
+}
+
+/* Petak kemasan berukuran tetap, dipasang di depan atau di samping nama merek.
+ *
+ * Sudah ada DUA salinannya sebelum ini — di tabel merek jalur 1 dan di layar bahan aktif
+ * jalur 2 — dan halaman profil badan menjadi yang ketiga. Tiga salinan dari satu aturan akan
+ * menyimpang begitu salah satunya diperbaiki, persis sebab `namaPemegang` di atas tinggal
+ * di sini. Yang diterima namanya BERKAS, bukan rekamannya, karena ketiga pemanggilnya
+ * menamai medannya berbeda-beda dan petak ini tidak perlu tahu bentuk rekaman siapa pun.
+ *
+ * Yang tidak punya gambar TIDAK dibiarkan kosong melompong. Hanya 15% baris merek punya
+ * gambar, jadi keadaan yang lazim justru yang tanpa — dan sederet sel kosong di antara yang
+ * bergambar terbaca sebagai "yang ini yang meragukan", padahal artinya cuma situs
+ * pemegangnya belum dipanen. Petak bergaris putus-putus menempati ruang yang sama, sehingga
+ * barisnya sejajar dan tidak ada yang tampak tersisih.
+ *
+ * `alt` sengaja kosong: namanya selalu ada di sebelahnya, di baris yang sama. Membacakan
+ * "Kemasan MATROS 18 EC" lalu "MATROS 18 EC" menggandakan tiap baris tabel bagi yang
+ * memakai pembaca layar.
+ *
+ * `w`/`h` ditulis tetap 40 dan BUKAN ukuran gambar aslinya: yang `kecil` dibatasi 320 px
+ * pada sisi terpanjangnya dan nisbahnya berselisih, sedangkan petaknya berukuran tetap
+ * dengan `object-fit: contain`. Menuliskan 40×40 memesan ruang yang persis akan dipakai,
+ * jadi tidak ada yang bergeser saat gambarnya mendarat.
+ */
+export const petakKemasan = (berkas) => (berkas
+  ? `<img class="merek-kemasan" src="gambar/${teks(berkas)}" alt="" width="40" height="40"
+          loading="lazy" decoding="async">`
+  : '<span class="merek-kemasan merek-kemasan-kosong" aria-hidden="true"></span>');
+
+/* Rute hasil pencarian — jenis mana dibuka halaman mana.
+ *
+ * Dulu tinggal di beranda.js, satu-satunya layar yang punya kotak cari universal. Sejak
+ * cangkang.js membawa kotak yang sama ke keempat belas halaman lain, aturannya dipakai
+ * dua tempat — dan dua salinan akan menyimpang persis seperti <p class="lain"> menyimpang
+ * sebelum dipusatkan. Jadi ia tinggal di sini, dipakai keduanya.
+ *
+ * Pestisida, pupuk, dan bahan aktif serumah di jalur 2 karena pertanyaannya sama:
+ * "sebenarnya ini apa". */
+const RUMAH = { varietas: 'varietas.html', pestisida: 'produk.html', pupuk: 'produk.html', bahan: 'produk.html' };
+
+// Sediaan punya DUA rumah, dan yang menentukan rezimnya. Sisi pupuk dan sisi pengendali
+// bukan dua tab dari satu layar — janjinya berbeda: yang satu resep terbuka, yang satu
+// status hukum yang sengaja berhenti sebelum jadi anjuran.
+const rumahSediaan = (x) => (String(x.p ?? '').includes('sediaan/') && x.k?.includes('pengendali')
+  ? 'pengendali-sendiri.html' : 'pupuk-sendiri.html');
+
+// Dua jenis entri tidak dibuka lewat `id`+`pecahan` seperti empat yang lain: keduanya punya
+// berkasnya sendiri per entitas, jadi yang dibawa tautannya cukup satu kunci.
+const tautanKunci = {
+  // OPT registri dibuka jalur 1 lewat kuncinya sendiri, bukan lewat `opt=` yang dipakai
+  // sepuluh OPT terkurasi: keduanya ruang id yang berbeda, dan menyamakan pintunya akan
+  // membuat jalur 1 mencari teks gejala yang memang tidak ada.
+  opt: (x) => `tanaman.html?hama=${encodeURIComponent(String(x.p ?? '').replace(/^opt-nama\//, ''))}`,
+  sediaan: (x) => `${rumahSediaan(x)}?resep=${encodeURIComponent(String(x.p ?? '').replace(/^sediaan\//, ''))}`,
+  principal: (x) => `perusahaan.html?key=${encodeURIComponent(String(x.p ?? '').replace(/^principal\//, ''))}`,
+  harga: (x) => `harga.html?k=${encodeURIComponent(String(x.p ?? '').replace(/^harga\//, ''))}`,
+  // Satu-satunya rute yang keluar dari app/ dan masuk ke halaman terbitan. Pintu komoditas
+  // memang sudah ada di sana — /tanaman/alpukat/ menyebut 145 varietas dan seluruh OPT
+  // berproduknya sejak halaman pertama diterbitkan — dan yang tidak pernah ada cuma jalan
+  // dari kotak cari ke sana. Membuat salinannya di app/ berarti dua layar yang sama akan
+  // menyimpang; menautnya tidak.
+  //
+  // Mutlak, dengan alasan yang sama seperti `BASIS`: rakit-situs.mjs menaruh app/ di AKAR
+  // bersama terbit/, jadi `/tanaman/…` benar di situs terbitan. Selama pengembangan app/
+  // disajikan di `/app/` dan tautan ini menggantung — sama seperti seluruh 30 ribu halaman
+  // terbitan lainnya, yang memang tidak ada sampai dirakit.
+  komoditas: (x) => `/${String(x.p ?? '').replace(/^\/+|\/+$/g, '')}/`,
+};
+
+/**
+ * Alamat yang membuka satu hasil pencarian.
+ *
+ * `kueri` ikut supaya jalur tujuan memulihkan daftar hasilnya sendiri di belakang layar
+ * rincian — tombol "kembali ke hasil pencarian" di sana harus mendarat pada sesuatu.
+ */
+export function tautanHasil(x, kueri = '') {
+  const khusus = tautanKunci[x.j];
+  if (khusus) return khusus(x);
+  const p = new URLSearchParams({ id: x.i, pecahan: x.p, q: kueri });
+  return `${RUMAH[x.j] ?? 'produk.html'}?${p}`;
 }
 
 let meta = null;
@@ -126,6 +267,28 @@ export async function muatMeta() {
   cap = meta.cap ?? 'x';
   return meta;
 }
+
+/* ANGKA YANG HIDUP BERHENTI DITULIS TANGAN. Prosa yang mengetik cacahnya sendiri basi
+ * diam-diam begitu datanya tumbuh — dan basi diam-diam persis yang dilawan seluruh
+ * permukaan ini. Penanda `data-cacah="<kunci>"` di HTML diisi dari `meta.jumlah` saat
+ * halaman muat, jadi yang tertulis selalu yang benar-benar ada di indeks. Dibawa dari
+ * cabang utama pada merge 25 Agustus 2026.
+ *
+ * Kunci yang tidak dikenali DILEWATI, bukan dikosongkan: angka bawaan di HTML tetap
+ * terbaca, dan itu lebih baik daripada kotak kosong pada halaman yang metanya gagal muat. */
+export function isiCacah(akar = document) {
+  if (!meta?.jumlah) return 0;
+  let n = 0;
+  for (const el of akar.querySelectorAll('[data-cacah]')) {
+    const v = meta.jumlah[el.dataset.cacah];
+    if (v == null) continue;
+    el.textContent = Number(v).toLocaleString('id-ID');
+    n += 1;
+  }
+  return n;
+}
+
+export const cacah = (kunci) => meta?.jumlah?.[kunci] ?? null;
 
 // ---------------------------------------------------------------------------
 // Ember pencarian
@@ -151,22 +314,149 @@ function emberUntuk(kueri) {
   return cocok.length > 4 ? { kurang: 1 } : { ember: cocok };
 }
 
-/** `saring` membatasi jenis entri, mis. hanya varietas untuk jalur 4. */
-export async function cari(kueri, saring) {
+/* Medan yang ikut dicocokkan selain nama, dan kenapa cuma dua.
+ *
+ * `k` baris di bawah nama — komoditas untuk varietas, pemegang pendaftaran untuk produk,
+ * cacah untuk bahan dan pintu komoditas. `f` pembedanya — komposisi untuk produk, nama
+ * ilmiah untuk OPT, bentuk badan untuk principal. Keduanya sudah ada di kepala pencarian dan
+ * sudah tercetak di tiap kartu, jadi mencocokkannya tidak menambah satu pengambilan pun.
+ *
+ * Sebelum ini keduanya TIDAK PERNAH dicocokkan, dan akibatnya paling terlihat pada kueri
+ * berkata dua: "phonska petrokimia" dijawab nol walaupun kedua katanya tercetak berdampingan
+ * di kartu yang sama. */
+const medanCocok = (x) => [x.n, x.k, x.f].map((s) => rapikan(s));
+
+/**
+ * Mencari di kepala pencarian.
+ *
+ * TIGA HAL YANG BERBEDA DARI VERSI SATU-UNTAIAN, dan ketiganya hanya berlaku pada kueri
+ * berkata lebih dari satu — kueri satu kata melewati jalan yang sama persis seperti dulu:
+ *
+ *   1. Kalimat dipecah jadi kata lewat `uraikan()`, dan kata yang bukan nama apa pun
+ *      ("apa", "yang", "cocok", "kapan") tidak ikut dicari. Sebelum ini seluruh kalimat
+ *      jadi satu untaian tanpa spasi, dan untaian seperti itu tidak pernah ada di nama
+ *      mana pun — jadi tiap pertanyaan berkalimat dijawab nol tanpa satu pun galat.
+ *   2. Tiap kata mengambil embernya sendiri, lalu hasilnya disatukan. Ini yang membuat
+ *      "phonska petrokimia" bisa ketemu: PHONSKA tinggal di ember "ph" dan tidak akan
+ *      pernah terambil dari ember "pe".
+ *   3. DAN KALAU BISA, ATAU KALAU TIDAK. Kalau ada entri yang mencocoki SELURUH kata, hanya
+ *      entri itu yang ditampilkan — itu jawaban yang jauh lebih tepat. Kalau tidak ada satu
+ *      pun, saringannya dilonggarkan jadi "cocok salah satu" dan hasilnya diurutkan menurut
+ *      berapa kata yang cocok. Nol hasil hampir selalu lebih buruk daripada hasil yang
+ *      perlu dipilih sendiri.
+ *
+ * `saring` membatasi jenis entri, mis. hanya varietas untuk jalur 4 — tidak berubah.
+ * `pintu` memasukkan entri yang bukan entitas melainkan tautan ke layar lain (hari ini:
+ * komoditas). Dimatikan secara bawaan karena jalur 2, 3, dan 4 membuka hasilnya sebagai
+ * rincian dari pecahan indeks, dan pintu tidak punya pecahan untuk dibuka.
+ */
+export async function cari(kueri, saring, { pintu = false } = {}) {
   const r = rapikan(kueri);
-  const { ember, kurang } = emberUntuk(kueri);
-  if (kurang) return { kurang };
-  const isi = await Promise.all(ember.map((e) => ambil(`cari/${e}`)));
-  const semua = isi.flat()
-    .filter((x) => (saring ? saring(x) : true))
-    .filter((x) => rapikan(x.n).includes(r));
-  // Yang diawali kueri didahulukan; sisanya tetap ditampilkan karena nama di kemasan
-  // kerap cuma sepotong dari nama terdaftarnya.
-  semua.sort((a, b) => {
-    const pa = rapikan(a.n).startsWith(r), pb = rapikan(b.n).startsWith(r);
-    return pb - pa || a.n.localeCompare(b.n);
-  });
-  return { hasil: semua };
+  const u = uraikan(kueri);
+
+  // Kueri satu kata, atau kalimat yang seluruh katanya kata perekat: yang dicari untaiannya
+  // sendiri. Ini juga yang menjaga "tambah N huruf lagi" tetap berbunyi seperti dulu.
+  const istilah = u.istilah.length ? u.istilah : (r ? [r] : []);
+  if (!istilah.length) return { hasil: [] };
+
+  // Ember diambil untuk untaian penuh DAN untuk tiap istilah. Yang penuh dipertahankan
+  // karena ia masih yang paling tepat untuk nama beruang seperti "abamektin 18": untaian
+  // "abamektin18" mencocoki satu merek, sementara kata "abamektin" saja mencocoki ratusan.
+  // Tiga istilah terpanjang saja yang diambil embernya — kalimat yang lebih panjang dari itu
+  // tidak menyempit lebih jauh, dan tiap ember tambahan satu perjalanan lagi di sinyal buruk.
+  const kunciEmber = [
+    ...(u.istilah.length > 1 ? [r] : []),
+    ...[...istilah].sort((a, b) => b.length - a.length).slice(0, 3),
+  ];
+
+  const emberDipakai = new Set();
+  let kurangTerkecil = null;
+  for (const k of kunciEmber) {
+    const { ember, kurang } = emberUntuk(k);
+    if (kurang) {
+      // "Tambah huruf lagi" hanya berlaku kalau TIDAK ADA satu pun kata yang cukup panjang.
+      // Satu kata pendek di dalam kalimat yang punya kata panjang bukan alasan menahan
+      // seluruh jawabannya.
+      kurangTerkecil = kurangTerkecil === null ? kurang : Math.min(kurangTerkecil, kurang);
+      continue;
+    }
+    for (const e of ember) emberDipakai.add(e);
+  }
+  if (!emberDipakai.size) return { kurang: kurangTerkecil ?? 1, urai: u };
+
+  const isi = await Promise.all([...emberDipakai].map((e) => ambil(`cari/${e}`)));
+
+  // Satu entri bisa terambil dua kali — sekali dari ember namanya, sekali dari ember alias
+  // yang dibuatkan untuknya (nama tanpa awalan lembaga, nama ilmiah OPT, kata penanda
+  // sediaan). Di indeks keduanya memang harus ada; di layar cukup satu.
+  const unik = new Map();
+  for (const x of isi.flat()) {
+    if (saring && !saring(x)) continue;
+    if (!pintu && x.j === 'komoditas') continue;
+    if (!unik.has(x.i)) unik.set(x.i, x);
+  }
+
+  const dinilai = [];
+  for (const x of unik.values()) {
+    const [n, k, f] = medanCocok(x);
+    const cocok = istilah.filter((t) => n.includes(t) || k.includes(t) || f.includes(t)).length;
+    const diNama = istilah.filter((t) => n.includes(t)).length;
+    const utuh = r.length >= 2 && n.includes(r);
+    if (!cocok && !utuh) continue;
+    dinilai.push({
+      x,
+      cocok,
+      diNama,
+      utuh,
+      awalan: istilah.some((t) => n.startsWith(t)) || (utuh && n.startsWith(r)),
+    });
+  }
+
+  // DAN kalau bisa: kalau ada yang mencocoki seluruh kata, yang mencocoki sebagian dibuang.
+  const penuh = dinilai.filter((d) => d.cocok === istilah.length);
+  let dipakai = penuh.length ? penuh : dinilai;
+
+  /* Saringan jenis, dan ia LUNAK — kalau menyaring menghabiskan hasilnya, saringannya
+   * dijatuhkan dan penjatuhannya dilaporkan.
+   *
+   * Contohnya "Phonska produk perusahaan apa": kata "perusahaan" memang menyebut jenis
+   * `principal`, tetapi tidak ada badan bernama Phonska. Menyaring dengan keras di sini akan
+   * menjawab nol untuk pertanyaan yang jawabannya justru ada dan lengkap — yang benar
+   * menjawab produknya, lalu menyebutkan siapa pemegangnya dari medan yang sudah terambil.
+   *
+   * Pintu komoditas dikecualikan karena ia bukan entri sejenis melainkan tautan ke daftar:
+   * yang mengetik "varietas alpukat" justru paling terbantu oleh pintu yang menyebut seluruh
+   * 145 varietasnya, dan pintu itu ber-`j` "komoditas", bukan "varietas". */
+  let jenisDijatuhkan = false;
+  // Syarat `dipakai.length` bukan kehati-hatian berlebih: tanpa itu, kueri yang memang nol
+  // hasilnya dilaporkan sebagai "penyempitannya tidak dipakai" — padahal tidak ada apa pun
+  // untuk disempitkan. Layar akan menyalahkan kata yang tidak bersalah.
+  if (u.jenis.length && dipakai.length) {
+    const diminta = new Set(u.jenis);
+    const disaring = dipakai.filter((d) => diminta.has(d.x.j) || d.x.j === 'komoditas');
+    if (disaring.length) dipakai = disaring;
+    else jenisDijatuhkan = true;
+  }
+
+  dipakai.sort((a, b) => (
+    // Untaian penuh lebih dulu — "abamektin 18" tetap menjawab merek itu, bukan seluruh
+    // merek berabamektin. Lalu berapa kata yang cocok, lalu di mana cocoknya: nama yang
+    // memuat kata yang diketik lebih tepat daripada baris keterangan yang memuatnya.
+    Number(b.utuh) - Number(a.utuh)
+    || b.cocok - a.cocok
+    || b.diNama - a.diNama
+    || Number(b.awalan) - Number(a.awalan)
+    || a.x.n.localeCompare(b.x.n)
+  ));
+
+  return {
+    hasil: dipakai.map((d) => d.x),
+    urai: u,
+    // Dua hal yang layar perlu bisa katakan, dan yang tidak bisa disimpulkan dari daftarnya:
+    // bahwa hasilnya cuma cocok sebagian, dan bahwa penyempitan yang diminta tidak terpakai.
+    sebagian: !penuh.length && istilah.length > 1,
+    jenisDijatuhkan,
+  };
 }
 
 /**
@@ -208,7 +498,15 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
     wadah.innerHTML = kosongHtml(kueri);
     return;
   }
-  const tampil = daftar.slice(0, 40);
+  // Rekaman uji registri (`u`) diturunkan ke belakang, bukan dibuang. Registri Kementan
+  // memuat artefak QA-nya sendiri — "testssl", "08oktest123", "Intel (Test)" — dan yang
+  // mengetik "tes" mendapati belasan di antaranya di atas produk sungguhan. Menyaringnya
+  // habis ditolak: permukaan ini menyalin registri apa adanya, dan yang hilang diam-diam
+  // tidak bisa diperiksa siapa pun. Jadi ia turun, lalu menyebut dirinya di kartunya.
+  const daftarUrut = daftar.some((x) => x.u)
+    ? [...daftar].sort((a, b) => Number(Boolean(a.u)) - Number(Boolean(b.u)))
+    : daftar;
+  const tampil = daftarUrut.slice(0, 40);
 
   // Lencana jenis hanya berarti kalau hasilnya memang bercampur. Di jalur 3 seluruh
   // hasilnya pupuk dan di jalur 4 seluruhnya varietas: mencetak "PUPUK" tujuh belas kali
@@ -265,10 +563,16 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
       ${tampil.map((x) => {
         const serupa = senama(x);
         const kembar = kembarSet.has(x);
-        const pembeda = x.f
-          ? `<span class="pembeda${serupa ? ' pembeda-utama' : ''}">${teks(x.f)}</span>`
-          : (x.j === 'pupuk' || x.j === 'pestisida')
-            ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : '';
+        // Kalimatnya ikut jenisnya. "Bukan produk yang beredar" pada entri BAHAN AKTIF
+        // menyangkal yang tidak pernah diakuinya — entri itu tidak pernah mengaku produk —
+        // dan menyisakan pertanyaan yang justru penting: kalau bukan produk, apa ia bahan
+        // sungguhan? Yang perlu dibantah di sana kebahanannya, bukan keberedarannya.
+        const pembeda = x.u
+          ? `<span class="pembeda kosong-pembeda">Rekaman uji registri — bukan ${x.j === 'bahan' ? 'bahan aktif sungguhan' : 'produk yang beredar'}.</span>`
+          : x.f
+            ? `<span class="pembeda${serupa ? ' pembeda-utama' : ''}">${teks(x.f)}</span>`
+            : (x.j === 'pupuk' || x.j === 'pestisida')
+              ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : '';
         return `
         <li>
           <button type="button" data-id="${teks(x.i)}" data-pecahan="${teks(x.p)}">
@@ -300,14 +604,79 @@ export function gambarHasil(wadah, daftar, kueri, kosongHtml) {
  *               ditinggalkan daftar, bukan satu kontrol.
  *  - `sesudah`  keadaan yang ikut direset; jalur 3 menyimpan pilihan produknya.
  */
-export function pasangKembali(wadah, { fokus, gulirKe, sesudah } = {}) {
+/* TOMBOL KEMBALI PERANGKAT IKUT MENUTUP LAYAR RINCIAN — bukan melempar keluar halaman.
+ *
+ * Di HP Android, kebiasaan navigasi nomor satu adalah tombol back perangkat, dan sampai
+ * 24 Agustus 2026 menekannya dari layar rincian jalur 1–6 membuang seluruh hasil pencarian
+ * dan keluar dari halaman. Tombol "← Kembali ke hasil pencarian" memang ada, tetapi bukan
+ * itu yang ditekan orang secara refleks. Hanya `harga.js` yang sudah memakai riwayat.
+ *
+ * Perbaikannya di sini, bukan di enam berkas: fungsi ini sudah dipanggil tepat pada saat
+ * layar rincian selesai digambar, jadi ia tahu kapan sebuah "layar" dibuka. Ia menambah
+ * satu entri riwayat, dan menutup layar ketika entri itu dilepas — dari tombol perangkat
+ * maupun dari tombol di halaman, yang kini menempuh jalan yang sama supaya keduanya tidak
+ * bisa menyimpang.
+ *
+ * URL-nya sengaja TIDAK diubah kecuali pemanggil menyediakan `alamat`. Menyusun URL yang
+ * benar per jalur menuntut id dan pecahannya, dan menebaknya akan menghasilkan alamat yang
+ * gagal saat dimuat ulang — lebih buruk daripada alamat yang tidak berubah. Jalur yang
+ * memang punya alamatnya tinggal mengoperkannya. */
+let tutupKini = null;
+
+addEventListener('popstate', () => {
+  const t = tutupKini;
+  tutupKini = null;
+  t?.();
+});
+
+export function pasangKembali(wadah, { fokus, gulirKe, sesudah, alamat } = {}) {
   const b = wadah.querySelector('#kembali');
   if (!b) return;
-  b.addEventListener('click', () => {
+
+  const tutup = () => {
     wadah.innerHTML = '';
     sesudah?.();
     if (gulirKe) gulirKe.scrollIntoView({ block: 'start' });
     fokus?.focus();
+  };
+
+  // Satu entri per layar rincian. Membukanya berturut-turut tidak menumpuk entri:
+  // yang sebelumnya sudah dilepas penutupnya sendiri, atau digantikan di sini.
+  tutupKini = tutup;
+
+  /* PEMULIHAN GULIR BAWAAN PERAMBAN DIMATIKAN, dan itu syarat supaya `gulirKe` bekerja.
+   *
+   * Penutupan di sini berjalan lewat popstate, dan peramban memulihkan gulir entri tujuan
+   * SESUDAH pendengar popstate selesai — jadi ia menimpa apa pun yang baru saja digulir
+   * `gulirKe` atau `sesudah`. Yang dipulihkannya pun bukan posisi yang benar: layar daftar
+   * kerap disembunyikan sebelum entri rinciannya didorong, sehingga yang terekam adalah
+   * tinggi dokumen yang sudah runtuh.
+   *
+   * Terukur di dua jalur: harga melompat ke 0 alih-alih 4.361, jalur 1 mendarat di tengah
+   * daftar gejala alih-alih di kepalanya. Dipasang DI SINI, bukan di tiap halaman, karena
+   * penyebabnya milik mekanisme ini — dan hanya halaman yang benar-benar membuka layar
+   * rincian yang ikut mematikannya.
+   *
+   * DUA KALI, DAN ITU BUKAN SALIN-TEMPEL. `scrollRestoration` adalah milik ENTRI RIWAYAT
+   * yang sedang aktif, bukan milik dokumen: `pushState` membuat entri baru yang lahir
+   * dengan nilai bawaan 'auto'. Yang disetel sebelum push mengurus entri daftar — entri
+   * yang nanti dituju tombol Back, dan justru entri itulah yang memulihkan gulirnya. Yang
+   * sesudah push mengurus entri rincian yang sekarang aktif. Menyetel salah satunya saja
+   * membuat pemulihan bawaan tetap menang; diuji, dan yang pertama saja tidak cukup. */
+  const manual = () => {
+    try { history.scrollRestoration = 'manual'; } catch { /* peramban lawas: biarkan bawaan */ }
+  };
+  manual();
+  try {
+    history.pushState({ rincian: true }, '', alamat ?? location.href);
+  } catch { /* peramban menolak menulis riwayat — tombol di halaman tetap bekerja */ }
+  manual();
+
+  b.addEventListener('click', () => {
+    // Lewat riwayat, supaya entri yang tadi didorong ikut terlepas. Tanpa ini, tombol
+    // perangkat sesudahnya akan menutup layar yang sudah tertutup.
+    if (history.state?.rincian) history.back();
+    else { tutupKini = null; tutup(); }
   });
 }
 
@@ -319,7 +688,7 @@ export const HTML_KEMBALI =
 // ---------------------------------------------------------------------------
 // Gejala tidak bisa diember menurut dua huruf pertama: yang mengetik "daun
 // mengeriting ke atas" bukan sedang mengetik awalan sebuah nama, ia sedang menyebut
-// apa yang dilihatnya. Kepalanya kecil — puluhan OPT, di bawah anggaran 48 KB — dibawa utuh
+// apa yang dilihatnya. Kepalanya kecil — sepuluh OPT, 3,2 KB — jadi dibawa utuh
 // sekali per sesi lalu dicocokkan kata per kata di sini.
 
 const kata = (s) => (s ?? '')
@@ -349,24 +718,6 @@ export async function cariNamaLokal(kueri) {
       (b.ke.length > 0) - (a.ke.length > 0) ||
       a.n.localeCompare(b.n))
     .slice(0, 6);
-}
-
-/* Keluarga pecahan bernomor — `gejala-daftar/000.json`, `gejala-cari/001.json`, dan
- * seterusnya. Jumlahnya ada di meta.json yang sudah diambil lebih dulu, jadi tidak ada
- * pertanyaan tambahan untuk mencari tahu ada berapa; pecahannya sendiri diambil
- * SERENTAK, sehingga berkas yang dipecah demi anggaran 48 KB tidak berubah jadi
- * beberapa perjalanan pulang-pergi berurutan. */
-export async function ambilPecahan(akar, kunci) {
-  // meta.json dipastikan ada DULU. Jumlah pecahannya ada di sana, jadi memanggil ini
-  // sebelum meta dimuat akan mengembalikan larik kosong tanpa galat apa pun — layar yang
-  // terisi rapi dan kosong, bentuk kegagalan yang paling sulit dilihat.
-  if (!bacaMeta()) await muatMeta();
-  const n = bacaMeta()?.pecahan?.[kunci] ?? 0;
-  if (!n) return [];
-  const bagian = await Promise.all(
-    Array.from({ length: n }, (_, i) => ambil(`${akar}/${String(i).padStart(3, '0')}`)),
-  );
-  return bagian.flat();
 }
 
 export async function cariGejala(kueri) {

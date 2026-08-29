@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-DNPNcLjUG4zlmdaYgGYD9nMFoEvRKSs1IHGJXWCYX+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'">
+<title>Cek isi produk — Pranatani</title>
+<meta name="description" content="Cari produk pestisida, pupuk, atau varietas terdaftar; lihat isinya, dan merek lain yang isinya sama persis.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Cek isi produk</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Sebenarnya ini apa?</h1>
+  <p class="lede">
+    Pilih cara memeriksa kemasan: cari nama terdaftarnya, atau cocokkan angka kandungan
+    pupuk. Kedua pemeriksaan dipisah supaya satu tugas tidak menenggelamkan yang lain.
+  </p>
+</header>
+
+<main>
+
+  <!-- Dibuang JS saat ia jalan. Tanpa JS, pencarian memang tidak bisa bekerja —
+       lebih baik mengatakannya daripada menampilkan kotak yang diam saja. -->
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Pencarian butuh JavaScript</h2>
+    <p>
+      Halaman ini membaca berkas indeks langsung dari peramban — tidak ada server yang
+      bisa mencarikan. Kalau JavaScript dimatikan, kotak pencarian di bawah tidak akan
+      menanggapi apa pun.
+    </p>
+  </div>
+
+  <div class="pemilih-tugas" role="group" aria-label="Cara memeriksa produk">
+    <button type="button" data-mode="nama" aria-pressed="true" aria-controls="jalurNama">
+      Cari nama produk
+      <span>Nomor, isi, penggunaan, dan merek setara</span>
+    </button>
+    <button type="button" data-mode="kandungan" aria-pressed="false" aria-controls="jalurKandungan">
+      Periksa angka kandungan
+      <span>Cocokkan angka pupuk pada karung ke registri</span>
+    </button>
+  </div>
+
+  <section id="jalurNama" aria-label="Pencarian berdasarkan nama produk">
+    <form class="cari" id="formCari" role="search" onsubmit="return false">
+      <label for="q">Nama produk pada kemasan</label>
+      <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+             placeholder="misal: LARBAN, Gramoxone, NPK" enterkeyhint="search" disabled>
+      <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
+    </form>
+
+    <section id="hasil" aria-label="Hasil pencarian nama"></section>
+    <section id="rincian" tabindex="-1" aria-label="Rincian produk"></section>
+  </section>
+
+  <!-- C2 · pemeriksaan keaslian lewat KANDUNGAN, bukan nomor pendaftaran.
+       Premisnya diganti jawaban lapangan: "Tidak. Biasanya langsung lihat kemasan, cek
+       kandungan." Registri membenarkannya dari sisi lain — 667 dari 7.196 pupuk tidak
+       punya nomor sama sekali. -->
+  <section id="jalurKandungan" aria-label="Pemeriksaan berdasarkan angka kandungan" hidden>
+  <div class="kartu" id="kartuKandungan">
+    <h2>Periksa dari angka di karungnya</h2>
+    <p>
+      Nama dan nomor pendaftaran sering tidak dipakai orang saat membeli — yang dibaca
+      <strong>kandungan yang tercetak di kemasan</strong>. Masukkan angkanya di sini, dan
+      layar akan mengatakan apakah ada pupuk terdaftar dengan kandungan itu.
+    </p>
+    <form id="formKandungan" onsubmit="return false">
+      <div class="baris-kandungan" id="barisKandungan"></div>
+      <p class="aksi-kandungan">
+        <button type="button" id="tambahHara">+ Tambah hara</button>
+        <button type="button" id="periksaKandungan">Periksa</button>
+      </p>
+      <p class="bantuan" id="bantuanKandungan">
+        Isi seperti yang tertulis di karung. Untuk NPK 15-15-15, isi tiga baris dengan 15%.
+      </p>
+    </form>
+    <p class="catatan">
+      <strong>Ini memeriksa label terhadap registri, bukan isi karung terhadap labelnya.</strong>
+      Kandungan yang cocok berarti labelnya sesuai dengan sesuatu yang memang terdaftar.
+      Ia tidak membuktikan isi di dalamnya — dan justru di situ bahayanya paling tajam.
+    </p>
+  </div>
+
+  <section id="hasilKandungan" tabindex="-1"></section>
+  </section>
+
+  <details class="batas">
+    <summary><h2>Batas yang perlu diketahui sebelum memakai halaman ini</h2></summary>
+    <div class="batas-isi">
+      <h3>Nama di kemasan bisa berbeda dari nama terdaftar</h3>
+      <p>
+        Registri menyimpan nama produk <em>terdaftar</em>. Kemasan sering memakai nama
+        jualan yang lain, dan pemetaan antara keduanya belum ada. Kalau nama di botol
+        tidak ketemu, itu <strong>bukan bukti produknya tidak terdaftar</strong>.
+      </p>
+
+      <h3>Urutan merek tidak bisa dibeli</h3>
+      <p>
+        Daftar merek diurutkan menurut <strong>nomor pendaftaran menaik</strong>. Tanpa
+        peringkat, tanpa bintang, tanpa slot berbayar — urutannya ditentukan struktur
+        data, bukan kebijakan yang bisa diubah.
+      </p>
+
+      <h3>Isi sama bukan berarti dosis sama</h3>
+      <p>
+        Dosis milik pendaftaran tiap produk, bukan milik bahannya. Dua produk dengan
+        bahan dan kadar yang identik bisa punya dosis terdaftar yang berbeda, dan bisa
+        terdaftar untuk tanaman yang berbeda.
+      </p>
+
+      <h3>Halaman ini tidak menyimpulkan legal atau ilegal</h3>
+      <p>
+        Kalau sebuah produk memuat bahan yang tercantum di daftar larangan, yang
+        ditampilkan adalah <em>kedua fakta apa adanya</em> beserta lingkup larangannya —
+        bukan kesimpulan hukum, yang memang bukan wewenang platform ini.
+      </p>
+    </div>
+  </details>
+
+  <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
+       daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
+  <p class="lain">
+    <a href="index.html">← Beranda</a>
+  </p>
+
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri pestisida, pupuk, dan varietas Kementan.</p>
+  </section>
+
+</main>
+
+<script type="module" src="produk.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+# Bukti verifikasi CAB-03
+Tanggal: 2026-08-25
+
+## 1. Kelengkapan & integritas
+  Berkas diumumkan Mendeley public-api : 2057  (4 ZIP + 2053 berkas gambar lepas)
+  Berkas ada di raw/                    : 2057
+  Ukuran byte tidak cocok               : 0
+  SHA-256 tidak cocok (SEMUA 2057 diperiksa): 0
+  Daftar lengkap ada di SHA256SUMS.txt.
+
+  Catatan proses: perlu tiga ronde unduh ulang karena Mendeley membalas galat JSON
+  (bukan berkas) saat pembatasan laju; 751 lalu 365 lalu 66 berkas diulang sampai bersih.
+
+## 2. Uji arsip
+$ unzip -tqq raw/*.zip  -> keempat ZIP lolos tanpa galat
+  Bacterial_Spot.zip       sha256 66d89205...15ab  COCOK
+  Cercospora_Leaf_Spot.zip sha256 99db0902...52da  COCOK
+  Curl_Virus.zip           sha256 da60acb0...7dd4  COCOK
+  Healthy_Leaf.zip         sha256 7c39b4dc...0103  COCOK
+  (tidak ada folder sampah __MACOSX di dataset ini)
+
+## 3. Cacah per kelas
+  Bacterial_Spot       1629  (1354 .png + 275 .jpg)   <- dari ZIP
+  Cercospora_Leaf_Spot 1898  (1898 .jpg)              <- dari ZIP
+  Curl_Virus           1590  (1224 .png + 366 .jpg)   <- dari ZIP
+  Healthy_Leaf         1647  (1472 .png + 175 .jpg)   <- dari ZIP
+  Nutrition Deficiency 1207  (berkas lepas di akar dataset)
+  Powdery Mildew        846  (berkas lepas di akar dataset)
+  ------------------------------------------------------
+  TOTAL              8817   (sumber mengklaim 8814; selisih +3)
+
+## 4. Sensus dimensi citra - MEMBANTAH klaim '1000x1000 high-resolution'
+  Ukuran dibaca dari header PNG/JPEG untuk SELURUH 8817 gambar (bukan sampel).
+  === dimensi per kelas ===
+  Bacterial_Spot  (n=1629)
+        1143  (1000, 1000)  (70%)
+         219  (640, 640)  (13%)
+           4  (640, 587)  (0%)
+           4  (453, 640)  (0%)
+           3  (640, 343)  (0%)
+           3  (331, 640)  (0%)
+      ukuran unik: 239
+  Cercospora_Leaf_Spot  (n=1898)
+         116  (4000, 3000)  (6%)
+          44  (3000, 4000)  (2%)
+           2  (1268, 2152)  (0%)
+           2  (1019, 1646)  (0%)
+           2  (1079, 2214)  (0%)
+           2  (971, 1715)  (0%)
+      ukuran unik: 1525
+  Curl_Virus  (n=1590)
+        1224  (256, 256)  (76%)
+         171  (640, 640)  (10%)
+         103  (4000, 3000)  (6%)
+          48  (3000, 4000)  (3%)
+           6  (517, 640)  (0%)
+           4  (473, 640)  (0%)
+      ukuran unik: 19
+  Healthy_Leaf  (n=1647)
+         700  (256, 256)  (42%)
+         638  (1000, 1000)  (38%)
+         115  (4000, 3000)  (6%)
+          26  (640, 640)  (1%)
+          24  (3000, 4000)  (1%)
+           3  (1405, 1405)  (0%)
+      ukuran unik: 125
+  Nutrition Deficiency  (n=1207)
+         872  (256, 256)  (72%)
+         247  (1000, 1000)  (20%)
+          64  (4000, 3000)  (5%)
+          10  (3000, 4000)  (0%)
+           2  (2398, 4900)  (0%)
+           2  (3048, 4064)  (0%)
+      ukuran unik: 16
+  Powdery Mildew  (n=846)
+         781  (256, 256)  (92%)
+           1  (3000, 4000)  (0%)
+           1  (3373, 2677)  (0%)
+           1  (2373, 966)  (0%)
+           1  (1677, 810)  (0%)
+           1  (1635, 1137)  (0%)
+      ukuran unik: 66
+  
+  === gabungan ===
+  total gambar: 8817 | ukuran unik: 1968
+      3577  (256, 256)  (40.6%)
+      2028  (1000, 1000)  (23.0%)
+       416  (640, 640)  (4.7%)
+       398  (4000, 3000)  (4.5%)
+       127  (3000, 4000)  (1.4%)
+         6  (517, 640)  (0.1%)
+         5  (3048, 4064)  (0.1%)
+         4  (640, 587)  (0.0%)
+         4  (1314, 1314)  (0.0%)
+         4  (453, 640)  (0.0%)
+    >=1000x1000 : 3586 (40.7%)
+    sisi <512 px: 3647 (41.4%)
+
+## 5. Uji duplikat byte-identik (SHA-256 isi gambar, per kelas)
+
+  Bacterial_Spot        berkas 1629 | unik 1280 | salinan berlebih  349 (21%)
+  Cercospora_Leaf_Spot  berkas 1898 | unik 1683 | salinan berlebih  215 (11%)
+  Curl_Virus            berkas 1590 | unik 1582 | salinan berlebih    8  (0%)
+  Healthy_Leaf          berkas 1647 | unik 1481 | salinan berlebih  166 (10%)
+  Nutrition Deficiency  berkas 1207 | unik 1067 | salinan berlebih  140 (11%)
+  Powdery Mildew        berkas  846 | unik  843 | salinan berlebih    3  (0%)
+  ---------------------------------------------------------------------------
+  TOTAL                 berkas 8817 | unik 7936 | salinan berlebih  881 (10,0%)
+
+  KOREKSI ANGKA: dataset ini efektif berisi 7936 gambar berbeda, bukan 8817
+  (apalagi 8814 seperti klaim sumber).
+
+## 6. TEMUAN SILANG: kelas Cercospora 90,5% menyalin CAB-08
+
+  Uji: SHA-256 tiap gambar di Cercospora_Leaf_Spot.zip dibandingkan dengan SHA-256 tiap
+  gambar di CAB-08-cercospora-sergipe-zenodo/raw/"FINAL DATASET.zip".
+
+    CAB-03 Cercospora_Leaf_Spot : 1898 berkas, 1683 unik
+    CAB-08 (UF Sergipe, BRASIL) : 1738 berkas, 1523 unik
+    IRISAN BYTE-IDENTIK         : 1523
+
+  Artinya 1523 dari 1683 citra unik (90,5%) kelas Cercospora di sini sesungguhnya adalah
+  data Brasil milik Universidade Federal de Sergipe yang terbit di Zenodo pada 2024-08-08 -
+  LIMA BELAS BULAN sebelum dataset ini terbit (2025-11-24). Nama berkasnya diganti dari
+  'NNNN__roi_backremoved.jpg' menjadi 'Cercospora Leaf Spot_NNN.jpg', sehingga jejak asalnya
+  hilang. Perhatikan pula kedua dataset sama-sama membawa 215 salinan internal berlebih -
+  konsisten dengan penyalinan utuh berikut duplikatnya.
+
+  Contoh pasangan:
+    Cercospora Leaf Spot_862.jpg  = 20__roi_backremoved.jpg
+    Cercospora Leaf Spot_625.jpg  = 1563__roi_backremoved.jpg
+    Cercospora Leaf Spot_778.jpg  = 1700__roi_backremoved.jpg
+
+  AKIBAT: keterangan sumber bahwa citra dikumpulkan di Ashulia, Narsingdi, Cumilla, Feni,
+  Noakhali, dan Laksham (Bangladesh) TIDAK BERLAKU untuk kelas Cercospora. Dan CAB-03 tidak
+  boleh digabung dengan CAB-08 dalam satu himpunan latih - 1523 gambar akan terhitung dua kali.

@@ -1,0 +1,38 @@
+# Struktur TOM-06
+
+## Berkas di raw/
+CSV Manifest Fields Summary Table.csv
+Original Dataset.zip
+README.pdf
+
+## file(1)
+raw/CSV Manifest Fields Summary Table.csv: CSV text
+raw/Original Dataset.zip:                  Zip archive data, at least v2.0 to extract, compression method=store
+raw/README.pdf:                            PDF document, version 1.4
+
+## unzip -t 'Original Dataset.zip' (2 baris terakhir)
+    testing: Resize Dataset/Target Spot Fruits/image_0500.png   OK
+No errors detected in compressed data of raw/Original Dataset.zip.
+
+## Isi arsip:     3508 entri
+## PERHATIKAN: berkasnya bernama 'Original Dataset.zip' tetapi folder di dalamnya bernama 'Resize Dataset'.
+
+## Cacah gambar per kelas
+ 500 Resize Dataset/Target Spot Fruits/
+ 500 Resize Dataset/Leaf Curl Leaf/
+ 500 Resize Dataset/Late Blight Leaf/
+ 500 Resize Dataset/Healthy Leaf/
+ 500 Resize Dataset/Healthy Fruits/
+ 500 Resize Dataset/Early Blight Leaf/
+ 500 Resize Dataset/Bushy Stunt Leaf/
+   TOTAL: 3.500 gambar (7 kelas x 500, seimbang sempurna)
+
+## Ekstensi
+3500 png
+
+## Dimensi gambar (sampel 3 berkas dari 3 kelas berbeda): 512 x 512, 8-bit RGB, PNG non-interlaced
+## Penamaan: image_0001.png .. image_0500.png, direset per kelas -> nama berkas asli & EXIF hilang
+
+## 'CSV Manifest Fields Summary Table.csv' hanya mendaftar NAMA MEDAN manifes
+## (image_id, label, split, augmented, file_path, width, height, channels, format, color_profile).
+## Berkas manifes yang berisi datanya sendiri TIDAK disertakan -> kolom 'split' dan 'augmented' tidak bisa dipakai.

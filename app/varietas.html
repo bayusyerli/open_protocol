@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-DNPNcLjUG4zlmdaYgGYD9nMFoEvRKSs1IHGJXWCYX+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'">
+<title>Cek keabsahan benih &amp; bibit — Pranatani</title>
+<meta name="description" content="Cari nama varietas benih atau bibit; lihat surat apa yang dipegangnya di registri Kementan, dan apa yang registri itu tidak bisa pastikan.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Cek nama varietas</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Varietas ini benar-benar ada?</h1>
+  <p class="lede">
+    Ketik nama varietas yang tertulis di bungkus benih atau label bibit. Yang keluar:
+    <strong>surat apa yang dipegangnya</strong> di registri — dan, sama pentingnya,
+    apa yang registri itu <em>tidak</em> bisa pastikan.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Pencarian butuh JavaScript</h2>
+    <p>
+      Halaman ini membaca berkas indeks langsung dari peramban — tidak ada server yang
+      bisa mencarikan. Kalau JavaScript dimatikan, kotak pencarian di bawah tidak akan
+      menanggapi apa pun.
+    </p>
+  </div>
+
+  <form class="cari" id="formCari" role="search" onsubmit="return false">
+    <label for="q">Nama varietas pada kemasan atau label</label>
+    <input id="q" name="q" type="search" autocomplete="off" spellcheck="false"
+           placeholder="misal: Brahma F1, Inpari, Electra" enterkeyhint="search" disabled>
+    <p class="bantuan" id="bantuan">Ketik minimal dua huruf.</p>
+  </form>
+
+  <section id="hasil" aria-live="polite"></section>
+
+  <section id="rincian" tabindex="-1"></section>
+
+  <div class="kartu">
+    <h2>Yang tidak dijawab halaman ini</h2>
+    <p>
+      <strong>Varietas mana yang sebaiknya ditanam.</strong> Dari 11.227 varietas
+      terdaftar, <strong>tidak satu pun</strong> menyebut sifat agronomi apa pun —
+      ketahanan, umur panen, potensi hasil. Yang ada di registri adalah berkas
+      perizinan, jadi ini <em>daftar keabsahan, bukan katalog agronomi</em>.
+    </p>
+    <p class="catatan">
+      Membangun rekomendasi di atasnya berarti mengarang sifat yang tidak pernah ada
+      datanya — dan taruhan benih adalah taruhan seluruh musim.
+    </p>
+  </div>
+
+  <details class="batas">
+    <summary><h2>Kenapa benih dan bibit dijawab jalur yang sama</h2></summary>
+    <div class="batas-isi">
+      <p>
+        <strong>Benih</strong> bahan perbanyakan berbentuk biji. <strong>Bibit</strong>
+        tanaman muda siap tanam — semaian, setek, sambungan, okulasi, atau umbi. Untuk
+        banyak komoditas, yang beredar di pasar justru bibit, dan benih tidak pernah
+        sampai ke tangan petani sama sekali.
+      </p>
+      <p>
+        Registri ini mendaftarkan <strong>varietas</strong>, bukan bahan perbanyakannya.
+        Satu varietas tetap varietas yang sama entah diterima sebagai biji, setek, atau
+        umbi — jadi jalur ini sudah menjangkau keduanya.
+      </p>
+
+      <h3>Empat surat yang bunyinya mirip</h3>
+      <p>
+        Keempatnya sama-sama terdengar “resmi”, tetapi instrumennya berbeda:
+        <strong>Pelepasan</strong> (5.822 varietas), <strong>Pendaftaran</strong>
+        (5.138), <strong>Perlindungan/PVT</strong> (580), dan <strong>Penamaan</strong>
+        (22). 329 varietas memegang lebih dari satu jenis.
+      </p>
+      <p>
+        “Pendaftaran” saja mencakup empat instrumen: Varietas Tanaman, Hasil Pemuliaan,
+        Lokal, dan Hortikultura. Layar menampilkan sebutan resminya apa adanya, karena
+        meratakannya jadi satu kata “terdaftar” membuang persis keterangan yang
+        membedakan.
+      </p>
+
+      <h3>Masa berlaku surat tidak bisa dinyatakan</h3>
+      <p>
+        11.320 dari 11.609 surat hanya memuat nomor SK tanpa tanggal, dan seluruh 580
+        surat PVT tidak membawa tanggal sama sekali. Jadi layar ini hanya bisa
+        mengatakan sebuah surat <em>ada</em> — bukan bahwa ia masih berlaku.
+      </p>
+    </div>
+  </details>
+
+  <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
+       daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
+  <p class="lain">
+    <a href="index.html">← Beranda</a>
+  </p>
+
+  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri perizinan varietas Kementan.</p>
+  </section>
+
+</main>
+
+<script type="module" src="cek-varietas.js"></script>
+</body>
+</html>

@@ -18,6 +18,7 @@
  */
 
 import { ambil, muatMeta, teks } from './pustaka.js';
+import { titikImpas, hargaDiterima } from './hitung.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
 import * as musim from './musim.js';
@@ -181,8 +182,11 @@ function gambarPanen() {
     return;
   }
 
-  const diterima = masuk > 0 ? masuk / totalKg : null;
-  const impasNyata = biaya ? biaya / totalKg : null;
+  // Keduanya lewat app/hitung.js — fungsi yang sama itulah yang dikunci uji di
+  // spec/tools/uji-hitung.mjs, jadi yang dijaga kode yang benar-benar berjalan di sini,
+  // bukan salinan kedua yang kebetulan mirip.
+  const diterima = hargaDiterima(masuk, totalKg);
+  const impasNyata = titikImpas(biaya, totalKg);
   const selisihHasil = perkiraan ? (totalKg - perkiraan) / perkiraan * 100 : null;
 
   el.hasilPanen.innerHTML = `

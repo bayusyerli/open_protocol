@@ -1,0 +1,31 @@
+# Tomato Disease Dataset (Appe)
+
+- **dataset_id**: TOM-13-zenodo-tomat-7z
+- **Tanaman**: Tomat (*Solanum lycopersicum*) — diasumsikan dari judul; **tidak ada berkas apa pun di dalam arsip yang menegaskan tanaman atau penyakitnya**
+- **Penyakit/kelas tercakup**: **tidak ada**. Arsip berisi satu folder datar `train/` tanpa subdirektori kelas, tanpa berkas label, tanpa CSV, tanpa yaml.
+- **Jenis data**: gambar
+- **Format**: JPG/PNG dalam arsip 7-Zip
+- **Jumlah**: sumber tidak menyebut angka; terhitung **2.388 berkas gambar** (2.384 `.jpg`, 3 `.png`, 1 `.jpeg`), 2 di antaranya bernama `*_thumb.png`
+- **Sumber**: Zenodo
+- **URL sumber**: https://zenodo.org/records/11102494
+- **DOI**: 10.5281/zenodo.11102494
+- **Pembuat**: Appe, Seetharam Nagesh
+- **Tahun terbit / pembaruan**: 2024-05-02
+- **Lisensi**: CC BY 4.0
+- **Ketentuan atribusi**: Atribusi ke Appe, Seetharam Nagesh + tautan lisensi + penandaan perubahan.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 29.389.180 byte (28 MiB)
+- **SHA-256**: `1d535e4602e61f21cb38dc13c69dc1bf37755b61a90fce56c540bba8c7a24a11`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - `file raw/train.7z` → `7-zip archive data, version 0.4`
+  - `bsdtar -tf raw/train.7z | wc -l` → 2.389 entri (1 direktori + 2.388 berkas)
+  - `bsdtar -tf raw/train.7z | grep -c '/$'` → **1** (hanya `train/` sendiri; tidak ada subdirektori kelas)
+  - `bsdtar -tf raw/train.7z | sed 's/.*\.//' | sort | uniq -c` → hanya ekstensi gambar; **tidak ada `.txt`, `.csv`, `.json`, `.yaml`, atau `.xml`**
+- **Keterbatasan / masalah kualitas**:
+  - **Tidak berlabel — praktis tidak bisa dipakai untuk pelatihan terbimbing.** Nama berkasnya (`3042.jpg`, `603-116-1.jpg`, `1-6.png`) tidak memuat kelas. Tanpa label, dataset ini hanya berguna sebagai kumpulan citra tak berlabel (mis. pra-latih swa-selia), bukan untuk identifikasi penyakit.
+  - **Rekaman Zenodo tidak punya deskripsi sama sekali** — medan `description` kosong. Tidak ada makalah terkait, tidak ada `related_identifiers`. Jadi tidak ada satu pun cara untuk memastikan tanaman, penyakit, lokasi, atau metode pengambilannya.
+  - Nama berkas `train` menyiratkan ini hanya potongan *training split* dari suatu dataset lain yang tidak disebutkan; bagian test/val-nya tidak diunggah.
+  - Ada 2 berkas `_thumb.png` (thumbnail) yang tercampur dengan citra penuh — indikasi hasil unduhan web yang tidak dibersihkan.
+  - **Dicatat di sini sebagai temuan negatif yang berguna**: judul "Tomato Disease Dataset" di repositori bereputasi + lisensi terbuka **tidak menjamin** ada label. Arsipnya wajib dibuka sebelum dipercaya.

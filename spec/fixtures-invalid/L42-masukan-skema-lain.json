@@ -1,0 +1,45 @@
+{
+  "$schema": "../schema/plot.schema.json",
+  "id": "op:plt:019e9000-0000-7000-8000-000000000908",
+  "kind": "field",
+  "label": "Fixture L42 masukan",
+  "holder": {
+    "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4",
+    "label": "Pemegang Contoh"
+  },
+  "area": {
+    "value": 5000,
+    "unit": "m2"
+  },
+  "elevation_m": 120,
+  "agroclimate": [
+    {
+      "scheme": {
+        "id": "op:akl:00000002",
+        "label": "Tipe iklim Schmidt-Ferguson"
+      },
+      "class": {
+        "id": "op:akz:00000103",
+        "code": "C",
+        "label": "Schmidt-Ferguson C"
+      },
+      "basis": {
+        "source_kind": "gridded",
+        "series": "CHIRPS v2.0 monthly",
+        "publisher": "Climate Hazards Center, UC Santa Barbara / USGS",
+        "license": "CC0-1.0",
+        "period": {
+          "from": 1992,
+          "to": 2021
+        },
+        "resolution_km": 5.5
+      },
+      "inputs": {
+        "runtun_bulan_basah": 5,
+        "runtun_bulan_kering": 4
+      }
+    }
+  ],
+  "data_classification": "farm_private",
+  "created_at": "2026-08-24T00:00:00Z"
+}

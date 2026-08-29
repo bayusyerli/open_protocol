@@ -1,0 +1,38 @@
+# Bukti verifikasi CAB-09
+Tanggal: 2026-08-25
+
+$ file raw/PepperDiseaseTest.zip   -> Zip archive data, compression method=store
+$ unzip -tqq raw/PepperDiseaseTest.zip -> ARCHIVE OK (tanpa galat)
+$ shasum -a 256 raw/PepperDiseaseTest.zip
+   58c7928899a7de3fce6ab2274e0e8a694978fcb8b2512a70ad920b17bd3aaafe
+   COCOK PERSIS dengan sha256_hash yang diumumkan Mendeley public-api untuk berkas ini.
+
+## Isi arsip (python3 zipfile)
+total berkas: 100
+ekstensi: [('.jpg', 100)]
+folder: [('PepperDiseaseTest', 100)]
+
+KESIMPULAN: struktur DATAR. Tidak ada subfolder kelas, tidak ada berkas anotasi
+(.txt/.xml/.json/.csv), tidak ada metadata apa pun. Nama berkas hanya image_1..image_100.
+
+Contoh 12 nama berkas + ukuran:
+   PepperDiseaseTest/image_1.jpg  5402836 byte
+   PepperDiseaseTest/image_10.jpg  1667301 byte
+   PepperDiseaseTest/image_100.jpg  2867894 byte
+   PepperDiseaseTest/image_11.jpg  343319 byte
+   PepperDiseaseTest/image_12.jpg  5522559 byte
+   PepperDiseaseTest/image_13.jpg  10907958 byte
+   PepperDiseaseTest/image_14.jpg  133913 byte
+   PepperDiseaseTest/image_15.jpg  1285457 byte
+   PepperDiseaseTest/image_16.jpg  779618 byte
+   PepperDiseaseTest/image_17.jpg  1285788 byte
+   PepperDiseaseTest/image_18.jpg  3791670 byte
+   PepperDiseaseTest/image_19.jpg  3430302 byte
+
+## Uji duplikat byte-identik (SHA-256 isi gambar)
+  Berkas gambar    : 100
+  SHA-256 unik     : 100
+  Salinan berlebih :   0  -> bersih
+
+## Uji irisan dengan dataset cabai lain dalam panen ini
+  Dibandingkan dengan CAB-01, CAB-04, CAB-05, CAB-12: tidak ada gambar byte-identik yang sama.

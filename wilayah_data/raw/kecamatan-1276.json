@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "1276010",
+  "nama_bps": "BINJAI SELATAN",
+  "kode_dagri": "12.75.05",
+  "nama_dagri": "BINJAI SELATAN"
+ },
+ {
+  "kode_bps": "1276020",
+  "nama_bps": "BINJAI KOTA",
+  "kode_dagri": "12.75.02",
+  "nama_dagri": "BINJAI KOTA"
+ },
+ {
+  "kode_bps": "1276030",
+  "nama_bps": "BINJAI TIMUR",
+  "kode_dagri": "12.75.04",
+  "nama_dagri": "BINJAI TIMUR"
+ },
+ {
+  "kode_bps": "1276040",
+  "nama_bps": "BINJAI UTARA",
+  "kode_dagri": "12.75.01",
+  "nama_dagri": "BINJAI UTARA"
+ },
+ {
+  "kode_bps": "1276050",
+  "nama_bps": "BINJAI BARAT",
+  "kode_dagri": "12.75.03",
+  "nama_dagri": "BINJAI BARAT"
+ }
+]

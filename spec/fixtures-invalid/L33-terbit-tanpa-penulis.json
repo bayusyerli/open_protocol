@@ -216,14 +216,14 @@
   "provenance": {
     "sources": [
       {
-        "title": "Open Protocols — Fondasi & Tahapan, bagian 2 (Lapis 2)",
-        "publisher": "Open Protocols",
+        "title": "Pranatani — Fondasi & Tahapan, bagian 2 (Lapis 2)",
+        "publisher": "Pranatani",
         "year": 2026,
         "locator": "docs/00-fondasi-dan-tahapan.md"
       },
       {
         "title": "Contoh langkah rencana cabai",
-        "publisher": "Open Protocols",
+        "publisher": "Pranatani",
         "year": 2026,
         "locator": "spec/examples/step-cabai-planned-*.json"
       }

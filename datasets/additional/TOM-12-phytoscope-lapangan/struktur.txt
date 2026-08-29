@@ -1,0 +1,63 @@
+# Struktur "PhytoScope Dataset.zip"
+
+## Total entri arsip: 41773
+## Ekstensi: {'yaml': 25, 'txt': 20773, 'jpg': 20723}
+
+## 25 sub-dataset per tanaman: cacah gambar / label / kelas / split
+  Apple Disease            gambar=  800 label=  802 nc= 4 split={'test': 80, 'train': 561, 'valid': 159} lisensi=CC BY 4.0
+      kelas: ['Apple-Black-rot', 'Apple-Cedar_rust', 'Apple-Scab', 'Apple-healthy']
+  Bean_Disease             gambar=  751 label=  753 nc= 3 split={'test': 50, 'train': 601, 'valid': 100} lisensi=CC BY 4.0
+      kelas: ['Bean_Anthracnose', 'Bean_Healthy', 'Bean_Rust']
+  Bitter Gourd Disease     gambar=  900 label=  902 nc= 4 split={'test': 90, 'train': 630, 'valid': 180} lisensi=CC BY 4.0
+      kelas: ['Bitter Gourd Downey mildew', 'Bitter Gourd Fresh leaf', 'Bitter Gourd Fusarium wilt', 'Bitter Gourd Mosaic Virus']
+  Bottle-gourd Disease     gambar=  605 label=  607 nc= 3 split={'test': 60, 'train': 423, 'valid': 122} lisensi=CC BY 4.0
+      kelas: ['Bottle gourd Anthracnose', 'Bottle gourd Downey mildew', 'Bottle gourd fresh leaf']
+  CauliFlower Disease      gambar=  602 label=  604 nc= 3 split={'test': 60, 'train': 421, 'valid': 121} lisensi=CC BY 4.0
+      kelas: ['CauliFlower Black Rot', 'CauliFlower Healthy', 'CauliFlower Insect Hole']
+  Chilli Disease           gambar= 1012 label= 1014 nc= 5 split={'test': 101, 'train': 708, 'valid': 203} lisensi=CC BY 4.0
+      kelas: ['Chilli cercospora', 'Chilli healthy', 'Chilli mites_and_trips', 'Chilli nutritional', 'Chilli powdery mildew']
+  Corn Disease             gambar=  829 label=  831 nc= 4 split={'test': 83, 'train': 580, 'valid': 166} lisensi=CC BY 4.0
+      kelas: ['Corn Common Rust', 'Corn Gray Leaf Spot', 'Corn Healthy', 'Corn Leaf Blight']
+  Cotton Disease           gambar= 1094 label= 1096 nc= 6 split={'test': 109, 'train': 765, 'valid': 220} lisensi=CC BY 4.0
+      kelas: ['Cotton', 'Cotton Bacterial Blight', 'Cotton Curl Virus', 'Cotton Healthy Leaf', 'Cotton Herbicide Growth Damage', 'Cotton Leaf Hopper Jassids']
+  Cucumber Disease         gambar=  619 label=  621 nc= 3 split={'test': 61, 'train': 434, 'valid': 124} lisensi=CC BY 4.0
+      kelas: ['Cucumber Anthracnose lesions', 'Cucumber Downy mildew', 'Cucumber Healthy']
+  Dragon Fruit Disease     gambar=  905 label=  907 nc= 6 split={'test': 90, 'train': 634, 'valid': 181} lisensi=CC BY 4.0
+      kelas: ['Dragon Fruit Brown_Stem_Spot', 'Dragon Fruit Gray_Blight', 'Dragon Fruit Healthy Leaf', 'Dragon Fruit Soft_Rot', 'Dragon Fruit Stem_Canker', 'Dragon fruit anthracnose']
+  Eggplant  Disease        gambar=  600 label=  602 nc= 3 split={'test': 60, 'train': 420, 'valid': 120} lisensi=CC BY 4.0
+      kelas: ['Cercospora Leaf Spot', 'Eggplant Healthy', 'Eggplant Insect Pest']
+  Ginger  Disease          gambar=  857 label=  859 nc= 4 split={'test': 86, 'train': 600, 'valid': 171} lisensi=CC BY 4.0
+      kelas: ['Ginger_Damage-Pest', 'Ginger_Dehydrated', 'Ginger_Healthy', 'Ginger_Leaf-blight']
+  Grape Disease            gambar=  800 label=  802 nc= 4 split={'test': 80, 'train': 560, 'valid': 160} lisensi=CC BY 4.0
+      kelas: ['Grape Black_rot', 'Grape Healthy', 'Grape Leaf_Blight', 'Grape-Esca']
+  Jackfruit Disease        gambar= 1206 label= 1208 nc= 6 split={'test': 120, 'train': 844, 'valid': 242} lisensi=CC BY 4.0
+      kelas: ['Damaged Jackfruit', 'Healthy Jackfruit', 'Jackfruit Healthy Leaf', 'Jackfruit Leaf Blight', 'Jackfruit Leaf Spot', 'Jackfruit Rhizopus Rot']
+  Jute Disease             gambar=  900 label=  902 nc= 3 split={'test': 90, 'train': 630, 'valid': 180} lisensi=CC BY 4.0
+      kelas: ['Jute Cescospora Leaf Spot', 'Jute Golden Mosaic', 'Jute Healthy Leaf']
+  Lychee Disease           gambar= 1409 label= 1411 nc= 7 split={'test': 140, 'train': 988, 'valid': 281} lisensi=CC BY 4.0
+      kelas: ['lychee Curl_Leaf', 'lychee Deficiency_Leaf', 'lychee Felt_Leaf', 'lychee Fungal_Leaf_Spot', 'lychee Healthy_Leaf', 'lychee Leaf_Blight', 'lychee Leaf_Gall']
+  Mango Disease            gambar= 1206 label= 1208 nc= 6 split={'test': 120, 'train': 845, 'valid': 241} lisensi=CC BY 4.0
+      kelas: ['Mango-Anthracnose', 'Mango-Bacterial_Canker', 'Mango-Gall_Midge', 'Mango-Healthy', 'Mango-Powder_ Mildew', 'Mango-Sooty_Mould']
+  Orange Disease           gambar=  603 label=  605 nc= 3 split={'test': 60, 'train': 422, 'valid': 121} lisensi=CC BY 4.0
+      kelas: ['Orange Foliage Damaged', 'Orange Healthy', 'Orange Mealybugs Disease']
+  Papaya Disease           gambar=  503 label=  505 nc= 5 split={'test': 50, 'train': 352, 'valid': 101} lisensi=CC BY 4.0
+      kelas: ['Papaya-Anthracnose', 'Papaya-BacterialSpot', 'Papaya-Curl', 'Papaya-Healthy', 'Papaya-RingSpot']
+  Potato Disease           gambar=  610 label=  612 nc= 3 split={'test': 60, 'train': 427, 'valid': 123} lisensi=CC BY 4.0
+      kelas: ['Potato_early_blight', 'Potato_healthy', 'Potato_late_blight']
+  Rice Disease             gambar=  801 label=  803 nc= 5 split={'test': 80, 'train': 561, 'valid': 160} lisensi=CC BY 4.0
+      kelas: ['Rice', 'Rice Bacterial Leaf Blight', 'Rice Blast', 'Rice Tungro', 'Rice_Healthy_leaf']
+  Strawberry Disease       gambar=  500 label=  502 nc= 2 split={'test': 50, 'train': 350, 'valid': 100} lisensi=CC BY 4.0
+      kelas: ['Strawberry-Leaf_scorch', 'Strawberry-healthy']
+  Tea Disease              gambar= 1001 label= 1003 nc= 5 split={'test': 100, 'train': 701, 'valid': 200} lisensi=CC BY 4.0
+      kelas: ['Tea algal', 'Tea brown blight', 'Tea gray blight', 'Tea healthy', 'Tea red spot']
+  Tomato Disease           gambar=  801 label=  803 nc= 4 split={'test': 80, 'train': 561, 'valid': 160} lisensi=CC BY 4.0
+      kelas: ['Tomato Bacterial spot', 'Tomato Fresh leaf', 'Tomato leaf curl virus', 'Tomato spotted wilt']
+  watermelon Disease       gambar=  809 label=  811 nc= 4 split={'test': 80, 'train': 567, 'valid': 162} lisensi=CC BY 4.0
+      kelas: ['watermelon___anthracnose', 'watermelon___downy_mildew', 'watermelon___healthy', 'watermelon___mosaic_virus']
+
+## TOTAL: 20723 gambar, 20773 berkas label, 105 kelas, 25 tanaman
+## Klaim sumber: "more than 20,000 images", "25 crop species", "105 disease and healthy object categories" -> COCOK
+
+## Format anotasi: YOLO (class cx cy w h), satu data.yaml per tanaman
+## Setiap data.yaml memuat blok "roboflow:" -> dataset ini adalah AGREGASI proyek Roboflow Universe,
+## bukan pemotretan tunggal. Semua 25 blok menyatakan license: CC BY 4.0.

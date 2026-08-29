@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "1872011",
+  "nama_bps": "METRO SELATAN",
+  "kode_dagri": "18.72.05",
+  "nama_dagri": "METRO SELATAN"
+ },
+ {
+  "kode_bps": "1872012",
+  "nama_bps": "METRO BARAT",
+  "kode_dagri": "18.72.03",
+  "nama_dagri": "METRO BARAT"
+ },
+ {
+  "kode_bps": "1872021",
+  "nama_bps": "METRO TIMUR",
+  "kode_dagri": "18.72.04",
+  "nama_dagri": "METRO TIMUR"
+ },
+ {
+  "kode_bps": "1872022",
+  "nama_bps": "METRO PUSAT",
+  "kode_dagri": "18.72.01",
+  "nama_dagri": "METRO PUSAT"
+ },
+ {
+  "kode_bps": "1872023",
+  "nama_bps": "METRO UTARA",
+  "kode_dagri": "18.72.02",
+  "nama_dagri": "METRO UTARA"
+ }
+]

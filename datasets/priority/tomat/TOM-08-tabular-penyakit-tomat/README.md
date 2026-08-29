@@ -1,0 +1,34 @@
+# A Comprehensive Dataset of Tomato Plant Diseases for National Predictive Analytics and Crop Health Management
+
+- **dataset_id**: TOM-08-tabular-penyakit-tomat
+- **Tanaman**: Tomat (*Solanum lycopersicum*)
+- **Penyakit/kelas tercakup**: 9 penyakit/hama apa adanya dari kolom `Disease` — `Early Blight`, `Late Blight`, `Leaf Miner`, `leaf mold`, `Mosaic Virus`, `Septoria`, `Spider Mites`, `Target Spot`, `Yellow Leaf Curl Virus`
+- **Jenis data**: tabular (teks pengetahuan, bukan gambar)
+- **Format**: CSV tunggal, 3 kolom: `Disease`, `Features`, `Description`
+- **Jumlah**: 54 record (baris data), 475 baris fisik karena `Description` multi-baris. Dari 54 record, **46 berisi** dan **8 kosong/cacat**.
+- **Sumber**: Mendeley Data (dicerminkan juga di IEEE DataPort, DOI 10.21227/7p2x-sy36)
+- **URL sumber**: https://data.mendeley.com/datasets/ztncd79yhk/1
+- **DOI**: 10.17632/ztncd79yhk.1
+- **Pembuat**: Omkar Shinde, Sahil Jagtap, Mayuresh Marade, Rugved Sawant, Nilesh Sable (Vishwakarma Institute of Information Technology, Pune, India)
+- **Tahun terbit / pembaruan**: 2025-10-06 (versi 1)
+- **Lisensi**: CC BY 4.0
+- **Ketentuan atribusi**: Wajib atribusi ke pembuat + tautan lisensi + penandaan perubahan. Catatan lisensi Mendeley menambahkan bahwa isi pihak ketiga di dalam dataset bisa butuh izin terpisah.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 27.976 byte (27 KiB)
+- **SHA-256**: `b0e61d805c56ef9c00b4739820137f6c696b38442eda247fce9be9fe4af0d181`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - `file raw/Data.csv` → `CSV text`
+  - `shasum -a 256 raw/Data.csv` → cocok persis dengan `sha256_hash` API Mendeley (`b0e61d805c56ef9c…`)
+  - Diurai dengan `python3 -c "import csv; rows=list(csv.DictReader(open('raw/Data.csv')))"` → 54 record, kolom `['Disease','Features','Description']`
+  - Cacah `Disease` unik → 10 nilai, yaitu 9 nama penyakit + 1 nilai kosong yang memayungi 8 baris cacat. Rincian di `struktur.txt`.
+- **Isi tiap penyakit** (nilai kolom `Features`): `symptoms`, `favourable_condition`, `pesticides`, `physical_biological` (untuk `Spider Mites` dipecah jadi `physical control` + `Biological control`; untuk `Leaf Miner` dinamai `Biological management`), `preventive_measures`.
+- **Keterbatasan / masalah kualitas**:
+  - **8 dari 54 record kosong** — kolom `Disease`, `Features`, dan `Description` ketiganya kosong. Harus dibuang saat pemuatan.
+  - **Nama medan tidak konsisten**: `physical_biological` vs `physical control`/`Biological control` vs `Biological management`. Perlu pemetaan manual sebelum dipakai sebagai skema.
+  - **Kapitalisasi tidak konsisten**: `leaf mold` huruf kecil sementara delapan lainnya Title Case.
+  - Tidak ada kolom patogen (nama ilmiah), inang, lokasi, atau referensi — jadi ini bukan basis pengetahuan berstruktur penuh, melainkan teks bebas yang dikelompokkan.
+  - **Kolom `pesticides` menyebut bahan aktif/produk yang berlaku di India.** Jangan dipakai langsung sebagai anjuran di Indonesia: pendaftaran pestisida per komoditas berbeda, dan rekomendasi harus diperiksa ulang terhadap registri pestisida Indonesia sebelum ditampilkan ke pengguna.
+  - Tidak ada sitasi sumber untuk isi deskripsi — sebagian tampak parafrase dari materi penyuluhan; keakuratannya belum diaudit ahli.
+  - **`Spider Mites` dan `Leaf Miner` adalah hama (tungau & lalat pengorok), bukan penyakit** — tercampur di kolom yang sama dengan patogen.

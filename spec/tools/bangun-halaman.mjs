@@ -59,6 +59,7 @@
 import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync, readdirSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';
 import { hitungHash } from '../kanonik.mjs';
+import { TANGKI, BATAS_TANGKI, angkaId, perTangki as perTangkiDasar } from './dosis.mjs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -66,7 +67,6 @@ const AKAR = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const INDEKS = join(AKAR, 'spec', 'indeks');
 const KELUAR = join(AKAR, 'terbit');
 const ANGGARAN = 48 * 1024;       // sama seperti anggaran pecahan indeks
-const TANGKI = 16;                 // liter — isi tangki punggung yang paling lazim
 const BATAS_DAFTAR = 120;          // panjang daftar tautan sebelum dipangkas & dilaporkan
 // Yang membebani halaman ternyata bukan barisnya melainkan KARTUNYA: satu kartu
 // bahan+kadar membawa judul, catatan, dan kepala tabelnya sendiri — sekitar 900 byte
@@ -95,6 +95,29 @@ const gambarTerindeks = bendera('gambar-terindeks');
 // Tanpa --asal, kanonik ditulis relatif dan sitemap dilewati: sitemap menuntut URL
 // mutlak, dan menebak domain yang belum diputuskan akan menuliskannya ke 19 ribu berkas.
 const ASAL = opsi('asal').replace(/\/+$/, '');
+
+/* PLACEHOLDER DITOLAK, BUKAN DITERIMA DIAM-DIAM. Build sebelum 24 Agustus 2026 pernah
+ * dijalankan dengan `--asal=https://domain-anda` harfiah, dan hasilnya 30.723 halaman
+ * dengan canonical, og:url, dan dua belas sitemap yang semuanya menunjuk domain yang tidak
+ * pernah ada. Tidak ada yang gagal saat itu: skripnya menerima string apa pun, dan
+ * placeholder itu baru ketahuan ketika seluruh terbitan diaudit.
+ *
+ * Menolak lebih awal lebih murah daripada menulis 30 ribu berkas yang harus dibuang. Yang
+ * diperiksa bentuknya, bukan daftar hitam nama: URL yang tidak bisa diurai, yang bukan
+ * http/https, atau yang nama hostnya tidak bertitik — termasuk `domain-anda` dan
+ * `contoh` — dihentikan di sini. Membangun tanpa --asal sama sekali tetap sah: itu mode
+ * periksa dengan kanonik relatif, dan ia tidak menerbitkan sitemap. */
+if (ASAL) {
+  let host = null;
+  try { const u = new URL(ASAL); host = u.protocol === 'http:' || u.protocol === 'https:' ? u.hostname : null; } catch { host = null; }
+  if (!host || !host.includes('.') || /^(domain-anda|contoh|example)\b/i.test(host)) {
+    console.error(`--asal=${ASAL} bukan domain yang bisa diterbitkan.`);
+    console.error('Ia ditulis ke canonical, og:url, dan seluruh sitemap di 30 ribu halaman,');
+    console.error('jadi placeholder dihentikan di sini alih-alih ketahuan sesudah terbit.');
+    console.error('Contoh yang sah:\n  node spec/tools/bangun-halaman.mjs --tulis --asal=https://pranatani.com');
+    process.exit(1);
+  }
+}
 
 if (!existsSync(INDEKS)) {
   console.error('spec/indeks/ belum ada — jalankan dulu:\n  node spec/tools/bangun-indeks.mjs --tulis');
@@ -260,23 +283,13 @@ for (const f of berkasDi('varietas')) {
 }
 
 // ---------------------------------------------------------------------------
-// Dosis: yang per liter boleh dikalikan, yang per hektare tidak
+// Dosis: yang per liter boleh dikalikan, yang per hektare tidak.
+// Perkaliannya sendiri tinggal di tools/dosis.mjs supaya ada yang bisa mengujinya —
+// alasannya tertulis di kepala berkas itu, dan ujinya di tools/uji-dosis.mjs.
 // ---------------------------------------------------------------------------
-const angkaId = (x) => {
-  const b = Math.round(x * 1000) / 1000;
-  return b.toLocaleString('id-ID', { maximumFractionDigits: 3 });
-};
-function perTangki(dosis) {
-  if (!dosis) return null;
-  const m = String(dosis).trim().toLowerCase()
-    .match(/^([\d.,]+)\s*(?:[-–]\s*([\d.,]+)\s*)?(ml|cc|g|gr|kg|l)\s*\/\s*(l|liter)\b/);
-  if (!m) return null;
-  const num = (s) => Number(String(s).replace(/\./g, '').replace(',', '.'));
-  const a = num(m[1]); const b = m[2] ? num(m[2]) : null;
-  if (!Number.isFinite(a) || a <= 0) return null;
-  const satuan = m[3] === 'cc' ? 'ml' : m[3] === 'gr' ? 'g' : m[3];
-  return b ? `${angkaId(a * TANGKI)}–${angkaId(b * TANGKI)} ${satuan}` : `${angkaId(a * TANGKI)} ${satuan}`;
-}
+let dosisDitahanAmbang = 0;
+const LAPOR_DOSIS = { ambang: () => { dosisDitahanAmbang++; } };
+const perTangki = (dosis) => perTangkiDasar(dosis, LAPOR_DOSIS);
 
 // ---------------------------------------------------------------------------
 // Blok batas jawaban (B1) — bentuk yang sama seperti app/batas.js, dirakit di sini
@@ -287,6 +300,8 @@ const JUDUL_LUBANG = {
   gejalaOpt: 'Gejala OPT di luar sepuluh yang terkurasi',
   gejalaOptRegistri: 'Deskripsi gejala OPT registri',
   phi: 'Tenggang panen (PHI)',
+  kelasBahayaWho: 'Kelas bahaya WHO bahan aktif',
+  apdProduk: 'Alat pelindung diri produk terdaftar',
   namaDagang: 'Nama dagang di kemasan',
   dosisKosong: 'Dosis yang tidak tercatat di registri',
   takaranRumahTangga: 'Ukuran tutup botol, sendok, dan gelas',
@@ -395,7 +410,7 @@ function halaman({ jalan, judul, deskripsi, jalur, h1, lede, isi, ld, batas, rob
   const arahan = robots ? `\n<meta name="robots" content="${teks(robots)}">` : '';
   const og = ASAL ? `
 <meta property="og:type" content="article">
-<meta property="og:site_name" content="Open Protocols">
+<meta property="og:site_name" content="Pranatani">
 <meta property="og:locale" content="id_ID">
 <meta property="og:title" content="${teks(judul)}">
 <meta property="og:description" content="${teks(deskripsi)}">
@@ -484,7 +499,7 @@ const daftarMerek = (merek) => ({
 const tautProduk = (id, nama) => {
   const p = pecahanProduk.get(id);
   return p
-    ? `<a href="/index.html?id=${encodeURIComponent(id)}&amp;pecahan=${encodeURIComponent(p)}">${teks(nama)}</a>`
+    ? `<a href="/produk.html?id=${encodeURIComponent(id)}&amp;pecahan=${encodeURIComponent(p)}">${teks(nama)}</a>`
     : teks(nama);
 };
 
@@ -550,6 +565,19 @@ function kartuLarangan(zatDilarang) {
 const berkas = new Map();
 const urlTemplate = { hama: [], bahan: [], kandungan: [], tanaman: [], setara: [], produk: [], badan: [], harga: [], toko: [], lab: [], bpp: [], sediaan: [], editorial: [] };
 const dipangkas = [];
+
+/* ENTRI HUB — nama beserta jalannya, dikumpulkan sambil tiap halaman dibangun.
+ *
+ * `urlTemplate` di atas hanya menyimpan jalan dan tanggalnya, karena itu yang dibutuhkan
+ * sitemap. Halaman hub butuh satu hal lagi: NAMA yang bisa dibaca orang. Mengumpulkannya
+ * di sini, di titik yang sama dengan halamannya dibangun, menahan keduanya agar tidak
+ * menyimpang — hub yang menyusun namanya sendiri dari slug akan mencetak "npk-15-15-15"
+ * di tempat "NPK 15-15-15", dan yang lebih buruk, akan tetap mencetaknya setelah nama
+ * aslinya berubah. */
+const hubEntri = {};
+const catatHub = (klaster, jalan, nama, sub = null) => {
+  (hubEntri[klaster] ??= []).push({ jalan, nama: String(nama ?? '').trim(), sub });
+};
 const simpan = (jalan, isi) => berkas.set(jalan, isi);
 
 const TARIKAN = {
@@ -558,6 +586,220 @@ const TARIKAN = {
   lab: meta?.batas?.sumber?.lab?.tarikan ?? null,
   bpp: meta?.batas?.sumber?.bpp?.tarikan ?? null,
 };
+
+/* KUNCI BADAN DIKUMPULKAN LEBIH DULU, supaya halaman produk bisa menaut ke halaman
+ * badannya — dan bukan ke layar aplikasi berparameter.
+ *
+ * Sampai 24 Agustus 2026, 14.920 halaman produk menyebut pemegang pendaftarannya lewat
+ * `/perusahaan.html?key=…`, sementara halaman `/badan/<kunci>/` yang isinya persis itu
+ * berdiri tanpa satu pun tautan masuk: 3.136 halaman dibangun dengan benar, dirujuk nol
+ * kali. Akibatnya dua-duanya rugi — halaman statisnya nyaris tak terlihat perayap, dan
+ * layar berparameter yang menggantikannya menduplikasi isinya tanpa canonical.
+ *
+ * Halaman badan dibangun jauh di bawah, jadi daftarnya dipindai di sini lebih dulu. Yang
+ * dipindai kuncinya saja — berkasnya sendiri tetap dibaca sekali, di tempatnya. Saringnya
+ * sama persis dengan yang dipakai loop badan; kalau keduanya menyimpang, tautan akan
+ * menunjuk halaman yang tidak pernah ditulis, dan itu tepat yang dicegah di sini. */
+const KUNCI_BADAN = new Set();
+for (const f of berkasDi('principal')) {
+  const k = baca(`principal/${f}`)?.key;
+  if (/^[a-z0-9-]+$/.test(k ?? '')) KUNCI_BADAN.add(k);
+}
+let tautBadanStatis = 0; let tautBadanDinamis = 0;
+
+/* Seri harga yang PUNYA halaman sendiri. Loop harga di bawah hanya menerbitkan golongan
+ * `pangan` dan `input` — 55 dari 96 — dan sisanya sengaja dibuang (baja ringan, besi
+ * beton, dan sebangsanya di luar misi). Pintu komoditas dulu menaut layar aplikasi untuk
+ * semuanya, sehingga 55 halaman harga yang sudah dibangun tidak pernah dirujuk sekali pun.
+ * Medan `r` pada kepala harga diverifikasi identik dengan `golongan` pada berkasnya untuk
+ * ke-96 seri, jadi ia cukup untuk memutuskan tanpa membaca berkasnya lebih awal. */
+const hargaTerbit = (h) => h?.r === 'pangan' || h?.r === 'input';
+
+/* KANAL KEBERATAN, DAN KENAPA IA HARUS ADA DI HALAMANNYA SENDIRI.
+ *
+ * 1.113 gambar kemasan terbit dengan manifes yang mencatat sendiri `permission:
+ * "belum_diminta"`. Keputusan menerbitkannya sudah dinyatakan terbuka di kepala
+ * `gambar_produk/terbitkan.mjs`, dan itu jujur — tetapi kejujuran yang hanya bisa dibaca di
+ * dalam repositori tidak menolong pemegang hak yang menemukan gambarnya lewat mesin
+ * pencari. Ia mendarat di halaman produk, bukan di berkas skrip.
+ *
+ * Jadi jalan keluarnya dipasang di tempat gambarnya benar-benar tampil, dengan merek dan
+ * URL halamannya sudah terisi. Kanalnya kanal yang sudah ada — isu di repositori, sama
+ * seperti sanggahan data — supaya permintaan pencabutan tercatat di tempat yang sama
+ * dengan koreksi lain, bukan di kotak surel yang tidak bisa diperiksa siapa pun. */
+const REPO_ISU = 'https://github.com/bayusyerli/open_protocol/issues/new';
+const alamatKeberatanGambar = (merek, jalan) => {
+  const p = new URLSearchParams({
+    title: `Keberatan gambar: ${merek}`,
+    labels: 'gambar,keberatan-hak',
+    body: [
+      `Halaman: ${ASAL ? `${ASAL}/${jalan}` : `/${jalan}`}`,
+      `Merek: ${merek}`,
+      '',
+      'Saya pemegang hak atas gambar di halaman ini dan meminta pencabutannya.',
+      '',
+      'Hubungan dengan pemegang hak (pilih satu): pemegang pendaftaran / kuasa / lainnya —',
+      'Yang diminta (pilih satu): dicabut / diganti gambar resmi / cukup diperbaiki atribusinya —',
+      '',
+      'Catatan tambahan:',
+    ].join('\n'),
+  });
+  return `${REPO_ISU}?${p}`;
+};
+
+/* Nama pemegang pendaftaran sebagai tautan — ke halaman badannya kalau ia terbit, ke layar
+ * aplikasi kalau tidak. Aturannya satu dan dipakai enam tempat, persis seperti
+ * `namaPemegang()` di app/pustaka.js; dua salinan akan menyimpang. */
+function tautBadan(key, nama) {
+  const t = teks(nama ?? '—');
+  if (!key) return t;
+  if (KUNCI_BADAN.has(key)) { tautBadanStatis++; return `<a href="/badan/${teks(key)}/">${t}</a>`; }
+  // Sisanya badan yang kuncinya ditolak saringan di atas — tidak punya halaman sendiri,
+  // jadi layar aplikasi yang menampungnya. Jumlahnya kecil dan dilaporkan di ringkasan.
+  tautBadanDinamis++;
+  return `<a href="/perusahaan.html?key=${encodeURIComponent(key)}">${t}</a>`;
+}
+
+// ---------------------------------------------------------------------------
+// Halaman hub per klaster — jalan masuk perayap yang bukan sitemap
+// ---------------------------------------------------------------------------
+/* KENAPA HUB, PADAHAL SITEMAP SUDAH LENGKAP.
+ *
+ * Dua belas sitemap memuat seluruh 27 ribu URL entitas, dan itu memang syarat. Tetapi
+ * sitemap menyatakan sebuah URL ADA; ia tidak menyatakan URL itu PENTING. Halaman yang
+ * hanya ditemukan lewat sitemap diindeks lebih lambat, dan — yang lebih menentukan —
+ * menerima nol ekuitas tautan dari beranda, karena tidak ada satu pun tautan yang
+ * mengarah kepadanya dari halaman mana pun.
+ *
+ * Sampai 25 Agustus 2026 permukaan ini persis begitu: `/lab/` dan `/batas/` punya
+ * induk, sebelas klaster lain tidak. Halaman produk saling menaut lewat bahan aktif dan
+ * pemegang pendaftaran, tetapi tidak ada satu titik pun yang bisa dijadikan pangkal
+ * penelusuran.
+ *
+ * KEDALAMANNYA ADAPTIF, DAN ITU YANG MEMBUATNYA TIDAK MENINGGALKAN YATIM. Klaster kecil
+ * cukup satu halaman berisi seluruh entrinya. Yang besar dipecah menurut huruf pertama;
+ * pintu huruf yang MASIH terlalu besar dipecah lagi menurut dua huruf. Batasnya dihitung,
+ * bukan ditebak — dan karena pemecahannya berulang sampai tiap pintu muat, tidak ada
+ * entri yang jatuh ke luar daftar mana pun. Hub yang memangkas diam-diam akan
+ * meninggalkan persis masalah yang ia dibangun untuk menutup.
+ *
+ * Nama pintunya berawalan `awalan-` supaya tidak pernah bertabrakan dengan slug entitas:
+ * `/produk/a/` bisa saja slug produk bernama "A", `/produk/awalan-a/` tidak bisa. */
+const AMBANG_HUB = 400;        // entri per halaman sebelum dipecah lebih dalam
+const KUNCI_PINTU = (nama, panjang) => {
+  const bersih = String(nama ?? '').trim().toLowerCase().replace(/[^a-z0-9]/g, '');
+  if (!bersih) return '0';
+  const k = bersih.slice(0, panjang);
+  return /^[0-9]/.test(k) ? '0' : k;
+};
+
+let hubHalaman = 0; let hubPintu = 0;
+
+function kelompokkanHub(entri, panjang = 1) {
+  const peta = new Map();
+  for (const e of entri) {
+    const k = KUNCI_PINTU(e.nama, panjang);
+    if (!peta.has(k)) peta.set(k, []);
+    peta.get(k).push(e);
+  }
+  return [...peta.entries()].sort((a, b) => a[0].localeCompare(b[0], 'id'));
+}
+
+const daftarHub = (entri) => `
+  <ul class="daftar ringkas">
+    ${entri.slice().sort((a, b) => a.nama.localeCompare(b.nama, 'id')).map((e) => `
+      <li><a href="/${teks(e.jalan)}">${teks(e.nama)}</a></li>`).join('')}
+  </ul>`;
+
+/**
+ * Bangun hub sebuah klaster, beserta pintu-pintunya bila entrinya terlalu banyak.
+ * `sumbu` opsional: bila entri punya `sub`, hub utama juga meringkasnya per sub.
+ */
+function bangunHub(klaster, { judul, h1, lede, deskripsi, jalur, sumber, takDijawab = [], acuan, sumbu = null }) {
+  const entri = (hubEntri[klaster] ?? []).filter((e) => e.nama);
+  if (!entri.length) return;
+  const akar = `${klaster}/`;
+
+  // Pintu hanya dibuat kalau memang perlu; klaster kecil cukup satu halaman.
+  const pintu = [];
+  if (entri.length > AMBANG_HUB) {
+    for (const [k, isi] of kelompokkanHub(entri, 1)) {
+      if (isi.length <= AMBANG_HUB) { pintu.push({ kunci: k, isi }); continue; }
+      // Masih terlalu besar: pecah huruf itu menurut dua huruf.
+      for (const [k2, isi2] of kelompokkanHub(isi, 2)) pintu.push({ kunci: k2, isi: isi2 });
+    }
+  }
+
+  for (const { kunci, isi } of pintu) {
+    const jalan = `${akar}awalan-${kunci}/`;
+    const label = kunci === '0' ? 'angka' : kunci.toUpperCase();
+    simpan(`${jalan}index.html`, halaman({
+      jalan,
+      judul: `${h1} berawalan ${label} — ${n(isi.length)} entri`,
+      deskripsi: `${n(isi.length)} ${jalur.toLowerCase()} yang namanya berawalan ${label}. Bagian dari ${n(entri.length)} seluruhnya.`,
+      jalur,
+      h1: `${h1} — ${label}`,
+      lede: `<strong>${n(isi.length)}</strong> dari ${n(entri.length)}, berawalan ${label}.`,
+      isi: `${daftarHub(isi)}
+  <p class="lain"><a href="/${teks(akar)}">Seluruh ${jalur.toLowerCase()} →</a> · <a href="/index.html">Beranda</a></p>`,
+      ld: {
+        '@context': 'https://schema.org',
+        '@graph': [
+          { '@type': 'ItemList', numberOfItems: isi.length, itemListElement: isi.slice(0, 100).map((e, i) => ({ '@type': 'ListItem', position: i + 1, name: e.nama, item: mutlak(e.jalan) })) },
+          remah([{ nama: 'Beranda', jalan: '' }, { nama: jalur, jalan: akar }, { nama: label, jalan }]),
+        ],
+      },
+      batas: blokBatas({ sumber, takDijawab }, jalan),
+    }));
+    urlTemplate[klaster].push([jalan, acuan]);
+    hubPintu++;
+  }
+
+  // Ringkasan per sub-kelompok, kalau entrinya membawanya — "7.724 pestisida, 7.196 pupuk"
+  // memberi tahu bentuk klaster sebelum satu tautan pun diklik.
+  const perSub = new Map();
+  if (sumbu) for (const e of entri) if (e.sub) perSub.set(e.sub, (perSub.get(e.sub) ?? 0) + 1);
+
+  simpan(`${akar}index.html`, halaman({
+    jalan: akar,
+    judul,
+    deskripsi,
+    jalur,
+    h1,
+    lede,
+    isi: `
+  ${perSub.size ? `<div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>${teks(sumbu)}</th><th>Halaman</th></tr></thead>
+      <tbody>${[...perSub].sort((a, b) => b[1] - a[1]).map(([k, v]) => `
+        <tr><td>${teks(k)}</td><td class="angka">${n(v)}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>` : ''}
+  ${pintu.length ? `
+  <h2 class="judul-bagian">Menurut awalan nama</h2>
+  <p class="bantuan">${n(entri.length)} halaman, dipecah supaya tiap pintu tetap ringan. Tidak ada yang dipangkas — tiap entri ada di salah satu pintu.</p>
+  <div class="pembungkus-tabel">
+    <table>
+      <thead><tr><th>Awalan</th><th>Halaman</th></tr></thead>
+      <tbody>${pintu.map((p) => `
+        <tr><td><a href="/${teks(akar)}awalan-${teks(p.kunci)}/">${teks(p.kunci === '0' ? 'angka' : p.kunci.toUpperCase())}</a></td><td class="angka">${n(p.isi.length)}</td></tr>`).join('')}</tbody>
+    </table>
+  </div>` : daftarHub(entri)}
+  <p class="lain"><a href="/index.html">Beranda</a></p>`,
+    ld: {
+      '@context': 'https://schema.org',
+      '@graph': [
+        pintu.length
+          ? { '@type': 'ItemList', numberOfItems: pintu.length, itemListElement: pintu.map((p, i) => ({ '@type': 'ListItem', position: i + 1, name: p.kunci === '0' ? 'angka' : p.kunci.toUpperCase(), item: mutlak(`${akar}awalan-${p.kunci}/`) })) }
+          : { '@type': 'ItemList', numberOfItems: entri.length, itemListElement: entri.slice(0, 100).map((e, i) => ({ '@type': 'ListItem', position: i + 1, name: e.nama, item: mutlak(e.jalan) })) },
+        remah([{ nama: 'Beranda', jalan: '' }, { nama: jalur, jalan: akar }]),
+      ],
+    },
+    batas: blokBatas({ sumber, takDijawab }, akar),
+  }));
+  urlTemplate[klaster].push([akar, acuan]);
+  hubHalaman++;
+}
 
 // ---------------------------------------------------------------------------
 // Template 1 — hama × komoditas
@@ -571,7 +813,12 @@ for (const f of berkasDi('opt')) {
   // saat label registrinya diperbaiki ejaannya.
   const kunciVocab = vocabKomoditas.get(k.komoditas)?.key;
   petaKomoditas.set(k.komoditas, {
-    slug: slugKomoditas.ambil(kunciVocab ?? k.nama, k.komoditas),
+    // Slug DIBACA dari indeks, tidak dihitung ulang. Sejak kotak cari ikut menaut
+    // /tanaman/<slug>/, dua tempat menurunkan slug yang sama dari sumber yang sama — dan
+    // dua turunan yang wajib sama persis adalah tautan menggantung yang menunggu giliran.
+    // Yang menghitungnya bangun-indeks.mjs, karena di sanalah kepala pencarian dibuat.
+    // Hitungan di sini tinggal sebagai cadangan untuk indeks lama yang belum membawanya.
+    slug: k.slug ?? slugKomoditas.ambil(kunciVocab ?? k.nama, k.komoditas),
     nama: k.nama, kunci: f.replace(/\.json$/, ''), opt: k.opt ?? [],
   });
   komoditasNama.set(k.komoditas, k.nama);
@@ -706,7 +953,7 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
     Jumlah mereknya tetap disebut, dan tiap bahan punya halamannya sendiri.
   </p>
   <ul class="daftar">${kartuRingkas.join('\n    ')}</ul>
-  ${kartuTakTerdaftar ? `<p class="catatan">${n(kartuTakTerdaftar)} kombinasi lain bahkan tidak didaftar di halaman ini, dengan alasan yang sama. Seluruhnya bisa ditelusuri di <a href="/jalur-1.html?opt=${encodeURIComponent(o.id)}">versi yang bisa ditelusuri</a>.</p>` : ''}` : '');
+  ${kartuTakTerdaftar ? `<p class="catatan">${n(kartuTakTerdaftar)} kombinasi lain bahkan tidak didaftar di halaman ini, dengan alasan yang sama. Seluruhnya bisa ditelusuri di <a href="/tanaman.html?opt=${encodeURIComponent(o.id)}">versi yang bisa ditelusuri</a>.</p>` : ''}` : '');
 
     const contohDosis = merekUnik.map((m) => m.dosis).filter(Boolean).slice(0, 3);
     const tangkiAda = merekUnik.filter((m) => perTangki(m.dosis));
@@ -757,16 +1004,16 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
   </details>
   <p class="lain">
     <a href="/tanaman/${teks(kom.slug)}/">Semua OPT pada ${teks(kom.nama)} →</a> ·
-    <a href="/jalur-1.html?opt=${encodeURIComponent(o.id)}">Buka versi yang bisa ditelusuri →</a> ·
+    <a href="/tanaman.html?opt=${encodeURIComponent(o.id)}">Buka versi yang bisa ditelusuri →</a> ·
     <a href="/takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/index.html">Beranda</a>
   </p>`;
 
     simpan(`${jalan}index.html`, halaman({
       jalan,
       judul: `${sebutan} pada ${kom.nama} — bahan aktif dan merek yang terdaftar`,
       deskripsi: `${merekUnik.length} merek terdaftar dari ${grup.length} kombinasi bahan dan kadar untuk ${sebutan} pada ${kom.nama}, beserta nomor pendaftaran dan dosis berlabelnya. Urut nomor pendaftaran, tanpa peringkat.`,
-      jalur: 'Jalur 1 · masuk dari gejala',
+      jalur: 'Tanaman bermasalah',
       h1: `${sebutan} pada ${kom.nama}`,
       lede: `${n(merekUnik.length)} merek terdaftar, ${n(grup.length)} kombinasi bahan dan kadar.${saudaraLabel.length ? ` Label ini dipakai ${n(saudaraLabel.length + 1)} takson berbeda pada ${teks(kom.nama)} — halaman ini yang <em>${teks(ilmiah ?? o.nama)}</em>.` : ''} Yang ditampilkan <strong>apa yang terdaftar</strong> — bukan mana yang paling ampuh.`,
       isi,
@@ -793,12 +1040,14 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
       }, jalan),
     }));
     urlTemplate.hama.push([jalan, TARIKAN.pestisida]);
+  catatHub('hama', jalan, `${sebutan} pada ${kom.nama}`, kom.nama);
   }
 }
 
 // ---------------------------------------------------------------------------
 // Template 2 — bahan aktif
 // ---------------------------------------------------------------------------
+let bahanNoindex = 0;
 for (const [zat, b] of [...petaBahan.entries()].sort()) {
   const jalan = `bahan/${b.slug}/`;
   const kadar = [...(b.kadar ?? [])].sort((a, c) => String(a.k).localeCompare(String(c.k)));
@@ -825,7 +1074,7 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
       return `
   <div class="kartu bahan">
     <h3>${teks(b.n)} ${teks(k.k)}</h3>
-    <p class="catatan">${n(merek.length)} merek terdaftar dengan kadar ini — tidak ditabelkan di halaman ini supaya tetap ringan. Namanya bisa dicari di <a href="/index.html">jalur 2</a>.</p>
+    <p class="catatan">${n(merek.length)} merek terdaftar dengan kadar ini — tidak ditabelkan di halaman ini supaya tetap ringan. Namanya bisa dicari di <a href="/produk.html">Cek isi produk</a>.</p>
   </div>`;
     }
     return `
@@ -836,7 +1085,7 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
       <table>
         <thead><tr><th>Merek</th><th>Pemegang pendaftaran</th>${adaCampuran ? '<th>Campurannya</th>' : ''}</tr></thead>
         <tbody>${muat.map((m) => `
-          <tr><td>${tautProduk(m.i, m.n)}</td><td>${m.pk ? `<a href="/principal.html?key=${encodeURIComponent(m.pk)}">${teks(m.k)}</a>` : teks(m.k ?? '—')}</td>${adaCampuran ? `<td>${teks(m.f ?? 'tunggal')}</td>` : ''}</tr>`).join('')}</tbody>
+          <tr><td>${tautProduk(m.i, m.n)}</td><td>${tautBadan(m.pk, m.k)}</td>${adaCampuran ? `<td>${teks(m.f ?? 'tunggal')}</td>` : ''}</tr>`).join('')}</tbody>
       </table>
     </div>
     ${muat.length < merek.length ? `<p class="catatan">${n(merek.length - muat.length)} merek lain dengan kadar ini tidak ditabelkan di sini.</p>` : ''}
@@ -865,7 +1114,25 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
   }
   const { html: htmlTanya, ld: ldTanya } = blokTanya(tanya);
 
+  /* Rekaman uji registri (`u` dari bangun-indeks.mjs) diterbitkan, tetapi tidak
+   * diindeks. Halamannya tetap ada karena halaman produk dan halaman OPT menaut ke sini,
+   * dan tautan yang jadi 404 menyembunyikan bahwa barisnya memang ada di registri.
+   * Yang dicabut cuma pintu masuk dari mesin pencari: "test — 1 produk terdaftar" yang
+   * mendarat dari Google terbaca sebagai bahan aktif sungguhan, dan halaman ini tidak
+   * punya isi yang bisa membantahnya sendiri. Alasannya ditulis di halamannya juga —
+   * yang datang lewat tautan tetap berhak tahu kenapa halaman ini tampak kosong. */
+  if (b.u) bahanNoindex++;
+
   const isi = `
+  ${b.u ? `<div class="kartu">
+    <h2>Ini rekaman uji registri, bukan bahan aktif</h2>
+    <p>“${teks(b.n)}” terbawa ke daftar bahan aktif karena tercantum sebagai satu baris
+    komposisi di registri Kementan, tetapi bentuk namanya artefak QA dan bukan nama bahan.
+    Halamannya tetap diterbitkan supaya barisnya bisa diperiksa apa adanya — yang dihapus
+    diam-diam membuat cacah di sini berbeda dari cacah di sumbernya tanpa ada yang tahu
+    kenapa. Produk yang memuatnya di bawah ini pendaftaran sungguhan; yang artefak
+    barisnya, bukan produknya.</p>
+  </div>` : ''}
   ${kartuLarangan(larangan[zat] ? [{ zat, nama: b.n }] : [])}
   <h2 class="judul-bagian">Untuk apa saja ${teks(b.n)} terdaftar</h2>
   <p class="bantuan">
@@ -874,7 +1141,7 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
   ${pakai.length ? `<ul class="daftar">
       ${daftarPakai}
     </ul>` : ''}
-  ${pakai.length > pakaiTampil.length ? `<p class="catatan">${n(pakai.length - pakaiTampil.length)} pasangan lain tidak ditampilkan di sini supaya halaman tetap ringan. Seluruhnya bisa ditelusuri di <a href="/jalur-1.html">jalur 1</a>.</p>` : ''}
+  ${pakai.length > pakaiTampil.length ? `<p class="catatan">${n(pakai.length - pakaiTampil.length)} pasangan lain tidak ditampilkan di sini supaya halaman tetap ringan. Seluruhnya bisa ditelusuri di <a href="/tanaman.html">Tanaman bermasalah</a>.</p>` : ''}
   <h2 class="judul-bagian">Kadar dan merek yang terdaftar</h2>
   ${kartuKadar}
   ${htmlTanya}
@@ -890,16 +1157,17 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
     </div>
   </details>
   <p class="lain">
-    <a href="/index.html">Cari nama di kemasan →</a> ·
-    <a href="/jalur-1.html">Masuk dari gejala →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/produk.html">Cari nama di kemasan →</a> ·
+    <a href="/tanaman.html">Masuk dari gejala →</a> ·
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
     jalan,
+    robots: b.u ? 'noindex,follow' : null,
     judul: `${b.n} — ${b.produk} produk terdaftar, dan untuk apa saja terdaftarnya`,
     deskripsi: `${b.produk} produk terdaftar memuat ${b.n}, dalam ${kadar.length} kadar${pakai.length ? `, terdaftar untuk ${pakai.length} pasangan tanaman dan OPT` : ''}. Daftar lengkap dari registri Kementan, tanpa peringkat.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: b.n,
     lede: `${n(b.produk)} produk terdaftar memuatnya, dalam ${n(kadar.length)} kadar. Yang ditampilkan <strong>apa yang terdaftar</strong> — bukan mana yang paling ampuh.`,
     isi,
@@ -917,7 +1185,8 @@ for (const [zat, b] of [...petaBahan.entries()].sort()) {
       takDijawab: ['phi', 'namaDagang', 'dosisKosong'],
     }, jalan),
   }));
-  urlTemplate.bahan.push([jalan, TARIKAN.pestisida]);
+  if (!b.u) urlTemplate.bahan.push([jalan, TARIKAN.pestisida]);
+  catatHub('bahan', jalan, b.n, null);
 }
 
 // ---------------------------------------------------------------------------
@@ -1026,16 +1295,16 @@ for (const k of semuaKandungan) {
     </div>
   </details>
   <p class="lain">
-    <a href="/index.html">Periksa kandungan dari karung →</a> ·
-    <a href="/jalur-3.html">Hitung rupiah per kg hara →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/produk.html">Periksa kandungan dari karung →</a> ·
+    <a href="/harga-pupuk.html">Hitung rupiah per kg hara →</a> ·
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
     jalan,
     judul: `Pupuk ${nama} — ${produk.length} produk terdaftar dengan kandungan itu`,
     deskripsi: `${produk.length} pupuk terdaftar membawa kandungan ${nama} (${NAMA_BASIS[k.basis]}) pada labelnya, beserta pemegang pendaftarannya. Dari registri pupuk Kementan, urut abjad, tanpa peringkat.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: `Pupuk ${nama}`,
     lede: `${n(produk.length)} produk terdaftar membawa kandungan ini di labelnya. Yang cocok adalah <strong>labelnya</strong>, bukan isi karungnya.`,
     isi,
@@ -1053,6 +1322,7 @@ for (const k of semuaKandungan) {
     }, jalan),
   }));
   urlTemplate.kandungan.push([jalan, TARIKAN.pupuk]);
+  catatHub('kandungan', jalan, nama, null);
 }
 
 // ---------------------------------------------------------------------------
@@ -1110,12 +1380,12 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
   ${harga ? `<div class="kartu">
     <h2>Harganya</h2>
     <p>${teks(harga.n)} tercatat di seri harga harian — <strong>harga eceran</strong>, bukan
-    harga yang diterima petani. <a href="/harga.html?k=${encodeURIComponent(harga.k)}">Lihat serinya →</a></p>
+    harga yang diterima petani. <a href="${hargaTerbit(harga) ? `/harga/${teks(harga.k)}/` : `/harga.html?k=${encodeURIComponent(harga.k)}`}">Lihat serinya →</a></p>
   </div>` : ''}
   ${varietas ? `<div class="kartu">
     <h2>Varietasnya</h2>
     <p>${n(varietas)} varietas ${teks(kom.nama)} tercatat di registri perizinan.
-    <a href="/jalur-4.html">Cek keabsahan benih &amp; bibit →</a></p>
+    <a href="/varietas.html">Cek keabsahan benih &amp; bibit →</a></p>
     <p class="catatan">${teks(meta?.tidakAda?.hasilVarietas ?? '')}</p>
   </div>` : ''}
   ${htmlTanya}
@@ -1131,9 +1401,9 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
     </div>
   </details>
   <p class="lain">
-    <a href="/jalur-1.html">Masuk dari gejala →</a> ·
-    <a href="/index.html">Cari nama di kemasan →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/tanaman.html">Masuk dari gejala →</a> ·
+    <a href="/produk.html">Cari nama di kemasan →</a> ·
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
@@ -1162,6 +1432,7 @@ for (const [idKom, kom] of [...petaKomoditas.entries()].sort()) {
     }, jalan),
   }));
   urlTemplate.tanaman.push([jalan, TARIKAN.pestisida]);
+  catatHub('tanaman', jalan, kom.nama, null);
 }
 
 
@@ -1262,7 +1533,7 @@ for (const kel of kelompokSetara) {
       <thead><tr><th>Merek</th><th>Nomor pendaftaran</th><th>Pemegang pendaftaran</th><th>Dosis terdaftar</th></tr></thead>
       <tbody>${dosisAnggota.map((a) => `
         <tr><td>${tautHalamanProduk(a.i, a.n)}</td><td class="angka">${teks(a.p ?? '—')}</td>
-            <td>${a.pk ? `<a href="/principal.html?key=${encodeURIComponent(a.pk)}">${teks(a.k)}</a>` : teks(a.k ?? '—')}</td>
+            <td>${tautBadan(a.pk, a.k)}</td>
             <td class="angka">${a.dosis.length ? teks(a.dosis.slice(0, 3).join('; ')) : '—'}</td></tr>`).join('')}</tbody>
     </table>
   </div>
@@ -1282,16 +1553,16 @@ for (const kel of kelompokSetara) {
     </div>
   </details>
   <p class="lain">
-    <a href="/index.html">Cari nama di kemasan →</a> ·
-    ${jenis === 'pupuk' ? '<a href="/jalur-3.html">Hitung rupiah per kg hara →</a> ·' : ''}
-    <a href="/beranda.html">Beranda</a>
+    <a href="/produk.html">Cari nama di kemasan →</a> ·
+    ${jenis === 'pupuk' ? '<a href="/harga-pupuk.html">Hitung rupiah per kg hara →</a> ·' : ''}
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
     jalan,
     judul: `${nama} — ${anggota.length} merek terdaftar dengan isi identik`,
     deskripsi: `${anggota.length} merek ${jenis} terdaftar membawa ${nama} — bahan dan kadar yang sama persis, beserta nomor pendaftaran, pemegang, dan dosis berlabel masing-masing.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: nama,
     lede: `${n(anggota.length)} merek terdaftar isinya <strong>sama persis</strong>. Yang belum tentu sama: dosis terdaftarnya, dan tanaman yang boleh disasarnya.`,
     isi: isiHtml,
@@ -1309,6 +1580,7 @@ for (const kel of kelompokSetara) {
     }, jalan),
   }));
   urlTemplate.setara.push([jalan, jenis === 'pupuk' ? TARIKAN.pupuk : TARIKAN.pestisida]);
+  catatHub('setara', jalan, nama, jenis);
 }
 
 // ---------------------------------------------------------------------------
@@ -1360,7 +1632,10 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
          alt="Kemasan ${teks(pr.nama)}" loading="lazy" decoding="async">
     <figcaption class="catatan">
       Gambar kemasan dari ${teks(gambar[0].penerbit ?? 'situs pemegang pendaftaran')}${gambar[0].halaman ? ` — <a href="${teks(gambar[0].halaman)}" rel="noopener noreferrer nofollow">halaman asalnya</a>` : ''}.
-      Haknya milik pemegang pendaftaran; ditampilkan untuk mengenali produk.
+      Haknya milik pemegang pendaftaran; ditampilkan untuk mengenali produk, tidak diubah
+      rupa, dan izin tertulisnya belum diminta.
+      <a href="${teks(alamatKeberatanGambar(pr.nama, jalan))}" rel="noopener noreferrer nofollow">Pemegang
+      hak yang keberatan bisa meminta pencabutannya →</a>
     </figcaption>
   </figure>` : '';
 
@@ -1396,7 +1671,7 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
       <table>
         <tbody>
           <tr><td>Nomor pendaftaran</td><td class="angka">${teks(pr.daftar ?? '—')}</td></tr>
-          <tr><td>Pemegang pendaftaran</td><td>${pr.pcp?.key ? `<a href="/principal.html?key=${encodeURIComponent(pr.pcp.key)}">${teks(pr.pcp.nama ?? pr.produsen)}</a>` : teks(pr.produsen ?? '—')}</td></tr>
+          <tr><td>Pemegang pendaftaran</td><td>${pr.pcp?.key ? tautBadan(pr.pcp.key, pr.pcp.nama ?? pr.produsen) : teks(pr.produsen ?? '—')}</td></tr>
           <tr><td>Berlaku sampai</td><td class="angka">${teks(pr.berlaku ?? '—')}${kadaluwarsa ? ' — sudah lewat' : ''}</td></tr>
           <tr><td>Bentuk</td><td>${teks(pr.bentuk ?? '—')}</td></tr>
           <tr><td>Jenis</td><td>${teks(pr.jenis)}</td></tr>
@@ -1463,10 +1738,10 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
     </div>
   </details>
   <p class="lain">
-    <a href="/index.html">Cari nama lain di kemasan →</a> ·
+    <a href="/produk.html">Cari nama lain di kemasan →</a> ·
     <a href="/takaran.html">Kalibrasi &amp; takaran semprot →</a> ·
-    ${pr.pcp?.key ? `<a href="/principal.html?key=${encodeURIComponent(pr.pcp.key)}">Profil pemegang pendaftaran →</a> ·` : ''}
-    <a href="/beranda.html">Beranda</a>
+    ${pr.pcp?.key ? `<a href="${KUNCI_BADAN.has(pr.pcp.key) ? `/badan/${teks(pr.pcp.key)}/` : `/perusahaan.html?key=${encodeURIComponent(pr.pcp.key)}`}">Profil pemegang pendaftaran →</a> ·` : ''}
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
@@ -1474,7 +1749,7 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
     robots: arahan,
     judul: `${pr.nama} — isi, nomor pendaftaran, dan dosis berlabelnya${kadaluwarsa ? ' (izin berakhir)' : ''}`,
     deskripsi: `${pr.nama}: ${isi.length ? sebutanIsi(isi) : 'komposisi tidak tercatat di registri'}. Nomor pendaftaran ${pr.daftar ?? '—'}${guna.length ? `, ${guna.length} penggunaan berlabel beserta dosisnya` : ''}${setara ? `, ${setara.jumlah - 1} merek lain berisi identik` : ''}.`,
-    jalur: 'Jalur 2 · masuk dari kemasan',
+    jalur: 'Cek isi produk',
     h1: pr.nama,
     lede: `${teks(pr.jenis === 'pupuk' ? 'Pupuk' : 'Pestisida')} terdaftar atas nama ${teks(pr.pcp?.nama ?? pr.produsen ?? '—')}${kadaluwarsa ? ', <strong>masa berlakunya sudah lewat</strong>' : ''}. Yang ditampilkan isi pendaftarannya — bukan penilaian atasnya.`,
     isi: isiHtml,
@@ -1494,10 +1769,11 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
       sumber: [{ dari: pr.jenis === 'pupuk' ? 'pupuk' : 'pestisida', cakupan: `satu pendaftaran: komposisi, pemegang, masa berlaku${guna.length ? ', dan penggunaan berlabelnya' : ''}` }],
       takDijawab: pr.jenis === 'pupuk'
         ? ['isiKarung', 'beratJenis', ...(gambar.length ? [] : ['gambarKemasan'])]
-        : ['phi', 'namaDagang', 'dosisKosong', ...(gambar.length ? [] : ['gambarKemasan'])],
+        : ['phi', 'kelasBahayaWho', 'apdProduk', 'namaDagang', 'dosisKosong', ...(gambar.length ? [] : ['gambarKemasan'])],
     }, jalan),
   }));
   if (!tipis) urlTemplate.produk.push([jalan, pr.jenis === 'pupuk' ? TARIKAN.pupuk : TARIKAN.pestisida]);
+  if (!tipis) catatHub('produk', jalan, pr.nama, pr.jenis);
 }
 
 
@@ -1511,7 +1787,7 @@ for (const [id, pr] of [...produkPenuh.entries()].sort()) {
 // Pengaya riset web TIDAK ikut ke JSON-LD. Ia tingkat D — datang dari laporan agen riset,
 // bukan dari registri — dan menuliskannya sebagai `url` atau `sameAs` pada Organization
 // berarti menyatakannya kepada mesin sebagai fakta terverifikasi. Di layar ia tampil
-// dengan lencana tingkatnya, seperti di app/principal.js; di data terstruktur ia absen.
+// dengan lencana tingkatnya, seperti di app/perusahaan.js; di data terstruktur ia absen.
 const BATAS_BARIS_BADAN = 150;
 const BENTUK_LABEL = { tidak_diketahui: 'tidak tercatat' };
 const SEKTOR_LABEL = { pesticide: 'pestisida', fertilizer: 'pupuk', seed: 'benih' };
@@ -1522,7 +1798,17 @@ const alamatAman = (x) => {
   if (/^[a-z0-9.-]+\.[a-z]{2,}(\/|$)/i.test(t)) return `https://${t}`;
   return null;
 };
+// Sumber KETIGA di halaman badan, sesudah registri Kementan (tingkat B) dan riset web
+// (tingkat D). Berkasnya hasil tinjauan tangan, bukan pencocokan saat build: `terbit/badan/`
+// memuat empat badan ber-"Bumi Subur" yang berlainan, dan menempelkan sertifikat ke yang
+// salah bukan medan kosong melainkan tuduhan. Lihat lesos_data/susun-sertifikasi.mjs.
+// Tanpa berkasnya, halaman badan terbangun persis seperti sebelumnya.
+const SERTIFIKASI = new Map(
+  bacaVocabNdjson('sertifikasi/sertifikasi-organik.ndjson').map((x) => [x.key, x]),
+);
+
 let badanBerpengaya = 0; let barisBadanDitahan = 0; let kunciBadanAneh = 0;
+let badanBersertifikat = 0; let badanSertifikatLewat = 0;
 
 for (const f of berkasDi('principal')) {
   const b = baca(`principal/${f}`);
@@ -1565,6 +1851,80 @@ for (const f of berkasDi('principal')) {
     ${g.source ? `<p class="catatan">Sumber yang dicatat riset: ${teks(g.source)}</p>` : ''}
   </div>` : '';
 
+  // --- sertifikasi organik ---------------------------------------------------------
+  const sk = SERTIFIKASI.get(b.key);
+  if (sk) badanBersertifikat++;
+  if (sk && sk.keadaan !== 'berlaku') badanSertifikatLewat++;
+
+  // Lingkup sertifikatnya golongan, bukan SKU. Kalimat ini yang menahan pembaca — dan
+  // perayap — dari menyimpulkan sendiri produk mana yang dicakup dari daftar di bawahnya.
+  const skPupuk = punya.fertilizer ?? 0;
+  const skCakupan = /pupuk/i.test(sk?.lingkup ?? '') && skPupuk
+    ? `${n(skPupuk)} pupuk terdaftar atas nama badan ini`
+    : `produk yang terdaftar atas nama badan ini`;
+
+  const kartuSertifikasi = !sk ? '' : sk.keadaan === 'berlaku' ? `
+  <div class="kartu">
+    <h2>Yang tercatat di lembaga sertifikasi organik</h2>
+    <p><span class="lencana lencana-b">Tingkat B · register pihak ketiga, per ${teks(tanggalPanjang(sk.tarikan))}</span></p>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Lembaga</td><td>${teks(sk.lembaga)}, akreditasi ${teks(sk.akreditasi)}</td></tr>
+          <tr><td>Nomor sertifikat</td><td class="angka">${teks(sk.nomor)}</td></tr>
+          <tr><td>Ruang lingkup</td><td>${teks(sk.lingkup)}</td></tr>
+          ${sk.standar ? `<tr><td>Standar</td><td>${teks(sk.standar)}</td></tr>` : ''}
+          <tr><td>Berlaku sampai</td><td class="angka">${teks(tanggalPanjang(sk.berakhir))}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="catatan">
+      Lingkupnya golongan <strong>&ldquo;${teks(sk.lingkup)}&rdquo;</strong>, bukan nama produk. Sertifikat ini
+      tidak menyebut satu pun dari ${teks(skCakupan)}, jadi ia tidak bisa dibaca sebagai
+      keterangan tentang salah satu di antaranya.
+    </p>
+  </div>` : sk.keadaan === 'dicabut' ? `
+  <div class="kartu cabut">
+    <h2>Sertifikat organik ini dicabut</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Nomor sertifikat</td><td class="angka">${teks(sk.nomor)}</td></tr>
+          <tr><td>Ruang lingkup</td><td>${teks(sk.lingkup)}</td></tr>
+          <tr><td>Tanggal berakhir tertulis</td><td class="angka">${teks(tanggalPanjang(sk.berakhir))}</td></tr>
+          <tr><td>Status di lembaga penerbit</td><td>dicabut</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="catatan">
+      Pencabutan bukan kedaluwarsa: ${teks(sk.lembaga.split(' —')[0])} menarik sertifikat ini sebelum
+      masanya habis. Karena itu pertanyaan &ldquo;sudah diperpanjang atau belum&rdquo; tidak berlaku di sini —
+      yang berlaku, klaim organik untuk lingkup ini <strong>tidak lagi berdasar</strong>.
+    </p>
+  </div>` : `
+  <div class="kartu peringatan">
+    <h2>Masa berlaku sertifikat organik ini sudah lewat</h2>
+    <div class="pembungkus-tabel">
+      <table>
+        <tbody>
+          <tr><td>Nomor sertifikat</td><td class="angka">${teks(sk.nomor)}</td></tr>
+          <tr><td>Ruang lingkup</td><td>${teks(sk.lingkup)}</td></tr>
+          <tr><td>Berakhir</td><td class="angka">${teks(tanggalPanjang(sk.berakhir))}</td></tr>
+          <tr><td>Data ditarik</td><td class="angka">${teks(tanggalPanjang(sk.tarikan))}</td></tr>
+        </tbody>
+      </table>
+    </div>
+    ${/^aktif$/i.test(sk.status_situs ?? '') ? `<p class="catatan">
+      Lembaga penerbitnya masih menuliskan status sertifikat ini <strong>&ldquo;Aktif&rdquo;</strong>. Medan itu beku
+      pada keputusan pengawasan terakhir dan tidak dihitung ulang terhadap tanggal berakhir; yang
+      ditampilkan di sini hasil hitung ulang, bukan medan statusnya.
+    </p>` : ''}
+    <p class="catatan">
+      Tanyakan langsung ke produsennya apakah sertifikatnya sudah diperpanjang sebelum memakai
+      klaim organiknya.
+    </p>
+  </div>`;
+
   const tanya = [
     { t: `Produk apa saja yang terdaftar atas nama ${b.nama}?`,
       j: `${n(jumlah)} pendaftaran tercatat atas namanya: ${pegang || 'tidak ada'}. Daftarnya ada di halaman ini, urut nomor pendaftaran.` },
@@ -1577,6 +1937,31 @@ for (const f of berkasDi('principal')) {
     tanya.push({ t: `Sejak kapan ${b.nama} mendaftarkan varietas?`,
       j: `Pendaftaran varietas tercatat dari ${b.benih.first_year} sampai ${b.benih.last_year ?? b.benih.first_year}${b.benih.main_commodity ? `, terbanyak pada ${b.benih.main_commodity}` : ''}${b.benih.top_permit_kind ? `, dengan surat terbanyak berupa ${b.benih.top_permit_kind}` : ''}.` });
   }
+  // Jawaban sertifikasi menanam tanggal tarikan DI DALAM kalimatnya. `blokTanya` mengirim
+  // string yang sama ke HTML dan ke acceptedAnswer.text, jadi cuplikan yang terlanjur
+  // diindeks menua sebagai keterangan bertanggal, bukan sebagai klaim yang diam-diam
+  // berubah jadi salah.
+  if (sk) {
+    const t = `Apakah ${b.nama} bersertifikat organik?`;
+    if (sk.keadaan === 'berlaku') {
+      tanya.push({ t, j: `Ya, untuk ruang lingkup ${sk.lingkup}. Sertifikat ${sk.nomor} diterbitkan ${sk.lembaga} (akreditasi ${sk.akreditasi}) dan berlaku sampai ${tanggalPanjang(sk.berakhir)}; keterangan ini menurut data yang ditarik ${tanggalPanjang(sk.tarikan)}. Lingkupnya golongan "${sk.lingkup}", bukan nama produk — sertifikat ini tidak menyebut satu pun dari ${skCakupan}.` });
+    } else if (sk.keadaan === 'dicabut') {
+      tanya.push({ t, j: `Tidak. Sertifikat organiknya untuk ruang lingkup ${sk.lingkup} (${sk.nomor}) dicabut lembaga penerbitnya. Pencabutan bukan kedaluwarsa: tanggal berakhir yang tertulis, ${tanggalPanjang(sk.berakhir)}, bahkan belum lewat per data yang ditarik ${tanggalPanjang(sk.tarikan)}. Klaim organik untuk lingkup ini tidak lagi berdasar.` });
+    } else {
+      tanya.push({ t, j: `Sertifikat organiknya untuk ruang lingkup ${sk.lingkup} (${sk.nomor}) berakhir ${tanggalPanjang(sk.berakhir)}, sementara data ini ditarik ${tanggalPanjang(sk.tarikan)} — jadi per tanggal itu masa berlakunya sudah lewat.${/^aktif$/i.test(sk.status_situs ?? '') ? ' Lembaga penerbitnya masih menuliskan statusnya "Aktif", medan yang tidak dihitung ulang terhadap tanggal berakhir.' : ''} Tanyakan langsung ke produsennya apakah sudah diperpanjang.` });
+    }
+
+    // Menolak menjawab adalah jawaban. Pertanyaan ini pasti diketik orang begitu melihat
+    // kartu di atas, dan kalau halaman ini diam, perayap akan menyusun jawabannya sendiri
+    // dari daftar merek yang kebetulan ada di halaman yang sama.
+    if (/pupuk/i.test(sk.lingkup) && skPupuk) {
+      tanya.push({
+        t: `Pupuk mana saja yang dicakup sertifikat organik ${b.nama}?`,
+        j: `Tidak ada yang disebut namanya. Ruang lingkup sertifikatnya tertulis sebagai golongan "${sk.lingkup}", bukan daftar produk, sementara ${n(skPupuk)} pupuk terdaftar atas nama badan ini di registri Kementan. Sertifikat maupun registrinya tidak memuat pemetaan antara keduanya, dan halaman ini tidak menebaknya. Keterangan per data yang ditarik ${tanggalPanjang(sk.tarikan)}.`,
+      });
+    }
+  }
+
   const { html: htmlTanya, ld: ldTanya } = blokTanya(tanya);
 
   const isiHtml = `
@@ -1600,6 +1985,7 @@ for (const f of berkasDi('principal')) {
     </p>
   </div>
   ${kartuPengaya}
+  ${kartuSertifikasi}
   ${produk.length ? `
   <h2 class="judul-bagian">${n(produk.length)} merek pupuk &amp; pestisida terdaftar</h2>
   ${CATATAN_URUTAN}
@@ -1610,7 +1996,7 @@ for (const f of berkasDi('principal')) {
         <tr><td>${tautHalamanProduk(x.i, x.n)}</td><td>${teks(x.j)}</td><td class="angka">${teks(x.d ?? '—')}</td></tr>`).join('')}</tbody>
     </table>
   </div>
-  ${produk.length > produkTampil.length ? `<p class="catatan">${n(produk.length - produkTampil.length)} merek lain tidak ditabelkan di halaman ini supaya tetap ringan. Seluruhnya bisa ditelusuri di <a href="/principal.html?key=${encodeURIComponent(b.key)}">profil yang bisa ditelusuri</a>.</p>` : ''}` : ''}
+  ${produk.length > produkTampil.length ? `<p class="catatan">${n(produk.length - produkTampil.length)} merek lain tidak ditabelkan di halaman ini supaya tetap ringan. Seluruhnya bisa ditelusuri di <a href="/perusahaan.html?key=${encodeURIComponent(b.key)}">profil yang bisa ditelusuri</a>.</p>` : ''}` : ''}
   ${varietas.length ? `
   <h2 class="judul-bagian">${n(varietas.length)} varietas terdaftar</h2>
   <p class="bantuan">
@@ -1623,7 +2009,7 @@ for (const f of berkasDi('principal')) {
       <tbody>${varietasTampil.map((x) => {
         const kom = x.k ? namaKeKomoditas.get(String(x.k).toLowerCase()) : null;
         return `
-        <tr><td><a href="/jalur-4.html?id=${encodeURIComponent(x.i)}&amp;pecahan=${encodeURIComponent(x.p)}">${teks(x.n)}</a></td>
+        <tr><td><a href="/varietas.html?id=${encodeURIComponent(x.i)}&amp;pecahan=${encodeURIComponent(x.p)}">${teks(x.n)}</a></td>
             <td>${kom ? `<a href="/tanaman/${teks(kom.slug)}/">${teks(x.k)}</a>` : teks(x.k ?? '—')}</td></tr>`;
       }).join('')}</tbody>
     </table>
@@ -1646,16 +2032,16 @@ for (const f of berkasDi('principal')) {
     </div>
   </details>
   <p class="lain">
-    <a href="/principal.html?key=${encodeURIComponent(b.key)}">Profil yang bisa ditelusuri →</a> ·
-    <a href="/index.html">Cari nama di kemasan →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/perusahaan.html?key=${encodeURIComponent(b.key)}">Profil yang bisa ditelusuri →</a> ·
+    <a href="/produk.html">Cari nama di kemasan →</a> ·
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
     jalan,
     judul: `${b.nama} — ${pegang || 'pendaftaran'} terdaftar`,
     deskripsi: `${b.nama}${b.bentuk && b.bentuk !== 'tidak_diketahui' ? ` (${b.bentuk})` : ''} memegang ${pegang || 'pendaftaran'} di registri Kementan. Daftar mereknya, nomor pendaftarannya, dan varietas yang didaftarkannya.`,
-    jalur: 'Profil pemegang pendaftaran',
+    jalur: 'Profil perusahaan',
     h1: b.nama,
     lede: `${teks(pegang || 'Tidak ada pendaftaran tercatat')}. Yang ditampilkan <strong>isi registri</strong> — bukan penilaian atas badannya.`,
     isi: isiHtml,
@@ -1679,6 +2065,7 @@ for (const f of berkasDi('principal')) {
     }, jalan),
   }));
   urlTemplate.badan.push([jalan, TARIKAN.pestisida ?? TARIKAN.pupuk]);
+  catatHub('badan', jalan, b.nama, null);
 }
 
 
@@ -1804,7 +2191,7 @@ for (const f of berkasDi('harga')) {
     <a href="/harga.html?k=${encodeURIComponent(h.key)}">Buka versi yang bisa ditelusuri →</a> ·
     ${kom ? `<a href="/tanaman/${teks(kom.slug)}/">${teks(kom.nama)} — OPT &amp; varietasnya →</a> ·` : ''}
     <a href="/usaha.html">Hitung titik impas usaha tani →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
@@ -1822,7 +2209,7 @@ for (const f of berkasDi('harga')) {
           '@type': 'Dataset', name: `Harga ${h.nama} — eceran nasional`,
           description: `Seri harga eceran nasional ${h.nama} dari ${h.sistem ?? 'SP2KP'}`,
           license: 'https://creativecommons.org/licenses/by-sa/4.0/',
-          creator: { '@type': 'Organization', name: 'Open Protocols' },
+          creator: { '@type': 'Organization', name: 'Pranatani' },
           ...(h.cakupan?.from && h.cakupan?.to ? { temporalCoverage: `${h.cakupan.from}/${h.cakupan.to}` } : {}),
           ...(h.satuan ? { measurementTechnique: `Survei harga ${h.tingkat ?? 'eceran'}` } : {}),
         },
@@ -1837,6 +2224,7 @@ for (const f of berkasDi('harga')) {
   }));
   // lastmod-nya tanggal DATA, bukan tanggal tarikan registri: seri ini berubah harian.
   urlTemplate.harga.push([jalan, akhir?.t ?? null]);
+  catatHub('harga', jalan, h.nama, null);
 }
 
 // ---------------------------------------------------------------------------
@@ -1906,7 +2294,7 @@ for (const w of [...wilayahSemua].sort((a, b) => a.k.localeCompare(b.k))) {
   </details>
   <p class="lain">
     <a href="/toko.html">Cari toko di wilayah lain →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
@@ -1931,13 +2319,14 @@ for (const w of [...wilayahSemua].sort((a, b) => a.k.localeCompare(b.k))) {
     }, jalan),
   }));
   urlTemplate.toko.push([jalan, TARIKAN.pestisida]);
+  catatHub('toko', jalan, w.w, null);
 }
 
 // ---------------------------------------------------------------------------
 // Template 10 — sediaan buatan sendiri, dan bahan bakunya
 // ---------------------------------------------------------------------------
 // Jalur 5 lapang, jalur 6 terikat — dan halaman jalur 6 membuka dengan pasalnya, bukan
-// dengan resepnya. Sikap yang diwarisi dari app/jalur-6.js: NYATAKAN STATUSNYA APA ADANYA,
+// dengan resepnya. Sikap yang diwarisi dari app/pengendali-sendiri.js: NYATAKAN STATUSNYA APA ADANYA,
 // TANDAI own_use_only, JANGAN MENYIMPULKAN AMAN.
 const PERAN = {
   nitrogen_source: 'sumber nitrogen', carbon_source: 'sumber karbon', water: 'air',
@@ -2116,16 +2505,16 @@ for (const r of resepSemua.sort((a, b) => a.id.localeCompare(b.id))) {
     </div>
   </details>
   <p class="lain">
-    <a href="/jalur-${enam ? '6' : '5'}.html">Buka versi yang bisa ditelusuri →</a> ·
+    <a href="/${enam ? 'pengendali-sendiri' : 'pupuk-sendiri'}.html">Buka versi yang bisa ditelusuri →</a> ·
     <a href="/sediaan/bahan/">Bahan baku dan statusnya →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
     jalan,
     judul: `${r.nama} — kedudukan hukum, bahan, dan titik kendalinya`,
     deskripsi: `${r.definisi ? String(r.definisi).slice(0, 150) : r.nama}. Kedudukan hukum, bahan beserta takaran, proses, kriteria pelepasan yang bisa diperiksa di kebun, dan tingkat buktinya.`,
-    jalur: `Jalur ${r.jalur} · ${enam ? 'sediaan pengendali — status hukum' : 'sediaan pupuk'}`,
+    jalur: enam ? 'Pengendali buatan sendiri' : 'Buat pupuk sendiri',
     h1: r.nama,
     lede: enam
       ? `<strong>Statusnya hanya untuk keperluan sendiri</strong>, dan bacaan Pasal 77 ayat (1) belum dijawab penasihat hukum. Yang ditampilkan status apa adanya — bukan kesimpulan bahwa ia aman atau sah.`
@@ -2134,7 +2523,7 @@ for (const r of resepSemua.sort((a, b) => a.id.localeCompare(b.id))) {
     ld: {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'DefinedTerm', name: r.nama, identifier: r.id, inDefinedTermSet: { '@type': 'DefinedTermSet', name: 'Sediaan buatan sendiri — Open Protocols' } },
+        { '@type': 'DefinedTerm', name: r.nama, identifier: r.id, inDefinedTermSet: { '@type': 'DefinedTermSet', name: 'Sediaan buatan sendiri — Pranatani' } },
         remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Sediaan buatan sendiri', jalan: null }, { nama: r.nama, jalan }]),
         ...(ldTanya ? [ldTanya] : []),
       ],
@@ -2201,9 +2590,9 @@ for (const [id, b] of [...petaBahanSediaan.entries()].sort()) {
     </div>
   </details>
   <p class="lain">
-    <a href="/jalur-5.html">Meramu pupuk sendiri →</a> ·
-    <a href="/jalur-6.html">Sediaan pengendali — status hukumnya →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/pupuk-sendiri.html">Meramu pupuk sendiri →</a> ·
+    <a href="/pengendali-sendiri.html">Sediaan pengendali — status hukumnya →</a> ·
+    <a href="/index.html">Beranda</a>
   </p>`;
 
   simpan(`${jalan}index.html`, halaman({
@@ -2218,7 +2607,7 @@ for (const [id, b] of [...petaBahanSediaan.entries()].sort()) {
     ld: {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'DefinedTerm', name: b.nama, identifier: id, inDefinedTermSet: { '@type': 'DefinedTermSet', name: 'Bahan baku sediaan buatan sendiri — Open Protocols' } },
+        { '@type': 'DefinedTerm', name: b.nama, identifier: id, inDefinedTermSet: { '@type': 'DefinedTermSet', name: 'Bahan baku sediaan buatan sendiri — Pranatani' } },
         remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Bahan baku sediaan', jalan: null }, { nama: b.nama, jalan }]),
         ...(ldTanya ? [ldTanya] : []),
       ],
@@ -2260,9 +2649,9 @@ for (const [id, b] of [...petaBahanSediaan.entries()].sort()) {
   </ul>`).join('\n')}
   ${htmlTanya}
   <p class="lain">
-    <a href="/jalur-5.html">Meramu pupuk sendiri →</a> ·
-    <a href="/jalur-6.html">Sediaan pengendali — status hukumnya →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/pupuk-sendiri.html">Meramu pupuk sendiri →</a> ·
+    <a href="/pengendali-sendiri.html">Sediaan pengendali — status hukumnya →</a> ·
+    <a href="/index.html">Beranda</a>
   </p>`;
   simpan(`${jalan}index.html`, halaman({
     jalan,
@@ -2275,7 +2664,7 @@ for (const [id, b] of [...petaBahanSediaan.entries()].sort()) {
     ld: {
       '@context': 'https://schema.org',
       '@graph': [
-        { '@type': 'DefinedTermSet', name: 'Bahan baku sediaan buatan sendiri — Open Protocols' },
+        { '@type': 'DefinedTermSet', name: 'Bahan baku sediaan buatan sendiri — Pranatani' },
         remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Bahan baku sediaan', jalan }]),
         ...(ldTanya ? [ldTanya] : []),
       ],
@@ -2428,7 +2817,7 @@ for (const e of EDITORIAL) {
   <p class="lain">
     <a href="/batas/">Semua halaman batas →</a> ·
     <a href="/sumber/cara-mengutip/">Sumber &amp; cara mengutip →</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/index.html">Beranda</a>
   </p>`;
   simpan(`${e.jalan}index.html`, halaman({
     jalan: e.jalan,
@@ -2446,7 +2835,7 @@ for (const e of EDITORIAL) {
           '@type': 'Article', headline: e.judul, description: e.deskripsi,
           inLanguage: 'id', isAccessibleForFree: true,
           license: 'https://creativecommons.org/licenses/by-sa/4.0/',
-          publisher: { '@type': 'Organization', name: 'Open Protocols' },
+          publisher: { '@type': 'Organization', name: 'Pranatani' },
           ...(TARIKAN.pestisida ? { dateModified: TARIKAN.pestisida } : {}),
         },
         remah([{ nama: 'Beranda', jalan: '' }, { nama: 'Batas jawaban', jalan: 'batas/' }, { nama: e.h1, jalan: e.jalan }]),
@@ -2627,7 +3016,7 @@ if (labKepala) {
   <p class="lain">
     <a href="/lab/di-${teks(x.w.k)}/">Laboratorium lain di ${teks(x.w.w)} →</a> ·
     <a href="/lab/">Semua kemampuan</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/index.html">Beranda</a>
   </p>`;
 
     simpan(`${jalan}index.html`, halaman({
@@ -2700,7 +3089,7 @@ if (labKepala) {
     </table>
   </div>
   ${htmlTanya}
-  <p class="lain"><a href="/lab/">Kemampuan lain →</a> · <a href="/beranda.html">Beranda</a></p>`,
+  <p class="lain"><a href="/lab/">Kemampuan lain →</a> · <a href="/index.html">Beranda</a></p>`,
       ld: {
         '@context': 'https://schema.org',
         '@graph': [
@@ -2744,7 +3133,7 @@ if (labKepala) {
     </table>
   </div>
   ${htmlTanya}
-  <p class="lain"><a href="/lab/">Cari menurut kemampuan →</a> · <a href="/beranda.html">Beranda</a></p>`,
+  <p class="lain"><a href="/lab/">Cari menurut kemampuan →</a> · <a href="/index.html">Beranda</a></p>`,
       ld: {
         '@context': 'https://schema.org',
         '@graph': [
@@ -2791,7 +3180,7 @@ if (labKepala) {
         <tr><td><a href="/lab/di-${teks(w.k)}/">${teks(w.w)}</a></td><td class="angka">${n(w.n)}</td><td class="angka">${n(cacahWilayah(w, 'r'))}</td></tr>`).join('')}</tbody>
     </table>
   </div>
-  <p class="lain"><a href="/beranda.html">Beranda</a></p>`,
+  <p class="lain"><a href="/index.html">Beranda</a></p>`,
       ld: {
         '@context': 'https://schema.org',
         '@graph': [
@@ -2925,7 +3314,7 @@ if (bppWilayah) {
   <p class="lain">
     <a href="/penyuluhan/${teks(w.k)}/">Balai lain di ${teks(w.w)} →</a> ·
     <a href="/penyuluhan/">Semua kabupaten</a> ·
-    <a href="/beranda.html">Beranda</a>
+    <a href="/index.html">Beranda</a>
   </p>`,
         ld: {
           '@context': 'https://schema.org',
@@ -2981,7 +3370,7 @@ if (bppWilayah) {
   </div>
   <p class="catatan">${teks(meta?.tidakAda?.bppTanpaAlamat ?? '')}</p>
   ${htmlTanyaKab}
-  <p class="lain"><a href="/penyuluhan/">Kabupaten lain →</a> · <a href="/beranda.html">Beranda</a></p>`,
+  <p class="lain"><a href="/penyuluhan/">Kabupaten lain →</a> · <a href="/index.html">Beranda</a></p>`,
       ld: {
         '@context': 'https://schema.org',
         '@graph': [
@@ -3033,7 +3422,7 @@ if (bppWilayah) {
         <tr><td><a href="/penyuluhan/${teks(w.k)}/">${teks(String(w.w).split(',')[0])}</a></td><td class="angka">${n(w.n)}</td><td class="angka">${n(w.kec)}</td></tr>`).join('')}</tbody>
     </table>
   </div>`).join('')}
-  <p class="lain"><a href="/beranda.html">Beranda</a></p>`,
+  <p class="lain"><a href="/index.html">Beranda</a></p>`,
       ld: {
         '@context': 'https://schema.org',
         '@graph': [
@@ -3055,7 +3444,7 @@ if (bppWilayah) {
 
 // llms.txt — mesin jawaban dianggap pembaca kelas satu (docs/19 §8). Yang diminta cuma
 // atribusi, dan itu memang syarat lisensinya.
-simpan('llms.txt', `# Open Protocols
+simpan('llms.txt', `# Pranatani
 
 > Registri pupuk, pestisida, dan varietas terdaftar Indonesia, diterbitkan sebagai halaman
 > yang bisa dibaca — beserta batas jawabannya. Netral terhadap vendor: urutan merek
@@ -3086,16 +3475,122 @@ tercetak di tiap halaman — registri berubah tiap musim.
 `);
 
 // ---------------------------------------------------------------------------
+// Hub tiap klaster — dijalankan sesudah seluruh entitasnya dibangun
+// ---------------------------------------------------------------------------
+// Urutannya wajib di sini: `hubEntri` baru lengkap setelah halaman terakhir tiap klaster
+// ditulis. Memanggilnya lebih awal menghasilkan hub yang menaut sebagian, dan sebagian
+// yang diam adalah bentuk kegagalan yang paling sulit dilihat.
+
+bangunHub('produk', {
+  judul: `${n(hubEntri.produk?.length ?? 0)} pupuk dan pestisida terdaftar — dicari menurut nama di kemasan`,
+  h1: 'Produk terdaftar',
+  jalur: 'Produk',
+  lede: `<strong>${n(hubEntri.produk?.length ?? 0)}</strong> pendaftaran yang punya halamannya sendiri, disalin dari registri Kementan. Yang ditampilkan isi pendaftarannya — bukan penilaian atasnya.`,
+  deskripsi: `Daftar pupuk dan pestisida terdaftar Kementan beserta komposisi, nomor pendaftaran, masa berlaku, dan penggunaan berlabelnya.`,
+  sumber: [{ dari: 'pestisida', cakupan: 'seluruh pendaftaran yang punya halaman sendiri' }],
+  takDijawab: ['namaDagang'],
+  acuan: TARIKAN.pestisida ?? TARIKAN.pupuk,
+  sumbu: 'Jenis',
+});
+
+bangunHub('bahan', {
+  judul: `${n(hubEntri.bahan?.length ?? 0)} bahan aktif pestisida — kadar, merek, dan untuk apa`,
+  h1: 'Bahan aktif',
+  jalur: 'Bahan aktif',
+  lede: `Yang menentukan sebuah pestisida bekerja atau tidak bukan mereknya melainkan <strong>bahan aktif dan kadarnya</strong>. Di sini keduanya berdiri sendiri.`,
+  deskripsi: 'Bahan aktif pestisida terdaftar beserta kadar, merek yang membawanya, dan penggunaan berlabelnya.',
+  sumber: [{ dari: 'pestisida', cakupan: 'bahan aktif beserta merek dan kadarnya' }],
+  acuan: TARIKAN.pestisida,
+});
+
+bangunHub('tanaman', {
+  judul: `${n(hubEntri.tanaman?.length ?? 0)} komoditas — OPT terdaftar, varietas, dan harganya`,
+  h1: 'Komoditas',
+  jalur: 'Tanaman',
+  lede: 'Pintu per komoditas: OPT yang punya pestisida terdaftar untuknya, varietas yang dilepas, dan seri harganya kalau ada.',
+  deskripsi: 'Komoditas beserta OPT terdaftar, varietas yang dilepas, dan seri harga hariannya.',
+  sumber: [{ dari: 'pestisida', cakupan: 'OPT dan produk terdaftar per komoditas' }],
+  acuan: TARIKAN.pestisida,
+});
+
+bangunHub('hama', {
+  judul: `${n(hubEntri.hama?.length ?? 0)} pintu OPT × komoditas — bahan aktif yang terdaftar untuknya`,
+  h1: 'OPT pada komoditas',
+  jalur: 'Hama & penyakit',
+  lede: 'Satu OPT pada satu komoditas adalah satu pintu, karena yang terdaftar memang per pasangan itu — bukan per hama saja.',
+  deskripsi: 'Pasangan OPT dan komoditas beserta bahan aktif, kadar, dan merek yang terdaftar untuk keduanya.',
+  sumber: [{ dari: 'pestisida', cakupan: 'penggunaan berlabel per OPT dan komoditas' }],
+  acuan: TARIKAN.pestisida,
+});
+
+bangunHub('badan', {
+  judul: `${n(hubEntri.badan?.length ?? 0)} pemegang pendaftaran — merek dan varietas atas namanya`,
+  h1: 'Pemegang pendaftaran',
+  jalur: 'Perusahaan',
+  lede: 'Perusahaan, balai penelitian, dinas, perguruan tinggi, dan pemerintah daerah yang memegang pendaftaran — satu rekaman per badan, bukan per registri.',
+  deskripsi: 'Badan pemegang pendaftaran pupuk, pestisida, dan varietas beserta daftar yang terdaftar atas namanya.',
+  sumber: [{ dari: 'pestisida', cakupan: 'nama pemegang yang diseragamkan di kedua registri' }],
+  acuan: TARIKAN.pestisida ?? TARIKAN.pupuk,
+});
+
+bangunHub('setara', {
+  judul: `${n(hubEntri.setara?.length ?? 0)} kelompok berisi identik — merek berbeda, isi sama persis`,
+  h1: 'Kelompok berisi identik',
+  jalur: 'Setara',
+  lede: 'Merek yang membawa bahan dan kadar yang sama persis. <strong>Yang sama isinya, bukan mutunya</strong> — dan dosis terdaftarnya bisa berbeda.',
+  deskripsi: 'Kelompok produk terdaftar yang komposisinya identik, beserta merek dan pemegang pendaftaran tiap anggotanya.',
+  sumber: [{ dari: 'pestisida', cakupan: 'komposisi yang dibandingkan bahan demi bahan' }],
+  acuan: TARIKAN.pestisida ?? TARIKAN.pupuk,
+  sumbu: 'Jenis',
+});
+
+bangunHub('kandungan', {
+  judul: `${n(hubEntri.kandungan?.length ?? 0)} kandungan hara — pupuk terdaftar yang membawanya`,
+  h1: 'Kandungan hara',
+  jalur: 'Kandungan',
+  lede: 'Kombinasi hara yang tercatat di registri pupuk, beserta pendaftaran yang membawanya.',
+  deskripsi: 'Kombinasi kandungan hara pupuk terdaftar beserta produk yang membawanya.',
+  sumber: [{ dari: 'pupuk', cakupan: 'komposisi hara pupuk terdaftar' }],
+  acuan: TARIKAN.pupuk,
+});
+
+bangunHub('harga', {
+  judul: `${n(hubEntri.harga?.length ?? 0)} seri harga komoditas harian — eceran, bukan harga petani`,
+  h1: 'Harga komoditas',
+  jalur: 'Harga',
+  lede: 'Seri harian dari SP2KP Kemendag. Seluruhnya <strong>harga eceran</strong> — bukan harga yang diterima petani, dan jaraknya terpasang di dalam definisi sumbernya.',
+  deskripsi: 'Seri harga komoditas harian nasional beserta riwayat, pola bulanan, dan komentar per seri.',
+  sumber: [{ dari: 'harga', cakupan: 'seri harian beserta statistik dan komentarnya' }],
+  takDijawab: ['hargaKomoditasTani'],
+  acuan: null,
+});
+
+bangunHub('toko', {
+  judul: `Toko tani menurut wilayah — ${n(hubEntri.toko?.length ?? 0)} pintu`,
+  h1: 'Toko tani',
+  jalur: 'Toko',
+  lede: 'Direktori toko yang bisa dituju, disusun dari OpenStreetMap dan arsip pemerintah. Sengaja tanpa nomor telepon dan jam buka — keduanya menunggu pemilik toko mengklaimnya sendiri.',
+  deskripsi: 'Direktori toko tani menurut wilayah, disusun dari sumber berlisensi terbuka.',
+  sumber: [{ dari: 'toko', cakupan: 'titik dan alamat toko dari sumber terbuka' }],
+  acuan: TARIKAN.pestisida,
+});
+
+// ---------------------------------------------------------------------------
 // robots.txt, sitemap, manifest
 // ---------------------------------------------------------------------------
 simpan('robots.txt', [
-  '# Registri terbuka. Yang dilarang cuma halaman hasil pencarian internal —',
-  '# ia menggandakan isi yang sudah punya URL-nya sendiri.',
+  '# Registri terbuka. Yang dilarang cuma dua hal, dan keduanya bukan isi:',
+  '# halaman hasil pencarian internal, yang menggandakan isi yang sudah punya URL-nya',
+  '# sendiri; dan pecahan indeks JSON yang menyuapi permukaan aplikasi. Yang kedua bukan',
+  '# halaman sama sekali — 9.301 berkas data yang isinya sudah terbit sebagai HTML di',
+  '# /produk/, /bahan/, dan seterusnya. Membiarkannya dirayapi menghabiskan anggaran rayap',
+  '# pada salinan mesin dari sesuatu yang versi manusianya sudah ada.',
   'User-agent: *',
   'Allow: /',
   'Disallow: /*?q=',
+  'Disallow: /spec/indeks/',
   '',
-  ...(ASAL ? [`Sitemap: ${ASAL}/sitemap-index.xml`, ''] : ['# Sitemap belum ditulis: jalankan dengan --asal=https://domain-anda', '']),
+  ...(ASAL ? [`Sitemap: ${ASAL}/sitemap-index.xml`, ''] : ['# Sitemap belum ditulis: jalankan dengan --asal=https://pranatani.com', '']),
 ].join('\n'));
 
 if (ASAL) {
@@ -3144,14 +3639,18 @@ for (const [t, d] of Object.entries(urlTemplate)) console.log(`  ${t.padEnd(18)}
 console.log(`Berkas seluruhnya    : ${berkas.size} — ${(ukuran / 1024 / 1024).toFixed(2)} MB`);
 console.log(`  ukuran halaman     : mentah p50 ${kb(Buffer.byteLength(halamanHtml[Math.floor(halamanHtml.length / 2)][1]))} · ter-gzip p50 ${kb(kuartil(0.5))}, p90 ${kb(kuartil(0.9))}, maks ${kb(gz[gz.length - 1])}`);
 console.log(`  lewat anggaran     : ${lewat.length} mentah, ${lewatGz} ter-gzip, dari ${halamanHtml.length} halaman di atas ${kb(ANGGARAN)}`);
-console.log(`  dosis dikonversi   : ${n(dosisTerkonversi)} sel dosis per liter dikalikan jadi per tangki ${TANGKI} L`);
+console.log(`  dosis dikonversi   : ${n(dosisTerkonversi)} sel dosis per liter dikalikan jadi per tangki ${TANGKI} L${dosisDitahanAmbang ? `; ${n(dosisDitahanAmbang)} tidak dikalikan karena hasilnya melewati ${n(BATAS_TANGKI)} per tangki — dosis terdaftarnya tetap tampil apa adanya` : ''}`);
+console.log(`  tautan ke badan    : ${n(tautBadanStatis)} menunjuk halaman /badan/ sendiri${tautBadanDinamis ? `; ${n(tautBadanDinamis)} jatuh ke layar aplikasi karena badannya tak berhalaman` : ''}`);
 console.log(`  kandungan dilewati : ${n(kandunganTunggal)} sidik hanya dipakai satu produk — halamannya akan menduplikasi halaman produknya`);
+console.log(`  hub klaster        : ${n(hubHalaman)} induk + ${n(hubPintu)} pintu awalan — jalan masuk perayap yang bukan sitemap`);
 console.log(`  produk noindex     : ${n(produkNoindex)} halaman terbit tapi tidak diindeks — gerbang tipis docs/19 §6`);
+console.log(`  bahan noindex      : ${n(bahanNoindex)} halaman bahan terbit tapi tidak diindeks — rekaman uji registri, menyebut dirinya di halamannya`);
 console.log(`  gambar kemasan     : ${n(produkBergambar)} produk bergambar${gambarTerindeks ? ' — DIIZINKAN diindeks lewat --gambar-terindeks' : ', ditampilkan dengan noimageindex'}`);
 console.log(`  setara dilewati    : ${n(setaraTanpaKomposisi)} kelompok tanpa komposisi pada contohnya`);
 console.log(`  penggunaan ditahan : ${n(gunaDitahan)} baris penggunaan berlabel di luar ${BATAS_GUNA} per halaman`);
 console.log(`  penggunaan tanpa pintu: ${n(gunaTanpaPintu)} baris tampil tanpa tautan OPT — OPT-nya tidak punya berkas di indeks`);
 console.log(`  badan berpengaya   : ${n(badanBerpengaya)} badan membawa riset web tingkat D — tampil berlencana, tidak ikut ke JSON-LD${kunciBadanAneh ? `; ${kunciBadanAneh} kunci ditolak karena bentuknya` : ''}`);
+console.log(`  badan bersertifikat: ${n(badanBersertifikat)} badan membawa sertifikasi organik terkurasi${badanSertifikatLewat ? `; ${n(badanSertifikatLewat)} di antaranya kedaluwarsa atau dicabut dan tampil sebagai kartu peringatan` : ''}${SERTIFIKASI.size ? '' : ' (kosakata sertifikasi tidak ada — halaman badan terbangun tanpa kartu ini)'}`);
 console.log(`  baris badan ditahan: ${n(barisBadanDitahan)} baris produk & varietas di luar ${BATAS_BARIS_BADAN} per tabel`);
 console.log(`  harga di luar misi : ${n(hargaLuar)} seri tidak diterbitkan sama sekali — baja ringan, besi beton, dan sebangsanya`);
 console.log(`  komentar ditahan   : ${n(komentarDitahan)} komentar seri tidak diterbitkan karena ditulis model atau tidak lolos pemeriksa`);

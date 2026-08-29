@@ -1,0 +1,95 @@
+{
+  "$schema": "../schema/agroclimate-scheme.schema.json",
+  "id": "op:akl:00000005",
+  "key": "pola-hujan",
+  "label": {
+    "id": "Pola hujan tahunan — BMKG"
+  },
+  "definition": {
+    "id": "Tiga bentuk sebaran hujan sepanjang tahun yang dipakai BMKG untuk mengelompokkan zona musim. Ia tidak mengukur seberapa basah sebuah tempat melainkan KAPAN hujannya datang, dan itulah yang menentukan apakah sebuah kalender tanam bisa dipindahkan dari satu wilayah ke wilayah lain."
+  },
+  "axis": "rainfall_pattern",
+  "decidable": "qualitative",
+  "qualitative_reason": "Ketiga pola dibedakan bentuk grafik hujan bulanan — jumlah dan letak puncaknya — bukan ambang pada sebuah bilangan. Memaksakan ambang di sini akan mengarang ketegasan yang tidak dimiliki sumbernya: BMKG sendiri menetapkan pola sebuah zona musim lewat penilaian atas bentuk itu.",
+  "classes": [
+    {
+      "id": "op:akz:00000401",
+      "code": "monsunal",
+      "label": {
+        "id": "Pola monsunal"
+      },
+      "definition": {
+        "id": "Satu puncak hujan setahun, dipengaruhi monsun Asia–Australia, dengan satu periode kemarau yang jelas. Bentuk grafiknya huruf U."
+      },
+      "order": 1,
+      "criteria_absent_reason": "Pola hujan ditetapkan dari BENTUK grafik hujan bulanan — berapa puncaknya dan kapan letaknya — bukan dari satu bilangan yang bisa dipotong ambang. Dua tempat berpola sama bisa punya total hujan yang jauh berbeda, dan dua tempat bertotal sama bisa berbeda pola.",
+      "agronomy": {
+        "id": "Musim tanam tersusun di sekitar satu awal musim hujan; kemarau memisahkan musim tanam pertama dan kedua."
+      }
+    },
+    {
+      "id": "op:akz:00000402",
+      "code": "ekuatorial",
+      "label": {
+        "id": "Pola ekuatorial"
+      },
+      "definition": {
+        "id": "Dua puncak hujan setahun, umumnya di sekitar Maret dan Oktober, lazim di dekat khatulistiwa. Bentuk grafiknya huruf M."
+      },
+      "order": 2,
+      "criteria_absent_reason": "Pola hujan ditetapkan dari BENTUK grafik hujan bulanan — berapa puncaknya dan kapan letaknya — bukan dari satu bilangan yang bisa dipotong ambang. Dua tempat berpola sama bisa punya total hujan yang jauh berbeda, dan dua tempat bertotal sama bisa berbeda pola.",
+      "agronomy": {
+        "id": "Tidak ada kemarau tunggal yang jelas, jadi awal tanam bukan satu keputusan setahun melainkan dua."
+      }
+    },
+    {
+      "id": "op:akz:00000403",
+      "code": "lokal",
+      "label": {
+        "id": "Pola lokal"
+      },
+      "definition": {
+        "id": "Satu puncak hujan setahun yang justru berlawanan waktu dengan pola monsunal, terbentuk oleh keadaan setempat. Bentuk grafiknya huruf U terbalik terhadap monsunal."
+      },
+      "order": 3,
+      "criteria_absent_reason": "Pola hujan ditetapkan dari BENTUK grafik hujan bulanan — berapa puncaknya dan kapan letaknya — bukan dari satu bilangan yang bisa dipotong ambang. Dua tempat berpola sama bisa punya total hujan yang jauh berbeda, dan dua tempat bertotal sama bisa berbeda pola.",
+      "agronomy": {
+        "id": "Kalender tanam yang disusun untuk pola monsunal terbalik seluruhnya di sini — dan inilah kesalahan yang paling mahal ketika anjuran nasional diturunkan apa adanya ke Maluku."
+      }
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-24T00:00:00Z",
+    "review_due": "2027-08-24"
+  },
+  "no_mapping_reason": "BMKG tidak menerbitkan pengenal untuk ketiga pola ini, hanya namanya; dan tidak ada kosakata luar yang dipetakan repositori ini yang memuatnya.",
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Prediksi Musim Hujan 2025/2026 di Indonesia",
+        "publisher": "Badan Meteorologi, Klimatologi, dan Geofisika",
+        "year": 2025,
+        "locator": "Sumber pembagian ketiga pola beserta pemakaiannya pada 699 zona musim.",
+        "url": "https://www.bmkg.go.id/iklim/prediksi-musim"
+      }
+    ]
+  },
+  "notes": {
+    "id": "Zona musim (ZOM) BMKG sendiri — 699 zona — SENGAJA tidak dijadikan kelas di sini. ZOM adalah pembagian wilayah, bukan kelas iklim: ia berubah ketika BMKG memutakhirkan batasnya, dan menyalinnya ke sini akan membuat repositori ini menyimpan salinan usang dari sesuatu yang sumbernya perbarui sendiri. Yang disalin cuma polanya, yang tidak berubah tiap musim. ZOM dipinjam, tidak dibangun — lihat C5 di docs/15-kapabilitas-lintas-pemangku.md."
+  },
+  "id_blocks": [
+    {
+      "from": 5,
+      "to": 5
+    }
+  ],
+  "class_id_blocks": [
+    {
+      "from": 400,
+      "to": 499
+    }
+  ]
+}

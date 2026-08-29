@@ -15,7 +15,9 @@
  * menuntut tetikus, dan tetap terbaca pada layar 320 px.
  */
 
-import { ambil, muatMeta, bacaMeta, teks, tanggal } from './pustaka.js';
+import {
+  ambil, muatMeta, bacaMeta, teks, tanggal, pasangKembali, pesanGagalMuat, pasangCobaLagi,
+} from './pustaka.js';
 import { pasangTombolTema } from './tema.js';
 import { pasangBatas } from './batas.js';
 
@@ -23,13 +25,28 @@ pasangTombolTema();
 
 const el = {
   judul: document.getElementById('judul'),
+  lede: document.getElementById('lede'),
   q: document.getElementById('q'),
   bantuan: document.getElementById('bantuan'),
+  form: document.getElementById('formCari'),
   daftar: document.getElementById('daftar'),
   rincian: document.getElementById('rincian'),
+  strip: document.getElementById('stripTingkat'),
+  stripIsi: document.getElementById('stripIsi'),
   batas: document.getElementById('batasJawaban'),
   atribusi: document.getElementById('atribusi'),
 };
+
+// Tiga lapis menempel bertingkat: bilah cangkang, strip tingkat di bawahnya, lalu kepala
+// kelompok di bawah keduanya. `--atas-bilah` diterbitkan cangkang.js — bilahnya miliknya,
+// dan tingginya ikut. Yang tersisa di sini tinggi strip, yang juga meninggi sendiri saat
+// judulnya membungkus. Menebaknya membuat kepala kelompok menyelip di balik strip persis
+// pada lebar yang paling banyak dipakai.
+function ukurTempelan() {
+  const s = el.strip?.querySelector('summary');
+  if (s) document.documentElement.style.setProperty('--tinggi-strip', `${Math.round(s.offsetHeight)}px`);
+}
+addEventListener('resize', ukurTempelan);
 
 document.getElementById('tanpaJs')?.remove();
 
@@ -54,6 +71,8 @@ const arah = (p) => {
 };
 
 let kepala = [];
+const BATAS_DAFTAR_AWAL = 12;
+let daftarLengkap = false;
 
 // ---------------------------------------------------------------------------
 // Daftar
@@ -87,13 +106,22 @@ function gambarDaftar(kueri = '') {
     return;
   }
 
-  const berangka = cocok.filter((x) => !x.kosong);
+  const semuaBerangka = cocok.filter((x) => !x.kosong);
+  const berangka = (!r && !daftarLengkap)
+    ? semuaBerangka.slice(0, BATAS_DAFTAR_AWAL)
+    : semuaBerangka;
   const kosong = cocok.filter((x) => x.kosong);
+
+  // Tanggal terbaru di seluruh daftar. Di layar harga "per kapan" sekelas dengan "berapa",
+  // dan sampai 24 Agustus 2026 tanggalnya baru muncul setelah satu komoditas dibuka —
+  // artinya seluruh daftar berdiri tanpa keterangan umur sama sekali.
+  const terbaru = semuaBerangka.map((x) => x.t).filter(Boolean).sort().at(-1);
 
   const luar = kepala.filter((x) => !TANI(x));
   el.daftar.innerHTML = `
-    <p class="bantuan">
-      ${n(berangka.length)} komoditas berangka${kosong.length ? `, ${n(kosong.length)} diterbitkan tanpa angka` : ''}.
+    ${terbaru ? `<p class="catatan tanggal-daftar">Angka terbaru <strong>${teks(tanggal(terbaru) ?? terbaru)}</strong> · rata-rata nasional tertimbang penduduk.</p>` : ''}
+    <p class="bantuan" role="status">
+      ${n(semuaBerangka.length)} komoditas berangka${kosong.length ? `, ${n(kosong.length)} diterbitkan tanpa angka` : ''}.
     </p>
     ${luar.length ? `
       <details class="luar-lingkup">
@@ -119,26 +147,53 @@ function gambarDaftar(kueri = '') {
         </p>
         <p class="catatan">${luar.map((x) => teks(x.n)).join(' · ')}</p>
       </details>` : ''}
-    <ul class="daftar-harga">
-      ${berangka.map((x) => {
-        const a = arah(x.u30);
-        return `
-        <li>
-          <a class="baris-tautan" href="harga.html?k=${encodeURIComponent(x.k)}">
-            <span class="nama">${teks(x.n)}${x.l === 'farmgate' ? '<span class="lencana lencana-pekebun">Harga pekebun</span>' : ''}${x.g && x.g !== x.n ? `<span class="lencana">${teks(x.g)}</span>` : ''}</span>
-            <span class="harga-kini">${rp(x.p)}<span class="satuan">/${teks(x.s)}</span></span>
-            <span class="ubah ${a.kelas}">${a.tanda} ${angkaId(Math.abs(x.u30 ?? 0))}% <span class="ubah-jangka">${jangka(x.u30h, 30)}</span></span>
-          </a>
-        </li>`;
-      }).join('')}
-      ${kosong.map((x) => `
-        <li class="hasil-belum">
-          <a class="baris-tautan" href="harga.html?k=${encodeURIComponent(x.k)}">
-            <span class="nama">${teks(x.n)}</span>
-            <span class="sub">diterbitkan SP2KP tanpa satu pun angka</span>
-          </a>
-        </li>`).join('')}
-    </ul>`;
+    ${berangka.length ? `
+      <section class="kelompok-harga">
+        <h2><span>Ada angkanya</span><span class="cacah">${n(berangka.length)}</span></h2>
+        <ul class="daftar-harga">
+          ${berangka.map((x) => {
+            const a = arah(x.u30);
+            return `
+            <li>
+              <a class="baris-tautan" data-k="${teks(x.k)}" href="harga.html?k=${encodeURIComponent(x.k)}">
+                <span class="nama">${teks(x.n)}${x.l === 'farmgate' ? '<span class="lencana lencana-pekebun">Harga pekebun</span>' : ''}${x.g && x.g !== x.n ? `<span class="lencana">${teks(x.g)}</span>` : ''}</span>
+                <span class="harga-kini">${rp(x.p)}<span class="satuan">/${teks(x.s)}</span></span>
+                <span class="ubah ${a.kelas}">${a.tanda} ${angkaId(Math.abs(x.u30 ?? 0))}% <span class="ubah-jangka">${jangka(x.u30h, 30)}</span></span>
+              </a>
+            </li>`;
+          }).join('')}
+        </ul>
+        ${!r && !daftarLengkap && semuaBerangka.length > berangka.length ? `
+          <button type="button" class="tampilkan-lain" data-tampilkan-harga>
+            Tampilkan ${n(semuaBerangka.length - berangka.length)} komoditas berangka lainnya
+          </button>` : ''}
+      </section>` : ''}
+    ${kosong.length ? `
+      <details class="kelompok-harga harga-tanpa-angka"${r ? ' open' : ''}>
+        <summary><span>Terdaftar, tanpa angka</span><span class="cacah">${n(kosong.length)}</span></summary>
+        <ul class="daftar-harga">
+          ${kosong.map((x) => {
+            const l = lanjutKosong(x.k);
+            return `
+            <li class="hasil-belum">
+              <a class="baris-tautan" data-k="${teks(x.k)}" href="harga.html?k=${encodeURIComponent(x.k)}">
+                <span class="nama">${teks(x.n)}</span>
+                <span class="sub">diterbitkan SP2KP tanpa satu pun angka</span>
+              </a>
+              ${l ? `<a class="baris-lanjut" href="${l.u}">${teks(l.t)} <span aria-hidden="true">→</span></a>` : ''}
+            </li>`;
+          }).join('')}
+        </ul>
+      </details>` : ''}`;
+}
+
+// Yang buntu di layar ini belum tentu buntu di platform ini. Keempat pupuk tidak punya
+// angka di SP2KP, tetapi jalur 3 memang membandingkan harga tebusnya dengan HET bersubsidi
+// — dan kartu "tanpa angka" sendiri berjanji "mengarahkan pencarian ke tempat lain".
+// Sampai 24 Agustus 2026 tempat lain itu tidak pernah ditautkan.
+function lanjutKosong(k) {
+  if (/^pupuk-/.test(k)) return { u: 'harga-pupuk.html', t: 'Bandingkan dengan HET bersubsidi' };
+  return null;
 }
 
 // ---------------------------------------------------------------------------
@@ -146,48 +201,53 @@ function gambarDaftar(kueri = '') {
 // ---------------------------------------------------------------------------
 function grafik(seri, satuan) {
   if (seri.length < 2) return '';
-  const L = 52, K = 8, A = 16, B = 26;      // tepi kiri, kanan, atas, bawah
-  const W = 720, H = 260;
-  const w = W - L - K, h = H - A - B;
+  // viewBox memuat RUANG PLOT SAJA. Gutter untuk label dulu ikut di dalamnya (L/K/A/B);
+  // sekarang jadi padding di .grafik-plot, karena labelnya sudah bukan penghuni viewBox.
+  const W = 720, H = 200;
 
   const nilai = seri.map((p) => p.p);
-  let lo = Math.min(...nilai), hi = Math.max(...nilai);
+  const minAsli = Math.min(...nilai), maksAsli = Math.max(...nilai);
   // Sumbu tidak dimulai dari nol, dan itu disengaja — tetapi karena itu ia WAJIB berlabel
-  // di kedua ujungnya, supaya kenaikan 2% tidak terbaca sebagai kenaikan berlipat. Label
-  // bawah dan atas keduanya digambar di bawah ini.
-  const pad = (hi - lo) * 0.08 || Math.max(1, hi * 0.02);
-  lo -= pad; hi += pad;
+  // di kedua ujungnya, supaya kenaikan 2% tidak terbaca sebagai kenaikan berlipat.
+  const pad = (maksAsli - minAsli) * 0.08 || Math.max(1, maksAsli * 0.02);
+  const lo = minAsli - pad, hi = maksAsli + pad;
 
   const t0 = new Date(seri[0].t).getTime();
   const t1 = new Date(seri.at(-1).t).getTime();
-  const x = (t) => L + ((new Date(t).getTime() - t0) / (t1 - t0 || 1)) * w;
-  const y = (v) => A + (1 - (v - lo) / (hi - lo || 1)) * h;
+  // Pecahan 0..1 sepanjang sumbu; dipakai dua kali — sekali untuk koordinat viewBox,
+  // sekali untuk `--f` pada label HTML. Satu sumber, jadi garis dan labelnya tidak
+  // pernah bisa meleset satu sama lain.
+  const fx = (t) => (new Date(t).getTime() - t0) / (t1 - t0 || 1);
+  const fy = (v) => 1 - (v - lo) / (hi - lo || 1);
 
-  const d = seri.map((p, i) => `${i ? 'L' : 'M'}${x(p.t).toFixed(1)} ${y(p.p).toFixed(1)}`).join(' ');
+  const d = seri.map((p, i) =>
+    `${i ? 'L' : 'M'}${(fx(p.t) * W).toFixed(1)} ${(fy(p.p) * H).toFixed(1)}`).join(' ');
+  const isi = `M0 ${H} L${d.slice(1)} L${W} ${H} Z`;
 
   // Garis tahun sebagai penanda, bukan grid penuh: yang perlu dijawab mata "ini kapan",
   // dan kisi rapat pada layar 320 px justru menutupi garisnya sendiri.
   const tahun = [];
   for (let th = new Date(seri[0].t).getUTCFullYear() + 1; th <= new Date(seri.at(-1).t).getUTCFullYear(); th++) {
-    const tx = x(`${th}-01-01`);
-    if (tx > L && tx < L + w) tahun.push({ th, tx });
+    const f = fx(`${th}-01-01`);
+    if (f > 0.02 && f < 0.98) tahun.push({ th, f });
   }
 
   const akhir = seri.at(-1);
   return `
     <figure class="grafik">
-      <svg viewBox="0 0 ${W} ${H}" role="img" preserveAspectRatio="none"
-           aria-label="Grafik garis harga ${teks(satuan)} dari ${teks(seri[0].t)} sampai ${teks(akhir.t)}, terendah ${rp(Math.min(...nilai))}, tertinggi ${rp(Math.max(...nilai))}, terakhir ${rp(akhir.p)}.">
-        <line class="g-sumbu" x1="${L}" y1="${A}" x2="${L}" y2="${A + h}"></line>
-        <line class="g-sumbu" x1="${L}" y1="${A + h}" x2="${L + w}" y2="${A + h}"></line>
-        ${tahun.map((t) => `
-          <line class="g-tahun" x1="${t.tx.toFixed(1)}" y1="${A}" x2="${t.tx.toFixed(1)}" y2="${A + h}"></line>
-          <text class="g-label" x="${t.tx.toFixed(1)}" y="${A + h + 17}" text-anchor="middle">${t.th}</text>`).join('')}
-        <path class="g-garis" d="${d}"></path>
-        <circle class="g-titik" cx="${x(akhir.t).toFixed(1)}" cy="${y(akhir.p).toFixed(1)}" r="3.5"></circle>
-        <text class="g-label" x="${L - 6}" y="${(A + 4).toFixed(1)}" text-anchor="end">${rp(hi)}</text>
-        <text class="g-label" x="${L - 6}" y="${(A + h).toFixed(1)}" text-anchor="end">${rp(lo)}</text>
-      </svg>
+      <div class="grafik-plot">
+        <svg viewBox="0 0 ${W} ${H}" role="img" preserveAspectRatio="none"
+             aria-label="Grafik garis harga ${teks(satuan)} dari ${teks(seri[0].t)} sampai ${teks(akhir.t)}, terendah ${rp(minAsli)}, tertinggi ${rp(maksAsli)}, terakhir ${rp(akhir.p)}.">
+          <line class="g-sumbu" x1="0" y1="${H}" x2="${W}" y2="${H}"></line>
+          ${tahun.map((t) => `<line class="g-tahun" x1="${(t.f * W).toFixed(1)}" y1="0" x2="${(t.f * W).toFixed(1)}" y2="${H}"></line>`).join('')}
+          <path class="g-isi" d="${isi}"></path>
+          <path class="g-garis" d="${d}"></path>
+        </svg>
+        <span class="g-label g-y g-y-atas">${rp(hi)}</span>
+        <span class="g-label g-y g-y-bawah">${rp(lo)}</span>
+        ${tahun.map((t) => `<span class="g-label g-x" style="--f:${t.f.toFixed(4)}">${t.th}</span>`).join('')}
+        <span class="g-titik" style="--fy:${fy(akhir.p).toFixed(4)}" aria-hidden="true"></span>
+      </div>
       <figcaption>
         ${teks(seri[0].t)} – ${teks(akhir.t)} · ${n(seri.length)} titik harian.
         <strong>Sumbu tegaknya tidak mulai dari nol</strong>, jadi tinggi garis menunjukkan
@@ -300,7 +360,7 @@ function kartuPitaUmur(h) {
               <td>${teks(u)}${teks(sumbu.sufiks)}</td>
               <td class="angka">${v > 0 ? rp(v) : '—'}</td>
               ${adaBarat ? `<td class="angka">${b > 0 ? rp(b) : '—'}</td>` : ''}
-              <td><span class="bilah" style="--isi:${v > 0 ? Math.round((v / hi) * 100) : 0}%"></span></td>
+              <td><span class="bilah-isi" style="--isi:${v > 0 ? Math.round((v / hi) * 100) : 0}%"></span></td>
             </tr>`;
           }).join('')}</tbody>
         </table>
@@ -408,7 +468,7 @@ function kartuRendemen(h) {
               <td>${teks(String(u).replace('>=', '≥'))} tahun</td>
               <td class="angka">${v > 0 ? pct(v) : '—'}</td>
               ${adaInti ? `<td class="angka">${i > 0 ? pct(i) : '—'}</td>` : ''}
-              <td><span class="bilah" style="--isi:${v > 0 ? Math.round(((v - lo) / (hi - lo)) * 100) : 0}%"></span></td>
+              <td><span class="bilah-isi" style="--isi:${v > 0 ? Math.round(((v - lo) / (hi - lo)) * 100) : 0}%"></span></td>
             </tr>`;
           }).join('')}</tbody>
         </table>
@@ -719,47 +779,165 @@ function kartuKosong(h) {
 // ---------------------------------------------------------------------------
 // Buka satu komoditas
 // ---------------------------------------------------------------------------
-// Kartu peringatan tingkat di kepala halaman berbicara untuk SELURUH daftar, dan itu berhenti
-// benar begitu satu seri di dalamnya bukan eceran. Ia disembunyikan saat seri pekebun dibuka;
-// yang menggantikannya blok `cakupan-hukum` di kartu serinya sendiri, yang lebih tepat karena
-// ia menyebut siapa persisnya yang dinaungi.
-function aturKartuTingkat(h) {
-  const k = document.getElementById('kartuTingkat');
-  if (!k) return;
-  k.hidden = h?.tingkat === 'farmgate';
+// Strip tingkat DITUKAR, tidak disembunyikan. Bentuk lamanya menyetel `hidden` saat seri
+// pekebun dibuka, dan keadaan tersembunyi itu bocor: cabang popstate tidak pernah
+// mengembalikannya, jadi menutup seri sawit lewat tombol Back menampilkan kembali 38 harga
+// eceran tanpa satu pun peringatan di atasnya. Yang selalu ada dan hanya berganti isi tidak
+// punya keadaan yang bisa bocor.
+const STRIP = {
+  retail: {
+    judul: 'Harga eceran — bukan harga petani',
+    sub: 'Yang dibayar pembeli di pasar konsumen.',
+    isi: `
+      <p>
+        Berapa yang benar-benar diterima petani <strong>tidak ada di sini</strong>, dan
+        tidak ada di sumber terbuka mana pun.
+      </p>
+      <p>
+        Bahkan yang dicatat negara sebagai "harga produsen" pun sebenarnya
+        <strong>harga beli pengumpul</strong> — respondennya pengumpul, penggilingan, dan
+        pedagang. Di Kabupaten Karawang, salah satu lumbung padi terbesar Indonesia,
+        respondennya <strong>satu orang</strong>. Jaraknya terpasang di dalam definisi,
+        bukan celah cakupan yang bisa dirapatkan dengan menambah sampel.
+      </p>`,
+  },
+  farmgate: {
+    judul: 'Harga di tingkat pekebun',
+    sub: 'Yang diterima pekebun, hasil penetapan — bukan survei pasar.',
+    isi: `
+      <p>
+        Seri ini <strong>bukan harga eceran</strong>. Angkanya ditetapkan tim penetapan
+        provinsi, jadi ia memang harga yang dihadapi pekebun — dan itu membuatnya satu dari
+        sedikit sekali seri di halaman ini yang boleh dibaca begitu.
+      </p>
+      <p>
+        Yang dinaungi penetapan ini hanya pekebun yang <strong>bermitra</strong>. Di luar
+        kemitraan, harganya urusan tawar-menawar dengan pabrik, dan angka itu tidak
+        diterbitkan di mana pun. Untuk pangan pokok belum ada satu pun acuan tingkat petani.
+      </p>`,
+  },
+};
+
+function aturTingkat(h) {
+  if (!el.strip) return;
+  const s = STRIP[h?.tingkat === 'farmgate' ? 'farmgate' : 'retail'];
+  el.strip.dataset.tingkat = h?.tingkat === 'farmgate' ? 'farmgate' : 'retail';
+  el.strip.querySelector('.st-judul').textContent = s.judul;
+  el.strip.querySelector('.st-sub').textContent = s.sub;
+  el.stripIsi.innerHTML = s.isi;
+  ukurTempelan();
+}
+
+// Daftar dan rincian tidak pernah tampil bersamaan. Sampai 24 Agustus 2026 rinciannya
+// DITAMBAHKAN di bawah daftar yang tetap penuh — di ponsel itu 5.712 px daftar yang harus
+// dilewati sebelum jawaban atas komoditas yang justru diminta lewat URL. Membuka satu
+// komoditas berarti mengganti layar, bukan memanjangkannya.
+function tampilkanDaftar(ya) {
+  el.daftar.hidden = !ya;
+  if (el.form) el.form.hidden = !ya;
+  // Lede berbicara untuk DAFTAR ("harga eceran harian nasional beserta riwayatnya"), dan
+  // di layar satu komoditas ia mengulang apa yang sudah dikatakan strip tepat di bawahnya.
+  // Menyimpannya menghemat ~50 px chrome sebelum angka yang justru diminta.
+  if (el.lede) el.lede.hidden = !ya;
+}
+
+// Posisi gulir daftar saat satu komoditas dibuka. Daftar disembunyikan sebelum
+// pasangKembali() mendorong entri riwayatnya, jadi yang terekam peramban di entri daftar
+// adalah tinggi dokumen yang sudah runtuh — halaman ini yang harus mengingatnya sendiri.
+// Pemulihan bawaan peramban dimatikan di pasangKembali(); alasannya panjang di sana.
+//
+// null berarti layar ini tidak dibuka dari daftar (tautan langsung, atau tombol Forward).
+let gulirDaftar = null;
+
+function tutupRincian(key) {
+  aturTingkat(null);
+  el.judul.textContent = 'Harga komoditas';
+  document.title = 'Harga komoditas — Pranatani';
+  tampilkanDaftar(true);
+  // Alamat dibersihkan di tempat: kalau halaman dibuka LANGSUNG di ?k=..., tombol Back
+  // mengembalikan entri yang alamatnya masih memuat ?k= padahal layarnya sudah daftar.
+  try { history.replaceState(history.state, '', 'harga.html'); } catch { /* diabaikan */ }
+
+  // Fokus pulang ke baris yang tadi dibuka, bukan ke pucuk halaman. Yang membuka
+  // "Udang Basah" dari baris ke-37 dulu dilempar ke kepala daftar: 4.361 px — lima layar
+  // ponsel — untuk kembali ke tempatnya semula.
+  const a = key && el.daftar.querySelector(`.baris-tautan[data-k="${CSS.escape(key)}"]`);
+  a?.focus({ preventScroll: true });
+
+  // Membaca scrollHeight memaksa tata letak dihitung ulang SEKARANG. Daftar baru saja lepas
+  // dari `hidden`, dan gulir yang diminta akan dijepit ke tinggi dokumen yang berlaku saat
+  // itu — kalau tingginya belum dihitung, jepitannya memakai dokumen yang masih runtuh.
+  void document.documentElement.scrollHeight;
+
+  // Bentuk dua-argumen, bukan objek: `behavior: 'instant'` belum dikenal WebView lawas, dan
+  // permukaan ini memang menyasar ponsel entry-level.
+  if (gulirDaftar !== null) scrollTo(0, gulirDaftar);
+  else if (a) a.scrollIntoView({ block: 'center' });   // tautan langsung: barisnya yang dicari
+  else el.q?.focus();
+  gulirDaftar = null;
+}
+
+// Tautan mati tidak perlu perjalanan jaringan untuk dikenali: kepalanya sudah di memori.
+// Membedakannya dari sambungan putus penting karena nasihatnya berlawanan — yang satu
+// "coba lagi", yang satu "tautan ini tidak akan pernah berhasil".
+function layarTakDikenal(key) {
+  const berangka = kepala.filter((x) => TANI(x) && !x.kosong).length;
+  const sepi = kepala.filter((x) => TANI(x) && x.kosong).length;
+  return `
+    <div class="kartu peringatan">
+      <h2>Komoditas ini tidak ada di indeks harga</h2>
+      <p>
+        <code>${teks(key)}</code> tidak terdaftar. Kemungkinan besar tautannya dibuat
+        sebelum daftar ini disusun ulang — <strong>mengulang tidak akan menolong</strong>,
+        karena bukan sambungan yang bermasalah.
+      </p>
+      <p class="catatan">
+        Yang ada sekarang: ${n(berangka)} komoditas berangka dan ${n(sepi)} yang terdaftar
+        tanpa angka.
+      </p>
+    </div>`;
 }
 
 async function buka(key) {
+  tampilkanDaftar(false);
   el.rincian.innerHTML = '<p class="kosong">Mengambil riwayat harganya…</p>';
   el.rincian.focus();
+
+  const selesai = () => pasangKembali(el.rincian, {
+    alamat: `harga.html?k=${encodeURIComponent(key)}`,
+    sesudah: () => tutupRincian(key),
+  });
+
+  if (kepala.length && !kepala.some((x) => x.k === key)) {
+    el.rincian.innerHTML = layarTakDikenal(key) + tombolKembali();
+    return selesai();
+  }
+
   try {
     const h = await ambil(`harga/${key}`);
-    document.title = `Harga ${h.nama} — Open Protocols`;
+    document.title = `Harga ${h.nama} — Pranatani`;
     el.judul.textContent = `Harga ${h.nama}`;
 
-    aturKartuTingkat(h);
+    aturTingkat(h);
     el.rincian.innerHTML = h.seri?.length
       ? kartuAngka(h) + grafik(h.seri, `${h.nama} per ${h.satuan}`) + kartuHargaSaya(h) + kartuMusim(h) + kartuKomentar(h) + tombolKembali()
-      : kartuKosong(h) + tombolKembali();
+      : kartuKosong(h) + lanjutKartu(key) + tombolKembali();
     pasangHargaSaya(el.rincian, h);
-
-    el.rincian.querySelector('#kembali')?.addEventListener('click', () => {
-      el.rincian.innerHTML = '';
-      aturKartuTingkat(null);
-      history.pushState({}, '', 'harga.html');
-      el.judul.textContent = 'Harga komoditas';
-      document.title = 'Harga komoditas — Open Protocols';
-      el.daftar.scrollIntoView({ block: 'start' });
-    });
+    selesai();
   } catch (e) {
-    el.rincian.innerHTML = `
-      <div class="kartu peringatan">
-        <h2>Riwayatnya gagal diambil</h2>
-        <p>Sambungan terputus atau berkasnya tidak ada. Coba lagi — yang sudah terambil tetap
-        tersimpan, jadi percobaan berikutnya lebih ringan.</p>
-        <p class="catatan">${teks(e.message)}</p>
-      </div>`;
+    // pesanGagalMuat memisahkan "sambungan putus" dari "peladen menjawab, berkasnya tidak
+    // ada", dan hanya yang pertama yang menawarkan "Coba lagi".
+    el.rincian.innerHTML = pesanGagalMuat(e) + tombolKembali();
+    pasangCobaLagi(el.rincian, () => buka(key));
+    selesai();
   }
+}
+
+// Kartu "tanpa angka" berjanji "mengarahkan pencarian ke tempat lain". Ini tempat lainnya.
+function lanjutKartu(key) {
+  const l = lanjutKosong(key);
+  if (!l) return '';
+  return `<p class="lanjut-kartu"><a class="baris-lanjut" href="${l.u}">${teks(l.t)} <span aria-hidden="true">→</span></a></p>`;
 }
 
 const tombolKembali = () =>
@@ -782,19 +960,34 @@ document.getElementById('formCari').addEventListener('submit', (ev) => {
 });
 
 el.daftar.addEventListener('click', (ev) => {
+  const tampilkan = ev.target.closest('[data-tampilkan-harga]');
+  if (tampilkan) {
+    daftarLengkap = true;
+    gambarDaftar(el.q.value);
+    el.daftar.querySelector('.daftar-harga li:nth-child(13) a')?.focus();
+    return;
+  }
   const a = ev.target.closest('a[href^="harga.html?k="]');
   if (!a) return;
   ev.preventDefault();
   const k = new URL(a.href, location.href).searchParams.get('k');
   if (!k || !BENTUK_KEY.test(k)) return;
-  history.pushState({}, '', `harga.html?k=${encodeURIComponent(k)}`);
+  // Diingat SEBELUM buka() menyembunyikan daftar — sesudah itu tinggi dokumen runtuh dan
+  // scrollY sudah 0.
+  gulirDaftar = Math.round(scrollY);
+  // Entri riwayatnya didorong pasangKembali(), bukan di sini. Mendorongnya di kedua tempat
+  // menghasilkan dua entri per layar — dan itu persis bug yang membuat tombol Back
+  // perangkat MEMBUKA KEMBALI komoditas yang baru saja ditutup.
   buka(k);
 });
 
 addEventListener('popstate', () => {
+  // pustaka.js menutup layar rincian lewat `tutupKini` pada popstate yang sama, dan
+  // pendengarnya terdaftar lebih dulu — jadi saat baris ini berjalan, penutupan sudah
+  // selesai. Yang tersisa cuma arah MAJU: tombol Forward kembali ke alamat ?k= yang
+  // layarnya sudah terlanjur ditutup.
   const k = new URLSearchParams(location.search).get('k');
-  if (k && BENTUK_KEY.test(k)) buka(k);
-  else { el.rincian.innerHTML = ''; el.judul.textContent = 'Harga komoditas'; }
+  if (k && BENTUK_KEY.test(k) && !el.rincian.firstElementChild) buka(k);
 });
 
 // ---------------------------------------------------------------------------
@@ -817,9 +1010,10 @@ addEventListener('popstate', () => {
 
     gambarDaftar('');
     // Peringatan "ini harga eceran" benar untuk 43 dari 44 seri, dan SALAH untuk satu.
-    // Menyembunyikannya saat seri pekebun dibuka lebih baik daripada membiarkan kalimat
-    // yang keliru berdiri di atas angka yang benar.
-    aturKartuTingkat(null);
+    // Yang satu itu tidak membuat stripnya hilang — ia menukarnya dengan kalimat pekebun,
+    // supaya tidak pernah ada angka di layar ini yang berdiri tanpa keterangan tingkat.
+    aturTingkat(null);
+    ukurTempelan();
 
     const k = new URLSearchParams(location.search).get('k');
     if (k && BENTUK_KEY.test(k)) await buka(k);

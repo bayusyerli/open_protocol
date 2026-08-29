@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Kalibrasi &amp; takaran — Open Protocols</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-DNPNcLjUG4zlmdaYgGYD9nMFoEvRKSs1IHGJXWCYX+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'">
+<title>Kalibrasi &amp; takaran — Pranatani</title>
 <meta name="description" content="Ubah dosis di label jadi angka yang bisa dijalankan di lahan: berapa yang masuk ke tangki, berapa tangki untuk petaknya, dan berapa banyak kalau menakarnya bukan dengan gelas ukur.">
 <!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
      Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
@@ -14,6 +15,7 @@
     if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
   } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
 </script>
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="stylesheet" href="gaya.css">
 <link rel="stylesheet" href="batas.css">
@@ -189,10 +191,9 @@
   <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
        daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
   <p class="lain">
-    <a href="beranda.html">← Beranda</a>
+    <a href="index.html">← Beranda</a>
   </p>
 
-  <!-- Diisi pasangBatas() di batas.js. Kalimat di dalamnya cadangan tanpa JavaScript. -->
   <section class="batas-jawaban" id="batasJawaban">
     <p class="bj-keping">Angka dosis dari labelmu sendiri; sebaran bentuk dosis dari registri pestisida Kementan.</p>
   </section>

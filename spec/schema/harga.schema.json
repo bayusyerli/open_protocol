@@ -138,8 +138,13 @@
     },
     "region": {
       "type": "object",
-      "description": "Wilayah yang dicakup harga ini. TIDAK ADA berarti nasional. Ada karena penetapan TBS ditetapkan per provinsi, dan menayangkan angka provinsi tanpa menyebut provinsinya adalah kekeliruan yang tidak bisa diperbaiki pembaca.\n\nMemakai kode ISO 3166-2:ID, BUKAN rujukan `op:rgn:`. Kosakata wilayah belum ada di repositori ini, dan mencetak satu entitas untuk satu provinsi berarti meninggalkan jenis entitas setengah jadi yang penulis berikutnya harus tebak aturannya. Kode standar yang sudah dipelihara pihak lain lebih baik daripada nomor yang kita karang sendiri. Begitu kosakata wilayah benar-benar dibangun, medan `id` bisa ditambahkan di sampingnya tanpa membatalkan yang ini.",
+      "description": "Wilayah yang dicakup harga ini. TIDAK ADA berarti nasional. Ada karena penetapan TBS ditetapkan per provinsi, dan menayangkan angka provinsi tanpa menyebut provinsinya adalah kekeliruan yang tidak bisa diperbaiki pembaca.\n\nMemakai kode ISO 3166-2:ID pada `code` — sengaja dipertahankan, karena sumber harganya menyebut wilayah dengan kode itu, dan kode standar yang dipelihara pihak lain lebih baik daripada nomor yang dikarang sendiri.\n\nSejak 24 Agustus 2026 medan `id` berdiri di sampingnya. Kosakata wilayah (op:rgn) sudah dibangun, dan janji yang tertulis di medan ini sebelumnya — \"begitu kosakata wilayah benar-benar dibangun, medan id bisa ditambahkan di sampingnya tanpa membatalkan yang ini\" — ditagih apa adanya. Keduanya hidup berdampingan: `code` menyatakan apa yang dikatakan sumbernya, `id` menyambungkannya ke wilayah yang sama yang dipakai petak dan balai penyuluhan. `label` juga tidak ditimpa nama BPS — sumber harga menulis \"Kepulauan Bangka Belitung\" dan BPS menyingkatnya \"Kep. Bangka Belitung\"; yang tercetak di sumbernya yang pertama.",
       "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^op:rgn:[0-9]{8}$",
+          "description": "Rujukan ke entitas wilayah. Dicocokkan menurut NAMA saat dibangkitkan, bukan dari tabel kode yang ditulis tangan: pencocokan nama gagal berisik, tabel tulis-tangan gagal diam-diam — dan repositori ini sudah punya satu contohnya pada rujukan wilayah yang dikarang menyerupai kode BPS."
+        },
         "code": {
           "type": "string",
           "pattern": "^ID-[A-Z]{2}$",

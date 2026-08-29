@@ -1,0 +1,133 @@
+{
+  "$schema": "../schema/agroclimate-scheme.schema.json",
+  "id": "op:akl:00000003",
+  "key": "junghuhn",
+  "label": {
+    "id": "Zona ketinggian Junghuhn",
+    "en": "Junghuhn altitudinal zones"
+  },
+  "definition": {
+    "id": "Pembagian ketinggian yang aslinya pembagian SUHU: Junghuhn memetakan sebaran tumbuhan di Jawa menurut suhu rata-rata tahunan, dan ketinggian dipakai sebagai penggantinya karena suhu turun kira-kira 0,6 °C tiap seratus meter. Ketinggian yang dipakai di sini adalah penggantinya, bukan yang diukur Junghuhn — dan penggantian itu meleset di tempat yang suhunya tidak mengikuti ketinggian, misalnya lembah tertutup atau pesisir berangin."
+  },
+  "axis": "elevation",
+  "decidable": "threshold",
+  "inputs": [
+    {
+      "key": "ketinggian_m",
+      "label": {
+        "id": "Ketinggian di atas permukaan laut"
+      },
+      "definition": {
+        "id": "Meter di atas permukaan laut pada titik yang ditetapkan. Untuk petak berpoligon, ketinggian mana yang dipakai — titik tengah, terendah, atau tertinggi — harus dinyatakan di basis.note, karena satu petak berlereng bisa melintasi batas zona."
+      },
+      "unit": "m",
+      "min": 0
+    }
+  ],
+  "classes": [
+    {
+      "id": "op:akz:00000201",
+      "code": "panas",
+      "label": {
+        "id": "Zona panas"
+      },
+      "definition": {
+        "id": "0 m sampai di bawah 700 m dpl. Suhu rata-rata tahunan > 22 °C menurut Junghuhn. Contoh tumbuhan yang disebutnya: padi, jagung, kelapa, tebu, karet."
+      },
+      "order": 1,
+      "criteria": [
+        {
+          "input": "ketinggian_m",
+          "ge": 0,
+          "lt": 700
+        }
+      ]
+    },
+    {
+      "id": "op:akz:00000202",
+      "code": "sedang",
+      "label": {
+        "id": "Zona sedang"
+      },
+      "definition": {
+        "id": "700 m sampai di bawah 1500 m dpl. Suhu rata-rata tahunan 15–22 °C menurut Junghuhn. Contoh tumbuhan yang disebutnya: kopi, teh, kina, sayuran dataran menengah."
+      },
+      "order": 2,
+      "criteria": [
+        {
+          "input": "ketinggian_m",
+          "ge": 700,
+          "lt": 1500
+        }
+      ]
+    },
+    {
+      "id": "op:akz:00000203",
+      "code": "sejuk",
+      "label": {
+        "id": "Zona sejuk"
+      },
+      "definition": {
+        "id": "1500 m sampai di bawah 2500 m dpl. Suhu rata-rata tahunan 11–15 °C menurut Junghuhn. Contoh tumbuhan yang disebutnya: sayuran dataran tinggi, kentang, kubis."
+      },
+      "order": 3,
+      "criteria": [
+        {
+          "input": "ketinggian_m",
+          "ge": 1500,
+          "lt": 2500
+        }
+      ]
+    },
+    {
+      "id": "op:akz:00000204",
+      "code": "dingin",
+      "label": {
+        "id": "Zona dingin"
+      },
+      "definition": {
+        "id": "2500 m dpl ke atas. Suhu rata-rata tahunan < 11 °C menurut Junghuhn. Contoh tumbuhan yang disebutnya: lumut dan tumbuhan alpin; di luar jangkauan budidaya tanaman pangan."
+      },
+      "order": 4,
+      "criteria": [
+        {
+          "input": "ketinggian_m",
+          "ge": 2500
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-24T00:00:00Z",
+    "review_due": "2027-08-24"
+  },
+  "no_mapping_reason": "Zona Junghuhn tidak punya pengenal di kosakata luar mana pun yang dipetakan repositori ini; ia istilah geografi Indonesia yang diwarisi dari terbitan 1857 dan tidak pernah dibakukan sebuah lembaga standar.",
+  "provenance": {
+    "license": "CC-BY-SA-4.0",
+    "sources": [
+      {
+        "title": "Java, seine Gestalt, Pflanzendecke und innere Bauart",
+        "publisher": "Leipzig",
+        "year": 1857,
+        "locator": "Junghuhn, F.W. Sumber asal pembagian zonanya. Angka batas yang beredar di kepustakaan Indonesia bervariasi — batas zona panas ditulis 600 m maupun 700 m di sumber yang berbeda; yang dipakai di sini 700 m, dan perbedaan itu justru alasan skemanya harus disebut namanya alih-alih menulis “dataran rendah” begitu saja."
+      }
+    ]
+  },
+  "notes": {
+    "id": "Skema ini dan `dataran-hortikultura` sama-sama membagi ketinggian dan TIDAK sepakat: lahan 500 m dpl adalah zona panas menurut Junghuhn dan dataran menengah menurut kelas hortikultura. Keduanya disimpan berdampingan, dan tidak satu pun boleh disebut “dataran rendah” tanpa menyebut skemanya."
+  },
+  "id_blocks": [
+    {
+      "from": 3,
+      "to": 3
+    }
+  ],
+  "class_id_blocks": [
+    {
+      "from": 200,
+      "to": 299
+    }
+  ]
+}

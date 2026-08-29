@@ -1,0 +1,38 @@
+# Tomato Leaf Dataset: A dataset for multiclass disease detection and classification
+
+- **dataset_id**: TOM-11-kebun-bangladesh
+- **Tanaman**: Tomat (*Solanum lycopersicum*)
+- **Penyakit/kelas tercakup**: 7 kelas menurut makalah pendamping (Data in Brief, doi 10.1016/j.dib.2025.111520) — `Early Blight`, `Black Spot`, `Late Blight`, `Leaf Mold`, `Bacterial Spot`, `Target Spot`, `Healthy`. Di dalam berkas label hanya ada **id angka 0–6**; berkas pemetaan id→nama **tidak disertakan**.
+- **Jenis data**: gambar + anotasi kotak pembatas
+- **Format**: JPG + label YOLO (`.txt`, `class cx cy w h`)
+- **Jumlah**: **diklaim 1.621** gambar (325+254+202+194+233+213+200 menurut makalah); **terhitung 1.420** berkas `.jpg` + 689 berkas `.txt` di versi 2 yang diunduh. **Selisih 201 gambar.**
+- **Sumber**: Mendeley Data
+- **URL sumber**: https://data.mendeley.com/datasets/bpfd9cns5g/2
+- **DOI**: 10.17632/bpfd9cns5g.2
+- **Pembuat**: Ahmed Imtiaz, Fahad Bin Islam Swapnil, Syed Rayhan Masud, Debajoyti Karmaker
+- **Tahun terbit / pembaruan**: 2025-03-04 (versi 2; versi 1 tahun 2024)
+- **Lisensi**: CC BY 4.0
+- **Ketentuan atribusi**: Atribusi ke pembuat + tautan lisensi + penandaan perubahan. Sitasi makalah: Imtiaz et al., "Tomato leaf dataset: A dataset for multiclass disease detection and classification", *Data in Brief*, doi 10.1016/j.dib.2025.111520.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 48.539.589 byte (46 MiB) untuk 2.109 berkas
+- **SHA-256**: lihat `SHA256SUMS.txt` (2.109 baris)
+- **Status unduh**: diunduh
+- **Status verifikasi**: sebagian
+- **Cara verifikasi**:
+  - Diunduh berkas per berkas lewat public API Mendeley (repositori ini tidak menyediakan arsip tunggal). **2.109 dari 2.109 berkas** terunduh utuh.
+  - **SHA-256 setiap berkas dibandingkan dengan `sha256_hash` yang dipublikasikan API Mendeley → 0 berkas tidak cocok.** Ini verifikasi integritas per-berkas, bukan sekadar per-arsip.
+  - `ls raw | sed 's/.*\.//' | sort | uniq -c` → 1.420 `jpg`, 689 `txt`
+  - `awk '{print $1}' raw/*.txt | sort -n | uniq -c` → 7 id kelas (0–6), 2.278 baris anotasi
+  - `awk '{print NF}' raw/*.txt | sort | uniq -c` → **2.278 baris, semuanya 5 kolom** (tidak ada baris cacat)
+  - Pasangan gambar–label dicek dengan `comm` → 689 gambar berlabel, **731 gambar tanpa label**, 0 label yatim
+  - Nama kelas diambil dari makalah pendamping di PubMed Central (PMC12008584), bukan dari berkas — lihat keterbatasan
+- **Alasan status `sebagian`**: jumlah gambar yang benar-benar ada (1.420) **201 lebih sedikit** dari total yang dirinci makalah (1.621). Isi yang ada utuh dan terverifikasi checksum, tapi cacahnya tidak cocok dengan klaim sumber.
+- **Keterbatasan / masalah kualitas**:
+  - **731 dari 1.420 gambar (51%) tidak punya berkas label sama sekali.** Hanya 689 gambar yang bisa dipakai untuk deteksi objek terbimbing.
+  - **Nama kelas tidak ada di dalam data.** Tidak ada `data.yaml`/`classes.txt`. Pemetaan `0..6` ke tujuh nama di atas harus dikonfirmasi visual; urutan di makalah belum tentu urutan id di Roboflow.
+  - **Struktur folder asli hilang saat diunduh.** Sumber memakai 7 folder (kemungkinan train/valid/test × images/labels + satu folder gambar mentah), tapi public API Mendeley hanya mengekspos daftar datar tanpa nama folder. Pengelompokan aslinya diselamatkan lewat `folder_id` di `manifes-folder.csv` — pasangan 597/597, 61/61, 31/31 dan satu folder 731 gambar tak berlabel.
+  - **Sangat tidak seimbang**: id 1 punya 1.177 anotasi, id 5 hanya 47 — selisih 25×.
+  - Nama berkas `…_JPG.rf.<hash32>.jpg` menandakan ekspor Roboflow; ukuran berkas rata-rata hanya ~23 KB, jadi gambar sudah diperkecil drastis dari aslinya (Canon EOS M50) — detail lesi halus kemungkinan sudah hilang.
+  - **Nilai plusnya**: foto **lapangan** dari kebun tomat nyata di Dinajpur, Thakurgaon, dan Kushtia (Bangladesh), diambil dengan kamera Canon, bukan citra studio. Iklim tropis/subtropis Bangladesh lebih dekat ke Indonesia daripada Taiwan atau Spanyol.
+  - Tidak ada layu bakteri (*Ralstonia*) maupun layu fusarium.
+  - Tidak ada koordinat, tanggal persis, atau kultivar.

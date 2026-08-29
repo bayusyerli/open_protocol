@@ -1,0 +1,84 @@
+# Struktur 4 berkas XLSX
+
+== DS4_TOMATO_UPV_2023_Picassent.xlsx  (66601 byte)
+   lembar: ['metadata', 'traits ', 'raw Data', 'SeedLinked']
+   raw Data: 33 baris (1 header + 32 baris data)
+   kolom: ['01_CV', '02_Date', '03_SD', '04_TD', '05_NP', '06_PHD', '07_FW', '08_CY', '09_GH', '10_PH', '11_LA', '12_DM', '13_FPC', '14_FSC', '15_FFC', '16_FGS', '17_FL', '18_FD']
+   cacah nilai 06_PHD (Plant health / disease):
+      22 x N/A
+      3 x Blossom-related symptoms
+      2 x Leaf curling
+      2 x Red spider mite (3)
+      1 x Mosaic symptoms in flower bud
+      1 x Wilted
+      1 x Red spider mite (3-4)
+
+== DS5_TOMATO_UPV_2024_Picassent.xlsx  (67247 byte)
+   lembar: ['metadata', 'traits ', 'raw Data', 'SeedLinked']
+   raw Data: 43 baris (1 header + 42 baris data)
+   kolom: ['01_CV', '02_T', '03_SD', '04_TD', '05_NP', '06_PHD', '07_FW', '08_CY', '09_GH', '10_PH', '11_LA', '12_DM', '13_FPC', '14_FSC', '15_FFC', '16_FGS', '17_FL', '18_FD']
+   cacah nilai 06_PHD (Plant health / disease):
+      29 x fungus
+      11 x None detected
+      2 x N/A
+
+== DS6_TOMATO_UPV_2023_Meliana.xlsx  (66243 byte)
+   lembar: ['metadata', 'traits ', 'raw Data', 'SeedLinked']
+   raw Data: 33 baris (1 header + 32 baris data)
+   kolom: ['01_CV', '02_Date', '03_SD', '04_TD', '05_NP', '06_PHD', '07_FW', '08_CY', '09_GH', '10_PH', '11_LA', '12_DM', '13_FPC', '14_FSC', '15_FFC', '16_FGS', '17_FLD', '18_FD']
+   cacah nilai 06_PHD (Plant health / disease):
+      25 x N/A
+      2 x Red spider mite (1)
+      1 x Red spider mite (4)
+      1 x Mosaic symptoms in flower bud
+      1 x Wilted
+      1 x Red spider mite (2)
+      1 x Tuta absoluta
+
+== DS7_TOMATO_UPV_2024_Meliana.xlsx  (62267 byte)
+   lembar: ['metadata', 'traits ', 'raw Data', 'SeedLinked']
+   raw Data: 17 baris (1 header + 16 baris data)
+   kolom: ['01_CV', '02_Date', '03_SD', '04_TD', '05_NP', '06_PHD', '07_FW', '08_CY', '09_GH', '10_PH', '11_LA', '12_DM', '13_FPC', '14_FSC', '15_FFC', '16_FGS', '17_FLD', '18_FD']
+   cacah nilai 06_PHD (Plant health / disease):
+      16 x None detected
+
+# Definisi sifat (lembar "traits ", dari DS4)
+   Characteristics | Abbreviation | # | Unique Code | Explanation or Method | Unit or Scale
+   Cultivar | CV | 1 | 01_CV | Name of the cultivar or genotype. | Text
+   Assessment date | Date | 2 | 02_Date | Date on which the assessment was carried out. | DD.MM.YYYY
+   Sowing date | SD | 3 | 03_SD | Date of sowing | DD.MM.YYYY
+   Transplanting date | TD | 4 | 04_TD | Date of transplanting | DD.MM.YYYY
+   Number of plants | NP | 5 | 05_NP | Number of plants established and assessed | Number
+   Plant health / disease | PHD | 6 | 06_PHD | Identification of visible plant health problems, disease symptoms, pes | ID / categorical description
+   Fruit weight | FW | 7 | 07_FW | Average weight of 10 randomly selected fruits per plot | kg
+   Commercial yield | CY | 8 | 08_CY | Total weight of commercially marketable fruit harvested over the asses | kg/number of plants indicated in NP
+   Growth habit | GH | 9 | 09_GH | Classification of plant growth habit | 1–2 scale: 1 = determinate, 2 = indeterminate
+   Plant height | PH | 10 | 10_PH | Measurement of plant height | cm
+   Leaf attitude | LA | 11 | 11_LA | Assessment of leaf position | 1–5 scale: 1 = erect, 2 = erect/intermediate, 3 = intermediate, 4 = in
+   Days to maturity | DM | 12 | 12_DM | Number of days from sowing until fruit maturity | Days
+   Fruit primary colour | FPC | 13 | 13_FPC | Assessment of the main/primary fruit colour | Categorical (e.g., Red, Orange, Pink)
+   Fruit secondary colour | FSC | 14 | 14_FSC | Assessment of secondary fruit colour, where present | Categorical (e.g., Absent, Orange, Yellow)
+   Fruit flesh colour | FFC | 15 | 15_FFC | Assessment of fruit flesh colour | Categorical (e.g., Absent, Orange, Yellow)
+   Fruit green shoulders | FGS | 16 | 16_FGS | Assessment of the presence or absence of green shoulders on the fruit | Binary: Present, Absent
+   Fruit length | FL | 17 | 17_FL | Average length of 10 randomly selected fruits per plot | cm
+   Fruit diameter | FD | 18 | 18_FD | Average diameter of 10 randomly selected fruits per plot | cm
+   Germination | Germ | 19 | 19_Germ_SL | Qualitative visual assessment of germination speed and the proportion  | 1–5 scale: 1 = <50%; 2 = 50–75%; 3 = approximately 75%; 4 = >75%; 5 = 
+   Plant vigour | PV | 20 | 20_PV_SL | Visual evaluation of how strong and healthy the plant appears as it gr | 1–5 scale: 1 = very poor; 5 = very good
+   Vase life | VL | 21 | 21_VL_SL | Assessment of how well the harvested material maintains its quality in | 1–5 scale: 1 = very short; 5 = very long
+   Upright stature | US | 22 | 22_US_SL | Visual evaluation of plant stature, from low/undesirable to upright/de | 1–5 scale: 1 = undesirable; 5 = upright/good
+   Uniformity | UN | 23 | 23_UN_SL | Overall assessment of uniformity among plants within a plot, using the | 1–5 scale: 1 = very poor; 5 = very good
+   Disease resistance | DR | 24 | 24_DR_SL | Overall qualitative assessment of disease resistance based on visual a | 1–5 scale: 1 = very poor; 5 = very good
+   Canopy closure | CC | 25 | 25_CC_SL | Assessment of canopy closure and its potential to compete with weeds a | 1–5 scale: 1 = very poor; 5 = very good
+   Biomass | BM | 26 | 26_BM_SL | Visual assessment of the amount of biomass accumulated by the variety, | 1–5 scale: 1 = very little/insufficient; 5 = lots/very sufficient
+   Blossom end rot resistance | BER | 27 | 27_BER_SL | Assessment of resistance to blossom end rot, based on the relative num | 1–5 scale: 1 = very poor; 5 = very good
+   Cracking resistance | CR | 28 | 28_CR_SL | Assessment of the resistance of the fruit to cracking, using the SeedL | 1–5 scale: 1 = poor; 5 = excellent
+   Foliar disease resistance | FDR | 29 | 29_FDR_SL | Overall qualitative assessment of foliar disease resistance based on v | 1–5 scale: 1 = very poor; 5 = very good
+   Insect resistance | IR | 30 | 30_IR_SL | Visual assessment of insect tolerance or resistance, with higher score | 1–5 scale: 1 = very poor; 5 = very good/no visible insect presence
+   Fruit appearance | FA | 31 | 31_FA_SL | Visual assessment of the overall attractiveness of the variety when th | 1–5 scale: 1 = very poor; 3 = sufficiently appealing; 5 = very good
+   Sunscald resistance | SSR | 32 | 32_SSR_SL | Assessment of the ability of the plant to resist sunscald damage, base | 1–5 scale: 1 = very poor; 5 = very good
+   Yield | YLD | 33 | 33_YLD_SL | Qualitative assessment of yield relative to the other varieties in the | 1–5 scale: 1 = poor; 2 = mediocre; 3 = acceptable; 4 = solid; 5 = exce
+   Plant height | PH | 34 | 34_PH_SL | Visual rating of plant height, using the SeedLinked application. | 1–5 scale: 1 = very short; 5 = very high
+   Earliness of harvest | EAR | 35 | 35_EAR_SL | Visual evaluation of harvest earliness relative to the other varieties | 1–5 scale: 1 = very late; 5 = very early
+   Ease of cultivation | EC | 36 | 36_EC_SL | Assessment of how easy the variety is to grow, using the SeedLinked ap | 1–5 scale: 1 = very difficult; 5 = very easy
+   Ease of harvest | EHA | 37 | 37_EHA_SL | Assessment of how easy the variety is to harvest, using the SeedLinked | 1–5 scale: 1 = very difficult; 5 = very easy
+   Overall performance | OP | 38 | 38_OP_SL | Overall assessment of crop performance, using the SeedLinked applicati | 1–5 scale: 1 = very poor; 5 = exceptional

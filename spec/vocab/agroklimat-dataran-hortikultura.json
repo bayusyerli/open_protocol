@@ -1,0 +1,106 @@
+{
+  "$schema": "../schema/agroclimate-scheme.schema.json",
+  "id": "op:akl:00000004",
+  "key": "dataran-hortikultura",
+  "label": {
+    "id": "Kelas dataran — pemakaian hortikultura"
+  },
+  "definition": {
+    "id": "Tiga kelas ketinggian yang dipakai anjuran budidaya sayuran dan hortikultura Indonesia, dan yang dimaksud kebanyakan orang ketika menulis “varietas dataran rendah” atau “cabai dataran tinggi”. Batasnya lebih rapat daripada Junghuhn karena yang dijawabnya berbeda: bukan sebaran vegetasi alami, melainkan di ketinggian berapa pembungaan dan pengisian buah tanaman semusim mulai bergeser."
+  },
+  "axis": "elevation",
+  "decidable": "threshold",
+  "inputs": [
+    {
+      "key": "ketinggian_m",
+      "label": {
+        "id": "Ketinggian di atas permukaan laut"
+      },
+      "definition": {
+        "id": "Meter di atas permukaan laut pada titik yang ditetapkan."
+      },
+      "unit": "m",
+      "min": 0
+    }
+  ],
+  "classes": [
+    {
+      "id": "op:akz:00000301",
+      "code": "rendah",
+      "label": {
+        "id": "Dataran rendah"
+      },
+      "definition": {
+        "id": "0 m sampai di bawah 400 m dpl."
+      },
+      "order": 1,
+      "criteria": [
+        {
+          "input": "ketinggian_m",
+          "ge": 0,
+          "lt": 400
+        }
+      ]
+    },
+    {
+      "id": "op:akz:00000302",
+      "code": "menengah",
+      "label": {
+        "id": "Dataran menengah"
+      },
+      "definition": {
+        "id": "400 m sampai di bawah 700 m dpl."
+      },
+      "order": 2,
+      "criteria": [
+        {
+          "input": "ketinggian_m",
+          "ge": 400,
+          "lt": 700
+        }
+      ]
+    },
+    {
+      "id": "op:akz:00000303",
+      "code": "tinggi",
+      "label": {
+        "id": "Dataran tinggi"
+      },
+      "definition": {
+        "id": "700 m dpl ke atas."
+      },
+      "order": 3,
+      "criteria": [
+        {
+          "input": "ketinggian_m",
+          "ge": 700
+        }
+      ]
+    }
+  ],
+  "lifecycle": {
+    "version": "0.1.0",
+    "status": "draft",
+    "created_at": "2026-08-24T00:00:00Z",
+    "review_due": "2027-08-24"
+  },
+  "no_mapping_reason": "Kelas ini konvensi penyuluhan dan kepustakaan budidaya, bukan standar terbitan sebuah lembaga; tidak ada pengenal luar yang bisa ditunjuk. Justru karena itu ia perlu punya entitas sendiri di sini — istilah yang dipakai setiap hari tetapi tidak pernah dibakukan adalah istilah yang paling mudah bergeser artinya diam-diam.",
+  "provenance": {
+    "license": "CC-BY-SA-4.0"
+  },
+  "notes": {
+    "id": "Batas 400 m dan 700 m adalah yang paling lazim, tetapi bukan satu-satunya yang beredar; sebagian sumber memakai 300 m untuk batas bawah. Nilai yang dipakai di sini dinyatakan terbuka supaya bisa dibantah, bukan supaya tampak resmi. Sebuah penetapan yang memakai skema ini menyatakan bahwa batas INI yang dipakainya."
+  },
+  "id_blocks": [
+    {
+      "from": 4,
+      "to": 4
+    }
+  ],
+  "class_id_blocks": [
+    {
+      "from": 300,
+      "to": 399
+    }
+  ]
+}

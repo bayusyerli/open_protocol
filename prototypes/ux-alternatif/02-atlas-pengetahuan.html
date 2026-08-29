@@ -1,0 +1,931 @@
+<!doctype html>
+<html lang="id" data-konsep="atlas">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Konsep 02 · Atlas Tani — Pranatani</title>
+<meta name="description" content="Prototipe UX: pintu masuk berbasis penjelajahan. Mulai dari benda, telusuri hubungannya, dan lihat persis di mana datanya berhenti.">
+<style>
+/* =========================================================================
+   KONSEP 02 · ATLAS TANI
+   Rupa: atlas / ensiklopedia lapangan. Kertas krem, garis rambut, huruf
+   berkait untuk NAMA BENDA dan huruf tanpa kait untuk kendali — pergantian
+   itu penanda: yang berkait adalah lema, yang tidak berkait adalah alat.
+   Hubungan digambar sebagai jari-jari berlabel; jari-jari yang datanya nol
+   digambar PUTUS, bukan disembunyikan.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+  --kertas:   #faf7ef;
+  --kanvas:   #efeade;
+  --panel:    #fffdf8;
+  --tinta:    #1d2129;
+  --lemah:    #6b6357;
+  --urat:     #d6cdba;   /* garis rambut */
+  --urat-kuat:#a9997f;
+  --biru:     #1f4a7a;   /* tinta rujukan */
+  --biru-latar:#e4ecf5;
+  --putus:    #9a4f1c;   /* ujung buntu */
+  --putus-latar:#f6e8dc;
+  --hijau:    #14614a;   /* hijau rumah — dipakai untuk lapis "hidup" */
+  --hijau-latar:#e2eee8;
+  --di-biru:  #ffffff;
+  --sentuh: 44px;
+  --kait: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Palatino, "Times New Roman", serif;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) {
+    color-scheme: dark;
+    --kertas:#171922; --kanvas:#0e1016; --panel:#1f2330; --tinta:#f0ece2;
+    --lemah:#a9a294; --urat:#3a3f4e; --urat-kuat:#5d5a4e;
+    --biru:#8fb8e8; --biru-latar:#1c2735; --putus:#e0a071; --putus-latar:#33241a;
+    --hijau:#79cfae; --hijau-latar:#17302a; --di-biru:#0e1016;
+  }
+}
+:root[data-tema="gelap"] {
+  color-scheme: dark;
+  --kertas:#171922; --kanvas:#0e1016; --panel:#1f2330; --tinta:#f0ece2;
+  --lemah:#a9a294; --urat:#3a3f4e; --urat-kuat:#5d5a4e;
+  --biru:#8fb8e8; --biru-latar:#1c2735; --putus:#e0a071; --putus-latar:#33241a;
+  --hijau:#79cfae; --hijau-latar:#17302a; --di-biru:#0e1016;
+}
+
+*,*::before,*::after { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+body {
+  background: var(--kanvas); color: var(--tinta);
+  font-family: var(--sans); font-size:16.5px; line-height:1.55;
+  -webkit-text-size-adjust:100%; overflow-x:hidden;
+}
+@media (min-width:768px) { body { font-size:17px; } }
+
+:where(a,button,input,select,summary,[tabindex]):focus-visible {
+  outline:3px solid var(--biru); outline-offset:2px; border-radius:2px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *,*::before,*::after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; }
+}
+.lewati { position:absolute; left:-9999px; top:0; z-index:80; background:var(--biru); color:var(--di-biru); padding:12px 16px; font-weight:700; }
+.lewati:focus { left:8px; top:8px; }
+.khusus-pembaca { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* ---------- kepala ---------- */
+.kepala { background: var(--panel); border-bottom:1px solid var(--urat-kuat); position:sticky; top:0; z-index:40; }
+.baris-merek { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px;
+  padding:9px 16px; max-width:1400px; margin:0 auto; }
+.merek { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; min-height:44px; min-width:0; }
+.merek svg { display:block; flex:none; border-radius:3px; }
+.merek b { font-family:var(--kait); font-size:1.1rem; display:block; line-height:1.05; letter-spacing:.01em; }
+.merek small { font-size:.64rem; letter-spacing:.19em; text-transform:uppercase; color:var(--lemah); display:block; }
+.baris-merek .kanan { margin-left:auto; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.tandaproto { font-size:.6rem; letter-spacing:.11em; text-transform:uppercase; font-weight:700;
+  border:1px solid var(--urat-kuat); padding:4px 7px; white-space:nowrap; color:var(--lemah); }
+.tombol-kecil { min-height:44px; min-width:44px; padding:0 12px; background:transparent;
+  border:1px solid var(--urat-kuat); color:var(--tinta); font:inherit; font-size:.8rem; cursor:pointer; }
+.tombol-kecil:hover { background:var(--biru-latar); }
+
+/* ---------- jejak (trail) ---------- */
+.jejak { border-bottom:1px solid var(--urat); background:var(--kertas); }
+.jejak-dalam { display:flex; align-items:center; gap:0; overflow-x:auto; max-width:1400px; margin:0 auto; padding:0 8px; scrollbar-width:thin; }
+.jejak-dalam::-webkit-scrollbar { height:4px; }
+.jejak-btn {
+  flex:none; display:flex; flex-direction:column; gap:1px; align-items:flex-start;
+  min-height:44px; justify-content:center; padding:6px 12px;
+  background:transparent; border:0; font:inherit; text-align:left; cursor:pointer; color:var(--biru); white-space:nowrap;
+}
+.jejak-btn small { font-size:.6rem; letter-spacing:.13em; text-transform:uppercase; color:var(--lemah); }
+.jejak-btn strong { font-family:var(--kait); font-size:.95rem; font-weight:600; }
+.jejak-btn[aria-current="page"] { color:var(--tinta); cursor:default; box-shadow: inset 0 -3px 0 var(--biru); }
+.jejak-btn:not([aria-current]):hover strong { text-decoration:underline; }
+.jejak-panah { flex:none; color:var(--lemah); padding:0 2px; }
+
+/* ---------- tata letak ---------- */
+.atlas { max-width:1400px; margin:0 auto; background:var(--kertas); min-height:100dvh;
+  border-left:1px solid var(--urat); border-right:1px solid var(--urat); }
+/* URUTAN DOM: <main> LEBIH DULU, lalu kedua <aside>. Judul lema adalah <h1>
+   halaman ini, dan menaruh <h2> rak sebelum <h1> membuat urutan judulnya
+   terbalik bagi pembaca layar. Urutan TAMPILNYA dikembalikan di sini —
+   `order` untuk susunan tegak, penempatan kolom eksplisit untuk yang lebar. */
+.kolom { display:flex; flex-direction:column; }
+.kolom > .rak    { order:1; }
+.kolom > .lema   { order:2; }
+.kolom > .relasi { order:3; }
+@media (min-width:1000px) {
+  .kolom { display:grid; grid-template-columns: 232px minmax(0,1fr) 320px; align-items:start; }
+  .kolom > .rak    { grid-column:1; grid-row:1; }
+  .kolom > .lema   { grid-column:2; grid-row:1; }
+  .kolom > .relasi { grid-column:3; grid-row:1; }
+  .rak    { border-right:1px solid var(--urat); position:sticky; top:106px; max-height:calc(100dvh - 106px); overflow-y:auto; }
+  .relasi { border-left:1px solid var(--urat); position:sticky; top:106px; max-height:calc(100dvh - 106px); overflow-y:auto; }
+  /* Laci hanya urusan layar sempit. Di layar lebar tombolnya tidak ada, jadi
+     `hidden` yang tertinggal di sana akan menyembunyikan rak TANPA jalan
+     mengembalikannya. CSS yang memutuskan, bukan keadaan JS. */
+  .rak[hidden] { display:block; }
+}
+
+/* ---------- rak lapisan (kiri) ---------- */
+.rak { padding:16px 14px 30px; }
+.rak h2 { font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--lemah);
+  margin:0 0 10px; font-family:var(--sans); font-weight:700; }
+.lapis-daftar { list-style:none; margin:0 0 20px; padding:0; }
+.lapis-daftar li { border-bottom:1px solid var(--urat); }
+.lapis-btn { display:grid; grid-template-columns:1fr auto; gap:8px; align-items:baseline; width:100%;
+  min-height:var(--sentuh); padding:9px 4px; background:transparent; border:0; font:inherit;
+  text-align:left; cursor:pointer; color:var(--tinta); }
+.lapis-btn:hover { background:var(--biru-latar); }
+.lapis-btn strong { font-family:var(--kait); font-weight:600; font-size:1rem; }
+.lapis-btn span { font-variant-numeric:tabular-nums; font-size:.8rem; color:var(--lemah); }
+.lapis-btn[aria-pressed="true"] { background:var(--biru-latar); box-shadow: inset 3px 0 0 var(--biru); }
+.lapis-btn[data-nol="ya"] span { color:var(--putus); }
+
+.abjad { display:flex; flex-wrap:wrap; gap:2px; }
+.abjad button { min-width:44px; min-height:44px; border:1px solid var(--urat); background:var(--panel);
+  font:inherit; font-size:.82rem; cursor:pointer; color:var(--tinta); }
+/* Huruf tanpa lema tetap harus TERBACA — ia membawa keterangan ("tidak ada
+   apa-apa di huruf ini"), bukan sekadar kendali mati. Warnanya dinaikkan ke
+   warna teks lemah, dan keadaannya dibedakan lewat BENTUK: bingkai
+   putus-putus, bukan hanya warna yang lebih pucat. */
+.abjad button:disabled { color:var(--lemah); cursor:default; background:transparent;
+  border-style:dashed; border-color:var(--urat-kuat); }
+.abjad button[aria-pressed="true"] { background:var(--biru); color:var(--di-biru); border-color:var(--biru); }
+
+/* ---------- lema (tengah) ---------- */
+.lema { padding:20px 18px 40px; min-width:0; }
+@media (min-width:1000px) { .lema { padding:26px 30px 60px; } }
+.lema-kelas { font-size:.66rem; letter-spacing:.17em; text-transform:uppercase; color:var(--lemah); margin:0 0 4px; font-weight:700; }
+h1.lema-nama { font-family:var(--kait); font-size:clamp(1.8rem,6.4vw,2.7rem); line-height:1.08;
+  margin:0 0 4px; font-weight:600; letter-spacing:-.005em; }
+.lema-ilmiah { font-family:var(--kait); font-style:italic; color:var(--lemah); margin:0 0 14px; font-size:1.02rem; }
+.lema p { max-width:64ch; margin:0 0 12px; }
+.lema h2 { font-family:var(--sans); font-size:.68rem; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--lemah); margin:26px 0 10px; font-weight:700; border-bottom:1px solid var(--urat); padding-bottom:6px; }
+.lema h3 { font-family:var(--kait); font-size:1.12rem; margin:16px 0 6px; font-weight:600; }
+
+.kutip { border-left:3px solid var(--urat-kuat); padding:2px 0 2px 14px; margin:12px 0;
+  font-family:var(--kait); font-size:1.04rem; }
+
+.angka-besar { font-family:var(--kait); font-size:2.1rem; font-weight:600; font-variant-numeric:tabular-nums; line-height:1; }
+
+.tabel-bungkus { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+table.lema-tabel { width:100%; border-collapse:collapse; font-size:.9rem; }
+table.lema-tabel th, table.lema-tabel td { text-align:left; padding:8px 8px 8px 0; border-bottom:1px solid var(--urat); vertical-align:top; }
+table.lema-tabel th { font-size:.62rem; letter-spacing:.12em; text-transform:uppercase; color:var(--lemah);
+  border-bottom:1px solid var(--urat-kuat); font-weight:700; }
+table.lema-tabel td.m { font-family:var(--mono); font-size:.8rem; font-variant-numeric:tabular-nums; }
+.tautan-lema { background:none; border:0; padding:0; font:inherit; color:var(--biru); cursor:pointer;
+  text-decoration:underline; text-underline-offset:2px; font-family:var(--kait); font-weight:600; }
+.tautan-lema:hover { text-decoration-thickness:2px; }
+/* Tautan lema di dalam SEL TABEL adalah kendali navigasi tersendiri, jadi
+   sasaran sentuhnya dinaikkan ke 44 px. Yang di dalam kalimat sengaja tidak:
+   WCAG 2.5.8 mengecualikan sasaran yang berada di dalam blok teks, dan
+   menebalkannya justru merusak jarak antar-baris paragrafnya. */
+.lema-tabel .tautan-lema { display:inline-flex; align-items:center; min-height:44px; padding:0 4px; margin:0 -4px; }
+/* Satu-satunya jalan keluar dari layar lapisan kosong, jadi ia kendali penuh —
+   bukan tautan di dalam kalimat. */
+.tautan-lema.keluar { display:inline-flex; align-items:center; min-height:44px;
+  padding:0 14px; border:1px solid var(--urat-kuat); text-decoration:none; background:var(--panel); }
+.tautan-lema.keluar:hover { background:var(--biru-latar); }
+
+/* ---------- panel relasi (kanan) ---------- */
+.relasi { padding:18px 16px 40px; }
+.relasi h2 { font-size:.66rem; letter-spacing:.16em; text-transform:uppercase; color:var(--lemah);
+  margin:0 0 4px; font-weight:700; }
+.relasi > p.ket { font-size:.85rem; color:var(--lemah); margin:0 0 14px; }
+
+.peta-alih { display:flex; gap:0; border:1px solid var(--urat-kuat); margin:0 0 14px; }
+.peta-alih button { flex:1; min-height:var(--sentuh); background:transparent; border:0; font:inherit;
+  font-size:.82rem; cursor:pointer; color:var(--tinta); padding:0 8px; }
+.peta-alih button + button { border-left:1px solid var(--urat-kuat); }
+.peta-alih button[aria-pressed="true"] { background:var(--tinta); color:var(--kertas); font-weight:700; }
+
+.gambar-relasi { display:block; width:100%; height:auto; margin:0 0 14px; }
+.gambar-relasi text { font-family:var(--sans); }
+
+.spoke-daftar { list-style:none; margin:0; padding:0; }
+.spoke-daftar li { border-bottom:1px solid var(--urat); }
+.spoke {
+  display:grid; grid-template-columns:auto 1fr auto; gap:10px; align-items:center; width:100%;
+  min-height:52px; padding:9px 4px; background:transparent; border:0; font:inherit; text-align:left; cursor:pointer; color:var(--tinta);
+}
+.spoke:hover { background:var(--biru-latar); }
+.spoke:disabled { cursor:default; }
+.spoke:disabled:hover { background:transparent; }
+.spoke .garis { width:26px; height:0; border-top:2px solid var(--biru); flex:none; }
+.spoke[data-nol="ya"] .garis { border-top-style:dashed; border-top-color:var(--putus); }
+.spoke b { display:block; font-size:.92rem; font-weight:600; }
+.spoke small { display:block; font-size:.76rem; color:var(--lemah); line-height:1.35; }
+.spoke .cacah { font-variant-numeric:tabular-nums; font-weight:700; font-size:.95rem; }
+.spoke[data-nol="ya"] .cacah { color:var(--putus); }
+
+.buntu { border:1px dashed var(--putus); background:var(--putus-latar); padding:12px 14px; margin:14px 0; }
+.buntu strong { color:var(--putus); }
+.buntu p { margin:0 0 8px; font-size:.9rem; }
+.buntu p:last-child { margin:0; }
+
+/* ---------- batas jawaban, di dalam isi ---------- */
+.batas { border-top:3px double var(--urat-kuat); margin:30px 0 0; padding:16px 0 0; }
+.batas > h2 { border:0; padding:0; margin:0 0 10px; }
+.sumber { display:grid; grid-template-columns:auto 1fr; gap:12px; padding:11px 0; border-bottom:1px solid var(--urat); }
+.sumber:last-of-type { border-bottom:1px solid var(--urat); }
+.tingkat { width:32px; height:32px; display:grid; place-items:center; font-family:var(--kait); font-weight:700;
+  font-size:1rem; border:1px solid var(--urat-kuat); }
+.tingkat[data-t="B"] { background:var(--hijau-latar); color:var(--hijau); border-color:var(--hijau); }
+.tingkat[data-t="D"] { background:var(--putus-latar); color:var(--putus); border-color:var(--putus); }
+.tingkat[data-t="?"] { background:repeating-linear-gradient(135deg, var(--kanvas) 0 5px, transparent 5px 10px); color:var(--lemah); }
+.sumber b { display:block; font-size:.92rem; }
+.sumber span { display:block; font-size:.8rem; color:var(--lemah); }
+.sumber em { display:block; font-size:.8rem; font-style:normal; margin-top:4px; }
+.lubang { list-style:none; margin:12px 0 0; padding:0; }
+.lubang li { display:grid; grid-template-columns:auto 1fr; gap:10px; padding:8px 0; border-bottom:1px dotted var(--urat-kuat); font-size:.86rem; }
+.lubang li::before { content:"⊘"; color:var(--putus); font-size:1rem; line-height:1.2; }
+
+/* ---------- kaki ---------- */
+.kaki { border-top:1px solid var(--urat-kuat); background:var(--panel); padding:14px 16px 20px; }
+.kaki-dalam { max-width:1400px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; font-size:.8rem; color:var(--lemah); }
+.jar { display:inline-flex; align-items:center; gap:7px; font-weight:600; color:var(--tinta); }
+.jar i { width:9px; height:9px; background:var(--hijau); display:block; flex:none; border-radius:50%; }
+.jar[data-luring="ya"] i { background:var(--putus); border-radius:0; }
+
+/* mobile: relasi jadi bagian bawah lema, rak jadi laci */
+@media (max-width:999px) {
+  .rak { padding:14px 16px 20px; border-top:1px solid var(--urat-kuat); border-bottom:1px solid var(--urat-kuat); background:var(--panel); }
+  .rak[hidden] { display:none; }
+  .relasi { padding:0 18px 30px; border-top:1px solid var(--urat-kuat); margin-top:24px; padding-top:20px; }
+  .gambar-relasi { max-width:420px; margin-inline:auto; }
+}
+.laci-tombol { display:none; }
+@media (max-width:999px) {
+  .laci-tombol { display:inline-flex; align-items:center; gap:7px; min-height:44px; padding:0 12px;
+    background:transparent; border:1px solid var(--urat-kuat); font:inherit; font-size:.8rem; cursor:pointer; color:var(--tinta); }
+}
+</style>
+</head>
+<body>
+
+<a class="lewati" href="#lema">Lewati ke isi</a>
+
+<header class="kepala">
+  <div class="baris-merek">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 512 512" width="30" height="30" role="img" aria-label="Pranatani">
+        <!-- Disalin sebaris dari app/ikon.svg supaya prototipe tetap utuh lewat file://
+             maupun kalau berkasnya dipindahkan. Kalau markahnya berubah di sana, ubah di sini juga. -->
+        <rect width="512" height="512" rx="112" fill="#00442f"/>
+        <g transform="translate(84 84) scale(1.34)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94" stroke="#fffef8" stroke-width="26"/>
+          <path d="M94 77h45" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M94 109h64" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M94 141h45" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z" fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+          <path d="M165 111 196 80" stroke="#00442f" stroke-width="8"/>
+        </g>
+      </svg>
+      <span><b>Pranatani</b><small>Atlas Tani</small></span>
+    </a>
+    <span class="kanan">
+      <button class="laci-tombol" type="button" id="laci" aria-expanded="false" aria-controls="rak">Lapisan</button>
+      <span class="tandaproto">Prototipe UX 02</span>
+      <button class="tombol-kecil" type="button" id="tombolTema">Gelap</button>
+    </span>
+  </div>
+  <div class="jejak">
+    <nav class="jejak-dalam" id="jejak" aria-label="Jalur yang sudah ditelusuri"></nav>
+  </div>
+</header>
+
+<div class="atlas">
+  <div class="kolom">
+
+    <main class="lema" id="lema" tabindex="-1" aria-live="polite"></main>
+
+    <aside class="rak" id="rak" aria-labelledby="jrak">
+      <h2 id="jrak">Lapisan atlas</h2>
+      <ul class="lapis-daftar" id="lapisDaftar"></ul>
+      <h2>Indeks abjad</h2>
+      <p style="font-size:.8rem;color:var(--lemah);margin:0 0 8px">Huruf pucat berarti tidak ada lema di lapisan yang sedang terbuka.</p>
+      <div class="abjad" id="abjad" role="group" aria-label="Lompat ke huruf"></div>
+    </aside>
+
+    <aside class="relasi" id="relasi" aria-labelledby="jrelasi"></aside>
+
+  </div>
+</div>
+
+<footer class="kaki">
+  <div class="kaki-dalam">
+    <span class="jar" id="jar"><i></i><span id="jarTeks">Memeriksa jaringan</span></span>
+    <span>Atlas ini <strong>tidak berperingkat</strong>: urutan mana pun memakai cacah atau abjad, tidak pernah penilaian mutu.</span>
+    <span>Indeks turunan Pranatani · tarikan 19–23 Agustus 2026</span>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* =========================================================================
+   DATA — seluruhnya disalin dari indeks turunan repositori (spec/indeks/).
+   Tidak ada nama, nomor, atau cacah yang dikarang. Lema yang disederhanakan
+   untuk prototipe menyebutkannya sendiri di badan lemanya.
+   ========================================================================= */
+
+const SUMBER = {
+  pestisida:{ t:"B", nama:"Registri pestisida terdaftar", meta:"Kementerian Pertanian RI · 7.724 rekaman · CC-BY-SA-4.0 · tarikan 19 Agustus 2026",
+    alasan:"Registri resmi kementerian, disalin apa adanya. Bukan A: yang dicatat izin edar, bukan hasil uji multi-lokasi — registri tidak menguji apa pun, ia mendaftarkan." },
+  pupuk:{ t:"B", nama:"Registri pupuk terdaftar", meta:"Kementerian Pertanian RI · 7.196 rekaman · CC-BY-SA-4.0 · tarikan 19 Agustus 2026",
+    alasan:"Registri resmi kementerian. Bukan A dengan alasan yang sama: pendaftaran bukan pengujian." },
+  varietas:{ t:"B", nama:"Registri perizinan varietas", meta:"Kementerian Pertanian RI · 11.227 rekaman · CC-BY-SA-4.0 · tarikan 19 Agustus 2026",
+    alasan:"Tingkatnya berlaku untuk KEBERADAAN SURATNYA, bukan untuk sifat varietasnya — sifat agronomi nol dari 11.227, jadi tidak ada klaim agronomi yang bisa dinaungi tingkat ini." },
+  kurasi:{ t:"?", nama:"Kurasi OPT & gejala cabai", meta:"Pranatani · 10 rekaman · CC-BY-SA-4.0 · tarikan 20 Agustus 2026 · status draft",
+    alasan:"Tingkat bukti belum ditetapkan, dan itu disengaja. Disusun dari agronomi mapan, bukan dari registri, dan belum ditinjau penyuluh atau BPTP." },
+  golongan:{ t:"D", nama:"Golongan resistensi IRAC", meta:"IRAC Mode of Action v11.5, Februari 2026 · status draft · tarikan 23 Agustus 2026",
+    alasan:"Pemetaan nama bahan ke kode golongan dicocokkan lewat EJAAN. Yang disimpan pasangan nama→kode beserta versi sumbernya, supaya bisa ditelusuri ulang." },
+  principal:{ t:"B", nama:"Badan pemegang pendaftaran", meta:"Turunan penyeragaman nama pemegang di kedua registri · 3.136 badan",
+    alasan:"Diturunkan dari registri yang sama, jadi tingkatnya ikut. Yang ditambahkan penyeragaman nama — dan penyeragaman itu keputusan proyek ini, bukan data kementerian." },
+  harga:{ t:"B", nama:"Harga eceran harian nasional (SP2KP)", meta:"Kementerian Perdagangan RI · 26.752 titik · 3 Jan 2024 – 21 Agu 2026",
+    alasan:"Penerbitan resmi kementerian. Yang dicatat harga ECERAN, dan jaraknya ke harga yang diterima petani terpasang di dalam definisi sumbernya." }
+};
+
+const LUBANG = {
+  gejalaOpt:"Nol dari 1.360 OPT registri membawa deskripsi gejala. Yang bergejala hanya 10 OPT cabai terkurasi.",
+  phi:"Nol dari 23.058 penggunaan berlabel memuat tenggang panen. Registri tidak mencatatnya sama sekali.",
+  sifatVarietas:"Nol dari 11.227 varietas membawa sifat agronomi. Yang dicatat surat perizinannya, bukan perilaku tanamannya.",
+  namaDagang:"Registri menyimpan nama TERDAFTAR. Nama di kemasan bisa berbeda dan pemetaannya belum ada.",
+  hargaPetani:"Seluruh harga di sini eceran nasional. Harga yang diterima petani tidak ada, dan jaraknya bukan celah cakupan yang bisa dirapatkan dengan menambah sampel.",
+  hargaWilayah:"Harga per provinsi dan per pasar tidak diindeks: endpoint yang memuatnya membawa NIK, NIP, nomor telepon, dan alamat pencacah pada tiap rekaman.",
+  tanpaPintuOpt:"2.438 dari 23.058 penggunaan berlabel tidak punya pintu OPT — sasarannya tercatat sebagai teks bebas yang tidak tertaut ke rekaman OPT mana pun.",
+  gambar:"Gambar kemasan ada pada 1.036 dari 14.920 produk (6,9%). Ketiadaannya bukan tanda produk tidak terdaftar.",
+  pemulia:"576 varietas dipegang pemulia perorangan dan mereka SENGAJA tidak punya halaman profil: halaman bernama tentang orang adalah pemrosesan data pribadi tanpa dasar. Namanya tetap tampil, hanya tidak bertaut.",
+  toko:"Direktori toko tani terbit dengan 0 titik berkoordinat di indeks yang sedang dibaca. Penangkar benih dan jasa alsintan masih nol seluruhnya."
+};
+
+const LAPIS = [
+  { k:"tanaman",   nama:"Tanaman",      cacah:"234",    ket:"komoditas yang punya hama berproduk" },
+  { k:"opt",       nama:"Hama & penyakit", cacah:"738", ket:"OPT registri yang punya produk terdaftar" },
+  { k:"bahan",     nama:"Bahan aktif",  cacah:"1.106",  ket:"substansi pestisida" },
+  { k:"produk",    nama:"Produk",       cacah:"14.920", ket:"pestisida + pupuk terdaftar" },
+  { k:"badan",     nama:"Perusahaan & badan", cacah:"3.136", ket:"pemegang pendaftaran" },
+  { k:"varietas",  nama:"Varietas",     cacah:"11.227", ket:"varietas berizin" },
+  { k:"harga",     nama:"Harga komoditas", cacah:"51",  ket:"seri berangka dari 96 varian" },
+  { k:"layanan",   nama:"Layanan lapangan", cacah:"0",  ket:"toko tani berkoordinat", nol:true }
+];
+
+/* --- lema --- */
+const LEMA = {
+
+  cabai: {
+    lapis:"tanaman", kelas:"Tanaman · komoditas", nama:"Cabai", id:"op:cmd:00001003",
+    badan:`
+      <p>Salah satu dari <strong>234 komoditas</strong> yang punya hama atau penyakit dengan produk
+      terdaftar di registri. Cabai adalah satu-satunya komoditas yang OPT-nya sudah dikurasi
+      sampai bergejala di sini — sepuluh rekaman, seluruhnya berstatus draft.</p>
+      <h2>Yang atlas ini tahu tentang cabai</h2>
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <tbody>
+          <tr><th scope="row">Hama &amp; penyakit terkurasi, bergejala</th><td class="m">10</td></tr>
+          <tr><th scope="row">Hama &amp; penyakit registri yang berproduk</th><td class="m">738 · seluruh komoditas</td></tr>
+          <tr><th scope="row">Harga eceran harian</th><td class="m">4 varian — merah besar, merah keriting, rawit hijau, rawit merah</td></tr>
+          <tr><th scope="row">Sifat agronomi varietas cabai</th><td class="m" style="color:var(--putus)">0</td></tr>
+        </tbody>
+      </table></div>
+      <h3>Kenapa cabai lebih dalam daripada komoditas lain</h3>
+      <p>Bukan karena datanya lebih banyak di registri — di registri semua komoditas sama
+      dangkalnya. Yang membedakan hanya kurasi yang ditulis tangan dan belum ditinjau siapa pun.
+      Begitu kurasi itu ditinjau penyuluh, kedalamannya berpindah dari “ditulis proyek ini” ke
+      “disetujui orang yang tahu”, dan itu perpindahan tingkat bukti, bukan penambahan baris.</p>`,
+    sumber:["pestisida","kurasi","harga"], lubang:["gejalaOpt","sifatVarietas"],
+    spoke:[
+      { ke:"trips",     label:"Hama & penyakit terkurasi", cacah:"10", ket:"seluruhnya bergejala dan berciri pembanding" },
+      { ke:"cabaiHarga",label:"Harga eceran harian",       cacah:"4",  ket:"varian cabai di seri SP2KP" },
+      { ke:"varietasCabai", label:"Varietas berizin",      cacah:"?",  ket:"suratnya ada; sifat tanamannya tidak" },
+      { ke:null,        label:"Ambang pengamatan per fase",cacah:"0",  ket:"tidak ada di registri mana pun", nol:true }
+    ]
+  },
+
+  trips: {
+    lapis:"opt", kelas:"Hama & penyakit · serangga", nama:"Trips", ilmiah:"Thrips parvispinus", id:"op:pst:00000001",
+    badan:`
+      <p class="kutip">Daun muda mengeriting ke ATAS seperti mangkuk, dan permukaan bawahnya
+      keperakan atau kecoklatan seperti tergores halus. Bunga dan tunas rontok sebelum jadi buah;
+      tanaman kerdil dan pucuknya mengumpul.</p>
+      <p style="font-size:.86rem;color:var(--lemah)">Teks gejala di atas <strong>bukan dari registri</strong>.
+      Ia ditulis sebagai kurasi proyek ini dan berstatus draft — tingkat buktinya sengaja belum ditetapkan.</p>
+
+      <h2>Ciri pembanding — dua uji yang bisa diulang sendiri</h2>
+      <h3>1 · Kertas putih</h3>
+      <p>Kibaskan daun pucuk di atas kertas putih. Trips terlihat sebagai serangga kuning kecoklatan
+      sepanjang 1–2&nbsp;mm yang langsung bergerak cepat. Kalau tidak ada yang bergerak, penyebabnya
+      bukan trips — <em>membantah</em>
+      <button class="tautan-lema" data-lema="virus">Virus kuning keriting</button>.</p>
+      <h3>2 · Warna daun yang mengeriting</h3>
+      <p>Pada trips daunnya tetap hijau dengan goresan keperakan. Kalau menguning terang dan mengecil
+      tanpa goresan, itu gejala virus dan tidak ada semprotan yang menyembuhkannya.</p>
+
+      <h2>Cakupan di registri</h2>
+      <p>Trips tercatat menyerang <strong>15 komoditas</strong> yang punya produk terdaftar. Cacahnya
+      timpang, dan ketimpangan itu mengikuti pengajuan perusahaan — bukan luasnya masalah di lapangan.</p>
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <thead><tr><th scope="col">Komoditas</th><th scope="col">Produk terdaftar</th></tr></thead>
+        <tbody>
+          <tr><td><button class="tautan-lema" data-lema="cabai">Cabai</button></td><td class="m">246</td></tr>
+          <tr><td>Bawang merah</td><td class="m">12</td></tr>
+          <tr><td>Kentang</td><td class="m">7</td></tr>
+          <tr><td>Cabai merah</td><td class="m">5</td></tr>
+          <tr><td>Mentimun · Ketimun</td><td class="m">2 · 2</td></tr>
+          <tr><td>Tomat · Kubis · Semangka · Melon · Terung · Apel · Kacang panjang · Kacang hijau · Pembibitan cabai</td><td class="m">1 masing-masing</td></tr>
+        </tbody>
+      </table></div>`,
+    sumber:["pestisida","kurasi"], lubang:["gejalaOpt","tanpaPintuOpt"],
+    spoke:[
+      { ke:"abamektin", label:"Bahan aktif terdaftar untuk Trips pada Cabai", cacah:"60", ket:"159 pasangan bahan + kadar" },
+      { ke:"cabai",     label:"Komoditas yang diserang",   cacah:"15", ket:"yang punya produk terdaftar" },
+      { ke:"virus",     label:"Dibedakan dari",            cacah:"1",  ket:"ciri pembanding yang membantahnya" },
+      { ke:null,        label:"Ambang tindakan per fase",  cacah:"0",  ket:"registri tidak mencatat ambang apa pun", nol:true }
+    ]
+  },
+
+  virus: {
+    lapis:"opt", kelas:"Hama & penyakit · virus", nama:"Virus kuning keriting", ilmiah:"Begomovirus", id:"op:pst:00000010",
+    badan:`
+      <p class="kutip">Daun muda menguning terang, mengecil, dan mengeriting ke atas dengan tulang daun
+      menebal. Tanaman kerdil, buahnya sedikit dan kecil, dan tidak pulih walau disemprot apa pun.</p>
+
+      <div class="buntu">
+        <p><strong>Di sinilah atlas ini berhenti.</strong></p>
+        <p>Registri tidak memuat <strong>satu pun</strong> produk yang didaftarkan untuk hama ini —
+        pada cabai maupun pada komoditas lain mana pun. Nol di sini nol yang sebenarnya, bukan
+        “sedang dimuat”.</p>
+        <p>Dan lema ini <strong>tidak menawarkan yang terdekat</strong>. Ia tidak menautkanmu ke
+        daftar insektisida kutu kebul hanya karena kutu kebul penularnya. Mengganti yang tidak ada
+        dengan yang terdekat menanam karangan sebagai fakta.</p>
+      </div>
+
+      <h2>Jalur yang masih terbuka dari lema ini</h2>
+      <p>Yang tersisa bukan tautan ke produk, melainkan ke <em>cara memastikan</em> — dan ke
+      penularnya, yang punya produk terdaftarnya sendiri untuk masalahnya sendiri.</p>
+      <h3>Ciri pembanding</h3>
+      <p>Periksa daun yang menguning itu sendiri. Tidak ada lubang, bercak, goresan, anyaman, atau
+      serangga di atasnya — yang berubah hanya warna dan bentuknya. Itu membantah
+      <button class="tautan-lema" data-lema="trips">Trips</button>.</p>
+      <p>Goyang tanaman di sekitarnya dan cari kutu kebul putih yang beterbangan. Virus ini ditularkan
+      kutu kebul, jadi kehadirannya menguatkan — <strong>tetapi mengendalikan kutu kebulnya tidak
+      menyembuhkan tanaman yang sudah terkena.</strong></p>`,
+    sumber:["pestisida","kurasi"], lubang:["gejalaOpt"],
+    spoke:[
+      { ke:null,     label:"Produk terdaftar untuk hama ini", cacah:"0", ket:"pada komoditas mana pun — bukan celah tarikan", nol:true },
+      { ke:null,     label:"Bahan aktif terdaftar",           cacah:"0", ket:"konsekuensi dari baris di atas", nol:true },
+      { ke:"trips",  label:"Dibedakan dari",                  cacah:"2", ket:"trips dan kutu kebul, lewat ciri pembanding" }
+    ]
+  },
+
+  abamektin: {
+    lapis:"bahan", kelas:"Bahan aktif · substansi pestisida", nama:"Abamektin", id:"op:sub:00000007",
+    badan:`
+      <p>Salah satu dari <strong>1.106 substansi pestisida</strong> di kosakata ini. Untuk Trips pada
+      Cabai, abamektin adalah bahan dengan merek terbanyak — dan cacahnya terpecah menurut kadar,
+      karena <strong>kesetaraan hanya berlaku pada pasangan bahan <em>dan</em> kadar.</strong></p>
+
+      <h2>Kadar yang terdaftar untuk Trips pada Cabai</h2>
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <thead><tr><th scope="col">Kadar</th><th scope="col">Merek</th><th scope="col">Golongan</th></tr></thead>
+        <tbody>
+          <tr><td class="m">18 g/L</td><td class="m">26</td><td class="m">IRAC 6</td></tr>
+          <tr><td class="m">36 g/L</td><td class="m">14</td><td class="m">IRAC 6</td></tr>
+          <tr><td class="m">20 g/L</td><td class="m">11</td><td class="m">IRAC 6</td></tr>
+        </tbody>
+      </table></div>
+      <p>Dua produk berbahan sama tetapi berbeda kadar <strong>bukan barang yang sama</strong>, dan
+      atlas ini tidak menggabungkannya walaupun namanya sama.</p>
+
+      <h2>Yang paling mudah salah dibaca di lema ini</h2>
+      <div class="buntu">
+        <p><strong>Golongan yang sama, nama yang berbeda.</strong> Abamektin bergolongan
+        <strong>IRAC 6</strong>. Begitu juga <strong>Emamektin Benzoat</strong> — bahan lain, nama lain,
+        rak berbeda di kios, <em>golongan yang sama</em>.</p>
+        <p>Berganti dari yang satu ke yang lain karena namanya berbeda bukanlah rotasi golongan.
+        Atlas ini bisa menunjukkan bahwa kodenya bertemu; ia tidak bisa mengatakan apa yang
+        sebaiknya kamu lakukan setelah tahu itu.</p>
+      </div>
+      <p style="font-size:.86rem;color:var(--lemah)">Pemetaan nama→kode dicocokkan lewat ejaan dan
+      berstatus draft, jadi perlakukan sebagai petunjuk yang bisa ditelusuri ulang, bukan putusan.</p>
+
+      <h2>Enam dari 26 merek berkadar 18 g/L</h2>
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <thead><tr><th scope="col">Merek</th><th scope="col">Nomor pendaftaran</th><th scope="col">Dosis terdaftar</th></tr></thead>
+        <tbody>
+          <tr><td><button class="tautan-lema" data-lema="dimectin">DIMECTIN 18 EC</button></td><td class="m">01010120031755</td><td class="m">0,75 ml/l</td></tr>
+          <tr><td>DEMOLISH 18 EC</td><td class="m">01010120052259</td><td class="m">0,5 ml/l</td></tr>
+          <tr><td>MATROS 18 EC</td><td class="m">01010120042102</td><td class="m">1 ml/l</td></tr>
+          <tr><td>SUPEMEC 18 EC</td><td class="m">01010120042151</td><td class="m">1,5 ml/l</td></tr>
+          <tr><td>STARMEK 18 EC</td><td class="m">01010120031935</td><td class="m">1-2 ml/l</td></tr>
+          <tr><td>RUTIN 18 EC</td><td class="m">01010120072797</td><td class="m" style="color:var(--putus)">1 l/ha ⊘</td></tr>
+        </tbody>
+      </table></div>
+      <p>⊘ <strong>RUTIN 18 EC didaftarkan dalam satuan yang berbeda sama sekali.</strong> Tanpa volume
+      semprot per hektare, angkanya tidak bisa disandingkan dengan yang ml/l — dan volume semprot
+      tidak ada di registri.</p>`,
+    sumber:["pestisida","golongan"], lubang:["phi","namaDagang"],
+    spoke:[
+      { ke:"dimectin", label:"Produk berbahan ini, kadar 18 g/L", cacah:"26", ket:"isinya identik, dosis terdaftarnya tidak" },
+      { ke:"trips",    label:"Sasaran berlabel",                  cacah:"—",  ket:"kembali ke hama yang membawamu ke sini" },
+      { ke:null,       label:"Tenggang panen (PHI)",              cacah:"0",  ket:"nol dari 23.058 penggunaan berlabel", nol:true }
+    ]
+  },
+
+  dimectin: {
+    lapis:"produk", kelas:"Produk · insektisida", nama:"DIMECTIN 18 EC", id:"op:prd:00008530",
+    badan:`
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <tbody>
+          <tr><th scope="row">Nomor pendaftaran</th><td class="m">01010120031755</td></tr>
+          <tr><th scope="row">Berlaku sampai</th><td class="m">28 Agustus 2028</td></tr>
+          <tr><th scope="row">Bahan aktif</th><td><button class="tautan-lema" data-lema="abamektin">Abamektin</button> <span class="m">18 g/L</span></td></tr>
+          <tr><th scope="row">Golongan</th><td class="m">IRAC 6</td></tr>
+          <tr><th scope="row">Dosis terdaftar untuk Trips pada Cabai</th><td class="m">0,75 ml/l</td></tr>
+          <tr><th scope="row">Pemegang pendaftaran</th><td><button class="tautan-lema" data-lema="deltagro">PT Deltagro Mulia Sejati</button></td></tr>
+          <tr><th scope="row">Tenggang panen</th><td class="m" style="color:var(--putus)">tidak dicatat</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2>Merek lain yang isinya sama persis</h2>
+      <p><strong>25 merek lain</strong> membawa abamektin 18 g/L. Bagi pertanyaan “apa isinya”,
+      keduapuluhenam itu barang yang sama; bagi pertanyaan “berapa yang dituang”, tidak —
+      dosis terdaftarnya berbeda sampai tiga kali lipat.</p>
+
+      <div class="buntu">
+        <p><strong>Terdaftar bukan terjamin.</strong> Yang dinyatakan lema ini cuma bahwa nomor
+        pendaftaran ini ada di registri Kementan pada tarikan 19 Agustus 2026. Ia tidak menyatakan
+        barang di tanganmu asli, bermutu, atau cocok untuk kebunmu — registri tidak menguji apa pun,
+        ia mendaftarkan.</p>
+      </div>
+
+      <h2>Gambar kemasan</h2>
+      <p>Lema ini punya gambar kemasan di indeks. <strong>Itu keadaan yang tidak lazim:</strong>
+      1.036 dari 14.920 produk punya gambar — 6,9%. Slot kosong pada 93,1% sisanya bukan tanda
+      produknya meragukan; ia tanda situs pemegang pendaftarannya belum dipanen, atau mereknya
+      memang tidak berkemasan eceran.</p>
+      <p style="font-size:.86rem;color:var(--lemah)"><span class="tandaproto">contoh prototipe</span>
+      Gambarnya sendiri tidak ditampilkan di prototipe ini — manifesnya menyatakan
+      <code>redistributable: false</code> dengan izin yang belum diminta.</p>`,
+    sumber:["pestisida","golongan"], lubang:["phi","gambar","namaDagang"],
+    spoke:[
+      { ke:"abamektin", label:"Bahan aktif", cacah:"1", ket:"abamektin 18 g/L" },
+      { ke:"deltagro",  label:"Pemegang pendaftaran", cacah:"1", ket:"PT Deltagro Mulia Sejati" },
+      { ke:"abamektin", label:"Merek lain berisi sama", cacah:"25", ket:"kadar dan bahan identik" },
+      { ke:null,        label:"Harga di kios",  cacah:"0", ket:"registri tidak memuat harga sama sekali", nol:true }
+    ]
+  },
+
+  deltagro: {
+    lapis:"badan", kelas:"Perusahaan & badan · pemegang pendaftaran", nama:"PT Deltagro Mulia Sejati", id:"op:pcp:—",
+    badan:`
+      <p>Satu dari <strong>3.136 badan pemegang pendaftaran</strong> — perusahaan, balai penelitian,
+      dinas, perguruan tinggi, dan pemerintah daerah. Satu rekaman per badan, bukan per registri:
+      19 badan memegang pendaftaran di sisi pupuk <em>dan</em> pestisida sekaligus, dan memecahnya
+      akan membelah daftar produknya jadi dua halaman yang masing-masing tampak setengah benar.</p>
+
+      <h2>Yang lema badan ini muat</h2>
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <tbody>
+          <tr><th scope="row">Produk terdaftar atas namanya</th><td>termasuk <button class="tautan-lema" data-lema="dimectin">DIMECTIN 18 EC</button></td></tr>
+          <tr><th scope="row">Alamat, kontak, status izin usaha</th><td style="color:var(--putus)">tidak dicatat registri</td></tr>
+          <tr><th scope="row">Riwayat sanksi atau penarikan produk</th><td style="color:var(--putus)">tidak dicatat registri</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="buntu">
+        <p><strong>Lema badan adalah lema paling tipis di seluruh atlas ini,</strong> dan itu penting
+        dikatakan di muka. Yang bisa dijawabnya cuma satu pertanyaan: <em>apa saja yang terdaftar
+        atas nama badan ini.</em> Ia tidak bisa menjawab apakah badan ini bisa dipercaya.</p>
+      </div>
+
+      <h2>Satu golongan yang sengaja tidak punya lema</h2>
+      <p><strong>Pemulia perorangan tidak dijadikan
+      entitas di sini.</strong> 576 varietas terdaftar atas nama orang, dan halaman profil bernama
+      tentang orang adalah pemrosesan data pribadi yang tidak punya dasar di sini. Namanya tetap
+      tampil di lema varietasnya; yang tidak dibuat hanya halaman dan tautannya.</p>`,
+    sumber:["principal"], lubang:["pemulia"],
+    spoke:[
+      { ke:"dimectin", label:"Produk terdaftar atas namanya", cacah:"≥1", ket:"prototipe menampilkan satu" },
+      { ke:null,       label:"Alamat & kontak",               cacah:"0",  ket:"tidak dicatat registri mana pun", nol:true },
+      { ke:null,       label:"Riwayat sanksi",                cacah:"0",  ket:"tidak dicatat registri mana pun", nol:true }
+    ]
+  },
+
+  cabaiHarga: {
+    lapis:"harga", kelas:"Harga komoditas · seri harian nasional", nama:"Cabai Merah Keriting", id:"op:cmd:00001033",
+    badan:`
+      <p><span class="angka-besar">Rp 38.540</span> <span style="color:var(--lemah)">per kg · 21 Agustus 2026</span></p>
+      <p>Naik <strong>3,23%</strong> dibanding 30 hari sebelumnya. Salah satu dari 51 seri berangka,
+      dari 96 varian yang diterbitkan.</p>
+
+      <div class="buntu">
+        <p><strong>Ini bukan harga yang diterima petani, dan jaraknya tidak bisa dirapatkan.</strong></p>
+        <p>Seluruh seri di sini <em>harga eceran</em>. Jaraknya ke harga di tingkat petani terpasang
+        di dalam <strong>definisi sumbernya</strong>, bukan sebagai celah cakupan yang bisa ditutup
+        dengan menambah responden.</p>
+        <p>Bahkan “harga produsen” yang dicatat negara sebenarnya harga beli pengumpul — karena
+        respondennya memang pengumpul. Di Kabupaten Karawang, satu orang.</p>
+      </div>
+
+      <h2>Empat varian cabai yang berangka</h2>
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <thead><tr><th scope="col">Varian</th><th scope="col">Rp/kg</th><th scope="col">30 hari</th></tr></thead>
+        <tbody>
+          <tr><td>Cabai Rawit Merah</td><td class="m">53.626</td><td class="m">+17,96%</td></tr>
+          <tr><td>Cabai Rawit Hijau</td><td class="m">45.316</td><td class="m">+2,46%</td></tr>
+          <tr><td>Cabai Merah Besar</td><td class="m">41.883</td><td class="m">+3,36%</td></tr>
+          <tr><td>Cabai Merah Keriting</td><td class="m">38.540</td><td class="m">+3,23%</td></tr>
+        </tbody>
+      </table></div>
+
+      <h2>Yang terdaftar tetapi kosong angkanya</h2>
+      <p>Dari 96 varian, <strong>45 diterbitkan tanpa satu pun angka terisi</strong> — termasuk
+      keempat harga pupuk (Urea, NPK 15-15-15, SP-36, ZA) dan dua dari tiga harga benih. Keduanya
+      tetap tampil di atlas ini, karena hasil nol terbaca sebagai “tidak ada harganya di mana pun”
+      padahal yang benar “sumber ini tidak memuatnya”.</p>`,
+    sumber:["harga"], lubang:["hargaPetani","hargaWilayah"],
+    spoke:[
+      { ke:"cabai", label:"Komoditas",                cacah:"1", ket:"kembali ke lema tanamannya" },
+      { ke:null,    label:"Harga per provinsi & pasar",cacah:"0", ket:"endpointnya membawa PII pencacah — tidak diindeks", nol:true },
+      { ke:null,    label:"Harga di tingkat petani",   cacah:"0", ket:"tidak ada sumber berlisensi terbuka", nol:true }
+    ]
+  },
+
+  varietasCabai: {
+    lapis:"varietas", kelas:"Varietas · perizinan", nama:"Varietas cabai berizin", id:"op:vty:—",
+    badan:`
+      <p>Registri varietas memuat <strong>11.227 varietas</strong>, dan lema varietas adalah lema
+      yang paling mudah disalahbaca di seluruh atlas ini. Yang dicatatnya <em>surat</em>, bukan
+      <em>tanaman</em>.</p>
+
+      <h2>Yang benar-benar ada di tiap lema varietas</h2>
+      <div class="tabel-bungkus"><table class="lema-tabel">
+        <tbody>
+          <tr><th scope="row">Nama varietas</th><td>ada</td></tr>
+          <tr><th scope="row">Komoditasnya</th><td>ada</td></tr>
+          <tr><th scope="row">Asal — introduksi atau dalam negeri</th><td>ada</td></tr>
+          <tr><th scope="row">Pemelihara / pemegang</th><td>ada</td></tr>
+          <tr><th scope="row">Jenis surat, nomor SK, dan tanggalnya</th><td>ada</td></tr>
+          <tr><th scope="row">Potensi hasil, ketahanan hama, umur panen</th><td style="color:var(--putus);font-weight:700">tidak ada — 0 dari 11.227</td></tr>
+        </tbody>
+      </table></div>
+
+      <div class="buntu">
+        <p><strong>Inilah ujung buntu yang paling sering tidak disadari.</strong> Sebuah lema varietas
+        bisa terlihat penuh — nama, asal, nomor SK, tanggal — dan tetap tidak menjawab satu pun
+        pertanyaan yang sebenarnya dibawa orang ke sini: <em>tahan tidak, hasilnya berapa, panennya
+        berapa hari.</em></p>
+        <p>Tingkat bukti B pada lema ini <strong>berlaku untuk keberadaan suratnya saja</strong>.
+        Tidak ada klaim agronomi yang bisa dinaungi tingkat itu, karena tidak ada klaim agronomi
+        di datanya.</p>
+      </div>
+
+      <h2>Empat surat yang bunyinya mirip</h2>
+      <p>Persetujuan penamaan, pendaftaran varietas, pelepasan varietas, dan izin edar benih adalah
+      empat hal berbeda dengan akibat hukum berbeda. Atlas ini menampilkan <em>jenis suratnya
+      apa adanya</em> dan tidak menyimpulkan satu pun di antaranya berarti “boleh ditanam” atau
+      “dijamin bermutu”.</p>`,
+    sumber:["varietas"], lubang:["sifatVarietas","pemulia"],
+    spoke:[
+      { ke:"cabai", label:"Komoditas",                    cacah:"1", ket:"kembali ke lema tanamannya" },
+      { ke:null,    label:"Sifat agronomi",               cacah:"0", ket:"0 dari 11.227 — di seluruh registri", nol:true },
+      { ke:null,    label:"Lema pemulia perorangan",      cacah:"0", ket:"sengaja tidak dibuat — 576 varietas", nol:true }
+    ]
+  }
+};
+
+const MULA = "cabai";
+
+/* ========================================================================= */
+const el = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+let jejak = [];
+let petaMode = "peta";   /* peta | daftar */
+
+function lapisNama(k) { const l = LAPIS.find((x) => x.k === k); return l ? l.nama : k; }
+
+/* ---------- rak ---------- */
+function gambarRak() {
+  const kini = LEMA[jejak[jejak.length - 1]];
+  el('lapisDaftar').innerHTML = LAPIS.map((l) => `
+    <li><button class="lapis-btn" type="button" data-lapis="${l.k}" data-nol="${l.nol ? 'ya' : 'tidak'}"
+        aria-pressed="${kini && kini.lapis === l.k ? 'true' : 'false'}">
+      <strong>${esc(l.nama)}</strong><span>${esc(l.cacah)}</span>
+    </button></li>`).join('');
+  el('lapisDaftar').querySelectorAll('[data-lapis]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const k = b.dataset.lapis;
+      const target = Object.keys(LEMA).find((x) => LEMA[x].lapis === k);
+      if (target) buka(target);
+      else pesanLapisKosong(k);
+    });
+  });
+
+  const huruf = "ABCDEFGHIJKLMNOPQRSTUVWXYZ".split('');
+  const ada = new Set(Object.values(LEMA).map((x) => x.nama[0].toUpperCase()));
+  el('abjad').innerHTML = huruf.map((h) => {
+    const punya = ada.has(h);
+    return `<button type="button" ${punya ? `data-huruf="${h}"` : 'disabled'} aria-pressed="false">${h}</button>`;
+  }).join('');
+  el('abjad').querySelectorAll('[data-huruf]').forEach((b) => {
+    b.addEventListener('click', () => {
+      const t = Object.keys(LEMA).find((x) => LEMA[x].nama[0].toUpperCase() === b.dataset.huruf);
+      if (t) buka(t);
+    });
+  });
+}
+
+function pesanLapisKosong(k) {
+  const l = LAPIS.find((x) => x.k === k);
+  el('lema').innerHTML = `
+    <p class="lema-kelas">${esc(l.nama)}</p>
+    <h1 class="lema-nama">Lapisan ini belum punya lema di prototipe</h1>
+    <div class="buntu">
+      <p><strong>${esc(l.nama)} — ${esc(l.cacah)} rekaman.</strong> ${esc(l.ket)}.</p>
+      ${l.nol ? `<p>${esc(LUBANG.toko)}</p>` : `<p><span class="tandaproto">contoh prototipe</span>
+        Lapisan ini ada di indeks sungguhan, tetapi prototipe ini baru menyusun lema untuk delapan benda
+        yang menyusun satu penelusuran utuh. Bentuk lemanya akan sama persis dengan yang lain.</p>`}
+    </div>
+    <p><button class="tautan-lema keluar" data-lema="${MULA}">← Kembali ke lema Cabai</button></p>`;
+  pasangTautan();
+  el('relasi').innerHTML = '';
+}
+
+/* ---------- jejak ---------- */
+function gambarJejak() {
+  el('jejak').innerHTML = jejak.map((k, i) => {
+    const l = LEMA[k];
+    const kini = i === jejak.length - 1;
+    return `${i ? '<span class="jejak-panah" aria-hidden="true">›</span>' : ''}
+      <button class="jejak-btn" type="button" data-ke="${i}" ${kini ? 'aria-current="page" disabled' : ''}>
+        <small>${esc(lapisNama(l.lapis))}</small><strong>${esc(l.nama)}</strong>
+      </button>`;
+  }).join('');
+  el('jejak').querySelectorAll('[data-ke]').forEach((b) => b.addEventListener('click', () => {
+    jejak = jejak.slice(0, Number(b.dataset.ke) + 1);
+    render();
+  }));
+  el('jejak').scrollLeft = el('jejak').scrollWidth;
+}
+
+/* ---------- peta jari-jari ---------- */
+function gambarPeta(l) {
+  const s = l.spoke || [];
+  const W = 300, H = 220, cx = W / 2, cy = H / 2;
+  const R = 74;
+  const sudut = s.map((_, i) => (-90 + (360 / s.length) * i) * Math.PI / 180);
+  const bagian = s.map((sp, i) => {
+    const a = sudut[i];
+    const x = cx + Math.cos(a) * R, y = cy + Math.sin(a) * R;
+    const warna = sp.nol ? 'var(--putus)' : 'var(--biru)';
+    const garis = sp.nol
+      ? `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${warna}" stroke-width="1.6" stroke-dasharray="4 4"/>
+         <line x1="${cx + Math.cos(a) * (R - 22)}" y1="${cy + Math.sin(a) * (R - 22)}"
+               x2="${cx + Math.cos(a) * (R - 10)}" y2="${cy + Math.sin(a) * (R - 10)}"
+               stroke="${warna}" stroke-width="2.4" transform="rotate(${(a * 180 / Math.PI) + 90} ${cx + Math.cos(a) * (R - 16)} ${cy + Math.sin(a) * (R - 16)})"/>`
+      : `<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${warna}" stroke-width="1.6"/>`;
+    const bentuk = sp.nol
+      ? `<rect x="${x - 15}" y="${y - 12}" width="30" height="24" fill="var(--putus-latar)" stroke="${warna}" stroke-width="1.6" stroke-dasharray="3 3"/>`
+      : `<circle cx="${x}" cy="${y}" r="14" fill="var(--biru-latar)" stroke="${warna}" stroke-width="1.6"/>`;
+    return `${garis}${bentuk}
+      <text x="${x}" y="${y + 4}" text-anchor="middle" font-size="11" font-weight="700" fill="${warna}">${esc(sp.cacah)}</text>`;
+  }).join('');
+  return `<svg class="gambar-relasi" viewBox="0 0 ${W} ${H}" role="img"
+      aria-label="Peta hubungan: ${esc(l.nama)} punya ${s.length} hubungan; yang bergaris putus dan berkotak berarti datanya nol. Daftar lengkapnya ada di bawah gambar.">
+    ${bagian}
+    <circle cx="${cx}" cy="${cy}" r="30" fill="var(--panel)" stroke="var(--tinta)" stroke-width="2"/>
+    <text x="${cx}" y="${cy + 4}" text-anchor="middle" font-size="10" font-weight="700" fill="var(--tinta)">${esc(l.nama.length > 11 ? l.nama.slice(0, 9) + '…' : l.nama)}</text>
+  </svg>`;
+}
+
+function gambarRelasi() {
+  const l = LEMA[jejak[jejak.length - 1]];
+  const s = l.spoke || [];
+  const nol = s.filter((x) => x.nol).length;
+  el('relasi').innerHTML = `
+    <h2 id="jrelasi">Hubungan dari lema ini</h2>
+    <p class="ket">${s.length} arah keluar${nol ? `, <strong style="color:var(--putus)">${nol} di antaranya buntu</strong>` : ''}.
+    Yang buntu tetap digambar — menyembunyikannya membuat atlas terlihat lebih lengkap daripada isinya.</p>
+
+    <div class="peta-alih" role="group" aria-label="Bentuk tampilan hubungan">
+      <button type="button" data-mode="peta"   aria-pressed="${petaMode === 'peta' ? 'true' : 'false'}">Peta</button>
+      <button type="button" data-mode="daftar" aria-pressed="${petaMode === 'daftar' ? 'true' : 'false'}">Daftar</button>
+    </div>
+
+    ${petaMode === 'peta' ? gambarPeta(l) : ''}
+
+    <ul class="spoke-daftar">
+      ${s.map((sp) => `<li>
+        <button class="spoke" type="button" data-nol="${sp.nol ? 'ya' : 'tidak'}"
+          ${sp.ke ? `data-lema="${sp.ke}"` : 'disabled'}>
+          <span class="garis" aria-hidden="true"></span>
+          <span><b>${esc(sp.label)}</b><small>${esc(sp.ket)}</small></span>
+          <span class="cacah">${esc(sp.cacah)}${sp.nol ? ' ⊘' : ''}</span>
+        </button></li>`).join('')}
+    </ul>`;
+  el('relasi').querySelectorAll('[data-mode]').forEach((b) => b.addEventListener('click', () => {
+    petaMode = b.dataset.mode; gambarRelasi();
+  }));
+  pasangTautan(el('relasi'));
+}
+
+/* ---------- batas ---------- */
+function blokBatas(l) {
+  const s = (l.sumber || []).map((k) => {
+    const x = SUMBER[k];
+    return `<div class="sumber">
+      <span class="tingkat" data-t="${esc(x.t)}" aria-hidden="true">${x.t === '?' ? '–' : esc(x.t)}</span>
+      <span><b>${esc(x.nama)}</b>
+      <span>${x.t === '?' ? 'tingkat bukti belum ditetapkan' : 'tingkat bukti ' + esc(x.t)} · ${esc(x.meta)}</span>
+      <em>${esc(x.alasan)}</em></span></div>`;
+  }).join('');
+  const g = (l.lubang || []).map((k) => `<li><span>${esc(LUBANG[k])}</span></li>`).join('');
+  return `<section class="batas" aria-labelledby="jbatas">
+    <h2 id="jbatas">Batas jawaban lema ini</h2>
+    ${s}
+    ${g ? `<h3 style="font-family:var(--sans);font-size:.9rem;margin:16px 0 2px">Yang tidak diketahui, dan karena itu tidak ditebak</h3><ul class="lubang">${g}</ul>` : ''}
+  </section>`;
+}
+
+/* ---------- render ---------- */
+function render() {
+  const k = jejak[jejak.length - 1];
+  const l = LEMA[k];
+  el('lema').innerHTML = `
+    <p class="lema-kelas">${esc(l.kelas)}</p>
+    <h1 class="lema-nama">${esc(l.nama)}</h1>
+    ${l.ilmiah ? `<p class="lema-ilmiah">${esc(l.ilmiah)}</p>` : ''}
+    <p style="font-family:var(--mono);font-size:.76rem;color:var(--lemah);margin:0 0 16px">${esc(l.id)}</p>
+    ${l.badan}
+    ${blokBatas(l)}`;
+  gambarJejak(); gambarRak(); gambarRelasi(); pasangTautan();
+  el('lema').focus();
+  window.scrollTo({ top: 0, behavior: 'auto' });
+}
+
+function buka(k) {
+  if (!LEMA[k]) return;
+  const i = jejak.indexOf(k);
+  if (i >= 0) jejak = jejak.slice(0, i + 1);
+  else jejak.push(k);
+  render();
+}
+
+function pasangTautan(akar) {
+  (akar || document).querySelectorAll('[data-lema]').forEach((b) => {
+    if (b.dataset.terpasang) return;
+    b.dataset.terpasang = '1';
+    b.addEventListener('click', () => buka(b.dataset.lema));
+  });
+}
+
+/* ---------- kendali ---------- */
+el('tombolTema').addEventListener('click', () => {
+  const r = document.documentElement;
+  const gelapSistem = matchMedia('(prefers-color-scheme: dark)').matches;
+  const kini = r.dataset.tema || (gelapSistem ? 'gelap' : 'terang');
+  const baru = kini === 'gelap' ? 'terang' : 'gelap';
+  r.dataset.tema = baru;                        /* hanya di memori */
+  el('tombolTema').textContent = baru === 'gelap' ? 'Terang' : 'Gelap';
+});
+
+const laci = el('laci');
+const mqLebar = matchMedia('(min-width: 1000px)');
+function aturLaci() {
+  const lebar = mqLebar.matches;
+  el('rak').hidden = !lebar;
+  laci.setAttribute('aria-expanded', 'false');
+}
+laci.addEventListener('click', () => {
+  const mauBuka = el('rak').hidden;
+  el('rak').hidden = !mauBuka;
+  laci.setAttribute('aria-expanded', String(mauBuka));
+});
+/* Ditempelkan ke MEDIA QUERY, bukan ke `resize`. Bilah alamat ponsel yang
+   muncul-hilang memicu `resize` juga, dan laci yang tertutup sendiri di tengah
+   pemakaian terbaca sebagai ketukan yang tidak berfungsi. */
+if (mqLebar.addEventListener) mqLebar.addEventListener('change', aturLaci);
+else mqLebar.addListener(aturLaci);
+addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && !matchMedia('(min-width: 1000px)').matches && !el('rak').hidden) {
+    el('rak').hidden = true; laci.setAttribute('aria-expanded', 'false'); laci.focus();
+  }
+});
+
+function jaringan() {
+  const j = el('jar'), t = el('jarTeks');
+  if (navigator.onLine) { j.dataset.luring = 'tidak'; t.textContent = 'Ada sinyal'; }
+  else { j.dataset.luring = 'ya'; t.textContent = 'Tanpa sinyal — lema yang sudah terbuka tetap terbaca'; }
+}
+addEventListener('online', jaringan); addEventListener('offline', jaringan); jaringan();
+
+aturLaci();
+jejak = [MULA];
+render();
+</script>
+</body>
+</html>

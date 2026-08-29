@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1040 300" role="img" aria-labelledby="title desc">
+  <title id="title">Logo Pranatani</title>
+  <desc id="desc">Monogram Pranatani dengan tulisan Pranatani dan deskriptor protokol budidaya terbuka.</desc>
+  <g transform="translate(20 22) scale(.93)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94"
+          stroke="#00442f" stroke-width="26"/>
+    <path d="M94 77h45" stroke="#00745d" stroke-width="15"/>
+    <path d="M94 109h64" stroke="#00745d" stroke-width="15"/>
+    <path d="M94 141h45" stroke="#00745d" stroke-width="15"/>
+    <path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z"
+          fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+    <path d="M165 111 196 80" stroke="#00442f" stroke-width="8"/>
+  </g>
+  <text x="282" y="157" fill="#00442f"
+        font-family="Avenir Next, Avenir, Helvetica Neue, Arial, sans-serif"
+        font-size="100" font-weight="700" letter-spacing="-4">Pranatani</text>
+  <text x="288" y="209" fill="#5f6e66"
+        font-family="Avenir Next, Avenir, Helvetica Neue, Arial, sans-serif"
+        font-size="22" font-weight="600" letter-spacing="4.8">PROTOKOL BUDIDAYA TERBUKA</text>
+</svg>

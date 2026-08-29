@@ -35,7 +35,7 @@
 import { teks } from './pustaka.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
-import { salin } from './serah.js';
+import { salin, bukaTab } from './serah.js';
 import * as buku from './buku.js';
 import * as musim from './musim.js';
 
@@ -215,7 +215,7 @@ function susunTeks() {
   const { keluar, masuk, selisih, cacah } = hitung();
   const m = musimKini();
   const baris = [
-    '*Buku kas — Open Protocols*',
+    '*Buku kas — Pranatani*',
     '───────────────',
     m ? `Musim: ${m.nama}${m.komoditas ? ` — ${m.komoditas}` : ''}` : null,
     m?.luas > 0 ? `Luas: ${n(m.luas)} ha` : null,
@@ -254,10 +254,9 @@ el.bawa.addEventListener('click', async (ev) => {
       + 'Sudah disalin; tempelkan langsung di WhatsApp.';
     return;
   }
-  const tab = window.open(alamat, '_blank', 'noopener,noreferrer');
-  el.kabarBawa.textContent = tab
+  el.kabarBawa.textContent = bukaTab(alamat)
     ? 'WhatsApp dibuka. Belum terkirim — kamu yang memilih penerimanya, dan boleh mengirimnya ke dirimu sendiri.'
-    : 'Peramban memblokir tab baru. Salin dari kotak di bawah.';
+    : 'Peramban menolak membuka tab baru. Salin dari kotak di bawah.';
   if (!tab) await salin(isi);
 });
 

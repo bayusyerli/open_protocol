@@ -186,7 +186,139 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "symptom_title": {
+        "id": "Daun muda mengeriting ke ATAS seperti mangkuk"
+      },
+      "symptom_brief": {
+        "id": "Permukaan bawah daun keperakan atau kecoklatan seperti tergores halus, dan bunga serta tunas rontok sebelum jadi buah."
+      },
+      "images": [
+        {
+          "key": "trips-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Pucuk cabai di lapangan yang daun mudanya mengeriting, berkerut, dan memucat sampai mengumpul di ujung batang — daun tuanya di bawah masih hijau dan rata."
+          },
+          "identification": {
+            "id": "DNA barcoding gen mtCOI (kemiripan 97,99–98,81% dengan sekuen acuan; nomor aksesi GenBank OM640388–OM640391) DITAMBAH kunci morfologi lewat citra SEM beresolusi tinggi (antena 7 ruas, sensori bercabang garpu, metanotum beretikulasi)."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel C",
+            "warning": "Berkas ini gambar gabungan 4 panel — hanya panel C yang cocok ke symptom_title; kalau dipakai perlu dipotong."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/6019/9420409/5f7da6b00c7c/peerj-10-13868-g002.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9420409/",
+            "publisher": "PeerJ",
+            "author": "Hulagappa T., Baradevanal G., Surpur S., dkk.",
+            "year": 2022,
+            "doi": "10.7717/peerj.13868",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Hulagappa T. dkk. (2022), PeerJ 10:e13868, Gambar 2 — CC BY 4.0 — dipotong ke panel C",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/trips-gejala-1.webp",
+            "width_px": 246,
+            "height_px": 438,
+            "bytes": 30734,
+            "sha256": "sha256:8e76ec6bb2bb9b42a9665bd92d81904fe4f96a6641dcab8fb9ec3750d47432c6",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "trips-organisme-1",
+          "role": "organisme",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Imago T. parvispinus jantan (A) dan betina (B) difoto dari dorsal, memperlihatkan tubuh kuning kecoklatan sampai gelap dengan sayap berumbai."
+          },
+          "identification": {
+            "id": "Spesimen yang sama yang di-DNA-barcode (mtCOI) dan diperiksa dengan kunci morfologi SEM dalam artikel ini."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/6019/9420409/6df8dabc90fc/peerj-10-13868-g003.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9420409/",
+            "publisher": "PeerJ",
+            "author": "Hulagappa T., Baradevanal G., Surpur S., dkk.",
+            "year": 2022,
+            "doi": "10.7717/peerj.13868",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Hulagappa T. dkk. (2022), PeerJ 10:e13868, Gambar 3 — CC BY 4.0",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/trips-organisme-1.webp",
+            "width_px": 797,
+            "height_px": 532,
+            "bytes": 23650,
+            "sha256": "sha256:260067d71dd3e3e7533278af9ba91c6f3e4039ba0763d2ef2826b43008272e3f",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "trips-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Empat panel T. parvispinus di tanaman cabai: (A) betina di dalam bunga cabai, (B) luka makan berupa perunggu dan pelintiran daun, (C) bintik-bintik dan bercak nekrotik di daun tua, (D) betina bersembunyi di lipatan daun bibit."
+          },
+          "identification": {
+            "id": "Kunci morfologi yang dinyatakan eksplisit (metanotum beretikulasi sebagai pembeda dari T. hawaiiensis dan T. florum yang berstriata; ruas antena ke-3 dan ke-4 berwarna terang), didukung sekuensing barcode DNA populasi AS (haplotipe tunggal Hap1, berkerabat dekat dengan kelompok Indonesia)."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "Gambar 5",
+            "warning": "Silverchair menjawab 403 untuk semua permintaan non-peramban, jadi berkasnya tidak bisa dijemput. Lisensinya juga belum tuntas: halaman artikel menyatakan CC BY, tetapi PDF-nya dialihkan ke CDN bertoken sehingga kalimat lisensinya tidak terbaca verbatim — dan Gambar 6 mengkredit fotografer di luar penulis, yang lazim dikecualikan dari lisensi CC artikel. Catatan isi bila kelak dipakai: penulisnya sendiri menyebut luka ini MIRIP kerusakan tungau kuning, jadi teks pendampingnya harus menyebut tungau juga, bukan cuma virus."
+          },
+          "source": {
+            "url": "https://oup.silverchair-cdn.com/oup/backfile/Content_public/Journal/jipm/17/1/10.1093_jipm_pmag011/5/m_pmag011f5.jpeg",
+            "page_url": "https://academic.oup.com/jipm/article/17/1/pmag011/8661505",
+            "publisher": "Journal of Integrated Pest Management (Oxford University Press untuk Entomological Society of America)",
+            "author": "Vavilapalli, Kaur, Schoeller, Ahmed, Mészáros, Mou, Revynthi, Yu, Sparks, LaForest, Campbell & Joseph; seluruh foto Gambar 5 oleh Anna Mészáros (penulis serta)",
+            "year": 2026,
+            "doi": "10.1093/jipm/pmag011",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Vavilapalli dkk. (2026), J. Integr. Pest Manag. 17(1):pmag011, Gambar 5, foto Anna Mészáros — CC BY 4.0",
+            "redistributable": true
+          }
+        },
+        {
+          "key": "trips-pembanding-2",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Preparat mikroskop T. parvispinus dari pertanaman cabai Indonesia: (A) imago betina utuh, lalu perbesaran antena, kepala, pronotum, metanotum, sayap, dan tergit VIII."
+          },
+          "identification": {
+            "id": "Kunci taksonomi Mound & Kibby (1998) \"Thysanoptera: an Identification Guide\" edisi ke-2 plus kunci Lucid (Moritz dkk.), spesimen dipreparat dalam media Hoyer, dikerjakan di Laboratorium Biosistematika Serangga, Departemen Proteksi Tanaman IPB."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "Gambar 1",
+            "from_pdf": true,
+            "warning": "DITAHAN 25 Agu 2026: halaman OJS pada page_url (article/view/82) menyajikan galley milik ARTIKEL LAIN (nomor 810). PDF yang turun berisi dua ngengat berskala 14 mm, bukan preparat trips. Cari galley yang benar sebelum dipanen ulang."
+          },
+          "source": {
+            "page_url": "https://jurnal.pei-pusat.org/index.php/jei/article/view/82",
+            "publisher": "Jurnal Entomologi Indonesia (Perhimpunan Entomologi Indonesia)",
+            "author": "Dewi Sartiami, Magdalena, Ali Nurmansyah (Departemen Proteksi Tanaman, IPB)",
+            "year": 2011,
+            "doi": "10.5994/jei.8.2.85-95",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Sartiami D., Magdalena, Nurmansyah A. (2011), J. Entomol. Indon. 8(2):85–95, Gambar 1 — CC BY 4.0",
+            "redistributable": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000002",
@@ -323,7 +455,180 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "symptom_title": {
+        "id": "Daun muda mengeriting ke BAWAH dan mengerut"
+      },
+      "symptom_brief": {
+        "id": "Permukaan daun lengket, sering berjelaga hitam, dan semut naik-turun di batang."
+      },
+      "images": [
+        {
+          "key": "kutu-daun-persik-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Koloni kutu daun persik tak bersayap berdesakan rapat di permukaan bawah daun, tubuh gemuk seperti buah pir kecil dan diam di tempat — persis rupa yang disuruh dicari saat petani membalik daun pucuk."
+          },
+          "identification": {
+            "id": "Spesimen diperiksa di bawah stereomikroskop, dijernihkan dengan KOH, lalu identifikasi spesiesnya dikonfirmasi seorang spesialis afid (Universidad Nacional Santiago Antúnez de Mayolo, Peru) memakai kunci identifikasi afid baku. Penulis sendiri mencatat batas metode morfologi murni pada kelompok afid yang rumit."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel C",
+            "warning": "Gambar 1 punya empat panel (A peta lahan, B tanaman, C koloni tak bersayap di bawah daun, D individu bersayap mulai menginfestasi); hanya panel C yang dipakai, jadi perlu dipotong."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/79ae/12653194/85f8cb1ffff7/insects-16-01088-g001.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12653194/",
+            "publisher": "Insects (MDPI)",
+            "author": "Eugenio E. Oliveira, Thiago F. Nascimento, Lorena S. Francesco, Tomas Svacina, César León, Cleonor N. Gomes, Luis O. V. Jumbo, María J. González Armijos, Kluyver S. Vilca Mallqui, Guy Smagghe",
+            "year": 2025,
+            "doi": "10.3390/insects16111088",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Oliveira dkk. (2025), Insects 16(11):1088, Gambar 1C — CC BY 4.0 — dipotong ke panel C",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-daun-persik-pembanding-1.webp",
+            "width_px": 418,
+            "height_px": 312,
+            "bytes": 12998,
+            "sha256": "sha256:455601ac32c1b46e8381601f4b0ce3362fdf72063b964b27f80719957851af58",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-daun-persik-organisme-1",
+          "role": "organisme",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Imago Myzus persicae tak bersayap (A) dan bersayap (B) difoto tepat setelah diambil, keduanya dengan bar skala 0,5 mm — memperlihatkan tubuh lunak seperti buah pir kecil yang jadi ciri pembandingnya terhadap trips."
+          },
+          "identification": {
+            "id": "Sama dengan Gambar 1: stereomikroskop, penjernihan KOH, konfirmasi oleh spesialis afid dengan kunci identifikasi baku. Panel C dan D justru memperlihatkan ciri kunci yang dipakai (antena, kauda)."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel A dan B"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/79ae/12653194/c9824e9cf316/insects-16-01088-g002.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12653194/",
+            "publisher": "Insects (MDPI)",
+            "author": "Eugenio E. Oliveira, Thiago F. Nascimento, Lorena S. Francesco, Tomas Svacina, César León, Cleonor N. Gomes, Luis O. V. Jumbo, María J. González Armijos, Kluyver S. Vilca Mallqui, Guy Smagghe",
+            "year": 2025,
+            "doi": "10.3390/insects16111088",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Oliveira dkk. (2025), Insects 16(11):1088, Gambar 2 — CC BY 4.0 — dipotong ke panel A dan B",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-daun-persik-organisme-1.webp",
+            "width_px": 739,
+            "height_px": 292,
+            "bytes": 10642,
+            "sha256": "sha256:3ee116d58fcd07b95a760ef6c58a086f21d8d67415d0c60ab66181a1926027b1",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-daun-persik-organisme-2",
+          "role": "organisme",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Foto dekat satu kutu daun persik (Myzus persicae) dari atas pada tanaman pepino — tubuhnya lunak berbentuk buah pir dengan sifunkuli panjang di ujung perut. Yang ini morf gelap kecoklatan, bukan morf hijau; keduanya spesies yang sama."
+          },
+          "identification": {
+            "id": "Spesimen dimatikan di lapangan lalu diidentifikasi di bawah stereomikroskop (Olympus SZ60/SZX16) dan mikroskop optik (BH-2/BX41) oleh Tadashi Ishikawa, Yoshihiro Yamada dan Naoki Kaneko mengikuti daftar pustaka taksonomi yang disebutkan."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/1e15/6702178/68f52465ce4c/bdj-07-e36453-g007_f.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702178/",
+            "publisher": "Biodiversity Data Journal (Pensoft)",
+            "author": "Tadashi Ishikawa, Ken Takahata",
+            "year": 2019,
+            "doi": "10.3897/BDJ.7.e36453",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Ishikawa T. & Takahata K. (2019), Biodiversity Data Journal 7:e36453, Gambar 7f — CC BY 4.0",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-daun-persik-organisme-2.webp",
+            "width_px": 787,
+            "height_px": 825,
+            "bytes": 13342,
+            "sha256": "sha256:ab8954231d27da18d799bd207a0387d2e77b32e1e0c3e2795028b9a4aa741772",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-daun-persik-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_brief",
+          "shows": {
+            "id": "Seekor semut hitam (Lasius niger) berdiri di antara koloni kutu daun persik di sebuah ranting — tanda embun madu yang paling mudah dilihat petani dari jauh."
+          },
+          "identification": {
+            "id": "Hanya penentuan pengunggah — nama spesies ada di judul dan deskripsi berkas, tanpa rujukan kunci, kurator, atau tautan pengamatan. Fotonya makro tajam sehingga kutu daun sebagai kelompok jelas, tapi 'Myzus persicae' pada tingkat spesies tidak terverifikasi."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "warning": "Karena identifikasi spesiesnya tak bersumber, gunakan hanya untuk menerangkan HUBUNGAN semut–kutu daun, jangan sebagai acuan rupa Myzus persicae."
+          },
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/c/ca/Black_garden_ant_%28Lasius_niger%29_and_green_peach_aphids_%28Myzus_persicae%29_on_a_branch%2C_Jardim_da_Funda%C3%A7%C3%A3o_Calouste_Gulbenkian%2C_Lisbon%2C_Portugal_julesvernex2-2.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Black_garden_ant_(Lasius_niger)_and_green_peach_aphids_(Myzus_persicae)_on_a_branch,_Jardim_da_Funda%C3%A7%C3%A3o_Calouste_Gulbenkian,_Lisbon,_Portugal_julesvernex2-2.jpg",
+            "publisher": "Wikimedia Commons",
+            "author": "Jules Verne Times Two (julesvernex2)",
+            "year": 2020,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-4.0",
+            "credit": "Jules Verne Times Two (julesvernex2.com), CC BY-SA 4.0, lewat Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-daun-persik-gejala-1.webp",
+            "width_px": 1200,
+            "height_px": 948,
+            "bytes": 40994,
+            "sha256": "sha256:c20c6298555803ee61f3966fff4b503e95ee5ee755a5f391b0b1f794302fe9b0",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-daun-persik-kekeliruan-1",
+          "role": "kekeliruan",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Panel gabungan 'Whiteflies and aphids feeding on pepino': kutu kebul rumah kaca berdampingan dengan empat jenis kutu daun (termasuk Myzus persicae) pada inang Solanaceae yang sama, dalam gaya foto dan pencahayaan yang seragam."
+          },
+          "identification": {
+            "id": "Tiap panel adalah spesimen yang diidentifikasi di bawah mikroskop oleh taksonom (Ishikawa, Yamada, Kaneko) mengikuti pustaka taksonomi yang dikutip; artikelnya sendiri berbentuk daftar rekaman keanekaragaman."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "Gambar 7",
+            "warning": "DITAHAN SESUDAH DIPERIKSA MATA 25 Agu 2026: berkas di source.url TIDAK memuat panel gabungan 'Whiteflies and aphids feeding on pepino' seperti tertulis di shows. Isinya satu preparat kutu kebul bersayap tunggal (Trialeurodes vaporariorum) di atas latar putih — tanpa satu pun kutu daun, jadi tidak bisa dipakai sebagai pembanding kutu daun vs kutu kebul. Cari nomor gambar yang benar di artikelnya sebelum dipanen."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/1e15/6702178/39a76381612d/bdj-07-e36453-g007_a.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6702178/",
+            "publisher": "Biodiversity Data Journal (Pensoft)",
+            "author": "Tadashi Ishikawa, Ken Takahata",
+            "year": 2019,
+            "doi": "10.3897/BDJ.7.e36453",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Ishikawa T. & Takahata K. (2019), Biodiversity Data Journal 7:e36453, Gambar 7 — CC BY 4.0",
+            "redistributable": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000003",
@@ -446,7 +751,175 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "symptom_title": {
+        "id": "Serangga putih berhamburan saat tanaman disentuh"
+      },
+      "symptom_brief": {
+        "id": "Ukurannya sangat kecil dan langsung hinggap lagi; daun lengket, berjelaga hitam, lalu menguning."
+      },
+      "images": [
+        {
+          "key": "kutu-kebul-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Nimfa kutu kebul menempel diam di permukaan bawah daun seperti sisik pipih bening kekuningan, tanpa kaki yang terlihat dan tanpa gerak — persis yang disuruh dicari di distinguishing[1]."
+          },
+          "identification": {
+            "id": "Foto dari arsip ilmiah CSIRO Entomology (lembaga riset nasional Australia yang menjalankan program pengendalian hayati Bemisia); biotipe B disebut di keterangan resmi arsip. Halaman berkas tidak menerangkan cara penentuan biotipenya."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/2/20/CSIRO_ScienceImage_1489_Silverleaf_whitefly_Bemisia_tabaci_biotype_B.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_1489_Silverleaf_whitefly_Bemisia_tabaci_biotype_B.jpg",
+            "publisher": "CSIRO ScienceImage (lewat Wikimedia Commons)",
+            "author": "CSIRO Entomology",
+            "year": 2004,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-3.0",
+            "credit": "CSIRO Entomology, ScienceImage 1489 — CC BY 3.0, lewat Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-kebul-pembanding-1.webp",
+            "width_px": 1200,
+            "height_px": 1064,
+            "bytes": 254352,
+            "sha256": "sha256:874753aa6e83ee1f66d9b65c8e58c8125af25af6cf58427a5af731b618857a59",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-kebul-pembanding-2",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Foto mikroskop 12,6x: satu telur (kiri bawah), satu imago, dan satu nimfa instar keempat pada permukaan bawah daun buncis — memperlihatkan sekaligus betapa berbedanya nimfa yang menempel dari imago yang beterbangan."
+          },
+          "identification": {
+            "id": "Tinjauan peer-review yang seluruhnya tentang Bemisia tabaci; keterangan gambar menyebut 'Li et al., unpublished', artinya foto koleksi kelompok penulis sendiri (USDA-ARS/Fort Valley State University) yang rutin memelihara koloni B. tabaci. Tidak ada uji PCR/barcoding yang dinyatakan untuk foto ini."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/a873/7996905/9d98cbfcebfd/insects-12-00198-g001.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7996905/",
+            "publisher": "Insects (MDPI)",
+            "author": "Yinping Li, George N. Mbata, Somashekhar Punnuri, Alvin M. Simmons, David I. Shapiro-Ilan",
+            "year": 2021,
+            "doi": "10.3390/insects12030198",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Li Y. dkk. (2021), Insects 12(3):198, Gambar 1 — CC BY 4.0",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-kebul-pembanding-2.webp",
+            "width_px": 793,
+            "height_px": 578,
+            "bytes": 82638,
+            "sha256": "sha256:5d582068a586995a10c5f8e68ac6eb42d005b2a0230ae36c77b71265c7d1dd28",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-kebul-pembanding-3",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Puparium (nimfa instar akhir) kutu kebul menempel di daun paprika/cabai manis, terlihat sebagai sisik oval pipih tembus cahaya — satu-satunya kandidat in situ yang inangnya benar-benar Capsicum."
+          },
+          "identification": {
+            "id": "Hanya penentuan pengunggah. Halaman berkas tidak menyebut kunci, kurator, atau preparat pembanding. Perlu diingat: puparium kutu kebul hanya bisa dipastikan sampai spesies lewat preparat mikroskop, jadi label 'Bemisia tabaci' di sini adalah klaim yang tidak dibuktikan."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/b/bd/Puparium_of_Bemisia_tabaci.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Puparium_of_Bemisia_tabaci.jpg",
+            "publisher": "Wikimedia Commons",
+            "author": "Gabriel Terraz (User:Gab88)",
+            "year": 2014,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-3.0",
+            "credit": "Gabriel Terraz, CC BY-SA 3.0, lewat Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-kebul-pembanding-3.webp",
+            "width_px": 396,
+            "height_px": 380,
+            "bytes": 23940,
+            "sha256": "sha256:ccd41d89d402285472efda62e575fc4ce425a9c0f5fc7c0cc4f9abdc9be913a3",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-kebul-organisme-1",
+          "role": "organisme",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Sekumpulan imago kutu kebul putih bertepung berdiri di permukaan bawah daun — rupa serangga yang akan berhamburan begitu tanaman digoyang."
+          },
+          "identification": {
+            "id": "Arsip ilmiah CSIRO Entomology; biotipe B disebut di keterangan resmi arsip, tanpa penjelasan cara penentuannya di halaman berkas."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/3/32/CSIRO_ScienceImage_1359_Silverleaf_whitefly_Bemisia_tabaci_biotype_B.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:CSIRO_ScienceImage_1359_Silverleaf_whitefly_Bemisia_tabaci_biotype_B.jpg",
+            "publisher": "CSIRO ScienceImage (lewat Wikimedia Commons)",
+            "author": "CSIRO Entomology",
+            "year": 2004,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-3.0",
+            "credit": "CSIRO Entomology, ScienceImage 1359 — CC BY 3.0, lewat Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-kebul-organisme-1.webp",
+            "width_px": 914,
+            "height_px": 1200,
+            "bytes": 123488,
+            "sha256": "sha256:fa24bb9f6f033e88f784e3410278b8922f227e11b3bbed88090fd984149e6aff",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "kutu-kebul-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_brief",
+          "shows": {
+            "id": "Sehelai daun paprika yang hampir seluruh permukaannya tertutup embun jelaga hitam, tumbuh di atas embun madu yang ditinggalkan kutu kebul."
+          },
+          "identification": {
+            "id": "Tinjauan peer-review dari kelompok riset yang rutin menggenotipe populasi kutu kebul Amerika Selatan dengan mtCOI; keterangan gambarnya sendiri membedakan Bemisia tabaci (panel A–C) dari Trialeurodes vaporariorum (panel D), yang menunjukkan penulisnya memang memisahkan kedua marga itu."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel E"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8ef9/7760982/4d0ce196783d/insects-11-00847-g001.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7760982/",
+            "publisher": "Insects (MDPI)",
+            "author": "Renate Krause-Sakate, Luís F. M. Watanabe, Elizabeth S. Gorayeb, Felipe B. da Silva, Deisy L. Alvarez, Vinicius H. Bello, Angélica M. Nogueira, Bruno R. de Marchi, Eduardo Vicentin, Marcos R. Ribeiro-Junior, Julio M. Marubayashi, Cristian A. Rojas-Bertini, Cristiane Muller, Regiane C. O. F. Bueno, dkk.",
+            "year": 2020,
+            "doi": "10.3390/insects11120847",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Krause-Sakate R. dkk. (2020), Insects 11(12):847, Gambar 1 — CC BY 4.0 — dipotong ke panel E",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/kutu-kebul-gejala-1.webp",
+            "width_px": 340,
+            "height_px": 344,
+            "bytes": 17288,
+            "sha256": "sha256:055a1005ad54d6f886fba4ca79a68e2b07f1954e55f833606140b2f8b3203034",
+            "exif_stripped": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000004",
@@ -611,6 +1084,142 @@
             "label": "Lalat Buah"
           },
           "dasar": "Bactrocera tryoni lalat buah Queensland yang tidak ada di Indonesia — sebarannya Australia timur — sehingga barisnya pada cabai salah nama untuk lalat buah yang memang ada di sini. Tusukan sebesar ujung jarum dengan belatung di dalam buah yang gugur memang gejala yang dimaksud label."
+        }
+      ],
+      "symptom_title": {
+        "id": "Buah berlubang tusukan jarum lalu gugur"
+      },
+      "symptom_brief": {
+        "id": "Di sekitar lubang melunak dan basah, dan di dalam buah yang gugur ada belatung putih."
+      },
+      "images": [
+        {
+          "key": "lalat-buah-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Tiga buah cabai keriting dari Lombok Timur — dua hijau dan satu merah — dengan panah menunjuk bekas tusukan ovipositor lalat buah: titik gelap kecil di kulit tempat telur diletakkan."
+          },
+          "identification": {
+            "id": "Lalat buah yang tertangkap di kebun cabai itu dideterminasi dengan kunci The Australian Handbook for the Identification of Fruit Flies (Plant Health Australia, 2018); B. dorsalis spesies terbanyak (503 ekor dari 6 spesies). Namun foto tusukannya sendiri hanya diberi label tingkat genus, \"Bactrocera spp.\"."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "crop_from": "Gambar 8",
+            "from_pdf": true
+          },
+          "source": {
+            "page_url": "https://journal.unram.ac.id/index.php/jima/article/view/2332",
+            "publisher": "Jurnal Ilmiah Mahasiswa AGROKOMPLEK (Fakultas Pertanian, Universitas Mataram)",
+            "author": "Holis, Haryanto, Isnaini",
+            "year": 2023,
+            "doi": "10.29303/jima.v2i1.2332",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Holis, Haryanto, Isnaini (2023) Populasi dan Intensitas Serangan Lalat Buah (Bactrocera spp.) pada Pertanaman Cabai Keriting di Desa Darmasari, Lombok Timur. J. Ilm. Mhs. Agrokomplek 2(1):161–170, Gambar 8. CC BY 4.0.",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/lalat-buah-gejala-1.webp",
+            "width_px": 323,
+            "height_px": 172,
+            "bytes": 6626,
+            "sha256": "sha256:1a3cb1fc17ff5f29a9d84f63dcd71b0ded16496306e43d6fa66fd4b597f52678",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "lalat-buah-organisme-1",
+          "role": "organisme",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Lima panel morfologi imago Bactrocera dorsalis yang ditangkap di pertanaman cabai keriting Lombok Timur: kepala, abdomen, toraks, tungkai, dan pola sayap, disandingkan dengan gambar acuan buku determinasi."
+          },
+          "identification": {
+            "id": "Determinasi kunci morfologi memakai The Australian Handbook for the Identification of Fruit Flies (Plant Health Australia, 2018): bintik hitam besar pada muka, pola pita sayap, ciri skutum. Foto spesimen sendiri, bukan foto ulang."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "crop_from": "Gambar 1",
+            "from_pdf": true,
+            "warning": "DITAHAN 25 Agu 2026: PDF-nya memuat LIMA pelat morfologi Bactrocera yang nyaris seragam (kepala, abdomen, toraks, tungkai, sayap + imago utuh), dan tidak ada penanda di dalam gambar yang menunjukkan mana yang B. dorsalis. Memilih salah satu berarti menebak spesies. Peran organisme sudah terisi dua sumber lain."
+          },
+          "source": {
+            "page_url": "https://journal.unram.ac.id/index.php/jima/article/view/2332",
+            "publisher": "Jurnal Ilmiah Mahasiswa AGROKOMPLEK (Fakultas Pertanian, Universitas Mataram)",
+            "author": "Holis, Haryanto, Isnaini",
+            "year": 2023,
+            "doi": "10.29303/jima.v2i1.2332",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Holis, Haryanto, Isnaini (2023) Populasi dan Intensitas Serangan Lalat Buah (Bactrocera spp.) pada Pertanaman Cabai Keriting di Desa Darmasari, Lombok Timur. J. Ilm. Mhs. Agrokomplek 2(1):161–170, Gambar 1. CC BY 4.0.",
+            "redistributable": true
+          }
+        },
+        {
+          "key": "lalat-buah-organisme-2",
+          "role": "organisme",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Foto diagnostik spesimen awetan Bactrocera dorsalis dari sisi dorsal, kualitas museum, memperlihatkan skutum hitam dengan pita lateral kuning dan pola pita sayap."
+          },
+          "identification": {
+            "id": "Spesimen museum berlabel lokalitas (\"Taiwan: Taipei, Shihlin, 4–11 June 2002 (NAQS, Mareeba)\"), difoto untuk pustaka diagnostik biosekuriti PaDIL — determinasi kurator, bukan tebakan pengunggah."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/1/17/Bactrocera_dorsalis_dorsal.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Bactrocera_dorsalis_dorsal.jpg",
+            "publisher": "PaDIL (Pests and Diseases Image Library) / Museums Victoria, lewat Wikimedia Commons",
+            "author": "Ken Walker, Museums Victoria",
+            "year": 2010,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-3.0-AU",
+            "credit": "Ken Walker, Museums Victoria / PaDIL. Bactrocera dorsalis, dorsal. CC BY 3.0 AU.",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/lalat-buah-organisme-2.webp",
+            "width_px": 720,
+            "height_px": 540,
+            "bytes": 21084,
+            "sha256": "sha256:ad97767854e037476cafc7299a26bf746424538075a5ddad4b7562246d0c3f57",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "lalat-buah-organisme-3",
+          "role": "organisme",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Lalat buah betina Bactrocera dorsalis sedang menusukkan ovipositornya menembus kulit buah pepaya untuk meletakkan telur — memperlihatkan persis mekanisme yang meninggalkan lubang sebesar ujung jarum."
+          },
+          "identification": {
+            "id": "Keterangan resmi USDA-ARS dari kegiatan penanganan wabah lalat buah oriental di Polinesia Prancis; determinasi oleh peneliti ARS, metode tidak dituliskan."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "warning": "Bukan lisensi CC formal melainkan domain publik karya pemerintah AS — untuk kolom lisensi saya isikan CC0-1.0 sebagai padanan terdekat dalam daftar nilai brief; bunyi sebenarnya di Commons adalah \"Public domain / PD USDA ARS\". Inangnya pepaya, bukan cabai — pakai untuk menerangkan SEBAB lubangnya, jangan diberi kapsi seolah buah cabai."
+          },
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/c/cd/K9588-2_%288424907472%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:K9588-2_(8424907472).jpg",
+            "publisher": "USDA Agricultural Research Service, lewat Wikimedia Commons",
+            "author": "Scott Bauer, USDA-ARS",
+            "year": 2011,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC0-1.0",
+            "credit": "Scott Bauer, USDA Agricultural Research Service. Domain publik (karya pemerintah federal AS).",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/lalat-buah-organisme-3.webp",
+            "width_px": 1200,
+            "height_px": 926,
+            "bytes": 81350,
+            "sha256": "sha256:eef99fcf8a544212ec9cabe7026e66f56d8630bf208334e95eff38d3f9d4aea8",
+            "exif_stripped": true
+          }
         }
       ]
     },
@@ -821,7 +1430,141 @@
       },
       "definition": {
         "id": "Berbeda dari ulat grayak jagung (Spodoptera frugiperda) yang masuk ke dalam corong pucuk dan bertahan di situ: yang ini makan dari luar, dan bersembunyi di tanah atau ketiak daun pada siang hari."
-      }
+      },
+      "symptom_title": {
+        "id": "Daun berlubang sampai tinggal tulang daunnya"
+      },
+      "symptom_brief": {
+        "id": "Kerusakannya bertambah cepat dalam semalam, dan butiran kotoran hitam menumpuk di ketiak daun."
+      },
+      "images": [
+        {
+          "key": "ulat-grayak-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Gumpalan telur berbulu krem di permukaan daun talas, dikelilingi rapat oleh puluhan larva instar pertama gelap yang baru menetas dan masih menumpuk di satu titik."
+          },
+          "identification": {
+            "id": "PaDIL adalah pustaka gambar biosekuriti resmi Australia; foto ini bagian dari dokumentasi lapangan serangan S. litura pada talas di Fiji dengan lokasi dan tanggal tercatat. Determinasi lembaga, bukan pengunggah anonim. Kelompok telur berbulu sisik yang khas Spodoptera memperkuatnya."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/a/ab/Spodoptera_litura_emerging_larvae.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Spodoptera_litura_emerging_larvae.jpg",
+            "publisher": "PaDIL (Pests and Diseases Image Library) / Queensland University of Technology — dimuat ulang di Wikimedia Commons",
+            "author": "Amy Carmichael, Queensland University of Technology",
+            "year": 2005,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-3.0-AU",
+            "credit": "Amy Carmichael, Queensland University of Technology, PaDIL, CC BY 3.0 AU, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/ulat-grayak-pembanding-1.webp",
+            "width_px": 720,
+            "height_px": 540,
+            "bytes": 59518,
+            "sha256": "sha256:d878f31f69ffb9b10a6728d694190990fb7154084bb91522fc44d7d7fca2fe4e",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "ulat-grayak-organisme-1",
+          "role": "organisme",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Larva instar akhir cokelat kelabu difoto dari samping-atas di atas alas terang; sepanjang punggungnya berderet bercak hitam berbatas pucat, dan bercak paling depan menonjol tepat di belakang kepala."
+          },
+          "identification": {
+            "id": "Deskripsi berkas menyatakan: 'Species identification by Senior Technician Entomology at Plant Health & Environment Laboratory, Biosecurity New Zealand.' Determinasi laboratorium diagnostik biosekuriti resmi, bukan pengunggah — ini rantai bukti terkuat di antara kandidat berlisensi bersih untuk OPT ini."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/b/b3/Spodoptera_litura_larva_L.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Spodoptera_litura_larva_L.jpg",
+            "publisher": "Wikimedia Commons",
+            "author": "M. de Lisle",
+            "year": 2022,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-4.0",
+            "credit": "M. de Lisle, CC BY-SA 4.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/ulat-grayak-organisme-1.webp",
+            "width_px": 1200,
+            "height_px": 900,
+            "bytes": 69336,
+            "sha256": "sha256:1f08ff48018c5454425633a8e1a1377667617ffdd51571ea80c21fd2d2928e1d",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "ulat-grayak-organisme-2",
+          "role": "organisme",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Larva instar akhir gelap merayap di atas daun kemerahan di kebun: garis-garis kuning tipis memanjang di punggung dan sisi, dengan deretan bercak hitam besar yang menonjol di ruas-ruas depan."
+          },
+          "identification": {
+            "id": "Research Grade: dua identifikasi yang sepakat pada Spodoptera litura (pengunggah jasonalexander + wallacechen), tidak ada identifikasi yang berbeda. Tidak ada kunci morfologi tertulis dan tidak ada pemeriksaan spesimen."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://inaturalist-open-data.s3.amazonaws.com/photos/13462669/original.jpeg",
+            "page_url": "https://www.inaturalist.org/observations/9831671",
+            "publisher": "iNaturalist",
+            "author": "Jason Alexander",
+            "year": 2013,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "(c) Jason Alexander, CC BY 4.0, via iNaturalist (observation 9831671)",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/ulat-grayak-organisme-2.webp",
+            "width_px": 512,
+            "height_px": 384,
+            "bytes": 47276,
+            "sha256": "sha256:575e506095570e3f486fe881da22cffca46b3271d6ed6f37f426f4d54c58c2cb",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "ulat-grayak-pembanding-2",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Gambar ilmiah larva dari atas: tiap ruas punggung membawa sepasang bercak hitam pekat, dan pasangan di ruas perut pertama — tepat di belakang ruas dada, di belakang kepala — jelas paling besar."
+          },
+          "identification": {
+            "id": "Ilustrasi diagnostik yang dibuat Des Helmore untuk koleksi acuan serangga Manaaki Whenua – Landcare Research, lembaga riset negara Selandia Baru; penamaan spesies datang dari lembaga itu, bukan penggambar sendiri."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "warning": "INI GAMBAR TANGAN, BUKAN FOTO — jangan disajikan seolah foto lapangan. Nilainya justru di situ: pola sepasang bercak hitam per ruas terbaca tanpa gangguan bayangan, warna inang, atau posisi larva, jadi cocok jadi diagram pendamping di sebelah foto."
+          },
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/a/a4/LEPI_Noctuidae_Spodoptera_litura_larva.png",
+            "page_url": "https://commons.wikimedia.org/wiki/File:LEPI_Noctuidae_Spodoptera_litura_larva.png",
+            "publisher": "Manaaki Whenua – Landcare Research (Selandia Baru), dimuat ulang di Wikimedia Commons",
+            "author": "Desmond W. Helmore",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Desmond W. Helmore, Manaaki Whenua – Landcare Research, CC BY 4.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/ulat-grayak-pembanding-2.webp",
+            "width_px": 1200,
+            "height_px": 335,
+            "bytes": 88556,
+            "sha256": "sha256:fe45ae73b2435f853ee92b2dc012cae46c73367fad73292851c4e7cd2da2d6af",
+            "exif_stripped": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000006",
@@ -968,6 +1711,180 @@
           },
           "dasar": "Panonychus citri memberi gejala yang sama pada jeruk: daun kusam berbintik keperakan lalu memerah tembaga, dan tungau merah kecil di permukaan bawah yang cuma terlihat bila daun ditepuk di atas kertas putih. Membedakannya dari Tetranychus menuntut kaca pembesar kuat, sementara keputusan lapangannya — akarisida, bukan insektisida — sama."
         }
+      ],
+      "symptom_title": {
+        "id": "Daun berbintik kuning halus rapat seperti tertusuk jarum"
+      },
+      "symptom_brief": {
+        "id": "Lalu menguning menyeluruh dan kering; serangan berat meninggalkan anyaman benang halus di pucuk."
+      },
+      "images": [
+        {
+          "key": "tungau-merah-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Bawah daun paprika/cabai berbercak pucat kekuningan tidak merata sampai daunnya menguning kelabu, dengan tungau-tungau putih kecil dan beberapa helai benang halus di sela tulang daun."
+          },
+          "identification": {
+            "id": "Hanya penentuan pemotret (judul berkas: 'bonenspintmijt' = nama Belanda untuk Tetranychus urticae). Tidak ada kunci morfologi, preparat, atau tinjauan kurator. Dari gambarnya sendiri yang benar-benar terverifikasi cuma tingkat famili Tetranychidae, karena ada anyaman benang."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "warning": "Peringatan penting untuk semua kandidat tungau: determinasi Tetranychus sampai tingkat spesies sebenarnya menuntut preparat aedeagus jantan — di Indonesia T."
+          },
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/1/1d/Tetranychus_urticae_on_sweet_pepper%2C_Bonenspintmijt_op_paprika_%282%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Tetranychus_urticae_on_sweet_pepper,_Bonenspintmijt_op_paprika_(2).jpg",
+            "publisher": "Wikimedia Commons",
+            "author": "Rasbak",
+            "year": 2009,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-3.0",
+            "credit": "Rasbak, CC BY-SA 3.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/tungau-merah-gejala-1.webp",
+            "width_px": 1200,
+            "height_px": 900,
+            "bytes": 78086,
+            "sha256": "sha256:96f6a565bf76f175564a114a5ba2a6824fba02995cc9118ec6e994cdb9196bcd",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "tungau-merah-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Pucuk tanaman paprika beserta kuncup bunganya terbungkus rapat anyaman benang putih keabuan yang menjembatani daun-daun muda di sekelilingnya."
+          },
+          "identification": {
+            "id": "Penentuan pemotret saja. Yang terverifikasi dari gambar: anyaman benang tebal khas Tetranychidae di pucuk tanaman Capsicum annuum."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/9/95/Spint_%28Tetranychus_urticae%29_op_paprika.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Spint_(Tetranychus_urticae)_op_paprika.jpg",
+            "publisher": "Wikimedia Commons",
+            "author": "Rasbak",
+            "year": 2005,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-3.0",
+            "credit": "Rasbak, CC BY-SA 3.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/tungau-merah-pembanding-1.webp",
+            "width_px": 844,
+            "height_px": 888,
+            "bytes": 101894,
+            "sha256": "sha256:4ada34122b3f2a98548e41252ddb83f3c904b407b1a5de7151680c2095e2ff91",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "tungau-merah-pembanding-2",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Benang-benang sutra halus terentang dari batang ke bawah daun paprika, dengan tungau-tungau pucat dan butiran kotoran gelap menempel di sepanjangnya; daun di sekitarnya sudah belang kecoklatan."
+          },
+          "identification": {
+            "id": "Penentuan pemotret saja. Dari gambar terverifikasi: benang sutra + tungau kecil di bawah daun = Tetranychidae."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/9/91/Tetranychus_urticae_on_sweet_pepper%2C_Bonenspintmijt_op_paprika.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Tetranychus_urticae_on_sweet_pepper,_Bonenspintmijt_op_paprika.jpg",
+            "publisher": "Wikimedia Commons",
+            "author": "Rasbak",
+            "year": 2009,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-3.0",
+            "credit": "Rasbak, CC BY-SA 3.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/tungau-merah-pembanding-2.webp",
+            "width_px": 1200,
+            "height_px": 900,
+            "bytes": 145498,
+            "sha256": "sha256:c55973ee6c79d379d61dc163efc6478c8bf3601a3a807a8eb8faeab7a9572169",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "tungau-merah-organisme-1",
+          "role": "organisme",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Tungau betina bentuk hijau dilihat dari atas dengan pembesaran mikroskop: badan bening kekuningan membawa SEPASANG BERCAK GELAP BESAR di kiri-kanan punggung, sepasang mata merah di depan, bulu-bulu panjang di punggung, dan segumpal kotoran hitam di sebelahnya."
+          },
+          "identification": {
+            "id": "Foto mikroskop bertumpuk fokus (23 bidikan, objektif Nikon achromatic 10x 160/0.25) oleh Gilles San Martin; berkas dikategorikan Commons di bawah 'Research at Universite catholique de Louvain', jadi bahannya koloni riset, bukan temuan kebun sembarangan. Meski begitu determinasinya tetap pernyataan pemotret — tidak ada kunci morfologi atau nomor voucher yang disebut."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "warning": "'Tetranychus urticae with silk threads.jpg' dan 'Tetranychus urticae (4883560779).jpg' dari sesi yang sama) badannya merah pekat sehingga bercaknya TIDAK kelihatan; jangan pakai itu untuk ciri ini. urticae (16353624526).jpg', CC-BY-2.0 di Commons / CC-BY-4.0 di sumber) — tajam, tapi hitam-putih sehingga bercaknya justru hilang."
+          },
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/e/e5/Tetranychus_urticae_%284884160894%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Tetranychus_urticae_(4884160894).jpg",
+            "publisher": "Wikimedia Commons (asal: arus Flickr Gilles San Martin)",
+            "author": "Gilles San Martin",
+            "year": 2010,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-2.0",
+            "credit": "Gilles San Martin, CC BY-SA 2.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/tungau-merah-organisme-1.webp",
+            "width_px": 1200,
+            "height_px": 803,
+            "bytes": 255082,
+            "sha256": "sha256:ceeba66aa9e5106c13a46c2df4e9e233ac97dfb334dc5a94335d14cd9a5795d9",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "tungau-merah-kekeliruan-1",
+          "role": "kekeliruan",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Dua bagian: foto mikroskop elektron tungau kuning betina Polyphagotarsonemus latus pada pembesaran 1.200x dengan bar skala 50 um, dan di sebelahnya pucuk cabai di lapangan yang daunnya mengeriting mengeras karena tungau itu."
+          },
+          "identification": {
+            "id": "Kuat. Koloni iso-female dibangun dari tungau yang dikumpulkan dari tanaman cabai (Juli 2020), lalu identitasnya ditegakkan dengan DNA barcoding: sekuens COI 631 bp disetorkan ke NCBI-GenBank (ON103156) dan spesimennya ke BOLD v4 (BIN AED8321). Seluruh studi genomiknya berdiri di atas identitas itu."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel a dan b — peta ber-kredit CABI dibuang",
+            "warning": "PERINGATAN BACA DULU: gambar ini BUKAN tungau merah. Panel (b) memperlihatkan gejala keriting itu di cabai lapangan, jadi ini justru bukti pembanding untuk blok 'Pastikan dulu'."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/6505/11233664/40192a15cba0/41597_2024_3579_Fig1_HTML.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11233664/",
+            "publisher": "Scientific Data (Springer Nature)",
+            "author": "Muthugounder Mohan, Neenu Augustine, Selva Babu Selvamani, Aneesha P J, Upasna Selvapandian, Jyoti Pathak, Gandhi Gracy R, Venkatesan Thiruvengadam, Sushil S N (ICAR-National Bureau of Agricultural Insect Resources, Bengaluru, India)",
+            "year": 2024,
+            "doi": "10.1038/s41597-024-03579-4",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Mohan M. dkk. (2024), Scientific Data 11, doi:10.1038/s41597-024-03579-4, Gambar 1 — CC BY 4.0 — dipotong ke panel a dan b — peta ber-kredit CABI dibuang",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/tungau-merah-kekeliruan-1.webp",
+            "width_px": 675,
+            "height_px": 274,
+            "bytes": 25836,
+            "sha256": "sha256:1a879899db9b84d9edfbcd935cd57cafd2c093c33cca92b60a2a0fd9d93d4f49",
+            "exif_stripped": true
+          }
+        }
       ]
     },
     {
@@ -1082,7 +1999,226 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "symptom_title": {
+        "id": "Bercak melingkar cekung dan menghitam pada buah"
+      },
+      "symptom_brief": {
+        "id": "Di tengah bercak muncul titik-titik hitam kecil tersusun melingkar, dan buahnya mengering keriput."
+      },
+      "images": [
+        {
+          "key": "antraknosa-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Delapan buah cabai merah berjajar dengan luka antraknosa bertahap, dari satu bercak cekung kecil sampai buah yang hampir seluruhnya menghitam dan keriput."
+          },
+          "identification": {
+            "id": "Artikel tinjauan sejawat dari Banaras Hindu University. Gambar disajikan sebagai gejala khas antraknosa cabai pada tingkat genus Colletotrichum; tidak ada isolasi atau uji Koch untuk buah yang difoto itu sendiri."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "crop_from": "panel A"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/b537/5044472/274e5c684744/fmicb-07-01527-g0004.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5044472/",
+            "publisher": "Frontiers in Microbiology",
+            "author": "Saxena A, Raghuwanshi R, Gupta VK, Singh HB",
+            "year": 2016,
+            "doi": "10.3389/fmicb.2016.01527",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Saxena A, Raghuwanshi R, Gupta VK, Singh HB (2016) Chilli Anthracnose: The Epidemiology and Management. Front. Microbiol. 7:1527, Gambar 4A. CC BY 4.0. — dipotong ke panel A",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/antraknosa-gejala-1.webp",
+            "width_px": 614,
+            "height_px": 336,
+            "bytes": 15568,
+            "sha256": "sha256:51615f714258b8efe01a66278fcd95edcfef87eec21f36e64e5d2a4c73bc388f",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "antraknosa-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Aservulus Colletotrichum sebagaimana terlihat langsung di permukaan buah cabai pada pembesaran 10x: gerombolan seta hitam kaku memancar dari tiap titik — inilah wujud sebenarnya titik-titik hitam yang terlihat mata telanjang di tengah bercak."
+          },
+          "identification": {
+            "id": "Artikel tinjauan sejawat; struktur (seta, aservulus, konidia) adalah ciri diagnostik genus Colletotrichum yang dinyatakan penulis. Tidak ada penentuan spesies untuk pelat ini."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "crop_from": "panel F"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/b537/5044472/3e7938bdd9b3/fmicb-07-01527-g0005.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5044472/",
+            "publisher": "Frontiers in Microbiology",
+            "author": "Saxena A, Raghuwanshi R, Gupta VK, Singh HB",
+            "year": 2016,
+            "doi": "10.3389/fmicb.2016.01527",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Saxena A, Raghuwanshi R, Gupta VK, Singh HB (2016) Chilli Anthracnose: The Epidemiology and Management. Front. Microbiol. 7:1527, Gambar 5 (panel D–F). CC BY 4.0. — dipotong ke panel F",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/antraknosa-pembanding-1.webp",
+            "width_px": 278,
+            "height_px": 228,
+            "bytes": 22938,
+            "sha256": "sha256:cf7ad8bd4d93c110e84fc3dfb0845a23a64ebc6b0f0da83f05d5690bde4e161b",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "antraknosa-gejala-2",
+          "role": "gejala_khas",
+          "matches": "symptom_brief",
+          "shows": {
+            "id": "Sebuah buah cabai hijau dengan satu luka cekung, dan di tengah luka itu aservulus hitam tersusun melingkar sepusat — persis susunan yang jadi penentu bedanya dari busuk karena tusukan lalat buah."
+          },
+          "identification": {
+            "id": "Isolat dari luka yang difoto dikarakterisasi morfologi lalu diidentifikasi lewat filogeni multi-lokus (ITS, TUB2, ACT, GAPDH, CAL) dan diuji patogenisitasnya pada buah cabai; satu spesies baru (C. sichuanensis) dideskripsi."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel a"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/8bfa/5016793/a7d2155dffdc/srep32761-f1.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC5016793/",
+            "publisher": "Scientific Reports (Nature Portfolio)",
+            "author": "Liu F, Tang G, Zheng X, Li Y, Sun X, Qi X, Zhou Y, Xu J, Chen H, Chang X, Zhang S, Gong G",
+            "year": 2016,
+            "doi": "10.1038/srep32761",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Liu F dkk. (2016) Molecular and phenotypic characterization of Colletotrichum species associated with anthracnose disease in peppers from Sichuan Province, China. Sci. Rep. 6:32761, Gambar 1. CC BY 4.0. — dipotong ke panel a",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/antraknosa-gejala-2.webp",
+            "width_px": 268,
+            "height_px": 356,
+            "bytes": 11294,
+            "sha256": "sha256:c709899fc7725aa630db6bc48329549eca576ada2c2b3b11bc3129c32819dcb4",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "antraknosa-lanjut-1",
+          "role": "serangan_lanjut",
+          "matches": "symptom_brief",
+          "shows": {
+            "id": "Sepuluh buah cabai merah pada serangan lanjut, sebagian dibelah membujur: dagingnya mengering keputihan bertabur aservulus hitam, dan dua irisan melintang memperlihatkan cincin sepusat sampai ke dalam buah."
+          },
+          "identification": {
+            "id": "296 isolat; identifikasi morfologi ditambah filogeni multi-lokus (ITS, ACT, CHS-1, GAPDH, TUB2, HIS3) yang memisahkan 10 spesies Colletotrichum, disertai uji patogenisitas pada buah cabai (Gambar 12 artikel yang sama)."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel I–R"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/3020/10934800/28cb658993c6/plants-13-00728-g001.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10934800/",
+            "publisher": "Plants (MDPI)",
+            "author": "Zhang A, Li L, Xie X, Chai A, Shi Y, Xing D, Yu Z, Li B",
+            "year": 2024,
+            "doi": "10.3390/plants13050728",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Zhang A dkk. (2024) Identification and Genetic Diversity Analysis of the Pathogen of Anthracnose of Pepper in Guizhou. Plants 13(5):728, Gambar 1. CC BY 4.0. — dipotong ke panel I–R",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/antraknosa-lanjut-1.webp",
+            "width_px": 784,
+            "height_px": 460,
+            "bytes": 41312,
+            "sha256": "sha256:a95e380cd0e452c0d45748889a9b7c0019b22adb641c9414e991269fc529fe97",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "antraknosa-gejala-3",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Sebuah buah cabai di lapangan Yogyakarta dengan satu luka antraknosa besar yang cekung dan menghitam di tengah, kulit di sekitarnya menguning dan mengering."
+          },
+          "identification": {
+            "id": "14 isolat dari cabai di DIY; morfologi koloni dan konidia ditambah filogeni tiga gen (ITS1-4, gapdh, tub2) menghasilkan C. scovillei, C. truncatum, C. siamense, dan C. makassarii; disertai uji patogenisitas pada buah cabai (Gambar 8)."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel A",
+            "from_pdf": true,
+            "warning": "Keterangan aslinya berbunyi \"(A) Colletotrichum frutescens on fruit\" — hampir pasti salah ketik untuk Capsicum frutescens (inangnya), karena tidak ada spesies bernama Colletotrichum frutescens dalam artikel itu; jangan salin nama itu apa adanya."
+          },
+          "source": {
+            "page_url": "https://journal.ugm.ac.id/jpti/article/view/58955",
+            "publisher": "Jurnal Perlindungan Tanaman Indonesia (Universitas Gadjah Mada)",
+            "author": "Dhika Sri Anggrahini, Arif Wibowo, Siti Subandiyah",
+            "year": 2020,
+            "doi": "10.22146/jpti.58955",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-4.0",
+            "credit": "Anggrahini DS, Wibowo A, Subandiyah S (2020) Morphological and Molecular Identification of Colletotrichum spp. Associated with Chili Anthracnose Disease in Yogyakarta Region. J. Perlindungan Tanaman Indonesia 24(2), Gambar 2. CC BY-SA 4.0. — dipotong ke panel A",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/antraknosa-gejala-3.webp",
+            "width_px": 546,
+            "height_px": 319,
+            "bytes": 26430,
+            "sha256": "sha256:b85eaf291e2002fd4de3256f6f0a7b7f35132f34c4461c14f3ae67c3397c34dc",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "antraknosa-organisme-1",
+          "role": "organisme",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Koloni Colletotrichum makassarense (holotipe CBS 143664, dari cabai Makassar) di media PDA dilihat dari muka (A) dan dari balik cawan (B), beserta massa konidia jingga di atas miselium (C)."
+          },
+          "identification": {
+            "id": "260 isolat dari cabai di Indonesia, Malaysia, Sri Lanka, Thailand, Taiwan; filogeni multi-gen (ITS, gapdh, chs-1, act, tub2, his3, ApMat, gs) plus uji patogenisitas. C. makassarense dideskripsi sebagai spesies baru dari cabai Makassar, Sulawesi Selatan; ini gambar holotipenya."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel A–C"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/2e0a/7184891/30228de5c001/43008_2019_1_Fig7_HTML.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7184891/",
+            "publisher": "IMA Fungus",
+            "author": "de Silva DD, Groenewald JZ, Crous PW, Ades PK, Nasruddin A, Mongkolporn O, Taylor PWJ",
+            "year": 2019,
+            "doi": "10.1186/s43008-019-0001-y",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "de Silva DD, Groenewald JZ, Crous PW, Ades PK, Nasruddin A, Mongkolporn O, Taylor PWJ (2019) Identification, prevalence and pathogenicity of Colletotrichum species causing anthracnose of Capsicum annuum in Asia. IMA Fungus 10:8, Gambar 7. CC BY 4.0. — dipotong ke panel A–C",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/antraknosa-organisme-1.webp",
+            "width_px": 709,
+            "height_px": 200,
+            "bytes": 28704,
+            "sha256": "sha256:9996bbb80f9bf8e5ffb5639bf3e1a33841d19ca4b4807023bc84045d26fb7ff3",
+            "exif_stripped": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000008",
@@ -1169,7 +2305,170 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "symptom_title": {
+        "id": "Tanaman layu perlahan selama beberapa hari"
+      },
+      "symptom_brief": {
+        "id": "Daun bawah menguning lebih dulu, sering hanya pada satu sisi, dan layunya menetap walau tanah lembap."
+      },
+      "images": [
+        {
+          "key": "layu-fusarium-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Dua perbandingan berdampingan tanaman cabai kontrol dan tanaman yang diinokulasi Fusarium oxysporum f.sp. capsici: (A) seluruh tanaman beserta akarnya, (B) keduanya masih di dalam pot."
+          },
+          "identification": {
+            "id": "Isolat FOC-1 diambil dari tanaman cabai sakit di Hyderabad, Sindh, Pakistan; diidentifikasi lewat morfologi (konidiofor, mikro- dan makrokonidia) dan filogeni sekuens ITS; patogenisitasnya diuji balik ke bibit cabai dan patogennya diisolasi ulang dari akar yang terinfeksi — postulat Koch lengkap. Ini SATU-SATUNYA kandidat saya yang forma specialis capsici-nya dipertanggungjawabkan lewat uji balik ke cabai."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "warning": "Keterangan aslinya menyebut 'stunted growth, wilting symptoms' — tidak menyebut daun bawah menguning sepihak, jadi jangan dipakai untuk mengklaim ciri sepihak itu.",
+            "crop_from": "panel A dan B — grafik batang D–E dan piring biakan C dibuang"
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/dac1/11163047/77260e5ade37/fmicb-15-1388439-g003.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11163047/",
+            "publisher": "Frontiers in Microbiology",
+            "author": "Iqbal O, Syed RN, Rajput NA, Wang Y, dkk.",
+            "year": 2024,
+            "doi": "10.3389/fmicb.2024.1388439",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Iqbal O, Syed RN, Rajput NA, Wang Y, dkk. (2024), Front Microbiol 15:1388439, CC BY 4.0 — dipotong ke panel A dan B — grafik batang D–E dan piring biakan C dibuang",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-fusarium-gejala-1.webp",
+            "width_px": 500,
+            "height_px": 216,
+            "bytes": 9530,
+            "sha256": "sha256:4f61a0378b4f9c387548fe19405b0ad04f26de389691810eae879fcd024ab47e",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-fusarium-organisme-1",
+          "role": "organisme",
+          "matches": "symptoms",
+          "shows": {
+            "id": "Fusarium oxysporum f.sp. capsici FOC-1: pertumbuhan miselium di media PDA, konidiofor, serta mikro- dan makrokonidia di bawah mikroskop."
+          },
+          "identification": {
+            "id": "Morfologi + filogeni ITS + postulat Koch pada cabai (rincian sama dengan entri Gambar 3 di atas)."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/dac1/11163047/25a02bba02b0/fmicb-15-1388439-g001.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11163047/",
+            "publisher": "Frontiers in Microbiology",
+            "author": "Iqbal O, Syed RN, Rajput NA, Wang Y, dkk.",
+            "year": 2024,
+            "doi": "10.3389/fmicb.2024.1388439",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Iqbal O, Syed RN, Rajput NA, Wang Y, dkk. (2024), Front Microbiol 15:1388439, CC BY 4.0",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-fusarium-organisme-1.webp",
+            "width_px": 767,
+            "height_px": 218,
+            "bytes": 21158,
+            "sha256": "sha256:ea2b68d116748014669723ab70cb97f7b68c9556f996c3039cab045efcc98bc6",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-fusarium-organisme-2",
+          "role": "organisme",
+          "matches": "symptoms",
+          "shows": {
+            "id": "Konidia (k), fialid (f), dan konidiofor (kf) Fusarium oxysporum f.sp. capsici yang diisolasi dari batang cabai bergejala di Maluku."
+          },
+          "identification": {
+            "id": "Isolasi dari batang tanaman cabai bergejala di Maluku, lalu identifikasi MORFOLOGI SAJA (bentuk konidia, fialid, konidiofor, warna koloni). Tidak ada PCR maupun uji patogenisitas balik yang saya temukan di teksnya. Penamaan 'f.sp. capsici' di judul karena inangnya cabai, bukan karena uji forma specialis."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "from_pdf": true,
+            "warning": "DITAHAN 25 Agu 2026: page_url ojs3.unpatti.ac.id menjawab 404. Perlu alamat artikel yang benar."
+          },
+          "source": {
+            "page_url": "https://ojs3.unpatti.ac.id/index.php/agrosilvopasture-tech/article/view/15977",
+            "publisher": "Jurnal Agrosilvopasture-Tech, Universitas Pattimura",
+            "author": "Vanda C. Polhaupessy, Johanna Taribuka, Abraham Talahaturuson",
+            "year": 2025,
+            "doi": "10.30598/j.agrosilvopasture-tech.2025.4.1.100",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-4.0",
+            "credit": "Polhaupessy VC, Taribuka J, Talahaturuson A (2025), J Agrosilvopasture-Tech 4(1):100–107, CC BY-SA 4.0",
+            "redistributable": true
+          }
+        },
+        {
+          "key": "layu-fusarium-lanjut-1",
+          "role": "serangan_lanjut",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Tanaman cabai di lapangan memperlihatkan gejala layu berat."
+          },
+          "identification": {
+            "id": "Tanaman layu di lapangan jadi sumber isolasi; jamurnya diidentifikasi sebagai Fusarium oxysporum lewat biakan murni dan pengamatan makro/mikrokonidia (Gambar 2). Identifikasi MORFOLOGI, tanpa sekuensing; forma specialis tidak diuji. Foto lapangnya sendiri tidak disertai bukti bahwa penyebab tunggalnya fusarium."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/a304/11212620/c647a71fc487/peerj-12-17578-g001.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11212620/",
+            "publisher": "PeerJ",
+            "author": "Shiva B, Srinivas P, Khulbe D, Rithesh L, dkk.",
+            "year": 2024,
+            "doi": "10.7717/peerj.17578",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Shiva B, Srinivas P, Khulbe D, Rithesh L, dkk. (2024), PeerJ 12:e17578, CC BY 4.0",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-fusarium-lanjut-1.webp",
+            "width_px": 696,
+            "height_px": 318,
+            "bytes": 88844,
+            "sha256": "sha256:dd3bdd2c624edfd0f01d712460f5786174164ee7605d843d85d45469da562db5",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-fusarium-gejala-2",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Perkembangan gejala layu pada cabai dalam pot: kontrol berdampingan dengan tanaman yang diperlakukan F. equiseti, Fusarium sp., F. oxysporum, dan F. solani."
+          },
+          "identification": {
+            "id": "Empat isolat dari cabai layu di Kashmir diidentifikasi lewat morfologi DAN sekuensing daerah ITS, lalu diuji patogenisitasnya pada cabai dalam pot. Jadi panel yang berlabel F. oxysporum memang F. oxysporum yang terbukti membuat cabai layu."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "crop_from": "panel yang dimaksud",
+            "warning": "Pelatnya memuat lima tanaman berjajar (C, 1, 2, 3, 4) dan HANYA yang berlabel 3 yang F. oxysporum — empat lainnya spesies Fusarium lain. Sudah dicoba dipotong 25 Agu 2026 dan dilepas: tanamannya semaian pot yang terbaca sebagai ranting mati, dan potongan yang membuang labelnya justru kemasukan tanaman 4. Peran gejala_khas sudah terisi sumber lain yang lebih kuat."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/7526/7878897/ba31635d87fe/41598_2021_82854_Fig7_HTML.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7878897/",
+            "publisher": "Scientific Reports (Nature Portfolio)",
+            "author": "Hami A, Rasool RS, Khan NA, Mansoor S, Mir MA, Ahmed N, Masoodi KZ",
+            "year": 2021,
+            "doi": "10.1038/s41598-021-82854-5",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Hami A, Rasool RS, Khan NA, Mansoor S, Mir MA, Ahmed N, Masoodi KZ (2021), Sci Rep 11:3610, CC BY 4.0",
+            "redistributable": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000009",
@@ -1263,7 +2562,212 @@
       ],
       "notes": {
         "id": "Teks gejala dan ciri pembanding disusun dari pengetahuan agronomi mapan tentang OPT cabai, bukan dari registri. Berstatus draft: wajib ditinjau penyuluh atau BPTP sebelum dipakai sebagai dasar keputusan."
-      }
+      },
+      "symptom_title": {
+        "id": "Tanaman layu mendadak, daunnya MASIH HIJAU"
+      },
+      "symptom_brief": {
+        "id": "Sering hanya dalam satu sampai dua hari, dan pangkal batangnya kecoklatan dan basah."
+      },
+      "images": [
+        {
+          "key": "layu-bakteri-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Untaian lendir bakteri turun dari ujung potongan batang paprika/cabai yang baru dipotong — persis hasil positif uji gelas."
+          },
+          "identification": {
+            "id": "Diagnosis lapangan/laboratorium oleh patolog tanaman penyuluh (Scot Nelson, CTAHR Universitas Hawaii); tidak ada konfirmasi PCR yang dinyatakan. Kekuatannya: gambar ini SENDIRI adalah uji diagnostiknya — aliran lendir dari batang di air adalah tanda Ralstonia, bukan sekadar klaim judul."
+          },
+          "confidence": "tinggi",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Bacterial_wilt_3_%285684210989%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Bacterial_wilt_3_(5684210989).jpg",
+            "publisher": "Wikimedia Commons (asal: Flickr / Scot Nelson)",
+            "author": "Scot Nelson",
+            "year": 2003,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC0-1.0",
+            "credit": "Scot Nelson, CC0 1.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-bakteri-pembanding-1.webp",
+            "width_px": 900,
+            "height_px": 1200,
+            "bytes": 53068,
+            "sha256": "sha256:2efb64144e14dc70aa104ff02f9a715b45631fd9bcb81cfab7ca1582a42e3af3",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-bakteri-pembanding-2",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Potongan rimpang jahe sakit digantung dalam gelas piala berisi air bening; benang-benang bakteri keluar dari berkas pembuluhnya setelah beberapa menit."
+          },
+          "identification": {
+            "id": "Keterangan pemotret menyebut tegas: \"This is a diagnostic test for bacterial wilt caused by Ralstonia solanacearum race 4. The severed rhizome was suspended in a beaker of tap water and several minutes later the streams of bacteria emerged from the vasculature.\" Diagnosis penyuluh, tanpa PCR."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/4/4f/Bacterial_streaming_from_diseased_rhizome_of_edible_ginger_%289672419943%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Bacterial_streaming_from_diseased_rhizome_of_edible_ginger_(9672419943).jpg",
+            "publisher": "Wikimedia Commons (asal: Flickr / Scot Nelson)",
+            "author": "Scot Nelson",
+            "year": 2005,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC0-1.0",
+            "credit": "Scot Nelson, CC0 1.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-bakteri-pembanding-2.webp",
+            "width_px": 898,
+            "height_px": 1200,
+            "bytes": 44224,
+            "sha256": "sha256:695ddd1866ea9ef7d5913adadb4ce669a32d33ffc49889edfd5adbc369e1600b",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-bakteri-pembanding-3",
+          "role": "ciri_pembanding",
+          "matches": "symptom_brief",
+          "shows": {
+            "id": "Potongan batang paprika/cabai memperlihatkan nekrosis (pencoklatan) pada jaringan pembuluhnya akibat Ralstonia solanacearum."
+          },
+          "identification": {
+            "id": "Keterangan pemotret hanya menyebut \"Pathogen: Ralstonia solanacearum\"; diagnosis patolog penyuluh tanpa uji molekuler yang dinyatakan. Berasal dari rangkaian foto yang sama dengan uji gelas positif (Bacterial wilt 1–3), jadi rantai kasusnya konsisten."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "warning": "Jangan sandingkan foto ini dengan klaim \"ini bedanya\" tanpa uji gelas di sebelahnya."
+          },
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/4/4b/Bacterial_wilt_of_bell_pepper_Vascular_necrosis_%2811092023406%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Bacterial_wilt_of_bell_pepper_Vascular_necrosis_(11092023406).jpg",
+            "publisher": "Wikimedia Commons (asal: Flickr / Scot Nelson)",
+            "author": "Scot Nelson",
+            "year": 2003,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC0-1.0",
+            "credit": "Scot Nelson, CC0 1.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-bakteri-pembanding-3.webp",
+            "width_px": 822,
+            "height_px": 1200,
+            "bytes": 337196,
+            "sha256": "sha256:ceee82165df4db44683ef915159031bd3f2ef9fcb68d53b1916aef965a637ab8",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-bakteri-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Tanaman paprika/cabai roboh layu di petak, daunnya masih hijau dan belum menguning."
+          },
+          "identification": {
+            "id": "Diagnosis patolog penyuluh; satu rangkaian dengan foto uji gelas positif pada tanaman yang sama (Bacterial wilt 3, diambil hari yang sama). Rantai buktinya: gejala lapang + uji aliran bakteri positif."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "warning": "Kalau ternyata daunnya sudah menguning, foto ini justru merusak pembanding."
+          },
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/0/01/Bacterial_wilt_1_%285684778520%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Bacterial_wilt_1_(5684778520).jpg",
+            "publisher": "Wikimedia Commons (asal: Flickr / Scot Nelson)",
+            "author": "Scot Nelson",
+            "year": 2003,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC0-1.0",
+            "credit": "Scot Nelson, CC0 1.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-bakteri-gejala-1.webp",
+            "width_px": 900,
+            "height_px": 1200,
+            "bytes": 212446,
+            "sha256": "sha256:495eca371204ce712194eb09c01c4ee5e986a7bb01297f3685f965ddd5da4e05",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-bakteri-lanjut-1",
+          "role": "serangan_lanjut",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Serangan layu bakteri pada pertanaman cabai/paprika di lapangan, Mikronesia (iklim tropis basah, mirip Indonesia)."
+          },
+          "identification": {
+            "id": "Keterangan pemotret: \"Pathogen: Ralstonia solanacearum. Location: Federated States of Micronesia\". Diagnosis patolog penyuluh, tanpa uji molekuler yang dinyatakan."
+          },
+          "confidence": "sedang",
+          "source": {
+            "url": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Bacterial_wilt_of_pepper_%289159744719%29.jpg",
+            "page_url": "https://commons.wikimedia.org/wiki/File:Bacterial_wilt_of_pepper_(9159744719).jpg",
+            "publisher": "Wikimedia Commons (asal: Flickr / Scot Nelson)",
+            "author": "Scot Nelson",
+            "year": 2003,
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC0-1.0",
+            "credit": "Scot Nelson, CC0 1.0, via Wikimedia Commons",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-bakteri-lanjut-1.webp",
+            "width_px": 900,
+            "height_px": 1200,
+            "bytes": 248824,
+            "sha256": "sha256:23559ae832b1841d9036a3e93b2ae15147d1d08bf6ae2b39215855e088241668",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "layu-bakteri-gejala-2",
+          "role": "gejala_khas",
+          "matches": "distinguishing.1",
+          "shows": {
+            "id": "Deret lima tanaman cabai yang diinokulasi Ralstonia pseudosolanacearum, dari tanpa gejala sampai layu total — pada yang paling parah pun daunnya MASIH HIJAU, tidak menguning lebih dulu. Tiga sisipan memperbesar pangkal batangnya."
+          },
+          "identification": {
+            "id": "Galur R. solanacearum SL1931 yang dipakai di studi ini sudah disekuens genomnya dan ditetapkan sebagai Ralstonia pseudosolanacearum (Riu dkk. 2022, Microbiol Resour Announc, doi:10.1128/mra.00278-22) — yaitu filotipe I, kelompok yang umum di Asia. Inokulasi terkendali (infiltrasi daun, 1×10^6 CFU/mL) jadi penyebabnya pasti."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel A–E — bar kategori R/MR/S dibuang",
+            "warning": "Batasnya: foto bioassay ruang tumbuh, bukan hamparan; inokulasi lewat infiltrasi daun sehingga urutan gejalanya bisa berbeda dari infeksi akar di lapangan; keterangan menyebut ada 'abscission of leaves' pada panel F–H, jadi jangan ambil panel itu untuk mengilustrasikan 'daun masih hijau'."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/4734/7956186/0d01314a22b0/ijms-22-02279-g003.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC7956186/",
+            "publisher": "International Journal of Molecular Sciences (MDPI)",
+            "author": "Kwon JS, Nam JY, Yeom SI, Kang WH",
+            "year": 2021,
+            "doi": "10.3390/ijms22052279",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Kwon JS, Nam JY, Yeom SI, Kang WH (2021), Int J Mol Sci 22:2279, CC BY 4.0 — dipotong ke panel A–E — bar kategori R/MR/S dibuang",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/layu-bakteri-gejala-2.webp",
+            "width_px": 646,
+            "height_px": 206,
+            "bytes": 13254,
+            "sha256": "sha256:2cddfc9b75f224dc9a100bd065ef6474935b79043ffd5a1ce312ecafb554ffda",
+            "exif_stripped": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000010",
@@ -1344,7 +2848,157 @@
       "vector": {
         "id": "op:pst:00000003",
         "label": "Kutu kebul"
-      }
+      },
+      "symptom_title": {
+        "id": "Daun muda menguning terang dan mengecil"
+      },
+      "symptom_brief": {
+        "id": "Mengeriting ke atas dengan tulang daun menebal; tanaman kerdil dan tidak pulih walau disemprot apa pun."
+      },
+      "images": [
+        {
+          "key": "virus-kuning-gejala-1",
+          "role": "gejala_khas",
+          "matches": "symptom_title",
+          "shows": {
+            "id": "Satu tanaman cabai yang daun mudanya menguning terang, mengecil, dan mengeriting ke atas sehingga pucuknya mengumpul; tanamannya kerdil, sementara daun tua di bawah masih hijau."
+          },
+          "identification": {
+            "id": "Deteksi molekuler PCR dan sekuensing pada 360 sampel cabai dari Jawa; 329 sampel (91%) positif PepYLCIV. Artikel ini justru memisahkan PepYLCIV dari TYLCKaV dan ToLCNDV, dan Gambar 2 khusus memuat tanaman berinfeksi TUNGGAL PepYLCIV — jadi atribusi gejala ke virusnya paling bersih di sini."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel A",
+            "warning": "Perhatikan: artikel yang sama juga punya Gambar 4, 5, 6, 7 untuk infeksi campuran — JANGAN tertukar, gejalanya berbeda dan bukan PepYLCIV murni."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/893a/10301231/078d7af7e06e/viruses-15-01278-g002.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10301231/",
+            "publisher": "Viruses (MDPI)",
+            "author": "Wahyono A., Murti R.H., Hartono S., Nuringtyas T.R., Wijonarko A., Mulyantoro M., Firmansyah D., Afifuddin A., Purnama I.C.G.",
+            "year": 2023,
+            "doi": "10.3390/v15061278",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Wahyono A. dkk. (2023), Viruses 15(6):1278, Gambar 2 — CC BY 4.0 — dipotong ke panel A",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/virus-kuning-gejala-1.webp",
+            "width_px": 242,
+            "height_px": 242,
+            "bytes": 15392,
+            "sha256": "sha256:f0ed71024364f757f349f7657bd7526bab9d0a9b36080bac45bc4584124632e3",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "virus-kuning-pembanding-1",
+          "role": "ciri_pembanding",
+          "matches": "distinguishing.0",
+          "shows": {
+            "id": "Pucuk cabai rawit di Tuban yang daunnya menguning terang, mengecil, dan mengeriting — yang berubah hanya warna dan bentuknya: tidak ada lubang, bercak bertepi, goresan keperakan, anyaman benang, maupun serangga di permukaannya."
+          },
+          "identification": {
+            "id": "PCR gen AV1 (protein selubung) dengan primer universal Begomovirus Krusty & Homer, fragmen target 580 pb, lalu Sanger sequencing dua arah, BLAST, dan pohon filogeni. Nomor aksesi GenBank PQ187395–PQ187398. Judul gambarnya sendiri berbunyi \"...infected by PepYLCIV verified by a PCR detection\"."
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel D",
+            "from_pdf": true,
+            "warning": "PERINGATAN ISI: artikel ini melaporkan daun mencekung KE ATAS DAN KE BAWAH pada isolat yang sama (panel D). Klaim aplikasi \"mengeriting ke atas\" karena itu hanya separuh gambaran; kalau panel D dipakai, teksnya jangan menjanjikan arah keriting sebagai pembeda mutlak."
+          },
+          "source": {
+            "page_url": "https://journal.ugm.ac.id/jpti/article/view/99401",
+            "publisher": "Jurnal Perlindungan Tanaman Indonesia (Universitas Gadjah Mada)",
+            "author": "Nurenik Nurenik & Adi Rastono",
+            "year": 2025,
+            "doi": "10.22146/jpti.99401",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-4.0",
+            "credit": "Nurenik N. & Rastono A. (2025), J. Perlindungan Tanaman Indonesia 29(1):55–61, Gambar 1 — CC BY-SA 4.0 — dipotong ke panel D",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/virus-kuning-pembanding-1.webp",
+            "width_px": 332,
+            "height_px": 230,
+            "bytes": 26108,
+            "sha256": "sha256:a49bc6d125849ed93590d87b7bb3c64ba50405678714ee703eaeed19dfecccca",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "virus-kuning-pembanding-2",
+          "role": "ciri_pembanding",
+          "matches": "symptom_brief",
+          "shows": {
+            "id": "Pucuk cabai di Bali yang daunnya belang kuning-hijau, mengecil, dan tepinya melengkung ke atas sampai mengumpul di ujung ranting."
+          },
+          "identification": {
+            "id": "PCR dengan primer universal Begomovirus SPG1/SPG2, fragmen spesifik 912 pb teramplifikasi dari 12 sampel lapangan, dilanjutkan analisis sikuen DNA dan filogeni; homologi tertinggi ke PepYLCIV. Nomor aksesi GenBank LC381258–LC381280. Tabel 2 artikel menegaskan: \"Infection of Begomovirus was confirmed by PCR for all field samples showing symptom.\""
+          },
+          "confidence": "tinggi",
+          "prep": {
+            "crop_from": "panel F",
+            "from_pdf": true
+          },
+          "source": {
+            "page_url": "https://journal.ipb.ac.id/index.php/jfiti/article/view/37226",
+            "publisher": "Jurnal Fitopatologi Indonesia (Perhimpunan Fitopatologi Indonesia / IPB University)",
+            "author": "Dewa Gede Wiryangga Selangga, Suryo Wiyono, Anas Dinurrohman Susila, Sri Hendrastuti Hidayat",
+            "year": 2021,
+            "doi": "10.14692/jfi.17.6.217-224",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-SA-4.0",
+            "credit": "Selangga D.G.W., Wiyono S., Susila A.D., Hidayat S.H. (2021), J. Fitopatologi Indonesia 17(6):217–224, Gambar 1 — CC BY-SA 4.0 — dipotong ke panel F",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/virus-kuning-pembanding-2.webp",
+            "width_px": 232,
+            "height_px": 163,
+            "bytes": 7490,
+            "sha256": "sha256:d804c74088c484641f2981e62e93e231cbece76add6bf92da56f3a6db2ed1ca8",
+            "exif_stripped": true
+          }
+        },
+        {
+          "key": "virus-kuning-kekeliruan-1",
+          "role": "kekeliruan",
+          "matches": "symptom_brief",
+          "shows": {
+            "id": "Perbandingan berdampingan satu hamparan cabai yang terinfeksi begomovirus dengan tanaman cabai tahan yang tampak sehat, memperlihatkan bedanya postur dan warna dalam satu bingkai."
+          },
+          "identification": {
+            "id": "Status infeksi kedua kelompok tanaman diverifikasi PCR di dalam studi yang sama."
+          },
+          "confidence": "sedang",
+          "prep": {
+            "warning": "Gambar ini tetap saya masukkan karena memberi petani patokan \"seperti apa tanaman yang tidak kena\", yang justru sering hilang dari foto gejala."
+          },
+          "source": {
+            "url": "https://cdn.ncbi.nlm.nih.gov/pmc/blobs/893a/10301231/21e8ff8cd2c2/viruses-15-01278-g008.jpg",
+            "page_url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10301231/",
+            "publisher": "Viruses (MDPI)",
+            "author": "Wahyono A., Murti R.H., Hartono S., Nuringtyas T.R., Wijonarko A., Mulyantoro M., Firmansyah D., Afifuddin A., Purnama I.C.G.",
+            "year": 2023,
+            "doi": "10.3390/v15061278",
+            "retrieved_at": "2026-08-25T00:00:00Z",
+            "license": "CC-BY-4.0",
+            "credit": "Wahyono A. dkk. (2023), Viruses 15(6):1278, Gambar 8 — CC BY 4.0",
+            "redistributable": true
+          },
+          "file": {
+            "path": "gambar/opt/virus-kuning-kekeliruan-1.webp",
+            "width_px": 792,
+            "height_px": 267,
+            "bytes": 75538,
+            "sha256": "sha256:cb32be6276dbb020a474877a1217725327c86f49b5fa27807786e39177b83ad3",
+            "exif_stripped": true
+          }
+        }
+      ]
     },
     {
       "id": "op:pst:00000011",

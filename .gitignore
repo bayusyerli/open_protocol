@@ -3,6 +3,10 @@ node_modules/
 *.log
 data-registri/
 
+# Artefak regression test browser — laporan dan trace dibangun ulang oleh Playwright.
+spec/test-results/
+spec/playwright-report/
+
 # Indeks turunan — dibangun ulang dengan `node spec/tools/bangun-indeks.mjs --tulis`.
 # 5.142 berkas, 21 MB, deterministik dan sepenuhnya diturunkan dari spec/vocab/.
 spec/indeks/
@@ -17,6 +21,12 @@ toko_data/privat/
 # `node harga_data/tarik-bapanas.mjs`.
 harga_data/privat/
 
+# Registri klien LeSOS: situsnya tanpa medan lisensi, hanya tanda hak cipta. Fakta
+# sertifikatnya boleh dihitung, kompilasinya tidak diterbitkan ulang. Benih privat —
+# tarik ulang dengan `node lesos_data/tarik-lesos.mjs`. Singgahannya sudah bersih dari
+# data pribadi; narahubung dibuang sebelum menyentuh disk.
+lesos_data/privat/
+
 # Tarikan mentah SP2KP — 56 MB dalam satu berkas. Sumbernya berlisensi terbuka dan
 # keluaran ternormalkannya (harga_data/sp2kp-hnt.ndjson) memang naik ke repo; yang
 # mentah tidak, karena bisa ditarik ulang dengan `node harga_data/tarik-sp2kp.mjs`.
@@ -27,10 +37,39 @@ harga_data/mentah/
 harga_data/bin/
 
 # Halaman terbit — dibangun ulang dengan `node spec/tools/bangun-halaman.mjs --tulis`.
-# 4.350 berkas, 55 MB, deterministik dan sepenuhnya diturunkan dari spec/indeks/.
+# 30.739 berkas, 305 MB, deterministik dan sepenuhnya diturunkan dari spec/indeks/.
 terbit/
+
+# Rakitan siap unggah — `node spec/tools/rakit-situs.mjs` menyatukan app/, spec/indeks/,
+# terbit/, dan sw.js jadi satu akar. Seluruhnya hardlink ke tiga direktori di atas, jadi
+# ia tidak memakan ruang dua kali dan tidak pernah jadi sumber kebenaran.
+_situs/
 
 # Ruang lingkup akreditasi mentah dari KAN — 174 berkas, 14 MB, memuat salinan HTML
 # halaman rinciannya. Turunannya (lpk_data/lab-uji-tani.*) naik ke repo; yang mentah
 # ditarik ulang dengan `node lpk_data/tarik-lingkup.mjs`.
 lpk_data/raw/lingkup/
+
+# Sapuan mentah direktori toko — 25 MB respons OSM/Overpass, HTML lokapasar, dan
+# `syngenta-distributor-raw.ndjson` yang menurut toko_data/LAPIS.md TIDAK boleh terbit.
+# Yang naik ke repo hasil susunannya (`toko-tani-jawa.*`, `benih-alamat.ndjson`), bukan
+# bahan bakunya. Dipagari di sini supaya lapis privat tidak pernah ikut karena `git add -A`.
+toko_data/raw/
+
+# Artefak kerja sesi — respons API BPS, tabel harga sementara, dan cadangan worktree.
+# `kld.json` bahkan bukan JSON: ia berkas XLSX 12 MB yang salah ekstensi.
+allind.json
+hist.json
+kld.json
+konsep-perencanaan/
+simpanan-sesi-20260824/
+
+# Muatan mentah dataset penyakit tanaman — arsip ZIP/gambar dari Mendeley, Zenodo,
+# Figshare, dan GitHub. Bisa ditarik ulang dari `source_url` di
+# datasets/metadata/dataset-catalog.csv, dan checksumnya tersimpan di SHA256SUMS.txt
+# tiap dataset. Yang naik ke repo cuma metadatanya: README, katalog, laporan.
+datasets/**/raw/
+
+# Cache lokal wrangler — dibuat `wrangler dev` dan menyimpan state sesi serta build
+# sementara Worker. Tidak ada yang perlu dibagikan di dalamnya.
+.wrangler/

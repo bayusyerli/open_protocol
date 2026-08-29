@@ -1,0 +1,100 @@
+=== BWM-08 struktur & bukti verifikasi (GloBI) ===
+Perintah: curl -s 'https://api.globalbioticinteractions.org/interaction?sourceTaxon=<nama>
+            &interactionType=<pathogenOf|hasHost|interactsWith>&type=csv&fields=<9 medan>'
+Tanpa kunci API — GloBI terbuka. Tanggal: 2026-08-25
+
+Alternaria_porri__hasHost.csv                        baris=  124  target unik=  48  
+Alternaria_porri__interactsWith.csv                  baris=  139  target unik=  51  
+Alternaria_porri__pathogenOf.csv                     baris=    8  target unik=   3  
+Alternaria_solani__hasHost.csv                       baris=  252  target unik=  91  
+Alternaria_solani__interactsWith.csv                 baris=  280  target unik=  97  
+Alternaria_solani__pathogenOf.csv                    baris=   10  target unik=   5  
+Bemisia_tabaci__hasHost.csv                          baris=  360  target unik=  95  
+Bemisia_tabaci__interactsWith.csv                    baris= 1024  target unik= 353  << TERPOTONG di 1024
+Bemisia_tabaci__pathogenOf.csv                       baris=    8  target unik=   1  
+Botrytis_allii__hasHost.csv                          baris=   32  target unik=  11  
+Botrytis_allii__interactsWith.csv                    baris=   42  target unik=  13  
+Botrytis_allii__pathogenOf.csv                       baris=    2  target unik=   1  
+Colletotrichum_gloeosporioides__hasHost.csv          baris= 1024  target unik= 841  << TERPOTONG di 1024
+Colletotrichum_gloeosporioides__interactsWith.csv    baris= 1024  target unik= 772  << TERPOTONG di 1024
+Colletotrichum_gloeosporioides__pathogenOf.csv       baris=  214  target unik=  63  
+Fusarium_oxysporum__hasHost.csv                      baris= 1024  target unik= 756  << TERPOTONG di 1024
+Fusarium_oxysporum__interactsWith.csv                baris= 1024  target unik= 736  << TERPOTONG di 1024
+Fusarium_oxysporum__pathogenOf.csv                   baris=  229  target unik=  97  
+Liriomyza_huidobrensis__hasHost.csv                  baris=   44  target unik=  14  
+Liriomyza_huidobrensis__interactsWith.csv            baris=  454  target unik= 142  
+Liriomyza_sativae__hasHost.csv                       baris=   50  target unik=  18  
+Liriomyza_sativae__interactsWith.csv                 baris=  314  target unik= 103  
+Liriomyza_trifolii__hasHost.csv                      baris=   50  target unik=  15  
+Liriomyza_trifolii__interactsWith.csv                baris= 1024  target unik= 624  << TERPOTONG di 1024
+Peronospora_destructor__hasHost.csv                  baris=   82  target unik=  27  
+Peronospora_destructor__interactsWith.csv            baris=  106  target unik=  30  
+Peronospora_destructor__pathogenOf.csv               baris=    4  target unik=   2  
+Phytophthora_infestans__hasHost.csv                  baris=  384  target unik= 169  
+Phytophthora_infestans__interactsWith.csv            baris=  416  target unik= 176  
+Phytophthora_infestans__pathogenOf.csv               baris=   30  target unik=  12  
+Ralstonia_solanacearum__hasHost.csv                  baris=  198  target unik=  72  
+Ralstonia_solanacearum__interactsWith.csv            baris= 1020  target unik= 474  
+Ralstonia_solanacearum__pathogenOf.csv               baris=   68  target unik=  32  
+Spodoptera_exigua__hasHost.csv                       baris=  330  target unik= 153  
+Spodoptera_exigua__interactsWith.csv                 baris= 1024  target unik= 392  << TERPOTONG di 1024
+Spodoptera_exigua__pathogenOf.csv                    baris=   36  target unik=  15  
+Stemphylium_vesicarium__hasHost.csv                  baris= 1024  target unik= 729  << TERPOTONG di 1024
+Stemphylium_vesicarium__interactsWith.csv            baris= 1024  target unik= 482  << TERPOTONG di 1024
+Stemphylium_vesicarium__pathogenOf.csv               baris=   30  target unik=  13  
+
+kolom (sama untuk semua berkas): ['source_taxon_name', 'source_taxon_path', 'interaction_type', 'target_taxon_name', 'target_taxon_path', 'study_citation', 'study_source_citation', 'latitude', 'longitude']
+TOTAL BARIS DATA: 14532 dalam 39 berkas CSV
+BERKAS TERPOTONG di batas 1024 (9): ['Bemisia_tabaci__interactsWith.csv', 'Colletotrichum_gloeosporioides__hasHost.csv', 'Colletotrichum_gloeosporioides__interactsWith.csv', 'Fusarium_oxysporum__hasHost.csv', 'Fusarium_oxysporum__interactsWith.csv', 'Liriomyza_trifolii__interactsWith.csv', 'Spodoptera_exigua__interactsWith.csv', 'Stemphylium_vesicarium__hasHost.csv', 'Stemphylium_vesicarium__interactsWith.csv']
+
+=== apakah 4 komoditas prioritas muncul sebagai INANG? (target_taxon_name) ===
+  Alternaria_porri                   {'Allium cepa': 26, 'Allium': 10, 'Allium ascalonicum': 4, 'Solanum lycopersicum': 12, 'Capsicum annuum': 8}
+  Alternaria_solani                  {'Solanum lycopersicum': 26, 'Solanum tuberosum': 12, 'Capsicum': 8, 'Capsicum annuum': 16}
+  Bemisia_tabaci                     {'Capsicum annuum': 9, 'Solanum lycopersicum': 17, 'Solanum tuberosum': 8}
+  Botrytis_allii                     {'Allium': 10, 'Allium cepa': 14, 'Allium ascalonicum': 4, 'Solanum lycopersicum': 4}
+  Colletotrichum_gloeosporioides     {'Capsicum annuum': 8, 'Solanum lycopersicum': 6, 'Allium cepa': 6, 'Capsicum': 8}
+  Fusarium_oxysporum                 {'Solanum tuberosum': 2, 'Capsicum': 6, 'Solanum lycopersicum': 7, 'Capsicum annuum': 7, 'Allium cepa': 5}
+  Liriomyza_huidobrensis             {'Solanum lycopersicum': 10, 'Solanum tuberosum': 4, 'Allium cepa': 2, 'Capsicum annuum': 2}
+  Liriomyza_sativae                  {'Solanum lycopersicum': 10, 'Allium': 2}
+  Liriomyza_trifolii                 {'Allium cepa': 4, 'Solanum lycopersicum': 5, 'Solanum tuberosum': 2, 'Capsicum annuum': 2, 'Capsicum': 2}
+  Peronospora_destructor             {'Allium cepa': 30, 'Allium ascalonicum': 4, 'Allium': 12}
+  Phytophthora_infestans             {'Solanum tuberosum': 18, 'Solanum lycopersicum': 30, 'Capsicum annuum': 4}
+  Ralstonia_solanacearum             {'Solanum lycopersicum': 26, 'Solanum tuberosum': 12, 'Capsicum annuum': 8, 'Capsicum': 10}
+  Spodoptera_exigua                  {'Allium ascalonicum': 6, 'Solanum lycopersicum': 10, 'Capsicum annuum': 8, 'Allium cepa': 8, 'Allium': 8, 'Capsicum': 2}
+  Stemphylium_vesicarium             {'Allium cepa': 19, 'Solanum lycopersicum': 12, 'Capsicum annuum': 8, 'Allium ascalonicum': 1}
+  TANPA kecocokan komoditas prioritas: []
+
+=== cek khusus: Allium ascalonicum (bawang merah) di seluruh berkas ===
+  Alternaria_porri --hasHost--> Allium ascalonicum   | sitasi: 
+  Alternaria_porri --hasHost--> Allium ascalonicum   | sitasi: 
+  Alternaria_porri --interactsWith--> Allium ascalonicum   | sitasi: 
+  Alternaria_porri --interactsWith--> Allium ascalonicum   | sitasi: 
+  Botrytis_allii --hasHost--> Allium ascalonicum   | sitasi: 
+  Botrytis_allii --hasHost--> Allium ascalonicum   | sitasi: 
+  total baris menyebut Allium ascalonicum sebagai target: 19
+
+=== contoh 2 baris penuh (Alternaria porri, pathogenOf) ===
+    source_taxon_name        = Alternaria porri
+    source_taxon_path        = Life | Cellular Organisms | Eukaryota | Opisthokonta | Nucletmycea | Fungi | Dikarya | Ascomycota | Dothideomycetes | Pleosporales | Pleosporaceae | A
+    interaction_type         = pathogenOf
+    target_taxon_name        = Allium cepa
+    target_taxon_path        = Life | Cellular Organisms | Eukaryota | Archaeplastida | Chloroplastida | Streptophyta | Embryophytes | Tracheophyta | Spermatophytes | Angiosperms | 
+    study_citation           = 
+    study_source_citation    = 
+    latitude                 = 
+    longitude                = 
+
+    source_taxon_name        = Alternaria porri
+    source_taxon_path        = Life | Cellular Organisms | Eukaryota | Opisthokonta | Nucletmycea | Fungi | Dikarya | Ascomycota | Dothideomycetes | Pleosporales | Pleosporaceae | A
+    interaction_type         = pathogenOf
+    target_taxon_name        = Allium
+    target_taxon_path        = Life | Cellular Organisms | Eukaryota | Archaeplastida | Chloroplastida | Streptophyta | Embryophytes | Tracheophyta | Spermatophytes | Angiosperms | 
+    study_citation           = 
+    study_source_citation    = 
+    latitude                 = 
+    longitude                = 
+
+=== ketersediaan koordinat & sitasi (seluruh baris) ===
+  baris dengan latitude terisi     : 0 / 14532
+  baris dengan study_citation      : 0 / 14532
+  baris dengan study_source_citation: 0 / 14532

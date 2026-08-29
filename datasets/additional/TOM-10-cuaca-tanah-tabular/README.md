@@ -1,0 +1,43 @@
+# Soil-Weather Multivariate Crop Disease Dataset
+
+- **dataset_id**: TOM-10-cuaca-tanah-tabular
+- **Tanaman**: **6 tanaman** — Rice (122.115 baris), Maize (33.039), Sugarcane (32.606), Wheat (20.824), **Tomato (20.720)**, **Potato (20.696)**. Karena ≥3 tanaman, ditaruh di `datasets/additional/`.
+- **Penyakit/kelas tercakup** (nama apa adanya dari kolom `Disease`):
+  - **Tomat (6 kelas)**: `Bacterial Wilt` 802, `Early Blight` 1.857, `Fruit Borer Infestation` 13.279, `Healthy` 1.648, `Late Blight` 1.359, `Leaf Curl Virus` 1.775
+  - **Kentang (6 kelas)**: `Aphid Infestation` 705, `Bacterial Wilt` 2.227, `Early Blight` 1.087, `Healthy` 2.393, `Late Blight` 921, `Mosaic Virus` 13.363
+  - Padi 10 kelas, jagung 6, tebu 6, gandum 6 — rincian di `struktur.txt`
+  - Ada juga `Disease_Severity` berskala 1/2/3
+- **Jenis data**: tabular
+- **Format**: CSV tunggal, 23 kolom, 250.001 baris fisik (1 header + 250.000 baris data)
+- **Jumlah**: diklaim "250.000 real observations"; terhitung **250.000 baris data, semuanya unik** (0 duplikat persis) — **cocok secara jumlah**, tapi klaim "real" **tidak didukung datanya sendiri** (lihat keterbatasan)
+- **Sumber**: Zenodo
+- **URL sumber**: https://zenodo.org/records/19885786
+- **DOI**: 10.5281/zenodo.19885785 (concept) / 10.5281/zenodo.19885786 (versi)
+- **Pembuat**: Md. Abid Hasan Rafi, Md. Dulal Haque
+- **Tahun terbit / pembaruan**: 2026-04-29
+- **Lisensi**: CC BY 4.0
+- **Ketentuan atribusi**: Atribusi ke pembuat + tautan lisensi + penandaan perubahan.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 70.508.685 byte (67 MiB)
+- **SHA-256**: `8efdfba2b62a53ca0d63d48ace59fe06cc1d15f7e801f51cc6aad6ef90c7eeb1`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - `file raw/'Soil-Weather Multivariate Crop Disease Dataset.csv'` → `CSV text`
+  - `wc -l` → 250.001 baris
+  - Diurai dengan modul `csv` Python → 250.000 baris data, 23 kolom
+  - Cacah `Crop` dan `(Crop, Disease)` dengan `collections.Counter` → 6 tanaman, 40 pasangan tanaman×penyakit (hasil lengkap di `struktur.txt`)
+  - Rentang tiap kolom numerik dihitung (min/max/mean/nilai unik) → tabel di `struktur.txt`
+  - Duplikat baris penuh dicek → **0**
+- **Keterbatasan / masalah kualitas**:
+  - **Klaim "250.000 real observations collected from agricultural fields" hampir pasti tidak benar; datanya berbau dibangkitkan (sintetis).** Buktinya ada di distribusinya sendiri:
+    - Setiap kolom numerik berhenti tepat di batas bulat buatan: `Nitrogen` 5,006–149,999; `Phosphorus` 5,000–89,999; `Potassium` 10,001–99,996; `pH_Value` 4,500–8,500; `Soil_Temperature` 10,004–44,997; `Humidity` 30,002–99,992; `Rainfall` 20,019–399,975. Pola ini khas penarikan acak seragam dalam batas yang dikodekan, bukan pengukuran lapangan.
+    - Hampir setiap nilai unik (mis. `Rainfall` punya 249.353 nilai berbeda dari 250.000 baris) — pengukuran nyata pasti banyak yang berulang karena presisi alat terbatas.
+    - Rentang `Nitrogen`/`Phosphorus`/`Potassium`/`pH`/`Humidity`/`Rainfall` persis sama dengan rentang dataset "Crop Recommendation" yang beredar luas di Kaggle, menandakan hasil olah ulang dari sana.
+  - **Kolom `High_Temp_Warning` bernilai `1` untuk seluruh 250.000 baris** — konstan, jadi tidak membawa informasi apa pun.
+  - **Kolom `High_Wind_Warning` rusak**: seharusnya bendera 0/1, tapi berisi **66.572 nilai berbeda** (`0.0` sebanyak 183.427 kali, sisanya pecahan seperti `0.00014080752162251968`). Kemungkinan tertukar dengan kolom probabilitas.
+  - **Satuan tercampur**: `Soil_Temperature` dalam Celsius tapi `Weather_Temp_F` dalam Fahrenheit, di berkas yang sama tanpa penjelasan.
+  - **Distribusi kelas mencurigakan**: di hampir setiap tanaman ada satu penyakit yang jumlahnya ~13.000 sementara sisanya ~700–2.400 (tomat: `Fruit Borer Infestation` 13.279 vs `Bacterial Wilt` 802). Pola timpang yang seragam di enam tanaman berbeda ini tidak masuk akal secara epidemiologi.
+  - **Tidak ada dimensi waktu maupun lokasi**: tidak ada tanggal, musim, koordinat, provinsi, atau id lahan. Tanpa itu, dataset ini **tidak bisa dipakai untuk analisis epidemiologi yang sebenarnya** (kurva epidemi, penyebaran spasial, peringatan dini berbasis cuaca aktual).
+  - `Fruit Borer Infestation` dan `Aphid Infestation` adalah **hama**, bukan penyakit, tapi diletakkan di kolom `Disease` yang sama.
+  - **Kesimpulan pemakaian**: layak sebagai **contoh skema** (kolom apa saja yang perlu dikumpulkan untuk sistem peringatan dini berbasis tanah+cuaca) dan sebagai data mainan untuk uji pipeline. **Tidak layak** dipakai untuk melatih model peringatan dini yang akan dipakai petani sungguhan, dan angka akurasinya tidak boleh dikutip sebagai bukti apa pun.

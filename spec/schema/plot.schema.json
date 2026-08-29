@@ -159,6 +159,13 @@
       },
       "additionalProperties": false
     },
+    "agroclimate": {
+      "type": "array",
+      "description": "Kelas agroklimat petak ini, satu penetapan per skema. Berdiri di samping `elevation_m` dan `soil`, bukan menggantikannya: yang itu ukuran, yang ini putusan atas ukuran. Kosong bukan kekurangan data melainkan keadaan bawaan — petak yang belum pernah dihitung agroklimatnya harus terbaca begitu, bukan diberi kelas dari kabupatennya.",
+      "items": {
+        "$ref": "common.schema.json#/$defs/AgroclimateDetermination"
+      }
+    },
     "data_classification": {
       "$ref": "common.schema.json#/$defs/DataClassification"
     },

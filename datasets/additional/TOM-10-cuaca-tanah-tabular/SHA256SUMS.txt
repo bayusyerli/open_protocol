@@ -1,0 +1,1 @@
+8efdfba2b62a53ca0d63d48ace59fe06cc1d15f7e801f51cc6aad6ef90c7eeb1  raw/Soil-Weather Multivariate Crop Disease Dataset.csv

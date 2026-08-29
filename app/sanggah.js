@@ -71,7 +71,7 @@ const JENIS = {
   },
 };
 
-const milikKami = (s) => s?.penerbit === 'Open Protocols';
+const milikKami = (s) => s?.penerbit === 'Pranatani';
 const dariOsm = (s) => /openstreetmap/i.test(s?.penerbit ?? '') || /odbl/i.test(s?.lisensi ?? '');
 
 /* Kalimat pembuka disusun dari sumber yang BENAR-BENAR disebut layar ini, bukan dari

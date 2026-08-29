@@ -1,0 +1,58 @@
+# Struktur TOM-07 TFDD
+
+## Berkas di raw/
+Raw Data.zip
+TFDD.zip
+TFDD_MetaData.csv
+
+## file(1)
+raw/Raw Data.zip:      Zip archive data, at least v2.0 to extract, compression method=store
+raw/TFDD.zip:          Zip archive data, at least v2.0 to extract, compression method=store
+raw/TFDD_MetaData.csv: CSV text
+
+## ============ Raw Data.zip (288 gambar ASLI, tanpa augmentasi) ============
+    testing: Raw Data/Mold/White_Mold_8.jpg   OK
+No errors detected in compressed data of raw/Raw Data.zip.
+   entri:      297
+   cacah gambar per kelas:
+  61 Raw Data/Fruitworm/
+  49 Raw Data/Mold/
+  38 Raw Data/Late Blight/
+  35 Raw Data/Cracking/
+  31 Raw Data/Blossom end root/
+  27 Raw Data/Healthy/
+  27 Raw Data/Anthracnose/
+  20 Raw Data/Early Blight/
+   ekstensi:  288 jpg
+   TOTAL 288 gambar -> COCOK dengan klaim sumber '288 original images'
+   CATATAN: folder dieja 'Blossom end root' (seharusnya 'rot'); di data.yaml dieja 'Blossom_end_rot'.
+
+## ============ TFDD.zip (682 gambar setelah augmentasi + label YOLO) ============
+    testing: TFDD/valid/labels/worm_8_jpg.rf.51e4f2bfece8e0603d5e19b18afc1d6f.txt   OK
+No errors detected in compressed data of raw/TFDD.zip.
+   entri:     1377
+   cacah berkas per direktori:
+ 595 TFDD/train/labels/
+ 595 TFDD/train/images/
+  58 TFDD/valid/labels/
+  58 TFDD/valid/images/
+  29 TFDD/test/labels/
+  29 TFDD/test/images/
+   3 TFDD/
+   ekstensi:    1 csv 682 jpg   1 md 682 txt   1 yaml
+
+   data.yaml -> nc: 8
+   names: ['Anthracnose','Blossom_end_rot','Cracking','Early_Blight','Fruitworm','Healthy','Late_Blight','Mold']
+   (pemetaan id -> nama TERSEDIA, tidak seperti TOM-04 dan TOM-11)
+
+   Dari summary.csv (682 baris, split train 595 / valid 58 / test 29):
+      kelas             gambar  kotak
+      Fruitworm            145    152
+      Mold                 117    117
+      Late_Blight           92    101
+      Cracking              85     85
+      Blossom_end_rot       75    126
+      Healthy               61    134
+      Anthracnose           61     61
+      Early_Blight          49     49
+      TOTAL kotak: 825

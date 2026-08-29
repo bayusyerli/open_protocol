@@ -1,0 +1,63 @@
+# Bukti verifikasi CAB-05
+Tanggal: 2026-08-25
+
+$ unzip -tqq raw/Pepper_Dataset.zip      -> ARCHIVE OK (tanpa galat)
+$ md5 -q raw/Pepper_Dataset.zip          -> 622df1a94116c165832ae09f38412937
+   (COCOK dengan computed_md5 Figshare API untuk berkas 55317323)
+$ file raw/Pepper_Dataset.zip            -> Zip archive data, compression method=store
+
+## Cacah per folder (python3 zipfile)
+total berkas: 1308
+     446  Pepper_Dataset/Pepper__bell___healthy
+     335  Pepper_Dataset/Leaf_Curl
+     301  Pepper_Dataset/Pepper__bell___Bacterial_spot_Leaf_Curl_Cercospora
+     226  Pepper_Dataset/Cerespora
+
+Ekstensi: [('.jpg', 1293), ('.png', 7), ('.webp', 6), ('.jpeg', 2)]
+
+## Contoh nama berkas per folder (bukti asal PlantVillage)
+  Pepper_Dataset/Cerespora
+      'Cercospora_capsici.jpg
+      006adb74-934f-448f-a14f-62181742127b___JR_B.Spot 3395.JPG
+      05af15b5-fbda-4dab-a4ba-c783d531d24d___JR_B.Spot 3150.JPG
+      05c6ea65-cce4-43da-b57b-a45321b0e51b___NREC_B.Spot 9048.JPG
+  Pepper_Dataset/Leaf_Curl
+      002f87b7-e1a5-49e5-a422-bb423630ded5___JR_HL 8068 - Copy.jpg
+      002f87b7-e1a5-49e5-a422-bb423630ded5___JR_HL 8068.jpg
+      006adb74-934f-448f-a14f-62181742127b___JR_B.Spot 3395 - Copy.jpg
+      006adb74-934f-448f-a14f-62181742127b___JR_B.Spot 3395.jpg
+  Pepper_Dataset/Pepper__bell___Bacterial_spot_Leaf_Curl_Cercospora
+      0169b9ac-07b9-4be1-8b85-da94481f05a4___NREC_B.Spot 9169.JPG
+      0448a226-3d3a-494d-a026-a92b048689c7___JR_B.Spot 8897.JPG
+      0495b4d4-66a4-438c-862d-c483f08e4a95___JR_B.Spot 3288.JPG
+      0558ff5a-45c7-4ea0-9479-3f71f0048208___JR_B.Spot 3183.JPG
+  Pepper_Dataset/Pepper__bell___healthy
+      b06117a8-6ca6-4b82-96cf-07604beb8f1b___JR_HL 5906.JPG
+      b0705327-41b1-453b-97b0-a48fa9e50fb1___JR_HL 5874.JPG
+      b12059e3-404f-441a-9875-4af81aa3bd63___JR_HL 8570.JPG
+      b1558f48-ed17-4d42-ac7c-ae1a5964ca5f___JR_HL 8676.JPG
+
+## Bukti salah label: cacah pola nama PlantVillage per folder
+   JR_HL / NREC_HL  = healthy leaf (PlantVillage bell pepper sehat)
+   JR_B.Spot / NREC_B.Spot = bacterial spot (PlantVillage bercak bakteri)
+   Pepper_Dataset/Cerespora
+       HL(sehat)=0  B.Spot(bercak bakteri)=108  lain=118
+   Pepper_Dataset/Leaf_Curl
+       HL(sehat)=2  B.Spot(bercak bakteri)=315  lain=18
+   Pepper_Dataset/Pepper__bell___Bacterial_spot_Leaf_Curl_Cercospora
+       HL(sehat)=0  B.Spot(bercak bakteri)=301  lain=0
+   Pepper_Dataset/Pepper__bell___healthy
+       HL(sehat)=446  B.Spot(bercak bakteri)=0  lain=0
+
+## Uji duplikat byte-identik (SHA-256 isi gambar)
+  Berkas gambar    : 1308
+  SHA-256 unik     :  992
+  Salinan berlebih :  316  (24,2%)
+  Sesuai dugaan dari pasangan nama "... - Copy.jpg" di folder Leaf_Curl.
+  KOREKSI ANGKA: dataset ini efektif berisi 992 gambar berbeda, bukan 1308
+  (dan sumbernya sendiri mengklaim 423).
+
+## Uji irisan dengan dataset cabai lain dalam panen ini
+  Dibandingkan dengan CAB-01, CAB-04, CAB-09, CAB-12: tidak ada gambar byte-identik yang sama.
+  (Catatan: PlantVillage TIDAK diunduh agen cabai - milik agen tomat - jadi kesamaan dengan
+  PlantVillage tidak bisa diuji byte di sini; buktinya berupa pola nama berkas, lihat di atas.)

@@ -1,0 +1,29 @@
+# Bukti verifikasi CAB-06
+Tanggal: 2026-08-25
+
+## Checksum lokal vs computed_md5 Figshare API
+  tjpi_a_2611503_sm9064.docx  lokal d363319e86c20b3d371ff523056de645  figshare d363319e86c20b3d371ff523056de645  COCOK
+  tjpi_a_2611503_sm9067.pdf   lokal 7f3cc06fafb750b157191062a8ddb1f3  figshare 7f3cc06fafb750b157191062a8ddb1f3  COCOK
+  tjpi_a_2611503_sm9068.xlsx  lokal f5cc31b45097b3aade39a18ffd9d8534  figshare f5cc31b45097b3aade39a18ffd9d8534  COCOK
+
+$ file raw/*
+raw/tjpi_a_2611503_sm9064.docx: Microsoft Word 2007+
+raw/tjpi_a_2611503_sm9067.pdf:  PDF document, version 1.4
+raw/tjpi_a_2611503_sm9068.xlsx: Microsoft Excel 2007+
+
+## Isi XLSX (dibuka dengan python3 zipfile + ElementTree, TANPA menjalankan makro)
+Nama sheet: ['Table 1', 'Table 2', 'Table 3', 'Table 4', 'Table 5', 'Table 6', 'Table 7', 'Table 8', 'Table 9']
+  sheet1 'Table 1': 21 baris | kolom-1: Chemical formula | g/L in 1/2 MS | g/L in 0.3 mM N | g/L in 3 mM N | g/L in 30 mM N
+  sheet2 'Table 2': 21 baris | kolom-1:  | Forward primer | Reverse primer
+  sheet3 'Table 3': 1923 baris | kolom-1: 1318 elements included exclusi | 423 common elements in necrotr | 541 elements included exclusiv | 1210 common elements in necrot | 1922 common elements in necrot | 502 common elements in biotrop | 1166 elements included exclusi
+  sheet4 'Table 4': 765 baris | kolom-1: go | cluster | parent | –log10(FDR)  | size | term | parentTerm | termUniqueness
+  sheet5 'Table 5': 389 baris | kolom-1: go | cluster | parent | –log10(FDR)  | size | term | parentTerm | termUniqueness
+  sheet6 'Table 6': 281 baris | kolom-1: go | cluster | parent | –log10(FDR)  | size | term | parentTerm | termUniqueness
+  sheet7 'Table 7': 52 baris | kolom-1: go | cluster | parent | –log10(FDR)  | size | term | parentTerm | termUniqueness
+  sheet8 'Table 8': 231 baris | kolom-1: go | cluster | parent | –log10(FDR)  | size | term | parentTerm | termUniqueness
+  sheet9 'Table 9': 17 baris | kolom-1: Gene name | Gene ID  | Orthologous gene in Arabidopsi
+
+ISI SUBSTANTIF: Table 1 = resep media hara (0,3 / 3 / 30 mM N); Table 2 = primer qRT-PCR;
+Table 3 = daftar gen DEG (ID Arabidopsis AT#G#####); Table 4-8 = pengayaan GO;
+Table 9 = padanan gen cabai (LOC#) ke ortolog Arabidopsis.
+TIDAK ADA tabel keparahan penyakit lapangan, tidak ada data cuaca, tidak ada citra.

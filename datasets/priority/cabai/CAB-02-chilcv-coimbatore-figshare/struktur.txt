@@ -1,0 +1,87 @@
+# Bukti verifikasi CAB-02
+Tanggal: 2026-08-25
+
+## Perintah 1: uji integritas arsip
+$ unzip -tqq raw/Chilli_Final_Ver_Dataset.zip  -> tanpa galat (ARCHIVE OK)
+$ md5 -q raw/Chilli_Final_Ver_Dataset.zip      -> 7958773e2345e35f88788e6ea50eb7bc
+  (cocok dengan computed_md5 yang diumumkan Figshare API)
+$ file raw/Chilli_Final_Ver_Dataset.zip        -> Zip archive data, compression method=store
+
+## Perintah 2: cacah isi (python zipfile)
+Total entri berkas: 22842  (22829 .jpg + 5 .txt + 4 .csv + 4 .xlsx)
+
+## Cacah per split x kelas
+     260  OOD_Set/Healthy control
+     240  OOD_Set/Initial Symptoms of ChiLCV
+     260  OOD_Set/Severe Symptoms of ChiLCV
+    1000  Test/Healthy control
+     855  Test/Initial Symptoms of ChiLCV
+     352  Test/Severe Symptoms of ChiLCV
+    8000  Train/Healthy control
+    6839  Train/Initial Symptoms of ChiLCV
+    2816  Train/Severe Symptoms of ChiLCV
+    1000  Validation/Healthy control
+     855  Validation/Initial Symptoms of ChiLCV
+     352  Validation/Severe Symptoms of ChiLCV
+
+## Total per kelas (semua split)
+   10260  Healthy control
+    8789  Initial Symptoms of ChiLCV
+    3780  Severe Symptoms of ChiLCV
+
+## Berkas non-gambar
+    Chilli_Final_Ver_Dataset/Metadata/dataset_description_test.txt
+    Chilli_Final_Ver_Dataset/Metadata/dataset_description_train.txt
+    Chilli_Final_Ver_Dataset/Metadata/dataset_description_val.txt
+    Chilli_Final_Ver_Dataset/Metadata/metadata_test.csv
+    Chilli_Final_Ver_Dataset/Metadata/metadata_train.csv
+    Chilli_Final_Ver_Dataset/Metadata/metadata_val.csv
+    Chilli_Final_Ver_Dataset/Metadata/plant_counts_test.xlsx
+    Chilli_Final_Ver_Dataset/Metadata/plant_counts_train.xlsx
+    Chilli_Final_Ver_Dataset/Metadata/plant_counts_val.xlsx
+    Chilli_Final_Ver_Dataset/OOD_Set/dataset_description_ood.txt
+    Chilli_Final_Ver_Dataset/OOD_Set/metadata_ood.csv
+    Chilli_Final_Ver_Dataset/OOD_Set/plant_counts_ood.xlsx
+    Chilli_Final_Ver_Dataset/README.txt.txt
+
+## Kepala metadata_train.csv
+    image_name,class,plant_id,village,acquisition_date,session_id,subset
+    HC_P001_S10_Arasampalayam_20241119_IMG00010.jpg,Healthy control,P001,Arasampalayam,20241119,S10,train
+    HC_P001_S10_Arasampalayam_20241119_IMG00020.jpg,Healthy control,P001,Arasampalayam,20241119,S10,train
+    (baris data: 17655 )
+
+## 5. Uji duplikat byte-identik (SHA-256 per gambar, seluruh 22.829 JPG)
+
+  Berkas gambar        : 22829
+  SHA-256 unik         : 12223
+  Salinan berlebih     : 10606  (46,46%)
+  Kelompok duplikat    : 4927 hash yang punya lebih dari satu berkas
+
+  Sebaran kelompok duplikat:
+    tetap di dalam satu split DAN satu kelas : 4925
+    menyeberang SPLIT (train/val/test/OOD)   : 2
+    menyeberang KELAS                        : 0
+
+  Hash unik per split:
+    Train      : 7304   (dari 17655 berkas)
+    Test       : 2172   (dari  2207 berkas)
+    Validation : 2157   (dari  2207 berkas)
+    OOD_Set    : 592    (dari   760 berkas)
+
+  Irisan antar split (jumlah hash yang sama):
+    Train n Test       : 2
+    Train n Validation : 0
+    Train n OOD_Set    : 0
+    Test  n Validation : 0
+
+  KESIMPULAN: duplikasinya besar (hampir separuh berkas) tetapi hampir seluruhnya berada
+  DI DALAM satu split dan satu kelas, sehingga pembagian latih/uji secara praktis tetap
+  sahih - hanya 2 kelompok yang bocor antara Train dan Test. Yang perlu dikoreksi adalah
+  ANGKANYA: dataset ini efektif berisi 12.223 gambar berbeda, bukan 22.829 (apalagi 22.069
+  seperti klaim sumber). Dua pasangan yang bocor:
+    Test/Severe.../SC_P010_S1_Myleripalayam_20241105_IMG00196.jpg
+      = Train/Severe.../SC_P057_S9_Arasampalayam_20241118_IMG01239.jpg
+    Test/Severe.../SC_P010_S3_Myleripalayam_20241113_IMG00207.jpg
+      = Train/Severe.../SC_P058_S8_Arasampalayam_20241115_IMG01258.jpg
+  Perhatikan kedua pasangan itu mengklaim DESA dan TANGGAL berbeda padahal berkasnya
+  byte-identik - jadi metadata desa/tanggal tidak bisa dipercaya 100%.

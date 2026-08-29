@@ -35,7 +35,7 @@
         },
         {
           "title": "Pengaya principal hasil riset web — grup induk, asal, merek payung, situs",
-          "publisher": "Open Protocols",
+          "publisher": "Pranatani",
           "year": 2026,
           "locator": "data/pengaya-principal.csv dan data/principals-benih.csv. BUKAN sumber primer: sumber_jenis bernilai laporan-agen-riset, dan data/README.md mensyaratkan verifikasi ulang per baris. Masuk hanya ke blok `profile` bertingkat D.",
           "retrieved": "2026-08-19"

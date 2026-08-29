@@ -1,9 +1,12 @@
-# Open Protocols
+# Pranatani
 
 Platform penyusun protokol budidaya bagi petani Indonesia — agnostik komoditas,
 netral terhadap vendor, dari perencanaan sampai pascapanen.
 
-> Nama masih sementara. Uji merek adalah salah satu keluaran Fase 0.
+> Nama dan domain ditetapkan 24 Agustus 2026: **Pranatani**, di `pranatani.com`.
+> Seluruh terbitan di `terbit/` dibangun dengan asal itu — canonical, `og:url`, dan dua
+> belas sitemap. Penelusuran merek resmi ke DJKI tetap pekerjaan manusia dan belum
+> ditutup; sampai ia selesai, nama ini dipakai tanpa klaim perlindungan.
 
 ## Isi repositori
 
@@ -32,6 +35,8 @@ netral terhadap vendor, dari perencanaan sampai pascapanen.
 | [`docs/09-jalur-sediaan-pengendali.md`](docs/09-jalur-sediaan-pengendali.md) | Jalur 6 — sisi yang terikat: Pasal 77 melarang mengedarkan dan menggunakan, menunggu pendapat hukum |
 | [`docs/17-tiga-konsep-ui.md`](docs/17-tiga-konsep-ui.md) | Tiga konsep UI berbeda tesis beserta prototipe yang bisa diklik di [`docs/konsep-ui/`](docs/konsep-ui/): kotak tanya, meja periksa keaslian, dan petak-musim — apa yang tiap konsep taruhkan, dan mana yang direkomendasikan |
 | [`docs/19-golongan-resistensi.md`](docs/19-golongan-resistensi.md) | Pemetaan 1.399 bahan aktif ke kode golongan IRAC, FRAC, dan HRAC — sumber & versi tiap skema, bukti kemasan yang menentukan sistem huruf HRAC mana yang dipakai, cakupan per skema, 469 celah beserta alasannya, dan kaveat rotasinya |
+| [`docs/21-agroklimat.md`](docs/21-agroklimat.md) | Kapabilitas mendefinisikan agroklimat sebuah lokasi: lima skema klasifikasi dengan ambang yang terbaca mesin, empat aturan yang membuat sebuah kelas bisa dibantah dari rekamannya sendiri, dan daftar yang sengaja tidak dibangun — termasuk kenapa Köppen ditolak |
+| [`docs/22-wilayah.md`](docs/22-wilayah.md) | Kosakata wilayah `op:rgn`: 7.768 wilayah sampai kecamatan, kenapa nomornya bukan kode BPS, 167 kode yang sah di dua sistem sambil menunjuk tempat berlainan, dan rujukan yang ternyata meleset 700 km |
 
 Kosakata sudah terisi: **15 skala fase dengan 868 fase** — empat belas kunci BBCH dari
 monografnya (Solanaceae, padi, jagung, kedelai, kentang, kopi, cucurbit, brassica, buncis,
@@ -83,6 +88,31 @@ dibaca lewat OCR.
 EPPO, GBIF, atau BBCH.
 
 Ditarik ulang kapan saja dengan `node spec/tools/tarik-registri.mjs`.
+
+Lapis itu sudah dipakai, bukan cuma berdiri: **5.844 balai penyuluhan** dan **8 seri harga
+TBS** kini menunjuk wilayahnya lewat rujukan, bukan lewat teks. Balai tersambung ke
+kabupaten lewat kode dan ke kecamatan lewat nama, dan **mutu tiap tautan kecamatan tercatat
+sendiri-sendiri** — 6.704 cocok persis, 33 dicocokkan longgar, 87 tidak tertaut dan tetap
+tersimpan dengan namanya.
+
+Di bawah semuanya kini ada lapis yang menyatakan **di mana**: **7.768 wilayah
+administratif** — 34 provinsi, 416 kabupaten, 98 kota, dan 7.219 kecamatan — masing-masing
+membawa kode BPS **dan** kode Kemendagri, karena keduanya tidak sepakat: 167 kode sah di
+kedua sistem sekaligus sambil menunjuk wilayah yang berlainan, dan nomor provinsi Papua
+serta Papua Barat bahkan saling tertukar. Karena itu **nomor `op:rgn` bukan kode wilayah** —
+dan aturan itu langsung membuktikan dirinya: tiga berkas contoh menunjuk nomor yang disusun
+menyerupai kode BPS Rembang, dan nomor itu ternyata sebuah kecamatan di Sumatera Selatan,
+700 km dari sana.
+
+Di atas keduanya berdiri lapis yang menyatakan **tempat macam apa sebuah lahan itu**:
+**5 skema agroklimat dengan 36 kelas** — zona Oldeman, tipe Schmidt-Ferguson, zona
+ketinggian Junghuhn, kelas dataran hortikultura, dan pola hujan BMKG. Ambangnya terbaca
+mesin, sehingga kelas sebuah lokasi **dihitung ulang dari angka yang direkam bersamanya**
+dan ditolak bila hasilnya lain. Deret iklimnya sendiri tidak disimpan dan tidak akan:
+yang menganga bukan datanya melainkan putusan atasnya. Empat aturan baru (`L40`–`L43`)
+menegakkannya, dan yang pertama kali tertangkap adalah protokol repositori ini sendiri —
+"dataran rendah" berarti di bawah 400 m pada satu skema dan di bawah 700 m pada skema
+lain, dan protokolnya tidak menyebut yang mana.
 
 Di sampingnya ada lapis yang tidak punya nomor pendaftaran sama sekali, karena memang
 tidak diperjualbelikan: **12 resep sediaan buatan sendiri** dan **21 bahan bakunya** —
@@ -148,12 +178,12 @@ disusun mengikuti pertanyaan yang akan diajukan tiap layar.
 
 | Halaman | Jalur | Masuk dari |
 |---|---|---|
-| `app/jalur-1.html` | 1 · insiden | gejala yang terlihat, bukan nama hama |
+| `app/tanaman.html` | 1 · insiden | gejala yang terlihat, bukan nama hama |
 | `app/index.html` | 2 · produk | nama di kemasan |
-| `app/jalur-3.html` | 3 · hitungan | harga yang dibayar |
-| `app/jalur-4.html` | 4 · keabsahan | nama varietas |
-| `app/jalur-5.html` | 5 · sediaan pupuk | niat menyuburkan |
-| `app/jalur-6.html` | 6 · sediaan pengendali | niat mengendalikan — **status hukum, bukan anjuran** |
+| `app/harga-pupuk.html` | 3 · hitungan | harga yang dibayar |
+| `app/varietas.html` | 4 · keabsahan | nama varietas |
+| `app/pupuk-sendiri.html` | 5 · sediaan pupuk | niat menyuburkan |
+| `app/pengendali-sendiri.html` | 6 · sediaan pengendali | niat mengendalikan — **status hukum, bukan anjuran** |
 
 Syarat lapangannya HP entry-level bersinyal buruk, dan itu yang menentukan bentuk
 indeksnya: satu penelusuran utuh mengambil **2 sampai 4 berkas**, 11–151 KB sebelum

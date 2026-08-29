@@ -127,7 +127,7 @@ walaupun angkanya bagus.
    `fetch`. `app/index.html` bahkan menyatakannya sendiri: *"Pencarian butuh
    JavaScript."*
 2. **Tidak ada URL per entitas.** Yang ada parameter: `index.html?id=&pecahan=`,
-   `jalur-1.html?opt=`, `harga.html?k=`, `principal.html?key=`. Fondasinya benar —
+   `tanaman.html?opt=`, `harga.html?k=`, `perusahaan.html?key=`. Fondasinya benar —
    tetapi **tidak ada satu pun tautan internal** yang menunjuk ke 26 ribu entitas, jadi
    perayap tidak punya jalan masuk.
 3. **Tidak ada `robots.txt`, `sitemap.xml`, `rel=canonical`, `og:`.** Dua belas halaman
@@ -372,7 +372,7 @@ benar.
 membawa pengaya dari riset web — grup induk, negara asal, situs resmi, merek payung —
 dan seluruhnya **tingkat D**: laporan agen riset, bukan registri. Di layar ia tampil
 lengkap dengan lencana tingkatnya dan alasan kenapa D, persis seperti di
-`app/principal.js`, dengan tautan keluar ber-`nofollow`. Di **data terstruktur ia absen
+`app/perusahaan.js`, dengan tautan keluar ber-`nofollow`. Di **data terstruktur ia absen
 sama sekali**: menuliskan situs hasil riset sebagai `url` atau `sameAs` pada `Organization`
 berarti menyatakannya kepada mesin sebagai fakta terverifikasi, sementara halaman yang
 sama menyatakan kepada manusia bahwa ia belum diverifikasi. Dua pernyataan yang
@@ -422,7 +422,7 @@ ditulis orang, dan belum ditinjau siapa pun.
 **Jalur 6 membuka dengan pasalnya, bukan dengan resepnya.** Halaman sediaan pengendali
 menempatkan kartu hukum di posisi pertama dengan gaya tabrakan, menandai `own_use_only`
 tebal, mengutip Pasal 75 dan Pasal 77 ayat (1) apa adanya, dan menutup dengan kalimat yang
-diwarisi dari `app/jalur-6.js`: halaman ini **tidak menyimpulkan bahwa memakainya aman
+diwarisi dari `app/pengendali-sendiri.js`: halaman ini **tidak menyimpulkan bahwa memakainya aman
 atau sah**, karena bacaan pasalnya belum dijawab penasihat hukum.
 
 **Ongkos seluruhnya:** 23.713 berkas, 232 MB mentah, deterministik, dengan ter-gzip p50

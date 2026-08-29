@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "1175010",
+  "nama_bps": "SIMPANG KIRI",
+  "kode_dagri": "11.75.01",
+  "nama_dagri": "SIMPANG KIRI"
+ },
+ {
+  "kode_bps": "1175020",
+  "nama_bps": "PENANGGALAN",
+  "kode_dagri": "11.75.02",
+  "nama_dagri": "PENANGGALAN"
+ },
+ {
+  "kode_bps": "1175030",
+  "nama_bps": "RUNDENG",
+  "kode_dagri": "11.75.03",
+  "nama_dagri": "RUNDENG"
+ },
+ {
+  "kode_bps": "1175040",
+  "nama_bps": "SULTAN DAULAT",
+  "kode_dagri": "11.75.04",
+  "nama_dagri": "SULTAN DAULAT"
+ },
+ {
+  "kode_bps": "1175050",
+  "nama_bps": "LONGKIB",
+  "kode_dagri": "11.75.05",
+  "nama_dagri": "LONGKIB"
+ }
+]

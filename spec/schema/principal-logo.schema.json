@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/principal-logo.schema.json",
+  "title": "Logo badan pemegang pendaftaran",
+  "description": "Logo sebuah BADAN — bukan gambar produk, dan karena itu bukan product-image.schema.json. Pemisahannya bukan kerapian: skema gambar produk mewajibkan `brand_key` dan `brand.name`, yaitu nama dagang persis seperti tertulis di registri. Badan bukan merek — PT Petrokimia Gresik memegang PHONSKA, PETROGANIK, dan puluhan lainnya. Menuliskan nama badan di medan yang skemanya sendiri sebut nama dagang menghapus perbedaan itu untuk selamanya.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["principal_key", "principal", "role", "source", "attribution", "review"],
+  "properties": {
+    "principal_key": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^[a-z0-9-]+$",
+      "description": "Kunci badan di kosakata principal. Ia yang menyambungkan logo ke halaman profilnya."
+    },
+    "principal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1, "description": "Nama badan sebagaimana ada di kosakata principal." },
+        "website": { "type": "string", "description": "Alamat situs sebagaimana tercatat di profile.website — apa adanya, termasuk catatan tangan yang ikut tertulis di sana." }
+      }
+    },
+    "role": { "const": "logo" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "page_url", "rights", "permission", "redistributable"],
+      "properties": {
+        "url": { "type": "string", "format": "uri", "description": "Alamat berkas logonya." },
+        "page_url": { "type": "string", "format": "uri", "description": "Halaman tempat logo itu terpasang." },
+        "publisher": { "type": ["string", "null"] },
+        "retrieved_at": { "type": "string", "format": "date-time" },
+        "rights": {
+          "enum": ["pemegang_merek", "pihak_ketiga", "tidak_diketahui"],
+          "description": "`pemegang_merek` berarti logo diambil dari kanal terbit badan itu sendiri. Ia BUKAN pernyataan izin — izin ada di `permission`."
+        },
+        "permission": { "enum": ["belum_diminta", "diminta", "diberikan", "ditolak"] },
+        "redistributable": {
+          "type": "boolean",
+          "description": "Keadaan pada saat panen, bukan izin. Nilainya tidak diubah alat mana pun; keputusan menerbitkan di atasnya dicatat di kepala gambar_produk/terbitkan-logo.mjs."
+        }
+      }
+    },
+    "attribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["basis", "evidence_tier", "tier_reason"],
+      "description": "Seberapa kuat sambungan BADAN -> SITUS, dan bukan seberapa bagus gambarnya. Logo yang benar dari situs yang salah menempelkan lambang perusahaan lain ke halaman profil, dan itu kekeliruan yang jauh lebih buruk daripada slot kosong.",
+      "properties": {
+        "basis": { "type": "string", "minLength": 1 },
+        "evidence_tier": { "enum": ["A", "B", "C", "D"] },
+        "tier_reason": { "type": "string", "minLength": 1 },
+        "nama_registri_cocok": {
+          "type": "string",
+          "description": "Berapa kata pembeda nama registri yang benar-benar muncul di halamannya, ditulis sebagai `n/m`. Kata lazim seperti PT, Indonesia, dan Jaya tidak dihitung — ia ada di hampir tiap nama badan."
+        },
+        "ronde_pilih": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": { "enum": ["mentah", "ternormalisasi", "ditolak"] },
+        "by": { "type": ["string", "null"] },
+        "at": { "type": ["string", "null"], "format": "date-time" },
+        "reason": { "type": "string" }
+      }
+    },
+    "notes": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": { "id": { "type": ["string", "null"] } }
+    },
+    "file": { "$ref": "#/$defs/Berkas" },
+    "variants": { "type": "array", "items": { "$ref": "#/$defs/Berkas" } },
+    "$schema": { "type": "string" }
+  },
+  "$defs": {
+    "Berkas": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "rendition", "format", "width_px", "height_px", "bytes", "sha256"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "rendition": {
+          "enum": ["sedang", "kecil"],
+          "description": "Tidak ada `besar`. Logo dipakai paling besar setinggi 72 px pada kartu profil; 1600 px hanya menambah bita yang tidak pernah tergambar."
+        },
+        "format": { "enum": ["webp"] },
+        "width_px": { "type": "integer", "minimum": 1 },
+        "height_px": { "type": "integer", "minimum": 1 },
+        "bytes": { "type": "integer", "minimum": 1 },
+        "sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+        "has_alpha": {
+          "type": "boolean",
+          "description": "Alfa dipertahankan, tidak diratakan ke putih: layar memasang logo di atas piring netral yang warnanya sama di kedua tema, dan logo yang sudah diratakan membawa kotak putihnya sendiri ke mana-mana."
+        },
+        "exif_stripped": { "type": "boolean" }
+      }
+    }
+  }
+}

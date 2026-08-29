@@ -1,0 +1,32 @@
+[
+ {
+  "kode_bps": "7173010",
+  "nama_bps": "TOMOHON SELATAN",
+  "kode_dagri": "71.73.01",
+  "nama_dagri": "TOMOHON SELATAN"
+ },
+ {
+  "kode_bps": "7173020",
+  "nama_bps": "TOMOHON TENGAH",
+  "kode_dagri": "71.73.02",
+  "nama_dagri": "TOMOHON TENGAH"
+ },
+ {
+  "kode_bps": "7173021",
+  "nama_bps": "TOMOHON TIMUR",
+  "kode_dagri": "71.73.05",
+  "nama_dagri": "TOMOHON TIMUR"
+ },
+ {
+  "kode_bps": "7173022",
+  "nama_bps": "TOMOHON BARAT",
+  "kode_dagri": "71.73.04",
+  "nama_dagri": "TOMOHON BARAT"
+ },
+ {
+  "kode_bps": "7173030",
+  "nama_bps": "TOMOHON UTARA",
+  "kode_dagri": "71.73.03",
+  "nama_dagri": "TOMOHON UTARA"
+ }
+]

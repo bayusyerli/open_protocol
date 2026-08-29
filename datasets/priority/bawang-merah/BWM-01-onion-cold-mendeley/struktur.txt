@@ -1,0 +1,53 @@
+=== BWM-01 struktur & cacah kelas ===
+Perintah: bsdtar -tf <arsip> (libarchive; RAR v4 & v5 terbaca)
+Tanggal: 2026-08-25
+
+--- ARSIP: augment.rar  [RAR archive data, v5]
+  total entri  : 4507
+  berkas .jpg  : 4502
+  cacah per kelas (.jpg saja):
+    1278 augment/healthy_augment
+    1272 augment/Iris yellow virus_augment
+    1217 augment/Stemphylium leaf blight and collectrichum leaf blight augment
+     735 augment/purple blotch_augment
+  contoh 3 entri:
+    augment/Stemphylium leaf blight and collectrichum leaf blight augment/dr_62_1169.jpg
+    augment/Stemphylium leaf blight and collectrichum leaf blight augment/dr_15_1067.jpg
+    augment/Stemphylium leaf blight and collectrichum leaf blight augment/dr_38_7076.jpg
+
+--- ARSIP: onion dataset resized.rar  [RAR archive data, v4, os: Win32]
+  total entri  : 821
+  berkas .jpg  : 816
+  cacah per kelas (.jpg saja):
+     426 onion dataset resized/healthy
+     282 onion dataset resized/Iris yellow virus
+      90 onion dataset resized/Stemphylium leaf blight and collectrichum leaf blight
+      18 onion dataset resized/purple blotch
+  contoh 3 entri:
+    onion dataset resized/healthy/1.jpg
+    onion dataset resized/healthy/10.jpg
+    onion dataset resized/healthy/100.jpg
+
+--- ARSIP: resized_onion_raw.rar  [RAR archive data, v4, os: Win32]
+  total entri  : 1771
+  berkas .jpg  : 1686
+  cacah per kelas (.jpg saja):
+     287 resized_onion_raw/sample 7
+     247 resized_onion_raw/sample 4
+     246 resized_onion_raw/sample 5
+     244 resized_onion_raw/sample 6
+     231 resized_onion_raw/sample 1
+     218 resized_onion_raw/sample 3
+     213 resized_onion_raw/sample 2
+  contoh 3 entri:
+    resized_onion_raw/sample 1/day 10/IMG_9279.JPG
+    resized_onion_raw/sample 1/day 10/IMG_9280.JPG
+    resized_onion_raw/sample 1/day 10/IMG_9281.JPG
+
+=== uji integritas arsip (bsdtar -tf ke /dev/null, exit code 0 = OK) ===
+  OK   augment.rar
+  OK   onion dataset resized.rar
+  OK   resized_onion_raw.rar
+
+=== tipe berkas keseluruhan ===
+7004 jpg

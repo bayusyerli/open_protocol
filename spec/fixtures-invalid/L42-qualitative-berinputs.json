@@ -1,0 +1,38 @@
+{
+  "$schema": "../schema/plot.schema.json",
+  "id": "op:plt:019e9000-0000-7000-8000-000000000909",
+  "kind": "field",
+  "label": "Fixture L42 kualitatif",
+  "holder": {
+    "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4",
+    "label": "Pemegang Contoh"
+  },
+  "area": {
+    "value": 5000,
+    "unit": "m2"
+  },
+  "elevation_m": 120,
+  "agroclimate": [
+    {
+      "scheme": {
+        "id": "op:akl:00000005",
+        "label": "Pola hujan tahunan — BMKG"
+      },
+      "class": {
+        "id": "op:akz:00000401",
+        "code": "monsunal",
+        "label": "Pola monsunal"
+      },
+      "basis": {
+        "source_kind": "map_lookup",
+        "series": "Zona Musim BMKG 2020",
+        "map_scale": "1:1.000.000"
+      },
+      "inputs": {
+        "runtun_bulan_basah": 5
+      }
+    }
+  ],
+  "data_classification": "farm_private",
+  "created_at": "2026-08-24T00:00:00Z"
+}

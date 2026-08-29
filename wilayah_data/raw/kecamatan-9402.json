@@ -1,0 +1,242 @@
+[
+ {
+  "kode_bps": "9402110",
+  "nama_bps": "WAMENA",
+  "kode_dagri": "91.02.01",
+  "nama_dagri": "WAMENA"
+ },
+ {
+  "kode_bps": "9402111",
+  "nama_bps": "ASOLOKOBAL",
+  "kode_dagri": "91.02.29",
+  "nama_dagri": "ASOLOKOBAL"
+ },
+ {
+  "kode_bps": "9402112",
+  "nama_bps": "WALELAGAMA",
+  "kode_dagri": "91.02.25",
+  "nama_dagri": "WALELAGAMA"
+ },
+ {
+  "kode_bps": "9402113",
+  "nama_bps": "TRIKORA",
+  "kode_dagri": "91.02.40",
+  "nama_dagri": "TRIKORA"
+ },
+ {
+  "kode_bps": "9402114",
+  "nama_bps": "NAPUA",
+  "kode_dagri": "91.02.41",
+  "nama_dagri": "NAPUA"
+ },
+ {
+  "kode_bps": "9402115",
+  "nama_bps": "WALAIK",
+  "kode_dagri": "91.02.42",
+  "nama_dagri": "WALAIK"
+ },
+ {
+  "kode_bps": "9402116",
+  "nama_bps": "WOUMA",
+  "kode_dagri": "91.02.43",
+  "nama_dagri": "WOUMA"
+ },
+ {
+  "kode_bps": "9402117",
+  "nama_bps": "WALESI",
+  "kode_dagri": "91.02.63",
+  "nama_dagri": "WELESI"
+ },
+ {
+  "kode_bps": "9402118",
+  "nama_bps": "ASOTIPO",
+  "kode_dagri": "91.02.64",
+  "nama_dagri": "ASOTIPO"
+ },
+ {
+  "kode_bps": "9402119",
+  "nama_bps": "MAIMA",
+  "kode_dagri": "91.02.65",
+  "nama_dagri": "MAIMA"
+ },
+ {
+  "kode_bps": "9402120",
+  "nama_bps": "HUBIKOSI",
+  "kode_dagri": "91.02.12",
+  "nama_dagri": "HUBIKOSI"
+ },
+ {
+  "kode_bps": "9402121",
+  "nama_bps": "PELEBAGA",
+  "kode_dagri": "91.02.34",
+  "nama_dagri": "PELEBAGA"
+ },
+ {
+  "kode_bps": "9402122",
+  "nama_bps": "IBELE",
+  "kode_dagri": "91.02.45",
+  "nama_dagri": "IBELE"
+ },
+ {
+  "kode_bps": "9402123",
+  "nama_bps": "TAILAREK",
+  "kode_dagri": "91.02.46",
+  "nama_dagri": "TAELAREK"
+ },
+ {
+  "kode_bps": "9402124",
+  "nama_bps": "HUBIKIAK",
+  "kode_dagri": "91.02.44",
+  "nama_dagri": "HUBIKIAK"
+ },
+ {
+  "kode_bps": "9402180",
+  "nama_bps": "ASOLOGAIMA",
+  "kode_dagri": "91.02.04",
+  "nama_dagri": "ASOLOGAIMA"
+ },
+ {
+  "kode_bps": "9402181",
+  "nama_bps": "MUSATFAK",
+  "kode_dagri": "91.02.27",
+  "nama_dagri": "MUSATFAK"
+ },
+ {
+  "kode_bps": "9402182",
+  "nama_bps": "SILO KARNO DOGA",
+  "kode_dagri": "91.02.58",
+  "nama_dagri": "SILO KARNO DOGA"
+ },
+ {
+  "kode_bps": "9402183",
+  "nama_bps": "PYRAMID",
+  "kode_dagri": "91.02.59",
+  "nama_dagri": "PIRAMID"
+ },
+ {
+  "kode_bps": "9402184",
+  "nama_bps": "MULIAMA",
+  "kode_dagri": "91.02.60",
+  "nama_dagri": "MULIAMA"
+ },
+ {
+  "kode_bps": "9402185",
+  "nama_bps": "WAME",
+  "kode_dagri": "91.02.67",
+  "nama_dagri": "WAME"
+ },
+ {
+  "kode_bps": "9402190",
+  "nama_bps": "KURULU",
+  "kode_dagri": "91.02.03",
+  "nama_dagri": "KURULU"
+ },
+ {
+  "kode_bps": "9402191",
+  "nama_bps": "USILIMO",
+  "kode_dagri": "91.02.49",
+  "nama_dagri": "USILIMO"
+ },
+ {
+  "kode_bps": "9402192",
+  "nama_bps": "WITA WAYA",
+  "kode_dagri": "91.02.50",
+  "nama_dagri": "WITA WAYA"
+ },
+ {
+  "kode_bps": "9402193",
+  "nama_bps": "LIBAREK",
+  "kode_dagri": "91.02.51",
+  "nama_dagri": "LIBAREK"
+ },
+ {
+  "kode_bps": "9402194",
+  "nama_bps": "WADANGKU",
+  "kode_dagri": "91.02.52",
+  "nama_dagri": "WADANGKU"
+ },
+ {
+  "kode_bps": "9402195",
+  "nama_bps": "PISUGI",
+  "kode_dagri": "91.02.53",
+  "nama_dagri": "PISUGI"
+ },
+ {
+  "kode_bps": "9402220",
+  "nama_bps": "BOLAKME",
+  "kode_dagri": "91.02.15",
+  "nama_dagri": "BOLAKME"
+ },
+ {
+  "kode_bps": "9402221",
+  "nama_bps": "WOLLO",
+  "kode_dagri": "91.02.28",
+  "nama_dagri": "WOLO"
+ },
+ {
+  "kode_bps": "9402222",
+  "nama_bps": "YALENGGA",
+  "kode_dagri": "91.02.35",
+  "nama_dagri": "YALENGGA"
+ },
+ {
+  "kode_bps": "9402223",
+  "nama_bps": "TAGIME",
+  "kode_dagri": "91.02.55",
+  "nama_dagri": "TAGIME"
+ },
+ {
+  "kode_bps": "9402224",
+  "nama_bps": "MOLAGALOME",
+  "kode_dagri": "91.02.56",
+  "nama_dagri": "MOLAGALOME"
+ },
+ {
+  "kode_bps": "9402225",
+  "nama_bps": "TAGINERI",
+  "kode_dagri": "91.02.57",
+  "nama_dagri": "TAGINERI"
+ },
+ {
+  "kode_bps": "9402226",
+  "nama_bps": "BUGI",
+  "kode_dagri": "91.02.61",
+  "nama_dagri": "BUGI"
+ },
+ {
+  "kode_bps": "9402227",
+  "nama_bps": "BPIRI",
+  "kode_dagri": "91.02.62",
+  "nama_dagri": "BPIRI"
+ },
+ {
+  "kode_bps": "9402228",
+  "nama_bps": "KORAGI",
+  "kode_dagri": "91.02.54",
+  "nama_dagri": "KORAGI"
+ },
+ {
+  "kode_bps": "9402611",
+  "nama_bps": "WESAPUT",
+  "kode_dagri": "91.02.68",
+  "nama_dagri": "WESAPUT"
+ },
+ {
+  "kode_bps": "9402612",
+  "nama_bps": "SIEPKOSI",
+  "kode_dagri": "91.02.48",
+  "nama_dagri": "SIEPKOSI"
+ },
+ {
+  "kode_bps": "9402613",
+  "nama_bps": "ITLAY HISAGE",
+  "kode_dagri": "91.02.47",
+  "nama_dagri": "ITLAY HISAGE"
+ },
+ {
+  "kode_bps": "9402614",
+  "nama_bps": "POPUGOBA",
+  "kode_dagri": "91.02.66",
+  "nama_dagri": "POPUGOBA"
+ }
+]

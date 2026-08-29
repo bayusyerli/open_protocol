@@ -36,14 +36,16 @@
  * tema di satu layar.
  */
 
+import { cari, cariGejala, cariNamaLokal, tautanHasil, teks, JENIS } from './pustaka.js';
+
 /** Satu-satunya daftar halaman. Urutannya urutan tampilnya. */
 const HALAMAN = [
-  { u: 'jalur-1.html',   t: 'Tanaman bermasalah',        g: 'Enam jalur' },
-  { u: 'index.html',     t: 'Cek isi produk',            g: 'Enam jalur' },
-  { u: 'jalur-3.html',   t: 'Bandingkan harga pupuk',    g: 'Enam jalur' },
-  { u: 'jalur-4.html',   t: 'Cek nama varietas',         g: 'Enam jalur' },
-  { u: 'jalur-5.html',   t: 'Buat pupuk sendiri',        g: 'Enam jalur' },
-  { u: 'jalur-6.html',   t: 'Pengendali buatan sendiri', g: 'Enam jalur' },
+  { u: 'tanaman.html',   t: 'Tanaman bermasalah',        g: 'Enam pintu masuk' },
+  { u: 'produk.html',     t: 'Cek isi produk',            g: 'Enam pintu masuk' },
+  { u: 'harga-pupuk.html',   t: 'Bandingkan harga pupuk',    g: 'Enam pintu masuk' },
+  { u: 'varietas.html',   t: 'Cek nama varietas',         g: 'Enam pintu masuk' },
+  { u: 'pupuk-sendiri.html',   t: 'Buat pupuk sendiri',        g: 'Enam pintu masuk' },
+  { u: 'pengendali-sendiri.html',   t: 'Pengendali buatan sendiri', g: 'Enam pintu masuk' },
 
   { u: 'takaran.html',   t: 'Kalibrasi & takaran',       g: 'Hitungan di lahan' },
   { u: 'usaha.html',     t: 'Titik impas usaha tani',    g: 'Hitungan di lahan' },
@@ -51,15 +53,33 @@ const HALAMAN = [
   { u: 'kas.html',       t: 'Buku kas per petak',        g: 'Hitungan di lahan' },
 
   { u: 'harga.html',     t: 'Harga komoditas',           g: 'Cari & rujukan' },
-  { u: 'principal.html', t: 'Profil perusahaan',         g: 'Cari & rujukan' },
+  { u: 'perusahaan.html', t: 'Profil perusahaan',         g: 'Cari & rujukan' },
   { u: 'toko.html',      t: 'Toko tani, benih, penyuluhan & lab', g: 'Cari & rujukan' },
 
-  { u: 'ukur.html',      t: 'Yang tercatat di peranti ini', g: 'Peranti ini' },
+  { u: 'peranti.html',      t: 'Yang tercatat di peranti ini', g: 'Peranti ini' },
+];
+
+/* Tab bawah — K2 pada docs/17, bagian "cangkang".
+ *
+ * Lima slot, dan yang menentukan pilihannya bukan popularitas melainkan JANGKAUAN JEMPOL:
+ * kaki halaman sudah memuat keempat belas halaman, tetapi mencapainya menuntut menggulir
+ * sampai habis. Yang ditaruh di sini yang tidak boleh menuntut gulir — pintu pulang, dua
+ * jalur yang paling sering jadi pintu masuk, harga, dan satu pintu ke selebihnya.
+ *
+ * "Semua" membuka lembar berisi daftar YANG SAMA dengan kaki halaman, dibangun dari
+ * `HALAMAN` juga. Dua daftar navigasi yang ditulis terpisah akan menyimpang, dan itu
+ * persis penyakit yang dibereskan berkas ini. */
+const TAB = [
+  { u: 'index.html', t: 'Beranda' },
+  { u: 'tanaman.html', t: 'Tanaman' },
+  { u: 'produk.html',   t: 'Produk' },
+  { u: 'harga.html',   t: 'Harga' },
+  { u: null,           t: 'Semua' },
 ];
 
 const berkasKini = () => {
   const b = location.pathname.split('/').pop();
-  return b && b.endsWith('.html') ? b : 'index.html';
+  return b && b.endsWith('.html') ? b : 'produk.html';
 };
 
 export function pasangCangkang() {
@@ -77,9 +97,15 @@ export function pasangCangkang() {
   // kemajuan di jalur 3 dan halaman harga. Memakai nama yang sama membuat kedua bilah
   // itu ikut jadi lengket dan setinggi kepala halaman.
   bilah.className = 'bilah-cangkang';
+  // Simbolnya dekoratif — alt kosong: namanya sudah jadi teks di sebelahnya, dan
+  // mengisi alt="Pranatani" membuat pembaca layar menyebutnya dua kali dalam satu
+  // tautan. Teksnya dibungkus <span> karena barisnya kini mendatar: tanpa pembungkus,
+  // <strong> dan <small> jadi dua kolom di sebelah tanda, bukan dua baris.
   bilah.innerHTML =
-    `<a class="merek-cangkang" href="beranda.html">` +
-    `<strong>Open Protocols</strong><small>DATA PERTANIAN TERBUKA</small></a>`;
+    `<a class="merek-cangkang" href="index.html">` +
+    `<img class="tanda-merek" src="logo-pranatani.svg" alt="" width="30" height="30">` +
+    `<span class="teks-merek"><strong>Pranatani</strong>` +
+    `<small>DATA PERTANIAN TERBUKA</small></span></a>`;
 
   // Tombol tema DIPINDAH, bukan dibuat ulang: `tema.js` mencarinya lewat id dan tiap
   // halaman memanggil pasangTombolTema() sendiri, jadi memindahkannya tidak memutus
@@ -114,8 +140,8 @@ export function pasangCangkang() {
         </div>`).join('')}
     </nav>
     <p class="kaki-catatan">
-      <a href="beranda.html">← Beranda</a> ·
-      <strong>Open Protocols</strong> — gratis, tanpa akun, dan kata yang dicari tidak
+      <a href="index.html">← Beranda</a> ·
+      <strong>Pranatani</strong> — gratis, tanpa akun, dan kata yang dicari tidak
       dikirim ke mana pun.
     </p>`;
 
@@ -123,4 +149,249 @@ export function pasangCangkang() {
   // milik isinya dan harus tetap yang terakhir di dalam main; navigasi bukan isi.
   document.querySelector('p.lain')?.remove();
   utama.after(kaki);
+
+  pasangCari(bilah);
+  pasangTab(kini, grup);
+  ukurBilah(bilah);
+}
+
+/* Tinggi bilah, diterbitkan sebagai `--atas-bilah` supaya apa pun yang menempel DI BAWAHNYA
+ * tahu harus berhenti di mana. Sudah dipakai strip tingkat di harga dan strip darurat di
+ * empat layar pestisida.
+ *
+ * DIUKUR, bukan ditulis di lembar gaya. Bilah ini memuat tanda, wordmark, kotak cari, dan
+ * tombol tema; di bawah 460 px isinya merapat dan pada layar tersempit ia membungkus, jadi
+ * tingginya bukan satu angka. Menebaknya membuat yang menempel di bawahnya menyelip di
+ * balik bilah persis pada lebar yang paling banyak dipakai.
+ *
+ * Di sini, bukan di tiap halaman: bilahnya milik cangkang, dan tingginya ikut. */
+function ukurBilah(bilah) {
+  const pasang = () => document.documentElement.style
+    .setProperty('--atas-bilah', `${Math.round(bilah.offsetHeight)}px`);
+  pasang();
+  addEventListener('resize', pasang);
+  // Kotak cari memakai huruf sistem; bilahnya bisa meninggi setelah huruf itu siap.
+  document.fonts?.ready?.then(pasang);
+}
+
+/* Kotak cari yang tidak pernah pergi.
+ *
+ * Sebelum ini kotak cari universal cuma ada di beranda: siapa pun yang sedang di jalur 3
+ * dan teringat nama lain harus pulang dulu. Kotaknya kini ikut di bilah tiap halaman, dan
+ * hasilnya dibuka di lembar — BUKAN dengan berpindah halaman, supaya yang sedang dikerjakan
+ * di layar itu tidak hilang hanya karena satu nama ingin dicek.
+ *
+ * Rutenya `tautanHasil()` di pustaka.js, sama persis dengan yang dipakai beranda.
+ *
+ * KAPAN LEMBARNYA BOLEH TERBIT. Versi pertama membukanya 220 ms sesudah huruf KEDUA,
+ * sebelum jawabannya ada. Yang terjadi di layar: mengetik "pu" menutup seluruh halaman
+ * dengan lembar yang isinya cuma "Tambah 1 huruf lagi." — indeksnya memang belum sanggup
+ * menjawab dua huruf — dan `showModal()` memindahkan sorotan ke tombol tutup, sehingga
+ * "puk" yang diketik berikutnya hilang tanpa suara. Lembar itu bukan menjawab lebih
+ * cepat; ia memotong pertanyaannya di tengah.
+ *
+ * Tiga aturan yang berlaku sekarang, ketiganya soal SIAPA yang memutuskan lembar terbit:
+ *   1. Mengetik hanya membuka lembar kalau ada HASIL. "Kurang huruf", "tidak ada yang
+ *      bernama itu", dan "indeks tidak terambil" adalah jawaban untuk pertanyaan yang
+ *      sudah selesai ditanya — jadi ketiganya menunggu Enter, atau lembar yang memang
+ *      sudah terbuka. Selama masih mengetik, kotaknya diam.
+ *   2. Jeda 600 ms dan minimal tiga huruf sebelum ketikan menjawab sendiri. Tiga karena
+ *      di bawah itu `cari()` hampir selalu memulangkan `kurang`, bukan hasil.
+ *   3. Enter (atau tombol cari di papan ketik ponsel — `enterkeyhint="search"`) membuka
+ *      lembarnya SEKARANG, apa pun jawabannya. Sebelum ini tombol itu tidak melakukan
+ *      apa-apa: submit-nya cuma `preventDefault()`.
+ *
+ * Sisanya ditangani `keydown` di bawah: di ponsel jarak antar huruf memang sering lebih
+ * panjang dari jeda mana pun yang masuk akal, jadi lembar tetap bisa terbit di tengah
+ * orang mengetik — dan huruf berikutnya harus kembali ke kotaknya, bukan ke tombol tutup. */
+function pasangCari(bilah) {
+  const borang = document.createElement('form');
+  borang.className = 'cari-cangkang';
+  borang.setAttribute('role', 'search');
+  borang.innerHTML = `
+    <label class="khusus-pembaca" for="qCangkang">Cari nama produk, bahan aktif, atau gejala</label>
+    <input id="qCangkang" type="search" autocomplete="off" spellcheck="false"
+           enterkeyhint="search" placeholder="Cari nama, bahan, gejala">`;
+  bilah.querySelector('.merek-cangkang').after(borang);
+
+  const lembar = lembarKosong('cariLembar', 'Hasil pencarian');
+  const isi = lembar.querySelector('.lembar-cangkang-isi');
+  const q = borang.querySelector('input');
+
+  const MIN = 3;     // huruf minimum sebelum ketikan menjawab sendiri
+  const JEDA = 600;  // ms sunyi sesudah huruf terakhir
+
+  // Sorotan berhenti di lembar itu sendiri, bukan di tombol tutup — pembaca layar tetap
+  // mendengar judulnya, dan `keydown` di bawah jadi punya tanda yang jelas untuk
+  // membedakan "lembar terbit di bawah tangan yang masih mengetik" dari "orangnya sudah
+  // masuk ke daftar hasil".
+  const buka = () => { if (!lembar.open) { lembar.showModal(); lembar.focus(); } };
+
+  let jalan = 0;
+  /** @param {boolean} diminta Enter/tombol cari — jawaban wajib terbit, apa pun isinya. */
+  const cariSekarang = async (diminta = false) => {
+    const kueri = q.value.trim();
+    if (kueri.length < 2) {                       // di bawah dua huruf indeksnya tak bisa dipanggil
+      if (diminta) { buka(); isi.innerHTML = '<p class="bantuan">Ketik dua huruf atau lebih.</p>'; }
+      else if (lembar.open) lembar.close();
+      return;
+    }
+    if (!diminta && !lembar.open && kueri.length < MIN) return;   // masih mengetik
+    const giliran = ++jalan;
+    // "Mencari…" cuma pantas di lembar yang sudah kelihatan. Membuka lembar untuk
+    // memperlihatkannya berarti menutupi halaman demi kabar bahwa belum ada kabar.
+    if (lembar.open || diminta) { buka(); isi.innerHTML = '<p class="bantuan">Mencari…</p>'; }
+    try {
+      // KETIGANYA, bukan cuma nama. Versi pertama kotak ini hanya memanggil cari(), dan
+      // akibatnya kotak yang RUPANYA sama dengan kotak beranda menjawab lebih sedikit:
+      // "antraknosa" memberi nol, padahal beranda menemukannya lewat kepala gejala. Kotak
+      // yang mengajari orang "app ini tidak tahu antraknosa" lebih buruk daripada tidak
+      // ada kotak sama sekali.
+      //
+      // Ditangkap sendiri-sendiri, sama seperti beranda: satu cabang yang tidak sanggup
+      // tidak boleh membungkam cabang yang sanggup.
+      // `pintu: true` boleh di sini karena lembar ini menggambar hasilnya sebagai TAUTAN,
+      // bukan tombol yang membuka pecahan indeks — jadi pintu komoditas, yang menaut ke
+      // halaman terbitan, mendarat di tempat yang benar tanpa perlakuan khusus.
+      const [namaHasil, gejala, lokal] = await Promise.all([
+        cari(kueri, null, { pintu: true }).catch(() => ({ takTerambil: true })),
+        cariGejala(kueri).catch(() => []),
+        cariNamaLokal(kueri).catch(() => []),
+      ]);
+      if (giliran !== jalan) return;                 // ketikan yang lebih baru menang
+      const { hasil = [], kurang } = namaHasil;
+      if (kurang && !gejala.length && !lokal.length) {
+        if (!lembar.open && !diminta) return;     // aturan 1 — jangan potong yang masih mengetik
+        buka();
+        isi.innerHTML = `<p class="bantuan">Tambah ${kurang} huruf lagi.</p>`; return;
+      }
+      const lain = [
+        ...gejala.map((g) => ({ t: g.n ?? g.nama ?? 'Gejala', k: 'Gejala di kebun',
+          u: `tanaman.html?${new URLSearchParams({ opt: g.i })}` })),
+        ...lokal.map((l) => ({ t: l.n ?? l.nama ?? 'Nama lokal', k: 'Nama lokal',
+          u: `tanaman.html?${new URLSearchParams({ opt: l.i })}` })),
+      ];
+      if (!hasil.length && !lain.length) {
+        // Nol hasil di tengah ketikan hampir selalu berarti namanya belum selesai
+        // diketik, bukan barangnya tidak ada. Kalimat di bawah ini berat — ia menyangkal
+        // "berarti tidak terdaftar" — dan tidak boleh diucapkan atas pertanyaan separuh.
+        if (!lembar.open && !diminta) return;
+        buka();
+        isi.innerHTML = `<p class="bantuan">Tidak ada yang bernama <strong>${teks(kueri)}</strong>.
+          Nama di kemasan sering berbeda dari nama terdaftarnya, jadi ini
+          <strong>bukan bukti produknya tidak terdaftar</strong>.</p>`;
+        return;
+      }
+      const tampil = hasil.slice(0, 25);
+      const blokLain = lain.length ? `
+        <ul class="daftar-cangkang">
+          ${lain.map((x) => `
+            <li><a href="${teks(x.u)}">
+              <span class="nama">${teks(x.t)}</span>
+              <span class="sub">${teks(x.k)}</span>
+            </a></li>`).join('')}
+        </ul>` : '';
+      // Aturan kartu yang sama dengan gambarHasil() di pustaka.js — lencana jenis hanya
+      // saat hasilnya bercampur, dan PEMBEDA naik ke atas nama pemegang. Tanpa itu lembar
+      // ini akan memberi lima kartu "PHONSKA" yang tampak seragam, yaitu persis keadaan
+      // yang sudah diperbaiki di daftar hasil halaman.
+      const banyakJenis = new Set(tampil.map((x) => x.j)).size > 1;
+      buka();
+      isi.innerHTML = `
+        <p class="bantuan">${hasil.length + lain.length} hasil${hasil.length > tampil.length
+          ? `, ditampilkan ${tampil.length + lain.length} teratas` : ''}.</p>
+        <ul class="daftar-cangkang">
+          ${tampil.map((x) => `
+            <li><a href="${teks(tautanHasil(x, kueri))}">
+              <span class="nama">${teks(x.n)}${banyakJenis
+                ? `<span class="lencana">${teks(JENIS[x.j] ?? x.j)}</span>` : ''}</span>
+              ${x.f ? `<span class="pembeda">${teks(x.f)}</span>`
+                : (x.j === 'pupuk' || x.j === 'pestisida')
+                  ? '<span class="pembeda kosong-pembeda">komposisi tidak tercatat di registri</span>' : ''}
+              <span class="sub">${teks(x.k ?? '—')}</span>
+            </a></li>`).join('')}
+        </ul>
+        ${blokLain}`;
+    } catch {
+      if (giliran !== jalan) return;
+      if (!lembar.open && !diminta) return;
+      buka();
+      isi.innerHTML = '<p class="bantuan">Indeksnya tidak terambil. Periksa sambungan, lalu ketik ulang.</p>';
+    }
+  };
+
+  let tunda;
+  const jadwalkan = () => { clearTimeout(tunda); tunda = setTimeout(() => cariSekarang(), JEDA); };
+  q.addEventListener('input', jadwalkan);
+  borang.addEventListener('submit', (e) => {
+    e.preventDefault();
+    clearTimeout(tunda);
+    cariSekarang(true);
+  });
+
+  // Huruf yang terlanjur diketik sesudah lembarnya terbit tidak boleh hilang. Selama
+  // sorotannya masih di lembar itu sendiri — artinya orangnya belum menyentuh satu pun
+  // hasil — huruf berikutnya menutup lembar, mengembalikan sorotan ke kotak, dan ikut
+  // terketik di sana. Begitu ia sudah masuk ke daftar hasil (Tab, sentuh, klik), aturan
+  // ini berhenti berlaku dan papan ketik kembali milik lembar.
+  lembar.addEventListener('keydown', (e) => {
+    if (document.activeElement !== lembar) return;
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    const huruf = e.key.length === 1;
+    if (!huruf && e.key !== 'Backspace') return;
+    e.preventDefault();
+    lembar.close();
+    q.focus();
+    q.value = huruf ? q.value + e.key : q.value.slice(0, -1);
+    jadwalkan();
+  });
+}
+
+/** Lembar kosong bergaya sama, dipakai hasil pencarian dan daftar "Semua". */
+function lembarKosong(id, judul) {
+  const l = document.createElement('dialog');
+  l.id = id;
+  l.className = 'lembar-cangkang';
+  l.tabIndex = -1;                    // supaya sorotan bisa berhenti di lembarnya sendiri
+  l.innerHTML = `
+    <form method="dialog" class="lembar-cangkang-kepala">
+      <h2>${judul}</h2><button aria-label="Tutup">×</button>
+    </form>
+    <div class="lembar-cangkang-isi"></div>`;
+  l.addEventListener('click', (e) => {
+    const k = l.getBoundingClientRect();
+    if (e.clientX < k.left || e.clientX > k.right || e.clientY < k.top || e.clientY > k.bottom) l.close();
+  });
+  document.body.append(l);
+  return l;
+}
+
+function pasangTab(kini, grup) {
+  const semua = lembarKosong('semuaLembar', 'Semua halaman');
+  semua.querySelector('.lembar-cangkang-isi').innerHTML = `
+    <nav aria-label="Semua halaman">
+      ${grup.map((g) => `
+        <div class="kaki-grup">
+          <h2>${g}</h2>
+          <ul>
+            ${HALAMAN.filter((h) => h.g === g).map((h) => `<li>${
+              h.u === kini
+                ? `<span class="kaki-kini" aria-current="page">${h.t}</span>`
+                : `<a href="${h.u}">${h.t}</a>`
+            }</li>`).join('')}
+          </ul>
+        </div>`).join('')}
+    </nav>`;
+
+  const bar = document.createElement('nav');
+  bar.className = 'tab-cangkang';
+  bar.setAttribute('aria-label', 'Pintasan');
+  bar.innerHTML = TAB.map((t) => (t.u === null
+    ? `<button type="button" data-semua>${t.t}</button>`
+    : t.u === kini
+      ? `<span aria-current="page">${t.t}</span>`
+      : `<a href="${t.u}">${t.t}</a>`)).join('');
+  bar.querySelector('[data-semua]').addEventListener('click', () => semua.showModal());
+  document.body.append(bar);
+  document.body.classList.add('bertab');
 }

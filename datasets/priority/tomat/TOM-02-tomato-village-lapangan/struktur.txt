@@ -1,0 +1,63 @@
+# Struktur TOM-02 Tomato-Village (Variant-a + Variant-b)
+
+## Cara pengambilan
+   git clone --filter=blob:none --no-checkout --depth 1 https://github.com/mamta-joshi-gehlot/Tomato-Village.git
+   git sparse-checkout init --cone
+   git sparse-checkout set 'Variant-a(Multiclass Classification)' 'Variant-b(MultiLabel Classification)'
+   git checkout    # lalu direktori variannya disalin apa adanya ke raw/, tanpa .git
+   Repo utuh (a+b+c) berukuran ~3,9 GB -> MELAMPAUI batas 3 GB per dataset.
+   Variant-c(Object Detection) sengaja TIDAK diambil: 2.596 MB, 14.368 gambar + label PASCAL VOC & YOLO.
+
+## Isi raw/
+README-asli-repo.md
+Variant-a(Multiclass Classification)
+Variant-b(MultiLabel Classification)
+
+## Variant-a (Multiclass Classification): cacah gambar per split/kelas
+  50 test/Early_blight
+  22 test/Healthy
+  92 test/Late_blight
+ 104 test/Leaf Miner
+  95 test/Magnesium Deficiency
+  37 test/Nitrogen Deficiency
+   8 test/Pottassium Deficiency
+  53 test/Spotted Wilt Virus
+ 347 train/Early_blight
+ 151 train/Healthy
+ 632 train/Late_blight
+ 716 train/Leaf Miner
+ 654 train/Magnesium Deficiency
+ 251 train/Nitrogen Deficiency
+  50 train/Pottassium Deficiency
+ 361 train/Spotted Wilt Virus
+  99 val/Early_blight
+  43 val/Healthy
+ 180 val/Late_blight
+ 204 val/Leaf Miner
+ 187 val/Magnesium Deficiency
+  72 val/Nitrogen Deficiency
+  14 val/Pottassium Deficiency
+ 103 val/Spotted Wilt Virus
+   TOTAL gambar Variant-a: 4525
+   Berkas non-gambar: 1 (desktop.ini, sisa Windows)
+
+## Variant-b (MultiLabel Classification)
+   train: 3946 berkas
+   val: 1125 berkas
+   test: 585 berkas
+   Multi-Label dataset - with augmented.csv: 5.653 baris data, 12 kolom
+   8 label: Early blight | Healthy | Late blight | Leaf Miner | Magnesium Deficiency | Nitrogen Deficiency | Pottassium Deficiency | Spotted Wilt Virus
+   Cacah gambar per label:
+      Leaf Miner            2101
+      Magnesium Deficiency  1518
+      Late blight            918
+      Spotted Wilt Virus     917
+      Early blight           579
+      Nitrogen Deficiency    469
+      Healthy                216
+      Pottassium Deficiency   85
+   Jumlah label per gambar (SUM): 1 label = 4.525 gambar | 2 label = 1.106 | 3 label = 22
+   -> 1.128 gambar bergejala MAJEMUK (mis. Early blight + Leaf Miner + Magnesium Deficiency)
+
+## Total berkas di raw/: 10184
+## Ukuran raw/: 1.3G

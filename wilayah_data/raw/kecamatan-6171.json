@@ -1,0 +1,38 @@
+[
+ {
+  "kode_bps": "6171010",
+  "nama_bps": "PONTIANAK SELATAN",
+  "kode_dagri": "61.71.01",
+  "nama_dagri": "PONTIANAK SELATAN"
+ },
+ {
+  "kode_bps": "6171011",
+  "nama_bps": "PONTIANAK TENGGARA",
+  "kode_dagri": "61.71.06",
+  "nama_dagri": "PONTIANAK TENGGARA"
+ },
+ {
+  "kode_bps": "6171020",
+  "nama_bps": "PONTIANAK TIMUR",
+  "kode_dagri": "61.71.02",
+  "nama_dagri": "PONTIANAK TIMUR"
+ },
+ {
+  "kode_bps": "6171030",
+  "nama_bps": "PONTIANAK BARAT",
+  "kode_dagri": "61.71.03",
+  "nama_dagri": "PONTIANAK BARAT"
+ },
+ {
+  "kode_bps": "6171031",
+  "nama_bps": "PONTIANAK KOTA",
+  "kode_dagri": "61.71.05",
+  "nama_dagri": "PONTIANAK KOTA"
+ },
+ {
+  "kode_bps": "6171040",
+  "nama_bps": "PONTIANAK UTARA",
+  "kode_dagri": "61.71.04",
+  "nama_dagri": "PONTIANAK UTARA"
+ }
+]

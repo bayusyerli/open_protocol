@@ -1,0 +1,20 @@
+{
+  "$schema": "../schema/plot.schema.json",
+  "id": "op:plt:019e9000-0000-7000-8000-000000000802",
+  "kind": "field",
+  "label": "Fixture L44 sah",
+  "holder": {
+    "id": "op:act:019e807a-ec00-7d6f-ac58-a193cd5ef4c4",
+    "label": "Pemegang Contoh"
+  },
+  "region": {
+    "id": "op:rgn:00000303",
+    "label": "Kabupaten Rembang"
+  },
+  "area": {
+    "value": 5000,
+    "unit": "m2"
+  },
+  "data_classification": "farm_private",
+  "created_at": "2026-08-24T00:00:00Z"
+}

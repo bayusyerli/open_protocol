@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'sha256-DNPNcLjUG4zlmdaYgGYD9nMFoEvRKSs1IHGJXWCYX+k='; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; form-action 'self'; base-uri 'none'">
+<title>Tanaman bermasalah — Pranatani</title>
+<meta name="description" content="Masuk dari apa yang terlihat di kebun, bukan dari nama hama. Pastikan dulu dengan dua ciri yang bisa diperiksa sendiri, lalu lihat bahan aktif apa yang terdaftar.">
+<!-- Tema dipasang sebelum lembar gaya supaya layar gelap tidak berkedip putih dulu.
+     Sengaja disalin sebaris di tiap halaman, bukan dimuat sebagai berkas: ia harus
+     berjalan sebelum cat pertama. Putaran dan labelnya ada di tema.js. -->
+<script>
+  try {
+    var t = localStorage.getItem('op:tema');
+    if (t === 'terang' || t === 'gelap') document.documentElement.dataset.tema = t;
+  } catch (e) { /* mode privat menolak localStorage; bawaan "ikut sistem" tetap benar */ }
+</script>
+<link rel="icon" href="ikon.svg" type="image/svg+xml">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="stylesheet" href="gaya.css">
+<link rel="stylesheet" href="batas.css">
+</head>
+<body>
+
+<header class="atas">
+  <div class="baris-atas">
+    <p class="jalur">Tanaman bermasalah</p>
+    <button class="tombol-tema" type="button" id="tombolTema"
+            aria-label="Tampilan layar: ikut sistem. Ketuk untuk terang."></button>
+  </div>
+  <h1>Ada apa dengan tanaman ini?</h1>
+  <p class="lede">
+    Pilih <strong>apa yang kamu lihat</strong>, bukan nama hamanya. Yang keluar: dugaan
+    penyebabnya, <strong>dua cara memastikan sendiri</strong>, lalu bahan aktif apa saja
+    yang terdaftar untuk itu.
+  </p>
+</header>
+
+<main>
+
+  <div id="tanpaJs" class="kartu peringatan">
+    <h2>Halaman ini butuh JavaScript</h2>
+    <p>Daftar gejalanya dibaca dari berkas indeks langsung di peramban.</p>
+  </div>
+
+
+  <h2 class="judul-bagian">Apa yang kamu lihat?</h2>
+
+  <!-- aria-live TIDAK dipasang: daftar ini digambar SEKALI saat muat dan tidak berubah
+       lagi, jadi satu-satunya yang dilakukannya adalah membacakan 1.729 px tombol gejala
+       sebagai satu pengumuman begitu halaman dibuka. Ia isi biasa; pembaca layar sudah
+       punya cara menelusurinya. -->
+  <section id="gejala"></section>
+
+  <section id="hasil" tabindex="-1"></section>
+
+  <div class="kartu">
+    <h2>Mesin tidak menebak</h2>
+    <p>
+      Tidak ada pengenal foto di sini. <strong>Kamu</strong> yang memutuskan, setelah
+      memeriksa dua ciri yang bisa dilihat sendiri.
+    </p>
+    <p class="catatan">
+      Diagnosis salah yang percaya diri menghasilkan semprotan salah — uang keluar,
+      tanaman tetap mati. Gejala di bawah dikurasi tangan untuk cabai, berstatus draft,
+      dan <strong>wajib ditinjau penyuluh atau BPTP</strong> sebelum jadi dasar
+      keputusan.
+    </p>
+  </div>
+
+  <details class="batas">
+    <summary><h2>Apa yang halaman ini tidak tampilkan, dan kenapa</h2></summary>
+    <div class="batas-isi">
+      <h3>Tanggal aman panen</h3>
+      <p>
+        Tenggang panen adalah angka yang paling melukai kalau salah, dan
+        <strong>registri tidak memuatnya sama sekali</strong> — nol dari 23.058
+        penggunaan berlabel. Halaman ini tidak menampilkannya, dan pertanyaannya dibawa
+        ke penyuluh.
+      </p>
+
+      <h3>Nama dagang di kemasan</h3>
+      <p>
+        Registri menyimpan nama produk terdaftar; kemasan sering memakai nama jualan
+        yang berbeda, dan pemetaannya belum ada.
+      </p>
+
+      <h3>Anjuran memilih merek</h3>
+      <p>
+        Daftar merek diurutkan menurut <strong>nomor pendaftaran menaik</strong> — tanpa
+        peringkat, tanpa bintang, tanpa slot berbayar. Urutannya ditentukan struktur
+        data, bukan kebijakan yang bisa diubah.
+      </p>
+
+      <h3>Tidak ada yang dikirim ke mana pun</h3>
+      <p>
+        Halaman ini berkas statis. Tidak ada akun, tidak ada petak terdaftar, dan
+        pilihanmu tidak dikirim ke server mana pun — memang tidak ada server yang bisa
+        menerimanya.
+      </p>
+    </div>
+  </details>
+
+  <!-- Cadangan tanpa JavaScript. Navigasi selengkapnya disuntik cangkang.js — satu
+       daftar untuk keempat belas halaman; alasannya di kepala berkas itu. -->
+  <p class="lain">
+    <a href="index.html">← Beranda</a>
+  </p>
+
+  <section class="batas-jawaban" id="batasJawaban">
+    <p class="bj-keping">Sumber: registri pestisida Kementan, dan kurasi gejala OPT cabai berstatus draft.</p>
+  </section>
+
+</main>
+
+<script type="module" src="tanaman.js"></script>
+</body>
+</html>

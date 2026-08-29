@@ -1,0 +1,293 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://spec.openprotocols.id/v0.1/agroclimate-scheme.schema.json",
+  "title": "AgroclimateScheme — skema klasifikasi agroklimat beserta kelas-kelasnya",
+  "description": "Agroklimat bukan satu angka melainkan sebuah PUTUSAN: deret iklim panjang diringkas jadi satu kelas bernama, memakai ambang yang dipilih seseorang untuk keperluan tertentu. Entitas ini menyimpan putusan itu, bukan iklimnya. Bentuknya sengaja meniru StageScale: skema memuat kelas-kelasnya di dalam dirinya sendiri, sebagaimana skala fase memuat fasenya, karena sebuah kelas tidak punya arti di luar skema yang mendefinisikannya — \"C3\" pada Oldeman dan \"C\" pada Schmidt-Ferguson tidak berhubungan sama sekali.\n\nYang membedakannya dari tabel di buku teks: ambangnya terbaca mesin. Karena itu pemeriksa bisa menghitung ulang kelas sebuah lokasi dari angka yang direkam bersamanya, dan menolak label yang tidak mengikuti dari angkanya sendiri.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^op:akl:[0-9]{8}$"
+    },
+    "axis": {
+      "type": "string",
+      "description": "Sumbu yang diringkas skema ini. Ada supaya skema yang menjawab pertanyaan berbeda tidak diadu: Oldeman tidak membantah Junghuhn, keduanya mengukur hal lain.",
+      "enum": [
+        "rainfall_regime",
+        "rainfall_pattern",
+        "elevation",
+        "temperature",
+        "season_onset",
+        "composite"
+      ]
+    },
+    "decidable": {
+      "type": "string",
+      "description": "threshold — kelasnya seluruhnya ditentukan ambang angka, sehingga bisa dihitung ulang dan dibantah. qualitative — kelasnya ditetapkan penilaian bentuk atau pola yang tidak punya ambang tunggal; sah, tetapi tidak boleh berpura-pura terhitung.",
+      "enum": [
+        "threshold",
+        "qualitative"
+      ]
+    },
+    "qualitative_reason": {
+      "type": "string",
+      "minLength": 20,
+      "description": "Wajib bila decidable \"qualitative\". Kenapa skema ini tidak punya ambang — bukan karena belum sempat ditulis, melainkan karena memang tidak ada."
+    },
+    "inputs": {
+      "type": "array",
+      "description": "Angka yang skema ini konsumsi. Sebuah penetapan wajib memasok TEPAT kunci-kunci ini — tidak kurang, tidak lebih. Inilah yang mencegah cacahan bulan kering milik satu skema dipakai skema lain yang ambang bulannya berbeda.",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "definition": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "unit": {
+            "$ref": "common.schema.json#/$defs/UcumCode"
+          },
+          "integer": {
+            "type": "boolean",
+            "default": false
+          },
+          "min": {
+            "type": "number"
+          },
+          "max": {
+            "type": "number"
+          }
+        },
+        "required": [
+          "key",
+          "label",
+          "definition",
+          "unit"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "month_definitions": {
+      "type": "object",
+      "description": "Ambang yang membuat sebuah bulan disebut basah, lembab, atau kering MENURUT SKEMA INI. Dipisah dan ditulis eksplisit karena inilah sumber kekeliruan yang paling sering: \"bulan kering\" berarti <100 mm pada Oldeman dan <60 mm pada Schmidt-Ferguson, dan cacahan yang dihitung dengan salah satu ambang tidak bisa dipakai skema yang lain.",
+      "properties": {
+        "wet_month_min_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "dry_month_max_mm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "note": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        }
+      },
+      "required": [
+        "wet_month_min_mm",
+        "dry_month_max_mm"
+      ],
+      "additionalProperties": false
+    },
+    "period_requirement": {
+      "type": "object",
+      "description": "Panjang deret minimum sebelum hasilnya boleh disebut kelas. Skema yang merata-ratakan cacahan bulan lintas tahun tidak berarti apa-apa pada deret pendek — dan deret pendek justru yang paling mudah didapat.",
+      "properties": {
+        "min_years": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "note": {
+          "$ref": "common.schema.json#/$defs/LangText"
+        }
+      },
+      "required": [
+        "min_years"
+      ],
+      "additionalProperties": false
+    },
+    "input_constraints": {
+      "type": "array",
+      "description": "Hubungan antar-masukan yang harus benar apa pun kelasnya. Bukan pemeriksaan kelas, melainkan pemeriksaan kewarasan angkanya: runtun bulan basah ditambah runtun bulan kering tidak bisa melewati 12 karena setahun hanya punya dua belas bulan.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "sum_of": {
+            "type": "array",
+            "minItems": 2,
+            "items": {
+              "type": "string"
+            }
+          },
+          "le": {
+            "type": "number"
+          },
+          "ge": {
+            "type": "number"
+          },
+          "message": {
+            "type": "string",
+            "minLength": 10
+          }
+        },
+        "required": [
+          "sum_of",
+          "message"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "classes": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^op:akz:[0-9]{8}$"
+          },
+          "code": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Kode dalam skema aslinya, mis. 'C3' pada Oldeman. Inilah yang tercetak di peta dan di jurnal, jadi ia yang dipakai manusia; `id` yang dipakai mesin."
+          },
+          "label": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "definition": {
+            "$ref": "common.schema.json#/$defs/LangText"
+          },
+          "order": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "criteria": {
+            "type": "array",
+            "description": "Syarat yang seluruhnya harus terpenuhi (DAN). Batas atas dan batas bawah dinyatakan terbuka atau tertutup secara eksplisit — `ge`/`le` tertutup, `gt`/`lt` terbuka — karena di perbatasan itulah dua kelas bisa sama-sama mengaku atau sama-sama menolak, dan Q tepat 33,3 harus jatuh ke satu kelas saja.",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "input": {
+                  "type": "string"
+                },
+                "ge": {
+                  "type": "number"
+                },
+                "gt": {
+                  "type": "number"
+                },
+                "le": {
+                  "type": "number"
+                },
+                "lt": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "input"
+              ],
+              "anyOf": [
+                { "required": ["ge"] },
+                { "required": ["gt"] },
+                { "required": ["le"] },
+                { "required": ["lt"] }
+              ],
+              "additionalProperties": false
+            }
+          },
+          "criteria_absent_reason": {
+            "type": "string",
+            "minLength": 20,
+            "description": "Wajib bila kelas ini tidak punya criteria. Kelas tanpa ambang tidak bisa dihitung ulang siapa pun, jadi ketiadaannya harus jadi pilihan yang tertulis, bukan kelalaian."
+          },
+          "agronomy": {
+            "$ref": "common.schema.json#/$defs/LangText",
+            "description": "Apa yang kelas ini artikan bagi budidaya — itulah yang membuatnya AGROklimat, bukan sekadar klimat. Bersifat keterangan: tidak satu pun aturan pemeriksa membacanya, dan tidak satu pun anjuran boleh disandarkan padanya tanpa protokol yang menyebut buktinya."
+          },
+          "mappings": {
+            "type": "array",
+            "items": {
+              "$ref": "common.schema.json#/$defs/ExternalMapping"
+            }
+          }
+        },
+        "required": [
+          "id",
+          "code",
+          "label",
+          "definition"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "id_blocks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Rentang nomor `akl` yang diklaim berkas ini. Wajib karena jenis entitas ini dipakai lebih dari satu berkas.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": { "type": "integer", "minimum": 1 },
+          "to": { "type": "integer", "minimum": 1 }
+        },
+        "required": ["from", "to"],
+        "additionalProperties": false
+      }
+    },
+    "class_id_blocks": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Rentang nomor `akz` yang diklaim berkas ini untuk kelas-kelasnya. Terpisah dari `id_blocks`, yang mengklaim nomor `akl` skemanya sendiri.\n\nAda karena preseden yang diwarisi dari StageScale punya lubang: fase (`stg`) hidup di dalam berkas skalanya, sehingga L23 dan L25 tidak menyentuhnya sama sekali dan bloknya dijaga tangan di konvensi kerja paralel. Kelas agroklimat mengambil bentuk bersarang yang sama tetapi tidak mengambil lubangnya — `L40` menegakkan blok ini persis seperti L23 dan L25 menegakkan blok entitas tingkat atas.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "to": {
+            "type": "integer",
+            "minimum": 1
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "axis",
+    "decidable",
+    "classes"
+  ],
+  "allOf": [
+    {
+      "$ref": "common.schema.json#/$defs/CuratedEntity"
+    },
+    {
+      "if": {
+        "properties": { "decidable": { "const": "threshold" } },
+        "required": ["decidable"]
+      },
+      "then": {
+        "required": ["inputs"]
+      },
+      "else": {
+        "required": ["qualitative_reason"]
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

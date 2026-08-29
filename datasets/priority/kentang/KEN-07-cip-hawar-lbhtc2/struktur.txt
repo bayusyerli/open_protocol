@@ -1,0 +1,51 @@
+== KEN-07 CIP LBHTC2 breeding population — verifikasi 2026-08-25
+Perintah: file / wc -l / head / awk atas raw/*.tab
+
+--- raw/01_Data_LBHTC2.tab
+tipe   : ASCII text
+baris  :     5809 (termasuk header)
+kolom  : 14
+header : plot	rep	row	col	genotype	type	LB1	LB2	LB3	LB4	LB5	LB6	LB7	audpc
+
+--- raw/02_Material_list_LBHTC2.tab
+tipe   : ASCII text
+baris  :     2755 (termasuk header)
+kolom  : 3
+header : ord	genotype	type
+
+--- raw/03_Data_dictionary_LBHTC2.tab
+tipe   : ASCII text
+baris  :       10 (termasuk header)
+kolom  : 2
+header : Variablename	Description
+
+--- cacah per 'type' (peran genotipe dalam uji)
+5263     test
+ 279     check
+ 218     (kosong)
+  48     parental
+
+--- kelengkapan AUDPC
+    5484 dari 5808 baris punya nilai audpc
+--- rentang AUDPC
+    min=70.0  maks=2677.5  rerata=775.0  (n=5484)
+
+--- genotipe unik dievaluasi
+    2755 genotipe unik
+
+--- kamus data (03)
+Variablename	Description
+"Plot"	"Sequential numerical identifier assigned to each plot or experimental unit in the trial."
+"Rep"	"Replication number to which each experimental unit belongs."
+"Col"	"Column number indicating the spatial position of the plot within the trial."
+"Row"	"Row number indicating the spatial position of the plot within the trial."
+"Genotype"	"Identification code of the evaluated genotype."
+"Type"	"Role of the genotype within the trial: material under evaluation (test), parental or reference genotype (check/control)."
+"audpc"	"Area Under the Disease Progress Curve) is a quantitative index that summarizes the intensity and progression of a disease in a plant or crop over time"
+"LB1 to LB7"	"Late blight severity evaluations representing the disease progress on the plot surface area, from the first to the seventh evaluation."
+""	""
+
+--- 2 baris contoh
+plot	rep	row	col	genotype	type	LB1	LB2	LB3	LB4	LB5	LB6	LB7	audpc
+1.0	1.0	1.0	1.0	"empty"	""								
+2.0	1.0	1.0	2.0	"CIP317029.220"	"test"	0.0	0.0	0.0	0.0	5.0	25.0	70.0	457.5

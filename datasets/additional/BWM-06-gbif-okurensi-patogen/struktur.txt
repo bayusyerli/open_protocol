@@ -1,0 +1,134 @@
+=== BWM-06 struktur & bukti verifikasi (GBIF) ===
+Perintah persis (tanpa kunci API — GBIF terbuka penuh):
+  curl -s 'https://api.gbif.org/v1/species/match?name=<nama>'
+  curl -s 'https://api.gbif.org/v1/occurrence/search?taxonKey=<key>&limit=0&facet=country&facetLimit=250&facet=year'
+  curl -s 'https://api.gbif.org/v1/occurrence/search?taxonKey=<key>&country=ID&limit=300'
+Tanggal: 2026-08-25
+Angka di bawah dibaca ulang dari berkas JSON di raw/ — bukan dari catatan waktu unduh.
+
+organisme                          nama Indonesia              usageKey match    global    ID #negara
+--------------------------------------------------------------------------------------------------------
+Alternaria porri                   bercak ungu / trotol         2616325 EXACT       695    14      66
+Fusarium oxysporum f. sp. cepae    moler / layu fusarium        5252046 EXACT        72     0      11
+Peronospora destructor             embun bulu bawang            3203841 EXACT       849     0      47
+Stemphylium vesicarium             hawar daun Stemphylium       2616067 EXACT      7203     2     104
+Colletotrichum gloeosporioides     antraknosa / otomatis        2569005 EXACT     19698   112     165
+Botrytis allii                     busuk umbi/leher             2583113 EXACT       288     0      30
+Spodoptera exigua                  ulat bawang                  8352161 EXACT     45492    50     112
+Liriomyza huidobrensis             pengorok daun                1553410 EXACT      1677    51      42
+Liriomyza sativae                  pengorok daun                1553757 EXACT      2458    10      59
+Liriomyza trifolii                 pengorok daun                1553384 EXACT      1872    13      62
+Onion yellow dwarf virus           OYDV                         9890759 EXACT       391    56      28
+Bemisia tabaci                     kutu kebul                   2012126 EXACT     32520   222     146
+Ralstonia solanacearum             layu bakteri                 3219898 EXACT      5655    67      93
+Phytophthora infestans             busuk daun kentang/tomat     3203716 EXACT      4704     0      90
+Alternaria solani                  bercak kering kentang/tomat   2616205 EXACT      2378    13      95
+--------------------------------------------------------------------------------------------------------
+TOTAL okurensi global tercakup : 125952
+TOTAL okurensi Indonesia       : 610
+NOL rekaman Indonesia (4): ['Fusarium oxysporum f. sp. cepae', 'Peronospora destructor', 'Botrytis allii', 'Phytophthora infestans']
+
+=== 8 negara teratas per organisme (faset COUNTRY) ===
+  Alternaria porri                   [('IN', 155), ('US', 67), ('JP', 45), ('NG', 23), ('EG', 21), ('UG', 16), ('ID', 14), ('NO', 14)]
+  Fusarium oxysporum f. sp. cepae    [('JP', 37), ('NZ', 12), ('IL', 4), ('SA', 4), ('IN', 3), ('DE', 2), ('GB', 2), ('AU', 1)]
+  Peronospora destructor             [('US', 161), ('GB', 93), ('DE', 82), ('FI', 50), ('CA', 44), ('SE', 32), ('AU', 31), ('RO', 21)]
+  Stemphylium vesicarium             [('GB', 1013), ('US', 746), ('ES', 401), ('AU', 368), ('DE', 287), ('DK', 282), ('FR', 265), ('SE', 215)]
+  Colletotrichum gloeosporioides     [('IN', 2826), ('CN', 2602), ('US', 1931), ('AU', 882), ('GB', 809), ('MY', 781), ('BR', 667), ('ET', 441)]
+  Botrytis allii                     [('US', 49), ('EG', 47), ('GB', 31), ('NZ', 27), ('CA', 19), ('IL', 14), ('JP', 8), ('DK', 6)]
+  Spodoptera exigua                  [('GB', 11081), ('AU', 5964), ('ES', 5014), ('US', 3503), ('NL', 3269), ('PT', 3030), ('CH', 2746), ('FR', 1598)]
+  Liriomyza huidobrensis             [('AU', 215), ('PH', 200), ('PE', 199), ('CO', 116), ('EC', 102), ('GT', 84), ('CL', 80), ('ZA', 67)]
+  Liriomyza sativae                  [('US', 646), ('BD', 485), ('PK', 311), ('PH', 128), ('CN', 126), ('MX', 70), ('VN', 66), ('BR', 55)]
+  Liriomyza trifolii                 [('MX', 423), ('US', 293), ('KE', 75), ('CR', 63), ('PH', 59), ('CO', 58), ('ZA', 51), ('MU', 46)]
+  Onion yellow dwarf virus           [('CN', 77), ('IT', 59), ('ID', 56), ('AR', 27), ('IR', 27), ('RS', 25), ('US', 20), ('ET', 18)]
+  Bemisia tabaci                     [('PK', 6580), ('IN', 4535), ('UG', 1902), ('CN', 1414), ('BD', 1147), ('CI', 886), ('GH', 813), ('NG', 780)]
+  Ralstonia solanacearum             [('CN', 1070), ('IN', 879), ('BE', 543), ('JP', 454), ('FR', 277), ('PE', 250), ('IR', 197), ('AU', 196)]
+  Phytophthora infestans             [('US', 1123), ('CN', 561), ('GB', 397), ('AU', 259), ('DE', 224), ('SE', 188), ('CA', 149), ('RU', 119)]
+  Alternaria solani                  [('US', 926), ('IN', 181), ('CN', 148), ('CA', 95), ('GB', 71), ('EG', 56), ('UZ', 54), ('AU', 50)]
+
+=== rentang tahun (faset YEAR) ===
+  Alternaria porri                   1878..2026  (92 tahun berbeda)
+  Fusarium oxysporum f. sp. cepae    1953..2024  (16 tahun berbeda)
+  Peronospora destructor             1850..2024  (123 tahun berbeda)
+  Stemphylium vesicarium             1801..2026  (201 tahun berbeda)
+  Colletotrichum gloeosporioides     1801..2026  (159 tahun berbeda)
+  Botrytis allii                     1896..2024  (62 tahun berbeda)
+  Spodoptera exigua                  1834..2026  (148 tahun berbeda)
+  Liriomyza huidobrensis             1920..2024  (56 tahun berbeda)
+  Liriomyza sativae                  1908..2026  (66 tahun berbeda)
+  Liriomyza trifolii                 1913..2026  (60 tahun berbeda)
+  Onion yellow dwarf virus           1994..2026  (19 tahun berbeda)
+  Bemisia tabaci                     1889..2026  (57 tahun berbeda)
+  Ralstonia solanacearum             1950..2026  (76 tahun berbeda)
+  Phytophthora infestans             1845..2026  (169 tahun berbeda)
+  Alternaria solani                  1847..2026  (140 tahun berbeda)
+
+=== inventaris berkas mentah (raw/) ===
+  match_Alternaria_porri.json                             459 B  usageKey=2616325 status=ACCEPTED rank=SPECIES confidence=97
+  match_Alternaria_solani.json                            457 B  usageKey=2616205 status=ACCEPTED rank=SPECIES confidence=97
+  match_Bemisia_tabaci.json                               444 B  usageKey=2012126 status=ACCEPTED rank=SPECIES confidence=99
+  match_Botrytis_allii.json                               442 B  usageKey=2583113 status=ACCEPTED rank=SPECIES confidence=99
+  match_Colletotrichum_gloeosporioides.json               519 B  usageKey=2569005 status=ACCEPTED rank=SPECIES confidence=99
+  match_Fusarium_oxysporum_f_sp_cepae.json                519 B  usageKey=5252046 status=SYNONYM rank=FORM confidence=93
+  match_Liriomyza_huidobrensis.json                       468 B  usageKey=1553410 status=ACCEPTED rank=SPECIES confidence=99
+  match_Liriomyza_sativae.json                            451 B  usageKey=1553757 status=ACCEPTED rank=SPECIES confidence=99
+  match_Liriomyza_trifolii.json                           454 B  usageKey=1553384 status=ACCEPTED rank=SPECIES confidence=99
+  match_Onion_yellow_dwarf_virus.json                     488 B  usageKey=9890759 status=ACCEPTED rank=SPECIES confidence=100
+  match_Peronospora_destructor.json                       495 B  usageKey=3203841 status=ACCEPTED rank=SPECIES confidence=97
+  match_Phytophthora_infestans.json                       489 B  usageKey=3203716 status=ACCEPTED rank=SPECIES confidence=99
+  match_Ralstonia_solanacearum.json                       516 B  usageKey=3219898 status=ACCEPTED rank=SPECIES confidence=99
+  match_Spodoptera_exigua.json                            454 B  usageKey=8352161 status=ACCEPTED rank=SPECIES confidence=99
+  match_Stemphylium_vesicarium.json                       486 B  usageKey=2616067 status=ACCEPTED rank=SPECIES confidence=99
+  occ_facet_Alternaria_porri.json                        4140 B  count=695 facets=['YEAR', 'COUNTRY']
+  occ_facet_Alternaria_solani.json                       6160 B  count=2378 facets=['YEAR', 'COUNTRY']
+  occ_facet_Bemisia_tabaci.json                          5330 B  count=32520 facets=['YEAR', 'COUNTRY']
+  occ_facet_Botrytis_allii.json                          2476 B  count=288 facets=['YEAR', 'COUNTRY']
+  occ_facet_Colletotrichum_gloeosporioides.json          8541 B  count=19698 facets=['YEAR', 'COUNTRY']
+  occ_facet_Fusarium_oxysporum_f_sp_cepae.json            821 B  count=72 facets=['YEAR', 'COUNTRY']
+  occ_facet_Liriomyza_huidobrensis.json                  2647 B  count=1677 facets=['YEAR', 'COUNTRY']
+  occ_facet_Liriomyza_sativae.json                       3333 B  count=2458 facets=['YEAR', 'COUNTRY']
+  occ_facet_Liriomyza_trifolii.json                      3238 B  count=1872 facets=['YEAR', 'COUNTRY']
+  occ_facet_Onion_yellow_dwarf_virus.json                1324 B  count=391 facets=['YEAR', 'COUNTRY']
+  occ_facet_Peronospora_destructor.json                  4498 B  count=849 facets=['YEAR', 'COUNTRY']
+  occ_facet_Phytophthora_infestans.json                  6858 B  count=4704 facets=['YEAR', 'COUNTRY']
+  occ_facet_Ralstonia_solanacearum.json                  4471 B  count=5655 facets=['YEAR', 'COUNTRY']
+  occ_facet_Spodoptera_exigua.json                       6934 B  count=45492 facets=['YEAR', 'COUNTRY']
+  occ_facet_Stemphylium_vesicarium.json                  8059 B  count=7203 facets=['YEAR', 'COUNTRY']
+  occ_indonesia_Alternaria_porri.json                   58731 B  count=14 results_tersimpan=14 endOfRecords=True
+  occ_indonesia_Alternaria_solani.json                  63341 B  count=13 results_tersimpan=13 endOfRecords=True
+  occ_indonesia_Bemisia_tabaci.json                   1280801 B  count=222 results_tersimpan=222 endOfRecords=True
+  occ_indonesia_Botrytis_allii.json                        79 B  count=0 results_tersimpan=0 endOfRecords=True
+  occ_indonesia_Colletotrichum_gloeosporioides.json    531875 B  count=112 results_tersimpan=112 endOfRecords=True
+  occ_indonesia_Fusarium_oxysporum_f_sp_cepae.json         79 B  count=0 results_tersimpan=0 endOfRecords=True
+  occ_indonesia_Liriomyza_huidobrensis.json            294106 B  count=51 results_tersimpan=51 endOfRecords=True
+  occ_indonesia_Liriomyza_sativae.json                  48866 B  count=10 results_tersimpan=10 endOfRecords=True
+  occ_indonesia_Liriomyza_trifolii.json                 65417 B  count=13 results_tersimpan=13 endOfRecords=True
+  occ_indonesia_Onion_yellow_dwarf_virus.json          205733 B  count=56 results_tersimpan=56 endOfRecords=True
+  occ_indonesia_Peronospora_destructor.json                79 B  count=0 results_tersimpan=0 endOfRecords=True
+  occ_indonesia_Phytophthora_infestans.json                79 B  count=0 results_tersimpan=0 endOfRecords=True
+  occ_indonesia_Ralstonia_solanacearum.json            308049 B  count=67 results_tersimpan=67 endOfRecords=True
+  occ_indonesia_Spodoptera_exigua.json                 247288 B  count=50 results_tersimpan=50 endOfRecords=True
+  occ_indonesia_Stemphylium_vesicarium.json              8998 B  count=2 results_tersimpan=2 endOfRecords=True
+  TOTAL                                               3189492 B dalam 45 berkas
+
+=== contoh medan satu rekaman Indonesia (Alternaria porri) ===
+  key                  = 6189442843
+  scientificName       = 'Alternaria porri (Ellis) Cif.'
+  country              = 'Indonesia'
+  stateProvince        = None
+  locality             = None
+  decimalLatitude      = None
+  decimalLongitude     = None
+  year                 = 2023
+  eventDate            = '2023-01-10'
+  basisOfRecord        = 'MATERIAL_SAMPLE'
+  datasetName          = None
+  license              = 'http://creativecommons.org/licenses/by/4.0/legalcode'
+  recordedBy           = None
+  identifiedBy         = None
+  occurrenceStatus     = 'PRESENT'
+  jumlah medan tersedia pada rekaman ini: 73
+
+=== sebaran lisensi rekaman Indonesia (semua organisme) ===
+  license      : {'http://creativecommons.org/licenses/by/4.0/legalcode': 584, 'http://creativecommons.org/publicdomain/zero/1.0/legalcode': 26}
+  basisOfRecord: {'MATERIAL_SAMPLE': 406, 'PRESERVED_SPECIMEN': 97, 'OBSERVATION': 1, 'LIVING_SPECIMEN': 82, 'OCCURRENCE': 24}
+  stateProvince terisi: 30 rekaman, 5 nilai berbeda -> {'Sumatera Barat': 14, 'Jawa': 9, 'Irian Jaya': 3, 'Sulawesi Utara': 3, 'Sumatera': 1}

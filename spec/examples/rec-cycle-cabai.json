@@ -23,8 +23,8 @@
   },
   "protocol_ref": {
     "id": "op:proto:00000001",
-    "version": "0.1.0",
-    "content_hash": "sha256:d17351c52ed2f3237d3ef0a6db33531c6920938660bec125185ff4f7e04f289a"
+    "version": "0.2.0",
+    "content_hash": "sha256:fc57793d683951f029bc874040645950e16a1f34e3ebed62ead559cff62cc5d4"
   },
   "anchors": [
     {

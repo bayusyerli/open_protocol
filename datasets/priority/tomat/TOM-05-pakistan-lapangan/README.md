@@ -1,0 +1,37 @@
+# Tomato Leaf Disease Classification Dataset in Pakistan
+
+- **dataset_id**: TOM-05-pakistan-lapangan
+- **Tanaman**: Tomat (*Solanum lycopersicum*)
+- **Penyakit/kelas tercakup**: 6 kelas apa adanya dari nama folder — `Tomato_Early_blight_leaf`, `Tomato_leaf_late_blight`, `Tomato_Septoria_leaf_spot`, `Tomato_mold_leaf` (leaf mold, *Passalora fulva*), `Tomato_leaf_yellow_curl_virus` (TYLCV), `Tomato_Healthy_leaf`
+- **Jenis data**: gambar
+- **Format**: JPG dalam ZIP, dua subset: `Dataset (raw)/` (asli, tanpa split) dan `Augmented Dataset/` (train/val/test)
+- **Jumlah**: diklaim 7.200 gambar; terhitung **8.030 berkas gambar** = **830 asli** + **7.200 augmentasi**. Angka 7.200 di deskripsi sumber merujuk ke set augmentasi, bukan ke foto asli.
+- **Sumber**: Mendeley Data
+- **URL sumber**: https://data.mendeley.com/datasets/3mbnb82mxd/2
+- **DOI**: 10.17632/3mbnb82mxd.2
+- **Pembuat**: Mohammad Naeem Malik, Syed Hashir Ali, Hamid Ali
+- **Tahun terbit / pembaruan**: 2026-02-18 (versi 2)
+- **Lisensi**: CC BY 4.0 (juga dinyatakan di `License.txt` dan `README.md` di dalam arsip)
+- **Ketentuan atribusi**: Atribusi ke pembuat + tautan lisensi + penandaan perubahan.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 726.457.628 byte (693 MiB)
+- **SHA-256**: `2a2b36a8f972337f6d0e95e436835e55ffee5291fa07277157b40f0441f42f50`
+- **Status unduh**: diunduh
+- **Status verifikasi**: sebagian
+- **Cara verifikasi**:
+  - `file raw/Tomato_Leaf_Disease_Dataset_Pakistan.zip` → `Zip archive data, at least v2.0 to extract`
+  - `unzip -t` → `No errors detected in compressed data`
+  - `shasum -a 256` → cocok persis dengan `sha256_hash` API Mendeley (`2a2b36a8f972337f…`)
+  - `unzip -Z1 | wc -l` → 8.062 entri
+  - Cacah per direktori (`awk -F/ '{$NF="";print}' OFS=/ | sort | uniq -c`) → `Dataset (raw)`: 195 Septoria + 186 mold + 137 Healthy + 119 Early blight + 113 late blight + 80 yellow curl = **830**; `Augmented Dataset`: train 6×840 + val 6×240 + test 6×120 = **7.200**
+  - Ekstensi: 8.011 `.jpg`, 18 `.JPG`, 1 `.jpeg`, 1 `.md`, 1 `.pdf`, 1 `.txt` → total gambar **8.030**
+  - `README.md` internal dibaca dengan `unzip -p` dan mengonfirmasi 6 kelas, lokasi Pakistan, kamera ponsel, anotasi manual
+- **Alasan status `sebagian`**: jumlah yang diklaim sumber (7.200) tidak sama dengan jumlah foto asli yang benar-benar ada (830). Selisihnya adalah 7.200 gambar augmentasi. Isi arsip utuh dan tidak rusak — yang berbeda adalah **arti** angkanya.
+- **Keterbatasan / masalah kualitas**:
+  - **Foto asli hanya 830 untuk 6 kelas** (rata-rata 138/kelas). Kelas TYLCV cuma 80 foto asli. Terlalu tipis untuk melatih pengklasifikasi tangguh sendirian.
+  - **Augmentasi 8,7× lipat dan sudah dipisah train/val/test oleh pembuat.** Risiko besar: bila augmentasi dilakukan **sebelum** pembagian split, turunan dari satu foto asli bisa berada di train dan di test sekaligus → akurasi laporan jadi menggelembung. Struktur nama berkas (`100_46341_aug_5aug62.jpg`) tidak memungkinkan penelusuran balik ke foto induknya, jadi **tidak bisa dipastikan bebas kebocoran**. Untuk evaluasi jujur, pakai `Dataset (raw)/` dan buat split sendiri.
+  - `Augmented Dataset` diseimbangkan artifisial (semua kelas persis 840/240/120) padahal data aslinya timpang — keseimbangan itu palsu.
+  - Ejaan kelas tidak konsisten: folder `Tomato_septora_leaf_spot` (augmented) vs `Tomato_Septoria_leaf_spot` (raw); `Tomato_mold_leaf` vs `Tomato_Healthy` / `Tomato_Healthy_leaf`.
+  - **Nilai plusnya**: ini foto **lapangan** dengan kamera ponsel, cahaya alami, tanpa latar terkontrol — persis yang tidak dimiliki PlantVillage. Iklim Pakistan tidak sama dengan Indonesia, tapi jauh lebih dekat ke kondisi pemakaian nyata daripada citra studio.
+  - Tidak ada koordinat lokasi, tanggal pengambilan, atau kultivar.
+  - Tidak ada kelas layu bakteri (*Ralstonia*) maupun layu fusarium.

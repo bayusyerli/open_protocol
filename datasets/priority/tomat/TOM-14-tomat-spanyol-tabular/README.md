@@ -1,0 +1,33 @@
+# Evaluation of tomato (Solanum lycopersicum) genetic resources in Spain (2023–2024)
+
+- **dataset_id**: TOM-14-tomat-spanyol-tabular
+- **Tanaman**: Tomat (*Solanum lycopersicum*), 4 uji lapang: Picassent 2023 & 2024, Meliana 2023 & 2024 (Valencia, Spanyol)
+- **Penyakit/kelas tercakup**: bukan kelas gambar, melainkan **pengamatan lapangan**. Kolom `06_PHD` (Plant health / disease) memuat nilai apa adanya: `Red spider mite (1)`, `Red spider mite (2)`, `Red spider mite (3)`, `Red spider mite (3-4)`, `Red spider mite (4)`, `Tuta absoluta`, `Mosaic symptoms in flower bud`, `Leaf curling`, `Blossom-related symptoms`, `Wilted`, `fungus`, `None detected`, `N/A`. Selain itu ada tiga skala ketahanan 1–5: `24_DR_SL` (Disease resistance), `27_BER_SL` (**Blossom end rot resistance** — busuk ujung buah), `29_FDR_SL` (Foliar disease resistance).
+- **Jenis data**: tabular
+- **Format**: 4 berkas XLSX, masing-masing 4 lembar: `metadata`, `traits `, `raw Data`, `SeedLinked`
+- **Jumlah**: 4 berkas; lembar `raw Data` berisi 32 + 42 + 32 + 16 = **122 baris data** (aksesi × lokasi × tahun), dengan 18 kolom sifat per baris (+ sifat 19–29 di lembar `SeedLinked`)
+- **Sumber**: Zenodo (proyek Horizon Europe **LiveSeeding**, doi proyek 10.3030/101059872; pelaksana Universitat Politècnica de València)
+- **URL sumber**: https://zenodo.org/records/22024765
+- **DOI**: 10.5281/zenodo.22024764 (concept) / 10.5281/zenodo.22024765 (versi)
+- **Pembuat**: tim UPV dalam LiveSeeding T1.1 "Dynamic Management of Plant Genetic Resources"
+- **Tahun terbit / pembaruan**: 2026 (data musim 2023 dan 2024)
+- **Lisensi**: **CC BY-NC-SA 4.0**
+- **Ketentuan atribusi**: Atribusi + **non-komersial** + **berbagi-serupa**. Ini lisensi paling ketat di antara seluruh koleksi tomat ini: turunan wajib memakai lisensi yang sama dan **tidak boleh dipakai untuk tujuan komersial**. Jangan dicampur ke dalam basis data berlisensi CC BY tanpa memisahkannya.
+- **Tanggal akses**: 2026-08-25
+- **Ukuran berkas**: 66.601 + 67.247 + 66.243 + 62.267 = 262.358 byte (256 KiB)
+- **SHA-256**: lihat `SHA256SUMS.txt`
+- **Status unduh**: diunduh
+- **Status verifikasi**: terverifikasi
+- **Cara verifikasi**:
+  - `file raw/*.xlsx` → keempatnya `Microsoft Excel 2007+`
+  - Dibuka dengan `python3 -c "import openpyxl; wb=openpyxl.load_workbook(fn,read_only=True,data_only=True)"` → nama lembar `['metadata','traits ','raw Data','SeedLinked']` pada keempat berkas
+  - Lembar `raw Data` dibaca baris demi baris → 33/43/33/17 baris termasuk header, yaitu 32/42/32/16 baris data
+  - Nilai unik kolom `06_PHD` dicacah per berkas (hasilnya di daftar kelas di atas)
+  - Lembar `traits ` dibaca → definisi 29 sifat lengkap dengan kode, metode, dan satuan/skala
+- **Keterbatasan / masalah kualitas**:
+  - **Sangat kecil**: 122 baris total. Tidak bisa dipakai untuk model epidemiologi apa pun; nilainya sebagai **contoh skema pengamatan lapangan yang rapi**, bukan sebagai massa data.
+  - Kolom penyakit `06_PHD` adalah **teks bebas**, bukan kode terkendali — `fungus` (tanpa nama patogen), `Wilted` (gejala, bukan penyebab), `N/A` vs `None detected` dipakai bergantian tanpa aturan jelas. Perlu normalisasi manual.
+  - Dua uji lapang 2024 nyaris tidak mencatat penyakit sama sekali (`None detected` untuk semua 16 baris di Meliana 2024), jadi tidak ada variasi untuk dianalisis.
+  - **Bukan tanaman Indonesia**: Valencia beriklim Mediterania, pertanian organik, di bawah rezim penyakit yang sangat berbeda. Hama dominannya tungau merah dan *Tuta absoluta*, bukan layu bakteri.
+  - Sifat 19–29 (termasuk ketahanan busuk ujung buah dan ketahanan penyakit daun) diambil lewat aplikasi pihak ketiga **SeedLinked** dengan skala visual 1–5 subjektif oleh penilai, bukan pengukuran objektif.
+  - Lembar `metadata` memuat nama orang dan kontak — perlakukan sebagai data pribadi bila datanya diterbitkan ulang.

@@ -7,10 +7,15 @@
   "type": "object",
   "properties": {
     "id": { "type": "string", "pattern": "^op:rgn:[0-9]{8}$" },
-    "level": { "type": "string", "enum": ["country", "province", "regency", "district", "village", "agroecological_zone"] },
+    "level": { "type": "string", "enum": ["country", "province", "regency", "city", "district", "village", "agroecological_zone"], "description": "\"regency\" kabupaten dan \"city\" kota berada pada TINGKAT yang sama tetapi bukan hal yang sama — 98 kota bukan kabupaten, dan menyebut Kota Medan sebuah regency adalah kekeliruan jenis, bukan penyederhanaan. Keduanya dibedakan dari awalan nama Kemendagri (\"KAB.\" atau \"KOTA\"), bukan ditebak dari namanya." },
     "code": { "type": "string" },
     "code_scheme": { "type": "string", "description": "Mis. 'BPS' atau 'ISO3166-2'." },
     "parent": { "$ref": "common.schema.json#/$defs/Ref" },
+    "agroclimate": {
+      "type": "array",
+      "description": "Kelas agroklimat wilayah ini, satu penetapan per skema. Sebuah wilayah administratif hampir tidak pernah berkelas tunggal — Jawa Tengah memuat tujuh zona Oldeman sekaligus — jadi penetapan pada tingkat ini adalah kelas MAYORITAS atau kelas WAKIL, dan `basis.note` yang harus mengatakan yang mana. Zona agroekologi (`level` \"agroecological_zone\") adalah kebalikannya: di sana batas wilayahnya memang digambar mengikuti kelasnya.",
+      "items": { "$ref": "common.schema.json#/$defs/AgroclimateDetermination" }
+    },
     "elevation_range": {
       "type": "object",
       "properties": { "min_m": { "type": "number" }, "max_m": { "type": "number" } },

@@ -285,7 +285,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
-| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun**. **Papan pencarian disamakan dengan kotaknya** 24 Agustus 2026: kesebelas macam masukan yang benar-benar dijawab kini punya kepingnya di beranda (semula empat), dan ketujuh alat punya kartunya (semula dua, dan keduanya salah dinomori sebagai jalur 07–08) | **sebagian** |
+| A1 | Satu kotak tanya multimoda — teks bebas, gejala, nama di kemasan, foto — yang **merutekan** ke jalur, bukan menjawab sendiri | semua | menentukan pintu | **sebagian** 23 Agustus 2026 — sediaan masuk pencarian (jalur 5 & 6 kini terjangkau), perutean niat ke empat alat; **foto tidak dibangun**. **Papan pencarian disamakan dengan kotaknya** 24 Agustus 2026: kesebelas macam masukan yang benar-benar dijawab kini punya kepingnya di beranda (semula empat), dan ketujuh alat punya kartunya (semula dua, dan keduanya salah dinomori sebagai jalur 07–08). **Kalimat diterima sebagai kalimat** 24 Agustus 2026 — `app/tanya.js`, 234 pintu komoditas, dan alias kata OPT; bagian di bawah tabel ini | **sebagian** |
 | A2 | Kanal WhatsApp untuk tanya-jawab yang sama | petani, penyuluh, kios | keterjangkauan | **sebagian** 23 Agustus 2026 — `app/teruskan.js`, kartu teruskan di jalur 2, 5, dan 6. Sisi **menyebarkan** dibangun; sisi **kotak masuk** tetap tidak, dan itu putusan | **sebagian** |
 | A3 | **Kamus nama lokal** — sinonim daerah untuk OPT, komoditas, gejala, dan nama dagang | semua | apakah pintunya bisa dipakai sama sekali | **sisi OPT selesai** 23 Agustus 2026 — 6 nama di `spec/vocab/nama-lokal.json`, tercari dari beranda dan tampil di jalur 1; komoditas & nama dagang belum | **sebagian** |
 | A4 | Masuk lewat suara & gambar untuk literasi rendah | petani | keterjangkauan | belum ada | **TUNDA** |
@@ -323,6 +323,40 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 >
 > Kesebelas keping diuji balik terhadap indeks saat dipasang: tidak satu pun berakhir nol.
 
+> **Kotak menerima kalimat, tapi menguraikannya seperti satu untaian — 24 Agustus 2026.**
+> Kepala pencarian mencocokkan kueri sebagai satu untaian huruf tanpa spasi terhadap NAMA
+> entri. Untuk satu kata itu tepat. Untuk satu kalimat itu **selalu nol, dan nol tanpa satu
+> pun galat** — "Phonska produk perusahaan apa?" jadi `phonskaprodukperusahaanapa`, dan
+> untaian seperti itu tidak ada di nama mana pun. Tiga contoh yang diminta pemilik hari itu
+> ketiganya dijawab nol; ketiganya sekarang mendarat.
+>
+> Yang diperbaiki empat hal, dan hanya yang pertama soal penguraian kalimat:
+>
+> 1. **`app/tanya.js` menggolongkan tiap kata**, bukan sekadar membuang yang tidak berguna.
+>    Golongan `nilai` yang paling menentukan: "cocok", "terbaik", "paling ampuh", "aman"
+>    adalah permintaan **peringkat**, dan permukaan ini tidak memeringkat apa pun. Kata itu
+>    dikeluarkan dari pencarian **lalu disebutkan di layar sebagai yang tidak dijawab** —
+>    karena daftar yang muncul sesudah kata "terbaik" akan dibaca sebagai peringkat, dan itu
+>    kekeliruan yang jauh lebih mahal daripada nol hasil. Cacahnya masuk B4 sebagai
+>    `peringkatDiminta`.
+> 2. **234 pintu komoditas masuk kepala pencarian.** Halaman `/tanaman/<slug>/` sudah
+>    menjawab "ada berapa varietas alpukat" sejak halaman pertama diterbitkan; yang tidak
+>    pernah ada cuma jalan dari kotak cari ke sana. Mengetik "alpukat" dulu menjawab 20
+>    varietas yang kebetulan bernama "Alpukat …" dan mendiamkan 125 sisanya.
+> 3. **Kata pembeda nama OPT difilekan sebagai alias.** 113 dari 198 nama OPT berproduk
+>    diawali kata golongan — "Penyakit" 53 kali, "Hama" 21 kali — sehingga embernya
+>    ditentukan kata yang tidak membedakan apa pun. "trips" tidak menemukan "Hama Trips".
+> 4. **Ambang agroklimat terbit sebagai `agroklimat.json`.** Kelima skema sebelumnya hanya
+>    dibaca `check.mjs` dan CLI. Kini "500 mdpl" dijawab kelasnya berikut ambang dan
+>    terbitan asalnya — dan **jawaban itu hampir seluruhnya berupa batas**: nol dari 11.227
+>    varietas membawa sifat agronomi, jadi kelas itu tidak bisa dipakai menyaring daftar.
+>
+> Bentuk jawabannya tetap keempat bentuk yang sama. Yang ditambahkan bukan bentuk kelima
+> melainkan **satu kalimat fakta terdaftar** ("terdaftar atas nama PT Petrokimia Gresik"),
+> disusun dari medan yang sudah tercetak di kartu hasilnya — tanpa satu pun pengambilan
+> tambahan, dan tanpa satu pun klaim di luar registri. Pintu depan tetap tidak punya
+> perender rincian sendiri.
+
 > **A3 lebih penting daripada tampaknya.** Petani tidak menyebut *Thrips parvispinus*; ia
 > menyebut nama lokalnya. Tanpa kamus itu, jalur 1 hanya bisa dipakai orang yang sudah
 > tahu jawabannya. Ini juga satu-satunya kapabilitas yang menjadi lebih baik justru karena
@@ -358,9 +392,9 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | # | Kapabilitas | Untuk siapa | Keputusan yang diubah | Keadaan data | Putusan |
 |---|---|---|---|---|---|
 | B1 | **Komponen "batas jawaban"** — tiap layar menyebut tingkat bukti, tanggal, sumber, dan apa yang tidak diketahuinya | semua | apakah jawabannya dipercaya | **selesai** 23 Agustus 2026 — `app/batas.js`, dipakai ketujuh layar | **selesai** |
-| B2 | Kartu keselamatan aplikasi — APD, cara aman, gejala keracunan, kontak darurat | petani, buruh tani | keselamatan jiwa | sebagian ada; **PHI 0 dari 23.058** | **BANGUN** bagian non-PHI; PHI **TUNDA** |
-| B3 | **Sanggahan terbuka** — siapa pun boleh menantang satu fakta; jejaknya publik dan bernama | agronom, penyuluh, principal | mutu korpus | belum ada | **BANGUN** |
-| B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | **selesai** 23 Agustus 2026 — enam lubang tercacah di `app/ukur.js`, terbaca di `ukur.html` | **selesai** |
+| B2 | Kartu keselamatan aplikasi — APD, cara aman, gejala keracunan, kontak darurat | petani, buruh tani | keselamatan jiwa | **DICABUT** 25 Agustus 2026 — `app/keselamatan.js` beserta strip daruratnya dihapus dari lima layar aplikasi dan dari halaman produk pestisida terbitan. Menyalurkan orang ke pertolongan medis di luar bentuk jawaban yang dijanjikan permukaan ini, dan nomor berjam-layanan menuntut perawatan atas janji yang tidak dibuat. Yang **tetap** ketiga kekosongan datanya, pindah ke blok batas jawaban (B1) sebagai lubang bernama dan tetap dihitung dari indeks: `phi` **0 dari 23.058** penggunaan berlabel, `kelasBahayaWho` **1 dari 1.706** bahan, `apdProduk` **tidak ada medannya** di registri produk terdaftar | **di luar cakupan** — kekosongan datanya diserap B1 |
+| B3 | **Sanggahan terbuka** — siapa pun boleh menantang satu fakta; jejaknya publik dan bernama | agronom, penyuluh, principal | mutu korpus | **selesai** 23 Agustus 2026 — `app/sanggah.js` dipakai enam layar; tiga rute karena hanya **28 dari 31.837** rekaman diterbitkan proyek ini sendiri, jadi yang ditanya lebih dulu *apa yang salah*, bukan apa yang benar | **selesai** |
+| B4 | **Antrean pertanyaan tak terjawab** — yang tidak bisa dijawab dicatat sebagai kebutuhan data | tim, kontributor | prioritas data berikutnya | **selesai** 23 Agustus 2026 — enam lubang tercacah di `app/ukur.js`, terbaca di `peranti.html` | **selesai** |
 | B5 | Ringkasan berbasis model bahasa di atas registri | semua | kecepatan paham | **sebagian 23 Agustus 2026** — komentar per seri harga, ditulis saat build ke `spec/vocab/harga/komentar.json` beserta angka yang dipakai menulisnya | **TUNDA** untuk registri; **BANGUN** untuk harga, dengan bentuk yang menjawab keberatannya |
 
 > **B4 mengubah biaya riset menjadi keluaran produk.** Setiap "tidak sanggup" yang
@@ -420,11 +454,36 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | C2 | **Keaslian & anti-palsu** — periksa **kandungan yang tercetak di kemasan**, bukan nomor pendaftaran | petani, kios, penyuluh, principal | #4, #6 — sebelum uang keluar | **sisi pupuk selesai** 23 Agustus 2026 — indeks `kandungan/` memuat 12.564 produk, formulir di jalur 2; sisi pestisida terindeks tetapi belum berpermukaan | **sebagian** |
 | C3 | Kamus OPT bergejala penuh | petani, penyuluh, POPT | #8 | **208 dari 724**; 0 dari 516 di registri. **Sisi pintu selesai** 23 Agustus 2026 — 487 OPT registri berproduk kini terjangkau dari kotak menurut nama, dengan pernyataan bahwa gejalanya tidak ada. Kurasi komoditas demi komoditas berjalan sejak 28 Agustus 2026 lewat `spec/tools/kurasi-opt.mjs`; daftar mutakhirnya di docs/14 | teks gejala **BANGUN bertahap**; pintunya **selesai** |
 | C4 | Harga — eceran dipinjam, **harga petani dibangun** | petani, poktan, offtaker | #1, #13, #15 | **sisi eceran selesai 23 Agustus 2026** — 43 seri harian nasional, 635 tanggal, satu permintaan ke SP2KP. **Sisi harga petani tidak lagi nol** (dikoreksi 23 Agustus 2026): 8 seri tingkat pekebun dari **6 provinsi sawit**, dua di antaranya harga pekebun **swadaya**. Tetapi ia hanya SAWIT, dan pangan pokok tetap nol | sisi eceran **selesai**; sisi petani **sebagian** — sawit ada, pangan belum; **pembanding di perangkat selesai** 23 Agustus 2026, **setoran tidak dibangun** dan itu putusan |
-| C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | 0 | **PINJAM** (BMKG) |
+| C5 | Cuaca & iklim per lokasi | petani, penyuluh | #2, #7, #13 | **dibelah dua** 24 Agustus 2026. Sisi **cuaca** tetap 0 dan tetap dipinjam. Sisi **agroklimat** — kelas sebuah lokasi menurut skema bernama — **selesai**: 5 skema, 36 kelas, ambangnya terbaca mesin, dengan `L40`–`L43` menegakkan asal-usul dan hitung-ulangnya | sisi cuaca **PINJAM** (BMKG); sisi agroklimat **BANGUN** — **selesai**⁽ᵃ⁾ |
 | C6 | Lahan & tanah — status hara, jenis tanah, ketinggian | petani, penyuluh | #5, #6 | 0; peta status hara & PUTS ada di luar | **PINJAM + SAMBUNG** |
 | C7 | **Direktori layanan** — kios resmi, penyuluh, POPT, lab, penangkar, jasa alsintan | semua | #4, #9, #10 | **empat dari enam** 23 Agustus 2026 — toko tani & penjual benih tampil; **5.844 balai penyuluhan** dan **889 laboratorium** (17 beresidu) **kini tampil** — balai ditelusuri menurut kecamatan, laboratorium disaring menurut kemampuan; penangkar & alsintan nol. Semula: **sebagian** 23 Agustus 2026 — `app/toko.html`: 234 berkoordinat (OSM) + 2.248 berwilayah. Penyuluh, POPT, lab, alsintan **nol** | **sebagian** |
 | C8 | Sifat agronomi varietas | petani, penyuluh, penangkar | #3 | **0 dari 11.227** | **TUNDA** |
 | C9 | Status & kuota pupuk bersubsidi | petani, kios, penyuluh | #6 — keputusan termahal | status & kuota **0 dari 7.196**; sisi **HET** bebas hak cipta, tetapi **harga pupuk eceran di SP2KP ternyata kosong** — Urea, NPK, SP-36, dan ZA terdaftar tanpa satu pun angka terisi | **TUNDA + SAMBUNG** (e-RDKK); sisi HET **BANGUN** dari teks peraturan, bukan dari SP2KP |
+
+> ⁽ᵃ⁾ **C5 ternyata dua kapabilitas, dan penggabungannya menyembunyikan yang kedua.**
+> Barisnya semula berbunyi *"Cuaca & iklim per lokasi · 0 · PINJAM (BMKG)"*, dan putusan
+> pinjam itu benar — untuk cuaca. BMKG menerbitkan prakiraan sampai tingkat kelurahan lewat
+> API terbuka, dan membangunnya ulang pemborosan.
+>
+> Yang tidak diterbitkan siapa pun adalah separuh yang lain. **Tidak ada satu sumber pun
+> yang, diberi koordinat, mengembalikan zona agroklimat sebuah lokasi dalam bentuk terbaca
+> mesin.** Yang ada peta kertas 1975–1980, raster berlisensi terbatas, dan jurnal per
+> provinsi. Pinjamannya hidup dan tetap dipakai; ia cuma tidak pernah mencakup separuh ini.
+>
+> Bedanya bukan halus. Cuaca berubah tiap jam dan menjawab "apa yang terjadi minggu ini";
+> agroklimat berubah tiap beberapa dasawarsa dan menjawab "tempat macam apa ini" — dan
+> pertanyaan kedualah yang menentukan **protokol mana yang berlaku di sebuah lahan.**
+> Selama ia kosong, satu-satunya penyempit iklim pada protokol adalah angka ketinggian dan
+> teks musim bebas, dan tidak ada cara mesin memastikan sebuah petak memenuhi keduanya.
+>
+> **Pelajaran C4 berlaku di sini, terbalik.** C4 turun dari pinjam ke bangun karena
+> pinjamannya **mati**. C5 dibelah karena pinjamannya **hidup tetapi hanya menutup
+> separuh** — dan separuh yang tertutup itu yang paling sering diminta, sehingga separuh
+> yang menganga tidak pernah terlihat. Bagi empat pinjaman yang tersisa, pertanyaan
+> pemeriksaannya karena itu dua, bukan satu: *sumbernya masih hidup?* dan *sumbernya
+> memang mencakup seluruh yang tertulis di barisnya?*
+>
+> Rinciannya di [21-agroklimat.md](21-agroklimat.md).
 
 > **C7 dibangun 23 Agustus 2026, dan satu angka di tabel ini terkoreksi karenanya.**
 > Baris C7 semula berbunyi *"2.181 benih TTI beralamat"*. Terhitung dari berkasnya, hanya
@@ -536,9 +595,10 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 >    jumlah tangkinya sudah dibulatkan saat ditampilkan. Pada permukaan yang menjanjikan
 >    hitungannya bisa dibantah, baris yang tidak bisa direproduksi membatalkan janjinya.
 >
-> **Keselamatan sengaja tidak disentuh:** APD, cara mencampur, gejala keracunan, dan nomor
-> darurat itu **B2**, dan menyisipkan sebagiannya di sini akan membuat layar terbaca seolah
-> sudah lengkap.
+> **Keselamatan sengaja tidak disentuh:** APD, cara mencampur, dan gejala keracunan tidak
+> ada di layar ini, dan menyisipkan sebagiannya akan membuat layar terbaca seolah sudah
+> lengkap. Yang tercatat di blok batas jawaban hanya *kekosongan datanya* — `phi`,
+> `kelasBahayaWho`, dan `apdProduk` — bukan anjuran penggantinya.
 
 ### E · RENCANA & CATAT — eksekusi
 
@@ -610,7 +670,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | F1 | Berkas bukti bertulang SNI 8969 | offtaker, sertifikator | #16 | penyusun **selesai** | **BANGUN** permukaannya (fase 3) |
 | F2 | Ekspor data petani yang bisa dibaca tanpa platform ini | petani, koperasi | kepemilikan data | **selesai** — `ekspor-petani.mjs` | **selesai** |
 | F3 | Ketertelusuran petak → lot | eksportir, offtaker | akses pasar | butuh geometri + persetujuan | **TUNDA** (T2) |
-| F4 | Berkas siap-ajukan kredit & asuransi | petani, poktan, bank, asuransi | #11, #12 | **prasyaratnya selesai** 23 Agustus 2026 — buku kas kini berskala musim & luas, jadi **biaya per hektare** ada. Berkasnya sendiri **tidak dibangun**: repositori ini tidak tahu apa yang diminta formulir SIAP | prasyarat **selesai**; berkasnya **TUNDA** menunggu riset formulir |
+| F4 | Berkas siap-ajukan kredit & asuransi | petani, poktan, bank, asuransi | #11, #12 | **prasyaratnya selesai** 23 Agustus 2026 — buku kas kini berskala musim & luas, jadi **biaya per hektare** ada. **Risetnya sebagian terjawab** 24 Agustus 2026 sebagai sisa pekerjaan kosakata sebab kegagalan: Pedum AUTP TA 2022 memuat syarat kepesertaan (padi maksimal 30 HST), mekanisme SIAP beserta aktor per langkah, nama formulirnya (AUTP-3, AUTP-4, SK DPD), dan syarat ganti rugi (>10 HST, kerusakan ≥75% **dan** luas ≥75%). Yang masih belum diperiksa: daftar medan tiap formulir, yang ada di lampiran dan tidak ikut terekstrak sebagai teks | prasyarat **selesai**; berkasnya **TUNDA** — penghalangnya kini **lampiran formulir**, bukan lagi ketiadaan sumber |
 
 > **F4 menjawab kendala yang disebut sendiri oleh pelaksana AUTP:** hambatannya
 > administrasi, bukan tarif — premi petani Rp36.000/ha/musim sudah sangat rendah, tapi
@@ -823,7 +883,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 | **BANGUN** — gelombang 0–1 | 16 | A1, A2, A3, A5, B2⁽ᵖ⁾, B3, B4, C2, C3⁽ᵇ⁾, **C4**⁽ʰ⁾, C7, D3, D4, D5, G1, G5 |
 | **BANGUN** — gelombang 2 · fase 3 | 8 | E1, E2, E3, E4, E5, F1, G2, **G6** |
 | **BANGUN hati-hati** | 1 | G3 — juga **SAMBUNG** ke rantai POPT |
-| **PINJAM / SAMBUNG** | 3 | C5, C6, C9⁽ᵗ⁾ |
+| **PINJAM / SAMBUNG** | 3 | C5⁽ᵃ⁾, C6, C9⁽ᵗ⁾ |
 | **TUNDA** | 7 | A4, B5, C8, D6, F3, F4⁽ᵈ⁾, G4 |
 
 - ⁽ᵖ⁾ **sebagian** — B2 tanpa PHI.
@@ -831,6 +891,7 @@ Kolom **putusan** memakai lima kata, dan artinya mengikat:
 - ⁽ᵇ⁾ **bertahap** — 10 dari 778 OPT hari ini.
 - ⁽ᵗ⁾ **tertunda** sampai status subsidi punya jalur data; sambungannya ke e-RDKK bisa lebih dulu.
 - ⁽ᵈ⁾ **dibangun belakangan**, setelah E5 berjalan.
+- ⁽ᵃ⁾ **hanya separuhnya** — sisi cuaca dipinjam, sisi agroklimat dibangun dan selesai 24 Agustus 2026.
 
 > **Angka yang paling menentukan bukan 17, melainkan 5.** Lima kapabilitas — C5, C6, C9,
 > dan sisi sambungan G3 serta F4 — dijawab dengan meminjam atau menyambung, bukan

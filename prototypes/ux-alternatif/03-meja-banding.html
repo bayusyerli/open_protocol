@@ -1,0 +1,830 @@
+<!doctype html>
+<html lang="id" data-konsep="meja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<title>Konsep 03 · Meja Banding — Pranatani</title>
+<meta name="description" content="Prototipe UX: meja kerja pembanding. Dua sampai empat rekaman disandingkan, perbedaannya didahulukan, dan tiap nilai bisa dibuka sampai ke sumbernya.">
+<style>
+/* =========================================================================
+   KONSEP 03 · MEJA BANDING
+   Rupa: meja analisis / buku besar bukti. Kertas buku besar bergaris,
+   NILAI SELALU BERHURUF MESIN — itu penandanya: yang berhuruf mesin adalah
+   data yang disalin, yang berhuruf biasa adalah tulisan layar ini.
+   Perbedaan ditandai BENTUK (segitiga ▲ + garis kiri tebal), bukan warna saja.
+   Desktop: tiga panel. Ponsel: tumpukan berurutan — bukan tabel yang dikecilkan.
+   ========================================================================= */
+
+:root {
+  color-scheme: light;
+  --kertas:  #fbfaf6;
+  --kanvas:  #eeece4;
+  --panel:   #ffffff;
+  --tinta:   #191c21;
+  --lemah:   #5b636e;   /* 4,5:1 terhadap --kertas pada teks 11-12 px */
+  --garis:   #dcd9cf;
+  --garis-kuat:#9ba0a8;
+  --biru:    #1d3f66;      /* tinta kerja */
+  --biru-latar:#e6ecf3;
+  --karat:   #9d3f16;      /* perbedaan */
+  --karat-latar:#f7e9e0;
+  --hijau:   #17604a;      /* sama / ada */
+  --hijau-latar:#e3efe9;
+  --kosong:  #6d5a8c;      /* lubang data */
+  --kosong-latar:#eee9f4;
+  --di-biru: #ffffff;
+  --sentuh: 44px;
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) {
+    color-scheme: dark;
+    --kertas:#15181d; --kanvas:#0c0e11; --panel:#1c2027; --tinta:#eef0f3; --lemah:#9aa3ae;
+    --garis:#333941; --garis-kuat:#5c646e; --biru:#8ab3e0; --biru-latar:#1a2733;
+    --karat:#eb9a6d; --karat-latar:#33211a; --hijau:#68c9a6; --hijau-latar:#153029;
+    --kosong:#bda6dd; --kosong-latar:#251f31; --di-biru:#0c0e11;
+  }
+}
+:root[data-tema="gelap"] {
+  color-scheme: dark;
+  --kertas:#15181d; --kanvas:#0c0e11; --panel:#1c2027; --tinta:#eef0f3; --lemah:#9aa3ae;
+  --garis:#333941; --garis-kuat:#5c646e; --biru:#8ab3e0; --biru-latar:#1a2733;
+  --karat:#eb9a6d; --karat-latar:#33211a; --hijau:#68c9a6; --hijau-latar:#153029;
+  --kosong:#bda6dd; --kosong-latar:#251f31; --di-biru:#0c0e11;
+}
+
+*,*::before,*::after { box-sizing:border-box; }
+html,body { margin:0; padding:0; }
+body { background:var(--kanvas); color:var(--tinta); font-family:var(--sans);
+  font-size:16px; line-height:1.5; -webkit-text-size-adjust:100%; overflow-x:hidden; }
+@media (min-width:768px) { body { font-size:16.5px; } }
+
+:where(a,button,input,select,summary,[tabindex]):focus-visible { outline:3px solid var(--biru); outline-offset:2px; border-radius:2px; }
+@media (prefers-reduced-motion: reduce) { *,*::before,*::after { animation-duration:.001ms !important; transition-duration:.001ms !important; scroll-behavior:auto !important; } }
+.lewati { position:absolute; left:-9999px; top:0; z-index:90; background:var(--biru); color:var(--di-biru); padding:12px 16px; font-weight:700; }
+.lewati:focus { left:8px; top:8px; }
+.khusus-pembaca { position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; border:0; }
+
+/* ---------- kepala ---------- */
+.kepala { background:var(--panel); border-bottom:2px solid var(--garis-kuat); position:sticky; top:0; z-index:50; }
+.baris-merek { display:flex; flex-wrap:wrap; align-items:center; gap:8px 12px;
+  padding:9px 16px; max-width:1500px; margin:0 auto; }
+.merek { display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit; min-height:44px; min-width:0; }
+.merek svg { display:block; flex:none; }
+.merek b { font-size:1.06rem; display:block; line-height:1.1; letter-spacing:-.01em; }
+.merek small { font-size:.63rem; letter-spacing:.18em; text-transform:uppercase; color:var(--lemah); display:block; }
+.baris-merek .kanan { margin-left:auto; display:flex; flex-wrap:wrap; align-items:center; gap:8px; }
+.tandaproto { font-size:.6rem; letter-spacing:.11em; text-transform:uppercase; font-weight:700;
+  border:1px solid var(--garis-kuat); padding:4px 7px; white-space:nowrap; color:var(--lemah); }
+.tombol-kecil { min-height:44px; min-width:44px; padding:0 12px; background:transparent;
+  border:1px solid var(--garis-kuat); color:var(--tinta); font:inherit; font-size:.8rem; cursor:pointer; }
+.tombol-kecil:hover { background:var(--biru-latar); }
+
+/* ---------- pita permanen ---------- */
+.pita-tetap {
+  background:var(--karat-latar); color:var(--karat); border-bottom:2px solid var(--karat);
+  padding:9px 16px; font-size:.85rem; font-weight:600;
+}
+.pita-tetap span { display:block; max-width:1500px; margin:0 auto; }
+.pita-tetap strong { text-transform:uppercase; letter-spacing:.06em; font-size:.78rem; }
+
+/* ---------- tata letak ---------- */
+.meja { max-width:1500px; margin:0 auto; background:var(--kertas); min-height:100dvh;
+  border-left:1px solid var(--garis); border-right:1px solid var(--garis); }
+/* URUTAN DOM: <main> LEBIH DULU, lalu kedua <aside>. Judul meja adalah <h1>
+   halaman ini, dan <h2> rak yang mendahuluinya membalik urutan judul bagi
+   pembaca layar. Urutan TAMPILNYA dikembalikan di sini. */
+.kolom { display:flex; flex-direction:column; }
+.kolom > .rak   { order:1; }
+.kolom > .pusat { order:2; }
+.kolom > .bukti { order:3; }
+@media (min-width:1080px) {
+  .kolom { display:grid; grid-template-columns:280px minmax(0,1fr) 330px; align-items:start; }
+  .kolom > .rak   { grid-column:1; grid-row:1; }
+  .kolom > .pusat { grid-column:2; grid-row:1; }
+  .kolom > .bukti { grid-column:3; grid-row:1; }
+  .rak    { border-right:1px solid var(--garis); position:sticky; top:104px; max-height:calc(100dvh - 104px); overflow-y:auto; }
+  .bukti  { border-left:1px solid var(--garis); position:sticky; top:104px; max-height:calc(100dvh - 104px); overflow-y:auto; }
+  /* Laci hanya urusan layar sempit — lihat catatan yang sama di konsep 02. */
+  .rak[hidden] { display:block; }
+}
+
+/* ---------- rak: pencari + baki ---------- */
+.rak { padding:16px 14px 26px; }
+.rak h2, .bukti h2 { font-size:.65rem; letter-spacing:.16em; text-transform:uppercase; color:var(--lemah); margin:0 0 8px; font-weight:700; }
+.kumpulan { display:flex; gap:0; border:1px solid var(--garis-kuat); margin:0 0 14px; }
+.kumpulan button { flex:1; min-height:var(--sentuh); background:transparent; border:0; font:inherit;
+  font-size:.8rem; cursor:pointer; color:var(--tinta); padding:0 6px; }
+.kumpulan button + button { border-left:1px solid var(--garis-kuat); }
+.kumpulan button[aria-pressed="true"] { background:var(--biru); color:var(--di-biru); font-weight:700; }
+
+.calon-daftar { list-style:none; margin:0 0 20px; padding:0; border-top:1px solid var(--garis); }
+.calon-daftar li { border-bottom:1px solid var(--garis); }
+.calon {
+  display:grid; grid-template-columns:1fr auto; gap:10px; align-items:center; width:100%;
+  min-height:56px; padding:9px 4px; background:transparent; border:0; font:inherit; text-align:left; cursor:pointer; color:var(--tinta);
+}
+.calon:hover { background:var(--biru-latar); }
+.calon b { display:block; font-size:.9rem; }
+.calon small { display:block; font-family:var(--mono); font-size:.72rem; color:var(--lemah); margin-top:2px; }
+.calon .plus { width:32px; height:32px; display:grid; place-items:center; border:1px solid var(--garis-kuat);
+  font-size:1.1rem; line-height:1; flex:none; color:var(--biru); }
+.calon[aria-pressed="true"] .plus { background:var(--biru); color:var(--di-biru); border-color:var(--biru); }
+.calon[aria-pressed="true"] { background:var(--biru-latar); box-shadow:inset 3px 0 0 var(--biru); }
+.calon:disabled { opacity:.45; cursor:not-allowed; }
+.calon:disabled:hover { background:transparent; }
+
+/* ---------- baki ---------- */
+.baki { border:2px solid var(--garis-kuat); background:var(--panel); padding:10px; margin:0 0 6px; }
+.baki-kosong { color:var(--lemah); font-size:.86rem; margin:0; padding:8px 2px; }
+.keping { display:flex; align-items:center; gap:8px; border:1px solid var(--garis-kuat);
+  background:var(--kertas); padding:6px 6px 6px 10px; margin:0 0 6px; }
+.keping:last-child { margin-bottom:0; }
+.keping span { min-width:0; flex:1; }
+.keping b { display:block; font-size:.86rem; }
+.keping small { display:block; font-family:var(--mono); font-size:.7rem; color:var(--lemah); }
+.keping button { min-width:36px; min-height:36px; border:1px solid var(--garis-kuat); background:transparent;
+  color:var(--karat); font:inherit; font-size:1.05rem; line-height:1; cursor:pointer; flex:none; }
+.keping button:hover { background:var(--karat-latar); }
+.baki-aksi { display:flex; gap:8px; margin:10px 0 0; }
+.baki-aksi button { flex:1; min-height:var(--sentuh); border:1px solid var(--garis-kuat);
+  background:transparent; color:var(--tinta); font:inherit; font-size:.82rem; cursor:pointer; }
+.baki-aksi button:hover { background:var(--karat-latar); color:var(--karat); border-color:var(--karat); }
+
+/* ---------- pusat: matriks ---------- */
+.pusat { padding:18px 16px 40px; min-width:0; }
+@media (min-width:1080px) { .pusat { padding:22px 26px 60px; } }
+.pusat h1 { font-size:clamp(1.35rem,4.6vw,1.85rem); line-height:1.16; margin:0 0 6px; letter-spacing:-.015em; }
+.pusat > p.lede { color:var(--lemah); max-width:66ch; margin:0 0 18px; }
+
+.ringkas { display:grid; gap:8px; grid-template-columns:repeat(auto-fit,minmax(130px,1fr)); margin:0 0 20px; }
+.ringkas div { border:1px solid var(--garis-kuat); background:var(--panel); padding:9px 10px; }
+.ringkas b { display:block; font-family:var(--mono); font-size:1.35rem; font-variant-numeric:tabular-nums; line-height:1.1; }
+.ringkas small { display:block; font-size:.72rem; color:var(--lemah); margin-top:2px; }
+.ringkas div[data-jenis="beda"] b { color:var(--karat); }
+.ringkas div[data-jenis="kosong"] b { color:var(--kosong); }
+.ringkas div[data-jenis="sama"] b { color:var(--hijau); }
+
+.saring { display:flex; flex-wrap:wrap; gap:6px; margin:0 0 14px; }
+.saring button { min-height:var(--sentuh); padding:0 12px; border:1px solid var(--garis-kuat);
+  background:transparent; font:inherit; font-size:.8rem; cursor:pointer; color:var(--tinta); }
+.saring button[aria-pressed="true"] { background:var(--tinta); color:var(--kertas); border-color:var(--tinta); font-weight:700; }
+
+/* --- desktop: matriks --- */
+.matriks-bungkus { overflow-x:auto; -webkit-overflow-scrolling:touch; border-top:2px solid var(--garis-kuat); }
+table.matriks { width:100%; border-collapse:collapse; min-width:560px; }
+table.matriks th, table.matriks td { text-align:left; padding:10px 10px; border-bottom:1px solid var(--garis); vertical-align:top; }
+table.matriks thead th { font-size:.7rem; letter-spacing:.06em; text-transform:uppercase; color:var(--lemah);
+  border-bottom:2px solid var(--garis-kuat); position:sticky; top:0; background:var(--kertas); z-index:2; font-weight:700; }
+table.matriks thead th .jt { display:block; font-size:.92rem; letter-spacing:0; text-transform:none; color:var(--tinta); font-weight:700; margin-bottom:2px; }
+table.matriks thead th .jn { display:block; font-family:var(--mono); font-size:.68rem; letter-spacing:0; text-transform:none; }
+table.matriks tbody th { font-weight:600; font-size:.84rem; color:var(--lemah); width:170px; border-right:1px solid var(--garis); }
+tr[data-beda="ya"] > th { box-shadow: inset 4px 0 0 var(--karat); color:var(--tinta); }
+tr[data-beda="ya"] > th::before { content:"▲ "; color:var(--karat); font-size:.7rem; }
+tr[data-beda="tidak"] > th::before { content:"= "; color:var(--hijau); font-size:.78rem; font-weight:700; }
+.sel { background:none; border:0; padding:4px 2px; font:inherit; text-align:left; cursor:pointer; width:100%;
+  min-height:44px; display:flex; align-items:center;
+  font-family:var(--mono); font-size:.84rem; color:var(--tinta); border-bottom:1px dotted var(--garis-kuat); }
+.sel:hover { background:var(--biru-latar); }
+.sel[data-kosong="ya"] { color:var(--kosong); font-style:italic; }
+.sel[data-awas="ya"] { color:var(--karat); font-weight:700; }
+/* Keadaan TERPILIH ditulis paling akhir dan menyebut kedua keadaan lain secara
+   eksplisit. Tanpa ini, sel "⚠" yang dipilih menampilkan teks karat di atas
+   latar biru — 1,02:1, tidak terbaca sama sekali. Bentuknya tetap dibedakan
+   lewat lambang ⚠/⊘ yang ikut terbawa, jadi warna bukan satu-satunya penanda. */
+.sel[aria-pressed="true"],
+.sel[aria-pressed="true"][data-kosong="ya"],
+.sel[aria-pressed="true"][data-awas="ya"] { background:var(--biru); color:var(--di-biru); font-style:normal; }
+
+/* --- ponsel: berurutan, bukan tabel --- */
+.urut { display:none; }
+@media (max-width:767px) {
+  .matriks-bungkus { display:none; }
+  .urut { display:block; border-top:2px solid var(--garis-kuat); }
+}
+.medan-blok { border-bottom:1px solid var(--garis); padding:12px 0; }
+.medan-blok[data-beda="ya"] { border-left:4px solid var(--karat); padding-left:10px; }
+.medan-blok[data-beda="tidak"] { border-left:4px solid var(--hijau); padding-left:10px; }
+.medan-kepala { display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; margin:0 0 8px; }
+.medan-kepala h2 { margin:0; font-size:.92rem; letter-spacing:0; text-transform:none; color:var(--tinta); font-weight:700; }
+.medan-tanda { font-size:.65rem; letter-spacing:.09em; text-transform:uppercase; font-weight:700;
+  border:1px solid currentColor; padding:2px 6px; }
+.medan-blok[data-beda="ya"] .medan-tanda { color:var(--karat); }
+.medan-blok[data-beda="tidak"] .medan-tanda { color:var(--hijau); }
+.nilai-baris { display:grid; grid-template-columns:1fr; gap:4px; margin:0 0 6px; }
+.nilai-baris:last-child { margin-bottom:0; }
+.nilai-baris .obj { font-size:.76rem; color:var(--lemah); }
+.nilai-baris .val { font-family:var(--mono); font-size:.88rem; }
+.nilai-baris .val[data-kosong="ya"] { color:var(--kosong); font-style:italic; }
+.nilai-baris .val[data-awas="ya"] { color:var(--karat); font-weight:700; }
+.urut-sel { background:none; border:0; padding:6px 0; width:100%; text-align:left; cursor:pointer; font:inherit;
+  min-height:44px; display:flex; flex-direction:column; justify-content:center; gap:3px;
+  border-bottom:1px dotted var(--garis-kuat); }
+.urut-sel:hover { background:var(--biru-latar); }
+.urut-sel[aria-pressed="true"] { background:var(--biru-latar); box-shadow:inset 0 0 0 2px var(--biru); }
+
+/* ---------- panel bukti ---------- */
+.bukti { padding:18px 16px 40px; }
+@media (max-width:1079px) { .bukti { border-top:2px solid var(--garis-kuat); margin-top:24px; padding-top:20px; } }
+.bukti-kosong { color:var(--lemah); font-size:.88rem; border:1px dashed var(--garis-kuat); padding:14px; }
+.bukti-kartu { border:2px solid var(--biru); background:var(--panel); }
+.bukti-kepala { background:var(--biru); color:var(--di-biru); padding:9px 12px; }
+.bukti-kepala small { display:block; font-size:.64rem; letter-spacing:.12em; text-transform:uppercase; opacity:.85; }
+.bukti-kepala b { display:block; font-size:.95rem; }
+.bukti-isi { padding:12px; }
+.bukti-nilai { font-family:var(--mono); font-size:1.05rem; font-weight:700; word-break:break-word;
+  border-bottom:2px solid var(--garis-kuat); padding:0 0 10px; margin:0 0 10px; }
+.bukti-baris { display:grid; grid-template-columns:88px 1fr; gap:8px; padding:7px 0; border-bottom:1px solid var(--garis); font-size:.83rem; }
+.bukti-baris:last-of-type { border-bottom:0; }
+.bukti-baris dt { color:var(--lemah); margin:0; }
+.bukti-baris dd { margin:0; font-family:var(--mono); font-size:.8rem; word-break:break-word; }
+.tingkat { display:inline-grid; place-items:center; width:26px; height:26px; font-weight:800; font-size:.9rem;
+  border:2px solid currentColor; font-family:var(--sans); }
+.tingkat[data-t="B"] { color:var(--hijau); background:var(--hijau-latar); }
+.tingkat[data-t="D"] { color:var(--karat); background:var(--karat-latar); }
+.tingkat[data-t="?"] { color:var(--lemah); background:repeating-linear-gradient(135deg,var(--kanvas) 0 4px,transparent 4px 8px); }
+.bukti-alasan { font-size:.82rem; color:var(--tinta); background:var(--kanvas); padding:10px; margin:10px 0 0; border-left:3px solid var(--garis-kuat); }
+.bukti-awas { font-size:.82rem; background:var(--karat-latar); color:var(--karat); padding:10px; margin:10px 0 0; border-left:3px solid var(--karat); font-weight:600; }
+.bukti-kosong-tanda { font-size:.82rem; background:var(--kosong-latar); color:var(--kosong); padding:10px; margin:10px 0 0; border-left:3px solid var(--kosong); font-weight:600; }
+
+/* ---------- batas jawaban ---------- */
+.batas { border:2px solid var(--garis-kuat); background:var(--panel); margin:26px 0 0; }
+.batas > h2 { margin:0; padding:11px 13px; border-bottom:2px solid var(--garis-kuat); background:var(--kanvas);
+  font-size:.68rem; letter-spacing:.14em; text-transform:uppercase; color:var(--tinta); }
+.batas-isi { padding:12px 13px; }
+.sumber { display:grid; grid-template-columns:auto 1fr; gap:10px; padding:9px 0; border-bottom:1px solid var(--garis); }
+.sumber:last-child { border-bottom:0; }
+.sumber b { display:block; font-size:.9rem; }
+.sumber span.m { display:block; font-size:.78rem; color:var(--lemah); font-family:var(--mono); }
+.sumber em { display:block; font-size:.8rem; font-style:normal; margin-top:4px; }
+.lubang { list-style:none; margin:10px 0 0; padding:0; }
+.lubang li { display:grid; grid-template-columns:auto 1fr; gap:9px; padding:8px 0; border-bottom:1px dotted var(--garis-kuat); font-size:.84rem; }
+.lubang li::before { content:"⊘"; color:var(--kosong); }
+.lubang li:last-child { border-bottom:0; }
+
+/* ---------- kaki ---------- */
+.kaki { border-top:2px solid var(--garis-kuat); background:var(--panel); padding:13px 16px 20px; }
+.kaki-dalam { max-width:1500px; margin:0 auto; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; font-size:.79rem; color:var(--lemah); }
+.jar { display:inline-flex; align-items:center; gap:7px; font-weight:600; color:var(--tinta); }
+.jar i { width:9px; height:9px; background:var(--hijau); display:block; flex:none; }
+.jar[data-luring="ya"] i { background:var(--karat); }
+
+.laci-tombol { display:none; }
+@media (max-width:1079px) {
+  .laci-tombol { display:inline-flex; align-items:center; gap:6px; min-height:44px; padding:0 12px;
+    background:transparent; border:1px solid var(--garis-kuat); font:inherit; font-size:.8rem; cursor:pointer; color:var(--tinta); }
+  .rak { padding:14px 16px 20px; border-bottom:2px solid var(--garis-kuat); background:var(--panel); }
+  .rak[hidden] { display:none; }
+}
+</style>
+</head>
+<body>
+
+<a class="lewati" href="#pusat">Lewati ke isi</a>
+
+<header class="kepala">
+  <div class="baris-merek">
+    <a class="merek" href="index.html">
+      <svg viewBox="0 0 512 512" width="30" height="30" role="img" aria-label="Pranatani">
+        <!-- Disalin sebaris dari app/ikon.svg supaya prototipe tetap utuh lewat file://
+             maupun kalau berkasnya dipindahkan. Kalau markahnya berubah di sana, ubah di sini juga. -->
+        <rect width="512" height="512" rx="112" fill="#00442f"/>
+        <g transform="translate(84 84) scale(1.34)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M54 220V52h79c43 0 72 25 72 62s-29 62-72 62H94" stroke="#fffef8" stroke-width="26"/>
+          <path d="M94 77h45" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M94 109h64" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M94 141h45" stroke="#54c7a6" stroke-width="15"/>
+          <path d="M165 111c0-29 20-49 48-49 0 28-20 49-48 49Z" fill="#79d20a" stroke="#79d20a" stroke-width="8"/>
+          <path d="M165 111 196 80" stroke="#00442f" stroke-width="8"/>
+        </g>
+      </svg>
+      <span><b>Pranatani</b><small>Meja Banding</small></span>
+    </a>
+    <span class="kanan">
+      <button class="laci-tombol" type="button" id="laci" aria-expanded="false" aria-controls="rak">Tambah rekaman</button>
+      <span class="tandaproto">Prototipe UX 03</span>
+      <button class="tombol-kecil" type="button" id="tombolTema">Gelap</button>
+    </span>
+  </div>
+</header>
+
+<p class="pita-tetap"><span><strong>Terdaftar ≠ terjamin.</strong> Yang disandingkan di meja ini
+adalah <em>apa yang tercatat di registri</em> — bukan keaslian barang, bukan mutunya, dan bukan
+kecocokannya untuk lahanmu. Registri tidak menguji apa pun; ia mendaftarkan.</span></p>
+
+<div class="meja">
+  <div class="kolom">
+
+    <main class="pusat" id="pusat" tabindex="-1">
+      <h1 id="judulBanding">Meja banding</h1>
+      <p class="lede" id="ledeBanding"></p>
+      <div class="ringkas" id="ringkas"></div>
+      <div class="saring" role="group" aria-label="Saring baris" id="saring"></div>
+      <div id="isiBanding" aria-live="polite"></div>
+      <div id="batasBanding"></div>
+    </main>
+
+    <aside class="rak" id="rak" aria-labelledby="jrak">
+      <h2 id="jrak">Baki perbandingan <span id="cacahBaki" style="font-family:var(--mono)"></span></h2>
+      <div class="baki" id="baki"></div>
+      <div class="baki-aksi">
+        <button type="button" id="kosongkan">Kosongkan baki</button>
+      </div>
+
+      <h2 style="margin-top:22px">Tambahkan rekaman</h2>
+      <div class="kumpulan" role="group" aria-label="Kumpulan rekaman" id="kumpulan"></div>
+      <p id="ketKumpulan" style="font-size:.8rem;color:var(--lemah);margin:0 0 10px"></p>
+      <ul class="calon-daftar" id="calonDaftar"></ul>
+    </aside>
+
+    <aside class="bukti" id="bukti" aria-labelledby="jbukti">
+      <h2 id="jbukti">Berkas bukti</h2>
+      <div id="isiBukti"></div>
+    </aside>
+
+  </div>
+</div>
+
+<footer class="kaki">
+  <div class="kaki-dalam">
+    <span class="jar" id="jar"><i></i><span id="jarTeks">Memeriksa jaringan</span></span>
+    <span>Urutan kolom mengikuti urutan kamu menambahkannya — <strong>tidak pernah peringkat</strong>.</span>
+    <span>Indeks turunan Pranatani · tarikan 19–23 Agustus 2026 · dibaca 27 Agustus 2026</span>
+  </div>
+</footer>
+
+<script>
+"use strict";
+/* =========================================================================
+   DATA — disalin dari indeks turunan repositori (spec/indeks/). Nomor
+   pendaftaran, komposisi, dosis terdaftar, dan tanggal berlaku apa adanya.
+   ========================================================================= */
+
+const HARI_INI = "2026-08-27";
+
+const SUMBER = {
+  pupuk:{ t:"B", nama:"Registri pupuk terdaftar", meta:"Kementan RI · 7.196 rekaman · CC-BY-SA-4.0 · tarikan 19-08-2026 · status draft",
+    alasan:"Registri resmi kementerian, disalin apa adanya. Bukan A: yang dicatat izin edar, bukan hasil uji multi-lokasi." },
+  pestisida:{ t:"B", nama:"Registri pestisida terdaftar", meta:"Kementan RI · 7.724 rekaman · CC-BY-SA-4.0 · tarikan 19-08-2026 · status draft",
+    alasan:"Registri resmi kementerian, disalin apa adanya. Bukan A dengan alasan yang sama: pendaftaran bukan pengujian." },
+  golongan:{ t:"D", nama:"Golongan resistensi IRAC", meta:"IRAC MoA v11.5 · Februari 2026 · tarikan 23-08-2026 · status draft",
+    alasan:"Pemetaan nama bahan ke kode golongan dicocokkan lewat EJAAN, dan ejaan Indonesia tidak selalu satu-satu dengan daftar IRAC." },
+  principal:{ t:"B", nama:"Badan pemegang pendaftaran", meta:"Turunan penyeragaman nama di kedua registri · 3.136 badan",
+    alasan:"Diturunkan dari registri yang sama. Yang ditambahkan penyeragaman nama, dan penyeragaman itu keputusan proyek ini." }
+};
+
+const LUBANG = {
+  harga:"Registri tidak memuat harga sama sekali. Kolom harga tidak ada di meja ini karena tidak ada di sumbernya — bukan karena belum ditarik.",
+  phi:"Nol dari 23.058 penggunaan berlabel memuat tenggang panen. Meja ini karena itu tidak boleh menyandingkan tanggal aman panen.",
+  namaDagang:"Registri menyimpan nama TERDAFTAR. Nama yang tercetak di kemasan bisa berbeda, dan pemetaan antara keduanya belum ada — jadi meja ini tidak bisa memastikan baris mana yang ada di tanganmu.",
+  beratJenis:"Berat jenis tidak dicatat registri, sehingga pupuk cair TIDAK sebanding dengan yang padat pada dasar berat.",
+  mutu:"Registri tidak mencatat hasil uji mutu, riwayat penarikan, atau sanksi. Dua baris yang terlihat identik di meja ini bisa berbeda jauh di gudang, dan meja ini tidak akan tahu.",
+  volumeSemprot:"Volume semprot per hektare tidak ada di registri, sehingga dosis yang terdaftar dalam l/ha tidak bisa disandingkan dengan yang ml/l."
+};
+
+/* --- kumpulan A: rekaman bernama PHONSKA (registri pupuk) --- */
+const PUPUK = [
+  { id:"op:prd:00010212", nama:"PHONSKA", sub:"01.01.2022.1248", sumber:"pupuk",
+    m:{ nama:"PHONSKA", daftar:"01.01.2022.1248", bentuk:"Butiran (Granular)", pemegang:"PT Petrokimia Gresik",
+        N:"150 g/kg", P:"80 g/kg", K:"100 g/kg", S:"—", mikro:"—", npk:"15-8-10", berlaku:"2027-08-25", jenis:"pupuk" } },
+  { id:"op:prd:00011455", nama:"PHONSKA", sub:"01.01.2022.1252", sumber:"pupuk",
+    m:{ nama:"PHONSKA", daftar:"01.01.2022.1252", bentuk:"Butiran (Granular)", pemegang:"PT Petrokimia Gresik",
+        N:"150 g/kg", P:"150 g/kg", K:"100 g/kg", S:"—", mikro:"—", npk:"15-15-10", berlaku:"2027-08-25", jenis:"pupuk" } },
+  { id:"op:prd:00011593", nama:"PHONSKA", sub:"01.01.2022.1203", sumber:"pupuk",
+    m:{ nama:"PHONSKA", daftar:"01.01.2022.1203", bentuk:"Butiran (Granular)", pemegang:"PT Petrokimia Gresik",
+        N:"150 g/kg", P:"100 g/kg", K:"150 g/kg", S:"—", mikro:"—", npk:"15-10-15", berlaku:"2027-08-21", jenis:"pupuk" } },
+  { id:"op:prd:00012796", nama:"PHONSKA", sub:"01.01.2024.261", sumber:"pupuk",
+    m:{ nama:"PHONSKA", daftar:"01.01.2024.261", bentuk:"Butiran (Granular)", pemegang:"PT Petrokimia Gresik",
+        N:"100 g/kg", P:"100 g/kg", K:"100 g/kg", S:"—", mikro:"—", npk:"10-10-10", berlaku:"2029-02-28", jenis:"pupuk" } },
+  { id:"op:prd:00016061", nama:"PHONSKA", sub:"tanpa nomor", sumber:"pupuk",
+    m:{ nama:"PHONSKA", daftar:"TIDAK-TERCANTUM", bentuk:"Butiran", pemegang:"PT Petrokimia Gresik",
+        N:null, P:null, K:null, S:null, mikro:null, npk:null, berlaku:"2023-12-31", jenis:"pupuk" } },
+  { id:"op:prd:00010329", nama:"PHONSKA PLUS", sub:"01.01.2021.538", sumber:"pupuk",
+    m:{ nama:"PHONSKA PLUS", daftar:"01.01.2021.538", bentuk:"Butiran (Granular)", pemegang:"PT Petrokimia Gresik",
+        N:"150 g/kg", P:"150 g/kg", K:"150 g/kg", S:"90 g/kg", mikro:"B 1 · Cu 1 · Zn 2 g/kg", npk:"15-15-15", berlaku:"2026-02-05", jenis:"pupuk" } },
+  { id:"op:prd:00012427", nama:"PHONSKA CAIR", sub:"01.02.2023.2310", sumber:"pupuk",
+    m:{ nama:"PHONSKA CAIR", daftar:"01.02.2023.2310", bentuk:"Cair (Liquid)", pemegang:"PT Petrokimia Gresik",
+        N:"100 g/L", P:"80 g/L", K:"30 g/L", S:"—", mikro:"—", npk:"10-8-3 (per liter)", berlaku:"2028-10-25", jenis:"pupuk" } },
+  { id:"op:prd:00015612", nama:"PHONSKA PIHC", sub:"01.01.2023.1257", sumber:"pupuk",
+    m:{ nama:"PHONSKA PUPUK INDONESIA HOLDING COMPANY", daftar:"01.01.2023.1257", bentuk:"Butiran (Granular)",
+        pemegang:"PT Pupuk Indonesia (Persero)", N:"150 g/kg", P:"100 g/kg", K:"120 g/kg", S:"—", mikro:"—",
+        npk:"15-10-12", berlaku:"2028-04-18", jenis:"pupuk" } }
+];
+
+const MEDAN_PUPUK = [
+  { k:"nama",     l:"Nama terdaftar" },
+  { k:"npk",      l:"Grade NPK" },
+  { k:"N",        l:"Nitrogen (N)" },
+  { k:"P",        l:"Fosfor (P₂O₅)" },
+  { k:"K",        l:"Kalium (K₂O)" },
+  { k:"S",        l:"Belerang (S)" },
+  { k:"mikro",    l:"Hara mikro" },
+  { k:"bentuk",   l:"Bentuk sediaan" },
+  { k:"daftar",   l:"Nomor pendaftaran" },
+  { k:"berlaku",  l:"Berlaku sampai" },
+  { k:"pemegang", l:"Pemegang pendaftaran" }
+];
+
+/* --- kumpulan B: merek Abamektin 18 g/L untuk Trips pada Cabai --- */
+const PESTISIDA = [
+  { id:"op:prd:00003693", nama:"DEMOLISH 18 EC", sub:"0,5 ml/l", sumber:"pestisida",
+    m:{ nama:"DEMOLISH 18 EC", daftar:"01010120052259", bahan:"Abamektin", kadar:"18 g/L", irac:"6",
+        dosis:"0,5 ml/l", satuan:"ml per liter", sasaran:"Trips pada Cabai", phi:null, berlaku:"2029-03-04",
+        pemegang:"PT. DELTA GIRI WACANA", jenis:"pestisida" } },
+  { id:"op:prd:00008530", nama:"DIMECTIN 18 EC", sub:"0,75 ml/l", sumber:"pestisida",
+    m:{ nama:"DIMECTIN 18 EC", daftar:"01010120031755", bahan:"Abamektin", kadar:"18 g/L", irac:"6",
+        dosis:"0,75 ml/l", satuan:"ml per liter", sasaran:"Trips pada Cabai", phi:null, berlaku:"2028-08-28",
+        pemegang:"PT. DELTAGRO MULIA SEJATI", jenis:"pestisida" } },
+  { id:"op:prd:00001872", nama:"MATROS 18 EC", sub:"1 ml/l", sumber:"pestisida",
+    m:{ nama:"MATROS 18 EC", daftar:"01010120042102", bahan:"Abamektin", kadar:"18 g/L", irac:"6",
+        dosis:"1 ml/l", satuan:"ml per liter", sasaran:"Trips pada Cabai", phi:null, berlaku:"2029-09-19",
+        pemegang:"PT. PETROKIMIA KAYAKU", jenis:"pestisida" } },
+  { id:"op:prd:00004904", nama:"DKMEKTIN 18 EC", sub:"1,5 ml/l", sumber:"pestisida",
+    m:{ nama:"DKMEKTIN 18 EC", daftar:"01010120155223", bahan:"Abamektin", kadar:"18 g/L", irac:"6",
+        dosis:"1,5 ml/l", satuan:"ml per liter", sasaran:"Trips pada Cabai", phi:null, berlaku:"2030-02-17",
+        pemegang:"PT. DANKEN INDONESIA", jenis:"pestisida" } },
+  { id:"op:prd:00008092", nama:"RUTIN 18 EC", sub:"1 l/ha ⚠", sumber:"pestisida",
+    m:{ nama:"RUTIN 18 EC", daftar:"01010120072797", bahan:"Abamektin", kadar:"18 g/L", irac:"6",
+        dosis:"1 l/ha", satuan:"liter per hektare", sasaran:"Trips pada Cabai", phi:null, berlaku:"2027-06-27",
+        pemegang:"CV. AGRO CHEMICA", jenis:"pestisida", awas:{ dosis:"Satuan berbeda dari baris lain. Tanpa volume semprot per hektare, angka ini tidak sebanding dengan yang ml/l — dan volume semprot tidak ada di registri." } } },
+  { id:"op:prd:00001040", nama:"LARBAN 500/50 EC", sub:"bahan lain", sumber:"pestisida",
+    m:{ nama:"LARBAN 500/50 EC", daftar:"01010120124476", bahan:"Klorpirifos + Sipermetrin", kadar:"500 + 50 g/L", irac:"1B + 3A",
+        dosis:"1.5 ml/l", satuan:"ml per liter", sasaran:"Trips pada Cabai", phi:null, berlaku:"2028-04-26",
+        pemegang:"PT. Trida Kimia Sakti", jenis:"pestisida",
+        awas:{ bahan:"Klorpirifos punya larangan LINGKUP — rumah tangga dan tanaman padi — menurut Permentan No. 43 Tahun 2019, Lampiran I.A. Produk ini tetap terdaftar untuk Cabai. Meja ini menampilkan larangannya beserta lingkup dan pasalnya, lalu berhenti." } } }
+];
+
+const MEDAN_PESTISIDA = [
+  { k:"nama",     l:"Nama terdaftar" },
+  { k:"bahan",    l:"Bahan aktif" },
+  { k:"kadar",    l:"Kadar" },
+  { k:"irac",     l:"Golongan IRAC" },
+  { k:"sasaran",  l:"Penggunaan berlabel" },
+  { k:"dosis",    l:"Dosis terdaftar" },
+  { k:"satuan",   l:"Satuan dosis" },
+  { k:"phi",      l:"Tenggang panen (PHI)" },
+  { k:"daftar",   l:"Nomor pendaftaran" },
+  { k:"berlaku",  l:"Berlaku sampai" },
+  { k:"pemegang", l:"Pemegang pendaftaran" }
+];
+
+const KUMPULAN = {
+  pupuk: { label:"Pupuk “PHONSKA”", ket:"Delapan rekaman registri pupuk yang namanya diawali PHONSKA. Lima di antaranya bernama persis “PHONSKA”.",
+    isi:PUPUK, medan:MEDAN_PUPUK, sumber:["pupuk"], lubang:["namaDagang","harga","beratJenis","mutu"],
+    judul:"Lima karung yang namanya sama", lede:"Registri menyimpan nama TERDAFTAR, bukan yang tercetak di karung. Meja ini menyandingkan rekaman-rekamannya supaya perbedaan kandungannya terlihat — dan supaya jelas bahwa registri sendiri tidak bisa memutuskan yang mana yang ada di tanganmu.",
+    awal:["op:prd:00010212","op:prd:00011455","op:prd:00010329"] },
+  pestisida: { label:"Abamektin 18 g/L", ket:"Enam merek yang berlabel untuk Trips pada Cabai. Lima berbahan sama dengan kadar sama; satu dibawa sebagai pembanding berbahan lain.",
+    isi:PESTISIDA, medan:MEDAN_PESTISIDA, sumber:["pestisida","golongan"], lubang:["phi","volumeSemprot","harga","mutu"],
+    judul:"Isi yang sama, angka yang berbeda", lede:"Lima baris pertama membawa bahan dan kadar yang identik. Yang tidak identik justru angka yang paling dipakai orang di lapangan — dosis terdaftarnya.",
+    awal:["op:prd:00003693","op:prd:00001872","op:prd:00008092"] }
+};
+
+/* ========================================================================= */
+const el = (id) => document.getElementById(id);
+const esc = (s) => String(s).replace(/[&<>"']/g,(c)=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+let kumpulanKini = "pupuk";
+let baki = [];                    /* daftar id */
+let saring = "beda";              /* beda | semua | kosong */
+let selTerpilih = null;           /* {id, k} */
+const MAKS = 4;
+
+const semua = () => KUMPULAN[kumpulanKini].isi;
+const cari  = (id) => semua().find((x) => x.id === id);
+const medan = () => KUMPULAN[kumpulanKini].medan;
+
+function nilai(o, k) { const v = o.m[k]; return (v === null || v === undefined) ? null : v; }
+function kadaluwarsa(o) { return o.m.berlaku && o.m.berlaku < HARI_INI; }
+
+function jenisBaris(k) {
+  const objs = baki.map(cari).filter(Boolean);
+  if (objs.length < 2) return "tunggal";
+  const vals = objs.map((o) => nilai(o, k));
+  if (vals.every((v) => v === null)) return "kosong";
+  // `null` (tidak dicatat registri) harus dihitung sebagai nilai TERSENDIRI, dan
+  // tidak boleh bertabrakan dengan nilai yang kebetulan berbunyi "null". Awalan
+  // satu huruf memisahkan keduanya tanpa perlu penanda tak tercetak.
+  const kunci = vals.map((v) => (v === null ? 'N' : 'A' + v));
+  return new Set(kunci).size === 1 ? "sama" : "beda";
+}
+
+/* ---------- rak ---------- */
+function gambarKumpulan() {
+  el('kumpulan').innerHTML = Object.entries(KUMPULAN).map(([k, v]) =>
+    `<button type="button" data-kump="${k}" aria-pressed="${k === kumpulanKini}">${esc(v.label)}</button>`).join('');
+  el('kumpulan').querySelectorAll('[data-kump]').forEach((b) => b.addEventListener('click', () => {
+    if (b.dataset.kump === kumpulanKini) return;
+    kumpulanKini = b.dataset.kump;
+    baki = KUMPULAN[kumpulanKini].awal.slice();
+    selTerpilih = null; saring = "beda";
+    render();
+  }));
+  el('ketKumpulan').textContent = KUMPULAN[kumpulanKini].ket;
+}
+
+function gambarCalon() {
+  el('calonDaftar').innerHTML = semua().map((o) => {
+    const ada = baki.includes(o.id);
+    const penuh = !ada && baki.length >= MAKS;
+    return `<li><button class="calon" type="button" data-id="${esc(o.id)}" aria-pressed="${ada}" ${penuh ? 'disabled' : ''}>
+      <span><b>${esc(o.nama)}</b><small>${esc(o.sub)}</small></span>
+      <span class="plus" aria-hidden="true">${ada ? '✓' : '+'}</span>
+      <span class="khusus-pembaca">${ada ? 'Sudah di baki — ketuk untuk mengeluarkan' : penuh ? 'Baki penuh' : 'Tambahkan ke baki'}</span>
+    </button></li>`;
+  }).join('');
+  el('calonDaftar').querySelectorAll('[data-id]').forEach((b) => b.addEventListener('click', () => alih(b.dataset.id)));
+}
+
+function gambarBaki() {
+  el('cacahBaki').textContent = `${baki.length}/${MAKS}`;
+  if (!baki.length) {
+    el('baki').innerHTML = `<p class="baki-kosong">Baki kosong. Tambahkan dua sampai empat rekaman dari
+      daftar di bawah — perbandingan baru punya arti kalau ada minimal dua.</p>`;
+    return;
+  }
+  el('baki').innerHTML = baki.map((id, i) => {
+    const o = cari(id); if (!o) return '';
+    return `<div class="keping">
+      <span><b>${esc(o.nama)}</b><small>${esc(o.sub)}</small></span>
+      <button type="button" data-buang="${esc(id)}" aria-label="Keluarkan ${esc(o.nama)} ${esc(o.sub)} dari baki">×</button>
+    </div>`;
+  }).join('');
+  el('baki').querySelectorAll('[data-buang]').forEach((b) => b.addEventListener('click', () => alih(b.dataset.buang)));
+}
+
+function alih(id) {
+  const i = baki.indexOf(id);
+  if (i >= 0) baki.splice(i, 1);
+  else if (baki.length < MAKS) baki.push(id);
+  if (selTerpilih && !baki.includes(selTerpilih.id)) selTerpilih = null;
+  render();
+}
+
+/* ---------- ringkasan + saring ---------- */
+function gambarRingkas() {
+  const objs = baki.map(cari).filter(Boolean);
+  if (objs.length < 2) { el('ringkas').innerHTML = ''; el('saring').innerHTML = ''; return; }
+  const j = medan().map((m) => jenisBaris(m.k));
+  const beda = j.filter((x) => x === "beda").length;
+  const sama = j.filter((x) => x === "sama").length;
+  const kosong = j.filter((x) => x === "kosong").length;
+  el('ringkas').innerHTML = `
+    <div data-jenis="beda"><b>${beda}</b><small>medan berbeda</small></div>
+    <div data-jenis="sama"><b>${sama}</b><small>medan sama</small></div>
+    <div data-jenis="kosong"><b>${kosong}</b><small>medan kosong di semua kolom</small></div>
+    <div><b>${objs.length}</b><small>rekaman dibandingkan</small></div>`;
+  el('saring').innerHTML = [
+    ["beda", `Hanya yang berbeda (${beda})`],
+    ["semua", `Semua medan (${medan().length})`],
+    ["kosong", `Hanya yang kosong (${kosong})`]
+  ].map(([k, l]) => `<button type="button" data-saring="${k}" aria-pressed="${saring === k}">${esc(l)}</button>`).join('');
+  el('saring').querySelectorAll('[data-saring]').forEach((b) => b.addEventListener('click', () => { saring = b.dataset.saring; render(); }));
+}
+
+/* ---------- matriks + tumpukan ---------- */
+function medanTampil() {
+  return medan().filter((m) => {
+    const j = jenisBaris(m.k);
+    if (saring === "semua") return true;
+    if (saring === "beda")  return j === "beda" || j === "tunggal";
+    return j === "kosong";
+  });
+}
+
+function selHtml(o, k, mode) {
+  const v = nilai(o, k);
+  const kosong = v === null;
+  const awas = o.m.awas && o.m.awas[k];
+  const teks = kosong ? "tidak dicatat registri" : String(v);
+  const dipilih = selTerpilih && selTerpilih.id === o.id && selTerpilih.k === k;
+  const cls = mode === 'urut' ? 'urut-sel' : 'sel';
+  const inner = mode === 'urut'
+    ? `<span class="obj">${esc(o.nama)} · ${esc(o.sub)}</span>
+       <span class="val" data-kosong="${kosong ? 'ya' : 'tidak'}" data-awas="${awas ? 'ya' : 'tidak'}">${esc(teks)}${awas ? ' ⚠' : ''}${kosong ? ' ⊘' : ''}</span>`
+    : `${esc(teks)}${awas ? ' ⚠' : ''}${kosong ? ' ⊘' : ''}`;
+  return `<button class="${cls}" type="button" data-sel="${esc(o.id)}|${esc(k)}"
+      aria-pressed="${dipilih}" data-kosong="${kosong ? 'ya' : 'tidak'}" data-awas="${awas ? 'ya' : 'tidak'}">
+      ${inner}<span class="khusus-pembaca"> — buka berkas buktinya</span></button>`;
+}
+
+function gambarBanding() {
+  const objs = baki.map(cari).filter(Boolean);
+  const K = KUMPULAN[kumpulanKini];
+  el('judulBanding').textContent = objs.length >= 2 ? K.judul : "Meja banding";
+  el('ledeBanding').textContent = objs.length >= 2 ? K.lede
+    : "Meja ini mulai dari baki kosong, bukan dari kotak pencarian. Tambahkan dua sampai empat rekaman di panel kiri, lalu perbedaannya yang akan didahulukan di sini.";
+
+  if (objs.length < 2) {
+    el('isiBanding').innerHTML = `<div class="bukti-kosong" style="padding:20px">
+      <p style="margin:0 0 8px"><strong>Baki berisi ${objs.length} rekaman.</strong> Perbandingan butuh minimal dua.</p>
+      <p style="margin:0">Meja ini sengaja tidak menampilkan satu rekaman sendirian: layar rincian satu benda
+      sudah ada di tempat lain, dan menyalinnya ke sini menghasilkan dua layar yang akan menyimpang diam-diam.</p>
+    </div>`;
+    el('batasBanding').innerHTML = '';
+    return;
+  }
+
+  const mt = medanTampil();
+  if (!mt.length) {
+    el('isiBanding').innerHTML = `<div class="bukti-kosong" style="padding:20px">
+      <p style="margin:0"><strong>Tidak ada medan yang cocok dengan saringan ini.</strong>
+      Coba “Semua medan”.</p></div>`;
+  } else {
+    /* desktop: matriks */
+    const tabel = `<div class="matriks-bungkus"><table class="matriks">
+      <caption class="khusus-pembaca">Perbandingan ${objs.length} rekaman. Baris bertanda segitiga berarti nilainya berbeda antar kolom.</caption>
+      <thead><tr><th scope="col">Medan</th>
+        ${objs.map((o) => `<th scope="col"><span class="jt">${esc(o.nama)}</span><span class="jn">${esc(o.sub)}</span></th>`).join('')}
+      </tr></thead>
+      <tbody>${mt.map((m) => {
+        const j = jenisBaris(m.k);
+        return `<tr data-beda="${j === 'beda' ? 'ya' : 'tidak'}">
+          <th scope="row">${esc(m.l)}</th>
+          ${objs.map((o) => `<td>${selHtml(o, m.k, 'tabel')}</td>`).join('')}
+        </tr>`;
+      }).join('')}</tbody></table></div>`;
+
+    /* ponsel: tumpukan berurutan */
+    const urut = `<div class="urut">${mt.map((m) => {
+      const j = jenisBaris(m.k);
+      const tanda = j === 'beda' ? '▲ berbeda' : j === 'kosong' ? '⊘ kosong di semua' : '= sama';
+      return `<section class="medan-blok" data-beda="${j === 'beda' ? 'ya' : 'tidak'}">
+        <div class="medan-kepala"><h2>${esc(m.l)}</h2><span class="medan-tanda">${esc(tanda)}</span></div>
+        ${objs.map((o) => `<div class="nilai-baris">${selHtml(o, m.k, 'urut')}</div>`).join('')}
+      </section>`;
+    }).join('')}</div>`;
+
+    el('isiBanding').innerHTML = tabel + urut;
+    el('isiBanding').querySelectorAll('[data-sel]').forEach((b) => b.addEventListener('click', () => {
+      const [id, k] = b.dataset.sel.split('|');
+      selTerpilih = (selTerpilih && selTerpilih.id === id && selTerpilih.k === k) ? null : { id, k };
+      render();
+      if (selTerpilih && !matchMedia('(min-width:1080px)').matches) {
+        el('bukti').scrollIntoView({ block: 'start', behavior: 'auto' });
+      }
+    }));
+  }
+
+  /* catatan yang menempel pada kumpulan */
+  el('batasBanding').innerHTML = catatanKumpulan() + blokBatas(K);
+}
+
+function catatanKumpulan() {
+  const objs = baki.map(cari).filter(Boolean);
+  const mati = objs.filter(kadaluwarsa);
+  const tanpaNomor = objs.filter((o) => o.m.daftar === "TIDAK-TERCANTUM");
+  const satuanLain = objs.filter((o) => o.m.satuan && o.m.satuan !== "ml per liter");
+  let out = '';
+
+  if (kumpulanKini === "pupuk") {
+    out += `<div class="batas" style="margin-top:26px"><h2>Yang meja ini tolak simpulkan</h2><div class="batas-isi">
+      <p style="margin:0 0 10px"><strong>1 · Yang mana yang ada di tanganmu.</strong> ${esc(LUBANG.namaDagang)}
+      Yang bisa memutuskan cuma angka komposisi yang tercetak di karungmu sendiri — cocokkan dengan baris grade di atas.</p>
+      <p style="margin:0 0 10px"><strong>2 · Mana yang lebih baik.</strong> Grade yang berbeda menjawab kebutuhan
+      hara yang berbeda; tidak ada satu pun yang “lebih tinggi mutunya” hanya karena angkanya lebih besar.</p>
+      <p style="margin:0"><strong>3 · Mana yang lebih murah.</strong> ${esc(LUBANG.harga)}</p>
+    </div></div>`;
+  } else {
+    out += `<div class="batas" style="margin-top:26px"><h2>Yang meja ini tolak simpulkan</h2><div class="batas-isi">
+      <p style="margin:0 0 10px"><strong>1 · Mana yang lebih manjur.</strong> Bahan dan kadar yang identik
+      menjawab pertanyaan “apa isinya”, bukan “mana yang bekerja lebih baik”. Registri tidak menguji kemanjuran.</p>
+      <p style="margin:0 0 10px"><strong>2 · Dosis mana yang benar.</strong> Yang berlaku untuk sebuah botol
+      adalah angka di label botol itu — bukan angka botol tetangganya, dan bukan rata-rata kolom di atas.</p>
+      <p style="margin:0"><strong>3 · Kapan aman dipanen.</strong> ${esc(LUBANG.phi)}</p>
+    </div></div>`;
+  }
+
+  const temuan = [];
+  if (mati.length) temuan.push(`<p style="margin:0 0 10px"><strong>⧗ ${mati.length} rekaman di baki sudah lewat tanggal berlakunya</strong>
+    per ${esc(HARI_INI)} — ${mati.map((o) => esc(o.nama) + ' (' + esc(o.m.berlaku) + ')').join(', ')}.
+    Itu berarti <em>izin edarnya</em> tidak berlaku pada tanggal itu; bukan berarti barang di gudangmu palsu
+    dan bukan berarti berbahaya. Registri mencatat izin, bukan barang.</p>`);
+  if (tanpaNomor.length) temuan.push(`<p style="margin:0 0 10px"><strong>⊘ ${tanpaNomor.length} rekaman terdaftar tanpa nomor pendaftaran.</strong>
+    <strong>667 dari 7.196 pupuk</strong> di registri berkeadaan sama — sembilan persen. Kolom kosong di baris
+    itu bukan kelalaian meja ini.</p>`);
+  if (satuanLain.length) temuan.push(`<p style="margin:0"><strong>⚠ ${satuanLain.length} rekaman memakai satuan dosis yang berbeda.</strong>
+    ${esc(LUBANG.volumeSemprot)} Kolom itu tetap ditampilkan, tetapi <em>tidak boleh dibaca sebagai
+    perbandingan angka</em>.</p>`);
+
+  if (temuan.length) {
+    out += `<div class="batas" style="margin-top:16px;border-color:var(--karat)">
+      <h2 style="background:var(--karat-latar);color:var(--karat);border-bottom-color:var(--karat)">Temuan pada baki ini</h2>
+      <div class="batas-isi">${temuan.join('')}</div></div>`;
+  }
+  return out;
+}
+
+function blokBatas(K) {
+  const s = K.sumber.map((k) => {
+    const x = SUMBER[k];
+    return `<div class="sumber">
+      <span class="tingkat" data-t="${esc(x.t)}" aria-hidden="true">${x.t === '?' ? '–' : esc(x.t)}</span>
+      <span><b>${esc(x.nama)}</b><span class="m">tingkat ${x.t === '?' ? '—' : esc(x.t)} · ${esc(x.meta)}</span>
+      <em>${esc(x.alasan)}</em></span></div>`;
+  }).join('');
+  const g = K.lubang.map((k) => `<li><span>${esc(LUBANG[k])}</span></li>`).join('');
+  return `<section class="batas" style="margin-top:16px" aria-labelledby="jbatas">
+    <h2 id="jbatas">Dari mana kolom-kolom di atas datang</h2>
+    <div class="batas-isi">${s}
+      <h3 style="font-size:.88rem;margin:14px 0 2px">Yang tidak ada kolomnya, dan kenapa</h3>
+      <ul class="lubang">${g}</ul>
+    </div></section>`;
+}
+
+/* ---------- panel bukti ---------- */
+function gambarBukti() {
+  if (!selTerpilih) {
+    el('isiBukti').innerHTML = `<div class="bukti-kosong">
+      <p style="margin:0 0 8px"><strong>Belum ada sel yang dibuka.</strong></p>
+      <p style="margin:0">Ketuk nilai mana pun di tabel perbandingan. Yang muncul di sini: dari registri mana
+      nilai itu disalin, kapan ditarik, tingkat buktinya, dan apa yang <em>tidak</em> dinyatakannya.</p></div>`;
+    return;
+  }
+  const o = cari(selTerpilih.id);
+  if (!o) { el('isiBukti').innerHTML = ''; return; }
+  const k = selTerpilih.k;
+  const m = medan().find((x) => x.k === k) || { l: k };
+  const v = nilai(o, k);
+  const kosong = v === null;
+  const awas = o.m.awas && o.m.awas[k];
+  const src = SUMBER[o.sumber];
+  const golongan = (k === 'irac');
+  const s = golongan ? SUMBER.golongan : src;
+
+  el('isiBukti').innerHTML = `
+    <div class="bukti-kartu">
+      <div class="bukti-kepala"><small>${esc(m.l)}</small><b>${esc(o.nama)} · ${esc(o.sub)}</b></div>
+      <div class="bukti-isi">
+        <p class="bukti-nilai">${kosong ? '⊘ tidak dicatat registri' : esc(String(v))}</p>
+        <dl style="margin:0">
+          <div class="bukti-baris"><dt>Rekaman</dt><dd>${esc(o.id)}</dd></div>
+          <div class="bukti-baris"><dt>Sumber</dt><dd style="font-family:var(--sans)">${esc(s.nama)}</dd></div>
+          <div class="bukti-baris"><dt>Tingkat</dt><dd><span class="tingkat" data-t="${esc(s.t)}">${s.t === '?' ? '–' : esc(s.t)}</span></dd></div>
+          <div class="bukti-baris"><dt>Tarikan</dt><dd>${esc(s.meta)}</dd></div>
+        </dl>
+        <p class="bukti-alasan"><strong>Kenapa tingkatnya begitu.</strong> ${esc(s.alasan)}</p>
+        ${kosong ? `<p class="bukti-kosong-tanda">⊘ <strong>Kosong berarti registri tidak mencatatnya</strong>, bukan bahwa nilainya nol dan bukan bahwa layar ini belum memuatnya. Meja ini tidak mengisinya dengan taksiran.</p>` : ''}
+        ${awas ? `<p class="bukti-awas">⚠ ${esc(awas)}</p>` : ''}
+        ${golongan ? `<p class="bukti-kosong-tanda" style="border-left-color:var(--karat);color:var(--karat);background:var(--karat-latar)">
+          Kode golongan bukan bagian dari registri Kementan. Ia ditempelkan proyek ini dari dokumen IRAC lewat
+          pencocokan ejaan — dan karena itu tingkat buktinya D, dua tingkat di bawah kolom-kolom lain di baris yang sama.</p>` : ''}
+      </div>
+    </div>`;
+}
+
+/* ---------- render ---------- */
+function render() {
+  gambarKumpulan(); gambarCalon(); gambarBaki(); gambarRingkas(); gambarBanding(); gambarBukti();
+}
+
+el('kosongkan').addEventListener('click', () => { baki = []; selTerpilih = null; render(); el('pusat').focus(); });
+
+el('tombolTema').addEventListener('click', () => {
+  const r = document.documentElement;
+  const gelapSistem = matchMedia('(prefers-color-scheme: dark)').matches;
+  const kini = r.dataset.tema || (gelapSistem ? 'gelap' : 'terang');
+  const baru = kini === 'gelap' ? 'terang' : 'gelap';
+  r.dataset.tema = baru;                       /* hanya di memori */
+  el('tombolTema').textContent = baru === 'gelap' ? 'Terang' : 'Gelap';
+});
+
+const laci = el('laci');
+const mqLebar = matchMedia('(min-width: 1080px)');
+function aturLaci() {
+  el('rak').hidden = !mqLebar.matches;
+  laci.setAttribute('aria-expanded', 'false');
+}
+laci.addEventListener('click', () => {
+  const mauBuka = el('rak').hidden;
+  el('rak').hidden = !mauBuka;
+  laci.setAttribute('aria-expanded', String(mauBuka));
+  if (mauBuka) el('rak').scrollIntoView({ block: 'start', behavior: 'auto' });
+});
+/* Ditempelkan ke MEDIA QUERY, bukan ke `resize` — bilah alamat ponsel yang
+   muncul-hilang memicu `resize` dan akan menutup laci di tengah pemakaian. */
+if (mqLebar.addEventListener) mqLebar.addEventListener('change', aturLaci);
+else mqLebar.addListener(aturLaci);
+addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    if (selTerpilih) { selTerpilih = null; render(); return; }
+    if (!matchMedia('(min-width: 1080px)').matches && !el('rak').hidden) {
+      el('rak').hidden = true; laci.setAttribute('aria-expanded', 'false'); laci.focus();
+    }
+  }
+});
+
+function jaringan() {
+  const j = el('jar'), t = el('jarTeks');
+  if (navigator.onLine) { j.dataset.luring = 'tidak'; t.textContent = 'Ada sinyal'; }
+  else { j.dataset.luring = 'ya'; t.textContent = 'Tanpa sinyal — baki tetap bisa dibandingkan'; }
+}
+addEventListener('online', jaringan); addEventListener('offline', jaringan); jaringan();
+
+aturLaci();
+baki = KUMPULAN[kumpulanKini].awal.slice();
+render();
+</script>
+</body>
+</html>

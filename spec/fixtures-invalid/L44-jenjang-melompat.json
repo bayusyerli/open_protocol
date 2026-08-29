@@ -1,0 +1,41 @@
+{
+  "$schema": "../schema/collection.schema.json",
+  "collection": {
+    "entity_type": "region",
+    "label": {
+      "id": "Fixture L44 — kecamatan berinduk langsung ke provinsi"
+    },
+    "scope": {
+      "id": "Fixture uji negatif. Kecamatan berinduk langsung pada provinsi, melewati kabupaten."
+    },
+    "lifecycle": {
+      "version": "0.1.0",
+      "status": "draft"
+    },
+    "id_blocks": [
+      {
+        "from": 90000,
+        "to": 90999
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "op:rgn:00090001",
+      "key": "fixture-l44-kecamatan-melompat",
+      "label": {
+        "id": "Kecamatan Melompat"
+      },
+      "level": "district",
+      "parent": {
+        "id": "op:rgn:00000022",
+        "label": "Jawa Tengah"
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft"
+      },
+      "no_mapping_reason": "Fixture uji; tidak menunjuk wilayah nyata mana pun dan karena itu tidak punya kode BPS."
+    }
+  ]
+}

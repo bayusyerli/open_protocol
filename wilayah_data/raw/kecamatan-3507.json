@@ -1,0 +1,200 @@
+[
+ {
+  "kode_bps": "3507010",
+  "nama_bps": "DONOMULYO",
+  "kode_dagri": "35.07.01",
+  "nama_dagri": "DONOMULYO"
+ },
+ {
+  "kode_bps": "3507020",
+  "nama_bps": "KALIPARE",
+  "kode_dagri": "35.07.11",
+  "nama_dagri": "KALIPARE"
+ },
+ {
+  "kode_bps": "3507030",
+  "nama_bps": "PAGAK",
+  "kode_dagri": "35.07.02",
+  "nama_dagri": "PAGAK"
+ },
+ {
+  "kode_bps": "3507040",
+  "nama_bps": "BANTUR",
+  "kode_dagri": "35.07.03",
+  "nama_dagri": "BANTUR"
+ },
+ {
+  "kode_bps": "3507050",
+  "nama_bps": "GEDANGAN",
+  "kode_dagri": "35.07.29",
+  "nama_dagri": "GEDANGAN"
+ },
+ {
+  "kode_bps": "3507060",
+  "nama_bps": "SUMBERMANJING",
+  "kode_dagri": "35.07.04",
+  "nama_dagri": "SUMBERMANJING WETAN"
+ },
+ {
+  "kode_bps": "3507070",
+  "nama_bps": "DAMPIT",
+  "kode_dagri": "35.07.05",
+  "nama_dagri": "DAMPIT"
+ },
+ {
+  "kode_bps": "3507080",
+  "nama_bps": "TIRTO YUDO",
+  "kode_dagri": "35.07.30",
+  "nama_dagri": "TIRTOYUDO"
+ },
+ {
+  "kode_bps": "3507090",
+  "nama_bps": "AMPELGADING",
+  "kode_dagri": "35.07.06",
+  "nama_dagri": "AMPELGADING"
+ },
+ {
+  "kode_bps": "3507100",
+  "nama_bps": "PONCOKUSUMO",
+  "kode_dagri": "35.07.07",
+  "nama_dagri": "PONCOKUSUMO"
+ },
+ {
+  "kode_bps": "3507110",
+  "nama_bps": "WAJAK",
+  "kode_dagri": "35.07.08",
+  "nama_dagri": "WAJAK"
+ },
+ {
+  "kode_bps": "3507120",
+  "nama_bps": "TUREN",
+  "kode_dagri": "35.07.09",
+  "nama_dagri": "TUREN"
+ },
+ {
+  "kode_bps": "3507130",
+  "nama_bps": "BULULAWANG",
+  "kode_dagri": "35.07.14",
+  "nama_dagri": "BULULAWANG"
+ },
+ {
+  "kode_bps": "3507140",
+  "nama_bps": "GONDANGLEGI",
+  "kode_dagri": "35.07.10",
+  "nama_dagri": "GONDANGLEGI"
+ },
+ {
+  "kode_bps": "3507150",
+  "nama_bps": "PAGELARAN",
+  "kode_dagri": "35.07.33",
+  "nama_dagri": "PAGELARAN"
+ },
+ {
+  "kode_bps": "3507160",
+  "nama_bps": "KEPANJEN",
+  "kode_dagri": "35.07.13",
+  "nama_dagri": "KEPANJEN"
+ },
+ {
+  "kode_bps": "3507170",
+  "nama_bps": "SUMBER PUCUNG",
+  "kode_dagri": "35.07.12",
+  "nama_dagri": "SUMBERPUCUNG"
+ },
+ {
+  "kode_bps": "3507180",
+  "nama_bps": "KROMENGAN",
+  "kode_dagri": "35.07.31",
+  "nama_dagri": "KROMENGAN"
+ },
+ {
+  "kode_bps": "3507190",
+  "nama_bps": "NGAJUM",
+  "kode_dagri": "35.07.20",
+  "nama_dagri": "NGAJUM"
+ },
+ {
+  "kode_bps": "3507200",
+  "nama_bps": "WONOSARI",
+  "kode_dagri": "35.07.32",
+  "nama_dagri": "WONOSARI"
+ },
+ {
+  "kode_bps": "3507210",
+  "nama_bps": "WAGIR",
+  "kode_dagri": "35.07.21",
+  "nama_dagri": "WAGIR"
+ },
+ {
+  "kode_bps": "3507220",
+  "nama_bps": "PAKISAJI",
+  "kode_dagri": "35.07.19",
+  "nama_dagri": "PAKISAJI"
+ },
+ {
+  "kode_bps": "3507230",
+  "nama_bps": "TAJINAN",
+  "kode_dagri": "35.07.15",
+  "nama_dagri": "TAJINAN"
+ },
+ {
+  "kode_bps": "3507240",
+  "nama_bps": "TUMPANG",
+  "kode_dagri": "35.07.16",
+  "nama_dagri": "TUMPANG"
+ },
+ {
+  "kode_bps": "3507250",
+  "nama_bps": "PAKIS",
+  "kode_dagri": "35.07.18",
+  "nama_dagri": "PAKIS"
+ },
+ {
+  "kode_bps": "3507260",
+  "nama_bps": "JABUNG",
+  "kode_dagri": "35.07.17",
+  "nama_dagri": "JABUNG"
+ },
+ {
+  "kode_bps": "3507270",
+  "nama_bps": "LAWANG",
+  "kode_dagri": "35.07.25",
+  "nama_dagri": "LAWANG"
+ },
+ {
+  "kode_bps": "3507280",
+  "nama_bps": "SINGOSARI",
+  "kode_dagri": "35.07.24",
+  "nama_dagri": "SINGOSARI"
+ },
+ {
+  "kode_bps": "3507290",
+  "nama_bps": "KARANGPLOSO",
+  "kode_dagri": "35.07.23",
+  "nama_dagri": "KARANG PLOSO"
+ },
+ {
+  "kode_bps": "3507300",
+  "nama_bps": "DAU",
+  "kode_dagri": "35.07.22",
+  "nama_dagri": "DAU"
+ },
+ {
+  "kode_bps": "3507310",
+  "nama_bps": "PUJON",
+  "kode_dagri": "35.07.26",
+  "nama_dagri": "PUJON"
+ },
+ {
+  "kode_bps": "3507320",
+  "nama_bps": "NGANTANG",
+  "kode_dagri": "35.07.27",
+  "nama_dagri": "NGANTANG"
+ },
+ {
+  "kode_bps": "3507330",
+  "nama_bps": "KASEMBON",
+  "kode_dagri": "35.07.28",
+  "nama_dagri": "KASEMBON"
+ }
+]

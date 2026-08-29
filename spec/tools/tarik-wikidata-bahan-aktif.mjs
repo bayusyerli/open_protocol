@@ -49,7 +49,7 @@ const PADANAN = join(AKAR, 'spec', 'vocab', 'padanan-bahan-aktif.json');
 const KELUAR_DIR = join(AKAR, 'wikidata_data');
 const KELUAR = join(KELUAR_DIR, 'bahan-aktif-wikidata.json');
 const ENDPOINT = 'https://query.wikidata.org/sparql';
-const UA = 'OpenProtocolsID-BahanAktifCrosswalk/0.1 (https://openprotocols.id; kontak lewat repositori) node-fetch';
+const UA = 'PranataniID-BahanAktifCrosswalk/0.1 (https://pranatani.com; kontak lewat repositori) node-fetch';
 const JEDA = 2000;
 
 // Akar peran agrokimia. Ditulis dengan labelnya supaya bisa diperiksa mata, dan supaya

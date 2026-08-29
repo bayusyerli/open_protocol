@@ -1,0 +1,3 @@
+36b360ed3b9acfda910342cfe013fb69a2f8b9a5759df842f973c3b6c0e4fb17  raw/Raw Data.zip
+310578dbe9de8edeb97cdb7077c9fda4ff87fa9528d0fc577ac3fecb93fd8bc0  raw/TFDD.zip
+90fc1680de7c2988343876d1341473a4666650f4dcd4f67aa344d5bb94dbae46  raw/TFDD_MetaData.csv

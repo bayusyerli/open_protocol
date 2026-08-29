@@ -12,7 +12,7 @@
  * bahan + kadar, jadi kartunya memang dipecah di situ.
  */
 
-import { ambil, teks, HTML_KEMBALI, namaPemegang} from './pustaka.js';
+import { ambil, teks, HTML_KEMBALI, namaPemegang, petakKemasan } from './pustaka.js';
 
 const angkaId = (n) => Number(n).toLocaleString('id-ID');
 
@@ -20,10 +20,10 @@ const angkaId = (n) => Number(n).toLocaleString('id-ID');
 // perilaku buka-tutup yang sama. Keduanya menyatakan hal yang sama (satu pasangan
 // bahan+kadar, sekian merek di baliknya); memberinya dua rupa membuat orang mengira
 // keduanya dua hal yang berbeda.
-function kartuKadar(k, i) {
+function kartuKadar(k, i, lanjutan = false) {
   const jumlah = Array.isArray(k.m) ? k.m.length : (k.merek ?? 0);
   return `
-    <div class="kartu bahan">
+    <div class="kartu bahan"${lanjutan ? ' data-kadar-lanjutan hidden' : ''}>
       <button type="button" class="bahan-kepala" data-buka="${i}" aria-expanded="false"
               aria-controls="bahan-${i}">
         <span class="bahan-nama">${teks(k.k)}</span>
@@ -32,19 +32,6 @@ function kartuKadar(k, i) {
       <div class="bahan-isi" id="bahan-${i}" hidden></div>
     </div>`;
 }
-
-/* Petak kemasan di depan nama merek — bentuk yang sama persis dengan tabel merek di
- * jalur 1, karena isinya memang hal yang sama: daftar merek untuk satu pasangan bahan +
- * kadar. Yang belum bergambar tetap memakai ruang yang sama, sebab 15% saja yang punya
- * dan sederet sel kosong di antara yang bergambar terbaca sebagai "yang ini yang
- * meragukan" — padahal artinya cuma situs pemegangnya belum dipanen.
- *
- * `alt` kosong: namanya persis di sebelahnya, di dalam kontrol yang sama.
- */
-const petakKemasan = (m) => (m.g
-  ? `<img class="merek-kemasan" src="gambar/${teks(m.g)}" alt="" width="40" height="40"
-          loading="lazy" decoding="async">`
-  : '<span class="merek-kemasan merek-kemasan-kosong" aria-hidden="true"></span>');
 
 export function tabelMerek(merek) {
   if (!merek?.length) return '<p class="kosong">Tidak ada merek pada kadar ini.</p>';
@@ -64,7 +51,7 @@ export function tabelMerek(merek) {
             <tr>
               <td>
                 <button type="button" class="tautan merek-tautan" data-id="${teks(m.i)}" data-pecahan="${teks(m.p)}">
-                  ${petakKemasan(m)}<span class="merek-nama">${teks(m.n)}</span>
+                  ${petakKemasan(m.g)}<span class="merek-nama">${teks(m.n)}</span>
                 </button>
               </td>
               <td>${namaPemegang(m.k, m.pk)}</td>
@@ -83,6 +70,8 @@ export function tabelMerek(merek) {
 }
 
 export function layarBahan(id, b) {
+  const awal = 8;
+  const sisa = Math.max(0, b.kadar.length - awal);
   return `
     <div class="kartu">
       <h2>${teks(b.n)}<span class="lencana">Bahan aktif</span></h2>
@@ -117,7 +106,18 @@ export function layarBahan(id, b) {
       </p>
     </div>
 
-    ${b.kadar.map(kartuKadar).join('')}
+    <section class="kelompok-kadar" aria-labelledby="judulKadar">
+      <h2 id="judulKadar">Kadar yang tercatat</h2>
+      <p class="catatan">
+        ${angkaId(Math.min(awal, b.kadar.length))} dari ${angkaId(b.kadar.length)} kadar
+        ditampilkan lebih dulu. Buka satu kadar untuk melihat mereknya.
+      </p>
+      ${b.kadar.map((k, i) => kartuKadar(k, i, i >= awal)).join('')}
+      ${sisa ? `<button type="button" class="kembali tampil-semua-kadar"
+                       data-buka-semua-kadar aria-expanded="false">
+        Tampilkan ${angkaId(sisa)} kadar lainnya
+      </button>` : ''}
+    </section>
     ${HTML_KEMBALI}`;
 }
 

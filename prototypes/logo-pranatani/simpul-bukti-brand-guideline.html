@@ -1,0 +1,851 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="Brand guideline Simpul Bukti untuk desain UI/UX platform Pranatani: strategi merek, logo, warna, tipografi, layout, komponen, data, suara, dan token desain.">
+<title>Simpul Bukti — Brand Guideline Pranatani</title>
+<style>
+:root {
+  color-scheme:light;
+  --canopy:#0d4a3b;
+  --water:#188f82;
+  --water-text:#0b7369;
+  --seed:#b9d93f;
+  --mist:#edf1e8;
+  --rice:#fffef8;
+  --ink:#10231d;
+  --slate:#52645d;
+  --line:#cbd4cf;
+  --canvas:#f4f6f1;
+  --surface:#fffefb;
+  --info:#1e6cb5;
+  --success:#247449;
+  --warning:#9a5a0b;
+  --danger:#b33a3a;
+  --focus:#1669c9;
+  --sans:"Plus Jakarta Sans", Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono:"IBM Plex Mono", "SFMono-Regular", Consolas, monospace;
+  --serif:Iowan Old Style, Baskerville, "Times New Roman", serif;
+  --shadow:0 22px 60px rgba(13,74,59,.10);
+  --r-sm:6px;
+  --r-md:10px;
+  --r-lg:18px;
+  --page:min(1180px, calc(100vw - 48px));
+}
+
+:root[data-theme="dark"] {
+  color-scheme:dark;
+  --ink:#eef5ef;
+  --slate:#afbeb6;
+  --line:#3b4e45;
+  --canvas:#101713;
+  --surface:#18231e;
+  --mist:#203129;
+  --rice:#f4f7f1;
+  --canopy:#82d5b6;
+  --water:#63d5c4;
+  --water-text:#7de2d2;
+  --seed:#c5e664;
+  --info:#76b7ed;
+  --success:#73c897;
+  --warning:#efb761;
+  --danger:#f08a88;
+  --focus:#78b9ff;
+  --shadow:0 22px 60px rgba(0,0,0,.28);
+}
+
+:root[data-theme="dark"] :is(.brand-mini,.hero-mark,.stage-main,.variant:not(.dark):not(.mono),.clearspace-demo,.minimums,.dont-visual) [stroke="#0d4a3b"] { stroke:#dff4e8; }
+:root[data-theme="dark"] .stage-main [fill="#10231d"] { fill:#eef5ef; }
+:root[data-theme="dark"] .stage-main [fill="#52645d"] { fill:#afbeb6; }
+:root[data-theme="dark"] .mark-legend .dot[style*="#0d4a3b"] { background:#dff4e8 !important; }
+
+*,*::before,*::after { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--canvas); color:var(--ink); font-family:var(--sans); line-height:1.55; -webkit-font-smoothing:antialiased; }
+body::before { content:""; position:fixed; inset:0; pointer-events:none; z-index:-1; opacity:.42; background-image:linear-gradient(rgba(13,74,59,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(13,74,59,.035) 1px,transparent 1px); background-size:32px 32px; }
+button,a { font:inherit; }
+a { color:inherit; }
+svg { display:block; max-width:100%; }
+:where(a,button,[tabindex]):focus-visible { outline:3px solid var(--focus); outline-offset:3px; }
+.skip { position:fixed; left:12px; top:-100px; z-index:100; padding:12px 16px; background:var(--ink); color:var(--canvas); font-weight:800; text-decoration:none; }
+.skip:focus { top:12px; }
+.wrap { width:var(--page); margin-inline:auto; }
+.mono { font-family:var(--mono); }
+.eyebrow { margin:0; color:var(--water-text); font:700 .7rem/1.2 var(--mono); letter-spacing:.13em; text-transform:uppercase; }
+.muted { color:var(--slate); }
+.section { padding:94px 0; border-top:1px solid var(--line); scroll-margin-top:82px; }
+.section-number { color:var(--water-text); font:700 .7rem var(--mono); letter-spacing:.12em; }
+.section-heading { display:grid; grid-template-columns:140px minmax(0,760px); gap:28px; margin-bottom:42px; }
+.section-heading h2 { margin:0 0 13px; font-size:clamp(2.1rem,5vw,4.9rem); line-height:.94; letter-spacing:-.06em; }
+.section-heading p { max-width:68ch; margin:0; color:var(--slate); font-size:1.02rem; }
+
+.topbar { position:sticky; top:0; z-index:50; border-bottom:1px solid var(--line); background:color-mix(in srgb,var(--canvas) 90%,transparent); backdrop-filter:blur(14px); }
+.topbar-inner { width:min(1400px,calc(100% - 32px)); min-height:68px; margin:auto; display:flex; align-items:center; gap:16px; }
+.brand-mini { display:flex; align-items:center; gap:10px; text-decoration:none; font-weight:850; letter-spacing:-.025em; }
+.brand-mini svg { width:35px; height:35px; flex:none; }
+.brand-mini small { display:block; color:var(--slate); font:600 .57rem var(--mono); letter-spacing:.1em; }
+.top-actions { margin-left:auto; display:flex; align-items:center; gap:8px; }
+.top-button { min-height:40px; padding:0 13px; border:1px solid var(--line); border-radius:999px; background:var(--surface); color:var(--ink); cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center; font-size:.78rem; font-weight:800; }
+.top-button:hover { border-color:var(--water-text); color:var(--water-text); }
+.progress { position:absolute; left:0; bottom:-1px; width:100%; height:2px; transform-origin:left; transform:scaleX(0); background:var(--seed); }
+
+.page-grid { width:min(1400px,calc(100% - 32px)); margin:auto; display:grid; grid-template-columns:190px minmax(0,1fr); gap:44px; }
+.page-grid > main { min-width:0; }
+.side { position:relative; }
+.side-inner { position:sticky; top:92px; padding:24px 0; }
+.side p { margin:0 0 14px; color:var(--slate); font:700 .62rem var(--mono); text-transform:uppercase; letter-spacing:.12em; }
+.side nav { display:grid; }
+.side a { padding:7px 10px; border-left:2px solid var(--line); color:var(--slate); text-decoration:none; font-size:.78rem; font-weight:700; }
+.side a:hover,.side a[aria-current="true"] { color:var(--ink); border-color:var(--water); background:color-mix(in srgb,var(--water) 8%,transparent); }
+
+.hero { min-height:calc(100svh - 68px); display:grid; align-items:center; padding:76px 0 70px; }
+.hero-grid { display:grid; grid-template-columns:minmax(0,1.1fr) minmax(360px,.9fr); gap:56px; align-items:center; }
+.version { display:inline-flex; align-items:center; gap:8px; margin-bottom:24px; padding:6px 9px; border:1px solid var(--line); background:var(--surface); font:700 .64rem var(--mono); letter-spacing:.08em; }
+.version i { width:7px; height:7px; border-radius:50%; background:var(--seed); }
+.hero h1 { max-width:10.5ch; margin:0 0 24px; font-size:clamp(3rem,7.4vw,7.5rem); line-height:.89; letter-spacing:-.075em; }
+.hero h1 em { color:var(--water); font-family:var(--serif); font-weight:500; }
+.hero-copy { max-width:61ch; color:var(--slate); font-size:1.05rem; }
+.hero-copy strong { color:var(--ink); }
+.hero-note { margin-top:26px; padding-left:16px; border-left:3px solid var(--seed); color:var(--slate); font-size:.84rem; }
+.hero-mark { min-width:0; }
+.mark-field { position:relative; aspect-ratio:1/1; display:grid; place-items:center; overflow:hidden; border:1px solid var(--line); border-radius:var(--r-lg); background:var(--surface); box-shadow:var(--shadow); }
+.mark-field::before,.mark-field::after { content:""; position:absolute; width:43%; height:43%; border:1px solid color-mix(in srgb,var(--water) 22%,transparent); }
+.mark-field::before { left:-8%; top:-8%; border-right:0; border-bottom:0; }
+.mark-field::after { right:-8%; bottom:-8%; border-left:0; border-top:0; }
+.mark-field > svg { width:58%; }
+.mark-legend { position:absolute; left:20px; bottom:18px; display:flex; gap:14px; color:var(--slate); font:600 .58rem var(--mono); }
+.mark-legend span { display:flex; align-items:center; gap:5px; }
+.dot { width:7px; height:7px; border-radius:50%; display:inline-block; }
+
+.foundation-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:18px; }
+.manifesto { min-height:480px; padding:clamp(30px,5vw,62px); border-radius:var(--r-lg); background:var(--canopy); color:#fffef8; position:relative; overflow:hidden; }
+:root[data-theme="dark"] .manifesto { background:#0b3d31; }
+.manifesto::after { content:"[ ]"; position:absolute; right:-24px; bottom:-80px; color:rgba(255,255,255,.08); font:800 16rem/1 var(--mono); letter-spacing:-.2em; }
+.manifesto .eyebrow { color:var(--seed); }
+.manifesto blockquote { max-width:16ch; margin:72px 0 20px; font:500 clamp(2rem,4vw,4.1rem)/1.02 var(--serif); letter-spacing:-.035em; }
+.manifesto p:last-child { max-width:55ch; color:#c4dbd1; }
+.platform-cards { display:grid; gap:18px; }
+.platform-card { padding:26px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.platform-card span { color:var(--water-text); font:700 .64rem var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+.platform-card h3 { margin:14px 0 8px; font-size:1.14rem; }
+.platform-card p { margin:0; color:var(--slate); font-size:.88rem; }
+.principle-grid { display:grid; grid-template-columns:repeat(4,1fr); margin-top:18px; border:1px solid var(--line); background:var(--surface); }
+.principle { min-height:230px; padding:24px; }
+.principle + .principle { border-left:1px solid var(--line); }
+.principle b { width:32px; height:32px; display:grid; place-items:center; border:1px solid var(--water); color:var(--water-text); font:700 .7rem var(--mono); }
+.principle h3 { margin:44px 0 8px; font-size:1rem; }
+.principle p { margin:0; color:var(--slate); font-size:.8rem; }
+.spectrum { margin-top:18px; padding:28px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.spectrum h3 { margin:0 0 22px; font-size:1rem; }
+.spectrum-row { display:grid; grid-template-columns:110px 1fr 110px; gap:14px; align-items:center; margin:12px 0; color:var(--slate); font-size:.76rem; }
+.spectrum-row span:last-child { text-align:right; }
+.spectrum-line { height:4px; border-radius:999px; background:var(--line); position:relative; }
+.spectrum-line i { position:absolute; top:50%; left:var(--position); width:14px; height:14px; transform:translate(-50%,-50%); border:3px solid var(--surface); border-radius:50%; background:var(--water); box-shadow:0 0 0 1px var(--water); }
+
+.stage { border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; background:var(--surface); box-shadow:var(--shadow); }
+.stage-main { min-height:390px; display:grid; place-items:center; padding:64px; background:radial-gradient(circle at 82% 18%,color-mix(in srgb,var(--water) 12%,transparent),transparent 29%),var(--surface); }
+.stage-main svg { width:min(900px,100%); }
+.stage-bar { display:flex; align-items:center; gap:8px; padding:10px 12px; border-top:1px solid var(--line); background:var(--mist); }
+.stage-bar .eyebrow { margin-right:auto; color:var(--slate); }
+.action-button { min-height:40px; display:inline-flex; align-items:center; justify-content:center; padding:0 13px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface); color:var(--ink); cursor:pointer; font-size:.76rem; font-weight:800; text-decoration:none; }
+.action-button:hover { border-color:var(--water-text); color:var(--water-text); }
+.action-button[data-done="true"] { background:var(--water-text); border-color:var(--water-text); color:#fff; }
+.variant-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:18px; }
+.variant { min-height:230px; display:grid; place-items:center; padding:28px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); position:relative; overflow:hidden; }
+.variant.dark { background:#0d4a3b; }
+.variant.mono { background:#e9ece7; }
+.variant svg { width:72%; }
+.variant-label { position:absolute; left:14px; bottom:12px; margin:0; color:var(--slate); font:700 .62rem var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+.variant.dark .variant-label { color:#c5ddd3; }
+.anatomy-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
+.anatomy { padding:30px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.anatomy h3 { margin:0 0 8px; font-size:1.05rem; }
+.anatomy > p { margin:0 0 24px; color:var(--slate); font-size:.84rem; }
+.anatomy-list { display:grid; gap:14px; }
+.anatomy-item { display:grid; grid-template-columns:32px 1fr; gap:12px; }
+.anatomy-item b { width:28px; height:28px; display:grid; place-items:center; border:1px solid var(--water); color:var(--water-text); font:700 .66rem var(--mono); }
+.anatomy-item strong { display:block; font-size:.84rem; }
+.anatomy-item small { display:block; margin-top:2px; color:var(--slate); font-size:.76rem; }
+.clearspace-demo { min-height:310px; display:grid; place-items:center; border:1px dashed var(--water); background:color-mix(in srgb,var(--water) 5%,transparent); }
+.clearspace-box { padding:46px; border:1px solid color-mix(in srgb,var(--water) 35%,transparent); position:relative; }
+.clearspace-box::before { content:"x"; position:absolute; left:13px; top:10px; color:var(--water-text); font:700 .72rem var(--mono); }
+.clearspace-box svg { width:110px; }
+.minimums { display:flex; gap:28px; margin-top:18px; align-items:end; }
+.minimums div { display:grid; gap:8px; justify-items:center; color:var(--slate); font:700 .62rem var(--mono); }
+.dont-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-top:18px; }
+.dont { min-height:160px; padding:18px; border:1px solid var(--line); background:var(--surface); position:relative; }
+.dont::before { content:"×"; position:absolute; right:10px; top:4px; color:var(--danger); font:800 1.35rem var(--mono); }
+.dont-visual { height:70px; display:grid; place-items:center; }
+.dont-visual svg { width:66px; }
+.dont p { margin:12px 0 0; color:var(--slate); font-size:.74rem; }
+
+.color-grid { display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; }
+.swatch { min-height:280px; padding:20px; display:flex; flex-direction:column; justify-content:space-between; cursor:pointer; border:0; text-align:left; }
+.swatch + .swatch { border-left:1px solid rgba(255,255,255,.28); }
+.swatch-name { font-size:1.05rem; font-weight:800; }
+.swatch-role { max-width:22ch; font-size:.74rem; opacity:.78; }
+.swatch-code { font:700 .68rem var(--mono); letter-spacing:.06em; }
+.swatch[data-copy="#0D4A3B"] { background:#0d4a3b; color:#fff; }
+.swatch[data-copy="#188F82"] { background:#188f82; color:#fff; }
+.swatch[data-copy="#B9D93F"] { background:#b9d93f; color:#10231d; }
+.swatch[data-copy="#EDF1E8"] { background:#edf1e8; color:#10231d; }
+.color-rules { display:grid; grid-template-columns:1fr 1fr; gap:18px; margin-top:18px; }
+.ratio-card,.semantic-card { padding:28px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.ratio-card h3,.semantic-card h3 { margin:0 0 8px; font-size:1rem; }
+.ratio-card > p,.semantic-card > p { margin:0 0 22px; color:var(--slate); font-size:.82rem; }
+.ratio-bar { height:54px; display:flex; margin-bottom:10px; border-radius:var(--r-sm); overflow:hidden; }
+.ratio-bar span { display:grid; place-items:center; font:700 .7rem var(--mono); }
+.semantic-list { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+.semantic { display:flex; align-items:center; gap:9px; padding:11px; border:1px solid var(--line); font-size:.76rem; }
+.semantic i { width:10px; height:10px; border-radius:50%; background:var(--semantic); }
+.color-warning { margin-top:18px; padding:18px 20px; border-left:4px solid var(--warning); background:color-mix(in srgb,var(--warning) 9%,var(--surface)); font-size:.82rem; }
+
+.type-specimen { display:grid; grid-template-columns:1.1fr .9fr; border:1px solid var(--line); border-radius:var(--r-lg); overflow:hidden; background:var(--surface); }
+.type-display { padding:clamp(30px,5vw,58px); border-right:1px solid var(--line); }
+.type-display .giant { margin:50px 0 28px; font-size:clamp(4.6rem,10vw,9rem); line-height:.7; font-weight:800; letter-spacing:-.085em; }
+.type-display p { max-width:52ch; color:var(--slate); }
+.type-mono { display:grid; align-content:center; gap:22px; padding:38px; background:var(--mist); font-family:var(--mono); }
+.type-mono .data-big { color:var(--water); font-size:clamp(2.2rem,5vw,4rem); font-weight:700; }
+.table-scroll { margin-top:18px; overflow-x:auto; border:1px solid var(--line); background:var(--surface); -webkit-overflow-scrolling:touch; }
+.type-scale { width:100%; min-width:720px; border-collapse:collapse; background:var(--surface); }
+.type-scale th,.type-scale td { padding:13px 16px; border-bottom:1px solid var(--line); text-align:left; }
+.type-scale th { color:var(--slate); font:700 .65rem var(--mono); text-transform:uppercase; letter-spacing:.08em; }
+.type-scale td { font-size:.78rem; }
+.type-scale tr:last-child td { border-bottom:0; }
+.type-example { font-weight:700; }
+
+.layout-demo { display:grid; grid-template-columns:.85fr 1.15fr; gap:18px; }
+.spacing-card,.grid-card { padding:30px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.spacing-card h3,.grid-card h3 { margin:0 0 8px; }
+.spacing-card > p,.grid-card > p { margin:0 0 25px; color:var(--slate); font-size:.82rem; }
+.space-row { display:grid; grid-template-columns:60px 1fr 48px; gap:12px; align-items:center; margin:11px 0; color:var(--slate); font:700 .64rem var(--mono); }
+.space-row i { display:block; width:var(--size); height:12px; background:var(--water); opacity:.85; }
+.grid-visual { height:260px; display:grid; grid-template-columns:repeat(12,1fr); gap:8px; padding:16px; border:1px solid var(--line); background:var(--canvas); }
+.grid-visual i { background:color-mix(in srgb,var(--water) 18%,transparent); border:1px solid color-mix(in srgb,var(--water) 28%,transparent); }
+.layout-rules { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+.layout-rule { padding:22px; border:1px solid var(--line); background:var(--surface); }
+.layout-rule b { color:var(--water-text); font:700 .7rem var(--mono); }
+.layout-rule h3 { margin:32px 0 7px; font-size:.94rem; }
+.layout-rule p { margin:0; color:var(--slate); font-size:.77rem; }
+
+.component-board { padding:20px; border:1px solid var(--line); border-radius:var(--r-lg); background:var(--surface); box-shadow:var(--shadow); }
+.component-toolbar { display:flex; align-items:center; gap:8px; padding:4px 4px 18px; border-bottom:1px solid var(--line); }
+.component-toolbar p { margin:0 auto 0 0; font:700 .66rem var(--mono); color:var(--slate); letter-spacing:.08em; }
+.component-grid { display:grid; grid-template-columns:1.08fr .92fr; gap:18px; padding-top:18px; }
+.component-panel { padding:24px; border:1px solid var(--line); background:var(--canvas); }
+.component-panel > h3 { margin:0 0 18px; font-size:.86rem; }
+.button-row { display:flex; flex-wrap:wrap; gap:9px; }
+.ui-button { min-height:44px; padding:0 16px; border-radius:var(--r-sm); border:1px solid var(--canopy); font-size:.8rem; font-weight:800; }
+.ui-button.primary { background:#0d4a3b; color:#fff; }
+.ui-button.secondary { background:var(--surface); color:var(--canopy); }
+.ui-button.quiet { border-color:transparent; background:transparent; color:var(--water-text); }
+.ui-button:disabled { opacity:.42; }
+.field { margin-top:18px; }
+.field label { display:block; margin-bottom:7px; font-size:.73rem; font-weight:800; }
+.field-shell { height:46px; display:flex; align-items:center; gap:9px; padding:0 12px; border:1px solid var(--line); border-radius:var(--r-sm); background:var(--surface); color:var(--slate); font-size:.8rem; }
+.field-shell svg { width:17px; }
+.source-card { border:1px solid var(--line); border-left:4px solid var(--water); border-radius:var(--r-sm); background:var(--surface); }
+.source-top { display:flex; align-items:flex-start; gap:12px; padding:16px; }
+.source-icon { width:34px; height:34px; display:grid; place-items:center; border:1px solid var(--line); color:var(--water-text); font:700 .7rem var(--mono); flex:none; }
+.source-card h4 { margin:0 0 3px; font-size:.88rem; }
+.source-card p { margin:0; color:var(--slate); font-size:.73rem; }
+.source-meta { display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid var(--line); }
+.source-meta div { padding:11px 13px; }
+.source-meta div + div { border-left:1px solid var(--line); }
+.source-meta span { display:block; color:var(--slate); font:700 .56rem var(--mono); text-transform:uppercase; }
+.source-meta b { font-size:.7rem; }
+.status-list { display:grid; gap:9px; }
+.status { display:flex; align-items:center; gap:10px; padding:11px 12px; border:1px solid var(--line); background:var(--surface); font-size:.75rem; }
+.status i { width:9px; height:9px; border-radius:50%; background:var(--status); }
+.status small { margin-left:auto; color:var(--slate); }
+.alert { margin-top:18px; padding:14px 15px; border-left:4px solid var(--warning); background:color-mix(in srgb,var(--warning) 9%,var(--surface)); font-size:.76rem; }
+.component-notes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+.component-note { padding:18px; border:1px solid var(--line); background:var(--surface); }
+.component-note b { display:block; margin-bottom:6px; font-size:.8rem; }
+.component-note p { margin:0; color:var(--slate); font-size:.73rem; }
+
+.data-grid { display:grid; grid-template-columns:1.08fr .92fr; gap:18px; }
+.chart-card,.icon-card { padding:28px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.chart-card h3,.icon-card h3 { margin:0 0 7px; }
+.chart-card > p,.icon-card > p { margin:0 0 28px; color:var(--slate); font-size:.8rem; }
+.chart { height:250px; display:flex; align-items:end; gap:14px; padding:20px 14px 34px; border-left:1px solid var(--line); border-bottom:1px solid var(--line); position:relative; }
+.bar { flex:1; height:var(--h); background:var(--bar); position:relative; }
+.bar::after { content:attr(data-label); position:absolute; left:50%; bottom:-25px; transform:translateX(-50%); color:var(--slate); font:700 .58rem var(--mono); }
+.bar::before { content:attr(data-value); position:absolute; left:50%; top:-21px; transform:translateX(-50%); color:var(--ink); font:700 .6rem var(--mono); }
+.chart-source { margin-top:12px; color:var(--slate); font:.62rem var(--mono); }
+.icon-set { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+.icon-item { aspect-ratio:1; display:grid; place-items:center; border:1px solid var(--line); background:var(--canvas); }
+.icon-item svg { width:27px; stroke:var(--canopy); }
+.data-rules { display:grid; gap:10px; margin-top:18px; }
+.data-rule { display:grid; grid-template-columns:28px 1fr; gap:10px; color:var(--slate); font-size:.76rem; }
+.data-rule b { width:24px; height:24px; display:grid; place-items:center; background:var(--mist); color:var(--water-text); font:700 .63rem var(--mono); }
+
+.voice-grid { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.voice-card { padding:30px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.voice-card.good { border-top:5px solid var(--water); }
+.voice-card.bad { border-top:5px solid var(--danger); }
+.voice-card h3 { margin:0 0 20px; font-size:1rem; }
+.voice-example { padding:18px; background:var(--canvas); border:1px solid var(--line); }
+.voice-example + .voice-example { margin-top:12px; }
+.voice-example span { color:var(--slate); font:700 .58rem var(--mono); letter-spacing:.1em; text-transform:uppercase; }
+.voice-example p { margin:9px 0 0; font-size:.87rem; }
+.word-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:18px; }
+.word { padding:7px 10px; border:1px solid var(--line); border-radius:999px; font:700 .68rem var(--mono); }
+.tone-matrix { display:grid; grid-template-columns:repeat(4,1fr); margin-top:18px; border:1px solid var(--line); background:var(--surface); }
+.tone { padding:22px; }
+.tone + .tone { border-left:1px solid var(--line); }
+.tone b { font-size:.86rem; }
+.tone p { margin:7px 0 0; color:var(--slate); font-size:.73rem; }
+
+.screen-switcher { display:flex; gap:8px; margin-bottom:14px; }
+.screen-switcher button[aria-pressed="true"] { background:var(--canopy); color:#fff; border-color:var(--canopy); }
+.screen-stage { min-height:610px; display:grid; place-items:center; padding:28px; border:1px solid var(--line); border-radius:var(--r-lg); background:var(--mist); overflow:hidden; }
+.screen-stage[data-view="mobile"] .screen-desktop { display:none; }
+.screen-stage[data-view="desktop"] .screen-mobile { display:none; }
+.screen-desktop { width:min(1040px,100%); border:1px solid #bdc9c3; border-radius:12px; background:#f7f8f4; color:#10231d; box-shadow:0 24px 60px rgba(13,74,59,.16); overflow:hidden; }
+.browser-chrome { height:36px; display:flex; align-items:center; gap:6px; padding:0 12px; border-bottom:1px solid #d5ddd8; background:#eef1ed; }
+.browser-chrome i { width:8px; height:8px; border-radius:50%; background:#c8d0cb; }
+.screen-nav { height:62px; display:flex; align-items:center; gap:22px; padding:0 24px; border-bottom:1px solid #d7ded9; background:#fff; }
+.screen-brand { display:flex; align-items:center; gap:8px; margin-right:auto; font-weight:800; }
+.screen-brand svg { width:30px; height:30px; }
+.screen-nav span { color:#596860; font-size:.68rem; font-weight:700; }
+.screen-content { display:grid; grid-template-columns:1fr 320px; gap:18px; padding:30px; }
+.screen-hero h3 { max-width:13ch; margin:0 0 12px; font-size:2.25rem; line-height:.97; letter-spacing:-.05em; }
+.screen-hero > p { max-width:52ch; color:#596860; font-size:.75rem; }
+.mock-search { height:48px; display:flex; align-items:center; gap:10px; margin-top:22px; padding:0 14px; border:1px solid #aebdb6; background:#fff; color:#718078; font-size:.7rem; }
+.quick-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:9px; margin-top:16px; }
+.quick { min-height:92px; padding:13px; border:1px solid #d0d9d4; background:#fff; }
+.quick b { display:block; font-size:.68rem; }
+.quick small { display:block; margin-top:17px; color:#708078; font-size:.57rem; }
+.evidence-panel { padding:18px; background:#0d4a3b; color:#fff; }
+.evidence-panel > span { color:#b9d93f; font:700 .56rem var(--mono); letter-spacing:.1em; }
+.evidence-panel h4 { margin:38px 0 9px; font-size:1.25rem; }
+.evidence-panel p { color:#bed6cb; font-size:.68rem; }
+.evidence-rows { margin-top:28px; border-top:1px solid rgba(255,255,255,.2); }
+.evidence-row { display:flex; justify-content:space-between; gap:12px; padding:10px 0; border-bottom:1px solid rgba(255,255,255,.2); font-size:.6rem; }
+.screen-mobile { width:330px; min-height:590px; border:8px solid #173027; border-radius:34px; background:#f7f8f4; color:#10231d; box-shadow:0 24px 60px rgba(13,74,59,.18); overflow:hidden; }
+.phone-top { height:34px; display:grid; place-items:center; background:#fff; }
+.phone-top i { width:74px; height:6px; border-radius:99px; background:#d3dad6; }
+.phone-nav { height:52px; display:flex; align-items:center; padding:0 15px; border-bottom:1px solid #d7ded9; background:#fff; }
+.phone-nav svg { width:28px; }
+.phone-nav b { margin-left:8px; font-size:.8rem; }
+.phone-nav span { margin-left:auto; color:#596860; font-size:.65rem; }
+.phone-content { padding:20px 16px; }
+.phone-content .eyebrow { color:#188f82; }
+.phone-content h3 { margin:9px 0 8px; font-size:1.55rem; line-height:1; letter-spacing:-.04em; }
+.phone-content > p { margin:0; color:#596860; font-size:.68rem; }
+.phone-content .mock-search { margin-top:16px; height:44px; }
+.phone-card { margin-top:10px; padding:14px; border:1px solid #d0d9d4; background:#fff; }
+.phone-card span { color:#188f82; font:700 .52rem var(--mono); }
+.phone-card b { display:block; margin:8px 0 4px; font-size:.78rem; }
+.phone-card p { margin:0; color:#68776f; font-size:.6rem; }
+.application-notes { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:18px; }
+
+.token-layout { display:grid; grid-template-columns:1fr .75fr; gap:18px; }
+.code-card { border:1px solid var(--line); border-radius:var(--r-md); overflow:hidden; background:#0c1713; color:#d8e7df; }
+.code-head { min-height:48px; display:flex; align-items:center; gap:8px; padding:0 14px; border-bottom:1px solid #263831; }
+.code-head span { margin-right:auto; color:#9ab2a7; font:700 .62rem var(--mono); }
+.code-head button { color:#d8e7df; border-color:#3d554a; background:#13251e; }
+pre { margin:0; padding:24px; overflow:auto; font:500 .72rem/1.75 var(--mono); tab-size:2; }
+.token-key { color:#78d4c3; }
+.token-value { color:#c6e667; }
+.checklist { padding:28px; border:1px solid var(--line); border-radius:var(--r-md); background:var(--surface); }
+.checklist h3 { margin:0 0 18px; }
+.check { display:grid; grid-template-columns:24px 1fr; gap:10px; padding:10px 0; border-bottom:1px solid var(--line); }
+.check:last-child { border-bottom:0; }
+.check b { width:20px; height:20px; display:grid; place-items:center; border:1px solid var(--water); color:var(--water-text); font:700 .6rem var(--mono); }
+.check span { color:var(--slate); font-size:.76rem; }
+.final-note { margin-top:18px; padding:28px; border-radius:var(--r-md); background:var(--canopy); color:#fff; }
+:root[data-theme="dark"] .final-note { background:#0b3d31; }
+.final-note h3 { margin:0 0 8px; }
+.final-note p { margin:0; color:#c4dbd1; font-size:.82rem; }
+
+footer { padding:28px 0 48px; border-top:1px solid var(--line); }
+.footer-inner { display:flex; justify-content:space-between; gap:30px; color:var(--slate); font-size:.76rem; }
+.footer-inner p { margin:0; max-width:72ch; }
+
+@media (max-width:1100px) {
+  .page-grid { grid-template-columns:minmax(0,1fr); }
+  .side { display:none; }
+  .hero-grid { grid-template-columns:1fr .72fr; }
+  .principle-grid { grid-template-columns:repeat(2,1fr); }
+  .principle:nth-child(3) { border-left:0; border-top:1px solid var(--line); }
+  .principle:nth-child(4) { border-top:1px solid var(--line); }
+  .variant-grid,.dont-grid { grid-template-columns:repeat(2,1fr); }
+  .color-grid { grid-template-columns:repeat(2,1fr); }
+  .swatch:nth-child(3) { border-left:0; border-top:1px solid rgba(255,255,255,.28); }
+  .swatch:nth-child(4) { border-top:1px solid rgba(255,255,255,.28); }
+}
+
+@media (max-width:820px) {
+  :root { --page:min(100% - 28px,1180px); }
+  .section { padding:72px 0; }
+  .section-heading { grid-template-columns:1fr; gap:8px; }
+  .hero { min-height:auto; }
+  .hero-grid,.foundation-grid,.anatomy-grid,.color-rules,.type-specimen,.layout-demo,.component-grid,.data-grid,.voice-grid,.token-layout { grid-template-columns:minmax(0,1fr); }
+  .hero-mark { max-width:520px; }
+  .type-display { border-right:0; border-bottom:1px solid var(--line); }
+  .component-notes,.application-notes,.layout-rules { grid-template-columns:1fr; }
+  .tone-matrix { grid-template-columns:repeat(2,1fr); }
+  .tone:nth-child(3) { border-left:0; border-top:1px solid var(--line); }
+  .tone:nth-child(4) { border-top:1px solid var(--line); }
+}
+
+@media (max-width:560px) {
+  .topbar-inner,.page-grid { width:calc(100% - 20px); }
+  .brand-mini span { display:none; }
+  .top-button.back { display:none; }
+  .hero { padding-top:48px; }
+  .hero h1 { font-size:clamp(3.1rem,15vw,4.8rem); }
+  .mark-field { max-width:360px; }
+  .principle-grid,.variant-grid,.dont-grid,.color-grid,.semantic-list,.tone-matrix { grid-template-columns:1fr; }
+  .principle + .principle,.principle:nth-child(3),.principle:nth-child(4),.variant + .variant,.swatch + .swatch,.swatch:nth-child(3),.swatch:nth-child(4),.tone + .tone,.tone:nth-child(3),.tone:nth-child(4) { border-left:0; border-top:1px solid var(--line); }
+  .stage-main { min-height:270px; padding:32px 18px; }
+  .stage-bar { flex-wrap:wrap; }
+  .stage-bar .eyebrow { width:100%; }
+  .action-button { flex:1; }
+  .minimums { flex-wrap:wrap; }
+  .swatch { min-height:190px; }
+  .source-meta { grid-template-columns:1fr; }
+  .source-meta div + div { border-left:0; border-top:1px solid var(--line); }
+  .icon-set { grid-template-columns:repeat(3,1fr); }
+  .screen-stage { min-height:650px; padding:16px 8px; }
+  .screen-desktop { width:720px; transform:scale(.47); transform-origin:center; margin:-115px -210px; }
+  .footer-inner { display:block; }
+  .footer-inner p + p { margin-top:8px; }
+}
+
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } .progress { display:none; } }
+</style>
+</head>
+<body>
+<a class="skip" href="#konten">Lewati ke isi</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand-mini" href="#mulai" aria-label="Kembali ke awal brand guideline">
+      <svg viewBox="0 0 256 256" aria-hidden="true">
+        <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#0d4a3b" stroke-width="18"/>
+          <path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#188f82" stroke-width="12"/>
+          <circle cx="91" cy="115" r="14" fill="#188f82"/><circle cx="167" cy="157" r="14" fill="#188f82"/><circle cx="128" cy="182" r="14" fill="#188f82"/>
+          <path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/>
+        </g>
+      </svg>
+      <span>Pranatani <small>SIMPUL BUKTI · BRAND GUIDELINE</small></span>
+    </a>
+    <div class="top-actions">
+      <a class="top-button back" href="index.html#alternatif-3">← Tiga alternatif</a>
+      <button class="top-button" id="themeButton" type="button" aria-pressed="false">Mode gelap</button>
+    </div>
+  </div>
+  <div class="progress" id="progress" aria-hidden="true"></div>
+</header>
+
+<div class="page-grid">
+  <aside class="side" aria-label="Daftar isi brand guideline">
+    <div class="side-inner">
+      <p>Brand system / v1.0</p>
+      <nav>
+        <a href="#mulai">00 Mulai</a>
+        <a href="#fondasi">01 Fondasi merek</a>
+        <a href="#logo">02 Sistem logo</a>
+        <a href="#warna">03 Warna</a>
+        <a href="#tipografi">04 Tipografi</a>
+        <a href="#layout">05 Layout</a>
+        <a href="#komponen">06 Komponen</a>
+        <a href="#data">07 Data & ikon</a>
+        <a href="#suara">08 Suara merek</a>
+        <a href="#aplikasi">09 Contoh UI</a>
+        <a href="#token">10 Token & QA</a>
+      </nav>
+    </div>
+  </aside>
+
+  <main id="konten">
+    <section class="hero" id="mulai">
+      <div class="hero-grid">
+        <div>
+          <span class="version"><i></i> BRAND GUIDELINE · V1.0 · 28.08.2026</span>
+          <p class="eyebrow">Pranatani / Simpul Bukti</p>
+          <h1>Bukti tersambung. Keputusan tetap di tangan <em>Anda.</em></h1>
+          <div class="hero-copy">
+            <p><strong>Simpul Bukti</strong> adalah sistem identitas untuk platform data pertanian terbuka yang menghubungkan sumber, konteks, dan batas bukti tanpa mengambil alih penilaian pengguna.</p>
+            <p>Guideline ini menerjemahkan gagasan tersebut menjadi aturan desain yang konsisten untuk web, aplikasi, dashboard, presentasi produk, dan materi kolaborasi.</p>
+          </div>
+          <p class="hero-note">Status dokumen: arah merek terpilih untuk pengembangan UI/UX. Implementasi ke aplikasi produksi tetap memerlukan audit komponen dan migrasi aset terpisah.</p>
+        </div>
+        <div class="hero-mark">
+          <div class="mark-field">
+            <svg viewBox="0 0 256 256" role="img" aria-labelledby="hero-mark-title hero-mark-desc">
+              <title id="hero-mark-title">Simbol Simpul Bukti</title>
+              <desc id="hero-mark-desc">Dua kurung terbuka mengapit batang dengan tiga simpul bukti dan satu benih.</desc>
+              <g fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#0d4a3b" stroke-width="18"/>
+                <path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#188f82" stroke-width="12"/>
+                <circle cx="91" cy="115" r="14" fill="#188f82"/><circle cx="167" cy="157" r="14" fill="#188f82"/><circle cx="128" cy="182" r="14" fill="#188f82"/>
+                <path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/>
+              </g>
+            </svg>
+            <div class="mark-legend"><span><i class="dot" style="background:#0d4a3b"></i> terbuka</span><span><i class="dot" style="background:#188f82"></i> bukti</span><span><i class="dot" style="background:#b9d93f"></i> keputusan</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fondasi">
+      <header class="section-heading">
+        <span class="section-number">01 / FONDASI</span>
+        <div><h2>Merek yang tidak mengambil alih keputusan.</h2><p>Pranatani berperan sebagai penghubung bukti. Kepercayaan dibangun dengan memperlihatkan sumber, tanggal, cakupan, dan kekosongan—bukan dengan suara yang paling yakin.</p></div>
+      </header>
+
+      <div class="foundation-grid">
+        <article class="manifesto">
+          <p class="eyebrow">Manifesto</p>
+          <blockquote>Pengetahuan tidak tumbuh dari satu jawaban. Ia tumbuh dari bukti yang bisa diperiksa bersama.</blockquote>
+          <p>Karena itu, Pranatani merangkai sumber tanpa menyamakan semuanya, menjelaskan batas tanpa menyembunyikan ketidakpastian, dan mengembalikan keputusan kepada orang yang paling dekat dengan lahannya.</p>
+        </article>
+        <div class="platform-cards">
+          <article class="platform-card"><span>Tujuan</span><h3>Membuat data pertanian lebih dapat digunakan.</h3><p>Mengubah sumber yang tersebar menjadi informasi yang dapat ditemukan, dibandingkan, dan ditelusuri.</p></article>
+          <article class="platform-card"><span>Peran</span><h3>Penghubung bukti, bukan pemberi stempel.</h3><p>Pranatani tidak menyatakan produk terbaik, menjamin hasil, atau menggantikan penilaian agronomis dan hukum.</p></article>
+          <article class="platform-card"><span>Janji</span><h3>Sumber terlihat. Batas dijelaskan.</h3><p>Setiap klaim penting harus memiliki asal, waktu, cakupan, dan penjelasan tentang apa yang belum diketahui.</p></article>
+        </div>
+      </div>
+
+      <div class="principle-grid">
+        <article class="principle"><b>01</b><h3>Terbuka secara struktural</h3><p>Sumber dan batas bukan catatan kaki. Keduanya bagian dari arsitektur informasi utama.</p></article>
+        <article class="principle"><b>02</b><h3>Presisi tanpa kepastian palsu</h3><p>Gunakan angka dan istilah yang tepat, lalu tampilkan mutu serta kekosongan datanya.</p></article>
+        <article class="principle"><b>03</b><h3>Dekat dengan pekerjaan nyata</h3><p>Bahasa, urutan, dan interaksi mengikuti keputusan pengguna di lapangan—bukan struktur database.</p></article>
+        <article class="principle"><b>04</b><h3>Netral terhadap merek produk</h3><p>Perbandingan disusun dari atribut dan sumber, tidak dari pembayaran, promosi, atau popularitas.</p></article>
+      </div>
+
+      <div class="spectrum">
+        <h3>Kepribadian merek</h3>
+        <div class="spectrum-row"><span>Teknis</span><div class="spectrum-line"><i style="--position:62%"></i></div><span>Manusiawi</span></div>
+        <div class="spectrum-row"><span>Tenang</span><div class="spectrum-line"><i style="--position:34%"></i></div><span>Ekspresif</span></div>
+        <div class="spectrum-row"><span>Netral</span><div class="spectrum-line"><i style="--position:24%"></i></div><span>Persuasif</span></div>
+        <div class="spectrum-row"><span>Membumi</span><div class="spectrum-line"><i style="--position:57%"></i></div><span>Digital</span></div>
+      </div>
+    </section>
+
+    <section class="section" id="logo">
+      <header class="section-heading">
+        <span class="section-number">02 / LOGO</span>
+        <div><h2>Sistem terbuka, bukan bingkai tertutup.</h2><p>Kurung, simpul, batang, dan benih membangun satu cerita: sumber dapat masuk, bukti terhubung, dan keputusan tumbuh tanpa diklaim oleh platform.</p></div>
+      </header>
+
+      <div class="stage">
+        <div class="stage-main">
+          <svg id="logo-primary" viewBox="0 0 920 260" role="img" aria-labelledby="primary-title primary-desc">
+            <title id="primary-title">Logo utama Pranatani Simpul Bukti</title>
+            <desc id="primary-desc">Simbol Simpul Bukti bersama nama Pranatani dan deskriptor Data Pertanian Terbuka.</desc>
+            <g transform="translate(32 28)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M76 12H34v188h42M180 12h42v188h-42" stroke="#0d4a3b" stroke-width="18"/>
+              <path d="M128 38v130M128 76 91 103M128 117l39 28" stroke="#188f82" stroke-width="12"/>
+              <circle cx="91" cy="103" r="14" fill="#188f82"/><circle cx="167" cy="145" r="14" fill="#188f82"/><circle cx="128" cy="170" r="14" fill="#188f82"/>
+              <path d="M128 39c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/>
+            </g>
+            <text x="326" y="139" fill="#10231d" font-family="Plus Jakarta Sans,Inter,Segoe UI,Arial,sans-serif" font-size="91" font-weight="800" letter-spacing="-4.5">Pranatani</text>
+            <text x="332" y="190" fill="#52645d" font-family="IBM Plex Mono,SFMono-Regular,Consolas,monospace" font-size="19" font-weight="700" letter-spacing="5.1">DATA PERTANIAN TERBUKA</text>
+          </svg>
+        </div>
+        <div class="stage-bar">
+          <p class="eyebrow">Logo utama / horizontal</p>
+          <button class="action-button" type="button" data-download="logo-primary" data-file="pranatani-simpul-bukti-primary.svg">Unduh SVG</button>
+          <button class="action-button" type="button" data-copy="#0D4A3B">Salin Canopy</button>
+        </div>
+      </div>
+
+      <div class="variant-grid">
+        <article class="variant">
+          <svg id="logo-symbol" viewBox="0 0 256 256" role="img" aria-label="Simbol utama Simpul Bukti"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#0d4a3b" stroke-width="18"/><path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#188f82" stroke-width="12"/><circle cx="91" cy="115" r="14" fill="#188f82"/><circle cx="167" cy="157" r="14" fill="#188f82"/><circle cx="128" cy="182" r="14" fill="#188f82"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></g></svg>
+          <p class="variant-label">Simbol utama</p>
+        </article>
+        <article class="variant dark">
+          <svg viewBox="0 0 256 256" role="img" aria-label="Simbol reversed"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#fffef8" stroke-width="18"/><path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#63d5c4" stroke-width="12"/><circle cx="91" cy="115" r="14" fill="#63d5c4"/><circle cx="167" cy="157" r="14" fill="#63d5c4"/><circle cx="128" cy="182" r="14" fill="#63d5c4"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#c5e664"/></g></svg>
+          <p class="variant-label">Reversed</p>
+        </article>
+        <article class="variant mono">
+          <svg viewBox="0 0 256 256" role="img" aria-label="Simbol monokrom"><g fill="none" stroke="#10231d" stroke-linecap="round" stroke-linejoin="round"><path d="M76 24H34v188h42M180 24h42v188h-42" stroke-width="18"/><path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke-width="12"/><circle cx="91" cy="115" r="11" fill="#10231d"/><circle cx="167" cy="157" r="11" fill="#10231d"/><circle cx="128" cy="182" r="11" fill="#10231d"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#10231d"/></g></svg>
+          <p class="variant-label">Monokrom</p>
+        </article>
+        <article class="variant">
+          <svg viewBox="0 0 256 256" role="img" aria-label="Ikon mask-safe"><rect x="4" y="4" width="248" height="248" rx="54" fill="#0d4a3b"/><g transform="translate(31 29) scale(.76)" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#fffef8" stroke-width="18"/><path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#63d5c4" stroke-width="12"/><circle cx="91" cy="115" r="14" fill="#63d5c4"/><circle cx="167" cy="157" r="14" fill="#63d5c4"/><circle cx="128" cy="182" r="14" fill="#63d5c4"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#c5e664"/></g></svg>
+          <p class="variant-label">Ikon aplikasi</p>
+        </article>
+      </div>
+
+      <div class="anatomy-grid">
+        <article class="anatomy">
+          <h3>Anatomi simbol</h3><p>Empat elemen memiliki makna tetap. Jangan menambah daun, centang, mahkota, atau simbol sertifikasi.</p>
+          <div class="anatomy-list">
+            <div class="anatomy-item"><b>01</b><div><strong>Kurung terbuka</strong><small>Sumber baru boleh masuk; hasil dapat dipakai kembali.</small></div></div>
+            <div class="anatomy-item"><b>02</b><div><strong>Batang relasi</strong><small>Hubungan antar-rekaman, bukan satu jawaban tunggal.</small></div></div>
+            <div class="anatomy-item"><b>03</b><div><strong>Tiga simpul</strong><small>Sumber, konteks, dan batas bukti yang bisa diperiksa.</small></div></div>
+            <div class="anatomy-item"><b>04</b><div><strong>Benih</strong><small>Keputusan pengguna; bukan jaminan hasil panen.</small></div></div>
+          </div>
+        </article>
+        <article class="anatomy">
+          <h3>Ruang aman & ukuran minimum</h3><p>Gunakan tinggi benih sebagai satuan <strong>x</strong>. Area aman minimum di setiap sisi adalah 1x.</p>
+          <div class="clearspace-demo"><div class="clearspace-box"><svg viewBox="0 0 256 256" aria-hidden="true"><g fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M76 24H34v188h42M180 24h42v188h-42" stroke="#0d4a3b" stroke-width="18"/><path d="M128 50v130M128 88l-37 27M128 129l39 28" stroke="#188f82" stroke-width="12"/><circle cx="91" cy="115" r="14" fill="#188f82"/><circle cx="167" cy="157" r="14" fill="#188f82"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></g></svg></div></div>
+          <div class="minimums"><div><svg width="32" height="32" viewBox="0 0 256 256" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="22"/><path d="M128 50v130" stroke="#188f82" stroke-width="16"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></svg><span>Digital 24 px</span></div><div><svg width="48" height="48" viewBox="0 0 256 256" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="18"/><path d="M128 50v130" stroke="#188f82" stroke-width="12"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></svg><span>Cetak 8 mm</span></div></div>
+        </article>
+      </div>
+
+      <div class="dont-grid" aria-label="Larangan penggunaan logo">
+        <article class="dont"><div class="dont-visual"><svg viewBox="0 0 256 256" style="transform:scaleX(1.4)" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="18"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></svg></div><p>Jangan meregangkan atau mengubah proporsi.</p></article>
+        <article class="dont"><div class="dont-visual" style="background:#188f82"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="18"/></svg></div><p>Jangan menaruh versi utama pada latar tanpa kontras.</p></article>
+        <article class="dont"><div class="dont-visual"><svg viewBox="0 0 256 256" style="filter:drop-shadow(6px 7px 3px #b33a3a)" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="18"/></svg></div><p>Jangan menambah bayangan, outline, atau efek dekoratif.</p></article>
+        <article class="dont"><div class="dont-visual"><span style="font-size:2.4rem;color:var(--success)">✓</span><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="18"/></svg></div><p>Jangan mengubahnya menjadi stempel verifikasi atau sertifikasi.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="warna">
+      <header class="section-heading">
+        <span class="section-number">03 / WARNA</span>
+        <div><h2>Hijau untuk struktur. Toska untuk hubungan. Limau untuk titik penting.</h2><p>Palet dirancang agar pertanian terasa nyata tanpa menyerupai kemasan input. Warna merek tidak boleh menggantikan warna status operasional.</p></div>
+      </header>
+      <div class="color-grid" aria-label="Palet utama Simpul Bukti">
+        <button class="swatch" type="button" data-copy="#0D4A3B"><span><span class="swatch-name">Canopy</span><span class="swatch-role">Struktur utama, navigasi, logo, permukaan berkontras tinggi.</span></span><span class="swatch-code">#0D4A3B · RGB 13 74 59</span></button>
+        <button class="swatch" type="button" data-copy="#188F82"><span><span class="swatch-name">Water</span><span class="swatch-role">Relasi data, tautan, fokus sekunder, aksen informatif.</span></span><span class="swatch-code">#188F82 · RGB 24 143 130</span></button>
+        <button class="swatch" type="button" data-copy="#B9D93F"><span><span class="swatch-name">Seed</span><span class="swatch-role">Sorotan kecil, penanda pilihan, progres—maksimum 10% permukaan.</span></span><span class="swatch-code">#B9D93F · RGB 185 217 63</span></button>
+        <button class="swatch" type="button" data-copy="#EDF1E8"><span><span class="swatch-name">Mist</span><span class="swatch-role">Latar kelompok, panel pendamping, tabel dan diagram lembut.</span></span><span class="swatch-code">#EDF1E8 · RGB 237 241 232</span></button>
+      </div>
+      <div class="color-rules">
+        <article class="ratio-card"><h3>Rasio penggunaan 60 / 30 / 10</h3><p>Gunakan netral sebagai ruang kerja, Canopy untuk struktur, dan aksen hanya untuk informasi yang perlu ditemukan.</p><div class="ratio-bar"><span style="width:60%;background:#edf1e8;color:#10231d">60% netral</span><span style="width:30%;background:#0d4a3b;color:#fff">30% struktur</span><span style="width:10%;background:#b9d93f;color:#10231d">10%</span></div><small class="muted">Water dapat menggantikan sebagian Canopy pada tautan dan visualisasi relasi.</small></article>
+        <article class="semantic-card"><h3>Warna semantik terpisah</h3><p>Status harus tetap dapat dipahami tanpa warna melalui ikon dan teks.</p><div class="semantic-list"><div class="semantic"><i style="--semantic:#1e6cb5"></i>Informasi · #1E6CB5</div><div class="semantic"><i style="--semantic:#247449"></i>Berhasil · #247449</div><div class="semantic"><i style="--semantic:#9a5a0b"></i>Perhatian · #9A5A0B</div><div class="semantic"><i style="--semantic:#b33a3a"></i>Bahaya · #B33A3A</div></div></article>
+      </div>
+      <div class="color-warning"><strong>Aturan penting:</strong> Seed bukan warna “berhasil”, Water bukan warna “aman”, dan Canopy bukan warna “legal”. Selalu tulis statusnya. Makna hukum, keamanan, serta kekuatan bukti tidak boleh disampaikan hanya dengan warna.</div>
+    </section>
+
+    <section class="section" id="tipografi">
+      <header class="section-heading">
+        <span class="section-number">04 / TIPOGRAFI</span>
+        <div><h2>Hangat untuk membaca. Monospasi untuk memeriksa.</h2><p>Dua keluarga tipografi membedakan percakapan manusia dari metadata. Seluruh font harus dapat di-host lokal agar pengalaman tetap konsisten saat koneksi buruk.</p></div>
+      </header>
+      <div class="type-specimen">
+        <div class="type-display"><p class="eyebrow">Plus Jakarta Sans / UI & narasi</p><div class="giant">Aa</div><h3>Informasi yang jernih, tanpa terasa dingin.</h3><p>Gunakan bobot 400 untuk paragraf, 600 untuk kontrol, dan 700–800 untuk judul. Hindari bobot tipis karena melemah pada layar ponsel murah.</p></div>
+        <div class="type-mono"><p class="eyebrow">IBM Plex Mono / data & sumber</p><div class="data-big">14.920</div><div>NO. PENDAFTARAN<br>RI.010101.2026</div><div>SUMBER · DIPERBARUI<br>28.08.2026 · 07:00 WIB</div><p class="muted">Mono tidak digunakan untuk paragraf panjang atau tombol utama.</p></div>
+      </div>
+      <div class="table-scroll" role="region" aria-label="Skala tipografi" tabindex="0"><table class="type-scale">
+        <thead><tr><th>Token</th><th>Desktop / mobile</th><th>Bobot</th><th>Contoh penggunaan</th></tr></thead>
+        <tbody>
+          <tr><td class="mono">display-xl</td><td>72 / 44 px</td><td>800</td><td class="type-example" style="font-size:1.7rem;letter-spacing:-.05em">Mau cek apa hari ini?</td></tr>
+          <tr><td class="mono">heading-lg</td><td>40 / 32 px</td><td>700</td><td class="type-example" style="font-size:1.25rem">Bandingkan isi produk</td></tr>
+          <tr><td class="mono">heading-md</td><td>24 / 22 px</td><td>700</td><td class="type-example">Sumber dan batas</td></tr>
+          <tr><td class="mono">body-md</td><td>16 / 16 px</td><td>400</td><td>Gunakan ukuran dasar 16 px untuk menjaga keterbacaan.</td></tr>
+          <tr><td class="mono">label-sm</td><td>12 / 12 px</td><td>600</td><td class="mono">DIPERBARUI 28.08.2026</td></tr>
+        </tbody>
+      </table></div>
+    </section>
+
+    <section class="section" id="layout">
+      <header class="section-heading">
+        <span class="section-number">05 / LAYOUT</span>
+        <div><h2>Struktur terasa seperti pranata, bukan dekorasi.</h2><p>Gunakan grid yang tegas, batas 1 px, dan pengelompokan yang konsisten. Motif kurung hanya dipakai untuk menandai relasi atau ruang terbuka—bukan di setiap kartu.</p></div>
+      </header>
+      <div class="layout-demo">
+        <article class="spacing-card"><h3>Sistem jarak berbasis 4 px</h3><p>Token utama mengikuti kelipatan delapan; 4 px dipakai hanya untuk hubungan yang sangat rapat.</p><div class="space-row"><span>space-1</span><i style="--size:4px"></i><span>4 px</span></div><div class="space-row"><span>space-2</span><i style="--size:8px"></i><span>8 px</span></div><div class="space-row"><span>space-3</span><i style="--size:16px"></i><span>16 px</span></div><div class="space-row"><span>space-4</span><i style="--size:24px"></i><span>24 px</span></div><div class="space-row"><span>space-5</span><i style="--size:32px"></i><span>32 px</span></div><div class="space-row"><span>space-6</span><i style="--size:48px"></i><span>48 px</span></div><div class="space-row"><span>space-7</span><i style="--size:64px"></i><span>64 px</span></div></article>
+        <article class="grid-card"><h3>Grid responsif</h3><p>12 kolom desktop, 8 tablet, dan 4 ponsel. Konten bacaan dibatasi 68–72 karakter per baris.</p><div class="grid-visual" aria-label="Ilustrasi grid dua belas kolom"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      </div>
+      <div class="layout-rules">
+        <article class="layout-rule"><b>01 / DENSITAS</b><h3>Lapangkan keputusan, padatkan metadata.</h3><p>Area tugas utama diberi ruang. Metadata boleh lebih padat selama hirarki dan pemindaian tetap jelas.</p></article>
+        <article class="layout-rule"><b>02 / BENTUK</b><h3>Radius 6–10 px, bukan kapsul berlebihan.</h3><p>Kapsul dipakai untuk filter dan status singkat. Kartu serta panel tetap terasa struktural.</p></article>
+        <article class="layout-rule"><b>03 / ELEVASI</b><h3>Garis lebih dahulu, bayangan seperlunya.</h3><p>Bayangan hanya untuk permukaan yang benar-benar berada di atas: dialog, menu, atau pratinjau perangkat.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="komponen">
+      <header class="section-heading">
+        <span class="section-number">06 / KOMPONEN</span>
+        <div><h2>Setiap komponen membantu orang menilai, bukan sekadar bertindak.</h2><p>Komponen Pranatani harus memperlihatkan sumber, waktu, status, dan batas saat hal itu memengaruhi keputusan. Tombol tindakan tidak boleh mengalahkan konteks bukti.</p></div>
+      </header>
+      <div class="component-board">
+        <div class="component-toolbar"><p>FOUNDATIONS / COMPONENT PREVIEW · DATA CONTOH</p><span class="word">default</span><span class="word">focus</span><span class="word">disabled</span></div>
+        <div class="component-grid">
+          <article class="component-panel"><h3>Tindakan & masukan</h3><div class="button-row"><button class="ui-button primary">Lihat sumber</button><button class="ui-button secondary">Bandingkan</button><button class="ui-button quiet">Baca batas</button><button class="ui-button secondary" disabled>Belum tersedia</button></div><div class="field"><label for="searchDemo">Cari produk, bahan aktif, tanaman, atau nomor pendaftaran</label><div class="field-shell" id="searchDemo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m16 16 5 5"/></svg>Ketik kata atau nomor…</div></div><div class="alert"><strong>Data belum lengkap.</strong> Registri tidak memuat deskripsi gejala untuk rekaman ini.</div></article>
+          <article class="component-panel"><h3>Kartu sumber</h3><div class="source-card"><div class="source-top"><div class="source-icon">[S]</div><div><h4>Registri resmi · contoh struktur</h4><p>Sumber primer untuk status dan rincian pendaftaran. Nama dan angka di panel ini bersifat contoh.</p></div></div><div class="source-meta"><div><span>Diperbarui</span><b>28.08.2026</b></div><div><span>Cakupan</span><b>Nasional</b></div><div><span>Status</span><b>Terhubung</b></div></div></div><div class="status-list" style="margin-top:14px"><div class="status"><i style="--status:#247449"></i>Tersedia dari sumber<small>terbaru</small></div><div class="status"><i style="--status:#9a5a0b"></i>Perlu verifikasi lapangan<small>belum ditinjau</small></div><div class="status"><i style="--status:#b33a3a"></i>Tidak dapat disimpulkan<small>batas data</small></div></div></article>
+        </div>
+      </div>
+      <div class="component-notes">
+        <article class="component-note"><b>Anatomi selalu terbaca</b><p>Label, nilai, metadata, dan tindakan memiliki urutan yang sama di semua konteks.</p></article>
+        <article class="component-note"><b>Status ditulis lengkap</b><p>Jangan mengandalkan warna titik, ikon centang, atau posisi untuk menjelaskan status.</p></article>
+        <article class="component-note"><b>Fokus minimum 3 px</b><p>Semua kontrol keyboard menggunakan outline Focus Blue dengan offset yang terlihat.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="data">
+      <header class="section-heading">
+        <span class="section-number">07 / DATA & IKON</span>
+        <div><h2>Visualisasi menjelaskan perbedaan, bukan menghias angka.</h2><p>Grafik harus memakai label langsung, satuan, tanggal, dan sumber. Ikon membantu pemindaian, tetapi tidak boleh menggantikan kata untuk status penting.</p></div>
+      </header>
+      <div class="data-grid">
+        <article class="chart-card"><h3>Palet grafik kategorikal</h3><p>Canopy memulai urutan, lalu Water, biru, tanah, dan ungu. Seed hanya untuk satu titik yang sedang dipilih.</p><div class="chart" aria-label="Contoh grafik batang kategorikal dengan data ilustratif"><div class="bar" style="--h:72%;--bar:#0d4a3b" data-label="A" data-value="72"></div><div class="bar" style="--h:54%;--bar:#188f82" data-label="B" data-value="54"></div><div class="bar" style="--h:83%;--bar:#1e6cb5" data-label="C" data-value="83"></div><div class="bar" style="--h:39%;--bar:#a45e39" data-label="D" data-value="39"></div><div class="bar" style="--h:63%;--bar:#6e5a8a" data-label="E" data-value="63"></div></div><p class="chart-source">DATA ILUSTRATIF · BUKAN REKAMAN AKTUAL · SATUAN HARUS DITULIS PADA PRODUK</p></article>
+        <article class="icon-card"><h3>Ikon garis 2 px</h3><p>Gunakan grid 24 px, ujung membulat, dan bentuk sederhana. Pertahankan sudut siku sebagai hubungan visual dengan kurung logo.</p><div class="icon-set">
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h5M4 4v16h5M20 4h-5M20 4v16h-5"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/></svg></div>
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M5 20V8l7-4 7 4v12M9 20v-5h6v5"/></svg></div>
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 18c4-5 8-5 16-12M7 7c3 0 5 2 5 5-3 0-5-2-5-5ZM13 14c3 0 5 2 5 5-3 0-5-2-5-5Z"/></svg></div>
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M6 3h12v18H6zM9 7h6M9 11h6M9 15h4"/></svg></div>
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="6" cy="12" r="2"/><circle cx="18" cy="6" r="2"/><circle cx="18" cy="18" r="2"/><path d="m8 11 8-4M8 13l8 4"/></svg></div>
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 19h16M6 16l4-5 3 3 5-8"/></svg></div>
+          <div class="icon-item"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 11v6M12 7h.01"/></svg></div>
+        </div><div class="data-rules"><div class="data-rule"><b>1</b><span>Tulis satuan langsung pada sumbu, label, atau nilai—jangan mengandalkan legenda.</span></div><div class="data-rule"><b>2</b><span>Urutkan data dengan alasan yang terlihat: waktu, nilai, alfabet, atau nomor registrasi.</span></div><div class="data-rule"><b>3</b><span>Jika data hilang, tampilkan “tidak tersedia”; jangan mengisi nol atau menebak.</span></div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="suara">
+      <header class="section-heading">
+        <span class="section-number">08 / SUARA</span>
+        <div><h2>Jelas tentang yang diketahui. Jujur tentang yang belum.</h2><p>Pranatani terdengar seperti rekan kerja yang teliti: langsung, membumi, dan tidak menggurui. Kata kerja mendahului nama fitur.</p></div>
+      </header>
+      <div class="voice-grid">
+        <article class="voice-card good"><h3>Gunakan</h3><div class="voice-example"><span>Langsung & spesifik</span><p>“Lihat dosis yang tercatat pada pendaftaran produk ini.”</p></div><div class="voice-example"><span>Batas dinyatakan</span><p>“Sumber ini tidak memuat hasil uji lapangan, jadi kemanjurannya tidak dapat dibandingkan.”</p></div><div class="voice-example"><span>Pengguna memegang keputusan</span><p>“Bandingkan komposisi, lalu periksa kembali label produk yang Anda pegang.”</p></div></article>
+        <article class="voice-card bad"><h3>Hindari</h3><div class="voice-example"><span>Klaim absolut</span><p>“Produk ini terbukti paling efektif dan aman.”</p></div><div class="voice-example"><span>Kepastian palsu</span><p>“Cocok untuk semua lahan dan pasti meningkatkan panen.”</p></div><div class="voice-example"><span>Bahasa sistem</span><p>“Query entitas untuk mengeksekusi pipeline rekomendasi.”</p></div></article>
+      </div>
+      <div class="word-list" aria-label="Kata kerja utama merek"><span class="word">cek</span><span class="word">bandingkan</span><span class="word">lihat sumber</span><span class="word">baca batas</span><span class="word">catat</span><span class="word">ukur</span><span class="word">verifikasi</span><span class="word">tidak tersedia</span></div>
+      <div class="tone-matrix">
+        <article class="tone"><b>Beranda</b><p>Ringkas, mengundang, berbasis pekerjaan hari ini.</p></article><article class="tone"><b>Hasil pencarian</b><p>Netral, dapat dipindai, minim interpretasi.</p></article><article class="tone"><b>Peringatan</b><p>Langsung, menyebut risiko dan langkah berikutnya.</p></article><article class="tone"><b>Kekosongan data</b><p>Jujur, tidak menyalahkan pengguna, tidak menebak isi.</p></article>
+      </div>
+    </section>
+
+    <section class="section" id="aplikasi">
+      <header class="section-heading">
+        <span class="section-number">09 / APLIKASI</span>
+        <div><h2>Dari identitas ke pengalaman produk.</h2><p>Contoh ini menunjukkan bagaimana brand system membentuk hirarki, bahasa, dan komponen. Seluruh nama serta angka adalah ilustrasi antarmuka, bukan data aktual.</p></div>
+      </header>
+      <div class="screen-switcher" role="group" aria-label="Pilih pratinjau perangkat"><button class="action-button" type="button" data-screen="desktop" aria-pressed="true">Desktop</button><button class="action-button" type="button" data-screen="mobile" aria-pressed="false">Ponsel</button></div>
+      <div class="screen-stage" id="screenStage" data-view="desktop">
+        <div class="screen-desktop" aria-label="Contoh UI desktop Pranatani">
+          <div class="browser-chrome"><i></i><i></i><i></i></div>
+          <div class="screen-nav"><div class="screen-brand"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="18"/><path d="M128 50v130" stroke="#188f82" stroke-width="12"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></svg>Pranatani</div><span>Cek data</span><span>Bandingkan</span><span>Sumber</span><span>Tentang</span></div>
+          <div class="screen-content"><div class="screen-hero"><p class="eyebrow">Data pertanian terbuka</p><h3>Mau cek apa hari ini?</h3><p>Temukan rekaman, lihat sumbernya, dan baca batas data sebelum mengambil keputusan.</p><div class="mock-search">⌕ &nbsp; Cari produk, bahan aktif, tanaman, atau nomor pendaftaran</div><div class="quick-grid"><div class="quick"><b>Cek isi produk</b><small>Komposisi · pendaftaran</small></div><div class="quick"><b>Bandingkan harga</b><small>Sumber · wilayah · tanggal</small></div><div class="quick"><b>Tanaman bermasalah</b><small>Gejala · batas data</small></div></div></div><aside class="evidence-panel"><span>[ SIMPUL BUKTI ]</span><h4>Sebelum memakai informasi</h4><p>Periksa dari mana data datang, kapan diperbarui, dan apa yang tidak dicatat sumber.</p><div class="evidence-rows"><div class="evidence-row"><span>Sumber terlihat</span><b>Ya</b></div><div class="evidence-row"><span>Tanggal tersedia</span><b>Ya</b></div><div class="evidence-row"><span>Batas dijelaskan</span><b>Wajib</b></div></div></aside></div>
+        </div>
+        <div class="screen-mobile" aria-label="Contoh UI ponsel Pranatani">
+          <div class="phone-top"><i></i></div><div class="phone-nav"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M76 24H34v188h42M180 24h42v188h-42" fill="none" stroke="#0d4a3b" stroke-width="18"/><path d="M128 50v130" stroke="#188f82" stroke-width="12"/><path d="M128 51c0-22 15-36 37-36 0 22-15 36-37 36Z" fill="#b9d93f"/></svg><b>Pranatani</b><span>Menu</span></div><div class="phone-content"><p class="eyebrow">Data pertanian terbuka</p><h3>Mau cek apa hari ini?</h3><p>Lihat sumber dan batasnya sebelum mengambil keputusan.</p><div class="mock-search">⌕ &nbsp; Cari data pertanian</div><div class="phone-card"><span>[ 01 / CEK ]</span><b>Isi produk</b><p>Bandingkan bahan, kadar, dan nomor pendaftarannya.</p></div><div class="phone-card"><span>[ 02 / UKUR ]</span><b>Takaran lapangan</b><p>Hitung dari data label dan hasil kalibrasi Anda.</p></div><div class="phone-card"><span>[ 03 / SUMBER ]</span><b>Apa yang tercatat?</b><p>Baca cakupan dan kekosongan sebelum memakai data.</p></div></div>
+        </div>
+      </div>
+      <div class="application-notes"><article class="component-note"><b>Logo tidak mendominasi</b><p>Identitas membuka pengalaman, lalu memberi ruang pada pekerjaan dan bukti.</p></article><article class="component-note"><b>Kurung sebagai struktur</b><p>Motif muncul pada panel bukti dan label bagian, bukan sebagai ornamen berulang.</p></article><article class="component-note"><b>Mobile bukan desktop kecil</b><p>Satu tugas utama per layar; metadata dikelompokkan dan dapat dibuka bertahap.</p></article></div>
+    </section>
+
+    <section class="section" id="token">
+      <header class="section-heading">
+        <span class="section-number">10 / TOKEN & QA</span>
+        <div><h2>Satukan keputusan desain lewat token.</h2><p>Gunakan nama semantik agar tema, aksesibilitas, dan perubahan merek tidak bergantung pada pencarian nilai warna satu per satu.</p></div>
+      </header>
+      <div class="token-layout">
+        <div class="code-card"><div class="code-head"><span>simpul-bukti.tokens.css</span><button class="action-button" id="copyTokens" type="button">Salin token CSS</button></div><pre id="tokenCode"><code><span class="token-key">:root</span> {
+  <span class="token-key">--brand-canopy:</span> <span class="token-value">#0D4A3B</span>;
+  <span class="token-key">--brand-water:</span> <span class="token-value">#188F82</span>;
+  <span class="token-key">--brand-seed:</span> <span class="token-value">#B9D93F</span>;
+  <span class="token-key">--brand-mist:</span> <span class="token-value">#EDF1E8</span>;
+  <span class="token-key">--surface-canvas:</span> <span class="token-value">#F4F6F1</span>;
+  <span class="token-key">--surface-primary:</span> <span class="token-value">#FFFEFB</span>;
+  <span class="token-key">--text-primary:</span> <span class="token-value">#10231D</span>;
+  <span class="token-key">--text-secondary:</span> <span class="token-value">#52645D</span>;
+  <span class="token-key">--border-default:</span> <span class="token-value">#CBD4CF</span>;
+  <span class="token-key">--focus-ring:</span> <span class="token-value">#1669C9</span>;
+  <span class="token-key">--radius-control:</span> <span class="token-value">6px</span>;
+  <span class="token-key">--radius-panel:</span> <span class="token-value">10px</span>;
+  <span class="token-key">--space-unit:</span> <span class="token-value">4px</span>;
+}</code></pre></div>
+        <aside class="checklist"><h3>Checklist sebelum rilis desain</h3><div class="check"><b>1</b><span>Logo menggunakan varian yang tepat dan ruang aman minimum 1x.</span></div><div class="check"><b>2</b><span>Semua teks dan kontrol memenuhi kontras WCAG AA.</span></div><div class="check"><b>3</b><span>Status penting tetap dipahami tanpa warna.</span></div><div class="check"><b>4</b><span>Sumber, tanggal, cakupan, dan batas terlihat saat relevan.</span></div><div class="check"><b>5</b><span>Fokus keyboard terlihat dan urutannya logis.</span></div><div class="check"><b>6</b><span>Layout diuji pada 320, 390, 768, dan 1440 px.</span></div><div class="check"><b>7</b><span>Konten kosong, error, loading, offline, dan data lama memiliki desain.</span></div><div class="check"><b>8</b><span>Tidak ada klaim aman, terbaik, legal, atau terbukti tanpa dasar yang ditampilkan.</span></div></aside>
+      </div>
+      <div class="final-note"><h3>Urutan adopsi yang disarankan</h3><p>Mulai dari token warna dan tipografi, kemudian shell navigasi, komponen sumber/status, halaman beranda, baru layar data yang padat. Jangan mengganti logo lebih dahulu bila sistem sumber, status, dan batas belum ikut diselaraskan.</p></div>
+    </section>
+  </main>
+</div>
+
+<footer><div class="wrap footer-inner"><p>Brand Guideline Pranatani · Simpul Bukti · v1.0. Konsep ini tidak menyatakan sertifikasi, rekomendasi produk, atau jaminan hasil.</p><p>Data Pertanian Terbuka · 28 Agustus 2026</p></div></footer>
+
+<script>
+(function () {
+  var root = document.documentElement;
+  var themeButton = document.getElementById('themeButton');
+  var saved = null;
+  try { saved = localStorage.getItem('pranatani-guideline-theme'); } catch (error) {}
+  if (saved === 'dark') {
+    root.dataset.theme = 'dark';
+    themeButton.textContent = 'Mode terang';
+    themeButton.setAttribute('aria-pressed', 'true');
+  }
+
+  themeButton.addEventListener('click', function () {
+    var dark = root.dataset.theme !== 'dark';
+    if (dark) root.dataset.theme = 'dark'; else delete root.dataset.theme;
+    themeButton.textContent = dark ? 'Mode terang' : 'Mode gelap';
+    themeButton.setAttribute('aria-pressed', String(dark));
+    try { localStorage.setItem('pranatani-guideline-theme', dark ? 'dark' : 'light'); } catch (error) {}
+  });
+
+  function done(button, text) {
+    var original = button.textContent;
+    button.textContent = text;
+    button.dataset.done = 'true';
+    window.setTimeout(function () { button.textContent = original; delete button.dataset.done; }, 1500);
+  }
+
+  function copyText(text, button, label) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () { done(button, label); });
+    } else { done(button, text); }
+  }
+
+  document.querySelectorAll('[data-copy]').forEach(function (button) {
+    button.addEventListener('click', function () { copyText(button.getAttribute('data-copy'), button, 'Tersalin'); });
+  });
+
+  document.querySelectorAll('[data-download]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      var source = document.getElementById(button.getAttribute('data-download'));
+      var clone = source.cloneNode(true);
+      clone.setAttribute('xmlns', 'http://www.w3.org/2000/svg');
+      clone.removeAttribute('id');
+      var content = '<?xml version="1.0" encoding="UTF-8"?>\n' + clone.outerHTML;
+      var link = document.createElement('a');
+      link.href = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(content);
+      link.download = button.getAttribute('data-file');
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      done(button, 'SVG diunduh');
+    });
+  });
+
+  var copyTokens = document.getElementById('copyTokens');
+  copyTokens.addEventListener('click', function () { copyText(document.getElementById('tokenCode').innerText, copyTokens, 'Token tersalin'); });
+
+  var screenStage = document.getElementById('screenStage');
+  document.querySelectorAll('[data-screen]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      screenStage.dataset.view = button.getAttribute('data-screen');
+      document.querySelectorAll('[data-screen]').forEach(function (item) { item.setAttribute('aria-pressed', String(item === button)); });
+    });
+  });
+
+  var progress = document.getElementById('progress');
+  function updateProgress() {
+    var height = document.documentElement.scrollHeight - window.innerHeight;
+    progress.style.transform = 'scaleX(' + (height > 0 ? window.scrollY / height : 0) + ')';
+  }
+  window.addEventListener('scroll', updateProgress, { passive:true });
+  updateProgress();
+
+  if ('IntersectionObserver' in window) {
+    var navLinks = Array.from(document.querySelectorAll('.side a'));
+    var observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        navLinks.forEach(function (link) { link.removeAttribute('aria-current'); });
+        var active = navLinks.find(function (link) { return link.getAttribute('href') === '#' + entry.target.id; });
+        if (active) active.setAttribute('aria-current', 'true');
+      });
+    }, { rootMargin:'-20% 0px -68% 0px', threshold:0 });
+    document.querySelectorAll('main > section[id]').forEach(function (section) { observer.observe(section); });
+  }
+})();
+</script>
+</body>
+</html>

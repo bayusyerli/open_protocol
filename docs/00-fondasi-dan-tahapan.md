@@ -1,4 +1,4 @@
-# Open Protocols — Fondasi & Tahapan Pembangunan
+# Pranatani — Fondasi & Tahapan Pembangunan
 
 > Dokumen kerja. Versi 0.1 — 19 Agustus 2026.
 > Status: hasil riset awal + rekomendasi tahapan. Belum ada keputusan yang dikunci.
@@ -13,7 +13,7 @@ sebelum satu baris kode pun ditulis.
 
 | # | Keputusan | Rekomendasi awal |
 |---|---|---|
-| 1 | Open Protocols itu **infrastruktur data** atau **aplikasi**? | Infrastruktur (skema + registry protokol) dulu; aplikasi tipis di atasnya |
+| 1 | Pranatani itu **infrastruktur data** atau **aplikasi**? | Infrastruktur (skema + registry protokol) dulu; aplikasi tipis di atasnya |
 | 2 | Cara "agnostik" diwujudkan | Agnostik di **skema**, dalam di **konten**. Bukan aplikasi generik |
 | 3 | Komoditas beachhead | Satu komoditas hortikultura siklus pendek (cabai / bawang merah) |
 | 4 | Netralitas vendor ditegakkan bagaimana | Lapis generik (bahan aktif & hara) terpisah dari lapis produk; produk hanya boleh menempel lewat nomor pendaftaran resmi |
@@ -33,7 +33,7 @@ teknologinya salah, tapi karena model bisnisnya menuntut pertumbuhan angka
 (GMV, jumlah petani mitra) yang akhirnya digelembungkan, dan karena keduanya
 menaruh barang serta pembiayaan di neraca sendiri. Platform yang menjual/membeli
 komoditas atau input dengan modal sendiri akan selalu tergoda mengejar volume.
-**Implikasi desain:** Open Protocols jangan menyentuh kepemilikan barang di
+**Implikasi desain:** Pranatani jangan menyentuh kepemilikan barang di
 tahap awal. Jadi lapisan pengetahuan dan pencatatan, bukan pedagang.
 
 **b. Salah mengukur nilai.**
@@ -41,7 +41,7 @@ Bukti RCT dari Precision Development (PxD) di padi India — 13.675 petani —
 menunjukkan pola yang konsisten: layanan advisori digital meningkatkan
 pengetahuan dan adopsi praktik secara signifikan, menaikkan hasil panen secara
 **moderat**, tapi menurunkan probabilitas **gagal panen secara besar**.
-**Implikasi desain:** posisikan Open Protocols sebagai alat *penurun risiko dan
+**Implikasi desain:** posisikan Pranatani sebagai alat *penurun risiko dan
 biaya*, bukan janji "hasil naik 30%". Janji hasil naik akan menghancurkan
 kredibilitas di musim pertama yang cuacanya jelek.
 
@@ -117,11 +117,17 @@ lompat gate; ini persis mekanisme yang mencegah pola kegagalan di bagian 1.
 **Kerjakan:**
 - Tulis "apa ini / apa BUKAN ini" satu halaman. Yang paling penting: nyatakan
   eksplisit bahwa ini bukan marketplace input, bukan offtaker, bukan fintech.
-- **Uji nama.** "Open Protocol(s)" itu deskriptif dan sudah dipakai di domain
+- **Uji nama.** ~~"Open Protocol(s)" itu deskriptif dan sudah dipakai di domain
   lain (mis. standar pelaporan risiko OPERA di keuangan). Nama deskriptif sulit
-  dilindungi sebagai merek dan mudah tertukar. Cek DJKI untuk kelas 9/42/44,
-  cek domain, cek npm/GitHub org. Siapkan opsi: nama pendek berbahasa Indonesia
-  atau nama buatan, dengan "open protocol" sebagai deskriptor, bukan merek.
+  dilindungi sebagai merek dan mudah tertukar.~~ **Diputuskan 24 Agustus 2026:
+  nama platform jadi Pranatani, domain `pranatani.com`.** Ia nama pendek
+  berbahasa Indonesia — persis opsi yang disiapkan baris ini — dan "protokol
+  budidaya" turun jadi deskriptor, bukan merek. Seluruh permukaan, kosakata, dan
+  30.739 berkas terbitan sudah dibangun ulang dengan nama dan asal itu.
+  Prefiks pengenal `op:` **tidak** ikut berubah: ia menyatukan 155.916 rujukan
+  antar-entitas, dan pengenal yang berubah karena rebranding berhenti jadi
+  pengenal. Yang **belum** ditutup: penelusuran merek resmi ke DJKI kelas
+  9/42/44 — itu pekerjaan konsultan HKI, bukan pekerjaan repositori ini.
 - Kunci **struktur lisensi** (kode / konten / data) dan **struktur badan hukum**.
 - Tetapkan model tata kelola: rujuk **DPG Standard** (9 indikator: relevansi SDG,
   lisensi terbuka, kepemilikan jelas, independensi platform, dokumentasi,
@@ -143,7 +149,7 @@ Ini fase yang paling sering dilewati dan paling mahal kalau dilewati.
 - Pertanyaan intinya bukan "mau aplikasi seperti apa", tapi: *keputusan budidaya
   siapa yang sebenarnya menentukan?* Di banyak sentra, yang menentukan pilihan
   benih, pupuk, dan pestisida adalah **kios** (karena ada kredit saprodi) atau
-  **bandar**, bukan petani. Kalau ini benar, maka pengguna pertama Open Protocols
+  **bandar**, bukan petani. Kalau ini benar, maka pengguna pertama Pranatani
   bukan petani — melainkan penyuluh, kios, atau koperasi.
 - Kumpulkan **korpus protokol yang sudah ada**: SNI 8969:2021 (IndoGAP tanaman
   pangan), pedoman GAP hortikultura/perkebunan, terbitan BSIP/Balai, buku saku
@@ -250,7 +256,7 @@ atau kerugian. Kalau tidak ada, jangan tambah komoditas — perbaiki protokolnya
   dan jejak audit siapa mengubah protokol apa dan kapan.
 - **Sikap terhadap ekosistem negara.** Pupuk bersubsidi kini diatur Perpres
   6/2025 dan Permentan 15/2025, dialokasikan lewat **e-RDKK** dan diverifikasi
-  penyuluh lewat **SIMLUHTAN**. Open Protocols tidak perlu menggantikan itu —
+  penyuluh lewat **SIMLUHTAN**. Pranatani tidak perlu menggantikan itu —
   tapi rencana musim yang keluar dari platform sebaiknya bisa dicetak dalam
   format yang cocok dengan alur RDKK. Itu jalan masuk paling murah ke penyuluh.
 
@@ -359,7 +365,7 @@ ditelusuri ke catatan mentah. Tulis definisi itu sekarang, saat belum ada tekana
 | Rekomendasi salah → kerugian → tanggung jawab hukum | Batasi ke bahan terdaftar & rentang label; PHI wajib; penafian; jejak audit |
 | Terjebak jadi pedagang input/hasil panen | Larangan tertulis di Fase 0: tidak memegang barang |
 | Ketergantungan berlebihan pada program pemerintah | Pakai sebagai distribusi, jangan sebagai satu-satunya sumber pendapatan |
-| Nama "Open Protocols" bermasalah / tidak bisa dilindungi | Uji merek di Fase 0, sebelum ada aset merek yang terbentuk |
+| Nama "Pranatani" bermasalah / tidak bisa dilindungi | Nama dipilih di Fase 0 (24 Agu 2026) justru karena distingtif, bukan deskriptif; penelusuran DJKI kelas 9/42/44 masih terbuka, dan sampai ia ditutup nama dipakai tanpa klaim perlindungan |
 
 ---
 

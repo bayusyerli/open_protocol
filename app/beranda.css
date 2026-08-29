@@ -154,8 +154,22 @@ a { color: var(--hijau-2); }
 }
 /* `align-items` beserta `min-height` membawa kotak sentuhnya ke 44 px tanpa menambah
    tinggi kepala: tombol tema di seberangnya sudah setinggi itu. */
-.merek { display: flex; align-items: center; min-height: 44px;
+.merek { display: flex; align-items: center; gap: 10px; min-height: 44px;
          text-decoration: none; color: inherit; line-height: 1.15; }
+/* Simbolnya `flex: none` supaya ia tidak ikut menyusut saat kepala kehabisan tempat:
+   yang boleh mengalah di baris ini subjudulnya, bukan tandanya. */
+.tanda-merek { flex: none; display: block; width: 36px; height: 36px; }
+
+/* Simbol versi gelap. Ditulis dua kali dengan alasan yang sama seperti blok token di
+   atas: yang belum memilih apa pun (ikut sistem) dan yang memilih gelap eksplisit adalah
+   dua keadaan berbeda, dan `prefers-color-scheme` saja hanya menjawab yang pertama —
+   orang yang memilih gelap di layar terang akan tetap mendapat tanda tinta gelap di atas
+   kepala gelap. Geometri kedua berkasnya sama persis, jadi tidak ada pergeseran tata
+   letak saat berpindah; yang berubah cuma warnanya. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-tema="terang"]) .tanda-merek { content: url("logo-pranatani-gelap.svg"); }
+}
+:root[data-tema="gelap"] .tanda-merek { content: url("logo-pranatani-gelap.svg"); }
 .merek strong { display: block; font-size: 18px; letter-spacing: -.03em; }
 .merek small {
   display: block; color: var(--lemah);
@@ -253,7 +267,7 @@ a { color: var(--hijau-2); }
 }
 .cangkang-cari input:disabled { cursor: progress; }
 .tombol-hapus {
-  width: 34px; height: 34px; border: 0; border-radius: 50%;
+  width: 44px; height: 44px; border: 0; border-radius: 50%;
   background: transparent; color: var(--lemah); font-size: 22px; line-height: 1;
 }
 .tombol-hapus:hover { background: var(--permukaan); }
@@ -265,34 +279,35 @@ a { color: var(--hijau-2); }
 .tombol-cari:hover:not(:disabled) { background: var(--hijau-sorot); }
 .tombol-cari:disabled { opacity: .5; cursor: not-allowed; }
 
-.saran { margin-top: 12px; }
-.kepala-saran {
-  display: flex; align-items: baseline; justify-content: space-between;
-  gap: 10px; margin-bottom: 9px;
+/* Tiga baris berlabel menggantikan kisi sebelas keping. Yang dipangkas ongkos
+   labelnya — dibayar tiga kali, bukan sebelas — dan itu yang memulangkan kartunya
+   ke dalam satu layar HP.
+
+   Pilnya sengaja TIDAK berkisi. Panjang namanya berbeda jauh ("Patek" lawan
+   "Petrokimia Gresik"), dan kolom selebar sama memaksa keduanya ke lebar yang
+   sama: yang pendek menyisakan lubang, yang panjang membungkus tiga baris. Persis
+   itu yang membuat tinggi kepingnya dulu bergerigi 61–81 px di layar yang sama.
+   Flex-wrap memberi tiap pil lebar namanya sendiri. */
+.saran { margin: 0; }
+.golongan-saran { margin-top: 8px; }
+.judul-golongan { margin: 0; font-size: 12.5px; font-weight: 750; }
+.judul-golongan small {
+  display: block; margin-top: 1px;
+  color: var(--lemah); font-size: 11px; font-weight: 400;
 }
-.kepala-saran strong { font-size: 13px; }
-.kepala-saran small { color: var(--lemah); font-size: 11px; }
-/* Sebelas keping, bukan empat lagi — jadi kolomnya mengalir alih-alih dipatok dua.
-   Pada panel 780 px ini jadi empat kolom (tiga baris). Ambangnya 136 px dan angka itu
-   dipilih, bukan ditebak: pada layar 375 px isi panel selebar 299,5 px, jadi 148 px
-   meleset dua kolom sejauh 3,5 px dan kesebelas kepingnya menumpuk jadi satu lajur
-   setinggi 737 px — cukup untuk mendorong papan jalur keluar layar sama sekali. */
-.kisi-saran {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(136px, 1fr)); gap: 7px;
+.pil-saran { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+.pil-saran > button {
+  position: relative;
+  display: inline-flex; align-items: center; min-height: 44px;
+  padding: 0 14px; border: 1px solid var(--garis); border-radius: 999px;
+  background: var(--kanvas); color: inherit;
+  font: inherit; font-size: 13px; line-height: 1.2; text-align: left;
 }
-.kisi-saran > * {
-  display: block; min-width: 0; padding: 10px 11px;
-  border: 1px solid var(--garis); border-radius: 10px;
-  background: var(--kanvas); color: inherit; text-align: left; text-decoration: none;
-}
-.kisi-saran > :hover, .kisi-saran > :focus-visible {
+.pil-saran > button:hover, .pil-saran > button:focus-visible {
   border-color: var(--hijau-2); background: var(--hijau-lembut);
 }
-.kisi-saran small, .kisi-saran strong { display: block; overflow-wrap: anywhere; }
-.kisi-saran small { margin-bottom: 3px; color: var(--lemah); font-size: 10px; }
-.kisi-saran strong { font-size: 13px; }
 
-.bantuan-cari { margin: 12px 2px 0; color: var(--lemah); font-size: 12.5px; line-height: 1.5; }
+.bantuan-cari { margin: 10px 2px 0; color: var(--lemah); font-size: 12.5px; line-height: 1.5; }
 .bantuan-cari code {
   padding: 1px 5px; border-radius: 5px;
   background: var(--permukaan); font-size: .92em;
@@ -449,7 +464,7 @@ a { color: var(--hijau-2); }
 }
 .kepala-lembar h2 { margin: 4px 0 0; font-size: 20px; letter-spacing: -.03em; }
 .kepala-lembar button {
-  width: 34px; height: 34px; flex: none;
+  width: 44px; height: 44px; flex: none;
   border: 1px solid var(--garis); border-radius: 50%;
   background: var(--permukaan); font-size: 18px; line-height: 1;
 }
@@ -457,12 +472,18 @@ a { color: var(--hijau-2); }
 .isi-lembar h3 { margin: 16px 0 4px; font-size: 14px; }
 .isi-lembar h3:first-child { margin-top: 0; }
 .isi-lembar p { margin: 0 0 8px; font-size: 13.5px; }
-.isi-lembar dl {
+/* Kisi label→angka ini milik daftar cacah, bukan tiap <dl> yang kebetulan ada di
+   dalam lembar. Ditulis sebagai `.isi-lembar dl`, ia ikut menangkap daftar lubang
+   yang disuntik batas.js ke lembar yang sama — judul lubangnya frasa, bukan label,
+   jadi lajur pertama menyusut sampai 0 px dan judulnya melimpah menimpa keterangan
+   di sebelahnya, yang ikut terbalik rata kanan. Lubang memakai aturan bloknya
+   sendiri di batas.css; yang di sini cuma pasangan label dan angka. */
+.cacah-lembar {
   display: grid; grid-template-columns: minmax(0, 1fr) auto;
   gap: 4px 12px; margin: 0 0 4px; font-size: 13.5px;
 }
-.isi-lembar dt { color: var(--lemah); }
-.isi-lembar dd { margin: 0; font-variant-numeric: tabular-nums; text-align: right; }
+.cacah-lembar dt { color: var(--lemah); }
+.cacah-lembar dd { margin: 0; font-variant-numeric: tabular-nums; text-align: right; }
 
 /* --- layar sempit --------------------------------------------------------- */
 
@@ -475,6 +496,8 @@ a { color: var(--hijau-2); }
      titik saja — warnanya sudah membawa keterangannya, dan kalimat penuhnya tetap
      terbaca pembaca layar. */
   .kepala { gap: 8px; padding: 9px 14px; flex-wrap: nowrap; }
+  .tanda-merek { width: 30px; height: 30px; }
+  .merek { gap: 8px; }
   .merek strong { font-size: 16px; }
   .merek small { font-size: 9px; letter-spacing: .12em; }
   .aksi-kepala { gap: 8px; }
@@ -489,7 +512,8 @@ a { color: var(--hijau-2); }
     padding: 6px 6px 6px 12px;
   }
   .tombol-cari { grid-column: 1 / -1; width: 100%; }
-  /* `.kisi-saran` sengaja TIDAK diturunkan ke satu kolom — lihat catatannya di atas. */
+  /* `.pil-saran` tidak perlu diturunkan: flex-wrap sudah mengurus layar sempit
+     sendiri, dan itu setengah alasan ia menggantikan kisi. */
   .kisi-jalur { grid-template-columns: 1fr; }
   .kisi-jalur a { min-height: 0; }
   .kisi-alat { grid-template-columns: 1fr; }
@@ -532,3 +556,115 @@ a { color: var(--hijau-2); }
 /* Tombol di tengah kalimat tidak boleh membawa bantalannya sendiri — titik di
    belakangnya jadi terlihat menggantung. */
 .bantuan-cari .tombol-teks { padding: 0; }
+
+/* ---------------------------------------------------------------------------
+   Kepala jawaban — apa yang dibaca dari pertanyaan, dan apa yang ditolak dijawab
+   ---------------------------------------------------------------------------
+   Dua blok dengan berat yang sengaja berbeda. `.bacaan-tanya` keterangan: ia
+   menerangkan penguraian, jadi ia tenang dan kecil. `.jawab-tanya` JAWABAN:
+   satu kalimat yang berdiri sendiri, dan di bawahnya batasnya. Menyamakan
+   keduanya akan membuat jawaban terbaca sebagai catatan kaki. */
+.bacaan-tanya { margin: 0 0 18px; }
+.bacaan { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+.bacaan li {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: baseline;
+  font-size: 13px;
+  color: var(--lemah);
+}
+.bacaan-label {
+  flex: 0 0 auto;
+  min-width: 92px;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: var(--pudar);
+}
+.bacaan li > span:last-child { flex: 1 1 200px; }
+.keping-kata {
+  display: inline-block;
+  padding: 1px 7px;
+  border-radius: 999px;
+  background: var(--limau-lembut);
+  color: var(--hijau);
+  font-weight: 600;
+  font-size: 12.5px;
+}
+/* Kata yang ditolak dijawab memakai warna peringatan, bukan warna kata yang dicari —
+   perbedaan itu satu-satunya yang membedakan "dibuang karena tidak berguna" dari
+   "dibuang karena tidak akan pernah dijawab". */
+.bacaan-tolak .keping-kata { background: var(--amber-lembut); color: var(--amber); }
+.bacaan-tolak > span:last-child { color: var(--lemah); }
+.bacaan-tolak strong { color: var(--tinta); }
+
+.jawab-tanya {
+  margin: 0 0 18px;
+  padding: 12px 14px;
+  border-left: 3px solid var(--hijau);
+  border-radius: 0 8px 8px 0;
+  background: var(--limau-lembut);
+}
+.jawab-utama { margin: 0; font-size: 15px; line-height: 1.45; color: var(--tinta); }
+.jawab-utama strong { font-weight: 700; }
+.jawab-utama a { color: var(--hijau-2); }
+.jawab-batas { margin: 8px 0 0; font-size: 12.5px; line-height: 1.5; color: var(--lemah); }
+/* Ambang kelas dicetak lebih kecil dan bertabular: ia angka yang dipakai membantah
+   kelasnya, jadi ia harus terbaca sebagai angka, bukan sebagai bagian kalimat. */
+.ambang { font-size: 12.5px; color: var(--lemah); font-variant-numeric: tabular-nums; }
+.cacah-badan {
+  display: inline-block;
+  padding: 0 6px;
+  border-radius: 999px;
+  background: var(--kertas);
+  color: var(--lemah);
+  font-size: 11.5px;
+  font-variant-numeric: tabular-nums;
+}
+.daftar-hasil a[data-jenis="komoditas"] { --tepi: var(--hijau-2); }
+
+/* ------------------------------------------------------------ jelajah klaster
+   Jalan masuk ke seluruh isi, dan satu-satunya blok di beranda yang ditulis untuk dua
+   pembaca sekaligus: orang yang belum tahu apa yang dicarinya, dan perayap yang tidak
+   bisa mengetik. Sengaja daftar tautan biasa — bukan kartu, bukan grid berhias — karena
+   yang menentukan gunanya bukan tampilannya melainkan bahwa tautannya benar-benar ada
+   di HTML sebelum satu baris skrip berjalan. */
+.jelajah {
+  max-width: var(--lebar, 44rem);
+  margin: 2.5rem auto 0;
+  padding: 0 1rem;
+}
+.jelajah h2 {
+  font-size: 1rem;
+  margin: 0 0 .8rem;
+  color: var(--teks, var(--tinta));
+}
+.jelajah ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: .1rem 1.5rem;
+}
+.jelajah li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .5rem;
+  padding: .55rem 0;
+  border-bottom: 1px solid var(--garis);
+  min-height: 44px;
+  box-sizing: border-box;
+}
+.jelajah a { font-weight: 600; text-underline-offset: 2px; }
+.jelajah li span {
+  font-size: .82rem;
+  color: var(--teks-lemah, var(--lemah));
+}
+.jelajah .catatan {
+  margin: 1rem 0 0;
+  font-size: .82rem;
+  color: var(--teks-lemah, var(--lemah));
+}

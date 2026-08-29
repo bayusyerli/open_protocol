@@ -99,6 +99,14 @@
       ],
       "additionalProperties": false
     },
+    "symptom_title": {
+      "$ref": "common.schema.json#/$defs/LangText",
+      "description": "Penanda paling menonjol dari `symptoms`, tiga sampai tujuh kata, untuk dipakai sebagai JUDUL kartu pada daftar pilihan. Tetap gejala, BUKAN nama hamanya — aturan yang sama seperti `symptoms`, dan justru di sini paling mudah dilanggar karena nama hama selalu lebih pendek. Judul yang tidak bisa dibedakan dari judul OPT lain adalah cacat: yang memilih dari daftar memilih dengan membandingkan judulnya."
+    },
+    "symptom_brief": {
+      "$ref": "common.schema.json#/$defs/LangText",
+      "description": "Satu kalimat pendukung di bawah `symptom_title`, memuat ciri yang MEMBEDAKAN — bukan ringkasan `symptoms` yang mengulang judulnya. Kartu daftar memakai ini; teks `symptoms` yang utuh tetap dipakai layar rincian dan halaman terbitan."
+    },
     "symptoms": {
       "$ref": "common.schema.json#/$defs/LangText",
       "description": "Apa yang TERLIHAT di kebun, dalam kata-kata orang yang melihatnya — bukan nama hamanya. Jalur insiden masuk lewat sini: yang panik tahu daunnya mengeriting ke atas, ia tidak tahu kata 'trips'. Dipisahkan dari `definition`, yang memuat catatan epidemiologi dan bukan gejala."
@@ -143,6 +151,174 @@
         },
         "required": [
           "check"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "images": {
+      "type": "array",
+      "description": "Gambar yang memperlihatkan apa yang diceritakan medan gejala di atas. BUKAN hiasan: layar ini menyuruh orang memastikan sendiri sebelum menyemprot, dan sebagian ciri pembanding — anyaman benang tungau, untaian lendir pada uji gelas, aservulus yang tersusun melingkar — praktis tidak bisa disampaikan kalimat saja.\n\nGAMBAR SALAH LABEL LEBIH BURUK DARIPADA TIDAK ADA GAMBAR, dan itulah kenapa `identification` wajib. Foto berlabel \"serangan trips\" yang ternyata memperlihatkan gejala virus akan meruntuhkan seluruh guna blok pembanding: pembacanya menyemprot tanaman yang tidak bisa disembuhkan semprotan apa pun. Ketajaman foto tidak dinilai di sini; yang dinilai apakah spesiesnya dipertanggungjawabkan di sumbernya.\n\nDUA GERBANG, DAN KEDUANYA HARUS DILEWATI. `source.redistributable` menjaga lisensinya, `confidence` menjaga identifikasinya. Yang lolos lisensi tetapi identifikasinya cuma klaim pengunggah masuk dengan `confidence: \"rendah\"` dan hanya boleh dipakai untuk klaim yang setingkat — \"kenali serangga putih ini\", bukan \"ini Bemisia tabaci\".",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+            "description": "Slug stabil, sama seperti kunci entitas. Gambar BUKAN entitas — ia keterangan yang dimiliki satu OPT — jadi ia tidak memakai `op:` id, dengan alasan yang sama seperti kamus nama lokal: blok prefiks ID adalah enum tertutup, dan menambahnya untuk sesuatu yang bukan entitas menukar kaidah yang mahal dengan kemudahan yang murah."
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "gejala_khas",
+              "organisme",
+              "ciri_pembanding",
+              "kekeliruan",
+              "serangan_lanjut"
+            ],
+            "description": "Untuk apa gambar ini dipasang. `ciri_pembanding` yang paling menentukan — ia berpasangan dengan satu butir `distinguishing`, dan itulah satu-satunya peran yang benar-benar memutuskan sesuatu. `kekeliruan` memperlihatkan dua penyebab berdampingan; peran itu hampir selalu kosong karena literatur ilmiah memotret satu patogen untuk membuktikan satu klaim, bukan dua untuk membedakannya."
+          },
+          "matches": {
+            "type": "string",
+            "enum": [
+              "symptom_title",
+              "symptom_brief",
+              "symptoms",
+              "distinguishing.0",
+              "distinguishing.1"
+            ],
+            "description": "Kalimat mana yang diperlihatkan gambar ini. Ditulis eksplisit, bukan ditebak penyaji: gambar yang menggantung tanpa kalimat pasangannya akan dipasang di tempat yang salah begitu urutan medan berubah."
+          },
+          "shows": {
+            "$ref": "common.schema.json#/$defs/LangText",
+            "description": "Apa yang benar-benar terlihat di gambar, bukan apa yang seharusnya. Dipakai sebagai teks alternatif dan takarir."
+          },
+          "identification": {
+            "$ref": "common.schema.json#/$defs/LangText",
+            "description": "Bagaimana spesiesnya dipastikan DI SUMBERNYA — kunci morfologi, DNA barcoding, PCR, postulat Koch, tinjauan kurator, atau cuma judul. Wajib. Kalau jawabannya \"cuma judul\", `confidence` tidak boleh lebih dari \"rendah\"."
+          },
+          "confidence": {
+            "type": "string",
+            "enum": [
+              "tinggi",
+              "sedang",
+              "rendah"
+            ],
+            "description": "Seberapa kuat identifikasinya, BUKAN seberapa bagus fotonya. \"rendah\" berarti hanya boleh dipakai untuk klaim setingkat kelompok, tidak pernah untuk klaim spesies."
+          },
+          "prep": {
+            "type": "object",
+            "description": "Apa yang masih harus dikerjakan pada berkasnya sebelum bisa dipasang. Dicatat karena keduanya menentukan kewajiban hukum, bukan cuma pekerjaan: memotong panel adalah MENGUBAH, dan CC BY 4.0 mewajibkan perubahan dinyatakan pada kreditnya.",
+            "properties": {
+              "crop_from": {
+                "type": "string",
+                "description": "Panel mana yang harus dipotong dari gambar aslinya, mis. \"Gambar 2, panel C\". Kehadiran medan ini berarti kreditnya wajib berbunyi \"dipotong dari ...\"."
+              },
+              "from_pdf": {
+                "type": "boolean",
+                "default": false,
+                "description": "Gambarnya tertanam di dalam PDF dan tidak punya URL berkas sendiri. Justru sumber Indonesia terkuat yang begini."
+              },
+              "warning": {
+                "type": "string",
+                "description": "Panel mana yang JUSTRU menyesatkan kalau ikut terpotong — mis. gambar berpanel yang memuat empat spesies berbeda dan hanya satu yang dimaksud."
+              }
+            },
+            "additionalProperties": false
+          },
+          "source": {
+            "type": "object",
+            "description": "Dari mana gambar berasal dan apa yang boleh dilakukan terhadapnya. Wajib terisi SEBELUM berkasnya diunduh — satu-satunya saat asal-usul masih diketahui pasti adalah saat pengambilan. Bentuknya sengaja mengikuti `source` pada product-image.schema.json.",
+            "properties": {
+              "url": {
+                "type": "string",
+                "format": "uri",
+                "description": "URL berkas gambarnya sendiri. Boleh kosong bila gambarnya tertanam di PDF."
+              },
+              "page_url": {
+                "type": "string",
+                "format": "uri"
+              },
+              "publisher": {
+                "type": "string"
+              },
+              "author": {
+                "type": "string"
+              },
+              "year": {
+                "type": "integer"
+              },
+              "doi": {
+                "type": "string"
+              },
+              "retrieved_at": {
+                "type": "string",
+                "format": "date-time"
+              },
+              "license": {
+                "type": "string",
+                "description": "Pengenal SPDX bila ada. Ketiadaan lisensi berarti hak cipta penuh, bukan bebas pakai. CC-BY-NC dan CC-BY-ND tidak kompatibel dengan CC-BY-SA-4.0 yang dipakai repositori ini."
+              },
+              "credit": {
+                "type": "string",
+                "description": "Baris atribusi siap pasang. Kecuali CC0, seluruh lisensi di sini menuntut atribusi, dan atribusi yang hilang membatalkan izin pakainya — jadi baris ini ikut terbit bersama gambarnya, bukan disimpan di berkas terpisah."
+              },
+              "redistributable": {
+                "type": "boolean",
+                "description": "Satu-satunya saklar yang menentukan berkas binernya boleh ikut terbit. Repositori ini CC-BY-SA-4.0; gambar berhak cipta penuh tidak bisa direlisensi hanya karena disalin ke sini."
+              }
+            },
+            "required": [
+              "page_url",
+              "retrieved_at",
+              "license",
+              "redistributable"
+            ],
+            "additionalProperties": false
+          },
+          "file": {
+            "type": "object",
+            "description": "Sifat berkas SESUDAH dipanen dan dinormalkan. Kosong sampai `gambar_opt/panen.mjs` dijalankan — dan selama kosong, penyaji tidak merender apa-apa. Itu disengaja: lebih baik layar tanpa gambar daripada gambar yang gagal muat.",
+            "properties": {
+              "path": {
+                "type": "string",
+                "description": "Relatif terhadap app/, mis. \"gambar/opt/trips-organisme-1.webp\"."
+              },
+              "width_px": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "height_px": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^sha256:[0-9a-f]{64}$"
+              },
+              "exif_stripped": {
+                "const": true,
+                "description": "Selalu benar. EXIF foto lapangan membawa titik GPS pemotretnya — data pribadi menurut UU 27/2022 — dan foto OPT justru sering foto lapangan."
+              }
+            },
+            "required": [
+              "path",
+              "exif_stripped"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "required": [
+          "key",
+          "role",
+          "matches",
+          "shows",
+          "identification",
+          "confidence",
+          "source"
         ],
         "additionalProperties": false
       }

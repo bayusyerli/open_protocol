@@ -61,6 +61,20 @@ const hasil = [];
 const cek = (doc, klaim, nyata, harap) =>
   hasil.push({ doc, klaim, nyata, harap, ok: String(nyata) === String(harap) });
 
+// Sebagian angka BERTAMBAH tiap hari karena memang begitu bentuknya, dan menuntutnya sama
+// persis mengubah alat ini jadi alarm yang berbunyi tiap pagi tanpa ada yang salah. Alarm
+// yang berbunyi tiap pagi dimatikan orang — dan yang ikut mati bersamanya 125 baris lain
+// yang justru berarti. Sejak harga ditarik terjadwal (.github/workflows/harga.yml, 25
+// Agustus 2026), seri harian tumbuh sendiri tanpa satu pun tangan menyentuh repositori.
+//
+// Untuk angka jenis itu yang ditagih BATAS BAWAH, bukan kesamaan: ia boleh naik, tidak
+// boleh turun. Menyusut berarti sumbernya menghapus riwayat atau penariknya kehilangan
+// baris — dan itu tetap alarm yang harus berbunyi. Angka yang tersalin di sini karena itu
+// dibaca "sekurang-kurangnya sebanyak ini pada tanggal tercatat", dan menaikkannya adalah
+// pekerjaan tangan, sama seperti sebelumnya.
+const cekMinimal = (doc, klaim, nyata, lantai) =>
+  hasil.push({ doc, klaim, nyata, harap: `≥ ${lantai}`, ok: Number(nyata) >= Number(lantai) });
+
 // ---- hitungan berkas yang dicetak spec/README
 // Angka ini basi dua kali dalam sehari: sekali meleset tujuh, dan sekali lagi satu jam
 // sesudah dibetulkan karena skema baru masuk. Ia contoh paling murni dari yang dijaga alat
@@ -74,7 +88,60 @@ cek('15', 'kabupaten/kota ber-BPP', new Set(BPP.map((b) => `${b.region?.province
 cek('15', 'laboratorium terakreditasi', LAB.length, 889);
 cek('15', 'lab bisa ukur residu pestisida', LAB.filter((x) => x.capabilities?.pesticide_residue).length, 17);
 
-cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 33);
+cek('spec/README', 'berkas skema JSON', readdirSync(dari('spec/schema')).filter((f) => f.endsWith('.schema.json')).length, 36);
+
+// ---- wilayah
+// Yang dijaga di sini bukan cuma cacahnya melainkan klaim yang bersandar padanya:
+// 34 provinsi (bukan 38), 514 kabupaten/kota, dan 167 kode taksa antara BPS & Kemendagri.
+const RGN = nd('spec/vocab/region/wilayah.ndjson');
+const tingkat = (t) => RGN.filter((x) => x.level === t).length;
+cek('22', 'wilayah seluruhnya', RGN.length, 7768);
+cek('22', 'provinsi', tingkat('province'), 34);
+cek('22', 'kabupaten', tingkat('regency'), 416);
+cek('22', 'kota', tingkat('city'), 98);
+cek('22', 'kabupaten/kota', tingkat('regency') + tingkat('city'), 514);
+cek('22', 'kecamatan', tingkat('district'), 7219);
+cek('22', 'nama dirapikan ejaannya', RGN.filter((x) => x.synonyms?.length).length, 10);
+{
+  // Kode yang sah di kedua sistem sambil menunjuk wilayah berlainan.
+  const dagri = new Map();
+  for (const x of RGN) {
+    const d = x.mappings?.find((m) => m.scheme === 'KEMENDAGRI')?.id;
+    if (d) dagri.set(d.replace(/\D/g, ''), x.id);
+  }
+  const taksa = RGN.filter((x) => x.code_scheme === 'BPS' && dagri.has(x.code) && dagri.get(x.code) !== x.id);
+  cek('22', 'kode taksa BPS vs Kemendagri', taksa.length, 167);
+}
+// Sambungan BPP → wilayah. Mutu tautan kecamatan dijaga per kelas, bukan sebagai satu
+// angka: "6.737 tertaut" tanpa memisah persis dari longgar menyembunyikan yang ditebak.
+{
+  const B = nd('spec/vocab/bpp/bpp.ndjson');
+  const kec = B.flatMap((x) => x.serves ?? []);
+  cek('22', 'balai tertaut kabupaten/kota', B.filter((x) => x.region?.id).length, 5844);
+  cek('22', 'balai tertaut lewat kode BPS', B.filter((x) => x.region?.regency_code_scheme === 'BPS' && x.region?.id && x.region.regency_code && x.region.id).length, 5844);
+  cek('22', 'sebutan kecamatan', kec.length, 6824);
+  cek('22', 'kecamatan cocok persis', kec.filter((x) => x.match === 'exact').length, 6704);
+  cek('22', 'kecamatan cocok longgar', kec.filter((x) => x.match === 'approx').length, 33);
+  cek('22', 'kecamatan tidak tertaut', kec.filter((x) => x.match === 'none').length, 87);
+}
+cek('22', 'seri harga bertaut wilayah', nd('spec/vocab/harga/harga.ndjson').filter((x) => x.region?.id).length, 8);
+
+// ---- agroklimat
+// Cacahan kelas per skema disalin ke docs/21. Yang dijaga di sini bukan sekadar
+// jumlahnya melainkan klaim yang bersandar padanya: 18 zona Oldeman, bukan 17 seperti
+// yang beredar di tabel yang memotong barisnya, dan 8 tipe Schmidt-Ferguson.
+const AKL = readdirSync(dari('spec/vocab'))
+  .filter((f) => f.startsWith('agroklimat-') && f.endsWith('.json'))
+  .map((f) => JSON.parse(readFileSync(join(dari('spec/vocab'), f), 'utf8')));
+const skema = (key) => AKL.find((x) => x.key === key);
+cek('21', 'skema agroklimat', AKL.length, 5);
+cek('21', 'zona Oldeman', skema('oldeman').classes.length, 18);
+cek('21', 'tipe Schmidt-Ferguson', skema('schmidt-ferguson').classes.length, 8);
+cek('21', 'zona Junghuhn', skema('junghuhn').classes.length, 4);
+cek('21', 'kelas dataran hortikultura', skema('dataran-hortikultura').classes.length, 3);
+cek('21', 'pola hujan BMKG', skema('pola-hujan').classes.length, 3);
+cek('21', 'kelas agroklimat seluruhnya', AKL.reduce((a, x) => a + x.classes.length, 0), 36);
+cek('21', 'skema berambang', AKL.filter((x) => x.decidable === 'threshold').length, 4);
 
 // ---- dasar
 cek('semua', 'pestisida terdaftar', P.length, 7724);
@@ -226,7 +293,18 @@ if (HRG) {
   cek('16', 'varian harga diterbitkan', HRG.length, 96);
   cek('16', 'varian harga berangka', HRG.filter((h) => h.series?.length).length, 51);
   cek('16', 'varian harga TANPA angka', HRG.filter((h) => !h.series?.length).length, 45);
-  cek('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26752);
+  // Tumbuh tiap hari kerja: 42 titik baru per tanggal terbit SP2KP. Lantainya 26.752 —
+  // jumlah pada tarikan 23 Agustus 2026, angka yang tertulis di docs/16 dan docs/18.
+  cekMinimal('16', 'titik harga', HRG.reduce((a, h) => a + (h.series?.length ?? 0), 0), 26752);
+  // Yang TIDAK boleh bergeser meski serinya tumbuh: pangkalnya. "Seri SP2KP mulai 1 Februari
+  // 2024, di tengah lonjakan harga pangan" tertulis di docs/18 DAN dicetak app/harga.js ke
+  // layar. Seri bisa memanjang ke depan tiap hari tanpa mengubah kalimat itu; kalau ia
+  // memanjang ke BELAKANG, yang berubah bukan panjangnya melainkan artinya — dan kalimat
+  // "di tengah lonjakan" berhenti benar. Yang dihitung seri yang berpangkal di sana, bukan
+  // yang paling awal: Benih Padi mulai 3 Januari 2024 dan memang selalu jadi yang tunggal.
+  cek('16/18', 'seri berpangkal 1 Feb 2024',
+    HRG.filter((h) => h.source_system === 'SP2KP' && h.series?.length
+      && h.coverage.from === '2024-02-01').length, 42);
   cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 23);
   // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
   // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
@@ -318,7 +396,7 @@ const BEKAS_SALAH = [
   [/44 dari 11\.227 rekaman menyinggung/, 'sertifikasi lot 44 menyinggung — sebenarnya nol'],
   [/15 kadar berbeda/, 'abamektin 15 kadar — sebenarnya 33'],
   [/Dari 25 produk berisi Abamektin/, 'abamektin 18 g/L 25 produk — sebenarnya 26'],
-  [/778 OPT registri/, '778 OPT registri — sebenarnya 516 registri + 208 terkurasi'],
+  [/778 OPT registri/, '778 OPT registri — sebenarnya 768 registri + 10 terkurasi'],
   // Rendemen sawit. Dikoreksi 23 Agustus 2026 dari 21% ke 19,7% — lihat docs/16 bagian 7a.
   // Angka 21% bukan salah hitung melainkan ASUMSI yang menyamar jadi pengukuran, dan itu
   // jenis kekeliruan yang paling mudah kembali: ia terlihat wajar, dan ia masih tertulis di

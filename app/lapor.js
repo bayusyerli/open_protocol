@@ -39,7 +39,7 @@
  */
 
 import { teks } from './pustaka.js';
-import { salin } from './serah.js';
+import { salin, bukaTab, IKON_WA } from './serah.js';
 
 const n = (x) => Number(x ?? 0).toLocaleString('id-ID');
 
@@ -118,7 +118,7 @@ export function blokLapor(k) {
         </p>
 
         <p class="lapor-aksi">
-          <button type="button" data-lapor="wa">Kirim lewat WhatsApp</button>
+          <button type="button" data-lapor="wa">${IKON_WA}Kirim lewat WhatsApp</button>
           <button type="button" data-lapor="salin">Salin laporannya</button>
         </p>
         <p class="lapor-kabar" role="status" aria-live="polite"></p>
@@ -162,7 +162,7 @@ function susunLaporan(kotak, k, balai) {
     '',
     '⚠ Ini *pengamatan*, bukan kesimpulan, dan *bukan permintaan penyemprotan*.',
     'Yang memastikan hamanya petugas yang datang melihat. Dugaan di atas datang dari',
-    'mencocokkan gejala di halaman Open Protocols, bukan dari pemeriksaan lapangan.',
+    'mencocokkan gejala di halaman Pranatani, bukan dari pemeriksaan lapangan.',
     '───────────────',
   );
   return { teks: baris.join('\n') };
@@ -254,10 +254,9 @@ export function pasangLapor(wadah, bacaOpt, bacaWilayah, ambilBalai) {
         + 'akan membuang bagian yang menyebut apa yang belum diperiksa. Sudah disalin; tempelkan langsung.';
       return;
     }
-    const tab = window.open(alamat, '_blank', 'noopener,noreferrer');
-    kabar.textContent = tab
+    kabar.textContent = bukaTab(alamat)
       ? 'WhatsApp dibuka dengan laporannya. Belum terkirim — kamu yang memilih penerimanya.'
-      : 'Peramban memblokir tab baru. Salin dari kotak di bawah.';
+      : 'Peramban menolak membuka tab baru. Salin dari kotak di bawah.';
     if (!tab) await salin(isi);
   });
 }

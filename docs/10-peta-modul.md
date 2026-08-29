@@ -4,7 +4,7 @@
 > Urutannya datang dari **model bisnis**, bukan dari kerapian arsitektur.  
 > Tiga fase · **M0** dan instrumentasi lebih dulu · **M1** prasyarat fase ketiga, bukan pembuka
 >
-> Turunan dari deck *Open Protocols — Platform Business Model* v2 (20 Agustus 2026),
+> Turunan dari deck *Pranatani — Platform Business Model* v2 (20 Agustus 2026),
 > [00-fondasi-dan-tahapan.md](00-fondasi-dan-tahapan.md), dan
 > [02-tiga-pasar.md](02-tiga-pasar.md) bagian 5.
 >

@@ -1,0 +1,43 @@
+== KEN-10 Hybrid Potato Tuber Dataset — verifikasi 2026-08-25
+Perintah 1: file -b raw/*.zip
+  Zip archive data, at least v1.0 to extract, compression method=store
+Perintah 2: unzip -tqq raw/*.zip
+  OK — tidak ada CRC error
+Perintah 3: md5 raw/*.zip  (dicocokkan dengan checksum Zenodo)
+  terhitung : 468ed3a9e2e9e1c509cd38e0f42282a9
+  Zenodo    : 468ed3a9e2e9e1c509cd38e0f42282a9
+  COCOK — berkas identik dengan yang diterbitkan.
+Perintah 4: cacah gambar
+  36000 gambar — SAMA PERSIS dengan klaim 36.000
+
+-- CACAH PER SPLIT DAN KELAS --
+   11520  train/Defectuoso/
+   11520  train/Buen estado/
+    3600  test/Defectuoso/
+    3600  test/Buen estado/
+    2880  val/Defectuoso/
+    2880  val/Buen estado/
+  train 23.040 · test 7.200 · val 5.760  = 36.000
+  Buen estado (kondisi baik) 18.000 · Defectuoso (cacat) 18.000 — seimbang sempurna
+
+-- UJI KEBOCORAN LINTAS SPLIT --
+  Metode: kumpulkan seluruh 36.000 nama berkas, kelompokkan menurut nama dasar,
+          hitung berapa nama yang muncul di lebih dari satu split.
+  Hasil : 0 nama berkas muncul di >1 split — tidak ada duplikasi nama lintas split.
+  Indeks: kelas BE 1..18000 (18.000 unik, 0 lubang); kelas D 1..18000 (18.000 unik, 0 lubang).
+
+-- CATATAN PROVENANS (jujur) --
+  Penomoran ulang yang rapat 1..18.000 per kelas berarti provenans per gambar TERHAPUS.
+  Penerbit menyatakan dataset ini 'incorporating multiple public potato datasets',
+  jadi ini himpunan GABUNGAN dari beberapa sumber, bukan satu sesi pemotretan.
+  Akibatnya: tidak dapat dipastikan apakah augmentasi diterapkan SEBELUM pemisahan split.
+  Kalau ya, turunan dari satu umbi yang sama bisa jatuh di train dan test sekaligus,
+  dan uji nama berkas di atas TIDAK akan mendeteksinya. Rerata 5,2 KB pada 224x224
+  menunjukkan seluruh citra sudah diperkecil dari aslinya.
+
+-- 5 nama berkas contoh --
+  val/Buen estado/Papa_BE_10000.jpg
+  val/Buen estado/Papa_BE_10012.jpg
+  val/Buen estado/Papa_BE_10037.jpg
+  val/Buen estado/Papa_BE_10038.jpg
+  val/Buen estado/Papa_BE_10051.jpg

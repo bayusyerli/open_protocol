@@ -1,0 +1,258 @@
+# Jalur tayang Pranatani — dari kosakata ke satu direktori yang bisa diunggah.
+#
+# Sampai 24 Agustus 2026 tidak ada berkas ini, dan akibatnya dua hal. Pertama, suite
+# validasi yang seluruhnya hijau hanya berjalan kalau ada manusia yang ingat
+# menjalankannya. Kedua, situsnya tidak pernah dirakit di tempat lain selain satu laptop —
+# sehingga 425 MB dari 478 MB artefaknya hanya ada di sana, dan tidak ada yang tahu apakah
+# ia masih bisa dibangun dari isi repositori saja.
+#
+# Yang kedua itulah yang diperiksa tiap kali workflow ini jalan: runner mulai dari klon
+# bersih, jadi kalau sebuah sumber lupa di-commit, build di sini gagal — bukan enam bulan
+# kemudian saat mesinnya diganti.
+
+name: situs
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      asal:
+        description: Domain untuk canonical dan sitemap
+        default: https://pranatani.com
+
+concurrency:
+  group: situs-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  # Satu tempat. Kalau domainnya berpindah, ia berpindah di sini — bukan di 27 ribu berkas,
+  # yang memang tidak pernah menyimpan domainnya sendiri.
+  ASAL: ${{ inputs.asal || 'https://pranatani.com' }}
+
+jobs:
+  bangun:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: spec/package-lock.json
+
+      # ---------------------------------------------------------------------------------
+      # Kredensial deploy dibuktikan DI SINI, bukan di ujung
+      # ---------------------------------------------------------------------------------
+      # Sampai 30 Agustus 2026 satu-satunya tempat rahasia R2 dan token Worker terbukti
+      # berlaku adalah dua langkah TERAKHIR workflow ini — sesudah 30 ribu halaman dibangun.
+      # Token yang izinnya salah pilih karena itu baru ketahuan sekitar 25 menit kemudian,
+      # dan gejalanya muncul jauh dari sebabnya. Langkah ini memindahkannya ke menit pertama.
+      #
+      # R2 diuji dengan MENULIS, bukan membaca. Token Object Read-only melewati `ls` dengan
+      # mulus dan tetap menjatuhkan `aws s3 sync` di ujung — probe baca membuktikan persis
+      # hal yang tidak perlu dibuktikan.
+      #
+      # Worker diuji dengan membaca daftar Worker MILIK AKUN INI, dan itu percobaan ketiga.
+      # `wrangler whoami` gugur lebih dulu karena menuntut User Details:Read, izin yang tidak
+      # ada hubungannya dengan menerbitkan Worker. Penggantinya, `/user/tokens/verify`, gugur
+      # di runner ini pada 29 Agustus 2026: endpoint itu hanya mengenal User API token,
+      # sedangkan Account API token — jenis yang Cloudflare sarankan untuk produksi —
+      # balasannya tidak memuat medan `status`, sehingga token yang sehat pun dijatuhkan.
+      # Membaca daftar Worker akun tidak punya cacat itu: ia menguji ketiga hal yang benar-
+      # benar disyaratkan `wrangler deploy` — token hidup, berizin Workers Scripts, terarah
+      # ke akun yang benar — tanpa menuntut satu pun izin di luar itu.
+      #
+      # KERASNYA BERGANTUNG PADA CABANG, dan itu bukan pelunakan. Pada push ke main langkah
+      # ini menjatuhkan build: jalur rilis yang putus adalah hal terakhir yang boleh diam.
+      # Di mana pun selain itu ia hanya memperingatkan, karena sync dan deploy memang tidak
+      # berjalan di sana — memerahkan PR karena token yang tidak ia sentuh berarti melatih
+      # orang mengabaikan warna merah, dan gerbang yang diabaikan tidak menjaga apa pun.
+      #
+      # Saat gagal, badan balasan API dicetak: isinya kode galat Cloudflare, bukan rahasia.
+      # Tanpa itu kegagalan pertama hanya berbunyi "tak terbaca", dan butuh pembacaan kode
+      # sumber untuk dimengerti. Kode itu pula yang membedakan token salah ketik (400/9106,
+      # tak dikenali) dari token sah yang kurang izin (401/10000) — dua penyakit dengan dua
+      # obat yang sama sekali berbeda.
+      - name: Buktikan kredensial deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CF_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AKUN: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          LARI: ${{ github.run_id }}
+          WAJIB: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
+        run: |
+          set -uo pipefail
+
+          rusak=0
+          cela() {
+            if [ "$WAJIB" = "true" ]; then
+              echo "::error::$1"
+              rusak=1
+            else
+              echo "::warning::$1 — tidak menjatuhkan build, sebab cabang ini tidak mendeploy."
+            fi
+          }
+
+          if [ -z "$AKUN" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+            echo "Rahasia R2 belum lengkap — pembuktian R2 dilewati."
+          else
+            ujung="https://$AKUN.r2.cloudflarestorage.com"
+            kunci="_pembuktian/$LARI"
+            printf '%s' "$GITHUB_SHA" > /tmp/pembuktian
+            if aws s3 cp /tmp/pembuktian "s3://pranatani-situs/$kunci" \
+                 --endpoint-url "$ujung" --only-show-errors \
+               && aws s3 rm "s3://pranatani-situs/$kunci" \
+                 --endpoint-url "$ujung" --only-show-errors; then
+              echo "R2: tulis dan hapus berhasil di bucket pranatani-situs."
+            else
+              cela "R2 menolak tulis atau hapus. Butuh token R2 dengan izin Object Read & Write pada bucket pranatani-situs."
+            fi
+          fi
+
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$AKUN" ]; then
+            echo "Token Cloudflare belum disetel — pembuktian Worker dilewati."
+          else
+            kode=$(curl -sS --max-time 20 -o /tmp/balasan -w '%{http_code}' \
+              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              "https://api.cloudflare.com/client/v4/accounts/$AKUN/workers/scripts" || echo 000)
+            if [ "$kode" = "200" ]; then
+              echo "Token Cloudflare: berlaku, dan berizin Workers pada akun ini."
+            else
+              echo "Balasan API — memuat kode galat, bukan rahasia:"
+              cat /tmp/balasan || true
+              echo
+              cela "CLOUDFLARE_API_TOKEN ditolak saat membaca daftar Worker akun ini (HTTP $kode). Butuh token dengan izin Workers Scripts:Edit pada akun ini — token R2 tidak cukup."
+            fi
+          fi
+
+          exit "$rusak"
+
+      - name: Pasang dependensi
+        working-directory: spec
+        run: npm ci
+
+      # Gerbang mutu lebih dulu, sebelum satu halaman pun dibangun: skema, aturan kebijakan,
+      # 89 uji negatif, 37 uji dosis, 29 uji hitungan, penguraian modul app, lalu dua pagar
+      # rilis — CSP beserta hash skrip temanya, dan `VERSI` service worker terhadap sidik isi
+      # cangkang. Dua yang terakhir menjaga mode gagal yang SUNYI: cangkang yang berubah tanpa
+      # bump VERSI mengunci pengguna lama di versi basi tanpa satu pun tanda, dan hash CSP
+      # yang menyimpang mematikan penyetel tema tanpa galat yang terbaca.
+      #
+      # SELURUHNYA BERJALAN TANPA `spec/indeks/`, dan itu syarat, bukan kebetulan. Pemeriksaan
+      # yang menuntut indeks — pencocokan angka dokumen dan uji pencarian — pindah ke langkah
+      # sesudah indeks dibangun. Menaruhnya di sini membuatnya lolos di laptop yang kebetulan
+      # punya indeks lama dan gagal di klon bersih; itu persis kegagalan CI run pertama,
+      # 24 Agustus 2026, dan runner inilah yang menemukannya.
+      - name: Gerbang mutu — tanpa indeks
+        working-directory: spec
+        run: npm run all
+
+      - name: Bangun indeks
+        run: node spec/tools/bangun-indeks.mjs --tulis
+
+      # Pemeriksaan yang menuntut indeks: pencocokan 125 angka dokumen ke datanya, dan uji
+      # pencarian yang menjalankan `cari()` sungguhan di atas indeks yang benar-benar terbit.
+      # Keduanya tidak bisa ikut gerbang di atas, dan tempatnya memang di sini — sesudah
+      # indeks ada, sebelum 30 ribu halaman dibangun di atasnya.
+      - name: Angka dokumen dan pencarian, di atas indeks terbit
+        working-directory: spec
+        run: npm run uji-terbit
+
+      - name: Pasang Chromium untuk regression test UI
+        working-directory: spec
+        run: npx playwright install --with-deps chromium
+
+      - name: Browser, keyboard, dan accessibility
+        working-directory: spec
+        run: npm run test:browser
+
+      - name: Bangun halaman
+        run: node spec/tools/bangun-halaman.mjs --tulis --asal="$ASAL"
+
+      # Merakit app/, spec/indeks/, terbit/, dan sw.js jadi satu akar — lalu memeriksa
+      # bahwa tiap tautan mutlak di 30 ribu halaman mendarat di berkas yang benar-benar
+      # ikut terangkut. Langkah inilah yang gagal kalau sebuah sumber lupa di-commit.
+      - name: Rakit situs dan periksa tautannya
+        run: node spec/tools/rakit-situs.mjs
+
+      - name: Ringkas hasil
+        run: |
+          {
+            echo "### Situs terakit"
+            echo
+            echo "| | |"
+            echo "|---|---|"
+            echo "| Asal | \`$ASAL\` |"
+            echo "| Berkas | $(find _situs -type f | wc -l | tr -d ' ') |"
+            echo "| Halaman HTML | $(find _situs -name '*.html' | wc -l | tr -d ' ') |"
+            echo "| Ukuran | $(du -sh _situs | cut -f1) |"
+            echo "| Sitemap | $(ls _situs/sitemap-*.xml | wc -l | tr -d ' ') berkas, $(grep -ho '<loc>' _situs/sitemap-*.xml | wc -l | tr -d ' ') URL |"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Tidak dijalankan pada pull request: rakitannya ±480 MB, dan yang perlu diketahui
+      # sebuah PR adalah apakah ia membangun dan tautannya utuh — bukan salinan situsnya.
+      - name: Unggah artefak situs
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-artifact@v4
+        with:
+          name: situs-${{ github.sha }}
+          path: _situs
+          retention-days: 7
+          if-no-files-found: error
+
+      # ---------------------------------------------------------------------------------
+      # Deploy ke Cloudflare R2 — hanya dari main, dan hanya bila rahasianya ada
+      # ---------------------------------------------------------------------------------
+      # SYNC, BUKAN UNGGAH ULANG. R2 berbicara S3, jadi `aws s3 sync` bekerja apa adanya —
+      # dan ia hanya mengirim berkas yang ukuran atau waktunya berubah. Antar-build musiman
+      # yang berubah biasanya sebagian kecil dari 41.852; mengunggah semuanya tiap kali
+      # membuang waktu, walau ongkosnya sendiri kecil (~$0,20 untuk unggah penuh).
+      #
+      # `--delete` menghapus objek yang tidak lagi ada di rakitan. Tanpa itu, entitas yang
+      # dicabut registri akan terus dilayani selamanya — dan halaman produk yang izinnya
+      # sudah dicabut adalah persis yang tidak boleh tertinggal hidup.
+      #
+      # Rahasia yang dibutuhkan (Settings → Secrets → Actions):
+      #   CF_ACCOUNT_ID           id akun Cloudflare
+      #   CF_R2_ACCESS_KEY_ID     token R2 dengan izin Object Read & Write
+      #   CF_R2_SECRET_ACCESS_KEY pasangannya
+      #   CLOUDFLARE_API_TOKEN    token dengan izin Workers Scripts:Edit, untuk wrangler
+      # Tanpa keempatnya, langkah ini dilewati dan build tetap hijau — supaya fork dan
+      # kontributor tidak melihat kegagalan yang bukan urusannya.
+      - name: Sync ke R2
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CF_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AKUN: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          if [ -z "$AKUN" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+            echo "Rahasia R2 belum disetel — deploy dilewati, build tetap hijau."
+            exit 0
+          fi
+          aws s3 sync _situs "s3://pranatani-situs" \
+            --endpoint-url "https://$AKUN.r2.cloudflarestorage.com" \
+            --delete --only-show-errors
+          echo "Tersinkron: $(find _situs -type f | wc -l | tr -d ' ') berkas."
+
+      # Worker-nya kecil dan jarang berubah, tetapi ia yang memetakan `/produk/x/` ke
+      # `index.html` di dalamnya — tanpa deploy ini, sync di atas menghasilkan 30 ribu
+      # halaman yang seluruhnya 404.
+      - name: Deploy Worker
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "Token Cloudflare belum disetel — deploy Worker dilewati."
+            exit 0
+          fi
+          npx --yes wrangler@4 deploy --config worker/wrangler.toml

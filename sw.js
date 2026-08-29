@@ -28,36 +28,69 @@
  * yang diambil jaringan-dulu.
  */
 
-const VERSI = 'v23';
+/* CAPNYA DISUNTIKKAN SAAT PERAKITAN, BUKAN DIKETIK.
+ *
+ * Nilai di bawah sengaja `dev` dan sengaja tidak pernah diubah tangan.
+ * `spec/tools/rakit-situs.mjs` menghitung sidik isi seluruh berkas cangkang lalu
+ * menuliskannya ke salinan sw.js di `_situs/` — jadi cap ini berubah tepat ketika isinya
+ * berubah, tidak pernah lebih awal dan tidak pernah tertinggal.
+ *
+ * KENAPA BUKAN ANGKA YANG DINAIKKAN ORANG. Selama empat kali berturut-turut, CI menolak
+ * push karena isi cangkang berubah sementara versinya tidak — dan keempatnya berpola sama:
+ * versi dinaikkan dan sidiknya dicatat, lalu app/ disunting lagi sebelum commit. Sekali di
+ * antaranya dilakukan justru oleh yang memasang pagarnya. Yang menghapus kelas kesalahan
+ * itu bukan kedisiplinan melainkan mencabut kesempatannya: cap yang dihitung dari isi tidak
+ * bisa didahului suntingan, karena ia lahir sesudah suntingan terakhir.
+ *
+ * SAAT PENGEMBANGAN nilainya tetap `dev`, dan itu berarti cangkang tidak berganti sendiri
+ * ketika app/ disunting. Pakai "Update on reload" di DevTools, atau cabut pekerjanya —
+ * halaman ukur/peranti punya tombolnya. Yang tayang ke orang selalu hasil rakitan, dan di
+ * sana capnya nyata. */
+const VERSI = 'dev';
 const CANGKANG = `op-cangkang-${VERSI}`;
 const PECAHAN_AWALAN = 'op-pecahan-';
 
-const APP = '/app/';
+/* DITERIMA DARI HALAMAN, BUKAN DITEBAK. Berkas permukaan tinggal di `/app/` selama
+ * pengembangan dan di akar pada situs terbitan — dan pekerja ini berada di akar pada
+ * keduanya, jadi letaknya sendiri tidak bisa membedakannya. `luring.js` menyematkan
+ * direktori halaman pemanggil sebagai query saat mendaftar; yang dipakai di bawah itu.
+ * Nilai bawaan `/app/` cuma untuk pekerja yang terdaftar sebelum baris ini ada — ia
+ * digantikan pada pendaftaran berikutnya.
+ *
+ * INDEKS tidak butuh perlakuan yang sama: ia mutlak dan sama di kedua bentuk. */
+const APP = new URL(self.location.href).searchParams.get('app') || '/app/';
 const INDEKS = '/spec/indeks/';
 
 // Cangkang: seluruh halaman, gaya, dan modul. Didaftar tangan, bukan dipindai — berkas
 // yang lupa didaftar akan gagal senyap saat luring, dan daftar yang terlihat lebih mudah
 // diperiksa daripada pemindai yang benar diam-diam.
 const BERKAS_CANGKANG = [
-  'beranda.html', 'index.html', 'jalur-1.html', 'jalur-3.html', 'jalur-4.html',
-  'jalur-5.html', 'jalur-6.html', 'ukur.html', 'takaran.html', 'harga.html',
-  'principal.html', 'toko.html', 'usaha.html', 'kas.html', 'rencana.html',
+  'index.html', 'produk.html', 'tanaman.html', 'harga-pupuk.html', 'varietas.html',
+  'pupuk-sendiri.html', 'pengendali-sendiri.html', 'peranti.html', 'takaran.html', 'harga.html',
+  'perusahaan.html', 'toko.html', 'usaha.html', 'kas.html', 'rencana.html',
   'gaya.css', 'beranda.css', 'batas.css',
+  'hitung.js', 'tanya.js',
   'pustaka.js', 'batas.js', 'sanggah.js', 'serah.js', 'teruskan.js', 'lapor.js',
+  'simpanan.js',
   'musim.js', 'buku.js',
   'tema.js', 'luring.js', 'cangkang.js',
-  'ukur.js', 'ukur-layar.js',
-  'beranda.js', 'jalur-1.js', 'jalur-2.js', 'jalur-3.js', 'jalur-4.js', 'jalur-5.js',
-  'jalur-6.js', 'bahan.js', 'varietas.js', 'kandungan.js', 'takaran.js',
-  'harga.js', 'principal.js', 'gambar.js', 'toko.js', 'usaha.js', 'kas.js', 'rencana.js',
-  'manifest.webmanifest', 'ikon.svg',
+  'ukur.js', 'peranti.js',
+  'beranda.js', 'tanaman.js', 'produk.js', 'harga-pupuk.js', 'cek-varietas.js', 'pupuk-sendiri.js',
+  'pengendali-sendiri.js', 'bahan.js', 'layar-varietas.js', 'kandungan.js', 'takaran.js',
+  'harga.js', 'perusahaan.js', 'gambar.js', 'toko.js', 'usaha.js', 'kas.js', 'rencana.js',
+  'manifest.webmanifest', 'ikon.svg', 'ikon-maskable.svg',
+  // Tanda merek. Versi gelapnya ikut walaupun cuma dipakai satu tema: yang berpindah
+  // tema saat luring tidak punya jaringan untuk mengambil yang belum tersimpan, dan
+  // kepala tanpa tanda lebih terasa rusak daripada kepala bertanda salah warna.
+  // Yang mendatar tidak dipakai satu layar pun; ia disimpan sebagai aset merek.
+  'logo-pranatani.svg', 'logo-pranatani-gelap.svg', 'logo-pranatani-horizontal.svg',
 ].map((f) => APP + f);
 
 // Berkas indeks yang kecil dan hampir selalu dipakai. `sediaan/` ikut karena keduabelas
 // resepnya cuma 36 KB, dan tanpanya jalur 5 dan 6 kosong saat luring — dua jalur yang
 // justru paling mungkin dibuka jauh dari sinyal.
 const INDEKS_AKAR = [
-  'nama-lokal.json',
+  'gejala.json', 'gejala-cari.json', 'nama-lokal.json',
   'sediaan.json', 'varian.json', 'larangan.json', 'harga.json',
 ].map((f) => INDEKS + f);
 
@@ -66,21 +99,6 @@ const INDEKS_AKAR = [
  * keduanya justru paling mungkin dibuka jauh dari sinyal. */
 const SEDIAAN_LUARAN = (m, cap) =>
   (m.pecahan?.sediaan ?? []).map((k) => `${INDEKS}sediaan/${k}.json?v=${cap}`);
-
-/* Rincian tiap pintu gejala — ciri pembanding, keterangan, catatan, penular. 29 KB untuk
- * 28 pintu, dipisahkan dari gejala.json supaya layar DAFTAR tidak menunggu semuanya.
- * Ikut diprasimpan karena jalur 1 dibuka justru saat masalahnya sedang terjadi, dan blok
- * "pastikan dulu" tanpa isinya adalah dugaan tanpa cara memastikan — persis yang ditolak
- * seluruh jalur itu. */
-const GEJALA_LUARAN = (m, cap) =>
-  (m.pecahan?.gejala ?? []).map((k) => `${INDEKS}gejala/${k}.json?v=${cap}`);
-
-/* Daftar gejala dan kepala pencariannya, keduanya dipecah bernomor sejak berkas
- * tunggalnya melewati anggaran 48 KB pada 140 pintu. Keduanya wajib ada saat luring:
- * yang pertama ISI layar pertama jalur 1, yang kedua satu-satunya cara mencarinya. */
-const bernomor = (m, cap, akar, kunci) =>
-  Array.from({ length: m.pecahan?.[kunci] ?? 0 },
-    (_, i) => `${INDEKS}${akar}/${String(i).padStart(3, '0')}.json?v=${cap}`);
 
 const dalamJangkauan = (u) => u.pathname.startsWith(APP) || u.pathname.startsWith(INDEKS);
 const adalahMeta = (u) => u.pathname === `${INDEKS}meta.json`;
@@ -115,9 +133,6 @@ self.addEventListener('install', (e) => {
       await simpanDiam(namaPecahan(cap), [
         ...INDEKS_AKAR.map((u) => `${u}?v=${cap}`),
         ...SEDIAAN_LUARAN(m, cap),
-        ...GEJALA_LUARAN(m, cap),
-        ...bernomor(m, cap, 'gejala-daftar', 'gejalaDaftar'),
-        ...bernomor(m, cap, 'gejala-cari', 'gejalaCari'),
       ]);
     } catch { /* tanpa jaringan saat pasang: cangkangnya saja, dan itu tetap berguna */ }
 

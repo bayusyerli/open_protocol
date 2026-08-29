@@ -98,7 +98,7 @@ supaya bisa ditelusuri ulang. Perlakuan yang sama diterapkan pada IRAC (dokumenn
 *"IRAC document protected by © Copyright 2026"*) dan HRAC (halamannya bertanda *"©2026 HRAC"*).
 
 **Ini keputusan yang sebaiknya ditinjau ulang oleh pemilik repositori sebelum status naik dari
-`draft`**, terutama bila Open Protocols kelak dipakai dalam layanan berbayar.
+`draft`**, terutama bila Pranatani kelak dipakai dalam layanan berbayar.
 
 ---
 
@@ -311,6 +311,57 @@ QoI lain, tetapi FRAC memisahkannya karena tidak bersilang-resistensi pada mutan
 FRAC juga memakai kode bertitik (`16.1`, `16.2`, `16.3`) dan berspasi (`M 03`, `U 19`,
 `P 07`) — ditulis apa adanya, karena bentuk itulah yang tercetak pada label.
 
+**Seberapa besar akibatnya, diukur pada registri ini.** Aturan di atas sebelumnya tercatat
+tanpa besaran; berikut angkanya, dihitung 28 Agustus 2026 dari berkas ini sendiri
+di-join ke `spec/indeks/opt/`.
+
+Dari **676 kode** pada 1.106 bahan, **166 berbentuk `<angka><huruf>`** — dan seluruh 166
+itu IRAC; tidak ada satu pun FRAC `11A` di registri ini. Tujuh di antaranya golongan `8`
+yang justru dikecualikan, jadi **159 kode** yang benar-benar kena aturan penggabungan.
+Setelah aturan itu diterapkan tersisa **100 golongan utama**, dan **hanya sembilan** yang
+terpecah jadi lebih dari satu kode lengkap: IRAC `1`, `2`, `3`, `4`, `7`, `9`, `10`, `12`,
+dan `22`. Sembilan itulah seluruh permukaan tempat kekeliruan ini bisa terjadi — sisanya
+aman dibandingkan apa adanya.
+
+> Angka-angka di atas sempat salah pada tulisan pertama butir ini — 224 kode dan 85
+> golongan — karena dihitung dengan pemotongan naif "ambil awalan angka **atau** huruf",
+> yang ikut menelan `M 03` dan `4/29`. Kekeliruan yang sama persis dengan yang diperingatkan
+> di bawah, dilakukan sambil menuliskannya. Definisi yang dipakai sekarang dinyatakan
+> eksplisit supaya bisa dihitung ulang: **kode IRAC yang cocok dengan `^\d+[A-Z]$`, selain
+> golongan `8`.**
+
+Akibatnya terpusat, bukan tersebar. Pada **Wereng Coklat di padi** (454 produk, 47 bahan,
+17 golongan): `4A`+`4E` bersama-sama **186 dari 454 merek — 41%**, dan `1A`+`1B` **62 merek**.
+Pada **Trips di cabai** (246 produk, 60 bahan, 22 golongan): `4A`+`4C` **50 merek**, `1A`+`1B`
+**45 merek**. Penyaji yang membandingkan kode lengkap akan menyatakan dua bahan itu berbeda
+golongan, dan pada wereng coklat kekeliruan itu menyentuh dua dari lima pilihan terbesar.
+
+> **Dua bentuk yang MIRIP sub-golongan tetapi bukan — dan keduanya sempat tertukar saat
+> aturan ini pertama kali diterapkan.**
+>
+> **Huruf awalan FRAC bukan induk sub-golongan.** `M 01`…`M 13`, `P 01`…`P 07`, dan
+> `BM 02`/`BM 03` bukan sub-golongan dari sebuah golongan "M", "P", atau "BM": hurufnya
+> menandai **kategori** — multi-tempat, penginduksi pertahanan inang, biologi — dan angka di
+> belakangnya golongan tersendiri. Mankozeb (`M 03`) dan klorotalonil (`M 05`) **bukan satu
+> golongan**. Meruntuhkannya menghasilkan penggabungan yang tidak pernah dimaksudkan FRAC;
+> pada Penyakit Hawar Daun di kentang ia memampatkan 23 golongan jadi 18.
+>
+> **Kode HRAC bergaris miring adalah keanggotaan ganda, bukan sub-golongan.** Kuinklorak
+> `4/29` dan bromoksinil oktanoat `6/24` masing-masing anggota **dua** golongan sekaligus.
+> Memotongnya pada angka pertama membuang separuh keterangannya.
+>
+> Karena itu aturan penggabungan yang aman berbunyi sempit: **hanya kode IRAC berbentuk
+> `<angka><huruf>`, diruntuhkan ke angkanya, dan tidak untuk golongan `8`** — yang justru
+> dikecualikan IRAC seperti disebut di awal bagian ini. Kode bertitik FRAC (`16.1`, `16.2`)
+> belum diputuskan: daftar terbitannya memisahkannya, dan tidak ada di sini yang cukup untuk
+> menyatakan keduanya boleh disatukan.
+>
+> Satu jebakan terakhir yang halus: sembilan golongan di atas terpecah **di seluruh
+> registri**, tetapi pada satu pasangan hama–komoditas sering hanya satu sub-kode yang hadir —
+> IRAC `9` pada wereng coklat cuma membawa `9B`. Meruntuhkannya tetap benar, tetapi menandainya
+> sebagai penggabungan **salah**: tidak ada yang tergabung di sana. Penanda hanya layak muncul
+> kalau lebih dari satu kode lengkap benar-benar bertemu di satu keranjang.
+
 **Yang memang tidak punya skema.** Rodentisida punya komitenya sendiri, **RRAC**, yang tidak
 dicakup berkas ini. Moluskisida tidak tercakup komite mana pun. Zat pengatur tumbuh, atraktan,
 penolak, dan pengawet kayu juga tidak. Nematisida punya skema terpisah, *IRAC Nematicide MoA
@@ -357,7 +408,11 @@ bakterisida.
   lama tetap terbaca — dan itulah kenapa ia enum bernama, bukan huruf telanjang.
 - **Aturan rotasinya sendiri** belum ada. Berkas ini menyediakan bahannya; aturan
   "berapa musim berturut-turut sebelum diperingatkan" adalah keputusan agronomis yang belum
-  diambil, dan tempatnya bukan di sini.
+  diambil, dan tempatnya bukan di sini. Yang **sudah** bisa dipastikan sebelum keputusan itu
+  diambil adalah bentuk pembandingnya: nomor golongan utama, dengan tiga pengecualian yang
+  diukur di §5. Sebuah permukaan yang menjalankan aturan itu sudah pernah dibuat sebagai
+  prototipe tinjauan — [`prototypes/ux-alternatif/05-golongan-bukan-merek.html`](../prototypes/ux-alternatif/05-golongan-bukan-merek.html)
+  — dan ia berhenti tepat sebelum memperingatkan, dengan mengutip butir ini sebagai alasannya.
 - **Penarik ulangnya tidak ikut masuk repositori — dan itu keputusan, bukan kelalaian.**
   Kosakata lain punya `spec/tools/bangun-*.mjs` yang membangunnya kembali. Berkas ini tidak,
   karena alat semacam itu harus menyimpan **salinan utuh** ketiga daftar terbitan sebagai tabel
