@@ -44,6 +44,69 @@ jobs:
           cache: npm
           cache-dependency-path: spec/package-lock.json
 
+      # ---------------------------------------------------------------------------------
+      # Kredensial deploy dibuktikan DI SINI, bukan di ujung
+      # ---------------------------------------------------------------------------------
+      # Sampai 30 Agustus 2026 satu-satunya tempat rahasia R2 dan token Worker terbukti
+      # berlaku adalah dua langkah TERAKHIR workflow ini — sesudah 30 ribu halaman dibangun.
+      # Token yang izinnya salah pilih karena itu baru ketahuan sekitar 25 menit kemudian,
+      # dan gejalanya muncul jauh dari sebabnya.
+      #
+      # Langkah ini memindahkan kegagalan itu ke menit pertama.
+      #
+      # Untuk R2 ia MENULIS lalu menghapus satu objek kecil, bukan sekadar membaca. Token
+      # Object Read-only akan melewati `ls` dengan mulus dan tetap menjatuhkan `aws s3 sync`
+      # di ujung — jadi probe baca membuktikan persis hal yang tidak perlu dibuktikan.
+      #
+      # Untuk Worker ia memakai endpoint verifikasi token, bukan `wrangler whoami`. Alasannya
+      # sempit: `whoami` menuntut izin User Details:Read yang tidak ada hubungannya dengan
+      # menerbitkan Worker, sehingga token yang sah tapi diracik sendiri bisa gagal di sini
+      # tanpa sebab. `whoami` tetap dijalankan sesudahnya — untuk mencetak daftar izinnya,
+      # yang berguna saat mendiagnosis, tapi tidak boleh menjatuhkan build.
+      #
+      # Tanpa rahasia, langkah ini lewat tanpa suara: fork dan kontributor tidak punya urusan
+      # dengan bucket ini. Dengan rahasia yang ADA tapi rusak, ia gagal — jalur rilis yang
+      # putus adalah hal terakhir yang boleh diam.
+      - name: Buktikan kredensial deploy
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.CF_R2_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.CF_R2_SECRET_ACCESS_KEY }}
+          AWS_DEFAULT_REGION: auto
+          AKUN: ${{ secrets.CF_ACCOUNT_ID }}
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          LARI: ${{ github.run_id }}
+        run: |
+          set -euo pipefail
+
+          if [ -z "$AKUN" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
+            echo "Rahasia R2 belum lengkap — pembuktian R2 dilewati."
+          else
+            ujung="https://$AKUN.r2.cloudflarestorage.com"
+            kunci="_pembuktian/$LARI"
+            printf '%s' "$GITHUB_SHA" > /tmp/pembuktian
+            aws s3 cp /tmp/pembuktian "s3://pranatani-situs/$kunci" \
+              --endpoint-url "$ujung" --only-show-errors
+            aws s3 rm "s3://pranatani-situs/$kunci" \
+              --endpoint-url "$ujung" --only-show-errors
+            echo "R2: tulis dan hapus berhasil di bucket pranatani-situs."
+          fi
+
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "Token Cloudflare belum disetel — pembuktian Worker dilewati."
+          else
+            balasan=$(curl -sS --max-time 20 \
+              -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
+              https://api.cloudflare.com/client/v4/user/tokens/verify || true)
+            status=$(printf '%s' "$balasan" | grep -o '"status":"[a-z]*"' | cut -d'"' -f4 | head -1 || true)
+            if [ "$status" != "active" ]; then
+              echo "Token Cloudflare tidak berlaku - status: ${status:-tak terbaca}." >&2
+              exit 1
+            fi
+            echo "Token Cloudflare: aktif."
+            npx --yes wrangler@4 whoami || echo "(whoami gagal — tidak menjatuhkan build; lihat catatan di atas.)"
+          fi
+
       - name: Pasang dependensi
         working-directory: spec
         run: npm ci
@@ -144,7 +207,7 @@ jobs:
           AWS_DEFAULT_REGION: auto
           AKUN: ${{ secrets.CF_ACCOUNT_ID }}
         run: |
-          if [ -z "$AKUN" ] || [ -z "$AWS_ACCESS_KEY_ID" ]; then
+          if [ -z "$AKUN" ] || [ -z "$AWS_ACCESS_KEY_ID" ] || [ -z "$AWS_SECRET_ACCESS_KEY" ]; then
             echo "Rahasia R2 belum disetel — deploy dilewati, build tetap hijau."
             exit 0
           fi

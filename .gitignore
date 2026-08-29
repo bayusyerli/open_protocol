@@ -69,3 +69,7 @@ simpanan-sesi-20260824/
 # datasets/metadata/dataset-catalog.csv, dan checksumnya tersimpan di SHA256SUMS.txt
 # tiap dataset. Yang naik ke repo cuma metadatanya: README, katalog, laporan.
 datasets/**/raw/
+
+# Cache lokal wrangler — dibuat `wrangler dev` dan menyimpan state sesi serta build
+# sementara Worker. Tidak ada yang perlu dibagikan di dalamnya.
+.wrangler/
