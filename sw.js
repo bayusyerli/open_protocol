@@ -13,13 +13,26 @@
  * Mengunduh semuanya diam-diam pada sambungan berbayar adalah kekerasan terhadap orang
  * yang justru jadi alasan permukaan ini ringan. Jadi:
  *
- *   1. Otomatis, ±230 KB — cangkang aplikasi, berkas indeks akar, dan sediaan/.
- *      Sesudah sekali buka: aplikasi terbuka tanpa sinyal, jalur 5 dan 6 utuh, daftar
- *      gejala jalur 1 utuh, pencarian gejala dan nama lokal utuh.
+ *   1. Otomatis, ±1,2 MB (terukur 30 Agustus 2026: cangkang 882 KB pada 58 berkas,
+ *      indeks 308 KB) — cangkang aplikasi, berkas indeks akar, sediaan/, serta daftar
+ *      gejala dan kepala pencariannya. Sesudah sekali buka: aplikasi terbuka tanpa
+ *      sinyal, jalur 5 dan 6 utuh, daftar gejala jalur 1 utuh, pencarian gejala dan
+ *      nama lokal utuh.
  *   2. Atas permintaan, ±4,6 MB — kepala pencarian `cari/`. Barulah pencarian nama
  *      bekerja tanpa sinyal. Ukurannya disebut sebelum diketuk, tidak sesudah.
- *   3. Sisanya menyusul saat dibuka, dan bertahan. Rincian produk, varietas, dan merek
- *      per OPT — 24 MB kalau seluruhnya, dan hampir tidak ada yang membuka seluruhnya.
+ *   3. Sisanya menyusul saat dibuka, dan bertahan. Rincian tiap pintu gejala, rincian
+ *      produk, varietas, dan merek per OPT — 24 MB kalau seluruhnya, dan hampir tidak
+ *      ada yang membuka seluruhnya.
+ *
+ * ANGKA TINGKAT 1 ITU PERNAH BERBUNYI "±230 KB", dan itu bukan sekadar basi: sampai
+ * 30 Agustus 2026 daftar gejalanya memang TIDAK ikut. `INDEKS_AKAR` masih menyebut
+ * `gejala.json` dan `gejala-cari.json` — dua berkas yang berhenti ada ketika indeks
+ * memecahnya jadi `gejala-daftar/NNN.json` dan `gejala-cari/NNN.json`. `simpanDiam()`
+ * menelan kegagalan per berkas supaya satu berkas hilang tidak membatalkan seluruh
+ * kemampuan luring, jadi keduanya 404 tanpa suara dan pemasangan tetap melapor berhasil.
+ * Yang tersisa janji di baris ini, dan jalur 1 yang kosong justru saat tanpa sinyal —
+ * syarat lapangan nomor satunya. Lihat `cek-luring-indeks.mjs`, yang kini menolak nama
+ * indeks yang tidak ada di keranjang mana pun.
  *
  * AMAN KARENA URL-NYA BERCAP. Pecahan diambil dengan `?v=<cap>`; isi berubah berarti URL
  * berubah, jadi cache-first tidak bisa menyajikan yang basi. Sebelum cap ada (lihat
@@ -90,7 +103,7 @@ const BERKAS_CANGKANG = [
 // resepnya cuma 36 KB, dan tanpanya jalur 5 dan 6 kosong saat luring — dua jalur yang
 // justru paling mungkin dibuka jauh dari sinyal.
 const INDEKS_AKAR = [
-  'gejala.json', 'gejala-cari.json', 'nama-lokal.json',
+  'nama-lokal.json',
   'sediaan.json', 'varian.json', 'larangan.json', 'harga.json',
 ].map((f) => INDEKS + f);
 
@@ -99,6 +112,23 @@ const INDEKS_AKAR = [
  * keduanya justru paling mungkin dibuka jauh dari sinyal. */
 const SEDIAAN_LUARAN = (m, cap) =>
   (m.pecahan?.sediaan ?? []).map((k) => `${INDEKS}sediaan/${k}.json?v=${cap}`);
+
+/* Daftar gejala dan kepala pencariannya. Keduanya dipecah bernomor sejak berkas
+ * tunggalnya melewati anggaran 48 KB, dan keduanya WAJIB ada saat luring: yang pertama
+ * isi layar pertama jalur 1, yang kedua satu-satunya cara mencarinya. 188 KB berdua.
+ *
+ * Rincian tiap pintu — `gejala/<kunci>.json`, ciri pembanding dan blok "pastikan dulu" —
+ * SENGAJA tidak ikut di sini, dan itu perubahan sikap terhadap 286 KB pada 208 pintu.
+ * Saat pintunya masih 28 dan seluruhnya 29 KB, memprasimpan semuanya hampir gratis;
+ * pada 208 ia jadi tiga perempat unduhan otomatis, dibayar semua orang demi satu-dua
+ * pintu yang benar-benar dibuka. Ia turun ke tingkat 3 — terambil saat dibuka, lalu
+ * bertahan. Yang menahannya aman: kartu yang belum tersimpan GAGAL saat luring, bukan
+ * tergambar tanpa blok pastikan-dulunya. Dugaan tanpa cara memastikan persis yang
+ * ditolak jalur ini, dan diam-diam menghilangkan bloknya lebih buruk daripada berkata
+ * datanya belum ada. */
+const bernomor = (m, cap, akar, kunci) =>
+  Array.from({ length: m.pecahan?.[kunci] ?? 0 },
+    (_, i) => `${INDEKS}${akar}/${String(i).padStart(3, '0')}.json?v=${cap}`);
 
 const dalamJangkauan = (u) => u.pathname.startsWith(APP) || u.pathname.startsWith(INDEKS);
 const adalahMeta = (u) => u.pathname === `${INDEKS}meta.json`;
@@ -133,6 +163,8 @@ self.addEventListener('install', (e) => {
       await simpanDiam(namaPecahan(cap), [
         ...INDEKS_AKAR.map((u) => `${u}?v=${cap}`),
         ...SEDIAAN_LUARAN(m, cap),
+        ...bernomor(m, cap, 'gejala-daftar', 'gejalaDaftar'),
+        ...bernomor(m, cap, 'gejala-cari', 'gejalaCari'),
       ]);
     } catch { /* tanpa jaringan saat pasang: cangkangnya saja, dan itu tetap berguna */ }
 

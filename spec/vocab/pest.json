@@ -29,6 +29,12 @@
           "url": "https://api.gbif.org/v1/species/match",
           "year": 2026,
           "locator": "Seluruh nama ilmiah diperiksa 19 Agustus 2026. pest_kind diturunkan dari kingdom dan kelas, bukan lagi dari nama Indonesia."
+        },
+        {
+          "title": "Perburuan gambar OPT cabai — lima agen paralel",
+          "publisher": "Pranatani",
+          "year": 2026,
+          "locator": "60 kandidat disaring lewat dua gerbang: lisensi (60→51) dan identifikasi (51→48). Yang gugur tetap tercatat di luar repositori. Tidak satu pun berkas biner diunduh saat pendataan — asal-usul dicatat lebih dulu, karena saat pengambilan adalah satu-satunya saat asal-usulnya masih diketahui pasti."
         }
       ]
     },

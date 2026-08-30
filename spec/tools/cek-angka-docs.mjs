@@ -396,7 +396,10 @@ const BEKAS_SALAH = [
   [/44 dari 11\.227 rekaman menyinggung/, 'sertifikasi lot 44 menyinggung — sebenarnya nol'],
   [/15 kadar berbeda/, 'abamektin 15 kadar — sebenarnya 33'],
   [/Dari 25 produk berisi Abamektin/, 'abamektin 18 g/L 25 produk — sebenarnya 26'],
-  [/778 OPT registri/, '778 OPT registri — sebenarnya 768 registri + 10 terkurasi'],
+  // Koreksinya sendiri sempat basi: merge 29 Agustus 2026 mengambil kalimat lama ini
+  // sementara kurasi menaikkan 10 → 208 dan registri hidup turun 768 → 516. Pola
+  // pencarinya tetap benar; yang salah justru kalimat yang seharusnya membetulkan.
+  [/778 OPT registri/, '778 OPT registri — sebenarnya 516 registri + 208 terkurasi'],
   // Rendemen sawit. Dikoreksi 23 Agustus 2026 dari 21% ke 19,7% — lihat docs/16 bagian 7a.
   // Angka 21% bukan salah hitung melainkan ASUMSI yang menyamar jadi pengukuran, dan itu
   // jenis kekeliruan yang paling mudah kembali: ia terlihat wajar, dan ia masih tertulis di

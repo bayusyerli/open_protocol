@@ -418,9 +418,16 @@ function gambar(nama, bahan, gejala, lokal, kueri,
   // Gejala lebih dulu. Kalau kueri memang cocok dengan apa yang terlihat di kebun,
   // itu hampir pasti yang dimaksud — dan itu pula cabang bertaruhan paling tinggi.
   if (gejala.length) {
+    // Cakupannya DIBACA dari meta, tidak diketik. Kalimat ini sempat berbunyi "sepuluh OPT
+    // cabai terkurasi" sampai 30 Agustus 2026, sesudah kurasi naik ke 208 OPT di 59
+    // komoditas — merge 29 Agustus mengambil kalimat lama sementara datanya sudah pindah.
+    // Angka yang salah di sini bukan angka biasa: ia yang memberi tahu pembaca seberapa
+    // jauh kurasi ini boleh dipercaya, dan menyebutnya sepersembilan belas dari yang
+    // sebenarnya menjual bukti yang ada sebagai bukti yang jauh lebih tipis.
+    const jml = bacaMeta()?.jumlah ?? {};
     bagian.push(kelompok(
       `${gejala.length} gejala cocok`,
-      'sepuluh OPT cabai terkurasi, <strong>berstatus draft</strong>',
+      `${angkaId(jml.optTerkurasi ?? 0)} OPT pada ${angkaId(jml.optKomoditasBerpintu ?? 0)} komoditas terkurasi, <strong>berstatus draft</strong>`,
       gejala.map((g) => `
         <li>
           <a href="${teks(tautanGejala(g))}" data-jenis="gejala">
