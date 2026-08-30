@@ -124,21 +124,50 @@ const rapikan = (s) => (s ?? '').toLowerCase().normalize('NFKD').replace(/[^a-z0
 const satuanTeks = (s) =>
   (typeof s === 'string' ? s : (s?.display ?? s?.deskripsi ?? '')).trim() || '—';
 const komoditas = [];
+const kamusKomoditas = new Map();
 for (const f of ['commodity.json', 'commodity-registri.json', 'commodity-varietas.json'])
-  for (const it of bacaJson(f).items ?? []) komoditas.push({ id: it.id, nama: it.label?.id ?? '' });
+  for (const it of bacaJson(f).items ?? []) {
+    const rec = { id: it.id, nama: it.label?.id ?? '', ganti: it.lifecycle?.superseded_by?.id ?? it.superseded_by?.id ?? null };
+    komoditas.push(rec);
+    kamusKomoditas.set(it.id, rec);
+  }
+
+/* Yang digantikan ikut dicocokkan untuk DIKENALI, tidak pernah untuk DITERBITKAN.
+ *
+ * Aturan L29 menolak rujukan ke entitas superseded — dengan alasan yang ditulisnya
+ * sendiri: ia dipertahankan supaya ejaan aslinya bisa ditelusuri, bukan supaya dipakai
+ * lagi. Sebelas seri melanggarnya dan menahan SELURUH pembangunan harga di gerbang skema,
+ * yang berarti tidak satu pun harga baru ter-commit sejak kosakata komoditas disatukan.
+ *
+ * KENAPA PENGGANTINYA TIDAK DIIKUTI BEGITU SAJA. Mengikuti `superseded_by` benar untuk
+ * tiga dari empat kasus — Ketimun→Mentimun, Terigu→Tepung terigu, Budidaya kelapa
+ * sawit→Kelapa sawit — dan SALAH untuk yang keempat: "Bawang" digantikan "Bawang merah",
+ * sehingga seri Bawang Bombai akan menunjuk komoditas yang bukan dirinya. Pengganti
+ * sebuah nama umum kerap salah satu anggotanya, bukan padanannya.
+ *
+ * Jadi yang dilakukan mengikuti doktrin berkas ini sendiri: yang tidak ketemu DIBIARKAN
+ * KOSONG. Sambungan ke entitas superseded dijatuhkan, dan seri yang kehilangan sambungan
+ * dicetak di ringkasan — supaya pemetaan yang benar bisa ditulis tangan, bukan ditebak
+ * mesin. Kosong yang disebutkan lebih baik daripada rujukan yang tampak pasti dan keliru.
+ */
+const digantikan = new Set();
+for (const k of komoditas) if (k.ganti) digantikan.add(k.id);
+const sambunganJatuh = [];
 
 function sambungKomoditas(nama) {
   const r = rapikan(nama);
   if (!r) return null;
   const persis = komoditas.find((k) => rapikan(k.nama) === r);
-  if (persis) return persis;
+  if (persis) return digantikan.has(persis.id) ? (sambunganJatuh.push(`${nama} → ${persis.nama}`), null) : persis;
   // Hanya arah "nama komoditas termuat di nama varian" yang dipakai, dan hanya kalau nama
   // komoditasnya cukup panjang. Arah sebaliknya membuat "Bawang" menyerap "Bawang Bombai",
   // "Bawang Merah", dan "Bawang Putih" ke satu komoditas yang sama.
   const muat = komoditas
     .filter((k) => rapikan(k.nama).length >= 5 && r.includes(rapikan(k.nama)))
     .sort((a, b) => rapikan(b.nama).length - rapikan(a.nama).length);
-  return muat[0] ?? null;
+  const pilih = muat.find((k) => !digantikan.has(k.id));
+  if (!pilih && muat[0]) sambunganJatuh.push(`${nama} → ${muat[0].nama}`);
+  return pilih ?? null;
 }
 
 // ---------------------------------------------------------------------------
@@ -477,7 +506,7 @@ if (tbsKalbar.length) {
   if (titik.length) {
     const key = 'tbs-kelapa-sawit-kalimantan-barat';
     const id = idLama.get(key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`;
-    const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+    const sawit = komoditas.find((k) => rapikan(k.nama) === 'kelapasawit' && !digantikan.has(k.id));
 
     itemsTbs.push({
       id,
@@ -572,7 +601,7 @@ for (const [jenis, sp] of Object.entries(RIAU_JENIS)) {
 
   const titik = baris.map((r) => ({ t: r.t, p: Math.round(r.tbs * 100) / 100 }));
   const id = idLama.get(sp.key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`;
-  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+  const sawit = komoditas.find((k) => rapikan(k.nama) === 'kelapasawit' && !digantikan.has(k.id));
   const bertabel = baris.filter((r) => r.tbs_umur);
   const terakhirBertabel = bertabel.at(-1);
   const berIndeks = baris.filter((r) => r.indeks_k);
@@ -639,7 +668,7 @@ if (tbsKalteng.length) {
   const titik = baris.map((r) => ({ t: r.t, p: Math.round(r.tbs * 100) / 100 }));
   const key = 'tbs-kelapa-sawit-kalimantan-tengah';
   const id = idLama.get(key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`;
-  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+  const sawit = komoditas.find((k) => rapikan(k.nama) === 'kelapasawit' && !digantikan.has(k.id));
   const akhir = baris.at(-1);
   const berIndeks = baris.filter((r) => r.indeks_k);
   const nominal = baris.filter((r) => r.tanggal_nominal).length;
@@ -712,7 +741,7 @@ function buatTbs({ baris, key, label, kode, wilayah, sistem, cakupanHukum, catat
   const akhir = urut.at(-1);
   const berIndeks = urut.filter((r) => r.indeks_k);
   const nominal = urut.filter((r) => r.tanggal_nominal).length;
-  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+  const sawit = komoditas.find((k) => rapikan(k.nama) === 'kelapasawit' && !digantikan.has(k.id));
 
   return {
     id: idLama.get(key) ?? `op:hrg:${String(nomorBaru()).padStart(8, '0')}`,
@@ -816,7 +845,7 @@ const rendemenKaltim = kaltimBerRendemen.length ? (() => {
 // utuh di `age_bands.barat` supaya selisihnya bisa dibaca, bukan hanya disebut. Memilih
 // salah satu diam-diam akan membuat separuh Aceh membaca harga yang bukan miliknya.
 if (tbsAceh.length) {
-  const sawit = komoditas.find((k) => rapikan(k.nama).includes('kelapasawit'));
+  const sawit = komoditas.find((k) => rapikan(k.nama) === 'kelapasawit' && !digantikan.has(k.id));
   const urut = [...tbsAceh].sort((a, b) => a.t.localeCompare(b.t));
   const CAKUPAN =
     'Menaungi pekebun mitra menurut Permentan 13/2024 tentang Pembelian Tandan Buah Segar Kelapa Sawit Produksi Pekebun Mitra. Aceh menerbitkan DUA kelas sekaligus — mitra plasma dan mitra swadaya — sehingga sebagian pekebun swadaya ikut tercakup, berbeda dari lima provinsi lain di repositori ini. Yang tetap tidak tercakup pekebun swadaya yang bukan mitra pabrik mana pun.';
@@ -976,6 +1005,7 @@ console.log(`  disembunyikan layar  : ${n(perGolongan.luar ?? 0)} — bahan bang
 console.log(`Tingkat pekebun       : ${n(items.filter((x) => x.price_level === 'farmgate').length)} seri — ${items.filter((x) => x.price_level === 'farmgate').map((x) => x.region?.label).join(', ')}`);
 console.log(`  ber-tabel umur      : ${n(items.filter((x) => x.age_bands).length)}`);
 console.log(`Bermusim (≥12 bulan)  : ${n(berangka.filter((x) => x.stats.musim).length)}`);
+if (sambunganJatuh.length) console.log(`Sambungan komoditas jatuh : ${sambunganJatuh.length} seri — satu-satunya kecocokan namanya entitas yang sudah digantikan, jadi dibiarkan kosong: ${[...new Set(sambunganJatuh)].join(' · ')}`);
 console.log(`Seri berlubang        : ${n(berangka.filter((x) => x.coverage.gaps > 0).length)} varian punya hari tanpa angka`);
 console.log(`Sisi pupuk & benih    : ${items.filter((x) => /^(pupuk|benih)/i.test(x.label.id)).map((x) => `${x.label.id}${x.series ? '' : ' (kosong)'}`).join(' · ') || '—'}`);
 
