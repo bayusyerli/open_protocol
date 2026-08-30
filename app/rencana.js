@@ -25,7 +25,7 @@
  * yang mengatakan sebaliknya.
  */
 
-import { ambil, muatMeta, teks, tanggal } from './pustaka.js';
+import { ambil, muatMeta, cacah, teks, tanggal } from './pustaka.js';
 import { pasangBatas } from './batas.js';
 import { pasangTombolTema } from './tema.js';
 import * as musim from './musim.js';
@@ -715,15 +715,22 @@ function perbaruiSebab() {
   if (!perlu) return;
   const pilih = el.tutupMusim.querySelector('#tmSebab');
   const dijamin = pilih.selectedOptions[0]?.dataset.autp === 'dijamin';
-  // Jarak antara "musimmu gagal" dan "ada yang mengganti" disebut di sini, bukan
-  // dibiarkan orang menyimpulkannya sendiri dari diamnya layar.
+  const semua = cacah('sebabGagal') ?? 0;
+  const dijaminAutp = cacah('sebabGagalDijaminAutp') ?? 0;
+  /* Jarak antara "musimmu gagal" dan "ada yang mengganti" disebut di sini, bukan
+   * dibiarkan orang menyimpulkannya sendiri dari diamnya layar.
+   *
+   * Cacahnya DIBACA dari meta. Ketiganya dulu dieja tangan — "lima belas", "tiga",
+   * "dua belas sisanya" — dan ketiganya benar sampai kosakata sebab-gagal bertambah satu
+   * baris. Yang salah di sini bukan angka biasa: ia yang memberi tahu orang seberapa
+   * besar bagian yang polisnya TIDAK jamin, tepat saat musimnya sudah gagal. */
   el.tutupMusim.querySelector('#tmSebabKet').innerHTML = dijamin
     ? 'Sebab ini <strong>termasuk risiko yang dijamin polis Asuransi Usahatani Padi</strong> — '
       + 'tetapi hanya pada padi, dan hanya bila intensitas kerusakan mencapai 75% atau lebih. '
       + 'Klaimnya tetap lewat kelompok tani dan penyuluh; halaman ini tidak mengajukan apa pun.'
-    : 'Sebab ini <strong>tidak dijamin polis Asuransi Usahatani Padi</strong>. Dari lima belas '
-      + 'sebab di daftar ini hanya tiga yang dijamin — banjir, kekeringan, dan serangan OPT — '
-      + 'sedangkan yang paling sering menghabiskan musim ada di dua belas sisanya.';
+    : `Sebab ini <strong>tidak dijamin polis Asuransi Usahatani Padi</strong>. Dari ${semua} `
+      + `sebab di daftar ini hanya ${dijaminAutp} yang dijamin — banjir, kekeringan, dan serangan OPT — `
+      + `sedangkan yang paling sering menghabiskan musim ada di ${semua - dijaminAutp} sisanya.`;
 }
 
 el.tutupMusim.addEventListener('change', perbaruiSebab);

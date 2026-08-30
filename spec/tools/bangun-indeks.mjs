@@ -2829,6 +2829,11 @@ const meta = {
   jumlah: {
     pestisida: pestisida.length,
     pupuk: pupuk.length,
+    // Dibaca layar rincian harga pupuk, yang harus mengatakan berapa banyak pupuk
+    // TIDAK bisa dihitung rupiah per kg haranya. Angkanya dulu diketik di sana dan
+    // tidak terkunci di mana pun — satu-satunya dari lima angka tulisan tangan di app/
+    // yang bisa bergeser tanpa satu pun pemeriksa menyalak.
+    pupukTanpaKomposisi: pupuk.filter((p) => !p.composition?.length).length,
     varietas: varietas.length,
     zatHidup: zat.filter((s) => s.lifecycle?.status !== 'superseded').length,
     kelompokSetara: Object.keys(setara).length,
@@ -2847,6 +2852,12 @@ const meta = {
     // Dipakai layar dan prosa dokumen supaya keduanya berhenti menghafal angka yang
     // berubah tiap kurasi komoditas baru.
     optKomoditasBerpintu: new Set(gejala.flatMap((g) => g.inang ?? [])).size,
+    // SELURUH rekaman registri OPT, termasuk yang berstatus superseded. Beranda
+    // memakainya sebagai penyebut kalimat "nol dari sekian membawa deskripsi gejala",
+    // dan penanda `data-cacah="optRegistri"` sudah menunggunya sejak kalimat itu
+    // ditulis — kuncinya yang tidak pernah ada, jadi angkanya diam di markup dan
+    // `isiCacah()` melewatinya tanpa suara, persis seperti kunci salah ketik.
+    optRegistri: optRegistri.length,
     optRegistriBerproduk: optRegistriIndeks.length,
 
     namaLokal: namaLokalCari.length,

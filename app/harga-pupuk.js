@@ -11,7 +11,7 @@
  * itu ranah yang lain.
  */
 
-import { ambil, muatMeta, cari, gambarHasil, teks, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
+import { ambil, muatMeta, cacah, cari, gambarHasil, teks, pasangKembali, pesanGagalMuat, pasangCobaLagi } from './pustaka.js';
 import { rupiahPerKgHara, haraMustahil } from './hitung.js';
 import { catatBuka, catatJawab, catatLubang, LUBANG, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -310,7 +310,8 @@ async function buka(id, pecahan) {
         <div class="kartu peringatan">
           <h2>${teks(p.nama)}</h2>
           <p>Registri tidak mencatat kadar hara berangka untuk pupuk ini, jadi rupiah per
-          kg hara tidak bisa dihitung. Dari 7.196 pupuk terdaftar, 2.066 dalam keadaan itu.</p>
+          kg hara tidak bisa dihitung. Dari ${angka(cacah('pupuk') ?? 0, 0)} pupuk terdaftar,
+          ${angka(cacah('pupukTanpaKomposisi') ?? 0, 0)} dalam keadaan itu.</p>
         </div>
         <button type="button" class="kembali" id="kembali">← Kembali ke hasil pencarian</button>`;
     } else {
