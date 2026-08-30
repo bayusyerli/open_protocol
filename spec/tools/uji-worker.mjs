@@ -106,7 +106,10 @@ uji('pecahan bercap -> setahun immutable', await cc('/spec/indeks/produk/001.jso
 uji('meta.json TIDAK pernah di-cache', await cc('/spec/indeks/meta.json'), 'no-cache');
 uji('meta.json tetap no-cache walau bercap', await cc('/spec/indeks/meta.json?v=abc'), 'no-cache');
 uji('gambar -> setahun', await cc('/gambar/kemasan.webp'), 'public, max-age=31536000, immutable');
-uji('css -> sehari', await cc('/gaya.css'), 'public, max-age=86400');
+// Cangkang seumur HTML-nya, bukan lebih lama: umur simpan yang berbeda pada dua berkas
+// yang wajib sepakat menghasilkan halaman campur bagi pembaca tanpa service worker.
+uji('css -> sejam, wajib revalidasi', await cc('/gaya.css'), 'public, max-age=3600, must-revalidate');
+uji('js -> sejam, wajib revalidasi', await cc('/tanaman.js'), 'public, max-age=3600, must-revalidate');
 uji('sitemap -> sehari', await cc('/sitemap-produk.xml'), 'public, max-age=86400');
 uji('html -> sejam, wajib revalidasi', await cc('/produk/'), 'public, max-age=3600, must-revalidate');
 

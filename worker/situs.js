@@ -35,11 +35,38 @@ const setahun = 'public, max-age=31536000, immutable';
 const seharian = 'public, max-age=86400';
 const sejam = 'public, max-age=3600, must-revalidate';
 
+/* CANGKANG TIDAK BOLEH HIDUP LEBIH LAMA DARIPADA HALAMAN YANG MENYEBUTNYA.
+ *
+ * Sampai 30 Agustus 2026 `.css` dan `.js` disajikan sehari sementara HTML-nya sejam,
+ * dengan alasan "dibebaskan cap sw". Alasan itu benar untuk pembaca yang service
+ * worker-nya sudah aktif: pemasangan cap baru mengambil ulang tiap berkas cangkang
+ * dengan `cache: 'reload'`, yang melewati cache HTTP sama sekali. Ia tidak benar untuk
+ * siapa pun yang lain — kunjungan pertama, jendela privat, pekerjanya dicabut, peramban
+ * tanpa service worker. Bagi mereka selisih 1 jam lawan 24 jam adalah 23 jam ketika
+ * HTML terbitan baru berpasangan dengan JS terbitan lama.
+ *
+ * Bukan bahaya teoretis: persis itu yang terjadi saat memverifikasi terbitan 30 Agustus.
+ * Halaman menampilkan kalimat baru dari HTML sambil menjalankan `tanaman.js` sehari
+ * sebelumnya, dan bacaan pertamanya adalah "deploy gagal" — padahal asal menyajikan
+ * berkas yang benar. Yang menyesatkan bukan kesalahan siapa pun, melainkan dua umur
+ * simpan berbeda pada dua berkas yang wajib sepakat.
+ *
+ * ONGKOSNYA DIBAYAR SADAR. `must-revalidate` sejam berarti pembaca tanpa service worker
+ * mengirim permintaan bersyarat untuk tiap berkas cangkang sesudah satu jam — dijawab
+ * 304 tanpa isi, tetapi tetap satu perjalanan pulang-pergi, dan permintaan yang menagih
+ * pada skala besar. Yang membuatnya sepadan: pembaca berulang justru yang paling mungkin
+ * punya service worker, dan mereka tidak menyentuh jaringan untuk cangkang sama sekali.
+ * Yang membayar revalidasi ini persis yang tadinya membayar dengan halaman campur.
+ *
+ * Yang benar-benar menghapus kelasnya bukan angka melainkan cap pada URL cangkang, sama
+ * seperti pecahan indeks. Itu menuntut penulisan ulang `<script src>` di 15 halaman saat
+ * perakitan beserta daftar di sw.js; belum dikerjakan, dan disebut di sini supaya
+ * pilihannya kelihatan sebagai penundaan, bukan sebagai kealpaan. */
 function cacheUntuk(jalur, adaCap) {
   if (jalur.endsWith('/meta.json')) return 'no-cache';
   if (adaCap) return setahun;                               // pecahan indeks bercap
   if (/\.(webp|png|jpg|jpeg|svg|woff2?)$/.test(jalur)) return setahun;
-  if (/\.(css|js)$/.test(jalur)) return seharian;           // cangkang app, dibebaskan cap sw
+  if (/\.(css|js)$/.test(jalur)) return sejam;              // cangkang app — seumur HTML-nya
   if (/\.(xml|txt)$/.test(jalur)) return seharian;          // sitemap, robots, llms
   return sejam;                                             // HTML — berubah tiap build
 }
