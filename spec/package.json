@@ -7,7 +7,7 @@
   "scripts": {
     "check": "node validate.mjs",
     "test": "node test-rules.mjs && node tools/uji-dosis.mjs && node tools/uji-hitung.mjs && node tools/uji-worker.mjs",
-    "uji-terbit": "npm run angka && node tools/uji-tanya.mjs && node tools/cek-luring-indeks.mjs",
+    "uji-terbit": "npm run angka && node tools/uji-tanya.mjs && node tools/cek-luring-indeks.mjs && node tools/cek-penunjuk-indeks.mjs",
     "test:browser": "playwright test",
     "all": "npm run check && npm test && npm run urai && npm run pagar",
     "semua": "npm run all && npm run uji-terbit",
