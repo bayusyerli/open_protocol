@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, ambilPecahan, muatMeta, cacah, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
+import { ambil, ambilPecahan, muatMeta, cacah, isiCacah, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -1155,9 +1155,14 @@ pasangLapor(el.hasil, () => optKini, () => bppWilayah, (k) => ambil(`bpp/${k}`))
     // aktifnya registri resmi. Meratakan keduanya jadi satu kalimat "sumber: Kementan"
     // meminjamkan wibawa registri kepada kurasi yang belum punya.
     await muatMeta();
+    // Kalimat "dikurasi tangan untuk N komoditas" di kartu pengantar mengambil angkanya
+    // dari sini, bukan dari markup. Penanda `data-cacah` KOSONG milik pemilih tanaman
+    // (lihat `blokPemilihTanaman`) ikut terpindai dan dilewati sendirinya: kunci kosong
+    // tidak ada di `meta.jumlah`, dan yang tak dikenal memang tidak disentuh.
+    isiCacah();
     pasangBatas(el.batas, {
       sumber: [
-        { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT cabai` },
+        { dari: 'kurasiOpt', cakupan: `teks gejala dan dua ciri pembanding untuk ${berpintu.length} OPT pada ${daftarInang().length} komoditas` },
         { dari: 'pestisida', cakupan: 'bahan aktif, kadar, dan merek yang terdaftar untuk OPT itu' },
         { dari: 'namaLokal', cakupan: `${kamusLokal.filter((x) => x.ke.length).length} nama daerah dari ${kamusLokal.length} yang tercatat, sebagai petunjuk tambahan — bukan sebagai penentu` },
       ],

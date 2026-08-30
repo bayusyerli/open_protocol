@@ -756,7 +756,10 @@ for (const b of document.querySelectorAll('[data-buka-tentang]'))
       ['Komoditas berharga', j.hargaVarian],
       ['Substansi pestisida', j.zatHidup],
       ['Kelompok berisi sama', j.kelompokSetara],
-      ['OPT cabai terkurasi', j.optTerkurasi],
+      // Cacahnya hidup sejak awal; labelnya yang tertinggal di cabai sesudah kurasi
+      // melebar ke 59 komoditas — dan label yang menyempitkan membuat angka yang benar
+      // terbaca sebagai angka yang jauh lebih kecil cakupannya.
+      ['OPT terkurasi bergejala', j.optTerkurasi],
       ['Nama lokal terkumpul', j.namaLokal],
       ['Resep sediaan sendiri', j.resepSediaan],
     ].map(([k, v]) => `<dt>${teks(k)}</dt><dd>${n(v)}</dd>`).join('');
