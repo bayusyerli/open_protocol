@@ -208,43 +208,46 @@ Satu lagi yang layak dipasang begitu URL bercap dipakai: `Cache-Control: immutab
 URL-nya berubah — salinan lama tidak akan pernah terpakai lagi, dan peramban boleh berhenti
 bertanya sama sekali. `meta.json` sendiri **tidak** boleh ikut: ia yang menyebutkan capnya.
 
-## robots.txt yang dilayani bukan robots.txt yang ada di repo
+## robots.txt, dan tiga sakelar yang berbunyi sama
 
-Sejak zona aktif di Cloudflare (30 Agustus 2026), `https://pranatani.com/robots.txt`
-mengembalikan isi yang **bukan** hasil `bangun-halaman.mjs`. Cloudflare menyisipkan blok
-"BEGIN Cloudflare Managed content" di atasnya, dan blok itu berisi:
+Selama beberapa jam pada 30 Agustus 2026 — sejak zona aktif sampai sore hari yang sama —
+`https://pranatani.com/robots.txt` mengembalikan 72 baris, dan hanya 11 di antaranya
+ditulis proyek ini. Cloudflare menyisipkan blok "Managed content" di atasnya berisi
+`Disallow: /` untuk sembilan perayap dan `Content-Signal: search=yes,ai-train=no`,
+bertentangan langsung dengan kalimat yang ditulis beberapa baris di bawahnya: "Registri
+terbuka." Blok itu disisipkan di tepi jaringan, **sesudah** Worker menjawab; tidak ada
+baris di repositori ini yang bisa mencabutnya.
 
-```
-User-agent: *
-Content-Signal: search=yes,ai-train=no,use=reference
+Ia sudah dimatikan. Yang dilayani sekarang persis yang dihasilkan `bangun-halaman.mjs`.
 
-User-agent: ClaudeBot
-Disallow: /
-```
+Bagian ini tetap ditulis karena dua hal yang tidak terbaca dari kode mana pun.
 
-beserta `Disallow: /` yang sama untuk GPTBot, CCBot, Google-Extended, Amazonbot,
-Applebot-Extended, Bytespider, meta-externalagent, dan CloudflareBrowserRenderingCrawler.
+**Cloudflare menyalakannya sebagai bawaan zona baru.** Tidak ada yang memilihnya di sini.
+Kalau kelak ada zona lain, atau berkas ini tiba-tiba berisi larangan yang tidak ditulis
+siapa pun, sebabnya kemungkinan besar ini.
 
-Blok itu tidak dipilih siapa pun di sini. Cloudflare menyalakannya sebagai bawaan zona
-baru, dan ia disisipkan **di tepi jaringan, sesudah Worker menjawab** — tidak ada baris di
-repositori ini, termasuk di `worker/situs.js`, yang bisa mencabutnya.
+**Tiga kendali berbunyi hampir sama, dan hanya satu yang menulis berkasnya.** Membedakan
+ketiganya memakan beberapa putaran, dan dua yang pertama sempat dimatikan tanpa mengubah
+`robots.txt` sedikit pun — sepuluh pemeriksaan dalam sepuluh menit, tidak bergerak.
 
-Dua hal yang perlu diketahui siapa pun yang membacanya nanti.
+| Kendali | Letak | Yang dilakukannya |
+|---|---|---|
+| AI Crawl Control → Crawlers | AI Crawl Control | Allow/block per perayap lewat WAF. **Tidak menulis robots.txt.** |
+| Block AI bots *(usang 15 Sep 2026)* | Security → Settings | Aturan WAF; **benar-benar menolak lalu lintas**. Tidak menulis robots.txt. |
+| "Set your preference to block training in robots.txt" | Security → Settings, saring *Bot traffic* | **Hanya ini** yang menulis teksnya. |
 
-**Ia bertentangan dengan sikap yang dinyatakan berkas ini sendiri.** Beberapa baris di
-bawahnya, robots.txt milik proyek berbunyi "Registri terbuka. Yang dilarang cuma dua hal,
-dan keduanya bukan isi." Membaca `app/`-nya saja memberi kesimpulan yang salah tentang apa
-yang sebenarnya dilarang di produksi.
+Dua yang terakhir ada di halaman yang sama dan sama-sama menyebut *block training* — di
+situlah kekeliruannya bersarang. Yang kedua jauh lebih berat akibatnya: ia memblokir
+permintaan, bukan menuliskan permintaan agar tidak dirayapi.
 
-**Mencabutnya adalah sakelar dasbor, bukan komit.** Cloudflare → zona `pranatani.com` →
-AI Crawl Control → matikan managed `robots.txt`. Selama sakelar itu menyala, menyunting
-`bangun-halaman.mjs` tidak mengubah apa pun yang dilihat perayap.
+Satu perbedaan yang perlu dipegang: `robots.txt` adalah **permintaan** yang boleh
+diabaikan perayap; dua kendali WAF itu **penegakan**. Melihat larangan di `robots.txt`
+lalu menyimpulkan lalu lintasnya diblokir — atau sebaliknya — adalah dua kesalahan yang
+sama besar.
 
-Yang mana yang benar bukan keputusan teknis. `ai-train=no` sambil membiarkan `search=yes`
-adalah sikap yang bisa dipertahankan; begitu pula membuka seluruhnya untuk registri yang
-memang ingin ditemukan. Yang tidak bisa dipertahankan adalah keadaan sekarang, ketika
-berkas di repo mengatakan satu hal dan yang dilayani mengatakan hal lain tanpa ada yang
-memutuskannya.
+Mematikan sakelar ketiga mencabut deretan `Disallow` **dan** komentar Content Signals
+sekaligus, selama situs punya `robots.txt` sendiri. Situs ini punya, jadi kendali terpisah
+"Display Content Signals Policy" di halaman Overview tidak perlu disentuh.
 
 ## Yang masih terbuka
 

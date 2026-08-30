@@ -3601,12 +3601,18 @@ bangunHub('sediaan', {
 // ---------------------------------------------------------------------------
 // robots.txt, sitemap, manifest
 // ---------------------------------------------------------------------------
-// PERINGATAN: berkas yang dihasilkan di sini BUKAN yang dilayani produksi. Cloudflare
-// menyisipkan blok "Managed content" di atasnya di tepi jaringan — sesudah Worker menjawab
-// — berisi `Disallow: /` untuk ClaudeBot, GPTBot, CCBot, Google-Extended, dan lima perayap
-// lain, ditambah `Content-Signal: ai-train=no`. Itu bertentangan dengan kalimat yang
-// ditulis empat baris di bawah ini, dan tidak ada suntingan di berkas ini yang mencabutnya:
-// sakelarnya ada di dasbor Cloudflare (AI Crawl Control). Rinciannya di docs/20.
+// Selama beberapa jam pada 30 Agustus 2026, berkas yang dihasilkan di sini BUKAN yang
+// dilayani. Cloudflare menyisipkan blok "Managed content" di atasnya di tepi jaringan —
+// sesudah Worker menjawab — berisi `Disallow: /` untuk sembilan perayap dan
+// `Content-Signal: ai-train=no`, bertentangan dengan kalimat yang ditulis tepat di bawah
+// ini. Sakelarnya dimatikan hari itu juga, dan yang dilayani kini persis 11 baris berikut.
+//
+// Catatan ini tetap ada karena satu hal yang tidak terbaca dari kode mana pun: Cloudflare
+// menyalakan fitur itu sebagai BAWAAN zona baru. Kalau berkas ini kelak berisi larangan
+// yang tidak ditulis siapa pun di sini, tempatnya bukan di repositori — ia di
+// Security → Settings, saring "Bot traffic", kartu "Set your preference to block training
+// in robots.txt". Dua kartu tetangganya memblokir lalu lintas sungguhan dan tidak menulis
+// sebaris pun ke sini; membedakan ketiganya memakan beberapa putaran. Rinciannya di docs/20.
 simpan('robots.txt', [
   '# Registri terbuka. Yang dilarang cuma dua hal, dan keduanya bukan isi:',
   '# halaman hasil pencarian internal, yang menggandakan isi yang sudah punya URL-nya',
