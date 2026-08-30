@@ -208,6 +208,44 @@ Satu lagi yang layak dipasang begitu URL bercap dipakai: `Cache-Control: immutab
 URL-nya berubah — salinan lama tidak akan pernah terpakai lagi, dan peramban boleh berhenti
 bertanya sama sekali. `meta.json` sendiri **tidak** boleh ikut: ia yang menyebutkan capnya.
 
+## robots.txt yang dilayani bukan robots.txt yang ada di repo
+
+Sejak zona aktif di Cloudflare (30 Agustus 2026), `https://pranatani.com/robots.txt`
+mengembalikan isi yang **bukan** hasil `bangun-halaman.mjs`. Cloudflare menyisipkan blok
+"BEGIN Cloudflare Managed content" di atasnya, dan blok itu berisi:
+
+```
+User-agent: *
+Content-Signal: search=yes,ai-train=no,use=reference
+
+User-agent: ClaudeBot
+Disallow: /
+```
+
+beserta `Disallow: /` yang sama untuk GPTBot, CCBot, Google-Extended, Amazonbot,
+Applebot-Extended, Bytespider, meta-externalagent, dan CloudflareBrowserRenderingCrawler.
+
+Blok itu tidak dipilih siapa pun di sini. Cloudflare menyalakannya sebagai bawaan zona
+baru, dan ia disisipkan **di tepi jaringan, sesudah Worker menjawab** — tidak ada baris di
+repositori ini, termasuk di `worker/situs.js`, yang bisa mencabutnya.
+
+Dua hal yang perlu diketahui siapa pun yang membacanya nanti.
+
+**Ia bertentangan dengan sikap yang dinyatakan berkas ini sendiri.** Beberapa baris di
+bawahnya, robots.txt milik proyek berbunyi "Registri terbuka. Yang dilarang cuma dua hal,
+dan keduanya bukan isi." Membaca `app/`-nya saja memberi kesimpulan yang salah tentang apa
+yang sebenarnya dilarang di produksi.
+
+**Mencabutnya adalah sakelar dasbor, bukan komit.** Cloudflare → zona `pranatani.com` →
+AI Crawl Control → matikan managed `robots.txt`. Selama sakelar itu menyala, menyunting
+`bangun-halaman.mjs` tidak mengubah apa pun yang dilihat perayap.
+
+Yang mana yang benar bukan keputusan teknis. `ai-train=no` sambil membiarkan `search=yes`
+adalah sikap yang bisa dipertahankan; begitu pula membuka seluruhnya untuk registri yang
+memang ingin ditemukan. Yang tidak bisa dipertahankan adalah keadaan sekarang, ketika
+berkas di repo mengatakan satu hal dan yang dilayani mengatakan hal lain tanpa ada yang
+memutuskannya.
+
 ## Yang masih terbuka
 
 - **Halaman hub per klaster belum ada.** Tidak ada `/produk/`, `/bahan/`, `/tanaman/`, atau

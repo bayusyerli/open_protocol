@@ -2534,6 +2534,12 @@ for (const r of resepSemua.sort((a, b) => a.id.localeCompare(b.id))) {
     }, jalan),
   }));
   urlTemplate.sediaan.push([jalan, TARIKAN.pestisida]);
+  // Sumbunya kedudukan hukum, bukan jenis bahan. UU 22/2019 memperlakukan yang menyerupai
+  // pupuk dan yang menyerupai pestisida sangat berbeda, dan perbedaan itulah yang menentukan
+  // apakah sesuatu boleh berpindah tangan sama sekali — fakta pertama yang dibutuhkan
+  // sebelum satu resep pun dibaca.
+  catatHub('sediaan', jalan, r.nama,
+    enam ? 'Hanya untuk keperluan sendiri' : 'Terbatas dalam satu kabupaten/kota');
 }
 
 for (const [id, b] of [...petaBahanSediaan.entries()].sort()) {
@@ -3575,9 +3581,32 @@ bangunHub('toko', {
   acuan: TARIKAN.pestisida,
 });
 
+// Sampai 30 Agustus 2026 klaster ini satu-satunya yang punya halaman entitas tanpa punya
+// hub. Akibatnya halamannya yatim: `/sediaan/` menjawab 404, tidak ada satu pun tautan
+// menuju ke sana — beranda pun tidak — dan resepnya hanya bisa ditemukan lewat sitemap.
+// Pemeriksa tautan diam justru karena itu; ia menangkap tautan yang menunjuk ke tempat
+// kosong, bukan halaman yang tidak ditunjuk siapa pun.
+bangunHub('sediaan', {
+  judul: `${n(hubEntri.sediaan?.length ?? 0)} sediaan buatan sendiri — kedudukan hukum sebelum resepnya`,
+  h1: 'Sediaan buatan sendiri',
+  jalur: 'Sediaan',
+  lede: 'Yang diracik sendiri dari bahan yang ada. <strong>Yang ditampilkan lebih dulu kedudukan hukumnya</strong> — boleh dipakai bukan berarti boleh diedarkan, dan untuk sebagian jawabannya belum utuh.',
+  deskripsi: 'Sediaan pertanian buatan sendiri: kedudukan hukum, bahan baku beserta statusnya, proses, kriteria pelepasan, dan tingkat bukti tiap resep.',
+  sumber: [{ dari: 'sediaan', cakupan: 'kedudukan hukum, bahan, proses, dan kriteria pelepasan tiap resep' }],
+  takDijawab: ['haraSediaan', 'phi'],
+  acuan: TARIKAN.pestisida ?? TARIKAN.pupuk,
+  sumbu: 'Peredaran',
+});
+
 // ---------------------------------------------------------------------------
 // robots.txt, sitemap, manifest
 // ---------------------------------------------------------------------------
+// PERINGATAN: berkas yang dihasilkan di sini BUKAN yang dilayani produksi. Cloudflare
+// menyisipkan blok "Managed content" di atasnya di tepi jaringan — sesudah Worker menjawab
+// — berisi `Disallow: /` untuk ClaudeBot, GPTBot, CCBot, Google-Extended, dan lima perayap
+// lain, ditambah `Content-Signal: ai-train=no`. Itu bertentangan dengan kalimat yang
+// ditulis empat baris di bawah ini, dan tidak ada suntingan di berkas ini yang mencabutnya:
+// sakelarnya ada di dasbor Cloudflare (AI Crawl Control). Rinciannya di docs/20.
 simpan('robots.txt', [
   '# Registri terbuka. Yang dilarang cuma dua hal, dan keduanya bukan isi:',
   '# halaman hasil pencarian internal, yang menggandakan isi yang sudah punya URL-nya',
