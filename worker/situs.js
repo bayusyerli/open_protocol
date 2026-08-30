@@ -110,6 +110,18 @@ export default {
 
     const kepala = new Headers();
     objek.writeHttpMetadata(kepala);                 // Content-Type dari metadata objek
+
+    /* Charset ditambahkan di sini karena tidak ada tempat lain yang menambahkannya.
+     * `aws s3 sync` menurunkan Content-Type dari ekstensi berkas dan berhenti di situ,
+     * jadi R2 menyimpan `text/html` polos — dan itulah yang dilayani produksi sejak
+     * 30 Agustus 2026. Halamannya sendiri selamat: `<meta charset="utf-8">` ada jauh di
+     * dalam 1024 byte pertama, dan peramban memakainya. Tetapi header lebih kuat daripada
+     * meta, dan bersandar pada peramban memindai badan lebih dulu berarti bersandar pada
+     * kebiasaan, bukan pada apa yang dinyatakan. */
+    const tipe = kepala.get('Content-Type');
+    if (tipe && !/charset=/i.test(tipe) && /^text\/|^application\/(json|xml|javascript)\b/.test(tipe)) {
+      kepala.set('Content-Type', `${tipe}; charset=utf-8`);
+    }
     kepala.set('ETag', objek.httpEtag);
     kepala.set('Cache-Control', cacheUntuk(jalur, url.searchParams.has('v')));
     for (const [k, v] of Object.entries(KEAMANAN)) kepala.set(k, v);

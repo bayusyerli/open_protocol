@@ -27,10 +27,15 @@ const objek = (kunci) => ({
   body: ISI.get(kunci),
   httpEtag: `"${kunci.length}"`,
   writeHttpMetadata(h) {
-    const t = kunci.endsWith('.html') ? 'text/html; charset=utf-8'
+    // TANPA charset, dan itu disengaja: `aws s3 sync` menurunkan tipe dari ekstensi dan
+    // berhenti di situ, jadi inilah yang benar-benar tersimpan di R2. Stub yang murah hati
+    // menuliskan `; charset=utf-8` sendiri akan membuat uji ini menegaskan perilaku yang
+    // produksi tidak punya — dan itu persis yang terjadi sampai 30 Agustus 2026.
+    const t = kunci.endsWith('.html') ? 'text/html'
       : kunci.endsWith('.json') ? 'application/json'
         : kunci.endsWith('.css') ? 'text/css'
-          : kunci.endsWith('.xml') ? 'application/xml' : 'application/octet-stream';
+          : kunci.endsWith('.xml') ? 'application/xml'
+            : kunci.endsWith('.webp') ? 'image/webp' : 'application/octet-stream';
     h.set('Content-Type', t);
   },
 });
@@ -104,6 +109,18 @@ uji('gambar -> setahun', await cc('/gambar/kemasan.webp'), 'public, max-age=3153
 uji('css -> sehari', await cc('/gaya.css'), 'public, max-age=86400');
 uji('sitemap -> sehari', await cc('/sitemap-produk.xml'), 'public, max-age=86400');
 uji('html -> sejam, wajib revalidasi', await cc('/produk/'), 'public, max-age=3600, must-revalidate');
+
+// --- charset yang R2 tidak simpan ------------------------------------------------------
+{
+  const ct = async (jalur) => (await minta(jalur)).headers.get('Content-Type');
+  uji('html dapat charset', await ct('/produk/'), 'text/html; charset=utf-8');
+  uji('json dapat charset', await ct('/spec/indeks/meta.json'), 'application/json; charset=utf-8');
+  uji('css dapat charset', await ct('/gaya.css'), 'text/css; charset=utf-8');
+  uji('xml dapat charset', await ct('/sitemap-produk.xml'), 'application/xml; charset=utf-8');
+  uji('gambar TIDAK dapat charset', await ct('/gambar/kemasan.webp'), 'image/webp');
+  uji('404 pun bercharset', (await minta('/tidak-ada/')).headers.get('Content-Type'),
+    'text/html; charset=utf-8');
+}
 
 // --- header yang hanya bisa dipasang di sini --------------------------------------------
 {
