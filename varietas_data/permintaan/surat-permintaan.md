@@ -1,8 +1,14 @@
 # Permintaan salinan dokumen deskripsi varietas hortikultura
 
-> **Draf siap kirim.** Blok pengirim di bawah masih berupa isian — nama, lembaga, dan
-> alamat surel balasan sengaja tidak diisi karena surat ini akan berdiri atas nama Anda,
-> bukan atas nama siapa pun yang menyusunnya.
+> **Siap kirim lewat surel.** Blok pengirim terisi sebagai **perorangan**: itu bentuk
+> yang paling aman untuk dikirim hari ini, karena Pranatani belum berbadan hukum dan
+> permohonan informasi publik atas nama badan hukum wajib melampirkan akta pendiriannya.
+> Pranatani tetap disebut di badan surat sebagai nama proyeknya — itu keterangan, bukan
+> klaim kelembagaan.
+>
+> **Dua baris masih kosong dan tidak bisa diisi dari mana pun: alamat dan telepon.**
+> Untuk jalur surel keduanya tidak wajib. Untuk jalur PPID keduanya wajib, karena
+> formulir permohonan informasi publik menuntut alamat pemohon dan lampiran KTP.
 >
 > Dua kanal, pilih salah satu — isinya sama:
 > - **Tidak resmi, paling cepat:** surel ke `ditjenhorti@pertanian.go.id`, subjek dan
@@ -29,7 +35,7 @@ Dengan hormat,
 
 **1. Maksud surat ini**
 
-Kami sedang menyusun basis data pertanian terbuka yang bersifat netral terhadap merek,
+Kami sedang menyusun **Pranatani**, basis data pertanian terbuka yang netral terhadap merek,
 dan salah satu lapisnya adalah daftar varietas terdaftar beserta sifat agronominya.
 Daftar varietasnya sendiri sudah kami peroleh dari registri perizinan Kementerian
 Pertanian. Yang belum kami peroleh adalah **deskripsi varietasnya**, yang pada basis
@@ -117,13 +123,17 @@ Atas perhatian dan bantuan Bapak/Ibu, kami mengucapkan terima kasih.
 
 Hormat kami,
 
-<!-- ISI SENDIRI -->
-Nama       : ______________________
-Lembaga    : ______________________
+
+**Bayusyerli**
+Penyusun basis data Pranatani (perorangan)
+
+Surel      : bayusyerli@gmail.com
+Tanggal    : 30 Agustus 2026
+
+<!-- Kedua baris di bawah wajib HANYA bila permohonan diajukan lewat PPID; untuk jalur
+     surel biasa tidak diperlukan. Diisi sendiri — tidak ada sumbernya di repositori. -->
 Alamat     : ______________________
-Surel      : ______________________
 Telepon    : ______________________
-Tanggal    : ______________________
 
 ---
 
@@ -157,4 +167,6 @@ memuat nomor SK** dan dapat langsung dicocokkan dengan arsip Direktorat. Silakan
 bebas.
 
 Hormat kami,
-[nama · lembaga · kontak]
+
+Bayusyerli — penyusun basis data Pranatani (perorangan)
+bayusyerli@gmail.com
