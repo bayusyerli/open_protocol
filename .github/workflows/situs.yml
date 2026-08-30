@@ -143,11 +143,13 @@ jobs:
         run: npm ci
 
       # Gerbang mutu lebih dulu, sebelum satu halaman pun dibangun: skema, aturan kebijakan,
-      # 89 uji negatif, 37 uji dosis, 29 uji hitungan, penguraian modul app, lalu dua pagar
-      # rilis — CSP beserta hash skrip temanya, dan `VERSI` service worker terhadap sidik isi
-      # cangkang. Dua yang terakhir menjaga mode gagal yang SUNYI: cangkang yang berubah tanpa
-      # bump VERSI mengunci pengguna lama di versi basi tanpa satu pun tanda, dan hash CSP
-      # yang menyimpang mematikan penyetel tema tanpa galat yang terbaca.
+      # 89 uji negatif, 37 uji dosis, 29 uji hitungan, penguraian modul app beserta baris
+      # impornya, lalu dua pagar rilis — CSP beserta hash skrip temanya, dan `VERSI` service
+      # worker terhadap sidik isi cangkang. Ketiga pemeriksaan terakhir menjaga mode gagal
+      # yang SUNYI: nama yang jatuh dari baris impor melempar ReferenceError yang tidak
+      # terlihat oleh pengurai maupun oleh axe, cangkang yang berubah tanpa bump VERSI
+      # mengunci pengguna lama di versi basi tanpa satu pun tanda, dan hash CSP yang
+      # menyimpang mematikan penyetel tema tanpa galat yang terbaca.
       #
       # SELURUHNYA BERJALAN TANPA `spec/indeks/`, dan itu syarat, bukan kebetulan. Pemeriksaan
       # yang menuntut indeks — pencocokan angka dokumen dan uji pencarian — pindah ke langkah

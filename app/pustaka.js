@@ -60,10 +60,27 @@ export async function ambil(jalan) {
     ? `${BASIS}/meta.json`
     : `${BASIS}/${jalan}.json?v=${encodeURIComponent(cap)}`;
 
-  const janji = fetch(alamat, jalan === 'meta' ? { cache: 'no-cache' } : undefined).then((r) => {
-    if (!r.ok) throw new Error(`${jalan}: ${r.status}`);
-    return r.json();
-  });
+  const janji = fetch(alamat, jalan === 'meta' ? { cache: 'no-cache' } : undefined).then(
+    (r) => {
+      if (!r.ok) throw new Error(`${jalan}: ${r.status}`);
+      return r.json();
+    },
+    /* SATU-SATUNYA TEMPAT KEGAGALAN JARINGAN BISA DIKENALI DENGAN PASTI.
+     *
+     * Penangan penolakan dipasang di sini, bukan sebagai `.catch()` sesudahnya: yang
+     * masuk ke sini hanya penolakan `fetch` itu sendiri — sambungan yang tidak jalan,
+     * putus di tengah jalan, atau ditolak sebelum ada jawaban apa pun. Galat dari
+     * penangan di atasnya (status HTTP, atau `r.json()` yang menemui bukan JSON) tidak
+     * lewat sini, dan memang tidak boleh.
+     *
+     * Ditandai di tempat lahirnya karena di hilir ia tidak bisa dibedakan lagi. `fetch`
+     * menolak dengan TypeError, dan TypeError juga persis yang dilempar cacat program
+     * biasa. Sampai 30 Agustus 2026 `pesanGagalMuat()` menebaknya dari ketiadaan status,
+     * dan tebakan itu meleset ke arah yang paling mahal — lihat catatannya di sana. */
+    (e) => {
+      throw Object.assign(new Error(`${jalan}: jaringan`), { jaringan: true, sebab: e });
+    },
+  );
   ingatan.set(jalan, janji);
   // Kegagalan tidak boleh ikut teringat: sinyal yang putus sebentar akan membuat
   // berkas itu gagal selamanya sampai halaman dimuat ulang.
@@ -89,7 +106,7 @@ export async function ambilPecahan(akar, kunci) {
   return bagian.flat();
 }
 
-/* DUA KEGAGALAN YANG BERBEDA, DAN SELAMA INI KEDUANYA BERBUNYI SAMA.
+/* TIGA KEGAGALAN YANG BERBEDA — DAN YANG KETIGA SELAMA INI MENYAMAR JADI YANG PERTAMA.
  *
  * Sampai 24 Agustus 2026 kedelapan layar menjawab kegagalan muat pertama dengan kalimat
  * yang sama: "Indeks tidak ditemukan — bangun dulu dengan `node spec/tools/bangun-indeks.mjs
@@ -98,15 +115,29 @@ export async function ambilPecahan(akar, kunci) {
  * syarat lapangan nomor satu permukaan ini, dibalas instruksi terminal untuk masalah yang
  * sebenarnya cuma sambungan putus.
  *
- * Yang membedakan: `ambil()` melempar `Error` bertuliskan status HTTP hanya ketika peladen
- * MENJAWAB tetapi berkasnya tidak ada; kegagalan jaringan melempar TypeError dari fetch,
- * tanpa status. Ditambah `navigator.onLine` yang menyatakan peranti memang sedang lepas.
- * Petunjuk membangun tetap ada — ia turun ke console, tempat pembacanya memang menengok. */
+ * Pemisahannya benar, tapi cuma dua laci untuk tiga barang, dan lacinya ditebak dari
+ * KETIADAAN status: apa pun yang bukan angka HTTP dianggap sambungan putus. Tebakan itu
+ * pecah pada 30 Agustus 2026. `tanaman.js` memanggil `ambilPecahan()` tanpa mengimpornya —
+ * penyelesaian konflik merge yang menjatuhkan satu nama dari baris impor — jadi jalur 1
+ * melempar ReferenceError sebelum satu berkas pun diminta. Tanpa status, dan karena itu
+ * dibaca sebagai luring. Halaman TAYANG selama dua hari dengan kalimat yang menyuruh
+ * pembacanya menunggu sinyal, untuk cacat yang tidak ada hubungannya dengan sinyal:
+ * yang bisa memperbaikinya tidak melihat apa-apa, yang tidak bisa disuruh menunggu.
+ *
+ * Ketiganya sekarang dibedakan dari ASALNYA, bukan dari bentuk galatnya:
+ *
+ *   1. `e.jaringan` — ditandai `ambil()` tepat di penangan penolakan `fetch`, satu-satunya
+ *      tempat "tidak ada jawaban sama sekali" masih bisa dikenali. `navigator.onLine`
+ *      ikut, untuk peranti yang menyatakan dirinya lepas sebelum sempat mencoba.
+ *   2. Status HTTP di pesan galat — peladen MENJAWAB, berkasnya yang tidak ada. Keadaan
+ *      pemasangan, dan petunjuk membangunnya turun ke konsol tempat pembacanya menengok.
+ *   3. Sisanya — cacat di halaman ini sendiri, termasuk `r.json()` yang menemui HTML.
+ *      Dulu senyap, sekarang berkata begitu dan membawa galatnya ke konsol. */
 const GAGAL_STATUS = /: (\d{3})$/;
 
 export function pesanGagalMuat(e) {
   const status = Number(GAGAL_STATUS.exec(e?.message ?? '')?.[1]) || null;
-  const luring = navigator.onLine === false || !status;
+  const luring = e?.jaringan === true || navigator.onLine === false;
 
   if (luring) {
     return `
@@ -123,16 +154,33 @@ export function pesanGagalMuat(e) {
   // 404 dan sebangsanya: peladen menjawab, berkasnya yang tidak ada. Itu keadaan
   // pemasangan, bukan keadaan lapangan — dan orang yang bisa memperbaikinya bukan
   // pembaca halaman ini.
-  console.error(
-    `Indeks tidak terambil (${status}). Bangun dulu dari akar repositori:\n`
-    + '  node spec/tools/bangun-indeks.mjs --tulis\n'
-    + 'lalu sajikan AKARNYA — menyajikan app/ saja tidak cukup.', e,
-  );
+  if (status) {
+    console.error(
+      `Indeks tidak terambil (${status}). Bangun dulu dari akar repositori:\n`
+      + '  node spec/tools/bangun-indeks.mjs --tulis\n'
+      + 'lalu sajikan AKARNYA — menyajikan app/ saja tidak cukup.', e,
+    );
+    return `
+      <div class="kartu peringatan">
+        <h2>Datanya belum tersedia di peladen ini</h2>
+        <p>Halaman ini ada, tetapi berkas datanya tidak terkirim. Ini bukan sesuatu yang bisa
+        diperbaiki dari sisi kamu — silakan coba lagi nanti.</p>
+        <p class="catatan">Rinciannya ada di konsol peramban, untuk yang memasang permukaan ini.</p>
+      </div>`;
+  }
+
+  /* Bukan jaringan, bukan peladen: halaman ini sendiri yang cacat. Kalimatnya menolak
+   * meminjam sebab dari mana pun — menyebut sinyal di sini akan mengirim pembacanya
+   * memperbaiki satu-satunya hal yang tidak rusak. Tombolnya tetap ada karena muat ulang
+   * memang satu-satunya tuas yang dipegang pembaca, tapi tidak dijanjikan menolong. */
+  console.error('Halaman gagal berjalan — ini cacat kode, bukan jaringan dan bukan peladen.', e);
   return `
     <div class="kartu peringatan">
-      <h2>Datanya belum tersedia di peladen ini</h2>
-      <p>Halaman ini ada, tetapi berkas datanya tidak terkirim. Ini bukan sesuatu yang bisa
-      diperbaiki dari sisi kamu — silakan coba lagi nanti.</p>
+      <h2>Halaman ini gagal berjalan</h2>
+      <p>Bukan sambunganmu, dan bukan datanya — ada yang salah di halaman ini sendiri.
+      Memuat ulang kadang menolong; kalau tetap begini, ini bukan sesuatu yang bisa
+      diperbaiki dari sisi kamu.</p>
+      <p><button type="button" class="kembali" id="cobaLagi">Coba lagi</button></p>
       <p class="catatan">Rinciannya ada di konsol peramban, untuk yang memasang permukaan ini.</p>
     </div>`;
 }

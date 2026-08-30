@@ -2066,7 +2066,12 @@ const gejalaCari = gejala
     komoditas: g.di.length,
   }));
 
-const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'adaPintu', 'inang'];
+// `judul` dan `ringkas` IKUT, dan itu bukan kelonggaran: pemilih gejala merender
+// `k.judul ?? k.gejala` beserta kalimat pendukungnya, jadi tanpa keduanya di sini kurasi
+// judul untuk 10 OPT terbit ke berkas rinci dan tidak pernah sampai ke layar yang
+// memakainya. Persis itu yang terjadi antara 28 dan 30 Agustus 2026, tanpa satu pun galat:
+// daftar medan ini datang dari satu cabang, penyajinya dari cabang lain.
+const GEJALA_DAFTAR = ['id', 'nama', 'ilmiah', 'jenis', 'gejala', 'judul', 'ringkas', 'adaPintu', 'inang'];
 const GEJALA_RINCI = ['keterangan', 'pembanding', 'catatan', 'penular', 'di'];
 const pilihMedan = (o, medan) => Object.fromEntries(medan.map((k) => [k, o[k]]));
 const daftarGejala = gejala.map((g) => ({

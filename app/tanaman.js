@@ -20,7 +20,7 @@
  * — dan satu memakai `1 l/ha`. Dosis milik pendaftaran tiap produk.
  */
 
-import { ambil, muatMeta, cacah, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
+import { ambil, ambilPecahan, muatMeta, cacah, teks, tautanMasuk, pasangKembali, pesanGagalMuat, pasangCobaLagi, petakKemasan } from './pustaka.js';
 
 import { catatBuka, catatJawab, JENIS as UKUR } from './ukur.js';
 import { pasangBatas } from './batas.js';
@@ -109,6 +109,18 @@ function gagal(e) {
   tampilkanGejala(true);
 }
 
+/* Tanaman yang disebut pintu-pintu yang ADA, beserta berapa pintu untuk masing-masing —
+ * bahan cip penyaring di atas daftar gejala. Diurutkan menurut banyaknya pintu, bukan
+ * abjad: yang paling banyak dijawab paling mungkin yang sedang dipegang orangnya.
+ *
+ * Dihitung dari daftar, tidak diambil dari kosakata komoditas: yang boleh muncul sebagai
+ * saringan hanya tanaman yang benar-benar punya sesuatu di balik ketukannya. */
+function daftarInang() {
+  const c = new Map();
+  for (const k of daftarOpt) for (const n of k.inang ?? []) c.set(n, (c.get(n) ?? 0) + 1);
+  return [...c.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+}
+
 /* JUDUL DULU, BARU KALIMAT PEMBEDANYA — dan judulnya tetap GEJALA.
  *
  * Kartunya dulu memuat seluruh teks gejala sebagai nama: tiga kalimat tebal, empat sampai
@@ -147,8 +159,8 @@ function gambarGejala() {
           <button type="button" data-opt="${teks(k.id)}">
             <span class="nama">${teks(k.judul ?? k.gejala)}</span>
             ${k.judul && k.ringkas ? `<span class="gejala-ringkas">${teks(k.ringkas)}</span>` : ''}
-            <span class="sub">${k.di.length
-              ? `${angkaId(k.di.reduce((a, b) => a + b.produk, 0))} produk terdaftar di ${k.di.length} komoditas`
+            <span class="sub">${k.komoditas
+              ? `${angkaId(k.produk)} produk terdaftar di ${angkaId(k.komoditas)} komoditas`
               : 'tidak ada produk terdaftar sama sekali'}</span>
           </button>
         </li>`).join('')}

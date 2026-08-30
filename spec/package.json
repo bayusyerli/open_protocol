@@ -11,7 +11,7 @@
     "test:browser": "playwright test",
     "all": "npm run check && npm test && npm run urai && npm run pagar",
     "semua": "npm run all && npm run uji-terbit",
-    "urai": "node tools/cek-urai-app.mjs",
+    "urai": "node tools/cek-urai-app.mjs && node tools/cek-impor-app.mjs",
     "pagar": "node tools/cek-csp.mjs && node tools/cek-versi-sw.mjs",
     "angka": "node tools/cek-angka-docs.mjs"
   },
