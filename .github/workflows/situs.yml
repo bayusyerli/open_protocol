@@ -279,3 +279,23 @@ jobs:
             exit 0
           fi
           npx --yes wrangler@4 deploy --config worker/wrangler.toml
+
+      # Yang diperiksa di sini TIDAK ada di repositori: isi yang ditambahkan Cloudflare ke
+      # jawaban kita sesudah Worker selesai menulisnya. Zona ini sudah dua kali menyuntikkan
+      # sesuatu tanpa satu baris pun berubah di sini — robots.txt terkelola, lalu beacon Web
+      # Analytics — dan keduanya ketahuan cuma karena kebetulan ada yang melihat. Yang kedua
+      # bahkan tidak terlihat dari `curl` biasa: penyuntikannya bergantung User-Agent.
+      #
+      # Karena itu langkah ini berdiri SESUDAH deploy dan mengambil dari situs sungguhan.
+      # Ia satu-satunya pemeriksa yang menyentuh jaringan; sisanya membaca repositori, dan
+      # justru itu yang membuatnya buta terhadap kelas ini.
+      - name: Tidak ada yang tersuntik di edge
+        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        env:
+          AKUN: ${{ secrets.CF_ACCOUNT_ID }}
+        run: |
+          if [ -z "$AKUN" ]; then
+            echo "Deploy dilewati, jadi tidak ada yang tayang untuk diperiksa."
+            exit 0
+          fi
+          node spec/tools/cek-suntikan-edge.mjs "$ASAL"
