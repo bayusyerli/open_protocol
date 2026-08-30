@@ -108,4 +108,35 @@ test.describe('interaksi keyboard dan keadaan dinamis', () => {
     }));
     expect(geometri.isi).toBeLessThanOrEqual(geometri.lebar + 1);
   });
+
+  /* MEMBUKA halaman tidak sama dengan MENJAWAB, dan selisih itu sudah dua kali tayang.
+   *
+   * Suite ini memuat kelima belas halaman dan memeriksa axe, geometri, dan penamaan —
+   * dan lolos hijau selama dua hari ketika jalur 1 sebenarnya mati: yang tergambar di
+   * tempat pemilih gejala adalah kartu galat yang sepenuhnya aksesibel. Satu <h1>, tidak
+   * meluber, nol pelanggaran. Kedua kalinya lebih dalam: daftarnya tergambar tetapi tiap
+   * ketukan kartu melempar, karena `bukaOpt()` membaca medan yang baru ada sesudah berkas
+   * rinci dilebur — dan lemparannya di luar `try`, jadi tidak ada yang menangkapnya.
+   *
+   * Jadi dua uji ini menegaskan HASIL, bukan ketiadaan galat: daftarnya berisi, dan satu
+   * pintu benar-benar menjawab dengan blok "pastikan dulu" — bagian yang membuat jalur ini
+   * jalur pemastian, bukan tebakan. Keduanya lewat jalan masuk yang berbeda, karena
+   * keduanya pernah rusak sendiri-sendiri. */
+  test('jalur 1 menjawab: daftar gejala berisi, dan satu pintu terbuka saat diketuk', async ({ page }) => {
+    await siap(page, 'tanaman.html');
+    const kartu = page.locator('#gejala ul.daftar li button[data-opt]');
+    await expect(kartu.first()).toBeVisible();
+    expect(await kartu.count()).toBeGreaterThan(0);
+    await kartu.first().click();
+    await expect(page.locator('#hasil')).toContainText('Pastikan dulu');
+  });
+
+  test('pintu gejala terbuka juga lewat tautan langsung', async ({ page }) => {
+    // Idnya diambil dari daftarnya sendiri, bukan diketik: uji yang menyebut satu id
+    // akan merah karena kurasinya bergerak, bukan karena jalurnya rusak.
+    await siap(page, 'tanaman.html');
+    const id = await page.locator('#gejala button[data-opt]').first().getAttribute('data-opt');
+    await page.goto(`/app/tanaman.html?opt=${encodeURIComponent(id)}`, { waitUntil: 'load' });
+    await expect(page.locator('#hasil')).toContainText('Pastikan dulu');
+  });
 });

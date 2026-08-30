@@ -1000,7 +1000,20 @@ async function bukaOpt(id, opsi = {}) {
   if (!k) return bukaHama(id.replace(/[^a-z0-9]/gi, ''), opsi);
   terbukaKini = { id: k.id, nama: k.nama, tautan: tautanKe(`?opt=${encodeURIComponent(k.id)}`) };
   optKini = k;
-  pilihanKedua = { apa: 'tanaman lain', banyak: k.di.length };
+  /* `k.komoditas`, BUKAN `k.di.length` — dan bedanya letak, bukan selera.
+   *
+   * `k` datang dari daftar gejala, dan daftar itu proyeksi: `di` hidup di berkas rinci
+   * yang baru dilebur di dalam `try` di bawah. Baris ini berjalan SEBELUM peleburan itu,
+   * jadi `k.di` masih undefined dan `.length` melempar TypeError — di luar `try`, jadi
+   * `gagal()` tidak menangkapnya dan seluruh `mulai()` yang jatuh.
+   *
+   * Terlewat sampai 30 Agustus 2026 karena jalur ini tidak pernah sampai ke sini: impor
+   * yang hilang mematikan halaman lebih dulu. Begitu itu dibetulkan, tiap ketukan kartu
+   * gejala dan tiap tautan `?opt=` mendarat di baris ini.
+   *
+   * Cacahnya sama persis — pembangun indeks menulis `komoditas: g.di.length` — dan yang
+   * ini memang ada di proyeksi daftar. */
+  pilihanKedua = { apa: 'tanaman lain', banyak: k.komoditas };
   judulJadi(k.nama);
   el.hasil.innerHTML = '<p class="kosong">Menyiapkan…</p>';
   el.hasil.focus();
