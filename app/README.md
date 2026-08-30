@@ -28,8 +28,10 @@ layar yang sama akan menyimpang diam-diam begitu salah satunya diperbaiki.
 Satu kotak menjawab tiga macam pertanyaan sekaligus, karena yang mengetik "Abamektin"
 tidak tahu — dan tidak perlu tahu — bahwa yang diketiknya bahan dan bukan merek.
 Bahan aktif ikut ke ember `cari/` yang sama dengan nama, jadi keduanya datang dalam
-satu pengambilan; gejala punya kepalanya sendiri (`gejala-cari.json`, 3,1 KB) karena
-"daun mengeriting ke atas" bukan awalan sebuah nama dan tidak bisa diember begitu.
+satu pengambilan; gejala punya kepalanya sendiri karena "daun mengeriting ke atas" bukan
+awalan sebuah nama dan tidak bisa diember begitu. Kepala itu dulu satu berkas 3,1 KB pada
+sepuluh pintu; pada 208 ia 86,7 KB dan dipecah bernomor jadi `gejala-cari/NNN.json`, sama
+seperti daftar gejalanya sendiri — lihat "Pecahan bernomor" di bawah.
 
 `batas.js` juga perender bersama, dan satu-satunya yang dipakai **seluruh** layar:
 ia menggambar blok batas jawaban di kaki tiap halaman — tingkat bukti, tanggal, sumber,
@@ -166,16 +168,69 @@ dijawab dari cache tanpa jaringan (0 B), URL bercap berbeda menembus cache dan m
 penuh (49 KB). Membangun ulang sumber yang sama menghasilkan cap yang sama, jadi
 pembangunan ulang yang tidak mengubah apa pun tidak membuang cache pembaca sama sekali.
 
-> **Yang masih bisa dikerjakan, dan bukan oleh kode ini.** Berapa lama salinan bercap
-> disimpan tetap urusan yang menyajikan. Repositori ini belum punya host — `python3 -m
-> http.server` tidak mengirim `Cache-Control` sama sekali, jadi yang bekerja di atas
-> perkiraan peramban. Begitu hostnya dipilih, pecahan bercap sebaiknya disajikan
-> `Cache-Control: public, max-age=31536000, immutable`, dan `meta.json` dengan
-> `no-cache`. Itu mengubah "biasanya tidak bertanya" jadi "tidak pernah bertanya".
-> Sebelum ada cap, tidak satu pun dari keduanya aman dipasang.
+> **Sudah dikerjakan, dan bukan oleh kode ini.** Berapa lama salinan bercap disimpan
+> urusan yang menyajikan, dan sejak 30 Agustus 2026 penyajinya `worker/situs.js` di depan
+> R2. Pecahan bercap disajikan `Cache-Control: public, max-age=31536000, immutable`,
+> `meta.json` dengan `no-cache`. Saat pengembangan `python3 -m http.server` tidak mengirim
+> `Cache-Control` sama sekali, jadi yang di sana tetap bekerja di atas perkiraan peramban.
+
+**Cangkang ikut bercap, dan itu perubahan yang lebih baru.** Sampai 30 Agustus 2026 cap
+hanya jadi nama cache service worker; URL `.css` dan `.js` tetap telanjang. Akibatnya
+keduanya harus disajikan berumur pendek supaya HTML terbitan baru tidak berpasangan dengan
+JS terbitan lama — mempersempit jendela campurnya, bukan menutupnya. Bukan bahaya teoretis:
+satu verifikasi terbitan membaca "deploy gagal" padahal asal menyajikan berkas yang benar,
+karena peramban memegang `tanaman.js` sehari sebelumnya di sebelah HTML yang baru.
+
+`rakit-situs.mjs` sekarang menempelkan cap yang sama ke tiap `href`, `src`, dan specifier
+`import` di seluruh rakitan — 92.765 rujukan pada 30.918 berkas. **Dua posisi, dan yang
+kedua yang menentukan:** query tidak mewarisi ke dalam modul, jadi `tanaman.js?v=c1` yang
+mengimpor `./pustaka.js` akan meminta `pustaka.js` telanjang. Mencap pintu masuknya saja
+meninggalkan justru modul yang diimpor 25 berkas lain tanpa cap.
+
+`.html` **tidak** dicap — dua URL yang menjawab 200 untuk satu halaman adalah isi ganda di
+mata mesin pencari — begitu juga manifest, ikon, dan logo. Aturan itu dipegang satu tempat,
+predikat `BERCAP` di perakit, karena ia harus disepakati daftar prasimpan service worker
+DAN rujukan halaman: percobaan pertama menaruhnya di `sw.js`, dan pekerja yang mencap semua
+namanya menyimpan `/produk.html?v=cap` sementara navigasi meminta `/produk.html` —
+precache penuh, meleset di tiap navigasi, nol galat.
+
+Sisanya `worker/situs.js`: `.css`/`.js` telanjang tetap `max-age=3600, must-revalidate`,
+kini sebagai jaring pengaman untuk sumber yang disajikan tanpa perakitan dan tautan
+langsung — bukan lagi sebagai jawabannya.
 
 `larangan.json` (27,6 KB) hanya diambil kalau produk yang dibuka memang memuat bahan
 berlarangan — pada sebagian besar produk ia tidak pernah diambil sama sekali.
+
+### Pecahan bernomor
+
+Anggaran per berkas 48 KB, dan tiga keluarga sudah melewatinya sehingga dipecah jadi
+`<akar>/NNN.json` bernomor tiga digit:
+
+| Keluarga | Sekarang | Dibaca |
+|---|---|---|
+| `gejala-daftar/` | 101,5 KB dalam 3 pecahan | layar pertama jalur 1 — 208 kartu gejala |
+| `gejala-cari/` | 86,7 KB dalam 2 pecahan | kotak beranda, pencarian menurut gejala |
+| `sediaan/` | 36,6 KB dalam 12 berkas | jalur 5 dan 6, satu berkas per resep |
+
+Dua yang pertama dibaca `ambilPecahan(akar, kunci)` di `pustaka.js`. **Berapa pecahannya
+tidak ditanyakan**: cacahnya ada di `meta.pecahan`, yang memang sudah diambil tiap muat
+halaman, dan pecahannya sendiri diambil **serentak** — jadi berkas yang dipecah demi
+anggaran tidak berubah jadi beberapa perjalanan pulang-pergi berurutan.
+
+Urutan itu dijaga di dalam fungsinya: memanggilnya sebelum meta termuat akan
+mengembalikan larik kosong tanpa galat apa pun — layar yang terisi rapi dan kosong,
+bentuk kegagalan yang paling sulit dilihat. Karena itu `ambilPecahan()` memastikan meta
+ada lebih dulu, bukan mengandalkan pemanggilnya ingat.
+
+**Daftar dan rincian dipisah, dan pemisahan itu punya sisi tajam.** `gejala-daftar/`
+membawa proyeksi — id, nama, gejala, judul, ringkas, inang, dan cacah produk/komoditas —
+sedangkan ciri pembanding, keterangan, penular, dan sebaran `di` tinggal di
+`gejala/<kunci>.json` yang baru diambil saat pintunya dibuka, lalu dilebur ke entri
+daftarnya. Kode yang membaca medan rincian **sebelum** peleburan itu akan melihat
+`undefined`, dan itu sudah terjadi dua kali: sekali di perender daftar, sekali di
+`bukaOpt()` — yang kedua di luar `try`, jadi tidak ada yang menangkapnya dan seluruh
+halaman jatuh. Dua uji peramban di `spec/browser/` sekarang menegaskan bahwa satu pintu
+benar-benar **menjawab**, lewat ketukan maupun lewat tautan `?opt=`.
 
 ## Yang dinyatakan di layar, bukan disembunyikan
 
@@ -958,9 +1013,23 @@ kartu pemilih tidak ikut menunggu: angkanya memang sudah ada di meta.
 
   | Tingkat | Ukuran | Yang bekerja tanpa sinyal |
   |---|---|---|
-  | Otomatis | ±230 KB, 56 berkas | Aplikasi terbuka; jalur 5 dan 6 utuh; daftar gejala jalur 1; pencarian gejala dan nama lokal |
-  | Atas permintaan | ±4,6 MB, 1.175 ember | Pencarian nama — produk, pupuk, varietas |
-  | Menyusul saat dibuka | — | Rincian yang pernah dibuka bertahan; yang belum pernah dibuka tidak ada |
+  | Otomatis | ±1,17 MB — cangkang 885 KB pada 58 berkas, indeks 308 KB | Aplikasi terbuka; jalur 5 dan 6 utuh; daftar gejala jalur 1; pencarian gejala dan nama lokal |
+  | Atas permintaan | ±4,71 MB, 1.223 ember | Pencarian nama — produk, pupuk, varietas |
+  | Menyusul saat dibuka | — | Rincian tiap pintu gejala, rincian produk, varietas; yang pernah dibuka bertahan |
+
+  Angka tingkat 1 pernah berbunyi "±230 KB, 56 berkas", dan selisihnya bukan cuma
+  pertumbuhan: sampai 30 Agustus 2026 daftar gejalanya memang **tidak ikut**. `INDEKS_AKAR`
+  di `sw.js` masih menyebut `gejala.json` dan `gejala-cari.json`, dua berkas yang berhenti
+  terbit ketika indeks memecah keduanya — dan `simpanDiam()` menelan kegagalan per berkas,
+  jadi keduanya 404 tanpa suara sementara pemasangan melapor berhasil. Yang tersisa janji di
+  tabel ini, dan jalur 1 yang kosong justru saat tanpa sinyal. `cek-luring-indeks.mjs`
+  sekarang menolak nama indeks yang tidak ada di keranjang mana pun.
+
+  Rincian tiap pintu (`gejala/<kunci>.json`, 286 KB pada 208 pintu) **sengaja** turun ke
+  tingkat 3. Saat pintunya 28 dan seluruhnya 29 KB, memprasimpannya hampir gratis; pada 208
+  ia tiga perempat unduhan otomatis, dibayar semua orang demi satu-dua pintu yang benar-benar
+  dibuka. Yang menahannya aman: kartu yang belum tersimpan **gagal** saat luring, bukan
+  tergambar tanpa blok "pastikan dulu"-nya.
 
 - **Ukurannya disebut sebelum diketuk, bukan sesudah.** Tombolnya di `peranti.html` — halaman
   yang memang tentang apa yang tersimpan di peranti — bukan di beranda: 4,6 MB adalah

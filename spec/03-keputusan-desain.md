@@ -820,6 +820,24 @@ mengetik "registri" akan mencocokkan belasan gejala yang tidak ada hubungannya d
 yang dilihatnya. Komentar di atas kodenya memang sudah menyatakan hanya nama, nama ilmiah,
 dan gejala yang ikut; kodenya yang belum menyusul.
 
+**Dipecah untuk ketiga kalinya pada 208 pintu, dan kali ini daftarnya sendiri.** Catatan di
+atas ditulis saat pintunya 28 lalu 54, dan namanya masih `gejala.json`. Berkas itu berhenti
+terbit: pada 208 pintu daftarnya melewati 48 KB tanpa medan yang bisa diturunkan lagi —
+yang tersisa memang dipakai layar pertama — jadi yang dipecah bukan lagi medannya melainkan
+barisnya, jadi `gejala-daftar/NNN.json` (101,5 KB dalam 3 pecahan). `gejala-cari.json` ikut,
+jadi `gejala-cari/NNN.json` (86,7 KB dalam 2). Dibaca `ambilPecahan()` yang mengambil
+seluruh pecahan serentak; cacahnya ada di `meta.pecahan`, jadi tidak ada pertanyaan
+tambahan untuk mencari tahu ada berapa.
+
+Urutan pemeriksaan di paragraf sebelumnya tetap benar — ia yang dua kali memberi jawaban.
+Yang ditambahkan tahap ketiga: **ada titik ketika tidak ada lagi medan yang cuma dipakai
+layar kedua**, dan sesudah titik itu memecah baris adalah satu-satunya yang tersisa.
+
+Pemecahan ini pula yang, lewat sebuah merge, menjatuhkan `ambilPecahan` dari baris impor
+`tanaman.js` dan meninggalkan `gejala.json` di daftar prasimpan service worker — dua
+kegagalan sunyi yang tayang berhari-hari. Keduanya kini dijaga `cek-impor-app.mjs` dan
+`cek-luring-indeks.mjs`.
+
 Harganya satu, dan tidak boleh dilupakan: **rincian itu wajib ikut diprasimpan service
 worker.** Jalur 1 dibuka justru saat masalahnya sedang terjadi, sering jauh dari sinyal,
 dan blok "pastikan dulu" tanpa isinya adalah dugaan tanpa cara memastikan — persis yang

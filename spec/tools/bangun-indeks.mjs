@@ -2976,7 +2976,7 @@ const meta = {
   },
   tidakAda: {
     gejalaOpt:
-      `Nol dari ${optRegistri.length.toLocaleString('id-ID')} OPT registri membawa deskripsi gejala. Yang ada hanya ${gejala.length} OPT terkurasi di pest.json, tersebar di ${new Set(gejala.flatMap((g) => g.inang ?? [])).size} komoditas, dan seluruhnya bertekst gejala (lihat gejala.json). Rincian per komoditas ada di docs/14-tinjauan-gejala.md. Di luar yang terkurasi itu jalur 1 tidak punya pintu masuk.`,
+      `Nol dari ${optRegistri.length.toLocaleString('id-ID')} OPT registri membawa deskripsi gejala. Yang ada hanya ${gejala.length} OPT terkurasi di pest.json, tersebar di ${new Set(gejala.flatMap((g) => g.inang ?? [])).size} komoditas, dan seluruhnya bertekst gejala (terbit sebagai gejala-daftar/). Rincian per komoditas ada di docs/14-tinjauan-gejala.md. Di luar yang terkurasi itu jalur 1 tidak punya pintu masuk.`,
     phi: 'Nol dari 23.058 penggunaan berlabel memuat tenggang panen — registri tidak mencatatnya sama sekali. Satu-satunya penyebutan di sumber mentah soal tenggang penebaran tambak, bukan tenggang panen. Penyaji tidak boleh menjanjikan tanggal aman panen.',
     harga: 'Registri tidak memuat harga sama sekali. "Bandingkan harga pupuk" mengandalkan satu masukan pengguna.',
     // Dua lubang di bawah dulu tinggal di dalam kartu keselamatan aplikasi. Kartunya
