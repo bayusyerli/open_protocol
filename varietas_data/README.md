@@ -118,7 +118,19 @@ bentuk datanya, bukan lapis yang bisa menjawab pertanyaan siapa pun.
 
 1. **Minta dokumennya langsung** ke Direktorat Perbenihan Hortikultura. Tabelnya masih
    mereka terbitkan, jadi arsipnya kemungkinan besar masih ada di sisi mereka — yang
-   putus tautan publiknya. Ini jalur termurah dan belum dicoba.
+   putus tautan publiknya. **Suratnya sudah disusun** di `permintaan/`, tinggal diisi
+   blok pengirimnya dan dikirim:
+
+   | Berkas | Isi |
+   |---|---|
+   | `permintaan/surat-permintaan.md` | surat lengkap + versi ringkas untuk badan surel; dua kanal, surel biasa dan PPID |
+   | `permintaan/tautan-putus-seluruhnya.csv` | 5.018 baris, 3.447 bernomor SK — sekaligus hadiah audit untuk Direktorat |
+   | `permintaan/tautan-putus-prioritas.csv` | 3.814 baris, 65 komoditas sayuran & pangan semusim |
+
+   Yang diminta berurutan menurut ongkosnya bagi mereka: pulihkan berkasnya di alamat
+   semula (paling bermanfaat — semua pengguna PROSEED ikut dapat), atau kirim salinan
+   arsip, atau kirim 3.814 yang prioritas. Syarat penggunaan kembali ikut ditanyakan,
+   karena situsnya tidak menyatakannya sama sekali.
 2. **Telusuri `repository.pertanian.go.id`** untuk himpunan "Deskripsi Varietas" —
    buku kompilasi yang satu berkasnya memuat ratusan varietas sekaligus.
 3. **Kejar SK pelepasan tanaman pangan**, bukan pendaftaran hortikultura. Registri
