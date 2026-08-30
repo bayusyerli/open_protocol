@@ -74,6 +74,28 @@ const PECAHAN_AWALAN = 'op-pecahan-';
 const APP = new URL(self.location.href).searchParams.get('app') || '/app/';
 const INDEKS = '/spec/indeks/';
 
+/* CAP IKUT KE URL CANGKANG, bukan cuma ke nama cache — dan itu yang menghapus satu kelas
+ * kesalahan alih-alih mempersempitnya.
+ *
+ * Pecahan indeks sudah begitu sejak awal: `?v=<cap>`, isi berubah berarti URL berubah,
+ * jadi salinan lama tidak akan pernah terpakai lagi dan boleh disajikan `immutable`
+ * setahun. Cangkang tidak, dan akibatnya `.css`/`.js` harus disajikan berumur pendek
+ * supaya HTML terbitan baru tidak berpasangan dengan JS terbitan lama. Umur pendek
+ * mempersempit jendela campurnya; ia tidak menutupnya.
+ *
+ * YANG MENEMPELKAN CAP BUKAN BERKAS INI, dan itu keputusan yang perlu dibaca sebagai
+ * keputusan. `rakit-situs.mjs` menempelkannya ke tiap `href`, `src`, dan specifier
+ * `import` di seluruh rakitan — DAN ke literal di daftar bawah ini, pada salinan `_situs/`.
+ * Daftar di repositori tetap telanjang, sama seperti `VERSI` tetap berbunyi `dev`.
+ *
+ * Sempat dicoba sebaliknya: berkas ini menempelkan sendiri `?v=${VERSI}` ke tiap nama.
+ * Ia salah dengan cara yang hanya kelihatan saat luring. Yang dicap di rakitan cuma
+ * `.css` dan `.js` — `.html` sengaja tidak, karena dua URL yang menjawab 200 untuk satu
+ * halaman adalah isi ganda di mata mesin pencari — jadi pekerja yang mencap SEMUA
+ * namanya menyimpan `/produk.html?v=cap` sementara navigasi meminta `/produk.html`.
+ * Precache-nya penuh, cache-nya meleset di tiap navigasi, dan tidak ada satu pun galat.
+ * Aturan yang sama harus dipegang dua tempat, jadi ia dipegang satu: yang merakit. */
+
 // Cangkang: seluruh halaman, gaya, dan modul. Didaftar tangan, bukan dipindai — berkas
 // yang lupa didaftar akan gagal senyap saat luring, dan daftar yang terlihat lebih mudah
 // diperiksa daripada pemindai yang benar diam-diam.
@@ -202,8 +224,14 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
+  /* Keranjangnya ditentukan LETAK, bukan ada-tidaknya `?v=`. Sejak cangkang ikut bercap,
+   * keduanya membawa query yang sama bentuknya tetapi capnya berbeda asal: cangkang
+   * memakai sidik isi cangkang, pecahan indeks memakai cap meta. Menyortirnya menurut
+   * query akan menaruh `gaya.css?v=<cap cangkang>` ke keranjang pecahan, lalu
+   * `buangCapLama()` menghapusnya begitu meta berganti cap — cangkang yang dibuang oleh
+   * pergantian data yang tidak ada hubungannya dengannya. */
   const cap = u.searchParams.get('v');
-  const nama = cap ? namaPecahan(cap) : CANGKANG;
+  const nama = u.pathname.startsWith(APP) ? CANGKANG : (cap ? namaPecahan(cap) : CANGKANG);
 
   e.respondWith((async () => {
     const tersimpan = await caches.match(e.request, { ignoreSearch: false });

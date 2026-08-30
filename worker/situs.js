@@ -51,17 +51,18 @@ const sejam = 'public, max-age=3600, must-revalidate';
  * berkas yang benar. Yang menyesatkan bukan kesalahan siapa pun, melainkan dua umur
  * simpan berbeda pada dua berkas yang wajib sepakat.
  *
- * ONGKOSNYA DIBAYAR SADAR. `must-revalidate` sejam berarti pembaca tanpa service worker
- * mengirim permintaan bersyarat untuk tiap berkas cangkang sesudah satu jam — dijawab
- * 304 tanpa isi, tetapi tetap satu perjalanan pulang-pergi, dan permintaan yang menagih
- * pada skala besar. Yang membuatnya sepadan: pembaca berulang justru yang paling mungkin
- * punya service worker, dan mereka tidak menyentuh jaringan untuk cangkang sama sekali.
- * Yang membayar revalidasi ini persis yang tadinya membayar dengan halaman campur.
+ * SEJAK 30 AGUSTUS 2026 BARIS INI JARING PENGAMAN, BUKAN LAGI JAWABANNYA. Cangkang
+ * terbitan kini bercap di URL-nya — `rakit-situs.mjs` menempelkan `?v=<cap>` ke tiap
+ * `href`, `src`, dan specifier `import` di seluruh rakitan — jadi permintaan sungguhan
+ * dari halaman terbitan mendarat di cabang `adaCap` di atas dan disajikan `immutable`
+ * setahun. Tidak ada URL yang bisa menyajikan dua isi, jadi tidak ada versi campur, dan
+ * tidak ada revalidasi karena tidak ada yang perlu ditanyakan.
  *
- * Yang benar-benar menghapus kelasnya bukan angka melainkan cap pada URL cangkang, sama
- * seperti pecahan indeks. Itu menuntut penulisan ulang `<script src>` di 15 halaman saat
- * perakitan beserta daftar di sw.js; belum dikerjakan, dan disebut di sini supaya
- * pilihannya kelihatan sebagai penundaan, bukan sebagai kealpaan. */
+ * Yang jatuh ke sini tinggal permintaan telanjang: sumber yang disajikan tanpa perakitan
+ * saat pengembangan, tautan langsung yang diketik orang, dan bentuk rujukan yang luput
+ * dari penempelan. Untuk ketiganya sejam-dengan-revalidasi tetap pilihan yang benar —
+ * dan yang ketiga tidak boleh sampai terbit: `rakit-situs.mjs` menolak rakitan yang masih
+ * memuat rujukan cangkang tanpa cap. */
 function cacheUntuk(jalur, adaCap) {
   if (jalur.endsWith('/meta.json')) return 'no-cache';
   if (adaCap) return setahun;                               // pecahan indeks bercap
