@@ -1,6 +1,6 @@
-# Strategi SEO — 20.617 halaman terbit hari ini, 16 menunggu peninjau
+# Strategi SEO — 27.775 URL terbit, dan 67 yang sudah dilihat Google
 
-> Dokumen kerja · Fase 0 → Fase 1 · Versi **0.8** · 23 Agustus 2026 · Status **usulan**
+> Dokumen kerja · **Tayang** · Versi **0.9** · 31 Agustus 2026
 >
 > Peta kueri, arsitektur URL, gerbang mutu, pagar, dan urutan kerja supaya permukaan
 > baca-saja `app/` bisa ditemukan orang yang mencarinya — tanpa menukar netralitas,
@@ -29,8 +29,50 @@
 > 20.633 halaman terindeks dari 23.716 yang terbit. §6d memuat aturan yang membuatnya
 > tidak bisa basi diam-diam.
 >
+> **v0.9** — situs **tayang di pranatani.com**, dan dokumen ini disamakan dengan
+> kenyataannya: angka ditarik dari sitemap live, §2 ditandai sebagai sejarah, dan satu
+> metrik yang ketiadaannya baru saja terbukti mahal ditambahkan ke §11. Keadaan langsung
+> ada di bagian tepat sesudah kepala ini.
+>
 > **v0.8** — **gerbang tinjau dipasang untuk editorial**. Prosanya pindah jadi rekaman
-> kosakata, tunduk pada L35 dan sematan `reviewed_hash`. Enam belas halaman itu kini
+> kosakata, tunduk pada L35 dan sematan `r
+---
+
+## Keadaan langsung · 31 Agustus 2026
+
+Tayang di **pranatani.com** — Worker Cloudflare dengan R2, dibangun ulang `situs.yml` pada
+tiap push. Angka berikut ditarik dari **sitemap live**, bukan dari bangunan lokal.
+
+| Template | URL terbit | Catatan |
+|---|---:|---|
+| `/produk/` | 12.105 | naik dari 11.840 |
+| `/bpp/` | 6.349 | **tidak ada di rencana ini** — balai penyuluhan |
+| `/badan/` | 3.173 | — |
+| `/hama/` | 2.420 | turun dari 2.580; gerbang tipis diperketat |
+| `/setara/` | 1.305 | — |
+| `/lab/` | 931 | **tidak ada di rencana ini** |
+| `/bahan/` | 869 | turun dari 1.125 |
+| `/kandungan/` | 338 | — |
+| `/tanaman/` | 193 | turun dari 234 |
+| `/harga/` | 56 | dibangun harian |
+| `/sediaan/` | 32 | — |
+| `/toko/` | 4 | gerbang alamat masih menahan 88 wilayah |
+| `/batas/` | 0 | 16 halaman terbit, seluruhnya `noindex` — §6e |
+| **Jumlah** | **27.775** | |
+
+**Terindeks ≈67 halaman** dari 27.775 (0,24%) — wajar untuk domain berumur sekitar sepuluh
+hari, dan **gate S0 lewat jauh**: targetnya 12 halaman dalam 14 hari. Yang tembus menyebar
+ke beranda, bpp, badan, hama, dan halaman induk abjad yang menyusul kemudian. Peringkat
+belum ada di kueri sasaran: pada 31 Agustus, "merk insektisida bahan aktif abamektin" dan
+"daftar pestisida terdaftar kementan" masih dipegang pemain yang sama seperti 23 Agustus.
+
+**Harga beku enam hari, dan pengukuran di dokumen ini tidak melihatnya.** Sejak kosakata
+komoditas disatukan, empat rujukan menunjuk entitas yang sudah digantikan; aturan L29
+menolak, gerbang skema menahan, dan tidak satu pun harga baru ter-commit dari 24 sampai 30
+Agustus. Situs tetap dibangun ulang dan deploy tetap hijau — **data beku tersembunyi di
+balik build yang sukses**. Sudah diperbaiki; halaman harga sekarang menampilkan 28 Agustus.
+Yang seharusnya ada sejak awal dan tidak ada, kini tercatat di §11.
+eviewed_hash`. Enam belas halaman itu kini
 > **tidak diindeks sampai ada peninjau bernama**; angka terindeks turun ke 20.617 dan
 > naik lagi begitu tinjauan masuk. §6e memuat mekanismenya.
 >
@@ -101,10 +143,12 @@ Search Console dan log host. **Tidak ada pelacak di halaman** — `grep` atas `a
 membuktikan sampai hari ini tidak ada satu pun, dan manifest menjanjikan kata yang
 dicari tidak dikirim ke mana pun. Tidak ada angka SEO yang boleh naik jadi metrik utara.
 
-**Domain**
+**Domain** · *sudah diputuskan*
 
-Satu origin, disajikan dari **akar**, bukan `/app/`. ccTLD `.id`. `github.io` bukan rumah
-permanen: pindah domain setelah 19 ribu URL terindeks membayar ongkos yang tidak perlu.
+Ditetapkan **pranatani.com**, disajikan dari akar sebagai Worker Cloudflare dengan R2 —
+bukan GitHub Pages seperti dugaan bagian ini. Nasihatnya tetap berlaku dan justru terbukti:
+domain diputuskan **sebelum** 27 ribu URL terindeks, jadi tidak ada ongkos pindah yang
+perlu dibayar.
 
 ---
 
@@ -121,7 +165,12 @@ walaupun angkanya bagus.
 
 ---
 
-## 2. Enam blokir keadaan sekarang
+## 2. Enam blokir yang sudah dicabut
+
+> **Bagian ini sejarah, bukan keadaan.** Keenamnya tidak berlaku lagi per 31 Agustus 2026:
+> halaman ter-prerender, tiap entitas punya URL, `robots.txt` dan sitemap terbit, host
+> serta pipeline berjalan, dan pecahan indeks JSON kini ditutup dari perayapan. Dibiarkan
+> utuh karena ia yang menjelaskan kenapa alatnya dibangun seperti itu.
 
 1. **Jawaban dirender di peramban.** Seluruh isi datang dari `spec/indeks/` lewat
    `fetch`. `app/index.html` bahkan menyatakannya sendiri: *"Pencarian butuh
@@ -247,6 +296,10 @@ Tiga aturan yang menentukan bentuk halaman:
 | `/toko/<wilayah>/` | `indeks/toko/` | 92 | **3** | `Toko tani di <wilayah> — <n> titik` |
 | `/sediaan/<id>/` | `indeks/sediaan/` | 34 | **31** | `<Resep> — kedudukan hukum, bahan, titik kendali` |
 | `/batas/…`, `/sumber/…` | `vocab/editorial.json` | 16 | **0 hari ini** | editorial — bergerbang tinjau (§6e) |
+
+> Angka di kolom "Diindeks" adalah **rencana per 23 Agustus**. Yang benar-benar terbit
+> hari ini ada di [Keadaan langsung](#keadaan-langsung--31-agustus-2026) — dua template
+> menyusul, empat lainnya bergeser, dan editorial digerbangi tinjauan.
 
 Yang **tidak** dibuat, dan alasannya:
 
@@ -618,10 +671,13 @@ Sumber: Search Console (verifikasi domain), log host, dan keluaran
 | Kueri entitas | kueri unik/minggu yang mendarat di halaman entitas, bukan beranda | Membedakan "ditemukan" dari "dicari namanya" |
 | Kedalaman | pangsa sesi yang membuka jalur kedua | Bentuk paling awal dari berulang — jembatan ke metrik utara |
 | Kutipan mesin jawaban | 20 kueri tetap, diperiksa manusia tiap bulan | Klik akan turun ketika AI Overview sampai ke kueri ini; kutipan yang sebenarnya diperebutkan |
+| **Kesegaran data** | selisih hari antara tanggal terbaru di halaman dan hari ini, per template berkadensi | **Yang hilang sampai 30 Agustus 2026.** Harga beku enam hari tanpa satu pun angka di sini berubah — deploy hijau, sitemap terbit, dan tidak ada yang membandingkan tanggal halaman dengan kalender |
 | Antrean pertanyaan tak terjawab | sudah didefinisikan di `docs/11` §4a | Kueri yang mendarat lalu tidak terjawab adalah lubang data, bukan kegagalan SEO |
 
 Yang **tidak** diukur: individu, dan kata yang diketik di kotak pencarian.
-Nol tetap bukan kegagalan — konsisten dengan `docs/11` §4.
+Nol tetap bukan kegagalan — konsisten dengan `docs/11` §4. Tetapi **tanggal yang tidak
+bergerak adalah kegagalan**, dan itu pelajaran 30 Agustus: pengukuran yang seluruhnya
+menghadap mesin pencari tidak melihat data yang berhenti.
 
 ---
 
@@ -629,7 +685,7 @@ Nol tetap bukan kegagalan — konsisten dengan `docs/11` §4.
 
 | Fase | Isi | Gate |
 |---|---|---|
-| **S0 · bisa dirayapi** | Domain, host, sajikan dari akar, `robots.txt`, sitemap 12 halaman, kanonik + `og:` di seluruh `app/*.html`, GSC terpasang | 12 halaman terindeks dalam 14 hari |
+| **S0 · bisa dirayapi** | Domain, host, sajikan dari akar, `robots.txt`, sitemap 12 halaman, kanonik + `og:` di seluruh `app/*.html`, GSC terpasang | **Lewat** — target 12 halaman terindeks dalam 14 hari; tercapai ≈67 |
 | **S1 · halaman jawaban** | 2.580 hama×komoditas + 1.192 bahan + 337 kandungan + 234 komoditas — **4.343 halaman, sudah dibangun**, seluruhnya berstruktur pertanyaan. Nilai per halaman tertinggi, jumlah terkecil, risiko tipis paling rendah | ≥60% terindeks; ≥100 kueri entitas/minggu |
 | **S2 · skala penuh** | 11.840 produk + 1.276 setara + 3.136 badan — **seluruhnya sudah dibangun** | Rasio terindeks **tidak turun** di bawah S1. Kalau turun, berhenti menambah — itu tanda tipis |
 | **S3 · yang butuh kadensi atau putusan** | 55 seri harga + 3 wilayah toko + 31 sediaan + 16 editorial — **seluruhnya sudah dibangun**; editorial menunggu tinjauan sebelum diindeks | Halaman harga tidak pernah menayangkan tanggal yang lebih tua dari tarikan terakhir |
