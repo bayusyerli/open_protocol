@@ -305,7 +305,10 @@ if (HRG) {
   cek('16/18', 'seri berpangkal 1 Feb 2024',
     HRG.filter((h) => h.source_system === 'SP2KP' && h.series?.length
       && h.coverage.from === '2024-02-01').length, 42);
-  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 23);
+  // Turun 23 → 22 pada 30 Agustus 2026: Bawang Bombai dan Tepung Terigu sengaja dibiarkan
+  // tanpa sambungan sesudah gerbang L29 diperbaiki — satu-satunya kecocokan namanya entitas
+  // yang sudah digantikan, dan pengganti "Bawang" adalah "Bawang merah", yang bukan bombai.
+  cek('16', 'komoditas tersambung', new Set(HRG.filter((h) => h.commodity).map((h) => h.commodity.id)).size, 22);
   // Keempat harga pupuk kosong. Ini bukan angka hiasan: sisi HET pada C9 bergantung padanya,
   // dan kalau SP2KP suatu saat MENGISINYA, baris ini yang akan memberi tahu.
   cek('16', 'harga pupuk berangka', HRG.filter((h) => /^pupuk/i.test(h.label.id) && h.series?.length).length, 0);

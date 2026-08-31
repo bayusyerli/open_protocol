@@ -421,9 +421,17 @@ teks peraturannya sendiri, yang bebas hak cipta — jalur yang bagian 6 sudah se
 sekarang jadi satu-satunya.
 
 **Yang berhasil diserap:** 43 seri harian nasional tertimbang, 3 Januari 2024 – 21 Agustus
-2026, 635 tanggal, 26.475 titik. Tersambung ke **23 dari 906** komoditas di kosakata sendiri;
+2026, 635 tanggal, 26.475 titik. Tersambung ke **22 dari 906** komoditas di kosakata sendiri;
 57 varian sisanya bukan komoditas tani sama sekali — besi beton, semen, triplek, LPG, paku.
 Nol komoditas perkebunan.
+
+Angka itu **turun dari 23 pada 30 Agustus 2026**, dan turunnya disengaja. Penyatuan
+kosakata komoditas menandai "Bawang" dan "Terigu" sebagai digantikan, sementara seri
+**Bawang Bombai** dan **Tepung Terigu** hanya cocok ke nama lama itu. Menyambungkannya ke
+penggantinya akan mengarang: pengganti "Bawang" adalah "Bawang merah", dan bombai bukan
+bawang merah. Keduanya karena itu dibiarkan kosong dan dicetak di ringkasan pembangunan,
+menunggu pemetaan tangan — kosong yang disebutkan lebih baik daripada rujukan yang tampak
+pasti dan keliru.
 
 **Apa yang layar tampilkan dari 88 itu, dan kenapa bukan seluruhnya.** SP2KP mencampur dua
 keranjang dalam satu endpoint, dan penggolongannya sendiri yang memisahkan —
