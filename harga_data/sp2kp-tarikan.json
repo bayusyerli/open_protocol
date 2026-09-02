@@ -1,8 +1,8 @@
 {
-  "ditarik": "2026-09-01",
-  "mode": "penuh",
-  "jendelaHari": null,
-  "tanggalTerakhir": "2026-09-01",
+  "ditarik": "2026-09-02",
+  "mode": "jendela",
+  "jendelaHari": 14,
+  "tanggalTerakhir": "2026-09-02",
   "varian": 88,
-  "titik": 34996
+  "titik": 35052
 }
