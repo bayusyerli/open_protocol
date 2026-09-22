@@ -9,7 +9,7 @@
     "bawang-merah": {
       "id": "op:hrg:00001005",
       "nama": "Bawang Merah",
-      "komentar": "Per 21 September 2026, Bawang Merah tercatat Rp30.912 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 4,1%, dan dibanding setahun lalu turun 16,0%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp23.349 (27 Agustus 2024) sampai Rp58.068 (20 April 2024), dengan koefisien variasi 17,8%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada September, berselisih 39,4% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Bawang Merah tercatat Rp30.931 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 4,0%, dan dibanding setahun lalu turun 15,7%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp23.349 (27 Agustus 2024) sampai Rp58.068 (20 April 2024), dengan koefisien variasi 17,9%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada September, berselisih 39,5% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -17,12 +17,12 @@
         "kelompok": "Bawang",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 30911.56,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.03,
-        "ubah30hari": -4.05,
-        "ubah90hari": -29.85,
-        "ubah1tahun": -15.96,
+        "hargaTerakhir": 30931.11,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.3,
+        "ubah30hari": -3.99,
+        "ubah90hari": -29.27,
+        "ubah1tahun": -15.65,
         "terendah": {
           "t": "2024-08-27",
           "p": 23348.5
@@ -31,21 +31,21 @@
           "t": "2024-04-20",
           "p": 58067.75
         },
-        "rataRata": 37616.84,
-        "gejolakPersen": 17.84,
+        "rataRata": 37606.63,
+        "gejolakPersen": 17.85,
         "musim": {
           "bulanTermahal": "Mei",
           "bulanTermurah": "September",
-          "selisihMusimPersen": 39.44
+          "selisihMusimPersen": 39.47
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Bawang Merah\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":30911.56,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.03,\"ubah30hari\":-4.05,\"ubah90hari\":-29.85,\"ubah1tahun\":-15.96,\"terendah\":{\"t\":\"2024-08-27\",\"p\":23348.5},\"tertinggi\":{\"t\":\"2024-04-20\",\"p\":58067.75},\"rataRata\":37616.84,\"gejolakPersen\":17.84,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":39.44},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Bawang Merah\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":30931.11,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.3,\"ubah30hari\":-3.99,\"ubah90hari\":-29.27,\"ubah1tahun\":-15.65,\"terendah\":{\"t\":\"2024-08-27\",\"p\":23348.5},\"tertinggi\":{\"t\":\"2024-04-20\",\"p\":58067.75},\"rataRata\":37606.63,\"gejolakPersen\":17.85,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":39.47},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -55,7 +55,7 @@
     "bawang-putih-honan": {
       "id": "op:hrg:00001006",
       "nama": "Bawang Putih Honan",
-      "komentar": "Per 21 September 2026, Bawang Putih Honan tercatat Rp33.742 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 2,2%, dan dibanding setahun lalu turun 2,1%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp33.165 (2 Juni 2026) sampai Rp47.500 (27 April 2024), dengan koefisien variasi 7,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada September, berselisih 10,1% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Bawang Putih Honan tercatat Rp33.727 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 2,2%, dan dibanding setahun lalu turun 2,0%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp33.165 (2 Juni 2026) sampai Rp47.500 (27 April 2024), dengan koefisien variasi 7,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada September, berselisih 10,2% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -63,12 +63,12 @@
         "kelompok": "Bawang",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 33742.05,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.71,
-        "ubah30hari": -2.16,
-        "ubah90hari": -11.5,
-        "ubah1tahun": -2.08,
+        "hargaTerakhir": 33726.51,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.79,
+        "ubah30hari": -2.21,
+        "ubah90hari": -11.58,
+        "ubah1tahun": -2.02,
         "terendah": {
           "t": "2026-06-02",
           "p": 33164.92
@@ -77,21 +77,21 @@
           "t": "2024-04-27",
           "p": 47500
         },
-        "rataRata": 37396.49,
+        "rataRata": 37390.89,
         "gejolakPersen": 6.97,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "September",
-          "selisihMusimPersen": 10.13
+          "selisihMusimPersen": 10.23
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Bawang Putih Honan\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":33742.05,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.71,\"ubah30hari\":-2.16,\"ubah90hari\":-11.5,\"ubah1tahun\":-2.08,\"terendah\":{\"t\":\"2026-06-02\",\"p\":33164.92},\"tertinggi\":{\"t\":\"2024-04-27\",\"p\":47500},\"rataRata\":37396.49,\"gejolakPersen\":6.97,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":10.13},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Bawang Putih Honan\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":33726.51,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.79,\"ubah30hari\":-2.21,\"ubah90hari\":-11.58,\"ubah1tahun\":-2.02,\"terendah\":{\"t\":\"2026-06-02\",\"p\":33164.92},\"tertinggi\":{\"t\":\"2024-04-27\",\"p\":47500},\"rataRata\":37390.89,\"gejolakPersen\":6.97,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":10.23},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -101,7 +101,7 @@
     "bawang-putih-kating": {
       "id": "op:hrg:00001007",
       "nama": "Bawang Putih Kating",
-      "komentar": "Per 21 September 2026, Bawang Putih Kating tercatat Rp37.161 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 1,2%, dan dibanding setahun lalu turun 1,0%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp35.000 (21 April 2024) sampai Rp50.000 (5 Mei 2024), dengan koefisien variasi 6,4%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada September, berselisih 7,7% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Bawang Putih Kating tercatat Rp37.116 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 1,3%, dan dibanding setahun lalu turun 1,1%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp35.000 (21 April 2024) sampai Rp50.000 (5 Mei 2024), dengan koefisien variasi 6,4%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada September, berselisih 7,8% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -109,12 +109,12 @@
         "kelompok": "Bawang",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 37160.81,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.25,
-        "ubah30hari": -1.17,
-        "ubah90hari": -5.99,
-        "ubah1tahun": -0.97,
+        "hargaTerakhir": 37115.59,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.3,
+        "ubah30hari": -1.29,
+        "ubah90hari": -6.37,
+        "ubah1tahun": -1.11,
         "terendah": {
           "t": "2024-04-21",
           "p": 35000
@@ -123,21 +123,21 @@
           "t": "2024-05-05",
           "p": 50000
         },
-        "rataRata": 40101.71,
+        "rataRata": 40097.13,
         "gejolakPersen": 6.35,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "September",
-          "selisihMusimPersen": 7.68
+          "selisihMusimPersen": 7.75
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 651,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 652,
           "hariTanpaAngka": 313
         }
       },
-      "sidikFakta": "{\"nama\":\"Bawang Putih Kating\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":37160.81,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.25,\"ubah30hari\":-1.17,\"ubah90hari\":-5.99,\"ubah1tahun\":-0.97,\"terendah\":{\"t\":\"2024-04-21\",\"p\":35000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":50000},\"rataRata\":40101.71,\"gejolakPersen\":6.35,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":7.68},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":651,\"hariTanpaAngka\":313}}",
+      "sidikFakta": "{\"nama\":\"Bawang Putih Kating\",\"kelompok\":\"Bawang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":37115.59,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.3,\"ubah30hari\":-1.29,\"ubah90hari\":-6.37,\"ubah1tahun\":-1.11,\"terendah\":{\"t\":\"2024-04-21\",\"p\":35000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":50000},\"rataRata\":40097.13,\"gejolakPersen\":6.35,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"September\",\"selisihMusimPersen\":7.75},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":652,\"hariTanpaAngka\":313}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -189,7 +189,7 @@
     "beras-medium": {
       "id": "op:hrg:00001012",
       "nama": "Beras Medium",
-      "komentar": "Per 21 September 2026, Beras Medium tercatat Rp13.966 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,9%, dan dibanding setahun lalu naik 0,6%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp12.300 (11 Maret 2024) sampai Rp17.600 (29 Maret 2024), dengan koefisien variasi 2,4%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada November, berselisih 3,2% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Beras Medium tercatat Rp13.971 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,9%, dan dibanding setahun lalu naik 0,7%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp12.300 (11 Maret 2024) sampai Rp17.600 (29 Maret 2024), dengan koefisien variasi 2,4%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada November, berselisih 3,2% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -197,12 +197,12 @@
         "kelompok": "Beras",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 13966.03,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.04,
-        "ubah30hari": 0.88,
-        "ubah90hari": 1.47,
-        "ubah1tahun": 0.56,
+        "hargaTerakhir": 13971.13,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.03,
+        "ubah30hari": 0.92,
+        "ubah90hari": 1.45,
+        "ubah1tahun": 0.68,
         "terendah": {
           "t": "2024-03-11",
           "p": 12300
@@ -211,7 +211,7 @@
           "t": "2024-03-29",
           "p": 17600
         },
-        "rataRata": 13702.81,
+        "rataRata": 13703.22,
         "gejolakPersen": 2.36,
         "musim": {
           "bulanTermahal": "Maret",
@@ -220,12 +220,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 652,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 653,
           "hariTanpaAngka": 312
         }
       },
-      "sidikFakta": "{\"nama\":\"Beras Medium\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13966.03,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.04,\"ubah30hari\":0.88,\"ubah90hari\":1.47,\"ubah1tahun\":0.56,\"terendah\":{\"t\":\"2024-03-11\",\"p\":12300},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":17600},\"rataRata\":13702.81,\"gejolakPersen\":2.36,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":3.19},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":652,\"hariTanpaAngka\":312}}",
+      "sidikFakta": "{\"nama\":\"Beras Medium\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13971.13,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.03,\"ubah30hari\":0.92,\"ubah90hari\":1.45,\"ubah1tahun\":0.68,\"terendah\":{\"t\":\"2024-03-11\",\"p\":12300},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":17600},\"rataRata\":13703.22,\"gejolakPersen\":2.36,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":3.19},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":653,\"hariTanpaAngka\":312}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -235,7 +235,7 @@
     "beras-premium": {
       "id": "op:hrg:00001013",
       "nama": "Beras Premium",
-      "komentar": "Per 21 September 2026, Beras Premium tercatat Rp15.593 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,7%, dan dibanding setahun lalu nyaris tidak bergerak (0,0%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp13.383 (11 Maret 2024) sampai Rp17.600 (29 Maret 2024), dengan koefisien variasi 1,8%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Desember, berselisih 2,1% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Beras Premium tercatat Rp15.598 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,7%, dan dibanding setahun lalu nyaris tidak bergerak (0,1%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp13.383 (11 Maret 2024) sampai Rp17.600 (29 Maret 2024), dengan koefisien variasi 1,8%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Desember, berselisih 2,1% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -243,12 +243,12 @@
         "kelompok": "Beras",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 15593.05,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.04,
-        "ubah30hari": 0.71,
-        "ubah90hari": 1.35,
-        "ubah1tahun": 0.03,
+        "hargaTerakhir": 15597.99,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.03,
+        "ubah30hari": 0.74,
+        "ubah90hari": 1.3,
+        "ubah1tahun": 0.11,
         "terendah": {
           "t": "2024-03-11",
           "p": 13383.33
@@ -257,7 +257,7 @@
           "t": "2024-03-29",
           "p": 17600
         },
-        "rataRata": 15352,
+        "rataRata": 15352.37,
         "gejolakPersen": 1.83,
         "musim": {
           "bulanTermahal": "Maret",
@@ -266,12 +266,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Beras Premium\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15593.05,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.04,\"ubah30hari\":0.71,\"ubah90hari\":1.35,\"ubah1tahun\":0.03,\"terendah\":{\"t\":\"2024-03-11\",\"p\":13383.33},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":17600},\"rataRata\":15352,\"gejolakPersen\":1.83,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":2.12},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Beras Premium\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15597.99,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.03,\"ubah30hari\":0.74,\"ubah90hari\":1.3,\"ubah1tahun\":0.11,\"terendah\":{\"t\":\"2024-03-11\",\"p\":13383.33},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":17600},\"rataRata\":15352.37,\"gejolakPersen\":1.83,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":2.12},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -281,7 +281,7 @@
     "beras-sphp-bulog": {
       "id": "op:hrg:00001014",
       "nama": "Beras SPHP Bulog",
-      "komentar": "Per 21 September 2026, Beras SPHP Bulog tercatat Rp12.344 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu nyaris tidak bergerak (0,5%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp10.351 (3 Februari 2024) sampai Rp13.000 (29 Maret 2024), dengan koefisien variasi 3,0%. Rata-rata bulanannya paling tinggi pada September dan paling rendah pada April, berselisih 5,4% — pola dari 582 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Beras SPHP Bulog tercatat Rp12.345 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,0%), dan dibanding setahun lalu turun 0,6%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp10.351 (3 Februari 2024) sampai Rp13.000 (29 Maret 2024), dengan koefisien variasi 3,0%. Rata-rata bulanannya paling tinggi pada September dan paling rendah pada April, berselisih 5,4% — pola dari 583 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -289,12 +289,12 @@
         "kelompok": "Beras",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 12343.5,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.05,
-        "ubah30hari": -0.05,
-        "ubah90hari": 0.1,
-        "ubah1tahun": -0.45,
+        "hargaTerakhir": 12344.87,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.03,
+        "ubah30hari": -0.04,
+        "ubah90hari": 0.12,
+        "ubah1tahun": -0.6,
         "terendah": {
           "t": "2024-02-03",
           "p": 10351.07
@@ -303,21 +303,21 @@
           "t": "2024-03-29",
           "p": 13000
         },
-        "rataRata": 12232.36,
+        "rataRata": 12232.56,
         "gejolakPersen": 2.98,
         "musim": {
           "bulanTermahal": "September",
           "bulanTermurah": "April",
-          "selisihMusimPersen": 5.39
+          "selisihMusimPersen": 5.38
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 582,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 583,
           "hariTanpaAngka": 382
         }
       },
-      "sidikFakta": "{\"nama\":\"Beras SPHP Bulog\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12343.5,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.05,\"ubah30hari\":-0.05,\"ubah90hari\":0.1,\"ubah1tahun\":-0.45,\"terendah\":{\"t\":\"2024-02-03\",\"p\":10351.07},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":13000},\"rataRata\":12232.36,\"gejolakPersen\":2.98,\"musim\":{\"bulanTermahal\":\"September\",\"bulanTermurah\":\"April\",\"selisihMusimPersen\":5.39},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":582,\"hariTanpaAngka\":382}}",
+      "sidikFakta": "{\"nama\":\"Beras SPHP Bulog\",\"kelompok\":\"Beras\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12344.87,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.03,\"ubah30hari\":-0.04,\"ubah90hari\":0.12,\"ubah1tahun\":-0.6,\"terendah\":{\"t\":\"2024-02-03\",\"p\":10351.07},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":13000},\"rataRata\":12232.56,\"gejolakPersen\":2.98,\"musim\":{\"bulanTermahal\":\"September\",\"bulanTermurah\":\"April\",\"selisihMusimPersen\":5.38},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":583,\"hariTanpaAngka\":382}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -327,7 +327,7 @@
     "cabai-merah-besar": {
       "id": "op:hrg:00001020",
       "nama": "Cabai Merah Besar",
-      "komentar": "Per 21 September 2026, Cabai Merah Besar tercatat Rp42.693 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,9%, dan dibanding setahun lalu turun 9,6%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp26.392 (7 November 2024) sampai Rp83.333 (1 Mei 2024), dengan koefisien variasi 22,7%. Rata-rata bulanannya paling tinggi pada Februari dan paling rendah pada Oktober, berselisih 39,1% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Cabai Merah Besar tercatat Rp42.748 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 2,1%, dan dibanding setahun lalu turun 14,3%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp26.392 (7 November 2024) sampai Rp83.333 (1 Mei 2024), dengan koefisien variasi 22,7%. Rata-rata bulanannya paling tinggi pada Februari dan paling rendah pada Oktober, berselisih 39,1% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -335,12 +335,12 @@
         "kelompok": "Cabai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 42693.27,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 2.28,
-        "ubah30hari": 1.93,
-        "ubah90hari": -4.91,
-        "ubah1tahun": -9.6,
+        "hargaTerakhir": 42747.71,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 2.16,
+        "ubah30hari": 2.06,
+        "ubah90hari": -3.62,
+        "ubah1tahun": -14.27,
         "terendah": {
           "t": "2024-11-07",
           "p": 26392.28
@@ -349,8 +349,8 @@
           "t": "2024-05-01",
           "p": 83333.33
         },
-        "rataRata": 44469.57,
-        "gejolakPersen": 22.68,
+        "rataRata": 44466.93,
+        "gejolakPersen": 22.66,
         "musim": {
           "bulanTermahal": "Februari",
           "bulanTermurah": "Oktober",
@@ -358,12 +358,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 651,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 652,
           "hariTanpaAngka": 313
         }
       },
-      "sidikFakta": "{\"nama\":\"Cabai Merah Besar\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":42693.27,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":2.28,\"ubah30hari\":1.93,\"ubah90hari\":-4.91,\"ubah1tahun\":-9.6,\"terendah\":{\"t\":\"2024-11-07\",\"p\":26392.28},\"tertinggi\":{\"t\":\"2024-05-01\",\"p\":83333.33},\"rataRata\":44469.57,\"gejolakPersen\":22.68,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":39.05},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":651,\"hariTanpaAngka\":313}}",
+      "sidikFakta": "{\"nama\":\"Cabai Merah Besar\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":42747.71,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":2.16,\"ubah30hari\":2.06,\"ubah90hari\":-3.62,\"ubah1tahun\":-14.27,\"terendah\":{\"t\":\"2024-11-07\",\"p\":26392.28},\"tertinggi\":{\"t\":\"2024-05-01\",\"p\":83333.33},\"rataRata\":44466.93,\"gejolakPersen\":22.66,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":39.05},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":652,\"hariTanpaAngka\":313}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -373,7 +373,7 @@
     "cabai-merah-keriting": {
       "id": "op:hrg:00001021",
       "nama": "Cabai Merah Keriting",
-      "komentar": "Per 21 September 2026, Cabai Merah Keriting tercatat Rp51.766 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 34,3%, dan dibanding setahun lalu turun 1,9%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp10.000 (27 April 2024) sampai Rp72.078 (23 Februari 2024), dengan koefisien variasi 22,1%. Rata-rata bulanannya paling tinggi pada Februari dan paling rendah pada November, berselisih 32,4% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Cabai Merah Keriting tercatat Rp52.010 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 35,0%, dan dibanding setahun lalu turun 4,0%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp10.000 (27 April 2024) sampai Rp72.078 (23 Februari 2024), dengan koefisien variasi 22,1%. Rata-rata bulanannya paling tinggi pada Februari dan paling rendah pada November, berselisih 32,4% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -381,12 +381,12 @@
         "kelompok": "Cabai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 51765.86,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 7.63,
-        "ubah30hari": 34.32,
-        "ubah90hari": 19.05,
-        "ubah1tahun": -1.87,
+        "hargaTerakhir": 52010.1,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 7.47,
+        "ubah30hari": 34.95,
+        "ubah90hari": 20.48,
+        "ubah1tahun": -4.04,
         "terendah": {
           "t": "2024-04-27",
           "p": 10000
@@ -395,8 +395,8 @@
           "t": "2024-02-23",
           "p": 72078.36
         },
-        "rataRata": 43289.03,
-        "gejolakPersen": 22.06,
+        "rataRata": 43302.37,
+        "gejolakPersen": 22.05,
         "musim": {
           "bulanTermahal": "Februari",
           "bulanTermurah": "November",
@@ -404,12 +404,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Cabai Merah Keriting\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":51765.86,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":7.63,\"ubah30hari\":34.32,\"ubah90hari\":19.05,\"ubah1tahun\":-1.87,\"terendah\":{\"t\":\"2024-04-27\",\"p\":10000},\"tertinggi\":{\"t\":\"2024-02-23\",\"p\":72078.36},\"rataRata\":43289.03,\"gejolakPersen\":22.06,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":32.42},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Cabai Merah Keriting\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":52010.1,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":7.47,\"ubah30hari\":34.95,\"ubah90hari\":20.48,\"ubah1tahun\":-4.04,\"terendah\":{\"t\":\"2024-04-27\",\"p\":10000},\"tertinggi\":{\"t\":\"2024-02-23\",\"p\":72078.36},\"rataRata\":43302.37,\"gejolakPersen\":22.05,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":32.42},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -419,7 +419,7 @@
     "cabai-rawit-hijau": {
       "id": "op:hrg:00001022",
       "nama": "Cabai Rawit Hijau",
-      "komentar": "Per 21 September 2026, Cabai Rawit Hijau tercatat Rp48.742 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 7,6%, dan dibanding setahun lalu naik 39,2%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp15.972 (4 Februari 2024) sampai Rp100.000 (29 Maret 2024), dengan koefisien variasi 19,1%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada November, berselisih 72,1% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Cabai Rawit Hijau tercatat Rp48.764 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 7,6%, dan dibanding setahun lalu naik 40,8%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp15.972 (4 Februari 2024) sampai Rp100.000 (29 Maret 2024), dengan koefisien variasi 19,1%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada November, berselisih 72,1% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -427,12 +427,12 @@
         "kelompok": "Cabai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 48741.92,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 1.29,
-        "ubah30hari": 7.56,
-        "ubah90hari": 15.39,
-        "ubah1tahun": 39.22,
+        "hargaTerakhir": 48764.38,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 1.02,
+        "ubah30hari": 7.61,
+        "ubah90hari": 16.12,
+        "ubah1tahun": 40.8,
         "terendah": {
           "t": "2024-02-04",
           "p": 15971.5
@@ -441,7 +441,7 @@
           "t": "2024-03-29",
           "p": 100000
         },
-        "rataRata": 39998.56,
+        "rataRata": 40012.01,
         "gejolakPersen": 19.1,
         "musim": {
           "bulanTermahal": "Januari",
@@ -450,12 +450,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 651,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 652,
           "hariTanpaAngka": 313
         }
       },
-      "sidikFakta": "{\"nama\":\"Cabai Rawit Hijau\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":48741.92,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":1.29,\"ubah30hari\":7.56,\"ubah90hari\":15.39,\"ubah1tahun\":39.22,\"terendah\":{\"t\":\"2024-02-04\",\"p\":15971.5},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":100000},\"rataRata\":39998.56,\"gejolakPersen\":19.1,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":72.05},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":651,\"hariTanpaAngka\":313}}",
+      "sidikFakta": "{\"nama\":\"Cabai Rawit Hijau\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":48764.38,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":1.02,\"ubah30hari\":7.61,\"ubah90hari\":16.12,\"ubah1tahun\":40.8,\"terendah\":{\"t\":\"2024-02-04\",\"p\":15971.5},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":100000},\"rataRata\":40012.01,\"gejolakPersen\":19.1,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":72.05},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":652,\"hariTanpaAngka\":313}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -465,7 +465,7 @@
     "cabai-rawit-merah": {
       "id": "op:hrg:00001023",
       "nama": "Cabai Rawit Merah",
-      "komentar": "Per 21 September 2026, Cabai Rawit Merah tercatat Rp69.665 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 29,9%, dan dibanding setahun lalu naik 70,9%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp26.608 (9 Mei 2024) sampai Rp100.000 (29 Maret 2024), dengan koefisien variasi 26,1%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada November, berselisih 92,3% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Cabai Rawit Merah tercatat Rp70.074 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 30,7%, dan dibanding setahun lalu naik 73,2%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp26.608 (9 Mei 2024) sampai Rp100.000 (29 Maret 2024), dengan koefisien variasi 26,1%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada November, berselisih 92,3% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -473,12 +473,12 @@
         "kelompok": "Cabai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 69665.22,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 1.79,
-        "ubah30hari": 29.91,
-        "ubah90hari": 26.62,
-        "ubah1tahun": 70.86,
+        "hargaTerakhir": 70074.49,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 2.5,
+        "ubah30hari": 30.67,
+        "ubah90hari": 29.76,
+        "ubah1tahun": 73.16,
         "terendah": {
           "t": "2024-05-09",
           "p": 26607.76
@@ -487,8 +487,8 @@
           "t": "2024-03-29",
           "p": 100000
         },
-        "rataRata": 51827.19,
-        "gejolakPersen": 26.05,
+        "rataRata": 51855.13,
+        "gejolakPersen": 26.06,
         "musim": {
           "bulanTermahal": "Maret",
           "bulanTermurah": "November",
@@ -496,12 +496,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 652,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 653,
           "hariTanpaAngka": 312
         }
       },
-      "sidikFakta": "{\"nama\":\"Cabai Rawit Merah\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":69665.22,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":1.79,\"ubah30hari\":29.91,\"ubah90hari\":26.62,\"ubah1tahun\":70.86,\"terendah\":{\"t\":\"2024-05-09\",\"p\":26607.76},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":100000},\"rataRata\":51827.19,\"gejolakPersen\":26.05,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":92.25},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":652,\"hariTanpaAngka\":312}}",
+      "sidikFakta": "{\"nama\":\"Cabai Rawit Merah\",\"kelompok\":\"Cabai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":70074.49,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":2.5,\"ubah30hari\":30.67,\"ubah90hari\":29.76,\"ubah1tahun\":73.16,\"terendah\":{\"t\":\"2024-05-09\",\"p\":26607.76},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":100000},\"rataRata\":51855.13,\"gejolakPersen\":26.06,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":92.25},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":653,\"hariTanpaAngka\":312}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -511,7 +511,7 @@
     "daging-ayam-kampung": {
       "id": "op:hrg:00001024",
       "nama": "Daging Ayam Kampung",
-      "komentar": "Per 21 September 2026, Daging Ayam Kampung tercatat Rp76.628 per ekor pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu naik 2,1%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp50.000 (12 Maret 2024) sampai Rp180.000 (21 April 2024), dengan koefisien variasi 7,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Februari, berselisih 7,4% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Daging Ayam Kampung tercatat Rp76.579 per ekor pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu naik 2,2%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp50.000 (12 Maret 2024) sampai Rp180.000 (21 April 2024), dengan koefisien variasi 7,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Februari, berselisih 7,4% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -519,12 +519,12 @@
         "kelompok": "Daging Ayam",
         "satuan": "ekor",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 76627.55,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.2,
-        "ubah30hari": -0.22,
-        "ubah90hari": -0.33,
-        "ubah1tahun": 2.13,
+        "hargaTerakhir": 76578.61,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.13,
+        "ubah30hari": -0.28,
+        "ubah90hari": -0.4,
+        "ubah1tahun": 2.17,
         "terendah": {
           "t": "2024-03-12",
           "p": 50000
@@ -533,7 +533,7 @@
           "t": "2024-04-21",
           "p": 180000
         },
-        "rataRata": 75509.4,
+        "rataRata": 75511.03,
         "gejolakPersen": 6.95,
         "musim": {
           "bulanTermahal": "April",
@@ -542,12 +542,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Daging Ayam Kampung\",\"kelompok\":\"Daging Ayam\",\"satuan\":\"ekor\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":76627.55,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.2,\"ubah30hari\":-0.22,\"ubah90hari\":-0.33,\"ubah1tahun\":2.13,\"terendah\":{\"t\":\"2024-03-12\",\"p\":50000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":180000},\"rataRata\":75509.4,\"gejolakPersen\":6.95,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":7.44},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Daging Ayam Kampung\",\"kelompok\":\"Daging Ayam\",\"satuan\":\"ekor\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":76578.61,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.13,\"ubah30hari\":-0.28,\"ubah90hari\":-0.4,\"ubah1tahun\":2.17,\"terendah\":{\"t\":\"2024-03-12\",\"p\":50000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":180000},\"rataRata\":75511.03,\"gejolakPersen\":6.95,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":7.44},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -557,7 +557,7 @@
     "daging-ayam-ras": {
       "id": "op:hrg:00001025",
       "nama": "Daging Ayam Ras",
-      "komentar": "Per 21 September 2026, Daging Ayam Ras tercatat Rp40.331 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu naik 7,0%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp33.000 (11 Maret 2024) sampai Rp60.000 (5 Mei 2024), dengan koefisien variasi 6,6%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Juli, berselisih 8,7% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Daging Ayam Ras tercatat Rp40.303 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu naik 6,7%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp33.000 (11 Maret 2024) sampai Rp60.000 (5 Mei 2024), dengan koefisien variasi 6,6%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Juli, berselisih 8,7% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -565,12 +565,12 @@
         "kelompok": "Daging Ayam",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 40331.4,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.27,
-        "ubah30hari": 0.12,
-        "ubah90hari": 14.81,
-        "ubah1tahun": 6.95,
+        "hargaTerakhir": 40302.97,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.29,
+        "ubah30hari": 0.05,
+        "ubah90hari": 14.72,
+        "ubah1tahun": 6.74,
         "terendah": {
           "t": "2024-03-11",
           "p": 33000
@@ -579,8 +579,8 @@
           "t": "2024-05-05",
           "p": 60000
         },
-        "rataRata": 36561.17,
-        "gejolakPersen": 6.6,
+        "rataRata": 36566.89,
+        "gejolakPersen": 6.61,
         "musim": {
           "bulanTermahal": "Maret",
           "bulanTermurah": "Juli",
@@ -588,12 +588,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Daging Ayam Ras\",\"kelompok\":\"Daging Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":40331.4,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.27,\"ubah30hari\":0.12,\"ubah90hari\":14.81,\"ubah1tahun\":6.95,\"terendah\":{\"t\":\"2024-03-11\",\"p\":33000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":60000},\"rataRata\":36561.17,\"gejolakPersen\":6.6,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Juli\",\"selisihMusimPersen\":8.68},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Daging Ayam Ras\",\"kelompok\":\"Daging Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":40302.97,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.29,\"ubah30hari\":0.05,\"ubah90hari\":14.72,\"ubah1tahun\":6.74,\"terendah\":{\"t\":\"2024-03-11\",\"p\":33000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":60000},\"rataRata\":36566.89,\"gejolakPersen\":6.61,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Juli\",\"selisihMusimPersen\":8.68},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -603,7 +603,7 @@
     "daging-sapi-impor-beku": {
       "id": "op:hrg:00001028",
       "nama": "Daging Sapi Impor Beku",
-      "komentar": "Per 21 September 2026, Daging Sapi Impor Beku tercatat Rp115.220 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,4%, dan dibanding setahun lalu naik 5,2%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp83.467 (26 Februari 2024) sampai Rp155.989 (1 September 2026), dengan koefisien variasi 3,5%. Rata-rata bulanannya paling tinggi pada September dan paling rendah pada Februari, berselisih 3,3% — pola dari 637 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Daging Sapi Impor Beku tercatat Rp115.294 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,5%, dan dibanding setahun lalu naik 4,6%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp83.467 (26 Februari 2024) sampai Rp155.989 (1 September 2026), dengan koefisien variasi 3,5%. Rata-rata bulanannya paling tinggi pada September dan paling rendah pada Februari, berselisih 3,3% — pola dari 638 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -611,12 +611,12 @@
         "kelompok": "Daging Ruminansia",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 115220.3,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -1.29,
-        "ubah30hari": 1.39,
-        "ubah90hari": -0.88,
-        "ubah1tahun": 5.23,
+        "hargaTerakhir": 115293.58,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.23,
+        "ubah30hari": 1.46,
+        "ubah90hari": -0.54,
+        "ubah1tahun": 4.64,
         "terendah": {
           "t": "2024-02-26",
           "p": 83466.87
@@ -625,21 +625,21 @@
           "t": "2026-09-01",
           "p": 155988.82
         },
-        "rataRata": 110280.38,
+        "rataRata": 110288.24,
         "gejolakPersen": 3.5,
         "musim": {
           "bulanTermahal": "September",
           "bulanTermurah": "Februari",
-          "selisihMusimPersen": 3.27
+          "selisihMusimPersen": 3.33
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 637,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 638,
           "hariTanpaAngka": 327
         }
       },
-      "sidikFakta": "{\"nama\":\"Daging Sapi Impor Beku\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":115220.3,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-1.29,\"ubah30hari\":1.39,\"ubah90hari\":-0.88,\"ubah1tahun\":5.23,\"terendah\":{\"t\":\"2024-02-26\",\"p\":83466.87},\"tertinggi\":{\"t\":\"2026-09-01\",\"p\":155988.82},\"rataRata\":110280.38,\"gejolakPersen\":3.5,\"musim\":{\"bulanTermahal\":\"September\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.27},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":637,\"hariTanpaAngka\":327}}",
+      "sidikFakta": "{\"nama\":\"Daging Sapi Impor Beku\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":115293.58,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.23,\"ubah30hari\":1.46,\"ubah90hari\":-0.54,\"ubah1tahun\":4.64,\"terendah\":{\"t\":\"2024-02-26\",\"p\":83466.87},\"tertinggi\":{\"t\":\"2026-09-01\",\"p\":155988.82},\"rataRata\":110288.24,\"gejolakPersen\":3.5,\"musim\":{\"bulanTermahal\":\"September\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.33},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":638,\"hariTanpaAngka\":327}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -649,7 +649,7 @@
     "daging-sapi-paha-belakang": {
       "id": "op:hrg:00001029",
       "nama": "Daging Sapi Paha Belakang",
-      "komentar": "Per 21 September 2026, Daging Sapi Paha Belakang tercatat Rp142.906 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,8%, dan dibanding setahun lalu naik 8,4%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp111.642 (10 Februari 2024) sampai Rp160.000 (11 Maret 2024), dengan koefisien variasi 3,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Februari, berselisih 3,3% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Daging Sapi Paha Belakang tercatat Rp142.929 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,8%, dan dibanding setahun lalu naik 8,4%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp111.642 (10 Februari 2024) sampai Rp160.000 (11 Maret 2024), dengan koefisien variasi 3,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Februari, berselisih 3,3% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -657,12 +657,12 @@
         "kelompok": "Daging Ruminansia",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 142906.2,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.21,
-        "ubah30hari": 0.82,
-        "ubah90hari": 2.2,
-        "ubah1tahun": 8.36,
+        "hargaTerakhir": 142928.84,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.15,
+        "ubah30hari": 0.83,
+        "ubah90hari": 2.16,
+        "ubah1tahun": 8.4,
         "terendah": {
           "t": "2024-02-10",
           "p": 111641.53
@@ -671,8 +671,8 @@
           "t": "2024-03-11",
           "p": 160000
         },
-        "rataRata": 133808.18,
-        "gejolakPersen": 3.02,
+        "rataRata": 133822.12,
+        "gejolakPersen": 3.03,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "Februari",
@@ -680,12 +680,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Daging Sapi Paha Belakang\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":142906.2,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.21,\"ubah30hari\":0.82,\"ubah90hari\":2.2,\"ubah1tahun\":8.36,\"terendah\":{\"t\":\"2024-02-10\",\"p\":111641.53},\"tertinggi\":{\"t\":\"2024-03-11\",\"p\":160000},\"rataRata\":133808.18,\"gejolakPersen\":3.02,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.27},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Daging Sapi Paha Belakang\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":142928.84,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.15,\"ubah30hari\":0.83,\"ubah90hari\":2.16,\"ubah1tahun\":8.4,\"terendah\":{\"t\":\"2024-02-10\",\"p\":111641.53},\"tertinggi\":{\"t\":\"2024-03-11\",\"p\":160000},\"rataRata\":133822.12,\"gejolakPersen\":3.03,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.27},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -695,7 +695,7 @@
     "daging-sapi-paha-depan": {
       "id": "op:hrg:00001030",
       "nama": "Daging Sapi Paha Depan",
-      "komentar": "Per 21 September 2026, Daging Sapi Paha Depan tercatat Rp140.023 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu naik 7,2%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp111.642 (10 Februari 2024) sampai Rp172.586 (15 April 2024), dengan koefisien variasi 3,2%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Februari, berselisih 3,4% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Daging Sapi Paha Depan tercatat Rp140.048 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu naik 7,2%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp111.642 (10 Februari 2024) sampai Rp172.586 (15 April 2024), dengan koefisien variasi 3,2%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Februari, berselisih 3,4% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -703,12 +703,12 @@
         "kelompok": "Daging Ruminansia",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 140023.07,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.37,
-        "ubah30hari": 0.23,
-        "ubah90hari": 1.69,
-        "ubah1tahun": 7.18,
+        "hargaTerakhir": 140047.95,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.2,
+        "ubah30hari": 0.25,
+        "ubah90hari": 1.66,
+        "ubah1tahun": 7.22,
         "terendah": {
           "t": "2024-02-10",
           "p": 111641.53
@@ -717,8 +717,8 @@
           "t": "2024-04-15",
           "p": 172585.67
         },
-        "rataRata": 131976.7,
-        "gejolakPersen": 3.2,
+        "rataRata": 131989.06,
+        "gejolakPersen": 3.21,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "Februari",
@@ -726,12 +726,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 652,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 653,
           "hariTanpaAngka": 312
         }
       },
-      "sidikFakta": "{\"nama\":\"Daging Sapi Paha Depan\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":140023.07,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.37,\"ubah30hari\":0.23,\"ubah90hari\":1.69,\"ubah1tahun\":7.18,\"terendah\":{\"t\":\"2024-02-10\",\"p\":111641.53},\"tertinggi\":{\"t\":\"2024-04-15\",\"p\":172585.67},\"rataRata\":131976.7,\"gejolakPersen\":3.2,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.43},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":652,\"hariTanpaAngka\":312}}",
+      "sidikFakta": "{\"nama\":\"Daging Sapi Paha Depan\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":140047.95,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.2,\"ubah30hari\":0.25,\"ubah90hari\":1.66,\"ubah1tahun\":7.22,\"terendah\":{\"t\":\"2024-02-10\",\"p\":111641.53},\"tertinggi\":{\"t\":\"2024-04-15\",\"p\":172585.67},\"rataRata\":131989.06,\"gejolakPersen\":3.21,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.43},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":653,\"hariTanpaAngka\":312}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -741,7 +741,7 @@
     "daging-sapi-sandung-lamur": {
       "id": "op:hrg:00001031",
       "nama": "Daging Sapi Sandung Lamur",
-      "komentar": "Per 21 September 2026, Daging Sapi Sandung Lamur tercatat Rp100.864 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu naik 6,1%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp65.288 (14 April 2024) sampai Rp150.000 (23 Mei 2024), dengan koefisien variasi 3,8%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Januari, berselisih 2,1% — pola dari 648 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Daging Sapi Sandung Lamur tercatat Rp100.845 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,0%), dan dibanding setahun lalu naik 6,1%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp65.288 (14 April 2024) sampai Rp150.000 (23 Mei 2024), dengan koefisien variasi 3,8%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Januari, berselisih 2,1% — pola dari 649 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -749,12 +749,12 @@
         "kelompok": "Daging Ruminansia",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 100863.98,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.22,
-        "ubah30hari": 0.06,
-        "ubah90hari": 2.52,
-        "ubah1tahun": 6.08,
+        "hargaTerakhir": 100844.9,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.17,
+        "ubah30hari": 0.04,
+        "ubah90hari": 2.51,
+        "ubah1tahun": 6.07,
         "terendah": {
           "t": "2024-04-14",
           "p": 65287.9
@@ -763,7 +763,7 @@
           "t": "2024-05-23",
           "p": 150000
         },
-        "rataRata": 96618.66,
+        "rataRata": 96625.17,
         "gejolakPersen": 3.76,
         "musim": {
           "bulanTermahal": "Mei",
@@ -772,12 +772,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 648,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 649,
           "hariTanpaAngka": 316
         }
       },
-      "sidikFakta": "{\"nama\":\"Daging Sapi Sandung Lamur\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":100863.98,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.22,\"ubah30hari\":0.06,\"ubah90hari\":2.52,\"ubah1tahun\":6.08,\"terendah\":{\"t\":\"2024-04-14\",\"p\":65287.9},\"tertinggi\":{\"t\":\"2024-05-23\",\"p\":150000},\"rataRata\":96618.66,\"gejolakPersen\":3.76,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.08},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":648,\"hariTanpaAngka\":316}}",
+      "sidikFakta": "{\"nama\":\"Daging Sapi Sandung Lamur\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":100844.9,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.17,\"ubah30hari\":0.04,\"ubah90hari\":2.51,\"ubah1tahun\":6.07,\"terendah\":{\"t\":\"2024-04-14\",\"p\":65287.9},\"tertinggi\":{\"t\":\"2024-05-23\",\"p\":150000},\"rataRata\":96625.17,\"gejolakPersen\":3.76,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.08},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":649,\"hariTanpaAngka\":316}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -787,7 +787,7 @@
     "daging-sapi-tetelan": {
       "id": "op:hrg:00001032",
       "nama": "Daging Sapi Tetelan",
-      "komentar": "Per 21 September 2026, Daging Sapi Tetelan tercatat Rp79.510 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,2%, dan dibanding setahun lalu naik 6,4%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp62.818 (8 Februari 2024) sampai Rp130.000 (4 Februari 2024), dengan koefisien variasi 4,7%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada November, berselisih 3,5% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Daging Sapi Tetelan tercatat Rp79.537 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,3%, dan dibanding setahun lalu naik 6,5%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp62.818 (8 Februari 2024) sampai Rp130.000 (4 Februari 2024), dengan koefisien variasi 4,7%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada November, berselisih 3,5% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -795,12 +795,12 @@
         "kelompok": "Daging Ruminansia",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 79510.05,
-        "tanggalTerakhir": "2026-09-21",
+        "hargaTerakhir": 79536.71,
+        "tanggalTerakhir": "2026-09-22",
         "ubah7hari": 0.29,
-        "ubah30hari": 1.21,
-        "ubah90hari": 2.34,
-        "ubah1tahun": 6.44,
+        "ubah30hari": 1.25,
+        "ubah90hari": 2.37,
+        "ubah1tahun": 6.54,
         "terendah": {
           "t": "2024-02-08",
           "p": 62818.25
@@ -809,7 +809,7 @@
           "t": "2024-02-04",
           "p": 130000
         },
-        "rataRata": 76453.72,
+        "rataRata": 76458.45,
         "gejolakPersen": 4.65,
         "musim": {
           "bulanTermahal": "April",
@@ -818,12 +818,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 651,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 652,
           "hariTanpaAngka": 313
         }
       },
-      "sidikFakta": "{\"nama\":\"Daging Sapi Tetelan\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":79510.05,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.29,\"ubah30hari\":1.21,\"ubah90hari\":2.34,\"ubah1tahun\":6.44,\"terendah\":{\"t\":\"2024-02-08\",\"p\":62818.25},\"tertinggi\":{\"t\":\"2024-02-04\",\"p\":130000},\"rataRata\":76453.72,\"gejolakPersen\":4.65,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":3.54},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":651,\"hariTanpaAngka\":313}}",
+      "sidikFakta": "{\"nama\":\"Daging Sapi Tetelan\",\"kelompok\":\"Daging Ruminansia\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":79536.71,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.29,\"ubah30hari\":1.25,\"ubah90hari\":2.37,\"ubah1tahun\":6.54,\"terendah\":{\"t\":\"2024-02-08\",\"p\":62818.25},\"tertinggi\":{\"t\":\"2024-02-04\",\"p\":130000},\"rataRata\":76458.45,\"gejolakPersen\":4.65,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":3.54},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":652,\"hariTanpaAngka\":313}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -833,7 +833,7 @@
     "garam-halus": {
       "id": "op:hrg:00001033",
       "nama": "Garam Halus",
-      "komentar": "Per 21 September 2026, Garam Halus tercatat Rp10.818 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu nyaris tidak bergerak (0,0%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp8.235 (4 Februari 2024) sampai Rp18.720 (21 April 2024), dengan koefisien variasi 3,5%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Mei, berselisih 1,6% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Garam Halus tercatat Rp10.815 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu nyaris tidak bergerak (0,1%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp8.235 (4 Februari 2024) sampai Rp18.720 (21 April 2024), dengan koefisien variasi 3,5%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Mei, berselisih 1,6% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -841,12 +841,12 @@
         "kelompok": "Garam",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 10817.7,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.11,
-        "ubah30hari": 0.14,
-        "ubah90hari": 0.42,
-        "ubah1tahun": -0.02,
+        "hargaTerakhir": 10815.3,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.08,
+        "ubah30hari": 0.11,
+        "ubah90hari": 0.39,
+        "ubah1tahun": -0.07,
         "terendah": {
           "t": "2024-02-04",
           "p": 8235.09
@@ -855,8 +855,8 @@
           "t": "2024-04-21",
           "p": 18719.82
         },
-        "rataRata": 10853.23,
-        "gejolakPersen": 3.5,
+        "rataRata": 10853.17,
+        "gejolakPersen": 3.49,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "Mei",
@@ -864,12 +864,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Garam Halus\",\"kelompok\":\"Garam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":10817.7,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.11,\"ubah30hari\":0.14,\"ubah90hari\":0.42,\"ubah1tahun\":-0.02,\"terendah\":{\"t\":\"2024-02-04\",\"p\":8235.09},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":18719.82},\"rataRata\":10853.23,\"gejolakPersen\":3.5,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":1.61},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Garam Halus\",\"kelompok\":\"Garam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":10815.3,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.08,\"ubah30hari\":0.11,\"ubah90hari\":0.39,\"ubah1tahun\":-0.07,\"terendah\":{\"t\":\"2024-02-04\",\"p\":8235.09},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":18719.82},\"rataRata\":10853.17,\"gejolakPersen\":3.49,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":1.61},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -879,7 +879,7 @@
     "gula-pasir-curah": {
       "id": "op:hrg:00001034",
       "nama": "Gula Pasir Curah",
-      "komentar": "Per 21 September 2026, Gula Pasir Curah tercatat Rp18.170 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,6%, dan dibanding setahun lalu naik 3,8%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp16.113 (4 Februari 2024) sampai Rp19.333 (5 Mei 2024), dengan koefisien variasi 1,9%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Oktober, berselisih 3,4% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Gula Pasir Curah tercatat Rp18.177 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,6%, dan dibanding setahun lalu naik 3,9%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp16.113 (4 Februari 2024) sampai Rp19.333 (5 Mei 2024), dengan koefisien variasi 1,9%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Oktober, berselisih 3,4% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -887,12 +887,12 @@
         "kelompok": "Gula",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 18170.05,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.13,
-        "ubah30hari": 0.57,
-        "ubah90hari": 0.31,
-        "ubah1tahun": 3.84,
+        "hargaTerakhir": 18176.57,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.18,
+        "ubah30hari": 0.6,
+        "ubah90hari": 0.33,
+        "ubah1tahun": 3.89,
         "terendah": {
           "t": "2024-02-04",
           "p": 16113.25
@@ -901,8 +901,8 @@
           "t": "2024-05-05",
           "p": 19333.33
         },
-        "rataRata": 17661.25,
-        "gejolakPersen": 1.91,
+        "rataRata": 17662.04,
+        "gejolakPersen": 1.92,
         "musim": {
           "bulanTermahal": "Mei",
           "bulanTermurah": "Oktober",
@@ -910,12 +910,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Gula Pasir Curah\",\"kelompok\":\"Gula\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":18170.05,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.13,\"ubah30hari\":0.57,\"ubah90hari\":0.31,\"ubah1tahun\":3.84,\"terendah\":{\"t\":\"2024-02-04\",\"p\":16113.25},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":19333.33},\"rataRata\":17661.25,\"gejolakPersen\":1.91,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":3.41},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Gula Pasir Curah\",\"kelompok\":\"Gula\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":18176.57,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.18,\"ubah30hari\":0.6,\"ubah90hari\":0.33,\"ubah1tahun\":3.89,\"terendah\":{\"t\":\"2024-02-04\",\"p\":16113.25},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":19333.33},\"rataRata\":17662.04,\"gejolakPersen\":1.92,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":3.41},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -925,7 +925,7 @@
     "gula-pasir-kemasan": {
       "id": "op:hrg:00001035",
       "nama": "Gula Pasir Kemasan",
-      "komentar": "Per 21 September 2026, Gula Pasir Kemasan tercatat Rp19.047 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu naik 1,6%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp16.750 (3 Februari 2024) sampai Rp23.000 (11 Mei 2024), dengan koefisien variasi 2,1%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Februari, berselisih 2,7% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Gula Pasir Kemasan tercatat Rp19.051 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu naik 1,6%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp16.750 (3 Februari 2024) sampai Rp23.000 (11 Mei 2024), dengan koefisien variasi 2,1%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Februari, berselisih 2,7% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -933,12 +933,12 @@
         "kelompok": "Gula",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 19047.38,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.04,
-        "ubah30hari": 0.15,
+        "hargaTerakhir": 19051.48,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.02,
+        "ubah30hari": 0.17,
         "ubah90hari": 0.04,
-        "ubah1tahun": 1.58,
+        "ubah1tahun": 1.63,
         "terendah": {
           "t": "2024-02-03",
           "p": 16750
@@ -947,7 +947,7 @@
           "t": "2024-05-11",
           "p": 23000
         },
-        "rataRata": 18717.09,
+        "rataRata": 18717.6,
         "gejolakPersen": 2.09,
         "musim": {
           "bulanTermahal": "Mei",
@@ -956,12 +956,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 651,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 652,
           "hariTanpaAngka": 313
         }
       },
-      "sidikFakta": "{\"nama\":\"Gula Pasir Kemasan\",\"kelompok\":\"Gula\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19047.38,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.04,\"ubah30hari\":0.15,\"ubah90hari\":0.04,\"ubah1tahun\":1.58,\"terendah\":{\"t\":\"2024-02-03\",\"p\":16750},\"tertinggi\":{\"t\":\"2024-05-11\",\"p\":23000},\"rataRata\":18717.09,\"gejolakPersen\":2.09,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":2.73},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":651,\"hariTanpaAngka\":313}}",
+      "sidikFakta": "{\"nama\":\"Gula Pasir Kemasan\",\"kelompok\":\"Gula\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19051.48,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.02,\"ubah30hari\":0.17,\"ubah90hari\":0.04,\"ubah1tahun\":1.63,\"terendah\":{\"t\":\"2024-02-03\",\"p\":16750},\"tertinggi\":{\"t\":\"2024-05-11\",\"p\":23000},\"rataRata\":18717.6,\"gejolakPersen\":2.09,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":2.73},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":652,\"hariTanpaAngka\":313}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -971,7 +971,7 @@
     "ikan-kembung": {
       "id": "op:hrg:00001037",
       "nama": "Ikan Kembung",
-      "komentar": "Per 21 September 2026, Ikan Kembung tercatat Rp44.140 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,1%, dan dibanding setahun lalu naik 9,8%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp25.000 (27 April 2024) sampai Rp44.169 (4 September 2026), dengan koefisien variasi 7,2%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada Februari, berselisih 4,8% — pola dari 643 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Ikan Kembung tercatat Rp44.095 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,0%, dan dibanding setahun lalu naik 9,5%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp25.000 (27 April 2024) sampai Rp44.169 (4 September 2026), dengan koefisien variasi 7,3%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada Februari, berselisih 4,8% — pola dari 644 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -979,12 +979,12 @@
         "kelompok": "Ikan",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 44139.66,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.05,
-        "ubah30hari": 1.08,
-        "ubah90hari": 2.53,
-        "ubah1tahun": 9.75,
+        "hargaTerakhir": 44095.05,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.07,
+        "ubah30hari": 0.98,
+        "ubah90hari": 2.57,
+        "ubah1tahun": 9.5,
         "terendah": {
           "t": "2024-04-27",
           "p": 25000
@@ -993,8 +993,8 @@
           "t": "2026-09-04",
           "p": 44168.52
         },
-        "rataRata": 39368.78,
-        "gejolakPersen": 7.24,
+        "rataRata": 39376.12,
+        "gejolakPersen": 7.25,
         "musim": {
           "bulanTermahal": "Januari",
           "bulanTermurah": "Februari",
@@ -1002,12 +1002,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 643,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 644,
           "hariTanpaAngka": 321
         }
       },
-      "sidikFakta": "{\"nama\":\"Ikan Kembung\",\"kelompok\":\"Ikan\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":44139.66,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.05,\"ubah30hari\":1.08,\"ubah90hari\":2.53,\"ubah1tahun\":9.75,\"terendah\":{\"t\":\"2024-04-27\",\"p\":25000},\"tertinggi\":{\"t\":\"2026-09-04\",\"p\":44168.52},\"rataRata\":39368.78,\"gejolakPersen\":7.24,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":4.79},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":643,\"hariTanpaAngka\":321}}",
+      "sidikFakta": "{\"nama\":\"Ikan Kembung\",\"kelompok\":\"Ikan\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":44095.05,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.07,\"ubah30hari\":0.98,\"ubah90hari\":2.57,\"ubah1tahun\":9.5,\"terendah\":{\"t\":\"2024-04-27\",\"p\":25000},\"tertinggi\":{\"t\":\"2026-09-04\",\"p\":44168.52},\"rataRata\":39376.12,\"gejolakPersen\":7.25,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":4.79},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":644,\"hariTanpaAngka\":321}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1017,7 +1017,7 @@
     "jeruk-lokal": {
       "id": "op:hrg:00001041",
       "nama": "Jeruk Lokal",
-      "komentar": "Per 21 September 2026, Jeruk Lokal tercatat Rp19.158 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,9%, dan dibanding setahun lalu naik 5,2%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp13.000 (29 Maret 2024) sampai Rp24.931 (11 Februari 2024), dengan koefisien variasi 3,6%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Oktober, berselisih 5,9% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Jeruk Lokal tercatat Rp19.138 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,8%, dan dibanding setahun lalu naik 5,2%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp13.000 (29 Maret 2024) sampai Rp24.931 (11 Februari 2024), dengan koefisien variasi 3,6%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Oktober, berselisih 5,9% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1025,12 +1025,12 @@
         "kelompok": "Jeruk",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 19158.41,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.19,
-        "ubah30hari": 1.87,
-        "ubah90hari": 0.05,
-        "ubah1tahun": 5.16,
+        "hargaTerakhir": 19137.52,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.09,
+        "ubah30hari": 1.76,
+        "ubah90hari": -0.03,
+        "ubah1tahun": 5.22,
         "terendah": {
           "t": "2024-03-29",
           "p": 13000
@@ -1039,7 +1039,7 @@
           "t": "2024-02-11",
           "p": 24931.02
         },
-        "rataRata": 18884.7,
+        "rataRata": 18885.09,
         "gejolakPersen": 3.61,
         "musim": {
           "bulanTermahal": "Mei",
@@ -1048,12 +1048,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 651,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 652,
           "hariTanpaAngka": 313
         }
       },
-      "sidikFakta": "{\"nama\":\"Jeruk Lokal\",\"kelompok\":\"Jeruk\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19158.41,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.19,\"ubah30hari\":1.87,\"ubah90hari\":0.05,\"ubah1tahun\":5.16,\"terendah\":{\"t\":\"2024-03-29\",\"p\":13000},\"tertinggi\":{\"t\":\"2024-02-11\",\"p\":24931.02},\"rataRata\":18884.7,\"gejolakPersen\":3.61,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":5.93},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":651,\"hariTanpaAngka\":313}}",
+      "sidikFakta": "{\"nama\":\"Jeruk Lokal\",\"kelompok\":\"Jeruk\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19137.52,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.09,\"ubah30hari\":1.76,\"ubah90hari\":-0.03,\"ubah1tahun\":5.22,\"terendah\":{\"t\":\"2024-03-29\",\"p\":13000},\"tertinggi\":{\"t\":\"2024-02-11\",\"p\":24931.02},\"rataRata\":18885.09,\"gejolakPersen\":3.61,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":5.93},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":652,\"hariTanpaAngka\":313}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1063,7 +1063,7 @@
     "kacang-panjang": {
       "id": "op:hrg:00001043",
       "nama": "Kacang Panjang",
-      "komentar": "Per 21 September 2026, Kacang Panjang tercatat Rp12.212 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 2,8%, dan dibanding setahun lalu naik 13,3%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp5.000 (5 Mei 2024) sampai Rp23.000 (29 Maret 2024), dengan koefisien variasi 7,7%. Rata-rata bulanannya paling tinggi pada Desember dan paling rendah pada Mei, berselisih 6,7% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Kacang Panjang tercatat Rp12.216 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 2,8%, dan dibanding setahun lalu naik 13,7%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp5.000 (5 Mei 2024) sampai Rp23.000 (29 Maret 2024), dengan koefisien variasi 7,7%. Rata-rata bulanannya paling tinggi pada September dan paling rendah pada Mei, berselisih 6,7% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1071,12 +1071,12 @@
         "kelompok": "Kacang Panjang",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 12211.65,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -1.51,
-        "ubah30hari": -2.78,
-        "ubah90hari": 15.03,
-        "ubah1tahun": 13.29,
+        "hargaTerakhir": 12216.11,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -1.13,
+        "ubah30hari": -2.75,
+        "ubah90hari": 15.6,
+        "ubah1tahun": 13.74,
         "terendah": {
           "t": "2024-05-05",
           "p": 5000
@@ -1085,21 +1085,21 @@
           "t": "2024-03-29",
           "p": 23000
         },
-        "rataRata": 11032.86,
+        "rataRata": 11034.67,
         "gejolakPersen": 7.67,
         "musim": {
-          "bulanTermahal": "Desember",
+          "bulanTermahal": "September",
           "bulanTermurah": "Mei",
-          "selisihMusimPersen": 6.65
+          "selisihMusimPersen": 6.73
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Kacang Panjang\",\"kelompok\":\"Kacang Panjang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12211.65,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-1.51,\"ubah30hari\":-2.78,\"ubah90hari\":15.03,\"ubah1tahun\":13.29,\"terendah\":{\"t\":\"2024-05-05\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":23000},\"rataRata\":11032.86,\"gejolakPersen\":7.67,\"musim\":{\"bulanTermahal\":\"Desember\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":6.65},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Kacang Panjang\",\"kelompok\":\"Kacang Panjang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12216.11,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-1.13,\"ubah30hari\":-2.75,\"ubah90hari\":15.6,\"ubah1tahun\":13.74,\"terendah\":{\"t\":\"2024-05-05\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":23000},\"rataRata\":11034.67,\"gejolakPersen\":7.67,\"musim\":{\"bulanTermahal\":\"September\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":6.73},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1109,7 +1109,7 @@
     "kangkung": {
       "id": "op:hrg:00001045",
       "nama": "Kangkung",
-      "komentar": "Per 21 September 2026, Kangkung tercatat Rp8.705 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,9%, dan dibanding setahun lalu naik 7,8%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp5.000 (1 Mei 2024) sampai Rp17.969 (21 April 2024), dengan koefisien variasi 8,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Oktober, berselisih 8,2% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Kangkung tercatat Rp8.713 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 1,0%, dan dibanding setahun lalu naik 8,0%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp5.000 (1 Mei 2024) sampai Rp17.969 (21 April 2024), dengan koefisien variasi 8,0%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Oktober, berselisih 8,2% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1117,12 +1117,12 @@
         "kelompok": "Kangkung",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 8705.41,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.68,
-        "ubah30hari": 0.91,
-        "ubah90hari": 0.72,
-        "ubah1tahun": 7.8,
+        "hargaTerakhir": 8712.8,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.12,
+        "ubah30hari": 0.99,
+        "ubah90hari": 1.03,
+        "ubah1tahun": 7.98,
         "terendah": {
           "t": "2024-05-01",
           "p": 5000
@@ -1131,8 +1131,8 @@
           "t": "2024-04-21",
           "p": 17969.35
         },
-        "rataRata": 8285.57,
-        "gejolakPersen": 7.96,
+        "rataRata": 8286.23,
+        "gejolakPersen": 7.95,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "Oktober",
@@ -1140,12 +1140,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Kangkung\",\"kelompok\":\"Kangkung\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":8705.41,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.68,\"ubah30hari\":0.91,\"ubah90hari\":0.72,\"ubah1tahun\":7.8,\"terendah\":{\"t\":\"2024-05-01\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":17969.35},\"rataRata\":8285.57,\"gejolakPersen\":7.96,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":8.23},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Kangkung\",\"kelompok\":\"Kangkung\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":8712.8,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.12,\"ubah30hari\":0.99,\"ubah90hari\":1.03,\"ubah1tahun\":7.98,\"terendah\":{\"t\":\"2024-05-01\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":17969.35},\"rataRata\":8286.23,\"gejolakPersen\":7.95,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":8.23},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1155,7 +1155,7 @@
     "kedelai-impor": {
       "id": "op:hrg:00001051",
       "nama": "Kedelai Impor",
-      "komentar": "Per 21 September 2026, Kedelai Impor tercatat Rp13.608 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu turun 0,7%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp11.500 (20 April 2024) sampai Rp19.000 (29 Maret 2024), dengan koefisien variasi 3,8%. Rata-rata bulanannya paling tinggi pada Februari dan paling rendah pada Januari, berselisih 3,2% — pola dari 648 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Kedelai Impor tercatat Rp13.676 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu nyaris tidak bergerak (0,1%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp11.500 (20 April 2024) sampai Rp19.000 (29 Maret 2024), dengan koefisien variasi 3,8%. Rata-rata bulanannya paling tinggi pada Februari dan paling rendah pada Januari, berselisih 3,2% — pola dari 649 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1163,12 +1163,12 @@
         "kelompok": "Kedelai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 13608.31,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.25,
-        "ubah30hari": -0.21,
-        "ubah90hari": -0.26,
-        "ubah1tahun": -0.72,
+        "hargaTerakhir": 13676.04,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.54,
+        "ubah30hari": 0.28,
+        "ubah90hari": 0.28,
+        "ubah1tahun": -0.06,
         "terendah": {
           "t": "2024-04-20",
           "p": 11500
@@ -1177,8 +1177,8 @@
           "t": "2024-03-29",
           "p": 19000
         },
-        "rataRata": 13891.76,
-        "gejolakPersen": 3.81,
+        "rataRata": 13891.43,
+        "gejolakPersen": 3.8,
         "musim": {
           "bulanTermahal": "Februari",
           "bulanTermurah": "Januari",
@@ -1186,12 +1186,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 648,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 649,
           "hariTanpaAngka": 316
         }
       },
-      "sidikFakta": "{\"nama\":\"Kedelai Impor\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13608.31,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.25,\"ubah30hari\":-0.21,\"ubah90hari\":-0.26,\"ubah1tahun\":-0.72,\"terendah\":{\"t\":\"2024-04-20\",\"p\":11500},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":19000},\"rataRata\":13891.76,\"gejolakPersen\":3.81,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":3.22},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":648,\"hariTanpaAngka\":316}}",
+      "sidikFakta": "{\"nama\":\"Kedelai Impor\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13676.04,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.54,\"ubah30hari\":0.28,\"ubah90hari\":0.28,\"ubah1tahun\":-0.06,\"terendah\":{\"t\":\"2024-04-20\",\"p\":11500},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":19000},\"rataRata\":13891.43,\"gejolakPersen\":3.8,\"musim\":{\"bulanTermahal\":\"Februari\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":3.22},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":649,\"hariTanpaAngka\":316}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1201,7 +1201,7 @@
     "kedelai-lokal": {
       "id": "op:hrg:00001052",
       "nama": "Kedelai Lokal",
-      "komentar": "Per 21 September 2026, Kedelai Lokal tercatat Rp14.065 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu nyaris tidak bergerak (0,0%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp12.000 (10 April 2024) sampai Rp18.000 (29 Maret 2024), dengan koefisien variasi 2,7%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Januari, berselisih 2,5% — pola dari 643 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Kedelai Lokal tercatat Rp14.067 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu nyaris tidak bergerak (0,0%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp12.000 (10 April 2024) sampai Rp18.000 (29 Maret 2024), dengan koefisien variasi 2,7%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Januari, berselisih 2,5% — pola dari 644 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1209,12 +1209,12 @@
         "kelompok": "Kedelai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 14065.09,
-        "tanggalTerakhir": "2026-09-21",
+        "hargaTerakhir": 14067.27,
+        "tanggalTerakhir": "2026-09-22",
         "ubah7hari": -0.05,
-        "ubah30hari": -0.29,
-        "ubah90hari": 0.05,
-        "ubah1tahun": 0,
+        "ubah30hari": -0.27,
+        "ubah90hari": 0,
+        "ubah1tahun": 0.02,
         "terendah": {
           "t": "2024-04-10",
           "p": 12000
@@ -1223,7 +1223,7 @@
           "t": "2024-03-29",
           "p": 18000
         },
-        "rataRata": 14280.14,
+        "rataRata": 14279.81,
         "gejolakPersen": 2.66,
         "musim": {
           "bulanTermahal": "Mei",
@@ -1232,12 +1232,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 643,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 644,
           "hariTanpaAngka": 321
         }
       },
-      "sidikFakta": "{\"nama\":\"Kedelai Lokal\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":14065.09,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.05,\"ubah30hari\":-0.29,\"ubah90hari\":0.05,\"ubah1tahun\":0,\"terendah\":{\"t\":\"2024-04-10\",\"p\":12000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":18000},\"rataRata\":14280.14,\"gejolakPersen\":2.66,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.51},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":643,\"hariTanpaAngka\":321}}",
+      "sidikFakta": "{\"nama\":\"Kedelai Lokal\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":14067.27,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.05,\"ubah30hari\":-0.27,\"ubah90hari\":0,\"ubah1tahun\":0.02,\"terendah\":{\"t\":\"2024-04-10\",\"p\":12000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":18000},\"rataRata\":14279.81,\"gejolakPersen\":2.66,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.51},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":644,\"hariTanpaAngka\":321}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1247,7 +1247,7 @@
     "kentang-sedang": {
       "id": "op:hrg:00001053",
       "nama": "Kentang Sedang",
-      "komentar": "Per 21 September 2026, Kentang Sedang tercatat Rp16.938 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 1,8%, dan dibanding setahun lalu turun 2,5%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp12.000 (11 Maret 2024) sampai Rp26.755 (21 April 2024), dengan koefisien variasi 7,0%. Rata-rata bulanannya paling tinggi pada Agustus dan paling rendah pada Desember, berselisih 11,0% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Kentang Sedang tercatat Rp16.943 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 1,8%, dan dibanding setahun lalu turun 2,4%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp12.000 (11 Maret 2024) sampai Rp26.755 (21 April 2024), dengan koefisien variasi 7,0%. Rata-rata bulanannya paling tinggi pada Agustus dan paling rendah pada Desember, berselisih 11,0% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1255,12 +1255,12 @@
         "kelompok": "Kentang",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 16938.02,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.07,
-        "ubah30hari": -1.8,
-        "ubah90hari": 1.26,
-        "ubah1tahun": -2.54,
+        "hargaTerakhir": 16943.34,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.05,
+        "ubah30hari": -1.77,
+        "ubah90hari": 1.24,
+        "ubah1tahun": -2.41,
         "terendah": {
           "t": "2024-03-11",
           "p": 12000
@@ -1269,7 +1269,7 @@
           "t": "2024-04-21",
           "p": 26755.21
         },
-        "rataRata": 17545.66,
+        "rataRata": 17544.74,
         "gejolakPersen": 7.04,
         "musim": {
           "bulanTermahal": "Agustus",
@@ -1278,12 +1278,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Kentang Sedang\",\"kelompok\":\"Kentang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":16938.02,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.07,\"ubah30hari\":-1.8,\"ubah90hari\":1.26,\"ubah1tahun\":-2.54,\"terendah\":{\"t\":\"2024-03-11\",\"p\":12000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":26755.21},\"rataRata\":17545.66,\"gejolakPersen\":7.04,\"musim\":{\"bulanTermahal\":\"Agustus\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":11.03},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Kentang Sedang\",\"kelompok\":\"Kentang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":16943.34,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.05,\"ubah30hari\":-1.77,\"ubah90hari\":1.24,\"ubah1tahun\":-2.41,\"terendah\":{\"t\":\"2024-03-11\",\"p\":12000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":26755.21},\"rataRata\":17544.74,\"gejolakPersen\":7.04,\"musim\":{\"bulanTermahal\":\"Agustus\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":11.03},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1293,7 +1293,7 @@
     "ketimun-sedang": {
       "id": "op:hrg:00001055",
       "nama": "Ketimun Sedang",
-      "komentar": "Per 21 September 2026, Ketimun Sedang tercatat Rp9.655 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 12,4%, dan dibanding setahun lalu naik 14,6%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp4.000 (27 April 2024) sampai Rp32.523 (21 April 2024), dengan koefisien variasi 14,8%. Rata-rata bulanannya paling tinggi pada Agustus dan paling rendah pada Oktober, berselisih 15,2% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Ketimun Sedang tercatat Rp9.639 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia turun 12,6%, dan dibanding setahun lalu naik 15,0%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp4.000 (27 April 2024) sampai Rp32.523 (21 April 2024), dengan koefisien variasi 14,8%. Rata-rata bulanannya paling tinggi pada Agustus dan paling rendah pada Oktober, berselisih 15,2% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1301,12 +1301,12 @@
         "kelompok": "Ketimun",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 9655.25,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.71,
-        "ubah30hari": -12.41,
-        "ubah90hari": 10.07,
-        "ubah1tahun": 14.55,
+        "hargaTerakhir": 9639.24,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.75,
+        "ubah30hari": -12.56,
+        "ubah90hari": 10.61,
+        "ubah1tahun": 14.95,
         "terendah": {
           "t": "2024-04-27",
           "p": 4000
@@ -1315,7 +1315,7 @@
           "t": "2024-04-21",
           "p": 32522.85
         },
-        "rataRata": 8780,
+        "rataRata": 8781.32,
         "gejolakPersen": 14.79,
         "musim": {
           "bulanTermahal": "Agustus",
@@ -1324,12 +1324,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Ketimun Sedang\",\"kelompok\":\"Ketimun\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":9655.25,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.71,\"ubah30hari\":-12.41,\"ubah90hari\":10.07,\"ubah1tahun\":14.55,\"terendah\":{\"t\":\"2024-04-27\",\"p\":4000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":32522.85},\"rataRata\":8780,\"gejolakPersen\":14.79,\"musim\":{\"bulanTermahal\":\"Agustus\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":15.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Ketimun Sedang\",\"kelompok\":\"Ketimun\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":9639.24,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.75,\"ubah30hari\":-12.56,\"ubah90hari\":10.61,\"ubah1tahun\":14.95,\"terendah\":{\"t\":\"2024-04-27\",\"p\":4000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":32522.85},\"rataRata\":8781.32,\"gejolakPersen\":14.79,\"musim\":{\"bulanTermahal\":\"Agustus\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":15.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1339,7 +1339,7 @@
     "mie-instan": {
       "id": "op:hrg:00001058",
       "nama": "Mie Instan",
-      "komentar": "Per 21 September 2026, Mie Instan tercatat Rp3.220 per bks pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu nyaris tidak bergerak (0,3%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp3.000 (11 Maret 2024) sampai Rp3.628 (21 April 2024), dengan koefisien variasi 1,4%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Maret, berselisih 1,2% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Mie Instan tercatat Rp3.220 per bks pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu nyaris tidak bergerak (0,3%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp3.000 (11 Maret 2024) sampai Rp3.628 (21 April 2024), dengan koefisien variasi 1,4%. Rata-rata bulanannya paling tinggi pada Mei dan paling rendah pada Maret, berselisih 1,2% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1347,12 +1347,12 @@
         "kelompok": "Mie Instan",
         "satuan": "bks",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 3220.29,
-        "tanggalTerakhir": "2026-09-21",
+        "hargaTerakhir": 3220.16,
+        "tanggalTerakhir": "2026-09-22",
         "ubah7hari": 0.01,
         "ubah30hari": 0.15,
-        "ubah90hari": 0.25,
-        "ubah1tahun": 0.34,
+        "ubah90hari": 0.22,
+        "ubah1tahun": 0.33,
         "terendah": {
           "t": "2024-03-11",
           "p": 3000
@@ -1361,7 +1361,7 @@
           "t": "2024-04-21",
           "p": 3628.15
         },
-        "rataRata": 3199.93,
+        "rataRata": 3199.96,
         "gejolakPersen": 1.37,
         "musim": {
           "bulanTermahal": "Mei",
@@ -1370,12 +1370,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Mie Instan\",\"kelompok\":\"Mie Instan\",\"satuan\":\"bks\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":3220.29,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.01,\"ubah30hari\":0.15,\"ubah90hari\":0.25,\"ubah1tahun\":0.34,\"terendah\":{\"t\":\"2024-03-11\",\"p\":3000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":3628.15},\"rataRata\":3199.93,\"gejolakPersen\":1.37,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Maret\",\"selisihMusimPersen\":1.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Mie Instan\",\"kelompok\":\"Mie Instan\",\"satuan\":\"bks\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":3220.16,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.01,\"ubah30hari\":0.15,\"ubah90hari\":0.22,\"ubah1tahun\":0.33,\"terendah\":{\"t\":\"2024-03-11\",\"p\":3000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":3628.15},\"rataRata\":3199.96,\"gejolakPersen\":1.37,\"musim\":{\"bulanTermahal\":\"Mei\",\"bulanTermurah\":\"Maret\",\"selisihMusimPersen\":1.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1385,7 +1385,7 @@
     "minyak-goreng-sawit-curah": {
       "id": "op:hrg:00001059",
       "nama": "Minyak Goreng Sawit Curah",
-      "komentar": "Per 21 September 2026, Minyak Goreng Sawit Curah tercatat Rp19.382 per lt pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,4%), dan dibanding setahun lalu naik 9,7%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp14.641 (10 Februari 2024) sampai Rp19.496 (26 Mei 2026), dengan koefisien variasi 7,6%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada Februari, berselisih 6,1% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Minyak Goreng Sawit Curah tercatat Rp19.381 per lt pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,4%), dan dibanding setahun lalu naik 9,6%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp14.641 (10 Februari 2024) sampai Rp19.496 (26 Mei 2026), dengan koefisien variasi 7,6%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada Februari, berselisih 6,1% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1393,12 +1393,12 @@
         "kelompok": "Minyak Sawit",
         "satuan": "lt",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 19382.41,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0,
+        "hargaTerakhir": 19380.92,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.02,
         "ubah30hari": 0.4,
-        "ubah90hari": -0.08,
-        "ubah1tahun": 9.68,
+        "ubah90hari": 0.05,
+        "ubah1tahun": 9.63,
         "terendah": {
           "t": "2024-02-10",
           "p": 14640.68
@@ -1407,8 +1407,8 @@
           "t": "2026-05-26",
           "p": 19496.07
         },
-        "rataRata": 17365.18,
-        "gejolakPersen": 7.55,
+        "rataRata": 17368.26,
+        "gejolakPersen": 7.56,
         "musim": {
           "bulanTermahal": "Januari",
           "bulanTermurah": "Februari",
@@ -1416,12 +1416,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Minyak Goreng Sawit Curah\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19382.41,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0,\"ubah30hari\":0.4,\"ubah90hari\":-0.08,\"ubah1tahun\":9.68,\"terendah\":{\"t\":\"2024-02-10\",\"p\":14640.68},\"tertinggi\":{\"t\":\"2026-05-26\",\"p\":19496.07},\"rataRata\":17365.18,\"gejolakPersen\":7.55,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":6.13},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Minyak Goreng Sawit Curah\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":19380.92,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.02,\"ubah30hari\":0.4,\"ubah90hari\":0.05,\"ubah1tahun\":9.63,\"terendah\":{\"t\":\"2024-02-10\",\"p\":14640.68},\"tertinggi\":{\"t\":\"2026-05-26\",\"p\":19496.07},\"rataRata\":17368.26,\"gejolakPersen\":7.56,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":6.13},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1431,7 +1431,7 @@
     "minyak-goreng-sawit-kemasan-premium": {
       "id": "op:hrg:00001060",
       "nama": "Minyak Goreng Sawit Kemasan Premium",
-      "komentar": "Per 21 September 2026, Minyak Goreng Sawit Kemasan Premium tercatat Rp22.593 per lt pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu naik 7,7%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp17.262 (8 Februari 2024) sampai Rp22.593 (21 September 2026), dengan koefisien variasi 5,0%. Rata-rata bulanannya paling tinggi pada Juli dan paling rendah pada Februari, berselisih 4,0% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Minyak Goreng Sawit Kemasan Premium tercatat Rp22.597 per lt pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu naik 7,7%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp17.262 (8 Februari 2024) sampai Rp22.597 (22 September 2026), dengan koefisien variasi 5,0%. Rata-rata bulanannya paling tinggi pada Juli dan paling rendah pada Februari, berselisih 4,0% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1439,22 +1439,22 @@
         "kelompok": "Minyak Sawit",
         "satuan": "lt",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 22592.5,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.14,
-        "ubah30hari": 0.28,
-        "ubah90hari": 0.37,
-        "ubah1tahun": 7.67,
+        "hargaTerakhir": 22596.6,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.18,
+        "ubah30hari": 0.29,
+        "ubah90hari": 0.42,
+        "ubah1tahun": 7.68,
         "terendah": {
           "t": "2024-02-08",
           "p": 17262.42
         },
         "tertinggi": {
-          "t": "2026-09-21",
-          "p": 22592.5
+          "t": "2026-09-22",
+          "p": 22596.6
         },
-        "rataRata": 20657.87,
-        "gejolakPersen": 4.97,
+        "rataRata": 20660.83,
+        "gejolakPersen": 4.98,
         "musim": {
           "bulanTermahal": "Juli",
           "bulanTermurah": "Februari",
@@ -1462,12 +1462,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Minyak Goreng Sawit Kemasan Premium\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":22592.5,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.14,\"ubah30hari\":0.28,\"ubah90hari\":0.37,\"ubah1tahun\":7.67,\"terendah\":{\"t\":\"2024-02-08\",\"p\":17262.42},\"tertinggi\":{\"t\":\"2026-09-21\",\"p\":22592.5},\"rataRata\":20657.87,\"gejolakPersen\":4.97,\"musim\":{\"bulanTermahal\":\"Juli\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.96},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Minyak Goreng Sawit Kemasan Premium\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":22596.6,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.18,\"ubah30hari\":0.29,\"ubah90hari\":0.42,\"ubah1tahun\":7.68,\"terendah\":{\"t\":\"2024-02-08\",\"p\":17262.42},\"tertinggi\":{\"t\":\"2026-09-22\",\"p\":22596.6},\"rataRata\":20660.83,\"gejolakPersen\":4.98,\"musim\":{\"bulanTermahal\":\"Juli\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":3.96},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1477,7 +1477,7 @@
     "minyakita": {
       "id": "op:hrg:00001061",
       "nama": "Minyakita",
-      "komentar": "Per 21 September 2026, Minyakita tercatat Rp15.878 per lt pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,0%), dan dibanding setahun lalu turun 5,1%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp14.000 (11 Maret 2024) sampai Rp18.000 (5 Mei 2024), dengan koefisien variasi 3,5%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada Februari, berselisih 5,5% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Minyakita tercatat Rp15.879 per lt pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,0%), dan dibanding setahun lalu turun 5,1%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp14.000 (11 Maret 2024) sampai Rp18.000 (5 Mei 2024), dengan koefisien variasi 3,5%. Rata-rata bulanannya paling tinggi pada Januari dan paling rendah pada Februari, berselisih 5,5% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1485,12 +1485,12 @@
         "kelompok": "Minyak Sawit",
         "satuan": "lt",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 15878.27,
-        "tanggalTerakhir": "2026-09-21",
+        "hargaTerakhir": 15878.87,
+        "tanggalTerakhir": "2026-09-22",
         "ubah7hari": -0.05,
-        "ubah30hari": -0.04,
-        "ubah90hari": -0.17,
-        "ubah1tahun": -5.1,
+        "ubah30hari": -0.03,
+        "ubah90hari": -0.3,
+        "ubah1tahun": -5.12,
         "terendah": {
           "t": "2024-03-11",
           "p": 14000
@@ -1499,7 +1499,7 @@
           "t": "2024-05-05",
           "p": 18000
         },
-        "rataRata": 16349.41,
+        "rataRata": 16348.69,
         "gejolakPersen": 3.54,
         "musim": {
           "bulanTermahal": "Januari",
@@ -1508,12 +1508,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Minyakita\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15878.27,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.05,\"ubah30hari\":-0.04,\"ubah90hari\":-0.17,\"ubah1tahun\":-5.1,\"terendah\":{\"t\":\"2024-03-11\",\"p\":14000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":18000},\"rataRata\":16349.41,\"gejolakPersen\":3.54,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":5.51},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Minyakita\",\"kelompok\":\"Minyak Sawit\",\"satuan\":\"lt\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15878.87,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.05,\"ubah30hari\":-0.03,\"ubah90hari\":-0.3,\"ubah1tahun\":-5.12,\"terendah\":{\"t\":\"2024-03-11\",\"p\":14000},\"tertinggi\":{\"t\":\"2024-05-05\",\"p\":18000},\"rataRata\":16348.69,\"gejolakPersen\":3.54,\"musim\":{\"bulanTermahal\":\"Januari\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":5.51},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1523,7 +1523,7 @@
     "pisang-lokal": {
       "id": "op:hrg:00001068",
       "nama": "Pisang Lokal",
-      "komentar": "Per 21 September 2026, Pisang Lokal tercatat Rp13.122 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,5%, dan dibanding setahun lalu nyaris tidak bergerak (0,3%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp8.000 (27 April 2024) sampai Rp23.258 (21 April 2024), dengan koefisien variasi 7,1%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Desember, berselisih 4,7% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Pisang Lokal tercatat Rp13.124 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,5%, dan dibanding setahun lalu nyaris tidak bergerak (0,2%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp8.000 (27 April 2024) sampai Rp23.258 (21 April 2024), dengan koefisien variasi 7,1%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Desember, berselisih 4,7% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1531,12 +1531,12 @@
         "kelompok": "Pisang",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 13121.98,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.26,
-        "ubah30hari": 0.53,
-        "ubah90hari": 1.44,
-        "ubah1tahun": -0.3,
+        "hargaTerakhir": 13124.18,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.23,
+        "ubah30hari": 0.54,
+        "ubah90hari": 1.34,
+        "ubah1tahun": -0.2,
         "terendah": {
           "t": "2024-04-27",
           "p": 8000
@@ -1545,8 +1545,8 @@
           "t": "2024-04-21",
           "p": 23257.59
         },
-        "rataRata": 13468.42,
-        "gejolakPersen": 7.08,
+        "rataRata": 13467.89,
+        "gejolakPersen": 7.07,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "Desember",
@@ -1554,12 +1554,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 653,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 654,
           "hariTanpaAngka": 311
         }
       },
-      "sidikFakta": "{\"nama\":\"Pisang Lokal\",\"kelompok\":\"Pisang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13121.98,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.26,\"ubah30hari\":0.53,\"ubah90hari\":1.44,\"ubah1tahun\":-0.3,\"terendah\":{\"t\":\"2024-04-27\",\"p\":8000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":23257.59},\"rataRata\":13468.42,\"gejolakPersen\":7.08,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":4.73},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":653,\"hariTanpaAngka\":311}}",
+      "sidikFakta": "{\"nama\":\"Pisang Lokal\",\"kelompok\":\"Pisang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":13124.18,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.23,\"ubah30hari\":0.54,\"ubah90hari\":1.34,\"ubah1tahun\":-0.2,\"terendah\":{\"t\":\"2024-04-27\",\"p\":8000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":23257.59},\"rataRata\":13467.89,\"gejolakPersen\":7.07,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Desember\",\"selisihMusimPersen\":4.73},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":654,\"hariTanpaAngka\":311}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1569,7 +1569,7 @@
     "sawi-hijau": {
       "id": "op:hrg:00001073",
       "nama": "Sawi Hijau",
-      "komentar": "Per 21 September 2026, Sawi Hijau tercatat Rp10.208 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 4,3%, dan dibanding setahun lalu naik 10,6%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp5.000 (1 Mei 2024) sampai Rp26.000 (29 Maret 2024), dengan koefisien variasi 9,6%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Oktober, berselisih 10,7% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Sawi Hijau tercatat Rp10.247 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 4,7%, dan dibanding setahun lalu naik 10,8%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp5.000 (1 Mei 2024) sampai Rp26.000 (29 Maret 2024), dengan koefisien variasi 9,6%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Oktober, berselisih 10,7% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1577,12 +1577,12 @@
         "kelompok": "Sawi Hijau",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 10208.01,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 2.65,
-        "ubah30hari": 4.27,
-        "ubah90hari": 4.05,
-        "ubah1tahun": 10.58,
+        "hargaTerakhir": 10246.69,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 2.22,
+        "ubah30hari": 4.67,
+        "ubah90hari": 5.17,
+        "ubah1tahun": 10.79,
         "terendah": {
           "t": "2024-05-01",
           "p": 5000
@@ -1591,8 +1591,8 @@
           "t": "2024-03-29",
           "p": 26000
         },
-        "rataRata": 9845.84,
-        "gejolakPersen": 9.63,
+        "rataRata": 9846.45,
+        "gejolakPersen": 9.62,
         "musim": {
           "bulanTermahal": "April",
           "bulanTermurah": "Oktober",
@@ -1600,12 +1600,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 651,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 652,
           "hariTanpaAngka": 313
         }
       },
-      "sidikFakta": "{\"nama\":\"Sawi Hijau\",\"kelompok\":\"Sawi Hijau\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":10208.01,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":2.65,\"ubah30hari\":4.27,\"ubah90hari\":4.05,\"ubah1tahun\":10.58,\"terendah\":{\"t\":\"2024-05-01\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":26000},\"rataRata\":9845.84,\"gejolakPersen\":9.63,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":10.67},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":651,\"hariTanpaAngka\":313}}",
+      "sidikFakta": "{\"nama\":\"Sawi Hijau\",\"kelompok\":\"Sawi Hijau\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":10246.69,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":2.22,\"ubah30hari\":4.67,\"ubah90hari\":5.17,\"ubah1tahun\":10.79,\"terendah\":{\"t\":\"2024-05-01\",\"p\":5000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":26000},\"rataRata\":9846.45,\"gejolakPersen\":9.62,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":10.67},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":652,\"hariTanpaAngka\":313}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1615,7 +1615,7 @@
     "susu-bubuk-balita": {
       "id": "op:hrg:00001076",
       "nama": "Susu Bubuk Balita",
-      "komentar": "Per 21 September 2026, Susu Bubuk Balita tercatat Rp44.501 per 400gr pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,0%), dan dibanding setahun lalu turun 0,6%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp38.305 (10 Februari 2024) sampai Rp65.000 (11 Februari 2024), dengan koefisien variasi 2,9%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Maret, berselisih 0,7% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Susu Bubuk Balita tercatat Rp44.528 per 400gr pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu turun 0,5%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp38.305 (10 Februari 2024) sampai Rp65.000 (11 Februari 2024), dengan koefisien variasi 2,9%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Maret, berselisih 0,7% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1623,12 +1623,12 @@
         "kelompok": "Susu",
         "satuan": "400gr",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 44500.62,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.01,
-        "ubah30hari": 0.01,
-        "ubah90hari": 0,
-        "ubah1tahun": -0.63,
+        "hargaTerakhir": 44528.49,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.06,
+        "ubah30hari": 0.07,
+        "ubah90hari": 0.06,
+        "ubah1tahun": -0.52,
         "terendah": {
           "t": "2024-02-10",
           "p": 38305.05
@@ -1637,7 +1637,7 @@
           "t": "2024-02-11",
           "p": 65000
         },
-        "rataRata": 44547.84,
+        "rataRata": 44547.81,
         "gejolakPersen": 2.87,
         "musim": {
           "bulanTermahal": "April",
@@ -1646,12 +1646,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 652,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 653,
           "hariTanpaAngka": 312
         }
       },
-      "sidikFakta": "{\"nama\":\"Susu Bubuk Balita\",\"kelompok\":\"Susu\",\"satuan\":\"400gr\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":44500.62,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.01,\"ubah30hari\":0.01,\"ubah90hari\":0,\"ubah1tahun\":-0.63,\"terendah\":{\"t\":\"2024-02-10\",\"p\":38305.05},\"tertinggi\":{\"t\":\"2024-02-11\",\"p\":65000},\"rataRata\":44547.84,\"gejolakPersen\":2.87,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Maret\",\"selisihMusimPersen\":0.74},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":652,\"hariTanpaAngka\":312}}",
+      "sidikFakta": "{\"nama\":\"Susu Bubuk Balita\",\"kelompok\":\"Susu\",\"satuan\":\"400gr\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":44528.49,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.06,\"ubah30hari\":0.07,\"ubah90hari\":0.06,\"ubah1tahun\":-0.52,\"terendah\":{\"t\":\"2024-02-10\",\"p\":38305.05},\"tertinggi\":{\"t\":\"2024-02-11\",\"p\":65000},\"rataRata\":44547.81,\"gejolakPersen\":2.87,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Maret\",\"selisihMusimPersen\":0.74},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":653,\"hariTanpaAngka\":312}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1661,7 +1661,7 @@
     "tahu-putih": {
       "id": "op:hrg:00001078",
       "nama": "Tahu Putih",
-      "komentar": "Per 21 September 2026, Tahu Putih tercatat Rp11.724 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu naik 1,6%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp8.000 (4 Februari 2024) sampai Rp20.000 (21 April 2024), dengan koefisien variasi 4,7%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Mei, berselisih 3,2% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Tahu Putih tercatat Rp11.726 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,1%), dan dibanding setahun lalu naik 1,6%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp8.000 (4 Februari 2024) sampai Rp20.000 (21 April 2024), dengan koefisien variasi 4,7%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Mei, berselisih 3,2% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1669,12 +1669,12 @@
         "kelompok": "Kedelai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 11723.75,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.03,
-        "ubah30hari": 0.11,
-        "ubah90hari": -0.34,
-        "ubah1tahun": 1.57,
+        "hargaTerakhir": 11725.85,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.04,
+        "ubah30hari": 0.12,
+        "ubah90hari": -0.4,
+        "ubah1tahun": 1.59,
         "terendah": {
           "t": "2024-02-04",
           "p": 8000
@@ -1683,7 +1683,7 @@
           "t": "2024-04-21",
           "p": 20000
         },
-        "rataRata": 11672.97,
+        "rataRata": 11673.05,
         "gejolakPersen": 4.71,
         "musim": {
           "bulanTermahal": "April",
@@ -1692,12 +1692,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 652,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 653,
           "hariTanpaAngka": 312
         }
       },
-      "sidikFakta": "{\"nama\":\"Tahu Putih\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":11723.75,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.03,\"ubah30hari\":0.11,\"ubah90hari\":-0.34,\"ubah1tahun\":1.57,\"terendah\":{\"t\":\"2024-02-04\",\"p\":8000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":20000},\"rataRata\":11672.97,\"gejolakPersen\":4.71,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":3.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":652,\"hariTanpaAngka\":312}}",
+      "sidikFakta": "{\"nama\":\"Tahu Putih\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":11725.85,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.04,\"ubah30hari\":0.12,\"ubah90hari\":-0.4,\"ubah1tahun\":1.59,\"terendah\":{\"t\":\"2024-02-04\",\"p\":8000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":20000},\"rataRata\":11673.05,\"gejolakPersen\":4.71,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Mei\",\"selisihMusimPersen\":3.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":653,\"hariTanpaAngka\":312}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1707,7 +1707,7 @@
     "telur-ayam-kampung": {
       "id": "op:hrg:00001079",
       "nama": "Telur Ayam Kampung",
-      "komentar": "Per 21 September 2026, Telur Ayam Kampung tercatat Rp54.777 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu naik 0,8%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp7.818 (11 Februari 2024) sampai Rp70.000 (27 April 2024), dengan koefisien variasi 4,7%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Februari, berselisih 4,2% — pola dari 652 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Telur Ayam Kampung tercatat Rp54.858 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,2%), dan dibanding setahun lalu naik 1,0%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp7.818 (11 Februari 2024) sampai Rp70.000 (27 April 2024), dengan koefisien variasi 4,7%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Februari, berselisih 4,2% — pola dari 653 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1715,12 +1715,12 @@
         "kelompok": "Telur Ayam",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 54777.26,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.13,
-        "ubah30hari": -0.31,
-        "ubah90hari": -0.39,
-        "ubah1tahun": 0.76,
+        "hargaTerakhir": 54858.39,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.04,
+        "ubah30hari": -0.16,
+        "ubah90hari": -0.22,
+        "ubah1tahun": 0.95,
         "terendah": {
           "t": "2024-02-11",
           "p": 7817.52
@@ -1729,8 +1729,8 @@
           "t": "2024-04-27",
           "p": 70000
         },
-        "rataRata": 54763.3,
-        "gejolakPersen": 4.74,
+        "rataRata": 54763.45,
+        "gejolakPersen": 4.73,
         "musim": {
           "bulanTermahal": "Maret",
           "bulanTermurah": "Februari",
@@ -1738,12 +1738,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 652,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 653,
           "hariTanpaAngka": 312
         }
       },
-      "sidikFakta": "{\"nama\":\"Telur Ayam Kampung\",\"kelompok\":\"Telur Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":54777.26,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.13,\"ubah30hari\":-0.31,\"ubah90hari\":-0.39,\"ubah1tahun\":0.76,\"terendah\":{\"t\":\"2024-02-11\",\"p\":7817.52},\"tertinggi\":{\"t\":\"2024-04-27\",\"p\":70000},\"rataRata\":54763.3,\"gejolakPersen\":4.74,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":4.22},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":652,\"hariTanpaAngka\":312}}",
+      "sidikFakta": "{\"nama\":\"Telur Ayam Kampung\",\"kelompok\":\"Telur Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":54858.39,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.04,\"ubah30hari\":-0.16,\"ubah90hari\":-0.22,\"ubah1tahun\":0.95,\"terendah\":{\"t\":\"2024-02-11\",\"p\":7817.52},\"tertinggi\":{\"t\":\"2024-04-27\",\"p\":70000},\"rataRata\":54763.45,\"gejolakPersen\":4.73,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":4.22},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":653,\"hariTanpaAngka\":312}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1753,7 +1753,7 @@
     "telur-ayam-ras": {
       "id": "op:hrg:00001080",
       "nama": "Telur Ayam Ras",
-      "komentar": "Per 21 September 2026, Telur Ayam Ras tercatat Rp27.158 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 3,6%, dan dibanding setahun lalu turun 6,1%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp25.929 (10 Juli 2026) sampai Rp40.000 (21 April 2024), dengan koefisien variasi 4,8%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Agustus, berselisih 9,6% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Telur Ayam Ras tercatat Rp27.138 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 3,5%, dan dibanding setahun lalu turun 6,3%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp25.929 (10 Juli 2026) sampai Rp40.000 (21 April 2024), dengan koefisien variasi 4,8%. Rata-rata bulanannya paling tinggi pada Maret dan paling rendah pada Agustus, berselisih 9,6% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1761,12 +1761,12 @@
         "kelompok": "Telur Ayam",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 27157.67,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.27,
-        "ubah30hari": 3.56,
-        "ubah90hari": -0.16,
-        "ubah1tahun": -6.12,
+        "hargaTerakhir": 27138.46,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.01,
+        "ubah30hari": 3.48,
+        "ubah90hari": 0,
+        "ubah1tahun": -6.33,
         "terendah": {
           "t": "2026-07-10",
           "p": 25928.94
@@ -1775,7 +1775,7 @@
           "t": "2024-04-21",
           "p": 40000
         },
-        "rataRata": 28701.91,
+        "rataRata": 28699.52,
         "gejolakPersen": 4.77,
         "musim": {
           "bulanTermahal": "Maret",
@@ -1784,12 +1784,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Telur Ayam Ras\",\"kelompok\":\"Telur Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":27157.67,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.27,\"ubah30hari\":3.56,\"ubah90hari\":-0.16,\"ubah1tahun\":-6.12,\"terendah\":{\"t\":\"2026-07-10\",\"p\":25928.94},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":40000},\"rataRata\":28701.91,\"gejolakPersen\":4.77,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Agustus\",\"selisihMusimPersen\":9.57},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Telur Ayam Ras\",\"kelompok\":\"Telur Ayam\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":27138.46,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.01,\"ubah30hari\":3.48,\"ubah90hari\":0,\"ubah1tahun\":-6.33,\"terendah\":{\"t\":\"2026-07-10\",\"p\":25928.94},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":40000},\"rataRata\":28699.52,\"gejolakPersen\":4.77,\"musim\":{\"bulanTermahal\":\"Maret\",\"bulanTermurah\":\"Agustus\",\"selisihMusimPersen\":9.57},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1799,7 +1799,7 @@
     "tempe-bungkus": {
       "id": "op:hrg:00001081",
       "nama": "Tempe Bungkus",
-      "komentar": "Per 21 September 2026, Tempe Bungkus tercatat Rp15.050 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,0%), dan dibanding setahun lalu nyaris tidak bergerak (0,4%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp10.000 (11 Maret 2024) sampai Rp30.000 (29 Maret 2024), dengan koefisien variasi 6,2%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Januari, berselisih 2,6% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Tempe Bungkus tercatat Rp15.049 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,0%), dan dibanding setahun lalu nyaris tidak bergerak (0,4%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp10.000 (11 Maret 2024) sampai Rp30.000 (29 Maret 2024), dengan koefisien variasi 6,2%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Januari, berselisih 2,6% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1807,11 +1807,11 @@
         "kelompok": "Kedelai",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 15050.41,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": -0.07,
-        "ubah30hari": 0.02,
-        "ubah90hari": -0.23,
+        "hargaTerakhir": 15049.38,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": -0.04,
+        "ubah30hari": 0.01,
+        "ubah90hari": -0.32,
         "ubah1tahun": 0.35,
         "terendah": {
           "t": "2024-03-11",
@@ -1821,7 +1821,7 @@
           "t": "2024-03-29",
           "p": 30000
         },
-        "rataRata": 15204.95,
+        "rataRata": 15204.71,
         "gejolakPersen": 6.18,
         "musim": {
           "bulanTermahal": "April",
@@ -1830,12 +1830,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Tempe Bungkus\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15050.41,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":-0.07,\"ubah30hari\":0.02,\"ubah90hari\":-0.23,\"ubah1tahun\":0.35,\"terendah\":{\"t\":\"2024-03-11\",\"p\":10000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":30000},\"rataRata\":15204.95,\"gejolakPersen\":6.18,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.56},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Tempe Bungkus\",\"kelompok\":\"Kedelai\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":15049.38,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":-0.04,\"ubah30hari\":0.01,\"ubah90hari\":-0.32,\"ubah1tahun\":0.35,\"terendah\":{\"t\":\"2024-03-11\",\"p\":10000},\"tertinggi\":{\"t\":\"2024-03-29\",\"p\":30000},\"rataRata\":15204.71,\"gejolakPersen\":6.18,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Januari\",\"selisihMusimPersen\":2.56},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1845,7 +1845,7 @@
     "tepung-terigu": {
       "id": "op:hrg:00001082",
       "nama": "Tepung Terigu",
-      "komentar": "Per 21 September 2026, Tepung Terigu tercatat Rp12.531 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu nyaris tidak bergerak (0,3%). Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp11.000 (11 Maret 2024) sampai Rp15.000 (21 April 2024), dengan koefisien variasi 1,8%. Rata-rata bulanannya paling tinggi pada Juli dan paling rendah pada Februari, berselisih 1,2% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Tepung Terigu tercatat Rp12.526 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia nyaris tidak bergerak (0,3%), dan dibanding setahun lalu nyaris tidak bergerak (0,2%). Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp11.000 (11 Maret 2024) sampai Rp15.000 (21 April 2024), dengan koefisien variasi 1,8%. Rata-rata bulanannya paling tinggi pada Juli dan paling rendah pada Februari, berselisih 1,2% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1853,12 +1853,12 @@
         "kelompok": "Tepung Terigu",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 12530.83,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.03,
-        "ubah30hari": 0.33,
-        "ubah90hari": 0.2,
-        "ubah1tahun": 0.28,
+        "hargaTerakhir": 12526.45,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0,
+        "ubah30hari": 0.29,
+        "ubah90hari": 0.18,
+        "ubah1tahun": 0.23,
         "terendah": {
           "t": "2024-03-11",
           "p": 11000
@@ -1867,8 +1867,8 @@
           "t": "2024-04-21",
           "p": 15000
         },
-        "rataRata": 12359.42,
-        "gejolakPersen": 1.82,
+        "rataRata": 12359.68,
+        "gejolakPersen": 1.81,
         "musim": {
           "bulanTermahal": "Juli",
           "bulanTermurah": "Februari",
@@ -1876,12 +1876,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Tepung Terigu\",\"kelompok\":\"Tepung Terigu\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12530.83,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.03,\"ubah30hari\":0.33,\"ubah90hari\":0.2,\"ubah1tahun\":0.28,\"terendah\":{\"t\":\"2024-03-11\",\"p\":11000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":15000},\"rataRata\":12359.42,\"gejolakPersen\":1.82,\"musim\":{\"bulanTermahal\":\"Juli\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":1.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Tepung Terigu\",\"kelompok\":\"Tepung Terigu\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":12526.45,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0,\"ubah30hari\":0.29,\"ubah90hari\":0.18,\"ubah1tahun\":0.23,\"terendah\":{\"t\":\"2024-03-11\",\"p\":11000},\"tertinggi\":{\"t\":\"2024-04-21\",\"p\":15000},\"rataRata\":12359.68,\"gejolakPersen\":1.81,\"musim\":{\"bulanTermahal\":\"Juli\",\"bulanTermurah\":\"Februari\",\"selisihMusimPersen\":1.2},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1891,7 +1891,7 @@
     "tomat": {
       "id": "op:hrg:00001083",
       "nama": "Tomat",
-      "komentar": "Per 21 September 2026, Tomat tercatat Rp10.013 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 3,4%, dan dibanding setahun lalu naik 1,1%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp6.992 (17 September 2024) sampai Rp34.705 (11 April 2024), dengan koefisien variasi 30,7%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Oktober, berselisih 93,9% — pola dari 654 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Tomat tercatat Rp10.089 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 4,2%, dan dibanding setahun lalu naik 2,6%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp6.992 (17 September 2024) sampai Rp34.705 (11 April 2024), dengan koefisien variasi 30,7%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada Oktober, berselisih 93,9% — pola dari 655 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1899,12 +1899,12 @@
         "kelompok": "Tomat",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 10012.77,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 3.11,
-        "ubah30hari": 3.38,
-        "ubah90hari": -30.91,
-        "ubah1tahun": 1.1,
+        "hargaTerakhir": 10088.87,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 3.49,
+        "ubah30hari": 4.17,
+        "ubah90hari": -30.35,
+        "ubah1tahun": 2.59,
         "terendah": {
           "t": "2024-09-17",
           "p": 6992.45
@@ -1913,7 +1913,7 @@
           "t": "2024-04-11",
           "p": 34705.06
         },
-        "rataRata": 12981.33,
+        "rataRata": 12976.91,
         "gejolakPersen": 30.68,
         "musim": {
           "bulanTermahal": "April",
@@ -1922,12 +1922,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 654,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 655,
           "hariTanpaAngka": 310
         }
       },
-      "sidikFakta": "{\"nama\":\"Tomat\",\"kelompok\":\"Tomat\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":10012.77,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":3.11,\"ubah30hari\":3.38,\"ubah90hari\":-30.91,\"ubah1tahun\":1.1,\"terendah\":{\"t\":\"2024-09-17\",\"p\":6992.45},\"tertinggi\":{\"t\":\"2024-04-11\",\"p\":34705.06},\"rataRata\":12981.33,\"gejolakPersen\":30.68,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":93.86},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":654,\"hariTanpaAngka\":310}}",
+      "sidikFakta": "{\"nama\":\"Tomat\",\"kelompok\":\"Tomat\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":10088.87,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":3.49,\"ubah30hari\":4.17,\"ubah90hari\":-30.35,\"ubah1tahun\":2.59,\"terendah\":{\"t\":\"2024-09-17\",\"p\":6992.45},\"tertinggi\":{\"t\":\"2024-04-11\",\"p\":34705.06},\"rataRata\":12976.91,\"gejolakPersen\":30.68,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"Oktober\",\"selisihMusimPersen\":93.86},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":655,\"hariTanpaAngka\":310}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
@@ -1937,7 +1937,7 @@
     "udang-basah": {
       "id": "op:hrg:00001087",
       "nama": "Udang Basah",
-      "komentar": "Per 21 September 2026, Udang Basah tercatat Rp76.745 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,7%, dan dibanding setahun lalu naik 3,3%. Sepanjang 1 Februari 2024 sampai 21 September 2026 rentangnya Rp60.000 (1 Mei 2024) sampai Rp95.069 (10 April 2024), dengan koefisien variasi 3,1%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada November, berselisih 3,0% — pola dari 650 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
+      "komentar": "Per 22 September 2026, Udang Basah tercatat Rp76.762 per kg pada tingkat eceran nasional tertimbang penduduk. Dalam 30 hari terakhir ia naik 0,7%, dan dibanding setahun lalu naik 3,4%. Sepanjang 1 Februari 2024 sampai 22 September 2026 rentangnya Rp60.000 (1 Mei 2024) sampai Rp95.069 (10 April 2024), dengan koefisien variasi 3,1%. Rata-rata bulanannya paling tinggi pada April dan paling rendah pada November, berselisih 3,0% — pola dari 651 titik, belum tentu berulang. Yang angka ini TIDAK katakan: berapa yang diterima petani. Seluruhnya harga eceran, dan selisih eceran-ke-petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "batas": "Seluruhnya harga eceran; berapa yang diterima petani tidak terukur di sumber mana pun yang boleh diterbitkan.",
       "sumber": "terhitung",
       "fakta": {
@@ -1945,12 +1945,12 @@
         "kelompok": "Udang",
         "satuan": "kg",
         "tingkat": "eceran nasional tertimbang penduduk",
-        "hargaTerakhir": 76744.64,
-        "tanggalTerakhir": "2026-09-21",
-        "ubah7hari": 0.28,
-        "ubah30hari": 0.67,
-        "ubah90hari": 1.1,
-        "ubah1tahun": 3.29,
+        "hargaTerakhir": 76761.99,
+        "tanggalTerakhir": "2026-09-22",
+        "ubah7hari": 0.17,
+        "ubah30hari": 0.69,
+        "ubah90hari": 1,
+        "ubah1tahun": 3.35,
         "terendah": {
           "t": "2024-05-01",
           "p": 60000
@@ -1959,7 +1959,7 @@
           "t": "2024-04-10",
           "p": 95069.06
         },
-        "rataRata": 74026.59,
+        "rataRata": 74030.8,
         "gejolakPersen": 3.06,
         "musim": {
           "bulanTermahal": "April",
@@ -1968,12 +1968,12 @@
         },
         "cakupan": {
           "dari": "2024-02-01",
-          "sampai": "2026-09-21",
-          "jumlahTitik": 650,
+          "sampai": "2026-09-22",
+          "jumlahTitik": 651,
           "hariTanpaAngka": 314
         }
       },
-      "sidikFakta": "{\"nama\":\"Udang Basah\",\"kelompok\":\"Udang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":76744.64,\"tanggalTerakhir\":\"2026-09-21\",\"ubah7hari\":0.28,\"ubah30hari\":0.67,\"ubah90hari\":1.1,\"ubah1tahun\":3.29,\"terendah\":{\"t\":\"2024-05-01\",\"p\":60000},\"tertinggi\":{\"t\":\"2024-04-10\",\"p\":95069.06},\"rataRata\":74026.59,\"gejolakPersen\":3.06,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":2.97},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-21\",\"jumlahTitik\":650,\"hariTanpaAngka\":314}}",
+      "sidikFakta": "{\"nama\":\"Udang Basah\",\"kelompok\":\"Udang\",\"satuan\":\"kg\",\"tingkat\":\"eceran nasional tertimbang penduduk\",\"hargaTerakhir\":76761.99,\"tanggalTerakhir\":\"2026-09-22\",\"ubah7hari\":0.17,\"ubah30hari\":0.69,\"ubah90hari\":1,\"ubah1tahun\":3.35,\"terendah\":{\"t\":\"2024-05-01\",\"p\":60000},\"tertinggi\":{\"t\":\"2024-04-10\",\"p\":95069.06},\"rataRata\":74030.8,\"gejolakPersen\":3.06,\"musim\":{\"bulanTermahal\":\"April\",\"bulanTermurah\":\"November\",\"selisihMusimPersen\":2.97},\"cakupan\":{\"dari\":\"2024-02-01\",\"sampai\":\"2026-09-22\",\"jumlahTitik\":651,\"hariTanpaAngka\":314}}",
       "ditulis": "2026-08-23",
       "ditinjau": null,
       "diperiksaMesin": {
