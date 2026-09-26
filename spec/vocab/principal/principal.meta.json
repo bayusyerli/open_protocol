@@ -6,7 +6,7 @@
       "id": "Badan pemegang pendaftaran — pupuk, pestisida, dan varietas"
     },
     "scope": {
-      "id": "Seluruh 3136 badan yang namanya tercantum sebagai pemegang pendaftaran pupuk/pestisida di DB PUKPES atau sebagai pemohon varietas di registri perizinan Kementan, per 19 Agustus 2026. Satu rekaman per badan, bukan per registri: 19 badan memegang pendaftaran di kedua sisi. Pemulia perorangan SENGAJA TIDAK termasuk — 576 varietas dipegang orang atas nama sendiri, dan halaman profil untuk orang bernama adalah penyusunan data pribadi tanpa dasar pemrosesan. Cacah pendaftaran dan ejaan nama diturunkan dari registri; blok `profile` pada 151 rekaman datang dari riset web dan bertingkat D, terpisah dan tidak pernah dicampur ke angka registri."
+      "id": "Seluruh 3135 badan yang namanya tercantum sebagai pemegang pendaftaran pupuk/pestisida di DB PUKPES atau sebagai pemohon varietas di registri perizinan Kementan, per 19 Agustus 2026. Satu rekaman per badan, bukan per registri: 19 badan memegang pendaftaran di kedua sisi. Pemulia perorangan SENGAJA TIDAK termasuk — 576 varietas dipegang orang atas nama sendiri, dan halaman profil untuk orang bernama adalah penyusunan data pribadi tanpa dasar pemrosesan. Cacah pendaftaran dan ejaan nama diturunkan dari registri; blok `profile` pada 151 rekaman datang dari riset web dan bertingkat D, terpisah dan tidak pernah dicampur ke angka registri."
     },
     "lifecycle": {
       "version": "0.1.0",
@@ -43,7 +43,7 @@
       ]
     },
     "storage": "ndjson",
-    "count": 3136,
+    "count": 3135,
     "id_blocks": [
       {
         "from": 1000,
