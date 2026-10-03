@@ -70,6 +70,15 @@ simpanan-sesi-20260824/
 # tiap dataset. Yang naik ke repo cuma metadatanya: README, katalog, laporan.
 datasets/**/raw/
 
+# Dokumen deskripsi varietas dan halaman sumbernya — 53 MB SK Menteri Pertanian yang
+# diunduh dari PROSEED, plus salinan tabel HTML 2,9 MB. Situsnya TIDAK menyatakan lisensi
+# apa pun, jadi menurut varietas_data/README.md berkasnya dipakai sebagai rujukan dan
+# tidak diterbitkan ulang. Yang naik ke repo turunannya — indeks, sensus tautan, hasil uji
+# ekstraksi — beserta SHA-256 tiap berkas, sehingga unduhannya bisa dibuktikan ulang lewat
+# `python3 varietas_data/panen-sk.py`.
+varietas_data/raw/sk/
+varietas_data/raw/db-vardaf.html
+
 # Cache lokal wrangler — dibuat `wrangler dev` dan menyimpan state sesi serta build
 # sementara Worker. Tidak ada yang perlu dibagikan di dalamnya.
 .wrangler/
