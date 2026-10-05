@@ -6,13 +6,14 @@
       "id": "Kamus nama lokal"
     },
     "scope": {
-      "id": "Enam nama pertama, seluruhnya untuk OPT cabai, seluruhnya dari satu jawaban lapangan pada 22 Agustus 2026. Kamus ini sengaja memuat nama yang BELUM bisa dipetakan — dua dari enam — karena hasil pencarian nol membuat orang mencari di tempat lain yang tidak menjelaskan apa pun. Tidak satu pun rekaman di sini menyebutkan wilayah pemakaiannya: jawabannya berbunyi 'setiap daerah memiliki bahasa lokal yang berbeda, tapi umumnya', dan 'umumnya' bukan nama tempat. Cakupan komoditas dan nama dagang, yang juga termasuk A3, belum dimulai."
+      "id": "Tujuh nama. Enam yang pertama dari satu jawaban lapangan 22 Agustus 2026, seluruhnya untuk OPT cabai; yang ketujuh, \"otomatis\", dikutip dari kurasi OPT dan menyangkut bawang merah. Kamus ini sengaja memuat nama yang belum bisa dipetakan — dan pada 30 Agustus 2026 jumlah itu turun dari dua menjadi NOL, bukan karena namanya jadi lebih jelas melainkan karena kosakata OPT-nya melebar dari 10 pintu cabai jadi 208 pintu. Empat rekaman ditinjau ulang terhadap kosakata yang baru itu; dua di antaranya menyatakan alasan yang sudah tidak berlaku lagi. Enam dari tujuh masih tidak menyebutkan wilayah pemakaiannya: jawabannya berbunyi \"setiap daerah memiliki bahasa lokal yang berbeda, tapi umumnya\", dan \"umumnya\" bukan nama tempat. Cakupan komoditas dan nama dagang, yang juga termasuk A3, belum dimulai."
     },
     "lifecycle": {
-      "version": "0.1.0",
+      "version": "0.2.0",
       "status": "draft",
       "created_at": "2026-08-23T00:00:00Z",
-      "review_due": "2026-11-23"
+      "review_due": "2026-11-23",
+      "updated_at": "2026-08-30T00:00:00Z"
     },
     "provenance": {
       "license": "CC-BY-SA-4.0",
@@ -23,27 +24,39 @@
           "year": 2026,
           "locator": "Dijawab pemilik repositori 22 Agustus 2026; kutipan lengkapnya tercatat di docs/15-kapabilitas-lintas-pemangku.md bagian 9 butir 2. Satu penjawab, tanpa pembanding.",
           "retrieved": "2026-08-22"
+        },
+        {
+          "title": "Kurasi OPT jalur 1 — 208 pintu gejala",
+          "publisher": "Pranatani",
+          "year": 2026,
+          "locator": "spec/vocab/pest.json. Dipakai untuk satu nama baru (\"otomatis\", dari definisi op:pst:00000016) dan untuk meninjau ulang empat pemetaan yang ditulis saat kosakata masih 10 pintu cabai. Digabung lewat PR #30, 28 Agustus 2026.",
+          "retrieved": "2026-08-30"
         }
       ]
     },
     "storage": "inline",
-    "count": 6
+    "count": 7
   },
   "items": [
     {
       "key": "patek",
       "name": "patek",
       "refers_to": [
-        { "id": "op:pst:00000007", "label": "Antraknosa" }
+        { "id": "op:pst:00000007", "label": "Antraknosa" },
+        { "id": "op:pst:00000120", "label": "Antraknosa cabai" }
       ],
       "regions": [],
       "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai, dan 'umumnya' bukan nama tempat — memperlakukannya sebagai nasional berarti mengarang cakupan yang tidak pernah dinyatakan.",
       "evidence_tier": "D",
-      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Dari keenam nama, ini yang pemetaannya paling sedikit diperdebatkan — 'penyakit patek pada cabai' lazim dipakai untuk antraknosa — tetapi kelaziman yang tidak diverifikasi tetap tingkat D, bukan C.",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Dari keenam nama, ini yang pemetaannya paling sedikit diperdebatkan — 'penyakit patek pada cabai' lazim dipakai untuk antraknosa — tetapi kelaziman yang tidak diverifikasi tetap tingkat D, bukan C. Rujukan kedua ditambahkan 30 Agustus 2026: pintu \"Antraknosa cabai\" belum ada saat kamus ini ditulis, dan definisi kurasinya sendiri dibuka dengan kata \"Patek.\" — jadi penambahannya mengikuti kurasi yang sudah ada, bukan tebakan baru.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-23T00:00:00Z"
+        "created_at": "2026-08-23T00:00:00Z",
+        "updated_at": "2026-08-30T00:00:00Z"
+      },
+      "ambiguous_note": {
+        "id": "Dua pintu untuk satu penyakit, bukan dua penyakit. \"Antraknosa\" berdiri di atas sasaran genus Colletotrichum spp. yang cuma dipakai 8 baris pendaftaran, sementara \"Antraknosa cabai\" memegang 102 baris atas C. capsici — dan kurasinya sendiri menyatakan keduanya penyakit yang sama di kebun dan tidak bisa dibedakan tanpa laboratorium. Nama ini tidak memilih di antara keduanya, dan memang tidak perlu memilih: tindakannya sama."
       }
     },
     {
@@ -71,19 +84,21 @@
       "name": "keriting daun",
       "refers_to": [
         { "id": "op:pst:00000010", "label": "Virus kuning keriting" },
-        { "id": "op:pst:00000001", "label": "Trips" }
+        { "id": "op:pst:00000001", "label": "Trips" },
+        { "id": "op:pst:00000126", "label": "Tungau kuning" }
       ],
       "ambiguous_note": {
-        "id": "Daun yang mengeriting bisa datang dari virus kuning maupun dari trips, dan keduanya menuntut tindakan yang berlawanan: satu tidak bisa diobati semprotan sama sekali, satu lagi bisa. Kertas putih yang dikibaskan di bawah pucuk memutuskannya — trips terlihat bergerak, virus tidak meninggalkan apa pun."
+        "id": "Daun yang mengeriting datang dari tiga arah, dan ketiganya menuntut tindakan yang berbeda: virus kuning tidak bisa diobati semprotan sama sekali, trips bisa, dan tungau kuning bisa tetapi dengan bahan yang lain lagi. Kertas putih yang dikibaskan di bawah pucuk memisahkan trips dari dua sisanya — trips terlihat bergerak, virus tidak meninggalkan apa pun, dan tungau kuning terlalu kecil untuk tampak di situ. Yang menandai tungau kuning ada di daunnya sendiri: daun muda menggulung ke BAWAH dan menyempit memanjang, permukaannya mengeras dan mengkilap seperti berminyak, sementara daun tua di bawahnya tetap normal."
       },
       "regions": [],
       "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
       "evidence_tier": "D",
-      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Kedua rujukan diambil karena jalur 1 memang sudah memperlakukan pasangan ini sebagai pasangan yang perlu dibedakan; memilih salah satunya di sini akan mendahului uji yang justru dibangun untuk memutuskannya.",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Kedua rujukan diambil karena jalur 1 memang sudah memperlakukan pasangan ini sebagai pasangan yang perlu dibedakan; memilih salah satunya di sini akan mendahului uji yang justru dibangun untuk memutuskannya. Rujukan ketiga ditambahkan 30 Agustus 2026 dari kurasi jalur 1, bukan dari jawaban lapangan: pintu \"Tungau kuning\" menyatakan sendiri bahwa gejalanya DIKIRA VIRUS lalu tanamannya dicabut padahal masih bisa diselamatkan. Nama lokal yang mengirim orang ke dua dari tiga pintu itu ikut menanggung kekeliruan yang sama.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-23T00:00:00Z"
+        "created_at": "2026-08-23T00:00:00Z",
+        "updated_at": "2026-08-30T00:00:00Z"
       }
     },
     {
@@ -109,31 +124,72 @@
     {
       "key": "lodoh",
       "name": "lodoh",
-      "refers_to": [],
-      "unmapped_reason": "Dua calonnya bertabrakan dan tidak satu pun bisa dipastikan dari satu jawaban. 'Lodoh' menyebut keadaan membusuk lunak, yang di cabai dipakai baik untuk rebah kecambah pada persemaian maupun untuk buah yang membusuk. Rebah kecambah tercatat sebagai sinonim registri milik layu fusarium, sementara buah membusuk milik antraknosa — jadi menebak salah satunya berarti memilih di antara dua penyakit yang tindakannya berbeda.",
+      "refers_to": [
+        { "id": "op:pst:00000141", "label": "Rebah kecambah" },
+        { "id": "op:pst:00000201", "label": "Rebah kecambah jamur sejati" },
+        { "id": "op:pst:00000120", "label": "Antraknosa cabai" }
+      ],
       "regions": [],
       "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
       "evidence_tier": "D",
-      "evidence_note": "Satu jawaban lapangan. Yang tercatat di sini hanya bahwa namanya dipakai; kepada apa ia menunjuk justru pertanyaan yang dibawa ke peninjau.",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Sampai 30 Agustus 2026 rekaman ini sengaja dibiarkan tanpa rujukan, dan alasannya waktu itu benar: rebah kecambah baru tercatat sebagai sinonim registri milik layu fusarium, sehingga menautkannya berarti mengirim orang ke penyakit yang salah. Kurasi jalur 1 mencabut penghalang itu — rebah kecambah kini dua pintu tersendiri. Yang berubah ketersediaan rujukannya, bukan keyakinan pada namanya; tingkatnya tetap D.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-23T00:00:00Z"
+        "created_at": "2026-08-23T00:00:00Z",
+        "updated_at": "2026-08-30T00:00:00Z"
+      },
+      "ambiguous_note": {
+        "id": "Namanya menyebut keadaan membusuk lunak, dan yang memutuskan artinya bukan rupanya melainkan DI MANA ia terlihat. Di persemaian: bibit rebah, dan dua pintu berdiri di situ karena bahan aktifnya berbeda — pangkal batang coklat BERAIR menunjuk yang oomycete, pangkal yang MENGERING dan mengeras seperti tercekik tali menunjuk yang jamur sejati. Di pertanaman: buah yang membusuk cekung menghitam, dan itu antraknosa. Satu nama, dua tempat, tiga pintu."
       }
     },
     {
       "key": "bercak-daun",
       "name": "bercak daun",
-      "refers_to": [],
-      "unmapped_reason": "Rujukannya kemungkinan besar memang tidak ada di sini. Bercak daun pada cabai umumnya menunjuk penyakit bercak daun serkospora, dan penyakit itu bukan salah satu dari sepuluh OPT cabai yang terkurasi. Ini kekosongan cakupan, bukan pemetaan yang belum selesai — dan menautkannya paksa ke salah satu dari sepuluh akan menyembunyikan kekosongan itu.",
+      "refers_to": [
+        { "id": "op:pst:00000121", "label": "Bercak daun cabai" }
+      ],
       "regions": [],
       "region_unknown_reason": "Belum ditanyakan. Sumbernya menyebut nama ini 'umumnya' dipakai tanpa menyebut daerah mana pun.",
       "evidence_tier": "D",
-      "evidence_note": "Satu jawaban lapangan. Namanya dicatat justru karena tidak terpetakan: yang mencarinya harus sampai pada keterangan bahwa cakupannya belum ada, bukan pada hasil nol yang terbaca sebagai 'tidak ada penyakitnya'.",
+      "evidence_note": "Satu jawaban lapangan, belum diperiksa penyuluh atau BPTP. Rekaman ini semula dicatat justru karena TIDAK terpetakan: bercak daun pada cabai menunjuk bercak daun serkospora, dan penyakit itu bukan salah satu dari sepuluh OPT cabai yang terkurasi waktu itu. Kekosongan cakupan itu tertutup pada 30 Agustus 2026 — pintu \"Bercak daun cabai\" (Cercospora capsici) kini berdiri, dan definisinya menyebut sendiri 73 baris penggunaan berlabel yang sebelumnya tidak punya pintu sama sekali. Perlu diketahui pembacanya: nama ini generik lintas komoditas — ada 19 pintu bercak daun di kosakata — dan rujukan tunggal di sini mengikuti konteks sumbernya, yaitu cabai.",
       "lifecycle": {
         "version": "0.1.0",
         "status": "draft",
-        "created_at": "2026-08-23T00:00:00Z"
+        "created_at": "2026-08-23T00:00:00Z",
+        "updated_at": "2026-08-30T00:00:00Z"
+      }
+    },
+    {
+      "key": "otomatis",
+      "name": "otomatis",
+      "refers_to": [
+        { "id": "op:pst:00000016", "label": "Antraknosa bawang" }
+      ],
+      "regions": [
+        { "id": "op:rgn:00000315", "label": "Kabupaten Brebes" }
+      ],
+      "evidence_tier": "D",
+      "evidence_note": "Nama dan wilayahnya dikutip dari definisi pintu \"Antraknosa bawang\" sendiri, yang berbunyi bahwa di sentra Brebes penyakit ini disebut \"otomatis\" karena tanaman rebah serentak dalam beberapa hari. Ini satu-satunya rekaman di kamus yang menyebutkan wilayah pemakaiannya, dan itu sebabnya ia dicatat. Tetap tingkat D: kurasi jalur 1 tidak mencatat dari mana nama itu diperolehnya, jadi yang diketahui hanya bahwa nama itu dipakai — bukan seberapa luas, dan bukan oleh siapa. Penyuluh Brebes bisa menaikkannya ke C dalam satu percakapan.",
+      "notes": {
+        "id": "Nama ini menerangkan CARA MATINYA, bukan rupa penyakitnya — \"otomatis\" menunjuk pada serentaknya, dan itu justru keterangan yang berguna: rebah serentak dalam hitungan hari memisahkannya dari layu yang menjalar petak demi petak."
+      },
+      "provenance": {
+        "license": "CC-BY-SA-4.0",
+        "sources": [
+          {
+            "title": "Kurasi OPT jalur 1 — definisi op:pst:00000016 Antraknosa bawang",
+            "publisher": "Pranatani",
+            "year": 2026,
+            "locator": "spec/vocab/pest.json, medan definition pada rekaman op:pst:00000016; masuk lewat PR #30, digabung 28 Agustus 2026.",
+            "retrieved": "2026-08-30"
+          }
+        ]
+      },
+      "lifecycle": {
+        "version": "0.1.0",
+        "status": "draft",
+        "created_at": "2026-08-30T00:00:00Z"
       }
     }
   ]

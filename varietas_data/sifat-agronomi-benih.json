@@ -1,0 +1,460 @@
+[
+ {
+  "varietas_text": "Sumbu Merapi",
+  "komoditas_text": "Bawang Merah",
+  "variety": {
+   "id": "op:vty:00003242",
+   "label": "Sumbu Merapi",
+   "commodity": "Bawang merah"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "(*80% Batang"
+  ],
+  "ketinggian_text": [
+   "menengah di"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-10/281_bawang_merah_sumbu_marapi_pemkab_tanah_datar.pdf",
+   "sha256": "8aab0b0fce9d922deb79030e5bd48f7c83a98781581166778de0815fbcf72e6d",
+   "halaman": 6
+  }
+ },
+ {
+  "varietas_text": "Rifai",
+  "komoditas_text": "Alpukat",
+  "variety": {
+   "id": "op:vty:00004555",
+   "label": "Rifai",
+   "commodity": "Alpukat"
+  },
+  "penautan": "nama+komoditas",
+  "ketinggian_text": [
+   "rendah"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/1/2022-09/rifai.pdf",
+   "sha256": "d6f6c39adf557dd7039cf10846a3caa9b89bfa227a94d8476cf328836e86a6b6",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "Keju",
+  "komoditas_text": "Alpukat",
+  "variety": {
+   "id": "op:vty:00003229",
+   "label": "Keju",
+   "commodity": "Alpukat"
+  },
+  "penautan": "nama+komoditas",
+  "ketinggian_text": [
+   "dengan baik di dataran medium"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/9a6eee98351c362c804f8932067a4d20.pdf",
+   "sha256": "c2acaec2b674829060fb0984bd5d94ab2a410e925ce1582cfc4d38530f6e5595",
+   "halaman": 3
+  }
+ },
+ {
+  "varietas_text": "Sexy Pink",
+  "komoditas_text": "Anggrek hutan Phalaenopsis",
+  "variety": null,
+  "penautan": "nama cocok tapi komoditas tidak (['Aglaonema'])",
+  "ketinggian_text": [
+   "tempat 1.100 m dpl"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/c0465768047cd2b4453167ec55965b24.pdf",
+   "sha256": "14be76b58a8a90b9cc81b5f8a89ff21983083c3c4885dddd96d181912bc71a58",
+   "halaman": 3
+  }
+ },
+ {
+  "varietas_text": "Imatoru Agrihorti",
+  "komoditas_text": "Pacar Air",
+  "variety": {
+   "id": "op:vty:00002472",
+   "label": "Imatoru Agrihorti",
+   "commodity": "Pacar Air"
+  },
+  "penautan": "nama+komoditas",
+  "ketinggian_text": [
+   "tinggi"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/e194068f3a121671d27257f1fd34655b.pdf",
+   "sha256": "1d24d86bb9d73a99555661f3c4c565d8209c827c42914e7733c6b9ecc4807910",
+   "halaman": 3
+  }
+ },
+ {
+  "varietas_text": "Arumika Agrihorti",
+  "komoditas_text": "Anggrek Vanda",
+  "variety": {
+   "id": "op:vty:00002867",
+   "label": "Arumika Agrihorti",
+   "commodity": "Anggrek Vanda"
+  },
+  "penautan": "nama+komoditas",
+  "ketinggian_text": [
+   "1100 m dpl"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/8c95bc81ec2becd75b1ed4f02ff646bd.pdf",
+   "sha256": "bd19364acd739c32ac5f908781d52a66bee893de17e5e13ae1209d2861c35a5d",
+   "halaman": 3
+  }
+ },
+ {
+  "varietas_text": "CB ASA 2213",
+  "komoditas_text": "Cabai Besar",
+  "variety": {
+   "id": "op:vty:00003220",
+   "label": "CB ASA 2213",
+   "commodity": "Cabai Besar"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "85.44 - 88.39 hst",
+   "genjah"
+  ],
+  "potensi_hasil_text": [
+   "tinggi"
+  ],
+  "ketinggian_text": [
+   "menengah ( 400 – 700 mdpl)"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/e1d814c07092f1c482a32ea44f9a668b.pdf",
+   "sha256": "1779278bedf7512361fa1a1fb51ebdfe9c78160d7e09efaba4e1bbfbb3506072",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "CB ASA 2213",
+  "komoditas_text": "Cabai Besar",
+  "variety": {
+   "id": "op:vty:00003220",
+   "label": "CB ASA 2213",
+   "commodity": "Cabai Besar"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "85.44 - 88.39 hst",
+   "genjah"
+  ],
+  "potensi_hasil_text": [
+   "tinggi"
+  ],
+  "ketinggian_text": [
+   "menengah ( 400 – 700 mdpl)"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/78bd677ba724efbada7360028d3c6497.pdf",
+   "sha256": "2147d887beb5a37b7ee7a6cc621a0a9e9ab59fb80138b64510ae99be0d08a24c",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "MR Ungu",
+  "komoditas_text": "Terong",
+  "variety": {
+   "id": "op:vty:00003228",
+   "label": "MR Ungu",
+   "commodity": "Terong"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "(hst) : 82 hari setelah tanam"
+  ],
+  "ketinggian_text": [
+   "rendah di Kabupaten"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/71b589c4bab392ff5a439b7d3795da9e.pdf",
+   "sha256": "97a8dd82ec69bcd81359d2f8f9349beee3ffa067aa85f6f9a32bf232c4accf46",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "MBTR 03P",
+  "komoditas_text": "Terong",
+  "variety": {
+   "id": "op:vty:00003227",
+   "label": "MBTR 03P",
+   "commodity": "Terong"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "52-53 hari setelah tanam"
+  ],
+  "ketinggian_text": [
+   "menengah pada musim"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/67ca0237912cc9eb647c9733437622fd.pdf",
+   "sha256": "352845aedc071b3200c780babcdd1958ffb95e86e748248a37dea5464c4afc66",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "Kebau",
+  "komoditas_text": "Durian",
+  "variety": {
+   "id": "op:vty:00004774",
+   "label": "Kebau",
+   "commodity": "Durian"
+  },
+  "penautan": "nama+komoditas",
+  "ketinggian_text": [
+   "dengan baik di dataran rendah"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/b0f443d619ef7465c594b5afe106fbfe.pdf",
+   "sha256": "a3d79e8033f714df0491a3091a0ffcbca2772cb7a0490262d70c8abad84705c7",
+   "halaman": 3
+  }
+ },
+ {
+  "varietas_text": "MBTR 04",
+  "komoditas_text": "Terong",
+  "variety": {
+   "id": "op:vty:00003233",
+   "label": "MBTR 04",
+   "commodity": "Terong"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "54-55hari setelah tanam"
+  ],
+  "ketinggian_text": [
+   "menengah pada musim"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/b7ca838d512d95d11403f35731550456.pdf",
+   "sha256": "d082ad30fcda9b031ce7082563a4122b7c42cbf56f48c86513579a5a37e62cb9",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "TO 3923",
+  "komoditas_text": "Tomat",
+  "variety": {
+   "id": "op:vty:00003215",
+   "label": "TO 3923",
+   "commodity": "Tomat"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "68 – 72 HST"
+  ],
+  "ketahanan_text": [
+   "penyakit",
+   "layu bakteri (Ralstonia solanacearum) dan",
+   "layu bakteri (Ralstonia solanacearum)"
+  ],
+  "ketinggian_text": [
+   "menengah Kabupaten Garut"
+  ],
+  "ketahanan_opt": [
+   {
+    "id": "op:pst:00000009",
+    "label": "Layu bakteri",
+    "dari": "layu bakteri (Ralstonia solanacearum) dan"
+   }
+  ],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/d363794b6979414fbbc8c84b4e40c599.pdf",
+   "sha256": "ffff97d3abb673fd44607d99b6122c47da017e9b1be59e0ffe0550fc2c22a6f9",
+   "halaman": 3
+  }
+ },
+ {
+  "varietas_text": "KNBI001",
+  "komoditas_text": "Kangkung",
+  "variety": {
+   "id": "op:vty:00003189",
+   "label": "KNBI001",
+   "commodity": "Kangkung"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "30-33 hari setelah tanam"
+  ],
+  "ketinggian_text": [
+   "dengan baik di dataran rendah"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/824a5387590c40d2743c63c699acea0a.pdf",
+   "sha256": "23d0d8c155b2d9528ef06073ae8de59e9d4a2d8cee99f5c36d824159d408057e",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "PCTG2106",
+  "komoditas_text": "Sawi Sendok/Pak Choi",
+  "variety": null,
+  "penautan": "nama tidak ada di op:vty",
+  "umur_panen_text": [
+   "30-33 hari setelah tanam"
+  ],
+  "ketinggian_text": [
+   "rendah di musim hujan"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/7ee7729294232350ac2af033fb55b410.pdf",
+   "sha256": "5eb7e4a89f8105021be4a0f73b0b36fbc563bc75e891429c00501f91a22f16c9",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "CP 891",
+  "komoditas_text": "Pepaya",
+  "variety": {
+   "id": "op:vty:00003190",
+   "label": "CP 891",
+   "commodity": "Pepaya"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "240-260 hst (8 - 8,5 bulan setelah tanam)"
+  ],
+  "ketinggian_text": [
+   "rendah"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/1e83526857326a6c032bf5b763a14eba.pdf",
+   "sha256": "0a704e074a21c29de6724c5e6fd3f54ad44660eb9fd3af81e045c126ec2bd3a2",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "CP 850",
+  "komoditas_text": "Pepaya",
+  "variety": {
+   "id": "op:vty:00003191",
+   "label": "CP 850",
+   "commodity": "Pepaya"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "225 - 236 hst (7,5 – 8 bulan setelah tanam)"
+  ],
+  "ketinggian_text": [
+   "Rendah"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/f4fb2c2b1a5e827ba349e9b4be550061.pdf",
+   "sha256": "ff6e1c3b54ef899685fbd19430e3c75760e056f0eeb85d1dfe01bdb178811db9",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "Sai Wawai",
+  "komoditas_text": "Sawo",
+  "variety": {
+   "id": "op:vty:00003840",
+   "label": "Sai Wawai",
+   "commodity": "Sawo"
+  },
+  "penautan": "nama+komoditas",
+  "ketinggian_text": [
+   "rendah Kabupaten"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/9a02f0bbe556aa46a043245afc396c5c.pdf",
+   "sha256": "5c0adf5a6df118ad44c1747ca4d119f555bca239504ebb06b9cef50555ea94a6",
+   "halaman": 3
+  }
+ },
+ {
+  "varietas_text": "Biocalya Agrihorti",
+  "komoditas_text": "Cabai Besar",
+  "variety": {
+   "id": "op:vty:00003192",
+   "label": "Biocalya Agrihorti",
+   "commodity": "Cabai Besar"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "96 - 115 hst"
+  ],
+  "ketahanan_text": [
+   "penyakit",
+   "antraknos"
+  ],
+  "ketinggian_text": [
+   "menengah hingga dataran"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/6d7783e9e847496654210385af1f1a9e.pdf",
+   "sha256": "56eeb8a048f79f625b9cbb681d8d4301d1d549973c8e89843fd267181a552a69",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "Biocavita Agrihorti",
+  "komoditas_text": "Cabai Besar",
+  "variety": {
+   "id": "op:vty:00003193",
+   "label": "Biocavita Agrihorti",
+   "commodity": "Cabai Besar"
+  },
+  "penautan": "nama+komoditas",
+  "umur_panen_text": [
+   "98 - 112 hst"
+  ],
+  "ketahanan_text": [
+   "penyakit",
+   "antraknos"
+  ],
+  "ketinggian_text": [
+   "menengah hingga",
+   "tinggi pada musim hujan"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/7867dd65d740b064f7d89f49f929eb89.pdf",
+   "sha256": "e7d6ce1eeb797aadd3b4401b6d59b004a5a613d7aeb3849b6a885b55459be9e4",
+   "halaman": 2
+  }
+ },
+ {
+  "varietas_text": "Lembah Kuali",
+  "komoditas_text": "Jengkol",
+  "variety": {
+   "id": "op:vty:00003194",
+   "label": "Lembah Kuali",
+   "commodity": "Jengkol"
+  },
+  "penautan": "nama+komoditas",
+  "ketinggian_text": [
+   "rendah"
+  ],
+  "ketahanan_opt": [],
+  "sumber": {
+   "url": "https://perbenihanhorti.id/proseed/uploads/414/2022-11/4ba72b651c5e50f0e454ac074195be69.pdf",
+   "sha256": "094cb7ec81f7791faab89abacaaeb9ffc28e874fb7c78cde8246fc66401b1077",
+   "halaman": 3
+  }
+ }
+]
