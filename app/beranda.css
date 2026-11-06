@@ -649,10 +649,15 @@ a { color: var(--hijau-2); }
   gap: .1rem 1.5rem;
 }
 .jelajah li {
+  /* Kolom, bukan baris yang membungkus: dengan flex-wrap, keterangan pendek muat di
+     samping tautannya sedangkan yang panjang jatuh ke bawah, sehingga tiap baris
+     berbentuk lain dan sel yang cuma satu baris meninggalkan pita kosong ketika sel
+     sebelahnya dua baris. flex-start menjaga kotak tautannya tetap sepanjang teksnya,
+     jadi area kliknya tidak diam-diam melebar seluruh kolom. */
   display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: .5rem;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: .2rem;
   padding: .55rem 0;
   border-bottom: 1px solid var(--garis);
   min-height: 44px;
