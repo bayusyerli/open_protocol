@@ -70,11 +70,51 @@ lengkap termasuk hama sasaran & dosis).
 | Berkas | Isi |
 |---|---|
 | `principal_kanonik.csv` | 2.304 nama sebagaimana tertulis di registri + kolom `nama_kanonik` |
-| `principal_alias.csv` | 681 baris pemetaan beserta alasannya (`dasar`, `perlu_tinjau`) |
+| `principal_alias.csv` | 683 baris pemetaan beserta alasannya (`dasar`, `perlu_tinjau`) |
 
-2.304 nama mentah menjadi 1.949 principal; 355 varian digabung, 7 ditandai perlu ditinjau
+2.304 nama mentah menjadi 1.948 principal; 356 varian digabung, 7 ditandai perlu ditinjau
 karena bentuk badan hukumnya berbeda. Konvensinya sama dengan sisi benih di
 `proseed_data/pemohon_alias.csv` dan dijelaskan di `spec/00-konvensi-kerja-paralel.md`.
+
+### UUID badan — dua ejaan yang dijawab registri sendiri (24 Agustus 2026)
+
+Kedua CSV pupuk membawa pengenal badan dari registri: `perusahaan_id` di
+`pupuk_terdaftar.csv`, `id_perusahaan` di `pupuk_terdaftar_legacy.csv`. Keduanya berupa UUID
+dan **nilainya sepadan lintas kedua basis** — 124 UUID muncul di SIMPEL maupun SIMPUK 2020.
+Itu menjadikannya penentu identitas yang jauh lebih kuat daripada kemiripan ejaan, dan
+`dasar=id-registri-sama` dipakai untuk penggabungan yang bersandar padanya.
+
+86 UUID mengikat lebih dari satu ejaan nama. Penyeragaman 19 Agustus bekerja dari ejaan
+saja — keempat nilai `dasar`-nya semuanya menimbang tulisan — dan sudah menyatukan 81 di
+antaranya. Lima sisanya justru yang ejaannya paling berjauhan, dan kelimanya berpola sama:
+satu ejaan hanya ada di SIMPEL, satunya hanya di SIMPUK 2020. Yang membelahnya bukan
+kelalaian pengetik, melainkan dua basis yang menuliskan pemegang yang sama dengan cara
+masing-masing.
+
+| UUID | Ejaan | Keputusan |
+|---|---|---|
+| `4a4f695d…` | Perusahaan Perseroan (Persero) PT. Pupuk Indonesia (20) · PT Pupuk Indonesia (Persero) (4) | **digabung** 24 Agu 2026 |
+| `c8a04f82…` | DGW PUPUK INDONESIA (51) · PT. Hextar Fertilizer Indonesia (43) | belum — lihat catatan |
+| `cb888ba5…` | INDO ACIDATAMA (22) · PT. INDO ACIDATAMA Tbk (9) | belum |
+| `bb78e0c5…` | Koperasi Puspa Kencana (2) · Koperasi Karyawan Puspa Kencana (2) | belum |
+| `9ab86cc7…` | LAUTAN LUAS (1) · PT Lautan Luas Tbk (1) | belum |
+
+Empat yang belum sengaja dibiarkan: masing-masing perlu diputus sendiri-sendiri, dan
+`c8a04f82…` yang paling tidak sepele — DGW dan Hextar adalah nama badan yang **berganti**,
+bukan salah eja, sehingga menggabungnya berarti memilih nama mana yang berlaku hari ini,
+bukan sekadar merapikan ejaan.
+
+Arah sebaliknya juga berlaku dan sama pentingnya: UUID yang berbeda menahan penggabungan
+yang ejaannya menggoda. `PUPUK INDONESIA NIAGA` (`2ec851a5…`), `PT. Persada Pupuk Indonesia`
+(`22ddd2c0…`), `DGW PUPUK INDONESIA` (`c8a04f82…`), `PT. Kingenta Pupuk Indonesia`
+(`5011aa1c…`), `PT. DRAGON PUPUK INDONESIA` (`41add7ce…`) dan `WULAN PUPUK INDONESIA`
+(`41192816…`) semuanya memuat kata "Pupuk Indonesia" dan semuanya badan yang berlainan.
+
+Yang tidak berlaku adalah kebalikannya: UUID sama **membuktikan** satu badan, UUID beda
+**tidak membuktikan** dua. `PT PERSADA PUPUK INDONESIA` dan `PT. Persada Pupuk Indonesia`
+memegang UUID berbeda (`102c7c61…` dan `22ddd2c0…`) padahal ejaannya nyaris identik —
+registri sendiri memberi dua nomor ke satu nama. Keduanya digabung atas dasar ejaan, dan
+itu tetap benar.
 
 `produsen_master.csv` dibuat lebih dulu dengan cara lain — nama asli tidak disimpan dan
 alasan penggabungan tidak dicatat. Dibiarkan sebagai jejak; yang mengikat `principal_alias.csv`.
