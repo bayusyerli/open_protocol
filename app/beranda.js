@@ -77,12 +77,18 @@ const kartuNamaLokal = (x) => {
         <span class="lencana">Belum terpetakan</span>
       </li>`;
   }
+  // Wilayah ikut tampil begitu diketahui. Kamus yang menyembunyikan batas wilayahnya
+  // akan menyodorkan nama satu daerah kepada seluruh negeri — dan sejak ada rekaman
+  // pertama yang wilayahnya tercatat, menyembunyikannya jadi kekeliruan aktif, bukan
+  // sekadar keterangan yang kebetulan hilang.
+  const sebaranNama = x.wilayah?.length ? `Terdengar di ${x.wilayah.join(', ')}.` : '';
+  const bawah = [sebaranNama, x.taksa].filter(Boolean).join(' ');
   return x.ke.map((k, i) => `
     <li>
       <a href="tanaman.html?${new URLSearchParams({ opt: k.i })}" data-jenis="nama-lokal">
         <span>
           <span class="nama-hasil">${teks(x.n)} <em>→ ${teks(k.l ?? k.i)}</em></span>
-          ${i === 0 && x.taksa ? `<span class="sub-hasil">${teks(x.taksa)}</span>` : ''}
+          ${i === 0 && bawah ? `<span class="sub-hasil">${teks(bawah)}</span>` : ''}
         </span>
         <span class="lencana">Nama lokal</span>
       </a>
@@ -409,9 +415,21 @@ function gambar(nama, bahan, gejala, lokal, kueri,
     // B4: nama yang dikenal tetapi rujukannya belum ada adalah permintaan data yang
     // paling langsung — seseorang benar-benar memakainya, dan kamusnya belum sampai.
     for (const x of lokal) if (!x.ke.length) catatLubang('beranda', LUBANG.namaLokalTakTerpetakan);
+    // Keterangan kelompok DITURUNKAN dari rekaman yang benar-benar tampil, bukan ditulis
+    // tangan. Kalimat lamanya menyebut "satu jawaban lapangan" dan "belum diketahui dipakai
+    // di daerah mana"; keduanya berhenti benar begitu kamusnya memuat nama dari sumber lain
+    // yang justru wilayahnya tercatat — dan kalimat tetap akan berbohong tepat pada rekaman
+    // yang paling banyak diketahui.
+    const berwilayah = lokal.filter((x) => x.wilayah?.length).length;
+    const sebaran = berwilayah === 0
+      ? 'dan belum diketahui dipakai di daerah mana'
+      : berwilayah === lokal.length
+        ? 'dan wilayah pemakaiannya tercatat'
+        : `dan ${berwilayah} dari ${lokal.length} menyebut wilayah pemakaiannya`;
+    const tingkat = [...new Set(lokal.map((x) => x.bukti).filter(Boolean))].sort();
     bagian.push(kelompok(
       `${lokal.length} nama lokal cocok`,
-      'dari satu jawaban lapangan, <strong>belum ditinjau</strong> — dan belum diketahui dipakai di daerah mana',
+      `tingkat bukti <strong>${teks(tingkat.join('/')) || '—'}</strong>, belum ditinjau penyuluh — ${sebaran}`,
       lokal.map(kartuNamaLokal).join('')));
   }
 
